@@ -29,57 +29,57 @@ $(function () {
     strictEqual($button[0], $el[0], 'collection contains element')
   })
 
-  test('should return set state to loading', function () {
+  test('should return set state to loading', function (assert) {
     var $btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
     equal($btn.html(), 'mdo', 'btn text equals mdo')
     $btn.bootstrapButton('loading')
-    stop()
+    var done = assert.async()
     setTimeout(function () {
       equal($btn.html(), 'fat', 'btn text equals fat')
       ok($btn[0].hasAttribute('disabled'), 'btn is disabled')
       ok($btn.hasClass('disabled'), 'btn has disabled class')
-      start()
+      done()
     }, 0)
   })
 
-  test('should return reset state', function () {
+  test('should return reset state', function (assert) {
     var $btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
     equal($btn.html(), 'mdo', 'btn text equals mdo')
     $btn.bootstrapButton('loading')
-    stop()
+    var doneOne = assert.async()
     setTimeout(function () {
       equal($btn.html(), 'fat', 'btn text equals fat')
       ok($btn[0].hasAttribute('disabled'), 'btn is disabled')
       ok($btn.hasClass('disabled'), 'btn has disabled class')
-      start()
-      stop()
+      doneOne()
+      var doneTwo = assert.async()
       $btn.bootstrapButton('reset')
       setTimeout(function () {
         equal($btn.html(), 'mdo', 'btn text equals mdo')
         ok(!$btn[0].hasAttribute('disabled'), 'btn is not disabled')
         ok(!$btn.hasClass('disabled'), 'btn does not have disabled class')
-        start()
+        doneTwo()
       }, 0)
     }, 0)
   })
 
-  test('should work with an empty string as reset state', function () {
+  test('should work with an empty string as reset state', function (assert) {
     var $btn = $('<button class="btn" data-loading-text="fat"/>')
     equal($btn.html(), '', 'btn text equals ""')
     $btn.bootstrapButton('loading')
-    stop()
+    var doneOne = assert.async()
     setTimeout(function () {
       equal($btn.html(), 'fat', 'btn text equals fat')
       ok($btn[0].hasAttribute('disabled'), 'btn is disabled')
       ok($btn.hasClass('disabled'), 'btn has disabled class')
-      start()
-      stop()
+      doneOne()
+      var doneTwo = assert.async()
       $btn.bootstrapButton('reset')
       setTimeout(function () {
         equal($btn.html(), '', 'btn text equals ""')
         ok(!$btn[0].hasAttribute('disabled'), 'btn is not disabled')
         ok(!$btn.hasClass('disabled'), 'btn does not have disabled class')
-        start()
+        doneTwo()
       }, 0)
     }, 0)
   })

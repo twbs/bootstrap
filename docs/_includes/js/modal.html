@@ -108,7 +108,7 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
-  <div class="bs-example" style="padding-bottom: 24px;">
+  <div class="bs-example bs-example-padded-bottom">
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
       Launch demo modal
     </button>
@@ -220,7 +220,7 @@
 
   <h2 id="modals-related-target">Varying modal content based on trigger button</h2>
   <p>Have a bunch of buttons that all trigger the same modal, just with slightly different contents? Use <code>event.relatedTarget</code> and <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">HTML <code>data-*</code> attributes</a> (possibly <a href="http://api.jquery.com/data/">via jQuery</a>) to vary the contents of the modal depending on which button was clicked. See the Modal Events docs for details on <code>relatedTarget</code>,</p>
-  <div class="bs-example" style="padding-bottom: 24px;">
+  <div class="bs-example">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@twbootstrap">Open modal for @twbootstrap</button>
@@ -314,12 +314,12 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   <h3 id="modals-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
        <tr>
-         <th style="width: 100px;">Name</th>
-         <th style="width: 50px;">type</th>
-         <th style="width: 50px;">default</th>
+         <th>Name</th>
+         <th>type</th>
+         <th>default</th>
          <th>description</th>
        </tr>
       </thead>
@@ -386,7 +386,7 @@ $('#myModal').modal({
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
+         <th>Event Type</th>
          <th>Description</th>
        </tr>
       </thead>

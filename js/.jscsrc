@@ -25,6 +25,7 @@
   "requireSpaceBetweenArguments": true,
   "requireSpacesInAnonymousFunctionExpression": { "beforeOpeningCurlyBrace": true, "beforeOpeningRoundBrace": true },
   "requireSpacesInConditionalExpression": true,
+  "requireSpacesInForStatement": true,
   "requireSpacesInFunctionDeclaration": { "beforeOpeningCurlyBrace": true },
   "requireSpacesInFunctionExpression": { "beforeOpeningCurlyBrace": true },
   "requireSpacesInNamedFunctionExpression": { "beforeOpeningCurlyBrace": true },

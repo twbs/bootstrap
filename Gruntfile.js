@@ -191,7 +191,7 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
       docs: {
-        src: 'docs/assets/css/src/docs.css'
+        src: ['docs/assets/css/anchor.css', 'docs/assets/css/src/docs.css']
       },
       examples: {
         expand: true,
@@ -237,8 +237,10 @@ module.exports = function (grunt) {
       },
       docs: {
         src: [
-          'docs/assets/css/src/docs.css',
-          'docs/assets/css/src/pygments-manni.css'
+          'docs/assets/css/src/pygments-manni.css',
+          'docs/assets/css/src/anchor.css',
+          'docs/assets/css/src/docs.css'
+
         ],
         dest: 'docs/assets/css/docs.min.css'
       }
@@ -332,8 +334,7 @@ module.exports = function (grunt) {
         relaxerror: [
           'Element img is missing required attribute src.',
           'Attribute autocomplete not allowed on element input at this point.',
-          'Attribute autocomplete not allowed on element button at this point.',
-          'Bad value separator for attribute role on element li.'
+          'Attribute autocomplete not allowed on element button at this point.'
         ]
       },
       files: {
