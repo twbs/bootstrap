@@ -50,7 +50,7 @@
       this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
     ](content)
 
-    if ($.isFunction(this.options.dataBinding)) {
+    if ($.isFunction(this.options.dataBinder)) {
       this.options.dataBinder($tip);
     }
 
