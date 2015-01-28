@@ -117,7 +117,6 @@ $(function () {
     equal($('.popover').length, 0, 'popover was removed')
   })
 
-
   test('should get title and content from attributes ignoring options passed via js', function () {
     var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
       .appendTo('#qunit-fixture')
@@ -189,26 +188,31 @@ $(function () {
   })
 
   test('should call dataBinder', function () {
+    var wasCalled = false
     var testBinder = function (pop) {
-      var $content = $(pop).find('.popover-content')
-      var $title = $(pop).find('.popover-title')
-      $title.text($title.text().replace('{{things}}', 'DATA'))
-      $content.text($content.text().replace('{{stuff}}', 'BOUND'))
+      wasCalled = true
+      var $pop = $(pop)
+      var $title = $pop.find('.popover-title')
+      $title.text('Title DATA')
+
+      var $content = $pop.find('.popover-content')
+      $content.text('Content BOUND')
     };
 
     var $popover = $('<a href="#">@idisposable</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
-        title: 'Test {{things}}',
-        content: 'Test {{stuff}}',
+        title: 'Title {{things}}',
+        content: 'Content {{stuff}}',
         dataBinder: testBinder
       })
 
     $popover.bootstrapPopover('show')
 
     notEqual($('.popover').length, 0, 'popover was inserted')
-    equal($('.popover .popover-title').text(), 'Test DATA', 'title correctly dataBound')
-    equal($('.popover .popover-content').text(), 'Test BOUND', 'content correctly dataBound')
+    ok(wasCalled, 'dataBinder was called')
+    equal($('.popover .popover-title').text(), 'Title DATA', 'title correctly dataBound')
+    equal($('.popover .popover-content').text(), 'Content BOUND', 'content correctly dataBound')
 
     $popover.bootstrapPopover('hide')
     equal($('.popover').length, 0, 'popover was removed')
