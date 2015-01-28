@@ -339,7 +339,7 @@
       elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
     }
     var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset()
-    var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
+    var scroll    = { scroll: isBody ? { top: document.documentElement.scrollTop || document.body.scrollTop, left: document.documentElement.scrollLeft || document.body.scrollLeft } : { top: $element.scrollTop(), left: $element.scrollLeft() } }
     var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
 
     return $.extend({}, elRect, scroll, outerDims, elOffset)
@@ -361,16 +361,16 @@
     var viewportDimensions = this.getPosition(this.$viewport)
 
     if (/right|left/.test(placement)) {
-      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
-      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
+      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll.top
+      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll.top + actualHeight
       if (topEdgeOffset < viewportDimensions.top) { // top overflow
         delta.top = viewportDimensions.top - topEdgeOffset
       } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
         delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset
       }
     } else {
-      var leftEdgeOffset  = pos.left - viewportPadding
-      var rightEdgeOffset = pos.left + viewportPadding + actualWidth
+      var leftEdgeOffset  = pos.left - viewportPadding - viewportDimensions.scroll.left
+      var rightEdgeOffset = pos.left + viewportPadding - viewportDimensions.scroll.left + actualWidth
       if (leftEdgeOffset < viewportDimensions.left) { // left overflow
         delta.left = viewportDimensions.left - leftEdgeOffset
       } else if (rightEdgeOffset > viewportDimensions.width) { // right overflow
