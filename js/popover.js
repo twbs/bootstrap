@@ -75,11 +75,6 @@
     return (this.$arrow = this.$arrow || this.tip().find('.arrow'))
   }
 
-  Popover.prototype.tip = function () {
-    if (!this.$tip) this.$tip = $(this.options.template)
-    return this.$tip
-  }
-
 
   // POPOVER PLUGIN DEFINITION
   // =========================
