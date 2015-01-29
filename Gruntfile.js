@@ -52,7 +52,8 @@ module.exports = function (grunt) {
     // Task configuration.
     clean: {
       dist: 'dist',
-      docs: 'docs/dist'
+      docs: 'docs/dist',
+      meteor: ['.build.*', 'versions.json', 'package.js']
     },
 
     jshint: {
@@ -384,6 +385,15 @@ module.exports = function (grunt) {
     exec: {
       npmUpdate: {
         command: 'npm update'
+      },
+      // These tasks require Meteor to be installed: curl https://install.meteor.com/ | sh;
+      meteorTest: {
+        // the -noglyph(icons) package only runs a subset of the tests from package.js, so skip it
+        command: 'cp grunt/meteor/package.js .; node_modules/.bin/spacejam --mongo-url mongodb:// test-packages ./'
+      },
+      meteorPublish: {
+        // publish both packages
+        command: 'cp grunt/meteor/package.js .; meteor publish; cp grunt/meteor/package-noglyph.js package.js; meteor publish'
       }
     },
 
@@ -456,6 +466,11 @@ module.exports = function (grunt) {
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
+  // Meteor tasks
+  grunt.registerTask('meteor-test', ['exec:meteorTest', 'clean:meteor']);
+  grunt.registerTask('meteor-publish', ['exec:meteorPublish', 'clean:meteor']);
+  grunt.registerTask('meteor', ['exec:meteorTest', 'exec:meteorPublish', 'clean:meteor']);
+
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
 
@@ -507,4 +522,5 @@ module.exports = function (grunt) {
       done();
     });
   });
+
 };

@@ -59,7 +59,8 @@
     "load-grunt-tasks": "~3.0.0",
     "markdown-it": "^3.0.4",
     "npm-shrinkwrap": "^200.0.0",
-    "time-grunt": "~1.0.0"
+    "time-grunt": "~1.0.0",
+    "spacejam": "^1.1.1"
   },
   "engines": {
     "node": "~0.10.1"
