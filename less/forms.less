@@ -294,6 +294,7 @@ input[type="checkbox"] {
   padding-bottom: (@padding-base-vertical + 1);
   // Remove default margin from `p`
   margin-bottom: 0;
+  min-height: (@line-height-computed + @font-size-base);
 
   &.input-lg,
   &.input-sm {
@@ -323,6 +324,7 @@ input[type="checkbox"] {
     padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
     line-height: @line-height-small;
+    min-height: (@line-height-computed + @font-size-small);
   }
 }
 
@@ -338,6 +340,7 @@ input[type="checkbox"] {
     padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     line-height: @line-height-large;
+    min-height: (@line-height-computed + @font-size-large);
   }
 }
 
