@@ -37,6 +37,25 @@
   }
 }
 
+.list-group-condensed > .list-group-item {
+  position: relative;
+  display: block;
+  padding: 5px 10px;
+  // Place the border on the list items and negative margin up for better styling
+  margin-bottom: -1px;
+  background-color: @list-group-bg;
+  border: 1px solid @list-group-border;
+
+  // Round the first and last items
+  &:first-child {
+    .border-top-radius(@list-group-border-radius);
+  }
+  &:last-child {
+    margin-bottom: 0;
+    .border-bottom-radius(@list-group-border-radius);
+  }
+}
+
 
 // Linked list items
 //
