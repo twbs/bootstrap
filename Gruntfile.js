@@ -27,7 +27,7 @@ module.exports = function (grunt) {
     return { sections: parser.parseFile() };
   };
   var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
-  var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
+  var generateCommonJSModules = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
 
   Object.keys(configBridge.paths).forEach(function (key) {
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
 
     // Task configuration.
     clean: {
-      dist: 'dist',
+      dist: ['dist/css', 'dist/fonts', 'dist/js/*.js'],
       docs: 'docs/dist'
     },
 
@@ -478,9 +478,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
-    var srcFiles = grunt.config.get('concat.bootstrap.src');
-    var destFilepath = 'dist/js/npm.js';
-    generateCommonJSModule(grunt, srcFiles, destFilepath);
+    generateCommonJSModules(grunt);
   });
 
   // Docs task.

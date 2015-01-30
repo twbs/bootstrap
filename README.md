@@ -28,6 +28,20 @@ Four quick start options are available:
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
 - Install with [Bower](http://bower.io): `bower install bootstrap`.
 - Install with [npm](https://www.npmjs.org): `npm install bootstrap`.
+ - If you're using [Browserify](http://browserify.org/) you should require it in this way:
+```javascript
+var jquery = require('jquery');
+require('bootstrap')(jquery);
+
+console.log('Is Bootstrap loaded?');
+console.log(typeof jquery().modal === 'function');
+```
+ 
+```javascript
+// Individual module
+var jquery = require('jquery');
+require('bootstrap-modal')(jquery);
+````
 
 Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
