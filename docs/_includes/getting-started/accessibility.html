@@ -4,11 +4,16 @@
 
   <h3>Skip navigation</h3>
   <p>If your navigation contains many links and comes before the main content in the DOM, add a <code>Skip to main content</code> link before the navigation <a href="http://a11yproject.com/posts/skip-nav-links/">(read why)</a>. Using the <code>.sr-only</code> class will visually hide the skip link, and the <code>.sr-only-focusable</code> class will ensure that the link becomes visible once focused (for sighted keyboard users).</p>
+  <div class="bs-callout bs-callout-danger" id="callout-tables-striped-ie8">
+    <p>Due to a long-standing <a href="https://code.google.com/p/chromium/issues/detail?id=262171" title="Chromium bug tracker - Issue 262171: Focus should cycle from named anchor">bug in Chrome</a> and Internet Explorer, you will need to make sure that the target of your skip link is at least programmatically focusable by adding <code>tabindex="-1"</code>.</p>
+    <p>In addition, you may want to explicitly suppress a visible focus indication on the target (particularly as Chrome currently also sets focus on elements with <code>tabindex="-1"</code> when they are clicked with the mouse) with <code>#content:focus { outline: none; }</code>.</p>
+    <p>Note that this bug will also affect any other in-page links your site may be using, rendering them useless for keyboard users. You may consider adding a similar stop-gap fix to all other named anchors / fragment identifiers that act as link targets.</p>
+  </div>
 {% highlight html %}
 <body>
   <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
   ...
-  <div class="container" id="content">
+  <div class="container" id="content" tabindex="-1">
     <!-- The main page content -->
   </div>
 </body>
