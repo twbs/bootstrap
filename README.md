@@ -28,6 +28,7 @@ Four quick start options are available:
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
 - Install with [Bower](http://bower.io): `bower install bootstrap`.
 - Install with [npm](https://www.npmjs.com): `npm install bootstrap`.
+- Install with [Meteor](https://www.meteor.com/): `meteor add twbs:bootstrap`.
 
 Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
