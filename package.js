@@ -9,7 +9,7 @@ Package.describe({
 
 Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.0');
-	api.use('jquery');
+	api.use('jquery', 'client');
   api.addFiles([
     'dist/fonts/glyphicons-halflings-regular.eot',
     'dist/fonts/glyphicons-halflings-regular.svg',
