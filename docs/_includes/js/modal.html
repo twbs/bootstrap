@@ -218,6 +218,102 @@ $('#myModal').on('shown.bs.modal', function () {
 </div>
 {% endhighlight %}
 
+  <h2 id="modals-grid-system">Using the grid system</h2>
+  <p>To take advantage of the Bootstrap grid system within a modal, just nest <code>.container-fluid</code> within the <code>.modal-body</code> and then use the normal grid system classes within this container.</p>
+<!-- sample modal content -->
+  <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4">.col-md-4</div>
+              <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+              <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-9">
+                Level 1: .col-sm-9
+                <div class="row">
+                  <div class="col-xs-8 col-sm-6">
+                    Level 2: .col-xs-8 .col-sm-6
+                  </div>
+                  <div class="col-xs-4 col-sm-6">
+                    Level 2: .col-xs-4 .col-sm-6
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+<div class="bs-example bs-example-padded-bottom">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#gridSystemModal">
+    Launch demo modal
+  </button>
+</div><!-- /example -->
+{% highlight html %}
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4">.col-md-4</div>
+              <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+              <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-9">
+                Level 1: .col-sm-9
+                <div class="row">
+                  <div class="col-xs-8 col-sm-6">
+                    Level 2: .col-xs-8 .col-sm-6
+                  </div>
+                  <div class="col-xs-4 col-sm-6">
+                    Level 2: .col-xs-4 .col-sm-6
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+{% endhighlight %}
+
   <h2 id="modals-related-target">Varying modal content based on trigger button</h2>
   <p>Have a bunch of buttons that all trigger the same modal, just with slightly different contents? Use <code>event.relatedTarget</code> and <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">HTML <code>data-*</code> attributes</a> (possibly <a href="http://api.jquery.com/data/">via jQuery</a>) to vary the contents of the modal depending on which button was clicked. See the Modal Events docs for details on <code>relatedTarget</code>,</p>
   <div class="bs-example">
