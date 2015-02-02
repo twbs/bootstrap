@@ -218,6 +218,29 @@
 </div>
 {% endhighlight %}
 
+  <h2 id="modals-grid-system">Using the grid system</h2>
+  <p>For modals which would like to take advantage of the Bootstrap grid system, nest <code>.container-fluid</code> within the <code>.modal-body</code> to have access to all the grid system classes</p>
+{% highlight html %}
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        ...
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          ...
+        </div>
+      </div>
+      <div class="modal-footer">
+        ...
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+{% endhighlight %}
+
   <h2 id="modals-related-target">Varying modal content based on trigger button</h2>
   <p>Have a bunch of buttons that all trigger the same modal, just with slightly different contents? Use <code>event.relatedTarget</code> and <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">HTML <code>data-*</code> attributes</a> (possibly <a href="http://api.jquery.com/data/">via jQuery</a>) to vary the contents of the modal depending on which button was clicked. See the Modal Events docs for details on <code>relatedTarget</code>,</p>
   <div class="bs-example">
