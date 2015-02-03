@@ -6542,4 +6542,7 @@ button.close {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.css.map */
+.jumbotron #bg-geometric {
+  background: red;
+}
+/*# sourceMappingURL=jtux.css.map */

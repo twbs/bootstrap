@@ -1,0 +1,136 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+body {
+  padding-top: 55px;
+}
+footer {
+  padding: 30px 0;
+}
+
+.panel.panel.panel-ecourt.panel-ecourt {
+    padding: 1em;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+.row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+}
+
+.row-offcanvas-right {
+    right: 0;
+}
+
+.row-offcanvas-left {
+    left: 0;
+}
+
+.row-offcanvas-right
+.sidebar-offcanvas {
+    right: -23%; /* 6 columns */
+}
+
+.row-offcanvas-left
+.sidebar-offcanvas {
+    left: -23%; /* 6 columns */
+}
+
+.row-offcanvas-right.active {
+    right: 24.5%; /* 6 columns */
+}
+
+.row-offcanvas-left.active {
+    left: 24.5%; /* 6 columns */
+}
+
+.sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 24%; /* 6 columns */
+}
+
+.container {
+    width: 100%;
+
+}
+
+.container.content {
+    width: 136%;
+}
+
+.container.content.active {
+    width: 105%;
+    padding-right: 4em;
+}
+
+.navbar {
+    background: #1a4360;
+}
+
+.navbar-inverse .navbar-nav>.active>a {
+    background: #112D41;
+}
+
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -52%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -52%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+
+  .container.content, .container.content.active {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+}

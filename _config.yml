@@ -10,21 +10,18 @@ source:           docs
 destination:      _gh_pages
 host:             0.0.0.0
 port:             9001
-url:              http://getbootstrap.com
+url:              http://jtux.com
 encoding:         UTF-8
 
 # Custom vars
-current_version:  3.3.2
-repo:             https://github.com/twbs/bootstrap
-sass_repo:        https://github.com/twbs/bootstrap-sass
+current_version:  4.0.0
+repo:             https://github.com/sustain/jtux
+sass_repo:        https://github.com/sustain/jtux-sass
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v3.3.2.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v3.3.2/bootstrap-3.3.2-dist.zip
-  sass:           https://github.com/twbs/bootstrap-sass/archive/v3.3.2.tar.gz
-
-blog:             http://blog.getbootstrap.com
-expo:             http://expo.getbootstrap.com
+  source:         https://github.com/sustain/jtux/archive/v3.3.2.zip
+  dist:           https://github.com/sustain/jtux/releases/download/v3.3.2/bootstrap-3.3.2-dist.zip
+  sass:           https://github.com/sustain/jtux-sass/archive/v3.3.2.tar.gz
 
 cdn:
   css:            https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css

@@ -1,0 +1,50 @@
+<div class="bs-docs-section">
+  <h1 id="whats-included" class="page-header">What's included</h1>
+
+  <p class="lead">jtux is downloadable in two forms, within which you'll find the following directories and files, logically grouping common resources and providing both compiled and minified variations.</p>
+
+  <div class="bs-callout bs-callout-warning" id="jquery-required">
+    <h4>jQuery required</h4>
+    <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="#template">starter template</a>. <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
+  </div>
+
+  <h2 id="whats-included-precompiled">Precompiled JTUX</h2>
+  <p>Once downloaded, unzip the compressed folder to see the structure of (the compiled) JTUX. You'll see something like this:</p>
+<!-- NOTE: This info is intentionally duplicated in the README.
+Copy any changes made here over to the README too. -->
+{% highlight bash %}
+jtux/
+├── css/
+│   ├── jtux.css
+│   ├── jtux.css.map
+│   ├── jtux.min.css
+├── js/
+│   ├── jtux.js
+│   └── jtux.min.js
+└── fonts/
+    ├── glyphicons-halflings-regular.eot
+    ├── glyphicons-halflings-regular.svg
+    ├── glyphicons-halflings-regular.ttf
+    ├── glyphicons-halflings-regular.woff
+    └── glyphicons-halflings-regular.woff2
+{% endhighlight %}
+<!-- NOTE: This info is intentionally duplicated in the README.
+Copy any changes made here over to the README too. -->
+  <p>This is the most basic form of JTUX: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code>jtux.*</code>), as well as compiled and minified CSS and JS (<code>jtux.min.*</code>). CSS <a href="https://developers.google.com/chrome-developer-tools/docs/css-preprocessors">source maps</a> (<code>jtux.*.map</code>) are available for use with certain browsers' developer tools. Fonts from Glyphicons are included, as is the optional JTUX theme.</p>
+
+  <h2 id="whats-included-source">JTUX source code</h2>
+  <p>The JTUX source code download includes the precompiled CSS, JavaScript, and font assets, along with source Less, JavaScript, and documentation. More specifically, it includes the following and more:</p>
+{% highlight bash %}
+jtux/
+├── less/
+├── js/
+├── fonts/
+├── dist/
+│   ├── css/
+│   ├── js/
+│   └── fonts/
+└── docs/
+    └── examples/
+{% endhighlight %}
+  <p>The <code>less/</code>, <code>js/</code>, and <code>fonts/</code> are the source code for our CSS, JS, and icon fonts (respectively). The <code>dist/</code> folder includes everything listed in the precompiled download section above. The <code>docs/</code> folder includes the source code for our documentation, and <code>examples/</code> of JTUX usage. Beyond that, any other included file provides support for packages, license information, and development.</p>
+</div>

@@ -171,6 +171,17 @@ module.exports = function (grunt) {
         },
         src: 'less/theme.less',
         dest: 'dist/css/<%= pkg.name %>-theme.css'
+      },
+      compileJtux: {
+        options: {
+            strictMath: true,
+            sourceMap: true,
+            outputSourceFiles: true,
+            sourceMapURL: 'jtux.css.map',
+            sourceMapFilename: 'dist/css/jtux.css.map'
+        },
+        src: 'less/jtux.less',
+        dest: 'dist/css/jtux.css'
       }
     },
 
@@ -190,6 +201,12 @@ module.exports = function (grunt) {
         },
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
+      jtux: {
+        options: {
+            map: true
+        },
+        src: 'dist/css/jtux.css'
+      },
       docs: {
         src: ['docs/assets/css/anchor.css', 'docs/assets/css/src/docs.css']
       },
@@ -207,7 +224,8 @@ module.exports = function (grunt) {
       },
       dist: [
         'dist/css/bootstrap.css',
-        'dist/css/bootstrap-theme.css'
+        'dist/css/bootstrap-theme.css',
+        'dist/css/jtux.css'
       ],
       examples: [
         'docs/examples/**/*.css'
@@ -234,6 +252,10 @@ module.exports = function (grunt) {
       minifyTheme: {
         src: 'dist/css/<%= pkg.name %>-theme.css',
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+      },
+      minifyJtux: {
+        src: 'dist/css/jtux.css',
+        dest: 'dist/css/jtux.min.css'
       },
       docs: {
         src: [
@@ -453,8 +475,8 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'less:compileJtux']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'autoprefixer:jtux', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'cssmin:minifyJtux']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);

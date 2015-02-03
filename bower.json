@@ -1,7 +1,7 @@
 {
-  "name": "bootstrap",
-  "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "3.3.2",
+  "name": "jtux",
+  "description": "JTUX makes front-end web development for court software faster and easier. It's kept up to date with Bootstrap & Journal Technologies developers for devices of all shapes, and projects of all sizes.",
+  "version": "4.0.0",
   "keywords": [
     "css",
     "js",
@@ -12,7 +12,7 @@
     "framework",
     "web"
   ],
-  "homepage": "http://getbootstrap.com",
+  "homepage": "http://jtux.com",
   "main": [
     "less/bootstrap.less",
     "dist/css/bootstrap.css",

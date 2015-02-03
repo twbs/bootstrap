@@ -1,7 +1,7 @@
 {
-  "name": "bootstrap",
+  "name": "jtux",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "3.3.2",
+  "version": "4.0.0",
   "keywords": [
     "css",
     "less",
@@ -11,8 +11,8 @@
     "framework",
     "web"
   ],
-  "homepage": "http://getbootstrap.com",
-  "author": "Twitter, Inc.",
+  "homepage": "http://jtux.com",
+  "author": "Journal Technologies, Inc.",
   "scripts": {
     "test": "grunt test"
   },
