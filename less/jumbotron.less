@@ -48,3 +48,29 @@
     }
   }
 }
+
+// Alternate jumbotrons
+// --------------------------------------------------
+
+.jumbotron-default {
+  .jumbotron-variant(@jumbotron-default-color; @jumbotron-default-bg);
+}
+.jumbotron-primary {
+  .jumbotron-variant(@jumbotron-primary-color; @jumbotron-primary-bg);
+}
+// Success appears as green
+.jumbotron-success {
+  .jumbotron-variant(@jumbotron-success-color; @jumbotron-success-bg);
+}
+// Info appears as blue-green
+.jumbotron-info {
+  .jumbotron-variant(@jumbotron-info-color; @jumbotron-info-bg);
+}
+// Warning appears as orange
+.jumbotron-warning {
+  .jumbotron-variant(@jumbotron-warning-color; @jumbotron-warning-bg);
+}
+// Danger and error appear as red
+.jumbotron-danger {
+  .jumbotron-variant(@jumbotron-danger-color; @jumbotron-danger-bg);
+}
