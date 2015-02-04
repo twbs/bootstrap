@@ -14,10 +14,12 @@
     float: left;
 
     // Bring the "active" button to the front
-    &:hover,
     &:focus,
     &:active,
     &.active {
+      z-index: 2;
+    }
+    @include hover {
       z-index: 2;
     }
   }

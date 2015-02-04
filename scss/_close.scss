@@ -12,8 +12,7 @@
   text-shadow: $close-text-shadow;
   opacity: .2;
 
-  &:hover,
-  &:focus {
+  @include hover-focus {
     color: $close-color;
     text-decoration: none;
     cursor: pointer;

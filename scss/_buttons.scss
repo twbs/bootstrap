@@ -29,8 +29,9 @@
     }
   }
 
-  &:hover,
-  &:focus,
+  @include hover-focus {
+    text-decoration: none;
+  }
   &.focus {
     text-decoration: none;
   }
@@ -94,21 +95,21 @@
     @include box-shadow(none);
   }
   &,
-  &:hover,
   &:focus,
   &:active {
     border-color: transparent;
   }
-  &:hover,
-  &:focus {
+  @include hover {
+    border-color: transparent;
+  }
+  @include hover-focus {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
     background-color: transparent;
   }
   &:disabled,
   fieldset[disabled] & {
-    &:hover,
-    &:focus {
+    @include hover-focus {
       color: $btn-link-disabled-color;
       text-decoration: none;
     }

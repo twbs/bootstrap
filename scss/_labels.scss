@@ -28,8 +28,7 @@
 
 // Add hover effects, but only for links
 a.label {
-  &:hover,
-  &:focus {
+  @include hover-focus {
     color: $label-link-hover-color;
     text-decoration: none;
     cursor: pointer;

@@ -22,17 +22,22 @@
       border-radius: $pager-border-radius;
     }
 
-    > a:hover,
-    > a:focus {
-      text-decoration: none;
-      background-color: $pager-hover-bg;
+    > a {
+      @include hover-focus {
+        text-decoration: none;
+        background-color: $pager-hover-bg;
+      }
     }
   }
 
   .disabled {
-    > a,
-    > a:hover,
-    > a:focus,
+    > a {
+      @include plain-hover-focus {
+        color: $pager-disabled-color;
+        cursor: $cursor-disabled;
+        background-color: $pager-bg;
+      }
+    }
     > span {
       color: $pager-disabled-color;
       cursor: $cursor-disabled;

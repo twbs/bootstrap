@@ -19,6 +19,7 @@ module.exports = function (grunt) {
   var path = require('path');
   var glob = require('glob');
   var npmShrinkwrap = require('npm-shrinkwrap');
+  var mq4HoverShim = require('mq4-hover-hover-shim');
 
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
@@ -107,6 +108,8 @@ module.exports = function (grunt) {
       },
       bootstrap: {
         src: [
+          'js/hover.js',
+          mq4HoverShim.featureDetector.umdGlobal,
           'js/transition.js',
           'js/alert.js',
           'js/button.js',
@@ -150,6 +153,16 @@ module.exports = function (grunt) {
       options: {
         config: 'scss/.scss-lint.yml',
         reporterOutput: 'scss-lint-report.xml'
+      }
+    },
+
+    postcss: {
+      options: {
+        map: true,
+        processors: [mq4HoverShim.postprocessorFor({hoverSelectorPrefix: '.bs-true-hover '})]
+      },
+      core: {
+        src: 'dist/css/<%= pkg.name %>.css'
       }
     },
 
@@ -392,7 +405,7 @@ module.exports = function (grunt) {
   })(process.env.TWBS_SASS || 'libsass');
   grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
 
-  grunt.registerTask('dist-css', ['sass-compile', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
+  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
