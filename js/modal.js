@@ -248,7 +248,7 @@
   }
 
   Modal.prototype.checkScrollbar = function () {
-    this.bodyIsOverflowing = document.body.scrollHeight > document.documentElement.clientHeight
+    this.bodyIsOverflowing = document.body.scrollHeight > document.documentElement.clientHeight || this.$body.css('overflow-y') === 'scroll'
     this.scrollbarWidth = this.measureScrollbar()
   }
 
