@@ -101,7 +101,7 @@ $(function () {
 
     $target.click()
   })
-  
+
   test('should remove "collapsed" class from all triggers targeting target\'s href when collapse is shown', function (assert) {
     var done = assert.async()
 
@@ -263,7 +263,7 @@ $(function () {
 
     $target.click()
   })
-  
+
   test('should set aria-expanded="true" on all triggers targeting target\'s href when collapse is shown', function (assert) {
     var done = assert.async()
 
