@@ -51,7 +51,7 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-csscomb": "~3.0.0",
     "grunt-exec": "~0.4.6",
-    "grunt-html-validation": "~0.1.18",
+    "grunt-html": "^2.0.0",
     "grunt-jekyll": "~0.4.2",
     "grunt-jscs": "~1.2.0",
     "grunt-postcss": "^0.3.0",
