@@ -19,7 +19,7 @@ module.exports = function (grunt) {
   var path = require('path');
   var glob = require('glob');
   var npmShrinkwrap = require('npm-shrinkwrap');
-  var mq4HoverShim = require('mq4-hover-hover-shim');
+  var mq4HoverShim = require('mq4-hover-shim');
 
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });

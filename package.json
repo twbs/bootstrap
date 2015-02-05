@@ -61,7 +61,7 @@
     "grunt-sed": "~0.1.1",
     "load-grunt-tasks": "~2.0.0",
     "markdown-it": "^3.0.4",
-    "mq4-hover-hover-shim": "0.0.4",
+    "mq4-hover-shim": "^0.1.0",
     "npm-shrinkwrap": "^200.0.0",
     "time-grunt": "~1.0.0"
   },

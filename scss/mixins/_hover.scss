@@ -1,7 +1,7 @@
 @mixin hover {
   @if $use-hover-media-query {
     // See Media Queries Level 4: http://drafts.csswg.org/mediaqueries/#hover
-    // Currently shimmed by https://github.com/cvrebert/mq4-hover-hover-shim
+    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
     @media (hover: hover) {
       &:hover { @content }
     }
