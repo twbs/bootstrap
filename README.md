@@ -100,7 +100,7 @@ Editor preferences are available in the [editor config](https://github.com/twbs/
 
 Keep track of development and community news.
 
-- Follow [@twbootstrap on Twitter](https://twitter.com/twbootstrap).
+- Follow [@getbootstrap on Twitter](https://twitter.com/getbootstrap).
 - Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
