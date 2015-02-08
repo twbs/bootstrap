@@ -202,7 +202,7 @@
 
     var $target = getTargetFromTrigger($this)
     var data    = $target.data('bs.collapse')
-    var option  = data ? 'toggle' : $.extend({}, $this.data())
+    var option  = data ? 'toggle' : $this.data()
 
     Plugin.call($target, option)
   })
