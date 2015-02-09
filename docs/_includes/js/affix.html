@@ -2,7 +2,7 @@
   <h1 id="affix" class="page-header">Affix <small>affix.js</small></h1>
 
   <h2 id="affix-examples">Example</h2>
-  <p>The subnavigation on the right is a live demo of the affix plugin.</p>
+  <p>The affix plugin toggles <code>position: fixed;</code> on and off emulating the effect found with <code>position: sticky;</code>. The subnavigation on the right is a live demo of the affix plugin.</p>
 
   <hr class="bs-docs-separator">
 
@@ -10,7 +10,7 @@
   <p>Use the affix plugin via data attributes or manually with your own JavaScript. <strong class="text-danger">In both situations, you must provide CSS for the positioning and width of your affixed content.</strong></p>
 
   <h3>Positioning via CSS</h3>
-  <p>The affix plugin toggles between three classes, each representing a particular state: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles for these classes yourself (independent of this plugin) to handle the actual positions.</p>
+  <p>The affix plugin toggles between three classes, each representing a particular state: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles, with the exception of <code>position: fixed;</code> on <code>.affix</code>, for these classes yourself (independent of this plugin) to handle the actual positions.</p>
   <p>Here's how the affix plugin works:</p>
   <ol>
     <li>To start, the plugin adds <code>.affix-top</code> to indicate the element is in its top-most position. At this point no CSS positioning is required.</li>
