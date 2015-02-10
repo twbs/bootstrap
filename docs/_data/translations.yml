@@ -8,11 +8,6 @@
   description: Bootstrap på Dansk
   url: http://getbootstrap.dk/
 
-- name: French
-  code: fr
-  description: Bootstrap en Français
-  url: http://www.oneskyapp.com/docs/bootstrap/fr
-
 - name: German
   code: de
   description: Bootstrap auf Deutsch
@@ -27,16 +22,6 @@
   code: ko
   description: Bootstrap 한국어
   url: http://bootstrapk.com/BS3/
-
-- name: Russian
-  code: ru
-  description: Bootstrap по-русски
-  url: http://www.oneskyapp.com/docs/bootstrap/ru
-
-- name: Spanish
-  code: es
-  description: Bootstrap en Español
-  url: http://www.oneskyapp.com/docs/bootstrap/es
 
 - name: Ukrainian
   code: uk
