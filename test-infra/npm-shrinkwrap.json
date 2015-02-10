@@ -1972,8 +1972,8 @@
                       "resolved": "https://registry.npmjs.org/osenv/-/osenv-0.1.0.tgz"
                     },
                     "semver": {
-                      "version": "4.2.0",
-                      "resolved": "https://registry.npmjs.org/semver/-/semver-4.2.0.tgz"
+                      "version": "4.2.2",
+                      "resolved": "https://registry.npmjs.org/semver/-/semver-4.2.2.tgz"
                     },
                     "uid-number": {
                       "version": "0.0.5",
@@ -2486,8 +2486,8 @@
       "resolved": "https://registry.npmjs.org/grunt-exec/-/grunt-exec-0.4.6.tgz"
     },
     "grunt-html": {
-      "version": "2.0.0",
-      "resolved": "https://registry.npmjs.org/grunt-html/-/grunt-html-2.0.0.tgz",
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/grunt-html/-/grunt-html-3.0.0.tgz",
       "dependencies": {
         "async": {
           "version": "0.2.10",
@@ -2532,8 +2532,8 @@
           "resolved": "https://registry.npmjs.org/hooker/-/hooker-0.2.3.tgz"
         },
         "jscs": {
-          "version": "1.11.1",
-          "resolved": "https://registry.npmjs.org/jscs/-/jscs-1.11.1.tgz",
+          "version": "1.11.2",
+          "resolved": "https://registry.npmjs.org/jscs/-/jscs-1.11.2.tgz",
           "dependencies": {
             "cli-table": {
               "version": "0.3.1",
@@ -2744,12 +2744,12 @@
               }
             },
             "xmlbuilder": {
-              "version": "2.4.6",
-              "resolved": "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-2.4.6.tgz",
+              "version": "2.5.1",
+              "resolved": "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-2.5.1.tgz",
               "dependencies": {
-                "lodash-node": {
-                  "version": "2.4.1",
-                  "resolved": "https://registry.npmjs.org/lodash-node/-/lodash-node-2.4.1.tgz"
+                "lodash": {
+                  "version": "3.1.0",
+                  "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.1.0.tgz"
                 }
               }
             }
@@ -3936,8 +3936,8 @@
           "resolved": "https://registry.npmjs.org/safe-json-parse/-/safe-json-parse-2.0.0.tgz"
         },
         "semver": {
-          "version": "4.2.0",
-          "resolved": "https://registry.npmjs.org/semver/-/semver-4.2.0.tgz"
+          "version": "4.2.2",
+          "resolved": "https://registry.npmjs.org/semver/-/semver-4.2.2.tgz"
         },
         "sorted-object": {
           "version": "1.0.0",
