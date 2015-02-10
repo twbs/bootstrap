@@ -139,7 +139,8 @@
 
   <h2 id="carousel-usage">Usage</h2>
 
-  <h3>Multiple carousels</h3>
+  <p>The outer element (<code>class="carousel"</code>) must contain an inner element (<code>class="carousel-inner"</code>) which must contain item elements (<code>class="item"</code>). One and only one item element must be <i>active</i> (<code>class="item active"</code>) on initialization.</p>
+
   <p>Carousels require the use of an <code>id</code> on the outermost container (the <code>.carousel</code>) for carousel controls to function properly. When adding multiple carousels, or when changing a carousel's <code>id</code>, be sure to update the relevant controls.</p>
 
   <h3>Via data attributes</h3>
@@ -208,7 +209,6 @@ $('.carousel').carousel({
 
   <h4>.carousel('pause')</h4>
   <p>Stops the carousel from cycling through items.</p>
-
 
   <h4>.carousel(number)</h4>
   <p>Cycles the carousel to a particular frame (0 based, similar to an array).</p>
