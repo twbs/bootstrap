@@ -1184,8 +1184,8 @@
       }
     },
     "grunt-contrib-cssmin": {
-      "version": "0.12.1",
-      "resolved": "https://registry.npmjs.org/grunt-contrib-cssmin/-/grunt-contrib-cssmin-0.12.1.tgz",
+      "version": "0.11.0",
+      "resolved": "https://registry.npmjs.org/grunt-contrib-cssmin/-/grunt-contrib-cssmin-0.11.0.tgz",
       "dependencies": {
         "chalk": {
           "version": "0.5.1",
