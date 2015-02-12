@@ -31,12 +31,12 @@
 - name: Russian
   code: ru
   description: Bootstrap по-русски
-  url: http://www.oneskyapp.com/docs/bootstrap/ru
+  url: http://www.oneskyapp.com/ru/docs/bootstrap/
 
 - name: Spanish
   code: es
   description: Bootstrap en Español
-  url: http://www.oneskyapp.com/docs/bootstrap/es
+  url: http://www.oneskyapp.com/es/docs/bootstrap/
 
 - name: Ukrainian
   code: uk
