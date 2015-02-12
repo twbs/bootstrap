@@ -16,8 +16,7 @@
   var Collapse = function (element, options) {
     this.$element      = $(element)
     this.options       = $.extend({}, Collapse.DEFAULTS, options)
-    this.$allTriggers  = $(document).find('[data-toggle="collapse"]')
-                            .filter('[href="#' + this.$element[0].id + '"], [data-target="#' + this.$element[0].id + '"]')
+    this.$allTriggers  = $('[data-toggle="collapse"]').filter('[href="#' + this.$element[0].id + '"], [data-target="#' + this.$element[0].id + '"]')
     this.transitioning = null
 
     this.setCurrentTrigger(this.options.trigger)
