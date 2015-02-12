@@ -176,13 +176,13 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     <li>Add custom media queries to change the grid size breakpoints for print media only.</li>
   </ul>
   <p>Also, as of Safari v8.0, fixed-width <code>.container</code>s can cause Safari to use an unusually small font size when printing. See <a href="https://github.com/twbs/bootstrap/issues/14868">#14868</a> for more details. One potential workaround for this is adding the following CSS:</p>
-  {% highlight css %}
+{% highlight css %}
 @media print {
   .container {
     width: auto;
   }
 }
-  {% endhighlight %}
+{% endhighlight %}
 
   <h3 id="support-android-stock-browser">Android stock browser</h3>
   <p>Out of the box, Android 4.1 (and even some newer releases apparently) ship with the Browser app as the default web browser of choice (as opposed to Chrome). Unfortunately, the Browser app has lots of bugs and inconsistencies with CSS in general.</p>
