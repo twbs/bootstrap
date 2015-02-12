@@ -381,4 +381,101 @@ $(function () {
     $regularTarget3.click()
   })
 
+
+
+  test('should propagate collapsed class and aria-expanded changes to all triggers', function (assert) {
+    var done = assert.async()
+
+    var accordionHTML = '<div class="panel-group" id="accordion">'
+        + '<div class="panel"/>'
+        + '<div class="panel"/>'
+        + '<div class="panel"/>'
+        + '</div>'
+    var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.panel')
+
+    var $accordionTarget1 = $('<a data-toggle="collapse" aria-expanded="true" href="#body1" data-parent="#accordion"/>').appendTo('#qunit-fixture')
+    var $regularTarget1 = $('<a data-toggle="collapse" aria-expanded="true" href="#body1"/>').appendTo('#qunit-fixture')
+
+    $('<div id="body1" aria-expanded="true" class="in"/>').appendTo($groups.eq(0))
+
+    var $accordionTarget2 = $('<a class="collapsed" aria-expanded="false" data-toggle="collapse" href="#body2" data-parent="#accordion"/>').appendTo('#qunit-fixture')
+    var $regularTarget2 = $('<a class="collapsed" aria-expanded="false" data-toggle="collapse" href="#body2"/>').appendTo('#qunit-fixture')
+
+    var $body2 = $('<div id="body2" aria-expanded="false"/>').appendTo($groups.eq(1))
+
+    var $accordionTarget3 = $('<a class="collapsed" aria-expanded="false" data-toggle="collapse" href="#body3" data-parent="#accordion"/>').appendTo('#qunit-fixture')
+    var $regularTarget3 = $('<a class="collapsed" aria-expanded="false" data-toggle="collapse" href="#body3"/>').appendTo('#qunit-fixture')
+
+    var $body3 = $('<div id="body3" aria-expanded="false"/>').appendTo($groups.eq(2))
+
+    $body3.one('shown.bs.collapse', function () {
+      equal($accordionTarget3.attr('aria-expanded'), 'true', 'accordion target 3 has aria-expanded="true"')
+      equal($regularTarget3.attr('aria-expanded'),   'true', 'regular target 3 has aria-expanded="true"')
+      ok(!$accordionTarget3.hasClass('collapsed'), 'accordion target 3 does not have class "collapsed"')
+      ok(!$regularTarget3.hasClass('collapsed'), 'regular target 3 does not have class "collapsed"')
+
+      $body2.one('shown.bs.collapse', function () {
+        equal($accordionTarget1.attr('aria-expanded'), 'false', 'accordion target 1 has aria-expanded="false"')
+        equal($regularTarget1.attr('aria-expanded'),   'false', 'regular target 1 has aria-expanded="false"')
+        ok($accordionTarget1.hasClass('collapsed'), 'accordion target 1 does have class "collapsed"')
+        ok($regularTarget1.hasClass('collapsed'), 'regular target 1 does have class "collapsed"')
+
+        equal($accordionTarget2.attr('aria-expanded'), 'true', 'accordion target 2 has aria-expanded="true"')
+        equal($regularTarget2.attr('aria-expanded'),   'true', 'regular target 2 has aria-expanded="true"')
+        ok(!$accordionTarget2.hasClass('collapsed'), 'accordion target 2 does not have class "collapsed"')
+        ok(!$regularTarget2.hasClass('collapsed'), 'regular target 2 does not have class "collapsed"')
+
+        equal($accordionTarget3.attr('aria-expanded'), 'false', 'accordion target 3 has aria-expanded="false"')
+        equal($regularTarget3.attr('aria-expanded'),   'false', 'regular target 3 has aria-expanded="false"')
+        ok($accordionTarget3.hasClass('collapsed'), 'accordion target 3 does have class "collapsed"')
+        ok($regularTarget3.hasClass('collapsed'), 'regular target 3 does have class "collapsed"')
+
+        $body3.one('shown.bs.collapse', function () {
+          equal($accordionTarget1.attr('aria-expanded'), 'false', 'accordion target 1 has aria-expanded="false"')
+          equal($regularTarget1.attr('aria-expanded'),   'false', 'regular target 1 has aria-expanded="false"')
+          ok($accordionTarget1.hasClass('collapsed'), 'accordion target 1 does have class "collapsed"')
+          ok($regularTarget1.hasClass('collapsed'), 'regular target 1 does have class "collapsed"')
+
+          equal($accordionTarget2.attr('aria-expanded'), 'false', 'accordion target 2 has aria-expanded="false"')
+          equal($regularTarget2.attr('aria-expanded'),   'false', 'regular target 2 has aria-expanded="false"')
+          ok($accordionTarget2.hasClass('collapsed'), 'accordion target 2 does have class "collapsed"')
+          ok($regularTarget2.hasClass('collapsed'), 'regular target 2 does have class "collapsed"')
+
+          equal($accordionTarget3.attr('aria-expanded'), 'true', 'accordion target 3 has aria-expanded="true"')
+          equal($regularTarget3.attr('aria-expanded'),   'true', 'regular target 3 has aria-expanded="true"')
+          ok(!$accordionTarget3.hasClass('collapsed'), 'accordion target 3 does not have class "collapsed"')
+          ok(!$regularTarget3.hasClass('collapsed'), 'regular target 3 does not have class "collapsed"')
+
+          $body2.one('shown.bs.collapse', function () {
+            equal($accordionTarget1.attr('aria-expanded'), 'false', 'accordion target 1 has aria-expanded="false"')
+            equal($regularTarget1.attr('aria-expanded'),   'false', 'regular target 1 has aria-expanded="false"')
+            ok($accordionTarget1.hasClass('collapsed'), 'accordion target 1 does have class "collapsed"')
+            ok($regularTarget1.hasClass('collapsed'), 'regular target 1 does have class "collapsed"')
+
+            equal($accordionTarget2.attr('aria-expanded'), 'true', 'accordion target 2 has aria-expanded="true"')
+            equal($regularTarget2.attr('aria-expanded'),   'true', 'regular target 2 has aria-expanded="true"')
+            ok(!$accordionTarget2.hasClass('collapsed'), 'accordion target 2 does not have class "collapsed"')
+            ok(!$regularTarget2.hasClass('collapsed'), 'regular target 2 does not have class "collapsed"')
+
+            equal($accordionTarget3.attr('aria-expanded'), 'true', 'accordion target 3 has aria-expanded="true"')
+            equal($regularTarget3.attr('aria-expanded'),   'true', 'regular target 3 has aria-expanded="true"')
+            ok(!$accordionTarget3.hasClass('collapsed'), 'accordion target 3 does not have class "collapsed"')
+            ok(!$regularTarget3.hasClass('collapsed'), 'regular target 3 does not have class "collapsed"')
+
+            done()
+          })
+
+          $regularTarget2.click()
+        })
+
+        $accordionTarget3.click()
+      })
+
+      $accordionTarget2.click()
+    })
+
+    $regularTarget3.click()
+  })
+
+
 })
