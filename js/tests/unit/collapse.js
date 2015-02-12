@@ -326,4 +326,59 @@ $(function () {
       .bootstrapCollapse('show')
   })
 
+  test('should switch between accordion and regular collapsible behavior', function (assert) {
+    var done = assert.async()
+
+    var accordionHTML = '<div class="panel-group" id="accordion">'
+        + '<div class="panel"/>'
+        + '<div class="panel"/>'
+        + '<div class="panel"/>'
+        + '</div>'
+    var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.panel')
+
+    var $body1 = $('<div id="body1" aria-expanded="true" class="in"/>').appendTo($groups.eq(0))
+
+    var $accordionTarget2 = $('<a class="collapsed" data-toggle="collapse" href="#body2" data-parent="#accordion"/>').appendTo('#qunit-fixture')
+    var $regularTarget2 = $('<a class="collapsed" data-toggle="collapse" href="#body2"/>').appendTo('#qunit-fixture')
+
+    var $body2 = $('<div id="body2" aria-expanded="false"/>').appendTo($groups.eq(1))
+
+    var $accordionTarget3 = $('<a class="collapsed" data-toggle="collapse" href="#body3" data-parent="#accordion"/>').appendTo('#qunit-fixture')
+    var $regularTarget3 = $('<a class="collapsed" data-toggle="collapse" href="#body3"/>').appendTo('#qunit-fixture')
+
+    var $body3 = $('<div id="body3" aria-expanded="false"/>').appendTo($groups.eq(2))
+
+    $body3.one('shown.bs.collapse', function () {
+      ok ($body3.hasClass('in'), 'body 3 is shown by regular target 3')
+
+      $body2.one('shown.bs.collapse', function () {
+        ok(!$body1.hasClass('in'), 'body 1 is hidden by accordion target 2')
+        ok ($body2.hasClass('in'), 'body 2 is shown by accordion target 2')
+        ok(!$body3.hasClass('in'), 'body 3 is hidden by accordion target 2')
+
+        $body3.one('shown.bs.collapse', function () {
+          ok(!$body1.hasClass('in'), 'body 1 is hidden by accordion target 3')
+          ok(!$body2.hasClass('in'), 'body 2 is hidden by accordion target 3')
+          ok ($body3.hasClass('in'), 'body 3 is shown by accordion target 3')
+
+          $body2.one('shown.bs.collapse', function () {
+            ok(!$body1.hasClass('in'), 'body 1 is hidden by regular target 2')
+            ok ($body2.hasClass('in'), 'body 2 is shown by regular target 2')
+            ok ($body3.hasClass('in'), 'body 3 is shown by regular target 2')
+
+            done()
+          })
+
+          $regularTarget2.click()
+        })
+
+        $accordionTarget3.click()
+      })
+
+      $accordionTarget2.click()
+    })
+
+    $regularTarget3.click()
+  })
+
 })
