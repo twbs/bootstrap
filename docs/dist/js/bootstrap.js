@@ -680,7 +680,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Collapse.prototype.setCurrentTrigger = function ($trigger) {
-    this.options.trigger = $trigger;
+    this.options.trigger = $trigger
     this.$trigger = $(this.options.trigger).filter('[href="#' + this.$element[0].id + '"], [data-target="#' + this.$element[0].id + '"]')
     this.options.parent = this.$trigger.data('parent')
 
