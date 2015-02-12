@@ -11,7 +11,7 @@
 - name: French
   code: fr
   description: Bootstrap en Français
-  url: http://www.oneskyapp.com/docs/bootstrap/fr
+  url: http://www.oneskyapp.com/fr/docs/bootstrap/getting-started/
 
 - name: German
   code: de
