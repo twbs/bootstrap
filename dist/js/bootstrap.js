@@ -544,7 +544,8 @@ if (typeof jQuery === 'undefined') {
   var Collapse = function (element, options) {
     this.$element      = $(element)
     this.options       = $.extend({}, Collapse.DEFAULTS, options)
-    this.$allTriggers  = this.getAllTriggers(this.options.trigger)
+    this.$allTriggers  = $(document).find('[data-toggle="collapse"]')
+                            .filter('[href="#' + this.$element[0].id + '"], [data-target="#' + this.$element[0].id + '"]')
     this.transitioning = null
 
     this.setCurrentTrigger(this.options.trigger)
@@ -689,12 +690,6 @@ if (typeof jQuery === 'undefined') {
       this.$parent = null
       this.addAriaAndCollapsedClass(this.$element, this.$allTriggers)
     }
-  }
-
-  Collapse.prototype.getAllTriggers = function ($trigger) {
-    return $(document)
-      .find('[data-toggle="collapse"]')
-      .filter('[href="#' + this.$element[0].id + '"], [data-target="#' + this.$element[0].id + '"]')
   }
 
   function getTargetFromTrigger($trigger) {
