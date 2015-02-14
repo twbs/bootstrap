@@ -71,6 +71,15 @@
   "engines": {
     "node": "~0.10.1"
   },
+  "files": [
+    "dist",
+    "grunt/*.js",
+    "grunt/*.json",
+    "js/*.js",
+    "scss/**/*.scss",
+    "Gruntfile.js",
+    "LICENSE"
+  ],
   "jspm": {
     "main": "js/bootstrap",
     "directories": {
