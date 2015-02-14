@@ -62,7 +62,7 @@
     "time-grunt": "~1.0.0"
   },
   "engines": {
-    "node": "~0.10.1"
+    "node": ">=0.10.1"
   },
   "jspm": {
     "main": "js/bootstrap",
