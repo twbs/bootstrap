@@ -131,6 +131,7 @@ module.exports = function (grunt) {
         checkModified: false,
 
         compilerOpts: {
+           // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
            // jscomp_warning: 'reportUnknownTypes', someday - maybe we will get to 100% typed, this helps track those down
            compilation_level: 'ADVANCED_OPTIMIZATIONS',
            warning_level: 'verbose',
@@ -139,6 +140,7 @@ module.exports = function (grunt) {
                 '"<%= banner %><%= jqueryCheck %><%= jqueryVersionCheck %>'
              + '(function($){%output%})(jQuery);"',
            externs: 'js/externs/*.js'
+           // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
         },
 
         execOpts: {
