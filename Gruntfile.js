@@ -205,7 +205,7 @@ module.exports = function (grunt) {
     postcss: {
       options: {
         map: true,
-        processors: [mq4HoverShim.postprocessorFor({hoverSelectorPrefix: '.bs-true-hover '})]
+        processors: [mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' })]
       },
       core: {
         src: 'dist/css/<%= pkg.name %>.css'
