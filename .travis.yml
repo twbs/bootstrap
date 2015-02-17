@@ -2,7 +2,7 @@ language: node_js
 git:
   depth: 10
 node_js:
-  - "0.10"
+  - "0.12"
 before_install:
   - travis_retry sudo pip install -r test-infra/requirements.txt
   - rvm use 1.9.3 --fuzzy
