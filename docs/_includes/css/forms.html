@@ -261,32 +261,32 @@
   <div class="bs-example" data-example-id="block-checkboxes-radios">
     <form>
       <div class="checkbox">
-        <label>
-          <input type="checkbox" value="">
+        <label for="optionsCheckBox1">
+          <input type="checkbox" id="optionsCheckBox1" value="">
           Option one is this and that&mdash;be sure to include why it's great
         </label>
       </div>
       <div class="checkbox disabled">
-        <label>
-          <input type="checkbox" value="" disabled>
+        <label for="optionsCheckBox2">
+          <input type="checkbox" id="optionsCheckBox2" value="" disabled>
           Option two is disabled
         </label>
       </div>
       <br>
       <div class="radio">
-        <label>
+        <label for="optionsRadios1">
           <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
           Option one is this and that&mdash;be sure to include why it's great
         </label>
       </div>
       <div class="radio">
-        <label>
+        <label for="optionsRadios2">
           <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
           Option two can be something else and selecting it will deselect option one
         </label>
       </div>
       <div class="radio disabled">
-        <label>
+        <label for="optionsRadios3">
           <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
           Option three is disabled
         </label>
@@ -295,32 +295,32 @@
   </div><!-- /.bs-example -->
 {% highlight html %}
 <div class="checkbox">
-  <label>
-    <input type="checkbox" value="">
+  <label for="optionsCheckBox1">
+    <input type="checkbox" id="optionsCheckBox1" value="">
     Option one is this and that&mdash;be sure to include why it's great
   </label>
 </div>
 <div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" disabled>
+  <label for="optionsCheckBox2">
+    <input type="checkbox" id="optionsCheckBox2" value="" disabled>
     Option two is disabled
   </label>
 </div>
 
 <div class="radio">
-  <label>
+  <label for="optionsRadios1">
     <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
     Option one is this and that&mdash;be sure to include why it's great
   </label>
 </div>
 <div class="radio">
-  <label>
+  <label for="optionsRadios2">
     <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
     Option two can be something else and selecting it will deselect option one
   </label>
 </div>
 <div class="radio disabled">
-  <label>
+  <label for="optionsRadios3">
     <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
     Option three is disabled
   </label>
@@ -331,47 +331,47 @@
   <p>Use the <code>.checkbox-inline</code> or <code>.radio-inline</code> classes on a series of checkboxes or radios for controls that appear on the same line.</p>
   <div class="bs-example" data-example-id="inline-checkboxes-radios">
     <form>
-      <label class="checkbox-inline">
+      <label class="checkbox-inline" for="inlineCheckbox1">
         <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
       </label>
-      <label class="checkbox-inline">
+      <label class="checkbox-inline" for="inlineCheckbox2">
         <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
       </label>
-      <label class="checkbox-inline">
+      <label class="checkbox-inline" for="inlineCheckbox3">
         <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
       </label>
     </form>
     <br>
     <form>
-      <label class="radio-inline">
+      <label class="radio-inline" for="inlineRadio2">
         <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
       </label>
-      <label class="radio-inline">
+      <label class="radio-inline" for="inlineRadio2">
         <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
       </label>
-      <label class="radio-inline">
+      <label class="radio-inline" for="inlineRadio3">
         <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
       </label>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
-<label class="checkbox-inline">
+<label class="checkbox-inline" for="inlineCheckbox1">
   <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
 </label>
-<label class="checkbox-inline">
+<label class="checkbox-inline" for="inlineCheckbox2">
   <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
 </label>
-<label class="checkbox-inline">
+<label class="checkbox-inline" for="inlineCheckbox3">
   <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
 </label>
 
-<label class="radio-inline">
+<label class="radio-inline" for="inlineRadio2">
   <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
 </label>
-<label class="radio-inline">
+<label class="radio-inline" for="inlineRadio2">
   <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
 </label>
-<label class="radio-inline">
+<label class="radio-inline" for="inlineRadio3">
   <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
 </label>
 {% endhighlight %}
@@ -381,12 +381,12 @@
   <div class="bs-example" data-example-id="checkboxes-radios-without-labels">
     <form>
       <div class="checkbox">
-        <label>
+        <label for="blankCheckbox">
           <input type="checkbox" id="blankCheckbox" value="option1" aria-label="Checkbox without label text">
         </label>
       </div>
       <div class="radio">
-        <label>
+        <label for="blankRadio1">
           <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="Radio button without label text">
         </label>
       </div>
@@ -394,12 +394,12 @@
   </div>
 {% highlight html %}
 <div class="checkbox">
-  <label>
+  <label for="blankCheckbox">
     <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
   </label>
 </div>
 <div class="radio">
-  <label>
+  <label for="blankRadio1">
     <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
   </label>
 </div>
@@ -908,30 +908,42 @@
   <div class="bs-example bs-example-control-sizing" data-example-id="form-control-height-sizes">
     <form>
       <div class="controls">
-        <input class="form-control input-lg" type="text" placeholder=".input-lg">
-        <input type="text" class="form-control" placeholder="Default input">
-        <input class="form-control input-sm" type="text" placeholder=".input-sm">
+        <label class="sr-only" for="height-size-1">Height Size 1</label>
+        <input class="form-control input-lg" id="height-size-1" type="text" placeholder=".input-lg">
+        <label class="sr-only" for="height-size-2">Height Size 2</label>
+        <input class="form-control" id="height-size-2" type="text" placeholder="Default input">
+        <label class="sr-only" for="height-size-3">Height Size 3</label>
+        <input class="form-control input-sm" id="height-size-3" type="text" placeholder=".input-sm">
 
-        <select class="form-control input-lg">
+        <label class="sr-only" for="height-select-1">Height Select 1</label>
+        <select class="form-control input-lg" id="height-select-1">
           <option value="">.input-lg</option>
         </select>
-        <select class="form-control">
+        <label class="sr-only" for="height-select-2">Height Select 2</label>
+        <select class="form-control" id="height-select-2">
           <option value="">Default select</option>
         </select>
-        <select class="form-control input-sm">
+        <label class="sr-only" for="height-select-3">Height Select 3</label>
+        <select class="form-control input-sm" id="height-select-3">
           <option value="">.input-sm</option>
         </select>
       </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
-<input class="form-control input-lg" type="text" placeholder=".input-lg">
-<input class="form-control" type="text" placeholder="Default input">
-<input class="form-control input-sm" type="text" placeholder=".input-sm">
+<label class="sr-only" for="height-size-1">Height Size 1</label>
+<input class="form-control input-lg" id="height-size-1" type="text" placeholder=".input-lg">
+<label class="sr-only" for="height-size-2">Height Size 2</label>
+<input class="form-control" id="height-size-2" type="text" placeholder="Default input">
+<label class="sr-only" for="height-size-3">Height Size 3</label>
+<input class="form-control input-sm" id="height-size-3" type="text" placeholder=".input-sm">
 
-<select class="form-control input-lg">...</select>
-<select class="form-control">...</select>
-<select class="form-control input-sm">...</select>
+<label class="sr-only" for="height-select-1">Height Select 1</label>
+<select class="form-control input-lg" id="height-select-1">...</select>
+<label class="sr-only" for="height-select-2">Height Select 2</label>
+<select class="form-control" id="height-select-2">...</select>
+<label class="sr-only" for="height-select-3">Height Select 3</label>
+<select class="form-control input-sm" id="height-select-3">...</select>
 {% endhighlight %}
 
   <h3>Horizontal form group sizes</h3>
@@ -976,13 +988,16 @@
     <form>
       <div class="row">
         <div class="col-xs-2">
-          <input type="text" class="form-control" placeholder=".col-xs-2">
+          <label for="col-size-1"></label>
+          <input type="text" class="form-control" id="col-size-1" placeholder=".col-xs-2">
         </div>
         <div class="col-xs-3">
-          <input type="text" class="form-control" placeholder=".col-xs-3">
+          <label for="col-size-2"></label>
+          <input type="text" class="form-control" id="col-size-2" placeholder=".col-xs-3">
         </div>
         <div class="col-xs-4">
-          <input type="text" class="form-control" placeholder=".col-xs-4">
+          <label for="col-size-3"></label>
+          <input type="text" class="form-control" id="col-size-3" placeholder=".col-xs-4">
         </div>
       </div>
     </form>
@@ -990,13 +1005,16 @@
 {% highlight html %}
 <div class="row">
   <div class="col-xs-2">
-    <input type="text" class="form-control" placeholder=".col-xs-2">
+    <label for="col-size-1"></label>
+    <input type="text" class="form-control" id="col-size-1" placeholder=".col-xs-2">
   </div>
   <div class="col-xs-3">
-    <input type="text" class="form-control" placeholder=".col-xs-3">
+  <label for="col-size-2"></label>
+    <input type="text" class="form-control" id="col-size-2" placeholder=".col-xs-3">
   </div>
   <div class="col-xs-4">
-    <input type="text" class="form-control" placeholder=".col-xs-4">
+    <label for="col-size-3"></label>
+    <input type="text" class="form-control" id="col-size-3" placeholder=".col-xs-4">
   </div>
 </div>
 {% endhighlight %}
