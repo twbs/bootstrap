@@ -75,6 +75,11 @@
         border-top: 0;
         .border-top-radius((@panel-border-radius - 1));
       }
+      // Unless it has a background color declared
+      .list-group-item.active:first-child,
+      .list-group-item.disabled:first-child {
+        .border-top-radius(0);
+      }
     }
     // Add border bottom radius for last one
     &:last-child {
