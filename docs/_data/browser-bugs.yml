@@ -80,6 +80,16 @@
 
 -
   browser: >
+    Chrome (OS X)
+  summary: >
+    Caps Lock indicator not shown in `<input type="password">` with `display: block`
+  upstream_bug: >
+    Chromium#460200
+  origin: >
+    Bootstrap#15832
+
+-
+  browser: >
     Chrome
   summary: >
     `display: table;` within `display: block;` forces sibling content to new line.
@@ -169,6 +179,16 @@
     WebKit#139803, Safari#19434933
   origin: >
     Bootstrap#15205
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Caps Lock indicator not shown in `<input type="password">` with `display: block`
+  upstream_bug: >
+    WebKit#141804, Safari#19892433
+  origin: >
+    Bootstrap#15832
 
 -
   browser: >
