@@ -280,12 +280,17 @@ module.exports = function (grunt) {
 
     copy: {
       fonts: {
+        expand: true,
         src: 'fonts/*',
         dest: 'dist/'
       },
       docs: {
-        src: 'dist/*/*',
-        dest: 'docs/'
+        expand: true,
+        cwd: 'dist/',
+        src: [
+          '**/*'
+        ],
+        dest: 'docs/dist/'
       }
     },
 
