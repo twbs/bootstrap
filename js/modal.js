@@ -190,8 +190,10 @@
     if (this.isShown && this.options.backdrop) {
       var doAnimate = $.support.transition && animate
 
-      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-        .appendTo(this.$body)
+      if (!this.$backdrop) {
+        this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+          .appendTo(this.$body)
+      }
 
       this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {
         if (this.ignoreBackdropClick) {
