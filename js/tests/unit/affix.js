@@ -1,13 +1,13 @@
 $(function () {
   'use strict';
 
-  module('affix plugin')
+  QUnit.module('affix plugin')
 
-  test('should be defined on jquery object', function () {
-    ok($(document.body).affix, 'affix method is defined')
+  QUnit.test('should be defined on jquery object', function (assert) {
+    assert.ok($(document.body).affix, 'affix method is defined')
   })
 
-  module('affix', {
+  QUnit.module('affix', {
     setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapAffix = $.fn.affix.noConflict()
@@ -18,24 +18,24 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function () {
-    strictEqual($.fn.affix, undefined, 'affix was set back to undefined (org value)')
+  QUnit.test('should provide no conflict', function (assert) {
+    assert.strictEqual($.fn.affix, undefined, 'affix was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function () {
+  QUnit.test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $affix = $el.bootstrapAffix()
-    ok($affix instanceof $, 'returns jquery collection')
-    strictEqual($affix[0], $el[0], 'collection contains element')
+    assert.ok($affix instanceof $, 'returns jquery collection')
+    assert.strictEqual($affix[0], $el[0], 'collection contains element')
   })
 
-  test('should exit early if element is not visible', function () {
+  QUnit.test('should exit early if element is not visible', function (assert) {
     var $affix = $('<div style="display: none"/>').bootstrapAffix()
     $affix.data('bs.affix').checkPosition()
-    ok(!$affix.hasClass('affix'), 'affix class was not added')
+    assert.ok(!$affix.hasClass('affix'), 'affix class was not added')
   })
 
-  test('should trigger affixed event after affix', function (assert) {
+  QUnit.test('should trigger affixed event after affix', function (assert) {
     var done = assert.async()
 
     var templateHTML = '<div id="affixTarget">'
@@ -53,9 +53,9 @@ $(function () {
 
     $('#affixTarget')
       .on('affix.bs.affix', function () {
-        ok(true, 'affix event fired')
+        assert.ok(true, 'affix event fired')
       }).on('affixed.bs.affix', function () {
-        ok(true, 'affixed event fired')
+        assert.ok(true, 'affixed event fired')
         $('#affixTarget, #affixAfter').remove()
         done()
       })
@@ -69,7 +69,7 @@ $(function () {
     }, 0)
   })
 
-  test('should affix-top when scrolling up to offset when parent has padding', function (assert) {
+  QUnit.test('should affix-top when scrolling up to offset when parent has padding', function (assert) {
     var done = assert.async()
 
     var templateHTML = '<div id="padding-offset" style="padding-top: 20px;">'
@@ -85,7 +85,7 @@ $(function () {
         offset: { top: 120, bottom: 0 }
       })
       .on('affixed-top.bs.affix', function () {
-        ok($('#affixTopTarget').hasClass('affix-top'), 'affix-top class applied')
+        assert.ok($('#affixTopTarget').hasClass('affix-top'), 'affix-top class applied')
         $('#padding-offset').remove()
         done()
       })

@@ -56,7 +56,7 @@
 
   {
     browserName: "iphone",
-    platform: "OS X 10.9",
+    platform: "OS X 10.10",
     version: "8.1"
   },
 
