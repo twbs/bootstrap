@@ -349,6 +349,75 @@ $(function () {
     $carousel.remove()
   })
 
+  test('should set duration per slide from data-duration attribute', function () {
+    var templateHTML = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="item active" data-duration="500">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item" data-duration="1000">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
+    var $carousel = $(templateHTML)
+
+    $carousel.attr('data-interval', 1814)
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel()
+    equal($carousel.data('bs.carousel').duration, 500,'duration should overwrite the global data-interval and default')
+    $carousel.remove()
+
+    $carousel.attr('data-interval', 1814)
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel()
+    $('[data-slide]').last().click() // next
+    equal($carousel.data('bs.carousel').duration, 1000,'different data-duration values should change the duration')
+    $carousel.remove()
+
+    $carousel.attr('data-interval', 1814)
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel()
+    $('[data-slide]').last().click() // next
+    equal($carousel.data('bs.carousel').duration, 1814,'non data-duration should return the data-interval value')
+    $carousel.remove()
+
+    $carousel.attr('data-interval', null)
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel()
+    equal($carousel.data('bs.carousel').duration, 5000,'should return default value')
+    $carousel.remove()
+
+    $carousel.attr('data-interval', false)
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel();
+    equal($carousel.data('bs.carousel').duration, null,'should not overwrite the abillity to turn the sliding off')
+    $carousel.remove()
+  })
+
   test('should skip over non-items when using item indices', function () {
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">'
         + '<div class="carousel-inner">'

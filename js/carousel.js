@@ -20,6 +20,7 @@
     this.paused      =
     this.sliding     =
     this.interval    =
+    this.duration    =
     this.$active     =
     this.$items      = null
 
@@ -59,7 +60,7 @@
 
     this.options.interval
       && !this.paused
-      && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+      && (this.interval = setInterval($.proxy(this.next, this), this.duration = this.$element.find('.item.active').data('duration') || this.options.interval))
 
     return this
   }
