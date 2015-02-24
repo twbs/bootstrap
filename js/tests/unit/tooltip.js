@@ -336,7 +336,9 @@ $(function () {
   })
 
   test('should be placed dynamically with the dynamic placement option', function () {
-    var $style = $('<style> a[rel="tooltip"] { display: inline-block; position: absolute; } </style>')
+    var $style = $('<style> div[role="tooltip"], a[rel="tooltip"] { display: inline-block; position: absolute; } </style>')
+      .appendTo('head')
+
     var $container = $('<div/>')
       .css({
         position: 'absolute',
@@ -344,11 +346,12 @@ $(function () {
         width: 600,
         height: 400,
         top: 0,
-        left: 0
+        left: 0,
+        margin: 600
       })
-      .appendTo(document.body)
+      .appendTo('#qunit-fixture')
 
-    var $topTooltip = $('<div style="left: 0; top: 0;" rel="tooltip" title="Top tooltip">Top Dynamic Tooltip</div>')
+    var $topTooltip = $('<a style="left: 0; top: 0;" rel="tooltip" title="Top tooltip">Top Dynamic Tooltip</a>')
       .appendTo($container)
       .bootstrapTooltip({ placement: 'auto' })
 
@@ -358,17 +361,24 @@ $(function () {
     $topTooltip.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'top positioned tooltip removed from dom')
 
-    var $rightTooltip = $('<div style="right: 0;" rel="tooltip" title="Right tooltip">Right Dynamic Tooltip</div>')
+    var $rightTooltip = $('<a rel="tooltip" title="Right tooltip">Right Dynamic Tooltip</a>')
       .appendTo($container)
       .bootstrapTooltip({ placement: 'right auto' })
 
+    $rightTooltip.bootstrapTooltip('show')
+    ok($('.tooltip').is('.right'), 'left positioned tooltip is positioned right')
+
+    $rightTooltip.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'left positioned tooltip removed from dom')
+
+    $rightTooltip.css('right', 0);
     $rightTooltip.bootstrapTooltip('show')
     ok($('.tooltip').is('.left'), 'right positioned tooltip is dynamically positioned left')
 
     $rightTooltip.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'right positioned tooltip removed from dom')
 
-    var $leftTooltip = $('<div style="left: 0;" rel="tooltip" title="Left tooltip">Left Dynamic Tooltip</div>')
+    var $leftTooltip = $('<a rel="tooltip" title="Left tooltip">Left Dynamic Tooltip</a>')
       .appendTo($container)
       .bootstrapTooltip({ placement: 'auto left' })
 
@@ -378,7 +388,13 @@ $(function () {
     $leftTooltip.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'left positioned tooltip removed from dom')
 
-    $container.remove()
+    $leftTooltip.css('right', 0);
+    $leftTooltip.bootstrapTooltip('show')
+    ok($('.tooltip').is('.left'), 'right positioned tooltip is positioned left')
+
+    $leftTooltip.bootstrapTooltip('hide')
+    equal($('.tooltip').length, 0, 'right positioned tooltip removed from dom')
+
     $style.remove()
   })
 

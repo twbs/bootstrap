@@ -197,7 +197,7 @@
 
         placement = placement == 'bottom' && pos.bottom + actualHeight > containerDim.bottom ? 'top'    :
                     placement == 'top'    && pos.top    - actualHeight < containerDim.top    ? 'bottom' :
-                    placement == 'right'  && pos.right  + actualWidth  > containerDim.width  ? 'left'   :
+                    placement == 'right'  && pos.right  + actualWidth  > containerDim.right  ? 'left'   :
                     placement == 'left'   && pos.left   - actualWidth  < containerDim.left   ? 'right'  :
                     placement
 
