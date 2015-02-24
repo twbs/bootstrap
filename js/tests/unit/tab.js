@@ -38,10 +38,10 @@ $(function () {
     $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
 
     $(tabsHTML).find('li:last a').bootstrapTab('show')
-    assert.equal($('#qunit-fixture').find('.active').attr('id'), 'profile')
+    assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
 
     $(tabsHTML).find('li:first a').bootstrapTab('show')
-    assert.equal($('#qunit-fixture').find('.active').attr('id'), 'home')
+    assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
   QUnit.test('should activate element by tab id', function (assert) {
@@ -53,10 +53,10 @@ $(function () {
     $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
 
     $(pillsHTML).find('li:last a').bootstrapTab('show')
-    assert.equal($('#qunit-fixture').find('.active').attr('id'), 'profile')
+    assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
 
     $(pillsHTML).find('li:first a').bootstrapTab('show')
-    assert.equal($('#qunit-fixture').find('.active').attr('id'), 'home')
+    assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
   QUnit.test('should not fire shown when show is prevented', function (assert) {
@@ -92,10 +92,10 @@ $(function () {
       .end()
       .find('ul > li:last a')
         .on('show.bs.tab', function (e) {
-          assert.equal(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+          assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
         })
         .on('shown.bs.tab', function (e) {
-          assert.equal(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+          assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
           done()
         })
         .bootstrapTab('show')
@@ -166,10 +166,10 @@ $(function () {
     $(tabsHTML)
       .find('li:first a')
         .on('hide.bs.tab', function (e) {
-          assert.equal(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
+          assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
         })
         .on('hidden.bs.tab', function (e) {
-          assert.equal(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
+          assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
           done()
         })
         .bootstrapTab('show')
@@ -186,20 +186,20 @@ $(function () {
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
     $tabs.find('li:first a').bootstrapTab('show')
-    assert.equal($tabs.find('.active a').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true')
-    assert.equal($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false')
+    assert.strictEqual($tabs.find('.active a').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true')
+    assert.strictEqual($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false')
 
     $tabs.find('li:last a').click()
-    assert.equal($tabs.find('.active a').attr('aria-expanded'), 'true', 'after click, shown tab has aria-expanded = true')
-    assert.equal($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after click, hidden tab has aria-expanded = false')
+    assert.strictEqual($tabs.find('.active a').attr('aria-expanded'), 'true', 'after click, shown tab has aria-expanded = true')
+    assert.strictEqual($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after click, hidden tab has aria-expanded = false')
 
     $tabs.find('li:first a').bootstrapTab('show')
-    assert.equal($tabs.find('.active a').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true')
-    assert.equal($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false')
+    assert.strictEqual($tabs.find('.active a').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true')
+    assert.strictEqual($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false')
 
     $tabs.find('li:first a').click()
-    assert.equal($tabs.find('.active a').attr('aria-expanded'), 'true', 'after second show event, shown tab still has aria-expanded = true')
-    assert.equal($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after second show event, hidden tab has aria-expanded = false')
+    assert.strictEqual($tabs.find('.active a').attr('aria-expanded'), 'true', 'after second show event, shown tab still has aria-expanded = true')
+    assert.strictEqual($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after second show event, hidden tab has aria-expanded = false')
   })
 
 })

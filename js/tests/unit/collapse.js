@@ -63,7 +63,7 @@ $(function () {
 
     $('<div class="collapse" style="height: 0px"/>')
       .on('show.bs.collapse', function () {
-        assert.equal(this.style.height, '0px', 'height is 0px')
+        assert.strictEqual(this.style.height, '0px', 'height is 0px')
       })
       .on('shown.bs.collapse', function () {
         assert.strictEqual(this.style.height, '', 'height is auto')
@@ -208,7 +208,7 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        assert.equal($target.attr('aria-expanded'), 'true', 'aria-expanded on target is "true"')
+        assert.strictEqual($target.attr('aria-expanded'), 'true', 'aria-expanded on target is "true"')
         done()
       })
 
@@ -223,7 +223,7 @@ $(function () {
     $('<div id="test1" class="in"/>')
       .appendTo('#qunit-fixture')
       .on('hidden.bs.collapse', function () {
-        assert.equal($target.attr('aria-expanded'), 'false', 'aria-expanded on target is "false"')
+        assert.strictEqual($target.attr('aria-expanded'), 'false', 'aria-expanded on target is "false"')
         done()
       })
 
@@ -253,9 +253,9 @@ $(function () {
     $('<div id="body3" aria-expanded="false"/>')
       .appendTo($groups.eq(2))
       .on('shown.bs.collapse', function () {
-        assert.equal($target1.attr('aria-expanded'), 'false', 'inactive target 1 has aria-expanded="false"')
-        assert.equal($target2.attr('aria-expanded'), 'false', 'inactive target 2 has aria-expanded="false"')
-        assert.equal($target3.attr('aria-expanded'), 'true', 'active target 3 has aria-expanded="false"')
+        assert.strictEqual($target1.attr('aria-expanded'), 'false', 'inactive target 1 has aria-expanded="false"')
+        assert.strictEqual($target2.attr('aria-expanded'), 'false', 'inactive target 2 has aria-expanded="false"')
+        assert.strictEqual($target3.attr('aria-expanded'), 'true', 'active target 3 has aria-expanded="false"')
 
         done()
       })

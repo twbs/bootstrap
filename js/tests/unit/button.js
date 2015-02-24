@@ -31,11 +31,11 @@ $(function () {
 
   QUnit.test('should return set state to loading', function (assert) {
     var $btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
-    assert.equal($btn.html(), 'mdo', 'btn text equals mdo')
+    assert.strictEqual($btn.html(), 'mdo', 'btn text equals mdo')
     $btn.bootstrapButton('loading')
     var done = assert.async()
     setTimeout(function () {
-      assert.equal($btn.html(), 'fat', 'btn text equals fat')
+      assert.strictEqual($btn.html(), 'fat', 'btn text equals fat')
       assert.ok($btn[0].hasAttribute('disabled'), 'btn is disabled')
       assert.ok($btn.hasClass('disabled'), 'btn has disabled class')
       done()
@@ -44,18 +44,18 @@ $(function () {
 
   QUnit.test('should return reset state', function (assert) {
     var $btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
-    assert.equal($btn.html(), 'mdo', 'btn text equals mdo')
+    assert.strictEqual($btn.html(), 'mdo', 'btn text equals mdo')
     $btn.bootstrapButton('loading')
     var doneOne = assert.async()
     setTimeout(function () {
-      assert.equal($btn.html(), 'fat', 'btn text equals fat')
+      assert.strictEqual($btn.html(), 'fat', 'btn text equals fat')
       assert.ok($btn[0].hasAttribute('disabled'), 'btn is disabled')
       assert.ok($btn.hasClass('disabled'), 'btn has disabled class')
       doneOne()
       var doneTwo = assert.async()
       $btn.bootstrapButton('reset')
       setTimeout(function () {
-        assert.equal($btn.html(), 'mdo', 'btn text equals mdo')
+        assert.strictEqual($btn.html(), 'mdo', 'btn text equals mdo')
         assert.ok(!$btn[0].hasAttribute('disabled'), 'btn is not disabled')
         assert.ok(!$btn.hasClass('disabled'), 'btn does not have disabled class')
         doneTwo()
@@ -65,18 +65,18 @@ $(function () {
 
   QUnit.test('should work with an empty string as reset state', function (assert) {
     var $btn = $('<button class="btn" data-loading-text="fat"/>')
-    assert.equal($btn.html(), '', 'btn text equals ""')
+    assert.strictEqual($btn.html(), '', 'btn text equals ""')
     $btn.bootstrapButton('loading')
     var doneOne = assert.async()
     setTimeout(function () {
-      assert.equal($btn.html(), 'fat', 'btn text equals fat')
+      assert.strictEqual($btn.html(), 'fat', 'btn text equals fat')
       assert.ok($btn[0].hasAttribute('disabled'), 'btn is disabled')
       assert.ok($btn.hasClass('disabled'), 'btn has disabled class')
       doneOne()
       var doneTwo = assert.async()
       $btn.bootstrapButton('reset')
       setTimeout(function () {
-        assert.equal($btn.html(), '', 'btn text equals ""')
+        assert.strictEqual($btn.html(), '', 'btn text equals ""')
         assert.ok(!$btn[0].hasAttribute('disabled'), 'btn is not disabled')
         assert.ok(!$btn.hasClass('disabled'), 'btn does not have disabled class')
         doneTwo()
@@ -104,9 +104,9 @@ $(function () {
 
   QUnit.test('should toggle aria-pressed', function (assert) {
     var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
-    assert.equal($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
     $btn.bootstrapButton('toggle')
-    assert.equal($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
+    assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
   QUnit.test('should toggle aria-pressed when btn children are clicked', function (assert) {
@@ -115,9 +115,9 @@ $(function () {
     $btn
       .append($inner)
       .appendTo('#qunit-fixture')
-    assert.equal($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
     $inner.click()
-    assert.equal($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
+    assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
   QUnit.test('should toggle active when btn children are clicked within btn-group', function (assert) {

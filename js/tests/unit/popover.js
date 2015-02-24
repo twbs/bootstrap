@@ -36,7 +36,7 @@ $(function () {
 
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
     $popover.bootstrapPopover('hide')
-    assert.equal($('.popover').length, 0, 'popover removed')
+    assert.strictEqual($('.popover').length, 0, 'popover removed')
   })
 
   QUnit.test('should store popover instance in popover data object', function (assert) {
@@ -70,11 +70,11 @@ $(function () {
     $popover.bootstrapPopover('show')
 
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.equal($('.popover .popover-title').text(), '@fat', 'title correctly inserted')
-    assert.equal($('.popover .popover-content').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
+    assert.strictEqual($('.popover .popover-title').text(), '@fat', 'title correctly inserted')
+    assert.strictEqual($('.popover .popover-content').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
-    assert.equal($('.popover').length, 0, 'popover was removed')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
   QUnit.test('should not duplicate HTML object', function (assert) {
@@ -93,14 +93,14 @@ $(function () {
     assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
-    assert.equal($('.popover').length, 0, 'popover was removed')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
 
     $popover.bootstrapPopover('show')
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
     assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
-    assert.equal($('.popover').length, 0, 'popover was removed')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
   QUnit.test('should get title and content from attributes', function (assert) {
@@ -110,11 +110,11 @@ $(function () {
       .bootstrapPopover('show')
 
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.equal($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
-    assert.equal($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+    assert.strictEqual($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
+    assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
-    assert.equal($('.popover').length, 0, 'popover was removed')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
 
@@ -128,11 +128,11 @@ $(function () {
       .bootstrapPopover('show')
 
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.equal($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
-    assert.equal($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+    assert.strictEqual($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
+    assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
-    assert.equal($('.popover').length, 0, 'popover was removed')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
   QUnit.test('should respect custom template', function (assert) {
@@ -150,7 +150,7 @@ $(function () {
     assert.ok($('.popover').hasClass('foobar'), 'custom class is present')
 
     $popover.bootstrapPopover('hide')
-    assert.equal($('.popover').length, 0, 'popover was removed')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
   QUnit.test('should destroy popover', function (assert) {
@@ -162,14 +162,14 @@ $(function () {
 
     assert.ok($popover.data('bs.popover'), 'popover has data')
     assert.ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event')
-    assert.equal($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event')
+    assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event')
 
     $popover.bootstrapPopover('show')
     $popover.bootstrapPopover('destroy')
 
     assert.ok(!$popover.hasClass('in'), 'popover is hidden')
     assert.ok(!$popover.data('popover'), 'popover does not have data')
-    assert.equal($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo')
+    assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo')
     assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events')
   })
 
@@ -185,7 +185,7 @@ $(function () {
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
 
     $div.find('a').click()
-    assert.equal($('.popover').length, 0, 'popover was removed')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
   QUnit.test('should detach popover content rather than removing it so that event handlers are left intact', function (assert) {

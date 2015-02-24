@@ -38,7 +38,7 @@ $(function () {
 
     $alert.find('.close').click()
 
-    assert.equal($alert.hasClass('in'), false, 'remove .in class on .close click')
+    assert.strictEqual($alert.hasClass('in'), false, 'remove .in class on .close click')
   })
 
   QUnit.test('should remove element when clicking .close', function (assert) {
@@ -52,7 +52,7 @@ $(function () {
 
     $alert.find('.close').click()
 
-    assert.equal($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
+    assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
   })
 
   QUnit.test('should not fire closed when close is prevented', function (assert) {

@@ -88,7 +88,7 @@ $(function () {
     assert.ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
 
     $tooltip.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed')
   })
 
   QUnit.test('should allow html entities', function (assert) {
@@ -100,7 +100,7 @@ $(function () {
     assert.notEqual($('.tooltip b').length, 0, 'b tag was inserted')
 
     $tooltip.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed')
   })
 
   QUnit.test('should respect custom classes', function (assert) {
@@ -112,7 +112,7 @@ $(function () {
     assert.ok($('.tooltip').hasClass('some-class'), 'custom class is present')
 
     $tooltip.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed')
   })
 
   QUnit.test('should fire show event', function (assert) {
@@ -209,14 +209,14 @@ $(function () {
 
     assert.ok($tooltip.data('bs.tooltip'), 'tooltip has data')
     assert.ok($._data($tooltip[0], 'events').mouseover && $._data($tooltip[0], 'events').mouseout, 'tooltip has hover events')
-    assert.equal($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip has extra click.foo event')
+    assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip has extra click.foo event')
 
     $tooltip.bootstrapTooltip('show')
     $tooltip.bootstrapTooltip('destroy')
 
     assert.ok(!$tooltip.hasClass('in'), 'tooltip is hidden')
     assert.ok(!$._data($tooltip[0], 'bs.tooltip'), 'tooltip does not have data')
-    assert.equal($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip still has click.foo')
+    assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip still has click.foo')
     assert.ok(!$._data($tooltip[0], 'events').mouseover && !$._data($tooltip[0], 'events').mouseout, 'tooltip does not have hover events')
   })
 
@@ -232,7 +232,7 @@ $(function () {
     assert.ok($('.tooltip').is('.fade.in'), 'tooltip is faded in')
 
     $div.find('a').click()
-    assert.equal($('.tooltip').length, 0, 'tooltip was removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip was removed from dom')
   })
 
   QUnit.test('should show tooltip when toggle is called', function (assert) {
@@ -261,10 +261,10 @@ $(function () {
       .bootstrapTooltip('show')
 
     assert.notEqual($('body > .tooltip').length, 0, 'tooltip is direct descendant of body')
-    assert.equal($('#qunit-fixture > .tooltip').length, 0, 'tooltip is not in parent')
+    assert.strictEqual($('#qunit-fixture > .tooltip').length, 0, 'tooltip is not in parent')
 
     $tooltip.bootstrapTooltip('hide')
-    assert.equal($('body > .tooltip').length, 0, 'tooltip was removed from dom')
+    assert.strictEqual($('body > .tooltip').length, 0, 'tooltip was removed from dom')
   })
 
   QUnit.test('should add position class before positioning so that position-specific styles are taken into account', function (assert) {
@@ -301,10 +301,10 @@ $(function () {
       .bootstrapTooltip()
 
     $tooltip.bootstrapTooltip('show')
-    assert.equal($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title from title attribute is set')
+    assert.strictEqual($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title from title attribute is set')
 
     $tooltip.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
   })
 
   QUnit.test('should prefer title attribute over title option', function (assert) {
@@ -315,10 +315,10 @@ $(function () {
       })
 
     $tooltip.bootstrapTooltip('show')
-    assert.equal($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title is set from title attribute while preferred over title option')
+    assert.strictEqual($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title is set from title attribute while preferred over title option')
 
     $tooltip.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
   })
 
   QUnit.test('should use title option', function (assert) {
@@ -329,10 +329,10 @@ $(function () {
       })
 
     $tooltip.bootstrapTooltip('show')
-    assert.equal($('.tooltip').children('.tooltip-inner').text(), 'This is a tooltip with some content', 'title from title option is set')
+    assert.strictEqual($('.tooltip').children('.tooltip-inner').text(), 'This is a tooltip with some content', 'title from title option is set')
 
     $tooltip.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
   })
 
   QUnit.test('should be placed dynamically with the dynamic placement option', function (assert) {
@@ -356,7 +356,7 @@ $(function () {
     assert.ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom')
 
     $topTooltip.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'top positioned tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'top positioned tooltip removed from dom')
 
     var $rightTooltip = $('<div style="right: 0;" rel="tooltip" title="Right tooltip">Right Dynamic Tooltip</div>')
       .appendTo($container)
@@ -366,7 +366,7 @@ $(function () {
     assert.ok($('.tooltip').is('.left'), 'right positioned tooltip is dynamically positioned left')
 
     $rightTooltip.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'right positioned tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'right positioned tooltip removed from dom')
 
     var $leftTooltip = $('<div style="left: 0;" rel="tooltip" title="Left tooltip">Left Dynamic Tooltip</div>')
       .appendTo($container)
@@ -376,7 +376,7 @@ $(function () {
     assert.ok($('.tooltip').is('.right'), 'left positioned tooltip is dynamically positioned right')
 
     $leftTooltip.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'left positioned tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'left positioned tooltip removed from dom')
 
     $container.remove()
     $style.remove()
@@ -402,7 +402,7 @@ $(function () {
     assert.ok($('.tooltip').is('.top'), 'top positioned tooltip is dynamically positioned to top')
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $styles.remove()
   })
@@ -427,7 +427,7 @@ $(function () {
     assert.ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom')
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $styles.remove()
   })
@@ -453,7 +453,7 @@ $(function () {
     assert.ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied')
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $styles.remove()
   })
@@ -479,7 +479,7 @@ $(function () {
     assert.ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $styles.remove()
   })
@@ -509,7 +509,7 @@ $(function () {
     assert.ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied')
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $styles.remove()
   })
@@ -535,7 +535,7 @@ $(function () {
     assert.ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied')
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $styles.remove()
   })
@@ -559,10 +559,10 @@ $(function () {
       })
 
     $target.bootstrapTooltip('show')
-    assert.equal(Math.round($container.find('.tooltip').offset().top), 12)
+    assert.strictEqual(Math.round($container.find('.tooltip').offset().top), 12)
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $styles.remove()
   })
@@ -590,7 +590,7 @@ $(function () {
     assert.strictEqual(Math.round($tooltip.offset().top), Math.round($(window).height() - 12 - $tooltip[0].offsetHeight))
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $container.remove()
     $styles.remove()
@@ -618,7 +618,7 @@ $(function () {
     assert.strictEqual(Math.round($container.find('.tooltip').offset().left), 12)
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $container.remove()
     $styles.remove()
@@ -647,7 +647,7 @@ $(function () {
     assert.strictEqual(Math.round($tooltip.offset().left), Math.round($(window).width() - 12 - $tooltip[0].offsetWidth))
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $container.remove()
     $styles.remove()
@@ -674,7 +674,7 @@ $(function () {
     assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].offsetWidth))
 
     $target.bootstrapTooltip('hide')
-    assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
 
     $container.remove()
     $styles.remove()
@@ -927,7 +927,7 @@ $(function () {
         $styles.remove()
         assert.ok(Math.abs(offset.left - 88) <= 1, 'tooltip has correct horizontal location')
         $circle.bootstrapTooltip('hide')
-        assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+        assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
         done()
       })
       .bootstrapTooltip({ container: 'body', placement: 'top', trigger: 'manual' })
@@ -964,7 +964,7 @@ $(function () {
       .on('hidden.bs.tooltip', function () {
         $styles.remove()
         $(this).remove()
-        assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+        assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
         done()
       })
       .bootstrapTooltip({
@@ -999,7 +999,7 @@ $(function () {
     var currentUid = $('#tt-content').text()
 
     $('#tt-content').trigger('mouseenter')
-    assert.equal(currentUid, $('#tt-content').text())
+    assert.strictEqual(currentUid, $('#tt-content').text())
   })
 
   QUnit.test('should not reload the tooltip if the mouse leaves and re-enters before hiding', function (assert) {
@@ -1027,14 +1027,14 @@ $(function () {
     var currentUid = $('#tt-content').text()
 
     $('#tt-outer').trigger('mouseleave')
-    assert.equal(currentUid, $('#tt-content').text())
+    assert.strictEqual(currentUid, $('#tt-content').text())
 
     assert.ok(obj.hoverState == 'out', 'the tooltip hoverState should be set to "out"')
 
     $('#tt-content').trigger('mouseenter')
     assert.ok(obj.hoverState == 'in', 'the tooltip hoverState should be set to "in"')
 
-    assert.equal(currentUid, $('#tt-content').text())
+    assert.strictEqual(currentUid, $('#tt-content').text())
   })
 
   QUnit.test('should position arrow correctly when tooltip is moved to not appear offscreen', function (assert) {
@@ -1058,7 +1058,7 @@ $(function () {
       .on('hidden.bs.tooltip', function () {
         $styles.remove()
         $(this).remove()
-        assert.equal($('.tooltip').length, 0, 'tooltip removed from dom')
+        assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
         done()
       })
       .bootstrapTooltip({
