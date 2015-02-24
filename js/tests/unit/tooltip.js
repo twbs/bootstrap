@@ -637,14 +637,13 @@ $(function () {
       .bootstrapTooltip({
         placement: 'bottom',
         viewport: {
-          selector: 'body',
-          padding: 12
+          selector: 'body'
         }
       })
 
     $target.bootstrapTooltip('show')
     var $tooltip = $container.find('.tooltip')
-    strictEqual(Math.round($tooltip.offset().left), Math.round($(window).width() - 12 - $tooltip[0].offsetWidth))
+    strictEqual(Math.round($tooltip.offset().left), Math.round(document.documentElement.scrollWidth - $tooltip[0].offsetWidth))
 
     $target.bootstrapTooltip('hide')
     equal($('.tooltip').length, 0, 'tooltip removed from dom')
