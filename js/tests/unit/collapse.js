@@ -80,7 +80,7 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        ok(!$target.hasClass('collapsed'))
+        ok(!$target.hasClass('collapsed'), 'target does not have class collapsed')
         done()
       })
 
@@ -95,7 +95,41 @@ $(function () {
     $('<div id="test1" class="in"/>')
       .appendTo('#qunit-fixture')
       .on('hidden.bs.collapse', function () {
-        ok($target.hasClass('collapsed'))
+        ok($target.hasClass('collapsed'), 'target has class collapsed')
+        done()
+      })
+
+    $target.click()
+  })
+
+  test('should remove "collapsed" class from all triggers targeting target\'s href when collapse is shown', function (assert) {
+    var done = assert.async()
+
+    var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
+    var $alt = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1"/>')
+      .appendTo('#qunit-fixture')
+      .on('shown.bs.collapse', function () {
+        ok(!$target.hasClass('collapsed'), 'target trigger does not have class collapsed')
+        ok(!$alt.hasClass('collapsed'), 'alt trigger does not have class collapsed')
+        done()
+      })
+
+    $target.click()
+  })
+
+  test('should add "collapsed" class to all triggers targeting target\'s href when collapse is hidden', function (assert) {
+    var done = assert.async()
+
+    var $target = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
+    var $alt = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1" class="in"/>')
+      .appendTo('#qunit-fixture')
+      .on('hidden.bs.collapse', function () {
+        ok($target.hasClass('collapsed'), 'target has class collapsed')
+        ok($alt.hasClass('collapsed'), 'alt trigger has class collapsed')
         done()
       })
 
@@ -224,6 +258,40 @@ $(function () {
       .appendTo('#qunit-fixture')
       .on('hidden.bs.collapse', function () {
         equal($target.attr('aria-expanded'), 'false', 'aria-expanded on target is "false"')
+        done()
+      })
+
+    $target.click()
+  })
+
+  test('should set aria-expanded="true" on all triggers targeting target\'s href when collapse is shown', function (assert) {
+    var done = assert.async()
+
+    var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1" aria-expanded="false"/>').appendTo('#qunit-fixture')
+    var $alt = $('<a data-toggle="collapse" class="collapsed" href="#test1" aria-expanded="false"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1"/>')
+      .appendTo('#qunit-fixture')
+      .on('shown.bs.collapse', function () {
+        equal($target.attr('aria-expanded'), 'true', 'aria-expanded on target is "true"')
+        equal($alt.attr('aria-expanded'), 'true', 'aria-expanded on alt is "true"')
+        done()
+      })
+
+    $target.click()
+  })
+
+  test('should set aria-expanded="false" on all triggers targeting target\'s href when collapse is hidden', function (assert) {
+    var done = assert.async()
+
+    var $target = $('<a data-toggle="collapse" href="#test1" aria-expanded="true"/>').appendTo('#qunit-fixture')
+    var $alt = $('<a data-toggle="collapse" href="#test1" aria-expanded="true"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1" class="in"/>')
+      .appendTo('#qunit-fixture')
+      .on('hidden.bs.collapse', function () {
+        equal($target.attr('aria-expanded'), 'false', 'aria-expanded on target is "false"')
+        equal($alt.attr('aria-expanded'), 'false', 'aria-expanded on alt is "false"')
         done()
       })
 
