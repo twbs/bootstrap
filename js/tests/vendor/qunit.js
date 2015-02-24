@@ -1,12 +1,12 @@
 /*!
- * QUnit 1.17.0
+ * QUnit 1.17.1
  * http://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2015-01-19T11:58Z
+ * Date: 2015-01-20T19:39Z
  */
 
 (function( window ) {
@@ -2522,7 +2522,7 @@ function toolbarModuleFilter() {
 		moduleFilter = document.createElement( "span" ),
 		moduleFilterHtml = toolbarModuleFilterHtml();
 
-	if ( !moduleFilterHtml ) {
+	if ( !toolbar || !moduleFilterHtml ) {
 		return false;
 	}
 
