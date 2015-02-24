@@ -57,10 +57,11 @@
             </div>
             <div class="collapse navbar-collapse" id="main-nav">
               <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.html">Inicio</a></li>
                 <li class="active"><a href="comenzar.html">Comenzar</a></li>
                 <li><a href="estilos.html">Estilos</a></li>
                 <li><a href="componentes.html">Componentes</a></li>
-                <li class="disabled"><a href="#">Lineamientos</a></li>
+                <!-- <li class="disabled"><a href="#">Lineamientos</a></li> -->
                 <li><a href="old/index.html" target="blank">BAstrap 0.5</a></li>
               </ul>
             </div>
@@ -99,7 +100,7 @@
         <li><a href="#descargas-base">Descargas</a>
           <ul class="nav">
             <li><a href="#descargas-base">Descargar BAstrap3</a></li>
-            <li><a href="#descargas-ejemplos">Ejemplos</a></li>
+            <li><a href="#como-usarlo">Uso de BAstrap3</a></li>
           </ul>
         </li>
         <li><a href="#grilla-base">Grilla</a>
@@ -148,12 +149,14 @@
     <p>Formato y estética de elementos tipográficos, tablas, formularios, navegación, botones y contenido.</p>
     <h3><a href="componentes.html">Componentes</a></h3>
     <p>Elementos compuestos con funciones especiales. Algunos funcionando con JavaScript.</p>
-    <h3><a href="lineamientos.html">Lineamientos</a></h3>
-    <p>Guía de diseño web abarcando conceptos de estética, comunicación y función. UIkit para Illustrator y Photoshop, manual de marca, logos y otros recursos.</p>
+    <!-- <h3><a href="lineamientos.html">Lineamientos</a></h3> -->
+    <!-- <p>Guía de diseño web abarcando conceptos de estética, comunicación y función. UIkit para Illustrator y Photoshop, manual de marca, logos y otros recursos.</p> -->
     <h3><a href="old/index.html" target="blank">BAstrap 0.5</a></h3>
     <p>Versión original de BAstrap, vigente en algunos sitios.</p>
   </div>
 </div>
+
+<!-- Descarga y Ejemplos -->
 
 <a id="descargas-base" class="anchor"></a>
 
@@ -165,8 +168,59 @@
     <p class="lead">Descargando el siguiente archivo podés comenzar a usar <strong>BAstrap3.</strong></p>
     <p><a type="button" class="btn btn-primary btn-block btn-xl" href="http://gcba.github.io/BAstrap/BAstrap3.zip">Descargar BAstrap3 <span class="small">(Versión estable)</span></a></p>
     <p><a type="button" class="btn btn-link btn-block" href="http://github.com/gcba/BAstrap/" target="_blank">Ver versión de prueba en GitHub</a></p>
-    <hr />
-    <p>En tus páginas debés respetar la siguiente estructura en el encabezado (tags "html" y "head") de las páginas del sitio:</p>
+    <hr>
+    <!-- <p class="lead">El siguiente es el archivo html básico para empezar a trabajar. Está incluído dentro del zip con la última versión estable de Bastrap3.</p> -->
+    <!-- <p><a type="button" class="btn btn-default btn-block btn-xl" href="base.html" target="_blank">Ver página base</a></p> -->
+    <!-- <hr /> -->
+    <!-- <p>Más ejemplos completos próximamente.</p> -->
+    <p class="lead">Hacé click en las imagenes para ver los ejemplos básicos incluidos en la descarga.</p>
+    <!-- <hr /> -->
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <a href="base.html" class="thumbnail" title="Página base">
+          <img src="docs/base.png" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <a href="base_landing.html" class="thumbnail" title="Landing">
+          <img src="docs/landing.png" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <a href="base_panel.html" class="thumbnail" title="Panel">
+          <img src="docs/panel.png" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <a href="base_curso.html" class="thumbnail" title="Curso">
+          <img src="docs/curso.png" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <a href="base_formularios.html" class="thumbnail" title="Formularios">
+          <img src="docs/formularios.png" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+        </a>
+      </div>
+      <div class="col-xs-6 col-md-3">
+        <a href="base_tablas.html" class="thumbnail" title="Tablas">
+          <img src="docs/tablas.png" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Como usarlo -->
+
+<a id="como-usarlo" class="anchor"></a>
+
+<div class="panel panel-docs">
+  <div class="panel-heading">
+    <h2>Uso de BAstrap3</h2>
+  </div>
+  <div class="panel-body">
+    <p class="lead">En tus páginas debés respetar la siguiente estructura en el encabezado (tags "html" y "head") de las páginas del sitio:</p>
     <ul>
       <li>Doctype HTML5</li>
       <li>Atributo de lenguaje español</li>
@@ -189,48 +243,6 @@
       <li>Link de código JavaScript extra del sitio</li>
     </ul>
     <p>También se deben respetar el encabezado y pie de página oficiales.</p>
-  </div>
-</div>
-
-<!-- Ejemplos -->
-
-<a id="descargas-ejemplos" class="anchor"></a>
-
-<div class="panel panel-docs">
-  <div class="panel-heading">
-    <h2>Ejemplos</h2>
-  </div>
-  <div class="panel-body">
-    <p class="lead">El siguiente es el archivo html básico para empezar a trabajar. Está incluído dentro del zip con la última versión estable de Bastrap3.</p>
-    <p><a type="button" class="btn btn-default btn-block btn-xl" href="base.html" target="_blank">Ver página base</a></p>
-    <hr />
-    <p>Más ejemplos completos próximamente.</p>
-    <!--
-    <p>Hacé click en las imagenes para descargar ejemplos básicos ya preparados.</p>
-    <hr />
-    <div class="row">
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail" data-original-title="" title="">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail" data-original-title="" title="">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail" data-original-title="" title="">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail" data-original-title="" title="">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
-        </a>
-      </div>
-    </div>
-    -->
   </div>
 </div>
 

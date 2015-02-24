@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="es" class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html lang="es" class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="es"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sitio externo del Gobierno de la Ciudad de Buenos Aires.">
+    <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
+    <title>Gobierno de la Ciudad de Buenos Aires</title>
+    <link rel="shortcut icon" href="bastrap3/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="bastrap3/favicon-mobile.png">
+    <link rel="stylesheet" href="bastrap3/bootstrap.min.css">
+    <link rel="stylesheet" href="bastrap3/bastrap.css">
+    <!-- ESTILOS EXTRA -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header class="navbar navbar-primary navbar-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <a class="navbar-brand bac-header" href="index.html">Buenos Aires Ciudad</a>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <h5 class="sub-brand">En todo estás vos</h5>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+              <span class="sr-only">Cambiar navegación</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" title="Gobierno Electrónico">Gobierno Electrónico</a>
+          </div>
+          <div class="collapse navbar-collapse" id="main-nav">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="base.html">Inicio</a></li>
+              <li><a href="base_landing.html">Landing</a></li>
+              <li><a href="base_panel.html">Panel</a></li>
+              <li><a href="base_curso.html">Curso</a></li>
+              <li><a href="base_formularios.html">Formularios</a></li>
+              <li class="active"><a href="base_tablas.html">Tablas</a></li>
+              <li><a href="base_tabs.html">Tabs</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- FIN DE NAVEGACIÓN PRINCIPAL -->
+
+    <header>
+      <div class="container">
+        <nav role="navigation">
+          <ol class="breadcrumb">
+            <li><a href="#4">BAstrap</a></li>
+            <li class="active">Dashboard</li>
+          </ol>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENIDO -->
+    <main class="main-container no-padding-top" role="main">
+      <section>
+        <div class="container">
+          <h2 class="h1 text-center">Ejemplo de tablas</h2>
+          <br>
+          <br>
+          <h3 class="text-center">Tabla Simple</h2>
+          <p class="text-center">Tabla con distinción de filas pares, espacios condensados y botones.</p>
+          <br>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Comentario</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mark</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni aliquid amet voluptates cumque ullam soluta facere.</td>
+                  </tr>
+                  <tr>
+                    <td>Jacob</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae veniam neque provident possimus praesentium quaerat suscipit!</td>
+                  </tr>
+                  <tr>
+                    <td>Larry</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae sunt cumque dolore aspernatur eum soluta!</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <br>
+          <hr>
+          <br>
+          <h3 class="text-center">Tabla de usuarios</h2>
+          <p class="text-center">Tabla con estilos básicos.</p>
+          <br>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-condensed">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Usuario</th>
+                      <th class="text-center">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td class="text-center">
+                        <a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></a> &nbsp;
+                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;
+                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td class="text-center">
+                        <a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></a> &nbsp;
+                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;
+                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td class="text-center">
+                        <a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></a> &nbsp;
+                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;
+                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td class="text-center">
+                        <a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></a> &nbsp;
+                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;
+                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td class="text-center">
+                        <a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></a> &nbsp;
+                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;
+                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td class="text-center">
+                        <a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></a> &nbsp;
+                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;
+                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td class="text-center">
+                        <a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></a> &nbsp;
+                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;
+                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                      <td class="text-center">
+                        <a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></a> &nbsp;
+                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;
+                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                      <td class="text-center">
+                        <a href="#" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></a> &nbsp;
+                        <a href="#" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp;
+                        <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <br>
+          <hr>
+          <br>
+          <h3 class="text-center">Tabla compleja</h2>
+          <p class="text-center">Tabla con bordes, celdas combinadas, filas coloreadas y responsive.</p>
+          <br>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th rowspan="2">Categoría</th>
+                  <th rowspan="2">#</th>
+                  <th colspan="2">Autor</th>
+                  <th colspan="2">Libro</th>
+                </tr>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Título</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="5">A</td>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>deleniti consectetur nulla modi error.</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non dolor deserunt adipisci at ratione incidunt beatae sit assumenda quam, numquam qui, laborum, totam officia deleniti consectetur nulla modi error, tempora.</td>
+                </tr>
+                <tr class="success">
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>animi veritatis, impedit ex deleniti.</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque deleniti optio iusto voluptates animi libero eveniet voluptatibus odit a rem. Qui consequatur vel in animi veritatis, impedit ex deleniti sit.</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>nostrum eum laborum ea, magni.</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum assumenda pariatur, explicabo velit debitis! Odio non doloribus animi. Ipsa corrupti excepturi aliquid ut nesciunt nostrum eum laborum ea, magni, alias.</td>
+                </tr>
+                <tr class="danger">
+                  <td>4</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>modi eius vitae magnam illum.</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non alias rerum provident cum corrupti fuga architecto expedita nulla culpa minima, inventore perspiciatis ducimus! Inventore modi eius vitae magnam illum excepturi.</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>cum voluptates a facere architecto.</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident sequi, ipsam praesentium consequuntur impedit vitae enim consectetur corporis magnam, ex quas ea velit, fugit cum voluptates a facere architecto veniam?</td>
+                </tr>
+                <tr>
+                  <td rowspan="5">B</td>
+                  <td>6</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>mollitia enim culpa beatae. Temporibus.</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet corporis a esse itaque nesciunt magnam veniam dolorum sint nostrum, fugiat laboriosam natus, consequatur placeat mollitia enim culpa beatae. Temporibus, quia.</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>eveniet at omnis deserunt quod.</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque neque id perferendis quasi quo voluptatibus. Nostrum delectus officia fuga, fugiat iusto odio, veniam obcaecati eveniet at omnis deserunt quod. Doloremque?</td>
+                </tr>
+                <tr class="success">
+                  <td>8</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>aliquid harum unde nesciunt assumenda.</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium impedit, nostrum dignissimos accusamus ab cum architecto necessitatibus explicabo suscipit. Ab, cum tempore. Eveniet veniam aliquid harum unde nesciunt assumenda placeat.</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>velit enim, perspiciatis sequi perferendis.</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus accusantium pariatur quo eligendi, sed eum ipsa at ratione alias quibusdam exercitationem quod repellendus dolorem velit enim, perspiciatis sequi perferendis a?</td>
+                </tr>
+                <tr class="warning">
+                  <td>10</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>architecto, alias illum voluptatem beatae.</td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores porro repellendus, quam nisi architecto animi aspernatur officiis omnis. Dolores nesciunt, aliquid quis cum debitis architecto, alias illum voluptatem beatae necessitatibus.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- FIN DE CONTENIDO -->
+
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <a class="navbar-brand bac-footer" href="http://www.buenosaires.gob.ar" target="_blank">Buenos Aires Ciudad</a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="sub-brand">
+                <p>Dirección General de Gobierno Electrónico<br />
+                <span class="text-muted">Ministerio de Modernización</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="bastrap3/jquery.min.js"></script>
+    <script src="bastrap3/bootstrap.min.js"></script>
+    <!-- JAVASCRIPT EXTRA -->
+  </body>
+</html>

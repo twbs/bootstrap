@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="es" class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html lang="es" class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="es"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sitio externo del Gobierno de la Ciudad de Buenos Aires.">
+    <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
+    <title>Gobierno de la Ciudad de Buenos Aires</title>
+    <link rel="shortcut icon" href="bastrap3/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="bastrap3/favicon-mobile.png">
+    <link rel="stylesheet" href="bastrap3/bootstrap.min.css">
+    <link rel="stylesheet" href="bastrap3/bastrap.css">
+    <!-- ESTILOS EXTRA -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header class="navbar navbar-primary navbar-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <a class="navbar-brand bac-header" href="index.html">Buenos Aires Ciudad</a>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <h5 class="sub-brand">En todo estás vos</h5>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+              <span class="sr-only">Cambiar navegación</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" title="Gobierno Electrónico">Gobierno Electrónico</a>
+          </div>
+          <div class="collapse navbar-collapse" id="main-nav">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="base.html">Inicio</a></li>
+              <li><a href="base_landing.html">Landing</a></li>
+              <li><a href="base_panel.html">Panel</a></li>
+              <li><a href="base_curso.html">Curso</a></li>
+              <li class="active"><a href="base_formularios.html">Formularios</a></li>
+              <li><a href="base_tablas.html">Tablas</a></li>
+              <li><a href="base_tabs.html">Tabs</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- FIN DE NAVEGACIÓN PRINCIPAL -->
+
+    <header>
+      <div class="container">
+        <nav role="navigation">
+          <ol class="breadcrumb">
+            <li><a href="index.html">BAstrap</a></li>
+            <li><a href="base.html">Ejemplos base</a></li>
+            <li class="active">Formularios</li>
+          </ol>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENIDO -->
+    <main class="main-container no-padding-top" role="main">
+      <section>
+        <div class="container">
+          <h2 class="h1 text-center">Completá tus datos</h2>
+          <br>
+          <form class="col-md-8 col-md-offset-2" actio="#">
+            <p class="text-center">
+              <button class="btn btn-default btn-lg" href="#">Completá tus datos con <img src="bastrap3/ba-btn-default.png" class="glyphicon glyphicon-ba" /></button>
+            </p>
+            <br>
+            <br>
+
+            <div class="form-group">
+              <label for="Nombre">Nombre y apellido</label>
+              <div class="row">
+                <div class="col-xs-6"><input class="form-control input-lg" type="text" placeholder="Nombre" id="Nombre" required=""></div>
+                <div class="col-xs-6"><input class="form-control input-lg" type="text" placeholder="Apellido" id="Apellido" required=""></div>
+              </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+              <label for="Documento">Número de documento</label>
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown">Nuevo DNI &nbsp; <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">DNI Verde</a></li>
+                    <li><a href="#">Libreta de Enrolamiento</a></li>
+                    <li><a href="#">Libreta Cívica</a></li>
+                  </ul>
+                  <input type="hidden" name="category" class="category">
+                </div>
+                <input class="form-control input-lg" type="text" value="">
+              </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+              <label for="Correo">Correo electrónico</label>
+              <input class="form-control input-lg" type="text" placeholder="Correo electrónico" id="Correo">
+            </div>
+            <br>
+
+            <div class="form-group">
+              <label for="exampleInputFile">File input</label>
+              <input id="exampleInputFile" type="file">
+              <p class="help-block">Hasta 2Mb en formato <strong>jpg</strong>, <strong>png</strong> o <strong>gif</strong>.</p>
+            </div> 
+            <br>
+
+            <div class="form-group">
+              <label for="Aclaraciones">Aclaraciones</label>
+              <textarea class="form-control input-lg" rows="3" placeholder="Aclaraciones" id="Aclaraciones"></textarea>
+            </div>
+            <br>
+            <br>
+          </form>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <div class="container">
+          <br>
+          <h2 class="text-center">Formulario horizontal</h2>
+          <br>
+          <br>
+
+          <form class="form-inline text-center">
+            <div class="form-group">
+              <label for="exampleInputName2">Nombre </label>
+              <input type="text" class="form-control" id="exampleInputName2" placeholder="Juan Perez">
+            </div>
+            &nbsp; &nbsp;
+
+            <div class="form-group">
+              <label for="exampleInputEmail2">Email </label>
+              <input type="email" class="form-control" id="exampleInputEmail2" placeholder="juan@perez.com.ar">
+            </div>
+            &nbsp; &nbsp;
+
+            <button type="submit" class="btn btn-default">Enviar Invitación</button>
+          </form>
+          <br>
+          <br>
+          <br>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <form class="container">
+          <br>
+          <h2 class="text-center">¿Qué transporte público usas?</h2>
+          <p class="text-center">Elegí a una de las siguientes opciones</p>
+          <br>
+
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+              <div class="radio input-lg">
+                <label> <input name="optionsRadios" id="optionsRadios0" value="option0" checked="" type="radio"> Ninguno </label>
+              </div>
+              <div class="radio input-lg">
+                <label> <input name="optionsRadios" id="optionsRadios1" value="option1" type="radio"> Colectivo de línea </label>
+              </div>
+              <div class="radio input-lg">
+                <label> <input name="optionsRadios" id="optionsRadios1" value="option1" type="radio"> Combi </label>
+              </div>
+              <div class="radio input-lg">
+                <label> <input name="optionsRadios" id="optionsRadios4" value="option4" type="radio"> Eco Bici </label>
+              </div>
+              <div class="radio input-lg">
+                <label> <input name="optionsRadios" id="optionsRadios6" value="option6" type="radio"> Metrobus </label>
+              </div>
+              <div class="radio input-lg">
+                <label> <input name="optionsRadios" id="optionsRadios5" value="option5" type="radio"> Taxi </label>
+              </div>
+              <div class="radio input-lg">
+                <label> <input name="optionsRadios" id="optionsRadios3" value="option3" type="radio"> Tren </label>
+              </div>
+              <div class="radio input-lg">
+                <label> <input name="optionsRadios" id="optionsRadios2" value="option2" type="radio"> Subte </label>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <p class="text-center">
+            <button class="btn btn-primary btn-xl">Votar</button>
+            <br><br>
+            <button class="btn-link btn-lg">Ver resultados</button>
+          </p>
+
+        </form>
+        <br>
+      </section>
+
+      <hr>
+
+      <section>
+        <div class="container">
+          <div class="col-md-8 col-md-offset-2">
+            <br>
+            <h2 class="text-center">Ingresá tu dirección</h2>
+            <br>
+            <br>
+
+            <form class="row">
+              <div class="col-md-8">
+                <div class="form-group has-success has-feedback">
+                  <label class="control-label" for="inputSuccess2">Ingrese una dirección válida</label>
+                  <input type="text" class="form-control input-lg" id="inputSuccess2" placeholder="Nombre de calle 3000, Barrio, Provincia..." value="Bernardo de Irigoyen 272, CABA">
+                  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="col-md-3">&nbsp;</label>
+                  <button type="submit" class="btn btn-default btn-lg btn-block">Validar Dirección</button>
+                </div>
+              </div>
+            </form>
+            <br>
+
+            <div class="well">
+              <iframe src="http://epok.buenosaires.gob.ar/pub/mapa/planmicrocentro/obras_en_microcentro/" name="Mapa de Obras y Desvíos" width="100%" height="480" scrolling="no" frameborder="0"></iframe>
+            </div>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white-1">
+        <div class="container text-center">
+          <br>
+          <br>
+          <h2 class="h1">Enviá la solicitud</h2>
+          <p>Luego de finalizar este trámite esperá 72hs y recibí la confirmación de la sala a tu domicilio.</p>
+          <br>
+          <br>
+          <button class="btn btn-xl btn-primary">Solicitar reserva</button>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+      </section>
+    </main>
+    <!-- FIN DE CONTENIDO -->
+
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <a class="navbar-brand bac-footer" href="http://www.buenosaires.gob.ar" target="_blank">Buenos Aires Ciudad</a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="sub-brand">
+                <p>Dirección General de Gobierno Electrónico<br />
+                <span class="text-muted">Ministerio de Modernización</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="bastrap3/jquery.min.js"></script>
+    <script src="bastrap3/bootstrap.min.js"></script>
+    <!-- JAVASCRIPT EXTRA -->
+  </body>
+</html>

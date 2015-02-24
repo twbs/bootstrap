@@ -50,10 +50,10 @@
           </div>
           <div class="collapse navbar-collapse" id="main-nav">
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="base.html">Inicio</a></li>
+              <li><a href="base.html">Inicio</a></li>
               <li><a href="base_landing.html">Landing</a></li>
               <li><a href="base_panel.html">Panel</a></li>
-              <li><a href="base_curso.html">Curso</a></li>
+              <li class="active"><a href="base_curso.html">Curso</a></li>
               <li><a href="base_formularios.html">Formularios</a></li>
               <li><a href="base_tablas.html">Tablas</a></li>
               <li><a href="base_tabs.html">Tabs</a></li>
@@ -64,15 +64,68 @@
     </nav>
     <!-- FIN DE NAVEGACIÓN PRINCIPAL -->
 
+    <header>
+      <div class="container">
+        <nav role="navigation">
+          <ol class="breadcrumb">
+            <li><a href="index.html">BAstrap</a></li>
+            <li><a href="base.html">Ejemplos base</a></li>
+            <li class="active">Curso</li>
+          </ol>
+        </nav>
+      </div>
+    </header>
+
     <!-- CONTENIDO -->
-    <main class="main-container" role="main">
+    <main class="main-container no-padding-top" role="main">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <h1>¡Hola, Buenos Aires!</h1>
-            <p>Esta es la página básica para usar en el desarrollo de sitios del Gobierno de la Ciudad de Buenos Aires.</p>
-            <p>Recordá poner tu contenido dentro de una columna (.col-md-12), dentro de una fila (.row), dentro de un contenedor (.container).</p>
+
+          <div class="col-md-8 col-md-push-4">
+            
+            <h2 class="h1">Elementos que lo componen</h2>
+            <p>En este capítulo te enseñamos cuales son los elementos que componen al lenguaje HTML y cómo utilizarlos.</p>
+            <br>
+            <div class="well">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ao_LFyf2q5o?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-lg btn-primary pull-right">Siguiente <span class="glyphicon glyphicon-chevron-right"></span></button>
+            <button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-chevron-left"></span> Anterior</button>
+            <br>
+            <br>
+            <br>
+            <hr class="visible-xs visible-sm">
           </div>
+
+          <aside class="col-md-4 col-md-pull-8">
+            <div class="row">
+              <div class="col-md-11">
+                <h3>Curso de Desarrollo Web</h3>
+                <p class="text-muted">Aprendé a desarrollar un sitio web desde cero.</p>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%">
+                    10%
+                  </div>
+                </div>
+                <hr>
+                <h4>Capítulo 1: HTML</h4>
+                <ul class="nav nav-stacked nav-pills">
+                  <li> <a href="#"><strong>1 </strong>&nbsp; Introducción al HTML</a> </li>
+                  <li class="success"> <a href="#"><strong>2 </strong>&nbsp; Editores de código</a> </li>
+                  <li class="active"> <a href="#"><strong>3 </strong>&nbsp; Elementos que lo componen</a> </li>
+                  <li class="disabled"> <a href="#"><strong>4 </strong>&nbsp; Atributos de los elementos</a> </li>
+                  <li class="disabled"> <a href="#"><strong>5 </strong>&nbsp; Semántica de los elementos</a> </li>
+                  <li class="disabled"> <a href="#"><strong>6 </strong>&nbsp; Estilos gráficos</a> </li>
+                  <li class="disabled"> <a href="#"><strong>7 </strong>&nbsp; Lenguaje CSS</a> </li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+
+
         </div>
       </div>
     </main>

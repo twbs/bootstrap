@@ -9,6 +9,9 @@ body {
 .main-container {
   padding-top: 48px;
   padding-bottom: 96px; }
+.main-container.no-padding-top {
+  padding-top: 0;
+}
 
 hr {
   border-top: 1px solid #e5e5e5;
@@ -1695,6 +1698,11 @@ ul.affix-bottom {
   padding-bottom: 30px;
   /*margin-bottom:60px;*/ }
 
+.jumbotron-main {
+  padding-top: 0;
+}
+
+.jumbotron-main .navbar .container,
 .jumbotron-small .container {
   padding-top: 0;
   padding-bottom: 0; 
