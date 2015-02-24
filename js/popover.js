@@ -50,6 +50,10 @@
       this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
     ](content)
 
+    if ($.isFunction(this.options.dataBinder)) {
+      this.options.dataBinder($tip);
+    }
+
     $tip.removeClass('fade top bottom left right in')
 
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do

@@ -286,6 +286,10 @@
     var $tip  = this.tip()
     var title = this.getTitle()
 
+    if ($.isFunction(this.options.dataBinder)) {
+      this.options.dataBinder($tip);
+    }
+
     $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
     $tip.removeClass('fade in top bottom left right')
   }
