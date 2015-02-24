@@ -37,7 +37,7 @@ $(function () {
   })
 
   test('should hide a collapsed element', function () {
-    var $el = $('<div class="collapse"/>').bootstrapCollapse('hide')
+    var $el = $('<div class="collapse in"/>').bootstrapCollapse('hide')
 
     ok(!$el.hasClass('in'), 'does not have class "in"')
     ok(/height/i.test($el.attr('style')), 'has height set')
