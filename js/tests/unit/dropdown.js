@@ -46,6 +46,53 @@ $(function () {
     assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
 
+  QUnit.test('should set aria-expanded="true" on target when dropdown menu is shown', function (assert) {
+    var dropdownHTML = '<ul class="tabs">'
+        + '<li class="dropdown">'
+        + '<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</a>'
+        + '<ul class="dropdown-menu">'
+        + '<li><a href="#">Secondary link</a></li>'
+        + '<li><a href="#">Something else here</a></li>'
+        + '<li class="divider"/>'
+        + '<li><a href="#">Another link</a></li>'
+        + '</ul>'
+        + '</li>'
+        + '</ul>'
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+
+    assert.strictEqual($dropdown.attr('aria-expanded'), 'true', 'aria-expanded is set to string "true" on click')
+  })
+
+  QUnit.test('should set aria-expanded="false" on target when dropdown menu is hidden', function (assert) {
+    var dropdownHTML = '<ul class="tabs">'
+        + '<li class="dropdown">'
+        + '<a href="#" class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown">Dropdown</a>'
+        + '<ul class="dropdown-menu">'
+        + '<li><a href="#">Secondary link</a></li>'
+        + '<li><a href="#">Something else here</a></li>'
+        + '<li class="divider"/>'
+        + '<li><a href="#">Another link</a></li>'
+        + '</ul>'
+        + '</li>'
+        + '</ul>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var done = assert.async()
+
+    $dropdown
+      .parent('.dropdown')
+      .on('hidden.bs.dropdown', function () {
+        assert.strictEqual($dropdown.attr('aria-expanded'), 'false', 'aria-expanded is set to string "false" on hide')
+        done()
+      })
+
+    $dropdown.click()
+    $(document.body).click()
+  })
+
   QUnit.test('should not open dropdown if target is disabled via class', function (assert) {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
