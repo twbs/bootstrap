@@ -3,8 +3,8 @@ $(function () {
 
   module('collapse plugin')
 
-  test('should be defined on jquery object', function () {
-    ok($(document.body).collapse, 'collapse method is defined')
+  test('should be defined on jquery object', function (assert) {
+    assert.ok($(document.body).collapse, 'collapse method is defined')
   })
 
   module('collapse', {
@@ -18,29 +18,29 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function () {
-    strictEqual($.fn.collapse, undefined, 'collapse was set back to undefined (org value)')
+  test('should provide no conflict', function (assert) {
+    assert.strictEqual($.fn.collapse, undefined, 'collapse was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function () {
+  test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $collapse = $el.bootstrapCollapse()
-    ok($collapse instanceof $, 'returns jquery collection')
-    strictEqual($collapse[0], $el[0], 'collection contains element')
+    assert.ok($collapse instanceof $, 'returns jquery collection')
+    assert.strictEqual($collapse[0], $el[0], 'collection contains element')
   })
 
-  test('should show a collapsed element', function () {
+  test('should show a collapsed element', function (assert) {
     var $el = $('<div class="collapse"/>').bootstrapCollapse('show')
 
-    ok($el.hasClass('in'), 'has class "in"')
-    ok(!/height/i.test($el.attr('style')), 'has height reset')
+    assert.ok($el.hasClass('in'), 'has class "in"')
+    assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
   })
 
-  test('should hide a collapsed element', function () {
+  test('should hide a collapsed element', function (assert) {
     var $el = $('<div class="collapse"/>').bootstrapCollapse('hide')
 
-    ok(!$el.hasClass('in'), 'does not have class "in"')
-    ok(/height/i.test($el.attr('style')), 'has height set')
+    assert.ok(!$el.hasClass('in'), 'does not have class "in"')
+    assert.ok(/height/i.test($el.attr('style')), 'has height set')
   })
 
   test('should not fire shown when show is prevented', function (assert) {
@@ -49,11 +49,11 @@ $(function () {
     $('<div class="collapse"/>')
       .on('show.bs.collapse', function (e) {
         e.preventDefault()
-        ok(true, 'show event fired')
+        assert.ok(true, 'show event fired')
         done()
       })
       .on('shown.bs.collapse', function () {
-        ok(false, 'shown event fired')
+        assert.ok(false, 'shown event fired')
       })
       .bootstrapCollapse('show')
   })
@@ -63,10 +63,10 @@ $(function () {
 
     $('<div class="collapse" style="height: 0px"/>')
       .on('show.bs.collapse', function () {
-        equal(this.style.height, '0px', 'height is 0px')
+        assert.equal(this.style.height, '0px', 'height is 0px')
       })
       .on('shown.bs.collapse', function () {
-        strictEqual(this.style.height, '', 'height is auto')
+        assert.strictEqual(this.style.height, '', 'height is auto')
         done()
       })
       .bootstrapCollapse('show')
@@ -80,7 +80,7 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        ok(!$target.hasClass('collapsed'))
+        assert.ok(!$target.hasClass('collapsed'))
         done()
       })
 
@@ -95,7 +95,7 @@ $(function () {
     $('<div id="test1" class="in"/>')
       .appendTo('#qunit-fixture')
       .on('hidden.bs.collapse', function () {
-        ok($target.hasClass('collapsed'))
+        assert.ok($target.hasClass('collapsed'))
         done()
       })
 
@@ -105,12 +105,12 @@ $(function () {
   test('should not close a collapse when initialized with "show" if already shown', function (assert) {
     var done = assert.async()
 
-    expect(0)
+    assert.expect(0)
 
     var $test = $('<div id="test1" class="in"/>')
       .appendTo('#qunit-fixture')
       .on('hide.bs.collapse', function () {
-        ok(false)
+        assert.ok(false)
       })
 
     $test.bootstrapCollapse('show')
@@ -121,12 +121,12 @@ $(function () {
   test('should open a collapse when initialized with "show" if not already shown', function (assert) {
     var done = assert.async()
 
-    expect(1)
+    assert.expect(1)
 
     var $test = $('<div id="test1" />')
       .appendTo('#qunit-fixture')
       .on('show.bs.collapse', function () {
-        ok(true)
+        assert.ok(true)
       })
 
     $test.bootstrapCollapse('show')
@@ -157,9 +157,9 @@ $(function () {
     $('<div id="body3"/>')
       .appendTo($groups.eq(2))
       .on('shown.bs.collapse', function () {
-        ok($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
-        ok($target2.hasClass('collapsed'), 'inactive target 2 does have class "collapsed"')
-        ok(!$target3.hasClass('collapsed'), 'active target 3 does not have class "collapsed"')
+        assert.ok($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
+        assert.ok($target2.hasClass('collapsed'), 'inactive target 2 does have class "collapsed"')
+        assert.ok(!$target3.hasClass('collapsed'), 'active target 3 does not have class "collapsed"')
 
         done()
       })
@@ -190,9 +190,9 @@ $(function () {
     $('<div id="body3"/>')
       .appendTo($groups.eq(2))
       .on('shown.bs.collapse', function () {
-        ok($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
-        ok($target2.hasClass('collapsed'), 'inactive target 2 does have class "collapsed"')
-        ok(!$target3.hasClass('collapsed'), 'active target 3 does not have class "collapsed"')
+        assert.ok($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
+        assert.ok($target2.hasClass('collapsed'), 'inactive target 2 does have class "collapsed"')
+        assert.ok(!$target3.hasClass('collapsed'), 'active target 3 does not have class "collapsed"')
 
         done()
       })
@@ -208,7 +208,7 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        equal($target.attr('aria-expanded'), 'true', 'aria-expanded on target is "true"')
+        assert.equal($target.attr('aria-expanded'), 'true', 'aria-expanded on target is "true"')
         done()
       })
 
@@ -223,7 +223,7 @@ $(function () {
     $('<div id="test1" class="in"/>')
       .appendTo('#qunit-fixture')
       .on('hidden.bs.collapse', function () {
-        equal($target.attr('aria-expanded'), 'false', 'aria-expanded on target is "false"')
+        assert.equal($target.attr('aria-expanded'), 'false', 'aria-expanded on target is "false"')
         done()
       })
 
@@ -253,9 +253,9 @@ $(function () {
     $('<div id="body3" aria-expanded="false"/>')
       .appendTo($groups.eq(2))
       .on('shown.bs.collapse', function () {
-        equal($target1.attr('aria-expanded'), 'false', 'inactive target 1 has aria-expanded="false"')
-        equal($target2.attr('aria-expanded'), 'false', 'inactive target 2 has aria-expanded="false"')
-        equal($target3.attr('aria-expanded'), 'true', 'active target 3 has aria-expanded="false"')
+        assert.equal($target1.attr('aria-expanded'), 'false', 'inactive target 1 has aria-expanded="false"')
+        assert.equal($target2.attr('aria-expanded'), 'false', 'inactive target 2 has aria-expanded="false"')
+        assert.equal($target3.attr('aria-expanded'), 'true', 'active target 3 has aria-expanded="false"')
 
         done()
       })
@@ -293,7 +293,7 @@ $(function () {
     $target1.click()
 
     setTimeout(function () {
-      ok(!showFired, 'show event didn\'t fire')
+      assert.ok(!showFired, 'show event didn\'t fire')
       done()
     }, 1)
   })
@@ -306,7 +306,7 @@ $(function () {
     $('<div id="test1" class="in"/>')
       .appendTo('#qunit-fixture')
       .on('hidden.bs.collapse', function () {
-        ok($target.hasClass('collapsed'))
+        assert.ok($target.hasClass('collapsed'))
         done()
       })
       .bootstrapCollapse('hide')
@@ -320,7 +320,7 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        ok(!$target.hasClass('collapsed'))
+        assert.ok(!$target.hasClass('collapsed'))
         done()
       })
       .bootstrapCollapse('show')

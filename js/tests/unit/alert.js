@@ -3,8 +3,8 @@ $(function () {
 
   module('alert plugin')
 
-  test('should be defined on jquery object', function () {
-    ok($(document.body).alert, 'alert method is defined')
+  test('should be defined on jquery object', function (assert) {
+    assert.ok($(document.body).alert, 'alert method is defined')
   })
 
   module('alert', {
@@ -18,18 +18,18 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function () {
-    strictEqual($.fn.alert, undefined, 'alert was set back to undefined (org value)')
+  test('should provide no conflict', function (assert) {
+    assert.strictEqual($.fn.alert, undefined, 'alert was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function () {
+  test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $alert = $el.bootstrapAlert()
-    ok($alert instanceof $, 'returns jquery collection')
-    strictEqual($alert[0], $el[0], 'collection contains element')
+    assert.ok($alert instanceof $, 'returns jquery collection')
+    assert.strictEqual($alert[0], $el[0], 'collection contains element')
   })
 
-  test('should fade element out on clicking .close', function () {
+  test('should fade element out on clicking .close', function (assert) {
     var alertHTML = '<div class="alert alert-danger fade in">'
         + '<a class="close" href="#" data-dismiss="alert">×</a>'
         + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
@@ -38,21 +38,21 @@ $(function () {
 
     $alert.find('.close').click()
 
-    equal($alert.hasClass('in'), false, 'remove .in class on .close click')
+    assert.equal($alert.hasClass('in'), false, 'remove .in class on .close click')
   })
 
-  test('should remove element when clicking .close', function () {
+  test('should remove element when clicking .close', function (assert) {
     var alertHTML = '<div class="alert alert-danger fade in">'
         + '<a class="close" href="#" data-dismiss="alert">×</a>'
         + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
         + '</div>'
     var $alert = $(alertHTML).appendTo('#qunit-fixture').bootstrapAlert()
 
-    notEqual($('#qunit-fixture').find('.alert').length, 0, 'element added to dom')
+    assert.notEqual($('#qunit-fixture').find('.alert').length, 0, 'element added to dom')
 
     $alert.find('.close').click()
 
-    equal($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
+    assert.equal($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
   })
 
   test('should not fire closed when close is prevented', function (assert) {
@@ -60,11 +60,11 @@ $(function () {
     $('<div class="alert"/>')
       .on('close.bs.alert', function (e) {
         e.preventDefault()
-        ok(true, 'close event fired')
+        assert.ok(true, 'close event fired')
         done()
       })
       .on('closed.bs.alert', function () {
-        ok(false, 'closed event fired')
+        assert.ok(false, 'closed event fired')
       })
       .bootstrapAlert('close')
   })

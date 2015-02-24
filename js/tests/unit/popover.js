@@ -3,8 +3,8 @@ $(function () {
 
   module('popover plugin')
 
-  test('should be defined on jquery object', function () {
-    ok($(document.body).popover, 'popover method is defined')
+  test('should be defined on jquery object', function (assert) {
+    assert.ok($(document.body).popover, 'popover method is defined')
   })
 
   module('popover', {
@@ -18,44 +18,44 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function () {
-    strictEqual($.fn.popover, undefined, 'popover was set back to undefined (org value)')
+  test('should provide no conflict', function (assert) {
+    assert.strictEqual($.fn.popover, undefined, 'popover was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function () {
+  test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $popover = $el.bootstrapPopover()
-    ok($popover instanceof $, 'returns jquery collection')
-    strictEqual($popover[0], $el[0], 'collection contains element')
+    assert.ok($popover instanceof $, 'returns jquery collection')
+    assert.strictEqual($popover[0], $el[0], 'collection contains element')
   })
 
-  test('should render popover element', function () {
+  test('should render popover element', function (assert) {
     var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover('show')
 
-    notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
     $popover.bootstrapPopover('hide')
-    equal($('.popover').length, 0, 'popover removed')
+    assert.equal($('.popover').length, 0, 'popover removed')
   })
 
-  test('should store popover instance in popover data object', function () {
+  test('should store popover instance in popover data object', function (assert) {
     var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>').bootstrapPopover()
 
-    ok($popover.data('bs.popover'), 'popover instance exists')
+    assert.ok($popover.data('bs.popover'), 'popover instance exists')
   })
 
-  test('should store popover trigger in popover instance data object', function () {
+  test('should store popover trigger in popover instance data object', function (assert) {
     var $popover = $('<a href="#" title="ResentedHook">@ResentedHook</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover()
 
     $popover.bootstrapPopover('show')
 
-    ok($('.popover').data('bs.popover'), 'popover trigger stored in instance data')
+    assert.ok($('.popover').data('bs.popover'), 'popover trigger stored in instance data')
   })
 
-  test('should get title and content from options', function () {
+  test('should get title and content from options', function (assert) {
     var $popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -69,15 +69,15 @@ $(function () {
 
     $popover.bootstrapPopover('show')
 
-    notEqual($('.popover').length, 0, 'popover was inserted')
-    equal($('.popover .popover-title').text(), '@fat', 'title correctly inserted')
-    equal($('.popover .popover-content').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.equal($('.popover .popover-title').text(), '@fat', 'title correctly inserted')
+    assert.equal($('.popover .popover-content').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
-    equal($('.popover').length, 0, 'popover was removed')
+    assert.equal($('.popover').length, 0, 'popover was removed')
   })
 
-  test('should not duplicate HTML object', function () {
+  test('should not duplicate HTML object', function (assert) {
     var $div = $('<div/>').html('loves writing tests （╯°□°）╯︵ ┻━┻')
 
     var $popover = $('<a href="#">@fat</a>')
@@ -89,36 +89,36 @@ $(function () {
       })
 
     $popover.bootstrapPopover('show')
-    notEqual($('.popover').length, 0, 'popover was inserted')
-    equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
-    equal($('.popover').length, 0, 'popover was removed')
+    assert.equal($('.popover').length, 0, 'popover was removed')
 
     $popover.bootstrapPopover('show')
-    notEqual($('.popover').length, 0, 'popover was inserted')
-    equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
-    equal($('.popover').length, 0, 'popover was removed')
+    assert.equal($('.popover').length, 0, 'popover was removed')
   })
 
-  test('should get title and content from attributes', function () {
+  test('should get title and content from attributes', function (assert) {
     var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover()
       .bootstrapPopover('show')
 
-    notEqual($('.popover').length, 0, 'popover was inserted')
-    equal($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
-    equal($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.equal($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
+    assert.equal($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
-    equal($('.popover').length, 0, 'popover was removed')
+    assert.equal($('.popover').length, 0, 'popover was removed')
   })
 
 
-  test('should get title and content from attributes ignoring options passed via js', function () {
+  test('should get title and content from attributes ignoring options passed via js', function (assert) {
     var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -127,15 +127,15 @@ $(function () {
       })
       .bootstrapPopover('show')
 
-    notEqual($('.popover').length, 0, 'popover was inserted')
-    equal($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
-    equal($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.equal($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
+    assert.equal($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
-    equal($('.popover').length, 0, 'popover was removed')
+    assert.equal($('.popover').length, 0, 'popover was removed')
   })
 
-  test('should respect custom template', function () {
+  test('should respect custom template', function (assert) {
     var $popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -146,34 +146,34 @@ $(function () {
 
     $popover.bootstrapPopover('show')
 
-    notEqual($('.popover').length, 0, 'popover was inserted')
-    ok($('.popover').hasClass('foobar'), 'custom class is present')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.ok($('.popover').hasClass('foobar'), 'custom class is present')
 
     $popover.bootstrapPopover('hide')
-    equal($('.popover').length, 0, 'popover was removed')
+    assert.equal($('.popover').length, 0, 'popover was removed')
   })
 
-  test('should destroy popover', function () {
+  test('should destroy popover', function (assert) {
     var $popover = $('<div/>')
       .bootstrapPopover({
         trigger: 'hover'
       })
       .on('click.foo', $.noop)
 
-    ok($popover.data('bs.popover'), 'popover has data')
-    ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event')
-    equal($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event')
+    assert.ok($popover.data('bs.popover'), 'popover has data')
+    assert.ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event')
+    assert.equal($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event')
 
     $popover.bootstrapPopover('show')
     $popover.bootstrapPopover('destroy')
 
-    ok(!$popover.hasClass('in'), 'popover is hidden')
-    ok(!$popover.data('popover'), 'popover does not have data')
-    equal($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo')
-    ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events')
+    assert.ok(!$popover.hasClass('in'), 'popover is hidden')
+    assert.ok(!$popover.data('popover'), 'popover does not have data')
+    assert.equal($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo')
+    assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events')
   })
 
-  test('should render popover element using delegated selector', function () {
+  test('should render popover element using delegated selector', function (assert) {
     var $div = $('<div><a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a></div>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -182,10 +182,10 @@ $(function () {
       })
 
     $div.find('a').click()
-    notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
 
     $div.find('a').click()
-    equal($('.popover').length, 0, 'popover was removed')
+    assert.equal($('.popover').length, 0, 'popover was removed')
   })
 
   test('should detach popover content rather than removing it so that event handlers are left intact', function (assert) {
@@ -216,7 +216,7 @@ $(function () {
               .one('shown.bs.popover', function () {
                 $('.content-with-handler .btn').click()
                 $div.bootstrapPopover('destroy')
-                ok(handlerCalled, 'content\'s event handler still present')
+                assert.ok(handlerCalled, 'content\'s event handler still present')
                 done()
               })
               .bootstrapPopover('show')
@@ -226,8 +226,8 @@ $(function () {
       .bootstrapPopover('show')
   })
 
-  test('should throw an error when initializing popover on the document object without specifying a delegation selector', function () {
-    throws(function () {
+  test('should throw an error when initializing popover on the document object without specifying a delegation selector', function (assert) {
+    assert.throws(function () {
       $(document).bootstrapPopover({ title: 'What am I on?', content: 'My selector is missing' })
     }, new Error('`selector` option must be specified when initializing popover on the window.document object!'))
   })

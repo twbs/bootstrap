@@ -3,8 +3,8 @@ $(function () {
 
   module('scrollspy plugin')
 
-  test('should be defined on jquery object', function () {
-    ok($(document.body).scrollspy, 'scrollspy method is defined')
+  test('should be defined on jquery object', function (assert) {
+    assert.ok($(document.body).scrollspy, 'scrollspy method is defined')
   })
 
   module('scrollspy', {
@@ -18,15 +18,15 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function () {
-    strictEqual($.fn.scrollspy, undefined, 'scrollspy was set back to undefined (org value)')
+  test('should provide no conflict', function (assert) {
+    assert.strictEqual($.fn.scrollspy, undefined, 'scrollspy was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function () {
+  test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $scrollspy = $el.bootstrapScrollspy()
-    ok($scrollspy instanceof $, 'returns jquery collection')
-    strictEqual($scrollspy[0], $el[0], 'collection contains element')
+    assert.ok($scrollspy instanceof $, 'returns jquery collection')
+    assert.strictEqual($scrollspy[0], $el[0], 'collection contains element')
   })
 
   test('should only switch "active" class on current target', function (assert) {
@@ -66,7 +66,7 @@ $(function () {
       .bootstrapScrollspy({ target: '#ss-target' })
 
     $scrollspy.on('scroll.bs.scrollspy', function () {
-      ok($section.hasClass('active'), '"active" class still on root node')
+      assert.ok($section.hasClass('active'), '"active" class still on root node')
       done()
     })
 
@@ -97,9 +97,9 @@ $(function () {
     $scrollspy.bootstrapScrollspy({ target: '#navigation', offset: $scrollspy.position().top })
 
     $scrollspy.on('scroll.bs.scrollspy', function () {
-      ok(!$section.find('#one-link').parent().hasClass('active'), '"active" class removed from first section')
-      ok($section.find('#two-link').parent().hasClass('active'), '"active" class on middle section')
-      ok(!$section.find('#three-link').parent().hasClass('active'), '"active" class not on last section')
+      assert.ok(!$section.find('#one-link').parent().hasClass('active'), '"active" class removed from first section')
+      assert.ok($section.find('#two-link').parent().hasClass('active'), '"active" class on middle section')
+      assert.ok(!$section.find('#three-link').parent().hasClass('active'), '"active" class not on last section')
       done()
     })
 
@@ -130,7 +130,7 @@ $(function () {
       var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
       var done = assert.async()
       $content.one('scroll', function () {
-        ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
+        assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
         done()
         deferred.resolve()
       })
@@ -170,12 +170,12 @@ $(function () {
         offset: $scrollspy.position().top
       })
       .one('scroll.bs.scrollspy', function () {
-        strictEqual($('.active').length, 1, '"active" class on only one element present')
-        strictEqual($('.active').has('#two-link').length, 1, '"active" class on second section')
+        assert.strictEqual($('.active').length, 1, '"active" class on only one element present')
+        assert.strictEqual($('.active').has('#two-link').length, 1, '"active" class on second section')
 
         $scrollspy
           .one('scroll.bs.scrollspy', function () {
-            strictEqual($('.active').length, 0, 'selection cleared')
+            assert.strictEqual($('.active').length, 0, 'selection cleared')
             done()
           })
           .scrollTop(0)
