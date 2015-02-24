@@ -394,6 +394,9 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 })
 {% endhighlight %}
 
+  <h2 id="modals-handle-update">Modals with dynamic heights</h2>
+  <p>If the height of a modal changes while it is open, you should call <code>$('#myModal').data('bs.modal').handleUpdate()</code> to readjust the modal's position in case a scrollbar appears.</p>
+
   <h2 id="modals-usage">Usage</h2>
   <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
 
