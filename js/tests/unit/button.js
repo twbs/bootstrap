@@ -1,13 +1,13 @@
 $(function () {
   'use strict';
 
-  module('button plugin')
+  QUnit.module('button plugin')
 
-  test('should be defined on jquery object', function (assert) {
+  QUnit.test('should be defined on jquery object', function (assert) {
     assert.ok($(document.body).button, 'button method is defined')
   })
 
-  module('button', {
+  QUnit.module('button', {
     setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapButton = $.fn.button.noConflict()
@@ -18,18 +18,18 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function (assert) {
+  QUnit.test('should provide no conflict', function (assert) {
     assert.strictEqual($.fn.button, undefined, 'button was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function (assert) {
+  QUnit.test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $button = $el.bootstrapButton()
     assert.ok($button instanceof $, 'returns jquery collection')
     assert.strictEqual($button[0], $el[0], 'collection contains element')
   })
 
-  test('should return set state to loading', function (assert) {
+  QUnit.test('should return set state to loading', function (assert) {
     var $btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
     assert.equal($btn.html(), 'mdo', 'btn text equals mdo')
     $btn.bootstrapButton('loading')
@@ -42,7 +42,7 @@ $(function () {
     }, 0)
   })
 
-  test('should return reset state', function (assert) {
+  QUnit.test('should return reset state', function (assert) {
     var $btn = $('<button class="btn" data-loading-text="fat">mdo</button>')
     assert.equal($btn.html(), 'mdo', 'btn text equals mdo')
     $btn.bootstrapButton('loading')
@@ -63,7 +63,7 @@ $(function () {
     }, 0)
   })
 
-  test('should work with an empty string as reset state', function (assert) {
+  QUnit.test('should work with an empty string as reset state', function (assert) {
     var $btn = $('<button class="btn" data-loading-text="fat"/>')
     assert.equal($btn.html(), '', 'btn text equals ""')
     $btn.bootstrapButton('loading')
@@ -84,14 +84,14 @@ $(function () {
     }, 0)
   })
 
-  test('should toggle active', function (assert) {
+  QUnit.test('should toggle active', function (assert) {
     var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
     assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
     $btn.bootstrapButton('toggle')
     assert.ok($btn.hasClass('active'), 'btn has class active')
   })
 
-  test('should toggle active when btn children are clicked', function (assert) {
+  QUnit.test('should toggle active when btn children are clicked', function (assert) {
     var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
     var $inner = $('<i/>')
     $btn
@@ -102,14 +102,14 @@ $(function () {
     assert.ok($btn.hasClass('active'), 'btn has class active')
   })
 
-  test('should toggle aria-pressed', function (assert) {
+  QUnit.test('should toggle aria-pressed', function (assert) {
     var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
     assert.equal($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
     $btn.bootstrapButton('toggle')
     assert.equal($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
-  test('should toggle aria-pressed when btn children are clicked', function (assert) {
+  QUnit.test('should toggle aria-pressed when btn children are clicked', function (assert) {
     var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
     var $inner = $('<i/>')
     $btn
@@ -120,7 +120,7 @@ $(function () {
     assert.equal($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
-  test('should toggle active when btn children are clicked within btn-group', function (assert) {
+  QUnit.test('should toggle active when btn children are clicked within btn-group', function (assert) {
     var $btngroup = $('<div class="btn-group" data-toggle="buttons"/>')
     var $btn = $('<button class="btn">fat</button>')
     var $inner = $('<i/>')
@@ -132,7 +132,7 @@ $(function () {
     assert.ok($btn.hasClass('active'), 'btn has class active')
   })
 
-  test('should check for closest matching toggle', function (assert) {
+  QUnit.test('should check for closest matching toggle', function (assert) {
     var groupHTML = '<div class="btn-group" data-toggle="buttons">'
       + '<label class="btn btn-primary active">'
       + '<input type="radio" name="options" id="option1" checked="true"> Option 1'

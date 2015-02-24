@@ -1,13 +1,13 @@
 $(function () {
   'use strict';
 
-  module('scrollspy plugin')
+  QUnit.module('scrollspy plugin')
 
-  test('should be defined on jquery object', function (assert) {
+  QUnit.test('should be defined on jquery object', function (assert) {
     assert.ok($(document.body).scrollspy, 'scrollspy method is defined')
   })
 
-  module('scrollspy', {
+  QUnit.module('scrollspy', {
     setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapScrollspy = $.fn.scrollspy.noConflict()
@@ -18,18 +18,18 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function (assert) {
+  QUnit.test('should provide no conflict', function (assert) {
     assert.strictEqual($.fn.scrollspy, undefined, 'scrollspy was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function (assert) {
+  QUnit.test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $scrollspy = $el.bootstrapScrollspy()
     assert.ok($scrollspy instanceof $, 'returns jquery collection')
     assert.strictEqual($scrollspy[0], $el[0], 'collection contains element')
   })
 
-  test('should only switch "active" class on current target', function (assert) {
+  QUnit.test('should only switch "active" class on current target', function (assert) {
     var done = assert.async()
 
     var sectionHTML = '<div id="root" class="active">'
@@ -73,7 +73,7 @@ $(function () {
     $scrollspy.scrollTop(350)
   })
 
-  test('should correctly select middle navigation option when large offset is used', function (assert) {
+  QUnit.test('should correctly select middle navigation option when large offset is used', function (assert) {
     var done = assert.async()
 
     var sectionHTML = '<div id="header" style="height: 500px;"></div>'
@@ -106,7 +106,7 @@ $(function () {
     $scrollspy.scrollTop(550)
   })
 
-  test('should add the active class to the correct element', function (assert) {
+  QUnit.test('should add the active class to the correct element', function (assert) {
     var navbarHtml =
         '<nav class="navbar">'
       + '<ul class="nav">'
@@ -142,7 +142,7 @@ $(function () {
       .then(function () { return testElementIsActiveAfterScroll('#li-2', '#div-2') })
   })
 
-  test('should clear selection if above the first section', function (assert) {
+  QUnit.test('should clear selection if above the first section', function (assert) {
     var done = assert.async()
 
     var sectionHTML = '<div id="header" style="height: 500px;"></div>'

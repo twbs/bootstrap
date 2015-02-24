@@ -1,13 +1,13 @@
 $(function () {
   'use strict';
 
-  module('collapse plugin')
+  QUnit.module('collapse plugin')
 
-  test('should be defined on jquery object', function (assert) {
+  QUnit.test('should be defined on jquery object', function (assert) {
     assert.ok($(document.body).collapse, 'collapse method is defined')
   })
 
-  module('collapse', {
+  QUnit.module('collapse', {
     setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapCollapse = $.fn.collapse.noConflict()
@@ -18,32 +18,32 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function (assert) {
+  QUnit.test('should provide no conflict', function (assert) {
     assert.strictEqual($.fn.collapse, undefined, 'collapse was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function (assert) {
+  QUnit.test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $collapse = $el.bootstrapCollapse()
     assert.ok($collapse instanceof $, 'returns jquery collection')
     assert.strictEqual($collapse[0], $el[0], 'collection contains element')
   })
 
-  test('should show a collapsed element', function (assert) {
+  QUnit.test('should show a collapsed element', function (assert) {
     var $el = $('<div class="collapse"/>').bootstrapCollapse('show')
 
     assert.ok($el.hasClass('in'), 'has class "in"')
     assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
   })
 
-  test('should hide a collapsed element', function (assert) {
+  QUnit.test('should hide a collapsed element', function (assert) {
     var $el = $('<div class="collapse"/>').bootstrapCollapse('hide')
 
     assert.ok(!$el.hasClass('in'), 'does not have class "in"')
     assert.ok(/height/i.test($el.attr('style')), 'has height set')
   })
 
-  test('should not fire shown when show is prevented', function (assert) {
+  QUnit.test('should not fire shown when show is prevented', function (assert) {
     var done = assert.async()
 
     $('<div class="collapse"/>')
@@ -58,7 +58,7 @@ $(function () {
       .bootstrapCollapse('show')
   })
 
-  test('should reset style to auto after finishing opening collapse', function (assert) {
+  QUnit.test('should reset style to auto after finishing opening collapse', function (assert) {
     var done = assert.async()
 
     $('<div class="collapse" style="height: 0px"/>')
@@ -72,7 +72,7 @@ $(function () {
       .bootstrapCollapse('show')
   })
 
-  test('should remove "collapsed" class from target when collapse is shown', function (assert) {
+  QUnit.test('should remove "collapsed" class from target when collapse is shown', function (assert) {
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
@@ -87,7 +87,7 @@ $(function () {
     $target.click()
   })
 
-  test('should add "collapsed" class to target when collapse is hidden', function (assert) {
+  QUnit.test('should add "collapsed" class to target when collapse is hidden', function (assert) {
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
@@ -102,7 +102,7 @@ $(function () {
     $target.click()
   })
 
-  test('should not close a collapse when initialized with "show" if already shown', function (assert) {
+  QUnit.test('should not close a collapse when initialized with "show" if already shown', function (assert) {
     var done = assert.async()
 
     assert.expect(0)
@@ -118,7 +118,7 @@ $(function () {
     setTimeout(done, 0)
   })
 
-  test('should open a collapse when initialized with "show" if not already shown', function (assert) {
+  QUnit.test('should open a collapse when initialized with "show" if not already shown', function (assert) {
     var done = assert.async()
 
     assert.expect(1)
@@ -134,7 +134,7 @@ $(function () {
     setTimeout(done, 0)
   })
 
-  test('should remove "collapsed" class from active accordion target', function (assert) {
+  QUnit.test('should remove "collapsed" class from active accordion target', function (assert) {
     var done = assert.async()
 
     var accordionHTML = '<div class="panel-group" id="accordion">'
@@ -167,7 +167,7 @@ $(function () {
     $target3.click()
   })
 
-  test('should allow dots in data-parent', function (assert) {
+  QUnit.test('should allow dots in data-parent', function (assert) {
     var done = assert.async()
 
     var accordionHTML = '<div class="panel-group accordion">'
@@ -200,7 +200,7 @@ $(function () {
     $target3.click()
   })
 
-  test('should set aria-expanded="true" on target when collapse is shown', function (assert) {
+  QUnit.test('should set aria-expanded="true" on target when collapse is shown', function (assert) {
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1" aria-expanded="false"/>').appendTo('#qunit-fixture')
@@ -215,7 +215,7 @@ $(function () {
     $target.click()
   })
 
-  test('should set aria-expanded="false" on target when collapse is hidden', function (assert) {
+  QUnit.test('should set aria-expanded="false" on target when collapse is hidden', function (assert) {
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" href="#test1" aria-expanded="true"/>').appendTo('#qunit-fixture')
@@ -230,7 +230,7 @@ $(function () {
     $target.click()
   })
 
-  test('should change aria-expanded from active accordion target to "false" and set the newly active one to "true"', function (assert) {
+  QUnit.test('should change aria-expanded from active accordion target to "false" and set the newly active one to "true"', function (assert) {
     var done = assert.async()
 
     var accordionHTML = '<div class="panel-group" id="accordion">'
@@ -263,7 +263,7 @@ $(function () {
     $target3.click()
   })
 
-  test('should not fire show event if show is prevented because other element is still transitioning', function (assert) {
+  QUnit.test('should not fire show event if show is prevented because other element is still transitioning', function (assert) {
     var done = assert.async()
 
     var accordionHTML = '<div id="accordion">'
@@ -298,7 +298,7 @@ $(function () {
     }, 1)
   })
 
-  test('should add "collapsed" class to target when collapse is hidden via manual invocation', function (assert) {
+  QUnit.test('should add "collapsed" class to target when collapse is hidden via manual invocation', function (assert) {
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
@@ -312,7 +312,7 @@ $(function () {
       .bootstrapCollapse('hide')
   })
 
-  test('should remove "collapsed" class from target when collapse is shown via manual invocation', function (assert) {
+  QUnit.test('should remove "collapsed" class from target when collapse is shown via manual invocation', function (assert) {
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')

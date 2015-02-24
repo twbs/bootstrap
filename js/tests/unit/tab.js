@@ -1,13 +1,13 @@
 $(function () {
   'use strict';
 
-  module('tabs plugin')
+  QUnit.module('tabs plugin')
 
-  test('should be defined on jquery object', function (assert) {
+  QUnit.test('should be defined on jquery object', function (assert) {
     assert.ok($(document.body).tab, 'tabs method is defined')
   })
 
-  module('tabs', {
+  QUnit.module('tabs', {
     setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapTab = $.fn.tab.noConflict()
@@ -18,18 +18,18 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function (assert) {
+  QUnit.test('should provide no conflict', function (assert) {
     assert.strictEqual($.fn.tab, undefined, 'tab was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function (assert) {
+  QUnit.test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $tab = $el.bootstrapTab()
     assert.ok($tab instanceof $, 'returns jquery collection')
     assert.strictEqual($tab[0], $el[0], 'collection contains element')
   })
 
-  test('should activate element by tab id', function (assert) {
+  QUnit.test('should activate element by tab id', function (assert) {
     var tabsHTML = '<ul class="tabs">'
         + '<li><a href="#home">Home</a></li>'
         + '<li><a href="#profile">Profile</a></li>'
@@ -44,7 +44,7 @@ $(function () {
     assert.equal($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
-  test('should activate element by tab id', function (assert) {
+  QUnit.test('should activate element by tab id', function (assert) {
     var pillsHTML = '<ul class="pills">'
         + '<li><a href="#home">Home</a></li>'
         + '<li><a href="#profile">Profile</a></li>'
@@ -59,7 +59,7 @@ $(function () {
     assert.equal($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
-  test('should not fire shown when show is prevented', function (assert) {
+  QUnit.test('should not fire shown when show is prevented', function (assert) {
     var done = assert.async()
 
     $('<div class="tab"/>')
@@ -74,7 +74,7 @@ $(function () {
       .bootstrapTab('show')
   })
 
-  test('show and shown events should reference correct relatedTarget', function (assert) {
+  QUnit.test('show and shown events should reference correct relatedTarget', function (assert) {
     var done = assert.async()
 
     var dropHTML = '<ul class="drop">'
@@ -101,7 +101,7 @@ $(function () {
         .bootstrapTab('show')
   })
 
-  test('should fire hide and hidden events', function (assert) {
+  QUnit.test('should fire hide and hidden events', function (assert) {
     var done = assert.async()
 
     var tabsHTML = '<ul class="tabs">'
@@ -131,7 +131,7 @@ $(function () {
         .bootstrapTab('show')
   })
 
-  test('should not fire hidden when hide is prevented', function (assert) {
+  QUnit.test('should not fire hidden when hide is prevented', function (assert) {
     var done = assert.async()
 
     var tabsHTML = '<ul class="tabs">'
@@ -155,7 +155,7 @@ $(function () {
         .bootstrapTab('show')
   })
 
-  test('hide and hidden events contain correct relatedTarget', function (assert) {
+  QUnit.test('hide and hidden events contain correct relatedTarget', function (assert) {
     var done = assert.async()
 
     var tabsHTML = '<ul class="tabs">'
@@ -178,7 +178,7 @@ $(function () {
         .bootstrapTab('show')
   })
 
-  test('selected tab should have aria-expanded', function (assert) {
+  QUnit.test('selected tab should have aria-expanded', function (assert) {
     var tabsHTML = '<ul class="nav nav-tabs">'
         + '<li class="active"><a href="#home" toggle="tab" aria-expanded="true">Home</a></li>'
         + '<li><a href="#profile" toggle="tab" aria-expanded="false">Profile</a></li>'

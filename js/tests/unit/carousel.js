@@ -1,13 +1,13 @@
 $(function () {
   'use strict';
 
-  module('carousel plugin')
+  QUnit.module('carousel plugin')
 
-  test('should be defined on jQuery object', function (assert) {
+  QUnit.test('should be defined on jQuery object', function (assert) {
     assert.ok($(document.body).carousel, 'carousel method is defined')
   })
 
-  module('carousel', {
+  QUnit.module('carousel', {
     setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapCarousel = $.fn.carousel.noConflict()
@@ -18,18 +18,18 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function (assert) {
+  QUnit.test('should provide no conflict', function (assert) {
     assert.strictEqual($.fn.carousel, undefined, 'carousel was set back to undefined (orig value)')
   })
 
-  test('should return jquery collection containing the element', function (assert) {
+  QUnit.test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $carousel = $el.bootstrapCarousel()
     assert.ok($carousel instanceof $, 'returns jquery collection')
     assert.strictEqual($carousel[0], $el[0], 'collection contains element')
   })
 
-  test('should not fire slid when slide is prevented', function (assert) {
+  QUnit.test('should not fire slid when slide is prevented', function (assert) {
     var done = assert.async()
     $('<div class="carousel"/>')
       .on('slide.bs.carousel', function (e) {
@@ -43,7 +43,7 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
-  test('should reset when slide is prevented', function (assert) {
+  QUnit.test('should reset when slide is prevented', function (assert) {
     var carouselHTML = '<div id="carousel-example-generic" class="carousel slide">'
         + '<ol class="carousel-indicators">'
         + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
@@ -88,7 +88,7 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
-  test('should fire slide event with direction', function (assert) {
+  QUnit.test('should fire slide event with direction', function (assert) {
     var carouselHTML = '<div id="myCarousel" class="carousel slide">'
         + '<div class="carousel-inner">'
         + '<div class="item active">'
@@ -142,7 +142,7 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
-  test('should fire slid event with direction', function (assert) {
+  QUnit.test('should fire slid event with direction', function (assert) {
     var carouselHTML = '<div id="myCarousel" class="carousel slide">'
         + '<div class="carousel-inner">'
         + '<div class="item active">'
@@ -196,7 +196,7 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
-  test('should fire slide event with relatedTarget', function (assert) {
+  QUnit.test('should fire slide event with relatedTarget', function (assert) {
     var template = '<div id="myCarousel" class="carousel slide">'
         + '<div class="carousel-inner">'
         + '<div class="item active">'
@@ -242,7 +242,7 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
-  test('should fire slid event with relatedTarget', function (assert) {
+  QUnit.test('should fire slid event with relatedTarget', function (assert) {
     var template = '<div id="myCarousel" class="carousel slide">'
         + '<div class="carousel-inner">'
         + '<div class="item active">'
@@ -288,7 +288,7 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
-  test('should set interval from data attribute', function (assert) {
+  QUnit.test('should set interval from data attribute', function (assert) {
     var templateHTML = '<div id="myCarousel" class="carousel slide">'
         + '<div class="carousel-inner">'
         + '<div class="item active">'
@@ -349,7 +349,7 @@ $(function () {
     $carousel.remove()
   })
 
-  test('should skip over non-items when using item indices', function (assert) {
+  QUnit.test('should skip over non-items when using item indices', function (assert) {
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">'
         + '<div class="carousel-inner">'
         + '<div class="item active">'
@@ -374,7 +374,7 @@ $(function () {
     assert.strictEqual($template.find('.item')[1], $template.find('.active')[0], 'second item active')
   })
 
-  test('should skip over non-items when using next/prev methods', function (assert) {
+  QUnit.test('should skip over non-items when using next/prev methods', function (assert) {
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">'
         + '<div class="carousel-inner">'
         + '<div class="item active">'
@@ -399,7 +399,7 @@ $(function () {
     assert.strictEqual($template.find('.item')[1], $template.find('.active')[0], 'second item active')
   })
 
-  test('should go to previous item if left arrow key is pressed', function (assert) {
+  QUnit.test('should go to previous item if left arrow key is pressed', function (assert) {
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
         + '<div class="carousel-inner">'
         + '<div id="first" class="item">'
@@ -424,7 +424,7 @@ $(function () {
     assert.strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item active')
   })
 
-  test('should go to next item if right arrow key is pressed', function (assert) {
+  QUnit.test('should go to next item if right arrow key is pressed', function (assert) {
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
         + '<div class="carousel-inner">'
         + '<div id="first" class="item active">'
@@ -449,7 +449,7 @@ $(function () {
     assert.strictEqual($template.find('.item')[1], $template.find('.active')[0], 'second item active')
   })
 
-  test('should support disabling the keyboard navigation', function (assert) {
+  QUnit.test('should support disabling the keyboard navigation', function (assert) {
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false" data-keyboard="false">'
         + '<div class="carousel-inner">'
         + '<div id="first" class="item active">'
@@ -478,7 +478,7 @@ $(function () {
     assert.strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item still active after left arrow press')
   })
 
-  test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
+  QUnit.test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
         + '<div class="carousel-inner">'
         + '<div id="first" class="item active">'
@@ -520,7 +520,7 @@ $(function () {
     assert.strictEqual($template.find('.item')[0], $template.find('.active')[0], 'first item still active after left arrow press in <textarea>')
   })
 
-  test('should only add mouseenter and mouseleave listeners when not on mobile', function (assert) {
+  QUnit.test('should only add mouseenter and mouseleave listeners when not on mobile', function (assert) {
     var isMobile     = 'ontouchstart' in document.documentElement
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false" data-pause="hover">'
         + '<div class="carousel-inner">'
@@ -542,7 +542,7 @@ $(function () {
     })
   })
 
-  test('should wrap around from end to start when wrap option is true', function (assert) {
+  QUnit.test('should wrap around from end to start when wrap option is true', function (assert) {
     var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="true">'
         + '<ol class="carousel-indicators">'
         + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
@@ -586,7 +586,7 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
-  test('should wrap around from start to end when wrap option is true', function (assert) {
+  QUnit.test('should wrap around from start to end when wrap option is true', function (assert) {
     var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="true">'
         + '<ol class="carousel-indicators">'
         + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
@@ -619,7 +619,7 @@ $(function () {
       .bootstrapCarousel('prev')
   })
 
-  test('should stay at the end when the next method is called and wrap is false', function (assert) {
+  QUnit.test('should stay at the end when the next method is called and wrap is false', function (assert) {
     var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="false">'
         + '<ol class="carousel-indicators">'
         + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
@@ -664,7 +664,7 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
-  test('should stay at the start when the prev method is called and wrap is false', function (assert) {
+  QUnit.test('should stay at the start when the prev method is called and wrap is false', function (assert) {
     var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="false">'
         + '<ol class="carousel-indicators">'
         + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'

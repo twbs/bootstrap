@@ -1,13 +1,13 @@
 $(function () {
   'use strict';
 
-  module('dropdowns plugin')
+  QUnit.module('dropdowns plugin')
 
-  test('should be defined on jquery object', function (assert) {
+  QUnit.test('should be defined on jquery object', function (assert) {
     assert.ok($(document.body).dropdown, 'dropdown method is defined')
   })
 
-  module('dropdowns', {
+  QUnit.module('dropdowns', {
     setup: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapDropdown = $.fn.dropdown.noConflict()
@@ -18,18 +18,18 @@ $(function () {
     }
   })
 
-  test('should provide no conflict', function (assert) {
+  QUnit.test('should provide no conflict', function (assert) {
     assert.strictEqual($.fn.dropdown, undefined, 'dropdown was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function (assert) {
+  QUnit.test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $dropdown = $el.bootstrapDropdown()
     assert.ok($dropdown instanceof $, 'returns jquery collection')
     assert.strictEqual($dropdown[0], $el[0], 'collection contains element')
   })
 
-  test('should not open dropdown if target is disabled via attribute', function (assert) {
+  QUnit.test('should not open dropdown if target is disabled via attribute', function (assert) {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>'
@@ -46,7 +46,7 @@ $(function () {
     assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
 
-  test('should not open dropdown if target is disabled via class', function (assert) {
+  QUnit.test('should not open dropdown if target is disabled via class', function (assert) {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<button href="#" class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>'
@@ -63,7 +63,7 @@ $(function () {
     assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
 
-  test('should add class open to menu if clicked', function (assert) {
+  QUnit.test('should add class open to menu if clicked', function (assert) {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -80,7 +80,7 @@ $(function () {
     assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
 
-  test('should test if element has a # before assuming it\'s a selector', function (assert) {
+  QUnit.test('should test if element has a # before assuming it\'s a selector', function (assert) {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="/foo/" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -98,7 +98,7 @@ $(function () {
   })
 
 
-  test('should remove "open" class if body is clicked', function (assert) {
+  QUnit.test('should remove "open" class if body is clicked', function (assert) {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -121,7 +121,7 @@ $(function () {
     assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed')
   })
 
-  test('should remove "open" class if body is clicked, with multiple dropdowns', function (assert) {
+  QUnit.test('should remove "open" class if body is clicked, with multiple dropdowns', function (assert) {
     var dropdownHTML = '<ul class="nav">'
         + '<li><a href="#menu1">Menu 1</a></li>'
         + '<li class="dropdown" id="testmenu">'
@@ -157,7 +157,7 @@ $(function () {
     assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed')
   })
 
-  test('should fire show and hide event', function (assert) {
+  QUnit.test('should fire show and hide event', function (assert) {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -191,7 +191,7 @@ $(function () {
   })
 
 
-  test('should fire shown and hidden event', function (assert) {
+  QUnit.test('should fire shown and hidden event', function (assert) {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -224,7 +224,7 @@ $(function () {
     $(document.body).click()
   })
 
-  test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
+  QUnit.test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
     var done = assert.async()
 
     var dropdownHTML = '<ul class="tabs">'
