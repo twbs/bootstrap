@@ -24,6 +24,10 @@ body {
   line-height: 40px;
 }
 
+.header h3:empty {
+    padding-bottom: 59px;
+}
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;
