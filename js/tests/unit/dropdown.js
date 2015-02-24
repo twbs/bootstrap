@@ -46,6 +46,23 @@ $(function () {
     ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
 
+  test('should set aria-expanded="true" on target when dropdown menu is shown', function (assert) {
+    var dropdownHTML = '<ul class="tabs">'
+        + '<li class="dropdown">'
+        + '<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</a>'
+        + '<ul class="dropdown-menu">'
+        + '<li><a href="#">Secondary link</a></li>'
+        + '<li><a href="#">Something else here</a></li>'
+        + '<li class="divider"/>'
+        + '<li><a href="#">Another link</a></li>'
+        + '</ul>'
+        + '</li>'
+        + '</ul>'
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+
+    assert.strictEqual($dropdown.attr('aria-expanded'), 'true', 'aria-expanded is set to string "true" on click')
+  })
+
   test('should not open dropdown if target is disabled via class', function () {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
