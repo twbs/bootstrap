@@ -395,7 +395,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 {% endhighlight %}
 
   <h2 id="modals-handle-update">Modals with dynamic heights</h2>
-  <p>Modals which have a dynamic height such as modals loading their content with AJAX should call <code>$('#myModal').data('bs.modal').handleUpdate()</code> when the content updates to ensure the modal and backdrop are the correct sizes. This only needs to occur if the modal is visible when the update to the modal's content occurs.</p>
+  <p>Modals which have a dynamic height which may overflow, such as modals loading their content with AJAX, should call <code>$('#myModal').data('bs.modal').handleUpdate()</code> when the content updates to ensure the modal is properly centered. This only needs to be called if the modal is visible when the update to the modal's size occurs.</p>
 
   <h2 id="modals-usage">Usage</h2>
   <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
