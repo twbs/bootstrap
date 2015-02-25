@@ -1,0 +1,73 @@
+<div class="bs-docs-section">   
+  <h1 id="customizing" class="page-header">Customizing Bootstrap</h1>    
+  <p class="lead">Bootstrap is best maintained when you treat it as a separate and independently-versioned dependency in your development environment. Doing this makes upgrading Bootstrap easier in the future.</p>    
+
+  <p>Once you've downloaded and included Bootstrap's styles and scripts, you can customize its components. Just create a new stylesheet (Less, if you like, or just plain CSS) to house your customizations.</p>   
+
+  <div class="bs-callout bs-callout-info">   
+    <h4>Compiled or minified?</h4>   
+    <p>Unless you plan on reading the CSS, go with minified stylesheets. It's the same code, just compacted. Minified styles use less bandwidth, which is good, especially in production environments.</p>   
+  </div>   
+
+  <p>From there, include whatever Bootstrap components and HTML content you need to create templates for your site's pages.</p>    
+
+  <h3 id="customizing-components">Customizing components</h3>    
+  <p>You can customize components to varying degrees, but most fall into two camps: <em>light customizations</em> and <em>overhauls</em>. Plenty examples of both are available from third parties.</p>    
+  <p>We define <em>light customizations</em> as superficial changes, for example, color and font changes to existing Bootstrap components. A light customization example is the <a href="http://translate.twitter.com">Twitter Translation Center</a> (coded by <a href="https://twitter.com/mdo">@mdo</a>). Let's look at how to implement the custom button we wrote for this site, <code>.btn-ttc</code>.</p>   
+  <p>The stock Bootstrap buttons require just one class, <code>.btn</code>, to start.  Here we extend the <code>.btn</code> style with a new modifier class, <code>.btn-ttc</code>, that we will create. This gives us a distinct custom look with minimal effort.</p>   
+  <p>Our customized button will be coded like this:</p>    
+{% highlight html %}   
+<button type="button" class="btn btn-ttc">Save changes</button>    
+{% endhighlight %}   
+  <p>Note how <code>.btn-ttc</code> is added to the standard <code>.btn</code> class.</p>    
+
+  <p>To implement this, in the custom stylesheet, add the following CSS:</p>   
+
+{% highlight scss %}   
+/* Custom button   
+-------------------------------------------------- */    
+
+/* Override base .btn styles */    
+/* Apply text and background changes to three key states: default, hover, and active (click). */   
+.btn-ttc,    
+.btn-ttc:hover,    
+.btn-ttc:active {    
+  color: white;    
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);   
+  background-color: #007da7;   
+}    
+
+/* Apply the custom-colored gradients */   
+/* Note: you'll need to include all the appropriate gradients for various browsers and standards. */   
+.btn-ttc {   
+  background-repeat: repeat-x;   
+  background-image: linear-gradient(top, #009ED2 0%, #007DA7 100%);    
+  ...    
+}    
+
+/* Set the hover state */    
+-/* An easy hover state is just to move the gradient up a small amount. Add other embellishments as you see fit. */   
+-.btn-ttc:hover {   
+-  background-position: 0 -15px;    
+-}    
+-{% endhighlight %}   
+
+  <p>In short: Look to the style source and duplicate the selectors you need for your modifications.</p>   
+  <p><strong>In summary, here's the basic workflow:</strong></p>   
+  <ul>   
+    <li>For each element you want to customize, find its code in the compiled Bootstrap CSS.</li>    
+    <li>Copy the component's selector and styles and paste them in your custom stylesheet. For instance, to customize the navbar background, just copy the <code>.navbar</code> style specification.</li>    
+    <li>In your custom stylesheet, edit the CSS you just copied from the Bootstrap source. No need for prepending additional classes, or appending <code>!important</code> here.  Keep it simple.</li>   
+    <li>Rinse and repeat until you're happy with your customizations.</li>   
+  </ul>    
+  <p>Once you are comfortable performing light customizations, visual overhauls are just as straightforward. For a site like <a href="http://yourkarma.com">Karma</a>, which uses Bootstrap as a CSS reset with heavy modifications, more extensive work is involved.  But the same principle applies: include Bootstrap's default stylesheet first, then apply your custom stylesheet.</p>    
+
+  <div class="bs-callout bs-callout-info">   
+    <h4>Alternate customization methods</h4>   
+    <p>While not recommended for folks new to Bootstrap, you may use one of two alternate methods for customization. The first is modifying the source <code>.less</code> files (making upgrades super difficult), and the second is mapping source Less code to <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">your own classes via mixins</a>. For the time being, neither of those options are documented here.</p>    
+  </div>   
+
+  <h3 id="removing-potential-bloat">Removing potential bloat</h3>    
+  <p>Not all sites and applications need to make use of everything Bootstrap has to offer, especially in production environments where optimizing bandwidth is an issue. We encourage you to remove whatever is unused with our <a href="../customize/">Customizer</a>.</p>    
+  <p>Using the Customizer, simply uncheck any component, feature, or asset you don't need. Hit download and swap out the default Bootstrap files with these newly customized ones. You'll get vanilla Bootstrap, but without the features *you* deem unnecessary. All custom builds include compiled and minified versions, so use whichever works for you.</p>    
+</div>
