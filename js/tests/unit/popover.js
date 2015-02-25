@@ -173,6 +173,31 @@ $(function () {
     assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events')
   })
 
+  QUnit.test('should add aria-describedby to the trigger on show', function (assert) {
+    var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover('show')
+
+    var id = $('.popover').attr('id')
+
+    assert.strictEqual($('#' + id).length, 1, 'has a unique id')
+    assert.strictEqual($('.popover').attr('aria-describedby'), $popover.attr('id'), 'tooltip id and aria-describedby on trigger match')
+    assert.ok($popover[0].hasAttribute('aria-describedby'), 'trigger has aria-describedby')
+  })
+
+  QUnit.test('should add aria-describedby to the trigger on show', function (assert) {
+    var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover('show')
+
+    assert.strictEqual($('.popover').length, 1, 'popover was inserted')
+
+    $popover.bootstrapPopover('hide')
+
+    assert.strictEqual($('.popover').length, 0, 'popover was hidden')
+    assert.strictEqual($popover[0].hasAttribute('aria-describedby'), false, 'trigger removed aria-describedby')
+  })
+
   QUnit.test('should render popover element using delegated selector', function (assert) {
     var $div = $('<div><a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a></div>')
       .appendTo('#qunit-fixture')
