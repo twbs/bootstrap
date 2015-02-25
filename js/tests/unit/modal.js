@@ -164,7 +164,7 @@ $(function () {
 
     $('<div id="modal-test"><div class="contents"/></div>')
       .on('shown.bs.modal', function () {
-        assert.notEqual($('#modal-test').length, 0, 'modal insterted into dom')
+        assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
         $('.contents').click()
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         $('#modal-test .modal-backdrop').click()
@@ -201,7 +201,7 @@ $(function () {
     var div = $('<div id="modal-test"/>')
     div
       .on('shown.bs.modal', function () {
-        assert.ok($('#modal-test').length, 'modal insterted into dom')
+        assert.ok($('#modal-test').length, 'modal inserted into dom')
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         div.trigger($.Event('keyup', { which: 27 }))
 
