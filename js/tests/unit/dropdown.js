@@ -58,12 +58,16 @@ $(function () {
         + '</ul>'
         + '</li>'
         + '</ul>'
-    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+    var $dropdown = $(dropdownHTML)
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+      .click()
 
     assert.strictEqual($dropdown.attr('aria-expanded'), 'true', 'aria-expanded is set to string "true" on click')
   })
 
   QUnit.test('should set aria-expanded="false" on target when dropdown menu is hidden', function (assert) {
+    var done = assert.async()
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown">Dropdown</a>'
@@ -79,8 +83,6 @@ $(function () {
       .appendTo('#qunit-fixture')
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
-
-    var done = assert.async()
 
     $dropdown
       .parent('.dropdown')
