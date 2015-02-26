@@ -42,8 +42,12 @@
     return hasWidth ? 'width' : 'height'
   }
 
-  Collapse.prototype.show = function () {
-    if (this.transitioning || this.$element.hasClass('in')) return
+  Collapse.prototype.show = function (e) {
+    if (this.transitioning || this.$element.hasClass('in')) {
+      e.preventDefault()
+      e.stopPropagation()
+      return
+    }
 
     var activesData
     var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
@@ -93,8 +97,12 @@
       .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
   }
 
-  Collapse.prototype.hide = function () {
-    if (this.transitioning || !this.$element.hasClass('in')) return
+  Collapse.prototype.hide = function (e) {
+    if (this.transitioning || !this.$element.hasClass('in')) {
+      e.preventDefault()
+      e.stopPropagation()
+      return
+    }
 
     var startEvent = $.Event('hide.bs.collapse')
     this.$element.trigger(startEvent)
@@ -131,8 +139,8 @@
       .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
   }
 
-  Collapse.prototype.toggle = function () {
-    this[this.$element.hasClass('in') ? 'hide' : 'show']()
+  Collapse.prototype.toggle = function (e) {
+    this[this.$element.hasClass('in') ? 'hide' : 'show'](e)
   }
 
   Collapse.prototype.getParent = function () {
@@ -166,7 +174,7 @@
   // COLLAPSE PLUGIN DEFINITION
   // ==========================
 
-  function Plugin(option) {
+  function Plugin(option, e) {
     return this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.collapse')
@@ -174,7 +182,7 @@
 
       if (!data && options.toggle && option == 'show') options.toggle = false
       if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
-      if (typeof option == 'string') data[option]()
+      if (typeof option == 'string') data[option](e)
     })
   }
 
@@ -205,7 +213,7 @@
     var data    = $target.data('bs.collapse')
     var option  = data ? 'toggle' : $.extend({}, $this.data(), { trigger: this })
 
-    Plugin.call($target, option)
+    Plugin.call($target, option, e)
   })
 
 }(jQuery);
