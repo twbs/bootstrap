@@ -916,12 +916,13 @@ if (typeof jQuery === 'undefined') {
   // ======================
 
   var Modal = function (element, options) {
-    this.options        = options
-    this.$body          = $(document.body)
-    this.$element       = $(element)
-    this.$backdrop      = null
-    this.isShown        = null
-    this.scrollbarWidth = 0
+    this.options         = options
+    this.$body           = $(document.body)
+    this.$element        = $(element)
+    this.$backdrop       = null
+    this.isShown         = null
+    this.originalBodyPad = null
+    this.scrollbarWidth  = 0
 
     if (this.options.remote) {
       this.$element
@@ -1161,11 +1162,12 @@ if (typeof jQuery === 'undefined') {
 
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
+    this.originalBodyPad = document.body.style.paddingRight || ''
     if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
   }
 
   Modal.prototype.resetScrollbar = function () {
-    this.$body.css('padding-right', '')
+    this.$body.css('padding-right', this.originalBodyPad)
   }
 
   Modal.prototype.measureScrollbar = function () { // thx walsh
