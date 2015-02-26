@@ -8,11 +8,11 @@ $(function () {
   })
 
   QUnit.module('collapse', {
-    setup: function () {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapCollapse = $.fn.collapse.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.collapse = $.fn.bootstrapCollapse
       delete $.fn.bootstrapCollapse
     }

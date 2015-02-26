@@ -8,11 +8,11 @@ $(function () {
   })
 
   QUnit.module('scrollspy', {
-    setup: function () {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapScrollspy = $.fn.scrollspy.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.scrollspy = $.fn.bootstrapScrollspy
       delete $.fn.bootstrapScrollspy
     }

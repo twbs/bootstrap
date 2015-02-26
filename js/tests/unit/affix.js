@@ -8,11 +8,11 @@ $(function () {
   })
 
   QUnit.module('affix', {
-    setup: function () {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapAffix = $.fn.affix.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.affix = $.fn.bootstrapAffix
       delete $.fn.bootstrapAffix
     }

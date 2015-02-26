@@ -8,11 +8,11 @@ $(function () {
   })
 
   QUnit.module('tooltip', {
-    setup: function () {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapTooltip = $.fn.tooltip.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.tooltip = $.fn.bootstrapTooltip
       delete $.fn.bootstrapTooltip
     }

@@ -8,11 +8,11 @@ $(function () {
   })
 
   QUnit.module('dropdowns', {
-    setup: function () {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapDropdown = $.fn.dropdown.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.dropdown = $.fn.bootstrapDropdown
       delete $.fn.bootstrapDropdown
     }

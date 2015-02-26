@@ -8,11 +8,11 @@ $(function () {
   })
 
   QUnit.module('alert', {
-    setup: function () {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapAlert = $.fn.alert.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.alert = $.fn.bootstrapAlert
       delete $.fn.bootstrapAlert
     }

@@ -8,11 +8,11 @@ $(function () {
   })
 
   QUnit.module('tabs', {
-    setup: function () {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapTab = $.fn.tab.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.tab = $.fn.bootstrapTab
       delete $.fn.bootstrapTab
     }
