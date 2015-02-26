@@ -17,7 +17,7 @@
     this.options        = options
     this.$body          = $(document.body)
     this.$element       = $(element)
-    this.$backdrop      =
+    this.$backdrop      = null
     this.isShown        = null
     this.scrollbarWidth = 0
 
