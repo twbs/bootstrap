@@ -8,11 +8,11 @@ $(function () {
   })
 
   QUnit.module('button', {
-    setup: function () {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapButton = $.fn.button.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.button = $.fn.bootstrapButton
       delete $.fn.bootstrapButton
     }

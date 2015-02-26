@@ -8,11 +8,11 @@ $(function () {
   })
 
   QUnit.module('popover', {
-    setup: function () {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapPopover = $.fn.popover.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.popover = $.fn.bootstrapPopover
       delete $.fn.bootstrapPopover
     }

@@ -8,11 +8,11 @@ $(function () {
   })
 
   QUnit.module('carousel', {
-    setup: function () {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapCarousel = $.fn.carousel.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.carousel = $.fn.bootstrapCarousel
       delete $.fn.bootstrapCarousel
     }
