@@ -80,7 +80,7 @@ $(function () {
     $('<div id="test1"/>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.collapse', function () {
-        assert.ok(!$target.hasClass('collapsed'))
+        assert.ok(!$target.hasClass('collapsed'), 'target does not have collapsed class')
         done()
       })
 
@@ -95,7 +95,41 @@ $(function () {
     $('<div id="test1" class="in"/>')
       .appendTo('#qunit-fixture')
       .on('hidden.bs.collapse', function () {
-        assert.ok($target.hasClass('collapsed'))
+        assert.ok($target.hasClass('collapsed'), 'target has collapsed class')
+        done()
+      })
+
+    $target.click()
+  })
+
+  QUnit.test('should remove "collapsed" class from all triggers targeting the collapse when the collapse is shown', function (assert) {
+    var done = assert.async()
+
+    var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
+    var $alt = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1"/>')
+      .appendTo('#qunit-fixture')
+      .on('shown.bs.collapse', function () {
+        assert.ok(!$target.hasClass('collapsed'), 'target trigger does not have collapsed class')
+        assert.ok(!$alt.hasClass('collapsed'), 'alt trigger does not have collapsed class')
+        done()
+      })
+
+    $target.click()
+  })
+
+  QUnit.test('should add "collapsed" class to all triggers targeting the collapse when the collapse is hidden', function (assert) {
+    var done = assert.async()
+
+    var $target = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
+    var $alt = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1" class="in"/>')
+      .appendTo('#qunit-fixture')
+      .on('hidden.bs.collapse', function () {
+        assert.ok($target.hasClass('collapsed'), 'target has collapsed class')
+        assert.ok($alt.hasClass('collapsed'), 'alt trigger has collapsed class')
         done()
       })
 
@@ -230,6 +264,40 @@ $(function () {
     $target.click()
   })
 
+  QUnit.test('should set aria-expanded="true" on all triggers targeting the collapse when the collapse is shown', function (assert) {
+    var done = assert.async()
+
+    var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1" aria-expanded="false"/>').appendTo('#qunit-fixture')
+    var $alt = $('<a data-toggle="collapse" class="collapsed" href="#test1" aria-expanded="false"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1"/>')
+      .appendTo('#qunit-fixture')
+      .on('shown.bs.collapse', function () {
+        assert.strictEqual($target.attr('aria-expanded'), 'true', 'aria-expanded on target is "true"')
+        assert.strictEqual($alt.attr('aria-expanded'), 'true', 'aria-expanded on alt is "true"')
+        done()
+      })
+
+    $target.click()
+  })
+
+  QUnit.test('should set aria-expanded="false" on all triggers targeting the collapse when the collapse is hidden', function (assert) {
+    var done = assert.async()
+
+    var $target = $('<a data-toggle="collapse" href="#test1" aria-expanded="true"/>').appendTo('#qunit-fixture')
+    var $alt = $('<a data-toggle="collapse" href="#test1" aria-expanded="true"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1" class="in"/>')
+      .appendTo('#qunit-fixture')
+      .on('hidden.bs.collapse', function () {
+        assert.strictEqual($target.attr('aria-expanded'), 'false', 'aria-expanded on target is "false"')
+        assert.strictEqual($alt.attr('aria-expanded'), 'false', 'aria-expanded on alt is "false"')
+        done()
+      })
+
+    $target.click()
+  })
+
   QUnit.test('should change aria-expanded from active accordion target to "false" and set the newly active one to "true"', function (assert) {
     var done = assert.async()
 
@@ -293,7 +361,7 @@ $(function () {
     $target1.click()
 
     setTimeout(function () {
-      assert.ok(!showFired, 'show event didn\'t fire')
+      assert.ok(!showFired, 'show event did not fire')
       done()
     }, 1)
   })
