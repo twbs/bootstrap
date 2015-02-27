@@ -28,6 +28,11 @@ body {
   font-weight: normal;
 }
 
+/* In-line code within headings retain the heading background */
+h4 code {
+  background-color: inherit;
+}
+
 /* Outline button for use within the docs */
 .btn-outline {
   color: #563d7c;
