@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <h3 id="download-cdn">Bootstrap CDN</h3>
+  <h2 id="download-cdn">Bootstrap CDN</h2>
   <p>The folks over at <a href="http://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
 {% highlight html %}
 <!-- Latest compiled and minified CSS -->
@@ -40,11 +40,11 @@
 <script src="{{ site.cdn.js }}"></script>
 {% endhighlight %}
 
-  <h3 id="download-bower">Install with Bower</h3>
+  <h2 id="download-bower">Install with Bower</h2>
   <p>You can also install and manage Bootstrap's Less, CSS, JavaScript, and fonts using <a href="http://bower.io">Bower</a>:</p>
   {% highlight bash %}$ bower install bootstrap{% endhighlight %}
 
-  <h3 id="download-npm">Install with npm</h3>
+  <h2 id="download-npm">Install with npm</h2>
   <p>You can also install Bootstrap using <a href="https://www.npmjs.com">npm</a>:</p>
   {% highlight bash %}$ npm install bootstrap{% endhighlight %}
   <p><code>require('bootstrap')</code> will load all of Bootstrap's jQuery plugins onto the jQuery object. The <code>bootstrap</code> module itself does not export anything. You can manually load Bootstrap's jQuery plugins individually by loading the <code>/js/*.js</code> files under the package's top-level directory.</p>
@@ -54,6 +54,6 @@
     <li><code>style</code> - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)</li>
   </ul>
 
-  <h3 id="download-autoprefixer">Autoprefixer required for Less/Sass</h3>
+  <h2 id="download-autoprefixer">Autoprefixer required for Less/Sass</h2>
   <p>Bootstrap uses <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> to deal with <a href="http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm">CSS vendor prefixes</a>. If you're compiling Bootstrap from its Less/Sass source and not using our Gruntfile, you'll need to integrate Autoprefixer into your build process yourself. If you're using precompiled Bootstrap or using our Gruntfile, you don't need to worry about this because Autoprefixer is already integrated into our Gruntfile.</p>
 </div>
