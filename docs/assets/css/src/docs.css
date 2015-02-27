@@ -29,7 +29,7 @@ body {
 }
 
 /* In-line code within headings retain the heading background */
-h4 code {
+h4 code, h3 code, h2 code {
   background-color: inherit;
 }
 
