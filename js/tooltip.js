@@ -238,17 +238,9 @@
     offset.top  = offset.top  + marginTop
     offset.left = offset.left + marginLeft
 
-    var screenWidth = $(window).width();
-    var screenHeight = $(window).height();
-    var resizeWidth = false;
-    var resizeHeight = false;
-    if (offset.left + width > screenWidth){
-      resizeWidth = true;
-    }
-    if (offset.top + height > screenHeight){
-      resizeHeight = true;
-    }
-
+    var resizeWidth  = (offset.left + width  > $(window).width());
+    var resizeHeight = (offset.top  + height > $(window).height());
+    
     // $.fn.offset doesn't round pixel values
     // so we use setOffset directly with our own function B-0
     $.offset.setOffset($tip[0], $.extend({
