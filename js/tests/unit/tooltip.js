@@ -920,11 +920,7 @@ $(function () {
 
       setTimeout(function () {
         ok(!$tooltip.data('bs.tooltip').$tip, '200ms: tooltip removed')
-        start()
-      }, 200)
-
-      setTimeout(function () {
-        ok(!$tooltip.data('bs.tooltip').arrow, '200ms: tooltip arrow removed')
+        ok(!$tooltip.data('bs.tooltip').$arrow, '200ms: tooltip arrow removed')
         start()
       }, 200)
 
