@@ -294,8 +294,8 @@
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
       that.$element
-          .removeAttr('aria-describedby')
-          .trigger('hidden.bs.' + that.type)
+        .removeAttr('aria-describedby')
+        .trigger('hidden.bs.' + that.type)
       that.$tip = null
       that.$arrow = null
       callback && callback()
@@ -303,9 +303,9 @@
 
     this.$element.trigger(e)
 
-    if (e.isDefaultPrevented()) return;
+    if (e.isDefaultPrevented()) return
 
-    $tip.removeClass('in');
+    $tip.removeClass('in')
 
     $.support.transition && this.$tip.hasClass('fade') ?
       $tip
