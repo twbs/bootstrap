@@ -339,7 +339,8 @@
       elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
     }
     var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset()
-    var scroll    = { scroll: isBody ? { top: document.documentElement.scrollTop || document.body.scrollTop, left: document.documentElement.scrollLeft || document.body.scrollLeft } : { top: $element.scrollTop(), left: $element.scrollLeft() } }
+    var scroll    = isBody ? { scroll: { top: document.documentElement.scrollTop || document.body.scrollTop, left: document.documentElement.scrollLeft || document.body.scrollLeft } }
+                           : { scroll: { top: $element.scrollTop(), left: $element.scrollLeft() } }
     var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
 
     return $.extend({}, elRect, scroll, outerDims, elOffset)
