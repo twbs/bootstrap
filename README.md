@@ -28,7 +28,8 @@ Four quick start options are available:
 - [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.3.2.zip).
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
 - Install with [Bower](http://bower.io): `bower install bootstrap`.
-- Install with [npm](https://www.npmjs.org): `npm install bootstrap`.
+- Install with [npm](https://www.npmjs.com): `npm install bootstrap`.
+- Install with [Meteor](https://www.meteor.com/): `meteor add twbs:bootstrap`.
 
 Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
@@ -92,10 +93,11 @@ Editor preferences are available in the [editor config](https://github.com/twbs/
 
 Keep track of development and community news.
 
-- Follow [@twbootstrap on Twitter](https://twitter.com/twbootstrap).
+- Follow [@getbootstrap on Twitter](https://twitter.com/getbootstrap).
 - Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
+- Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/twbs-bootstrap) or similar delivery mechanisms for maximum discoverability.
 
 
 

@@ -9,7 +9,7 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ZeroClipboard */
+/* global ZeroClipboard, addAnchors */
 
 !function ($) {
   'use strict';
@@ -153,3 +153,8 @@
   })
 
 }(jQuery)
+
+;(function () {
+  'use strict';
+  addAnchors('.bs-docs-container h1, .bs-docs-container h2, .bs-docs-container h3, .bs-docs-container h4, .bs-docs-container h5');
+})();

@@ -289,7 +289,8 @@ Toggles an element's popover. **Returns to the caller before the popover has act
 
 #### .popover('destroy')
 
-Hides and destroys an element's popover.
+Hides and destroys an element's popover. Popvoers that use delegation (which are created using [the `selector` option](#popovers-options)) cannot be individually destroyed on descendant trigger elements.
+
 
 {% highlight js %}$('#element').popover('destroy'){% endhighlight %}
 

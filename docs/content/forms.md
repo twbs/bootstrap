@@ -336,7 +336,7 @@ We remove the default `outline` styles on some form controls and apply a `box-sh
 
 ## Disabled states
 
-Add the `disabled` boolean attribute on an `<input>`, `<select>`, or `<textarea>` to prevent user input and trigger a slightly different look.
+Add the `disabled` boolean attribute on an input to prevent user interactions. Disabled inputs appear lighter and add a `not-allowed` cursor.
 
 {% highlight html %}
 <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
@@ -379,7 +379,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 
 ## Readonly inputs
 
-Add the `readonly` boolean attribute on an input to prevent user input and style the input as disabled.
+Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.<
 
 {% example html %}
 <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
@@ -388,6 +388,12 @@ Add the `readonly` boolean attribute on an input to prevent user input and style
 ## Validation
 
 Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.control-label`, `.form-control`, and `.help-block` within that element will receive the validation styles.
+
+<div class="bs-callout bs-callout-warning" id="callout-form-validation-state-accessibility">
+  <h4>Conveying validation state to assistive technologies and colorblind users</h4>
+  <p>Using these validation styles to denote the state of a form control only provides a visual, color-based indication, which will not be conveyed to users of assistive technologies - such as screen readers - or to colorblind users.</p>
+  <p>Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's <code>&lt;label&gt;</code> text itself (as is the case in the following code example), include a <a href="../components/#glyphicons">Glyphicon</a> (with appropriate alternative text using the <code>.sr-only</code> class - see the <a href="../components/#glyphicons-examples">Glyphicon examples</a>), or by providing an additional <a href="#forms-help-text">help text</a> block. Specifically for assistive technologies, invalid form controls can also be assigned an <code>aria-invalid="true"</code> attribute.</p>
+</div>
 
 {% example html %}
 <div class="form-group has-success">

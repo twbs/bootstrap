@@ -37,3 +37,7 @@ Add classes to an `<img>` element to easily style images in any project.
 <img src="..." alt="..." class="img-circle">
 <img src="..." alt="..." class="img-thumbnail">
 {% endhighlight %}
+
+## Aligning images
+
+To center images with `.img-responsive`, use `.center-block`. For all other images, use `.text-center`. [See the helper classes section](/css/helpers) for more details about `.center-block` usage.

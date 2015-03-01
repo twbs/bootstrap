@@ -74,9 +74,9 @@ body {
 {% endhighlight %}
 
 {% highlight html %}
-<body data-spy="scroll" data-target=".navbar-example">
+<body data-spy="scroll" data-target="#navbar-example">
   ...
-  <div class="navbar-example">
+  <div id="navbar-example">
     <ul class="nav nav-tabs" role="tablist">
       ...
     </ul>
@@ -90,7 +90,7 @@ body {
 After adding `position: relative;` in your CSS, call the scrollspy via JavaScript:
 
 {% highlight js %}
-$('body').scrollspy({ target: '.navbar-example' })
+$('body').scrollspy({ target: '#navbar-example' })
 {% endhighlight %}
 
 <div class="bs-callout bs-callout-danger">

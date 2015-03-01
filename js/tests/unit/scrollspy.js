@@ -1,35 +1,35 @@
 $(function () {
   'use strict';
 
-  module('scrollspy plugin')
+  QUnit.module('scrollspy plugin')
 
-  test('should be defined on jquery object', function () {
-    ok($(document.body).scrollspy, 'scrollspy method is defined')
+  QUnit.test('should be defined on jquery object', function (assert) {
+    assert.ok($(document.body).scrollspy, 'scrollspy method is defined')
   })
 
-  module('scrollspy', {
-    setup: function () {
+  QUnit.module('scrollspy', {
+    beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapScrollspy = $.fn.scrollspy.noConflict()
     },
-    teardown: function () {
+    afterEach: function () {
       $.fn.scrollspy = $.fn.bootstrapScrollspy
       delete $.fn.bootstrapScrollspy
     }
   })
 
-  test('should provide no conflict', function () {
-    strictEqual($.fn.scrollspy, undefined, 'scrollspy was set back to undefined (org value)')
+  QUnit.test('should provide no conflict', function (assert) {
+    assert.strictEqual($.fn.scrollspy, undefined, 'scrollspy was set back to undefined (org value)')
   })
 
-  test('should return jquery collection containing the element', function () {
+  QUnit.test('should return jquery collection containing the element', function (assert) {
     var $el = $('<div/>')
     var $scrollspy = $el.bootstrapScrollspy()
-    ok($scrollspy instanceof $, 'returns jquery collection')
-    strictEqual($scrollspy[0], $el[0], 'collection contains element')
+    assert.ok($scrollspy instanceof $, 'returns jquery collection')
+    assert.strictEqual($scrollspy[0], $el[0], 'collection contains element')
   })
 
-  test('should only switch "active" class on current target', function (assert) {
+  QUnit.test('should only switch "active" class on current target', function (assert) {
     var done = assert.async()
 
     var sectionHTML = '<div id="root" class="active">'
@@ -66,14 +66,14 @@ $(function () {
       .bootstrapScrollspy({ target: '#ss-target' })
 
     $scrollspy.on('scroll.bs.scrollspy', function () {
-      ok($section.hasClass('active'), '"active" class still on root node')
+      assert.ok($section.hasClass('active'), '"active" class still on root node')
       done()
     })
 
     $scrollspy.scrollTop(350)
   })
 
-  test('should correctly select middle navigation option when large offset is used', function (assert) {
+  QUnit.test('should correctly select middle navigation option when large offset is used', function (assert) {
     var done = assert.async()
 
     var sectionHTML = '<div id="header" style="height: 500px;"></div>'
@@ -97,16 +97,16 @@ $(function () {
     $scrollspy.bootstrapScrollspy({ target: '#navigation', offset: $scrollspy.position().top })
 
     $scrollspy.on('scroll.bs.scrollspy', function () {
-      ok(!$section.find('#one-link').parent().hasClass('active'), '"active" class removed from first section')
-      ok($section.find('#two-link').parent().hasClass('active'), '"active" class on middle section')
-      ok(!$section.find('#three-link').parent().hasClass('active'), '"active" class not on last section')
+      assert.ok(!$section.find('#one-link').parent().hasClass('active'), '"active" class removed from first section')
+      assert.ok($section.find('#two-link').parent().hasClass('active'), '"active" class on middle section')
+      assert.ok(!$section.find('#three-link').parent().hasClass('active'), '"active" class not on last section')
       done()
     })
 
     $scrollspy.scrollTop(550)
   })
 
-  test('should add the active class to the correct element', function (assert) {
+  QUnit.test('should add the active class to the correct element', function (assert) {
     var navbarHtml =
         '<nav class="navbar">'
       + '<ul class="nav">'
@@ -130,7 +130,7 @@ $(function () {
       var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
       var done = assert.async()
       $content.one('scroll', function () {
-        ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
+        assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
         done()
         deferred.resolve()
       })
@@ -142,7 +142,7 @@ $(function () {
       .then(function () { return testElementIsActiveAfterScroll('#li-2', '#div-2') })
   })
 
-  test('should clear selection if above the first section', function (assert) {
+  QUnit.test('should clear selection if above the first section', function (assert) {
     var done = assert.async()
 
     var sectionHTML = '<div id="header" style="height: 500px;"></div>'
@@ -170,12 +170,12 @@ $(function () {
         offset: $scrollspy.position().top
       })
       .one('scroll.bs.scrollspy', function () {
-        strictEqual($('.active').length, 1, '"active" class on only one element present')
-        strictEqual($('.active').has('#two-link').length, 1, '"active" class on second section')
+        assert.strictEqual($('.active').length, 1, '"active" class on only one element present')
+        assert.strictEqual($('.active').has('#two-link').length, 1, '"active" class on second section')
 
         $scrollspy
           .one('scroll.bs.scrollspy', function () {
-            strictEqual($('.active').length, 0, 'selection cleared')
+            assert.strictEqual($('.active').length, 0, 'selection cleared')
             done()
           })
           .scrollTop(0)

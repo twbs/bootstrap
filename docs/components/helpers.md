@@ -94,14 +94,14 @@ Set an element to `display: block;` and center via `margin`. Available as a mixi
 {% endexample %}
 
 {% highlight scss %}
-// Classes
+// Class
 .center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
-// Usage as mixins
+// Usage as a mixin
 .element {
   @include center-block;
 }
@@ -126,7 +126,7 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
   }
 }
 
-// Usage as a Mixin
+// Usage as a mixin
 .element {
   @include clearfix;
 }
@@ -151,12 +151,12 @@ The `.invisible` class can be used to toggle only the visibility of an element, 
 {% endhighlight %}
 
 {% highlight scss %}
-// Classes
+// Class
 .invisible {
   visibility: hidden;
 }
 
-// Usage as mixin
+// Usage as a mixin
 .element {
   .invisible();
 }
@@ -171,7 +171,7 @@ Hide an element to all devices **except screen readers** with `.sr-only`. Combin
 {% endhighlight %}
 
 {% highlight scss %}
-// Usage as a Mixin
+// Usage as a mixin
 .skip-navigation {
   @include sr-only;
   @include sr-only-focusable;
@@ -187,7 +187,7 @@ Utilize the `.text-hide` class or mixin to help replace an element's text conten
 {% endhighlight %}
 
 {% highlight scss %}
-// Usage as a Mixin
+// Usage as a mixin
 .heading {
   @include text-hide;
 }
