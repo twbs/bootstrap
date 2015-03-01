@@ -162,7 +162,7 @@ abbr[data-original-title] {
 }
 .initialism {
   font-size: 90%;
-  @include text-uppercase;
+  text-transform: uppercase;
 }
 
 // Blockquotes

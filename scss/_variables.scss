@@ -213,6 +213,8 @@ $input-height-lg:                (($font-size-lg * $line-height-lg) + ($padding-
 //** Small `.form-control` height
 $input-height-sm:                (($font-size-sm * $line-height-sm) + ($padding-sm-vertical * 2) + ($border-width * 2)) !default;
 
+$form-group-margin-bottom:       15px;
+
 $legend-color:                   $gray-dark !default;
 $legend-border-color:            #e5e5e5 !default;
 
