@@ -106,9 +106,9 @@
 
     e = $.Event('hide.bs.modal')
 
-    this.$element.trigger(e)
-
     if (!this.isShown || e.isDefaultPrevented()) return
+
+    this.$element.trigger(e)
 
     this.isShown = false
 
@@ -121,6 +121,7 @@
       .removeClass('in')
       .attr('aria-hidden', true)
       .off('click.dismiss.bs.modal')
+      .hide()
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
@@ -142,7 +143,7 @@
   Modal.prototype.escape = function () {
     if (this.isShown && this.options.keyboard) {
       this.$element.on('keydown.dismiss.bs.modal', $.proxy(function (e) {
-        e.which == 27 && this.hide()
+        e.which == 27 && this.hideModal()
       }, this))
     } else if (!this.isShown) {
       this.$element.off('keydown.dismiss.bs.modal')
@@ -159,12 +160,14 @@
 
   Modal.prototype.hideModal = function () {
     var that = this
-    this.$element.hide()
+    this.hide()
     this.backdrop(function () {
-      that.$body.removeClass('modal-open')
-      that.resetAdjustments()
-      that.resetScrollbar()
-      that.$element.trigger('hidden.bs.modal')
+      if (that.$body.hasClass('modal-open')) {
+        that.$body.removeClass('modal-open')
+        that.resetAdjustments()
+        that.resetScrollbar()
+        that.$element.trigger('hidden.bs.modal')
+      }
     })
   }
 

@@ -232,6 +232,22 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should trigger hide event when escape key is pressed', function (assert) {
+    var done = assert.async()
+    var triggered = false
+
+    var div = $('<div id="modal-test"><div class="contents"/></div>')
+    div.on('shown.bs.modal', function () {
+        div.trigger($.Event('keydown', { which: 27 }))
+      })
+      .on('hide.bs.modal', function () {
+        triggered = true
+        assert.strictEqual(triggered, true, 'modal hide event triggered on escape key')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should close reopened modal with [data-dismiss="modal"] click', function (assert) {
     var done = assert.async()
 
