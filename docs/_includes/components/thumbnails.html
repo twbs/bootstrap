@@ -2,10 +2,11 @@
   <h1 id="thumbnails" class="page-header">Thumbnails</h1>
 
   <p class="lead">Extend Bootstrap's <a href="../css/#grid">grid system</a> with the thumbnail component to easily display grids of images, videos, text, and more.</p>
+  <p>If you're looking for Pinterest-like presentation of thumbnails of varying heights and/or widths, you'll need to use a third-party plugin such as <a href="http://masonry.desandro.com">Masonry</a>, <a href="http://isotope.metafizzy.co">Isotope</a>, or <a href="http://salvattore.com">Salvattore</a>.</p>
 
-  <h3 id="thumbnails-default">Default example</h3>
+  <h2 id="thumbnails-default">Default example</h2>
   <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-thumbnails">
     <div class="row">
       <div class="col-xs-6 col-md-3">
         <a href="#" class="thumbnail">
@@ -33,16 +34,16 @@
 <div class="row">
   <div class="col-xs-6 col-md-3">
     <a href="#" class="thumbnail">
-      <img data-src="holder.js/100%x180" alt="...">
+      <img src="..." alt="...">
     </a>
   </div>
   ...
 </div>
 {% endhighlight %}
 
-  <h3 id="thumbnails-custom-content">Custom content</h3>
+  <h2 id="thumbnails-custom-content">Custom content</h2>
   <p>With a bit of extra markup, it's possible to add any kind of HTML content like headings, paragraphs, or buttons into thumbnails.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="thumbnails-with-custom-content">
     <div class="row">
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
@@ -80,7 +81,7 @@
 <div class="row">
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img data-src="holder.js/300x300" alt="...">
+      <img src="..." alt="...">
       <div class="caption">
         <h3>Thumbnail label</h3>
         <p>...</p>

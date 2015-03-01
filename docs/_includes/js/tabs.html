@@ -3,7 +3,7 @@
 
   <h2 id="tabs-examples">Example tabs</h2>
   <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</p>
-  <div class="bs-example bs-example-tabs" role="tabpanel">
+  <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
     <ul id="myTab" class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Home</a></li>
       <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Profile</a></li>
@@ -31,7 +31,7 @@
     </div>
   </div><!-- /example -->
 
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-tabs-extends-component">
     <h4>Extends tabbed navigation</h4>
     <p>This plugin extends the <a href="../components/#nav-tabs">tabbed navigation component</a> to add tabbable areas.</p>
   </div>
@@ -128,10 +128,10 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
   </ol>
   <p>If no tab was already active, then the <code>hide.bs.tab</code> and <code>hidden.bs.tab</code> events will not be fired.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
+         <th>Event Type</th>
          <th>Description</th>
        </tr>
       </thead>

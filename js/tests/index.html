@@ -12,10 +12,6 @@
     <link rel="stylesheet" href="vendor/qunit.css" media="screen">
     <script src="vendor/qunit.js"></script>
     <style>
-      #qunit-tests > li.pass {
-        display: none;/* Make it easier to see failing tests in Sauce screencasts */
-      }
-
       #qunit-fixture {
         top: 0;
         left: 0;
@@ -43,12 +39,12 @@
 
       QUnit.testStart(function (testDetails) {
         $(window).scrollTop(0)
-        QUnit.log = function (details) {
+        QUnit.log(function (details) {
           if (!details.result) {
             details.name = testDetails.name
             log.push(details)
           }
-        }
+        })
       })
 
       // Cleanup

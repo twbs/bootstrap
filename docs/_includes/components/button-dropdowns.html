@@ -3,14 +3,14 @@
 
   <p class="lead">Use any button to trigger a dropdown menu by placing it within a <code>.btn-group</code> and providing the proper menu markup.</p>
 
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-btndropdown-dependency">
     <h4>Plugin dependency</h4>
     <p>Button dropdowns require the <a href="../javascript/#dropdowns">dropdown plugin</a> to be included in your version of Bootstrap.</p>
   </div>
 
-  <h3 id="btn-dropdowns-single">Single button dropdowns</h3>
+  <h2 id="btn-dropdowns-single">Single button dropdowns</h2>
   <p>Turn a button into a dropdown toggle with some basic markup changes.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="single-button-dropdown">
     <div class="btn-group">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Default <span class="caret"></span></button>
       <ul class="dropdown-menu" role="menu">
@@ -88,9 +88,9 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="btn-dropdowns-split">Split button dropdowns</h3>
+  <h2 id="btn-dropdowns-split">Split button dropdowns</h2>
   <p>Similarly, create split button dropdowns with the same markup changes, only with a separate button.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="split-button-dropdown">
     <div class="btn-group">
       <button type="button" class="btn btn-default">Default</button>
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -194,9 +194,9 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="btn-dropdowns-sizing">Sizing</h3>
+  <h2 id="btn-dropdowns-sizing">Sizing</h2>
   <p>Button dropdowns work with buttons of all sizes.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="button-dropdown-sizing">
     <div class="btn-toolbar" role="toolbar">
       <div class="btn-group">
         <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -272,9 +272,9 @@
 </div>
 {% endhighlight %}
 
-  <h3 id="btn-dropdowns-dropup">Dropup variation</h3>
+  <h2 id="btn-dropdowns-dropup">Dropup variation</h2>
   <p>Trigger dropdown menus above elements by adding <code>.dropup</code> to the parent.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="button-dropdown-dropup">
     <div class="btn-toolbar" role="toolbar">
       <div class="btn-group dropup">
         <button type="button" class="btn btn-default">Dropup</button>

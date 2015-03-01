@@ -3,19 +3,19 @@
 
   <p class="lead">Navs available in Bootstrap have shared markup, starting with the base <code>.nav</code> class, as well as shared states. Swap modifier classes to switch between each style.</p>
 
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-navs-tabs-plugin">
     <h4>Using navs for tab panels requires JavaScript tabs plugin</h4>
     <p>For tabs with tabbable areas, you must use the <a href="../javascript/#tabs">tabs JavaScript plugin</a>. The markup will also require additional <code>role</code> and ARIA attributes – see the plugin's <a href="../javascript/#tabs-usage">example markup</a> for further details.</p>
   </div>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-navs-accessibility">
     <h4>Make navs used as navigation accessible</h4>
     <p>If you are using navs to provide a navigation bar, be sure to add a <code>role="navigation"</code> to the most logical parent container of the <code>&lt;ul&gt;</code>, or wrap a <code>&lt;nav&gt;</code> element around the whole navigation. Do not add the role to the <code>&lt;ul&gt;</code> itself, as this would prevent it from being announced as an actual list by assistive technologies.</p>
   </div>
 
   <h2 id="nav-tabs">Tabs</h2>
   <p>Note the <code>.nav-tabs</code> class requires the <code>.nav</code> base class.</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-nav-tabs">
     <ul class="nav nav-tabs">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Profile</a></li>
@@ -33,7 +33,7 @@
 
   <h2 id="nav-pills">Pills</h2>
   <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-nav-pills">
     <ul class="nav nav-pills">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Profile</a></li>
@@ -48,8 +48,8 @@
 </ul>
 {% endhighlight %}
   <p>Pills are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
-  <div class="bs-example">
-    <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+  <div class="bs-example" data-example-id="simple-nav-stacked">
+    <ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Profile</a></li>
       <li role="presentation"><a href="#">Messages</a></li>
@@ -65,11 +65,11 @@
   <h2 id="nav-justified">Justified</h2>
   <p>Easily make tabs or pills equal widths of their parent at screens wider than 768px with <code>.nav-justified</code>. On smaller screens, the nav links are stacked.</p>
   <p><strong class="text-danger">Justified navbar nav links are currently not supported.</strong></p>
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-navs-justified-safari">
     <h4>Safari and responsive justified navs</h4>
     <p>As of v8.0, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the <a href="../examples/justified-nav/">justified nav example</a>.</p>
   </div>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="simple-nav-justified">
     <ul class="nav nav-tabs nav-justified">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Profile</a></li>
@@ -95,12 +95,12 @@
   <h2 id="nav-disabled-links">Disabled links</h2>
   <p>For any nav component (tabs or pills), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>.</p>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-navs-anchor-disabled">
     <h4>Link functionality not impacted</h4>
     <p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Use custom JavaScript to disable links here.</p>
   </div>
 
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="disabled-nav-link">
     <ul class="nav nav-pills">
       <li role="presentation"><a href="#">Clickable link</a></li>
       <li role="presentation"><a href="#">Clickable link</a></li>
@@ -120,7 +120,7 @@
   <p>Add dropdown menus with a little extra HTML and the <a href="../javascript/#dropdowns">dropdowns JavaScript plugin</a>.</p>
 
   <h3>Tabs with dropdowns</h3>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="nav-tabs-with-dropdown">
     <ul class="nav nav-tabs">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Help</a></li>
@@ -154,7 +154,7 @@
 {% endhighlight %}
 
   <h3>Pills with dropdowns</h3>
-  <div class="bs-example">
+  <div class="bs-example" data-example-id="nav-pills-with-dropdown">
     <ul class="nav nav-pills">
       <li role="presentation" class="active"><a href="#">Home</a></li>
       <li role="presentation"><a href="#">Help</a></li>

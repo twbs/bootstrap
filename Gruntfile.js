@@ -1,7 +1,7 @@
 /*!
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
- * Copyright 2013-2014 Twitter, Inc.
+ * Copyright 2013-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -18,6 +18,7 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var npmShrinkwrap = require('npm-shrinkwrap');
+  var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var getLessVarsData = function () {
     var filePath = path.join(__dirname, 'less/variables.less');
@@ -190,7 +191,7 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
       docs: {
-        src: 'docs/assets/css/src/docs.css'
+        src: ['docs/assets/css/anchor.css', 'docs/assets/css/src/docs.css']
       },
       examples: {
         expand: true,
@@ -224,7 +225,7 @@ module.exports = function (grunt) {
       options: {
         compatibility: 'ie8',
         keepSpecialComments: '*',
-        noAdvanced: true
+        advanced: false
       },
       minifyCore: {
         src: 'dist/css/<%= pkg.name %>.css',
@@ -236,8 +237,10 @@ module.exports = function (grunt) {
       },
       docs: {
         src: [
-          'docs/assets/css/src/docs.css',
-          'docs/assets/css/src/pygments-manni.css'
+          'docs/assets/css/src/pygments-manni.css',
+          'docs/assets/css/src/anchor.css',
+          'docs/assets/css/src/docs.css'
+
         ],
         dest: 'docs/assets/css/docs.min.css'
       }
@@ -277,12 +280,17 @@ module.exports = function (grunt) {
 
     copy: {
       fonts: {
+        expand: true,
         src: 'fonts/*',
         dest: 'dist/'
       },
       docs: {
-        src: 'dist/*/*',
-        dest: 'docs/'
+        expand: true,
+        cwd: 'dist/',
+        src: [
+          '**/*'
+        ],
+        dest: 'docs/dist/'
       }
     },
 
@@ -296,7 +304,15 @@ module.exports = function (grunt) {
     },
 
     jekyll: {
-      docs: {}
+      options: {
+        config: '_config.yml'
+      },
+      docs: {},
+      github: {
+        options: {
+          raw: 'github: true'
+        }
+      }
     },
 
     jade: {
@@ -314,21 +330,15 @@ module.exports = function (grunt) {
       }
     },
 
-    validation: {
+    htmllint: {
       options: {
-        charset: 'utf-8',
-        doctype: 'HTML5',
-        failHard: true,
-        reset: true,
-        relaxerror: [
-          'Element img is missing required attribute src.',
-          'Attribute autocomplete not allowed on element input at this point.',
-          'Attribute autocomplete not allowed on element button at this point.'
+        ignore: [
+          'Attribute "autocomplete" not allowed on element "button" at this point.',
+          'Attribute "autocomplete" not allowed on element "input" at this point.',
+          'Element "img" is missing required attribute "src".'
         ]
       },
-      files: {
-        src: '_gh_pages/**/*.html'
-      }
+      src: '_gh_pages/**/*.html'
     },
 
     watch: {
@@ -361,9 +371,10 @@ module.exports = function (grunt) {
       all: {
         options: {
           build: process.env.TRAVIS_JOB_ID,
-          concurrency: 10,
+          throttled: 10,
           maxRetries: 3,
-          urls: ['http://127.0.0.1:3000/js/tests/index.html'],
+          maxPollRetries: 4,
+          urls: ['http://127.0.0.1:3000/js/tests/index.html?hidepassed'],
           browsers: grunt.file.readYAML('grunt/sauce_browsers.yml')
         }
       }
@@ -373,7 +384,27 @@ module.exports = function (grunt) {
       npmUpdate: {
         command: 'npm update'
       }
+    },
+
+    compress: {
+      main: {
+        options: {
+          archive: 'bootstrap-<%= pkg.version %>-dist.zip',
+          mode: 'zip',
+          level: 9,
+          pretty: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'dist/',
+            src: ['**'],
+            dest: 'bootstrap-<%= pkg.version %>-dist'
+          }
+        ]
+      }
     }
+
   });
 
 
@@ -382,7 +413,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll', 'validation']);
+  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
@@ -394,7 +425,9 @@ module.exports = function (grunt) {
   // Test task.
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
-  if (runSubset('core')) {
+  if (runSubset('core') &&
+      // Skip core tests if this is a Savage build
+      process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {
     testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'csslint:dist', 'test-js', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
@@ -433,6 +466,8 @@ module.exports = function (grunt) {
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', 'sed');
 
+  grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
+
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
   grunt.registerTask('build-customizer-html', 'jade');
@@ -452,7 +487,9 @@ module.exports = function (grunt) {
   grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
   grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
-  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
+  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
+
+  grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
   // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.

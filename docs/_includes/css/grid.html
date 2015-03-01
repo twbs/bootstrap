@@ -14,7 +14,7 @@
     <li>The negative margin is why the examples below are outdented. It's so that content within grid columns is lined up with non-grid content.</li>
     <li>Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three <code>.col-xs-4</code>.</li>
     <li>If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.</li>
-    <li>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any <code>.col-md-</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-</code> class is not present.</li>
+    <li>Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, e.g. applying any <code>.col-md-*</code> class to an element will not only affect its styling on medium devices but also on large devices if a <code>.col-lg-*</code> class is not present.</li>
   </ul>
   <p>Look to the examples for applying these principles to your code.</p>
 
@@ -68,49 +68,49 @@
       </thead>
       <tbody>
         <tr>
-          <th class="text-nowrap">Grid behavior</th>
+          <th class="text-nowrap" scope="row">Grid behavior</th>
           <td>Horizontal at all times</td>
           <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Container width</th>
+          <th class="text-nowrap" scope="row">Container width</th>
           <td>None (auto)</td>
           <td>750px</td>
           <td>970px</td>
           <td>1170px</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Class prefix</th>
+          <th class="text-nowrap" scope="row">Class prefix</th>
           <td><code>.col-xs-</code></td>
           <td><code>.col-sm-</code></td>
           <td><code>.col-md-</code></td>
           <td><code>.col-lg-</code></td>
         </tr>
         <tr>
-          <th class="text-nowrap"># of columns</th>
+          <th class="text-nowrap" scope="row"># of columns</th>
           <td colspan="4">12</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Column width</th>
+          <th class="text-nowrap" scope="row">Column width</th>
           <td class="text-muted">Auto</td>
           <td>~62px</td>
           <td>~81px</td>
           <td>~97px</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Gutter width</th>
+          <th class="text-nowrap" scope="row">Gutter width</th>
           <td colspan="4">30px (15px on each side of a column)</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Nestable</th>
+          <th class="text-nowrap" scope="row">Nestable</th>
           <td colspan="4">Yes</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Offsets</th>
+          <th class="text-nowrap" scope="row">Offsets</th>
           <td colspan="4">Yes</td>
         </tr>
         <tr>
-          <th class="text-nowrap">Column ordering</th>
+          <th class="text-nowrap" scope="row">Column ordering</th>
           <td colspan="4">Yes</td>
         </tr>
       </tbody>
@@ -347,7 +347,7 @@
 
 
   <h3 id="grid-nesting">Nesting columns</h3>
-  <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-sm-*</code> columns within an existing <code>.col-sm-*</code> column. Nested rows should include a set of columns that add up to 12 or less (it is not required that you use all 12 available columns).</p>
+  <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-sm-*</code> columns within an existing <code>.col-sm-*</code> column. Nested rows should include a set of columns that add up to 12 or fewer (it is not required that you use all 12 available columns).</p>
   <div class="row show-grid">
     <div class="col-sm-9">
       Level 1: .col-sm-9

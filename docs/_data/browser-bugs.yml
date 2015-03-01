@@ -80,6 +80,16 @@
 
 -
   browser: >
+    Chrome (OS X)
+  summary: >
+    Caps Lock indicator not shown in `<input type="password">` with `display: block`
+  upstream_bug: >
+    Chromium#460200
+  origin: >
+    Bootstrap#15832
+
+-
+  browser: >
     Chrome
   summary: >
     `display: table;` within `display: block;` forces sibling content to new line.
@@ -100,36 +110,6 @@
 
 -
   browser: >
-    Safari (OS X)
-  summary: >
-    Scrollbar clipped in `select[multiple]` with padding.
-  upstream_bug: >
-    WebKit#128489
-  origin: >
-    Bootstrap#12536
-
--
-  browser: >
-    Chrome
-  summary: >
-    `display: table-cell; width: 100%;` doesn't work correctly on `<input type="date">`.
-  upstream_bug: >
-    Chromium#346051
-  origin: >
-    Bootstrap#12548
-
--
-  browser: >
-    Chrome
-  summary: >
-    `<input type="password">` sporadically causes bad widths on floated elements.
-  upstream_bug: >
-    Chromium#377346
-  origin: >
-    Bootstrap#13892
-
--
-  browser: >
     Chrome
   summary: >
     CSS infinite linear animation with alpha transparency leaks memory.
@@ -140,11 +120,31 @@
 
 -
   browser: >
+    Chrome (Windows & Linux)
+  summary: >
+    Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
+  upstream_bug: >
+    Chromium#449180
+  origin: >
+    Bootstrap#15298
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Scrollbar clipped in `select[multiple]` with padding.
+  upstream_bug: >
+    WebKit#128489, Safari#19208483
+  origin: >
+    Bootstrap#12536
+
+-
+  browser: >
     Safari (OS X)
   summary: >
     Weird button behavior with some `<input type="number">` elements.
   upstream_bug: >
-    WebKit#137269
+    WebKit#137269, Safari#18834768
   origin: >
     Bootstrap#8350,
     Normalize#283,
@@ -156,9 +156,39 @@
   summary: >
     `display: table-cell;` within media query renders incorrectly when resizing the window.
   upstream_bug: >
-    WebKit#138167
+    WebKit#138167, Safari#18987206
   origin: >
     Bootstrap#9774
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Small font size when printing webpage with fixed-width `.container`.
+  upstream_bug: >
+    WebKit#138192, Safari#19435018
+  origin: >
+    Bootstrap#14868
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Alpha linear-gradient has dark line at its edge.
+  upstream_bug: >
+    WebKit#139803, Safari#19434933
+  origin: >
+    Bootstrap#15205
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Caps Lock indicator not shown in `<input type="password">` with `display: block`
+  upstream_bug: >
+    WebKit#141804, Safari#19892433
+  origin: >
+    Bootstrap#15832
 
 -
   browser: >
@@ -172,16 +202,6 @@
 
 -
   browser: >
-    Safari (OS X)
-  summary: >
-    Small font size when printing webpage with fixed-width `.container`.
-  upstream_bug: >
-    WebKit#138192
-  origin: >
-    Bootstrap#14868
-
--
-  browser: >
     Safari (iOS)
   summary: >
     Text input's cursor doesn't move while scrolling the page.
@@ -192,10 +212,10 @@
 
 -
   browser: >
-    Chrome (Windows & Linux)
+    Safari (iOS)
   summary: >
-    Body content can be scrolled even though `overflow: hidden;` is applied to it.
+    `display: block` causes text of temporal `<input>`s to become vertically misaligned
   upstream_bug: >
-    Chromium#429604
+    WebKit#139848, Safari#19434878
   origin: >
-    Bootstrap#14972
+    Bootstrap#11266, Bootstrap#13098

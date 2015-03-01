@@ -3,8 +3,8 @@
 
   <h2 id="scrollspy-examples">Example in navbar</h2>
   <p>The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.</p>
-  <div class="bs-example">
-    <nav id="navbar-example2" class="navbar navbar-default navbar-static" role="navigation">
+  <div class="bs-example" data-example-id="embedded-scrollspy">
+    <nav id="navbar-example2" class="navbar navbar-default navbar-static">
       <div class="container-fluid">
         <div class="navbar-header">
           <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy">
@@ -51,15 +51,15 @@
 
   <h2 id="scrollspy-usage">Usage</h2>
 
-  <div class="bs-callout bs-callout-warning">
+  <div class="bs-callout bs-callout-warning" id="callout-scrollspy-needs-nav">
     <h4>Requires Bootstrap nav</h4>
     <p>Scrollspy currently requires the use of a <a href="../components/#nav">Bootstrap nav component</a> for proper highlighting of active links.</p>
   </div>
-  <div class="bs-callout bs-callout-danger">
+  <div class="bs-callout bs-callout-danger" id="callout-scrollspy-target-ids">
     <h4>Resolvable ID targets required</h4>
     <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
   </div>
-  <div class="bs-callout bs-callout-info">
+  <div class="bs-callout bs-callout-info" id="callout-scrollspy-invisible-targets">
     <h4>Non-<code>:visible</code> target elements ignored</h4>
     <p>Target elements that are not <a href="http://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
   </div>
@@ -75,9 +75,9 @@ body {
 }
 {% endhighlight %}
 {% highlight html %}
-<body data-spy="scroll" data-target=".navbar-example">
+<body data-spy="scroll" data-target="#navbar-example">
   ...
-  <div class="navbar-example">
+  <div id="navbar-example">
     <ul class="nav nav-tabs" role="tablist">
       ...
     </ul>
@@ -89,7 +89,7 @@ body {
   <h3>Via JavaScript</h3>
   <p>After adding <code>position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
 {% highlight js %}
-$('body').scrollspy({ target: '.navbar-example' })
+$('body').scrollspy({ target: '#navbar-example' })
 {% endhighlight %}
 
 
@@ -106,12 +106,12 @@ $('[data-spy="scroll"]').each(function () {
   <h3 id="scrollspy-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
        <tr>
-         <th style="width: 100px;">Name</th>
-         <th style="width: 100px;">type</th>
-         <th style="width: 50px;">default</th>
+         <th>Name</th>
+         <th>type</th>
+         <th>default</th>
          <th>description</th>
        </tr>
       </thead>
@@ -128,10 +128,10 @@ $('[data-spy="scroll"]').each(function () {
 
   <h3 id="scrollspy-events">Events</h3>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
+         <th>Event Type</th>
          <th>Description</th>
        </tr>
       </thead>
