@@ -4,6 +4,7 @@ $(function () {
   QUnit.module('popover plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
+    assert.expect(1)
     assert.ok($(document.body).popover, 'popover method is defined')
   })
 
@@ -19,10 +20,12 @@ $(function () {
   })
 
   QUnit.test('should provide no conflict', function (assert) {
+    assert.expect(1)
     assert.strictEqual($.fn.popover, undefined, 'popover was set back to undefined (org value)')
   })
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
+    assert.expect(2)
     var $el = $('<div/>')
     var $popover = $el.bootstrapPopover()
     assert.ok($popover instanceof $, 'returns jquery collection')
@@ -30,6 +33,7 @@ $(function () {
   })
 
   QUnit.test('should render popover element', function (assert) {
+    assert.expect(2)
     var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover('show')
@@ -40,12 +44,14 @@ $(function () {
   })
 
   QUnit.test('should store popover instance in popover data object', function (assert) {
+    assert.expect(1)
     var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>').bootstrapPopover()
 
     assert.ok($popover.data('bs.popover'), 'popover instance exists')
   })
 
   QUnit.test('should store popover trigger in popover instance data object', function (assert) {
+    assert.expect(1)
     var $popover = $('<a href="#" title="ResentedHook">@ResentedHook</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover()
@@ -56,6 +62,7 @@ $(function () {
   })
 
   QUnit.test('should get title and content from options', function (assert) {
+    assert.expect(4)
     var $popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -78,6 +85,7 @@ $(function () {
   })
 
   QUnit.test('should not duplicate HTML object', function (assert) {
+    assert.expect(6)
     var $div = $('<div/>').html('loves writing tests （╯°□°）╯︵ ┻━┻')
 
     var $popover = $('<a href="#">@fat</a>')
@@ -104,6 +112,7 @@ $(function () {
   })
 
   QUnit.test('should get title and content from attributes', function (assert) {
+    assert.expect(4)
     var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover()
@@ -119,6 +128,7 @@ $(function () {
 
 
   QUnit.test('should get title and content from attributes ignoring options passed via js', function (assert) {
+    assert.expect(4)
     var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -136,6 +146,7 @@ $(function () {
   })
 
   QUnit.test('should respect custom template', function (assert) {
+    assert.expect(3)
     var $popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -154,6 +165,7 @@ $(function () {
   })
 
   QUnit.test('should destroy popover', function (assert) {
+    assert.expect(7)
     var $popover = $('<div/>')
       .bootstrapPopover({
         trigger: 'hover'
@@ -174,6 +186,7 @@ $(function () {
   })
 
   QUnit.test('should render popover element using delegated selector', function (assert) {
+    assert.expect(2)
     var $div = $('<div><a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a></div>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -189,6 +202,7 @@ $(function () {
   })
 
   QUnit.test('should detach popover content rather than removing it so that event handlers are left intact', function (assert) {
+    assert.expect(1)
     var $content = $('<div class="content-with-handler"><a class="btn btn-warning">Button with event handler</a></div>').appendTo('#qunit-fixture')
 
     var handlerCalled = false
@@ -227,6 +241,7 @@ $(function () {
   })
 
   QUnit.test('should throw an error when initializing popover on the document object without specifying a delegation selector', function (assert) {
+    assert.expect(1)
     assert.throws(function () {
       $(document).bootstrapPopover({ title: 'What am I on?', content: 'My selector is missing' })
     }, new Error('`selector` option must be specified when initializing popover on the window.document object!'))

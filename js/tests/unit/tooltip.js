@@ -4,6 +4,7 @@ $(function () {
   QUnit.module('tooltip plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
+    assert.expect(1)
     assert.ok($(document.body).tooltip, 'tooltip method is defined')
   })
 
@@ -19,10 +20,12 @@ $(function () {
   })
 
   QUnit.test('should provide no conflict', function (assert) {
+    assert.expect(1)
     assert.strictEqual($.fn.tooltip, undefined, 'tooltip was set back to undefined (org value)')
   })
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
+    assert.expect(2)
     var $el = $('<div/>')
     var $tooltip = $el.bootstrapTooltip()
     assert.ok($tooltip instanceof $, 'returns jquery collection')
@@ -30,20 +33,24 @@ $(function () {
   })
 
   QUnit.test('should expose default settings', function (assert) {
+    assert.expect(1)
     assert.ok($.fn.bootstrapTooltip.Constructor.DEFAULTS, 'defaults is defined')
   })
 
   QUnit.test('should empty title attribute', function (assert) {
+    assert.expect(1)
     var $trigger = $('<a href="#" rel="tooltip" title="Another tooltip"/>').bootstrapTooltip()
     assert.strictEqual($trigger.attr('title'), '', 'title attribute was emptied')
   })
 
   QUnit.test('should add data attribute for referencing original title', function (assert) {
+    assert.expect(1)
     var $trigger = $('<a href="#" rel="tooltip" title="Another tooltip"/>').bootstrapTooltip()
     assert.strictEqual($trigger.attr('data-original-title'), 'Another tooltip', 'original title preserved in data attribute')
   })
 
   QUnit.test('should add aria-describedby to the trigger on show', function (assert) {
+    assert.expect(3)
     var $trigger = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .bootstrapTooltip()
       .appendTo('#qunit-fixture')
@@ -57,6 +64,7 @@ $(function () {
   })
 
   QUnit.test('should remove aria-describedby from trigger on hide', function (assert) {
+    assert.expect(2)
     var $trigger = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .bootstrapTooltip()
       .appendTo('#qunit-fixture')
@@ -69,6 +77,7 @@ $(function () {
   })
 
   QUnit.test('should assign a unique id tooltip element', function (assert) {
+    assert.expect(2)
     $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip('show')
@@ -80,6 +89,7 @@ $(function () {
   })
 
   QUnit.test('should place tooltips relative to placement option', function (assert) {
+    assert.expect(2)
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ placement: 'bottom' })
@@ -92,6 +102,7 @@ $(function () {
   })
 
   QUnit.test('should allow html entities', function (assert) {
+    assert.expect(2)
     var $tooltip = $('<a href="#" rel="tooltip" title="&lt;b&gt;@fat&lt;/b&gt;"/>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ html: true })
@@ -104,6 +115,7 @@ $(function () {
   })
 
   QUnit.test('should respect custom classes', function (assert) {
+    assert.expect(2)
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ template: '<div class="tooltip some-class"><div class="tooltip-arrow"/><div class="tooltip-inner"/></div>' })
@@ -116,6 +128,7 @@ $(function () {
   })
 
   QUnit.test('should fire show event', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     $('<div title="tooltip title"/>')
@@ -127,6 +140,7 @@ $(function () {
   })
 
   QUnit.test('should fire shown event', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     $('<div title="tooltip title"></div>')
@@ -139,6 +153,7 @@ $(function () {
   })
 
   QUnit.test('should not fire shown event when show was prevented', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     $('<div title="tooltip title"/>')
@@ -154,6 +169,7 @@ $(function () {
   })
 
   QUnit.test('should fire hide event', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     $('<div title="tooltip title"/>')
@@ -169,6 +185,7 @@ $(function () {
   })
 
   QUnit.test('should fire hidden event', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     $('<div title="tooltip title"/>')
@@ -184,6 +201,7 @@ $(function () {
   })
 
   QUnit.test('should not fire hidden event when hide was prevented', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     $('<div title="tooltip title"/>')
@@ -203,6 +221,7 @@ $(function () {
   })
 
   QUnit.test('should destroy tooltip', function (assert) {
+    assert.expect(7)
     var $tooltip = $('<div/>')
       .bootstrapTooltip()
       .on('click.foo', function () {})
@@ -221,6 +240,7 @@ $(function () {
   })
 
   QUnit.test('should show tooltip with delegate selector on click', function (assert) {
+    assert.expect(2)
     var $div = $('<div><a href="#" rel="tooltip" title="Another tooltip"/></div>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({
@@ -236,6 +256,7 @@ $(function () {
   })
 
   QUnit.test('should show tooltip when toggle is called', function (assert) {
+    assert.expect(1)
     $('<a href="#" rel="tooltip" title="tooltip on toggle"/>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ trigger: 'manual' })
@@ -245,6 +266,7 @@ $(function () {
   })
 
   QUnit.test('should hide previously shown tooltip when toggle is called on tooltip', function (assert) {
+    assert.expect(1)
     $('<a href="#" rel="tooltip" title="tooltip on toggle">@ResentedHook</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ trigger: 'manual' })
@@ -255,6 +277,7 @@ $(function () {
   })
 
   QUnit.test('should place tooltips inside body when container is body', function (assert) {
+    assert.expect(3)
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ container: 'body' })
@@ -268,6 +291,7 @@ $(function () {
   })
 
   QUnit.test('should add position class before positioning so that position-specific styles are taken into account', function (assert) {
+    assert.expect(1)
     var styles = '<style>'
         + '.tooltip.right { white-space: nowrap; }'
         + '.tooltip.right .tooltip-inner { max-width: none; }'
@@ -296,6 +320,7 @@ $(function () {
   })
 
   QUnit.test('should use title attribute for tooltip text', function (assert) {
+    assert.expect(2)
     var $tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip"/>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip()
@@ -308,6 +333,7 @@ $(function () {
   })
 
   QUnit.test('should prefer title attribute over title option', function (assert) {
+    assert.expect(2)
     var $tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip"/>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({
@@ -322,6 +348,7 @@ $(function () {
   })
 
   QUnit.test('should use title option', function (assert) {
+    assert.expect(2)
     var $tooltip = $('<a href="#" rel="tooltip"/>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({
@@ -336,6 +363,7 @@ $(function () {
   })
 
   QUnit.test('should be placed dynamically with the dynamic placement option', function (assert) {
+    assert.expect(6)
     var $style = $('<style> a[rel="tooltip"] { display: inline-block; position: absolute; } </style>')
     var $container = $('<div/>')
       .css({
@@ -383,6 +411,7 @@ $(function () {
   })
 
   QUnit.test('should position tip on top if viewport has enough space and placement is "auto top"', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + 'body { padding-top: 100px; }'
         + '#section { height: 300px; border: 1px solid red; padding-top: 50px }'
@@ -408,6 +437,7 @@ $(function () {
   })
 
   QUnit.test('should position tip on bottom if the tip\'s dimension exceeds the viewport area and placement is "auto top"', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + 'body { padding-top: 100px; }'
         + '#section { height: 300px; border: 1px solid red; }'
@@ -433,6 +463,7 @@ $(function () {
   })
 
   QUnit.test('should display the tip on top whenever scrollable viewport has enough room if the given placement is "auto top"', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + '#scrollable-div { height: 200px; overflow: auto; }'
         + '.tooltip-item { margin: 200px 0 400px; width: 150px; }'
@@ -459,6 +490,7 @@ $(function () {
   })
 
   QUnit.test('should display the tip on bottom whenever scrollable viewport doesn\'t have enough room if the given placement is "auto top"', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + '#scrollable-div { height: 200px; overflow: auto; }'
         + '.tooltip-item { padding: 200px 0 400px; width: 150px; }'
@@ -485,6 +517,7 @@ $(function () {
   })
 
   QUnit.test('should display the tip on bottom whenever scrollable viewport has enough room if the given placement is "auto bottom"', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + '#scrollable-div { height: 200px; overflow: auto; }'
         + '.spacer { height: 400px; }'
@@ -515,6 +548,7 @@ $(function () {
   })
 
   QUnit.test('should display the tip on top whenever scrollable viewport doesn\'t have enough room if the given placement is "auto bottom"', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + '#scrollable-div { height: 200px; overflow: auto; }'
         + '.tooltip-item { margin-top: 400px; width: 150px; }'
@@ -541,6 +575,7 @@ $(function () {
   })
 
   QUnit.test('should adjust the tip\'s top position when up against the top of the viewport', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
         + 'a[rel="tooltip"] { position: fixed; }'
@@ -568,6 +603,7 @@ $(function () {
   })
 
   QUnit.test('should adjust the tip\'s top position when up against the bottom of the viewport', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
         + 'a[rel="tooltip"] { position: fixed; }'
@@ -597,6 +633,7 @@ $(function () {
   })
 
   QUnit.test('should adjust the tip\'s left position when up against the left of the viewport', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
         + 'a[rel="tooltip"] { position: fixed; }'
@@ -625,6 +662,7 @@ $(function () {
   })
 
   QUnit.test('should adjust the tip\'s left position when up against the right of the viewport', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
         + 'a[rel="tooltip"] { position: fixed; }'
@@ -654,6 +692,7 @@ $(function () {
   })
 
   QUnit.test('should adjust the tip when up against the right of an arbitrary viewport', function (assert) {
+    assert.expect(2)
     var styles = '<style>'
         + '.tooltip, .tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
         + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
@@ -681,6 +720,7 @@ $(function () {
   })
 
   QUnit.test('should not error when trying to show an auto-placed tooltip that has been removed from the dom', function (assert) {
+    assert.expect(1)
     var passed = true
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
@@ -700,6 +740,7 @@ $(function () {
   })
 
   QUnit.test('should place tooltip on top of element', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var containerHTML = '<div>'
@@ -737,6 +778,7 @@ $(function () {
   })
 
   QUnit.test('should place tooltip inside viewport', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var $container = $('<div/>')
@@ -768,6 +810,7 @@ $(function () {
   })
 
   QUnit.test('should show tooltip if leave event hasn\'t occurred before delay expires', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
@@ -787,6 +830,7 @@ $(function () {
   })
 
   QUnit.test('should not show tooltip if leave event occurs before delay expires', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
@@ -807,6 +851,7 @@ $(function () {
   })
 
   QUnit.test('should not hide tooltip if leave event occurs and enter event occurs within the hide delay', function (assert) {
+    assert.expect(3)
     var done = assert.async()
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
@@ -832,6 +877,7 @@ $(function () {
   })
 
   QUnit.test('should not show tooltip if leave event occurs before delay expires', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
@@ -852,6 +898,7 @@ $(function () {
   })
 
   QUnit.test('should not show tooltip if leave event occurs before delay expires, even if hide delay is 0', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
@@ -872,6 +919,7 @@ $(function () {
   })
 
   QUnit.test('should wait 200ms before hiding the tooltip', function (assert) {
+    assert.expect(3)
     var done = assert.async()
 
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
@@ -903,6 +951,7 @@ $(function () {
       assert.expect(0)
       return
     }
+    assert.expect(2)
 
     var done = assert.async()
 
@@ -936,6 +985,7 @@ $(function () {
   })
 
   QUnit.test('should correctly determine auto placement based on container rather than parent', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var styles = '<style>'
@@ -977,6 +1027,7 @@ $(function () {
   })
 
   QUnit.test('should not reload the tooltip on subsequent mouseenter events', function (assert) {
+    assert.expect(1)
     var titleHtml = function () {
       var uid = $.fn.bootstrapTooltip.Constructor.prototype.getUID('tooltip')
       return '<p id="tt-content">' + uid + '</p><p>' + uid + '</p><p>' + uid + '</p>'
@@ -1003,6 +1054,7 @@ $(function () {
   })
 
   QUnit.test('should not reload the tooltip if the mouse leaves and re-enters before hiding', function (assert) {
+    assert.expect(4)
     var titleHtml = function () {
       var uid = $.fn.bootstrapTooltip.Constructor.prototype.getUID('tooltip')
       return '<p id="tt-content">' + uid + '</p><p>' + uid + '</p><p>' + uid + '</p>'
@@ -1038,6 +1090,7 @@ $(function () {
   })
 
   QUnit.test('should position arrow correctly when tooltip is moved to not appear offscreen', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var styles = '<style>'
@@ -1075,6 +1128,7 @@ $(function () {
       assert.expect(0)
       return
     }
+    assert.expect(2)
 
     var done = assert.async()
 
@@ -1108,6 +1162,7 @@ $(function () {
   })
 
   QUnit.test('should throw an error when initializing tooltip on the document object without specifying a delegation selector', function (assert) {
+    assert.expect(1)
     assert.throws(function () {
       $(document).bootstrapTooltip({ title: 'What am I on?' })
     }, new Error('`selector` option must be specified when initializing tooltip on the window.document object!'))
