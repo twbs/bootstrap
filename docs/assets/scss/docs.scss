@@ -11,7 +11,7 @@
 
 // Import the syntax highlighting
 @import "syntax";
-// @import "anchor"; // TODO: move anchor from src to scss directory
+@import "anchor";
 
 // Local docs variables
 $bs-purple:       #563d7c;
