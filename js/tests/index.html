@@ -11,12 +11,6 @@
     <!-- QUnit -->
     <link rel="stylesheet" href="vendor/qunit.css" media="screen">
     <script src="vendor/qunit.js"></script>
-    <style>
-      #qunit-fixture {
-        top: 0;
-        left: 0;
-      }
-    </style>
     <script>
       // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
       var log = []
@@ -52,6 +46,17 @@
         $('#qunit-fixture').empty()
         $('#modal-test, .modal-backdrop').remove()
       })
+
+      // Display fixture on-screen on iOS to avoid false positives
+      if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+        QUnit.begin(function() {
+          $('#qunit-fixture').css({ top: 0, left: 0 })
+        })
+
+        QUnit.done(function () {
+          $('#qunit-fixture').css({ top: '', left: '' })
+        })
+      }
     </script>
 
     <!-- Plugin sources -->
