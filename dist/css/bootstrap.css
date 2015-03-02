@@ -3410,13 +3410,6 @@ tbody.collapse.in {
        -o-transition-property: height, visibility;
           transition-property: height, visibility;
 }
-.collapsing.width {
-  width: 0;
-  height: auto;
-  -webkit-transition-property: width, visibility;
-       -o-transition-property: width, visibility;
-          transition-property: width, visibility;
-}
 .caret {
   display: inline-block;
   width: 0;

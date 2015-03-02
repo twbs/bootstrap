@@ -102,7 +102,7 @@
 
     var dimension = this.dimension()
 
-    this.$element[dimension](this.$element[dimension]())[0][$.camelCase(['inner', dimension].join(''))]
+    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
 
     this.$element
       .addClass('collapsing')
