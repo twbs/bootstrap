@@ -59,7 +59,7 @@
 
     this.options.interval
       && !this.paused
-      && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+      && (this.interval = setTimeout($.proxy(this.next, this), this.$element.find('.item.active').data('duration') || this.options.interval))
 
     return this
   }
@@ -155,16 +155,16 @@
           setTimeout(function () {
             that.$element.trigger(slidEvent)
           }, 0)
+          isCycling && that.cycle()
         })
-        .emulateTransitionEnd(Carousel.TRANSITION_DURATION)
+        .emulateTransitionEnd(Math.min(Carousel.TRANSITION_DURATION,($active.data('duration') || this.interval)))
     } else {
       $active.removeClass('active')
       $next.addClass('active')
       this.sliding = false
       this.$element.trigger(slidEvent)
+      isCycling && this.cycle()
     }
-
-    isCycling && this.cycle()
 
     return this
   }

@@ -349,7 +349,7 @@ if (typeof jQuery === 'undefined') {
 
     this.options.interval
       && !this.paused
-      && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+      && (this.interval = setTimeout($.proxy(this.next, this), this.$element.find('.item.active').data('duration') || this.options.interval))
 
     return this
   }
@@ -405,8 +405,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Carousel.prototype.slide = function (type, next) {
-    var $active   = this.$element.find('.item.active')
-    var $next     = next || this.getItemForDirection(type, $active)
+    var $next     = next || this.getItemForDirection(type, this.$active)
     var isCycling = this.interval
     var direction = type == 'next' ? 'left' : 'right'
     var that      = this
@@ -435,26 +434,26 @@ if (typeof jQuery === 'undefined') {
     if ($.support.transition && this.$element.hasClass('slide')) {
       $next.addClass(type)
       $next[0].offsetWidth // force reflow
-      $active.addClass(direction)
+      this.$active.addClass(direction)
       $next.addClass(direction)
-      $active
+      this.$active
         .one('bsTransitionEnd', function () {
           $next.removeClass([type, direction].join(' ')).addClass('active')
-          $active.removeClass(['active', direction].join(' '))
+          this.$active.removeClass(['active', direction].join(' '))
           that.sliding = false
           setTimeout(function () {
             that.$element.trigger(slidEvent)
           }, 0)
+          isCycling && that.cycle()
         })
-        .emulateTransitionEnd(Carousel.TRANSITION_DURATION)
+        .emulateTransitionEnd(Math.min(Carousel.TRANSITION_DURATION,(this.$active.data('duration') || this.interval)))
     } else {
-      $active.removeClass('active')
+      this.$active.removeClass('active')
       $next.addClass('active')
       this.sliding = false
       this.$element.trigger(slidEvent)
+      isCycling && this.cycle()
     }
-
-    isCycling && this.cycle()
 
     return this
   }
@@ -630,7 +629,7 @@ if (typeof jQuery === 'undefined') {
 
     var dimension = this.dimension()
 
-    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
+    this.$element[dimension](this.$element[dimension]())[0][$.camelCase(['inner', dimension].join(''))]
 
     this.$element
       .addClass('collapsing')

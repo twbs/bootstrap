@@ -349,6 +349,80 @@ $(function () {
     $carousel.remove()
   })
 
+  QUnit.test('should set duration per slide from data-duration attribute', function (assert) {
+    var templateHTML = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="item active" data-duration="500">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item" data-duration="1000">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
+    var $carousel = $(templateHTML)
+
+    $carousel.attr('data-interval', 1814)
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel()
+    assert.strictEqual($($carousel.find('.active')[0]).data('duration') || $carousel.data('bs.carousel').options.interval, 500, 'duration should overwrite the global data-interval and default')
+    assert.strictEqual(typeof $carousel.data('bs.carousel').interval, 'number', 'duration should overwrite the global data-interval and default')
+    $carousel.remove()
+
+    $carousel.attr('data-interval', 1814)
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel()
+    $('[data-slide]').last().click() // next
+    assert.strictEqual($($carousel.find('.active')[0]).data('duration') || $carousel.data('bs.carousel').options.interval, 1000, 'different data-duration values should change the duration')
+    assert.strictEqual(typeof $carousel.data('bs.carousel').interval, 'number', 'different data-duration values should change the duration')
+    $carousel.remove()
+
+    $carousel.attr('data-interval', 1814)
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel()
+    $('[data-slide]').last().click() // next
+    assert.strictEqual($($carousel.find('.active')[0]).data('duration') || $carousel.data('bs.carousel').options.interval, 1814, 'non data-duration should return the data-interval value')
+    assert.strictEqual(typeof $carousel.data('bs.carousel').interval, 'number', 'non data-duration should return the data-interval value')
+    $carousel.remove()
+
+    $carousel.attr('data-interval', null)
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel()
+    assert.strictEqual($($carousel.find('.active')[0]).data('duration') || $carousel.data('bs.carousel').options.interval, 5000, 'should return default value')
+    assert.strictEqual(typeof $carousel.data('bs.carousel').interval, 'number', 'should return default value')
+    $carousel.remove()
+
+    $carousel.attr('data-interval', false)
+    $carousel.appendTo('body')
+    $carousel.bootstrapCarousel();
+    $('[data-slide]').first().click() // next
+    assert.strictEqual($carousel.data('bs.carousel').interval, null, 'should not overwrite the abillity to turn the sliding off')
+    $carousel.remove()
+  })
+
   QUnit.test('should skip over non-items when using item indices', function (assert) {
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">'
         + '<div class="carousel-inner">'
