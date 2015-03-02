@@ -28,10 +28,15 @@ body {
   font-weight: normal;
 }
 
+<<<<<<< HEAD
 /* Inline code within headings retain the heading background */
 h2 code,
 h3 code,
 h4 code {
+=======
+/* In-line code within headings retain the heading background */
+h4 code, h3 code, h2 code {
+>>>>>>> ae4c81474998affa116cbde5c5e1eab7fd121179
   background-color: inherit;
 }
 
