@@ -57,6 +57,34 @@
           $('#qunit-fixture').css({ top: '', left: '' })
         })
       }
+
+      // Disable deprecated global QUnit method aliases in preparation for QUnit v2
+      (function () {
+        var methodNames = [
+          'async',
+          'asyncTest',
+          'deepEqual',
+          'equal',
+          'expect',
+          'module',
+          'notDeepEqual',
+          'notEqual',
+          'notPropEqual',
+          'notStrictEqual',
+          'ok',
+          'propEqual',
+          'push',
+          'start',
+          'stop',
+          'strictEqual',
+          'test',
+          'throws'
+        ];
+        for (var i = 0; i < methodNames.length; i++) {
+          var methodName = methodNames[i];
+          window[methodName] = undefined;
+        }
+      })();
     </script>
 
     <!-- Plugin sources -->
