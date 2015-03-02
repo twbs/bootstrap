@@ -1168,6 +1168,92 @@ $(function () {
     }, new Error('`selector` option must be specified when initializing tooltip on the window.document object!'))
   })
 
+  QUnit.test('should throw an error when sending a tooltip title of type number', function (assert) {
+    assert.expect(1)
+    var titleHtml = Number(1234567890)
+
+    var $tooltip = $('<span id="tt-outer" rel="tooltip" data-trigger="hover" data-placement="top">some text</span>')
+      .appendTo('#qunit-fixture')
+
+    $tooltip.bootstrapTooltip({
+      html: true,
+      animation: false,
+      trigger: 'hover',
+      delay: { show: 0, hide: 500 },
+      container: $tooltip,
+      title: titleHtml
+    })
+
+    assert.throws(function () {
+      $tooltip.bootstrapTooltip('show')
+    }, new Error('Tooltip received type number. Was expecting type string or a function.'))
+  })
+
+  QUnit.test('should throw an error when sending a tooltip title of type boolean', function (assert) {
+    assert.expect(1)
+    var titleHtml = Boolean(true)
+
+    var $tooltip = $('<span id="tt-outer" rel="tooltip" data-trigger="hover" data-placement="top">some text</span>')
+      .appendTo('#qunit-fixture')
+
+    $tooltip.bootstrapTooltip({
+      html: true,
+      animation: false,
+      trigger: 'hover',
+      delay: { show: 0, hide: 500 },
+      container: $tooltip,
+      title: titleHtml
+    })
+
+    assert.throws(function () {
+      $tooltip.bootstrapTooltip('show')
+    }, new Error('Tooltip received type boolean. Was expecting type string or a function.'))
+  })
+
+  QUnit.test('should throw an error when sending a tooltip title of type object', function (assert) {
+    assert.expect(1)
+    var titleHtml = /test/
+
+    var $tooltip = $('<span id="tt-outer" rel="tooltip" data-trigger="hover" data-placement="top">some text</span>')
+      .appendTo('#qunit-fixture')
+
+    $tooltip.bootstrapTooltip({
+      html: true,
+      animation: false,
+      trigger: 'hover',
+      delay: { show: 0, hide: 500 },
+      container: $tooltip,
+      title: titleHtml
+    })
+
+    assert.throws(function () {
+      $tooltip.bootstrapTooltip('show')
+    }, new Error('Tooltip received type object. Was expecting type string or a function.'))
+  })
+
+  QUnit.test('should throw an error when tooltip title function returns a non-string object', function (assert) {
+    assert.expect(1)
+
+    var $tooltip = $('<span id="tt-outer" rel="tooltip" data-trigger="hover" data-placement="top">some text</span>')
+      .appendTo('#qunit-fixture')
+
+    $tooltip.bootstrapTooltip({
+      html: true,
+      animation: false,
+      trigger: 'hover',
+      delay: { show: 0, hide: 500 },
+      container: $tooltip,
+      title: function () {
+        return new Date()
+      }
+    })
+
+    assert.throws(function () {
+      $tooltip.bootstrapTooltip('show')
+    }, new Error('Tooltip received type function which returned type object. ' +
+        'Was expecting type string as the return type.'))
+  })
+
   QUnit.test('should do nothing when an attempt is made to hide an uninitialized tooltip', function (assert) {
     assert.expect(1)
 

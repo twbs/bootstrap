@@ -247,6 +247,65 @@ $(function () {
     }, new Error('`selector` option must be specified when initializing popover on the window.document object!'))
   })
 
+  QUnit.test('should throw an error when sending a popover content a boolean', function (assert) {
+    assert.expect(1)
+    var $popover = $('<a href="#">@fat</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: 'Test',
+        content: Boolean(true)
+      })
+
+    assert.throws(function () {
+      $popover.bootstrapPopover('show')
+    }, new Error('Popover received type boolean. Was expecting type string or a function.'))
+  })
+
+  QUnit.test('should throw an error when sending popover content a number', function (assert) {
+    assert.expect(1)
+    var $popover = $('<a href="#">@fat</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: 'Test',
+        content: Number(1234567890)
+      })
+
+    assert.throws(function () {
+      $popover.bootstrapPopover('show')
+    }, new Error('Popover received type number. Was expecting type string or a function.'))
+  })
+
+  QUnit.test('should throw an error when sending popover content an object', function (assert) {
+    assert.expect(1)
+    var $popover = $('<a href="#">@fat</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: 'Test',
+        content: new Date()
+      })
+
+    assert.throws(function () {
+      $popover.bootstrapPopover('show')
+    }, new Error('Popover received type object. Was expecting type string or a function.'))
+  })
+
+  QUnit.test('should throw an error when popover content function returns a non-string object', function (assert) {
+    assert.expect(1)
+    var $popover = $('<a href="#">@fat</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: 'Test',
+        content: function () {
+          return new Date()
+        }
+      })
+
+    assert.throws(function () {
+      $popover.bootstrapPopover('show')
+    }, new Error('Popover received type function which returned type object. ' +
+        'Was expecting type string as the return type.'))
+  })
+
   QUnit.test('should do nothing when an attempt is made to hide an uninitialized popover', function (assert) {
     assert.expect(1)
 
