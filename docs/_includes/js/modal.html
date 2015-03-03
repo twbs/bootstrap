@@ -394,9 +394,6 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 })
 {% endhighlight %}
 
-  <h2 id="modals-handle-update">Modals with dynamic heights</h2>
-  <p>If the height of a modal changes while it is open, you should call <code>$('#myModal').data('bs.modal').handleUpdate()</code> to readjust the modal's position in case a scrollbar appears.</p>
-
   <h2 id="modals-usage">Usage</h2>
   <p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
 
@@ -478,6 +475,11 @@ $('#myModal').modal({
   <h4>.modal('hide')</h4>
   <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden.bs.modal</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
+
+  <h4>.modal('handleUpdate')</h4>
+  <p>Readjusts the modal's positioning to counter a scrollbar in case one should appear, which would make the modal jump to the left.</p>
+  <p>Only needed when the height of the modal changes while it is open.</p>
+  {% highlight js %}$('#myModal').modal('handleUpdate'){% endhighlight %}
 
   <h3 id="modals-events">Events</h3>
   <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
