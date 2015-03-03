@@ -456,7 +456,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 
   <h3 id="modals-methods">Methods</h3>
 
-  <h4>.modal(options)</h4>
+  <h4><code>.modal(options)</code></h4>
   <p>Activates your content as a modal. Accepts an optional options <code>object</code>.</p>
 {% highlight js %}
 $('#myModal').modal({
@@ -464,15 +464,15 @@ $('#myModal').modal({
 })
 {% endhighlight %}
 
-  <h4>.modal('toggle')</h4>
+  <h4><code>.modal('toggle')</code></h4>
   <p>Manually toggles a modal. <strong>Returns to the caller before the modal has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.modal</code> or <code>hidden.bs.modal</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('toggle'){% endhighlight %}
 
-  <h4>.modal('show')</h4>
+  <h4><code>.modal('show')</code></h4>
   <p>Manually opens a modal. <strong>Returns to the caller before the modal has actually been shown</strong> (i.e. before the <code>shown.bs.modal</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('show'){% endhighlight %}
 
-  <h4>.modal('hide')</h4>
+  <h4><code>.modal('hide')</code></h4>
   <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden.bs.modal</code> event occurs).</p>
   {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
 
