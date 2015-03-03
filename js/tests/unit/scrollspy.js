@@ -4,6 +4,7 @@ $(function () {
   QUnit.module('scrollspy plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
+    assert.expect(1)
     assert.ok($(document.body).scrollspy, 'scrollspy method is defined')
   })
 
@@ -19,10 +20,12 @@ $(function () {
   })
 
   QUnit.test('should provide no conflict', function (assert) {
+    assert.expect(1)
     assert.strictEqual($.fn.scrollspy, undefined, 'scrollspy was set back to undefined (org value)')
   })
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
+    assert.expect(2)
     var $el = $('<div/>')
     var $scrollspy = $el.bootstrapScrollspy()
     assert.ok($scrollspy instanceof $, 'returns jquery collection')
@@ -30,6 +33,7 @@ $(function () {
   })
 
   QUnit.test('should only switch "active" class on current target', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var sectionHTML = '<div id="root" class="active">'
@@ -74,6 +78,7 @@ $(function () {
   })
 
   QUnit.test('should correctly select middle navigation option when large offset is used', function (assert) {
+    assert.expect(3)
     var done = assert.async()
 
     var sectionHTML = '<div id="header" style="height: 500px;"></div>'
@@ -107,6 +112,7 @@ $(function () {
   })
 
   QUnit.test('should add the active class to the correct element', function (assert) {
+    assert.expect(2)
     var navbarHtml =
         '<nav class="navbar">'
       + '<ul class="nav">'
@@ -143,6 +149,7 @@ $(function () {
   })
 
   QUnit.test('should add the active class correctly when there are nested elements at 0 scroll offset', function (assert) {
+    assert.expect(6)
     var times = 0
     var done = assert.async()
     var navbarHtml = '<nav id="navigation" class="navbar">'
@@ -181,6 +188,7 @@ $(function () {
   })
 
   QUnit.test('should clear selection if above the first section', function (assert) {
+    assert.expect(3)
     var done = assert.async()
 
     var sectionHTML = '<div id="header" style="height: 500px;"></div>'

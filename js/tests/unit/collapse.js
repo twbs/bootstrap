@@ -4,6 +4,7 @@ $(function () {
   QUnit.module('collapse plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
+    assert.expect(1)
     assert.ok($(document.body).collapse, 'collapse method is defined')
   })
 
@@ -19,10 +20,12 @@ $(function () {
   })
 
   QUnit.test('should provide no conflict', function (assert) {
+    assert.expect(1)
     assert.strictEqual($.fn.collapse, undefined, 'collapse was set back to undefined (org value)')
   })
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
+    assert.expect(2)
     var $el = $('<div/>')
     var $collapse = $el.bootstrapCollapse()
     assert.ok($collapse instanceof $, 'returns jquery collection')
@@ -30,6 +33,7 @@ $(function () {
   })
 
   QUnit.test('should show a collapsed element', function (assert) {
+    assert.expect(2)
     var $el = $('<div class="collapse"/>').bootstrapCollapse('show')
 
     assert.ok($el.hasClass('in'), 'has class "in"')
@@ -37,6 +41,7 @@ $(function () {
   })
 
   QUnit.test('should hide a collapsed element', function (assert) {
+    assert.expect(2)
     var $el = $('<div class="collapse"/>').bootstrapCollapse('hide')
 
     assert.ok(!$el.hasClass('in'), 'does not have class "in"')
@@ -44,6 +49,7 @@ $(function () {
   })
 
   QUnit.test('should not fire shown when show is prevented', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     $('<div class="collapse"/>')
@@ -59,6 +65,7 @@ $(function () {
   })
 
   QUnit.test('should reset style to auto after finishing opening collapse', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     $('<div class="collapse" style="height: 0px"/>')
@@ -73,6 +80,7 @@ $(function () {
   })
 
   QUnit.test('should remove "collapsed" class from target when collapse is shown', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
@@ -88,6 +96,7 @@ $(function () {
   })
 
   QUnit.test('should add "collapsed" class to target when collapse is hidden', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
@@ -103,6 +112,7 @@ $(function () {
   })
 
   QUnit.test('should remove "collapsed" class from all triggers targeting the collapse when the collapse is shown', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
@@ -120,6 +130,7 @@ $(function () {
   })
 
   QUnit.test('should add "collapsed" class to all triggers targeting the collapse when the collapse is hidden', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
@@ -137,9 +148,8 @@ $(function () {
   })
 
   QUnit.test('should not close a collapse when initialized with "show" if already shown', function (assert) {
-    var done = assert.async()
-
     assert.expect(0)
+    var done = assert.async()
 
     var $test = $('<div id="test1" class="in"/>')
       .appendTo('#qunit-fixture')
@@ -153,9 +163,8 @@ $(function () {
   })
 
   QUnit.test('should open a collapse when initialized with "show" if not already shown', function (assert) {
-    var done = assert.async()
-
     assert.expect(1)
+    var done = assert.async()
 
     var $test = $('<div id="test1" />')
       .appendTo('#qunit-fixture')
@@ -169,6 +178,7 @@ $(function () {
   })
 
   QUnit.test('should remove "collapsed" class from active accordion target', function (assert) {
+    assert.expect(3)
     var done = assert.async()
 
     var accordionHTML = '<div class="panel-group" id="accordion">'
@@ -202,6 +212,7 @@ $(function () {
   })
 
   QUnit.test('should allow dots in data-parent', function (assert) {
+    assert.expect(3)
     var done = assert.async()
 
     var accordionHTML = '<div class="panel-group accordion">'
@@ -235,6 +246,7 @@ $(function () {
   })
 
   QUnit.test('should set aria-expanded="true" on target when collapse is shown', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1" aria-expanded="false"/>').appendTo('#qunit-fixture')
@@ -250,6 +262,7 @@ $(function () {
   })
 
   QUnit.test('should set aria-expanded="false" on target when collapse is hidden', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" href="#test1" aria-expanded="true"/>').appendTo('#qunit-fixture')
@@ -265,6 +278,7 @@ $(function () {
   })
 
   QUnit.test('should set aria-expanded="true" on all triggers targeting the collapse when the collapse is shown', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1" aria-expanded="false"/>').appendTo('#qunit-fixture')
@@ -282,6 +296,7 @@ $(function () {
   })
 
   QUnit.test('should set aria-expanded="false" on all triggers targeting the collapse when the collapse is hidden', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" href="#test1" aria-expanded="true"/>').appendTo('#qunit-fixture')
@@ -299,6 +314,7 @@ $(function () {
   })
 
   QUnit.test('should change aria-expanded from active accordion target to "false" and set the newly active one to "true"', function (assert) {
+    assert.expect(3)
     var done = assert.async()
 
     var accordionHTML = '<div class="panel-group" id="accordion">'
@@ -332,6 +348,7 @@ $(function () {
   })
 
   QUnit.test('should not fire show event if show is prevented because other element is still transitioning', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var accordionHTML = '<div id="accordion">'
@@ -367,6 +384,7 @@ $(function () {
   })
 
   QUnit.test('should add "collapsed" class to target when collapse is hidden via manual invocation', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
@@ -381,6 +399,7 @@ $(function () {
   })
 
   QUnit.test('should remove "collapsed" class from target when collapse is shown via manual invocation', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var $target = $('<a data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')

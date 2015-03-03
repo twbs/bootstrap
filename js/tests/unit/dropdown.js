@@ -4,6 +4,7 @@ $(function () {
   QUnit.module('dropdowns plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
+    assert.expect(1)
     assert.ok($(document.body).dropdown, 'dropdown method is defined')
   })
 
@@ -19,10 +20,12 @@ $(function () {
   })
 
   QUnit.test('should provide no conflict', function (assert) {
+    assert.expect(1)
     assert.strictEqual($.fn.dropdown, undefined, 'dropdown was set back to undefined (org value)')
   })
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
+    assert.expect(2)
     var $el = $('<div/>')
     var $dropdown = $el.bootstrapDropdown()
     assert.ok($dropdown instanceof $, 'returns jquery collection')
@@ -30,6 +33,7 @@ $(function () {
   })
 
   QUnit.test('should not open dropdown if target is disabled via attribute', function (assert) {
+    assert.expect(1)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>'
@@ -47,6 +51,7 @@ $(function () {
   })
 
   QUnit.test('should set aria-expanded="true" on target when dropdown menu is shown', function (assert) {
+    assert.expect(1)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</a>'
@@ -67,6 +72,7 @@ $(function () {
   })
 
   QUnit.test('should set aria-expanded="false" on target when dropdown menu is hidden', function (assert) {
+    assert.expect(1)
     var done = assert.async()
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
@@ -96,6 +102,7 @@ $(function () {
   })
 
   QUnit.test('should not open dropdown if target is disabled via class', function (assert) {
+    assert.expect(1)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<button href="#" class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>'
@@ -113,6 +120,7 @@ $(function () {
   })
 
   QUnit.test('should add class open to menu if clicked', function (assert) {
+    assert.expect(1)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -130,6 +138,7 @@ $(function () {
   })
 
   QUnit.test('should test if element has a # before assuming it\'s a selector', function (assert) {
+    assert.expect(1)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="/foo/" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -148,6 +157,7 @@ $(function () {
 
 
   QUnit.test('should remove "open" class if body is clicked', function (assert) {
+    assert.expect(2)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -171,6 +181,7 @@ $(function () {
   })
 
   QUnit.test('should remove "open" class if body is clicked, with multiple dropdowns', function (assert) {
+    assert.expect(7)
     var dropdownHTML = '<ul class="nav">'
         + '<li><a href="#menu1">Menu 1</a></li>'
         + '<li class="dropdown" id="testmenu">'
@@ -207,6 +218,7 @@ $(function () {
   })
 
   QUnit.test('should fire show and hide event', function (assert) {
+    assert.expect(2)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -241,6 +253,7 @@ $(function () {
 
 
   QUnit.test('should fire shown and hidden event', function (assert) {
+    assert.expect(2)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
@@ -274,6 +287,7 @@ $(function () {
   })
 
   QUnit.test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
+    assert.expect(3)
     var done = assert.async()
 
     var dropdownHTML = '<ul class="tabs">'
@@ -315,6 +329,7 @@ $(function () {
   })
 
   QUnit.test('should skip disabled element when using keyboard navigation', function (assert) {
+    assert.expect(1)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'

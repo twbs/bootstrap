@@ -4,6 +4,7 @@ $(function () {
   QUnit.module('affix plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
+    assert.expect(1)
     assert.ok($(document.body).affix, 'affix method is defined')
   })
 
@@ -19,10 +20,12 @@ $(function () {
   })
 
   QUnit.test('should provide no conflict', function (assert) {
+    assert.expect(1)
     assert.strictEqual($.fn.affix, undefined, 'affix was set back to undefined (org value)')
   })
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
+    assert.expect(2)
     var $el = $('<div/>')
     var $affix = $el.bootstrapAffix()
     assert.ok($affix instanceof $, 'returns jquery collection')
@@ -30,12 +33,14 @@ $(function () {
   })
 
   QUnit.test('should exit early if element is not visible', function (assert) {
+    assert.expect(1)
     var $affix = $('<div style="display: none"/>').bootstrapAffix()
     $affix.data('bs.affix').checkPosition()
     assert.ok(!$affix.hasClass('affix'), 'affix class was not added')
   })
 
   QUnit.test('should trigger affixed event after affix', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var templateHTML = '<div id="affixTarget">'
@@ -70,6 +75,7 @@ $(function () {
   })
 
   QUnit.test('should affix-top when scrolling up to offset when parent has padding', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var templateHTML = '<div id="padding-offset" style="padding-top: 20px;">'
