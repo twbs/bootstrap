@@ -167,7 +167,7 @@ $(function () {
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
         $('.contents').click()
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
-        $('#modal-test .modal-backdrop').click()
+        $('#modal-test').click()
       })
       .on('hidden.bs.modal', function () {
         assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
@@ -222,7 +222,7 @@ $(function () {
     $('<div id="modal-test"><div class="contents"/></div>')
       .on('shown.bs.modal', function () {
         triggered = 0
-        $('#modal-test .modal-backdrop').click()
+        $('#modal-test').click()
       })
       .on('hide.bs.modal', function () {
         triggered += 1
