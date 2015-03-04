@@ -247,4 +247,16 @@ $(function () {
     }, new Error('`selector` option must be specified when initializing popover on the window.document object!'))
   })
 
+  QUnit.test('should do nothing when an attempt is made to hide an uninitialized popover', function (assert) {
+    assert.expect(1)
+
+    var $popover = $('<span data-toggle="popover" data-title="some title" data-content="some content">some text</span>')
+      .appendTo('#qunit-fixture')
+      .on('hidden.bs.popover shown.bs.popover', function () {
+        assert.ok(false, 'should not fire any popover events')
+      })
+      .bootstrapPopover('hide')
+    assert.strictEqual($popover.data('bs.popover'), undefined, 'should not initialize the popover')
+  })
+
 })
