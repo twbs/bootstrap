@@ -52,6 +52,7 @@ a.list-group-item {
 
   // Hover state
   &:hover,
+  &.hover,
   &:focus {
     text-decoration: none;
     color: @list-group-link-hover-color;
@@ -63,6 +64,7 @@ a.list-group-item {
   // Disabled state
   &.disabled,
   &.disabled:hover,
+  &.disabled.hover,
   &.disabled:focus {
     background-color: @list-group-disabled-bg;
     color: @list-group-disabled-color;
@@ -80,6 +82,7 @@ a.list-group-item {
   // Active class on item itself, not parent
   &.active,
   &.active:hover,
+  &.active.hover,
   &.active:focus {
     z-index: 2; // Place active items above their siblings for proper border styling
     color: @list-group-active-color;
