@@ -147,7 +147,7 @@ $(function () {
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
-        $(this).find('.close').click()
+        $(this).find('.close').trigger('click')
       })
       .on('hidden.bs.modal', function () {
         assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
@@ -179,9 +179,9 @@ $(function () {
     $('<div id="modal-test"><div class="contents"/></div>')
       .on('shown.bs.modal', function () {
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
-        $('.contents').click()
+        $('.contents').trigger('click')
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
-        $('#modal-test').click()
+        $('#modal-test').trigger('click')
       })
       .on('hidden.bs.modal', function () {
         assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
@@ -239,7 +239,7 @@ $(function () {
     $('<div id="modal-test"><div class="contents"/></div>')
       .on('shown.bs.modal', function () {
         triggered = 0
-        $('#modal-test').click()
+        $('#modal-test').trigger('click')
       })
       .on('hide.bs.modal', function () {
         triggered += 1
@@ -255,14 +255,14 @@ $(function () {
 
     $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
       .one('shown.bs.modal', function () {
-        $('#close').click()
+        $('#close').trigger('click')
       })
       .one('hidden.bs.modal', function () {
         // after one open-close cycle
         assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
         $(this)
           .one('shown.bs.modal', function () {
-            $('#close').click()
+            $('#close').trigger('click')
           })
           .one('hidden.bs.modal', function () {
             assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
@@ -287,11 +287,11 @@ $(function () {
         }, 0)
       })
       .on('shown.bs.modal', function () {
-        $('#close').click()
+        $('#close').trigger('click')
       })
       .appendTo('#qunit-fixture')
 
-    $toggleBtn.click()
+    $toggleBtn.trigger('click')
   })
 
   QUnit.test('should not restore focus to toggling element if the associated show event gets prevented', function (assert) {
@@ -303,7 +303,7 @@ $(function () {
     $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div>')
       .one('show.bs.modal', function (e) {
         e.preventDefault()
-        $otherBtn.focus()
+        $otherBtn.trigger('focus')
         setTimeout($.proxy(function () {
           $(this).bootstrapModal('show')
         }, this), 0)
@@ -315,11 +315,11 @@ $(function () {
         }, 0)
       })
       .on('shown.bs.modal', function () {
-        $('#close').click()
+        $('#close').trigger('click')
       })
       .appendTo('#qunit-fixture')
 
-    $toggleBtn.click()
+    $toggleBtn.trigger('click')
   })
 
   QUnit.test('should restore inline body padding after closing', function (assert) {

@@ -7,6 +7,46 @@
 
     <!-- jQuery -->
     <script src="vendor/jquery.min.js"></script>
+    <script>
+      // Disable jQuery event aliases to ensure we don't accidentally use any of them
+      (function () {
+        var eventAliases = [
+          'blur',
+          'focus',
+          'focusin',
+          'focusout',
+          'load',
+          'resize',
+          'scroll',
+          'unload',
+          'click',
+          'dblclick',
+          'mousedown',
+          'mouseup',
+          'mousemove',
+          'mouseover',
+          'mouseout',
+          'mouseenter',
+          'mouseleave',
+          'change',
+          'select',
+          'submit',
+          'keydown',
+          'keypress',
+          'keyup',
+          'error',
+          'contextmenu',
+          'hover',
+          'bind',
+          'unbind',
+          'delegate',
+          'undelegate'
+        ]
+        for (var i = 0; i < eventAliases.length; i++) {
+          $.fn[eventAliases[i]] = undefined
+        }
+      })()
+    </script>
 
     <!-- QUnit -->
     <link rel="stylesheet" href="vendor/qunit.css" media="screen">

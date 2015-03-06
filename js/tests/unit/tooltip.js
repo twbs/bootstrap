@@ -248,10 +248,10 @@ $(function () {
         trigger: 'click'
       })
 
-    $div.find('a').click()
+    $div.find('a').trigger('click')
     assert.ok($('.tooltip').is('.fade.in'), 'tooltip is faded in')
 
-    $div.find('a').click()
+    $div.find('a').trigger('click')
     assert.strictEqual($('.tooltip').length, 0, 'tooltip was removed from dom')
   })
 
