@@ -41,11 +41,10 @@ $(function () {
   })
 
   QUnit.test('should hide a collapsed element', function (assert) {
-    assert.expect(2)
+    assert.expect(1)
     var $el = $('<div class="collapse"/>').bootstrapCollapse('hide')
 
     assert.ok(!$el.hasClass('in'), 'does not have class "in"')
-    assert.ok(/height/i.test($el.attr('style')), 'has height set')
   })
 
   QUnit.test('should not fire shown when show is prevented', function (assert) {
