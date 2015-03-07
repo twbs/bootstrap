@@ -1284,4 +1284,42 @@ $(function () {
     }, new Error('tooltip `template` option must consist of exactly 1 top-level element!'))
   })
 
+  QUnit.test('should not remove tooltip if multiple triggers are set and one is still active', function (assert) {
+    assert.expect(41)
+    var $el = $('<button>Trigger</button>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({ trigger: 'click hover focus', animation: false })
+    var tooltip = $el.data('bs.tooltip')
+    var $tooltip = tooltip.tip()
+
+    function showingTooltip() { return $tooltip.hasClass('in') || tooltip.hoverState == 'in' }
+
+    var tests = [
+        ['mouseenter', 'mouseleave'],
+
+        ['focusin', 'focusout'],
+
+        ['click', 'click'],
+
+        ['mouseenter', 'focusin', 'focusout', 'mouseleave'],
+        ['mouseenter', 'focusin', 'mouseleave', 'focusout'],
+
+        ['focusin', 'mouseenter', 'mouseleave', 'focusout'],
+        ['focusin', 'mouseenter', 'focusout', 'mouseleave'],
+
+        ['click', 'focusin', 'mouseenter', 'focusout', 'mouseleave', 'click'],
+        ['mouseenter', 'click', 'focusin', 'focusout', 'mouseleave', 'click'],
+        ['mouseenter', 'focusin', 'click', 'click', 'mouseleave', 'focusout']
+    ]
+
+    assert.ok(!showingTooltip())
+
+    $.each(tests, function (idx, triggers) {
+      for (var i = 0, len = triggers.length; i < len; i++) {
+        $el.trigger(triggers[i]);
+        assert.equal(i < (len - 1), showingTooltip())
+      }
+    })
+  })
+
 })
