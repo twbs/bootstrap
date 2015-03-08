@@ -1138,4 +1138,30 @@ $(function () {
     $element.bootstrapTooltip('show')
   })
 
+  test('should not break into multiple lines unnecessarily when the target element positioned to right', function () {
+    var styles = '<style>'
+        + '#qunit-fixture { width: 100%; }'
+        + '#first { position: absolute; left: 0; margin-top: 40px;}'
+        + '#second { position: absolute; right: 0; margin-top: 40px;}'
+        + '.tooltip { position: absolute; }'
+        + '.tooltip-inner { max-width: 200px }'
+        + '</style>'
+    $(styles).appendTo('head')
+
+    var tooltipHTML = '<div>'
+        + '<div id="first" rel="tooltip" title="Tooltip on left side element">left positioned tooltip</div>'
+        + '<div id="second" rel="tooltip" title="Tooltip on right side element">right positioned tooltip</div>'
+        + '</div>'
+
+    var $div = $(tooltipHTML)
+      .append()
+      .appendTo('#qunit-fixture')
+
+    $div.find('div#first').bootstrapTooltip('show')
+    var leftTooltipHeight = $('.tooltip').height();
+    $div.find('div#first').bootstrapTooltip('destroy')
+    $div.find('div#second').bootstrapTooltip('show')
+    equal($('.tooltip').height(), leftTooltipHeight, 'tooltip is not wrapped');
+  })
+
 })

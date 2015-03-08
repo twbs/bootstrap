@@ -240,7 +240,7 @@
 
     var resizeWidth  = (offset.left + width  > $(window).width());
     var resizeHeight = (offset.top  + height > $(window).height());
-    
+
     // $.fn.offset doesn't round pixel values
     // so we use setOffset directly with our own function B-0
     $.offset.setOffset($tip[0], $.extend({
