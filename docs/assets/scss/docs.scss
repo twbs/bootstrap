@@ -1033,9 +1033,11 @@ body {
     margin: .25rem;
   }
 
-  > .nav + .nav {
+  > .nav + .nav,
+  > .progress + .progress {
     margin-top: 1rem;
   }
+
 }
 
 
