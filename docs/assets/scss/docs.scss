@@ -1010,6 +1010,8 @@ body {
   @include clearfix();
 
   @include media-breakpoint-up(sm) {
+    margin-left: 0;
+    margin-right: 0;
     margin-bottom: -1rem;
     padding: 1.5rem;
     border-width: .2rem;
