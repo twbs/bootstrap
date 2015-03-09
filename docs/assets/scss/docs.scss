@@ -74,8 +74,7 @@ body {
   width: 9rem;
   height: 9rem;
   font-size: 6.5rem;
-  font-weight: 500;
-  line-height: 8.8rem;
+  line-height: 9rem;
   color: #fff;
   text-align: center;
   cursor: default;
@@ -210,39 +209,81 @@ body {
 // Homepage
 //
 
+
+
+.bd-header {
+  @include clearfix;
+  padding-bottom: .5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+
+  .bd-header-mark {
+    float: left;
+    padding-top: .6em;
+    padding-bottom: .6em;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #fff;
+  }
+}
+
+.bd-header-nav {
+  float: right;
+
+  .nav-link {
+    float: left;
+    color: #fff;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
 // Masthead (headings and download button)
 .bs-docs-masthead {
   position: relative;
   padding: 2rem 1rem;
-  color: #cdbfe3;
-  text-align: center;
-  text-shadow: 0 1px 0 rgba(0,0,0,.1);
-  background-color: #6f5499;
-  @include gradient-vertical($bs-purple, #6f5499);
+  // color: #cdbfe3;
+  // text-align: center;
+  // text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  // background-color: #6f5499;
+  // @include gradient-vertical($bs-purple, #6f5499);
+  background-image: linear-gradient(135deg, #a8b7be, #cdd1d4, #d4d5d7, #cecfd1);
 }
 
 .bs-docs-masthead .bs-docs-booticon {
-  margin: 0 auto 2rem;
+  margin: 0 0 2rem;
+  color: $gray;
+  border-color: $gray;
 }
 .bs-docs-masthead h1 {
   font-weight: 300;
   line-height: 1;
-  color: #fff;
+  // color: #fff;
 }
 .bs-docs-masthead .lead {
-  margin: 0 auto 2rem;
+  margin-bottom: 2rem;
   font-size: 1.25rem;
-  color: #fff;
+  // color: #fff;
 }
 .bs-docs-masthead .version {
   margin-top: -1rem;
   margin-bottom: 2rem;
-  color: #9783b9;
+  // color: #9783b9;
 }
 .bs-docs-masthead .btn {
   width: 100%;
   padding: 1rem 2rem;
   font-size: 1.25rem;
+  font-weight: 500;
+  color: $gray;
+  border-color: $gray;
+
+  &:hover {
+    color: #fff;
+    background-color: $gray;
+  }
 }
 
 @media (min-width: 480px) {
@@ -253,7 +294,11 @@ body {
 
 @media (min-width: 768px) {
   .bs-docs-masthead {
-    padding: 5rem 0;
+    padding: 2rem 0 4rem;
+    // padding: 5rem 0;
+  }
+  .bd-header {
+    margin-bottom: 4rem;
   }
   .bs-docs-masthead h1 {
     font-size: 4rem;
@@ -408,15 +453,15 @@ body {
   .bs-docs-masthead {
     .carbonad {
       float: none;
-      margin: 0 auto !important;
-      color: $bs-purple-light !important;
-      background: transparent !important;
-      border: 1px solid #866ab3 !important;
+      margin: 0 !important;
+      // color: $bs-purple-light !important;
+      // background: transparent !important;
+      // border: 1px solid #866ab3 !important;
     }
-    .carbonad-text a,
-    .carbonad-tag a {
-      color: #fff !important;
-    }
+    // .carbonad-text a,
+    // .carbonad-tag a {
+    //   color: #fff !important;
+    // }
   }
 }
 
@@ -450,7 +495,8 @@ body {
   width: 6rem;
   margin: 2.5rem auto;
 }
-.bs-docs-featurette h3 {
+.bs-docs-featurette h4 {
+  margin-top: 1rem;
   margin-bottom: .5rem;
   font-weight: normal;
   color: #333;
@@ -700,6 +746,10 @@ body {
   }
 }
 
+
+.bs-docs-sidenav {
+  display: none;
+}
 
 .bs-docs-toc-link {
   display: block;

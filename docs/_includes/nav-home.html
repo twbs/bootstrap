@@ -1,18 +1,9 @@
-<header class="navbar navbar-static-top bs-nav-home" id="top" role="banner">
-  <div class="container">
-    <h3 class="navbar-brand">
-      <a href="{{ site.baseurl }}">Bootstrap</a>
-    </h3>
-    <ul class="nav nav-pills pull-right">
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.baseurl }}/getting-started/quick-start" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a>
-      </li>
-    </ul>
-  </div>
+<header class="bd-header" role="banner">
+  <a class="bd-header-mark" href="{{ site.baseurl }}">Bootstrap</a>
+
+  <nav class="nav nav-pills bd-header-nav">
+    <a class="nav-link" href="{{ site.baseurl }}/getting-started/quick-start" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
+    <a class="nav-link" href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a>
+    <a class="nav-link" href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a>
+  </nav>
 </header>

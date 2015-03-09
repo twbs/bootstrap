@@ -7,9 +7,10 @@ Quickly add Bootstrap to your project via the [Bootstrap CDN](http://bootstrapcd
 
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets.
 
-**Disabled for v4 during alpha releases.**
+<div class="alert alert-warning">
+  <strong>Heads up!</strong> Much of this page will be inaccurate during the v4 alpha releases.
+</div>
 
-{% comment %}
 {% highlight html %}
 <link rel="stylesheet" href="{{ site.cdn.css }}">
 {% endhighlight %}
@@ -47,4 +48,3 @@ Put it all together and your pages should look like this:
 {% endhighlight %}
 
 And that's it. Happy Bootstrapping!
-{% endcomment %}
