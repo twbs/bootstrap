@@ -5,16 +5,6 @@ title: Input group
 
 Easily extend form controls by adding text, buttons, or button groups on either side of textual `<input>`s.
 
-<div class="bs-callout bs-callout-warning">
-  <h4>Tooltips &amp; popovers in input groups require special setting</h4>
-  <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
-</div>
-<div class="bs-callout bs-callout-warning" id="callout-inputgroup-form-labels">
-  <h4>Always add labels</h4>
-  <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.</p>
-  <p>The exact technique to be used (<code>&lt;label&gt;</code> elements hidden using the <code>.sr-only</code> class, or use of the <code>aria-label</code>, <code>aria-labelledby</code>, <code>aria-describedby</code>, <code>title</code> or <code>placeholder</code> attribute) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.</p>
-</div>
-
 ## Basic example
 
 Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple add-ons on a single side, nor multiple form-controls in a single input group.**
@@ -187,3 +177,9 @@ Buttons in input groups are a bit different and require one extra level of nesti
   </div>
 </div>
 {% endexample %}
+
+## Accessibility
+
+Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.
+
+The exact technique to be used (`<label>` elements hidden using the `.sr-only` class, or use of the `aria-label`, `aria-labelledby`, `aria-describedby`, `title` or `placeholder` attribute) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.
