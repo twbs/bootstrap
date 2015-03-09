@@ -32,33 +32,6 @@
     //   e.preventDefault()
     // })
 
-    // theme toggler
-    (function () {
-      var stylesheetLink = $('#bs-theme-stylesheet')
-      var themeBtn = $('.bs-docs-theme-toggle')
-
-      var activateTheme = function () {
-        stylesheetLink.attr('href', stylesheetLink.attr('data-href'))
-        themeBtn.text('Disable theme preview')
-        localStorage.setItem('previewTheme', true)
-      }
-
-      if (localStorage.getItem('previewTheme')) {
-        activateTheme()
-      }
-
-      themeBtn.click(function () {
-        var href = stylesheetLink.attr('href')
-        if (!href || href.indexOf('data') === 0) {
-          activateTheme()
-        } else {
-          stylesheetLink.attr('href', '')
-          themeBtn.text('Preview theme')
-          localStorage.removeItem('previewTheme')
-        }
-      })
-    })
-
     // Tooltip and popover demos
     $('.tooltip-demo').tooltip({
       selector: '[data-toggle="tooltip"]',
