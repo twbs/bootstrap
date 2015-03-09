@@ -3,30 +3,21 @@ layout: page
 title: Overview
 ---
 
+Bootstrap includes a handful of JavaScript to help bring some of our components to life. Learn more about how to include it, our data and programmatic API options, and more.
+
 ### Individual or compiled
 
-Plugins can be included individually (using Bootstrap's individual `*.js` files), or all at once (using `bootstrap.js` or the minified `bootstrap.min.js`).
+Plugins can be included individually (using Bootstrap's individual `*.js` files), or all at once using `bootstrap.js` or the minified `bootstrap.min.js` (don't include both).
 
-<div class="bs-callout bs-callout-danger">
-  <h4>Using the compiled JavaScript</h4>
-  <p>Both <code>bootstrap.js</code> and <code>bootstrap.min.js</code> contain all plugins in a single file. Include only one.</p>
-</div>
+### Dependencies
 
-<div class="bs-callout bs-callout-danger">
-  <h4>Component data attributes</h4>
-  <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
-</div>
-
-<div class="bs-callout bs-callout-danger">
-  <h4>Plugin dependencies</h4>
-  <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files). <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
-</div>
+Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included **before** the plugin files). [Consult our `bower.json`]({{ site.repo }}/blob/v{{ site.current_version }}/bower.json) to see which versions of jQuery are supported.
 
 ### Data attributes
 
-You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first-class API and should be your first consideration when using a plugin.
+Nearly all Bootstrap plugins can be enabled and configured through HTML alone with data attributes (our preferred way of using JavaScript functionality). Be sure to **only use one set of data attributes on a single element** (e.g., you cannot trigger a tooltip and modal from the same button.)
 
-That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with `data-api`. This looks like this:
+However, in some situations it may be desirable to disable this functionality. To disable the data attribute API, unbind all events on the document namespaced with `data-api` like so:
 
 {% highlight js %}
 $(document).off('.data-api')
@@ -37,11 +28,6 @@ Alternatively, to target a specific plugin, just include the plugin's name as a 
 {% highlight js %}
 $(document).off('.alert.data-api')
 {% endhighlight %}
-
-<div class="bs-callout bs-callout-danger">
-  <h4>Only one plugin per element via data attributes</h4>
-  <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
-</div>
 
 ### Programmatic API
 
