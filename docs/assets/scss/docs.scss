@@ -1034,10 +1034,15 @@ body {
   }
 
   > .nav + .nav,
+  > .alert + .alert,
   > .progress + .progress {
     margin-top: 1rem;
   }
 
+  > .dropdown-menu:first-child {
+    position: static;
+    display: block;
+  }
 }
 
 
