@@ -5,6 +5,7 @@ title: Download
 
 Bootstrap is available for download via ZIP file in two flavors: precompiled CSS and Javascript, and the complete source code with documentation.
 
+{% comment %}
 ## Optional builds
 
 ### Scaffolding only
@@ -20,6 +21,7 @@ Choose what CSS and JS components to download and customize further for your own
 Download the entire project and quickly get developing. Includes all CSS and JavaScript, including the source files and basic build tools.
 
 ---
+{% endcomment %}
 
 ### Precompiled
 
