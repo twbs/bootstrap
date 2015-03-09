@@ -80,6 +80,14 @@
     - title: Button group
     - title: Button dropdown
     - title: Input group
+      sections:
+        - title: Basic example
+        - title: Sizing
+        - title: Checkboes and radio buttons
+        - title: Button addons
+        - title: Buttons with dropdowns
+        - title: Segmented buttons
+        - title: Accessibility
     - title: Dropdowns
     - title: Badges
     - title: Label
