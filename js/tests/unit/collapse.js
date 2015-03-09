@@ -41,11 +41,10 @@ $(function () {
   })
 
   QUnit.test('should hide a collapsed element', function (assert) {
-    assert.expect(2)
+    assert.expect(1)
     var $el = $('<div class="collapse"/>').bootstrapCollapse('hide')
 
     assert.ok(!$el.hasClass('in'), 'does not have class "in"')
-    assert.ok(/height/i.test($el.attr('style')), 'has height set')
   })
 
   QUnit.test('should not fire shown when show is prevented', function (assert) {
@@ -147,7 +146,7 @@ $(function () {
     $target.click()
   })
 
-  QUnit.test('should not close a collapse when initialized with "show" if already shown', function (assert) {
+  QUnit.test('should not close a collapse when initialized with "show" option if already shown', function (assert) {
     assert.expect(0)
     var done = assert.async()
 
@@ -162,7 +161,7 @@ $(function () {
     setTimeout(done, 0)
   })
 
-  QUnit.test('should open a collapse when initialized with "show" if not already shown', function (assert) {
+  QUnit.test('should open a collapse when initialized with "show" option if not already shown', function (assert) {
     assert.expect(1)
     var done = assert.async()
 
@@ -173,6 +172,34 @@ $(function () {
       })
 
     $test.bootstrapCollapse('show')
+
+    setTimeout(done, 0)
+  })
+
+  QUnit.test('should not show a collapse when initialized with "hide" option if already hidden', function (assert) {
+    assert.expect(0)
+    var done = assert.async()
+
+    $('<div class="collapse"></div>')
+      .appendTo('#qunit-fixture')
+      .on('show.bs.collapse', function () {
+        assert.ok(false, 'showing a previously-uninitialized hidden collapse when the "hide" method is called')
+      })
+      .bootstrapCollapse('hide')
+
+    setTimeout(done, 0)
+  })
+
+  QUnit.test('should hide a collapse when initialized with "hide" option if not already hidden', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    $('<div class="collapse in"></div>')
+      .appendTo('#qunit-fixture')
+      .on('hide.bs.collapse', function () {
+        assert.ok(true, 'hiding a previously-uninitialized shown collapse when the "hide" method is called')
+      })
+      .bootstrapCollapse('hide')
 
     setTimeout(done, 0)
   })
