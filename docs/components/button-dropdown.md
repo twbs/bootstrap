@@ -95,7 +95,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
 
 ### Split button dropdowns
 
-<Similarly, create split button dropdowns with the same markup changes, only with a separate button.
+Similarly, create split button dropdowns with the same markup changes, only with a separate button.
 
 <div class="bs-example">
   <div class="btn-group">
