@@ -3,19 +3,11 @@ layout: page
 title: Input group
 ---
 
-Extend form controls by adding text or buttons before, after, or on both sides of any text-based `<input>`. Use `.input-group` with an `.input-group-addon` to prepend or append elements to a single `.form-control`.
+Easily extend form controls by adding text, buttons, or button groups on either side of textual `<input>`s.
 
-<div class="bs-callout bs-callout-danger">
-  <h4>Textual <code>&lt;input&gt;</code>s only</h4>
-  <p>Avoid using <code>&lt;textarea&gt;</code> elements here as their <code>rows</code> attribute will not be respected in some cases.</p>
-</div>
 <div class="bs-callout bs-callout-warning">
   <h4>Tooltips &amp; popovers in input groups require special setting</h4>
   <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
-</div>
-<div class="bs-callout bs-callout-warning">
-  <h4>Don't mix with other components</h4>
-  <p>Do not mix form groups or grid column classes directly with input groups. Instead, nest the input group inside of the form group or grid-related element.</p>
 </div>
 <div class="bs-callout bs-callout-warning" id="callout-inputgroup-form-labels">
   <h4>Always add labels</h4>
@@ -25,11 +17,7 @@ Extend form controls by adding text or buttons before, after, or on both sides o
 
 ## Basic example
 
-Place one add-on or button on either side of an input. You may also place one on both sides of an input.
-
-**We do not support multiple add-ons on a single side.**
-
-**We do not support multiple form-controls in a single input group.**
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple add-ons on a single side, nor multiple form-controls in a single input group.**
 
 {% example html %}
 <div class="input-group">
