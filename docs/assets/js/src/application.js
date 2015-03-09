@@ -129,5 +129,5 @@
 
 ;(function () {
   'use strict';
-  addAnchors('.bs-docs-container h1, .bs-docs-container h2, .bs-docs-container h3, .bs-docs-container h4, .bs-docs-container h5');
+  addAnchors('.bs-docs-container > h1, .bs-docs-container > h2, .bs-docs-container > h3, .bs-docs-container > h4, .bs-docs-container > h5');
 })();
