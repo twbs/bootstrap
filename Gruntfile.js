@@ -223,6 +223,8 @@ module.exports = function (grunt) {
 
     cssmin: {
       options: {
+        // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
+        //    and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
         compatibility: 'ie8',
         keepSpecialComments: '*',
         advanced: false
