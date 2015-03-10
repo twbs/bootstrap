@@ -45,7 +45,7 @@ $(function () {
         + '</ul>'
         + '</li>'
         + '</ul>'
-    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().trigger('click')
 
     assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
@@ -66,7 +66,7 @@ $(function () {
     var $dropdown = $(dropdownHTML)
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
-      .click()
+      .trigger('click')
 
     assert.strictEqual($dropdown.attr('aria-expanded'), 'true', 'aria-expanded is set to string "true" on click')
   })
@@ -97,8 +97,8 @@ $(function () {
         done()
       })
 
-    $dropdown.click()
-    $(document.body).click()
+    $dropdown.trigger('click')
+    $(document.body).trigger('click')
   })
 
   QUnit.test('should not open dropdown if target is disabled via class', function (assert) {
@@ -114,7 +114,7 @@ $(function () {
         + '</ul>'
         + '</li>'
         + '</ul>'
-    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().trigger('click')
 
     assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
@@ -132,7 +132,7 @@ $(function () {
         + '</ul>'
         + '</li>'
         + '</ul>'
-    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().trigger('click')
 
     assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
@@ -150,7 +150,7 @@ $(function () {
         + '</ul>'
         + '</li>'
         + '</ul>'
-    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().click()
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().trigger('click')
 
     assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
@@ -173,10 +173,10 @@ $(function () {
       .appendTo('#qunit-fixture')
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
-      .click()
+      .trigger('click')
 
     assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
-    $(document.body).click()
+    $(document.body).trigger('click')
     assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed')
   })
 
@@ -204,16 +204,16 @@ $(function () {
 
     assert.strictEqual($dropdowns.length, 2, 'two dropdowns')
 
-    $first.click()
+    $first.trigger('click')
     assert.strictEqual($first.parents('.open').length, 1, '"open" class added on click')
     assert.strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open')
-    $(document.body).click()
+    $(document.body).trigger('click')
     assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed')
 
-    $last.click()
+    $last.trigger('click')
     assert.strictEqual($last.parent('.open').length, 1, '"open" class added on click')
     assert.strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open')
-    $(document.body).click()
+    $(document.body).trigger('click')
     assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed')
   })
 
@@ -247,8 +247,8 @@ $(function () {
         done()
       })
 
-    $dropdown.click()
-    $(document.body).click()
+    $dropdown.trigger('click')
+    $(document.body).trigger('click')
   })
 
 
@@ -282,8 +282,8 @@ $(function () {
         done()
       })
 
-    $dropdown.click()
-    $(document.body).click()
+    $dropdown.trigger('click')
+    $(document.body).trigger('click')
   })
 
   QUnit.test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
@@ -316,16 +316,16 @@ $(function () {
       .on('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
 
-        $input.focus().trigger($.Event('keydown', { which: 38 }))
+        $input.trigger('focus').trigger($.Event('keydown', { which: 38 }))
         assert.ok($(document.activeElement).is($input), 'input still focused')
 
-        $textarea.focus().trigger($.Event('keydown', { which: 38 }))
+        $textarea.trigger('focus').trigger($.Event('keydown', { which: 38 }))
         assert.ok($(document.activeElement).is($textarea), 'textarea still focused')
 
         done()
       })
 
-    $dropdown.click()
+    $dropdown.trigger('click')
   })
 
   QUnit.test('should skip disabled element when using keyboard navigation', function (assert) {
@@ -343,7 +343,7 @@ $(function () {
       .appendTo('#qunit-fixture')
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
-      .click()
+      .trigger('click')
 
     $dropdown.trigger($.Event('keydown', { which: 40 }))
     $dropdown.trigger($.Event('keydown', { which: 40 }))
