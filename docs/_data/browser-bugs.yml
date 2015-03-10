@@ -120,6 +120,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    `:focus` `outline` style causes cursor to not be displayed when toggling a `readonly` `<input>` to read-write.
+  upstream_bug: >
+    Chromium#465274
+  origin: >
+    Bootstrap#16022
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
