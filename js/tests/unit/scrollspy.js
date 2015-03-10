@@ -229,4 +229,50 @@ $(function () {
       .scrollTop(201)
   })
 
+  QUnit.test('should correctly select navigation element on backward scrolling when each target section height is 100%', function (assert) {
+    assert.expect(5)
+    var navbarHtml =
+        '<nav class="navbar">'
+      + '<ul class="nav">'
+      + '<li id="li-100-1"><a href="#div-100-1">div 1</a></li>'
+      + '<li id="li-100-2"><a href="#div-100-2">div 2</a></li>'
+      + '<li id="li-100-3"><a href="#div-100-3">div 3</a></li>'
+      + '<li id="li-100-4"><a href="#div-100-4">div 4</a></li>'
+      + '<li id="li-100-5"><a href="#div-100-5">div 5</a></li>'
+      + '</ul>'
+      + '</nav>'
+    var contentHtml =
+        '<div class="content" style="position: relative; overflow: auto; height: 100px">'
+      + '<div id="div-100-1" style="position: relative; height: 100%; padding: 0; margin: 0">div 1</div>'
+      + '<div id="div-100-2" style="position: relative; height: 100%; padding: 0; margin: 0">div 2</div>'
+      + '<div id="div-100-3" style="position: relative; height: 100%; padding: 0; margin: 0">div 3</div>'
+      + '<div id="div-100-4" style="position: relative; height: 100%; padding: 0; margin: 0">div 4</div>'
+      + '<div id="div-100-5" style="position: relative; height: 100%; padding: 0; margin: 0">div 5</div>'
+      + '</div>'
+
+    $(navbarHtml).appendTo('#qunit-fixture')
+    var $content = $(contentHtml)
+      .appendTo('#qunit-fixture')
+      .bootstrapScrollspy({ offset: 0, target: '.navbar' })
+
+    var testElementIsActiveAfterScroll = function (element, target) {
+      var deferred = $.Deferred()
+      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
+      var done = assert.async()
+      $content.one('scroll', function () {
+        assert.ok($(element).hasClass('active'), 'target:' + target + ', element: ' + element)
+        done()
+        deferred.resolve()
+      })
+      $content.scrollTop(scrollHeight)
+      return deferred.promise()
+    }
+
+    $.when(testElementIsActiveAfterScroll('#li-100-5', '#div-100-5'))
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-4', '#div-100-4') })
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-3', '#div-100-3') })
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-2', '#div-100-2') })
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-1', '#div-100-1') })
+  })
+
 })
