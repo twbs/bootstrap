@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Compiling with Grunt
+title: Compiling
 ---
 
 Bootstrap uses [Grunt](http://gruntjs.com) for its build system, with convenient methods for working with the framework. It's how we compile our code, run tests, and more.
@@ -24,20 +24,13 @@ When completed, you'll be able to run the various Grunt commands provided from t
 
 ### Available Grunt commands
 
-#### Build - `grunt`
-Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass](http://sass-lang.com/) and [UglifyJS](http://lisperator.net/uglifyjs/).**
-
-#### Only compile CSS and JavaScript - `grunt dist`
-`grunt dist` creates the `/dist` directory with compiled files. **Uses [Sass](http://sass-lang.com/) and [UglifyJS](http://lisperator.net/uglifyjs/).**
-
-#### Tests - `grunt test`
-Runs [JSHint](http://jshint.com) and [QUnit](http://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI).
-
-#### Build and test docs assets - `grunt docs`
-Builds and tests CSS, JavaScript, and other assets which are used when running the documentation locally via `jekyll serve`.
-
-#### Watch - `grunt watch`
-This is a convenience method for watching just Sass files and automatically building them whenever you save.
+| Task | Description |
+| --- | --- |
+| `grunt` | Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass](http://sass-lang.com/) and [UglifyJS](http://lisperator.net/uglifyjs/).** |
+| `grunt dist` | `grunt dist` creates the `/dist` directory with compiled files. **Uses [Sass](http://sass-lang.com/) and [UglifyJS](http://lisperator.net/uglifyjs/).** |
+| `grunt test` | Runs [JSHint](http://jshint.com) and [QUnit](http://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI). |
+| `grunt docs` | Builds and tests CSS, JavaScript, and other assets which are used when running the documentation locally via `jekyll serve`. |
+| `grunt watch` | This is a convenience method for watching just Sass files and automatically building them whenever you save. |
 
 ### Use another Sass compiler
 Bootstrap is compiled with [libsass][libsass] by default.
