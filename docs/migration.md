@@ -36,6 +36,11 @@ This table shows the style changes between v3.x.x and v4.0.0.
 - Changed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
 
+### Navs
+
+- Dropped nearly all `>` selectors for simpler styling via un-nested classes.
+- Instead of HTML-specific selectors like `.nav > li > a`, we use separate classes for `.nav`s, `.nav-item`s, and `.nav-link`s. This makes your HTML more flexible while bringing along increased extensibility.
+
 ### Pager
 
 - Changed `.previous` and `.next` to `.pager-prev` and `.pager-next`.
