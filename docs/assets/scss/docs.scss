@@ -1087,11 +1087,16 @@ body {
 }
 
 // Images
-.bs-example > .img-circle,
-.bs-example > .img-rounded,
-.bs-example > .img-thumbnail {
-  margin: .25rem;
+.bs-example > img {
+  + img {
+    margin-left: .5rem;
+  }
 }
+// .bs-example > .img-circle,
+// .bs-example > .img-rounded,
+// .bs-example > .img-thumbnail {
+//   margin: .25rem;
+// }
 
 // Tables
 // .bs-example > .table-responsive > .table {
@@ -1252,7 +1257,7 @@ body {
 
 // Helpers
 .bs-example > {
-  .center-block {
+  .center-block:not(img) {
     max-width: 200px;
     padding: .5rem;
     background-color: #eee;
