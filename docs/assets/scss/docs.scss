@@ -634,6 +634,11 @@ body {
         }
       }
     }
+
+    // Prevent breaking of code (e.g., Grunt tasks list)
+    td:first-child > code {
+      white-space: nowrap;
+    }
   }
 }
 
