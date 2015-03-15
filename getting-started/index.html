@@ -91,7 +91,7 @@
 
 
     <!-- Docs page layout -->
-    <div class="bs-docs-header" id="content">
+    <div class="bs-docs-header" id="content" tabindex="-1">
       <div class="container">
         <h1>Getting started</h1>
         <p>An overview of Bootstrap, how to download and use, basic templates and examples, and more.</p>
@@ -128,7 +128,7 @@
       <h3 id="download-sass">Sass</h3>
       <p><a href="https://github.com/twbs/bootstrap-sass">Bootstrap ported from Less to Sass</a> for easy inclusion in Rails, Compass, or Sass-only projects.</p>
       <p>
-        <a href="https://github.com/twbs/bootstrap-sass/archive/v3.3.2.tar.gz" class="btn btn-lg btn-outline" role="button" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Sass');">Download Sass</a>
+        <a href="https://github.com/twbs/bootstrap-sass/archive/v3.3.3.tar.gz" class="btn btn-lg btn-outline" role="button" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Sass');">Download Sass</a>
       </p>
     </div>
   </div>
@@ -218,7 +218,7 @@ Copy any changes made here over to the README too. -->
   <p class="lead">Bootstrap uses <a href="http://gruntjs.com">Grunt</a> for its build system, with convenient methods for working with the framework. It's how we compile our code, run tests, and more.</p>
 
   <h2 id="grunt-installing">Installing Grunt</h2>
-  <p>To install Grunt, you must <strong>first <a href="http://nodejs.org/download/">download and install node.js</a></strong> (which includes npm). npm stands for <a href="http://npmjs.org/">node packaged modules</a> and is a way to manage development dependencies through node.js.</p>
+  <p>To install Grunt, you must <strong>first <a href="http://nodejs.org/download/">download and install node.js</a></strong> (which includes npm). npm stands for <a href="https://www.npmjs.com/">node packaged modules</a> and is a way to manage development dependencies through node.js.</p>
 
   Then, from the command line:
   <ol>
@@ -260,6 +260,7 @@ Copy any changes made here over to the README too. -->
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags --&gt;</span>
     <span class="nt">&lt;title&gt;</span>Bootstrap 101 Template<span class="nt">&lt;/title&gt;</span>
 
     <span class="c">&lt;!-- Bootstrap --&gt;</span>
@@ -458,6 +459,7 @@ Copy any changes made here over to the README too. -->
     <li>Read and subscribe to <a href="http://blog.getbootstrap.com/">The Official Bootstrap Blog</a>.</li>
     <li>Chat with fellow Bootstrappers using IRC in the <code>irc.freenode.net</code> server, in the <a href="irc://irc.freenode.net/%23bootstrap">##bootstrap channel</a>.</li>
     <li>For help using Bootstrap, ask on <a href="http://stackoverflow.com/questions/tagged/twitter-bootstrap-3">StackOverflow using the tag <code>twitter-bootstrap-3</code></a>.</li>
+    <li>Developers should use the keyword <code>bootstrap</code> on packages which modify or add to the functionality of Bootstrap when distributing through <a href="https://www.npmjs.com/browse/keyword/bootstrap">npm</a> or similar delivery mechanisms for maximum discoverability.</li>
     <li>Find inspiring examples of people building with Bootstrap at the <a href="http://expo.getbootstrap.com">Bootstrap Expo</a>.</li>
   </ul>
   <p>You can also follow <a href="https://twitter.com/getbootstrap">@getbootstrap on Twitter</a> for the latest gossip and awesome music videos.</p>
@@ -774,7 +776,7 @@ Copy any changes made here over to the README too. -->
 
   <h4>It requires you to:</h4>
   <ul>
-    <li>Include the license and copyright notice in your works</li>
+    <li>Keep the license and copyright notice included in Bootstrap's CSS and JavaScript files when you use them in your works</li>
   </ul>
 
   <h4>It permits you to:</h4>
@@ -808,25 +810,27 @@ Copy any changes made here over to the README too. -->
 
   <p class="lead">Community members have translated Bootstrap's documentation into various languages. None are officially supported and they may not always be up to date.</p>
   <ul>
-
+    
       <li><a href="http://v3.bootcss.com/" hreflang="zh">Bootstrap 中文文档 (Chinese)</a></li>
-
+    
       <li><a href="http://getbootstrap.dk/" hreflang="da">Bootstrap på Dansk (Danish)</a></li>
-
-      <li><a href="http://www.oneskyapp.com/docs/bootstrap/fr" hreflang="fr">Bootstrap en Français (French)</a></li>
-
+    
+      <li><a href="http://www.oneskyapp.com/fr/docs/bootstrap/getting-started/" hreflang="fr">Bootstrap en Français (French)</a></li>
+    
       <li><a href="http://holdirbootstrap.de/" hreflang="de">Bootstrap auf Deutsch (German)</a></li>
-
+    
       <li><a href="http://www.hackerstribe.com/guide/IT-bootstrap-3.1.1/" hreflang="it">Bootstrap in Italiano (Italian)</a></li>
-
+    
       <li><a href="http://bootstrapk.com/BS3/" hreflang="ko">Bootstrap 한국어 (Korean)</a></li>
-
-      <li><a href="http://www.oneskyapp.com/docs/bootstrap/ru" hreflang="ru">Bootstrap по-русски (Russian)</a></li>
-
-      <li><a href="http://www.oneskyapp.com/docs/bootstrap/es" hreflang="es">Bootstrap en Español (Spanish)</a></li>
-
+    
+      <li><a href="http://www.oneskyapp.com/ru/docs/bootstrap/" hreflang="ru">Bootstrap по-русски (Russian)</a></li>
+    
+      <li><a href="http://www.oneskyapp.com/es/docs/bootstrap/" hreflang="es">Bootstrap en Español (Spanish)</a></li>
+    
       <li><a href="http://twbs.docs.org.ua" hreflang="uk">Bootstrap українською (Ukrainian)</a></li>
-
+    
+      <li><a href="http://getbootstrap.com.vn" hreflang="vi">Bootstrap bằng tiếng Việt (Vietnamese)</a></li>
+    
   </ul>
   <p><strong class="text-danger">We don't help organize or host translations, we just link to them.</strong></p>
   <p>Finished a new or better translation? Open a pull request to add it to our list.</p>
@@ -951,7 +955,7 @@ Copy any changes made here over to the README too. -->
 
     <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
     <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <p>Code licensed under <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a rel="license" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
     <ul class="bs-docs-footer-links text-muted">
       <li>Currently v3.3.2</li>
       <li>&middot;</li>
