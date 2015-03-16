@@ -141,9 +141,13 @@ output {
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
-    cursor: @cursor-disabled;
     background-color: @input-bg-disabled;
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
   }
 
   // Reset height for `textarea`s
@@ -238,6 +242,7 @@ input[type="search"] {
 // Radios and checkboxes on same line
 .radio-inline,
 .checkbox-inline {
+  position: relative;
   display: inline-block;
   padding-left: 20px;
   margin-bottom: 0;
@@ -294,6 +299,7 @@ input[type="checkbox"] {
   padding-bottom: (@padding-base-vertical + 1);
   // Remove default margin from `p`
   margin-bottom: 0;
+  min-height: (@line-height-computed + @font-size-base);
 
   &.input-lg,
   &.input-sm {
@@ -323,6 +329,7 @@ input[type="checkbox"] {
     padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
     line-height: @line-height-small;
+    min-height: (@line-height-computed + @font-size-small);
   }
 }
 
@@ -338,6 +345,7 @@ input[type="checkbox"] {
     padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     line-height: @line-height-large;
+    min-height: (@line-height-computed + @font-size-large);
   }
 }
 

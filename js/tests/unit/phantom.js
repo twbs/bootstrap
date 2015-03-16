@@ -31,8 +31,8 @@
     if (!obj.result) {
       // Dumping large objects can be very slow, and the dump isn't used for
       // passing tests, so only dump if the test failed.
-      actual = QUnit.jsDump.parse(obj.actual)
-      expected = QUnit.jsDump.parse(obj.expected)
+      actual = QUnit.dump.parse(obj.actual)
+      expected = QUnit.dump.parse(obj.expected)
     }
     // Send it.
     sendMessage('qunit.log', obj.result, actual, expected, obj.message, obj.source)

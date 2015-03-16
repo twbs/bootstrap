@@ -75,9 +75,9 @@ body {
 }
 {% endhighlight %}
 {% highlight html %}
-<body data-spy="scroll" data-target=".navbar-example">
+<body data-spy="scroll" data-target="#navbar-example">
   ...
-  <div class="navbar-example">
+  <div id="navbar-example">
     <ul class="nav nav-tabs" role="tablist">
       ...
     </ul>
@@ -89,12 +89,12 @@ body {
   <h3>Via JavaScript</h3>
   <p>After adding <code>position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
 {% highlight js %}
-$('body').scrollspy({ target: '.navbar-example' })
+$('body').scrollspy({ target: '#navbar-example' })
 {% endhighlight %}
 
 
   <h3 id="scrollspy-methods">Methods</h3>
-  <h4>.scrollspy('refresh')</h4>
+  <h4><code>.scrollspy('refresh')</code></h4>
   <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:</p>
 {% highlight js %}
 $('[data-spy="scroll"]').each(function () {

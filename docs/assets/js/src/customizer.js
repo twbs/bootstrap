@@ -6,12 +6,13 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 
+/* jshint es3:false */
 /* global JSZip, less, autoprefixer, saveAs, UglifyJS, __configBridge, __js, __less, __fonts */
 
 window.onload = function () { // wait for load in a dumb way because B-0
   'use strict';
   var cw = '/*!\n' +
-           ' * Bootstrap v3.3.2 (http://getbootstrap.com)\n' +
+           ' * Bootstrap v3.3.4 (http://getbootstrap.com)\n' +
            ' * Copyright 2011-' + new Date().getFullYear() + ' Twitter, Inc.\n' +
            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
            ' */\n\n'
