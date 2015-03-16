@@ -544,15 +544,9 @@ if (typeof jQuery === 'undefined') {
   var Collapse = function (element, options) {
     this.$element      = $(element)
     this.options       = $.extend({}, Collapse.DEFAULTS, options)
-    this.$trigger      = $('[data-toggle="collapse"][href="#' + element.id + '"],' +
-                           '[data-toggle="collapse"][data-target="#' + element.id + '"]')
     this.transitioning = null
 
-    if (this.options.parent) {
-      this.$parent = this.getParent()
-    } else {
-      this.addAriaAndCollapsedClass(this.$element, this.$trigger)
-    }
+    this.updateTriggers(this.options.trigger)
 
     if (this.options.toggle) this.toggle()
   }
@@ -562,7 +556,8 @@ if (typeof jQuery === 'undefined') {
   Collapse.TRANSITION_DURATION = 350
 
   Collapse.DEFAULTS = {
-    toggle: true
+    toggle: true,
+    trigger: '[data-toggle="collapse"]'
   }
 
   Collapse.prototype.dimension = function () {
@@ -597,7 +592,7 @@ if (typeof jQuery === 'undefined') {
       .addClass('collapsing')[dimension](0)
       .attr('aria-expanded', true)
 
-    this.$trigger
+    this.$allTriggers
       .removeClass('collapsed')
       .attr('aria-expanded', true)
 
@@ -637,7 +632,7 @@ if (typeof jQuery === 'undefined') {
       .removeClass('collapse in')
       .attr('aria-expanded', false)
 
-    this.$trigger
+    this.$allTriggers
       .addClass('collapsed')
       .attr('aria-expanded', false)
 
@@ -680,6 +675,21 @@ if (typeof jQuery === 'undefined') {
     $trigger
       .toggleClass('collapsed', !isOpen)
       .attr('aria-expanded', isOpen)
+  }
+
+  Collapse.prototype.updateTriggers = function ($currentTrigger) {
+    this.$allTriggers  = $('[data-toggle="collapse"][href="#' + this.$element[0].id + '"],'
+                         + '[data-toggle="collapse"][data-target="#' + this.$element[0].id + '"]')
+    this.options.trigger = $currentTrigger
+    this.$trigger = $(this.options.trigger).filter('[href="#' + this.$element[0].id + '"], [data-target="#' + this.$element[0].id + '"]')
+    this.options.parent = this.$trigger.data('parent')
+
+    if (this.options.parent) {
+      this.$parent = this.getParent()
+    } else {
+      this.$parent = null
+      this.addAriaAndCollapsedClass(this.$element, this.$allTriggers)
+    }
   }
 
   function getTargetFromTrigger($trigger) {
@@ -731,7 +741,9 @@ if (typeof jQuery === 'undefined') {
 
     var $target = getTargetFromTrigger($this)
     var data    = $target.data('bs.collapse')
-    var option  = data ? 'toggle' : $this.data()
+    var option  = data ? 'toggle' : $.extend({}, $this.data(), { trigger: this })
+
+    data && data.updateTriggers(this)
 
     Plugin.call($target, option)
   })
