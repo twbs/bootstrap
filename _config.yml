@@ -14,13 +14,13 @@ url:              http://getbootstrap.com
 encoding:         UTF-8
 
 # Custom vars
-current_version:  3.3.2
+current_version:  3.3.4
 repo:             https://github.com/twbs/bootstrap
 sass_repo:        https://github.com/twbs/bootstrap-sass
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v3.3.2.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v3.3.2/bootstrap-3.3.2-dist.zip
+  source:         https://github.com/twbs/bootstrap/archive/v3.3.4.zip
+  dist:           https://github.com/twbs/bootstrap/releases/download/v3.3.4/bootstrap-3.3.4-dist.zip
   sass:           https://github.com/twbs/bootstrap-sass/archive/v3.3.3.tar.gz
 
 blog:             http://blog.getbootstrap.com

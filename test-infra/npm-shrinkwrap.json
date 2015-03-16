@@ -1,6 +1,6 @@
 {
   "name": "bootstrap",
-  "version": "3.3.2",
+  "version": "3.3.4",
   "npm-shrinkwrap-version": "200.1.0",
   "node-version": "v0.12.0",
   "dependencies": {
