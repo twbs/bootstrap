@@ -153,6 +153,10 @@ output {
   // Reset height for `textarea`s
   textarea& {
     height: auto;
+    max-width: 100%;
+    &[disabled] {
+      max-width: 100%;
+    }
   }
 }
 
