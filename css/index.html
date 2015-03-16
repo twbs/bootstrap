@@ -10,9 +10,9 @@
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 
 <title>
-
+  
     CSS &middot; Bootstrap
-
+  
 </title>
 
 <!-- Bootstrap core CSS -->
@@ -96,7 +96,7 @@
 
 
     <!-- Docs page layout -->
-    <div class="bs-docs-header" id="content">
+    <div class="bs-docs-header" id="content" tabindex="-1">
       <div class="container">
         <h1>CSS</h1>
         <p>Global CSS settings, fundamental HTML elements styled and enhanced with extensible classes, and an advanced grid system.</p>
@@ -114,21 +114,21 @@
 
   <p class="lead">Get the lowdown on the key pieces of Bootstrap's infrastructure, including our approach to better, faster, stronger web development.</p>
 
-  <h3 id="overview-doctype">HTML5 doctype</h3>
+  <h2 id="overview-doctype">HTML5 doctype</h2>
   <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
   ...
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
 
-  <h3 id="overview-mobile">Mobile first</h3>
+  <h2 id="overview-mobile">Mobile first</h2>
   <p>With Bootstrap 2, we added optional mobile friendly styles for key aspects of the framework. With Bootstrap 3, we've rewritten the project to be mobile friendly from the start. Instead of adding on optional mobile styles, they're baked right into the core. In fact, <strong>Bootstrap is mobile first</strong>. Mobile first styles can be found throughout the entire library instead of in separate files.</p>
   <p>To ensure proper rendering and touch zooming, <strong>add the viewport meta tag</strong> to your <code>&lt;head&gt;</code>.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span></code></pre></div>
   <p>You can disable zooming capabilities on mobile devices by adding <code>user-scalable=no</code> to the viewport meta tag. This disables zooming, meaning users are only able to scroll, and results in your site feeling a bit more like a native application. Overall, we don't recommend this on every site, so use caution!</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"</span><span class="nt">&gt;</span></code></pre></div>
 
-  <h3 id="overview-type-links">Typography and links</h3>
+  <h2 id="overview-type-links">Typography and links</h2>
   <p>Bootstrap sets basic global display, typography, and link styles. Specifically, we:</p>
   <ul>
     <li>Set <code>background-color: #fff;</code> on the <code>body</code></li>
@@ -137,10 +137,10 @@
   </ul>
   <p>These styles can be found within <code>scaffolding.less</code>.</p>
 
-  <h3 id="overview-normalize">Normalize.css</h3>
+  <h2 id="overview-normalize">Normalize.css</h2>
   <p>For improved cross-browser rendering, we use <a href="http://necolas.github.io/normalize.css/" target="_blank">Normalize.css</a>, a project by <a href="https://twitter.com/necolas" target="_blank">Nicolas Gallagher</a> and <a href="https://twitter.com/jon_neal" target="_blank">Jonathan Neal</a>.</p>
 
-  <h3 id="overview-container">Containers</h3>
+  <h2 id="overview-container">Containers</h2>
   <p>Bootstrap requires a containing element to wrap site contents and house our grid system. You may choose one of two containers to use in your projects. Note that, due to <code>padding</code> and more, neither container is nestable.</p>
   <p>Use <code>.container</code> for a responsive fixed width container.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
@@ -157,7 +157,7 @@
 
   <p class="lead">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases. It includes <a href="#grid-example-basic">predefined classes</a> for easy layout options, as well as powerful <a href="#grid-less">mixins for generating more semantic layouts</a>.</p>
 
-  <h3 id="grid-intro">Introduction</h3>
+  <h2 id="grid-intro">Introduction</h2>
   <p>Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Bootstrap grid system works:</p>
   <ul>
     <li>Rows must be placed within a <code>.container</code> (fixed-width) or <code>.container-fluid</code> (full-width) for proper alignment and padding.</li>
@@ -172,7 +172,7 @@
   </ul>
   <p>Look to the examples for applying these principles to your code.</p>
 
-  <h3 id="grid-media-queries">Media queries</h3>
+  <h2 id="grid-media-queries">Media queries</h2>
   <p>We use the following media queries in our Less files to create the key breakpoints in our grid system.</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="cm">/* Extra small devices (phones, less than 768px) */</span>
 <span class="cm">/* No media query since this is the default in Bootstrap */</span>
@@ -191,7 +191,7 @@
 <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-md-min</span><span class="o">)</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-md-max</span><span class="o">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span>
 <span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="o">@</span><span class="nt">screen-lg-min</span><span class="o">)</span> <span class="p">{</span> <span class="nc">...</span> <span class="p">}</span></code></pre></div>
 
-  <h3 id="grid-options">Grid options</h3>
+  <h2 id="grid-options">Grid options</h2>
   <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
@@ -267,7 +267,7 @@
     </table>
   </div>
 
-  <h3 id="grid-example-basic">Example: Stacked-to-horizontal</h3>
+  <h2 id="grid-example-basic">Example: Stacked-to-horizontal</h2>
   <p>Using a single set of <code>.col-md-*</code> grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any <code>.row</code>.</p>
   <div class="bs-docs-grid">
     <div class="row show-grid">
@@ -326,7 +326,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>.col-md-6<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3 id="grid-example-fluid">Example: Fluid container</h3>
+  <h2 id="grid-example-fluid">Example: Fluid container</h2>
   <p>Turn any fixed-width grid layout into a full-width layout by changing your outermost <code>.container</code> to <code>.container-fluid</code>.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
@@ -334,7 +334,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3 id="grid-example-mixed">Example: Mobile and desktop</h3>
+  <h2 id="grid-example-mixed">Example: Mobile and desktop</h2>
   <p>Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding <code>.col-xs-*</code> <code>.col-md-*</code> to your columns. See the example below for a better idea of how it all works.</p>
   <div class="bs-docs-grid">
     <div class="row show-grid">
@@ -370,7 +370,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-6"</span><span class="nt">&gt;</span>.col-xs-6<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3 id="grid-example-mixed-complete">Example: Mobile, tablet, desktop</h3>
+  <h2 id="grid-example-mixed-complete">Example: Mobile, tablet, desktop</h2>
   <p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>.col-sm-*</code> classes.</p>
   <div class="bs-docs-grid">
     <div class="row show-grid">
@@ -397,7 +397,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-6 col-sm-4"</span><span class="nt">&gt;</span>.col-xs-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3 id="grid-example-wrapping">Example: Column wrapping</h3>
+  <h2 id="grid-example-wrapping">Example: Column wrapping</h2>
   <p>If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.</p>
   <div class="bs-docs-grid">
     <div class="row show-grid">
@@ -412,7 +412,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-6"</span><span class="nt">&gt;</span>.col-xs-6<span class="nt">&lt;br&gt;</span>Subsequent columns continue along the new line.<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3 id="grid-responsive-resets">Responsive column resets</h3>
+  <h2 id="grid-responsive-resets">Responsive column resets</h2>
   <p>With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a <code>.clearfix</code> and our <a href="#responsive-utilities">responsive utility classes</a>.</p>
   <div class="bs-docs-grid">
     <div class="row show-grid">
@@ -452,7 +452,7 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 
-  <h3 id="grid-offsetting">Offsetting columns</h3>
+  <h2 id="grid-offsetting">Offsetting columns</h2>
   <p>Move columns to the right using <code>.col-md-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>.col-md-offset-4</code> moves <code>.col-md-4</code> over four columns.</p>
   <div class="bs-docs-grid">
     <div class="row show-grid">
@@ -480,7 +480,7 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 
-  <h3 id="grid-nesting">Nesting columns</h3>
+  <h2 id="grid-nesting">Nesting columns</h2>
   <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-sm-*</code> columns within an existing <code>.col-sm-*</code> column. Nested rows should include a set of columns that add up to 12 or fewer (it is not required that you use all 12 available columns).</p>
   <div class="row show-grid">
     <div class="col-sm-9">
@@ -509,7 +509,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3 id="grid-column-ordering">Column ordering</h3>
+  <h2 id="grid-column-ordering">Column ordering</h2>
   <p>Easily change the order of our built-in grid columns with <code>.col-md-push-*</code> and <code>.col-md-pull-*</code> modifier classes.</p>
   <div class="row show-grid">
     <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
@@ -521,16 +521,16 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 col-md-pull-9"</span><span class="nt">&gt;</span>.col-md-3 .col-md-pull-9<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h3 id="grid-less">Less mixins and variables</h3>
+  <h2 id="grid-less">Less mixins and variables</h2>
   <p>In addition to <a href="#grid-example-basic">prebuilt grid classes</a> for fast layouts, Bootstrap includes Less variables and mixins for quickly generating your own simple, semantic layouts.</p>
 
-  <h4>Variables</h4>
+  <h3>Variables</h3>
   <p>Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="k">@grid-columns</span><span class="nd">:</span>              <span class="nt">12</span><span class="p">;</span>
 <span class="k">@grid-gutter-width</span><span class="nd">:</span>         <span class="nt">30px</span><span class="p">;</span>
 <span class="k">@grid-float-breakpoint</span><span class="nd">:</span>     <span class="nt">768px</span><span class="p">;</span></code></pre></div>
 
-  <h4>Mixins</h4>
+  <h3>Mixins</h3>
   <p>Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Creates a wrapper for a series of columns
 </span><span class="err">.</span><span class="na">make-row</span><span class="err">(@</span><span class="na">gutter</span><span class="p">:</span> <span class="o">@</span><span class="n">grid-gutter-width</span><span class="p">)</span> <span class="p">{</span>
@@ -664,7 +664,7 @@
   <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
 
-  <h4>Example usage</h4>
+  <h3>Example usage</h3>
   <p>You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.wrapper</span> <span class="p">{</span>
   <span class="nc">.make-row</span><span class="o">()</span><span class="p">;</span>
@@ -2089,7 +2089,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
 
   <h2 id="forms-control-disabled">Disabled state</h2>
-  <p>Add the <code>disabled</code> boolean attribute on an input to prevent user input and trigger a slightly different look.</p>
+  <p>Add the <code>disabled</code> boolean attribute on an input to prevent user interactions. Disabled inputs appear lighter and add a <code>not-allowed</code> cursor.</p>
   <div class="bs-example" data-example-id="text-form-control-disabled">
     <form>
       <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here…" disabled>
@@ -2155,7 +2155,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
 
   <h2 id="forms-control-readonly">Readonly state</h2>
-  <p>Add the <code>readonly</code> boolean attribute on an input to prevent user input and style the input as disabled.</p>
+  <p>Add the <code>readonly</code> boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.</p>
   <div class="bs-example" data-example-id="readonly-text-form-control">
     <form>
       <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
@@ -2168,9 +2168,9 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
   <div class="bs-callout bs-callout-warning" id="callout-form-validation-state-accessibility">
-    <h4>Conveying validation state to assistive technologies</h4>
-    <p>Using these validation styles to denote the state of a form control only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers.</p>
-    <p>Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's <code>&lt;label&gt;</code> text itself (as is the case in the following code example), or associate an additional element with textual information about the validation state with the form control using <code>aria-describedby</code> (see the example in the following section). In the case of an error, you could also use the <code>aria-invalid="true"</code> attribute on the form control.</p>
+    <h4>Conveying validation state to assistive technologies and colorblind users</h4>
+    <p>Using these validation styles to denote the state of a form control only provides a visual, color-based indication, which will not be conveyed to users of assistive technologies - such as screen readers - or to colorblind users.</p>
+    <p>Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's <code>&lt;label&gt;</code> text itself (as is the case in the following code example), include a <a href="../components/#glyphicons">Glyphicon</a> (with appropriate alternative text using the <code>.sr-only</code> class - see the <a href="../components/#glyphicons-examples">Glyphicon examples</a>), or by providing an additional <a href="#forms-help-text">help text</a> block. Specifically for assistive technologies, invalid form controls can also be assigned an <code>aria-invalid="true"</code> attribute.</p>
   </div>
 
   <div class="bs-example" data-example-id="form-validation-states">
@@ -2669,7 +2669,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
   <div class="bs-example" data-example-id="block-btns">
-    <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+    <div class="well center-block" style="max-width: 400px;">
       <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
       <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
     </div>
@@ -2739,7 +2739,8 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <h1 id="images" class="page-header">Images</h1>
 
   <h2 id="images-responsive">Responsive images</h2>
-  <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code> and <code>height: auto;</code> to the image so that it scales nicely to the parent element.</p>
+  <p>Images in Bootstrap 3 can be made responsive-friendly via the addition of the <code>.img-responsive</code> class. This applies <code>max-width: 100%;</code>, <code>height: auto;</code> and <code>display: block;</code> to the image so that it scales nicely to the parent element.</p>
+  <p>To center images which use the <code>.img-responsive</code> class, use <code>.center-block</code> instead of <code>.text-center</code>. <a href="../css/#helper-classes-center">See the helper classes section</a> for more details about <code>.center-block</code> usage.</p>
   <div class="bs-callout bs-callout-warning" id="callout-images-ie-svg">
     <h4>SVG images and IE 8-10</h4>
     <p>In Internet Explorer 8-10, SVG images with <code>.img-responsive</code> are disproportionately sized. To fix this, add <code>width: 100% \9;</code> where necessary. Bootstrap doesn't apply this automatically as it causes complications to other image formats.</p>
@@ -2858,14 +2859,14 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <h3 id="helper-classes-center">Center content blocks</h3>
   <p>Set an element to <code>display: block</code> and center via <code>margin</code>. Available as a mixin and class.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"center-block"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
-<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Classes
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Class
 </span><span class="nc">.center-block</span> <span class="p">{</span>
   <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
   <span class="nl">margin-left</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
   <span class="nl">margin-right</span><span class="p">:</span> <span class="nb">auto</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="c1">// Usage as mixins
+<span class="c1">// Usage as a mixin
 </span><span class="nc">.element</span> <span class="p">{</span>
   <span class="nc">.center-block</span><span class="o">()</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
@@ -2887,7 +2888,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// Usage as a Mixin
+<span class="c1">// Usage as a mixin
 </span><span class="nc">.element</span> <span class="p">{</span>
   <span class="nc">.clearfix</span><span class="o">()</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
@@ -2923,7 +2924,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <h3 id="helper-classes-screen-readers">Screen reader and keyboard navigation content</h3>
   <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Combine <code>.sr-only</code> with <code>.sr-only-focusable</code> to show the element again when it's focused (e.g. by a keyboard-only user). Necessary for following <a href="../getting-started/#accessibility">accessibility best practices</a>. Can also be used as mixins.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"sr-only sr-only-focusable"</span> <span class="na">href=</span><span class="s">"#content"</span><span class="nt">&gt;</span>Skip to main content<span class="nt">&lt;/a&gt;</span></code></pre></div>
-<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Usage as a Mixin
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Usage as a mixin
 </span><span class="nc">.skip-navigation</span> <span class="p">{</span>
   <span class="nc">.sr-only</span><span class="o">()</span><span class="p">;</span>
   <span class="nc">.sr-only-focusable</span><span class="o">()</span><span class="p">;</span>
@@ -2933,7 +2934,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <h3 id="helper-classes-image-replacement">Image replacement</h3>
   <p>Utilize the <code>.text-hide</code> class or mixin to help replace an element's text content with a background image.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"text-hide"</span><span class="nt">&gt;</span>Custom heading<span class="nt">&lt;/h1&gt;</span></code></pre></div>
-  <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Usage as a Mixin
+<div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Usage as a mixin
 </span><span class="nc">.heading</span> <span class="p">{</span>
   <span class="nc">.text-hide</span><span class="o">()</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
@@ -3282,7 +3283,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <p>Note that the <code>@link-hover-color</code> uses a function, another awesome tool from Less, to automagically create the right hover color. You can use <code>darken</code>, <code>lighten</code>, <code>saturate</code>, and <code>desaturate</code>.</p>
 
   <h3 id="less-variables-typography">Typography</h3>
-  <p>Easily set your type face, text size, leading, and more with a few quick variables. Bootstrap makes use of these as well to provide easy typographic mixins.</p>
+  <p>Easily set your typeface, text size, leading, and more with a few quick variables. Bootstrap makes use of these as well to provide easy typographic mixins.</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="k">@font-family-sans-serif</span><span class="nd">:</span>  <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="nt">Helvetica</span><span class="o">,</span> <span class="nt">Arial</span><span class="o">,</span> <span class="nt">sans-serif</span><span class="p">;</span>
 <span class="k">@font-family-serif</span><span class="nd">:</span>       <span class="nt">Georgia</span><span class="o">,</span> <span class="s2">"Times New Roman"</span><span class="o">,</span> <span class="nt">Times</span><span class="o">,</span> <span class="nt">serif</span><span class="p">;</span>
 <span class="k">@font-family-monospace</span><span class="nd">:</span>   <span class="nt">Menlo</span><span class="o">,</span> <span class="nt">Monaco</span><span class="o">,</span> <span class="nt">Consolas</span><span class="o">,</span> <span class="s2">"Courier New"</span><span class="o">,</span> <span class="nt">monospace</span><span class="p">;</span>
@@ -3346,7 +3347,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3 id="less-mixins-box-sizing">Box-sizing</h3>
   <p>Reset your components' box model with a single mixin. For context, see this <a href="https://developer.mozilla.org/en-US/docs/CSS/box-sizing" target="_blank">helpful article from Mozilla</a>.</p>
-  <p>The mixin is <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixin internally until Bootstrap v4.</p>
+  <p>The mixin is <strong>deprecated</strong> as of v3.2.0, with the introduction of Autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixin internally until Bootstrap v4.</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.box-sizing</span><span class="o">(@</span><span class="nt">box-model</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">-webkit-box-sizing</span><span class="p">:</span> <span class="o">@</span><span class="n">box-model</span><span class="p">;</span> <span class="c1">// Safari &lt;= 5
 </span>     <span class="na">-moz-box-sizing</span><span class="p">:</span> <span class="o">@</span><span class="n">box-model</span><span class="p">;</span> <span class="c1">// Firefox &lt;= 19
@@ -3383,7 +3384,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3 id="less-mixins-transitions">Transitions</h3>
   <p>Multiple mixins for flexibility. Set all transition information with one, or specify a separate delay and duration as needed.</p>
-  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
+  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of Autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.transition</span><span class="o">(@</span><span class="nt">transition</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">-webkit-transition</span><span class="p">:</span> <span class="o">@</span><span class="n">transition</span><span class="p">;</span>
           <span class="nl">transition</span><span class="p">:</span> <span class="o">@</span><span class="n">transition</span><span class="p">;</span>
@@ -3413,7 +3414,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3 id="less-mixins-transformations">Transformations</h3>
   <p>Rotate, scale, translate (move), or skew any object.</p>
-  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
+  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of Autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.rotate</span><span class="o">(@</span><span class="nt">degrees</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">-webkit-transform</span><span class="p">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="o">@</span><span class="n">degrees</span><span class="p">);</span>
       <span class="na">-ms-transform</span><span class="p">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="o">@</span><span class="n">degrees</span><span class="p">);</span> <span class="c1">// IE9 only
@@ -3468,7 +3469,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3 id="less-mixins-animations">Animations</h3>
   <p>A single mixin for using all of CSS3's animation properties in one declaration and other mixins for individual properties.</p>
-  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
+  <p>The mixins are <strong>deprecated</strong> as of v3.2.0, with the introduction of Autoprefixer. To preserve backwards-compatibility, Bootstrap will continue to use the mixins internally until Bootstrap v4.</p>
 <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.animation</span><span class="o">(@</span><span class="nt">animation</span><span class="o">)</span> <span class="p">{</span>
   <span class="na">-webkit-animation</span><span class="p">:</span> <span class="o">@</span><span class="n">animation</span><span class="p">;</span>
           <span class="nl">animation</span><span class="p">:</span> <span class="o">@</span><span class="n">animation</span><span class="p">;</span>
@@ -3699,11 +3700,11 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
 
         </div>
-
+        
         <div class="col-md-3" role="complementary">
           <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
             <ul class="nav bs-docs-sidenav">
-
+              
                 <li>
   <a href="#overview">Overview</a>
   <ul class="nav">
@@ -3841,19 +3842,19 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   </ul>
 </li>
 
-
+              
             </ul>
             <a class="back-to-top" href="#top">
               Back to top
             </a>
-
+            
             <a href="#" class="bs-docs-theme-toggle" role="button">
               Preview theme
             </a>
-
+            
           </nav>
         </div>
-
+        
       </div>
     </div>
 
@@ -3881,9 +3882,9 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
     <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
     <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <p>Code licensed under <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a rel="license" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
     <ul class="bs-docs-footer-links text-muted">
-      <li>Currently v3.3.2</li>
+      <li>Currently v3.3.4</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
       <li>&middot;</li>

@@ -28,6 +28,13 @@ body {
   font-weight: normal;
 }
 
+/* Inline code within headings retain the heading's background-color */
+h2 code,
+h3 code,
+h4 code {
+  background-color: inherit;
+}
+
 /* Outline button for use within the docs */
 .btn-outline {
   color: #563d7c;
@@ -93,6 +100,7 @@ body {
  * Fancy skip link
  *
  * Make it look a bit less "bare bones"
+ * Also includes focus suppression for the Chrome tabindex="-1" workaround
  */
 
 #skippy {
@@ -106,6 +114,10 @@ body {
 #skippy .skiplink-text {
   padding: .5em;
   outline: 1px dotted;
+}
+
+#content:focus {
+  outline: none;
 }
 
 
@@ -913,6 +925,10 @@ h1[id] {
   content: "Example";
 }
 
+.bs-example-padded-bottom {
+  padding-bottom: 24px;
+}
+
 /* Tweak display of the code snippets when following an example */
 .bs-example + .highlight,
 .bs-example + .zero-clipboard + .highlight {
@@ -1166,6 +1182,10 @@ h1[id] {
   overflow: auto;
 }
 
+.bs-example > .nav-pills-stacked-example {
+  max-width: 300px;
+}
+
 /* Simple collapse example */
 #collapseExample .well {
   margin-bottom: 0;
@@ -1175,6 +1195,19 @@ h1[id] {
 .bs-events-table > thead > tr > th:first-child,
 .bs-events-table > tbody > tr > td:first-child {
   white-space: nowrap;
+}
+
+.bs-events-table > thead > tr > th:first-child {
+  width: 150px;
+}
+
+.js-options-table > thead > tr > th:nth-child(1),
+.js-options-table > thead > tr > th:nth-child(2) {
+  width: 100px;
+}
+
+.js-options-table > thead > tr > th:nth-child(3) {
+  width: 50px;
 }
 
 /*

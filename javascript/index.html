@@ -10,9 +10,9 @@
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 
 <title>
-
+  
     JavaScript &middot; Bootstrap
-
+  
 </title>
 
 <!-- Bootstrap core CSS -->
@@ -96,7 +96,7 @@
 
 
     <!-- Docs page layout -->
-    <div class="bs-docs-header" id="content">
+    <div class="bs-docs-header" id="content" tabindex="-1">
       <div class="container">
         <h1>JavaScript</h1>
         <p>Bring Bootstrap's components to life with over a dozen custom jQuery plugins. Easily include them all, or one by one.</p>
@@ -112,7 +112,7 @@
           <div class="bs-docs-section">
   <h1 id="js-overview" class="page-header">Overview</h1>
 
-  <h3 id="js-individual-compiled">Individual or compiled</h3>
+  <h2 id="js-individual-compiled">Individual or compiled</h2>
   <p>Plugins can be included individually (using Bootstrap's individual <code>*.js</code> files), or all at once (using <code>bootstrap.js</code> or the minified <code>bootstrap.min.js</code>).</p>
 
   <div class="bs-callout bs-callout-danger" id="callout-overview-not-both">
@@ -122,10 +122,10 @@
 
   <div class="bs-callout bs-callout-danger" id="callout-overview-dependencies">
     <h4>Plugin dependencies</h4>
-    <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files). <a href="https://github.com/twbs/bootstrap/blob/v3.3.2/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
+    <p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included <strong>before</strong> the plugin files). <a href="https://github.com/twbs/bootstrap/blob/v3.3.4/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
   </div>
 
-  <h3 id="js-data-attrs">Data attributes</h3>
+  <h2 id="js-data-attrs">Data attributes</h2>
   <p>You can use all Bootstrap plugins purely through the markup API without writing a single line of JavaScript. This is Bootstrap's first-class API and should be your first consideration when using a plugin.</p>
 
   <p>That said, in some situations it may be desirable to turn this functionality off. Therefore, we also provide the ability to disable the data attribute API by unbinding all events on the document namespaced with <code>data-api</code>. This looks like this:</p>
@@ -139,7 +139,7 @@
     <p>Don't use data attributes from multiple plugins on the same element. For example, a button cannot both have a tooltip and toggle a modal. To accomplish this, use a wrapping element.</p>
   </div>
 
-  <h3 id="js-programmatic-api">Programmatic API</h3>
+  <h2 id="js-programmatic-api">Programmatic API</h2>
   <p>We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'.btn.danger'</span><span class="p">).</span><span class="nx">button</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">'fat'</span><span class="p">)</span></code></pre></div>
 
@@ -151,15 +151,15 @@
   <p>Each plugin also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.popover.Constructor</code>. If you'd like to get a particular plugin instance, retrieve it directly from an element: <code>$('[rel="popover"]').data('popover')</code>.</p>
 
   <h4>Default settings</h4>
-  <p>You can change the default settings for a plugin by modifying the plugin's <code>Constructor.DEFAULTS</code> object:<p>
+  <p>You can change the default settings for a plugin by modifying the plugin's <code>Constructor.DEFAULTS</code> object:</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">modal</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">.</span><span class="nx">DEFAULTS</span><span class="p">.</span><span class="nx">keyboard</span> <span class="o">=</span> <span class="kc">false</span> <span class="c1">// changes default for the modal plugin's `keyboard` option to false</span></code></pre></div>
 
-  <h3 id="js-noconflict">No conflict</h3>
+  <h2 id="js-noconflict">No conflict</h2>
   <p>Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call <code>.noConflict</code> on the plugin you wish to revert the value of.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">bootstrapButton</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">button</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">()</span> <span class="c1">// return $.fn.button to previously assigned value</span>
 <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">bootstrapBtn</span> <span class="o">=</span> <span class="nx">bootstrapButton</span>            <span class="c1">// give $().bootstrapBtn the Bootstrap functionality</span></code></pre></div>
 
-  <h3 id="js-events">Events</h3>
+  <h2 id="js-events">Events</h2>
   <p>Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. <code>show</code>) is triggered at the start of an event, and its past participle form (ex. <code>shown</code>) is triggered on the completion of an action.</p>
   <p>As of 3.0.0, all Bootstrap events are namespaced.</p>
   <p>All infinitive events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
@@ -167,11 +167,11 @@
   <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">)</span> <span class="k">return</span> <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span> <span class="c1">// stops modal from being shown</span>
 <span class="p">})</span></code></pre></div>
 
-  <h3 id="js-version-nums">Version numbers</h3>
+  <h2 id="js-version-nums">Version numbers</h2>
   <p>The version of each of Bootstrap's jQuery plugins can be accessed via the <code>VERSION</code> property of the plugin's constructor. For example, for the tooltip plugin:</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">tooltip</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">.</span><span class="nx">VERSION</span> <span class="c1">// =&gt; "3.3.2"</span></code></pre></div>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">tooltip</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">.</span><span class="nx">VERSION</span> <span class="c1">// =&gt; "3.3.4"</span></code></pre></div>
 
-  <h3 id="js-disabled">No special fallbacks when JavaScript is disabled</h3>
+  <h2 id="js-disabled">No special fallbacks when JavaScript is disabled</h2>
   <p>Bootstrap's plugins don't fall back particularly gracefully when JavaScript is disabled. If you care about the user experience in this case, use <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript"><code>&lt;noscript&gt;</code></a> to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.</p>
 
   <div class="bs-callout bs-callout-warning" id="callout-third-party-libs">
@@ -183,9 +183,9 @@
 <div class="bs-docs-section">
   <h1 id="transitions" class="page-header">Transitions <small>transition.js</small></h1>
 
-  <h3>About transitions</h3>
+  <h2>About transitions</h2>
   <p>For simple transition effects, include <code>transition.js</code> once alongside the other JS files. If you're using the compiled (or minified) <code>bootstrap.js</code>, there is no need to include this&mdash;it's already there.</p>
-  <h3>What's inside</h3>
+  <h2>What's inside</h2>
   <p>Transition.js is a basic helper for <code>transitionEnd</code> events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.</p>
 </div>
 
@@ -207,9 +207,9 @@
   </div>
 
   <p><strong class="text-danger">Due to how HTML5 defines its semantics, the <code>autofocus</code> HTML attribute has no effect in Bootstrap modals.</strong> To achieve the same effect, use some custom JavaScript:</p>
-  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'shown.bs.modal'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s1">'#myInput'</span><span class="p">).</span><span class="nx">focus</span><span class="p">()</span>
-  <span class="p">})</span></code></pre></div>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'shown.bs.modal'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#myInput'</span><span class="p">).</span><span class="nx">focus</span><span class="p">()</span>
+<span class="p">})</span></code></pre></div>
 
   <h2 id="modals-examples">Examples</h2>
 
@@ -295,7 +295,7 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
-  <div class="bs-example" style="padding-bottom: 24px;">
+  <div class="bs-example bs-example-padded-bottom">
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
       Launch demo modal
     </button>
@@ -399,9 +399,102 @@
   ...
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
+  <h2 id="modals-grid-system">Using the grid system</h2>
+  <p>To take advantage of the Bootstrap grid system within a modal, just nest <code>.container-fluid</code> within the <code>.modal-body</code> and then use the normal grid system classes within this container.</p>
+<!-- sample modal content -->
+  <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4">.col-md-4</div>
+              <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+              <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-9">
+                Level 1: .col-sm-9
+                <div class="row">
+                  <div class="col-xs-8 col-sm-6">
+                    Level 2: .col-xs-8 .col-sm-6
+                  </div>
+                  <div class="col-xs-4 col-sm-6">
+                    Level 2: .col-xs-4 .col-sm-6
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+<div class="bs-example bs-example-padded-bottom">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#gridSystemModal">
+    Launch demo modal
+  </button>
+</div><!-- /example -->
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span> <span class="na">role=</span><span class="s">"dialog"</span> <span class="na">aria-labelledby=</span><span class="s">"gridSystemModalLabel"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
+          <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">id=</span><span class="s">"gridSystemModalLabel"</span><span class="nt">&gt;</span>Modal title<span class="nt">&lt;/h4&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4 col-md-offset-4"</span><span class="nt">&gt;</span>.col-md-4 .col-md-offset-4<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 col-md-offset-3"</span><span class="nt">&gt;</span>.col-md-3 .col-md-offset-3<span class="nt">&lt;/div&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-2 col-md-offset-4"</span><span class="nt">&gt;</span>.col-md-2 .col-md-offset-4<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6 col-md-offset-3"</span><span class="nt">&gt;</span>.col-md-6 .col-md-offset-3<span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9"</span><span class="nt">&gt;</span>
+                Level 1: .col-sm-9
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-8 col-sm-6"</span><span class="nt">&gt;</span>
+                    Level 2: .col-xs-8 .col-sm-6
+                  <span class="nt">&lt;/div&gt;</span>
+                  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4 col-sm-6"</span><span class="nt">&gt;</span>
+                    Level 2: .col-xs-4 .col-sm-6
+                  <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+              <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
+          <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Save changes<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.modal-content --&gt;</span>
+    <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.modal-dialog --&gt;</span>
+  <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.modal --&gt;</span></code></pre></div>
+
   <h2 id="modals-related-target">Varying modal content based on trigger button</h2>
   <p>Have a bunch of buttons that all trigger the same modal, just with slightly different contents? Use <code>event.relatedTarget</code> and <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes">HTML <code>data-*</code> attributes</a> (possibly <a href="http://api.jquery.com/data/">via jQuery</a>) to vary the contents of the modal depending on which button was clicked. See the Modal Events docs for details on <code>relatedTarget</code>,</p>
-  <div class="bs-example" style="padding-bottom: 24px;">
+  <div class="bs-example">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
@@ -489,12 +582,12 @@
   <h3 id="modals-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-backdrop=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
        <tr>
-         <th style="width: 100px;">Name</th>
-         <th style="width: 50px;">type</th>
-         <th style="width: 50px;">default</th>
+         <th>Name</th>
+         <th>type</th>
+         <th>default</th>
          <th>description</th>
        </tr>
       </thead>
@@ -533,31 +626,37 @@
 
   <h3 id="modals-methods">Methods</h3>
 
-  <h4>.modal(options)</h4>
+  <h4><code>.modal(options)</code></h4>
   <p>Activates your content as a modal. Accepts an optional options <code>object</code>.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">({</span>
   <span class="na">keyboard</span><span class="p">:</span> <span class="kc">false</span>
 <span class="p">})</span></code></pre></div>
 
-  <h4>.modal('toggle')</h4>
+  <h4><code>.modal('toggle')</code></h4>
   <p>Manually toggles a modal. <strong>Returns to the caller before the modal has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.modal</code> or <code>hidden.bs.modal</code> event occurs).</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">)</span></code></pre></div>
 
-  <h4>.modal('show')</h4>
+  <h4><code>.modal('show')</code></h4>
   <p>Manually opens a modal. <strong>Returns to the caller before the modal has actually been shown</strong> (i.e. before the <code>shown.bs.modal</code> event occurs).</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span></code></pre></div>
 
-  <h4>.modal('hide')</h4>
+  <h4><code>.modal('hide')</code></h4>
   <p>Manually hides a modal. <strong>Returns to the caller before the modal has actually been hidden</strong> (i.e. before the <code>hidden.bs.modal</code> event occurs).</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">)</span></code></pre></div>
 
+  <h4>.modal('handleUpdate')</h4>
+  <p>Readjusts the modal's positioning to counter a scrollbar in case one should appear, which would make the modal jump to the left.</p>
+  <p>Only needed when the height of the modal changes while it is open.</p>
+  <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s1">'handleUpdate'</span><span class="p">)</span></code></pre></div>
+
   <h3 id="modals-events">Events</h3>
   <p>Bootstrap's modal class exposes a few events for hooking into modal functionality.</p>
+  <p>All modal events are fired at the modal itself (i.e. at the <code>&lt;div class="modal"&gt;</code>).</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
+         <th>Event Type</th>
          <th>Description</th>
        </tr>
       </thead>
@@ -745,7 +844,7 @@
   <p><em>None</em></p>
 
   <h3 id="dropdowns-methods">Methods</h3>
-  <h4>$().dropdown('toggle')</h4>
+  <h4><code>$().dropdown('toggle')</code></h4>
   <p>Toggles the dropdown menu of a given navbar or tabbed navigation.</p>
 
   <h3 id="dropdowns-events">Events</h3>
@@ -755,7 +854,7 @@
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
-          <th style="width: 150px;">Event Type</th>
+          <th>Event Type</th>
           <th>Description</th>
         </tr>
       </thead>
@@ -858,9 +957,9 @@
 <div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
   <span class="nl">position</span><span class="p">:</span> <span class="nb">relative</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body</span> <span class="na">data-spy=</span><span class="s">"scroll"</span> <span class="na">data-target=</span><span class="s">".navbar-example"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;body</span> <span class="na">data-spy=</span><span class="s">"scroll"</span> <span class="na">data-target=</span><span class="s">"#navbar-example"</span><span class="nt">&gt;</span>
   ...
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"navbar-example"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
       ...
     <span class="nt">&lt;/ul&gt;</span>
@@ -870,11 +969,11 @@
 
   <h3>Via JavaScript</h3>
   <p>After adding <code>position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">({</span> <span class="na">target</span><span class="p">:</span> <span class="s1">'.navbar-example'</span> <span class="p">})</span></code></pre></div>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'body'</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">({</span> <span class="na">target</span><span class="p">:</span> <span class="s1">'#navbar-example'</span> <span class="p">})</span></code></pre></div>
 
 
   <h3 id="scrollspy-methods">Methods</h3>
-  <h4>.scrollspy('refresh')</h4>
+  <h4><code>.scrollspy('refresh')</code></h4>
   <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'[data-spy="scroll"]'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">$spy</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">scrollspy</span><span class="p">(</span><span class="s1">'refresh'</span><span class="p">)</span>
@@ -884,12 +983,12 @@
   <h3 id="scrollspy-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
        <tr>
-         <th style="width: 100px;">Name</th>
-         <th style="width: 100px;">type</th>
-         <th style="width: 50px;">default</th>
+         <th>Name</th>
+         <th>type</th>
+         <th>default</th>
          <th>description</th>
        </tr>
       </thead>
@@ -909,7 +1008,7 @@
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
+         <th>Event Type</th>
          <th>Description</th>
        </tr>
       </thead>
@@ -1012,7 +1111,7 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3 id="tabs-methods">Methods</h3>
-  <h4>$().tab</h4>
+  <h4><code>$().tab</code></h4>
   <p>
     Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.
   </p>
@@ -1049,7 +1148,7 @@
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
+         <th>Event Type</th>
          <th>Description</th>
        </tr>
       </thead>
@@ -1183,12 +1282,12 @@
   <h3 id="tooltips-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
         <tr>
-          <th style="width: 100px;">Name</th>
-          <th style="width: 100px;">Type</th>
-          <th style="width: 50px;">Default</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Default</th>
           <th>Description</th>
         </tr>
       </thead>
@@ -1282,23 +1381,23 @@
 
   <h3 id="tooltips-methods">Methods</h3>
 
-  <h4>$().tooltip(options)</h4>
+  <h4><code>$().tooltip(options)</code></h4>
   <p>Attaches a tooltip handler to an element collection.</p>
 
-  <h4>.tooltip('show')</h4>
+  <h4><code>.tooltip('show')</code></h4>
   <p>Reveals an element's tooltip. <strong>Returns to the caller before the tooltip has actually been shown</strong> (i.e. before the <code>shown.bs.tooltip</code> event occurs). This is considered a "manual" triggering of the tooltip. Tooltips with zero-length titles are never displayed.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span></code></pre></div>
 
-  <h4>.tooltip('hide')</h4>
+  <h4><code>.tooltip('hide')</code></h4>
   <p>Hides an element's tooltip. <strong>Returns to the caller before the tooltip has actually been hidden</strong> (i.e. before the <code>hidden.bs.tooltip</code> event occurs). This is considered a "manual" triggering of the tooltip.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">)</span></code></pre></div>
 
-  <h4>.tooltip('toggle')</h4>
+  <h4><code>.tooltip('toggle')</code></h4>
   <p>Toggles an element's tooltip. <strong>Returns to the caller before the tooltip has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.tooltip</code> or <code>hidden.bs.tooltip</code> event occurs). This is considered a "manual" triggering of the tooltip.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">)</span></code></pre></div>
 
-  <h4>.tooltip('destroy')</h4>
-  <p>Hides and destroys an element's tooltip.</p>
+  <h4><code>.tooltip('destroy')</code></h4>
+  <p>Hides and destroys an element's tooltip. Tooltips that use delegation (which are created using <a href="#tooltips-options">the <code>selector</code> option</a>) cannot be individually destroyed on descendant trigger elements.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">(</span><span class="s1">'destroy'</span><span class="p">)</span></code></pre></div>
 
   <h3 id="tooltips-events">Events</h3>
@@ -1306,7 +1405,7 @@
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
-          <th style="width: 150px;">Event Type</th>
+          <th>Event Type</th>
           <th>Description</th>
         </tr>
       </thead>
@@ -1411,7 +1510,7 @@
   </div>
 
   <h3>Live demo</h3>
-  <div class="bs-example" style="padding-bottom: 24px;">
+  <div class="bs-example bs-example-padded-bottom">
     <button type="button" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-danger"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Popover title"</span> <span class="na">data-content=</span><span class="s">"And here's some amazing content. It's very engaging. Right?"</span><span class="nt">&gt;</span>Click to toggle popover<span class="nt">&lt;/button&gt;</span></code></pre></div>
@@ -1454,9 +1553,9 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <p>Use the <code>focus</code> trigger to dismiss popovers on the next click that the user makes.</p>
   <div class="bs-callout bs-callout-danger" id="callout-popover-dismiss-click">
     <h4>Specific markup required for dismiss-on-next-click</h4>
-    <p>For proper cross-browser and cross-platform behavior, you must use the <code>&lt;a&gt;</code> tag, <i>not</i> the <code>&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#tabindex"><code>tabindex</code></a> attribute.</p>
+    <p>For proper cross-browser and cross-platform behavior, you must use the <code>&lt;a&gt;</code> tag, <i>not</i> the <code>&lt;button&gt;</code> tag, and you also must include the <code>role="button"</code> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#tabindex"><code>tabindex</code></a> attributes.</p>
   </div>
-  <div class="bs-example" style="padding-bottom: 24px;">
+  <div class="bs-example bs-example-padded-bottom">
     <a tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-danger"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-trigger=</span><span class="s">"focus"</span> <span class="na">title=</span><span class="s">"Dismissible popover"</span> <span class="na">data-content=</span><span class="s">"And here's some amazing content. It's very engaging. Right?"</span><span class="nt">&gt;</span>Dismissible popover<span class="nt">&lt;/a&gt;</span></code></pre></div>
@@ -1469,12 +1568,12 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <h3 id="popovers-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table js-options-table">
       <thead>
         <tr>
-          <th style="width: 100px;">Name</th>
-          <th style="width: 100px;">Type</th>
-          <th style="width: 50px;">Default</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Default</th>
           <th>Description</th>
         </tr>
       </thead>
@@ -1577,23 +1676,23 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   </div>
 
   <h3>Methods</h3>
-  <h4>$().popover(options)</h4>
+  <h4><code>$().popover(options)</code></h4>
   <p>Initializes popovers for an element collection.</p>
 
-  <h4>.popover('show')</h4>
+  <h4><code>.popover('show')</code></h4>
   <p>Reveals an element's popover. <strong>Returns to the caller before the popover has actually been shown</strong> (i.e. before the <code>shown.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover. Popovers whose both title and content are zero-length are never displayed.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span></code></pre></div>
 
-  <h4>.popover('hide')</h4>
+  <h4><code>.popover('hide')</code></h4>
   <p>Hides an element's popover. <strong>Returns to the caller before the popover has actually been hidden</strong> (i.e. before the <code>hidden.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">)</span></code></pre></div>
 
-  <h4>.popover('toggle')</h4>
+  <h4><code>.popover('toggle')</code></h4>
   <p>Toggles an element's popover. <strong>Returns to the caller before the popover has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.popover</code> or <code>hidden.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">)</span></code></pre></div>
 
-  <h4>.popover('destroy')</h4>
-  <p>Hides and destroys an element's popover.</p>
+  <h4><code>.popover('destroy')</code></h4>
+  <p>Hides and destroys an element's popover. Popovers that use delegation (which are created using <a href="#popovers-options">the <code>selector</code> option</a>) cannot be individually destroyed on descendant trigger elements.</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'destroy'</span><span class="p">)</span></code></pre></div>
 
   <h3 id="popovers-events">Events</h3>
@@ -1601,7 +1700,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
-          <th style="width: 150px;">Event Type</th>
+          <th>Event Type</th>
           <th>Description</th>
         </tr>
       </thead>
@@ -1666,10 +1765,10 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
   <h3 id="alerts-methods">Methods</h3>
 
-  <h4>$().alert()</h4>
+  <h4><code>$().alert()</code></h4>
   <p>Makes an alert listen for click events on descendant elements which have the <code>data-dismiss="alert"</code> attribute. (Not necessary when using the data-api's auto-initialization.)</p>
 
-  <h4>$().alert('close')</h4>
+  <h4><code>$().alert('close')</code></h4>
   <p>Closes an alert by removing it from the DOM. If the <code>.fade</code> and <code>.in</code> classes are present on the element, the alert will fade out before it is removed.</p>
 
 
@@ -1679,7 +1778,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
-          <th style="width: 150px;">Event Type</th>
+          <th>Event Type</th>
           <th>Description</th>
         </tr>
       </thead>
@@ -1809,15 +1908,15 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h2 id="buttons-methods">Methods</h2>
-
-  <h4>$().button('toggle')</h4>
+  <h4><code>$().button('toggle')</code></h4>
   <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
 
-  <h4>$().button('reset')</h4>
+  <h4><code>$().button('reset')</code></h4>
   <p>Resets button state - swaps text to original text.</p>
 
-  <h4>$().button(string)</h4>
+  <h4><code>$().button(string)</code></h4>
   <p>Swaps text to any data defined text state.</p>
+
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">id=</span><span class="s">"myStateButton"</span> <span class="na">data-complete-text=</span><span class="s">"finished!"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">autocomplete=</span><span class="s">"off"</span><span class="nt">&gt;</span>
   ...
 <span class="nt">&lt;/button&gt;</span>
@@ -2017,12 +2116,12 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <h3 id="collapse-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-parent=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
        <tr>
-         <th style="width: 100px;">Name</th>
-         <th style="width: 50px;">type</th>
-         <th style="width: 50px;">default</th>
+         <th>Name</th>
+         <th>type</th>
+         <th>default</th>
          <th>description</th>
        </tr>
       </thead>
@@ -2045,19 +2144,19 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
   <h3 id="collapse-methods">Methods</h3>
 
-  <h4>.collapse(options)</h4>
-  <p>Activates your content as a collapsible element. Accepts an optional options <code>object</code>.
+  <h4><code>.collapse(options)</code></h4>
+  <p>Activates your content as a collapsible element. Accepts an optional options <code>object</code>.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myCollapsible'</span><span class="p">).</span><span class="nx">collapse</span><span class="p">({</span>
   <span class="na">toggle</span><span class="p">:</span> <span class="kc">false</span>
 <span class="p">})</span></code></pre></div>
 
-  <h4>.collapse('toggle')</h4>
+  <h4><code>.collapse('toggle')</code></h4>
   <p>Toggles a collapsible element to shown or hidden.</p>
 
-  <h4>.collapse('show')</h4>
+  <h4><code>.collapse('show')</code></h4>
   <p>Shows a collapsible element.</p>
 
-  <h4>.collapse('hide')</h4>
+  <h4><code>.collapse('hide')</code></h4>
   <p>Hides a collapsible element.</p>
 
   <h3 id="collapse-events">Events</h3>
@@ -2066,7 +2165,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
+         <th>Event Type</th>
          <th>Description</th>
        </tr>
       </thead>
@@ -2248,12 +2347,12 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <h3 id="carousel-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
        <tr>
-         <th style="width: 100px;">Name</th>
-         <th style="width: 50px;">type</th>
-         <th style="width: 50px;">default</th>
+         <th>Name</th>
+         <th>type</th>
+         <th>default</th>
          <th>description</th>
        </tr>
       </thead>
@@ -2288,26 +2387,26 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
   <h3 id="carousel-methods">Methods</h3>
 
-  <h4>.carousel(options)</h4>
+  <h4><code>.carousel(options)</code></h4>
   <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'.carousel'</span><span class="p">).</span><span class="nx">carousel</span><span class="p">({</span>
   <span class="na">interval</span><span class="p">:</span> <span class="mi">2000</span>
 <span class="p">})</span></code></pre></div>
 
-  <h4>.carousel('cycle')</h4>
+  <h4><code>.carousel('cycle')</code></h4>
   <p>Cycles through the carousel items from left to right.</p>
 
-  <h4>.carousel('pause')</h4>
+  <h4><code>.carousel('pause')</code></h4>
   <p>Stops the carousel from cycling through items.</p>
 
 
-  <h4>.carousel(number)</h4>
+  <h4><code>.carousel(number)</code></h4>
   <p>Cycles the carousel to a particular frame (0 based, similar to an array).</p>
 
-  <h4>.carousel('prev')</h4>
+  <h4><code>.carousel('prev')</code></h4>
   <p>Cycles to the previous item.</p>
 
-  <h4>.carousel('next')</h4>
+  <h4><code>.carousel('next')</code></h4>
   <p>Cycles to the next item.</p>
 
   <h3 id="carousel-events">Events</h3>
@@ -2317,11 +2416,12 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <li><code>direction</code>: The direction in which the carousel is sliding (either <code>"left"</code> or <code>"right"</code>).</li>
     <li><code>relatedTarget</code>: The DOM element that is being slid into place as the active item.</li>
   </ul>
+  <p>All carousel events are fired at the carousel itself (i.e. at the <code>&lt;div class="carousel"&gt;</code>).</p>
   <div class="table-responsive">
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
+         <th>Event Type</th>
          <th>Description</th>
        </tr>
       </thead>
@@ -2346,7 +2446,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <h1 id="affix" class="page-header">Affix <small>affix.js</small></h1>
 
   <h2 id="affix-examples">Example</h2>
-  <p>The subnavigation on the right is a live demo of the affix plugin.</p>
+  <p>The affix plugin toggles <code>position: fixed;</code> on and off, emulating the effect found with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#Sticky_positioning"><code>position: sticky;</code></a>. The subnavigation on the right is a live demo of the affix plugin.</p>
 
   <hr class="bs-docs-separator">
 
@@ -2354,7 +2454,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <p>Use the affix plugin via data attributes or manually with your own JavaScript. <strong class="text-danger">In both situations, you must provide CSS for the positioning and width of your affixed content.</strong></p>
 
   <h3>Positioning via CSS</h3>
-  <p>The affix plugin toggles between three classes, each representing a particular state: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles for these classes yourself (independent of this plugin) to handle the actual positions.</p>
+  <p>The affix plugin toggles between three classes, each representing a particular state: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles, with the exception of <code>position: fixed;</code> on <code>.affix</code>, for these classes yourself (independent of this plugin) to handle the actual positions.</p>
   <p>Here's how the affix plugin works:</p>
   <ol>
     <li>To start, the plugin adds <code>.affix-top</code> to indicate the element is in its top-most position. At this point no CSS positioning is required.</li>
@@ -2386,12 +2486,12 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset-top="200"</code>.</p>
 
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
        <tr>
-         <th style="width: 100px;">Name</th>
-         <th style="width: 100px;">type</th>
-         <th style="width: 50px;">default</th>
+         <th>Name</th>
+         <th>type</th>
+         <th>default</th>
          <th>description</th>
        </tr>
       </thead>
@@ -2420,7 +2520,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
         <tr>
-          <th style="width: 150px;">Event Type</th>
+          <th>Event Type</th>
           <th>Description</th>
         </tr>
       </thead>
@@ -2456,11 +2556,11 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
 
         </div>
-
+        
         <div class="col-md-3" role="complementary">
           <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
             <ul class="nav bs-docs-sidenav">
-
+              
                 <li>
   <a href="#js-overview">Overview</a>
   <ul class="nav">
@@ -2584,19 +2684,19 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
   </ul>
 </li>
 
-
+              
             </ul>
             <a class="back-to-top" href="#top">
               Back to top
             </a>
-
+            
             <a href="#" class="bs-docs-theme-toggle" role="button">
               Preview theme
             </a>
-
+            
           </nav>
         </div>
-
+        
       </div>
     </div>
 
@@ -2624,9 +2724,9 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 
     <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
     <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-    <p>Code licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <p>Code licensed under <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a rel="license" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
     <ul class="bs-docs-footer-links text-muted">
-      <li>Currently v3.3.2</li>
+      <li>Currently v3.3.4</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
       <li>&middot;</li>
