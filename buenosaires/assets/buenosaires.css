@@ -1162,7 +1162,8 @@ margin-bottom: 16px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
-.ba-area .jumbotron .area-title {
+.ba-area .jumbotron .area-title,
+.ba-galeria .jumbotron .area-title {
   padding-top:48px;
   padding-bottom:24px;
 }
@@ -1779,17 +1780,21 @@ margin:16px 0 32px 0;
 .ba-404 h1,
 .ba-emergencia h1,
 .ba-pagina .jumbotron h1,
+.ba-galeria .jumbotron h1,
 .ba-destacado h2,
 .ba-404 h2,
 .ba-emergencia h2,
 .ba-pagina .jumbotron h2,
+.ba-galeria .jumbotron h2,
 .ba-destacado .jumbotron p,
 .ba-404 .jumbotron p,
 .ba-emergencia .jumbotron p,
-.ba-pagina .jumbotron .jumbotron p {
+.ba-pagina .jumbotron .jumbotron p,
+.ba-galeria .jumbotron p {
   text-align:center;
 }
-.ba-pagina header.jumbotron {
+.ba-pagina header.jumbotron,
+.ba-galeria header.jumbotron {
   margin-bottom:48px;
 }
 .ba-404 .main-container > .container {
@@ -1818,6 +1823,7 @@ margin:16px 0 32px 0;
 .ba-area .mini-social,
 .ba-listado .mini-social,
 .ba-noticias .mini-social,
+.ba-galeria .mini-social,
 .ba-tramites .mini-social {
   margin:48px auto 0 auto;
   display:table !important;
@@ -1828,6 +1834,8 @@ margin:16px 0 32px 0;
 .ba-emergencia .mini-social .shares,
 .ba-area .mini-social .shares,
 .ba-listado .mini-social .shares,
+.ba-listado .mini-social .shares,
+.ba-galeria .mini-social .shares,
 .ba-noticias .mini-social .shares {
   display:block;
 }
