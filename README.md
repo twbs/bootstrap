@@ -76,6 +76,18 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 2. Install the Ruby-based syntax highlighter, [Rouge](https://github.com/jneen/rouge), with `gem install rouge`.
 3. From the root `/bootstrap` directory, run `jekyll serve` in the command line.
 4. Open <http://localhost:9001> in your browser, and voilà.
+Or 
+If your a windows user and facing problems in installing ruby you can go for the easy way.
+1. Make a directory and clone the gh-pages branch from here.
+2. Do npm install -g express in directory this will install express
+4. make a file with server.js name in directory where you copied the branch and type this in it.
+var express = require('express');
+var app = express();
+app.use(express.static('./bootstrap'));
+app.listen(9000);
+5.now from command line type node server.js
+6.visit 127.0.0.1:9000
+
 
 Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
 
