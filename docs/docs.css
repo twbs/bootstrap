@@ -30,6 +30,9 @@ margin: 20px;
 .helper-example p {
   padding: 15px;
 }
+.jumbotron p.lead a {
+  color:#fff;
+}
 
 /* navbar */
 
