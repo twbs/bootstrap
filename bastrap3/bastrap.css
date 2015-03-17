@@ -1569,6 +1569,10 @@ ul.affix-bottom {
 .jumbotron-main {
   background-color: #666; }
 
+.jumbotron-main p.lead a {
+  color:#fff;
+}
+
 .jumbotron-main .navbar-default .navbar-nav > li > a,
 .jumbotron-main .navbar-default .navbar-brand {
   color: rgba(255, 255, 255, 0.8); }
