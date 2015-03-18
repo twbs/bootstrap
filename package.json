@@ -76,18 +76,12 @@
   ],
   "jspm": {
     "main": "js/bootstrap",
-    "directories": {
-      "example": "examples",
-      "lib": "dist"
-    },
     "shim": {
       "js/bootstrap": {
-        "imports": "jquery",
+        "deps": "jquery",
         "exports": "$"
       }
     },
-    "buildConfig": {
-      "uglify": true
-    }
+    "files": ["css", "fonts", "js"]
   }
 }
