@@ -22,7 +22,7 @@ To get started, check out <http://getbootstrap.com>!
 
 ## Quick start
 
-Five quick start options are available:
+Six quick start options are available:
 
 - [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.3.4.zip).
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
