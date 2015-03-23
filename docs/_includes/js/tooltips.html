@@ -68,18 +68,6 @@ $(function () {
 {% endhighlight %}
 
   </div>
-  <div class="bs-callout bs-callout-warning" id="callout-tooltip-groups">
-    <h4>Tooltips in button groups and input groups require special setting</h4>
-    <p>When using tooltips on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip is triggered).</p>
-  </div>
-  <div class="bs-callout bs-callout-warning" id="callout-tooltip-hidden">
-    <h4>Don't try to show tooltips on hidden elements</h4>
-    <p>Invoking <code>$(...).tooltip('show')</code> when the target element is <code>display: none;</code> will cause the tooltip to be incorrectly positioned.</p>
-  </div>
-  <div class="bs-callout bs-callout-info" id="callout-tooltip-disabled">
-    <h4>Tooltips on disabled elements require wrapper elements</h4>
-    <p>To add a tooltip to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the tooltip to that <code>&lt;div&gt;</code> instead.</p>
-  </div>
 
   <h2 id="tooltips-usage">Usage</h2>
   <p>The tooltip plugin generates content and markup on demand, and by default places tooltips after their trigger element.</p>
@@ -90,10 +78,7 @@ $('#example').tooltip(options)
 
   <h3>Markup</h3>
   <p>The required markup for a tooltip is only a <code>data</code> attribute and <code>title</code> on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to <code>top</code> by the plugin).</p>
-  <div class="bs-callout bs-callout-warning" id="callout-tooltip-multiline">
-    <h4>Multiple-line links</h4>
-    <p>Sometimes you want to add a tooltip to a hyperlink that wraps multiple lines. The default behavior of the tooltip plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
-  </div>
+
 {% highlight html %}
 <!-- HTML to write -->
 <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
@@ -106,6 +91,27 @@ $('#example').tooltip(options)
   </div>
 </div>
 {% endhighlight %}
+
+  <div class="bs-callout bs-callout-warning" id="callout-tooltip-multiline">
+    <h4>Multiple-line links</h4>
+    <p>Sometimes you want to add a tooltip to a hyperlink that wraps multiple lines. The default behavior of the tooltip plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
+  </div>
+  <div class="bs-callout bs-callout-warning" id="callout-tooltip-groups">
+    <h4>Tooltips in button groups and input groups require special setting</h4>
+    <p>When using tooltips on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip is triggered).</p>
+  </div>
+  <div class="bs-callout bs-callout-warning" id="callout-tooltip-hidden">
+    <h4>Don't try to show tooltips on hidden elements</h4>
+    <p>Invoking <code>$(...).tooltip('show')</code> when the target element is <code>display: none;</code> will cause the tooltip to be incorrectly positioned.</p>
+  </div>
+  <div class="bs-callout bs-callout-warning" id="callout-tooltip-accessibility">
+    <h4>Accessible tooltips for keyboard and assistive technology users</h4>
+    <p>For users navigating with a keyboard, and in particular users of assistive technologies, you should only add tooltips to keyboard-focusable elements such as links, form controls, or any arbitrary element with a <code>tabindex="0"</code> attribute.</p>
+  </div>
+  <div class="bs-callout bs-callout-info" id="callout-tooltip-disabled">
+    <h4>Tooltips on disabled elements require wrapper elements</h4>
+    <p>To add a tooltip to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the tooltip to that <code>&lt;div&gt;</code> instead.</p>
+  </div>
 
   <h3 id="tooltips-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-animation=""</code>.</p>
