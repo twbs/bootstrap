@@ -76,6 +76,10 @@ $(function () {
     <h4>Don't try to show tooltips on hidden elements</h4>
     <p>Invoking <code>$(...).tooltip('show')</code> when the target element is <code>display: none;</code> will cause the tooltip to be incorrectly positioned.</p>
   </div>
+  <div class="bs-callout bs-callout-warning" id="callout-tooltip-accessibility">
+    <h4>Accessible tooltips for keyboard and assistive technology users</h4>
+    <p>For users navigating with a keyboard, and in particular users of assistive technologies, you should only add tooltips to keyboard-focusable elements such as links, form controls, or any arbitrary element with a <code>tabindex="0"</code> attribute.</p>
+  </div>
   <div class="bs-callout bs-callout-info" id="callout-tooltip-disabled">
     <h4>Tooltips on disabled elements require wrapper elements</h4>
     <p>To add a tooltip to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the tooltip to that <code>&lt;div&gt;</code> instead.</p>
