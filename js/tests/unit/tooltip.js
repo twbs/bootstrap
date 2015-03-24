@@ -764,6 +764,33 @@ $(function () {
     $styles.remove()
   })
 
+  QUnit.test('should not misplace the tip when the right edge offset is greater or equal than the viewport width', function (assert) {
+    assert.expect(2)
+    var styles = '<style>'
+        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '.tooltip, .tooltip .tooltip-inner { width: 50px; height: 50px; max-width: none; background: red; }'
+        + '.container-viewport { padding: 100px; margin-left: 100px; width: 100px; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div class="container-viewport"/>').appendTo(document.body)
+    var $target = $('<a href="#" rel="tooltip" title="tip">foobar</a>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        viewport: '.container-viewport'
+      })
+
+    $target.bootstrapTooltip('show')
+    var $tooltip = $container.find('.tooltip')
+    assert.strictEqual(Math.round($tooltip.offset().left), Math.round($target.position().left + $target.width() / 2 - $tooltip[0].offsetWidth / 2))
+
+    $target.bootstrapTooltip('hide')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $container.remove()
+    $styles.remove()
+  })
+
   QUnit.test('should not error when trying to show an auto-placed tooltip that has been removed from the dom', function (assert) {
     assert.expect(1)
     var passed = true
