@@ -93,6 +93,61 @@ mark,
 .text-justify        { text-align: justify; }
 .text-nowrap         { white-space: nowrap; }
 
+// Responsive text-alignment elements:
+
+//   For aligning left at given screen size
+.make-align-left(@class) {
+  .text-@{class}-left {
+    text-align: left;
+  }
+}
+
+// For aligning right at given screen size
+.make-align-right(@class) {
+  .text-@{class}-right {
+    text-align: right;
+  }
+}
+
+// For aligning center at given screen size
+.make-align-center(@class) {
+  .text-@{class}-center {
+    text-align: center;
+  }
+}
+
+// For justified aligning at given screen size
+.make-align-justify(@class) {
+  .text-@{class}-justify {
+    text-align: justify;
+  }
+}
+
+.make-aligns(@class) {
+  .make-align-left(@class);
+  .make-align-right(@class);
+  .make-align-center(@class);
+  .make-align-justify(@class);
+}
+
+// For extra small grid
+.make-aligns(xs);
+
+// For small grid
+@media (min-width: @screen-sm-min) {
+  .make-aligns(sm);
+}
+
+// For medium grid
+@media (min-width: @screen-md-min) {
+  .make-aligns(md);
+}
+
+// For large grid
+@media (min-width: @screen-lg-min) {
+  .make-aligns(lg);
+}
+
 // Transformation
 .text-lowercase      { text-transform: lowercase; }
 .text-uppercase      { text-transform: uppercase; }

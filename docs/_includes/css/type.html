@@ -189,12 +189,16 @@ You can use the mark tag to <mark>highlight</mark> text.
   </div>
 
   <h2 id="type-alignment">Alignment classes</h2>
-  <p>Easily realign text to components with text alignment classes.</p>
+  <p>Easily realign text to components with text alignment classes, depending on the screen size.</p>
   <div class="bs-example" data-example-id="text-alignment">
-    <p class="text-left">Left aligned text.</p>
-    <p class="text-center">Center aligned text.</p>
-    <p class="text-right">Right aligned text.</p>
-    <p class="text-justify">Justified text.</p>
+	<p class="text-left">Left aligned text.</p>
+	<p class="text-center">Center aligned text.</p>
+	<p class="text-right">Right aligned text.</p>
+	<p class="text-justify">Justified text.</p>
+    <p class="text-xs-left text-sm-right text-md-center text-lg-justify">XS-L, SM-R, MD-C, LG-J</p>
+    <p class="text-xs-right text-sm-center text-md-justify text-lg-left">XS-R, SM-C, MD-J, LG-L</p>
+    <p class="text-xs-center text-sm-justify text-md-left text-lg-right">XS-C, SM-J, MD-C, LG-R</p>
+    <p class="text-xs-justify text-sm-left text-md-right text-lg-center">XS-J, SM-L, MD-R, LG-C</p>
     <p class="text-nowrap">No wrap text.</p>
   </div>
 {% highlight html %}
@@ -202,6 +206,10 @@ You can use the mark tag to <mark>highlight</mark> text.
 <p class="text-center">Center aligned text.</p>
 <p class="text-right">Right aligned text.</p>
 <p class="text-justify">Justified text.</p>
+<p class="text-xs-left text-sm-right text-md-center text-lg-justify">XS-L, SM-R, MD-C, LG-J</p>
+<p class="text-xs-right text-sm-center text-md-justify text-lg-left">XS-R, SM-C, MD-J, LG-L</p>
+<p class="text-xs-center text-sm-justify text-md-left text-lg-right">XS-C, SM-J, MD-C, LG-R</p>
+<p class="text-xs-justify text-sm-left text-md-right text-lg-center">XS-J, SM-L, MD-R, LG-C</p>
 <p class="text-nowrap">No wrap text.</p>
 {% endhighlight %}
 
