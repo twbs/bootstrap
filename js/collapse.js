@@ -44,8 +44,10 @@
 
   Collapse.prototype.show = function (e) {
     if (this.transitioning || this.$element.hasClass('in')) {
-      e.preventDefault()
-      e.stopPropagation()
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       return
     }
 
@@ -99,8 +101,10 @@
 
   Collapse.prototype.hide = function (e) {
     if (this.transitioning || !this.$element.hasClass('in')) {
-      e.preventDefault()
-      e.stopPropagation()
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       return
     }
 
