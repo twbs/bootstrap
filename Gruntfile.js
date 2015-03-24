@@ -223,6 +223,8 @@ module.exports = function (grunt) {
 
     cssmin: {
       options: {
+        // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
+        //    and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
         compatibility: 'ie8',
         keepSpecialComments: '*',
         advanced: false
@@ -374,7 +376,7 @@ module.exports = function (grunt) {
           throttled: 10,
           maxRetries: 3,
           maxPollRetries: 4,
-          urls: ['http://127.0.0.1:3000/js/tests/index.html'],
+          urls: ['http://127.0.0.1:3000/js/tests/index.html?hidepassed'],
           browsers: grunt.file.readYAML('grunt/sauce_browsers.yml')
         }
       }

@@ -123,7 +123,7 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
   <p>Use the <code>focus</code> trigger to dismiss popovers on the next click that the user makes.</p>
   <div class="bs-callout bs-callout-danger" id="callout-popover-dismiss-click">
     <h4>Specific markup required for dismiss-on-next-click</h4>
-    <p>For proper cross-browser and cross-platform behavior, you must use the <code>&lt;a&gt;</code> tag, <i>not</i> the <code>&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#tabindex"><code>tabindex</code></a> attribute.</p>
+    <p>For proper cross-browser and cross-platform behavior, you must use the <code>&lt;a&gt;</code> tag, <i>not</i> the <code>&lt;button&gt;</code> tag, and you also must include the <code>role="button"</code> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#tabindex"><code>tabindex</code></a> attributes.</p>
   </div>
   <div class="bs-example bs-example-padded-bottom">
     <a tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
@@ -248,23 +248,23 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
   </div>
 
   <h3>Methods</h3>
-  <h4>$().popover(options)</h4>
+  <h4><code>$().popover(options)</code></h4>
   <p>Initializes popovers for an element collection.</p>
 
-  <h4>.popover('show')</h4>
+  <h4><code>.popover('show')</code></h4>
   <p>Reveals an element's popover. <strong>Returns to the caller before the popover has actually been shown</strong> (i.e. before the <code>shown.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover. Popovers whose both title and content are zero-length are never displayed.</p>
   {% highlight js %}$('#element').popover('show'){% endhighlight %}
 
-  <h4>.popover('hide')</h4>
+  <h4><code>.popover('hide')</code></h4>
   <p>Hides an element's popover. <strong>Returns to the caller before the popover has actually been hidden</strong> (i.e. before the <code>hidden.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover.</p>
   {% highlight js %}$('#element').popover('hide'){% endhighlight %}
 
-  <h4>.popover('toggle')</h4>
+  <h4><code>.popover('toggle')</code></h4>
   <p>Toggles an element's popover. <strong>Returns to the caller before the popover has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.popover</code> or <code>hidden.bs.popover</code> event occurs). This is considered a "manual" triggering of the popover.</p>
   {% highlight js %}$('#element').popover('toggle'){% endhighlight %}
 
-  <h4>.popover('destroy')</h4>
-  <p>Popovers that use delegation (which are created using <a href="#popovers-options">the <code>selector</code> option</a>) cannot be individually destroyed on descendant trigger elements.</p>
+  <h4><code>.popover('destroy')</code></h4>
+  <p>Hides and destroys an element's popover. Popovers that use delegation (which are created using <a href="#popovers-options">the <code>selector</code> option</a>) cannot be individually destroyed on descendant trigger elements.</p>
   {% highlight js %}$('#element').popover('destroy'){% endhighlight %}
 
   <h3 id="popovers-events">Events</h3>

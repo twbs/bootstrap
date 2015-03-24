@@ -4,6 +4,7 @@ $(function () {
   QUnit.module('tabs plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
+    assert.expect(1)
     assert.ok($(document.body).tab, 'tabs method is defined')
   })
 
@@ -19,10 +20,12 @@ $(function () {
   })
 
   QUnit.test('should provide no conflict', function (assert) {
+    assert.expect(1)
     assert.strictEqual($.fn.tab, undefined, 'tab was set back to undefined (org value)')
   })
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
+    assert.expect(2)
     var $el = $('<div/>')
     var $tab = $el.bootstrapTab()
     assert.ok($tab instanceof $, 'returns jquery collection')
@@ -30,6 +33,7 @@ $(function () {
   })
 
   QUnit.test('should activate element by tab id', function (assert) {
+    assert.expect(2)
     var tabsHTML = '<ul class="tabs">'
         + '<li><a href="#home">Home</a></li>'
         + '<li><a href="#profile">Profile</a></li>'
@@ -45,6 +49,7 @@ $(function () {
   })
 
   QUnit.test('should activate element by tab id', function (assert) {
+    assert.expect(2)
     var pillsHTML = '<ul class="pills">'
         + '<li><a href="#home">Home</a></li>'
         + '<li><a href="#profile">Profile</a></li>'
@@ -60,6 +65,7 @@ $(function () {
   })
 
   QUnit.test('should not fire shown when show is prevented', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     $('<div class="tab"/>')
@@ -75,6 +81,7 @@ $(function () {
   })
 
   QUnit.test('show and shown events should reference correct relatedTarget', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var dropHTML = '<ul class="drop">'
@@ -102,6 +109,7 @@ $(function () {
   })
 
   QUnit.test('should fire hide and hidden events', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var tabsHTML = '<ul class="tabs">'
@@ -132,6 +140,7 @@ $(function () {
   })
 
   QUnit.test('should not fire hidden when hide is prevented', function (assert) {
+    assert.expect(1)
     var done = assert.async()
 
     var tabsHTML = '<ul class="tabs">'
@@ -156,6 +165,7 @@ $(function () {
   })
 
   QUnit.test('hide and hidden events contain correct relatedTarget', function (assert) {
+    assert.expect(2)
     var done = assert.async()
 
     var tabsHTML = '<ul class="tabs">'
@@ -179,6 +189,7 @@ $(function () {
   })
 
   QUnit.test('selected tab should have aria-expanded', function (assert) {
+    assert.expect(8)
     var tabsHTML = '<ul class="nav nav-tabs">'
         + '<li class="active"><a href="#home" toggle="tab" aria-expanded="true">Home</a></li>'
         + '<li><a href="#profile" toggle="tab" aria-expanded="false">Profile</a></li>'
@@ -189,7 +200,7 @@ $(function () {
     assert.strictEqual($tabs.find('.active a').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true')
     assert.strictEqual($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false')
 
-    $tabs.find('li:last a').click()
+    $tabs.find('li:last a').trigger('click')
     assert.strictEqual($tabs.find('.active a').attr('aria-expanded'), 'true', 'after click, shown tab has aria-expanded = true')
     assert.strictEqual($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after click, hidden tab has aria-expanded = false')
 
@@ -197,7 +208,7 @@ $(function () {
     assert.strictEqual($tabs.find('.active a').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true')
     assert.strictEqual($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false')
 
-    $tabs.find('li:first a').click()
+    $tabs.find('li:first a').trigger('click')
     assert.strictEqual($tabs.find('.active a').attr('aria-expanded'), 'true', 'after second show event, shown tab still has aria-expanded = true')
     assert.strictEqual($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after second show event, hidden tab has aria-expanded = false')
   })

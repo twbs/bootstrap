@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: tooltip.js v3.3.2
+ * Bootstrap: tooltip.js v3.3.4
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
@@ -25,7 +25,7 @@
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.3.2'
+  Tooltip.VERSION  = '3.3.4'
 
   Tooltip.TRANSITION_DURATION = 150
 
@@ -53,7 +53,7 @@
     this.$viewport = this.options.viewport && $(this.options.viewport.selector || this.options.viewport)
 
     if (this.$element[0] instanceof document.constructor && !this.options.selector) {
-      throw new Error('`selector` option must be specified when initializing ' + this.type + ' on the window.document object!');
+      throw new Error('`selector` option must be specified when initializing ' + this.type + ' on the window.document object!')
     }
 
     var triggers = this.options.trigger.split(' ')
@@ -453,7 +453,7 @@
       var data    = $this.data('bs.tooltip')
       var options = typeof option == 'object' && option
 
-      if (!data && option == 'destroy') return
+      if (!data && /destroy|hide/.test(option)) return
       if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
