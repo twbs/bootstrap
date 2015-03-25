@@ -733,7 +733,7 @@ $(function () {
       .appendTo($container)
       .bootstrapTooltip({
         placement: 'bottom',
-        viewport: function($element) {
+        viewport: function ($element) {
           return ($element.closest('.container-viewport'))
         }
       })
