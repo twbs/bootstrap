@@ -50,7 +50,12 @@
     this.type      = type
     this.$element  = $(element)
     this.options   = this.getOptions(options)
-    this.$viewport = this.options.viewport && $(this.options.viewport.selector || this.options.viewport)
+
+    if (typeof this.options.viewport == 'function') {
+      this.$viewport = this.options.viewport.call(this, this.$element)
+    }
+
+    this.$viewport = this.$viewport || (this.options.viewport && $(this.options.viewport.selector || this.options.viewport))
 
     if (this.$element[0] instanceof document.constructor && !this.options.selector) {
       throw new Error('`selector` option must be specified when initializing ' + this.type + ' on the window.document object!')
