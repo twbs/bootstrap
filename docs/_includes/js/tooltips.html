@@ -199,10 +199,11 @@ $('#example').tooltip(options)
         </tr>
         <tr>
           <td>viewport</td>
-          <td>string | object</td>
+          <td>string | object | function</td>
           <td>{ selector: 'body', padding: 0 }</td>
           <td>
             <p>Keeps the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
+            <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the tooltip instance.</p>
           </td>
         </tr>
       </tbody>

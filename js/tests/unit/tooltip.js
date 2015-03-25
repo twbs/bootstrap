@@ -733,6 +733,37 @@ $(function () {
     $styles.remove()
   })
 
+  QUnit.test('should get viewport element from function', function (assert) {
+    assert.expect(3)
+    var styles = '<style>'
+        + '.tooltip, .tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+        + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
+        + 'a[rel="tooltip"] { position: fixed; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div class="container-viewport"/>').appendTo(document.body)
+    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 50px; left: 350px;"/>').appendTo($container)
+    $target
+      .bootstrapTooltip({
+        placement: 'bottom',
+        viewport: function ($element) {
+          assert.strictEqual($element[0], $target[0], 'viewport function was passed target as argument')
+          return ($element.closest('.container-viewport'))
+        }
+      })
+
+    $target.bootstrapTooltip('show')
+    var $tooltip = $container.find('.tooltip')
+    assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].offsetWidth))
+
+    $target.bootstrapTooltip('hide')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $container.remove()
+    $styles.remove()
+  })
+
   QUnit.test('should not error when trying to show an auto-placed tooltip that has been removed from the dom', function (assert) {
     assert.expect(1)
     var passed = true
