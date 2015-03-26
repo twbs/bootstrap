@@ -94,29 +94,12 @@ $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
   <h3 id="tabs-methods">Methods</h3>
   <h4><code>$().tab</code></h4>
   <p>
-    Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.
+    Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM. In the above examples, the tabs are the <code>&lt;a&gt;</code>s with <code>data-toggle="tab"</code> attributes.
   </p>
-{% highlight html %}
-<ul class="nav nav-tabs" role="tablist" id="myTabs">
-  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-</ul>
 
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="home">...</div>
-  <div role="tabpanel" class="tab-pane" id="profile">...</div>
-  <div role="tabpanel" class="tab-pane" id="messages">...</div>
-  <div role="tabpanel" class="tab-pane" id="settings">...</div>
-</div>
-
-<script>
-  $(function () {
-    $('#myTabs a:last').tab('show')
-  })
-</script>
-{% endhighlight %}
+  <h4><code>.tab('show')</code></h4>
+  <p>Selects the given tab and shows its associated content. Any other tab that was previously selected becomes unselected and its associated content is hidden.</p>
+  {% highlight js %}$('#someTab').tab('show'){% endhighlight %}
 
   <h3 id="tabs-events">Events</h3>
   <p>When showing a new tab, the events fire in the following order:</p>
