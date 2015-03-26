@@ -4,7 +4,7 @@
   <h2 id="tabs-examples">Example tabs</h2>
   <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</p>
   <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-    <ul id="myTab" class="nav nav-tabs" role="tablist">
+    <ul id="myTabs" class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Home</a></li>
       <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Profile</a></li>
       <li role="presentation" class="dropdown">
@@ -41,7 +41,7 @@
   <p>Enable tabbable tabs via JavaScript (each tab needs to be activated individually):</p>
 
 {% highlight js %}
-$('#myTab a').click(function (e) {
+$('#myTabs a').click(function (e) {
   e.preventDefault()
   $(this).tab('show')
 })
@@ -50,10 +50,10 @@ $('#myTab a').click(function (e) {
   <p>You can activate individual tabs in several ways:</p>
 
 {% highlight js %}
-$('#myTab a[href="#profile"]').tab('show') // Select tab by name
-$('#myTab a:first').tab('show') // Select first tab
-$('#myTab a:last').tab('show') // Select last tab
-$('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
+$('#myTabs a[href="#profile"]').tab('show') // Select tab by name
+$('#myTabs a:first').tab('show') // Select first tab
+$('#myTabs a:last').tab('show') // Select last tab
+$('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
 {% endhighlight %}
 
   <h3>Markup</h3>
@@ -97,7 +97,7 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
     Activates a tab element and content container. Tab should have either a <code>data-target</code> or an <code>href</code> targeting a container node in the DOM.
   </p>
 {% highlight html %}
-<ul class="nav nav-tabs" role="tablist" id="myTab">
+<ul class="nav nav-tabs" role="tablist" id="myTabs">
   <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
   <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
   <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
@@ -113,7 +113,7 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 
 <script>
   $(function () {
-    $('#myTab a:last').tab('show')
+    $('#myTabs a:last').tab('show')
   })
 </script>
 {% endhighlight %}
