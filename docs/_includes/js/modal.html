@@ -68,7 +68,7 @@ $('#myModal').on('shown.bs.modal', function () {
   <h3>Live demo</h3>
   <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
   <!-- sample modal content -->
-  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog">
       <div class="modal-content">
 
@@ -120,7 +120,7 @@ $('#myModal').on('shown.bs.modal', function () {
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -141,7 +141,7 @@ $('#myModal').on('shown.bs.modal', function () {
 
   <div class="bs-callout bs-callout-warning" id="callout-modal-accessibility">
     <h4>Make modals accessible</h4>
-    <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
+    <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title.</p>
     <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
   </div>
 
@@ -160,7 +160,7 @@ $('#myModal').on('shown.bs.modal', function () {
 <!-- Large modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       ...
@@ -171,7 +171,7 @@ $('#myModal').on('shown.bs.modal', function () {
 <!-- Small modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       ...
@@ -181,7 +181,7 @@ $('#myModal').on('shown.bs.modal', function () {
 {% endhighlight %}
 
   <!--  Modal content for the above example -->
-  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
@@ -195,7 +195,7 @@ $('#myModal').on('shown.bs.modal', function () {
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
-  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
 
@@ -213,7 +213,7 @@ $('#myModal').on('shown.bs.modal', function () {
   <h2 id="modals-remove-animation">Remove animation</h2>
   <p>For modals that simply appear rather than fade in to view, remove the <code>.fade</code> class from your modal markup.</p>
 {% highlight html %}
-<div class="modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="...">
   ...
 </div>
 {% endhighlight %}
@@ -221,7 +221,7 @@ $('#myModal').on('shown.bs.modal', function () {
   <h2 id="modals-grid-system">Using the grid system</h2>
   <p>To take advantage of the Bootstrap grid system within a modal, just nest <code>.container-fluid</code> within the <code>.modal-body</code> and then use the normal grid system classes within this container.</p>
 <!-- sample modal content -->
-  <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+  <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -269,7 +269,7 @@ $('#myModal').on('shown.bs.modal', function () {
   </button>
 </div><!-- /example -->
 {% highlight html %}
-<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -322,7 +322,7 @@ $('#myModal').on('shown.bs.modal', function () {
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
     ...more buttons...
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -355,7 +355,7 @@ $('#myModal').on('shown.bs.modal', function () {
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
 ...more buttons...
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
