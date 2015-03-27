@@ -346,7 +346,7 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.core.src %>',
-        tasks: ['jshint:src', 'qunit', 'concat']
+        tasks: ['jshint:core', 'qunit', 'concat']
       },
       test: {
         files: '<%= jshint.test.src %>',
