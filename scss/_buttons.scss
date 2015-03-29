@@ -50,13 +50,12 @@
     opacity: .65;
     @include box-shadow(none);
   }
+}
 
-  a& {
-    &.disabled,
-    fieldset[disabled] & {
-      pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
-    }
-  }
+// Future-proof disabling of clicks on `<a>` elements
+a.btn.disaabled,
+fieldset[disabled] a.btn {
+  pointer-events: none;
 }
 
 

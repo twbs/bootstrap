@@ -13,11 +13,9 @@
 
 .collapse {
   display: none;
-  visibility: hidden;
 
   &.in {
     display: block;
-    visibility: visible;
   }
   // tr&.in    { display: table-row; }
   // tbody&.in { display: table-row-group; }
@@ -29,5 +27,5 @@
   overflow: hidden;
   transition-timing-function: ease;
   transition-duration: .35s;
-  transition-property: height, visibility;
+  transition-property: height;
 }
