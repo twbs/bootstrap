@@ -5,7 +5,7 @@ title: Supported platforms
 
 Bootstrap is built to work best with the latest techniques. As such, older desktop and mobile browsers may display differently, but should remain fully functional.
 
-### Supported browsers
+## Supported browsers
 
 Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11**. More specific support information is provided below.
 
@@ -65,7 +65,7 @@ Unofficially, Bootstrap should look and behave well enough in Chromium and Chrom
 
 For a list of some of the browser bugs that Bootstrap has to grapple with, see our [Wall of browser bugs](../browser-bugs/).
 
-### Internet Explorer 9
+## Internet Explorer 9
 
 Internet Explorer 9 is also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported.
 
@@ -104,7 +104,7 @@ Internet Explorer 9 is also supported, however, please be aware that some CSS3 p
 
 Visit [Can I use...](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
-### Supporting Internet Explorer 8
+## Supporting Internet Explorer 8
 
 As of v4, Bootstrap no longer supports IE8. **If you require IE8 support, we recommend you use Bootstrap 3.** It's still supported by our team for bugfixes and documentation changes, but no new features will be added to it.
 
@@ -114,7 +114,7 @@ Alternatively, you can add the some third party JavaScript to backfill support f
 * [Respond.js](https://github.com/scottjehl/Respond)
 * [Rem unit polyfill](https://github.com/chuckcarpenter/REM-unit-polyfill)
 
-### IE Compatibility modes
+## IE Compatibility modes
 
 Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate `<meta>` tag in your pages:
 
@@ -128,7 +128,7 @@ This tag is included in all of Bootstrap's documentation and examples to ensure 
 
 See [this StackOverflow question](http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge) for more information.
 
-### Internet Explorer 10 in Windows Phone 8
+## Internet Explorer 10 in Windows Phone 8
 
 Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you'll need to **include the following JavaScript to work around the bug**.
 
@@ -148,30 +148,30 @@ For more information and usage guidelines, read [Windows Phone 8 and Device-Widt
 
 As a heads up, we include this in all of Bootstrap's documentation and examples as a demonstration.
 
-### Modals, navbars, and virtual keyboards
+## Modals, navbars, and virtual keyboards
 
-#### Overflow and scrolling
+### Overflow and scrolling
 
 Support for `overflow: hidden;` on the `<body>` element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the `<body>` content will begin to scroll.
 
-#### Virtual keyboards
+### Virtual keyboards
 
 Also, note that if you're using a fixed navbar or using inputs within a modal, iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few workarounds for this include transforming your elements to `position: absolute;` or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.
 
-#### Navbar Dropdowns
+### Navbar Dropdowns
 
 The `.dropdown-backdrop` element isn't used on iOS in the nav because of the complexity of z-indexing. Thus, to close dropdowns in navbars, you must directly click the dropdown element (or [any other element which will fire a click event in iOS](https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile)).
 
-### Browser zooming
+## Browser zooming
 
 Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.
 
-### Sticky `:hover`/`:focus` on mobile
+## Sticky `:hover`/`:focus` on mobile
 Even though real hovering isn't possible on most touchscreens, most mobile browsers emulate hovering support and make `:hover` "sticky". In other words, `:hover` styles start applying after tapping an element and only stop applying after the user taps some other element. On mobile-first sites, this behavior is normally undesirable.
 
 Bootstrap includes a workaround for this, although it is disabled by default. By setting `$use-hover-media-query` to `true` when compiling from Sass, Bootstrap will use [mq4-hover-shim](https://github.com/twbs/mq4-hover-shim) to disable `:hover` styles in browsers that emulate hovering, thus preventing sticky `:hover` styles. There are some caveats to this workaround; see the shim's documentation for details.
 
-### Printing
+## Printing
 
 Even in some modern browsers, printing can be quirky.
 
@@ -187,7 +187,7 @@ Also, as of Safari v8.0, fixed-width <code>.container</code>s can cause Safari t
 }
 {% endhighlight %}
 
-### Android stock browser
+## Android stock browser
 
 Out of the box, Android 4.1 (and even some newer releases apparently) ship with the Browser app as the default web browser of choice (as opposed to Chrome). Unfortunately, the Browser app has lots of bugs and inconsistencies with CSS in general.
 
@@ -209,7 +209,7 @@ $(function () {
 
 Want to see an example? [Check out this JS Bin demo.](http://jsbin.com/OyaqoDO/2)
 
-### Validators
+## Validators
 
 In order to provide the best possible experience to old and buggy browsers, Bootstrap uses [CSS browser hacks](http://browserhacks.com) in several places to target special CSS to certain browser versions in order to work around bugs in the browsers themselves. These hacks understandably cause CSS validators to complain that they are invalid. In a couple places, we also use bleeding-edge CSS features that aren't yet fully standardized, but these are used purely for progressive enhancement.
 

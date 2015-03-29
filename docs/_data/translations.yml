@@ -42,3 +42,8 @@
   code: uk
   description: Bootstrap українською
   url: http://twbs.docs.org.ua
+
+- name: Vietnamese
+  code: vi
+  description: Bootstrap bằng tiếng Việt
+  url: http://getbootstrap.com.vn

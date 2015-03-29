@@ -13,7 +13,6 @@
   font-size: $font-size-sm;
   font-weight: normal;
   line-height: 1.4;
-  visibility: visible;
   opacity: 0;
 
   &.in { opacity: $tooltip-opacity; }

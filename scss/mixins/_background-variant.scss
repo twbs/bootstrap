@@ -6,7 +6,7 @@
     background-color: $color;
   }
   a#{$parent} {
-    @include hover {
+    @include hover-focus {
       background-color: darken($color, 10%);
     }
   }

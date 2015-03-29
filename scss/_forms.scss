@@ -377,12 +377,14 @@ input[type="checkbox"] {
   text-align: center;
   pointer-events: none;
 }
-.input-lg + .form-control-feedback {
+.input-lg + .form-control-feedback,
+.input-group-lg + .form-control-feedback {
   width: $input-height-lg;
   height: $input-height-lg;
   line-height: $input-height-lg;
 }
-.input-sm + .form-control-feedback {
+.input-sm + .form-control-feedback,
+.input-group-sm + .form-control-feedback {
   width: $input-height-sm;
   height: $input-height-sm;
   line-height: $input-height-sm;

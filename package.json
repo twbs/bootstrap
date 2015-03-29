@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "btoa": "~1.1.2",
-    "glob": "~4.4.0",
+    "glob": "~5.0.3",
     "grunt": "~0.4.5",
     "grunt-autoprefixer": "~2.2.0",
     "grunt-banner": "~0.3.1",
@@ -52,7 +52,7 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-csscomb": "~3.0.0",
     "grunt-exec": "~0.4.6",
-    "grunt-html": "^3.0.0",
+    "grunt-html": "~4.0.1",
     "grunt-jekyll": "~0.4.2",
     "grunt-jscs": "~1.5.0",
     "grunt-postcss": "^0.3.0",
@@ -61,7 +61,7 @@
     "grunt-scss-lint": "^0.3.4",
     "grunt-sed": "~0.1.1",
     "load-grunt-tasks": "~3.1.0",
-    "markdown-it": "^3.0.7",
+    "markdown-it": "^4.0.1",
     "mq4-hover-shim": "^0.1.0",
     "npm-shrinkwrap": "^200.1.0",
     "superstartup-closure-compiler": "^0.1.6",
@@ -81,18 +81,12 @@
   ],
   "jspm": {
     "main": "js/bootstrap",
-    "directories": {
-      "example": "examples",
-      "lib": "dist"
-    },
     "shim": {
       "js/bootstrap": {
-        "imports": "jquery",
+        "deps": "jquery",
         "exports": "$"
       }
     },
-    "buildConfig": {
-      "uglify": true
-    }
+    "files": ["css", "fonts", "js"]
   }
 }

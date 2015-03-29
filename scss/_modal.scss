@@ -59,11 +59,14 @@
 
 // Modal background
 .modal-backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
+  bottom: 0;
   left: 0;
   background-color: $modal-backdrop-bg;
+  z-index: $zindex-modal-bg;
+
   // Fade for backdrop
   &.fade { opacity: 0; }
   &.in { opacity: $modal-backdrop-opacity; }

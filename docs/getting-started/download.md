@@ -54,6 +54,19 @@ Bootstrap's `package.json` contains some additional metadata under the following
 - `less` - path to Bootstrap's main [Less](http://lesscss.org) source file
 - `style` - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)
 
+### Meteor
+
+{% highlight bash %}
+$ meteor add twbs:bootstrap
+{% endhighlight %}
+
+### Composer
+
+{% highlight bash %}
+$ composer require twbs/bootstrap
+{% endhighlight %}
+
+
 ### Autoprefixer required
 
 Bootstrap uses [Autoprefixer](https://github.com/postcss/autoprefixer) to deal with [CSS vendor prefixes](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm). If you're compiling Bootstrap from its source Sass and not using our Gruntfile, you'll need to integrate Autoprefixer into your build process yourself. If you're using precompiled Bootstrap or using our Gruntfile, you don't need to worry about this as Autoprefixer is already integrated into our Gruntfile.

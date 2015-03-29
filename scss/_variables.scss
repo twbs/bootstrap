@@ -225,7 +225,8 @@ $zindex-dropdown:          1000 !default;
 $zindex-popover:           1060 !default;
 $zindex-tooltip:           1070 !default;
 $zindex-navbar-fixed:      1030 !default;
-$zindex-modal:             1040 !default;
+$zindex-modal-bg:          1040 !default;
+$zindex-modal:             1050 !default;
 
 
 // Media queries breakpoints
@@ -385,6 +386,7 @@ $jumbotron-padding:              2rem !default;
 $jumbotron-color:                inherit !default;
 $jumbotron-bg:                   $gray-lighter !default;
 $jumbotron-heading-color:        inherit !default;
+$jumbotron-heading-font-size:    ($font-size-base * 4.5) !default;
 // $jumbotron-font-size:            ceil(($font-size-base * 1.5)) !default;
 
 

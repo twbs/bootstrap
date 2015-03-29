@@ -46,10 +46,16 @@
   &.disabled,
   &:disabled,
   fieldset[disabled] & {
-    pointer-events: none; // Future-proof disabling of clicks
     cursor: $cursor-disabled;
     opacity: .65;
     @include box-shadow(none);
+  }
+
+  a& {
+    &.disabled,
+    fieldset[disabled] & {
+      pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+    }
   }
 }
 

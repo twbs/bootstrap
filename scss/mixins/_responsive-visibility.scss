@@ -7,7 +7,7 @@
   #{$parent} {
     display: block !important;
   }
-  table#{$parent}  { display: table; }
+  table#{$parent}  { display: table !important; }
   tr#{$parent}     { display: table-row !important; }
   th#{$parent},
   td#{$parent}     { display: table-cell !important; }

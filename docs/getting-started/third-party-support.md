@@ -5,7 +5,7 @@ title: Third party support
 
 While we don't officially support any third party plugins or add-ons, we do offer some useful advice to help avoid potential issues in your projects.
 
-### Box-sizing
+## Box-sizing
 
 Some third-party software, including Google Maps and Google Custom Search Engine, conflict with Bootstrap due to `* { box-sizing: border-box; }`, a rule which makes it so `padding` does not affect the final computed width of an element. These widgets expect the box model to be `content-box` instead. Learn more about [box model and sizing at CSS Tricks](http://css-tricks.com/box-sizing/).
 
