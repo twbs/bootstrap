@@ -362,23 +362,19 @@ $(function () {
     assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
   })
 
-  QUnit.test('should be placed dynamically with the dynamic placement option', function (assert) {
+  QUnit.test('should be placed dynamically to viewport with the dynamic placement option', function (assert) {
     assert.expect(6)
-    var $style = $('<style> a[rel="tooltip"] { display: inline-block; position: absolute; } </style>')
+    var $style = $('<style> div[rel="tooltip"] { position: absolute; } #qunit-fixture { top: initial; left: initial } </style>').appendTo('head')
     var $container = $('<div/>')
       .css({
-        position: 'absolute',
-        overflow: 'hidden',
-        width: 600,
-        height: 400,
-        top: 0,
-        left: 0
+        position: 'relative',
+        height: '100%'
       })
-      .appendTo(document.body)
+      .appendTo('#qunit-fixture')
 
     var $topTooltip = $('<div style="left: 0; top: 0;" rel="tooltip" title="Top tooltip">Top Dynamic Tooltip</div>')
       .appendTo($container)
-      .bootstrapTooltip({ placement: 'auto' })
+      .bootstrapTooltip({ placement: 'auto', viewport: '#qunit-fixture' })
 
     $topTooltip.bootstrapTooltip('show')
     assert.ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom')
@@ -388,7 +384,7 @@ $(function () {
 
     var $rightTooltip = $('<div style="right: 0;" rel="tooltip" title="Right tooltip">Right Dynamic Tooltip</div>')
       .appendTo($container)
-      .bootstrapTooltip({ placement: 'right auto' })
+      .bootstrapTooltip({ placement: 'right auto', viewport: '#qunit-fixture' })
 
     $rightTooltip.bootstrapTooltip('show')
     assert.ok($('.tooltip').is('.left'), 'right positioned tooltip is dynamically positioned left')
@@ -398,7 +394,7 @@ $(function () {
 
     var $leftTooltip = $('<div style="left: 0;" rel="tooltip" title="Left tooltip">Left Dynamic Tooltip</div>')
       .appendTo($container)
-      .bootstrapTooltip({ placement: 'auto left' })
+      .bootstrapTooltip({ placement: 'auto left', viewport: '#qunit-fixture' })
 
     $leftTooltip.bootstrapTooltip('show')
     assert.ok($('.tooltip').is('.right'), 'left positioned tooltip is dynamically positioned right')
@@ -425,6 +421,31 @@ $(function () {
       .bootstrapTooltip({
         placement: 'auto top',
         viewport: '#section'
+      })
+
+    $target.bootstrapTooltip('show')
+    assert.ok($('.tooltip').is('.top'), 'top positioned tooltip is dynamically positioned to top')
+
+    $target.bootstrapTooltip('hide')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
+  QUnit.test('should position tip on top if viewport has enough space and is not parent', function (assert) {
+    assert.expect(2)
+    var styles = '<style>'
+        + '#section { height: 300px; border: 1px solid red; margin-top: 100px; }'
+        + 'div[rel="tooltip"] { width: 150px; border: 1px solid blue; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div id="section"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip"/>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'auto top',
+        viewport: '#qunit-fixture'
       })
 
     $target.bootstrapTooltip('show')
