@@ -364,7 +364,7 @@ $(function () {
 
   QUnit.test('should be placed dynamically to viewport with the dynamic placement option', function (assert) {
     assert.expect(6)
-    var $style = $('<style> div[rel="tooltip"] { position: absolute; } #qunit-fixture { top: initial; left: initial } </style>').appendTo('head')
+    var $style = $('<style> div[rel="tooltip"] { position: absolute; } #qunit-fixture { top: inherit; left: inherit } </style>').appendTo('head')
     var $container = $('<div/>')
       .css({
         position: 'relative',
