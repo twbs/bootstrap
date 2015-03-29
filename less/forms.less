@@ -326,10 +326,10 @@ input[type="checkbox"] {
   }
   .form-control-static {
     height: @input-height-small;
-    padding: @padding-small-vertical @padding-small-horizontal;
+    min-height: (@line-height-computed + @font-size-small);
+    padding: (@padding-small-vertical + 1) @padding-small-horizontal;
     font-size: @font-size-small;
     line-height: @line-height-small;
-    min-height: (@line-height-computed + @font-size-small);
   }
 }
 
@@ -342,10 +342,10 @@ input[type="checkbox"] {
   }
   .form-control-static {
     height: @input-height-large;
-    padding: @padding-large-vertical @padding-large-horizontal;
+    min-height: (@line-height-computed + @font-size-large);
+    padding: (@padding-large-vertical + 1) @padding-large-horizontal;
     font-size: @font-size-large;
     line-height: @line-height-large;
-    min-height: (@line-height-computed + @font-size-large);
   }
 }
 
@@ -561,6 +561,7 @@ input[type="checkbox"] {
     @media (min-width: @screen-sm-min) {
       .control-label {
         padding-top: ((@padding-large-vertical * @line-height-large) + 1);
+        font-size: @font-size-large;
       }
     }
   }
@@ -568,6 +569,7 @@ input[type="checkbox"] {
     @media (min-width: @screen-sm-min) {
       .control-label {
         padding-top: (@padding-small-vertical + 1);
+        font-size: @font-size-small;
       }
     }
   }
