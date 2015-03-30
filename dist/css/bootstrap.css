@@ -3099,9 +3099,21 @@ fieldset[disabled] .btn-default.active {
   background-color: #333;
 }
 .btn-primary {
+  /* W3C */
   color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background: #5e9aff;
+  /* Old browsers */
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5e9aff), color-stop(100%, #357aec));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #5e9aff 0%, #357aec 100%);
+  /* Chrome10+,Safari5.1+ */
+  background:      -o-linear-gradient(top, #5e9aff 0%, #357aec 100%);
+  /* Opera 11.10+ */
+  /* IE10+ */
+  background: -webkit-gradient(linear, left top, left bottom, from(#5e9aff), to(#357aec));
+  background:         linear-gradient(to bottom, #5e9aff 0%, #357aec 100%);
+  border-color: #448aff;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -3110,8 +3122,8 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
+  background-color: #2b7aff;
+  border-color: #0764ff;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -3136,11 +3148,11 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background-color: #5e9aff;
+  border-color: #448aff;
 }
 .btn-primary .badge {
-  color: #337ab7;
+  color: #5e9aff;
   background-color: #fff;
 }
 .btn-success {
