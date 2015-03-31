@@ -1544,18 +1544,6 @@ th {
   background-color: #f5f5f5;
 }
 
-table col[class*="col-"] {
-  position: static;
-  display: table-column;
-  float: none;
-}
-
-table td[class*="col-"], table th[class*="col-"] {
-  position: static;
-  display: table-cell;
-  float: none;
-}
-
 .table-active, .table-active > th, .table-active > td {
   background-color: #f5f5f5;
 }
