@@ -42,7 +42,7 @@
 
       var itemHeight = parseInt($parent.css('height'), 10)
       var itemsSize = $parent.find('li').length
-      if ( $(window).scrollTop() + $(window).height() - $parent.offset().top < itemHeight * itemsSize) {
+      if ($(window).scrollTop() + $(window).height() - $parent.offset().top < itemHeight * itemsSize) {
         if ($parent.hasClass('dropdown')) $parent.removeClass('dropdown')
         if (!$parent.hasClass('dropup')) $parent.addClass('dropup')
       } else {
