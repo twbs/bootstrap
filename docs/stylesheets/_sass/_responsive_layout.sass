@@ -22,6 +22,7 @@ $SIDE_WIDTH: 250px
 
 html, body
   height: 100%
+  overflow: hidden
 .res-layout
   height: 100%
   // style for preview
@@ -92,7 +93,7 @@ html, body
       margin-right: 0
 
 
-/* Small devices (tablets, 768px and up) */
+/* Medium devices (mobile, 992px and up) */
 @media (max-width: 991px)
   .res-layout
     .res-content-wrapper
@@ -102,7 +103,9 @@ html, body
       top: 0
       left: -$NAV_WIDTH
       bottom: 0
+      +basic_transition
       .glyphicon-menu-hamburger
+        cursor: pointer
         display: block
         position: absolute
         left: 100%
@@ -113,22 +116,40 @@ html, body
         line-height: 60px
         width: 60px
         text-align: center
+    &[data-active=navigation]
+      .res-content-wrapper
+        &:before
+          content: ''
+          position: absolute
+          top: 0
+          left: 0
+          right: 0
+          bottom: 0
+          background: rgba(black, 0.3)
+          z-index: 1
+      .res-navigation
+        z-index: 2
+        left: 0
+        .glyphicon-menu-hamburger:before
+          content: "\e014"
     .res-header
       padding-left: 60px
     &.res-single-column
       .res-header
         padding-left: 20px
 
-/* Medium devices (mobile, 992px and up) */
+/* Small devices (tablets, 768px and up) */
 @media (max-width: 767px)
   .res-layout
     .res-content-wrapper
       .res-side
         position: absolute
         top: 0
-        left: 100%
+        right: -$SIDE_WIDTH
         bottom: 0
+        padding: 10px
         .glyphicon-align-right
+          cursor: pointer
           display: block
           position: absolute
           right: 100%
@@ -143,6 +164,26 @@ html, body
         margin-right: 0
     .res-header
       padding-right: 60px
+    &[data-active=side]
+      .res-side
+        position: static
+        top: auto
+        left: auto
+        right: auto
+        bottom: auto
+        float: none
+        width: auto
+        padding: 10px
+        margin-bottom: 20px
+        border-bottom: 1px solid #D3DCE8
+        box-shadow: 0 1px 0 #fff
+        .glyphicon-align-right
+          top: 0
+          right: 0
+          bottom: auto
+          left: auto
+          &:before
+            content: "\e014"
     &.res-two-columns
       .res-header
         padding-right: 20px
