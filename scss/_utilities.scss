@@ -18,6 +18,14 @@
   @include pull-left();
 }
 
+.sr-only {
+  @include sr-only();
+}
+
+.sr-only-focusable {
+  @include sr-only-focusable();
+}
+
 
 // Inverse
 .inverse {
