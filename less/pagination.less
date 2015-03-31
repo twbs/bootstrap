@@ -11,6 +11,7 @@
     display: inline; // Remove list-style and block-level defaults
     > a,
     > span {
+      margin: 0 5px;
       position: relative;
       float: left; // Collapse white-space
       padding: @padding-base-vertical @padding-base-horizontal;
@@ -20,6 +21,8 @@
       background-color: @pagination-bg;
       border: 1px solid @pagination-border;
       margin-left: -1px;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.32);
+      border-radius: 3px;
     }
     &:first-child {
       > a,
@@ -52,9 +55,9 @@
     &:hover,
     &:focus {
       z-index: 2;
-      color: @pagination-active-color;
-      background-color: @pagination-active-bg;
-      border-color: @pagination-active-border;
+      color: @pagination-color;
+      box-shadow: inset 0 5px 10px rgba(0,0,0,0.2);
+      border-color: @pagination-border;
       cursor: default;
     }
   }

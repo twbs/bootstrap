@@ -8,14 +8,15 @@
   margin-bottom: @line-height-computed;
   list-style: none;
   background-color: @breadcrumb-bg;
-  border-radius: @border-radius-base;
+  border-bottom: 1px solid @breadcrumb-border-color;
 
   > li {
     display: inline-block;
+    margin: 5px 0;
 
     + li:before {
       content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-      padding: 0 5px;
+      padding: 0 12px;
       color: @breadcrumb-color;
     }
   }

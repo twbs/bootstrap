@@ -43,12 +43,6 @@
   }
 }
 .button-variant-gradient(@color; @firstcolor; @secondcolor; @border) {
-  background: @firstcolor; /* Old browsers */
-  background: -moz-linear-gradient(top,  @firstcolor 0%, @secondcolor 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@firstcolor), color-stop(100%,@secondcolor)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  @firstcolor 0%,@secondcolor 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  @firstcolor 0%,@secondcolor 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  @firstcolor 0%,@secondcolor 100%); /* IE10+ */
   background: linear-gradient(to bottom,  @firstcolor 0%,@secondcolor 100%); /* W3C */
   color: @color;
   border-color: @border;

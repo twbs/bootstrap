@@ -19,6 +19,7 @@
   white-space: nowrap;
   .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
   .user-select(none);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.32);
 
   &,
   &:active,
@@ -64,7 +65,7 @@
 // --------------------------------------------------
 
 .btn-default {
-  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+  .button-variant-gradient(@btn-default-color; @btn-default-bg; @btn-default-bg-2; @btn-default-border);
 }
 .btn-primary {
   .button-variant-gradient(@btn-primary-color; @btn-primary-bg; @btn-primary-bg-2;  @btn-primary-border);

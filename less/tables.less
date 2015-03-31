@@ -87,13 +87,22 @@ th {
 
 .table-bordered {
   border: 1px solid @table-border-color;
-  > thead,
   > tbody,
   > tfoot {
     > tr {
       > th,
       > td {
         border: 1px solid @table-border-color;
+      }
+    }
+  }
+    > thead{
+        > tr {
+          > th,
+          > td {
+            border: 1px solid @table-border-color;
+            border-right: none;
+            border-left: none;
       }
     }
   }
