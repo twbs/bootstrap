@@ -1,0 +1,5 @@
+---
+---
+
+if !!($('#datatable'))
+  $('#datatable').DataTable()
