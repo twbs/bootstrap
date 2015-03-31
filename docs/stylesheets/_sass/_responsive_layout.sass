@@ -5,5 +5,75 @@
   right: 0
   opacity: 0.8
   transition: 0.3s
+  .bs-docs-nav
+    background: #e0c06c
   &:hover
     top: 0
+
+$HEAD_HEIGHT: 60px
+$NAV_WIDTH: 240px
+$SIDE_WIDTH: 250px
+
+html, body
+  height: 100%
+.res-layout
+  height: 100%
+  // style for preview
+  background: #f0f6ff
+  .res-header
+    position: relative
+    height: $HEAD_HEIGHT
+    // style for preview
+    background: #fff
+    padding: 10px 20px
+    font-size: 40px
+    line-height: 1em
+    &:before
+      content: ''
+      position: absolute
+      top: 100%
+      left: 0
+      right: 0
+      height: 3px
+      background: linear-gradient(rgba(#000, 0.1), rgba(#000, 0))
+  .res-body
+    height: calc( 100% - #{$HEAD_HEIGHT} )
+    &:after
+      content: ''
+      display: table
+      clear: both
+  .res-navigation, .res-content
+    overflow-y: auto
+  .res-navigation
+    height: 100%
+    width: $NAV_WIDTH
+    float: left
+    // style for preview
+    padding: 20px
+    color: #fff
+    background: #293040
+  .res-content-wrapper
+    height: 100%
+    overflow-y: auto
+    margin-left: $NAV_WIDTH
+    padding: 20px 20px 0 20px
+    .res-side
+      width: $SIDE_WIDTH
+      float: right
+      padding: 0 0 0 20px
+    .res-content
+      margin-right: $SIDE_WIDTH
+    &:after
+      content: ''
+      display: table
+      clear: both
+
+
+.test-content
+  background: #fff
+  min-height: 200px
+  padding: 20px
+  margin-bottom: 20px
+  box-shadow: 0 0 5px rgba(black, 0.1)
+
+
