@@ -7,11 +7,19 @@
   opacity: 0.8
   transition: 0.3s
   z-index: 10
-  .bs-docs-nav
+  .bs-docs-nav .navbar-nav > li > a:hover,
+  .bs-docs-nav .navbar-nav > .active > a,
+  .bs-docs-nav .navbar-nav > .active > a:hover
+    transform: translateY(10px)
     background: #e0c06c
   &:hover
     top: 0
     bottom: auto
+    border-bottom: 1px solid #e6cc89
+    .bs-docs-nav .navbar-nav > li > a:hover,
+    .bs-docs-nav .navbar-nav > .active > a,
+    .bs-docs-nav .navbar-nav > .active > a:hover
+      transform: translateY(0px)
 
 $HEAD_HEIGHT: 60px
 $NAV_WIDTH: 240px
@@ -59,6 +67,7 @@ html, body
     padding: 20px
     color: #fff
     background: #293040
+    overflow-y: auto
     .glyphicon-menu-hamburger
       display: none
   .res-content-wrapper
@@ -99,6 +108,7 @@ html, body
     .res-content-wrapper
       margin-left: 0
     .res-navigation
+      overflow-y: visible
       position: absolute
       top: 0
       left: -$NAV_WIDTH
