@@ -40,6 +40,16 @@
           .on('click', clearMenus)
       }
 
+      var itemHeight = parseInt($parent.css('height'), 10)
+      var itemsSize = $parent.find('li').length
+      if ( $(window).scrollTop() + $(window).height() - $parent.offset().top < itemHeight * itemsSize) {
+        if ($parent.hasClass('dropdown')) $parent.removeClass('dropdown')
+        if (!$parent.hasClass('dropup')) $parent.addClass('dropup')
+      } else {
+        if ($parent.hasClass('dropup')) $parent.removeClass('dropup')
+        if (!$parent.hasClass('dropdown')) $parent.addClass('dropdown')
+      }
+
       var relatedTarget = { relatedTarget: this }
       $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
 
