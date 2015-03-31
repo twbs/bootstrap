@@ -310,31 +310,31 @@ Use contextual classes to color table rows or individual cells.
     <tbody>
       <tr>
         <th scope="row">
-          <code>.active</code>
+          <code>.table-active</code>
         </th>
         <td>Applies the hover color to a particular row or cell</td>
       </tr>
       <tr>
         <th scope="row">
-          <code>.success</code>
+          <code>.table-success</code>
         </th>
         <td>Indicates a successful or positive action</td>
       </tr>
       <tr>
         <th scope="row">
-          <code>.info</code>
+          <code>.table-info</code>
         </th>
         <td>Indicates a neutral informative change or action</td>
       </tr>
       <tr>
         <th scope="row">
-          <code>.warning</code>
+          <code>.table-warning</code>
         </th>
         <td>Indicates a warning that might need attention</td>
       </tr>
       <tr>
         <th scope="row">
-          <code>.danger</code>
+          <code>.table-danger</code>
         </th>
         <td>Indicates a dangerous or potentially negative action</td>
       </tr>
@@ -353,7 +353,7 @@ Use contextual classes to color table rows or individual cells.
       </tr>
     </thead>
     <tbody>
-      <tr class="active">
+      <tr class="table-active">
         <th scope="row">1</th>
         <td>Column content</td>
         <td>Column content</td>
@@ -365,7 +365,7 @@ Use contextual classes to color table rows or individual cells.
         <td>Column content</td>
         <td>Column content</td>
       </tr>
-      <tr class="success">
+      <tr class="table-success">
         <th scope="row">3</th>
         <td>Column content</td>
         <td>Column content</td>
@@ -377,7 +377,7 @@ Use contextual classes to color table rows or individual cells.
         <td>Column content</td>
         <td>Column content</td>
       </tr>
-      <tr class="info">
+      <tr class="table-info">
         <th scope="row">5</th>
         <td>Column content</td>
         <td>Column content</td>
@@ -389,7 +389,7 @@ Use contextual classes to color table rows or individual cells.
         <td>Column content</td>
         <td>Column content</td>
       </tr>
-      <tr class="warning">
+      <tr class="table-warning">
         <th scope="row">7</th>
         <td>Column content</td>
         <td>Column content</td>
@@ -401,7 +401,7 @@ Use contextual classes to color table rows or individual cells.
         <td>Column content</td>
         <td>Column content</td>
       </tr>
-      <tr class="danger">
+      <tr class="table-danger">
         <th scope="row">9</th>
         <td>Column content</td>
         <td>Column content</td>
@@ -413,19 +413,19 @@ Use contextual classes to color table rows or individual cells.
 
 {% highlight html %}
 <!-- On rows -->
-<tr class="active">...</tr>
-<tr class="success">...</tr>
-<tr class="warning">...</tr>
-<tr class="danger">...</tr>
-<tr class="info">...</tr>
+<tr class="table-active">...</tr>
+<tr class="table-success">...</tr>
+<tr class="table-warning">...</tr>
+<tr class="table-danger">...</tr>
+<tr class="table-info">...</tr>
 
 <!-- On cells (`td` or `th`) -->
 <tr>
-  <td class="active">...</td>
-  <td class="success">...</td>
-  <td class="warning">...</td>
-  <td class="danger">...</td>
-  <td class="info">...</td>
+  <td class="table-active">...</td>
+  <td class="table-success">...</td>
+  <td class="table-warning">...</td>
+  <td class="table-danger">...</td>
+  <td class="table-info">...</td>
 </tr>
 {% endhighlight %}
 
