@@ -1319,6 +1319,26 @@ header.jumbotron {
   margin-bottom: 50px;
 }
 
+@media (max-width: 767px) {
+  #galleryModal .modal-dialog {
+    margin: 70px 20px 30px;
+  }
+  #galleryModal .close {
+    right: 50%;
+    top: -52px;
+    margin-right: -9px;
+  }
+  #galleryModal .carousel-control {
+    height: 20px;
+    margin-top: -55px;
+  }
+  #galleryModal .carousel-control.right {
+    right: 30px;
+  }
+  #galleryModal .carousel-control.left {
+    left: 30px;
+  }
+}
 
 /* article, grid + libro + miba + aplicativo*/
 
