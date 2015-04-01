@@ -1,0 +1,41 @@
+{{#markdown}}
+```scss
+$include-html-alert-classes: $include-html-classes;
+
+/* We use this to control alert padding. */
+$alert-padding-top: rem-calc(11);
+$alert-padding-default-float: $alert-padding-top;
+$alert-padding-opposite-direction: $alert-padding-top + rem-calc(10);
+$alert-padding-bottom: $alert-padding-top + rem-calc(1);
+
+/* We use these to control text style. */
+$alert-font-weight: bold;
+$alert-font-size: rem-calc(14);
+$alert-font-color: #fff;
+$alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
+
+/* We use this for close hover effect. */
+$alert-function-factor: -14%;
+
+/* We use these to control border styles. */
+$alert-border-style: solid;
+$alert-border-width: 1px;
+$alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor);
+$alert-bottom-margin: rem-calc(20);
+
+/* We use these to style the close buttons */
+$alert-close-color: #333;
+$alert-close-position: rem-calc(5);
+$alert-close-font-size: rem-calc(22);
+$alert-close-opacity: 0.3;
+$alert-close-opacity-hover: 0.5;
+$alert-close-padding: 5px 4px 4px;
+
+/* We use this to control border radius */
+$alert-radius: $global-radius;
+
+/* We use this to control transition effects */
+$alert-transition-speed: 300ms;
+$alert-transition-ease: ease-out;
+```
+{{/markdown}}

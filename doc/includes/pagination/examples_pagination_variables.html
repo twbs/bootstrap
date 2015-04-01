@@ -1,0 +1,33 @@
+{{#markdown}}
+```scss
+$include-html-nav-classes: $include-html-classes;
+
+// We use these to control the pagination container
+$pagination-height: rem-calc(24);
+$pagination-margin: rem-calc(-5);
+
+// We use these to set the list-item properties
+$pagination-li-float: $default-float;
+$pagination-li-height: rem-calc(24);
+$pagination-li-font-color: #222;
+$pagination-li-font-size: rem-calc(14);
+$pagination-li-margin: rem-calc(5);
+
+// We use these for the pagination anchor links
+$pagination-link-pad: rem-calc(1 7 1);
+$pagination-link-font-color: #999;
+$pagination-link-active-bg: scale-color(#fff, $lightness: -10%);
+
+// We use these for disabled anchor links
+$pagination-link-unavailable-cursor: default;
+$pagination-link-unavailable-font-color: #999;
+$pagination-link-unavailable-bg-active: transparent;
+
+// We use these for currently selected anchor links
+$pagination-link-current-background: $primary-color;
+$pagination-link-current-font-color: #fff;
+$pagination-link-current-font-weight: bold;
+$pagination-link-current-cursor: default;
+$pagination-link-current-active-bg: $primary-color;
+```
+{{/markdown}}

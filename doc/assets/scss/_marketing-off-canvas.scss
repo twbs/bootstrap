@@ -1,0 +1,85 @@
+.marketing-left-off-canvas-menu .zurb-links ul.pillars li a { padding: 0 !important; }
+
+$marketing-oc-width: 84%;
+
+.marketing.off-canvas-wrap {
+
+  .marketing-left-off-canvas-menu {
+    @include off-canvas-menu($position: left);
+    width: $marketing-oc-width;
+    hr { border-color: #444444; margin:5px 0 10px 0 !important; }
+    .off-canvas-list li.gs { padding: 0 1.08rem; margin-top: 8px; }
+    .off-canvas-list li a { border-bottom: none !important; font-size: 1.25rem; padding: 0.2rem 0.95rem ; color: #ccc; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-weight: 500; }
+    .off-canvas-list li label { background: none !important; border-top: none !important; padding: 0.4rem 0.95rem  0.4rem 0.95rem !important; font-size: 0.775rem !important; }
+    .off-canvas-list li label.first { padding-top: 0.75rem !important; }
+
+  }
+
+  // ANIMATION CLASSES
+  // These classes are added with JS and trigger the actual animation.
+  &.move-right {
+    > .inner-wrap {
+      @include translate3d(83.5%,0,0);
+    }
+    a.exit-off-canvas { @include back-link;}
+  }
+
+  &.move-left {
+    > .inner-wrap {
+      @include translate3d(-(83.5%),0,0);
+
+    }
+    a.exit-off-canvas { @include back-link; }
+  }
+}
+
+// IE9 HAX
+// Womp womp! IE9 doesn't do CSS transforms. Let's fix this.
+.lt-ie10 {
+
+  .marketing.off-canvas-wrap {
+    // move off canvas menus off the viewport
+    .marketing-left-off-canvas-menu { left: -($marketing-oc-width); }
+    .marketing-right-off-canvas-menu { right: -($marketing-oc-width); }
+
+    // Snap them in place
+    &.move-left > .inner-wrap { right: $marketing-oc-width; }
+    &.move-right > .inner-wrap { left: $marketing-oc-width; }
+  }
+
+}
+
+.marketing-left-off-canvas-menu .zurb-links { padding-bottom: 25px; margin-top: -5px; }
+.marketing-left-off-canvas-menu .zurb-links ul.top { margin-top: 15px; }
+.marketing-left-off-canvas-menu .zurb-links ul.top li { display: inline-block; margin-left: 0px; line-height: 1;font-family:"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+.marketing-left-off-canvas-menu .zurb-links ul.top li.logo { margin-left: 0px;  width: 60px; height: 10px; }
+.marketing-left-off-canvas-menu .zurb-links ul.top li.logo a { margin-top: 1px; padding: 3px 8px 3px 0px !important; display:block; font-size: 0.9rem !important; height: 12px; width: 60px; background:url("../img/offcanvas/zurb-logo.png") no-repeat; background-size: 100%; }
+.marketing-left-off-canvas-menu .zurb-links ul.top li.logo img { width:60px; margin-top: -4px; }
+.marketing-left-off-canvas-menu .zurb-links ul.top li a { color: #727272 !important; text-transform: uppercase; font-size: 11px !important; padding: 5px !important; font-weight: 600 !important; }
+.marketing-left-off-canvas-menu .zurb-links ul.pillars { list-style: none; }
+.marketing-left-off-canvas-menu .zurb-links .footer-link-block span.title {  padding-bottom:0px;padding-left: 40px; font-family:"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-size: 1.3rem  !important; margin-bottom: 8px; color: #cccccc;}
+.marketing-left-off-canvas-menu .zurb-links .footer-link-block span { display: block; color: #ccc; font-size: 1.0rem  !important;line-height: 18px; margin-bottom: 18px; line-height: 20px; margin-bottom: 24px;  color: #727272; padding-left: 0; font-size: 0.9rem  !important; }
+.marketing-left-off-canvas-menu .zurb-links .footer-link-block { font-weight: normal; background: url("../img/offcanvas/footer-icons.png") no-repeat 0 0; display: block; margin-bottom: 14px; padding-top: 6px; }
+.marketing-left-off-canvas-menu .zurb-links .footer-link-block.expo { background-position: 0 -798px; }
+.marketing-left-off-canvas-menu .zurb-links .footer-link-block.services { background-position: 0 -198px; }
+.marketing-left-off-canvas-menu .zurb-links .footer-link-block.apps { background-position: 0 -598px; }
+.marketing-left-off-canvas-menu .zurb-links .footer-link-block.foundation { background-position: 0 -398px; }
+
+
+/* Retina Images */
+
+@media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+  .marketing-left-off-canvas-menu .zurb-links .footer-link-block { font-weight: normal; background: url("../img/offcanvas/footer-icons-retina.png") no-repeat 0 0; display: block; margin-bottom: 14px; padding-top: 6px; }
+  .marketing-left-off-canvas-menu .zurb-links .footer-link-block.expo { background-position: 0 -798px; }
+  .marketing-left-off-canvas-menu .zurb-links .footer-link-block.services { background-position: 0 -400px;}
+  .marketing-left-off-canvas-menu .zurb-links .footer-link-block.apps { background-position: 0 -598px; }
+  .marketing-left-off-canvas-menu .zurb-links .footer-link-block.foundation { background-position: 0 -398px; }
+}
+
+@media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2), only screen and (max-width: 320px) {
+  .marketing-left-off-canvas-menu .zurb-links .footer-link-block { font-weight: normal; background: url("../img/offcanvas/footer-icons-retina.png") no-repeat 0 0; display: block; margin-bottom: 14px; padding-top: 6px; }
+  .marketing-left-off-canvas-menu .zurb-links .footer-link-block.expo { background-position: 0 -793px; background-size: 100px 1400px; }
+  .marketing-left-off-canvas-menu .zurb-links .footer-link-block.services { background-position: 0 -197px !important; background-size: 100px 1400px; }
+  .marketing-left-off-canvas-menu .zurb-links .footer-link-block.apps { background-position: 0 -595px; background-size: 100px 1400px; }
+  .marketing-left-off-canvas-menu .zurb-links .footer-link-block.foundation { background-position: 0 -395px;background-size: 100px 1400px;}
+}

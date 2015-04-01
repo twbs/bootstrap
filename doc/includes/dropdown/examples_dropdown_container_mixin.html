@@ -1,0 +1,16 @@
+{{#markdown}}
+```scss
+/* Container mixin and its options */
+.your-class-name { @include dropdown-container($content, $triangle, $max-width); }
+
+/* This can be set to "list" or "content" depending on what you want inside. */
+$content: list;
+
+/* If you do not want to attach the triangle pop, set this to false. */
+$triangle: true;
+
+/* By default, the dropdown is 200px max-width, taking on 100% when gets smaller than that. */
+/* You can set this to any number you want or change it globally with the variable. */
+$max-width: $f-dropdown-max-width;
+```
+{{/markdown}}

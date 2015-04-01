@@ -1,0 +1,15 @@
+<a class="button" data-dropdown="tinyDrop" aria-controls="tinyDrop" aria-expanded="false">Link Dropdown &raquo;</a>
+<ul id="tinyDrop" class="f-dropdown" data-dropdown-content tabindex="-1" aria-hidden="true">
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+<!-- Buttons can be replaced with anchor tags wit the role of button and a valid URL if you in fact intend for the user to go to a new page (or for progressive enchancement purposes) -->
+<a class="button" data-dropdown="contentDrop" aria-controls="contentDrop" aria-expanded="false">Content Dropdown &raquo;</a>
+<div id="contentDrop" class="f-dropdown content medium" data-dropdown-content aria-hidden="true" tabindex="-1">
+  <h4>Title</h4>
+  <p>Some text that people will think is awesome! Some text that people will think is awesome! Some text that people will think is awesome!</p>
+  <img src="{{assets}}/img/examples/comet.jpg" alt="a flying comment">
+  <p>More test.</p>
+  <a class="button" onclick="alert('This button can be replaced with an anchor with a role value of button if it\'s truly a hyperlink.');">Button</a>
+</div>

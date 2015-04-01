@@ -1,0 +1,77 @@
+{{#markdown}}
+```scss
+$include-html-form-classes: $include-html-classes;
+
+// We use this to set the base for lots of form spacing and positioning styles
+$form-spacing: rem-calc(16);
+
+// We use these to style the labels in different ways
+$form-label-pointer: pointer;
+$form-label-font-size: rem-calc(14);
+$form-label-font-weight: $font-weight-normal;
+$form-label-line-height: 1.5;
+$form-label-font-color: scale-color($black, $lightness: 30%);
+$form-label-small-transform: capitalize;
+$form-label-bottom-margin: 0;
+$input-font-family: inherit;
+$input-font-color: rgba(0,0,0,0.75);
+$input-font-size: rem-calc(14);
+$input-bg-color: $white;
+$input-focus-bg-color: scale-color($white, $lightness: -2%);
+$input-border-color: scale-color($white, $lightness: -20%);
+$input-focus-border-color: scale-color($white, $lightness: -40%);
+$input-border-style: solid;
+$input-border-width: 1px;
+$input-border-radius: $global-radius;
+$input-disabled-bg: $gainsboro;
+$input-disabled-cursor: $cursor-default-value;
+$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+$input-include-glowing-effect: true;
+
+// We use these to style the fieldset border and spacing.
+$fieldset-border-style: solid;
+$fieldset-border-width: 1px;
+$fieldset-border-color: $gainsboro;
+$fieldset-padding: rem-calc(20);
+$fieldset-margin: rem-calc(18 0);
+
+// We use these to style the legends when you use them
+$legend-bg: $white;
+$legend-font-weight: $font-weight-bold;
+$legend-padding: rem-calc(0 3);
+
+// We use these to style the prefix and postfix input elements
+$input-prefix-bg: scale-color($white, $lightness: -5%);
+$input-prefix-border-color: scale-color($white, $lightness: -20%);
+$input-prefix-border-size: 1px;
+$input-prefix-border-type: solid;
+$input-prefix-overflow: hidden;
+$input-prefix-font-color: $oil;
+$input-prefix-font-color-alt: $white;
+
+// We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
+$input-number-spinners: true;
+
+// We use these to style the error states for inputs and labels
+$input-error-message-padding: rem-calc(6 9 9);
+$input-error-message-top: -1px;
+$input-error-message-font-size: rem-calc(12);
+$input-error-message-font-weight: $font-weight-normal;
+$input-error-message-font-style: italic;
+$input-error-message-font-color: $white;
+$input-error-message-bg-color: $alert-color;
+$input-error-message-font-color-alt: $oil;
+
+// We use this to style the glowing effect of inputs when focused
+$glowing-effect-fade-time: 0.45s;
+$glowing-effect-color: $input-focus-border-color;
+
+// We use this to style the transition when inputs are focused and when the glowing effect is disabled.
+// $input-transition-fade-time: 0.15s;
+// $input-transition-fade-timing-function: linear;
+
+// Select variables
+$select-bg-color: $ghost;
+$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);
+```
+{{/markdown}}

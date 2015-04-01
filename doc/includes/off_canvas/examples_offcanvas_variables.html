@@ -1,0 +1,75 @@
+{{#markdown}}
+```scss
+// Off Canvas Tab Bar Variables
+$include-html-off-canvas-classes: $include-html-classes !default;
+
+$tabbar-bg: $oil !default;
+$tabbar-height: rem-calc(45) !default;
+$tabbar-icon-width: $tabbar-height !default;
+$tabbar-line-height: $tabbar-height !default;
+$tabbar-color: $white !default;
+$tabbar-middle-padding: 0 rem-calc(10) !default;
+
+// Off Canvas Divider Styles
+$tabbar-left-section-border: solid 1px scale-color($tabbar-bg, $lightness: -50%) !default;
+$tabbar-right-section-border: $tabbar-left-section-border;
+
+
+// Off Canvas Tab Bar Headers
+$tabbar-header-color: $white !default;
+$tabbar-header-weight: $font-weight-bold !default;
+$tabbar-header-line-height: $tabbar-height !default;
+$tabbar-header-margin: 0 !default;
+
+// Off Canvas Menu Variables
+$off-canvas-width: rem-calc(250) !default;
+$off-canvas-bg: $oil !default;
+$off-canvas-bg-hover: scale-color($tabbar-bg, $lightness: -30%);
+$off-canvas-bg-active: scale-color($tabbar-bg, $lightness: -30%);
+
+// Off Canvas Menu List Variables
+$off-canvas-label-padding: 0.3rem rem-calc(15) !default;
+$off-canvas-label-color: $aluminum !default;
+$off-canvas-label-text-transform: uppercase !default;
+$off-canvas-label-font-size: rem-calc(12) !default;
+$off-canvas-label-font-weight: $font-weight-bold !default;
+$off-canvas-label-bg: $tuatara !default;
+$off-canvas-label-border-top: 1px solid scale-color($off-canvas-label-bg, $lightness: 14%) !default;
+$off-canvas-label-border-bottom: none !default;
+$off-canvas-label-margin:0 !default;
+$off-canvas-link-padding: rem-calc(10, 15) !default;
+$off-canvas-link-color: rgba($white, 0.7) !default;
+$off-canvas-link-border-bottom: 1px solid scale-color($off-canvas-bg, $lightness: -25%) !default;
+$off-canvas-back-bg: #444 !default;
+$off-canvas-back-border-top: $off-canvas-label-border-top !default;
+$off-canvas-back-border-bottom: $off-canvas-label-border-bottom !default;
+$off-canvas-back-hover-bg: scale-color($off-canvas-back-bg, $lightness: -30%) !default;
+$off-canvas-back-hover-border-top: 1px solid scale-color($off-canvas-label-bg, $lightness: 14%) !default;
+$off-canvas-back-hover-border-bottom: none !default;
+
+// Off Canvas Menu Icon Variables
+$tabbar-menu-icon-color: $white !default;
+$tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%) !default;
+
+$tabbar-menu-icon-text-indent: rem-calc(35) !default;
+$tabbar-menu-icon-width: $tabbar-icon-width !default;
+$tabbar-menu-icon-height: $tabbar-height !default;
+$tabbar-menu-icon-padding: 0 !default;
+
+$tabbar-hamburger-icon-width: rem-calc(16) !default;
+$tabbar-hamburger-icon-left: false !default;
+$tabbar-hamburger-icon-top: false !default;
+$tabbar-hamburger-icon-thickness: 1px !default;
+$tabbar-hamburger-icon-gap: 6px !default;
+
+// Off Canvas Back-Link Overlay
+$off-canvas-overlay-transition: background 300ms ease !default;
+$off-canvas-overlay-cursor: pointer !default;
+$off-canvas-overlay-box-shadow: -4px 0 4px rgba($black, 0.5), 4px 0 4px rgba($black, 0.5) !default;
+$off-canvas-overlay-background: rgba($white, 0.2) !default;
+$off-canvas-overlay-background-hover: rgba($white, 0.05) !default;
+
+// Transition Variables
+$menu-slide: "transform 500ms ease" !default;
+```
+{{/markdown}}

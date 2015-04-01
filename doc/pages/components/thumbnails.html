@@ -1,0 +1,179 @@
+---
+title: Thumbnails
+---
+
+<h3 class="subheader">If you're going to use an image as an anchor, we've got you covered. All you gotta do is wrap an `a.th` around your image and voil&#224;!</h3>
+
+***
+<a class="th" href="{{assets}}/img/examples/earth.jpg"><img src="{{assets}}/img/examples/earth-th-sm.jpg" /></a>
+
+***
+
+<h3>Basic</h3>
+
+You can create a thumbnail image using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<a class="th" href="../img/demos/demo2.png">
+  <img src="../img/demos/demo2-th.png">
+</a>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <a class="th" href="{{assets}}/img/examples/space.jpg"><img src="{{assets}}/img/examples/space-th-sm.jpg" /></a>
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+Here's how to use `aria-label`, `role`, and `aria-hidden` to make your thumbnails accessible.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<a class="th" role="button" aria-label="Thumbnail" href="{{assets}}/img/examples/space.jpg">
+  <img aria-hidden=true src="{{assets}}/img/examples/space-th-sm.jpg"/>
+</a>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <a class="th" role="button" aria-label="Thumbnail" href="{{assets}}/img/examples/space.jpg">
+      <img aria-hidden=true src="{{assets}}/img/examples/space-th-sm.jpg"/>
+    </a>
+  </div>
+</div>
+
+***
+
+<h3>Advanced</h3>
+
+Additional classes can be added to your thumbnails to change its appearance.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<a class="th [radius]" href="#">
+  <img src="{{assets}}/img/examples/earth-th-sm.jpg">
+</a>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <a class="th radius" href="#"><img src="{{assets}}/img/examples/earth-th-sm.jpg" /></a>
+  </div>
+</div>
+
+***
+
+## Customize with Sass
+
+Thumbnails can be easily customized using our Sass variables.
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+$include-html-media-classes: $include-html-classes;
+
+// We use these to control border styles
+$thumb-border-style: solid;
+$thumb-border-width: 4px;
+$thumb-border-color: $white;
+$thumb-box-shadow: 0 0 0 1px rgba($black,.2);
+$thumb-box-shadow-hover: 0 0 6px 1px rgba($primary-color,0.5);
+
+// Radius and transition speed for thumbs
+$thumb-radius: $global-radius;
+$thumb-transition-speed: 200ms;
+```
+{{/markdown}}
+
+***
+
+## Semantic Markup With Sass
+
+You can create your own thumbnails using our own Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `thumb()` mixin to create your own thumbnails, like so:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-thumbnail-class {
+  @include thumb;
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<a class="custom-thumbnail-class" href="{{assets}}/img/examples/space.jpg">
+  <img src="{{assets}}/img/examples/space-th-sm.jpg">
+</a>
+```
+{{/markdown}}
+
+<h3>Advanced</h3>
+
+You can further customize your thumbnails using the provided options in the `thumb()` mixin:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-thumbnail-class {
+  @include thumb(
+    // Width of border around thumbnail
+    $border-width: 2px,
+    // Box shadow to apply to thumbnail
+    $box-shadow: 0 0 0 1px rgba(#000,.2),
+    // Box shadow to apply on hover
+    $box-shadow-hover: 0 0 6px 1px rgba(#ccc,0.5)
+  );
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<a class="custom-thumbnail-class" href="{{assets}}/img/examples/launch.jpg">
+  <img src="{{assets}}/img/examples/launch-th.jpg">
+</a>
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/thumbs";
+```
+{{/markdown}}

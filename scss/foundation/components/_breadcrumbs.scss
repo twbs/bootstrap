@@ -1,0 +1,131 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+//
+// Breadcrumb Variables
+//
+$include-html-nav-classes: $include-html-classes !default;
+
+// We use this to set the background color for the breadcrumb container.
+$crumb-bg: scale-color($secondary-color, $lightness: 55%) !default;
+
+// We use these to set the padding around the breadcrumbs.
+$crumb-padding: rem-calc(9 14 9) !default;
+$crumb-side-padding: rem-calc(12) !default;
+
+// We use these to control border styles.
+$crumb-function-factor: -10% !default;
+$crumb-border-size: 1px !default;
+$crumb-border-style: solid !default;
+$crumb-border-color: scale-color($crumb-bg, $lightness: $crumb-function-factor) !default;
+$crumb-radius: $global-radius !default;
+
+// We use these to set various text styles for breadcrumbs.
+$crumb-font-size: rem-calc(11) !default;
+$crumb-font-color: $primary-color !default;
+$crumb-font-color-current: $oil !default;
+$crumb-font-color-unavailable: $aluminum !default;
+$crumb-font-transform: uppercase !default;
+$crumb-link-decor: underline !default;
+
+// We use these to control the slash between breadcrumbs
+$crumb-slash-color: $base !default;
+$crumb-slash: "/" !default;
+
+//
+// Breadcrumb Mixins
+//
+
+// We use this mixin to create a container around our breadcrumbs
+@mixin crumb-container {
+  border-style: $crumb-border-style;
+  border-width: $crumb-border-size;
+  display: block;
+  list-style: none;
+  margin-#{$default-float}: 0;
+  overflow: hidden;
+  padding: $crumb-padding;
+
+  // We control which background color and border come through.
+  background-color: $crumb-bg;
+  border-color: $crumb-border-color;
+}
+
+// We use this mixin to create breadcrumb styles from list items.
+@mixin crumbs {
+
+  // A normal state will make the links look and act like clickable breadcrumbs.
+  color: $crumb-font-color;
+  float: $default-float;
+  font-size: $crumb-font-size;
+  line-height: $crumb-font-size;
+  margin: 0;
+  text-transform: $crumb-font-transform;
+
+  &:hover a, &:focus a { text-decoration: $crumb-link-decor; }
+
+  a {
+    color: $crumb-font-color;
+  }
+
+  // Current is for the link of the current page
+  &.current {
+    color: $crumb-font-color-current;
+    cursor: $cursor-default-value;
+    a {
+      color: $crumb-font-color-current;
+      cursor: $cursor-default-value;
+    }
+
+    &:hover, &:hover a,
+    &:focus, &:focus a { text-decoration: none; }
+  }
+
+  // Unavailable removed color and link styles so it looks inactive.
+  &.unavailable {
+    color: $crumb-font-color-unavailable;
+    a { color: $crumb-font-color-unavailable; }
+
+    &:hover,
+    &:hover a,
+    &:focus,
+    a:focus {
+      color: $crumb-font-color-unavailable;
+      cursor: $cursor-disabled-value;
+      text-decoration: none;
+    }
+  }
+
+  &:before {
+    color: $crumb-slash-color;
+    content: "#{$crumb-slash}";
+    margin: 0 $crumb-side-padding;
+    position: relative;
+    top: 1px;
+  }
+
+  &:first-child:before {
+    content: " ";
+    margin: 0;
+  }
+}
+
+@include exports("breadcrumbs") {
+  @if $include-html-nav-classes {
+    .breadcrumbs {
+      @include crumb-container;
+      @include radius($crumb-radius);
+
+      > * {
+        @include crumbs;
+      }
+    }
+    /* Accessibility - hides the forward slash */
+    [aria-label="breadcrumbs"] [aria-hidden="true"]:after {
+      content: "/";
+    }
+  }
+}

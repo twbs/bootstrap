@@ -1,0 +1,66 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+//
+// @name _thumbs.scss
+// @dependencies _globals.scss
+//
+
+//
+// @variables
+//
+
+$include-html-media-classes: $include-html-classes !default;
+
+// We use these to control border styles
+$thumb-border-style: solid !default;
+$thumb-border-width: 4px !default;
+$thumb-border-color: $white !default;
+$thumb-box-shadow: 0 0 0 1px rgba($black,.2) !default;
+$thumb-box-shadow-hover: 0 0 6px 1px rgba($primary-color,0.5) !default;
+
+// Radius and transition speed for thumbs
+$thumb-radius: $global-radius !default;
+$thumb-transition-speed: 200ms !default;
+
+//
+// @mixins
+//
+
+// We use this to create image thumbnail styles.
+//
+// $border-width - Width of border around thumbnail. Default: $thumb-border-width.
+// $box-shadow - Box shadow to apply to thumbnail. Default: $thumb-box-shadow.
+// $box-shadow-hover - Box shadow to apply on hover. Default: $thumb-box-shadow-hover.
+@mixin thumb(
+  $border-width:$thumb-border-width,
+  $box-shadow:$thumb-box-shadow,
+  $box-shadow-hover:$thumb-box-shadow-hover) {
+  border: $thumb-border-style $border-width $thumb-border-color;
+  box-shadow: $box-shadow;
+  display: inline-block;
+  line-height: 0;
+  max-width: 100%;
+
+  &:hover,
+  &:focus {
+    box-shadow: $box-shadow-hover;
+  }
+}
+
+
+@include exports("thumb") {
+  @if $include-html-media-classes {
+
+    /* Image Thumbnails */
+    .th {
+      @include thumb;
+      @include single-transition(all, $thumb-transition-speed, ease-out);
+
+      &.radius { @include radius($thumb-radius); }
+    }
+  }
+}

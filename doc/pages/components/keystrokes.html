@@ -1,0 +1,68 @@
+---
+title: Keystrokes
+---
+
+<h3 class="subheader">If you have keyboard affordances, you might need to explain them to users. For example, to quit your browser hit <kbd>Cmd</kbd> + <kbd>Q</kbd>. (Don't actually type that now &#45; there are more docs to read.) Keystroke is Foundation's simple character affordance tool.</h3>
+
+***
+
+<h3>Basic</h3>
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<p>For example, to close your browser hit <kbd>Cmd</kbd> + <kbd>Q</kbd></p>
+```
+{{/markdown}}
+
+***
+
+### Customize with Sass
+
+Keystrokes can easily be customized using our Sass variables
+
+<h4>SCSS</h4>
+
+{{> examples_keystrokes_variables}}
+
+***
+
+### Semantic Markup With Sass
+
+You can create your own keystrokes using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `keystroke()` mixin to create your own keystroke style, like so:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/keystrokes";
+
+.custom-keystroke-class {
+  // You can set the background color of your keystrokes, which also effects text and border
+  @include keystroke($bg:orange);
+}
+```
+
+<h4>HTML</h4>
+
+```html
+<kbd class="custom-keystroke-class"></kbd>
+```
+{{/markdown}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/keystrokes";
+```

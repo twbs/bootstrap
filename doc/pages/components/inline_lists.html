@@ -1,0 +1,80 @@
+---
+title: Inline Lists
+---
+
+<h3 class="subheader">This simple construct creates a horizontal list of links, like in a footer. Use it when you want more control than spaces between links.</h3>
+
+***
+
+{{> examples_inline_lists_basic}}
+
+***
+
+<h2>Basic</h2>
+
+You can create an inline list using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_inline_lists_basic}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_inline_lists_basic}}
+  </div>
+</div>
+
+***
+
+## Customize with Sass
+
+Lists can be easily customized using our Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_inline_lists_variables}}
+
+***
+
+## Semantic Markup With Sass
+
+You can create your own list using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `inline-list()` mixin like so:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-list-class {
+  @include inline-list;
+}
+```
+<h4>HTML</h4>
+```html
+<ul class="custom-list-class">
+  <li><a href="#">Link 1</a></li>
+  <li><a href="#">Link 2</a></li>
+  <li><a href="#">Link 3</a></li>
+</ul>
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/inline-lists";
+```

@@ -1,0 +1,47 @@
+//
+// @name _global.scss
+// @dependencies n/a
+//
+
+//
+// @mixins
+//
+
+// Outputs opacity along with an IE8-friendly filter opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: unquote("alpha(opacity=#{$opacity * 100})");
+}
+
+@mixin box-shadow (
+  $shadow-1 : default,
+  $shadow-2 : false,
+  $shadow-3 : false,
+  $shadow-4 : false,
+  $shadow-5 : false,
+  $shadow-6 : false,
+  $shadow-7 : false,
+  $shadow-8 : false,
+  $shadow-9 : false,
+  $shadow-10: false
+) { }
+
+//
+// @functions
+//
+
+@function image-url($path) {
+  @return unquote("url(../img/#{$path})");
+}
+
+@function font-url($path) {
+  @return unquote("url(../fonts/#{$path})");
+}
+
+//
+// @variables
+//
+
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+$rem-base: 18;
+// $text-direction: rtl;

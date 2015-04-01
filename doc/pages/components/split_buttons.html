@@ -1,0 +1,147 @@
+---
+title: Split Buttons
+---
+
+<h3 class="subheader">We've simplified our split dropdown buttons by removing the dedicated ones associated with a style of button. Instead, you'll use our [new dropdown plugin]({{relative absolute 'dist/docs/components/dropdown.html'}}) to attach a split button to the button style of your choice.</h3>
+
+***
+
+{{> examples_split_button_basic}}
+
+***
+
+<h2>Basic</h2>
+
+You can create a split button using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_split_button_basic_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <a href="#" class="button split">Split Button <span data-dropdown="drop"></span></a><br>
+    <ul id="drop" class="f-dropdown" data-dropdown-content>
+      <li><a href="#">This is a link</a></li>
+      <li><a href="#">This is another</a></li>
+      <li><a href="#">Yet another</a></li>
+    </ul>
+{{!-- {{> examples_split_button_basic}} --}}
+  </div>
+</div>
+
+***
+
+<h2>Advanced</h2>
+
+Additional classes can be added to your split buttons to change its appearance.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_split_button_advanced_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML Rendered</h4>
+{{> examples_split_button_advanced}}
+  </div>
+</div>
+
+***
+
+<h2>Custom Pip</h2>
+
+If you desire to use your own pip in the split button, the `no-pip` class will remove ours and allow you to place any icon inside of the pip span
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_split_button_custom_pip_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML Rendered</h4>
+{{> examples_split_button_custom_pip}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+<p class="panel">This component is not yet accessible. Stay tuned for updates in future releases.</p>
+
+***
+
+## Customize with Sass
+
+Split buttons can be easily customized using our provided Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_split_button_variables}}
+
+***
+
+## Semantic Markup with Sass
+
+You can create your own split buttons using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `split-button()` mixin to create your own split button, like so:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-split-button-class {
+  @include split-button();
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<a href="#" class="custom-split-button-class">Split Button Text <span></span></a>
+```
+{{/markdown}}
+
+<h3>Advanced</h3>
+
+You can further customize your split buttons using the provided options in the `split-button` mixin:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-split-button-class {
+  @include split-button(
+    // Type of padding to apply. Default: medium.
+    // Options: tiny, small, medium, large.
+    $padding: medium,
+    // Color of the triangle. Default: $split-button-pip-color.
+    $pip-color: orange,
+    // Border color of button divider. Default: $primary-color.
+    $span-border: pink,
+    // Apply base style to split button. Default: true.
+    $base-style: true
+  );
+}
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/buttons";
+@import "foundation/components/split-buttons";
+```

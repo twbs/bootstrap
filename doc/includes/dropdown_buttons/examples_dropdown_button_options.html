@@ -1,0 +1,19 @@
+{{#markdown}}
+```scss
+/* Using the available options */
+.your-class-name {
+  @include button;
+  @include dropdown-button($padding, $pip-color, $base-style);
+}
+
+/* This controls padding around the dropdown buttons. Use tiny, small, medium, or large */
+$padding: $button-med;
+
+/* This controls the dropdown pip color. Set to one of our variables or a custom hex value */
+$pip-color: #fff;
+
+/* This controls whether or not base styles come through. Set to false to negate */
+/* Handy when you want to have many different styles */
+$base-style: true;
+```
+{{/markdown}}

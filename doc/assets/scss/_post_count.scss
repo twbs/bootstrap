@@ -1,0 +1,147 @@
+// Post List Columns Spacing
+.post-count-spacing {
+
+	> li:first-child {
+		@media #{$small} {
+			padding-left:0;
+		}
+		margin-bottom: 10px;
+		padding-bottom:0;
+		@media #{$small} { width: 105px; }
+		width: 95px;
+
+		form { margin-bottom:0 !important; }
+	}
+
+	> li:last-child {
+		padding-bottom:0;
+		line-height: 1.2em;
+		padding-left:emCalc(10px);
+
+		width:65%;
+
+		@media screen and (min-width:550px) and (max-width:767px) {
+			width:70% !important;
+		}
+
+		@media screen and (min-width:767px) and (max-width:850px) {
+			width:73% !important;
+		}
+
+		@media screen and (min-width:851px) and (max-width:1999px) {
+			width:75% !important;
+		}
+
+		@media screen and (min-width:1200px) {
+			width:80% !important;
+			padding-left:emCalc(15px);
+		}
+
+	}
+
+}
+
+
+// Post Count Stub
+.post-count {
+	width: 80px !important;
+	@media #{$small} {
+		width:95px !important;
+	}
+	height: 80px;
+	border:none !important;
+	background-color:lighten($gray, 50%);
+	text-align:center;
+	&.new {
+	}
+
+	&.new-general {
+		background-color:$forumblue;
+		color:lighten($forumblue,70%);
+	}
+	&.old-general {
+			background-color:lighten($gray, 55%) !important;
+	}
+
+	.post-count-container {
+		height: 50px;
+		&.old-general {
+			background-color:lighten($gray, 55%) !important;
+		}
+
+		background-color:lighten($gray, 55%);
+		&.new {
+			background-color:$forumblue;
+			color:lighten($forumblue, 70%);
+		}
+
+		&.new-general {
+			background-color:$forumblue;
+			color:lighten($forumblue,70%);
+		}
+
+
+		span.reply-count {
+			position:relative;
+			top: 4px;
+			color:$gray;
+			@include proxima-nova;
+			font-size: 1.75em;
+			font-weight:700;
+			&.old-general {
+				background-color:lighten($gray, 55%) !important;
+				top: 18px;
+				font-size:1.75em;
+			}
+
+			&.new-general {
+				top: 18px;
+				color:lighten($forumblue,70%);
+				font-size:1.75em;
+
+				&.with-replies {
+					top: 6px;
+				}
+			}
+
+			&.new-post {
+				color:lighten($forumblue, 70%);
+				top:6px;
+
+				&.already-checked {
+					top:0.2em !important;
+				}
+			}
+
+		}
+
+		.label {
+			display:block;
+			background-color: transparent !important;
+			text-transform:uppercase;
+			@include proxima-nova;
+			color:lighten($forumblue, 50%);
+			position:relative;
+			top:emCalc(-15px);
+			&.new-post { }
+		}
+	}
+
+	.total-post-count {
+		height:30px;
+		@include proxima-nova;
+		color:lighten($gray, 10%);
+		font-size:emCalc(11px);
+		text-transform:uppercase;
+		padding:8px 3px 3px 3px;
+		font-weight:700;
+		&.total-replies {
+			color:lighten($gray, 10%);
+			&.new {
+				background-color:darken($forumblue, 5%);
+				color:lighten($forumblue, 70%);
+			}
+		}
+	}
+}
+

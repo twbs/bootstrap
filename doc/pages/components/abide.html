@@ -1,0 +1,194 @@
+---
+title: Abide Validation
+---
+
+<h3 class="subheader">Abide is an HTML5 form validation library that supports the native API by using patterns and required attributes.</h3>
+
+***
+
+{{> examples_abide_basic}}
+
+***
+
+## Setting Up Validation
+
+To enable validation with Abide, add the `data-abide` attribute to your `form` element. Then add the `required` attribute to each input that you want to require. Additionaly, you can define a `pattern` to define restraints on what users can input.
+
+{{> examples_abide_basic_rendered}}
+
+***
+
+## Predefined Patterns
+
+Abide has several patterns common validation patterns built into the library:
+
+{{> examples_abide_patterns}}
+
+You can also use these patterns by setting the input's type to the name of the pattern instead of using the pattern attribute:
+
+{{#markdown}}
+```html
+<input type="email" required>
+<input type="url">
+```
+{{/markdown}}
+
+There is a good list of valid HTML5 input types on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input). Try avoiding patterns defined by type that do not match the specification.
+
+You can use the following shortcut for named patterns that aren't valid input types:
+
+{{#markdown}}
+```html
+<input type="text" pattern="integer">
+```
+{{/markdown}}
+
+***
+
+## Custom Named Patterns
+
+By overriding Abide during Foundation initilization, you can define your own custom patterns or override the default patterns to validate against.
+
+{{> examples_abide_custom_patterns}}
+
+You can then use these custom patterns like you would the predefined patterns in your markup:
+
+{{> examples_abide_custom_patterns_rendered}}
+
+***
+
+## Equal To
+
+To add a confirmation field, you can define the `data-equalto` attribute.
+
+{{> examples_abide_equalto}}
+
+***
+
+## Error Messages
+
+To display an error message for your invalid form element, include a `small` tag with an `error` class as a sibling of your input.
+
+{{> examples_abide_errors}}
+
+We have wrapped our input in a div in the example above. This div will receive an `error` class when the input is invalid. This class will show our error message and style the label and input accordingly.
+
+Invalid inputs inherit a `data-invalid` attribute.
+
+***
+
+## Events
+
+If a submit event is fired, a `valid.fndtn.abide` event is triggered when the form is valid and an `invalid.fndtn.abide` event is triggered when the form is invalid.
+
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the abide plugin emitted un-namespaced `valid` and `invalid` events, however, these have been replaced by the namespaced `valid.fndtn.abide` and `invalid.fndtn.abide` events. The un-namespaced events have been fully deprecated.</p>
+</div>
+
+You can bind to these events and fire your own callback:
+
+{{> examples_abide_events}}
+
+To handle the `submit` event yourself, use `data-abide="ajax"` instead of `data-abide` inside the `form` tag.
+
+{{> examples_abide_ajax}}
+
+***
+
+## Custom Validators
+
+`equalTo` is actually an example of a built-in validator. To get an idea of how validators work, check out the implementation of `equalTo`:
+
+{{#markdown}}
+```javascript
+equalTo: function(el, required, parent) {
+  var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
+      to    = el.value,
+      valid = (from === to);
+
+  return valid;
+}
+```
+{{/markdown}}
+
+Your function will be passed three arguments: `el`, `required`, and `parent`. These are the elements being validated, whether or not it was marked as required, and the parent of the element being validated, respectively.
+Your function should return `true` if the element is valid, or `false` if it is invalid. You can define your custom validators and pass them into abide options when initializing foundation. See the Configuration section for more details on defining custom validators.
+
+Suppose you've defined a custom validator `diceRoll` which randomly marks your element as valid or invalid. You would use it like so:
+
+{{#markdown}}
+```html
+<input type="text" data-abide-validator="diceRoll">
+```
+{{/markdown}}
+
+
+Additionally, if you are using a custom validator and specify an input type or a pattern on the input, Abide will check both when validating the input. The following will check your input value against the built in email pattern as well as your isAllowed custom validator function:
+
+{{#markdown}}
+```html
+<input type="email" data-abide-validator="isAllowed">
+```
+{{/markdown}}
+
+You can also use multiple custom validators if you wish by separating the names of the custom validators with a space. The input, however, must pass ALL validations in order for the input to be considered valid. The example below would only be valid if the the outcome of `diceRoll` is true AND the input is within the array of accepted inputs of `isAllowed`.
+
+{{#markdown}}
+```html
+<input type="email" data-abide-validator="diceRoll isAllowed">
+```
+{{/markdown}}
+
+
+***
+
+## Accessibility
+
+For the most part, Abide is accessible on its own. Our JavaScript will add the attribute `aria-invalid` to any form fields deemed invalid. However, to properly connect errors to form fields, you'll need to do a little extra work. The error's container should have a unique ID, which our JavaScript will use to bind the error message to its input if there's an error.
+
+```html
+<form data-abide>
+  <div class="name-field">
+    <label for="input-example">Your name <small>required</small></label>
+      <input id="input-example" type="text" required pattern="[a-zA-Z]+">
+    <small class="error">Name is required and must be a string.</small>
+  </div>
+</form>
+```
+
+***
+
+### Adding New Abide Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation('abide', 'reflow');
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+***
+
+## Using the Javascript
+
+<div class="panel">
+  Before you can use Abide you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.abide.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_javascript}}
+
+Required Foundation Library: `foundation.abide.js`
+
+### Optional Javascript Configuration
+
+{{> examples_abide_javascript_options}}
+
+***
+
+

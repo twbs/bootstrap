@@ -1,0 +1,192 @@
+---
+title: Utility Classes
+---
+
+<h3 class="subheader">Foundation includes a handful of helpful utility classes to add certain behaviors to your elements.</h3>
+
+***
+<h3>Float Classes</h3>
+
+You can change the float behavior of an element by adding `.left` or `.right` to an HTML element. To clear floats, add the class `.clearfix` to the parent element.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="panel clearfix">
+	<a class="button right">Float Right</a>
+	<a class="button left">Float Left</a>
+</div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="panel clearfix">
+		<a class="button right">Float Right</a>
+		<a class="button left">Float Left</a>
+	</div>
+
+  </div>
+</div>
+
+***
+
+<h3>Radius and Rounded</h3>
+
+The `.radius` and `.round` classes allow you to easily apply a border-radius to a UI-element. Adding the class to a button group will apply the border radius only to the outside corners.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="alert-box [radius round]" data-alert>Alert<a href="#" class="close">&times;</a></div>
+<div class="progress [radius round]">
+  <span class="meter" style="width:70%;"></span>
+</div>
+<a href="#" class="button [radius round]">Button</a>
+<span class="label [radius round]">Label</span>
+<span data-tooltip class="[radius round]" title="Tooltip">Tooltip</span>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="row">
+      <div class="medium-6 columns">
+        <div class="alert-box radius" data-alert>Radius Alert<a href="#" class="close">&times;</a></div>
+        <div class="progress radius">
+          <span class="meter" style="width:70%;"></span>
+        </div>
+        <a href="#" class="button radius">Radius Button</a>
+        <br>
+        <span class="label radius">Radius Label</span>
+        <br><br>
+        <span data-tooltip title="Radius Tooltip" class="radius">Radius Tooltip</span>
+        <br><br>
+      </div>
+      <div class="medium-6 columns">
+        <div class="alert-box round" data-alert>Round Alert<a href="#" class="close">&times;</a></div>
+        <div class="progress round">
+          <span class="meter" style="width:70%;"></span>
+        </div>
+        <a href="#" class="button round">Round Button</a>
+        <br>
+        <span class="label round">Round Label</span>
+        <br><br>
+        <span data-tooltip title="Round Tooltip" class="round">Round Tooltip</span>
+        <br><br>
+      </div>
+    </div>
+  </div>
+</div>
+
+***
+
+<h3>Text Align Classes</h3>
+
+You can change the text alignment of an element by adding `.text-left`, `.text-right`, `.text-center` or `.text-justify` to an element.
+
+Adding a size to the front of a text alignment class will cause it to only be applied on that size screen or larger (ex. `.medium-text-center` will center text for everything except small screens). Adding a size and only will apply the text alignment just for that media query (ex. `.medium-only-text-center` will center text just for medium screens).
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<p class="text-left"><!-- text goes here --></p>
+<p class="text-right"><!-- text goes here --></p>
+<p class="text-center"><!-- text goes here --></p>
+<p class="text-justify"><!-- text goes here --></p>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+	<p class="text-left"><strong>This text is left aligned.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+	<p class="text-right"><strong>This text is right aligned.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+	<p class="text-center"><strong>This text is center aligned.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+	<p class="text-justify"><strong>This text is justified.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+  </div>
+</div>
+
+<h4>Available Text Alignment Classes</h4>
+<table style="width:100%;">
+  <tr>
+    <td>`.text-left`</td>
+    <td>`.text-right`</td>
+    <td>`.text-center`</td>
+    <td>`.text-justify`</td>
+  </tr>
+  <tr>
+    <td>`.small-text-left`</td>
+    <td>`.small-text-right`</td>
+    <td>`.small-text-center`</td>
+    <td>`.small-text-justify`</td>
+  </tr>
+  <tr>
+    <td>`.small-only-text-left`</td>
+    <td>`.small-only-text-right`</td>
+    <td>`.small-only-text-center`</td>
+    <td>`.small-only-text-justify`</td>
+  </tr>
+  <tr>
+    <td>`.medium-text-left`</td>
+    <td>`.medium-text-right`</td>
+    <td>`.medium-text-center`</td>
+    <td>`.medium-text-justify`</td>
+  </tr>
+  <tr>
+    <td>`.medium-only-text-left`</td>
+    <td>`.medium-only-text-right`</td>
+    <td>`.medium-only-text-center`</td>
+    <td>`.medium-only-text-justify`</td>
+  </tr>
+  <tr>
+    <td>`.large-text-left`</td>
+    <td>`.large-text-right`</td>
+    <td>`.large-text-center`</td>
+    <td>`.large-text-justify`</td>
+  </tr>
+  <tr>
+    <td>`.large-only-text-left`</td>
+    <td>`.large-only-text-right`</td>
+    <td>`.large-only-text-center`</td>
+    <td>`.large-only-text-justify`</td>
+  </tr>
+  <tr>
+    <td>`.xlarge-text-left`</td>
+    <td>`.xlarge-text-right`</td>
+    <td>`.xlarge-text-center`</td>
+    <td>`.xlarge-text-justify`</td>
+  </tr>
+  <tr>
+    <td>`.xlarge-only-text-left`</td>
+    <td>`.xlarge-only-text-right`</td>
+    <td>`.xlarge-only-text-center`</td>
+    <td>`.xlarge-only-text-justify`</td>
+  </tr>
+  <tr>
+    <td>`.xxlarge-text-left`</td>
+    <td>`.xxlarge-text-right`</td>
+    <td>`.xxlarge-text-center`</td>
+    <td>`.xxlarge-text-justify`</td>
+  </tr>
+  <thead>
+    <td>Align Left</td>
+    <td>Align Right</td>
+    <td>Align Center</td>
+    <td>Justify</td>
+  </thead>
+</table>
+
+
+***
+
+<h3>Hide an Element</h3>
+You can add the class `.hide` to an element to hide it. This will add the property `display: none` to the element.
+```html
+<div class="hide"></div>
+```

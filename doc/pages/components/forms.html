@@ -1,0 +1,287 @@
+---
+title: Forms
+---
+
+<h3 class="subheader">We set out to create an easy, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do almost anything.</h3>
+
+***
+
+## Building Forms With HTML
+
+Creating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as the Grid (rows and columns).
+
+Form elements in Foundation are styled based on their type attribute rather than a class, and can be sized in a couple of ways:
+
+* You can size inputs using column sizes, like `.large-6`, `.small-6`.
+* You can create row elements inside your form and use columns for the form, including inputs, labels and more. Rows inside a form inherit some special padding to even up input spacing.
+
+This is an example form we've created that is laid out using the grid:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+
+{{> examples_form_basic_rendered}}
+  </div>
+
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+
+{{> examples_form_basic}}
+  </div>
+</div>
+
+### Inline Labels
+
+Sometimes you want a form with labels to the left of your inputs. Piece of cake. You can put the label inside a different column to the left of the input. Then add a class of `.right` to the label to have it align to the right.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_form_inline_labels_rendered}}
+  </div>
+
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_form_inline_labels}}
+  </div>
+</div>
+
+Adding a class of `.inline` will have it vertically center against an input. You can use one or both of these classes to accomplish the look you want.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_form_inline_rendered}}
+  </div>
+
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_form_inline}}
+  </div>
+</div>
+
+***
+
+### Defining a Fieldset
+
+We don't see them too much, but one of the useful form elements included with Foundation is `<fieldset>`. This is used as a wrapper right inside the form element. Right after you define a fieldset, you can include a legend title by using `<legend>`. Here's some HTML to help make copy paste.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_form_fieldset_rendered}}
+  </div>
+
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_form_fieldset}}
+  </div>
+</div>
+
+***
+
+### Pre/Postfix Labels &amp; Actions
+
+Foundation forms support actions tied to buttons, and prefix / postfix labels, through a versatile approach using special grid properties. Essentially you can use `<div class="row collapse">` to create label / action / input combinations. You use the Foundation columns to define the size of the pre/postfix `<span class="postfix">` or `<span class="prefix">`.
+
+You can also give a button / input pair a radius or a rounded edge by adding the classes `prefix-radius`, `postfix-radius`, `prefix-round` or `postfix-round` to the row that contains the elements. For example, `<div class="row collapse postfix-round">` will add a rounded edge to the left side of the input field, and to the right side of the button, creating a cohesive rounded input. Here are a few examples:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_form_labels_rendered}}
+  </div>
+
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_form_labels}}
+  </div>
+</div>
+
+You'll notice that on the last postfix element, we've included the class of `radius`. This adds the border radius on the appropriate edge depending on whether it's a prefix or a postfix element. You can even include buttons with these styles, just apply the `.button` as well as the pre/postfix class.
+
+***
+
+### Error States
+
+Foundation includes error states for labels, inputs and messaging that you can have your app generate programatically. You can attach a class of `.error` either to the individual elements (label, input, small) or to a column/div.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_form_errors_rendered}}
+  </div>
+
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_form_errors}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+For the most part, if you stick to standard HTML input types and label them properly, you won't need to worry too much about accessibility. Here are some things to keep in mind.
+
+### Label your inputs
+
+We recommend nesting your inputs inside of their labels, which removes the need to connect them using the `for` attribute.
+
+```html
+<label>
+  Name
+  <input type="text" name="name">
+</label>
+```
+
+If you need your labels and inputs to be separated, make sure the two are connected so screen readers will know (and to keep the labels clickable!).
+
+```html
+<label for="name">Name</label>
+<input type="text" name="name" id="name">
+```
+
+If an input field doesn't have a label, add the attribute `aria-label` to the input to clarify its purpose.
+
+```html
+<input type="text" name="name" aria-label="Name">
+```
+
+### Label help text
+
+If an input has some sort of help text distinct from the label, it should be connected to the input it describes using the attribute `aria-describedby`.
+
+```html
+<label>
+  Name
+  <input type="text" name="name" aria-describedby="nameHelpText">
+</label>
+<p id="nameHelpText">Enter your name.</p>
+```
+
+### Label custom inputs
+
+Custom inputs, like date pickers, range sliders, or switches need some extra attention to be made accessible. Our custom inputs&mdash;the range slider and switch&mdash;do most of this work for you.
+
+Custom inputs with labels or help text need the attributes `aria-labelledby` and `aria-describedby` added to them, so screen readers know how to describe a custom input.
+
+```html
+<label id="ageLabel">Age</label>
+<div class="range-slider" data-slider>
+  <span class="range-slider-handle" role="slider" aria-labelledby="ageLabel" aria-describedby="ageHelpText"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+<p id="ageHelpText">How old are you?</p>
+```
+
+***
+
+## Customize With Sass
+
+Forms can be easily customized with our provided Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_form_variables}}
+
+***
+
+## Semantic Markup With Sass
+
+You can create your own forms using our Sass mixins.
+
+<h3>Pre/Postfix Mixin</h3>
+
+You can use the `prefix-postfix-base()` and `prefix()` mixin to create your own form, like so:
+
+##### Base mixin
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.custom-prefix-class {
+  @include prefix-postfix-base();
+  @include grid-column(
+    $columns:3,
+    $float:left
+  );
+}
+
+input[type="text"].custom-input-class {
+  @include grid-column($columns:9);
+}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+{{#markdown}}
+```html
+<form>
+  <div class="row collapse">
+    <span class="custom-prefix-class">Label</span>
+    <input type="text" class="custom-input-class" placeholder="Value">
+  </div>
+</form>
+```
+{{/markdown}}
+  </div>
+</div>
+
+##### Prefix &amp; Postfix Style Mixins
+
+We use this mixin to create prefix label styles
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.custom-prefix-class {
+  @include prefix-postfix-base();
+  @include prefix(
+    // Control the background color, which also effect the border and font color. Default:$input-prefix-bg (scale-color(#fff, $lightness: -5%))
+    $bg: $input-prefix-bg,
+    // Toggle position settings if prefix is a button. Default:false
+    $is-button: false
+  );
+  @include grid-column($columns:3,$float:left);
+}
+
+input[type="text"].custom-input-class {
+  @include grid-column($columns:9);
+}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<form>
+  <div class="row collapse">
+    <span class="custom-prefix-class">Label</span>
+    <input type="text" class="custom-input-class" placeholder="Value">
+  </div>
+</form>
+```
+{{/markdown}}
+  </div>
+</div>
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/buttons";
+@import "foundation/components/forms";
+```

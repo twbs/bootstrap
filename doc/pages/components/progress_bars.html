@@ -1,0 +1,143 @@
+---
+title: Progress Bars
+---
+
+<h3 class="subheader">A simple way to add progress bars to your layouts. You only need two HTML elements to make them and they're easy to customize.</h3>
+
+***
+
+{{> examples_progress_bars}}
+
+***
+
+<h2>Basic</h2>
+
+You can create a progress bar using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_progress_bars_basic}}
+```
+{{/markdown}}
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_progress_bars_basic}}
+  </div>
+</div>
+
+***
+
+<h2>Advanced</h2>
+
+Additional classes can be added to your progress bar to change its appearance.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_progress_bars_advanced}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="progress large-9 success round">
+      <span class="meter" style="width: 80%"></span>
+    </div>
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+<p class="panel">This component is not yet accessible. Stay tuned for updates in future releases.</p>
+
+***
+
+## Customize with Sass
+
+Progress bars can be easily customized using our provided Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_progress_variables}}
+
+***
+
+## Semantic Markup with Sass
+
+You can create your own progress bars using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `progress-container()` and `progress-meter()` mixin to create your own progress bars, like so:
+
+##### Container Mixin
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-progress-container {
+  @include progress-container();
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<div class="custom-progress-container"></div>
+```
+{{/markdown}}
+
+##### Meter Mixin
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-progress-container { @include progress-container;
+  & > span { @include progress-meter($bg); }
+}
+```
+{{/markdown}}
+
+<h3>Advanced</h3>
+
+You can further customize your progress bars using the provided options in the `progress-bar()` mixin:
+
+##### Adding Border Radius
+
+We can add a border radius to our progress bar through our mixins:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-progress-container {
+  @include progress-container;
+  @include radius(6px);
+  & > span {
+    @include progress-meter(pink);
+    @include radius(5px);
+  }
+}
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/progress-bars";
+```

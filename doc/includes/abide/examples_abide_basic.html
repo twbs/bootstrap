@@ -1,0 +1,93 @@
+<form data-abide id="testForm">
+  <fieldset>
+    <legend>Fieldset</legend>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label for="password">Password <small>required</small>
+          <input type="password" id="password" placeholder="LittleW0men." name="password" required>
+        </label>
+        <small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>
+      </div>
+      <div class="large-12 columns">
+        <label for="confirmPassword">Confirm Password <small>required</small>
+          <input type="password" id="confirmPassword" placeholder="LittleW0men." name="confirmPassword" required data-equalto="password">
+        </label>
+        <small class="error">Passwords must match.</small>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-4 columns">
+        <label for="email">Email
+          <input type="email" id="email" placeholder="foundation@zurb.com">
+        </label>
+        <small class="error">Valid email required.</small>
+      </div>
+      <div class="large-4 columns">
+        <label for="url">URL <small>required</small>
+          <input type="url" id="url" placeholder="http://zurb.com" required>
+        </label>
+        <small class="error">Valid URL required.</small>
+      </div>
+      <div class="large-4 columns">
+        <div class="row collapse">
+          <label for="customDropdown1">Hardest to find in grocery <small>required</small>
+            <select id="customDropdown1" class="medium" required>
+              <option value="">Select grocery item</option>
+              <option value="first">Green Chilies</option>
+              <option value="second">Raisins</option>
+              <option value="third">Panko bread crumbs</option>
+              <option value="fourth">Assistance</option>
+            </select>
+          </label>
+          <small class="error">Broke.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <label for="radio1"><input name="radioButtons" type="radio" id="radio1" required> Radio Button 1</label>
+        <label for="radio2"><input name="radioButtons" type="radio" id="radio2" required> Radio Button 2</label>
+        <label for="radio3"><input name="radioButtons" type="radio" id="radio3" required> Radio Button 3</label>
+      </div>
+      <div class="large-6 columns">
+        <label for="checkbox1"><input type="checkbox" id="checkbox1" required> Label for Checkbox</label>
+        <label for="checkbox2"><input type="checkbox" id="checkbox2" CHECKED required> Label for Checkbox</label>
+        <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3" required> Label for Checkbox</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label for="remarks">Closing Remarks</label>
+        <textarea id="remarks" name="remarks" placeholder="Leave your remarks here."></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <button type="submit" class="medium button green">Submit</button>
+      </div>
+    </div>
+        <div class="row">
+      <div class="large-12 columns">
+        <button type="reset" class="medium button green">Reset</button>
+      </div>
+    </div>
+
+  </fieldset>
+</form>

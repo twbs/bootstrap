@@ -1,0 +1,128 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+//
+// Alert Box Variables
+//
+$include-html-alert-classes: $include-html-classes !default;
+
+// We use this to control alert padding.
+$alert-padding-top: rem-calc(14) !default;
+$alert-padding-default-float: $alert-padding-top !default;
+$alert-padding-opposite-direction: $alert-padding-top + rem-calc(10) !default;
+$alert-padding-bottom: $alert-padding-top !default;
+
+// We use these to control text style.
+$alert-font-weight: $font-weight-normal !default;
+$alert-font-size: rem-calc(13) !default;
+$alert-font-color: $white !default;
+$alert-font-color-alt: scale-color($secondary-color, $lightness: -66%) !default;
+
+// We use this for close hover effect.
+$alert-function-factor: -14% !default;
+
+// We use these to control border styles.
+$alert-border-style: solid !default;
+$alert-border-width: 1px !default;
+$alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor) !default;
+$alert-bottom-margin: rem-calc(20) !default;
+
+// We use these to style the close buttons
+$alert-close-color: $oil !default;
+$alert-close-top: 50% !default;
+$alert-close-position: rem-calc(4) !default;
+$alert-close-font-size: rem-calc(22) !default;
+$alert-close-opacity: .3 !default;
+$alert-close-opacity-hover: .5 !default;
+$alert-close-padding: 0 6px 4px !default;
+$alert-close-background: inherit !default;
+
+// We use this to control border radius
+$alert-radius: $global-radius !default;
+
+$alert-transition-speed: 300ms !default;
+$alert-transition-ease: ease-out !default;
+
+//
+// Alert Mixins
+//
+
+// We use this mixin to create a default alert base.
+@mixin alert-base {
+  border-style: $alert-border-style;
+  border-width: $alert-border-width;
+  display: block;
+  font-size: $alert-font-size;
+  font-weight: $alert-font-weight;
+  margin-bottom: $alert-bottom-margin;
+  padding: $alert-padding-top $alert-padding-opposite-direction $alert-padding-bottom $alert-padding-default-float;
+  position: relative;
+  @include single-transition(opacity, $alert-transition-speed, $alert-transition-ease)
+}
+
+// We use this mixin to add alert styles
+//
+// $bg - The background of the alert. Default: $primary-color.
+@mixin alert-style($bg:$primary-color) {
+
+  // This finds the lightness percentage of the background color.
+  $bg-lightness: lightness($bg);
+
+  // We control which background color and border come through.
+  background-color: $bg;
+  border-color: scale-color($bg, $lightness: $alert-function-factor);
+
+  // We control the text color for you based on the background color.
+  @if $bg-lightness > 70% { color: $alert-font-color-alt; }
+  @else                   { color: $alert-font-color; }
+
+}
+
+// We use this to create the close button.
+@mixin alert-close {
+  #{$opposite-direction}: $alert-close-position;
+  background: $alert-close-background;
+  color: $alert-close-color;
+  font-size: $alert-close-font-size;
+  line-height: .9;
+  margin-top: -($alert-close-font-size / 2);
+  opacity: $alert-close-opacity;
+  padding: $alert-close-padding;
+  position: absolute;
+  top: $alert-close-top;
+  &:hover,
+  &:focus { opacity: $alert-close-opacity-hover; }
+}
+
+// We use this to quickly create alerts with a single mixin.
+//
+// $bg - Background of alert. Default: $primary-color.
+// $radius - Radius of alert box. Default: false.
+@mixin alert($bg:$primary-color, $radius:false) {
+  @include alert-base;
+  @include alert-style($bg);
+  @include radius($radius);
+}
+
+@include exports("alert-box") {
+  @if $include-html-alert-classes {
+    .alert-box {
+      @include alert;
+
+      .close      { @include alert-close; }
+
+      &.radius    { @include radius($alert-radius); }
+      &.round     { @include radius($global-rounded); }
+
+      &.success   { @include alert-style($success-color); }
+      &.alert     { @include alert-style($alert-color); }
+      &.secondary { @include alert-style($secondary-color); }
+      &.warning { @include alert-style($warning-color); }
+      &.info { @include alert-style($info-color); }
+      &.alert-close { opacity: 0}
+    }
+  }
+}

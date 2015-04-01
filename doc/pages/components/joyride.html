@@ -1,0 +1,106 @@
+---
+title: Joyride
+---
+
+<h3 class="subheader">Joyride gives users a tour of your site or app when they visit.</h3>
+
+***
+
+<div id="firstStop" class="panel">Some awesome part of your site!</div>
+
+***
+
+{{> examples_joyride_basic}}
+
+{{> examples_joyride_basic_rendered}}
+
+
+<h3>We Add Some HTML with JS</h3>
+
+<p>To make Joyride really easy to use, we built its container and tour element inside the JS. This can make it hard to know what to target for styling purposes in some cases. To help this process go smoothly, here's what the output looks like with the appropriate classes to target for styling:</p>
+
+{{> examples_joyride_add_html}}
+
+***
+
+## Accessibility
+
+<p class="panel">This component is keyboard accessible, but not fully screen reader accessible. Stay tuned for updates in future releases.</p>
+
+***
+
+<h2 id="numero2">Available SCSS Variables</h2>
+
+We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things.
+
+{{> examples_joyride_variables}}
+
+***
+
+### Using the Javascript
+
+<div class="panel">
+  Before you can use Joyride you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.joyride.js` and `jquery.cookie.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_joyride_javascript}}
+
+Required Foundation Library: `foundation.joyride.js`, Optional JS Library: `jquery.cookie.js`
+
+Joyride does not initialize on page load like the rest of the plugins. You need to call `start` to get it to load.
+
+{{> examples_joyride_library}}
+
+Then, you'll need to add a `data-joyride` to make the JS work properly on that element. It looks something like this:
+
+{{#markdown}}
+```html
+<ol data-joyride>
+  ...
+</ol>
+```
+{{/markdown}}
+
+### Optional Javascript Configuration
+
+You can either set these options in a `data-options` attribute in the markup, `data-options="option: value; option2: value"` syntax, or pass in on initialization. Configurations that are *objects*, *functions*, or *arrays* can only be passed in during intitialization.
+
+{{> examples_joyride_options}}
+
+{{> examples_joyride_tour_stop}}
+
+<hr/>
+
+### Adding New Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('joyride', 'reflow');
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/joyride";
+```
+{{/markdown}}

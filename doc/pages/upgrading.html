@@ -1,0 +1,378 @@
+---
+title: Upgrading From Foundation 4
+---
+
+<h3 class="subheader">Need to upgrade from Foundation 4? No problem. This handy migration guide makes it super easy!</h3>
+
+### Upgrade your Rails project
+
+Change the following line in your `Gemfile`:
+
+```ruby
+gem 'zurb-foundation'
+```
+
+to:
+
+```ruby
+gem 'foundation-rails'
+```
+
+Then run `bundle install`.
+
+***
+
+### Upgrade using our CLI and Compass
+
+Before continuing you'll need to install the following on your system:
+
+  * [NodeJS](http://nodejs.org)
+  * [bower](http://bower.io) (sudo npm install -g bower)
+
+Our CLI can help you upgrade your Foundation 4 project to Foundation 5. It can be installed using the following commands in terminal:
+
+```bash
+gem install foundation
+foundation version #=> should say v1.0.3 or higher
+```
+
+So let's assume you have a project in `~/Sites/PROJECT_NAME`. To upgrade it to Foundation 5 you would run the following in terminal:
+
+```bash
+cd ~/Sites/PROJECT_NAME
+foundation upgrade
+```
+
+***
+
+### Upgrade manually with Compass
+
+Before continuing you'll need to install the following on your system:
+
+  * [NodeJS](http://nodejs.org)
+  * [bower](http://bower.io) (sudo npm install -g bower)
+
+Starting in Foundation 5 there's no longer a Compass extension. Instead we use [bower](http://bower.io) to keep Foundation assets up to date within your project. Here's how you can update your project:
+
+#### Step 1: Create a bower.json file
+
+In the root of your Compass project create a file called `bower.json` with this content:
+
+```js
+{
+  "name": "PROJECT_NAME",
+  "dependencies": {
+    "foundation": "~5.1.0"
+  }
+}
+```
+
+#### Step 2: Install Foundation 5
+
+Now run `bower install`. This will create a directory called `bower_components/` in your project. Foundation's Sass and JavaScript files will be placed in the `bower_components/foundation` folder.
+
+#### Step 3: Tell Compass where Foundation resides
+
+You'll want to update your `config.rb` folder to change this line from:
+
+```ruby
+require "zurb-foundation"
+```
+
+to:
+
+```ruby
+add_import_path "bower_components/foundation/scss"
+```
+
+#### Step 4: Update JavaScript links
+
+Any references to the JavaScript files in your project will have changed. Links to Foundation JavaScript files should be changed from:
+
+```html
+<script src="javascripts/foundation.min.js"></script>
+```
+
+to:
+
+```html
+<script src="bower_components/foundation/js/foundation.min.js"></script>
+```
+
+This will ensure that when you run `bower update` to fetch the latest version of Foundation that the JavaScript is also updated.
+
+#### Step 5: Recompile your project
+
+Now run `compass watch` to recompile your project. If you see any errors please jump down to the upgrading your Sass section.
+
+***
+
+### Upgrading the Sass
+
+In Foundation 5 we removed the following components:
+
+```scss
+@import "foundation/components/sections";
+@import "foundation/components/custom-forms";
+```
+
+***
+
+### Upgrading the JavaScript
+
+We have built a migration plugin, [foundation-migrate](http://github.com/zurb/foundation-migrate), that will guide you through moving your old Foundation JavaScript over to the new syntax.
+
+Foundation 5 removes support for Zepto. Here's how you can switch Zepto for jQuery:
+
+<h4>HTML</h4>
+
+```html
+<!-- old Foundation 4 embed code -->
+<script>
+  document.write('<script src=/js/vendor/'
+    + ('__proto__' in {} ? 'zepto' : 'jquery')
+    + '.js><\/script>');
+</script>
+```
+
+All you need to do is add jQuery to the end of your `body`:
+
+<h4>HTML</h4>
+
+```html
+<script src="/js/vendor/jquery.js"></script>
+```
+
+After you have included jQuery, you can drop in the Foundation library and initialize Foundation:
+
+<h4>HTML</h4>
+
+```html
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/foundation/foundation.min.js"></script>
+<script>
+  $(document).foundation();
+</script>
+```
+
+In Foundation 4, you could pass a string of the plugins you want to initialize like `$(document).foundation('topbar reveal');`. You can no longer do this in Foundation 5. Everything is initialized by default.
+
+***
+
+### Configuration changes
+
+Configuration options are passed a little differently to the Foundation libraries:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>The old way</h4>
+
+{{#markdown}}
+```js
+$(document).foundation('dropdown', {is_hover: false});
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>The new way</h4>
+
+{{#markdown}}
+```js
+$(document).foundation({dropdown: {is_hover: false}});
+```
+{{/markdown}}
+  </div>
+</div>
+
+In Foundation 5 you can reconfigure variables on the fly after the page has loaded and Foundation has been initialized:
+
+<h4>JS</h4>
+
+{{#markdown}}
+```js
+$('#myTarget').foundation({dropdown: {is_hover: true}});
+```
+{{/markdown}}
+
+***
+
+### Javascript Variable Changes
+
+All Javascript configuration variables are now `under_score` instead of `camelCase`:
+
+<table>
+  <thead>
+    <tr>
+      <th width="200">Library</th>
+      <th>Foundation 4</th>
+      <th width="150">Foundation 5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>dropdown</td>
+      <td>activeClass</td>
+      <td>active_class</td>
+    </tr>
+    <tr>
+      <td>topbar</td>
+      <td>stickyClass</td>
+      <td>sticky_class</td>
+    </tr>
+    <tr>
+      <td>joyride</td>
+      <td>tipLocation</td>
+      <td>tip_location</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>nubPosition</td>
+      <td>nub_position</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>scrollSpeed</td>
+      <td>scroll_speed</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>startTimeOnClick</td>
+      <td>start_timer_on_click</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>startOffset</td>
+      <td>start_offset</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>nextButton</td>
+      <td>next_button</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>tipAnimation</td>
+      <td>tip_animation</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>pauseAfter</td>
+      <td>pause_after</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>tipAnimationFadeSpeed</td>
+      <td>tip_animation_fade_speed</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>cookieMonster</td>
+      <td>cookie_monster</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>cookieName</td>
+      <td>cookie_name</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>cookieDomain</td>
+      <td>cookie_domain</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>cookieExpires</td>
+      <td>cookie_expires</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>tipContainer</td>
+      <td>tip_container</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>postRideCallback</td>
+      <td>post_ride_callback</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>postStepCallback</td>
+      <td>post_step_callback</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>preStepCallback</td>
+      <td>pre_step_callback</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>preRideCallback</td>
+      <td>pre_ride_callback</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>postExposeCallback</td>
+      <td>post_expose_callback</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>exposeAddClass</td>
+      <td>expose_add_class</td>
+    </tr>
+    <tr>
+      <td>magellan</td>
+      <td>activeClass</td>
+      <td>active_class</td>
+    </tr>
+    <tr>
+      <td>reveal</td>
+      <td>animationSpeed</td>
+      <td>animation_speed</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>closeOnBackgroundClick</td>
+      <td>close_on_background_click</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>closeOnEsc</td>
+      <td>close_on_esc</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>dismissModalClass</td>
+      <td>dismiss_modal_class</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>bgClass</td>
+      <td>bg_class</td>
+    </tr>
+    <tr>
+      <td>tooltip</td>
+      <td>additionalInheritableClasses</td>
+      <td>additional_inheritable_classes</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>tooltipClass</td>
+      <td>tooltip_class</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>touchCloseText</td>
+      <td>touch_close_text</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>appendTo</td>
+      <td>append_to</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>tipTemplate</td>
+      <td>tip_template</td>
+    </tr>
+  </tbody>
+</table>

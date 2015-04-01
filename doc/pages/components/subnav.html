@@ -1,0 +1,139 @@
+---
+title: Sub Nav
+meta: Sub navigation
+---
+
+<h3 class="subheader">This simple sub nav is great for moving between different states of a page. We use these frequently to show iterations of something, typically by date, but they're also handy for filters like these.</h3>
+
+***
+
+<dl class="sub-nav">
+  <dt>Filter:</dt>
+  <dd class="active"><a href="#">All</a></dd>
+  <dd><a href="#">Active</a></dd>
+  <dd><a href="#">Pending</a></dd>
+  <dd class="hide-for-small-only"><a href="#">Suspended</a></dd>
+</dl>
+
+***
+
+## Basic
+
+Add a `.sub-nav` class to a `dl` element and fill it full of definitions. You can use the definition title as a label at the beginning (useful for building filters on a page).
+
+Add a title to the beginning of your list with the `dt` element. Add an `.active` class to a `dd` element to give it the active style.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_subnav_basic}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_subnav_basic}}
+  </div>
+</div>
+
+***
+
+## Customize with Sass
+
+Sub Navs can be easily customized using our provided Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_subnav_variables}}
+
+***
+
+## Semantic Markup with Sass
+
+You apply Sub Nav styles to semantic markup using Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `sub-nav()` mixin to create your own sub nav with semantic markup, like so:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.your-class-name {
+  @include sub-nav();
+}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_subnav_basic_mixin}}
+```
+{{/markdown}}
+  </div>
+</div>
+
+
+<h3>Advanced</h3>
+
+You can further customize your alert boxes using the provided options in the `sub-nav()` mixin:
+
+<h4>SCSS</h4>
+
+```scss
+.your-class-name {
+  @include sub-nav(
+    // Control the color of the divider between links.
+    $font-color: $primary-color,
+    // Control your font-size per label.
+    $font-size: rem-calc(14),
+    // Change the background color for your labels
+    $active-bg: $primary-color
+  );
+}
+```
+
+**Note:** `rem-calc();` is a function we wrote to convert `px` to `rem`. It is included in **_variables.scss**.
+
+***
+
+<h3>Accessibility</h3>
+
+Use this snippet to make sub-nav more accessible. Adding the role attribute gives context to a screen reader. Using the Tab button, a user can navigate until they've reached the link below. (Use Shift+Tab to navigate back one step.)
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+{{> examples_subnav_accessible}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+
+{{> examples_subnav_accessible_rendered}}
+
+  </div>
+</div>
+
+**Note:** It is bad practice to leave links that do not go anywhere on your live site. Use something like foo.html to fill them as you build.
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/sub-nav";
+```

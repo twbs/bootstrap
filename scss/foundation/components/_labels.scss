@@ -1,0 +1,106 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+//
+// @variables
+//
+$include-html-label-classes: $include-html-classes !default;
+
+// We use these to style the labels
+$label-padding: rem-calc(4 8 4) !default;
+$label-radius: $global-radius !default;
+
+// We use these to style the label text
+$label-font-sizing: rem-calc(11) !default;
+$label-font-weight: $font-weight-normal !default;
+$label-font-color: $oil !default;
+$label-font-color-alt: $white !default;
+$label-font-family: $body-font-family !default;
+
+//
+// @mixins
+//
+// We use this mixin to create a default label base.
+@mixin label-base {
+  display: inline-block;
+  font-family: $label-font-family;
+  font-weight: $label-font-weight;
+  line-height: 1;
+  margin-bottom: auto;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+// @mixins
+//
+// We use this mixin to add label size styles.
+// $padding - Used to determine label padding. Default: $label-padding || rem-calc(4 8 4) !default
+// $text-size - Used to determine label text-size. Default: $text-size found in settings
+@mixin label-size($padding:$label-padding, $text-size:$label-font-sizing) {
+  @if $padding { padding: $padding; }
+  @if $text-size { font-size: $text-size; }
+}
+
+// @mixins
+//
+// We use this mixin to add label styles.
+// $bg - Default: $primary-color (found in settings file)
+// $radius - Default: false, Options: true, sets radius to $global-radius (found in settings file)
+@mixin label-style($bg:$primary-color, $radius:false) {
+
+  // We control which background color comes through
+  @if $bg {
+
+    // This find the lightness percentage of the background color.
+    $bg-lightness: lightness($bg);
+
+    background-color: $bg;
+
+    // We control the text color for you based on the background color.
+    @if $bg-lightness < 70% { color: $label-font-color-alt; }
+    @else { color: $label-font-color; }
+  }
+
+  // We use this to control the radius on labels.
+  @if $radius == true { @include radius($label-radius); }
+  @else if $radius { @include radius($radius); }
+
+}
+
+// @mixins
+//
+// We use this to add close buttons to alerts
+// $padding - Default: $label-padding,
+// $text-size - Default: $label-font-sizing,
+// $bg - Default: $primary-color(found in settings file)
+// $radius - Default: false, Options: true which sets radius to $global-radius (found in settings file)
+@mixin label($padding:$label-padding, $text-size:$label-font-sizing, $bg:$primary-color, $radius:false) {
+
+  @include label-base;
+  @include label-size($padding, $text-size);
+  @include label-style($bg, $radius);
+}
+
+@include exports("label") {
+  @if $include-html-label-classes {
+    .label {
+      @include label-base;
+      @include label-size;
+      @include label-style;
+
+      &.radius { @include label-style(false, true); }
+      &.round { @include label-style(false, $radius:1000px); }
+
+      &.alert     { @include label-style($alert-color); }
+      &.warning   { @include label-style($warning-color); }
+      &.success   { @include label-style($success-color); }
+      &.secondary { @include label-style($secondary-color); }
+      &.info      { @include label-style($info-color); }
+    }
+  }
+}

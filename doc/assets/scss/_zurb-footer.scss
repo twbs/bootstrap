@@ -1,0 +1,45 @@
+// Footer Styles
+
+/* -----------------------------------------
+   ZURB Footer
+----------------------------------------- */
+
+.zurb-footer-bottom { background: #333; padding: 24px 0 10px; 
+  .design-border { border-bottom: 1px solid #484848; padding-bottom: 5px; margin-bottom: 25px; }  
+  a.zurb-logo { color: #858585; font-weight: normal; background: url(../img/icons/footer-icons.png) no-repeat 0 3px; padding: 25px 0 0 0; font-size: rem-calc(16px); display: inline-block; width: 90px; 
+    &:hover { opacity: 0.8; }
+  }
+  ul.zurb-links { margin: 0; display: inline-block; 
+    li { display: block; float: left; margin-left: 6px; text-transform: uppercase; font-weight: 700; font-size: rem-calc(14px) ;
+      a { color: #666; padding: 3px 6px;  
+        &:hover { color: #777; }
+      }
+    }    
+  }
+  p.copyright { margin: 6px 0 0; font-size: rem-calc(12px); color: #666; }
+  ul.home-social { display: block; float: right; margin-bottom: 8px; 
+    li { list-style: none; display: block; float: left; margin-left: 10px;
+      &:first-child { margin-left: 0; } 
+      a { display: block; height: 50px; width: 50px; background: url(../img/icons/social.png) no-repeat center 0;
+        &:hover { opacity: 0.8; } 
+        &.twitter { background-position: center 0; }
+        &.facebook { background-position: center -200px; }
+        &.mail { background-position: center -400px; }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {  
+  .zurb-footer-bottom { text-align: center; 
+    .columns { padding: 0; }
+    a.zurb-logo { display: block; margin: 0 auto; }
+    ul.zurb-links { margin: 16px 0 10px; }
+    ul.home-social { float: none; margin: 0 0 20px 0; text-align: center; height: 44px; display: inline-block;}
+  }
+}
+
+@media only screen and (max-width: 320px) {
+
+  .zurb-footer-bottom ul.zurb-links li a { font-size: 12px; }
+}

@@ -1,0 +1,135 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+//
+// @name _tables.scss
+// @dependencies _global.scss
+//
+
+//
+// @variables
+//
+
+$include-html-table-classes: $include-html-classes !default;
+
+// These control the background color for the table and even rows
+$table-bg: $white !default;
+$table-even-row-bg: $snow !default;
+
+// These control the table cell border style
+$table-border-style: solid !default;
+$table-border-size: 1px !default;
+$table-border-color: $gainsboro !default;
+
+// These control the table head styles
+$table-head-bg: $white-smoke !default;
+$table-head-font-size: rem-calc(14) !default;
+$table-head-font-color: $jet !default;
+$table-head-font-weight: $font-weight-bold !default;
+$table-head-padding: rem-calc(8 10 10) !default;
+
+// These control the table foot styles
+$table-foot-bg: $table-head-bg !default;
+$table-foot-font-size: $table-head-font-size !default;
+$table-foot-font-color: $table-head-font-color !default;
+$table-foot-font-weight: $table-head-font-weight !default;
+$table-foot-padding: $table-head-padding !default;
+
+// These control the caption
+$table-caption-bg: transparent !default;
+$table-caption-font-color: $table-head-font-color !default;
+$table-caption-font-size: rem-calc(16) !default;
+$table-caption-font-weight: bold !default;
+
+// These control the row padding and font styles
+$table-row-padding: rem-calc(9 10) !default;
+$table-row-font-size: rem-calc(14) !default;
+$table-row-font-color: $jet !default;
+$table-line-height: rem-calc(18) !default;
+
+// These are for controlling the layout, display and margin of tables
+$table-layout: auto !default;
+$table-display: table-cell !default;
+$table-margin-bottom: rem-calc(20) !default;
+
+
+//
+// @mixins
+//
+
+@mixin table {
+  background: $table-bg;
+  border: $table-border-style $table-border-size $table-border-color;
+  margin-bottom: $table-margin-bottom;
+  table-layout: $table-layout;
+
+  caption {
+    background: $table-caption-bg;
+    color: $table-caption-font-color;
+    font: {
+      size: $table-caption-font-size;
+      weight: $table-caption-font-weight;
+    }
+  }
+
+  thead {
+    background: $table-head-bg;
+
+    tr {
+      th,
+      td {
+        color: $table-head-font-color;
+        font-size: $table-head-font-size;
+        font-weight: $table-head-font-weight;
+        padding: $table-head-padding;
+      }
+    }
+  }
+
+  tfoot {
+    background: $table-foot-bg;
+
+    tr {
+      th,
+      td {
+        color: $table-foot-font-color;
+        font-size: $table-foot-font-size;
+        font-weight: $table-foot-font-weight;
+        padding: $table-foot-padding;
+      }
+    }
+  }
+
+  tr {
+    th,
+    td {
+      color: $table-row-font-color;
+      font-size: $table-row-font-size;
+      padding: $table-row-padding;
+      text-align: $default-float;
+    }
+
+    &.even,
+    &.alt,
+    &:nth-of-type(even) { background: $table-even-row-bg; }
+  }
+
+  thead tr th,
+  tfoot tr th,
+  tfoot tr td,
+  tbody tr th,
+  tbody tr td,
+  tr td { display: $table-display; line-height: $table-line-height; }
+}
+
+
+@include exports("table") {
+  @if $include-html-table-classes {
+    table {
+      @include table;
+    }
+  }
+}

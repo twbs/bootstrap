@@ -1,0 +1,98 @@
+
+.post-count-spacing {
+	@media #{$small} {
+		margin:0;
+	}
+
+	.post-description {
+		margin-top: 10px !important;
+		@media #{$small} {
+			margin-top:0 !important;
+		}
+	}
+
+	.author-name {
+		margin-top:5px;
+		line-height: 13px;
+		margin-bottom:5px;
+		text-transform: uppercase;
+		font-size:11px;
+		a {
+			color: $gray !important;
+			&:hover {
+				color:lighten($gray,10%) !important;
+			}
+		}
+	}
+
+	.last-reply-by {
+		a {
+			color:lighten($gray,15%);
+		}
+	}
+
+	h5 {
+		line-height:1em;
+		margin-bottom:5px;
+		margin-top:-4px;
+		font-size: 18px !important;
+		@media #{$small} {
+			font-size: 1.5em !important;
+			margin-top:-2px;
+		}
+	}
+
+	p {
+		margin-bottom:0;
+
+	}
+
+	p.moderator-links {
+		margin-top:5px;
+		margin-bottom:5px;
+	}
+
+
+	p.tags {
+		margin-top:2px !important;
+		margin-bottom:5px !important;
+		line-height: 28px;
+		a {
+			@media screen and (min-width:767px) {
+				margin: emCalc(0px) emCalc(5px) emCalc(15px) 0 !important;
+			}
+
+			@media screen and (min-width:0px) and (max-width:767px) {
+				margin: emCalc(15px) emCalc(5px) emCalc(15px) 0 !important;
+			}
+
+		}
+	}
+
+	span.when {
+		@media screen and (min-width:0px) and (max-width:767px) {
+			margin-top:emCalc(15px);
+		}
+
+		color:lighten($gray, 25%);
+		@media screen and (min-width:0px) and (max-width:767px) {
+			@include proxima-nova;
+			font-weight: 400;
+			color: $gray;
+			font-size: emCalc(13px);
+		}
+
+	}
+}
+
+
+.row.posts {
+	.row.post.impressions {
+		&.old {
+			a { color:lighten($gray,20%); }
+		}
+		&.new { }
+		hr { margin: 1.25em 0 1.1875em; }
+	}
+}
+

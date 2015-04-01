@@ -1,0 +1,39 @@
+# Grunt aliases
+---
+# Build everything
+build:
+  - 'build:assets'
+  - 'assemble'
+# Build assets
+'build:assets':
+  - 'clean'
+  - 'sass'
+  - 'concat'
+  - 'uglify'
+  - 'copy'
+  - 'cssmin'
+  - 'jst'
+  - 'string-replace'
+# Travis CI
+travis:
+  - 'build'
+  - 'karma:continuous'
+# Develop
+develop:
+  - 'travis'
+  - 'watch_start'
+# Deploy
+deploy:
+  - 'build'
+  - 'rsync:dist'
+# Server
+server:
+  - 'connect:server:keepalive'
+# Watch Start
+watch_start:
+  - 'karma:dev_watch:start'
+  - 'watch'
+# Default
+default:
+  - 'build'
+  - 'watch'

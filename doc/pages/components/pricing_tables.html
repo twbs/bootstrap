@@ -1,0 +1,103 @@
+---
+title: Pricing Tables
+---
+
+<h3 class="subheader">If you're making a rockin' marketing site for a subscription-based product, you're likely in need of a pricing table. These tables fill 100% of their container and are made from a simple unordered list.</h3>
+
+***
+
+{{> examples_pricing_basic}}
+
+***
+
+<h2>Basic</h2>
+
+Code up a `ul` and apply the following classes to the `li`'s.
+
+* `li.title`: Creates the styles for a title.
+* `li.price`: Add a price that stands out.
+* `li.description`: If you need to describe the plan, add this.
+* `li.bullet-item`: To call out features, use this list item.
+* `li.cta-button`: To add a button inside a list item, use this.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_pricing_basic_rendered}}
+  </div>
+
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_pricing_basic}}
+  </div>
+</div>
+
+***
+
+## Customize with Sass
+
+Pricing tables can be easily customized with the Sass variables provided in the `_settings.scss` file.
+
+<h4>SCSS</h4>
+
+{{> examples_pricing_variables}}
+
+***
+
+## Semantic Markup with Sass Mixins
+
+You can use the `pricing-table-container()` mixin, with mixins for each list item type to create your own pricing table with semantic markup, like so:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.your-pricing-class  {
+  @include pricing-table-container;
+  .your-title-class  {
+    @include pricing-table-title;
+  }
+  .your-price-class  {
+    @include pricing-table-price;
+  }
+  .your-desc-class   {
+    @include pricing-table-description;
+  }
+  .your-bullet-class {
+    @include pricing-table-bullet;
+  }
+  .your-cta-class    {
+    @include pricing-table-cta;
+  }
+}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<ul class="your-pricing-class">
+  <li class="your-title-class">Title</li>
+  <li class="your-price-class">$$$</li>
+  <li class="your-desc-class">...</li>
+  <li class="your-bullet-class">Bullet</li>
+  <li class="your-cta-class"><a class="your-button-class" href="#">Button</a></li>
+</ul>
+```
+{{/markdown}}
+  </div>
+</div>
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/pricing-tables";
+```

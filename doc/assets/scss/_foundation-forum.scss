@@ -1,0 +1,15 @@
+$gray: #666666;
+$forumblue:#074e68;
+
+@mixin proxima-nova {
+  font-family: "Proxima", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+.row.post {
+	h5 { margin-top:0 !important; }
+}
+
+@import "post_count";
+@import "post_description";
+

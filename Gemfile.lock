@@ -1,0 +1,29 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    chunky_png (1.3.3)
+    compass (1.0.0)
+      chunky_png (~> 1.2)
+      compass-core (~> 1.0.0)
+      compass-import-once (~> 1.0.5)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      sass (>= 3.3.13, < 3.5)
+    compass-core (1.0.1)
+      multi_json (~> 1.0)
+      sass (>= 3.3.0, < 3.5)
+    compass-import-once (1.0.5)
+      sass (>= 3.2, < 3.5)
+    ffi (1.9.6)
+    multi_json (1.10.1)
+    rb-fsevent (0.9.4)
+    rb-inotify (0.9.5)
+      ffi (>= 0.5.0)
+    sass (3.4.9)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  compass (= 1.0.0)
+  sass (~> 3.4.0)

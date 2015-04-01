@@ -1,0 +1,200 @@
+
+/* Newsletter */
+#newsletter { 
+  padding: 20px 0;
+  background: #085a78; padding: 10px 0 10px 0;
+  h5 { font-size: 20px;font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+  font-weight: 400; margin-bottom: 0px; margin-top: 10px; color: #fff; line-height: 24px; }
+  p { clear: both; font-size: 13px; padding-top: 2px; color: #fff; }
+  a { color: #fff; }
+  .margintop-20px{
+    margin-top:20px;
+  }
+  .row.collapse form {
+    input[type="text"] { font-size: 17px; font-weight: 200; color: #999; border: 0; }
+    .button { border: 0; box-shadow: none; background: #257696; }
+    .button:hover { background: #1b566d; }
+  }
+}
+
+/* Global Footer */
+
+.zurb-footer-top {
+  padding: 40px 0; color: white; 
+  .row .columns { @include clearfix(); }
+  &.zurb { background-position: 10px 7px; }
+  .property {
+    text-align: center;     
+    .property-info { padding-top: 37px; }
+
+    h2 {
+      margin: 0; padding: 0 !important; 
+      a {
+        transition: all .25s ease-in-out; font-family: "zurb-logo"; font-weight: normal; font-size: em-calc(18px); padding: 0; 
+        &:hover { @include opacity(0.8); }
+        &.services { width: 190px; }
+        span { display: none; }
+        strong { font-size: 17px; margin-left: -7px; }
+      }
+    }
+    h3 { font-size: 1.4rem; font-weight: bold; color: white; margin-bottom: 20px; }
+    h4 { font-size: 1.1rem; font-weight: 200; color: white; margin-bottom: 10px; }
+    p, li, a { font-size: 13px; line-height: 21px; color: white; }
+    a {
+      font-weight: bold; color: white; 
+    }
+  }
+    .learn-links, .support-links, .connect-links {
+      padding: 50px 0 0 0; border-left: 1px solid rgba(255, 255, 255, 0.2); background: image-url("../img/icons/footer-top-icons.png") no-repeat center 0; height: 220px; margin-bottom: 30px;
+      ul { margin-left: 0px !important;
+        list-style: none; 
+        li { line-height: 20px; }
+      }
+    }
+    .learn-links { background-position: center -325px; }
+    .support-links { background-position: center -635px; }
+    .connect-links {
+      padding: 50px 20px 0; background-position: center -9px;
+      .button { font-size: 12px; font-weight: normal; background: rgba(0, 0, 0, 0.1); color: #FFF !important; font-weight: bold; text-shadow: none; box-shadow: none; border: none; padding: 6px 16px; } 
+    }
+
+    .global {
+      border-top: 1px solid rgba(255, 255, 255, 0.2); 
+      .footer-link-block {
+        font-weight: normal; display: block; margin: 30px 0 0 0;
+        &.services { background: url("../img/icons/footer-studios.png") left top no-repeat; }
+        &.foundation { background: url("../img/icons/footer-foundation.png") left top no-repeat;}
+        &.apps { background: url("../img/icons/footer-products.png") left top no-repeat; }
+        &.expo { background: url("../img/icons/footer-expo.png") left top no-repeat; }
+        span { 
+          display: block; color: white; font-size: 0.75rem; padding-left: 40px; line-height: 18px;
+          &.title { font-size: 1.0rem; margin-bottom: 5px; }
+        }
+      } 
+    }
+  
+}
+.zurb-footer-top .property h4 { text-transform: none; }
+
+.zurb-footer-bottom {
+  background: #333; padding: 24px 0 10px; 
+  .design-border { border-bottom: 1px solid #484848; padding-bottom: 5px; margin-bottom: 25px; }  
+  a.zurb-logo { color: #858585; font-weight: normal; background: url("../img/icons/footer-icons.png") no-repeat 0 3px; padding: 23px 0 0 0 !important; font-size: em-calc(16px); display: inline-block; width: 90px; 
+    &:hover { @include opacity(0.8); }
+  }
+  ul.zurb-links { margin: 0; display: inline-block; padding-bottom:0px; 
+    li { display: block; float: left; margin-left: 6px; text-transform: uppercase; font-weight: 700; font-size: 0.75rem ;
+      a { color: #666; padding: 3px 6px;  
+        &:hover { color: #777; }
+      }
+    }    
+  }
+  p.copyright { margin: 6px 0 0; font-size: 0.75rem; color: #666; }
+  ul.home-social { display: block; float: right; margin-bottom: 8px; 
+    li { list-style: none; display: block; float: left; margin-left: 10px;
+      &:first-child { margin-left: 0; } 
+      a { display: block; height: 50px; width: 50px; background: url("../img/icons/social.png") no-repeat center 0;
+        &:hover { @include opacity(0.8); } 
+        &.twitter { background-position: center 0; }
+        &.facebook { background-position: center -200px; }
+        &.mail { background-position: center -400px; }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait){
+  .zurb-footer-top .property { padding-top: 0px; 
+    .learn-links, .support-links, .connect-links { height: 240px; padding: 50px 10px 0; }
+  }  
+}
+
+@media only screen and (max-width: 767px) {
+  .zurb-footer-top {
+    .property {
+      .property-info { padding-top: 0px; }
+      .learn-links, .support-links, .connect-links { border: none; height: auto; padding: 80px 20px 0; margin: 4px 0 0 0; border-top: 1px dotted rgba(255, 255, 255, 0.2); 
+        li a { font-size: 15px; line-height: 2; }
+        p, a { font-size: 16px; }
+      }
+      .learn-links { background-position: center -300px;padding-top: 76px 20px 0; 
+      }
+      .support-links { padding: 76px 20px 0; background-position: center -618px; }
+      .connect-links { padding: 76px 20px 14px ; background-position: center 10px; }
+    }
+    .global { border: none; }
+      .footer-link-block { 
+      span { font-size: em-calc(11px); line-height: 16px; }
+      &.services { border-top: 1px dotted rgba(255, 255, 255, 0.2); padding-top: 40px; margin-top: 0; background-position: center 10px !important;}
+    }
+  }
+  
+  .zurb-footer-bottom { text-align: center; 
+    .columns { padding: 0; }
+    a.zurb-logo { display: block; margin: 0 auto; }
+    ul.zurb-links { margin: 16px 0 10px; }
+    ul.home-social { float: none; margin: 0 0 20px 0; text-align: center; height: 44px; display: inline-block;}
+  }
+}
+
+/* Reformating pillars */
+
+@media only screen and (max-width: 767px) {
+  .zurb-footer-top .property .connect-links { border-bottom: 1px dotted rgba(255, 255, 255, 0.2); margin-bottom: 20px; }
+  .zurb-footer-top .global { 
+    .footer-link-block { padding-top: 50px; text-align: center; margin: 0 !important; clear: both;
+      span { padding-left: 0px; }
+      &.services { border-top: 0; background-position: center 15px !important; } 
+      &.foundation { background-position: center 15px !important; } 
+      &.apps { padding-top: 80px; background-position: center 45px !important; } 
+      &.expo { padding-top: 80px; background-position: center 45px !important; } 
+    }
+  }
+  .zurb-footer-top .property .learn-links { background: none; border: none; padding-top: 0;margin: 0; }
+}
+
+
+/* Retina Images */
+@media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+  .zurb-footer-top .info-padding { background-image: url("../img/icons/footer-large-icon-retina.png"); background-size: 100px 400px; }
+  .zurb-footer-bottom ul.home-social li a { background-image: url("../img/icons/social-retina.png"); background-size: 50px 600px; }
+  .zurb-footer-top .global .footer-link-block { font-weight: normal; display: block; margin: 30px 0 0 0;
+    &.services { background: url("../img/icons/footer-studios-retina.png") left top no-repeat; }
+    &.foundation { background-image: url("../img/icons/footer-foundation-retina.png") left top no-repeat;}
+    &.apps { background-image: url("../img/icons/footer-products-retina.png") left top no-repeat; }
+    &.expo { background-image: url("../img/icons/footer-expo-retina.png") left top no-repeat; }
+  }
+  .zurb-footer-bottom a.zurb-logo { background-image: url("../img/icons/footer-icons-retina.png"); background-size: 100px 1400px; }
+  .zurb-footer-top .property .learn-links, .zurb-footer-top .property .support-links, .zurb-footer-top .property .connect-links { background-image: url("../img/icons/footer-top-icons-retina.png"); background-size: 100px 1400px; }
+}
+@media only screen and (max-width: 320px), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+  .zurb-footer-top .info-padding { background-image: url("../img/icons/footer-large-icon-retina.png"); background-size: 100px 400px; }
+  .zurb-footer-bottom ul.home-social li a { background-image: url("../img/icons/social-retina.png"); background-size: 50px 600px; }
+  .zurb-footer-top .global .footer-link-block { font-weight: normal; display: block; margin: 30px 0 0 0;
+    &.services { background: url("../img/icons/footer-studios-retina.png") left top no-repeat; background-size: 30px; }
+    &.foundation { background: url("../img/icons/footer-foundation-retina.png") left top no-repeat; background-size: 30px; }
+    &.apps { background: url("../img/icons/footer-products-retina.png") left top no-repeat; background-size: 30px; }
+    &.expo { background: url("../img/icons/footer-expo-retina.png") left top no-repeat; background-size: 30px; }
+  }
+  .zurb-footer-bottom a.zurb-logo { background-image: url("../img/icons/footer-icons-retina.png"); background-size: 100px 1400px; }
+   .zurb-footer-top .property .support-links, .zurb-footer-top .property .connect-links { background-image: url("../img/icons/footer-top-icons-retina.png"); background-size: 100px 1400px; }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .zurb-footer-top .property .learn-links { background:none; }
+}
+
+.zurb-footer-top {
+  &.bg-blue { background: #2DAEBF; }
+  &.bg-fblue { background: #074e68; }
+  &.bg-green { background: #B8D30B; }
+  &.bg-dgreen { background: #afc908; }
+  &.bg-magenta { background: #A9014B; }
+  &.bg-orange { background: #FF5C00; }
+  &.bg-lorange { background: #FF6908; }
+  &.bg-oyellow { background: #FC9200; }
+  &.bg-loyellow { background: #FFB515; }
+  &.bg-navy { background: #074e68; }
+}
+
+

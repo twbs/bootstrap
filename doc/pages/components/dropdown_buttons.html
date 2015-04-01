@@ -1,0 +1,146 @@
+---
+title: Dropdown Buttons
+---
+
+<h3 class="subheader">Dropdown buttons are elements that, when tapped, reveal additional content. We've simplified our dropdown buttons by getting rid of the dedicated ones associated with the various buttons styles. Instead, you'll use our [new dropdown plugin]({{relative absolute 'dist/docs/components/dropdown.html'}}) to attach a dropdown to the button style of your choice.</h3>
+
+***
+
+{{> examples_dropdown_button_intro}}
+
+***
+
+<h2>Basic</h2>
+
+You can create a dropdown using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_dropdown_button_basic}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_dropdown_button_basic}}
+  </div>
+</div>
+
+***
+
+<h2>Advanced</h2>
+
+Additional classes can be added to your dropdown buttons to change their appearance and behavior.
+
+{{> examples_dropdown_advanced}}
+
+Disabled dropdown buttons will not open when tapped:
+
+{{> examples_dropdown_disabled}}
+
+***
+
+## Accessibility
+
+<p class="panel">This component is not yet accessible. Stay tuned for updates in future releases.</p>
+
+***
+
+## Customize with Sass
+
+Dropdown buttons can be easily customized using our provided Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_dropdown_buttons_variables}}
+
+***
+
+## Semantic Markup With Sass
+
+You can create your own dropdown buttons using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `dropdown-button()` mixin to create your own dropdown button, like so:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-dropdown-button {
+  @include button();
+  @include dropdown-button();
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<button data-dropdown="drop" aria-controls="drop" aria-expanded="true" class="custom-dropdown-button">Dropdown Button</button><br>
+<ul id="drop" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false">
+  <li role="menuitem"><a href="#">This is a link</a></li>
+  <li role="menuitem"><a href="#">This is another</a></li>
+  <li role="menuitem"><a href="#">Yet another</a></li>
+</ul>
+```
+{{/markdown}}
+
+<h3>Advanced</h3>
+
+You can further customize your dropdown buttons using the provided options in the `dropdown-button()` mixin:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-dropdown-button {
+  @include button();
+
+  @include dropdown-button(
+    // Determines the size of button you are working with. Default: medium.
+    // Options [tiny, small, medium, large]
+    $padding:medium,
+    // Color of the little triangle that points to the dropdown. Default: #fff.
+    $pip-color:#fff,
+    // Add in base-styles. This can be set to false. Default:true
+    $base-style:true
+  );
+}
+```
+{{/markdown}}
+
+##### Inset Shadow, Border Radius &amp; Transition Mixin
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-dropdown-button {
+  @include button;
+  @include dropdown-button;
+  @include radius;
+  @include single-transition;
+  @include inset-shadow;
+}
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import theses files:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/buttons";
+@import "foundation/components/dropdown";
+@import "foundation/components/dropdown-buttons";
+```

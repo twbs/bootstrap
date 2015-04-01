@@ -1,0 +1,101 @@
+---
+title: How to Use Foundation Sass
+---
+
+<h3 class="subheader">Customizing your project with Foundation is easy, we recommend making different changes in different files which we will go over here.</h3>
+
+<hr>
+
+<div class="row">
+	<div class="small-12 columns">
+    <p><a href="{{rel 'sass.html'}}">← Back to Getting Started</a></p>
+    <h2>_settings.scss</h2>
+    <h3 class="subheader">You will want to make changes to the settings file which includes tons of variables here that can be customized for each component.</h3>
+    <div class="row">
+      <div class="small-12 columns">
+        <p>Making changes is simple, in ```_settings.scss``` find the element you want to style (command/ctrl+f). Find the variable, uncomment the style, and change its value. Be sure to run grunt (libsass) or compass watch (compass) in order see any changes.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-10 small-centered medium-6 medium-uncentered large-5 columns">
+        <img class="app-image" src="{{assets}}/img/images/button_settings.png">
+      </div>
+      <div class="medium-6 large-7 columns">
+        <p>Here we've made some example changes to the buttons.</p>
+          <ul class="arrow-list">
+            <li><i class="fi-arrow-right"></i>First, we changed the margin on the bottom of the buttons.</li>
+            <br>
+            <li><i class="fi-arrow-right"></i>Next the colors have been changed to snazzy, dodger blue.</li>
+            <br>
+            <li><i class="fi-arrow-right"></i>Finally, we changed the radius on the corners.</li>
+          </ul>    
+        <p>Now just need to save your changes and your Sass will compile. Just refresh the page to see yours changes!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="dashed minus">
+
+<div class="row using-sass">
+  <div class="small-12 columns">
+    <h2>Mixins</h2>
+    <h3 class="subheader">We use mixins to allow you to create your own components based on underlying Foundation styles.</h3>
+    <p>A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can even pass in values to make your mixin more flexible. You can create custom mixins to speed up development, another example regarding buttons:</p>
+{{#markdown}}
+```scss
+{{> examples_custom_button_include}}
+```
+{{/markdown}}
+    <p>Here is an example of some variables you can customize:</p>
+{{#markdown}}
+```scss
+{{> examples_button_variable_include}}
+```
+{{/markdown}}
+    <p>Then you can use your new custom button by simply include the following html:</p>
+{{#markdown}}
+```html
+{{> examples_button_html_include}}
+```
+{{/markdown}}
+  </div>
+</div>
+
+<hr class="dashed">
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>app.scss</h2>
+    <h3 class="subheader">All of your project styles should go in this file..</h3>
+    <div class="row">
+      <div class="small-10 small-centered medium-6 medium-uncentered large-5 columns">
+        <img class="app-image" src="{{assets}}/img/images/app_scss.png">
+      </div>
+      <div class="medium-6 large-7 columns">
+        <p>By default the _settings.scss is imported here - ```@import "settings"``` as well as all of Foundation SCSS - ```@import "foundation"```. If you don't want all of Foundation you can comment it out and then activate the individual imports you want below including the ```@import``` on line 5.</p>
+        <p class="subheader note">Note: Some Foundation components depend on other styles.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row using-sass">
+  <div class="small-12 columns">
+    <p>After the ```@import``` tag is a great place to keep your custom Sass because it will get compiled into CSS right from here.</p>
+    <div class="row">
+      <div class="small-10 small-centered medium-6 medium-uncentered large-5 columns">
+{{#markdown}}
+```scss
+{{> examples_img_panel_include}}
+```
+{{/markdown}} 
+      </div>
+      <div class="medium-6 large-7 columns setting_sass">
+        <p>Here is an example of how you can write Sass inside the ```app.scss``` file.</p>
+      </div>
+    </div>
+    <p>The Sass version of Foundation still allows you to write <strong>Vanilla CSS</strong> as well. If you want to do so, it is best practice to write these CSS styles in the ```app.scss``` file.</p>
+    <p class="note subheader">Note: Any CSS files in the stylesheets folder will be overwritten when your Sass is compiled, be sure keep any changes away from the files in this folder.</p>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+---
+title: Applications
+---
+
+<h3 class="subheader">We use Rails to develop our own apps and Foundation helps us do it so much quicker. You can start using Foundation in your projects by following these instructions.</h3>
+
+***
+##Rails Application
+
+### Add Foundation to your Rails app
+
+You can use the `foundation-rails` gem to make it super easy to use Foundation in your upcoming Rails project. Just add the following to your `Gemfile`:
+
+```ruby
+gem 'foundation-rails'
+```
+
+Then run `bundle install`.
+
+### Configuring Foundation
+
+You can run the following command to add Foundation:
+
+```bash
+rails g foundation:install
+```
+
+***
+
+## Manual Installation
+
+### Add Foundation to your CSS
+
+Append the following line to your `app/assets/stylesheets/application.css` file:
+
+```css
+/*= require foundation */
+```
+
+If you're planning on using Sass, then you'll want to rename `application.css` to `application.scss`. That file should then look like:
+
+```css
+@import "foundation_and_overrides";
+/* Add imports of custom sass/scss files here */
+```
+
+### Add Foundation to your JS
+
+Append the following lines to your `app/assets/javascripts/application.js` file:
+
+```js
+//= require foundation
+$(document).foundation();
+```
+### Configure Asset pipeline
+
+Add Modernizr to precompiled assets for production in `config/initializers/assets.rb`:
+
+```ruby
+Rails.application.config.assets.precompile += %w( vendor/modernizr.js )
+```
+
+For Rails version < 4.2.0, add Modernizr in `config/environments/production.rb`:
+
+```ruby
+config.assets.precompile += %w( vendor/modernizr.js )
+```
+
+### Add Modernizr
+
+Make sure that Modernizr is included in the `<head>` of your page:
+
+```ruby
+javascript_include_tag "vendor/modernizr"
+```
+
+### Set Viewport Width
+
+Add the following line to the `<head>` of your page layout:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```

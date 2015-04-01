@@ -1,0 +1,147 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+// This is the default html and body font-size for the base rem value.
+$rem-base: 16px !default;
+
+// IMPORT ONCE
+// We use this to prevent styles from being loaded multiple times for components that rely on other components.
+$modules: () !default;
+
+@mixin exports($name) {
+  // Import from global scope
+  $modules: $modules !global;
+  // Check if a module is already on the list
+  $module_index: index($modules, $name);
+  @if (($module_index == null) or ($module_index == false)) {
+    $modules: append($modules, $name) !global;
+    @content;
+  }
+}
+
+//
+// @functions
+//
+
+
+// RANGES
+// We use these functions to define ranges for various things, like media queries.
+@function lower-bound($range) {
+  @if length($range) <= 0 {
+    @return 0;
+  }
+  @return nth($range, 1);
+}
+
+@function upper-bound($range) {
+  @if length($range) < 2 {
+    @return 999999999999;
+  }
+  @return nth($range, 2);
+}
+
+// STRIP UNIT
+// It strips the unit of measure and returns it
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// TEXT INPUT TYPES
+
+@function text-inputs( $types: all, $selector: input ) {
+
+  $return: ();
+
+  $all-text-input-types:
+    text
+    password
+    date
+    datetime
+    datetime-local
+    month
+    week
+    email
+    number
+    search
+    tel
+    time
+    url
+    color
+    textarea;
+
+  @if $types == all { $types: $all-text-input-types; }
+
+  @each $type in $types {
+    @if $type == textarea {
+      @if $selector == input {
+        $return: append($return, unquote('#{$type}'), comma)
+      } @else {
+        $return: append($return, unquote('#{$type}#{$selector}'), comma)
+      }
+    } @else {
+      $return: append($return, unquote('#{$selector}[type="#{$type}"]'), comma)
+    }
+  }
+
+    @return $return;
+
+}
+
+// CONVERT TO REM
+@function convert-to-rem($value, $base-value: $rem-base) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+  @return $value;
+}
+
+@function data($attr) {
+  @if $namespace {
+    @return '[data-' + $namespace + '-' + $attr + ']';
+  }
+
+  @return '[data-' + $attr + ']';
+}
+
+// REM CALC
+
+// New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem's.
+// Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported:
+//
+//   rem-calc(10 20 30px 40);
+//
+// Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets
+//
+//   rem-calc((10, 20, 30, 40px));
+//
+// Optionally call with a different base (eg: 8px) to calculate rem.
+//
+//   rem-calc(16px 32px 48px, 8px);
+//
+// If you require to comma separate your list
+//
+//   rem-calc((16px, 32px, 48), 8px);
+
+@function rem-calc($values, $base-value: $rem-base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+
+  $remValues: ();
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+  }
+  @return $remValues;
+}
+
+// OLD EM CALC
+// Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
+@function emCalc($values) {
+  @return rem-calc($values);
+}
+
+// OLD EM CALC
+// Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
+@function em-calc($values) {
+  @return rem-calc($values);
+}
