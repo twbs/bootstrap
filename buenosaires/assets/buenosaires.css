@@ -1258,7 +1258,66 @@ header.jumbotron {
 }
 
 
+/* Gallery - para museos*/
 
+.row-gallery a {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.row-gallery a img {
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+.row-gallery a .info {
+  display: none;
+}
+
+#galleryModal {
+  background: #222;
+}
+#galleryModal .modal-dialog {
+  height: auto;
+}
+#galleryModal .modal-content {
+  background: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#galleryModal .close {
+  right: -40px;
+}
+#galleryModal .carousel-control {
+  height: 600px;
+}
+#galleryModal .carousel-control.left {
+  left: -45px;
+}
+#galleryModal .carousel-control.right {
+  right: -45px;
+}
+
+.carousel-control .glyphicon-chevron-left {
+  left: 0;
+}
+.carousel-control .glyphicon-chevron-right {
+  right: 0;
+}
+
+#gallery {
+  border-radius: 0;
+}
+#gallery .carousel-inner{
+  overflow: visible;
+}
+#gallery .carousel-inner .item {
+  max-height: none;
+  color: #FFF;
+}
+#gallery .carousel-inner > .item > img {
+  border-radius: 0;
+  margin-bottom: 50px;
+}
 
 
 /* article, grid + libro + miba + aplicativo*/
