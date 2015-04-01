@@ -30,4 +30,12 @@
   .transition-property(~"height, visibility");
   .transition-duration(.35s);
   .transition-timing-function(ease);
+
+  &.width {
+    height: auto;
+    width: 0;
+    .transition-property(width);
+    .transition-duration(.35s);
+    .transition-timing-function(ease);
+  }
 }
