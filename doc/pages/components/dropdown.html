@@ -1,0 +1,268 @@
+---
+title: Dropdowns
+---
+
+<h3 class="subheader">We removed the various dropdowns within different UI elements for Foundation 5. Instead, we created a universal dropdown plugin that will attach dropdowns or popovers to whatever element you need.</h3>
+
+***
+
+{{> examples_dropdown_basic}}
+
+<hr>
+
+<h2>Basic</h2>
+
+You can create a dropdown using minimal markup. <strong>On a small device, the tooltips are full-width and bottom aligned.</strong>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_dropdown_basic_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML Rendered</h4>
+{{> examples_dropdown_basic_nostyle}}
+  </div>
+</div>
+
+<hr>
+
+<h2>Advanced</h2>
+
+<h3>Dropdown Classes</h3>
+
+Additional classes can be added to your dropdown to change its appearance.
+
+
+*  `tiny`: Make the dropdown have a max-width of 200px
+*  `small`: Make the dropdown have a max-width of 300px
+*  `medium`: Make the dropdown have a max-width of 500px
+*  `large`: Make the dropdown have a max-width of 800px
+*  `mega`: Make the dropdown go full 100% width
+*  `content`: Add padding inside the dropdown for better-looking content
+
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<a href="#" class="button" data-dropdown="drop">Link Dropdown &raquo;</a>
+<ul id="drop" class="[tiny small medium large content]f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <a href="#" class="button" data-dropdown="tinyDrop2">Link Dropdown &raquo;</a>
+    <ul id="tinyDrop2" class="medium f-dropdown" data-dropdown-content>
+      <li><a href="#">This is a link</a></li>
+      <li><a href="#">This is another</a></li>
+      <li><a href="#">Yet another</a></li>
+    </ul>
+  </div>
+</div>
+
+<h3>Directions</h3>
+
+You can now position dropdowns on the top, bottom, left, or right of the target element. The default position is *bottom* and you do not need to change anything to get your tooltip positioned *bottom*.
+
+To set other alignments, just specify the <code>align</code> property in <code>data-options</code> on the target element.
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+```html
+<a href="#" data-options="align:left" data-dropdown="drop" class="button">Link Dropdown &raquo;</a>
+<ul id="drop" class="[tiny small medium large content]f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    {{> examples_dropdown_directions}}
+  </div>
+</div>
+
+<h3>Autoclose</h3>
+
+There is an autoclose option that you can include in the mark up. This is an option that enables the dropdown to close automatically when a link is clicked within the dropdown. 
+
+This option is enabled by default, but to disable (keep dropdowns persisting), set the attribute `aria-autoclose` to `false`.
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+```html
+  <a class="button" data-dropdown="autoCloseExample" aria-controls="autoCloseExample" aria-expanded="false">Link Dropdown &raquo;</a>
+  <ul id="autoCloseExample" class="f-dropdown" data-dropdown-content tabindex="-1" aria-hidden="true" aria-autoclose="false" tabindex="-1">
+    <li><a href="#">This is a link</a></li>
+    <li><a href="#">This is another</a></li>
+    <li><a href="#">Yet another</a></li>
+  </ul>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    {{> examples_dropdown_autoclose}}
+  </div>
+</div>
+
+***
+
+<h3>Hoverable Dropdown</h3>
+
+If you'd rather have your dropdown be accessible by hover, you can add a data-option to the target element. There is also an optional setting `hover_timeout` that you can set to a time (in milliseconds) that will set your own custom delay to the element. The default setting for `hover_timeout` is 150ms.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_dropdown_hoverable_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_dropdown_hoverable}}
+  </div>
+</div>
+
+***
+
+<h2>Accessibility</h2>
+
+<p class="panel">This component is not yet accessible. Stay tuned for updates in future releases.</p>
+
+***
+
+<h2>Customize with Sass</h2>
+
+
+Dropdowns can be easily customized using our Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_dropdown_variables}}
+
+***
+
+<h2>Semantic Markup With Sass</h2>
+
+You can create your own dropdowns using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `dropdown-container()` and `dropdown-style()` mixins to create your own dropdowns, like so:
+
+<h5>The Container Mixin</h5>
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-dropdown-container-class {
+  @include dropdown-container();
+}
+```
+{{/markdown}}
+
+<h5>The List Style Mixin</h5>
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-dropdown-container-class {
+  @include dropdown-container();
+
+  li { @include dropdown-style; }
+}
+```
+{{/markdown}}
+
+<h4>Advanced</h4>
+
+You can further customize your dropdowns with the options in the `dropdown-container()` mixin:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-dropdown-container-class {
+  @include dropdown-container(
+    // Sets list-style. Default: list. Options: [list, content]
+    $content:list,
+    // Sets if dropdown has triangle. Default:true.
+    $triangle:true,
+    // Sets max-width. Default: $f-dropdown-max-width
+    $max-width
+  );
+
+  li { @include dropdown-style; }
+}
+```
+{{/markdown}}
+
+***
+
+<h2>Configure With Javascript</h2>
+
+It's easy to configure dropdowns using our provided Javascript. You can use data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js` and `foundation.dropdown.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
+
+{{#markdown}}
+  ```html
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.dropdown.js"></script>
+  ```
+{{/markdown}}
+
+<h3>Optional Javascript Configuration</h3>
+
+<h4>JS</h4>
+
+{{#markdown}}
+```js
+$(document).foundation({
+  dropdown: {
+    // specify the class used for active dropdowns
+    active_class: 'open'
+  }
+});
+```
+{{/markdown}}
+
+***
+
+<h3>Adding New Dropdown Content After Page Load</h3>
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('dropdown', 'reflow');
+```
+{{/markdown}}
+
+***
+
+<h3>Sass Errors?</h3>
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/dropdown";
+```

@@ -1,0 +1,271 @@
+---
+title: Reveal Modal
+---
+
+<h3 class="subheader">Modal dialogs, or pop-up windows, are handy for prototyping and production. Foundation includes Reveal our jQuery modal plugin, to make this easy for you.</h3>
+
+***
+
+<h2>Basic</h2>
+
+You can create a reveal modal using minimal markup. The anchor tag with the reveal-modal-id is what triggers the Reveal.
+
+<div class="row">
+  <div class="large-8 columns">
+    <h4>HTML</h4>
+    {{> examples_reveal_basic}}
+  </div>
+  <div class="large-4 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_reveal_basic_rendered}}
+  </div>
+</div>
+
+***
+
+<h2>Intermediate</h2>
+
+You can create a reveal modal with another inside it. Setting `reveal.multiple_opened` to `true` will not close previously opened reveal modals. You can even put a video into a reveal.
+
+<div class="row">
+  <div class="large-8 columns">
+    <h4>HTML</h4>
+    {{> examples_reveal_modal_examples}}
+  </div>
+  <div class="large-4 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_reveal_modal_examples_rendered}}
+  </div>
+</div>
+
+***
+
+<h2>Advanced</h2>
+
+Additional classes can be added to your reveal modal to change its appearance.
+
+The class options:
+
+* `tiny`: Set the width to 30%.
+* `small`: Set the width to 40%.
+* `medium`: Set the width to 60%.
+* `large`: Set the width to 70%.
+* `xlarge`: Set the width to 95%.
+* `full`: Set the width and height to 100%.
+
+Note: Default on small is 100% (full) width.
+
+##### Removing the Background
+
+<h4>HTML</h4>
+
+{{> examples_reveal_background}}
+
+<h5>Firing a Reveal Modal</h5>
+
+<p>To launch a modal, just add a `data-reveal-id` to the object which you want to fire the modal when clicked. The `data-reveal-id` needs to match the `id` of your reveal.</p>
+
+<h4>HTML</h4>
+
+{{> examples_reveal_data}}
+
+You can also open and close Reveal via Javascript:
+
+{{> examples_reveal_open_close}}
+
+<h5>Firing a Reveal Modal with Ajax Content</h5>
+
+To launch a modal with content from another page, just add a `data-reveal-ajax` attribute pointing to the url of that page. When clicked, the Reveal modal will be opened with a content from that page. Beware: content of the object from `data-reveal-id` attribute will be overwritten as a result.
+
+To use an url from `href` attribute just add `data-reveal-ajax="true"` instead.
+
+<h4>JS</h4>
+
+{{> examples_reveal_ajax}}
+
+Ajax-based Reveal modals can also be opened via Javascript:
+
+<h4>JS</h4>
+
+{{> examples_reveal_ajax_javascript}}
+
+<p>Please refer to <a href="http://api.jquery.com/jQuery.ajax/">http://api.jquery.com/jQuery.ajax/</a> for a complete list of possible parameters.</p>
+
+***
+
+### Event Bindings
+
+There are a series of events that you can bind to for triggering callbacks:
+
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the reveal plugin emitted un-namespaced `open`, `opened`, `close` and `closed` events, however, these have been replaced by the namespaced `open.fndtn.reveal`, `opened.fndtn.reveal`, `close.fndtn.reveal` and `closed.fndtn.reveal` events. The un-namespaced events have been fully deprecated.</p>
+</div>
+
+```js
+$(document).on('open.fndtn.reveal', '[data-reveal]', function () {
+  var modal = $(this);
+});
+
+$(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
+  var modal = $(this);
+});
+
+$(document).on('close.fndtn.reveal', '[data-reveal]', function () {
+  var modal = $(this);
+});
+
+$(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
+  var modal = $(this);
+});
+```
+
+***
+
+## Accessibility
+
+<p class="panel">This component is not yet fully accessible. While it is usable via the keyboard, it has to be checked if additional ARIA attributes can enhance the components accessibility.</p>
+
+***
+
+<h2>Customize with Sass</h2>
+
+<p>Reveal modals can be easily customized using our Sass variables.</p>
+
+<h4>SCSS</h4>
+
+{{> examples_reveal_variables}}
+
+<hr />
+
+<h2>Semantic Markup With Sass</h2>
+
+<p>You can create your own reveal modals using our Sass mixins.</p>
+
+<h3>Setting the background</h3>
+
+<p>You can use the `reveal-bg()` mixin to create your own reveal modal, like so:</p>
+
+{{#markdown}}
+```scss
+.custom-reveal-class {
+  @include reveal-bg();
+}
+```
+{{/markdown}}
+
+<h3>Creating the base structure</h3>
+
+<p>You can use this mixin to create the structure of a reveal modal</p>
+
+{{#markdown}}
+```scss
+.custom-reveal-class {
+  @include reveal-modal-base(
+    // Provides reveal base styles, can be set to false to override.
+    $base-style:true,
+    // Sets reveal width Default: $reveal-default-width or 80%
+    $width:$reveal-default-width
+  );
+}
+```
+{{/markdown}}
+
+<h3>Set Reveal Base Styles</h3>
+
+<p>You can use this mixin to style the reveal modal defaults</p>
+
+{{#markdown}}
+```scss
+.custom-reveal-class {
+  @include reveal-modal-style(
+    // Sets background color of reveal modal. Default: $reveal-modal-bg or #fff
+    $bg:$reveal-modal-bg,
+    // Set reveal border style. Default: $reveal-border-style or solid
+    $border:true,
+    // Width of border (i.e. 1px). Default: $reveal-border-width.
+    $border-style:$reveal-border-style,
+    // Color of border. Default: $reveal-border-color.
+    $border-width:$reveal-border-width,
+    // Color of border. Default: $reveal-border-color.
+    $border-color:$reveal-border-color,
+    // Choose whether or not to include the default box-shadow. Default: true, Options: false
+    $box-shadow:true,
+    // Default: $reveal-position-top or 50px
+    $top-offset:$reveal-position-top
+  );
+}
+```
+{{/markdown}}
+
+
+<h3>Add a close button</h3>
+
+<p>You can use this mixin to create a close button for the reveal modal</p>
+
+{{#markdown}}
+```scss
+.custom-reveal-class {
+  @include reveal-close(
+    $color:$reveal-close-color
+  );
+}
+```
+{{/markdown}}
+
+**Note:** `rem-calc();` is a function we wrote to convert `px` to `rem`. It is included in **_variables.scss**.
+
+***
+
+<h2>Using the Javascript</h2>
+
+<div class="panel">
+  Before you can use Reveal you'll want to verify that jQuery and `foundation.min.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
+</div>
+
+<p>If you are not using foundation.min.js and individually adding plugins, include `foundation.reveal.js` AFTER the `foundation.js` file. Your markup should look something like this:</p>
+
+{{> examples_reveal_javascript}}
+
+<p>Required Foundation Library: `foundation.reveal.js`</p>
+
+<h5>Optional Javascript Configuration</h5>
+
+<p>Reveal options can only be passed in during initialization at this time. However, you can bind to the <i>open</i>, <i>opened</i>, <i>close</i>, and <i>closed</i> events.</p> You can also specify an AJAX error callback with the option <i>on_ajax_error</i>.
+
+{{> examples_reveal_javascript_options}}
+
+
+<hr />
+
+### Adding New Reveal Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation();
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('reveal', 'reflow');
+```
+{{/markdown}}
+
+***
+
+<h5>Sass Errors?</h5>
+
+<p>If the default "foundation" import was commented out, then make sure you import this file:</p>
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/reveal";
+```
+{{/markdown}}

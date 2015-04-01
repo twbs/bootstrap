@@ -1,0 +1,220 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+//
+// @variables
+//
+$include-html-joyride-classes: $include-html-classes !default;
+
+// Controlling default Joyride styles
+$joyride-tip-bg: $oil !default;
+$joyride-tip-default-width: 300px !default;
+$joyride-tip-padding: rem-calc(18 20 24) !default;
+$joyride-tip-border: solid 1px $charcoal !default;
+$joyride-tip-radius: 4px !default;
+$joyride-tip-position-offset: 22px !default;
+
+// Here, we're setting the tip font styles
+$joyride-tip-font-color: $white !default;
+$joyride-tip-font-size: rem-calc(14) !default;
+$joyride-tip-header-weight: $font-weight-bold !default;
+
+// This changes the nub size
+$joyride-tip-nub-size: 10px !default;
+
+// This adjusts the styles for the timer when its enabled
+$joyride-tip-timer-width: 50px !default;
+$joyride-tip-timer-height: 3px !default;
+$joyride-tip-timer-color: $steel !default;
+
+// This changes up the styles for the close button
+$joyride-tip-close-color: $monsoon !default;
+$joyride-tip-close-size: 24px !default;
+$joyride-tip-close-weight: $font-weight-normal !default;
+
+// When Joyride is filling the screen, we use this style for the bg
+$joyride-screenfill: rgba(0,0,0,0.5) !default;
+
+
+// We decided not to make a mixin for this because it relies on
+// predefined classes to work properly.
+@include exports("joyride") {
+  @if $include-html-joyride-classes {
+
+    /* Foundation Joyride */
+    .joyride-list { display: none; }
+
+    /* Default styles for the container */
+    .joyride-tip-guide {
+      background: $joyride-tip-bg;
+      color: $joyride-tip-font-color;
+      display: none;
+      font-family: inherit;
+      font-weight: $font-weight-normal;
+      position: absolute;
+      top: 0;
+      width: 95%;
+      z-index: 101;
+      #{$default-float}: 2.5%;
+    }
+
+    .lt-ie9 .joyride-tip-guide {
+      margin-#{$default-float}: -400px;
+      max-width: 800px;
+      #{$default-float}: 50%;
+    }
+
+    .joyride-content-wrapper {
+      padding: $joyride-tip-padding;
+      width: 100%;
+
+      .button { margin-bottom: 0 !important; }
+
+      .joyride-prev-tip { margin-right: 10px; }
+    }
+
+    /* Add a little css triangle pip, older browser just miss out on the fanciness of it */
+    .joyride-tip-guide {
+      .joyride-nub {
+        border: $joyride-tip-nub-size solid $joyride-tip-bg;
+        display: block;
+        height: 0;
+        position: absolute;
+        width: 0;
+        #{$default-float}: $joyride-tip-position-offset;
+
+        &.top {
+          border-color: $joyride-tip-bg;
+          border-top-color: transparent !important;
+          border-top-style: solid;
+          border-#{$default-float}-color: transparent !important;
+          border-#{$opposite-direction}-color: transparent !important;
+          top: -($joyride-tip-nub-size*2);
+        }
+        &.bottom {
+          border-bottom-color: transparent !important;
+          border-bottom-style: solid;
+          border-color: $joyride-tip-bg !important;
+          border-#{$default-float}-color: transparent !important;
+          border-#{$opposite-direction}-color: transparent !important;
+          bottom: -($joyride-tip-nub-size*2);
+        }
+
+        &.right { right: -($joyride-tip-nub-size*2); }
+        &.left { left: -($joyride-tip-nub-size*2); }
+      }
+    }
+
+    /* Typography */
+    .joyride-tip-guide h1,
+    .joyride-tip-guide h2,
+    .joyride-tip-guide h3,
+    .joyride-tip-guide h4,
+    .joyride-tip-guide h5,
+    .joyride-tip-guide h6 {
+      color: $joyride-tip-font-color;
+      font-weight: $joyride-tip-header-weight;
+      line-height: 1.25;
+      margin: 0;
+    }
+    .joyride-tip-guide p {
+      font-size: $joyride-tip-font-size;
+      line-height: 1.3;
+      margin: rem-calc(0 0 18 0);
+    }
+
+    .joyride-timer-indicator-wrap {
+      border: $joyride-tip-border;
+      bottom: rem-calc(16);
+      height: $joyride-tip-timer-height;
+      position: absolute;
+      width: $joyride-tip-timer-width;
+      #{$opposite-direction}: rem-calc(17);
+    }
+    .joyride-timer-indicator {
+      background: $joyride-tip-timer-color;
+      display: block;
+      height: inherit;
+      width: 0;
+    }
+
+    .joyride-close-tip {
+      color: $joyride-tip-close-color !important;
+      font-size: $joyride-tip-close-size;
+      font-weight: $joyride-tip-close-weight;
+      line-height: .5 !important;
+      position: absolute;
+      text-decoration: none;
+      top: 10px;
+      #{$opposite-direction}: 12px;
+
+      &:hover,
+      &:focus { color: $smoke !important; }
+    }
+
+    .joyride-modal-bg {
+      background: $joyride-screenfill;
+      cursor: $cursor-pointer-value;
+      display: none;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      #{$default-float}: 0;
+    }
+
+    .joyride-expose-wrapper {
+      background-color: $white;
+      border-radius: 3px;
+      box-shadow: 0 0 15px $white;
+      position: absolute;
+      z-index: 102;
+    }
+
+    .joyride-expose-cover {
+      background: transparent;
+      border-radius: 3px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      z-index: 9999;
+    }
+
+
+    /* Styles for screens that are at least 768px; */
+    @media #{$small} {
+      .joyride-tip-guide { width: $joyride-tip-default-width; #{$default-float}: inherit;
+        .joyride-nub {
+          &.bottom {
+            border-bottom-color: transparent !important;
+            border-color: $joyride-tip-bg !important;
+            border-#{$default-float}-color: transparent !important;
+            border-#{$opposite-direction}-color: transparent !important;
+            bottom: -($joyride-tip-nub-size*2);
+          }
+          &.right {
+            border-color: $joyride-tip-bg !important;
+            border-right-color: transparent !important; border-bottom-color: transparent !important;
+            border-top-color: transparent !important;
+            left: auto;
+            right: -($joyride-tip-nub-size*2);
+            top: $joyride-tip-position-offset;
+          }
+          &.left {
+            border-bottom-color: transparent !important;
+            border-color: $joyride-tip-bg !important;
+            border-left-color: transparent !important;
+            border-top-color: transparent !important;
+            left: -($joyride-tip-nub-size*2);
+            right: auto;
+            top: $joyride-tip-position-offset;
+          }
+        }
+      }
+    }
+  }
+}

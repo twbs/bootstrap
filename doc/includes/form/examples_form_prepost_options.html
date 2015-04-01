@@ -1,0 +1,18 @@
+{{#markdown}}
+```scss
+@include prefix($bg, $is-button);
+
+/* Control the background color, which also effect the border and font color */
+$bg: $input-prefix-bg;
+
+/* If you prefix or postfix element is a button, make sure to set this to true */
+$is-button: false;
+```
+{{/markdown}}
+
+<form>
+  <div class="row collapse">
+    <span class="attached-label style custom">Label</span>
+    <input type="text" class="attached-input" placeholder="Value">
+  </div>
+</form>

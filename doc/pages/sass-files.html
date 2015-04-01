@@ -1,0 +1,138 @@
+---
+title: What You Get with Foundation Sass
+---
+
+<h3 class="subheader">We've put together all of the pieces you need in one package, let's see what's inside.</h3>
+
+<hr>
+
+<div class="row">
+  <div class="small-12 columns">
+    <p><a href="{{rel 'sass.html'}}">← Back to Getting Started</a></p>
+    <h2>Everything Inside</h2>
+    <h3 class="subheader">Need a deeper look into what all the Foundation Sass files do? We've got you covered. Or if you simply need a file listing, check <a href="#filelist">here</a>.</h3>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="medium-6 columns">
+    <div class="header-container">
+      <h3>Customization</h3> 
+    </div>
+    <ul class="info-list">
+      <li>Changes made here are preserved during update.</li>
+      <li><strong>_settings.scss</strong><p>All of Foundation's Sass variables can be found and modified here to help you customize your version of Foundation.</p></li>
+      <li><strong>app.scss</strong><p>Here you can determine what stylings will be in your project. By default all of Foundation is imported, but you can deactivate and select specific components you want to import or add your custom Sass here.</p></li>
+      <li><strong>stylesheets folder</strong><p>We include a stylesheets folder where your HTML can refer to the CSS files. When your SCSS files compile, the resulting CSS files are saved here. It is important to not make an changes to files here as they may be overwritten. You can, however, simply write Vanilla CSS inside your SCSS file and it will be compiled just fine.</p></li>
+    </ul>
+  </div>
+  <div class="medium-6 columns">
+    <div class="header-container">
+      <h3>JavaScript</h3> 
+    </div>
+    <ul class="info-list">
+      <li><strong>app.js</strong><p>We initialize Foundation's javascript components here. This is also a great place to add in your own custom javascript.</p></li>
+      <li><strong>jquery.min.js</strong><p>A minified jQuery file which is required for many Foundation components to work.</p></li>
+      <li>The following JS files will be linked up right before the closing ```</body>``` tag. This ensures that your styles and page loads first without having to wait for all the JS to load:
+{{#markdown}}
+```html
+{{> examples_what_you_get_javascript_include}}
+```
+{{/markdown}}</li>
+
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-6 columns">
+    <div class="header-container">
+      <h3>Bower Components</h3> 
+    </div>
+    <ul class="info-list">
+      <li>The recommended install uses Bower to package up all the Foundation components and manage any updates. Bower manages the contents of this folder so don't change anything in this folder.</li>
+      <li><strong>fastclick.js</strong><p>Fastclick gets rid of the ~300ms delay that mobile users expericing when "tapping" on a button. It's not a Foundation requirement, but makes your site feel faster.</p></li>
+      <li><strong>foundation folder</strong><p>This is where we keep all the files that make foundation work. Any CSS and SCSS partials and javascript live here. Including the components here allows you to easily update your project with ```bower update``` command.</p></li>
+      <li><strong>jquery</strong><p> We've included jQuery in here because anytime there is an update to jQuery with a Foundation release it will be updated as well.</p></li>
+      <li><strong>jquery.cookie</strong><p>This is included in Foundation for our Joyride feature. It allows the browser to create a cookie specifically for the option to not show the Joyride tour a second time.</p></li>
+      <li><strong>modernizr</strong><p>This acts as a shim for HTML5 elements that older browsers may not recognize, and provides detection for mobile devices. It also helps provide touch support on mobile devices with various browsers.</p></li>
+      <li><strong>normalize.scss</strong><p>We've included a copy of Normalize here to give you the option to remove quirks in browsers so that all webpages render elements consistently. We recommend you use this because some Foundation styles are dependant on it.</p></li>
+    </ul>
+  </div>
+  <div class="medium-6 columns">
+    <div class="header-container">
+      <h3>Pre-Packaged Essentials</h3> 
+    </div>
+    <ul class="info-list">
+      <li><strong>index.html</strong><p>This is an example index file which contains some sample markup (the grid, buttons, etc) as well as the basic structure of a responsive Foundation page. Feel free to change or destroy this file as you see fit, just bear in mind that some of the document ```<head>``` is required for the page to work including the CSS/JS that is linked up at the end of the document.</p></li>
+      <li><strong>humans.txt</strong><p>Located in the site root just next to the robots.txt file. You don't have to use if you don't want. You can mention the developer, the designer, the copywriter, the webmaster, the SEO, SEM or SMO. Name as many people who helped make the site, or not.</p></li>
+      <li><strong>robots.txt</strong><p>Website owners use the robots.txt file to give instructions about their site to web-crawling robots (also known as Web Wanderers, Crawlers, or Spiders); this is called The Robots Exclusion Protocol. Adding this page allows you to block web robots from indexing parts of your site. You can read more about it <a href="http://zurb.us/1jixgzu">here</a>.</p></li>
+      <li><strong>bower.json</strong><p>Bower helps you to download JS/SCSS/CSS files to your project folder for popular projects like Foundation and jQuery. It also allows you to easily update those files when a library is updated. Bower keeps track of these packages in a manifest file, bower.json. You can make it work for you and your workflow. You can target what version to update your project to here.</p></li>
+      <li><strong>config.rb</strong> (compass project only)<p>This is a Compass configuration file. It allows you to specify how to compile your Sass files (i.e. should the CSS be compressed or not) and also where to place the compiled CSS files (default is in the stylesheets/ directory). You can read more about Compass best practices <a href="http://compass-style.org/help/tutorials/best_practices/">here</a>.</p></li>
+    </ul>
+  </div>
+</div>
+
+<hr class="dashed minus">
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2 id="filelist">Foundation File List</h2>
+    <h3 class="subheader">Our Foundation Sass file structure will look just like this after you complete the download.</h3>
+    <div class="row file-list">
+      <div class="medium-6 columns">
+        <img class="show-for-medium-up" src="assets/img/images/file_listing.png">
+      </div>
+      <div class="medium-6 columns">
+        <ul>
+          <li><i class="fi-folder"></i>&nbsp;&nbsp;bower_components</li>
+          <hr>
+          <li><i class="fi-folder"></i>&nbsp;&nbsp;js</li>
+            <ul>
+              <li><i class="fi-page"></i>&nbsp;&nbsp;app.js</li>
+            </ul>
+          <hr>
+          <li><i class="fi-folder"></i>&nbsp;&nbsp;scss</li>
+            <ul>
+              <li><i class="fi-page"></i>&nbsp;&nbsp;_settings.scss</li>
+              <li><i class="fi-page"></i>&nbsp;&nbsp;app.scss</li>
+            </ul>
+          <hr>
+          <li><i class="fi-folder"></i>&nbsp;&nbsp;stylesheets</li>
+            <ul>
+              <li><i class="fi-page"></i>&nbsp;&nbsp;app.css</li>
+            </ul>
+          <hr>
+          <li><i class="fi-page"></i>&nbsp;&nbsp;bower.json</li>
+          <li><i class="fi-page"></i>&nbsp;&nbsp;config.rb</li>
+          <li><i class="fi-page"></i>&nbsp;&nbsp;humans.txt</li>
+          <li><i class="fi-page"></i>&nbsp;&nbsp;index.html</li>
+          <li><i class="fi-page"></i>&nbsp;&nbsp;robots.txt</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> 
+<div class="row">
+  <div class="small-12 columns">
+    <p>What to know how to properly modify your files? <a href="{{rel 'using-sass.html'}}">Check out how to use Foundation Sass →</a></p>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>HTML Page Markup</h2>
+    <p>As you'll see in our ```index.html``` sample, Foundation pages have some specific markup required for them to work. This code block is a simple boilerplate for content-free Foundation pages that we hope comes in handy. Go ahead and copy/paste this in when creating a new page.</p>
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_what_you_get_index_include}}
+```
+{{/markdown}}
+  </div>
+</div>
+

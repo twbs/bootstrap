@@ -1,0 +1,190 @@
+---
+title: Tabs
+---
+
+<h3 class="subheader">Tabs are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.</h3>
+
+***
+
+### Horizontal Tabs
+
+<div>
+{{> examples_tabs_intro}}
+</div>
+
+### Vertical Tabs
+
+<div>
+{{> examples_tabs_vertical_intro}}
+</div>
+
+***
+
+<h3>Basic</h3>
+
+You can create a group of horizontal tabs using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_tabs_basic}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_tabs_basic}}
+  </div>
+</div>
+
+<p class="lead panel">Note: Tabs used to require `<dl>` and `<dd>` markup. It now works with `<ul>`'s and `<li>`'s as well.</p>
+
+***
+
+### Vertical Tabs
+
+You can create a group of vertical tabs using minimal markup. Just adding the class `vertical` changes the orientation of horizontal tabs.
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+{{> examples_tabs_vertical_basic}}
+```
+{{/markdown}}
+
+<h4>Rendered HTML</h4>
+
+{{> examples_tabs_vertical_basic}}
+
+<div class="clearfix"></div>
+
+***
+
+### Deep linking to tabs or tab contents
+
+The tabs Foundation component can parse the location hash value and open the corresponding tab content pane. To enable deep linking set `data-options="deep_linking:true"`. If the location hash maps to an element ID within a tab content pane, then the appropriate tab will become active and the browser window will scroll to the specified element. If you do not want to scroll to the specified element then set `data-options="scroll_to_content: false"`.
+
+In the following example, deep linking is enabled. If the location hash is `#tabs-deeplink-2` then the second tab will become active. If the location hash is `#tabs-deeplink-content-2` then the second tab will become active, and the browser will scroll to the paragraph tag with ID, tabs-deeplink-content-2.
+
+<ul class="tabs" data-tab role="tablist" data-options="deep_linking: true">
+  <li class="tab-title active" role="presentational"><a href="#tabs-deeplink-1" role="tab" tabindex="0" aria-selected="true" controls="tabs-deeplink-1">Tab 1</a></li>
+  <li class="tab-title active" role="presentational"><a href="#tabs-deeplink-2" role="tab" tabindex="0" aria-selected="true" controls="tabs-deeplink-2">Tab 2</a></li>
+  <li class="tab-title active" role="presentational"><a href="#tabs-deeplink-3" role="tab" tabindex="0" aria-selected="true" controls="tabs-deeplink-3">Tab 3</a></li>
+</ul>
+<div class="tabs-content">
+  <section id="tabs-deeplink-1" role="tabpanel" aria-hidden="false" class="content active">
+    <h2>First Panel Header</h2>
+    <p id="tabs-deeplink-content-1">First panel content goes here...</p>
+  </section>
+  <section id="tabs-deeplink-2"role="tabpanel" aria-hidden="true" class="content" >
+    <h2>Second Panel Header</h2>
+    <p id="tabs-deeplink-content-2"> Second panel content goes here...</p>
+  </section>
+  <section id="tabs-deeplink-3"role="tabpanel" aria-hidden="true" class="content" >
+    <h2>Third Panel Header</h2>
+    <p id="tabs-deeplink-content-3"> Third panel content goes here...</p>
+  </section>
+</div>
+
+***
+
+### Callbacks
+
+There are two ways to bind to callbacks in your tabs.
+
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Callback function</h4>
+```html
+<script>
+  $(document).foundation({
+    tab: {
+      callback : function (tab) {
+        console.log(tab);
+      }
+    }
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Toggled Event</h4>
+```html
+<script>
+  $('#myTabs').on('toggled', function (event, tab) {
+    console.log(tab);
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+You can make tabs more accessible by using the code snippet below. The tabs are keyboard accessible meaning that a user can use the tab key or arrow keys to navigate through them. The role of `tablist` tells a screen reader what the element is and reads the necessary content.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_tabs_accessibility}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_tabs_accessibility}}
+  </div>
+</div>
+
+***
+
+### Adding New Tab Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('tab', 'reflow');
+```
+{{/markdown}}
+
+***
+
+## Customize with Sass
+
+Tabs can be easily customized with the Sass variables provided in the `_settings.scss` file.
+
+<h4>SCSS</h4>
+
+{{> examples_tabs_variables}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/tabs";
+```

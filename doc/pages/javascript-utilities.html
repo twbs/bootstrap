@@ -1,0 +1,378 @@
+---
+title: JavaScript Utilities
+---
+
+<h3 class="subheader">Foundation includes a handful of helpful JavaScript utilities to help you add common functionalities to your apps and plugins.</h3>
+
+***
+
+<h2 id="using">Using the JavaScript Utilities</h2>
+
+There are two ways to use the Foundation utilities: by calling them within the Foundation.utils namespace and by inheriting them into an object.
+
+<h4>Foundation.utils</h4>
+
+As long as <kbd>foundation.js</kbd> has been loaded into the page, you can access any of the Foundation utilities by calling <code>Foundation.utils.{function_name}</code>.
+
+For example, if you type the following into the JavaScript console it will return a 6-digit alphanumeric string.
+
+{{#markdown}}
+```javascript
+// Generates a random string of length n
+Foundation.utils.random_str(6);
+```
+{{/markdown}}
+
+<h4>Method Inheritance</h4>
+
+If you have any plain ole&#8217; JavaScript object (a POJO), then you can inherit any of the Foundation JavaScript utilities by calling the <code>Foundation.inherit</code> method. To use the inherit method, pass in the object you want to inherit the methods, followed by a space separated string of methods that you want to inherit.
+
+{{#markdown}}
+```javascript
+// Simple example
+var user = {};
+Foundation.inherit(user, 'random_str data_options');
+
+// Advanced Example
+Person = function() {
+  this.init = function() {
+    Foundation.inherit(this, 'random_str data_options');
+  }
+};
+
+var user = new Person();
+user.init();
+
+```
+{{/markdown}}
+
+
+***
+
+<h2 id="selector">Selector Engine</h2>
+
+While jQuery&#8217;s selector engine is quite versatile, it can sometimes be a bit slow. Foundation&#8217;s &#8220;Big S&#8221; selector leverages the native browser API by using <code>querySelectorAll()</code>, making it up to 20% faster.
+
+&#8220;Big S&#8221; can be used as a drop-in replacement for the jQuery $ selector in most cases.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>jQuery Selector</h4>
+{{#markdown}}
+```javascript
+// A simple selector
+$('.class #id');
+
+// A bracket selector
+$('label[for="input1"]');
+
+// A scoped selector
+$('dd > .content', '#accordion');
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>&#8220;Big S&#8221; Selector</h4>
+{{#markdown}}
+```javascript
+// A simple selector
+Foundation.utils.S('.class #id');
+
+// A bracket selector
+Foundation.utils.S('label[for="input1"]');
+
+// A scoped selector
+Foundation.utils.S('dd > .content', '#accordion');
+```
+{{/markdown}}
+  </div>
+</div>
+
+<h4>Method Signature</h4>
+{{#markdown}}
+```javascript
+// Arguments:
+//    Selector (String): CSS selector describing the element(s) to be
+//    returned as a jQuery object.
+//
+//    Scope (String): CSS selector describing the area to be searched. Default
+//    is document.
+//
+// Returns:
+//    Element (jQuery Object): jQuery object containing elements matching the
+//    selector within the scope.
+
+S(selector, scope) { ... }
+```
+{{/markdown}}
+
+***
+
+<h2 id="delay">Throttle &amp; Debounce</h2>
+
+Many times when you create a callback, it&#8217;s advantageous to add a delay in order to prevent it from being triggered multiple times. Foundation includes two types of callback delays: <code>throttle</code> and <code>debounce</code>.
+
+<strong>Throttle</strong> prevents a function from being executed more than once every n milliseconds. Throttling is often used in cases where it&#8217;s disadvantageous to trigger a callback every time an event is triggered (during a continuous action), but you still want to trigger a reaction while the event is occurring. Examples of this would be reacting to the browser window being resized, or animating an element.
+
+<strong>Debounce</strong> prevents a function from being executed until it stops being invoked for n milliseconds. Debouncing is often used to prevent an action from being performed twice, such as double clicking a submit button, or to delay an event from occurring accidentally, such as an event triggered by hover.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>Without Delay</h4>
+{{#markdown}}
+```javascript
+// Button click handler
+$('.button').on('click', function(e){
+  // Handle Click
+});
+
+// Resize function
+$(window).on('resize', function(e){
+  // Do responsive stuff
+});
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>With Delay</h4>
+{{#markdown}}
+```javascript
+// Debounced button click handler
+$('.button').on('click', Foundation.utils.debounce(function(e){
+  // Handle Click
+}, 300, true));
+
+// Throttled resize function
+$(window).on('resize', Foundation.utils.throttle(function(e){
+  // Do responsive stuff
+}, 300));
+```
+{{/markdown}}
+  </div>
+</div>
+
+<h4>Method Signature</h4>
+{{#markdown}}
+```javascript
+// Arguments:
+//    Func (Function): Function to be throttled.
+//
+//    Delay (Integer): Function execution threshold in milliseconds.
+//
+// Returns:
+//    Lazy_function (Function): Function with throttling applied.
+
+throttle(func, delay) { ... }
+
+// Arguments:
+//    Func (Function): Function to be debounced.
+//
+//    Delay (Integer): Function execution threshold in milliseconds.
+//
+//    Immediate (Bool): Whether the function should be called at the beginning
+//    of the delay instead of the end. Default is false.
+//
+// Returns:
+//    Lazy_function (Function): Function with debouncing applied.
+
+debounce(func, delay, immediate) { ... }
+```
+{{/markdown}}
+
+***
+
+<h2 id="data-options">Data Options</h2>
+
+The <code>data_options</code> method parses a semicolon delimited set of values in the selected element&#8217;s <code>data-options</code> HTML attribute. It&#8217;s useful for allowing settings to be passed into a script or plugin from the markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div id="target" data-options="delay:4;color:red;animal:unicorn"></div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Javascript</h4>
+{{#markdown}}
+```javascript
+var settings = Foundation.utils.data_options($('#target'));
+```
+{{/markdown}}
+  </div>
+</div>
+
+<h4>Method Signature</h4>
+{{#markdown}}
+```javascript
+// Arguments:
+//    el (jQuery Object): Element to be parsed.
+//    data_attr_name (string): Optional name of the data attribute containing the options string (defaults to 'options').
+//
+// Returns:
+//    Options (Javascript Object): Contents of the element's data-options
+//    attribute.
+
+data_options(el, data_attr_name) { ... }
+```
+{{/markdown}}
+
+***
+
+<h2 id="media-queries">Media Queries</h2>
+
+Media queries are the backbone of most responsive CSS techniques, though they can be a bit unwieldy to deal with. To make them easier to deal with, we&#8217;ve included two helper methods (<code>register_media</code> and <code>add_custom_rule</code>), as well as polyfilled the native function <code>matchMedia</code> to work with all the browsers Foundation supports.
+
+<strong>Register Media</strong> is used to add a new media query to Foundation&#8217;s list of JavaScript-accessible media queries. These can be found by calling <code>Foundation.media_queries</code>. The method works by appending a meta tag to the head of the document and checking the <code>font-family</code> of the element&#8217;s computed styles for the media query string.
+
+<strong>Add Custom Rules</strong> is a method to add a custom CSS rule as a string to the document. If a media query is passed in the method will apply the style within that media query, otherwise it will be applied globally.
+
+<strong>Match Media</strong> can be used to check if the browser currently matches the media query passed in as a string. To use the function, call <code>matchMedia()</code> with the media query as an argument, and check the <code>matches</code> property (see example below).
+
+<p>In addition to this, you can also check the default Foundation media queries. The available methods are:</p>
+
+{{#markdown}}
+```javascript
+// Small queries
+Foundation.utils.is_small_only();
+Foundation.utils.is_small_up();
+
+// Medium queries
+Foundation.utils.is_medium_only();
+Foundation.utils.is_medium_up();
+
+// Large queries
+Foundation.utils.is_large_only();
+Foundation.utils.is_large_up();
+
+// XLarge queries
+Foundation.utils.is_xlarge_only();
+Foundation.utils.is_xlarge_up();
+
+// XXLarge queries
+Foundation.utils.is_xxlarge_only();
+Foundation.utils.is_xxlarge_up();
+```
+{{/markdown}}
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>CSS</h4>
+{{#markdown}}
+```css
+/*
+* Note: The media query string in the font-family property has to be surrounded
+* by slashes to be recognized by Phantom.js
+*
+* Note: Instead of being defined in the CSS, the following style rule could also
+* be added to the document using Foundation.utils.add_custom_rule().
+*/
+meta.my-mq-custom {
+  font-family: "/only screen and (min-width: 40em)/";
+  width: 40em;
+}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Javascript</h4>
+{{#markdown}}
+```javascript
+// Register custom media query
+Foundation.utils.register_media('custom', 'my-mq-custom');
+
+// Check if the media query is activated
+if (matchMedia(Foundation.media_queries['custom']).matches){
+  ...
+};
+
+// Apply a custom CSS rule to the media query
+Foundation.utils.add_custom_rule('.js-generated-element { padding-top: ' + element.data('height') + 'px }', 'custom');
+```
+{{/markdown}}
+  </div>
+</div>
+
+<h4>Method Signature</h4>
+{{#markdown}}
+```javascript
+// Arguments:
+//    Media (String): Key string for the media query to be stored as in
+//    Foundation.media_queries
+//
+//    Class (String): Class name for the generated <meta> tag
+
+register_media(media, class) { ... }
+
+// Arguments:
+//    Rule (String): CSS rule to be appended to the document.
+//
+//    Media (String): Optional media query string for the CSS rule to be
+//    nested under.
+
+add_custom_rule(rule, media) { ... }
+```
+{{/markdown}}
+
+***
+
+<h2 id="image-loaded">Image Loaded</h2>
+
+While binding to the document ready event is usually good enough for most plugins that manipulate the DOM, sometimes you need ALL the content to be loaded before you start calculating things like element sizes. This is especially important with images, which can take a while to load and significantly affect the layout of the page, depending on their size.
+
+This can be avoided by using the <code>image_loaded</code> method, which lets you pass in a callback to be executed when an image has completely finished loading. Passing in a jQuery selector that matches multiple images will cause the callback to be executed when all of the images are fully loaded.
+
+<h4>Example</h4>
+{{#markdown}}
+```javascript
+Foundation.utils.image_loaded($('img.wait-for-me'), function(){
+  console.log('Image Loaded! :)');
+});
+```
+{{/markdown}}
+
+<h4>Method Signature</h4>
+{{#markdown}}
+```javascript
+// Arguments:
+//    Image (jQuery Object): Image(s) to check if loaded.
+//
+//    Callback (Function): Foundation to execute when image is fully loaded.
+
+image_loaded(image, callback) { ... }
+```
+{{/markdown}}
+
+***
+
+<h2 id="random">Random String</h2>
+
+The <code>random_str</code> method is a helper for generating random strings of a given length. This method is used by some of the Foundation plugins to ensure a reasonable probability of non-collision for IDs in dynamically generated DOM objects. Note that <code>random_str</code> should not be considered cryptographically secure.
+
+<h4>Example</h4>
+{{#markdown}}
+```javascript
+>> Foundation.utils.random_str(6);
+"P47PGD"
+>> Foundation.utils.random_str(6);
+"JvuXFc"
+>> Foundation.utils.random_str(6);
+"XOxB7j"
+```
+{{/markdown}}
+
+<h4>Method Signature</h4>
+{{#markdown}}
+```javascript
+// Arguments:
+//    Length (Integer): Length of string to be generated. Defaults to random
+//    integer.
+//
+// Returns:
+//    Rand (String): Pseudo-random, alphanumeric string.
+
+random_str(length) { ... }
+```
+{{/markdown}}

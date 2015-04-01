@@ -1,0 +1,293 @@
+---
+title: Equalizer
+---
+
+<h3 class="subheader">Equalizer is a great way to create equal height content on your page.</h3>
+
+<div class="row" data-equalizer>
+  <div class="medium-4 columns">
+    <div class="panel" data-equalizer-watch>
+      <h3>Panel 1</h3>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="callout panel" data-equalizer-watch>
+      <h3>Panel 2</h3>
+      <ul>
+         <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+         <li>Aliquam tincidunt mauris eu risus.</li>
+         <li>Vestibulum auctor dapibus neque.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="panel" data-equalizer-watch>
+      <h3>Panel 3</h3>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+    </div>
+  </div>
+</div>
+
+## Basic
+
+You can create an equal height container using a few data attributes. Apply the `data-equalizer` attribute to a parent container. Then apply the `data-equalizer-watch` attribute to each element you'd like to have an equal height. The height of `data-equalizer-watch` attribute will be equal to that of the tallest element.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="row" data-equalizer>
+  <div class="large-6 columns panel" data-equalizer-watch>
+    ...
+  </div>
+  <div class="large-6 columns panel" data-equalizer-watch>
+    ...
+  </div>
+</div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="row" data-equalizer>
+      <div class="large-6 columns panel" data-equalizer-watch>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+      </div>
+      <div class="large-6 columns panel" data-equalizer-watch>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Nested Elements
+
+You can also nest "equalized" elements in other Equalizer elements. Apply the `data-equalizer` attribute to a parent container and assign a unique name to it. Then apply the `data-equalizer-watch` attribute to each nested element with the corresponding name. The height of `data-equalizer-watch` attribute will be equal to that of the tallest element.
+
+### HTML
+
+{{#markdown}}
+```html
+<div class="row" data-equalizer="foo">
+  <div class="medium-4 columns" >
+    <div class="panel" data-equalizer-watch="foo">
+    <h3>Parent panel</h3>
+    <div class="row" data-equalizer="bar">
+      <div class="panel" data-equalizer-watch="bar">
+        ...
+      </div>
+      <div class="panel" data-equalizer-watch="bar">
+        ...
+      </div>
+      <div class="panel" data-equalizer-watch="bar">
+        ...
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="callout panel" data-equalizer-watch="foo">
+      ...
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="panel" data-equalizer-watch="foo">
+      ...
+    </div>
+  </div>
+</div>
+```
+{{/markdown}}
+
+### Rendered HTML
+<div class="row">
+  <div class="large-12 columns">
+    <h4>Rendered HTML</h4>
+    <div class="row" data-equalizer="foo">
+      <div class="medium-4 columns" >
+        <div class="panel" data-equalizer-watch="foo">
+        <h3>Parent panel</h3>
+        <div class="row" data-equalizer="bar">
+          <div class="panel" data-equalizer-watch="bar">
+            <h3>Nested Panel 1</h3>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+          </div>
+          <div class="panel" data-equalizer-watch="bar">
+            <h3>Nested Panel 2</h3>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+          </div>
+                <div class="panel" data-equalizer-watch="bar">
+            <h3>Nested Panel 3</h3>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="medium-4 columns">
+        <div class="callout panel" data-equalizer-watch="foo">
+          <h3>Panel 2</h3>
+          <ul>
+             <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+             <li>Aliquam tincidunt mauris eu risus.</li>
+             <li>Vestibulum auctor dapibus neque.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="medium-4 columns">
+        <div class="panel" data-equalizer-watch="foo">
+          <h3>Panel 3</h3>
+          <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Advanced
+
+Perhaps you need to create items that are positioned at the bottom of your input. For example Sign Up buttons on some [pricing tables]({{relative absolute 'dist/docs/components/pricing_tables.html'}}).
+
+### HTML
+
+{{#markdown}}
+```html
+<div class="row" data-equalizer>
+  <div class="large-6 columns">
+    <ul class="pricing-table" data-equalizer-watch>
+      ...
+      <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+    </ul>
+  </div>
+  <div class="large-6 columns">
+    <ul class="pricing-table" data-equalizer-watch>
+      ...
+      <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+    </ul>
+  </div>
+</div>
+```
+{{/markdown}}
+
+### Rendered HTML
+<div class="row" data-equalizer>
+  <div class="small-6 columns">
+    <ul class="pricing-table" data-equalizer-watch>
+      <li class="title">Standard</li>
+      <li class="price">$99.99</li>
+      <li class="bullet-item">1 Database</li>
+      <li class="bullet-item">5GB Storage</li>
+      <li class="bullet-item">20 Users</li>
+      <li class="cta-button"><a class="button floor" href="#">Buy Now</a></li>
+    </ul>
+  </div>
+  <div class="small-6 columns">
+    <ul class="pricing-table" data-equalizer-watch>
+      <li class="title">Cadillac</li>
+      <li class="price">$999.99</li>
+      <li class="bullet-item">&infin; Databases</li>
+      <li class="bullet-item">&infin; Storage</li>
+      <li class="bullet-item">&infin; Users</li>
+      <li class="bullet-item">SSL Support</li>
+      <li class="bullet-item">24/7 Support</li>
+      <li class="cta-button"><a class="button" href="#">Buy Now</a></li>
+    </ul>
+  </div>
+</div>
+
+---
+
+## Using the Javascript
+
+Before you can use Equalizer you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
+
+
+Just add `foundation.equalizer.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{> examples_equalizer_javascript}}
+
+Required Foundation Library: `foundation.equalizer.js`
+
+### Optional Javascript Configuration
+
+#### JS
+
+{{#markdown}}
+```js
+$(document).foundation({
+  equalizer : {
+    // Specify if Equalizer should make elements equal height once they become stacked.
+    equalize_on_stack: false
+  }
+});
+```
+{{/markdown}}
+
+---
+
+## Callbacks
+
+There are two ways to bind to callbacks in your equalizers.
+
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the equalizer plugin emitted un-namespaced `before-height-change` and `after-height-change` events, however, these have been replaced by the namespaced `before-height-change.fndtn.equalizer` and `after-height-change.fndtn.equalizer` events. The un-namespaced events have been fully deprecated.</p>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>Callback Function</h4>
+
+{{#markdown}}
+```js
+$(document).foundation({
+  equalizer: {
+    before_height_change: function(){
+      // do something before the height changes
+    },
+    after_height_change: function(){
+      // do something after the height changes
+    }
+  }
+});
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Events</h4>
+
+{{#markdown}}
+```js
+$(document).on('before-height-change.fndtn.equalizer', function(){
+  // do something before the height changes
+});
+
+$(document).on('after-height-change.fndtn.equalizer', function(){
+  // do something after the height changes
+});
+```
+{{/markdown}}
+  </div>
+</div>
+
+### Adding New Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation();
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('equalizer', 'reflow');
+```
+{{/markdown}}
+
+
+

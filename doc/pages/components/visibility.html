@@ -1,0 +1,103 @@
+---
+title: Visibility Classes
+meta: Visibility
+---
+
+<h3 class="subheader">Visibility classes let you show or hide elements based on screen size or device orientation. You can use visibility classes to control which elements users see depending on their browsing environment.</h3>
+
+***
+
+{{> examples_visibility_basic}}
+
+***
+
+### Show by Screen Size
+
+In this example, we use the **show** visibility classes to show certain strings of text based on the device on which users view a page. If their browser meets the class's conditions, the element will be shown. If not, it will be hidden.
+
+{{> examples_visibility_show}}
+
+### Hide by Screen Size
+
+This example shows the opposite: It uses the **hide** visibility classes to state which elements should disappear based on your device's screen size or orientation. Users will see elements on every browser **except** those that meet these conditions.
+
+{{> examples_visibility_hide}}
+
+### Orientation Detection
+
+This straightforward example shows how two strings of text determine whether or not an element is visible in different orientations. This will change on mobile devices when you rotate the device. On desktop, the orientation is almost always reported as landscape.
+
+{{> examples_visibility_orientation}}
+
+### Touch Detection
+
+There are also visibility classes to hide or show content based on whether a device supports touch (as determined by Modernizr).
+
+{{> examples_visibility_touch}}
+
+***
+
+## Accessibility
+
+Adding `display: none` to an element will prevent screen readers from reading it. However, there are techniques to hide content while still making it readable by screen readers.
+
+### Show for Screen Readers Only
+
+To visually hide content, while still allowing assistive technology to read it, add the class `show-for-sr`.
+
+{{> examples_accessibility_showforsr}}
+
+### Hide for Screen Readers Only
+
+To hide text from assistive technology, while still keeping it visible, add the attribute `aria-hidden="true"`. This doesn't affect how the element looks, but screen readers will skip over it.
+
+{{> examples_accessibility_hideforsr}}
+
+### Creating Skip Links
+
+If your site has a lot of navigation, a screen reader will have to read through the entire navigation to get to your site's content. To remedy this, you can add a "skip link" at the very top of your page, which will send the user farther down the page, past the navigation when clicked on.
+
+Use the class `show-on-focus` to hide an element, *except* when it has focus.
+
+{{> examples_accessibility_skiplinks}}
+
+### Responsive Visibility
+
+Finally, if you want to hide some content but still make it accessible for screen readers, use the **hidden** visibility classes. Do not confuse these classes with **hide** visibility classes. Use these classes in conjunction with the **hide** and **show** visibility classes to control complex layouts while offering accessibility for those using screen readers.
+
+{{> examples_accessibility_hidden}}
+
+To reverse the rules defined by **hidden**, use the **visible** visibility classes.
+
+{{> examples_accessibility_visible}}
+
+***
+
+## Print Styles
+
+Foundation includes print styles developed by HTML5 Boilerplate to give you some basic print-specific styles. These are activated when you print through a media query. It includes:
+
+* Clearing out backgrounds, box shadows and text shadows
+* Appending link URLs after the anchor text
+* Bordering blockquotes and pre elements
+* Page cleanup and window minimization
+
+On top of that, Foundation includes a couple of simple classes you can use to control elements printing, or not printing. Simply attach `.show-for-print` to an element to only show when printing, and `.hide-for-print` to hide something when printing.
+
+Available classes:
+- `.show-for-print` , `.print-only` (Visable for printing)
+- `.hide-for-print` , `.hide-on-print` (Hidden while printing)
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/visibility";
+```
+{{/markdown}}

@@ -1,0 +1,77 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{default title meta}} | Foundation Docs</title>
+    <link rel="icon" href="{{assets}}/img/icons/favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{assets}}/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{assets}}/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{assets}}/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="{{assets}}/img/icons/apple-touch-icon-precomposed.png">
+
+    <meta name="description" content="{{default description "Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more."}}">
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com">
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2014">
+
+    <link href="{{assets}}/css/docs.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" />
+    <script src="{{assets}}/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+        {{> topbar}}
+        {{> offcanvas-nav}}
+
+        <section role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-4 columns">
+              <div class="hide-for-small">
+                {{> sidebar}}
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+              <h1 id="{{slugify title}}">{{title}}</h1>
+              {{#markdown}}
+                {{> body}}
+              {{/markdown}}
+            </div>
+          </div>
+          {{> foundation-intro-banner}}
+          {{> footer}}
+        </section>
+
+      </div>
+    </div>
+
+    <script src="{{assets}}/js/templates.js"></script>
+    <script src="{{assets}}/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+//
+// @name _sub-nav.scss
+// @dependencies _global.scss
+//
+
+//
+// @variables
+//
+
+$include-html-nav-classes: $include-html-classes !default;
+
+// We use these to control margin and padding
+$sub-nav-list-margin: rem-calc(-4 0 18) !default;
+$sub-nav-list-padding-top: rem-calc(4) !default;
+
+// We use this to control the definition
+$sub-nav-font-family: $body-font-family !default;
+$sub-nav-font-size: rem-calc(14) !default;
+$sub-nav-font-color: $aluminum !default;
+$sub-nav-font-weight: $font-weight-normal !default;
+$sub-nav-text-decoration: none !default;
+$sub-nav-padding: rem-calc(3 16) !default;
+$sub-nav-border-radius: 3px !default;
+$sub-nav-font-color-hover: scale-color($sub-nav-font-color, $lightness: -25%) !default;
+
+
+// We use these to control the active item styles
+
+$sub-nav-active-font-weight: $font-weight-normal !default;
+$sub-nav-active-bg: $primary-color !default;
+$sub-nav-active-bg-hover: scale-color($sub-nav-active-bg, $lightness: -14%) !default;
+$sub-nav-active-color: $white !default;
+$sub-nav-active-padding: $sub-nav-padding !default;
+$sub-nav-active-cursor: default !default;
+
+$sub-nav-item-divider: "" !default;
+$sub-nav-item-divider-margin: rem-calc(12) !default;
+
+//
+// @mixins
+//
+
+
+// Create a sub-nav item
+//
+// $font-color - Font color. Default: $sub-nav-font-color.
+// $font-size - Font size. Default: $sub-nav-font-size.
+// $active-bg - Background of active nav item. Default: $sub-nav-active-bg.
+// $active-bg-hover - Background of active nav item, when hovered. Default: $sub-nav-active-bg-hover.
+@mixin sub-nav(
+  $font-color: $sub-nav-font-color,
+  $font-size: $sub-nav-font-size,
+  $active-bg: $sub-nav-active-bg,
+  $active-bg-hover: $sub-nav-active-bg-hover) {
+  display: block;
+  margin: $sub-nav-list-margin;
+  overflow: hidden;
+  padding-top: $sub-nav-list-padding-top;
+  width: auto;
+
+  dt {
+    text-transform: uppercase;
+  }
+
+  dt,
+  dd,
+  li {
+    color: $font-color;
+    float: $default-float;
+    font-family: $sub-nav-font-family;
+    font-size: $font-size;
+    font-weight: $sub-nav-font-weight;
+    margin-#{$default-float}: rem-calc(16);
+    margin-bottom: 0;
+
+    a {
+      color: $sub-nav-font-color;
+      padding: $sub-nav-padding;
+      text-decoration: $sub-nav-text-decoration;
+
+      &:hover {
+        color: $sub-nav-font-color-hover;
+      }
+    }
+
+    &.active a {
+      @include radius($sub-nav-border-radius);
+      background: $active-bg;
+      color: $sub-nav-active-color;
+      cursor: $sub-nav-active-cursor;
+      font-weight: $sub-nav-active-font-weight;
+      padding: $sub-nav-active-padding;
+
+      &:hover {
+        background: $active-bg-hover;
+      }
+    }
+
+    @if $sub-nav-item-divider != "" {
+      margin-#{$default-float}: 0;
+
+      &:before {
+        content: "#{$sub-nav-item-divider}";
+        margin: 0 $sub-nav-item-divider-margin;
+      }
+
+      &:first-child:before {
+        content: "";
+        margin: 0;
+      }
+    }
+  }
+}
+
+@include exports("sub-nav") {
+  @if $include-html-nav-classes {
+    .sub-nav { @include sub-nav; }
+  }
+}

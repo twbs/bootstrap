@@ -1,0 +1,144 @@
+---
+title: Switches
+meta: Toggle Switches
+---
+
+<h3 class="subheader">Switches are toggle element that switch between an Off and On state on tap or click. They make use of checkbox inputs (or radio buttons) and require no javascript.</h3>
+
+***
+
+<h3>Basic</h3>
+
+You can create a switch using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_switch_basic_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered Checkbox HTML</h4>
+{{> examples_switch_basic}}
+  </div>
+</div>
+
+The class options:
+
+* `radius`: Add this to the the switch container to get a 3px radius paddle and edges
+* `round`: Add this to the the switch container to get a round paddle and edges
+* `tiny`: Set the height and text of the switch to tiny
+* `small`: Set the height and text of the switch to small
+* `large`: Set the height and text of the switch to large
+
+***
+
+## Accessibility
+
+To have switches work with ARIA, you will need to change the div to fieldset and add a `tabindex` of 0. Here is how to use `aria-checked` when using Switches to make it accessible to screen readers:
+
+Because our switches are non-standard form elements, assistive devices need help figuring out what they are. To make switches more accessible, use the `<fieldset>` tag as a container, with the attribute `tabindex="0"`, so keyboards can tab to it.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_switch_basic_aria_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_switch_basic_aria}}
+  </div>
+</div>
+
+***
+
+## Customize with Sass
+
+Switches can be easily customized using our Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_switch_variables}}
+
+The markup is very simple; you need a class on the container for the switch, and then an input and a label. You can use checkboxes or radio buttons &mdash; for radiu buttons remember that they can only be turned off by another radio button (one must be on).
+
+{{#markdown}}
+```html
+<div class="switch">
+  <input id="switchName" type="checkbox">
+  <label for="switchName"></label>
+</div> 
+```
+{{/markdown}}
+
+##### Quick Mixin
+
+You can build your switches using our global mixin by including it on your custom class or ID in your own stylesheet. The mixin contains options for changing the key styles, the rest of the defaults can be modified using the available variables. The global mixin looks like this:
+
+{{#markdown}}
+```scss
+/* Using the default styles */
+.your-class-name { @include switch; }
+```
+{{/markdown}}
+
+<div class="switch">
+  <input id="mixinSwitch" type="checkbox">
+  <label for="mixinSwitch"></label>
+</div>
+
+There are **seven options** you can customize on the fly when writing this mixin. These control things like radius, transition speed, and size.
+
+{{> examples_switch_mixin_options}}
+
+***
+
+## Semantic Markup With Sass
+
+You can create your own switches using our Sass mixins. You have access to a few internal mixins that can create parts of the switch as needed. The base mixin will create a switch base that only includes structural styles.
+
+{{#markdown}}
+```scss
+.your-class-name { @include switch-base($transition-speed, $transition-ease); }
+```
+{{/markdown}}
+
+##### Size Mixin
+
+The size mixin will let you control the size of the switch.
+
+{{#markdown}}
+```scss
+.your-class-name {
+  @include switch-base($transition-speed, $transition-ease);
+  @include switch-size($height);
+}
+```
+{{/markdown}}
+
+##### Style Mixin
+
+The last internal mixin you have access to for switches is the style mixin. This will help you style paddle color, active color and radius.
+
+{{#markdown}}
+```scss
+.your-class-name {
+  @include switch-base($transition-speed, $transition-ease);
+  @include switch-size($height);
+  @include switch-style($paddle-bg, $active-color, $radius, $base-style);
+}
+```
+{{/markdown}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/switches";
+```
+{{/markdown}}

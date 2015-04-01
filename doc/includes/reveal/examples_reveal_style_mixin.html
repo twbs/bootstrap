@@ -1,0 +1,29 @@
+{{#markdown}}
+```scss
+.your-modal-class { @include reveal-modal-style($bg, $padding, $border, $border-style, $border-width, $border-color, $box-shadow, $top-offset); }
+
+/* Set this to a color to change the background of the modal */
+$bg: $reveal-modal-bg;
+
+/* Padding around content inside the modals */
+$padding: $reveal-modal-padding;
+
+/* Control whether or not you want a border */
+$border: true;
+
+/* If you set border to "true", this controls border style */
+$border-style: $reveal-border-style;
+
+/* If you set border to "true", this controls border width */
+$border-width: $reveal-border-width;
+
+/* If you set border to "true", this controls border color */
+$border-color: $reveal-border-color;
+
+/* Control whether or not you want box-shadows */
+$box-shadow: true;
+
+/* Set how far from the top you want your modal to sit */
+$top-offset: $reveal-position-top;
+```
+{{/markdown}}

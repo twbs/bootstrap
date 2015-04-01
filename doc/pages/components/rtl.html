@@ -1,0 +1,57 @@
+---
+title: Right-to-Left Support
+meta: Right-to-left text direction
+---
+
+<h3 class="subheader">Right-to-left text direction support in Foundation allows you to easily switch text direction for all components.</h3>
+
+***
+
+## Setup
+
+Foundation was built to support right-to-left text direction out of the box, but you'll need to make a couple of adjustments to your markup and Sass to get everything up and running.
+
+### Markup Changes for Right-to-Left Languages
+
+You'll need to make a few changes to your markup to get the Javascript components working nice and smooth. In the `html` tag, you'll need to add a `dir` attribute with a value of `rtl`. Here's what your `html` tag should look like:
+
+<h4>HTML</h4>
+
+{{> examples_rtl_markup}}
+
+### Change the Language Too
+
+You'll need to change your `lang` attribute value to match your language. Here's a handy list of common right-to-left languages and their html codes:
+
+* Arabic: ar
+* Chinese: zh
+* Farsi: fa
+* Hebrew: he, iw
+* Japanese: ja
+* Urdu: ur
+* Yiddish: yi, ji
+
+***
+
+### A Single Sass Adjustment
+
+We made it really easy to switch the entire Foundation grid to right-to-left by changing the `$text-direction` Sass variable. Here's what the variable should look like:
+
+#### Sass
+
+{{> examples_rtl_sass}}
+
+By changing this single variable, the entire grid and all the Foundation components will be switched to right-to-left orientation.
+
+<div class="panel">
+{{#markdown}}
+
+  #### Using CSS
+
+  If you prefer vanilla CSS, use the customizer to download Foundation and get right-to-left support. Your download should be ready to use without any of the steps mentioned above.
+
+  [Download Right-to-Left Foundation &raquo;](http://foundation.zurb.com/develop/download.html#customizeFoundation)
+{{/markdown}}
+
+</div>
+

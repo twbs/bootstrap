@@ -1,0 +1,246 @@
+---
+title: Button Groups
+---
+
+<h3 class="subheader">Button groups are containers for related action items. They're great when you need to display a group of actions in a bar. These build off the button styles and work perfectly with the grid.</h3>
+
+***
+
+{{> examples_button_group_basic}}
+
+***
+
+<h2>Basic</h2>
+
+You can create a button group using minimal markup.
+
+<h4>HTML</h4>
+
+{{> examples_button_group_basic_rendered}}
+
+<h4>Rendered HTML</h4>
+
+{{> examples_button_group_basic}}
+
+***
+
+<h2>Styling</h2>
+
+Additional classes can be added to your button group to change its appearance.
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<!-- Radius Button Group -->
+<ul class="button-group radius">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
+</ul>
+<!-- Rounded Button Group -->
+<ul class="button-group round">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
+</ul>
+```
+{{/markdown}}
+
+<h4>Rendered HTML</h4>
+
+<ul class="button-group radius">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
+</ul>
+<ul class="button-group round">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
+</ul>
+
+***
+
+<h2>Advanced</h2>
+
+Adding an ```even``` class with the specified number of buttons in that group allows the button group to evenly expand to the edges of its container. With Foundation classes you can use the even class up to ```even-8```.
+
+<h4>HTML</h4>
+
+
+{{#markdown}}
+```html
+<ul class="button-group even-3">
+  <li><a href="#" class="button secondary">Button 1</a></li>
+  <li><a href="#" class="button secondary">Button 2</a></li>
+  <li><a href="#" class="button secondary">Button 3</a></li>
+</ul>
+<ul class="button-group round even-6">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
+  <li><a href="#" class="button">Button 5</a></li>
+  <li><a href="#" class="button">Button 6</a></li>
+</ul>
+```
+{{/markdown}}
+
+<h4>Rendered HTML</h4>
+
+<ul class="button-group even-3">
+  <li><a href="#" class="button secondary">Button 1</a></li>
+  <li><a href="#" class="button secondary">Button 2</a></li>
+  <li><a href="#" class="button secondary">Button 3</a></li>
+</ul>
+<ul class="button-group round even-5">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
+  <li><a href="#" class="button">Button 5</a></li>
+</ul>
+
+<hr>     
+
+<h2>Stacking</h2>
+
+You can change the orientation of a button group with the `stack` classes.
+
+`stack`: Stacks buttons vertically.
+
+`stack-for-small`: Stacks buttons vertically on small screens and horizontally on large screens
+
+{{#markdown}}
+```html
+<ul class="stack button-group">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+</ul>
+<ul class="stack-for-small round secondary button-group">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+</ul>
+```
+{{/markdown}}
+
+<div class="row">
+  <div class="medium-6 columns">
+    <h6 for="">Stack</h6>
+    <ul class="stack button-group">
+      <li><a href="#" class="button">Button 1</a></li>
+      <li><a href="#" class="button">Button 2</a></li>
+    </ul>
+  </div>
+  <div class="medium-6 columns">
+    <h6 for="">Stack for Small</h6>
+    <ul class="stack-for-small round button-group">
+      <li><a href="#" class="secondary button">Button 1</a></li>
+      <li><a href="#" class="secondary button">Button 2</a></li>
+    </ul>
+  </div>
+</div>
+
+***
+
+## Button Bars
+
+A button bar is a group of button groups, perfect for situations where you want groups of actions that are all related to a similar element or page. Simply wrap two or more button groups in a `.button-bar` and Foundation takes care of the rest.
+
+<h3>Basic</h3>
+
+You can create a button bar using minimal markup.
+
+<h4>HTML</h4>
+
+{{> examples_button_group_bar}}
+
+<h4>Rendered HTML</h4>
+
+{{> examples_button_group_bar_rendered}}
+
+<h3>Advanced</h3>
+
+Additional classes can be added to your button bar to change its appearance.
+
+
+<h4>HTML</h4>
+
+{{> examples_button_group_bar_advanced}}
+
+<h4>Rendered HTML</h4>
+
+{{> examples_button_group_bar_advanced_rendered}}
+
+***
+
+## Customize with Sass
+
+Button bars can be easily customized using our provided Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_button_group_variables}}
+
+***
+
+## Semantic Markup With Sass
+
+You can use our mixins to use button groups on your own markup.
+
+<h3>Basic</h3>
+
+You can use the `button-group-container()` and `button-group-style()` mixins to create your own button groups and button bars with semantic markup, like so:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-button-group-class {
+  @include button-group-container();
+  .custom-button-class {
+    @include button();
+  }
+  & > li { @include button-group-style(); }
+}
+```
+{{/markdown}}
+
+<p>You can find more information regarding button mixins <a href="{{relative absolute 'dist/docs/components/buttons.html'}}">here</a>.</p>
+
+<h4>HTML</h4>
+
+{{> examples_button_group_basic_mixin}}
+
+<h3>Advanced</h3>
+
+You can further customize your button groups using using the provided options in the `button-group-container()` and `button-group-style()` mixin:
+
+##### Button Group Container Options
+
+<h4>SCSS</h4>
+
+{{> examples_button_group_container_mixin}}
+
+##### Button Group Style Options
+
+<h4>SCSS</h4>
+
+{{> examples_button_group_style_mixin}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/button-groups";
+```

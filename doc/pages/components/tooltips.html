@@ -1,0 +1,178 @@
+---
+title: Tooltips
+---
+
+<h3 class="subheader">Tooltips are a quick way to provide <span data-tooltip aria-haspopup="true" class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span> on a term or action on a page.</h3>
+
+***
+
+{{> examples_tooltips_intro}}
+
+***
+
+<h2>Basic</h2>
+
+You can create a tooltip using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_tooltips_basic_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_tooltips_basic}}
+  </div>
+</div>
+
+***
+
+<h2>Advanced</h2>
+
+Additional classes can be added to your tooltips to change its appearance.
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<span data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!">extended information</span>
+```
+{{/markdown}}
+
+<h4>Rendered HTML</h4>
+
+<span data-tooltip aria-haspopup="true" class="has-tip tip-bottom radius" title="Tooltips are awesome, you should totally use them!">Hover on desktop and touch me on mobile!</span>
+
+
+<p>You can now also add `show_on` to your `data-options` attribute to allow your tooltips to show on `small`, `medium`, or `large` when the page loads. They will show on all screen sizes by default.</p>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_tooltips_show_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_tooltips_show}}
+  </div>
+</div>
+
+&nbsp;
+
+<h3>Disable for touch events</h3>
+
+If you don't want tooltips to interfere with a touch event, you can disable them for those devices, like so:
+
+<h4>HTML</h4>
+
+{{> examples_tooltips_disable_touch}}
+
+Tooltips applied to <kbd>&lt;a&gt;</kbd> tags will automatically be disabled for touch events, so not to interfere with the link.
+
+***
+
+## Accessibility
+
+Tooltips need the attribute `role="tooltip"` so assistive devices understand what they are. On the text connected to the tooltip, you need the attribute `aria-describedby`, where the value is the ID of the tooltip it's connected to. Lucky for you, our JavaScript handles all of this for you!
+
+The only markup change you'll need to make is adding the attribute `aria-haspopup="true"` to your tooltip text. It's helpful for screen readers, and it also makes tooltips easier to use on Windows 8 touch devices.
+
+```html
+<a data-tooltip aria-haspopup="true" class="has-tip" title="Is great!">Accessibility</a>
+```
+
+***
+
+## Customize With Sass
+Tooltips can be easily customized using our provided Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_tooltips_variables}}
+
+***
+
+## Configure with Javascript
+
+It's easy to configure tooltips using our Javascript. You can use data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.tooltip.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.tooltip.js"></script>
+```
+{{/markdown}}
+
+<h3>Basic</h3>
+
+Using data-attributes is the preferred method of making changes to our Javascript.
+
+You will find all the data-options here: <a href="http://foundation.zurb.com/docs/javascript.html">JavaScript Data Options</a>
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<span data-tooltip data-options="hover_delay: 50;" class="has-tip" title="Tooltips are awesome, you should totally use them!">...</span>
+```
+{{/markdown}}
+
+<h3>Advanced</h3>
+
+You can adjust lots of settings. For example:
+
+<h4>JS</h4>
+
+{{#markdown}}
+```js
+$(document).foundation({
+  tooltip: {
+    selector : '.has-tip',
+    additional_inheritable_classes : [],
+    tooltip_class : '.tooltip',
+    touch_close_text: 'tap to close',
+    disable_for_touch: false,
+    tip_template : function (selector, content) {
+      return '<span data-selector="' + selector + '" class="'
+        + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
+        + '">' + content + '<span class="nub"></span></span>';
+    }
+  }
+});
+```
+{{/markdown}}
+
+***
+
+### Adding New Tooltip Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('tooltip', 'reflow');
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/tooltips";
+```

@@ -1,0 +1,185 @@
+---
+title: JavaScript Setup
+---
+
+<h3 class="subheader">We streamlined how you implement Foundation plugins by combining them into a single plugin under the `$.fn.foundation()` jQuery namespace.</h3>
+
+***
+
+### Installation
+
+Foundation JavaScript was designed to work with <a href="http://jquery.com/" title="jQuery Docs">jQuery</a> right out of the gate. In the `<head>` section of your page add Modernizr. Modernizr acts as a shim for HTML5 elements that older browsers may not recognize, and provides detection for mobile devices:
+
+```html
+<script src="/js/vendor/modernizr.js"></script>
+```
+
+Before the closing `body` tag, insert JQuery and FastClick.
+
+<h4>HTML</h4>
+
+```html
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/vendor/fastclick.js"></script>
+```
+
+Then either load each plugin individually, or include `foundation.min.js`, which automatically loads the Foundation Core and all JavaScript plugins.
+
+<h4>HTML</h4>
+
+```html
+<script src="/js/foundation.min.js"></script>
+
+<!-- or individually -->
+
+<script src="/js/foundation.js"></script>
+<script src="/js/foundation.alert.js"></script>
+<!-- ... -->
+<script src="/js/foundation.dropdown.js"></script>
+<script src="/js/foundation.tab.js"></script>
+```
+
+***
+
+### Initialize Foundation
+
+After you have included the Foundation JavaScript, just add a simple call to initialize all plugins on your page.
+
+
+We recommend that you initialize Foundation at the end of the page `<body>`.
+
+
+<h4>HTML</h4>
+
+```html
+<script>
+  $(document).foundation();
+</script>
+```
+
+**Note:** We include a tested version of jQuery in the Foundation repo to get you started quickly.
+
+***
+
+### Adding New Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('reflow');
+```
+{{/markdown}}
+
+To be efficient, target the actual Foundation plugin you need to `reflow`:
+
+{{#markdown}}
+```javascript
+$(document).foundation('orbit', 'reflow');
+or
+$(document).foundation('tab', 'reflow');
+or
+$(document).foundation('interchange', 'reflow');
+etc...
+```
+{{/markdown}}
+
+***
+
+### Configuration
+
+Foundation offers you options to customize plugin initialization. By default, calling `$('#scope').foundation();` will initialize all available plugins on the page. Alternatively, you can pass individual plugins along with configuration options and a callback. This way, you can select which plugins you want to customize, and which are fine by default. You can take a look at the call here:
+
+```js
+$(document).foundation({tab: {toggleable: false}});
+```
+
+The call will initialize all the plugins on the page and will configure tabs with `toggleable` enabled.
+
+You can configure multiple libraries within the same call as well. Here are a few ways to make it happen:
+
+<h4>JS</h4>
+
+```js
+$(document).foundation({
+  reveal : {
+    animation_speed: 500
+  },
+  tooltip : {
+    disable_for_touch: true
+  },
+  topbar : {
+    custom_back_text: false,
+    is_hover: false,
+    mobile_show_parent_link: true
+  }
+});
+```
+
+The above will initialize all of the plugins with default settings as well as customized settings for `reveal`, `tooltip`, and `topbar`.
+
+<h4 id="dataOptions">Data Options</h4>
+
+Instead of passing the settings to the plugins using JavaScript, you can pass them through the markup using `data-options`. To pass in an option, just place it in the `data-options` HTML attribute of the element the plugin is being called on. To pass in multiple options, format them as a semicolon-delimited list:
+
+```html
+<span data-tooltip data-options="disable_for_touch:true;touch_close_text:'close me'" class="has-tip" title="Tooltips are awesome!">Has Tooltip</span>
+```
+
+A chart of of all the available data-options is below.
+
+<div class="row">
+  <div class="twelve columns">
+    {{> examples_javascript_data_options }}
+  </div>
+</div>
+
+
+***
+
+### Configure on the fly
+
+New to Foundation 5, you can now reconfigure instances of your plugin after the page has loaded and Foundation has already been initialized.
+
+Let's pretend that we have an alert that was on our page when Foundation was first initialized:
+
+<h4>HTML</h4>
+
+```html
+<div data-alert class="alert-box" id="myAlert">
+  This is a standard alert.
+  <a href="#" class="close">&times;</a>
+</div>
+```
+
+The default fade out speed is 300 milliseconds, if we wanted to change this to 3 seconds we could do the following:
+
+<h4>JS</h4>
+
+```js
+$('#myAlert').foundation({alert: {speed: 3000}});
+```
+
+You can set any configuration option or callback this way.
+
+***
+
+### Calling Internal Methods
+
+Foundation JavaScript allows you call internal plugin methods by passing the method name as the second argument. This is necessary for plugins like Joyride, which are not initialized on page load by default.
+
+This will fire the `start` method on Joyride:
+
+<h4>JS</h4>
+
+```html
+$(document).foundation('joyride', 'start');
+```

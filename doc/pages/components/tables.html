@@ -1,0 +1,179 @@
+---
+title: Tables
+---
+
+<h3 class="subheader">Okay, they're not the sexiest things ever, but tables get the job done (for tabular data, of course).</h3>
+
+***
+
+{{> examples_tables_basic}}
+
+***
+
+### Basic
+
+You can create a table using minimal markup.
+
+#### HTML
+
+{{#markdown}}
+```html
+<table>
+  <thead>
+    <tr>
+      <th width="200">Table Header</th>
+      <th>Table Header</th>
+      <th width="150">Table Header</th>
+      <th width="150">Table Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+  </tbody>
+</table>
+```
+{{/markdown}}
+
+#### Rendered HTML
+
+{{> examples_tables_basic}}
+
+***
+
+## Accessibility
+
+Tables have a lot of handy built-in features to make them more usable with screen readers. The key thing to remember is that *vision-impaired users can't quickly scan a table like sighted users can*. Typically, screen readers will read out the contents of a table one row at a time. Simpler tables with clear hierarchy and organization will be more easy to use for vision-impaired users.
+
+Here are some things you can do to make your tables more accessible:
+
+### Define tables for data
+
+Tables should almost always be used for actual data and not for creating page layouts. (You're using our awesome grid for layout anyway, *right?*) When a screen reader encounters a table, it runs a series of tests to determine if the table is a layout table or data table. The easiest way to define a table as being for data is by using `<th>` tags to define the headers of the table. Newer assistive software will also immediately interpret any table with the attribute `role="grid"` as being for data.
+
+```html
+<table role="grid">
+  <!-- ... -->
+</table>
+```
+
+### Add a summary
+
+The contents of a table can be described using the `<caption>` tag. However, you can also add the `summary` attribute to a table to further clarify its use. The `summary` attribute is specifically designed to explain a table to a vision-impaired user. If a table has both a summary and a caption, the summary should not simply restate the caption.
+
+The W3C offers [this example](http://www.w3.org/TR/WCAG20-TECHS/H73.html) for a table detailing a bus schedule:
+
+```html
+<table summary="Schedule for Route 7 going downtown. Service begins 
+at 4:00 AM and ends at midnight. Intersections are listed in the top row. 
+Find the intersection closest to your starting point or destination, then read 
+down that column to find out what time the bus leaves that intersection.">
+  <tr>
+    <th>State & First</th>
+    <th>State & Sixth</th>
+    <th>State & Fifteenth</th>
+    <th>Fifteenth & Morrison</th>
+  </tr>
+  <tr>
+    <td>4:00</td>
+    <td>4:05</td>
+    <td>4:11</td>
+    <td>4:19</td>
+  </tr>
+  <!-- ... -->
+</table>
+```
+
+### Building complex tables
+
+Most accessibility groups recommend keeping tables simple if accessibility is a concern. A complex table could potentially be split into multiple, smaller tables instead of being kept together. That being said, when creating a complex table, there are a few things to keep in mind.
+
+Always use `<th>` to define the headers for columns and rows. If a header cell is not a `<th>`, but a `<td>`, use the `scope` attribute to explain what kind of heading the cell is:
+  - `scope="row"` means the cell is a header for the row it's inside.
+  - `scope="column"` means the cell is a header for the column it's inside.
+
+```html
+<table>
+  <caption>Most Expensive Sandwiches by City</caption>
+  <tr>
+    <th scope="column">Rank</th>
+    <th scope="column">City</th>
+    <th scope="column">Price</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td scope="row">Campbell, CA</td>
+    <td scope="row">New York, NY</td>
+    <td scope="row">Sandwich, IL</td>
+  </tr>
+  <tr>
+    <td>$12.99</td>
+    <td>$9.99</td>
+    <td>$8.99</td>
+  </tr>
+</table>
+```
+
+If a cell has multiple headers, use the `headers` attribute on the cell to define them. Give each header a unique ID, and then write the ID of each header in the `headers` attribute of the cell. Separate multiple headers with a space.
+
+```html
+<table>
+  <caption>Cute Animals Per 1,000 People</caption>
+  <tr>
+    <th id="state">State</th>
+    <th id="dogs">Dogs</th>
+    <th id="cats">Cats</th>
+    <th id="rabbits">Rabbits</th>
+  </tr>
+  <tr>
+    <th id="california" headers="state">California</th>
+    <td headers="dogs california">3</td>
+    <td headers="cats california">1</td>
+    <td headers="rabbits california">10</td>
+  </tr>
+</table>
+```
+
+***
+
+## Customize with Sass
+
+Tables can be easily customized using our Sass variables.
+
+{{> examples_tables_variables}}
+
+**Note:** `rem-calc();` is a function we wrote to convert `px` to `rem`. It is included in **_functions.scss**.
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/tables";
+```
+{{/markdown}}

@@ -1,0 +1,425 @@
+---
+title: Getting Started With Sass
+---
+
+<h3 class="subheader">Sass is the easiest way to customize Foundation! </h3>
+
+<hr>
+
+<!--
+Magellan
+-->
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Three Easy Ways to Get Started</h2>
+    <h2 class="subheader">Setting up Foundation 5 Sass is quick and easy!</h2>
+    <p class="above-magellan">We recommend using the Command Line Interface. We've perfected the command line for quick and easy power, but you can use Foundation with just the files or other applications, like Mixture or CodeKit.</p>
+    <div class="magellan-container" data-magellan-expedition="fixed" data-options="sticky_on:large">
+      <dl class="sub-nav">
+        <dd data-magellan-arrival="cli"><a href="#cli">Recommend Install</a></dd>
+        <dd data-magellan-arrival="nocli"><a href="#nocli">Manual Download</a></dd>
+        <dd data-magellan-arrival="other"><a href="#other">Third Party Application</a></dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="small-12 columns recommended">
+    <h2 data-magellan-destination="cli"><a name="cli"></a>Recommended Install for Foundation</h2>
+  </div>
+</div>
+
+<div class="row recommended">
+  <div class="medium-12 large-6 large-push-6 columns">
+   <img class="command-line" data-interchange="[{{assets}}/img/images/faster-to-code-medium.svg, (medium)], [{{assets}}/img/images/faster-to-code.svg, (large)]">  
+  </div>
+  <div class="medium-12 large-6 large-pull-6 columns">
+    <p>Using this Command Line Interface will make updating a Foundation project super easy and help speed up your workflow. The CLI updates your project while leaving your customized styles in tact. We recommend this method since the CLI does many tasks for you.</p>
+  </div> 
+</div>
+
+<hr class="dashed">
+
+<!--
+Ruby/Git/Node
+-->
+
+<div class="row">
+  <div class="small-12 columns">
+    <h3>What You'll Need</h3>
+    <h3 class="subheader">You'll want to install the following on your system before proceeding:</h3>
+  </div>
+</div>
+
+<div class="row circle-list">
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/git.svg" >
+    <h4>Git</h4>
+    <p>Git is GitHub's version control system, this install basically commands the tools you'll use in the command line to work within GitHub.</p>
+    <p><a href="http://git-scm.com/">Download Git →</a></p>
+  </div>
+
+  <hr class="dashed hide-for-medium-up">
+
+
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/node.svg">
+    <h4>NodeJS</h4>
+    <p>Node allows JavaScript to run outside of the browser, and is necessary for Bower to package all the files into the project and link them together.</p>
+    <p><a href="http://nodejs.org/">Download NodeJS →</a></p>
+  </div>
+
+  <hr class="dashed hide-for-medium-up">
+
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/ruby.svg">
+    <h4>Ruby 1.9+</h4>
+    <p>We wrote a Ruby script that downloads the Sass files and scaffolds the project. If you have a Mac, you probably already have Ruby installed.</p>
+    <p><a href="https://www.ruby-lang.org/en/">Download Ruby →</a></p>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<!--
+How to Install
+-->
+
+<div class="row">
+  <div class="small-12 path-container columns">
+    <h3>How to Install the CLI</h3>
+    <h3 class="subheader">Using the CLI to install Foundation 5 only takes two easy commands. You only have to install the CLI once. Don't want to read? <a href="http://foundation.zurb.com/learn/video-started-with-foundation.html">Check out this video we made to help you out.</a></h3>
+    <div class="path-item"> 
+      <div class="circlenumber">
+        <h3>1</h3>
+      </div>
+      <p>We use Bower to manage updates to Foundation and the third-party libraries that Foundation is built on.</p>
+      <p class="panel">npm install -g bower grunt-cli</p>
+    </div>
+    <div class="path-item">
+      <div class="circlenumber">
+        <h3>2</h3>
+      </div>
+      <p>Installing the Foundation CLI on your computer only takes one command function.</p>
+      <p class="panel">gem install foundation</p>    
+      <p class="subheader note"><strong>Note:</strong> If you run into permission errors running these commands in the CLI, you can add the word 'sudo' before the line inside the interface:</p>
+      <p class="panel">sudo npm install -g bower grunt-cli <br> sudo gem install foundation</p>  
+      <p class="subheader note">If you use <a href="https://github.com/sstephenson/rbenv">rbenv</a>, rehash your shims after installing:</p>
+      <p class="panel">rbenv rehash</p>
+    </div>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<!--
+Compass/Libsass
+-->
+
+<div class="row">
+  <div class="small-12 columns">
+    <h3>Compiling Sass into CSS &amp; Creating a Project</h3>
+    <h3 class="subheader">Sass is a great way to speed up front-end development. </h3>
+    <p>SCSS (Sassy CSS) syntax was introduced as "the new main syntax" for Sass and builds on the existing syntax of CSS. We created a SCSS version to allow more friendly and dynamic styling. This version also allows for greater customization than the HTML/CSS version. There are two easy ways our CLI helps you compile SCSS: Compass or Libsass with Grunt.</p>
+    <img class="flow-chart" data-interchange="[{{assets}}/img/images/scssflow-small.svg, (small)], [{{assets}}/img/images/scssflow-med.svg, (medium)], [{{assets}}/img/images/scssflow.svg, (large)]">  
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-5 columns path-container two-paths">
+    <h4>Creating a Compass Project</h4>
+    <div class="path-item">
+      <div class="circlenumber">
+        <h3>1</h3>
+      </div><p>If it's not installed already, you can install Compass using the following command:</p>
+      <p class="panel">gem install compass</p>
+    </div>
+    <div class="path-item">
+      <div class="circlenumber">
+       <h3>2</h3>
+      </div>
+      <p>Next we'll use the Foundation CLI to create a new project:</p>
+      <p class="panel">foundation new MY_PROJECT</p>
+    </div>
+    <div class="path-item">
+      <div class="circlenumber">
+        <h3>3</h3>
+      </div>
+      <p>Boom, your project is created! Now Foundation will be easy.</p>
+      <p class="panel">cd MY_PROJECT</p>
+    </div>
+    <div class="path-item">
+      <div class="circlenumber">
+        <h3>4</h3>
+      </div>
+      <p>Bundler is used to ensure all the correct libraries are used. If you don't have it, run `gem install bundler`</p>
+      <p>Then run <span class="panel">bundle</span> (only once per project)</p>
+      <p>Be sure to run compass watch in order to make changes.</p>
+      <p class="panel">bundle exec compass watch</p>
+    </div>
+  </div>
+
+  <div class="large-5 large-pull-1 columns path-container two-paths">
+    <hr class="dashed hide-for-large-up">
+    <h4>Creating a Libsass Project</h4>
+    <div class="path-item">
+      <div class="circlenumber">
+        <h3>1</h3>
+      </div>
+      <p>First, navigate into the directory where you want to create your project:</p>
+      <p class="panel">cd path/to/sites</p>
+    </div>
+    <div class="path-item">
+      <div class="circlenumber">
+        <h3>2</h3>
+      </div>
+      <p>Next we'll use the Foundation CLI to create a new project:</p>
+      <p class="panel">foundation new project_name --libsass</p>
+    </div>
+    <div class="path-item">
+      <div class="circlenumber">
+        <h3>3</h3>
+      </div>
+      <p>Boom, your project is created! Now you need to use Grunt to compile everything before you start working:</p>
+      <p class="panel"> cd project_name<br>grunt build</p>
+    </div>
+    <div class="path-item">
+      <div class="circlenumber">
+        <h3>4</h3>
+      </div>
+      <p>Be sure to run grunt in order to make changes.</p>
+      <p class="panel">grunt</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns two-column">
+    <p class="subheader"><a href="{{rel 'sass-files.html'}}">Check out what you get with the Sass download package. →</a></p>
+  </div>
+</div>
+
+
+<hr class="dashed">
+
+ 
+<!---================================= 
+How to Update 
+=================================-->
+ 
+<div class="row">
+  <div class="small-12 columns path-container">
+    <h3>How to Update</h3>
+    <h3 class="subheader">Once you have Foundation installed updating your file is easy.</h3>
+    <div class="path-item">
+      <div class="circlenumber">
+        <h3>1</h3>
+      </div>
+      <p>Specify the version you want to update to in your bower.json file.</p>
+      <p><a href="http://zurb.us/1kl96mM ">See an example →</a></p> </p>
+    </div>
+    <div class="path-item">
+      <div class="circlenumber">
+        <h3>2</h3>
+      </div>
+      <p>To update, 'cd' into the project folder in the CLI and the run 'bower update.'</p>
+      <p class="panel">bower update</p>
+      <p class="subheader note"><strong>Note:</strong> To verify the update has been made, you can see the version number in the bower.json file located in the bower-components folder under foundation.</p>
+      <p><a href="http://zurb.us/1klal5c">See an example →</a></p> 
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!--=================================
+
+Manually
+
+=================================-->
+
+<div class="row">
+  <div class="small-12 columns nocli">
+    <h2 data-magellan-destination="nocli"><a name="nocli"></a>Install Foundation Manually</h2>
+    <h2 class="subheader">You can download our SCSS files and get set up to harness the power of Foundation without the CLI if you want. Here's how:</h2>
+    <ul>
+      <li>First you will need to clone or download the <a href="https://github.com/zurb/foundation-compass-template">master zip of the Foundation Compass Template</a> from Github. This will be the root of your project.</li>
+      <li>Then you will create a directory called bower_components.</li>
+      <li>The next step is to clone or download the master zip of the <a href="https://github.com/zurb/bower-foundation">bower-foundation</a> repo in that directory.</li>
+      <li>Then rename this directory to "foundation"</li>
+    </ul>
+    <p class="subheader note"><strong>Note:</strong> Alternatively you can place this somewhere else or move the files around.</p>
+    <ul>
+      <li>Just update your config.rb so that the add_import_path reflects the change i.e. add_import_path "bower_components/foundation/scss"</li>
+      <li>Then add jQuery and update the link in index.html to a local copy that you can download from the jQuery site.</li>
+    </ul>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<!--================================= 
+Upgrade Manually
+ =================================-->
+
+<div class="row">
+  <div class="small-12 path-container columns">
+    <h3>Upgrade Manually With Compass</h3>
+    <p>You'll need to install <a href="http://nodejs.org/">NodeJS</a> and <a href="http://bower.io/">Bower</a> before updating with Compass.</p>
+    <p class="subheader note">Note: You can install bower by running the following command:</p>
+    <p class="panel">npm install -g bower</p>
+    <p>We use bower to keep Foundation assets up to date within your project. Here's how you can update your project:</p>
+    <br>
+    <div class="row path-item">
+      <div class="circlenumber">
+        <h3>1</h3>
+      </div>
+      <p>First, you need create a file named bower.json in the root of your Compass project. This should contain the following:</p>
+      <p class="panel">{<br>&nbsp; &nbsp; "name": "PROJECT_NAME",<br>&nbsp; &nbsp; "dependencies": {<br>&nbsp;  &nbsp; &nbsp; &nbsp;"foundation": "~5.4.7"<br>&nbsp; &nbsp;  }<br>}
+    </div>
+    <div class="row path-item">
+      <div class="circlenumber">
+        <h3>2</h3>
+      </div>
+      <p>Next you will run bower update.</p> 
+      <p class="panel">bower update</p>
+      <p>This will create a directory called bower_components/ in your project. Foundation's Sass and JavaScript files will be placed in the bower_components/foundation folder.</p>
+    </div>
+    <p><a href="{{rel 'sass-files.html'}}">Check out what you get with the Sass download package. →</a></p>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<div class="row">
+  <div class="small-12 path-container columns">
+    <h3>Build Using a Task Runner</h3>
+    <p>Using Bower and a task runner like Grunt or Gulp, you can add our Sass files to your build process.</p>
+    <div class="row path-item">
+      <div class="circlenumber">
+        <h3>1</h3>
+      </div>
+      <p>In a project with an existing <code>bower.json</code>, add Foundation to your bower components:</p>
+      <p class="panel">bower install foundation --save</p>
+    </div>
+    <div class="row path-item">
+      <div class="circlenumber">
+        <h3>2</h3>
+      </div>
+      <p>Next, add <code>bower_components/foundation/scss</code> to your Sass compiler's import paths. The exact setting you need to change will depend on the plugin you're using. For example, this is how to add Foundation to a Grunt task using <code>grunt-contrib-sass</code>:</p>
+      <p class="panel">
+        sass: {<br>
+        &nbsp;&nbsp;dist: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;options: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style: 'expanded'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>loadPath: ['bower_components/foundation/scss']</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;files: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'main.css': 'main.scss',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'widgets.css': 'widgets.scss'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+        &nbsp;&nbsp;}<br>
+        }
+      </p>
+      <p>This configuration will work for `gulp-sass`:</p>
+      <p class="panel">
+        gulp.src('./scss/*.scss')<br>
+        &nbsp;&nbsp;.pipe(sass({<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<strong>includePaths: ['bower_components/foundation/scss']</strong><br>
+        &nbsp;&nbsp;}))<br>
+        &nbsp;&nbsp;.pipe(gulp.dest('./css'));
+      </p>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!--==================================================================
+Other Applications
+-->
+
+<div class="row otherapps">
+  <div class="small-12 columns">
+    <h2 data-magellan-destination="other"><a name="other"></a>Third Party Applications</h2>
+    <h2 class="subheader">If you want a more hands-off and simple build of Foundation you can use these platforms to code with Foundation.</h2>
+  </div>
+</div>
+<br>
+<div class="row other-uses">
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/mixture_yeti.svg" />
+  </div>
+  <div class="medium-8 column">
+     <h3>Mixture</h3>
+     <h3 class="subheader">Get started quickly and build faster with Foundation using Mixture.io.</h3>
+     <p>Publish your project online. It’s as easy as one click. Share your published URL, password protect, get feedback, client sign-off or even add your own domain and host your site.</p>
+     <a href="http://mixture.io/" class="button" target="blank">Learn More</a>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<div class="row other-uses">
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/codekit.png" class="others"/>
+  </div>
+  <div class="medium-8 columns">
+  <h3>CodeKit</h3>
+    <h3 class="subheader">A Mac app that allows you to build websites faster with Foundation.</h3>
+    <p>With zero setup and Bower built right into the system, CodeKit can compile any language with one click updates. From auto-refresh browsers to built-in minifiers, CodeKit has everything inside to help you get started.</p>
+    <a href="https://incident57.com/codekit/index.html" class="button" target="blank">Learn More</a>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<div class="row other-uses">
+  <div class="medium-4 columns small-only-text-center">
+    <img src="{{assets}}/img/images/cactus.jpg" class="others"/>
+  </div>
+  <div class="medium-8 columns">
+    <h3>Cactus</h3>
+    <h3 class="subheader">Build your websites locally with the ease and flexibility of Foundation.</h3>
+    <p>Using Cactus allows you to put the components of your website together with your local server without having to set up a server environment like Ruby. You can use it on your Mac to compile your SASS, start building templates, or for directing visual feedback.</p>
+    <a href="http://cactusformac.com/" class="button " target="blank">Learn More</a>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>What's Next?</h2>
+    <h2 class="subheader">Now that you have Foundation Sass installed, check out the awesome stuff you get and how to use it.</h2>
+  </div>
+</div>
+<div class="row circle-list">
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/whatyouget.svg">
+    <h4>What You Get</h4>
+    <p>The complete package! We'll cover the important files that are included when you download Sass and where to make customizations.</p>
+    <p><a href="{{rel 'sass-files.html'}}">See What's Inside →</a></p>
+  </div>
+
+  <hr class="dashed hide-for-medium-up">
+
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/howtouse.svg">
+    <h4>How to Use</h4>
+    <p>Harness SCSS's variable features easily through the included _settings.scss file. We cover important tips on the settings file, writing sass, and using mixins.</p>
+    <p><a href="{{rel 'using-sass.html'}}">Find Out How →</a></p>
+  </div>
+
+  <hr class="dashed hide-for-medium-up">
+  
+  <div class="medium-4 columns">
+    <img src="{{assets}}/img/images/globalstyles.svg">
+    <h4>Global Styles</h4>
+    <p>Every Foundation project needs to include these styles in order to work properly. These include things like basic formatting and global utility classes.</p>
+    <p><a href="{{rel 'components/global.html'}}">Take a Look →</a></p>
+  </div>
+</div>

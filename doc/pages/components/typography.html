@@ -1,0 +1,194 @@
+---
+title: Typography
+---
+
+<h3 class="subheader">Typography in Foundation 5 is meant to make your life easier by providing clean, attractive, simple default styles for all of the most basic typographical elements.</h3>
+
+***
+
+### Headers
+
+Foundation includes styles for all of the header elements that are balanced and based on a modular scale (though modular-scale is not a dependency of Foundation).
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  {{#markdown}}
+  ```html
+{{> examples_typography_basic}}
+	```
+	{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  	<div class="type-demo">
+			{{> examples_typography_basic}}
+		</div>
+  </div>
+</div>
+
+***
+
+### Subheaders
+
+Lighten up your headers by adding a class of .subheader to any header element.
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  {{#markdown}}
+  ```html
+{{> examples_typography_subheader}}
+	```
+	{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  	<div class="type-demo">
+			{{> examples_typography_subheader_rendered}}
+		</div>
+  </div>
+</div>
+
+***
+
+### Small Header Segments
+
+By inserting a `small` element into a header Foundation will scale the header font size down for an inline element, allowing you to use this for subtitles or other secondary header text.
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_typography_small}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  	<div class="type-demo">
+			{{> examples_typography_small}}
+		</div>
+  </div>
+</div>
+
+***
+
+### Paragraphs
+
+This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content &#45;&#45; so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap `strong` around type to **make it bold!** You can also use `em` to *italicize your words*.
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap strong around type to <strong>make it bold!</strong>. You can also use em to <em>italicize your words</em>.</p>
+```
+{{/markdown}}
+
+***
+
+<div class="callout panel text-center">Need to align text? We made some slick <a href="http://foundation.zurb.com/docs/utility-classes.html">utility classes</a> to help you out. </div>
+
+### Links
+
+Links are very standard, and the [color is preset](http://www.youtube.com/watch?v=zT2aVoUkSDg) to the Foundation primary color.
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<p>Links are very standard, and the <a href="http://www.youtube.com/watch?v=zT2aVoUkSDg">color is preset</a> to the Foundation primary color.</p>
+```
+{{/markdown}}
+
+***
+
+### Lists
+
+Lists are helpful for, well, lists of things. Didn't see that coming did you! There are baked-in styles for a number of different unordered list styles, as well as ordered and definition lists.
+
+{{> examples_typography_lists}}
+
+***
+
+<a name="blockquotes"></a>
+
+### Blockquotes
+
+Sometimes other people say smart things, and you may want to mention that through a blockquote callout. We've got you covered.
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+{{#markdown}}
+```html
+<blockquote>Those people who think they know everything are a great annoyance to those of us who do.<cite>Isaac Asimov</cite></blockquote>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+		<blockquote>Those people who think they know everything are a great annoyance to those of us who do.<cite>Isaac Asimov</cite></blockquote>
+  </div>
+</div>
+
+***
+
+### V-Cards
+
+Here's a handy microformat-friendly list to *address* all your needs.
+
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_typography_vcard}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  	<div class="type-demo">
+			{{> examples_typography_vcard}}
+		</div>
+  </div>
+</div>
+
+### Print Styles
+
+Foundation includes print styles developed by HTML5 Boilerplate to give you some basic print-specific styles. These are activated when you print through a media query. It includes:
+
+* Clearing out backgrounds, box shadows and text shadows
+* Appending link URLs after the anchor text
+* Bordering blockquotes and pre elements
+* Page cleanup and window minimization
+
+On top of that, Foundation includes a couple of simple classes you can use to control elements printing, or not printing. Simply attach `.show-for-print` to an element to only show when printing, and `.hide-for-print` to hide something when printing.
+
+***
+
+### Available SCSS Variables
+
+We've got a ton of variables for you to use to customize your typography.
+
+#### SCSS
+
+{{> examples_typography_variables}}
+
+***
+
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/type";
+```
+{{/markdown}}

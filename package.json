@@ -1,0 +1,53 @@
+{
+  "name": "zurb-foundation",
+  "version": "5.5.1",
+  "main": "js/foundation/foundation.js",
+  "devDependencies": {
+    "assemble": "~0.4.37",
+    "grunt": "~0.4.4",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "~0.7.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-connect": "~0.7.1",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-jasmine": "~0.6.3",
+    "grunt-contrib-jst": "~0.5.1",
+    "grunt-contrib-sass": "~0.8.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-karma": "~0.6.2",
+    "grunt-newer": "~0.7.0",
+    "grunt-rsync": "~0.2.1",
+    "grunt-string-replace": "~0.2.7",
+    "handlebars-helper-rel": "~0.1.2",
+    "handlebars-helper-slugify": "~0.2.0",
+    "highlight.js": "~7.3.0",
+    "jasmine-jquery": "imtapps/node-jasmine-jquery",
+    "karma": "~0.10.4",
+    "karma-browserstack-launcher": "0.0.4",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-ie-launcher": "~0.1.1",
+    "karma-jasmine": "~0.1.3",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-safari-launcher": "~0.1.1",
+    "karma-script-launcher": "~0.1.0",
+    "load-grunt-config": "~0.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zurb/foundation"
+  },
+  "keywords": [
+    "handlebars-helper-rel",
+    "handlebars-helper-slugify"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/zurb/foundation/blob/master/LICENSE"
+    }
+  ]
+}

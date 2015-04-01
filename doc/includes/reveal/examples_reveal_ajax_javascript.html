@@ -1,0 +1,23 @@
+{{#markdown}}
+```javascript
+// just an url
+$('#myModal').foundation('reveal', 'open', 'http://some-url');
+
+// url with extra parameters
+$('#myModal').foundation('reveal', 'open', {
+    url: 'http://some-url',
+    data: {param1: 'value1', param2: 'value2'}
+});
+
+// url with custom callbacks
+$('#myModal').foundation('reveal', 'open', {
+    url: 'http://some-url',
+    success: function(data) {
+        alert('modal data loaded');
+    },
+    error: function() {
+        alert('failed loading modal');
+    }
+});
+```
+{{/markdown}}

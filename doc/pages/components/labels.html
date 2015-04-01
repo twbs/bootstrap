@@ -1,0 +1,128 @@
+---
+title: Labels
+---
+
+<h3 class="subheader">Labels are useful inline styles that can be dropped into body copy to call out certain sections or to attach metadata. For example, you can attach a label that notes when something was updated.</h3>
+
+***
+
+{{> examples_labels_basic}}
+
+***
+
+<h2>Basic</h2>
+
+You can create a label using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+    {{> examples_labels_basic_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <span class="label">Regular Label</span>
+  </div>
+</div>
+
+***
+
+<h2>Advanced</h2>
+
+Additional classes can be added to your labels to change their appearance.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_labels_advanced}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_labels_advanced_rendered}}
+  </div>
+</div>
+
+***
+
+## Customize with Sass
+
+Labels can be easily customized using our Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_labels_variables}}
+
+***
+
+## Semantic Markup With Sass
+
+You can create your own labels using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `label()` mixin to create your own labels, like so:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-label-class {
+  @include label();
+}
+```
+
+<h4>HTML</h4>
+
+```html
+<span class="custom-label-class">Basic custom label</span>
+```
+{{/markdown}}
+
+<h3>Advanced</h3>
+
+You can further customize your labels using the provided options in the `label()` mixin:
+
+<h4>SCSS</h4>
+{{#markdown}}
+```scss
+.custom-label-class {
+  @include label(
+    // This options sets label padding
+    $padding:7px 16px 9px,
+    // This option sets label text-size
+    $text-size:13px,
+    // This option sets label background-color
+    $bg:#2ba6cb,
+    // This option sets the radius of the label
+    $radius:4px
+  );
+}
+
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<span class="custom-label-class">Advanced custom label</span>
+```
+{{/markdown}}
+
+
+<hr/>
+
+
+<h3>Sass Errors?</h3>
+
+<p>If the default "foundation" import was commented out, then make sure you import this file:</p>
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/labels";
+```

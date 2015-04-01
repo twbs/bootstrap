@@ -1,0 +1,22 @@
+<form data-abide="ajax">
+  <div class="range-start-field">
+    <label>Starting number <small>required</small></label>
+    <input name="user_start_num" type="text">
+    <small class="error">Starting number must be before the end date</small>
+  </div>
+  <div class="range-end-field">
+    <label>Ending number <small>required</small></label>
+    <input name="user_end_num" type="text" data-abide-validator="range">
+    <small class="error">Ending number must be before the end date</small>
+  </div>
+  <div class="password-field">
+    <label>Password <small>required</small></label>
+    <input id="user_password" name="user_password" type="password">
+  </div>
+  <div class="password-confirmation-field">
+    <label>Password confirmation<small>required</small></label>
+    <input name="user_password_confirmation" type="password" data-abide-validator="equalTo" data-equalto="user_password">
+    <small class="error">Password and password confirmation must match.</small>
+  </div>
+  <button type="submit">Submit</button>
+</form>

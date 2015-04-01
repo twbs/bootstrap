@@ -1,0 +1,57 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+//
+// @variables
+//
+$include-html-inline-list-classes: $include-html-classes !default;
+
+// We use this to control the margins and padding of the inline list.
+$inline-list-top-margin: 0 !default;
+$inline-list-opposite-margin: 0 !default;
+$inline-list-bottom-margin: rem-calc(17) !default;
+$inline-list-default-float-margin: rem-calc(-22) !default;
+$inline-list-default-float-list-margin: rem-calc(22) !default;
+
+$inline-list-padding: 0 !default;
+
+// We use this to control the overflow of the inline list.
+$inline-list-overflow: hidden !default;
+
+// We use this to control the list items
+$inline-list-display: block !default;
+
+// We use this to control any elements within list items
+$inline-list-children-display: block !default;
+
+//
+// @mixins
+//
+// We use this mixin to create inline lists
+@mixin inline-list {
+  list-style: none;
+  margin-#{$default-float}: $inline-list-default-float-margin;
+  margin-#{$opposite-direction}: $inline-list-opposite-margin;
+  margin: $inline-list-top-margin auto $inline-list-bottom-margin auto;
+  overflow: $inline-list-overflow;
+  padding: $inline-list-padding;
+
+  > li {
+    display: $inline-list-display;
+    float: $default-float;
+    list-style: none;
+    margin-#{$default-float}: $inline-list-default-float-list-margin;
+    > * { display: $inline-list-children-display; }
+  }
+}
+
+@include exports("inline-list") {
+  @if $include-html-inline-list-classes {
+    .inline-list {
+      @include inline-list();
+    }
+  }
+}

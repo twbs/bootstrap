@@ -1,0 +1,46 @@
+{{#markdown}}
+```javascript
+// trigger by event
+$('a.reveal-link').trigger('click');
+$('a.close-reveal-modal').trigger('click');
+
+// or directly on the modal
+$('#myModal').foundation('reveal', 'open');
+$('#myModal').foundation('reveal', 'close');
+
+```
+{{/markdown}}
+
+<p>Or you can call one right after the other:</p>
+{{#markdown}}
+```html
+<div class='reveal-modal' id='first-modal' data-reveal>
+    I'm the firstborn!
+    <a class='open-second'>Click me!</a>
+  </div>
+  <div class='reveal-modal' id='second-modal' data-reveal>
+    I'm the secondborn!
+    <a class='close'>Close modal</a>
+  </div>
+  <a class='open-first'>Click me!</a>
+```
+{{/markdown}}
+
+
+{{#markdown}}
+```javascript
+
+// There's no need to close a previous modal before you
+// open another one.
+$('a.open-first').on('click', function() {
+  $('#first-modal').foundation('reveal','open');
+});
+$('a.open-second').on('click', function() {
+  $('#second-modal').foundation('reveal', 'open');
+});
+$('a.close').on('click', function() {
+  $('#second-modal').foundation('reveal', 'close');
+});
+
+```
+{{/markdown}}

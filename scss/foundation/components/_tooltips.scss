@@ -1,0 +1,142 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+//
+// Tooltip Variables
+//
+$include-html-tooltip-classes: $include-html-classes !default;
+
+$has-tip-border-bottom: dotted 1px $iron !default;
+$has-tip-font-weight: $font-weight-bold !default;
+$has-tip-font-color: $oil !default;
+$has-tip-border-bottom-hover: dotted 1px scale-color($primary-color, $lightness: -55%) !default;
+$has-tip-font-color-hover: $primary-color !default;
+$has-tip-cursor-type: help !default;
+
+$tooltip-padding: rem-calc(12) !default;
+$tooltip-bg: $oil !default;
+$tooltip-font-size: rem-calc(14) !default;
+$tooltip-font-weight: $font-weight-normal !default;
+$tooltip-font-color: $white !default;
+$tooltip-line-height: 1.3 !default;
+$tooltip-close-font-size: rem-calc(10) !default;
+$tooltip-close-font-weight: $font-weight-normal !default;
+$tooltip-close-font-color: $monsoon !default;
+$tooltip-font-size-sml: rem-calc(14) !default;
+$tooltip-radius: $global-radius !default;
+$tooltip-rounded: $global-rounded !default;
+$tooltip-pip-size: 5px !default;
+$tooltip-max-width: 300px !default;
+
+@include exports("tooltip") {
+  @if $include-html-tooltip-classes {
+
+    /* Tooltips */
+    .has-tip {
+      border-bottom: $has-tip-border-bottom;
+      color: $has-tip-font-color;
+      cursor: $has-tip-cursor-type;
+      font-weight: $has-tip-font-weight;
+
+      &:hover,
+      &:focus {
+        border-bottom: $has-tip-border-bottom-hover;
+        color: $has-tip-font-color-hover;
+      }
+
+      &.tip-left,
+      &.tip-right { float: none !important; }
+    }
+
+    .tooltip {
+      background: $tooltip-bg;
+      color: $tooltip-font-color;
+      display: none;
+      font-size: $tooltip-font-size;
+      font-weight: $tooltip-font-weight;
+      line-height: $tooltip-line-height;
+      max-width: $tooltip-max-width;
+      padding: $tooltip-padding;
+      position: absolute;
+      width: 100%;
+      z-index: 1006;
+      #{$default-float}: 50%;
+
+      > .nub {
+        border-color: transparent transparent $tooltip-bg transparent;
+        border: solid $tooltip-pip-size;
+        display: block;
+        height: 0;
+        pointer-events: none;
+        position: absolute;
+        top: -($tooltip-pip-size * 2);
+        width: 0;
+        #{$default-float}: $tooltip-pip-size;
+
+        &.rtl {
+          left: auto;
+          #{$opposite-direction}: $tooltip-pip-size;
+        }
+      }
+
+      &.radius {
+        @include radius($tooltip-radius);
+      }
+      &.round {
+        @include radius($tooltip-rounded);
+        > .nub {
+          left: 2rem;
+        }
+      }
+
+      &.opened {
+        border-bottom: $has-tip-border-bottom-hover !important;
+        color: $has-tip-font-color-hover !important;
+      }
+    }
+
+    .tap-to-close {
+      color: $tooltip-close-font-color;
+      display: block;
+      font-size: $tooltip-close-font-size;
+      font-weight: $tooltip-close-font-weight;
+    }
+
+    @media #{$small} {
+      .tooltip {
+        > .nub {
+          border-color: transparent transparent $tooltip-bg transparent;
+          top: -($tooltip-pip-size * 2);
+        }
+        &.tip-top>.nub {
+          border-color: $tooltip-bg transparent transparent transparent;
+          bottom: -($tooltip-pip-size * 2);
+          top: auto;
+        }
+
+        &.tip-left,
+        &.tip-right { float: none !important; }
+
+        &.tip-left>.nub {
+          border-color: transparent transparent transparent $tooltip-bg;
+          left: auto;
+          margin-top: -$tooltip-pip-size;
+          right: -($tooltip-pip-size * 2);
+          top: 50%;
+        }
+        &.tip-right>.nub {
+          border-color: transparent $tooltip-bg transparent transparent;
+          left: -($tooltip-pip-size * 2);
+          margin-top: -$tooltip-pip-size;
+          right: auto;
+          top: 50%;
+        }
+
+      }
+    }
+
+  }
+}

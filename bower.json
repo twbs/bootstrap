@@ -1,0 +1,23 @@
+{
+  "name": "foundation",
+  "version": "{{VERSION}}",
+  "main": [
+    "css/foundation.css",
+    "css/foundation.css.map",
+    "js/foundation.js"
+  ],
+  "ignore": [
+  ],
+  "dependencies": {
+    "jquery": ">= 2.1.0",
+    "modernizr": ">= 2.7.2",
+    "fastclick": ">=0.6.11",
+    "jquery.cookie": "~1.4.0",
+    "jquery-placeholder": "~2.0.7"
+  },
+  "devDependencies": {
+    "jquery.autocomplete": "devbridge/jQuery-Autocomplete#1.2.9",
+    "lodash": "~2.4.1"
+  },
+  "private": true
+}

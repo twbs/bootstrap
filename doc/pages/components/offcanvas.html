@@ -1,0 +1,416 @@
+---
+title: Off-canvas
+meta: Off-canvas navigation
+---
+
+<h3 class="subheader">Off-canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off-canvas layout in Foundation is super easy.</h3>
+
+***
+
+{{> examples_offcanvas_basic}}
+
+***
+
+## Basic
+
+You can create a basic, <strong>unstyled</strong> off-canvas menu with just a little bit of markup. Here's how:
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  {{> examples_offcanvas_minimal_markup}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  {{> examples_offcanvas_minimal_rendered}}
+  </div>
+</div>
+
+The basics of off-canvas are pretty simple. The off-canvas layout is wrapped in `.off-canvas-wrap`. Next comes `.inner-wrap`. You also need to include the menu itself, which is `.left-off-canvas-menu` or `.right-off-canvas-menu`. You need a corresponding target for your off-canvas menu, either `.left-off-canvas-toggle` or `.right-off-canvas-toggle`. Finally, be sure to include `.exit-off-canvas` so your users can get back to the main page!
+
+### Off-Canvas Wrap
+
+This is the outer-most element. It contains the entire off-canvas layout and hides overflows.
+
+<h4>HTML</h4>
+
+```html
+<div class="off-canvas-wrap"><!-- page layout goes here --></div>
+```
+
+### Inner Wrap
+
+This is the element that is animated. All of your page content needs to be inside here.
+
+<h4>HTML</h4>
+
+```html
+<div class="off-canvas-wrap">
+  <!-- If the contents of the .inner-wrap isn't the main content of the page, use another approripate sectioning element instead -->
+  <main class="inner-wrap"><!-- all content goes here --></main>
+</div>
+```
+
+### Off-Canvas Menu
+
+This is the panel that slides in and out when activated. You can place it on either the left or the right side. You can even create menus on both sides!
+
+<h4>HTML</h4>
+
+```html
+<nav class="left-off-canvas-menu"><!-- put your links in here --></nav>
+<nav class="right-off-canvas-menu"><!-- put your links in here --></nav>
+```
+
+### Target Off-Canvas Menu
+
+To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.
+
+<h4>HTML</h4>
+
+```html
+<!-- target the leftside menu -->
+<a href="idOfLeftMenu" role="button" class="left-off-canvas-toggle">Left Menu</a>
+<!-- target the rightside menu -->
+<a href="idOfRightMenu" role="button" class="right-off-canvas-toggle">Right Menu</a>
+
+<nav class="left-off-canvas-menu"></nav>
+<nav class="right-off-canvas-menu"></nav>
+```
+
+### Exit Off-Canvas Menu
+
+Include `.exit-off-canvas` to provide a way back to the main page. This is an overlay that covers the `.inner-wrap` when an off-canvas menu is active. Clicking on it will deactivate the off-canvas menu.
+
+<h4>HTML</h4>
+
+```html
+<button class="exit-off-canvas"></button>
+```
+
+***
+
+## Advanced
+
+Using our pre-built components, you can create an awesome off-canvas menu right out of the box.
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  {{> examples_offcanvas_multiple_markup}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  {{> examples_offcanvas_multiple_rendered}}
+  </div>
+</div>
+
+### Tab Bar Container
+
+We've provided a simple navigation pattern called Tab Bar. It's a very plain component, designed to be easily customizable. First, we need to add the tab bar container: `nav.tab-bar`.
+
+<h4>HTML</h4>
+
+```html
+<nav class="tab-bar"></nav>
+```
+
+### Button Containers
+
+The button containers, `div.left-small` and `div.right-small`, contain the toggle buttons.
+
+<h4>HTML</h4>
+
+```html
+<nav class="tab-bar">
+  <div class="left-small"></div>
+  <div class="right-small"></div>
+</nav>
+```
+
+### Menu Icon
+
+To add the nice hamburger icon that everyone knows and loves, add a class of `.menu-icon` to your menu target, and nest a `span` inside of it.
+
+```html
+<a role="button" href="#idOfRightMenu" class="right-off-canvas-toggle menu-icon" ><span></span></a>
+```
+
+Now put it all together...
+
+<h4>HTML</h4>
+
+```html
+<nav class="tab-bar">
+
+  <div class="left-small">
+    <a href="#idOfLeftMenu" role="button" aria-controls="idOfLeftMenu" aria-expanded="false" class="left-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
+  <div class="right-small">
+    <a href="#idOfRightMenu" role="button" aria-controls="idOfRightMenu" aria-expanded="false" class="right-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
+</nav>
+```
+...and here's what you'll get:
+
+<nav class="tab-bar">
+  <div class="left-small">
+    <a href="#idOfLeftMenu" aria-controls="idOfLeftMenu"  role="button" aria-expanded="false" class="menu-icon" ><span></span></a>
+  </div>
+  <div class="right-small">
+    <a href="#idOfRightMenu" aria-controls="idOfRightMenu" role="button" aria-expanded="false" class="menu-icon" ><span></span></a>
+  </div>
+</nav>
+
+&nbsp;
+
+### Tab Bar Section
+
+The last thing we need is a section for the tab bar content. Add `section.tab-bar-section` inside `nav.tab-bar`.
+
+<h4>HTML</h4>
+
+```html
+<nav class="tab-bar">
+  <div class="left-small">
+    <a role="button" aria-expanded="false" aria-controls="idOfLeftMenu" class="left-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
+  <section class="middle tab-bar-section">
+    <h1 class="title">Foundation</h1>
+  </section>
+  <div class="right-small">
+    <a role="button" aria-expanded="false" aria-controls="idOfRightMenu" class="right-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
+</nav>
+```
+
+Add a class of `.left`, `.right`, or `.middle` depending on which space you want the section to occupy. For example, if you have a Button Container on the left, add the class `.right`. This will allow you to place the text (link) on the tabbar more to the left, right, or middle.
+
+<h4>HTML</h4>
+
+```html
+<nav class="tab-bar">
+  <div class="left-small"></div>
+  <div class="right tab-bar-section"><!-- I stretch all the way to the right --></div>
+</nav>
+
+<nav class="tab-bar">
+  <div class="left-small"></div>
+  <div class="middle tab-bar-section"><!-- I'm in the middle --></div>
+  <div class="right-small"></div>
+</nav>
+
+<nav class="tab-bar">
+  <div class="right tab-bar-section"><!-- I stretch all the way to the left --></div>
+  <div class="right-small"></div>
+</nav>
+```
+
+<nav class="tab-bar">
+  <div class="right-small"><a class="menu-icon" ><span></span></a></div>
+  <div class="left tab-bar-section"><h1>Left Section</h1></div>
+</nav>
+&nbsp;
+<nav class="tab-bar">
+  <div class="left-small"><a class="menu-icon" ><span></span></a></div>
+  <section class="middle tab-bar-section"><h1>Middle Section</h1></section>
+  <div class="right-small"><a class=" menu-icon" ><span></span></a></div>
+</nav>
+&nbsp;
+<nav class="tab-bar">
+  <section class="right tab-bar-section"><h1>Right Section</h1></section>
+  <div class="left-small"><a class="menu-icon"><span></span></a></div>
+</nav>
+
+&nbsp;
+
+### Off-Canvas List
+
+We've included a nice list pattern for list in the off-canvas menu. Include `ul.off-canvas-list` inside your off-canvas menu. For section titles, wrap the `li` contents in a `label`.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<nav class="left-off-canvas-menu">
+  <ul class="off-canvas-list">
+    <li><label>Foundation</label></li>
+    <li><a href="#">The Psychohistorians</a></li>
+    <li><a href="#">The Encyclopedists</a></li>
+    <li><a href="#">The Mayors</a></li>
+    <li><a href="#">The Traders</a></li>
+    <li><a href="#">The Merchant Princes</a></li>
+  </ul>
+</nav>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+      <ul class="off-canvas-list doc-oc-list">
+        <li><label>Foundation</label></li>
+        <li><a href="#">The Psychohistorians</a></li>
+        <li><a href="#">The Encyclopedists</a></li>
+        <li><a href="#">The Mayors</a></li>
+        <li><a href="#">The Traders</a></li>
+        <li><a href="#">The Merchant Princes</a></li>
+      </ul>
+  </div>
+</div>
+
+&nbsp;
+
+### Off-Canvas Multilevel Menu
+
+We've included a nice multilevel pattern for list in the off-canvas menu. Add a `li.has-submenu` and include `ul.left-submenu` or `ul.right-submenu` within to start to define a submenu, later add a `li.back` element inside this new list. This supports multiple level of submenus.
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  {{> examples_offcanvas_multiple_level_markup}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  {{> examples_offcanvas_multiple_level_rendered}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+The off-canvas menu is not yet fully accessible. Because it's tucked away off-screen but not totally hidden, the user's browser will still tab through each item, and screen readers will read each item in the navigation. However, the off-canvas menu will not appear when focused with the keyboard.
+
+If your page has two primary navigation menus, perhaps a horizontal one for larger screens and an off-canvas menu for small screens, it's best to hide one so screen readers won't read through two whole navigation menus. Add the attribute `aria-hidden="true"` to the container of one navigation, which will tell assistive devices to skip it entirely.
+
+The multi-level off-canvas menu, being a relatively recent addition to Foundation, is also not yet fully accessible. The browser will tab through the top-level menu items, but not drill down into any of the sub menus.
+
+***
+
+## Customize with Sass
+
+Off-canvas layouts can be easily customized using our provided Sass variables.
+
+<h4>SCSS</h4>
+
+{{> examples_offcanvas_variables}}
+
+***
+
+## Using the Javascript
+
+<div class="panel">
+  Before you can use Off-canvas you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{#markdown}}
+```html
+<body>
+
+  ...
+
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.offcanvas.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+```
+{{/markdown}}
+
+Required Foundation Library: `foundation.offcanvas.js`
+
+***
+
+### Optional Javascript Configuration
+
+**open_method** <br> Default: `move` <br> Defines how the off-canvas menu behaves. Can be `move` `overlap_single` or `overlap`.
+
+**close_on_click** <br/> Default: `false` <br> Control whether or not clicking menu links will close the menu.
+
+
+{{> examples_offcanvas_javascript_options}}
+
+### Event Bindings
+
+There are a series of events that you can bind to for triggering callbacks:
+
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the off-canvas plugin emitted un-namespaced `open` and `close` events, however, these have been replaced by the namespaced `open.fndtn.offcanvas` and `close.fndtn.offcanvas` events. The un-namespaced events have been fully deprecated.</p>
+</div>
+
+```js
+$(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function () {
+  var off_canvas_wrap = $(this);
+});
+
+$(document).on('close.fndtn.offcanvas', '[data-offcanvas]', function () {
+  var off_canvas_wrap = $(this);
+});
+
+```
+
+For example, to freeze scrolling when active:
+
+```js
+$(document)
+.on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
+  $('html').css('overflow', 'hidden');
+})
+.on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
+  $('html').css('overflow', 'auto');
+})
+
+```
+
+### Programmatic show / hide / toggle
+
+The `.off-canvas-wrap` container can be targeted for javascript methods. At this time, the presentational open class needs to be included: either `move-right`, `move-left`, `offcanvas-overlap-left`, `offcanvas-overlap-right` or `offcanvas-overlap`.
+
+```js
+$('.off-canvas-wrap').foundation('offcanvas', 'show', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'hide', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
+
+```
+
+***
+
+### Adding Off-canvas After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation();
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('offcanvas', 'reflow');
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/offcanvas";
+```
+{{/markdown}}

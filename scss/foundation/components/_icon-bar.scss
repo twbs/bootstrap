@@ -1,0 +1,358 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+
+// @name
+// @dependencies _global.scss
+
+$include-html-icon-bar-classes: $include-html-classes !default;
+
+// @variables
+
+// We use these to style the icon-bar and items
+$icon-bar-bg: $oil !default;
+$icon-bar-font-color: $white !default;
+$icon-bar-font-color-hover: $icon-bar-font-color !default;
+$icon-bar-font-size: 1rem !default;
+$icon-bar-hover-color: $primary-color !default;
+$icon-bar-icon-color: $white !default;
+$icon-bar-icon-color-hover: $icon-bar-icon-color !default;
+$icon-bar-icon-size: 1.875rem !default;
+$icon-bar-image-width: 1.875rem !default;
+$icon-bar-image-height: 1.875rem !default;
+$icon-bar-active-color: $primary-color !default;
+$icon-bar-item-padding: 1.25rem !default;
+
+// We use this to set default opacity and cursor for disabled icons.
+$icon-bar-disabled-opacity: .7 !default;
+$icon-bar-disabled-cursor: $cursor-disabled-value !default;
+
+
+//
+// @mixins
+//
+
+// We use this mixin to create the base styles for our Icon bar element.
+//
+@mixin icon-bar-base() {
+  display: inline-block;
+  font-size: 0;
+  width: 100%;
+
+  > * {
+    display: block;
+    float: left;
+    font-size: $icon-bar-font-size;
+    margin: 0 auto;
+    padding: $icon-bar-item-padding;
+    text-align: center;
+    width: 25%;
+
+    i, img {
+      display: block;
+      margin: 0 auto;
+
+      & + label {
+        margin-top: .0625rem;
+      }
+    }
+
+    i {
+      font-size: $icon-bar-icon-size;
+      vertical-align: middle;
+    }
+
+    img {
+      height: $icon-bar-image-height;
+      width: $icon-bar-image-width;
+    }
+  }
+
+  &.label-right > * {
+
+    i, img {
+      display: inline-block;
+      margin: 0 .0625rem 0 0;
+
+      & + label {
+        margin-top: 0;
+      }
+    }
+
+    label { display: inline-block; }
+  }
+
+  &.vertical.label-right > * {
+    text-align: left;
+  }
+
+  &.vertical, &.small-vertical{
+    height: 100%;
+    width: auto;
+
+    .item {
+      float: none;
+      margin: auto;
+      width: auto;
+    }
+  }
+
+  &.medium-vertical {
+    @media #{$medium-up} {
+      height: 100%;
+      width: auto;
+
+      .item {
+        float: none;
+        margin: auto;
+        width: auto;
+      }
+    }
+  }
+  &.large-vertical {
+    @media #{$large-up} {
+      height: 100%;
+      width: auto;
+
+      .item {
+        float: none;
+        margin: auto;
+        width: auto;
+      }
+    }
+  }
+}
+
+// We use this mixin to create the size styles for icon bars.
+@mixin icon-bar-size(
+  $padding: $icon-bar-item-padding,
+  $font-size: $icon-bar-font-size,
+  $icon-size: $icon-bar-icon-size,
+  $image-width: $icon-bar-image-width,
+  $image-height: $icon-bar-image-height) {
+
+  > * {
+    font-size: $font-size;
+    padding: $padding;
+
+    i, img {
+
+      & + label {
+        margin-top: .0625rem;
+      }
+    }
+
+    i {
+      font-size: $icon-size;
+    }
+
+    img {
+      height: $image-height;
+      width: $image-width;
+    }
+  }
+
+}
+
+@mixin icon-bar-style(
+  $bar-bg:$icon-bar-bg,
+  $bar-font-color:$icon-bar-font-color,
+  $bar-font-color-hover:$icon-bar-font-color-hover,
+  $bar-hover-color:$icon-bar-hover-color,
+  $bar-icon-color:$icon-bar-icon-color,
+  $bar-icon-color-hover:$icon-bar-icon-color-hover,
+  $bar-active-color:$icon-bar-active-color,
+  $base-style:true,
+  $disabled:false) {
+
+  @if $base-style {
+
+    background: $bar-bg;
+
+    > * {
+      label { color: $bar-font-color; }
+
+      i { color: $bar-icon-color; }
+    }
+
+    > a:hover {
+
+      background: $bar-hover-color;
+
+      label { color: $bar-font-color-hover; }
+
+      i { color: $bar-icon-color-hover; }
+    }
+
+        > a.active {
+
+      background: $bar-active-color;
+
+      label { color: $bar-font-color-hover; }
+
+      i { color: $bar-icon-color-hover; }
+    }
+  }
+  @if $disabled {
+    .item.disabled {
+      cursor: $icon-bar-disabled-cursor;
+      opacity: $icon-bar-disabled-opacity;
+      pointer-events: none;
+      >* {
+        opacity: $icon-bar-disabled-opacity;
+        cursor: $icon-bar-disabled-cursor;
+      }
+    }
+  }
+
+}
+
+// We use this to quickly create icon bars with a single mixin
+// $height - The overall calculated height of the icon bar (horizontal)
+// $bar-bg - the background color of the bar
+// $bar-font-color - the font color
+// $bar-hover-color - okay these are pretty obvious variables
+// $bar-icon-color - maybe we could skip explaining them all? Okay this one does change icon color if you use an icon font
+// $bar-active-color - the color of an active / hover state
+// $base-style - Apply base styles? Default: true.
+// $disabled - Allow disabled icons? Default: false.
+
+@mixin icon-bar(
+  $bar-bg:$icon-bar-bg,
+  $bar-font-color:$icon-bar-font-color,
+  $bar-font-color-hover:$icon-bar-font-color-hover,
+  $bar-hover-color:$icon-bar-hover-color,
+  $bar-icon-color:$icon-bar-icon-color,
+  $bar-icon-color-hover:$icon-bar-icon-color-hover,
+  $bar-active-color:$icon-bar-active-color,
+  $padding: $icon-bar-item-padding,
+  $font-size: $icon-bar-font-size,
+  $icon-size: $icon-bar-icon-size,
+  $image-width: $icon-bar-image-width,
+  $image-height: $icon-bar-image-height,
+  $base-style:true,
+  $disabled:true) {
+    @include icon-bar-base();
+    @include icon-bar-size($padding, $font-size, $icon-size, $image-width, $image-height);
+    @include icon-bar-style($bar-bg, $bar-font-color, $bar-font-color-hover, $bar-hover-color, $bar-icon-color, $bar-icon-color-hover, $bar-active-color, $base-style, $disabled);
+}
+
+@include exports("icon-bar") {
+  @if $include-html-icon-bar-classes {
+    .icon-bar {
+      @include icon-bar;
+    }
+  }
+}
+
+@if $include-html-icon-bar-classes {
+
+  // toolbar styles
+
+  .icon-bar {
+
+    // Counts
+
+    &.two-up {
+      .item { width: 50%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+          width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+          width: auto;
+        }
+      }
+    }
+    &.three-up {
+      .item { width: 33.3333%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+          width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+          width: auto;
+        }
+      }
+    }
+    &.four-up {
+      .item { width: 25%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+          width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+          width: auto;
+        }
+      }
+    }
+    &.five-up {
+      .item { width: 20%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+          width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+          width: auto;
+        }
+      }
+    }
+    &.six-up {
+      .item { width: 16.66667%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+          width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+          width: auto;
+        }
+      }
+    }
+    &.seven-up {
+      .item { width: 14.28571%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+              width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+           width: auto;
+        }
+      }
+    }
+    &.eight-up {
+      .item { width: 12.5%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+              width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+           width: auto;
+        }
+      }
+    }
+  }
+}

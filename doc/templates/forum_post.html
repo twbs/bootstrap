@@ -1,0 +1,142 @@
+<!--topic 1-->
+<div class="row post impressions new hide-for-small">
+   <div class="small-12 columns">
+      <ul class="post-count-spacing small-block-grid-2 large-block-grid-2">
+         <% if (comments_count > 0) { %>
+         <li>
+            <div class="post-count new already-checked">
+               <a href="#">
+               <div class="post-count-container new already-checked">
+                  <span class="reply-count new-post already-checked">NEW</span>
+               </div>
+               <div class="total-post-count new total-replies">
+                  <% if (comments_count == 1) { %>
+                  <%= comments_count %> Reply
+                  <% } else { %>
+                  <%= comments_count %> Replies
+                  <% } %>
+               </div>
+               </a>
+            </div>
+         </li>
+         <% } else { %>
+        <li>
+          <div class="post-count new-general">
+            <a href="<%= url %>">
+              <div class="post-count-container new-general">
+                <span class="reply-count new-general">NEW</span>
+              </div>
+            </a>
+          </div>
+          <a href="<%= url %>"></a>
+        </li>
+         <% } %>
+         <li>
+           <div class="post-description">
+               <h5 class="content-title">
+                  <a href="<%= url %>"><%= title || "Untitled" %></a>
+               </h5>
+               <p class="author-name">
+                   By
+                   <span class="author">
+                      <strong>
+                        <%= author_name %>
+                        <% if (typeof(latest_comment_author_name) != "undefined") { %>,<% } %>
+                      </strong>
+                   </span>
+                   <% if (typeof(latest_comment_author_name) != "undefined") { %>
+                   <span class="by">last Reply by</span>
+                   <span class="when">
+                      <span class="author">
+                         <strong><%= latest_comment_author_name %></strong>
+                      </span>
+                      about <%= latest_comment_created_at_time_ago %> ago
+                   </span>
+                   <% } else { %>
+                   <span class="when">about <%= created_at_time_ago %> ago</span>
+                   <% } %>
+               </p>
+
+               <div class="post-description copy">
+                   <p><%= body %></p>
+               </div>
+            </div>
+         </li>
+      </ul>
+      <hr class="dashed">
+   </div>
+</div>
+<!-- end topic 1 large -->
+
+<!-- start  topic 1 small -->
+<div class="row post impressions new show-for-small">
+   <div class="small-12 columns">
+      <ul class="post-count-spacing small-block-grid-2 large-block-grid-2">
+        <% if (comments_count > 0) { %>
+        <li>
+            <div class="post-count new already-checked">
+               <a href="<%= url %>">
+               <div class="post-count-container new already-checked">
+                  <span class="reply-count new-post already-checked">NEW</span>
+               </div>
+               <% if (comments_count > 0) { %>
+               <div class="total-post-count new total-replies">
+                  <% if (comments_count == 1) { %>
+                  <%= comments_count %> Reply
+                  <% } else { %>
+                  <%= comments_count %> Replies
+                  <% } %>
+               </div>
+               <% } %>
+               </a>
+            </div>
+        </li>
+        <% } else { %>
+        <li>
+          <div class="post-count new-general">
+            <a href="<%= url %>">
+              <div class="post-count-container new-general">
+                <span class="reply-count new-general">NEW</span>
+              </div>
+            </a>
+          </div>
+          <a href="<%= url %>"></a>
+        </li>
+        <% } %>
+        <li>
+            <h5 class="content-title">
+               <a href="<%= url %>"><%= title || "Untitled" %></a>
+            </h5>
+            <p class="author-name">
+               By
+               <span class="author">
+                  <strong>
+                    <%= author_name %>
+                    <% if (typeof(latest_comment_author_name) != "undefined") { %>,<% } %>
+                  </strong>
+               </span>
+               <% if (typeof(latest_comment_author_name) != "undefined") { %>
+               <span class="by">last Reply by</span>
+               <span class="when">
+                  <span class="author">
+                     <strong><%= latest_comment_author_name %></strong>
+                  </span>
+                  about <%= latest_comment_created_at_time_ago %> ago
+               </span>
+               <% } else { %>
+               <span class="when">about <%= created_at_time_ago %> ago</span>
+               <% } %>
+            </p>
+        </li>
+      </ul>
+      <div class="post-description">
+         <div class="post-description copy">
+
+             <p>Having issues installing with Compass and can't find a fix online. $ foundation new test Creating ./test exist test... (continued)</p>
+
+         </div>
+      </div>
+      <hr class="dashed"> 
+   </div>
+</div>
+<!--end topic 1 small-->

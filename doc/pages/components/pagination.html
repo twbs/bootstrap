@@ -1,0 +1,169 @@
+---
+title: Pagination
+---
+
+<h3 class="subheader">Pagination is a type of navigation that lets users tap through a series of related pages. Moving between pages has become less common with the advent of longer pages and AJAX loading, but if you need pagination, Foundation has you covered.</h3>
+
+***
+
+{{> examples_pagination_basic}}
+
+***
+
+## Basic
+
+Add a `.pagination` class to a `ul` to get started, then add list items with links or buttons in them.
+
+* Create arrows by adding an `.arrow` class to the first and last list items.
+* To mark the current page, add a `.current` class to a list item.
+* Add a class of `.unavailable` to a list item to make it not clickable, like for the ellipsis in the middle.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_pagination_basic}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_pagination_basic}}
+  </div>
+</div>
+
+***
+
+## Advanced
+
+Wrap your ul.pagination with an element that has the .pagination-centered class to center your pagination.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_pagination_centered}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="pagination-centered">
+      <ul class="pagination">
+        <li class="arrow unavailable"><a href="">&laquo;</a></li>
+        <li class="current"><a href="">1</a></li>
+        <li><a href="">2</a></li>
+        <li><a href="">3</a></li>
+        <li><a href="">4</a></li>
+        <li class="unavailable"><a href="">&hellip;</a></li>
+        <li><a href="">12</a></li>
+        <li><a href="">13</a></li>
+        <li class="arrow"><a href="">&raquo;</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+***
+
+<h3>Accessibility</h3>
+
+Use this snippet to make Pagination more accessible. Adding the role attribute gives context to a screen reader. The ```aria-label``` attribute will allow a screen reader to call out what the component is to the user. Using the Tab button, a user can navigate until they've reached the link below. (Use Shift+Tab to navigate back one step.)
+
+If you are using an ```unavailable``` link, give it an aria-disabled attribute as in this example:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_pagination_accessible}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_pagination_accessible_rendered}}
+  </div>
+</div>
+
+<p class="panel">This component still needs keyboard accessibility through arrow keys. Stay tuned for updates in future releases.</p>
+
+**Note:** It is bad practice to leave links that do not go anywhere on your live site. Use something like foo.html to fill them as you build.
+
+***
+
+## Customize with Sass
+
+Pagination styles can be easily customized with the Sass variables provided in the `_settings.scss` file.
+
+<h4>SCSS</h4>
+
+{{> examples_pagination_variables}}
+
+***
+
+## Semantic Markup with Sass
+
+You can apply pagination styles to semantic markup using Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `pagination()` mixin to create your own pagination element, like so:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.your-class-name {
+  @include pagination;
+}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_pagination_mixin}}
+```
+{{/markdown}}
+  </div>
+</div>
+
+<h3>Advanced</h3>
+
+You can center your pagination by wrapping your pagination element in another container that is styled with the `pagination-container()` mixin. To center your pagination within the container element, set the `$centered` option in your mixin to `true`.
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.container-class-name { @include pagination-container(true); }
+.your-class-name { @include pagination($centered, $base-styles); }
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+{{> examples_pagination_centered_mixin}}
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/pagination";
+```
+

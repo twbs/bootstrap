@@ -1,0 +1,118 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{#if title}}{{title}} | {{/if}}Foundation Docs</title>
+    <link rel="icon" href="{{assets}}/img/icons/favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{assets}}/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{assets}}/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{assets}}/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="{{assets}}/img/icons/apple-touch-icon-precomposed.png">
+    {{#if description}}
+    <meta name="description" content="{{description}}"/>
+    {{else}}
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. Javascript, CSS, components, grid and more." />
+    {{/if}}
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com" />
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2013" />
+    <link href='{{assets}}/css/docs.css' rel='stylesheet' />
+    <script src="{{assets}}/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
+
+    <div class="off-canvas-wrap sticky" data-offcanvas>
+      <div class="inner-wrap">
+        <nav class="tab-bar">
+          <section class="left-small">
+            <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+          </section>
+
+          <section class="middle tab-bar-section">
+            <h1 class="title">Foundation</h1>
+          </section>
+
+          <section class="right-small">
+            <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+          </section>
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label>Foundation</label></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+            <li><a href="#">The Psychohistorians</a></li>
+          </ul>
+        </aside>
+
+        <aside class="right-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label>Users</label></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+            <li><a href="#">Hari Seldon</a></li>
+          </ul>
+        </aside>
+
+        <section class="scroll-container">
+
+          {{#markdown}}
+          {{> body}}
+          {{/markdown}}
+
+        </section>
+
+      <a class="exit-off-canvas"></a>
+
+      </div>
+    </div>
+
+    <script src="{{assets}}/js/jquery.js"></script>
+    <script src="{{assets}}/js/templates.js"></script>
+    <script src="{{assets}}/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>

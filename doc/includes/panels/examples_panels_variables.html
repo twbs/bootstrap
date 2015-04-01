@@ -1,0 +1,25 @@
+{{#markdown}}
+```scss
+$include-html-panel-classes: $include-html-classes !default;
+
+// We use these to control the background and border styles
+$panel-bg: scale-color($white, $lightness: -5%) !default;
+$panel-border-style: solid !default;
+$panel-border-size: 1px !default;
+
+// We use this % to control how much we darken things on hover
+$panel-border-color: scale-color($panel-bg, $lightness: -11%) !default;
+
+// We use these to set default inner padding and bottom margin
+$panel-margin-bottom: rem-calc(20) !default;
+$panel-padding: rem-calc(20) !default;
+
+// We use these to set default font colors
+$panel-font-color: $oil !default;
+$panel-font-color-alt: $white !default;
+
+$panel-header-adjust: true !default;
+$callout-panel-link-color: $primary-color !default;
+$callout-panel-bg: scale-color($primary-color, $lightness: 94%) !default;
+```
+{{/markdown}}

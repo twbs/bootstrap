@@ -1,0 +1,119 @@
+$panel-bg-color: #FAFAFA;
+
+.sidebar {
+  background: $panel-bg-color;
+  padding: 32px 20px;
+}
+.sidebar.fixed,
+[data-magellan-expedition] {
+  // min-width: 270px !important;
+  // max-width: 270px;
+  // width: 270px;
+  left: auto !important;
+
+}
+.side-nav .heading { text-transform: uppercase; }
+.side-nav li {
+  margin: 0;
+  padding: 0;
+  }
+.side-nav li a {
+  padding: rem-calc(6) 0;
+  &:not(.button) { padding: rem-calc(6) 0; }
+  &:hover {
+    color: darken($primary-color, 20%);
+    span {
+      background: darken($secondary-color, 5%);
+      color: #000;
+    }
+  }
+}
+
+.side-nav .heading,
+.sidebar form {
+  padding: 2px 0px;
+}
+
+.side-nav li.divider { margin: 16px 0px; }
+
+.sidebar {
+  h1,h2,h3,h4,h5,h6 {
+    padding: 4px 0px;
+    font-size: rem-calc(14);
+    font-weight: bold;
+  }
+}
+.sidebar .download.button {
+  margin: 10px 0px;
+  font-size: 1rem;
+}
+
+/*
+.sidebar .side-nav {
+  overflow-y: scroll;
+  height: 600px;
+
+}
+*/
+.sidebar .label {
+	background: #ddd; border-radius: $global-radius; color: #777; margin-left: 5px;
+}
+
+[data-magellan-expedition] {
+}
+.sidebar form { margin-bottom: 0; }
+.sidebar .button { font-size: rem-calc(12); }
+.magellan-fixed {
+  &.magellan-outer-wrapper {
+    overflow-y: scroll;
+    width:inherit;
+  }
+  .magellan-inner-wrapper {
+    overflow-y: scroll;
+  }
+}
+.sidebar {
+  input[type="search"]:focus {
+    box-shadow: 0 0 0 !important;
+  }
+}
+#jobs {
+/*
+  h6 {
+    padding:0;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+*/
+  ul {
+  	margin-left: 0;
+    list-style: none;
+    // li { margin-bottom: 10px;}
+  }
+  .positionTitle {
+	font-size: 14px;
+  }
+  .location {
+    display: block;
+    font-size: 11px;
+    color: #666;
+  }
+  #via {
+  font-size: 12px;
+  color: #333;}
+}
+
+.fader {
+  display: block;
+  position: fixed;
+  z-index: 400;
+  bottom: 0;
+  width: 220px;
+  background: url(../img/fader.png) no-repeat center bottom;
+}
+
+input[type="search"]:focus {
+  background: #fff;
+}

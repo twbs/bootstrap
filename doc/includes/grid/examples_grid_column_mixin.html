@@ -1,0 +1,24 @@
+{{#markdown}}
+```scss
+.custom-grid-class {
+  @include grid-column(
+    // Control the number of columns
+    $columns:4,
+    // Specify whether or not this is the last column in the row
+    $last-column:true,
+    // Choose whether or not to center this column
+    $center:true,
+    // Choose the number of columns to offset this element by
+    $offset:3,
+    // Specify how many columns to push this element past
+    $push:3,
+    // Specify how many columns to pull this element past
+    $pull:9,
+    // Set to true to remove column padding
+    $collapse:true,
+    // Specify the float direction
+    $float:right
+  );
+}
+```
+{{/markdown}}

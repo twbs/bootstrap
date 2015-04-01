@@ -1,0 +1,14 @@
+<form data-abide="ajax">
+  <input name="utf8" type="hidden" value="&#x2713;" />
+  <div class="name-field">
+    <label>Your name <small>required</small></label>
+    <input name="user_name" type="text" required pattern="[a-zA-Z]+">
+    <small class="error">Name is required and must be a string.</small>
+  </div>
+  <div class="email-field">
+    <label>Email <small>required</small></label>
+    <input name="user_email" type="email" required>
+    <small class="error">An email address is required.</small>
+  </div>
+  <button type="submit">Submit</button>
+</form>

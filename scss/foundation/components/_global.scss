@@ -1,0 +1,489 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import '../functions';
+//
+// Foundation Variables
+//
+
+// Data attribute namespace
+// styles get applied to [data-mysite-plugin], etc
+$namespace: false !default;
+
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with browser-based text zoom or user-set defaults.
+
+// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+// If you want your base font-size to be different and not have it affect the grid breakpoints,
+// set $rem-base to $base-font-size and make sure $base-font-size is a px value.
+$base-font-size: 100% !default;
+
+// $base-line-height is 24px while $base-font-size is 16px
+$base-line-height: 1.5 !default;
+
+//
+// Global Foundation Mixins
+//
+
+// @mixins
+//
+// We use this to control border radius.
+// $radius - Default: $global-radius || 4px
+@mixin radius($radius:$global-radius) {
+  @if $radius {
+    border-radius: $radius;
+  }
+}
+
+// @mixins
+//
+// We use this to create equal side border radius on elements.
+// $side - Options: left, right, top, bottom
+@mixin side-radius($side, $radius:$global-radius) {
+  @if ($side == left or $side == right) {
+    -webkit-border-bottom-#{$side}-radius: $radius;
+    -webkit-border-top-#{$side}-radius: $radius;
+    border-bottom-#{$side}-radius: $radius;
+    border-top-#{$side}-radius: $radius;
+  } @else {
+    -webkit-#{$side}-left-radius: $radius;
+    -webkit-#{$side}-right-radius: $radius;
+    border-#{$side}-left-radius: $radius;
+    border-#{$side}-right-radius: $radius;
+  }
+}
+
+// @mixins
+//
+// We can control whether or not we have inset shadows edges.
+// $active - Default: true, Options: false
+@mixin inset-shadow($active:true) {
+  box-shadow: $shiny-edge-size $shiny-edge-color inset;
+
+  @if $active { &:active {
+    box-shadow: $shiny-edge-size $shiny-edge-active-color inset; } }
+}
+
+// @mixins
+//
+// We use this to add transitions to elements
+// $property - Default: all, Options: http://www.w3.org/TR/css3-transitions/#animatable-properties
+// $speed - Default: 300ms
+// $ease - Default:ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/
+@mixin single-transition($property:all, $speed:300ms, $ease:ease-out) {
+  transition: $property $speed $ease;
+}
+
+// @mixins
+//
+// We use this to add box-sizing across browser prefixes
+@mixin box-sizing($type:border-box) {
+  -webkit-box-sizing: $type; // Android < 2.3, iOS < 4
+     -moz-box-sizing: $type;
+          box-sizing: $type; // Chrome, IE 8+, Opera, Safari 5.1
+}
+
+// @mixins
+//
+// We use this to create isosceles triangles
+// $triangle-size - Used to set border-size. No default, set a px or em size.
+// $triangle-color - Used to set border-color which makes up triangle. No default
+// $triangle-direction - Used to determine which direction triangle points. Options: top, bottom, left, right
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+  border: inset $triangle-size;
+  content: "";
+  display: block;
+  height: 0;
+  width: 0;
+  @if ($triangle-direction == top) {
+    border-color: $triangle-color transparent transparent transparent;
+    border-top-style: solid;
+  }
+  @if ($triangle-direction == bottom) {
+    border-color: transparent transparent $triangle-color transparent;
+    border-bottom-style: solid;
+  }
+  @if ($triangle-direction == left) {
+    border-color: transparent transparent transparent $triangle-color;
+    border-left-style: solid;
+  }
+  @if ($triangle-direction == right) {
+    border-color: transparent $triangle-color transparent transparent;
+    border-right-style: solid;
+  }
+}
+
+// @mixins
+//
+// We use this to create the icon with three lines aka the hamburger icon, the menu-icon or the navicon
+// $width - Width of hamburger icon in rem
+// $left - If false, icon will be centered horizontally || explicitly set value in rem
+// $top - If false, icon will be centered vertically || explicitly set value in rem
+// $thickness - thickness of lines in hamburger icon, set value in px
+// $gap - spacing between the lines in hamburger icon, set value in px
+// $color - icon color
+// $hover-color - icon color during hover
+// $offcanvas - Set to true of @include in offcanvas
+@mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {
+  span::after {
+    content: "";
+    display: block;
+    height: 0;
+    position: absolute;
+
+    @if $offcanvas {
+      @if $top {
+        top: $top;
+      }
+      @else {
+        top: 50%;
+        margin-top: (-$width/2);
+      }
+      @if $left {
+        left: $left;
+      }
+      @else {
+        left: ($tabbar-menu-icon-width - $width)/2;
+      }
+    }
+    @else {
+      margin-top: -($width/2);
+      top: 50%;
+      #{$opposite-direction}: $topbar-link-padding;
+    }
+
+    box-shadow:
+      0 0 0 $thickness $color,
+      0 $gap + $thickness 0 $thickness $color,
+      0 (2 * $gap + 2*$thickness) 0 $thickness $color;
+    width: $width;
+  }
+  span:hover:after {
+    box-shadow:
+      0 0 0 $thickness $hover-color,
+      0 $gap + $thickness 0 $thickness $hover-color,
+      0 (2 * $gap + 2*$thickness) 0 $thickness $hover-color;
+  }
+}
+
+// We use this to do clear floats
+@mixin clearfix {
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+
+// @mixins
+//
+// We use this to add a glowing effect to block elements
+// $selector - Used for selector state. Default: focus, Options: hover, active, visited
+// $fade-time - Default: 300ms
+// $glowing-effect-color - Default: fade-out($primary-color, .25)
+@mixin block-glowing-effect($selector:focus, $fade-time:300ms, $glowing-effect-color:fade-out($primary-color, .25)) {
+  transition: box-shadow $fade-time, border-color $fade-time ease-in-out;
+
+  &:#{$selector} {
+    border-color: $glowing-effect-color;
+    box-shadow: 0 0 5px $glowing-effect-color;
+  }
+}
+
+// @mixins
+//
+// We use this to translate elements in 2D
+// $horizontal: Default: 0
+// $vertical: Default: 0
+@mixin translate2d($horizontal:0, $vertical:0) {
+  transform: translate($horizontal, $vertical)
+}
+
+// @mixins
+//
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
+}
+
+// @mixins
+//
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  position: static !important;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto;
+}
+
+$white         : #FFFFFF !default;
+$ghost         : #FAFAFA !default;
+$snow          : #F9F9F9 !default;
+$vapor         : #F6F6F6 !default;
+$white-smoke   : #F5F5F5 !default;
+$silver        : #EFEFEF !default;
+$smoke         : #EEEEEE !default;
+$gainsboro     : #DDDDDD !default;
+$iron          : #CCCCCC !default;
+$base          : #AAAAAA !default;
+$aluminum      : #999999 !default;
+$jumbo         : #888888 !default;
+$monsoon       : #777777 !default;
+$steel         : #666666 !default;
+$charcoal      : #555555 !default;
+$tuatara       : #444444 !default;
+$oil           : #333333 !default;
+$jet           : #222222 !default;
+$black         : #000000 !default;
+
+// We use these as default colors throughout
+$primary-color: #008CBA !default;   // bondi-blue
+$secondary-color: #e7e7e7 !default; // white-lilac
+$alert-color: #f04124 !default;     // cinnabar
+$success-color: #43AC6A !default;   // sea-green
+$warning-color: #f08a24 !default;   // carrot
+$info-color: #a0d3e8 !default;      // cornflower
+
+// We use these to define default font stacks
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !default;
+$font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif !default;
+$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
+
+// We use these to define default font weights
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
+// We use these to control various global styles
+$body-bg: #fff !default;
+$body-font-color: #222 !default;
+$body-font-family: $font-family-sans-serif !default;
+$body-font-weight: $font-weight-normal !default;
+$body-font-style: normal !default;
+
+// We use this to control font-smoothing
+$font-smoothing: antialiased !default;
+
+// We use these to control text direction settings
+$text-direction: ltr !default;
+$default-float: left !default;
+$opposite-direction: right !default;
+@if $text-direction == ltr {
+  $default-float: left;
+  $opposite-direction: right;
+} @else {
+  $default-float: right;
+  $opposite-direction: left;
+}
+
+// We use these to make sure border radius matches unless we want it different.
+$global-radius: 3px !default;
+$global-rounded: 1000px !default;
+
+// We use these to control inset shadow shiny edges and depressions.
+$shiny-edge-size: 0 1px 0 !default;
+$shiny-edge-color: rgba(#fff, .5) !default;
+$shiny-edge-active-color: rgba(#000, .2) !default;
+
+// We use this to control whether or not CSS classes come through in the gem files.
+$include-html-classes: true !default;
+$include-print-styles: true !default;
+$include-js-meta-styles: true !default; // Warning! Meta styles are a dependancy of the Javascript.
+$include-html-global-classes: $include-html-classes !default;
+
+$column-gutter: rem-calc(30) !default;
+
+// Media Query Ranges
+$small-range: (0, 40em) !default;
+$medium-range: (40.0625em, 64em) !default;
+$large-range: (64.0625em, 90em) !default;
+$xlarge-range: (90.0625em, 120em) !default;
+$xxlarge-range: (120.0625em, 99999999em) !default;
+
+
+$screen: "only screen" !default;
+
+$landscape: "#{$screen} and (orientation: landscape)" !default;
+$portrait: "#{$screen} and (orientation: portrait)" !default;
+
+$small-up: $screen !default;
+$small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})" !default;
+
+$medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})" !default;
+$medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})" !default;
+
+$large-up: "#{$screen} and (min-width:#{lower-bound($large-range)})" !default;
+$large-only: "#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})" !default;
+
+$xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})" !default;
+$xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})" !default;
+
+$xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})" !default;
+$xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})" !default;
+
+// Legacy
+$small: $medium-up;
+$medium: $medium-up;
+$large: $large-up;
+
+
+//We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
+$cursor-auto-value: auto !default;
+$cursor-crosshair-value: crosshair !default;
+$cursor-default-value: default !default;
+$cursor-disabled-value: not-allowed !default;
+$cursor-pointer-value: pointer !default;
+$cursor-help-value: help !default;
+$cursor-text-value: text !default;
+
+
+@include exports("global") {
+
+  // Meta styles are a dependancy of the Javascript.
+  // Used to provide media query values for javascript components.
+  // Forward slash placed around everything to convince PhantomJS to read the value.
+
+  @if $include-js-meta-styles {
+
+    meta.foundation-version {
+      font-family: "/{{VERSION}}/";
+    }
+
+    meta.foundation-mq-small {
+      font-family: "/" + unquote($small-up) + "/";
+      width: lower-bound($small-range);
+    }
+
+    meta.foundation-mq-small-only {
+      font-family: "/" + unquote($small-only) + "/";
+      width: lower-bound($small-range);
+    }
+
+    meta.foundation-mq-medium {
+      font-family: "/" + unquote($medium-up) + "/";
+      width: lower-bound($medium-range);
+    }
+
+    meta.foundation-mq-medium-only {
+      font-family: "/" + unquote($medium-only) + "/";
+      width: lower-bound($medium-range);
+    }
+
+    meta.foundation-mq-large {
+      font-family: "/" + unquote($large-up) + "/";
+      width: lower-bound($large-range);
+    }
+
+    meta.foundation-mq-large-only {
+      font-family: "/" + unquote($large-only) + "/";
+      width: lower-bound($large-range);
+    }
+
+    meta.foundation-mq-xlarge {
+      font-family: "/" + unquote($xlarge-up) + "/";
+      width: lower-bound($xlarge-range);
+    }
+
+    meta.foundation-mq-xlarge-only {
+      font-family: "/" + unquote($xlarge-only) + "/";
+      width: lower-bound($xlarge-range);
+    }
+
+    meta.foundation-mq-xxlarge {
+      font-family: "/" + unquote($xxlarge-up) + "/";
+      width: lower-bound($xxlarge-range);
+    }
+
+    meta.foundation-data-attribute-namespace {
+      font-family: #{$namespace};
+    }
+
+  }
+
+  @if $include-html-global-classes {
+
+    // Must be 100% for off canvas to work
+    html, body { height: 100%; }
+
+    // Set box-sizing globally to handle padding and border widths
+    html {
+      box-sizing: border-box;
+    }
+    *,
+    *:before,
+    *:after {
+      @include box-sizing(inherit);
+    }
+
+    html,
+    body { font-size: $base-font-size; }
+
+    // Default body styles
+    body {
+      background: $body-bg;
+      color: $body-font-color;
+      cursor: $cursor-auto-value;
+      font-family: $body-font-family;
+      font-style: $body-font-style;
+      font-weight: $body-font-weight;
+      line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+  a:hover { cursor: $cursor-pointer-value; }
+
+    // Grid Defaults to get images and embeds to work properly
+    img { max-width: 100%; height: auto; }
+
+    img { -ms-interpolation-mode: bicubic; }
+
+    #map_canvas,
+    .map_canvas,
+    .mqa-display {
+      img,
+      embed,
+      object { max-width: none !important;
+      }
+    }
+
+    // Miscellaneous useful HTML classes
+    .left { float: left !important; }
+    .right { float: right !important; }
+    .clearfix { @include clearfix; }
+
+    // Hide visually and from screen readers
+    .hide {
+      display: none;
+    }
+
+    // Hide visually and from screen readers, but maintain layout
+    .invisible { visibility: hidden; }
+
+    // Font smoothing
+    // Antialiased font smoothing works best for light text on a dark background.
+    // Apply to single elements instead of globally to body.
+    // Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
+    .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    // Get rid of gap under images by making them display: inline-block; by default
+    img {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    //
+    // Global resets for forms
+    //
+
+    // Make sure textarea takes on height automatically
+    textarea { height: auto; min-height: 50px; }
+
+    // Make select elements 100% width by default
+    select { width: 100%; }
+  }
+}

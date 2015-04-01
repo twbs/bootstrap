@@ -1,0 +1,588 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+@import 'buttons';
+
+//
+// @variables
+//
+$include-html-form-classes: $include-html-classes !default;
+
+// We use this to set the base for lots of form spacing and positioning styles
+$form-spacing: rem-calc(16) !default;
+
+// We use these to style the labels in different ways
+$form-label-pointer: pointer !default;
+$form-label-font-size: rem-calc(14) !default;
+$form-label-font-weight: $font-weight-normal !default;
+$form-label-line-height: 1.5 !default;
+$form-label-font-color: scale-color($black, $lightness: 30%) !default;
+$form-label-small-transform: capitalize !default;
+$form-label-bottom-margin: 0 !default;
+$input-font-family: inherit !default;
+$input-font-color: rgba(0,0,0,0.75) !default;
+$input-font-size: rem-calc(14) !default;
+$input-bg-color: $white !default;
+$input-focus-bg-color: scale-color($white, $lightness: -2%) !default;
+$input-border-color: scale-color($white, $lightness: -20%) !default;
+$input-focus-border-color: scale-color($white, $lightness: -40%) !default;
+$input-border-style: solid !default;
+$input-border-width: 1px !default;
+$input-border-radius: $global-radius !default;
+$input-disabled-bg: $gainsboro !default;
+$input-disabled-cursor: $cursor-default-value !default;
+$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
+$input-include-glowing-effect: false !default;
+
+// We use these to style the fieldset border and spacing.
+$fieldset-border-style: solid !default;
+$fieldset-border-width: 1px !default;
+$fieldset-border-color: $gainsboro !default;
+$fieldset-padding: rem-calc(20) !default;
+$fieldset-margin: rem-calc(18 0) !default;
+
+// We use these to style the legends when you use them
+$legend-bg: $white !default;
+$legend-font-weight: $font-weight-bold !default;
+$legend-padding: rem-calc(0 3) !default;
+
+// We use these to style the prefix and postfix input elements
+$input-prefix-bg: scale-color($white, $lightness: -5%) !default;
+$input-prefix-border-color: scale-color($white, $lightness: -20%) !default;
+$input-prefix-border-size: 1px !default;
+$input-prefix-border-type: solid !default;
+$input-prefix-overflow: visible !default;
+$input-prefix-font-color: $oil !default;
+$input-prefix-font-color-alt: $white !default;
+
+// We use this setting to turn on/off HTML5 number spinners (the up/down arrows)
+$input-number-spinners: true !default;
+
+// We use these to style the error states for inputs and labels
+$input-error-message-padding: rem-calc(6 9 9) !default;
+$input-error-message-top: -1px !default;
+$input-error-message-font-size: rem-calc(12) !default;
+$input-error-message-font-weight: $font-weight-normal !default;
+$input-error-message-font-style: italic !default;
+$input-error-message-font-color: $white !default;
+$input-error-message-bg-color: $alert-color !default;
+$input-error-message-font-color-alt: $oil !default;
+
+// We use this to style the glowing effect of inputs when focused
+$glowing-effect-fade-time: .45s !default;
+$glowing-effect-color: $input-focus-border-color !default;
+
+// We use this to style the transition when inputs are focused and when the glowing effect is disabled.
+$input-transition-fade-time: 0.15s !default;
+$input-transition-fade-timing-function: linear !default;
+
+// Select variables
+$select-bg-color: $ghost !default;
+$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
+
+//
+// @MIXINS
+//
+
+// We use this mixin to give us form styles for rows inside of forms
+@mixin form-row-base {
+  .row { margin: 0 ((-$form-spacing) / 2);
+
+    .column,
+    .columns { padding: 0 ($form-spacing / 2); }
+
+    // Use this to collapse the margins of a form row
+    &.collapse { margin: 0;
+
+      .column,
+      .columns { padding: 0; }
+      input {
+        @include side-radius($opposite-direction, 0);
+      }
+
+    }
+  }
+  input.column,
+  input.columns,
+  textarea.column,
+  textarea.columns { padding-#{$default-float}: ($form-spacing / 2); }
+}
+
+// @MIXIN
+//
+// We use this mixin to give all basic form elements their style
+@mixin form-element {
+  background-color: $input-bg-color;
+  border: {
+    style: $input-border-style;
+    width: $input-border-width;
+    color: $input-border-color;
+  }
+  box-shadow: $input-box-shadow;
+  color: $input-font-color;
+  display: block;
+  font-family: $input-font-family;
+  font-size: $input-font-size;
+  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  margin: 0 0 $form-spacing 0;
+  padding: $form-spacing / 2;
+  width: 100%;
+  @include box-sizing(border-box);
+  @if $input-include-glowing-effect {
+    @include block-glowing-effect(focus, $glowing-effect-fade-time, $glowing-effect-color);
+  }
+  // Basic focus styles
+  &:focus {
+    background: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+    outline: none;
+  }
+  // Disbaled Styles
+  &:disabled {
+    background-color: $input-disabled-bg;
+    cursor: $input-disabled-cursor;
+  }
+
+  // Disabled background input background color
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    background-color: $input-disabled-bg;
+    cursor: $input-disabled-cursor;
+  }
+}
+
+// @MIXIN
+//
+// We use this mixin to create form labels
+//
+// $alignment - Alignment options. Default: false. Options: [right, inline, false]
+// $base-style - Control whether or not the base styles come through. Default: true.
+@mixin form-label($alignment:false, $base-style:true) {
+
+  // Control whether or not the base styles come through.
+  @if $base-style {
+    color: $form-label-font-color;
+    cursor: $form-label-pointer;
+    display: block;
+    font-size: $form-label-font-size;
+    font-weight: $form-label-font-weight;
+    line-height: $form-label-line-height;
+    margin-bottom: $form-label-bottom-margin;
+  }
+
+  // Alignment options
+  @if $alignment == right {
+    float: none !important;
+    text-align: right;
+  }
+  @else if $alignment == inline {
+    margin: 0 0 $form-spacing 0;
+    padding: $form-spacing / 2 + rem-calc($input-border-width) 0;
+  }
+}
+
+// We use this mixin to create postfix/prefix form Labels
+@mixin prefix-postfix-base {
+  border-style: $input-prefix-border-type;
+  border-width: $input-prefix-border-size;
+  display: block;
+  font-size: $form-label-font-size;
+  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  overflow: $input-prefix-overflow;
+  padding-bottom: 0;
+  padding-top: 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+}
+
+// @MIXIN
+//
+// We use this mixin to create prefix label styles
+// $bg - Default:$input-prefix-bg || scale-color($white, $lightness: -5%) !default;
+// $is-button - Toggle position settings if prefix is a button. Default:false
+//
+@mixin prefix($bg:$input-prefix-bg, $border:$input-prefix-border-color, $is-button:false) {
+
+  @if $bg {
+    $bg-lightness: lightness($bg);
+    background: $bg;
+    border-#{$opposite-direction}: none;
+
+    // Control the font color based on background brightness
+    @if $bg-lightness > 70% or $bg == yellow { color: $input-prefix-font-color; }
+    @else { color: $input-prefix-font-color-alt; }
+  }
+
+  @if $border {
+    border-color: $border;
+  }
+
+  @if $is-button {
+    border: none;
+    padding-#{$default-float}: 0;
+    padding-#{$opposite-direction}: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    text-align: center;
+  }
+
+}
+
+// @MIXIN
+//
+// We use this mixin to create postfix label styles
+// $bg - Default:$input-prefix-bg || scale-color($white, $lightness: -5%) !default;
+// $is-button - Toggle position settings if prefix is a button. Default: false
+@mixin postfix($bg:$input-prefix-bg, $border:$input-prefix-border-color, $is-button:false) {
+
+  @if $bg {
+    $bg-lightness: lightness($bg);
+    background: $bg;
+    border-#{$default-float}: none;
+
+    // Control the font color based on background brightness
+    @if $bg-lightness > 70%  or $bg == yellow { color: $input-prefix-font-color; }
+    @else { color: $input-prefix-font-color-alt; }
+  }
+
+  @if $border {
+    border-color: $border;
+  }
+
+  @if $is-button {
+    border: none;
+    padding-#{$default-float}: 0;
+    padding-#{$opposite-direction}: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    text-align: center;
+  }
+
+}
+
+// We use this mixin to style fieldsets
+@mixin fieldset {
+  border: $fieldset-border-width $fieldset-border-style $fieldset-border-color;
+  margin: $fieldset-margin;
+  padding: $fieldset-padding;
+
+  // and legend styles
+  legend {
+    background: $legend-bg;
+    font-weight: $legend-font-weight;
+    margin-#{$default-float}: rem-calc(-3);
+    margin: 0;
+    padding: $legend-padding;
+  }
+}
+
+// @MIXIN
+//
+// We use this mixin to control border and background color of error inputs
+// $color - Default: $alert-color (found in settings file)
+@mixin form-error-color($color:$alert-color) {
+  background-color: rgba($color, .1);
+  border-color: $color;
+
+  // Go back to normal on focus
+  &:focus {
+    background: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+  }
+}
+
+// @MIXIN
+//
+// We use this simple mixin to style labels for error inputs
+// $color - Default:$alert-color. Found in settings file
+@mixin form-label-error-color($color:$alert-color) { color: $color; }
+
+// @MIXIN
+//
+// We use this mixin to create error message styles
+// $bg - Default: $alert-color (Found in settings file)
+@mixin form-error-message($bg:$input-error-message-bg-color) {
+  display: block;
+  font-size: $input-error-message-font-size;
+  font-style: $input-error-message-font-style;
+  font-weight: $input-error-message-font-weight;
+  margin-bottom: $form-spacing;
+  margin-top: $input-error-message-top;
+  padding: $input-error-message-padding;
+
+  // We can control the text color based on the brightness of the background.
+  $bg-lightness: lightness($bg);
+  background: $bg;
+  @if $bg-lightness < 70% or $bg == yellow { color: $input-error-message-font-color; }
+  @else { color: $input-error-message-font-color-alt; }
+}
+
+// We use this mixin to style select elements
+@mixin form-select  {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-color: $select-bg-color;
+  border-radius: 0;
+
+  // Hide the dropdown arrow shown in newer IE versions
+  &::-ms-expand {
+    display: none;
+  }
+
+  // The custom arrow has some fake horizontal padding so we can align it
+  // from the right side of the element without relying on CSS3
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+
+  // We can safely use leftmost and rightmost now
+  background-position: if($text-direction == 'rtl', 0%, 100%) center;
+
+  background-repeat: no-repeat;
+  border: {
+    style: $input-border-style;
+    width: $input-border-width;
+    color: $input-border-color;
+  }
+  color: $input-font-color;
+  font-family: $input-font-family;
+  font-size: $input-font-size;
+  line-height: normal;
+  padding: ($form-spacing / 2);
+  @include radius(0);
+  &.radius { @include radius($global-radius); }
+  &:hover {
+    background-color: $select-hover-bg-color;
+    border-color: $input-focus-border-color;
+  }
+  // Disabled Styles
+  &:disabled {
+    background-color: $input-disabled-bg;
+    cursor: $input-disabled-cursor;
+  }
+}
+
+// We use this mixin to turn on/off HTML5 number spinners
+@mixin html5number($browser, $on:true) {
+  @if $on==false {
+      @if $browser==webkit {
+        -webkit-appearance: none;
+        margin: 0;
+      } @else if $browser==moz {
+        -moz-appearance: textfield;
+      }
+  }
+}
+
+@include exports("form") {
+  @if $include-html-form-classes {
+    /* Standard Forms */
+    form { margin: 0 0 $form-spacing; }
+
+    /* Using forms within rows, we need to set some defaults */
+    form .row { @include form-row-base; }
+
+    /* Label Styles */
+    label { @include form-label;
+      &.right { @include form-label(right, false); }
+      &.inline { @include form-label(inline, false); }
+      /* Styles for required inputs */
+      small {
+        text-transform: $form-label-small-transform;
+        color: scale-color($form-label-font-color, $lightness: 15%);
+      }
+    }
+
+    /* Attach elements to the beginning or end of an input */
+    .prefix,
+    .postfix { @include prefix-postfix-base; }
+
+    /* Adjust padding, alignment and radius if pre/post element is a button */
+    .postfix.button { @include button-size(false, false); @include postfix(false, false, true); }
+    .prefix.button { @include button-size(false, false); @include prefix(false, false, true); }
+
+    .prefix.button.radius { @include radius(0); @include side-radius($default-float, $button-radius); }
+    .postfix.button.radius { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+    .prefix.button.round { @include radius(0); @include side-radius($default-float, $button-round); }
+    .postfix.button.round { @include radius(0); @include side-radius($opposite-direction, $button-round); }
+
+    /* Separate prefix and postfix styles when on span or label so buttons keep their own */
+    span.prefix, label.prefix { @include prefix(); }
+    span.postfix, label.postfix { @include postfix(); }
+
+    /* We use this to get basic styling on all basic form elements */
+    #{text-inputs(all, 'input')} {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border-radius: 0;
+      @include form-element;
+      @if $input-include-glowing-effect == false {
+        -webkit-transition: border-color $input-transition-fade-time $input-transition-fade-timing-function, background $input-transition-fade-time $input-transition-fade-timing-function;
+        -moz-transition: border-color $input-transition-fade-time $input-transition-fade-timing-function, background $input-transition-fade-time $input-transition-fade-timing-function;
+        -ms-transition: border-color $input-transition-fade-time $input-transition-fade-timing-function, background $input-transition-fade-time $input-transition-fade-timing-function;
+        -o-transition: border-color $input-transition-fade-time $input-transition-fade-timing-function, background $input-transition-fade-time $input-transition-fade-timing-function;
+        transition: border-color $input-transition-fade-time $input-transition-fade-timing-function, background $input-transition-fade-time $input-transition-fade-timing-function;
+      }
+      &.radius {
+        @include radius($input-border-radius);
+      }
+    }
+
+    form {
+      .row {
+        .prefix-radius.row.collapse {
+          input,
+          textarea,
+          select,
+          button { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+          .prefix { @include radius(0); @include side-radius($default-float, $button-radius); }
+        }
+        .postfix-radius.row.collapse {
+          input,
+          textarea,
+          select,
+          button { @include radius(0); @include side-radius($default-float, $button-radius); }
+          .postfix { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+        }
+        .prefix-round.row.collapse {
+          input,
+          textarea,
+          select,
+          button { @include radius(0); @include side-radius($opposite-direction, $button-round); }
+          .prefix { @include radius(0); @include side-radius($default-float, $button-round); }
+        }
+        .postfix-round.row.collapse {
+          input,
+          textarea,
+          select,
+          button { @include radius(0); @include side-radius($default-float, $button-round); }
+          .postfix { @include radius(0); @include side-radius($opposite-direction, $button-round); }
+        }
+      }
+    }
+
+    input[type="submit"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border-radius: 0;
+    }
+
+    /* Respect enforced amount of rows for textarea */
+    textarea[rows] {
+      height: auto;
+    }
+
+	/* Not allow resize out of parent */
+	textarea {
+		max-width: 100%;
+	}
+
+    /* Add height value for select elements to match text input height */
+    select {
+      @include form-select;
+      height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+      &[multiple] {
+        height: auto;
+      }
+    }
+
+    /* Adjust margin for form elements below */
+    input[type="file"],
+    input[type="checkbox"],
+    input[type="radio"],
+    select {
+      margin: 0 0 $form-spacing 0;
+    }
+
+    input[type="checkbox"] + label,
+    input[type="radio"] + label {
+      display: inline-block;
+      margin-#{$default-float}: $form-spacing * .5;
+      margin-#{$opposite-direction}: $form-spacing;
+      margin-bottom: 0;
+      vertical-align: baseline;
+    }
+
+    /* Normalize file input width */
+    input[type="file"] {
+      width:100%;
+    }
+
+    /* HTML5 Number spinners settings */
+    input[type=number] {
+      @include html5number(moz, $input-number-spinners)
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      @include html5number(webkit, $input-number-spinners);
+    }
+
+    /* We add basic fieldset styling */
+    fieldset {
+      @include fieldset;
+    }
+
+    /* Error Handling */
+
+    #{data('abide')} {
+      .error small.error, .error span.error, span.error, small.error {
+        @include form-error-message;
+      }
+      span.error, small.error { display: none; }
+    }
+
+    span.error, small.error {
+      @include form-error-message;
+    }
+
+    .error {
+      input,
+      textarea,
+      select {
+        margin-bottom: 0;
+      }
+
+      input[type="checkbox"],
+      input[type="radio"] {
+        margin-bottom: $form-spacing
+      }
+
+      label,
+      label.error {
+        @include form-label-error-color;
+      }
+
+      small.error {
+        @include form-error-message;
+      }
+
+      > label {
+        > small {
+          background: transparent;
+          color: scale-color($form-label-font-color, $lightness: 15%);
+          display: inline;
+          font-size: 60%;
+          font-style: normal;
+          margin: 0;
+          padding: 0;
+          text-transform: $form-label-small-transform;
+        }
+      }
+
+      span.error-message {
+        display: block;
+      }
+    }
+
+    input.error,
+    textarea.error,
+    select.error {
+      margin-bottom: 0;
+    }
+    label.error { @include form-label-error-color; }
+  }
+}

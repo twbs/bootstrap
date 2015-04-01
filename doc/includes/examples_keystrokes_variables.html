@@ -1,0 +1,22 @@
+{{#markdown}}
+```scss
+$include-html-keystroke-classes: $include-html-classes;
+
+// We use these to control text styles.
+$keystroke-font: "Consolas", "Menlo", "Courier", monospace;
+$keystroke-font-size: inherit;
+$keystroke-font-color: $jet;
+$keystroke-font-color-alt: $white;
+$keystroke-function-factor: -7%;
+
+// We use this to control keystroke padding.
+$keystroke-padding: rem-calc(2 4 0);
+
+// We use these to control background and border styles.
+$keystroke-bg: scale-color($white, $lightness: $keystroke-function-factor);
+$keystroke-border-style: solid;
+$keystroke-border-width: 1px;
+$keystroke-border-color: scale-color($keystroke-bg, $lightness: $keystroke-function-factor);
+$keystroke-radius: $global-radius;
+```
+{{/markdown}}

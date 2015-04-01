@@ -1,0 +1,195 @@
+---
+title: Icon Bar
+---
+
+<h3 class="subheader">An Icon Bar provides a menu to quickly navigate an app. Use the Icon Bar horizontally or vertically, with the labels below the icons or to the right. Have it your way.</h3>
+
+***
+
+{{> examples_icon_bar_rendered}}
+
+***
+
+<h3>Basic</h3>
+
+You can create an Icon Bar using minimal markup. Specifying the number of items `one-up` through `eight-up` will ensure the items are evenly spaced.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_icon_bar}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_icon_bar_rendered}}
+  </div>
+</div>
+
+***
+
+<h3>Vertical Icon Bar</h3>
+
+It's easy. Just add a class of `.vertical` to make the Icon Bar stack up. For an Icon bar that's horizontal on small screens but vertical on larger use '.medium-vertical' and 'large-vertical' to utilize those breakpoints.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_icon_bar_vert}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_icon_bar_vert_rendered}}
+  </div>
+</div>
+
+***
+
+### Advanced
+
+Instead of images you can use Icon Fonts. This will help you change the colors and size faster instead of having to upload new images each time. <a href="http://zurb.com/playground/foundation-icon-fonts-3">Check out our badass Icon Fonts here.</a>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_icon_bar_iconfont}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_icon_bar_iconfont_rendered}}
+  </div>
+</div>
+
+### Other Options
+
+The default orientation for the labels are on the bottom. By adding a class of `.label-right` you can have the label on the right and icon on the left.
+
+Add the class `.disabled` to an icon bar `.item` to give it a faded appearance and disable hover effects.
+
+***
+
+## Accessibility
+
+To make the icon bar navigable with a keyboard, add the attribute `tabindex="0"` to each `item`, which allows it to be focused when tabbing through items. Each item also gets the attribute `role="button"`, indicating its functionality.
+
+For icon bars without text labels, add `aria-label` to each item, with a value representing what the icon is. For icon bars with labels, give each label a unique ID, and add `aria-labelledby` to each item container, with a value equal to the ID of the label.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>Rendered HTML - Icon Bar w/o Text</h4>
+    {{> examples_icon_bar_iconfont_aria_rendered}}
+    <h4>HTML</h4>
+    {{> examples_icon_bar_iconfont_aria}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML - Icon Bar with Text</h4>
+    {{> examples_icon_bar_text_aria_rendered}}
+    <h4>HTML</h4>
+    {{> examples_icon_bar_text_aria}}
+  </div>
+</div>
+
+***
+
+## Customize with Sass
+
+Icon Bar can be easily customized using our provided Sass variables.
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+$include-html-icon-bar-classes: $include-html-classes
+
+// We use these to style the icon-bar and items
+$icon-bar-bg: $oil;
+$icon-bar-font-color: $white;
+$icon-bar-font-color-hover: $icon-bar-font-color;
+$icon-bar-font-size: 1rem;
+$icon-bar-hover-color: $primary-color;
+$icon-bar-icon-color: $white;
+$icon-bar-icon-color-hover: $icon-bar-icon-color;
+$icon-bar-icon-size: 1.875rem;
+$icon-bar-image-width: 1.875rem;
+$icon-bar-image-height: 1.875rem;
+$icon-bar-active-color: $primary-color;
+$icon-bar-item-padding: 1.25rem;
+$icon-bar-disabled-opacity: 0.7
+```
+{{/markdown}}
+  </div>
+</div>
+
+***
+
+## Semantic Markup with Sass
+### Basic
+You can use the `icon-bar()` mixin to create your own icon-bar, like so:
+
+{{#markdown}}
+```scss
+.my-custom-class {
+  @include icon-bar();
+}
+```
+{{/markdown}}
+
+{{#markdown}}
+```html
+<div class="my-custom-class"> </div>
+```
+{{/markdown}}
+
+### Advanced
+You can further customize your icon bar using the provided options in the `icon bar` mixin:
+#### SCSS
+{{#markdown}}
+```scss
+.my-custom-class {
+@include icon-bar(
+
+  // Set the background color of the icon bar. Default: $icon-bar-bg.
+  $bar-bg: $icon-bar-bg,
+  //  Set the font color of the icon bar. Default: $icon-bar-font-color.
+  $bar-font-color: $icon-bar-font-color,
+  // Set the hover background color for the icon bar. Default: $icon-bar-hover-color.
+  $bar-hover-color,
+  // Set the color of the icons for the icon bar. Default: $icon-bar-icon-color
+  $bar-icon-color: $icon-bar-icon-color,
+  // Set the background of the color when the icon bar is clicked or tapped on (or items within the icon bar). Default: $icon-bar-active-color.
+  $bar-active-color,
+  // Set the padding for icon bar. Default: $icon-bar-item-padding.
+  $padding,
+  // Set the font-size of the icon bar. Default: $icon-bar-font-size.
+  $font-size,
+  // Set the size of the icons within the icon bar. Default: $icon-bar-icon-size.
+  $icon-size,
+  // Set the width of images within the icon bar. Default: $icon-bar-image-width
+  $image-width,
+  // Set the height of images within the icon bar. Default: $icon-bar-image-height
+  $image-height,
+  // Assign whether or not base styles usually associated with the icon bar to appear the way it usually does should be included. Default: true.
+  $base-style: true,
+  // Allow disabled icons. Default: false.
+  // If enabled add class disabled.
+  $disabled: false
+  );
+}
+
+```
+{{/markdown}}
+
+#### HTML
+```html
+<div class="my-custom-class five-up">Items for the Icon Bar goes here.</div>
+```
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/icon-bar";
+```

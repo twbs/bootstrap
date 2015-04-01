@@ -1,0 +1,207 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+@import 'buttons';
+
+//
+// Button Group Variables
+//
+$include-html-button-classes: $include-html-classes !default;
+
+// Sets the margin for the right side by default, and the left margin if right-to-left direction is used
+$button-bar-margin-opposite: rem-calc(10) !default;
+$button-group-border-width: 1px !default;
+
+//
+// Button Group Mixins
+//
+
+// We use this to add styles for a button group container
+@mixin button-group-container($styles:true, $float:false) {
+  @if $styles {
+    list-style: none;
+    margin: 0;
+    #{$default-float}: 0;
+    @include clearfix();
+  }
+  @if $float {
+    float: #{$default-float};
+    margin-#{$opposite-direction}: $button-bar-margin-opposite;
+    & div { overflow: hidden; }
+  }
+}
+
+// We use this to control styles for button groups
+@mixin button-group-style($radius:false, $even:false, $float:false, $orientation:horizontal) {
+
+  > button, .button {
+    border-#{$default-float}: $button-group-border-width solid;
+    border-color: rgba(255, 255, 255, .5);
+  }
+
+  &:first-child {
+    button, .button {
+      border-#{$default-float}: 0;
+    }
+  }
+
+  $button-group-display: list-item;
+  $button-group-margin: 0;
+
+  // We use this to control the flow, or remove those styles completely.
+  @if $float {
+    $button-group-display: list-item;
+    $button-group-margin: 0;
+    float: $float;
+    // Make sure the first child doesn't get the negative margin.
+    &:first-child { margin-#{$default-float}: 0; }
+  }
+  @else {
+    $button-group-display: inline-block;
+    $button-group-margin: 0 -2px;
+  }
+
+  @if $orientation == vertical {
+    $button-group-display: block;
+    $button-group-margin: 0;
+    > button, .button {
+      border-color: rgba(255, 255, 255, .5);
+      border-left-width: 0;
+      border-top: $button-group-border-width solid;
+      display: block;
+      margin:0;
+    }
+    > button {
+        width: 100%;
+    }
+
+    &:first-child {
+      button, .button {
+        border-top: 0;
+      }
+    }
+  }
+
+  display: $button-group-display;
+  margin: $button-group-margin;
+
+
+  // We use these to control left and right radius on first/last buttons in the group.
+  @if $radius == true {
+    &,
+    > a,
+    > button,
+    > .button { @include radius(0); }
+    &:first-child,
+    &:first-child > a,
+    &:first-child > button,
+    &:first-child > .button {
+      @if $orientation == vertical {
+        @include side-radius(top, $button-radius);
+      }
+      @else {
+        @include side-radius($default-float, $button-radius);
+      }
+    }
+    &:last-child,
+    &:last-child > a,
+    &:last-child > button,
+    &:last-child > .button {
+      @if $orientation == vertical {
+        @include side-radius(bottom, $button-radius);
+      }
+      @else {
+        @include side-radius($opposite-direction, $button-radius);
+      }
+    }
+  }
+  @else if $radius {
+    &,
+    > a,
+    > button,
+    > .button { @include radius(0); }
+    &:first-child,
+    &:first-child > a,
+    &:first-child > button,
+    &:first-child > .button {
+      @if $orientation == vertical {
+        @include side-radius(top, $radius);
+      }
+      @else {
+        @include side-radius($default-float, $radius);
+      }
+    }
+    &:last-child,
+    &:last-child > a,
+    &:last-child > button,
+    &:last-child > .button {
+      @if $orientation == vertical {
+        @include side-radius(bottom, $radius);
+      }
+      @else {
+        @include side-radius($opposite-direction, $radius);
+      }
+    }
+  }
+
+  // We use this to make the buttons even width across their container
+  @if $even {
+    width: percentage((100/$even) / 100);
+    button, .button { width: 100%; }
+  }
+}
+
+@include exports("button-group") {
+  @if $include-html-button-classes {
+    .button-group { @include button-group-container;
+
+      @for $i from 2 through 8 {
+        &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
+      }
+
+      > li { @include button-group-style(); }
+
+      &.stack {
+        > li { @include button-group-style($orientation:vertical); float: none; }
+      }
+
+      &.stack-for-small {
+        > li {
+          @include button-group-style($orientation:horizontal);
+          @media #{$small-only} {
+            @include button-group-style($orientation:vertical);
+          }
+        }
+      }
+
+      &.radius > * { @include button-group-style($radius:$button-radius, $float:null); }
+      &.radius.stack > * { @include button-group-style($radius:$button-radius, $float:null, $orientation:vertical); }
+      &.radius.stack-for-small > * {
+        @media #{$medium-up} {
+          @include button-group-style($radius:$button-radius, $orientation:horizontal);
+        }
+        @media #{$small-only} {
+          @include button-group-style($radius:$button-radius, $orientation:vertical);
+        }
+      }
+
+      &.round > * { @include button-group-style($radius:$button-round, $float:null); }
+      &.round.stack > * { @include button-group-style($radius:$button-med, $float:null, $orientation:vertical); }
+      &.round.stack-for-small > * {
+        @media #{$medium-up} {
+          @include button-group-style($radius:$button-round, $orientation:horizontal);
+        }
+        @media #{$small-only} {
+          @include button-group-style($radius:$button-med, $orientation:vertical);
+        }
+      }
+    }
+
+    .button-bar {
+      @include clearfix;
+      .button-group { @include button-group-container($styles:false, $float:true); }
+    }
+  }
+}

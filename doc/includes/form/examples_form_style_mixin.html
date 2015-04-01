@@ -1,0 +1,20 @@
+{{#markdown}}
+```scss
+.your-prefix-class {
+  @include prefix-postfix-base;
+  @include prefix;
+  @include grid-column($columns:3,$float:left);
+}
+
+input[type="text"].your-input-class {
+  @include grid-column($columns:9);
+}
+```
+{{/markdown}}
+
+<form>
+  <div class="row collapse">
+    <span class="attached-label style">Label</span>
+    <input type="text" class="attached-input" placeholder="Value">
+  </div>
+</form>

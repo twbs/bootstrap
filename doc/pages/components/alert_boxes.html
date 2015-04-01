@@ -1,0 +1,303 @@
+---
+title: Alerts
+---
+
+<h3 class="subheader">Alerts are handy elements you can drop into a form or inline on a page to communicate success, warnings, failure or just information. They'll conform to 100% of the container width you put them in.</h3>
+
+***
+
+{{> examples_alert_basic}}
+
+***
+
+<h3>Basic</h3>
+
+You can create an alert box using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+
+    <h4>HTML</h4>
+
+{{> examples_alert_basic_rendered}}
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+
+{{> examples_alert_basic}}
+
+  </div>
+</div>
+
+<h3>Advanced</h3>
+
+You can add more classes to your alert box to change its appearance.
+
+<div class="row">
+  <div class="large-6 columns">
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<div data-alert class="alert-box success radius">
+  This is a success alert with a radius.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box warning round">
+  This is a warning alert that is rounded.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box info radius">
+  This is an info alert with a radius.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box alert round">
+  This is an alert - alert that is rounded.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box secondary">
+  This is a secondary alert.
+  <a href="#" class="close">&times;</a>
+</div>
+```
+{{/markdown}}
+
+  </div>
+  <div class="large-6 columns">
+<h4>Rendered HTML</h4>
+
+<div data-alert class="alert-box success radius">
+  This is a success alert with a radius.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box warning round">
+  This is a warning alert that is rounded.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box info radius">
+  This is an info alert with a radius.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box alert round">
+  This is an alert - alert that is rounded.
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div data-alert class="alert-box secondary">
+  This is a secondary alert.
+  <a href="#" class="close">&times;</a>
+</div>
+
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+To make your alerts conform to accessibility standards, use the markup below, which adds a handful of ARIA attributes to the alert container, and uses the `<button>` tag for the close button instead of `<a>`.
+
+<div class="row">
+  <div class="large-6 columns">
+
+    <h4>HTML</h4>
+
+    {{> examples_alert_aria}}
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+
+    {{> examples_alert_aria_rendered}}
+
+  </div>
+</div>
+
+---
+
+## Customize with Sass
+
+Alert boxes can be easily customized using our Sass variables.
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+$include-html-alert-classes: $include-html-classes;
+
+// We use this to control alert padding.
+$alert-padding-top: rem-calc(11);
+$alert-padding-default-float: $alert-padding-top;
+$alert-padding-opposite-direction: $alert-padding-top + rem-calc(10);
+$alert-padding-bottom: $alert-padding-top + rem-calc(1);
+
+// We use these to control text style.
+$alert-font-weight: bold;
+$alert-font-size: rem-calc(14);
+$alert-font-color: #fff;
+$alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
+
+// We use this for close hover effect.
+$alert-function-factor: -14%;
+
+// We use these to control border styles.
+$alert-border-style: solid;
+$alert-border-width: 1px;
+$alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor);
+$alert-bottom-margin: rem-calc(20);
+
+// We use these to style the close buttons
+$alert-close-color: #333;
+$alert-close-position: rem-calc(5);
+$alert-close-font-size: rem-calc(22);
+$alert-close-opacity: 0.3;
+$alert-close-opacity-hover: 0.5;
+$alert-close-padding: 5px 4px 4px;
+
+// We use this to control border radius
+$alert-radius: $global-radius;
+
+// We use this to control transition effects
+$alert-transition-speed: 300ms;
+$alert-transition-ease: ease-out;
+```
+{{/markdown}}
+
+<hr>
+
+<h2>Semantic Markup With Sass</h2>
+
+You can create your own alert boxes using our Sass mixins.
+
+<h3>Basic</h3>
+
+You can use the `alert()` mixin to create your own alert box, like so:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+.custom-alert-box {
+  @include alert();
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<div data-alert class="custom-alert-box">
+  <a href="#" class="close">&times;</a>
+</div>
+```
+{{/markdown}}
+
+<h3>Advanced</h3>
+
+You can further customize your alert boxes using the provided options in the `alert()` mixin:
+
+<h4>SCSS</h4>
+
+{{!-- @import "foundation/components/alert-boxes"; --}}
+{{#markdown}}
+```scss
+.custom-alert-box {
+  @include alert(
+    // Adjust the background of the alert
+    $bg: #cccccc,
+    // Give a border to the alert box
+    $radius: true
+  );
+  .close {
+    @include alert-close();
+  }
+  &.alert-close {
+    opacity: 0;
+  }
+}
+```
+{{/markdown}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<div data-alert class="custom-alert-box">
+  <!-- Your content goes here -->
+  <a href="#" class="close">&times;</a>
+</div>
+```
+{{/markdown}}
+
+<hr>
+
+<h2>Configure With Javascript</h2>
+
+It's easy to configure alert boxes using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.alert.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.alert.js"></script>
+```
+{{/markdown}}
+
+<hr>
+
+<h2>Binding to Events</h2>
+
+You can also listen for a event that fires when an alert box is closed.
+
+<h4>JS</h4>
+
+{{#markdown}}
+```js
+$(document).on('close.fndtn.alert', function(event) {
+  console.info('An alert box has been closed!');
+});
+```
+{{/markdown}}
+
+<hr>
+
+### Adding New Alert Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('alert', 'reflow');
+```
+{{/markdown}}
+
+***
+
+<h3>Sass Errors?</h3>
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/alert-boxes";
+```

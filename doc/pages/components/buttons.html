@@ -1,0 +1,153 @@
+---
+title: Buttons
+---
+
+<h3 class="subheader">Buttons are convenient tools when you need more traditional actions. To that end, Foundation has many easy to use button styles that you can customize or override to fit your needs.</h3>
+
+***
+
+{{> examples_buttons_basic}}
+
+***
+
+## Basic
+
+You can create a button using minimal markup.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_buttons_basic}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_buttons_basic_rendered}}
+  </div>
+</div>
+
+***
+
+## Button Sizing
+
+Additional classes can be added to your component to change its size and shape.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_buttons_advanced}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_buttons_advanced_rendered}}
+  </div>
+</div>
+
+***
+
+***
+
+## Button Colors
+
+Additional classes can be added to your component to change its color.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_buttons_color}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_buttons_color_rendered}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+Use the snippet below to make buttons more accessible. You can use an `aria-label="submit form"` attribute to give a screen reader the literal purpose of the button if there is no text in it. If there is no `<a href="">` then simply add the `tabindex="0"` to the div or span to make it focusable.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_buttons_accessible}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_buttons_accessible_rendered}}
+  </div>
+</div>
+
+***
+
+## Customize with Sass
+
+Buttons can be easily customized using our Sass variables
+
+{{> examples_buttons_variables}}
+
+***
+
+## Semantic Markup With Sass
+
+You can create your own buttons using our Sass mixins.
+
+### Basic
+
+You can use the `button()` mixin like so:
+
+<h4>SCSS</h4>
+
+{{> examples_buttons_default_mixin}}
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+<a href="#" class="custom-button-class">...</a>
+```
+{{/markdown}}
+
+### Advanced
+
+You can further customize your buttons:
+
+#### SCSS
+
+{{> examples_buttons_custom_mixin}}
+
+#### HTML
+
+{{#markdown}}
+```html
+<a href="#" class="custom-button-class">...</a>
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/buttons";
+```

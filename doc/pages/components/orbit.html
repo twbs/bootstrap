@@ -1,0 +1,357 @@
+---
+title: Orbit
+---
+
+<h3 class="subheader">Orbit is an easy, powerful, responsive image slider that allows users to swipe on touch-enabled devices.</h3>
+
+***
+
+{{> examples_orbit_basic}}
+
+***
+
+<h4 class="warn">Deprecation Notice:</h4>
+
+Orbit has been deprecated, meaning that it is no longer supported. There's no need to worry though as we decided to leave it in Foundation if you choose to continue using it. We explain it <a href="http://foundation.zurb.com/forum/posts/14504-moving-on-from-developing-orbit">here.</a> 
+
+There are other great options if you need an image slider. A lot of them have features based on Orbit and may have added one of two more features.
+
+This image slider is really slick: <a href="http://kenwheeler.github.io/slick/">Slick Carousel</a>. It has all the features Orbit has and can also be used as a carousel for single image sliding. It's easy to set up and is <a href="https://github.com/kenwheeler/slick/">well supported.</a>
+
+Orbit is also not accessible to screen readers or assistive devices.
+
+***
+
+<a name="setup"></a>
+
+## How to Setup Orbit
+
+Orbit requires minimal HTML markup to function. Our Javascript takes care of most of the heavy lifting for you. The only thing you need to do is add a  `<ul data-orbit></ul>` element to your page. You can then populate it with images, text, and captions. Here's the markup required to implement a basic Orbit slider on your page:
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+{{> examples_orbit_basic}}
+```
+{{/markdown}}
+
+<h4>Rendered HTML</h4>
+
+{{#markdown}}
+```html
+{{> examples_orbit_basic_rendered}}
+```
+{{/markdown}}
+
+***
+
+## Content Sliders
+
+Orbit can also be used with just content and no images.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_orbit_content}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_orbit_content}}
+  </div>
+</div>
+
+***
+
+## Deep Linking
+
+To link to a particular slide in your Orbit slider you will need to add a  `data-orbit-slide` attribute to each slide. Then anywhere on your page you can use `data-orbit-link` to link to that slide.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<a data-orbit-link="headline-1" class="small button">
+  Goto Slide 1
+</a>
+<a data-orbit-link="headline-2" class="small button">
+  Goto Slide 2
+</a>
+<a data-orbit-link="headline-3" class="small button">
+  Goto Slide 3
+</a>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <a class="small button" data-orbit-link="headline-1">Goto Slide 1</a>
+    <a class="small button" data-orbit-link="headline-2">Goto Slide 2</a>
+    <a class="small button" data-orbit-link="headline-3">Goto Slide 3</a>
+    {{> examples_orbit_content}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+<p class="panel">This component is not yet accessible. Stay tuned for updates in future releases.</p>
+
+***
+
+## Customize with Sass
+
+  <div class="row">
+    <section class="full-grid">
+      <p>We've included a bunch of variables that you'll be able to use if you're into getting SASSy with things.</p>
+{{#markdown}}
+```scss
+$include-html-orbit-classes: $include-html-classes !default;
+
+// We use these to control the caption styles
+$orbit-container-bg: none !default;
+$orbit-caption-bg: rgba(51,51,51, 0.8) !default;
+$orbit-caption-font-color: $white !default;
+$orbit-caption-font-size: rem-calc(14) !default;
+$orbit-caption-position: "bottom" !default; // Supported values: "bottom", "under"
+$orbit-caption-padding: rem-calc(10 14) !default;
+$orbit-caption-height: auto !default;
+
+// We use these to control the left/right nav styles
+$orbit-nav-bg: transparent !default;
+$orbit-nav-bg-hover: rgba(0,0,0,0.3) !default;
+$orbit-nav-arrow-color: $white !default;
+$orbit-nav-arrow-color-hover: $white !default;
+
+// We use these to control the timer styles
+$orbit-timer-bg: rgba(255,255,255,0.3) !default;
+$orbit-timer-show-progress-bar: true !default;
+
+// We use these to control the bullet nav styles
+$orbit-bullet-nav-color: $iron !default;
+$orbit-bullet-nav-color-active: $aluminum !default;
+$orbit-bullet-radius: rem-calc(9) !default;
+
+// We use these to controls the style of slide numbers
+$orbit-slide-number-bg: rgba(0,0,0,0) !default;
+$orbit-slide-number-font-color: $white !default;
+$orbit-slide-number-padding: rem-calc(5) !default;
+
+// Graceful Loading Wrapper and preloader
+$wrapper-class: "slideshow-wrapper" !default;
+$preloader-class: "preloader" !default;
+
+// Hide controls on small
+$orbit-nav-hide-for-small: true !default;
+$orbit-bullet-hide-for-small: true !default;
+$orbit-timer-hide-for-small: true !default;
+```
+{{/markdown}}
+    </section>
+  </div>
+
+***
+
+## Configuring Orbit
+
+It's easy to configure Orbit using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.orbit.js` have been included on your page before continuing. For example add the following before the closing `<body>` tag:
+
+```html
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.orbit.js"></script>
+```
+
+### Basic
+
+Using data-attributes is the preferred method of making changes to our Javascript.
+
+```html
+<ul data-orbit data-options="animation_speed:1500;">
+  ...
+</ul>
+```
+
+
+
+### Advanced
+
+You can also adjust settings using plain old Javascript. Here's all the available settings:
+
+#### JS
+```js
+$(document).foundation({
+  orbit: {
+      animation: 'slide', // Sets the type of animation used for transitioning between slides, can also be 'fade'
+      timer_speed: 10000, // Sets the amount of time in milliseconds before transitioning a slide
+      pause_on_hover: true, // Pauses on the current slide while hovering
+      resume_on_mouseout: false, // If pause on hover is set to true, this setting resumes playback after mousing out of slide
+      next_on_click: true, // Advance to next slide on click
+      animation_speed: 500, // Sets the amount of time in milliseconds the transition between slides will last
+      stack_on_small: false,
+      navigation_arrows: true,
+      slide_number: true,
+      slide_number_text: 'of',
+      container_class: 'orbit-container',
+      stack_on_small_class: 'orbit-stack-on-small',
+      next_class: 'orbit-next', // Class name given to the next button
+      prev_class: 'orbit-prev', // Class name given to the previous button
+      timer_container_class: 'orbit-timer', // Class name given to the timer
+      timer_paused_class: 'paused', // Class name given to the paused button
+      timer_progress_class: 'orbit-progress', // Class name given to the progress bar
+      slides_container_class: 'orbit-slides-container', // Class name given to the slide container
+      preloader_class: 'preloader', // Class given to the perloader
+      slide_selector: 'li', // Default is '*' which selects all children under the container
+      bullets_container_class: 'orbit-bullets',
+      bullets_active_class: 'active', // Class name given to the active bullet
+      slide_number_class: 'orbit-slide-number', // Class name given to the slide number
+      caption_class: 'orbit-caption', // Class name given to the caption
+      active_slide_class: 'active', // Class name given to the active slide
+      orbit_transition_class: 'orbit-transitioning',
+      bullets: true, // Does the slider have bullets visible?
+      circular: true, // Does the slider should go to the first slide after showing the last?
+      timer: true, // Does the slider have a timer active? Setting to false disables the timer.
+      variable_height: false, // Does the slider have variable height content?
+      swipe: true,
+      before_slide_change: noop, // Execute a function before the slide changes
+      after_slide_change: noop // Execute a function after the slide changes
+  }
+});
+```
+
+
+***
+
+## Real World Example
+
+<h3 class="subheader">Here's an example of a customized Orbit container.</h3>
+
+  <div class="row">
+    <section class="large-6 columns">
+      <h4 class="">Javascript</h4>
+      <div class="code-container">
+
+{{#markdown}}
+```js
+$(document).foundation({
+  orbit: {
+    animation: 'slide',
+    timer_speed: 1000,
+    pause_on_hover: true,
+    animation_speed: 500,
+    navigation_arrows: true,
+    bullets: false
+  }
+});
+```
+{{/markdown}}
+
+      </div>
+    </section>
+
+    <section class="large-6 columns">
+      <h4 class="">HTML</h4>
+      <div class="options-code-container">
+        <div class="code-container">
+{{#markdown}}
+```html
+<ul data-orbit
+    data-options="animation:slide;
+                  pause_on_hover:true;
+                  animation_speed:500;
+                  navigation_arrows:true;
+                  bullets:false;">
+</ul>
+```
+{{/markdown}}
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <section class="full-grid">
+      <ul data-orbit data-options="
+        animation:slide;
+        pause_on_hover:true;
+        animation_speed:500;
+        navigation_arrows:true;
+        bullets:false;">
+        <li><img src="{{assets}}/img/examples/andromeda-orbit.jpg" alt="slide 1"></li>
+        <li><img src="{{assets}}/img/examples/satelite-orbit.jpg" alt="slide 2"></li>
+        <li><img src="{{assets}}/img/examples/launch-orbit.jpg" alt="slide 3"></li>
+      </ul>
+    </section>
+  </div>
+
+***
+
+## Events
+
+There are several events that you can bind to in Orbit. Here's an example of how you can bind to these events:
+
+#### HTML
+```html
+<ul id="featured1" data-orbit>
+  ...
+</ul>
+```
+
+#### JS
+```js
+$("#featured1").on("ready.fndtn.orbit", function(event) {
+  console.info("ready");
+});
+$("#featured1").on("before-slide-change.fndtn.orbit", function(event) {
+  console.info("before slide change");
+});
+$("#featured1").on("after-slide-change.fndtn.orbit", function(event, orbit) {
+  console.info("after slide change");
+  console.info("slide " + orbit.slide_number + " of " + orbit.total_slides);
+});
+$("#featured1").on("timer-started.fndtn.orbit", function(event, orbit) {
+  console.info("timer started");
+});
+$("#featured1").on("timer-stopped.fndtn.orbit", function(event, orbit) {
+  console.info("timer stopped");
+});
+```
+
+***
+
+### Adding New Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('orbit', 'reflow');
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/orbit";
+```
+{{/markdown}}

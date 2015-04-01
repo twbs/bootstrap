@@ -1,0 +1,1312 @@
+{{#markdown}}
+```scss
+// Foundation Variables
+
+// The default font-size is set to 100% of the browser style sheet (usually 16px)
+// for compatibility with browser-based text zoom or user-set defaults.
+$base-font-size: 100% !default;
+
+$base-line-height is 24px while $base-font-size is 16px
+$base-line-height: 150%;
+
+// This is the default html and body font-size for the base em value.
+
+// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+// If you want your base font-size to be a different size and not have it effect grid size too,
+// set the value of $rem-base to $base-font-size ($rem-base: $base-font-size;)
+$rem-base: 16px !default;
+
+// It strips the unit of measure and returns it
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// New Syntax, allows to optionally calculate on a different base value to counter compounding effect of em\'s.
+// Call with 1, 2, 3 or 4 parameters, \'px\' is not required but supported
+// rem-calc(10 20 30px 40);
+// Space delimited, if you want to delimit using comma\'s, wrap it in another pair of brackets
+// rem-calc((10, 20, 30, 40px));
+// Optionally call with a different base (eg: 8px) to calculate em.
+// rem-calc(16px 32px 48px, 8px);
+// If you require to comma separate your list
+// rem-calc((16px, 32px, 48), 8px);
+
+@function convert-to-rem($value, $base-value: $rem-base)  {
+  $value: strip-unit($value) / strip-unit($base-value) * 1em;
+  @if ($value == 0em) { $value: 0; } // Turn 0em into 0
+  @return $value;
+}
+
+@function rem-calc($values, $base-value: $rem-base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+
+  $remValues: ();
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+  }
+  @return $remValues;
+}
+
+// Support for the old syntax
+
+@function emCalc($values){
+  @return rem-calc($values);
+}
+
+// Maybe you want to create rems with pixels
+// $rem-base: 0.625 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;}
+// @function remCalc($pxWidth) {
+//   @return $pxWidth / $rem-base * 1rem;
+// }
+
+// Various global styles
+
+$default-float: left;
+
+$body-bg: #fff;
+$body-font-color: #222;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-weight: normal;
+$body-font-style: normal;
+
+// Font-smoothing
+
+$font-smoothing: antialiased;
+
+// Text direction settings
+
+$text-direction: ltr;
+
+// Colors
+
+$primary-color: #2ba6cb;
+$secondary-color: #e9e9e9;
+$alert-color: #c60f13;
+$success-color: #5da423;
+
+// Make sure border radius matches unless we want it different.
+
+$global-radius: 3px;
+$global-rounded: 1000px;
+
+// Inset shadow shiny edges and depressions.
+
+$shiny-edge-size: 0 1px 0;
+$shiny-edge-color: rgba(#fff, .5);
+$shiny-edge-active-color: rgba(#000, .2);
+
+// Control whether or not CSS classes come through in the CSS files.
+
+$include-html-classes: true;
+$include-print-styles: true;
+$include-html-global-classes: $include-html-classes;
+$include-html-type-classes: $include-html-classes;
+$include-html-grid-classes: $include-html-classes;
+$include-html-icon-bar-classes: $include-html-classes;
+$include-html-visibility-classes: $include-html-classes;
+$include-html-button-classes: $include-html-classes;
+$include-html-form-classes: $include-html-classes;
+$include-html-custom-form-classes: $include-html-classes;
+$include-html-media-classes: $include-html-classes;
+$include-html-section-classes: $include-html-classes;
+$include-html-orbit-classes: $include-html-classes;
+$include-html-reveal-classes: $include-html-classes;
+$include-html-joyride-classes: $include-html-classes;
+$include-html-clearing-classes: $include-html-classes;
+$include-html-alert-classes: $include-html-classes;
+$include-html-nav-classes: $include-html-classes;
+$include-html-top-bar-classes: $include-html-classes;
+$include-html-label-classes: $include-html-classes;
+$include-html-panel-classes: $include-html-classes;
+$include-html-pricing-classes: $include-html-classes;
+$include-html-progress-classes: $include-html-classes;
+$include-html-magellan-classes: $include-html-classes;
+$include-html-tooltip-classes: $include-html-classes;
+
+// Media Queries
+
+$small-screen: 768px;
+$medium-screen: 1280px;
+$large-screen: 1440px;
+
+$screen: "only screen";
+$small: "only screen and (min-width: #{$small-screen})";
+$medium: "only screen and (min-width: #{$medium-screen})";
+$large: "only screen and (min-width: #{$large-screen})";
+$landscape: "only screen and (orientation: landscape)";
+$portrait: "only screen and (orientation: portrait)";
+
+// Cursors
+
+// Custom use example -> $cursor-default-value: url(http://cursors-site.net/path/to/custom/cursor/default.cur),progress;
+
+$cursor-crosshair-value: "crosshair";
+$cursor-default-value: "default";
+$cursor-pointer-value: "pointer";
+$cursor-help-value: "help";
+
+
+// Grid Variables
+
+
+$row-width: rem-calc(1000);
+$column-gutter: rem-calc(30);
+$total-columns: 12;
+
+
+// Block Grid Variables
+
+
+// Maximum number of block grid elements per row
+
+$block-grid-elements: 12;
+$block-grid-default-spacing: rem-calc(20);
+
+// Enables media queries for block-grid classes. Set to false if writing semantic HTML.
+
+$block-grid-media-queries: true;
+
+
+// Typography Variables
+
+
+// Heading font styles
+
+$header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-weight: bold;
+$header-font-style: normal;
+$header-font-color: #222;
+$header-line-height: 1.4;
+$header-top-margin: .2em;
+$header-bottom-margin: .5em;
+$header-text-rendering: optimizeLegibility;
+
+// Heading font sizes
+
+$h1-font-size: rem-calc(44);
+$h2-font-size: rem-calc(37);
+$h3-font-size: rem-calc(27);
+$h4-font-size: rem-calc(23);
+$h5-font-size: rem-calc(18);
+$h6-font-size: 1em;
+
+// Subheaders
+
+$subheader-line-height: 1.4;
+$subheader-font-color: scale-color($header-font-color, $lightness: 35%);
+$subheader-font-weight: 300;
+$subheader-top-margin: .2em;
+$subheader-bottom-margin: .5em;
+
+// <small> styling
+
+$small-font-size: 60%;
+$small-font-color: scale-color($header-font-color, $lightness: 35%);
+
+// Paragraphs
+
+$paragraph-font-family: inherit;
+$paragraph-font-weight: normal;
+$paragraph-font-size: 1em;
+$paragraph-line-height: 1.6;
+$paragraph-margin-bottom: rem-calc(20);
+$paragraph-aside-font-size: rem-calc(14);
+$paragraph-aside-line-height: 1.35;
+$paragraph-aside-font-style: italic;
+
+// <code> tags
+
+$code-color: scale-color($alert-color, $lightness: -27%);
+$code-font-family: Consolas, "Liberation Mono", Courier, monospace;
+$code-font-weight: bold;
+
+// Anchors
+
+$anchor-text-decoration: none;
+$anchor-font-color: $primary-color;
+$anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
+
+// <hr> element
+
+$hr-border-width: 1px;
+$hr-border-style: solid;
+$hr-border-color: #ddd;
+$hr-margin: rem-calc(20);
+
+// Lists
+
+$list-style-position: outside;
+$list-side-margin: 0;
+$list-nested-margin: rem-calc(20);
+$definition-list-header-weight: bold;
+$definition-list-header-margin-bottom: .3em;
+$definition-list-margin-bottom: rem-calc(12);
+
+// Blockquotes
+
+$blockquote-font-color: scale-color($header-font-color, $lightness: 35%);
+$blockquote-padding: rem-calc(9, 20, 0, 19);
+$blockquote-border: 1px solid #ddd;
+$blockquote-cite-font-size: rem-calc(13);
+$blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%);
+$blockquote-cite-link-color: $blockquote-cite-font-color;
+
+// Acronym
+
+$acronym-underline: 1px dotted #ddd;
+
+// Padding and margin
+
+$microformat-padding: rem-calc(10, 12);
+$microformat-margin: rem-calc(0, 0, 20, 0);
+
+// Border styles
+
+$microformat-border-width: 1px;
+$microformat-border-style: solid;
+$microformat-border-color: #ddd;
+
+// Full name font styles
+
+$microformat-fullname-font-weight: bold;
+$microformat-fullname-font-size: rem-calc(15);
+
+// Summary font styles
+
+$microformat-summary-font-weight: bold;
+
+// <abbr> padding
+
+$microformat-abbr-padding: rem-calc(0, 1);
+
+// <abbr> font styles
+
+$microformat-abbr-font-weight: bold;
+$microformat-abbr-font-decoration: none;
+
+
+// Form Variables
+
+
+// Base for lots of form spacing and positioning styles
+
+$form-spacing: rem-calc(16);
+
+// Labels
+
+$form-label-pointer: pointer;
+$form-label-font-size: rem-calc(14);
+$form-label-font-weight: 500;
+$form-label-line-height: 1.5;
+$form-label-font-color: scale-color(#000, $lightness: 30%);
+$form-label-small-transform: capitalize;
+$form-label-bottom-margin: rem-calc(3);
+$input-font-family: inherit;
+$input-font-color: rgba(0,0,0,0.75);
+$input-font-size: rem-calc(14);
+$input-bg-color: #fff;
+$input-focus-bg-color: scale-color(#fff, $lightness: -2%);
+$input-border-color: scale-color(#fff, $lightness: -20%);
+$input-focus-border-color: scale-color(#fff, $lightness: -40%);
+$input-border-style: solid;
+$input-border-width: 1px;
+$input-disabled-bg: #ddd;
+$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+$input-include-glowing-effect: true;
+
+// Fieldset border and spacing.
+
+$fieldset-border-style: solid;
+$fieldset-border-width: 1px;
+$fieldset-border-color: #ddd;
+$fieldset-padding: rem-calc(20);
+$fieldset-margin: rem-calc(18, 0);
+
+// Legends
+
+$legend-bg: #fff;
+$legend-font-weight: bold;
+$legend-padding: rem-calc(0, 3);
+
+// Prefix and postfix input elements
+
+$input-prefix-bg: scale-color(#fff, $lightness: -5%);
+$input-prefix-border-color: scale-color(#fff, $lightness: -20%);
+$input-prefix-border-size: 1px;
+$input-prefix-border-type: solid;
+$input-prefix-overflow: hidden;
+$input-prefix-font-color: #333;
+$input-prefix-font-color-alt: #fff;
+
+// Error states for inputs and labels
+
+$input-error-message-padding: rem-calc(6, 4);
+$input-error-message-top: -($form-spacing) - rem-calc(5);
+$input-error-message-font-size: rem-calc(12);
+$input-error-message-font-weight: bold;
+$input-error-message-font-color: #fff;
+$input-error-message-font-color-alt: #333;
+
+// Glowing effect of inputs when focused
+
+$glowing-effect-fade-time: 0.45s;
+$glowing-effect-color: $input-focus-border-color;
+
+
+// Button Variables
+
+
+// Padding for buttons.
+
+$button-tny: rem-calc(7);
+$button-sml: rem-calc(9);
+$button-med: rem-calc(12);
+$button-lrg: rem-calc(16);
+
+// Display property.
+
+$button-display: inline-block;
+$button-margin-bottom: rem-calc(20);
+
+// Button text styles.
+
+$button-font-family: inherit;
+$button-font-color: #fff;
+$button-font-color-alt: #333;
+$button-font-med: rem-calc(16);
+$button-font-tny: rem-calc(11);
+$button-font-sml: rem-calc(13);
+$button-font-lrg: rem-calc(20);
+$button-font-weight: bold;
+$button-font-align: center;
+
+// Various hover effects.
+
+$button-function-factor: 10%;
+
+// Button border styles.
+
+$button-border-width: 1px;
+$button-border-style: solid;
+
+// Radius used throughout the core.
+
+$button-radius: $global-radius;
+
+// Opacity for disabled buttons.
+
+$button-disabled-opacity: 0.6;
+
+
+// Button Groups
+
+
+// Sets the margin for the right side by default, and the left margin if right-to-left direction is used
+
+$button-bar-margin-opposite: rem-calc(10);
+
+
+// Dropdown Button Variables
+
+
+// Color of the pip in dropdown buttons
+
+$dropdown-button-pip-color: #fff;
+$dropdown-button-pip-color-alt: #333;
+
+// Tiny dropdown buttons
+
+$dropdown-button-padding-tny: $button-tny * 5;
+$dropdown-button-pip-size-tny: $button-tny;
+$dropdown-button-pip-right-tny: $button-tny * 2;
+$dropdown-button-pip-top-tny: -$button-tny / 2 + rem-calc(1);
+
+// Small dropdown buttons
+
+$dropdown-button-padding-sml: $button-sml * 5;
+$dropdown-button-pip-size-sml: $button-sml;
+$dropdown-button-pip-right-sml: $button-sml * 2;
+$dropdown-button-pip-top-sml: -$button-sml / 2 + rem-calc(1);
+
+// Medium dropdown buttons
+
+$dropdown-button-padding-med: $button-med * 4 + rem-calc(3);
+$dropdown-button-pip-size-med: $button-med - rem-calc(3);
+$dropdown-button-pip-right-med: $button-med * 2;
+$dropdown-button-pip-top-med: -$button-med / 2 + rem-calc(2);
+
+// Large dropdown buttons
+
+$dropdown-button-padding-lrg: $button-lrg * 4;
+$dropdown-button-pip-size-lrg: $button-lrg - rem-calc(6);
+$dropdown-button-pip-right-lrg: $button-lrg + rem-calc(12);
+$dropdown-button-pip-top-lrg: -$button-lrg / 2 + rem-calc(3);
+
+
+// Split Button Variables
+
+
+// Shared styles for Split Buttons
+
+$split-button-function-factor: 15%;
+$split-button-pip-color: #fff;
+$split-button-pip-color-alt: #333;
+$split-button-active-bg-tint: rgba(0,0,0,0.1);
+
+// Tiny split buttons
+
+$split-button-padding-tny: $button-tny * 9;
+$split-button-span-width-tny: $button-tny * 6.5;
+$split-button-pip-size-tny: $button-tny;
+$split-button-pip-top-tny: $button-tny * 2;
+$split-button-pip-left-tny: rem-calc(-5);
+
+// Small split buttons
+
+$split-button-padding-sml: $button-sml * 7;
+$split-button-span-width-sml: $button-sml * 5;
+$split-button-pip-size-sml: $button-sml;
+$split-button-pip-top-sml: $button-sml * 1.5;
+$split-button-pip-left-sml: rem-calc(-9);
+
+// Medium split buttons
+
+$split-button-padding-med: $button-med * 6.4;
+$split-button-span-width-med: $button-med * 4;
+$split-button-pip-size-med: $button-med - rem-calc(3);
+$split-button-pip-top-med: $button-med * 1.5;
+$split-button-pip-left-med: rem-calc(-9);
+
+// Large split buttons
+
+$split-button-padding-lrg: $button-lrg * 6;
+$split-button-span-width-lrg: $button-lrg * 3.75;
+$split-button-pip-size-lrg: $button-lrg - rem-calc(6);
+$split-button-pip-top-lrg: $button-lrg + rem-calc(5);
+$split-button-pip-left-lrg: rem-calc(-9);
+
+
+// Alert Variables
+
+
+// Alert padding
+
+$alert-padding-top: rem-calc(11);
+$alert-padding-default-float: $alert-padding-top;
+$alert-padding-opposite-direction: $alert-padding-top + rem-calc(10);
+$alert-padding-bottom: $alert-padding-top + rem-calc(1);
+
+// Text style
+
+$alert-font-weight: bold;
+$alert-font-size: rem-calc(14);
+$alert-font-color: #fff;
+$alert-font-color-alt: scale-color($secondary-color, $lightness: -66%);
+
+// Hover effect
+
+$alert-function-factor: -14%;
+
+// Border Styles
+
+$alert-border-style: solid;
+$alert-border-width: 1px;
+$alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor);
+$alert-bottom-margin: rem-calc(20);
+
+// Close Button style
+
+$alert-close-color: #333;
+$alert-close-position: rem-calc(5);
+$alert-close-font-size: rem-calc(22);
+$alert-close-opacity: 0.3;
+$alert-close-opacity-hover: 0.5;
+$alert-close-padding: 5px 4px 4px;
+
+// Border radius
+
+$alert-radius: $global-radius;
+
+// Transition effects
+
+$alert-transition-speed: 300ms;
+$alert-transition-ease: ease-out;
+
+// Breadcrumb Variables
+
+// Background color for the breadcrumb container.
+
+$crumb-bg: scale-color($secondary-color, $lightness: 55%);
+
+// Padding around the breadcrumbs.
+
+$crumb-padding: rem-calc(6, 14, 9);
+$crumb-side-padding: rem-calc(12);
+
+// Border styles.
+
+$crumb-function-factor: -10%;
+$crumb-border-size: 1px;
+$crumb-border-style: solid;
+$crumb-border-color: scale-color($crumb-bg, $lightness: $crumb-function-factor);
+$crumb-radius: $global-radius;
+
+// Various text styles for breadcrumbs.
+
+$crumb-font-size: rem-calc(11);
+$crumb-font-color: $primary-color;
+$crumb-font-color-current: #333;
+$crumb-font-color-unavailable: #999;
+$crumb-font-transform: uppercase;
+$crumb-link-decor: underline;
+
+// Slash between breadcrumbs
+
+$crumb-slash-color: #aaa;
+$crumb-slash: "/";
+
+
+// Clearing Variables
+
+// Background colors for parts of Clearing.
+
+$clearing-bg: #111;
+$clearing-caption-bg: $clearing-bg;
+$clearing-carousel-bg: #111;
+$clearing-img-bg: $clearing-bg;
+
+// Close button
+
+$clearing-close-color: #fff;
+$clearing-close-size: 40px;
+
+// Style the arrows
+
+$clearing-arrow-size: 16px;
+$clearing-arrow-color: $clearing-close-color;
+
+// Style captions
+
+$clearing-caption-font-color: #fff;
+$clearing-caption-padding: 10px 30px;
+
+// Make the image and carousel height and style
+
+$clearing-active-img-height: 75%;
+$clearing-carousel-height: 150px;
+$clearing-carousel-thumb-width: 175px;
+$clearing-carousel-thumb-active-border: 4px solid rgb(255,255,255);
+
+
+// Custom Form Variables
+
+// Basic form styles input styles
+
+$custom-form-border-color: #ccc;
+$custom-form-border-size: 1px;
+$custom-form-bg: #fff;
+$custom-form-bg-disabled: #ddd;
+$custom-form-input-size: 16px;
+$custom-form-check-color: #222;
+$custom-form-check-size: 14px;
+$custom-form-radio-size: 8px;
+$custom-form-checkbox-radius: 0;
+
+// Custom select form element.
+
+$custom-select-bg: #fff;
+$custom-select-fade-to-color: #f3f3f3;
+$custom-select-border-color: #ddd;
+$custom-select-triangle-color: #aaa;
+$custom-select-triangle-color-open: #222;
+$custom-select-height: rem-calc(13) + ($form-spacing * 1.5);
+$custom-select-margin-bottom: rem-calc(20);
+$custom-select-font-color-selected: #141414;
+$custom-select-disabled-color: #888;
+
+// Custom select dropdown element.
+
+$custom-dropdown-height: 200px;
+$custom-dropdown-bg: #fff;
+$custom-dropdown-border-color: scale-color(#fff, $lightness: -20%);
+$custom-dropdown-border-width: 1px;
+$custom-dropdown-border-style: solid;
+$custom-dropdown-font-color: #555;
+$custom-dropdown-font-size: rem-calc(14);
+$custom-dropdown-color-selected: #eeeeee;
+$custom-dropdown-font-color-selected: #000;
+$custom-dropdown-shadow: 0 2px 2px 0 rgba(0,0,0,0.1);
+$custom-dropdown-offset-top: none;
+$custom-dropdown-list-padding: rem-calc(4);
+$custom-dropdown-left-padding: rem-calc(6);
+$custom-dropdown-right-padding: rem-calc(38);
+$custom-dropdown-list-item-min-height: rem-calc(24);
+
+
+// Dropdown Variables
+
+// Height and width styles.
+
+$f-dropdown-max-width: 200px;
+$f-dropdown-height: auto;
+$f-dropdown-max-height: none;
+$f-dropdown-margin-top: 2px;
+
+// Background color
+
+$f-dropdown-bg: #fff;
+
+// Border styles for dropdowns.
+
+$f-dropdown-border-style: solid;
+$f-dropdown-border-width: 1px;
+$f-dropdown-border-color: scale-color(#fff, $lightness: -20%);
+
+// Triangle pip.
+
+$f-dropdown-triangle-size: 6px;
+$f-dropdown-triangle-color: #fff;
+$f-dropdown-triangle-side-offset: 10px;
+
+// List elements.
+
+$f-dropdown-list-style: none;
+$f-dropdown-font-color: #555;
+$f-dropdown-font-size: rem-calc(14);
+$f-dropdown-list-padding: rem-calc(5, 10);
+$f-dropdown-line-height: rem-calc(18);
+$f-dropdown-list-hover-bg: #eeeeee;
+$dropdown-mobile-left: 0;
+
+// When the dropdown has custom content.
+
+$f-dropdown-content-padding: rem-calc(20);
+
+
+// Flex Video Variables
+
+
+// Video container padding and margins
+
+$flex-video-padding-top: rem-calc(25);
+$flex-video-padding-bottom: 67.5%;
+$flex-video-margin-bottom: rem-calc(16);
+
+// Widescreen bottom padding
+
+$flex-video-widescreen-padding-bottom: 57.25%;
+
+
+// Inline List Variables
+
+
+// Margins and padding of the inline list.
+
+$inline-list-margin-bottom: rem-calc(17, -22);
+$inline-list-margin: 0 0;
+$inline-list-padding: 0;
+
+// Overflow of the inline list.
+
+$inline-list-overflow: hidden;
+
+// List items
+
+$inline-list-display: block;
+
+// Elments within list items
+
+$inline-list-children-display: block;
+
+
+// Joyride Variables
+
+
+// Joyride styles
+
+$joyride-tip-bg: rgb(0,0,0);
+$joyride-tip-default-width: 300px;
+$joyride-tip-padding: rem-calc(18, 20, 24);
+$joyride-tip-border: solid 1px #555;
+$joyride-tip-radius: 4px;
+$joyride-tip-position-offset: 22px;
+
+// Tip font styles
+
+$joyride-tip-font-color: #fff;
+$joyride-tip-font-size: rem-calc(14);
+$joyride-tip-header-weight: bold;
+
+// Changes the nub size
+
+$joyride-tip-nub-size: 14px;
+
+// Adjusts the styles for the timer when its enabled
+
+$joyride-tip-timer-width: 50px;
+$joyride-tip-timer-height: 3px;
+$joyride-tip-timer-color: #666;
+
+// Changes up the styles for the close button
+
+$joyride-tip-close-color: #777;
+$joyride-tip-close-size: 30px;
+$joyride-tip-close-weight: normal;
+
+// When Joyride is filling the screen, style for the bg
+
+$joyride-screenfill: rgba(0,0,0,0.5);
+
+
+// Keystroke Variables
+
+
+// Text styles.
+
+$keystroke-font: "Consolas", "Menlo", "Courier", monospace;
+$keystroke-font-size: rem-calc(15);
+$keystroke-font-color: #222;
+$keystroke-font-color-alt: #fff;
+$keystroke-function-factor: -7%;
+
+// Keystroke padding.
+
+$keystroke-padding: rem-calc(2, 4, 0);
+
+// Background and border styles.
+
+$keystroke-bg: scale-color(#fff, $lightness: $keystroke-function-factor);
+$keystroke-border-style: solid;
+$keystroke-border-width: 1px;
+$keystroke-border-color: scale-color($keystroke-bg, $lightness: $keystroke-function-factor);
+$keystroke-radius: $global-radius;
+
+
+// Label Variables
+
+
+// Style the labels
+
+$label-padding: rem-calc(3, 10, 4);
+$label-radius: $global-radius;
+
+// We use these to style the label text
+
+$label-font-sizing: rem-calc(14);
+$label-font-weight: bold;
+$label-font-color: #333;
+$label-font-color-alt: #fff;
+
+
+// Magellan Variables
+
+
+// Basic visual styles
+
+$magellan-bg: #fff;
+$magellan-padding: 10px;
+
+
+// Orbit Settings
+
+
+// Caption styles
+
+$orbit-container-bg: #f5f5f5;
+$orbit-caption-bg-old: rgb(0,0,0);
+$orbit-caption-bg: rgba(0,0,0,0.6);
+$orbit-caption-font-color: #fff;
+
+// Left/right nav styles
+
+$orbit-nav-bg-old: rgb(0,0,0);
+$orbit-nav-bg: rgba(0,0,0,0.6);
+
+// Timer styles
+
+$orbit-timer-bg-old: rgb(0,0,0);
+$orbit-timer-bg: rgba(0,0,0,0.6);
+
+// Bullet nav styles
+
+$orbit-bullet-nav-color: #999;
+$orbit-bullet-nav-color-active: #222;
+
+// Slide numbers
+
+$orbit-slide-number-bg: rgba(0,0,0,0);
+$orbit-slide-number-font-color: #fff;
+$orbit-slide-number-padding: rem-calc(5);
+
+// Graceful Loading Wrapper and preloader
+
+$wrapper-class: "slideshow-wrapper";
+$preloader-class: "preloader" ;
+
+
+// Pagination Variables
+
+
+// Pagination container
+
+$pagination-height: rem-calc(24);
+$pagination-margin: rem-calc(-5);
+
+// List-item properties
+
+$pagination-li-float: $default-float;
+$pagination-li-height: rem-calc(24);
+$pagination-li-font-color: #222;
+$pagination-li-font-size: rem-calc(14);
+$pagination-li-margin: rem-calc(5);
+
+// Pagination anchor links
+
+$pagination-link-pad: rem-calc(1, 7, 1);
+$pagination-link-font-color: #999;
+$pagination-link-active-bg: scale-color(#fff, $lightness: -10%);
+
+// Disabled anchor links
+
+$pagination-link-unavailable-cursor: $cursor-default-value;
+$pagination-link-unavailable-font-color: #999;
+$pagination-link-unavailable-bg-active: transparent;
+
+// Currently selected anchor links
+
+$pagination-link-current-background: $primary-color;
+$pagination-link-current-font-color: #fff;
+$pagination-link-current-font-weight: bold;
+$pagination-link-current-cursor: $cursor-default-value;
+$pagination-link-current-active-bg: $primary-color;
+
+
+// Panel Variables
+
+
+// Background and border styles
+
+$panel-bg: scale-color(#fff, $lightness: -5%);
+$panel-border-style: solid;
+$panel-border-size: 1px;
+
+// Control how much we darken things on hover
+
+$panel-function-factor: -11%;
+$panel-border-color: scale-color($panel-bg, $lightness: $panel-function-factor);
+
+// Inner padding and bottom margin
+
+$panel-margin-bottom: rem-calc(20);
+$panel-padding: rem-calc(20);
+
+// Font colors
+
+$panel-font-color: #333;
+$panel-font-color-alt: #fff;
+$panel-header-adjust: true; // Set to false to keep default header styles
+
+// Pricing Table Variables
+
+
+// Border color
+
+$price-table-border: solid 1px #ddd;
+
+// Bottom margin of the pricing table
+
+$price-table-margin-bottom: rem-calc(20);
+
+// Control the title styles
+
+$price-title-bg: #ddd;
+$price-title-padding: rem-calc(15, 20);
+$price-title-align: center;
+$price-title-color: #333;
+$price-title-weight: bold;
+$price-title-size: rem-calc(16);
+
+// Control the price styles
+
+$price-money-bg: #eee;
+$price-money-padding: rem-calc(15, 20);
+$price-money-align: center;
+$price-money-color: #333;
+$price-money-weight: normal;
+$price-money-size: rem-calc(20);
+
+// Description styles
+
+$price-bg: #fff;
+$price-desc-color: #777;
+$price-desc-padding: rem-calc(15);
+$price-desc-align: center;
+$price-desc-font-size: rem-calc(12);
+$price-desc-weight: normal;
+$price-desc-line-height: 1.4;
+$price-desc-bottom-border: dotted 1px #ddd;
+
+// List item styles
+
+$price-item-color: #333;
+$price-item-padding: rem-calc(15);
+$price-item-align: center;
+$price-item-font-size: rem-calc(14);
+$price-item-weight: normal;
+$price-item-bottom-border: dotted 1px #ddd;
+
+// CTA area styles
+
+$price-cta-bg: #f5f5f5;
+$price-cta-align: center;
+$price-cta-padding: rem-calc(20, 20, 0);
+
+
+// Progress Bar Variables
+
+
+// Progress bar height
+
+$progress-bar-height: rem-calc(25);
+$progress-bar-color: transparent;
+
+// Border styles
+
+$progress-bar-border-color: scale-color(#fff, $lightness: -20%);
+$progress-bar-border-size: 1px;
+$progress-bar-border-style: solid;
+$progress-bar-border-radius: $global-radius;
+
+// Margin & padding
+
+$progress-bar-pad: rem-calc(2);
+$progress-bar-margin-bottom: rem-calc(10);
+
+// Meter colors
+
+$progress-meter-color: $primary-color;
+$progress-meter-secondary-color: $secondary-color;
+$progress-meter-success-color: $success-color;
+$progress-meter-alert-color: $alert-color;
+
+
+// Reveal Variables
+
+
+// Reveal overlay.
+
+$reveal-overlay-bg: rgba(#000, .45);
+$reveal-overlay-bg-old: #000;
+
+// Modal itself.
+
+$reveal-modal-bg: #fff;
+$reveal-position-top: 50px;
+$reveal-default-width: 80%;
+$reveal-modal-padding: rem-calc(20);
+$reveal-box-shadow: 0 0 10px rgba(#000,.4);
+
+// Reveal close button
+
+$reveal-close-font-size: rem-calc(22);
+$reveal-close-top: rem-calc(8);
+$reveal-close-side: rem-calc(11);
+$reveal-close-color: #aaa;
+$reveal-close-weight: bold;
+
+// Modal border
+
+$reveal-border-style: solid;
+$reveal-border-width: 1px;
+$reveal-border-color: #666;
+
+$reveal-modal-class: "reveal-modal";
+$close-reveal-modal-class: "close-reveal-modal";
+
+
+// Section Variables
+
+
+// Padding and hover factor
+
+$section-title-padding: rem-calc(15);
+$section-content-padding: rem-calc(15);
+$section-function-factor: -11%;
+
+// Titles
+
+$section-title-color: #333;
+$section-title-bg: #efefef;
+$section-title-bg-active: scale-color($section-title-bg, $lightness: $section-function-factor);
+$section-title-bg-active-tabs: #fff;
+$section-title-bg-hover: scale-color($section-title-bg, $lightness: $section-function-factor/2);
+
+// Border size
+
+$section-border-size: 1px;
+$section-border-style: solid;
+$section-border-color: #ccc;
+
+// Font controls
+
+$section-font-size: rem-calc(14);
+
+// Control the color of the background and some size options
+
+$section-content-bg: #fff;
+$section-vertical-nav-min-width: rem-calc(200);
+$section-vertical-tabs-title-width: rem-calc(200);
+$section-bottom-margin: rem-calc(20);
+
+$title-selector: ".title";
+$content-selector: ".content";
+
+
+// Side Nav Variables
+
+
+// Padding
+
+$side-nav-padding: rem-calc(14, 0);
+
+// List styles
+
+$side-nav-list-type: none;
+$side-nav-list-position: inside;
+$side-nav-list-margin: rem-calc(0, 0, 7, 0);
+
+// Link styles
+
+$side-nav-link-color: $primary-color;
+$side-nav-link-color-active: scale-color(#000, $lightness: 30%);
+$side-nav-font-size: rem-calc(14);
+$side-nav-font-weight: bold;
+
+// Border styles
+
+$side-nav-divider-size: 1px;
+$side-nav-divider-style: solid;
+$side-nav-divider-color: scale-color(#fff, $lightness: -10%);
+
+
+// Sub Nav Variables
+
+
+// Margin and padding
+
+$sub-nav-list-margin: rem-calc(-4, 0, 18);
+$sub-nav-list-padding-top: rem-calc(4);
+
+// Definition
+
+$sub-nav-font-size: rem-calc(14);
+$sub-nav-font-color: #999;
+$sub-nav-font-weight: normal;
+$sub-nav-text-decoration: none;
+$sub-nav-border-radius: 1000px;
+
+// Active item styles
+
+$sub-nav-active-font-weight: bold;
+$sub-nav-active-bg: $primary-color;
+$sub-nav-active-color: #fff;
+$sub-nav-active-padding: rem-calc(3, 9);
+$sub-nav-active-cursor: $cursor-default-value;
+
+
+// Switch Variables
+
+
+// Border styles and background colors for the switch container
+
+$switch-border-color: scale-color(#fff, $lightness: 20%);
+$switch-border-style: solid;
+$switch-border-width: 1px;
+$switch-bg: #fff;
+
+// Switch heights for our default classes
+
+$switch-height-tny: 22px;
+$switch-height-sml: 28px;
+$switch-height-med: 36px;
+$switch-height-lrg: 44px;
+$switch-bottom-margin: rem-calc(20);
+
+// Font sizes for our classes.
+
+$switch-font-size-tny: 11px;
+$switch-font-size-sml: 12px;
+$switch-font-size-med: 14px;
+$switch-font-size-lrg: 17px;
+$switch-label-side-padding: 6px;
+
+// Switch-paddle
+
+$switch-paddle-bg: #fff;
+$switch-paddle-fade-to-color: scale-color($switch-paddle-bg, $lightness: -10%);
+$switch-paddle-border-color: scale-color($switch-paddle-bg, $lightness: -35%);
+$switch-paddle-border-width: 1px;
+$switch-paddle-border-style: solid;
+$switch-paddle-transition-speed: .1s;
+$switch-paddle-transition-ease: ease-out;
+$switch-positive-color: scale-color($success-color, $lightness: 94%);
+$switch-negative-color: #f5f5f5;
+
+// Outline Style for tabbing through switches
+
+$switch-label-outline: 1px dotted #888;
+
+
+// Table Variables
+
+// Background color for the table and even rows
+
+$table-bg: #fff;
+$table-even-row-bg: #f9f9f9;
+
+// Table cell border style
+
+$table-border-style: solid;
+$table-border-size: 1px;
+$table-border-color: #ddd;
+
+// Table head styles
+
+$table-head-bg: #f5f5f5;
+$table-head-font-size: rem-calc(14);
+$table-head-font-color: #222;
+$table-head-font-weight: bold;
+$table-head-padding: rem-calc(8, 10, 10);
+
+// Row padding and font styles
+
+$table-row-padding: rem-calc(9, 10);
+$table-row-font-size: rem-calc(14);
+$table-row-font-color: #222;
+$table-line-height: rem-calc(18);
+
+// Display and margin of tables
+
+$table-display: table-cell;
+$table-margin-bottom: rem-calc(20);
+
+
+// Image Thumbnail Variables
+
+
+// Border styles
+
+$thumb-border-style: solid;
+$thumb-border-width: 4px;
+$thumb-border-color: #fff;
+$thumb-box-shadow: 0 0 0 1px rgba(#000,.2);
+$thumb-box-shadow-hover: 0 0 6px 1px rgba($primary-color,0.5);
+
+// Radius and transition speed for thumbs
+
+$thumb-radius: $global-radius;
+$thumb-transition-speed: 200ms;
+
+
+// Tooltip Variables
+
+
+$has-tip-border-bottom: dotted 1px #ccc;
+$has-tip-font-weight: bold;
+$has-tip-font-color: #333;
+$has-tip-border-bottom-hover: dotted 1px scale-color($primary-color, $lightness: -55%);
+$has-tip-font-color-hover: $primary-color;
+$has-tip-cursor-type: help;
+
+$tooltip-padding: rem-calc(8);
+$tooltip-bg: #000;
+$tooltip-font-size: rem-calc(15);
+$tooltip-font-weight: bold;
+$tooltip-font-color: #fff;
+$tooltip-line-height: 1.3;
+$tooltip-close-font-size: rem-calc(10);
+$tooltip-close-font-weight: normal;
+$tooltip-close-font-color: #888;
+$tooltip-font-size-sml: rem-calc(14);
+$tooltip-radius: $global-radius;
+$tooltip-pip-size: 5px;
+
+
+// Top Bar Variables
+
+
+// Background color for the top bar
+
+$topbar-bg: #111 !default;
+
+// Height and margin
+
+$topbar-height: 45px;
+$topbar-margin-bottom: rem-calc(30);
+
+// Control Input height for top bar
+
+$topbar-input-height: 2.45em;
+
+// Controlling the styles for the title in the top bar
+
+$topbar-title-weight: bold;
+$topbar-title-font-size: rem-calc(17);
+
+// Style the top bar dropdown elements
+
+$topbar-dropdown-bg: #222;
+$topbar-dropdown-link-color: #fff;
+$topbar-dropdown-link-bg: #333;
+$topbar-dropdown-link-bg-hover: #272727;
+$topbar-dropdown-toggle-size: 5px;
+$topbar-dropdown-toggle-color: #fff;
+$topbar-dropdown-toggle-alpha: 0.5;
+
+// Set the link colors and styles for top-level nav
+
+$topbar-link-color: #fff;
+$topbar-link-color-hover: #fff;
+$topbar-link-color-active: #fff;
+$topbar-link-weight: normal;
+$topbar-link-font-size: rem-calc(13);
+$topbar-link-hover-lightness: -10%; // Darken by 10%
+$topbar-link-bg-hover: #272727  ;
+$topbar-link-bg-active: $primary-color;
+$topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+$topbar-link-font-family: $body-font-family;
+
+$topbar-dropdown-label-color: #555;
+$topbar-dropdown-label-text-transform: uppercase;
+$topbar-dropdown-label-font-weight: bold;
+$topbar-dropdown-label-font-size: rem-calc(10);
+
+// Top menu icon styles
+
+$topbar-menu-link-transform: uppercase;
+$topbar-menu-link-font-size: rem-calc(13);
+$topbar-menu-link-weight: bold;
+$topbar-menu-link-color: #fff;
+$topbar-menu-icon-color: #fff;
+$topbar-menu-link-color-toggled: #888;
+$topbar-menu-icon-color-toggled: #888;
+
+// Transitions and breakpoint styles
+
+$topbar-transition-speed: 300ms;
+$topbar-breakpoint: rem-calc(940);
+$topbar-media-query: "only screen and (min-width: #{$topbar-breakpoint})";
+
+// Divider Styles
+
+$topbar-divider-border-bottom: solid 1px  scale-color($topbar-bg-color, $lightness: 13%);
+$topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
+
+// Sticky Class
+
+$topbar-sticky-class: ".sticky";
+$topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+```
+{{/markdown}}

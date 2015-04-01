@@ -1,0 +1,29 @@
+{{#markdown}}
+```scss
+$include-html-nav-classes: $include-html-classes;
+
+// We use this to control padding.
+$side-nav-padding: rem-calc(14 0);
+
+// We use these to control list styles.
+$side-nav-list-type: none;
+$side-nav-list-position: inside;
+$side-nav-list-margin: rem-calc(0 0 7 0);
+
+// We use these to control link styles.
+$side-nav-link-color: $primary-color;
+$side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%);
+$side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%);
+$side-nav-font-size: rem-calc(14);
+$side-nav-font-weight: normal;
+$side-nav-font-weight-active: $side-nav-font-weight;
+$side-nav-font-family: $body-font-family;
+$side-nav-font-family-active: $side-nav-font-family;
+
+// We use these to control border styles
+$side-nav-divider-size: 1px;
+$side-nav-divider-style: solid;
+$side-nav-divider-color: scale-color(#fff, $lightness: 10%);
+
+```
+{{/markdown}}

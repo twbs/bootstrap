@@ -1,0 +1,464 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+$include-html-type-classes: $include-html-classes !default;
+
+// We use these to control header font styles
+$header-font-family: $body-font-family !default;
+$header-font-weight: $font-weight-normal !default;
+$header-font-style: normal !default;
+$header-font-color: $jet !default;
+$header-line-height: 1.4 !default;
+$header-top-margin: .2rem !default;
+$header-bottom-margin: .5rem !default;
+$header-text-rendering: optimizeLegibility !default;
+
+// We use these to control header font sizes
+$h1-font-size: rem-calc(44) !default;
+$h2-font-size: rem-calc(37) !default;
+$h3-font-size: rem-calc(27) !default;
+$h4-font-size: rem-calc(23) !default;
+$h5-font-size: rem-calc(18) !default;
+$h6-font-size: 1rem !default;
+
+// We use these to control header size reduction on small screens
+$h1-font-reduction: rem-calc(10) !default;
+$h2-font-reduction: rem-calc(10) !default;
+$h3-font-reduction: rem-calc(5) !default;
+$h4-font-reduction: rem-calc(5) !default;
+$h5-font-reduction: 0 !default;
+$h6-font-reduction: 0 !default;
+
+// These control how subheaders are styled.
+$subheader-line-height: 1.4 !default;
+$subheader-font-color: scale-color($header-font-color, $lightness: 35%) !default;
+$subheader-font-weight: $font-weight-normal !default;
+$subheader-top-margin: .2rem !default;
+$subheader-bottom-margin: .5rem !default;
+
+// A general <small> styling
+$small-font-size: 60% !default;
+$small-font-color: scale-color($header-font-color, $lightness: 35%) !default;
+
+// We use these to style paragraphs
+$paragraph-font-family: inherit !default;
+$paragraph-font-weight: $font-weight-normal !default;
+$paragraph-font-size: 1rem !default;
+$paragraph-line-height: 1.6 !default;
+$paragraph-margin-bottom: rem-calc(20) !default;
+$paragraph-aside-font-size: rem-calc(14) !default;
+$paragraph-aside-line-height: 1.35 !default;
+$paragraph-aside-font-style: italic !default;
+$paragraph-text-rendering: optimizeLegibility !default;
+
+// We use these to style <code> tags
+$code-color: $oil !default;
+$code-font-family: $font-family-monospace !default;
+$code-font-weight: $font-weight-normal !default;
+$code-background-color: scale-color($secondary-color, $lightness: 70%) !default;
+$code-border-size: 1px !default;
+$code-border-style: solid !default;
+$code-border-color: scale-color($code-background-color, $lightness: -10%) !default;
+$code-padding: rem-calc(2) rem-calc(5) rem-calc(1) !default;
+
+// We use these to style anchors
+$anchor-text-decoration: none !default;
+$anchor-text-decoration-hover: none !default;
+$anchor-font-color: $primary-color !default;
+$anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%) !default;
+
+// We use these to style the <hr> element
+$hr-border-width: 1px !default;
+$hr-border-style: solid !default;
+$hr-border-color: $gainsboro !default;
+$hr-margin: rem-calc(20) !default;
+
+// We use these to style lists
+$list-font-family: $paragraph-font-family !default;
+$list-font-size: $paragraph-font-size !default;
+$list-line-height: $paragraph-line-height !default;
+$list-margin-bottom: $paragraph-margin-bottom !default;
+$list-style-position: outside !default;
+$list-side-margin: 1.1rem !default;
+$list-ordered-side-margin: 1.4rem !default;
+$list-side-margin-no-bullet: 0 !default;
+$list-nested-margin: rem-calc(20) !default;
+$definition-list-header-weight: $font-weight-bold !default;
+$definition-list-header-margin-bottom: .3rem !default;
+$definition-list-margin-bottom: rem-calc(12) !default;
+
+// We use these to style blockquotes
+$blockquote-font-color: scale-color($header-font-color, $lightness: 35%) !default;
+$blockquote-padding: rem-calc(9 20 0 19) !default;
+$blockquote-border: 1px solid $gainsboro !default;
+$blockquote-cite-font-size: rem-calc(13) !default;
+$blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%) !default;
+$blockquote-cite-link-color: $blockquote-cite-font-color !default;
+
+// Acronym styles
+$acronym-underline: 1px dotted $gainsboro !default;
+
+// We use these to control padding and margin
+$microformat-padding: rem-calc(10 12) !default;
+$microformat-margin: rem-calc(0 0 20 0) !default;
+
+// We use these to control the border styles
+$microformat-border-width: 1px !default;
+$microformat-border-style: solid !default;
+$microformat-border-color: $gainsboro !default;
+
+// We use these to control full name font styles
+$microformat-fullname-font-weight: $font-weight-bold !default;
+$microformat-fullname-font-size: rem-calc(15) !default;
+
+// We use this to control the summary font styles
+$microformat-summary-font-weight: $font-weight-bold !default;
+
+// We use this to control abbr padding
+$microformat-abbr-padding: rem-calc(0 1) !default;
+
+// We use this to control abbr font styles
+$microformat-abbr-font-weight: $font-weight-bold !default;
+$microformat-abbr-font-decoration: none !default;
+
+// Text alignment class names
+$align-class-names:
+  small-only,
+  small,
+  medium-only,
+  medium,
+  large-only,
+  large,
+  xlarge-only,
+  xlarge,
+  xxlarge-only,
+  xxlarge;
+
+// Text alignment breakpoints
+$align-class-breakpoints:
+  $small-only,
+  $small-up,
+  $medium-only,
+  $medium-up,
+  $large-only,
+  $large-up,
+  $xlarge-only,
+  $xlarge-up,
+  $xxlarge-only,
+  $xxlarge-up;
+
+// Generates text align and justify classes
+@mixin align-classes{
+  .text-left    { text-align: left !important; }
+  .text-right   { text-align: right !important; }
+  .text-center  { text-align: center !important; }
+  .text-justify { text-align: justify !important; }
+
+  @for $i from 1 through length($align-class-names) {
+    @media #{(nth($align-class-breakpoints, $i))} {
+      .#{(nth($align-class-names, $i))}-text-left { text-align: left !important; }
+      .#{(nth($align-class-names, $i))}-text-right   { text-align: right !important; }
+      .#{(nth($align-class-names, $i))}-text-center  { text-align: center !important; }
+      .#{(nth($align-class-names, $i))}-text-justify { text-align: justify !important; }
+    }
+  }
+}
+
+//
+// Typography Placeholders
+//
+
+// These will throw a deprecation warning if used within a media query.
+@mixin lead {
+  font-size: $paragraph-font-size + rem-calc(3.5);
+  line-height: 1.6;
+}
+
+@mixin subheader {
+  line-height: $subheader-line-height;
+  color: $subheader-font-color;
+  font-weight: $subheader-font-weight;
+  margin-top: $subheader-top-margin;
+  margin-bottom: $subheader-bottom-margin;
+}
+@include exports("type") {
+  @if $include-html-type-classes {
+    // Responsive Text alignment
+    @include align-classes;
+
+    /* Typography resets */
+    div,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    pre,
+    form,
+    p,
+    blockquote,
+    th,
+    td {
+      margin:0;
+      padding:0;
+    }
+
+    /* Default Link Styles */
+    a {
+      color: $anchor-font-color;
+      line-height: inherit;
+      text-decoration: $anchor-text-decoration;
+
+      &:hover,
+      &:focus {
+        color: $anchor-font-color-hover;
+        @if $anchor-text-decoration-hover != $anchor-text-decoration {
+        	text-decoration: $anchor-text-decoration-hover;
+        }
+      }
+
+      img { border:none; }
+    }
+
+    /* Default paragraph styles */
+    p {
+      font-family: $paragraph-font-family;
+      font-size: $paragraph-font-size;
+      font-weight: $paragraph-font-weight;
+      line-height: $paragraph-line-height;
+      margin-bottom: $paragraph-margin-bottom;
+      text-rendering: $paragraph-text-rendering;
+
+      &.lead { @include lead; }
+
+      & aside {
+        font-size: $paragraph-aside-font-size;
+        font-style: $paragraph-aside-font-style;
+        line-height: $paragraph-aside-line-height;
+      }
+    }
+
+    /* Default header styles */
+    h1, h2, h3, h4, h5, h6 {
+      color: $header-font-color;
+      font-family: $header-font-family;
+      font-style: $header-font-style;
+      font-weight: $header-font-weight;
+      line-height: $header-line-height;
+      margin-bottom: $header-bottom-margin;
+      margin-top: $header-top-margin;
+      text-rendering: $header-text-rendering;
+
+      small {
+        color: $small-font-color;
+        font-size: $small-font-size;
+        line-height: 0;
+      }
+    }
+
+    h1 { font-size: $h1-font-size - $h1-font-reduction; }
+    h2 { font-size: $h2-font-size - $h2-font-reduction; }
+    h3 { font-size: $h3-font-size - $h3-font-reduction; }
+    h4 { font-size: $h4-font-size - $h4-font-reduction; }
+    h5 { font-size: $h5-font-size - $h5-font-reduction; }
+    h6 { font-size: $h6-font-size - $h6-font-reduction; }
+
+    .subheader { @include subheader; }
+
+    hr {
+      border: $hr-border-style $hr-border-color;
+      border-width: $hr-border-width 0 0;
+      clear: both;
+      height: 0;
+      margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
+    }
+
+    /* Helpful Typography Defaults */
+    em,
+    i {
+      font-style: italic;
+      line-height: inherit;
+    }
+
+    strong,
+    b {
+      font-weight: $font-weight-bold;
+      line-height: inherit;
+    }
+
+    small {
+      font-size: $small-font-size;
+      line-height: inherit;
+    }
+
+    code {
+      background-color: $code-background-color;
+      border-color: $code-border-color;
+      border-style: $code-border-style;
+      border-width: $code-border-size;
+      color: $code-color;
+      font-family: $code-font-family;
+      font-weight: $code-font-weight;
+      padding: $code-padding;
+    }
+
+    /* Lists */
+    ul,
+    ol,
+    dl {
+      font-family: $list-font-family;
+      font-size: $list-font-size;
+      line-height: $list-line-height;
+      list-style-position: $list-style-position;
+      margin-bottom: $list-margin-bottom;
+    }
+
+    ul {
+      margin-#{$default-float}: $list-side-margin;
+      &.no-bullet {
+        margin-#{$default-float}: $list-side-margin-no-bullet;
+        li {
+          ul,
+          ol {
+            margin-#{$default-float}: $list-nested-margin;
+            margin-bottom: 0;
+            list-style: none;
+          }
+        }
+      }
+    }
+
+    /* Unordered Lists */
+    ul {
+      li {
+        ul,
+        ol {
+          margin-#{$default-float}: $list-nested-margin;
+          margin-bottom: 0;
+        }
+      }
+      &.square,
+      &.circle,
+      &.disc {
+        li ul { list-style: inherit; }
+      }
+
+      &.square { list-style-type: square; margin-#{$default-float}: $list-side-margin;}
+      &.circle { list-style-type: circle; margin-#{$default-float}: $list-side-margin;}
+      &.disc { list-style-type: disc; margin-#{$default-float}: $list-side-margin;}
+      &.no-bullet { list-style: none; }
+    }
+
+    /* Ordered Lists */
+    ol {
+      margin-#{$default-float}: $list-ordered-side-margin;
+      li {
+        ul,
+        ol {
+          margin-#{$default-float}: $list-nested-margin;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    /* Definition Lists */
+    dl {
+      dt {
+        margin-bottom: $definition-list-header-margin-bottom;
+        font-weight: $definition-list-header-weight;
+      }
+      dd { margin-bottom: $definition-list-margin-bottom; }
+    }
+
+    /* Abbreviations */
+    abbr,
+    acronym {
+      text-transform: uppercase;
+      font-size: 90%;
+      color: $body-font-color;
+      cursor: $cursor-help-value;
+    }
+    abbr {
+      text-transform: none;
+      &[title] {
+        border-bottom: $acronym-underline;
+      }
+    }
+
+    /* Blockquotes */
+    blockquote {
+      margin: 0 0 $paragraph-margin-bottom;
+      padding: $blockquote-padding;
+      border-#{$default-float}: $blockquote-border;
+
+      cite {
+        display: block;
+        font-size: $blockquote-cite-font-size;
+        color: $blockquote-cite-font-color;
+        &:before {
+          content: "\2014 \0020";
+        }
+
+        a,
+        a:visited {
+          color: $blockquote-cite-link-color;
+        }
+      }
+    }
+    blockquote,
+    blockquote p {
+      line-height: $paragraph-line-height;
+      color: $blockquote-font-color;
+    }
+
+    /* Microformats */
+    .vcard {
+      display: inline-block;
+      margin: $microformat-margin;
+      border: $microformat-border-width $microformat-border-style $microformat-border-color;
+      padding: $microformat-padding;
+
+      li {
+        margin: 0;
+        display: block;
+      }
+      .fn {
+        font-weight: $microformat-fullname-font-weight;
+        font-size: $microformat-fullname-font-size;
+      }
+    }
+
+    .vevent {
+      .summary { font-weight: $microformat-summary-font-weight; }
+
+      abbr {
+        cursor: $cursor-default-value;
+        text-decoration: $microformat-abbr-font-decoration;
+        font-weight: $microformat-abbr-font-weight;
+        border: none;
+        padding: $microformat-abbr-padding;
+      }
+    }
+
+
+    @media #{$medium-up} {
+      h1, h2, h3, h4, h5, h6 { line-height: $header-line-height; }
+      h1 { font-size: $h1-font-size; }
+      h2 { font-size: $h2-font-size; }
+      h3 { font-size: $h3-font-size; }
+      h4 { font-size: $h4-font-size; }
+      h5 { font-size: $h5-font-size; }
+      h6 { font-size: $h6-font-size; }
+    }
+  }
+}

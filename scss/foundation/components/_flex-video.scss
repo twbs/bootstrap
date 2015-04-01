@@ -1,0 +1,51 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+//
+// @variables
+//
+$include-html-media-classes: $include-html-classes !default;
+
+// We use these to control video container padding and margins
+$flex-video-padding-top: rem-calc(25) !default;
+$flex-video-padding-bottom: 67.5% !default;
+$flex-video-margin-bottom: rem-calc(16) !default;
+
+// We use this to control widescreen bottom padding
+$flex-video-widescreen-padding-bottom: 56.34% !default;
+
+//
+// @mixins
+//
+
+@mixin flex-video-container {
+  height: 0;
+  margin-bottom: $flex-video-margin-bottom;
+  overflow: hidden;
+  padding-bottom: $flex-video-padding-bottom;
+  padding-top: $flex-video-padding-top;
+  position: relative;
+
+  &.widescreen { padding-bottom: $flex-video-widescreen-padding-bottom; }
+  &.vimeo { padding-top: 0; }
+
+  iframe,
+  object,
+  embed,
+  video {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    #{$default-float}: 0;
+  }
+}
+
+@include exports("flex-video") {
+  @if $include-html-media-classes {
+    .flex-video { @include flex-video-container; }
+  }
+}

@@ -1,0 +1,214 @@
+---
+title: Accordion
+---
+
+<h3 class="subheader">Accordions are elements used to expand and collapse content that is broken into logical sections, much like tabs.</h3>
+
+***
+
+{{> examples_accordion_intro}}
+
+***
+
+<h3>Basic</h3>
+
+You can create an accordion using minimal markup like so:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_accordion_basic}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_accordion_basic_rendered}}
+  </div>
+</div>
+
+<div class="panel"><p>Note: Accordion used to require ```<dl>``` and ```<dd>``` markup. It now works with ```<ul>```'s and ```<li>```'s as well. You need v5.5+ to use the newer markup.</p></div>
+
+***
+
+<h3>Distributed accordion groups</h3>
+
+You can name the accordion so that it can be spread across different parent containers.  In this example the accordion is named *myAccordionGroup* and it is split between different columns in a block grid.  This allows the accordion to be responsive to screen width.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_accordion_grid}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_accordion_grid}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+For accessible accordions use the markup below, which adds a some of ARIA attributes and roles. Some attributes are automatically added and toggled by the JavaScript.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_accordion_aria}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_accordion_aria}}
+  </div>
+</div>
+
+***
+
+### Callbacks
+
+There are two ways to bind to callbacks in your tabs.
+
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Callback function</h4>
+```html
+<script>
+  $(document).foundation({
+    accordion: {
+      callback : function (accordion) {
+        console.log(accordion);
+      }
+    }
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+{{#markdown}}
+<h4>Toggled Event</h4>
+```html
+<script>
+  $('#myAccordionGroup').on('toggled', function (event, accordion) {
+    console.log(accordion);
+  });
+</script>
+```
+{{/markdown}}
+  </div>
+</div>
+
+***
+
+## Customize with Sass
+
+Accordions can be easily customized with the Sass variables provided in the `_settings.scss` file.
+
+<h4>SCSS</h4>
+
+{{> examples_accordion_variables}}
+
+***
+
+## Configure With Javascript
+
+It's easy to configure dropdowns using our provided Javascript. You can use data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js` and `foundation.accordion.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
+
+{{#markdown}}
+  ```html
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation/foundation.js"></script>
+<script src="js/foundation/foundation.accordion.js"></script>
+  ```
+{{/markdown}}
+
+### Optional Javascript Configuration
+
+#### JS
+
+{{#markdown}}
+```js
+$(document).foundation({
+  accordion: {
+    // specify the class used for accordion panels
+    content_class: 'content',
+    // specify the class used for active (or open) accordion panels
+    active_class: 'active',
+    // allow multiple accordion panels to be active at the same time
+    multi_expand: false,
+    // allow accordion panels to be closed by clicking on their headers
+    // setting to false only closes accordion panels when another is opened
+    toggleable: true
+  }
+});
+```
+{{/markdown}}
+
+***
+
+### Adding New Accordion Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('accordion', 'reflow');
+```
+{{/markdown}}
+
+***
+
+## Semantic Markup With Sass Mixins
+
+You can use the a `accordion-container()`, `accordion-navigation`, and `accordion-navigation` mixins to create your own accordion with semantic markup, like so:
+
+
+<div class="row">
+  <div class="large-12 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+.your-accordion-class  {
+  @include accordion-container;
+
+  .your-accordion-navigation-class  {
+    @include accordion-navigation;
+  }
+
+  .your-accordion-content-class  {
+    @include accordion-content;
+  }
+}
+```
+{{/markdown}}
+  </div>
+</div>
+##### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/accordion";
+```

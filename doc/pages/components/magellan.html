@@ -1,0 +1,106 @@
+---
+title: Magellan
+---
+
+<h3 class="subheader">Magellan is a style-agnostic plugin that lets you give your site sticky navigation. This fixed-position navigation helps users keep track of where they are on a page without scrolling.</h3>
+
+***
+
+{{> examples_magellan_basic}}
+
+***
+
+<a name="arrival"></a>
+<h3 data-magellan-destination="arrival">Arrival</h3>
+
+You can create the fixed navigation structure for Magellan using minimal markup.
+
+<h4>HTML</h4>
+
+{{> examples_magellan_basic_rendered}}
+
+<p>The <a href="subnav.html">sub nav</a> is currently the only component compatible with Magellan.</p>
+
+***
+
+<a name="destination"></a>
+<h3 data-magellan-destination="destination">Destination</h3>
+
+You can create the destination structure for Magellan using minimal markup.
+
+<h4>HTML</h4>
+
+{{#markdown}}
+```html
+{{> examples_magellan_destination}}
+```
+{{/markdown}}
+
+***
+
+<a name="js"></a>
+<h3 data-magellan-destination="js">Configure with JS</h3>
+
+It's easy to configure Magellan using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.magellan.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
+
+<h4>HTML</h4>
+
+{{> examples_magellan_javascript}}
+
+<h3>Basic</h3>
+
+Using data-attributes is the preferred method of making changes to our Javascript.
+
+<h4>HTML</h4>
+
+{{> examples_magellan_library}}
+
+***
+
+<h3>Advanced</h3>
+
+You can adjust lots of settings. For example:
+
+#### JS
+
+{{> examples_magellan_options}}
+
+***
+
+### Adding New Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('magellan', 'reflow');
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+{{#markdown}}
+```scss
+@import "foundation/components/magellan";
+```
+{{/markdown}}
+
+***
+
+## Accessibility
+
+<p class="panel">This component is not yet accessible. Stay tuned for updates in future releases.</p>

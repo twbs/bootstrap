@@ -1,0 +1,451 @@
+---
+title: Top Bar
+meta: Top-bar navigation
+---
+
+<h3 class="subheader">The Foundation Top Bar gives you a great way to display a complex navigation bar on small, medium or large screens.</h3>
+
+***
+
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="left">
+      <li class="has-dropdown"><a href="#">Item 1</a>
+
+        <ul class="dropdown">
+          <li><label>Level One</label></li>
+          <li><a href="#">Sub-item 1</a></li>
+          <li><a href="#">Sub-item 2</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Sub-item 3</a></li>
+          <li class="has-dropdown"><a href="#">Sub-item 4</a>
+
+            <ul class="dropdown">
+              <li><label>Level Two</label></li>
+              <li class="has-dropdown"><a href="#">Sub-item 1</a>
+
+                <ul class="dropdown">
+                  <li><label>Level Three</label></li>
+                  <li class="has-dropdown"><a href="#">Sub-item 1</a>
+
+                    <ul class="dropdown">
+                      <li><label>Level Four</label></li>
+                      <li><a href="#">Sub-item 1</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Sub-item 2</a></li>
+                  <li><a href="#">Sub-item 3</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Sub-item 4</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Sub-item 2</a></li>
+              <li><a href="#">Sub-item 3</a></li>
+              <li><a href="#">Sub-item 4</a>
+            </ul>
+          </li>
+          <li><a href="#">Sub-item 5</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+    </ul>
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="divider"></li>
+      <li><a href="#">Item 2</a></li>
+    </ul>
+  </section>
+</nav>
+
+***
+
+### Build With HTML Classes
+
+The top bar is a pretty complex piece of magical UI goodness. We rely on many presentational classes to define its look and feel, and there's a lot happening in the JS. The top bar is hoverable by default, but you can change it to use click events instead by adding `data-options="is_hover: false"` to the `<nav>` element. If you have a hoverable topbar, it will close itself on click by default, but this behavior can be prevented by setting `data-options="dropdown_autoclose: false"`. [See an example below](#clickable).
+
+<div class="row">
+  <div class="large-12 columns">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">My Site</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href=""><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+
+        <!-- Right Nav Section -->
+        <ul class="right show-for-large-up">
+          <li class="active"><a href="#">Right Button Active</a></li>
+          <li class="has-dropdown">
+            <a href="#">Right Button Dropdown</a>
+            <ul class="dropdown">
+              <li><a href="#">First link in dropdown</a></li>
+              <li class="active"><a href="#">Active link in dropdown</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="right hide-for-large-up">
+          <li class="active"><a href="#">Right Button</a></li>
+          <li class="has-dropdown">
+            <a href="#">Right Dropdown</a>
+            <ul class="dropdown">
+              <li><a href="#">First link in dropdown</a></li>
+              <li class="active"><a href="#">Active link in dropdown</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Left Nav Section -->
+        <ul class="left show-for-large-up">
+          <li><a href="#">Left Button</a></li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+</div>
+<div><br></div>
+
+#### HTML
+{{#markdown}}
+```html
+{{> examples_topbar_default}}
+```
+{{/markdown}}
+
+***
+
+### Positioning the Bar
+
+The top bar is built with a single `nav` element with a class of `top-bar`. It will take on full-browser width by default. To make the top bar stay fixed as you scroll, wrap it in `div class="fixed"`. If you want your navigation to be set to your grid width, wrap it in `div class="contain-to-grid"`. You may use `fixed` and `contain-to-grid` together in the wrapping div (`div class="contain-to-grid fixed`).
+
+<div class="row">
+<div class="large-6 columns">
+
+<h5>Fixed Navigation</h5>
+
+{{#markdown}}
+```html
+<div class="fixed">
+  <nav class="top-bar" data-topbar role="navigation">
+    ...
+  </nav>
+</div>
+```
+{{/markdown}}
+</div>
+<div class="large-6 columns">
+
+<h5>Contain to Grid</h5>
+
+{{#markdown}}
+```html
+<div class="contain-to-grid">
+  <nav class="top-bar" data-topbar role="navigation">
+    ...
+  </nav>
+</div>
+```
+{{/markdown}}
+</div>
+</div>
+
+***
+
+### Sticky Top Bar
+
+You may also wrap your top bar in `div class="sticky"` and put it anywhere within your markup. When the navigation hits the top of the browser, it will act like the fixed top bar and stick to the top as users continue to scroll. **Note:** If you are using SCSS, you can control the default `sticky` class by adjusting the `$topbar-sticky-class` variable. **Make sure the JS variable for `sticky_class` matches whatever class you use in the variable.**
+
+<div class="row">
+  <div class="large-12 columns">
+    {{> examples_topbar_sticky}}
+  </div>
+</div>
+<div><br></div>
+
+<p>You can also add `sticky_on` to your `data-options` attribute to allow your sticky bar to work on `small`, `medium`, or `large` when the page loads. This works in conjunction with the sticky class wrapper to target sticky for small, medium, or large. It will be sticky on all screen sizes by default.</p>
+<p>Additionally, you can pass in an array to specify sticky on multiple sizes. For example, `data-options="sticky_on: [small,large]"` will be sticky on small and large, but NOT medium.</p>
+
+{{#markdown}}
+```html
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+    ...
+  </nav>
+</div>
+```
+{{/markdown}}
+
+***
+
+<a name="clickable"></a>
+
+### Clickable Top Bar
+
+You can now make the top bar clickable by adding a data-attribute to the nav element. Here's an example:
+
+<div class="row">
+  <div class="large-12 columns">
+    {{> examples_topbar_clickable}}
+  </div>
+</div>
+<div><br></div>
+
+{{#markdown}}
+```html
+<nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false">
+```
+{{/markdown}}
+
+***
+
+### Mobile Parent Links
+
+Foundation will show the parent link on mobile navigation. A helpful way for mobile users navigate your site. Don't want them? Simply change the settings in the topbar.js file.
+
+<div class="row">
+  <div class="large-12 columns">
+    {{> examples_topbar_mobile_parent_links}}
+  </div>
+</div>
+<div><br></div>
+
+***
+
+
+
+
+### Built-in Components
+
+Several common elements have been supported by default, each one of these elements gets added to either the `ul.right` or `ul.left` unordered lists within your Top Bar navigation.
+
+<nav class="top-bar" data-topbar role="navigation">
+  <!-- Title -->
+  <ul class="title-area">
+    <li class="name"><h1><a href="#">Sexy Top Bar</a></h1></li>
+
+    <!-- Mobile Menu Toggle -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <!-- Top Bar Section -->
+  <section class="top-bar-section">
+
+    <!-- Top Bar Left Nav Elements -->
+    <ul class="left">
+
+      <!-- Search | has-form wrapper -->
+      <li class="has-form">
+        <div class="row collapse">
+          <div class="large-8 small-9 columns">
+            <input type="text" placeholder="Find Stuff">
+          </div>
+          <div class="large-4 small-3 columns">
+            <a href="#" class="alert button expand">Search</a>
+          </div>
+        </div>
+      </li>
+      <li class="has-form">
+        <a class="button">Test</a>
+      </li>
+    </ul>
+
+    <!-- Top Bar Right Nav Elements -->
+    <ul class="right">
+      <!-- Divider -->
+      <li class="divider"></li>
+
+      <!-- Dropdown -->
+      <li class="has-dropdown"><a href="#">Item 1</a>
+        <ul class="dropdown">
+          <li><label>Level One</label></li>
+          <li><a href="#">Sub-item 1</a></li>
+          <li><a href="#">Sub-item 2</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Sub-item 3</a></li>
+          <li class="has-dropdown"><a href="#">Sub-item 4</a>
+
+            <!-- Nested Dropdown -->
+            <ul class="dropdown">
+              <li><label>Level Two</label></li>
+              <li><a href="#">Sub-item 2</a></li>
+              <li><a href="#">Sub-item 3</a></li>
+              <li><a href="#">Sub-item 4</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Sub-item 5</a></li>
+        </ul>
+      </li>
+
+      <li class="divider"></li>
+
+      <!-- Anchor -->
+      <li><a href="#">Generic Button</a></li>
+      <li class="divider"></li>
+
+      <!-- Button -->
+      <li class="has-form show-for-large-up">
+        <a href="http://foundation.zurb.com/docs" class="button">Get Lucky</a>
+      </li>
+    </ul>
+  </section>
+</nav>
+
+##### Search Bar
+
+{{#markdown}}
+```html
+<li class="has-form">
+  <div class="row collapse">
+    <div class="large-8 small-9 columns">
+      <input type="text" placeholder="Find Stuff">
+    </div>
+    <div class="large-4 small-3 columns">
+      <a href="#" class="alert button expand">Search</a>
+    </div>
+  </div>
+</li>
+```
+{{/markdown}}
+
+##### Divider
+
+{{#markdown}}
+```html
+<li class="divider"></li>
+```
+{{/markdown}}
+
+##### Button
+
+{{#markdown}}
+```html
+<li class="has-form">
+  <a href="http://foundation.zurb.com/docs" class="button">Get Lucky</a>
+</li>
+```
+{{/markdown}}
+
+***
+
+### Remove the Title
+
+If you want a bar that doesn't include a title, just take out the content within the list item, like so:
+
+{{#markdown}}
+```html
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name"><!-- Leave this empty --></li>
+    ...
+  </ul>
+</nav>
+```
+{{/markdown}}
+
+***
+
+## Accessibility
+
+The top bar is a complex component with a lot of different features. However, it's still fully keyboard and screen reader accessible. The main thing you need to add if upgrading from an older version of Foundation is the attribute `role="navigation"` to the top bar container. Additionally, if your page uses top bar and off-canvas navigation, add the attribute `aria-hidden="true"` to one of them&mdash;otherwise, the user's device will tab through (and possibly read) both of them before reaching any content.
+
+***
+
+### Available SCSS Variables
+
+We do include SCSS variable to help you control some of the styles for the top bar. Overall the styles are written mobile first, so they are much easier to override than the previous iteration of the top bar.
+
+{{> examples_topbar_variables}}
+
+**Note:** `rem-calc();` is a function we wrote to convert `px` to `rem`. It is included in **_variables.scss**.
+
+***
+
+### Using the Javascript
+
+<div class="panel">
+  Before you can use the top bar you'll want to verify that jQuery and `foundation.js` are available on your page. You can refer to the [Javascript documentation](../javascript.html) on setting that up.
+</div>
+
+Just add `foundation.topbar.js` AFTER the `foundation.js` file. Your markup should look something like this:
+
+{{#markdown}}
+```html
+<body>
+
+  ...
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.topbar.js"></script>
+  <!-- Other JS plugins can be included here -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+</body>
+```
+{{/markdown}}
+
+Required Foundation Library: `foundation.topbar.js`
+
+##### Optional Javascript Configuration
+
+Top bar supports `data-options` configuration.
+
+{{#markdown}}
+```js
+{
+  sticky_class : 'sticky',
+  custom_back_text: true, // Set this to false and it will pull the top level link name as the back text
+  back_text: 'Back', // Define what you want your custom back text to be if custom_back_text: true
+  is_hover: true,
+  mobile_show_parent_link: false, // will copy parent links into dropdowns for mobile navigation
+  scrolltop : true // jump to top when sticky nav menu toggle is clicked
+}
+```
+{{/markdown}}
+
+***
+
+### Adding New Top-bar After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('topbar', 'reflow');
+```
+{{/markdown}}
+
+***
+
+### Sass Errors?
+
+If the default "foundation" import was commented out, then make sure you import this file:
+
+<h4>SCSS</h4>
+
+```scss
+@import "foundation/components/top-bar";
+```
