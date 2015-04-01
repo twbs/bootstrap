@@ -70,11 +70,13 @@ html, body
       color: #fff
       background: #293040
       overflow-y: auto
+      -webkit-overflow-scrolling: touch
     .glyphicon-menu-hamburger
       display: none
   .res-content-wrapper
     height: 100%
     overflow-y: auto
+    -webkit-overflow-scrolling: touch
     margin-left: $NAV_WIDTH
     padding: 20px 20px 0 20px
     +basic_transition
@@ -129,15 +131,17 @@ html, body
         text-align: center
     &[data-active=navigation]
       .res-content-wrapper
+        -webkit-overflow-scrolling: auto
         &:before
           content: ''
-          position: absolute
+          position: fixed
           top: 0
           left: 0
           right: 0
           bottom: 0
           background: rgba(black, 0.3)
           z-index: 1
+      // .res-content-wrapper
       .res-navigation
         z-index: 2
         left: 0

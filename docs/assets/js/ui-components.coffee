@@ -18,17 +18,18 @@ class ResponsiveLayout
 
   eventBinding: ->
     if @$dom.not('.res-single-column, .res-two-columns').length
-      @$dom.on 'click', '[data-layout-switch]', (e)=>
+      @$dom.on 'click touchend', '[data-layout-switch]', (e)=>
         $el = $(e.currentTarget)
         @toggleActive($el)
 
     if @$dom.not('.res-single-column').length
-      $(document).on 'click', ".res-layout[data-active='navigation'] *:not(.res-navigation)", (e)=>
+      $(document).on 'click touchend', ".res-layout[data-active='navigation'] *:not(.res-navigation)", (e)=>
         e.stopPropagation()
         $el = $(e.currentTarget)
+        in_navigation = $el.closest('.res-navigation').length
         if $(e.currentTarget).is('[data-layout-switch]')
           return true
-        else
+        else if !in_navigation
           @$dom.attr('data-active', '')
 
 if $('.res-layout').length
