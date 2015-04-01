@@ -63,11 +63,13 @@ html, body
     height: 100%
     width: $NAV_WIDTH
     float: left
-    // style for preview
-    padding: 20px
-    color: #fff
-    background: #293040
-    overflow-y: auto
+    .res-navigation-content
+      height: 100%
+      // style for preview
+      padding: 20px
+      color: #fff
+      background: #293040
+      overflow-y: auto
     .glyphicon-menu-hamburger
       display: none
   .res-content-wrapper
@@ -108,7 +110,6 @@ html, body
     .res-content-wrapper
       margin-left: 0
     .res-navigation
-      overflow-y: visible
       position: absolute
       top: 0
       left: -$NAV_WIDTH
