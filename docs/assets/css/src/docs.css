@@ -236,7 +236,7 @@ h4 code {
 .bs-docs-masthead,
 .bs-docs-header {
   position: relative;
-  padding: 30px 15px;
+  padding: 30px 0;
   color: #cdbfe3;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
