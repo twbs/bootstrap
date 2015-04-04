@@ -126,7 +126,11 @@ module.exports = function (grunt) {
 
     uglify: {
       options: {
-        preserveComments: 'some'
+        compress: {
+          warnings: false
+        },
+        mangle: true,
+        preserveComments: 'some',
       },
       core: {
         src: '<%= concat.bootstrap.dest %>',

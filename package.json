@@ -45,9 +45,9 @@
     "grunt-contrib-cssmin": "~0.12.2",
     "grunt-contrib-jade": "~0.14.1",
     "grunt-contrib-jshint": "~0.11.1",
-    "grunt-contrib-less": "~1.0.0",
+    "grunt-contrib-less": "~1.0.1",
     "grunt-contrib-qunit": "~0.7.0",
-    "grunt-contrib-uglify": "~0.9.0",
+    "grunt-contrib-uglify": "~0.9.1",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-csscomb": "~3.0.0",
     "grunt-exec": "~0.4.6",
@@ -82,6 +82,10 @@
         "exports": "$"
       }
     },
-    "files": ["css", "fonts", "js"]
+    "files": [
+      "css",
+      "fonts",
+      "js"
+    ]
   }
 }
