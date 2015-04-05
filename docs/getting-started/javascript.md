@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Overview
+title: JavaScript
 ---
 
 Bootstrap includes a handful of JavaScript to help bring some of our components to life. Learn more about how to include it, our data and programmatic API options, and more.

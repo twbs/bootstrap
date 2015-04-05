@@ -8,6 +8,7 @@
         - title: Bower
         - title: npm
     - title: Contents
+    - title: JavaScript
     - title: Compiling
     - title: Support
     # - title: Third party support
@@ -91,6 +92,9 @@
     - title: Dropdowns
     - title: Badges
     - title: Label
+    - title: Tabs
+    - title: Alerts
+    - title: Buttons
     - title: Navs
     - title: Navbar
     - title: Card
@@ -110,22 +114,14 @@
     - title: Alerts
     - title: Progress
     - title: List group
-    - title: Responsive embed
-    - title: Helpers
-
-- title: JavaScript
-  pages:
-    - title: Overview
-    - title: Transitions
     - title: Modal
     - title: Scrollspy
-    - title: Tabs
     - title: Tooltips
     - title: Popovers
-    - title: Alerts
-    - title: Buttons
     - title: Collapse
     - title: Carousel
+    - title: Responsive embed
+    - title: Helpers
 
 - title: Examples
   pages:
