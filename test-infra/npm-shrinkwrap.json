@@ -2421,8 +2421,8 @@
       }
     },
     "grunt-contrib-uglify": {
-      "version": "0.8.1",
-      "resolved": "https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.8.1.tgz",
+      "version": "0.9.0",
+      "resolved": "https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.9.0.tgz",
       "dependencies": {
         "chalk": {
           "version": "1.0.0",
@@ -2625,8 +2625,8 @@
           }
         },
         "uglify-js": {
-          "version": "2.4.17",
-          "resolved": "https://registry.npmjs.org/uglify-js/-/uglify-js-2.4.17.tgz",
+          "version": "2.4.19",
+          "resolved": "https://registry.npmjs.org/uglify-js/-/uglify-js-2.4.19.tgz",
           "dependencies": {
             "async": {
               "version": "0.2.10",
@@ -2647,8 +2647,26 @@
               "resolved": "https://registry.npmjs.org/uglify-to-browserify/-/uglify-to-browserify-1.0.2.tgz"
             },
             "yargs": {
-              "version": "1.3.3",
-              "resolved": "https://registry.npmjs.org/yargs/-/yargs-1.3.3.tgz"
+              "version": "3.5.4",
+              "resolved": "https://registry.npmjs.org/yargs/-/yargs-3.5.4.tgz",
+              "dependencies": {
+                "camelcase": {
+                  "version": "1.0.2",
+                  "resolved": "https://registry.npmjs.org/camelcase/-/camelcase-1.0.2.tgz"
+                },
+                "decamelize": {
+                  "version": "1.0.0",
+                  "resolved": "https://registry.npmjs.org/decamelize/-/decamelize-1.0.0.tgz"
+                },
+                "window-size": {
+                  "version": "0.1.0",
+                  "resolved": "https://registry.npmjs.org/window-size/-/window-size-0.1.0.tgz"
+                },
+                "wordwrap": {
+                  "version": "0.0.2",
+                  "resolved": "https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.2.tgz"
+                }
+              }
             }
           }
         },
