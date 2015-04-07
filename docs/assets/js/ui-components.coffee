@@ -35,4 +35,4 @@ class ResponsiveLayout
 if $('.res-layout').length
   new ResponsiveLayout($('.res-layout'))
 
-
+$('.section-datepicker').find('#datepicker').datepicker()
