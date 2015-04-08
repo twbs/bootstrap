@@ -1,4 +1,4 @@
-/* Paste bootstrap override style here */
+@import url('https://cdn.datatables.net/plug-ins/1.10.6/integration/bootstrap/3/dataTables.bootstrap.css');
 .btn {
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.13);
 }
@@ -233,4 +233,33 @@ label.required::after {
 .form-control:disabled::-webkit-input-placeholder,
 .has-error input.form-control::-webkit-input-placeholder {
   color: #aaaaaa;
+}
+table.dataTable.table-bordered {
+  border-collapse: collapse !important;
+}
+table.dataTable thead tr td,
+table.dataTable thead tr th {
+  padding-right: 8px;
+  outline: none;
+}
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after {
+  display: inline;
+  padding-left: 15px;
+  position: static;
+  font-size: 0.8em;
+  opacity: 1;
+}
+table.dataTable thead .sorting:after {
+  content: "\e114";
+  color: #a6bedc;
+}
+table.dataTable thead .sorting_asc:after {
+  content: "\e114";
+  color: #478cfe;
+}
+table.dataTable thead .sorting_desc:after {
+  content: "\e113";
+  color: #478cfe;
 }
