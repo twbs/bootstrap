@@ -130,7 +130,7 @@ module.exports = function (grunt) {
           warnings: false
         },
         mangle: true,
-        preserveComments: 'some',
+        preserveComments: 'some'
       },
       core: {
         src: '<%= concat.bootstrap.dest %>',
