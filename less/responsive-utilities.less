@@ -25,6 +25,7 @@
 
 // Visibility utilities
 // Note: Deprecated .visible-xs, .visible-sm, .visible-md, and .visible-lg as of v3.2.0
+.visible-xxs,
 .visible-xs,
 .visible-sm,
 .visible-md,
@@ -32,6 +33,9 @@
   .responsive-invisibility();
 }
 
+.visible-xxs-block,
+.visible-xxs-inline,
+.visible-xxs-inline-block,
 .visible-xs-block,
 .visible-xs-inline,
 .visible-xs-inline-block,
@@ -45,6 +49,27 @@
 .visible-lg-inline,
 .visible-lg-inline-block {
   display: none !important;
+}
+
+.visible-xxs {
+  @media (max-width: @screen-xxs-max) {
+    .responsive-visibility();
+  }
+}
+.visible-xxs-block {
+  @media (max-width: @screen-xxs-max) {
+    display: block !important;
+  }
+}
+.visible-xxs-inline {
+  @media (max-width: @screen-xxs-max) {
+    display: inline !important;
+  }
+}
+.visible-xxs-inline-block {
+  @media (max-width: @screen-xxs-max) {
+    display: inline-block !important;
+  }
 }
 
 .visible-xs {
@@ -131,6 +156,11 @@
   }
 }
 
+.hidden-xxs {
+  @media (max-width: @screen-xxs-max) {
+    .responsive-invisibility();
+  }
+}
 .hidden-xs {
   @media (max-width: @screen-xs-max) {
     .responsive-invisibility();
