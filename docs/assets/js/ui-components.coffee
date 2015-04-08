@@ -2,7 +2,10 @@
 ---
 
 if $('#datatable').length
-  $('#datatable').DataTable()
+  $('#datatable').DataTable
+    paging: false
+    searching: false
+    info: false
 
 class ResponsiveLayout
   constructor: (@$dom)->
