@@ -35,4 +35,7 @@ class ResponsiveLayout
 if $('.res-layout').length
   new ResponsiveLayout($('.res-layout'))
 
-$('.section-datepicker').find('#datepicker').datepicker()
+$('.section-datepicker').find('#datepicker').datepicker
+  orientation: "auto"
+$('.section-sortable').find('.sortable').sortable()
+
