@@ -10,6 +10,9 @@
 .container {
   .container-fixed();
 
+  @media (min-width: @screen-xs-min) {
+    width: @container-xs;
+  }
   @media (min-width: @screen-sm-min) {
     width: @container-sm;
   }
@@ -53,8 +56,17 @@
 // Columns, offsets, pushes, and pulls for extra small devices like
 // smartphones.
 
-.make-grid(xs);
+.make-grid(xxs);
 
+
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+
+@media (min-width: @screen-xs-min) {
+  .make-grid(xs);
+}
 
 // Small grid
 //

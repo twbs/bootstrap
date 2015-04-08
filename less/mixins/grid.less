@@ -19,6 +19,25 @@
 }
 
 // Generate the extra small columns
+.make-xxs-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  float: left;
+  width: percentage((@columns / @grid-columns));
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+}
+.make-xxs-column-offset(@columns) {
+  margin-left: percentage((@columns / @grid-columns));
+}
+.make-xxs-column-push(@columns) {
+  left: percentage((@columns / @grid-columns));
+}
+.make-xxs-column-pull(@columns) {
+  right: percentage((@columns / @grid-columns));
+}
+
+// Generate the extra small columns
 .make-xs-column(@columns; @gutter: @grid-gutter-width) {
   position: relative;
   float: left;
