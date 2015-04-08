@@ -43,6 +43,7 @@
     "grunt-contrib-copy": "~0.8.0",
     "grunt-contrib-csslint": "~0.4.0",
     "grunt-contrib-cssmin": "~0.12.2",
+    "grunt-contrib-htmlmin": "~0.4.0",
     "grunt-contrib-jade": "~0.14.1",
     "grunt-contrib-jshint": "~0.11.1",
     "grunt-contrib-less": "~1.0.1",
