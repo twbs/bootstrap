@@ -1318,44 +1318,6 @@ header.jumbotron {
   margin:0 0 50px 0;
 }
 
-/* texto al costado */
-#gallery.text-to-side .carousel-inner > .item > img {
-  float: left;
-  width: 70%;
-  margin:0 5% 50px 0;
-}
-#gallery.text-to-side .carousel-inner > .item .item-info {
-  float: right;
-  width: 25%;  
-}
-#gallery.text-to-side .carousel-inner > .item .item-info h3 {
-  font-size: 1.1em;
-  line-height: 1.2em;
-}
-#gallery.text-to-side .carousel-inner > .item .item-info p {
-  font-size: 0.9em;
-  line-height: 1.3em;
-}
-
-@media (max-width: 990px) {
-  #gallery.text-to-side .carousel-inner > .item > img {
-    float: none;
-    width: 100%;
-    margin:0 0 50px 0;
-  }
-  #gallery.text-to-side .carousel-inner > .item .item-info {
-    float: none;
-    width: 80%;
-    margin: 0 10%;
-  }
-  #gallery.text-to-side .carousel-inner > .item .item-info h3 {
-    font-size: 1.3em;
-  }
-  #gallery.text-to-side .carousel-inner > .item .item-info p {
-    font-size: 1em;
-  }
-}
-
 @media (max-width: 767px) {
   #galleryModal .modal-dialog {
     margin: 70px 20px 30px;
@@ -1374,10 +1336,6 @@ header.jumbotron {
   }
   #galleryModal .carousel-control.left {
     left: 30px;
-  }
-  #gallery.text-to-side .carousel-inner > .item .item-info {
-    width: 100%;
-    margin: 0;
   }
 }
 
