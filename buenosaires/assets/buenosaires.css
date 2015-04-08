@@ -1315,8 +1315,41 @@ header.jumbotron {
   color: #FFF;
 }
 #gallery .carousel-inner > .item > img {
+  float: left;
+  width: 70%;
   border-radius: 0;
-  margin-bottom: 50px;
+  margin:0 5% 50px 0;
+}
+#gallery .carousel-inner > .item .item-info {
+  float: right;
+  width: 25%;  
+}
+#gallery .carousel-inner > .item .item-info h3 {
+  font-size: 1.1em;
+  line-height: 1.2em;
+}
+#gallery .carousel-inner > .item .item-info p {
+  font-size: 0.9em;
+  line-height: 1.3em;
+}
+
+@media (max-width: 990px) {
+  #gallery .carousel-inner > .item > img {
+    float: none;
+    width: 100%;
+    margin:0 0 50px 0;
+  }
+  #gallery .carousel-inner > .item .item-info {
+    float: none;
+    width: 80%;
+    margin: 0 10%;
+  }
+  #gallery .carousel-inner > .item .item-info h3 {
+    font-size: 1.3em;
+  }
+  #gallery .carousel-inner > .item .item-info p {
+    font-size: 1em;
+  }
 }
 
 @media (max-width: 767px) {
@@ -1338,6 +1371,11 @@ header.jumbotron {
   #galleryModal .carousel-control.left {
     left: 30px;
   }
+  #gallery .carousel-inner > .item .item-info {
+    width: 100%;
+    margin: 0;
+  }
+  #gal
 }
 
 /* article, grid + libro + miba + aplicativo*/
