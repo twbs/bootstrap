@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.">
+<meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+
+<title>
+  
+    Wall of browser bugs &middot; Bootstrap
+  
+</title>
+
+<!-- Bootstrap core CSS -->
+
+<link href="../dist/css/bootstrap.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.css" rel="stylesheet">
+<link href="../stylesheets/style_override.css" rel="stylesheet">
+<link href="../dist/css/override.css" rel="stylesheet">
+<!-- FontAwesome -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+
+<!-- Documentation extras -->
+
+<link href="../assets/css/src/pygments-manni.css" rel="stylesheet">
+<link href="../assets/css/src/anchor.css" rel="stylesheet">
+<link href="../assets/css/src/docs.css" rel="stylesheet">
+
+<!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="../assets/js/ie-emulation-modes-warning.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-146052-10', 'getbootstrap.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+    <!-- Docs master nav -->
+    <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="../" class="navbar-brand">Bootstrap</a>
+    </div>
+    <nav id="bs-navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="../getting-started/">Getting started</a>
+        </li>
+        <li>
+          <a href="../css/">CSS</a>
+        </li>
+        <li>
+          <a href="../components/">Components</a>
+        </li>
+        <li>
+          <a href="../javascript/">JavaScript</a>
+        </li>
+        <li>
+          <a href="../customize/">Customize</a>
+        </li>
+        <li>
+          <a href="../uikit/">UI Kit</a>
+        </li>
+        <li>
+          <a href="../responsive/">Responsive Layout</a>
+        </li>
+        <li class='dropdown'>
+          <a href="javascript:void(0)"; id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            SSO
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><a href="../sso_dashboard/">Dashboard</a></li>
+            <li><a href="../sso_matching/">Matching</a></li>
+            <li><a href="../sso_users/">Users</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
+        <li><a href="http://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <!-- Docs page layout -->
+    <div class="bs-docs-header" id="content" tabindex="-1">
+      <div class="container">
+        <h1>Wall of browser bugs</h1>
+        <p>A list of the browser bugs that Bootstrap is currently grappling with.</p>
+        <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script>var z = document.createElement("script"); z.async = true; z.src = "http://engine.carbonads.com/z/32341/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
+
+      </div>
+    </div>
+
+    <div class="container bs-docs-container">
+
+      <div class="row">
+        <div class="col-md-12" role="main">
+          <div class="bs-docs-section">
+  <h1 id="browser-bugs" class="page-header">Browser bugs</h1>
+
+  <p class="lead">Bootstrap currently works around several outstanding browser bugs in major browsers to deliver the best cross-browser experience possible. Some bugs, like those listed below, cannot be solved by us.</p>
+  <p>We publicly list browser bugs that are impacting us here, in the hopes of expediting the process of fixing them. For information on Bootstrap's browser compatibility, <a href="../getting-started/#support">see our browser compatibility docs</a>.</p>
+
+  <div class="table-responsive">
+    <table class="bs-docs-browser-bugs table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Browser(s)</th>
+          <th>Summary of bug</th>
+          <th>Upstream bug(s)</th>
+          <th>Bootstrap issue(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>Internet Explorer 11
+</td>
+          <td><p>Hovered element still remains in <code>:hover</code> state after scrolling away.</p>
+</td>
+          <td><a href="https://connect.microsoft.com/IE/feedback/details/926665">IE bug #926665</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14211">#14211</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Internet Explorer 11
+</td>
+          <td><p>When hovering over a <code>&lt;select&gt;</code> menu item, the cursor for the element underneath the menu is displayed.</p>
+</td>
+          <td><a href="https://connect.microsoft.com/IE/feedback/details/963961">IE bug #963961</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14528">#14528</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Firefox
+</td>
+          <td><p><code>.table-bordered</code> with an empty <code>&lt;tbody&gt;</code> is missing borders.</p>
+</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1023761">Mozilla bug #1023761</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/13453">#13453</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Firefox
+</td>
+          <td><p><code>max-width: 100%;</code> doesn’t work inside tables.</p>
+</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=975632">Mozilla bug #975632</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/10690">#10690</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Firefox (Windows)
+</td>
+          <td><p>Java applets that are descendants of elements with forced hardware acceleration using <code>translate3d(0,0,0)</code> are invisible.</p>
+</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1048279">Mozilla bug #1048279</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14124">#14124</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Firefox
+</td>
+          <td><p>Button elements with <code>width: 100%</code> become cropped in long tables.</p>
+</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1060131">Mozilla bug #1060131</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14320">#14320</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Firefox
+</td>
+          <td><p>If the disabled state of a form control is changed via JavaScript, the normal state doesn’t return after refreshing the page.</p>
+</td>
+          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=654072">Mozilla bug #654072</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/793">#793</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Chrome (OS X)
+</td>
+          <td><p>Clicking above <code>&lt;input type="number"&gt;</code> increment button flashes the decrement button.</p>
+</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=419108">Chromium issue #419108</a>
+</td>
+          <td>Offshoot of <a href="https://github.com/twbs/bootstrap/issues/8350">#8350</a> & <a href="https://code.google.com/p/chromium/issues/detail?id=337668">Chromium issue #337668</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Chrome (OS X)
+</td>
+          <td><p>Caps Lock indicator not shown in <code>&lt;input type="password"&gt;</code> with <code>display: block</code></p>
+</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=460200">Chromium issue #460200</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/15832">#15832</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Chrome
+</td>
+          <td><p><code>display: table;</code> within <code>display: block;</code> forces sibling content to new line.</p>
+</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=309483">Chromium issue #309483</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/9950">#9950</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Chrome
+</td>
+          <td><p>Incorrect viewport size used for media queries when printing.</p>
+</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=273306">Chromium issue #273306</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/12078">#12078</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Chrome
+</td>
+          <td><p>CSS infinite linear animation with alpha transparency leaks memory.</p>
+</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=429375">Chromium issue #429375</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14409">#14409</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Chrome
+</td>
+          <td><p><code>:focus</code> <code>outline</code> style causes cursor to not be displayed when toggling a <code>readonly</code> <code>&lt;input&gt;</code> to read-write.</p>
+</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=465274">Chromium issue #465274</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/16022">#16022</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Chrome (Windows & Linux)
+</td>
+          <td><p>Animation glitch when returning to inactive tab after animations occurred while tab was hidden.</p>
+</td>
+          <td><a href="https://code.google.com/p/chromium/issues/detail?id=449180">Chromium issue #449180</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/15298">#15298</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Safari (OS X)
+</td>
+          <td><p>Scrollbar clipped in <code>select[multiple]</code> with padding.</p>
+</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=128489">WebKit bug #128489</a>, <a href="https://openradar.appspot.com/19208483">Apple Safari Radar #19208483</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/12536">#12536</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Safari (OS X)
+</td>
+          <td><p>Weird button behavior with some <code>&lt;input type="number"&gt;</code> elements.</p>
+</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=137269">WebKit bug #137269</a>, <a href="https://openradar.appspot.com/18834768">Apple Safari Radar #18834768</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/8350">#8350</a>, <a href="https://github.com/necolas/normalize.css/issues/283">Normalize #283</a>, <a href="https://code.google.com/p/chromium/issues/detail?id=337668">Chromium issue #337668</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Safari (OS X)
+</td>
+          <td><p><code>display: table-cell;</code> within media query renders incorrectly when resizing the window.</p>
+</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=138167">WebKit bug #138167</a>, <a href="https://openradar.appspot.com/18987206">Apple Safari Radar #18987206</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/9774">#9774</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Safari (OS X)
+</td>
+          <td><p>Small font size when printing webpage with fixed-width <code>.container</code>.</p>
+</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=138192">WebKit bug #138192</a>, <a href="https://openradar.appspot.com/19435018">Apple Safari Radar #19435018</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14868">#14868</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Safari (OS X)
+</td>
+          <td><p>Alpha linear-gradient has dark line at its edge.</p>
+</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=139803">WebKit bug #139803</a>, <a href="https://openradar.appspot.com/19434933">Apple Safari Radar #19434933</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/15205">#15205</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Safari (OS X)
+</td>
+          <td><p>Caps Lock indicator not shown in <code>&lt;input type="password"&gt;</code> with <code>display: block</code></p>
+</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=141804">WebKit bug #141804</a>, <a href="https://openradar.appspot.com/19892433">Apple Safari Radar #19892433</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/15832">#15832</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Safari (iOS)
+</td>
+          <td><p><code>transform: translate3d(0,0,0);</code> rendering bug.</p>
+</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=138162">WebKit bug #138162</a>, <a href="https://openradar.appspot.com/18804973">Apple Safari Radar #18804973</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14603">#14603</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Safari (iOS)
+</td>
+          <td><p>Text input’s cursor doesn’t move while scrolling the page.</p>
+</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=138201">WebKit bug #138201</a>, <a href="https://openradar.appspot.com/18819624">Apple Safari Radar #18819624</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/14708">#14708</a>
+</td>
+        </tr>
+        
+        <tr>
+          <td>Safari (iOS)
+</td>
+          <td><p><code>display: block</code> causes text of temporal <code>&lt;input&gt;</code>s to become vertically misaligned</p>
+</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=139848">WebKit bug #139848</a>, <a href="https://openradar.appspot.com/19434878">Apple Safari Radar #19434878</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/11266">#11266</a>, <a href="https://github.com/twbs/bootstrap/issues/13098">#13098</a>
+</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Footer
+================================================== -->
+<footer class="bs-docs-footer" role="contentinfo">
+  <div class="container">
+    <div class="bs-docs-social">
+  <ul class="bs-docs-social-buttons">
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+    </li>
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+    </li>
+    <li class="follow-btn">
+      <a href="https://twitter.com/getbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @getbootstrap</a>
+    </li>
+    <li class="tweet-btn">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://getbootstrap.com/" data-count="horizontal" data-via="getbootstrap" data-related="mdo:Creator of Bootstrap">Tweet</a>
+    </li>
+  </ul>
+</div>
+
+
+    <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
+    <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
+    <p>Code licensed under <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a rel="license" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+    <ul class="bs-docs-footer-links text-muted">
+      <li>Currently v3.3.4</li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
+      <li>&middot;</li>
+      <li><a href="../getting-started/#examples">Examples</a></li>
+      <li>&middot;</li>
+      <li><a href="../2.3.2/">v2.3.2 docs</a></li>
+      <li>&middot;</li>
+      <li><a href="../about/">About</a></li>
+      <li>&middot;</li>
+      <li><a href="http://expo.getbootstrap.com">Expo</a></li>
+      <li>&middot;</li>
+      <li><a href="http://blog.getbootstrap.com">Blog</a></li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap/releases">Releases</a></li>
+    </ul>
+  </div>
+</footer>
+
+    
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+  <script src="../dist/js/bootstrap.js"></script>
+
+
+
+  
+  <script src="../assets/js/vendor/holder.js"></script>
+  
+  <script src="../assets/js/vendor/ZeroClipboard.min.js"></script>
+  
+  <script src="../assets/js/vendor/anchor.js"></script>
+  
+  <script src="../assets/js/src/application.js"></script>
+  
+
+
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="../assets/js/jquery.dataTables.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="../assets/js/ui-components.js"></script>
+
+
+
+<script>
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; js.async=1;
+    js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+</script>
+
+<!-- Analytics
+================================================== -->
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+  </body>
+</html>

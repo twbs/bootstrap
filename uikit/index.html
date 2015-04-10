@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.">
+<meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, bootstrap, front-end, frontend, web development">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+
+<title>
+  
+    UI Kit &middot; Bootstrap
+  
+</title>
+
+<!-- Bootstrap core CSS -->
+
+<link href="../dist/css/bootstrap.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.css" rel="stylesheet">
+<link href="../stylesheets/style_override.css" rel="stylesheet">
+<link href="../dist/css/override.css" rel="stylesheet">
+<!-- FontAwesome -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+
+<!-- Documentation extras -->
+
+<link href="../assets/css/src/pygments-manni.css" rel="stylesheet">
+<link href="../assets/css/src/anchor.css" rel="stylesheet">
+<link href="../assets/css/src/docs.css" rel="stylesheet">
+
+<!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="../assets/js/ie-emulation-modes-warning.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-146052-10', 'getbootstrap.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+    <!-- Docs master nav -->
+    <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="../" class="navbar-brand">Bootstrap</a>
+    </div>
+    <nav id="bs-navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="../getting-started/">Getting started</a>
+        </li>
+        <li>
+          <a href="../css/">CSS</a>
+        </li>
+        <li>
+          <a href="../components/">Components</a>
+        </li>
+        <li>
+          <a href="../javascript/">JavaScript</a>
+        </li>
+        <li>
+          <a href="../customize/">Customize</a>
+        </li>
+        <li class="active">
+          <a href="../uikit/">UI Kit</a>
+        </li>
+        <li>
+          <a href="../responsive/">Responsive Layout</a>
+        </li>
+        <li class='dropdown'>
+          <a href="javascript:void(0)"; id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            SSO
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><a href="../sso_dashboard/">Dashboard</a></li>
+            <li><a href="../sso_matching/">Matching</a></li>
+            <li><a href="../sso_users/">Users</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
+        <li><a href="http://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <!-- Docs page layout -->
+    <div class="bs-docs-header" id="content" tabindex="-1">
+      <div class="container">
+        <h1>UI Kit</h1>
+        <p>Components to verify bootstrap css override</p>
+        <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script>var z = document.createElement("script"); z.async = true; z.src = "http://engine.carbonads.com/z/32341/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
+
+      </div>
+    </div>
+
+    <div class="container bs-docs-container">
+
+      <div class="row">
+        <div class="col-md-9" role="main">
+          <div id="uikit-components" class="clearfix">
+  <div class="section section-button">
+  <div class="section-head">Buttons</div>
+  <div class="section-body">
+    <div style="margin-bottom: 5px;">
+      <!-- Standard button -->
+      <button type="button" class="btn btn-default">Default</button>
+
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <button type="button" class="btn btn-primary">Primary</button>
+
+      <!-- Indicates a successful or positive action -->
+      <button type="button" class="btn btn-success">Success</button>
+
+      <!-- Contextual button for informational alert messages -->
+      <button type="button" class="btn btn-info">Info</button>
+
+      <!-- Indicates caution should be taken with this action -->
+      <button type="button" class="btn btn-warning">Warning</button>
+
+      <!-- Indicates a dangerous or potentially negative action -->
+      <button type="button" class="btn btn-danger">Danger</button>
+
+      <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+      <button type="button" class="btn btn-link">Link</button>
+    </div>
+    <div>
+      <!-- Standard button -->
+      <button type="button" class="btn btn-default" disabled>Default</button>
+
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <button type="button" class="btn btn-primary" disabled>Primary</button>
+
+      <!-- Indicates a successful or positive action -->
+      <button type="button" class="btn btn-success" disabled>Success</button>
+
+      <!-- Contextual button for informational alert messages -->
+      <button type="button" class="btn btn-info" disabled>Info</button>
+
+      <!-- Indicates caution should be taken with this action -->
+      <button type="button" class="btn btn-warning" disabled>Warning</button>
+
+      <!-- Indicates a dangerous or potentially negative action -->
+      <button type="button" class="btn btn-danger" disabled>Danger</button>
+
+      <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+      <button type="button" class="btn btn-link" disabled>Link</button>
+    </div>
+  </div>
+</div>
+
+  <div class="section section-navigation">
+  <div class="section-head">Navigation</div>
+  <div class="section-body">
+    <ul class="nav navigation">
+      <li class="title">General</li>
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+      <li class="show-more" role="presentation">Show more</li>
+    </ul>
+    <ul class="nav navigation">
+      <li class="title">Groups</li>
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">Profile</a></li>
+      <li role="presentation"><a href="#">Messages</a></li>
+      <li class="show-more" role="presentation">Show more</li>
+    </ul>
+  </div>
+</div>
+
+  <div class="section section-breadcrumb">
+  <div class="section-head">Breadcrumb</div>
+  <div class="section-body">
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Library</a></li>
+      <li class="active">Data</li>
+    </ol>
+  </div>
+</div>
+
+  <div class="section section-tabs">
+  <div class="section-head">Tabs</div>
+  <div class="section-body">
+    <div>
+      <ul class="nav nav-tabs nav-primary">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+      </ul>
+    </div>
+    <div>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <div class="section section-table" >
+  <div class="section-head">Table</div>
+  <div class="section-body">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered table-striped" id="datatable">
+      <caption>Data Table</caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <div class="section section-pagination">
+  <div class="section-head">Pagination</div>
+  <div class="section-body">
+    <nav>
+      <ul class="pagination pagination-sm">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li class="disabled"><a href="#">2</a></li>
+        <li class="active"><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav>
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li class="disabled"><a href="#">2</a></li>
+        <li class="active"><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav>
+      <ul class="pagination pagination-lg">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li class="disabled"><a href="#">2</a></li>
+        <li class="active"><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+  <div class="section section-form">
+  <div class="section-head">Form</div>
+  <div class="section-body">
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" disabled>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">Example block-level help text here.</p>
+      </div>
+      <div class="checkbox">
+        <label style="margin-right: 10px;">
+          <input type="checkbox"> Check me out
+        </label>
+        <label>
+          <input type="checkbox" checked> Check me out
+        </label>
+      </div>
+      <div class="radio">
+        <label style="margin-right: 10px;">
+          <input type="radio" name="test" checked> option 1
+        </label>
+        <label>
+          <input type="radio" name="test"> option 2
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+</div>
+
+  <div class="section section-input-group">
+  <div class="section-head">Inpput Group</div>
+  <div class="section-body">
+    <form action="" class="bs-example bs-example-form">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">@</span>
+        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+      </div>
+
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+        <span class="input-group-addon" id="basic-addon2">@example.com</span>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <span class="input-group-addon">.00</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+  <div class="section section-dropdown">
+  <div class="section-head">Dropdown</div>
+  <div class="section-body">
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+      </ul>
+    </div>
+    <div class="dropdown dropdown-draggable">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Dropdown Draggable
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  
+<div class="section section-sortable">
+  <div class="section-head">Sortable</div>
+  <div class="section-body">
+    <ul class="sortable dropdown">
+      <li><input name="1" id="1" type="checkbox"><label for="1">Check box</label><i class="fa fa-bars"></i></li>
+      <li><input name="2" id="2" type="checkbox"><label for="2">Check box</label><i class="fa fa-bars"></i></li>
+      <li><input name="3" id="3" type="checkbox"><label for="3">Check box</label><i class="fa fa-bars"></i></li>
+      <li><input name="4" id="4" type="checkbox"><label for="4">Check box</label><i class="fa fa-bars"></i></li>
+      <li><input name="5" id="5" type="checkbox"><label for="5">Check box</label><i class="fa fa-bars"></i></li>
+      <li><input name="6" id="6" type="checkbox"><label for="6">Check box</label><i class="fa fa-bars"></i></li>
+      <div class="action-buttons">
+        <a class="cancel" href="#">Cancel</a>
+        <span>or</span>
+        <button class="btn btn-primary">Save</button>
+      </div>
+    </ul>
+  </div>
+</div>
+
+
+  <div class="section section-collapse">
+  <div class="section-head">Collapse</div>
+  <div class="section-body">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Collapsible Group Item #1
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Collapsible Group Item #2
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Collapsible Group Item #3
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="section section-bar section-full">
+  <div class="section-head">Bar</div>
+  <div class="section-body">
+    <div class="bar bar-primary">
+      <div class="title">User</div>
+      <div class="actions">
+        <div class="btn">Action</div>
+      </div>
+    </div>
+    <div class="bar bar-default">
+      <div class="title">User</div>
+      <div class="actions">
+        <div class="btn">Action</div>
+      </div>
+    </div>
+    <div class="bar bar-inset">
+      <div class="title">User</div>
+      <div class="actions">
+        <div class="btn">Action</div>
+        <div class="btn">Action</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="section section-datepicker">
+  <div class="section-head">Date Picker</div>
+  <div class="section-body">
+    <div class="form-group">
+      <div class='input-group date' id='datepicker'>
+        <input type='text' class="form-control" />
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="section section-lightbox">
+  <div class="section-head">Light Box</div>
+  <div class="section-body">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img data-src="holder.js/900x500/auto/#666:#444/text:Second slide" alt="Second slide [900x500]" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjI3Ny4yODEyNSIgeT0iMjUwIiBzdHlsZT0iZmlsbDojNDQ0O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQycHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+U2Vjb25kIHNsaWRlPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
+          <div class="carousel-caption">
+            ...
+          </div>
+        </div>
+        <div class="item">
+          <img data-src="holder.js/900x500/auto/#666:#444/text:Second slide" alt="Second slide [900x500]" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjI3Ny4yODEyNSIgeT0iMjUwIiBzdHlsZT0iZmlsbDojNDQ0O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQycHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+U2Vjb25kIHNsaWRlPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true">
+          <div class="carousel-caption">
+            ...
+          </div>
+        </div>
+        ...
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+        </div>
+        
+        <div class="col-md-3" role="complementary">
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+            <ul class="nav bs-docs-sidenav">
+              
+            </ul>
+            <a class="back-to-top" href="#top">
+              Back to top
+            </a>
+            
+          </nav>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Footer
+================================================== -->
+<footer class="bs-docs-footer" role="contentinfo">
+  <div class="container">
+    <div class="bs-docs-social">
+  <ul class="bs-docs-social-buttons">
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+    </li>
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+    </li>
+    <li class="follow-btn">
+      <a href="https://twitter.com/getbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @getbootstrap</a>
+    </li>
+    <li class="tweet-btn">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://getbootstrap.com/" data-count="horizontal" data-via="getbootstrap" data-related="mdo:Creator of Bootstrap">Tweet</a>
+    </li>
+  </ul>
+</div>
+
+
+    <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>.</p>
+    <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
+    <p>Code licensed under <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a rel="license" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+    <ul class="bs-docs-footer-links text-muted">
+      <li>Currently v3.3.4</li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
+      <li>&middot;</li>
+      <li><a href="../getting-started/#examples">Examples</a></li>
+      <li>&middot;</li>
+      <li><a href="../2.3.2/">v2.3.2 docs</a></li>
+      <li>&middot;</li>
+      <li><a href="../about/">About</a></li>
+      <li>&middot;</li>
+      <li><a href="http://expo.getbootstrap.com">Expo</a></li>
+      <li>&middot;</li>
+      <li><a href="http://blog.getbootstrap.com">Blog</a></li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap/issues">Issues</a></li>
+      <li>&middot;</li>
+      <li><a href="https://github.com/twbs/bootstrap/releases">Releases</a></li>
+    </ul>
+  </div>
+</footer>
+
+    
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+  <script src="../dist/js/bootstrap.js"></script>
+
+
+
+  
+  <script src="../assets/js/vendor/holder.js"></script>
+  
+  <script src="../assets/js/vendor/ZeroClipboard.min.js"></script>
+  
+  <script src="../assets/js/vendor/anchor.js"></script>
+  
+  <script src="../assets/js/src/application.js"></script>
+  
+
+
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="../assets/js/jquery.dataTables.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="../assets/js/ui-components.js"></script>
+
+
+
+<script>
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; js.async=1;
+    js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
+</script>
+
+<!-- Analytics
+================================================== -->
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+  </body>
+</html>
