@@ -90,7 +90,7 @@
 
 -
   browser: >
-    Chrome (OS X)
+    Chrome
   summary: >
     Focus ring of image map within a modal is displayed in the wrong location.
   upstream_bug: >
