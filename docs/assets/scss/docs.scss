@@ -209,8 +209,6 @@ body {
 // Homepage
 //
 
-
-
 .bd-header {
   @include clearfix;
   padding-bottom: .5rem;
@@ -223,7 +221,6 @@ body {
     padding-bottom: .6em;
     font-size: 1.25rem;
     font-weight: 500;
-    color: #fff;
   }
 }
 
@@ -232,7 +229,6 @@ body {
 
   .nav-link {
     float: left;
-    color: #fff;
 
     &:hover {
       background-color: transparent;
@@ -243,13 +239,13 @@ body {
 // Masthead (headings and download button)
 .bs-docs-masthead {
   position: relative;
-  padding: 2rem 1rem;
+  padding: 2rem 0;
   // color: #cdbfe3;
   // text-align: center;
   // text-shadow: 0 1px 0 rgba(0,0,0,.1);
   // background-color: #6f5499;
   // @include gradient-vertical($bs-purple, #6f5499);
-  background-image: linear-gradient(135deg, #a8b7be, #cdd1d4, #d4d5d7, #cecfd1);
+  // background-image: linear-gradient(135deg, #a8b7be, #cdd1d4, #d4d5d7, #cecfd1);
 }
 
 .bs-docs-masthead .bs-docs-booticon {
