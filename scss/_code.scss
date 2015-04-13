@@ -40,14 +40,11 @@ kbd {
 // Blocks of code
 pre {
   display: block;
-  padding: 1.5rem;
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 90%;
   line-height: $line-height-base;
   color: $pre-color;
-  background-color: $pre-bg;
-  @include border-radius($border-radius-base);
 
   // Account for some code outputs that place code tags in pre tags
   code {
