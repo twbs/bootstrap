@@ -11,21 +11,17 @@
   display: none;
   max-width: @popover-max-width;
   padding: 1px;
-  // Reset font and text properties given new insertion method
-  font-family: @font-family-base;
+  // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  .reset-text();
   font-size: @font-size-base;
-  font-weight: normal;
-  line-height: @line-height-base;
-  text-align: left;
+
   background-color: @popover-bg;
   background-clip: padding-box;
   border: 1px solid @popover-fallback-border-color;
   border: 1px solid @popover-border-color;
   border-radius: @border-radius-large;
   .box-shadow(0 5px 10px rgba(0,0,0,.2));
-
-  // Overrides for proper insertion
-  white-space: normal;
 
   // Offset the popover to account for the popover arrow
   &.top     { margin-top: -@popover-arrow-width; }
