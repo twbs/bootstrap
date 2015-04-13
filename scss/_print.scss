@@ -20,19 +20,8 @@
     text-decoration: underline;
   }
 
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-
   abbr[title]:after {
     content: " (" attr(title) ")";
-  }
-
-  // Don't show links that are fragment identifiers,
-  // or use the `javascript:` pseudo protocol
-  a[href^="#"]:after,
-  a[href^="javascript:"]:after {
-    content: "";
   }
 
   pre,
