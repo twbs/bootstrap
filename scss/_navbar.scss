@@ -58,6 +58,18 @@
   bottom: 0;
 }
 
+.navbar-sticky-top {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: $zindex-navbar-sticky;
+
+  // Undo the rounded corners
+  @include media-breakpoint-up(sm) {
+    @include border-radius(0);
+  }
+}
+
 
 // Brand/project name
 

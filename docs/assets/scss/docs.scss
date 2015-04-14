@@ -646,7 +646,7 @@ body {
 .bs-docs-sidebar {
   padding: 0;
   margin-bottom: 0;
-  background-color: #322f38;
+  // background-color: #322f38;
 }
 
 .bs-docs-sidebar .navbar-toggle {
@@ -682,7 +682,8 @@ body {
     width: 240px;
     overflow-x: hidden;
     overflow-y: auto;
-    @include gradient-vertical(#29262f, #322f38);
+    border-right: 1px solid #eee;
+    // @include gradient-vertical(#29262f, #322f38);
   }
 }
 
@@ -694,16 +695,21 @@ body {
   font-size: 20px;
   font-weight: 500;
   line-height: 1;
-  color: #fff;
+  // color: #fff;
 }
 .bs-docs-sidebar-brand:hover,
 .bs-docs-sidebar-brand:focus {
-  color: #fff;
+  // color: #fff;
   text-decoration: none;
 }
 
 .bs-docs-search {
   position: relative;
+
+  // .form-control {
+  //   width: 12rem;
+  // }
+
   margin-right: 1.25rem;
   margin-bottom: 1.5rem;
   margin-left: 1.25rem;
@@ -712,14 +718,14 @@ body {
     height: 2.45rem;
     padding-top: .4rem;
     padding-bottom: .4rem;
-    color: rgba(255,255,255,.5);
-    background-color: lighten(#29262f, 10%);
-    border-color: lighten(#29262f, 15%);
+    // color: rgba(255,255,255,.5);
+    // background-color: lighten(#29262f, 10%);
+    // border-color: lighten(#29262f, 15%);
 
-    &:focus {
-      border-color: rgba(255,255,255,.25);
-      box-shadow: 0 0 .5rem rgba(255,255,255,.25);
-    }
+    // &:focus {
+    //   border-color: rgba(255,255,255,.25);
+    //   box-shadow: 0 0 .5rem rgba(255,255,255,.25);
+    // }
   }
 }
 
@@ -754,44 +760,48 @@ body {
 
 .bs-docs-toc-link {
   display: block;
-  padding: 4px 20px;
-  font-size: 16px;
-  color: #fff;
+  padding: .25rem 1.25rem;
+  color: $gray;
+  // font-size: 1rem;
+  // color: #fff;
 }
 .bs-docs-toc-link:hover,
 .bs-docs-toc-link:focus {
-  color: $bs-yellow;
+  // color: $bs-yellow;
+  color: $brand-primary;
   text-decoration: none;
 }
 .active > .bs-docs-toc-link {
   font-weight: 500;
-  color: $bs-yellow;
+  color: $gray-dark;
+  // color: $bs-yellow;
 }
 .active > .bs-docs-sidenav {
   display: block;
 }
 
 .bs-docs-toc-item.active {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .bs-docs-toc-item:first-child {
   margin-top: 0;
 }
 .bs-docs-toc-item:last-child {
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 }
 
 // All levels of nav
 .bs-docs-sidebar .nav > li > a {
   display: block;
-  padding: 4px 20px;
-  font-size: 14px;
+  padding: .25rem 1.25rem;
+  font-size: 90%;
   color: #99979c;
 }
 .bs-docs-sidebar .nav > li > a:hover,
 .bs-docs-sidebar .nav > li > a:focus {
-  color: $bs-yellow;
+  color: $brand-primary;
+  // color: $bs-yellow;
   text-decoration: none;
   background-color: transparent;
 }
@@ -799,20 +809,21 @@ body {
 .bs-docs-sidebar .nav > .active:hover > a,
 .bs-docs-sidebar .nav > .active:focus > a {
   font-weight: 500;
-  color: $bs-yellow;
+  color: $gray-dark;
+  // color: $bs-yellow;
   background-color: transparent;
 }
 
 // Nav: second level (shown on .active)
 .bs-docs-sidebar .nav .nav {
   display: none; // Hide by default, but at >768px, show it
-  padding-bottom: 10px;
+  padding-bottom: .75rem;
 }
 .bs-docs-sidebar .nav .nav > li > a {
   padding-top: 1px;
   padding-bottom: 1px;
-  padding-left: 30px;
-  font-size: 12px;
+  padding-left: 2rem;
+  font-size: 75%;
   font-weight: normal;
 }
 .bs-docs-sidebar .nav .nav > .active > a,
@@ -825,10 +836,10 @@ body {
   display: block;
 }
 .bs-docs-sidebar .nav .nav > li > a {
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 30px;
-  font-size: 13px;
+  padding-top: .125rem;
+  padding-bottom: .125rem;
+  padding-left: 2rem;
+  font-size: 80%;
 }
 
 

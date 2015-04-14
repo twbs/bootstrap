@@ -194,23 +194,15 @@ td, th {
 
 @media print {
   *, *:before, *:after {
-    color: #000 !important;
     text-shadow: none !important;
-    background: transparent !important;
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
   }
   a, a:visited {
     text-decoration: underline;
   }
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
   abbr[title]:after {
     content: " (" attr(title) ")";
-  }
-  a[href^="#"]:after, a[href^="javascript:"]:after {
-    content: "";
   }
   pre, blockquote {
     border: 1px solid #999;
@@ -3241,6 +3233,19 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 
 .navbar-fixed-bottom {
   bottom: 0;
+}
+
+.navbar-sticky-top {
+  position: -webkit-sticky;
+  position:         sticky;
+  top: 0;
+  z-index: 1030; 
+  width: 100%;
+}
+@media (min-width: 34em) {
+  .navbar-sticky-top {
+    border-radius: 0;
+  }
 }
 
 .navbar-brand {
