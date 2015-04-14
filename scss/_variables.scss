@@ -38,8 +38,8 @@ $link-hover-decoration:      underline !default;
 // Quickly modify global styling by enabling or disabling features.
 
 $enable-rounded:             true !default;
-$enable-shadows:             true !default;
-$enable-gradients:           true !default;
+$enable-shadows:             false !default;
+$enable-gradients:           false !default;
 $enable-transitions:         true !default;
 
 $spacer:                     1rem !default;
