@@ -19,8 +19,7 @@
 
 <link href="../dist/css/bootstrap.css" rel="stylesheet">
 <link href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.css" rel="stylesheet">
-<link href="../stylesheets/style_override.css" rel="stylesheet">
-<link href="../dist/css/override.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" rel="stylesheet">
 <!-- FontAwesome -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
@@ -32,6 +31,8 @@
 <link href="../assets/css/src/anchor.css" rel="stylesheet">
 <link href="../assets/css/src/docs.css" rel="stylesheet">
 
+<link href="../stylesheets/style_override.css" rel="stylesheet">
+<link href="../dist/css/override.css" rel="stylesheet">
 <!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="../assets/js/ie-emulation-modes-warning.js"></script>
 
@@ -66,11 +67,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="../" class="navbar-brand">Bootstrap</a>
+      <a href="../" class="navbar-brand">Fusion</a>
     </div>
     <nav id="bs-navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li>
+        <!-- <li>
           <a href="../getting-started/">Getting started</a>
         </li>
         <li>
@@ -84,7 +85,7 @@
         </li>
         <li>
           <a href="../customize/">Customize</a>
-        </li>
+        </li> -->
         <li>
           <a href="../uikit/">UI Kit</a>
         </li>
@@ -103,8 +104,9 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
-        <li><a href="http://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
+        <!-- <li><a href="http://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
+        <li><a href="http://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li> -->
+        <li><a href="http://faria.co/">Faria Systems</a></li>
       </ul>
     </nav>
   </div>
@@ -216,37 +218,11 @@
 
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="../assets/js/jquery.dataTables.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
 <script src="../assets/js/ui-components.js"></script>
-
-
-
-<script>
-  window.twttr = (function (d,s,id) {
-    var t, js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id; js.async=1;
-    js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
-    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
-  }(document, "script", "twitter-wjs"));
-</script>
-
-<!-- Analytics
-================================================== -->
-<script>
-  var _gauges = _gauges || [];
-  (function() {
-    var t   = document.createElement('script');
-    t.async = true;
-    t.id    = 'gauges-tracker';
-    t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
-    t.src = '//secure.gaug.es/track.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(t, s);
-  })();
-</script>
 
   </body>
 </html>

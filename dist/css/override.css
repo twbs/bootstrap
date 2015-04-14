@@ -212,11 +212,11 @@ input[type=radio]:before {
   margin-left: 0px;
   transition-duration: 0.3s;
 }
-input[type=radio][type=radio]:checked {
+input[type=radio]:checked {
   background: linear-gradient(to bottom, #5e9aff 0%, #357aec 100%);
   border: 1px solid #478cfe;
 }
-input[type=radio][type=radio]:checked:before {
+input[type=radio]:checked:before {
   content: "";
   position: absolute;
   left: 50%;
@@ -228,6 +228,12 @@ input[type=radio][type=radio]:checked:before {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 1px 1px #2260c4;
+}
+input[type=radio]:disabled {
+  opacity: 0.5;
+  background: #fff;
+  color: #aaa;
+  cursor: not-allowed;
 }
 input[type=checkbox] {
   margin: 0;
@@ -243,11 +249,11 @@ input[type=checkbox] {
   border-radius: 4px;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
 }
-input[type=checkbox][type=checkbox]:checked {
+input[type=checkbox]:checked {
   background: linear-gradient(to bottom, #5e9aff 0%, #357aec 100%);
   border: 1px solid #478cfe;
 }
-input[type=checkbox][type=checkbox]:checked:before {
+input[type=checkbox]:checked:before {
   position: absolute;
   top: 0.5px;
   left: 1px;
@@ -257,8 +263,10 @@ input[type=checkbox][type=checkbox]:checked:before {
   font-size: 12px;
   text-shadow: 0 1px 1px #2260c4;
 }
-input[type=checkbox][type=checkbox]:disabled,
-input[type=checkbox][type=radio]:disabled {
+input[type=checkbox]:checked + label {
+  color: #293041;
+}
+input[type=checkbox]:disabled {
   opacity: 0.5;
   background: #fff;
   color: #aaa;
@@ -834,18 +842,17 @@ body {
 .nav.nav-main li:last-child {
   margin-bottom: 2em;
 }
-.select2-navigation + .select2-container,
-.select2 {
+.select2-navigation {
   outline: none;
+  width: 100%;
 }
-.select2-navigation + .select2-container .select-choice,
-.select2 .select-choice {
-  padding: 5px 10px;
-  width: 132px;
+.select2-navigation .select2-choice {
+  padding: 12px 10px;
+  height: auto;
+  width: 100%;
   font-size: 1.2em;
 }
-.select2-navigation + .select2-container .select2-selection--single,
-.select2 .select2-selection--single {
+.select2-navigation .select2-choice {
   background: #222233;
   color: #aaccff;
   border: none;
@@ -853,20 +860,28 @@ body {
   height: 50px;
   outline: none;
 }
-.select2-navigation + .select2-container .select2-selection--single > .select2-selection__rendered,
-.select2 .select2-selection--single > .select2-selection__rendered {
+.select2-navigation .select2-choice > .select2-selection__rendered {
   color: #aaccff;
   font-weight: 300;
   line-height: 50px;
 }
-.select2-navigation + .select2-container .select2-selection--single > .select2-selection__arrow b,
-.select2 .select2-selection--single > .select2-selection__arrow b {
-  top: 65%;
-  left: 0;
+.select2-navigation .select2-choice > .select2-arrow {
+  background: none;
   border: none;
 }
-.select2-navigation + .select2-container .select2-selection--single > .select2-selection__arrow b:before,
-.select2 .select2-selection--single > .select2-selection__arrow b:before {
+.select2-navigation .select2-choice > .select2-arrow b {
+  position: absolute;
+  top: 50%;
+  left: auto;
+  right: 15px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  height: 20px;
+  margin-top: -10px;
+  line-height: 20px;
+}
+.select2-navigation .select2-choice > .select2-arrow b:before {
   font-family: 'Glyphicons Halflings';
   content: "\e114";
 }
