@@ -71,4 +71,14 @@
     minimumResultsForSearch: -1
   });
 
+  $('.section-lightbox').on('click', '.btn-lightbox', function(e) {
+    return $('.section-lightbox').find('.carousel-generic').toggleClass('carousel-active', true);
+  }).on('click', '.carousel-generic', function(e) {
+    var $el;
+    $el = $(e.target);
+    if (!$el.parents('.carousel-generic').length) {
+      return $('.section-lightbox').find('.carousel-generic').toggleClass('carousel-active', false);
+    }
+  });
+
 }).call(this);
