@@ -637,14 +637,15 @@ body {
   padding: 0;
   margin-bottom: 0;
   // background-color: #322f38;
+
+  .navbar-toggler {
+    position: absolute;
+    top: 1.25rem;
+    right: 0;
+    z-index: 5;
+  }
 }
 
-.bs-docs-sidebar .navbar-toggle {
-  position: absolute;
-  top: 5px;
-  right: 0;
-  z-index: 5;
-}
 .bs-docs-sidebar .navbar-toggle .icon-bar {
   background-color: #fff;
 }
