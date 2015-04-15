@@ -43,6 +43,9 @@ $enable-gradients:           false !default;
 $enable-transitions:         true !default;
 
 $spacer:                     1rem !default;
+$spacer-x:                   $spacer !default;
+$spacer-y:                   $spacer !default;
+
 $border-width:               .075rem !default;
 
 $use-hover-media-query:      false !default;
