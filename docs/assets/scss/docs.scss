@@ -136,10 +136,10 @@ body {
 //
 
 .bs-docs-footer {
+  padding-top: 2rem;
   margin-top: 6rem;
   font-size: 85%;
   color: #777;
-  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .bs-docs-footer-links {
@@ -159,9 +159,6 @@ body {
   .bs-docs-footer p {
     margin-bottom: 0;
   }
-  .bs-docs .bs-docs-footer {
-    text-align: left;
-  }
 }
 
 
@@ -171,7 +168,6 @@ body {
 
 .bs-docs-social {
   margin-bottom: 1.5rem;
-  text-align: center;
 }
 .bs-docs-social-buttons {
   display: inline-block;
@@ -198,9 +194,8 @@ body {
 }
 
 @media (min-width: 768px) {
-  .bs-docs .bs-docs-social {
+  .bs-docs-social {
     margin-left: -.5rem;
-    text-align: left;
   }
 }
 
