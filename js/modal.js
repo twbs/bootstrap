@@ -17,7 +17,6 @@
     this.options             = options
     this.$body               = $(document.body)
     this.$element            = $(element)
-    this.$dialog             = this.$element.find('.modal-dialog')
     this.$backdrop           = null
     this.isShown             = null
     this.originalBodyPad     = null
@@ -66,8 +65,7 @@
     this.resize()
 
     this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
-
-    this.$dialog.on('mousedown.dismiss.bs.modal', function () {
+    this.$element.find('.modal-dialog').on('mousedown.dismiss.bs.modal', function () {
       that.$element.one('mouseup.dismiss.bs.modal', function (e) {
         if ($(e.target).is(that.$element)) that.ignoreBackdropClick = true
       })
@@ -95,9 +93,8 @@
       that.enforceFocus()
 
       var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
-
       transition ?
-        that.$dialog // wait for modal to slide in
+        that.$element.find('.modal-dialog') // wait for modal to slide in
           .one('bsTransitionEnd', function () {
             that.$element.trigger('focus').trigger(e)
           })
@@ -127,7 +124,7 @@
       .off('click.dismiss.bs.modal')
       .off('mouseup.dismiss.bs.modal')
 
-    this.$dialog.off('mousedown.dismiss.bs.modal')
+    this.$element.find('.modal-dialog').off('mousedown.dismiss.bs.modal')
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
