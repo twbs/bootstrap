@@ -97,20 +97,15 @@ fieldset[disabled] .btn-primary.active {
   border-radius: 2px;
 }
 .bar {
-  overflow: hidden;
   padding: 15px 20px;
 }
 .bar .title {
-  float: left;
   font-size: 1.5em;
   font-weight: 600;
 }
-.bar.bar-default {
-  background: #ffffff;
-  border-top: 1px solid #d9e7f7;
-}
-.bar.bar-default .title {
-  color: #000000;
+.bar + .bar-inset,
+.bar + .bar-default {
+  margin-top: -1px;
 }
 .bar.bar-primary {
   background: #478cfe;
@@ -118,30 +113,82 @@ fieldset[disabled] .btn-primary.active {
 .bar.bar-primary .title {
   color: #ffffff;
 }
-.bar.bar-primary .fa-cog {
-  color: #ffffff;
-  font-size: 1.5em;
-  float: right;
-  margin-top: 5px;
+.bar.bar-default {
+  background: #ffffff;
+  border-top: 1px solid #d9e7f7;
+  border-bottom: 1px solid #d9e7f7;
+}
+.bar.bar-default .title {
+  color: #000000;
 }
 .bar.bar-inset {
   background: #fbfcff;
-  padding-top: 5px;
+  padding-top: 8px;
   padding-bottom: 8px;
   border-top: 1px solid #d9e7f7;
   border-bottom: 1px solid #d9e7f7;
 }
-.bar.bar-inset .btn {
-  margin-right: 5px;
+.datepicker {
+  color: #293041;
+  text-align: center;
+  padding-bottom: 0;
+  width: 267px;
 }
-.bar.bar-inset .btn.pull-right {
-  margin-right: 0;
+.datepicker table th {
+  text-align: center;
+}
+.datepicker table tbody tr {
+  border: 1px solid  #e3e3e3;
+}
+.datepicker table td {
+  padding: 6px 10px !important;
+  border-left: 1px solid  #e3e3e3;
+}
+.datepicker table .active {
+  color: #478cfe;
+  border: 1px solid #478cfe !important;
+}
+.datepicker .new,
+.datepicker .old,
+.datepicker .active {
+  color: #859bbb;
+  background-color: #eff6fe;
+  border-left: 1px solid #e6eef9;
+  border-top: 1px solid #e6eef9;
+}
+.datepicker .next,
+.datepicker .prev {
+  display: inline-block;
+  color: white;
+  width: 9px;
+  height: 17px;
+  cursor: pointer;
+  font-family: FontAwesome;
+}
+.datepicker .next:before,
+.datepicker .prev:before {
+  color: #ADC4DC;
+}
+.datepicker .next:before {
+  content: "\f054";
+}
+.datepicker .prev:before {
+  content: "\f053";
+}
+.datepicker .dow {
+  font-size: 10px;
+  font-weight: 600;
+}
+.datepicker .datepicker-switch {
+  font-size: 1.2em;
+  font-weight: 400;
 }
 .dropdown-toggle {
   min-width: 200px;
   text-align: left;
 }
-.dropdown-menu {
+.dropdown-menu,
+.sortable {
   min-width: 160px;
   padding: 0;
   margin: 17px 0 0;
@@ -271,6 +318,86 @@ input[type=checkbox]:disabled {
   background: #fff;
   color: #aaa;
   cursor: not-allowed;
+}
+.sortable {
+  color: #91a4c1;
+  padding: 0;
+  background: #eff6fe;
+  max-width: 250px;
+}
+.sortable:focus {
+  outline: none;
+}
+.sortable > li {
+  padding: 7px 20px 5px 10px;
+  background: #ffffff;
+  border-bottom: 1px solid #d9e7f7;
+  line-height: 1.2em;
+  cursor: move;
+  position: relative;
+}
+.sortable > li:hover {
+  background: #fbfcfd;
+}
+.sortable > li label {
+  display: block;
+  overflow: hidden;
+  padding-right: 10px;
+}
+.sortable > li input {
+  margin-right: 10px;
+  float: left;
+}
+.sortable > li .fa-bars {
+  position: absolute;
+  margin: 0;
+  color: #d9e7f7;
+  top: 10px;
+  right: 10px;
+}
+.sortable:before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 100%;
+  right: 30px;
+  border-width: 8px;
+  border-top-width: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: #fff;
+  z-index: 2;
+}
+.sortable:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -10px;
+  right: 30px;
+  border-width: 8px;
+  border-top-width: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: rgba(228, 228, 228, 0.5);
+  z-index: 1;
+}
+.sortable .action-buttons {
+  padding: 10px 20px 10px;
+  text-align: right;
+  background: #fbfcff;
+}
+.sortable .action-buttons .cancel {
+  color: #fc5255;
+  margin-right: 5px;
+  text-decoration: underline;
+}
+.sortable .action-buttons span {
+  color: #859bbb;
+}
+.sortable .action-buttons button {
+  margin-left: 10px;
 }
 .breadcrumb {
   border-radius: 0;

@@ -71,6 +71,16 @@
     minimumResultsForSearch: -1
   });
 
+  $('.section-select').find('select.select2-fusion').select2({
+    containerCssClass: 'select2-fusion',
+    dropdownCssClass: 'select2-fusion'
+  });
+
+  $('.section-select').find('select.select2-dropdown').select2({
+    containerCssClass: 'select2-dropdown',
+    dropdownCssClass: 'select2-dropdown'
+  });
+
   $('.section-lightbox').on('click', '.btn-lightbox', function(e) {
     return $('.section-lightbox').find('.carousel-generic').toggleClass('carousel-active', true);
   }).on('click', '.carousel-generic', function(e) {
