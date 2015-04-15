@@ -136,10 +136,10 @@ body {
 //
 
 .bs-docs-footer {
+  padding-top: 2rem;
   margin-top: 6rem;
   font-size: 85%;
   color: #777;
-  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
 .bs-docs-footer-links {
@@ -159,9 +159,6 @@ body {
   .bs-docs-footer p {
     margin-bottom: 0;
   }
-  .bs-docs .bs-docs-footer {
-    text-align: left;
-  }
 }
 
 
@@ -171,7 +168,7 @@ body {
 
 .bs-docs-social {
   margin-bottom: 1.5rem;
-  text-align: center;
+  margin-left: -.5rem;
 }
 .bs-docs-social-buttons {
   display: inline-block;
@@ -195,13 +192,6 @@ body {
 .github-btn {
   overflow: hidden;
   border: 0;
-}
-
-@media (min-width: 768px) {
-  .bs-docs .bs-docs-social {
-    margin-left: -.5rem;
-    text-align: left;
-  }
 }
 
 
@@ -647,14 +637,15 @@ body {
   padding: 0;
   margin-bottom: 0;
   // background-color: #322f38;
+
+  .navbar-toggler {
+    position: absolute;
+    top: 1.25rem;
+    right: 0;
+    z-index: 5;
+  }
 }
 
-.bs-docs-sidebar .navbar-toggle {
-  position: absolute;
-  top: 5px;
-  right: 0;
-  z-index: 5;
-}
 .bs-docs-sidebar .navbar-toggle .icon-bar {
   background-color: #fff;
 }
@@ -859,16 +850,13 @@ body {
 }
 
 .bs-docs-title {
-  + p {
-    font-size: 1.5rem;
-    font-weight: 300;
-  }
-
   @include media-breakpoint-up(sm) {
     margin-right: 23rem;
     font-size: 4rem;
 
     + p {
+      font-size: 1.5rem;
+      font-weight: 300;
       margin-right: 23rem;
     }
   }
@@ -1288,12 +1276,13 @@ body {
 
 .highlight {
   padding: 1rem;
-  margin: -1rem -1rem 1rem;
+  margin: 1rem -1rem;
   background-color: #f7f7f9;
 
   @include media-breakpoint-up(sm) {
     padding: 1.5rem;
-    margin: 1rem 0;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 .highlight pre {

@@ -3,12 +3,16 @@
     Bootstrap
   </a>
 
-  <form class="bs-docs-search hidden-xs-down">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#docsNavbarContent">
+    &#9776;
+  </button>
+
+  <form class="bs-docs-search hidden-sm-down">
     <input type="text" class="form-control" id="search-input" placeholder="Search...">
     <ul class="dropdown-menu bs-docs-search-results" id="search-results"></ul>
   </form>
 
-  <nav class="bs-docs-links hidden-xs-down">
+  <nav class="bs-docs-links collapse hidden-xs-down" id="docsNavbarContent">
     {% for group in site.data.nav %}
       {% assign link = group.pages | first %}
       {% assign slug = group.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-' %}
