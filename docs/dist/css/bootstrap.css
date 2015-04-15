@@ -4934,18 +4934,208 @@ button.close {
   background-color: #373a3c;
 }
 
+.m-a-0 {
+  margin: 0;
+}
+
+.m-t-0 {
+  margin-top: 0;
+}
+
+.m-r-0 {
+  margin-right: 0;
+}
+
+.m-b-0 {
+  margin-bottom: 0;
+}
+
+.m-l-0 {
+  margin-left: 0;
+}
+
+.m-a {
+  margin: 1rem;
+}
+
+.m-t {
+  margin-top: 1rem;
+}
+
+.m-r {
+  margin-right: 1rem;
+}
+
+.m-b {
+  margin-bottom: 1rem;
+}
+
+.m-l {
+  margin-left: 1rem;
+}
+
+.m-x {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.m-y {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.m-t-md {
+  margin-top: 1.5rem;
+}
+
+.m-r-md {
+  margin-right: 1.5rem;
+}
+
+.m-b-md {
+  margin-bottom: 1.5rem;
+}
+
+.m-l-md {
+  margin-left: 1.5rem;
+}
+
+.m-x-md {
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.m-y-md {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.m-t-lg {
+  margin-top: 3rem;
+}
+
+.m-r-lg {
+  margin-right: 3rem;
+}
+
+.m-b-lg {
+  margin-bottom: 3rem;
+}
+
+.m-l-lg {
+  margin-left: 3rem;
+}
+
+.m-x-lg {
+  margin-right: 3rem;
+  margin-left: 3rem;
+}
+
+.m-y-lg {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.p-a-0 {
+  padding: 0;
+}
+
+.p-t-0 {
+  padding-top: 0;
+}
+
+.p-r-0 {
+  padding-right: 0;
+}
+
+.p-b-0 {
+  padding-bottom: 0;
+}
+
+.p-l-0 {
+  padding-left: 0;
+}
+
 .p-a {
   padding: 1rem;
 }
 
-.p-h {
+.p-t {
+  padding-top: 1rem;
+}
+
+.p-r {
+  padding-right: 1rem;
+}
+
+.p-b {
+  padding-bottom: 1rem;
+}
+
+.p-l {
+  padding-left: 1rem;
+}
+
+.p-x {
   padding-right: 1rem;
   padding-left: 1rem;
 }
 
-.p-v {
+.p-y {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.p-t-md {
+  padding-top: 1.5rem;
+}
+
+.p-r-md {
+  padding-right: 1.5rem;
+}
+
+.p-b-md {
+  padding-bottom: 1.5rem;
+}
+
+.p-l-md {
+  padding-left: 1.5rem;
+}
+
+.p-x-md {
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.p-y-md {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.p-t-lg {
+  padding-top: 3rem;
+}
+
+.p-r-lg {
+  padding-right: 3rem;
+}
+
+.p-b-lg {
+  padding-bottom: 3rem;
+}
+
+.p-l-lg {
+  padding-left: 3rem;
+}
+
+.p-x-lg {
+  padding-right: 3rem;
+  padding-left: 3rem;
+}
+
+.p-y-lg {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .pos-f-t {
