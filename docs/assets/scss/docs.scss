@@ -168,6 +168,7 @@ body {
 
 .bs-docs-social {
   margin-bottom: 1.5rem;
+  margin-left: -.5rem;
 }
 .bs-docs-social-buttons {
   display: inline-block;
@@ -191,12 +192,6 @@ body {
 .github-btn {
   overflow: hidden;
   border: 0;
-}
-
-@media (min-width: 768px) {
-  .bs-docs-social {
-    margin-left: -.5rem;
-  }
 }
 
 
