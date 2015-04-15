@@ -859,16 +859,13 @@ body {
 }
 
 .bs-docs-title {
-  + p {
-    font-size: 1.5rem;
-    font-weight: 300;
-  }
-
   @include media-breakpoint-up(sm) {
     margin-right: 23rem;
     font-size: 4rem;
 
     + p {
+      font-size: 1.5rem;
+      font-weight: 300;
       margin-right: 23rem;
     }
   }
