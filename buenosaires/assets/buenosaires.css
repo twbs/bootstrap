@@ -38,6 +38,11 @@ aside form .btn[type*="submit"] {
   padding-left: 30px;
 }
 
+.row{
+  margin-right: -30px;
+  margin-left: -30px;
+}
+
 /* font-config */
 
 p, span, a, h1, h2, h3, h4, h5, h6 {
