@@ -1,0 +1,29 @@
+//
+// Footer
+//
+
+.bd-footer {
+  padding-top: 2rem;
+  margin-top: 6rem;
+  font-size: 85%;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+.bd-footer-links {
+  padding-left: 0;
+  margin-top: 20px;
+  color: #999;
+}
+.bd-footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.bd-footer-links li:first-child {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .bd-footer p {
+    margin-bottom: 0;
+  }
+}

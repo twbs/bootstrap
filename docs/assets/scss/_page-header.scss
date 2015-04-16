@@ -1,0 +1,45 @@
+//
+// Page headers
+//
+
+.bd-header {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  background-color: $bd-purple;
+
+  .container {
+    position: relative;
+  }
+
+  h1 {
+    margin-top: 0;
+    color: #fff;
+  }
+
+  p {
+    margin-bottom: 0;
+    font-weight: 300;
+    color: rgba(255,255,255,.65);
+  }
+
+  @media (min-width: 768px) {
+    text-align: left;
+
+    h1 {
+      font-size: 4rem;
+      line-height: 1;
+    }
+  }
+
+  @media (min-width: 992px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    h1,
+    p {
+      margin-right: 380px;
+    }
+  }
+}

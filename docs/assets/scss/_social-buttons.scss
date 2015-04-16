@@ -1,0 +1,31 @@
+//
+// Social buttons
+//
+
+.bd-social {
+  margin-bottom: 1.5rem;
+  margin-left: -.5rem;
+}
+.bd-social-buttons {
+  display: inline-block;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.bd-social-buttons li {
+  display: inline-block;
+  padding: .25rem .5rem;
+  line-height: 1;
+}
+.bd-social-buttons .twitter-follow-button {
+  width: 225px !important;
+}
+.bd-social-buttons .twitter-share-button {
+  width: 98px !important;
+}
+
+// Style the GitHub buttons via CSS instead of inline attributes
+.github-btn {
+  overflow: hidden;
+  border: 0;
+}

@@ -1,0 +1,203 @@
+//
+// Side navigation
+//
+
+.bd-sidebar {
+  padding: 0;
+  margin-bottom: 0;
+  // background-color: #322f38;
+
+  .navbar-toggler {
+    position: absolute;
+    top: 1.25rem;
+    right: 0;
+    z-index: 5;
+  }
+}
+
+.bd-sidebar .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+.bd-sidebar .navbar-header {
+  float: none;
+  margin-right: -15px;
+}
+
+.bd-sidebar .navbar-collapse {
+  padding: 0;
+  border: 0;
+}
+
+@media (min-width: 992px) {
+  .bd-docs {
+    padding-left: 240px;
+  }
+  .bd-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100; // Ensure scrolling always works in Safari
+    width: 240px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #eee;
+    // @include gradient-vertical(#29262f, #322f38);
+  }
+}
+
+.bd-sidebar .navbar-brand {
+  display: block;
+  float: none;
+  height: auto;
+  padding: 1.75rem 1.25rem;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  // color: #fff;
+}
+.bd-sidebar-brand:hover,
+.bd-sidebar-brand:focus {
+  // color: #fff;
+  text-decoration: none;
+}
+
+.bd-search {
+  position: relative;
+
+  // .form-control {
+  //   width: 12rem;
+  // }
+
+  margin-right: 1.25rem;
+  margin-bottom: 1.5rem;
+  margin-left: 1.25rem;
+
+  .form-control {
+    height: 2.45rem;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    // color: rgba(255,255,255,.5);
+    // background-color: lighten(#29262f, 10%);
+    // border-color: lighten(#29262f, 15%);
+
+    // &:focus {
+    //   border-color: rgba(255,255,255,.25);
+    //   box-shadow: 0 0 .5rem rgba(255,255,255,.25);
+    // }
+  }
+}
+
+.bd-search-results {
+  top: 108%;
+  right: 0;
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  font-size: .9rem;
+  border: 0;
+
+  > li > a {
+    padding-left: .75rem;
+    padding-right: .75rem;
+  }
+
+  > li:first-child { margin-top: .25rem; }
+  > li:last-child { margin-bottom: .25rem; }
+
+   > .no-results {
+    padding: .75rem 1rem;
+    color: #7a7a7a;
+    text-align: center;
+  }
+}
+
+
+.bd-sidenav {
+  display: none;
+}
+
+.bd-toc-link {
+  display: block;
+  padding: .25rem 1.25rem;
+  color: $gray;
+  // font-size: 1rem;
+  // color: #fff;
+}
+.bd-toc-link:hover,
+.bd-toc-link:focus {
+  // color: $bd-yellow;
+  color: $brand-primary;
+  text-decoration: none;
+}
+.active > .bd-toc-link {
+  font-weight: 500;
+  color: $gray-dark;
+  // color: $bd-yellow;
+}
+.active > .bd-sidenav {
+  display: block;
+}
+
+.bd-toc-item.active {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.bd-toc-item:first-child {
+  margin-top: 0;
+}
+.bd-toc-item:last-child {
+  margin-bottom: 2rem;
+}
+
+// All levels of nav
+.bd-sidebar .nav > li > a {
+  display: block;
+  padding: .25rem 1.25rem;
+  font-size: 90%;
+  color: #99979c;
+}
+.bd-sidebar .nav > li > a:hover,
+.bd-sidebar .nav > li > a:focus {
+  color: $brand-primary;
+  // color: $bd-yellow;
+  text-decoration: none;
+  background-color: transparent;
+}
+.bd-sidebar .nav > .active > a,
+.bd-sidebar .nav > .active:hover > a,
+.bd-sidebar .nav > .active:focus > a {
+  font-weight: 500;
+  color: $gray-dark;
+  // color: $bd-yellow;
+  background-color: transparent;
+}
+
+// Nav: second level (shown on .active)
+.bd-sidebar .nav .nav {
+  display: none; // Hide by default, but at >768px, show it
+  padding-bottom: .75rem;
+}
+.bd-sidebar .nav .nav > li > a {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 2rem;
+  font-size: 75%;
+  font-weight: normal;
+}
+.bd-sidebar .nav .nav > .active > a,
+.bd-sidebar .nav .nav > .active:hover > a,
+.bd-sidebar .nav .nav > .active:focus > a {
+  font-weight: 500;
+}
+
+.bd-sidebar .nav > .active > .nav {
+  display: block;
+}
+.bd-sidebar .nav .nav > li > a {
+  padding-top: .125rem;
+  padding-bottom: .125rem;
+  padding-left: 2rem;
+  font-size: 80%;
+}

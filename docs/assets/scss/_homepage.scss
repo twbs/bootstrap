@@ -1,0 +1,249 @@
+//
+// Home navigation
+//
+
+.bd-nav-home {
+  margin-bottom: 0;
+  background-color: #563d7c;
+  border-bottom: 0;
+
+  .navbar-brand > a {
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    color: #cdbfe3;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background-color: rgba(0,0,0,.5);
+    }
+  }
+}
+
+// .bd-nav-home .navbar-toggle .icon-bar {
+//   background-color: #fff;
+// }
+// .bd-nav-home .navbar-header .navbar-toggle {
+//   border-color: #322f38;
+// }
+// .bd-nav-home .navbar-header .navbar-toggle:hover,
+// .bd-nav-home .navbar-header .navbar-toggle:focus {
+//   background-color: #29262f;
+//   border-color: #29262f;
+// }
+
+
+
+//
+// Homepage
+//
+
+.bd-header {
+  @include clearfix;
+  padding-bottom: .5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+
+  .bd-header-mark {
+    float: left;
+    padding-top: .6em;
+    padding-bottom: .6em;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+}
+
+.bd-header-nav {
+  float: right;
+
+  .nav-link {
+    float: left;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+
+//
+// Masthead (headings and download button)
+//
+
+.bd-masthead {
+  position: relative;
+  padding: 2rem 0;
+  // color: #cdbfe3;
+  // text-align: center;
+  // text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  // background-color: #6f5499;
+  // @include gradient-vertical($bd-purple, #6f5499);
+  // background-image: linear-gradient(135deg, #a8b7be, #cdd1d4, #d4d5d7, #cecfd1);
+}
+
+.bd-masthead .bd-booticon {
+  margin: 0 0 2rem;
+  color: $gray;
+  border-color: $gray;
+}
+.bd-masthead h1 {
+  font-weight: 300;
+  line-height: 1;
+  // color: #fff;
+}
+.bd-masthead .lead {
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  // color: #fff;
+}
+.bd-masthead .version {
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  // color: #9783b9;
+}
+.bd-masthead .btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: $gray;
+  border-color: $gray;
+
+  &:hover {
+    color: #fff;
+    background-color: $gray;
+  }
+}
+
+@media (min-width: 480px) {
+  .bd-masthead .btn {
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .bd-masthead {
+    padding: 2rem 0 4rem;
+    // padding: 5rem 0;
+  }
+  .bd-header {
+    margin-bottom: 4rem;
+  }
+  .bd-masthead h1 {
+    font-size: 4rem;
+  }
+  .bd-masthead .lead {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .bd-masthead .lead {
+    width: 80%;
+    font-size: 2rem;
+  }
+}
+
+
+//
+// Homepage featurettes
+//
+
+.bd-featurette {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  text-align: center;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+.bd-featurette + .bd-footer {
+  margin-top: 0;
+  border-top: 0;
+}
+
+.bd-featurette-title {
+  margin-bottom: .5rem;
+  font-size: 2rem;
+  font-weight: normal;
+  color: #333;
+}
+.half-rule {
+  width: 6rem;
+  margin: 2.5rem auto;
+}
+.bd-featurette h4 {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  font-weight: normal;
+  color: #333;
+}
+.bd-featurette-img {
+  display: block;
+  margin-bottom: 1.25rem;
+  color: #333;
+}
+.bd-featurette-img:hover {
+  color: $brand-primary;
+  text-decoration: none;
+}
+.bd-featurette-img img {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 480px) {
+  .bd-featurette .img-responsive {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .bd-featurette {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  .bd-featurette-title {
+    font-size: 2.5rem;
+  }
+  .bd-featurette .lead {
+    max-width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .bd-featurette .img-responsive {
+    margin-top: 0;
+  }
+}
+
+
+//
+// Featured Expo sites
+//
+
+.bd-featured-sites {
+  margin-right: -1px;
+  margin-left: -1px;
+}
+.bd-featured-sites .col-xs-6 {
+  padding: 1px;
+}
+.bd-featured-sites .img-responsive {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .bd-featured-sites .col-sm-3:first-child img {
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+  }
+  .bd-featured-sites .col-sm-3:last-child img {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+  }
+}

@@ -1,0 +1,32 @@
+//
+// ZeroClipboard styles
+//
+
+.zero-clipboard {
+  position: relative;
+  display: none;
+  float: right;
+}
+.btn-clipboard {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: block;
+  padding: .25rem .5rem;
+  font-size: 75%;
+  color: #818a91;
+  cursor: pointer;
+  background-color: #eceeef;
+  border-radius: 0 .2rem 0 .2rem;
+}
+.btn-clipboard-hover {
+  color: #fff;
+  background-color: #027de7;
+}
+
+@media (min-width: 768px) {
+  .zero-clipboard {
+    display: block;
+  }
+}
