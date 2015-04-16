@@ -8,7 +8,8 @@
   position: relative; // For dropdowns
   display: table;
   border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
-
+  width: 100%;
+  
   // Undo padding and float of grid classes
   &[class*="col-"] {
     float: none;
@@ -101,7 +102,7 @@
 }
 
 // Reset rounded corners
-.input-group .form-control:first-child,
+.input-group .form-control:first-child:not(:only-child),
 .input-group-addon:first-child,
 .input-group-btn:first-child > .btn,
 .input-group-btn:first-child > .btn-group > .btn,
@@ -110,10 +111,10 @@
 .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
   .border-right-radius(0);
 }
-.input-group-addon:first-child {
+.input-group-addon:first-child:not(:only-child) {
   border-right: 0;
 }
-.input-group .form-control:last-child,
+.input-group .form-control:last-child:not(:only-child),
 .input-group-addon:last-child,
 .input-group-btn:last-child > .btn,
 .input-group-btn:last-child > .btn-group > .btn,
@@ -122,7 +123,7 @@
 .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
   .border-left-radius(0);
 }
-.input-group-addon:last-child {
+.input-group-addon:last-child:not(:only-child) {
   border-left: 0;
 }
 
