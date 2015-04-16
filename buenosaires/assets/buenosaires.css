@@ -549,14 +549,14 @@ margin-bottom: 0;
   border-bottom-right-radius: 4px;
 }
 
-.dropdown-menu .row {
+/*.dropdown-menu .row {
   padding: 0 15px;
 }
 .dropdown-menu .col-sm-4,
 .dropdown-menu .col-sm-12 {
   padding-left:0;
   padding-right:0;
-}
+}*/
 .dropdown-menu .glyphicon {
   font-family: 'Glyphicons Halflings';
   font-style: normal;
