@@ -141,20 +141,20 @@
     var htmlBridge = $('#global-zeroclipboard-html-bridge')
 
     // Handlers for ZeroClipboard
-    zeroClipboard.on('ready', function() {
+    zeroClipboard.on('ready', function () {
       htmlBridge
         .data('placement', 'top')
         .attr('title', 'Copy to clipboard')
         .tooltip()
 
       // Copy to clipboard
-      zeroClipboard.on('copy', function(event) {
+      zeroClipboard.on('copy', function (event) {
         var highlight = $(event.target).parent().nextAll('.highlight').first()
         event.clipboardData.setData('text/plain', highlight.text())
       })
 
       // Notify copy success and reset tooltip title
-      zeroClipboard.on('aftercopy', function() {
+      zeroClipboard.on('aftercopy', function () {
         htmlBridge
           .attr('title', 'Copied!')
           .tooltip('fixTitle')
@@ -165,7 +165,7 @@
     })
 
     // Hide copy button on error
-    zeroClipboard.on('error', function() {
+    zeroClipboard.on('error', function () {
       $('.zero-clipboard').remove()
       ZeroClipboard.destroy()
     })
