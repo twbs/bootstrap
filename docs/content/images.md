@@ -17,10 +17,11 @@ Images in Bootstrap are responsive by default. `max-width: 100%;` and `height: a
 <img src="..." class="img-responsive" alt="Responsive image">
 {% endhighlight %}
 
-<div class="bd-callout bd-callout-warning">
-  <h4>SVG images and IE 9-10</h4>
-  <p>In Internet Explorer 9-10, SVG images with <code>.img-responsive</code> are disproportionately sized. To fix this, add <code>width: 100% \9;</code> where necessary. Bootstrap doesn't apply this automatically as it causes complications to other image formats.</p>
-</div>
+{% callout warning %}
+#### SVG images and IE 9-10
+
+In Internet Explorer 9-10, SVG images with `.img-responsive` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. Bootstrap doesn't apply this automatically as it causes complications to other image formats.
+{% endcallout %}
 
 ## Image shapes
 

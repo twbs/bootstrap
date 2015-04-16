@@ -36,15 +36,17 @@ A slideshow component for cycling through elements—images or slides of text—
 </div>
 {% endexample %}
 
-<div class="bd-callout bd-callout-warning" id="callout-carousel-transitions">
-  <h4>Transition animations not supported in Internet Explorer 9</h4>
-  <p>Bootstrap exclusively uses CSS3 for its animations, but Internet Explorer 9 doesn't support the necessary CSS properties. Thus, there are no slide transition animations when using that browser. We have intentionally decided not to include jQuery-based fallbacks for the transitions.</p>
-</div>
+{% callout warning %}
+#### Transition animations not supported in Internet Explorer 9
 
-<div class="bd-callout bd-callout-warning" id="callout-carousel-active">
-  <h4>Initial active element required</h4>
-  <p>The <code>.active</code> class needs to be added to one of the slides. Otherwise, the carousel will not be visible.</p>
-</div>
+Bootstrap exclusively uses CSS3 for its animations, but Internet Explorer 9 doesn't support the necessary CSS properties. Thus, there are no slide transition animations when using that browser. We have intentionally decided not to include jQuery-based fallbacks for the transitions.
+{% endcallout %}
+
+{% callout warning %}
+#### Initial active element required
+
+The `.active` class needs to be added to one of the slides. Otherwise, the carousel will not be visible.
+{% endcallout %}
 
 ### Optional captions
 
@@ -101,10 +103,11 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 </div>
 {% endhighlight %}
 
-<div class="bd-callout bd-callout-danger">
-  <h4>Accessibility issue</h4>
-  <p>The carousel component is generally not compliant with accessibility standards. If you need to be compliant, please consider other options for presenting your content.</p>
-</div>
+{% callout danger %}
+#### Accessibility issue
+
+The carousel component is generally not compliant with accessibility standards. If you need to be compliant, please consider other options for presenting your content.
+{% endcallout %}
 
 ## Usage
 

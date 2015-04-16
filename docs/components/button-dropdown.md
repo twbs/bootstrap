@@ -5,10 +5,11 @@ title: Button dropdown
 
 Use any button to trigger a dropdown menu by placing it within a `.btn-group` and providing the proper dropdown menu markup.
 
-<div class="bd-callout bd-callout-danger">
-  <h4>Plugin dependency</h4>
-  <p>Button dropdowns require the <a href="../javascript/#dropdowns">dropdown plugin</a> to be included in your version of Bootstrap.</p>
-</div>
+{% callout danger %}
+#### Plugin dependency
+
+Button dropdowns require the [dropdown plugin](../javascript/#dropdowns) to be included in your version of Bootstrap.
+{% endcallout %}
 
 ### Single button dropdowns
 

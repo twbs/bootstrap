@@ -5,10 +5,11 @@ title: Collapse
 
 Flexible plugin that utilizes a handful of classes for easy toggle behavior.
 
-<div class="bd-callout bd-callout-danger">
-  <h4>Plugin dependency</h4>
-  <p>Collapse requires the <a href="#transitions">transitions plugin</a> to be included in your version of Bootstrap.</p>
-</div>
+{% callout danger %}
+#### Plugin dependency
+
+Collapse requires the [transitions plugin](#transitions) to be included in your version of Bootstrap.
+{% endcallout %}
 
 ## Example
 
@@ -87,11 +88,11 @@ Extend the default collapse behavior to create an accordion with the panel compo
 </div>
 {% endexample %}
 
-<div class="bd-callout bd-callout-warning">
-  <h4>Make expand/collapse controls accessible</h4>
-  <p>Be sure to add <code>aria-expanded</code> to the control element. This attribute explicitly defines the current state of the collapsible element to screen readers and similar assistive technologies. If the collapsible element is closed by default, it should have a value of <code>aria-expanded="false"</code>. If you've set the collapsible element to be open by default using the <code>in</code> class, set <code>aria-expanded="true"</code> on the control instead. The plugin will automatically toggle this attribute based on whether or not the collapsible element has been opened or closed.</p>
-  <p>Additionally, if your control element is targetting a single collapsible element – i.e. the <code>data-target</code> attribute is pointing to an <code>id</code> selector – you may add an additional <code>aria-controls</code> attribute to the control element, containing the <code>id</code> of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.</p>
-</div>
+## Accessibility
+
+Be sure to add `aria-expanded` to the control element. This attribute explicitly defines the current state of the collapsible element to screen readers and similar assistive technologies. If the collapsible element is closed by default, it should have a value of `aria-expanded="false"`. If you've set the collapsible element to be open by default using the `in` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute based on whether or not the collapsible element has been opened or closed.
+
+Additionally, if your control element is targetting a single collapsible element – i.e. the `data-target` attribute is pointing to an `id` selector – you may add an additional `aria-controls` attribute to the control element, containing the `id` of the collapsible element. Modern screen readers and similar assistive technologies make use of this attribute to provide users with additional shortcuts to navigate directly to the collapsible element itself.
 
 ## Usage
 

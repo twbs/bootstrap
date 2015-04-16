@@ -13,18 +13,23 @@ $('#myModal').on('shown.bs.modal', function () {
 })
 {% endhighlight %}
 
-<div class="bd-callout bd-callout-warning" id="callout-stacked-modals">
-  <h4>Overlapping modals not supported</h4>
-  <p>Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
-</div>
-<div class="bd-callout bd-callout-warning" id="callout-modal-markup-placement">
-  <h4>Modal markup placement</h4>
-  <p>Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.</p>
-</div>
-<div class="bd-callout bd-callout-warning">
-  <h4>Mobile device caveats</h4>
-  <p>There are some caveats regarding using modals on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
-</div>
+{% callout warning %}
+#### Overlapping modals not supported
+
+Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.
+{% endcallout %}
+
+{% callout warning %}
+#### Modal markup placement
+
+Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.
+{% endcallout %}
+
+{% callout warning %}
+#### Mobile device caveats
+
+There are some caveats regarding using modals on mobile devices. [See our browser support docs](../getting-started/#support-fixed-position-keyboards) for details.
+{% endcallout %}
 
 ### Static example
 
@@ -158,16 +163,19 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
 </div>
 {% endhighlight %}
 
-<div class="bd-callout bd-callout-warning">
-  <h4>Make modals accessible</h4>
-  <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
-  <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
-</div>
+{% callout warning %}
+#### Make modals accessible
 
-<div class="bd-callout bd-callout-info">
-  <h4>Embedding YouTube videos</h4>
-  <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
-</div>
+Be sure to add `role="dialog"` to `.modal`, `aria-labelledby="myModalLabel"` attribute to reference the modal title, and `aria-hidden="true"` to tell assistive technologies to skip the modal's DOM elements.
+
+Additionally, you may give a description of your modal dialog with `aria-describedby` on `.modal`.
+{% endcallout %}
+
+{% callout info %}
+#### Embedding YouTube videos
+
+Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. [See this helpful Stack Overflow post](http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
+{% endcallout %}
 
 ## Optional sizes
 

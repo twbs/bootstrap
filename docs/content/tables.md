@@ -433,21 +433,25 @@ Use contextual classes to color table rows or individual cells.
 
 Create responsive tables by wrapping any `.table` in `.table-responsive` to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.
 
-<div class="bd-callout bd-callout-warning" id="callout-tables-responsive-overflow">
-  <h4>Vertical clipping/truncation</h4>
-  <p>Responsive tables make use of <code>overflow-y: hidden</code>, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.</p>
-</div>
+{% callout warning %}
+#### Vertical clipping/truncation
 
-<div class="bd-callout bd-callout-warning">
-  <h4>Firefox and fieldsets</h4>
-  <p>Firefox has some awkward fieldset styling involving <code>width</code> that interferes with the responsive table. This cannot be overriden without a Firefox-specific hack that we <strong>don't</strong> provide in Bootstrap:</p>
+Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
+{% endcallout %}
+
+{% callout warning %}
+#### Firefox and fieldsets
+
+Firefox has some awkward fieldset styling involving `width` that interferes with the responsive table. This cannot be overriden without a Firefox-specific hack that we **don't** provide in Bootstrap:
+
 {% highlight css %}
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }
 }
 {% endhighlight %}
-  <p>For more information, read <a href="http://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685">this Stack Overflow answer</a>.</p>
-</div>
+
+For more information, read [this Stack Overflow answer](http://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685).
+{% endcallout %}
 
 <div class="bd-example">
   <div class="table-responsive">
