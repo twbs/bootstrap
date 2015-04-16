@@ -21,10 +21,11 @@ $bd-danger:       #d9534f;
 $bd-warning:      #f0ad4e;
 $bd-info:         #5bc0de;
 
+
 // Dev notes
 //
 // Background information on nomenclature and architecture decisions here.
-//
+
 // - Bootstrap variables and mixins are included for easy reuse.
 //   Doing so gives us access to the same core utilities provided by Bootstrap.
 //   For example, consistent media queries through those mixins.
@@ -37,6 +38,16 @@ $bd-info:         #5bc0de;
 //   and layout of the Bootstrap docs. They are not included in our builds.
 
 
+// Contents
+//
+// Key sections to this file.
+
+// - Scaffolding
+// - Buttons
+// - Booticon
+// - Main navigation
+
+
 // Scaffolding
 //
 // Update the basics of our documents to prep for docs content.
@@ -46,9 +57,9 @@ body {
 }
 
 
-//
 // Buttons
 //
+// Custom buttons for the docs.
 
 .btn-outline {
   color: $bd-purple;
@@ -81,7 +92,7 @@ body {
 
 
 //
-// Bootstrap "B" icon
+// Bootstrap "B" Booticon
 //
 
 .bd-booticon {
