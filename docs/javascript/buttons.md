@@ -6,7 +6,7 @@ title: Buttons
 
 Do more with buttons. Control button states or create groups of buttons for more components like toolbars.
 
-<div class="bs-callout bs-callout-danger">
+<div class="bd-callout bd-callout-danger">
   <h4>Cross-browser compatibility</h4>
   <p><a href="https://github.com/twbs/bootstrap/issues/793">Firefox persists form control states (disabledness and checkedness) across page loads</a>. A workaround for this is to use <code>autocomplete="off"</code>. See <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=654072">Mozilla bug #654072</a>.</p>
 </div>
@@ -15,7 +15,7 @@ Do more with buttons. Control button states or create groups of buttons for more
 
 Add `data-loading-text="Loading..."` to use a loading state on a button.
 
-<div class="bs-callout bs-callout-info">
+<div class="bd-callout bd-callout-info">
   <h4>Use whichever state you like!</h4>
   <p>For the sake of this demonstration, we are using <code>data-loading-text</code> and <code>$().button('loading')</code>, but that's not the only state you can use. <a href="#buttons-methods">See more on this below in the <code>$().button(string)</code> documentation</a>.</p>
 </div>
@@ -43,7 +43,7 @@ Add `data-toggle="button"` to activate toggling on a single button.
 </button>
 {% endexample %}
 
-<div class="bs-callout bs-callout-warning">
+<div class="bd-callout bd-callout-warning">
   <h4>Pre-toggled buttons need <code>.active</code> and <code>aria-pressed="true"</code></h4>
   <p>For pre-toggled buttons, you must add the <code>.active</code> class and the <code>aria-pressed="true"</code> attribute to the <code>button</code> yourself.</p>
 </div>
@@ -52,17 +52,17 @@ Add `data-toggle="button"` to activate toggling on a single button.
 
 Add `data-toggle="buttons"` to a `.btn-group` containing checkbox or radio inputs to enable toggling in their respective styles.
 
-<div class="bs-callout bs-callout-warning">
+<div class="bd-callout bd-callout-warning">
   <h4>Preselected options need <code>.active</code></h4>
   <p>For preselected options, you must add the <code>.active</code> class to the input's <code>label</code> yourself.</p>
 </div>
-<div class="bs-callout bs-callout-warning">
+<div class="bd-callout bd-callout-warning">
   <h4>Visual checked state only updated on click</h4>
   <p>If the checked state of a checkbox button is updated without firing a <code>click</code> event on the button (e.g. via <code>&lt;input type="reset"&gt;</code> or via setting the <code>checked</code> property of the input), you will need to toggle the <code>.active</code> class on the input's <code>label</code> yourself.</p>
 </div>
 
 {% example html %}
-<div class="bs-example">
+<div class="bd-example">
   <div class="btn-group" data-toggle="buttons">
     <label class="btn btn-primary active">
       <input type="checkbox" checked autocomplete="off"> Checkbox 1 (pre-checked)

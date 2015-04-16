@@ -7,11 +7,11 @@ Add small overlays of content, like those on the iPad, to any element for housin
 
 Popovers whose both title and content are zero-length are never displayed.
 
-<div class="bs-callout bs-callout-danger">
+<div class="bd-callout bd-callout-danger">
   <h4>Plugin dependency</h4>
   <p>Popovers require the <a href="#tooltips">tooltip plugin</a> to be included in your version of Bootstrap.</p>
 </div>
-<div class="bs-callout bs-callout-danger">
+<div class="bd-callout bd-callout-danger">
   <h4>Opt-in functionality</h4>
   <p>For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>you must initialize them yourself</strong>.</p>
   <p>One way to initialize all popovers on a page would be to select them by their <code>data-toggle</code> attribute:</p>
@@ -21,19 +21,19 @@ $(function () {
 })
 {% endhighlight %}
 </div>
-<div class="bs-callout bs-callout-warning">
+<div class="bd-callout bd-callout-warning">
   <h4>Popovers in button groups and input groups require special setting</h4>
   <p>When using popovers on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the popover is triggered).</p>
 </div>
-<div class="bs-callout bs-callout-warning">
+<div class="bd-callout bd-callout-warning">
   <h4>Don't try to show popovers on hidden elements</h4>
   <p>Invoking <code>$(...).popover('show')</code> when the target element is <code>display: none;</code> will cause the popover to be incorrectly positioned.</p>
 </div>
-<div class="bs-callout bs-callout-info">
+<div class="bd-callout bd-callout-info">
   <h4>Popovers on disabled elements require wrapper elements</h4>
   <p>To add a popover to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the popover to that <code>&lt;div&gt;</code> instead.</p>
 </div>
-<div class="bs-callout bs-callout-info">
+<div class="bd-callout bd-callout-info">
   <h4>Multiple-line links</h4>
   <p>Sometimes you want to add a popover to a hyperlink that wraps multiple lines. The default behavior of the popover plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
 </div>
@@ -42,7 +42,7 @@ $(function () {
 
 Four options are available: top, right, bottom, and left aligned.
 
-<div class="bs-example bs-example-popover">
+<div class="bd-example bd-example-popover">
   <div class="popover popover-top">
     <div class="popover-arrow"></div>
     <h3 class="popover-title">Popover top</h3>
@@ -82,13 +82,13 @@ Four options are available: top, right, bottom, and left aligned.
 ### Live demo
 
 {% example html %}
-<button type="button" class="btn btn-lg btn-danger bs-docs-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+<button type="button" class="btn btn-lg btn-danger bd-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 {% endexample %}
 
 #### Four directions
 
-<div class="bs-example popover-demo">
-  <div class="bs-example-popovers">
+<div class="bd-example popover-demo">
+  <div class="bd-example-popovers">
     <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
       Popover on left
     </button>
@@ -127,13 +127,13 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 
 Use the `focus` trigger to dismiss popovers on the next click that the user makes.
 
-<div class="bs-callout bs-callout-danger">
+<div class="bd-callout bd-callout-danger">
   <h4>Specific markup required for dismiss-on-next-click</h4>
   <p>For proper cross-browser and cross-platform behavior, you must use the <code>&lt;a&gt;</code> tag, <i>not</i> the <code>&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#tabindex"><code>tabindex</code></a> attribute.</p>
 </div>
 
 {% example html %}
-<a tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+<a tabindex="0" class="btn btn-lg btn-danger bd-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {% endexample %}
 
 {% highlight js %}
@@ -258,7 +258,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-<div class="bs-callout bs-callout-info">
+<div class="bd-callout bd-callout-info">
   <h4>Data attributes for individual popovers</h4>
   <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
 </div>

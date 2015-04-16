@@ -5,7 +5,7 @@ title: Team
 
 Bootstrap is maintained by the founding team and a small group of invaluable core contributors, with the massive support and involvement of our community.
 
-<div class="list-group bs-team">
+<div class="list-group bd-team">
   {% for member in site.data.core-team %}
     <div class="list-group-item">
       <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user={{ member.user }}&amp;type=follow"></iframe>

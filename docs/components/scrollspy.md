@@ -7,11 +7,11 @@ title: Srollspy
 
 The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.
 
-<div class="bs-example">
+<div class="bd-example">
   <nav id="navbar-example2" class="navbar navbar-default navbar-static" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy">
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bd-example-js-navbar-scrollspy">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -19,7 +19,7 @@ The ScrollSpy plugin is for automatically updating nav targets based on scroll p
         </button>
         <a class="navbar-brand" href="#">Project Name</a>
       </div>
-      <div class="collapse navbar-collapse bs-example-js-navbar-scrollspy">
+      <div class="collapse navbar-collapse bd-example-js-navbar-scrollspy">
         <ul class="nav navbar-nav">
           <li><a href="#fat">@fat</a></li>
           <li><a href="#mdo">@mdo</a></li>
@@ -93,12 +93,12 @@ After adding `position: relative;` in your CSS, call the scrollspy via JavaScrip
 $('body').scrollspy({ target: '#navbar-example' })
 {% endhighlight %}
 
-<div class="bs-callout bs-callout-danger">
+<div class="bd-callout bd-callout-danger">
   <h4>Resolvable ID targets required</h4>
   <p>Navbar links must have resolvable id targets. For example, a <code>&lt;a href="#home"&gt;home&lt;/a&gt;</code> must correspond to something in the DOM like <code>&lt;div id="home"&gt;&lt;/div&gt;</code>.</p>
 </div>
 
-<div class="bs-callout bs-callout-info">
+<div class="bd-callout bd-callout-info">
   <h4>Non-<code>:visible</code> target elements ignored</h4>
   <p>Target elements that are not <a href="http://api.jquery.com/visible-selector/"><code>:visible</code> according to jQuery</a> will be ignored and their corresponding nav items will never be highlighted.</p>
 </div>

@@ -7,7 +7,7 @@ title: Examples
 
 Examples that focus on implementing uses of built-in components provided by Bootstrap.
 
-<div class="row bs-examples">
+<div class="row bd-examples">
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/starter-template/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/starter-template.jpg" alt="">
@@ -44,7 +44,7 @@ Examples that focus on implementing uses of built-in components provided by Boot
 
 Taking the default navbar component and showing how it can be moved, placed, and extended.
 
-<div class="row bs-examples">
+<div class="row bd-examples">
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/navbar/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/navbar.jpg" alt="">
@@ -74,7 +74,7 @@ Taking the default navbar component and showing how it can be moved, placed, and
 
 Brand new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework.
 
-<div class="row bs-examples">
+<div class="row bd-examples">
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/cover/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/cover.jpg" alt="">
@@ -143,7 +143,7 @@ Brand new components and templates to help folks quickly get started with Bootst
 
 Examples that focus on future-friendly features or techniques.
 
-<div class="row bs-examples">
+<div class="row bd-examples">
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}examples/offcanvas/">
       <img class="img-thumbnail" src="{{ site.baseurl }}examples/screenshots/offcanvas.jpg" alt="">

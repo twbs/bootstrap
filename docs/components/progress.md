@@ -56,9 +56,9 @@ The striped gradient can also be animated. Add `.progress-animated` to `.progres
 
 **Animated progress bars do not work in IE9 and Opera 12** as they don't support CSS3 animations.
 
-<div class="bs-example">
+<div class="bd-example">
   <progress class="progress progress-striped" value="25" max="100">25%</progress>
-  <button type="button" class="btn btn-secondary bs-docs-activate-animated-progressbar" data-toggle="button" aria-pressed="false" autocomplete="off">
+  <button type="button" class="btn btn-secondary bd-activate-animated-progressbar" data-toggle="button" aria-pressed="false" autocomplete="off">
     Toggle animation
   </button>
 </div>

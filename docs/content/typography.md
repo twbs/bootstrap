@@ -20,7 +20,7 @@ These styles can be found within `scaffolding.less`.
 
 All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.
 
-<div class="bs-example bs-example-type">
+<div class="bd-example bd-example-type">
   <table class="table">
     <tbody>
       <tr>
@@ -62,7 +62,7 @@ All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` cla
 
 Create lighter, secondary text in any heading with a generic `<small>` tag or the `.small` class.
 
-<div class="bs-example bs-example-type">
+<div class="bd-example bd-example-type">
   <table class="table">
     <tbody>
       <tr>
@@ -131,7 +131,7 @@ Styling for common inline HTML5 elements.
 <p><em>This line rendered as italicized text.</em></p>
 {% endexample %}
 
-<div class="bs-callout bs-callout-info">
+<div class="bd-callout bd-callout-info">
   <h4>Alternate elements</h4>
   <p>Feel free to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> in HTML5. <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
 </div>

@@ -33,7 +33,7 @@ Individual form controls automatically receive some global styling. All textual 
 </form>
 {% endexample %}
 
-<div class="bs-callout bs-callout-warning">
+<div class="bd-callout bd-callout-warning">
   <h4>Don't mix form groups with input groups</h4>
   <p>Do not mix form groups directly with <a href="/components/#input-groups">input groups</a>. Instead, nest the input group inside of the form group.</p>
 </div>
@@ -42,11 +42,11 @@ Individual form controls automatically receive some global styling. All textual 
 
 Add `.form-inline` to your `<form>` or a parent element for left-aligned and inline-block controls. **This only applies to form controls within viewports that are at least 768px wide.**
 
-<div class="bs-callout bs-callout-danger">
+<div class="bd-callout bd-callout-danger">
   <h4>May require custom widths</h4>
   <p>Inputs and selects have `width: 100%;` applied by default in Bootstrap. Within inline forms, we reset that to `width: auto;` so multiple controls can reside on the same line. Depending on your layout, additional custom widths may be required.</p>
 </div>
-<div class="bs-callout bs-callout-warning">
+<div class="bd-callout bd-callout-warning">
   <h4>Always add labels</h4>
   <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class.</p>
 </div>
@@ -54,7 +54,7 @@ Add `.form-inline` to your `<form>` or a parent element for left-aligned and inl
 ### Visible labels
 
 {% example html %}
-<div class="bs-example" data-example-id="simple-form-inline">
+<div class="bd-example" data-example-id="simple-form-inline">
   <form class="form-inline">
     <div class="form-group">
       <label for="exampleInputName2">Name</label>
@@ -147,7 +147,7 @@ Examples of standard form controls supported in an example form layout.
 
 Most common form control, text-based input fields. Includes support for all HTML5 types: `text`, `password`, `datetime`, `datetime-local`, `date`, `month`, `time`, `week`, `number`, `email`, `url`, `search`, `tel`, and `color`.
 
-<div class="bs-callout bs-callout-danger">
+<div class="bd-callout bd-callout-danger">
   <h4>Type declaration required</h4>
   <p>Inputs will only be fully styled if their `type` is properly declared.</p>
 </div>
@@ -156,7 +156,7 @@ Most common form control, text-based input fields. Includes support for all HTML
 <input type="text" class="form-control" placeholder="Text input">
 {% endexample %}
 
-<div class="bs-callout bs-callout-info">
+<div class="bd-callout bd-callout-info">
   <h4>Input groups</h4>
   <p>To add integrated text or buttons before and/or after any text-based `&lt;input&gt;`, <a href="../components/#input-groups">check out the input group component</a>.</p>
 </div>
@@ -323,13 +323,13 @@ When you need to place plain text next to a form label within a form, use the `.
 
 We remove the default `outline` styles on some form controls and apply a `box-shadow` in its place for `:focus`.
 
-<div class="bs-example">
+<div class="bd-example">
   <form>
     <input class="form-control" id="focusedInput" type="text" value="Demonstrative focus state">
   </form>
 </div>
 
-<div class="bs-callout bs-callout-info">
+<div class="bd-callout bd-callout-info">
   <h4>Demo `:focus` state</h4>
   <p>The above example input uses custom styles in our documentation to demonstrate the `:focus` state on a `.form-control`.</p>
 </div>
@@ -367,12 +367,12 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 </form>
 {% endexample %}
 
-<div class="bs-callout bs-callout-warning">
+<div class="bd-callout bd-callout-warning">
   <h4>Caveat about link functionality of `&lt;a&gt;`</h4>
   <p>By default, browsers will treat all native form controls (<code>&lt;input&gt;</code>, <code>&lt;select&gt;</code> and <code>&lt;button&gt;</code> elements) inside a <code>&lt;fieldset disabled&gt;</code> as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes <code>&lt;a ... class="btn btn-*"&gt;</code> elements, these will only be given a style of <code>pointer-events: none</code>. As noted in the section about <a href="#buttons-disabled">disabled state for buttons</a> (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.</p>
 </div>
 
-<div class="bs-callout bs-callout-danger">
+<div class="bd-callout bd-callout-danger">
   <h4>Cross-browser compatibility</h4>
   <p>While Bootstrap will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the <code>disabled</code> attribute on a <code>&lt;fieldset&gt;</code>. Use custom JavaScript to disable the fieldset in these browsers.</p>
 </div>
@@ -389,7 +389,7 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 
 Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.control-label`, `.form-control`, and `.help-block` within that element will receive the validation styles.
 
-<div class="bs-callout bs-callout-warning" id="callout-form-validation-state-accessibility">
+<div class="bd-callout bd-callout-warning" id="callout-form-validation-state-accessibility">
   <h4>Conveying validation state to assistive technologies and colorblind users</h4>
   <p>Using these validation styles to denote the state of a form control only provides a visual, color-based indication, which will not be conveyed to users of assistive technologies - such as screen readers - or to colorblind users.</p>
   <p>Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's <code>&lt;label&gt;</code> text itself (as is the case in the following code example), include a <a href="../components/#glyphicons">Glyphicon</a> (with appropriate alternative text using the <code>.sr-only</code> class - see the <a href="../components/#glyphicons-examples">Glyphicon examples</a>), or by providing an additional <a href="#forms-help-text">help text</a> block. Specifically for assistive technologies, invalid form controls can also be assigned an <code>aria-invalid="true"</code> attribute.</p>
@@ -436,7 +436,7 @@ Bootstrap includes validation styles for error, warning, and success states on f
 
 You can also add optional feedback icons with the addition of `.has-feedback` and the right icon.
 
-<div class="bs-callout bs-callout-warning">
+<div class="bd-callout bd-callout-warning">
   <h4>Icons, labels, and input groups</h4>
   <p>Manual positioning of feedback icons is required for inputs without a label and for <a href="../components#input-groups">input groups</a> with an add-on on the right. You are strongly encouraged to provide labels for all inputs for accessibility reasons. If you wish to prevent labels from being displayed, hide them with the `sr-only` class. If you must do without labels, adjust the `top` value of the feedback icon. For input groups, adjust the `right` value to an appropriate pixel value depending on the width of your addon.</p>
 </div>

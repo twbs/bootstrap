@@ -5,7 +5,7 @@ title: Contents
 
 Bootstrap can come in one of two forms, as precompiled or source code. Learn more about each form's contents and structure below.
 
-<div class="bs-callout bs-callout-warning" id="jquery-required">
+<div class="bd-callout bd-callout-warning" id="jquery-required">
   <h4>jQuery required</h4>
   <p>Please note that <strong>all JavaScript plugins require jQuery</strong> to be included, as shown in the <a href="../quick-start">starter template</a>. <a href="{{ site.repo }}/blob/v{{ site.current_version }}/bower.json">Consult our <code>bower.json</code></a> to see which versions of jQuery are supported.</p>
 </div>

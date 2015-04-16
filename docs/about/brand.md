@@ -9,19 +9,19 @@ Have a need for Bootstrap's brand resources? Great! We have only a few guideline
 
 Use either the Bootstrap mark (a capital **B**) or the standard logo (just **Bootstrap**). It should always appear in Helvetica Neue Bold. **Do not use the Twitter bird** in association with Bootstrap.
 
-<div class="bs-brand-logos">
-  <div class="bs-brand-item">
-    <div class="bs-docs-booticon bs-docs-booticon-lg">B</div>
+<div class="bd-brand-logos">
+  <div class="bd-brand-item">
+    <div class="bd-booticon bd-booticon-lg">B</div>
   </div>
-  <div class="bs-brand-item inverse">
-    <div class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-inverse">B</div>
+  <div class="bd-brand-item inverse">
+    <div class="bd-booticon bd-booticon-lg bd-booticon-inverse">B</div>
   </div>
 </div>
-<div class="bs-brand-logos">
-  <div class="bs-brand-item">
+<div class="bd-brand-logos">
+  <div class="bd-brand-item">
     <h1>Bootstrap</h1>
   </div>
-  <div class="bs-brand-item inverse">
+  <div class="bd-brand-item inverse">
     <h1>Bootstrap</h1>
   </div>
 </div>
@@ -30,14 +30,14 @@ Use either the Bootstrap mark (a capital **B**) or the standard logo (just **Boo
 
 Download the Bootstrap mark in one of three styles, each available as an SVG file. Right click, Save as.
 
-<div class="bs-brand-logos">
-  <div class="bs-brand-item">
+<div class="bd-brand-logos">
+  <div class="bd-brand-item">
     <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144">
   </div>
-  <div class="bs-brand-item inverse">
+  <div class="bd-brand-item inverse">
     <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
   </div>
-  <div class="bs-brand-item inverse">
+  <div class="bd-brand-item inverse">
     <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-punchout.svg" alt="Bootstrap" width="144" height="144">
   </div>
 </div>
@@ -46,16 +46,16 @@ Download the Bootstrap mark in one of three styles, each available as an SVG fil
 
 The project and framework should always be referred to as **Bootstrap**. No Twitter before it, no capital _s_, and no abbreviations except for one, a capital **B**.
 
-<div class="bs-brand-logos">
-  <div class="bs-brand-item">
+<div class="bd-brand-logos">
+  <div class="bd-brand-item">
     <h3>Bootstrap</h3>
     <strong class="text-success">Right</strong>
   </div>
-  <div class="bs-brand-item">
+  <div class="bd-brand-item">
     <h3 class="text-muted">BootStrap</h3>
     <strong class="text-warning">Wrong</strong>
   </div>
-  <div class="bs-brand-item">
+  <div class="bd-brand-item">
     <h3 class="text-muted">Twitter Bootstrap</h3>
     <strong class="text-warning">Wrong</strong>
   </div>
@@ -65,11 +65,11 @@ The project and framework should always be referred to as **Bootstrap**. No Twit
 
 Our docs and branding use a handful of primary colors to differentiate what *is* Bootstrap from what *is in* Bootstrap. In other words, if it's purple, it's representative of Bootstrap.
 
-<div class="bs-brand">
+<div class="bd-brand">
   <div class="color-swatches">
-    <div class="color-swatch bs-purple"></div>
-    <div class="color-swatch bs-purple-light"></div>
-    <div class="color-swatch bs-purple-lighter"></div>
-    <div class="color-swatch bs-gray"></div>
+    <div class="color-swatch bd-purple"></div>
+    <div class="color-swatch bd-purple-light"></div>
+    <div class="color-swatch bd-purple-lighter"></div>
+    <div class="color-swatch bd-gray"></div>
   </div>
 </div>

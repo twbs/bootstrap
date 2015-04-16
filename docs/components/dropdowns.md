@@ -32,7 +32,7 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
 
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-right` to a `.dropdown-menu` to right align the dropdown menu.
 
-<div class="bs-callout bs-callout-warning">
+<div class="bd-callout bd-callout-warning">
   <h4>May require additional positioning</h4>
   <p>Dropdowns are automatically positioned via CSS within the normal flow of the document. This means dropdowns may be cropped by parents with certain <code>overflow</code> properties or appear out of bounds of the viewport. Address these issues on your own as they arise.</p>
 </div>
@@ -146,7 +146,7 @@ Call the dropdowns via JavaScript:
 $('.dropdown-toggle').dropdown()
 {% endhighlight %}
 
-<div class="bs-callout bs-callout-info">
+<div class="bd-callout bd-callout-info">
   <h4><code>data-toggle="dropdown"</code> still required</h4>
   <p>Regardless of whether you call your dropdown via JavaScript or instead use the data-api, <code>data-toggle="dropdown"</code> is always required to be present on the dropdown's trigger element.</p>
 </div>
