@@ -73,17 +73,25 @@
 
   $('.section-select').find('select.select2-fusion').select2({
     containerCssClass: 'select2-fusion',
-    dropdownCssClass: 'select2-fusion'
+    dropdownCssClass: 'select2-fusion',
+    minimumResultsForSearch: -1
   });
 
   $('.section-select').find('select.select2-dropdown').select2({
     containerCssClass: 'select2-dropdown',
-    dropdownCssClass: 'select2-dropdown'
+    dropdownCssClass: 'select2-dropdown',
+    minimumResultsForSearch: -1
+  });
+
+  $('.section-select').find('select.select2-simple').select2({
+    containerCssClass: 'select2-simple',
+    dropdownCssClass: 'select2-simple',
+    minimumResultsForSearch: -1
   });
 
   $('.section-lightbox').on('click', '.btn-lightbox', function(e) {
     return $('.section-lightbox').find('.carousel-generic').toggleClass('carousel-active', true);
-  }).on('click', '.carousel-generic', function(e) {
+  }).on('click touchstart', '.carousel-generic', function(e) {
     var $el;
     $el = $(e.target);
     if (!$el.parents('.carousel-generic').length) {

@@ -473,8 +473,8 @@
   <div class="section-body">
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        <span class="caret pull-right"></span>
         Dropdown
-        <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
@@ -489,29 +489,45 @@
   <div class="section section-select">
   <div class="section-head">Select</div>
   <div class="section-body">
-    <select name="" class="select2-fusion">
-      <option value="1" selected>Select2 Fusion</option>
-      <option value="2">value2</option>
-      <option value="3">value3</option>
-      <option value="4">value4</option>
-      <option value="5">value5</option>
-      <option value="6">value6</option>
-      <option value="7">value7</option>
-      <option value="8">value8</option>
-      <option value="9">value9</option>
-    </select>
-
-    <select name="" class="select2-dropdown">
-      <option value="1">Select2 Dropdown</option>
-      <option value="2">value2</option>
-      <option value="3">value3</option>
-      <option value="4">value4</option>
-      <option value="5">value5</option>
-      <option value="6">value6</option>
-      <option value="7">value7</option>
-      <option value="8">value8</option>
-      <option value="9">value9</option>
-    </select>
+    <div class="select2-wrapper">
+      <select name="" class="select2-simple">
+        <option value="1" selected>Select2 Fusion</option>
+        <option value="2">value2</option>
+        <option value="3">value3</option>
+        <option value="4">value4</option>
+        <option value="5">value5</option>
+        <option value="6">value6</option>
+        <option value="7">value7</option>
+        <option value="8">value8</option>
+        <option value="9">value9</option>
+      </select>
+    </div>
+    <div class="select2-wrapper">
+      <select name="" class="select2-fusion">
+        <option value="1" selected>Select2 Fusion</option>
+        <option value="2">value2</option>
+        <option value="3">value3</option>
+        <option value="4">value4</option>
+        <option value="5">value5</option>
+        <option value="6">value6</option>
+        <option value="7">value7</option>
+        <option value="8">value8</option>
+        <option value="9">value9</option>
+      </select>
+    </div>
+    <div class="select2-wrapper">
+      <select name="" class="select2-dropdown">
+        <option value="1">Select2 Dropdown</option>
+        <option value="2">value2</option>
+        <option value="3">value3</option>
+        <option value="4">value4</option>
+        <option value="5">value5</option>
+        <option value="6">value6</option>
+        <option value="7">value7</option>
+        <option value="8">value8</option>
+        <option value="9">value9</option>
+      </select>
+    </div>
   </div>
 </div>
 
@@ -770,6 +786,7 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="../assets/js/jquery.dataTables.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="../assets/js/jquery.ui.touch-punch.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.js"></script>
 <script src="../assets/js/ui-components.js"></script>
