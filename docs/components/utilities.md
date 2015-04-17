@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Helper classes
+title: Utility classes
 ---
 
 ### Contextual colors
