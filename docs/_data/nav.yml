@@ -71,6 +71,14 @@
 
 - title: Components
   pages:
+    - title: Reboot
+      sections:
+        - title: Approach
+        - title: Page defaults
+        - title: Headings and paragraphs
+        - title: Lists
+        - title: Tables
+        - title: Code blocks
     - title: Jumbotron
     - title: Page header
     - title: Custom forms
