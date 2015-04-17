@@ -955,9 +955,6 @@ body {
 .nav.nav-main li:last-child {
   margin-bottom: 2em;
 }
-.select2-container .select2-choice .select2-arrow b {
-  background: none !important;
-}
 .select2-container.select2-navigation {
   outline: none;
   width: 100%;
