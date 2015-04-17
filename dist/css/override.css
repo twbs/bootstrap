@@ -563,6 +563,7 @@ table.dataTable thead .sorting_desc:after {
 }
 .table-wrapper {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .input-group .input-group-addon {
   color: #6f96c6;
