@@ -76,7 +76,6 @@
         - title: User input
         - title: Sample output
     - title: Tables
-    - title: Forms
     - title: Jumbotron
     - title: Page header
     - title: Buttons
@@ -91,13 +90,14 @@
         - title: Single toggle
         - title: Checkbox and radio
         - title: Methods
+    - title: Button group
+    - title: Button dropdown
+    - title: Forms
     - title: Custom forms
       sections:
         - title: Checkboxes and radios
         - title: Select menu
         - title: File browser
-    - title: Button group
-    - title: Button dropdown
     - title: Input group
       sections:
         - title: Basic example

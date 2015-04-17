@@ -100,17 +100,29 @@ label {
 .form-control {
   display: block;
   width: 100%;
-  height: $input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  // display: inline-block;
+  // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  // height: $input-height-base;
   padding: $padding-base-vertical $padding-base-horizontal;
   font-size: $font-size-base;
   line-height: $line-height-base;
   color: $input-color;
   background-color: $input-bg;
-  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
+  background-image: none;
   border: 1px solid $input-border;
-  @include border-radius($input-border-radius); // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  @include border-radius($input-border-radius);
   @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+  // Make inputs at least the height of their button counterpart (base line-height + padding + border).
+  // Only apply the height to textual inputs and some selcts.
+  &:not(textarea),
+  &:not(select[size]),
+  &:not(select[multiple]) {
+    height: $input-height-base;
+  }
 
   // Customize the `:focus` state to imitate native WebKit styles.
   @include form-control-focus();
@@ -118,7 +130,8 @@ label {
   // Placeholder
   &::placeholder {
     color: $input-color-placeholder;
-    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
   }
 
   // Disabled and read-only inputs
@@ -130,7 +143,8 @@ label {
   &[readonly],
   fieldset[disabled] & {
     background-color: $input-bg-disabled;
-    opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
   }
 
   &[disabled],
@@ -139,13 +153,17 @@ label {
   }
 }
 
-// Reset height for `textarea`s
-textarea.form-control {
-  height: auto;
-  padding-top: $padding-base-horizontal;
-  padding-bottom: $padding-base-horizontal;
-}
+// // Reset height for `textarea`s
+// textarea.form-control {
+//   height: auto;
+//   padding-top: $padding-base-horizontal;
+//   padding-bottom: $padding-base-horizontal;
+// }
 
+// Make file inputs better match text inputs by forcing them to new lines.
+.form-control-file {
+  display: block;
+}
 
 // Search inputs in iOS
 //
@@ -204,12 +222,13 @@ input[type="search"] {
 .checkbox {
   position: relative;
   display: block;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  // margin-top:    ($spacer * .75);
+  margin-bottom: ($spacer * .75);
 
   label {
-    min-height: $line-height-computed; // Ensure the input doesn't jump when there is no text
-    padding-left: 20px;
+    // Ensure the input doesn't jump when there is no text
+    min-height: $line-height-computed;
+    padding-left: 1.25rem;
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
@@ -220,13 +239,15 @@ input[type="search"] {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
   position: absolute;
-  margin-top: 4px \9;
-  margin-left: -20px;
+  margin-top: .25rem;
+  // margin-top: 4px \9;
+  margin-left: -1.25rem;
 }
 
 .radio + .radio,
 .checkbox + .checkbox {
-  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+  // Move up sibling radios or checkboxes for tighter spacing
+  margin-top: -.25rem;
 }
 
 // Radios and checkboxes on same line
@@ -234,7 +255,7 @@ input[type="search"] {
 .checkbox-inline {
   position: relative;
   display: inline-block;
-  padding-left: 20px;
+  padding-left: 1.25rem;
   margin-bottom: 0;
   font-weight: normal;
   vertical-align: middle;
@@ -243,7 +264,7 @@ input[type="search"] {
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
-  margin-left: 10px; // space out consecutive inline controls
+  margin-left: .75rem;
 }
 
 // Apply same disabled cursor tweak as for inputs
@@ -406,8 +427,8 @@ input[type="checkbox"] {
 
 .help-block {
   display: block; // account for any element using help-block
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top: .25rem;
+  margin-bottom: .75rem;
   color: lighten($text-color, 25%); // lighten the text some for contrast
 }
 

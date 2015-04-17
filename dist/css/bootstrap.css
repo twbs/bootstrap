@@ -1657,7 +1657,6 @@ label {
 .form-control {
   display: block;
   width: 100%;
-  height: 2.625rem;
   padding: .5rem .75rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -1669,6 +1668,9 @@ label {
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-control:not(textarea), .form-control:not(select[size]), .form-control:not(select[multiple]) {
+  height: 2.625rem;
 }
 .form-control:focus {
   border-color: #66afe9;
@@ -1698,10 +1700,8 @@ label {
   cursor: false;
 }
 
-textarea.form-control {
-  height: auto;
-  padding-top: .75rem;
-  padding-bottom: .75rem;
+.form-control-file {
+  display: block;
 }
 
 input[type="search"] {
@@ -1715,12 +1715,11 @@ input[type="search"] {
 .radio, .checkbox {
   position: relative;
   display: block;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: .75rem;
 }
 .radio label, .checkbox label {
   min-height: 1;
-  padding-left: 20px;
+  padding-left: 1.25rem;
   margin-bottom: 0;
   font-weight: normal;
   cursor: pointer;
@@ -1728,18 +1727,18 @@ input[type="search"] {
 
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
   position: absolute;
-  margin-top: 4px \9;
-  margin-left: -20px;
+  margin-top: .25rem;
+  margin-left: -1.25rem;
 }
 
 .radio + .radio, .checkbox + .checkbox {
-  margin-top: -5px;
+  margin-top: -.25rem;
 }
 
 .radio-inline, .checkbox-inline {
   position: relative;
   display: inline-block;
-  padding-left: 20px;
+  padding-left: 1.25rem;
   margin-bottom: 0;
   font-weight: normal;
   vertical-align: middle;
@@ -1748,7 +1747,7 @@ input[type="search"] {
 
 .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
   margin-top: 0;
-  margin-left: 10px;
+  margin-left: .75rem;
 }
 
 input[type="radio"]:disabled, input[type="radio"].disabled, fieldset[disabled] input[type="radio"], input[type="checkbox"]:disabled, input[type="checkbox"].disabled, fieldset[disabled] input[type="checkbox"] {
@@ -1947,8 +1946,8 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
 
 .help-block {
   display: block;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top: .25rem;
+  margin-bottom: .75rem;
   color: #747a7f;
 }
 

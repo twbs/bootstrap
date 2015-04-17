@@ -3,28 +3,70 @@ layout: page
 title: Forms
 ---
 
-Bootstrap normalizes common HTML5 form elements and adds a number of layout options for building forms of all sizes.
+Bootstrap provides several form control styles, layout options, and custom components for creating a wide variety of forms.
 
-## Example form
+## Form controls
 
-Individual form controls automatically receive some global styling. All textual `<input>`, `<textarea>`, and `<select>` elements with `.form-control` are set to `width: 100%;` by default. Wrap labels and controls in `.form-group` for optimum spacing.
+Bootstrap's form controls expand on [our Rebooted form styles](/components/reboot/#forms) with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices. The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
 
-**Do not mix form groups directly with [input groups](/components/#input-groups).** Instead, nest the input group inside of the form group.
+Remember, since Bootstrap utilizies the HTML5 doctype, **all inputs must have a `type` attribute** for proper rendering.
 
 {% example html %}
 <form>
-  <div class="form-group">
+  <fieldset class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-  </div>
-  <div class="form-group">
+  </fieldset>
+  <fieldset class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="exampleSelect1">Example select</label>
+    <select class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="exampleSelect2">Example multiple select</label>
+    <select multiple class="form-control">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="exampleTextarea">Example textarea</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+  </fieldset>
+  <fieldset class="form-group">
     <label for="exampleInputFile">File input</label>
     <input type="file" id="exampleInputFile">
     <p class="help-block">Example block-level help text here.</p>
+  </fieldset>
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+      Option one is this and that&mdash;be sure to include why it's great
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+      Option two can be something else and selecting it will deselect option one
+    </label>
+  </div>
+  <div class="radio disabled">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+      Option three is disabled
+    </label>
   </div>
   <div class="checkbox">
     <label>
@@ -35,31 +77,133 @@ Individual form controls automatically receive some global styling. All textual 
 </form>
 {% endexample %}
 
-## Inline forms
+Below is a complete list of the specific from controls supported by Bootstrap and the classes that customize them. Additional documentation is available for each group.
 
-Add `.form-inline` to your `<form>` or a parent element for left-aligned and inline-block controls. Inputs and selects are set to `width: auto;` in inline forms. Depending on your layout, additional custom widths may be required. As shown below, you should alwys include a `<label>` with each form control.
+<table>
+  <thead>
+    <tr>
+      <th>Classes</th>
+      <th>Used for</th>
+      <th>Supported variations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        {% markdown %}`.form-group`{% endmarkdown %}
+      </td>
+      <td class="text-nowrap">
+        Any group of form controls
+      </td>
+      <td>
+        {% markdown %}Use with any block-level element like `<fieldset>` or `<div>`{% endmarkdown %}
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="3">
+        {% markdown %}`.form-control`{% endmarkdown %}
+      </td>
+      <td>
+        Textual inputs
+      </td>
+      <td>
+        {% markdown %}`text`, `password`, `datetime`, `datetime-local`, `date`, `month`, `time`, `week`, `number`, `email`, `url`, `search`, `tel`, `color`{% endmarkdown %}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Select menus
+      </td>
+      <td>
+        {% markdown %}`multiple`, `size`{% endmarkdown %}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Textareas
+      </td>
+      <td>
+        <span class="text-muted">N/A</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-nowrap">
+        {% markdown %}`.form-control-file`{% endmarkdown %}
+      </td>
+      <td>
+        File inputs
+      </td>
+      <td>
+        {% markdown %}`file`{% endmarkdown %}
+      </td>
+    </tr>
+    <tr>
+      <td class="text-nowrap">
+{% markdown %}
+`.radio`<br>
+`.radio-inline`<br>
+`.checkbox`<br>
+`.checkbox-inline`
+{% endmarkdown %}
+      </td>
+      <td class="text-nowrap">
+        Checkboxes and radios
+      </td>
+      <td>
+        <span class="text-muted">N/A</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-**Inline forms only appear inline in viewports that are at least 768px wide.**
+## Form layouts
 
-### Visible labels
+Since Bootstrap applies `display: block` and `width: 100%` to almost all our form controls, forms will by default stack vertically. Additional classes can be used to vary this layout on a per-form basis.
+
+### Form groups
+
+The `.form-group` class is the easiest way to add some structure to forms. It's only purpose is to provide `margin-bottom` around a label and control pairing. As a bonus, since it's a class you can use it with `<fieldset>`s, `<div>`s, or nearly any other element.
 
 {% example html %}
-<div class="bd-example" data-example-id="simple-form-inline">
-  <form class="form-inline">
-    <div class="form-group">
-      <label for="exampleInputName2">Name</label>
-      <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail2">Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-    </div>
-    <button type="submit" class="btn btn-primary">Send invitation</button>
-  </form>
-</div>
+<form>
+  <fieldset class="form-group">
+    <label for="formGroupExampleLabel">Example label</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="formGroupExampleLabel2">Another label</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+  </fieldset>
+</form>
 {% endexample %}
 
-### Hidden labels
+### Inline forms
+
+Use the `.inline-form` class to to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms behave differently:
+
+- Controls are `display: inline-block` to provide alignment control via `vertical-align` and `margin`.
+- Controls receive `width: auto` to override the Bootstrap default `width: 100%`.
+- Controls **only appear inline in viewports that are at least 768px wide** to account for narrow viewports on mobile devices.
+
+Because of this, you may need to manually adddres the width and alignment of individual form controls. Lastly, as shown below, you should always include a `<label>` with each form control.
+
+#### Visible labels
+
+{% example html %}
+<form class="form-inline">
+  <div class="form-group">
+    <label for="exampleInputName2">Name</label>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+  </div>
+  <button type="submit" class="btn btn-primary">Send invitation</button>
+</form>
+{% endexample %}
+
+#### Hidden labels
 
 {% example html %}
 <form class="form-inline">
@@ -94,85 +238,44 @@ Add `.form-inline` to your `<form>` or a parent element for left-aligned and inl
 </form>
 {% endexample %}
 
-## Horizontal forms
+### Using the Grid
 
-Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout by adding `.form-horizontal` to the form or form control's parent. Doing so changes `.form-group`s to behave as grid rows, so no need for `.row`.
+For more structured form layouts, you can utilize Bootstrap's predefined grid classes (or mixins). Add the `.row` class to form groups and use the `.col-*` classes to specify the width of your labels and controls.
 
 {% example html %}
-<form class="form-horizontal">
-  <div class="form-group">
+<form>
+  <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
       <div class="checkbox">
         <label>
           <input type="checkbox"> Remember me
         </label>
       </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-secondary">Sign in</button>
     </div>
   </div>
 </form>
 {% endexample %}
 
-## Supported controls
-
-Examples of standard form controls supported in an example form layout.
-
-### Inputs
-
-The most common form control, text-based input fields. Includes support for all HTML5 types:
-
-- `text`
-- `password`
-- `datetime`
-- `datetime-local`
-- `date`
-- `month`
-- `time`
-- `week`
-- `number`
-- `email`
-- `url`
-- `search`
-- `tel`
-- `color`
-
-Since Bootstrap requires the HTML5 doctype, **all inputs must have a `type` attribute.**
-
-{% example html %}
-<input type="text" class="form-control" placeholder="Text input">
-{% endexample %}
-
-### Textarea
-
-Form control which supports multiple lines of text. Change `rows` attribute as necessary.
-
-{% example html %}
-<textarea class="form-control" rows="3"></textarea>
-{% endexample %}
-
-### Checkboxes and radios
+## Checkboxes and radios
 
 Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
 
 A checkbox or radio with the `disabled` attribute will be styled appropriately. To have the `<label>` for the checkbox or radio also display a "not-allowed" cursor when the user hovers over the label, add the `.disabled` class to your `.radio`, `.radio-inline`, `.checkbox`, `.checkbox-inline`, or `<fieldset>`.
 
-#### Default (stacked)
+### Default (stacked)
 
 {% example html %}
 <div class="checkbox">
@@ -208,7 +311,7 @@ A checkbox or radio with the `disabled` attribute will be styled appropriately. 
 </div>
 {% endexample %}
 
-#### Inline
+### Inline
 
 Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes or radios for controls that appear on the same line.
 
@@ -236,7 +339,7 @@ Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes 
 </label>
 {% endexample %}
 
-#### Without labels
+### Without labels
 
 Should you have no text within the `<label>`, the input is positioned as you'd expect. **Currently only works on non-inline checkboxes and radios.**
 
@@ -251,34 +354,6 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
     <input type="radio" name="blankRadio" id="blankRadio1" value="option1">
   </label>
 </div>
-{% endexample %}
-
-### Selects
-
-Note that many native select menus—namely in Safari and Chrome—have rounded corners that cannot be modified via `border-radius` properties.
-
-Use the default option, or add `multiple` to show multiple options at once.
-
-{% example html %}
-<select class="form-control">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select>
-{% endexample %}
-
-For `<select>` controls with the `multiple` attribute, multiple options are shown by default.
-
-{% example html %}
-<select multiple class="form-control">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select>
 {% endexample %}
 
 ## Static controls
