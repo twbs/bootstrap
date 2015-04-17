@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Popover</title>
+  <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+  <div class="page-header">
+    <h1>Popover <small>Bootstrap Visual Test</small></h1>
+  </div>
+
+  <button type="button" class="btn btn-default js-popover" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
+    Popover on left
+  </button>
+  <button type="button" class="btn btn-default js-popover" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
+    Popover on top
+  </button>
+  <button type="button" class="btn btn-default js-popover" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
+    Popover on bottom
+  </button>
+  <button type="button" class="btn btn-default js-popover" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
+    Popover on right
+  </button>
+
+</div>
+
+<!-- JavaScript Includes -->
+<script src="../vendor/jquery.min.js"></script>
+<script src="../../transition.js"></script>
+<script src="../../tooltip.js"></script>
+<script src="../../popover.js"></script>
+
+<!-- JavaScript Test -->
+<script>
+$(function () {
+  $('.js-popover').popover()
+})
+</script>
+
+</body>
+</html>

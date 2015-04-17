@@ -1,25 +1,32 @@
 # Dependencies
-markdown:         rdiscount
-pygments:         true
+markdown:         kramdown
+highlighter:      rouge
 
 # Permalinks
 permalink:        pretty
 
 # Server
-destination:      ./_gh_pages
-exclude:          [".editorconfig", ".gitignore", "bower.json", "composer.json", "CONTRIBUTING.md", "CNAME", "LICENSE", "Gruntfile.js", "package.json", "node_modules", "README.md", "less"]
+source:           docs
+destination:      _gh_pages
+host:             0.0.0.0
 port:             9001
+url:              http://getbootstrap.com
+encoding:         UTF-8
 
 # Custom vars
-current_version:  3.0.2
+current_version:  3.3.4
 repo:             https://github.com/twbs/bootstrap
+sass_repo:        https://github.com/twbs/bootstrap-sass
 
-download_source:  https://github.com/twbs/bootstrap/archive/v3.0.2.zip
-download_dist:    https://github.com/twbs/bootstrap/releases/download/v3.0.2/bootstrap-3.0.2-dist.zip
+download:
+  source:         https://github.com/twbs/bootstrap/archive/v3.3.4.zip
+  dist:           https://github.com/twbs/bootstrap/releases/download/v3.3.4/bootstrap-3.3.4-dist.zip
+  sass:           https://github.com/twbs/bootstrap-sass/archive/v3.3.4.tar.gz
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
 
-cdn_css:          //netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css
-cdn_theme_css:    //netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css
-cdn_js:           //netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js
+cdn:
+  css:            https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css
+  css_theme:      https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css
+  js:             https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js

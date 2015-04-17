@@ -1,30 +1,39 @@
 {
   "name": "bootstrap",
-  "version": "3.0.2",
+  "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+  "version": "3.3.4",
+  "keywords": [
+    "css",
+    "js",
+    "less",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "web"
+  ],
+  "homepage": "http://getbootstrap.com",
   "main": [
-    "./dist/js/bootstrap.js", 
-    "./dist/css/bootstrap.css", 
-    "./dist/fonts/glyphicons-halflings-regular.eot",
-    "./dist/fonts/glyphicons-halflings-regular.svg",
-    "./dist/fonts/glyphicons-halflings-regular.ttf",
-    "./dist/fonts/glyphicons-halflings-regular.woff"
+    "less/bootstrap.less",
+    "dist/css/bootstrap.css",
+    "dist/js/bootstrap.js",
+    "dist/fonts/glyphicons-halflings-regular.eot",
+    "dist/fonts/glyphicons-halflings-regular.svg",
+    "dist/fonts/glyphicons-halflings-regular.ttf",
+    "dist/fonts/glyphicons-halflings-regular.woff",
+    "dist/fonts/glyphicons-halflings-regular.woff2"
   ],
   "ignore": [
-    "**/.*",
-    "_*",
-    "docs-assets",
-    "examples",
-    "/fonts",
-    "js/tests",
+    "/.*",
+    "_config.yml",
     "CNAME",
-    "CONTRIBUTING.md",
-    "Gruntfile.js",
-    "browserstack.json",
     "composer.json",
-    "package.json",
-    "*.html"
+    "CONTRIBUTING.md",
+    "docs",
+    "js/tests",
+    "test-infra"
   ],
   "dependencies": {
-    "jquery": ">= 1.9.0"
+    "jquery": ">= 1.9.1"
   }
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    {% include header.html %}
+  </head>
+  <body>
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
+
+    <!-- Docs master nav -->
+    {% include nav/main.html %}
+
+    <!-- Docs page layout -->
+    <div class="bs-docs-header" id="content" tabindex="-1">
+      <div class="container">
+        <h1>{{ page.title }}</h1>
+        <p>{{ page.lead }}</p>
+        {% include ads.html %}
+      </div>
+    </div>
+
+    <div class="container bs-docs-container">
+
+      <div class="row">
+        <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
+          {{ content }}
+        </div>
+        {% unless page.fullwidth == true %}
+        <div class="col-md-3" role="complementary">
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+            <ul class="nav bs-docs-sidenav">
+              {% if page.slug == "getting-started" %}
+                {% include nav/getting-started.html %}
+              {% elsif page.slug == "css" %}
+                {% include nav/css.html %}
+              {% elsif page.slug == "components" %}
+                {% include nav/components.html %}
+              {% elsif page.slug == "js" %}
+                {% include nav/javascript.html %}
+              {% elsif page.slug == "customize" %}
+                {% include nav/customize.html %}
+              {% elsif page.slug == "about" %}
+                {% include nav/about.html %}
+              {% elsif page.slug == "migration" %}
+                {% include nav/migration.html %}
+              {% endif %}
+            </ul>
+            <a class="back-to-top" href="#top">
+              Back to top
+            </a>
+            {% if page.slug == "css" or page.slug == "components" or page.slug == "js" %}
+            <a href="#" class="bs-docs-theme-toggle" role="button">
+              Preview theme
+            </a>
+            {% endif %}
+          </nav>
+        </div>
+        {% endunless %}
+      </div>
+    </div>
+
+    {% include footer.html %}
+  </body>
+</html>

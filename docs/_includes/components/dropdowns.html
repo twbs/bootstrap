@@ -1,0 +1,148 @@
+<div class="bs-docs-section">
+  <h1 id="dropdowns" class="page-header">Dropdowns</h1>
+
+  <p class="lead">Toggleable, contextual menu for displaying lists of links. Made interactive with the <a href="../javascript/#dropdowns">dropdown JavaScript plugin</a>.</p>
+
+  <h2 id="dropdowns-example">Example</h2>
+  <p>Wrap the dropdown's trigger and the dropdown menu within <code>.dropdown</code>, or another element that declares <code>position: relative;</code>. Then add the menu's HTML. Dropdown menus can be changed to expand upwards (instead of downwards) by adding <code>.dropup</code> to the parent.</p>
+  <div class="bs-example" data-example-id="static-dropdown">
+    <div class="dropdown clearfix">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+      </ul>
+    </div>
+    <div class="dropup clearfix">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div><!-- /example -->
+{% highlight html %}
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    Dropdown
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+  </ul>
+</div>
+<div class="dropup">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+    Dropdown
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+  </ul>
+</div>
+{% endhighlight %}
+
+  <h2 id="dropdowns-alignment">Alignment</h2>
+  <p>By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add <code>.dropdown-menu-right</code> to a <code>.dropdown-menu</code> to right align the dropdown menu.</p>
+  <div class="bs-callout bs-callout-warning" id="callout-dropdown-positioning">
+    <h4>May require additional positioning</h4>
+    <p>Dropdowns are automatically positioned via CSS within the normal flow of the document. This means dropdowns may be cropped by parents with certain <code>overflow</code> properties or appear out of bounds of the viewport. Address these issues on your own as they arise.</p>
+  </div>
+  <div class="bs-callout bs-callout-warning" id="callout-dropdown-pull-right">
+    <h4>Deprecated <code>.pull-right</code> alignment</h4>
+    <p>As of v3.1.0, we've deprecated <code>.pull-right</code> on dropdown menus. To right-align a menu, use <code>.dropdown-menu-right</code>. Right-aligned nav components in the navbar use a mixin version of this class to automatically align the menu. To override it, use <code>.dropdown-menu-left</code>.</p>
+  </div>
+{% highlight html %}
+<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
+  ...
+</ul>
+{% endhighlight %}
+
+  <h2 id="dropdowns-headers">Headers</h2>
+  <p>Add a header to label sections of actions in any dropdown menu.</p>
+  <div class="bs-example">
+    <div class="dropdown clearfix">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+        <li role="presentation" class="dropdown-header">Dropdown header</li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+        <li role="presentation" class="dropdown-header">Dropdown header</li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+      </ul>
+    </div>
+  </div><!-- /example -->
+{% highlight html %}
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+  ...
+  <li role="presentation" class="dropdown-header">Dropdown header</li>
+  ...
+</ul>
+{% endhighlight %}
+
+  <h2 id="dropdowns-divider">Divider</h2>
+  <p>Add a divider to separate series of links in a dropdown menu.</p>
+  <div class="bs-example">
+    <div class="dropdown clearfix">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuDivider">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+      </ul>
+    </div>
+  </div><!-- /example -->
+{% highlight html %}
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuDivider">
+  ...
+  <li role="presentation" class="divider"></li>
+  ...
+</ul>
+{% endhighlight %}
+
+  <h2 id="dropdowns-disabled">Disabled menu items</h2>
+  <p>Add <code>.disabled</code> to a <code>&lt;li&gt;</code> in the dropdown to disable the link.</p>
+  <div class="bs-example">
+    <div class="dropdown clearfix">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-expanded="true">
+        Dropdown
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu4">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+        <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+      </ul>
+    </div>
+  </div><!-- /example -->
+{% highlight html %}
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu4">
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+  <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+</ul>
+{% endhighlight %}
+</div>

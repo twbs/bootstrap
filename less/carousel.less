@@ -21,14 +21,40 @@
     // Account for jankitude on images
     > img,
     > a > img {
-      .img-responsive();
+      &:extend(.img-responsive);
       line-height: 1;
+    }
+
+    // WebKit CSS3 transforms for supported devices
+    @media all and (transform-3d), (-webkit-transform-3d) {
+      .transition-transform(~'0.6s ease-in-out');
+      .backface-visibility(~'hidden');
+      .perspective(1000px);
+
+      &.next,
+      &.active.right {
+        .translate3d(100%, 0, 0);
+        left: 0;
+      }
+      &.prev,
+      &.active.left {
+        .translate3d(-100%, 0, 0);
+        left: 0;
+      }
+      &.next.left,
+      &.prev.right,
+      &.active {
+        .translate3d(0, 0, 0);
+        left: 0;
+      }
     }
   }
 
   > .active,
   > .next,
-  > .prev { display: block; }
+  > .prev {
+    display: block;
+  }
 
   > .active {
     left: 0;
@@ -91,6 +117,7 @@
   // Hover/focus state
   &:hover,
   &:focus {
+    outline: 0;
     color: @carousel-control-color;
     text-decoration: none;
     .opacity(.9);
@@ -109,19 +136,22 @@
   .icon-prev,
   .glyphicon-chevron-left {
     left: 50%;
+    margin-left: -10px;
   }
   .icon-next,
   .glyphicon-chevron-right {
     right: 50%;
+    margin-right: -10px;
   }
   .icon-prev,
   .icon-next {
     width:  20px;
     height: 20px;
     margin-top: -10px;
-    margin-left: -10px;
+    line-height: 1;
     font-family: serif;
   }
+
 
   .icon-prev {
     &:before {
@@ -166,6 +196,7 @@
     // Internet Explorer 8-9 does not support clicks on elements without a set
     // `background-color`. We cannot use `filter` since that's not viewed as a
     // background color by the browser. Thus, a hack is needed.
+    // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Internet_Explorer
     //
     // For IE8, we set solid black as it doesn't support `rgba()`. For IE9, we
     // set alpha transparency for the best results possible.
@@ -205,15 +236,22 @@
 
   // Scale up the controls a smidge
   .carousel-control {
-    .glyphicons-chevron-left,
-    .glyphicons-chevron-right,
+    .glyphicon-chevron-left,
+    .glyphicon-chevron-right,
     .icon-prev,
     .icon-next {
       width: 30px;
       height: 30px;
       margin-top: -15px;
-      margin-left: -15px;
       font-size: 30px;
+    }
+    .glyphicon-chevron-left,
+    .icon-prev {
+      margin-left: -15px;
+    }
+    .glyphicon-chevron-right,
+    .icon-next {
+      margin-right: -15px;
     }
   }
 
