@@ -8,7 +8,6 @@
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-top: 0;
   font-family: $headings-font-family;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
@@ -54,10 +53,10 @@ h6, .h6 { font-size: $font-size-h6; }
 // Body text
 // -------------------------
 
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
+// p {
+//   margin-top: 0;
+//   margin-bottom: 1rem;
+// }
 
 .lead {
   font-size: 1.25rem;
@@ -106,16 +105,16 @@ mark,
 // -------------------------
 
 // Unordered and Ordered lists
-ul,
-ol {
-  margin-top: 0;
-  margin-bottom: ($line-height-computed / 2);
+// ul,
+// ol {
+//   margin-top: 0;
+//   margin-bottom: ($line-height-computed / 2);
 
-  ul,
-  ol {
-    margin-bottom: 0;
-  }
-}
+//   ul,
+//   ol {
+//     margin-bottom: 0;
+//   }
+// }
 
 // List options
 
@@ -138,20 +137,20 @@ ol {
 }
 
 // Description Lists
-dl {
-  margin-top: 0; // Remove browser default
-  margin-bottom: $line-height-computed;
-}
-dt,
-dd {
-  line-height: $line-height-base;
-}
-dt {
-  font-weight: bold;
-}
-dd {
-  margin-left: 0; // Undo browser default
-}
+// dl {
+//   margin-top: 0; // Remove browser default
+//   margin-bottom: $line-height-computed;
+// }
+// dt,
+// dd {
+//   line-height: $line-height-base;
+// }
+// dt {
+//   font-weight: bold;
+// }
+// dd {
+//   margin-left: 0; // Undo browser default
+// }
 
 // Horizontal description lists w/ grid classes
 .dl-horizontal {
@@ -164,13 +163,14 @@ dd {
 // Misc
 // -------------------------
 
-// Abbreviations and acronyms
-abbr[title],
-// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
-abbr[data-original-title] {
-  cursor: help;
-  border-bottom: 1px dotted $abbr-border-color;
-}
+// // Abbreviations and acronyms
+// abbr[title],
+// // Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+// abbr[data-original-title] {
+//   cursor: help;
+//   border-bottom: 1px dotted $abbr-border-color;
+// }
+
 .initialism {
   font-size: 90%;
   text-transform: uppercase;
@@ -179,7 +179,7 @@ abbr[data-original-title] {
 // Blockquotes
 blockquote {
   padding: ($spacer / 2) $spacer;
-  margin: 0 0 $spacer;
+  margin-bottom: $spacer;
   font-size: $blockquote-font-size;
   border-left: .25rem solid $blockquote-border-color;
 
@@ -220,9 +220,9 @@ blockquote {
   }
 }
 
-// Addresses
-address {
-  margin-bottom: $line-height-computed;
-  font-style: normal;
-  line-height: $line-height-base;
-}
+// // Addresses
+// address {
+//   margin-bottom: $line-height-computed;
+//   font-style: normal;
+//   line-height: $line-height-base;
+// }

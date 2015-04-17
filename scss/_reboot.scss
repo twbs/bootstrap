@@ -6,12 +6,16 @@
 
 // Reset the box-sizing
 //
+// Change from `box-sizing: content-box` to `border-box` so that when you add
+// `padding` or `border`s to an element, the overall declared `width` does not
+// change. For example, `width: 100px;` will always be `100px` despite the
+// `border: 10px solid red;` and `padding: 20px;`.
+//
 // Heads up! This reset may cause conflicts with some third-party widgets. For
 // recommendations on resolving such conflicts, see
 // http://getbootstrap.com/getting-started/#third-box-sizing.
 //
-// Credit: Jon Neal & CSS-Tricks
-// http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+// Credit: shttp://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 
 html {
   box-sizing: border-box;
@@ -45,32 +49,93 @@ html {
 @viewport           { width: device-width; }
 
 
+//
 // Reset HTML, body, and more
+//
 
 html {
+  // Sets a specific default `font-size` for user with `rem` type scales.
   font-size: $font-size-root;
+  // Changes the default tap highlight to be completely transparent in iOS.
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body {
+  // Make the `body` use the `font-size-root`
   font-family: $font-family-base;
   font-size: $font-size-base;
   line-height: $line-height-base;
+  // Go easy on the eyes and use something other than `#000` for text
   color: $text-color;
+  // By default, `<body>` has no `background-color` so we set one as a best practice.
   background-color: $body-bg;
 }
 
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
+
+//
+// Typography
+//
+
+// Remove top margins from headings
+//
+// By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
+// margin for easier control within type scales as it avoids margin collapsing.
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+// Reset margins on paragraphs
+//
+// Similarly, the top margin on `<p>`s get reset. However, we also reset the
+// bottom margin to use `rem` units instead of `em`.
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+abbr[title] {
+  cursor: help;
+  border-bottom-color: #ccc;
+}
+
+address {
+  margin-bottom: 1rem;
+  font-style: normal;
   line-height: inherit;
 }
 
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
 
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0; // Undo browser default
+  margin-bottom: .5rem;
+}
+
+blockquote {
+  margin: 0 0 1rem;
+}
+
+
+//
 // Links
+//
 
 a {
   color: $link-color;
@@ -87,9 +152,37 @@ a {
 }
 
 
+//
+// Code
+//
+
+pre {
+  // Remove browser default top margin
+  margin-top: 0;
+  // Reset browser default of `1em` to use `rem`s
+  margin-bottom: 1rem;
+}
+
+
+//
+// Figures
+//
+
+figure {
+  // Normalize adds `margin` to `figure`s as browsers apply it inconsistently.
+  // We reset that to create a better flow in-page.
+  margin: 0 0 1rem;
+}
+
+
+
+//
 // Images
+//
 
 img {
+  // By default, `<img>`s are `inline-block`. This assumes that, and vertically
+  // centers them. This won't apply should you reset them to `block` level.
   vertical-align: middle;
 }
 
@@ -103,4 +196,89 @@ img {
 
 [role="button"] {
   cursor: pointer;
+}
+
+
+//
+// Tables
+//
+
+table {
+  // Reset for nesting within parents with `background-color`.
+  background-color: $table-bg;
+}
+
+caption {
+  caption-side: bottom;
+  padding-top: $table-cell-padding;
+  padding-bottom: $table-cell-padding;
+  color: $text-muted;
+  text-align: left;
+}
+
+th {
+  // Centered by default, but left-align-ed to match the `td`s below.
+  text-align: left;
+}
+
+
+//
+// Forms
+//
+
+label {
+  // Allow labels can use `margin` for spacing.
+  display: inline-block;
+}
+
+input,
+button,
+select,
+textarea {
+  // Remove all `margin`s so our classes don't have to do it themselves.
+  margin: 0;
+  // Normalize includes `font: inherit;`, so `font-family`. `font-size`, etc are
+  // properly inherited. However, `line-height` isn't addressed there. Using this
+  // ensures we don't need to unnessarily redeclare the global font stack.
+  line-height: inherit;
+}
+
+textarea {
+  // Textareas should really only resize vertically so they don't break their (horizontal) containers.
+  resize: vertical;
+}
+
+fieldset {
+  // Reset the default outline behavior of fieldsets so they don't affect page layout.
+  padding: 0;
+  margin: 0;
+  border: 0;
+  // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
+  // so we reset that to ensure it behaves more like a standard block element.
+  // See https://github.com/twbs/bootstrap/issues/12359.
+  min-width: 0;
+}
+
+legend {
+  // Reset the entire legend element to match the `fieldset`
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+//  border: 0;
+}
+
+input[type="search"] {
+  // Under the `content-box` in Normalize as `*` isn't specific enough.
+  box-sizing: border-box;
+}
+
+// todo: needed?
+output {
+  display: block;
+//  font-size: $font-size-base;
+//  line-height: $line-height-base;
+//  color: $input-color;
 }
