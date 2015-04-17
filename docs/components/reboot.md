@@ -3,7 +3,7 @@ layout: page
 title: Reboot
 ---
 
-All of Bootstrap's element-specific CSS changes are part of what we call the Reboot, a single CSS file of simple overrides.
+Part of Bootstrap's job is to provide an elegant, consistent, and simple baseline to build upon. We use Reboot, a collection of element-specific CSS changes in a single file, to kickstart that.
 
 Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
 
