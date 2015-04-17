@@ -7,10 +7,11 @@ Provide contextual feedback messages for typical user actions with the handful o
 
 Wrap any text and an optional dismiss button in `.alert` and one of the four contextual classes (e.g., `.alert-success`) for basic alert messages.
 
-<div class="bs-callout bs-callout-info">
-  <h4>No default class</h4>
-  <p>Alerts don't have default classes, only base and modifier classes. A default gray alert doesn't make too much sense, so you're required to specify a type via contextual class. Choose from success, info, warning, or danger.</p>
-</div>
+{% callout info %}
+#### No default class
+
+Alerts don't have default classes, only base and modifier classes. A default gray alert doesn't make too much sense, so you're required to specify a type via contextual class. Choose from success, info, warning, or danger.
+{% endcallout %}
 
 {% example html %}
 <div class="alert alert-success" role="alert">
@@ -41,10 +42,11 @@ Build on any alert by adding an optional `.alert-dismissible` and [close button]
 </div>
 {% endexample %}
 
-<div class="bs-callout bs-callout-warning">
-  <h4>Ensure proper behavior across all devices</h4>
-  <p>Be sure to use the <code>&lt;button&gt;</code> element with the <code>data-dismiss="alert"</code> data attribute.</p>
-</div>
+{% callout warning %}
+#### Ensure proper behavior across all devices
+
+Be sure to use the `<button>` element with the `data-dismiss="alert"` data attribute.
+{% endcallout %}
 
 ### Link color
 

@@ -1,0 +1,32 @@
+// Buttons
+//
+// Custom buttons for the docs.
+
+.btn-outline {
+  color: $bd-purple;
+  background-color: transparent;
+  border-color: $bd-purple;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: #fff;
+    background-color:$bd-purple;
+    border-color: $bd-purple;
+  }
+}
+
+.btn-outline-inverse {
+  color: #fff;
+  background-color: transparent;
+  border-color: $bd-purple-light;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $bd-purple;
+    text-shadow: none;
+    background-color: #fff;
+    border-color: #fff;
+  }
+}

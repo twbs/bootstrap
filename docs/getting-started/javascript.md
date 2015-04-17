@@ -87,10 +87,11 @@ $.fn.tooltip.Constructor.VERSION // => "{{ site.current_version }}"
 
 Bootstrap's plugins don't fall back particularly gracefully when JavaScript is disabled. If you care about the user experience in this case, use [`<noscript>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript) to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.
 
-<div class="bs-callout bs-callout-warning" id="callout-third-party-libs">
-  <h4>Third-party libraries</h4>
-  <p><strong>Bootstrap does not officially support third-party JavaScript libraries</strong> like Prototype or jQuery UI. Despite <code>.noConflict</code> and namespaced events, there may be compatibility problems that you need to fix on your own.</p>
-</div>
+{% callout warning %}
+#### Third-party libraries
+
+**Bootstrap does not officially support third-party JavaScript libraries** like Prototype or jQuery UI. Despite `.noConflict` and namespaced events, there may be compatibility problems that you need to fix on your own.
+{% endcallout %}
 
 ## Transitions
 

@@ -7,7 +7,7 @@ title: Tabs
 
 Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.
 
-<div class="bs-example bs-example-tabs" role="tabpanel">
+<div class="bd-example bd-example-tabs" role="tabpanel">
   <ul id="myTab" class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
       <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Home</a>
@@ -42,10 +42,11 @@ Add quick, dynamic tab functionality to transition through panes of local conten
   </div>
 </div>
 
-<div class="bs-callout bs-callout-info">
-  <h4>Extends tabbed navigation</h4>
-  <p>This plugin extends the <a href="../components/#nav-tabs">tabbed navigation component</a> to add tabbable areas.</p>
-</div>
+{% callout info %}
+#### Extends tabbed navigation
+
+This plugin extends the [tabbed navigation component](../components/#nav-tabs) to add tabbable areas.
+{% endcallout %}
 
 ## Usage
 

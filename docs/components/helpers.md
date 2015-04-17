@@ -16,14 +16,17 @@ Convey meaning through color with a handful of emphasis utility classes. These m
 <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
 {% endexample %}
 
-<div class="bs-callout bs-callout-info">
-  <h4>Dealing with specificity</h4>
-  <p>Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a <code>&lt;span&gt;</code> with the class.</p>
-</div>
-<div class="bs-callout bs-callout-warning">
-  <h4>Conveying meaning to assistive technologies</h4>
-  <p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the contextual colors are only used to reinforce meaning that is already present in the text/markup), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
-</div>
+{% callout info %}
+#### Dealing with specificity
+
+Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a `<span>` with the class.
+{% endcallout %}
+
+{% callout warning %}
+#### Conveying meaning to assistive technologies
+
+Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the contextual colors are only used to reinforce meaning that is already present in the text/markup), or is included through alternative means, such as additional text hidden with the `.sr-only` class.
+{% endcallout %}
 
 ### Contextual backgrounds
 
@@ -37,15 +40,17 @@ Similar to the contextual text color classes, easily set the background of an el
 <div class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</div>
 {% endexample %}
 
-<div class="bs-callout bs-callout-info">
-  <h4>Dealing with specificity</h4>
-  <p>Sometimes contextual background classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a <code>&lt;div&gt;</code> with the class.</p>
-</div>
+{% callout info %}
+#### Dealing with specificity
 
-<div class="bs-callout bs-callout-warning">
-  <h4>Conveying meaning to assistive technologies</h4>
-  <p>As with <a href="#helper-classes-colors">contextual colors</a>, ensure that any meaning conveyed through color is also conveyed in a format that is not purely presentational.</p>
-</div>
+Sometimes contextual background classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
+{% endcallout %}
+
+{% callout warning %}
+#### Conveying meaning to assistive technologies
+
+As with [contextual colors](#helper-classes-colors), ensure that any meaning conveyed through color is also conveyed in a format that is not purely presentational.
+{% endcallout %}
 
 ### Close icon
 

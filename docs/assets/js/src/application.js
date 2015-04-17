@@ -21,7 +21,7 @@
     // var $body   = $(document.body)
 
     // $body.scrollspy({
-    //   target: '.active .bs-docs-sidenav'
+    //   target: '.active .bd-sidenav'
     // })
     // $window.on('load', function () {
     //   $body.scrollspy('refresh')
@@ -47,7 +47,7 @@
     $('.popover-test').popover()
 
     // Popover demos
-    $('.bs-docs-popover').popover()
+    $('.bd-popover').popover()
 
     // Button state demo
     $('#loading-example-btn').on('click', function () {
@@ -70,7 +70,7 @@
     })
 
     // Activate animated progress bar
-    $('.bs-docs-activate-animated-progressbar').on('click', function () {
+    $('.bd-activate-animated-progressbar').on('click', function () {
       $(this).prev('.progress-striped').toggleClass('progress-animated')
     })
 
@@ -129,5 +129,5 @@
 
 ;(function () {
   'use strict';
-  addAnchors('.bs-docs-container > h1, .bs-docs-container > h2, .bs-docs-container > h3, .bs-docs-container > h4, .bs-docs-container > h5');
+  addAnchors('.bd-container > h1, .bd-container > h2, .bd-container > h3, .bd-container > h4, .bd-container > h5');
 })();

@@ -31,7 +31,7 @@ In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](h
 
 Custom checkboxes can also utilize the `:indeterminate` pseudo class.
 
-<div class="bs-example bs-example-indeterminate">
+<div class="bd-example bd-example-indeterminate">
   <label class="c-input c-checkbox">
     <input type="checkbox">
     <span class="c-indicator"></span>

@@ -5,16 +5,17 @@ title: Button dropdown
 
 Use any button to trigger a dropdown menu by placing it within a `.btn-group` and providing the proper dropdown menu markup.
 
-<div class="bs-callout bs-callout-danger">
-  <h4>Plugin dependency</h4>
-  <p>Button dropdowns require the <a href="../javascript/#dropdowns">dropdown plugin</a> to be included in your version of Bootstrap.</p>
-</div>
+{% callout danger %}
+#### Plugin dependency
+
+Button dropdowns require the [dropdown plugin](../javascript/#dropdowns) to be included in your version of Bootstrap.
+{% endcallout %}
 
 ### Single button dropdowns
 
 Turn a button into a dropdown toggle with some basic markup changes.
 
-<div class="bs-example">
+<div class="bd-example">
   <div class="btn-group">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Default</button>
     <ul class="dropdown-menu" role="menu">
@@ -97,7 +98,7 @@ Turn a button into a dropdown toggle with some basic markup changes.
 
 Similarly, create split button dropdowns with the same markup changes, only with a separate button.
 
-<div class="bs-example">
+<div class="bd-example">
   <div class="btn-group">
     <button type="button" class="btn btn-secondary">Default</button>
     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -199,7 +200,7 @@ Similarly, create split button dropdowns with the same markup changes, only with
 
 Button dropdowns work with buttons of all sizes.
 
-<div class="bs-example">
+<div class="bd-example">
   <div class="btn-toolbar" role="toolbar">
     <div class="btn-group">
       <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -280,7 +281,7 @@ Button dropdowns work with buttons of all sizes.
 
 Trigger dropdown menus above elements by adding `.dropup` to the parent.
 
-<div class="bs-example">
+<div class="bd-example">
   <div class="btn-toolbar" role="toolbar">
     <div class="btn-group dropup">
       <button type="button" class="btn btn-secondary">Dropup</button>

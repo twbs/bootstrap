@@ -55,7 +55,7 @@ eos
       end
 
       def example(output)
-        "<div class=\"bs-example\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
+        "<div class=\"bd-example\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
       end
 
       def render_rouge(code)

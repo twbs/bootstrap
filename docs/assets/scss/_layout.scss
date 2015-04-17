@@ -1,0 +1,81 @@
+// Custom container
+//
+// Doesn't use the default `.container` styles for easier modifications.
+
+.bd-container {
+  position: relative;
+  max-width: 62rem;
+  padding: 0 1rem 1rem;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: 768px) {
+    padding: 2rem;
+  }
+
+  @media (min-width: 992px) {
+    padding: 4rem;
+  }
+
+  > table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-y: auto;
+    margin-bottom: $spacer;
+    // border: 1px solid $table-border-color;
+
+    // Cells
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th,
+        > td {
+          padding: $table-cell-padding;
+          line-height: $line-height-base;
+          vertical-align: top;
+          // border-top: 1px solid $table-border-color;
+          border: 1px solid $table-border-color;
+        }
+      }
+    }
+
+    // Prevent breaking of code (e.g., Grunt tasks list)
+    td:first-child > code {
+      white-space: nowrap;
+    }
+  }
+}
+
+
+//
+// Docs sections
+//
+
+.bd-content {
+  > h2 {
+    margin-top: 3rem;
+    font-weight: normal;
+  }
+
+  > h3 {
+    margin-top: 1.5rem;
+  }
+
+  > ul li,
+  > ol li {
+    margin-bottom: .25rem;
+  }
+}
+
+.bd-title {
+  @include media-breakpoint-up(sm) {
+    font-size: 4rem;
+
+    + p {
+      font-size: 1.5rem;
+      font-weight: 300;
+    }
+  }
+}

@@ -8,7 +8,7 @@ Bootstrap currently works around several outstanding browser bugs in major brows
 We publicly list browser bugs that are impacting us here, in the hopes of expediting the process of fixing them. For information on Bootstrap's browser compatibility, [see our browser compatibility docs](../getting-started/#support).
 
 <div class="table-responsive">
-  <table class="bs-docs-browser-bugs table table-bordered table-hover">
+  <table class="bd-browser-bugs table table-bordered table-hover">
     <thead>
       <tr>
         <th>Browser(s)</th>

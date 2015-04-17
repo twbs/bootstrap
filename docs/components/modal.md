@@ -13,24 +13,29 @@ $('#myModal').on('shown.bs.modal', function () {
 })
 {% endhighlight %}
 
-<div class="bs-callout bs-callout-warning" id="callout-stacked-modals">
-  <h4>Overlapping modals not supported</h4>
-  <p>Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
-</div>
-<div class="bs-callout bs-callout-warning" id="callout-modal-markup-placement">
-  <h4>Modal markup placement</h4>
-  <p>Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.</p>
-</div>
-<div class="bs-callout bs-callout-warning">
-  <h4>Mobile device caveats</h4>
-  <p>There are some caveats regarding using modals on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
-</div>
+{% callout warning %}
+#### Overlapping modals not supported
+
+Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.
+{% endcallout %}
+
+{% callout warning %}
+#### Modal markup placement
+
+Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.
+{% endcallout %}
+
+{% callout warning %}
+#### Mobile device caveats
+
+There are some caveats regarding using modals on mobile devices. [See our browser support docs](../getting-started/#support-fixed-position-keyboards) for details.
+{% endcallout %}
 
 ### Static example
 
 A rendered modal with header, body, and set of actions in the footer.</p>
 
-<div class="bs-example bs-example-modal">
+<div class="bd-example bd-example-modal">
   <div class="modal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -123,7 +128,7 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
   </div><!-- /.modal-dialog -->
 </div>
 
-<div class="bs-example" style="padding-bottom: 24px;">
+<div class="bd-example" style="padding-bottom: 24px;">
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Launch demo modal
   </button>
@@ -158,31 +163,34 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
 </div>
 {% endhighlight %}
 
-<div class="bs-callout bs-callout-warning">
-  <h4>Make modals accessible</h4>
-  <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title, and <code>aria-hidden="true"</code> to tell assistive technologies to skip the modal's DOM elements.</p>
-  <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
-</div>
+{% callout warning %}
+#### Make modals accessible
 
-<div class="bs-callout bs-callout-info">
-  <h4>Embedding YouTube videos</h4>
-  <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
-</div>
+Be sure to add `role="dialog"` to `.modal`, `aria-labelledby="myModalLabel"` attribute to reference the modal title, and `aria-hidden="true"` to tell assistive technologies to skip the modal's DOM elements.
+
+Additionally, you may give a description of your modal dialog with `aria-describedby` on `.modal`.
+{% endcallout %}
+
+{% callout info %}
+#### Embedding YouTube videos
+
+Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. [See this helpful Stack Overflow post](http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
+{% endcallout %}
 
 ## Optional sizes
 
 Modals have two optional sizes, available via modifier classes to be placed on a `.modal-dialog`.
 
-<div class="bs-example">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+<div class="bd-example">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
 </div>
 
 {% highlight html %}
 <!-- Large modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       ...
@@ -191,9 +199,9 @@ Modals have two optional sizes, available via modifier classes to be placed on a
 </div>
 
 <!-- Small modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       ...
@@ -202,7 +210,7 @@ Modals have two optional sizes, available via modifier classes to be placed on a
 </div>
 {% endhighlight %}
 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
@@ -220,7 +228,7 @@ Modals have two optional sizes, available via modifier classes to be placed on a
   </div>
 </div>
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
 
@@ -295,7 +303,7 @@ To take advantage of the Bootstrap grid system within a modal, just nest `.conta
     </div>
   </div>
 </div>
-<div class="bs-example bs-example-padded-bottom">
+<div class="bd-example bd-example-padded-bottom">
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#gridSystemModal">
     Launch demo modal
   </button>
@@ -307,7 +315,7 @@ To take advantage of the Bootstrap grid system within a modal, just nest `.conta
 Have a bunch of buttons that all trigger the same modal, just with slightly different contents? Use `event.relatedTarget` and [HTML `data-*` attributes](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes) (possibly [via jQuery](http://api.jquery.com/data/)) to vary the contents of the modal depending on which button was clicked. See the Modal Events docs for details on `relatedTarget`.
 
 {% example html %}
-<div class="bs-example">
+<div class="bd-example">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>

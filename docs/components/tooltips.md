@@ -3,15 +3,34 @@ layout: page
 title: Tooltips
 ---
 
-## Examples
-
 Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.
 
-Tooltips with zero-length titles are never displayed.
+## Overview
+
+Things to know when using the popover plugin:
+
+- Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
+- Tooltips with zero-length titles are never displayed.
+- Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
+- Triggering tooltips on hidden elements will not work.
+- Tooltips for `.disabled` or `disabled` elements must be triggered on a wrapper element.
+- When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
+
+## Example: Enable popovers everywhere
+
+One way to initialize all tooltips on a page would be to select them by their `data-toggle` attribute:
+
+{% highlight js %}
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+{% endhighlight %}
+
+## Examples
 
 Hover over the links below to see tooltips:
 
-<div class="bs-example tooltip-demo">
+<div class="bd-example tooltip-demo">
   <p class="muted">Tight pants next level keffiyeh <a href="#" data-toggle="tooltip" title="Default tooltip">you probably</a> haven't heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" data-toggle="tooltip" title="Another tooltip">have a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" data-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy Austin <a href="#" data-toggle="tooltip" title="The last tip!">twitter handle</a> freegan cred raw denim single-origin coffee viral.
   </p>
 </div>
@@ -20,7 +39,7 @@ Hover over the links below to see tooltips:
 
 Four options are available: top, right, bottom, and left aligned.
 
-<div class="bs-example bs-example-tooltip">
+<div class="bd-example bd-example-tooltip">
   <div class="tooltip left" role="tooltip">
     <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
@@ -51,8 +70,8 @@ Four options are available: top, right, bottom, and left aligned.
 
 Hover over the buttons below to see their tooltips.
 
-<div class="bs-example tooltip-demo">
-  <div class="bs-example-tooltips">
+<div class="bd-example tooltip-demo">
+  <div class="bd-example-tooltips">
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
@@ -75,29 +94,6 @@ Hover over the buttons below to see their tooltips.
 </button>
 {% endhighlight %}
 
-<div class="bs-callout bs-callout-danger">
-  <h4>Opt-in functionality</h4>
-  <p>For performance reasons, the Tooltip and Popover data-apis are opt-in, meaning <strong>you must initialize them yourself</strong>.</p>
-  <p>One way to initialize all tooltips on a page would be to select them by their <code>data-toggle</code> attribute:</p>
-{% highlight js %}
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-{% endhighlight %}
-</div>
-<div class="bs-callout bs-callout-warning">
-  <h4>Tooltips in button groups and input groups require special setting</h4>
-  <p>When using tooltips on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip is triggered).</p>
-</div>
-<div class="bs-callout bs-callout-warning">
-  <h4>Don't try to show tooltips on hidden elements</h4>
-  <p>Invoking <code>$(...).tooltip('show')</code> when the target element is <code>display: none;</code> will cause the tooltip to be incorrectly positioned.</p>
-</div>
-<div class="bs-callout bs-callout-info">
-  <h4>Tooltips on disabled elements require wrapper elements</h4>
-  <p>To add a tooltip to a <code>disabled</code> or <code>.disabled</code> element, put the element inside of a <code>&lt;div&gt;</code> and apply the tooltip to that <code>&lt;div&gt;</code> instead.</p>
-</div>
-
 ## Usage
 
 The tooltip plugin generates content and markup on demand, and by default places tooltips after their trigger element.
@@ -111,11 +107,6 @@ $('#example').tooltip(options)
 ### Markup
 
 The required markup for a tooltip is only a `data` attribute and `title` on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to `top` by the plugin).
-
-<div class="bs-callout bs-callout-warning">
-  <h4>Multiple-line links</h4>
-  <p>Sometimes you want to add a tooltip to a hyperlink that wraps multiple lines. The default behavior of the tooltip plugin is to center it horizontally and vertically. Add <code>white-space: nowrap;</code> to your anchors to avoid this.</p>
-</div>
 
 {% highlight html %}
 <!-- HTML to write -->
@@ -228,10 +219,11 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-<div class="bs-callout bs-callout-info">
-  <h4>Data attributes for individual tooltips</h4>
-  <p>Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.</p>
-</div>
+{% callout info %}
+#### Data attributes for individual tooltips
+
+Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.
+{% endcallout %}
 
 ### Methods
 

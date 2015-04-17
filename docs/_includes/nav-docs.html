@@ -1,4 +1,4 @@
-<header class="navbar navbar-static-top bs-docs-sidebar" id="top" role="banner">
+<header class="navbar navbar-static-top bd-sidebar" id="top" role="banner">
   <a href="{{ site.baseurl }}/" class="navbar-brand">
     Bootstrap
   </a>
@@ -7,12 +7,12 @@
     &#9776;
   </button>
 
-  <form class="bs-docs-search hidden-sm-down">
+  <form class="bd-search hidden-sm-down">
     <input type="text" class="form-control" id="search-input" placeholder="Search...">
-    <ul class="dropdown-menu bs-docs-search-results" id="search-results"></ul>
+    <ul class="dropdown-menu bd-search-results" id="search-results"></ul>
   </form>
 
-  <nav class="bs-docs-links collapse navbar-toggleable-xs" id="docsNavbarContent">
+  <nav class="bd-links collapse navbar-toggleable-xs" id="docsNavbarContent">
     {% for group in site.data.nav %}
       {% assign link = group.pages | first %}
       {% assign slug = group.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-' %}
@@ -22,18 +22,18 @@
         {% assign active = 'active' %}
       {% endif %}
 
-      <div class="bs-docs-toc-item {{ active }}">
-        <a class="bs-docs-toc-link" href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ link.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-'  }}">
+      <div class="bd-toc-item {{ active }}">
+        <a class="bd-toc-link" href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ link.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-'  }}">
           {{ group.title }}
         </a>
 
-        <ul class="nav bs-docs-sidenav">
+        <ul class="nav bd-sidenav">
           {% for doc in group.pages %}
             {% assign slug = doc.title | downcase | replace: ' ', '-' %}
             {% assign active = nil %}
 
             {% if page.url contains slug %}
-              {% assign active = 'active bs-docs-sidenav-active' %}
+              {% assign active = 'active bd-sidenav-active' %}
             {% endif %}
 
             <li class="{{ active }}">
