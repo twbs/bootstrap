@@ -3,6 +3,30 @@ layout: page
 title: Utility classes
 ---
 
+Bootstrap includes dozens of utilities—classes with a single purpose. They're designed to keep the number of declarations in your CSS down while allowing for quick and easy development.
+
+### Text alignment
+
+Easily realign text to components with text alignment classes.
+
+{% example html %}
+<p class="text-left">Left aligned text.</p>
+<p class="text-center">Center aligned text.</p>
+<p class="text-right">Right aligned text.</p>
+<p class="text-justify">Justified text.</p>
+<p class="text-nowrap">No wrap text.</p>
+{% endexample %}
+
+### Text transform
+
+Transform text in components with text capitalization classes.
+
+{% example html %}
+<p class="text-lowercase">Lowercased text.</p>
+<p class="text-uppercase">Uppercased text.</p>
+<p class="text-capitalize">Capitalized text.</p>
+{% endexample %}
+
 ### Contextual colors
 
 Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.
@@ -63,7 +87,7 @@ Use a generic close icon for dismissing content like modals and alerts. **Be sur
 </button>
 {% endexample %}
 
-### Quick floats
+### Floats
 
 Float an element to the left or right with a class. `!important` is included to avoid specificity issues. Classes can also be used as mixins.
 
@@ -90,7 +114,7 @@ Float an element to the left or right with a class. `!important` is included to 
 }
 {% endhighlight %}
 
-### Center content blocks
+### Center content
 
 Set an element to `display: block;` and center via `margin`. Available as a mixin and class.
 
@@ -167,7 +191,7 @@ The `.invisible` class can be used to toggle only the visibility of an element, 
 }
 {% endhighlight %}
 
-### Screen readers and keyboard navigation
+### Screen readers
 
 Hide an element to all devices **except screen readers** with `.sr-only`. Combine `.sr-only` with `.sr-only-focusable` to show the element again when it's focused (e.g. by a keyboard-only user). Necessary for following [accessibility best practices](../getting-started/#accessibility). Can also be used as mixins.
 

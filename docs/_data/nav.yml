@@ -132,6 +132,18 @@
     - title: Carousel
     - title: Responsive embed
     - title: Utilities
+      sections:
+        - title: Text alignment
+        - title: Text transform
+        - title: Contextual colors
+        - title: Contextual backgrounds
+        - title: Close icon
+        - title: Floats
+        - title: Center content
+        - title: Hidden content
+        - title: Invisible content
+        - title: Screen readers
+        - title: Image replacement
 
 - title: Examples
   pages:
