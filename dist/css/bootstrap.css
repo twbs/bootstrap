@@ -3201,7 +3201,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 
 .navbar-toggler {
-  float: left;
   padding: .55rem .75rem;
   margin-right: 1rem;
   margin-bottom: 0;
@@ -3212,6 +3211,17 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 .navbar-toggler:focus, .navbar-toggler:hover {
   text-decoration: none;
+}
+
+@media (min-width: 34em) {
+  .navbar-toggleable-xs {
+    display: block !important;
+  }
+}
+@media (min-width: 48em) {
+  .navbar-toggleable-sm {
+    display: block !important;
+  }
 }
 
 .navbar-form {

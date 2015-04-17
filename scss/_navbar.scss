@@ -99,7 +99,6 @@
 // JavaScript plugin.
 
 .navbar-toggler {
-  float: left;
   padding: .55rem .75rem;
   margin-right: $spacer;
   margin-bottom: 0; // For headings
@@ -110,6 +109,20 @@
 
   @include hover-focus {
     text-decoration: none;
+  }
+}
+
+// Custom override for
+.navbar-toggleable {
+  &-xs {
+    @include media-breakpoint-up(sm) {
+      display: block !important;
+    }
+  }
+  &-sm {
+    @include media-breakpoint-up(md) {
+      display: block !important;
+    }
   }
 }
 

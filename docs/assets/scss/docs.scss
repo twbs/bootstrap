@@ -1012,7 +1012,7 @@ body {
   @include media-breakpoint-up(sm) {
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: -1rem;
+    margin-bottom: 0;
     padding: 1.5rem;
     border-width: .2rem;
   }
@@ -1276,7 +1276,7 @@ body {
 
 .highlight {
   padding: 1rem;
-  margin: 1rem -1rem;
+  margin: 0 -1rem 1rem;
   background-color: #f7f7f9;
 
   @include media-breakpoint-up(sm) {

@@ -12,7 +12,7 @@
     <ul class="dropdown-menu bs-docs-search-results" id="search-results"></ul>
   </form>
 
-  <nav class="bs-docs-links collapse hidden-xs-down" id="docsNavbarContent">
+  <nav class="bs-docs-links collapse navbar-toggleable-xs" id="docsNavbarContent">
     {% for group in site.data.nav %}
       {% assign link = group.pages | first %}
       {% assign slug = group.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-' %}

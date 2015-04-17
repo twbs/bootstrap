@@ -155,15 +155,31 @@ Replace `.navbar-default` with `.navbar-inverse` for a darker background color a
 Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden content.
 
 {% example html %}
-<div class="collapse" id="navbar-header">
+<div class="collapse" id="exCollapsingNavbar">
   <div class="inverse p-a">
-    <h3>Collapsed content</h3>
+    <h4>Collapsed content</h4>
     <p>Toggleable via the navbar brand.</p>
   </div>
 </div>
 <nav class="navbar navbar-default">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
     &#9776;
   </button>
 </nav>
 {% endexample %}
+
+For more complex navbar patterns, like those used in Bootstrap v3, use the `.navbar-toggleable-*` classes in conjunction with the `.navbar-toggler`. These classes override our responsive utilities to show navigation only when content is meant to be shown.
+
+{% example html %}
+<nav class="navbar navbar-default">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+    &#9776;
+  </button>
+  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+    <h4>Collapsed on xs devices</h4>
+    <p>Toggleable via the navbar brand.</p>
+  </div>
+</nav>
+{% endexample %}
+
+
