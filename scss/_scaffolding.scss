@@ -10,9 +10,11 @@
 // http://getbootstrap.com/getting-started/#third-box-sizing
 // Credit: Jon Neal & CSS-Tricks
 // http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+
 html {
   box-sizing: border-box;
 }
+
 *,
 *:before,
 *:after {
@@ -40,7 +42,7 @@ html {
 @viewport           { width: device-width; }
 
 
-// Body reset
+// Reset HTML, body, and more
 
 html {
   font-size: $font-size-root;
@@ -55,7 +57,6 @@ body {
   background-color: $body-bg;
 }
 
-// Reset fonts for relevant elements
 input,
 button,
 select,
@@ -87,45 +88,6 @@ a {
 
 img {
   vertical-align: middle;
-}
-
-// Responsive images (ensure images don't scale beyond their parents)
-.img-responsive {
-  @include img-responsive();
-}
-
-// Rounded corners
-.img-rounded {
-  @include border-radius($border-radius-lg);
-}
-
-// Image thumbnails
-.img-thumbnail {
-  padding: $thumbnail-padding;
-  line-height: $line-height-base;
-  background-color: $thumbnail-bg;
-  border: 1px solid $thumbnail-border;
-  border-radius: $thumbnail-border-radius;
-  transition: all .2s ease-in-out;
-  @include box-shadow(0 1px 2px rgba(0,0,0,.075));
-
-  // Keep them at most 100% wide
-  @include img-responsive(inline-block);
-}
-
-// Perfect circle
-.img-circle {
-  border-radius: 50%; // set radius in percents
-}
-
-
-// Horizontal rules
-
-hr {
-  margin-top: $spacer;
-  margin-bottom: $spacer;
-  border: 0;
-  border-top: .0625rem solid $hr-border;
 }
 
 

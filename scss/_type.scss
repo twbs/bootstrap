@@ -65,6 +65,17 @@ p {
 }
 
 
+// Horizontal rules
+// -------------------------
+
+hr {
+  margin-top: $spacer;
+  margin-bottom: $spacer;
+  border: 0;
+  border-top: .0625rem solid $hr-border;
+}
+
+
 // Emphasis & misc
 // -------------------------
 
