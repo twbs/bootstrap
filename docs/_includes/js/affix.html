@@ -8,6 +8,7 @@
 
   <h2 id="affix-usage">Usage</h2>
   <p>Use the affix plugin via data attributes or manually with your own JavaScript. <strong class="text-danger">In both situations, you must provide CSS for the positioning and width of your affixed content.</strong></p>
+  <p>Note: Do not use the affix plugin on an element contained in a relatively positioned element, such as a pulled or pushed column, due to a <a href="https://github.com/twbs/bootstrap/issues/12126">Safari rendering bug</a>.</p>
 
   <h3>Positioning via CSS</h3>
   <p>The affix plugin toggles between three classes, each representing a particular state: <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code>. You must provide the styles, with the exception of <code>position: fixed;</code> on <code>.affix</code>, for these classes yourself (independent of this plugin) to handle the actual positions.</p>
