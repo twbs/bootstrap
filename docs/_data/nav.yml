@@ -67,7 +67,6 @@
         - title: Sample output
     - title: Tables
     - title: Forms
-    - title: Buttons
 
 - title: Components
   pages:
@@ -83,6 +82,7 @@
         - title: Misc elements
     - title: Jumbotron
     - title: Page header
+    - title: Buttons
     - title: Custom forms
       sections:
         - title: Checkboxes and radios
