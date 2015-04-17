@@ -31,13 +31,13 @@ label {
 //   box-sizing: border-box;
 // }
 
-// Position radios and checkboxes better
-input[type="radio"],
-input[type="checkbox"] {
-  margin: 4px 0 0;
-  margin-top: 1px \9; // IE9
-  line-height: normal;
-}
+// // Position radios and checkboxes better
+// input[type="radio"],
+// input[type="checkbox"] {
+//   margin: 4px 0 0;
+//   margin-top: 1px \9; // IE9
+//   line-height: normal;
+// }
 
 // // Set the height of file controls to match text inputs
 // input[type="file"] {
@@ -57,20 +57,20 @@ input[type="checkbox"] {
 // }
 
 // Focus for file, radio, and checkbox
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
-  @include tab-focus();
-}
+// input[type="file"]:focus,
+// input[type="radio"]:focus,
+// input[type="checkbox"]:focus {
+//   @include tab-focus();
+// }
 
 // Adjust output element
-output {
+// output {
   // display: block;
-  padding-top: ($padding-base-vertical + 1);
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  color: $input-color;
-}
+  // padding-top: ($padding-base-vertical + 1);
+  // font-size: $font-size-base;
+  // line-height: $line-height-base;
+  // color: $input-color;
+// }
 
 
 //
@@ -166,24 +166,24 @@ input[type="search"] {
 // set a pixel line-height that matches the given height of the input, but only
 // for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="date"],
-  input[type="time"],
-  input[type="datetime-local"],
-  input[type="month"] {
-    line-height: $input-height-base;
+// @media screen and (-webkit-min-device-pixel-ratio: 0) {
+//   input[type="date"],
+//   input[type="time"],
+//   input[type="datetime-local"],
+//   input[type="month"] {
+//     line-height: $input-height-base;
 
-    &.input-sm,
-    .input-group-sm & {
-      line-height: $input-height-sm;
-    }
+//     &.input-sm,
+//     .input-group-sm & {
+//       line-height: $input-height-sm;
+//     }
 
-    &.input-lg,
-    .input-group-lg & {
-      line-height: $input-height-lg;
-    }
-  }
-}
+//     &.input-lg,
+//     .input-group-lg & {
+//       line-height: $input-height-lg;
+//     }
+//   }
+// }
 
 
 // Form groups

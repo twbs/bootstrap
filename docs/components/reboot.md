@@ -97,6 +97,20 @@ For simpler styling, clear hierarchy, and better spacing, description lists have
 {% endmarkdown %}
 </div>
 
+## Preformatted text
+
+The `<pre>` element is reset to remove its `margin-top` and use `rem` units for its `margin-bottom`.
+
+<div class="bd-example">
+{% markdown %}
+<pre>
+.element {
+  margin-bottom: 1rem;
+}
+</pre>
+{% endmarkdown %}
+</div>
+
 ## Tables
 
 Tables are slightly adjusted to style `<caption>`s and ensure consistent `text-align` throughout.
@@ -137,99 +151,19 @@ Tables are slightly adjusted to style `<caption>`s and ensure consistent `text-a
   </table>
 </div>
 
-## Code blocks
+## Forms
 
-The `<pre>` element is reset to remove its `margin-top` and use `rem` units for its `margin-bottom`.
+Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes:
 
-<div class="bd-example">
-{% markdown %}
-<pre>
-.element {
-  margin-bottom: 1rem;
-}
-</pre>
-{% endmarkdown %}
-</div>
+- `<fieldset>`s have no borders, padding, or margin so they can be easily used as wrappers for individual inputs or groups of inputs.
+= `<legend>`s, like fieldsets, have also been restyled to be displayed as a heading of sorts.
+- `<label>`s are set to `display: inline-block` to allow `margin` to be applied.
+- `<input>`s, `<selects>`s, `<textareas>`s, and `<buttons>`s are mostly addressed by Normalize, but Reboot removes their `margin` and sets `line-height: inherit`, too.
+- `<textarea>`s are modified to only be resizeble vertically as horizontal resizing often "breaks" page layout.
 
+These changes, and more, are demonstrated below.
 
-## Inline elements
-
-<div class="bd-example">
-{% markdown %}
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et. For example, `<section>` should be wrapped as inline. Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus.
-{% endmarkdown %}
-</div>
-
-
-
-
-
-<h1>Address</h1>
-
-<address>
-  <strong>Twitter, Inc.</strong><br>
-  795 Folsom Ave, Suite 600<br>
-  San Francisco, CA 94107<br>
-  <abbr title="Phone">P:</abbr> (123) 456-7890
-</address>
-
-<address>
-  <strong>Full Name</strong><br>
-  <a href="mailto:#">first.last@example.com</a>
-</address>
-
-<hr>
-
-<h1>Blockquote</h1>
-
-<blockquote>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
-
-<hr>
-
-<h1>Tables</h1>
-
-<table>
-  <caption>
-    This is an example table, and this is it's caption to describe the contents.
-  </caption>
-  <thead>
-    <tr>
-      <th>Table heading</th>
-      <th>Table heading</th>
-      <th>Table heading</th>
-      <th>Table heading</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr>
-
-<h1>Forms</h1>
-
-<form>
+<form class="bd-example">
   <fieldset>
     <legend>Example legend</legend>
 
@@ -255,14 +189,14 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et. For example,
       </select>
     </p>
 
-    <formgroup>
+    <p>
       <label>
         <input type="checkbox" value="">
         Check this checkbox
       </label>
-    </formgroup>
+    </p>
 
-    <formgroup>
+    <p>
       <label>
         <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
         Option one is this and that
@@ -275,7 +209,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et. For example,
         <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
         Option three is disabled
       </label>
-    </formgroup>
+    </p>
 
     <p>
       <label for="textarea">Example textarea</label>
@@ -283,23 +217,13 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et. For example,
     </p>
 
     <p>
-      <label for="file">Example file</label>
-      <input type="file">
-    </p>
-
-    <p>
-      <label for="progress">Example progress bar</label>
-      <progress value="25" min="0" max="100"></progress>
-    </p>
-
-    <p>
-      <label for="range">Example range</label>
-      <input type="range">
-    </p>
-
-    <p>
       <label for="time">Example temporal</label>
       <input type="date">
+    </p>
+
+    <p>
+      <label for="time">Example output</label>
+      <output name="result">100</output>
     </p>
 
     <p>
@@ -315,3 +239,42 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et. For example,
     </p>
   </fieldset>
 </form>
+
+## Misc elements
+
+### Address
+
+The `<address>` element is updated to reset the browser default `font-style` from `italic` to `normal`. `line-height` is also now inherited, and `margin-bottom: 1rem` has been added.
+
+<div class="bd-example">
+  <address>
+    <strong>Twitter, Inc.</strong><br>
+    795 Folsom Ave, Suite 600<br>
+    San Francisco, CA 94107<br>
+    <abbr title="Phone">P:</abbr> (123) 456-7890
+  </address>
+
+  <address>
+    <strong>Full Name</strong><br>
+    <a href="mailto:#">first.last@example.com</a>
+  </address>
+</div>
+
+### Blockquote
+
+The default `margin` on blockquotes is `1em 40px`, so we reset that to `0 0 1rem` for something more consistent with other elements.
+
+<div class="bd-example">
+  <blockquote>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  </blockquote>
+</div>
+
+### Inline elements
+
+The `<abbr>` element receives basic styling to make it stand the amongst paragraph text.
+
+<div class="bd-example">
+  Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
+</div>

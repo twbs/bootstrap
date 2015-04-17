@@ -405,12 +405,11 @@ legend {
 }
 
 input[type="search"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  -webkit-appearance: none;
 }
 
 output {
-  display: block;
+  display: inline-block;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -440,15 +439,15 @@ h4 small, h4 .small, .h4 small, .h4 .small, h5 small, h5 .small, .h5 small, .h5 
 }
 
 h1, .h1 {
-  font-size: 3rem;
-}
-
-h2, .h2 {
   font-size: 2.5rem;
 }
 
-h3, .h3 {
+h2, .h2 {
   font-size: 2rem;
+}
+
+h3, .h3 {
+  font-size: 1.75rem;
 }
 
 h4, .h4 {
@@ -513,39 +512,6 @@ mark, .mark {
 .initialism {
   font-size: 90%;
   text-transform: uppercase;
-}
-
-blockquote {
-  padding: .5rem 1rem;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-  border-left: .25rem solid #eceeef;
-}
-blockquote p:last-child, blockquote ul:last-child, blockquote ol:last-child {
-  margin-bottom: 0;
-}
-blockquote footer {
-  display: block;
-  font-size: 80%;
-  line-height: 1.5;
-  color: #818a91;
-}
-blockquote footer:before {
-  content: "\2014 \00A0";
-}
-
-.blockquote-reverse {
-  padding-right: 1rem;
-  padding-left: 0;
-  text-align: right;
-  border-right: .25rem solid #eceeef;
-  border-left: 0;
-}
-.blockquote-reverse footer:before {
-  content: "";
-}
-.blockquote-reverse footer:after {
-  content: "\00A0 \2014";
 }
 
 .img-responsive, .carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
@@ -1688,25 +1654,6 @@ label {
   margin-bottom: .5rem;
 }
 
-input[type="radio"], input[type="checkbox"] {
-  margin: 4px 0 0;
-  margin-top: 1px \9;
-  line-height: normal;
-}
-
-input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-
-output {
-  padding-top: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #55595c;
-}
-
 .form-control {
   display: block;
   width: 100%;
@@ -1759,18 +1706,6 @@ textarea.form-control {
 
 input[type="search"] {
   -webkit-appearance: none;
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"] {
-    line-height: 2.65rem;
-  }
-  input[type="date"].input-sm, .input-group-sm > input[type="date"].form-control, .input-group-sm > input[type="date"].input-group-addon, .input-group-sm > .input-group-btn > input[type="date"].btn, .input-group-sm input[type="date"], input[type="time"].input-sm, .input-group-sm > input[type="time"].form-control, .input-group-sm > input[type="time"].input-group-addon, .input-group-sm > .input-group-btn > input[type="time"].btn, .input-group-sm input[type="time"], input[type="datetime-local"].input-sm, .input-group-sm > input[type="datetime-local"].form-control, .input-group-sm > input[type="datetime-local"].input-group-addon, .input-group-sm > .input-group-btn > input[type="datetime-local"].btn, .input-group-sm input[type="datetime-local"], input[type="month"].input-sm, .input-group-sm > input[type="month"].form-control, .input-group-sm > input[type="month"].input-group-addon, .input-group-sm > .input-group-btn > input[type="month"].btn, .input-group-sm input[type="month"] {
-    line-height: 2.025rem;
-  }
-  input[type="date"].input-lg, .input-group-lg > input[type="date"].form-control, .input-group-lg > input[type="date"].input-group-addon, .input-group-lg > .input-group-btn > input[type="date"].btn, .input-group-lg input[type="date"], input[type="time"].input-lg, .input-group-lg > input[type="time"].form-control, .input-group-lg > input[type="time"].input-group-addon, .input-group-lg > .input-group-btn > input[type="time"].btn, .input-group-lg input[type="time"], input[type="datetime-local"].input-lg, .input-group-lg > input[type="datetime-local"].form-control, .input-group-lg > input[type="datetime-local"].input-group-addon, .input-group-lg > .input-group-btn > input[type="datetime-local"].btn, .input-group-lg input[type="datetime-local"], input[type="month"].input-lg, .input-group-lg > input[type="month"].form-control, .input-group-lg > input[type="month"].input-group-addon, .input-group-lg > .input-group-btn > input[type="month"].btn, .input-group-lg input[type="month"] {
-    line-height: 3.316667rem;
-  }
 }
 
 .form-group {

@@ -77,8 +77,10 @@
         - title: Page defaults
         - title: Headings and paragraphs
         - title: Lists
+        - title: Preformatted text
         - title: Tables
-        - title: Code blocks
+        - title: Forms
+        - title: Misc elements
     - title: Jumbotron
     - title: Page header
     - title: Custom forms

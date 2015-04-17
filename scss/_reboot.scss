@@ -271,13 +271,16 @@ legend {
 }
 
 input[type="search"] {
-  // Under the `content-box` in Normalize as `*` isn't specific enough.
-  box-sizing: border-box;
+  // This overrides the extra rounded corners on search inputs in iOS so that our
+  // `.form-control` class can properly style them. Note that this cannot simply
+  // be added to `.form-control` as it's not specific enough. For details, see
+  // https://github.com/twbs/bootstrap/issues/11586.
+  -webkit-appearance: none;
 }
 
 // todo: needed?
 output {
-  display: block;
+  display: inline-block;
 //  font-size: $font-size-base;
 //  line-height: $line-height-base;
 //  color: $input-color;
