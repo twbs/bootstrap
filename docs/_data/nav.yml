@@ -93,11 +93,24 @@
     - title: Button group
     - title: Button dropdown
     - title: Forms
-    - title: Custom forms
       sections:
+        - title: Form controls
+        - title: Form groups
+        - title: Inline forms
+        - title: Using the Grid
         - title: Checkboxes and radios
-        - title: Select menu
-        - title: File browser
+        - title: Static controls
+        - title: Focus state
+        - title: Disabled state
+        - title: Readonly inputs
+        - title: Validation
+        - title: Control sizing
+        - title: Column sizing
+        - title: Help text
+        - title: Custom forms
+        # - title: Checkboxes and radios
+        # - title: Select menu
+        # - title: File browser
     - title: Input group
       sections:
         - title: Basic example
