@@ -16,10 +16,6 @@
   }
 }
 
-.bd-sidebar .navbar-toggle .icon-bar {
-  background-color: #fff;
-}
-
 .bd-sidebar .navbar-header {
   float: none;
   margin-right: -15px;
@@ -32,16 +28,14 @@
 
 @media (min-width: 992px) {
   .bd-docs {
-    padding-left: 240px;
+    margin-left: 240px;
   }
   .bd-sidebar {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
-    z-index: 100; // Ensure scrolling always works in Safari
     width: 240px;
-    overflow-x: hidden;
     overflow-y: auto;
     border-right: 1px solid #eee;
     // @include gradient-vertical(#29262f, #322f38);

@@ -41,8 +41,18 @@
         - title: Print
         - title: Test cases
 
-- title: Content
+- title: Components
   pages:
+    - title: Reboot
+      sections:
+        - title: Approach
+        - title: Page defaults
+        - title: Headings and paragraphs
+        - title: Lists
+        - title: Preformatted text
+        - title: Tables
+        - title: Forms
+        - title: Misc elements
     - title: Typography
       sections:
         # - title: Scale
@@ -67,22 +77,20 @@
         - title: Sample output
     - title: Tables
     - title: Forms
-
-- title: Components
-  pages:
-    - title: Reboot
-      sections:
-        - title: Approach
-        - title: Page defaults
-        - title: Headings and paragraphs
-        - title: Lists
-        - title: Preformatted text
-        - title: Tables
-        - title: Forms
-        - title: Misc elements
     - title: Jumbotron
     - title: Page header
     - title: Buttons
+      sections:
+        - title: Examples
+        - title: Button tags
+        - title: Sizes
+        - title: Active state
+        - title: Disabled state
+        # - title: JavaScript behavior
+        - title: Custom states
+        - title: Single toggle
+        - title: Checkbox and radio
+        - title: Methods
     - title: Custom forms
       sections:
         - title: Checkboxes and radios

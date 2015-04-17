@@ -126,3 +126,99 @@ This class uses `pointer-events: none` to try to disable the link functionality 
 
 While button classes can be used on `<a>` and `<button>` elements, only `<button>` elements are supported within our nav and navbar components.
 {% endcallout %}
+
+## JavaScript behavior
+
+Do more with buttons. Control button states or create groups of buttons for more components like toolbars.
+
+### Custom states
+
+Use JavaScript to change the text and "state" of a particular button. For the sake of this demonstration, we are using `data-loading-text` and `$().button('loading')`, but that's not the only state you can use. [Custom strings of text](#buttons-methods) can also be used with `$().button(string)`.
+
+**Heads up!** You'll likely need to work around Firefox's [persisted form control states across page loads bug](https://github.com/twbs/bootstrap/issues/793) (e.g., disabled and checked states) with `autocomplete="off"`. See [Mozilla bug #654072](https://bugzilla.mozilla.org/show_bug.cgi?id=654072) for details.
+
+{% example html %}
+<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+  Loading state
+</button>
+<script>
+  $('#myButton').on('click', function () {
+    var $btn = $(this).button('loading')
+    // business logic...
+    $btn.button('reset')
+  })
+</script>
+{% endexample %}
+
+#### Single toggle
+
+Add `data-toggle="button"` to toggle a button's `active` state. If you're pre-toggling a button, you must manually add the `.active` class **and** `aria-pressed="true"` to the `<button>`.
+
+{% example html %}
+<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Single toggle
+</button>
+{% endexample %}
+
+### Checkbox and radio
+
+Bootstrap's `.button` styles can be applied to other elements, such as `<label>`s, to provide checkbox or radio style button toggling. Add `data-toggle="buttons"` to a `.btn-group` containing those modified buttons to enable toggling in their respective styles.
+
+The checked state for these buttons is **only updated via `click` event** on the button. If you use another method to update the input—e.g., with `<input type="reset">` or by manually applying the input's `checked` property—you'll need to toggle `.active` on the `<label>` manually.
+
+Note that pre-checked buttons require you to manually add the `.active` class to the input's `<label>`.
+
+{% example html %}
+<div class="bd-example">
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary active">
+      <input type="checkbox" checked autocomplete="off"> Checkbox 1 (pre-checked)
+    </label>
+    <label class="btn btn-primary">
+      <input type="checkbox" autocomplete="off"> Checkbox 2
+    </label>
+    <label class="btn btn-primary">
+      <input type="checkbox" autocomplete="off"> Checkbox 3
+    </label>
+  </div>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
+  </label>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
+  </label>
+</div>
+{% endexample %}
+
+### Methods
+
+#### $().button('toggle')
+
+Toggles push state. Gives the button the appearance that it has been activated.
+
+#### $().button('reset')
+
+Resets button state—swaps text to original text.
+
+#### $().button(string)
+
+Swaps text to any data defined text state.
+
+{% highlight html %}
+<button type="button" id="myStateButton" data-complete-text="finished!" class="btn btn-primary" autocomplete="off">
+  ...
+</button>
+<script>
+  $('#myStateButton').on('click', function () {
+    $(this).button('complete') // button text will be "finished!"
+  })
+</script>
+{% endhighlight %}
