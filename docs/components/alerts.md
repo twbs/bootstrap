@@ -3,15 +3,11 @@ layout: page
 title: Alerts
 ---
 
-Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. For inline dismissal, use the [alerts jQuery plugin]({{ site.baseurl }}javascript/#alerts).
+Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
-Wrap any text and an optional dismiss button in `.alert` and one of the four contextual classes (e.g., `.alert-success`) for basic alert messages.
+## Examples
 
-{% callout info %}
-#### No default class
-
-Alerts don't have default classes, only base and modifier classes. A default gray alert doesn't make too much sense, so you're required to specify a type via contextual class. Choose from success, info, warning, or danger.
-{% endcallout %}
+Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the four **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts jQuery plugin](#dismissing).
 
 {% example html %}
 <div class="alert alert-success" role="alert">
@@ -27,26 +23,6 @@ Alerts don't have default classes, only base and modifier classes. A default gra
   <strong>Oh snap!</strong> Change a few things up and try submitting again.
 </div>
 {% endexample %}
-
-### Dismissing
-
-Build on any alert by adding an optional `.alert-dismissible` and [close button]().
-
-{% example html %}
-<div class="alert alert-warning alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    <span class="sr-only">Close</span>
-  </button>
-  <strong>Warning!</strong> Better check yourself, you're not looking too good.
-</div>
-{% endexample %}
-
-{% callout warning %}
-#### Ensure proper behavior across all devices
-
-Be sure to use the `<button>` element with the `data-dismiss="alert"` data attribute.
-{% endcallout %}
 
 ### Link color
 
@@ -67,8 +43,16 @@ Use the `.alert-link` utility class to quickly provide matching colored links wi
 </div>
 {% endexample %}
 
+### Dismissing
 
-## Examples
+Using the alert JavaScript plugin, it's possible to dismiss any alert inline. Here's how:
+
+- Be sure you've loaded the alert plugin, or the compiled Bootstrap JavaScript.
+- Add a dismiss button and the `.alert-dismissible` class, which adds extra padding to the right of the alert and positions the `.close` button.
+- On the dismiss button, add the `data-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
+- To animate alerts when dismissing them, be sure to add the `.fade` and `.in` classes.
+
+You can see this in action with a live demo:
 
 {% example html %}
 <div class="alert alert-warning alert-dismissible fade in" role="alert">
@@ -76,25 +60,13 @@ Use the `.alert-link` utility class to quickly provide matching colored links wi
     <span aria-hidden="true">&times;</span>
     <span class="sr-only">Close</span>
   </button>
-  <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
 </div>
 {% endexample %}
 
-When using a `.close` button, it must be the first child of the `.alert-dismissible` and no text content may come before it in the markup.
+## JavaScript behavior
 
-{% example html %}
-<div class="alert alert-danger alert-dismissible fade in" role="alert">
-  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <h5 class="alert-heading">Sorry, something went wrong.</h5>
-  <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
-  <p>
-    <button type="button" class="btn btn-danger">Take this action</button>
-    <button type="button" class="btn btn-secondary">Or do this</button>
-  </p>
-</div>
-{% endexample %}
-
-## Usage
+### Triggers
 
 Enable dismissal of an alert via JavaScript:
 
@@ -102,9 +74,7 @@ Enable dismissal of an alert via JavaScript:
 $(".alert").alert()
 {% endhighlight %}
 
-### Markup
-
-Just add `data-dismiss="alert"` to your close button to automatically give an alert close functionality. Closing an alert removes it from the DOM.
+Or with `data` attributes on a button **within the alert**, as demonstrated above:
 
 {% highlight html %}
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -113,7 +83,7 @@ Just add `data-dismiss="alert"` to your close button to automatically give an al
 </button>
 {% endhighlight %}
 
-To have your alerts use animation when closing, make sure they have the `.fade` and `.in` classes already applied to them.
+Note that closing an alert will remove it from the DOM.
 
 ### Methods
 
