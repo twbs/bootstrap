@@ -2,6 +2,11 @@
 // Responsive: Utility classes
 // --------------------------------------------------
 
+
+//
+// Mixins
+//
+
 @each $bp in map-keys($grid-breakpoints) {
   .hidden-#{$bp}-up {
     @include media-breakpoint-up($bp) {

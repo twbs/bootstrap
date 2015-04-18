@@ -2,6 +2,7 @@
 // Labels
 // --------------------------------------------------
 
+
 .label {
   display: inline-block;
   padding: .25em .4em;
@@ -35,8 +36,10 @@ a.label {
   }
 }
 
+
 // Colors
-// Contextual variations (linked labels get darker on :hover)
+//
+// Contextual variations (linked labels get darker on :hover).
 
 .label-default {
   @include label-variant($label-default-bg);

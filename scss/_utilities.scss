@@ -3,10 +3,14 @@
 // --------------------------------------------------
 
 
+//
 // Floats
+//
+
 .clearfix {
   @include clearfix();
 }
+
 .center-block {
   @include center-block();
 }
@@ -14,9 +18,15 @@
 .pull-right {
   @include pull-right();
 }
+
 .pull-left {
   @include pull-left();
 }
+
+
+//
+// Screenreaders
+//
 
 .sr-only {
   @include sr-only();
@@ -24,13 +34,6 @@
 
 .sr-only-focusable {
   @include sr-only-focusable();
-}
-
-
-// Inverse
-.inverse {
-  color: $gray-lighter;
-  background-color: $gray-dark;
 }
 
 
@@ -157,6 +160,10 @@
 }
 
 
+//
+// Text
+//
+
 // Alignment
 .text-left           { text-align: left; }
 .text-right          { text-align: right; }
@@ -170,8 +177,8 @@
 .text-uppercase      { text-transform: uppercase; }
 .text-capitalize     { text-transform: capitalize; }
 
-// Contextual colors
 
+// Contextual colors
 .text-muted {
   color: $text-muted;
 }
@@ -186,9 +193,17 @@
 
 @include text-emphasis-variant('.text-danger', $state-danger-text);
 
+
 // Contextual backgrounds
 // For now we'll leave these alongside the text classes until v4 when we can
 // safely shift things around (per SemVer rules).
+
+// Inverse
+// Todo: redo this as a proper class
+.inverse {
+  color: $gray-lighter;
+  background-color: $gray-dark;
+}
 
 .bg-primary {
   // Given the contrast here, this is the only class to have its color inverted
