@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "btoa": "~1.1.2",
-    "glob": "~5.0.3",
+    "glob": "~5.0.5",
     "grunt": "~0.4.5",
     "grunt-autoprefixer": "~3.0.0",
     "grunt-banner": "~0.3.1",
@@ -45,7 +45,7 @@
     "grunt-contrib-cssmin": "~0.12.2",
     "grunt-contrib-htmlmin": "~0.4.0",
     "grunt-contrib-jade": "~0.14.1",
-    "grunt-contrib-jshint": "~0.11.1",
+    "grunt-contrib-jshint": "~0.11.2",
     "grunt-contrib-less": "~1.0.1",
     "grunt-contrib-qunit": "~0.7.0",
     "grunt-contrib-uglify": "~0.9.1",
@@ -58,9 +58,9 @@
     "grunt-saucelabs": "~8.6.0",
     "grunt-sed": "~0.1.1",
     "load-grunt-tasks": "~3.1.0",
-    "markdown-it": "^4.1.0",
+    "markdown-it": "^4.1.1",
     "npm-shrinkwrap": "^200.1.0",
-    "time-grunt": "^1.1.0"
+    "time-grunt": "^1.1.1"
   },
   "engines": {
     "node": ">=0.10.1"
