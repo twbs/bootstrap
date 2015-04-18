@@ -118,9 +118,7 @@
     - title: Dropdowns
     - title: Badges
     - title: Label
-    - title: Tabs
     - title: Alerts
-    - title: Buttons
     - title: Navs
     - title: Navbar
     - title: Card
@@ -137,7 +135,6 @@
         - title: Columns
     - title: Breadcrumb
     - title: Pagination
-    - title: Alerts
     - title: Progress
     - title: List group
     - title: Modal
@@ -146,7 +143,6 @@
     - title: Popovers
     - title: Collapse
     - title: Carousel
-    - title: Responsive embed
     - title: Utilities
       sections:
         - title: Text alignment
@@ -160,6 +156,7 @@
         - title: Invisible content
         - title: Screen readers
         - title: Image replacement
+        - title: Responsive embed
 
 - title: Examples
   pages:
