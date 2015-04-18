@@ -58,13 +58,9 @@
         # - title: Scale
         - title: Global settings
         - title: Headings
-        - title: Body copy
         - title: Lead
         - title: Inline text elements
-        - title: Alignment classes
-        - title: Transformation classes
         - title: Abbreviations
-        - title: Address
         - title: Blockquotes
         - title: Lists
     - title: Images
