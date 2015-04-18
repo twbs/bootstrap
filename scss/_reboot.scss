@@ -94,9 +94,12 @@ p {
   margin-bottom: 1rem;
 }
 
-abbr[title] {
+// Abbreviations and acronyms
+abbr[title],
+// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+abbr[data-original-title] {
   cursor: help;
-  border-bottom-color: #ccc;
+  border-bottom: 1px dotted $abbr-border-color;
 }
 
 address {
