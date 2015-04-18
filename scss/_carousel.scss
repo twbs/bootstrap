@@ -84,11 +84,12 @@
   > .active.right {
     left: 100%;
   }
-
 }
 
+
+//
 // Left/right controls for nav
-// ---------------------------
+//
 
 .carousel-control {
   position: absolute;
@@ -155,6 +156,7 @@
   }
 }
 
+
 // Optional indicator pips
 //
 // Add an unordered list with the following class and add a list item for each
@@ -195,9 +197,11 @@
   }
 }
 
+
 // Optional captions
-// -----------------------------
-// Hidden by default for smaller viewports
+//
+// Hidden by default for smaller viewports.
+
 .carousel-caption {
   position: absolute;
   right: 15%;
@@ -216,7 +220,10 @@
 }
 
 
-// Scale up controls for tablets and up
+//
+// Responsive variations
+//
+
 @include media-breakpoint-up(sm) {
   // Scale up the controls a smidge
   .carousel-control {
