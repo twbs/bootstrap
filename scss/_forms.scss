@@ -2,17 +2,6 @@
 // Forms
 // --------------------------------------------------
 
-// legend {
-//   display: block;
-//   width: 100%;
-//   padding: 0;
-//   margin-bottom: $line-height-computed;
-//   font-size: ($font-size-base * 1.5);
-//   line-height: inherit;
-//   color: $legend-color;
-//   border: 0;
-//   border-bottom: 1px solid $legend-border-color;
-// }
 
 // todo: turn this into a class
 label {
@@ -20,87 +9,13 @@ label {
 }
 
 
-// Normalize form controls
 //
-// While most of our form styles require extra classes, some basic normalization
-// is required to ensure optimum display with or without those classes to better
-// address browser inconsistencies.
-
-// // Override content-box in Normalize (* isn't specific enough)
-// input[type="search"] {
-//   box-sizing: border-box;
-// }
-
-// // Position radios and checkboxes better
-// input[type="radio"],
-// input[type="checkbox"] {
-//   margin: 4px 0 0;
-//   margin-top: 1px \9; // IE9
-//   line-height: normal;
-// }
-
-// // Set the height of file controls to match text inputs
-// input[type="file"] {
-//   display: block;
-// }
-
-// // Make range inputs behave like textual form controls
-// input[type="range"] {
-//   display: block;
-//   width: 100%;
-// }
-
-// // Make multiple select elements height not fixed
-// select[multiple],
-// select[size] {
-//   height: auto;
-// }
-
-// Focus for file, radio, and checkbox
-// input[type="file"]:focus,
-// input[type="radio"]:focus,
-// input[type="checkbox"]:focus {
-//   @include tab-focus();
-// }
-
-// Adjust output element
-// output {
-  // display: block;
-  // padding-top: ($padding-base-vertical + 1);
-  // font-size: $font-size-base;
-  // line-height: $line-height-base;
-  // color: $input-color;
-// }
-
-
+// Textual form controls
 //
-// Common form controls
-//
-
-// Shared size and type resets for form controls. Apply `.form-control` to any
-// of the following form controls:
-//
-// select
-// textarea
-// input[type="text"]
-// input[type="password"]
-// input[type="datetime"]
-// input[type="datetime-local"]
-// input[type="date"]
-// input[type="month"]
-// input[type="time"]
-// input[type="week"]
-// input[type="number"]
-// input[type="email"]
-// input[type="url"]
-// input[type="search"]
-// input[type="tel"]
-// input[type="color"]
 
 .form-control {
   display: block;
   width: 100%;
-  // display: inline-block;
   // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   // height: $input-height-base;
   padding: $padding-base-vertical $padding-base-horizontal;
@@ -153,29 +68,14 @@ label {
   }
 }
 
-// // Reset height for `textarea`s
-// textarea.form-control {
-//   height: auto;
-//   padding-top: $padding-base-horizontal;
-//   padding-bottom: $padding-base-horizontal;
-// }
 
 // Make file inputs better match text inputs by forcing them to new lines.
-.form-control-file {
+.form-control-file,
+.form-control-range {
   display: block;
 }
 
-// Search inputs in iOS
-//
-// This overrides the extra rounded corners on search inputs in iOS so that our
-// `.form-control` class can properly style them. Note that this cannot simply
-// be added to `.form-control` as it's not specific enough. For details, see
-// https://github.com/twbs/bootstrap/issues/11586.
-
-input[type="search"] {
-  -webkit-appearance: none;
-}
-
+// Todo: clear this up
 
 // Special styles for iOS temporal inputs
 //
