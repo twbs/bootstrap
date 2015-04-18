@@ -3,7 +3,7 @@ layout: page
 title: Typography
 ---
 
-Bootstrap includes simple and easily customized typography across the project. In addition to the standard headings, body text, and lists, utility classes are also included.
+Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes](/components/utilities/).
 
 ## Global settings
 
@@ -96,16 +96,6 @@ Create lighter, secondary text in any heading with a generic `<small>` tag or th
 <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
 {% endhighlight %}
 
-## Body copy
-
-Bootstrap's base text is sized with global `font-size: 16px;` and `line-height: 1.5;`. This is applied to the `<body>` and all paragraphs.
-
-{% example html %}
-<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
-<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
-<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-{% endexample %}
-
 ## Lead
 
 Make a paragraph stand out by adding `.lead`.
@@ -137,45 +127,16 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a `title` attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover and to users of assistive technologies.
 
-### Basic abbreviation
-
-{% example html %}
-<abbr title="attribute">attr</abbr>
-{% endexample %}
-
-### Initialism
-
 Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
 {% example html %}
-<abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
-{% endexample %}
-
-## Address
-
-Present contact information for the nearest ancestor or the entire body of work. Preserve formatting by ending all lines with `<br>`.
-
-{% example html %}
-<address>
-  <strong>Twitter, Inc.</strong><br>
-  795 Folsom Ave, Suite 600<br>
-  San Francisco, CA 94107<br>
-  <abbr title="Phone">P:</abbr> (123) 456-7890
-</address>
-
-<address>
-  <strong>Full Name</strong><br>
-  <a href="mailto:#">first.last@example.com</a>
-</address>
+<p><abbr title="attribute">attr</abbr></p>
+<p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>
 {% endexample %}
 
 ## Blockquotes
 
-For quoting blocks of content from another source within your document.
-
-### Default blockquote
-
-Wrap `<blockquote>` around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes, we recommend a `<p>`.
+For quoting blocks of content from another source within your document. Wrap `<blockquote>` around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes, we recommend a `<p>`.
 
 {% example html %}
 <blockquote>
@@ -183,11 +144,7 @@ Wrap `<blockquote>` around any <abbr title="HyperText Markup Language">HTML</abb
 </blockquote>
 {% endexample %}
 
-### Blockquote options
-
-Style and content changes for simple variations on a standard `<blockquote>`.
-
-#### Naming a source
+### Naming a source
 
 Add a `<footer>` for identifying the source. Wrap the name of the source work in `<cite>`.
 
@@ -198,7 +155,7 @@ Add a `<footer>` for identifying the source. Wrap the name of the source work in
 </blockquote>
 {% endexample %}
 
-#### Reverse layout
+### Reverse layout
 
 Add `.blockquote-reverse` for a blockquote with right-aligned content.
 
@@ -210,48 +167,6 @@ Add `.blockquote-reverse` for a blockquote with right-aligned content.
 {% endexample %}
 
 ## Lists
-
-### Unordered
-
-A list of items in which the order does *not* explicitly matter.
-
-{% example html %}
-<ul>
-  <li>Lorem ipsum dolor sit amet</li>
-  <li>Nulla volutpat aliquam velit
-    <ul>
-      <li>Phasellus iaculis neque</li>
-      <li>Purus sodales ultricies</li>
-      <li>Vestibulum laoreet porttitor sem</li>
-      <li>Ac tristique libero volutpat at</li>
-    </ul>
-  </li>
-  <li>Faucibus porta lacus fringilla vel</li>
-  <li>Aenean sit amet erat nunc</li>
-  <li>Eget porttitor lorem</li>
-</ul>
-{% endexample %}
-
-### Ordered
-
-A list of items in which the order *does* explicitly matter.
-
-{% example html %}
-<ol>
-  <li>Lorem ipsum dolor sit amet</li>
-  <li>Nulla volutpat aliquam velit
-    <ol>
-      <li>Phasellus iaculis neque</li>
-      <li>Purus sodales ultricies</li>
-      <li>Vestibulum laoreet porttitor sem</li>
-      <li>Ac tristique libero volutpat at</li>
-    </ol>
-  </li>
-  <li>Faucibus porta lacus fringilla vel</li>
-  <li>Aenean sit amet erat nunc</li>
-  <li>Eget porttitor lorem</li>
-</ol>
-{% endexample %}
 
 ### Unstyled
 
@@ -287,22 +202,6 @@ Place all list items on a single line with `display: inline-block;` and some lig
   <li>Phasellus iaculis</li>
   <li>Nulla volutpat</li>
 </ul>
-{% endexample %}
-
-### Description
-
-A list of terms with their associated descriptions.
-
-{% example html %}
-<dl>
-  <dt>Description lists</dt>
-  <dd>A description list is perfect for defining terms.</dd>
-  <dt>Euismod</dt>
-  <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-  <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-  <dt>Malesuada porta</dt>
-  <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-</dl>
 {% endexample %}
 
 ### Horizontal description
