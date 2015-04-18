@@ -194,10 +194,10 @@ $(function () {
         trigger: 'click'
       })
 
-    $div.find('a').click()
+    $div.find('a').trigger('click')
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
 
-    $div.find('a').click()
+    $div.find('a').trigger('click')
     assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
@@ -206,7 +206,7 @@ $(function () {
     var $content = $('<div class="content-with-handler"><a class="btn btn-warning">Button with event handler</a></div>').appendTo('#qunit-fixture')
 
     var handlerCalled = false
-    $('.content-with-handler .btn').click(function () {
+    $('.content-with-handler .btn').on('click', function () {
       handlerCalled = true
     })
 
@@ -228,7 +228,7 @@ $(function () {
           .one('hidden.bs.popover', function () {
             $div
               .one('shown.bs.popover', function () {
-                $('.content-with-handler .btn').click()
+                $('.content-with-handler .btn').trigger('click')
                 $div.bootstrapPopover('destroy')
                 assert.ok(handlerCalled, 'content\'s event handler still present')
                 done()

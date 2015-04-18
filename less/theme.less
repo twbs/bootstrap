@@ -28,6 +28,12 @@
     .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
 
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    .box-shadow(none);
+  }
+
   .badge {
     text-shadow: none;
   }
@@ -53,10 +59,17 @@
   }
 
   &.disabled,
-  &:disabled,
-  &[disabled] {
-    background-color: darken(@btn-color, 12%);
-    background-image: none;
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+      background-color: darken(@btn-color, 12%);
+      background-image: none;
+    }
   }
 }
 

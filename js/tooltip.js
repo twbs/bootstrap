@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: tooltip.js v3.3.2
+ * Bootstrap: tooltip.js v3.3.4
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
@@ -25,7 +25,7 @@
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.3.2'
+  Tooltip.VERSION  = '3.3.4'
 
   Tooltip.TRANSITION_DURATION = 150
 
@@ -385,42 +385,35 @@
     return delta
   }
 
-  Tooltip.prototype.didModuleReceiveTypeStringOrFunction = function (module, received) {
-    if (!/string|function/.test(received)) {
-      throw new Error(module + ' received type ' + received + '. Was expecting type string or a function.')
-    }
-
-    return true
-  }
-
-  Tooltip.prototype.didFunctionReturnStringOrJQuery = function (module, returned, returnedType) {
-    if (returnedType !== 'string' && !(returned.jquery)) {
-      throw new Error(module + ' received type function which returned type ' + returnedType + '. ' +
-        'Was expecting type string as the return type.')
-    }
-
-    return true
-  }
-
-  Tooltip.prototype.checkValidType = function (module, contentType, o) {
+  Tooltip.prototype.checkValidType = function (contentType, o) {
     var returnedContent
-    this.didModuleReceiveTypeStringOrFunction(module, contentType)
+    var returnedContentType
 
-    if (contentType == 'function') {
-      if (module === 'Popover') {
-        returnedContent = o.content.call(this.$element[0])
-      }
-      if (module === 'Tooltip') {
-        returnedContent = o.title.call(this.$element[0])
-      }
+    switch (contentType) {
+      case 'function':
+        returnedContent = o[this.type == 'Popover' ? 'content' : 'title'].call(this.$element[0])
+        returnedContentType = typeof returnedContent
 
-      var returnedContentType = typeof returnedContent
-      if (this.didFunctionReturnStringOrJQuery(module, returnedContent, returnedContentType)) {
+        if (returnedContentType !== 'string' && !(returnedContent.jquery)) {
+          throw new Error(this.type + ' received type function which returned type ' + returnedContentType + '. ' +
+          'Was expecting type string as the return type.')
+        }
+
         return returnedContent
-      }
-    }
+        break
 
-    return true
+      case 'string':
+        return o[this.type == 'Popover' ? 'content' : 'title'].call(this.$element[0])
+        break
+
+      case 'object':
+        return contentType.nodeType == 3 ?
+        o[this.type == 'Popover' ? 'content' : 'title'].call(this.$element[0]) : false
+        break
+
+      default:
+        throw new Error(this.type + ' received type ' + returnedContentType + '. Was expecting type string or a function.')
+    }
   }
 
   Tooltip.prototype.getTitle = function () {
@@ -429,7 +422,7 @@
     var o  = this.options
     var titleType = typeof o.title
 
-    var returnedContent = this.checkValidType('Tooltip', titleType, o)
+    var returnedContent = this.checkValidType(titleType, o)
 
     title = $e.attr('data-original-title')
       || (titleType == 'function' ? returnedContent :  o.title)

@@ -40,7 +40,7 @@ $(function () {
         + '</div>'
     var $alert = $(alertHTML).bootstrapAlert()
 
-    $alert.find('.close').click()
+    $alert.find('.close').trigger('click')
 
     assert.strictEqual($alert.hasClass('in'), false, 'remove .in class on .close click')
   })
@@ -55,7 +55,7 @@ $(function () {
 
     assert.notEqual($('#qunit-fixture').find('.alert').length, 0, 'element added to dom')
 
-    $alert.find('.close').click()
+    $alert.find('.close').trigger('click')
 
     assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
   })

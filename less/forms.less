@@ -144,7 +144,7 @@ output {
     background-color: @input-bg-disabled;
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
   }
-  
+
   &[disabled],
   fieldset[disabled] & {
     cursor: @cursor-disabled;
@@ -322,14 +322,26 @@ input[type="checkbox"] {
 }
 .form-group-sm {
   .form-control {
-    .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
-  }
-  .form-control-static {
     height: @input-height-small;
     padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
     line-height: @line-height-small;
+    border-radius: @input-border-radius-small;
+  }
+  select.form-control {
+    height: @input-height-small;
+    line-height: @input-height-small;
+  }
+  textarea.form-control,
+  select[multiple].form-control {
+    height: auto;
+  }
+  .form-control-static {
+    height: @input-height-small;
     min-height: (@line-height-computed + @font-size-small);
+    padding: (@padding-small-vertical + 1) @padding-small-horizontal;
+    font-size: @font-size-small;
+    line-height: @line-height-small;
   }
 }
 
@@ -338,14 +350,26 @@ input[type="checkbox"] {
 }
 .form-group-lg {
   .form-control {
-    .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
-  }
-  .form-control-static {
     height: @input-height-large;
     padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
     line-height: @line-height-large;
+    border-radius: @input-border-radius-large;
+  }
+  select.form-control {
+    height: @input-height-large;
+    line-height: @input-height-large;
+  }
+  textarea.form-control,
+  select[multiple].form-control {
+    height: auto;
+  }
+  .form-control-static {
+    height: @input-height-large;
     min-height: (@line-height-computed + @font-size-large);
+    padding: (@padding-large-vertical + 1) @padding-large-horizontal;
+    font-size: @font-size-large;
+    line-height: @line-height-large;
   }
 }
 
@@ -376,12 +400,14 @@ input[type="checkbox"] {
   text-align: center;
   pointer-events: none;
 }
-.input-lg + .form-control-feedback {
+.input-lg + .form-control-feedback,
+.input-group-lg + .form-control-feedback {
   width: @input-height-large;
   height: @input-height-large;
   line-height: @input-height-large;
 }
-.input-sm + .form-control-feedback {
+.input-sm + .form-control-feedback,
+.input-group-sm + .form-control-feedback {
   width: @input-height-small;
   height: @input-height-small;
   line-height: @input-height-small;
@@ -561,6 +587,7 @@ input[type="checkbox"] {
     @media (min-width: @screen-sm-min) {
       .control-label {
         padding-top: ((@padding-large-vertical * @line-height-large) + 1);
+        font-size: @font-size-large;
       }
     }
   }
@@ -568,6 +595,7 @@ input[type="checkbox"] {
     @media (min-width: @screen-sm-min) {
       .control-label {
         padding-top: (@padding-small-vertical + 1);
+        font-size: @font-size-small;
       }
     }
   }

@@ -126,6 +126,10 @@ module.exports = function (grunt) {
 
     uglify: {
       options: {
+        compress: {
+          warnings: false
+        },
+        mangle: true,
         preserveComments: 'some'
       },
       core: {
@@ -223,6 +227,8 @@ module.exports = function (grunt) {
 
     cssmin: {
       options: {
+        // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
+        //    and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
         compatibility: 'ie8',
         keepSpecialComments: '*',
         advanced: false
@@ -315,6 +321,26 @@ module.exports = function (grunt) {
       }
     },
 
+    htmlmin: {
+      dist: {
+        options: {
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          minifyCSS: true,
+          minifyJS: true,
+          removeAttributeQuotes: true,
+          removeComments: true
+        },
+        expand: true,
+        cwd: '_gh_pages',
+        dest: '_gh_pages',
+        src: [
+          '**/*.html',
+          '!examples/**/*.html'
+        ]
+      }
+    },
+
     jade: {
       options: {
         pretty: true,
@@ -344,7 +370,7 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.core.src %>',
-        tasks: ['jshint:src', 'qunit', 'concat']
+        tasks: ['jshint:core', 'qunit', 'concat']
       },
       test: {
         files: '<%= jshint.test.src %>',
@@ -489,7 +515,7 @@ module.exports = function (grunt) {
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
 
-  grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
+  grunt.registerTask('prep-release', ['jekyll:github', 'htmlmin', 'compress']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
   // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
