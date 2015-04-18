@@ -295,9 +295,9 @@ p {
   margin-bottom: 1rem;
 }
 
-abbr[title] {
+abbr[title], abbr[data-original-title] {
   cursor: help;
-  border-bottom-color: #ccc;
+  border-bottom: 1px dotted #818a91;
 }
 
 address {
@@ -512,6 +512,39 @@ mark, .mark {
 .initialism {
   font-size: 90%;
   text-transform: uppercase;
+}
+
+.blockquote {
+  padding: .5rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  border-left: .25rem solid #eceeef;
+}
+.blockquote p:last-child, .blockquote ul:last-child, .blockquote ol:last-child {
+  margin-bottom: 0;
+}
+.blockquote footer {
+  display: block;
+  font-size: 80%;
+  line-height: 1.5;
+  color: #818a91;
+}
+.blockquote footer:before {
+  content: "\2014 \00A0";
+}
+
+.blockquote-reverse {
+  padding-right: 1rem;
+  padding-left: 0;
+  text-align: right;
+  border-right: .25rem solid #eceeef;
+  border-left: 0;
+}
+.blockquote-reverse footer:before {
+  content: "";
+}
+.blockquote-reverse footer:after {
+  content: "\00A0 \2014";
 }
 
 .img-responsive, .carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
@@ -1700,12 +1733,8 @@ label {
   cursor: false;
 }
 
-.form-control-file {
+.form-control-file, .form-control-range {
   display: block;
-}
-
-input[type="search"] {
-  -webkit-appearance: none;
 }
 
 .form-group {
@@ -4883,11 +4912,6 @@ button.close {
   clip: auto;
 }
 
-.inverse {
-  color: #eceeef;
-  background-color: #373a3c;
-}
-
 .m-a-0 {
   margin: 0;
 }
@@ -5196,6 +5220,11 @@ a.text-warning:focus, a.text-warning:hover {
 
 a.text-danger:focus, a.text-danger:hover {
   color: #843534;
+}
+
+.inverse {
+  color: #eceeef;
+  background-color: #373a3c;
 }
 
 .bg-primary {
