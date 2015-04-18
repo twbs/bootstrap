@@ -2,6 +2,7 @@
 // Dropdown menus
 // --------------------------------------------------
 
+
 // The dropdown wrapper (div)
 .dropup,
 .dropdown {
@@ -182,23 +183,3 @@
     margin-bottom: 2px;
   }
 }
-
-
-// Component alignment
-//
-// Reiterate per navbar.less and the modified component alignment there.
-//
-// TODO: remove?
-
-// @include media-breakpoint-up(sm) {
-//   .navbar-right {
-//     .dropdown-menu {
-//       .dropdown-menu-right();
-//     }
-//     // Necessary for overrides of the default right aligned menu.
-//     // Will remove come v4 in all likelihood.
-//     .dropdown-menu-left {
-//       .dropdown-menu-left();
-//     }
-//   }
-// }
