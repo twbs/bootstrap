@@ -3,8 +3,9 @@
 // --------------------------------------------------
 
 
+//
 // Base styles
-// --------------------------------------------------
+//
 
 .btn {
   display: inline-block;
@@ -58,8 +59,9 @@ fieldset[disabled] a.btn {
 }
 
 
+//
 // Alternate buttons
-// --------------------------------------------------
+//
 
 .btn-primary {
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
@@ -81,8 +83,9 @@ fieldset[disabled] a.btn {
 }
 
 
+//
 // Link buttons
-// -------------------------
+//
 
 // Make a button look and behave like a link
 .btn-link {
@@ -121,8 +124,9 @@ fieldset[disabled] a.btn {
 }
 
 
+//
 // Button Sizes
-// --------------------------------------------------
+//
 
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
@@ -137,8 +141,9 @@ fieldset[disabled] a.btn {
 }
 
 
+//
 // Block button
-// --------------------------------------------------
+//
 
 .btn-block {
   display: block;

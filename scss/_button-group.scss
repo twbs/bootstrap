@@ -2,6 +2,7 @@
 // Button groups
 // --------------------------------------------------
 
+
 // Make the div behave like a button
 .btn-group,
 .btn-group-vertical {
@@ -103,8 +104,9 @@
 .btn-group-lg > .btn { @extend .btn-lg; }
 
 
+//
 // Split button dropdowns
-// ----------------------
+//
 
 // Give the line between buttons some depth
 .btn-group > .btn + .dropdown-toggle {
@@ -143,8 +145,10 @@
 }
 
 
+
+//
 // Vertical button groups
-// ----------------------
+//
 
 .btn-group-vertical {
   > .btn,
