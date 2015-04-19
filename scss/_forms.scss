@@ -228,33 +228,49 @@ input[type="checkbox"] {
 // The `.form-group-* form-control` variations are sadly duplicated to avoid the
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
-@include input-size('.input-sm', $input-height-sm, $padding-sm-vertical, $padding-sm-horizontal, $font-size-sm, $line-height-sm, $input-border-radius-sm);
-
-.form-group-sm {
-  @include input-size('.form-control', $input-height-sm, $padding-sm-vertical, $padding-sm-horizontal, $font-size-sm, $line-height-sm, $input-border-radius-sm);
-
-  .form-control-static {
-    height: $input-height-sm;
-    min-height: ($line-height-computed + $font-size-sm);
-    padding: $padding-sm-vertical $padding-sm-horizontal;
-    font-size: $font-size-sm;
-    line-height: $line-height-sm;
-  }
+.form-control-sm {
+  height: $input-height-sm;
+  padding: $padding-sm-vertical $padding-sm-horizontal;
+  font-size: $font-size-sm;
+  line-height: $line-height-sm;
+  border-radius: $input-border-radius-sm;
 }
 
-@include input-size('.input-lg', $input-height-lg, $padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $line-height-lg, $input-border-radius-lg);
-
-.form-group-lg {
-  @include input-size('.form-control', $input-height-lg, $padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $line-height-lg, $input-border-radius-lg);
-
-  .form-control-static {
-    height: $input-height-lg;
-    min-height: ($line-height-computed + $font-size-lg);
-    padding: $padding-lg-vertical $padding-lg-horizontal;
-    font-size: $font-size-lg;
-    line-height: $line-height-lg;
-  }
+.form-control-lg {
+  height: $input-height-lg;
+  padding: $padding-lg-vertical $padding-lg-horizontal;
+  font-size: $font-size-lg;
+  line-height: $line-height-lg;
+  border-radius: $input-border-radius-lg;
 }
+
+// @include input-size('.input-sm', $input-height-sm, $padding-sm-vertical, $padding-sm-horizontal, $font-size-sm, $line-height-sm, $input-border-radius-sm);
+
+// .form-group-sm {
+//   @include input-size('.form-control', $input-height-sm, $padding-sm-vertical, $padding-sm-horizontal, $font-size-sm, $line-height-sm, $input-border-radius-sm);
+
+//   .form-control-static {
+//     height: $input-height-sm;
+//     min-height: ($line-height-computed + $font-size-sm);
+//     padding: $padding-sm-vertical $padding-sm-horizontal;
+//     font-size: $font-size-sm;
+//     line-height: $line-height-sm;
+//   }
+// }
+
+// @include input-size('.input-lg', $input-height-lg, $padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $line-height-lg, $input-border-radius-lg);
+
+// .form-group-lg {
+//   @include input-size('.form-control', $input-height-lg, $padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $line-height-lg, $input-border-radius-lg);
+
+//   .form-control-static {
+//     height: $input-height-lg;
+//     min-height: ($line-height-computed + $font-size-lg);
+//     padding: $padding-lg-vertical $padding-lg-horizontal;
+//     font-size: $font-size-lg;
+//     line-height: $line-height-lg;
+//   }
+// }
 
 
 // Form control feedback states

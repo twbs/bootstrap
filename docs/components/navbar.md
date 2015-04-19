@@ -150,6 +150,61 @@ Replace `.navbar-default` with `.navbar-inverse` for a darker background color a
 </nav>
 {% endexample %}
 
+### Condensed
+
+Condensed navbars provide a similar aesthetic to Bootstrap 3's navbar. It cuts the padding down, enables full-height navigation, and tweaks vertical alignment for search forms, buttons, and more. It's also available in both default and inverse schemes.
+
+{% example html %}
+<nav class="navbar navbar-default navbar-condensed">
+  <h3 class="navbar-brand pull-left">
+    <a href="#">Navbar</a>
+  </h3>
+  <ul class="nav navbar-nav pull-left">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Features</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Pricing</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li>
+  </ul>
+  <form class="form-inline pull-right">
+    <input class="form-control form-control-sm" type="text" placeholder="Search">
+    <button class="btn btn-sm btn-primary" type="submit">Search</button>
+  </form>
+</nav>
+
+<nav class="navbar navbar-inverse navbar-condensed">
+  <h3 class="navbar-brand pull-left">
+    <a href="#">Navbar</a>
+  </h3>
+  <ul class="nav navbar-nav pull-left">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Features</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Pricing</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li>
+  </ul>
+  <form class="form-inline pull-right">
+    <input class="form-control form-control-sm" type="text" placeholder="Search">
+    <button class="btn btn-sm btn-primary" type="submit">Search</button>
+  </form>
+</nav>
+{% endexample %}
+
+
 ### Collapsible content
 
 Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden content.

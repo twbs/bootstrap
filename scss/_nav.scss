@@ -21,7 +21,7 @@
 .nav-link {
   display: inline-block;
   padding: $nav-link-padding;
-  line-height: $line-height-base;
+  line-height: 1;
 
   @include hover-focus {
     text-decoration: none;
