@@ -2952,7 +2952,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 
 .nav-link {
   display: inline-block;
-  padding: .6em 1em;
+  padding: .75em 1em;
   line-height: 1;
 }
 .nav-link:focus, .nav-link:hover {
@@ -3098,7 +3098,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 
 .navbar-brand {
   float: left;
-  padding: .95rem .75rem;
+  padding: .625rem .75rem;
   margin-right: 1rem;
   margin-bottom: 0;
   font-size: 1.25rem;
@@ -3177,6 +3177,10 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 .navbar-condensed {
   padding-top: 0;
   padding-bottom: 0;
+}
+.navbar-condensed .navbar-brand {
+  padding-top: .95rem;
+  padding-bottom: .95rem;
 }
 .navbar-condensed .form-inline, .navbar-condensed .navbar-form {
   margin-top: .6rem;

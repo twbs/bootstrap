@@ -75,7 +75,7 @@
 
 .navbar-brand {
   float: left;
-  padding: .95rem .75rem;
+  padding: .625rem .75rem;
   margin-right: $spacer;
   margin-bottom: 0; // For headings
   font-size: $font-size-lg;
@@ -242,6 +242,11 @@
 .navbar-condensed {
   padding-top: 0;
   padding-bottom: 0;
+
+  .navbar-brand {
+    padding-top: .95rem;
+    padding-bottom: .95rem;
+  }
 
   .form-inline {
     margin-top: .6rem;
