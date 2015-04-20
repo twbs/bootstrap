@@ -137,7 +137,6 @@ a:hover {
 }
 .btn {
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.13);
-  margin-bottom: 5px;
   margin-right: 3px;
 }
 .btn-default {
@@ -240,7 +239,7 @@ fieldset[disabled] .btn-primary.active {
 }
 .bar .title {
   font-size: 1.5em;
-  font-weight: 600;
+  font-weight: 500;
 }
 .bar + .bar-inset,
 .bar + .bar-default {
@@ -266,6 +265,12 @@ fieldset[disabled] .btn-primary.active {
   padding-bottom: 8px;
   border-top: 1px solid #d9e7f7;
   border-bottom: 1px solid #d9e7f7;
+}
+.bar.bar-footer {
+  background: #fbfcff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: 1px solid #d9e7f7;
 }
 .panel-group .panel {
   border: none;
@@ -664,6 +669,12 @@ input[type=checkbox]:disabled {
 .dataTables_wrapper table.dataTable.table-bordered {
   border-collapse: collapse !important;
 }
+.dataTables_wrapper table.dataTable thead th,
+.dataTables_wrapper table.dataTable tbody th,
+.dataTables_wrapper table.dataTable thead td,
+.dataTables_wrapper table.dataTable tbody td {
+  padding: 10px 15px;
+}
 .dataTables_wrapper table.dataTable thead tr th {
   white-space: nowrap;
 }
@@ -674,7 +685,6 @@ input[type=checkbox]:disabled {
 }
 .dataTables_wrapper table.dataTable thead tr td,
 .dataTables_wrapper table.dataTable thead tr th {
-  padding-right: 8px;
   outline: none;
 }
 .dataTables_wrapper table.dataTable thead .sorting:after,
