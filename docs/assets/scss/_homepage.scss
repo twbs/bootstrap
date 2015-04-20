@@ -78,7 +78,7 @@
   position: relative;
   padding: 2rem 0;
   // color: #cdbfe3;
-  // text-align: center;
+  text-align: center;
   // text-shadow: 0 1px 0 rgba(0,0,0,.1);
   // background-color: #6f5499;
   // @include gradient-vertical($bd-purple, #6f5499);
@@ -86,7 +86,7 @@
 }
 
 .bd-masthead .bd-booticon {
-  margin: 0 0 2rem;
+  margin: 0 auto 2rem;
   color: $gray;
   border-color: $gray;
 }
@@ -96,6 +96,8 @@
   // color: #fff;
 }
 .bd-masthead .lead {
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 2rem;
   font-size: 1.25rem;
   // color: #fff;
