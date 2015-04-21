@@ -319,6 +319,9 @@ fieldset[disabled] .btn-primary.active {
   padding-bottom: 0;
   width: 267px;
 }
+.datepicker table {
+  width: 100%;
+}
 .datepicker table th {
   text-align: center;
 }
@@ -326,12 +329,45 @@ fieldset[disabled] .btn-primary.active {
   border: 1px solid  #e3e3e3;
 }
 .datepicker table td {
-  padding: 6px 10px !important;
+  padding: 6px 10px;
   border-left: 1px solid  #e3e3e3;
 }
 .datepicker table .active {
   color: #478cfe;
   border: 1px solid #478cfe !important;
+}
+.datepicker .datepicker-days .day {
+  cursor: pointer;
+}
+.datepicker .datepicker-days .day:hover {
+  background: #F4F9FD;
+}
+.datepicker .datepicker-months table tr,
+.datepicker .datepicker-years table tr {
+  border: none;
+}
+.datepicker .datepicker-months table td,
+.datepicker .datepicker-years table td {
+  padding: 0;
+  border: none;
+}
+.datepicker .datepicker-months span.month,
+.datepicker .datepicker-years span.month,
+.datepicker .datepicker-months span.year,
+.datepicker .datepicker-years span.year {
+  display: inline-block;
+  padding: 5px 5px;
+  width: calc(50%);
+  border-right: 1px solid #e3e3e3;
+  border-top: 1px solid #e3e3e3;
+  margin-top: -1px;
+  cursor: pointer;
+}
+.datepicker .datepicker-months span.month:hover,
+.datepicker .datepicker-years span.month:hover,
+.datepicker .datepicker-months span.year:hover,
+.datepicker .datepicker-years span.year:hover {
+  background: #F4F9FD;
 }
 .datepicker .new,
 .datepicker .old,
@@ -367,6 +403,11 @@ fieldset[disabled] .btn-primary.active {
 .datepicker .datepicker-switch {
   font-size: 1.2em;
   font-weight: 400;
+  width: 20px;
+  cursor: pointer;
+}
+.datepicker .datepicker-switch:hover {
+  color: #859bbb;
 }
 .dropdown .dropdown-toggle {
   min-width: 200px;
@@ -1201,6 +1242,7 @@ body {
   background-image: none !important;
   background-color: white;
   box-shadow: none;
+  filter: none\0;
 }
 .select2-container.select2-fusion a.select2-choice:hover,
 .select2-container.select2-fusion a.select2-choice:active {
@@ -1210,6 +1252,7 @@ body {
   width: 46px;
   background: none;
   border: none;
+  filter: none\0;
 }
 .select2-container.select2-fusion a.select2-choice > .select2-arrow b {
   position: relative;
@@ -1284,6 +1327,7 @@ body {
   background: none;
   border: none;
   width: auto;
+  filter: none\0;
 }
 .select2-container.select2-dropdown a.select2-choice > .select2-arrow b {
   cursor: pointer;
@@ -1312,7 +1356,9 @@ body {
 }
 .select2-container.select2-simple .select2-choice {
   border: none;
-  background: none;
+  background: none!important;
+  background-image: none!important;
+  filter: none\0;
   height: auto;
   line-height: 1.4em;
   padding: 0;
