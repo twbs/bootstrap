@@ -719,6 +719,43 @@ $(function () {
     $styles.remove()
   })
 
+  QUnit.test('should not adjust position when scrolling the window', function (assert) {
+    assert.expect(2)
+    var styles = '<style>'
+        + '.large-spacer { height: 3000px; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div class="container-viewport"/>').appendTo(document.body)
+    var $target = $('<a href="#" rel="tooltip" title="tip"/>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'right',
+        viewport: 'body'
+      })
+    $('<div class="large-spacer"/>').appendTo($container)
+
+    $target.bootstrapTooltip('show')
+    var $tooltip = $container.find('.tooltip')
+    var $initialTop = Math.round($tooltip.offset().top)
+
+    $target.bootstrapTooltip('hide')
+
+    window.scrollTo(0, 2000)
+
+    $target.bootstrapTooltip('show')
+    $tooltip = $container.find('.tooltip')
+
+    assert.strictEqual(Math.round($tooltip.offset().top), $initialTop, 'position is the same after scrolling')
+    assert.strictEqual($(document).scrollTop(), 2000, 'document scrolled')
+
+    $target.bootstrapTooltip('hide')
+
+    $container.remove()
+    $styles.remove()
+    window.scrollTo(0, 0)
+  })
+
   QUnit.test('should not error when trying to show an auto-placed tooltip that has been removed from the dom', function (assert) {
     assert.expect(1)
     var passed = true
