@@ -28,6 +28,12 @@
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
 
+  &.in {
+    // Fixes Chrome mousewheel scrolling issue. For details, see
+    // https://github.com/twbs/bootstrap/issues/16297
+    .translate3d(0, 0, 0);
+  }
+
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
     .translate(0, -25%);
