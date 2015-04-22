@@ -139,6 +139,20 @@ $(function () {
       .bootstrapTooltip('show')
   })
 
+  QUnit.test('should fire inserted event', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    $('<div title="tooltip title"/>')
+      .appendTo('#qunit-fixture')
+      .on('inserted.bs.tooltip', function () {
+        assert.notEqual($('.tooltip').length, 0, 'tooltip was inserted')
+        assert.ok(true, 'inserted event fired')
+        done()
+      })
+      .bootstrapTooltip('show')
+  })
+
   QUnit.test('should fire shown event', function (assert) {
     assert.expect(1)
     var done = assert.async()
@@ -738,6 +752,37 @@ $(function () {
     $target.bootstrapTooltip('show')
     var $tooltip = $container.find('.tooltip')
     assert.strictEqual(Math.round($tooltip.offset().left), $target.position().left + $target.width() / 2 - $tooltip[0].offsetWidth / 2)
+
+    $target.bootstrapTooltip('hide')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $container.remove()
+    $styles.remove()
+  })
+
+  QUnit.test('should get viewport element from function', function (assert) {
+    assert.expect(3)
+    var styles = '<style>'
+        + '.tooltip, .tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+        + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
+        + 'a[rel="tooltip"] { position: fixed; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div class="container-viewport"/>').appendTo(document.body)
+    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 50px; left: 350px;"/>').appendTo($container)
+    $target
+      .bootstrapTooltip({
+        placement: 'bottom',
+        viewport: function ($element) {
+          assert.strictEqual($element[0], $target[0], 'viewport function was passed target as argument')
+          return ($element.closest('.container-viewport'))
+        }
+      })
+
+    $target.bootstrapTooltip('show')
+    var $tooltip = $container.find('.tooltip')
+    assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].offsetWidth))
 
     $target.bootstrapTooltip('hide')
     assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')

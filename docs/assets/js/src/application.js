@@ -127,7 +127,7 @@
 
     // Config ZeroClipboard
     ZeroClipboard.config({
-      moviePath: '/assets/flash/ZeroClipboard.swf',
+      swfPath: '/assets/flash/ZeroClipboard.swf',
       hoverClass: 'btn-clipboard-hover'
     })
 
@@ -136,39 +136,38 @@
       var btnHtml = '<div class="zero-clipboard"><span class="btn-clipboard">Copy</span></div>'
       $(this).before(btnHtml)
     })
+
     var zeroClipboard = new ZeroClipboard($('.btn-clipboard'))
     var htmlBridge = $('#global-zeroclipboard-html-bridge')
 
     // Handlers for ZeroClipboard
-    zeroClipboard.on('load', function () {
+    zeroClipboard.on('ready', function () {
       htmlBridge
         .data('placement', 'top')
         .attr('title', 'Copy to clipboard')
         .tooltip()
+
+      // Copy to clipboard
+      zeroClipboard.on('copy', function (event) {
+        var highlight = $(event.target).parent().nextAll('.highlight').first()
+        event.clipboardData.setData('text/plain', highlight.text())
+      })
+
+      // Notify copy success and reset tooltip title
+      zeroClipboard.on('aftercopy', function () {
+        htmlBridge
+          .attr('title', 'Copied!')
+          .tooltip('fixTitle')
+          .tooltip('show')
+          .attr('title', 'Copy to clipboard')
+          .tooltip('fixTitle')
+      })
     })
 
-    // Copy to clipboard
-    zeroClipboard.on('dataRequested', function (client) {
-      var highlight = $(this).parent().nextAll('.highlight').first()
-      client.setText(highlight.text())
-    })
-
-    // Notify copy success and reset tooltip title
-    zeroClipboard.on('complete', function () {
-      htmlBridge
-        .attr('title', 'Copied!')
-        .tooltip('fixTitle')
-        .tooltip('show')
-        .attr('title', 'Copy to clipboard')
-        .tooltip('fixTitle')
-    })
-
-    // Notify copy failure
-    zeroClipboard.on('noflash wrongflash', function () {
-      htmlBridge
-        .attr('title', 'Flash required')
-        .tooltip('fixTitle')
-        .tooltip('show')
+    // Hide copy button on error
+    zeroClipboard.on('error', function () {
+      $('.zero-clipboard').remove()
+      ZeroClipboard.destroy()
     })
 
   })

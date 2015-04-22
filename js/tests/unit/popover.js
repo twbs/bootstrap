@@ -259,4 +259,21 @@ $(function () {
     assert.strictEqual($popover.data('bs.popover'), undefined, 'should not initialize the popover')
   })
 
+  QUnit.test('should fire inserted event', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    $('<a href="#">@Johann-S</a>')
+      .appendTo('#qunit-fixture')
+      .on('inserted.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        assert.ok(true, 'inserted event fired')
+        done()
+      })
+      .bootstrapPopover({
+        title: 'Test',
+        content: 'Test'
+      })
+      .bootstrapPopover('show')
+  })
 })

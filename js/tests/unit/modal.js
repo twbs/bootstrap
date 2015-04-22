@@ -49,18 +49,6 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('should set aria-hidden to false when show method is called', function (assert) {
-    assert.expect(1)
-    var done = assert.async()
-
-    $('<div id="modal-test"/>')
-      .on('shown.bs.modal', function () {
-        assert.strictEqual($('#modal-test').attr('aria-hidden'), 'false', 'aria-hidden is set to string "false" when modal shown')
-        done()
-      })
-      .bootstrapModal('show')
-  })
-
   QUnit.test('should fire show event', function (assert) {
     assert.expect(1)
     var done = assert.async()
@@ -101,22 +89,6 @@ $(function () {
       })
       .on('hidden.bs.modal', function () {
         assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
-        done()
-      })
-      .bootstrapModal('show')
-  })
-
-  QUnit.test('should set aria-hidden to true when hide is called', function (assert) {
-    assert.expect(2)
-    var done = assert.async()
-
-    $('<div id="modal-test"/>')
-      .on('shown.bs.modal', function () {
-        assert.strictEqual($('#modal-test').length, 1, 'modal has been inserted into the dom')
-        $(this).bootstrapModal('hide')
-      })
-      .on('hidden.bs.modal', function () {
-        assert.strictEqual($('#modal-test').attr('aria-hidden'), 'true', 'aria-hidden is set to string "true" when modal shown')
         done()
       })
       .bootstrapModal('show')
