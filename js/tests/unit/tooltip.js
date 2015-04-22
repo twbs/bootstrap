@@ -751,7 +751,7 @@ $(function () {
 
     $target.bootstrapTooltip('show')
     var $tooltip = $container.find('.tooltip')
-    assert.strictEqual(Math.round($tooltip.offset().left), $target.position().left + $target.width() / 2 - $tooltip[0].offsetWidth / 2)
+    assert.strictEqual(Math.round($tooltip.offset().left), Math.round($target.position().left + $target.width() / 2 - $tooltip[0].offsetWidth / 2))
 
     $target.bootstrapTooltip('hide')
     assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
