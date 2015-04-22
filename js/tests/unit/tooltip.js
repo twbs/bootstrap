@@ -139,6 +139,20 @@ $(function () {
       .bootstrapTooltip('show')
   })
 
+  QUnit.test('should fire inserted event', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    $('<div title="tooltip title"/>')
+      .appendTo('#qunit-fixture')
+      .on('inserted.bs.tooltip', function () {
+        assert.notEqual($('.tooltip').length, 0, 'tooltip was inserted')
+        assert.ok(true, 'inserted event fired')
+        done()
+      })
+      .bootstrapTooltip('show')
+  })
+
   QUnit.test('should fire shown event', function (assert) {
     assert.expect(1)
     var done = assert.async()
