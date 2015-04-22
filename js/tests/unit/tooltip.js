@@ -719,6 +719,33 @@ $(function () {
     $styles.remove()
   })
 
+  QUnit.test('should not misplace the tip when the right edge offset is greater or equal than the viewport width', function (assert) {
+    assert.expect(2)
+    var styles = '<style>'
+        + '* { box-sizing: border-box; }'
+        + '.tooltip, .tooltip .tooltip-inner { width: 50px; height: 50px; max-width: none; background: red; }'
+        + '.container-viewport { padding: 100px; margin-left: 100px; width: 100px; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div class="container-viewport"/>').appendTo(document.body)
+    var $target = $('<a href="#" rel="tooltip" title="tip">foobar</a>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        viewport: '.container-viewport'
+      })
+
+    $target.bootstrapTooltip('show')
+    var $tooltip = $container.find('.tooltip')
+    assert.strictEqual(Math.round($tooltip.offset().left), $target.position().left + $target.width() / 2 - $tooltip[0].offsetWidth / 2)
+
+    $target.bootstrapTooltip('hide')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $container.remove()
+    $styles.remove()
+  })
+
   QUnit.test('should not error when trying to show an auto-placed tooltip that has been removed from the dom', function (assert) {
     assert.expect(1)
     var passed = true
@@ -956,7 +983,7 @@ $(function () {
     var done = assert.async()
 
     var styles = '<style>'
-        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '* { box-sizing: border-box; }'
         + '.tooltip { position: absolute; }'
         + '.tooltip .tooltip-inner { width: 24px; height: 24px; font-family: Helvetica; }'
         + '</style>'
@@ -989,7 +1016,7 @@ $(function () {
     var done = assert.async()
 
     var styles = '<style>'
-        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '* { box-sizing: border-box; }'
         + '.tooltip { position: absolute; display: block; font-size: 12px; line-height: 1.4; }'
         + '.tooltip .tooltip-inner { max-width: 200px; padding: 3px 8px; font-family: Helvetica; text-align: center; }'
         + '#trigger-parent {'
@@ -1094,7 +1121,7 @@ $(function () {
     var done = assert.async()
 
     var styles = '<style>'
-        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '* { box-sizing: border-box; }'
         + '.tooltip { position: absolute; }'
         + '.tooltip-arrow { position: absolute; width: 0; height: 0; }'
         + '.tooltip .tooltip-inner { max-width: 200px; padding: 3px 8px; }'
@@ -1134,7 +1161,7 @@ $(function () {
 
     var styles = '<style>'
         + '#qunit-fixture { top: 0; left: 0; }'
-        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '* { box-sizing: border-box; }'
         + '.tooltip { position: absolute; }'
         + '.tooltip .tooltip-inner { width: 24px; height: 24px; font-family: Helvetica; }'
         + '#target { position: absolute; top: 100px; left: 50px; width: 100px; height: 200px; -webkit-transform: rotate(270deg); -ms-transform: rotate(270deg); transform: rotate(270deg); }'
