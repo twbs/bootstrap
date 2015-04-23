@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Migrating to v4.x.x
+title: Migrating to v4
 ---
 
 Bootstrap 4 is a major rewrite of almost the entire project. The most notable changes are summarized immediately below, followed by more specific class and behavioral changes to relevant components.
@@ -9,32 +9,62 @@ Bootstrap 4 is a major rewrite of almost the entire project. The most notable ch
 
 Here are the big ticket items you'll want to be aware of when moving from v3 to v4.
 
+### Browser support
+
 - Dropped IE8 and iOS 6 support. v4 is now only IE9+ and iOS 7+. For sites needing either of those, use v3.
 - Added official support for Android v5.0 Lollipop's Browser and WebView. Earlier versions of the Android Browser and WebView remain only unofficially supported.
+
+### Global changes
+
+- Switched from LESS to SCSS for our source CSS files.
 - Switched from `px` to `rem` as our primary CSS unit.
 - Media queries are now in `em`s instead of `px`s.
 - Global font-size increased from `14px` to `16px`.
-- Dropped panels, thumbnails, and wells for a new all-encompassing component, cards.
-- Switched from LESS to SCSS for our source CSS files.
 - Added a new grid tier for ~`480px` and below.
+- Replaced the separate optional theme with configurable options via SCSS variables (e.g., `@enable-gradients: true`).
+
+### Components
+
+- Dropped panels, thumbnails, and wells for a new all-encompassing component, cards.
 - Dropped the Glyphicons icon font.
 - Dropped the Affix jQuery plugin. We recommend using a `position: sticky` polyfill instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations.
 - Refactored nearly all components to use more unnested classes instead of children selectors.
+
+### Misc
 - Non-responsive usage of Bootstrap is no longer supported.
-- Images are now responsive (via `max-width`) by default.
-- Dropped the online Customizer in favor of more extensive setup documentation.
-- Replaced the separate optional theme with configurable options via SCSS variables (e.g., `@enable-gradients: true`).
+- Dropped the online Customizer in favor of more extensive setup documentation and customized builds.
 
 ## By component
 
-This table shows the style changes between v3.x.x and v4.0.0.
+This list highlights key changes by component between v3.x.x and v4.0.0.
+
+### Reboot
+
+New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border` change, moving from `rem` to `em` units on many elements, link styles, and many form element resets.
+
+### Typography
+
+- Moved all `.text-` utilities to the `_utilities.scss` file.
+- Dropped the `.page-header` class entirely.
+- `.dl-horizontal` now requires grid classes, increasing flexbility in column widths.
+- Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
 
 ### Tables
 
 - Nearly all instances of the `>` selector have been removed, meaning nested tables will now automatically inherit styles from their parents. This greatly simplifies our selectors and potential customizations.
 - Responsive tables no longer require a wrapping element. Instead, just put the `.table-responsive` right on the `<table>`.
-- Changed `.table-condensed` to `.table-sm` for consistency.
+- Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
+
+### Forms
+
+- Moved element resets to the `_reboot.scss` file.
+- Renamed `.input-lg` and `.input-sm` to `.form-control-lg` and `.form-control-sm`, respectively.
+- Dropped `.form-group-*` classes for simplicity's sake. Use `.form-control-*` classes instead now.
+
+### Grid system
+
+- Added a new `~480px` grid breakpoint, meaning there are now five total tiers.
 
 ### Navs
 
@@ -43,17 +73,23 @@ This table shows the style changes between v3.x.x and v4.0.0.
 
 ### Pager
 
-- Changed `.previous` and `.next` to `.pager-prev` and `.pager-next`.
+- Renamed `.previous` and `.next` to `.pager-prev` and `.pager-next`.
+
+### Panels, thumbnails, and wells
+
+Dropped entirely for the new card component.
 
 ### Carousel
 
-- Changed `.item` to `.carousel-item`.
+- Renamed `.item` to `.carousel-item`.
 
 ## Documentation
 
-Our documentation has received an upgrade across the board as well. Here's the low down:
+Our documentation received an upgrade across the board as well. Here's the low down:
 
-- We're still using Jekyll, but we've got a custom plugin in the mix (`example.rb`) for easier example-code handling.
+- We're still using Jekyll, but we have custom plugins in the mix:
+  - `example.rb` is a fork of the default `highlight.rb` plugin, allowing for easier example-code handling.
+  - `callout.rb` is a similar fork of that, but designed for our special docs callouts.
 - All docs content has been rewritten in Markdown (instead of HTML) for easier editing.
 - Pages have been reorganized for simpler content and a more approachable hierarchy.
 - We moved from regular CSS to SCSS to take full advantage of Bootstrap's variables, mixins, and more.
