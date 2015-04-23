@@ -389,6 +389,14 @@ module.exports = function (grunt) {
           return old ? RegExp.quote(old) : old;
         })(),
         replacement: grunt.option('newver'),
+        exclude: [
+          'dist/fonts',
+          'docs/assets',
+          'fonts',
+          'js/tests/vendor',
+          'node_modules',
+          'test-infra'
+        ],
         recursive: true
       }
     },
