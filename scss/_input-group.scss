@@ -61,12 +61,12 @@
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
-  @extend .input-lg;
+  @extend .form-control-lg;
 }
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
-  @extend .input-sm;
+  @extend .form-control-sm;
 }
 
 
@@ -86,12 +86,12 @@
   @include border-radius($border-radius-base);
 
   // Sizing
-  &.input-sm {
+  &.form-control-sm {
     padding: $padding-sm-vertical $padding-sm-horizontal;
     font-size: $font-size-sm;
     @include border-radius($border-radius-sm);
   }
-  &.input-lg {
+  &.form-control-lg {
     padding: $padding-lg-vertical $padding-lg-horizontal;
     font-size: $font-size-lg;
     @include border-radius($border-radius-lg);
