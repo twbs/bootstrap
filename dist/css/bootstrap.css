@@ -1684,10 +1684,6 @@ pre code {
   border: 1px solid #eceeef;
 }
 
-.form-control-label {
-  padding: .5625rem .75rem;
-}
-
 .form-control {
   display: block;
   width: 100%;
@@ -1708,7 +1704,7 @@ pre code {
 }
 .form-control:focus {
   border-color: #66afe9;
-  outline: 0;
+  outline: none;
 }
 .form-control::-webkit-input-placeholder {
   color: #999;
@@ -1736,6 +1732,38 @@ pre code {
 
 .form-control-file, .form-control-range {
   display: block;
+}
+
+.form-control-label {
+  padding: .5625rem .75rem;
+  margin-bottom: 0;
+}
+
+.form-control-static {
+  min-height: 2rem;
+  padding-top: .5625rem;
+  padding-bottom: .5625rem;
+  margin-bottom: 0;
+}
+.form-control-static.form-control-sm, .form-control-static.form-control-lg {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.form-control-sm {
+  height: 2rem;
+  padding: .3rem .75rem;
+  font-size: .85rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+
+.form-control-lg {
+  height: 3.291667rem;
+  padding: .75rem 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.333333;
+  border-radius: .3rem;
 }
 
 .form-group {
@@ -1790,33 +1818,6 @@ input[type="radio"]:disabled, input[type="radio"].disabled, fieldset[disabled] i
 
 .radio.disabled label, fieldset[disabled] .radio label, .checkbox.disabled label, fieldset[disabled] .checkbox label {
   cursor: false;
-}
-
-.form-control-static {
-  min-height: 2rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  margin-bottom: 0;
-}
-.form-control-static.input-lg, .input-group-lg > .form-control-static.form-control, .input-group-lg > .form-control-static.input-group-addon, .input-group-lg > .input-group-btn > .form-control-static.btn, .form-control-static.input-sm, .input-group-sm > .form-control-static.form-control, .input-group-sm > .form-control-static.input-group-addon, .input-group-sm > .input-group-btn > .form-control-static.btn {
-  padding-right: 0;
-  padding-left: 0;
-}
-
-.form-control-sm {
-  height: 2rem;
-  padding: .3rem .75rem;
-  font-size: .85rem;
-  line-height: 1.5;
-  border-radius: .2rem;
-}
-
-.form-control-lg {
-  height: 3.291667rem;
-  padding: .75rem 1.5rem;
-  font-size: 1.25rem;
-  line-height: 1.333333;
-  border-radius: .3rem;
 }
 
 .has-feedback {

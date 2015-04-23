@@ -629,35 +629,18 @@ For form controls with no visible label, add the `.sr-only` class on the label. 
 
 ## Control sizing
 
-Set heights using classes like `.input-lg`, and set widths using grid column classes like `.col-lg-*`.
+Set heights using classes like `.form-control-lg`, and set widths using grid column classes like `.col-lg-*`.
 
 {% example html %}
-<input class="form-control input-lg" type="text" placeholder=".input-lg">
+<input class="form-control form-control-lg" type="text" placeholder=".input-lg">
 <input class="form-control" type="text" placeholder="Default input">
-<input class="form-control input-sm" type="text" placeholder=".input-sm">
-
-<select class="form-control input-lg"></select>
-<select class="form-control"></select>
-<select class="form-control input-sm"></select>
+<input class="form-control form-control-sm" type="text" placeholder=".input-sm">
 {% endexample %}
 
-Quickly size labels and form controls within `.form-horizontal` by adding `.form-group-lg` or `.form-group-sm` to existing `.form-group`s.
-
 {% example html %}
-<form class="form-horizontal">
-  <div class="form-group form-group-lg">
-    <label class="col-sm-2 control-label" for="formGroupInputLarge">Large label</label>
-    <div class="col-sm-10">
-      <input class="form-control" type="text" id="formGroupInputLarge" placeholder="Large input">
-    </div>
-  </div>
-  <div class="form-group form-group-sm">
-    <label class="col-sm-2 control-label" for="formGroupInputSmall">Small label</label>
-    <div class="col-sm-10">
-      <input class="form-control" type="text" id="formGroupInputSmall" placeholder="Small input">
-    </div>
-  </div>
-</form>
+<select class="form-control form-control-lg"></select>
+<select class="form-control"></select>
+<select class="form-control form-control-sm"></select>
 {% endexample %}
 
 ## Column sizing
