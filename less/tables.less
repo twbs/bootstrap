@@ -171,8 +171,10 @@ table {
 .table-responsive {
   overflow-x: auto;
   min-height: 0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+}
 
-  @media screen and (max-width: @screen-xs-max) {
+.media-max-xs() {
+  .table-responsive {
     width: 100%;
     margin-bottom: (@line-height-computed * 0.75);
     overflow-y: hidden;

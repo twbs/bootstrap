@@ -64,8 +64,10 @@ p {
   font-size: floor((@font-size-base * 1.15));
   font-weight: 300;
   line-height: 1.4;
+}
 
-  @media (min-width: @screen-sm-min) {
+.media-min-sm() {
+  .lead {
     font-size: (@font-size-base * 1.5);
   }
 }
@@ -210,8 +212,10 @@ dd {
   dd {
     &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
   }
+}
 
-  @media (min-width: @grid-float-breakpoint) {
+.media-min-grid-float-breakpoint() {
+  .dl-horizontal {
     dt {
       float: left;
       width: (@dl-horizontal-offset - 20);
