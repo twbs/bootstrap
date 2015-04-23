@@ -113,7 +113,7 @@ The `<pre>` element is reset to remove its `margin-top` and use `rem` units for 
 
 ## Tables
 
-Tables are slightly adjusted to style `<caption>`s and ensure consistent `text-align` throughout.
+Tables are slightly adjusted to style `<caption>`s and ensure consistent `text-align` throughout. Additional changes for borders, padding, and more come with [the `.table` class](/components/tables/).
 
 <div class="bd-example">
   <table>
@@ -156,7 +156,7 @@ Tables are slightly adjusted to style `<caption>`s and ensure consistent `text-a
 Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes:
 
 - `<fieldset>`s have no borders, padding, or margin so they can be easily used as wrappers for individual inputs or groups of inputs.
-= `<legend>`s, like fieldsets, have also been restyled to be displayed as a heading of sorts.
+- `<legend>`s, like fieldsets, have also been restyled to be displayed as a heading of sorts.
 - `<label>`s are set to `display: inline-block` to allow `margin` to be applied.
 - `<input>`s, `<selects>`s, `<textareas>`s, and `<buttons>`s are mostly addressed by Normalize, but Reboot removes their `margin` and sets `line-height: inherit`, too.
 - `<textarea>`s are modified to only be resizeble vertically as horizontal resizing often "breaks" page layout.

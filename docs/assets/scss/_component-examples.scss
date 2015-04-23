@@ -28,9 +28,14 @@
   @include media-breakpoint-up(sm) {
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: -1rem;
+    margin-bottom: 0;
     padding: 1.5rem;
     border-width: .2rem;
+  }
+
+  + .highlight,
+  + .zero-clipboard + .highlight {
+    margin-top: -1rem;
   }
 
   + p {
