@@ -377,6 +377,7 @@ th {
 
 label {
   display: inline-block;
+  margin-bottom: .5rem;
 }
 
 input, button, select, textarea {
@@ -1683,8 +1684,8 @@ pre code {
   border: 1px solid #eceeef;
 }
 
-label {
-  margin-bottom: .5rem;
+.form-control-label {
+  padding: .5625rem .75rem;
 }
 
 .form-control {

@@ -3,12 +3,6 @@
 // --------------------------------------------------
 
 
-// todo: turn this into a class
-label {
-  margin-bottom: .5rem;
-}
-
-
 //
 // Textual form controls
 //
@@ -74,6 +68,19 @@ label {
 .form-control-range {
   display: block;
 }
+
+
+//
+// Labels
+//
+
+// For use with horizontal and inline forms, when you need the label text to
+// align with the form controls.
+.form-control-label {
+  padding: ($padding-base-vertical + $border-width) $padding-base-horizontal;
+  margin-bottom: 0; // Override the `<label>` default
+}
+
 
 // Todo: clear this up
 
