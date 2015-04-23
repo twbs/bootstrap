@@ -19,6 +19,37 @@ Cards require very little markup, but do require some additional classes to give
 </div>
 {% endexample %}
 
+### Sizing
+
+Cards are block-leve by default, so they'll fill the available horizontal space. Constrain their widths via custom styles, our predefined grid classes, or our grid mixins.
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <h3 class="card-title">Special title treatment</h3>
+  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  <a href="#" class="btn btn-primary">Go somewhere</a>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <h3 class="card-title">Special title treatment</h3>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <h3 class="card-title">Special title treatment</h3>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+{% endexample %}
+
 ### Text alignment
 
 You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]().
