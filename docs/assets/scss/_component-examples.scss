@@ -2,14 +2,17 @@
 // Grid examples
 //
 
-.bd-example > .row {
-  margin-bottom: 1rem;
-}
-.bd-example > .row > [class^="col-"] {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  background-color: rgba(86,61,124,.15);
-  border: 1px solid rgba(86,61,124,.2);
+.bd-example-row {
+  .row {
+    margin-bottom: 1rem;
+
+    > [class^="col-"] {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      background-color: rgba(86,61,124,.15);
+      border: 1px solid rgba(86,61,124,.2);
+    }
+  }
 }
 
 
@@ -33,9 +36,12 @@
     border-width: .2rem;
   }
 
-  + .highlight,
-  + .zero-clipboard + .highlight {
+  + .highlight {
     margin-top: -1rem;
+  }
+
+  + .zero-clipboard + .highlight {
+    margin-top: 0;
   }
 
   + p {
@@ -48,11 +54,11 @@
   }
 
   // Card examples should be horizontal
-  > .card {
-    float: left;
-    max-width: 15rem;
-    margin: .25rem;
-  }
+  // > .card {
+  //   float: left;
+  //   max-width: 15rem;
+  //   margin: .25rem;
+  // }
 
   > .nav + .nav,
   > .alert + .alert,
