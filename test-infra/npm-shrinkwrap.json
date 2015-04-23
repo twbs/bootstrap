@@ -3879,12 +3879,17 @@
       }
     },
     "grunt-sed": {
-      "version": "0.1.1",
-      "resolved": "https://registry.npmjs.org/grunt-sed/-/grunt-sed-0.1.1.tgz",
+      "version": "0.2.0",
+      "from": "grunt-sed@git://github.com/twbs/grunt-sed.git#8dd1aea67ad1bab8a6719f0cf209bef719c66ad7",
+      "resolved": "git://github.com/twbs/grunt-sed.git#8dd1aea67ad1bab8a6719f0cf209bef719c66ad7",
       "dependencies": {
+        "lodash": {
+          "version": "3.7.0",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.7.0.tgz"
+        },
         "replace": {
-          "version": "0.2.10",
-          "resolved": "https://registry.npmjs.org/replace/-/replace-0.2.10.tgz",
+          "version": "0.3.0",
+          "resolved": "https://registry.npmjs.org/replace/-/replace-0.3.0.tgz",
           "dependencies": {
             "colors": {
               "version": "0.5.1",
