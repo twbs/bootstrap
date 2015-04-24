@@ -6,12 +6,11 @@ module Jekyll
 
       def initialize(tag_name, type, tokens)
         super
-        @type = type
-        if type == "danger"
-          @type = "danger"
-        elsif type == "warning"
-          @type = "warning"
-        elsif type == "info"
+        type.strip!
+        if %w(info danger warning).include?(type)
+          @type = type
+        else
+          puts "#{type} callout not supported. Defaulting to info"
           @type = "info"
         end
       end
