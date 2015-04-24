@@ -166,7 +166,8 @@ $(function () {
 
   QUnit.test('should destroy popover', function (assert) {
     assert.expect(7)
-    var $popover = $('<div/>')
+    var $popover = $('<div>Popover trigger</div>')
+      .appendTo('#qunit-fixture')
       .bootstrapPopover({
         trigger: 'hover'
       })
@@ -238,6 +239,17 @@ $(function () {
           .bootstrapPopover('hide')
       })
       .bootstrapPopover('show')
+  })
+
+  QUnit.test('should throw an error when trying to show a popover on a hidden element', function (assert) {
+    assert.expect(1)
+    var $target = $('<a href="#" title="Another popover" data-content="Body" style="display: none;">I am hidden</a>').appendTo('#qunit-fixture')
+
+    assert.throws(function () {
+      $target.bootstrapPopover('show')
+    }, new Error('Can\'t show a tooltip/popover on a hidden element'))
+
+    $target.remove()
   })
 
   QUnit.test('should throw an error when initializing popover on the document object without specifying a delegation selector', function (assert) {

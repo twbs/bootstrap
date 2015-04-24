@@ -44,7 +44,7 @@ $(function () {
   })
 
   test('should add aria-describedby to the trigger on show', function () {
-    var $trigger = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $trigger = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .bootstrapTooltip()
       .appendTo('#qunit-fixture')
       .bootstrapTooltip('show')
@@ -57,7 +57,7 @@ $(function () {
   })
 
   test('should remove aria-describedby from trigger on hide', function () {
-    var $trigger = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $trigger = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .bootstrapTooltip()
       .appendTo('#qunit-fixture')
 
@@ -69,7 +69,7 @@ $(function () {
   })
 
   test('should assign a unique id tooltip element', function () {
-    $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip('show')
 
@@ -80,7 +80,7 @@ $(function () {
   })
 
   test('should place tooltips relative to placement option', function () {
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ placement: 'bottom' })
 
@@ -92,7 +92,7 @@ $(function () {
   })
 
   test('should allow html entities', function () {
-    var $tooltip = $('<a href="#" rel="tooltip" title="&lt;b&gt;@fat&lt;/b&gt;"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="&lt;b&gt;@fat&lt;/b&gt;">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ html: true })
 
@@ -104,7 +104,7 @@ $(function () {
   })
 
   test('should respect custom classes', function () {
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ template: '<div class="tooltip some-class"><div class="tooltip-arrow"/><div class="tooltip-inner"/></div>' })
 
@@ -118,7 +118,8 @@ $(function () {
   test('should fire show event', function (assert) {
     var done = assert.async()
 
-    $('<div title="tooltip title"/>')
+    $('<div title="tooltip title">Tooltip trigger</div>')
+      .appendTo('#qunit-fixture')
       .on('show.bs.tooltip', function () {
         ok(true, 'show event fired')
         done()
@@ -129,7 +130,7 @@ $(function () {
   test('should fire shown event', function (assert) {
     var done = assert.async()
 
-    $('<div title="tooltip title"></div>')
+    $('<div title="tooltip title">Tooltip trigger</div>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.tooltip', function () {
         ok(true, 'shown was called')
@@ -141,7 +142,8 @@ $(function () {
   test('should not fire shown event when show was prevented', function (assert) {
     var done = assert.async()
 
-    $('<div title="tooltip title"/>')
+    $('<div title="tooltip title">Tooltip trigger</div>')
+      .appendTo('#qunit-fixture')
       .on('show.bs.tooltip', function (e) {
         e.preventDefault()
         ok(true, 'show event fired')
@@ -156,7 +158,7 @@ $(function () {
   test('should fire hide event', function (assert) {
     var done = assert.async()
 
-    $('<div title="tooltip title"/>')
+    $('<div title="tooltip title">Tooltip trigger</div>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.tooltip', function () {
         $(this).bootstrapTooltip('hide')
@@ -171,7 +173,7 @@ $(function () {
   test('should fire hidden event', function (assert) {
     var done = assert.async()
 
-    $('<div title="tooltip title"/>')
+    $('<div title="tooltip title">Tooltip trigger</div>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.tooltip', function () {
         $(this).bootstrapTooltip('hide')
@@ -186,7 +188,7 @@ $(function () {
   test('should not fire hidden event when hide was prevented', function (assert) {
     var done = assert.async()
 
-    $('<div title="tooltip title"/>')
+    $('<div title="tooltip title">Tooltip trigger</div>')
       .appendTo('#qunit-fixture')
       .on('shown.bs.tooltip', function () {
         $(this).bootstrapTooltip('hide')
@@ -203,7 +205,8 @@ $(function () {
   })
 
   test('should destroy tooltip', function () {
-    var $tooltip = $('<div/>')
+    var $tooltip = $('<div>Tooltip trigger</div>')
+      .appendTo('#qunit-fixture')
       .bootstrapTooltip()
       .on('click.foo', function () {})
 
@@ -221,7 +224,7 @@ $(function () {
   })
 
   test('should show tooltip with delegate selector on click', function () {
-    var $div = $('<div><a href="#" rel="tooltip" title="Another tooltip"/></div>')
+    var $div = $('<div><a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a></div>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({
         selector: 'a[rel="tooltip"]',
@@ -236,7 +239,7 @@ $(function () {
   })
 
   test('should show tooltip when toggle is called', function () {
-    $('<a href="#" rel="tooltip" title="tooltip on toggle"/>')
+    $('<a href="#" rel="tooltip" title="tooltip on toggle">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ trigger: 'manual' })
       .bootstrapTooltip('toggle')
@@ -255,7 +258,7 @@ $(function () {
   })
 
   test('should place tooltips inside body when container is body', function () {
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ container: 'body' })
       .bootstrapTooltip('show')
@@ -275,7 +278,7 @@ $(function () {
     var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo('#qunit-fixture')
-    var $target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"/>')
+    var $target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line">m</a>')
       .appendTo($container)
       .bootstrapTooltip({
         placement: 'right',
@@ -296,7 +299,7 @@ $(function () {
   })
 
   test('should use title attribute for tooltip text', function () {
-    var $tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip()
 
@@ -308,7 +311,7 @@ $(function () {
   })
 
   test('should prefer title attribute over title option', function () {
-    var $tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Simple tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({
         title: 'This is a tooltip with some content'
@@ -322,7 +325,7 @@ $(function () {
   })
 
   test('should use title option', function () {
-    var $tooltip = $('<a href="#" rel="tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({
         title: 'This is a tooltip with some content'
@@ -548,7 +551,7 @@ $(function () {
     var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo('#qunit-fixture')
-    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; left: 0px;"/>')
+    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; left: 0px;">m</a>')
       .appendTo($container)
       .bootstrapTooltip({
         placement: 'right',
@@ -575,7 +578,7 @@ $(function () {
     var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo('#qunit-fixture')
-    var $target = $('<a href="#" rel="tooltip" title="tip" style="bottom: 0px; left: 0px;"/>')
+    var $target = $('<a href="#" rel="tooltip" title="tip" style="bottom: 0px; left: 0px;">m</a>')
       .appendTo($container)
       .bootstrapTooltip({
         placement: 'right',
@@ -604,7 +607,7 @@ $(function () {
     var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo('#qunit-fixture')
-    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; left: 0px;"/>')
+    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; left: 0px;">m</a>')
       .appendTo($container)
       .bootstrapTooltip({
         placement: 'bottom',
@@ -632,7 +635,7 @@ $(function () {
     var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo('body')
-    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; right: 0px;"/>')
+    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 0px; right: 0px;">m</a>')
       .appendTo($container)
       .bootstrapTooltip({
         placement: 'bottom',
@@ -662,7 +665,7 @@ $(function () {
     var $styles = $(styles).appendTo('head')
 
     var $container = $('<div class="container-viewport"/>').appendTo(document.body)
-    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 50px; left: 350px;"/>')
+    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 50px; left: 350px;">m</a>')
       .appendTo($container)
       .bootstrapTooltip({
         placement: 'bottom',
@@ -682,7 +685,7 @@ $(function () {
 
   test('should not error when trying to show an auto-placed tooltip that has been removed from the dom', function () {
     var passed = true
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .one('show.bs.tooltip', function () {
         $(this).remove()
@@ -770,7 +773,7 @@ $(function () {
   test('should show tooltip if leave event hasn\'t occurred before delay expires', function (assert) {
     var done = assert.async()
 
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ delay: 150 })
 
@@ -789,7 +792,7 @@ $(function () {
   test('should not show tooltip if leave event occurs before delay expires', function (assert) {
     var done = assert.async()
 
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ delay: 150 })
 
@@ -809,7 +812,7 @@ $(function () {
   test('should not hide tooltip if leave event occurs and enter event occurs within the hide delay', function (assert) {
     var done = assert.async()
 
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ delay: { show: 0, hide: 150 }})
 
@@ -834,7 +837,7 @@ $(function () {
   test('should not show tooltip if leave event occurs before delay expires', function (assert) {
     var done = assert.async()
 
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ delay: 150 })
 
@@ -854,7 +857,7 @@ $(function () {
   test('should not show tooltip if leave event occurs before delay expires, even if hide delay is 0', function (assert) {
     var done = assert.async()
 
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ delay: { show: 150, hide: 0 }})
 
@@ -874,7 +877,7 @@ $(function () {
   test('should wait 200ms before hiding the tooltip', function (assert) {
     var done = assert.async()
 
-    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip">Tooltip trigger</a>')
       .appendTo('#qunit-fixture')
       .bootstrapTooltip({ delay: { show: 0, hide: 150 }})
 
@@ -1089,7 +1092,7 @@ $(function () {
         + '</style>'
     var $styles = $(styles).appendTo('head')
 
-    var $element = $('<div id="target" title="1"/>').appendTo('#qunit-fixture')
+    var $element = $('<div id="target" title="1"></div>').appendTo('#qunit-fixture')
 
     $element
       .on('shown.bs.tooltip', function () {
@@ -1107,6 +1110,17 @@ $(function () {
       })
 
     $element.bootstrapTooltip('show')
+  })
+
+  QUnit.test('should throw an error when trying to show a tooltip on a hidden element', function (assert) {
+    assert.expect(1)
+    var $target = $('<a href="#" rel="tooltip" title="Another tooltip" style="display: none;">I am hidden</a>').appendTo('#qunit-fixture')
+
+    assert.throws(function () {
+      $target.bootstrapTooltip('show')
+    }, new Error('Can\'t show a tooltip/popover on a hidden element'))
+
+    $target.remove()
   })
 
 })
