@@ -21,7 +21,7 @@ Cards require very little markup, but do require some additional classes to give
 
 ### Sizing
 
-Cards are block-leve by default, so they'll fill the available horizontal space. Constrain their widths via custom styles, our predefined grid classes, or our grid mixins.
+Cards are block-level by default, so they'll fill the available horizontal space. Constrain their widths via custom styles, our predefined grid classes, or our grid mixins.
 
 {% example html %}
 <div class="card" style="width: 20rem;">
