@@ -72,7 +72,6 @@
         - title: User input
         - title: Sample output
     - title: Tables
-    - title: Jumbotron
     - title: Buttons
       sections:
         - title: Examples
@@ -116,11 +115,10 @@
         - title: Segmented buttons
         - title: Accessibility
     - title: Dropdowns
+    - title: Jumbotron
     - title: Badges
     - title: Label
     - title: Alerts
-    - title: Navs
-    - title: Navbar
     - title: Card
       sections:
         - title: Basic example
@@ -133,6 +131,8 @@
         - title: Groups
         - title: Sets
         - title: Columns
+    - title: Navs
+    - title: Navbar
     - title: Breadcrumb
     - title: Pagination
     - title: Progress
