@@ -1,5 +1,5 @@
 # [Bootstrap](http://getbootstrap.com)
-[![Slack](http://bootstrap-slack.herokuapp.com/badge.svg)](http://bootstrap-slack.herokuapp.com)
+[![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
 ![Bower version](https://img.shields.io/bower/v/bootstrap.svg?style=flat)
 [![npm version](https://img.shields.io/npm/v/bootstrap.svg?style=flat)](https://www.npmjs.com/package/bootstrap)
 [![Build Status](https://img.shields.io/travis/twbs/bootstrap/master.svg?style=flat)](https://travis-ci.org/twbs/bootstrap)
@@ -105,7 +105,7 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 
 - Follow [@getbootstrap on Twitter](https://twitter.com/getbootstrap).
 - Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
-- [Join the official Slack room.](http://bootstrap-slack.herokuapp.com)
+- Join [the official Slack room](https://bootstrap-slack.herokuapp.com).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
 - Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
