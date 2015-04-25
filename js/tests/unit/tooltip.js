@@ -1225,4 +1225,14 @@ $(function () {
     assert.strictEqual($tooltip.data('bs.tooltip'), undefined, 'should not initialize the tooltip')
   })
 
+  QUnit.test('should throw an error when template contains multiple top-level elements', function (assert) {
+    assert.expect(1)
+    assert.throws(function () {
+      $('<a href="#" data-toggle="tooltip" title="Another tooltip"></a>')
+        .appendTo('#qunit-fixture')
+        .bootstrapTooltip({ template: '<div>Foo</div><div>Bar</div>' })
+        .bootstrapTooltip('show')
+    }, new Error('tooltip `template` option must consist of exactly 1 top-level element!'))
+  })
+
 })
