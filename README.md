@@ -1,5 +1,5 @@
 # [Bootstrap](http://getbootstrap.com)
-![Slack](http://bootstrap-slack.herokuapp.com/badge.svg)
+[![Slack](http://bootstrap-slack.herokuapp.com/badge.svg)](http://bootstrap-slack.herokuapp.com)
 ![Bower version](https://img.shields.io/bower/v/bootstrap.svg?style=flat)
 [![npm version](https://img.shields.io/npm/v/bootstrap.svg?style=flat)](https://www.npmjs.com/package/bootstrap)
 [![Build Status](https://img.shields.io/travis/twbs/bootstrap/master.svg?style=flat)](https://travis-ci.org/twbs/bootstrap)
