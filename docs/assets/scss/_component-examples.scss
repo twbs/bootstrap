@@ -63,7 +63,8 @@
   > .nav + .nav,
   > .alert + .alert,
   > .navbar + .navbar,
-  > .progress + .progress {
+  > .progress + .progress,
+  > .progress + .btn {
     margin-top: 1rem;
   }
 
