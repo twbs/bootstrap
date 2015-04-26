@@ -127,48 +127,6 @@
 }
 
 
-// Navbar form
-//
-// Extension of the `.form-inline` with some extra flavor for optimum display in
-// our navbars.
-
-.navbar-form {
-  padding: 10px $navbar-padding-horizontal;
-  margin-right: -$navbar-padding-horizontal;
-  margin-left: -$navbar-padding-horizontal;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  @include box-shadow(inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1));
-
-  // Mixin behavior for optimum display
-  @extend .form-inline;
-
-  .form-group {
-    @include media-breakpoint-up(sm) {
-      margin-bottom: 5px;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  // Vertically center in expanded, horizontal navbar
-  // @include navbar-vertical-align($input-height-base);
-
-  // Undo 100% width for pull classes
-  @include media-breakpoint-up(sm) {
-    width: auto;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-right: 0;
-    margin-left: 0;
-    border: 0;
-    @include box-shadow(none);
-  }
-}
-
-
 // Dropdown menus
 
 // Menu position and menu carets
