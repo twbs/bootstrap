@@ -185,7 +185,7 @@ Use the `.inline-form` class to to display a series of labels, form controls, an
 - Controls receive `width: auto` to override the Bootstrap default `width: 100%`.
 - Controls **only appear inline in viewports that are at least 768px wide** to account for narrow viewports on mobile devices.
 
-Because of this, you may need to manually adddres the width and alignment of individual form controls. Lastly, as shown below, you should always include a `<label>` with each form control.
+Because of this, you may need to manually address the width and alignment of individual form controls. Lastly, as shown below, you should always include a `<label>` with each form control.
 
 #### Visible labels
 

@@ -243,7 +243,7 @@ textarea {
   margin: 0;
   // Normalize includes `font: inherit;`, so `font-family`. `font-size`, etc are
   // properly inherited. However, `line-height` isn't addressed there. Using this
-  // ensures we don't need to unnessarily redeclare the global font stack.
+  // ensures we don't need to unnecessarily redeclare the global font stack.
   line-height: inherit;
 }
 

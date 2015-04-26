@@ -118,7 +118,7 @@ Tables are slightly adjusted to style `<caption>`s and ensure consistent `text-a
 <div class="bd-example">
   <table>
     <caption>
-      This is an example table, and this is it's caption to describe the contents.
+      This is an example table, and this is its caption to describe the contents.
     </caption>
     <thead>
       <tr>
