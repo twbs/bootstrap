@@ -7,7 +7,7 @@ Opt your images into responsive behavior (so they never become larger than their
 
 ## Responsive images
 
-Images in Bootstrap are responsive by default. `max-width: 100%;` and `height: auto;` are applied to the image so that it scales with the parent element.
+Images in Bootstrap are made responsive with `.img-responsive`. `max-width: 100%;` and `height: auto;` are applied to the image so that it scales with the parent element.
 
 <div class="bd-example">
   <img data-src="holder.js/100%x250" class="img-responsive" alt="Generic responsive image">
