@@ -121,7 +121,7 @@ Tokenizer.prototype._shift = function () {
     return new VarDocstring(match[1]);
   }
   var commentStart = line.lastIndexOf('//');
-  var varLine = (commentStart === -1) ? line : line.slice(0, commentStart);
+  var varLine = commentStart === -1 ? line : line.slice(0, commentStart);
   match = VAR_ASSIGNMENT.exec(varLine);
   if (match !== null) {
     return new Variable(match[1], match[2]);
@@ -168,8 +168,7 @@ Parser.prototype.parseSection = function () {
   var docstring = this._tokenizer.shift();
   if (docstring instanceof SectionDocstring) {
     section.docstring = docstring;
-  }
-  else {
+  } else {
     this._tokenizer.unshift(docstring);
   }
   this.parseSubSections(section);
@@ -185,15 +184,14 @@ Parser.prototype.parseSubSections = function (section) {
         // Presume an implicit initial subsection
         subsection = new SubSection('');
         this.parseVars(subsection);
-      }
-      else {
+      } else {
         break;
       }
     }
     section.addSubSection(subsection);
   }
 
-  if (section.subsections.length === 1 && !(section.subsections[0].heading) && section.subsections[0].variables.length === 0) {
+  if (section.subsections.length === 1 && !section.subsections[0].heading && section.subsections[0].variables.length === 0) {
     // Ignore lone empty implicit subsection
     section.subsections = [];
   }

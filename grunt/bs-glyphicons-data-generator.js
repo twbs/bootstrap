@@ -33,8 +33,7 @@ module.exports = function generateGlyphiconsData(grunt) {
 
   try {
     fs.writeFileSync(glyphiconsYml, glyphiconsData);
-  }
-  catch (err) {
+  } catch (err) {
     grunt.fail.warn(err);
   }
   grunt.log.writeln('File ' + glyphiconsYml.cyan + ' created.');
