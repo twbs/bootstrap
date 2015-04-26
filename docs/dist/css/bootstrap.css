@@ -2796,13 +2796,15 @@ select[multiple].input-lg {
   pointer-events: none;
 }
 .input-lg + .form-control-feedback,
-.input-group-lg + .form-control-feedback {
+.input-group-lg + .form-control-feedback,
+.form-group-lg .form-control + .form-control-feedback {
   width: 46px;
   height: 46px;
   line-height: 46px;
 }
 .input-sm + .form-control-feedback,
-.input-group-sm + .form-control-feedback {
+.input-group-sm + .form-control-feedback,
+.form-group-sm .form-control + .form-control-feedback {
   width: 30px;
   height: 30px;
   line-height: 30px;
@@ -5249,6 +5251,9 @@ a.thumbnail.active {
 }
 .media-object {
   display: block;
+}
+.media-object.img-thumbnail {
+  max-width: none;
 }
 .media-right,
 .media > .pull-right {
