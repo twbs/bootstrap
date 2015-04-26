@@ -141,60 +141,6 @@
 }
 
 
-// Buttons in navbars
-//
-// Vertically center a button within a navbar (when *not* in a form).
-
-// .navbar-btn {
-//   @include navbar-vertical-align($input-height-base);
-
-//   &.btn-sm {
-//     @include navbar-vertical-align($input-height-sm);
-//   }
-//   &.btn-xs {
-//     @include navbar-vertical-align(22);
-//   }
-// }
-
-
-// Text in navbars
-//
-// Add a class to make any element properly align itself vertically within the navbars.
-
-// .navbar-text {
-//   // @include navbar-vertical-align($line-height-computed);
-
-//   @include media-breakpoint-up(sm) {
-//     float: left;
-//     margin-right: $navbar-padding-horizontal;
-//     margin-left: $navbar-padding-horizontal;
-//   }
-// }
-
-
-// Component alignment
-//
-// Repurpose the pull utilities as their own navbar utilities to avoid specificity
-// issues with parents and chaining. Only do this when the navbar is uncollapsed
-// though so that navbar contents properly stack and align in mobile.
-//
-// Declared after the navbar components to ensure more specificity on the margins.
-
-// @include media-breakpoint-up(sm) {
-//   .navbar-left {
-//     @include pull-left();
-//   }
-//   .navbar-right {
-//     @include pull-right();
-//     margin-right: -$navbar-padding-horizontal;
-
-//     ~ .navbar-right {
-//       margin-right: 0;
-//     }
-//   }
-// }
-
-
 // Condensed navbar
 
 .navbar-condensed {
