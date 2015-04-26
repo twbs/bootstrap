@@ -8,8 +8,9 @@
 //
 
 .nav {
+  padding-left: 0;
   margin-bottom: 0;
-  @extend .list-unstyled;
+  list-style: none;
   @include clearfix();
 }
 
