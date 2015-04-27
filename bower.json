@@ -13,6 +13,7 @@
     "web"
   ],
   "homepage": "http://getbootstrap.com",
+  "moduleType": "globals",
   "main": [
     "less/bootstrap.less",
     "dist/js/bootstrap.js"
