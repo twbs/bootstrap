@@ -768,6 +768,7 @@ $(function () {
     assert.expect(2)
     var styles = '<style>'
         + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '.container-viewport, .container-viewport *, .container-viewport *:before, .container-viewport *:after { box-sizing: border-box; }'
         + '.tooltip, .tooltip .tooltip-inner { width: 50px; height: 50px; max-width: none; background: red; }'
         + '.container-viewport { padding: 100px; margin-left: 100px; width: 100px; }'
         + '</style>'
