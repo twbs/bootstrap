@@ -47,8 +47,8 @@ Remember, since Bootstrap utilizies the HTML5 doctype, **all inputs must have a 
   </fieldset>
   <fieldset class="form-group">
     <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
+    <input type="file" class="form-control-file" id="exampleInputFile">
+    <p class="help-block">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</p>
   </fieldset>
   <div class="radio">
     <label>
