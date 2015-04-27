@@ -44,3 +44,28 @@
 
 @include make-grid-columns();
 
+// Flex column reordering
+@if $enable-flex {
+  .col-xs-first { order: -1; }
+  .col-xs-last { order: 1; }
+
+  @include media-breakpoint-up(sm) {
+    .col-sm-first { order: -1; }
+    .col-sm-last { order: 1; }
+  }
+
+  @include media-breakpoint-up(md) {
+    .col-md-first { order: -1; }
+    .col-md-last { order: 1; }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .col-lg-first { order: -1; }
+    .col-lg-last { order: 1; }
+  }
+
+  @include media-breakpoint-up(xl) {
+    .col-xl-first { order: -1; }
+    .col-xl-last { order: 1; }
+  }
+}
