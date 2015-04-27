@@ -12,6 +12,7 @@
     "web"
   ],
   "homepage": "http://getbootstrap.com",
+  "license": "MIT",
   "moduleType": "globals",
   "main": [
     "less/bootstrap.less",
