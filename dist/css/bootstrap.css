@@ -484,13 +484,15 @@ mark, .mark {
   background-color: #fcf8e3;
 }
 
-.list-unstyled, .list-inline, .nav {
+.list-unstyled {
   padding-left: 0;
   list-style: none;
 }
 
 .list-inline {
+  padding-left: 0;
   margin-left: -5px;
+  list-style: none;
 }
 .list-inline > li {
   display: inline-block;
@@ -1921,47 +1923,47 @@ input[type="radio"]:disabled, input[type="radio"].disabled, fieldset[disabled] i
 }
 
 @media (min-width: 34em) {
-  .form-inline .form-group, .navbar-form .form-group {
+  .form-inline .form-group {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle;
   }
-  .form-inline .form-control, .navbar-form .form-control {
+  .form-inline .form-control {
     display: inline-block;
     width: auto;
     vertical-align: middle;
   }
-  .form-inline .form-control-static, .navbar-form .form-control-static {
+  .form-inline .form-control-static {
     display: inline-block;
   }
-  .form-inline .input-group, .navbar-form .input-group {
+  .form-inline .input-group {
     display: inline-table;
     vertical-align: middle;
   }
-  .form-inline .input-group .input-group-addon, .navbar-form .input-group .input-group-addon, .form-inline .input-group .input-group-btn, .navbar-form .input-group .input-group-btn, .form-inline .input-group .form-control, .navbar-form .input-group .form-control {
+  .form-inline .input-group .input-group-addon, .form-inline .input-group .input-group-btn, .form-inline .input-group .form-control {
     width: auto;
   }
-  .form-inline .input-group > .form-control, .navbar-form .input-group > .form-control {
+  .form-inline .input-group > .form-control {
     width: 100%;
   }
-  .form-inline .control-label, .navbar-form .control-label {
+  .form-inline .control-label {
     margin-bottom: 0;
     vertical-align: middle;
   }
-  .form-inline .radio, .navbar-form .radio, .form-inline .checkbox, .navbar-form .checkbox {
+  .form-inline .radio, .form-inline .checkbox {
     display: inline-block;
     margin-top: 0;
     margin-bottom: 0;
     vertical-align: middle;
   }
-  .form-inline .radio label, .navbar-form .radio label, .form-inline .checkbox label, .navbar-form .checkbox label {
+  .form-inline .radio label, .form-inline .checkbox label {
     padding-left: 0;
   }
-  .form-inline .radio input[type="radio"], .navbar-form .radio input[type="radio"], .form-inline .checkbox input[type="checkbox"], .navbar-form .checkbox input[type="checkbox"] {
+  .form-inline .radio input[type="radio"], .form-inline .checkbox input[type="checkbox"] {
     position: relative;
     margin-left: 0;
   }
-  .form-inline .has-feedback .form-control-feedback, .navbar-form .has-feedback .form-control-feedback {
+  .form-inline .has-feedback .form-control-feedback {
     top: 0;
   }
 }
@@ -2576,11 +2578,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   display: table;
   border-collapse: separate;
 }
-.input-group[class*="col-"] {
-  float: none;
-  padding-right: 0;
-  padding-left: 0;
-}
 .input-group .form-control {
   position: relative;
   z-index: 2;
@@ -2897,7 +2894,9 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 
 .nav {
+  padding-left: 0;
   margin-bottom: 0;
+  list-style: none;
 }
 .nav:before, .nav:after {
   display: table; 
@@ -3097,32 +3096,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   }
 }
 
-.navbar-form {
-  padding: 10px 1rem;
-  margin-right: -1rem;
-  margin-left: -1rem;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-}
-@media (min-width: 34em) {
-  .navbar-form .form-group {
-    margin-bottom: 5px;
-  }
-  .navbar-form .form-group:last-child {
-    margin-bottom: 0;
-  }
-}
-@media (min-width: 34em) {
-  .navbar-form {
-    width: auto;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-right: 0;
-    margin-left: 0;
-    border: 0;
-  }
-}
-
 .navbar-nav > li > .dropdown-menu {
   margin-top: 0;
   border-top-left-radius: 0; 
@@ -3144,7 +3117,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
   padding-top: .95rem;
   padding-bottom: .95rem;
 }
-.navbar-condensed .form-inline, .navbar-condensed .navbar-form {
+.navbar-condensed .form-inline {
   margin-top: .6rem;
 }
 
