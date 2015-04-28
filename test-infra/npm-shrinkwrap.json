@@ -1233,8 +1233,8 @@
           }
         },
         "clean-css": {
-          "version": "3.2.5",
-          "resolved": "https://registry.npmjs.org/clean-css/-/clean-css-3.2.5.tgz",
+          "version": "3.2.6",
+          "resolved": "https://registry.npmjs.org/clean-css/-/clean-css-3.2.6.tgz",
           "dependencies": {
             "commander": {
               "version": "2.8.1",
