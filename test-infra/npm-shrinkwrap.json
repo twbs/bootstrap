@@ -119,8 +119,8 @@
               }
             },
             "lodash": {
-              "version": "2.4.1",
-              "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+              "version": "2.4.2",
+              "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.2.tgz"
             }
           }
         },
@@ -147,8 +147,8 @@
           "resolved": "https://registry.npmjs.org/grunt-legacy-log/-/grunt-legacy-log-0.1.1.tgz",
           "dependencies": {
             "lodash": {
-              "version": "2.4.1",
-              "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+              "version": "2.4.2",
+              "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.2.tgz"
             },
             "underscore.string": {
               "version": "2.3.3",
@@ -247,8 +247,8 @@
               "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-0.2.0.tgz"
             },
             "caniuse-db": {
-              "version": "1.0.30000145",
-              "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000145.tgz"
+              "version": "1.0.30000149",
+              "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000149.tgz"
             },
             "num2fraction": {
               "version": "1.1.0",
@@ -409,8 +409,8 @@
               "resolved": "https://registry.npmjs.org/lazystream/-/lazystream-0.1.0.tgz"
             },
             "lodash": {
-              "version": "2.4.1",
-              "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+              "version": "2.4.2",
+              "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.2.tgz"
             },
             "readable-stream": {
               "version": "1.0.33",
@@ -1181,8 +1181,8 @@
           }
         },
         "lodash": {
-          "version": "2.4.1",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+          "version": "2.4.2",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.2.tgz"
         },
         "strip-json-comments": {
           "version": "1.0.2",
@@ -2189,8 +2189,8 @@
                   "resolved": "https://registry.npmjs.org/har-validator/-/har-validator-1.6.1.tgz",
                   "dependencies": {
                     "bluebird": {
-                      "version": "2.9.24",
-                      "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-2.9.24.tgz"
+                      "version": "2.9.25",
+                      "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-2.9.25.tgz"
                     },
                     "chalk": {
                       "version": "1.0.0",
@@ -2349,8 +2349,8 @@
                   "resolved": "https://registry.npmjs.org/stringstream/-/stringstream-0.0.4.tgz"
                 },
                 "tough-cookie": {
-                  "version": "0.13.0",
-                  "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-0.13.0.tgz",
+                  "version": "1.0.0",
+                  "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-1.0.0.tgz",
                   "dependencies": {
                     "punycode": {
                       "version": "1.3.2",
@@ -2377,8 +2377,8 @@
           }
         },
         "lodash": {
-          "version": "2.4.1",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+          "version": "2.4.2",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.2.tgz"
         }
       }
     },
@@ -2679,8 +2679,8 @@
                       "resolved": "https://registry.npmjs.org/stringstream/-/stringstream-0.0.4.tgz"
                     },
                     "tough-cookie": {
-                      "version": "0.13.0",
-                      "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-0.13.0.tgz",
+                      "version": "1.0.0",
+                      "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-1.0.0.tgz",
                       "dependencies": {
                         "punycode": {
                           "version": "1.3.2",
@@ -2995,8 +2995,8 @@
           }
         },
         "lodash": {
-          "version": "2.4.1",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+          "version": "2.4.2",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.2.tgz"
         },
         "tiny-lr-fork": {
           "version": "0.0.5",
@@ -3507,8 +3507,8 @@
           }
         },
         "lodash": {
-          "version": "2.4.1",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+          "version": "2.4.2",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.2.tgz"
         },
         "vow": {
           "version": "0.4.9",
@@ -3517,20 +3517,20 @@
       }
     },
     "grunt-saucelabs": {
-      "version": "8.6.0",
-      "resolved": "https://registry.npmjs.org/grunt-saucelabs/-/grunt-saucelabs-8.6.0.tgz",
+      "version": "8.6.1",
+      "resolved": "https://registry.npmjs.org/grunt-saucelabs/-/grunt-saucelabs-8.6.1.tgz",
       "dependencies": {
         "colors": {
           "version": "1.0.3",
           "resolved": "https://registry.npmjs.org/colors/-/colors-1.0.3.tgz"
         },
         "lodash": {
-          "version": "3.3.1",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.3.1.tgz"
+          "version": "3.7.0",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.7.0.tgz"
         },
         "q": {
-          "version": "1.1.2",
-          "resolved": "https://registry.npmjs.org/q/-/q-1.1.2.tgz"
+          "version": "1.3.0",
+          "resolved": "https://registry.npmjs.org/q/-/q-1.3.0.tgz"
         },
         "requestretry": {
           "version": "1.2.2",
@@ -3541,8 +3541,8 @@
               "resolved": "https://registry.npmjs.org/fg-lodash/-/fg-lodash-0.0.2.tgz",
               "dependencies": {
                 "lodash": {
-                  "version": "2.4.1",
-                  "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.1.tgz"
+                  "version": "2.4.2",
+                  "resolved": "https://registry.npmjs.org/lodash/-/lodash-2.4.2.tgz"
                 },
                 "underscore.string": {
                   "version": "2.3.3",
@@ -3689,8 +3689,8 @@
                   "resolved": "https://registry.npmjs.org/stringstream/-/stringstream-0.0.4.tgz"
                 },
                 "tough-cookie": {
-                  "version": "0.13.0",
-                  "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-0.13.0.tgz",
+                  "version": "1.0.0",
+                  "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-1.0.0.tgz",
                   "dependencies": {
                     "punycode": {
                       "version": "1.3.2",
