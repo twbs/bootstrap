@@ -1,5 +1,8 @@
 // package metadata file for Meteor.js
 
+/* jshint strict:false */
+/* global Package:true */
+
 Package.describe({
   name: 'twbs:bootstrap',  // http://atmospherejs.com/twbs/bootstrap
   summary: 'The most popular front-end framework for developing responsive, mobile first projects on the web.',
