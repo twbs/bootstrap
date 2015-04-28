@@ -145,30 +145,30 @@
         .data('placement', 'top')
         .attr('title', 'Copy to clipboard')
         .tooltip()
+
+
+      // Copy to clipboard
+      zeroClipboard.on('dataRequested', function (client) {
+        var highlight = $(this).parent().nextAll('.highlight').first()
+        client.setText(highlight.text())
+      })
+
+      // Notify copy success and reset tooltip title
+      zeroClipboard.on('complete', function () {
+        htmlBridge
+          .attr('title', 'Copied!')
+          .tooltip('fixTitle')
+          .tooltip('show')
+          .attr('title', 'Copy to clipboard')
+          .tooltip('fixTitle')
+      })
     })
 
-    // Copy to clipboard
-    zeroClipboard.on('dataRequested', function (client) {
-      var highlight = $(this).parent().nextAll('.highlight').first()
-      client.setText(highlight.text())
-    })
-
-    // Notify copy success and reset tooltip title
-    zeroClipboard.on('complete', function () {
-      htmlBridge
-        .attr('title', 'Copied!')
-        .tooltip('fixTitle')
-        .tooltip('show')
-        .attr('title', 'Copy to clipboard')
-        .tooltip('fixTitle')
-    })
-
-    // Notify copy failure
+    // Hide copy button when no Flash is found
+    // or wrong Flash version is present
     zeroClipboard.on('noflash wrongflash', function () {
-      htmlBridge
-        .attr('title', 'Flash required')
-        .tooltip('fixTitle')
-        .tooltip('show')
+      $('.zero-clipboard').remove()
+      ZeroClipboard.destroy()
     })
 
   })
