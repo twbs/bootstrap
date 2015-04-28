@@ -1,7 +1,6 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "3.3.4",
   "keywords": [
     "css",
     "js",
@@ -13,15 +12,11 @@
     "web"
   ],
   "homepage": "http://getbootstrap.com",
+  "license": "MIT",
+  "moduleType": "globals",
   "main": [
     "less/bootstrap.less",
-    "dist/css/bootstrap.css",
-    "dist/js/bootstrap.js",
-    "dist/fonts/glyphicons-halflings-regular.eot",
-    "dist/fonts/glyphicons-halflings-regular.svg",
-    "dist/fonts/glyphicons-halflings-regular.ttf",
-    "dist/fonts/glyphicons-halflings-regular.woff",
-    "dist/fonts/glyphicons-halflings-regular.woff2"
+    "dist/js/bootstrap.js"
   ],
   "ignore": [
     "/.*",

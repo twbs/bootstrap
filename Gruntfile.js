@@ -63,7 +63,7 @@ module.exports = function (grunt) {
         options: {
           jshintrc: 'grunt/.jshintrc'
         },
-        src: ['Gruntfile.js', 'grunt/*.js']
+        src: ['Gruntfile.js', 'package.js', 'grunt/*.js']
       },
       core: {
         src: 'js/*.js'
@@ -126,6 +126,10 @@ module.exports = function (grunt) {
 
     uglify: {
       options: {
+        compress: {
+          warnings: false
+        },
+        mangle: true,
         preserveComments: 'some'
       },
       core: {
@@ -317,6 +321,26 @@ module.exports = function (grunt) {
       }
     },
 
+    htmlmin: {
+      dist: {
+        options: {
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          minifyCSS: true,
+          minifyJS: true,
+          removeAttributeQuotes: true,
+          removeComments: true
+        },
+        expand: true,
+        cwd: '_gh_pages',
+        dest: '_gh_pages',
+        src: [
+          '**/*.html',
+          '!examples/**/*.html'
+        ]
+      }
+    },
+
     jade: {
       options: {
         pretty: true,
@@ -365,6 +389,14 @@ module.exports = function (grunt) {
           return old ? RegExp.quote(old) : old;
         })(),
         replacement: grunt.option('newver'),
+        exclude: [
+          'dist/fonts',
+          'docs/assets',
+          'fonts',
+          'js/tests/vendor',
+          'node_modules',
+          'test-infra'
+        ],
         recursive: true
       }
     },
@@ -491,7 +523,7 @@ module.exports = function (grunt) {
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
 
-  grunt.registerTask('prep-release', ['jekyll:github', 'compress']);
+  grunt.registerTask('prep-release', ['dist', 'docs', 'jekyll:github', 'htmlmin', 'compress']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
   // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.

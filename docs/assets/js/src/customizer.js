@@ -1,6 +1,6 @@
 /*!
  * Bootstrap Customizer (http://getbootstrap.com/customize/)
- * Copyright 2011-2014 Twitter, Inc.
+ * Copyright 2011-2015 Twitter, Inc.
  *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see http://creativecommons.org/licenses/by/3.0/.
@@ -17,7 +17,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
            ' */\n\n'
 
-  var supportsFile = (window.File && window.FileReader && window.FileList && window.Blob)
+  var supportsFile = window.File && window.FileReader && window.FileList && window.Blob
   var importDropTarget = $('#import-drop-target')
 
   function showError(msg, err) {
@@ -112,7 +112,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       js:  $('#plugin-section input:checked').map(function () { return this.value }).toArray()
     }
 
-    if ($.isEmptyObject(data.vars) && !data.css.length && !data.js.length) return
+    if ($.isEmptyObject(data.vars) && !data.css.length && !data.js.length) return null
 
     return data
   }
@@ -241,11 +241,11 @@ window.onload = function () { // wait for load in a dumb way because B-0
       // Core stylesheets like 'normalize.less' are not included in the form
       // since disabling them would wreck everything, and so their 'fileInclude'
       // will be 'undefined'.
-      if (fileInclude || (fileInclude == null))    lessSource += __less[filename]
+      if (fileInclude || fileInclude == null)    lessSource += __less[filename]
 
       // Custom variables are added after Bootstrap variables so the custom
       // ones take precedence.
-      if (('variables.less' === filename) && vars) lessSource += generateCustomLess(vars)
+      if (filename === 'variables.less' && vars) lessSource += generateCustomLess(vars)
     })
 
     lessSource = lessSource.replace(/@import[^\n]*/gi, '') // strip any imports
@@ -267,8 +267,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       try {
         intoResult[baseFilename + '.css']     = cw + tree.toCSS()
         intoResult[baseFilename + '.min.css'] = cw + tree.toCSS({ compress: true })
-      }
-      catch (compileErr) {
+      } catch (compileErr) {
         return promise.reject(compileErr)
       }
       promise.resolve()
@@ -366,7 +365,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     e.stopPropagation()
     e.preventDefault()
 
-    var file = (e.originalEvent.hasOwnProperty('dataTransfer')) ? e.originalEvent.dataTransfer.files[0] : e.originalEvent.target.files[0]
+    var file = e.originalEvent.hasOwnProperty('dataTransfer') ? e.originalEvent.dataTransfer.files[0] : e.originalEvent.target.files[0]
 
     var reader = new FileReader()
 
@@ -474,7 +473,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
       ).done(function (css, js, fonts) {
         generateZip(css, js, fonts, configJson, function (blob) {
           $compileBtn.removeAttr('disabled')
-          setTimeout(function () { saveAs(blob, 'bootstrap.zip') }, 0)
+          setTimeout(function () {
+            saveAs(blob, 'bootstrap.zip')
+          }, 0)
         })
       })
     })

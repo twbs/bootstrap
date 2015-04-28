@@ -92,6 +92,16 @@
   browser: >
     Chrome
   summary: >
+    Focus ring of image map within a modal is displayed in the wrong location.
+  upstream_bug: >
+    Chromium#475128
+  origin: >
+    Bootstrap#16180
+
+-
+  browser: >
+    Chrome
+  summary: >
     `display: table;` within `display: block;` forces sibling content to new line.
   upstream_bug: >
     Chromium#309483
@@ -199,6 +209,16 @@
     WebKit#141804, Safari#19892433
   origin: >
     Bootstrap#15832
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Focus ring of image map within a modal is displayed in the wrong location.
+  upstream_bug: >
+    WebKit#143527
+  origin: >
+    Bootstrap#16180
 
 -
   browser: >

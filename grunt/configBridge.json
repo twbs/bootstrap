@@ -11,7 +11,7 @@
       "../assets/js/src/customizer.js"
     ],
     "docsJs": [
-      "../assets/js/vendor/holder.js",
+      "../assets/js/vendor/holder.min.js",
       "../assets/js/vendor/ZeroClipboard.min.js",
       "../assets/js/vendor/anchor.js",
       "../assets/js/src/application.js"

@@ -233,10 +233,11 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
         </tr>
         <tr>
           <td>viewport</td>
-          <td>string | object</td>
+          <td>string | object | function</td>
           <td>{ selector: 'body', padding: 0 }</td>
           <td>
             <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
+            <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the popover instance.</p>
           </td>
        </tr>
       </tbody>
@@ -292,6 +293,10 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
         <tr>
           <td>hidden.bs.popover</td>
           <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+        </tr>
+        <tr>
+          <td>inserted.bs.popover</td>
+          <td>This event is fired after the <code>show.bs.popover</code> event when the popover template has been added to the DOM.</td>
         </tr>
       </tbody>
     </table>

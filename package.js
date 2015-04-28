@@ -1,5 +1,8 @@
 // package metadata file for Meteor.js
 
+/* jshint strict:false */
+/* global Package:true */
+
 Package.describe({
   name: 'twbs:bootstrap',  // http://atmospherejs.com/twbs/bootstrap
   summary: 'The most popular front-end framework for developing responsive, mobile first projects on the web.',
@@ -17,6 +20,6 @@ Package.onUse(function (api) {
     'dist/fonts/glyphicons-halflings-regular.woff',
     'dist/fonts/glyphicons-halflings-regular.woff2',
     'dist/css/bootstrap.css',
-    'dist/js/bootstrap.js',
+    'dist/js/bootstrap.js'
   ], 'client');
 });

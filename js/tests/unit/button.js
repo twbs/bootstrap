@@ -167,13 +167,13 @@ $(function () {
     assert.ok(!$btn2.find('input').prop('checked'), 'btn2 is not checked')
     $btn2.find('input').trigger('click')
     assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
-    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is checked')
+    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
     assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
 
     $btn2.find('input').trigger('click') // clicking an already checked radio should not un-check it
     assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
-    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is checked')
+    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
     assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
   })
