@@ -1,3 +1,10 @@
+/*!
+ * Bootstrap Grunt task for the CommonJS module generation
+ * http://getbootstrap.com
+ * Copyright 2014-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
 'use strict';
 
 var fs = require('fs');
