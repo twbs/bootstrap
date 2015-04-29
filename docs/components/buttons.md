@@ -37,7 +37,9 @@ Using color to add meaning to a button only provides a visual indication, which 
 
 ## Button tags
 
-Use the button classes on an `<a>`, `<button>`, or `<input>` element.
+As a best practice, **we highly recommend using the `<button>` element whenever possible** to ensure matching cross-browser rendering. However, you may also use button classes on `<a>`, `<button>`, or `<input>` elements.
+
+When using button classes on `<a>` elements, be sure to include the `role="button"` for improved accessibility.
 
 {% example html %}
 <a class="btn btn-secondary" href="#" role="button">Link</a>
@@ -45,18 +47,6 @@ Use the button classes on an `<a>`, `<button>`, or `<input>` element.
 <input class="btn btn-secondary" type="button" value="Input">
 <input class="btn btn-secondary" type="submit" value="Submit">
 {% endexample %}
-
-{% callout warning %}
-#### Links acting as buttons
-
-If the `<a>` elements are used to act as buttons – triggering in-page functionality, rather than navigating to another document or section within the current page – they should also be given an appropriate `role="button"`.
-{% endcallout %}
-
-{% callout warning %}
-#### Cross-browser rendering
-
-As a best practice, **we highly recommend using the `<button>` element whenever possible** to ensure matching cross-browser rendering.
-{% endcallout %}
 
 ## Sizes
 
