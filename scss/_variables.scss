@@ -43,6 +43,12 @@ $enable-shadows:             false !default;
 $enable-gradients:           false !default;
 $enable-transitions:         true !default;
 
+
+// Component defaults
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+
 $spacer:                     1rem !default;
 $spacer-x:                   $spacer !default;
 $spacer-y:                   $spacer !default;
