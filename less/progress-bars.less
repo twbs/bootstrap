@@ -30,6 +30,25 @@
   background-color: @progress-bg;
   border-radius: @progress-border-radius;
   .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+  
+  &.progress-small {
+    height: @line-height-small-computed;
+    margin-bottom: @line-height-small-computed;
+
+    > .progress-bar {
+      font-size: ceil((@font-size-small * 0.85));
+      line-height: @line-height-small-computed;
+    }
+  }
+  &.progress-large {
+    height: @line-height-large-computed;
+    margin-bottom: @line-height-large-computed;
+
+    > .progress-bar {
+      font-size: @font-size-base;
+      line-height: @line-height-large-computed;
+    }
+  }
 }
 
 // Bar of progress
