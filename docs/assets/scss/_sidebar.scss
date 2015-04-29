@@ -6,7 +6,6 @@
   padding: 0;
   margin-bottom: 0;
   background-color: #fafafa;
-  // background-color: #322f38;
 
   .navbar-toggler {
     position: absolute;
@@ -38,7 +37,6 @@
     width: 240px;
     overflow-y: auto;
     border-right: 1px solid #eee;
-    // @include gradient-vertical(#29262f, #322f38);
   }
 }
 
@@ -60,11 +58,6 @@
 
 .bd-search {
   position: relative;
-
-  // .form-control {
-  //   width: 12rem;
-  // }
-
   margin-right: 1.25rem;
   margin-bottom: 1.5rem;
   margin-left: 1.25rem;
@@ -73,25 +66,19 @@
     height: 2.45rem;
     padding-top: .4rem;
     padding-bottom: .4rem;
-    // color: rgba(255,255,255,.5);
-    // background-color: lighten(#29262f, 10%);
-    // border-color: lighten(#29262f, 15%);
-
-    // &:focus {
-    //   border-color: rgba(255,255,255,.25);
-    //   box-shadow: 0 0 .5rem rgba(255,255,255,.25);
-    // }
   }
 }
 
 .bd-search-results {
-  top: 108%;
   right: 0;
   display: block;
   padding: 0;
   overflow: hidden;
   font-size: .9rem;
-  border: 0;
+
+  &:empty {
+    display: none;
+  }
 
   > li > a {
     padding-left: .75rem;
