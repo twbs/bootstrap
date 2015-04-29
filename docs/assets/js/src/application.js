@@ -127,7 +127,7 @@
 
     // Config ZeroClipboard
     ZeroClipboard.config({
-      swfPath: '/assets/flash/ZeroClipboard.swf',
+      moviePath: '/assets/flash/ZeroClipboard.swf',
       hoverClass: 'btn-clipboard-hover'
     })
 
@@ -136,25 +136,25 @@
       var btnHtml = '<div class="zero-clipboard"><span class="btn-clipboard">Copy</span></div>'
       $(this).before(btnHtml)
     })
-
     var zeroClipboard = new ZeroClipboard($('.btn-clipboard'))
     var htmlBridge = $('#global-zeroclipboard-html-bridge')
 
     // Handlers for ZeroClipboard
-    zeroClipboard.on('ready', function () {
+    zeroClipboard.on('load', function () {
       htmlBridge
         .data('placement', 'top')
         .attr('title', 'Copy to clipboard')
         .tooltip()
 
+
       // Copy to clipboard
-      zeroClipboard.on('copy', function (event) {
-        var highlight = $(event.target).parent().nextAll('.highlight').first()
-        event.clipboardData.setData('text/plain', highlight.text())
+      zeroClipboard.on('dataRequested', function (client) {
+        var highlight = $(this).parent().nextAll('.highlight').first()
+        client.setText(highlight.text())
       })
 
       // Notify copy success and reset tooltip title
-      zeroClipboard.on('aftercopy', function () {
+      zeroClipboard.on('complete', function () {
         htmlBridge
           .attr('title', 'Copied!')
           .tooltip('fixTitle')
@@ -164,8 +164,9 @@
       })
     })
 
-    // Hide copy button on error
-    zeroClipboard.on('error', function () {
+    // Hide copy button when no Flash is found
+    // or wrong Flash version is present
+    zeroClipboard.on('noflash wrongflash', function () {
       $('.zero-clipboard').remove()
       ZeroClipboard.destroy()
     })
