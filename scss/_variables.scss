@@ -42,6 +42,7 @@ $enable-rounded:             true !default;
 $enable-shadows:             false !default;
 $enable-gradients:           false !default;
 $enable-transitions:         true !default;
+$enable-hover-media-query:      false !default;
 
 
 // Component defaults
@@ -55,7 +56,6 @@ $spacer-y:                   $spacer !default;
 
 $border-width:               .0625rem !default;
 
-$use-hover-media-query:      false !default;
 
 // Typography
 //

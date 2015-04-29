@@ -1,5 +1,5 @@
 @mixin hover {
-  @if $use-hover-media-query {
+  @if $enable-hover-media-query {
     // See Media Queries Level 4: http://drafts.csswg.org/mediaqueries/#hover
     // Currently shimmed by https://github.com/twbs/mq4-hover-shim
     @media (hover: hover) {
@@ -12,7 +12,7 @@
 }
 
 @mixin hover-focus {
-  @if $use-hover-media-query {
+  @if $enable-hover-media-query {
     &:focus { @content }
     @include hover { @content }
   }
@@ -25,7 +25,7 @@
 }
 
 @mixin plain-hover-focus {
-  @if $use-hover-media-query {
+  @if $enable-hover-media-query {
     &,
     &:focus {
       @content
@@ -42,7 +42,7 @@
 }
 
 @mixin hover-focus-active {
-  @if $use-hover-media-query {
+  @if $enable-hover-media-query {
     &:focus,
     &:active {
       @content
