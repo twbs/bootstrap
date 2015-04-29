@@ -9,7 +9,7 @@
 
 .alert {
   padding: $alert-padding;
-  margin-bottom: $line-height-computed;
+  margin-bottom: $spacer-y;
   border: 1px solid transparent;
   @include border-radius($alert-border-radius);
 

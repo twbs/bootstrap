@@ -117,7 +117,7 @@
 // horizontal form layout.
 
 .form-control-static {
-  min-height: ($line-height-computed + $font-size-base);
+  min-height: $input-height-base;
   // Size it appropriately next to real form controls
   padding-top: ($padding-base-vertical + $border-width);
   padding-bottom: ($padding-base-vertical + $border-width);

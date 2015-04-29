@@ -8,7 +8,7 @@
 //
 
 @keyframes progress-bar-stripes {
-  from  { background-position: $line-height-computed 0; }
+  from  { background-position: $spacer-y 0; }
   to    { background-position: 0 0; }
 }
 
@@ -20,8 +20,8 @@
 .progress {
   display: block;
   width: 100%;
-  height: $line-height-computed;
-  margin-bottom: $line-height-computed;
+  height: $spacer-y; // todo: make a new var for this
+  margin-bottom: $spacer-y;
 }
 .progress[value] {
   // IE10 uses `color` to set the bar background-color
@@ -85,7 +85,7 @@
   }
   .progress-bar {
     display: inline-block;
-    height: $line-height-computed;
+    height: $spacer-y;
     text-indent: -999rem; // Simulate hiding of value as in native `<progress>`
     background-color: #0074d9;
     border-top-left-radius: $border-radius-base;
@@ -110,16 +110,16 @@
 
 .progress-striped[value]::-webkit-progress-value {
   @include gradient-striped();
-  background-size: $line-height-computed $line-height-computed;
+  background-size: $spacer-y $spacer-y;
 }
 .progress-striped[value]::-moz-progress-bar {
   @include gradient-striped();
-  background-size: $line-height-computed $line-height-computed;
+  background-size: $spacer-y $spacer-y;
 }
 @media screen and ("min-width:0\0") {
   .progress-bar-striped {
     @include gradient-striped();
-    background-size: $line-height-computed $line-height-computed;
+    background-size: $spacer-y $spacer-y;
   }
 }
 
