@@ -937,6 +937,10 @@ h1[id] {
   border-radius: 0;
 }
 
+.bs-example .anchorjs-link {
+  display: none;
+}
+
 /* Make the examples and snippets not full-width */
 @media (min-width: 768px) {
   .bs-example {
