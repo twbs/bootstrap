@@ -8,22 +8,31 @@
 //
 
 .input-group {
-  position: relative; // For dropdowns
-  display: table;
-  border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
+  position: relative;
+
+  @if $enable-flex {
+    display: flex;
+  } @else {
+    display: table;
+    // Prevent input groups from inheriting border styles from table cells when
+    // placed within a table.
+    border-collapse: separate;
+  }
 
   .form-control {
     // Ensure that the input is always above the *appended* addon button for
     // proper border colors.
     position: relative;
     z-index: 2;
-
-    // IE9 fubars the placeholder attribute in text inputs and the arrows on
-    // select elements in input groups. To fix it, we float the input. Details:
-    // https://github.com/twbs/bootstrap/issues/11561#issuecomment-28936855
-    float: left;
-
-    width: 100%;
+    @if $enable-flex {
+      flex: 1;
+    } @else {
+      // IE9 fubars the placeholder attribute in text inputs and the arrows on
+      // select elements in input groups. To fix it, we float the input. Details:
+      // https://github.com/twbs/bootstrap/issues/11561#issuecomment-28936855
+      float: left;
+      width: 100%;
+    }
     margin-bottom: 0;
   }
 }
@@ -31,7 +40,11 @@
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
-  display: table-cell;
+  @if $enable-flex {
+    // do nothing
+  } @else {
+    display: table-cell;
+  }
 
   &:not(:first-child):not(:last-child) {
     @include border-radius(0);
@@ -40,7 +53,11 @@
 
 .input-group-addon,
 .input-group-btn {
-  width: 1%;
+  @if $enable-flex {
+    // do nothing
+  } @else {
+    width: 1%;
+  }
   white-space: nowrap;
   vertical-align: middle; // Match the inputs
 }

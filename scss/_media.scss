@@ -2,28 +2,57 @@
 // Media
 // --------------------------------------------------
 
-.media {
-  // Proper spacing between instances of .media
-  margin-top: 15px;
+@if $enable-flex {
+  .media {
+    display: flex;
+    margin-bottom: $spacer;
+  }
+  .media-body {
+    flex: 1;
+  }
+} @else {
+  .media {
+    margin-top: 15px;
 
-  &:first-child {
-    margin-top: 0;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .media,
+  .media-body {
+    overflow: hidden;
+    zoom: 1;
+  }
+  .media-body {
+    width: 10000px;
+  }
+  .media-left,
+  .media-right,
+  .media-body {
+    display: table-cell;
+    vertical-align: top;
+  }
+  .media-middle {
+    vertical-align: middle;
+  }
+  .media-bottom {
+    vertical-align: bottom;
   }
 }
 
-.media,
-.media-body {
-  overflow: hidden;
-  zoom: 1;
-}
 
-.media-body {
-  width: 10000px;
-}
+//
+// Images/elements as the media anchor
+//
 
 .media-object {
   display: block;
 }
+
+
+//
+// Alignment
+//
 
 .media-right,
 .media > .pull-right {
@@ -35,30 +64,21 @@
   padding-right: 10px;
 }
 
-.media-left,
-.media-right,
-.media-body {
-  display: table-cell;
-  vertical-align: top;
-}
 
-.media-middle {
-  vertical-align: middle;
-}
+//
+// Headings
+//
 
-.media-bottom {
-  vertical-align: bottom;
-}
-
-// Reset margins on headings for tighter default spacing
 .media-heading {
   margin-top: 0;
   margin-bottom: 5px;
 }
 
+
+//
 // Media list variation
 //
-// Undo default ul/ol styles
+
 .media-list {
   padding-left: 0;
   list-style: none;
