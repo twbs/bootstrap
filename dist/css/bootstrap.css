@@ -2185,7 +2185,7 @@ pre code {
 }
 
 .form-control-static {
-  min-height: 2rem;
+  min-height: 2.625rem;
   padding-top: .5625rem;
   padding-bottom: .5625rem;
   margin-bottom: 0;
@@ -2221,11 +2221,13 @@ pre code {
   margin-bottom: .75rem;
 }
 .radio label, .checkbox label {
-  min-height: 1;
   padding-left: 1.25rem;
   margin-bottom: 0;
   font-weight: normal;
   cursor: pointer;
+}
+.radio label input:only-child, .checkbox label input:only-child {
+  position: static;
 }
 
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
@@ -3810,7 +3812,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 
 .breadcrumb {
   padding: .75rem 1rem;
-  margin-bottom: 1;
+  margin-bottom: 1rem;
   list-style: none;
   background-color: #eceeef;
   border-radius: .25rem;
@@ -4089,7 +4091,7 @@ a.badge:focus, a.badge:hover {
 
 .alert {
   padding: 15px;
-  margin-bottom: 1;
+  margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: .25rem;
 }
