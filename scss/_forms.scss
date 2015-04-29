@@ -179,12 +179,15 @@
   margin-bottom: ($spacer * .75);
 
   label {
-    // Ensure the input doesn't jump when there is no text
-    min-height: $line-height-computed;
     padding-left: 1.25rem;
     margin-bottom: 0;
     font-weight: normal;
     cursor: pointer;
+
+    // When there's no labels, don't position the input.
+    input:only-child {
+      position: static;
+    }
   }
 }
 .radio input[type="radio"],
