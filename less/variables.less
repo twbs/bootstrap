@@ -63,6 +63,10 @@
 @line-height-base:        1.428571429; // 20/14
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 @line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+//** Computed "line-height-small" (`font-size-small` * `line-height-small`) for use with `margin`, `padding`, etc.
+@line-height-small-computed: floor((@font-size-small * @line-height-small)); // ~18px
+//** Computed "line-height-large" (`font-size-large` * `line-height-large`) for use with `margin`, `padding`, etc.
+@line-height-large-computed: floor((@font-size-large * @line-height-large)); // ~23px
 
 //** By default, this inherits from the `<body>`.
 @headings-font-family:    inherit;
