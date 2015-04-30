@@ -120,10 +120,10 @@
 
 <!-- INFRACCIONES START -->
 
-<section role="tabpanel">
-  <ul style="padding-left:0;" class="btn-group btn-group-justified" role="tablist">
-    <li style="width:50%;" class="btn btn-default btn-lg active" href="#por-patente" aria-controls="por-patente" role="presentation" data-toggle="tab">Por patente</li>
-    <li style="width:50%;" class="btn btn-default btn-lg" href="#por-documento" aria-controls="por-documento" role="presentation" data-toggle="tab">Por documento</li>
+<section role="tabpanel" class="tabs-infracciones">
+  <ul class="btn-group btn-group-justified" role="tablist">
+    <li class="btn btn-default btn-lg active"><a href="#por-patente" aria-controls="por-patente" role="presentation" data-toggle="tab">Por patente</a></li>
+    <li class="btn btn-default btn-lg"><a href="#por-documento" aria-controls="por-documento" role="presentation" data-toggle="tab">Por documento</a></li>
   </ul>
   <br>
   <form class="tab-content">
@@ -154,7 +154,7 @@
         <div class="g-recaptcha center-block" style="max-width:304px;" data-sitekey="6LcePAATAAAAAGPRWgx90814DTjgt5sXnNbV5WaW"></div>
       </div>
       <div class="form-group">
-        <button type="button" class="btn btn-xl btn-primary btn-block">Consultar</button>
+        <button type="submit" class="btn btn-xl btn-primary btn-block">Consultar</button>
       </div>
       <br>
       <p>Tené en cuenta que pueden obtenerse distintos resultados al consultar por DNI o por Patente. <a href="/gestion-comunal-y-atencion-ciudadana/terminos-y-condiciones-consulta-de-infracciones" target="_blank">Términos y Condiciones</a></p>
@@ -163,6 +163,12 @@
   </form>
 </section>
 
+<style type="text/css">
+	.tabs-infracciones ul, .tabs-infracciones ul li {padding:0;}
+	.tabs-infracciones ul li {padding:0;}
+	.tabs-infracciones ul li a {display:block;padding:11px 15px;color:#666;}
+	.tabs-infracciones ul li a:focus {color:#111;}
+</style>
 <script src='https://www.google.com/recaptcha/api.js?hl=es'></script>
 
 <!-- INFRACCIONES END -->
