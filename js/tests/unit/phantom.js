@@ -52,9 +52,9 @@
 
   QUnit.moduleDone(function (obj) {
     if (obj.failed === 0) {
-      console.log('\r\u2714 All tests passed in "' + obj.name + '" module')
+      console.log('\r\u221A All tests passed in "' + obj.name + '" module')
     } else {
-      console.log('\u2716 ' + obj.failed + ' tests failed in "' + obj.name + '" module')
+      console.log('\u00D7 ' + obj.failed + ' tests failed in "' + obj.name + '" module')
     }
     sendMessage('qunit.moduleDone', obj.name, obj.failed, obj.passed, obj.total)
   })
