@@ -11,6 +11,7 @@
 
 window.onload = function () { // wait for load in a dumb way because B-0
   'use strict';
+
   var cw = '/*!\n' +
            ' * Bootstrap v3.3.4 (http://getbootstrap.com)\n' +
            ' * Copyright 2011-' + new Date().getFullYear() + ' Twitter, Inc.\n' +
@@ -18,7 +19,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
            ' */\n\n'
 
   var supportsFile = window.File && window.FileReader && window.FileList && window.Blob
-  var importDropTarget = $('#import-drop-target')
+  var $importDropTarget = $('#import-drop-target')
 
   function showError(msg, err) {
     $('<div id="bsCustomizerAlert" class="bs-customizer-alert">' +
@@ -39,15 +40,15 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function showCallout(msg, showUpTop) {
-    var callout = $('<div class="bs-callout bs-callout-danger">' +
+    var $callout = $('<div class="bs-callout bs-callout-danger">' +
       '<h4>Attention!</h4>' +
       '<p>' + msg + '</p>' +
     '</div>')
 
     if (showUpTop) {
-      callout.appendTo('.bs-docs-container')
+      $callout.appendTo('.bs-docs-container')
     } else {
-      callout.insertAfter('.bs-customize-download')
+      $callout.insertAfter('.bs-customize-download')
     }
   }
 
@@ -200,8 +201,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function generateFonts() {
-    var glyphicons = $('#less-section [value="glyphicons.less"]:checked')
-    if (glyphicons.length) {
+    var $glyphicons = $('#less-section [value="glyphicons.less"]:checked')
+    if ($glyphicons.length) {
       return __fonts
     }
   }
@@ -358,7 +359,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function removeImportAlerts() {
-    importDropTarget.nextAll('.alert').remove()
+    $importDropTarget.nextAll('.alert').remove()
   }
 
   function handleConfigFileSelect(e) {
@@ -380,9 +381,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
         }
 
         updateCustomizerFromJson(json)
-        showAlert('success', '<strong>Woohoo!</strong> Your configuration was successfully uploaded. Tweak your settings, then hit Download.', importDropTarget)
+        showAlert('success', '<strong>Woohoo!</strong> Your configuration was successfully uploaded. Tweak your settings, then hit Download.', $importDropTarget)
       } catch (err) {
-        return showAlert('danger', '<strong>Shucks.</strong> We can only read valid <code>.json</code> files. Please try again.', importDropTarget)
+        return showAlert('danger', '<strong>Shucks.</strong> We can only read valid <code>.json</code> files. Please try again.', $importDropTarget)
       }
     }
 
@@ -398,7 +399,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   if (supportsFile) {
-    importDropTarget
+    $importDropTarget
       .on('dragover', handleConfigDragOver)
       .on('drop', handleConfigFileSelect)
   }
@@ -406,23 +407,23 @@ window.onload = function () { // wait for load in a dumb way because B-0
   $('#import-file-select').on('change', handleConfigFileSelect)
   $('#import-manual-trigger').on('click', removeImportAlerts)
 
-  var inputsComponent = $('#less-section input')
-  var inputsPlugin    = $('#plugin-section input')
-  var inputsVariables = $('#less-variables-section input')
+  var $inputsComponent = $('#less-section input')
+  var $inputsPlugin    = $('#plugin-section input')
+  var $inputsVariables = $('#less-variables-section input')
 
   $('#less-section .toggle').on('click', function (e) {
     e.preventDefault()
-    inputsComponent.prop('checked', !inputsComponent.is(':checked'))
+    $inputsComponent.prop('checked', !$inputsComponent.is(':checked'))
   })
 
   $('#plugin-section .toggle').on('click', function (e) {
     e.preventDefault()
-    inputsPlugin.prop('checked', !inputsPlugin.is(':checked'))
+    $inputsPlugin.prop('checked', !$inputsPlugin.is(':checked'))
   })
 
   $('#less-variables-section .toggle').on('click', function (e) {
     e.preventDefault()
-    inputsVariables.val('')
+    $inputsVariables.val('')
   })
 
   $('[data-dependencies]').on('click', function () {
@@ -431,8 +432,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
     if (!dependencies) return
     dependencies = dependencies.split(',')
     for (var i = 0; i < dependencies.length; i++) {
-      var dependency = $('[value="' + dependencies[i] + '"]')
-      dependency && dependency.prop('checked', true)
+      var $dependency = $('[value="' + dependencies[i] + '"]')
+      $dependency && $dependency.prop('checked', true)
     }
   })
 
@@ -442,8 +443,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
     if (!dependents) return
     dependents = dependents.split(',')
     for (var i = 0; i < dependents.length; i++) {
-      var dependent = $('[value="' + dependents[i] + '"]')
-      dependent && dependent.prop('checked', false)
+      var $dependent = $('[value="' + dependents[i] + '"]')
+      $dependent && $dependent.prop('checked', false)
     }
   })
 
