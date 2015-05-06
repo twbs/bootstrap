@@ -400,7 +400,7 @@ $(function () {
 
     $body2
       .toggleClass('in collapsing')
-      .data('bs.collapse').setTransitioning(true)
+      .data('bs.collapse').transitioning = 1
 
     $target1.trigger('click')
 

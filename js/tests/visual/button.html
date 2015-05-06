@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Button</title>
   <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 
@@ -14,6 +21,10 @@
   <div class="page-header">
     <h1>Button <small>Bootstrap Visual Test</small></h1>
   </div>
+
+  <button type="button" data-loading-text="Loading for 3 seconds..." class="btn btn-primary js-loading-button">
+    Loading state
+  </button>
 
   <button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
 
@@ -45,7 +56,7 @@
 
 <!-- JavaScript Includes -->
 <script src="../vendor/jquery.min.js"></script>
-<script src="../../util.js"></script>
+<script src="../../transition.js"></script>
 <script src="../../button.js"></script>
 
 <!-- JavaScript Test -->
