@@ -1,0 +1,651 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="es" class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html lang="es" class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="es"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sitio del Gobierno de la Ciudad de Buenos Aires">
+    <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
+    <title>BA Tarjeta Registro</title>
+    <link rel="shortcut icon" href="../bastrap3/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="../bastrap3/favicon-mobile.png">
+    <link rel="stylesheet" href="../bastrap3/bootstrap.min.css">
+    <link rel="stylesheet" href="../bastrap3/bastrap.css">
+    <link rel="stylesheet" href="assets/buenosaires.css">
+    <!--[if lt IE 9]>
+      <script src="../bastrap3/html5shiv.min.js"></script>
+      <script src="../bastrap3/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="ba-aplicativo">
+    <noscript class="how-to">
+      <a class="alert-spot alert-spot-danger text-center" href="http://www.enable-javascript.com/es/" target="_blank">
+        Para utilizar las funcionalidades completas de este sitio es necesario tener
+        JavaScript habilitado. Aquí están las instrucciones para habilitar JavaScript en tu navegador web.
+      </a>
+    </noscript>
+    <a class="lt-ie9-alert alert-spot alert-spot-danger text-center" href="http://browsehappy.com/" target="_blank">
+      Tu navegador no está actualizado. Tiene conocidas fallos de seguridad y podría no mostrar todas las características de este y otros sitios web.
+      Aprendé cómo podes actualizarlo.
+    </a>
+    <header class="navbar navbar-primary navbar-top yamm">
+      <div class="ba-navbar-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <a class="navbar-brand bac-header" href="tarjetaregistro2.html">Buenos Aires Ciudad</a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <form class="navbar-form navbar-right" role="search">
+                <input class="form-control input-sm" placeholder="Buscar ..." type="text">
+                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle btn btn-primary btn-block btn-sm" data-toggle="collapse" data-target="#header-main-nav">
+              <span>Menú principal</span>
+              <span class="glyphicon glyphicon-chevron-down"></span>
+            </button>
+          </div>
+          <nav class="collapse navbar-collapse" id="header-main-nav" role="navigation">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">La Ciudad <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gobierno <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Trámites <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Red En todo estás Vos <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <div class="menu-divider"></div>
+              <li><a href="#">Transparencia</a></li>
+              <li><a href="#">Turismo</a></li>
+              <li><a href="#">Noticias</a></li>
+              <li><a href="#">Accesible</a></li>
+              <li class="sub-brand sub-brand-ba"><a href="#">Entrar a <img src="../bastrap3/ba-btn.png" class="glyphicon glyphicon-ba" /></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+<!-- TARJETA REGISTRO START -->
+
+    <style type="text/css">
+      .ba-aplicativo .main-container .col-md-8 {padding:0;}
+      .ba-aplicativo .main-container .container-fluid .col-md-2,
+      .ba-aplicativo .main-container .container-fluid .col-md-4,
+      .ba-aplicativo .main-container .container-fluid .col-md-6,
+      .ba-aplicativo .main-container .container-fluid .col-md-8,
+      .ba-aplicativo .main-container .container-fluid .col-md-12 {padding:0 15px;}
+      .ba-aplicativo .main-container .container-fluid label {font-size:16px;font-family:"OpenSans", Helvetica, Arial, sans-serif;line-height:24px;}
+      .ba-aplicativo .main-container .container-fluid .checkbox label {line-height:22px;margin-bottom:10px;}
+      .ba-aplicativo .main-container .container-fluid .checkbox input {height:auto;}
+    </style>
+
+    <header class="jumbotron jumbotron-main jumbotron-small area-header" style="background-image:url(http://www.buenosaires.gob.ar/sites/gcaba/files/tarjetavos-01.jpg);">
+      <div class="jumbotron-overlay">
+        <div class="container">
+          <nav role="navigation">
+            <ol class="breadcrumb">
+              <li><a href="#">Buenos Aires</a></li>
+              <li><a href="#">Red En Todo Estás Vos</a></li>
+              <li><a href="#">Tarjeta VOS</a></li>
+              <li class="active">Registro</li>
+            </ol>
+          </nav>
+          <div class="area-title col-md-8 col-md-offset-2">
+            <h1>Registro para obtener tu Tarjeta Vos</h1>
+            <p class="lead">Completá el formulario para iniciar el trámite.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main-container" role="main">
+
+    <form>
+
+      <section>
+        <div class="container">
+          <br>
+          <p class="text-center"><button class="btn btn-default btn-xl" href="#">Completá los datos con tu cuenta <img src="../bastrap3/ba-btn-default.png" class="glyphicon glyphicon-ba" /></button></p>
+        </div>
+      </section>
+
+      <hr />
+
+      <section>
+        <div class="container">
+          <div class="small-heading">
+            <h2 class="h1">Datos personales</h2>
+          </div>
+          <div class="col-md-8 col-md-offset-2">
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="documento-tipo">Tipo de documento *</label>
+                  <select class="form-control input-lg" id="documento-tipo" required="true">
+                    <option selected>DNI</option>
+                    <option>Pasaporte</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="documento-numero">Número de documento *</label>
+                  <input class="form-control input-lg" type="text" placeholder="" id="documento-numero" required="true">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="nombres">Nombres *</label>
+                  <input class="form-control input-lg" type="text" placeholder="" id="nombres" required="true">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="apellidos">Apellidos *</label>
+                  <input class="form-control input-lg" type="text" placeholder="" id="apellidos" required="true">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label class="control-label" for="nacimiento">Fecha de nacimiento</label>
+                  <input class="form-control input-lg" type="date" placeholder="" id="nacimiento">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="genero">Género *</label>
+                  <select class="form-control input-lg" id="genero" required="true">
+                    <option selected>Sin declarar</option>
+                    <option>Femenino</option>
+                    <option>Masculino</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="estadocivil">Estado civil</label>
+                  <select class="form-control input-lg" id="estadocivil" required="true">
+                    <option selected></option>
+                    <option>Casado/a</option>
+                    <option>Divorciado/a</option>
+                    <option>Soltero/a</option>
+                    <option>Viudo/a</option>
+                    <option>Otro</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="genero">Ocupación *</label>
+                  <select class="form-control input-lg" id="genero" required="true">
+                    <option selected></option>
+                    <option>Amo/a de casa</option>
+                    <option>Autónomo</option>
+                    <option>En relación de dependencia</option>
+                    <option>Estudiante</option>
+                    <option>Desocupado</option>
+                    <option>Jubilado</option>
+                    <option>Pensionado</option>
+                    <option>Monotributista</option>
+                    <option>Otro</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="cuil">CUIL</label>
+                  <input class="form-control input-lg" type="text" placeholder="" id="cuil" required="">
+                </div>
+              </div>
+
+            </div>
+          </div>          
+        </div>
+      </section>
+
+      <hr />
+
+      <section>
+        <div class="container">
+          <div class="small-heading">
+            <h2 class="h1">Contacto</h2>
+          </div>
+          <div class="col-md-8 col-md-offset-2">
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="nacionalidad">Nacionalidad *</label>
+                  <select class="form-control input-lg" id="nacionalidad" required="true">
+                    <option value="14" selected>Argentina</option>
+                    <option value="1">Afgana</option>
+                    <option value="2">Albanesa</option>
+                    <option value="3">Alemana</option>
+                    <option value="192">Alemana (República Democrática)</option>
+                    <option value="195">Alemana (República Federal)</option>
+                    <option value="4">Altos del Golan</option>
+                    <option value="5">Andorrana</option>
+                    <option value="6">Angoleña</option>
+                    <option value="7">Anguila</option>
+                    <option value="9">Antigüense</option>
+                    <option value="10">Antillas Holandesas</option>
+                    <option value="8">Antártida</option>
+                    <option value="11">Apátrida</option>
+                    <option value="13">Argelina</option>
+                    <option value="15">Armenia</option>
+                    <option value="16">Aruba</option>
+                    <option value="17">Australiana</option>
+                    <option value="18">Austríaca</option>
+                    <option value="19">Azerbaiyana</option>
+                    <option value="20">Bahameña</option>
+                    <option value="21">Bahreiní</option>
+                    <option value="23">Barbadiense</option>
+                    <option value="24">Belga</option>
+                    <option value="25">Belicense</option>
+                    <option value="22">Bengalí</option>
+                    <option value="26">Beninense</option>
+                    <option value="27">Bermudas</option>
+                    <option value="29">Bielorrusa</option>
+                    <option value="30">Boliviana</option>
+                    <option value="31">Bosnia</option>
+                    <option value="32">Botsuanesa</option>
+                    <option value="108">Bouvet, Isla</option>
+                    <option value="33">Brasileña</option>
+                    <option value="188">Británica</option>
+                    <option value="34">Bruneyense</option>
+                    <option value="36">Burkinabesa</option>
+                    <option value="37">Burundesa</option>
+                    <option value="28">Butanesa</option>
+                    <option value="35">Búlgara</option>
+                    <option value="38">Caboverdiana</option>
+                    <option value="39">Caimán, Islas</option>
+                    <option value="40">Camboya</option>
+                    <option value="41">Camerunesa</option>
+                    <option value="42">Canadiense</option>
+                    <option value="187">Catarí</option>
+                    <option value="189">Centroafricana</option>
+                    <option value="43">Chadí</option>
+                    <option value="190">Checa</option>
+                    <option value="44">Checoslovaquia</option>
+                    <option value="45">Chilena</option>
+                    <option value="46">China</option>
+                    <option value="47">Chipriota</option>
+                    <option value="109">Christmas, Isla</option>
+                    <option value="48">Cisjordania</option>
+                    <option value="49">Cocos, Islas</option>
+                    <option value="50">Colombiana</option>
+                    <option value="51">Comorensa</option>
+                    <option value="52">Congoleña</option>
+                    <option value="114">Cook, Islas</option>
+                    <option value="54">Costarricense</option>
+                    <option value="55">Croata</option>
+                    <option value="56">Cubana</option>
+                    <option value="58">Danesa</option>
+                    <option value="57">Desconocido</option>
+                    <option value="194">Dominicana</option>
+                    <option value="60">Dominiquesa</option>
+                    <option value="95">Ecuatoguineana</option>
+                    <option value="61">Ecuatoriana</option>
+                    <option value="62">Egipcia</option>
+                    <option value="64">Emiratí</option>
+                    <option value="65">Eritrea</option>
+                    <option value="66">Eslovaca</option>
+                    <option value="67">Eslovena</option>
+                    <option value="68">Española</option>
+                    <option value="218">Esrilanquesa</option>
+                    <option value="70">Estadounidense</option>
+                    <option value="71">Estonia</option>
+                    <option value="72">Etíope</option>
+                    <option value="73">Extranjero</option>
+                    <option value="74">Faroes, Islas</option>
+                    <option value="75">Fiji</option>
+                    <option value="76">Filipina</option>
+                    <option value="77">Finesa</option>
+                    <option value="78">Francesa</option>
+                    <option value="79">Francia (Territorios del Sudeste)</option>
+                    <option value="80">Francia Metropolitana</option>
+                    <option value="81">Franja de Gaza</option>
+                    <option value="82">Gabonesa</option>
+                    <option value="83">Gambiana</option>
+                    <option value="84">Georgiana</option>
+                    <option value="85">Ghanesa</option>
+                    <option value="86">Gibraltar</option>
+                    <option value="87">Granadina</option>
+                    <option value="88">Griega</option>
+                    <option value="89">Groenlandia</option>
+                    <option value="90">Guadalupe</option>
+                    <option value="91">Guam</option>
+                    <option value="92">Guatemalteca</option>
+                    <option value="93">Guayana Francesa</option>
+                    <option value="96">Guinea-Bissau</option>
+                    <option value="94">Guineana</option>
+                    <option value="97">Guyana</option>
+                    <option value="98">Haitiana</option>
+                    <option value="115">Heard And MCDONALD, Islas</option>
+                    <option value="99">Holandesa</option>
+                    <option value="100">Hondureña</option>
+                    <option value="101">Hong Kong</option>
+                    <option value="102">Húngara</option>
+                    <option value="103">India</option>
+                    <option value="104">Indonesia</option>
+                    <option value="105">Iraní</option>
+                    <option value="106">Iraquí</option>
+                    <option value="107">Irlandesa</option>
+                    <option value="113">Islandesa</option>
+                    <option value="117">Islas Mariana</option>
+                    <option value="123">Islas Wallis And Futuna</option>
+                    <option value="124">Israelita</option>
+                    <option value="125">Italiana</option>
+                    <option value="126">Jamaicana</option>
+                    <option value="127">Japonesa</option>
+                    <option value="128">Jerusalén</option>
+                    <option value="129">Jordana</option>
+                    <option value="130">Kazajstana</option>
+                    <option value="131">Keniata</option>
+                    <option value="132">Kirguistana</option>
+                    <option value="133">Kiribatina</option>
+                    <option value="134">Kuwaití</option>
+                    <option value="135">Laosiana</option>
+                    <option value="136">Lesothense</option>
+                    <option value="137">Letona</option>
+                    <option value="138">Libanesa</option>
+                    <option value="139">Liberiana</option>
+                    <option value="140">Libia</option>
+                    <option value="141">Liechtensteinense</option>
+                    <option value="142">Lituana</option>
+                    <option value="143">Luxemburguesa</option>
+                    <option value="144">Macao</option>
+                    <option value="145">Macedonia</option>
+                    <option value="148">Malauina</option>
+                    <option value="147">Malaya</option>
+                    <option value="149">Maldivas</option>
+                    <option value="146">Malgache</option>
+                    <option value="150">Malinesa</option>
+                    <option value="151">Maltesa</option>
+                    <option value="116">Malvinas, Islas</option>
+                    <option value="165">Mamibiana</option>
+                    <option value="53">Marfileña</option>
+                    <option value="152">Marroquí</option>
+                    <option value="118">Marshalesa</option>
+                    <option value="153">Martinica</option>
+                    <option value="154">Mauriciana</option>
+                    <option value="155">Mauritana</option>
+                    <option value="156">Mayotte</option>
+                    <option value="157">Mejicana</option>
+                    <option value="158">Micronesia</option>
+                    <option value="159">Moldava</option>
+                    <option value="160">Monegasca</option>
+                    <option value="161">Mongoleña</option>
+                    <option value="162">Montserrat</option>
+                    <option value="163">Mozambiqueña</option>
+                    <option value="164">Myanmar</option>
+                    <option value="166">Nauruense</option>
+                    <option value="174">Neozelandesa</option>
+                    <option value="167">Nepalesa</option>
+                    <option value="168">Nicaragüense</option>
+                    <option value="170">Nigeriana</option>
+                    <option value="171">Niue</option>
+                    <option value="257">No informa</option>
+                    <option value="110">Norfolk, Isla</option>
+                    <option value="172">Noruega</option>
+                    <option value="173">Nueva Caledonia</option>
+                    <option value="169">Níger</option>
+                    <option value="175">Omaní</option>
+                    <option value="176">Pakistaní</option>
+                    <option value="177">Palau</option>
+                    <option value="178">Palestina</option>
+                    <option value="179">Panameña</option>
+                    <option value="180">Papú Neoguineana</option>
+                    <option value="181">Paraguaya</option>
+                    <option value="182">Peruana</option>
+                    <option value="111">Pitcairn,Isla</option>
+                    <option value="184">Polaca</option>
+                    <option value="183">Polinesia Francesa</option>
+                    <option value="185">Portuguesa</option>
+                    <option value="186">Puertorriqueña</option>
+                    <option value="193">República Democrática del Congo</option>
+                    <option value="196">República Popular Democrática de Corea</option>
+                    <option value="198">Reunión</option>
+                    <option value="199">Ruandesa</option>
+                    <option value="200">Rumana</option>
+                    <option value="201">Rusa</option>
+                    <option value="202">Sahara Occidental</option>
+                    <option value="119">Salomonense</option>
+                    <option value="63">Salvadoreña</option>
+                    <option value="204">Samoa Norteamericana</option>
+                    <option value="203">Samoa Occidental</option>
+                    <option value="207">San Pedro y Miquelón</option>
+                    <option value="205">Sancristobaleña</option>
+                    <option value="206">Sanmarinense</option>
+                    <option value="209">Santa Elena</option>
+                    <option value="210">Santaluciana</option>
+                    <option value="211">Santotomense</option>
+                    <option value="208">Sanvicentina</option>
+                    <option value="12">Saudí</option>
+                    <option value="212">Senegalesa</option>
+                    <option value="213">Seychellense</option>
+                    <option value="214">Sierraleonesa</option>
+                    <option value="215">Singapureña</option>
+                    <option value="216">Siria</option>
+                    <option value="217">Somalí</option>
+                    <option value="223">Suazilandesa</option>
+                    <option value="197">Sudafricana</option>
+                    <option value="219">Sudanesa</option>
+                    <option value="220">Sueca</option>
+                    <option value="221">Suiza</option>
+                    <option value="191">Surcoreana</option>
+                    <option value="222">Surinamita</option>
+                    <option value="112">Svalbard y Jan Mayen, Isla</option>
+                    <option value="224">Tailandesa</option>
+                    <option value="225">Taiwanesa</option>
+                    <option value="226">Tanzana</option>
+                    <option value="227">Tayikistana</option>
+                    <option value="228">Territorio Británico del Océano Índico</option>
+                    <option value="229">Timor</option>
+                    <option value="233">Tobaguense</option>
+                    <option value="230">Togolesa</option>
+                    <option value="231">Tokelau</option>
+                    <option value="232">Tongana</option>
+                    <option value="234">Tunecina</option>
+                    <option value="236">Turca</option>
+                    <option value="235">Turcomana</option>
+                    <option value="120">Turks And Caicos, Islas</option>
+                    <option value="237">Tuvaluense</option>
+                    <option value="238">U.R.S.S.</option>
+                    <option value="239">Ucraniana</option>
+                    <option value="240">Ugandesa</option>
+                    <option value="241">Uruguaya</option>
+                    <option value="242">Uzbekistán</option>
+                    <option value="243">Vanuatense</option>
+                    <option value="244">Vaticana</option>
+                    <option value="245">Venezolana</option>
+                    <option value="246">Vietnamita</option>
+                    <option value="247">Vietnan del Norte</option>
+                    <option value="248">Vietnan del Sur</option>
+                    <option value="121">Vírgenes, Islas (Ee.Uu.)</option>
+                    <option value="122">Vírgenes, Islas (Reino Unido)</option>
+                    <option value="251">Yemen Democrático</option>
+                    <option value="249">Yemení</option>
+                    <option value="250">Yemení del Sur</option>
+                    <option value="59">Yibutiense</option>
+                    <option value="252">Yugoslava</option>
+                    <option value="253">Zaireña</option>
+                    <option value="254">Zambiana</option>
+                    <option value="255">Zimbabuesa</option>
+                    <option value="256">Zona Neutral</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="provincia">Provincia *</label>
+                  <select class="form-control input-lg" id="provincia" required="true">
+                    <option value="24" selected>CABA</option>
+                    <option value="1">Buenos Aires</option>
+                    <option value="2">Catamarca</option>
+                    <option value="3">Chaco</option>
+                    <option value="4">Chubut</option>
+                    <option value="5">Córdoba</option>
+                    <option value="6">Corrientes</option>
+                    <option value="7">Entre Ríos</option>
+                    <option value="8">Formosa</option>
+                    <option value="9">Jujuy</option>
+                    <option value="10">La Pampa</option>
+                    <option value="11">La Rioja</option>
+                    <option value="12">Mendoza</option>
+                    <option value="13">Misiones</option>
+                    <option value="14">Neuquén</option>
+                    <option value="15">Río Negro</option>
+                    <option value="16">Salta</option>
+                    <option value="17">San Juan</option>
+                    <option value="18">San Luis</option>
+                    <option value="19">Santa Cruz</option>
+                    <option value="20">Santa Fe</option>
+                    <option value="21">Santiago del Estero</option>
+                    <option value="22">Tierra del Fuego</option>
+                    <option value="23">Tucumán</option>
+                    <option value="25">Sin declarar</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="localidad">Localidad *</label>
+                  <select class="form-control input-lg" id="localidad" required="true">
+                    <option selected>Capital Federal</option>
+                    <option>Test</option>
+                    <option>Test</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-8">
+                  <label class="control-label" for="calle">Calle</label>
+                  <input class="form-control input-lg" type="text" placeholder="" id="calle">
+                </div>
+                <div class="form-group col-md-2">
+                  <label class="control-label" for="altura">Altura</label>
+                  <input class="form-control input-lg" type="text" placeholder="" id="altura">
+                </div>
+                <div class="form-group col-md-2">
+                  <label class="control-label" for="cpostal">Código postal</label>
+                  <input class="form-control input-lg" type="text" placeholder="" id="cpostal">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="tel-fijo">Teléfono fijo</label>
+                  <input class="form-control input-lg" type="text" placeholder="" id="tel-fijo" required="">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="tel-movil">Teléfono móvil</label>
+                  <input class="form-control input-lg" type="text" placeholder="" id="tel-movil" required="">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="correo">Correo electrónico *</label>
+                  <input class="form-control input-lg" type="text" placeholder="" id="correo" required="true">
+                </div>
+              </div>
+
+            </div>
+          </div>          
+        </div>
+      </section>
+
+      <hr />
+
+      <section>
+        <div class="container">
+          <div class="small-heading">
+            <h2 class="h1">Entrega de tarjeta</h2>
+          </div>
+          <div class="col-md-8 col-md-offset-2">
+            <div class="container-fluid">
+
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="sede">Sede donde retirar la tarjeta *</label>
+                  <select class="form-control input-lg" id="sede" required="true">
+                    <option value="" disabled>Seleccionar sede</option>
+                      <option value="9">Sede Comunal 1. Uruguay 740. CABA. - ENTREGA INMEDIATA</option>
+                      <option value="100">Sede Comunal 2. Uriburu 1022. CABA.</option>
+                      <option value="20">Subsede Comunal 2. Vte Lopez 2050. Recoleta Mall. CABA.</option>
+                      <option value="7">Sede Comunal 4. Av. Centenera 2906. CABA.</option>
+                      <option value="8">Subsede Comunal 4. Av. Suarez 2032. CABA. - ENTREGA INMEDIATA</option>
+                      <option value="102">Sede Comunal 5. Carlos Calvo 3307. CABA. - ENTREGA INMEDIATA</option>
+                      <option value="101">Sede Comunal 6. Patricias Argentinas 277. CABA. - ENTREGA INMEDIATA</option>
+                      <option value="19">Sede Comunal 7. Av. Rivadavia 7202 CABA. - ENTREGA INMEDIATA</option>
+                      <option value="12">Sede Comunal 13. Av. Cabildo 3067. CABA. - ENTREGA INMEDIATA</option>
+                      <option value="18">Sede Comunal 14. Beruti 3325. CABA.</option>
+                      <option value="11">Sede Comunal 15. Bonpland 1271. CABA.</option>
+                      <option value="6">Bernardo de Irigoyen 272 piso 2. CABA.</option>
+                      <option value="21">Centro de Informacion Turistica Recoleta. Av. Quintana 596. CABA.</option>
+                      <option value="5">Palacio Municipal. Rivadavia 524. CABA. - ENTREGA INMEDIATA</option>
+                      <option value="22">Punto Verde de Villa Devoto. Mercedes y Nueva York. CABA.</option>
+                      <option disabled>──────────</option>
+                      <option value="17">Casa GCBA en Cordoba. Av. Hipolito Yrigoyen 175. Córdoba.</option>
+                      <option value="16">Casa GCBA en Rosario. Av Córdoba 1555. Rosario.</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="checkbox col-md-12">
+                  <label>
+                    <input type="checkbox" class="input-lg">Confirmo que los datos ingresados son correctos
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="g-recaptcha center-block" data-sitekey="6LckYwMTAAAAAPcr-kQ56tKKF0iqVinQ-qbmQcOW"></div>
+              </div>
+
+              <div class="row">
+                <div class="checkbox col-md-12">
+                  <p class="text-center"><button type="submit" class="btn btn-xl btn-primary">Enviar solicitud</button></p>
+                  <p class="text-center"><small>Luego de finalizar este trámite esperá 72hs y recibí la confirmación de la sala a tu domicilio.</small></p>
+                </div>
+              </div>
+
+            </div>
+          </div>          
+        </div>
+      </section>
+
+    </form>
+
+    </main>
+
+<!-- TARJETA REGISTRO END -->
+
+    <footer id="ba-footer">
+    <br /><br /><br /><br />
+    </footer>
+    <script src="../bastrap3/jquery.min.js"></script>
+    <script src="../bastrap3/bootstrap.min.js"></script>
+    <script src="assets/buenosaires.js"></script>
+  </body>
+</html>
