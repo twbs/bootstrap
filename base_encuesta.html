@@ -1,0 +1,515 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="es" class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html lang="es" class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="es"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sitio externo del Gobierno de la Ciudad de Buenos Aires.">
+    <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
+    <title>Gobierno de la Ciudad de Buenos Aires</title>
+    <link rel="shortcut icon" href="bastrap3/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="bastrap3/favicon-mobile.png">
+    <link rel="stylesheet" href="bastrap3/bootstrap.min.css">
+    <link rel="stylesheet" href="bastrap3/bastrap.css">
+    <!-- ESTILOS EXTRA -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header class="navbar navbar-primary navbar-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <a class="navbar-brand bac-header" href="index.html">Buenos Aires Ciudad</a>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <h5 class="sub-brand">En todo estás vos</h5>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+              <span class="sr-only">Cambiar navegación</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" title="Gobierno Electrónico">Gobierno Electrónico</a>
+          </div>
+          <div class="collapse navbar-collapse" id="main-nav">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="base.html">Inicio</a></li>
+              <li><a href="base_landing.html">Landing</a></li>
+              <li><a href="base_panel.html">Panel</a></li>
+              <li><a href="base_curso.html">Curso</a></li>
+              <li><a href="base_formularios.html">Formularios</a></li>
+              <li><a href="base_tablas.html">Tablas</a></li>
+              <li><a href="base_tabs.html">Tabs</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- FIN DE NAVEGACIÓN PRINCIPAL -->
+
+    <header>
+      <div class="container">
+        <nav role="navigation">
+          <ol class="breadcrumb">
+            <li><a href="index.html">BAstrap</a></li>
+            <li><a href="base.html">Ejemplos base</a></li>
+            <li class="active">Encuesta</li>
+          </ol>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENIDO -->
+    <main class="main-container no-padding-top" role="main">
+      
+      <style>
+        .questions > div:nth-of-type(2n+1) {
+          clear: both;
+        }
+        .panel-body {
+          padding: 5px 15px;
+        }
+      </style>
+
+      <section>
+        <form class="container">
+          <h2 class="text-center">Herramienta para Emprendedores y Sustentabilidad</h2>
+          <p class="text-center">Herramienta gratuita de autodiagnóstico para la medición de la sustentabilidad en emprendedores</p>
+          <br>
+          <br>
+          <div class="row questions">
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿Se detectó una necesidad u oportunidad en el Mercado / Entorno?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio"> inexistente </label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio"> incipiente </label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio"> propicia </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿La necesidad percibida, ¿permite generar renta?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio"> sí </label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio"> no </label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio"> no aplica </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿Se desarrolló una idea comercial para atender a esa necesidad u oportunidad?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio"> sí </label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio"> no </label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio"> no es un proyecto con fines comerciales </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿Cómo son las condiciones del Mercado / Entorno para incorporar la idea?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio"> inexistentes </label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio"> incipientes </label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio"> propicias </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">La oportunidad, ¿permite generar un emprendimiento o satisfacer una necesidad de qué tipo?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio"> corto plazo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio"> mediano plazo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio"> largo plazo</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿Por qué el Mercado / Entorno valoraría la idea? / a. soluciona un problema / b. agrega valor a soluciones anteriores / c. es original / d. está de moda / e. hay demanda.</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio"> resuelve una o dos variables</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio"> resuelve entre tres y cuatro variables</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio"> resuelve todas las variables</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿El objeto de la idea tiende a solucionar algún problema social o ambiental?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio"> si </label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio"> no </label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio"> no aplica </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--  -->
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">En términos generales, ¿qué tipo de valor genera para el ambiente?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">negativo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">neutro</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">positivo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="3" type="radio">no aplica</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">En términos generales, ¿qué tipo de valor genera para la sociedad?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">negativo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">neutro</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">positivo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="3" type="radio">no aplica</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">En términos generales, ¿qué tipo de valor genera en la comunidad inmediata?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">negativo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">neutro</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">positivo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="3" type="radio">no aplica</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">En términos generales, ¿qué tipo de valor genera para el usuario/consumidor?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">negativo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">neutro</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">positivo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="3" type="radio">no aplica</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">En términos generales, ¿qué tipo de valor genera para los empleados?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">negativo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">neutro</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">positivo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="3" type="radio">no aplica</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">En términos generales, ¿qué tipo de valor genera para los proveedores?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">negativo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">neutro</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">positivo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="3" type="radio">no aplica</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">En términos generales, ¿qué tipo de valor genera para el Estado? <small>(Estado considerado como: administración pública nacional, provincial o municipal)</small>.</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">negativo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">neutro</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">positivo</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="3" type="radio">no aplica</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿Cuál es el aporte de este proyecto para el mundo? a. mejora el ambiente / b. atiende un problema social / c. genera riquezas.</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">atiende una variable</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">atiende dos variables</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">atiende las tres variables</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿El proyecto es innovador, genera soluciones que agregan un valor adicional a las que existían hasta el momento?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">sí</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">no</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">no aplica</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿Qué cambios pretende con respecto a su alcance? <small>(consideramos alto impacto cuando el beneficio socioambiental es muy alto o su alcance es masivo, por ejemplo porque incide sobre millones de personas o porque incide sobre pocas personas pero cambia radicalmente su vida, como podría ser una solución para discapacitados)</small></div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">alto impacto</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">mediano impacto</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">bajo impacto</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿Cuál es el propósito de su proyecto? ¿Se ha pensado y expresado en la misión y visión del proyecto?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">sí</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">no</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">pendiente</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿Está ese propósito íntimamente ligado con sus intereses personales, sus capacidades y las del resto del equipo?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">sí</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">no</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">parcialmente</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿Para quién se genera valor?</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">para usted únicamente</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">para usted y su comunidad</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">para usted su comunidad y el planeta</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">¿Existe equilibrio entre las 3 Ps (valor social: personas; valor ambiental: planeta; valor económico:prosperidad)</div>
+                <div class="panel-body">
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="0" type="radio">ninguno</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="1" type="radio">parcial</label>
+                  </div>
+                  <div class="radio">
+                    <label><input name="optionsRadios" value="2" type="radio">total</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <br>
+          <br>
+          <p>
+            <button class="btn btn-primary btn-xl pull-right">Siguiente</button>
+            <button class="btn btn-default btn-xl disabled">Anterior</button>
+          </p>
+
+        </form>
+      </section>
+
+    </main>
+    <!-- FIN DE CONTENIDO -->
+
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <a class="navbar-brand bac-footer" href="http://www.buenosaires.gob.ar" target="_blank">Buenos Aires Ciudad</a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="sub-brand">
+                <p>Dirección General de Gobierno Electrónico<br />
+                <span class="text-muted">Ministerio de Modernización</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="bastrap3/jquery.min.js"></script>
+    <script src="bastrap3/bootstrap.min.js"></script>
+    <!-- JAVASCRIPT EXTRA -->
+  </body>
+</html>
