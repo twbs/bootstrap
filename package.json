@@ -56,7 +56,7 @@
     "grunt-jekyll": "~0.4.2",
     "grunt-jscs": "~1.5.0",
     "grunt-postcss": "^0.3.0",
-    "grunt-sass": "~0.18.0",
+    "grunt-sass": "^1.0.0",
     "grunt-saucelabs": "~8.6.0",
     "grunt-scss-lint": "^0.3.4",
     "grunt-sed": "~0.1.1",
