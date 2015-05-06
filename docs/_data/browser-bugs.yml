@@ -140,6 +140,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    `width: 1%` on nested table cell causes its table to hog horizontal space.
+  upstream_bug: >
+    Chromium#427994
+  origin: >
+    Bootstrap#16372
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
