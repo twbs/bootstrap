@@ -1532,7 +1532,7 @@ div.FixedHeader_Cloned table {
 }
 .nav.nav-settings .settings-item {
   width: 100%;
-  min-height: 80px;
+  min-height: 70px;
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -1555,28 +1555,27 @@ div.FixedHeader_Cloned table {
   color: rgba(255, 255, 255, 0.7);
 }
 .nav.nav-settings .settings-item .logo {
-  width: 60px;
-  margin: 0 10px 0 20px;
-  padding-top: 10px;
+  margin: 0 0 0 20px;
+  padding-top: 15px;
 }
 .nav.nav-settings .settings-item .logo > img {
-  width: 60px;
+  width: 40px;
   border-radius: 50%;
-  border: 1px solid #fff;
+  box-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff;
 }
 .nav.nav-settings .settings-item .settings-content {
   padding: 0 35px 0 10px;
   overflow: hidden;
 }
 .nav.nav-settings .settings-item .settings-content .settings-title {
-  margin-top: 18px;
+  margin-top: 15px;
   color: #293041;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   padding-right: 20px;
 }
 .nav.nav-settings .settings-item .settings-content .settings-description {
-  margin-top: 5px;
+  margin-top: 1px;
   color: #859bbb;
   font-size: 12px;
   font-weight: 400;
@@ -1621,7 +1620,7 @@ div.FixedHeader_Cloned table {
 .nav.nav-settings .settings-isams .logo > img {
   width: 50px;
   top: 12px;
-  border: none;
+  box-shadow: none;
   border-radius: 0;
 }
 .nav.nav-settings .settings-isams .logo {
