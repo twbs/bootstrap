@@ -5,114 +5,120 @@
  * --------------------------------------------------------------------------
  */
 
+const Util = (() => {
 
-/**
- * --------------------------------------------------------------------------
- * Public Util Api
- * --------------------------------------------------------------------------
- */
 
-var Util = {
+  /**
+   * ------------------------------------------------------------------------
+   * Private TransitionEnd Helpers
+   * ------------------------------------------------------------------------
+   */
 
-  TRANSITION_END: 'bsTransitionEnd',
+  let transition = false
 
-  getUID(prefix) {
-    do prefix += ~~(Math.random() * 1000000)
-    while (document.getElementById(prefix))
-    return prefix
-  },
-
-  getSelectorFromElement(element) {
-    let selector = element.getAttribute('data-target')
-
-    if (!selector) {
-      selector = element.getAttribute('href') || ''
-      selector = /^#[a-z]/i.test(selector) ? selector : null
-    }
-
-    return selector
-  },
-
-  reflow(element) {
-    new Function('bs', 'return bs')(element.offsetHeight)
-  },
-
-  supportsTransitionEnd() {
-    return !!transition
+  const TransitionEndEvent = {
+    WebkitTransition : 'webkitTransitionEnd',
+    MozTransition    : 'transitionend',
+    OTransition      : 'oTransitionEnd otransitionend',
+    transition       : 'transitionend'
   }
 
-}
-
-export default Util
-
-
-/**
- * --------------------------------------------------------------------------
- * Private TransitionEnd Helpers
- * --------------------------------------------------------------------------
- */
-
-let transition = false
-
-const TransitionEndEvent = {
-  WebkitTransition : 'webkitTransitionEnd',
-  MozTransition    : 'transitionend',
-  OTransition      : 'oTransitionEnd otransitionend',
-  transition       : 'transitionend'
-}
-
-function getSpecialTransitionEndEvent() {
-  return {
-    bindType: transition.end,
-    delegateType: transition.end,
-    handle: function (event) {
-      if ($(event.target).is(this)) {
-        return event.handleObj.handler.apply(this, arguments)
+  function getSpecialTransitionEndEvent() {
+    return {
+      bindType: transition.end,
+      delegateType: transition.end,
+      handle: function (event) {
+        if ($(event.target).is(this)) {
+          return event.handleObj.handler.apply(this, arguments)
+        }
       }
     }
   }
-}
 
-function transitionEndTest() {
-  if (window.QUnit) {
+  function transitionEndTest() {
+    if (window.QUnit) {
+      return false
+    }
+
+    let el = document.createElement('bootstrap')
+
+    for (var name in TransitionEndEvent) {
+      if (el.style[name] !== undefined) {
+        return { end: TransitionEndEvent[name] }
+      }
+    }
+
     return false
   }
 
-  let el = document.createElement('bootstrap')
+  function transitionEndEmulator(duration) {
+    let called = false
 
-  for (var name in TransitionEndEvent) {
-    if (el.style[name] !== undefined) {
-      return { end: TransitionEndEvent[name] }
+    $(this).one(Util.TRANSITION_END, function () {
+      called = true
+    })
+
+    setTimeout(() => {
+      if (!called) {
+        $(this).trigger(transition.end)
+      }
+    }, duration)
+
+    return this
+  }
+
+  function setTransitionEndSupport() {
+    transition = transitionEndTest()
+
+    $.fn.emulateTransitionEnd = transitionEndEmulator
+
+    if (Util.supportsTransitionEnd()) {
+      $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent()
     }
   }
 
-  return false
-}
 
-function transitionEndEmulator(duration) {
-  let called = false
+  /**
+   * --------------------------------------------------------------------------
+   * Public Util Api
+   * --------------------------------------------------------------------------
+   */
 
-  $(this).one(Util.TRANSITION_END, function () {
-    called = true
-  })
+  let Util = {
 
-  setTimeout(() => {
-    if (!called) {
-      $(this).trigger(transition.end)
+    TRANSITION_END: 'bsTransitionEnd',
+
+    getUID(prefix) {
+      do prefix += ~~(Math.random() * 1000000)
+      while (document.getElementById(prefix))
+      return prefix
+    },
+
+    getSelectorFromElement(element) {
+      let selector = element.getAttribute('data-target')
+
+      if (!selector) {
+        selector = element.getAttribute('href') || ''
+        selector = /^#[a-z]/i.test(selector) ? selector : null
+      }
+
+      return selector
+    },
+
+    reflow(element) {
+      new Function('bs', 'return bs')(element.offsetHeight)
+    },
+
+    supportsTransitionEnd() {
+      return !!transition
     }
-  }, duration)
 
-  return this
-}
-
-function setTransitionEndSupport() {
-  transition = transitionEndTest()
-
-  $.fn.emulateTransitionEnd = transitionEndEmulator
-
-  if (Util.supportsTransitionEnd()) {
-    $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent()
   }
-}
 
-setTransitionEndSupport()
+  setTransitionEndSupport()
+
+  return Util
+
+})()
+
+export default Util

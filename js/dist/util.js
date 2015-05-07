@@ -5,120 +5,119 @@
  * --------------------------------------------------------------------------
  */
 
-/**
- * ------------------------------------------------------------------------
- * Public Util Api
- * ------------------------------------------------------------------------
- */
-
 'use strict';
 
-var Util = {
+var Util = (function () {
 
-  TRANSITION_END: 'bsTransitionEnd',
+  /**
+   * ------------------------------------------------------------------------
+   * Private TransitionEnd Helpers
+   * ------------------------------------------------------------------------
+   */
 
-  getUID: function getUID(prefix) {
-    do prefix += ~ ~(Math.random() * 1000000); while (document.getElementById(prefix));
-    return prefix;
-  },
+  var transition = false;
 
-  getSelectorFromElement: function getSelectorFromElement(element) {
-    var selector = element.getAttribute('data-target');
+  var TransitionEndEvent = {
+    WebkitTransition: 'webkitTransitionEnd',
+    MozTransition: 'transitionend',
+    OTransition: 'oTransitionEnd otransitionend',
+    transition: 'transitionend'
+  };
 
-    if (!selector) {
-      selector = element.getAttribute('href') || '';
-      selector = /^#[a-z]/i.test(selector) ? selector : null;
-    }
-
-    return selector;
-  },
-
-  reflow: function reflow(element) {
-    new Function('bs', 'return bs')(element.offsetHeight);
-  },
-
-  supportsTransitionEnd: function supportsTransitionEnd() {
-    return !!transition;
+  function getSpecialTransitionEndEvent() {
+    return {
+      bindType: transition.end,
+      delegateType: transition.end,
+      handle: function handle(event) {
+        if ($(event.target).is(this)) {
+          return event.handleObj.handler.apply(this, arguments);
+        }
+      }
+    };
   }
 
-};
+  function transitionEndTest() {
+    if (window.QUnit) {
+      return false;
+    }
 
-/**
- * ------------------------------------------------------------------------
- * Private TransitionEnd Helpers
- * ------------------------------------------------------------------------
- */
+    var el = document.createElement('bootstrap');
 
-var transition = false;
-
-var TransitionEndEvent = {
-  WebkitTransition: 'webkitTransitionEnd',
-  MozTransition: 'transitionend',
-  OTransition: 'oTransitionEnd otransitionend',
-  transition: 'transitionend'
-};
-
-function getSpecialTransitionEndEvent() {
-  return {
-    bindType: transition.end,
-    delegateType: transition.end,
-    handle: function handle(event) {
-      if ($(event.target).is(this)) {
-        return event.handleObj.handler.apply(this, arguments);
+    for (var name in TransitionEndEvent) {
+      if (el.style[name] !== undefined) {
+        return { end: TransitionEndEvent[name] };
       }
     }
-  };
-}
 
-function transitionEndTest() {
-  if (window.QUnit) {
     return false;
   }
 
-  var el = document.createElement('bootstrap');
+  function transitionEndEmulator(duration) {
+    var _this = this;
 
-  for (var name in TransitionEndEvent) {
-    if (el.style[name] !== undefined) {
-      return { end: TransitionEndEvent[name] };
+    var called = false;
+
+    $(this).one(Util.TRANSITION_END, function () {
+      called = true;
+    });
+
+    setTimeout(function () {
+      if (!called) {
+        $(_this).trigger(transition.end);
+      }
+    }, duration);
+
+    return this;
+  }
+
+  function setTransitionEndSupport() {
+    transition = transitionEndTest();
+
+    $.fn.emulateTransitionEnd = transitionEndEmulator;
+
+    if (Util.supportsTransitionEnd()) {
+      $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }
   }
 
-  return false;
-}
+  /**
+   * --------------------------------------------------------------------------
+   * Public Util Api
+   * --------------------------------------------------------------------------
+   */
 
-function transitionEndEmulator(duration) {
-  var _this = this;
+  var Util = {
 
-  var called = false;
+    TRANSITION_END: 'bsTransitionEnd',
 
-  $(this).one(Util.TRANSITION_END, function () {
-    called = true;
-  });
+    getUID: function getUID(prefix) {
+      do prefix += ~ ~(Math.random() * 1000000); while (document.getElementById(prefix));
+      return prefix;
+    },
 
-  setTimeout(function () {
-    if (!called) {
-      $(_this).trigger(transition.end);
+    getSelectorFromElement: function getSelectorFromElement(element) {
+      var selector = element.getAttribute('data-target');
+
+      if (!selector) {
+        selector = element.getAttribute('href') || '';
+        selector = /^#[a-z]/i.test(selector) ? selector : null;
+      }
+
+      return selector;
+    },
+
+    reflow: function reflow(element) {
+      new Function('bs', 'return bs')(element.offsetHeight);
+    },
+
+    supportsTransitionEnd: function supportsTransitionEnd() {
+      return !!transition;
     }
-  }, duration);
 
-  return this;
-}
+  };
 
-function setTransitionEndSupport() {
-  transition = transitionEndTest();
+  setTransitionEndSupport();
 
-  $.fn.emulateTransitionEnd = transitionEndEmulator;
-
-  if (Util.supportsTransitionEnd()) {
-    $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
-  }
-}
-
-setTransitionEndSupport();
-
-/**
- * ------------------------------------------------------------------------
- * Export Api
- * ------------------------------------------------------------------------
- */
+  return Util;
+})();
 //# sourceMappingURL=util.js.map
