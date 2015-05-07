@@ -56,27 +56,16 @@ module.exports = function (grunt) {
       docs: 'docs/dist'
     },
 
-    jshint: {
+    babel: {
       options: {
-        jshintrc: 'js/.jshintrc'
+        sourceMap: true,
+        modules: 'ignore'
       },
-      grunt: {
-        options: {
-          jshintrc: 'grunt/.jshintrc'
-        },
-        src: ['Gruntfile.js', 'grunt/*.js']
-      },
-      core: {
-        src: 'js/*.js'
-      },
-      test: {
-        options: {
-          jshintrc: 'js/tests/unit/.jshintrc'
-        },
-        src: 'js/tests/unit/*.js'
-      },
-      assets: {
-        src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
+      dist: {
+        files: {
+          'js/dist/util.js': 'js/src/util.js',
+          'js/dist/alert.js': 'js/src/alert.js'
+        }
       }
     },
 
@@ -85,19 +74,22 @@ module.exports = function (grunt) {
         config: 'js/.jscsrc'
       },
       grunt: {
-        src: '<%= jshint.grunt.src %>'
+        src: ['Gruntfile.js', 'grunt/*.js']
       },
       core: {
-        src: '<%= jshint.core.src %>'
+        src: 'js/*.js'
+      },
+      es6: {
+        src: 'js/src/*.js'
       },
       test: {
-        src: '<%= jshint.test.src %>'
+        src: 'js/tests/unit/*.js'
       },
       assets: {
         options: {
           requireCamelCaseOrUpperCaseIdentifiers: null
         },
-        src: '<%= jshint.assets.src %>'
+        src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
       }
     },
 
@@ -301,12 +293,12 @@ module.exports = function (grunt) {
 
     watch: {
       src: {
-        files: '<%= jshint.core.src %>',
-        tasks: ['jshint:core', 'qunit', 'concat']
+        files: '<%= jscs.core.src %>',
+        tasks: ['qunit', 'concat']
       },
       test: {
-        files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'qunit']
+        files: '<%= jscs.test.src %>',
+        tasks: ['qunit']
       },
       sass: {
         files: 'scss/**/*.scss',
@@ -398,7 +390,7 @@ module.exports = function (grunt) {
     testSubtasks.push('saucelabs-qunit');
   }
   grunt.registerTask('test', testSubtasks);
-  grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
+  grunt.registerTask('test-js', ['jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
@@ -434,7 +426,7 @@ module.exports = function (grunt) {
   // Docs task.
   grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
-  grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
+  grunt.registerTask('lint-docs-js', ['jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
 
   grunt.registerTask('docs-github', ['jekyll:github']);
