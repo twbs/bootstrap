@@ -93,15 +93,43 @@
 <!-- TARJETA REGISTRO START -->
 
     <style type="text/css">
-      .ba-aplicativo .main-container .col-md-8 {padding:0;}
-      .ba-aplicativo .main-container .container-fluid .col-md-2,
-      .ba-aplicativo .main-container .container-fluid .col-md-4,
-      .ba-aplicativo .main-container .container-fluid .col-md-6,
-      .ba-aplicativo .main-container .container-fluid .col-md-8,
-      .ba-aplicativo .main-container .container-fluid .col-md-12 {padding:0 15px;}
-      .ba-aplicativo .main-container .container-fluid label {font-size:16px;font-family:"OpenSans", Helvetica, Arial, sans-serif;line-height:24px;}
-      .ba-aplicativo .main-container .container-fluid .checkbox label {line-height:22px;margin-bottom:10px;}
-      .ba-aplicativo .main-container .container-fluid .checkbox input {height:auto;}
+      .ba-form-tarjeta .col-md-8 {
+        padding:0;
+      }
+      .ba-form-tarjeta .col-md-2,
+      .ba-form-tarjeta .col-md-4,
+      .ba-form-tarjeta .col-md-6,
+      .ba-form-tarjeta .col-md-8,
+      .ba-form-tarjeta .col-md-12 {
+        padding:0 15px;
+      }
+      .ba-form-tarjeta label {
+        font-family:"OpenSans", Helvetica, Arial, sans-serif;
+        font-size:16px;
+        line-height:24px;
+      }
+      .ba-form-tarjeta .checkbox label {
+        line-height:22px;
+        margin-bottom:10px;
+      }
+      .ba-form-tarjeta .checkbox input {
+        height:auto;
+      }
+      .ba-form-tarjeta .input-pre label {
+        width:100%;
+      }
+      .ba-form-tarjeta .input-pre .input-left {
+        width:30%;
+        border-top-right-radius:0;
+        border-bottom-right-radius:0;
+        float:left;
+      }
+      .ba-form-tarjeta .input-pre .input-right {
+        width:70%;
+        border-top-left-radius:0;
+        border-bottom-left-radius:0;
+        border-left:0;
+      }
     </style>
 
     <header class="jumbotron jumbotron-main jumbotron-small area-header" style="background-image:url(http://www.buenosaires.gob.ar/sites/gcaba/files/tarjetavos-01.jpg);">
@@ -124,7 +152,7 @@
     </header>
     <main class="main-container" role="main">
 
-    <form>
+    <form class="ba-form-tarjeta">
 
       <section>
         <div class="container">
@@ -546,19 +574,21 @@
                   <input class="form-control input-lg" type="text" placeholder="" id="altura">
                 </div>
                 <div class="form-group col-md-2">
-                  <label class="control-label" for="cpostal">Código postal</label>
+                  <label class="control-label" for="cpostal">C. postal</label>
                   <input class="form-control input-lg" type="text" placeholder="" id="cpostal">
                 </div>
               </div>
 
               <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="tel-fijo">Teléfono fijo</label>
-                  <input class="form-control input-lg" type="text" placeholder="" id="tel-fijo" required="">
+                <div class="form-group input-pre col-md-6">
+                  <label for="tel-fijo-area">Teléfono fijo</label>
+                  <input class="form-control input-lg input-left" type="text" placeholder="Área" id="tel-fijo-area" required="">
+                  <input class="form-control input-lg input-right" type="text" placeholder="Teléfono" id="tel-fijo" required="">
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="tel-movil">Teléfono móvil</label>
-                  <input class="form-control input-lg" type="text" placeholder="" id="tel-movil" required="">
+                <div class="form-group input-pre col-md-6">
+                  <label for="tel-movil-area">Teléfono móvil</label>
+                  <input class="form-control input-lg input-left" type="text" placeholder="Área" id="tel-movil-area" required="">
+                  <input class="form-control input-lg input-right" type="text" placeholder="Teléfono" id="tel-movil" required="">
                 </div>
               </div>
 
