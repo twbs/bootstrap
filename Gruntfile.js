@@ -64,7 +64,8 @@ module.exports = function (grunt) {
       dist: {
         files: {
           'js/dist/util.js': 'js/src/util.js',
-          'js/dist/alert.js': 'js/src/alert.js'
+          'js/dist/alert.js': 'js/src/alert.js',
+          'js/dist/button.js': 'js/src/button.js',
         }
       }
     },

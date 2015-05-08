@@ -11,7 +11,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * --------------------------------------------------------------------------
  */
 
-var Alert = (function () {
+var Alert = (function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -62,6 +62,8 @@ var Alert = (function () {
       // public
 
       value: function close(element) {
+        element = element || this.element;
+
         var rootElement = this._getRootElement(element);
         var customEvent = this._triggerCloseEvent(rootElement);
 
@@ -167,10 +169,10 @@ var Alert = (function () {
   $.fn[NAME] = Alert._jQueryInterface;
   $.fn[NAME].Constructor = Alert;
   $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = Alert._JQUERY_NO_CONFLICT;
+    $.fn[NAME] = JQUERY_NO_CONFLICT;
     return Alert._jQueryInterface;
   };
 
   return Alert;
-})();
+})(jQuery);
 //# sourceMappingURL=alert.js.map

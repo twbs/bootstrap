@@ -8,7 +8,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Alert = (() => {
+const Alert = (($) => {
 
 
   /**
@@ -58,6 +58,8 @@ const Alert = (() => {
     // public
 
     close(element) {
+      element = element || this.element
+
       let rootElement = this._getRootElement(element)
       let customEvent = this._triggerCloseEvent(rootElement)
 
@@ -167,12 +169,12 @@ const Alert = (() => {
   $.fn[NAME]             = Alert._jQueryInterface
   $.fn[NAME].Constructor = Alert
   $.fn[NAME].noConflict  = function () {
-    $.fn[NAME] = Alert._JQUERY_NO_CONFLICT
+    $.fn[NAME] = JQUERY_NO_CONFLICT
     return Alert._jQueryInterface
   }
 
   return Alert
 
-})()
+})(jQuery)
 
 export default Alert

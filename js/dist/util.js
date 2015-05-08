@@ -7,7 +7,7 @@
 
 'use strict';
 
-var Util = (function () {
+var Util = (function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -119,5 +119,5 @@ var Util = (function () {
   setTransitionEndSupport();
 
   return Util;
-})();
+})(jQuery);
 //# sourceMappingURL=util.js.map
