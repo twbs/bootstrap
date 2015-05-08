@@ -60,7 +60,7 @@ const Util = (($) => {
 
     setTimeout(() => {
       if (!called) {
-        $(this).trigger(transition.end)
+        Util.triggerTransitionEnd(this)
       }
     }, duration)
 
@@ -107,6 +107,10 @@ const Util = (($) => {
 
     reflow(element) {
       new Function('bs', 'return bs')(element.offsetHeight)
+    },
+
+    triggerTransitionEnd(element) {
+      $(element).trigger(transition.end)
     },
 
     supportsTransitionEnd() {

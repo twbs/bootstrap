@@ -49,24 +49,24 @@ const Button = (($) => {
   class Button {
 
     constructor(element) {
-      this.element = element
+      this._element = element
     }
 
     // public
 
     toggle() {
       let triggerChangeEvent = true
-      let rootElement = $(this.element).closest(
+      let rootElement = $(this._element).closest(
         Selector.DATA_TOGGLE
       )[0]
 
       if (rootElement) {
-        let input = $(this.element).find(Selector.INPUT)[0]
+        let input = $(this._element).find(Selector.INPUT)[0]
 
         if (input) {
           if (input.type === 'radio') {
             if (input.checked &&
-              $(this.element).hasClass(ClassName.ACTIVE)) {
+              $(this._element).hasClass(ClassName.ACTIVE)) {
               triggerChangeEvent = false
 
             } else {
@@ -79,17 +79,17 @@ const Button = (($) => {
           }
 
           if (triggerChangeEvent) {
-            input.checked = !$(this.element).hasClass(ClassName.ACTIVE)
-            $(this.element).trigger('change')
+            input.checked = !$(this._element).hasClass(ClassName.ACTIVE)
+            $(this._element).trigger('change')
           }
         }
       } else {
-        this.element.setAttribute('aria-pressed',
-          !$(this.element).hasClass(ClassName.ACTIVE))
+        this._element.setAttribute('aria-pressed',
+          !$(this._element).hasClass(ClassName.ACTIVE))
       }
 
       if (triggerChangeEvent) {
-        $(this.element).toggleClass(ClassName.ACTIVE)
+        $(this._element).toggleClass(ClassName.ACTIVE)
       }
     }
 

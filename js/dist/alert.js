@@ -51,9 +51,7 @@ var Alert = (function ($) {
     function Alert(element) {
       _classCallCheck(this, Alert);
 
-      if (element) {
-        this.element = element;
-      }
+      this._element = element;
     }
 
     _createClass(Alert, [{
@@ -62,7 +60,7 @@ var Alert = (function ($) {
       // public
 
       value: function close(element) {
-        element = element || this.element;
+        element = element || this._element;
 
         var rootElement = this._getRootElement(element);
         var customEvent = this._triggerCloseEvent(rootElement);

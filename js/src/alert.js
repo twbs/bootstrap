@@ -49,16 +49,14 @@ const Alert = (($) => {
   class Alert {
 
     constructor(element) {
-      if (element) {
-        this.element = element
-      }
+      this._element = element
     }
 
 
     // public
 
     close(element) {
-      element = element || this.element
+      element = element || this._element
 
       let rootElement = this._getRootElement(element)
       let customEvent = this._triggerCloseEvent(rootElement)

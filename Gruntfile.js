@@ -66,6 +66,7 @@ module.exports = function (grunt) {
           'js/dist/util.js': 'js/src/util.js',
           'js/dist/alert.js': 'js/src/alert.js',
           'js/dist/button.js': 'js/src/button.js',
+          'js/dist/carousel.js': 'js/src/carousel.js',
         }
       }
     },

@@ -54,7 +54,7 @@ var Button = (function ($) {
     function Button(element) {
       _classCallCheck(this, Button);
 
-      this.element = element;
+      this._element = element;
     }
 
     _createClass(Button, [{
@@ -64,14 +64,14 @@ var Button = (function ($) {
 
       value: function toggle() {
         var triggerChangeEvent = true;
-        var rootElement = $(this.element).closest(Selector.DATA_TOGGLE)[0];
+        var rootElement = $(this._element).closest(Selector.DATA_TOGGLE)[0];
 
         if (rootElement) {
-          var input = $(this.element).find(Selector.INPUT)[0];
+          var input = $(this._element).find(Selector.INPUT)[0];
 
           if (input) {
             if (input.type === 'radio') {
-              if (input.checked && $(this.element).hasClass(ClassName.ACTIVE)) {
+              if (input.checked && $(this._element).hasClass(ClassName.ACTIVE)) {
                 triggerChangeEvent = false;
               } else {
                 var activeElement = $(rootElement).find(Selector.ACTIVE)[0];
@@ -83,16 +83,16 @@ var Button = (function ($) {
             }
 
             if (triggerChangeEvent) {
-              input.checked = !$(this.element).hasClass(ClassName.ACTIVE);
-              $(this.element).trigger('change');
+              input.checked = !$(this._element).hasClass(ClassName.ACTIVE);
+              $(this._element).trigger('change');
             }
           }
         } else {
-          this.element.setAttribute('aria-pressed', !$(this.element).hasClass(ClassName.ACTIVE));
+          this._element.setAttribute('aria-pressed', !$(this._element).hasClass(ClassName.ACTIVE));
         }
 
         if (triggerChangeEvent) {
-          $(this.element).toggleClass(ClassName.ACTIVE);
+          $(this._element).toggleClass(ClassName.ACTIVE);
         }
       }
     }], [{

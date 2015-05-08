@@ -63,7 +63,7 @@ var Util = (function ($) {
 
     setTimeout(function () {
       if (!called) {
-        $(_this).trigger(transition.end);
+        Util.triggerTransitionEnd(_this);
       }
     }, duration);
 
@@ -108,6 +108,10 @@ var Util = (function ($) {
 
     reflow: function reflow(element) {
       new Function('bs', 'return bs')(element.offsetHeight);
+    },
+
+    triggerTransitionEnd: function triggerTransitionEnd(element) {
+      $(element).trigger(transition.end);
     },
 
     supportsTransitionEnd: function supportsTransitionEnd() {
