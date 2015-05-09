@@ -42,7 +42,7 @@
     "grunt-contrib-connect": "~0.10.1",
     "grunt-contrib-copy": "~0.8.0",
     "grunt-contrib-csslint": "~0.4.0",
-    "grunt-contrib-cssmin": "~0.12.2",
+    "grunt-contrib-cssmin": "~0.12.3",
     "grunt-contrib-htmlmin": "~0.4.0",
     "grunt-contrib-jade": "~0.14.1",
     "grunt-contrib-jshint": "~0.11.2",
@@ -52,15 +52,15 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-csscomb": "~3.0.0",
     "grunt-exec": "~0.4.6",
-    "grunt-html": "~4.0.2",
+    "grunt-html": "~4.0.3",
     "grunt-jekyll": "~0.4.2",
     "grunt-jscs": "~1.8.0",
     "grunt-saucelabs": "~8.6.1",
     "grunt-sed": "twbs/grunt-sed#v0.2.0",
     "load-grunt-tasks": "~3.1.0",
-    "markdown-it": "^4.2.0",
+    "markdown-it": "^4.2.1",
     "npm-shrinkwrap": "^200.4.0",
-    "time-grunt": "^1.1.1"
+    "time-grunt": "^1.2.0"
   },
   "engines": {
     "node": ">=0.10.1"
