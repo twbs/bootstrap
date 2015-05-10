@@ -80,7 +80,7 @@ const Alert = (($) => {
       }
 
       if (!parent) {
-        parent = $(element).closest('.' + ClassName.ALERT)[0]
+        parent = $(element).closest(`.${ClassName.ALERT}`)[0]
       }
 
       return parent

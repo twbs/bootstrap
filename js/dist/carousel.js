@@ -26,11 +26,11 @@ var Carousel = (function ($) {
   var TRANSITION_DURATION = 600;
 
   var Defaults = {
-    'interval': 5000,
-    'keyboard': true,
-    'slide': false,
-    'pause': 'hover',
-    'wrap': true
+    interval: 5000,
+    keyboard: true,
+    slide: false,
+    pause: 'hover',
+    wrap: true
   };
 
   var Direction = {
