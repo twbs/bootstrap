@@ -63,11 +63,12 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          'js/dist/util.js': 'js/src/util.js',
-          'js/dist/alert.js': 'js/src/alert.js',
-          'js/dist/button.js': 'js/src/button.js',
-          'js/dist/carousel.js': 'js/src/carousel.js',
-          'js/dist/collapse.js': 'js/src/collapse.js',
+          'js/dist/util.js'     : 'js/src/util.js',
+          'js/dist/alert.js'    : 'js/src/alert.js',
+          'js/dist/button.js'   : 'js/src/button.js',
+          'js/dist/carousel.js' : 'js/src/carousel.js',
+          'js/dist/collapse.js' : 'js/src/collapse.js',
+          'js/dist/dropdown.js' : 'js/src/dropdown.js'
         }
       }
     },
