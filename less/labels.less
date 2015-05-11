@@ -15,7 +15,7 @@
   border-radius: .25em;
 
   // Add hover effects, but only for links
-  a& {
+  & {
     &:hover,
     &:focus {
       color: @label-link-hover-color;
@@ -41,6 +41,7 @@
 
 .label-default {
   .label-variant(@label-default-bg);
+  color: @gray;
 }
 
 .label-primary {
