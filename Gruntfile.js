@@ -68,7 +68,8 @@ module.exports = function (grunt) {
           'js/dist/button.js'   : 'js/src/button.js',
           'js/dist/carousel.js' : 'js/src/carousel.js',
           'js/dist/collapse.js' : 'js/src/collapse.js',
-          'js/dist/dropdown.js' : 'js/src/dropdown.js'
+          'js/dist/dropdown.js' : 'js/src/dropdown.js',
+          'js/dist/modal.js'    : 'js/src/modal.js'
         }
       }
     },
@@ -114,8 +115,7 @@ module.exports = function (grunt) {
           'js/tooltip.js',
           'js/popover.js',
           'js/scrollspy.js',
-          'js/tab.js',
-          'js/affix.js'
+          'js/tab.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }

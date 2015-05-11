@@ -62,6 +62,14 @@ const Dropdown = (($) => {
       $(element).on(Event.CLICK, this.toggle)
     }
 
+
+    // getters
+
+    static get VERSION() {
+      return VERSION
+    }
+
+
     // public
 
     toggle() {

@@ -23,7 +23,7 @@ const Collapse = (($) => {
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 600
 
-  const Defaults = {
+  const Default = {
     toggle : true,
     parent : null
   }
@@ -63,10 +63,9 @@ const Collapse = (($) => {
   class Collapse {
 
     constructor(element, config) {
-
       this._isTransitioning = false
       this._element         = element
-      this._config          = $.extend({}, Defaults, config)
+      this._config          = $.extend({}, Default, config)
       this._triggerArray    = $.makeArray($(
         `[data-toggle="collapse"][href="#${element.id}"],` +
         `[data-toggle="collapse"][data-target="#${element.id}"]`
@@ -81,8 +80,19 @@ const Collapse = (($) => {
       if (this._config.toggle) {
         this.toggle()
       }
-
     }
+
+
+    // getters
+
+    static get VERSION() {
+      return VERSION
+    }
+
+    static get Default() {
+      return Default
+    }
+
 
     // public
 
@@ -284,7 +294,7 @@ const Collapse = (($) => {
         let data    = $this.data(DATA_KEY)
         let _config = $.extend(
           {},
-          Defaults,
+          Default,
           $this.data(),
           typeof config === 'object' && config
         )

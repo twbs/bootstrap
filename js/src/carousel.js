@@ -23,7 +23,7 @@ const Carousel = (($) => {
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 600
 
-  const Defaults = {
+  const Default = {
     interval : 5000,
     keyboard : true,
     slide    : false,
@@ -72,7 +72,6 @@ const Carousel = (($) => {
   class Carousel {
 
     constructor(element, config) {
-
       this._items             = null
       this._interval          = null
       this._activeElement     = null
@@ -85,7 +84,17 @@ const Carousel = (($) => {
       this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0]
 
       this._addEventListeners()
+    }
 
+
+    // getters
+
+    static get VERSION() {
+      return VERSION
+    }
+
+    static get Default() {
+      return Default
     }
 
 
@@ -331,7 +340,7 @@ const Carousel = (($) => {
     static _jQueryInterface(config) {
       return this.each(function () {
         let data    = $(this).data(DATA_KEY)
-        let _config = $.extend({}, Defaults, $(this).data())
+        let _config = $.extend({}, Default, $(this).data())
 
         if (typeof config === 'object') {
           $.extend(_config, config)

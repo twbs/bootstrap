@@ -25,7 +25,7 @@ var Carousel = (function ($) {
   var JQUERY_NO_CONFLICT = $.fn[NAME];
   var TRANSITION_DURATION = 600;
 
-  var Defaults = {
+  var Default = {
     interval: 5000,
     keyboard: true,
     slide: false,
@@ -320,6 +320,19 @@ var Carousel = (function ($) {
         }
       }
     }], [{
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function () {
+        return Default;
+      }
+    }, {
       key: '_jQueryInterface',
 
       // static
@@ -327,7 +340,7 @@ var Carousel = (function ($) {
       value: function _jQueryInterface(config) {
         return this.each(function () {
           var data = $(this).data(DATA_KEY);
-          var _config = $.extend({}, Defaults, $(this).data());
+          var _config = $.extend({}, Default, $(this).data());
 
           if (typeof config === 'object') {
             $.extend(_config, config);

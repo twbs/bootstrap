@@ -52,6 +52,14 @@ const Button = (($) => {
       this._element = element
     }
 
+
+    // getters
+
+    static get VERSION() {
+      return VERSION
+    }
+
+
     // public
 
     toggle() {

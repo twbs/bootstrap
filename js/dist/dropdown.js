@@ -91,7 +91,7 @@ var Dropdown = (function ($) {
           $(dropdown).on('click', Dropdown._clearMenus);
         }
 
-        var relatedTarget = { 'relatedTarget': this };
+        var relatedTarget = { relatedTarget: this };
         var showEvent = $.Event(Event.SHOW, relatedTarget);
 
         $(parent).trigger(showEvent);
@@ -109,6 +109,14 @@ var Dropdown = (function ($) {
         return false;
       }
     }], [{
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
+      }
+    }, {
       key: '_jQueryInterface',
 
       // static
@@ -142,7 +150,7 @@ var Dropdown = (function ($) {
 
         for (var i = 0; i < toggles.length; i++) {
           var _parent = Dropdown._getParentFromElement(toggles[i]);
-          var relatedTarget = { 'relatedTarget': toggles[i] };
+          var relatedTarget = { relatedTarget: toggles[i] };
 
           if (!$(_parent).hasClass(ClassName.OPEN)) {
             continue;

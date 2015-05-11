@@ -25,7 +25,7 @@ var Collapse = (function ($) {
   var JQUERY_NO_CONFLICT = $.fn[NAME];
   var TRANSITION_DURATION = 600;
 
-  var Defaults = {
+  var Default = {
     toggle: true,
     parent: null
   };
@@ -67,7 +67,7 @@ var Collapse = (function ($) {
 
       this._isTransitioning = false;
       this._element = element;
-      this._config = $.extend({}, Defaults, config);
+      this._config = $.extend({}, Default, config);
       this._triggerArray = $.makeArray($('[data-toggle="collapse"][href="#' + element.id + '"],' + ('[data-toggle="collapse"][data-target="#' + element.id + '"]')));
 
       this._parent = this._config.parent ? this._getParent() : null;
@@ -252,6 +252,19 @@ var Collapse = (function ($) {
         }
       }
     }], [{
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function () {
+        return Default;
+      }
+    }, {
       key: '_getTargetFromElement',
 
       // static
@@ -266,7 +279,7 @@ var Collapse = (function ($) {
         return this.each(function () {
           var $this = $(this);
           var data = $this.data(DATA_KEY);
-          var _config = $.extend({}, Defaults, $this.data(), typeof config === 'object' && config);
+          var _config = $.extend({}, Default, $this.data(), typeof config === 'object' && config);
 
           if (!data && _config.toggle && /show|hide/.test(config)) {
             _config.toggle = false;

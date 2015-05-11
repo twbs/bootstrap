@@ -53,6 +53,13 @@ const Alert = (($) => {
     }
 
 
+    // getters
+
+    static get VERSION() {
+      return VERSION
+    }
+
+
     // public
 
     close(element) {

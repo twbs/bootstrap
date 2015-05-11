@@ -96,6 +96,14 @@ var Button = (function ($) {
         }
       }
     }], [{
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
+      }
+    }, {
       key: '_jQueryInterface',
 
       // static
