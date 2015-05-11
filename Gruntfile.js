@@ -70,7 +70,8 @@ module.exports = function (grunt) {
           'js/dist/collapse.js'  : 'js/src/collapse.js',
           'js/dist/dropdown.js'  : 'js/src/dropdown.js',
           'js/dist/modal.js'     : 'js/src/modal.js',
-          'js/dist/scrollspy.js' : 'js/src/scrollspy.js'
+          'js/dist/scrollspy.js' : 'js/src/scrollspy.js',
+          'js/dist/tab.js'       : 'js/src/tab.js'
         }
       }
     },

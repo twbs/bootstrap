@@ -17,11 +17,10 @@ const ScrollSpy = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  const NAME                = 'scrollspy'
-  const VERSION             = '4.0.0'
-  const DATA_KEY            = 'bs.scrollspy'
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
+  const NAME               = 'scrollspy'
+  const VERSION            = '4.0.0'
+  const DATA_KEY           = 'bs.scrollspy'
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
 
   const Defaults = {
     offset : 10

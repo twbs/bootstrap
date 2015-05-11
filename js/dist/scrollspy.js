@@ -23,7 +23,6 @@ var ScrollSpy = (function ($) {
   var VERSION = '4.0.0';
   var DATA_KEY = 'bs.scrollspy';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var TRANSITION_DURATION = 150;
 
   var Defaults = {
     offset: 10
