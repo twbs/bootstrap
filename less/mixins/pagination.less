@@ -1,11 +1,12 @@
 // Pagination
 
-.pagination-size(@padding-vertical; @padding-horizontal; @font-size; @border-radius) {
+.pagination-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
   > li {
     > a,
     > span {
       padding: @padding-vertical @padding-horizontal;
       font-size: @font-size;
+      line-height: @line-height;
     }
     &:first-child {
       > a,
