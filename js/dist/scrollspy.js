@@ -24,7 +24,7 @@ var ScrollSpy = (function ($) {
   var DATA_KEY = 'bs.scrollspy';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
 
-  var Defaults = {
+  var Default = {
     offset: 10
   };
 

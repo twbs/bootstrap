@@ -22,7 +22,7 @@ const ScrollSpy = (($) => {
   const DATA_KEY           = 'bs.scrollspy'
   const JQUERY_NO_CONFLICT = $.fn[NAME]
 
-  const Defaults = {
+  const Default = {
     offset : 10
   }
 
