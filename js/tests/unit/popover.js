@@ -16,6 +16,7 @@ $(function () {
     afterEach: function () {
       $.fn.popover = $.fn.bootstrapPopover
       delete $.fn.bootstrapPopover
+      $('.popover').remove()
     }
   })
 
@@ -81,6 +82,7 @@ $(function () {
     assert.strictEqual($('.popover .popover-content').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
+
     assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
@@ -91,6 +93,7 @@ $(function () {
     var $popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
+        html: true,
         content: function () {
           return $div
         }
@@ -98,14 +101,14 @@ $(function () {
 
     $popover.bootstrapPopover('show')
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
+    assert.equal($('.popover .popover-content').html(), $div[0].outerHTML, 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
     assert.strictEqual($('.popover').length, 0, 'popover was removed')
 
     $popover.bootstrapPopover('show')
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
+    assert.equal($('.popover .popover-content').html(), $div[0].outerHTML, 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
     assert.strictEqual($('.popover').length, 0, 'popover was removed')
@@ -125,7 +128,6 @@ $(function () {
     $popover.bootstrapPopover('hide')
     assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
-
 
   QUnit.test('should get title and content from attributes ignoring options passed via js', function (assert) {
     assert.expect(4)
@@ -240,13 +242,6 @@ $(function () {
       .bootstrapPopover('show')
   })
 
-  QUnit.test('should throw an error when initializing popover on the document object without specifying a delegation selector', function (assert) {
-    assert.expect(1)
-    assert.throws(function () {
-      $(document).bootstrapPopover({ title: 'What am I on?', content: 'My selector is missing' })
-    }, new Error('`selector` option must be specified when initializing popover on the window.document object!'))
-  })
-
   QUnit.test('should do nothing when an attempt is made to hide an uninitialized popover', function (assert) {
     assert.expect(1)
 
@@ -257,16 +252,6 @@ $(function () {
       })
       .bootstrapPopover('hide')
     assert.strictEqual($popover.data('bs.popover'), undefined, 'should not initialize the popover')
-  })
-
-  QUnit.test('should throw an error when template contains multiple top-level elements', function (assert) {
-    assert.expect(1)
-    assert.throws(function () {
-      $('<span data-toggle="popover" data-title="some title" data-content="some content">some text</span>')
-        .appendTo('#qunit-fixture')
-        .bootstrapPopover({ template: '<div>Foo</div><div>Bar</div>' })
-        .bootstrapPopover('show')
-    }, new Error('popover `template` option must consist of exactly 1 top-level element!'))
   })
 
   QUnit.test('should fire inserted event', function (assert) {

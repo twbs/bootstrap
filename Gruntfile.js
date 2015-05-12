@@ -72,7 +72,8 @@ module.exports = function (grunt) {
           'js/dist/modal.js'     : 'js/src/modal.js',
           'js/dist/scrollspy.js' : 'js/src/scrollspy.js',
           'js/dist/tab.js'       : 'js/src/tab.js',
-          'js/dist/tooltip.js'   : 'js/src/tooltip.js'
+          'js/dist/tooltip.js'   : 'js/src/tooltip.js',
+          'js/dist/popover.js'   : 'js/src/popover.js'
         }
       }
     },

@@ -57,7 +57,7 @@ var ScrollSpy = (function ($) {
       _classCallCheck(this, ScrollSpy);
 
       this._scrollElement = element.tagName === 'BODY' ? window : element;
-      this._config = $.extend({}, Defaults, config);
+      this._config = $.extend({}, Default, config);
       this._selector = '' + (this._config.target || '') + ' .nav li > a';
       this._offsets = [];
       this._targets = [];

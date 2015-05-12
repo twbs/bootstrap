@@ -89,11 +89,11 @@ $(function () {
     assert.strictEqual(id.indexOf('tooltip'), 0, 'tooltip id has prefix')
   })
 
-  QUnit.test('should place tooltips relative to attachment option', function (assert) {
+  QUnit.test('should place tooltips relative to placement option', function (assert) {
     assert.expect(2)
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ attachment: 'bottom' })
+      .bootstrapTooltip({ placement: 'bottom' })
 
     $tooltip.bootstrapTooltip('show')
 
@@ -321,7 +321,7 @@ $(function () {
     var $target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"/>')
       .appendTo($container)
       .bootstrapTooltip({
-        attachment: 'right',
+        placement: 'right',
       })
       .bootstrapTooltip('show')
 
@@ -389,7 +389,7 @@ $(function () {
       .one('show.bs.tooltip', function () {
         $(this).remove()
       })
-      .bootstrapTooltip({ attachment: 'top' })
+      .bootstrapTooltip({ placement: 'top' })
 
     try {
       $tooltip.bootstrapTooltip('show')
@@ -426,7 +426,7 @@ $(function () {
       .find('a')
       .css('margin-top', 200)
       .bootstrapTooltip({
-        attachment: 'top',
+        placement: 'top',
         animate: false
       })
       .bootstrapTooltip('show')
@@ -609,7 +609,7 @@ $(function () {
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
         done()
       })
-      .bootstrapTooltip({ attachment: 'top', trigger: 'manual' })
+      .bootstrapTooltip({ placement: 'top', trigger: 'manual' })
 
     $circle.bootstrapTooltip('show')
   })
@@ -621,7 +621,7 @@ $(function () {
       return '<p id="tt-content">' + uid + '</p><p>' + uid + '</p><p>' + uid + '</p>'
     }
 
-    var $tooltip = $('<span id="tt-outer" rel="tooltip" data-trigger="hover" data-attachment="top">some text</span>')
+    var $tooltip = $('<span id="tt-outer" rel="tooltip" data-trigger="hover" data-placement="top">some text</span>')
       .appendTo('#qunit-fixture')
 
     $tooltip.bootstrapTooltip({
@@ -649,7 +649,7 @@ $(function () {
       return '<p id="tt-content">' + uid + '</p><p>' + uid + '</p><p>' + uid + '</p>'
     }
 
-    var $tooltip = $('<span id="tt-outer" rel="tooltip" data-trigger="hover" data-attachment="top">some text</span>')
+    var $tooltip = $('<span id="tt-outer" rel="tooltip" data-trigger="hover" data-placement="top">some text</span>')
       .appendTo('#qunit-fixture')
 
     $tooltip.bootstrapTooltip({

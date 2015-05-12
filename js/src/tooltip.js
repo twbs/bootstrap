@@ -8,7 +8,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const ToolTip = (($) => {
+const Tooltip = (($) => {
 
 
   /**
@@ -34,33 +34,16 @@ const ToolTip = (($) => {
     delay       : 0,
     html        : false,
     selector    : false,
-    attachment  : 'top',
+    placement   : 'top',
     offset      : '0 0',
     constraints : null
   }
 
-  const HorizontalMirror = {
-    LEFT   : 'right',
-    CENTER : 'center',
-    RIGHT  : 'left'
-  }
-
-  const VerticalMirror = {
-    TOP    : 'bottom',
-    MIDDLE : 'middle',
-    BOTTOM : 'top'
-  }
-
-  const VerticalDefault = {
-    LEFT   : 'middle',
-    CENTER : 'bottom',
-    RIGHT  : 'middle'
-  }
-
-  const HorizontalDefault = {
-    TOP    : 'center',
-    MIDDLE : 'left',
-    BOTTOM : 'center'
+  const AttachmentMap = {
+    TOP    : 'bottom center',
+    RIGHT  : 'middle left',
+    BOTTOM : 'top center',
+    LEFT   : 'middle right'
   }
 
   const HoverState = {
@@ -88,8 +71,7 @@ const ToolTip = (($) => {
 
   const Selector = {
     TOOLTIP       : '.tooltip',
-    TOOLTIP_INNER : '.tooltip-inner',
-    TOOLTIP_ARROW : '.tooltip-arrow'
+    TOOLTIP_INNER : '.tooltip-inner'
   }
 
   const TetherClass = {
@@ -120,12 +102,12 @@ const ToolTip = (($) => {
       this._timeout        = 0
       this._hoverState     = ''
       this._activeTrigger  = {}
+      this._tether         = null
 
       // protected
       this.element = element
       this.config  = this._getConfig(config)
       this.tip     = null
-      this.tether  = null
 
       this._setListeners()
 
@@ -141,6 +123,19 @@ const ToolTip = (($) => {
     static get Default() {
       return Default
     }
+
+    static get NAME() {
+      return NAME
+    }
+
+    static get DATA_KEY() {
+      return DATA_KEY
+    }
+
+    static get Event() {
+      return Event
+    }
+
 
 
     // public
@@ -159,16 +154,17 @@ const ToolTip = (($) => {
 
     toggle(event) {
       let context = this
+      let dataKey = this.constructor.DATA_KEY
 
       if (event) {
-        context = $(event.currentTarget).data(DATA_KEY)
+        context = $(event.currentTarget).data(dataKey)
 
         if (!context) {
           context = new this.constructor(
             event.currentTarget,
             this._getDelegateConfig()
           )
-          $(event.currentTarget).data(DATA_KEY, context)
+          $(event.currentTarget).data(dataKey, context)
         }
 
         context._activeTrigger.click = !context._activeTrigger.click
@@ -190,13 +186,19 @@ const ToolTip = (($) => {
       clearTimeout(this._timeout)
       this.hide(() => {
         $(this.element)
-          .off(Selector.TOOLTIP)
-          .removeData(DATA_KEY)
+          .off(`.${this.constructor.NAME}`)
+          .removeData(this.constructor.DATA_KEY)
+
+        if (this.tip) {
+          $(this.tip).detach()
+        }
+
+        this.tip = null
       })
     }
 
     show() {
-      let showEvent = $.Event(Event.SHOW)
+      let showEvent = $.Event(this.constructor.Event.SHOW)
 
       if (this.isWithContent() && this._isEnabled) {
         $(this.element).trigger(showEvent)
@@ -211,7 +213,7 @@ const ToolTip = (($) => {
         }
 
         let tip   = this.getTipElement()
-        let tipId = Util.getUID(NAME)
+        let tipId = Util.getUID(this.constructor.NAME)
 
         tip.setAttribute('id', tipId)
         this.element.setAttribute('aria-describedby', tipId)
@@ -222,19 +224,20 @@ const ToolTip = (($) => {
           $(tip).addClass(ClassName.FADE)
         }
 
-        let attachment = typeof this.config.attachment === 'function' ?
-          this.config.attachment.call(this, tip, this.element) :
-          this.config.attachment
+        let placement  = typeof this.config.placement === 'function' ?
+          this.config.placement.call(this, tip, this.element) :
+          this.config.placement
 
-        attachment = this.getAttachment(attachment)
+        let attachment = this._getAttachment(placement)
 
-        $(tip).data(DATA_KEY, this)
+        $(tip)
+          .data(this.constructor.DATA_KEY, this)
+          .appendTo(document.body)
 
-        this.element.parentNode.insertBefore(tip, this.element.nextSibling)
-        $(this.element).trigger(Event.INSERTED)
+        $(this.element).trigger(this.constructor.Event.INSERTED)
 
-        this.tether = new Tether({
-          element     : this.tip,
+        this._tether = new Tether({
+          element     : tip,
           target      : this.element,
           attachment  : attachment,
           classes     : TetherClass,
@@ -244,7 +247,7 @@ const ToolTip = (($) => {
         })
 
         Util.reflow(tip)
-        this.tether.position()
+        this._tether.position()
 
         $(tip).addClass(ClassName.IN)
 
@@ -252,7 +255,7 @@ const ToolTip = (($) => {
           let prevHoverState = this._hoverState
           this._hoverState   = null
 
-          $(this.element).trigger(Event.SHOWN)
+          $(this.element).trigger(this.constructor.Event.SHOWN)
 
           if (prevHoverState === HoverState.OUT) {
             this._leave(null, this)
@@ -269,14 +272,14 @@ const ToolTip = (($) => {
 
     hide(callback) {
       let tip       = this.getTipElement()
-      let hideEvent = $.Event(Event.HIDE)
+      let hideEvent = $.Event(this.constructor.Event.HIDE)
       let complete  = () => {
         if (this._hoverState !== HoverState.IN && tip.parentNode) {
           tip.parentNode.removeChild(tip)
         }
 
         this.element.removeAttribute('aria-describedby')
-        $(this.element).trigger(Event.HIDDEN)
+        $(this.element).trigger(this.constructor.Event.HIDDEN)
         this.cleanupTether()
 
         if (callback) {
@@ -317,47 +320,6 @@ const ToolTip = (($) => {
       return (this.tip = this.tip || $(this.config.template)[0])
     }
 
-    getAttachment(attachmentString) {
-      let attachmentArray      = attachmentString.split(' ')
-      let normalizedAttachment = {}
-
-      if (!attachmentArray.length) {
-        throw new Error('Tooltip requires attachment')
-      }
-
-      for (let attachment of attachmentArray) {
-        attachment = attachment.toUpperCase()
-
-        if (HorizontalMirror[attachment]) {
-          normalizedAttachment.horizontal = HorizontalMirror[attachment]
-        }
-
-        if (VerticalMirror[attachment]) {
-          normalizedAttachment.vertical = VerticalMirror[attachment]
-        }
-      }
-
-      if (!normalizedAttachment.horizontal &&
-         (!normalizedAttachment.vertical)) {
-        throw new Error('Tooltip requires valid attachment')
-      }
-
-      if (!normalizedAttachment.horizontal) {
-        normalizedAttachment.horizontal =
-          HorizontalDefault[normalizedAttachment.vertical.toUpperCase()]
-      }
-
-      if (!normalizedAttachment.vertical) {
-        normalizedAttachment.vertical =
-          VerticalDefault[normalizedAttachment.horizontal.toUpperCase()]
-      }
-
-      return [
-        normalizedAttachment.vertical,
-        normalizedAttachment.horizontal
-      ].join(' ')
-    }
-
     setContent() {
       let tip    = this.getTipElement()
       let title  = this.getTitle()
@@ -384,26 +346,24 @@ const ToolTip = (($) => {
       return title
     }
 
-    removeTetherClasses(i, css) {
-      return ((css.baseVal || css).match(
-        new RegExp(`(^|\\s)${CLASS_PREFIX}-\\S+`, 'g')) || []
-      ).join(' ')
-    }
-
     cleanupTether() {
-      if (this.tether) {
-        this.tether.destroy()
+      if (this._tether) {
+        this._tether.destroy()
 
         // clean up after tether's junk classes
         // remove after they fix issue
         // (https://github.com/HubSpot/tether/issues/36)
-        $(this.element).removeClass(this.removeTetherClasses)
-        $(this.tip).removeClass(this.removeTetherClasses)
+        $(this.element).removeClass(this._removeTetherClasses)
+        $(this.tip).removeClass(this._removeTetherClasses)
       }
     }
 
 
     // private
+
+    _getAttachment(placement) {
+      return AttachmentMap[placement.toUpperCase()]
+    }
 
     _setListeners() {
       let triggers = this.config.trigger.split(' ')
@@ -411,16 +371,18 @@ const ToolTip = (($) => {
       triggers.forEach((trigger) => {
         if (trigger === 'click') {
           $(this.element).on(
-            Event.CLICK,
+            this.constructor.Event.CLICK,
             this.config.selector,
             this.toggle.bind(this)
           )
 
         } else if (trigger !== Trigger.MANUAL) {
           let eventIn  = trigger == Trigger.HOVER ?
-            Event.MOUSEENTER : Event.FOCUSIN
+            this.constructor.Event.MOUSEENTER :
+            this.constructor.Event.FOCUSIN
           let eventOut = trigger == Trigger.HOVER ?
-            Event.MOUSELEAVE : Event.FOCUSOUT
+            this.constructor.Event.MOUSELEAVE :
+            this.constructor.Event.FOCUSOUT
 
           $(this.element)
             .on(
@@ -446,6 +408,12 @@ const ToolTip = (($) => {
       }
     }
 
+    _removeTetherClasses(i, css) {
+      return ((css.baseVal || css).match(
+        new RegExp(`(^|\\s)${CLASS_PREFIX}-\\S+`, 'g')) || []
+      ).join(' ')
+    }
+
     _fixTitle() {
       let titleType = typeof this.element.getAttribute('data-original-title')
       if (this.element.getAttribute('title') ||
@@ -459,14 +427,16 @@ const ToolTip = (($) => {
     }
 
     _enter(event, context) {
-      context = context || $(event.currentTarget).data(DATA_KEY)
+      let dataKey = this.constructor.DATA_KEY
+
+      context = context || $(event.currentTarget).data(dataKey)
 
       if (!context) {
         context = new this.constructor(
           event.currentTarget,
           this._getDelegateConfig()
         )
-        $(event.currentTarget).data(DATA_KEY, context)
+        $(event.currentTarget).data(dataKey, context)
       }
 
       if (event) {
@@ -498,19 +468,21 @@ const ToolTip = (($) => {
     }
 
     _leave(event, context) {
-      context = context || $(event.currentTarget).data(DATA_KEY)
+      let dataKey = this.constructor.DATA_KEY
+
+      context = context || $(event.currentTarget).data(dataKey)
 
       if (!context) {
         context = new this.constructor(
           event.currentTarget,
           this._getDelegateConfig()
         )
-        $(event.currentTarget).data(DATA_KEY, context)
+        $(event.currentTarget).data(dataKey, context)
       }
 
       if (event) {
         context._activeTrigger[
-          event.type == 'focusout' ? Triger.FOCUS : Trigger.HOVER
+          event.type == 'focusout' ? Trigger.FOCUS : Trigger.HOVER
         ] = false
       }
 
@@ -545,7 +517,12 @@ const ToolTip = (($) => {
     }
 
     _getConfig(config) {
-      config = $.extend({}, Default, $(this.element).data(), config)
+      config = $.extend(
+        {},
+        this.constructor.Default,
+        $(this.element).data(),
+        config
+      )
 
       if (config.delay && typeof config.delay === 'number') {
         config.delay = {
@@ -563,7 +540,7 @@ const ToolTip = (($) => {
       if (this.config) {
         for (let key in this.config) {
           let value = this.config[key]
-          if (Default[key] !== value) {
+          if (this.constructor.Default[key] !== value) {
             config[key] = value
           }
         }
