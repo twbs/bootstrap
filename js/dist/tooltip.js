@@ -71,7 +71,8 @@ var Tooltip = (function ($) {
 
   var Selector = {
     TOOLTIP: '.tooltip',
-    TOOLTIP_INNER: '.tooltip-inner' };
+    TOOLTIP_INNER: '.tooltip-inner'
+  };
 
   var TetherClass = {
     element: false,
@@ -339,12 +340,12 @@ var Tooltip = (function ($) {
 
         triggers.forEach(function (trigger) {
           if (trigger === 'click') {
-            $(_this4.element).on(_this4.constructor.Event.CLICK, _this4.config.selector, _this4.toggle.bind(_this4));
+            $(_this4.element).on(_this4.constructor.Event.CLICK, _this4.config.selector, $.proxy(_this4.toggle, _this4));
           } else if (trigger !== Trigger.MANUAL) {
             var eventIn = trigger == Trigger.HOVER ? _this4.constructor.Event.MOUSEENTER : _this4.constructor.Event.FOCUSIN;
             var eventOut = trigger == Trigger.HOVER ? _this4.constructor.Event.MOUSELEAVE : _this4.constructor.Event.FOCUSOUT;
 
-            $(_this4.element).on(eventIn, _this4.config.selector, _this4._enter.bind(_this4)).on(eventOut, _this4.config.selector, _this4._leave.bind(_this4));
+            $(_this4.element).on(eventIn, _this4.config.selector, $.proxy(_this4._enter, _this4)).on(eventOut, _this4.config.selector, $.proxy(_this4._leave, _this4));
           }
         });
 

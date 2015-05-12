@@ -139,7 +139,7 @@ const Carousel = (($) => {
 
       if (this._config.interval && !this._isPaused) {
         this._interval = setInterval(
-          this.next.bind(this), this._config.interval
+          $.proxy(this.next, this), this._config.interval
         )
       }
     }
@@ -177,14 +177,14 @@ const Carousel = (($) => {
     _addEventListeners() {
       if (this._config.keyboard) {
         $(this._element)
-          .on('keydown.bs.carousel', this._keydown.bind(this))
+          .on('keydown.bs.carousel', $.proxy(this._keydown, this))
       }
 
       if (this._config.pause == 'hover' &&
         !('ontouchstart' in document.documentElement)) {
         $(this._element)
-          .on('mouseenter.bs.carousel', this.pause.bind(this))
-          .on('mouseleave.bs.carousel', this.cycle.bind(this))
+          .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
+          .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
       }
     }
 

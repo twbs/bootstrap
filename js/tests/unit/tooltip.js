@@ -321,7 +321,7 @@ $(function () {
     var $target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"/>')
       .appendTo($container)
       .bootstrapTooltip({
-        placement: 'right',
+        placement: 'right'
       })
       .bootstrapTooltip('show')
 

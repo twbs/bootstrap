@@ -56,12 +56,25 @@ module.exports = function (grunt) {
       docs: 'docs/dist'
     },
 
+    // JS build configuration
+
+    lineremover: {
+      es6Import: {
+        files: {
+          '<%= concat.bootstrap.dest %>': '<%= concat.bootstrap.dest %>'
+        },
+        options: {
+          exclusionPattern: /^(import|export)/g
+        }
+      }
+    },
+
     babel: {
-      options: {
-        sourceMap: true,
-        modules: 'ignore'
-      },
-      dist: {
+      src: {
+        options: {
+          sourceMap: true,
+          modules: 'ignore'
+        },
         files: {
           'js/dist/util.js'      : 'js/src/util.js',
           'js/dist/alert.js'     : 'js/src/alert.js',
@@ -75,6 +88,14 @@ module.exports = function (grunt) {
           'js/dist/tooltip.js'   : 'js/src/tooltip.js',
           'js/dist/popover.js'   : 'js/src/popover.js'
         }
+      },
+      dist: {
+        options: {
+          modules: 'ignore'
+        },
+        files: {
+          '<%= concat.bootstrap.dest %>' : '<%= concat.bootstrap.dest %>'
+        }
       }
     },
 
@@ -86,9 +107,6 @@ module.exports = function (grunt) {
         src: ['Gruntfile.js', 'grunt/*.js']
       },
       core: {
-        src: 'js/*.js'
-      },
-      es6: {
         src: 'js/src/*.js'
       },
       test: {
@@ -102,24 +120,35 @@ module.exports = function (grunt) {
       }
     },
 
+    stamp: {
+      options: {
+        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>\n+function ($) {\n',
+        footer: '\n}(jQuery);'
+      },
+      bootstrap: {
+        files: {
+          src: '<%= concat.bootstrap.dest %>'
+        }
+      }
+    },
+
     concat: {
       options: {
-        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
         stripBanners: false
       },
       bootstrap: {
         src: [
-          'js/transition.js',
-          'js/alert.js',
-          'js/button.js',
-          'js/carousel.js',
-          'js/collapse.js',
-          'js/dropdown.js',
-          'js/modal.js',
-          'js/tooltip.js',
-          'js/popover.js',
-          'js/scrollspy.js',
-          'js/tab.js'
+          'js/src/util.js',
+          'js/src/alert.js',
+          'js/src/button.js',
+          'js/src/carousel.js',
+          'js/src/collapse.js',
+          'js/src/dropdown.js',
+          'js/src/modal.js',
+          'js/src/scrollspy.js',
+          'js/src/tab.js',
+          'js/src/tooltip.js',
+          'js/src/popover.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
@@ -153,6 +182,9 @@ module.exports = function (grunt) {
       },
       files: 'js/tests/index.html'
     },
+
+
+    // CSS build configuration
 
     scsslint: {
       scss: ['scss/*.scss', '!scss/_normalize.scss'],
@@ -401,7 +433,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
+  grunt.registerTask('dist-js', ['concat', 'lineremover', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
 
   grunt.registerTask('test-scss', ['scsslint:scss']);
 

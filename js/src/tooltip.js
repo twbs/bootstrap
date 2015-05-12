@@ -373,7 +373,7 @@ const Tooltip = (($) => {
           $(this.element).on(
             this.constructor.Event.CLICK,
             this.config.selector,
-            this.toggle.bind(this)
+            $.proxy(this.toggle, this)
           )
 
         } else if (trigger !== Trigger.MANUAL) {
@@ -388,12 +388,12 @@ const Tooltip = (($) => {
             .on(
               eventIn,
               this.config.selector,
-              this._enter.bind(this)
+              $.proxy(this._enter, this)
             )
             .on(
               eventOut,
               this.config.selector,
-              this._leave.bind(this)
+              $.proxy(this._leave, this)
             )
         }
       })

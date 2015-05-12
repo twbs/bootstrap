@@ -85,7 +85,7 @@ var Popover = (function ($) {
     }, {
       key: 'getTipElement',
       value: function getTipElement() {
-        return this.tip = this.tip || $(this.config['template'])[0];
+        return this.tip = this.tip || $(this.config.template)[0];
       }
     }, {
       key: 'setContent',

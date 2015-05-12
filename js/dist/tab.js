@@ -143,7 +143,7 @@ var Tab = (function ($) {
         var active = $(container).find(Selector.ACTIVE_CHILD)[0];
         var isTransitioning = callback && Util.supportsTransitionEnd() && (active && $(active).hasClass(ClassName.FADE) || !!$(container).find(Selector.FADE_CHILD)[0]);
 
-        var complete = this._transitionComplete.bind(this, element, active, isTransitioning, callback);
+        var complete = $.proxy(this._transitionComplete, this, element, active, isTransitioning, callback);
 
         if (active && isTransitioning) {
           $(active).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);

@@ -64,7 +64,7 @@ var ScrollSpy = (function ($) {
       this._activeTarget = null;
       this._scrollHeight = 0;
 
-      $(this._scrollElement).on(Event.SCROLL, this._process.bind(this));
+      $(this._scrollElement).on(Event.SCROLL, $.proxy(this._process, this));
 
       this.refresh();
       this._process();

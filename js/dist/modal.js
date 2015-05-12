@@ -114,7 +114,7 @@ var Modal = (function ($) {
         this._setEscapeEvent();
         this._setResizeEvent();
 
-        $(this._element).on(Event.DISMISS, Selector.DATA_DISMISS, this.hide.bind(this));
+        $(this._element).on(Event.DISMISS, Selector.DATA_DISMISS, $.proxy(this.hide, this));
 
         $(this._dialog).on(Event.MOUSEDOWN, function () {
           $(_this._element).one(Event.MOUSEUP, function (event) {
@@ -124,7 +124,7 @@ var Modal = (function ($) {
           });
         });
 
-        this._showBackdrop(this._showElement.bind(this, relatedTarget));
+        this._showBackdrop($.proxy(this._showElement, this, relatedTarget));
       }
     }, {
       key: 'hide',
@@ -155,7 +155,7 @@ var Modal = (function ($) {
 
         if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
 
-          $(this._element).one(Util.TRANSITION_END, this._hideModal.bind(this)).emulateTransitionEnd(TRANSITION_DURATION);
+          $(this._element).one(Util.TRANSITION_END, $.proxy(this._hideModal, this)).emulateTransitionEnd(TRANSITION_DURATION);
         } else {
           this._hideModal();
         }
@@ -232,7 +232,7 @@ var Modal = (function ($) {
       key: '_setResizeEvent',
       value: function _setResizeEvent() {
         if (this._isShown) {
-          $(window).on(Event.RESIZE, this._handleUpdate.bind(this));
+          $(window).on(Event.RESIZE, $.proxy(this._handleUpdate, this));
         } else {
           $(window).off(Event.RESIZE);
         }
