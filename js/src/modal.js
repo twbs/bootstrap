@@ -217,7 +217,7 @@ const Modal = (($) => {
 
       $(this._element).addClass(ClassName.IN)
 
-      this._enforceFocus()
+      if (this._config.focus) this._enforceFocus()
 
       let shownEvent = $.Event(Event.SHOWN, {
         relatedTarget: relatedTarget

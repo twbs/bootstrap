@@ -31,6 +31,7 @@ var Modal = (function ($) {
   var Default = {
     backdrop: true,
     keyboard: true,
+    focus: true,
     show: true
   };
 
@@ -206,14 +207,14 @@ var Modal = (function ($) {
 
         $(this._element).addClass(ClassName.IN);
 
-        this._enforceFocus();
+        if (this._config.focus) this._enforceFocus();
 
         var shownEvent = $.Event(Event.SHOWN, {
           relatedTarget: relatedTarget
         });
 
         var transitionComplete = function transitionComplete() {
-          _this2._element.focus();
+          if (_this2._config.focus) _this2._element.focus();
           $(_this2._element).trigger(shownEvent);
         };
 

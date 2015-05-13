@@ -28,7 +28,8 @@ var ScrollSpy = (function ($) {
 
   var Default = {
     offset: 10,
-    method: 'auto'
+    method: 'auto',
+    target: ''
   };
 
   var Event = {
@@ -45,8 +46,9 @@ var ScrollSpy = (function ($) {
   var Selector = {
     DATA_SPY: '[data-spy="scroll"]',
     ACTIVE: '.active',
+    LI: 'li',
     LI_DROPDOWN: 'li.dropdown',
-    LI: 'li'
+    NAV_ANCHORS: '.nav li > a'
   };
 
   var OffsetMethod = {
@@ -66,8 +68,8 @@ var ScrollSpy = (function ($) {
 
       this._element = element;
       this._scrollElement = element.tagName === 'BODY' ? window : element;
-      this._config = $.extend({}, Default, config);
-      this._selector = '' + (this._config.target || '') + ' .nav li > a';
+      this._config = this._getConfig(config);
+      this._selector = '' + this._config.target + ' ' + Selector.NAV_ANCHORS;
       this._offsets = [];
       this._targets = [];
       this._activeTarget = null;
@@ -137,10 +139,26 @@ var ScrollSpy = (function ($) {
         this._scrollHeight = null;
       }
     }, {
-      key: '_getScrollTop',
+      key: '_getConfig',
 
       // private
 
+      value: function _getConfig(config) {
+        config = $.extend({}, Default, config);
+
+        if (typeof config.target !== 'string') {
+          var id = $(config.target).attr('id');
+          if (!id) {
+            id = Util.getUID(NAME);
+            $(config.target).attr('id', id);
+          }
+          config.target = '#' + id;
+        }
+
+        return config;
+      }
+    }, {
+      key: '_getScrollTop',
       value: function _getScrollTop() {
         return this._scrollElement === window ? this._scrollElement.scrollY : this._scrollElement.scrollTop;
       }

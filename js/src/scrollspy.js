@@ -26,7 +26,8 @@ const ScrollSpy = (($) => {
 
   const Default = {
     offset : 10,
-    method : 'auto'
+    method : 'auto',
+    target : ''
   }
 
   const Event = {
@@ -43,8 +44,9 @@ const ScrollSpy = (($) => {
   const Selector = {
     DATA_SPY    : '[data-spy="scroll"]',
     ACTIVE      : '.active',
+    LI          : 'li',
     LI_DROPDOWN : 'li.dropdown',
-    LI          : 'li'
+    NAV_ANCHORS : '.nav li > a'
   }
 
   const OffsetMethod = {
@@ -64,8 +66,8 @@ const ScrollSpy = (($) => {
     constructor(element, config) {
       this._element       = element
       this._scrollElement = element.tagName === 'BODY' ? window : element
-      this._config        = $.extend({}, Default, config)
-      this._selector      = `${this._config.target || ''} .nav li > a`
+      this._config        = this._getConfig(config)
+      this._selector      = `${this._config.target} ${Selector.NAV_ANCHORS}`
       this._offsets       = []
       this._targets       = []
       this._activeTarget  = null
@@ -149,6 +151,21 @@ const ScrollSpy = (($) => {
 
 
     // private
+
+    _getConfig(config) {
+      config = $.extend({}, Default, config)
+
+      if (typeof config.target !== 'string') {
+        let id = $(config.target).attr('id')
+        if (!id) {
+          id = Util.getUID(NAME)
+          $(config.target).attr('id', id)
+        }
+        config.target = `#${id}`
+      }
+
+      return config
+    }
 
     _getScrollTop() {
       return this._scrollElement === window ?
