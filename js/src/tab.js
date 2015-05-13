@@ -72,10 +72,6 @@ const Tab = (($) => {
       return VERSION
     }
 
-    static get Default() {
-      return Default
-    }
-
 
     // public
 

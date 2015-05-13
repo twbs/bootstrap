@@ -30,6 +30,11 @@ const Collapse = (($) => {
     parent : null
   }
 
+  const DefaultType = {
+    toggle : 'boolean',
+    parent : '(string|null)'
+  }
+
   const Event = {
     SHOW           : `show${EVENT_KEY}`,
     SHOWN          : `shown${EVENT_KEY}`,
@@ -67,7 +72,7 @@ const Collapse = (($) => {
     constructor(element, config) {
       this._isTransitioning = false
       this._element         = element
-      this._config          = $.extend({}, Default, config)
+      this._config          = this._getConfig(config)
       this._triggerArray    = $.makeArray($(
         `[data-toggle="collapse"][href="#${element.id}"],` +
         `[data-toggle="collapse"][data-target="#${element.id}"]`
@@ -258,6 +263,13 @@ const Collapse = (($) => {
 
 
     // private
+
+    _getConfig(config) {
+      config = $.extend({}, Default, config)
+      config.toggle = !!config.toggle // coerce string values
+      Util.typeCheckConfig(NAME, config, DefaultType)
+      return config
+    }
 
     _getDimension() {
       let hasWidth = $(this._element).hasClass(Dimension.WIDTH)

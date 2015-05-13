@@ -33,6 +33,13 @@ const Modal = (($) => {
     show     : true
   }
 
+  const DefaultType = {
+    backdrop : '(boolean|string)',
+    keyboard : 'boolean',
+    focus    : 'boolean',
+    show     : 'boolean'
+  }
+
   const Event = {
     HIDE              : `hide${EVENT_KEY}`,
     HIDDEN            : `hidden${EVENT_KEY}`,
@@ -71,7 +78,7 @@ const Modal = (($) => {
   class Modal {
 
     constructor(element, config) {
-      this._config              = config
+      this._config              = this._getConfig(config)
       this._element             = element
       this._dialog              = $(element).find(Selector.DIALOG)[0]
       this._backdrop            = null
@@ -197,6 +204,12 @@ const Modal = (($) => {
 
 
     // private
+
+    _getConfig(config) {
+      config = $.extend({}, Default, config)
+      Util.typeCheckConfig(NAME, config, DefaultType)
+      return config
+    }
 
     _showElement(relatedTarget) {
       let transition = Util.supportsTransitionEnd() &&

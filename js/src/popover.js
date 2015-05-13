@@ -33,6 +33,10 @@ const Popover = (($) => {
               + '<div class="popover-content"></div></div>'
   })
 
+  const DefaultType = $.extend({}, Tooltip.DefaultType, {
+    content : '(string|function)'
+  })
+
   const ClassName = {
     FADE : 'fade',
     IN  : 'in'
@@ -91,6 +95,10 @@ const Popover = (($) => {
 
     static get EVENT_KEY() {
       return EVENT_KEY
+    }
+
+    static get DefaultType() {
+      return DefaultType
     }
 
 

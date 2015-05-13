@@ -24,6 +24,15 @@ var Util = (function ($) {
     transition: 'transitionend'
   };
 
+  // shoutout AngusCroll (https://goo.gl/pxwQGp)
+  function toType(obj) {
+    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+  }
+
+  function isElement(obj) {
+    return (obj[0] || obj).nodeType;
+  }
+
   function getSpecialTransitionEndEvent() {
     return {
       bindType: transition.end,
@@ -116,6 +125,21 @@ var Util = (function ($) {
 
     supportsTransitionEnd: function supportsTransitionEnd() {
       return !!transition;
+    },
+
+    typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
+
+      for (var property in configTypes) {
+        var expectedTypes = configTypes[property];
+        var value = config[property];
+        var valueType = undefined;
+
+        if (value && isElement(value)) valueType = 'element';else valueType = toType(value);
+
+        if (!new RegExp(expectedTypes).test(valueType)) {
+          throw new Error('' + componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
+        }
+      }
     }
 
   };

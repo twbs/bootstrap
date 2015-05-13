@@ -34,6 +34,10 @@ var Popover = (function ($) {
     template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-title"></h3>' + '<div class="popover-content"></div></div>'
   });
 
+  var DefaultType = $.extend({}, Tooltip.DefaultType, {
+    content: '(string|function)'
+  });
+
   var ClassName = {
     FADE: 'fade',
     IN: 'in'
@@ -147,6 +151,11 @@ var Popover = (function ($) {
       key: 'EVENT_KEY',
       get: function () {
         return EVENT_KEY;
+      }
+    }, {
+      key: 'DefaultType',
+      get: function () {
+        return DefaultType;
       }
     }, {
       key: '_jQueryInterface',

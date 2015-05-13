@@ -35,6 +35,13 @@ var Modal = (function ($) {
     show: true
   };
 
+  var DefaultType = {
+    backdrop: '(boolean|string)',
+    keyboard: 'boolean',
+    focus: 'boolean',
+    show: 'boolean'
+  };
+
   var Event = {
     HIDE: 'hide' + EVENT_KEY,
     HIDDEN: 'hidden' + EVENT_KEY,
@@ -73,7 +80,7 @@ var Modal = (function ($) {
     function Modal(element, config) {
       _classCallCheck(this, Modal);
 
-      this._config = config;
+      this._config = this._getConfig(config);
       this._element = element;
       this._dialog = $(element).find(Selector.DIALOG)[0];
       this._backdrop = null;
@@ -184,10 +191,17 @@ var Modal = (function ($) {
         this._scrollbarWidth = null;
       }
     }, {
-      key: '_showElement',
+      key: '_getConfig',
 
       // private
 
+      value: function _getConfig(config) {
+        config = $.extend({}, Default, config);
+        Util.typeCheckConfig(NAME, config, DefaultType);
+        return config;
+      }
+    }, {
+      key: '_showElement',
       value: function _showElement(relatedTarget) {
         var _this2 = this;
 

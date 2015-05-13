@@ -32,6 +32,11 @@ var Collapse = (function ($) {
     parent: null
   };
 
+  var DefaultType = {
+    toggle: 'boolean',
+    parent: '(string|null)'
+  };
+
   var Event = {
     SHOW: 'show' + EVENT_KEY,
     SHOWN: 'shown' + EVENT_KEY,
@@ -69,7 +74,7 @@ var Collapse = (function ($) {
 
       this._isTransitioning = false;
       this._element = element;
-      this._config = $.extend({}, Default, config);
+      this._config = this._getConfig(config);
       this._triggerArray = $.makeArray($('[data-toggle="collapse"][href="#' + element.id + '"],' + ('[data-toggle="collapse"][data-target="#' + element.id + '"]')));
 
       this._parent = this._config.parent ? this._getParent() : null;
@@ -230,10 +235,18 @@ var Collapse = (function ($) {
         this._isTransitioning = null;
       }
     }, {
-      key: '_getDimension',
+      key: '_getConfig',
 
       // private
 
+      value: function _getConfig(config) {
+        config = $.extend({}, Default, config);
+        config.toggle = !!config.toggle;
+        Util.typeCheckConfig(NAME, config, DefaultType);
+        return config;
+      }
+    }, {
+      key: '_getDimension',
       value: function _getDimension() {
         var hasWidth = $(this._element).hasClass(Dimension.WIDTH);
         return hasWidth ? Dimension.WIDTH : Dimension.HEIGHT;

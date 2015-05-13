@@ -32,6 +32,36 @@ $(function () {
     assert.strictEqual($carousel[0], $el[0], 'collection contains element')
   })
 
+  QUnit.test('should type check config options', function (assert) {
+    var message
+    var expectedMessage = 'CAROUSEL: Option "interval" provided type "string" but expected type "(number|boolean)".'
+    var config = {
+      interval: 'fat sux'
+    }
+
+    try {
+      $('<div/>').bootstrapCarousel(config)
+    } catch (e) {
+      message = e.message
+    }
+
+    assert.ok(message === expectedMessage, 'correct error message')
+
+    config = {
+      keyboard: $('div')
+    }
+    expectedMessage = 'CAROUSEL: Option "keyboard" provided type "element" but expected type "boolean".'
+
+    try {
+      $('<div/>').bootstrapCarousel(config)
+    } catch (e) {
+      message = e.message
+    }
+
+    assert.ok(message === expectedMessage, 'correct error message')
+  })
+
+
   QUnit.test('should not fire slid when slide is prevented', function (assert) {
     assert.expect(1)
     var done = assert.async()

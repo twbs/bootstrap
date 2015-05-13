@@ -37,7 +37,20 @@ var Tooltip = (function ($) {
     selector: false,
     placement: 'top',
     offset: '0 0',
-    constraints: null
+    constraints: []
+  };
+
+  var DefaultType = {
+    animation: 'boolean',
+    template: 'string',
+    title: '(string|function)',
+    trigger: 'string',
+    delay: '(number|object)',
+    html: 'boolean',
+    selector: '(string|boolean)',
+    placement: '(string|function)',
+    offset: 'string',
+    constraints: 'array'
   };
 
   var AttachmentMap = {
@@ -476,6 +489,8 @@ var Tooltip = (function ($) {
           };
         }
 
+        Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
+
         return config;
       }
     }, {
@@ -526,6 +541,11 @@ var Tooltip = (function ($) {
       key: 'EVENT_KEY',
       get: function () {
         return EVENT_KEY;
+      }
+    }, {
+      key: 'DefaultType',
+      get: function () {
+        return DefaultType;
       }
     }, {
       key: '_jQueryInterface',

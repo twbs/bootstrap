@@ -30,6 +30,12 @@ const ScrollSpy = (($) => {
     target : ''
   }
 
+  const DefaultType = {
+    offset : 'number',
+    method : 'string',
+    target : '(string|element)'
+  }
+
   const Event = {
     ACTIVATE      : `activate${EVENT_KEY}`,
     SCROLL        : `scroll${EVENT_KEY}`,
@@ -163,6 +169,8 @@ const ScrollSpy = (($) => {
         }
         config.target = `#${id}`
       }
+
+      Util.typeCheckConfig(NAME, config, DefaultType)
 
       return config
     }

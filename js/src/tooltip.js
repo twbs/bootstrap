@@ -37,7 +37,20 @@ const Tooltip = (($) => {
     selector    : false,
     placement   : 'top',
     offset      : '0 0',
-    constraints : null
+    constraints : []
+  }
+
+  const DefaultType = {
+    animation   : 'boolean',
+    template    : 'string',
+    title       : '(string|function)',
+    trigger     : 'string',
+    delay       : '(number|object)',
+    html        : 'boolean',
+    selector    : '(string|boolean)',
+    placement   : '(string|function)',
+    offset      : 'string',
+    constraints : 'array'
   }
 
   const AttachmentMap = {
@@ -139,6 +152,10 @@ const Tooltip = (($) => {
 
     static get EVENT_KEY() {
       return EVENT_KEY
+    }
+
+    static get DefaultType() {
+      return DefaultType
     }
 
 
@@ -543,6 +560,12 @@ const Tooltip = (($) => {
           hide : config.delay
         }
       }
+
+      Util.typeCheckConfig(
+        NAME,
+        config,
+        this.constructor.DefaultType
+      )
 
       return config
     }

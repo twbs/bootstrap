@@ -32,6 +32,12 @@ var ScrollSpy = (function ($) {
     target: ''
   };
 
+  var DefaultType = {
+    offset: 'number',
+    method: 'string',
+    target: '(string|element)'
+  };
+
   var Event = {
     ACTIVATE: 'activate' + EVENT_KEY,
     SCROLL: 'scroll' + EVENT_KEY,
@@ -154,6 +160,8 @@ var ScrollSpy = (function ($) {
           }
           config.target = '#' + id;
         }
+
+        Util.typeCheckConfig(NAME, config, DefaultType);
 
         return config;
       }
