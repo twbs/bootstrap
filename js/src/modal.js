@@ -29,6 +29,7 @@ const Modal = (($) => {
   const Default = {
     backdrop : true,
     keyboard : true,
+    focus    : true,
     show     : true
   }
 
@@ -223,7 +224,7 @@ const Modal = (($) => {
       })
 
       let transitionComplete = () => {
-        this._element.focus()
+        if (this._config.focus) this._element.focus()
         $(this._element).trigger(shownEvent)
       }
 
