@@ -20,6 +20,8 @@ const Modal = (($) => {
   const NAME                         = 'modal'
   const VERSION                      = '4.0.0'
   const DATA_KEY                     = 'bs.modal'
+  const EVENT_KEY                    = `.${DATA_KEY}`
+  const DATA_API_KEY                 = '.data-api'
   const JQUERY_NO_CONFLICT           = $.fn[NAME]
   const TRANSITION_DURATION          = 300
   const BACKDROP_TRANSITION_DURATION = 150
@@ -31,17 +33,17 @@ const Modal = (($) => {
   }
 
   const Event = {
-    HIDE      : 'hide.bs.modal',
-    HIDDEN    : 'hidden.bs.modal',
-    SHOW      : 'show.bs.modal',
-    SHOWN     : 'shown.bs.modal',
-    DISMISS   : 'click.dismiss.bs.modal',
-    KEYDOWN   : 'keydown.dismiss.bs.modal',
-    FOCUSIN   : 'focusin.bs.modal',
-    RESIZE    : 'resize.bs.modal',
-    CLICK     : 'click.bs.modal.data-api',
-    MOUSEDOWN : 'mousedown.dismiss.bs.modal',
-    MOUSEUP   : 'mouseup.dismiss.bs.modal'
+    HIDE              : `hide${EVENT_KEY}`,
+    HIDDEN            : `hidden${EVENT_KEY}`,
+    SHOW              : `show${EVENT_KEY}`,
+    SHOWN             : `shown${EVENT_KEY}`,
+    FOCUSIN           : `focusin${EVENT_KEY}`,
+    RESIZE            : `resize${EVENT_KEY}`,
+    CLICK_DISMISS     : `click.dismiss${EVENT_KEY}`,
+    KEYDOWN_DISMISS   : `keydown.dismiss${EVENT_KEY}`,
+    MOUSEUP_DISMISS   : `mouseup.dismiss${EVENT_KEY}`,
+    MOUSEDOWN_DISMISS : `mousedown.dismiss${EVENT_KEY}`,
+    CLICK_DATA_API    : `click${EVENT_KEY}${DATA_API_KEY}`
   }
 
   const ClassName = {
@@ -119,13 +121,13 @@ const Modal = (($) => {
       this._setResizeEvent()
 
       $(this._element).on(
-        Event.DISMISS,
+        Event.CLICK_DISMISS,
         Selector.DATA_DISMISS,
         $.proxy(this.hide, this)
       )
 
-      $(this._dialog).on(Event.MOUSEDOWN, () => {
-        $(this._element).one(Event.MOUSEUP, (event) => {
+      $(this._dialog).on(Event.MOUSEDOWN_DISMISS, () => {
+        $(this._element).one(Event.MOUSEUP_DISMISS, (event) => {
           if ($(event.target).is(this._element)) {
             that._ignoreBackdropClick = true
           }
@@ -159,8 +161,8 @@ const Modal = (($) => {
 
       $(this._element).removeClass(ClassName.IN)
 
-      $(this._element).off(Event.DISMISS)
-      $(this._dialog).off(Event.MOUSEDOWN)
+      $(this._element).off(Event.CLICK_DISMISS)
+      $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
       if (Util.supportsTransitionEnd() &&
          ($(this._element).hasClass(ClassName.FADE))) {
@@ -171,6 +173,25 @@ const Modal = (($) => {
       } else {
         this._hideModal()
       }
+    }
+
+    dispose() {
+      $.removeData(this._element, DATA_KEY)
+
+      $(window).off(EVENT_KEY)
+      $(document).off(EVENT_KEY)
+      $(this._element).off(EVENT_KEY)
+      $(this._backdrop).off(EVENT_KEY)
+
+      this._config              = null
+      this._element             = null
+      this._dialog              = null
+      this._backdrop            = null
+      this._isShown             = null
+      this._isBodyOverflowing   = null
+      this._ignoreBackdropClick = null
+      this._originalBodyPadding = null
+      this._scrollbarWidth      = null
     }
 
 
@@ -228,14 +249,14 @@ const Modal = (($) => {
 
     _setEscapeEvent() {
       if (this._isShown && this._config.keyboard) {
-        $(this._element).on(Event.KEYDOWN, (event) => {
+        $(this._element).on(Event.KEYDOWN_DISMISS, (event) => {
           if (event.which === 27) {
             this.hide()
           }
         })
 
       } else if (!this._isShown) {
-        $(this._element).off(Event.KEYDOWN)
+        $(this._element).off(Event.KEYDOWN_DISMISS)
       }
     }
 
@@ -280,7 +301,7 @@ const Modal = (($) => {
 
         $(this._backdrop).appendTo(this.$body)
 
-        $(this._element).on(Event.DISMISS, (event) => {
+        $(this._element).on(Event.CLICK_DISMISS, (event) => {
           if (this._ignoreBackdropClick) {
             this._ignoreBackdropClick = false
             return
@@ -440,7 +461,7 @@ const Modal = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  $(document).on(Event.CLICK, Selector.DATA_TOGGLE, function (event) {
+  $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     let target
     let selector = Util.getSelectorFromElement(this)
 

@@ -20,6 +20,7 @@ const Popover = (($) => {
   const NAME                = 'popover'
   const VERSION             = '4.0.0'
   const DATA_KEY            = 'bs.popover'
+  const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
 
   const Default = $.extend({}, Tooltip.Default, {
@@ -44,16 +45,16 @@ const Popover = (($) => {
   }
 
   const Event = {
-    HIDE       : 'hide.bs.popover',
-    HIDDEN     : 'hidden.bs.popover',
-    SHOW       : 'show.bs.popover',
-    SHOWN      : 'shown.bs.popover',
-    INSERTED   : 'inserted.bs.popover',
-    CLICK      : 'click.bs.popover',
-    FOCUSIN    : 'focusin.bs.popover',
-    FOCUSOUT   : 'focusout.bs.popover',
-    MOUSEENTER : 'mouseenter.bs.popover',
-    MOUSELEAVE : 'mouseleave.bs.popover'
+    HIDE       : `hide${EVENT_KEY}`,
+    HIDDEN     : `hidden${EVENT_KEY}`,
+    SHOW       : `show${EVENT_KEY}`,
+    SHOWN      : `shown${EVENT_KEY}`,
+    INSERTED   : `inserted${EVENT_KEY}`,
+    CLICK      : `click${EVENT_KEY}`,
+    FOCUSIN    : `focusin${EVENT_KEY}`,
+    FOCUSOUT   : `focusout${EVENT_KEY}`,
+    MOUSEENTER : `mouseenter${EVENT_KEY}`,
+    MOUSELEAVE : `mouseleave${EVENT_KEY}`
   }
 
 
@@ -86,6 +87,10 @@ const Popover = (($) => {
 
     static get Event() {
       return Event
+    }
+
+    static get EVENT_KEY() {
+      return EVENT_KEY
     }
 
 

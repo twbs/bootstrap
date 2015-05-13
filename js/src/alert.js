@@ -20,6 +20,8 @@ const Alert = (($) => {
   const NAME                = 'alert'
   const VERSION             = '4.0.0'
   const DATA_KEY            = 'bs.alert'
+  const EVENT_KEY           = `.${DATA_KEY}`
+  const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
 
@@ -28,9 +30,9 @@ const Alert = (($) => {
   }
 
   const Event = {
-    CLOSE  : 'close.bs.alert',
-    CLOSED : 'closed.bs.alert',
-    CLICK  : 'click.bs.alert.data-api'
+    CLOSE          : `close${EVENT_KEY}`,
+    CLOSED         : `closed${EVENT_KEY}`,
+    CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
   }
 
   const ClassName = {
@@ -73,6 +75,11 @@ const Alert = (($) => {
       }
 
       this._removeElement(rootElement)
+    }
+
+    dispose() {
+      $.removeData(this._element, DATA_KEY)
+      this._element = null
     }
 
 
@@ -159,7 +166,7 @@ const Alert = (($) => {
    */
 
   $(document).on(
-    Event.CLICK,
+    Event.CLICK_DATA_API,
     Selector.DISMISS,
     Alert._handleDismiss(new Alert())
   )

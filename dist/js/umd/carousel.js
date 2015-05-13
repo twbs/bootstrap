@@ -39,6 +39,8 @@
     var NAME = 'carousel';
     var VERSION = '4.0.0';
     var DATA_KEY = 'bs.carousel';
+    var EVENT_KEY = '.' + DATA_KEY;
+    var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $.fn[NAME];
     var TRANSITION_DURATION = 600;
 
@@ -56,10 +58,13 @@
     };
 
     var Event = {
-      SLIDE: 'slide.bs.carousel',
-      SLID: 'slid.bs.carousel',
-      CLICK: 'click.bs.carousel.data-api',
-      LOAD: 'load'
+      SLIDE: 'slide' + EVENT_KEY,
+      SLID: 'slid' + EVENT_KEY,
+      KEYDOWN: 'keydown' + EVENT_KEY,
+      MOUSEENTER: 'mouseenter' + EVENT_KEY,
+      MOUSELEAVE: 'mouseleave' + EVENT_KEY,
+      LOAD_DATA_API: 'load' + EVENT_KEY + '' + DATA_API_KEY,
+      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
     };
 
     var ClassName = {
@@ -184,17 +189,32 @@
           this._slide(direction, this._items[index]);
         }
       }, {
+        key: 'dispose',
+        value: function dispose() {
+          $(this._element).off(EVENT_KEY);
+          $.removeData(this._element, DATA_KEY);
+
+          this._items = null;
+          this._config = null;
+          this._element = null;
+          this._interval = null;
+          this._isPaused = null;
+          this._isSliding = null;
+          this._activeElement = null;
+          this._indicatorsElement = null;
+        }
+      }, {
         key: '_addEventListeners',
 
         // private
 
         value: function _addEventListeners() {
           if (this._config.keyboard) {
-            $(this._element).on('keydown.bs.carousel', $.proxy(this._keydown, this));
+            $(this._element).on(Event.KEYDOWN, $.proxy(this._keydown, this));
           }
 
           if (this._config.pause == 'hover' && !('ontouchstart' in document.documentElement)) {
-            $(this._element).on('mouseenter.bs.carousel', $.proxy(this.pause, this)).on('mouseleave.bs.carousel', $.proxy(this.cycle, this));
+            $(this._element).on(Event.MOUSEENTER, $.proxy(this.pause, this)).on(Event.MOUSELEAVE, $.proxy(this.cycle, this));
           }
         }
       }, {
@@ -421,9 +441,9 @@
      * ------------------------------------------------------------------------
      */
 
-    $(document).on(Event.CLICK, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
+    $(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
 
-    $(window).on(Event.LOAD, function () {
+    $(window).on(Event.LOAD_DATA_API, function () {
       $(Selector.DATA_RIDE).each(function () {
         var $carousel = $(this);
         Carousel._jQueryInterface.call($carousel, $carousel.data());

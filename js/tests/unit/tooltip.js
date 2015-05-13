@@ -250,7 +250,7 @@ $(function () {
     assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip has extra click.foo event')
 
     $tooltip.bootstrapTooltip('show')
-    $tooltip.bootstrapTooltip('destroy')
+    $tooltip.bootstrapTooltip('dispose')
 
     assert.ok(!$tooltip.hasClass('in'), 'tooltip is hidden')
     assert.ok(!$._data($tooltip[0], 'bs.tooltip'), 'tooltip does not have data')

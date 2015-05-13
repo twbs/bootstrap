@@ -20,6 +20,8 @@ const ScrollSpy = (($) => {
   const NAME               = 'scrollspy'
   const VERSION            = '4.0.0'
   const DATA_KEY           = 'bs.scrollspy'
+  const EVENT_KEY          = `.${DATA_KEY}`
+  const DATA_API_KEY       = '.data-api'
   const JQUERY_NO_CONFLICT = $.fn[NAME]
 
   const Default = {
@@ -27,9 +29,9 @@ const ScrollSpy = (($) => {
   }
 
   const Event = {
-    ACTIVATE : 'activate.bs.scrollspy',
-    SCROLL   : 'scroll.bs.scrollspy',
-    LOAD     : 'load.bs.scrollspy.data-api'
+    ACTIVATE      : `activate${EVENT_KEY}`,
+    SCROLL        : `scroll${EVENT_KEY}`,
+    LOAD_DATA_API : `load${EVENT_KEY}${DATA_API_KEY}`
   }
 
   const ClassName = {
@@ -54,6 +56,7 @@ const ScrollSpy = (($) => {
   class ScrollSpy {
 
     constructor(element, config) {
+      this._element       = element
       this._scrollElement = element.tagName === 'BODY' ? window : element
       this._config        = $.extend({}, Default, config)
       this._selector      = `${this._config.target || ''} .nav li > a`
@@ -121,6 +124,20 @@ const ScrollSpy = (($) => {
           this._offsets.push(item[0])
           this._targets.push(item[1])
         })
+    }
+
+    dispose() {
+      $.removeData(this._element, DATA_KEY)
+      $(this._scrollElement).off(EVENT_KEY)
+
+      this._element       = null
+      this._scrollElement = null
+      this._config        = null
+      this._selector      = null
+      this._offsets       = null
+      this._targets       = null
+      this._activeTarget  = null
+      this._scrollHeight  = null
     }
 
 
@@ -244,7 +261,7 @@ const ScrollSpy = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  $(window).on(Event.LOAD, function () {
+  $(window).on(Event.LOAD_DATA_API, function () {
     let scrollSpys = $.makeArray($(Selector.DATA_SPY))
 
     for (let i = scrollSpys.length; i--;) {

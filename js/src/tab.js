@@ -20,15 +20,17 @@ const Tab = (($) => {
   const NAME                = 'tab'
   const VERSION             = '4.0.0'
   const DATA_KEY            = 'bs.tab'
+  const EVENT_KEY           = `.${DATA_KEY}`
+  const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
 
   const Event = {
-    HIDE   : 'hide.bs.tab',
-    HIDDEN : 'hidden.bs.tab',
-    SHOW   : 'show.bs.tab',
-    SHOWN  : 'shown.bs.tab',
-    CLICK  : 'click.bs.tab.data-api'
+    HIDE           : `hide${EVENT_KEY}`,
+    HIDDEN         : `hidden${EVENT_KEY}`,
+    SHOW           : `show${EVENT_KEY}`,
+    SHOWN          : `shown${EVENT_KEY}`,
+    CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
   }
 
   const ClassName = {
@@ -146,6 +148,11 @@ const Tab = (($) => {
       }
     }
 
+    dispose() {
+      $.removeClass(this._element, DATA_KEY)
+      this._element = null
+    }
+
 
     // private
 
@@ -258,7 +265,7 @@ const Tab = (($) => {
    */
 
   $(document)
-    .on(Event.CLICK, Selector.DATA_TOGGLE, function (event) {
+    .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault()
     Tab._jQueryInterface.call($(this), 'show')
   })

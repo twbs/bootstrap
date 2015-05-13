@@ -39,6 +39,8 @@
     var NAME = 'scrollspy';
     var VERSION = '4.0.0';
     var DATA_KEY = 'bs.scrollspy';
+    var EVENT_KEY = '.' + DATA_KEY;
+    var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $.fn[NAME];
 
     var Default = {
@@ -46,9 +48,9 @@
     };
 
     var Event = {
-      ACTIVATE: 'activate.bs.scrollspy',
-      SCROLL: 'scroll.bs.scrollspy',
-      LOAD: 'load.bs.scrollspy.data-api'
+      ACTIVATE: 'activate' + EVENT_KEY,
+      SCROLL: 'scroll' + EVENT_KEY,
+      LOAD_DATA_API: 'load' + EVENT_KEY + '' + DATA_API_KEY
     };
 
     var ClassName = {
@@ -73,6 +75,7 @@
       function ScrollSpy(element, config) {
         _classCallCheck(this, ScrollSpy);
 
+        this._element = element;
         this._scrollElement = element.tagName === 'BODY' ? window : element;
         this._config = $.extend({}, Default, config);
         this._selector = '' + (this._config.target || '') + ' .nav li > a';
@@ -130,6 +133,21 @@
             _this._offsets.push(item[0]);
             _this._targets.push(item[1]);
           });
+        }
+      }, {
+        key: 'dispose',
+        value: function dispose() {
+          $.removeData(this._element, DATA_KEY);
+          $(this._scrollElement).off(EVENT_KEY);
+
+          this._element = null;
+          this._scrollElement = null;
+          this._config = null;
+          this._selector = null;
+          this._offsets = null;
+          this._targets = null;
+          this._activeTarget = null;
+          this._scrollHeight = null;
         }
       }, {
         key: '_getScrollTop',
@@ -257,7 +275,7 @@
      * ------------------------------------------------------------------------
      */
 
-    $(window).on(Event.LOAD, function () {
+    $(window).on(Event.LOAD_DATA_API, function () {
       var scrollSpys = $.makeArray($(Selector.DATA_SPY));
 
       for (var i = scrollSpys.length; i--;) {

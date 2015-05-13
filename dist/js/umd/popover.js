@@ -41,6 +41,7 @@
     var NAME = 'popover';
     var VERSION = '4.0.0';
     var DATA_KEY = 'bs.popover';
+    var EVENT_KEY = '.' + DATA_KEY;
     var JQUERY_NO_CONFLICT = $.fn[NAME];
 
     var Default = $.extend({}, _Tooltip2.Default, {
@@ -62,16 +63,16 @@
     };
 
     var Event = {
-      HIDE: 'hide.bs.popover',
-      HIDDEN: 'hidden.bs.popover',
-      SHOW: 'show.bs.popover',
-      SHOWN: 'shown.bs.popover',
-      INSERTED: 'inserted.bs.popover',
-      CLICK: 'click.bs.popover',
-      FOCUSIN: 'focusin.bs.popover',
-      FOCUSOUT: 'focusout.bs.popover',
-      MOUSEENTER: 'mouseenter.bs.popover',
-      MOUSELEAVE: 'mouseleave.bs.popover'
+      HIDE: 'hide' + EVENT_KEY,
+      HIDDEN: 'hidden' + EVENT_KEY,
+      SHOW: 'show' + EVENT_KEY,
+      SHOWN: 'shown' + EVENT_KEY,
+      INSERTED: 'inserted' + EVENT_KEY,
+      CLICK: 'click' + EVENT_KEY,
+      FOCUSIN: 'focusin' + EVENT_KEY,
+      FOCUSOUT: 'focusout' + EVENT_KEY,
+      MOUSEENTER: 'mouseenter' + EVENT_KEY,
+      MOUSELEAVE: 'mouseleave' + EVENT_KEY
     };
 
     /**
@@ -158,6 +159,11 @@
         key: 'Event',
         get: function () {
           return Event;
+        }
+      }, {
+        key: 'EVENT_KEY',
+        get: function () {
+          return EVENT_KEY;
         }
       }, {
         key: '_jQueryInterface',

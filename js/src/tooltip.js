@@ -20,6 +20,7 @@ const Tooltip = (($) => {
   const NAME                = 'tooltip'
   const VERSION             = '4.0.0'
   const DATA_KEY            = 'bs.tooltip'
+  const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
   const CLASS_PREFIX        = 'bs-tether'
@@ -52,16 +53,16 @@ const Tooltip = (($) => {
   }
 
   const Event = {
-    HIDE       : 'hide.bs.tooltip',
-    HIDDEN     : 'hidden.bs.tooltip',
-    SHOW       : 'show.bs.tooltip',
-    SHOWN      : 'shown.bs.tooltip',
-    INSERTED   : 'inserted.bs.tooltip',
-    CLICK      : 'click.bs.tooltip',
-    FOCUSIN    : 'focusin.bs.tooltip',
-    FOCUSOUT   : 'focusout.bs.tooltip',
-    MOUSEENTER : 'mouseenter.bs.tooltip',
-    MOUSELEAVE : 'mouseleave.bs.tooltip'
+    HIDE       : `hide${EVENT_KEY}`,
+    HIDDEN     : `hidden${EVENT_KEY}`,
+    SHOW       : `show${EVENT_KEY}`,
+    SHOWN      : `shown${EVENT_KEY}`,
+    INSERTED   : `inserted${EVENT_KEY}`,
+    CLICK      : `click${EVENT_KEY}`,
+    FOCUSIN    : `focusin${EVENT_KEY}`,
+    FOCUSOUT   : `focusout${EVENT_KEY}`,
+    MOUSEENTER : `mouseenter${EVENT_KEY}`,
+    MOUSELEAVE : `mouseleave${EVENT_KEY}`
   }
 
   const ClassName = {
@@ -136,6 +137,9 @@ const Tooltip = (($) => {
       return Event
     }
 
+    static get EVENT_KEY() {
+      return EVENT_KEY
+    }
 
 
     // public
@@ -182,19 +186,28 @@ const Tooltip = (($) => {
       }
     }
 
-    destroy() {
+    dispose() {
       clearTimeout(this._timeout)
-      this.hide(() => {
-        $(this.element)
-          .off(`.${this.constructor.NAME}`)
-          .removeData(this.constructor.DATA_KEY)
 
-        if (this.tip) {
-          $(this.tip).detach()
-        }
+      this.cleanupTether()
 
-        this.tip = null
-      })
+      $.removeData(this.element, this.constructor.DATA_KEY)
+
+      $(this.element).off(this.constructor.EVENT_KEY)
+
+      if (this.tip) {
+        $(this.tip).remove()
+      }
+
+      this._isEnabled      = null
+      this._timeout        = null
+      this._hoverState     = null
+      this._activeTrigger  = null
+      this._tether         = null
+
+      this.element = null
+      this.config  = null
+      this.tip     = null
     }
 
     show() {

@@ -22,6 +22,7 @@ var Tooltip = (function ($) {
   var NAME = 'tooltip';
   var VERSION = '4.0.0';
   var DATA_KEY = 'bs.tooltip';
+  var EVENT_KEY = '.' + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
   var TRANSITION_DURATION = 150;
   var CLASS_PREFIX = 'bs-tether';
@@ -52,16 +53,16 @@ var Tooltip = (function ($) {
   };
 
   var Event = {
-    HIDE: 'hide.bs.tooltip',
-    HIDDEN: 'hidden.bs.tooltip',
-    SHOW: 'show.bs.tooltip',
-    SHOWN: 'shown.bs.tooltip',
-    INSERTED: 'inserted.bs.tooltip',
-    CLICK: 'click.bs.tooltip',
-    FOCUSIN: 'focusin.bs.tooltip',
-    FOCUSOUT: 'focusout.bs.tooltip',
-    MOUSEENTER: 'mouseenter.bs.tooltip',
-    MOUSELEAVE: 'mouseleave.bs.tooltip'
+    HIDE: 'hide' + EVENT_KEY,
+    HIDDEN: 'hidden' + EVENT_KEY,
+    SHOW: 'show' + EVENT_KEY,
+    SHOWN: 'shown' + EVENT_KEY,
+    INSERTED: 'inserted' + EVENT_KEY,
+    CLICK: 'click' + EVENT_KEY,
+    FOCUSIN: 'focusin' + EVENT_KEY,
+    FOCUSOUT: 'focusout' + EVENT_KEY,
+    MOUSEENTER: 'mouseenter' + EVENT_KEY,
+    MOUSELEAVE: 'mouseleave' + EVENT_KEY
   };
 
   var ClassName = {
@@ -155,25 +156,34 @@ var Tooltip = (function ($) {
         }
       }
     }, {
-      key: 'destroy',
-      value: function destroy() {
-        var _this = this;
-
+      key: 'dispose',
+      value: function dispose() {
         clearTimeout(this._timeout);
-        this.hide(function () {
-          $(_this.element).off('.' + _this.constructor.NAME).removeData(_this.constructor.DATA_KEY);
 
-          if (_this.tip) {
-            $(_this.tip).detach();
-          }
+        this.cleanupTether();
 
-          _this.tip = null;
-        });
+        $.removeData(this.element, this.constructor.DATA_KEY);
+
+        $(this.element).off(this.constructor.EVENT_KEY);
+
+        if (this.tip) {
+          $(this.tip).remove();
+        }
+
+        this._isEnabled = null;
+        this._timeout = null;
+        this._hoverState = null;
+        this._activeTrigger = null;
+        this._tether = null;
+
+        this.element = null;
+        this.config = null;
+        this.tip = null;
       }
     }, {
       key: 'show',
       value: function show() {
-        var _this2 = this;
+        var _this = this;
 
         var showEvent = $.Event(this.constructor.Event.SHOW);
 
@@ -222,13 +232,13 @@ var Tooltip = (function ($) {
           $(tip).addClass(ClassName.IN);
 
           var complete = function complete() {
-            var prevHoverState = _this2._hoverState;
-            _this2._hoverState = null;
+            var prevHoverState = _this._hoverState;
+            _this._hoverState = null;
 
-            $(_this2.element).trigger(_this2.constructor.Event.SHOWN);
+            $(_this.element).trigger(_this.constructor.Event.SHOWN);
 
             if (prevHoverState === HoverState.OUT) {
-              _this2._leave(null, _this2);
+              _this._leave(null, _this);
             }
           };
 
@@ -238,18 +248,18 @@ var Tooltip = (function ($) {
     }, {
       key: 'hide',
       value: function hide(callback) {
-        var _this3 = this;
+        var _this2 = this;
 
         var tip = this.getTipElement();
         var hideEvent = $.Event(this.constructor.Event.HIDE);
         var complete = function complete() {
-          if (_this3._hoverState !== HoverState.IN && tip.parentNode) {
+          if (_this2._hoverState !== HoverState.IN && tip.parentNode) {
             tip.parentNode.removeChild(tip);
           }
 
-          _this3.element.removeAttribute('aria-describedby');
-          $(_this3.element).trigger(_this3.constructor.Event.HIDDEN);
-          _this3.cleanupTether();
+          _this2.element.removeAttribute('aria-describedby');
+          $(_this2.element).trigger(_this2.constructor.Event.HIDDEN);
+          _this2.cleanupTether();
 
           if (callback) {
             callback();
@@ -334,18 +344,18 @@ var Tooltip = (function ($) {
     }, {
       key: '_setListeners',
       value: function _setListeners() {
-        var _this4 = this;
+        var _this3 = this;
 
         var triggers = this.config.trigger.split(' ');
 
         triggers.forEach(function (trigger) {
           if (trigger === 'click') {
-            $(_this4.element).on(_this4.constructor.Event.CLICK, _this4.config.selector, $.proxy(_this4.toggle, _this4));
+            $(_this3.element).on(_this3.constructor.Event.CLICK, _this3.config.selector, $.proxy(_this3.toggle, _this3));
           } else if (trigger !== Trigger.MANUAL) {
-            var eventIn = trigger == Trigger.HOVER ? _this4.constructor.Event.MOUSEENTER : _this4.constructor.Event.FOCUSIN;
-            var eventOut = trigger == Trigger.HOVER ? _this4.constructor.Event.MOUSELEAVE : _this4.constructor.Event.FOCUSOUT;
+            var eventIn = trigger == Trigger.HOVER ? _this3.constructor.Event.MOUSEENTER : _this3.constructor.Event.FOCUSIN;
+            var eventOut = trigger == Trigger.HOVER ? _this3.constructor.Event.MOUSELEAVE : _this3.constructor.Event.FOCUSOUT;
 
-            $(_this4.element).on(eventIn, _this4.config.selector, $.proxy(_this4._enter, _this4)).on(eventOut, _this4.config.selector, $.proxy(_this4._leave, _this4));
+            $(_this3.element).on(eventIn, _this3.config.selector, $.proxy(_this3._enter, _this3)).on(eventOut, _this3.config.selector, $.proxy(_this3._leave, _this3));
           }
         });
 
@@ -511,6 +521,11 @@ var Tooltip = (function ($) {
       key: 'Event',
       get: function () {
         return Event;
+      }
+    }, {
+      key: 'EVENT_KEY',
+      get: function () {
+        return EVENT_KEY;
       }
     }, {
       key: '_jQueryInterface',

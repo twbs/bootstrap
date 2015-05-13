@@ -179,7 +179,7 @@ $(function () {
     assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event')
 
     $popover.bootstrapPopover('show')
-    $popover.bootstrapPopover('destroy')
+    $popover.bootstrapPopover('dispose')
 
     assert.ok(!$popover.hasClass('in'), 'popover is hidden')
     assert.ok(!$popover.data('popover'), 'popover does not have data')
@@ -231,7 +231,7 @@ $(function () {
             $div
               .one('shown.bs.popover', function () {
                 $('.content-with-handler .btn').trigger('click')
-                $div.bootstrapPopover('destroy')
+                $div.bootstrapPopover('dispose')
                 assert.ok(handlerCalled, 'content\'s event handler still present')
                 done()
               })

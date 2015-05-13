@@ -22,6 +22,8 @@ var Alert = (function ($) {
   var NAME = 'alert';
   var VERSION = '4.0.0';
   var DATA_KEY = 'bs.alert';
+  var EVENT_KEY = '.' + DATA_KEY;
+  var DATA_API_KEY = '.data-api';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
   var TRANSITION_DURATION = 150;
 
@@ -30,9 +32,9 @@ var Alert = (function ($) {
   };
 
   var Event = {
-    CLOSE: 'close.bs.alert',
-    CLOSED: 'closed.bs.alert',
-    CLICK: 'click.bs.alert.data-api'
+    CLOSE: 'close' + EVENT_KEY,
+    CLOSED: 'closed' + EVENT_KEY,
+    CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
   };
 
   var ClassName = {
@@ -70,6 +72,12 @@ var Alert = (function ($) {
         }
 
         this._removeElement(rootElement);
+      }
+    }, {
+      key: 'dispose',
+      value: function dispose() {
+        $.removeData(this._element, DATA_KEY);
+        this._element = null;
       }
     }, {
       key: '_getRootElement',
@@ -164,7 +172,7 @@ var Alert = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  $(document).on(Event.CLICK, Selector.DISMISS, Alert._handleDismiss(new Alert()));
+  $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
 
   /**
    * ------------------------------------------------------------------------

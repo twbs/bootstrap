@@ -17,6 +17,8 @@ const Button = (($) => {
   const NAME                = 'button'
   const VERSION             = '4.0.0'
   const DATA_KEY            = 'bs.button'
+  const EVENT_KEY           = `.${DATA_KEY}`
+  const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
 
@@ -35,8 +37,9 @@ const Button = (($) => {
   }
 
   const Event = {
-    CLICK      : 'click.bs.button.data-api',
-    FOCUS_BLUR : 'focus.bs.button.data-api blur.bs.button.data-api'
+    CLICK_DATA_API      : `click${EVENT_KEY}${DATA_API_KEY}`,
+    FOCUS_BLUR_DATA_API : `focus${EVENT_KEY}${DATA_API_KEY} `
+                        + `blur${EVENT_KEY}${DATA_API_KEY}`
   }
 
 
@@ -101,6 +104,11 @@ const Button = (($) => {
       }
     }
 
+    dispose() {
+      $.removeData(this._element, DATA_KEY)
+      this._element = null
+    }
+
 
     // static
 
@@ -129,7 +137,7 @@ const Button = (($) => {
    */
 
   $(document)
-    .on(Event.CLICK, Selector.DATA_TOGGLE_CARROT, function (event) {
+    .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
       event.preventDefault()
 
       let button = event.target
@@ -140,7 +148,7 @@ const Button = (($) => {
 
       Button._jQueryInterface.call($(button), 'toggle')
     })
-    .on(Event.FOCUS_BLUR, Selector.DATA_TOGGLE_CARROT, function (event) {
+    .on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
       var button = $(event.target).closest(Selector.BUTTON)[0]
       $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type))
     })

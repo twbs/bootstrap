@@ -39,15 +39,17 @@
     var NAME = 'tab';
     var VERSION = '4.0.0';
     var DATA_KEY = 'bs.tab';
+    var EVENT_KEY = '.' + DATA_KEY;
+    var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $.fn[NAME];
     var TRANSITION_DURATION = 150;
 
     var Event = {
-      HIDE: 'hide.bs.tab',
-      HIDDEN: 'hidden.bs.tab',
-      SHOW: 'show.bs.tab',
-      SHOWN: 'shown.bs.tab',
-      CLICK: 'click.bs.tab.data-api'
+      HIDE: 'hide' + EVENT_KEY,
+      HIDDEN: 'hidden' + EVENT_KEY,
+      SHOW: 'show' + EVENT_KEY,
+      SHOWN: 'shown' + EVENT_KEY,
+      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
     };
 
     var ClassName = {
@@ -150,6 +152,12 @@
           } else {
             complete();
           }
+        }
+      }, {
+        key: 'dispose',
+        value: function dispose() {
+          $.removeClass(this._element, DATA_KEY);
+          this._element = null;
         }
       }, {
         key: '_activate',
@@ -264,7 +272,7 @@
      * ------------------------------------------------------------------------
      */
 
-    $(document).on(Event.CLICK, Selector.DATA_TOGGLE, function (event) {
+    $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
       event.preventDefault();
       Tab._jQueryInterface.call($(this), 'show');
     });

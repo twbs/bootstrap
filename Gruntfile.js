@@ -70,7 +70,7 @@ module.exports = function (grunt) {
     },
 
     babel: {
-      src: {
+      dev: {
         options: {
           sourceMap: true,
           modules: 'ignore'
@@ -352,7 +352,7 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jscs.core.src %>',
-        tasks: ['qunit', 'concat']
+        tasks: ['babel:dev']
       },
       test: {
         files: '<%= jscs.test.src %>',

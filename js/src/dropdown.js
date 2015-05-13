@@ -20,16 +20,18 @@ const Dropdown = (($) => {
   const NAME                = 'dropdown'
   const VERSION             = '4.0.0'
   const DATA_KEY            = 'bs.dropdown'
+  const EVENT_KEY           = `.${DATA_KEY}`
+  const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
 
   const Event = {
-    HIDE       : 'hide.bs.dropdown',
-    HIDDEN     : 'hidden.bs.dropdown',
-    SHOW       : 'show.bs.dropdown',
-    SHOWN      : 'shown.bs.dropdown',
-    CLICK      : 'click.bs.dropdown',
-    KEYDOWN    : 'keydown.bs.dropdown.data-api',
-    CLICK_DATA : 'click.bs.dropdown.data-api'
+    HIDE             : `hide${EVENT_KEY}`,
+    HIDDEN           : `hidden${EVENT_KEY}`,
+    SHOW             : `show${EVENT_KEY}`,
+    SHOWN            : `shown${EVENT_KEY}`,
+    CLICK            : `click${EVENT_KEY}`,
+    CLICK_DATA_API   : `click${EVENT_KEY}${DATA_API_KEY}`,
+    KEYDOWN_DATA_API : `keydown${EVENT_KEY}${DATA_API_KEY}`
   }
 
   const ClassName = {
@@ -59,7 +61,9 @@ const Dropdown = (($) => {
   class Dropdown {
 
     constructor(element) {
-      $(element).on(Event.CLICK, this.toggle)
+      this._element = element
+
+      this._addEventListeners()
     }
 
 
@@ -112,6 +116,19 @@ const Dropdown = (($) => {
       $(parent).trigger(Event.SHOWN, relatedTarget)
 
       return false
+    }
+
+    dispose() {
+      $.removeData(this._element, DATA_KEY)
+      $(this._element).off(EVENT_KEY)
+      this._element = null
+    }
+
+
+    // private
+
+    _addEventListeners() {
+      $(this._element).on(Event.CLICK, this.toggle)
     }
 
 
@@ -239,12 +256,12 @@ const Dropdown = (($) => {
    */
 
   $(document)
-    .on(Event.KEYDOWN, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
-    .on(Event.KEYDOWN, Selector.ROLE_MENU,    Dropdown._dataApiKeydownHandler)
-    .on(Event.KEYDOWN, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
-    .on(Event.CLICK_DATA, Dropdown._clearMenus)
-    .on(Event.CLICK_DATA, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
-    .on(Event.CLICK_DATA, Selector.FORM_CHILD,  function (e) {
+    .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
+    .on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU,    Dropdown._dataApiKeydownHandler)
+    .on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
+    .on(Event.CLICK_DATA_API, Dropdown._clearMenus)
+    .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
+    .on(Event.CLICK_DATA_API, Selector.FORM_CHILD,  function (e) {
        e.stopPropagation()
      })
 

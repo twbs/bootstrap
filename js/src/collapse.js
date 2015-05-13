@@ -20,6 +20,8 @@ const Collapse = (($) => {
   const NAME                = 'collapse'
   const VERSION             = '4.0.0'
   const DATA_KEY            = 'bs.collapse'
+  const EVENT_KEY           = `.${DATA_KEY}`
+  const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 600
 
@@ -29,11 +31,11 @@ const Collapse = (($) => {
   }
 
   const Event = {
-    SHOW   : 'show.bs.collapse',
-    SHOWN  : 'shown.bs.collapse',
-    HIDE   : 'hide.bs.collapse',
-    HIDDEN : 'hidden.bs.collapse',
-    CLICK  : 'click.bs.collapse.data-api'
+    SHOW           : `show${EVENT_KEY}`,
+    SHOWN          : `shown${EVENT_KEY}`,
+    HIDE           : `hide${EVENT_KEY}`,
+    HIDDEN         : `hidden${EVENT_KEY}`,
+    CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
   }
 
   const ClassName = {
@@ -110,8 +112,8 @@ const Collapse = (($) => {
         return
       }
 
-      let activesData
       let actives
+      let activesData
 
       if (this._parent) {
         actives = $.makeArray($(Selector.ACTIVES))
@@ -244,6 +246,16 @@ const Collapse = (($) => {
       this._isTransitioning = isTransitioning
     }
 
+    dispose() {
+      $.removeData(this._element, DATA_KEY)
+
+      this._config          = null
+      this._parent          = null
+      this._element         = null
+      this._triggerArray    = null
+      this._isTransitioning = null
+    }
+
 
     // private
 
@@ -323,7 +335,7 @@ const Collapse = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  $(document).on(Event.CLICK, Selector.DATA_TOGGLE, function (event) {
+  $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault()
 
     let target = Collapse._getTargetFromElement(this)

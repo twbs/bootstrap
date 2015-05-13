@@ -39,6 +39,8 @@
     var NAME = 'collapse';
     var VERSION = '4.0.0';
     var DATA_KEY = 'bs.collapse';
+    var EVENT_KEY = '.' + DATA_KEY;
+    var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $.fn[NAME];
     var TRANSITION_DURATION = 600;
 
@@ -48,11 +50,11 @@
     };
 
     var Event = {
-      SHOW: 'show.bs.collapse',
-      SHOWN: 'shown.bs.collapse',
-      HIDE: 'hide.bs.collapse',
-      HIDDEN: 'hidden.bs.collapse',
-      CLICK: 'click.bs.collapse.data-api'
+      SHOW: 'show' + EVENT_KEY,
+      SHOWN: 'shown' + EVENT_KEY,
+      HIDE: 'hide' + EVENT_KEY,
+      HIDDEN: 'hidden' + EVENT_KEY,
+      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
     };
 
     var ClassName = {
@@ -119,8 +121,8 @@
             return;
           }
 
-          var activesData = undefined;
           var actives = undefined;
+          var activesData = undefined;
 
           if (this._parent) {
             actives = $.makeArray($(Selector.ACTIVES));
@@ -234,6 +236,17 @@
           this._isTransitioning = isTransitioning;
         }
       }, {
+        key: 'dispose',
+        value: function dispose() {
+          $.removeData(this._element, DATA_KEY);
+
+          this._config = null;
+          this._parent = null;
+          this._element = null;
+          this._triggerArray = null;
+          this._isTransitioning = null;
+        }
+      }, {
         key: '_getDimension',
 
         // private
@@ -323,7 +336,7 @@
      * ------------------------------------------------------------------------
      */
 
-    $(document).on(Event.CLICK, Selector.DATA_TOGGLE, function (event) {
+    $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
       event.preventDefault();
 
       var target = Collapse._getTargetFromElement(this);

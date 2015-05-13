@@ -39,6 +39,8 @@
     var NAME = 'modal';
     var VERSION = '4.0.0';
     var DATA_KEY = 'bs.modal';
+    var EVENT_KEY = '.' + DATA_KEY;
+    var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $.fn[NAME];
     var TRANSITION_DURATION = 300;
     var BACKDROP_TRANSITION_DURATION = 150;
@@ -50,17 +52,17 @@
     };
 
     var Event = {
-      HIDE: 'hide.bs.modal',
-      HIDDEN: 'hidden.bs.modal',
-      SHOW: 'show.bs.modal',
-      SHOWN: 'shown.bs.modal',
-      DISMISS: 'click.dismiss.bs.modal',
-      KEYDOWN: 'keydown.dismiss.bs.modal',
-      FOCUSIN: 'focusin.bs.modal',
-      RESIZE: 'resize.bs.modal',
-      CLICK: 'click.bs.modal.data-api',
-      MOUSEDOWN: 'mousedown.dismiss.bs.modal',
-      MOUSEUP: 'mouseup.dismiss.bs.modal'
+      HIDE: 'hide' + EVENT_KEY,
+      HIDDEN: 'hidden' + EVENT_KEY,
+      SHOW: 'show' + EVENT_KEY,
+      SHOWN: 'shown' + EVENT_KEY,
+      FOCUSIN: 'focusin' + EVENT_KEY,
+      RESIZE: 'resize' + EVENT_KEY,
+      CLICK_DISMISS: 'click.dismiss' + EVENT_KEY,
+      KEYDOWN_DISMISS: 'keydown.dismiss' + EVENT_KEY,
+      MOUSEUP_DISMISS: 'mouseup.dismiss' + EVENT_KEY,
+      MOUSEDOWN_DISMISS: 'mousedown.dismiss' + EVENT_KEY,
+      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
     };
 
     var ClassName = {
@@ -131,10 +133,10 @@
           this._setEscapeEvent();
           this._setResizeEvent();
 
-          $(this._element).on(Event.DISMISS, Selector.DATA_DISMISS, $.proxy(this.hide, this));
+          $(this._element).on(Event.CLICK_DISMISS, Selector.DATA_DISMISS, $.proxy(this.hide, this));
 
-          $(this._dialog).on(Event.MOUSEDOWN, function () {
-            $(_this._element).one(Event.MOUSEUP, function (event) {
+          $(this._dialog).on(Event.MOUSEDOWN_DISMISS, function () {
+            $(_this._element).one(Event.MOUSEUP_DISMISS, function (event) {
               if ($(event.target).is(_this._element)) {
                 that._ignoreBackdropClick = true;
               }
@@ -167,8 +169,8 @@
 
           $(this._element).removeClass(ClassName.IN);
 
-          $(this._element).off(Event.DISMISS);
-          $(this._dialog).off(Event.MOUSEDOWN);
+          $(this._element).off(Event.CLICK_DISMISS);
+          $(this._dialog).off(Event.MOUSEDOWN_DISMISS);
 
           if (_Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
 
@@ -176,6 +178,26 @@
           } else {
             this._hideModal();
           }
+        }
+      }, {
+        key: 'dispose',
+        value: function dispose() {
+          $.removeData(this._element, DATA_KEY);
+
+          $(window).off(EVENT_KEY);
+          $(document).off(EVENT_KEY);
+          $(this._element).off(EVENT_KEY);
+          $(this._backdrop).off(EVENT_KEY);
+
+          this._config = null;
+          this._element = null;
+          this._dialog = null;
+          this._backdrop = null;
+          this._isShown = null;
+          this._isBodyOverflowing = null;
+          this._ignoreBackdropClick = null;
+          this._originalBodyPadding = null;
+          this._scrollbarWidth = null;
         }
       }, {
         key: '_showElement',
@@ -236,13 +258,13 @@
           var _this4 = this;
 
           if (this._isShown && this._config.keyboard) {
-            $(this._element).on(Event.KEYDOWN, function (event) {
+            $(this._element).on(Event.KEYDOWN_DISMISS, function (event) {
               if (event.which === 27) {
                 _this4.hide();
               }
             });
           } else if (!this._isShown) {
-            $(this._element).off(Event.KEYDOWN);
+            $(this._element).off(Event.KEYDOWN_DISMISS);
           }
         }
       }, {
@@ -294,7 +316,7 @@
 
             $(this._backdrop).appendTo(this.$body);
 
-            $(this._element).on(Event.DISMISS, function (event) {
+            $(this._element).on(Event.CLICK_DISMISS, function (event) {
               if (_this6._ignoreBackdropClick) {
                 _this6._ignoreBackdropClick = false;
                 return;
@@ -459,7 +481,7 @@
      * ------------------------------------------------------------------------
      */
 
-    $(document).on(Event.CLICK, Selector.DATA_TOGGLE, function (event) {
+    $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
       var _this7 = this;
 
       var target = undefined;

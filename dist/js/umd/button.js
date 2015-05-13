@@ -35,6 +35,8 @@
     var NAME = 'button';
     var VERSION = '4.0.0';
     var DATA_KEY = 'bs.button';
+    var EVENT_KEY = '.' + DATA_KEY;
+    var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $.fn[NAME];
     var TRANSITION_DURATION = 150;
 
@@ -53,8 +55,8 @@
     };
 
     var Event = {
-      CLICK: 'click.bs.button.data-api',
-      FOCUS_BLUR: 'focus.bs.button.data-api blur.bs.button.data-api'
+      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY,
+      FOCUS_BLUR_DATA_API: 'focus' + EVENT_KEY + '' + DATA_API_KEY + ' ' + ('blur' + EVENT_KEY + '' + DATA_API_KEY)
     };
 
     /**
@@ -108,6 +110,12 @@
             $(this._element).toggleClass(ClassName.ACTIVE);
           }
         }
+      }, {
+        key: 'dispose',
+        value: function dispose() {
+          $.removeData(this._element, DATA_KEY);
+          this._element = null;
+        }
       }], [{
         key: 'VERSION',
 
@@ -146,7 +154,7 @@
      * ------------------------------------------------------------------------
      */
 
-    $(document).on(Event.CLICK, Selector.DATA_TOGGLE_CARROT, function (event) {
+    $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
       event.preventDefault();
 
       var button = event.target;
@@ -156,7 +164,7 @@
       }
 
       Button._jQueryInterface.call($(button), 'toggle');
-    }).on(Event.FOCUS_BLUR, Selector.DATA_TOGGLE_CARROT, function (event) {
+    }).on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
       var button = $(event.target).closest(Selector.BUTTON)[0];
       $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type));
     });
