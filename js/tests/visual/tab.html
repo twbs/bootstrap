@@ -35,10 +35,10 @@
   <h4>Tabs without fade</h4>
 
   <ul id="myTab" class="nav nav-tabs">
-    <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-    <li><a href="#profile" data-toggle="tab">Profile</a></li>
-    <li class="dropdown">
-      <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+    <li class="active nav-item"><a href="#home" class="nav-link" data-toggle="tab">Home</a></li>
+    <li class="nav-item"><a href="#profile" data-toggle="tab" class="nav-link">Profile</a></li>
+    <li class="dropdown nav-item">
+      <a href="#" id="myTabDrop1" class="dropdown-toggle nav-link" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
         <li><a href="#dropdown1" tabindex="-1" data-toggle="tab">@fat</a></li>
         <li><a href="#dropdown2" tabindex="-1" data-toggle="tab">@mdo</a></li>
@@ -67,10 +67,10 @@
   <h4>Tabs with fade</h4>
 
   <ul id="myTab1" class="nav nav-tabs">
-    <li class="active"><a href="#home1" data-toggle="tab">Home</a></li>
-    <li><a href="#profile1" data-toggle="tab">Profile</a></li>
-    <li class="dropdown">
-      <a href="#" id="myTabDrop2" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+    <li class="active nav-item"><a class="nav-link" href="#home1" data-toggle="tab">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#profile1" data-toggle="tab">Profile</a></li>
+    <li class="dropdown nav-item">
+      <a href="#" id="myTabDrop2" class="dropdown-toggle nav-link" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop2">
         <li><a href="#dropdown1-1" tabindex="-1" data-toggle="tab">@fat</a></li>
         <li><a href="#dropdown1-2" tabindex="-1" data-toggle="tab">@mdo</a></li>
@@ -99,10 +99,10 @@
   <h4>Tabs without fade (no initially active pane)</h4>
 
   <ul id="myTab2" class="nav nav-tabs">
-    <li><a href="#home2" data-toggle="tab">Home</a></li>
-    <li><a href="#profile2" data-toggle="tab">Profile</a></li>
-    <li class="dropdown">
-      <a href="#" id="myTabDrop3" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+    <li class="nav-item"><a class="nav-link" href="#home2" data-toggle="tab">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#profile2" data-toggle="tab">Profile</a></li>
+    <li class="dropdown nav-item">
+      <a href="#" id="myTabDrop3" class="dropdown-toggle nav-link" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop3">
         <li><a href="#dropdown2-1" tabindex="-1" data-toggle="tab">@fat</a></li>
         <li><a href="#dropdown2-2" tabindex="-1" data-toggle="tab">@mdo</a></li>
@@ -131,10 +131,10 @@
   <h4>Tabs with fade (no initially active pane)</h4>
 
   <ul id="myTab3" class="nav nav-tabs">
-    <li><a href="#home3" data-toggle="tab">Home</a></li>
-    <li><a href="#profile3" data-toggle="tab">Profile</a></li>
-    <li class="dropdown">
-      <a href="#" id="myTabDrop4" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+    <li class="nav-item"><a class="nav-link" href="#home3" data-toggle="tab">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#profile3" data-toggle="tab">Profile</a></li>
+    <li class="dropdown nav-item">
+      <a href="#" id="myTabDrop4" class="dropdown-toggle nav-link" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop4">
         <li><a href="#dropdown3-1" tabindex="-1" data-toggle="tab">@fat</a></li>
         <li><a href="#dropdown3-2" tabindex="-1" data-toggle="tab">@mdo</a></li>
@@ -164,9 +164,9 @@
 
 <!-- JavaScript Includes -->
 <script src="../vendor/jquery.min.js"></script>
-<script src="../../transition.js"></script>
-<script src="../../tab.js"></script>
-<script src="../../dropdown.js"></script>
+<script src="../../dist/util.js"></script>
+<script src="../../dist/tab.js"></script>
+<script src="../../dist/dropdown.js"></script>
 
 </body>
 </html>
