@@ -237,11 +237,6 @@
           return VERSION;
         }
       }, {
-        key: 'Default',
-        get: function () {
-          return Default;
-        }
-      }, {
         key: '_jQueryInterface',
 
         // static

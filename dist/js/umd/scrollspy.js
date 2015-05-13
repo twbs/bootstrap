@@ -44,7 +44,15 @@
     var JQUERY_NO_CONFLICT = $.fn[NAME];
 
     var Default = {
-      offset: 10
+      offset: 10,
+      method: 'auto',
+      target: ''
+    };
+
+    var DefaultType = {
+      offset: 'number',
+      method: 'string',
+      target: '(string|element)'
     };
 
     var Event = {
@@ -61,8 +69,14 @@
     var Selector = {
       DATA_SPY: '[data-spy="scroll"]',
       ACTIVE: '.active',
+      LI: 'li',
       LI_DROPDOWN: 'li.dropdown',
-      LI: 'li'
+      NAV_ANCHORS: '.nav li > a'
+    };
+
+    var OffsetMethod = {
+      OFFSET: 'offset',
+      POSITION: 'position'
     };
 
     /**
@@ -77,8 +91,8 @@
 
         this._element = element;
         this._scrollElement = element.tagName === 'BODY' ? window : element;
-        this._config = $.extend({}, Default, config);
-        this._selector = '' + (this._config.target || '') + ' .nav li > a';
+        this._config = this._getConfig(config);
+        this._selector = '' + this._config.target + ' ' + Selector.NAV_ANCHORS;
         this._offsets = [];
         this._targets = [];
         this._activeTarget = null;
@@ -98,13 +112,11 @@
         value: function refresh() {
           var _this = this;
 
-          var offsetMethod = 'offset';
-          var offsetBase = 0;
+          var autoMethod = this._scrollElement !== this._scrollElement.window ? OffsetMethod.POSITION : OffsetMethod.OFFSET;
 
-          if (this._scrollElement !== this._scrollElement.window) {
-            offsetMethod = 'position';
-            offsetBase = this._getScrollTop();
-          }
+          var offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method;
+
+          var offsetBase = offsetMethod === OffsetMethod.POSITION ? this._getScrollTop() : 0;
 
           this._offsets = [];
           this._targets = [];
@@ -150,10 +162,28 @@
           this._scrollHeight = null;
         }
       }, {
-        key: '_getScrollTop',
+        key: '_getConfig',
 
         // private
 
+        value: function _getConfig(config) {
+          config = $.extend({}, Default, config);
+
+          if (typeof config.target !== 'string') {
+            var id = $(config.target).attr('id');
+            if (!id) {
+              id = _Util.getUID(NAME);
+              $(config.target).attr('id', id);
+            }
+            config.target = '#' + id;
+          }
+
+          _Util.typeCheckConfig(NAME, config, DefaultType);
+
+          return config;
+        }
+      }, {
+        key: '_getScrollTop',
         value: function _getScrollTop() {
           return this._scrollElement === window ? this._scrollElement.scrollY : this._scrollElement.scrollTop;
         }

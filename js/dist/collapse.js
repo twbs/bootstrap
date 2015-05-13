@@ -29,12 +29,12 @@ var Collapse = (function ($) {
 
   var Default = {
     toggle: true,
-    parent: null
+    parent: ''
   };
 
   var DefaultType = {
     toggle: 'boolean',
-    parent: '(string|null)'
+    parent: 'string'
   };
 
   var Event = {
@@ -241,7 +241,7 @@ var Collapse = (function ($) {
 
       value: function _getConfig(config) {
         config = $.extend({}, Default, config);
-        config.toggle = !!config.toggle;
+        config.toggle = !!config.toggle; // coerce string values
         Util.typeCheckConfig(NAME, config, DefaultType);
         return config;
       }

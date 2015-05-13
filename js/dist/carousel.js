@@ -39,7 +39,7 @@ var Carousel = (function ($) {
     interval: '(number|boolean)',
     keyboard: 'boolean',
     slide: '(boolean|string)',
-    pause: 'string',
+    pause: '(string|boolean)',
     wrap: 'boolean'
   };
 

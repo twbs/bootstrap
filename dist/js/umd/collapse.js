@@ -46,7 +46,12 @@
 
     var Default = {
       toggle: true,
-      parent: null
+      parent: ''
+    };
+
+    var DefaultType = {
+      toggle: 'boolean',
+      parent: 'string'
     };
 
     var Event = {
@@ -86,7 +91,7 @@
 
         this._isTransitioning = false;
         this._element = element;
-        this._config = $.extend({}, Default, config);
+        this._config = this._getConfig(config);
         this._triggerArray = $.makeArray($('[data-toggle="collapse"][href="#' + element.id + '"],' + ('[data-toggle="collapse"][data-target="#' + element.id + '"]')));
 
         this._parent = this._config.parent ? this._getParent() : null;
@@ -247,10 +252,18 @@
           this._isTransitioning = null;
         }
       }, {
-        key: '_getDimension',
+        key: '_getConfig',
 
         // private
 
+        value: function _getConfig(config) {
+          config = $.extend({}, Default, config);
+          config.toggle = !!config.toggle; // coerce string values
+          _Util.typeCheckConfig(NAME, config, DefaultType);
+          return config;
+        }
+      }, {
+        key: '_getDimension',
         value: function _getDimension() {
           var hasWidth = $(this._element).hasClass(Dimension.WIDTH);
           return hasWidth ? Dimension.WIDTH : Dimension.HEIGHT;

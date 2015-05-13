@@ -48,7 +48,15 @@
     var Default = {
       backdrop: true,
       keyboard: true,
+      focus: true,
       show: true
+    };
+
+    var DefaultType = {
+      backdrop: '(boolean|string)',
+      keyboard: 'boolean',
+      focus: 'boolean',
+      show: 'boolean'
     };
 
     var Event = {
@@ -89,7 +97,7 @@
       function Modal(element, config) {
         _classCallCheck(this, Modal);
 
-        this._config = config;
+        this._config = this._getConfig(config);
         this._element = element;
         this._dialog = $(element).find(Selector.DIALOG)[0];
         this._backdrop = null;
@@ -200,10 +208,17 @@
           this._scrollbarWidth = null;
         }
       }, {
-        key: '_showElement',
+        key: '_getConfig',
 
         // private
 
+        value: function _getConfig(config) {
+          config = $.extend({}, Default, config);
+          _Util.typeCheckConfig(NAME, config, DefaultType);
+          return config;
+        }
+      }, {
+        key: '_showElement',
         value: function _showElement(relatedTarget) {
           var _this2 = this;
 
@@ -223,14 +238,14 @@
 
           $(this._element).addClass(ClassName.IN);
 
-          this._enforceFocus();
+          if (this._config.focus) this._enforceFocus();
 
           var shownEvent = $.Event(Event.SHOWN, {
             relatedTarget: relatedTarget
           });
 
           var transitionComplete = function transitionComplete() {
-            _this2._element.focus();
+            if (_this2._config.focus) _this2._element.focus();
             $(_this2._element).trigger(shownEvent);
           };
 

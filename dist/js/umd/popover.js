@@ -51,6 +51,10 @@
       template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-title"></h3>' + '<div class="popover-content"></div></div>'
     });
 
+    var DefaultType = $.extend({}, _Tooltip2.DefaultType, {
+      content: '(string|function)'
+    });
+
     var ClassName = {
       FADE: 'fade',
       IN: 'in'
@@ -164,6 +168,11 @@
         key: 'EVENT_KEY',
         get: function () {
           return EVENT_KEY;
+        }
+      }, {
+        key: 'DefaultType',
+        get: function () {
+          return DefaultType;
         }
       }, {
         key: '_jQueryInterface',

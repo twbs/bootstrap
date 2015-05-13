@@ -52,6 +52,14 @@
       wrap: true
     };
 
+    var DefaultType = {
+      interval: '(number|boolean)',
+      keyboard: 'boolean',
+      slide: '(boolean|string)',
+      pause: '(string|boolean)',
+      wrap: 'boolean'
+    };
+
     var Direction = {
       NEXT: 'next',
       PREVIOUS: 'prev'
@@ -103,7 +111,7 @@
         this._isPaused = false;
         this._isSliding = false;
 
-        this._config = config;
+        this._config = this._getConfig(config);
         this._element = $(element)[0];
         this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0];
 
@@ -204,10 +212,17 @@
           this._indicatorsElement = null;
         }
       }, {
-        key: '_addEventListeners',
+        key: '_getConfig',
 
         // private
 
+        value: function _getConfig(config) {
+          config = $.extend({}, Default, config);
+          _Util.typeCheckConfig(NAME, config, DefaultType);
+          return config;
+        }
+      }, {
+        key: '_addEventListeners',
         value: function _addEventListeners() {
           if (this._config.keyboard) {
             $(this._element).on(Event.KEYDOWN, $.proxy(this._keydown, this));

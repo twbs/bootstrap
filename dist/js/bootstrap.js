@@ -50,6 +50,15 @@ var Util = (function ($) {
     transition: 'transitionend'
   };
 
+  // shoutout AngusCroll (https://goo.gl/pxwQGp)
+  function toType(obj) {
+    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+  }
+
+  function isElement(obj) {
+    return (obj[0] || obj).nodeType;
+  }
+
   function getSpecialTransitionEndEvent() {
     return {
       bindType: transition.end,
@@ -142,6 +151,21 @@ var Util = (function ($) {
 
     supportsTransitionEnd: function supportsTransitionEnd() {
       return !!transition;
+    },
+
+    typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
+
+      for (var property in configTypes) {
+        var expectedTypes = configTypes[property];
+        var value = config[property];
+        var valueType = undefined;
+
+        if (value && isElement(value)) valueType = 'element';else valueType = toType(value);
+
+        if (!new RegExp(expectedTypes).test(valueType)) {
+          throw new Error('' + componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
+        }
+      }
     }
 
   };
@@ -536,6 +560,14 @@ var Carousel = (function ($) {
     wrap: true
   };
 
+  var DefaultType = {
+    interval: '(number|boolean)',
+    keyboard: 'boolean',
+    slide: '(boolean|string)',
+    pause: '(string|boolean)',
+    wrap: 'boolean'
+  };
+
   var Direction = {
     NEXT: 'next',
     PREVIOUS: 'prev'
@@ -587,7 +619,7 @@ var Carousel = (function ($) {
       this._isPaused = false;
       this._isSliding = false;
 
-      this._config = config;
+      this._config = this._getConfig(config);
       this._element = $(element)[0];
       this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0];
 
@@ -688,10 +720,17 @@ var Carousel = (function ($) {
         this._indicatorsElement = null;
       }
     }, {
-      key: '_addEventListeners',
+      key: '_getConfig',
 
       // private
 
+      value: function _getConfig(config) {
+        config = $.extend({}, Default, config);
+        Util.typeCheckConfig(NAME, config, DefaultType);
+        return config;
+      }
+    }, {
+      key: '_addEventListeners',
       value: function _addEventListeners() {
         if (this._config.keyboard) {
           $(this._element).on(Event.KEYDOWN, $.proxy(this._keydown, this));
@@ -975,7 +1014,12 @@ var Collapse = (function ($) {
 
   var Default = {
     toggle: true,
-    parent: null
+    parent: ''
+  };
+
+  var DefaultType = {
+    toggle: 'boolean',
+    parent: 'string'
   };
 
   var Event = {
@@ -1015,7 +1059,7 @@ var Collapse = (function ($) {
 
       this._isTransitioning = false;
       this._element = element;
-      this._config = $.extend({}, Default, config);
+      this._config = this._getConfig(config);
       this._triggerArray = $.makeArray($('[data-toggle="collapse"][href="#' + element.id + '"],' + ('[data-toggle="collapse"][data-target="#' + element.id + '"]')));
 
       this._parent = this._config.parent ? this._getParent() : null;
@@ -1176,10 +1220,18 @@ var Collapse = (function ($) {
         this._isTransitioning = null;
       }
     }, {
-      key: '_getDimension',
+      key: '_getConfig',
 
       // private
 
+      value: function _getConfig(config) {
+        config = $.extend({}, Default, config);
+        config.toggle = !!config.toggle; // coerce string values
+        Util.typeCheckConfig(NAME, config, DefaultType);
+        return config;
+      }
+    }, {
+      key: '_getDimension',
       value: function _getDimension() {
         var hasWidth = $(this._element).hasClass(Dimension.WIDTH);
         return hasWidth ? Dimension.WIDTH : Dimension.HEIGHT;
@@ -1594,7 +1646,15 @@ var Modal = (function ($) {
   var Default = {
     backdrop: true,
     keyboard: true,
+    focus: true,
     show: true
+  };
+
+  var DefaultType = {
+    backdrop: '(boolean|string)',
+    keyboard: 'boolean',
+    focus: 'boolean',
+    show: 'boolean'
   };
 
   var Event = {
@@ -1635,7 +1695,7 @@ var Modal = (function ($) {
     function Modal(element, config) {
       _classCallCheck(this, Modal);
 
-      this._config = config;
+      this._config = this._getConfig(config);
       this._element = element;
       this._dialog = $(element).find(Selector.DIALOG)[0];
       this._backdrop = null;
@@ -1746,10 +1806,17 @@ var Modal = (function ($) {
         this._scrollbarWidth = null;
       }
     }, {
-      key: '_showElement',
+      key: '_getConfig',
 
       // private
 
+      value: function _getConfig(config) {
+        config = $.extend({}, Default, config);
+        Util.typeCheckConfig(NAME, config, DefaultType);
+        return config;
+      }
+    }, {
+      key: '_showElement',
       value: function _showElement(relatedTarget) {
         var _this8 = this;
 
@@ -1769,14 +1836,14 @@ var Modal = (function ($) {
 
         $(this._element).addClass(ClassName.IN);
 
-        this._enforceFocus();
+        if (this._config.focus) this._enforceFocus();
 
         var shownEvent = $.Event(Event.SHOWN, {
           relatedTarget: relatedTarget
         });
 
         var transitionComplete = function transitionComplete() {
-          _this8._element.focus();
+          if (_this8._config.focus) _this8._element.focus();
           $(_this8._element).trigger(shownEvent);
         };
 
@@ -2098,7 +2165,15 @@ var ScrollSpy = (function ($) {
   var JQUERY_NO_CONFLICT = $.fn[NAME];
 
   var Default = {
-    offset: 10
+    offset: 10,
+    method: 'auto',
+    target: ''
+  };
+
+  var DefaultType = {
+    offset: 'number',
+    method: 'string',
+    target: '(string|element)'
   };
 
   var Event = {
@@ -2115,8 +2190,14 @@ var ScrollSpy = (function ($) {
   var Selector = {
     DATA_SPY: '[data-spy="scroll"]',
     ACTIVE: '.active',
+    LI: 'li',
     LI_DROPDOWN: 'li.dropdown',
-    LI: 'li'
+    NAV_ANCHORS: '.nav li > a'
+  };
+
+  var OffsetMethod = {
+    OFFSET: 'offset',
+    POSITION: 'position'
   };
 
   /**
@@ -2131,8 +2212,8 @@ var ScrollSpy = (function ($) {
 
       this._element = element;
       this._scrollElement = element.tagName === 'BODY' ? window : element;
-      this._config = $.extend({}, Default, config);
-      this._selector = '' + (this._config.target || '') + ' .nav li > a';
+      this._config = this._getConfig(config);
+      this._selector = '' + this._config.target + ' ' + Selector.NAV_ANCHORS;
       this._offsets = [];
       this._targets = [];
       this._activeTarget = null;
@@ -2152,13 +2233,11 @@ var ScrollSpy = (function ($) {
       value: function refresh() {
         var _this14 = this;
 
-        var offsetMethod = 'offset';
-        var offsetBase = 0;
+        var autoMethod = this._scrollElement !== this._scrollElement.window ? OffsetMethod.POSITION : OffsetMethod.OFFSET;
 
-        if (this._scrollElement !== this._scrollElement.window) {
-          offsetMethod = 'position';
-          offsetBase = this._getScrollTop();
-        }
+        var offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method;
+
+        var offsetBase = offsetMethod === OffsetMethod.POSITION ? this._getScrollTop() : 0;
 
         this._offsets = [];
         this._targets = [];
@@ -2204,10 +2283,28 @@ var ScrollSpy = (function ($) {
         this._scrollHeight = null;
       }
     }, {
-      key: '_getScrollTop',
+      key: '_getConfig',
 
       // private
 
+      value: function _getConfig(config) {
+        config = $.extend({}, Default, config);
+
+        if (typeof config.target !== 'string') {
+          var id = $(config.target).attr('id');
+          if (!id) {
+            id = Util.getUID(NAME);
+            $(config.target).attr('id', id);
+          }
+          config.target = '#' + id;
+        }
+
+        Util.typeCheckConfig(NAME, config, DefaultType);
+
+        return config;
+      }
+    }, {
+      key: '_getScrollTop',
       value: function _getScrollTop() {
         return this._scrollElement === window ? this._scrollElement.scrollY : this._scrollElement.scrollTop;
       }
@@ -2570,11 +2667,6 @@ var Tab = (function ($) {
         return VERSION;
       }
     }, {
-      key: 'Default',
-      get: function () {
-        return Default;
-      }
-    }, {
       key: '_jQueryInterface',
 
       // static
@@ -2659,7 +2751,20 @@ var Tooltip = (function ($) {
     selector: false,
     placement: 'top',
     offset: '0 0',
-    constraints: null
+    constraints: []
+  };
+
+  var DefaultType = {
+    animation: 'boolean',
+    template: 'string',
+    title: '(string|function)',
+    trigger: 'string',
+    delay: '(number|object)',
+    html: 'boolean',
+    selector: '(string|boolean)',
+    placement: '(string|function)',
+    offset: 'string',
+    constraints: 'array'
   };
 
   var AttachmentMap = {
@@ -3098,6 +3203,8 @@ var Tooltip = (function ($) {
           };
         }
 
+        Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
+
         return config;
       }
     }, {
@@ -3148,6 +3255,11 @@ var Tooltip = (function ($) {
       key: 'EVENT_KEY',
       get: function () {
         return EVENT_KEY;
+      }
+    }, {
+      key: 'DefaultType',
+      get: function () {
+        return DefaultType;
       }
     }, {
       key: '_jQueryInterface',
@@ -3220,6 +3332,10 @@ var Popover = (function ($) {
     trigger: 'click',
     content: '',
     template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-title"></h3>' + '<div class="popover-content"></div></div>'
+  });
+
+  var DefaultType = $.extend({}, Tooltip.DefaultType, {
+    content: '(string|function)'
   });
 
   var ClassName = {
@@ -3335,6 +3451,11 @@ var Popover = (function ($) {
       key: 'EVENT_KEY',
       get: function () {
         return EVENT_KEY;
+      }
+    }, {
+      key: 'DefaultType',
+      get: function () {
+        return DefaultType;
       }
     }, {
       key: '_jQueryInterface',

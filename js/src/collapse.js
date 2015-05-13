@@ -27,12 +27,12 @@ const Collapse = (($) => {
 
   const Default = {
     toggle : true,
-    parent : null
+    parent : ''
   }
 
   const DefaultType = {
     toggle : 'boolean',
-    parent : '(string|null)'
+    parent : 'string'
   }
 
   const Event = {

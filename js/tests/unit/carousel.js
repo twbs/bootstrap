@@ -33,6 +33,8 @@ $(function () {
   })
 
   QUnit.test('should type check config options', function (assert) {
+    assert.expect(2)
+
     var message
     var expectedMessage = 'CAROUSEL: Option "interval" provided type "string" but expected type "(number|boolean)".'
     var config = {
@@ -48,7 +50,7 @@ $(function () {
     assert.ok(message === expectedMessage, 'correct error message')
 
     config = {
-      keyboard: $('div')
+      keyboard: document.createElement('div')
     }
     expectedMessage = 'CAROUSEL: Option "keyboard" provided type "element" but expected type "boolean".'
 
