@@ -618,7 +618,7 @@ var Carousel = (function ($) {
         }
 
         if (this._config.interval && !this._isPaused) {
-          this._interval = setInterval(this.next.bind(this), this._config.interval);
+          this._interval = setInterval($.proxy(this.next, this), this._config.interval);
         }
       }
     }, {
@@ -658,11 +658,11 @@ var Carousel = (function ($) {
 
       value: function _addEventListeners() {
         if (this._config.keyboard) {
-          $(this._element).on('keydown.bs.carousel', this._keydown.bind(this));
+          $(this._element).on('keydown.bs.carousel', $.proxy(this._keydown, this));
         }
 
         if (this._config.pause == 'hover' && !('ontouchstart' in document.documentElement)) {
-          $(this._element).on('mouseenter.bs.carousel', this.pause.bind(this)).on('mouseleave.bs.carousel', this.cycle.bind(this));
+          $(this._element).on('mouseenter.bs.carousel', $.proxy(this.pause, this)).on('mouseleave.bs.carousel', $.proxy(this.cycle, this));
         }
       }
     }, {
@@ -1609,7 +1609,7 @@ var Modal = (function ($) {
         this._setEscapeEvent();
         this._setResizeEvent();
 
-        $(this._element).on(Event.DISMISS, Selector.DATA_DISMISS, this.hide.bind(this));
+        $(this._element).on(Event.DISMISS, Selector.DATA_DISMISS, $.proxy(this.hide, this));
 
         $(this._dialog).on(Event.MOUSEDOWN, function () {
           $(_this7._element).one(Event.MOUSEUP, function (event) {
@@ -1619,7 +1619,7 @@ var Modal = (function ($) {
           });
         });
 
-        this._showBackdrop(this._showElement.bind(this, relatedTarget));
+        this._showBackdrop($.proxy(this._showElement, this, relatedTarget));
       }
     }, {
       key: 'hide',
@@ -1650,7 +1650,7 @@ var Modal = (function ($) {
 
         if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
 
-          $(this._element).one(Util.TRANSITION_END, this._hideModal.bind(this)).emulateTransitionEnd(TRANSITION_DURATION);
+          $(this._element).one(Util.TRANSITION_END, $.proxy(this._hideModal, this)).emulateTransitionEnd(TRANSITION_DURATION);
         } else {
           this._hideModal();
         }
@@ -1727,7 +1727,7 @@ var Modal = (function ($) {
       key: '_setResizeEvent',
       value: function _setResizeEvent() {
         if (this._isShown) {
-          $(window).on(Event.RESIZE, this._handleUpdate.bind(this));
+          $(window).on(Event.RESIZE, $.proxy(this._handleUpdate, this));
         } else {
           $(window).off(Event.RESIZE);
         }
@@ -2045,7 +2045,7 @@ var ScrollSpy = (function ($) {
       this._activeTarget = null;
       this._scrollHeight = 0;
 
-      $(this._scrollElement).on(Event.SCROLL, this._process.bind(this));
+      $(this._scrollElement).on(Event.SCROLL, $.proxy(this._process, this));
 
       this.refresh();
       this._process();
@@ -2385,7 +2385,7 @@ var Tab = (function ($) {
         var active = $(container).find(Selector.ACTIVE_CHILD)[0];
         var isTransitioning = callback && Util.supportsTransitionEnd() && (active && $(active).hasClass(ClassName.FADE) || !!$(container).find(Selector.FADE_CHILD)[0]);
 
-        var complete = this._transitionComplete.bind(this, element, active, isTransitioning, callback);
+        var complete = $.proxy(this._transitionComplete, this, element, active, isTransitioning, callback);
 
         if (active && isTransitioning) {
           $(active).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
@@ -2846,12 +2846,12 @@ var Tooltip = (function ($) {
 
         triggers.forEach(function (trigger) {
           if (trigger === 'click') {
-            $(_this19.element).on(_this19.constructor.Event.CLICK, _this19.config.selector, _this19.toggle.bind(_this19));
+            $(_this19.element).on(_this19.constructor.Event.CLICK, _this19.config.selector, $.proxy(_this19.toggle, _this19));
           } else if (trigger !== Trigger.MANUAL) {
             var eventIn = trigger == Trigger.HOVER ? _this19.constructor.Event.MOUSEENTER : _this19.constructor.Event.FOCUSIN;
             var eventOut = trigger == Trigger.HOVER ? _this19.constructor.Event.MOUSELEAVE : _this19.constructor.Event.FOCUSOUT;
 
-            $(_this19.element).on(eventIn, _this19.config.selector, _this19._enter.bind(_this19)).on(eventOut, _this19.config.selector, _this19._leave.bind(_this19));
+            $(_this19.element).on(eventIn, _this19.config.selector, $.proxy(_this19._enter, _this19)).on(eventOut, _this19.config.selector, $.proxy(_this19._leave, _this19));
           }
         });
 

@@ -96,6 +96,24 @@ module.exports = function (grunt) {
         files: {
           '<%= concat.bootstrap.dest %>' : '<%= concat.bootstrap.dest %>'
         }
+      },
+      umd: {
+        options: {
+          modules: 'umd'
+        },
+        files: {
+          'dist/js/umd/util.js'      : 'js/src/util.js',
+          'dist/js/umd/alert.js'     : 'js/src/alert.js',
+          'dist/js/umd/button.js'    : 'js/src/button.js',
+          'dist/js/umd/carousel.js'  : 'js/src/carousel.js',
+          'dist/js/umd/collapse.js'  : 'js/src/collapse.js',
+          'dist/js/umd/dropdown.js'  : 'js/src/dropdown.js',
+          'dist/js/umd/modal.js'     : 'js/src/modal.js',
+          'dist/js/umd/scrollspy.js' : 'js/src/scrollspy.js',
+          'dist/js/umd/tab.js'       : 'js/src/tab.js',
+          'dist/js/umd/tooltip.js'   : 'js/src/tooltip.js',
+          'dist/js/umd/popover.js'   : 'js/src/popover.js'
+        }
       }
     },
 
@@ -457,8 +475,12 @@ module.exports = function (grunt) {
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', 'sed');
 
-  grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
-    var srcFiles = grunt.config.get('concat.bootstrap.src');
+  grunt.registerTask('commonjs', ['babel:umd', 'npm-js']);
+
+  grunt.registerTask('npm-js', 'Generate npm-js entrypoint module in dist dir.', function () {
+    var srcFiles = Object.keys(grunt.config.get('babel.umd.files')).map(function (filename) {
+      return './' + path.join('umd', path.basename(filename))
+    })
     var destFilepath = 'dist/js/npm.js';
     generateCommonJSModule(grunt, srcFiles, destFilepath);
   });
