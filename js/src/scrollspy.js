@@ -25,7 +25,8 @@ const ScrollSpy = (($) => {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
 
   const Default = {
-    offset : 10
+    offset : 10,
+    method : 'auto'
   }
 
   const Event = {
@@ -44,6 +45,11 @@ const ScrollSpy = (($) => {
     ACTIVE      : '.active',
     LI_DROPDOWN : 'li.dropdown',
     LI          : 'li'
+  }
+
+  const OffsetMethod = {
+    OFFSET   : 'offset',
+    POSITION : 'position'
   }
 
 
@@ -86,13 +92,14 @@ const ScrollSpy = (($) => {
     // public
 
     refresh() {
-      let offsetMethod = 'offset'
-      let offsetBase   = 0
+      let autoMethod = this._scrollElement !== this._scrollElement.window ?
+        OffsetMethod.POSITION : OffsetMethod.OFFSET
 
-      if (this._scrollElement !== this._scrollElement.window) {
-        offsetMethod = 'position'
-        offsetBase   = this._getScrollTop()
-      }
+      let offsetMethod = this._config.method === 'auto' ?
+        autoMethod : this._config.method
+
+      let offsetBase = offsetMethod === OffsetMethod.POSITION ?
+        this._getScrollTop() : 0
 
       this._offsets = []
       this._targets = []

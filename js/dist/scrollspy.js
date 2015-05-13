@@ -27,7 +27,8 @@ var ScrollSpy = (function ($) {
   var JQUERY_NO_CONFLICT = $.fn[NAME];
 
   var Default = {
-    offset: 10
+    offset: 10,
+    method: 'auto'
   };
 
   var Event = {
@@ -46,6 +47,11 @@ var ScrollSpy = (function ($) {
     ACTIVE: '.active',
     LI_DROPDOWN: 'li.dropdown',
     LI: 'li'
+  };
+
+  var OffsetMethod = {
+    OFFSET: 'offset',
+    POSITION: 'position'
   };
 
   /**
@@ -81,13 +87,11 @@ var ScrollSpy = (function ($) {
       value: function refresh() {
         var _this = this;
 
-        var offsetMethod = 'offset';
-        var offsetBase = 0;
+        var autoMethod = this._scrollElement !== this._scrollElement.window ? OffsetMethod.POSITION : OffsetMethod.OFFSET;
 
-        if (this._scrollElement !== this._scrollElement.window) {
-          offsetMethod = 'position';
-          offsetBase = this._getScrollTop();
-        }
+        var offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method;
+
+        var offsetBase = offsetMethod === OffsetMethod.POSITION ? this._getScrollTop() : 0;
 
         this._offsets = [];
         this._targets = [];
