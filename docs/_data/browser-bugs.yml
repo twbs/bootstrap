@@ -242,6 +242,16 @@
 
 -
   browser: >
+    Safari (OS X)
+  summary: >
+    Unnecessary line-wrapping of `.navbar-brand` text for no apparent reason
+  upstream_bug: >
+    WebKit#144990, Safari#20950962
+  origin: >
+    Bootstrap#15998
+
+-
+  browser: >
     Safari (iOS)
   summary: >
     `transform: translate3d(0,0,0);` rendering bug.
