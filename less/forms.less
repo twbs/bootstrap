@@ -178,9 +178,12 @@ input[type="search"] {
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="date"],
   input[type="time"],
+  input[type="week"],
   input[type="datetime-local"],
   input[type="month"] {
-    line-height: @input-height-base;
+    &.form-control {
+      line-height: @input-height-base;
+    }
 
     &.input-sm,
     .input-group-sm & {
