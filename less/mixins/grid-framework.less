@@ -48,7 +48,7 @@
     width: percentage((@index / @grid-columns));
   }
 }
-.calc-grid-column(@index, @class, @type) when (@type = push) and (@index > 0) {
+.calc-grid-column(@index, @class, @type) when (@type = push) and (@index > 0) and (@index < @grid-columns) {
   .col-@{class}-push-@{index} {
     left: percentage((@index / @grid-columns));
   }
@@ -58,7 +58,7 @@
     left: auto;
   }
 }
-.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index > 0) {
+.calc-grid-column(@index, @class, @type) when (@type = pull) and (@index > 0) and (@index < @grid-columns) {
   .col-@{class}-pull-@{index} {
     right: percentage((@index / @grid-columns));
   }
