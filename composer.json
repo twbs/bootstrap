@@ -1,5 +1,5 @@
 {
-  "name": "twbs/bootstrap",
+  "name": "transferwise/bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "keywords": [
     "css",
@@ -11,7 +11,7 @@
     "framework",
     "web"
   ],
-  "homepage": "http://getbootstrap.com",
+  "homepage": "http://bootstrap.transferwise.com",
   "authors": [
     {
       "name": "Mark Otto",
@@ -23,7 +23,7 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/twbs/bootstrap/issues"
+    "issues": "https://github.com/transferwise/bootstrap/issues"
   },
   "license": "MIT",
   "extra": {

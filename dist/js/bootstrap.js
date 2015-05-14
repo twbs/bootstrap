@@ -1,7 +1,7 @@
 /*!
- * Bootstrap v3.3.5 (http://getbootstrap.com)
+ * Bootstrap v3.3.5 (http://bootstrap.transferwise.com)
  * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
 
 if (typeof jQuery === 'undefined') {

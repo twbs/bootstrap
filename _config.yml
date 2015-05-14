@@ -15,13 +15,13 @@ encoding:         UTF-8
 
 # Custom vars
 current_version:  3.3.4
-repo:             https://github.com/twbs/bootstrap
-sass_repo:        https://github.com/twbs/bootstrap-sass
+repo:             https://github.com/transferwise/bootstrap
+sass_repo:        https://github.com/transferwise/bootstrap-sass
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v3.3.4.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v3.3.4/bootstrap-3.3.4-dist.zip
-  sass:           https://github.com/twbs/bootstrap-sass/archive/v3.3.4.tar.gz
+  source:         https://github.com/transferwise/bootstrap/archive/v3.3.5.zip
+  dist:           https://github.com/transferwise/bootstrap/releases/download/v3.3.5/bootstrap-3.3.5-dist.zip
+  sass:           https://github.com/transferwise/bootstrap-sass/archive/v3.3.5.tar.gz
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
