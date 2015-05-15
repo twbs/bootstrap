@@ -77,7 +77,7 @@
 // }
 
 // IE9 hacks to accompany custom markup. We don't need to scope this via media queries, but I feel better doing it anyway.
-@media screen and ("min-width:0\0") {
+@media screen and (min-width:0\0) {
   .progress {
     background-color: #eee;
     @include border-radius($border-radius-base);
@@ -116,7 +116,7 @@
   @include gradient-striped();
   background-size: $spacer-y $spacer-y;
 }
-@media screen and ("min-width:0\0") {
+@media screen and (min-width:0\0) {
   .progress-bar-striped {
     @include gradient-striped();
     background-size: $spacer-y $spacer-y;
@@ -134,7 +134,7 @@
 .progress-animated[value]::-moz-progress-bar {
   animation: progress-bar-stripes 2s linear infinite;
 }
-@media screen and ("min-width:0\0") {
+@media screen and (min-width:0\0) {
   .progress-animated .progress-bar-striped {
     animation: progress-bar-stripes 2s linear infinite;
   }
