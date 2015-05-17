@@ -3,7 +3,7 @@
  * Copyright 2011-2015 Twitter, Inc.
  *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
- * details, see http://creativecommons.org/licenses/by/3.0/.
+ * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
 /* jshint es3:false */

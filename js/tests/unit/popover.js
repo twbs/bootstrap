@@ -187,7 +187,7 @@ $(function () {
 
   QUnit.test('should render popover element using delegated selector', function (assert) {
     assert.expect(2)
-    var $div = $('<div><a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a></div>')
+    var $div = $('<div><a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a></div>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
         selector: 'a',
