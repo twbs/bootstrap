@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://getbootstrap.com/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -10,7 +10,7 @@
   
   <url>
     <loc>http://getbootstrap.com/about/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -19,7 +19,7 @@
   
   <url>
     <loc>http://getbootstrap.com/browser-bugs/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -28,7 +28,7 @@
   
   <url>
     <loc>http://getbootstrap.com/components/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -37,7 +37,7 @@
   
   <url>
     <loc>http://getbootstrap.com/css/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -46,7 +46,7 @@
   
   <url>
     <loc>http://getbootstrap.com/customize/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -55,7 +55,7 @@
   
   <url>
     <loc>http://getbootstrap.com/getting-started/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -66,7 +66,7 @@
   
   <url>
     <loc>http://getbootstrap.com/javascript/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -75,7 +75,7 @@
   
   <url>
     <loc>http://getbootstrap.com/migration/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -84,7 +84,7 @@
   
   <url>
     <loc>http://getbootstrap.com/responsive/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -93,7 +93,7 @@
   
   <url>
     <loc>http://getbootstrap.com/settings/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -102,7 +102,7 @@
   
   <url>
     <loc>http://getbootstrap.com/sso_dashboard/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -111,7 +111,7 @@
   
   <url>
     <loc>http://getbootstrap.com/sso_matching/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -120,7 +120,7 @@
   
   <url>
     <loc>http://getbootstrap.com/sso_users/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -129,7 +129,7 @@
   
   <url>
     <loc>http://getbootstrap.com/uikit/</loc>
-    <lastmod>2015-05-19T14:40:38+08:00</lastmod>
+    <lastmod>2015-05-19T15:02:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
