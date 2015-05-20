@@ -55,8 +55,12 @@
   ga('send', 'pageview');
 </script>
 
+
+<script src="//use.typekit.net/dlq3spj.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+
   </head>
-  <body>
+  <body class="tk-open-sans">
     <a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
 
     <!-- Docs master nav -->
@@ -135,48 +139,28 @@
   <div class="section-head">Buttons</div>
   <div class="section-body">
     <div style="margin-bottom: 5px;">
-      <!-- Standard button -->
+      <button type="button" class="btn btn-tag">Default</button>
+      <button type="button" class="btn btn-remove"><i class="fa fa-trash-o supporting-color"></i></button>
       <button type="button" class="btn btn-default">Default</button>
-
-      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
       <button type="button" class="btn btn-primary">Primary</button>
-
-      <!-- Indicates a successful or positive action -->
-      <button type="button" class="btn btn-success">Success</button>
-
-      <!-- Contextual button for informational alert messages -->
-      <button type="button" class="btn btn-info">Info</button>
-
-      <!-- Indicates caution should be taken with this action -->
-      <button type="button" class="btn btn-warning">Warning</button>
-
-      <!-- Indicates a dangerous or potentially negative action -->
-      <button type="button" class="btn btn-danger">Danger</button>
-
-      <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
-      <button type="button" class="btn btn-link">Link</button>
+    </div>
+    <div style="margin-bottom: 5px;">
+      <button type="button" class="btn btn-tag highlighted">Default</button>
+      <button type="button" class="btn btn-remove highlighted"><i class="fa fa-trash-o supporting-color"></i></button>
+      <button type="button" class="btn btn-default highlighted">Default</button>
+      <button type="button" class="btn btn-primary highlighted">Primary</button>
+    </div>
+    <div style="margin-bottom: 5px;">
+      <button type="button" class="btn btn-tag active">Default</button>
+      <button type="button" class="btn btn-remove active"><i class="fa fa-trash-o supporting-color"></i></button>
+      <button type="button" class="btn btn-default active">Default</button>
+      <button type="button" class="btn btn-primary active">Primary</button>
     </div>
     <div>
-      <!-- Standard button -->
+      <button type="button" class="btn btn-tag" disabled>Default</button>
+      <button type="button" class="btn btn-remove" disabled><i class="fa fa-trash-o supporting-color"></i></button>
       <button type="button" class="btn btn-default" disabled>Default</button>
-
-      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
       <button type="button" class="btn btn-primary" disabled>Primary</button>
-
-      <!-- Indicates a successful or positive action -->
-      <button type="button" class="btn btn-success" disabled>Success</button>
-
-      <!-- Contextual button for informational alert messages -->
-      <button type="button" class="btn btn-info" disabled>Info</button>
-
-      <!-- Indicates caution should be taken with this action -->
-      <button type="button" class="btn btn-warning" disabled>Warning</button>
-
-      <!-- Indicates a dangerous or potentially negative action -->
-      <button type="button" class="btn btn-danger" disabled>Danger</button>
-
-      <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
-      <button type="button" class="btn btn-link" disabled>Link</button>
     </div>
   </div>
 </div>
@@ -471,45 +455,7 @@
   <div class="section-head">Pagination</div>
   <div class="section-body">
     <nav>
-      <ul class="pagination pagination-sm">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li class="disabled"><a href="#">2</a></li>
-        <li class="active"><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav>
       <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li><a href="#">1</a></li>
-        <li class="disabled"><a href="#">2</a></li>
-        <li class="active"><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <nav>
-      <ul class="pagination pagination-lg">
         <li>
           <a href="#" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
@@ -542,6 +488,10 @@
         <label for="exampleInputEmail1">Email address</label>
         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" disabled>
       </div>
+      <div class="form-group error">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
@@ -553,18 +503,22 @@
       </div>
       <div class="checkbox">
         <label style="margin-right: 10px;">
-          <input type="checkbox"> Check me out
+          <input type="checkbox">
+          <span>Check me out</span>
         </label>
         <label>
-          <input type="checkbox" checked> Check me out
+          <input type="checkbox" checked>
+          <span>Check me out</span>
         </label>
       </div>
       <div class="radio">
         <label style="margin-right: 10px;">
-          <input type="radio" name="test" checked> option 1
+          <input type="radio" name="test" checked>
+          <span>option 1</span>
         </label>
         <label>
-          <input type="radio" name="test"> option 2
+          <input type="radio" name="test">
+          <span>option 2</span>
         </label>
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
@@ -756,20 +710,19 @@
   <div class="section-body">
     <div class="bar bar-primary">
       <div class="pull-right actions">
-        <div class="btn btn-primary">Action</div>
+        <i class="fa fa-gear"></i>
       </div>
       <div class="title">User</div>
     </div>
     <div class="bar bar-default">
       <div class="pull-right actions">
-        <div class="btn">Action</div>
+        <div class="btn btn-default">Action</div>
       </div>
       <div class="title">User</div>
     </div>
     <div class="bar bar-inset">
       <div class="pull-right actions">
-        <div class="btn">Action</div>
-        <div class="btn">Action</div>
+        <div class="btn btn-default">Action</div>
       </div>
       <div class="title">User</div>
     </div>
