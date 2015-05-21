@@ -26,10 +26,7 @@
   "bugs": {
     "url": "https://github.com/twbs/bootstrap/issues"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/twbs/bootstrap/blob/master/LICENSE"
-  },
+  "license": "MIT",
   "devDependencies": {
     "btoa": "~1.1.2",
     "glob": "~5.0.5",
