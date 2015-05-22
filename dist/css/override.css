@@ -907,6 +907,7 @@ input[type=checkbox]:disabled {
   }
   .sortable > li.ui-sortable-placeholder + li {
     border-top: none;
+    margin-top: 0;
   }
 }
 .breadcrumb {
@@ -2110,7 +2111,9 @@ div.FixedHeader_Cloned table {
   border: none;
   border-radius: 0;
   border-bottom: 1px solid #eee;
-  line-height: 1.4em;
+  padding: 10px;
+  height: auto;
+  line-height: 1em;
   position: relative;
   display: block;
   text-align: left;
@@ -2289,7 +2292,9 @@ div.FixedHeader_Cloned table {
   border: none;
 }
 .select2-drop.select2-navigation .select2-result .select2-result-label {
-  padding: 8px 7px;
+  padding: 10px;
+  line-height: 10px;
+  font-size: 13px;
 }
 .select2-drop.select2-navigation .select2-result.select2-highlighted {
   background: #fbfcff;
