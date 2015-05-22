@@ -34,6 +34,12 @@ label {
 .t-descriptive {
   color: #a6bedc;
 }
+.inline-block {
+  display: inline-block;
+}
+.block {
+  display: block;
+}
 #activity-list {
   position: relative;
   background: #ffffff;
@@ -50,6 +56,9 @@ label {
   border-bottom: 1px solid  #e3e3e3;
   margin-bottom: 20px;
 }
+#activity-list header h3 {
+  margin: 0;
+}
 #activity-list header .print-icon {
   position: absolute;
   top: 16px;
@@ -58,7 +67,7 @@ label {
   font-size: 1.4em;
 }
 #activity-list .activity-date {
-  margin: 30px 0 20px 14px;
+  margin: 20px 15px;
   font-size: 18px;
 }
 #activity-list .activity-date span {
@@ -73,16 +82,19 @@ label {
   display: block;
   content: '';
   position: absolute;
-  top: 30px;
-  bottom: -18px;
-  width: 2px;
+  top: 27px;
+  bottom: -15px;
+  width: 1px;
   background: #dee9f6;
   left: 25px;
   z-index: 4;
 }
+#activity-list .activity-wrapper:last-child:before {
+  display: none;
+}
 #activity-list .activity-wrapper .activity-info {
   width: 250px;
-  margin-top: 1px;
+  margin-top: -1px;
 }
 #activity-list .activity-wrapper .activity-info .activity-author {
   float: left;
@@ -98,7 +110,7 @@ label {
 }
 #activity-list .activity-wrapper .activity {
   line-height: 1.4em;
-  margin-right: 250px;
+  margin-right: 255px;
 }
 #activity-list .activity-wrapper .activity .activity-status .fa {
   font-size: 1.6em;
@@ -140,7 +152,10 @@ label {
   color: #227fbb;
 }
 #activity-list .activity-wrapper .activity .activity-content-wrapper {
-  margin-left: 45px;
+  margin-left: 30px;
+}
+#activity-list .activity-wrapper .activity .activity-content-wrapper .activity-content {
+  line-height: 1em;
 }
 #activity-list .activity-wrapper .activity .activity-content-wrapper .activity-description {
   font-size: 11px;
@@ -148,9 +163,9 @@ label {
   margin-top: 3px;
 }
 #activity-list .activity-wrapper .avatar {
-  width: 25px;
-  height: 25px;
-  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
 #activity-list .activity-wrapper .avatar img {
   max-width: 100%;
