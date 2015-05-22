@@ -1868,6 +1868,13 @@ div.FixedHeader_Cloned table {
   font-weight: 300;
   padding: 10px 20px;
 }
+.nav.nav-main li > a i {
+  margin-right: 10px;
+}
+.nav.nav-main li > a span {
+  padding-top: 3px;
+  overflow: hidden;
+}
 .nav.nav-main li > a.active,
 .nav.nav-main li > a:hover {
   background: #374356;

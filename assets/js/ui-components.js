@@ -182,4 +182,13 @@
 
   new SelectSwitcher($('.section-select').find('.select-switcher'));
 
+  $('#settings-navigation').on('click', 'a', function(e) {
+    var $el;
+    $('#settings-navigation').find('li').removeClass('active');
+    $('#settings-navigation').find('li i').removeClass('active');
+    $el = $(e.currentTarget);
+    $el.closest('li').addClass('active');
+    return $el.find('i').addClass('active');
+  });
+
 }).call(this);
