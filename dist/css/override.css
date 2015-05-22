@@ -1986,20 +1986,35 @@ div.FixedHeader_Cloned table {
   text-align: center;
   border: 1px solid #fff;
   padding: 0;
+  font-size: 0;
 }
-.nav.nav-settings .settings-school-settings .logo > img,
-.nav.nav-settings .settings-school-directory .logo > img,
-.nav.nav-settings .settings-access-permission .logo > img,
-.nav.nav-settings .settings-academic-terms .logo > img,
-.nav.nav-settings .settings-academic-programmes .logo > img,
-.nav.nav-settings .settings-attendance .logo > img,
-.nav.nav-settings .settings-import-export .logo > img,
-.nav.nav-settings .settings-billing .logo > img {
-  width: 20px;
+.nav.nav-settings .settings-school-settings .logo > *,
+.nav.nav-settings .settings-school-directory .logo > *,
+.nav.nav-settings .settings-access-permission .logo > *,
+.nav.nav-settings .settings-academic-terms .logo > *,
+.nav.nav-settings .settings-academic-programmes .logo > *,
+.nav.nav-settings .settings-attendance .logo > *,
+.nav.nav-settings .settings-import-export .logo > *,
+.nav.nav-settings .settings-billing .logo > * {
+  display: inline-block;
+  vertical-align: middle;
   border: none;
   box-shadow: none;
   border-radius: 0;
   height: 100%;
+}
+.nav.nav-settings .settings-school-settings .logo:before,
+.nav.nav-settings .settings-school-directory .logo:before,
+.nav.nav-settings .settings-access-permission .logo:before,
+.nav.nav-settings .settings-academic-terms .logo:before,
+.nav.nav-settings .settings-academic-programmes .logo:before,
+.nav.nav-settings .settings-attendance .logo:before,
+.nav.nav-settings .settings-import-export .logo:before,
+.nav.nav-settings .settings-billing .logo:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }
 .nav.nav-settings .settings-school-settings:hover {
   background-color: #336dcd;
