@@ -20,7 +20,14 @@ module.exports = function generateCommonJSModule(grunt, srcFiles, destFilepath) 
     return 'require(\'' + requirePath + '\')';
   }
 
-  var moduleOutputJs = COMMONJS_BANNER + srcFiles.map(srcPathToDestRequire).join('\n');
+  var moduleOutputJs = [
+    COMMONJS_BANNER,
+    'if (typeof jQuery === \'undefined\')',
+    '    global.jQuery = require(\'jquery\');',
+    '',
+    srcFiles.map(srcPathToDestRequire).join('\n')
+  ].join('\n');
+
   try {
     fs.writeFileSync(destFilepath, moduleOutputJs);
   } catch (err) {
