@@ -33,7 +33,7 @@
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
-    if ($this.parent('li').is('.active, .disabled, :disabled')) return
+    if ($this.parent('li').is('.active, .disabled')) return
 
     var $previous = $ul.find('.active:last a')
     var hideEvent = $.Event('hide.bs.tab', {
