@@ -220,13 +220,12 @@ $(function () {
         + '<li class="disabled"><a href="#profile" data-toggle="tab">Profile</a></li>'
         + '<li><a href="#settings" data-toggle="tab">Settings</a></li>'
         + '</ul>'
-
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
-    
     $tabs.find('a[href=#profile]').trigger('click')
+
     assert.ok($tabs.find('a[href=#profile]').parent('li').hasClass('disabled'), 'expected disabled class on tab')
     assert.ok(!$tabs.find('a[href=#profile]').parent('li').hasClass('active'), 'active flag is present on disabled tab')
-    
+
     $tabs.find('a[href=#settings]').trigger('click')
     assert.ok(!$tabs.find('a[href=#settings]').parent('li').hasClass('disabled'), 'disabled class is found on enabled tab')
     assert.ok($tabs.find('a[href=#settings]').parent('li').hasClass('active'), 'active flag is missing from enabled tab')
