@@ -14,6 +14,7 @@
           <li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a></li>
         </ul>
       </li>
+	  <li role="presentation" class="disabled"><a href="#disabled" role="tab" id="disabled-tab" data-toggle="tab" aria-controls="disabled" aria-disabled="true">Disabled</a></li>
     </ul>
     <div id="myTabContent" class="tab-content">
       <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledBy="home-tab">
@@ -28,6 +29,9 @@
       <div role="tabpanel" class="tab-pane fade" id="dropdown2" aria-labelledBy="dropdown2-tab">
         <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
       </div>
+	  <div role="tabpanel" class="tab-pane fade" id="disabled" aria-labelledBy="disabled-tab">
+	    <p>Level wrong exhibit captain drink diagonal bumper attitude show bloom. Beefcake robotic intoxicant against attacker giver ferocious guzzling american forgotten pulse heat affair pictorial wartime rodent distancing. Headphones distinct confuse plantation rum dress tiger muscleman reason drama robbery field doll dolphins. Billionaire carrion among finale drip scenic cadaver alcoholic bovine gurgling cell drimys ornamental gunk devices alternate.</p>
+	  </div>
     </div>
   </div><!-- /example -->
 
@@ -89,6 +93,16 @@ $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
   <div role="tabpanel" class="tab-pane fade" id="messages">...</div>
   <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
 </div>
+{% endhighlight %}
+
+  <h3>Disabled tabs</h3>
+{% highlight html %}
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+  <li role="presentation" class="disabled"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" aria-disabled="true">Settings</a></li>
+</ul>
 {% endhighlight %}
 
   <h3 id="tabs-methods">Methods</h3>
