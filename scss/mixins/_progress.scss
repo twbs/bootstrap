@@ -9,7 +9,7 @@
     background-color: $color;
   }
 
-  @media screen and ("min-width:0\0") {
+  @media screen and (min-width:0\0) {
     .progress-bar {
       background-color: $color;
     }

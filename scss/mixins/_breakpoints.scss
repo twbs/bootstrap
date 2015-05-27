@@ -68,21 +68,9 @@
 // No minimum for the smallest breakpoint, and no maximum for the largest one.
 // Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
 @mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
-  // Nested media query combination does not work in libsass yet
-  // https://github.com/sass/libsass/issues/185
-  // Work around until the issue is resolved:
-  $min: breakpoint-min($name, $breakpoints);
-  $max: breakpoint-max($name, $breakpoints);
-  @if $min and $max {
-    @media (min-width: $min) and (max-width: $max) {
+  @include media-breakpoint-up($name, $breakpoints) {
+    @include media-breakpoint-down($name, $breakpoints) {
       @content;
-    }
-  } @else {
-    // One of min or max is a no-op, so this branch is not affected by libsass#185
-    @include media-breakpoint-up($name, $breakpoints) {
-      @include media-breakpoint-down($name, $breakpoints) {
-        @content;
-      }
     }
   }
 }

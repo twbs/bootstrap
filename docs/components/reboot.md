@@ -213,17 +213,17 @@ These changes, and more, are demonstrated below.
 
     <p>
       <label for="textarea">Example textarea</label>
-      <textarea id="example" rows="3"></textarea>
+      <textarea id="textarea" rows="3"></textarea>
     </p>
 
     <p>
       <label for="time">Example temporal</label>
-      <input type="date">
+      <input type="datetime" id="time">
     </p>
 
     <p>
-      <label for="time">Example output</label>
-      <output name="result">100</output>
+      <label for="output">Example output</label>
+      <output name="result" id="output">100</output>
     </p>
 
     <p>

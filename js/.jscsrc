@@ -1,4 +1,5 @@
 {
+  "esnext": true,
   "disallowEmptyBlocks": true,
   "disallowKeywords": ["with"],
   "disallowMixedSpacesAndTabs": true,
@@ -17,8 +18,11 @@
   "requireCamelCaseOrUpperCaseIdentifiers": true,
   "requireCapitalizedConstructors": true,
   "requireCommaBeforeLineBreak": true,
+  "requireDollarBeforejQueryAssignment": true,
   "requireDotNotation": true,
   "requireLineFeedAtFileEnd": true,
+  "requirePaddingNewLinesAfterUseStrict": true,
+  "requirePaddingNewLinesBeforeExport": true,
   "requireSpaceAfterBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", "<", ">=", "<="],
   "requireSpaceAfterKeywords": ["if", "else", "for", "while", "do", "switch", "return", "try", "catch"],
   "requireSpaceAfterLineComment": true,
@@ -31,7 +35,9 @@
   "requireSpacesInFunctionExpression": { "beforeOpeningCurlyBrace": true },
   "requireSpacesInNamedFunctionExpression": { "beforeOpeningCurlyBrace": true },
   "requireSpacesInsideObjectBrackets": "allButNested",
+  "validateAlignedFunctionParameters": true,
   "validateIndentation": 2,
   "validateLineBreaks": "LF",
+  "validateNewlineAfterArrayElements": true,
   "validateQuoteMarks": "'"
 }

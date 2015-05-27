@@ -131,8 +131,8 @@ dt {
 }
 
 dd {
-  margin-left: 0; // Undo browser default
   margin-bottom: .5rem;
+  margin-left: 0; // Undo browser default
 }
 
 blockquote {
@@ -216,11 +216,11 @@ table {
 }
 
 caption {
-  caption-side: bottom;
   padding-top: $table-cell-padding;
   padding-bottom: $table-cell-padding;
   color: $text-muted;
   text-align: left;
+  caption-side: bottom;
 }
 
 th {
@@ -257,14 +257,14 @@ textarea {
 }
 
 fieldset {
-  // Reset the default outline behavior of fieldsets so they don't affect page layout.
-  padding: 0;
-  margin: 0;
-  border: 0;
   // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
   // so we reset that to ensure it behaves more like a standard block element.
   // See https://github.com/twbs/bootstrap/issues/12359.
   min-width: 0;
+  // Reset the default outline behavior of fieldsets so they don't affect page layout.
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 legend {

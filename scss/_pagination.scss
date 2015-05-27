@@ -8,7 +8,6 @@
   padding-left: 0;
   margin-top: $spacer-y;
   margin-bottom: $spacer-y;
-  margin: $line-height-computed 0;
   @include border-radius();
 
   > li {

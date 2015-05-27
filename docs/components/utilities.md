@@ -29,6 +29,8 @@ Transform text in components with text capitalization classes.
 
 ### Contextual colors
 
+### Contextual colors and backgrounds
+
 Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.
 
 {% example html %}
@@ -39,20 +41,6 @@ Convey meaning through color with a handful of emphasis utility classes. These m
 <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
 <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
 {% endexample %}
-
-{% callout info %}
-#### Dealing with specificity
-
-Sometimes emphasis classes cannot be applied due to the specificity of another selector. In most cases, a sufficient workaround is to wrap your text in a `<span>` with the class.
-{% endcallout %}
-
-{% callout warning %}
-#### Conveying meaning to assistive technologies
-
-Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the contextual colors are only used to reinforce meaning that is already present in the text/markup), or is included through alternative means, such as additional text hidden with the `.sr-only` class.
-{% endcallout %}
-
-### Contextual backgrounds
 
 Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.
 
@@ -67,13 +55,13 @@ Similar to the contextual text color classes, easily set the background of an el
 {% callout info %}
 #### Dealing with specificity
 
-Sometimes contextual background classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
+Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
 {% endcallout %}
 
 {% callout warning %}
 #### Conveying meaning to assistive technologies
 
-As with [contextual colors](#helper-classes-colors), ensure that any meaning conveyed through color is also conveyed in a format that is not purely presentational.
+Ensure that any meaning conveyed through color is also conveyed in a format that is not purely presentational.
 {% endcallout %}
 
 ### Close icon

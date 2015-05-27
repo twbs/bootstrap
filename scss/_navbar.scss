@@ -61,8 +61,8 @@
 .navbar-sticky-top {
   position: sticky;
   top: 0;
-  width: 100%;
   z-index: $zindex-navbar-sticky;
+  width: 100%;
 
   // Undo the rounded corners
   @include media-breakpoint-up(sm) {

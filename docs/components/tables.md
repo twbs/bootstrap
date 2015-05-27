@@ -109,6 +109,9 @@ Use one of two modifier classes to make `<thead>`s appear light or dark gray.
       <td>@twitter</td>
     </tr>
   </tbody>
+</table>
+
+<table class="table">
   <thead class="thead-default">
     <tr>
       <th>#</th>

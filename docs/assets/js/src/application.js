@@ -51,7 +51,7 @@
 
     // Button state demo
     $('#loading-example-btn').on('click', function () {
-      var btn = $(this)
+      var $btn = $(this)
       btn.button('loading')
       setTimeout(function () {
         btn.button('reset')
@@ -60,11 +60,11 @@
 
     // Modal relatedTarget demo
     $('#exampleModal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget) // Button that triggered the modal
+      var $button = $(event.relatedTarget) // Button that triggered the modal
       var recipient = button.data('whatever') // Extract info from data-* attributes
       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
       // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-      var modal = $(this)
+      var $modal = $(this)
       modal.find('.modal-title').text('New message to ' + recipient)
       modal.find('.modal-body input').val(recipient)
     })
@@ -89,7 +89,7 @@
       $(this).before(btnHtml)
     })
     var zeroClipboard = new ZeroClipboard($('.btn-clipboard'))
-    var htmlBridge = $('#global-zeroclipboard-html-bridge')
+    var $htmlBridge = $('#global-zeroclipboard-html-bridge')
 
     // Handlers for ZeroClipboard
     zeroClipboard.on('load', function () {
@@ -129,5 +129,7 @@
 
 ;(function () {
   'use strict';
+
+
   addAnchors('.bd-container > h1, .bd-container > h2, .bd-container > h3, .bd-container > h4, .bd-container > h5');
 })();

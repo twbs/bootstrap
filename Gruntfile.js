@@ -56,27 +56,64 @@ module.exports = function (grunt) {
       docs: 'docs/dist'
     },
 
-    jshint: {
-      options: {
-        jshintrc: 'js/.jshintrc'
-      },
-      grunt: {
-        options: {
-          jshintrc: 'grunt/.jshintrc'
+    // JS build configuration
+
+    lineremover: {
+      es6Import: {
+        files: {
+          '<%= concat.bootstrap.dest %>': '<%= concat.bootstrap.dest %>'
         },
-        src: ['Gruntfile.js', 'grunt/*.js']
-      },
-      core: {
-        src: 'js/*.js'
-      },
-      test: {
         options: {
-          jshintrc: 'js/tests/unit/.jshintrc'
+          exclusionPattern: /^(import|export)/g
+        }
+      }
+    },
+
+    babel: {
+      dev: {
+        options: {
+          sourceMap: true,
+          modules: 'ignore'
         },
-        src: 'js/tests/unit/*.js'
+        files: {
+          'js/dist/util.js'      : 'js/src/util.js',
+          'js/dist/alert.js'     : 'js/src/alert.js',
+          'js/dist/button.js'    : 'js/src/button.js',
+          'js/dist/carousel.js'  : 'js/src/carousel.js',
+          'js/dist/collapse.js'  : 'js/src/collapse.js',
+          'js/dist/dropdown.js'  : 'js/src/dropdown.js',
+          'js/dist/modal.js'     : 'js/src/modal.js',
+          'js/dist/scrollspy.js' : 'js/src/scrollspy.js',
+          'js/dist/tab.js'       : 'js/src/tab.js',
+          'js/dist/tooltip.js'   : 'js/src/tooltip.js',
+          'js/dist/popover.js'   : 'js/src/popover.js'
+        }
       },
-      assets: {
-        src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
+      dist: {
+        options: {
+          modules: 'ignore'
+        },
+        files: {
+          '<%= concat.bootstrap.dest %>' : '<%= concat.bootstrap.dest %>'
+        }
+      },
+      umd: {
+        options: {
+          modules: 'umd'
+        },
+        files: {
+          'dist/js/umd/util.js'      : 'js/src/util.js',
+          'dist/js/umd/alert.js'     : 'js/src/alert.js',
+          'dist/js/umd/button.js'    : 'js/src/button.js',
+          'dist/js/umd/carousel.js'  : 'js/src/carousel.js',
+          'dist/js/umd/collapse.js'  : 'js/src/collapse.js',
+          'dist/js/umd/dropdown.js'  : 'js/src/dropdown.js',
+          'dist/js/umd/modal.js'     : 'js/src/modal.js',
+          'dist/js/umd/scrollspy.js' : 'js/src/scrollspy.js',
+          'dist/js/umd/tab.js'       : 'js/src/tab.js',
+          'dist/js/umd/tooltip.js'   : 'js/src/tooltip.js',
+          'dist/js/umd/popover.js'   : 'js/src/popover.js'
+        }
       }
     },
 
@@ -85,103 +122,71 @@ module.exports = function (grunt) {
         config: 'js/.jscsrc'
       },
       grunt: {
-        src: '<%= jshint.grunt.src %>'
+        src: ['Gruntfile.js', 'grunt/*.js']
       },
       core: {
-        src: '<%= jshint.core.src %>'
+        src: 'js/src/*.js'
       },
       test: {
-        src: '<%= jshint.test.src %>'
+        src: 'js/tests/unit/*.js'
       },
       assets: {
         options: {
           requireCamelCaseOrUpperCaseIdentifiers: null
         },
-        src: '<%= jshint.assets.src %>'
+        src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
+      }
+    },
+
+    stamp: {
+      options: {
+        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>\n+function ($) {\n',
+        footer: '\n}(jQuery);'
+      },
+      bootstrap: {
+        files: {
+          src: '<%= concat.bootstrap.dest %>'
+        }
       }
     },
 
     concat: {
       options: {
-        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
         stripBanners: false
       },
       bootstrap: {
         src: [
-          'js/util.js',
-          'js/alert.js',
-          'js/button.js',
-          'js/carousel.js',
-          'js/collapse.js',
-          'js/dropdown.js',
-          'js/modal.js',
-          'js/scrollspy.js',
-          'js/tooltip.js',
-          'js/popover.js',
-          'js/tab.js'
+          'js/src/util.js',
+          'js/src/alert.js',
+          'js/src/button.js',
+          'js/src/carousel.js',
+          'js/src/collapse.js',
+          'js/src/dropdown.js',
+          'js/src/modal.js',
+          'js/src/scrollspy.js',
+          'js/src/tab.js',
+          'js/src/tooltip.js',
+          'js/src/popover.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
     },
 
-    closureCompiler:  {
-
-      options: {
-        compilerFile: require('superstartup-closure-compiler').getPath(),
-        checkModified: false,
-
-        compilerOpts: {
-           // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-           // jscomp_warning: 'reportUnknownTypes', someday - maybe we will get to 100% typed, this helps track those down
-           compilation_level: 'ADVANCED_OPTIMIZATIONS',
-           warning_level: 'verbose',
-           summary_detail_level: 3,
-           output_wrapper:
-                '"<%= banner %><%= jqueryCheck %><%= jqueryVersionCheck %>'
-             + '(function($){%output%})(jQuery);"',
-           externs: 'js/externs/*.js'
-           // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
-        },
-
-        execOpts: {
-           maxBuffer: 999999 * 1024
-        },
-
-        // [OPTIONAL] Java VM optimization options
-        // see https://code.google.com/p/closure-compiler/wiki/FAQ#What_are_the_recommended_Java_VM_command-line_options?
-        // Setting one of these to 'true' is strongly recommended,
-        // and can reduce compile times by 50-80% depending on compilation size
-        // and hardware.
-        // On server-class hardware, such as with Github's Travis hook,
-        // TieredCompilation should be used; on standard developer hardware,
-        // d32 may be better. Set as appropriate for your environment.
-        // Default for both is 'false'; do not set both to 'true'.
-        d32: false, // will use 'java -client -d32 -jar compiler.jar'
-        TieredCompilation: false // will use 'java -server -XX:+TieredCompilation -jar compiler.jar'
-      },
-
-      targetName: {
-        src: [
-          'js/util.js',
-          'js/alert.js',
-          'js/button.js',
-          'js/carousel.js',
-          'js/collapse.js',
-          'js/dropdown.js',
-          'js/modal.js',
-          'js/scrollspy.js',
-          'js/tooltip.js',
-          'js/popover.js',
-          'js/tab.js'
-        ],
-        dest: 'dist/js/<%= pkg.name %>.min.js'
-      }
-
-    },
-
     uglify: {
       options: {
+        compress: {
+          warnings: false
+        },
+        mangle: true,
         preserveComments: 'some'
+      },
+      core: {
+        src: '<%= concat.bootstrap.dest %>',
+        dest: 'dist/js/<%= pkg.name %>.min.js'
+      },
+      customize: {
+        src: configBridge.paths.customizerJs,
+        dest: 'docs/assets/js/customize.min.js'
       },
       docsJs: {
         src: configBridge.paths.docsJs,
@@ -195,6 +200,9 @@ module.exports = function (grunt) {
       },
       files: 'js/tests/index.html'
     },
+
+
+    // CSS build configuration
 
     scsslint: {
       scss: ['scss/*.scss', '!scss/_normalize.scss'],
@@ -335,7 +343,8 @@ module.exports = function (grunt) {
           'Attribute “autocomplete” not allowed on element “input” at this point.',
           'Attribute “autocomplete” not allowed on element “button” at this point.',
           'Element “div” not allowed as child of element “progress” in this context. (Suppressing further errors from this subtree.)',
-          'Consider using the “h1” element as a top-level heading only (all “h1” elements are treated as top-level headings by many screen readers and other tools).'
+          'Consider using the “h1” element as a top-level heading only (all “h1” elements are treated as top-level headings by many screen readers and other tools).',
+          'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
         ]
       },
       src: '_gh_pages/**/*.html'
@@ -343,12 +352,12 @@ module.exports = function (grunt) {
 
     watch: {
       src: {
-        files: '<%= jshint.core.src %>',
-        tasks: ['jshint:core', 'qunit', 'concat']
+        files: '<%= jscs.core.src %>',
+        tasks: ['babel:dev']
       },
       test: {
-        files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'qunit']
+        files: '<%= jscs.test.src %>',
+        tasks: ['qunit']
       },
       sass: {
         files: 'scss/**/*.scss',
@@ -440,10 +449,10 @@ module.exports = function (grunt) {
     testSubtasks.push('saucelabs-qunit');
   }
   grunt.registerTask('test', testSubtasks);
-  grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
+  grunt.registerTask('test-js', ['jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'closureCompiler', 'commonjs']);
+  grunt.registerTask('dist-js', ['concat', 'lineremover', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
 
   grunt.registerTask('test-scss', ['scsslint:scss']);
 
@@ -467,8 +476,12 @@ module.exports = function (grunt) {
   // This can be overzealous, so its changes should always be manually reviewed!
   grunt.registerTask('change-version-number', 'sed');
 
-  grunt.registerTask('commonjs', 'Generate CommonJS entrypoint module in dist dir.', function () {
-    var srcFiles = grunt.config.get('concat.bootstrap.src');
+  grunt.registerTask('commonjs', ['babel:umd', 'npm-js']);
+
+  grunt.registerTask('npm-js', 'Generate npm-js entrypoint module in dist dir.', function () {
+    var srcFiles = Object.keys(grunt.config.get('babel.umd.files')).map(function (filename) {
+      return './' + path.join('umd', path.basename(filename))
+    })
     var destFilepath = 'dist/js/npm.js';
     generateCommonJSModule(grunt, srcFiles, destFilepath);
   });
@@ -476,7 +489,7 @@ module.exports = function (grunt) {
   // Docs task.
   grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
-  grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
+  grunt.registerTask('lint-docs-js', ['jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
 
   grunt.registerTask('docs-github', ['jekyll:github']);

@@ -35,8 +35,8 @@
     "glob": "~5.0.3",
     "grunt": "~0.4.5",
     "grunt-autoprefixer": "~2.2.0",
+    "grunt-babel": "^5.0.0",
     "grunt-banner": "~0.3.1",
-    "grunt-closure-tools": "^0.9.7",
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-compress": "~0.13.0",
     "grunt-contrib-concat": "~0.5.1",
@@ -54,17 +54,18 @@
     "grunt-exec": "~0.4.6",
     "grunt-html": "~4.0.1",
     "grunt-jekyll": "~0.4.2",
-    "grunt-jscs": "~1.5.0",
+    "grunt-jscs": "~1.8.0",
+    "grunt-line-remover": "0.0.2",
     "grunt-postcss": "^0.3.0",
-    "grunt-sass": "~0.18.0",
+    "grunt-sass": "^1.0.0",
     "grunt-saucelabs": "~8.6.0",
     "grunt-scss-lint": "^0.3.4",
     "grunt-sed": "~0.1.1",
+    "grunt-stamp": "^0.1.0",
     "load-grunt-tasks": "~3.1.0",
     "markdown-it": "^4.0.1",
-    "mq4-hover-shim": "^0.1.0",
+    "mq4-hover-shim": "^0.2.0",
     "npm-shrinkwrap": "^200.1.0",
-    "superstartup-closure-compiler": "^0.1.6",
     "time-grunt": "^1.1.0"
   },
   "engines": {
@@ -87,6 +88,10 @@
         "exports": "$"
       }
     },
-    "files": ["css", "fonts", "js"]
+    "files": [
+      "css",
+      "fonts",
+      "js"
+    ]
   }
 }
