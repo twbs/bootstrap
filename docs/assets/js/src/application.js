@@ -131,5 +131,5 @@
   'use strict';
 
 
-  addAnchors('.bd-container > h1, .bd-container > h2, .bd-container > h3, .bd-container > h4, .bd-container > h5');
+  addAnchors('.bd-container > h2, .bd-container > h3, .bd-container > h4, .bd-container > h5');
 })();
