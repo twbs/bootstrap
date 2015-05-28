@@ -54,11 +54,9 @@
   }
 
   // Card examples should be horizontal
-  // > .card {
-  //   float: left;
-  //   max-width: 15rem;
-  //   margin: .25rem;
-  // }
+  > .card {
+    max-width: 20rem;
+  }
 
   > .nav + .nav,
   > .alert + .alert,
