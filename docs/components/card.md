@@ -7,7 +7,7 @@ A **card** is a flexible and extensible content container. It includes options f
 
 If you're familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards.
 
-### Basic example
+## Basic example
 
 Cards require very little markup, but do require some additional classes to give you as much control as possible. Create a `.card`, add any heading with `.card-title`, and use `.card-text` on paragraphs. These classes ensure proper spacing and alignment.
 
@@ -19,17 +19,32 @@ Cards require very little markup, but do require some additional classes to give
 </div>
 {% endexample %}
 
-### Sizing
+## Sizing
 
 Cards are block-level by default, so they'll fill the available horizontal space. Constrain their widths via custom styles, our predefined grid classes, or our grid mixins.
 
+Using the card size variations:
+
 {% example html %}
-<div class="card" style="width: 20rem;">
+<div class="card card-sm">
+  <h3 class="card-title">Special title treatment</h3>
+  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  <a href="#" class="btn btn-primary">Go somewhere</a>
+</div>
+<div class="card card-md">
+  <h3 class="card-title">Special title treatment</h3>
+  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  <a href="#" class="btn btn-primary">Go somewhere</a>
+</div>
+<div class="card card-lg">
   <h3 class="card-title">Special title treatment</h3>
   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   <a href="#" class="btn btn-primary">Go somewhere</a>
 </div>
 {% endexample %}
+
+
+Using the grid:
 
 {% example html %}
 <div class="row">
@@ -50,7 +65,17 @@ Cards are block-level by default, so they'll fill the available horizontal space
 </div>
 {% endexample %}
 
-### Text alignment
+Using custom widths:
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <h3 class="card-title">Special title treatment</h3>
+  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  <a href="#" class="btn btn-primary">Go somewhere</a>
+</div>
+{% endexample %}
+
+## Text alignment
 
 You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]().
 
@@ -74,7 +99,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
 </div>
 {% endexample %}
 
-### Header and footer
+## Header and footer
 
 Add an optional header and/or footer within a card.
 
@@ -126,7 +151,7 @@ Add an optional header and/or footer within a card.
 </div>
 {% endexample %}
 
-### Image caps
+## Image caps
 
 Similar to headers and footers, cards include top and bottom image caps.
 
@@ -145,7 +170,7 @@ Similar to headers and footers, cards include top and bottom image caps.
 </div>
 {% endexample %}
 
-### Image overlays
+## Image overlays
 
 Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need `.card-inverse`.
 
@@ -160,7 +185,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
 </div>
 {% endexample %}
 
-### Inverted text
+## Inverted text
 
 Cards include a class for quickly toggling the text color. By default, cards use dark text and assume a light background. **Add `.card-inverse` for white text on a dark background.** You'll need to specify the `background-color` and `border-color` to go with it, or use the [contextual backgrounds](#context-variations).
 
@@ -172,7 +197,7 @@ Cards include a class for quickly toggling the text color. By default, cards use
 </div>
 {% endexample %}
 
-### Background variants
+## Background variants
 
 Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. Darker colors require the use of `.card-inverse`.
 
@@ -209,7 +234,7 @@ Cards include their own variant classes for quickly changing the `background-col
 </div>
 {% endexample %}
 
-### Groups
+## Groups
 
 Set a `width` on the `.card-group`, content automatically sizes for equal columns via `display: table;` and `table-layout: fixed;`. And because we're using table styles, we also get equal height for free.
 
@@ -236,7 +261,7 @@ Set a `width` on the `.card-group`, content automatically sizes for equal column
 </div>
 {% endexample %}
 
-### Sets
+## Sets
 
 Get equal-width and equal-height cards by using two wrappers: `.card-set-wrapper` and a `.card-set`. We use table styles for the sizing and the gutters on `.card-set`. The `.card-set-wrapper` is used to negative margin out the `border-spacing` on the `.card-set`.
 
@@ -265,7 +290,7 @@ Get equal-width and equal-height cards by using two wrappers: `.card-set-wrapper
 </div>
 {% endexample %}
 
-### Columns
+## Columns
 
 Cards can be organized into columns by wrapping a group with `.card-columns`.
 
