@@ -4,7 +4,6 @@
 
 .card {
   position: relative;
-  display: inline-block;
   padding: 1.25rem;
   margin-bottom: 1.25rem;
   border: .075rem solid #eee;
@@ -180,14 +179,21 @@
 //
 
 .card-group {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
+  @if $enable-flex {
+    display: flex;
+    flex-flow: row wrap;
+  } @else {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
 
   .card {
-    display: table-cell;
-    float: none;
-    max-width: none;
+    @if $enable-flex {
+      flex: 1 0 0;
+    } @else {
+      display: table-cell;
+    }
 
     + .card {
       margin-left: 0;
