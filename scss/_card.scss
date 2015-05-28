@@ -2,27 +2,67 @@
 // Base styles
 //
 
+$card-spacer-x:      1.25rem;
+$card-spacer-y:      .75rem;
+$card-border-width:  .0625rem;
+$card-border-radius: .25rem;
+
 .card {
   position: relative;
-  padding: 1.25rem;
-  margin-bottom: 1.25rem;
-  border: .075rem solid #eee;
+  margin-bottom: $card-spacer-y;
+  border: $card-border-width solid #e5e5e5;
+  @include border-radius($card-border-radius);
 }
+
+.card-block {
+  padding: $card-spacer-x;
+}
+
 .card-title {
   margin-top: 0;
-  margin-bottom: .75rem;
+  margin-bottom: $card-spacer-y;
 }
+
+.card-subtitle {
+  margin-top: -($card-spacer-y / 2);
+  margin-bottom: 0;
+}
+
 .card-text:last-child {
   margin-bottom: 0;
 }
-.card-actions {
-  .card-link + .card-link {
-    margin-left: .75rem;
-  }
-}
+
+// .card-actions {
+//   padding: $card-spacer-y $card-spacer-x;
+
+//   .card-link + .card-link {
+//     margin-left: $card-spacer-x;
+//   }
+// }
+
 .card-link {
   @include hover {
     text-decoration: none;
+  }
+
+  + .card-link {
+    margin-left: $card-spacer-x;
+  }
+}
+
+@if $enable-rounded {
+  .card {
+    > .list-group:first-child {
+      .list-group-item:first-child {
+        border-radius: $card-border-radius $card-border-radius 0 0;
+      }
+    }
+
+    > .list-group:last-child {
+      .list-group-item:last-child {
+        border-radius: 0 0 $card-border-radius $card-border-radius;
+      }
+    }
   }
 }
 
@@ -32,33 +72,21 @@
 //
 
 .card-header {
-  padding: .75rem 1.25rem;
-  margin: -1.25rem -1.25rem 1.25rem;
-  border-bottom: .075rem solid #eee;
-  @include border-radius(.25rem .25rem 0 0);
+  padding: $card-spacer-y $card-spacer-x;
+  border-bottom: $card-border-width solid #eee;
+
+  &:first-child {
+    @include border-radius($card-border-radius $card-border-radius 0 0);
+  }
 }
+
 .card-footer {
-  padding: .75rem 1.25rem;
-  margin: 1.25rem -1.25rem -1.25rem;
-  border-top: .075rem solid #eee;
-  @include border-radius(0 0 .25rem .25rem);
-}
+  padding: $card-spacer-y $card-spacer-x;
+  border-top: $card-border-width solid #eee;
 
-
-//
-// Sizing variations
-//
-
-.card-sm {
-  width: 15rem;
-}
-
-.card-md {
-  width: 30rem;
-}
-
-.card-lg {
-  width: 45rem;
+  &:last-child {
+    @include border-radius(0 0 $card-border-radius $card-border-radius);
+  }
 }
 
 
@@ -128,7 +156,7 @@
 
 // Card image
 .card-img {
-  margin: -1.325rem;
+  // margin: -1.325rem;
   @include border-radius(.25rem);
 }
 .card-img-overlay {
@@ -144,11 +172,9 @@
 
 // Card image caps
 .card-img-top {
-  margin: -1.325rem -1.325rem 1.25rem;
   @include border-radius(.25rem .25rem 0 0);
 }
 .card-img-bottom {
-  margin: 1.25rem -1.325rem -1.325rem;
   @include border-radius(0 0 .25rem .25rem);
 }
 
@@ -157,22 +183,36 @@
 // Card set
 //
 
-.card-set {
-  display: table;
-  table-layout: fixed;
-  border-spacing: 1.25rem 0;
+@if $enable-flex {
+  .card-deck {
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: -.75rem;
+    margin-left: -.75rem;
 
-  .card {
-    display: table-cell;
-    float: none;
-    max-width: none;
+    .card {
+      flex: 1 0 0;
+      margin-left: .75rem;
+      margin-right: .75rem;
+    }
+  }
+} @else {
+  .card-deck {
+    display: table;
+    table-layout: fixed;
+    border-spacing: 1.25rem 0;
+
+    .card {
+      display: table-cell;
+      float: none;
+      max-width: none;
+    }
+  }
+  .card-deck-wrapper {
+    margin-right: -1.25rem;
+    margin-left: -1.25rem;
   }
 }
-.card-set-wrapper {
-  margin-right: -1.25rem;
-  margin-left: -1.25rem;
-}
-
 
 //
 // Card groups
@@ -198,6 +238,38 @@
     + .card {
       margin-left: 0;
       border-left: 0;
+    }
+
+    // Handle rounded corners
+    &:first-child {
+      .card-img-top {
+        @if $enable-rounded {
+          border-top-right-radius: 0;
+        }
+      }
+      .card-img-bottom {
+        @if $enable-rounded {
+          border-bottom-right-radius: 0;
+        }
+      }
+    }
+    &:last-child {
+      .card-img-top {
+        @if $enable-rounded {
+          border-top-left-radius: 0;
+        }
+      }
+      .card-img-bottom {
+        @if $enable-rounded {
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+    &:not(:first-child):not(:last-child) {
+      .card-img-top,
+      .card-img-bottom {
+        @include border-radius(0);
+      }
     }
   }
 }

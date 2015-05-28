@@ -10,7 +10,7 @@
 .list-group {
   // No need to set list-style: none; since .list-group-item is block level
   padding-left: 0; // reset padding because ul and ol
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 
@@ -21,11 +21,11 @@
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: .75rem 1.25rem;
   // Place the border on the list items and negative margin up for better styling
-  margin-bottom: -1px;
+  margin-bottom: -.0625rem;
   background-color: $list-group-bg;
-  border: 1px solid $list-group-border;
+  border: .0625rem solid $list-group-border;
 
   // Round the first and last items
   &:first-child {
@@ -34,6 +34,13 @@
   &:last-child {
     margin-bottom: 0;
     @include border-bottom-radius($list-group-border-radius);
+  }
+}
+
+.list-group-flush {
+  .list-group-item {
+    border-width: .0625rem 0;
+    border-radius: 0;
   }
 }
 
