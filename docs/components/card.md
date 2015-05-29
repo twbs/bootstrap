@@ -14,7 +14,7 @@ If you're familiar with Bootstrap 3, cards replace our old panels, wells, and th
 
 ## Example
 
-Cards require a small amount of markup and classes to provide you with as much control as possible. These classes and markup are flexible though and can typically be remixed and extended with ease.
+Cards require a small amount of markup and classes to provide you with as much control as possible. These classes and markup are flexible though and can typically be remixed and extended with ease. For example, if your card has no flush content like images, feel free to put the `.card-block` class on the `.card` element to consolidate your markup.
 
 {% example html %}
 <div class="card">
@@ -60,13 +60,11 @@ Cards support a wide variety of content, including images, text, list groups, li
 {% endexample %}
 
 {% example html %}
-<div class="card">
-  <div class="card-block">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
+<div class="card card-block">
+  <h4 class="card-title">Card title</h4>
+  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <a href="#" class="card-link">Card link</a>
+  <a href="#" class="card-link">Another link</a>
 </div>
 {% endexample %}
 
@@ -216,7 +214,7 @@ Similar to headers and footers, cards include top and bottom image caps.
 
 ## Image overlays
 
-Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need `.card-inverse`.
+Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need `.card-inverse` (see below).
 
 {% example html %}
 <div class="card card-inverse">
@@ -231,7 +229,9 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 ## Inverted text
 
-Cards include a class for quickly toggling the text color. By default, cards use dark text and assume a light background. **Add `.card-inverse` for white text on a dark background.** You'll need to specify the `background-color` and `border-color` to go with it, or use the [contextual backgrounds](#context-variations).
+Cards include a class for quickly toggling **the text color**. By default, cards use dark text and assume a light background. **Add `.card-inverse` for white text** and specify the `background-color` and `border-color` to go with it.
+
+You can also use `.card-inverse` with the [contextual backgrounds variants](#background-variations).
 
 {% example html %}
 <div class="card card-inverse" style="background-color: #333; border-color: #333;">
@@ -245,7 +245,7 @@ Cards include a class for quickly toggling the text color. By default, cards use
 
 ## Background variants
 
-Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. Darker colors require the use of `.card-inverse`.
+Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-inverse`.**
 
 {% example html %}
 <div class="card card-inverse card-primary text-center">
@@ -292,7 +292,7 @@ Cards include their own variant classes for quickly changing the `background-col
 
 ## Groups
 
-Set a `width` on the `.card-group`, content automatically sizes for equal columns via `display: table;` and `table-layout: fixed;`. And because we're using table styles, we also get equal height for free.
+Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode](/layout/flexbox) can switch that to use `display: flex;` and provide the same effect.
 
 {% example html %}
 <div class="card-group">
@@ -325,7 +325,9 @@ Set a `width` on the `.card-group`, content automatically sizes for equal column
 
 ## Decks
 
-Get equal-width and equal-height cards by using two wrappers: `.card-deck-wrapper` and a `.card-deck`. We use table styles for the sizing and the gutters on `.card-deck`. The `.card-deck-wrapper` is used to negative margin out the `border-spacing` on the `.card-deck`.
+Need a set of equal width and height cards that aren't attached to one another? Use card decks. By default, card decks require two wrapping elements: `.card-deck-wrapper` and a `.card-deck`. We use table styles for the sizing and the gutters on `.card-deck`. The `.card-deck-wrapper` is used to negative margin out the `border-spacing` on the `.card-deck`.
+
+**ProTip!** If you enable [flexbox mode](/layout/flexbox), you can remove the `.card-deck-wrapper`.
 
 {% example html %}
 <div class="card-deck-wrapper">
@@ -360,48 +362,64 @@ Get equal-width and equal-height cards by using two wrappers: `.card-deck-wrappe
 
 ## Columns
 
-Cards can be organized into columns by wrapping a group with `.card-columns`.
+Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. **Heads up!** This is **not available in IE9 and below** as they have no support for the `column` CSS properties.
 
 {% example html %}
 <div class="card-columns">
   <div class="card">
-    <img class="card-img-top" data-src="holder.js/260x160/" alt="Card image cap">
-    <h4 class="card-title">Card title that wraps to a new line</h4>
-    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <img class="card-img-top" data-src="holder.js/100%x160/" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Card title that wraps to a new line</h4>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
   </div>
-  <div class="card">
+  <div class="card card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer>
+        <small class="text-muted">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </small>
+      </footer>
     </blockquote>
   </div>
   <div class="card">
-    <img class="card-img-top" data-src="holder.js/260x160/" alt="Card image cap">
+    <img class="card-img-top" data-src="holder.js/100%x160/" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card card-block card-inverse card-primary text-center">
+    <blockquote class="card-blockquote">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+      <footer>
+        <small>
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+  <div class="card card-block text-center">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
-  <div class="card card-inverse card-primary text-center">
+  <div class="card">
+    <img class="card-img" data-src="holder.js/100%x260/" alt="Card image">
+  </div>
+  <div class="card card-block text-right">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer>
+        <small class="text-muted">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </small>
+      </footer>
     </blockquote>
   </div>
-  <div class="card">
-    <img class="card-img" data-src="holder.js/260x260/" alt="Card image">
-  </div>
-  <div class="card text-center">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-  <div class="card text-right">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-  <div class="card">
+  <div class="card card-block">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
