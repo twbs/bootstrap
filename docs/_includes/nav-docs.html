@@ -41,6 +41,7 @@
                 {{ doc.title }}
               </a>
 
+              {% comment %}
               {% unless doc.sections == nil %}
                 <ul class="nav">
                   {% for section in doc.sections %}
@@ -52,6 +53,7 @@
                   {% endfor %}
                 </ul>
               {% endunless %}
+              {% endcomment %}
             </li>
           {% endfor %}
         </ul>
