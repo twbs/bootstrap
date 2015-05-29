@@ -3746,9 +3746,13 @@ input[type="button"].btn-block {
 
 .card {
   position: relative;
+  margin-bottom: .75rem;
+  border: .0625rem solid #e5e5e5;
+  border-radius: .25rem;
+}
+
+.card-block {
   padding: 1.25rem;
-  margin-bottom: 1.25rem;
-  border: .075rem solid #eee;
 }
 
 .card-title {
@@ -3756,30 +3760,47 @@ input[type="button"].btn-block {
   margin-bottom: .75rem;
 }
 
-.card-text:last-child {
+.card-subtitle {
+  margin-top: -.375rem;
   margin-bottom: 0;
 }
 
-.card-actions .card-link + .card-link {
-  margin-left: .75rem;
+.card-text:last-child {
+  margin-bottom: 0;
 }
 
 .card-link:hover {
   text-decoration: none;
 }
 
+.card-link + .card-link {
+  margin-left: 1.25rem;
+}
+
+.card > .list-group:first-child .list-group-item:first-child {
+  border-radius: .25rem .25rem 0 0;
+}
+
+.card > .list-group:last-child .list-group-item:last-child {
+  border-radius: 0 0 .25rem .25rem;
+}
+
 .card-header {
   padding: .75rem 1.25rem;
-  margin: -1.25rem -1.25rem 1.25rem;
-  border-bottom: .075rem solid #eee;
-  border-radius: .25rem .25rem 0 0;
+  background-color: #f5f5f5;
+  border-bottom: .0625rem solid #e5e5e5;
+}
+.card-header:first-child {
+  border-radius: .1875rem .1875rem 0 0;
 }
 
 .card-footer {
   padding: .75rem 1.25rem;
-  margin: 1.25rem -1.25rem -1.25rem;
-  border-top: .075rem solid #eee;
-  border-radius: 0 0 .25rem .25rem;
+  background-color: #f5f5f5;
+  border-top: .0625rem solid #e5e5e5;
+}
+.card-footer:last-child {
+  border-radius: 0 0 .1875rem .1875rem;
 }
 
 .card-primary {
@@ -3837,7 +3858,6 @@ input[type="button"].btn-block {
 }
 
 .card-img {
-  margin: -1.325rem;
   border-radius: .25rem;
 }
 
@@ -3851,27 +3871,25 @@ input[type="button"].btn-block {
 }
 
 .card-img-top {
-  margin: -1.325rem -1.325rem 1.25rem;
   border-radius: .25rem .25rem 0 0;
 }
 
 .card-img-bottom {
-  margin: 1.25rem -1.325rem -1.325rem;
   border-radius: 0 0 .25rem .25rem;
 }
 
-.card-set {
+.card-deck {
   display: table;
   table-layout: fixed;
   border-spacing: 1.25rem 0;
 }
-.card-set .card {
+.card-deck .card {
   display: table-cell;
   float: none;
   max-width: none;
 }
 
-.card-set-wrapper {
+.card-deck-wrapper {
   margin-right: -1.25rem;
   margin-left: -1.25rem;
 }
@@ -3883,12 +3901,30 @@ input[type="button"].btn-block {
 }
 .card-group .card {
   display: table-cell;
-  float: none;
-  max-width: none;
+  vertical-align: top;
 }
 .card-group .card + .card {
   margin-left: 0;
   border-left: 0;
+}
+.card-group .card:first-child .card-img-top {
+  border-top-right-radius: 0;
+}
+.card-group .card:first-child .card-img-bottom {
+  border-bottom-right-radius: 0;
+}
+.card-group .card:last-child .card-img-top {
+  border-top-left-radius: 0;
+}
+.card-group .card:last-child .card-img-bottom {
+  border-bottom-left-radius: 0;
+}
+.card-group .card:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.card-group .card:not(:first-child):not(:last-child) .card-img-top,
+      .card-group .card:not(:first-child):not(:last-child) .card-img-bottom {
+  border-radius: 0;
 }
 
 .card-columns {
@@ -4550,16 +4586,16 @@ a.badge:hover {
 
 .list-group {
   padding-left: 0;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
-  margin-bottom: -1px;
+  padding: .75rem 1.25rem;
+  margin-bottom: -.0625rem;
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: .0625rem solid #ddd;
 }
 .list-group-item:first-child {
   border-top-left-radius: .25rem; 
@@ -4569,6 +4605,11 @@ a.badge:hover {
   margin-bottom: 0;
   border-bottom-right-radius: .25rem;
   border-bottom-left-radius: .25rem;
+}
+
+.list-group-flush .list-group-item {
+  border-width: .0625rem 0;
+  border-radius: 0;
 }
 
 a.list-group-item {
