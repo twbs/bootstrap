@@ -37,6 +37,7 @@
     width: 240px;
     overflow-y: auto;
     border-right: 1px solid #eee;
+    -webkit-transform: translated3d(0,0,0); // Ensure proper scrolling of sidebar
   }
 }
 
