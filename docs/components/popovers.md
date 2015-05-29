@@ -5,6 +5,11 @@ title: Popovers
 
 Add small overlays of content, like those found in iOS, to any element for housing secondary information.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Overview
 
 Things to know when using the popover plugin:

@@ -5,6 +5,11 @@ title: Buttons
 
 Buttons are used to execute actions in forms, dialogs, and more. Use any of the available button classes to quickly create a styled button.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Examples
 
 Bootstrap includes six predefined button styles, each serving its own semantic purpose.

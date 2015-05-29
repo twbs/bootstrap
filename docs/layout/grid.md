@@ -7,6 +7,11 @@ Bootstrap includes a powerful mobile-first grid system for building layouts of a
 
 There are multiple tiers for different device sizes, available via our predefined classes or semantic mixins.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ### Quick start
 
 - Example grid class

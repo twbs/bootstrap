@@ -11,7 +11,12 @@ Bootstrap can come in one of two forms, as precompiled or source code. Learn mor
 Please note that **all JavaScript plugins require jQuery** to be included, as shown in the [starter template](../quick-start). [Consult our `bower.json`]({{ site.repo }}/blob/v{{ site.current_version }}/bower.json) to see which versions of jQuery are supported.
 {% endcallout %}
 
-### Precompiled Bootstrap
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Precompiled Bootstrap
 
 Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:
 
@@ -30,7 +35,7 @@ bootstrap/
 
 This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors) (`bootstrap.*.map`) are available for use with certain browsers' developer tools.
 
-### Bootstrap source code
+## Bootstrap source code
 
 The Bootstrap source code download includes the precompiled CSS and JavaScript assets, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:
 

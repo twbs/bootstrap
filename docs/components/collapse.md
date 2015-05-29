@@ -5,6 +5,11 @@ title: Collapse
 
 Flexible plugin that utilizes a handful of classes for easy toggle behavior.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 {% callout danger %}
 #### Plugin dependency
 

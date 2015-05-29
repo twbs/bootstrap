@@ -5,6 +5,11 @@ title: Supported platforms
 
 Bootstrap is built to work best with the latest techniques. As such, older desktop and mobile browsers may display differently, but should remain fully functional.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Supported browsers
 
 Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11**. More specific support information is provided below.

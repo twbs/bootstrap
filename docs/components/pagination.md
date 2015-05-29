@@ -5,6 +5,11 @@ title: Pagination
 
 Provide pagination links for your site or app with the multi-page pagination component, or the simpler [pager alternative](#pagination-pager).
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Default pagination
 
 Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.

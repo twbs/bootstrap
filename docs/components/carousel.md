@@ -5,6 +5,11 @@ title: Carousel
 
 A slideshow component for cycling through elements—images or slides of text—like a carousel. **Nested carousels are not supported.**
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Example
 
 {% example html %}

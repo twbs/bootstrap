@@ -5,7 +5,12 @@ title: Media
 
 Abstract object styles for building custom components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.
 
-### Default media
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Default media
 
 The default media allow to float a media object (images, video, audio) to the left or right of a content block.
 
@@ -21,7 +26,7 @@ The default media allow to float a media object (images, video, audio) to the le
 </div>
 {% endexample %}
 
-### Nesting
+## Nesting
 
 Media components can also be nested.
 
@@ -48,7 +53,7 @@ Media components can also be nested.
 </div>
 {% endexample %}
 
-### Alignment
+## Alignment
 
 The images or other media can be aligned top, middle, or bottom. The default is top aligned.
 
@@ -97,7 +102,7 @@ The images or other media can be aligned top, middle, or bottom. The default is 
 </div>
 {% endexample %}
 
-### Media list
+## Media list
 
 With a bit of extra markup, you can use media inside list (useful for comment threads or articles lists).
 

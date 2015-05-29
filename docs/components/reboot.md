@@ -7,6 +7,11 @@ Part of Bootstrap's job is to provide an elegant, consistent, and simple baselin
 
 Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Approach
 
 Here are our guidelines and reasons for choosing what to override in Reboot:

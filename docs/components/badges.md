@@ -5,6 +5,11 @@ title: Badges
 
 Badges are indicators for new or unread activity and include support for the active states of our [navigation components](/components/navs/), links, buttons, and more.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 {% example html %}
 <a href="#">Inbox <span class="badge">42</span></a>
 {% endexample %}

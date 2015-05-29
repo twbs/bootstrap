@@ -5,6 +5,11 @@ title: Button group
 
 Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with [our buttons plugin](../javascript/#buttons).
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 {% callout warning %}
 #### Tooltips & popovers in button groups require special setting
 

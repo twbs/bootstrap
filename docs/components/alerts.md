@@ -5,6 +5,11 @@ title: Alerts
 
 Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Examples
 
 Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the four **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts jQuery plugin](#dismissing).

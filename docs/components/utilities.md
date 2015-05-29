@@ -5,6 +5,11 @@ title: Utility classes
 
 Bootstrap includes dozens of utilities—classes with a single purpose. They're designed to keep the number of declarations in your CSS down while allowing for quick and easy development.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ### Text alignment
 
 Easily realign text to components with text alignment classes.

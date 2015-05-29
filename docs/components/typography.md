@@ -5,6 +5,11 @@ title: Typography
 
 Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes](/components/utilities/).
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Global settings
 
 Bootstrap sets basic global display, typography, and link styles. Specifically, we:

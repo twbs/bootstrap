@@ -5,6 +5,11 @@ title: Flexbox
 
 Flexbox support has finally come to Bootstrap. Opt-in to the new CSS layout styles with the flick of a variable or the swap of a stylesheet.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## What's included
 
 Flexbox support is available for a number of Bootstrap's components:

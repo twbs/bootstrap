@@ -7,7 +7,12 @@ The scaffolding of Bootstrap refers to our general approach to building the proj
 
 Bootstrap's general approach to writing HTML, CSS, and JavaScript, as well as our core settings, is referred to as scaffolding. This includes required responsive and cross browser enhancements, dependencies, and more.
 
-### HTML5 doctype
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## HTML5 doctype
 
 Bootstrap makes use of certain HTML elements and CSS properties that **require** the use of the HTML5 doctype. Include it at the beginning of all your projects.
 
@@ -18,7 +23,7 @@ Bootstrap makes use of certain HTML elements and CSS properties that **require**
 </html>
 {% endhighlight %}
 
-### Mobile first
+## Mobile first
 
 Bootstrap is developed *mobile first*, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries.
 
@@ -28,11 +33,11 @@ To ensure proper rendering and touch zooming, **add the viewport meta tag** to y
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% endhighlight %}
 
-### Normalize
+## Normalize
 
 For improved cross-browser rendering, we use [Normalize.css](http://necolas.github.io/normalize.css/) to correct small inconsistencies across browsers and devices.
 
-### Important CSS resets
+## Important CSS resets
 
 Still need to do this section. Should port the third party section about box sizing and edit it for here, then add the rest of the list items.
 

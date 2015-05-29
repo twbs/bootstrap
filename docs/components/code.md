@@ -5,6 +5,11 @@ title: Code
 
 Styles for inline code snippets and longer, multiline blocks of code.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Inline code
 
 Wrap inline snippets of code with `code`. Be sure to escape HTML angle brackets.

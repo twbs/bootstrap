@@ -5,6 +5,11 @@ title: Navbar
 
 The navbar is a simple wrapper for positioning branding, navigation, and other elements. It's easily extensible and with the help of our collapse plugin it can easily integrate offscreen content.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ### Basics
 
 Here's what you need to know before getting started with the navbar:

@@ -5,6 +5,11 @@ title: Images
 
 Opt your images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them—all via classes.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Responsive images
 
 Images in Bootstrap are made responsive with `.img-responsive`. `max-width: 100%;` and `height: auto;` are applied to the image so that it scales with the parent element.

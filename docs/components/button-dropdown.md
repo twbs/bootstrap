@@ -11,6 +11,11 @@ Use any button to trigger a dropdown menu by placing it within a `.btn-group` an
 Button dropdowns require the [dropdown plugin](../javascript/#dropdowns) to be included in your version of Bootstrap.
 {% endcallout %}
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ### Single button dropdowns
 
 Turn a button into a dropdown toggle with some basic markup changes.

@@ -5,7 +5,12 @@ title: Compiling
 
 Bootstrap uses [Grunt](http://gruntjs.com) for its build system, with convenient methods for working with the framework. It's how we compile our code, run tests, and more.
 
-### Install Grunt
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Install Grunt
 
 **To install Grunt, you must first [download and install node.js](http://nodejs.org/download/)** (which includes npm). npm stands for [node packaged modules](http://npmjs.com/) and is a way to manage development dependencies through node.js.
 
@@ -22,7 +27,7 @@ When completed, you'll be able to run the various Grunt commands provided from t
 [install-ruby]: https://www.ruby-lang.org/en/documentation/installation/
 [gembundler]: http://bundler.io/
 
-### Available Grunt commands
+## Available Grunt commands
 
 | Task | Description |
 | --- | --- |
@@ -32,9 +37,9 @@ When completed, you'll be able to run the various Grunt commands provided from t
 | `grunt docs` | Builds and tests CSS, JavaScript, and other assets which are used when running the documentation locally via `jekyll serve`. |
 | `grunt watch` | This is a convenience method for watching just Sass files and automatically building them whenever you save. |
 
-### Use another Sass compiler
-Bootstrap is compiled with [libsass][libsass] by default.
-Use another compiler by setting the `TWBS_SASS` environment variable to:
+## Use another Sass compiler
+
+Bootstrap is compiled with [libsass][libsass] by default. Use another compiler by setting the `TWBS_SASS` environment variable to:
 
 * `sass` to use [Ruby Sass][ruby-sass] via [grunt-contrib-sass][grunt-contrib-sass].
 * `libsass` (default) to use [libsass][libsass] via [grunt-sass][grunt-sass].
@@ -46,6 +51,6 @@ For example, run `TWBS_SASS=sass grunt` to test and build Bootstrap with Ruby Sa
 [libsass]: https://github.com/sass/libsass
 [grunt-sass]: https://github.com/sindresorhus/grunt-sass
 
-### Troubleshooting dependencies
+## Troubleshooting dependencies
 
 Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.

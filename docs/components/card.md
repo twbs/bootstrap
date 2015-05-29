@@ -7,6 +7,11 @@ A **card** is a flexible and extensible content container. It includes options f
 
 If you're familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Example
 
 Cards require a small amount of markup and classes to provide you with as much control as possible. These classes and markup are flexible though and can typically be remixed and extended with ease.
@@ -154,7 +159,9 @@ Add an optional header and/or footer within a card.
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
+{% endexample %}
 
+{% example html %}
 <div class="card">
   <div class="card-header">
     Quote
@@ -177,21 +184,6 @@ Add an optional header and/or footer within a card.
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
-
-<div class="card text-center">
-  <div class="card-header">
-    Quote
-  </div>
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
   </div>
   <div class="card-footer text-muted">
     2 days ago
@@ -228,7 +220,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 {% example html %}
 <div class="card card-inverse">
-  <img class="card-img" data-src="holder.js/270x270/#55595c:#373a3c/text:Card image" alt="Card image">
+  <img class="card-img" data-src="holder.js/100%x270/#55595c:#373a3c/text:Card image" alt="Card image">
   <div class="card-img-overlay">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>

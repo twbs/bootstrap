@@ -5,6 +5,11 @@ title: Input group
 
 Easily extend form controls by adding text, buttons, or button groups on either side of textual `<input>`s.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Basic example
 
 Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple add-ons on a single side, nor multiple form-controls in a single input group.**

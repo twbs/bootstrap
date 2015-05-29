@@ -5,7 +5,12 @@ title: List group
 
 List groups are a flexible and powerful component for displaying not only simple lists of elements, but complex ones with custom content.
 
-<h3 id="list-group-basic">Basic example</h3>
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Basic example
 <p>The most basic list group is simply an unordered list with list items, and the proper classes. Build upon it with the options that follow, or your own CSS as needed.</p>
 
 {% example html %}
@@ -18,7 +23,7 @@ List groups are a flexible and powerful component for displaying not only simple
 </ul>
 {% endexample %}
 
-### Badges
+## Badges
 
 Add the badges component to any list group item and it will automatically be positioned on the right.
 
@@ -39,7 +44,7 @@ Add the badges component to any list group item and it will automatically be pos
 </ul>
 {% endexample %}
 
-### Linked items
+## Linked items
 
 Linkify list group items by using anchor tags instead of list items (that also means a parent `<div>` instead of an `<ul>`). No need for individual parents around each element.
 
@@ -55,7 +60,7 @@ Linkify list group items by using anchor tags instead of list items (that also m
 </div>
 {% endexample %}
 
-### Disabled items
+## Disabled items
 
 Add `.disabled` to a `.list-group-item` to gray it out to appear disabled.
 
@@ -71,7 +76,7 @@ Add `.disabled` to a `.list-group-item` to gray it out to appear disabled.
 </div>
 {% endexample %}
 
-### Contextual classes
+## Contextual classes
 
 Use contextual classes to style list items, default or linked. Also includes `.active` state.
 
@@ -90,7 +95,7 @@ Use contextual classes to style list items, default or linked. Also includes `.a
 </div>
 {% endexample %}
 
-### Custom content
+## Custom content
 
 Add nearly any HTML within, even for linked list groups like the one below.
 

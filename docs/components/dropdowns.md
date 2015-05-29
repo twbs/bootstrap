@@ -5,6 +5,11 @@ title: Dropdowns
 
 Toggleable, contextual menu for displaying lists of links. Made interactive with the included dropdown JavaScript plugin.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Example
 
 Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another element that declares `position: relative;`. Then add the menu's HTML.
