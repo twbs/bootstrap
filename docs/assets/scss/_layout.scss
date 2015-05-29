@@ -78,3 +78,13 @@
     }
   }
 }
+
+
+//
+// Markdown generated ToC
+//
+
+// Hide the first child li because it's always going to be "Contents".
+#markdown-toc > li:first-child {
+  display: none;
+}
