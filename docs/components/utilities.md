@@ -10,7 +10,7 @@ Bootstrap includes dozens of utilities—classes with a single purpose. They're 
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-### Text alignment
+## Text alignment
 
 Easily realign text to components with text alignment classes.
 
@@ -22,7 +22,7 @@ Easily realign text to components with text alignment classes.
 <p class="text-nowrap">No wrap text.</p>
 {% endexample %}
 
-### Text transform
+## Text transform
 
 Transform text in components with text capitalization classes.
 
@@ -32,9 +32,7 @@ Transform text in components with text capitalization classes.
 <p class="text-capitalize">Capitalized text.</p>
 {% endexample %}
 
-### Contextual colors
-
-### Contextual colors and backgrounds
+## Contextual colors and backgrounds
 
 Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.
 
@@ -69,7 +67,7 @@ Sometimes contextual classes cannot be applied due to the specificity of another
 Ensure that any meaning conveyed through color is also conveyed in a format that is not purely presentational.
 {% endcallout %}
 
-### Close icon
+## Close icon
 
 Use a generic close icon for dismissing content like modals and alerts. **Be sure to include screen reader text when you can** as we've done with `.sr-only`.
 
@@ -80,7 +78,7 @@ Use a generic close icon for dismissing content like modals and alerts. **Be sur
 </button>
 {% endexample %}
 
-### Floats
+## Floats
 
 Float an element to the left or right with a class. `!important` is included to avoid specificity issues. Classes can also be used as mixins.
 
@@ -107,7 +105,7 @@ Float an element to the left or right with a class. `!important` is included to 
 }
 {% endhighlight %}
 
-### Center content
+## Center content
 
 Set an element to `display: block;` and center via `margin`. Available as a mixin and class.
 
@@ -154,7 +152,7 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 }
 {% endhighlight %}
 
-### Hidden content
+## Hidden content
 
 Hide any HTML element with the `[hidden]` attribute. Previously, v3.x included a `.hidden` class that forced toggled content. However, we removed it due to conflicts with jQuery's `hide()` function. It's taken from [PureCSS](http://purecss.io).
 
@@ -164,7 +162,7 @@ Furthermore, `.invisible` can be used to toggle the visibility of an element, me
 <input type="text" hidden>
 {% endhighlight %}
 
-### Invisible content
+## Invisible content
 
 The `.invisible` class can be used to toggle only the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
 
@@ -184,7 +182,7 @@ The `.invisible` class can be used to toggle only the visibility of an element, 
 }
 {% endhighlight %}
 
-### Screen readers
+## Screen readers
 
 Hide an element to all devices **except screen readers** with `.sr-only`. Combine `.sr-only` with `.sr-only-focusable` to show the element again when it's focused (e.g. by a keyboard-only user). Necessary for following [accessibility best practices](../getting-started/#accessibility). Can also be used as mixins.
 
@@ -200,7 +198,7 @@ Hide an element to all devices **except screen readers** with `.sr-only`. Combin
 }
 {% endhighlight %}
 
-### Image replacement
+## Image replacement
 
 Utilize the `.text-hide` class or mixin to help replace an element's text content with a background image.
 
@@ -215,7 +213,7 @@ Utilize the `.text-hide` class or mixin to help replace an element's text conten
 }
 {% endhighlight %}
 
-### Responsive embeds
+## Responsive embeds
 
 Allow browsers to determine video or slideshow dimensions based on the width of their containing block by creating an intrinsic ratio that will properly scale on any device.
 
