@@ -193,13 +193,13 @@ $card-cap-bg: #f5f5f5;
   .card-deck {
     display: flex;
     flex-flow: row wrap;
-    margin-right: -.75rem;
-    margin-left: -.75rem;
+    margin-right: -.625rem;
+    margin-left: -.625rem;
 
     .card {
       flex: 1 0 0;
-      margin-left: .75rem;
-      margin-right: .75rem;
+      margin-left: .625rem;
+      margin-right: .625rem;
     }
   }
 } @else {
@@ -210,8 +210,8 @@ $card-cap-bg: #f5f5f5;
 
     .card {
       display: table-cell;
-      float: none;
-      max-width: none;
+      width: 1%;
+      vertical-align: top;
     }
   }
   .card-deck-wrapper {
@@ -285,7 +285,7 @@ $card-cap-bg: #f5f5f5;
 
 .card-columns {
   column-count: 3;
-  column-gap: 1rem;
+  column-gap: 1.25rem;
 
   .card {
     display: inline-block;
