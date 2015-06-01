@@ -4198,6 +4198,7 @@ a.label:hover {
   padding-left: .6em;
   font-size: .75em;
   font-weight: bold;
+  line-height: 1.5;
   color: #fff;
   text-align: center;
   white-space: nowrap;
@@ -4564,13 +4565,11 @@ a.badge:hover {
   display: block;
 }
 
-.media-right,
-.media > .pull-right {
+.media-right {
   padding-left: 10px;
 }
 
-.media-left,
-.media > .pull-left {
+.media-left {
   padding-right: 10px;
 }
 
