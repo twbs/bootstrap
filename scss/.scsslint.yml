@@ -14,6 +14,7 @@ linters:
 
   Comment:
     enabled: true
+    exclude: ['_normalize.scss', 'bootstrap.scss']
 
   DebugStatement:
     enabled: true
@@ -23,6 +24,7 @@ linters:
 
   DuplicateProperty:
     enabled: true
+    exclude: ['mixins/_tab-focus.scss']
 
   ElsePlacement:
     enabled: true
@@ -86,6 +88,7 @@ linters:
     enabled: true
     ignore_unspecified: false
     severity: warning
+    exclude: ['_normalize.scss']
     order: [
       "position",
       "top",
@@ -105,6 +108,12 @@ linters:
       "-moz-box-sizing",
       "box-sizing",
       "-webkit-appearance",
+      "flex",
+      "flex-direction",
+      "flex-flow",
+      "flex-order",
+      "flex-pack",
+      "flex-align",
       "padding",
       "padding-top",
       "padding-right",
@@ -185,10 +194,6 @@ linters:
       "cursor",
       "visibility",
       "zoom",
-      "flex-direction",
-      "flex-order",
-      "flex-pack",
-      "flex-align",
       "table-layout",
       "empty-cells",
       "caption-side",
@@ -439,7 +444,7 @@ linters:
     enabled: true
     identifier_list: base
     include: []
-    exclude: []
+    exclude: ['_normalize.scss']
 
   ZeroUnit:
     enabled: true
