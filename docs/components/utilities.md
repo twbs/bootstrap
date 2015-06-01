@@ -3,12 +3,81 @@ layout: page
 title: Utility classes
 ---
 
-Bootstrap includes dozens of utilities—classes with a single purpose. They're designed to keep the number of declarations in your CSS down while allowing for quick and easy development.
+Bootstrap includes dozens of utilities—classes with a single purpose. They're designed to reduce the frequency of highly repetitive declarations in your CSS down while allowing for quick and easy development.
 
 ## Contents
 
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
+
+## Spacing
+
+Assign `margin` or `padding` to an element or a subset of it's sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. All classes are multiples on the global default value, `1rem`.
+
+### Margin
+
+{% highlight scss %}
+.m-a-0 { margin:        0; }
+.m-t-0 { margin-top:    0; }
+.m-r-0 { margin-right:  0; }
+.m-b-0 { margin-bottom: 0; }
+.m-l-0 { margin-left:   0; }
+
+.m-a { margin:        $spacer; }
+.m-t { margin-top:    $spacer-y; }
+.m-r { margin-right:  $spacer-x; }
+.m-b { margin-bottom: $spacer-y; }
+.m-l { margin-left:   $spacer-x; }
+.m-x { margin-right:  $spacer-x; margin-left: $spacer-x; }
+.m-y { margin-top:    $spacer-y; margin-bottom: $spacer-y; }
+
+.m-t-md { margin-top:    ($spacer-y * 1.5); }
+.m-r-md { margin-right:  ($spacer-y * 1.5); }
+.m-b-md { margin-bottom: ($spacer-y * 1.5); }
+.m-l-md { margin-left:   ($spacer-y * 1.5); }
+.m-x-md { margin-right:  ($spacer-x * 1.5); margin-left:   ($spacer-x * 1.5); }
+.m-y-md { margin-top:    ($spacer-y * 1.5); margin-bottom: ($spacer-y * 1.5); }
+
+.m-t-lg { margin-top:    ($spacer-y * 3); }
+.m-r-lg { margin-right:  ($spacer-y * 3); }
+.m-b-lg { margin-bottom: ($spacer-y * 3); }
+.m-l-lg { margin-left:   ($spacer-y * 3); }
+.m-x-lg { margin-right:  ($spacer-x * 3); margin-left:   ($spacer-x * 3); }
+.m-y-lg { margin-top:    ($spacer-y * 3); margin-bottom: ($spacer-y * 3); }
+{% endhighlight %}
+
+### Padding
+
+{% highlight scss %}
+.p-a-0 { padding:        0; }
+.p-t-0 { padding-top:    0; }
+.p-r-0 { padding-right:  0; }
+.p-b-0 { padding-bottom: 0; }
+.p-l-0 { padding-left:   0; }
+
+.p-a { padding:        $spacer; }
+.p-t { padding-top:    $spacer-y; }
+.p-r { padding-right:  $spacer-x; }
+.p-b { padding-bottom: $spacer-y; }
+.p-l { padding-left:   $spacer-x; }
+.p-x { padding-right:  $spacer-x; padding-left:   $spacer-x; }
+.p-y { padding-top:    $spacer-y; padding-bottom: $spacer-y; }
+
+.p-t-md { padding-top:    ($spacer-y * 1.5); }
+.p-r-md { padding-right:  ($spacer-y * 1.5); }
+.p-b-md { padding-bottom: ($spacer-y * 1.5); }
+.p-l-md { padding-left:   ($spacer-y * 1.5); }
+.p-x-md { padding-right:  ($spacer-x * 1.5); padding-left:   ($spacer-x * 1.5); }
+.p-y-md { padding-top:    ($spacer-y * 1.5); padding-bottom: ($spacer-y * 1.5); }
+
+.p-t-lg { padding-top:    ($spacer-y * 3); }
+.p-r-lg { padding-right:  ($spacer-y * 3); }
+.p-b-lg { padding-bottom: ($spacer-y * 3); }
+.p-l-lg { padding-left:   ($spacer-y * 3); }
+.p-x-lg { padding-right:  ($spacer-x * 3); padding-left:   ($spacer-x * 3); }
+.p-y-lg { padding-top:    ($spacer-y * 3); padding-bottom: ($spacer-y * 3); }
+{% endhighlight %}
+
 
 ## Text alignment
 
