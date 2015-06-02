@@ -84,7 +84,11 @@
               <li><a href="#">Turismo</a></li>
               <li><a href="#">Noticias</a></li>
               <li><a href="#">Accesible</a></li>
-              <li class="sub-brand sub-brand-ba"><a href="#">Entrar a <img src="../bastrap3/ba-btn.png" class="glyphicon glyphicon-ba" /></a></li>
+              <li class="dropdown sub-brand">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="avatar social-tw"></span> Pablo <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
             </ul>
           </nav>
         </div>
@@ -228,12 +232,14 @@
             <h2>Contactános</h2>
             <form role="form">
               <div class="form-group">
-                <label for="Nombre">Nombre</label><a href="#" style="font-size:12px;float:right;text-decoration:underline;"><span>No soy esta persona</span></a>
-                <input class="form-control" type="text" placeholder="Pablo Rodriguez" id="Nombre" required disabled>
+                <label for="Nombre">Nombre</label>
+                <a href="#blank" class="label-link" id="link-id1">No soy esta persona</a>
+                <a href="#blank" class="label-link" id="link-id2" style="display:none">Usar datos de Mi BA</a>
+                <input class="form-control disabled1" type="text" placeholder="Pablo Rodriguez" id="Nombre" required disabled>
               </div>
               <div class="form-group">
                 <label for="Correo">Correo electrónico</label>
-                <input class="form-control" type="text" placeholder="sarasa@test.com" id="Correo" disabled>
+                <input class="form-control disabled1" type="text" placeholder="pabrod@test.com" id="Correo" disabled>
               </div>
               <div class="form-group">
                 <label for="Mensaje">Mensaje</label>
@@ -286,5 +292,31 @@
     <script src="../bastrap3/jquery.min.js"></script>
     <script src="../bastrap3/bootstrap.min.js"></script>
     <script src="assets/buenosaires.js"></script>
+
+    <style type="text/css">
+      .label-link {
+        font-size:12px;
+        float:right;
+        text-decoration:underline !important;
+      }
+    </style>
+
+    <script type="text/javascript">
+      $("#link-id1").on("click", function(){
+        $('.disabled1').attr('disabled', false),
+        $(".disabled1").attr("placeholder", ""),
+        $('#Nombre').focus();
+        $('#link-id1').hide();
+        $('#link-id2').show();
+      });
+      $("#link-id2").on("click", function(){
+        $('.disabled1').attr('disabled', true),
+        $("#Nombre").attr("placeholder", "Pablo Rodriguez"),
+        $("#Correo").attr("placeholder", "pabrod@test.com"),
+        $('#link-id2').hide();
+        $('#link-id1').show();
+      });
+    </script>
+
   </body>
 </html>
