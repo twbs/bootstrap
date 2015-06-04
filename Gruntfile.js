@@ -103,6 +103,7 @@ module.exports = function (grunt) {
     concat: {
       options: {
         banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
+        sourceMap: true,
         stripBanners: false
       },
       bootstrap: {
@@ -130,7 +131,8 @@ module.exports = function (grunt) {
           warnings: false
         },
         mangle: true,
-        preserveComments: 'some'
+        preserveComments: 'some',
+        sourceMap: true
       },
       core: {
         src: '<%= concat.bootstrap.dest %>',
