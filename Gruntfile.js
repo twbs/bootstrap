@@ -231,6 +231,7 @@ module.exports = function (grunt) {
         //    and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
         compatibility: 'ie8',
         keepSpecialComments: '*',
+        sourceMap: true,
         advanced: false
       },
       minifyCore: {
