@@ -9,7 +9,7 @@ All the tarballs are stored in S3's Reduced Redundancy Storage (RRS) storage cla
 
 `s3_cache.py` itself never deletes cache entries; deletion should either be done manually or using automatic S3 lifecycle rules on the bucket.
 
-Similar to git, `s3_cache.py` makes the assumption that [SHA-256 will effectively never have a collision](http://stackoverflow.com/questions/4014090/is-it-safe-to-ignore-the-possibility-of-sha-collisions-in-practice).
+Similar to git, `s3_cache.py` makes the assumption that [SHA-256 will effectively never have a collision](https://stackoverflow.com/questions/4014090/is-it-safe-to-ignore-the-possibility-of-sha-collisions-in-practice).
 
 
 ### For Bootstrap specifically

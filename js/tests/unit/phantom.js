@@ -31,8 +31,8 @@
     if (!obj.result) {
       // Dumping large objects can be very slow, and the dump isn't used for
       // passing tests, so only dump if the test failed.
-      actual = QUnit.jsDump.parse(obj.actual)
-      expected = QUnit.jsDump.parse(obj.expected)
+      actual = QUnit.dump.parse(obj.actual)
+      expected = QUnit.dump.parse(obj.expected)
     }
     // Send it.
     sendMessage('qunit.log', obj.result, actual, expected, obj.message, obj.source)
@@ -52,9 +52,9 @@
 
   QUnit.moduleDone(function (obj) {
     if (obj.failed === 0) {
-      console.log('\r\u2714 All tests passed in "' + obj.name + '" module')
+      console.log('\r\u221A All tests passed in "' + obj.name + '" module')
     } else {
-      console.log('\u2716 ' + obj.failed + ' tests failed in "' + obj.name + '" module')
+      console.log('\u00D7 ' + obj.failed + ' tests failed in "' + obj.name + '" module')
     }
     sendMessage('qunit.moduleDone', obj.name, obj.failed, obj.passed, obj.total)
   })

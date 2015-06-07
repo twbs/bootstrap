@@ -20,12 +20,12 @@
             <li><a href="#fat">@fat</a></li>
             <li><a href="#mdo">@mdo</a></li>
             <li class="dropdown">
-              <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop1">
-                <li><a href="#one" tabindex="-1">one</a></li>
-                <li><a href="#two" tabindex="-1">two</a></li>
-                <li class="divider"></li>
-                <li><a href="#three" tabindex="-1">three</a></li>
+              <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDrop1">
+                <li><a href="#one">one</a></li>
+                <li><a href="#two">two</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#three">three</a></li>
               </ul>
             </li>
           </ul>
@@ -65,7 +65,7 @@
   </div>
 
   <h3>Requires relative positioning</h3>
-  <p>No matter the implementation method, scrollspy requires the use of <code>position: relative;</code> on the element you're spying on. In most cases this is the <code>&lt;body&gt;</code>.</p>
+  <p>No matter the implementation method, scrollspy requires the use of <code>position: relative;</code> on the element you're spying on. In most cases this is the <code>&lt;body&gt;</code>. When scrollspying on elements other than the <code>&lt;body&gt;</code>, be sure to have a <code>height</code> set and <code>overflow-y: scroll;</code> applied.</p>
 
   <h3>Via data attributes</h3>
   <p>To easily add scrollspy behavior to your topbar navigation, add <code>data-spy="scroll"</code> to the element you want to spy on (most typically this would be the <code>&lt;body&gt;</code>). Then add the <code>data-target</code> attribute with the ID or class of the parent element of any Bootstrap <code>.nav</code> component.</p>
@@ -75,9 +75,9 @@ body {
 }
 {% endhighlight %}
 {% highlight html %}
-<body data-spy="scroll" data-target=".navbar-example">
+<body data-spy="scroll" data-target="#navbar-example">
   ...
-  <div class="navbar-example">
+  <div id="navbar-example">
     <ul class="nav nav-tabs" role="tablist">
       ...
     </ul>
@@ -89,12 +89,12 @@ body {
   <h3>Via JavaScript</h3>
   <p>After adding <code>position: relative;</code> in your CSS, call the scrollspy via JavaScript:</p>
 {% highlight js %}
-$('body').scrollspy({ target: '.navbar-example' })
+$('body').scrollspy({ target: '#navbar-example' })
 {% endhighlight %}
 
 
   <h3 id="scrollspy-methods">Methods</h3>
-  <h4>.scrollspy('refresh')</h4>
+  <h4><code>.scrollspy('refresh')</code></h4>
   <p>When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:</p>
 {% highlight js %}
 $('[data-spy="scroll"]').each(function () {
@@ -106,12 +106,12 @@ $('[data-spy="scroll"]').each(function () {
   <h3 id="scrollspy-options">Options</h3>
   <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-</code>, as in <code>data-offset=""</code>.</p>
   <div class="table-responsive">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped js-options-table">
       <thead>
        <tr>
-         <th style="width: 100px;">Name</th>
-         <th style="width: 100px;">type</th>
-         <th style="width: 50px;">default</th>
+         <th>Name</th>
+         <th>type</th>
+         <th>default</th>
          <th>description</th>
        </tr>
       </thead>
@@ -131,7 +131,7 @@ $('[data-spy="scroll"]').each(function () {
     <table class="table table-bordered table-striped bs-events-table">
       <thead>
        <tr>
-         <th style="width: 150px;">Event Type</th>
+         <th>Event Type</th>
          <th>Description</th>
        </tr>
       </thead>

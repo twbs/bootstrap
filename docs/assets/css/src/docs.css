@@ -1,8 +1,8 @@
 /*!
  * Bootstrap Docs (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
- * details, see http://creativecommons.org/licenses/by/3.0/.
+ * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
 
@@ -26,6 +26,13 @@ body {
 .table code {
   font-size: 13px;
   font-weight: normal;
+}
+
+/* Inline code within headings retain the heading's background-color */
+h2 code,
+h3 code,
+h4 code {
+  background-color: inherit;
 }
 
 /* Outline button for use within the docs */
@@ -93,6 +100,7 @@ body {
  * Fancy skip link
  *
  * Make it look a bit less "bare bones"
+ * Also includes focus suppression for the Chrome tabindex="-1" workaround
  */
 
 #skippy {
@@ -106,6 +114,10 @@ body {
 #skippy .skiplink-text {
   padding: .5em;
   outline: 1px dotted;
+}
+
+#content:focus {
+  outline: none;
 }
 
 
@@ -224,7 +236,7 @@ body {
 .bs-docs-masthead,
 .bs-docs-header {
   position: relative;
-  padding: 30px 15px;
+  padding: 30px 0;
   color: #cdbfe3;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
@@ -344,7 +356,7 @@ body {
   width: auto !important;
   height: auto !important;
   padding: 20px !important;
-  margin: 30px -30px -31px !important;
+  margin: 30px -15px -31px !important;
   overflow: hidden; /* clearfix */
   font-size: 13px !important;
   line-height: 16px !important;
@@ -913,6 +925,10 @@ h1[id] {
   content: "Example";
 }
 
+.bs-example-padded-bottom {
+  padding-bottom: 24px;
+}
+
 /* Tweak display of the code snippets when following an example */
 .bs-example + .highlight,
 .bs-example + .zero-clipboard + .highlight {
@@ -1166,6 +1182,10 @@ h1[id] {
   overflow: auto;
 }
 
+.bs-example > .nav-pills-stacked-example {
+  max-width: 300px;
+}
+
 /* Simple collapse example */
 #collapseExample .well {
   margin-bottom: 0;
@@ -1175,6 +1195,19 @@ h1[id] {
 .bs-events-table > thead > tr > th:first-child,
 .bs-events-table > tbody > tr > td:first-child {
   white-space: nowrap;
+}
+
+.bs-events-table > thead > tr > th:first-child {
+  width: 150px;
+}
+
+.js-options-table > thead > tr > th:nth-child(1),
+.js-options-table > thead > tr > th:nth-child(2) {
+  width: 100px;
+}
+
+.js-options-table > thead > tr > th:nth-child(3) {
+  width: 50px;
 }
 
 /*
@@ -1562,6 +1595,31 @@ h1[id] {
   }
 }
 
+/*
+ * AnchorJS Styles
+ */
+.anchorjs-link {
+  color: inherit;
+}
+
+@media (max-width: 480px) {
+  .anchorjs-link {
+    display: none;
+  }
+}
+
+*:hover > .anchorjs-link {
+  opacity: .75;
+  -webkit-transition: color .16s linear;
+       -o-transition: color .16s linear;
+          transition: color .16s linear;
+}
+
+*:hover > .anchorjs-link:hover,
+.anchorjs-link:focus {
+  text-decoration: none;
+  opacity: 1;
+}
 
 /*
  * Miscellaneous

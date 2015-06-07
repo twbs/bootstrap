@@ -19,7 +19,7 @@ and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
 * Please **do not** use the issue tracker for personal support requests.  Stack
-  Overflow ([`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag) or [IRC](README.md#community) are better places to get help.
+  Overflow ([`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag), [Slack, or IRC](README.md#community) are better places to get help.
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -33,7 +33,7 @@ restrictions:
 
 Our bug tracker utilizes several labels to help organize and identify issues. Here's what they represent and how we use them:
 
-- `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in a issue opened on that browser's own bug tracker.
+- `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
 - `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Bootstrap.
 - `css` - Issues stemming from our compiled CSS or source Less files.
 - `customizer` - Issues with our web-based Customizer.
@@ -66,7 +66,7 @@ Guidelines for bug reports:
    latest `master` or development branch in the repository.
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
-   case](http://css-tricks.com/6263-reduced-test-cases/) and a live example.
+   case](https://css-tricks.com/reduced-test-cases/) and a live example.
    [This JS Bin](http://jsbin.com/lefey/1/edit?html,output) is a helpful template.
 
 
@@ -149,7 +149,7 @@ documentation source files and is managed separately by the Bootstrap Core Team.
 Adhering to the following process is the best way to get your work
 included in the project:
 
-1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork,
+1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
    and configure the remotes:
 
    ```bash
@@ -197,7 +197,10 @@ included in the project:
     with a clear title and description against the `master` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
-license your work under the terms of the [MIT License](LICENSE).
+license your work under the terms of the [MIT License](LICENSE) (if it
+includes code changes) and under the terms of the
+[Creative Commons Attribution 3.0 Unported License](docs/LICENSE)
+(if it includes documentation changes).
 
 ### Pull request bots
 
@@ -240,6 +243,7 @@ Run `grunt test` before committing to ensure your changes follow our coding stan
 
 ## License
 
-By contributing your code, you agree to license your contribution under the [MIT license](LICENSE).
+By contributing your code, you agree to license your contribution under the [MIT License](LICENSE).
+By contributing to the documentation, you agree to license your contribution under the [Creative Commons Attribution 3.0 Unported License](docs/LICENSE).
 
-Prior to v3.1.0, Bootstrap was released under the Apache License v2.0.
+Prior to v3.1.0, Bootstrap's code was released under the Apache License v2.0.

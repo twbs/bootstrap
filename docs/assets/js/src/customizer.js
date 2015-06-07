@@ -1,23 +1,25 @@
 /*!
  * Bootstrap Customizer (http://getbootstrap.com/customize/)
- * Copyright 2011-2014 Twitter, Inc.
+ * Copyright 2011-2015 Twitter, Inc.
  *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
- * details, see http://creativecommons.org/licenses/by/3.0/.
+ * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
+/* jshint es3:false */
 /* global JSZip, less, autoprefixer, saveAs, UglifyJS, __configBridge, __js, __less, __fonts */
 
 window.onload = function () { // wait for load in a dumb way because B-0
   'use strict';
+
   var cw = '/*!\n' +
-           ' * Bootstrap v3.3.1 (http://getbootstrap.com)\n' +
+           ' * Bootstrap v3.3.4 (http://getbootstrap.com)\n' +
            ' * Copyright 2011-' + new Date().getFullYear() + ' Twitter, Inc.\n' +
            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
            ' */\n\n'
 
-  var supportsFile = (window.File && window.FileReader && window.FileList && window.Blob)
-  var importDropTarget = $('#import-drop-target')
+  var supportsFile = window.File && window.FileReader && window.FileList && window.Blob
+  var $importDropTarget = $('#import-drop-target')
 
   function showError(msg, err) {
     $('<div id="bsCustomizerAlert" class="bs-customizer-alert">' +
@@ -38,15 +40,15 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function showCallout(msg, showUpTop) {
-    var callout = $('<div class="bs-callout bs-callout-danger">' +
+    var $callout = $('<div class="bs-callout bs-callout-danger">' +
       '<h4>Attention!</h4>' +
       '<p>' + msg + '</p>' +
     '</div>')
 
     if (showUpTop) {
-      callout.appendTo('.bs-docs-container')
+      $callout.appendTo('.bs-docs-container')
     } else {
-      callout.insertAfter('.bs-customize-download')
+      $callout.insertAfter('.bs-customize-download')
     }
   }
 
@@ -111,7 +113,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       js:  $('#plugin-section input:checked').map(function () { return this.value }).toArray()
     }
 
-    if ($.isEmptyObject(data.vars) && !data.css.length && !data.js.length) return
+    if ($.isEmptyObject(data.vars) && !data.css.length && !data.js.length) return null
 
     return data
   }
@@ -199,8 +201,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function generateFonts() {
-    var glyphicons = $('#less-section [value="glyphicons.less"]:checked')
-    if (glyphicons.length) {
+    var $glyphicons = $('#less-section [value="glyphicons.less"]:checked')
+    if ($glyphicons.length) {
       return __fonts
     }
   }
@@ -240,11 +242,11 @@ window.onload = function () { // wait for load in a dumb way because B-0
       // Core stylesheets like 'normalize.less' are not included in the form
       // since disabling them would wreck everything, and so their 'fileInclude'
       // will be 'undefined'.
-      if (fileInclude || (fileInclude == null))    lessSource += __less[filename]
+      if (fileInclude || fileInclude == null)    lessSource += __less[filename]
 
       // Custom variables are added after Bootstrap variables so the custom
       // ones take precedence.
-      if (('variables.less' === filename) && vars) lessSource += generateCustomLess(vars)
+      if (filename === 'variables.less' && vars) lessSource += generateCustomLess(vars)
     })
 
     lessSource = lessSource.replace(/@import[^\n]*/gi, '') // strip any imports
@@ -266,8 +268,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       try {
         intoResult[baseFilename + '.css']     = cw + tree.toCSS()
         intoResult[baseFilename + '.min.css'] = cw + tree.toCSS({ compress: true })
-      }
-      catch (compileErr) {
+      } catch (compileErr) {
         return promise.reject(compileErr)
       }
       promise.resolve()
@@ -358,14 +359,14 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   function removeImportAlerts() {
-    importDropTarget.nextAll('.alert').remove()
+    $importDropTarget.nextAll('.alert').remove()
   }
 
   function handleConfigFileSelect(e) {
     e.stopPropagation()
     e.preventDefault()
 
-    var file = (e.originalEvent.hasOwnProperty('dataTransfer')) ? e.originalEvent.dataTransfer.files[0] : e.originalEvent.target.files[0]
+    var file = e.originalEvent.hasOwnProperty('dataTransfer') ? e.originalEvent.dataTransfer.files[0] : e.originalEvent.target.files[0]
 
     var reader = new FileReader()
 
@@ -380,9 +381,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
         }
 
         updateCustomizerFromJson(json)
-        showAlert('success', '<strong>Woohoo!</strong> Your configuration was successfully uploaded. Tweak your settings, then hit Download.', importDropTarget)
+        showAlert('success', '<strong>Woohoo!</strong> Your configuration was successfully uploaded. Tweak your settings, then hit Download.', $importDropTarget)
       } catch (err) {
-        return showAlert('danger', '<strong>Shucks.</strong> We can only read valid <code>.json</code> files. Please try again.', importDropTarget)
+        return showAlert('danger', '<strong>Shucks.</strong> We can only read valid <code>.json</code> files. Please try again.', $importDropTarget)
       }
     }
 
@@ -398,7 +399,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   }
 
   if (supportsFile) {
-    importDropTarget
+    $importDropTarget
       .on('dragover', handleConfigDragOver)
       .on('drop', handleConfigFileSelect)
   }
@@ -406,23 +407,23 @@ window.onload = function () { // wait for load in a dumb way because B-0
   $('#import-file-select').on('change', handleConfigFileSelect)
   $('#import-manual-trigger').on('click', removeImportAlerts)
 
-  var inputsComponent = $('#less-section input')
-  var inputsPlugin    = $('#plugin-section input')
-  var inputsVariables = $('#less-variables-section input')
+  var $inputsComponent = $('#less-section input')
+  var $inputsPlugin    = $('#plugin-section input')
+  var $inputsVariables = $('#less-variables-section input')
 
   $('#less-section .toggle').on('click', function (e) {
     e.preventDefault()
-    inputsComponent.prop('checked', !inputsComponent.is(':checked'))
+    $inputsComponent.prop('checked', !$inputsComponent.is(':checked'))
   })
 
   $('#plugin-section .toggle').on('click', function (e) {
     e.preventDefault()
-    inputsPlugin.prop('checked', !inputsPlugin.is(':checked'))
+    $inputsPlugin.prop('checked', !$inputsPlugin.is(':checked'))
   })
 
   $('#less-variables-section .toggle').on('click', function (e) {
     e.preventDefault()
-    inputsVariables.val('')
+    $inputsVariables.val('')
   })
 
   $('[data-dependencies]').on('click', function () {
@@ -431,8 +432,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
     if (!dependencies) return
     dependencies = dependencies.split(',')
     for (var i = 0; i < dependencies.length; i++) {
-      var dependency = $('[value="' + dependencies[i] + '"]')
-      dependency && dependency.prop('checked', true)
+      var $dependency = $('[value="' + dependencies[i] + '"]')
+      $dependency && $dependency.prop('checked', true)
     }
   })
 
@@ -442,8 +443,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
     if (!dependents) return
     dependents = dependents.split(',')
     for (var i = 0; i < dependents.length; i++) {
-      var dependent = $('[value="' + dependents[i] + '"]')
-      dependent && dependent.prop('checked', false)
+      var $dependent = $('[value="' + dependents[i] + '"]')
+      $dependent && $dependent.prop('checked', false)
     }
   })
 
@@ -473,7 +474,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
       ).done(function (css, js, fonts) {
         generateZip(css, js, fonts, configJson, function (blob) {
           $compileBtn.removeAttr('disabled')
-          setTimeout(function () { saveAs(blob, 'bootstrap.zip') }, 0)
+          setTimeout(function () {
+            saveAs(blob, 'bootstrap.zip')
+          }, 0)
         })
       })
     })

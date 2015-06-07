@@ -29,7 +29,7 @@
     @media all and (transform-3d), (-webkit-transform-3d) {
       .transition-transform(~'0.6s ease-in-out');
       .backface-visibility(~'hidden');
-      .perspective(1000);
+      .perspective(1000px);
 
       &.next,
       &.active.right {
@@ -130,6 +130,7 @@
   .glyphicon-chevron-right {
     position: absolute;
     top: 50%;
+    margin-top: -10px;
     z-index: 5;
     display: inline-block;
   }
@@ -147,7 +148,6 @@
   .icon-next {
     width:  20px;
     height: 20px;
-    margin-top: -10px;
     line-height: 1;
     font-family: serif;
   }

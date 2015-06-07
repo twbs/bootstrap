@@ -36,6 +36,7 @@
   margin-left: -5px; // Offset the first child's margin
   &:extend(.clearfix all);
 
+  .btn,
   .btn-group,
   .input-group {
     float: left;
@@ -71,13 +72,13 @@
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
-.btn-group > .btn-group:first-child {
+.btn-group > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     .border-right-radius(0);
   }
 }
-.btn-group > .btn-group:last-child > .btn:first-child {
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
   .border-left-radius(0);
 }
 
@@ -172,11 +173,11 @@
     border-radius: 0;
   }
   &:first-child:not(:last-child) {
-    border-top-right-radius: @border-radius-base;
+    border-top-right-radius: @btn-border-radius-base;
     .border-bottom-radius(0);
   }
   &:last-child:not(:first-child) {
-    border-bottom-left-radius: @border-radius-base;
+    border-bottom-left-radius: @btn-border-radius-base;
     .border-top-radius(0);
   }
 }

@@ -2,10 +2,10 @@
 // IT'S JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
 /*!
- * Copyright 2011-2014 Twitter, Inc.
+ * Copyright 2011-2015 Twitter, Inc.
  *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
- * details, see http://creativecommons.org/licenses/by/3.0/.
+ * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 // Intended to prevent false-positive bug reports about responsive styling supposedly not working in IE8.
 if (window.location.protocol == 'file:') {
