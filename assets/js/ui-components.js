@@ -49,7 +49,8 @@
           $el.toggleClass('open');
           $target = $($el.data('target'));
           is_open = $el.hasClass('open');
-          return $target.toggle(is_open);
+          $target.toggle(is_open);
+          return $(e.delegateTarget).toggleClass('navigation-open', is_open);
         });
       }
     };
