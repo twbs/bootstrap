@@ -1,0 +1,17 @@
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, li, dl, h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, form, legend, fieldset, input, button, select, textarea {margin:0; padding:0; font-weight: normal;font-style: normal;font-size: 100%; font-family: inherit;}
+ol, ul ,li{list-style: none;}
+img {border: 0;}
+body {color:#000;background:#FFF; text-align: center; font: 12px/1.5 Arial, Helvetica, sans-serif;}
+.clearfix:after {clear:both; content:"."; display:block; height:0pt; visibility:hidden; overflow:hidden;}
+.clear{clear:both;height:1px; margin-top:-1px; width:100%;}
+
+.dis{display:block;}
+.undis{display:none;}
+
+#header ,#centers ,#footer{ width:100%; margin:0 auto; clear:both;font-size:18px; line-height:68px; font-weight:bold;}
+#header{ height:68px; border:1px solid #CCCCCC; }
+#centers{ padding:8px 0;}
+#footer{ border-top:1px solid #CCCCCC; background:#F2F2F2;}
+
+#centers .c_left{ float:left; width:230px; border:1px solid #00CC66; background:#F7F7F7; margin-right:5px; }
+#centers .c_right{ float:left; width:500px;border:1px solid #00CC66; background:#F7F7F7}
