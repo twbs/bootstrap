@@ -27,7 +27,7 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
     <div class="row">
       <div class="col-sm-4">
         <h4>Package managers</h4>
-        <p>Bootstrap is available via Bower, Composer, Meteor, and npm.</p>
+        <p>Include Bootstrap's source Sass and JavaScript files via Bower, Composer, Meteor, or npm.</p>
 {% highlight bash %}
 $ npm install bootstrap
 $ bower install bootstrap
@@ -36,12 +36,15 @@ $ composer require twbs/bootstrap
 {% endhighlight %}
       </div>
       <div class="col-sm-4">
-        <h4>Download from GitHub</h4>
-        <p>You can also <a href="{{ site.repo }}">download the source files</a> from GitHub where our code, issue tracker, and more are hosted.</p>
+        <h4>Custom builds</h4>
+        <p>Need just a part of Bootstrap? Download a custom build of the compiled CSS and JS.</p>
+        <a class="btn btn-secondary" href="#">Reboot</a>
+        <a class="btn btn-secondary" href="#">Grid system</a>
+        <a class="btn btn-secondary" href="#">Flexbox</a>
       </div>
       <div class="col-sm-4">
         <h4>Bootstrap CDN</h4>
-        <p>Quickly include Bootstrap into a project with the Bootstrap CDN, a free service provided by the MaxCDN folks. Just copy and paste the CSS and JS as needed.</p>
+        <p>Use the free Bootstrap CDN to hotlink the compiled CSS and JS.</p>
 {% highlight html %}
 <link rel="stylesheet" href="{{ site.cdn.css }}">
 <script src="{{ site.cdn.js }}"></script>
