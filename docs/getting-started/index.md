@@ -5,6 +5,8 @@ title: Getting started
 
 Quickly add Bootstrap to your project via the [Bootstrap CDN](http://bootstrapcdn.com), graciously provided by the [MaxCDN](http://www.maxcdn.com/) folks.
 
+## Include CSS and JS
+
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets.
 
 <div class="alert alert-warning">
@@ -21,6 +23,8 @@ Then, add the Bootstrap JavaScript—and jQuery—near the end of your pages. It
 <script src="{{ site.cdn.jquery }}"></script>
 <script src="{{ site.cdn.js }}"></script>
 {% endhighlight %}
+
+## Page template
 
 Be sure to have your pages set up with the latest design and development standards. That means:
 

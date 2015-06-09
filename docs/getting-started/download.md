@@ -10,23 +10,27 @@ Bootstrap is available for download via ZIP file in two flavors: precompiled CSS
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-{% comment %}
-## Optional builds
+## Custom builds
 
-### Scaffolding only
-Just our global CSS resets, including Normalize and more. No custom CSS components or JavaScript.
+Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag just what you need.
 
-### Grid only
-Literally just our grid container and columns. No global CSS resets, custom CSS components, or JavaScript.
-
-### Individual components
-Choose what CSS and JS components to download and customize further for your own use. Include the global CSS resets.
-
-### Kitchen sink
-Download the entire project and quickly get developing. Includes all CSS and JavaScript, including the source files and basic build tools.
-
----
-{% endcomment %}
+<div class="row">
+  <div class="col-sm-4">
+    <h3>Reboot</h3>
+    <p>Includes variables/mixins, Normalize, and Reboot. No JavaScript.</p>
+    <a class="btn btn-primary" href="#">Download</a>
+  </div>
+  <div class="col-sm-4">
+    <h3>Grid only</h3>
+    <p>Includes variables/mixins and our grid system. No JavaScript.</p>
+    <a class="btn btn-primary" href="#">Download</a>
+  </div>
+  <div class="col-sm-4">
+    <h3>Flexbox</h3>
+    <p>All of Bootstrap, with flexbox support enabled and <strong>lower browser support</strong>.</p>
+    <a class="btn btn-primary" href="#">Download</a>
+  </div>
+</div>
 
 ## Precompiled
 
@@ -40,13 +44,15 @@ Source Sass, JavaScript, and documentation. **Requires a Sass compiler and [some
 
 <a href="{{ site.download.source }}" class="btn btn-lg btn-outline" role="button" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
 
-## Bower
+## Package managers
+
+### Bower
 
 You can also install and manage Bootstrap's Sass, CSS, and JavaScript using [Bower](http://bower.io).
 
 {% highlight bash %}$ bower install bootstrap{% endhighlight %}
 
-## npm
+### npm
 
 Bootstrap is available as [an npm package](https://www.npmjs.org/package/bootstrap). Install it into your Node powered apps with:
 
@@ -59,13 +65,13 @@ Bootstrap's `package.json` contains some additional metadata under the following
 - `less` - path to Bootstrap's main [Less](http://lesscss.org) source file
 - `style` - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)
 
-## Meteor
+### Meteor
 
 {% highlight bash %}
 $ meteor add twbs:bootstrap
 {% endhighlight %}
 
-## Composer
+### Composer
 
 {% highlight bash %}
 $ composer require twbs/bootstrap
