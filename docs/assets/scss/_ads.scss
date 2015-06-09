@@ -6,20 +6,20 @@
   width: auto !important;
   height: auto !important;
   padding: 1.25rem !important;
-  margin: 0 -1rem 2rem !important;
-  overflow: hidden; /* clearfix */
+  margin: 0 -1.5rem 2rem !important;
+  overflow: hidden; // clearfix
   font-size: .8rem !important;
   line-height: 1rem !important;
   color: $gray !important;
   text-align: left;
   background: #f5f5f5 !important;
   border: 0 !important;
-  // border: solid #e5e5e5 !important;
-  // border-width: 1px 0 !important;
 }
+
 .carbonad-img {
   margin: 0 !important;
 }
+
 .carbonad-text,
 .carbonad-tag {
   display: block !important;
@@ -29,13 +29,16 @@
   margin-left: 145px !important;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
+
 .carbonad-text {
   padding-top: 0 !important;
 }
+
 .carbonad-tag {
   color: inherit !important;
   text-align: left !important;
 }
+
 .carbonad-text a,
 .carbonad-tag a {
   color: $gray !important;
@@ -44,58 +47,17 @@
     color: $brand-primary !important;
   }
 }
+
 .carbonad #azcarbon > img {
   display: none; // hide what I assume are tracking images
 }
 
-// In the lighter page headers
-// .bd-header .carbonad {
-//   color: #777;
-//   background-color: #fff !important;
-//   border-color: #eee !important;
-// }
-// .bd-header .carbonad-text a,
-// .bd-header .carbonad-tag a {
-//   color: $bd-purple !important;
-// }
-
 @include media-breakpoint-up(sm) {
   .carbonad {
     width: 330px !important;
-    margin: 1.5rem auto !important;
-    border-width: 1px !important;
-    border-radius: .25rem;
-  }
-  .bd-masthead .carbonad {
-    margin: 3rem auto 0 !important;
-  }
-}
-
-@include media-breakpoint-up(md) {
-  .carbonad {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  .carbonad {
-    float: right;
-    width: 330px !important;
     padding: 1rem !important;
-    margin: .5rem 0 1rem 2rem !important;
-  }
-  .bd-masthead {
-    .carbonad {
-      float: none;
-      margin: 0 auto !important;
-      // color: $bd-purple-light !important;
-      // background: transparent !important;
-      // border: 1px solid #866ab3 !important;
-    }
-    // .carbonad-text a,
-    // .carbonad-tag a {
-    //   color: #fff !important;
-    // }
+    margin-right: auto !important;
+    margin-left: auto !important;
+    border-radius: .25rem;
   }
 }

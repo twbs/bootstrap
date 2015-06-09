@@ -50,22 +50,32 @@
 
   .bd-header-mark {
     float: left;
-    padding-top: .6em;
-    padding-bottom: .6em;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
     font-size: 1.25rem;
     font-weight: 500;
   }
 }
 
 .bd-header-nav {
-  float: right;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: .0625rem solid #eee;
 
   .nav-link {
-    float: left;
+    display: inline-block;
+    padding: 1.2rem .75rem;
 
     &:hover {
       background-color: transparent;
     }
+  }
+
+  @include media-breakpoint-up(sm) {
+    float: right;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
   }
 }
 
@@ -76,77 +86,88 @@
 
 .bd-masthead {
   position: relative;
-  padding: 2rem 0;
-  // color: #cdbfe3;
+  padding: ($grid-gutter-width / 2);
   text-align: center;
-  // text-shadow: 0 1px 0 rgba(0,0,0,.1);
-  // background-color: #6f5499;
-  // @include gradient-vertical($bd-purple, #6f5499);
-  // background-image: linear-gradient(135deg, #a8b7be, #cdd1d4, #d4d5d7, #cecfd1);
-}
 
-.bd-masthead .bd-booticon {
-  margin: 0 auto 2rem;
-  color: $gray;
-  border-color: $gray;
-}
-.bd-masthead h1 {
-  font-weight: 300;
-  line-height: 1;
-  // color: #fff;
-}
-.bd-masthead .lead {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2rem;
-  font-size: 1.25rem;
-  // color: #fff;
-}
-.bd-masthead .version {
-  margin-top: -1rem;
-  margin-bottom: 2rem;
-  // color: #9783b9;
-}
-.bd-masthead .btn {
-  width: 100%;
-  padding: 1rem 2rem;
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: $gray;
-  border-color: $gray;
+  .bd-booticon {
+    margin: 0 auto 2rem;
+    color: $bd-purple;
+    border-color: $bd-purple;
+  }
 
-  &:hover {
-    color: #fff;
-    background-color: $gray;
+  h1 {
+    font-weight: 300;
+    line-height: 1;
   }
-}
 
-@media (min-width: 480px) {
-  .bd-masthead .btn {
-    width: auto;
+  .lead {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
   }
-}
 
-@media (min-width: 768px) {
-  .bd-masthead {
-    padding: 2rem 0 4rem;
-    // padding: 5rem 0;
+  .version {
+    margin-top: -1rem;
+    margin-bottom: 2rem;
   }
-  .bd-header {
-    margin-bottom: 4rem;
-  }
-  .bd-masthead h1 {
-    font-size: 4rem;
-  }
-  .bd-masthead .lead {
-    font-size: 1.5rem;
-  }
-}
 
-@media (min-width: 992px) {
-  .bd-masthead .lead {
-    width: 80%;
-    font-size: 2rem;
+  .btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: $gray;
+    border-color: $gray;
+
+    &:hover {
+      color: #fff;
+      background-color: $gray;
+    }
+  }
+
+  .carbonad {
+    margin-bottom: -2rem !important;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    .btn {
+      width: auto;
+    }
+
+    .carbonad {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    padding-bottom: 4rem;
+
+    .bd-header {
+      margin-bottom: 4rem;
+    }
+
+    h1 {
+      font-size: 4rem;
+    }
+
+    .lead {
+      font-size: 1.5rem;
+    }
+
+    .carbonad {
+      margin-top: 3rem !important;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .lead {
+      width: 80%;
+      font-size: 2rem;
+    }
   }
 }
 

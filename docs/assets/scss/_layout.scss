@@ -9,12 +9,17 @@
   margin-right: auto;
   margin-left: auto;
 
-  @media (min-width: 768px) {
+  @include media-breakpoint-up(md) {
     padding: 2rem;
   }
 
-  @media (min-width: 992px) {
+  @include media-breakpoint-up(lg) {
     padding: 4rem;
+
+    .carbonad {
+      float: right !important;
+      margin: .5rem 0 1rem 2rem !important;
+    }
   }
 
   > table {
