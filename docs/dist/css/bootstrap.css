@@ -5438,6 +5438,163 @@ button.close {
   clip: auto;
 }
 
+[hidden] {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.text-hide {
+  font: "0/0" a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-muted {
+  color: #818a91;
+}
+
+.text-primary {
+  color: #0275d8;
+}
+
+a.text-primary:focus,
+a.text-primary:hover {
+  color: #025aa5;
+}
+
+.text-success {
+  color: #3c763d;
+}
+
+a.text-success:focus,
+a.text-success:hover {
+  color: #2b542c;
+}
+
+.text-info {
+  color: #31708f;
+}
+
+a.text-info:focus,
+a.text-info:hover {
+  color: #245269;
+}
+
+.text-warning {
+  color: #8a6d3b;
+}
+
+a.text-warning:focus,
+a.text-warning:hover {
+  color: #66512c;
+}
+
+.text-danger {
+  color: #a94442;
+}
+
+a.text-danger:focus,
+a.text-danger:hover {
+  color: #843534;
+}
+
+.inverse {
+  color: #eceeef;
+  background-color: #373a3c;
+}
+
+.bg-primary {
+  color: #fff;
+}
+
+.bg-primary {
+  background-color: #0275d8;
+}
+
+a.bg-primary:focus,
+a.bg-primary:hover {
+  background-color: #025aa5;
+}
+
+.bg-success {
+  background-color: #dff0d8;
+}
+
+a.bg-success:focus,
+a.bg-success:hover {
+  background-color: #c1e2b3;
+}
+
+.bg-info {
+  background-color: #d9edf7;
+}
+
+a.bg-info:focus,
+a.bg-info:hover {
+  background-color: #afd9ee;
+}
+
+.bg-warning {
+  background-color: #fcf8e3;
+}
+
+a.bg-warning:focus,
+a.bg-warning:hover {
+  background-color: #f7ecb5;
+}
+
+.bg-danger {
+  background-color: #f2dede;
+}
+
+a.bg-danger:focus,
+a.bg-danger:hover {
+  background-color: #e4b9b9;
+}
+
 .m-a-0 {
   margin: 0;
 }
@@ -5648,163 +5805,6 @@ button.close {
   right: 0;
   left: 0;
   z-index: 1030;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.text-hide {
-  font: "0/0" a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-justify {
-  text-align: justify;
-}
-
-.text-nowrap {
-  white-space: nowrap;
-}
-
-.text-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.text-lowercase {
-  text-transform: lowercase;
-}
-
-.text-uppercase {
-  text-transform: uppercase;
-}
-
-.text-capitalize {
-  text-transform: capitalize;
-}
-
-.text-muted {
-  color: #818a91;
-}
-
-.text-primary {
-  color: #0275d8;
-}
-
-a.text-primary:focus,
-a.text-primary:hover {
-  color: #025aa5;
-}
-
-.text-success {
-  color: #3c763d;
-}
-
-a.text-success:focus,
-a.text-success:hover {
-  color: #2b542c;
-}
-
-.text-info {
-  color: #31708f;
-}
-
-a.text-info:focus,
-a.text-info:hover {
-  color: #245269;
-}
-
-.text-warning {
-  color: #8a6d3b;
-}
-
-a.text-warning:focus,
-a.text-warning:hover {
-  color: #66512c;
-}
-
-.text-danger {
-  color: #a94442;
-}
-
-a.text-danger:focus,
-a.text-danger:hover {
-  color: #843534;
-}
-
-.inverse {
-  color: #eceeef;
-  background-color: #373a3c;
-}
-
-.bg-primary {
-  color: #fff;
-}
-
-.bg-primary {
-  background-color: #0275d8;
-}
-
-a.bg-primary:focus,
-a.bg-primary:hover {
-  background-color: #025aa5;
-}
-
-.bg-success {
-  background-color: #dff0d8;
-}
-
-a.bg-success:focus,
-a.bg-success:hover {
-  background-color: #c1e2b3;
-}
-
-.bg-info {
-  background-color: #d9edf7;
-}
-
-a.bg-info:focus,
-a.bg-info:hover {
-  background-color: #afd9ee;
-}
-
-.bg-warning {
-  background-color: #fcf8e3;
-}
-
-a.bg-warning:focus,
-a.bg-warning:hover {
-  background-color: #f7ecb5;
-}
-
-.bg-danger {
-  background-color: #f2dede;
-}
-
-a.bg-danger:focus,
-a.bg-danger:hover {
-  background-color: #e4b9b9;
 }
 
 .hidden-xs-up {
