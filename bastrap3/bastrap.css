@@ -2,6 +2,9 @@
 html {
   background-color: #111;
   height: 100%; }
+html.no-footer {
+  background-color: #FFF;
+}
 
 body {
   background-color: #fff; }
@@ -590,6 +593,7 @@ input[type=checkbox]:focus {
 .alert {
   border: 0 none; }
 
+.alert-default,
 .alert-success,
 .alert-info,
 .alert-warning,
@@ -599,6 +603,17 @@ input[type=checkbox]:focus {
 .alert a,
 .alert .alert-link {
   font-weight: normal; }
+
+.alert-default,
+.bg-info {
+  background-color: #f1f1f1; }
+
+.alert-default,
+.alert-default a,
+.alert-default .alert-link,
+.bg-info,
+.bg-info a {
+  color: #333333; }
 
 .alert-primary,
 .bg-primary {
@@ -676,10 +691,80 @@ input[type=checkbox]:focus {
 .text-danger a {
   color: #ad2424; }
 
-/* fields form + helper colors */
+/* Chosen dropdowns */
+
+.chosen-container.chosen-container-single .chosen-single {
+  background: none;
+  height: 34px;
+  padding: 3px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075);
+}
+.chosen-container.chosen-container-single .chosen-single div b {
+  margin-top: 30%;
+  height: 70%;
+}
+.chosen-container.chosen-container-single.chosen-with-drop .chosen-single {
+  background: none;
+  box-shadow: inset none;
+}
+
+.chosen-container.chosen-container-multi .chosen-choices {
+  background: none;
+  height: 34px;
+  padding: 3px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075);
+}
+.chosen-container.chosen-container-multi.chosen-with-drop .chosen-choices {
+  border-radius: 4px 4px 0 0;
+  border-color: #aaa;
+}
+
+.chosen-container.chosen-container-single.chosen-with-drop .chosen-results li.highlighted,
+.chosen-container.chosen-container-multi.chosen-with-drop .chosen-results li.highlighted {
+  background: #4265bc;
+}
+.chosen-container.chosen-container-single.chosen-with-drop .chosen-results li.group-result,
+.chosen-container.chosen-container-multi.chosen-with-drop .chosen-results li.group-result {
+  text-shadow: none;
+}
+
+/* fields form + helper icons / colors */
+
 .form-control {
   -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075); }
+
+.has-feedback .form-control-feedback {
+  top: auto;
+  bottom: 0px;
+  color: #A8A8A8;
+  text-decoration: none;
+}
+
+.has-feedback .form-control-feedback.ba-icon {
+  font-size: 1.2em;
+  line-height: 2.3em;
+}
+
+.input-xl+.form-control-feedback {
+    width: 64px;
+    height: 64px;
+    line-height: 64px
+}
+
+.has-feedback .input-sm + .form-control-feedback {
+  font-size: 105%;
+}
+.has-feedback .input-lg + .form-control-feedback {
+  font-size: 160%;
+}
+.has-feedback .input-xl + .form-control-feedback {
+  font-size: 220%;
+}
 
 .has-success .checkbox,
 .has-success .checkbox-inline,
@@ -725,12 +810,68 @@ input[type=checkbox]:focus {
   color: #bc4946; }
 
 .has-error .form-control {
+  background: #FAEDEC;
   border-color: #bc4946; }
 
 .has-error .form-control:focus {
   border-color: #b23634;
   -webkit-box-shadow: 0px 0px 6px #bc4946;
   box-shadow: 0px 0px 6px #bc4946; }
+
+/* fields form + icon button*/
+
+.has-button {
+  position: relative;
+}
+
+.has-button .btn {
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  padding: 0;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  background: none;
+  box-shadow: none;
+  font-size: ;
+  color: #A8A8A8;
+}
+
+.has-button .btn:hover {
+  color: #888;
+}
+
+.has-button .btn:active {
+  color: #AAA;
+}
+
+.has-button .btn .ba-icon {
+  font-size: 1.2em;
+  line-height: 2.3em;
+}
+
+.has-button .input-sm + .btn {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 105%;
+}
+.has-button .input-lg + .btn {
+  width: 46px;
+  height: 46px;
+  line-height: 46px;
+  font-size: 160%;
+}
+.has-button .input-xl + .btn {
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  font-size: 220%;
+}
 
 /* focus */
 a.thumbnail:hover,
@@ -1069,6 +1210,9 @@ a.list-group-item.active > .badge {
 @media (max-width: 560px) {
   .navbar-top .navbar-brand {
     display: block; }
+  .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+     float: none; margin-left: auto; margin-right: auto;
+  }
 
   .navbar-top .sub-brand {
     display: none; } }
@@ -1568,10 +1712,6 @@ ul.affix-bottom {
 /* navbar default jumbotron */
 .jumbotron-main {
   background-color: #666; }
-
-.jumbotron-main p.lead a {
-  color:#fff;
-}
 
 .jumbotron-main .navbar-default .navbar-nav > li > a,
 .jumbotron-main .navbar-default .navbar-brand {
@@ -2903,6 +3043,7 @@ a.alert-spot:active {
   color: #c64b7d !important; }
 
 
+
 /* Font files */
 @font-face {
   font-family: "OpenSans";
@@ -2944,4 +3085,115 @@ a.alert-spot:active {
        url("fonts/glyphicons-halflings-regular.woff") format("woff"), 
        url("fonts/glyphicons-halflings-regular.ttf") format("truetype"), 
        url("fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); 
+}
+
+
+/* BA Icon font */
+@font-face {
+  font-family: "bastrap-icons";
+  src:url("fonts/bastrap-icons.eot");
+  src:url("fonts/bastrap-icons.eot?#iefix") format("embedded-opentype"),
+    url("fonts/bastrap-icons.woff") format("woff"),
+    url("fonts/bastrap-icons.ttf") format("truetype"),
+    url("fonts/bastrap-icons.svg#bastrap-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: "bastrap-icons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ba-icon:before {
+  font-family: "bastrap-icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ba-icon.ba-alert-calendario:before {
+  content: "a";
+}
+.ba-icon.ba-ribbon:before {
+  content: "b";
+}
+.ba-icon.ba-social-cc:before {
+  content: "c";
+}
+.ba-icon.ba-alert-clima:before {
+  content: "d";
+}
+.ba-icon.ba-alert-evento:before {
+  content: "e";
+}
+.ba-icon.ba-social-fb:before {
+  content: "f";
+}
+.ba-icon.ba-social-fl:before {
+  content: "g";
+}
+.ba-icon.ba-alert-informacion:before {
+  content: "h";
+}
+.ba-icon.ba-alert-salud:before {
+  content: "i";
+}
+.ba-icon.ba-social-gp:before {
+  content: "j";
+}
+.ba-icon.ba-social-rss:before {
+  content: "k";
+}
+.ba-icon.ba-alert-subte:before {
+  content: "l";
+}
+.ba-icon.ba-alert-temperatura:before {
+  content: "m";
+}
+.ba-icon.ba-social-tw:before {
+  content: "n";
+}
+.ba-icon.ba-social-user:before {
+  content: "o";
+}
+.ba-icon.ba-alert-transito:before {
+  content: "p";
+}
+.ba-icon.ba-ba:before {
+  content: "q";
+}
+.ba-icon.ba-social-yt:before {
+  content: "r";
+}
+.ba-icon.ba-bavos:before {
+  content: "s";
+}
+.ba-icon.ba-bac:before {
+  content: "t";
+}
+.ba-icon.ba-no:before {
+  content: "u";
+}
+.ba-icon.ba-ok:before {
+  content: "v";
+}
+.ba-icon.ba-email:before {
+  content: "w";
+}
+.ba-icon.ba-key:before {
+  content: "x";
 }
