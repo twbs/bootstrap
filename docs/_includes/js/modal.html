@@ -141,7 +141,7 @@ $('#myModal').on('shown.bs.modal', function () {
 
   <div class="bs-callout bs-callout-warning" id="callout-modal-accessibility">
     <h4>Make modals accessible</h4>
-    <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title.</p>
+    <p>Be sure to add <code>role="dialog"</code> and <code>aria-labelledby="..."</code>, referencing the modal title, to <code>.modal</code>, and <code>role="document"</code> to the <code>.modal-dialog</code>  itself.</p>
     <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
   </div>
 
