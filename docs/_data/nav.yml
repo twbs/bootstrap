@@ -1,18 +1,13 @@
 - title: Getting started
   pages:
+    - title: Overview
     - title: Download
-      sections:
-        - title: Precompiled
-        - title: Source
-        - title: Bower
-        - title: npm
     - title: Contents
     - title: JavaScript
     - title: Compiling
     - title: Customize
     - title: Flexbox
     - title: Support
-    # - title: Third party support
     - title: Accessibility
 
 - title: Layout
@@ -21,117 +16,27 @@
     - title: Media queries
     - title: Containers
     - title: Grid
-      sections:
-        - title: Introduction
-        - title: Media queries
-        - title: Grid options
-        - title: Semantic mixins
-        - title: Ex Stacked to horizontal
-        - title: Ex Fluid container
-        - title: Ex Mobile and desktop
-        - title: Ex Mobile tablet desktops
-        - title: Ex Column wrapping
-        - title: Ex Responsive column resets
-        - title: Ex Offsetting columns
-        - title: Ex Nesting columns
-        - title: Ex Column ordering
     - title: Media
     - title: Responsive utilities
-      sections:
-        - title: Viewports
-        - title: Print
-        - title: Test cases
 
 - title: Components
   pages:
     - title: Reboot
-      sections:
-        - title: Approach
-        - title: Page defaults
-        - title: Headings and paragraphs
-        - title: Lists
-        - title: Preformatted text
-        - title: Tables
-        - title: Forms
-        - title: Misc elements
     - title: Typography
-      sections:
-        # - title: Scale
-        - title: Global settings
-        - title: Headings
-        - title: Lead
-        - title: Inline text elements
-        - title: Abbreviations
-        - title: Blockquotes
-        - title: Lists
     - title: Images
     - title: Code
-      sections:
-        - title: Inline code
-        - title: Preformatted text
-        - title: Variables
-        - title: User input
-        - title: Sample output
     - title: Tables
     - title: Buttons
-      sections:
-        - title: Examples
-        - title: Button tags
-        - title: Sizes
-        - title: Active state
-        - title: Disabled state
-        # - title: JavaScript behavior
-        - title: Custom states
-        - title: Single toggle
-        - title: Checkbox and radio
-        - title: Methods
     - title: Button group
     - title: Button dropdown
     - title: Forms
-      sections:
-        - title: Form controls
-        - title: Form groups
-        - title: Inline forms
-        - title: Using the Grid
-        - title: Checkboxes and radios
-        - title: Static controls
-        - title: Focus state
-        - title: Disabled state
-        - title: Readonly inputs
-        - title: Validation
-        - title: Control sizing
-        - title: Column sizing
-        - title: Help text
-        - title: Custom forms
-        # - title: Checkboxes and radios
-        # - title: Select menu
-        # - title: File browser
     - title: Input group
-      sections:
-        - title: Basic example
-        - title: Sizing
-        - title: Checkboes and radio buttons
-        - title: Button addons
-        - title: Buttons with dropdowns
-        - title: Segmented buttons
-        - title: Accessibility
     - title: Dropdowns
     - title: Jumbotron
     - title: Badges
     - title: Label
     - title: Alerts
     - title: Card
-      sections:
-        - title: Basic example
-        - title: Text alignment
-        - title: Header and footer
-        - title: Image caps
-        - title: Image overlays
-        - title: Inverted text
-        - title: Background variants
-        - title: Groups
-        - title: Sets
-        - title: Columns
     - title: Navs
     - title: Navbar
     - title: Breadcrumb
@@ -145,19 +50,6 @@
     - title: Collapse
     - title: Carousel
     - title: Utilities
-      sections:
-        - title: Text alignment
-        - title: Text transform
-        - title: Contextual colors
-        - title: Contextual backgrounds
-        - title: Close icon
-        - title: Floats
-        - title: Center content
-        - title: Hidden content
-        - title: Invisible content
-        - title: Screen readers
-        - title: Image replacement
-        - title: Responsive embed
 
 - title: Examples
   pages:
@@ -179,11 +71,10 @@
     - title: Sticky footer with navbar
     - title: Offcanvas
 
-- title: Extend
-  pages:
-    - title: Approach
-    - title: Icon fonts
-    # - title: Accessibility
+# - title: Extend
+#   pages:
+#     - title: Approach
+#     - title: Icon fonts
 
 - title: About
   pages:
@@ -192,6 +83,5 @@
     - title: Brand
     - title: License
     - title: Translations
-    # - title: Credits
 
 - title: Migration
