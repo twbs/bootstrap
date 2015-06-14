@@ -29,9 +29,9 @@
   "license": "MIT",
   "devDependencies": {
     "btoa": "~1.1.2",
-    "glob": "~5.0.5",
+    "glob": "~5.0.12",
     "grunt": "~0.4.5",
-    "grunt-autoprefixer": "~3.0.0",
+    "grunt-autoprefixer": "~3.0.3",
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-compress": "~0.13.0",
     "grunt-contrib-concat": "~0.5.1",
@@ -46,7 +46,7 @@
     "grunt-contrib-qunit": "~0.7.0",
     "grunt-contrib-uglify": "~0.9.1",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-csscomb": "~3.0.0",
+    "grunt-csscomb": "~3.0.1",
     "grunt-exec": "~0.4.6",
     "grunt-html": "~4.0.3",
     "grunt-jekyll": "~0.4.2",
@@ -54,9 +54,9 @@
     "grunt-saucelabs": "~8.6.1",
     "grunt-sed": "twbs/grunt-sed#v0.2.0",
     "load-grunt-tasks": "~3.2.0",
-    "markdown-it": "^4.2.1",
+    "markdown-it": "^4.3.0",
     "npm-shrinkwrap": "^200.4.0",
-    "time-grunt": "^1.2.0"
+    "time-grunt": "^1.2.1"
   },
   "engines": {
     "node": ">=0.10.1"
