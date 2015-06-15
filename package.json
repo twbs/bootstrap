@@ -55,7 +55,7 @@
     "grunt-sed": "twbs/grunt-sed#v0.2.0",
     "load-grunt-tasks": "~3.2.0",
     "markdown-it": "^4.2.2",
-    "npm-shrinkwrap": "^5.4.0",
+    "npm-shrinkwrap": "^200.4.0",
     "time-grunt": "^1.2.1"
   },
   "engines": {
