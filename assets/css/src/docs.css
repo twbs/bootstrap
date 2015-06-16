@@ -1,8 +1,8 @@
 /*!
  * Bootstrap Docs (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
- * details, see http://creativecommons.org/licenses/by/3.0/.
+ * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
 
@@ -356,7 +356,7 @@ h4 code {
   width: auto !important;
   height: auto !important;
   padding: 20px !important;
-  margin: 30px -30px -31px !important;
+  margin: 30px -15px -31px !important;
   overflow: hidden; /* clearfix */
   font-size: 13px !important;
   line-height: 16px !important;
@@ -1595,6 +1595,31 @@ h1[id] {
   }
 }
 
+/*
+ * AnchorJS Styles
+ */
+.anchorjs-link {
+  color: inherit;
+}
+
+@media (max-width: 480px) {
+  .anchorjs-link {
+    display: none;
+  }
+}
+
+*:hover > .anchorjs-link {
+  opacity: .75;
+  -webkit-transition: color .16s linear;
+       -o-transition: color .16s linear;
+          transition: color .16s linear;
+}
+
+*:hover > .anchorjs-link:hover,
+.anchorjs-link:focus {
+  text-decoration: none;
+  opacity: 1;
+}
 
 /*
  * Miscellaneous

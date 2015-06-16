@@ -17,13 +17,14 @@
 
 <!-- Bootstrap core CSS -->
 
-<link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../dist/css/bootstrap.css" rel="stylesheet">
 
 
 
 <!-- Documentation extras -->
 
-<link href="../assets/css/docs.min.css" rel="stylesheet">
+<link href="../assets/css/src/pygments-manni.css" rel="stylesheet">
+<link href="../assets/css/src/docs.css" rel="stylesheet">
 
 <!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="../assets/js/ie-emulation-modes-warning.js"></script>
@@ -55,7 +56,7 @@
     <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
   <div class="container">
     <div class="navbar-header">
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -63,7 +64,7 @@
       </button>
       <a href="../" class="navbar-brand">Bootstrap</a>
     </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse">
+    <nav id="bs-navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li>
           <a href="../getting-started/">Getting started</a>
@@ -96,9 +97,9 @@
     <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">B</span>
     <p class="lead">Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.</p>
     <p class="lead">
-      <a href="getting-started#download" class="btn btn-outline-inverse btn-lg" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download 3.3.4');">Download Bootstrap</a>
+      <a href="getting-started#download" class="btn btn-outline-inverse btn-lg" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download 3.3.5');">Download Bootstrap</a>
     </p>
-    <p class="version">Currently v3.3.4</p>
+    <p class="version">Currently v3.3.5</p>
     <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script>var z = document.createElement("script"); z.async = true; z.src = "http://engine.carbonads.com/z/32341/azcarbon_2_1_0_HORIZ"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>
 
   </div>
@@ -186,10 +187,10 @@
     <div class="bs-docs-social">
   <ul class="bs-docs-social-buttons">
     <li>
-      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+      <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
     </li>
     <li>
-      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+      <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user=twbs&amp;repo=bootstrap&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
     </li>
     <li class="follow-btn">
       <a href="https://twitter.com/getbootstrap" class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @getbootstrap</a>
@@ -205,7 +206,7 @@
     <p>Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
     <p>Code licensed under <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, documentation under <a rel="license" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
     <ul class="bs-docs-footer-links text-muted">
-      <li>Currently v3.3.4</li>
+      <li>Currently v3.3.5</li>
       <li>&middot;</li>
       <li><a href="https://github.com/twbs/bootstrap">GitHub</a></li>
       <li>&middot;</li>
@@ -229,14 +230,22 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 
-  <script src="../dist/js/bootstrap.min.js"></script>
+  <script src="../dist/js/bootstrap.js"></script>
 
 
 
-  <script src="../assets/js/docs.min.js"></script>
+  
+  <script src="../assets/js/vendor/holder.min.js"></script>
+  
+  <script src="../assets/js/vendor/ZeroClipboard.min.js"></script>
+  
+  <script src="../assets/js/vendor/anchor.js"></script>
+  
+  <script src="../assets/js/src/application.js"></script>
+  
 
 
 
