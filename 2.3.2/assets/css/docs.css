@@ -860,7 +860,6 @@ form.bs-docs-example {
   margin-right: 340px;
 }
 
-.treehouse,
 .carbonad {
   position: absolute;
   top: 0;
@@ -902,32 +901,31 @@ form.bs-docs-example {
 }
 
 /* Ads on homepage */
-.masthead .treehouse,
 .masthead .carbonad {
   position: static;
   margin: 30px auto 0 !important;
   text-align: left !important;
 }
 
-/* Custom Treehouse styles */
-.treehouse {
-  width: 305px;
+@media (max-width: 980px) {
+  .carbonad {
+    position: static;
+    width: auto !important;
+    margin-top: 30px !important;
+  }
 }
-.treehouse img {
-  float: left;
+
+@media (max-width: 767px) {
+  .carbonad {
+    position: static;
+    width: auto !important;
+    margin: 40px -20px -40px !important;
+    padding: 20px !important;
+    overflow: hidden; /* clearfix */
+    border-radius: 0;
+  }
 }
-.treehouse-text {
-  display: block;
-  margin-left: 145px;
-  color: #fff;
-}
-.treehouse-link {
-  color: #fff !important;
-}
-.treehouse-link {
-  font-weight: bold;
-  color: #fff !important;
-}
+
 
 
 /* Responsive
@@ -976,14 +974,6 @@ form.bs-docs-example {
   .subhead .lead {
     margin-right: 0;
   }
-
-  .treehouse,
-  .carbonad {
-    position: static;
-    width: auto !important;
-    margin-top: 30px !important;
-  }
-
 }
 
 /* Tablet to desktop
@@ -1036,8 +1026,6 @@ form.bs-docs-example {
     margin: 0 -20px;
   }
 
-  .treehouse,
-  .masthead .treehouse,
   .carbonad {
     position: static;
     width: auto !important;

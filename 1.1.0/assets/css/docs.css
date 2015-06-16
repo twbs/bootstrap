@@ -1,0 +1,239 @@
+/* Add additional stylesheets below
+-------------------------------------------------- */
+/*
+  Bootstrap's documentation styles
+  Special styles for presenting Bootstrap's documentation and examples
+*/
+/* Body and structure
+-------------------------------------------------- */
+body {
+  background-color: #fff;
+  position: relative;
+}
+section {
+  padding-top: 60px;
+}
+#masthead, #footer {
+  background-color: #049cd9;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
+  background-image: -webkit-linear-gradient(#004D9F, #049cd9);
+  background-image: -moz-linear-gradient(#004D9F, #049cd9);
+  background-image: -o-linear-gradient(top, #004D9F, #049cd9);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#004D9F), to(#049cd9));
+  filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#004D9F', EndColorStr='#049cd9', GradientType=0);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#004D9F', EndColorStr='#049cd9', GradientType=0))";
+}
+#masthead div.inner, #footer div.inner {
+  background: transparent url(../img/grid-18px.png) top center;
+  padding: 45px 0;
+  -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+#masthead h1,
+#footer h1,
+#masthead p,
+#footer p {
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+}
+#masthead p a,
+#footer p a {
+  color: #fff;
+  font-weight: bold;
+}
+#masthead {
+  margin-top: 40px;
+}
+#masthead h1,
+#masthead p {
+  text-align: center;
+  margin-bottom: 9px;
+}
+#masthead h1 {
+  font-size: 54px;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+#masthead p {
+  font-weight: 300;
+}
+#masthead p.lead {
+  font-size: 20px;
+  line-height: 27px;
+}
+
+div.quickstart {
+  background-color: #f5f5f5;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#f9f9f9), to(#f5f5f5));
+  background-image: -moz-linear-gradient(#f9f9f9, #f5f5f5);
+  background-image: -ms-linear-gradient(#f9f9f9, #f5f5f5);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9f9f9), color-stop(100%, #f5f5f5));
+  background-image: -webkit-linear-gradient(#f9f9f9, #f5f5f5);
+  background-image: -o-linear-gradient(#f9f9f9, #f5f5f5);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f5f5f5', GradientType=0)";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#f5f5f5', GradientType=0);
+  background-image: linear-gradient(#f9f9f9, #f5f5f5);
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #eee;
+}
+div.quickstart div.row {
+  margin: 0 -20px;
+  -webkit-box-shadow: 1px 0 0 #f9f9f9;
+     -moz-box-shadow: 1px 0 0 #f9f9f9;
+          box-shadow: 1px 0 0 #f9f9f9;
+}
+div.quickstart div.columns {
+  width: 285px;
+  height: 117px;
+  margin-left: 0;
+  padding: 17px 20px 26px;
+  border-left: 1px solid #eee;
+  -webkit-box-shadow: inset 1px 0 0 #f9f9f9;
+     -moz-box-shadow: inset 1px 0 0 #f9f9f9;
+          box-shadow: inset 1px 0 0 #f9f9f9;
+}
+div.quickstart div.columns:last-child {
+  border-right: 1px solid #eee;
+  width: 286px;
+}
+div.quickstart h6,
+div.quickstart p {
+  line-height: 18px;
+  text-align: center;
+  margin-bottom: 9px;
+  color: #333;
+}
+div.quickstart h6 {
+  color: #999;
+}
+div.quickstart form textarea {
+  display: block;
+  width: 275px;
+  height: auto;
+  margin: 0 0 9px;
+  line-height: 21px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#footer {
+  margin-top: 80px;
+}
+#footer p {
+  margin-bottom: 0;
+  color: rgba(255,255,255,.8)
+}
+#footer p.right {
+  float: right;
+}
+/* Special grid styles
+-------------------------------------------------- */
+.show-grid {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.show-grid .column, .show-grid .columns {
+  background-color: #eee;
+  text-align: center;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  height: 30px;
+  line-height: 30px;
+}
+.show-grid:hover .column, .show-grid:hover .columns {
+  background: rgba(0, 0, 0, 0.25);
+}
+/* Render mini layout previews
+-------------------------------------------------- */
+div.mini-layout {
+  height: 340px;
+  margin-bottom: 20px;
+  padding: 9px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.125);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.125);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.125);
+}
+div.mini-layout div {
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+div.mini-layout div.mini-layout-body {
+  background-color: #dceaf4;
+  margin: 0 auto;
+  width: 450px;
+  height: 340px;
+}
+div.mini-layout.fluid div.mini-layout-sidebar,
+div.mini-layout.fluid div.mini-layout-header,
+div.mini-layout.fluid div.mini-layout-body {
+  float: left;
+}
+div.mini-layout.fluid div.mini-layout-sidebar {
+  background-color: #bbd8e9;
+  width: 90px;
+  height: 340px;
+}
+div.mini-layout.fluid div.mini-layout-body {
+  width: 400px;
+  margin-left: 10px;
+}
+/* Topbar special styles
+-------------------------------------------------- */
+div.topbar-wrapper {
+  position: relative;
+  height: 40px;
+  margin: 5px 0 15px;
+}
+div.topbar-wrapper div.topbar {
+  position: absolute;
+  margin: 0 -20px;
+}
+
+div.topbar-wrapper div.topbar .fill {
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+/* Popover docs
+-------------------------------------------------- */
+div.popover-well {
+  min-height: 160px;
+}
+
+div.popover-well div.popover {
+  display: block;
+}
+
+div.popover-well div.popover-wrapper {
+  width: 50%;
+  height: 160px;
+  float: left;
+  margin-left: 55px;
+  position: relative;
+}
+
+div.popover-well div.popover-menu-wrapper {
+  height: 80px;
+}
+
+img.large-bird {
+  margin: 5px 0 0 310px;
+  opacity: .1;
+}
+
+/* Pretty Print
+-------------------------------------------------- */
+PRE.prettyprint {
+  overflow: hidden;
+}

@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le javascript -->
+    <script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+    <script src="http://autobahn.tablesorter.com/jquery.tablesorter.min.js"></script>
+    <script src="assets/js/google-code-prettify/prettify.js"></script>
+    <script>$(function () { prettyPrint() })</script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-twipsy.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/application.js"></script>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/ico/bootstrap-apple-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/bootstrap-apple-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/bootstrap-apple-114x114.png">
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-146052-10', 'getbootstrap.com');
+      ga('send', 'pageview');
+    </script>
+  </head>
+
+  <body>
+
+    <!-- Topbar
+    ================================================== -->
+    <div class="topbar" data-scrollspy="scrollspy" >
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Bootstrap</a>
+          <ul class="nav">
+            <li class="active"><a href="#overview">Overview</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#grid-system">Grid</a></li>
+            <li><a href="#layouts">Layouts</a></li>
+            <li><a href="#typography">Type</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#tables">Tables</a></li>
+            <li><a href="#forms">Forms</a></li>
+            <li><a href="#navigation">Navigation</a></li>
+            <li><a href="#alerts">Alerts</a></li>
+            <li><a href="#popovers">Popovers</a></li>
+            <li><a href="#javascript">Javascript</a></li>
+            <li><a href="#less">Less</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Masthead (blueprinty thing)
+    ================================================== -->
+    <header class="jumbotron masthead" id="overview">
+      <div class="inner">
+        <div class="container">
+          <h1>Bootstrap, from Twitter</h1>
+          <p class="lead">
+            Bootstrap is a toolkit from Twitter designed to kickstart development of webapps and sites.<br />
+            It includes base CSS and HTML for typography, forms, buttons, tables, grids, navigation, and more.<br />
+          </p>
+          <p><strong>Nerd alert:</strong> Bootstrap is <a href="#less" title="Read about using Bootstrap with Less">built with Less</a> and was designed to work out of the gate with modern browsers in mind.</p>
+        </div><!-- /container -->
+      </div>
+    </header>
+
+    <!-- Quickstart options
+    ================================================== -->
+    <div class="quickstart">
+      <div class="container">
+        <div class="row">
+          <div class="span5">
+            <h6>Hotlink the CSS</h6>
+            <p>For the quickest and easiest start, just copy this snippet into your webpage.</p>
+            <form>
+              <textarea class="copy-code" rows="1">&lt;link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.min.css"></textarea>
+            </form>
+          </div>
+          <div class="span5">
+            <h6>Use it with Less</h6>
+            <p>A fan of using Less? No problem, just clone the repo and add these lines:</p>
+            <form>
+              <textarea class="copy-code" rows="2">&lt;link rel="stylesheet/less" href="/path/to/bootstrap.less"&gt;
+&lt;script src="/path/to/less.js"&gt;&lt;/script&gt;</textarea>
+            </form>
+          </div>
+          <div class="span5">
+            <h6>Fork on GitHub</h6>
+            <p>Download, fork, pull, file issues, and more with the official Bootstrap repo on Github.</p>
+            <p><a target="_blank" href="https://github.com/twitter/bootstrap" class="btn primary">Bootstrap on GitHub &raquo;</a></p>
+            <p class="current-version">Currently <a href="https://github.com/twitter/bootstrap/wiki/Changelog">v1.3.0</a></p>
+          </div>
+        </div><!-- /row -->
+      </div>
+    </div>
+
+    <div class="container">
+
+
+
+<!-- About Bootstrap
+================================================== -->
+<section id="about">
+  <div class="page-header">
+    <h1>About Bootstrap <small>Brief history, browser support, and more</small></h1>
+  </div>
+  <div class="row">
+    <div class="span-one-third">
+      <h3>History</h3>
+      <p>Engineers at Twitter have historically used almost any library they were familiar with to meet front-end requirements. Bootstrap began as an answer to the challenges that presented. With the help of many awesome folks, Bootstrap has grown significantly.</p>
+      <p>Read more on <a href="https://dev.twitter.com/blog/bootstrap-twitter">dev.twitter.com &rsaquo;</a></p>
+      <p>
+        <a href="http://twitter.com/getbootstrap" class="twitter-follow-button">Follow @getbootstrap</a>
+        <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+      </p>
+    </div>
+    <div class="span-one-third">
+      <h3>Browser support</h3>
+      <p>Bootstrap is tested and supported in major modern browsers like Chrome, Safari, Internet Explorer, and Firefox.</p>
+      <img src="assets/img/browsers.png" alt="Tested and supported in Chrome, Safari, Internet Explorer, and Firefox">
+      <ul>
+        <li>Latest Safari</li>
+        <li>Latest Google Chrome</li>
+        <li>Firefox 4+</li>
+        <li>Internet Explorer 7+</li>
+        <li>Opera 11</li>
+      </ul>
+    </div>
+    <div class="span-one-third">
+      <h3>What's included</h3>
+      <p>Bootstrap comes complete with compiled CSS, uncompiled, and example templates.</p>
+      <ul>
+        <li><span class="label">New in 1.3</span> <a href="./javascript.html">Javascript plugins</a></li>
+        <li>All original .less files</li>
+        <li>Fully <a href="../bootstrap.css">compiled</a> and <a href="../bootstrap.min.css">minified</a> CSS</li>
+        <li>Complete styleguide documentation</li>
+        <li>Three example pages with different layouts</li>
+      </ul>
+    </div>
+  </div><!-- /row -->
+
+  <div class="row">
+    <div class="span12">
+      <h3>Quick-start examples</h3>
+      <p>Need some quick templates? Check out these basic examples we've put together:</p>
+      <ul class="media-grid">
+        <li>
+          <a href="../examples/hero.html"><img src="assets/img/example-diagram-01.png" alt="Simple three-column layout with hero unit"></a>
+        </li>
+        <li>
+          <a href="../examples/fluid.html"><img src="assets/img/example-diagram-02.png" alt="Fluid layout with static sidebar"></a>
+        </li>
+        <li>
+          <a href="../examples/container-app.html"><img src="assets/img/example-diagram-03.png" alt="Simple hanging container for apps"></a>
+        </li>
+      </ul>
+    </div>
+  </div><!-- /row -->
+</section>
+
+
+
+<!-- Grid system
+================================================== -->
+<section id="grid-system">
+  <div class="page-header">
+    <h1>Grid system <small>Rock the standard 940px or roll your own</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2>Default grid</h2>
+      <p>The default grid system provided as part of Bootstrap is a 940px wide 16-column grid. It’s a flavor of the popular 960 grid system, but without the additional margin/padding on the left and right sides.</p>
+    </div>
+    <div class="span12">
+      <h3>Example grid markup</h3>
+      <p>As shown here, a basic layout can be created with two "columns," each spanning a number of the 16 foundational columns we defined as part of our grid system. See the examples below for more variations.</p>
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span6"&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class="span10"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="16 column layout">
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+    <div class="span1">1</div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="8 column layout">
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+    <div class="span2">2</div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="Example uncommon layout">
+    <div class="span3">3</div>
+    <div class="span3">3</div>
+    <div class="span3">3</div>
+    <div class="span3">3</div>
+    <div class="span3">3</div>
+    <div class="span1 column">1</div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="Four column layout">
+    <div class="span4">4</div>
+    <div class="span4">4</div>
+    <div class="span4">4</div>
+    <div class="span4">4</div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="Default three column layout">
+    <div class="span-one-third">1/3</div>
+    <div class="span-one-third">1/3</div>
+    <div class="span-one-third">1/3</div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="One-third and two-thirds layout">
+    <div class="span-one-third">1/3</div>
+    <div class="span-two-thirds">2/3</div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="Irregular three column layout">
+    <div class="span4">4</div>
+    <div class="span6">6</div>
+    <div class="span6">6</div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="Half and half">
+    <div class="span8">8</div>
+    <div class="span8">8</div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="Example uncommon two-column layout">
+    <div class="span5">5</div>
+    <div class="span11">11</div>
+  </div><!-- /row -->
+  <div class="row show-grid" title="Unnecessary single column layout">
+    <div class="span16">16</div>
+  </div><!-- /row -->
+
+  <br>
+
+  <h2>Offsetting columns</h2>
+  <div class="row show-grid">
+    <div class="span4">4</div>
+    <div class="span8 offset4">8 offset 4</div>
+  </div><!-- /row -->
+  <div class="row show-grid">
+    <div class="span-one-third offset-two-thirds">1/3 offset 2/3s</div>
+  </div><!-- /row -->
+  <div class="row show-grid">
+    <div class="span4 offset4">4 offset 4</div>
+    <div class="span4 offset4">4 offset 4</div>
+  </div><!-- /row -->
+  <div class="row show-grid">
+    <div class="span5 offset3">5 offset 3</div>
+    <div class="span5 offset3">5 offset 3</div>
+  </div><!-- /row -->
+  <div class="row show-grid">
+    <div class="span10 offset6">10 offset 6</div>
+  </div><!-- /row -->
+
+  <br>
+
+  <div class="row">
+    <div class="span4">
+      <h2>Nesting columns</h2>
+      <p>Nest your content if you must by creating a <code>.row</code> within an existing column.</p>
+    </div>
+    <div class="span12">
+      <h4>Example of nested columns</h4>
+      <div class="row show-grid">
+        <div class="span12">
+          Level 1 of column
+          <div class="row show-grid">
+            <div class="span6">
+              Level 2
+            </div>
+            <div class="span6">
+              Level 2
+            </div>
+          </div>
+        </div>
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="row"&gt;
+  &lt;div class="span12"&gt;
+    Level 1 of column
+    &lt;div class="row"&gt;
+      &lt;div class="span6"&gt;
+        Level 2
+      &lt;/div&gt;
+      &lt;div class="span6"&gt;
+        Level 2
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="span4">
+      <h2>Roll your own grid</h2>
+      <p>Built into Bootstrap are a handful of variables for customizing the default 940px grid system. With a bit of customization, you can modify the size of columns, their gutters, and the container they reside in.</p>
+    </div>
+    <div class="span12">
+      <h3>Inside the grid</h3>
+      <p>The variables needed to modify the grid system currently all reside in <code>preboot.less</code>.</p>
+      <table class="zebra-striped">
+        <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Default value</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@gridColumns</code></td>
+            <td>16</td>
+            <td>The number of columns within the grid</td>
+          </tr>
+          <tr>
+            <td><code>@gridColumnWidth</code></td>
+            <td>40px</td>
+            <td>The width of each column within the grid</td>
+          </tr>
+          <tr>
+            <td><code>@gridGutterWidth</code></td>
+            <td>20px</td>
+            <td>The negative space between each column</td>
+          </tr>
+          <tr>
+            <td><code>@siteWidth</code></td>
+            <td><em>Computed sum of all columns and gutters</em></td>
+            <td>We use some basic match to count the number of columns and gutters and set the width of the <code>.fixed-container()</code> mixin.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Now to customize</h3>
+      <p>Modifying the grid means changing the three <code>@grid-*</code> variables and recompiling the Less files.</p>
+      <p>Bootstrap comes equipped to handle a grid system with up to 24 columns; the default is just 16. Here's how your grid variables would look customized to a 24-column grid.</p>
+      <pre class="prettyprint linenums">@gridColumns:       24;
+@gridColumnWidth:   20px;
+@gridGutterWidth:   20px;</pre>
+      <p>Once recompiled, you'll be set!</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Layouts (Default and fluid)
+================================================== -->
+<section id="layouts">
+  <div class="page-header">
+    <h1>Layouts <small>Basic templates to create webpages</small></h1>
+  </div>
+
+  <div class="row">
+    <div class="span8">
+      <h2>Fixed layout</h2>
+      <p>The default and simple 940px-wide, centered layout for just about any website or page provided by a single <code>&lt;div.container&gt;</code>.</p>
+      <div class="mini-layout">
+        <div class="mini-layout-body"></div>
+      </div>
+<pre class="prettyprint linenums">
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/body&gt;
+</pre>
+    </div><!-- /col -->
+    <div class="span8">
+      <h2>Fluid layout</h2>
+      <p>An alternative, flexible fluid page structure with min- and max-widths and a left-hand sidebar. Great for apps and docs.</p>
+      <div class="mini-layout fluid">
+        <div class="mini-layout-sidebar"></div>
+        <div class="mini-layout-body"></div>
+      </div>
+<pre class="prettyprint linenums">
+&lt;body&gt;
+  &lt;div class="container-fluid"&gt;
+    &lt;div class="sidebar"&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class="content"&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+</pre>
+    </div><!-- /col -->
+  </div><!-- /row -->
+</section>
+
+
+
+<!-- Typography
+================================================== -->
+<section id="typography">
+  <div class="page-header">
+    <h1>Typography <small>Headings, paragraphs, lists, and other inline type elements</small></h1>
+  </div>
+
+  <!-- Headings & Paragraph Copy -->
+  <div class="row">
+    <div class="span4">
+      <h2>Headings &amp; copy</h2>
+      <p>A standard typographic hierarchy for structuring your webpages.</p>
+      <p>The entire typographic grid is based on two Less variables in our preboot.less file: <code>@basefont</code> and <code>@baseline</code>. The first is the base font-size used throughout and the second is the base line-height.</p>
+      <p>We use those variables, and some math, to create the margins, paddings, and line-heights of all our type and more.</p>
+    </div>
+    <div class="span4">
+      <h1>h1. Heading 1</h1>
+      <h2>h2. Heading 2</h2>
+      <h3>h3. Heading 3</h3>
+      <h4>h4. Heading 4</h4>
+      <h5>h5. Heading 5</h5>
+      <h6>h6. Heading 6</h6>
+    </div>
+    <div class="span8">
+      <h3>Example paragraph</h3>
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+      <h1>Example heading <small>Has sub-heading&hellip;</small></h1>
+    </div>
+  </div>
+
+  <!-- Misc Elements -->
+  <div class="row">
+    <div class="span4">
+      <h2>Misc. elements</h2>
+      <p>Using emphasis, addresses, &amp; abbreviations</p>
+      <p>
+        <code>&lt;strong&gt;</code>
+        <code>&lt;em&gt;</code>
+        <code>&lt;address&gt;</code>
+        <code>&lt;abbr&gt;</code>
+      </p>
+    </div>
+    <div class="span12">
+      <h3>When to use</h3>
+      <p>Emphasis tags (<code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code>) should be used to indicate additional importance or emphasis of a word or phrase relative to its surrounding copy. Use <code>&lt;strong&gt;</code> for importance and <code>&lt;em&gt;</code> for <em>stress</em> emphasis.</p>
+      <h3>Emphasis in a paragraph</h3>
+      <p><a href="#">Fusce dapibus</a>, <strong>tellus ac cursus commodo</strong>, <em>tortor mauris condimentum nibh</em>, ut fermentum massa justo sit amet risus. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.</p>
+      <p><strong>Note:</strong> It's still okay to use <code>&lt;b&gt;</code> and <code>&lt;i&gt;</code> tags in HTML5 and they don't have to be styled bold and italic, respectively (although if there is a more semantic element, use it). <code>&lt;b&gt;</code> is meant to highlight words or phrases without conveying additional importance, while <code>&lt;i&gt;</code> is mostly for voice, technical terms, etc.</p>
+      <h3>Addresses</h3>
+      <p>The <code>&lt;address&gt;</code> element is used for contact information for its nearest ancestor, or the entire body of work. Here are two examples of how it could be used:</p>
+
+      <div class="row">
+        <div class="span4">
+          <address>
+            <strong>Twitter, Inc.</strong><br />
+            795 Folsom Ave, Suite 600<br />
+            San Francisco, CA 94107<br />
+            <abbr title="Phone">P:</abbr> (123) 456-7890
+          </address>
+        </div>
+        <div class="span4">
+          <address>
+            <strong>Full Name</strong><br />
+            <a mailto="">first.last@gmail.com</a>
+          </address>
+        </div>
+      </div>
+
+      <p><strong>Note:</strong> Each line in an <code>&lt;address&gt;</code> must end with a line-break (<code>&lt;br /&gt;</code>) or be wrapped in a block-level tag (e.g., <code>&lt;p&gt;</code>) to properly structure the content.</p>
+      <h3>Abbreviations</h3>
+      <p>For abbreviations and acronyms, use the <code>&lt;abbr&gt;</code> tag (<code>&lt;acronym&gt;</code> is deprecated in <abbr title="HyperText Markup Langugage 5">HTML5</abbr>). Put the shorthand form within the tag and set a title for the complete name.</p>
+    </div>
+  </div><!-- /row -->
+
+  <!-- Blockquotes -->
+  <div class="row">
+    <div class="span4">
+      <h2>Blockquotes</h2>
+      <p>
+        <code>&lt;blockquote&gt;</code>
+        <code>&lt;p&gt;</code>
+        <code>&lt;small&gt;</code>
+      </p>
+    </div>
+    <div class="span12">
+      <h3>How to quote</h3>
+      <p>To include a blockquote, wrap <code>&lt;blockquote&gt;</code> around <code>&lt;p&gt;</code> and <code>&lt;small&gt;</code> tags. Use the <code>&lt;small&gt;</code> element to cite your source and you'll get an em dash <code>&amp;mdash;</code> before it.</p>
+      <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+        <small>Dr. Julius Hibbert</small>
+      </blockquote>
+<pre class="prettyprint linenums">
+&lt;blockquote&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.&lt;/p&gt;
+  &lt;small&gt;Dr. Julius Hibbert&lt;/small&gt;
+&lt;/blockquote&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
+
+  <h2>Lists</h2>
+  <div class="row">
+    <div class="span4">
+      <h4>Unordered <code>&lt;ul&gt;</code></h4>
+      <ul>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit
+          <ul>
+            <li>Phasellus iaculis neque</li>
+            <li>Purus sodales ultricies</li>
+            <li>Vestibulum laoreet porttitor sem</li>
+            <li>Ac tristique libero volutpat at</li>
+          </ul>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ul>
+    </div>
+    <div class="span4">
+      <h4>Unstyled <code>&lt;ul.unstyled&gt;</code></h4>
+      <ul class="unstyled">
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit
+          <ul>
+            <li>Phasellus iaculis neque</li>
+            <li>Purus sodales ultricies</li>
+            <li>Vestibulum laoreet porttitor sem</li>
+            <li>Ac tristique libero volutpat at</li>
+          </ul>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ul>
+    </div>
+    <div class="span4">
+      <h4>Ordered <code>&lt;ol&gt;</code></h4>
+      <ol>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>Nulla volutpat aliquam velit</li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ol>
+    </div>
+    <div class="span4">
+      <h4>Description <code>dl</code></h4>
+      <dl>
+        <dt>Description lists</dt>
+        <dd>A description list is perfect for defining terms.</dd>
+        <dt>Euismod</dt>
+        <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+        <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+        <dt>Malesuada porta</dt>
+        <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+      </dl>
+    </div>
+  </div><!-- /row -->
+
+
+  <!-- Code -->
+  <div class="row">
+    <div class="span4">
+      <h2>Code</h2>
+      <p>
+        <code>&lt;code&gt;</code>
+        <code>&lt;pre&gt;</code>
+      </p>
+      <p>Pimp your code in style with two simple tags. For even more awesomeness through javascript, drop in Google's code prettify library and you're set.</p>
+    </div>
+    <div class="span12">
+      <h3>Presenting code</h3>
+      <p>Code, blocks of or just snippets inline, can be displayed with style just by wrapping in the right tag. For blocks of code spanning multiple lines, use the <code>&lt;pre&gt;</code> element. For inline code, use the <code>&lt;code&gt;</code> element.</p>
+      <table class="zebra-striped">
+        <thead>
+          <tr>
+            <th style="width: 190px;">Element</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>&lt;code&gt;</code></td>
+            <td>In a line of text like this, your wrapped code will look like this <code>&gt;html&lt;</code> element.</td>
+          </tr>
+          <tr>
+            <td><code>&lt;pre&gt;</code></td>
+            <td>
+<pre>&lt;div&gt;
+  &lt;h1&gt;Heading&lt;/h1&gt;
+  &lt;p&gt;Something right here...&lt;/p&gt;
+&lt;/div&gt;</pre>
+              <p><strong>Note:</strong> Be sure to keep code within <code>pre</code> tags as close to the left as possible; it will render all tabs.</p>
+            </td>
+          </tr>
+          <tr>
+            <td><code>&lt;pre class="prettyprint"&gt;</code></td>
+            <td>
+              <p>Using the google-code-prettify library, you're blocks of code get a slightly different visual style and automatic syntax highlighting.</p>
+<pre class="prettyprint">&lt;div&gt;
+  &lt;h1&gt;Heading&lt;/h1&gt;
+  &lt;p&gt;Something right here...&lt;/p&gt;
+&lt;/div&gt;</pre>
+              <p><a href="http://code.google.com/p/google-code-prettify/">Download google-code-prettify</a> and view the readme for <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">how to use</a>.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div><!-- /row -->
+
+  <!-- Labels -->
+  <div class="row">
+    <div class="span4">
+      <h2>Inline labels</h2>
+      <p>
+        <code>&lt;span class="label"&gt;</code>
+      </p>
+      <p>Call attention to or flag any phrase in your body text.</p>
+    </div>
+    <div class="span12">
+      <h3>Label anything</h3>
+      <p>Ever needed one of those fancy <span class="label success">New!</span> or <span class="label important">Important</span> flags when writing code? Well, now you have them. Here's what's included by default:</p>
+      <table class="zebra-striped">
+        <thead>
+          <tr>
+            <th style="width: 50%;">Label</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code>&lt;span class="label"&gt;Default&lt;/span&gt;</code>
+            </td>
+            <td>
+              <span class="label">Default</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;span class="label success"&gt;New&lt;/span&gt;</code>
+            </td>
+            <td>
+              <span class="label success">New</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;span class="label warning"&gt;Warning&lt;/span&gt;</code>
+            </td>
+            <td>
+              <span class="label warning">Warning</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;span class="label important"&gt;Important&lt;/span&gt;</code>
+            </td>
+            <td>
+              <span class="label important">Important</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>&lt;span class="label notice"&gt;Notice&lt;/span&gt;</code>
+            </td>
+            <td>
+              <span class="label notice">Notice</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div><!-- /row -->
+
+</section>
+
+
+
+<!-- Media
+================================================== -->
+<section id="media">
+  <div class="page-header">
+    <h1>Media <small>Displaying images and videos</small></h1>
+  </div>
+  <!-- Table structure -->
+  <div class="row">
+    <div class="span4">
+      <h2>Media grid</h2>
+      <p>Display thumbnails of varying sizes on pages with a low HTML footprint and minimal styles.</p>
+    </div>
+    <div class="span12">
+      <h3>Example thumbnails</h3>
+      <p>Thumbnails in the <code>.media-grid</code> can be any size, but they work best when mapped directly to the built-in Bootstrap grid system. Image widths like 90, 210, and 330 combine with a few pixels of padding to equal the <code>.span2</code>, <code>.span4</code>, and <code>.span6</code> column sizes.</p>
+      <h4>Large</h4>
+      <ul class="media-grid">
+        <li>
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/330x230" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/330x230" alt="">
+          </a>
+        </li>
+      </ul>
+      <h4>Medium</h4>
+      <ul class="media-grid">
+        <li>
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/210x150" alt="">
+          </a>
+        </li>
+      </ul>
+      <h4>Small</h4>
+      <ul class="media-grid">
+        <li>
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/90x90" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/90x90" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img class="thumbnail" src="http://placehold.it/90x90" alt="">
+          </a>
+        </li>
+      </ul>
+      <h4>Coding them</h4>
+      <p>Media grids are easy to use and rather simple on the markup side. Their dimensions are purely based on the size of the images included.</p>
+<pre class="prettyprint linenums">
+&lt;ul class="media-grid"&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;
+      &lt;img class="thumbnail" src="http://placehold.it/330x230" alt=""&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;
+      &lt;img class="thumbnail" src="http://placehold.it/330x230" alt=""&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
+</section>
+
+
+
+<!-- Tables
+================================================== -->
+<section id="tables">
+  <div class="page-header">
+    <h1>Tables <small>For, you guessed it, tabular data</small></h1>
+  </div>
+  <!-- Table structure -->
+  <div class="row">
+    <div class="span4">
+      <h2>Building tables</h2>
+      <p>
+        <code>&lt;table&gt;</code>
+        <code>&lt;thead&gt;</code>
+        <code>&lt;tbody&gt;</code>
+        <code>&lt;tr&gt;</code>
+        <code>&lt;th&gt;</code>
+        <code>&lt;td&gt;</code>
+        <code>&lt;colspan&gt;</code>
+        <code>&lt;caption&gt;</code>
+      </p>
+      <p>Tables are great&mdash;for a lot of things. Great tables, however, need a bit of markup love to be useful, scalable, and readable (at the code level). Here are a few tips to help.</p>
+      <p>Always wrap your column headers in a <code>&lt;thead&gt;</code> such that hierarchy is <code>&lt;thead&gt;</code> > <code>&lt;tr&gt;</code> > <code>&lt;th&gt;</code>.</p>
+      <p>Similar to the column headers, all your table’s body content should be wrapped in a <code>&lt;tbody&gt;</code> so your hierarchy is <code>&lt;tbody&gt;</code> > <code>&lt;tr&gt;</code> > <code>&lt;td&gt;</code>.</p>
+    </div>
+    <div class="span12">
+      <h3>Example: Default table styles</h3>
+      <p>All tables will be automatically styled with only the essential borders to ensure readability and maintain structure. No need to add extra classes or attributes.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Some</td>
+            <td>One</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Joe</td>
+            <td>Sixpack</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>Code</td>
+          </tr>
+        </tbody>
+      </table>
+<pre class="prettyprint linenums">
+&lt;table&gt;
+  ...
+&lt;/table&gt;</pre>
+      <h3>Example: Zebra-striped</h3>
+      <p>Get a little fancy with your tables by adding zebra-striping&mdash;just add the <code>.zebra-striped</code> class.</p>
+      <table class="zebra-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Some</td>
+            <td>One</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Joe</td>
+            <td>Sixpack</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>Code</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Note:</strong> Zebra-striping is a progressive enhancement not available for older browsers like IE8 and below.</p>
+<pre class="prettyprint linenums">
+&lt;table class="zebra-striped"&gt;
+...
+&lt;/table&gt;</pre>
+      <h3>Example: Zebra-striped w/ TableSorter.js</h3>
+      <p>Taking the previous example, we improve the usefulness of our tables by providing sorting functionality via <a href="http://jquery.com">jQuery</a> and the <a href="http://tablesorter.com/docs/">Tablesorter</a> plugin. <strong>Click any column’s header to change the sort.</strong></p>
+      <table class="zebra-striped" id="sortTableExample">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th class="yellow">First Name</th>
+            <th class="blue">Last Name</th>
+            <th class="green">Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Your</td>
+            <td>One</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Joe</td>
+            <td>Sixpack</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Stu</td>
+            <td>Dent</td>
+            <td>Code</td>
+          </tr>
+        </tbody>
+      </table>
+<pre class="prettyprint linenums">
+&lt;script src="js/jquery/jquery.tablesorter.min.js"&gt;&lt;/script&gt;
+&lt;script &gt;
+  $(function() {
+    $("table#sortTableExample").tablesorter({ sortList: [[1,0]] });
+  });
+&lt;/script&gt;
+&lt;table class="zebra-striped"&gt;
+  ...
+&lt;/table&gt;</pre>
+    </div>
+  </div><!-- /row -->
+</section>
+
+
+
+<!-- Forms
+================================================== -->
+<section id="forms">
+  <div class="page-header">
+    <h1>Forms</h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2>Default styles</h2>
+      <p>All forms are given default styles to present them in a readable and scalable way. Styles are provided for text inputs, select lists, textareas, radio buttons and checkboxes, and buttons.</p>
+    </div>
+    <div class="span12">
+      <form>
+        <fieldset>
+          <legend>Example form legend</legend>
+          <div class="clearfix">
+            <label for="xlInput">X-Large input</label>
+            <div class="input">
+              <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="normalSelect">Select</label>
+            <div class="input">
+              <select name="normalSelect" id="normalSelect">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="mediumSelect">Select</label>
+            <div class="input">
+              <select class="medium" name="mediumSelect" id="mediumSelect">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="multiSelect">Multiple select</label>
+            <div class="input">
+              <select class="medium" multiple="multiple" name="multiSelect" id="multiSelect">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label>Uneditable input</label>
+            <div class="input">
+              <span class="uneditable-input">Some value here</span>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="disabledInput">Disabled input</label>
+            <div class="input">
+              <input class="xlarge disabled" id="disabledInput" name="disabledInput" size="30" type="text" placeholder="Disabled input here… carry on." disabled />
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="disabledInput">Disabled textarea</label>
+            <div class="input">
+              <textarea class="xxlarge" name="textarea" id="textarea" rows="3" disabled></textarea>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix error">
+            <label for="xlInput2">X-Large input</label>
+            <div class="input">
+              <input class="xlarge error" id="xlInput2" name="xlInput2" size="30" type="text" />
+              <span class="help-inline">Small snippet of help text</span>
+            </div>
+          </div><!-- /clearfix -->
+        </fieldset>
+        <fieldset>
+          <legend>Example form legend</legend>
+          <div class="clearfix">
+            <label for="prependedInput">Prepended text</label>
+            <div class="input">
+              <div class="input-prepend">
+                <span class="add-on">@</span>
+                <input class="medium" id="prependedInput" name="prependedInput" size="16" type="text" />
+              </div>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="prependedInput2">Prepended checkbox</label>
+            <div class="input">
+              <div class="input-prepend">
+                <label class="add-on"><input type="checkbox" name="" id="" value="" /></label>
+                <input class="mini" id="prependedInput2" name="prependedInput2" size="16" type="text" />
+              </div>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="appendedInput">Appended checkbox</label>
+            <div class="input">
+              <div class="input-append">
+                <input class="mini" id="appendedInput" name="appendedInput" size="16" type="text" />
+                <label class="add-on active"><input type="checkbox" name="" id="" value="" checked="checked" /></label>
+              </div>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="fileInput">File input</label>
+            <div class="input">
+              <input class="input-file" id="fileInput" name="fileInput" type="file" />
+            </div>
+          </div><!-- /clearfix -->
+        </fieldset>
+        <fieldset>
+          <legend>Example form legend</legend>
+          <div class="clearfix">
+            <label id="optionsCheckboxes">List of options</label>
+            <div class="input">
+              <ul class="inputs-list">
+                <li>
+                  <label>
+                    <input type="checkbox" name="optionsCheckboxes" value="option1" />
+                    <span>Option one is this and that&mdash;be sure to include why it’s great</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" name="optionsCheckboxes" value="option2" />
+                    <span>Option two can also be checked and included in form results</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" name="optionsCheckboxes" value="option2" />
+                    <span>Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="disabled">
+                    <input type="checkbox" name="optionsCheckboxes" value="option2" disabled />
+                    <span>Option four cannot be checked as it is disabled.</span>
+                  </label>
+                </li>
+              </ul>
+              <span class="help-block">
+                <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+              </span>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label>Date range</label>
+            <div class="input">
+              <div class="inline-inputs">
+                <input class="small" type="text" value="May 1, 2011" />
+                <input class="mini" type="text" value="12:00am" />
+                to
+                <input class="small" type="text" value="May 8, 2011" />
+                <input class="mini" type="text" value="11:59pm" />
+                <span class="help-inline">All times are shown as Pacific Standard Time (GMT -08:00).</span>
+              </div>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="textarea">Textarea</label>
+            <div class="input">
+              <textarea class="xxlarge" id="textarea2" name="textarea2" rows="3"></textarea>
+              <span class="help-block">
+                Block of help text to describe the field above if need be.
+              </span>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label id="optionsRadio">List of options</label>
+            <div class="input">
+              <ul class="inputs-list">
+                <li>
+                  <label>
+                    <input type="radio" checked name="optionsRadios" value="option1" />
+                    <span>Option one is this and that&mdash;be sure to include why it’s great</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="radio" name="optionsRadios" value="option2" />
+                    <span>Option two can is something else and selecting it will deselect options 1</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="actions">
+            <input type="submit" class="btn primary" value="Save changes">&nbsp;<button type="reset" class="btn">Cancel</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div><!-- /row -->
+
+  <br />
+
+  <div class="row">
+    <div class="span4">
+      <h2>Stacked forms</h2>
+      <p>Add <code>.form-stacked</code> to your form’s HTML and you’ll have labels on top of their fields instead of to their left. This works great if your forms are short or you have two columns of inputs for heavier forms.</p>
+    </div>
+    <div class="span12">
+      <form action="" class="form-stacked">
+        <fieldset>
+          <legend>Example form legend</legend>
+          <div class="clearfix">
+            <label for="xlInput3">X-Large input</label>
+            <div class="input">
+              <input class="xlarge" id="xlInput3" name="xlInput3" size="30" type="text" />
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label for="stackedSelect">Select</label>
+            <div class="input">
+              <select name="stackedSelect" id="stackedSelect">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div><!-- /clearfix -->
+        </fieldset>
+        <fieldset>
+          <legend>Example form legend</legend>
+          <div class="clearfix error">
+            <label for="xlInput4">X-Large input</label>
+            <div class="input">
+              <input class="xlarge error" id="xlInput4" name="xlInput4" size="30" type="text" />
+              <span class="help-inline">Small snippet of help text</span>
+            </div>
+          </div><!-- /clearfix -->
+          <div class="clearfix">
+            <label id="optionsCheckboxes">List of options</label>
+            <div class="input">
+              <ul class="inputs-list">
+                <li>
+                  <label>
+                    <input type="checkbox" name="optionsCheckboxes" value="option1" />
+                    <span>Option one is this and that&mdash;be sure to include why it’s great</span>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input type="checkbox" name="optionsCheckboxes" value="option2" />
+                    <span>Option two can also be checked and included in form results</span>
+                  </label>
+                </li>
+              </ul>
+              <span class="help-block">
+                <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+              </span>
+            </div>
+          </div><!-- /clearfix -->
+        </fieldset>
+        <div class="actions">
+          <button type="submit" class="btn primary">Save changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div><!-- /row -->
+
+  <div class="row">
+    <div class="span4">
+      <h2>Form field sizes</h2>
+      <p>Customize any form <code>input</code>, <code>select</code>, or <code>textarea</code> width by adding just a few classes to your markup.</p>
+      <p>As of v1.3.0, we have added the grid-based sizing classes for form elements. <strong>Please use the these over the existing <code>.mini</code>, <code>.small</code>, etc classes.</strong></p>
+    </div>
+    <div class="span12">
+      <form action="">
+        <div class="clearfix"><input class="span2" id="" name="" type="text" placeholder=".span2" /></div>
+        <div class="clearfix"><input class="span3" id="" name="" type="text" placeholder=".span3" /></div>
+        <div class="clearfix"><input class="span4" id="" name="" type="text" placeholder=".span4" /></div>
+        <div class="clearfix"><input class="span5" id="" name="" type="text" placeholder=".span5" /></div>
+        <div class="clearfix"><input class="span6" id="" name="" type="text" placeholder=".span6" /></div>
+        <div class="clearfix"><input class="span7" id="" name="" type="text" placeholder=".span7" /></div>
+        <div class="clearfix"><input class="span8" id="" name="" type="text" placeholder=".span8" /></div>
+        <div class="clearfix"><input class="span9" id="" name="" type="text" placeholder=".span9" /></div>
+        <div class="clearfix"><input class="span10" id="" name="" type="text" placeholder=".span10" /></div>
+        <div class="clearfix"><input class="span11" id="" name="" type="text" placeholder=".span11" /></div>
+        <div class="clearfix"><input class="span12" id="" name="" type="text" placeholder=".span12" /></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span4">
+      <h2>Buttons</h2>
+      <p>As a convention, buttons are used for actions while links are used for objects. For instance, "Download" could be a button and "recent activity" could be a link.</p>
+      <p>All buttons default to a light gray style, but a number of functional classes can be applied for different color styles. These classes include a blue <code>.primary</code> class, a light-blue <code>.info</code> class, a green <code>.success</code> class, and a red <code>.danger</code> class.</p>
+    </div>
+    <div class="span12">
+      <h3>Example buttons</h3>
+      <p>Button styles can be applied to anything with the <code>.btn</code> applied. Typically you’ll want to apply these to only <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, and select <code>&lt;input&gt;</code> elements. Here’s how it looks:</p>
+      <div class="well" style="padding: 14px 19px;">
+        <button class="btn primary">Primary</button>&nbsp;<button class="btn">Default</button>&nbsp;<button class="btn info">Info</button>&nbsp;<button class="btn success">Success</button>&nbsp;<button class="btn danger">Danger</button>
+      </div>
+      <h3>Alternate sizes</h3>
+      <p>Fancy larger or smaller buttons? Have at it!</p>
+      <div class="well">
+        <a href="#" class="btn large primary">Primary action</a>
+        <a href="#" class="btn large">Action</a>
+      </div>
+      <div class="well" style="padding: 16px 19px;">
+        <a href="#" class="btn small primary">Primary action</a>
+        <a href="#" class="btn small">Action</a>
+      </div>
+      <h3>Disabled state</h3>
+      <p>For buttons that are not active or are disabled by the app for one reason or another, use the disabled state. That’s <code>.disabled</code> for links and <code>:disabled</code> for <code>&lt;button&gt;</code> elements.</p>
+      <h4>Links</h4>
+      <div class="well">
+        <a href="#" class="btn large primary disabled">Primary action</a>
+        <a href="#" class="btn large disabled">Action</a>
+      </div>
+      <h4>Buttons</h4>
+      <div class="well">
+        <button class="btn large primary disabled" disabled="disabled">Primary action</button>&nbsp;<button class="btn large" disabled>Action</button>
+      </div>
+    </div>
+  </div><!-- /row -->
+</section>
+
+
+
+<!-- Navigation
+================================================== -->
+<section id="navigation">
+  <div class="page-header">
+    <h1>Navigation</h1>
+  </div>
+  <h2>Fixed topbar</h2>
+  <div class="topbar-wrapper" style="z-index: 5;">
+    <div class="topbar" data-dropdown="dropdown" >
+      <div class="topbar-inner">
+        <div class="container">
+          <h3><a href="#">Project Name</a></h3>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Dropdown</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Secondary link</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Another link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="pull-left" action="">
+            <input type="text" placeholder="Search" />
+          </form>
+          <ul class="nav secondary-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Dropdown</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Secondary link</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Another link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div><!-- /topbar-inner -->
+    </div><!-- /topbar -->
+  </div><!-- /topbar-wrapper -->
+
+  <div class="row">
+    <div class="span5">
+      <h4>What is it</h4>
+      <p>Our topbar is a fixed bar that houses a website’s logo or name, primary navigation, and search form.</p>
+    </div>
+    <div class="span5">
+      <h4>Customizable</h4>
+      <p>All elements within, and the entire topbar as well, are optional. You can choose to include a logo/name, nav, search, and a secondary nav&mdash;or any combination of that.</p>
+    </div>
+    <div class="span6">
+      <h4>Dropdowns included</h4>
+      <p>As part of the main navigation, we’ve included the ability for you to add dropdowns to your nav. Check out the secondary nav above (right aligned) to see how it’s done. Dropdowns <code>li</code> tags also support <code>.active</code> for showing current page selection.</p>
+    </div>
+  </div>
+  <p><strong>Note:</strong> When using the topbar on any page, be sure to account for the overlap it causes by adding <code>padding-top: 40px;</code> to your <code>body</code>.</p>
+
+  <br />
+
+  <div class="row">
+    <div class="span4">
+      <h2>Tabs and pills</h2>
+      <p>Create simple secondary navigation with a <code>&lt;ul&gt;</code>. Swap between tabs or pills by adding the appropriate class.</p>
+      <p>Great for sub-sections of content like our account settings pages and user timelines for toggling between pages of like content. Available in tabbed or pill styles.</p>
+    </div>
+    <div class="span12">
+      <ul class="tabs">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="dropdown" data-dropdown="dropdown">
+          <a href="#" class="dropdown-toggle">Dropdown</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Secondary link</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Another link</a></li>
+          </ul>
+        </li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="tabs"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+      <ul class="pills">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="pills"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
+
+  <!-- Breadcrumbs -->
+  <div class="row">
+    <div class="span4">
+      <h2>Breadcrumbs</h2>
+      <p>Breadcrumb navigation is used as a way to show users where they are within an app or a site, but not for primary navigation.</p>
+    </div>
+    <div class="span12">
+      <ul class="breadcrumb">
+        <li class="active">Home</li>
+      </ul>
+      <ul class="breadcrumb">
+        <li><a href="#">Home</a> <span class="divider">/</span></li>
+        <li class="active">Middle page</li>
+      </ul>
+      <ul class="breadcrumb">
+        <li><a href="#">Home</a> <span class="divider">/</span></li>
+        <li><a href="#">Middle page</a> <span class="divider">/</span></li>
+        <li class="active">Another one</li>
+      </ul>
+      <ul class="breadcrumb">
+        <li><a href="#">Home</a> <span class="divider">/</span></li>
+        <li><a href="#">Middle page</a> <span class="divider">/</span></li>
+        <li><a href="#">Another one</a> <span class="divider">/</span></li>
+        <li class="active">You are here</li>
+      </ul>
+<pre class="prettyprint linenums">
+&lt;ul class="breadcrumb"&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Middle page&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Another one&lt;/a&gt; &lt;span class="divider"&gt;/&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="active"&gt;You are here&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="row">
+    <div class="span4">
+      <h2>Pagination</h2>
+      <p>Ultra simplistic and minimally styled pagination inspired by Rdio. The large block is hard to miss, easily scalable, and provides large click areas.</p>
+    </div>
+    <div class="span12">
+      <div class="pagination">
+        <ul>
+          <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">Next &raquo;</a></li>
+        </ul>
+      </div>
+      <div class="pagination">
+        <ul>
+          <li class="prev"><a href="#">&larr; Previous</a></li>
+          <li class="active"><a href="#">10</a></li>
+          <li><a href="#">11</a></li>
+          <li><a href="#">12</a></li>
+          <li class="disabled"><a href="#">…</a></li>
+          <li><a href="#">19</a></li>
+          <li><a href="#">20</a></li>
+          <li><a href="#">21</a></li>
+          <li class="next"><a href="#">Next &raquo;</a></li>
+        </ul>
+      </div>
+      <div class="pagination">
+        <ul>
+          <li class="prev"><a href="#">&larr; Previous</a></li>
+          <li><a href="#">10</a></li>
+          <li><a href="#">11</a></li>
+          <li><a href="#">12</a></li>
+          <li><a href="#">13</a></li>
+          <li><a href="#">14</a></li>
+          <li class="active"><a href="#">15</a></li>
+          <li><a href="#">16</a></li>
+          <li><a href="#">17</a></li>
+          <li><a href="#">18</a></li>
+          <li><a href="#">19</a></li>
+          <li><a href="#">20</a></li>
+          <li class="next"><a href="#">Next &raquo;</a></li>
+        </ul>
+      </div>
+<pre class="prettyprint linenums">
+&lt;div class="pagination"&gt;
+  &lt;ul&gt;
+    &lt;li class="prev disabled"&gt;&lt;a href="#"&gt;&amp;larr; Previous&lt;/a&gt;&lt;/li>
+    &lt;li class="active"&gt;&lt;a href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;5&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="next"&gt;&lt;a href="#"&gt;Next &amp;rarr;&lt;/a&gt;&lt;/li>
+  &lt;/ul&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
+
+</section>
+
+
+
+<!-- Alerts & Messages
+================================================== -->
+<section id="alerts">
+  <div class="page-header">
+    <h1>Alerts &amp; Errors <small>Styles for success, warning, and error messages or alerts</small></h1>
+  </div>
+  <!-- Basic alert messages -->
+  <div class="row">
+    <div class="span4">
+      <h2>Basic alerts</h2>
+      <p><code>.alert-message</code></p>
+      <p>One-line messages for highlighting the failure, possible failure, or success of an action. Particularly useful for forms.</p>
+      <p><a class="btn js-btn" href="./javascript.html#alerts">Get the javascript &raquo;</a></p>
+    </div>
+    <div class="span12">
+      <div class="alert-message warning">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>
+      </div>
+      <div class="alert-message error">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Oh snap!</strong> Change this and that and try again.</p>
+      </div>
+      <div class="alert-message success">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Well done!</strong> You successfully read this alert message.</p>
+      </div>
+      <div class="alert-message info">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
+      </div>
+
+      <h4>Example code</h4>
+<pre class="prettyprint linenums">
+&lt;div class="alert-message warning"&gt;
+  &lt;a class="close" href="#"&gt;&times;&lt;/a&gt;
+  &lt;p&gt;&lt;strong&gt;Holy guacamole!&lt;/strong&gt; Best check yo self, you’re not looking too good.&lt;/p&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
+  <!-- Block messages -->
+  <div class="row">
+    <div class="span4">
+      <h2>Block messages</h2>
+      <p><code>.alert-message.block-message</code></p>
+      <p>For messages that require a bit of explanation, we have paragraph style alerts. These are perfect for bubbling up longer error messages, warning a user of a pending action, or just presenting information for more emphasis on the page.</p>
+      <p><a class="btn js-btn" href="./javascript.html#alerts">Get the javascript &raquo;</a></p>
+    </div>
+    <div class="span12">
+      <div class="alert-message block-message warning">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Holy guacamole! This is a warning!</strong> Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+        <div class="alert-actions">
+          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+        </div>
+      </div>
+      <div class="alert-message block-message error">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Oh snap! You got an error!</strong> Change this and that and try again.</p>
+        <ul>
+          <li>Duis mollis est non commodo luctus</li>
+          <li>Nisi erat porttitor ligula</li>
+          <li>Eget lacinia odio sem nec elit</li>
+        </ul>
+        <div class="alert-actions">
+          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+        </div>
+      </div>
+      <div class="alert-message block-message success">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Well done!</strong> You successfully read this alert message. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum.</p>
+        <div class="alert-actions">
+          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+        </div>
+      </div>
+      <div class="alert-message block-message info">
+        <a class="close" href="#">&times;</a>
+        <p><strong>Heads up!</strong> This is an alert that needs your attention, but it’s not a huge priority just yet.</p>
+        <div class="alert-actions">
+          <a class="btn small" href="#">Take this action</a> <a class="btn small" href="#">Or do this</a>
+        </div>
+      </div>
+
+      <h4>Example code</h4>
+<pre class="prettyprint linenums">
+&lt;div class="alert-message block-message warning"&gt;
+  &lt;a class="close" href="#"&gt;&times;&lt;/a&gt;
+  &lt;p&gt;&lt;strong&gt;Holy guacamole! This is a warning!&lt;/strong&gt; Best check yo self, you’re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.&lt;/p&gt;
+  &lt;div class="alert-actions"&gt;
+    &lt;a class="btn small" href="#"&gt;Take this action&lt;/a&gt; &lt;a class="btn small" href="#"&gt;Or do this&lt;/a>
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+    </div>
+  </div><!-- /row -->
+</section>
+
+
+<!-- Popovers
+================================================== -->
+<section id="popovers">
+  <div class="page-header">
+    <h1>Popovers <small>Components for displaying content in modals, tooltips, and popovers</small></h1>
+  </div>
+  <div class="row">
+    <div class="span4">
+      <h2>Modals</h2>
+      <p>Modals&mdash;dialogs or lightboxes&mdash;are great for contextual actions in situations where it’s important that the background context be maintained.</p>
+      <p><a class="btn js-btn" href="./javascript.html#modal">Get the javascript &raquo;</a></p>
+    </div>
+    <div class="span12">
+      <div class="well" style="background-color: #888; border: none; padding: 40px;">
+        <!-- Modal -->
+        <div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto; z-index: 1">
+          <div class="modal-header">
+            <a href="#" class="close">&times;</a>
+            <h3>Modal Heading</h3>
+          </div>
+          <div class="modal-body">
+            <p>One fine body…</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn primary">Primary</a>
+            <a href="#" class="btn secondary">Secondary</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /row -->
+
+  <!-- Tooltips -->
+  <div class="row">
+    <div class="span4">
+      <h2>Tooltips</h2>
+      <p>Twipsies are super useful for aiding a confused user and pointing them in the right direction.</p>
+      <p><a class="btn js-btn" href="./javascript.html#twipsy">Get the javascript &raquo;</a></p>
+    </div>
+    <div class="span12">
+      <div class="twipsies well">
+        <div style="position: relative">
+          <p class="muted" style="margin-bottom: 0">
+Lorem ipsum dolar sit amet illo error <a href="#" title="below">ipsum</a> veritatis aut iste perspiciatis iste voluptas natus illo quasi odit aut natus consequuntur consequuntur, aut natus illo voluptatem odit perspiciatis laudantium rem doloremque totam voluptas. <a href="#" title="right">Voluptasdicta</a> eaque beatae aperiam ut enim voluptatem explicabo explicabo, voluptas quia odit fugit accusantium totam totam architecto explicabo sit quasi fugit fugit, totam doloremque unde sunt <a href="#" title="left">sed</a> dicta quae accusantium fugit voluptas nemo voluptas voluptatem <a href="#" title="above">rem</a> quae aut veritatis quasi quae.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div><!-- /row -->
+
+  <!-- Popovers -->
+  <div class="row">
+    <div class="span4">
+      <h2>Popovers</h2>
+      <p>Use popovers to provide subtextual information to a page without affecting layout.</p>
+      <p><a class="btn js-btn" href="./javascript.html#popover">Get the javascript &raquo;</a></p>
+    </div>
+    <div class="span12">
+      <div class="well popover-well">
+         <div class="popover-wrapper">
+          <div class="popover left">
+            <div class="arrow"></div>
+            <div class="inner">
+              <h3 class="title">Popover Title</h3>
+              <div class="content">
+                <p>Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              </div>
+            </div>
+          </div>
+          <img class="large-bird" src="assets/img/bird.png" >
+        </div>
+      </div>
+    </div>
+  </div><!-- /row -->
+</section>
+
+
+<!-- Using Javascript w/ Bootstrap
+ ================================================== -->
+
+ <section id="javascript">
+   <div class="page-header">
+     <h1>Using javascript with Bootstrap <small>An index of plugins to get you started</small></h1>
+   </div>
+   <div class="row">
+     <div class="span4">
+       <h2>Getting started</h2>
+       <p>Integrating javascript with the Bootstrap library is super easy. Below we go over the basics and provide you with some awesome plugins to get you started!</p>
+       <p><a class="btn primary" href="./javascript.html">View javascript docs &raquo;</a></p>
+     </div>
+     <div class="span12">
+      <h3>What's included</h3>
+       <p>Bring some of Bootstrap's primary components to life with new custom plugins that work with <a href="http://jquery.com/" target="_blank">jQuery</a> and <a href="http://ender.no.de" target="_blank">Ender</a>. We encourage you to extend and modify them to fit your specific development needs.</p>
+       <table class="zebra-striped">
+         <thead>
+           <tr>
+             <th style="width: 150px;">File</th>
+             <th>Description</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td><a href="./javascript.html#modal">bootstrap-modal.js</a></td>
+             <td>Our Modal plugin is a <strong>super</strong> slim take on the traditional modal js plugin! We took special care to include only the bare functionality that we require at twitter.</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#alerts">bootstrap-alerts.js</a></td>
+             <td>The alert plugin is a super tiny class for adding close functionality to alerts.</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#dropdowns">bootstrap-dropdown.js</a></td>
+             <td>This plugin is for adding dropdown interaction to the bootstrap topbar or tabbed navigations.</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#scrollspy">bootstrap-scrollspy.js</a></td>
+             <td>The ScrollSpy plugin is for adding an auto updating nav based on scroll position to the bootstrap topbar.</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#tabs">bootstrap-tabs.js</a></td>
+             <td>This plugin adds quick, dynamic tab and pill functionality for cycling through local content.</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#twipsy">bootstrap-twipsy.js</a></td>
+             <td>Based on the excellent jQuery.tipsy plugin written by Jason Frame; twipsy is an updated version, which doesn't rely on images, uses css3 for animations, and data-attributes for local title storage!</td>
+           </tr>
+           <tr>
+             <td><a href="./javascript.html#popover">bootstrap-popover.js</a></td>
+             <td>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">boostrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</td>
+           </tr>
+         </tbody>
+       </table>
+       <h3>Is javascript necessary?</h3>
+       <p><strong>Nope!</strong> Bootstrap is designed first and foremost to be a CSS library. This javascript provides a basic interactive layer on top of the included styles.</p>
+       <p>However, for those who do need javascript, we've provided the plugins above to help you understand how to integrate Bootstrap with javascript and to give you a quick, lightweight option for the basic functionality right away.</p>
+       <p>For more information and to see some live demos, please refer to our <a href="./javascript.html">plugin documentation page</a>.</p>
+     </div>
+   </div>
+
+
+<!-- Using Bootstrap w/ Less
+================================================== -->
+<section id="less">
+<div class="page-header">
+  <h1>Using Bootstrap with Less <small>Supercharge your CSS with variables, mixins, and functions</small></h1>
+</div>
+<div class="row">
+  <div class="span4">
+    <p>Bootstrap was built with <a href="http://markdotto.com/bootstrap/">Preboot</a>, an open-source pack of mixins and variables to be used in conjunction with <a href="http://lesscss.org" target="_blank">Less</a>, a CSS preprocessor for faster and easier web development.</p>
+    <p>Check out how we used Preboot in Bootstrap and how you can make use of it should you choose to run Less on your next project.</p>
+  </div>
+  <div class="span12">
+    <h2>How to use it</h2>
+    <p>Use this option to make full use of Bootstrap’s Less variables, mixins, and nesting in CSS via javascript in your browser.</p>
+<pre class="prettyprint linenums">
+&lt;link rel="stylesheet/less" href="less/bootstrap.less" media="all" /&gt;
+&lt;script src="js/less-1.1.3.min.js"&gt;&lt;/script&gt;</pre>
+<p>Not feeling the .js solution? <a href="http://incident57.com/less" target="_blank">Try the Less Mac app</a> or <a href="http://lesscss.org/#-client-side-usage" target="_blank">use Node.js</a> to compile when you deploy your code.</p>
+
+    <h2>What’s included</h2>
+    <p>Here are some of the highlights of what’s included in Twitter Bootstrap as part of Bootstrap. Head over to the Bootstrap website or Github project page to download and learn more.</p>
+    <h3>Variables</h3>
+    <p>Variables in Less are perfect for maintaining and updating your CSS headache free. When you want to change a color value or a frequently used value, update it in one spot and you’re set.</p>
+<pre class="prettyprint linenums">
+// Links
+@linkColor:         #8b59c2;
+@linkColorHover:    darken(@linkColor, 10);
+
+// Grays
+@black:             #000;
+@grayDark:          lighten(@black, 25%);
+@gray:              lighten(@black, 50%);
+@grayLight:         lighten(@black, 70%);
+@grayLighter:       lighten(@black, 90%);
+@white:             #fff;
+
+// Accent Colors
+@blue:              #08b5fb;
+@green:             #46a546;
+@red:               #9d261d;
+@yellow:            #ffc40d;
+@orange:            #f89406;
+@pink:              #c3325f;
+@purple:            #7a43b6;
+
+// Baseline grid
+@basefont:          13px;
+@baseline:          18px;
+</pre>
+
+<h3>Commenting</h3>
+<p>Less also provides another style of commenting in addition to CSS’s normal <code>/* ... */</code> syntax.</p>
+<pre class="prettyprint linenums">
+// This is a comment
+/* This is also a comment */
+</pre>
+
+<h3>Mixins up the wazoo</h3>
+<p>Mixins are basically includes or partials for CSS, allowing you to combine a block of code into one. They’re great for vendor prefixed properties like <code>box-shadow</code>, cross-browser gradients, font stacks, and more. Below is a sample of the mixins that are included with Bootstrap.</p>
+<h4>Font stacks</h4>
+<pre class="prettyprint linenums">
+#font {
+  .shorthand(@weight: normal, @size: 14px, @lineHeight: 20px) {
+    font-size: @size;
+    font-weight: @weight;
+    line-height: @lineHeight;
+  }
+  .sans-serif(@weight: normal, @size: 14px, @lineHeight: 20px) {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: @size;
+    font-weight: @weight;
+    line-height: @lineHeight;
+  }
+  ...
+}
+</pre>
+<h4>Gradients</h4>
+<pre class="prettyprint linenums">
+#gradient {
+  ...
+  .vertical (@startColor: #555, @endColor: #333) {
+    background-color: @endColor;
+    background-repeat: repeat-x;
+    background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); // Konqueror
+    background-image: -moz-linear-gradient(@startColor, @endColor); // FF 3.6+
+    background-image: -ms-linear-gradient(@startColor, @endColor); // IE10
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(@startColor, @endColor); // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient(@startColor, @endColor); // Opera 11.10
+    background-image: linear-gradient(@startColor, @endColor); // The standard
+  }
+  ...
+}
+</pre>
+
+<h3>Operations</h3>
+<p>Get fancy and perform some math to generate flexible and powerful mixins like the one below.</p>
+<pre class="prettyprint linenums">
+// Griditude
+@gridColumns:       16;
+@gridColumnWidth:   40px;
+@gridGutterWidth:   20px;
+@siteWidth:         (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// Make some columns
+.columns(@columnSpan: 1) {
+  width: (@gridColumnWidth * @columnSpan) + (@gridGutterWidth * (@columnSpan - 1));
+}
+</pre>
+
+    <h2>Compiling Less</h2>
+    <p>After modifying the <code>.less</code> files in /lib/, you'll need to recompile them in order to regenerate the bootstrap-*.*.*.css and bootstrap-*.*.*.min.css files. If you're submitting a pull request to GitHub, you must always recompile.</p>
+    <h3>Ways to compile</h3>
+    <table class="zebra-striped">
+      <thead>
+        <tr>
+          <th style="width: 120px;">Method</th>
+          <th>Steps</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Node with makefile</td>
+          <td>
+            <p>Install the less command line compiler with npm by running the following command:</p>
+            <pre>$ npm install lessc</pre>
+            <p>Once installed just run <code>make</code> from the root of your bootstrap directory and you're all set.</p>
+            <p>Additionally, if you have <a href="https://github.com/mynyml/watchr">watchr</a> installed, you may run <code>make watch</code> to have bootstrap automatically rebuilt every time you edit a file in the bootstrap lib (this isn't required, just a convenience method).</p>
+          </td>
+        </tr>
+          <td>Javascript</td>
+          <td>
+            <p><a href="http://lesscss.org/">Download the latest Less.js</a> and include the path to it (and Bootstrap) in the <code>head</code>.</p>
+<pre class="prettyprint linenums">
+&lt;link rel="stylesheet/less" href="/path/to/bootstrap.less"&gt;
+&lt;script src="/path/to/less.js"&gt;&lt;/script&gt;
+</pre>
+            <p>To recompile the .less files, just save them and reload your page. Less.js compiles them and stores them in local storage.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>Command line</td>
+          <td>
+            <p>If you already have the less command line tool installed, simply run the following command:</p>
+              <pre>$ lessc ./lib/bootstrap.less > bootstrap.css</pre>
+            <p>Be sure to include <code>--compress</code> in that command if you're trying to save some bytes!</p>
+          </td>
+        </tr>
+        <tr>
+          <td>Less Mac app</td>
+          <td>
+            <p><a href="http://incident57.com/less/">The unofficial Mac app</a> watches directories of .less files and compiles the code to local files after every save of a watched .less file.</p>
+            <p>If you like, you can toggle preferences in the app for automatic minifying and which directory the compiled files end up in.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</section>
+
+
+
+    </div><!-- /container -->
+
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>
+          Designed and built with all the love in the world <a href="http://twitter.com/twitter" target="_blank">@twitter</a> by <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.<br />
+          Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+        </p>
+      </div>
+    </footer>
+
+  </body>
+</html>
