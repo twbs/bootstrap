@@ -26,8 +26,8 @@
     this.options.keyboard && this.$element.on('keydown.bs.carousel', $.proxy(this.keydown, this))
 
     this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
-      .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
-      .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
+      .on('mouseenter.bs.carousel', $.proxy(this.options.inverse ? this.cycle : this.pause, this))
+      .on('mouseleave.bs.carousel', $.proxy(this.options.inverse ? this.pause : this.cycle, this))
   }
 
   Carousel.VERSION  = '3.3.5'
@@ -37,6 +37,7 @@
   Carousel.DEFAULTS = {
     interval: 5000,
     pause: 'hover',
+    inverse: false,
     wrap: true,
     keyboard: true
   }
@@ -183,7 +184,7 @@
       if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
       if (typeof option == 'number') data.to(option)
       else if (action) data[action]()
-      else if (options.interval) data.pause().cycle()
+      else if (options.interval && !options.inverse) data.pause().cycle()
     })
   }
 
