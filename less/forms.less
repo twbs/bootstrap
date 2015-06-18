@@ -132,6 +132,12 @@ output {
   // Placeholder
   .placeholder();
 
+  // Removes the border and background color around the caret in IE
+  &::-ms-expand {
+    border: 0;
+    background-color: @input-bg;
+  }
+
   // Disabled and read-only inputs
   //
   // HTML5 says that controls under a fieldset > legend:first-child won't be
@@ -139,6 +145,8 @@ output {
   // don't honor that edge case; we style them as disabled anyway.
   &[disabled],
   &[readonly],
+  &[disabled]::-ms-expand,
+  &[readonly]::-ms-expand,
   fieldset[disabled] & {
     background-color: @input-bg-disabled;
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
@@ -433,10 +441,10 @@ input[type="checkbox"] {
 .has-feedback label {
 
   & ~ .form-control-feedback {
-     top: (@line-height-computed + 5); // Height of the `label` and its margin
+    top: (@line-height-computed + 5); // Height of the `label` and its margin
   }
   &.sr-only ~ .form-control-feedback {
-     top: 0;
+    top: 0;
   }
 }
 
