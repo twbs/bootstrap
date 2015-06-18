@@ -451,19 +451,6 @@
           return scrollbarWidth;
         }
       }], [{
-        key: 'VERSION',
-
-        // getters
-
-        get: function () {
-          return VERSION;
-        }
-      }, {
-        key: 'Default',
-        get: function () {
-          return Default;
-        }
-      }, {
         key: '_jQueryInterface',
 
         // static
@@ -484,6 +471,19 @@
               data.show(relatedTarget);
             }
           });
+        }
+      }, {
+        key: 'VERSION',
+
+        // getters
+
+        get: function () {
+          return VERSION;
+        }
+      }, {
+        key: 'Default',
+        get: function () {
+          return Default;
         }
       }]);
 

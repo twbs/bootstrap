@@ -229,14 +229,6 @@
           }
         }
       }], [{
-        key: 'VERSION',
-
-        // getters
-
-        get: function () {
-          return VERSION;
-        }
-      }, {
         key: '_jQueryInterface',
 
         // static
@@ -255,6 +247,14 @@
               data[config]();
             }
           });
+        }
+      }, {
+        key: 'VERSION',
+
+        // getters
+
+        get: function () {
+          return VERSION;
         }
       }]);
 
