@@ -145,6 +145,18 @@
        -o-transform: translate(@x, @y);
           transform: translate(@x, @y);
 }
+.translateX(@x) {
+  -webkit-transform: translate(@x);
+  -ms-transform: translate(@x); // IE9 only
+  -o-transform: translate(@x);
+  transform: translate(@x);
+}
+.translateY(@y) {
+  -webkit-transform: translateY(@y);
+  -ms-transform: translateY(@y); // IE9 only
+  -o-transform: translateY(@y);
+  transform: translateY(@y);
+}
 .translate3d(@x; @y; @z) {
   -webkit-transform: translate3d(@x, @y, @z);
           transform: translate3d(@x, @y, @z);
@@ -182,6 +194,13 @@
      -moz-transform-origin: @origin;
       -ms-transform-origin: @origin; // IE9 only
           transform-origin: @origin;
+}
+.transform-style(@style) {
+  -webkit-transform-style: @style;
+  -moz-transform-style: @style;
+  -ms-transform-style: @style; // IE9 only
+  transform-style: @style;
+
 }
 
 
