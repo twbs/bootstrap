@@ -132,10 +132,10 @@ output {
   // Placeholder
   .placeholder();
 
-  // Removes the border and background color around the caret in IE
+  // Unstyle the caret on `<select>`s in IE10+.
   &::-ms-expand {
     border: 0;
-    background-color: @input-bg;
+    background-color: transparent;
   }
 
   // Disabled and read-only inputs
@@ -145,8 +145,6 @@ output {
   // don't honor that edge case; we style them as disabled anyway.
   &[disabled],
   &[readonly],
-  &[disabled]::-ms-expand,
-  &[readonly]::-ms-expand,
   fieldset[disabled] & {
     background-color: @input-bg-disabled;
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
