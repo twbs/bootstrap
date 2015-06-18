@@ -18,6 +18,14 @@ module.exports = function configureRubySass(grunt) {
           'dist/css/<%= pkg.name %>.css': 'scss/<%= pkg.name %>.scss'
         }
       },
+      extras: {
+        options: options,
+        files: {
+          'dist/css/<%= pkg.name %>-flex.css': 'scss/<%= pkg.name %>-flex.scss',
+          'dist/css/<%= pkg.name %>-grid.css': 'scss/<%= pkg.name %>-grid.scss',
+          'dist/css/<%= pkg.name %>-reboot.css': 'scss/<%= pkg.name %>-reboot.scss'
+        }
+      },
       docs: {
         options: options,
         files: {

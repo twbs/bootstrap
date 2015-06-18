@@ -218,7 +218,7 @@ module.exports = function (grunt) {
         processors: [mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' })]
       },
       core: {
-        src: 'dist/css/<%= pkg.name %>.css'
+        src: 'dist/css/*.css'
       }
     },
 
@@ -239,7 +239,7 @@ module.exports = function (grunt) {
         options: {
           map: true
         },
-        src: 'dist/css/<%= pkg.name %>.css'
+        src: 'dist/css/*.css'
       },
       docs: {
         src: 'docs/assets/css/docs.min.css'
@@ -261,9 +261,15 @@ module.exports = function (grunt) {
         noAdvanced: true
       },
       core: {
-        files: {
-          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css'
-        }
+        files: [
+          {
+            expand: true,
+            cwd: 'dist/css',
+            src: ['*.css', '!*.min.css'],
+            dest: 'dist/css',
+            ext: '.min.css'
+          }
+        ]
       },
       docs: {
         src: 'docs/assets/css/docs.min.css',
@@ -416,7 +422,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
+  grunt.registerTask('validate-html', ['jekyll:docs']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
@@ -461,7 +467,7 @@ module.exports = function (grunt) {
   (function (sassCompilerName) {
     require('./grunt/bs-sass-compile/' + sassCompilerName + '.js')(grunt);
   })(process.env.TWBS_SASS || 'libsass');
-  grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
+  grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
 
   grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
 
