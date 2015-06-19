@@ -11,11 +11,11 @@
   padding-left: .6em;
   font-size: .75em;
   font-weight: $badge-font-weight;
-  color: $badge-color;
   line-height: $line-height-base;
+  color: $badge-color;
   text-align: center;
-  vertical-align: middle;
   white-space: nowrap;
+  vertical-align: middle;
   background-color: $badge-bg;
   @include border-radius($badge-border-radius);
 

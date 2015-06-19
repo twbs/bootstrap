@@ -35,8 +35,8 @@
 
   // Unstyle the caret on `<select>`s in IE10+.
   &::-ms-expand {
-    border: 0;
     background-color: transparent;
+    border: 0;
   }
 
   // Customize the `:focus` state to imitate native WebKit styles.
