@@ -205,11 +205,11 @@ module.exports = function (grunt) {
     // CSS build configuration
 
     scsslint: {
-      scss: ['scss/*.scss', '!scss/_normalize.scss'],
       options: {
-        config: 'scss/.scss-lint.yml',
-        reporterOutput: 'scss-lint-report.xml'
-      }
+        config: 'scss/.scsslint.yml',
+        reporterOutput: null
+      },
+      src: ['scss/*.scss', '!scss/_normalize.scss']
     },
 
     postcss: {
