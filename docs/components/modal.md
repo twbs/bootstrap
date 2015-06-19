@@ -19,7 +19,7 @@ $('#myModal').on('shown.bs.modal', function () {
 {% endhighlight %}
 
 {% callout warning %}
-#### Overlapping modals not supported
+#### Multiple open modals not supported
 
 Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.
 {% endcallout %}
@@ -42,7 +42,7 @@ A rendered modal with header, body, and set of actions in the footer.</p>
 
 <div class="bd-example bd-example-modal">
   <div class="modal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -65,7 +65,7 @@ A rendered modal with header, body, and set of actions in the footer.</p>
 
 {% highlight html %}
 <div class="modal fade">
-  <div class="modal-dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -91,7 +91,7 @@ A rendered modal with header, body, and set of actions in the footer.</p>
 Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.
 
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
@@ -147,7 +147,7 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -171,7 +171,7 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
 {% callout warning %}
 #### Make modals accessible
 
-Be sure to add `role="dialog"` to `.modal`, `aria-labelledby="myModalLabel"` attribute to reference the modal title, and `aria-hidden="true"` to tell assistive technologies to skip the modal's DOM elements.
+Be sure to add `role="dialog"` and `aria-labelledby="..."``, referencing the modal title, to `.modal`, and `role="document"` to the `.modal-dialog` itself.
 
 Additionally, you may give a description of your modal dialog with `aria-describedby` on `.modal`.
 {% endcallout %}
@@ -267,7 +267,7 @@ To take advantage of the Bootstrap grid system within a modal, just nest `.conta
 
 {% example html %}
 <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -325,7 +325,7 @@ Have a bunch of buttons that all trigger the same modal, just with slightly diff
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">

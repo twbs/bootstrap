@@ -372,19 +372,6 @@
           }
         }
       }], [{
-        key: 'VERSION',
-
-        // getters
-
-        get: function () {
-          return VERSION;
-        }
-      }, {
-        key: 'Default',
-        get: function () {
-          return Default;
-        }
-      }, {
         key: '_jQueryInterface',
 
         // static
@@ -444,6 +431,19 @@
           }
 
           event.preventDefault();
+        }
+      }, {
+        key: 'VERSION',
+
+        // getters
+
+        get: function () {
+          return VERSION;
+        }
+      }, {
+        key: 'Default',
+        get: function () {
+          return Default;
         }
       }]);
 

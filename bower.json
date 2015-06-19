@@ -1,7 +1,6 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "3.3.4",
   "keywords": [
     "css",
     "js",
@@ -13,9 +12,10 @@
     "web"
   ],
   "homepage": "http://getbootstrap.com",
+  "license": "MIT",
+  "moduleType": "globals",
   "main": [
     "scss/bootstrap.scss",
-    "dist/css/bootstrap.css",
     "dist/js/bootstrap.js"
   ],
   "ignore": [

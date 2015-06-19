@@ -296,9 +296,14 @@ Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` e
 </div>
 {% endexample %}
 
-Aspect ratios can be customized. There are two available in Bootstrap, 16x9 and 4x3 (two of the most common for video).
+Aspect ratios can be customized with modifier classes.
 
 {% highlight html %}
+<!-- 21:9 aspect ratio -->
+<div class="embed-responsive embed-responsive-21by9">
+  <iframe class="embed-responsive-item" src="..."></iframe>
+</div>
+
 <!-- 16:9 aspect ratio -->
 <div class="embed-responsive embed-responsive-16by9">
   <iframe class="embed-responsive-item" src="..."></iframe>

@@ -36,13 +36,13 @@ Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag 
 
 Compiled and minified CSS and JavaScript. No docs or original source files are included.
 
-<a href="{{ site.download.dist }}" class="btn btn-lg btn-outline" role="button" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download compiled');">Download Bootstrap</a>
+<a href="{{ site.download.dist }}" class="btn btn-lg btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download compiled');">Download Bootstrap</a>
 
 ## Download source and docs
 
 Source Sass, JavaScript, and documentation. **Requires a Sass compiler and [some setup](../compiling).**
 
-<a href="{{ site.download.source }}" class="btn btn-lg btn-outline" role="button" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
+<a href="{{ site.download.source }}" class="btn btn-lg btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
 
 ## Package managers
 
@@ -72,6 +72,8 @@ $ meteor add twbs:bootstrap
 {% endhighlight %}
 
 ### Composer
+
+You can also install and manage Bootstrap's Less, CSS, JavaScript, and fonts using [Composer](https://getcomposer.org):
 
 {% highlight bash %}
 $ composer require twbs/bootstrap

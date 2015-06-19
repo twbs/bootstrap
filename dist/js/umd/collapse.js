@@ -295,19 +295,6 @@
           }
         }
       }], [{
-        key: 'VERSION',
-
-        // getters
-
-        get: function () {
-          return VERSION;
-        }
-      }, {
-        key: 'Default',
-        get: function () {
-          return Default;
-        }
-      }, {
         key: '_getTargetFromElement',
 
         // static
@@ -337,6 +324,19 @@
               data[config]();
             }
           });
+        }
+      }, {
+        key: 'VERSION',
+
+        // getters
+
+        get: function () {
+          return VERSION;
+        }
+      }, {
+        key: 'Default',
+        get: function () {
+          return Default;
         }
       }]);
 

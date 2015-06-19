@@ -130,6 +130,8 @@ Do more with buttons. Control button states or create groups of buttons for more
 
 Use JavaScript to change the text and "state" of a particular button. For the sake of this demonstration, we are using `data-loading-text` and `$().button('loading')`, but that's not the only state you can use. [Custom strings of text](#buttons-methods) can also be used with `$().button(string)`.
 
+**This feature is deprecated since v3.3.5 and will be removed in v4.**
+
 **Heads up!** You'll likely need to work around Firefox's [persisted form control states across page loads bug](https://github.com/twbs/bootstrap/issues/793) (e.g., disabled and checked states) with `autocomplete="off"`. See [Mozilla bug #654072](https://bugzilla.mozilla.org/show_bug.cgi?id=654072) for details.
 
 {% example html %}
@@ -199,7 +201,7 @@ Toggles push state. Gives the button the appearance that it has been activated.
 
 #### $().button('reset')
 
-Resets button state—swaps text to original text.
+Resets button state—swaps text to original text. **This method is asynchronous and returns before the resetting has actually completed.**
 
 #### $().button(string)
 

@@ -92,6 +92,16 @@
   browser: >
     Chrome
   summary: >
+    Focus ring of image map within a modal is displayed in the wrong location.
+  upstream_bug: >
+    Chromium#475128
+  origin: >
+    Bootstrap#16180
+
+-
+  browser: >
+    Chrome
+  summary: >
     `display: table;` within `display: block;` forces sibling content to new line.
   upstream_bug: >
     Chromium#309483
@@ -130,6 +140,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    `width: 1%` on nested table cell causes its table to hog horizontal space.
+  upstream_bug: >
+    Chromium#427994
+  origin: >
+    Bootstrap#16372
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
@@ -137,6 +157,16 @@
     Chromium#449180
   origin: >
     Bootstrap#15298
+
+-
+  browser: >
+    Safari
+  summary: >
+    `width: 1%` on nested table cell causes its table to hog horizontal space.
+  upstream_bug: >
+    WebKit#144696, Safari#20839572
+  origin: >
+    Bootstrap#16372
 
 -
   browser: >
@@ -199,6 +229,26 @@
     WebKit#141804, Safari#19892433
   origin: >
     Bootstrap#15832
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Focus ring of image map within a modal is displayed in the wrong location.
+  upstream_bug: >
+    WebKit#143527
+  origin: >
+    Bootstrap#16180
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Unnecessary line-wrapping of `.navbar-brand` text for no apparent reason
+  upstream_bug: >
+    WebKit#144990, Safari#20950962
+  origin: >
+    Bootstrap#15998
 
 -
   browser: >

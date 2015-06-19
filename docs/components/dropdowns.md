@@ -16,18 +16,18 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
 
 {% example html %}
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown
   </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation">
-      <a role="menuitem" tabindex="-1" href="#">Action</a>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li>
+      <a href="#">Action</a>
     </li>
-    <li role="presentation">
-      <a role="menuitem" tabindex="-1" href="#">Another action</a>
+    <li>
+      <a href="#">Another action</a>
     </li>
-    <li role="presentation">
-      <a role="menuitem" tabindex="-1" href="#">Something else here</a>
+    <li>
+      <a href="#">Something else here</a>
     </li>
   </ul>
 </div>
@@ -44,7 +44,7 @@ Dropdowns are automatically positioned via CSS within the normal flow of the doc
 {% endcallout %}
 
 {% highlight html %}
-<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
+<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">
   ...
 </ul>
 {% endhighlight %}
@@ -54,13 +54,13 @@ Dropdowns are automatically positioned via CSS within the normal flow of the doc
 Add a header to label sections of actions in any dropdown menu.
 
 {% example html %}
-<ul class="dropdown-menu" role="menu">
-  <li role="presentation" class="dropdown-header">Dropdown header</li>
-  <li role="presentation">
-    <a role="menuitem" tabindex="-1" href="#">Action</a>
+<ul class="dropdown-menu">
+  <li class="dropdown-header">Dropdown header</li>
+  <li>
+    <a href="#">Action</a>
   </li>
-  <li role="presentation">
-    <a role="menuitem" tabindex="-1" href="#">Another action</a>
+  <li>
+    <a href="#">Another action</a>
   </li>
 </ul>
 {% endexample %}
@@ -70,19 +70,19 @@ Add a header to label sections of actions in any dropdown menu.
 Separate groups of related menu items with a divider.
 
 {% example html %}
-<ul class="dropdown-menu" role="menu">
-  <li role="presentation">
-    <a role="menuitem" tabindex="-1" href="#">Action</a>
+<ul class="dropdown-menu">
+  <li>
+    <a href="#">Action</a>
   </li>
-  <li role="presentation">
-    <a role="menuitem" tabindex="-1" href="#">Another action</a>
+  <li>
+    <a href="#">Another action</a>
   </li>
-  <li role="presentation">
-    <a role="menuitem" tabindex="-1" href="#">Something else here</a>
+  <li>
+    <a href="#">Something else here</a>
   </li>
-  <li role="presentation" class="dropdown-divider"></li>
-  <li role="presentation">
-    <a role="menuitem" tabindex="-1" href="#">Separated link</a>
+  <li class="dropdown-divider"></li>
+  <li>
+    <a href="#">Separated link</a>
   </li>
 </ul>
 {% endexample %}
@@ -92,15 +92,15 @@ Separate groups of related menu items with a divider.
 Add `.disabled` to a `<li>` in the dropdown to disable the link.
 
 {% example html %}
-<ul class="dropdown-menu" role="menu">
-  <li role="presentation">
-    <a role="menuitem" tabindex="-1" href="#">Regular link</a>
+<ul class="dropdown-menu">
+  <li>
+    <a href="#">Regular link</a>
   </li>
-  <li role="presentation" class="disabled">
-    <a role="menuitem" tabindex="-1" href="#">Disabled link</a>
+  <li class="disabled">
+    <a href="#">Disabled link</a>
   </li>
-  <li role="presentation">
-    <a role="menuitem" tabindex="-1" href="#">Another link</a>
+  <li>
+    <a href="#">Another link</a>
   </li>
 </ul>
 {% endexample %}
@@ -119,11 +119,10 @@ Add `data-toggle="dropdown"` to a link or button to toggle a dropdown.
 
 {% highlight html %}
 <div class="dropdown">
-  <button id="dLabel" type="button" data-toggle="dropdown">
+  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown trigger
-    <span class="caret"></span>
   </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
     ...
   </ul>
 </div>
@@ -133,12 +132,11 @@ To keep URLs intact with link buttons, use the `data-target` attribute instead o
 
 {% highlight html %}
 <div class="dropdown">
-  <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown">
+  <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown trigger
-    <span class="caret"></span>
   </a>
 
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
     ...
   </ul>
 </div>

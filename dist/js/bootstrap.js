@@ -294,14 +294,6 @@ var Alert = (function ($) {
         $(element).detach().trigger(Event.CLOSED).remove();
       }
     }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
       key: '_jQueryInterface',
 
       // static
@@ -331,6 +323,14 @@ var Alert = (function ($) {
 
           alertInstance.close(this);
         };
+      }
+    }, {
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
       }
     }]);
 
@@ -461,14 +461,6 @@ var Button = (function ($) {
         this._element = null;
       }
     }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
       key: '_jQueryInterface',
 
       // static
@@ -486,6 +478,14 @@ var Button = (function ($) {
             data[config]();
           }
         });
+      }
+    }, {
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
       }
     }]);
 
@@ -880,19 +880,6 @@ var Carousel = (function ($) {
         }
       }
     }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function () {
-        return Default;
-      }
-    }, {
       key: '_jQueryInterface',
 
       // static
@@ -952,6 +939,19 @@ var Carousel = (function ($) {
         }
 
         event.preventDefault();
+      }
+    }, {
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function () {
+        return Default;
       }
     }]);
 
@@ -1263,19 +1263,6 @@ var Collapse = (function ($) {
         }
       }
     }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function () {
-        return Default;
-      }
-    }, {
       key: '_getTargetFromElement',
 
       // static
@@ -1305,6 +1292,19 @@ var Collapse = (function ($) {
             data[config]();
           }
         });
+      }
+    }, {
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function () {
+        return Default;
       }
     }]);
 
@@ -1468,14 +1468,6 @@ var Dropdown = (function ($) {
         $(this._element).on(Event.CLICK, this.toggle);
       }
     }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
       key: '_jQueryInterface',
 
       // static
@@ -1587,6 +1579,14 @@ var Dropdown = (function ($) {
         if (! ~index) index = 0;
 
         items[index].focus();
+      }
+    }, {
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
       }
     }]);
 
@@ -2049,19 +2049,6 @@ var Modal = (function ($) {
         return scrollbarWidth;
       }
     }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function () {
-        return Default;
-      }
-    }, {
       key: '_jQueryInterface',
 
       // static
@@ -2082,6 +2069,19 @@ var Modal = (function ($) {
             data.show(relatedTarget);
           }
         });
+      }
+    }, {
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function () {
+        return Default;
       }
     }]);
 
@@ -2383,19 +2383,6 @@ var ScrollSpy = (function ($) {
         }
       }
     }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function () {
-        return Default;
-      }
-    }, {
       key: '_jQueryInterface',
 
       // static
@@ -2414,6 +2401,19 @@ var ScrollSpy = (function ($) {
             data[config]();
           }
         });
+      }
+    }, {
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function () {
+        return Default;
       }
     }]);
 
@@ -2659,14 +2659,6 @@ var Tab = (function ($) {
         }
       }
     }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
       key: '_jQueryInterface',
 
       // static
@@ -2685,6 +2677,14 @@ var Tab = (function ($) {
             data[config]();
           }
         });
+      }
+    }, {
+      key: 'VERSION',
+
+      // getters
+
+      get: function () {
+        return VERSION;
       }
     }]);
 
@@ -3224,6 +3224,30 @@ var Tooltip = (function ($) {
         return config;
       }
     }], [{
+      key: '_jQueryInterface',
+
+      // static
+
+      value: function _jQueryInterface(config) {
+        return this.each(function () {
+          var data = $(this).data(DATA_KEY);
+          var _config = typeof config === 'object' ? config : null;
+
+          if (!data && /destroy|hide/.test(config)) {
+            return;
+          }
+
+          if (!data) {
+            data = new Tooltip(this, _config);
+            $(this).data(DATA_KEY, data);
+          }
+
+          if (typeof config === 'string') {
+            data[config]();
+          }
+        });
+      }
+    }, {
       key: 'VERSION',
 
       // getters
@@ -3260,30 +3284,6 @@ var Tooltip = (function ($) {
       key: 'DefaultType',
       get: function () {
         return DefaultType;
-      }
-    }, {
-      key: '_jQueryInterface',
-
-      // static
-
-      value: function _jQueryInterface(config) {
-        return this.each(function () {
-          var data = $(this).data(DATA_KEY);
-          var _config = typeof config === 'object' ? config : null;
-
-          if (!data && /destroy|hide/.test(config)) {
-            return;
-          }
-
-          if (!data) {
-            data = new Tooltip(this, _config);
-            $(this).data(DATA_KEY, data);
-          }
-
-          if (typeof config === 'string') {
-            data[config]();
-          }
-        });
       }
     }]);
 
@@ -3420,6 +3420,30 @@ var Popover = (function ($) {
         return this.element.getAttribute('data-content') || (typeof this.config.content == 'function' ? this.config.content.call(this.element) : this.config.content);
       }
     }], [{
+      key: '_jQueryInterface',
+
+      // static
+
+      value: function _jQueryInterface(config) {
+        return this.each(function () {
+          var data = $(this).data(DATA_KEY);
+          var _config = typeof config === 'object' ? config : null;
+
+          if (!data && /destroy|hide/.test(config)) {
+            return;
+          }
+
+          if (!data) {
+            data = new Popover(this, _config);
+            $(this).data(DATA_KEY, data);
+          }
+
+          if (typeof config === 'string') {
+            data[config]();
+          }
+        });
+      }
+    }, {
       key: 'VERSION',
 
       // getters
@@ -3456,30 +3480,6 @@ var Popover = (function ($) {
       key: 'DefaultType',
       get: function () {
         return DefaultType;
-      }
-    }, {
-      key: '_jQueryInterface',
-
-      // static
-
-      value: function _jQueryInterface(config) {
-        return this.each(function () {
-          var data = $(this).data(DATA_KEY);
-          var _config = typeof config === 'object' ? config : null;
-
-          if (!data && /destroy|hide/.test(config)) {
-            return;
-          }
-
-          if (!data) {
-            data = new Popover(this, _config);
-            $(this).data(DATA_KEY, data);
-          }
-
-          if (typeof config === 'string') {
-            data[config]();
-          }
-        });
       }
     }]);
 

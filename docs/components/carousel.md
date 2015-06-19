@@ -80,7 +80,7 @@ Add captions to your slides easily with the `.carousel-caption` element within a
         </div>
       </div>
       <div class="carousel-item">
-        <img data-src="holder.js/900x500/auto/#555:#5555" alt="Third slide image">
+        <img data-src="holder.js/900x500/auto/#555:#555" alt="Third slide image">
         <div class="carousel-caption">
           <h3>Third slide label</h3>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>

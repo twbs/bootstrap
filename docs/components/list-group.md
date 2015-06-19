@@ -60,6 +60,20 @@ Linkify list group items by using anchor tags instead of list items (that also m
 </div>
 {% endexample %}
 
+## Button items
+
+List group items may be buttons instead of list items (that also means a parent `<div>` instead of an `<ul>`). No need for individual parents around each element. **Don't use the standard `.btn` classes here.**
+
+{% example html %}
+<div class="list-group">
+  <button type="button" class="list-group-item">Cras justo odio</button>
+  <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+  <button type="button" class="list-group-item">Morbi leo risus</button>
+  <button type="button" class="list-group-item">Porta ac consectetur ac</button>
+  <button type="button" class="list-group-item">Vestibulum at eros</button>
+</div>
+{% endexample %}
+
 ## Disabled items
 
 Add `.disabled` to a `.list-group-item` to gray it out to appear disabled.

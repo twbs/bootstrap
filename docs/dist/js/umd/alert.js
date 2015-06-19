@@ -140,14 +140,6 @@
           $(element).detach().trigger(Event.CLOSED).remove();
         }
       }], [{
-        key: 'VERSION',
-
-        // getters
-
-        get: function () {
-          return VERSION;
-        }
-      }, {
         key: '_jQueryInterface',
 
         // static
@@ -177,6 +169,14 @@
 
             alertInstance.close(this);
           };
+        }
+      }, {
+        key: 'VERSION',
+
+        // getters
+
+        get: function () {
+          return VERSION;
         }
       }]);
 

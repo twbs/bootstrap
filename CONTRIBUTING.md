@@ -19,7 +19,7 @@ and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
 * Please **do not** use the issue tracker for personal support requests.  Stack
-  Overflow ([`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag) or [IRC](README.md#community) are better places to get help.
+  Overflow ([`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -65,7 +65,7 @@ Guidelines for bug reports:
    latest `master` or development branch in the repository.
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
-   case](http://css-tricks.com/6263-reduced-test-cases/) and a live example.
+   case](https://css-tricks.com/reduced-test-cases/) and a live example.
    [This JS Bin](http://jsbin.com/lefey/1/edit?html,output) is a helpful template.
 
 
@@ -148,7 +148,7 @@ documentation source files and is managed separately by the Bootstrap Core Team.
 Adhering to the following process is the best way to get your work
 included in the project:
 
-1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork,
+1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
    and configure the remotes:
 
    ```bash

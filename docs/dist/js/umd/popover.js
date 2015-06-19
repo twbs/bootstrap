@@ -137,6 +137,30 @@
           return this.element.getAttribute('data-content') || (typeof this.config.content == 'function' ? this.config.content.call(this.element) : this.config.content);
         }
       }], [{
+        key: '_jQueryInterface',
+
+        // static
+
+        value: function _jQueryInterface(config) {
+          return this.each(function () {
+            var data = $(this).data(DATA_KEY);
+            var _config = typeof config === 'object' ? config : null;
+
+            if (!data && /destroy|hide/.test(config)) {
+              return;
+            }
+
+            if (!data) {
+              data = new Popover(this, _config);
+              $(this).data(DATA_KEY, data);
+            }
+
+            if (typeof config === 'string') {
+              data[config]();
+            }
+          });
+        }
+      }, {
         key: 'VERSION',
 
         // getters
@@ -173,30 +197,6 @@
         key: 'DefaultType',
         get: function () {
           return DefaultType;
-        }
-      }, {
-        key: '_jQueryInterface',
-
-        // static
-
-        value: function _jQueryInterface(config) {
-          return this.each(function () {
-            var data = $(this).data(DATA_KEY);
-            var _config = typeof config === 'object' ? config : null;
-
-            if (!data && /destroy|hide/.test(config)) {
-              return;
-            }
-
-            if (!data) {
-              data = new Popover(this, _config);
-              $(this).data(DATA_KEY, data);
-            }
-
-            if (typeof config === 'string') {
-              data[config]();
-            }
-          });
         }
       }]);
 

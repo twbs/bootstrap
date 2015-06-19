@@ -145,14 +145,6 @@
           $(this._element).on(Event.CLICK, this.toggle);
         }
       }], [{
-        key: 'VERSION',
-
-        // getters
-
-        get: function () {
-          return VERSION;
-        }
-      }, {
         key: '_jQueryInterface',
 
         // static
@@ -264,6 +256,14 @@
           if (! ~index) index = 0;
 
           items[index].focus();
+        }
+      }, {
+        key: 'VERSION',
+
+        // getters
+
+        get: function () {
+          return VERSION;
         }
       }]);
 

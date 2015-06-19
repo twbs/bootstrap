@@ -45,16 +45,16 @@ Hover over the links below to see tooltips:
 Four options are available: top, right, bottom, and left aligned.
 
 <div class="bd-example bd-example-tooltip">
-  <div class="tooltip left" role="tooltip">
-    <div class="tooltip-arrow"></div>
-    <div class="tooltip-inner">
-      Tooltip on the left
-    </div>
-  </div>
   <div class="tooltip top" role="tooltip">
     <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the top
+    </div>
+  </div>
+  <div class="tooltip right" role="tooltip">
+    <div class="tooltip-arrow"></div>
+    <div class="tooltip-inner">
+      Tooltip on the right
     </div>
   </div>
   <div class="tooltip bottom" role="tooltip">
@@ -63,10 +63,10 @@ Four options are available: top, right, bottom, and left aligned.
       Tooltip on the bottom
     </div>
   </div>
-  <div class="tooltip right" role="tooltip">
+  <div class="tooltip left" role="tooltip">
     <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
-      Tooltip on the right
+      Tooltip on the left
     </div>
   </div>
 </div>
@@ -77,25 +77,25 @@ Hover over the buttons below to see their tooltips.
 
 <div class="bd-example tooltip-demo">
   <div class="bd-example-tooltips">
-    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
-    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
   </div>
 </div>
 
 {% highlight html %}
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
-  Tooltip on left
-</button>
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
   Tooltip on top
+</button>
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+  Tooltip on right
 </button>
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
   Tooltip on bottom
 </button>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
-  Tooltip on right
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+  Tooltip on left
 </button>
 {% endhighlight %}
 
@@ -210,7 +210,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>trigger</td>
         <td>string</td>
         <td>'hover focus'</td>
-        <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
+        <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.</td>
       </tr>
       <tr>
         <td>viewport</td>
