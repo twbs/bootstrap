@@ -79,9 +79,9 @@
 //
 
 .pagination-lg {
-  @include pagination-size($padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $border-radius-lg);
+  @include pagination-size($padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $line-height-lg, $border-radius-lg);
 }
 
 .pagination-sm {
-  @include pagination-size($padding-sm-vertical, $padding-sm-horizontal, $font-size-sm, $border-radius-sm);
+  @include pagination-size($padding-sm-vertical, $padding-sm-horizontal, $font-size-sm, $line-height-sm, $border-radius-sm);
 }

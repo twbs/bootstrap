@@ -458,7 +458,7 @@ Firefox has some awkward fieldset styling involving `width` that interferes with
 }
 {% endhighlight %}
 
-For more information, read [this Stack Overflow answer](http://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685).
+For more information, read [this Stack Overflow answer](https://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685).
 {% endcallout %}
 
 <div class="bd-example">

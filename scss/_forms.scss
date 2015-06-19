@@ -33,6 +33,12 @@
     height: $input-height-base;
   }
 
+  // Unstyle the caret on `<select>`s in IE10+.
+  &::-ms-expand {
+    border: 0;
+    background-color: transparent;
+  }
+
   // Customize the `:focus` state to imitate native WebKit styles.
   @include form-control-focus();
 
@@ -91,24 +97,26 @@
 // set a pixel line-height that matches the given height of the input, but only
 // for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
 
-// @media screen and (-webkit-min-device-pixel-ratio: 0) {
-//   input[type="date"],
-//   input[type="time"],
-//   input[type="datetime-local"],
-//   input[type="month"] {
-//     line-height: $input-height-base;
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  input[type="month"] {
+    &.form-control {
+      line-height: $input-height-base;
+    }
 
-//     &.input-sm,
-//     .input-group-sm & {
-//       line-height: $input-height-sm;
-//     }
+    &.input-sm,
+    .input-group-sm &.form-control {
+      line-height: $input-height-sm;
+    }
 
-//     &.input-lg,
-//     .input-group-lg & {
-//       line-height: $input-height-lg;
-//     }
-//   }
-// }
+    &.input-lg,
+    .input-group-lg &.form-control {
+      line-height: $input-height-lg;
+    }
+  }
+}
 
 
 // Static form control text

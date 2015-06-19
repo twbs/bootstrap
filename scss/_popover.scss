@@ -11,14 +11,10 @@
   display: block;
   max-width: $popover-max-width;
   padding: 1px;
-  // Reset font and text properties given new insertion method
-  font-family: $font-family-base;
-  font-size: $font-size-base;
-  font-weight: normal;
-  line-height: $line-height-base;
-  text-align: left;
-  // Overrides for proper insertion
-  white-space: normal;
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  @include reset-text();
+  font-size: $font-size-sm;
   background-color: $popover-bg;
   background-clip: padding-box;
   border: 1px solid $popover-border-color;

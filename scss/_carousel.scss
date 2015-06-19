@@ -29,7 +29,7 @@
     @media all and (transform-3d), (-webkit-transform-3d) {
       transition: transform .6s ease-in-out;
       backface-visibility: hidden;
-      perspective: 1000;
+      perspective: 1000px;
 
       &.next,
       &.active.right {
@@ -128,6 +128,7 @@
   .icon-next {
     position: absolute;
     top: 50%;
+    margin-top: -10px;
     z-index: 5;
     display: inline-block;
     width: 20px;
@@ -144,6 +145,7 @@
     right: 50%;
     margin-right: -10px;
   }
+
   .icon-prev {
     &:before {
       content: "\2039";// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)

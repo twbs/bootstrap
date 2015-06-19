@@ -306,7 +306,7 @@ For more structured form layouts, you can utilize Bootstrap's predefined grid cl
 
 Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
 
-A checkbox or radio with the `disabled` attribute will be styled appropriately. To have the `<label>` for the checkbox or radio also display a "not-allowed" cursor when the user hovers over the label, add the `.disabled` class to your `.radio`, `.radio-inline`, `.checkbox`, `.checkbox-inline`, or `<fieldset>`.
+Disabled checkboxes and radios are supported, but to provide a "not-allowed" cursor on hover of the parent `<label>`, you'll need to add the <code>.disabled</code> class to the parent `.radio`, `.radio-inline`, `.checkbox`, or `.checkbox-inline`.
 
 ### Default (stacked)
 
@@ -806,4 +806,3 @@ The file input is the most gnarly of the bunch. Here's how it works:
 In other words, it's an entirely custom element, all generated via CSS.
 
 **Heads up!** The custom file input is currently unable to update the *Choose file...* text with the filename. Without JavaScript, this might not be possible to change, but I'm open to ideas.
-

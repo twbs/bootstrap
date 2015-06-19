@@ -29,12 +29,14 @@ The ScrollSpy plugin is for automatically updating nav targets based on scroll p
           <li><a href="#fat">@fat</a></li>
           <li><a href="#mdo">@mdo</a></li>
           <li class="dropdown">
-            <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop1">
-              <li><a href="#one" tabindex="-1">one</a></li>
-              <li><a href="#two" tabindex="-1">two</a></li>
-              <li class="divider"></li>
-              <li><a href="#three" tabindex="-1">three</a></li>
+            <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDrop1">
+              <li><a href="#one">one</a></li>
+              <li><a href="#two">two</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#three">three</a></li>
             </ul>
           </li>
         </ul>
@@ -66,7 +68,7 @@ Scrollspy currently requires the use of a [Bootstrap nav component](/components/
 
 ### Requires relative positioning
 
-No matter the implementation method, scrollspy requires the use of `position: relative;` on the element you're spying on. In most cases this is the `<body>`.
+No matter the implementation method, scrollspy requires the use of `position: relative;` on the element you're spying on. In most cases this is the `<body>`. When scrollspying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
 
 ### Via data attributes
 
