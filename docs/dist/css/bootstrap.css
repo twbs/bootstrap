@@ -1844,7 +1844,7 @@ pre code {
   height: 2.625rem;
 }
 .form-control::-ms-expand {
-  background-color: transparent; 
+  background-color: transparent;
   border: 0;
 }
 .form-control:focus {
@@ -5404,7 +5404,6 @@ button.close {
   display: inline-block;
   width: 20px;
   height: 20px;
-  margin-top: -10px;
   margin-top: -10px;
   font-family: serif;
   line-height: 1;

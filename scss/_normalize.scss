@@ -99,7 +99,7 @@ a {
   &:active {
     outline: 0;
   }
-  @include hover {
+  &:hover {
     outline: 0;
   }
 }
