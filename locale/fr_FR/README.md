@@ -5,7 +5,11 @@
 [![Build Status](https://img.shields.io/travis/twbs/bootstrap/master.svg)](https://travis-ci.org/twbs/bootstrap)
 [![devDependency Status](https://img.shields.io/david/dev/twbs/bootstrap.svg)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
-Traduit par [GlobalHelp](https://github.com/GlobalHelp)
+
+
+
+
+*Traduit par [GlobalHelp](https://github.com/GlobalHelp)*
 Bootstrap est un intuitif et puissant framework  front-end pour un dévelopement rapide et facile d'un site web, crée par [Mark Otto](https://twitter.com/mdo) et [Jacob Thornton](https://twitter.com/fat), and mise à jour par la [core team](https://github.com/orgs/twbs/people) avec le massif soutien de la communautée.
 
 Pour commencer, Allez voir <http://getbootstrap.com>!
