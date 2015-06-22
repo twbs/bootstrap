@@ -36,10 +36,7 @@
     border-width: .2rem;
   }
 
-  + .highlight {
-    margin-top: -1rem;
-  }
-
+  + .highlight,  
   + .zero-clipboard + .highlight {
     margin-top: 0;
   }
