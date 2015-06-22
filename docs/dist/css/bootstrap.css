@@ -1832,16 +1832,11 @@ pre code {
   color: #55595c;
   background-color: #fff;
   background-image: none;
-  border: 1px solid #ccc;
+  border: .0625rem solid #ccc;
   border-radius: .25rem;
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-}
-.form-control:not(textarea),
-  .form-control:not(select[size]),
-  .form-control:not(select[multiple]) {
-  height: 2.625rem;
 }
 .form-control::-ms-expand {
   background-color: transparent;
@@ -1903,7 +1898,7 @@ pre code {
   .input-group-sm input[type="datetime-local"].form-control,
   input[type="month"].input-sm,
   .input-group-sm input[type="month"].form-control {
-    line-height: 2rem;
+    line-height: 1.95rem;
   }
   input[type="date"].input-lg,
   .input-group-lg input[type="date"].form-control,
@@ -1937,8 +1932,8 @@ pre code {
 .form-control-sm, .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
-  height: 2rem;
-  padding: .3rem .75rem;
+  height: 1.95rem;
+  padding: .275rem .75rem;
   font-size: .85rem;
   line-height: 1.5;
   border-radius: .2rem;
@@ -2059,9 +2054,9 @@ fieldset[disabled] .checkbox label {
 
 .input-sm + .form-control-feedback,
 .input-group-sm + .form-control-feedback {
-  width: 2rem;
-  height: 2rem;
-  line-height: 2rem;
+  width: 1.95rem;
+  height: 1.95rem;
+  line-height: 1.95rem;
 }
 
 .has-success .help-block,
@@ -2636,7 +2631,7 @@ fieldset[disabled] a.btn {
 }
 
 .btn-sm, .btn-group-sm > .btn {
-  padding: .3rem .75rem;
+  padding: .275rem .75rem;
   font-size: .85rem;
   line-height: 1.5;
   border-radius: .2rem;
@@ -3070,7 +3065,7 @@ input[type="button"].btn-block {
 }
 .input-group-addon.form-control-sm, .input-group-sm > .input-group-addon,
   .input-group-sm > .input-group-btn > .input-group-addon.btn {
-  padding: .3rem .75rem;
+  padding: .275rem .75rem;
   font-size: .85rem;
   border-radius: .2rem;
 }
@@ -3637,15 +3632,15 @@ input[type="button"].btn-block {
   border-bottom-left-radius: 0;
 }
 
-.navbar-condensed {
+.navbar-sm {
   padding-top: 0;
   padding-bottom: 0;
 }
-.navbar-condensed .navbar-brand {
+.navbar-sm .navbar-brand {
   padding-top: .95rem;
   padding-bottom: .95rem;
 }
-.navbar-condensed .form-inline {
+.navbar-sm .form-inline {
   margin-top: .6rem;
 }
 
@@ -4080,7 +4075,7 @@ input[type="button"].btn-block {
 
 .pagination-sm > li > a,
 .pagination-sm > li > span {
-  padding: .3rem .75rem;
+  padding: .275rem .75rem;
   font-size: .85rem;
   line-height: 1.5;
 }
