@@ -69,17 +69,7 @@ Add an `.inline-form` within the navbar with nearly any combination of form cont
 
 ### Containers
 
-Although it's not required, you can wrap a navbar in a `.container` or add one within for basic horizontal control.
-
-{% example html %}
-<nav class="navbar navbar-default">
-  <div class="container">
-    <h3 class="navbar-brand">
-      <a href="#">Navbar</a>
-    </h3>
-  </div>
-</nav>
-{% endexample %}
+Although it's not required, you can wrap a navbar in a `.container` to center it on a page, or add one within to only center the contents of the navbar.
 
 {% example html %}
 <div class="container">
@@ -89,6 +79,16 @@ Although it's not required, you can wrap a navbar in a `.container` or add one w
     </h3>
   </nav>
 </div>
+{% endexample %}
+
+{% example html %}
+<nav class="navbar navbar-default">
+  <div class="container">
+    <h3 class="navbar-brand">
+      <a href="#">Navbar</a>
+    </h3>
+  </div>
+</nav>
 {% endexample %}
 
 ### Alignment
@@ -155,12 +155,14 @@ Replace `.navbar-default` with `.navbar-inverse` for a darker background color a
 </nav>
 {% endexample %}
 
-### Condensed
+### Small navbar
 
-Condensed navbars provide a similar aesthetic to Bootstrap 3's navbar. It cuts the padding down, enables full-height navigation, and tweaks vertical alignment for search forms, buttons, and more. It's also available in both default and inverse schemes.
+Small navbars provide a similar aesthetic to Bootstrap 3's navbar. It cuts the padding down, enables full-height navigation, and tweaks vertical alignment for search forms, buttons, and more. It's also available in both default and inverse schemes.
+
+When moving from a regular navbar to a small one, be sure to update your inputs and buttons to use their small variations as well.
 
 {% example html %}
-<nav class="navbar navbar-default navbar-condensed">
+<nav class="navbar navbar-default navbar-sm">
   <h3 class="navbar-brand pull-left">
     <a href="#">Navbar</a>
   </h3>
@@ -184,7 +186,7 @@ Condensed navbars provide a similar aesthetic to Bootstrap 3's navbar. It cuts t
   </form>
 </nav>
 
-<nav class="navbar navbar-inverse navbar-condensed">
+<nav class="navbar navbar-inverse navbar-sm">
   <h3 class="navbar-brand pull-left">
     <a href="#">Navbar</a>
   </h3>
@@ -241,5 +243,3 @@ For more complex navbar patterns, like those used in Bootstrap v3, use the `.nav
   </div>
 </nav>
 {% endexample %}
-
-
