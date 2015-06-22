@@ -19,7 +19,7 @@
   background-color: $input-bg;
   // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
   background-image: none;
-  border: 1px solid $input-border;
+  border: $border-width solid $input-border;
    // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius);
   @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
@@ -27,11 +27,11 @@
 
   // Make inputs at least the height of their button counterpart (base line-height + padding + border).
   // Only apply the height to textual inputs and some selcts.
-  &:not(textarea),
-  &:not(select[size]),
-  &:not(select[multiple]) {
-    height: $input-height-base;
-  }
+  // &:not(textarea),
+  // &:not(select[size]),
+  // &:not(select[multiple]) {
+  //   height: $input-height-base;
+  // }
 
   // Unstyle the caret on `<select>`s in IE10+.
   &::-ms-expand {
