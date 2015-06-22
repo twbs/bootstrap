@@ -85,7 +85,7 @@
 //
 
 .input-group-addon {
-  padding: $padding-base-vertical $padding-base-horizontal;
+  padding: $padding-base-y $padding-base-x;
   font-size: $font-size-base;
   font-weight: normal;
   line-height: 1;
@@ -97,12 +97,12 @@
 
   // Sizing
   &.form-control-sm {
-    padding: $padding-sm-vertical $padding-sm-horizontal;
+    padding: $padding-sm-y $padding-sm-x;
     font-size: $font-size-sm;
     @include border-radius($border-radius-sm);
   }
   &.form-control-lg {
-    padding: $padding-lg-vertical $padding-lg-horizontal;
+    padding: $padding-lg-y $padding-lg-x;
     font-size: $font-size-lg;
     @include border-radius($border-radius-lg);
   }

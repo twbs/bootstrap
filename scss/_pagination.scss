@@ -17,7 +17,7 @@
     > span {
       position: relative;
       float: left; // Collapse white-space
-      padding: $padding-base-vertical $padding-base-horizontal;
+      padding: $padding-base-y $padding-base-x;
       margin-left: -1px;
       line-height: $line-height-base;
       color: $pagination-color;
@@ -79,9 +79,9 @@
 //
 
 .pagination-lg {
-  @include pagination-size($padding-lg-vertical, $padding-lg-horizontal, $font-size-lg, $line-height-lg, $border-radius-lg);
+  @include pagination-size($padding-lg-y, $padding-lg-x, $font-size-lg, $line-height-lg, $border-radius-lg);
 }
 
 .pagination-sm {
-  @include pagination-size($padding-sm-vertical, $padding-sm-horizontal, $font-size-sm, $line-height-sm, $border-radius-sm);
+  @include pagination-size($padding-sm-y, $padding-sm-x, $font-size-sm, $line-height-sm, $border-radius-sm);
 }

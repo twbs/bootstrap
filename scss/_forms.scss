@@ -12,7 +12,7 @@
   width: 100%;
   // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   // height: $input-height-base;
-  padding: $padding-base-vertical $padding-base-horizontal;
+  padding: $padding-base-y $padding-base-x;
   font-size: $font-size-base;
   line-height: $line-height-base;
   color: $input-color;
@@ -83,7 +83,7 @@
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
 .form-control-label {
-  padding: ($padding-base-vertical + $border-width) $padding-base-horizontal;
+  padding: ($padding-base-y + $border-width) $padding-base-x;
   margin-bottom: 0; // Override the `<label>` default
 }
 
@@ -127,8 +127,8 @@
 .form-control-static {
   min-height: $input-height-base;
   // Size it appropriately next to real form controls
-  padding-top: ($padding-base-vertical + $border-width);
-  padding-bottom: ($padding-base-vertical + $border-width);
+  padding-top: ($padding-base-y + $border-width);
+  padding-bottom: ($padding-base-y + $border-width);
   // Remove default margin from `p`
   margin-bottom: 0;
 
@@ -150,7 +150,7 @@
 
 .form-control-sm {
   height: $input-height-sm;
-  padding: $padding-sm-vertical $padding-sm-horizontal;
+  padding: $padding-sm-y $padding-sm-x;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
   border-radius: $input-border-radius-sm;
@@ -158,7 +158,7 @@
 
 .form-control-lg {
   height: $input-height-lg;
-  padding: $padding-lg-vertical $padding-lg-horizontal;
+  padding: $padding-lg-y $padding-lg-x;
   font-size: $font-size-lg;
   line-height: $line-height-lg;
   border-radius: $input-border-radius-lg;

@@ -96,17 +96,17 @@ $headings-color:             inherit !default;
 //
 // Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-$padding-base-vertical:     .5rem !default;
-$padding-base-horizontal:   .75rem !default;
+$padding-base-y:     .5rem !default;
+$padding-base-x:   .75rem !default;
 
-$padding-lg-vertical:    .75rem !default;
-$padding-lg-horizontal:  1.5rem !default;
+$padding-lg-y:    .75rem !default;
+$padding-lg-x:  1.5rem !default;
 
-$padding-sm-vertical:    .275rem !default;
-$padding-sm-horizontal:  .75rem !default;
+$padding-sm-y:    .275rem !default;
+$padding-sm-x:  .75rem !default;
 
-$padding-xs-vertical:       .2rem !default;
-$padding-xs-horizontal:     .5rem !default;
+$padding-xs-y:       .2rem !default;
+$padding-xs-x:     .5rem !default;
 
 $line-height-lg:         (4/3) !default;
 $line-height-sm:         1.5 !default;
@@ -119,7 +119,7 @@ $component-active-color:    #fff !default;
 $component-active-bg:       $brand-primary !default;
 
 $caret-width-base:          .3em !default;
-$caret-width-large:         $caret-width-base !default;
+$caret-width-lg:         $caret-width-base !default;
 
 
 // Tables
@@ -193,9 +193,9 @@ $input-box-shadow-focus:         rgba(102,175,233,.6) !default;
 
 $input-color-placeholder:        #999 !default;
 
-$input-height-base:              (($font-size-base * $line-height-base) + ($padding-base-vertical * 2) + ($border-width * 2)) !default;
-$input-height-lg:                (($font-size-lg * $line-height-lg) + ($padding-lg-vertical * 2) + ($border-width * 2)) !default;
-$input-height-sm:                (($font-size-sm * $line-height-sm) + ($padding-sm-vertical * 2) + ($border-width * 2)) !default;
+$input-height-base:              (($font-size-base * $line-height-base) + ($padding-base-y * 2) + ($border-width * 2)) !default;
+$input-height-lg:                (($font-size-lg * $line-height-lg) + ($padding-lg-y * 2) + ($border-width * 2)) !default;
+$input-height-sm:                (($font-size-sm * $line-height-sm) + ($padding-sm-y * 2) + ($border-width * 2)) !default;
 
 $form-group-margin-bottom:       15px;
 
