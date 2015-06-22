@@ -17,7 +17,7 @@
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
   white-space: nowrap;
-  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+  // .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
   .user-select(none);
 
   &,
@@ -63,28 +63,28 @@
 // Alternate buttons
 // --------------------------------------------------
 
-.btn-default {
-  .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
-}
-.btn-primary {
-  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
-}
-// Success appears as green
-.btn-success {
-  .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
-}
-// Info appears as blue-green
-.btn-info {
-  .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
-}
-// Warning appears as orange
-.btn-warning {
-  .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
-}
-// Danger and error appear as red
-.btn-danger {
-  .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
-}
+// .btn-default {
+//   .button-variant(@btn-default-color; @btn-default-bg; @btn-default-border);
+// }
+// .btn-primary {
+//   .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+// }
+// // Success appears as green
+// .btn-success {
+//   .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+// }
+// // Info appears as blue-green
+// .btn-info {
+//   .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+// }
+// // Warning appears as orange
+// .btn-warning {
+//   .button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-border);
+// }
+// // Danger and error appear as red
+// .btn-danger {
+//   .button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-border);
+// }
 
 
 // Link buttons
@@ -130,17 +130,17 @@
 // Button Sizes
 // --------------------------------------------------
 
-.btn-lg {
-  // line-height: ensure even-numbered height of button next to large input
-  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
-}
-.btn-sm {
-  // line-height: ensure proper height of button next to small input
-  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
-}
-.btn-xs {
-  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small);
-}
+// .btn-lg {
+//   // line-height: ensure even-numbered height of button next to large input
+//   .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+// }
+// .btn-sm {
+//   // line-height: ensure proper height of button next to small input
+//   .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+// }
+// .btn-xs {
+//   .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+// }
 
 
 // Block button

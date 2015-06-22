@@ -20,6 +20,44 @@
 @brand-warning-hover: #DF8701;
 //@brand-danger-hover:
 
+@brand-blue-minus-20: #111824;
+@brand-blue-minus-10: #192439;
+@brand-blue: #223049;
+@brand-blue-plus-10: #283957;
+@brand-blue-plus-20: #2f4366;
+
+@brand-grey-minus-20: #384347;
+@brand-grey-minus-10: #4a5860;
+@brand-grey: #5d7079;
+@brand-grey-plus-10: #6f8691;
+@brand-grey-plus-20: #829ca9;
+
+@brand-smoke-minus-20: #7e7f81;
+@brand-smoke-minus-10: #a8aaac;
+@brand-smoke: #d3d5d8;
+@brand-smoke-plus-10: #e2e6e8;
+@brand-smoke-plus-20: #f2f5f7;
+
+@brand-light-blue-minus-20: #008ec0;
+@brand-light-blue-minus-10: #00a4df;
+@brand-light-blue: #00b9ff;
+
+@brand-red-minus-20: #b62a18;
+@brand-red-minus-10: #df321d;
+@brand-red: #f53720;
+
+@brand-green-minus-20: #429c30;
+@brand-green-minus-10: #4dba38;
+@brand-green: #59d941;
+
+@brand-orange-minus-20: #c07500;
+@brand-orange-minus-10: #df8700;
+@brand-orange: #ff9700;
+
+@brand-yellow-minus-20: #c0ae10;
+@brand-yellow-minus-10: #dfc912;
+@brand-yellow: #ffe714;
+
 h1, h2, .btn {
     text-transform: uppercase;
 }
@@ -43,7 +81,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 /* Licensing for Avenir Next
 This CSS resource incorporates links to font software which is the valuable copyrighted
 property of Monotype Imaging and/or its suppliers. You may not attempt to copy, install,
-								 redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
+                                 redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
 Imaging with any questions regarding Web ../fonts:  http://webfonts.assets.com
 */
 
@@ -96,30 +134,30 @@ Imaging with any questions regarding Web ../fonts:  http://webfonts.assets.com
 
 /*
 @font-face {
-	font-family: 'Sharp Sans Frontieres';
-	src: url('../../assets/SharpSansFrontieres-Light.eot');
-	src: local('☺'),
-	url('../fonts/SharpSansFrontieres-Light.woff') format('woff'),
-	url('../fonts/SharpSansFrontieres-Light.svg#font') format('svg');
-	font-weight: 300;
+    font-family: 'Sharp Sans Frontieres';
+    src: url('../../assets/SharpSansFrontieres-Light.eot');
+    src: local('☺'),
+    url('../fonts/SharpSansFrontieres-Light.woff') format('woff'),
+    url('../fonts/SharpSansFrontieres-Light.svg#font') format('svg');
+    font-weight: 300;
 }
 
 @font-face {
-	font-family: 'Sharp Sans Frontieres';
-	src: url('../../assets/SharpSansFrontieres-Medium.eot');
-	src: local('☺'),
-	url('../fonts/SharpSansFrontieres-Medium.woff') format('woff'),
-	url('../fonts/SharpSansFrontieres-Medium.svg#font') format('svg');
-	font-weight: 400;
+    font-family: 'Sharp Sans Frontieres';
+    src: url('../../assets/SharpSansFrontieres-Medium.eot');
+    src: local('☺'),
+    url('../fonts/SharpSansFrontieres-Medium.woff') format('woff'),
+    url('../fonts/SharpSansFrontieres-Medium.svg#font') format('svg');
+    font-weight: 400;
 }
 
 @font-face {
-	font-family: 'Sharp Sans Frontieres';
-	src: url('../../assets/SharpSansFrontieres-Bold.eot');
-	src: local('☺'),
-		url('../fonts/SharpSansFrontieres-Bold.woff') format('woff'),
-		url('../fonts/SharpSansFrontieres-Bold.svg#font') format('svg');
-	font-weight: 600;
+    font-family: 'Sharp Sans Frontieres';
+    src: url('../../assets/SharpSansFrontieres-Bold.eot');
+    src: local('☺'),
+        url('../fonts/SharpSansFrontieres-Bold.woff') format('woff'),
+        url('../fonts/SharpSansFrontieres-Bold.svg#font') format('svg');
+    font-weight: 600;
 }
 */
 
@@ -231,6 +269,27 @@ blockquote footer {
     }
 }
 
+.btn {
+    font-family: @buttons-font-family;
+    font-size: @font-size-medium;
+    color: #FFF;
+    background-color: @brand-light-blue-minus-10;
+    border-radius: @border-radius-base;
+    padding: 13px 24px 11px;
+    &:hover,
+    &:focus {
+        color: #FFF;
+        background-color: @brand-light-blue-minus-20;
+        border-color: @brand-light-blue-minus-20;
+    }
+    &:active:hover,
+    &.active:hover {
+        color: #FFF;
+        background-color: @brand-light-blue;
+        border-color: @brand-light-blue;
+    }
+}
+
 .well,
 .form-control,
 .btn:active,
@@ -246,86 +305,142 @@ blockquote footer {
 }
 
 .btn-default {
+    color: @brand-light-blue-minus-10;
+    background-color: #FFF;
+    border-color: @brand-light-blue-minus-10;
     &:hover,
     &:focus {
-        background-color: @brand-default-hover;
-        border-color: @gray-lighter;
+        color: #FFF;
+        background-color: @brand-light-blue-minus-10;
+        border-color: @brand-light-blue-minus-10;
     }
     &:active:hover {
-        background-color: @gray-lighter;
-        border-color: @gray-lighter;
+        color: #FFF;
+        background-color: @brand-light-blue;
+        border-color: @brand-light-blue;
     }
 }
 .btn-primary {
+    color: #FFF;
+    background-color: @brand-light-blue-minus-10;
     &:hover,
     &:focus {
-        background-color: @brand-primary-hover;
-        border-color: @brand-primary-hover;
+        background-color: @brand-light-blue-minus-20;
+        border-color: @brand-light-blue-minus-20;
     }
     &:active:hover,
     &.active:hover {
-        background-color: darken(@brand-primary-hover, 10%);
-        border-color: darken(@brand-primary-hover, 10%);
+        background-color: @brand-light-blue;
+        border-color: @brand-light-blue;
     }
 }
 .btn-success {
+    color: #FFF;
+    background-color: @brand-green-minus-10;
     &:hover,
     &:focus {
-        background-color: @brand-success;
-        border-color: @brand-success;
-        color: #FFF;
+        background-color: @brand-green-minus-20;
+        border-color: @brand-green-minus-20;
     }
-    &:active,
-    &.active,
     &:active:hover,
     &.active:hover {
-        background-color: @brand-primary-hover;
-        border-color: @brand-primary-hover;
-        color: #FFF;
+        background-color: @brand-green;
+        border-color: @brand-green;
     }
 }
 .btn-info {
+    color: @brand-grey-minus-10;
+    background-color: #FFF;
+    border-color: @brand-grey-minus-10;
     &:hover,
     &:focus {
-        background-color: @brand-info-hover;
-        border-color: @brand-info-hover;
+        color: #FFF;
+        background-color: @brand-grey-minus-10;
+        border-color: @brand-grey-minus-10;
     }
-    &:active:hover,
-    &.active:hover {
-        background-color: darken(@brand-info-hover, 10%);
-        border-color: darken(@brand-info-hover, 10%);
+    &:active:hover {
+        color: #FFF;
+        background-color: @brand-grey;
+        border-color: @brand-grey;
     }
 }
 .btn-warning {
+    color: @brand-orange-minus-10;
+    background-color: #FFF;
+    border-color: @brand-orange-minus-10;
     &:hover,
     &:focus {
-        background-color: @brand-info;
-        border-color: @brand-info;
         color: #FFF;
+        background-color: @brand-orange-minus-10;
+        border-color: @brand-orange-minus-10;
     }
-    &:active,
-    &.active,
-    &:active:hover,
-    &.active:hover {
-        background-color: @brand-info-hover;
-        border-color: @brand-info-hover;
+    &:active:hover {
         color: #FFF;
+        background-color: @brand-orange;
+        border-color: @brand-orange;
+    }
+}
+.btn-danger {
+    background-color: #FFF;
+    border-color: @brand-red-minus-10;
+    color: @brand-red-minus-10;
+    &:hover,
+    &:focus {
+        color: #FFF;
+        background-color: @brand-red-minus-10;
+        border-color: @brand-red-minus-10;
+    }
+    &:active:hover {
+        color: #FFF;
+        background-color: @brand-red;
+        border-color: @brand-red;
     }
 }
 .btn-link {
+    font-weight: @btn-font-weight;
+    background: none;
+    color: @brand-light-blue-minus-10;
     &:hover,
     &:focus {
-        border: 1px solid @brand-info;
-        border-radius: @border-radius-base;
-        color: @brand-info;
+        background: none;
+        border: 1px solid @brand-light-blue-minus-10;
+        color: @brand-light-blue-minus-10;
         text-decoration: none;
     }
     &:active,
     &.active {
         color: #FFF;
-        background-color: @brand-info;
-        border-color: @brand-info;
+        background-color: @brand-light-blue;
+        border-color: @brand-light-blue;
     }
+}
+
+.btn-sm,
+.btn-xs {
+    font-size: @font-size-base;
+    border-radius: @border-radius-small;
+}
+
+.btn-lg {
+    font-size: @font-size-large;
+}
+
+// Padding for TW styled buttons
+
+.btn {
+    padding: 13px 24px 11px !important;
+}
+
+.btn-xs {
+    padding: 5px 15px 3px !important;
+}
+
+.btn-sm {
+    padding: 8px 18px 6px !important;
+}
+
+.btn-lg {
+    padding: 15px 27px 12px !important;
 }
 
 .btn,

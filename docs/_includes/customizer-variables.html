@@ -86,6 +86,10 @@
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
+    <label for="input-@font-size-medium">@font-size-medium</label>
+    <input id="input-@font-size-medium" type="text" value="16px" data-var="@font-size-medium" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@font-size-small">@font-size-small</label>
     <input id="input-@font-size-small" type="text" value="ceil((@font-size-base * 0.85))" data-var="@font-size-small" class="form-control"/>
   </div>
@@ -93,11 +97,11 @@
     <label for="input-@font-size-h1">@font-size-h1</label>
     <input id="input-@font-size-h1" type="text" value="floor((@font-size-base * 2.6))" data-var="@font-size-h1" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@font-size-h5">@font-size-h5</label>
     <input id="input-@font-size-h5" type="text" value="18px" data-var="@font-size-h5" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@line-height-base">@line-height-base</label>
     <input id="input-@line-height-base" type="text" aria-describedby="help-block-@line-height-base" value="1.428571429" data-var="@line-height-base" class="form-control"/>
@@ -108,12 +112,12 @@
     <input id="input-@line-height-computed" type="text" aria-describedby="help-block-@line-height-computed" value="floor((@font-size-base * @line-height-base))" data-var="@line-height-computed" class="form-control"/>
     <p id="help-block-@line-height-computed" class="help-block">Computed &quot;line-height&quot; (<code>font-size</code> * <code>line-height</code>) for use with <code>margin</code>, <code>padding</code>, etc.</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@headings-font-family">@headings-font-family</label>
     <input id="input-@headings-font-family" type="text" aria-describedby="help-block-@headings-font-family" value="&quot;Avenir&quot;, Helvetica, Arial, sans-serif" data-var="@headings-font-family" class="form-control"/>
     <p id="help-block-@headings-font-family" class="help-block">By default, this inherits from the <code>&lt;body&gt;</code>.</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@headings-font-weight">@headings-font-weight</label>
     <input id="input-@headings-font-weight" type="text" value="500" data-var="@headings-font-weight" class="form-control"/>
@@ -122,9 +126,14 @@
     <label for="input-@headings-line-height">@headings-line-height</label>
     <input id="input-@headings-line-height" type="text" value="1.2" data-var="@headings-line-height" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@headings-color">@headings-color</label>
     <input id="input-@headings-color" type="text" value="@brand-primary" data-var="@headings-color" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@buttons-font-family">@buttons-font-family</label>
+    <input id="input-@buttons-font-family" type="text" value="&quot;Avenir W02&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif" data-var="@buttons-font-family" class="form-control"/>
   </div>
 </div>
 <h2 id="iconography">Iconography</h2>
