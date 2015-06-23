@@ -471,7 +471,7 @@
     var that = this
     clearTimeout(this.timeout)
     this.hide(function () {
-      that.$element.off('.' + that.type).removeData('bs.' + that.type)
+      that.$element.off('mouseenter focus blur mouseleave', '.' + that.type).removeData('bs.' + that.type)
       if (that.$tip) {
         that.$tip.detach()
       }
