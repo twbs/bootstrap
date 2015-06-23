@@ -81,7 +81,7 @@ $font-size-h4:               1.5rem !default;
 $font-size-h5:               1.25rem !default;
 $font-size-h6:               1rem !default;
 
-$line-height-base:           1.5 !default;
+$line-height:           1.5 !default;
 
 // TODO: nuke this
 $line-height-computed:       1 !default;
@@ -111,15 +111,15 @@ $padding-xs-x:     .5rem !default;
 $line-height-lg:         (4/3) !default;
 $line-height-sm:         1.5 !default;
 
-$border-radius-base:        .25rem !default;
+$border-radius:        .25rem !default;
 $border-radius-lg:       .3rem !default;
 $border-radius-sm:       .2rem !default;
 
 $component-active-color:    #fff !default;
 $component-active-bg:       $brand-primary !default;
 
-$caret-width-base:          .3em !default;
-$caret-width-lg:         $caret-width-base !default;
+$caret-width:          .3em !default;
+$caret-width-lg:         $caret-width !default;
 
 
 // Tables
@@ -170,7 +170,7 @@ $btn-danger-border:              darken($btn-danger-bg, 5%) !default;
 $btn-link-disabled-color:        $gray-light !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius-base:         $border-radius-base;
+$btn-border-radius:         $border-radius;
 $btn-border-radius-lg:           $border-radius-lg;
 $btn-border-radius-sm:           $border-radius-sm;
 
@@ -183,8 +183,7 @@ $input-bg-disabled:              $gray-lighter !default;
 $input-color:                    $gray !default;
 $input-border:                   #ccc !default;
 
-// TODO: Rename `$input-border-radius` to `$input-border-radius-base` in v4
-$input-border-radius:            $border-radius-base !default;
+$input-border-radius:            $border-radius !default;
 $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
@@ -193,7 +192,7 @@ $input-box-shadow-focus:         rgba(102,175,233,.6) !default;
 
 $input-color-placeholder:        #999 !default;
 
-$input-height-base:              (($font-size-base * $line-height-base) + ($padding-base-y * 2) + ($border-width * 2)) !default;
+$input-height:              (($font-size-base * $line-height-base) + ($padding-base-y * 2) + ($border-width * 2)) !default;
 $input-height-lg:                (($font-size-lg * $line-height-lg) + ($padding-lg-y * 2) + ($border-width * 2)) !default;
 $input-height-sm:                (($font-size-sm * $line-height-sm) + ($padding-sm-y * 2) + ($border-width * 2)) !default;
 
@@ -288,7 +287,7 @@ $container-max-widths: (
 // Basics of a navbar
 // $navbar-height:                    50px !default;
 $navbar-margin-bottom:             $line-height-computed !default;
-$navbar-border-radius:             $border-radius-base !default;
+$navbar-border-radius:             $border-radius !default;
 $navbar-padding-horizontal:        $spacer !default;
 $navbar-padding-vertical:          ($spacer / 2) !default;
 $navbar-collapse-max-height:       340px !default;
@@ -355,7 +354,7 @@ $nav-tabs-active-link-hover-border-color:   #ddd !default;
 $nav-tabs-justified-link-border-color:            #ddd !default;
 $nav-tabs-justified-active-link-border-color:     $body-bg !default;
 
-$nav-pills-border-radius:                   $border-radius-base !default;
+$nav-pills-border-radius:                   $border-radius !default;
 $nav-pills-active-link-hover-bg:            $component-active-bg !default;
 $nav-pills-active-link-hover-color:         $component-active-color !default;
 
@@ -491,7 +490,7 @@ $modal-sm:                    300px !default;
 // Define alert colors, border radius, and padding.
 
 $alert-padding:               15px !default;
-$alert-border-radius:         $border-radius-base !default;
+$alert-border-radius:         $border-radius !default;
 $alert-link-font-weight:      bold !default;
 
 $alert-success-bg:            $state-success-bg !default;
@@ -515,7 +514,7 @@ $alert-danger-border:         $state-danger-border !default;
 
 $progress-bg:                 #f5f5f5 !default;
 $progress-bar-color:          #fff !default;
-$progress-border-radius:      $border-radius-base !default;
+$progress-border-radius:      $border-radius !default;
 
 $progress-bar-bg:             $brand-primary !default;
 $progress-bar-success-bg:     $brand-success !default;
@@ -528,7 +527,7 @@ $progress-bar-info-bg:        $brand-info !default;
 
 $list-group-bg:                 #fff !default;
 $list-group-border:             #ddd !default;
-$list-group-border-radius:      $border-radius-base !default;
+$list-group-border-radius:      $border-radius !default;
 
 $list-group-hover-bg:           #f5f5f5 !default;
 $list-group-active-color:       $component-active-color !default;
@@ -550,7 +549,7 @@ $list-group-link-heading-color: #333 !default;
 $thumbnail-padding:           .25rem !default;
 $thumbnail-bg:                $body-bg !default;
 $thumbnail-border:            #ddd !default;
-$thumbnail-border-radius:     $border-radius-base !default;
+$thumbnail-border-radius:     $border-radius !default;
 
 
 // Badges

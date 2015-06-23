@@ -33,7 +33,7 @@
 }
 .progress[value]::-webkit-progress-bar {
   background-color: #eee;
-  @include border-radius($border-radius-base);
+  @include border-radius($border-radius);
   @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
 }
 .progress[value]::-webkit-progress-value::before {
@@ -41,12 +41,12 @@
 }
 .progress[value]::-webkit-progress-value {
   background-color: #0074d9;
-  border-top-left-radius: $border-radius-base;
-  border-bottom-left-radius: $border-radius-base;
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
 }
 .progress[value="100"]::-webkit-progress-value {
-  border-top-right-radius: $border-radius-base;
-  border-bottom-right-radius: $border-radius-base;
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
 }
 
 // Firefox styles must be entirely separate or it busts Webkit styles.
@@ -56,13 +56,13 @@
 // $-moz-document url-prefix() {
 //   .progress[value] {
 //     background-color: #eee;
-//     .border-radius($border-radius-base);
+//     .border-radius($border-radius);
 //     .box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
 //   }
 //   .progress[value]::-moz-progress-bar {
 //     background-color: #0074d9;
-//     border-top-left-radius: $border-radius-base;
-//     border-bottom-left-radius: $border-radius-base;
+//     border-top-left-radius: $border-radius;
+//     border-bottom-left-radius: $border-radius;
 //   }
 //   .progress[value="0"]::-moz-progress-bar {
 //     color: $gray-light;
@@ -71,8 +71,8 @@
 //     background-image: none;
 //   }
 //   .progress[value="100"]::-moz-progress-bar {
-//     border-top-right-radius: $border-radius-base;
-//     border-bottom-right-radius: $border-radius-base;
+//     border-top-right-radius: $border-radius;
+//     border-bottom-right-radius: $border-radius;
 //   }
 // }
 
@@ -80,7 +80,7 @@
 @media screen and (min-width:0\0) {
   .progress {
     background-color: #eee;
-    @include border-radius($border-radius-base);
+    @include border-radius($border-radius);
     @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
   }
   .progress-bar {
@@ -88,8 +88,8 @@
     height: $spacer-y;
     text-indent: -999rem; // Simulate hiding of value as in native `<progress>`
     background-color: #0074d9;
-    border-top-left-radius: $border-radius-base;
-    border-bottom-left-radius: $border-radius-base;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
   }
   .progress[width^="0"] {
     min-width: 2rem;
@@ -98,8 +98,8 @@
     background-image: none;
   }
   .progress[width="100%"] {
-    border-top-right-radius: $border-radius-base;
-    border-bottom-right-radius: $border-radius-base;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
   }
 }
 

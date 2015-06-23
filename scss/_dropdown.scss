@@ -18,9 +18,9 @@
     margin-left: .25rem;
     vertical-align: middle;
     content: "";
-    border-top: $caret-width-base solid;
-    border-right: $caret-width-base solid transparent;
-    border-left: $caret-width-base solid transparent;
+    border-top: $caret-width solid;
+    border-right: $caret-width solid transparent;
+    border-left: $caret-width solid transparent;
   }
 
   // Prevent the focus on the dropdown toggle when closing dropdowns
@@ -46,7 +46,7 @@
   background-color: $dropdown-bg;
   background-clip: padding-box;
   border: 1px solid $dropdown-border;
-  @include border-radius($border-radius-base);
+  @include border-radius($border-radius);
   @include box-shadow(0 6px 12px rgba(0,0,0,.175));
 
   // Dividers (basically an hr) within the dropdown
@@ -173,7 +173,7 @@
   .caret {
     content: "";
     border-top: 0;
-    border-bottom: $caret-width-base solid;
+    border-bottom: $caret-width solid;
   }
 
   // Different positioning for bottom up menu

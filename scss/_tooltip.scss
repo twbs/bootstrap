@@ -77,7 +77,7 @@
   color: $tooltip-color;
   text-align: center;
   background-color: $tooltip-bg;
-  @include border-radius($border-radius-base);
+  @include border-radius($border-radius);
 }
 
 // Arrows

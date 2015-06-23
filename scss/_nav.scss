@@ -63,7 +63,7 @@
   .nav-link {
     display: block;
     border: 1px solid transparent;
-    @include border-radius($border-radius-base $border-radius-base 0 0);
+    @include border-radius($border-radius $border-radius 0 0);
 
     @include hover-focus {
       border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;

@@ -8,7 +8,7 @@
   margin-bottom: $spacer-y;
   list-style: none;
   background-color: $breadcrumb-bg;
-  @include border-radius($border-radius-base);
+  @include border-radius($border-radius);
 
   > li {
     display: inline-block;
