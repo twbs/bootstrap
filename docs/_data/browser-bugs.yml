@@ -20,6 +20,16 @@
 
 -
   browser: >
+    Internet Explorer 11
+  summary: >
+    CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
+  upstream_bug: >
+    IE#1463734
+  origin: >
+    Bootstrap#16671
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
