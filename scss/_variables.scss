@@ -96,29 +96,29 @@ $headings-color:             inherit !default;
 //
 // Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-$padding-base-y:     .5rem !default;
-$padding-base-x:   .75rem !default;
+$padding-y:              .5rem !default;
+$padding-x:              .75rem !default;
 
-$padding-lg-y:    .75rem !default;
-$padding-lg-x:  1.5rem !default;
+$padding-lg-y:           .75rem !default;
+$padding-lg-x:           1.5rem !default;
 
-$padding-sm-y:    .275rem !default;
-$padding-sm-x:  .75rem !default;
+$padding-sm-y:           .275rem !default;
+$padding-sm-x:           .75rem !default;
 
-$padding-xs-y:       .2rem !default;
-$padding-xs-x:     .5rem !default;
+$padding-xs-y:           .2rem !default;
+$padding-xs-x:           .5rem !default;
 
 $line-height-lg:         (4/3) !default;
 $line-height-sm:         1.5 !default;
 
-$border-radius:        .25rem !default;
+$border-radius:          .25rem !default;
 $border-radius-lg:       .3rem !default;
 $border-radius-sm:       .2rem !default;
 
-$component-active-color:    #fff !default;
-$component-active-bg:       $brand-primary !default;
+$component-active-color: #fff !default;
+$component-active-bg:    $brand-primary !default;
 
-$caret-width:          .3em !default;
+$caret-width:            .3em !default;
 $caret-width-lg:         $caret-width !default;
 
 
@@ -170,7 +170,7 @@ $btn-danger-border:              darken($btn-danger-bg, 5%) !default;
 $btn-link-disabled-color:        $gray-light !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:         $border-radius;
+$btn-border-radius:              $border-radius;
 $btn-border-radius-lg:           $border-radius-lg;
 $btn-border-radius-sm:           $border-radius-sm;
 
@@ -192,7 +192,7 @@ $input-box-shadow-focus:         rgba(102,175,233,.6) !default;
 
 $input-color-placeholder:        #999 !default;
 
-$input-height:              (($font-size-base * $line-height-base) + ($padding-base-y * 2) + ($border-width * 2)) !default;
+$input-height:                   (($font-size-base * $line-height-base) + ($padding-y * 2) + ($border-width * 2)) !default;
 $input-height-lg:                (($font-size-lg * $line-height-lg) + ($padding-lg-y * 2) + ($border-width * 2)) !default;
 $input-height-sm:                (($font-size-sm * $line-height-sm) + ($padding-sm-y * 2) + ($border-width * 2)) !default;
 
