@@ -202,84 +202,6 @@
       background-color: $navbar-default-brand-hover-bg;
     }
   }
-
-  // .navbar-text {
-  //   color: $navbar-default-color;
-  // }
-
-  // .navbar-nav {
-  //   > li > a {
-  //     color: $navbar-default-link-color;
-
-  //     @include hover-focus {
-  //       color: $navbar-default-link-hover-color;
-  //       background-color: $navbar-default-link-hover-bg;
-  //     }
-  //   }
-  //   > .active > a {
-  //     @include plain-hover-focus {
-  //       color: $navbar-default-link-active-color;
-  //       background-color: $navbar-default-link-active-bg;
-  //     }
-  //   }
-  //   > .disabled > a {
-  //     @include plain-hover-focus {
-  //       color: $navbar-default-link-disabled-color;
-  //       background-color: $navbar-default-link-disabled-bg;
-  //     }
-  //   }
-  // }
-
-  // .navbar-toggle {
-  //   border-color: $navbar-default-toggle-border-color;
-  //   @include hover-focus {
-  //     background-color: $navbar-default-toggle-hover-bg;
-  //   }
-  //   .icon-bar {
-  //     background-color: $navbar-default-toggle-icon-bar-bg;
-  //   }
-  // }
-
-  // .navbar-collapse,
-  // .navbar-form {
-  //   border-color: $navbar-default-border;
-  // }
-
-  // // Dropdown menu items
-  // .navbar-nav {
-  //   // Remove background color from open dropdown
-  //   > .open > a {
-  //     @include plain-hover-focus {
-  //       color: $navbar-default-link-active-color;
-  //       background-color: $navbar-default-link-active-bg;
-  //     }
-  //   }
-  // }
-
-
-  // // Links in navbars
-  // //
-  // // Add a class to ensure links outside the navbar nav are colored correctly.
-
-  // .navbar-link {
-  //   color: $navbar-default-link-color;
-  //   @include hover {
-  //     color: $navbar-default-link-hover-color;
-  //   }
-  // }
-
-  // .btn-link {
-  //   color: $navbar-default-link-color;
-  //   @include hover-focus {
-  //     color: $navbar-default-link-hover-color;
-  //   }
-  //   &:disabled,
-  //   fieldset[disabled] & {
-  //     @include hover-focus {
-  //       color: $navbar-default-link-disabled-color;
-  //     }
-  //   }
-  // }
 }
 
 // Inverse navbar
@@ -309,7 +231,6 @@
     background-color: $navbar-inverse-link-active-bg;
   }
 
-
   .navbar-brand {
     color: $navbar-inverse-brand-color;
     @include hover-focus {
@@ -318,67 +239,65 @@
     }
   }
 
-  .navbar-text {
-    color: $navbar-inverse-color;
-  }
-
   .navbar-nav {
-    > li > a {
+    .navbar-link {
       color: $navbar-inverse-link-color;
 
       @include hover-focus {
         color: $navbar-inverse-link-hover-color;
         background-color: $navbar-inverse-link-hover-bg;
       }
-    }
-    > .active > a {
-      @include plain-hover-focus {
-        color: $navbar-inverse-link-active-color;
-        background-color: $navbar-inverse-link-active-bg;
-      }
-    }
-    > .disabled > a {
-      @include plain-hover-focus {
-        color: $navbar-inverse-link-disabled-color;
-        background-color: $navbar-inverse-link-disabled-bg;
-      }
-    }
-  }
 
-  .navbar-collapse,
-  .navbar-form {
-    border-color: darken($navbar-inverse-bg, 7%);
-  }
+      &.active > a {
+        @include plain-hover-focus {
+          color: $navbar-inverse-link-active-color;
+          background-color: $navbar-inverse-link-active-bg;
+        }
+      }
 
-  // Dropdowns
-  .navbar-nav {
-    > .open > a {
-      @include plain-hover-focus {
-        color: $navbar-inverse-link-active-color;
-        background-color: $navbar-inverse-link-active-bg;
+      &.disabled > a {
+        @include plain-hover-focus {
+          color: $navbar-inverse-link-disabled-color;
+          background-color: $navbar-inverse-link-disabled-bg;
+        }
       }
     }
   }
 
-  .navbar-link {
-    color: $navbar-inverse-link-color;
-    @include hover {
-      color: $navbar-inverse-link-hover-color;
-    }
-  }
+  // .navbar-collapse,
+  // .navbar-form {
+  //   border-color: darken($navbar-inverse-bg, 7%);
+  // }
+  //
+  // // Dropdowns
+  // .navbar-nav {
+  //   > .open > a {
+  //     @include plain-hover-focus {
+  //       color: $navbar-inverse-link-active-color;
+  //       background-color: $navbar-inverse-link-active-bg;
+  //     }
+  //   }
+  // }
 
-  .btn-link {
-    color: $navbar-inverse-link-color;
-
-    @include hover-focus {
-      color: $navbar-inverse-link-hover-color;
-    }
-
-    &:disabled,
-    fieldset[disabled] & {
-      @include hover-focus {
-        color: $navbar-inverse-link-disabled-color;
-      }
-    }
-  }
+  // .navbar-link {
+  //   color: $navbar-inverse-link-color;
+  //   @include hover {
+  //     color: $navbar-inverse-link-hover-color;
+  //   }
+  // }
+  //
+  // .btn-link {
+  //   color: $navbar-inverse-link-color;
+  //
+  //   @include hover-focus {
+  //     color: $navbar-inverse-link-hover-color;
+  //   }
+  //
+  //   &:disabled,
+  //   fieldset[disabled] & {
+  //     @include hover-focus {
+  //       color: $navbar-inverse-link-disabled-color;
+  //     }
+  //   }
+  // }
 }

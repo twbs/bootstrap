@@ -161,56 +161,65 @@ Small navbars provide a similar aesthetic to Bootstrap 3's navbar. It cuts the p
 
 When moving from a regular navbar to a small one, be sure to update your inputs and buttons to use their small variations as well.
 
-{% example html %}
+<div class="bd-example">
+  <nav class="navbar navbar-default navbar-sm">
+    <h3 class="navbar-brand pull-left">
+      <a href="#">Navbar</a>
+    </h3>
+    <ul class="nav navbar-nav pull-left">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline pull-right">
+      <input class="form-control form-control-sm" type="text" placeholder="Search">
+      <button class="btn btn-sm btn-primary" type="submit">Search</button>
+    </form>
+  </nav>
+
+  <nav class="navbar navbar-inverse navbar-sm">
+    <h3 class="navbar-brand pull-left">
+      <a href="#">Navbar</a>
+    </h3>
+    <ul class="nav navbar-nav pull-left">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline pull-right">
+      <input class="form-control form-control-sm" type="text" placeholder="Search">
+      <button class="btn btn-sm btn-primary" type="submit">Search</button>
+    </form>
+  </nav>
+</div>
+
+{% highlight html %}
 <nav class="navbar navbar-default navbar-sm">
-  <h3 class="navbar-brand pull-left">
-    <a href="#">Navbar</a>
-  </h3>
-  <ul class="nav navbar-nav pull-left">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
-    </li>
-  </ul>
-  <form class="form-inline pull-right">
-    <input class="form-control form-control-sm" type="text" placeholder="Search">
-    <button class="btn btn-sm btn-primary" type="submit">Search</button>
-  </form>
+  <!-- Navbar contents -->
 </nav>
 
 <nav class="navbar navbar-inverse navbar-sm">
-  <h3 class="navbar-brand pull-left">
-    <a href="#">Navbar</a>
-  </h3>
-  <ul class="nav navbar-nav pull-left">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
-    </li>
-  </ul>
-  <form class="form-inline pull-right">
-    <input class="form-control form-control-sm" type="text" placeholder="Search">
-    <button class="btn btn-sm btn-primary" type="submit">Search</button>
-  </form>
+  <!-- Navbar contents -->
 </nav>
-{% endexample %}
-
+{% endhighlight %}
 
 ### Collapsible content
 
