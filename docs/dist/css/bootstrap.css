@@ -2150,7 +2150,7 @@ fieldset[disabled] .checkbox label {
 }
 
 .has-feedback label ~ .form-control-feedback {
-  top: 6;
+  top: 0;
 }
 
 .has-feedback label.sr-only ~ .form-control-feedback {
@@ -3516,7 +3516,7 @@ input[type="button"].btn-block {
 .navbar {
   position: relative;
   padding: 1rem;
-  margin-bottom: 1;
+  margin-bottom: 1rem;
 }
 .navbar:before,
   .navbar:after {
@@ -3720,57 +3720,25 @@ input[type="button"].btn-block {
   color: #fff;
   background-color: transparent;
 }
-.navbar-inverse .navbar-text {
-  color: #a2a8ae;
-}
-.navbar-inverse .navbar-nav > li > a {
+.navbar-inverse .navbar-nav .navbar-link {
   color: #aab0b5;
 }
-.navbar-inverse .navbar-nav > li > a:focus,
-    .navbar-inverse .navbar-nav > li > a:hover {
+.navbar-inverse .navbar-nav .navbar-link:focus,
+    .navbar-inverse .navbar-nav .navbar-link:hover {
   color: #fff;
   background-color: transparent;
 }
-.navbar-inverse .navbar-nav > .active > a,
-  .navbar-inverse .navbar-nav > .active > a:focus,
-  .navbar-inverse .navbar-nav > .active > a:hover {
+.navbar-inverse .navbar-nav .navbar-link.active > a,
+    .navbar-inverse .navbar-nav .navbar-link.active > a:focus,
+    .navbar-inverse .navbar-nav .navbar-link.active > a:hover {
   color: #fff;
   background-color: #1f2021;
 }
-.navbar-inverse .navbar-nav > .disabled > a,
-  .navbar-inverse .navbar-nav > .disabled > a:focus,
-  .navbar-inverse .navbar-nav > .disabled > a:hover {
+.navbar-inverse .navbar-nav .navbar-link.disabled > a,
+    .navbar-inverse .navbar-nav .navbar-link.disabled > a:focus,
+    .navbar-inverse .navbar-nav .navbar-link.disabled > a:hover {
   color: #444;
   background-color: transparent;
-}
-.navbar-inverse .navbar-collapse,
-  .navbar-inverse .navbar-form {
-  border-color: #262829;
-}
-.navbar-inverse .navbar-nav > .open > a,
-  .navbar-inverse .navbar-nav > .open > a:focus,
-  .navbar-inverse .navbar-nav > .open > a:hover {
-  color: #fff;
-  background-color: #1f2021;
-}
-.navbar-inverse .navbar-link {
-  color: #aab0b5;
-}
-.navbar-inverse .navbar-link:hover {
-  color: #fff;
-}
-.navbar-inverse .btn-link {
-  color: #aab0b5;
-}
-.navbar-inverse .btn-link:focus,
-    .navbar-inverse .btn-link:hover {
-  color: #fff;
-}
-.navbar-inverse .btn-link:disabled:focus,
-    .navbar-inverse .btn-link:disabled:hover,
-    fieldset[disabled] .navbar-inverse .btn-link:focus,
-    fieldset[disabled] .navbar-inverse .btn-link:hover {
-  color: #444;
 }
 
 .card {
