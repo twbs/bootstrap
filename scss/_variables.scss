@@ -189,7 +189,7 @@ $input-box-shadow-focus:         rgba(102,175,233,.6) !default;
 
 $input-color-placeholder:        #999 !default;
 
-$input-height:                   (($font-size-base * $line-height-base) + ($padding-y * 2) + ($border-width * 2)) !default;
+$input-height:                   (($font-size-base * $line-height) + ($padding-y * 2) + ($border-width * 2)) !default;
 $input-height-lg:                (($font-size-lg * $line-height-lg) + ($padding-lg-y * 2) + ($border-width * 2)) !default;
 $input-height-sm:                (($font-size-sm * $line-height-sm) + ($padding-sm-y * 2) + ($border-width * 2)) !default;
 
@@ -466,7 +466,7 @@ $label-link-hover-color:      #fff !default;
 $modal-inner-padding:         15px !default;
 
 $modal-title-padding:         15px !default;
-$modal-title-line-height:     $line-height-base !default;
+$modal-title-line-height:     $line-height !default;
 
 $modal-content-bg:                             #fff !default;
 $modal-content-border-color:                   rgba(0,0,0,.2) !default;

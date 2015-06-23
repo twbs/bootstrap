@@ -68,7 +68,7 @@ body {
   // Make the `body` use the `font-size-root`
   font-family: $font-family-base;
   font-size: $font-size-base;
-  line-height: $line-height-base;
+  line-height: $line-height;
   // Go easy on the eyes and use something other than `#000` for text
   color: $text-color;
   // By default, `<body>` has no `background-color` so we set one as a best practice.
@@ -290,6 +290,6 @@ input[type="search"] {
 output {
   display: inline-block;
 //  font-size: $font-size-base;
-//  line-height: $line-height-base;
+//  line-height: $line-height;
 //  color: $input-color;
 }

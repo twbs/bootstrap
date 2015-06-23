@@ -144,7 +144,7 @@ mark,
   footer {
     display: block;
     font-size: 80%; // back to default font-size
-    line-height: $line-height-base;
+    line-height: $line-height;
     color: $blockquote-small-color;
 
     &:before {
