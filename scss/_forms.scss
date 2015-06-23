@@ -317,7 +317,8 @@ input[type="checkbox"] {
 .has-feedback label {
 
   ~ .form-control-feedback {
-    top: ($line-height-computed + 5); // Height of the `label` and its margin
+    // TODO: redo this since we nuked the `$line-height-computed`
+    top: 0; // Height of the `label` and its margin
   }
 
   &.sr-only ~ .form-control-feedback {

@@ -83,9 +83,6 @@ $font-size-h6:               1rem !default;
 
 $line-height:           1.5 !default;
 
-// TODO: nuke this
-$line-height-computed:       1 !default;
-
 $headings-font-family:       inherit !default;
 $headings-font-weight:       500 !default;
 $headings-line-height:       1.1 !default;
@@ -286,7 +283,7 @@ $container-max-widths: (
 
 // Basics of a navbar
 // $navbar-height:                    50px !default;
-$navbar-margin-bottom:             $line-height-computed !default;
+$navbar-margin-bottom:             $spacer-y !default;
 $navbar-border-radius:             $border-radius !default;
 $navbar-padding-horizontal:        $spacer !default;
 $navbar-padding-vertical:          ($spacer / 2) !default;
