@@ -36,6 +36,7 @@
   margin-left: -5px; // Offset the first child's margin
   &:extend(.clearfix all);
 
+  .btn,
   .btn-group,
   .input-group {
     float: left;
@@ -172,11 +173,11 @@
     border-radius: 0;
   }
   &:first-child:not(:last-child) {
-    border-top-right-radius: @border-radius-base;
+    border-top-right-radius: @btn-border-radius-base;
     .border-bottom-radius(0);
   }
   &:last-child:not(:first-child) {
-    border-bottom-left-radius: @border-radius-base;
+    border-bottom-left-radius: @btn-border-radius-base;
     .border-top-radius(0);
   }
 }

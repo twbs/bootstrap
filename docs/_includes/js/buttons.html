@@ -10,6 +10,7 @@
 
   <h2 id="buttons-stateful">Stateful</h2>
   <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
+  <p><strong class="text-danger">This feature is deprecated since v3.3.5 and will be removed in v4.</strong></p>
   <div class="bs-callout bs-callout-info" id="callout-buttons-state-names">
     <h4>Use whichever state you like!</h4>
     <p>For the sake of this demonstration, we are using <code>data-loading-text</code> and <code>$().button('loading')</code>, but that's not the only state you can use. <a href="#buttons-methods">See more on this below in the <code>$().button(string)</code> documentation</a>.</p>
@@ -119,7 +120,7 @@
   <p>Toggles push state. Gives the button the appearance that it has been activated.</p>
 
   <h4><code>$().button('reset')</code></h4>
-  <p>Resets button state - swaps text to original text.</p>
+  <p>Resets button state - swaps text to original text. <strong>This method is asynchronous and returns before the resetting has actually completed.</strong></p>
 
   <h4><code>$().button(string)</code></h4>
   <p>Swaps text to any data defined text state.</p>

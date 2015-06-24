@@ -187,7 +187,7 @@ $(function () {
 
   QUnit.test('should render popover element using delegated selector', function (assert) {
     assert.expect(2)
-    var $div = $('<div><a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a></div>')
+    var $div = $('<div><a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a></div>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
         selector: 'a',
@@ -257,6 +257,34 @@ $(function () {
       })
       .bootstrapPopover('hide')
     assert.strictEqual($popover.data('bs.popover'), undefined, 'should not initialize the popover')
+  })
+
+  QUnit.test('should throw an error when template contains multiple top-level elements', function (assert) {
+    assert.expect(1)
+    assert.throws(function () {
+      $('<span data-toggle="popover" data-title="some title" data-content="some content">some text</span>')
+        .appendTo('#qunit-fixture')
+        .bootstrapPopover({ template: '<div>Foo</div><div>Bar</div>' })
+        .bootstrapPopover('show')
+    }, new Error('popover `template` option must consist of exactly 1 top-level element!'))
+  })
+
+  QUnit.test('should fire inserted event', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    $('<a href="#">@Johann-S</a>')
+      .appendTo('#qunit-fixture')
+      .on('inserted.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        assert.ok(true, 'inserted event fired')
+        done()
+      })
+      .bootstrapPopover({
+        title: 'Test',
+        content: 'Test'
+      })
+      .bootstrapPopover('show')
   })
 
 })
