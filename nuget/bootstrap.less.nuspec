@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>bootstrap</id>
+    <id>bootstrap.less</id>
     <version>3.3</version>
-    <title>Bootstrap CSS</title>
+    <title>Bootstrap LESS</title>
     <authors>Mark Otto,Jacob Thornton</authors>
     <owners>bootstrap</owners>
 	<description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
-	<releaseNotes>http://blog.getbootstrap.com</releaseNotes>
-	<summary>Bootstrap framework in CSS. Includes fonts and javascript</summary>
+    <releaseNotes>http://blog.getbootstrap.com</releaseNotes>
+	<summary>Bootstrap framework in LESS. Includes fonts and javascript</summary>
 	<language>en-us</language>
 	<projectUrl>http://getbootstrap.com</projectUrl>
     <iconUrl>http://getbootstrap.com/apple-touch-icon.png</iconUrl>
@@ -21,8 +21,8 @@
 	<tags>css js less mobile-first responsive front-end framework web</tags>
   </metadata>
   <files>
-    <file src="dist\css\*.*" target="content\Content" />
-    <file src="dist\fonts\*.*" target="content\fonts" />
+    <file src="less\**\*.*" target="content\Content\bootstrap" />
+    <file src="fonts\*.*" target="content\Content\fonts" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
   </files>
 </package>
