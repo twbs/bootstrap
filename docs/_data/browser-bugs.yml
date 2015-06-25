@@ -20,7 +20,7 @@
 
 -
   browser: >
-    Internet Explorer 11
+    Internet Explorer 11 & Microsoft Edge
   summary: >
     CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
   upstream_bug: >
