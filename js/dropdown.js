@@ -40,7 +40,7 @@
     $(toggle).each(function () {
       var $this         = $(this)
       var $parent       = getParent($this)
-      var relatedTarget = { relatedTarget: this }
+      var relatedTarget = { relatedTarget: this, clickTarget: e.target }
 
       if (!$parent.hasClass('open')) return
 
@@ -69,7 +69,7 @@
       if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
         // if mobile we use a backdrop because click events don't delegate
         $(document.createElement('div'))
-          .addClass('dropdown-backdrop')
+          .addClass('dropdown-backdrop')clearMenus(e)
           .insertAfter($(this))
           .on('click', clearMenus)
       }
