@@ -3,12 +3,12 @@
   <metadata>
     <id>bootstrap.less</id>
     <version>3.3</version>
-    <title>Bootstrap LESS</title>
-    <authors>Mark Otto,Jacob Thornton</authors>
+    <title>Bootstrap Less</title>
+    <authors>Twitter, Inc.</authors>
     <owners>bootstrap</owners>
 	<description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
     <releaseNotes>http://blog.getbootstrap.com</releaseNotes>
-	<summary>Bootstrap framework in LESS. Includes fonts and javascript</summary>
+	<summary>Bootstrap framework in Less. Includes fonts and JavaScript</summary>
 	<language>en-us</language>
 	<projectUrl>http://getbootstrap.com</projectUrl>
     <iconUrl>http://getbootstrap.com/apple-touch-icon.png</iconUrl>
