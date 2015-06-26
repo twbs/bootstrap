@@ -1,8 +1,7 @@
 $nuget = $env:NuGet
 
-#parse the version number out of the Jekyll _config.yml
-$yaml = (Select-String $env:SourcesPath\_config.yml -pattern "current_version").ToString().Split(" ");
-$bsversion = $yaml[$yaml.Length - 1]
+#parse the version number out of package.json
+$bsversion = ((Get-Content $env:SourcesPath\package.json) -join "`n" | ConvertFrom-Json).version
 
 #create packages
 & $nuget pack "nuget\bootstrap.nuspec" -Verbosity detailed -NonInteractive -NoPackageAnalysis -BasePath $env:SourcesPath -Version $bsversion
