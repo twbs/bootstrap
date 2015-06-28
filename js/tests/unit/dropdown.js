@@ -388,4 +388,23 @@ $(function () {
 
     assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
   })
+
+  QUnit.test('should close the dropdown if the user clicks on a file-input', function (assert) {
+    assert.expect(1)
+    var dropdownHTML = '<div class="btn-group">'
+        + '<button type="button" data-toggle="dropdown">Dropdown</button>'
+        + '<ul class="dropdown-menu">'
+        + '<li><input type=\"file\" id="fileInput"></textarea></li>'
+        + '</ul>'
+        + '</div>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+      .trigger('click')
+
+    $('#fileInput').trigger('click')
+
+    assert.ok(!$dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is closed')
+  })
 })
