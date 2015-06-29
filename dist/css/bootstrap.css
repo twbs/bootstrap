@@ -7018,8 +7018,6 @@ blockquote footer {
   position: relative;
   top: -3px;
   padding-top: .25em;
-  font-weight: 500;
-  color: #829ca9;
 }
 .label .label-default {
   color: #819da9;
@@ -7161,5 +7159,9 @@ a.circle.active:hover {
 }
 .form-control::-webkit-input-placeholder {
   color: rgba(130, 156, 169, .5);
+}
+.form-group label {
+  font-weight: 500;
+  color: #829ca9;
 }
 /*# sourceMappingURL=bootstrap.css.map */
