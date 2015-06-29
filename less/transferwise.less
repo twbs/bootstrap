@@ -444,7 +444,6 @@ blockquote footer {
 }
 
 .btn,
-.form-control,
 .input-group-addon
 .pagination > li > a,
 .pagination > li > span {
@@ -612,6 +611,8 @@ blockquote footer {
 }
 
 .label {
+    color: @brand-grey-plus-20;
+    font-weight: 500;
     padding-top: 0.25em;
     position: relative;
     top: -3px;
@@ -735,4 +736,14 @@ a.circle.active:hover {
     a.circle.active:hover {
         color: @brand-info;
     }
+}
+
+.form-control {
+    border-radius: 3px;
+    font-size: 20px;
+    font-weight: 500;
+    height: initial;
+    padding: 13px 16px 11px;
+
+    .placeholder(rgba(130,156,169, 0.5));
 }

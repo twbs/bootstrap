@@ -2515,7 +2515,6 @@ label {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
-  font-weight: bold;
 }
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -6862,13 +6861,11 @@ blockquote footer {
   padding: 15px 27px 12px !important;
 }
 .btn,
-.form-control,
 .input-group-addon .pagination > li > a,
 .pagination > li > span {
   padding: 7px 12px 5px;
 }
 .btn .caret,
-.form-control .caret,
 .input-group-addon .pagination > li > a .caret,
 .pagination > li > span .caret {
   margin-top: -3px;
@@ -7021,6 +7018,8 @@ blockquote footer {
   position: relative;
   top: -3px;
   padding-top: .25em;
+  font-weight: 500;
+  color: #829ca9;
 }
 .label .label-default {
   color: #819da9;
@@ -7145,5 +7144,22 @@ a.circle.active:hover {
 .bg-primary a.circle.active:hover,
 .jumbotron a.circle.active:hover {
   color: #01a4df;
+}
+.form-control {
+  height: initial;
+  padding: 13px 16px 11px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 3px;
+}
+.form-control::-moz-placeholder {
+  color: rgba(130, 156, 169, .5);
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: rgba(130, 156, 169, .5);
+}
+.form-control::-webkit-input-placeholder {
+  color: rgba(130, 156, 169, .5);
 }
 /*# sourceMappingURL=bootstrap.css.map */
