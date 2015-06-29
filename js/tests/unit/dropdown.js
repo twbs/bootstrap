@@ -394,7 +394,7 @@ $(function () {
     var dropdownHTML = '<div class="btn-group">'
         + '<button type="button" data-toggle="dropdown">Dropdown</button>'
         + '<ul class="dropdown-menu">'
-        + '<li><input type=\"file\" id="fileInput"></textarea></li>'
+        + '<li><input type="file" id="fileInput"></textarea></li>'
         + '</ul>'
         + '</div>'
     var $dropdown = $(dropdownHTML)
