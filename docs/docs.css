@@ -92,6 +92,11 @@ margin: 20px;
   margin:0;
 }
 
+pre.prettyprint {
+  background: none;
+  border: none;
+}
+
 /* jumbotron home */
 
 .jumbotron-home {
