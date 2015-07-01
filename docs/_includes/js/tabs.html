@@ -98,7 +98,7 @@ $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
   </p>
 
   <h4><code>.tab('show')</code></h4>
-  <p>Selects the given tab and shows its associated content. Any other tab that was previously selected becomes unselected and its associated content is hidden.</p>
+  <p>Selects the given tab and shows its associated content. Any other tab that was previously selected becomes unselected and its associated content is hidden. <strong>Returns to the caller before the tab pane has actually been shown</strong> (i.e. before the <code>shown.bs.tab</code> event occurs).</p>
   {% highlight js %}$('#someTab').tab('show'){% endhighlight %}
 
   <h3 id="tabs-events">Events</h3>
