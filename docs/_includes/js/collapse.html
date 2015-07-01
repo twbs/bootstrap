@@ -229,13 +229,13 @@ $('#myCollapsible').collapse({
 {% endhighlight %}
 
   <h4><code>.collapse('toggle')</code></h4>
-  <p>Toggles a collapsible element to shown or hidden.</p>
+  <p>Toggles a collapsible element to shown or hidden. <strong>Returns to the caller before the collapsible element has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.collapse</code> or <code>hidden.bs.collapse</code> event occurs).</p>
 
   <h4><code>.collapse('show')</code></h4>
-  <p>Shows a collapsible element.</p>
+  <p>Shows a collapsible element. <strong>Returns to the caller before the collapsible element has actually been shown</strong> (i.e. before the <code>shown.bs.collapse</code> event occurs).</p>
 
   <h4><code>.collapse('hide')</code></h4>
-  <p>Hides a collapsible element.</p>
+  <p>Hides a collapsible element. <strong>Returns to the caller before the collapsible element has actually been hidden</strong> (i.e. before the <code>hidden.bs.collapse</code> event occurs).</p>
 
   <h3 id="collapse-events">Events</h3>
   <p>Bootstrap's collapse class exposes a few events for hooking into collapse functionality.</p>
