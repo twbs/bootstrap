@@ -132,7 +132,7 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
 
-    var $target = $('<a role="button" data-toggle="collapse" class="collapsed" data-target="[data-me=&quot;1&qupt;]" href="#"/>').appendTo('#qunit-fixture')
+    var $target = $('<a role="button" data-toggle="collapse" class="collapsed" data-target="[data-me=&quot;1&quot;]" href="#"/>').appendTo('#qunit-fixture')
     var $alt = $('<a role="button" data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
     var $alt2 = $('<a role="button" data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
 
@@ -170,7 +170,7 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
 
-    var $target = $('<a role="button" data-toggle="collapse" data-target="[data-me=&quot;1&qupt;]" href="#"/>').appendTo('#qunit-fixture')
+    var $target = $('<a role="button" data-toggle="collapse" data-target="[data-me=&quot;1&quot;]" href="#"/>').appendTo('#qunit-fixture')
     var $alt = $('<a role="button" data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
     var $alt2 = $('<a role="button" data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
 
