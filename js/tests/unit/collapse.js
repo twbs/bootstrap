@@ -129,7 +129,7 @@ $(function () {
   })
 
   QUnit.test('should remove "collapsed" class from all triggers (by ID) targeting the collapse when the collapse is shown, including the trigger that first invoked the collpase (regardless of its ID relationship)', function (assert) {
-    assert.expect(2)
+    assert.expect(3)
     var done = assert.async()
 
     var $target = $('<a role="button" data-toggle="collapse" class="collapsed" data-target="[data-me=&quot;1&quot;]" href="#"/>').appendTo('#qunit-fixture')
@@ -166,8 +166,8 @@ $(function () {
     $target.trigger('click')
   })
 
-  QUnit.test('should add "collapsed" class to all triggers targeting the collapse when the collapse is hidden', function (assert) {
-    assert.expect(2)
+  QUnit.test('should add "collapsed" class to all triggers targeting the collapse when the collapse is hidden, including the trigger that first invoked the collpase (regardless of its ID relationship)', function (assert) {
+    assert.expect(3)
     var done = assert.async()
 
     var $target = $('<a role="button" data-toggle="collapse" data-target="[data-me=&quot;1&quot;]" href="#"/>').appendTo('#qunit-fixture')
