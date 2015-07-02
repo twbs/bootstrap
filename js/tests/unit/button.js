@@ -98,6 +98,15 @@ $(function () {
     assert.ok($btn.hasClass('active'), 'btn has class active')
   })
 
+  QUnit.test('should prevent toggle active on click when button disabled', function (assert) {
+    assert.expect(2)
+    var $btn = $('<button class="btn disabled" data-toggle="button" disabled>mdo</button>')
+    $btn
+    assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
+    $btn.trigger('click')
+    assert.ok(!$btn.hasClass('active'), 'btn still does not have class active')
+  })
+
   QUnit.test('should toggle active when btn children are clicked', function (assert) {
     assert.expect(2)
     var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
@@ -111,15 +120,30 @@ $(function () {
   })
 
   QUnit.test('should prevent toggle active when disabled btn children are clicked', function (assert) {
-    assert.expect(2)
-    var $btn = $('<button class="btn disabled" data-toggle="button">mdo</button>')
-    var $inner = $('<i/>')
-    $btn
-      .append($inner)
-      .appendTo('#qunit-fixture')
-    assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
-    $inner.trigger('click')
-    assert.ok(!$btn.hasClass('active'), 'btn still does not have class active')
+    assert.expect(8)
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
+      + '<label class="btn btn-primary active">'
+      + '<input type="radio" name="options" id="option1" checked="true"> Option 1'
+      + '</label>'
+      + '<label class="btn btn-primary disabled" disabled>'
+      + '<input type="radio" name="options" id="option2" disabled> Option 2'
+      + '</label>'
+      + '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn1 = $group.children().eq(0)
+    var $btn2 = $group.children().eq(1)
+
+    assert.ok($btn1.hasClass('active'), 'btn1 has active class')
+    assert.ok($btn1.find('input').prop('checked'), 'btn1 is checked')
+    assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
+    assert.ok(!$btn2.find('input').prop('checked'), 'btn2 is not checked')
+    $btn2.find('input').trigger('click')
+    assert.ok($btn1.hasClass('active'), 'btn1 still has active class')
+    assert.ok($btn1.find('input').prop('checked'), 'btn1 is still checked')
+    assert.ok(!$btn2.hasClass('active'), 'btn2 does not active class')
+    assert.ok(!$btn2.find('input').prop('checked'), 'btn2 is not checked')
+
   })
 
   QUnit.test('should toggle aria-pressed', function (assert) {
