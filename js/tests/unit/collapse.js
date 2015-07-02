@@ -110,7 +110,7 @@ $(function () {
     $target.trigger('click')
   })
 
-  QUnit.test('should remove "collapsed" class from all triggers targeting the collapse when the collapse is shown', function (assert) {
+  QUnit.test('should remove "collapsed" class from all triggers targeting the collapse (by ID) when the collapse is shown', function (assert) {
     assert.expect(2)
     var done = assert.async()
 
@@ -122,6 +122,26 @@ $(function () {
       .on('shown.bs.collapse', function () {
         assert.ok(!$target.hasClass('collapsed'), 'target trigger does not have collapsed class')
         assert.ok(!$alt.hasClass('collapsed'), 'alt trigger does not have collapsed class')
+        done()
+      })
+
+    $target.trigger('click')
+  })
+
+  QUnit.test('should remove "collapsed" class from all triggers (by ID) targeting the collapse when the collapse is shown, including the trigger that first invoked the collpase (regardless of its ID relationship)', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var $target = $('<a role="button" data-toggle="collapse" class="collapsed" data-target="[data-me=&quot;1&qupt;]" href="#"/>').appendTo('#qunit-fixture')
+    var $alt = $('<a role="button" data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
+    var $alt2 = $('<a role="button" data-toggle="collapse" class="collapsed" href="#test1"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1" data-me="1"/>')
+      .appendTo('#qunit-fixture')
+      .on('shown.bs.collapse', function () {
+        assert.ok(!$target.hasClass('collapsed'), 'target trigger does not have collapsed class')
+        assert.ok(!$alt.hasClass('collapsed'), 'alt trigger does not have collapsed class')
+        assert.ok(!$alt2.hasClass('collapsed'), 'alt2 trigger does not have collapsed class')
         done()
       })
 
@@ -140,6 +160,26 @@ $(function () {
       .on('hidden.bs.collapse', function () {
         assert.ok($target.hasClass('collapsed'), 'target has collapsed class')
         assert.ok($alt.hasClass('collapsed'), 'alt trigger has collapsed class')
+        done()
+      })
+
+    $target.trigger('click')
+  })
+
+  QUnit.test('should add "collapsed" class to all triggers targeting the collapse when the collapse is hidden', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var $target = $('<a role="button" data-toggle="collapse" data-target="[data-me=&quot;1&qupt;]" href="#"/>').appendTo('#qunit-fixture')
+    var $alt = $('<a role="button" data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
+    var $alt2 = $('<a role="button" data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
+
+    $('<div id="test1" data-me="1" class="in"/>')
+      .appendTo('#qunit-fixture')
+      .on('hidden.bs.collapse', function () {
+        assert.ok($target.hasClass('collapsed'), 'target has collapsed class')
+        assert.ok($alt.hasClass('collapsed'), 'alt trigger has collapsed class')
+        assert.ok($alt2.hasClass('collapsed'), 'alt trigger has collapsed class')
         done()
       })
 
