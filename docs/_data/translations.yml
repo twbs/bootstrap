@@ -38,6 +38,11 @@
   description: Bootstrap en Español
   url: http://www.oneskyapp.com/es/docs/bootstrap/
 
+- name: Turkish
+  code: tr
+  description: Türkçe Bootstrap
+  url: http://www.trbootstrap.com
+
 - name: Ukrainian
   code: uk
   description: Bootstrap українською
