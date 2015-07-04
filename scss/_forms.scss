@@ -23,7 +23,7 @@
    // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius);
   @include box-shadow($input-box-shadow);
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
 
   // Make inputs at least the height of their button counterpart (base line-height + padding + border).
   // Only apply the height to textual inputs and some selcts.
