@@ -28,6 +28,11 @@
   description: Bootstrap 한국어
   url: http://bootstrapk.com/
 
+- name: Brazilian
+  code: pt-br
+  description: Bootstrap em Português
+  url: http://bootstrapbrasil.github.io/
+
 - name: Russian
   code: ru
   description: Bootstrap по-русски
