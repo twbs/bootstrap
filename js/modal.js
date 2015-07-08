@@ -49,6 +49,10 @@
     var that = this
     var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
 
+    if (this.$element.hasClass('modal-dynamic')) {
+      this.loadDynamicData(_relatedTarget)
+    }
+
     this.$element.trigger(e)
 
     if (this.isShown || e.isDefaultPrevented()) return
@@ -227,6 +231,13 @@
     var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
     this.$body[0].removeChild(scrollDiv)
     return scrollbarWidth
+  }
+
+  Modal.prototype.loadDynamicData = function (_relatedTarget) {
+    this.$element.find('.input-dynamic')
+      .each(function() {
+        $(this).val($(_relatedTarget).attr('data-' + $(this).attr('name')))
+      });
   }
 
 

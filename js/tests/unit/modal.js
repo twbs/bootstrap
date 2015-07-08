@@ -270,4 +270,21 @@ $(function () {
 
     $toggleBtn.click()
   })
+
+  test('should pass dynamic data to inputs if a dynamic module', function () {
+    stop()
+    var $toggleBtn = $('<button data-toggle="modal" data-target="#modal-test" data-dynamicdata="pass"/>')
+      .appendTo('#qunit-fixture')
+    var $input = $('<input type="text" class="input-dynamic" name="dynamicdata" value="fail" />')
+
+    $('<div id="modal-test" class="modal-dynamic"></div>')
+      .append($input)
+      .on('show.bs.modal', function () {
+        strictEqual($input.val(), "pass", "input has dynamic value")
+        start()
+      })
+      .appendTo('#qunit-fixture')
+
+    $toggleBtn.click()
+  })
 })

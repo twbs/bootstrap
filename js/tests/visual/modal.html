@@ -12,7 +12,7 @@
     <h1>Modal <small>Bootstrap Visual Test</small></h1>
   </div>
 
-  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div id="myModal" class="modal fade modal-dynamic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
 
@@ -30,6 +30,8 @@
           <h4>Tooltips in a modal</h4>
           <p><a href="#" class="js-tooltip" title="" data-original-title="Tooltip">This link</a> and <a href="#" class="js-tooltip" title="" data-original-title="Tooltip">that link</a> should have tooltips on hover.</p>
 
+          <h4>Dynamic modal data</h4>
+          <p>This input should have the value "pass": <input type="text" class="input-dynamic" name="dynamictest" value="fail" /></p>
           <hr>
 
           <h4>Overflowing text to show scroll behavior</h4>
@@ -52,7 +54,7 @@
     </div>
   </div>
 
-  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-dynamictest="pass">
     Launch demo modal
   </button>
 
