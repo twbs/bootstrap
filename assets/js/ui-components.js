@@ -18,7 +18,6 @@
     };
 
     ResponsiveLayout.prototype.eventBinding = function() {
-      if (this.$dom.not('.res-single-column, .res-two-columns').length) {
         this.$dom.on('click touchend', '[data-layout-switch]', (function(_this) {
           return function(e) {
             var $el;
@@ -26,7 +25,6 @@
             return _this.toggleActive($el);
           };
         })(this));
-      }
       if (this.$dom.not('.res-single-column').length) {
         $(document).on('click touchend', ".res-layout[data-active='navigation'] *:not(.res-navigation)", (function(_this) {
           return function(e) {
