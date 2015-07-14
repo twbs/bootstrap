@@ -2890,7 +2890,7 @@ input[type="color"]:disabled::-webkit-input-placeholder {
 }
 #responsive-nav {
   position: fixed;
-  top: -50px;
+  top: -80px;
   left: 0;
   right: 0;
   opacity: 0.8;
@@ -2901,7 +2901,6 @@ input[type="color"]:disabled::-webkit-input-placeholder {
 #responsive-nav .bs-docs-nav .navbar-nav > .active > a,
 #responsive-nav .bs-docs-nav .navbar-nav > .active > a:hover {
   transform: translateY(10px);
-  background: #e0c06c;
 }
 #responsive-nav:hover {
   top: 0;
