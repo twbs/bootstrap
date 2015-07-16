@@ -191,15 +191,18 @@
         .addClass('modal-backdrop ' + animate)
         .appendTo(this.$body)
 
-      this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {
-        if (this.ignoreBackdropClick) {
-          this.ignoreBackdropClick = false
-          return
-        }
-        if (e.target !== e.currentTarget) return
-        this.options.backdrop == 'static'
-          ? this.$element[0].focus()
-          : this.hide()
+      this.$element.on('mousedown.dismiss.bs.modal', $.proxy(function (eDown) {
+        this.$element.off('mouseup.dismiss.bs.modal')
+        this.$element.on('mouseup.dismiss.bs.modal', $.proxy(function (e) {
+          if (this.ignoreBackdropClick) {
+            this.ignoreBackdropClick = false
+            return
+          }
+          if (this.options.backdrop == 'static')
+            this.$element[0].focus()
+          else if (e.target === e.currentTarget && e.target === eDown.target)
+            this.hide();
+        }, this))
       }, this))
 
       if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
