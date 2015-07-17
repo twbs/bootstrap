@@ -348,15 +348,17 @@
 
   <h2 id="grid-nesting">Nesting columns</h2>
   <p>To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-sm-*</code> columns within an existing <code>.col-sm-*</code> column. Nested rows should include a set of columns that add up to 12 or fewer (it is not required that you use all 12 available columns).</p>
-  <div class="row show-grid">
-    <div class="col-sm-9">
-      Level 1: .col-sm-9
-      <div class="row show-grid">
-        <div class="col-xs-8 col-sm-6">
-          Level 2: .col-xs-8 .col-sm-6
-        </div>
-        <div class="col-xs-4 col-sm-6">
-          Level 2: .col-xs-4 .col-sm-6
+  <div class="bs-docs-grid">
+    <div class="row show-grid">
+      <div class="col-sm-9">
+        Level 1: .col-sm-9
+        <div class="row show-grid">
+          <div class="col-xs-8 col-sm-6">
+            Level 2: .col-xs-8 .col-sm-6
+          </div>
+          <div class="col-xs-4 col-sm-6">
+            Level 2: .col-xs-4 .col-sm-6
+          </div>
         </div>
       </div>
     </div>
@@ -379,9 +381,11 @@
 
   <h2 id="grid-column-ordering">Column ordering</h2>
   <p>Easily change the order of our built-in grid columns with <code>.col-md-push-*</code> and <code>.col-md-pull-*</code> modifier classes.</p>
-  <div class="row show-grid">
-    <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
-    <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+  <div class="bs-docs-grid">
+    <div class="row show-grid">
+      <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
+      <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+    </div>
   </div>
 
 {% highlight html %}
