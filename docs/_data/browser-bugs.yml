@@ -180,16 +180,6 @@
 
 -
   browser: >
-    Safari
-  summary: >
-    `display: block; width: 100%` makes `<input type="range">`'s thumb get clipped
-  upstream_bug: >
-    WebKit#146896, Safari#21787807
-  origin: >
-    Bootstrap#16809
-
--
-  browser: >
     Safari (OS X)
   summary: >
     Scrollbar clipped in `select[multiple]` with padding.
