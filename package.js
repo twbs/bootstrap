@@ -13,6 +13,7 @@ Package.describe({
 Package.onUse(function (api) {
   api.versionsFrom('METEOR@1.0');
   api.use('jquery', 'client');
+  api.use('meteorhacks:inject-initial', 'server');
   api.addFiles([
     'dist/fonts/glyphicons-halflings-regular.eot',
     'dist/fonts/glyphicons-halflings-regular.svg',
@@ -22,4 +23,7 @@ Package.onUse(function (api) {
     'dist/css/bootstrap.css',
     'dist/js/bootstrap.js'
   ], 'client');
+  api.addFiles([
+    'dist/js/meteor-add-meta.js'
+  ], 'server');
 });
