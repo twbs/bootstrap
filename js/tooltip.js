@@ -496,71 +496,75 @@
       if (typeof option == 'string') data[option]()
     })
 
-    var container = $(this).parents().filter(function() {
-        if (
-          $(this).css('overflow-x') == 'auto'
-          || $(this).css('overflow-y') == 'auto'
-          || $(this).css('overflow-x') == 'scroll'
-          || $(this).css('overflow-y') == 'scroll') {
-          return true;
-        }
-        return false;
+    var $container = $(this).parents().filter(function () {
+      if (
+        $(this).css('overflow-x') == 'auto'
+        || $(this).css('overflow-y') == 'auto'
+        || $(this).css('overflow-x') == 'scroll'
+        || $(this).css('overflow-y') == 'scroll') {
+        return true;
+      }
+      return false;
     }).first()
     var delay = 100
 
-    function adjustPosition () {
+    function adjustPosition() {
       tooltipList.each(function () {
-        if ($(this).data("bs.tooltip").$tip != undefined) {
-          if ($(this).data("bs.tooltip").$tip.hasClass('in')) {
-            var container_width = container.width()
-            var container_height = container.height()
-            if (container.selector === "body") {
-              container_width = $(window).width()
-              container_height = $(window).height()
-              var container_top = $(window).scrollTop()
-              var container_left = $(window).scrollLeft()
+        console.log($(this).data('bs.tooltip'));
+        //if ($(this).data('bs.tooltip').$tip !== undefined) {
+        if ($(this).data('bs.tooltip').hasOwnProperty('$tip')) {
+          if ($(this).data('bs.tooltip').$tip.hasClass('in')) {
+            var containerWidth = $container.width()
+            var containerHeight = $container.height()
+            var containerTop
+            var containerLeft
+            if ($container.selector === 'body') {
+              containerWidth = $(window).width()
+              containerHeight = $(window).height()
+              containerTop = $(window).scrollTop()
+              containerLeft = $(window).scrollLeft()
             }
             else {
-              var container_top = container.position().top
-              var container_left = container.position().left
+              containerTop = $container.position().top
+              containerLeft = $container.position().left
             }
-            container_top = container_top + parseInt(container.css("margin-top"))
-            var container_bottom = container_top + container_height
-            container_left = container_left + parseInt(container.css("margin-left"))
-            var container_right = container_left + container_width
+            containerTop = containerTop + parseInt($container.css('margin-top'), 0)
+            var containerBottom = containerTop + containerHeight
+            containerLeft = containerLeft + parseInt($container.css('margin-left'), 0)
+            var containerRight = containerLeft + containerWidth
 
-            var trigger_top = $(this).position().top
-            var trigger_bottom = trigger_top + $(this).height()
-            var trigger_left = $(this).position().left
-            var trigger_right = trigger_left + $(this).width()
+            var triggerTop = $(this).position().top
+            var triggerBottom = triggerTop + $(this).height()
+            var triggerLeft = $(this).position().left
+            var triggerRight = triggerLeft + $(this).width()
 
-            if (trigger_top < container_top
-              || trigger_bottom > container_bottom
-              || trigger_left < container_left
-              || trigger_right > container_right
+            if (triggerTop < containerTop
+              || triggerBottom > containerBottom
+              || triggerLeft < containerLeft
+              || triggerRight > containerRight
             ) {
-              $(this).data("bs.tooltip").$tip.css("visibility", "hidden")
+              $(this).data('bs.tooltip').$tip.css('visibility', 'hidden')
             }
             else {
-              $(this).data("bs.tooltip").$tip.css("visibility", "visible")
+              $(this).data('bs.tooltip').$tip.css('visibility', 'visible')
             }
-            $(this).data("bs.tooltip").show()
+            $(this).data('bs.tooltip').show()
           }
         }
       })
     }
-    if (container.length === 0) {
-      container = $("body")
-      $(window).onDelayed('scroll', delay, function() {
+    if ($container.length === 0) {
+      $container = $('body')
+      $(window).onDelayed('scroll', delay, function () {
         adjustPosition()
       })
     }
     else {
-      container.onDelayed('scroll', delay, function() {
+      $container.onDelayed('scroll', delay, function () {
         adjustPosition()
       })
     }
-    $(window).onDelayed('resize', delay, function() {
+    $(window).onDelayed('resize', delay, function () {
       adjustPosition()
     })
     return tooltipList
@@ -580,20 +584,16 @@
     return this
   }
 
+  // http://stackoverflow.com/questions/24460808/efficient-way-of-using-window-resize-or-other-method-to-fire-jquery-functions
+  $.fn.onDelayed = function (eventName, delayInMs, callback) {
+    var _timeout;
+    this.on(eventName, function (e) {
+      if (!!_timeout){
+        clearTimeout(_timeout);
+      }
+      _timeout = setTimeout(function () {
+        callback(e);
+      }, delayInMs);
+    });
+  };
 }(jQuery);
-
-
-// http://stackoverflow.com/questions/24460808/efficient-way-of-using-window-resize-or-other-method-to-fire-jquery-functions
-(function($){
-    $.fn.onDelayed = function(eventName, delayInMs, callback) {
-        var _timeout;
-        this.on(eventName, function(e) {
-          if(!!_timeout){
-              clearTimeout(_timeout);
-          }
-          _timeout = setTimeout(function() {
-              callback(e);
-          }, delayInMs);
-        });
-    };
-})(jQuery);
