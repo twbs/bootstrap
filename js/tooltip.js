@@ -510,6 +510,9 @@
 
     function adjustPosition() {
       tooltipList.each(function () {
+        if (typeof($(this).data('bs.tooltip')) !== 'object') {
+          return
+        }
         if ($(this).data('bs.tooltip').hasOwnProperty('$tip')) {
           if ($(this).data('bs.tooltip').$tip.hasClass('in')) {
             var containerWidth = $container.width()
