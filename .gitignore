@@ -36,3 +36,6 @@ Thumbs.db
 # Folders to ignore
 bower_components
 node_modules
+
+# Credentials
+_algolia_api_key

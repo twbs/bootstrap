@@ -350,6 +350,8 @@ module.exports = function (grunt) {
         ignore: [
           'Attribute "autocomplete" not allowed on element "button" at this point.',
           'Attribute "autocomplete" not allowed on element "input" at this point.',
+          'Attribute "autocorrect" not allowed on element "input" at this point.',
+          'Attribute "autocapitalize" not allowed on element "input" at this point.',
           'Element "img" is missing required attribute "src".'
         ]
       },
