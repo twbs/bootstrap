@@ -236,7 +236,7 @@
   summary: >
     Focus ring of image map within a modal is displayed in the wrong location.
   upstream_bug: >
-    WebKit#143527
+    WebKit#143527, Safari#21908735
   origin: >
     Bootstrap#16180
 
