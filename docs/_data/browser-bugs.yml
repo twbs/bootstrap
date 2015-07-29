@@ -112,16 +112,6 @@
   browser: >
     Chrome
   summary: >
-    `display: table;` within `display: block;` forces sibling content to new line.
-  upstream_bug: >
-    Chromium#309483
-  origin: >
-    Bootstrap#9950
-
--
-  browser: >
-    Chrome
-  summary: >
     Incorrect viewport size used for media queries when printing.
   upstream_bug: >
     Chromium#273306
