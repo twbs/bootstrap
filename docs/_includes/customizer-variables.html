@@ -471,17 +471,47 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@btn-font-weight">@btn-font-weight</label>
-    <input id="input-@btn-font-weight" type="text" value="500" data-var="@btn-font-weight" class="form-control"/>
+    <input id="input-@btn-font-weight" type="text" value="600" data-var="@btn-font-weight" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@btn-font-size">@btn-font-size</label>
+    <input id="input-@btn-font-size" type="text" value="16px" data-var="@btn-font-size" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-line-height">@btn-line-height</label>
-    <input id="input-@btn-line-height" type="text" value="1.625" data-var="@btn-line-height" class="form-control"/>
+    <input id="input-@btn-line-height" type="text" value="26px" data-var="@btn-line-height" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@btn-xs-font-size">@btn-xs-font-size</label>
+    <input id="input-@btn-xs-font-size" type="text" value="12px" data-var="@btn-xs-font-size" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@btn-xs-line-height">@btn-xs-line-height</label>
+    <input id="input-@btn-xs-line-height" type="text" value="18px" data-var="@btn-xs-line-height" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@btn-sm-font-size">@btn-sm-font-size</label>
+    <input id="input-@btn-sm-font-size" type="text" value="12px" data-var="@btn-sm-font-size" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@btn-sm-line-height">@btn-sm-line-height</label>
+    <input id="input-@btn-sm-line-height" type="text" value="18px" data-var="@btn-sm-line-height" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@btn-lg-font-size">@btn-lg-font-size</label>
+    <input id="input-@btn-lg-font-size" type="text" value="18px" data-var="@btn-lg-font-size" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@btn-lg-line-height">@btn-lg-line-height</label>
+    <input id="input-@btn-lg-line-height" type="text" value="28px" data-var="@btn-lg-line-height" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@btn-disabled-bg">@btn-disabled-bg</label>
     <input id="input-@btn-disabled-bg" type="text" value="@gray-lighter" data-var="@btn-disabled-bg" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@btn-link-disabled-color">@btn-link-disabled-color</label>
     <input id="input-@btn-link-disabled-color" type="text" value="@gray-light" data-var="@btn-link-disabled-color" class="form-control"/>
@@ -725,19 +755,28 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@input-line-height">@input-line-height</label>
-    <input id="input-@input-line-height" type="text" value="1.3" data-var="@input-line-height" class="form-control"/>
+    <input id="input-@input-line-height" type="text" value="26px" data-var="@input-line-height" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@input-line-height-small">@input-line-height-small</label>
+    <input id="input-@input-line-height-small" type="text" value="@btn-sm-line-height" data-var="@input-line-height-small" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@input-line-height-large">@input-line-height-large</label>
+    <input id="input-@input-line-height-large" type="text" value="@btn-lg-line-height" data-var="@input-line-height-large" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@input-border-radius">@input-border-radius</label>
     <input id="input-@input-border-radius" type="text" aria-describedby="help-block-@input-border-radius" value="@border-radius-small" data-var="@input-border-radius" class="form-control"/>
     <p id="help-block-@input-border-radius" class="help-block">Default <code>.form-control</code> border radius</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-border-radius-large">@input-border-radius-large</label>
     <input id="input-@input-border-radius-large" type="text" aria-describedby="help-block-@input-border-radius-large" value="@border-radius-small" data-var="@input-border-radius-large" class="form-control"/>
     <p id="help-block-@input-border-radius-large" class="help-block">Large <code>.form-control</code> border radius</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-border-radius-small">@input-border-radius-small</label>
     <input id="input-@input-border-radius-small" type="text" aria-describedby="help-block-@input-border-radius-small" value="@border-radius-small" data-var="@input-border-radius-small" class="form-control"/>
@@ -748,12 +787,12 @@
     <input id="input-@input-border-focus" type="text" aria-describedby="help-block-@input-border-focus" value="#00B9FF" data-var="@input-border-focus" class="form-control"/>
     <p id="help-block-@input-border-focus" class="help-block">Border color for inputs on focus</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-color-placeholder">@input-color-placeholder</label>
     <input id="input-@input-color-placeholder" type="text" aria-describedby="help-block-@input-color-placeholder" value="#829CA9" data-var="@input-color-placeholder" class="form-control"/>
     <p id="help-block-@input-color-placeholder" class="help-block">Placeholder text color</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-height-base">@input-height-base</label>
     <input id="input-@input-height-base" type="text" aria-describedby="help-block-@input-height-base" value="48px" data-var="@input-height-base" class="form-control"/>
@@ -764,12 +803,12 @@
     <input id="input-@input-height-large" type="text" aria-describedby="help-block-@input-height-large" value="54px" data-var="@input-height-large" class="form-control"/>
     <p id="help-block-@input-height-large" class="help-block">Large <code>.form-control</code> height</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-height-small">@input-height-small</label>
-    <input id="input-@input-height-small" type="text" aria-describedby="help-block-@input-height-small" value="(floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2)" data-var="@input-height-small" class="form-control"/>
+    <input id="input-@input-height-small" type="text" aria-describedby="help-block-@input-height-small" value="36px" data-var="@input-height-small" class="form-control"/>
     <p id="help-block-@input-height-small" class="help-block">Small <code>.form-control</code> height</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@form-group-margin-bottom">@form-group-margin-bottom</label>
     <input id="input-@form-group-margin-bottom" type="text" aria-describedby="help-block-@form-group-margin-bottom" value="15px" data-var="@form-group-margin-bottom" class="form-control"/>
@@ -779,11 +818,11 @@
     <label for="input-@legend-color">@legend-color</label>
     <input id="input-@legend-color" type="text" value="@gray-dark" data-var="@legend-color" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@legend-border-color">@legend-border-color</label>
     <input id="input-@legend-border-color" type="text" value="#e5e5e5" data-var="@legend-border-color" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-group-addon-bg">@input-group-addon-bg</label>
     <input id="input-@input-group-addon-bg" type="text" aria-describedby="help-block-@input-group-addon-bg" value="@gray-base" data-var="@input-group-addon-bg" class="form-control"/>
@@ -794,7 +833,6 @@
     <input id="input-@input-group-addon-border-color" type="text" aria-describedby="help-block-@input-group-addon-border-color" value="@input-border" data-var="@input-group-addon-border-color" class="form-control"/>
     <p id="help-block-@input-group-addon-border-color" class="help-block">Border color for textual input addons</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@cursor-disabled">@cursor-disabled</label>
     <input id="input-@cursor-disabled" type="text" aria-describedby="help-block-@cursor-disabled" value="not-allowed" data-var="@cursor-disabled" class="form-control"/>

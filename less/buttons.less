@@ -20,7 +20,7 @@
   .button-size(
       @padding-base-vertical;
       @padding-base-horizontal;
-      @font-size-medium;
+      @btn-font-size;
       @btn-line-height;
       @border-radius-base
   );
@@ -193,15 +193,15 @@
 
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @btn-lg-font-size; @btn-lg-line-height; @border-radius-large);
 }
 .btn-sm,
 .navbar .btn {
   // line-height: ensure proper height of button next to small input
-  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-base);
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @btn-sm-font-size; @btn-sm-line-height; @border-radius-small);
 }
 .btn-xs {
-  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-base);
+  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @btn-xs-font-size; @btn-xs-line-height; @border-radius-small);
 }
 
 

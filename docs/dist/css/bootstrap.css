@@ -2572,9 +2572,9 @@ output {
   display: block;
   width: 100%;
   height: 48px;
-  padding: 10px 15px;
+  padding: 11px 15px 9px 15px;
   font-size: 20px;
-  line-height: 1.3;
+  line-height: 26px;
   color: #223049;
   background-color: #fff;
   background-image: none;
@@ -2649,7 +2649,7 @@ input[type="search"] {
   .input-group-sm input[type="time"],
   .input-group-sm input[type="datetime-local"],
   .input-group-sm input[type="month"] {
-    line-height: 32px;
+    line-height: 36px;
   }
   input[type="date"].input-lg,
   input[type="time"].input-lg,
@@ -2739,15 +2739,15 @@ fieldset[disabled] .checkbox label {
   padding-left: 0;
 }
 .input-sm {
-  height: 32px;
-  padding: 6px 10px;
+  height: 36px;
+  padding: 7px 10px 5px 10px;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 18px;
   border-radius: 2px;
 }
 select.input-sm {
-  height: 32px;
-  line-height: 32px;
+  height: 36px;
+  line-height: 36px;
 }
 textarea.input-sm,
 select[multiple].input-sm {
@@ -2755,16 +2755,16 @@ select[multiple].input-sm {
 }
 .form-group-sm .form-control,
 .navbar .form-control {
-  height: 32px;
+  height: 36px;
   padding: 6px 10px;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 18px;
   border-radius: 2px;
 }
 .form-group-sm select.form-control,
 .navbar select.form-control {
-  height: 32px;
-  line-height: 32px;
+  height: 36px;
+  line-height: 36px;
 }
 .form-group-sm textarea.form-control,
 .navbar textarea.form-control,
@@ -2774,17 +2774,17 @@ select[multiple].input-sm {
 }
 .form-group-sm .form-control-static,
 .navbar .form-control-static {
-  height: 32px;
+  height: 36px;
   min-height: 33px;
   padding: 7px 10px;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 18px;
 }
 .input-lg {
   height: 54px;
-  padding: 12px 18px;
+  padding: 13px 18px 11px 18px;
   font-size: 18px;
-  line-height: 1.55555555;
+  line-height: 28px;
   border-radius: 2px;
 }
 select.input-lg {
@@ -2799,7 +2799,7 @@ select[multiple].input-lg {
   height: 54px;
   padding: 12px 18px;
   font-size: 18px;
-  line-height: 1.55555555;
+  line-height: 28px;
   border-radius: 2px;
 }
 .form-group-lg select.form-control {
@@ -2815,7 +2815,7 @@ select[multiple].input-lg {
   min-height: 39px;
   padding: 13px 18px;
   font-size: 18px;
-  line-height: 1.55555555;
+  line-height: 28px;
 }
 .has-feedback {
   position: relative;
@@ -2845,9 +2845,9 @@ select[multiple].input-lg {
 .input-sm + .form-control-feedback,
 .input-group-sm + .form-control-feedback,
 .form-group-sm .form-control + .form-control-feedback {
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
 }
 .has-success .help-block,
 .has-success .control-label,
@@ -3039,8 +3039,8 @@ select[multiple].input-lg {
   padding: 11px 15px 9px 15px;
   margin-bottom: 0;
   font-size: 16px;
-  font-weight: 500;
-  line-height: 1.625;
+  font-weight: 600;
+  line-height: 26px;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -3566,7 +3566,7 @@ fieldset[disabled] .btn-link:focus {
 .btn-group-lg > .btn {
   padding: 13px 18px 11px 18px;
   font-size: 18px;
-  line-height: 1.55555555;
+  line-height: 28px;
   border-radius: 3px;
 }
 .btn-sm,
@@ -3574,15 +3574,15 @@ fieldset[disabled] .btn-link:focus {
 .btn-group-sm > .btn {
   padding: 7px 10px 5px 10px;
   font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
+  line-height: 18px;
+  border-radius: 2px;
 }
 .btn-xs,
 .btn-group-xs > .btn {
   padding: 2px 5px 0 5px;
   font-size: 12px;
-  line-height: 1.5;
-  border-radius: 3px;
+  line-height: 18px;
+  border-radius: 2px;
 }
 .btn-block {
   display: block;
@@ -3962,9 +3962,9 @@ tbody.collapse.in {
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
   height: 54px;
-  padding: 12px 18px;
+  padding: 13px 18px 11px 18px;
   font-size: 18px;
-  line-height: 1.55555555;
+  line-height: 28px;
   border-radius: 2px;
 }
 select.input-group-lg > .form-control,
@@ -3992,17 +3992,17 @@ select[multiple].input-group-lg > .input-group-btn > .btn {
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
-  height: 32px;
-  padding: 6px 10px;
+  height: 36px;
+  padding: 7px 10px 5px 10px;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 18px;
   border-radius: 2px;
 }
 select.input-group-sm > .form-control,
 select.input-group-sm > .input-group-addon,
 select.input-group-sm > .input-group-btn > .btn {
-  height: 32px;
-  line-height: 32px;
+  height: 36px;
+  line-height: 36px;
 }
 textarea.input-group-sm > .form-control,
 textarea.input-group-sm > .input-group-addon,
@@ -4591,8 +4591,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 6px;
 }
 .navbar-btn.btn-sm {
-  margin-top: 14px;
-  margin-bottom: 14px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 .navbar-btn.btn-xs {
   margin-top: 19px;
@@ -7259,17 +7259,25 @@ blockquote footer {
 .form-group-lg .input-group-addon {
   font-size: 18px;
 }
-.form-group-sm .form-control {
-  padding: 6px 10px 4px;
+/*
+.form-group-sm {
+    .form-control {
+        padding: 6px 10px 4px;
+    }
+
+    .btn{
+        padding: 5px 10px 2px;
+    }
 }
-.form-group-sm .btn {
-  padding: 5px 10px 2px;
+
+.form-group-lg {
+    .form-control,
+    .btn  {
+        padding: 11px 16px 9px;
+        height: 46px; // Fix webkit/gecko difference
+    }
 }
-.form-group-lg .form-control,
-.form-group-lg .btn {
-  height: 46px;
-  padding: 11px 16px 9px;
-}
+*/
 .input-group-addon {
   color: #829ca9;
 }
@@ -7495,8 +7503,11 @@ a.circle.active:hover {
 .jumbotron a.circle.active:hover {
   color: #00a4df;
 }
+.btn:focus,
+.form-control:focus {
+  outline: none;
+}
 .form-control {
-  height: initial;
   font-weight: 500;
 }
 .form-control::-moz-placeholder {

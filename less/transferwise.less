@@ -267,7 +267,7 @@ blockquote footer {
 .form-group-lg .input-group-addon, {
     font-size: 18px;
 }
-
+/*
 .form-group-sm {
     .form-control {
         padding: 6px 10px 4px;
@@ -285,6 +285,7 @@ blockquote footer {
         height: 46px; // Fix webkit/gecko difference
     }
 }
+*/
 .input-group-addon {
     color: @gray-light;
 }
@@ -512,9 +513,15 @@ a.circle.active:hover {
     }
 }
 
+.btn,
+.form-control {
+    &:focus {
+        outline: none;
+    }
+}
+
 .form-control {
     font-weight: 500;
-    height: initial;
 
     .placeholder(rgba(130,156,169, 0.5));
 }

@@ -68,7 +68,7 @@
 // element gets special love because it's special, and that's a fact!
 .input-size(@input-height; @padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
   height: @input-height;
-  padding: @padding-vertical @padding-horizontal;
+  padding: (@padding-vertical + 1px) @padding-horizontal (@padding-vertical - 1px) @padding-horizontal ;
   font-size: @font-size;
   line-height: @line-height;
   border-radius: @border-radius;

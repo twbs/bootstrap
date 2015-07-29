@@ -114,7 +114,7 @@ output {
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-base-vertical @padding-base-horizontal;
+  padding: (@padding-base-vertical + 1px) @padding-base-horizontal (@padding-base-vertical - 1px) @padding-base-horizontal;
   font-size: @input-font-size;
   line-height: @input-line-height;
   color: @input-color;
@@ -319,7 +319,7 @@ input[type="checkbox"] {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @input-line-height-small; @input-border-radius-small);
 }
 .form-group-sm,
 .navbar {
@@ -327,7 +327,7 @@ input[type="checkbox"] {
     height: @input-height-small;
     padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @font-size-small;
-    line-height: @line-height-small;
+    line-height: @input-line-height-small;
     border-radius: @input-border-radius-small;
   }
   select.form-control {
@@ -343,19 +343,19 @@ input[type="checkbox"] {
     min-height: (@line-height-computed + @font-size-small);
     padding: (@padding-small-vertical + 1) @padding-small-horizontal;
     font-size: @font-size-small;
-    line-height: @line-height-small;
+    line-height: @input-line-height-small;
   }
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @input-line-height-large; @input-border-radius-large);
 }
 .form-group-lg {
   .form-control {
     height: @input-height-large;
     padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @font-size-large;
-    line-height: @line-height-large;
+    line-height: @input-line-height-large;
     border-radius: @input-border-radius-large;
   }
   select.form-control {
@@ -371,7 +371,7 @@ input[type="checkbox"] {
     min-height: (@line-height-computed + @font-size-large);
     padding: (@padding-large-vertical + 1) @padding-large-horizontal;
     font-size: @font-size-large;
-    line-height: @line-height-large;
+    line-height: @input-line-height-large;
   }
 }
 
