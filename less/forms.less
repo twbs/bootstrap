@@ -115,8 +115,8 @@ output {
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   padding: @padding-base-vertical @padding-base-horizontal;
-  font-size: @font-size-base;
-  line-height: @line-height-base;
+  font-size: @input-font-size;
+  line-height: @input-line-height;
   color: @input-color;
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
@@ -140,6 +140,9 @@ output {
   &[readonly],
   fieldset[disabled] & {
     background-color: @input-bg-disabled;
+    color: @input-color-disabled;
+    border-color: @input-border-disabled;
+    .placeholder(@input-color-disabled);
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
   }
 
@@ -318,7 +321,8 @@ input[type="checkbox"] {
 .input-sm {
   .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
 }
-.form-group-sm {
+.form-group-sm,
+.navbar {
   .form-control {
     height: @input-height-small;
     padding: @padding-small-vertical @padding-small-horizontal;
@@ -445,7 +449,8 @@ input[type="checkbox"] {
   display: block; // account for any element using help-block
   margin-top: 5px;
   margin-bottom: 10px;
-  color: lighten(@text-color, 25%); // lighten the text some for contrast
+  color: @gray-light; // lighten the text some for contrast
+  font-size: @font-size-small;
 }
 
 

@@ -47,12 +47,16 @@ textarea {
 
 a {
   color: @link-color;
-  text-decoration: none;
+  text-decoration: @link-decoration;
 
   &:hover,
   &:focus {
     color: @link-hover-color;
     text-decoration: @link-hover-decoration;
+  }
+
+  &:active {
+      color: @link-active-color;
   }
 
   &:focus {

@@ -1,21 +1,3 @@
-h1, h2, .btn {
-    text-transform: uppercase;
-}
-h3, h4, h5, h6 {
-    font-weight: 500;
-}
-h5, h6 {
-    //color: @gray-light;
-}
-
-h1, .h1, h2, .h2, h3, .h3 {
-    margin-top: 25px;
-    margin-bottom: 3.5px;
-}
-h4, .h4, h5, .h5, h6, .h6 {
-    margin-top: 18.5px;
-    margin-bottom: 3.5px;
-}
 
 
 /* Licensing for Avenir Next
@@ -81,7 +63,7 @@ Imaging with any questions regarding Web ../fonts:  http://webfonts.assets.com
     url('../fonts/SharpSansFrontieres-Light.svg#font') format('svg');
     font-weight: 300;
 }
-
+*/
 @font-face {
     font-family: 'Sharp Sans Frontieres';
     src: url('../../assets/SharpSansFrontieres-Medium.eot');
@@ -99,7 +81,28 @@ Imaging with any questions regarding Web ../fonts:  http://webfonts.assets.com
         url('../fonts/SharpSansFrontieres-Bold.svg#font') format('svg');
     font-weight: 600;
 }
-*/
+
+h1, h2, .btn {
+    text-transform: uppercase;
+}
+h1, h2 {
+    font-family: "Sharp Sans Frontieres", "Avenir", Helvetica, Arial, sans-serif;
+}
+h3, h4, h5, h6 {
+    font-weight: 500;
+}
+h5, h6 {
+    //color: @gray-light;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 25px;
+    margin-bottom: 3.5px;
+}
+h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 18.5px;
+    margin-bottom: 3.5px;
+}
 
 
 .panel {
@@ -151,12 +154,21 @@ Imaging with any questions regarding Web ../fonts:  http://webfonts.assets.com
    }
 }
 
+.nav,
+.navbar,
+.pager,
+.list-group,
+.dropdown-menu {
+    a {
+        text-decoration: none;
+    }
+}
+a.btn {
+    text-decoration: none;
+}
 
 .label {
     padding: 0.35em 0.6em 0.15em;
-}
-.badge {
-    padding: 4px 7px 2px;
 }
 .breadcrumb {
     padding: 10px 15px 8px;
@@ -178,16 +190,9 @@ Imaging with any questions regarding Web ../fonts:  http://webfonts.assets.com
     margin-top: 20.5px;
     margin-bottom: 18.5px;
 }
-.pager li > a,
-.pager li > span {
-    padding: 6px 14px 4px;
-}
 
 body {
     font-weight: 400;
-}
-strong {
-    color: @gray-dark;
 }
 address {
     margin-bottom: 11px;
@@ -209,27 +214,6 @@ blockquote footer {
     }
 }
 
-.btn {
-    font-family: @buttons-font-family;
-    font-size: @font-size-medium;
-    color: #FFF;
-    background-color: @brand-light-blue-minus-10;
-    border-radius: @border-radius-base;
-    padding: 13px 24px 11px;
-    &:hover,
-    &:focus {
-        color: #FFF;
-        background-color: @brand-light-blue-minus-20;
-        border-color: @brand-light-blue-minus-20;
-    }
-    &:active:hover,
-    &.active:hover {
-        color: #FFF;
-        background-color: @brand-light-blue;
-        border-color: @brand-light-blue;
-    }
-}
-
 .well,
 .form-control,
 .btn:active,
@@ -244,147 +228,9 @@ blockquote footer {
     color: @gray-light;
 }
 
-.btn-default {
-    color: @brand-light-blue-minus-10;
-    background-color: #FFF;
-    border-color: @brand-light-blue-minus-10;
-    &:hover,
-    &:focus {
-        color: #FFF;
-        background-color: @brand-light-blue-minus-10;
-        border-color: @brand-light-blue-minus-10;
-    }
-    &:active:hover {
-        color: #FFF;
-        background-color: @brand-light-blue;
-        border-color: @brand-light-blue;
-    }
-}
-.btn-primary {
-    color: #FFF;
-    background-color: @brand-light-blue-minus-10;
-    &:hover,
-    &:focus {
-        background-color: @brand-light-blue-minus-20;
-        border-color: @brand-light-blue-minus-20;
-    }
-    &:active:hover,
-    &.active:hover {
-        background-color: @brand-light-blue;
-        border-color: @brand-light-blue;
-    }
-}
-.btn-success {
-    color: #FFF;
-    background-color: @brand-green-minus-10;
-    &:hover,
-    &:focus {
-        background-color: @brand-green-minus-20;
-        border-color: @brand-green-minus-20;
-    }
-    &:active:hover,
-    &.active:hover {
-        background-color: @brand-green;
-        border-color: @brand-green;
-    }
-}
-.btn-info {
-    color: @brand-grey-minus-10;
-    background-color: #FFF;
-    border-color: @brand-grey-minus-10;
-    &:hover,
-    &:focus {
-        color: #FFF;
-        background-color: @brand-grey-minus-10;
-        border-color: @brand-grey-minus-10;
-    }
-    &:active:hover {
-        color: #FFF;
-        background-color: @brand-grey;
-        border-color: @brand-grey;
-    }
-}
-.btn-warning {
-    color: @brand-orange-minus-10;
-    background-color: #FFF;
-    border-color: @brand-orange-minus-10;
-    &:hover,
-    &:focus {
-        color: #FFF;
-        background-color: @brand-orange-minus-10;
-        border-color: @brand-orange-minus-10;
-    }
-    &:active:hover {
-        color: #FFF;
-        background-color: @brand-orange;
-        border-color: @brand-orange;
-    }
-}
-.btn-danger {
-    background-color: #FFF;
-    border-color: @brand-red-minus-10;
-    color: @brand-red-minus-10;
-    &:hover,
-    &:focus {
-        color: #FFF;
-        background-color: @brand-red-minus-10;
-        border-color: @brand-red-minus-10;
-    }
-    &:active:hover {
-        color: #FFF;
-        background-color: @brand-red;
-        border-color: @brand-red;
-    }
-}
-.btn-link {
-    font-weight: @btn-font-weight;
-    background: none;
-    color: @brand-light-blue-minus-10;
-    &:hover,
-    &:focus {
-        background: none;
-        border: 1px solid @brand-light-blue-minus-10;
-        color: @brand-light-blue-minus-10;
-        text-decoration: none;
-    }
-    &:active,
-    &.active {
-        color: #FFF;
-        background-color: @brand-light-blue;
-        border-color: @brand-light-blue;
-    }
-}
 
-.btn-sm,
-.btn-xs {
-    font-size: @font-size-base;
-    border-radius: @border-radius-small;
-}
-
-.btn-lg {
-    font-size: @font-size-large;
-}
-
-// Padding for TW styled buttons
-
-.btn {
-    padding: 13px 24px 11px !important;
-}
-
-.btn-xs {
-    padding: 5px 15px 3px !important;
-}
-
-.btn-sm {
-    padding: 8px 18px 6px !important;
-}
-
-.btn-lg {
-    padding: 15px 27px 12px !important;
-}
-
-.btn,
-.input-group-addon
+//.btn,
+.input-group-addon,
 .pagination > li > a,
 .pagination > li > span {
     padding: 7px 12px 5px;
@@ -393,42 +239,16 @@ blockquote footer {
         margin-top: -3px;
     }
 }
-.btn-xs,
-.btn-group-xs > .btn,
-.input-group-xs .form-control,
-.input-group-xs .input-group-addon {
-    padding: 2px 5px 0px;
-}
 
-.btn-sm,
-.btn-group-sm > .btn,
-.form-group-sm .btn,
-.input-group-sm .form-control,
-.input-group-sm .input-group-addon,
-.pagination-sm > li > a,
-.pagination-sm > li > span {
-    padding: 6px 10px 4px;
-}
-
-
-.btn-lg,
-.btn-group-lg > .btn,
-.input-group-lg .form-control,
-.input-group-lg .input-group-addon,
-.pagination-lg > li > a,
-.pagination-lg > li > span {
-    padding: 11px 16px 9px;
+.input-group .input-group-btn + input {
+    border-left: 0px solid transparent;
 }
 
 .form-control-feedback {
     font-size: 16px;
 }
 .form-horizontal .control-label {
-    padding-top: 8px;
-}
-.form-control-static {
-    padding-top: 8px;
-    padding-bottom: 6px;
+    padding-top: 13px;
 }
 
 .input-sm .form-control-feedback,
@@ -473,12 +293,14 @@ blockquote footer {
 .bg-primary {
     h1, h2, h3, h4, h5, h6 {
         color: #FFF;
-        font-weight: 600;
     }
 }
 .jumbotron {
     h1 {
         font-size: 42px;
+    }
+    h3, h4, h5, h6 {
+        font-weight: 600;
     }
 }
 
@@ -522,9 +344,16 @@ blockquote footer {
 .navbar:not(.navbar-inverse) {
     background-color: @brand-primary;
 }
-.navbar > .container .navbar-brand,
-.navbar > .container-fluid .navbar-brand {
-    margin-left: 0;
+.navbar {
+    > .container .navbar-brand,
+    > .container-fluid .navbar-brand {
+        margin-left: 0;
+    }
+
+    .navbar-btn {
+        margin-top: 13px;
+        margin-bottom: 13px;
+    }
 }
 
 .navbar .navbar-brand,
@@ -549,6 +378,9 @@ blockquote footer {
 .navbar-inverse .navbar-brand {
     background-image: @logo-full-primary;
 }
+.navbar-form {
+    margin-top: 14px;
+}
 
 .label {
     padding-top: 0.25em;
@@ -557,9 +389,13 @@ blockquote footer {
 
     .label-default {
         color: @gray-light;
-        background-color: @brand-default-hover;
+        background-color: @brand-smoke-plus-10;
     }
 }
+.help-block {
+    font-size: @font-size-small;
+}
+
 
 .btn .badge {
     top: -2px;
@@ -677,11 +513,8 @@ a.circle.active:hover {
 }
 
 .form-control {
-    border-radius: 3px;
-    font-size: 20px;
     font-weight: 500;
     height: initial;
-    padding: 13px 16px 11px;
 
     .placeholder(rgba(130,156,169, 0.5));
 }
@@ -689,4 +522,183 @@ a.circle.active:hover {
 .form-group label {
     color: @brand-grey-plus-20;
     font-weight: 500;
+
+    &.disabled {
+        color: @input-color-disabled;
+    }
+}
+
+.help-block {
+    font-size: @font-size-small;
+}
+
+
+.radio,
+.checkbox {
+    > label {
+      font-size: 18px;
+      margin-bottom: 12px;
+
+      position: relative;
+      display: block;
+
+      line-height: 48px;
+      height: 48px;
+      padding-left: 48px;
+
+      cursor: pointer;
+
+      color: @brand-primary;
+      border: 1px solid @brand-smoke;
+      border-radius: 3px;
+      background-color: @brand-smoke-plus-20;
+
+      transition: all 0.1s ease-in-out;
+      white-space: nowrap;
+
+      &:hover,
+      &:focus {
+        background-color: @brand-smoke-plus-10;
+      }
+
+      &:active:hover {
+        border-color: @brand-light-blue-minus-10;
+
+        input[type=radio],
+        input[type=checkbox] {
+          + span {
+            border-color: @brand-light-blue-minus-10;
+          }
+        }
+      }
+
+      input[type=radio],
+      input[type=checkbox] {
+        display: block;
+        position: absolute;
+        top: 14px;
+        left: 40px;
+
+        + span {
+          position: absolute;
+          display: inline-block;
+          top: 14px;
+          left: 15px;
+          vertical-align: middle;
+          border: 1px solid @brand-smoke;
+          background: #fff;
+
+          > span {
+            text-align: center;
+            width: 0px;
+            height: 0px;
+            margin: 12px 0 0 12px;
+            transition: all 0.1s ease-in;
+          }
+        }
+      }
+
+      input[type=radio] + span {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+
+      input[type=checkbox] + span {
+        width: 22px;
+        height: 22px;
+        border-radius: 3px;
+      }
+
+      input[type=radio]:checked,
+      input[type=checkbox]:checked {
+        + span {
+          border-color: @brand-light-blue-minus-10;
+
+          > span {
+            display: block;
+            background-color: @brand-light-blue-minus-10;
+          }
+        }
+      }
+
+      input[type=radio]:checked + span > span {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin: 5px;
+      }
+      input[type=checkbox]:checked + span > span {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        margin: 4px;
+      }
+
+    }
+
+    &[disabled],
+    &[readonly],
+    fieldset[disabled] &,
+    &.disabled,
+    &.readonly {
+      label {
+        color: @input-color-disabled;
+        border-color: @input-border-disabled;
+
+        &:hover {
+          background-color: @input-bg-disabled;
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+          + span {
+            border-color: @input-border-disabled;
+
+            > span {
+                background-color: @input-border-disabled;
+            }
+          }
+        }
+      }
+    }
+}
+
+.has-success {
+    .radio,
+    .checkbox {
+        > label {
+            //color: @brand-green;
+            border-color: @brand-green;
+        }
+    }
+}
+.has-warning {
+    .radio,
+    .checkbox {
+        > label {
+            //color: @brand-orange;
+            border-color: @brand-orange;
+        }
+    }
+}
+.has-error {
+    .radio,
+    .checkbox {
+        > label {
+            //color: @brand-red;
+            border-color: @brand-red;
+        }
+    }
+}
+
+.form-horizontal {
+    .checkbox,
+    .radio {
+        padding-top: 0;
+
+        > label {
+            margin-bottom: 0;
+        }
+    }
 }
