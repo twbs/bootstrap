@@ -235,7 +235,7 @@
 @btn-xs-line-height:             18px;
 
 @btn-sm-font-size:               12px;
-@btn-sm-line-height:             18px;
+@btn-sm-line-height:             22px;
 
 @btn-lg-font-size:               18px;
 @btn-lg-line-height:             28px;
@@ -340,9 +340,12 @@
 @input-border-disabled:          @brand-smoke-plus-10;
 
 @input-font-size:                20px;
-@input-line-height:              26px; // 20*1.3 = 26px;
+@input-line-height:              @btn-line-height;
 
+@input-font-size-small:          14px;
 @input-line-height-small:        @btn-sm-line-height;
+
+@input-font-size-large:          22px;
 @input-line-height-large:        @btn-lg-line-height;
 
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
@@ -523,6 +526,7 @@
 @navbar-default-bg:                @brand-primary;     //#f8f8f8;
 @navbar-default-border:            transparent; //darken(@navbar-default-bg, 6.5%);
 
+//=== Standard navbar
 // Navbar links
 @navbar-default-link-color:                #FFF;    // @link-color;     //#777;
 @navbar-default-link-hover-color:          @link-color; // #00B9FF;         //#333;
@@ -543,7 +547,7 @@
 @navbar-default-toggle-border-color:       transparent; //#ddd;
 
 
-// Inverted navbar
+//=== Inverted navbar
 // Reset inverted navbar basics
 @navbar-inverse-color:                      @brand-primary; //lighten(@gray-light, 15%);
 @navbar-inverse-bg:                         transparent;    //#222;
