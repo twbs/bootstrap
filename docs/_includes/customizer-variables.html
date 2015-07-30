@@ -1753,8 +1753,13 @@
 <h2 id="progress-bars">Progress bars</h2>
 <div class="row">
   <div class="col-xs-4">
+    <label for="input-@progress-height">@progress-height</label>
+    <input id="input-@progress-height" type="text" aria-describedby="help-block-@progress-height" value="36px" data-var="@progress-height" class="form-control"/>
+    <p id="help-block-@progress-height" class="help-block">Progress bar height</p>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@progress-bg">@progress-bg</label>
-    <input id="input-@progress-bg" type="text" aria-describedby="help-block-@progress-bg" value="#f5f5f5" data-var="@progress-bg" class="form-control"/>
+    <input id="input-@progress-bg" type="text" aria-describedby="help-block-@progress-bg" value="transparent" data-var="@progress-bg" class="form-control"/>
     <p id="help-block-@progress-bg" class="help-block">Background color of the whole progress component</p>
   </div>
   <div class="col-xs-4">
@@ -1762,12 +1767,12 @@
     <input id="input-@progress-bar-color" type="text" aria-describedby="help-block-@progress-bar-color" value="#fff" data-var="@progress-bar-color" class="form-control"/>
     <p id="help-block-@progress-bar-color" class="help-block">Progress bar text color</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@progress-border-radius">@progress-border-radius</label>
-    <input id="input-@progress-border-radius" type="text" aria-describedby="help-block-@progress-border-radius" value="@border-radius-base" data-var="@progress-border-radius" class="form-control"/>
+    <input id="input-@progress-border-radius" type="text" aria-describedby="help-block-@progress-border-radius" value="18px" data-var="@progress-border-radius" class="form-control"/>
     <p id="help-block-@progress-border-radius" class="help-block">Variable for setting rounded corners on progress bar.</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@progress-bar-bg">@progress-bar-bg</label>
     <input id="input-@progress-bar-bg" type="text" aria-describedby="help-block-@progress-bar-bg" value="@brand-primary" data-var="@progress-bar-bg" class="form-control"/>
@@ -1778,12 +1783,12 @@
     <input id="input-@progress-bar-success-bg" type="text" aria-describedby="help-block-@progress-bar-success-bg" value="@brand-success" data-var="@progress-bar-success-bg" class="form-control"/>
     <p id="help-block-@progress-bar-success-bg" class="help-block">Success progress bar color</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@progress-bar-warning-bg">@progress-bar-warning-bg</label>
     <input id="input-@progress-bar-warning-bg" type="text" aria-describedby="help-block-@progress-bar-warning-bg" value="@brand-warning" data-var="@progress-bar-warning-bg" class="form-control"/>
     <p id="help-block-@progress-bar-warning-bg" class="help-block">Warning progress bar color</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@progress-bar-danger-bg">@progress-bar-danger-bg</label>
     <input id="input-@progress-bar-danger-bg" type="text" aria-describedby="help-block-@progress-bar-danger-bg" value="@brand-danger" data-var="@progress-bar-danger-bg" class="form-control"/>

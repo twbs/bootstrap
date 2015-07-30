@@ -466,11 +466,11 @@ fieldset[disabled] .btn-danger.active {
   border-color: rgba(0, 0, 0, 0);
 }
 .progress {
-  background-image: -webkit-linear-gradient(top, #ebebeb 0%, #f5f5f5 100%);
-  background-image:      -o-linear-gradient(top, #ebebeb 0%, #f5f5f5 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#f5f5f5));
-  background-image:         linear-gradient(to bottom, #ebebeb 0%, #f5f5f5 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffebebeb', endColorstr='#fff5f5f5', GradientType=0);
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, transparent 100%);
+  background-image:      -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, transparent 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(transparent));
+  background-image:         linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, transparent 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#00000000', GradientType=0);
   background-repeat: repeat-x;
 }
 .progress-bar {
