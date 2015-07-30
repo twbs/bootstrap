@@ -439,10 +439,8 @@ h4 code {
   padding-bottom: 40px;
   font-size: 16px;
   line-height: 1.5;
-  color: #555;
   text-align: center;
   background-color: #fff;
-  border-bottom: 1px solid #e5e5e5;
 }
 .bs-docs-featurette + .bs-docs-footer {
   margin-top: 0;
@@ -452,8 +450,6 @@ h4 code {
 .bs-docs-featurette-title {
   margin-bottom: 5px;
   font-size: 30px;
-  font-weight: normal;
-  color: #333;
 }
 .half-rule {
   width: 100px;
@@ -462,7 +458,6 @@ h4 code {
 .bs-docs-featurette h3 {
   margin-bottom: 5px;
   font-weight: normal;
-  color: #333;
 }
 .bs-docs-featurette-img {
   display: block;
@@ -1613,31 +1608,3 @@ h1[id] {
   -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
           box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
-/*
-.jumbotron-image-cover {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: url("../../img/css-bg.jpg") no-repeat center top;
-  background-size: cover;
-}
-.jumbotron-image-cover:after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: 1000px;
-  content: " ";
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(34, 48, 73, .45)), to(rgba(34, 48, 73, .45))), url("../../img/css-bg.jpg");
-  background: -webkit-linear-gradient(rgba(34, 48, 73, .45), rgba(34, 48, 73, .45)), url("../../img/css-bg.jpg");
-  background:      -o-linear-gradient(rgba(34, 48, 73, .45), rgba(34, 48, 73, .45)), url("../../img/css-bg.jpg");
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(34, 48, 73, .45)), to(rgba(34, 48, 73, .45)));
-  background: -webkit-linear-gradient(rgba(34, 48, 73, .45), rgba(34, 48, 73, .45));
-  background:      -o-linear-gradient(rgba(34, 48, 73, .45), rgba(34, 48, 73, .45));
-  background:         linear-gradient(
-  rgba(34, 48, 73, .45),
-  rgba(34, 48, 73, .45)
-  );
-}
-*/

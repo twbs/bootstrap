@@ -198,7 +198,7 @@ address {
     margin-bottom: 11px;
 }
 footer {
-    background-color: @gray-base;
+    //background-color: @gray-base;
 }
 blockquote footer {
     background-color: transparent;
@@ -256,22 +256,113 @@ blockquote footer {
 }
 
 .jumbotron,
-.bg-primary {
+.bg-primary,
+.bg-info {
     h1, h2, h3, h4, h5, h6 {
         color: #FFF;
     }
 }
-.jumbotron {
-    h1 {
-        font-size: 42px;
+.bg-info a:not(.btn) {
+    color: @brand-white;
+
+    &:hover,
+    &:focus {
+        color: @brand-smoke-plus-20;
     }
+
+    &:active {
+        color: @brand-smoke-plus-10;
+    }
+}
+.jumbotron {
     h3, h4, h5, h6 {
         font-weight: 600;
     }
 }
 
-.bg-default {
+.jumbotron-image > .jumbotron {
+    background-color: @brand-primary;
+
+    @media (min-width: @screen-sm-min) {
+        background-color: rgba(34, 48, 73, .9);
+    }
+    @media (min-width: @screen-md-min) {
+        background-color: rgba(34, 48, 73, .75);
+    }
+    @media (min-width: @screen-lg-min) {
+        background-color: transparent;
+    }
+}
+.jumbotron-image {
+  background-repeat: no-repeat;
+  background-position: center top;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+}
+
+.jumbotron-image,
+:not(.jumbotron-image) > .jumbotron {
+    -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
+       -moz-clip-path: polygon(50% 17%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
+            clip-path: polygon(50% 17%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
+
+}
+
+
+.navbar:not(.affix) + .jumbotron,
+.navbar:not(.affix) + .jumbotron-image {
+  margin-top: -60px;
+}
+.navbar + .jumbotron,
+.navbar + .jumbotron-image > .jumbotron {
+    padding-top: 55px;
+
+    padding-bottom: 100px;
+
+    @media (min-width: @screen-sm-min) {
+        padding-top: 80px;
+        padding-bottom: 120px;
+    }
+}
+
+
+@media (max-width: @screen-xs-max) {
+    .navbar .collapse,
+    .navbar .collapsing {
+        background-color: @brand-primary;
+    }
+
+    .navbar {
+        background-color: @brand-primary;
+        border-bottom-color: transparent;
+    }
+}
+
+
+.bg-default,
+footer {
     background-color: @gray-base;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: @brand-primary;
+    }
+}
+footer {
+    a:not(.btn) {
+
+        color: @brand-grey-plus-20;
+
+        &:hover,
+        &:focus {
+            color: @brand-grey-plus-10;
+        }
+
+        &:active {
+            color: @brand-grey;
+        }
+    }
 }
 
 
@@ -307,9 +398,6 @@ blockquote footer {
     }
 }
 
-.navbar:not(.navbar-inverse) {
-    background-color: @brand-primary;
-}
 .navbar {
     > .container .navbar-brand,
     > .container-fluid .navbar-brand {
@@ -345,7 +433,7 @@ blockquote footer {
     background-image: @logo-full-primary;
 }
 .navbar-form {
-    margin-top: 14px;
+    margin-top: 13px;
 }
 
 .label {
