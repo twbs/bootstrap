@@ -5182,6 +5182,11 @@ a.badge:focus {
     font-size: 22px;
   }
 }
+@media screen and (max-width: 991px) {
+  .jumbotron {
+    text-align: center;
+  }
+}
 .thumbnail {
   display: block;
   padding: 4px;
