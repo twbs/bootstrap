@@ -665,7 +665,7 @@ h4 code {
   }
   .bs-docs-sidebar.affix {
     position: fixed; /* Undo the static from mobile first approach */
-    top: 20px;
+    top: 80px;
   }
   .bs-docs-sidebar.affix-bottom {
     position: absolute; /* Undo the static from mobile first approach */
