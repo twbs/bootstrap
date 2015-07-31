@@ -110,7 +110,7 @@
     .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
       var $btn = $(e.target).closest('.btn')
       Plugin.call($btn, 'toggle')
-      if (!($(e.target).is('input[type="radio"]') || $(e.target).is('input[type="checkbox"]'))) {
+      if (!($(e.target).is('input[type="radio"], input[type="checkbox"]'))) {
         // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
         e.preventDefault()
         // The target component still receive the focus
