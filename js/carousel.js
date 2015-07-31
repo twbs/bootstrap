@@ -104,13 +104,11 @@
   }
 
   Carousel.prototype.next = function () {
-    if (this.sliding) return
-    return this.slide('next')
+    if (!this.sliding) return this.slide('next')
   }
 
   Carousel.prototype.prev = function () {
-    if (this.sliding) return
-    return this.slide('prev')
+    if (!this.sliding) return this.slide('prev')
   }
 
   Carousel.prototype.slide = function (type, next) {
