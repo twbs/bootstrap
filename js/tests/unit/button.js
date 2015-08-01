@@ -165,4 +165,43 @@ $(function () {
     assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
   })
 
+  QUnit.test('should check for closest matching toggle for radio buttons and checkboxes only', function (assert) {
+    assert.expect(12)
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
+      + '<label class="btn btn-primary active">'
+      + '<input type="hidden" name="options">'
+      + '<input type="checkbox" name="options" id="option1" checked="true"> Option 1'
+      + '</label>'
+      + '<label class="btn btn-primary">'
+      + '<input type="hidden" name="options">'
+      + '<input type="checkbox" name="options" id="option2"> Option 2'
+      + '</label>'
+      + '<label class="btn btn-primary">'
+      + '<input type="hidden" name="options">'
+      + '<input type="checkbox" name="options" id="option3"> Option 3'
+      + '</label>'
+      + '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn1 = $group.children().eq(0)
+    var $btn2 = $group.children().eq(1)
+
+    assert.ok($btn1.hasClass('active'), 'btn1 has active class')
+    assert.ok($btn1.find('input[type="checkbox"]').prop('checked'), 'btn1 is checked')
+    assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
+    assert.ok(!$btn2.find('input[type="checkbox"]').prop('checked'), 'btn2 is not checked')
+
+    $btn2.find('input[type="checkbox"]').trigger('click')
+    assert.ok($btn1.hasClass('active'), 'btn1 has active class')
+    assert.ok($btn1.find('input[type="checkbox"]').prop('checked'), 'btn1 is checked')
+    assert.ok($btn2.hasClass('active'), 'btn2 has active class')
+    assert.ok($btn2.find('input[type="checkbox"]').prop('checked'), 'btn2 is checked')
+
+    $btn2.find('input[type="checkbox"]').trigger('click') // clicking an already checked checkbox should un-check it
+    assert.ok($btn1.hasClass('active'), 'btn1 has active class')
+    assert.ok($btn1.find('input[type="checkbox"]').prop('checked'), 'btn1 is checked')
+    assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
+    assert.ok(!$btn2.find('input[type="checkbox"]').prop('checked'), 'btn2 is not checked')
+  })
+
 })
