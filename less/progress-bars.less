@@ -40,13 +40,16 @@
   font-size: @font-size-base;
   line-height: @progress-height;
   color: @progress-bar-color;
-  text-align: center;
+  text-align: right;
   background-color: @progress-bar-bg;
   //.box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
   .transition(width .6s ease);
 
   min-width: @progress-height;
-  
+  padding-right: 12px;
+  padding-left: 9px;
+  font-weight: bold;
+
   &:first-child {
       border-top-left-radius: @progress-border-radius;
       border-bottom-left-radius: @progress-border-radius;

@@ -138,12 +138,12 @@
 @font-size-medium:        16px;
 @font-size-small:         12px; // ~12px
 
-@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h1:            36px;
 @font-size-h2:            28px; //floor((@font-size-base * 2.15)); // ~30px
 @font-size-h3:            24px; //ceil((@font-size-base * 1.7)); // ~24px
 @font-size-h4:            22px; //ceil((@font-size-base * 1.25)); // ~18px
 @font-size-h5:            18px; //@font-size-base;
-@font-size-h6:            16px; //ceil((@font-size-base * 0.85)); // ~12px
+@font-size-h6:            14px; //ceil((@font-size-base * 0.85)); // ~12px
 
 //** Unit-less `line-height` for use in components like buttons.
 @line-height-base:        1.5555555; // 28/18
@@ -527,61 +527,52 @@
 @navbar-collapse-max-height:       340px;
 
 //=== Standard navbar
-/*
-@ navbar-default-color:             #fff;        //#777;
-@ navbar-default-bg:                @brand-primary;     //#f8f8f8;
-@ navbar-default-border:            transparent; //darken(@navbar-default-bg, 6.5%);
-*/
-
-@navbar-default-color:                      #FFF;
+// Navbar basics
+@navbar-default-color:                      @brand-primary;
 @navbar-default-bg:                         transparent;
-@navbar-default-border:                     rgba(255,255,255,0.15);
+@navbar-default-border:                     rgba(0,0,0,0.2);
 
-// Navbar links
-
-@navbar-default-link-color:                 #FFF;
+//  Navbar links
+@navbar-default-link-color:                 @brand-primary;
 @navbar-default-link-hover-color:           @link-hover-color;
 @navbar-default-link-hover-bg:              transparent;
-@navbar-default-link-active-color:          @link-hover-color;
-@navbar-default-link-active-bg:             rgba(0,0,0,0.15);
-@navbar-default-link-disabled-color:        #444;
+@navbar-default-link-active-color:          @link-active-color;
+@navbar-default-link-active-bg:             rgba(0,0,0,0.05);
+@navbar-default-link-disabled-color:        @brand-smoke;
 @navbar-default-link-disabled-bg:           transparent;
 
 // Navbar brand label
-@navbar-default-brand-color:               @navbar-default-link-color;
-@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
-@navbar-default-brand-hover-bg:            transparent;
+@navbar-default-brand-color:                @navbar-inverse-link-color;
+@navbar-default-brand-hover-color:          #fff;
+@navbar-default-brand-hover-bg:             transparent;
 
 // Navbar toggle
-/*
-@ navbar-default-toggle-hover-bg:           #192439;     //#ddd;
-@ navbar-default-toggle-icon-bar-bg:        #fff;        //#888;
-@ navbar-default-toggle-border-color:       transparent; //#ddd;
-*/
 @navbar-default-toggle-hover-bg:            transparent;
 @navbar-default-toggle-icon-bar-bg:         @brand-light-blue;
 @navbar-default-toggle-border-color:        transparent;
 @navbar-default-toggle-hover-border-color:  @brand-light-blue;
 
+
+
 //=== Inverted navbar
 // Reset inverted navbar basics
-@navbar-inverse-color:                      @brand-primary;
+@navbar-inverse-color:                      #FFF;
 @navbar-inverse-bg:                         transparent;
-@navbar-inverse-border:                     rgba(0,0,0,0.2);
+@navbar-inverse-border:                     rgba(255,255,255,0.15);
 
 // Inverted navbar links
-@navbar-inverse-link-color:                 @brand-primary;
+@navbar-inverse-link-color:                 #FFF;
 @navbar-inverse-link-hover-color:           @link-hover-color;
 @navbar-inverse-link-hover-bg:              transparent;
-@navbar-inverse-link-active-color:          @link-active-color;
-@navbar-inverse-link-active-bg:             rgba(0,0,0,0.05);
-@navbar-inverse-link-disabled-color:        @brand-smoke;
+@navbar-inverse-link-active-color:          @link-hover-color;
+@navbar-inverse-link-active-bg:             rgba(0,0,0,0.15);
+@navbar-inverse-link-disabled-color:        #444;
 @navbar-inverse-link-disabled-bg:           transparent;
 
 // Inverted navbar brand label
-@navbar-inverse-brand-color:                @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color:          #fff;
-@navbar-inverse-brand-hover-bg:             transparent;
+@navbar-inverse-brand-color:               @navbar-default-link-color;
+@navbar-inverse-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
+@navbar-inverse-brand-hover-bg:            transparent;
 
 // Inverted navbar toggle
 @navbar-inverse-toggle-hover-bg:            transparent;
@@ -596,21 +587,23 @@
 
 //=== Shared nav styles
 @nav-link-padding:                          10px 15px;
-@nav-link-hover-bg:                         @gray-base; // @gray-lighter;
+@nav-link-hover-bg:                         @brand-smoke-plus-20;
 
 @nav-disabled-link-color:                   @gray-light;
 @nav-disabled-link-hover-color:             @gray-light;
 
 //== Tabs
-@nav-tabs-border-color:                     #ddd;
+@nav-tabs-font-size:                        14px;
+@nav-tabs-color:                            @brand-grey-plus-10;
+@nav-tabs-border-color:                     @brand-smoke;
 
-@nav-tabs-link-hover-border-color:          @gray-base; // @gray-lighter;
+@nav-tabs-link-hover-border-color:          @brand-smoke;
 
-@nav-tabs-active-link-hover-bg:             @body-bg;
-@nav-tabs-active-link-hover-color:          @gray;
-@nav-tabs-active-link-hover-border-color:   #ddd;
+@nav-tabs-active-link-hover-bg:             @brand-smoke-plus-20;
+@nav-tabs-active-link-hover-color:          @brand-light-blue-minus-10;
+@nav-tabs-active-link-hover-border-color:   @brand-light-blue-minus-10;
 
-@nav-tabs-justified-link-border-color:            #ddd;
+@nav-tabs-justified-link-border-color:            @brand-smoke;
 @nav-tabs-justified-active-link-border-color:     @body-bg;
 
 //== Pills
@@ -824,7 +817,7 @@
 //** Progress bar height
 @progress-height:             36px;
 //** Background color of the whole progress component
-@progress-bg:                 transparent;
+@progress-bg:                 @brand-smoke-plus-20;
 //** Progress bar text color
 @progress-bar-color:          #fff;
 //** Variable for setting rounded corners on progress bar.

@@ -1072,23 +1072,27 @@ h1[id] {
   margin-left: 0;
 }
 .bs-navbar-top-example {
-  padding-bottom: 45px;
+  padding-bottom: 60px;
 }
 .bs-navbar-top-example:after {
   top: auto;
   bottom: 15px;
+  content: "";
 }
 .bs-navbar-top-example .navbar-fixed-top {
   top: -1px;
 }
 .bs-navbar-bottom-example {
-  padding-top: 45px;
+  padding-top: 60px;
 }
 .bs-navbar-bottom-example .navbar-fixed-bottom {
   bottom: -1px;
 }
 .bs-navbar-bottom-example .navbar {
   margin-bottom: 0;
+}
+.bs-navbar-bottom-example:after {
+  content: "";
 }
 @media (min-width: 768px) {
   .bs-navbar-top-example .navbar-fixed-top,

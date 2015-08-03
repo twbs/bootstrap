@@ -82,17 +82,34 @@ Imaging with any questions regarding Web ../fonts:  http://webfonts.assets.com
     font-weight: 600;
 }
 
-h1, h2, .btn {
+h1, h2, h3, h6, .btn {
     text-transform: uppercase;
 }
-h1, h2 {
+h1, h2, h3 {
     font-family: "Sharp Sans Frontieres", "Avenir", Helvetica, Arial, sans-serif;
 }
-h3, h4, h5, h6 {
+h4, h5 {
     font-weight: 500;
+    color: @brand-grey-plus-10;
 }
-h5, h6 {
-    //color: @gray-light;
+h6 {
+    font-weight: 500;
+    color: @brand-grey-plus-20;
+}
+
+.bg-default {
+    background-color: @gray-base;
+
+    h1, h2, h3 {
+        color: @brand-blue;
+    }
+}
+.jumbotron,
+.bg-primary,
+.bg-info {
+    h1, h2, h3, h4, h5, h6 {
+        color: @brand-white;;
+    }
 }
 
 h1, .h1, h2, .h2, h3, .h3 {
@@ -198,7 +215,7 @@ address {
     margin-bottom: 11px;
 }
 footer {
-    //background-color: @gray-base;
+    background-color: @gray-base;
 }
 blockquote footer {
     background-color: transparent;
@@ -255,13 +272,6 @@ blockquote footer {
     color: @gray-light;
 }
 
-.jumbotron,
-.bg-primary,
-.bg-info {
-    h1, h2, h3, h4, h5, h6 {
-        color: #FFF;
-    }
-}
 .bg-info a:not(.btn) {
     color: @brand-white;
 
@@ -341,8 +351,8 @@ blockquote footer {
 }
 
 
-.bg-default,
-footer {
+footer,
+.bg-default {
     background-color: @gray-base;
 
     h1, h2, h3, h4, h5, h6 {
@@ -427,13 +437,23 @@ footer {
     }
 }
 .navbar .navbar-brand {
-    background-image: @logo-full-inverse;
+    background-image: @logo-full-primary;
 }
 .navbar-inverse .navbar-brand {
-    background-image: @logo-full-primary;
+    background-image: @logo-full-inverse;
 }
 .navbar-form {
     margin-top: 13px;
+}
+
+.navbar.bg-primary {
+    background-color: @brand-primary;
+}
+.navbar.bg-info {
+    background-color: @brand-light-blue;
+}
+.navbar.bg-default {
+    background-color: @gray-base;
 }
 
 .label {
