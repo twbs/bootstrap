@@ -1,18 +1,11 @@
-<header class="navbar navbar-static-top bd-sidebar" id="top" role="banner">
-  <a href="{{ site.baseurl }}/" class="navbar-brand">
-    Bootstrap 4 Alpha
-  </a>
-
-  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#docsNavbarContent">
-    &#9776;
-  </button>
+<div class="bd-sidebar">
 
   <form class="bd-search hidden-sm-down">
     <input type="text" class="form-control" id="search-input" placeholder="Search...">
     <ul class="dropdown-menu bd-search-results" id="search-results"></ul>
   </form>
 
-  <nav class="bd-links collapse navbar-toggleable-xs" id="docsNavbarContent">
+  <nav class="bd-links" id="docsNavbarContent">
     {% for group in site.data.nav %}
       {% assign link = group.pages | first %}
       {% assign slug = group.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-' %}
@@ -64,4 +57,4 @@
       </div>
     {% endfor %}
   </nav>
-</header>
+</div>

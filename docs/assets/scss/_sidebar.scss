@@ -3,59 +3,59 @@
 //
 
 .bd-sidebar {
-  padding: 0;
-  margin-bottom: 0;
-  background-color: #fafafa;
+  // padding: 0;
+  // margin-bottom: 0;
+  // background-color: #fafafa;
 
-  .navbar-toggler {
-    position: absolute;
-    top: 1rem;
-    right: 0;
-    z-index: 5;
-  }
-}
-
-.bd-sidebar .navbar-header {
-  float: none;
-  margin-right: -15px;
+  // .navbar-toggler {
+  //   position: absolute;
+  //   top: 1rem;
+  //   right: 0;
+  //   z-index: 5;
+  // }
 }
 
-.bd-sidebar .navbar-collapse {
-  padding: 0;
-  border: 0;
-}
+// .bd-sidebar .navbar-header {
+//   float: none;
+//   margin-right: -15px;
+// }
+//
+// .bd-sidebar .navbar-collapse {
+//   padding: 0;
+//   border: 0;
+// }
 
-@media (min-width: 992px) {
-  .bd-docs {
-    margin-left: 240px;
-  }
-  .bd-sidebar {
-    position: fixed;
-    top: 3.7rem;
-    bottom: 0;
-    left: 0;
-    width: 240px;
-    overflow-y: auto;
-    border-right: 1px solid #eee;
-    -webkit-transform: translated3d(0,0,0); // Ensure proper scrolling of sidebar
-  }
-}
-
-.bd-sidebar .navbar-brand {
-  display: block;
-  float: none;
-  height: auto;
-  padding: 1.55rem 1.25rem;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1;
-  // color: #fff;
-}
-.bd-sidebar-brand:hover,
-.bd-sidebar-brand:focus {
-  // color: #fff;
-  text-decoration: none;
-}
+// @media (min-width: 992px) {
+  // .bd-docs {
+  //   margin-left: 240px;
+  // }
+  // .bd-sidebar {
+  //   position: fixed;
+  //   top: 3.7rem;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 240px;
+  //   overflow-y: auto;
+  //   border-right: 1px solid #eee;
+  //   -webkit-transform: translated3d(0,0,0); // Ensure proper scrolling of sidebar
+  // }
+// }
+//
+// .bd-sidebar .navbar-brand {
+//   display: block;
+//   float: none;
+//   height: auto;
+//   padding: 1.55rem 1.25rem;
+//   font-size: 20px;
+//   font-weight: 500;
+//   line-height: 1;
+//   // color: #fff;
+// }
+// .bd-sidebar-brand:hover,
+// .bd-sidebar-brand:focus {
+//   // color: #fff;
+//   text-decoration: none;
+// }
 
 .bd-search {
   position: relative;

@@ -5,7 +5,7 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 .bd-docs {
-  padding-top: 3.7rem; }
+  padding-top: 5rem; }
 
 .bd-container {
   position: relative;
@@ -60,50 +60,6 @@
 
 #markdown-toc > li:first-child {
   display: none; }
-
-.bd-sidebar {
-  padding: 0;
-  margin-bottom: 0;
-  background-color: #fafafa; }
-  .bd-sidebar .navbar-toggler {
-    position: absolute;
-    top: 1rem;
-    right: 0;
-    z-index: 5; }
-
-.bd-sidebar .navbar-header {
-  float: none;
-  margin-right: -15px; }
-
-.bd-sidebar .navbar-collapse {
-  padding: 0;
-  border: 0; }
-
-@media (min-width: 992px) {
-  .bd-docs {
-    margin-left: 240px; }
-  .bd-sidebar {
-    position: fixed;
-    top: 3.7rem;
-    bottom: 0;
-    left: 0;
-    width: 240px;
-    overflow-y: auto;
-    border-right: 1px solid #eee;
-    -webkit-transform: translated3d(0, 0, 0); } }
-
-.bd-sidebar .navbar-brand {
-  display: block;
-  float: none;
-  height: auto;
-  padding: 1.55rem 1.25rem;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1; }
-
-.bd-sidebar-brand:hover,
-.bd-sidebar-brand:focus {
-  text-decoration: none; }
 
 .bd-search {
   position: relative;
