@@ -3278,6 +3278,11 @@ a.label:hover {
   text-decoration: none;
   cursor: pointer; }
 
+.label-pill {
+  padding-left: .6em;
+  padding-right: .6em;
+  border-radius: 1rem; }
+
 .label-default {
   background-color: #818a91; }
   .label-default[href]:focus,

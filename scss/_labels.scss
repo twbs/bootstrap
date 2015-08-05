@@ -36,6 +36,16 @@ a.label {
   }
 }
 
+// Pill labels
+//
+// Make them extra rounded with a modifier to replace v3's badges.
+
+.label-pill {
+  padding-left: .6em;
+  padding-right: .6em;
+  border-radius: 1rem;
+}
+
 
 // Colors
 //

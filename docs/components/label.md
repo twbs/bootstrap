@@ -30,3 +30,16 @@ Add any of the below mentioned modifier classes to change the appearance of a la
 <span class="label label-warning">Warning</span>
 <span class="label label-danger">Danger</span>
 {% endexample %}
+
+### Pill labels
+
+Use the `.label-pill` modifier class to increase the rounded corners. Useful if you miss the badges from v3.
+
+{% example html %}
+<span class="label label-pill label-default">Default</span>
+<span class="label label-pill label-primary">Primary</span>
+<span class="label label-pill label-success">Success</span>
+<span class="label label-pill label-info">Info</span>
+<span class="label label-pill label-warning">Warning</span>
+<span class="label label-pill label-danger">Danger</span>
+{% endexample %}
