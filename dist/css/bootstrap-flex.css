@@ -3319,43 +3319,6 @@ a.label:hover {
   .label-danger[href]:hover {
     background-color: #c9302c; }
 
-.badge {
-  position: relative;
-  top: -.1em;
-  display: inline-block;
-  padding-right: .6em;
-  padding-left: .6em;
-  font-size: .75em;
-  font-weight: bold;
-  line-height: 1.5;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  background-color: #818a91;
-  border-radius: 2em; }
-  .badge:empty {
-    display: none; }
-  .badge.pull-left,
-  .badge.pull-right {
-    top: .2em; }
-  .list-group-item.active > .badge,
-  .nav-pills > .active > a > .badge {
-    color: #0275d8;
-    background-color: #fff; }
-  .list-group-item > .badge {
-    float: right; }
-  .list-group-item > .badge + .badge {
-    margin-right: 5px; }
-  .nav-pills > li > a > .badge {
-    margin-left: 3px; }
-
-a.badge:focus,
-a.badge:hover {
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer; }
-
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
