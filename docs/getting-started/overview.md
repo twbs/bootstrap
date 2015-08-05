@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Getting started
+lead: Quickly add Bootstrap to your project via the Bootstrap CDN, graciously provided by the MaxCDN folks.
 ---
 
-Quickly add Bootstrap to your project via the [Bootstrap CDN](http://bootstrapcdn.com), graciously provided by the [MaxCDN](http://www.maxcdn.com/) folks.
 
 ## Include CSS and JS
 

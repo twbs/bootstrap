@@ -5,7 +5,7 @@
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
 .bd-docs {
-  padding-top: 5rem; }
+  padding-top: 3.65rem; }
 
 .bd-container {
   position: relative;
@@ -41,7 +41,23 @@
     .bd-container > table td:first-child > code {
       white-space: nowrap; }
 
-.bd-content > h2 {
+.bd-pageheader {
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: #cdbfe3;
+  background-color: #563d7c; }
+  .bd-pageheader h1 {
+    font-weight: normal;
+    color: #fff; }
+  @media (min-width: 34em) {
+    .bd-pageheader {
+      padding-top: 4rem;
+      padding-bottom: 4rem; }
+      .bd-pageheader .carbonad {
+        float: right; } }
+
+.bd-content > h2:not(:first-child) {
   margin-top: 3rem; }
 
 .bd-content > h3 {
