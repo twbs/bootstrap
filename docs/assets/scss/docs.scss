@@ -29,7 +29,7 @@
 $bd-purple:         #563d7c;
 $bd-purple-light:   #cdbfe3;
 $bd-graphite:       #2a2730;
-$bd-graphite-light: #99979c;
+$bd-graphite-light: lighten($bd-graphite, 40%);
 $bd-yellow:         #ffe484;
 $bd-danger:         #d9534f;
 $bd-warning:        #f0ad4e;
