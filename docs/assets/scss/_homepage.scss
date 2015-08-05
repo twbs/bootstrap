@@ -92,12 +92,15 @@
 .bd-masthead {
   position: relative;
   padding: ($grid-gutter-width / 2);
+  color: $bd-graphite-light;
   text-align: center;
+  background: -webkit-linear-gradient(to bottom, $bd-graphite, lighten($bd-graphite, 7.5%));
+  background: linear-gradient(to bottom, $bd-graphite, lighten($bd-graphite, 7.5%));
 
   .bd-booticon {
     margin: 0 auto 2rem;
-    color: $bd-purple;
-    border-color: $bd-purple;
+    color: $bd-purple-bright;
+    border-color: $bd-purple-bright;
   }
 
   h1 {
@@ -122,12 +125,13 @@
     padding: 1rem 2rem;
     font-size: 1.25rem;
     font-weight: 500;
-    color: $gray;
-    border-color: $gray;
+    color: $bd-yellow;
+    border-color: $bd-yellow;
 
     &:hover {
-      color: #fff;
-      background-color: $gray;
+      color: $bd-graphite;
+      background-color: $bd-yellow;
+      border-color: $bd-yellow;
     }
   }
 
@@ -136,7 +140,7 @@
   }
 
   @include media-breakpoint-up(sm) {
-    padding-top: 2rem;
+    padding-top: 8rem;
     padding-bottom: 2rem;
 
     .btn {
@@ -187,7 +191,7 @@
   font-size: 1rem;
   line-height: 1.5;
   color: #555;
-  text-align: center;
+  // text-align: center;
   background-color: #fff;
   border-top: 1px solid #eee;
 
@@ -201,10 +205,15 @@
   font-size: 2rem;
   font-weight: normal;
   color: #333;
+
+  + .lead {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
 }
 .half-rule {
   width: 6rem;
-  margin: 2.5rem auto;
+  margin: 2.5rem 0;
 }
 .bd-featurette h4 {
   margin-top: 1rem;
@@ -241,8 +250,8 @@
   }
   .bd-featurette .lead {
     max-width: 80%;
-    margin-right: auto;
-    margin-left: auto;
+    // margin-right: auto;
+    // margin-left: auto;
   }
   .bd-featurette .img-responsive {
     margin-top: 0;

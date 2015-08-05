@@ -254,11 +254,14 @@
 .bd-masthead {
   position: relative;
   padding: 0.75rem;
-  text-align: center; }
+  color: #8e869d;
+  text-align: center;
+  background: -webkit-linear-gradient(to bottom, #2a2730, #3c3845);
+  background: linear-gradient(to bottom, #2a2730, #3c3845); }
   .bd-masthead .bd-booticon {
     margin: 0 auto 2rem;
-    color: #563d7c;
-    border-color: #563d7c; }
+    color: #9062d7;
+    border-color: #9062d7; }
   .bd-masthead h1 {
     font-weight: 300;
     line-height: 1; }
@@ -275,16 +278,17 @@
     padding: 1rem 2rem;
     font-size: 1.25rem;
     font-weight: 500;
-    color: #55595c;
-    border-color: #55595c; }
+    color: #ffe484;
+    border-color: #ffe484; }
     .bd-masthead .btn:hover {
-      color: #fff;
-      background-color: #55595c; }
+      color: #2a2730;
+      background-color: #ffe484;
+      border-color: #ffe484; }
   .bd-masthead .carbonad {
     margin-bottom: -2rem !important; }
   @media (min-width: 34em) {
     .bd-masthead {
-      padding-top: 2rem;
+      padding-top: 8rem;
       padding-bottom: 2rem; }
       .bd-masthead .btn {
         width: auto; }
@@ -312,7 +316,6 @@
   font-size: 1rem;
   line-height: 1.5;
   color: #555;
-  text-align: center;
   background-color: #fff;
   border-top: 1px solid #eee; }
   .bd-featurette .highlight {
@@ -323,10 +326,13 @@
   font-size: 2rem;
   font-weight: normal;
   color: #333; }
+  .bd-featurette-title + .lead {
+    font-size: 1.5rem;
+    margin-bottom: 2rem; }
 
 .half-rule {
   width: 6rem;
-  margin: 2.5rem auto; }
+  margin: 2.5rem 0; }
 
 .bd-featurette h4 {
   margin-top: 1rem;
@@ -358,9 +364,7 @@
   .bd-featurette-title {
     font-size: 2.5rem; }
   .bd-featurette .lead {
-    max-width: 80%;
-    margin-right: auto;
-    margin-left: auto; }
+    max-width: 80%; }
   .bd-featurette .img-responsive {
     margin-top: 0; } }
 

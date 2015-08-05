@@ -18,32 +18,29 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
 
 <div class="bd-featurette">
   <div class="container">
-    <h2 class="bs-docs-featurette-title">Easy to get started.</h2>
+    <h2 class="bd-featurette-title">Easy to get started.</h2>
     <p class="lead">Quickly include Bootstrap's CSS and JS into any project. Use your favorite package manager, download the source, or use the <a href="#">Bootstrap CDN</a>.</p>
 
-    <hr class="half-rule">
+    <!-- <hr class="half-rule"> -->
 
     <div class="row">
-      <div class="col-sm-4">
-        <h4>Package managers</h4>
-        <p>Include Bootstrap's source Sass and JavaScript files via Bower, Composer, Meteor, or npm.</p>
-{% highlight bash %}
-$ npm install bootstrap
-$ bower install bootstrap
-$ meteor add twbs:bootstrap
-$ composer require twbs/bootstrap
-{% endhighlight %}
+      <div class="col-sm-6">
+        <h4>Managed dependencies</h4>
+        <p>Include Bootstrap's source Sass and JavaScript files via Bower, Composer, Meteor, or npm. Package managed installs don't include documentation, but do include our Gruntfile and readme.</p>
+        <p>
+          <a class="btn btn-primary" href="">View install methods</a>
+        </p>
       </div>
-      <div class="col-sm-4">
+      <!-- <div class="col-sm-4">
         <h4>Custom builds</h4>
         <p>Need just a part of Bootstrap? Download a custom build of the compiled CSS and JS.</p>
         <a class="btn btn-secondary" href="#">Reboot</a>
         <a class="btn btn-secondary" href="#">Grid system</a>
         <a class="btn btn-secondary" href="#">Flexbox</a>
-      </div>
-      <div class="col-sm-4">
+      </div> -->
+      <div class="col-sm-6">
         <h4>Bootstrap CDN</h4>
-        <p>Use the free Bootstrap CDN to hotlink the compiled CSS and JS.</p>
+        <p>When you just need to include Bootstrap's compiled CSS and JS, use the Bootstrap CDN, free from the Max CDN folks.</p>
 {% highlight html %}
 <link rel="stylesheet" href="{{ site.cdn.css }}">
 <script src="{{ site.cdn.js }}"></script>
