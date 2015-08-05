@@ -33,7 +33,7 @@ Add any of the below mentioned modifier classes to change the appearance of a la
 
 ### Pill labels
 
-Use the `.label-pill` modifier class to increase the rounded corners. Useful if you miss the badges from v3.
+Use the `.label-pill` modifier class to make labels more rounded (with a larger `border-radius` and additional horizontal `padding`). Useful if you miss the badges from v3.
 
 {% example html %}
 <span class="label label-pill label-default">Default</span>
