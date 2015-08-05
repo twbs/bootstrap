@@ -4,6 +4,9 @@
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see http://creativecommons.org/licenses/by/3.0/.
  */
+.bd-docs {
+  padding-top: 3.7rem; }
+
 .bd-container {
   position: relative;
   max-width: 62rem;
@@ -81,7 +84,7 @@
     margin-left: 240px; }
   .bd-sidebar {
     position: fixed;
-    top: 0;
+    top: 3.7rem;
     bottom: 0;
     left: 0;
     width: 240px;
@@ -240,8 +243,7 @@
       background-color: rgba(0, 0, 0, 0.5); }
 
 .bd-navbar {
-  padding-top: .25rem;
-  padding-bottom: .25rem;
+  padding: .25rem;
   background-color: #2a2730; }
   .bd-navbar .nav-link {
     color: #8e869d; }
