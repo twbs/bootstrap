@@ -37,11 +37,8 @@
   &.disabled,
   &:disabled,
   fieldset[disabled] & {
-    &,
     &:focus,
-    &.focus,
-    &:active,
-    &.active {
+    &.focus {
       background-color: $background;
           border-color: $border;
     }

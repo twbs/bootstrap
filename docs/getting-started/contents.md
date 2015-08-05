@@ -28,6 +28,7 @@ bootstrap/
 │   ├── bootstrap.css
 │   ├── bootstrap.css.map
 │   ├── bootstrap.min.css
+│   └── bootstrap.min.css.map
 └── js/
     ├── bootstrap.js
     └── bootstrap.min.js

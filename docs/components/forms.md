@@ -487,6 +487,48 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
 {% endexample %}
 
+## Control sizing
+
+Set heights using classes like `.form-control-lg`, and set widths using grid column classes like `.col-lg-*`.
+
+{% example html %}
+<input class="form-control form-control-lg" type="text" placeholder=".input-lg">
+<input class="form-control" type="text" placeholder="Default input">
+<input class="form-control form-control-sm" type="text" placeholder=".input-sm">
+{% endexample %}
+
+{% example html %}
+<select class="form-control form-control-lg"></select>
+<select class="form-control"></select>
+<select class="form-control form-control-sm"></select>
+{% endexample %}
+
+## Column sizing
+
+Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.
+
+{% example html %}
+<div class="row">
+  <div class="col-xs-2">
+    <input type="text" class="form-control" placeholder=".col-xs-2">
+  </div>
+  <div class="col-xs-3">
+    <input type="text" class="form-control" placeholder=".col-xs-3">
+  </div>
+  <div class="col-xs-4">
+    <input type="text" class="form-control" placeholder=".col-xs-4">
+  </div>
+</div>
+{% endexample %}
+
+## Help text
+
+Block level help text for form controls.
+
+{% example html %}
+<p class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</p>
+{% endexample %}
+
 ## Validation
 
 Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.control-label`, `.form-control`, and `.help-block` within that element will receive the validation styles.
@@ -631,50 +673,6 @@ For form controls with no visible label, add the `.sr-only` class on the label. 
   <span class="glyphicon glyphicon-ok form-control-feedback"></span>
 </div>
 {% endexample %}
-
-## Control sizing
-
-Set heights using classes like `.form-control-lg`, and set widths using grid column classes like `.col-lg-*`.
-
-{% example html %}
-<input class="form-control form-control-lg" type="text" placeholder=".input-lg">
-<input class="form-control" type="text" placeholder="Default input">
-<input class="form-control form-control-sm" type="text" placeholder=".input-sm">
-{% endexample %}
-
-{% example html %}
-<select class="form-control form-control-lg"></select>
-<select class="form-control"></select>
-<select class="form-control form-control-sm"></select>
-{% endexample %}
-
-## Column sizing
-
-Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.
-
-{% example html %}
-<div class="row">
-  <div class="col-xs-2">
-    <input type="text" class="form-control" placeholder=".col-xs-2">
-  </div>
-  <div class="col-xs-3">
-    <input type="text" class="form-control" placeholder=".col-xs-3">
-  </div>
-  <div class="col-xs-4">
-    <input type="text" class="form-control" placeholder=".col-xs-4">
-  </div>
-</div>
-{% endexample %}
-
-## Help text
-
-Block level help text for form controls.
-
-{% example html %}
-<p class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</p>
-{% endexample %}
-
-
 
 ## Custom forms
 

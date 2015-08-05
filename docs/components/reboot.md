@@ -254,8 +254,8 @@ The `<address>` element is updated to reset the browser default `font-style` fro
 <div class="bd-example">
   <address>
     <strong>Twitter, Inc.</strong><br>
-    795 Folsom Ave, Suite 600<br>
-    San Francisco, CA 94107<br>
+    1355 Market St, Suite 900<br>
+    San Francisco, CA 94103<br>
     <abbr title="Phone">P:</abbr> (123) 456-7890
   </address>
 

@@ -28,6 +28,11 @@
   description: Bootstrap 한국어
   url: http://bootstrapk.com/
 
+- name: Brazilian Portuguese
+  code: pt-BR
+  description: Bootstrap em Português do Brasil
+  url: http://bootstrapbrasil.github.io/
+
 - name: Russian
   code: ru
   description: Bootstrap по-русски
@@ -37,6 +42,11 @@
   code: es
   description: Bootstrap en Español
   url: http://www.oneskyapp.com/es/docs/bootstrap/
+
+- name: Turkish
+  code: tr
+  description: Türkçe Bootstrap
+  url: http://www.trbootstrap.com
 
 - name: Ukrainian
   code: uk

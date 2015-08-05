@@ -25,6 +25,12 @@ Place one add-on or button on either side of an input. You may also place one on
   <span class="input-group-addon" id="basic-addon2">.00</span>
 </div>
 <br>
+<label for="basic-url">Your vanity URL</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+</div>
+<br>
 <div class="input-group">
   <span class="input-group-addon">$</span>
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">

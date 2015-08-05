@@ -5,6 +5,8 @@ title: Examples
 
 Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.
 
+[Download the Bootstrap source code]({{ site.download.source }}) to snag these examples.
+
 ## Framework
 
 Examples that focus on implementing uses of built-in components provided by Bootstrap.

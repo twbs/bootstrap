@@ -102,7 +102,7 @@ $ composer require twbs/bootstrap
     {% for showcase in site.data.showcase %}
       <div class="col-xs-6 col-sm-3">
         <a href="{{ showcase.expo_url }}" target="_blank" title="{{ showcase.name }}">
-          <img src="http://expo.getbootstrap.com/thumbs/{{ showcase.img }}-thumb.jpg" alt="{{ showcase.name }}" class="img-responsive">
+          <img src="{{ site.baseurl }}/assets/img/expo-{{ showcase.img }}.jpg" alt="{{ showcase.name }}" class="img-responsive">
         </a>
       </div>
     {% endfor %}

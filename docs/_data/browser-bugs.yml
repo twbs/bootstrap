@@ -1,6 +1,6 @@
 -
   browser: >
-    Internet Explorer 11
+    Internet Explorer 11 & Microsoft Edge
   summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
@@ -10,13 +10,23 @@
 
 -
   browser: >
-    Internet Explorer 11
+    Internet Explorer 11 & Microsoft Edge
   summary: >
     When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
   upstream_bug: >
     IE#963961
   origin: >
     Bootstrap#14528
+
+-
+  browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
+  upstream_bug: >
+    IE#1463734
+  origin: >
+    Bootstrap#16671
 
 -
   browser: >
@@ -102,16 +112,6 @@
   browser: >
     Chrome
   summary: >
-    `display: table;` within `display: block;` forces sibling content to new line.
-  upstream_bug: >
-    Chromium#309483
-  origin: >
-    Bootstrap#9950
-
--
-  browser: >
-    Chrome
-  summary: >
     Incorrect viewport size used for media queries when printing.
   upstream_bug: >
     Chromium#273306
@@ -170,6 +170,16 @@
 
 -
   browser: >
+    Safari
+  summary: >
+    Incorrect placement of `position: fixed` element when it's a child of a `position: relative; left: X%;` element.
+  upstream_bug: >
+    WebKit#147284, Safari#21993128
+  origin: >
+    Bootstrap#16814
+
+-
+  browser: >
     Safari (OS X)
   summary: >
     Scrollbar clipped in `select[multiple]` with padding.
@@ -214,41 +224,11 @@
   browser: >
     Safari (OS X)
   summary: >
-    Alpha linear-gradient has dark line at its edge.
-  upstream_bug: >
-    WebKit#139803, Safari#19434933
-  origin: >
-    Bootstrap#15205
-
--
-  browser: >
-    Safari (OS X)
-  summary: >
-    Caps Lock indicator not shown in `<input type="password">` with `display: block`
-  upstream_bug: >
-    WebKit#141804, Safari#19892433
-  origin: >
-    Bootstrap#15832
-
--
-  browser: >
-    Safari (OS X)
-  summary: >
     Focus ring of image map within a modal is displayed in the wrong location.
   upstream_bug: >
-    WebKit#143527
+    WebKit#143527, Safari#21908735
   origin: >
     Bootstrap#16180
-
--
-  browser: >
-    Safari (OS X)
-  summary: >
-    Unnecessary line-wrapping of `.navbar-brand` text for no apparent reason
-  upstream_bug: >
-    WebKit#144990, Safari#20950962
-  origin: >
-    Bootstrap#15998
 
 -
   browser: >
@@ -279,3 +259,13 @@
     WebKit#139848, Safari#19434878
   origin: >
     Bootstrap#11266, Bootstrap#13098
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Tapping below `<input>`s can focus them in some cases
+  upstream_bug: >
+    WebKit#146244, Safari#21509310
+  origin: >
+    Bootstrap#15968
