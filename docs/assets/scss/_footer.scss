@@ -3,15 +3,23 @@
 //
 
 .bd-footer {
-  padding-top: 2rem;
-  margin-top: 2rem;
+  padding: 4rem 0;
+  margin-top: 4rem;
   font-size: 85%;
-  color: $bd-graphite-light;
+  background-color: #f7f7f7;
   text-align: center;
-  background-color: $bd-graphite;
 
   a {
-    color: #fff;
+    font-weight: 500;
+    color: $gray;
+
+    &:hover {
+      color: $link-color;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
   }
 
   @include media-breakpoint-up(sm) {

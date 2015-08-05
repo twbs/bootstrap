@@ -395,14 +395,18 @@
     border-radius: .25rem; } }
 
 .bd-footer {
-  padding-top: 2rem;
-  margin-top: 2rem;
+  padding: 4rem 0;
+  margin-top: 4rem;
   font-size: 85%;
-  color: #8e869d;
-  text-align: center;
-  background-color: #2a2730; }
+  background-color: #f7f7f7;
+  text-align: center; }
   .bd-footer a {
-    color: #fff; }
+    font-weight: 500;
+    color: #55595c; }
+    .bd-footer a:hover {
+      color: #0275d8; }
+  .bd-footer p {
+    margin-bottom: 0; }
   @media (min-width: 34em) {
     .bd-footer {
       text-align: left; } }
