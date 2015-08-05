@@ -53,7 +53,7 @@ $spacer:                     1rem !default;
 $spacer-x:                   $spacer !default;
 $spacer-y:                   $spacer !default;
 
-$border-width:               .0625rem !default;
+$border-width:               (1 / $font-size-root)rem !default;
 
 
 // Typography
