@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Meta, title, CSS, favicons, etc. -->
     {% include header.html %}
   </head>
   <body class="bd-home">
@@ -11,7 +10,8 @@
       </div>
     </a>
 
-    <!-- Page content of course! -->
+    {% include nav-home.html %}
+
     {{ content }}
 
     {% include footer.html %}
