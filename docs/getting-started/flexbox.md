@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Flexbox
+group: getting-started
 ---
 
 Flexbox support has finally come to Bootstrap. Opt-in to the new CSS layout styles with the flick of a variable or the swap of a stylesheet.

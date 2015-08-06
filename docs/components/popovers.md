@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Popovers
+group: components
 ---
 
 Add small overlays of content, like those found in iOS, to any element for housing secondary information.

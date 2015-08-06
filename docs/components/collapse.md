@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Collapse
+group: components
 ---
 
 Flexible plugin that utilizes a handful of classes for easy toggle behavior.

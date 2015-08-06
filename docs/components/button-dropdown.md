@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Button dropdown
+group: components
 ---
 
 Use any button to trigger a dropdown menu by placing it within a `.btn-group` and providing the proper dropdown menu markup.

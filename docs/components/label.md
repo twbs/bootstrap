@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Labels
+group: components
 ---
 
 Small and adaptive tag for adding context to just about any content.

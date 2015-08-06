@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Breadcrumb
+group: components
 ---
 
 Indicate the current page's location within a navigational hierarchy.

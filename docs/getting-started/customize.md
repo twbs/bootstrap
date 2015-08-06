@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Customize CSS
+group: getting-started
 ---
 
 New to Bootstrap 4, variable-based customization is a way for folks to quickly enable or disable global styles across all of Bootstrap's CSS. Simply update a variable's value and recompile using our Gruntfile.

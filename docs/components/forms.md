@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Forms
+group: components
 ---
 
 Bootstrap provides several form control styles, layout options, and custom components for creating a wide variety of forms.

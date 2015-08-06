@@ -50,25 +50,25 @@
     - title: Carousel
     - title: Utilities
 
-- title: Examples
-  pages:
-    - title: Starter template
-    - title: Grid
-    - title: Jumbotron
-    - title: Narrow jumbotron
-    - title: Navbar
-    - title: Navbar top
-    - title: Navbar top fixed
-    - title: Cover
-    - title: Album
-    - title: Carousel
-    - title: Blog
-    - title: Dashboard
-    - title: Sign-in page
-    - title: Justified nav
-    - title: Sticky footer
-    - title: Sticky footer with navbar
-    - title: Offcanvas
+# - title: Examples
+#   pages:
+#     - title: Starter template
+#     - title: Grid
+#     - title: Jumbotron
+#     - title: Narrow jumbotron
+#     - title: Navbar
+#     - title: Navbar top
+#     - title: Navbar top fixed
+#     - title: Cover
+#     - title: Album
+#     - title: Carousel
+#     - title: Blog
+#     - title: Dashboard
+#     - title: Sign-in page
+#     - title: Justified nav
+#     - title: Sticky footer
+#     - title: Sticky footer with navbar
+#     - title: Offcanvas
 
 # - title: Extend
 #   pages:

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Input group
+group: components
 ---
 
 Easily extend form controls by adding text, buttons, or button groups on either side of textual `<input>`s.

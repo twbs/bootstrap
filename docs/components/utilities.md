@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Utility classes
+group: components
 ---
 
 Bootstrap includes dozens of utilities—classes with a single purpose. They're designed to reduce the frequency of highly repetitive declarations in your CSS down while allowing for quick and easy development.

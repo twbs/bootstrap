@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Team
+group: about
 ---
 
 Bootstrap is maintained by the founding team and a small group of invaluable core contributors, with the massive support and involvement of our community.

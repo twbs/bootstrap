@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Typography
+group: components
 ---
 
 Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes](/components/utilities/).

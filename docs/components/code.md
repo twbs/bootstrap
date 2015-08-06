@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Code
+group: components
 ---
 
 Styles for inline code snippets and longer, multiline blocks of code.

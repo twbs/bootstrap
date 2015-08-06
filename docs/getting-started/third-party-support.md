@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Third party support
+group: getting-started
 ---
 
 While we don't officially support any third party plugins or add-ons, we do offer some useful advice to help avoid potential issues in your projects.

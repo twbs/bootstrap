@@ -1,6 +1,6 @@
 
 .bd-docs {
-  padding-top: 5rem;
+  padding-top: 3.65rem;
 }
 
 // Custom container
@@ -59,12 +59,39 @@
 }
 
 
+.bd-pageheader {
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: $bd-purple-light;
+  background-color: $bd-purple;
+
+  h1 {
+    font-size: 4rem;
+    font-weight: normal;
+    color: #fff;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    .carbonad {
+      float: right;
+    }
+  }
+}
+
 //
 // Docs sections
 //
 
 .bd-content {
-  > h2 {
+  > h2:not(:first-child) {
     margin-top: 3rem;
   }
 
@@ -80,10 +107,10 @@
 
 .bd-title {
   @include media-breakpoint-up(sm) {
-    font-size: 4rem;
+    font-size: 3rem;
 
     + p {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 300;
     }
   }

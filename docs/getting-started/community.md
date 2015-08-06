@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Community
+group: getting-started
 ---
 
 Stay up to date on the development of Bootstrap and reach out to the community with these helpful resources.

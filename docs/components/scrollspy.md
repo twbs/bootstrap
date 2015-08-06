@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Srollspy
+group: components
 ---
 
 ## Contents

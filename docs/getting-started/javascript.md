@@ -1,6 +1,7 @@
 ---
 layout: page
 title: JavaScript
+group: getting-started
 ---
 
 Bootstrap includes a handful of JavaScript to help bring some of our components to life. Learn more about how to include it, our data and programmatic API options, and more.
@@ -103,4 +104,3 @@ Bootstrap's plugins don't fall back particularly gracefully when JavaScript is d
 For simple transition effects, include `transition.js` once alongside the other JS files. If you're using the compiled (or minified) `bootstrap.js`, there is no need to include this—it's already there.
 
 Transition.js is a basic helper for `transitionEnd` events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.
-

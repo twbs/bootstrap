@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Brand guidelines
+group: about
 ---
 
 Have a need for Bootstrap's brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well. These guidelines were inspired by MailChimp's [Brand Assets](http://mailchimp.com/about/brand-assets/).

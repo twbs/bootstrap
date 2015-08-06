@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Supported platforms
+group: getting-started
 ---
 
 Bootstrap is built to work best with the latest techniques. As such, older desktop and mobile browsers may display differently, but should remain fully functional.

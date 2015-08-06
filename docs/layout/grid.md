@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Grid system
+group: layout
 ---
 
 Bootstrap includes a powerful mobile-first grid system for building layouts of all shapes and sizes based on a 12 column layout.

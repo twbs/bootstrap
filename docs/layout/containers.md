@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Containers
+group: layout
 ---
 
 Bootstrap requires a containing element to wrap site contents and house our grid system. Choose from the fixed or fluid width variation.

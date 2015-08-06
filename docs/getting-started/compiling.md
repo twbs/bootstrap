@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Compiling
+group: getting-started
 ---
 
 Bootstrap uses [Grunt](http://gruntjs.com) for its build system, with convenient methods for working with the framework. It's how we compile our code, run tests, and more.

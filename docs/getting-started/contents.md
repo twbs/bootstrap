@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Contents
+group: getting-started
 ---
 
 Bootstrap can come in one of two forms, as precompiled or source code. Learn more about each form's contents and structure below.

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Dropdowns
+group: components
 ---
 
 Toggleable, contextual menu for displaying lists of links. Made interactive with the included dropdown JavaScript plugin.

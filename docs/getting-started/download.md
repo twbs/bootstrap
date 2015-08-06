@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Download
+group: getting-started
 ---
 
 Bootstrap is available for download via ZIP file in two flavors: precompiled CSS and Javascript, and the complete source code with documentation.

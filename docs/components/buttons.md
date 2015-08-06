@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Buttons
+group: components
 ---
 
 Buttons are used to execute actions in forms, dialogs, and more. Use any of the available button classes to quickly create a styled button.

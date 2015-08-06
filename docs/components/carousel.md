@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Carousel
+group: components
 ---
 
 A slideshow component for cycling through elements—images or slides of text—like a carousel. **Nested carousels are not supported.**

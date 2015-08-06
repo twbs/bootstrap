@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Scaffolding
+group: layout
 ---
 
 The scaffolding of Bootstrap refers to our general approach to building the project. It outlines the basic document requirements and project dependencies.

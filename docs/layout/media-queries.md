@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Media queries
+group: layout
 ---
 
 Since Bootstrap is designed to be mobile-first, we employ media queries in our CSS to create responsive pages and components.

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Responsive utilities
+group: layout
 ---
 
 For faster mobile-friendly development, use these utility classes for showing and hiding content by device via media query. Also included are utility classes for toggling content when printed.

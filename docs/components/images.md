@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Images
+group: components
 ---
 
 Opt your images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them—all via classes.
