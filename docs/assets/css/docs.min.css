@@ -7,39 +7,31 @@
 .bd-docs {
   padding-top: 3.65rem; }
 
-.bd-container {
-  position: relative;
-  max-width: 62rem;
-  padding: 0 1rem 1rem;
-  margin-right: auto;
-  margin-left: auto; }
-  @media (min-width: 48em) {
-    .bd-container {
-      padding: 2rem; } }
-  @media (min-width: 62em) {
-    .bd-container {
-      padding: 4rem; }
-      .bd-container .carbonad {
-        float: right !important;
-        margin: 0.5rem 0 1rem 2rem !important; } }
-  .bd-container > table {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    overflow-y: auto;
-    margin-bottom: 1rem; }
-    .bd-container > table > thead > tr > th,
-    .bd-container > table > thead > tr > td,
-    .bd-container > table > tbody > tr > th,
-    .bd-container > table > tbody > tr > td,
-    .bd-container > table > tfoot > tr > th,
-    .bd-container > table > tfoot > tr > td {
-      padding: 0.75rem;
-      line-height: 1.5;
-      vertical-align: top;
-      border: 1px solid #eceeef; }
-    .bd-container > table td:first-child > code {
-      white-space: nowrap; }
+.bd-content > table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  margin-bottom: 1rem; }
+  .bd-content > table > thead > tr > th,
+  .bd-content > table > thead > tr > td,
+  .bd-content > table > tbody > tr > th,
+  .bd-content > table > tbody > tr > td,
+  .bd-content > table > tfoot > tr > th,
+  .bd-content > table > tfoot > tr > td {
+    padding: 0.75rem;
+    line-height: 1.5;
+    vertical-align: top;
+    border: 1px solid #eceeef; }
+    .bd-content > table > thead > tr > th > p:last-child,
+    .bd-content > table > thead > tr > td > p:last-child,
+    .bd-content > table > tbody > tr > th > p:last-child,
+    .bd-content > table > tbody > tr > td > p:last-child,
+    .bd-content > table > tfoot > tr > th > p:last-child,
+    .bd-content > table > tfoot > tr > td > p:last-child {
+      margin-bottom: 0; }
+  .bd-content > table td:first-child > code {
+    white-space: nowrap; }
 
 .bd-pageheader {
   margin-bottom: 3rem;
