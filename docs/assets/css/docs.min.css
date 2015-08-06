@@ -363,10 +363,13 @@
   overflow: hidden;
   font-size: .8rem !important;
   line-height: 1rem !important;
-  color: #55595c !important;
+  color: #cdbfe3 !important;
   text-align: left;
-  background: #f5f5f5 !important;
+  background: #3e2c5a !important;
   border: 0 !important; }
+
+.bd-masthead .carbonad {
+  background: #2a2730 !important; }
 
 .carbonad-img {
   margin: 0 !important; }
@@ -378,7 +381,7 @@
   width: auto !important;
   height: auto !important;
   margin-left: 145px !important;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important; }
+  font-family: inherit !important; }
 
 .carbonad-text {
   padding-top: 0 !important; }
@@ -389,10 +392,10 @@
 
 .carbonad-text a,
 .carbonad-tag a {
-  color: #55595c !important; }
+  color: #fff !important; }
   .carbonad-text a:hover,
   .carbonad-tag a:hover {
-    color: #0275d8 !important; }
+    color: #fff !important; }
 
 .carbonad #azcarbon > img {
   display: none; }
