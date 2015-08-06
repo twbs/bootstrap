@@ -79,7 +79,7 @@ Remember, since Bootstrap utilizies the HTML5 doctype, **all inputs must have a 
       <input type="checkbox"> Check me out
     </label>
   </div>
-  <button type="submit" class="btn btn-secondary">Submit</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endexample %}
 
