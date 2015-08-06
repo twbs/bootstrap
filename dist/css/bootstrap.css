@@ -1360,7 +1360,7 @@ pre {
 .form-control {
   display: block;
   width: 100%;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
   color: #55595c;
@@ -1392,7 +1392,7 @@ pre {
   display: block; }
 
 .form-control-label {
-  padding: 0.5625rem 0.75rem;
+  padding: 0.5625rem 1rem;
   margin-bottom: 0; }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
@@ -1683,7 +1683,7 @@ fieldset[disabled] .checkbox label {
   cursor: pointer;
   user-select: none;
   border: 0.0625rem solid transparent;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
@@ -2316,7 +2316,7 @@ input[type="button"].btn-block {
   vertical-align: middle; }
 
 .input-group-addon {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1rem;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1;
@@ -3049,7 +3049,7 @@ input[type="button"].btn-block {
     .pagination > li > span {
       position: relative;
       float: left;
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 1rem;
       margin-left: -1px;
       line-height: 1.5;
       color: #0275d8;
