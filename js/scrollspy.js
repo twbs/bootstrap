@@ -82,6 +82,8 @@
 
     if (this.scrollHeight != scrollHeight) {
       this.refresh()
+      offsets = this.offsets
+      targets = this.targets
     }
 
     if (scrollTop >= maxScroll) {
