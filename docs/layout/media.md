@@ -4,7 +4,7 @@ title: Media
 group: layout
 ---
 
-Abstract object styles for building custom components (like blog comments, Tweets, etc) that feature a left- or right-aligned image alongside textual content.
+Abstract object styles for building custom components (like blog comments, Tweets, etc) that feature a left- or right-aligned piece of content alongside textual content.
 
 ## Contents
 
