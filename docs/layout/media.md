@@ -155,14 +155,14 @@ With a bit of extra markup, you can use media inside list (useful for comment th
     </div>
   </li>
   <li class="media">
+    <div class="media-body">
+      <h4 class="media-heading">Media heading</h4>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+    </div>
     <div class="media-right">
       <a href="#">
         <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
       </a>
-    </div>
-    <div class="media-body">
-      <h4 class="media-heading">Media heading</h4>
-      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
     </div>
   </li>
 </ul>
