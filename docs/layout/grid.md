@@ -4,21 +4,27 @@ title: Grid system
 group: layout
 ---
 
-Bootstrap includes a powerful mobile-first grid system for building layouts of all shapes and sizes based on a 12 column layout.
+Bootstrap includes a powerful mobile-first grid system for building layouts of all shapes and sizes based on a 12 column layout. There are multiple tiers, one for each [media query range]({{ site.baseurl }}/layout/media-queries/), made available via our predefined classes or semantic mixins.
 
-There are multiple tiers for different device sizes, available via our predefined classes or semantic mixins.
+Here's how the grid system works:
+
+- There are three major components—containers, rows, and columns.
+- Containers—`.container` for fixed width or `.container-fluid` for full width—center your site's contents.
+- Rows are horizontal groups of columns that clear floats (when not in [flexbox mode]({{ site.baseurl }}/getting-started/flexbox/)).
+- Content should be placed within columns, and only columns may be immediate children of rows.
+- You can use predefined grid classes or Sass mixins for more semantic markup.
 
 ## Contents
 
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-### Quick start
+## Quick start
 
 - Example grid class
 - Example mixins
 
-### Introduction
+## Introduction
 
 Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Bootstrap grid system works:
 
@@ -34,7 +40,7 @@ Grid systems are used for creating page layouts through a series of rows and col
 
 Look to the examples for applying these principles to your code.
 
-### Grid options
+## Grid options
 
 See how aspects of the Bootstrap grid system work across multiple devices with a handy table.
 
@@ -111,20 +117,33 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
   </table>
 </div>
 
-### Semantic mixins
+## Sass mixins
 
-In addition to [prebuilt grid classes](#grid-example-basic) for fast layouts, Bootstrap includes Sass variables and mixins for quickly generating your own simple, semantic layouts.
+When using Bootstrap's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our [prebuilt grid classes](#grid-example-basic) use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
 
-#### Variables
+### Variables
 
 Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
 
 {% highlight scss %}
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 34em,
+  // Medium screen / tablet
+  md: 48em,
+  // Large screen / desktop
+  lg: 62em,
+  // Extra large screen / wide desktop
+  xl: 75em
+) !default;
+
 $grid-columns:      12;
 $grid-gutter-width: 1.5rem;
 {% endhighlight %}
 
-#### Mixins
+### Mixins
 
 Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.
 
@@ -162,7 +181,7 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 }
 {% endhighlight %}
 
-#### Example usage
+### Example usage
 
 You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.
 
