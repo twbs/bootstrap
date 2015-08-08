@@ -4,22 +4,11 @@ title: Contents
 group: getting-started
 ---
 
-Bootstrap can come in one of two forms, as precompiled or source code. Learn more about each form's contents and structure below.
-
-{% callout warning %}
-#### jQuery required
-
-Please note that **all JavaScript plugins require jQuery** to be included, as shown in the [starter template](../quick-start). [Consult our `bower.json`]({{ site.repo }}/blob/v{{ site.current_version }}/bower.json) to see which versions of jQuery are supported.
-{% endcallout %}
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
+Bootstrap can come in one of two forms, as precompiled or source code. Learn more about each flavor's contents and structure below. Remember, no matter the implementation flavor, **Bootstrap's JavaScript plugins require jQuery**.
 
 ## Precompiled Bootstrap
 
-Once downloaded, unzip the compressed folder to see the structure of (the compiled) Bootstrap. You'll see something like this:
+Once downloaded, unzip the compressed folder and you'll see something like this:
 
 <!-- NOTE: This info is intentionally duplicated in the README. Copy any changes made here over to the README too. -->
 
