@@ -4,7 +4,7 @@ title: Quick start
 group: getting-started
 ---
 
-Looking to quickly add Bootstrap to your project? Use the Bootstrap CDN, graciously provided by the MaxCDN folks.
+Looking to quickly add Bootstrap to your project? Use the Bootstrap CDN, provided for free by the folks at MaxCDN. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/getting-started/downloads)
 
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
 
