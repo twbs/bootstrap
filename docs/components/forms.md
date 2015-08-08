@@ -15,7 +15,7 @@ Bootstrap provides several form control styles, layout options, and custom compo
 
 Bootstrap's form controls expand on [our Rebooted form styles](/components/reboot/#forms) with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices. The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
 
-Remember, since Bootstrap utilizies the HTML5 doctype, **all inputs must have a `type` attribute** for proper rendering.
+Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `type` attribute**.
 
 {% example html %}
 <form>
@@ -425,16 +425,6 @@ When you need to place plain text next to a form label within a form, use the `.
 </form>
 {% endexample %}
 
-## Focus state
-
-We remove the default `outline` styles on some form controls and apply a `box-shadow` in its place for `:focus`. Shown below is a custom input that only **demonstrates** the `:focus` state on an `<input>` with `.form-control`.
-
-<div class="bd-example">
-  <form>
-    <input class="form-control" id="focusedInput" type="text" value="Demonstrative focus state">
-  </form>
-</div>
-
 ## Disabled states
 
 Add the `disabled` boolean attribute on an input to prevent user interactions. Disabled inputs appear lighter and add a `not-allowed` cursor.
@@ -534,6 +524,7 @@ Block level help text for form controls.
 
 Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.control-label`, `.form-control`, and `.help-block` within that element will receive the validation styles.
 
+{% comment %}
 {% callout warning %}
 #### Conveying validation state to assistive technologies and colorblind users
 
@@ -541,20 +532,22 @@ Using these validation styles to denote the state of a form control only provide
 
 Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's `<label>` text itself (as is the case in the following code example), include a [Glyphicon](../components/#glyphicons) (with appropriate alternative text using the `.sr-only` class - see the [Glyphicon examples](../components/#glyphicons-examples)), or by providing an additional [help text](#forms-help-text) block. Specifically for assistive technologies, invalid form controls can also be assigned an `aria-invalid="true"` attribute.
 {% endcallout %}
+{% endcomment %}
 
 {% example html %}
 <div class="form-group has-success">
   <label class="control-label" for="inputSuccess1">Input with success</label>
-  <input type="text" class="form-control" id="inputSuccess1">
+  <input type="text" class="form-control form-control-success" id="inputSuccess1">
 </div>
 <div class="form-group has-warning">
   <label class="control-label" for="inputWarning1">Input with warning</label>
-  <input type="text" class="form-control" id="inputWarning1">
+  <input type="text" class="form-control form-control-warning" id="inputWarning1">
 </div>
 <div class="form-group has-error">
   <label class="control-label" for="inputError1">Input with error</label>
-  <input type="text" class="form-control" id="inputError1">
+  <input type="text" class="form-control form-control-error" id="inputError1">
 </div>
+
 <div class="has-success">
   <div class="checkbox">
     <label>
@@ -578,100 +571,6 @@ Ensure that an alternative indication of state is also provided. For instance, y
       Checkbox with error
     </label>
   </div>
-</div>
-{% endexample %}
-
-You can also add optional feedback icons with the addition of `.has-feedback` and the right icon.
-
-{% callout warning %}
-#### Icons, labels, and input groups
-
-Manual positioning of feedback icons is required for inputs without a label and for [input groups](../components#input-groups) with an add-on on the right. You are strongly encouraged to provide labels for all inputs for accessibility reasons. If you wish to prevent labels from being displayed, hide them with the `sr-only` class. If you must do without labels, adjust the `top` value of the feedback icon. For input groups, adjust the `right` value to an appropriate pixel value depending on the width of your addon.
-{% endcallout %}
-
-{% example html %}
-<div class="form-group has-success has-feedback">
-  <label class="control-label" for="inputSuccess2">Input with success</label>
-  <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-  <span id="inputSuccess2Status" class="sr-only">(success)</span>
-</div>
-<div class="form-group has-warning has-feedback">
-  <label class="control-label" for="inputWarning2">Input with warning</label>
-  <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
-  <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
-  <span id="inputWarning2Status" class="sr-only">(warning)</span>
-</div>
-<div class="form-group has-error has-feedback">
-  <label class="control-label" for="inputError2">Input with error</label>
-  <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
-  <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-  <span id="inputError2Status" class="sr-only">(error)</span>
-</div>
-<div class="form-group has-success has-feedback">
-  <label class="control-label" for="inputGroupSuccess1">Input group with success</label>
-  <div class="input-group">
-    <span class="input-group-addon">@</span>
-    <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
-  </div>
-  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-  <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
-</div>
-{% endexample %}
-
-{% example html %}
-<form class="form-horizontal">
-  <div class="form-group has-success has-feedback">
-    <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" id="inputSuccess3">
-      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-    </div>
-  </div>
-  <br>
-  <div class="form-group has-success has-feedback">
-    <label class="control-label col-sm-3" for="inputGroupSuccess2">Input group with success</label>
-    <div class="col-sm-9">
-      <div class="input-group">
-        <span class="input-group-addon">@</span>
-        <input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
-      </div>
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-      <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
-    </div>
-  </div>
-</form>
-{% endexample %}
-
-{% example html %}
-<form class="form-inline">
-  <div class="form-group has-success has-feedback">
-    <label class="control-label" for="inputSuccess4">Input with success</label>
-    <input type="text" class="form-control" id="inputSuccess4">
-    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-  </div>
-</form>
-{% endexample %}
-
-{% example html %}
-<div class="form-group has-success has-feedback">
-  <label class="control-label sr-only" for="inputGroupSuccess4">Input group with success</label>
-  <div class="input-group">
-    <span class="input-group-addon">@</span>
-    <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status">
-  </div>
-  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-  <span id="inputGroupSuccess4Status" class="sr-only">(success)</span>
-</div>
-{% endexample %}
-
-For form controls with no visible label, add the `.sr-only` class on the label. Bootstrap will automatically adjust the position of the icon once it's been added.
-
-{% example html %}
-<div class="form-group has-success has-feedback">
-  <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
-  <input type="text" class="form-control" id="inputSuccess5">
-  <span class="glyphicon glyphicon-ok form-control-feedback"></span>
 </div>
 {% endexample %}
 
@@ -703,7 +602,7 @@ In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](h
 </label>
 {% endexample %}
 
-Custom checkboxes can also utilize the `:indeterminate` pseudo class.
+Custom checkboxes can also utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
 
 <div class="bd-example bd-example-indeterminate">
   <label class="c-input c-checkbox">
@@ -713,7 +612,7 @@ Custom checkboxes can also utilize the `:indeterminate` pseudo class.
   </label>
 </div>
 
-**Heads up!** You'll need to set this state manually via JavaScript as there is no available HTML attribute for specifying it. If you're using jQuery, something like this should suffice:
+ If you're using jQuery, something like this should suffice:
 
 {% highlight js %}
 $('.your-checkbox').prop('indeterminate', true)

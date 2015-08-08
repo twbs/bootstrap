@@ -1826,7 +1826,7 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  padding: .5rem .75rem;
+  padding: .5rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
   color: #55595c;
@@ -1834,9 +1834,6 @@ pre code {
   background-image: none;
   border: .0625rem solid #ccc;
   border-radius: .25rem;
-  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .form-control::-ms-expand {
   background-color: transparent;
@@ -1879,7 +1876,7 @@ pre code {
 }
 
 .form-control-label {
-  padding: .5625rem .75rem;
+  padding: .5625rem 1rem;
   margin-bottom: 0;
 }
 
@@ -2025,38 +2022,14 @@ fieldset[disabled] .checkbox label {
   cursor: not-allowed;
 }
 
-.has-feedback {
-  position: relative;
-}
-.has-feedback .form-control {
-  padding-right: 3.28125rem;
-}
-
-.form-control-feedback {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  display: block;
-  width: 2.625rem;
-  height: 2.625rem;
-  line-height: 2.625rem;
-  text-align: center;
-  pointer-events: none;
-}
-
-.input-lg + .form-control-feedback,
-.input-group-lg + .form-control-feedback {
-  width: 3.291667rem;
-  height: 3.291667rem;
-  line-height: 3.291667rem;
-}
-
-.input-sm + .form-control-feedback,
-.input-group-sm + .form-control-feedback {
-  width: 1.95rem;
-  height: 1.95rem;
-  line-height: 1.95rem;
+.form-control-success,
+.form-control-warning,
+.form-control-error {
+  padding-right: 3rem;
+  background-repeat: no-repeat; 
+  background-position: center right .65625rem;
+  -webkit-background-size: 1.70625rem 1.70625rem;
+          background-size: 1.70625rem 1.70625rem;
 }
 
 .has-success .help-block,
@@ -2069,24 +2042,25 @@ fieldset[disabled] .checkbox label {
 .has-success.checkbox label,
 .has-success.radio-inline label,
 .has-success.checkbox-inline label {
-  color: #3c763d;
+  color: #5cb85c;
 }
 
 .has-success .form-control {
-  border-color: #3c763d;
-}
-.has-success .form-control:focus {
-  border-color: #2b542c;
+  border-color: #5cb85c;
 }
 
 .has-success .input-group-addon {
-  color: #3c763d;
-  background-color: #dff0d8; 
-  border-color: #3c763d;
+  color: #5cb85c;
+  background-color: #eaf6ea; 
+  border-color: #5cb85c;
 }
 
 .has-success .form-control-feedback {
-  color: #3c763d;
+  color: #5cb85c;
+}
+
+.has-success .form-control-success {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNoZWNrIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDYxMiA3OTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYxMiA3OTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiM1Q0I4NUMiIGQ9Ik0yMzMuOCw2MTAuMWMtMTMuMywwLTI1LjktNi4yLTM0LTE2LjlMOTAuNSw0NDguOEM3Ni4zLDQzMCw4MCw0MDMuMyw5OC44LDM4OS4xYzE4LjgtMTQuMyw0NS41LTEwLjUsNTkuOCw4LjNsNzEuOSw5NWwyMjAuOS0yNTAuNWMxMi41LTIwLDM4LjgtMjYuMSw1OC44LTEzLjZjMjAsMTIuNCwyNi4xLDM4LjcsMTMuNiw1OC44TDI3MCw1OTBjLTcuNCwxMi0yMC4yLDE5LjQtMzQuMywyMC4xQzIzNS4xLDYxMC4xLDIzNC41LDYxMC4xLDIzMy44LDYxMC4xeiIvPjwvc3ZnPg==");
 }
 
 .has-warning .help-block,
@@ -2099,24 +2073,25 @@ fieldset[disabled] .checkbox label {
 .has-warning.checkbox label,
 .has-warning.radio-inline label,
 .has-warning.checkbox-inline label {
-  color: #8a6d3b;
+  color: #f0ad4e;
 }
 
 .has-warning .form-control {
-  border-color: #8a6d3b;
-}
-.has-warning .form-control:focus {
-  border-color: #66512c;
+  border-color: #f0ad4e;
 }
 
 .has-warning .input-group-addon {
-  color: #8a6d3b;
-  background-color: #fcf8e3; 
-  border-color: #8a6d3b;
+  color: #f0ad4e;
+  background-color: white; 
+  border-color: #f0ad4e;
 }
 
 .has-warning .form-control-feedback {
-  color: #8a6d3b;
+  color: #f0ad4e;
+}
+
+.has-warning .form-control-warning {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9Ildhcm5pbmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNjEyIDc5MiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNjEyIDc5MiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZmlsbD0iI0YwQUQ0RSIgZD0iTTYwMyw2NDAuMmwtMjc4LjUtNTA5Yy0zLjgtNi42LTEwLjgtMTAuNi0xOC41LTEwLjZzLTE0LjcsNC4xLTE4LjUsMTAuNkw5LDY0MC4yYy0zLjcsNi41LTMuNiwxNC40LDAuMiwyMC44YzMuOCw2LjUsMTAuOCwxMC40LDE4LjMsMTAuNGg1NTcuMWM3LjUsMCwxNC41LTMuOSwxOC4zLTEwLjRDNjA2LjYsNjU0LjYsNjA2LjcsNjQ2LjYsNjAzLDY0MC4yeiBNMzM2LjYsNjEwLjJoLTYxLjJWNTQ5aDYxLjJWNjEwLjJ6IE0zMzYuNiw1MDMuMWgtNjEuMlYzMDQuMmg2MS4yVjUwMy4xeiIvPjwvc3ZnPg==");
 }
 
 .has-error .help-block,
@@ -2129,32 +2104,25 @@ fieldset[disabled] .checkbox label {
 .has-error.checkbox label,
 .has-error.radio-inline label,
 .has-error.checkbox-inline label {
-  color: #a94442;
+  color: #d9534f;
 }
 
 .has-error .form-control {
-  border-color: #a94442;
-}
-.has-error .form-control:focus {
-  border-color: #843534;
+  border-color: #d9534f;
 }
 
 .has-error .input-group-addon {
-  color: #a94442;
-  background-color: #f2dede; 
-  border-color: #a94442;
+  color: #d9534f;
+  background-color: #fdf7f7; 
+  border-color: #d9534f;
 }
 
 .has-error .form-control-feedback {
-  color: #a94442;
+  color: #d9534f;
 }
 
-.has-feedback label ~ .form-control-feedback {
-  top: 0;
-}
-
-.has-feedback label.sr-only ~ .form-control-feedback {
-  top: 0;
+.has-error .form-control-error {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNyb3NzIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDYxMiA3OTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYxMiA3OTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiNEOTUzNEYiIGQ9Ik00NDcsNTQ0LjRjLTE0LjQsMTQuNC0zNy42LDE0LjQtNTEuOSwwTDMwNiw0NTEuN2wtODkuMSw5Mi43Yy0xNC40LDE0LjQtMzcuNiwxNC40LTUxLjksMGMtMTQuNC0xNC40LTE0LjQtMzcuNiwwLTUxLjlsOTIuNC05Ni40TDE2NSwyOTkuNmMtMTQuNC0xNC40LTE0LjQtMzcuNiwwLTUxLjlzMzcuNi0xNC40LDUxLjksMGw4OS4yLDkyLjdsODkuMS05Mi43YzE0LjQtMTQuNCwzNy42LTE0LjQsNTEuOSwwYzE0LjQsMTQuNCwxNC40LDM3LjYsMCw1MS45TDM1NC43LDM5Nmw5Mi40LDk2LjRDNDYxLjQsNTA2LjgsNDYxLjQsNTMwLDQ0Nyw1NDQuNHoiLz48L3N2Zz4=");
 }
 
 .help-block {
@@ -2217,7 +2185,7 @@ fieldset[disabled] .checkbox label {
 
 .btn {
   display: inline-block;
-  padding: .5rem .75rem;
+  padding: .5rem 1rem;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -2999,7 +2967,7 @@ input[type="button"].btn-block {
 }
 
 .input-group-addon {
-  padding: .5rem .75rem;
+  padding: .5rem 1rem;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1;
@@ -3917,7 +3885,7 @@ input[type="button"].btn-block {
     .pagination > li > span {
   position: relative;
   float: left;
-  padding: .5rem .75rem;
+  padding: .5rem 1rem;
   margin-left: -1px;
   line-height: 1.5;
   color: #0275d8;
@@ -4087,6 +4055,12 @@ a.label:hover {
   cursor: pointer;
 }
 
+.label-pill {
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 1rem;
+}
+
 .label-default {
   background-color: #818a91;
 }
@@ -4133,51 +4107,6 @@ a.label:hover {
 .label-danger[href]:focus,
   .label-danger[href]:hover {
   background-color: #c9302c;
-}
-
-.badge {
-  position: relative;
-  top: -.1em;
-  display: inline-block;
-  padding-right: .6em;
-  padding-left: .6em;
-  font-size: .75em;
-  font-weight: bold;
-  line-height: 1.5;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  background-color: #818a91;
-  border-radius: 2em;
-}
-.badge:empty {
-  display: none;
-}
-.badge.pull-left,
-  .badge.pull-right {
-  top: .2em;
-}
-.list-group-item.active > .badge,
-  .nav-pills > .active > a > .badge {
-  color: #0275d8;
-  background-color: #fff;
-}
-.list-group-item > .badge {
-  float: right;
-}
-.list-group-item > .badge + .badge {
-  margin-right: 5px;
-}
-.nav-pills > li > a > .badge {
-  margin-left: 3px;
-}
-
-a.badge:focus,
-a.badge:hover {
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .jumbotron {
@@ -4562,7 +4491,9 @@ a.badge:hover {
 
 a.list-group-item,
 button.list-group-item {
-  color: #555;
+  width: 100%;
+  color: #555; 
+  text-align: inherit;
 }
 a.list-group-item .list-group-item-heading,
   button.list-group-item .list-group-item-heading {
