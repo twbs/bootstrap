@@ -4,7 +4,7 @@ title: Tooltips
 group: components
 ---
 
-Inspired by the excellent jQuery.tipsy plugin written by Jason Frame; Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.
+Inspired by the excellent Tipsy jQuery plugin written by Jason Frame. Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.
 
 ## Contents
 
@@ -21,6 +21,8 @@ Things to know when using the popover plugin:
 - Triggering tooltips on hidden elements will not work.
 - Tooltips for `.disabled` or `disabled` elements must be triggered on a wrapper element.
 - When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
+
+Got all that? Great, let's see how they work with some examples.
 
 ## Example: Enable popovers everywhere
 

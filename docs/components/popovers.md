@@ -4,7 +4,7 @@ title: Popovers
 group: components
 ---
 
-Add small overlays of content, like those found in iOS, to any element for housing secondary information.
+Add small overlay content, like those found in iOS, to any element for housing secondary information.
 
 ## Contents
 
@@ -22,6 +22,8 @@ Things to know when using the popover plugin:
 - Triggering popovers on hidden elements will not work.
 - Popovers for `.disabled` or `disabled` elements must be triggered on a wrapper element.
 - When triggered from hyperlinks that span multiple lines, popovers will be centered. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
+
+Got all that? Great, let's see how they work with some examples.
 
 ## Example: Enable popovers everywhere
 
