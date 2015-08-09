@@ -17,8 +17,8 @@
     this.options = $.extend({}, Affix.DEFAULTS, options)
 
     this.$target = $(this.options.target)
-      .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
-      .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
+      .on('scroll.bs.affix.data-api', $.proxy(this, 'checkPosition'))
+      .on('click.bs.affix.data-api',  $.proxy(this, 'checkPositionWithEventLoop'))
 
     this.$element     = $(element)
     this.affixed      = null
@@ -68,7 +68,7 @@
   }
 
   Affix.prototype.checkPositionWithEventLoop = function () {
-    setTimeout($.proxy(this.checkPosition, this), 1)
+    setTimeout($.proxy(this, 'checkPosition'), 1)
   }
 
   Affix.prototype.checkPosition = function () {
