@@ -93,13 +93,10 @@ Note that closing an alert will remove it from the DOM.
 
 ### Methods
 
-#### $().alert()
-
-Makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
-
-#### $().alert('close')
-
-Closes an alert by removing it from the DOM. If the `.fade` and `.in` classes are present on the element, the alert will fade out before it is removed.
+| Method | Description |
+| --- | --- |
+| `$().alert()` | Makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.) |
+| `$().alert('close')` | Closes an alert by removing it from the DOM. If the `.fade` and `.in` classes are present on the element, the alert will fade out before it is removed. |
 
 {% highlight js %}$(".alert").alert('close'){% endhighlight %}
 
@@ -107,26 +104,10 @@ Closes an alert by removing it from the DOM. If the `.fade` and `.in` classes ar
 
 Bootstrap's alert plugin exposes a few events for hooking into alert functionality.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th style="width: 150px;">Event Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>close.bs.alert</td>
-        <td>This event fires immediately when the <code>close</code> instance method is called.</td>
-      </tr>
-      <tr>
-        <td>closed.bs.alert</td>
-        <td>This event is fired when the alert has been closed (will wait for CSS transitions to complete).</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+| Event | Description |
+| --- | --- |
+| `close.bs.alert` | This event fires immediately when the <code>close</code> instance method is called. |
+| `closed.bs.alert` | This event is fired when the alert has been closed (will wait for CSS transitions to complete). |
 
 {% highlight js %}
 $('#myAlert').on('closed.bs.alert', function () {
