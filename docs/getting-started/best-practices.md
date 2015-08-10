@@ -13,4 +13,5 @@ We've designed and developed Bootstrap to work in a number of environments. Here
 ### General outline
 - Working with CSS
 - Working with Sass files
+- Building new CSS components
 - Ask in Slack
