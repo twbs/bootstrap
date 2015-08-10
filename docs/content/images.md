@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Images
-group: components
+group: content
 ---
 
 Opt your images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them—all via classes.
@@ -78,14 +78,3 @@ Align images with the [helper float classes](/components/helpers) or [text align
   <img src="..." class="img-rounded" alt="...">
 </div>
 {% endhighlight %}
-
-## Figures
-
-Use the included `.figure` and `.figure-caption` classes to provide some baseline styles for the HTML5 `<figure>` and `<figcaption>` elements. As a bonus, immediate children images are automatically responsive.
-
-{% example html %}
-<figure class="figure">
-  <img data-src="holder.js/400x300" class="img-rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-  <figcaption class="figure-caption">A caption for the above image.</figcaption>
-</figure>
-{% endexample %}

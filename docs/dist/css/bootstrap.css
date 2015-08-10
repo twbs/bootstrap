@@ -667,6 +667,9 @@ mark,
   content: "\00A0 \2014";
 }
 
+.figure {
+  display: inline-block;
+}
 .figure > img {
   margin-bottom: .5rem; 
   line-height: 1;
