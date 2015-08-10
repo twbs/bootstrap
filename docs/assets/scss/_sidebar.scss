@@ -67,6 +67,11 @@
     height: 2.45rem;
     padding-top: .4rem;
     padding-bottom: .4rem;
+    background-color: #fafafa;
+
+    &:focus {
+      background-color: #fff;
+    }
   }
 }
 
