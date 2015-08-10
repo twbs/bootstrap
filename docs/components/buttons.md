@@ -136,32 +136,11 @@ This class uses `pointer-events: none` to try to disable the link functionality 
 While button classes can be used on `<a>` and `<button>` elements, only `<button>` elements are supported within our nav and navbar components.
 {% endcallout %}
 
-## JavaScript behavior
+## Button plugin
 
 Do more with buttons. Control button states or create groups of buttons for more components like toolbars.
 
-### Custom states
-
-Use JavaScript to change the text and "state" of a particular button. For the sake of this demonstration, we are using `data-loading-text` and `$().button('loading')`, but that's not the only state you can use. [Custom strings of text](#buttons-methods) can also be used with `$().button(string)`.
-
-**This feature is deprecated since v3.3.5 and will be removed in v4.**
-
-**Heads up!** You'll likely need to work around Firefox's [persisted form control states across page loads bug](https://github.com/twbs/bootstrap/issues/793) (e.g., disabled and checked states) with `autocomplete="off"`. See [Mozilla bug #654072](https://bugzilla.mozilla.org/show_bug.cgi?id=654072) for details.
-
-{% example html %}
-<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
-  Loading state
-</button>
-<script>
-  $('#myButton').on('click', function () {
-    var $btn = $(this).button('loading')
-    // business logic...
-    $btn.button('reset')
-  })
-</script>
-{% endexample %}
-
-#### Single toggle
+### Toggle states
 
 Add `data-toggle="button"` to toggle a button's `active` state. If you're pre-toggling a button, you must manually add the `.active` class **and** `aria-pressed="true"` to the `<button>`.
 
@@ -171,7 +150,7 @@ Add `data-toggle="button"` to toggle a button's `active` state. If you're pre-to
 </button>
 {% endexample %}
 
-### Checkbox and radio
+### Checkbox and radio buttons
 
 Bootstrap's `.button` styles can be applied to other elements, such as `<label>`s, to provide checkbox or radio style button toggling. Add `data-toggle="buttons"` to a `.btn-group` containing those modified buttons to enable toggling in their respective styles.
 
@@ -209,17 +188,13 @@ Note that pre-checked buttons require you to manually add the `.active` class to
 
 ### Methods
 
-#### $().button('toggle')
+| Method | Description |
+| --- | --- |
+| `$().button('toggle')` |Toggles push state. Gives the button the appearance that it has been activated.  |
+| `$().button('reset')` | Resets button state—swaps text to original text. **This method is asynchronous and returns before the resetting has actually completed.** |
+| `$().button(string)` | Swaps text to any data defined text state. |
 
-Toggles push state. Gives the button the appearance that it has been activated.
-
-#### $().button('reset')
-
-Resets button state—swaps text to original text. **This method is asynchronous and returns before the resetting has actually completed.**
-
-#### $().button(string)
-
-Swaps text to any data defined text state.
+### Custom state example
 
 {% highlight html %}
 <button type="button" id="myStateButton" data-complete-text="finished!" class="btn btn-primary" autocomplete="off">
