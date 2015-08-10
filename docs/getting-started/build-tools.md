@@ -17,8 +17,6 @@ To use our Gruntfile and run our documentation locally, you'll need a copy of Bo
 
 When completed, you'll be able to run the various Grunt commands provided from the command line.
 
-**Unfamiliar with npm? Don't have node installed?** That's a-okay. npm stands for [node packaged modules](http://npmjs.com/) and is a way to manage development dependencies through node.js. [Download and install node.js](https://nodejs.org/download/) before proceeding.
-
 [install-ruby]: https://www.ruby-lang.org/en/documentation/installation/
 [gembundler]: http://bundler.io/
 
