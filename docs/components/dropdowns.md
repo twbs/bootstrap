@@ -4,7 +4,7 @@ title: Dropdowns
 group: components
 ---
 
-Toggleable, contextual menu for displaying lists of links. Made interactive with the included dropdown JavaScript plugin.
+Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin.
 
 ## Contents
 
@@ -163,42 +163,20 @@ Regardless of whether you call your dropdown via JavaScript or instead use the d
 
 ### Methods
 
-#### $().dropdown('toggle')
-
-Toggles the dropdown menu of a given navbar or tabbed navigation.
+| Method | Description |
+| --- | --- |
+| `$().dropdown('toggle')` | Toggles the dropdown menu of a given navbar or tabbed navigation. |
 
 ### Events
 
 All dropdown events are fired at the `.dropdown-menu`'s parent element and have a `relatedTarget` property, whose value is the toggling anchor element.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th style="width: 150px;">Event Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>show.bs.dropdown</td>
-        <td>This event fires immediately when the show instance method is called.</td>
-      </tr>
-      <tr>
-        <td>shown.bs.dropdown</td>
-        <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).</td>
-      </tr>
-      <tr>
-        <td>hide.bs.dropdown</td>
-        <td>This event is fired immediately when the hide instance method has been called.</td>
-      </tr>
-      <tr>
-        <td>hidden.bs.dropdown</td>
-        <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete).</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+| Event | Description |
+| --- | --- |
+| `show.bs.dropdown` | This event fires immediately when the show instance method is called. |
+| `shown.bs.dropdown` | This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete). |
+| `hide.bs.dropdown` | This event is fired immediately when the hide instance method has been called. |
+| `hidden.bs.dropdown`| This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete). |
 
 {% highlight js %}
 $('#myDropdown').on('show.bs.dropdown', function () {
