@@ -4,41 +4,51 @@ title: Grid system
 group: layout
 ---
 
-Bootstrap includes a powerful mobile-first grid system for building layouts of all shapes and sizes based on a 12 column layout. There are multiple tiers, one for each [media query range]({{ site.baseurl }}/layout/media-queries/), made available via our predefined classes or semantic mixins.
-
-Here's how the grid system works:
-
-- There are three major components—containers, rows, and columns.
-- Containers—`.container` for fixed width or `.container-fluid` for full width—center your site's contents.
-- Rows are horizontal groups of columns that clear floats (when not in [flexbox mode]({{ site.baseurl }}/getting-started/flexbox/)).
-- Content should be placed within columns, and only columns may be immediate children of rows.
-- You can use predefined grid classes or Sass mixins for more semantic markup.
+Bootstrap includes a powerful mobile-first grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and has multiple tiers, one for each [media query range]({{ site.baseurl }}/layout/overview/#responsive-breakpoints). You can use it with Sass mixins or our predefined classes.
 
 ## Contents
 
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-## Quick start
+## How it works
 
-- Example grid class
-- Example mixins
+At a high level, here's how the grid system works:
 
-## Introduction
-
-Grid systems are used for creating page layouts through a series of rows and columns that house your content. Here's how the Bootstrap grid system works:
-
-- Rows must be placed within a `.container` (fixed-width) or `.container-fluid` (full-width) for proper alignment and padding.
-- Use rows to create horizontal groups of columns.
+- There are three major components—containers, rows, and columns.
+- Containers—`.container` for fixed width or `.container-fluid` for full width—center your site's contents and help align your grid content.
+- Rows are horizontal groups of columns that ensure your columns are lined up properly.
 - Content should be placed within columns, and only columns may be immediate children of rows.
-- Predefined grid classes like `.row` and `.col-xs-4` are available for quickly making grid layouts. Sass mixins can also be used for more semantic layouts.
-- Columns create gutters (gaps between column content) via `padding`. That padding is offset in rows for the first and last column via negative margin on `.row`s.
-- The negative margin is why the examples below are outdented. It's so that content within grid columns is lined up with non-grid content.
-- Grid columns are created by specifying the number of twelve available columns you wish to span. For example, three equal columns would use three `.col-xs-4`.
-- If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.
-- Grid classes apply to devices with screen widths greater than or equal to the breakpoint sizes, and override grid classes targeted at smaller devices. Therefore, applying any `.col-md-` class to an element will not only affect its styling on medium devices but also on large devices if a `.col-lg-` class is not present.
+- Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So if you want three equal-width columns, you'd use `.col-sm-4`.
+- Column `width`s are set in percentages, so they're always fluid and sized relative to their parent element.
+- Columns have horizontal `padding` to create the gutters between individual columns.
+- There are five grid tiers, one for each [responsive breakpoint]({{ site.baseurl }}/layout/overview/#responsive-breakpoints): extra small, small, medium, large, and extra large.
+- Grid tiers are based on minimum widths, meaning they apply to that one tier and all those above it (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices).
+- You can use predefined grid classes or Sass mixins for more semantic markup.
 
-Look to the examples for applying these principles to your code.
+Sounds good? Great, let's move on to seeing all that in an example.
+
+## Quick start example
+
+If you're using Bootstrap's compiled CSS, this the example you'll want to start with.
+
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      One of three columns
+    </div>
+    <div class="col-sm-4">
+      One of three columns
+    </div>
+    <div class="col-sm-4">
+      One of three columns
+    </div>
+  </div>
+</div>
+{% endexample %}
+
+The above example creates three equal-width columns on small, medium, large, and extra large devices using our [predefined grid classes](). Those columns are centered in the page with the parent `.container`.
 
 ## Grid options
 
@@ -50,24 +60,24 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       <tr>
         <th></th>
         <th>
-          Extra small devices
-          <small>Portrait phones (&lt;34em)</small>
+          Extra small
+          <small>&lt;34em</small>
         </th>
         <th>
-          Small devices
-          <small>Landscape phones (&ge;34em)</small>
+          Small
+          <small>&ge;34em</small>
         </th>
         <th>
-          Medium devices
-          <small>Tablets (&ge;48em)</small>
+          Medium
+          <small>&ge;48em</small>
         </th>
         <th>
-          Large devices
-          <small>Desktops (&ge;62em)</small>
+          Large
+          <small>&ge;62em</small>
         </th>
         <th>
-          Extra large devices
-          <small>Desktops (&ge;75em)</small>
+          Extra large
+          <small>&ge;75em</small>
         </th>
       </tr>
     </thead>
@@ -265,18 +275,6 @@ Using a single set of `.col-md-*` grid classes, you can create a basic grid syst
 </div>
 {% endexample %}
 </div>
-
-### Example: Fluid container
-
-Turn any fixed-width grid layout into a full-width layout by changing your outermost `.container` to `.container-fluid`.
-
-{% highlight html %}
-<div class="container-fluid">
-  <div class="row">
-    ...
-  </div>
-</div>
-{% endhighlight %}
 
 ### Example: Mobile and desktop
 
