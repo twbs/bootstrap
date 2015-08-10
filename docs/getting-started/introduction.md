@@ -60,3 +60,50 @@ Put it all together and your pages should look like this:
 {% endhighlight %}
 
 That's all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/scaffolding) or [our official examples](../examples/) to start laying out your site's content and components.
+
+## Important globals
+
+Bootstrap employs a handful of important global styles and settings that you'll need to be aware of when using it, all of which are almost exclusively geared towards the *normalization* of cross browser styles. Let's dive in.
+
+### HTML5 doctype
+
+Bootstrap requires the use of the HTML5 doctype. Without it, you'll see some funky incomplete styling, but including it shouldn't cause any considerable hiccups.
+
+{% highlight html %}
+<!DOCTYPE html>
+<html lang="en">
+  ...
+</html>
+{% endhighlight %}
+
+### Responsive meta tag
+
+Bootstrap is developed *mobile first*, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, **add the responsive viewport meta tag** to your `<head>`.
+
+{% highlight html %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% endhighlight %}
+
+You can see an example of this in action in the [started template](#starter-template).
+
+### Box-sizing
+
+For more straightforward sizing in CSS, we switch the global `box-sizing` value from `content-box` to `border-box`. This ensures `padding` does not affect the final computed width of an element, but it can cause problems with some third party software like including Google Maps and Google Custom Search Engine.
+
+On the rare occasion you need to override it, use something like the following:
+
+{% highlight scss %}
+.selector-for-some-widget {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+{% endhighlight %}
+
+With the above snippet, nested elements—including generated content via `:before` and `:after`—will all inherit the specified `box-sizing` for that `.selector-for-some-widget`.
+
+Learn more about [box model and sizing at CSS Tricks](https://css-tricks.com/box-sizing/).
+
+### Normalize.css
+
+For improved cross-browser rendering, we use [Normalize.css](http://necolas.github.io/normalize.css/) to correct small inconsistencies across browsers and devices. We further build on this with our own, slightly more opinionated styles with [Reboot]({{ site.baseurl }}/content/reboot/).
