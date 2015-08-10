@@ -667,7 +667,17 @@ mark,
   content: "\00A0 \2014";
 }
 
-.img-responsive, .carousel-inner > .carousel-item > img,
+.figure > img {
+  margin-bottom: .5rem; 
+  line-height: 1;
+}
+
+.figure-caption {
+  font-size: 90%;
+  color: #818a91;
+}
+
+.img-responsive, .figure > img, .carousel-inner > .carousel-item > img,
 .carousel-inner > .carousel-item > a > img {
   display: block;
   max-width: 100%;

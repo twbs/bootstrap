@@ -187,3 +187,20 @@ mark,
     }
   }
 }
+
+//
+// Figures
+//
+
+.figure {
+  > img {
+    @extend .img-responsive;
+    line-height: 1;
+    margin-bottom: ($spacer-y / 2);
+  }
+}
+
+.figure-caption {
+  font-size: 90%;
+  color: $gray-light;
+}
