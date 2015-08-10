@@ -38,7 +38,7 @@ module.exports = function (grunt) {
     banner: '/*!\n' +
             ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
             ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-            ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
+            ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
             ' */\n',
     jqueryCheck: 'if (typeof jQuery === \'undefined\') {\n' +
                  '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\')\n' +

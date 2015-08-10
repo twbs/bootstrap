@@ -1,13 +1,13 @@
 /*!
  * Bootstrap v4.0.0-alpha (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
- * Licensed under  ()
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
-  -webkit-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
 
@@ -75,12 +75,12 @@ dfn {
 }
 
 h1 {
-  margin: .67em 0; 
+  margin: .67em 0;
   font-size: 2em;
 }
 
 mark {
-  color: #000; 
+  color: #000;
   background: #ff0;
 }
 
@@ -117,7 +117,7 @@ figure {
 }
 
 hr {
-  height: 0; 
+  height: 0;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
 }
@@ -139,7 +139,7 @@ input,
 optgroup,
 select,
 textarea {
-  margin: 0; 
+  margin: 0;
   font: inherit;
   color: inherit;
 }
@@ -167,7 +167,7 @@ html input[disabled] {
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-  padding: 0; 
+  padding: 0;
   border: 0;
 }
 
@@ -189,7 +189,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="search"] {
   -webkit-box-sizing: content-box;
-          box-sizing: content-box; 
+          box-sizing: content-box;
   -webkit-appearance: textfield;
 }
 
@@ -199,13 +199,13 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 fieldset {
-  padding: .35em .625em .75em; 
+  padding: .35em .625em .75em;
   margin: 0 2px;
   border: 1px solid #c0c0c0;
 }
 
 legend {
-  padding: 0; 
+  padding: 0;
   border: 0;
 }
 
@@ -218,7 +218,7 @@ optgroup {
 }
 
 table {
-  border-spacing: 0; 
+  border-spacing: 0;
   border-collapse: collapse;
 }
 
@@ -322,11 +322,13 @@ a {
   color: #0275d8;
   text-decoration: none;
 }
+
 a:focus,
-  a:hover {
+a:hover {
   color: #014c8c;
   text-decoration: underline;
 }
+
 a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
