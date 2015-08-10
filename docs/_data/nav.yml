@@ -1,14 +1,20 @@
 - title: Getting started
   pages:
-    - title: Overview
+    # - title: Overview
+    # - title: Download
+    # - title: Contents
+    # - title: JavaScript
+    # - title: Compiling
+    # - title: Customize
+    # - title: Flexbox
+    # - title: Support
+    # - title: Accessibility
+    - title: Introduction
     - title: Download
-    - title: Contents
-    - title: JavaScript
-    - title: Compiling
-    - title: Customize
-    - title: Flexbox
-    - title: Support
-    - title: Accessibility
+    - title: Browsers & devices
+    - title: Options
+    - title: Build tools
+    - title: Best practices
 
 - title: Layout
   pages:
@@ -19,13 +25,22 @@
     - title: Media
     - title: Responsive utilities
 
-- title: Components
+- title: Content
   pages:
     - title: Reboot
     - title: Typography
-    - title: Images
     - title: Code
     - title: Tables
+    - title: Images
+    - title: Figures
+
+- title: Components
+  pages:
+    # - title: Reboot
+    # - title: Typography
+    # - title: Images
+    # - title: Code
+    # - title: Tables
     - title: Buttons
     - title: Button group
     - title: Button dropdown
@@ -77,6 +92,8 @@
 
 - title: About
   pages:
+    # - title: JavaScript
+    # - title: Accessibility
     - title: History
     - title: Team
     - title: Brand

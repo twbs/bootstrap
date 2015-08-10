@@ -129,5 +129,4 @@ Add nearly any HTML within, even for linked list groups like the one below.
     <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
   </a>
 </div>
-</div>
 {% endexample %}

@@ -40,7 +40,7 @@ $enable-flex:                false !default;
 $enable-rounded:             true !default;
 $enable-shadows:             false !default;
 $enable-gradients:           false !default;
-$enable-transitions:         true !default;
+$enable-transitions:         false !default;
 $enable-hover-media-query:   false !default;
 
 
@@ -78,6 +78,16 @@ $font-size-h4:               1.5rem !default;
 $font-size-h5:               1.25rem !default;
 $font-size-h6:               1rem !default;
 
+$display1-size:               3.5rem !default;
+$display2-size:               4.5rem !default;
+$display3-size:               5.5rem !default;
+$display4-size:               6rem !default;
+
+$display1-weight:             300 !default;
+$display2-weight:             300 !default;
+$display3-weight:             300 !default;
+$display4-weight:             300 !default;
+
 $line-height:                1.5 !default;
 
 $headings-font-family:       inherit !default;
@@ -93,7 +103,7 @@ $border-width:               .0625rem !default;
 // Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
 $padding-y:              .5rem !default;
-$padding-x:              .75rem !default;
+$padding-x:              1rem !default;
 
 $padding-lg-y:           .75rem !default;
 $padding-lg-x:           1.5rem !default;
@@ -141,7 +151,7 @@ $btn-font-weight:                normal !default;
 
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             darken($btn-primary-bg, 5%) !default;
+$btn-primary-border:             $btn-primary-bg !default;
 
 $btn-secondary-color:            $gray-dark !default;
 $btn-secondary-bg:               #fff !default;
@@ -149,19 +159,19 @@ $btn-secondary-border:           #ccc !default;
 
 $btn-info-color:                 #fff !default;
 $btn-info-bg:                    $brand-info !default;
-$btn-info-border:                darken($btn-info-bg, 5%) !default;
+$btn-info-border:                $btn-info-bg !default;
 
 $btn-success-color:              #fff !default;
 $btn-success-bg:                 $brand-success !default;
-$btn-success-border:             darken($btn-success-bg, 5%) !default;
+$btn-success-border:             $btn-success-bg !default;
 
 $btn-warning-color:              #fff !default;
 $btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             darken($btn-warning-bg, 5%) !default;
+$btn-warning-border:             $btn-warning-bg !default;
 
 $btn-danger-color:               #fff !default;
 $btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
+$btn-danger-border:              $btn-danger-bg !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 

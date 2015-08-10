@@ -4,58 +4,40 @@ title: Download
 group: getting-started
 ---
 
-Bootstrap is available for download via ZIP file in two flavors: precompiled CSS and Javascript, and the complete source code with documentation.
+**Bootstrap v{{ site.current_version}}** is available for download in several ways, including some of your favorite package managers. Choose from the options below to snag just what you need.
 
-## Contents
+<div class="row m-t-md">
+  <div class="col-sm-6">
+{% markdown %}
+### Compiled
+Download just the compiled and minified CSS and JavaScript. Doesn't include any documentation or original source files.
 
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
-
-## Custom builds
-
-Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag just what you need.
-
-<div class="row">
-  <div class="col-sm-4">
-    <h3>Reboot</h3>
-    <p>Includes variables/mixins, Normalize, and Reboot. No JavaScript.</p>
-    <a class="btn btn-primary" href="#">Download</a>
+<a href="{{ site.download.dist }}" class="btn btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download compiled');">Download Bootstrap</a>
+{% endmarkdown %}
   </div>
-  <div class="col-sm-4">
-    <h3>Grid only</h3>
-    <p>Includes variables/mixins and our grid system. No JavaScript.</p>
-    <a class="btn btn-primary" href="#">Download</a>
-  </div>
-  <div class="col-sm-4">
-    <h3>Flexbox</h3>
-    <p>All of Bootstrap, with flexbox support enabled and <strong>lower browser support</strong>.</p>
-    <a class="btn btn-primary" href="#">Download</a>
+  <div class="col-sm-6">
+{% markdown %}
+### Source files
+Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), and [some setup](../compiling).**
+
+<a href="{{ site.download.source }}" class="btn btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
+{% endmarkdown %}
   </div>
 </div>
 
-## Precompiled
-
-Compiled and minified CSS and JavaScript. No docs or original source files are included.
-
-<a href="{{ site.download.dist }}" class="btn btn-lg btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download compiled');">Download Bootstrap</a>
-
-## Download source and docs
-
-Source Sass, JavaScript, and documentation. **Requires a Sass compiler and [some setup](../compiling).**
-
-<a href="{{ site.download.source }}" class="btn btn-lg btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
-
 ## Package managers
+
+Pull in Bootstrap's **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a Sass compiler and [Autoprefixer](https://github.com/postcss/autoprefixer)** for a setup that matches our official compiled versions.
 
 ### Bower
 
-You can also install and manage Bootstrap's Sass, CSS, and JavaScript using [Bower](http://bower.io).
+Install and manage Bootstrap's Sass and JavaScript using [Bower](http://bower.io).
 
 {% highlight bash %}$ bower install bootstrap{% endhighlight %}
 
 ### npm
 
-Bootstrap is available as [an npm package](https://www.npmjs.org/package/bootstrap). Install it into your Node powered apps with:
+Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.org/package/bootstrap):
 
 {% highlight bash %}$ npm install bootstrap{% endhighlight %}
 
@@ -74,12 +56,31 @@ $ meteor add twbs:bootstrap
 
 ### Composer
 
-You can also install and manage Bootstrap's Less, CSS, JavaScript, and fonts using [Composer](https://getcomposer.org):
+You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org):
 
 {% highlight bash %}
 $ composer require twbs/bootstrap
 {% endhighlight %}
 
-## Autoprefixer required
 
-Bootstrap uses [Autoprefixer](https://github.com/postcss/autoprefixer) to deal with [CSS vendor prefixes](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm). If you're compiling Bootstrap from its source Sass and not using our Gruntfile, you'll need to integrate Autoprefixer into your build process yourself. If you're using precompiled Bootstrap or using our Gruntfile, you don't need to worry about this as Autoprefixer is already integrated into our Gruntfile.
+## Custom builds
+
+Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag just what you need.
+
+<div class="row">
+  <div class="col-sm-4">
+    <h3>Reboot</h3>
+    <p>Includes variables/mixins, Normalize, and Reboot. No JavaScript.</p>
+    <a class="btn btn-bs btn-outline" href="#">Download</a>
+  </div>
+  <div class="col-sm-4">
+    <h3>Grid only</h3>
+    <p>Includes variables/mixins and our grid system. No JavaScript.</p>
+    <a class="btn btn-bs btn-outline" href="#">Download</a>
+  </div>
+  <div class="col-sm-4">
+    <h3>Flexbox</h3>
+    <p>All of Bootstrap with flexbox enabled and <strong>lower browser support</strong>.</p>
+    <a class="btn btn-bs btn-outline" href="#">Download</a>
+  </div>
+</div>

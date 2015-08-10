@@ -82,6 +82,12 @@ fieldset[disabled] a.btn {
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
 
+// Remove all backgrounds
+.btn-outline {
+  background-color: $body-bg;
+  background-image: transparent;
+}
+
 
 //
 // Link buttons

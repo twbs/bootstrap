@@ -52,6 +52,8 @@
 
 a.list-group-item,
 button.list-group-item {
+  width: 100%;
+  text-align: inherit;
   color: $list-group-link-color;
 
   .list-group-item-heading {

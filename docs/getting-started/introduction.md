@@ -1,8 +1,14 @@
 ---
 layout: page
-title: Quick start
+title: Introduction
 group: getting-started
 ---
+
+Bootstrap is the world's most popular framework for building responsive, mobile-first sites and applications. Inside you'll find high quality HTML, CSS, and JavaScript to make starting any project easier than ever.
+
+Here's how to quickly get started with the Bootstrap CDN and a template starter page.
+
+## Quick start
 
 Looking to quickly add Bootstrap to your project? Use the Bootstrap CDN, provided for free by the folks at MaxCDN. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/getting-started/download)
 
@@ -21,7 +27,7 @@ Add our JavaScript plugins and jQuery near the end of your pages, right before t
 
 And that's it—you're your way to a fully Bootstrapped site. If you're at all unsure about the general page structure, keep reading for an example page template.
 
-## Page template
+## Starter template
 
 Be sure to have your pages set up with the latest design and development standards. That means:
 
@@ -35,8 +41,11 @@ Put it all together and your pages should look like this:
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css }}">
   </head>
@@ -50,4 +59,4 @@ Put it all together and your pages should look like this:
 </html>
 {% endhighlight %}
 
-That's all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/scaffolding) to start laying out your site's content before adding components.
+That's all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/scaffolding) or [our official examples](../examples/) to start laying out your site's content and components.

@@ -26,7 +26,7 @@
 
         <ul class="nav bd-sidenav">
           {% for doc in group.pages %}
-            {% assign slug = doc.title | downcase | replace: ' ', '-' %}
+            {% assign slug = doc.title | downcase | replace: ' ', '-' | replace:'-&-','-' %}
             {% assign active = nil %}
 
             {% if page.url contains slug %}
@@ -34,7 +34,7 @@
             {% endif %}
 
             <li class="{{ active }}">
-              <a href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' }}">
+              <a href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' | replace:'-&-','-' }}">
                 {{ doc.title }}
               </a>
 

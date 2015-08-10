@@ -102,6 +102,30 @@ Create lighter, secondary text in any heading with a generic `<small>` tag or th
 <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
 {% endhighlight %}
 
+## Display headings
+
+Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style.
+
+<div class="bd-example bd-example-type">
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><h1 class="display-4">Display 4</h1></td>
+      </tr>
+      <tr>
+      <td><h1 class="display-3">Display 3</h1></td>
+      </tr>
+      <tr>
+      <td><h1 class="display-2">Display 2</h1></td>
+      </tr>
+      <tr>
+      <td><h1 class="display-1">Display 1</h1></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 ## Lead
 
 Make a paragraph stand out by adding `.lead`.

@@ -55,6 +55,24 @@ h6, .h6 { font-size: $font-size-h6; }
   font-weight: 300;
 }
 
+// Type display classes
+.display-1 {
+  font-size: $display1-size;
+  font-weight: $display1-weight;
+}
+.display-2 {
+  font-size: $display2-size;
+  font-weight: $display2-weight;
+}
+.display-3 {
+  font-size: $display3-size;
+  font-weight: $display3-weight;
+}
+.display-4 {
+  font-size: $display4-size;
+  font-weight: $display4-weight;
+}
+
 
 //
 // Horizontal rules
@@ -168,4 +186,21 @@ mark,
       content: "\00A0 \2014"; // nbsp, em dash
     }
   }
+}
+
+//
+// Figures
+//
+
+.figure {
+  > img {
+    @extend .img-responsive;
+    line-height: 1;
+    margin-bottom: ($spacer-y / 2);
+  }
+}
+
+.figure-caption {
+  font-size: 90%;
+  color: $gray-light;
 }

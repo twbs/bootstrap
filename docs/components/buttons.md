@@ -48,11 +48,24 @@ The `.btn` classes are designed to be used with the `<button>` element. However,
 When using button classes on `<a>` elements that are used to trigger in-page functionality (like collapsing content), rather than linking to new pages or sections within the current page, these links should be given a `role="button"` to appropriately convey their purpose to assistive technologies such as screen readers.
 
 {% example html %}
-<a class="btn btn-secondary" href="#" role="button">Link</a>
-<button class="btn btn-secondary" type="submit">Button</button>
-<input class="btn btn-secondary" type="button" value="Input">
-<input class="btn btn-secondary" type="submit" value="Submit">
+<a class="btn btn-primary" href="#" role="button">Link</a>
+<button class="btn btn-primary" type="submit">Button</button>
+<input class="btn btn-primary" type="button" value="Input">
+<input class="btn btn-primary" type="submit" value="Submit">
 {% endexample %}
+
+## Outline buttons
+
+In need of a button, but not the hefty background colors they bring? Add the `.btn-outline` modifier class to remove all background images and colors on any button.
+
+{% example html %}
+<button type="button" class="btn btn-primary btn-outline">Primary</button>
+<button type="button" class="btn btn-secondary btn-outline">Secondary</button>
+<button type="button" class="btn btn-success btn-outline">Success</button>
+<button type="button" class="btn btn-warning btn-outline">Warning</button>
+<button type="button" class="btn btn-danger btn-outline">Danger</button>
+{% endexample %}
+
 
 ## Sizes
 
