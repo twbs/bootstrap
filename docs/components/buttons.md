@@ -4,7 +4,7 @@ title: Buttons
 group: components
 ---
 
-Buttons are used to execute actions in forms, dialogs, and more. Use any of the available button classes to quickly create a styled button.
+Use Bootstrap's custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.
 
 ## Contents
 
@@ -104,7 +104,11 @@ Buttons will appear pressed (with a darker background, darker border, and inset 
 
 ## Disabled state
 
-Make buttons look unclickable by adding the `disabled` boolean attribute to any `<button>` element.
+Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element.
+
+{% callout info %}
+**Heads up!** IE9 and below render disabled buttons with gray, shadowed text that we can't override.
+{% endcallout %}
 
 {% example html %}
 <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
@@ -119,21 +123,9 @@ As `<a>` elements don't support the `disabled` attribute, you must add the `.dis
 {% endexample %}
 
 {% callout warning %}
-#### Cross-browser compatibility
-
-If you add the `disabled` attribute to a `<button>`, Internet Explorer 9 and below will render text gray with a nasty text-shadow that we cannot fix.
-{% endcallout %}
-
-{% callout warning %}
 #### Link functionality caveat
 
 This class uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11\. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, use custom JavaScript to disable such links.
-{% endcallout %}
-
-{% callout warning %}
-#### Context-specific usage
-
-While button classes can be used on `<a>` and `<button>` elements, only `<button>` elements are supported within our nav and navbar components.
 {% endcallout %}
 
 ## Button plugin
