@@ -54,6 +54,19 @@ When using button classes on `<a>` elements that are used to trigger in-page fun
 <input class="btn btn-primary" type="submit" value="Submit">
 {% endexample %}
 
+## Outline buttons
+
+In need of a button, but not the hefty background colors they bring? Add the `.btn-outline` modifier class to remove all background images and colors on any button.
+
+{% example html %}
+<button type="button" class="btn btn-primary btn-outline">Primary</button>
+<button type="button" class="btn btn-secondary btn-outline">Secondary</button>
+<button type="button" class="btn btn-success btn-outline">Success</button>
+<button type="button" class="btn btn-warning btn-outline">Warning</button>
+<button type="button" class="btn btn-danger btn-outline">Danger</button>
+{% endexample %}
+
+
 ## Sizes
 
 Fancy larger or smaller buttons? Add `.btn-lg`, `.btn-sm`, or `.btn-xs` for additional sizes.
