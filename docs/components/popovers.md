@@ -37,6 +37,8 @@ $(function () {
 
 ## Example: Using the `container` option
 
+When you have some styles on a parent element that interfere with a popover, you'll want to specify a custom `container` so that the popover's HTML appears within that element instead.
+
 {% highlight js %}
 $(function () {
   $('.example-popover').popover(
