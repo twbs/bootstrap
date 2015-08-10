@@ -8,7 +8,8 @@ module.exports = function configureLibsass(grunt) {
         includePaths: ['scss'],
         precision: 6,
         sourceComments: false,
-        sourceMap: true
+        sourceMap: true,
+        outputStyle: 'expanded'
       },
       core: {
         files: {
