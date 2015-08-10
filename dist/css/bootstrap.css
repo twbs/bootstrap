@@ -3007,7 +3007,7 @@ input[type="button"].btn-block {
   border-radius: .25rem;
 }
 
-.dropdown-menu .divider {
+.dropdown-menu .dropdown-divider {
   height: 1px;
   margin: .5rem 0;
   overflow: hidden;

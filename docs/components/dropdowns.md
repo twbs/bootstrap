@@ -13,10 +13,10 @@ Dropdowns are toggleable, contextual overlays for displaying lists of links and 
 
 ## Example
 
-Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another element that declares `position: relative;`. Then add the menu's HTML.
+Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another element that declares `position: relative;`. Then, add the menu's HTML.
 
 {% example html %}
-<div class="dropdown">
+<div class="dropdown open">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown
   </button>
@@ -38,10 +38,8 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
 
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-right` to a `.dropdown-menu` to right align the dropdown menu.
 
-{% callout warning %}
-#### May require additional positioning
-
-Dropdowns are automatically positioned via CSS within the normal flow of the document. This means dropdowns may be cropped by parents with certain `overflow` properties or appear out of bounds of the viewport. Address these issues on your own as they arise.
+{% callout info %}
+**Heads up!** Dropdowns are positioned only with CSS and may need some additional styles for exact alignment.
 {% endcallout %}
 
 {% highlight html %}

@@ -50,7 +50,7 @@
   @include box-shadow(0 6px 12px rgba(0,0,0,.175));
 
   // Dividers (basically an hr) within the dropdown
-  .divider {
+  .dropdown-divider {
     @include nav-divider($dropdown-divider-bg);
   }
 
