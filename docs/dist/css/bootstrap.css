@@ -560,6 +560,26 @@ h6, .h6 {
   font-weight: 300;
 }
 
+.display-1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+}
+
+.display-2 {
+  font-size: 4.5rem;
+  font-weight: 300;
+}
+
+.display-3 {
+  font-size: 5.5rem;
+  font-weight: 300;
+}
+
+.display-4 {
+  font-size: 6rem;
+  font-weight: 300;
+}
+
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
