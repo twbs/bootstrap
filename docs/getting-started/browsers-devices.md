@@ -1,10 +1,10 @@
 ---
 layout: page
-title: Supported platforms
+title: Browsers and devices
 group: getting-started
 ---
 
-Bootstrap is built to work best with the latest techniques. As such, older desktop and mobile browsers may display differently, but should remain fully functional.
+Bootstrap supports a wide variety of modern browsers and devices, and some older ones. See which exact ones below, as well as detailed information on known quirks and bugs.
 
 ## Contents
 
@@ -14,6 +14,47 @@ Bootstrap is built to work best with the latest techniques. As such, older deskt
 ## Supported browsers
 
 Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11**. More specific support information is provided below.
+
+### Mobile devices
+
+Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers.
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td></td>
+        <th>Chrome</th>
+        <th>Firefox</th>
+        <th>Opera</th>
+        <th>Safari</th>
+        <th>Android Browser &amp; WebView</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Android</th>
+        <td class="text-success">Supported</td>
+        <td class="text-success">Supported</td>
+        <td class="text-danger">Not supported</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-success">Android v5.0+ supported</td>
+      </tr>
+      <tr>
+        <th scope="row">iOS</th>
+        <td class="text-success">Supported</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-danger">Not supported</td>
+        <td class="text-success">Supported</td>
+        <td class="text-muted">N/A</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Desktop browsers
+
+Similarly, the latest versions of most desktop browsers are supported.
 
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
@@ -25,34 +66,16 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
         <th>Internet Explorer</th>
         <th>Opera</th>
         <th>Safari</th>
-        <th>Android Browser &amp; WebView</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th scope="row">Android</th>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-muted" rowspan="3" style="vertical-align: middle;">N/A</td>
-        <td class="text-danger">Not supported</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-success">Android v5.0+<br>supported</td>
-      </tr>
-      <tr>
-        <th scope="row">iOS</th>
-        <td class="text-success">Supported</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-danger">Not supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-muted">N/A</td>
-      </tr>
-      <tr>
-        <th scope="row">Mac OS X</th>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
+        <th scope="row">Mac</th>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-muted">N/A</td>
+        <td class="text-success">Supported</td>
+        <td class="text-success">Supported</td>
       </tr>
       <tr>
         <th scope="row">Windows</th>
@@ -61,7 +84,6 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-danger">Not supported</td>
-        <td class="text-muted">N/A</td>
       </tr>
     </tbody>
   </table>
@@ -114,11 +136,13 @@ Visit [Can I use...](http://caniuse.com/) for details on browser support of CSS3
 
 As of v4, Bootstrap no longer supports IE8. **If you require IE8 support, we recommend you use Bootstrap 3.** It's still supported by our team for bugfixes and documentation changes, but no new features will be added to it.
 
-Alternatively, you can add the some third party JavaScript to backfill support for the browser. You'll need the following:
+Alternatively, you may add some third party JavaScript to backfill support for IE8 to Bootstrap 4. You'll need the following:
 
 * [The HTML5 shiv](http://en.wikipedia.org/wiki/HTML5_Shiv)
 * [Respond.js](https://github.com/scottjehl/Respond)
 * [Rem unit polyfill](https://github.com/chuckcarpenter/REM-unit-polyfill)
+
+No support will be provided for this, though you may find some help from the community in [our Slack channel]({{ site.slack }}).
 
 ## IE Compatibility modes
 

@@ -22,6 +22,7 @@ exclude:          [assets/less/]
 current_version:  4.0.0-alpha
 repo:             https://github.com/twbs/bootstrap
 sass_repo:        https://github.com/twbs/bootstrap-sass
+slack:            https://bootstrap-slack.herokuapp.com
 
 download:
   source:         https://github.com/twbs/bootstrap/archive/v3.3.5.zip
