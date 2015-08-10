@@ -123,4 +123,9 @@
 // Hide the first child li because it's always going to be "Contents".
 #markdown-toc > li:first-child {
   display: none;
+
+  ul {
+    margin-top: .25rem;
+    padding-left: 2rem;
+  }
 }
