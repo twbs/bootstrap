@@ -120,12 +120,15 @@
 // Markdown generated ToC
 //
 
-// Hide the first child li because it's always going to be "Contents".
-#markdown-toc > li:first-child {
-  display: none;
+#markdown-toc {
+  // Hide the first child li because it's always going to be "Contents".
+  > li:first-child {
+    display: none;
+  }
 
   ul {
-    margin-top: .5rem;
     padding-left: 2rem;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
   }
 }
