@@ -18,11 +18,9 @@
 
 - title: Layout
   pages:
-    - title: Scaffolding
-    - title: Media queries
-    - title: Containers
+    - title: Overview
     - title: Grid
-    - title: Media
+    - title: Media object
     - title: Responsive utilities
 
 - title: Content
