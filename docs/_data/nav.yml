@@ -1,18 +1,12 @@
 - title: Getting started
   pages:
-    # - title: Overview
-    # - title: Download
-    # - title: Contents
     # - title: JavaScript
-    # - title: Compiling
-    # - title: Customize
-    # - title: Flexbox
-    # - title: Support
     # - title: Accessibility
     - title: Introduction
     - title: Download
     - title: Browsers & devices
     - title: Options
+    - title: Flexbox
     - title: Build tools
     - title: Best practices
 
@@ -34,11 +28,6 @@
 
 - title: Components
   pages:
-    # - title: Reboot
-    # - title: Typography
-    # - title: Images
-    # - title: Code
-    # - title: Tables
     - title: Buttons
     - title: Button group
     - title: Button dropdown
