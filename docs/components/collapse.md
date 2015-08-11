@@ -31,7 +31,7 @@ You can use a link with the `href` attribute, or a button with the `data-target`
   </button>
 </p>
 <div class="collapse" id="collapseExample">
-  <div class="well">
+  <div class="card card-block">
     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
   </div>
 </div>
