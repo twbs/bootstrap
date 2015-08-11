@@ -55,6 +55,7 @@
 //
 
 // Alignment
+
 .text-left           { text-align: left; }
 .text-right          { text-align: right; }
 .text-center         { text-align: center; }
@@ -62,13 +63,44 @@
 .text-nowrap         { white-space: nowrap; }
 .text-truncate       { @include text-truncate; }
 
+// Responsive alignment
+
+.text-xs-left   { text-align: left; }
+.text-xs-right  { text-align: right; }
+.text-xs-center { text-align: center; }
+
+@include media-breakpoint-up(sm) {
+  .text-sm-left   { text-align: left; }
+  .text-sm-right  { text-align: right; }
+  .text-sm-center { text-align: center; }
+}
+
+@include media-breakpoint-up(md) {
+  .text-md-left   { text-align: left; }
+  .text-md-right  { text-align: right; }
+  .text-md-center { text-align: center; }
+}
+
+@include media-breakpoint-up(lg) {
+  .text-lg-left   { text-align: left; }
+  .text-lg-right  { text-align: right; }
+  .text-lg-center { text-align: center; }
+}
+
+@include media-breakpoint-up(xl) {
+  .text-xl-left   { text-align: left; }
+  .text-xl-right  { text-align: right; }
+  .text-xl-center { text-align: center; }
+}
+
 // Transformation
+
 .text-lowercase      { text-transform: lowercase; }
 .text-uppercase      { text-transform: uppercase; }
 .text-capitalize     { text-transform: capitalize; }
 
-
 // Contextual colors
+
 .text-muted {
   color: $text-muted;
 }
