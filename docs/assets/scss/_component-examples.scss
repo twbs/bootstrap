@@ -17,6 +17,43 @@
 
 
 //
+// Container illustrations
+//
+
+.bd-example-container {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bd-example-container-header {
+  height: 3rem;
+  margin-bottom: .5rem;
+  background-color: lighten($brand-primary, 50%);
+  border-radius: .25rem;
+}
+
+.bd-example-container-sidebar {
+  float: right;
+  width: 4rem;
+  height: 8rem;
+  background-color: lighten($brand-warning, 25%);
+  border-radius: .25rem;
+}
+
+.bd-example-container-body {
+  height: 8rem;
+  margin-right: 4.5rem;
+  background-color: lighten($bd-purple, 25%);
+  border-radius: .25rem;
+}
+
+.bd-example-container-fluid {
+  max-width: 100%;
+}
+
+
+//
 // Docs examples
 //
 
@@ -36,7 +73,7 @@
     border-width: .2rem;
   }
 
-  + .highlight,  
+  + .highlight,
   + .zero-clipboard + .highlight {
     margin-top: 0;
   }

@@ -12,6 +12,14 @@ Containers are the most basic layout element in Bootstrap and are **required whe
 
 While containers *can* be nested, most layouts do not require a nested container.
 
+<div class="bd-example">
+  <div class="bd-example-container">
+    <div class="bd-example-container-header"></div>
+    <div class="bd-example-container-sidebar"></div>
+    <div class="bd-example-container-body"></div>
+  </div>
+</div>
+
 {% highlight html %}
 <div class="container">
   <!-- Content here -->
@@ -19,6 +27,14 @@ While containers *can* be nested, most layouts do not require a nested container
 {% endhighlight %}
 
 Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
+
+<div class="bd-example">
+  <div class="bd-example-container bd-example-container-fluid">
+    <div class="bd-example-container-header"></div>
+    <div class="bd-example-container-sidebar"></div>
+    <div class="bd-example-container-body"></div>
+  </div>
+</div>
 
 {% highlight html %}
 <div class="container-fluid">
