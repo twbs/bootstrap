@@ -1,50 +1,51 @@
-//
 // Variables
 //
+// Copy settings from this file into the provided `_custom.scss` to override
+// the Bootstrap defaults without modifying key, versioned files.
+
+
+// Table of ontents
+//
+// Colors
+// Options
+// Spacing
+// Body
+// Links
+// Grid breakpoints
+// Grid containers
+// Grid columns
 
 
 // Colors
 //
-// Gray and brand colors for use across Bootstrap.
+// Grayscale and brand colors for use across Bootstrap.
 
-$gray-dark:                  #373a3c !default;
-$gray:                       #55595c !default;
-$gray-light:                 #818a91 !default;
-$gray-lighter:               #eceeef !default;
-$gray-lightest:              #f7f7f9 !default;
+$gray-dark:                 #373a3c !default;
+$gray:                      #55595c !default;
+$gray-light:                #818a91 !default;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             #f7f7f9 !default;
 
-$brand-primary:              #0275d8 !default;
-$brand-success:              #5cb85c !default;
-$brand-info:                 #5bc0de !default;
-$brand-warning:              #f0ad4e !default;
-$brand-danger:               #d9534f !default;
+$brand-primary:             #0275d8 !default;
+$brand-success:             #5cb85c !default;
+$brand-info:                #5bc0de !default;
+$brand-warning:             #f0ad4e !default;
+$brand-danger:              #d9534f !default;
 
 
-// Scaffolding
+// Options
 //
-// Settings for some of the most global styles.
+// Quickly modify global styling by enabling or disabling optional features.
 
-$body-bg:                    #fff !default;
-$text-color:                 $gray-dark !default;
-
-$link-color:                 $brand-primary !default;
-$link-hover-color:           darken($link-color, 15%) !default;
-$link-hover-decoration:      underline !default;
-
-
-// Global settings
-//
-// Quickly modify global styling by enabling or disabling features.
-
-$enable-flex:                false !default;
-$enable-rounded:             true !default;
-$enable-shadows:             false !default;
-$enable-gradients:           false !default;
-$enable-transitions:         false !default;
-$enable-hover-media-query:   false !default;
+$enable-flex:               false !default;
+$enable-rounded:            true !default;
+$enable-shadows:            false !default;
+$enable-gradients:          false !default;
+$enable-transitions:        false !default;
+$enable-hover-media-query:  false !default;
 
 
-// Component defaults
+// Spacing
 //
 // Control the default styling of most Bootstrap elements by modifying these
 // variables. Mostly focused on spacing.
@@ -52,6 +53,62 @@ $enable-hover-media-query:   false !default;
 $spacer:                     1rem !default;
 $spacer-x:                   $spacer !default;
 $spacer-y:                   $spacer !default;
+
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg:                    #fff !default;
+$body-color:                 $gray-dark !default;
+
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:                 $brand-primary !default;
+$link-hover-color:           darken($link-color, 15%) !default;
+$link-hover-decoration:      underline !default;
+
+
+// Grid breakpoints
+//
+// Define the minimum and maximum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 34em,
+  // Medium screen / tablet
+  md: 48em,
+  // Large screen / desktop
+  lg: 62em,
+  // Extra large screen / wide desktop
+  xl: 75em
+) !default;
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  sm: 34rem,    // 480
+  md: 45rem,    // 720
+  lg: 60rem,    // 960
+  xl: 72.25rem  // 1140
+) !default;
+
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns:               12 !default;
+$grid-gutter-width:          1.5rem !default;
 
 
 // Typography
@@ -246,45 +303,6 @@ $zindex-navbar-fixed:      1030 !default;
 $zindex-navbar-sticky:     1030 !default;
 $zindex-modal-bg:          1040 !default;
 $zindex-modal:             1050 !default;
-
-
-// Media queries breakpoints
-//
-// Define the minimum and maximum dimensions at which your layout will change, adapting to different screen sizes.
-
-// Grid system
-//
-// Define your custom responsive grid.
-$grid-breakpoints: (
-  // Extra small screen / phone
-  xs: 0,
-  // Small screen / phone
-  sm: 34em,
-  // Medium screen / tablet
-  md: 48em,
-  // Large screen / desktop
-  lg: 62em,
-  // Extra large screen / wide desktop
-  xl: 75em
-) !default;
-
-// Number of columns in the grid.
-$grid-columns:               12 !default;
-
-// Padding between columns. Gets divided in half for the left and right.
-$grid-gutter-width:          1.5rem !default;
-
-
-// Container sizes
-//
-// Define the maximum width of `.container` for different screen sizes.
-
-$container-max-widths: (
-  sm: 34rem,    // 480
-  md: 45rem,    // 720
-  lg: 60rem,    // 960
-  xl: 72.25rem  // 1140
-) !default;
 
 
 // Navbar
