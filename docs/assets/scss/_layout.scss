@@ -1,34 +1,10 @@
-// Custom container
-//
-// Doesn't use the default `.container` styles for easier modifications.
-
 .bd-content {
-  // position: relative;
-  // max-width: 62rem;
-  // padding: 0 1rem 1rem;
-  // margin-right: auto;
-  // margin-left: auto;
-
-  // @include media-breakpoint-up(md) {
-  //   padding: 2rem;
-  // }
-  //
-  // @include media-breakpoint-up(lg) {
-  //   padding: 4rem;
-  //
-  //   .carbonad {
-  //     float: right !important;
-  //     margin: .5rem 0 1rem 2rem !important;
-  //   }
-  // }
-
   > table {
     display: block;
     width: 100%;
     max-width: 100%;
     overflow-y: auto;
     margin-bottom: $spacer;
-    // border: 1px solid $table-border-color;
 
     // Cells
     > thead,
@@ -40,7 +16,6 @@
           padding: $table-cell-padding;
           line-height: $line-height;
           vertical-align: top;
-          // border-top: 1px solid $table-border-color;
           border: 1px solid $table-border-color;
 
           > p:last-child {
