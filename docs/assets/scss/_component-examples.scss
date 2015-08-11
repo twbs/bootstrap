@@ -21,7 +21,8 @@
 //
 
 .bd-example-container {
-  max-width: 50%;
+  min-width: 16rem;
+  max-width: 25rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -49,7 +50,7 @@
 }
 
 .bd-example-container-fluid {
-  max-width: 100%;
+  max-width: none;
 }
 
 
