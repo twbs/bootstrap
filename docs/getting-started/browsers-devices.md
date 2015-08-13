@@ -89,7 +89,7 @@ Similarly, the latest versions of most desktop browsers are supported.
   </table>
 </div>
 
-Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 8-, though they are not officially supported.
+Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 8 and below, though they are not officially supported.
 
 For a list of some of the browser bugs that Bootstrap has to grapple with, see our [Wall of browser bugs](../browser-bugs/).
 
