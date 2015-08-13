@@ -385,19 +385,6 @@ $form-icon-error: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGl
 // }
 
 
-// Help text
-//
-// Apply to any element you wish to create light text for placement immediately
-// below a form control. Use for general help, formatting, or instructional text.
-
-.help-block {
-  display: block; // account for any element using help-block
-  margin-top: .25rem;
-  margin-bottom: .75rem;
-  color: lighten($body-color, 25%); // lighten the text some for contrast
-}
-
-
 // Inline forms
 //
 // Make forms appear inline(-block) by adding the `.form-inline` class. Inline

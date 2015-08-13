@@ -22,6 +22,7 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   <fieldset class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    <small class="text-muted">We'll never share your email with anyone else.</small>
   </fieldset>
   <fieldset class="form-group">
     <label for="exampleInputPassword1">Password</label>
@@ -54,7 +55,7 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   <fieldset class="form-group">
     <label for="exampleInputFile">File input</label>
     <input type="file" class="form-control-file" id="exampleInputFile">
-    <p class="help-block">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</p>
+    <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </fieldset>
   <div class="radio">
     <label>
@@ -517,12 +518,12 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 Block level help text for form controls.
 
 {% example html %}
-<p class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</p>
+<p class="text-help">A block of help text that breaks onto a new line and may extend beyond one line.</p>
 {% endexample %}
 
 ## Validation
 
-Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.control-label`, `.form-control`, and `.help-block` within that element will receive the validation styles.
+Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
 
 {% comment %}
 {% callout warning %}
