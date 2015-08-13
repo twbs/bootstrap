@@ -49,7 +49,7 @@
       HIDDEN: 'hidden' + EVENT_KEY,
       SHOW: 'show' + EVENT_KEY,
       SHOWN: 'shown' + EVENT_KEY,
-      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
+      CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
     };
 
     var ClassName = {
@@ -83,6 +83,14 @@
 
         this._element = element;
       }
+
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+
+      // getters
 
       _createClass(Tab, [{
         key: 'show',
@@ -159,11 +167,11 @@
           $.removeClass(this._element, DATA_KEY);
           this._element = null;
         }
-      }, {
-        key: '_activate',
 
         // private
 
+      }, {
+        key: '_activate',
         value: function _activate(element, container, callback) {
           var active = $(container).find(Selector.ACTIVE_CHILD)[0];
           var isTransitioning = callback && _Util['default'].supportsTransitionEnd() && (active && $(active).hasClass(ClassName.FADE) || !!$(container).find(Selector.FADE_CHILD)[0]);
@@ -228,11 +236,11 @@
             callback();
           }
         }
-      }], [{
-        key: '_jQueryInterface',
 
         // static
 
+      }], [{
+        key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
             var $this = $(this);
@@ -250,22 +258,13 @@
         }
       }, {
         key: 'VERSION',
-
-        // getters
-
-        get: function () {
+        get: function get() {
           return VERSION;
         }
       }]);
 
       return Tab;
     })();
-
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
 
     $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
       event.preventDefault();

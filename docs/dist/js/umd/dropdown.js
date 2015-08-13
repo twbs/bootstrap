@@ -49,8 +49,8 @@
       SHOW: 'show' + EVENT_KEY,
       SHOWN: 'shown' + EVENT_KEY,
       CLICK: 'click' + EVENT_KEY,
-      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY,
-      KEYDOWN_DATA_API: 'keydown' + EVENT_KEY + '' + DATA_API_KEY
+      CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY,
+      KEYDOWN_DATA_API: 'keydown' + EVENT_KEY + DATA_API_KEY
     };
 
     var ClassName = {
@@ -83,6 +83,14 @@
 
         this._addEventListeners();
       }
+
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+
+      // getters
 
       _createClass(Dropdown, [{
         key: 'toggle',
@@ -136,19 +144,19 @@
           $(this._element).off(EVENT_KEY);
           this._element = null;
         }
-      }, {
-        key: '_addEventListeners',
 
         // private
 
+      }, {
+        key: '_addEventListeners',
         value: function _addEventListeners() {
           $(this._element).on(Event.CLICK, this.toggle);
         }
-      }], [{
-        key: '_jQueryInterface',
 
         // static
 
+      }], [{
+        key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
             var data = $(this).data(DATA_KEY);
@@ -259,22 +267,13 @@
         }
       }, {
         key: 'VERSION',
-
-        // getters
-
-        get: function () {
+        get: function get() {
           return VERSION;
         }
       }]);
 
       return Dropdown;
     })();
-
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
 
     $(document).on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler).on(Event.CLICK_DATA_API, Dropdown._clearMenus).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
       e.stopPropagation();

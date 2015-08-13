@@ -313,7 +313,7 @@ const Modal = (($) => {
           $(this._backdrop).addClass(animate)
         }
 
-        $(this._backdrop).appendTo(this.$body)
+        $(this._backdrop).appendTo(document.body)
 
         $(this._element).on(Event.CLICK_DISMISS, (event) => {
           if (this._ignoreBackdropClick) {

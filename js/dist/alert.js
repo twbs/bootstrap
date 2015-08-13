@@ -34,7 +34,7 @@ var Alert = (function ($) {
   var Event = {
     CLOSE: 'close' + EVENT_KEY,
     CLOSED: 'closed' + EVENT_KEY,
-    CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
+    CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
   };
 
   var ClassName = {
@@ -55,6 +55,14 @@ var Alert = (function ($) {
 
       this._element = element;
     }
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    // getters
 
     _createClass(Alert, [{
       key: 'close',
@@ -79,11 +87,11 @@ var Alert = (function ($) {
         $.removeData(this._element, DATA_KEY);
         this._element = null;
       }
-    }, {
-      key: '_getRootElement',
 
       // private
 
+    }, {
+      key: '_getRootElement',
       value: function _getRootElement(element) {
         var parent = false;
         var selector = Util.getSelectorFromElement(element);
@@ -122,19 +130,11 @@ var Alert = (function ($) {
       value: function _destroyElement(element) {
         $(element).detach().trigger(Event.CLOSED).remove();
       }
-    }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: '_jQueryInterface',
 
       // static
 
+    }], [{
+      key: '_jQueryInterface',
       value: function _jQueryInterface(config) {
         return this.each(function () {
           var $element = $(this);
@@ -161,16 +161,15 @@ var Alert = (function ($) {
           alertInstance.close(this);
         };
       }
+    }, {
+      key: 'VERSION',
+      get: function get() {
+        return VERSION;
+      }
     }]);
 
     return Alert;
   })();
-
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
 

@@ -42,7 +42,7 @@ var Collapse = (function ($) {
     SHOWN: 'shown' + EVENT_KEY,
     HIDE: 'hide' + EVENT_KEY,
     HIDDEN: 'hidden' + EVENT_KEY,
-    CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
+    CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
   };
 
   var ClassName = {
@@ -87,6 +87,14 @@ var Collapse = (function ($) {
         this.toggle();
       }
     }
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    // getters
 
     _createClass(Collapse, [{
       key: 'toggle',
@@ -234,11 +242,11 @@ var Collapse = (function ($) {
         this._triggerArray = null;
         this._isTransitioning = null;
       }
-    }, {
-      key: '_getConfig',
 
       // private
 
+    }, {
+      key: '_getConfig',
       value: function _getConfig(config) {
         config = $.extend({}, Default, config);
         config.toggle = !!config.toggle; // coerce string values
@@ -277,24 +285,11 @@ var Collapse = (function ($) {
           }
         }
       }
-    }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function () {
-        return Default;
-      }
-    }, {
-      key: '_getTargetFromElement',
 
       // static
 
+    }], [{
+      key: '_getTargetFromElement',
       value: function _getTargetFromElement(element) {
         var selector = Util.getSelectorFromElement(element);
         return selector ? $(selector)[0] : null;
@@ -321,16 +316,20 @@ var Collapse = (function ($) {
           }
         });
       }
+    }, {
+      key: 'VERSION',
+      get: function get() {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function get() {
+        return Default;
+      }
     }]);
 
     return Collapse;
   })();
-
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault();

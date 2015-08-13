@@ -54,8 +54,8 @@ var Carousel = (function ($) {
     KEYDOWN: 'keydown' + EVENT_KEY,
     MOUSEENTER: 'mouseenter' + EVENT_KEY,
     MOUSELEAVE: 'mouseleave' + EVENT_KEY,
-    LOAD_DATA_API: 'load' + EVENT_KEY + '' + DATA_API_KEY,
-    CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
+    LOAD_DATA_API: 'load' + EVENT_KEY + DATA_API_KEY,
+    CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
   };
 
   var ClassName = {
@@ -100,6 +100,14 @@ var Carousel = (function ($) {
 
       this._addEventListeners();
     }
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    // getters
 
     _createClass(Carousel, [{
       key: 'next',
@@ -194,11 +202,11 @@ var Carousel = (function ($) {
         this._activeElement = null;
         this._indicatorsElement = null;
       }
-    }, {
-      key: '_getConfig',
 
       // private
 
+    }, {
+      key: '_getConfig',
       value: function _getConfig(config) {
         config = $.extend({}, Default, config);
         Util.typeCheckConfig(NAME, config, DefaultType);
@@ -354,24 +362,11 @@ var Carousel = (function ($) {
           this.cycle();
         }
       }
-    }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function () {
-        return Default;
-      }
-    }, {
-      key: '_jQueryInterface',
 
       // static
 
+    }], [{
+      key: '_jQueryInterface',
       value: function _jQueryInterface(config) {
         return this.each(function () {
           var data = $(this).data(DATA_KEY);
@@ -428,16 +423,20 @@ var Carousel = (function ($) {
 
         event.preventDefault();
       }
+    }, {
+      key: 'VERSION',
+      get: function get() {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function get() {
+        return Default;
+      }
     }]);
 
     return Carousel;
   })();
-
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
 

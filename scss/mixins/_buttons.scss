@@ -47,11 +47,6 @@
           border-color: $border;
     }
   }
-
-  .badge {
-    color: $background;
-    background-color: $color;
-  }
 }
 
 @mixin button-outline-variant($color) {

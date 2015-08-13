@@ -150,7 +150,7 @@
           if (value && isElement(value)) valueType = 'element';else valueType = toType(value);
 
           if (!new RegExp(expectedTypes).test(valueType)) {
-            throw new Error('' + componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
+            throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
           }
         }
       }

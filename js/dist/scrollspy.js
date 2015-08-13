@@ -41,7 +41,7 @@ var ScrollSpy = (function ($) {
   var Event = {
     ACTIVATE: 'activate' + EVENT_KEY,
     SCROLL: 'scroll' + EVENT_KEY,
-    LOAD_DATA_API: 'load' + EVENT_KEY + '' + DATA_API_KEY
+    LOAD_DATA_API: 'load' + EVENT_KEY + DATA_API_KEY
   };
 
   var ClassName = {
@@ -75,7 +75,7 @@ var ScrollSpy = (function ($) {
       this._element = element;
       this._scrollElement = element.tagName === 'BODY' ? window : element;
       this._config = this._getConfig(config);
-      this._selector = '' + this._config.target + ' ' + Selector.NAV_ANCHORS;
+      this._selector = this._config.target + ' ' + Selector.NAV_ANCHORS;
       this._offsets = [];
       this._targets = [];
       this._activeTarget = null;
@@ -86,6 +86,14 @@ var ScrollSpy = (function ($) {
       this.refresh();
       this._process();
     }
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    // getters
 
     _createClass(ScrollSpy, [{
       key: 'refresh',
@@ -144,11 +152,11 @@ var ScrollSpy = (function ($) {
         this._activeTarget = null;
         this._scrollHeight = null;
       }
-    }, {
-      key: '_getConfig',
 
       // private
 
+    }, {
+      key: '_getConfig',
       value: function _getConfig(config) {
         config = $.extend({}, Default, config);
 
@@ -215,7 +223,7 @@ var ScrollSpy = (function ($) {
 
         this._clear();
 
-        var selector = '' + this._selector + '[data-target="' + target + '"],' + ('' + this._selector + '[href="' + target + '"]');
+        var selector = this._selector + '[data-target="' + target + '"],' + (this._selector + '[href="' + target + '"]');
 
         // todo (fat): getting all the raw li's up the tree is not great.
         var parentListItems = $(selector).parents(Selector.LI);
@@ -244,24 +252,11 @@ var ScrollSpy = (function ($) {
           $(activeParents[i]).removeClass(ClassName.ACTIVE);
         }
       }
-    }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function () {
-        return Default;
-      }
-    }, {
-      key: '_jQueryInterface',
 
       // static
 
+    }], [{
+      key: '_jQueryInterface',
       value: function _jQueryInterface(config) {
         return this.each(function () {
           var data = $(this).data(DATA_KEY);
@@ -277,16 +272,20 @@ var ScrollSpy = (function ($) {
           }
         });
       }
+    }, {
+      key: 'VERSION',
+      get: function get() {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function get() {
+        return Default;
+      }
     }]);
 
     return ScrollSpy;
   })();
-
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
 
   $(window).on(Event.LOAD_DATA_API, function () {
     var scrollSpys = $.makeArray($(Selector.DATA_SPY));

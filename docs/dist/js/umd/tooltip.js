@@ -142,6 +142,14 @@
         this._setListeners();
       }
 
+      /**
+       * ------------------------------------------------------------------------
+       * jQuery
+       * ------------------------------------------------------------------------
+       */
+
+      // getters
+
       _createClass(Tooltip, [{
         key: 'enable',
 
@@ -313,11 +321,11 @@
 
           this._hoverState = '';
         }
-      }, {
-        key: 'isWithContent',
 
         // protected
 
+      }, {
+        key: 'isWithContent',
         value: function isWithContent() {
           return !!this.getTitle();
         }
@@ -363,11 +371,11 @@
             $(this.tip).removeClass(this._removeTetherClasses);
           }
         }
-      }, {
-        key: '_getAttachment',
 
         // private
 
+      }, {
+        key: '_getAttachment',
         value: function _getAttachment(placement) {
           return AttachmentMap[placement.toUpperCase()];
         }
@@ -526,11 +534,11 @@
 
           return config;
         }
-      }], [{
-        key: '_jQueryInterface',
 
         // static
 
+      }], [{
+        key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
             var data = $(this).data(DATA_KEY);
@@ -552,52 +560,43 @@
         }
       }, {
         key: 'VERSION',
-
-        // getters
-
-        get: function () {
+        get: function get() {
           return VERSION;
         }
       }, {
         key: 'Default',
-        get: function () {
+        get: function get() {
           return Default;
         }
       }, {
         key: 'NAME',
-        get: function () {
+        get: function get() {
           return NAME;
         }
       }, {
         key: 'DATA_KEY',
-        get: function () {
+        get: function get() {
           return DATA_KEY;
         }
       }, {
         key: 'Event',
-        get: function () {
+        get: function get() {
           return Event;
         }
       }, {
         key: 'EVENT_KEY',
-        get: function () {
+        get: function get() {
           return EVENT_KEY;
         }
       }, {
         key: 'DefaultType',
-        get: function () {
+        get: function get() {
           return DefaultType;
         }
       }]);
 
       return Tooltip;
     })();
-
-    /**
-     * ------------------------------------------------------------------------
-     * jQuery
-     * ------------------------------------------------------------------------
-     */
 
     $.fn[NAME] = Tooltip._jQueryInterface;
     $.fn[NAME].Constructor = Tooltip;
