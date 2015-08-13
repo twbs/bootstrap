@@ -42,4 +42,4 @@ matrix:
 notifications:
   slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
   webhooks:
-    - http://savage.twbsapps.com/savage/travis
+    - http://savage1.twbsapps.com/savage/travis
