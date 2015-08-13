@@ -420,11 +420,7 @@ $pager-disabled-color:                 $pagination-disabled-color !default;
 // Jumbotron
 
 $jumbotron-padding:              2rem !default;
-$jumbotron-color:                inherit !default;
 $jumbotron-bg:                   $gray-lighter !default;
-$jumbotron-heading-color:        inherit !default;
-$jumbotron-heading-font-size:    ($font-size-base * 4.5) !default;
-// $jumbotron-font-size:            ceil(($font-size-base * 1.5)) !default;
 
 
 // Form states and alerts
@@ -632,4 +628,4 @@ $headings-small-color:        $gray-light !default;
 $blockquote-small-color:      $gray-light !default;
 $blockquote-font-size:        ($font-size-base * 1.25) !default;
 $blockquote-border-color:     $gray-lighter !default;
-$hr-border:                   $gray-lighter !default;
+$hr-border:                   rgba(0,0,0,.1) !default;

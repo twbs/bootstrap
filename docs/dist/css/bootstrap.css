@@ -589,7 +589,7 @@ hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;
-  border-top: .0625rem solid #eceeef;
+  border-top: .0625rem solid rgba(0, 0, 0, .1);
 }
 
 small,
@@ -4578,13 +4578,8 @@ a.label:hover {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  color: inherit;
   background-color: #eceeef;
   border-radius: .3rem;
-}
-
-.jumbotron-heading {
-  color: inherit;
 }
 
 .jumbotron-hr {
@@ -4594,9 +4589,6 @@ a.label:hover {
 @media (min-width: 34em) {
   .jumbotron {
     padding: 4rem 2rem;
-  }
-  .jumbotron-heading {
-    font-size: 4.5rem;
   }
 }
 
