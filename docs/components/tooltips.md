@@ -13,7 +13,7 @@ Inspired by the excellent Tipsy jQuery plugin written by Jason Frame. Tooltips a
 
 ## Overview
 
-Things to know when using the popover plugin:
+Things to know when using the tooltip plugin:
 
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
@@ -24,7 +24,7 @@ Things to know when using the popover plugin:
 
 Got all that? Great, let's see how they work with some examples.
 
-## Example: Enable popovers everywhere
+## Example: Enable tooltips everywhere
 
 One way to initialize all tooltips on a page would be to select them by their `data-toggle` attribute:
 
@@ -216,12 +216,16 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.</td>
       </tr>
       <tr>
-        <td>viewport</td>
-        <td>string | object</td>
-        <td>{ selector: 'body', padding: 0 }</td>
-        <td>
-          <p>Keeps the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ "selector": "#viewport", "padding": 0 }</code></p>
-        </td>
+        <td>constraints</td>
+        <td>Array</td>
+        <td>'hover focus'</td>
+        <td>An array of constraints - passed through to tether. For more information refer to tether's <a href="http://github.hubspot.com/tether/#constraints">constraint docs</a>.</td>
+      </tr>
+      <tr>
+        <td>offsets</td>
+        <td>string</td>
+        <td>'0 0'</td>
+        <td>Offset of the popover relative to it's target. For more information refer to tether's <a href="http://github.hubspot.com/tether/#constraints">offset docs</a>.</td>
       </tr>
     </tbody>
   </table>

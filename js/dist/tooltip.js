@@ -125,6 +125,14 @@ var Tooltip = (function ($) {
       this._setListeners();
     }
 
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    // getters
+
     _createClass(Tooltip, [{
       key: 'enable',
 
@@ -296,11 +304,11 @@ var Tooltip = (function ($) {
 
         this._hoverState = '';
       }
-    }, {
-      key: 'isWithContent',
 
       // protected
 
+    }, {
+      key: 'isWithContent',
       value: function isWithContent() {
         return !!this.getTitle();
       }
@@ -346,11 +354,11 @@ var Tooltip = (function ($) {
           $(this.tip).removeClass(this._removeTetherClasses);
         }
       }
-    }, {
-      key: '_getAttachment',
 
       // private
 
+    }, {
+      key: '_getAttachment',
       value: function _getAttachment(placement) {
         return AttachmentMap[placement.toUpperCase()];
       }
@@ -509,49 +517,11 @@ var Tooltip = (function ($) {
 
         return config;
       }
-    }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function () {
-        return Default;
-      }
-    }, {
-      key: 'NAME',
-      get: function () {
-        return NAME;
-      }
-    }, {
-      key: 'DATA_KEY',
-      get: function () {
-        return DATA_KEY;
-      }
-    }, {
-      key: 'Event',
-      get: function () {
-        return Event;
-      }
-    }, {
-      key: 'EVENT_KEY',
-      get: function () {
-        return EVENT_KEY;
-      }
-    }, {
-      key: 'DefaultType',
-      get: function () {
-        return DefaultType;
-      }
-    }, {
-      key: '_jQueryInterface',
 
       // static
 
+    }], [{
+      key: '_jQueryInterface',
       value: function _jQueryInterface(config) {
         return this.each(function () {
           var data = $(this).data(DATA_KEY);
@@ -571,16 +541,45 @@ var Tooltip = (function ($) {
           }
         });
       }
+    }, {
+      key: 'VERSION',
+      get: function get() {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function get() {
+        return Default;
+      }
+    }, {
+      key: 'NAME',
+      get: function get() {
+        return NAME;
+      }
+    }, {
+      key: 'DATA_KEY',
+      get: function get() {
+        return DATA_KEY;
+      }
+    }, {
+      key: 'Event',
+      get: function get() {
+        return Event;
+      }
+    }, {
+      key: 'EVENT_KEY',
+      get: function get() {
+        return EVENT_KEY;
+      }
+    }, {
+      key: 'DefaultType',
+      get: function get() {
+        return DefaultType;
+      }
     }]);
 
     return Tooltip;
   })();
-
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
 
   $.fn[NAME] = Tooltip._jQueryInterface;
   $.fn[NAME].Constructor = Tooltip;

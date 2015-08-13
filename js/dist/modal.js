@@ -53,7 +53,7 @@ var Modal = (function ($) {
     KEYDOWN_DISMISS: 'keydown.dismiss' + EVENT_KEY,
     MOUSEUP_DISMISS: 'mouseup.dismiss' + EVENT_KEY,
     MOUSEDOWN_DISMISS: 'mousedown.dismiss' + EVENT_KEY,
-    CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
+    CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
   };
 
   var ClassName = {
@@ -90,6 +90,14 @@ var Modal = (function ($) {
       this._originalBodyPadding = 0;
       this._scrollbarWidth = 0;
     }
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    // getters
 
     _createClass(Modal, [{
       key: 'toggle',
@@ -190,11 +198,11 @@ var Modal = (function ($) {
         this._originalBodyPadding = null;
         this._scrollbarWidth = null;
       }
-    }, {
-      key: '_getConfig',
 
       // private
 
+    }, {
+      key: '_getConfig',
       value: function _getConfig(config) {
         config = $.extend({}, Default, config);
         Util.typeCheckConfig(NAME, config, DefaultType);
@@ -312,7 +320,7 @@ var Modal = (function ($) {
             $(this._backdrop).addClass(animate);
           }
 
-          $(this._backdrop).appendTo(this.$body);
+          $(this._backdrop).appendTo(document.body);
 
           $(this._element).on(Event.CLICK_DISMISS, function (event) {
             if (_this6._ignoreBackdropClick) {
@@ -364,14 +372,14 @@ var Modal = (function ($) {
           callback();
         }
       }
-    }, {
-      key: '_handleUpdate',
 
       // ----------------------------------------------------------------------
       // the following methods are used to handle overflowing modals
       // todo (fat): these should probably be refactored out of modal.js
       // ----------------------------------------------------------------------
 
+    }, {
+      key: '_handleUpdate',
       value: function _handleUpdate() {
         this._adjustDialog();
       }
@@ -433,24 +441,11 @@ var Modal = (function ($) {
         document.body.removeChild(scrollDiv);
         return scrollbarWidth;
       }
-    }], [{
-      key: 'VERSION',
-
-      // getters
-
-      get: function () {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function () {
-        return Default;
-      }
-    }, {
-      key: '_jQueryInterface',
 
       // static
 
+    }], [{
+      key: '_jQueryInterface',
       value: function _jQueryInterface(config, relatedTarget) {
         return this.each(function () {
           var data = $(this).data(DATA_KEY);
@@ -468,16 +463,20 @@ var Modal = (function ($) {
           }
         });
       }
+    }, {
+      key: 'VERSION',
+      get: function get() {
+        return VERSION;
+      }
+    }, {
+      key: 'Default',
+      get: function get() {
+        return Default;
+      }
     }]);
 
     return Modal;
   })();
-
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     var _this7 = this;
