@@ -59,7 +59,7 @@
       SHOWN: 'shown' + EVENT_KEY,
       HIDE: 'hide' + EVENT_KEY,
       HIDDEN: 'hidden' + EVENT_KEY,
-      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
+      CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
     };
 
     var ClassName = {
@@ -104,6 +104,14 @@
           this.toggle();
         }
       }
+
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+
+      // getters
 
       _createClass(Collapse, [{
         key: 'toggle',
@@ -251,11 +259,11 @@
           this._triggerArray = null;
           this._isTransitioning = null;
         }
-      }, {
-        key: '_getConfig',
 
         // private
 
+      }, {
+        key: '_getConfig',
         value: function _getConfig(config) {
           config = $.extend({}, Default, config);
           config.toggle = !!config.toggle; // coerce string values
@@ -294,11 +302,11 @@
             }
           }
         }
-      }], [{
-        key: '_getTargetFromElement',
 
         // static
 
+      }], [{
+        key: '_getTargetFromElement',
         value: function _getTargetFromElement(element) {
           var selector = _Util['default'].getSelectorFromElement(element);
           return selector ? $(selector)[0] : null;
@@ -327,27 +335,18 @@
         }
       }, {
         key: 'VERSION',
-
-        // getters
-
-        get: function () {
+        get: function get() {
           return VERSION;
         }
       }, {
         key: 'Default',
-        get: function () {
+        get: function get() {
           return Default;
         }
       }]);
 
       return Collapse;
     })();
-
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
 
     $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
       event.preventDefault();

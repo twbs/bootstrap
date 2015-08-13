@@ -55,8 +55,8 @@
     };
 
     var Event = {
-      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY,
-      FOCUS_BLUR_DATA_API: 'focus' + EVENT_KEY + '' + DATA_API_KEY + ' ' + ('blur' + EVENT_KEY + '' + DATA_API_KEY)
+      CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY,
+      FOCUS_BLUR_DATA_API: 'focus' + EVENT_KEY + DATA_API_KEY + ' ' + ('blur' + EVENT_KEY + DATA_API_KEY)
     };
 
     /**
@@ -71,6 +71,14 @@
 
         this._element = element;
       }
+
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+
+      // getters
 
       _createClass(Button, [{
         key: 'toggle',
@@ -116,11 +124,11 @@
           $.removeData(this._element, DATA_KEY);
           this._element = null;
         }
-      }], [{
-        key: '_jQueryInterface',
 
         // static
 
+      }], [{
+        key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
             var data = $(this).data(DATA_KEY);
@@ -137,22 +145,13 @@
         }
       }, {
         key: 'VERSION',
-
-        // getters
-
-        get: function () {
+        get: function get() {
           return VERSION;
         }
       }]);
 
       return Button;
     })();
-
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
 
     $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
       event.preventDefault();

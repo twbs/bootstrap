@@ -51,7 +51,7 @@
     var Event = {
       CLOSE: 'close' + EVENT_KEY,
       CLOSED: 'closed' + EVENT_KEY,
-      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
+      CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
     };
 
     var ClassName = {
@@ -72,6 +72,14 @@
 
         this._element = element;
       }
+
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+
+      // getters
 
       _createClass(Alert, [{
         key: 'close',
@@ -96,11 +104,11 @@
           $.removeData(this._element, DATA_KEY);
           this._element = null;
         }
-      }, {
-        key: '_getRootElement',
 
         // private
 
+      }, {
+        key: '_getRootElement',
         value: function _getRootElement(element) {
           var parent = false;
           var selector = _Util['default'].getSelectorFromElement(element);
@@ -139,11 +147,11 @@
         value: function _destroyElement(element) {
           $(element).detach().trigger(Event.CLOSED).remove();
         }
-      }], [{
-        key: '_jQueryInterface',
 
         // static
 
+      }], [{
+        key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
             var $element = $(this);
@@ -172,22 +180,13 @@
         }
       }, {
         key: 'VERSION',
-
-        // getters
-
-        get: function () {
+        get: function get() {
           return VERSION;
         }
       }]);
 
       return Alert;
     })();
-
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
 
     $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
 

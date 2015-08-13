@@ -71,8 +71,8 @@
       KEYDOWN: 'keydown' + EVENT_KEY,
       MOUSEENTER: 'mouseenter' + EVENT_KEY,
       MOUSELEAVE: 'mouseleave' + EVENT_KEY,
-      LOAD_DATA_API: 'load' + EVENT_KEY + '' + DATA_API_KEY,
-      CLICK_DATA_API: 'click' + EVENT_KEY + '' + DATA_API_KEY
+      LOAD_DATA_API: 'load' + EVENT_KEY + DATA_API_KEY,
+      CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
     };
 
     var ClassName = {
@@ -117,6 +117,14 @@
 
         this._addEventListeners();
       }
+
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+
+      // getters
 
       _createClass(Carousel, [{
         key: 'next',
@@ -211,11 +219,11 @@
           this._activeElement = null;
           this._indicatorsElement = null;
         }
-      }, {
-        key: '_getConfig',
 
         // private
 
+      }, {
+        key: '_getConfig',
         value: function _getConfig(config) {
           config = $.extend({}, Default, config);
           _Util['default'].typeCheckConfig(NAME, config, DefaultType);
@@ -371,11 +379,11 @@
             this.cycle();
           }
         }
-      }], [{
-        key: '_jQueryInterface',
 
         // static
 
+      }], [{
+        key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
             var data = $(this).data(DATA_KEY);
@@ -434,27 +442,18 @@
         }
       }, {
         key: 'VERSION',
-
-        // getters
-
-        get: function () {
+        get: function get() {
           return VERSION;
         }
       }, {
         key: 'Default',
-        get: function () {
+        get: function get() {
           return Default;
         }
       }]);
 
       return Carousel;
     })();
-
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
 
     $(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
 
