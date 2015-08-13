@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+@charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
@@ -4229,7 +4230,7 @@ input[type="button"].btn-block {
   padding-right: .5rem;
   padding-left: .5rem;
   color: #818a91;
-  content: "/\\00a0";
+  content: "/ ";
 }
 
 .breadcrumb > .active {
