@@ -31,15 +31,15 @@ Add the badges component to any list group item and it will automatically be pos
 {% example html %}
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="badge">14</span>
+    <span class="label label-default label-pill pull-right">14</span>
     Cras justo odio
   </li>
   <li class="list-group-item">
-    <span class="badge">2</span>
+    <span class="label label-default label-pill pull-right">2</span>
     Dapibus ac facilisis in
   </li>
   <li class="list-group-item">
-    <span class="badge">1</span>
+    <span class="label label-default label-pill pull-right">1</span>
     Morbi leo risus
   </li>
 </ul>
