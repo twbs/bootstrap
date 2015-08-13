@@ -361,7 +361,7 @@ module.exports = function (grunt) {
       },
       sass: {
         files: 'scss/**/*.scss',
-        tasks: ['sass-compile', 'postcss:core', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs', 'docs-css', 'clean:docs', 'copy:docs']
+        tasks: ['dist-css', 'docs']
       }
     },
 
