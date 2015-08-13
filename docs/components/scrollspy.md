@@ -14,35 +14,21 @@ group: components
 The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.
 
 <div class="bd-example">
-  <nav id="navbar-example2" class="navbar navbar-default navbar-static" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bd-example-js-navbar-scrollspy">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Project Name</a>
-      </div>
-      <div class="collapse navbar-collapse bd-example-js-navbar-scrollspy">
-        <ul class="nav navbar-nav">
-          <li><a href="#fat">@fat</a></li>
-          <li><a href="#mdo">@mdo</a></li>
-          <li class="dropdown">
-            <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDrop1">
-              <li><a href="#one">one</a></li>
-              <li><a href="#two">two</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#three">three</a></li>
-            </ul>
-          </li>
+  <nav id="navbar-example2" class="navbar navbar-default" role="navigation">
+    <h3 class="navbar-brand">Project Name</h3>
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a class="nav-link" href="#fat">@fat</a></li>
+      <li class="nav-item"><a class="nav-link" href="#mdo">@mdo</a></li>
+      <li class="nav-item">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <ul class="dropdown-menu">
+          <li><a href="#one">one</a></li>
+          <li><a href="#two">two</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#three">three</a></li>
         </ul>
-      </div>
-    </div>
+      </li>
+    </ul>
   </nav>
   <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example">
     <h4 id="fat">@fat</h4>
