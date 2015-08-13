@@ -2374,11 +2374,6 @@ fieldset[disabled] .btn-primary:hover {
   border-color: #0275d8;
 }
 
-.btn-primary .badge {
-  color: #0275d8;
-  background-color: #fff;
-}
-
 .btn-secondary {
   color: #373a3c;
   background-color: #fff;
@@ -2422,11 +2417,6 @@ fieldset[disabled] .btn-secondary.focus {
 fieldset[disabled] .btn-secondary:hover {
   background-color: #fff;
   border-color: #ccc;
-}
-
-.btn-secondary .badge {
-  color: #fff;
-  background-color: #373a3c;
 }
 
 .btn-info {
@@ -2474,11 +2464,6 @@ fieldset[disabled] .btn-info:hover {
   border-color: #5bc0de;
 }
 
-.btn-info .badge {
-  color: #5bc0de;
-  background-color: #fff;
-}
-
 .btn-success {
   color: #fff;
   background-color: #5cb85c;
@@ -2522,11 +2507,6 @@ fieldset[disabled] .btn-success.focus {
 fieldset[disabled] .btn-success:hover {
   background-color: #5cb85c;
   border-color: #5cb85c;
-}
-
-.btn-success .badge {
-  color: #5cb85c;
-  background-color: #fff;
 }
 
 .btn-warning {
@@ -2574,11 +2554,6 @@ fieldset[disabled] .btn-warning:hover {
   border-color: #f0ad4e;
 }
 
-.btn-warning .badge {
-  color: #f0ad4e;
-  background-color: #fff;
-}
-
 .btn-danger {
   color: #fff;
   background-color: #d9534f;
@@ -2622,11 +2597,6 @@ fieldset[disabled] .btn-danger.focus {
 fieldset[disabled] .btn-danger:hover {
   background-color: #d9534f;
   border-color: #d9534f;
-}
-
-.btn-danger .badge {
-  color: #d9534f;
-  background-color: #fff;
 }
 
 .btn-primary-outline {
