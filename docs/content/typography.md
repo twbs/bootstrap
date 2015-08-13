@@ -179,7 +179,7 @@ For quoting blocks of content from another source within your document. Wrap `<b
 Add a `<footer>` for identifying the source. Wrap the name of the source work in `<cite>`.
 
 {% example html %}
-<blockquote>
+<blockquote class="blockquote">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
@@ -190,7 +190,7 @@ Add a `<footer>` for identifying the source. Wrap the name of the source work in
 Add `.blockquote-reverse` for a blockquote with right-aligned content.
 
 {% example html %}
-<blockquote class="blockquote-reverse">
+<blockquote class="blockquote blockquote-reverse">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
