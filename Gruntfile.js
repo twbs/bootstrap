@@ -57,7 +57,6 @@ module.exports = function (grunt) {
     },
 
     // JS build configuration
-
     lineremover: {
       es6Import: {
         files: {
@@ -201,9 +200,7 @@ module.exports = function (grunt) {
       files: 'js/tests/index.html'
     },
 
-
     // CSS build configuration
-
     scsslint: {
       options: {
         config: 'scss/.scsslint.yml',
