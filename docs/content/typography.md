@@ -66,41 +66,16 @@ All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` cla
 <h6>h6. Bootstrap heading</h6>
 {% endhighlight %}
 
-Create lighter, secondary text in any heading with a generic `<small>` tag or the `.small` class.
+### Customizing headings
 
-<div class="bd-example bd-example-type">
-  <table class="table">
-    <tbody>
-      <tr>
-        <td><h1>h1. Bootstrap heading <small>Secondary text</small></h1></td>
-      </tr>
-      <tr>
-        <td><h2>h2. Bootstrap heading <small>Secondary text</small></h2></td>
-      </tr>
-      <tr>
-        <td><h3>h3. Bootstrap heading <small>Secondary text</small></h3></td>
-      </tr>
-      <tr>
-        <td><h4>h4. Bootstrap heading <small>Secondary text</small></h4></td>
-      </tr>
-      <tr>
-        <td><h5>h5. Bootstrap heading <small>Secondary text</small></h5></td>
-      </tr>
-      <tr>
-        <td><h6>h6. Bootstrap heading <small>Secondary text</small></h6></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+Use the included utility classes to recreate the small secondary heading text from Bootstrap 3.
 
-{% highlight html %}
-<h1>h1. Bootstrap heading <small>Secondary text</small></h1>
-<h2>h2. Bootstrap heading <small>Secondary text</small></h2>
-<h3>h3. Bootstrap heading <small>Secondary text</small></h3>
-<h4>h4. Bootstrap heading <small>Secondary text</small></h4>
-<h5>h5. Bootstrap heading <small>Secondary text</small></h5>
-<h6>h6. Bootstrap heading <small>Secondary text</small></h6>
-{% endhighlight %}
+{% example html %}
+<h3>
+  Fancy display heading
+  <small class="text-muted">With faded secondary text</small>
+</h3>
+{% endexample %}
 
 ## Display headings
 
@@ -124,7 +99,6 @@ Traditional heading elements are designed to work best in the meat of your page 
     </tbody>
   </table>
 </div>
-
 
 ## Lead
 
