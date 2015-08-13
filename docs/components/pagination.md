@@ -169,11 +169,11 @@ Alternatively, you can align each link to the sides:
 
 Pager links also use the `.disabled` class.
 
-{% highlight html %}
+{% example html %}
 <nav>
   <ul class="pager">
     <li class="pager-prev disabled"><a href="#">Older</a></li>
     <li class="pager-next"><a href="#">Newer</a></li>
   </ul>
 </nav>
-{% endhighlight %}
+{% endexample %}
