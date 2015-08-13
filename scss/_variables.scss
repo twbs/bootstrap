@@ -14,6 +14,8 @@
 // Grid breakpoints
 // Grid containers
 // Grid columns
+// Fonts
+// Components
 
 
 // Colors
@@ -53,6 +55,7 @@ $enable-hover-media-query:  false !default;
 $spacer:                     1rem !default;
 $spacer-x:                   $spacer !default;
 $spacer-y:                   $spacer !default;
+$border-width:               .0625rem !default;
 
 
 // Body
@@ -152,7 +155,6 @@ $headings-font-weight:       500 !default;
 $headings-line-height:       1.1 !default;
 $headings-color:             inherit !default;
 
-$border-width:               .0625rem !default;
 
 
 // Components
