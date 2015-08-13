@@ -359,17 +359,9 @@ module.exports = function (grunt) {
         files: '<%= jscs.core.src %>',
         tasks: ['babel:dev']
       },
-      test: {
-        files: '<%= jscs.test.src %>',
-        tasks: ['qunit']
-      },
       sass: {
         files: 'scss/**/*.scss',
-        tasks: 'sass-compile'
-      },
-      docs: {
-        files: 'docs/assets/scss/*.scss',
-        tasks: 'sass:docs'
+        tasks: ['sass-compile', 'postcss:core', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs', 'docs-css', 'clean:docs', 'copy:docs']
       }
     },
 
