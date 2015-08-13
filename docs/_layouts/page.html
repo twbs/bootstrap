@@ -2,19 +2,19 @@
 layout: default
 ---
 
-<div class="bd-pageheader">
+<div class="bd-pageheader text-xs-center text-sm-left">
   <div class="container">
-    {% include ads.html %}
     {% include page-headers.html %}
+    {% include ads.html %}
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-3 col-sm-push-9 bd-sidebar">
+    <div class="col-md-3 col-md-push-9 bd-sidebar">
       {% include nav-docs.html %}
     </div>
-    <div class="col-sm-9 col-sm-pull-3 bd-content">
+    <div class="col-md-9 col-md-pull-3 bd-content">
       <h1 class="bd-title">{{ page.title }}</h1>
       {{ content }}
     </div>

@@ -6,9 +6,10 @@
   width: auto !important;
   height: auto !important;
   padding: 1.25rem !important;
-  margin: 0 -1.5rem 2rem !important;
+  margin: 2rem -1.5rem -2rem !important;
   overflow: hidden; // clearfix
   font-size: .8rem !important;
+  font-family: inherit !important;
   line-height: 1rem !important;
   color: $bd-purple-light !important;
   text-align: left;
@@ -64,4 +65,8 @@
     margin-left: auto !important;
     border-radius: .25rem;
   }
+}
+
+@include media-breakpoint-up(md) {
+
 }
