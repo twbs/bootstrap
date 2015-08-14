@@ -18,12 +18,12 @@ h1, h2, h3, h4, h5, h6,
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  margin-bottom: ($spacer / 2);
+  margin-bottom: $headings-margin-bottom;
 }
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-bottom: ($spacer / 2);
+  margin-bottom: $headings-margin-bottom;
 }
 
 h1, .h1 { font-size: $font-size-h1; }
@@ -34,8 +34,8 @@ h5, .h5 { font-size: $font-size-h5; }
 h6, .h6 { font-size: $font-size-h6; }
 
 .lead {
-  font-size: 1.25rem;
-  font-weight: 300;
+  font-size: $lead-font-size;
+  font-weight: $lead-font-weight;
 }
 
 // Type display classes
@@ -62,10 +62,10 @@ h6, .h6 { font-size: $font-size-h6; }
 //
 
 hr {
-  margin-top: $spacer;
-  margin-bottom: $spacer;
+  margin-top: $spacer-y;
+  margin-bottom: $spacer-y;
   border: 0;
-  border-top: .0625rem solid $hr-border;
+  border-top: $hr-border-width solid $hr-border-color;
 }
 
 

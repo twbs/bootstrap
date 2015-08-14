@@ -154,11 +154,25 @@ $display4-weight:             300 !default;
 
 $line-height:                1.5 !default;
 
+$headings-margin-bottom:     ($spacer / 2) !default;
 $headings-font-family:       inherit !default;
 $headings-font-weight:       500 !default;
 $headings-line-height:       1.1 !default;
 $headings-color:             inherit !default;
 
+$lead-font-size:             1.25rem !default;
+$lead-font-weight:           300 !default;
+
+$text-muted:                  $gray-light !default;
+
+$abbr-border-color:           $gray-light !default;
+
+$blockquote-small-color:      $gray-light !default;
+$blockquote-font-size:        ($font-size-base * 1.25) !default;
+$blockquote-border-color:     $gray-lighter !default;
+
+$hr-border-color:             rgba(0,0,0,.1) !default;
+$hr-border-width:             $border-width;
 
 
 // Components
@@ -640,14 +654,3 @@ $pre-bg:                      #f7f7f9 !default;
 $pre-color:                   $gray-dark !default;
 $pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;
-
-
-// Type
-
-$text-muted:                  $gray-light !default;
-$abbr-border-color:           $gray-light !default;
-$headings-small-color:        $gray-light !default;
-$blockquote-small-color:      $gray-light !default;
-$blockquote-font-size:        ($font-size-base * 1.25) !default;
-$blockquote-border-color:     $gray-lighter !default;
-$hr-border:                   rgba(0,0,0,.1) !default;
