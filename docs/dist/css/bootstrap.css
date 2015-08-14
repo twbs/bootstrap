@@ -2238,9 +2238,6 @@ fieldset[disabled] .checkbox label {
           user-select: none;
   border: .0625rem solid transparent;
   border-radius: .25rem;
-  -webkit-transition: all .2s ease-in-out;
-       -o-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
 }
 
 .btn:focus,
