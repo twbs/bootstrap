@@ -6,7 +6,7 @@ group: components
 
 Small and adaptive tag for adding context to just about any content.
 
-### Example
+## Example
 
 Labels scale to match the size of the immediate parent element by using relative font sizing and `em` units.
 
@@ -19,7 +19,7 @@ Labels scale to match the size of the immediate parent element by using relative
 <h6>Example heading <span class="label label-default">New</span></h6>
 {% endexample %}
 
-### Contextual variations
+## Contextual variations
 
 Add any of the below mentioned modifier classes to change the appearance of a label.
 
@@ -32,7 +32,7 @@ Add any of the below mentioned modifier classes to change the appearance of a la
 <span class="label label-danger">Danger</span>
 {% endexample %}
 
-### Pill labels
+## Pill labels
 
 Use the `.label-pill` modifier class to make labels more rounded (with a larger `border-radius` and additional horizontal `padding`). Useful if you miss the badges from v3.
 
