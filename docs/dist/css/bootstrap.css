@@ -1859,7 +1859,7 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  padding: .5rem 1rem;
+  padding: .5rem .75rem;
   font-size: 1rem;
   line-height: 1.5;
   color: #55595c;
@@ -1917,7 +1917,7 @@ fieldset[disabled] .form-control {
 }
 
 .form-control-label {
-  padding: .5625rem 1rem;
+  padding: .5625rem .75rem;
   margin-bottom: 0;
 }
 
@@ -2069,7 +2069,7 @@ fieldset[disabled] .checkbox label {
 .form-control-success,
 .form-control-warning,
 .form-control-error {
-  padding-right: 3rem;
+  padding-right: 2.25rem;
   background-repeat: no-repeat;
   background-position: center right .65625rem;
   -webkit-background-size: 1.70625rem 1.70625rem;
@@ -2832,13 +2832,6 @@ fieldset[disabled] .btn-link:hover {
   border-radius: .2rem;
 }
 
-.btn-xs, .btn-group-xs > .btn {
-  padding: .2rem .5rem;
-  font-size: .75rem;
-  line-height: 1.5;
-  border-radius: .2rem;
-}
-
 .btn-block {
   display: block;
   width: 100%;
@@ -3262,7 +3255,7 @@ input[type="button"].btn-block {
 }
 
 .input-group-addon {
-  padding: .5rem 1rem;
+  padding: .5rem .75rem;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1;
@@ -3282,7 +3275,7 @@ input[type="button"].btn-block {
 
 .input-group-addon.form-control-lg, .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.btn {
-  padding: .75rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   font-size: 1.25rem;
   border-radius: .3rem;
 }
@@ -4253,7 +4246,7 @@ input[type="button"].btn-block {
 .pagination > li > span {
   position: relative;
   float: left;
-  padding: .5rem 1rem;
+  padding: .5rem .75rem;
   margin-left: -1px;
   line-height: 1.5;
   color: #0275d8;

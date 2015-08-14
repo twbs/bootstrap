@@ -17,7 +17,7 @@
   cursor: pointer;
   user-select: none;
   border: $border-width solid transparent;
-  @include button-size($padding-y, $padding-x, $font-size-base, $line-height, $btn-border-radius);
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $line-height, $btn-border-radius);
   transition: all .2s ease-in-out;
 
   &,
@@ -150,14 +150,11 @@ fieldset[disabled] a.btn {
 
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  @include button-size($padding-lg-y, $padding-lg-x, $font-size-lg, $line-height-lg, $btn-border-radius-lg);
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $line-height-lg, $btn-border-radius-lg);
 }
 .btn-sm {
   // line-height: ensure proper height of button next to small input
-  @include button-size($padding-sm-y, $padding-sm-x, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
-}
-.btn-xs {
-  @include button-size($padding-xs-y, $padding-xs-x, $font-size-xs, $line-height-sm, $btn-border-radius-sm);
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
 }
 
 

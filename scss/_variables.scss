@@ -161,18 +161,6 @@ $headings-color:             inherit !default;
 //
 // Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-$padding-y:              .5rem !default;
-$padding-x:              1rem !default;
-
-$padding-lg-y:           .75rem !default;
-$padding-lg-x:           1.5rem !default;
-
-$padding-sm-y:           .275rem !default;
-$padding-sm-x:           .75rem !default;
-
-$padding-xs-y:           .2rem !default;
-$padding-xs-x:           .5rem !default;
-
 $line-height-lg:         (4/3) !default;
 $line-height-sm:         1.5 !default;
 
@@ -206,6 +194,8 @@ $table-border-color:            $gray-lighter !default;
 //
 // For each of Bootstrap's buttons, define text, background and border color.
 
+$btn-padding-x:                  1rem;
+$btn-padding-y:                  .5rem;
 $btn-font-weight:                normal !default;
 
 $btn-primary-color:              #fff !default;
@@ -234,6 +224,12 @@ $btn-danger-border:              $btn-danger-bg !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
+$btn-padding-x-sm:               .75rem !default;
+$btn-padding-y-sm:               .275rem !default;
+
+$btn-padding-x-lg:               1.5rem !default;
+$btn-padding-y-lg:               .75rem !default;
+
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:              $border-radius;
 $btn-border-radius-lg:           $border-radius-lg;
@@ -241,6 +237,9 @@ $btn-border-radius-sm:           $border-radius-sm;
 
 
 // Forms
+
+$input-padding-x:                .75rem !default;
+$input-padding-y:                .5rem !default;
 
 $input-bg:                       #fff !default;
 $input-bg-disabled:              $gray-lighter !default;
@@ -258,9 +257,15 @@ $input-box-shadow-focus:         rgba(102,175,233,.6) !default;
 
 $input-color-placeholder:        #999 !default;
 
-$input-height:                   (($font-size-base * $line-height) + ($padding-y * 2) + ($border-width * 2)) !default;
-$input-height-lg:                (($font-size-lg * $line-height-lg) + ($padding-lg-y * 2) + ($border-width * 2)) !default;
-$input-height-sm:                (($font-size-sm * $line-height-sm) + ($padding-sm-y * 2) + ($border-width * 2)) !default;
+$input-padding-x-sm:             .75rem !default;
+$input-padding-y-sm:             .275rem !default;
+
+$input-padding-x-lg:             1.5rem !default;
+$input-padding-y-lg:             .75rem !default;
+
+$input-height:                   (($font-size-base * $line-height) + ($input-padding-y * 2) + ($border-width * 2)) !default;
+$input-height-lg:                (($font-size-lg * $line-height-lg) + ($input-padding-y-lg * 2) + ($border-width * 2)) !default;
+$input-height-sm:                (($font-size-sm * $line-height-sm) + ($input-padding-y-sm * 2) + ($border-width * 2)) !default;
 
 $form-group-margin-bottom:       15px;
 
@@ -390,6 +395,14 @@ $nav-pills-active-link-hover-color:         $component-active-color !default;
 
 
 // Pagination
+
+$pagination-padding-x:                .75rem !default;
+$pagination-padding-y:                .5rem !default;
+$pagination-padding-x-sm:             .75rem !default;
+$pagination-padding-y-sm:             .275rem !default;
+$pagination-padding-x-lg:             1.5rem !default;
+$pagination-padding-y-lg:             .75rem !default;
+
 
 $pagination-color:                     $link-color !default;
 $pagination-bg:                        #fff !default;
