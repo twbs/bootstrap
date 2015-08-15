@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Migrating to v4
 group: migration
 ---

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Srollspy
 group: components
 ---

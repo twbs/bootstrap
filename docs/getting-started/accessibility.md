@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Accessibility
 group: getting-started
 ---

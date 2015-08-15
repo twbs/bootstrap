@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Customization options
 group: getting-started
 ---

@@ -362,6 +362,10 @@ module.exports = function (grunt) {
       sass: {
         files: 'scss/**/*.scss',
         tasks: ['dist-css', 'docs']
+      },
+      docs: {
+        files: 'docs/assets/scss/**/*.scss',
+        tasks: ['dist-css', 'docs']
       }
     },
 

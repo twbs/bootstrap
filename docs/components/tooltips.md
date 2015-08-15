@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Tooltips
 group: components
 ---

@@ -2,34 +2,20 @@
 // Navs
 // --------------------------------------------------
 
-
-//
-// Base styles
-//
-
 .nav {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-  @include clearfix();
-}
-
-.nav-item {
-  position: relative;
-  display: inline-block;
 }
 
 .nav-link {
   display: inline-block;
-  padding: $nav-link-padding;
-  line-height: 1;
 
   @include hover-focus {
     text-decoration: none;
-    background-color: $nav-link-hover-bg;
   }
 
-  // Disabled state sets text to gray and nukes hover/tab effects
+  // Disabled state lightens text and removes hover/tab effects
   .disabled > &,
   &.disabled {
     color: $nav-disabled-link-color;
@@ -41,6 +27,53 @@
     }
   }
 }
+
+
+// Nav inline
+
+.nav-inline {
+  .nav-link + .nav-link {
+    margin-left: 1rem;
+  }
+}
+
+
+//
+// Base styles
+//
+
+// .nav {
+//   padding-left: 0;
+//   margin-bottom: 0;
+//   list-style: none;
+//   @include clearfix();
+// }
+//
+// .nav-item {
+//   position: relative;
+//   display: inline-block;
+// }
+//
+// .nav-link {
+//   display: inline-block;
+//
+//   @include hover-focus {
+//     text-decoration: none;
+//     background-color: $nav-link-hover-bg;
+//   }
+//
+//   // Disabled state sets text to gray and nukes hover/tab effects
+//   .disabled > &,
+//   &.disabled {
+//     color: $nav-disabled-link-color;
+//
+//     @include plain-hover-focus {
+//       color: $nav-disabled-link-hover-color;
+//       cursor: $cursor-disabled;
+//       background-color: transparent;
+//     }
+//   }
+// }
 
 
 //
@@ -62,6 +95,7 @@
 
   .nav-link {
     display: block;
+    padding: $nav-link-padding;
     border: 1px solid transparent;
     @include border-radius($border-radius $border-radius 0 0);
 
@@ -107,6 +141,7 @@
 
   .nav-link {
     display: block;
+    padding: $nav-link-padding;
     @include border-radius($nav-pills-border-radius);
   }
 

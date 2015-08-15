@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Popovers
 group: components
 ---

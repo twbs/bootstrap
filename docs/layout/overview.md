@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Overview
 group: layout
 ---

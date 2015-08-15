@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: docs
 title: Input group
 group: components
 ---

@@ -1,38 +1,12 @@
 //
-// Home navigation
-//
-
-.bd-nav-home {
-  margin-bottom: 0;
-  background-color: #563d7c;
-  border-bottom: 0;
-
-  .navbar-brand > a {
-    font-weight: 500;
-    color: #fff;
-  }
-
-  .nav-link {
-    font-weight: 500;
-    color: #cdbfe3;
-
-    &:hover,
-    &:focus {
-      color: #fff;
-      background-color: rgba(0,0,0,.5);
-    }
-  }
-}
-
-
-//
-// Homepage
+// Main navbar
 //
 
 .bd-navbar {
-  padding: .25rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   margin-bottom: 0;
-  background-color: $bd-graphite;
+  // background-color: $bd-graphite;
 
   .nav-link {
     color: $bd-graphite-light;
@@ -40,49 +14,15 @@
     &.active,
     &:hover,
     &:focus {
-      color: #fff;
+      color: $gray-dark;
       background-color: transparent;
+    }
+
+    &.active {
+      font-weight: 500;
     }
   }
 }
-
-//
-// .bd-header {
-//   @include clearfix;
-//   padding-bottom: .5rem;
-//   margin-bottom: 1rem;
-//   border-bottom: 1px solid rgba(255,255,255,.25);
-//
-//   .bd-header-mark {
-//     float: left;
-//     padding-top: .6rem;
-//     padding-bottom: .6rem;
-//     font-size: 1.25rem;
-//     font-weight: 500;
-//   }
-// }
-//
-// .bd-header-nav {
-//   padding-bottom: 1rem;
-//   margin-bottom: 2rem;
-//   border-bottom: .0625rem solid #eee;
-//
-//   .nav-link {
-//     display: inline-block;
-//     padding: 1.2rem .75rem;
-//
-//     &:hover {
-//       background-color: transparent;
-//     }
-//   }
-//
-//   @include media-breakpoint-up(sm) {
-//     float: right;
-//     padding-bottom: 0;
-//     margin-bottom: 0;
-//     border-bottom: 0;
-//   }
-// }
 
 
 //
@@ -92,15 +32,15 @@
 .bd-masthead {
   position: relative;
   padding: ($grid-gutter-width / 2);
-  color: $bd-graphite-light;
+  color: $bd-purple-light;
   text-align: center;
-  background: -webkit-linear-gradient(to bottom, $bd-graphite, lighten($bd-graphite, 7.5%));
-  background: linear-gradient(to bottom, $bd-graphite, lighten($bd-graphite, 7.5%));
+  background: -webkit-linear-gradient(135deg, darken($bd-purple, 15%), $bd-purple, lighten(saturate($bd-purple, 5%), 15%));
+  background:         linear-gradient(135deg, darken($bd-purple, 15%), $bd-purple, lighten(saturate($bd-purple, 5%), 15%));
 
   .bd-booticon {
     margin: 0 auto 2rem;
-    color: $bd-purple-bright;
-    border-color: $bd-purple-bright;
+    color: $bd-purple-light;
+    border-color: $bd-purple-light;
   }
 
   h1 {
@@ -112,7 +52,8 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
-    font-size: 1.25rem;
+    font-size: 1rem;
+    color: #fff;
   }
 
   .version {
@@ -174,7 +115,7 @@
 
   @include media-breakpoint-up(lg) {
     .lead {
-      width: 80%;
+      width: 85%;
       font-size: 2rem;
     }
   }
