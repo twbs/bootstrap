@@ -55,17 +55,18 @@ const Modal = (($) => {
   }
 
   const ClassName = {
-    BACKDROP : 'modal-backdrop',
-    OPEN     : 'modal-open',
-    FADE     : 'fade',
-    IN       : 'in'
+    SCROLLBAR_MEASURER : 'modal-scrollbar-measure',
+    BACKDROP           : 'modal-backdrop',
+    OPEN               : 'modal-open',
+    FADE               : 'fade',
+    IN                 : 'in'
   }
 
   const Selector = {
     DIALOG             : '.modal-dialog',
     DATA_TOGGLE        : '[data-toggle="modal"]',
     DATA_DISMISS       : '[data-dismiss="modal"]',
-    SCROLLBAR_MEASURER : 'modal-scrollbar-measure'
+    FIXED_CONTENT      : '.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed'
   }
 
 
@@ -414,7 +415,7 @@ const Modal = (($) => {
 
     _setScrollbar() {
       let bodyPadding = parseInt(
-        $(document.body).css('padding-right') || 0,
+        $(Selector.FIXED_CONTENT).css('padding-right') || 0,
         10
       )
 
@@ -432,7 +433,7 @@ const Modal = (($) => {
 
     _getScrollbarWidth() { // thx d.walsh
       let scrollDiv = document.createElement('div')
-      scrollDiv.className = Selector.SCROLLBAR_MEASURER
+      scrollDiv.className = ClassName.SCROLLBAR_MEASURER
       document.body.appendChild(scrollDiv)
       let scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
       document.body.removeChild(scrollDiv)
