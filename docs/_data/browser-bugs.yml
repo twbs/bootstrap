@@ -254,6 +254,16 @@
   browser: >
     Safari (iOS)
   summary: >
+    Can't move cursor to start of text after entering long string of text into `<input type="text">`
+  upstream_bug: >
+    WebKit#148061, Safari#22299624
+  origin: >
+    Bootstrap#16988
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
     `display: block` causes text of temporal `<input>`s to become vertically misaligned
   upstream_bug: >
     WebKit#139848, Safari#19434878
