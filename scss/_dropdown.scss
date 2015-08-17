@@ -48,11 +48,11 @@
   border: 1px solid $dropdown-border;
   @include border-radius($border-radius);
   @include box-shadow(0 6px 12px rgba(0,0,0,.175));
+}
 
-  // Dividers (basically an hr) within the dropdown
-  .dropdown-divider {
-    @include nav-divider($dropdown-divider-bg);
-  }
+// Dividers (basically an hr) within the dropdown
+.dropdown-divider {
+  @include nav-divider($dropdown-divider-bg);
 }
 
 // Links, buttons, and more within the dropdown menu
