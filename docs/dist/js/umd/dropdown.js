@@ -133,7 +133,7 @@
           this.setAttribute('aria-expanded', 'true');
 
           $(parent).toggleClass(ClassName.OPEN);
-          $(parent).trigger(Event.SHOWN, relatedTarget);
+          $(parent).trigger($.Event(Event.SHOWN, relatedTarget));
 
           return false;
         }
@@ -204,7 +204,7 @@
 
             toggles[i].setAttribute('aria-expanded', 'false');
 
-            $(_parent).removeClass(ClassName.OPEN).trigger(Event.HIDDEN, relatedTarget);
+            $(_parent).removeClass(ClassName.OPEN).trigger($.Event(Event.HIDDEN, relatedTarget));
           }
         }
       }, {
