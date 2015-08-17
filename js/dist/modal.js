@@ -57,6 +57,7 @@ var Modal = (function ($) {
   };
 
   var ClassName = {
+    SCROLLBAR_MEASURER: 'modal-scrollbar-measure',
     BACKDROP: 'modal-backdrop',
     OPEN: 'modal-open',
     FADE: 'fade',
@@ -67,7 +68,7 @@ var Modal = (function ($) {
     DIALOG: '.modal-dialog',
     DATA_TOGGLE: '[data-toggle="modal"]',
     DATA_DISMISS: '[data-dismiss="modal"]',
-    SCROLLBAR_MEASURER: 'modal-scrollbar-measure'
+    FIXED_CONTENT: '.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed'
   };
 
   /**
@@ -417,7 +418,7 @@ var Modal = (function ($) {
     }, {
       key: '_setScrollbar',
       value: function _setScrollbar() {
-        var bodyPadding = parseInt($(document.body).css('padding-right') || 0, 10);
+        var bodyPadding = parseInt($(Selector.FIXED_CONTENT).css('padding-right') || 0, 10);
 
         this._originalBodyPadding = document.body.style.paddingRight || '';
 
@@ -435,7 +436,7 @@ var Modal = (function ($) {
       value: function _getScrollbarWidth() {
         // thx d.walsh
         var scrollDiv = document.createElement('div');
-        scrollDiv.className = Selector.SCROLLBAR_MEASURER;
+        scrollDiv.className = ClassName.SCROLLBAR_MEASURER;
         document.body.appendChild(scrollDiv);
         var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
         document.body.removeChild(scrollDiv);

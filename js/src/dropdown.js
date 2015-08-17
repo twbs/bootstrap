@@ -113,7 +113,7 @@ const Dropdown = (($) => {
       this.setAttribute('aria-expanded', 'true')
 
       $(parent).toggleClass(ClassName.OPEN)
-      $(parent).trigger(Event.SHOWN, relatedTarget)
+      $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
 
       return false
     }
@@ -184,7 +184,7 @@ const Dropdown = (($) => {
 
         $(parent)
           .removeClass(ClassName.OPEN)
-          .trigger(Event.HIDDEN, relatedTarget)
+          .trigger($.Event(Event.HIDDEN, relatedTarget))
       }
     }
 
