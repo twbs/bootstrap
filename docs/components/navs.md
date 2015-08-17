@@ -123,13 +123,13 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
   </li>
   <li class="nav-item">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-    <ul class="dropdown-menu">
-      <li><a href="#">Action</a></li>
-      <li><a href="#">Another action</a></li>
-      <li><a href="#">Something else here</a></li>
-      <li role="separator" class="divider"></li>
-      <li><a href="#">Separated link</a></li>
-    </ul>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Another link</a>
@@ -149,13 +149,13 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
   </li>
   <li class="nav-item">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-    <ul class="dropdown-menu">
-      <li><a href="#">Action</a></li>
-      <li><a href="#">Another action</a></li>
-      <li><a href="#">Something else here</a></li>
-      <li role="separator" class="divider"></li>
-      <li><a href="#">Separated link</a></li>
-    </ul>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Another link</a>
@@ -182,14 +182,10 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
         Dropdown
       </a>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="#dropdown1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">@fat</a>
-        </li>
-        <li>
-          <a href="#dropdown2" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a>
-        </li>
-      </ul>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#dropdown1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">@fat</a>
+        <a class="dropdown-item" href="#dropdown2" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a>
+      </div>
     </li>
   </ul>
   <div id="myTabContent" class="tab-content">

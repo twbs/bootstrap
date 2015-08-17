@@ -20,17 +20,11 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li>
-      <a href="#">Action</a>
-    </li>
-    <li>
-      <a href="#">Another action</a>
-    </li>
-    <li>
-      <a href="#">Something else here</a>
-    </li>
-  </ul>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
 </div>
 {% endexample %}
 
@@ -43,9 +37,9 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 {% endcallout %}
 
 {% highlight html %}
-<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">
   ...
-</ul>
+</div>
 {% endhighlight %}
 
 ## Menu headers
@@ -53,15 +47,11 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 Add a header to label sections of actions in any dropdown menu.
 
 {% example html %}
-<ul class="dropdown-menu">
-  <li class="dropdown-header">Dropdown header</li>
-  <li>
-    <a href="#">Action</a>
-  </li>
-  <li>
-    <a href="#">Another action</a>
-  </li>
-</ul>
+<div class="dropdown-menu">
+  <h6 class="dropdown-header">Dropdown header</h6>
+  <a class="dropdown-item" href="#">Action</a>
+  <a class="dropdown-item" href="#">Another action</a>
+</div>
 {% endexample %}
 
 ## Menu dividers
@@ -69,39 +59,25 @@ Add a header to label sections of actions in any dropdown menu.
 Separate groups of related menu items with a divider.
 
 {% example html %}
-<ul class="dropdown-menu">
-  <li>
-    <a href="#">Action</a>
-  </li>
-  <li>
-    <a href="#">Another action</a>
-  </li>
-  <li>
-    <a href="#">Something else here</a>
-  </li>
-  <li class="dropdown-divider"></li>
-  <li>
-    <a href="#">Separated link</a>
-  </li>
-</ul>
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="#">Action</a>
+  <a class="dropdown-item" href="#">Another action</a>
+  <a class="dropdown-item" href="#">Something else here</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="#">Separated link</a>
+</div>
 {% endexample %}
 
 ## Disabled menu items
 
-Add `.disabled` to a `<li>` in the dropdown to disable the link.
+Add `.disabled` to items in the dropdown to **style them as disabled**.
 
 {% example html %}
-<ul class="dropdown-menu">
-  <li>
-    <a href="#">Regular link</a>
-  </li>
-  <li class="disabled">
-    <a href="#">Disabled link</a>
-  </li>
-  <li>
-    <a href="#">Another link</a>
-  </li>
-</ul>
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="#">Regular link</a>
+  <a class="dropdown-item disabled" href="#">Disabled link</a>
+  <a class="dropdown-item" href="#">Another link</a>
+</div>
 {% endexample %}
 
 ## Usage
@@ -121,9 +97,9 @@ Add `data-toggle="dropdown"` to a link or button to toggle a dropdown.
   <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown trigger
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dLabel">
+  <div class="dropdown-menu" aria-labelledby="dLabel">
     ...
-  </ul>
+  </div>
 </div>
 {% endhighlight %}
 
@@ -135,9 +111,9 @@ To keep URLs intact with link buttons, use the `data-target` attribute instead o
     Dropdown trigger
   </a>
 
-  <ul class="dropdown-menu" aria-labelledby="dLabel">
+  <div class="dropdown-menu" aria-labelledby="dLabel">
     ...
-  </ul>
+  </div>
 </div>
 {% endhighlight %}
 
