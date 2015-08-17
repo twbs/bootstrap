@@ -24,9 +24,9 @@ List groups are a flexible and powerful component for displaying not only simple
 </ul>
 {% endexample %}
 
-## Badges
+## Labels
 
-Add the badges component to any list group item and it will automatically be positioned on the right.
+Add labels to any list group item to show unread counts, activity, etc.
 
 {% example html %}
 <ul class="list-group">
