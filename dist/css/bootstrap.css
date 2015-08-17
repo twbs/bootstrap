@@ -2926,7 +2926,7 @@ input[type="button"].btn-block {
   background-color: #e5e5e5;
 }
 
-.dropdown-menu > li > a {
+.dropdown-item {
   display: block;
   padding: 3px 20px;
   clear: both;
@@ -2936,30 +2936,30 @@ input[type="button"].btn-block {
   white-space: nowrap;
 }
 
-.dropdown-menu > li > a:focus,
-.dropdown-menu > li > a:hover {
+.dropdown-item:focus,
+.dropdown-item:hover {
   color: #2b2d2f;
   text-decoration: none;
   background-color: #f5f5f5;
 }
 
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:focus,
-.dropdown-menu > .active > a:hover {
+.dropdown-item.active,
+.dropdown-item.active:focus,
+.dropdown-item.active:hover {
   color: #fff;
   text-decoration: none;
   background-color: #0275d8;
   outline: 0;
 }
 
-.dropdown-menu > .disabled > a,
-.dropdown-menu > .disabled > a:focus,
-.dropdown-menu > .disabled > a:hover {
+.dropdown-item.disabled,
+.dropdown-item.disabled:focus,
+.dropdown-item.disabled:hover {
   color: #818a91;
 }
 
-.dropdown-menu > .disabled > a:focus,
-.dropdown-menu > .disabled > a:hover {
+.dropdown-item.disabled:focus,
+.dropdown-item.disabled:hover {
   text-decoration: none;
   cursor: not-allowed;
   background-color: transparent;
