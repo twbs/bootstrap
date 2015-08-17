@@ -2919,7 +2919,7 @@ input[type="button"].btn-block {
   border-radius: .25rem;
 }
 
-.dropdown-menu .dropdown-divider {
+.dropdown-divider {
   height: 1px;
   margin: .5rem 0;
   overflow: hidden;
