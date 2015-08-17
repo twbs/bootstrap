@@ -139,6 +139,15 @@
   .highlight {
     text-align: left;
   }
+
+  @include media-breakpoint-up(md) {
+    .col-sm-6:first-child {
+      padding-right: ($grid-gutter-width * 2);
+    };
+    .col-sm-6:last-child {
+      padding-left: ($grid-gutter-width * 2);
+    }
+  }
 }
 
 .bd-featurette-title {
