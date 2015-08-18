@@ -1,5 +1,27 @@
 <header class="navbar navbar-sm navbar-defeault navbar-static-top bd-navbar" role="banner">
   <div class="container-fluid">
+    <nav class="nav nav-inline pull-right">
+      <div class="nav-item dropdown">
+        <a class="nav-item nav-link dropdown-toggle" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          v{{ site.current_version }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+          <a class="dropdown-item" href="#">v4.0.0-alpha</a>
+          <a class="dropdown-item" href="#">v3.3.5</a>
+          <a class="dropdown-item" href="#">v3.3.4</a>
+          <a class="dropdown-item" href="#">v3.3.2</a>
+          <a class="dropdown-item" href="#">v3.3.1</a>
+          <a class="dropdown-item" href="#">v3.3.0</a>
+          <a class="dropdown-item" href="#">v3.2.0</a>
+          <a class="dropdown-item" href="#">v3.1.1</a>
+          <a class="dropdown-item" href="#">v3.1.0</a>
+          <a class="dropdown-item" href="#">v3.0.3</a>
+          <a class="dropdown-item" href="#">v3.0.2</a>
+          <a class="dropdown-item" href="#">v3.0.1</a>
+          <a class="dropdown-item" href="#">v3.0.0</a>
+        </div>
+      </div>
+    </nav>
     <nav class="nav nav-inline">
       <a class="nav-item nav-link {% if page.layout == "home" %}active{% endif %}" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Bootstrap</a>
       <a class="nav-item nav-link {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
