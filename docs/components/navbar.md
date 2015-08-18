@@ -4,7 +4,7 @@ title: Navbar
 group: components
 ---
 
-The navbar is a simple wrapper for positioning branding, navigation, and other elements. It's easily extensible and, with the help of our collapse plugin, it can easily integrate offscreen content.
+The navbar is a simple wrapper for positioning branding, navigation, and other elements into a concise navigation header. It's easily extensible and, with the help of our collapse plugin, it can easily integrate offscreen content.
 
 ## Contents
 
@@ -28,11 +28,12 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 - `.navbar-brand` for your company, product, or project name
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
 - `.navbar-form` for vertically centering default-sized inputs and buttons.
+- `.navbar-toggler` for use with our collapse plugin and other navigation toggling behaviors.
 
 Here's an example of all the sub-components included in a default, light navbar:
 
 {% example html %}
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav navbar-nav">
     <li class="nav-item active">
@@ -55,33 +56,91 @@ Here's an example of all the sub-components included in a default, light navbar:
 </nav>
 {% endexample %}
 
-## Inverse theme
+## Color schemes
 
-When you want a darker navbar with light text colors, replace the `.navbar-default` with `.navbar-inverse`.
+Theming the navbar has never been easier thanks to the combination of a simple link color modifier class and `background-color` utilities. Put another way, you specify light or dark and apply a background color.
 
-{% example html %}
-<nav class="navbar navbar-inverse">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
-    </li>
-  </ul>
-  <form class="form-inline navbar-form pull-right">
-    <input class="form-control" type="text" placeholder="Search">
-    <button class="btn btn-success-outline" type="submit">Search</button>
-  </form>
+Here are some examples to show what we mean.
+
+<div class="bd-example">
+  <nav class="navbar navbar-dark bg-inverse">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline navbar-form pull-right">
+      <input class="form-control" type="text" placeholder="Search">
+      <button class="btn btn-info-outline" type="submit">Search</button>
+    </form>
+  </nav>
+  <nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline navbar-form pull-right">
+      <input class="form-control" type="text" placeholder="Search">
+      <button class="btn btn-secondary-outline" type="submit">Search</button>
+    </form>
+  </nav>
+  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <form class="form-inline navbar-form pull-right">
+      <input class="form-control" type="text" placeholder="Search">
+      <button class="btn btn-primary-outline" type="submit">Search</button>
+    </form>
+  </nav>
+</div>
+
+{% highlight html %}
+<nav class="navbar navbar-dark bg-inverse">
+  <!-- Navbar content -->
 </nav>
-{% endexample %}
+
+<nav class="navbar navbar-dark bg-primary">
+  <!-- Navbar content -->
+</nav>
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <!-- Navbar content -->
+</nav>
+{% endhighlight %}
 
 ## Containers
 
@@ -89,14 +148,14 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 
 {% example html %}
 <div class="container">
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-light bg-faded">
     <a class="navbar-brand" href="#">Navbar</a>
   </nav>
 </div>
 {% endexample %}
 
 {% example html %}
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-light bg-faded">
   <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
   </div>
@@ -109,12 +168,12 @@ Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden con
 
 {% example html %}
 <div class="collapse" id="exCollapsingNavbar">
-  <div class="inverse p-a">
+  <div class="bg-inverse p-a">
     <h4>Collapsed content</h4>
     <span class="text-muted">Toggleable via the navbar brand.</span>
   </div>
 </div>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-light bg-faded">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
     &#9776;
   </button>
@@ -124,7 +183,7 @@ Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden con
 For more complex navbar patterns, like those used in Bootstrap v3, use the `.navbar-toggleable-*` classes in conjunction with the `.navbar-toggler`. These classes override our responsive utilities to show navigation only when content is meant to be shown.
 
 {% example html %}
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-light bg-faded">
   <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
     &#9776;
   </button>

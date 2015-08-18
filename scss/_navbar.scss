@@ -5,6 +5,7 @@
 
 .navbar {
   position: relative;
+  padding: $navbar-padding-vertical $navbar-padding-horizontal;
   @include clearfix;
 
   @include media-breakpoint-up(sm) {
@@ -69,13 +70,12 @@
 
 .navbar-brand {
   float: left;
-  padding: .95rem 1rem;
+  margin-right: 1rem;
+  padding-top:    .25rem;
+  padding-bottom: .25rem;
   font-size: $font-size-lg;
-  line-height: 1;
-  color: $navbar-default-brand-color;
 
   @include hover-focus {
-    color: $navbar-default-brand-hover-color;
     text-decoration: none;
   }
 
@@ -92,11 +92,8 @@
 
 .navbar-toggler {
   padding: .5rem .75rem;
-  margin-top: .375rem;
-  margin-bottom: .375rem;
   font-size: $font-size-lg;
   line-height: 1;
-  color: $navbar-default-link-color;
   background: none;
   border: $border-width solid transparent;
   @include border-radius($btn-border-radius);
@@ -132,83 +129,26 @@
 
   .nav-link {
     display: block;
-    padding: .95rem .75rem;
-    line-height: 1.25; // Match the `.navbar-brand`
-    color: $navbar-default-link-color;
-
-    @include hover-focus {
-      color: $navbar-default-link-hover-color;
-      background-color: $navbar-default-link-hover-bg;
-    }
-  }
-
-  .open > .nav-link,
-  .active > .nav-link,
-  .nav-link.open,
-  .nav-link.active {
-    @include plain-hover-focus {
-      color: $navbar-default-link-active-color;
-      cursor: default;
-      background-color: $navbar-default-link-active-bg;
-    }
+    padding: .425rem .5rem;
   }
 }
 
-
-// Forms
-//
-// Additional modifier class to add to `.form-inline` to vertically center forms.
-
-.navbar-form {
-  margin-top: .375rem;
-  margin-bottom: .375rem;
-  margin-right: 1rem;
-}
-
-
-//
-// Alternate navbars
-//
-
-// todo: audit these styles
-
-// Default navbar
-.navbar-default {
-  background-color: $navbar-default-bg;
-  border-color: $navbar-default-border;
-
+// Dark links against a light background
+.navbar-light {
   .navbar-brand {
-    color: $navbar-default-brand-color;
+    color: $navbar-light-active-color;
 
     @include hover-focus {
-      color: $navbar-default-brand-hover-color;
-      background-color: $navbar-default-brand-hover-bg;
-    }
-  }
-}
-
-// Inverse navbar
-
-.navbar-inverse {
-  background-color: $navbar-inverse-bg;
-  border-color: $navbar-inverse-border;
-
-  .navbar-brand {
-    color: $navbar-inverse-brand-color;
-
-    @include hover-focus {
-      color: $navbar-inverse-brand-hover-color;
-      background-color: $navbar-inverse-brand-hover-bg;
+      color: $navbar-light-active-color;
     }
   }
 
   .navbar-nav {
     .nav-link {
-      color: $navbar-inverse-link-color;
+      color: $navbar-light-color;
 
       @include hover-focus {
-        color: $navbar-inverse-link-hover-color;
-        background-color: $navbar-inverse-link-hover-bg;
+        color: $navbar-light-hover-color;
       }
     }
 
@@ -217,13 +157,38 @@
     .nav-link.open,
     .nav-link.active {
       @include plain-hover-focus {
-        color: $navbar-inverse-link-active-color;
-        background-color: $navbar-inverse-link-active-bg;
+        color: $navbar-light-active-color;
       }
     }
   }
+}
 
-  .navbar-toggler {
-    color: $navbar-inverse-link-color;
+// White links against a dark background
+.navbar-dark {
+  .navbar-brand {
+    color: $navbar-dark-active-color;
+
+    @include hover-focus {
+      color: $navbar-dark-active-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $navbar-dark-color;
+
+      @include hover-focus {
+        color: $navbar-dark-hover-color;
+      }
+    }
+
+    .open > .nav-link,
+    .active > .nav-link,
+    .nav-link.open,
+    .nav-link.active {
+      @include plain-hover-focus {
+        color: $navbar-dark-active-color;
+      }
+    }
   }
 }
