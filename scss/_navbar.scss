@@ -144,7 +144,16 @@
 
   .nav-link {
     display: block;
-    padding: .425rem .5rem;
+    padding-top:    .425rem;
+    padding-bottom: .425rem;
+
+    + .nav-link {
+      margin-left: 1rem;
+    }
+  }
+
+  .nav-item + .nav-item {
+    margin-left: 1rem;
   }
 }
 
