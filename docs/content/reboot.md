@@ -2,6 +2,7 @@
 layout: docs
 title: Reboot
 group: content
+redirect_from: "/content/"
 ---
 
 Part of Bootstrap's job is to provide an elegant, consistent, and simple baseline to build upon. We use Reboot, a collection of element-specific CSS changes in a single file, to kickstart that.

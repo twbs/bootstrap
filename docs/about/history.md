@@ -2,6 +2,7 @@
 layout: docs
 title: History
 group: about
+redirect_from: "/about/"
 ---
 
 Originally created by a designer and a developer at Twitter, Bootstrap has become one of the most popular front-end frameworks and open source projects in the world.
