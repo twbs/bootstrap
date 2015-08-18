@@ -321,9 +321,11 @@
   .bg-info,
   .bg-warning,
   .bg-danger {
-    padding: .5rem;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    &:not(.navbar) {
+      padding: .5rem;
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+    }
   }
 }
 
