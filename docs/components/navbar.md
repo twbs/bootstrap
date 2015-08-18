@@ -162,6 +162,23 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 </nav>
 {% endexample %}
 
+## Placement
+
+Navbars can be statically placed (their default behavior), or fixed to the top or bottom of the viewport.
+
+{% example html %}
+<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Fixed top</a>
+</nav>
+{% endexample %}
+
+{% example html %}
+<nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Fixed bottom</a>
+</nav>
+{% endexample %}
+
+
 ## Collapsible content
 
 Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden content.
