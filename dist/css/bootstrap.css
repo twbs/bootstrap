@@ -3867,7 +3867,16 @@ input[type="button"].btn-block {
 
 .navbar-nav .nav-link {
   display: block;
-  padding: .425rem .5rem;
+  padding-top: .425rem;
+  padding-bottom: .425rem;
+}
+
+.navbar-nav .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.navbar-nav .nav-item + .nav-item {
+  margin-left: 1rem;
 }
 
 .navbar-light .navbar-brand {
