@@ -28,6 +28,25 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
 </div>
 {% endexample %}
 
+### Button elements
+
+You can optionaly use `<button>` elements in your dropdowns instead of `<a>`s.
+
+{% example html %}
+<div class="dropdown open">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <button class="dropdown-item" type="button">Action</button>
+    <button class="dropdown-item" type="button">Another action</button>
+    <button class="dropdown-item" type="button">Something else here</button>
+  </div>
+</div>
+{% endexample %}
+
+
+
 ## Alignment
 
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-right` to a `.dropdown-menu` to right align the dropdown menu.

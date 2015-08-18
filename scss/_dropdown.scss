@@ -65,6 +65,12 @@
   color: $dropdown-link-color;
   white-space: nowrap; // prevent links from randomly breaking onto new lines
 
+  // For `<button>`s
+  text-align: inherit;
+  width: 100%;
+  background: none;
+  border: 0;
+
   @include hover-focus {
     color: $dropdown-link-hover-color;
     text-decoration: none;
