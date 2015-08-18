@@ -3,23 +3,20 @@
 //
 
 .bd-navbar {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 0;
-  // background-color: $bd-graphite;
+  .navbar-nav {
+    .nav-link {
+      color: $bd-graphite-light;
 
-  .nav-link {
-    color: $bd-graphite-light;
+      &.active,
+      &:hover,
+      &:focus {
+        color: $gray-dark;
+        background-color: transparent;
+      }
 
-    &.active,
-    &:hover,
-    &:focus {
-      color: $gray-dark;
-      background-color: transparent;
-    }
-
-    &.active {
-      font-weight: 500;
+      &.active {
+        font-weight: 500;
+      }
     }
   }
 }
