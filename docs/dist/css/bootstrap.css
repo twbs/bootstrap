@@ -2928,12 +2928,16 @@ input[type="button"].btn-block {
 
 .dropdown-item {
   display: block;
+  width: 100%;
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
   line-height: 1.5;
   color: #373a3c;
+  text-align: inherit;
   white-space: nowrap;
+  background: none;
+  border: 0;
 }
 
 .dropdown-item:focus,
