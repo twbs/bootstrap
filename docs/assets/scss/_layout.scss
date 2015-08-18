@@ -35,8 +35,9 @@
 
 .bd-pageheader {
   padding: 2rem .75rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   color: $bd-purple-light;
+  text-align: center;
   background-color: $bd-purple;
 
   .container {
@@ -57,6 +58,8 @@
   @include media-breakpoint-up(sm) {
     padding-top: 4rem;
     padding-bottom: 4rem;
+    margin-bottom: 3rem;
+    text-align: left;
 
     .carbonad {
       margin: 2rem 0 0 !important;
