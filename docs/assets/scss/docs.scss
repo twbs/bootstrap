@@ -38,14 +38,16 @@ $bd-warning:        #f0ad4e;
 $bd-info:           #5bc0de;
 
 // Load docs components
-@import "layout";
-@import "sidebar";
 @import "booticon";
-@import "homepage";
+@import "nav";
+@import "masthead";
+@import "featurettes";
+@import "featured-sites";
 @import "ads";
-@import "footer";
-@import "social-buttons";
+@import "content";
 @import "page-header";
+@import "sidebar";
+@import "footer";
 @import "component-examples";
 @import "responsive-tests";
 @import "buttons";
