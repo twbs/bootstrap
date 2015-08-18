@@ -88,6 +88,12 @@
     width: auto;
   }
 
+  > .form-control {
+    + .form-control {
+      margin-top: .5rem;
+    }
+  }
+
   // Card examples should be horizontal
   > .card {
     max-width: 20rem;
