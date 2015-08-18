@@ -28,6 +28,11 @@
     $('.tooltip-test').tooltip()
     $('.popover-test').popover()
 
+    // Disable empty links in docs examples
+    $('.bd-example [href=#]').click(function (e) {
+      e.preventDefault()
+    })
+
     // Config ZeroClipboard
     ZeroClipboard.config({
       moviePath: '/assets/flash/ZeroClipboard.swf',
