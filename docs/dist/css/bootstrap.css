@@ -3821,6 +3821,20 @@ input[type="button"].btn-block {
   display: block;
 }
 
+.navbar-divider {
+  float: left;
+  width: 1px;
+  padding-top: .425rem;
+  padding-bottom: .425rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  overflow: hidden;
+}
+
+.navbar-divider:before {
+  content: '\00a0';
+}
+
 .navbar-toggler {
   padding: .5rem .75rem;
   font-size: 1.25rem;
@@ -3889,6 +3903,10 @@ input[type="button"].btn-block {
   color: rgba(0, 0, 0, .8);
 }
 
+.navbar-light .navbar-divider {
+  background-color: rgba(0, 0, 0, .075);
+}
+
 .navbar-dark .navbar-brand {
   color: white;
 }
@@ -3920,6 +3938,10 @@ input[type="button"].btn-block {
 .navbar-dark .navbar-nav .nav-link.active:focus,
 .navbar-dark .navbar-nav .nav-link.active:hover {
   color: white;
+}
+
+.navbar-dark .navbar-divider {
+  background-color: rgba(255, 255, 255, .075);
 }
 
 .card {
