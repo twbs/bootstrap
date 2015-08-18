@@ -30,7 +30,7 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
 
 ### Button elements
 
-You can optionaly use `<button>` elements in your dropdowns instead of `<a>`s.
+You can optionally use `<button>` elements in your dropdowns instead of `<a>`s.
 
 {% example html %}
 <div class="dropdown open">
