@@ -515,10 +515,22 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 ## Help text
 
-Block level help text for form controls.
+No official help text classes exist in Bootstrap 4 (previously we had `.help-block` in v3), but thanks to our utility classes like `.text-muted`, you can create much more flexible help text as you need it.
+
+Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else).
 
 {% example html %}
-<p class="text-help">A block of help text that breaks onto a new line and may extend beyond one line.</p>
+<small class="text-muted">
+  Some inline text with a small tag looks like this.
+</small>
+{% endexample %}
+
+Block help text—for below inputs or for longer lines of help text—can be easily achieved with a `<p>`.
+
+{% example html %}
+<p class="text-muted">
+  A block of help text that breaks onto a new line and may extend beyond one line.
+</p>
 {% endexample %}
 
 ## Validation
@@ -655,35 +667,18 @@ Custom checkboxes and radios are inline to start. Add a parent with class `.c-in
 
 ### Select menu
 
-Similar to the checkboxes and radios, we wrap the `<select>` in a `<label>` as a semantic wrapper that we can generate custom styles on with CSS's generated content.
+Custom `<select>` menus need only a custom class, `.c-selecct` to trigger the custom styles.
 
 {% example html %}
-<label class="select">
-  <select>
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
-</label>
+<select class="c-select">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
 {% endexample %}
 
-The `<select>` has quite a few styles to override and includes a few hacks to get things done. Here's what's happening:
-
-- The `appearance` is reset to `none` for nearly all styles to correctly apply across modern browsers (meaning not IE9).
-- The `:-moz-focusring` is overridden so that on focus there's no inner border in Firefox.
-- The arrow is hidden in Firefox with a media query hack. (There's a [longstanding open bug](https://bugzilla.mozilla.org/show_bug.cgi?id=649849) for a native method of addressing this.)
-- The arrow is hidden in IE10+ with a simple selector.
-- The arrow is hidden in IE9 with a separate media query hack which generates another pseudo-element to literally mask it. Not ideal, but doable.
-
-**Heads up!** This one comes with some quirks right now:
-
-- `select[multiple]` is currently currently **not supported**.
-- Clickability is limited in IE9.
-- Firefox's dropdown of `option`s looks rather ugly.
-- The custom caret is unable to receive the selected state's `color`.
-
-Any ideas on improving these are most welcome.
+Custom selects degrade nicely in IE9, receiving only a handful of overrides to remove the custom `background-image`. **Multiple selects (e.g., `<select multiple>`) are not currently supported.**
 
 ### File browser
 

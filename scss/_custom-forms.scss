@@ -123,115 +123,47 @@
 
 // Select
 //
-// Replaces the browser default select with a custom one.
+// Replaces the browser default select with a custom one, mostly pulled from
+// http://primercss.io.
 
-.select {
-  position: relative;
+.c-select {
   display: inline-block;
-  color: #555;
+  max-width: 100%;
+  padding: .375rem 1.75rem .375rem .75rem;
+  vertical-align: middle;
+	background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC) no-repeat right .75rem center;
+  background-size: 8px 10px;
+  border: 1px solid $input-border;
 
-  > select {
-    display: inline-block;
-    width: 100%;
-    padding: .5rem 2.25rem .5rem 1rem;
-    margin: 0;
-    line-height: 1.5;
-    color: #555;
-    cursor: pointer;
-    background-color: #eee;
-    border: 0;
-    border-radius: .25rem;
-    outline: 0;
-    -webkit-appearance: none;
-    appearance: none;
+  // Have to include vendor prefixes as the `appearance` property isn't part of the CSS spec.
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 
-    &:focus {
-      box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+  // IE9 hacks to hide the background-image and reduce padding
+  padding-right: .75rem \9;
+  background-image: none \9;
 
-      // Undo the Firefox inner focus ring
-      &:-moz-focusring {
-        color: transparent;
-        text-shadow: 0 0 0 #000;
-      }
-    }
-
-    &:active {
-      color: #fff;
-      background-color: #0074d9;
-    }
-
-    // Hide the arrow in IE10 and up
-    &::-ms-expand {
-      display: none;
-    }
+  &:focus {
+    outline: none;
+    border-color: #51a7e8;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5);
   }
 
-  // Dropdown arrow
-  &:after {
-    position: absolute;
-    top: 50%;
-    right: 1.25rem;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-top: -.15rem;
-    pointer-events: none;
-    content: "";
-    border-top: .35rem solid;
-    border-right: .35rem solid transparent;
-    border-bottom: .35rem solid transparent;
-    border-left: .35rem solid transparent;
+  // Hides the default caret in IE11
+  &::-ms-expand {
+    opacity: 0;
   }
 }
 
-// Hover state
-.select select {
-  @include hover {
-    background-color: #ddd;
-  }
-}
+.c-select-sm {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 12px;
 
-
-// Media query to target Firefox only
-@-moz-document url-prefix() {
-  // Firefox hack to hide the arrow
-  .select select {
-    padding-right: 1rem;
-    text-indent: 0.01px;
-    text-overflow: "";
-  }
-
-  // <option> elements inherit styles from <select>, so reset them.
-  .select option {
-    background-color: #fff;
-  }
-}
-
-// IE9 hack to hide the arrow
-@media screen and (min-width:0\0) {
-  .select select {
-    z-index: 1;
-    padding: .5rem 1.5rem .5rem 1rem;
-  }
-  .select:after {
-    z-index: 5;
-  }
-  .select:before {
-    position: absolute;
-    top: 0;
-    right: 1rem;
-    bottom: 0;
-    z-index: 2;
-    display: block;
-    width: 1.5rem;
-    content: "";
-    background-color: #eee;
-  }
-  .select select {
-    @include hover-focus-active {
-      color: #555;
-      background-color: #eee;
-    }
+  &:not([multiple]) {
+    height: 26px;
+    min-height: 26px;
   }
 }
 

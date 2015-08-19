@@ -11,21 +11,7 @@ Group a series of buttons together on a single line with the button group. Add o
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-{% callout warning %}
-#### Tooltips & popovers in button groups require special setting
-
-When using tooltips or popovers on elements within a `.btn-group`, you'll have to specify the option `container: 'body'` to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).
-{% endcallout %}
-
-{% callout warning %}
-#### Ensure correct `role` and provide a label
-
-In order for assistive technologies – such as screen readers – to convey that a series of buttons is grouped, an appropriate `role` attribute needs to be provided. For button groups, this would be `role="group"`, while toolbars should have a `role="toolbar"`.
-
-In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct `role` attribute. In the examples provided here, we use `aria-label`, but alternatives such as `aria-labelledby` can also be used.
-{% endcallout %}
-
-### Basic example
+## Basic example
 
 Wrap a series of buttons with `.btn` in `.btn-group`.
 
@@ -37,7 +23,7 @@ Wrap a series of buttons with `.btn` in `.btn-group`.
 </div>
 {% endexample %}
 
-### Button toolbar
+## Button toolbar
 
 Combine sets of button groups into button toolbars for more complex components.
 
@@ -60,7 +46,7 @@ Combine sets of button groups into button toolbars for more complex components.
 </div>
 {% endexample %}
 
-### Sizing
+## Sizing
 
 Instead of applying button sizing classes to every button in a group, just add `.btn-group-*` to each `.btn-group`, including each one when nesting multiple groups.
 
@@ -97,7 +83,7 @@ Instead of applying button sizing classes to every button in a group, just add `
 <div class="btn-group btn-group-xs" role="group" aria-label="...">...</div>
 {% endhighlight %}
 
-### Nesting
+## Nesting
 
 Place a `.btn-group` within another `.btn-group` when you want dropdown menus mixed with a series of buttons.
 
@@ -118,7 +104,7 @@ Place a `.btn-group` within another `.btn-group` when you want dropdown menus mi
 </div>
 {% endexample %}
 
-### Vertical variation
+## Vertical variation
 
 Make a set of buttons appear vertically stacked rather than horizontally. **Split button dropdowns are not supported here.**
 
@@ -172,3 +158,7 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
   ...
 </div>
 {% endhighlight %}
+
+## Tooltips and popovers
+
+Due to the specific implementation (and some other components), a bit of special casing is required for tooltips and popovers within button groups. **You'll have to specify the option `container: 'body'`** to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).

@@ -43,18 +43,23 @@ const ScrollSpy = (($) => {
   }
 
   const ClassName = {
-    DROPDOWN_TOGGLE : 'dropdown-toggle',
-    DROPDOWN_ITEM   : 'dropdown-item',
-    DROPDOWN_MENU   : 'dropdown-menu',
-    ACTIVE          : 'active'
+    DROPDOWN_ITEM : 'dropdown-item',
+    DROPDOWN_MENU : 'dropdown-menu',
+    NAV_LINK      : 'nav-link',
+    NAV           : 'nav',
+    ACTIVE        : 'active'
   }
 
   const Selector = {
-    DATA_SPY       : '[data-spy="scroll"]',
-    ACTIVE         : '.active',
-    LI_DROPDOWN    : 'li.dropdown',
-    NAV_LINKS      : '.nav-link',
-    DROPDOWN_ITEMS : '.dropdown-item'
+    DATA_SPY        : '[data-spy="scroll"]',
+    ACTIVE          : '.active',
+    LIST_ITEM       : '.list-item',
+    LI              : 'li',
+    LI_DROPDOWN     : 'li.dropdown',
+    NAV_LINKS       : '.nav-link',
+    DROPDOWN        : '.dropdown',
+    DROPDOWN_ITEMS  : '.dropdown-item',
+    DROPDOWN_TOGGLE : '.dropdown-toggle'
   }
 
   const OffsetMethod = {
@@ -237,13 +242,17 @@ const ScrollSpy = (($) => {
         return `${selector}[data-target="${target}"],` +
                `${selector}[href="${target}"]`
       })
+
       let $link = $(queries.join(','))
 
       if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
-        $link.parent().find(ClassName.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
+        $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
+        $link.addClass(ClassName.ACTIVE)
+      } else {
+        // todo (fat) this is kinda sus…
+        // recursively add actives to tested nav-links
+        $link.parents(Selector.LI).find(Selector.NAV_LINKS).addClass(ClassName.ACTIVE)
       }
-
-      $link.addClass(ClassName.ACTIVE)
 
       $(this._scrollElement).trigger(Event.ACTIVATE, {
         relatedTarget: target
@@ -251,8 +260,7 @@ const ScrollSpy = (($) => {
     }
 
     _clear() {
-      debugger
-      $(this._selector).filter(ClassName.ACTIVE).removeClass(Selector.ACTIVE)
+      $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
     }
 
 

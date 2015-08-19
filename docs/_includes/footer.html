@@ -35,8 +35,8 @@
 SimpleJekyllSearch.init({
   searchInput: document.getElementById('search-input'),
   resultsContainer: document.getElementById('search-results'),
-  searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
-  noResultsText: '<li class="no-results">Sorry, there are no results for that search.</li>',
+  searchResultTemplate: '<a class="dropdown-item" href="{url}">{title}</a>',
+  noResultsText: '<div class="dropdown-item no-results">Sorry, there are no results for that search.</div>',
   dataSource: '/search.json'
 })
 
