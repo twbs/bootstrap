@@ -99,7 +99,7 @@
 
         value: function toggle() {
           if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
-            return;
+            return false;
           }
 
           var parent = Dropdown._getParentFromElement(this);
@@ -126,7 +126,7 @@
           $(parent).trigger(showEvent);
 
           if (showEvent.isDefaultPrevented()) {
-            return;
+            return false;
           }
 
           this.focus();
@@ -259,9 +259,19 @@
 
           var index = items.indexOf(event.target);
 
-          if (event.which === 38 && index > 0) index--; // up
-          if (event.which === 40 && index < items.length - 1) index++; // down
-          if (! ~index) index = 0;
+          if (event.which === 38 && index > 0) {
+            // up
+            index--;
+          }
+
+          if (event.which === 40 && index < items.length - 1) {
+            // down
+            index++;
+          }
+
+          if (! ~index) {
+            index = 0;
+          }
 
           items[index].focus();
         }
