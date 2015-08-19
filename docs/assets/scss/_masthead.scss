@@ -1,6 +1,6 @@
 .bd-masthead {
   position: relative;
-  padding: ($grid-gutter-width / 2);
+  padding: 3rem ($grid-gutter-width / 2) 2rem;
   color: $bd-purple-light;
   text-align: center;
   background: -webkit-linear-gradient(135deg, darken($bd-purple, 20%), $bd-purple, lighten(saturate($bd-purple, 5%), 15%));
@@ -21,7 +21,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: #fff;
   }
 

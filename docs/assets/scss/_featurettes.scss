@@ -4,11 +4,15 @@
   font-size: 1rem;
   line-height: 1.5;
   color: #555;
-  // text-align: center;
+  text-align: center;
   background-color: #fff;
   border-top: 1px solid #eee;
 
   .highlight {
+    text-align: left;
+  }
+
+  @include media-breakpoint-up(sm) {
     text-align: left;
   }
 
@@ -29,13 +33,18 @@
   color: #333;
 
   + .lead {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
   }
 }
 .half-rule {
   width: 6rem;
-  margin: 2.5rem 0;
+  margin: 2.5rem auto;
+
+  @include media-breakpoint-up(sm) {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 .bd-featurette h4 {
   margin-top: 1rem;
@@ -69,11 +78,13 @@
   }
   .bd-featurette-title {
     font-size: 2.5rem;
+
+    + .lead {
+      font-size: 1.5rem;
+    }
   }
   .bd-featurette .lead {
     max-width: 80%;
-    // margin-right: auto;
-    // margin-left: auto;
   }
   .bd-featurette .img-responsive {
     margin-top: 0;

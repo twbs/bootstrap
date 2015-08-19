@@ -1,5 +1,5 @@
 .bd-pageheader {
-  padding: 2rem .75rem;
+  padding: 2rem ($grid-gutter-width / 2);
   margin-bottom: 1.5rem;
   color: $bd-purple-light;
   text-align: center;
@@ -17,7 +17,8 @@
 
   p {
     margin-bottom: 0;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 300;
   }
 
   @include media-breakpoint-up(sm) {
@@ -34,6 +35,10 @@
   @include media-breakpoint-up(md) {
     h1 {
       font-size: 4rem;
+    }
+
+    p {
+      font-size: 1.5rem;
     }
   }
 
