@@ -230,14 +230,18 @@ var Modal = (function ($) {
 
         $(this._element).addClass(ClassName.IN);
 
-        if (this._config.focus) this._enforceFocus();
+        if (this._config.focus) {
+          this._enforceFocus();
+        }
 
         var shownEvent = $.Event(Event.SHOWN, {
           relatedTarget: relatedTarget
         });
 
         var transitionComplete = function transitionComplete() {
-          if (_this2._config.focus) _this2._element.focus();
+          if (_this2._config.focus) {
+            _this2._element.focus();
+          }
           $(_this2._element).trigger(shownEvent);
         };
 
@@ -394,7 +398,7 @@ var Modal = (function ($) {
         }
 
         if (this._isBodyOverflowing && !isModalOverflowing) {
-          this._element.style.paddingRight = this._scrollbarWidth + 'px';
+          this._element.style.paddingRight = this._scrollbarWidth + 'px~';
         }
       }
     }, {
@@ -423,7 +427,7 @@ var Modal = (function ($) {
         this._originalBodyPadding = document.body.style.paddingRight || '';
 
         if (this._isBodyOverflowing) {
-          document.body.style.paddingRight = bodyPadding + this._scrollbarWidth + 'px';
+          document.body.style.paddingRight = bodyPadding + (this._scrollbarWidth + 'px');
         }
       }
     }, {

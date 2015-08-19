@@ -1,4 +1,3 @@
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0): util.js
@@ -53,9 +52,9 @@ var Util = (function ($) {
 
     var el = document.createElement('bootstrap');
 
-    for (var name in TransitionEndEvent) {
-      if (el.style[name] !== undefined) {
-        return { end: TransitionEndEvent[name] };
+    for (var _name in TransitionEndEvent) {
+      if (el.style[_name] !== undefined) {
+        return { end: TransitionEndEvent[_name] };
       }
     }
 
@@ -101,7 +100,9 @@ var Util = (function ($) {
     TRANSITION_END: 'bsTransitionEnd',
 
     getUID: function getUID(prefix) {
-      do { prefix += ~ ~(Math.random() * 1000000); } while (document.getElementById(prefix));
+      do {
+        prefix += ~ ~(Math.random() * 1000000);
+      } while (document.getElementById(prefix));
       return prefix;
     },
 
@@ -125,24 +126,28 @@ var Util = (function ($) {
     },
 
     supportsTransitionEnd: function supportsTransitionEnd() {
-      return !!transition;
+      return Boolean(transition);
     },
 
     typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
-
       for (var property in configTypes) {
-        var expectedTypes = configTypes[property];
-        var value = config[property];
-        var valueType = undefined;
+        if (configTypes.hasOwnProperty(property)) {
+          var expectedTypes = configTypes[property];
+          var value = config[property];
+          var valueType = undefined;
 
-        if (value && isElement(value)) valueType = 'element';else valueType = toType(value);
+          if (value && isElement(value)) {
+            valueType = 'element';
+          } else {
+            valueType = toType(value);
+          }
 
-        if (!new RegExp(expectedTypes).test(valueType)) {
-          throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
+          if (!new RegExp(expectedTypes).test(valueType)) {
+            throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
+          }
         }
       }
     }
-
   };
 
   setTransitionEndSupport();

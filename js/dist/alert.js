@@ -93,8 +93,8 @@ var Alert = (function ($) {
     }, {
       key: '_getRootElement',
       value: function _getRootElement(element) {
-        var parent = false;
         var selector = Util.getSelectorFromElement(element);
+        var parent = false;
 
         if (selector) {
           parent = $(selector)[0];
@@ -110,6 +110,7 @@ var Alert = (function ($) {
       key: '_triggerCloseEvent',
       value: function _triggerCloseEvent(element) {
         var closeEvent = $.Event(Event.CLOSE);
+
         $(element).trigger(closeEvent);
         return closeEvent;
       }
