@@ -77,7 +77,7 @@ const Tab = (($) => {
 
     show() {
       if (this._element.parentNode &&
-         (this._element.parentNode.nodeType == Node.ELEMENT_NODE) &&
+         (this._element.parentNode.nodeType === Node.ELEMENT_NODE) &&
          ($(this._element).parent().hasClass(ClassName.ACTIVE))) {
         return
       }
@@ -157,7 +157,7 @@ const Tab = (($) => {
       let isTransitioning = callback
         && Util.supportsTransitionEnd()
         && ((active && $(active).hasClass(ClassName.FADE))
-           || !!$(container).find(Selector.FADE_CHILD)[0])
+           || Boolean($(container).find(Selector.FADE_CHILD)[0]))
 
       let complete = $.proxy(
         this._transitionComplete,

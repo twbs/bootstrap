@@ -20,7 +20,6 @@ const Button = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
 
   const ClassName = {
     ACTIVE : 'active',
@@ -67,7 +66,7 @@ const Button = (($) => {
 
     toggle() {
       let triggerChangeEvent = true
-      let rootElement = $(this._element).closest(
+      let rootElement        = $(this._element).closest(
         Selector.DATA_TOGGLE
       )[0]
 
@@ -137,7 +136,7 @@ const Button = (($) => {
    */
 
   $(document)
-    .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
+    .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
       event.preventDefault()
 
       let button = event.target
@@ -148,8 +147,8 @@ const Button = (($) => {
 
       Button._jQueryInterface.call($(button), 'toggle')
     })
-    .on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
-      var button = $(event.target).closest(Selector.BUTTON)[0]
+    .on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
+      let button = $(event.target).closest(Selector.BUTTON)[0]
       $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type))
     })
 

@@ -182,15 +182,14 @@ const Collapse = (($) => {
         return
       }
 
-      let scrollSize = 'scroll'
-        + (dimension[0].toUpperCase()
-        + dimension.slice(1))
+      let capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
+      let scrollSize           = `scroll${capitalizedDimension}`
 
       $(this._element)
         .one(Util.TRANSITION_END, complete)
         .emulateTransitionEnd(TRANSITION_DURATION)
 
-      this._element.style[dimension] = this._element[scrollSize] + 'px'
+      this._element.style[dimension] = `${this._element[scrollSize]}px`
     }
 
     hide() {
@@ -205,11 +204,11 @@ const Collapse = (($) => {
         return
       }
 
-      let dimension = this._getDimension()
+      let dimension       = this._getDimension()
       let offsetDimension = dimension === Dimension.WIDTH ?
         'offsetWidth' : 'offsetHeight'
 
-      this._element.style[dimension] = this._element[offsetDimension] + 'px'
+      this._element.style[dimension] = `${this._element[offsetDimension]}px`
 
       Util.reflow(this._element)
 
@@ -239,7 +238,8 @@ const Collapse = (($) => {
       this._element.style[dimension] = 0
 
       if (!Util.supportsTransitionEnd()) {
-        return complete()
+        complete()
+        return
       }
 
       $(this._element)
@@ -266,7 +266,7 @@ const Collapse = (($) => {
 
     _getConfig(config) {
       config = $.extend({}, Default, config)
-      config.toggle = !!config.toggle // coerce string values
+      config.toggle = Boolean(config.toggle) // coerce string values
       Util.typeCheckConfig(NAME, config, DefaultType)
       return config
     }
@@ -351,8 +351,7 @@ const Collapse = (($) => {
     event.preventDefault()
 
     let target = Collapse._getTargetFromElement(this)
-
-    let data = $(target).data(DATA_KEY)
+    let data   = $(target).data(DATA_KEY)
     let config = data ? 'toggle' : $(this).data()
 
     Collapse._jQueryInterface.call($(target), config)

@@ -293,7 +293,7 @@ const ScrollSpy = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  $(window).on(Event.LOAD_DATA_API, function () {
+  $(window).on(Event.LOAD_DATA_API, () => {
     let scrollSpys = $.makeArray($(Selector.DATA_SPY))
 
     for (let i = scrollSpys.length; i--;) {

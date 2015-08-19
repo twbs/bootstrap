@@ -110,8 +110,8 @@
       }, {
         key: '_getRootElement',
         value: function _getRootElement(element) {
-          var parent = false;
           var selector = _Util['default'].getSelectorFromElement(element);
+          var parent = false;
 
           if (selector) {
             parent = $(selector)[0];
@@ -127,6 +127,7 @@
         key: '_triggerCloseEvent',
         value: function _triggerCloseEvent(element) {
           var closeEvent = $.Event(Event.CLOSE);
+
           $(element).trigger(closeEvent);
           return closeEvent;
         }

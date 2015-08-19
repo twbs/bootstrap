@@ -86,8 +86,8 @@ const Alert = (($) => {
     // private
 
     _getRootElement(element) {
-      let parent   = false
       let selector = Util.getSelectorFromElement(element)
+      let parent   = false
 
       if (selector) {
         parent = $(selector)[0]
@@ -101,7 +101,8 @@ const Alert = (($) => {
     }
 
     _triggerCloseEvent(element) {
-      var closeEvent = $.Event(Event.CLOSE)
+      let closeEvent = $.Event(Event.CLOSE)
+
       $(element).trigger(closeEvent)
       return closeEvent
     }

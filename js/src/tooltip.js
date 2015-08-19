@@ -174,11 +174,9 @@ const Tooltip = (($) => {
     }
 
     toggle(event) {
-      let context = this
-      let dataKey = this.constructor.DATA_KEY
-
       if (event) {
-        context = $(event.currentTarget).data(dataKey)
+        let dataKey = this.constructor.DATA_KEY
+        let context = $(event.currentTarget).data(dataKey)
 
         if (!context) {
           context = new this.constructor(
@@ -197,9 +195,13 @@ const Tooltip = (($) => {
         }
 
       } else {
-        $(context.getTipElement()).hasClass(ClassName.IN) ?
-          context._leave(null, context) :
-          context._enter(null, context)
+
+        if ($(this.getTipElement()).hasClass(ClassName.IN)) {
+          this._leave(null, this)
+          return
+        }
+
+        this._enter(null, this)
       }
     }
 
@@ -267,9 +269,9 @@ const Tooltip = (($) => {
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
         this._tether = new Tether({
+          attachment,
           element     : tip,
           target      : this.element,
-          attachment  : attachment,
           classes     : TetherClass,
           classPrefix : CLASS_PREFIX,
           offset      : this.config.offset,
@@ -292,11 +294,14 @@ const Tooltip = (($) => {
           }
         }
 
-        Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE) ?
+        if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
-            .emulateTransitionEnd(Tooltip._TRANSITION_DURATION) :
-          complete()
+            .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
+          return
+        }
+
+        complete()
       }
     }
 
@@ -343,7 +348,7 @@ const Tooltip = (($) => {
     // protected
 
     isWithContent() {
-      return !!this.getTitle()
+      return Boolean(this.getTitle())
     }
 
     getTipElement() {
@@ -407,10 +412,10 @@ const Tooltip = (($) => {
           )
 
         } else if (trigger !== Trigger.MANUAL) {
-          let eventIn  = trigger == Trigger.HOVER ?
+          let eventIn  = trigger === Trigger.HOVER ?
             this.constructor.Event.MOUSEENTER :
             this.constructor.Event.FOCUSIN
-          let eventOut = trigger == Trigger.HOVER ?
+          let eventOut = trigger === Trigger.HOVER ?
             this.constructor.Event.MOUSELEAVE :
             this.constructor.Event.FOCUSOUT
 
@@ -471,7 +476,7 @@ const Tooltip = (($) => {
 
       if (event) {
         context._activeTrigger[
-          event.type == 'focusin' ? Trigger.FOCUS : Trigger.HOVER
+          event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER
         ] = true
       }
 
@@ -512,7 +517,7 @@ const Tooltip = (($) => {
 
       if (event) {
         context._activeTrigger[
-          event.type == 'focusout' ? Trigger.FOCUS : Trigger.HOVER
+          event.type === 'focusout' ? Trigger.FOCUS : Trigger.HOVER
         ] = false
       }
 
@@ -575,9 +580,8 @@ const Tooltip = (($) => {
 
       if (this.config) {
         for (let key in this.config) {
-          let value = this.config[key]
-          if (this.constructor.Default[key] !== value) {
-            config[key] = value
+          if (this.constructor.Default[key] !== this.config[key]) {
+            config[key] = this.config[key]
           }
         }
       }

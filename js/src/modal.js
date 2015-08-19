@@ -110,7 +110,7 @@ const Modal = (($) => {
 
     show(relatedTarget) {
       let showEvent = $.Event(Event.SHOW, {
-        relatedTarget: relatedTarget
+        relatedTarget
       })
 
       $(this._element).trigger(showEvent)
@@ -231,14 +231,18 @@ const Modal = (($) => {
 
       $(this._element).addClass(ClassName.IN)
 
-      if (this._config.focus) this._enforceFocus()
+      if (this._config.focus) {
+        this._enforceFocus()
+      }
 
       let shownEvent = $.Event(Event.SHOWN, {
-        relatedTarget: relatedTarget
+        relatedTarget
       })
 
       let transitionComplete = () => {
-        if (this._config.focus) this._element.focus()
+        if (this._config.focus) {
+          this._element.focus()
+        }
         $(this._element).trigger(shownEvent)
       }
 
@@ -389,11 +393,11 @@ const Modal = (($) => {
         this._element.scrollHeight > document.documentElement.clientHeight
 
       if (!this._isBodyOverflowing && isModalOverflowing) {
-        this._element.style.paddingLeft = this._scrollbarWidth + 'px'
+        this._element.style.paddingLeft = `${this._scrollbarWidth}px`
       }
 
       if (this._isBodyOverflowing && !isModalOverflowing) {
-        this._element.style.paddingRight = this._scrollbarWidth + 'px'
+        this._element.style.paddingRight = `${this._scrollbarWidth}px~`
       }
     }
 
@@ -423,7 +427,7 @@ const Modal = (($) => {
 
       if (this._isBodyOverflowing) {
         document.body.style.paddingRight =
-          bodyPadding + this._scrollbarWidth + 'px'
+          bodyPadding + `${this._scrollbarWidth}px`
       }
     }
 

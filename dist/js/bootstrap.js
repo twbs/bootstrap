@@ -80,9 +80,9 @@ var Util = (function ($) {
 
     var el = document.createElement('bootstrap');
 
-    for (var name in TransitionEndEvent) {
-      if (el.style[name] !== undefined) {
-        return { end: TransitionEndEvent[name] };
+    for (var _name in TransitionEndEvent) {
+      if (el.style[_name] !== undefined) {
+        return { end: TransitionEndEvent[_name] };
       }
     }
 
@@ -128,7 +128,9 @@ var Util = (function ($) {
     TRANSITION_END: 'bsTransitionEnd',
 
     getUID: function getUID(prefix) {
-      do prefix += ~ ~(Math.random() * 1000000); while (document.getElementById(prefix));
+      do {
+        prefix += ~ ~(Math.random() * 1000000);
+      } while (document.getElementById(prefix));
       return prefix;
     },
 
@@ -152,24 +154,28 @@ var Util = (function ($) {
     },
 
     supportsTransitionEnd: function supportsTransitionEnd() {
-      return !!transition;
+      return Boolean(transition);
     },
 
     typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
-
       for (var property in configTypes) {
-        var expectedTypes = configTypes[property];
-        var value = config[property];
-        var valueType = undefined;
+        if (configTypes.hasOwnProperty(property)) {
+          var expectedTypes = configTypes[property];
+          var value = config[property];
+          var valueType = undefined;
 
-        if (value && isElement(value)) valueType = 'element';else valueType = toType(value);
+          if (value && isElement(value)) {
+            valueType = 'element';
+          } else {
+            valueType = toType(value);
+          }
 
-        if (!new RegExp(expectedTypes).test(valueType)) {
-          throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
+          if (!new RegExp(expectedTypes).test(valueType)) {
+            throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
+          }
         }
       }
     }
-
   };
 
   setTransitionEndSupport();
@@ -266,8 +272,8 @@ var Alert = (function ($) {
     }, {
       key: '_getRootElement',
       value: function _getRootElement(element) {
-        var parent = false;
         var selector = Util.getSelectorFromElement(element);
+        var parent = false;
 
         if (selector) {
           parent = $(selector)[0];
@@ -283,6 +289,7 @@ var Alert = (function ($) {
       key: '_triggerCloseEvent',
       value: function _triggerCloseEvent(element) {
         var closeEvent = $.Event(Event.CLOSE);
+
         $(element).trigger(closeEvent);
         return closeEvent;
       }
@@ -383,7 +390,6 @@ var Button = (function ($) {
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var TRANSITION_DURATION = 150;
 
   var ClassName = {
     ACTIVE: 'active',
@@ -702,7 +708,7 @@ var Carousel = (function ($) {
           return;
         }
 
-        if (activeIndex == index) {
+        if (activeIndex === index) {
           this.pause();
           this.cycle();
           return;
@@ -744,7 +750,7 @@ var Carousel = (function ($) {
           $(this._element).on(Event.KEYDOWN, $.proxy(this._keydown, this));
         }
 
-        if (this._config.pause == 'hover' && !('ontouchstart' in document.documentElement)) {
+        if (this._config.pause === 'hover' && !('ontouchstart' in document.documentElement)) {
           $(this._element).on(Event.MOUSEENTER, $.proxy(this.pause, this)).on(Event.MOUSELEAVE, $.proxy(this.cycle, this));
         }
       }
@@ -753,7 +759,9 @@ var Carousel = (function ($) {
       value: function _keydown(event) {
         event.preventDefault();
 
-        if (/input|textarea/i.test(event.target.tagName)) return;
+        if (/input|textarea/i.test(event.target.tagName)) {
+          return;
+        }
 
         switch (event.which) {
           case 37:
@@ -777,13 +785,13 @@ var Carousel = (function ($) {
         var isPrevDirection = direction === Direction.PREVIOUS;
         var activeIndex = this._getItemIndex(activeElement);
         var lastItemIndex = this._items.length - 1;
-        var isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex == lastItemIndex;
+        var isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex === lastItemIndex;
 
         if (isGoingToWrap && !this._config.wrap) {
           return activeElement;
         }
 
-        var delta = direction == Direction.PREVIOUS ? -1 : 1;
+        var delta = direction === Direction.PREVIOUS ? -1 : 1;
         var itemIndex = (activeIndex + delta) % this._items.length;
 
         return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
@@ -821,9 +829,9 @@ var Carousel = (function ($) {
         var activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
         var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
 
-        var isCycling = !!this._interval;
+        var isCycling = Boolean(this._interval);
 
-        var directionalClassName = direction == Direction.NEXT ? ClassName.LEFT : ClassName.RIGHT;
+        var directionalClassName = direction === Direction.NEXT ? ClassName.LEFT : ClassName.RIGHT;
 
         if (nextElement && $(nextElement).hasClass(ClassName.ACTIVE)) {
           this._isSliding = false;
@@ -908,7 +916,7 @@ var Carousel = (function ($) {
             $(this).data(DATA_KEY, data);
           }
 
-          if (typeof config == 'number') {
+          if (typeof config === 'number') {
             data.to(config);
           } else if (action) {
             data[action]();
@@ -934,8 +942,8 @@ var Carousel = (function ($) {
         }
 
         var config = $.extend({}, $(target).data(), $(this).data());
-
         var slideIndex = this.getAttribute('data-slide-to');
+
         if (slideIndex) {
           config.interval = false;
         }
@@ -1159,7 +1167,8 @@ var Collapse = (function ($) {
           return;
         }
 
-        var scrollSize = 'scroll' + (dimension[0].toUpperCase() + dimension.slice(1));
+        var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
+        var scrollSize = 'scroll' + capitalizedDimension;
 
         $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
 
@@ -1205,7 +1214,8 @@ var Collapse = (function ($) {
         this._element.style[dimension] = 0;
 
         if (!Util.supportsTransitionEnd()) {
-          return complete();
+          complete();
+          return;
         }
 
         $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
@@ -1233,7 +1243,7 @@ var Collapse = (function ($) {
       key: '_getConfig',
       value: function _getConfig(config) {
         config = $.extend({}, Default, config);
-        config.toggle = !!config.toggle; // coerce string values
+        config.toggle = Boolean(config.toggle); // coerce string values
         Util.typeCheckConfig(NAME, config, DefaultType);
         return config;
       }
@@ -1319,7 +1329,6 @@ var Collapse = (function ($) {
     event.preventDefault();
 
     var target = Collapse._getTargetFromElement(this);
-
     var data = $(target).data(DATA_KEY);
     var config = data ? 'toggle' : $(this).data();
 
@@ -1420,7 +1429,7 @@ var Dropdown = (function ($) {
 
       value: function toggle() {
         if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
-          return;
+          return false;
         }
 
         var parent = Dropdown._getParentFromElement(this);
@@ -1447,7 +1456,7 @@ var Dropdown = (function ($) {
         $(parent).trigger(showEvent);
 
         if (showEvent.isDefaultPrevented()) {
-          return;
+          return false;
         }
 
         this.focus();
@@ -1580,9 +1589,19 @@ var Dropdown = (function ($) {
 
         var index = items.indexOf(event.target);
 
-        if (event.which === 38 && index > 0) index--; // up
-        if (event.which === 40 && index < items.length - 1) index++; // down
-        if (! ~index) index = 0;
+        if (event.which === 38 && index > 0) {
+          // up
+          index--;
+        }
+
+        if (event.which === 40 && index < items.length - 1) {
+          // down
+          index++;
+        }
+
+        if (! ~index) {
+          index = 0;
+        }
 
         items[index].focus();
       }
@@ -1842,14 +1861,18 @@ var Modal = (function ($) {
 
         $(this._element).addClass(ClassName.IN);
 
-        if (this._config.focus) this._enforceFocus();
+        if (this._config.focus) {
+          this._enforceFocus();
+        }
 
         var shownEvent = $.Event(Event.SHOWN, {
           relatedTarget: relatedTarget
         });
 
         var transitionComplete = function transitionComplete() {
-          if (_this8._config.focus) _this8._element.focus();
+          if (_this8._config.focus) {
+            _this8._element.focus();
+          }
           $(_this8._element).trigger(shownEvent);
         };
 
@@ -2006,7 +2029,7 @@ var Modal = (function ($) {
         }
 
         if (this._isBodyOverflowing && !isModalOverflowing) {
-          this._element.style.paddingRight = this._scrollbarWidth + 'px';
+          this._element.style.paddingRight = this._scrollbarWidth + 'px~';
         }
       }
     }, {
@@ -2035,7 +2058,7 @@ var Modal = (function ($) {
         this._originalBodyPadding = document.body.style.paddingRight || '';
 
         if (this._isBodyOverflowing) {
-          document.body.style.paddingRight = bodyPadding + this._scrollbarWidth + 'px';
+          document.body.style.paddingRight = bodyPadding + (this._scrollbarWidth + 'px');
         }
       }
     }, {
@@ -2526,7 +2549,7 @@ var Tab = (function ($) {
       value: function show() {
         var _this15 = this;
 
-        if (this._element.parentNode && this._element.parentNode.nodeType == Node.ELEMENT_NODE && $(this._element).parent().hasClass(ClassName.ACTIVE)) {
+        if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && $(this._element).parent().hasClass(ClassName.ACTIVE)) {
           return;
         }
 
@@ -2600,7 +2623,7 @@ var Tab = (function ($) {
       key: '_activate',
       value: function _activate(element, container, callback) {
         var active = $(container).find(Selector.ACTIVE_CHILD)[0];
-        var isTransitioning = callback && Util.supportsTransitionEnd() && (active && $(active).hasClass(ClassName.FADE) || !!$(container).find(Selector.FADE_CHILD)[0]);
+        var isTransitioning = callback && Util.supportsTransitionEnd() && (active && $(active).hasClass(ClassName.FADE) || Boolean($(container).find(Selector.FADE_CHILD)[0]));
 
         var complete = $.proxy(this._transitionComplete, this, element, active, isTransitioning, callback);
 
@@ -2863,11 +2886,9 @@ var Tooltip = (function ($) {
     }, {
       key: 'toggle',
       value: function toggle(event) {
-        var context = this;
-        var dataKey = this.constructor.DATA_KEY;
-
         if (event) {
-          context = $(event.currentTarget).data(dataKey);
+          var dataKey = this.constructor.DATA_KEY;
+          var context = $(event.currentTarget).data(dataKey);
 
           if (!context) {
             context = new this.constructor(event.currentTarget, this._getDelegateConfig());
@@ -2882,7 +2903,13 @@ var Tooltip = (function ($) {
             context._leave(null, context);
           }
         } else {
-          $(context.getTipElement()).hasClass(ClassName.IN) ? context._leave(null, context) : context._enter(null, context);
+
+          if ($(this.getTipElement()).hasClass(ClassName.IN)) {
+            this._leave(null, this);
+            return;
+          }
+
+          this._enter(null, this);
         }
       }
     }, {
@@ -2947,9 +2974,9 @@ var Tooltip = (function ($) {
           $(this.element).trigger(this.constructor.Event.INSERTED);
 
           this._tether = new Tether({
+            attachment: attachment,
             element: tip,
             target: this.element,
-            attachment: attachment,
             classes: TetherClass,
             classPrefix: CLASS_PREFIX,
             offset: this.config.offset,
@@ -2972,7 +2999,12 @@ var Tooltip = (function ($) {
             }
           };
 
-          Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE) ? $(this.tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION) : complete();
+          if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+            $(this.tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
+            return;
+          }
+
+          complete();
         }
       }
     }, {
@@ -3019,7 +3051,7 @@ var Tooltip = (function ($) {
     }, {
       key: 'isWithContent',
       value: function isWithContent() {
-        return !!this.getTitle();
+        return Boolean(this.getTitle());
       }
     }, {
       key: 'getTipElement',
@@ -3082,8 +3114,8 @@ var Tooltip = (function ($) {
           if (trigger === 'click') {
             $(_this18.element).on(_this18.constructor.Event.CLICK, _this18.config.selector, $.proxy(_this18.toggle, _this18));
           } else if (trigger !== Trigger.MANUAL) {
-            var eventIn = trigger == Trigger.HOVER ? _this18.constructor.Event.MOUSEENTER : _this18.constructor.Event.FOCUSIN;
-            var eventOut = trigger == Trigger.HOVER ? _this18.constructor.Event.MOUSELEAVE : _this18.constructor.Event.FOCUSOUT;
+            var eventIn = trigger === Trigger.HOVER ? _this18.constructor.Event.MOUSEENTER : _this18.constructor.Event.FOCUSIN;
+            var eventOut = trigger === Trigger.HOVER ? _this18.constructor.Event.MOUSELEAVE : _this18.constructor.Event.FOCUSOUT;
 
             $(_this18.element).on(eventIn, _this18.config.selector, $.proxy(_this18._enter, _this18)).on(eventOut, _this18.config.selector, $.proxy(_this18._leave, _this18));
           }
@@ -3125,7 +3157,7 @@ var Tooltip = (function ($) {
         }
 
         if (event) {
-          context._activeTrigger[event.type == 'focusin' ? Trigger.FOCUS : Trigger.HOVER] = true;
+          context._activeTrigger[event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER] = true;
         }
 
         if ($(context.getTipElement()).hasClass(ClassName.IN) || context._hoverState === HoverState.IN) {
@@ -3161,7 +3193,7 @@ var Tooltip = (function ($) {
         }
 
         if (event) {
-          context._activeTrigger[event.type == 'focusout' ? Trigger.FOCUS : Trigger.HOVER] = false;
+          context._activeTrigger[event.type === 'focusout' ? Trigger.FOCUS : Trigger.HOVER] = false;
         }
 
         if (context._isWithActiveTrigger()) {
@@ -3217,9 +3249,8 @@ var Tooltip = (function ($) {
 
         if (this.config) {
           for (var key in this.config) {
-            var value = this.config[key];
-            if (this.constructor.Default[key] !== value) {
-              config[key] = value;
+            if (this.constructor.Default[key] !== this.config[key]) {
+              config[key] = this.config[key];
             }
           }
         }
@@ -3415,7 +3446,7 @@ var Popover = (function ($) {
     }, {
       key: '_getContent',
       value: function _getContent() {
-        return this.element.getAttribute('data-content') || (typeof this.config.content == 'function' ? this.config.content.call(this.element) : this.config.content);
+        return this.element.getAttribute('data-content') || (typeof this.config.content === 'function' ? this.config.content.call(this.element) : this.config.content);
       }
 
       // static

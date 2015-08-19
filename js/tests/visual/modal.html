@@ -25,30 +25,30 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">navbar-static-top</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">This should not jump to the left when the modal is shown.</a></li>
-      </ul>
-    </div><!--/.nav-collapse -->
+<nav class="navbar navbar-dark bg-inverse navbar-static-top">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+    &#9776;
+  </button>
+  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+    <a class="navbar-brand" href="#">This shouldn't jump!</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
   </div>
 </nav>
 
-<div class="container">
+<div class="container m-t-lg">
 
   <div class="page-header">
     <h1>Modal <small>Bootstrap Visual Test</small></h1>
@@ -67,7 +67,7 @@
           <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
 
           <h4>Popover in a modal</h4>
-          <p>This <a href="#" role="button" class="btn btn-default js-popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-placement="left">button</a> should trigger a popover on click.</p>
+          <p>This <a href="#" role="button" class="btn btn-primary js-popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?" data-placement="left">button</a> should trigger a popover on click.</p>
 
           <h4>Tooltips in a modal</h4>
           <p><a href="#" class="js-tooltip" title="Tooltip">This link</a> and <a href="#" class="js-tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
@@ -141,10 +141,13 @@
 
 <!-- JavaScript Includes -->
 <script src="../vendor/jquery.min.js"></script>
+<script src="../vendor/tether.min.js"></script>
 
 <script src="../../dist/util.js"></script>
 <script src="../../dist/modal.js"></script>
 <script src="../../dist/collapse.js"></script>
+<script src="../../dist/tooltip.js"></script>
+<script src="../../dist/popover.js"></script>
 
 <!-- <script src="../../transition.js"></script>
 <script src="../../tooltip.js"></script>
@@ -153,11 +156,11 @@
 <!-- JavaScript Test -->
 <script>
 $(function () {
-  // $('.js-popover').popover()
-  // $('.js-tooltip').tooltip()
-  // $('#tall-toggle').click(function () {
-  //   $('#tall').toggle()
-  // })
+  $('.js-popover').popover()
+  $('.js-tooltip').tooltip()
+  $('#tall-toggle').click(function () {
+    $('#tall').toggle()
+  })
 })
 </script>
 

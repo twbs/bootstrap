@@ -28,6 +28,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "babel-eslint": "^4.0.10",
     "btoa": "~1.1.2",
     "glob": "~5.0.3",
     "grunt": "~0.4.5",
@@ -48,6 +49,7 @@
     "grunt-contrib-uglify": "~0.8.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-csscomb": "~3.0.0",
+    "grunt-eslint": "^17.1.0",
     "grunt-exec": "~0.4.6",
     "grunt-html": "~4.0.1",
     "grunt-jekyll": "~0.4.2",

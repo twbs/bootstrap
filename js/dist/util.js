@@ -1,3 +1,4 @@
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0): util.js
@@ -100,7 +101,7 @@ var Util = (function ($) {
     TRANSITION_END: 'bsTransitionEnd',
 
     getUID: function getUID(prefix) {
-      do prefix += ~ ~(Math.random() * 1000000); while (document.getElementById(prefix));
+      do { prefix += ~ ~(Math.random() * 1000000); } while (document.getElementById(prefix));
       return prefix;
     },
 
