@@ -141,7 +141,7 @@ const Popover = (($) => {
 
     _getContent() {
       return this.element.getAttribute('data-content')
-        || (typeof this.config.content == 'function' ?
+        || (typeof this.config.content === 'function' ?
               this.config.content.call(this.element) :
               this.config.content)
     }

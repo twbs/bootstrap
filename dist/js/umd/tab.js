@@ -100,7 +100,7 @@
         value: function show() {
           var _this = this;
 
-          if (this._element.parentNode && this._element.parentNode.nodeType == Node.ELEMENT_NODE && $(this._element).parent().hasClass(ClassName.ACTIVE)) {
+          if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && $(this._element).parent().hasClass(ClassName.ACTIVE)) {
             return;
           }
 
@@ -174,7 +174,7 @@
         key: '_activate',
         value: function _activate(element, container, callback) {
           var active = $(container).find(Selector.ACTIVE_CHILD)[0];
-          var isTransitioning = callback && _Util['default'].supportsTransitionEnd() && (active && $(active).hasClass(ClassName.FADE) || !!$(container).find(Selector.FADE_CHILD)[0]);
+          var isTransitioning = callback && _Util['default'].supportsTransitionEnd() && (active && $(active).hasClass(ClassName.FADE) || Boolean($(container).find(Selector.FADE_CHILD)[0]));
 
           var complete = $.proxy(this._transitionComplete, this, element, active, isTransitioning, callback);
 

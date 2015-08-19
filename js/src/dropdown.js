@@ -78,7 +78,7 @@ const Dropdown = (($) => {
 
     toggle() {
       if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
-        return
+        return false
       }
 
       let parent   = Dropdown._getParentFromElement(this)
@@ -106,7 +106,7 @@ const Dropdown = (($) => {
       $(parent).trigger(showEvent)
 
       if (showEvent.isDefaultPrevented()) {
-        return
+        return false
       }
 
       this.focus()
@@ -239,9 +239,17 @@ const Dropdown = (($) => {
 
       let index = items.indexOf(event.target)
 
-      if (event.which === 38 && index > 0)                index--  // up
-      if (event.which === 40 && index < items.length - 1) index++  // down
-      if (!~index)                                        index = 0
+      if (event.which === 38 && index > 0) { // up
+        index--
+      }
+
+      if (event.which === 40 && index < items.length - 1) { // down
+        index++
+      }
+
+      if (!~index) {
+        index = 0
+      }
 
       items[index].focus()
     }
@@ -261,9 +269,9 @@ const Dropdown = (($) => {
     .on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
     .on(Event.CLICK_DATA_API, Dropdown._clearMenus)
     .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
-    .on(Event.CLICK_DATA_API, Selector.FORM_CHILD,  function (e) {
-       e.stopPropagation()
-     })
+    .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
+      e.stopPropagation()
+    })
 
 
   /**

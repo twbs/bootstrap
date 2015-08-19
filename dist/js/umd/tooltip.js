@@ -171,11 +171,9 @@
       }, {
         key: 'toggle',
         value: function toggle(event) {
-          var context = this;
-          var dataKey = this.constructor.DATA_KEY;
-
           if (event) {
-            context = $(event.currentTarget).data(dataKey);
+            var dataKey = this.constructor.DATA_KEY;
+            var context = $(event.currentTarget).data(dataKey);
 
             if (!context) {
               context = new this.constructor(event.currentTarget, this._getDelegateConfig());
@@ -190,7 +188,13 @@
               context._leave(null, context);
             }
           } else {
-            $(context.getTipElement()).hasClass(ClassName.IN) ? context._leave(null, context) : context._enter(null, context);
+
+            if ($(this.getTipElement()).hasClass(ClassName.IN)) {
+              this._leave(null, this);
+              return;
+            }
+
+            this._enter(null, this);
           }
         }
       }, {
@@ -255,9 +259,9 @@
             $(this.element).trigger(this.constructor.Event.INSERTED);
 
             this._tether = new Tether({
+              attachment: attachment,
               element: tip,
               target: this.element,
-              attachment: attachment,
               classes: TetherClass,
               classPrefix: CLASS_PREFIX,
               offset: this.config.offset,
@@ -280,7 +284,12 @@
               }
             };
 
-            _Util['default'].supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE) ? $(this.tip).one(_Util['default'].TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION) : complete();
+            if (_Util['default'].supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+              $(this.tip).one(_Util['default'].TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
+              return;
+            }
+
+            complete();
           }
         }
       }, {
@@ -327,7 +336,7 @@
       }, {
         key: 'isWithContent',
         value: function isWithContent() {
-          return !!this.getTitle();
+          return Boolean(this.getTitle());
         }
       }, {
         key: 'getTipElement',
@@ -390,8 +399,8 @@
             if (trigger === 'click') {
               $(_this3.element).on(_this3.constructor.Event.CLICK, _this3.config.selector, $.proxy(_this3.toggle, _this3));
             } else if (trigger !== Trigger.MANUAL) {
-              var eventIn = trigger == Trigger.HOVER ? _this3.constructor.Event.MOUSEENTER : _this3.constructor.Event.FOCUSIN;
-              var eventOut = trigger == Trigger.HOVER ? _this3.constructor.Event.MOUSELEAVE : _this3.constructor.Event.FOCUSOUT;
+              var eventIn = trigger === Trigger.HOVER ? _this3.constructor.Event.MOUSEENTER : _this3.constructor.Event.FOCUSIN;
+              var eventOut = trigger === Trigger.HOVER ? _this3.constructor.Event.MOUSELEAVE : _this3.constructor.Event.FOCUSOUT;
 
               $(_this3.element).on(eventIn, _this3.config.selector, $.proxy(_this3._enter, _this3)).on(eventOut, _this3.config.selector, $.proxy(_this3._leave, _this3));
             }
@@ -433,7 +442,7 @@
           }
 
           if (event) {
-            context._activeTrigger[event.type == 'focusin' ? Trigger.FOCUS : Trigger.HOVER] = true;
+            context._activeTrigger[event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER] = true;
           }
 
           if ($(context.getTipElement()).hasClass(ClassName.IN) || context._hoverState === HoverState.IN) {
@@ -469,7 +478,7 @@
           }
 
           if (event) {
-            context._activeTrigger[event.type == 'focusout' ? Trigger.FOCUS : Trigger.HOVER] = false;
+            context._activeTrigger[event.type === 'focusout' ? Trigger.FOCUS : Trigger.HOVER] = false;
           }
 
           if (context._isWithActiveTrigger()) {
@@ -525,9 +534,8 @@
 
           if (this.config) {
             for (var key in this.config) {
-              var value = this.config[key];
-              if (this.constructor.Default[key] !== value) {
-                config[key] = value;
+              if (this.constructor.Default[key] !== this.config[key]) {
+                config[key] = this.config[key];
               }
             }
           }
