@@ -6,7 +6,7 @@
 
 .dropdown-toggle {
   // Generate the caret automatically
-  &:after {
+  &::after {
     display: inline-block;
     width: 0;
     height: 0;
@@ -26,7 +26,7 @@
 
 .dropup {
   .dropdown-toggle {
-    &:after {
+    &::after {
       border-bottom: $caret-width solid;
       border-top: 0;
     }

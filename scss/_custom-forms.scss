@@ -109,7 +109,7 @@
   .c-input {
     display: inline;
 
-    &:after {
+    &::after {
       display: block;
       margin-bottom: .25rem;
       content: "";
@@ -199,10 +199,10 @@
   border-radius: .25rem;
   @include box-shadow(inset 0 .2rem .4rem rgba(0,0,0,.05));
 }
-.file-custom:after {
+.file-custom::after {
   content: "Choose file...";
 }
-.file-custom:before {
+.file-custom::before {
   position: absolute;
   top: -.075rem;
   right: -.075rem;
