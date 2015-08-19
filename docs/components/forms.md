@@ -515,15 +515,19 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 ## Help text
 
-No official help text classes exist in Bootstrap 4 (previously we had `.help-block` in v3), but thanks to our utility classes, you can create much more flexible help text as you need it.
+No official help text classes exist in Bootstrap 4 (previously we had `.help-block` in v3), but thanks to our utility classes like `.text-muted`, you can create much more flexible help text as you need it.
+
+Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else).
 
 {% example html %}
-<!-- Inline -->
-<small class="text-muted">Some inline text with a small tag looks like this.</small>
+<small class="text-muted">
+  Some inline text with a small tag looks like this.
+</small>
 {% endexample %}
 
+Block help text—for below inputs or for longer lines of help text—can be easily achieved with a `<p>`.
+
 {% example html %}
-<!-- Block -->
 <p class="text-muted">
   A block of help text that breaks onto a new line and may extend beyond one line.
 </p>
