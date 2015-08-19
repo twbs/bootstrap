@@ -23,7 +23,7 @@ Vendor prefixes are provided in our compiled CSS with Autoprefixer via Grunt.
 
 ## Why flexbox?
 
-In a nutshell, flexbix provides simpler and more flexible layout options in CSS. More specifically, it provides:
+In a nutshell, flexbox provides simpler and more flexible layout options in CSS. More specifically, it provides:
 
 - Easy vertical alignment of content within a parent element.
 - Easy reordering of content across devices and screen resolutions with the help of media queries.

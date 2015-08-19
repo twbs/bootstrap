@@ -70,7 +70,7 @@ In need of a button, but not the hefty background colors they bring? Replace the
 
 ## Sizes
 
-Fancy larger or smaller buttons? Add `.btn-lg`, `.btn-sm`, or `.btn-xs` for additional sizes.
+Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
 
 {% example html %}
 <button type="button" class="btn btn-primary btn-lg">Large button</button>
@@ -80,11 +80,6 @@ Fancy larger or smaller buttons? Add `.btn-lg`, `.btn-sm`, or `.btn-xs` for addi
 {% example html %}
 <button type="button" class="btn btn-primary btn-sm">Small button</button>
 <button type="button" class="btn btn-secondary btn-sm">Small button</button>
-{% endexample %}
-
-{% example html %}
-<button type="button" class="btn btn-primary btn-xs">Extra small button</button>
-<button type="button" class="btn btn-secondary btn-xs">Extra small button</button>
 {% endexample %}
 
 Create block level buttons—those that span the full width of a parent—by adding `.btn-block`.
