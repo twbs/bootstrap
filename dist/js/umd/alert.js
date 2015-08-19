@@ -140,7 +140,7 @@
             return;
           }
 
-          $(element).one(_Util['default'].TRANSITION_END, this._destroyElement.bind(this, element)).emulateTransitionEnd(TRANSITION_DURATION);
+          $(element).one(_Util['default'].TRANSITION_END, $.proxy(this._destroyElement, this, element)).emulateTransitionEnd(TRANSITION_DURATION);
         }
       }, {
         key: '_destroyElement',
