@@ -1,9 +1,4 @@
 //
-// Utility classes
-// --------------------------------------------------
-
-
-//
 // Floats
 //
 
@@ -122,9 +117,13 @@
 
 // Inverse
 // Todo: redo this as a proper class
-.inverse {
+.bg-inverse {
   color: $gray-lighter;
   background-color: $gray-dark;
+}
+
+.bg-faded {
+  background-color: $gray-lightest;
 }
 
 @include bg-variant('.bg-primary', $brand-primary);

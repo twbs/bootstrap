@@ -1,7 +1,3 @@
-//
-// Media
-// --------------------------------------------------
-
 @if $enable-flex {
   .media {
     display: flex;
@@ -47,7 +43,7 @@
 
 .media-object {
   display: block;
-  
+
   // Fix collapse in webkit from max-width: 100% and display: table-cell.
   &.img-thumbnail {
     max-width: none;

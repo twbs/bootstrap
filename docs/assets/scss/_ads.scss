@@ -6,7 +6,7 @@
   width: auto !important;
   height: auto !important;
   padding: 1.25rem !important;
-  margin: 2rem -1.5rem -2rem !important;
+  margin: 2rem ($grid-gutter-width * -1) -2rem !important;
   overflow: hidden; // clearfix
   font-size: .8rem !important;
   font-family: inherit !important;
@@ -15,10 +15,6 @@
   text-align: left;
   background: darken($bd-purple, 10%) !important;
   border: 0 !important;
-}
-
-.bd-masthead .carbonad {
-  background: $bd-graphite !important;
 }
 
 .carbonad-img {

@@ -1,0 +1,24 @@
+//
+// Main navbar
+//
+
+.bd-navbar {
+  font-size: 87.5%; // 14px
+
+  .navbar-nav {
+    .nav-link {
+      color: $bd-graphite-light;
+
+      &.active,
+      &:hover,
+      &:focus {
+        color: $gray-dark;
+        background-color: transparent;
+      }
+
+      &.active {
+        font-weight: 500;
+      }
+    }
+  }
+}

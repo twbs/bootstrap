@@ -88,6 +88,12 @@
     width: auto;
   }
 
+  > .form-control {
+    + .form-control {
+      margin-top: .5rem;
+    }
+  }
+
   // Card examples should be horizontal
   > .card {
     max-width: 20rem;
@@ -107,12 +113,6 @@
   }
 }
 
-
-// Tweak content of examples for optimum awesome
-.bd-example > *:last-child,
-.bd-example > .table-responsive:last-child > .table {
-  margin-bottom: 0 !important;
-}
 .bd-example > .close {
   float: none;
 }
@@ -149,16 +149,6 @@
     margin-left: .5rem;
   }
 }
-// .bd-example > .img-circle,
-// .bd-example > .img-rounded,
-// .bd-example > .img-thumbnail {
-//   margin: .25rem;
-// }
-
-// Tables
-// .bd-example > .table-responsive > .table {
-//   background-color: #fff;
-// }
 
 // Buttons
 .bd-example > .btn-group {
@@ -187,44 +177,23 @@
 }
 
 // Navbars
-.bd-example .navbar:last-child {
-  margin-bottom: 0;
-}
-.bd-navbar-top-example,
-.bd-navbar-bottom-example {
-  z-index: 1;
-  padding: 0;
-  overflow: hidden; // cut the drop shadows off
-}
-.bd-navbar-top-example .navbar-header,
-.bd-navbar-bottom-example .navbar-header {
-  margin-left: 0;
-}
-.bd-navbar-top-example .navbar-fixed-top,
-.bd-navbar-bottom-example .navbar-fixed-bottom {
-  position: relative;
-  margin-right: 0;
-  margin-left: 0;
-}
-.bd-navbar-top-example {
-  padding-bottom: 45px;
-}
-.bd-navbar-top-example .navbar-fixed-top {
-  top: -1px;
-}
-.bd-navbar-bottom-example {
-  padding-top: 45px;
-}
-.bd-navbar-bottom-example .navbar-fixed-bottom {
-  bottom: -1px;
-}
-.bd-navbar-bottom-example .navbar {
-  margin-bottom: 0;
-}
-@media (min-width: 768px) {
-  .bd-navbar-top-example .navbar-fixed-top,
-  .bd-navbar-bottom-example .navbar-fixed-bottom {
-    position: absolute;
+.bd-example  {
+  .navbar-fixed-top {
+    position: static;
+    margin: -1rem -1rem 1rem;
+  }
+  .navbar-fixed-bottom {
+    position: static;
+    margin: 1rem -1rem -1rem;
+  }
+
+  @include media-breakpoint-up(sm) {
+    .navbar-fixed-top {
+      margin: -1.5rem -1.5rem 1rem;
+    }
+    .navbar-fixed-bottom {
+      margin: 1rem -1.5rem -1.5rem;
+    }
   }
 }
 
@@ -325,9 +294,11 @@
   .bg-info,
   .bg-warning,
   .bg-danger {
-    padding: .5rem;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    &:not(.navbar) {
+      padding: .5rem;
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+    }
   }
 }
 

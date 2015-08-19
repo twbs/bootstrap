@@ -1,8 +1,3 @@
-//
-// Navbars
-// --------------------------------------------------
-
-
 // Wrapper and base class
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
@@ -10,8 +5,7 @@
 
 .navbar {
   position: relative;
-  padding: $spacer;
-  margin-bottom: $navbar-margin-bottom;
+  padding: $navbar-padding-vertical $navbar-padding-horizontal;
   @include clearfix;
 
   @include media-breakpoint-up(sm) {
@@ -20,7 +14,6 @@
 }
 
 
-//
 // Navbar alignment options
 //
 // Display the navbar across the entirety of the page or fixed it to the top or
@@ -71,24 +64,38 @@
 }
 
 
+//
 // Brand/project name
+//
 
 .navbar-brand {
   float: left;
-  padding: .625rem .75rem;
-  margin-right: $spacer;
-  margin-bottom: 0; // For headings
+  margin-right: 1rem;
+  padding-top:    .25rem;
+  padding-bottom: .25rem;
   font-size: $font-size-lg;
-  line-height: 1;
 
-  > a {
-    @include hover-focus {
-      text-decoration: none;
-    }
+  @include hover-focus {
+    text-decoration: none;
   }
 
   > img {
     display: block;
+  }
+}
+
+
+.navbar-divider {
+  float: left;
+  width: 1px;
+  padding-top: .425rem;
+  padding-bottom: .425rem;
+  overflow: hidden;
+  margin-left:  $navbar-padding-horizontal;
+  margin-right: $navbar-padding-horizontal;
+
+  &:before {
+    content: '\00a0';
   }
 }
 
@@ -99,13 +106,12 @@
 // Bootstrap JavaScript plugin.
 
 .navbar-toggler {
-  padding: .55rem .75rem;
-  margin-right: $spacer;
-  margin-bottom: 0; // For headings
+  padding: .5rem .75rem;
   font-size: $font-size-lg;
   line-height: 1;
   background: none;
-  border: 0;
+  border: $border-width solid transparent;
+  @include border-radius($btn-border-radius);
 
   @include hover-focus {
     text-decoration: none;
@@ -127,37 +133,9 @@
 }
 
 
-// Dropdown menus
-
-// Menu position and menu carets
-.navbar-nav > li > .dropdown-menu {
-  margin-top: 0;
-  @include border-top-radius(0);
-}
-// Menu position and menu caret support for dropups via extra dropup class
-.navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
-  @include border-top-radius($navbar-border-radius);
-  @include border-bottom-radius(0);
-}
-
-
-// Small navbar
+// Navigation
 //
-// Condensed dimensions for an aesthetic closer to v3's navbar.
-
-.navbar-sm {
-  padding-top: 0;
-  padding-bottom: 0;
-
-  .navbar-brand {
-    padding-top: .95rem;
-    padding-bottom: .95rem;
-  }
-
-  .form-inline {
-    margin-top: .6rem;
-  }
-}
+// Custom navbar navigation built on the base `.nav` styles.
 
 .navbar-nav {
   .nav-item {
@@ -166,138 +144,83 @@
 
   .nav-link {
     display: block;
-    padding-top: .95rem;
-    padding-bottom: .95rem;
-    line-height: 1.25; // Match the `.navbar-brand`
+    padding-top:    .425rem;
+    padding-bottom: .425rem;
+
+    + .nav-link {
+      margin-left: 1rem;
+    }
   }
 
-  .open > .nav-link,
-  .active > .nav-link,
-  .nav-link.open,
-  .nav-link.active {
-    @include plain-hover-focus {
-      color: $navbar-default-link-active-color;
-      cursor: default;
-      background-color: $navbar-default-link-active-bg;
-    }
+  .nav-item + .nav-item {
+    margin-left: 1rem;
   }
 }
 
-
-// Alternate navbars
-// --------------------------------------------------
-
-// todo: audit these styles
-
-// Default navbar
-.navbar-default {
-  background-color: $navbar-default-bg;
-  border-color: $navbar-default-border;
-
+// Dark links against a light background
+.navbar-light {
   .navbar-brand {
-    color: $navbar-default-brand-color;
+    color: $navbar-light-active-color;
 
     @include hover-focus {
-      color: $navbar-default-brand-hover-color;
-      background-color: $navbar-default-brand-hover-bg;
-    }
-  }
-}
-
-// Inverse navbar
-
-.navbar-inverse {
-  background-color: $navbar-inverse-bg;
-  border-color: $navbar-inverse-border;
-
-  .navbar-toggler,
-  .navbar-brand > a,
-  .nav-pills > .nav-item > .nav-link {
-    color: $navbar-inverse-link-color;
-
-    @include hover-focus {
-      color: $navbar-inverse-link-hover-color;
-    }
-  }
-  .nav-pills > .nav-item > .nav-link {
-    @include hover-focus {
-      color: $navbar-inverse-link-active-color;
-      background-color: $navbar-inverse-link-active-bg;
-    }
-  }
-  .nav-pills > .active > .nav-link,
-  .nav-pills > .nav-link.active {
-    color: $navbar-inverse-link-active-color;
-    background-color: $navbar-inverse-link-active-bg;
-  }
-
-  .navbar-brand {
-    color: $navbar-inverse-brand-color;
-    @include hover-focus {
-      color: $navbar-inverse-brand-hover-color;
-      background-color: $navbar-inverse-brand-hover-bg;
+      color: $navbar-light-active-color;
     }
   }
 
   .navbar-nav {
-    .navbar-link {
-      color: $navbar-inverse-link-color;
+    .nav-link {
+      color: $navbar-light-color;
 
       @include hover-focus {
-        color: $navbar-inverse-link-hover-color;
-        background-color: $navbar-inverse-link-hover-bg;
+        color: $navbar-light-hover-color;
       }
+    }
 
-      &.active > a {
-        @include plain-hover-focus {
-          color: $navbar-inverse-link-active-color;
-          background-color: $navbar-inverse-link-active-bg;
-        }
-      }
-
-      &.disabled > a {
-        @include plain-hover-focus {
-          color: $navbar-inverse-link-disabled-color;
-          background-color: $navbar-inverse-link-disabled-bg;
-        }
+    .open > .nav-link,
+    .active > .nav-link,
+    .nav-link.open,
+    .nav-link.active {
+      @include plain-hover-focus {
+        color: $navbar-light-active-color;
       }
     }
   }
 
-  // .navbar-collapse,
-  // .navbar-form {
-  //   border-color: darken($navbar-inverse-bg, 7%);
-  // }
-  //
-  // // Dropdowns
-  // .navbar-nav {
-  //   > .open > a {
-  //     @include plain-hover-focus {
-  //       color: $navbar-inverse-link-active-color;
-  //       background-color: $navbar-inverse-link-active-bg;
-  //     }
-  //   }
-  // }
+  .navbar-divider {
+    background-color: rgba(0,0,0,.075);
+  }
+}
 
-  // .navbar-link {
-  //   color: $navbar-inverse-link-color;
-  //   @include hover {
-  //     color: $navbar-inverse-link-hover-color;
-  //   }
-  // }
-  //
-  // .btn-link {
-  //   color: $navbar-inverse-link-color;
-  //
-  //   @include hover-focus {
-  //     color: $navbar-inverse-link-hover-color;
-  //   }
-  //
-  //   &:disabled,
-  //   fieldset[disabled] & {
-  //     @include hover-focus {
-  //       color: $navbar-inverse-link-disabled-color;
-  //     }
-  //   }
-  // }
+// White links against a dark background
+.navbar-dark {
+  .navbar-brand {
+    color: $navbar-dark-active-color;
+
+    @include hover-focus {
+      color: $navbar-dark-active-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $navbar-dark-color;
+
+      @include hover-focus {
+        color: $navbar-dark-hover-color;
+      }
+    }
+
+    .open > .nav-link,
+    .active > .nav-link,
+    .nav-link.open,
+    .nav-link.active {
+      @include plain-hover-focus {
+        color: $navbar-dark-active-color;
+      }
+    }
+  }
+
+  .navbar-divider {
+    background-color: rgba(255,255,255,.075);
+  }
 }

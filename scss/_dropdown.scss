@@ -1,8 +1,3 @@
-//
-// Dropdown menus
-// --------------------------------------------------
-
-
 // The dropdown wrapper (div)
 .dropup,
 .dropdown {
@@ -48,59 +43,61 @@
   border: 1px solid $dropdown-border;
   @include border-radius($border-radius);
   @include box-shadow(0 6px 12px rgba(0,0,0,.175));
-
-  // Dividers (basically an hr) within the dropdown
-  .dropdown-divider {
-    @include nav-divider($dropdown-divider-bg);
-  }
-
-  // Links within the dropdown menu
-  > li > a {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: normal;
-    line-height: $line-height;
-    color: $dropdown-link-color;
-    white-space: nowrap; // prevent links from randomly breaking onto new lines
-  }
 }
 
-// Hover/Focus state
-.dropdown-menu > li > a {
+// Dividers (basically an hr) within the dropdown
+.dropdown-divider {
+  @include nav-divider($dropdown-divider-bg);
+}
+
+// Links, buttons, and more within the dropdown menu
+.dropdown-item {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: $line-height;
+  color: $dropdown-link-color;
+  white-space: nowrap; // prevent links from randomly breaking onto new lines
+
+  // For `<button>`s
+  text-align: inherit;
+  width: 100%;
+  background: none;
+  border: 0;
+
   @include hover-focus {
     color: $dropdown-link-hover-color;
     text-decoration: none;
     background-color: $dropdown-link-hover-bg;
   }
-}
 
-// Active state
-.dropdown-menu > .active > a {
-  @include plain-hover-focus {
-    color: $dropdown-link-active-color;
-    text-decoration: none;
-    background-color: $dropdown-link-active-bg;
-    outline: 0;
-  }
-}
-
-// Disabled state
-//
-// Gray out text and ensure the hover/focus state remains gray
-
-.dropdown-menu > .disabled > a {
-  @include plain-hover-focus {
-    color: $dropdown-link-disabled-color;
+  // Active state
+  &.active {
+    @include plain-hover-focus {
+      color: $dropdown-link-active-color;
+      text-decoration: none;
+      background-color: $dropdown-link-active-bg;
+      outline: 0;
+    }
   }
 
-  // Nuke hover/focus effects
-  @include hover-focus {
-    text-decoration: none;
-    cursor: $cursor-disabled;
-    background-color: transparent;
-    background-image: none; // Remove CSS gradient
-    @include reset-filter();
+  // Disabled state
+  //
+  // Gray out text and ensure the hover/focus state remains gray
+  &.disabled {
+    @include plain-hover-focus {
+      color: $dropdown-link-disabled-color;
+    }
+
+    // Nuke hover/focus effects
+    @include hover-focus {
+      text-decoration: none;
+      cursor: $cursor-disabled;
+      background-color: transparent;
+      background-image: none; // Remove CSS gradient
+      @include reset-filter();
+    }
   }
 }
 

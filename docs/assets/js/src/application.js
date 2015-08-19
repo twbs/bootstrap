@@ -28,6 +28,11 @@
     $('.tooltip-test').tooltip()
     $('.popover-test').popover()
 
+    // Disable empty links in docs examples
+    $('.bd-example [href=#]').click(function (e) {
+      e.preventDefault()
+    })
+
     // Config ZeroClipboard
     ZeroClipboard.config({
       moviePath: '/assets/flash/ZeroClipboard.swf',
@@ -76,3 +81,10 @@
   })
 
 }(jQuery)
+
+;(function () {
+  'use strict';
+
+  anchors.options.placement = 'left';
+  anchors.add('.bd-content > h1, .bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
+})();

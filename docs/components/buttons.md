@@ -2,6 +2,7 @@
 layout: docs
 title: Buttons
 group: components
+redirect_from: "/components/"
 ---
 
 Use Bootstrap's custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.

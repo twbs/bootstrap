@@ -28,7 +28,7 @@
 
 // Local docs variables
 $bd-purple:         #563d7c;
-$bd-purple-bright:  lighten(saturate($bd-purple, 15%), 25%);
+$bd-purple-bright:  lighten(saturate($bd-purple, 5%), 15%);
 $bd-purple-light:   #cdbfe3;
 $bd-graphite:       #2a2730;
 $bd-graphite-light: lighten($bd-graphite, 40%);
@@ -38,14 +38,16 @@ $bd-warning:        #f0ad4e;
 $bd-info:           #5bc0de;
 
 // Load docs components
-@import "layout";
-@import "sidebar";
 @import "booticon";
-@import "homepage";
+@import "nav";
+@import "masthead";
+@import "featurettes";
+@import "featured-sites";
 @import "ads";
-@import "footer";
-@import "social-buttons";
+@import "content";
 @import "page-header";
+@import "sidebar";
+@import "footer";
 @import "component-examples";
 @import "responsive-tests";
 @import "buttons";

@@ -2,6 +2,7 @@
 layout: docs
 title: Overview
 group: layout
+redirect_from: "/layout/"
 ---
 
 Bootstrap includes several components and options for laying out your project, including wrapping containers, a powerful grid system, a flexible media object, and responsive utility classes.

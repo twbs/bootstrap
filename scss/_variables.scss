@@ -135,8 +135,8 @@ $font-size-lg:               1.25rem !default;
 $font-size-sm:               .85rem !default;
 $font-size-xs:               .75rem !default;
 
-$font-size-h1:               2.75rem !default;
-$font-size-h2:               2.25rem !default;
+$font-size-h1:               2.5rem !default;
+$font-size-h2:               2rem !default;
 $font-size-h3:               1.75rem !default;
 $font-size-h4:               1.5rem !default;
 $font-size-h5:               1.25rem !default;
@@ -213,7 +213,7 @@ $table-border-color:            $gray-lighter !default;
 // For each of Bootstrap's buttons, define text, background and border color.
 
 $btn-padding-x:                  1rem;
-$btn-padding-y:                  .5rem;
+$btn-padding-y:                  .375rem;
 $btn-font-weight:                normal !default;
 
 $btn-primary-color:              #fff !default;
@@ -243,9 +243,9 @@ $btn-danger-border:              $btn-danger-bg !default;
 $btn-link-disabled-color:        $gray-light !default;
 
 $btn-padding-x-sm:               .75rem !default;
-$btn-padding-y-sm:               .275rem !default;
+$btn-padding-y-sm:               .25rem !default;
 
-$btn-padding-x-lg:               1.5rem !default;
+$btn-padding-x-lg:               1.25rem !default;
 $btn-padding-y-lg:               .75rem !default;
 
 // Allows for customizing button radius independently from global border radius
@@ -257,7 +257,7 @@ $btn-border-radius-sm:           $border-radius-sm;
 // Forms
 
 $input-padding-x:                .75rem !default;
-$input-padding-y:                .5rem !default;
+$input-padding-y:                .375rem !default;
 
 $input-bg:                       #fff !default;
 $input-bg-disabled:              $gray-lighter !default;
@@ -278,7 +278,7 @@ $input-color-placeholder:        #999 !default;
 $input-padding-x-sm:             .75rem !default;
 $input-padding-y-sm:             .275rem !default;
 
-$input-padding-x-lg:             1.5rem !default;
+$input-padding-x-lg:             1.25rem !default;
 $input-padding-y-lg:             .75rem !default;
 
 $input-height:                   (($font-size-base * $line-height) + ($input-padding-y * 2) + ($border-width * 2)) !default;
@@ -336,61 +336,25 @@ $zindex-modal:             1050 !default;
 
 
 // Navbar
-//
-//
 
-// Basics of a navbar
-$navbar-margin-bottom:             $spacer-y !default;
-$navbar-border-radius:             $border-radius !default;
-$navbar-padding-horizontal:        $spacer !default;
-$navbar-padding-vertical:          ($spacer / 2) !default;
+$navbar-border-radius:              $border-radius !default;
+$navbar-padding-horizontal:         $spacer !default;
+$navbar-padding-vertical:           ($spacer / 2) !default;
 
-$navbar-default-color:             #777 !default;
-$navbar-default-bg:                #f8f8f8 !default;
-$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
+$navbar-dark-color:                 rgba(255,255,255,.5);
+$navbar-dark-hover-color:           rgba(255,255,255,.75);
+$navbar-dark-active-color:          rgba(255,255,255,1);
+$navbar-dark-disabled-color:        rgba(255,255,255,.25);
 
-$navbar-default-link-color:                #777 !default;
-$navbar-default-link-hover-color:          #333 !default;
-$navbar-default-link-hover-bg:             transparent !default;
-$navbar-default-link-active-color:         #555 !default;
-$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
-$navbar-default-link-disabled-color:       #ccc !default;
-$navbar-default-link-disabled-bg:          transparent !default;
-
-$navbar-default-brand-color:               $navbar-default-link-color !default;
-$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%) !default;
-$navbar-default-brand-hover-bg:            transparent !default;
-
-$navbar-default-toggle-hover-bg:           #ddd !default;
-$navbar-default-toggle-icon-bar-bg:        #888 !default;
-$navbar-default-toggle-border-color:       #ddd !default;
-
-
-// Inverted navbar
-$navbar-inverse-color:                      lighten($gray-light, 12%) !default;
-$navbar-inverse-bg:                         #373a3c !default;
-$navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
-
-$navbar-inverse-link-color:                 lighten($gray-light, 15%) !default;
-$navbar-inverse-link-hover-color:           #fff !default;
-$navbar-inverse-link-hover-bg:              transparent !default;
-$navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color !default;
-$navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 10%) !default;
-$navbar-inverse-link-disabled-color:        #444 !default;
-$navbar-inverse-link-disabled-bg:           transparent !default;
-
-$navbar-inverse-brand-color:                $navbar-inverse-link-color !default;
-$navbar-inverse-brand-hover-color:          #fff !default;
-$navbar-inverse-brand-hover-bg:             transparent !default;
-
-$navbar-inverse-toggle-hover-bg:            #333 !default;
-$navbar-inverse-toggle-icon-bar-bg:         #fff !default;
-$navbar-inverse-toggle-border-color:        #333 !default;
+$navbar-light-color:                rgba(0,0,0,.3);
+$navbar-light-hover-color:          rgba(0,0,0,.6);
+$navbar-light-active-color:         rgba(0,0,0,.8);
+$navbar-light-disabled-color:       rgba(0,0,0,.15);
 
 
 // Navs
 
-$nav-link-padding:                          .75em 1em !default;
+$nav-link-padding:                          .5em 1em !default;
 $nav-link-hover-bg:                         $gray-lighter !default;
 
 $nav-disabled-link-color:                   $gray-light !default;

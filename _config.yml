@@ -18,6 +18,9 @@ url:              http://getbootstrap.com
 encoding:         UTF-8
 exclude:          [assets/scss/]
 
+gems:
+  - jekyll-redirect-from
+  
 # Custom vars
 current_version:  4.0.0-alpha
 repo:             https://github.com/twbs/bootstrap
