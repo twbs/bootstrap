@@ -35,15 +35,15 @@
     display: none;
   }
 
-  > li > a {
+  .dropdown-item {
     padding-left: .75rem;
     padding-right: .75rem;
+
+    &:first-child { margin-top: .25rem; }
+    &:last-child { margin-bottom: .25rem; }
   }
 
-  > li:first-child { margin-top: .25rem; }
-  > li:last-child { margin-bottom: .25rem; }
-
-   > .no-results {
+  .no-results {
     padding: .75rem 1rem;
     color: #7a7a7a;
     text-align: center;
