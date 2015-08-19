@@ -20,7 +20,7 @@ exclude:          [assets/scss/]
 
 gems:
   - jekyll-redirect-from
-  
+
 # Custom vars
 current_version:  4.0.0-alpha
 repo:             https://github.com/twbs/bootstrap
@@ -34,6 +34,7 @@ download:
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
+themes:           http://themes.getbootstrap.com
 
 cdn:
   css:            https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
