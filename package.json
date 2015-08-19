@@ -35,6 +35,7 @@
     "grunt-autoprefixer": "~2.2.0",
     "grunt-babel": "^5.0.0",
     "grunt-banner": "~0.3.1",
+    "grunt-build-control": "~0.2.0",
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-compress": "~0.13.0",
     "grunt-contrib-concat": "~0.5.1",
