@@ -43,13 +43,14 @@ const Tab = (($) => {
   const Selector = {
     A                     : 'a',
     LI                    : 'li',
-    LI_DROPDOWN           : 'li.dropdown',
+    DROPDOWN              : '.dropdown',
     UL                    : 'ul:not(.dropdown-menu)',
-    FADE_CHILD            : '> .fade',
+    FADE_CHILD            : '> .nav-item .fade, > .fade',
     ACTIVE                : '.active',
-    ACTIVE_CHILD          : '> .active',
+    ACTIVE_CHILD          : '> .nav-item > .active, > .active',
     DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"]',
-    DROPDOWN_ACTIVE_CHILD : '> .dropdown-menu > .active'
+    DROPDOWN_TOGGLE       : '.dropdown-toggle',
+    DROPDOWN_ACTIVE_CHILD : '> .dropdown-menu .active'
   }
 
 
@@ -78,7 +79,7 @@ const Tab = (($) => {
     show() {
       if (this._element.parentNode &&
          (this._element.parentNode.nodeType === Node.ELEMENT_NODE) &&
-         ($(this._element).parent().hasClass(ClassName.ACTIVE))) {
+         ($(this._element).hasClass(ClassName.ACTIVE))) {
         return
       }
 
@@ -90,10 +91,6 @@ const Tab = (($) => {
       if (ulElement) {
         previous = $.makeArray($(ulElement).find(Selector.ACTIVE))
         previous = previous[previous.length - 1]
-
-        if (previous) {
-          previous = $(previous).find(Selector.A)[0]
-        }
       }
 
       let hideEvent = $.Event(Event.HIDE, {
@@ -120,7 +117,7 @@ const Tab = (($) => {
       }
 
       this._activate(
-        $(this._element).closest(Selector.LI)[0],
+        this._element,
         ulElement
       )
 
@@ -189,22 +186,16 @@ const Tab = (($) => {
         let dropdownChild = $(active).find(
           Selector.DROPDOWN_ACTIVE_CHILD
         )[0]
+
         if (dropdownChild) {
           $(dropdownChild).removeClass(ClassName.ACTIVE)
         }
 
-        let activeToggle = $(active).find(Selector.DATA_TOGGLE)[0]
-        if (activeToggle) {
-          activeToggle.setAttribute('aria-expanded', false)
-        }
+        active.setAttribute('aria-expanded', false)
       }
 
       $(element).addClass(ClassName.ACTIVE)
-
-      let elementToggle = $(element).find(Selector.DATA_TOGGLE)[0]
-      if (elementToggle) {
-        elementToggle.setAttribute('aria-expanded', true)
-      }
+      element.setAttribute('aria-expanded', true)
 
       if (isTransitioning) {
         Util.reflow(element)
@@ -216,15 +207,12 @@ const Tab = (($) => {
       if (element.parentNode &&
          ($(element.parentNode).hasClass(ClassName.DROPDOWN_MENU))) {
 
-        let dropdownElement = $(element).closest(Selector.LI_DROPDOWN)[0]
+        let dropdownElement = $(element).closest(Selector.DROPDOWN)[0]
         if (dropdownElement) {
-          $(dropdownElement).addClass(ClassName.ACTIVE)
+          $(dropdownElement).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
         }
 
-        elementToggle = $(element).find(Selector.DATA_TOGGLE)[0]
-        if (elementToggle) {
-          elementToggle.setAttribute('aria-expanded', true)
-        }
+        element.setAttribute('aria-expanded', true)
       }
 
       if (callback) {

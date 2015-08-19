@@ -2203,16 +2203,23 @@ var ScrollSpy = (function ($) {
   };
 
   var ClassName = {
+    DROPDOWN_ITEM: 'dropdown-item',
     DROPDOWN_MENU: 'dropdown-menu',
+    NAV_LINK: 'nav-link',
+    NAV: 'nav',
     ACTIVE: 'active'
   };
 
   var Selector = {
     DATA_SPY: '[data-spy="scroll"]',
     ACTIVE: '.active',
+    LIST_ITEM: '.list-item',
     LI: 'li',
     LI_DROPDOWN: 'li.dropdown',
-    NAV_ANCHORS: '.nav li > a'
+    NAV_LINKS: '.nav-link',
+    DROPDOWN: '.dropdown',
+    DROPDOWN_ITEMS: '.dropdown-item',
+    DROPDOWN_TOGGLE: '.dropdown-toggle'
   };
 
   var OffsetMethod = {
@@ -2233,7 +2240,7 @@ var ScrollSpy = (function ($) {
       this._element = element;
       this._scrollElement = element.tagName === 'BODY' ? window : element;
       this._config = this._getConfig(config);
-      this._selector = this._config.target + ' ' + Selector.NAV_ANCHORS;
+      this._selector = this._config.target + ' ' + Selector.NAV_LINKS + ',' + (this._config.target + ' ' + Selector.DROPDOWN_ITEMS);
       this._offsets = [];
       this._targets = [];
       this._activeTarget = null;
@@ -2381,20 +2388,20 @@ var ScrollSpy = (function ($) {
 
         this._clear();
 
-        var selector = this._selector + '[data-target="' + target + '"],' + (this._selector + '[href="' + target + '"]');
+        var queries = this._selector.split(',');
+        queries = queries.map(function (selector) {
+          return selector + '[data-target="' + target + '"],' + (selector + '[href="' + target + '"]');
+        });
 
-        // todo (fat): getting all the raw li's up the tree is not great.
-        var parentListItems = $(selector).parents(Selector.LI);
+        var $link = $(queries.join(','));
 
-        for (var i = parentListItems.length; i--;) {
-          $(parentListItems[i]).addClass(ClassName.ACTIVE);
-
-          var itemParent = parentListItems[i].parentNode;
-
-          if (itemParent && $(itemParent).hasClass(ClassName.DROPDOWN_MENU)) {
-            var closestDropdown = $(itemParent).closest(Selector.LI_DROPDOWN)[0];
-            $(closestDropdown).addClass(ClassName.ACTIVE);
-          }
+        if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
+          $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
+          $link.addClass(ClassName.ACTIVE);
+        } else {
+          // todo (fat) this is kinda sus…
+          // recursively add actives to tested nav-links
+          $link.parents(Selector.LI).find(Selector.NAV_LINKS).addClass(ClassName.ACTIVE);
         }
 
         $(this._scrollElement).trigger(Event.ACTIVATE, {
@@ -2404,11 +2411,7 @@ var ScrollSpy = (function ($) {
     }, {
       key: '_clear',
       value: function _clear() {
-        var activeParents = $(this._selector).parentsUntil(this._config.target, Selector.ACTIVE);
-
-        for (var i = activeParents.length; i--;) {
-          $(activeParents[i]).removeClass(ClassName.ACTIVE);
-        }
+        $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
       }
 
       // static
@@ -2511,13 +2514,14 @@ var Tab = (function ($) {
   var Selector = {
     A: 'a',
     LI: 'li',
-    LI_DROPDOWN: 'li.dropdown',
+    DROPDOWN: '.dropdown',
     UL: 'ul:not(.dropdown-menu)',
-    FADE_CHILD: '> .fade',
+    FADE_CHILD: '> .nav-item .fade, > .fade',
     ACTIVE: '.active',
-    ACTIVE_CHILD: '> .active',
+    ACTIVE_CHILD: '> .nav-item > .active, > .active',
     DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"]',
-    DROPDOWN_ACTIVE_CHILD: '> .dropdown-menu > .active'
+    DROPDOWN_TOGGLE: '.dropdown-toggle',
+    DROPDOWN_ACTIVE_CHILD: '> .dropdown-menu .active'
   };
 
   /**
@@ -2549,7 +2553,7 @@ var Tab = (function ($) {
       value: function show() {
         var _this15 = this;
 
-        if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && $(this._element).parent().hasClass(ClassName.ACTIVE)) {
+        if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && $(this._element).hasClass(ClassName.ACTIVE)) {
           return;
         }
 
@@ -2561,10 +2565,6 @@ var Tab = (function ($) {
         if (ulElement) {
           previous = $.makeArray($(ulElement).find(Selector.ACTIVE));
           previous = previous[previous.length - 1];
-
-          if (previous) {
-            previous = $(previous).find(Selector.A)[0];
-          }
         }
 
         var hideEvent = $.Event(Event.HIDE, {
@@ -2589,7 +2589,7 @@ var Tab = (function ($) {
           target = $(selector)[0];
         }
 
-        this._activate($(this._element).closest(Selector.LI)[0], ulElement);
+        this._activate(this._element, ulElement);
 
         var complete = function complete() {
           var hiddenEvent = $.Event(Event.HIDDEN, {
@@ -2644,22 +2644,16 @@ var Tab = (function ($) {
           $(active).removeClass(ClassName.ACTIVE);
 
           var dropdownChild = $(active).find(Selector.DROPDOWN_ACTIVE_CHILD)[0];
+
           if (dropdownChild) {
             $(dropdownChild).removeClass(ClassName.ACTIVE);
           }
 
-          var activeToggle = $(active).find(Selector.DATA_TOGGLE)[0];
-          if (activeToggle) {
-            activeToggle.setAttribute('aria-expanded', false);
-          }
+          active.setAttribute('aria-expanded', false);
         }
 
         $(element).addClass(ClassName.ACTIVE);
-
-        var elementToggle = $(element).find(Selector.DATA_TOGGLE)[0];
-        if (elementToggle) {
-          elementToggle.setAttribute('aria-expanded', true);
-        }
+        element.setAttribute('aria-expanded', true);
 
         if (isTransitioning) {
           Util.reflow(element);
@@ -2670,15 +2664,12 @@ var Tab = (function ($) {
 
         if (element.parentNode && $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
 
-          var dropdownElement = $(element).closest(Selector.LI_DROPDOWN)[0];
+          var dropdownElement = $(element).closest(Selector.DROPDOWN)[0];
           if (dropdownElement) {
-            $(dropdownElement).addClass(ClassName.ACTIVE);
+            $(dropdownElement).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
           }
 
-          elementToggle = $(element).find(Selector.DATA_TOGGLE)[0];
-          if (elementToggle) {
-            elementToggle.setAttribute('aria-expanded', true);
-          }
+          element.setAttribute('aria-expanded', true);
         }
 
         if (callback) {
