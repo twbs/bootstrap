@@ -111,9 +111,9 @@ The `<pre>` element is reset to remove its `margin-top` and use `rem` units for 
 <div class="bd-example">
 {% markdown %}
 <pre>
-.element {
-  margin-bottom: 1rem;
-}
+        Wow
+  such
+      preformatted text
 </pre>
 {% endmarkdown %}
 </div>
