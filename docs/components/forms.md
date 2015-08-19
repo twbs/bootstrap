@@ -515,10 +515,18 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 ## Help text
 
-Block level help text for form controls.
+No official help text classes exist in Bootstrap 4 (previously we had `.help-block` in v3), but thanks to our utility classes, you can create much more flexible help text as you need it.
 
 {% example html %}
-<p class="text-help">A block of help text that breaks onto a new line and may extend beyond one line.</p>
+<!-- Inline -->
+<small class="text-muted">Some inline text with a small tag looks like this.</small>
+{% endexample %}
+
+{% example html %}
+<!-- Block -->
+<p class="text-muted">
+  A block of help text that breaks onto a new line and may extend beyond one line.
+</p>
 {% endexample %}
 
 ## Validation
