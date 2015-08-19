@@ -3545,14 +3545,10 @@ input[type="button"].btn-block {
   text-decoration: none;
 }
 
-.disabled > .nav-link,
 .nav-link.disabled {
   color: #818a91;
 }
 
-.disabled > .nav-link,
-.disabled > .nav-link:focus,
-.disabled > .nav-link:hover,
 .nav-link.disabled,
 .nav-link.disabled:focus,
 .nav-link.disabled:hover {
@@ -3567,6 +3563,16 @@ input[type="button"].btn-block {
 
 .nav-tabs {
   border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs:before,
+.nav-tabs:after {
+  display: table;
+  content: " ";
+}
+
+.nav-tabs:after {
+  clear: both;
 }
 
 .nav-tabs .nav-item {
@@ -3590,32 +3596,23 @@ input[type="button"].btn-block {
   border-color: #eceeef #eceeef #ddd;
 }
 
-.nav-tabs .open > .nav-link,
-.nav-tabs .open > .nav-link:focus,
-.nav-tabs .open > .nav-link:hover,
-.nav-tabs .active > .nav-link,
-.nav-tabs .active > .nav-link:focus,
-.nav-tabs .active > .nav-link:hover,
-.nav-tabs .nav-link.open,
-.nav-tabs .nav-link.open:focus,
-.nav-tabs .nav-link.open:hover,
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-link.active:focus,
-.nav-tabs .nav-link.active:hover {
-  color: #55595c;
-  background-color: #fff;
-  border-color: #ddd #ddd transparent;
-}
-
-.nav-tabs .disabled > .nav-link,
-.nav-tabs .disabled > .nav-link:focus,
-.nav-tabs .disabled > .nav-link:hover,
 .nav-tabs .nav-link.disabled,
 .nav-tabs .nav-link.disabled:focus,
 .nav-tabs .nav-link.disabled:hover {
   color: #818a91;
   background-color: transparent;
   border-color: transparent;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link.active:focus,
+.nav-tabs .nav-link.active:hover,
+.nav-tabs .nav-item.open .nav-link,
+.nav-tabs .nav-item.open .nav-link:focus,
+.nav-tabs .nav-item.open .nav-link:hover {
+  color: #55595c;
+  background-color: #fff;
+  border-color: #ddd #ddd transparent;
 }
 
 .nav-pills .nav-item {
@@ -3632,18 +3629,12 @@ input[type="button"].btn-block {
   border-radius: .25rem;
 }
 
-.nav-pills .open > .nav-link,
-.nav-pills .open > .nav-link:focus,
-.nav-pills .open > .nav-link:hover,
-.nav-pills .active > .nav-link,
-.nav-pills .active > .nav-link:focus,
-.nav-pills .active > .nav-link:hover,
-.nav-pills .nav-link.open,
-.nav-pills .nav-link.open:focus,
-.nav-pills .nav-link.open:hover,
 .nav-pills .nav-link.active,
 .nav-pills .nav-link.active:focus,
-.nav-pills .nav-link.active:hover {
+.nav-pills .nav-link.active:hover,
+.nav-pills .nav-item.open .nav-link,
+.nav-pills .nav-item.open .nav-link:focus,
+.nav-pills .nav-item.open .nav-link:hover {
   color: #fff;
   cursor: default;
   background-color: #0275d8;
