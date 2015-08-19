@@ -1,4 +1,5 @@
 <header class="navbar navbar-light navbar-static-top bd-navbar" role="banner">
+  {% comment %}
   <nav class="nav navbar-nav pull-right">
     <div class="nav-item dropdown">
       <a class="nav-item nav-link dropdown-toggle" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -21,6 +22,7 @@
       </div>
     </div>
   </nav>
+  {% endcomment %}
   <nav class="nav navbar-nav">
     <a class="nav-item nav-link {% if page.layout == "home" %}active{% endif %}" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Bootstrap</a>
     <a class="nav-item nav-link {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
