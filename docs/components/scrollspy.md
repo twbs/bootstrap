@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Srollspy
+title: Scrollspy
 group: components
 ---
 
