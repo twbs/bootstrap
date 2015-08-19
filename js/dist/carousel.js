@@ -177,7 +177,7 @@ var Carousel = (function ($) {
           return;
         }
 
-        if (activeIndex == index) {
+        if (activeIndex === index) {
           this.pause();
           this.cycle();
           return;
@@ -219,7 +219,7 @@ var Carousel = (function ($) {
           $(this._element).on(Event.KEYDOWN, $.proxy(this._keydown, this));
         }
 
-        if (this._config.pause == 'hover' && !('ontouchstart' in document.documentElement)) {
+        if (this._config.pause === 'hover' && !('ontouchstart' in document.documentElement)) {
           $(this._element).on(Event.MOUSEENTER, $.proxy(this.pause, this)).on(Event.MOUSELEAVE, $.proxy(this.cycle, this));
         }
       }
@@ -228,7 +228,9 @@ var Carousel = (function ($) {
       value: function _keydown(event) {
         event.preventDefault();
 
-        if (/input|textarea/i.test(event.target.tagName)) return;
+        if (/input|textarea/i.test(event.target.tagName)) {
+          return;
+        }
 
         switch (event.which) {
           case 37:
@@ -252,13 +254,13 @@ var Carousel = (function ($) {
         var isPrevDirection = direction === Direction.PREVIOUS;
         var activeIndex = this._getItemIndex(activeElement);
         var lastItemIndex = this._items.length - 1;
-        var isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex == lastItemIndex;
+        var isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex === lastItemIndex;
 
         if (isGoingToWrap && !this._config.wrap) {
           return activeElement;
         }
 
-        var delta = direction == Direction.PREVIOUS ? -1 : 1;
+        var delta = direction === Direction.PREVIOUS ? -1 : 1;
         var itemIndex = (activeIndex + delta) % this._items.length;
 
         return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
@@ -296,9 +298,9 @@ var Carousel = (function ($) {
         var activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
         var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
 
-        var isCycling = !!this._interval;
+        var isCycling = Boolean(this._interval);
 
-        var directionalClassName = direction == Direction.NEXT ? ClassName.LEFT : ClassName.RIGHT;
+        var directionalClassName = direction === Direction.NEXT ? ClassName.LEFT : ClassName.RIGHT;
 
         if (nextElement && $(nextElement).hasClass(ClassName.ACTIVE)) {
           this._isSliding = false;
@@ -383,7 +385,7 @@ var Carousel = (function ($) {
             $(this).data(DATA_KEY, data);
           }
 
-          if (typeof config == 'number') {
+          if (typeof config === 'number') {
             data.to(config);
           } else if (action) {
             data[action]();
@@ -409,8 +411,8 @@ var Carousel = (function ($) {
         }
 
         var config = $.extend({}, $(target).data(), $(this).data());
-
         var slideIndex = this.getAttribute('data-slide-to');
+
         if (slideIndex) {
           config.interval = false;
         }

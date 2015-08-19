@@ -43,16 +43,18 @@ const ScrollSpy = (($) => {
   }
 
   const ClassName = {
-    DROPDOWN_MENU : 'dropdown-menu',
-    ACTIVE        : 'active'
+    DROPDOWN_TOGGLE : 'dropdown-toggle',
+    DROPDOWN_ITEM   : 'dropdown-item',
+    DROPDOWN_MENU   : 'dropdown-menu',
+    ACTIVE          : 'active'
   }
 
   const Selector = {
-    DATA_SPY    : '[data-spy="scroll"]',
-    ACTIVE      : '.active',
-    LI          : 'li',
-    LI_DROPDOWN : 'li.dropdown',
-    NAV_ANCHORS : '.nav li > a'
+    DATA_SPY       : '[data-spy="scroll"]',
+    ACTIVE         : '.active',
+    LI_DROPDOWN    : 'li.dropdown',
+    NAV_LINKS      : '.nav-link',
+    DROPDOWN_ITEMS : '.dropdown-item'
   }
 
   const OffsetMethod = {
@@ -73,7 +75,8 @@ const ScrollSpy = (($) => {
       this._element       = element
       this._scrollElement = element.tagName === 'BODY' ? window : element
       this._config        = this._getConfig(config)
-      this._selector      = `${this._config.target} ${Selector.NAV_ANCHORS}`
+      this._selector      = `${this._config.target} ${Selector.NAV_LINKS},`
+                          + `${this._config.target} ${Selector.DROPDOWN_ITEMS}`
       this._offsets       = []
       this._targets       = []
       this._activeTarget  = null
@@ -229,24 +232,18 @@ const ScrollSpy = (($) => {
 
       this._clear()
 
-      let selector =
-        `${this._selector}[data-target="${target}"],` +
-        `${this._selector}[href="${target}"]`
+      let queries = this._selector.split(',')
+      queries     = queries.map((selector) => {
+        return `${selector}[data-target="${target}"],` +
+               `${selector}[href="${target}"]`
+      })
+      let $link = $(queries.join(','))
 
-      // todo (fat): getting all the raw li's up the tree is not great.
-      let parentListItems = $(selector).parents(Selector.LI)
-
-      for (let i = parentListItems.length; i--;) {
-        $(parentListItems[i]).addClass(ClassName.ACTIVE)
-
-        let itemParent = parentListItems[i].parentNode
-
-        if (itemParent && $(itemParent).hasClass(ClassName.DROPDOWN_MENU)) {
-          let closestDropdown = $(itemParent)
-            .closest(Selector.LI_DROPDOWN)[0]
-          $(closestDropdown).addClass(ClassName.ACTIVE)
-        }
+      if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
+        $link.parent().find(ClassName.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
       }
+
+      $link.addClass(ClassName.ACTIVE)
 
       $(this._scrollElement).trigger(Event.ACTIVATE, {
         relatedTarget: target
@@ -254,14 +251,8 @@ const ScrollSpy = (($) => {
     }
 
     _clear() {
-      let activeParents = $(this._selector).parentsUntil(
-        this._config.target,
-        Selector.ACTIVE
-      )
-
-      for (let i = activeParents.length; i--;) {
-        $(activeParents[i]).removeClass(ClassName.ACTIVE)
-      }
+      debugger
+      $(this._selector).filter(ClassName.ACTIVE).removeClass(Selector.ACTIVE)
     }
 
 

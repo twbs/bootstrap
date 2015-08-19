@@ -123,7 +123,7 @@ var Popover = (function ($) {
     }, {
       key: '_getContent',
       value: function _getContent() {
-        return this.element.getAttribute('data-content') || (typeof this.config.content == 'function' ? this.config.content.call(this.element) : this.config.content);
+        return this.element.getAttribute('data-content') || (typeof this.config.content === 'function' ? this.config.content.call(this.element) : this.config.content);
       }
 
       // static

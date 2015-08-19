@@ -175,7 +175,8 @@ var Collapse = (function ($) {
           return;
         }
 
-        var scrollSize = 'scroll' + (dimension[0].toUpperCase() + dimension.slice(1));
+        var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
+        var scrollSize = 'scroll' + capitalizedDimension;
 
         $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
 
@@ -221,7 +222,8 @@ var Collapse = (function ($) {
         this._element.style[dimension] = 0;
 
         if (!Util.supportsTransitionEnd()) {
-          return complete();
+          complete();
+          return;
         }
 
         $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
@@ -249,7 +251,7 @@ var Collapse = (function ($) {
       key: '_getConfig',
       value: function _getConfig(config) {
         config = $.extend({}, Default, config);
-        config.toggle = !!config.toggle; // coerce string values
+        config.toggle = Boolean(config.toggle); // coerce string values
         Util.typeCheckConfig(NAME, config, DefaultType);
         return config;
       }
@@ -335,7 +337,6 @@ var Collapse = (function ($) {
     event.preventDefault();
 
     var target = Collapse._getTargetFromElement(this);
-
     var data = $(target).data(DATA_KEY);
     var config = data ? 'toggle' : $(this).data();
 

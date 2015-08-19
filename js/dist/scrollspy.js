@@ -45,6 +45,8 @@ var ScrollSpy = (function ($) {
   };
 
   var ClassName = {
+    DROPDOWN_TOGGLE: 'dropdown-toggle',
+    DROPDOWN_ITEM: 'dropdown-item',
     DROPDOWN_MENU: 'dropdown-menu',
     ACTIVE: 'active'
   };
@@ -52,9 +54,9 @@ var ScrollSpy = (function ($) {
   var Selector = {
     DATA_SPY: '[data-spy="scroll"]',
     ACTIVE: '.active',
-    LI: 'li',
     LI_DROPDOWN: 'li.dropdown',
-    NAV_ANCHORS: '.nav li > a'
+    NAV_LINKS: '.nav-link',
+    DROPDOWN_ITEMS: '.dropdown-item'
   };
 
   var OffsetMethod = {
@@ -75,7 +77,7 @@ var ScrollSpy = (function ($) {
       this._element = element;
       this._scrollElement = element.tagName === 'BODY' ? window : element;
       this._config = this._getConfig(config);
-      this._selector = this._config.target + ' ' + Selector.NAV_ANCHORS;
+      this._selector = this._config.target + ' ' + Selector.NAV_LINKS + ',' + (this._config.target + ' ' + Selector.DROPDOWN_ITEMS);
       this._offsets = [];
       this._targets = [];
       this._activeTarget = null;
@@ -223,21 +225,17 @@ var ScrollSpy = (function ($) {
 
         this._clear();
 
-        var selector = this._selector + '[data-target="' + target + '"],' + (this._selector + '[href="' + target + '"]');
+        var queries = this._selector.split(',');
+        queries = queries.map(function (selector) {
+          return selector + '[data-target="' + target + '"],' + (selector + '[href="' + target + '"]');
+        });
+        var $link = $(queries.join(','));
 
-        // todo (fat): getting all the raw li's up the tree is not great.
-        var parentListItems = $(selector).parents(Selector.LI);
-
-        for (var i = parentListItems.length; i--;) {
-          $(parentListItems[i]).addClass(ClassName.ACTIVE);
-
-          var itemParent = parentListItems[i].parentNode;
-
-          if (itemParent && $(itemParent).hasClass(ClassName.DROPDOWN_MENU)) {
-            var closestDropdown = $(itemParent).closest(Selector.LI_DROPDOWN)[0];
-            $(closestDropdown).addClass(ClassName.ACTIVE);
-          }
+        if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
+          $link.parent().find(ClassName.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
         }
+
+        $link.addClass(ClassName.ACTIVE);
 
         $(this._scrollElement).trigger(Event.ACTIVATE, {
           relatedTarget: target
@@ -246,11 +244,8 @@ var ScrollSpy = (function ($) {
     }, {
       key: '_clear',
       value: function _clear() {
-        var activeParents = $(this._selector).parentsUntil(this._config.target, Selector.ACTIVE);
-
-        for (var i = activeParents.length; i--;) {
-          $(activeParents[i]).removeClass(ClassName.ACTIVE);
-        }
+        debugger;
+        $(this._selector).filter(ClassName.ACTIVE).removeClass(Selector.ACTIVE);
       }
 
       // static
