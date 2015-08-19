@@ -28,9 +28,8 @@ sass_repo:        https://github.com/twbs/bootstrap-sass
 slack:            https://bootstrap-slack.herokuapp.com
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v3.3.5.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v3.3.5/bootstrap-3.3.5-dist.zip
-  sass:           https://github.com/twbs/bootstrap-sass/archive/v3.3.5.tar.gz
+  source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.zip
+  dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha/bootstrap-4.0.0-alpha-dist.zip
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
