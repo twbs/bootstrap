@@ -100,6 +100,13 @@ Traditional heading elements are designed to work best in the meat of your page 
   </table>
 </div>
 
+{% highlight html %}
+<h1 class="display-4">Display 4</h1>
+<h1 class="display-3">Display 3</h1>
+<h1 class="display-2">Display 2</h1>
+<h1 class="display-1">Display 1</h1>
+{% endhighlight %}
+
 ## Lead
 
 Make a paragraph stand out by adding `.lead`.
