@@ -123,7 +123,7 @@ var Alert = (function ($) {
           return;
         }
 
-        $(element).one(Util.TRANSITION_END, this._destroyElement.bind(this, element)).emulateTransitionEnd(TRANSITION_DURATION);
+        $(element).one(Util.TRANSITION_END, $.proxy(this._destroyElement, this, element)).emulateTransitionEnd(TRANSITION_DURATION);
       }
     }, {
       key: '_destroyElement',
