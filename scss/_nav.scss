@@ -39,44 +39,6 @@
 
 
 //
-// Base styles
-//
-
-// .nav {
-//   padding-left: 0;
-//   margin-bottom: 0;
-//   list-style: none;
-//   @include clearfix();
-// }
-//
-// .nav-item {
-//   position: relative;
-//   display: inline-block;
-// }
-//
-// .nav-link {
-//   display: inline-block;
-//
-//   @include hover-focus {
-//     text-decoration: none;
-//     background-color: $nav-link-hover-bg;
-//   }
-//
-//   // Disabled state sets text to gray and nukes hover/tab effects
-//   .disabled > &,
-//   &.disabled {
-//     color: $nav-disabled-link-color;
-//
-//     @include plain-hover-focus {
-//       color: $nav-disabled-link-hover-color;
-//       cursor: $cursor-disabled;
-//       background-color: transparent;
-//     }
-//   }
-// }
-
-
-//
 // Tabs
 //
 
