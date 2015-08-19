@@ -293,7 +293,7 @@ Cards include their own variant classes for quickly changing the `background-col
 
 ## Groups
 
-Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode](/layout/flexbox) can switch that to use `display: flex;` and provide the same effect.
+Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode](/getting-started/flexbox) can switch that to use `display: flex;` and provide the same effect.
 
 {% example html %}
 <div class="card-group">
