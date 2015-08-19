@@ -6,6 +6,10 @@ group: migration
 
 Bootstrap 4 is a major rewrite of almost the entire project. The most notable changes are summarized immediately below, followed by more specific class and behavioral changes to relevant components.
 
+{% callout info %}
+**Heads up!** This will be in flux as work on the v4 alphas progresses. Until then consider it incomplete, and we'd love pull requests to help keep it up to date.
+{% endcallout %}
+
 ## Summary
 
 Here are the big ticket items you'll want to be aware of when moving from v3 to v4.
