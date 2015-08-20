@@ -427,20 +427,20 @@ $jumbotron-bg:                   $gray-lighter !default;
 //
 // Define colors for form feedback states and, by default, alerts.
 
-$state-success-text:             #3c763d !default;
-$state-success-bg:               #dff0d8 !default;
+$state-success-text:             darken($brand-success, 15%) !default;
+$state-success-bg:               lighten($brand-success, 36%) !default;
 $state-success-border:           darken($state-success-bg, 5%) !default;
 
-$state-info-text:                #31708f !default;
-$state-info-bg:                  #d9edf7 !default;
+$state-info-text:                saturate(darken($brand-info, 29), 9) !default;
+$state-info-bg:                  desaturate(lighten($brand-info, 25), 10) !default;
 $state-info-border:              darken($state-info-bg, 7%) !default;
 
-$state-warning-text:             #8a6d3b !default;
-$state-warning-bg:               #fcf8e3 !default;
+$state-warning-text:             desaturate(darken($brand-warning, 24), 45) !default;
+$state-warning-bg:               adjust_hue(lighten($brand-warning, 31), 10) !default;
 $state-warning-border:           darken($state-warning-bg, 5%) !default;
 
-$state-danger-text:              #a94442 !default;
-$state-danger-bg:                #f2dede !default;
+$state-danger-text:              desaturate(darken($brand-danger, 14), 21) !default;
+$state-danger-bg:                desaturate(lighten($brand-danger, 33), 21) !default;
 $state-danger-border:            darken($state-danger-bg, 5%) !default;
 
 
