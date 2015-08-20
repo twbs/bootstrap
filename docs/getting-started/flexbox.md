@@ -45,7 +45,9 @@ Alternatively, if you don't need the source Sass files, you may swap the default
 
 Enabling flexbox means **reduced browser and device support:**
 
+[Check the browser compatibility table for flexbox](http://caniuse.com/#search=flexbox)
+
 - Internet Explorer 9 and below do not support flexbox.
-- Internet Explorer 10 has a few known quirks.
+- Internet Explorer 10 has a few known quirks. It partially supports with prefix: `-ms-` and has various inconsistencies pointed out in `Known issues` tab of the [page](http://caniuse.com/#search=flexbox).
 
 Please be extra conscious of your user base when enabling flexbox in your project.
