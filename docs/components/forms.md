@@ -561,21 +561,17 @@ Ensure that an alternative indication of state is also provided. For instance, y
   <input type="text" class="form-control form-control-error" id="inputError1">
 </div>
 
-<div class="has-success">
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" id="checkboxSuccess" value="option1">
-      Checkbox with success
-    </label>
-  </div>
+<div class="checkbox has-success">
+  <label>
+    <input type="checkbox" id="checkboxSuccess" value="option1">
+    Checkbox with success
+  </label>
 </div>
-<div class="has-warning">
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" id="checkboxWarning" value="option1">
-      Checkbox with warning
-    </label>
-  </div>
+<div class="checkbox has-warning">
+  <label>
+    <input type="checkbox" id="checkboxWarning" value="option1">
+    Checkbox with warning
+  </label>
 </div>
 <div class="has-danger">
   <div class="checkbox">
@@ -584,6 +580,11 @@ Ensure that an alternative indication of state is also provided. For instance, y
       Checkbox with error
     </label>
   </div>
+<div class="checkbox has-danger">
+  <label>
+    <input type="checkbox" id="checkboxError" value="option1">
+    Checkbox with error
+  </label>
 </div>
 {% endexample %}
 
