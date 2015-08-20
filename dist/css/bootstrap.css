@@ -2827,6 +2827,13 @@ fieldset[disabled] .btn-link:hover {
   border-radius: .2rem;
 }
 
+.btn-xs, .btn-group-xs > .btn {
+  padding: .125rem .25rem;
+  font-size: .85rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+
 .btn-block {
   display: block;
   width: 100%;
