@@ -2271,7 +2271,7 @@ fieldset[disabled] .btn {
   opacity: .65;
 }
 
-a.btn.disaabled,
+a.btn.disabled,
 fieldset[disabled] a.btn {
   pointer-events: none;
 }
