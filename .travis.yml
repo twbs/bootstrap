@@ -16,6 +16,7 @@ before_install:
   - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then export TWBS_DO_VALIDATOR=0; fi
 install:
   - bundle install --deployment --jobs=3
+  - gem install scss_lint --no-rdoc --no-ri
   - npm install -g grunt-cli
   - npm install
   # - ./test-infra/s3_cache.py download npm-modules
