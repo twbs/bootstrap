@@ -38,7 +38,7 @@ And that's it—you're your way to a fully Bootstrapped site. If you're at all u
 Be sure to have your pages set up with the latest design and development standards. That means:
 
 * Using an HTML5 doctype
-* Forcing Internet Explorer to use its latest rendering mode ([read more]())
+* Forcing Internet Explorer to use its latest rendering mode ([read more](http://stackoverflow.com/q/6771258))
 * And, utilizing the viewport meta tag.
 
 Put it all together and your pages should look like this:
