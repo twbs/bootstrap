@@ -12,6 +12,7 @@ $card-border-radius-inner: ($card-border-radius - $card-border-width);
 $card-cap-bg: #f5f5f5;
 
 .card {
+  display: block;
   position: relative;
   margin-bottom: $card-spacer-y;
   border: $card-border-width solid $card-border-color;
