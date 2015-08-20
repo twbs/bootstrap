@@ -14,6 +14,7 @@ $card-cap-bg: #f5f5f5;
 .card {
   position: relative;
   margin-bottom: $card-spacer-y;
+  background-color: #fff;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
 }
