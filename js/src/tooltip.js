@@ -438,12 +438,6 @@ const Tooltip = (($) => {
       }
     }
 
-    _removeTetherClasses(i, css) {
-      return ((css.baseVal || css).match(
-        new RegExp(`(^|\\s)${CLASS_PREFIX}-\\S+`, 'g')) || []
-      ).join(' ')
-    }
-
     _fixTitle() {
       let titleType = typeof this.element.getAttribute('data-original-title')
       if (this.element.getAttribute('title') ||

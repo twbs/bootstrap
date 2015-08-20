@@ -3152,11 +3152,6 @@ if (typeof jQuery === 'undefined') {
           }
         }
       }, {
-        key: '_removeTetherClasses',
-        value: function _removeTetherClasses(i, css) {
-          return ((css.baseVal || css).match(new RegExp('(^|\\s)' + CLASS_PREFIX + '-\\S+', 'g')) || []).join(' ');
-        }
-      }, {
         key: '_fixTitle',
         value: function _fixTitle() {
           var titleType = typeof this.element.getAttribute('data-original-title');
