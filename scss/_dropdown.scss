@@ -5,11 +5,20 @@
 }
 
 .dropdown-toggle {
+  position: relative;
   // Generate the caret automatically
   &:after {
     display: inline-block;
     width: 0;
     height: 0;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    position: absolute;
     margin-left: .25rem;
     vertical-align: middle;
     content: "";
