@@ -97,16 +97,16 @@ Use contextual classes to style list items, default or linked. Also includes `.a
 
 {% example html %}
 <ul class="list-group">
-  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
-  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+  <li class="list-group-item bg-success">Dapibus ac facilisis in</li>
+  <li class="list-group-item bg-info">Cras sit amet nibh libero</li>
+  <li class="list-group-item bg-warning">Porta ac consectetur ac</li>
+  <li class="list-group-item bg-danger">Vestibulum at eros</li>
 </ul>
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
-  <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+  <a href="#" class="list-group-item bg-success">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item bg-info">Cras sit amet nibh libero</a>
+  <a href="#" class="list-group-item bg-warning">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item bg-danger">Vestibulum at eros</a>
 </div>
 {% endexample %}
 
