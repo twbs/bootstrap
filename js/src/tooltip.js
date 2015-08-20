@@ -270,12 +270,13 @@ const Tooltip = (($) => {
 
         this._tether = new Tether({
           attachment,
-          element     : tip,
-          target      : this.element,
-          classes     : TetherClass,
-          classPrefix : CLASS_PREFIX,
-          offset      : this.config.offset,
-          constraints : this.config.constraints
+          element         : tip,
+          target          : this.element,
+          classes         : TetherClass,
+          classPrefix     : CLASS_PREFIX,
+          offset          : this.config.offset,
+          constraints     : this.config.constraints,
+          addTargetClasses: false
         })
 
         Util.reflow(tip)
@@ -384,12 +385,6 @@ const Tooltip = (($) => {
     cleanupTether() {
       if (this._tether) {
         this._tether.destroy()
-
-        // clean up after tether's junk classes
-        // remove after they fix issue
-        // (https://github.com/HubSpot/tether/issues/36)
-        $(this.element).removeClass(this._removeTetherClasses)
-        $(this.tip).removeClass(this._removeTetherClasses)
       }
     }
 
