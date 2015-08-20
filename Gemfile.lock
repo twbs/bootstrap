@@ -34,6 +34,8 @@ GEM
       coffee-script (~> 2.2)
     jekyll-gist (1.1.0)
     jekyll-paginate (1.1.0)
+    jekyll-redirect-from (0.8.0)
+      jekyll (>= 2.0)
     jekyll-sass-converter (1.3.0)
       sass (~> 3.2)
     jekyll-watch (1.2.0)
@@ -73,6 +75,10 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 2.5.2)
+  jekyll-redirect-from (~> 0.8.0)
   rouge (~> 1.7.4)
   sass (~> 3.4.9)
   scss-lint (~> 0.31)
+
+BUNDLED WITH
+   1.10.5
