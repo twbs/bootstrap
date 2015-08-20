@@ -208,12 +208,12 @@ $(function () {
     assert.expect(3)
     var done = assert.async()
 
-    var accordionHTML = '<div class="panel-group" id="accordion">'
-        + '<div class="panel"/>'
-        + '<div class="panel"/>'
-        + '<div class="panel"/>'
+    var accordionHTML = '<div class="card-group" id="accordion">'
+        + '<div class="card"/>'
+        + '<div class="card"/>'
+        + '<div class="card"/>'
         + '</div>'
-    var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.panel')
+    var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.card')
 
     var $target1 = $('<a role="button" data-toggle="collapse" href="#body1" data-parent="#accordion"/>').appendTo($groups.eq(0))
 
@@ -242,12 +242,12 @@ $(function () {
     assert.expect(3)
     var done = assert.async()
 
-    var accordionHTML = '<div class="panel-group accordion">'
-        + '<div class="panel"/>'
-        + '<div class="panel"/>'
-        + '<div class="panel"/>'
+    var accordionHTML = '<div class="card-group accordion">'
+        + '<div class="card"/>'
+        + '<div class="card"/>'
+        + '<div class="card"/>'
         + '</div>'
-    var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.panel')
+    var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.card')
 
     var $target1 = $('<a role="button" data-toggle="collapse" href="#body1" data-parent=".accordion"/>').appendTo($groups.eq(0))
 
@@ -344,12 +344,12 @@ $(function () {
     assert.expect(3)
     var done = assert.async()
 
-    var accordionHTML = '<div class="panel-group" id="accordion">'
-        + '<div class="panel"/>'
-        + '<div class="panel"/>'
-        + '<div class="panel"/>'
+    var accordionHTML = '<div class="card-group" id="accordion">'
+        + '<div class="card"/>'
+        + '<div class="card"/>'
+        + '<div class="card"/>'
         + '</div>'
-    var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.panel')
+    var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.card')
 
     var $target1 = $('<a role="button" data-toggle="collapse" href="#body1" data-parent="#accordion"/>').appendTo($groups.eq(0))
 
@@ -379,11 +379,11 @@ $(function () {
     var done = assert.async()
 
     var accordionHTML = '<div id="accordion">'
-        + '<div class="panel"/>'
-        + '<div class="panel"/>'
+        + '<div class="card"/>'
+        + '<div class="card"/>'
         + '</div>'
     var showFired = false
-    var $groups   = $(accordionHTML).appendTo('#qunit-fixture').find('.panel')
+    var $groups   = $(accordionHTML).appendTo('#qunit-fixture').find('.card')
 
     var $target1 = $('<a role="button" data-toggle="collapse" href="#body1" data-parent="#accordion"/>').appendTo($groups.eq(0))
 
