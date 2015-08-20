@@ -26,7 +26,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 - Media queries are now in `em`s instead of `px`s.
 - Global font-size increased from `14px` to `16px`.
 - Added a new grid tier for ~`480px` and below.
-- Replaced the separate optional theme with configurable options via SCSS variables (e.g., `@enable-gradients: true`).
+- Replaced the separate optional theme with configurable options via SCSS variables (e.g., `$enable-gradients: true`).
 
 ### Components
 
