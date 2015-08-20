@@ -43,9 +43,9 @@ When you have some styles on a parent element that interfere with a popover, you
 
 {% highlight js %}
 $(function () {
-  $('.example-popover').popover(
+  $('.example-popover').popover({
     container: 'body'
-  )
+  })
 })
 {% endhighlight %}
 
