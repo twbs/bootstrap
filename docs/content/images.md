@@ -13,20 +13,20 @@ Opt your images into responsive behavior (so they never become larger than their
 
 ## Responsive images
 
-Images in Bootstrap are made responsive with `.img-responsive`. `max-width: 100%;` and `height: auto;` are applied to the image so that it scales with the parent element.
+Images in Bootstrap are made responsive with `.img-fluid`. `max-width: 100%;` and `height: auto;` are applied to the image so that it scales with the parent element.
 
 <div class="bd-example">
-  <img data-src="holder.js/100%x250" class="img-responsive" alt="Generic responsive image">
+  <img data-src="holder.js/100%x250" class="img-fluid" alt="Generic responsive image">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-responsive" alt="Responsive image">
+<img src="..." class="img-fluid" alt="Responsive image">
 {% endhighlight %}
 
 {% callout warning %}
 #### SVG images and IE 9-10
 
-In Internet Explorer 9-10, SVG images with `.img-responsive` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. Bootstrap doesn't apply this automatically as it causes complications to other image formats.
+In Internet Explorer 9-10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. Bootstrap doesn't apply this automatically as it causes complications to other image formats.
 {% endcallout %}
 
 ## Image shapes
