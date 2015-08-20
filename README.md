@@ -126,7 +126,7 @@ For transparency into our release cycle and in striving to maintain backward com
 
 ## Copyright and license
 
-Code and documentation © 2011-2015 Twitter, Inc.
+Code and documentation &copy; 2011-2015 Twitter, Inc.
 
 Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE).
 
