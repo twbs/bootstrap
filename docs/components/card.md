@@ -232,7 +232,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 Cards include a class for quickly toggling **the text color**. By default, cards use dark text and assume a light background. **Add `.card-inverse` for white text** and specify the `background-color` and `border-color` to go with it.
 
-You can also use `.card-inverse` with the [contextual backgrounds variants](#background-variations).
+You can also use `.card-inverse` with the [contextual backgrounds variants](#background-variants).
 
 {% example html %}
 <div class="card card-inverse" style="background-color: #333; border-color: #333;">
