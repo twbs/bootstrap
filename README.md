@@ -32,6 +32,7 @@ Several quick start options are available:
 - Install with [npm](https://www.npmjs.com): `npm install bootstrap`.
 - Install with [Meteor](https://www.meteor.com): `meteor add twbs:bootstrap`.
 - Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap`.
+- Install with [NuGet](https://www.nuget.org): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
 
 Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
