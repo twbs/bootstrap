@@ -22,15 +22,13 @@
     @include media-breakpoint-up($breakpoint) {
       // Work around cross-media @extend (https://github.com/sass/sass/issues/1050)
       %grid-column-float-#{$breakpoint} {
-        @if $enable-flex {
-          // Do nothing
-        } @else {
-          float: left;
-        }
+        float: left;
       }
       @for $i from 1 through $columns {
         .col-#{$breakpoint}-#{$i} {
-          @extend %grid-column-float-#{$breakpoint};
+          @if not $enable-flex {
+            @extend %grid-column-float-#{$breakpoint};
+          }
           @include make-col-span($i, $columns);
         }
       }
