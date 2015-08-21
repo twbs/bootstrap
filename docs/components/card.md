@@ -365,7 +365,7 @@ Need a set of equal width and height cards that aren't attached to one another? 
 
 Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`.
 
-**Heads up!** This is **not available in IE9 and below** as they have no support for the `column` CSS properties.
+**Heads up!** This is **not available in IE9 and below** as they have no support for the [`column-*` CSS properties](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_multi-column_layouts).
 
 {% example html %}
 <div class="card-columns">
