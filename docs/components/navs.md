@@ -258,7 +258,7 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 
 ### Fade effect
 
-To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must also have `.in to properly fade in initial content.
+To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must also have `.in` to properly fade in initial content.
 
 {% highlight html %}
 <div class="tab-content">
