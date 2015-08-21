@@ -13,7 +13,7 @@ Bootstrap provides several form control styles, layout options, and custom compo
 
 ## Form controls
 
-Bootstrap's form controls expand on [our Rebooted form styles]({{ site.baseurl }}/components/reboot/#forms) with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices. The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+Bootstrap's form controls expand on [our Rebooted form styles]({{ site.baseurl }}/content/reboot/#forms) with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices. The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
 
 Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `type` attribute**.
 
