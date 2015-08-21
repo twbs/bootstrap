@@ -179,18 +179,3 @@ Note that pre-checked buttons require you to manually add the `.active` class to
 | Method | Description |
 | --- | --- |
 | `$().button('toggle')` |Toggles push state. Gives the button the appearance that it has been activated.  |
-| `$().button('reset')` | Resets button state—swaps text to original text. **This method is asynchronous and returns before the resetting has actually completed.** |
-| `$().button(string)` | Swaps text to any data defined text state. |
-
-### Custom state example
-
-{% highlight html %}
-<button type="button" id="myStateButton" data-complete-text="finished!" class="btn btn-primary" autocomplete="off">
-  ...
-</button>
-<script>
-  $('#myStateButton').on('click', function () {
-    $(this).button('complete') // button text will be "finished!"
-  })
-</script>
-{% endhighlight %}
