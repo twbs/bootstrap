@@ -49,13 +49,13 @@
   .card {
     > .list-group:first-child {
       .list-group-item:first-child {
-        border-radius: $card-border-radius $card-border-radius 0 0;
+        @include border-radius($card-border-radius $card-border-radius 0 0);
       }
     }
 
     > .list-group:last-child {
       .list-group-item:last-child {
-        border-radius: 0 0 $card-border-radius $card-border-radius;
+        @include border-radius(0 0 $card-border-radius $card-border-radius);
       }
     }
   }
