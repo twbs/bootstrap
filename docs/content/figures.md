@@ -15,7 +15,7 @@ Use the included `.figure` and `.figure-caption` classes to provide some baselin
 </figure>
 {% endexample %}
 
-Aligning the figure's caption is easy with our [text utilities](/components/utilities/#text-alignment).
+Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl }}/components/utilities/#text-alignment).
 
 {% example html %}
 <figure class="figure">

@@ -263,7 +263,11 @@ The `.invisible` class can be used to toggle only the visibility of an element, 
 
 ## Screen readers
 
-Hide an element to all devices **except screen readers** with `.sr-only`. Combine `.sr-only` with `.sr-only-focusable` to show the element again when it's focused (e.g. by a keyboard-only user). Necessary for following [accessibility best practices](../getting-started/#accessibility). Can also be used as mixins.
+Hide an element to all devices **except screen readers** with `.sr-only`. Combine `.sr-only` with `.sr-only-focusable` to show the element again when it's focused (e.g. by a keyboard-only user). Can also be used as mixins.
+
+{% comment %}
+Necessary for following [accessibility best practices](../getting-started/#accessibility).
+{% endcomment %}
 
 {% highlight html %}
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>

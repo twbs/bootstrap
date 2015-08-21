@@ -4,7 +4,7 @@ title: Button group
 group: components
 ---
 
-Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with [our buttons plugin](../javascript/#buttons).
+Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with [our buttons plugin]({{ site.baseurl }}/components/buttons/#button-plugin).
 
 ## Contents
 

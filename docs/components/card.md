@@ -293,7 +293,7 @@ Cards include their own variant classes for quickly changing the `background-col
 
 ## Groups
 
-Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode](/getting-started/flexbox) can switch that to use `display: flex;` and provide the same effect.
+Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode]({{ site.baseurl }}/getting-started/flexbox) can switch that to use `display: flex;` and provide the same effect.
 
 {% example html %}
 <div class="card-group">
@@ -328,7 +328,7 @@ Use card groups to render cards as a single, attached element with equal width a
 
 Need a set of equal width and height cards that aren't attached to one another? Use card decks. By default, card decks require two wrapping elements: `.card-deck-wrapper` and a `.card-deck`. We use table styles for the sizing and the gutters on `.card-deck`. The `.card-deck-wrapper` is used to negative margin out the `border-spacing` on the `.card-deck`.
 
-**ProTip!** If you enable [flexbox mode](/layout/flexbox), you can remove the `.card-deck-wrapper`.
+**ProTip!** If you enable [flexbox mode]({{ site.baseurl }}/getting-started/flexbox/), you can remove the `.card-deck-wrapper`.
 
 {% example html %}
 <div class="card-deck-wrapper">

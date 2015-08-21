@@ -9,7 +9,7 @@ Use any button to trigger a dropdown menu by placing it within a `.btn-group` an
 {% callout danger %}
 #### Plugin dependency
 
-Button dropdowns require the [dropdown plugin](../javascript/#dropdowns) to be included in your version of Bootstrap.
+Button dropdowns require the [dropdown plugin]({{ site.baseurl }}/components/dropdowns/) to be included in your version of Bootstrap.
 {% endcallout %}
 
 ## Contents

@@ -356,7 +356,7 @@ With the four tiers of grids available you're bound to run into issues where, at
 {% endexample %}
 </div>
 
-In addition to column clearing at responsive breakpoints, you may need to **reset offsets, pushes, or pulls**. See this in action in [the grid example](../examples/grid/).
+In addition to column clearing at responsive breakpoints, you may need to **reset offsets, pushes, or pulls**. See this in action in [the grid example]({{ site.baseurl }}/examples/grid/).
 
 <div class="bd-example-row">
 {% example html %}

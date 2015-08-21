@@ -49,7 +49,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 
 ## Tabs
 
-Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [tab JavaScript plugin](../javascript/tabs).
+Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [tab JavaScript plugin](#javascript-behavior).
 
 {% example html %}
 <ul class="nav nav-tabs">
@@ -112,7 +112,7 @@ Just add `.nav-stacked` to the `.nav.nav-pills`.
 
 ## Using dropdowns
 
-Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin]({{ site.baseurl }}javascript/#dropdowns).
+Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin]({{ site.baseurl }}/components/dropdowns/#usage).
 
 ### Tabs with dropdowns
 

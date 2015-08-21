@@ -16,8 +16,8 @@ Add small overlay content, like those found in iOS, to any element for housing s
 Things to know when using the popover plugin:
 
 
-- Popovers rely on on the 3rd party library [tether](http://github.hubspot.com/tether/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for popovers to work!
-- Popovers require the [tooltip plugin](/components/tooltips) as a dependency.
+- Popovers rely on the 3rd party library [tether](http://github.hubspot.com/tether/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for popovers to work!
+- Popovers require the [tooltip plugin]({{ site.baseurl }}/components/tooltips) as a dependency.
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).

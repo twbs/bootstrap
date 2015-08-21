@@ -21,7 +21,7 @@ Download just the compiled and minified CSS and JavaScript. Doesn't include any 
   <div class="col-sm-6">
 {% markdown %}
 ### Source files
-Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), and [some setup](../compiling).**
+Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), and some setup.**
 
 <a href="{{ site.download.source }}" class="btn btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
 {% endmarkdown %}
