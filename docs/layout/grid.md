@@ -129,7 +129,7 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
 
 ## Sass mixins
 
-When using Bootstrap's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our [prebuilt grid classes](#grid-example-basic) use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
+When using Bootstrap's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our [prebuilt grid classes](#example-stacked-to-horizontal) use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
 
 ### Variables
 
