@@ -90,7 +90,7 @@ Bootstrap is developed *mobile first*, a strategy in which we optimize code for 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% endhighlight %}
 
-You can see an example of this in action in the [started template](#starter-template).
+You can see an example of this in action in the [starter template](#starter-template).
 
 ### Box-sizing
 
