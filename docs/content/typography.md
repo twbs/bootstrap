@@ -4,7 +4,7 @@ title: Typography
 group: content
 ---
 
-Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes](/components/utilities/).
+Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/components/utilities/).
 
 ## Contents
 
@@ -16,10 +16,10 @@ Bootstrap includes simple and easily customized typography for headings, body te
 Bootstrap sets basic global display, typography, and link styles. Specifically, we:
 
 - Set `background-color: #fff;` on the `<body>`
-- Use the `@font-family-base`, `@font-size-base`, and `@line-height-base` attributes as our typographic base
-- Set the global link color via `@link-color` and apply link underlines only on `:hover`
+- Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base
+- Set the global link color via `$link-color` and apply link underlines only on `:hover`
 
-These styles can be found within `scaffolding.less`.
+These styles can be found within `_reboot.scss`.
 
 
 ## Headings
@@ -99,6 +99,13 @@ Traditional heading elements are designed to work best in the meat of your page 
     </tbody>
   </table>
 </div>
+
+{% highlight html %}
+<h1 class="display-4">Display 4</h1>
+<h1 class="display-3">Display 3</h1>
+<h1 class="display-2">Display 2</h1>
+<h1 class="display-1">Display 1</h1>
+{% endhighlight %}
 
 ## Lead
 

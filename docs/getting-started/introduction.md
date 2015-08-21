@@ -38,7 +38,7 @@ And that's it—you're your way to a fully Bootstrapped site. If you're at all u
 Be sure to have your pages set up with the latest design and development standards. That means:
 
 * Using an HTML5 doctype
-* Forcing Internet Explorer to use its latest rendering mode ([read more]())
+* Forcing Internet Explorer to use its latest rendering mode ([read more](http://stackoverflow.com/q/6771258))
 * And, utilizing the viewport meta tag.
 
 Put it all together and your pages should look like this:
@@ -65,7 +65,7 @@ Put it all together and your pages should look like this:
 </html>
 {% endhighlight %}
 
-That's all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/scaffolding) or [our official examples](../examples/) to start laying out your site's content and components.
+That's all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/scaffolding) or [our official examples]({{ site.baseurl }}/examples/) to start laying out your site's content and components.
 
 ## Important globals
 
@@ -90,7 +90,7 @@ Bootstrap is developed *mobile first*, a strategy in which we optimize code for 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% endhighlight %}
 
-You can see an example of this in action in the [started template](#starter-template).
+You can see an example of this in action in the [starter template](#starter-template).
 
 ### Box-sizing
 

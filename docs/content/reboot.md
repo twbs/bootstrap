@@ -21,13 +21,13 @@ Here are our guidelines and reasons for choosing what to override in Reboot:
 - Update some browser default values to use `rem`s instead of `em`s for scalable component spacing.
 - Avoid `margin-top`. Vertical margins can collapse, yielding unexpected results. More importantly though, a single direction of `margin` is a simpler mental model.
 - For easier scaling across device sizes, block elements should use `rem`s for `margin`s.
-- Keep declarations of `font`-related properties to a minimal, using `inherit` whenever possible.
+- Keep declarations of `font`-related properties to a minimum, using `inherit` whenever possible.
 
 ## Page defaults
 
 The `<html>` and `<body>` elements are updated to provide better page-wide defaults. More specifically:
 
-- The `box-sizing` is globally set on every element—including `*:before` and `*after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
+- The `box-sizing` is globally set on every element—including `*:before` and `*:after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
 - A base `font-size: 16px` is declared on the `<html>` and `font-size: 1rem` on the `<body>` for easy responsive type-scaling via media queryies.
 - The `<body>` also sets a global `font-family` and `line-height`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
@@ -111,7 +111,7 @@ The `<pre>` element is reset to remove its `margin-top` and use `rem` units for 
 <div class="bd-example">
 {% markdown %}
 <pre>
-.element {
+.example-element {
   margin-bottom: 1rem;
 }
 </pre>
@@ -120,7 +120,7 @@ The `<pre>` element is reset to remove its `margin-top` and use `rem` units for 
 
 ## Tables
 
-Tables are slightly adjusted to style `<caption>`s and ensure consistent `text-align` throughout. Additional changes for borders, padding, and more come with [the `.table` class](/components/tables/).
+Tables are slightly adjusted to style `<caption>`s and ensure consistent `text-align` throughout. Additional changes for borders, padding, and more come with [the `.table` class]({{ site.baseurl }}/content/tables/).
 
 <div class="bd-example">
   <table>

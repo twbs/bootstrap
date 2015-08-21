@@ -11,7 +11,7 @@ Modals are streamlined, but flexible, dialog prompts with the minimum required f
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-**Due to how HTML5 defines its semantics, the `autofocus` HTML attribute has no effect in Bootstrap modals.** To achieve the same effect, use some custom JavaScript:
+**Due to how HTML5 defines its semantics, [the `autofocus` HTML attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) has no effect in Bootstrap modals.** To achieve the same effect, use some custom JavaScript:
 
 {% highlight js %}
 $('#myModal').on('shown.bs.modal', function () {
@@ -34,12 +34,12 @@ Always try to place a modal's HTML code in a top-level position in your document
 {% callout warning %}
 #### Mobile device caveats
 
-There are some caveats regarding using modals on mobile devices. [See our browser support docs](../getting-started/#support-fixed-position-keyboards) for details.
+There are some caveats regarding using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/getting-started/browsers-devices/#modals-navbars-and-virtual-keyboards) for details.
 {% endcallout %}
 
 ### Static example
 
-A rendered modal with header, body, and set of actions in the footer.</p>
+A rendered modal with header, body, and set of actions in the footer.
 
 <div class="bd-example bd-example-modal">
   <div class="modal">
@@ -172,7 +172,7 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
 {% callout warning %}
 #### Make modals accessible
 
-Be sure to add `role="dialog"` and `aria-labelledby="..."``, referencing the modal title, to `.modal`, and `role="document"` to the `.modal-dialog` itself.
+Be sure to add `role="dialog"` and `aria-labelledby="..."`, referencing the modal title, to `.modal`, and `role="document"` to the `.modal-dialog` itself.
 
 Additionally, you may give a description of your modal dialog with `aria-describedby` on `.modal`.
 {% endcallout %}
@@ -264,7 +264,7 @@ For modals that simply appear rather than fade in to view, remove the `.fade` cl
 
 ## Using the grid system
 
-To take advantage of the Bootstrap grid system within a modal, just nest `.container-fluid within the `.modal-body` and then use the normal grid system classes within this container.
+To take advantage of the Bootstrap grid system within a modal, just nest `.container-fluid` within the `.modal-body` and then use the normal grid system classes within this container.
 
 {% example html %}
 <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">

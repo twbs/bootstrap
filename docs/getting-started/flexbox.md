@@ -23,7 +23,7 @@ Vendor prefixes are provided in our compiled CSS with Autoprefixer via Grunt.
 
 ## Why flexbox?
 
-In a nutshell, flexbix provides simpler and more flexible layout options in CSS. More specifically, it provides:
+In a nutshell, flexbox provides simpler and more flexible layout options in CSS. More specifically, it provides:
 
 - Easy vertical alignment of content within a parent element.
 - Easy reordering of content across devices and screen resolutions with the help of media queries.
@@ -39,13 +39,13 @@ If you're familiar with modifying variables in Sass—or any other CSS preproces
 2. Change it from `false` to `true`.
 3. Recompile, and done!
 
-Alternatively, if you don't need the source Sass files, you may swap the default Bootstrap compiled CSS with the compiled flexbox variation. [Head to the download page](/getting-started/download) for more information.
+Alternatively, if you don't need the source Sass files, you may swap the default Bootstrap compiled CSS with the compiled flexbox variation. [Head to the download page]({{ site.baseurl }}/getting-started/download) for more information.
 
 ## Browser support
 
 Enabling flexbox means **reduced browser and device support:**
 
 - Internet Explorer 9 and below do not support flexbox.
-- Internet Explorer 10 has a few known quirks.
+- Internet Explorer 10 has a few known quirks (see the "Known issues" tab in [Can I use...](http://caniuse.com/#feat=flexbox)), requires using a prefix, and only supports the syntax from the old 2012 version of the spec.
 
-Please be extra conscious of your user base when enabling flexbox in your project.
+Please be extra conscious of your user base when enabling flexbox in your project. Visit [Can I use...](http://caniuse.com/#feat=flexbox) for details on browser support of flexbox.
