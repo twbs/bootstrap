@@ -822,6 +822,7 @@ h1[id] {
   width: 180px;
   height: 20px;
   margin-top: 6px;
+  border: none;
 }
 .bs-team img {
   float: left;
