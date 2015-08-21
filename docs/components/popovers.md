@@ -16,7 +16,7 @@ Add small overlay content, like those found in iOS, to any element for housing s
 Things to know when using the popover plugin:
 
 
-- Popovers rely on the 3rd party library [tether](http://github.hubspot.com/tether/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for popovers to work!
+- Popovers rely on the 3rd party library [Tether](http://github.hubspot.com/tether/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for popovers to work!
 - Popovers require the [tooltip plugin]({{ site.baseurl }}/components/tooltips) as a dependency.
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
@@ -262,13 +262,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>constraints</td>
         <td>Array</td>
         <td>'hover focus'</td>
-        <td>An array of constraints - passed through to tether. For more information refer to tether's <a href="http://github.hubspot.com/tether/#constraints">constraint docs</a>.</td>
+        <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">constraint docs</a>.</td>
       </tr>
       <tr>
         <td>offsets</td>
         <td>string</td>
         <td>'0 0'</td>
-        <td>Offset of the popover relative to it's target. For more information refer to tether's <a href="http://github.hubspot.com/tether/#constraints">offset docs</a>.</td>
+        <td>Offset of the popover relative to it's target. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">offset docs</a>.</td>
       </tr>
     </tbody>
   </table>
