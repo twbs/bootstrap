@@ -61,23 +61,23 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
         <th></th>
         <th>
           Extra small
-          <small>&lt;34em</small>
+          <small>&lt;34em / 480px</small>
         </th>
         <th>
           Small
-          <small>&ge;34em</small>
+          <small>&ge;34em / 480px</small>
         </th>
         <th>
           Medium
-          <small>&ge;48em</small>
+          <small>&ge;45em / 720px</small>
         </th>
         <th>
           Large
-          <small>&ge;62em</small>
+          <small>&ge;62em / 992px</small>
         </th>
         <th>
           Extra large
-          <small>&ge;75em</small>
+          <small>&ge;75em / 1200px</small>
         </th>
       </tr>
     </thead>
@@ -90,10 +90,10 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       <tr>
         <th class="text-nowrap" scope="row">Container width</th>
         <td>None (auto)</td>
-        <td>34rem</td>
-        <td>45rem</td>
-        <td>60rem</td>
-        <td>72.25rem</td>
+        <td>34rem / 480px</td>
+        <td>45rem / 720px</td>
+        <td>60rem / 960px</td>
+        <td>72.25rem / 1156px</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Class prefix</th>
@@ -140,13 +140,13 @@ $grid-breakpoints: (
   // Extra small screen / phone
   xs: 0,
   // Small screen / phone
-  sm: 34em,
+  sm: 34em,    // 480px
   // Medium screen / tablet
-  md: 48em,
+  md: 48em,    // 768px
   // Large screen / desktop
-  lg: 62em,
+  lg: 62em,    // 992px
   // Extra large screen / wide desktop
-  xl: 75em
+  xl: 75em     // 1200px
 ) !default;
 
 $grid-columns:      12;
