@@ -1,0 +1,92 @@
+//
+// Responsive tests
+//
+
+// Responsive (scrollable) doc tables
+.table-responsive .highlight pre {
+  white-space: normal;
+}
+
+// Utility classes table
+.bd-table th small,
+.responsive-utilities th small {
+  display: block;
+  font-weight: normal;
+  color: #999;
+}
+.responsive-utilities tbody th {
+  font-weight: normal;
+}
+.responsive-utilities td {
+  text-align: center;
+}
+.responsive-utilities td.is-visible {
+  color: #468847;
+  background-color: #dff0d8 !important;
+}
+.responsive-utilities td.is-hidden {
+  color: #ccc;
+  background-color: #f9f9f9 !important;
+}
+
+// Responsive tests
+.responsive-utilities-test {
+  margin-top: .25rem;
+}
+.responsive-utilities-test .col-xs-6 {
+  margin-bottom: .5rem;
+}
+.responsive-utilities-test span {
+  display: block;
+  padding: 1rem .5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.1;
+  text-align: center;
+  border-radius: .25rem;
+}
+.visible-on,
+.hidden-on {
+  .col-xs-6 {
+    > .not-visible {
+      color: #999;
+      border: 1px solid #ddd;
+    }
+  }
+}
+.visible-on,
+.hidden-on {
+  .col-xs-6 {
+    .visible {
+      color: #468847;
+      background-color: #dff0d8;
+      border: 1px solid #d6e9c6;
+    }
+  }
+}
+
+@include media-breakpoint-only(xs) {
+  .hidden-xs-only {
+    display: none !important;
+  }
+}
+@include media-breakpoint-only(sm) {
+  .hidden-sm-only {
+    display: none !important;
+  }
+}
+@include media-breakpoint-only(md) {
+  .hidden-md-only {
+    display: none !important;
+  }
+}
+@include media-breakpoint-only(lg) {
+  .hidden-lg-only {
+    display: none !important;
+  }
+}
+@include media-breakpoint-only(xl) {
+  .hidden-xl-only {
+    display: none !important;
+  }
+}

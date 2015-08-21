@@ -1,0 +1,90 @@
+- title: Getting started
+  pages:
+    # - title: JavaScript
+    # - title: Accessibility
+    - title: Introduction
+    - title: Download
+    - title: Browsers & devices
+    - title: Options
+    - title: Flexbox
+    - title: Build tools
+    - title: Best practices
+
+- title: Layout
+  pages:
+    - title: Overview
+    - title: Grid
+    - title: Media object
+    - title: Responsive utilities
+
+- title: Content
+  pages:
+    - title: Reboot
+    - title: Typography
+    - title: Code
+    - title: Images
+    - title: Tables
+    - title: Figures
+
+- title: Components
+  pages:
+    - title: Buttons
+    - title: Button group
+    - title: Button dropdown
+    - title: Forms
+    - title: Input group
+    - title: Dropdowns
+    - title: Jumbotron
+    - title: Label
+    - title: Alerts
+    - title: Card
+    - title: Navs
+    - title: Navbar
+    - title: Breadcrumb
+    - title: Pagination
+    - title: Progress
+    - title: List group
+    - title: Modal
+    - title: Scrollspy
+    - title: Tooltips
+    - title: Popovers
+    - title: Collapse
+    - title: Carousel
+    - title: Utilities
+
+# - title: Examples
+#   pages:
+#     - title: Starter template
+#     - title: Grid
+#     - title: Jumbotron
+#     - title: Narrow jumbotron
+#     - title: Navbar
+#     - title: Navbar top
+#     - title: Navbar top fixed
+#     - title: Cover
+#     - title: Album
+#     - title: Carousel
+#     - title: Blog
+#     - title: Dashboard
+#     - title: Sign-in page
+#     - title: Justified nav
+#     - title: Sticky footer
+#     - title: Sticky footer with navbar
+#     - title: Offcanvas
+
+# - title: Extend
+#   pages:
+#     - title: Approach
+#     - title: Icon fonts
+
+- title: About
+  pages:
+    # - title: JavaScript
+    # - title: Accessibility
+    - title: History
+    - title: Team
+    - title: Brand
+    - title: License
+    - title: Translations
+
+- title: Migration
