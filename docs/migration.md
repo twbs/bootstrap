@@ -112,7 +112,7 @@ We've added new components and changed some existing ones. Here are the new or u
 | Cards | New, more flexible component to replace v3's panels, thumbnails, and wells. |
 | New navbar | Replaces the previous navbar with a new, simpler component. |
 | New progress bars | Replaces the old `.progress` `<div>` with a real `<progress>` element. |
-| New table variants | |
+| New table variants | Adds `.table-inverse`, table head options, replaces `.table-condensed` with `.table-sm`, and `.table-reflow`. |
 | New utility classes | |
 
 TODO: audit new classes that didn't exist in v3
