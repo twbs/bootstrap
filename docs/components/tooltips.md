@@ -220,13 +220,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>constraints</td>
         <td>Array</td>
         <td>'hover focus'</td>
-        <td>An array of constraints - passed through to tether. For more information refer to tether's <a href="http://github.hubspot.com/tether/#constraints">constraint docs</a>.</td>
+        <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">constraint docs</a>.</td>
       </tr>
       <tr>
         <td>offsets</td>
         <td>string</td>
         <td>'0 0'</td>
-        <td>Offset of the popover relative to it's target. For more information refer to tether's <a href="http://github.hubspot.com/tether/#constraints">offset docs</a>.</td>
+        <td>Offset of the popover relative to it's target. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">offset docs</a>.</td>
       </tr>
     </tbody>
   </table>
