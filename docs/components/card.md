@@ -121,7 +121,7 @@ Using custom widths:
 
 ## Text alignment
 
-You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]().
+You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.baseurl }}/components/utilities/#text-alignment).
 
 {% example html %}
 <div class="card card-block">
