@@ -68,19 +68,12 @@ Instead of applying button sizing classes to every button in a group, just add `
     <button type="button" class="btn btn-secondary">Middle</button>
     <button type="button" class="btn btn-secondary">Right</button>
   </div>
-  <br>
-  <div class="btn-group btn-group-xs" role="group" aria-label="Extra small button group">
-    <button type="button" class="btn btn-secondary">Left</button>
-    <button type="button" class="btn btn-secondary">Middle</button>
-    <button type="button" class="btn btn-secondary">Right</button>
-  </div>
 </div>
 
 {% highlight html %}
 <div class="btn-group btn-group-lg" role="group" aria-label="...">...</div>
 <div class="btn-group" role="group" aria-label="...">...</div>
 <div class="btn-group btn-group-sm" role="group" aria-label="...">...</div>
-<div class="btn-group btn-group-xs" role="group" aria-label="...">...</div>
 {% endhighlight %}
 
 ## Nesting
