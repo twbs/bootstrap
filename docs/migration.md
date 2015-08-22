@@ -77,6 +77,14 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Added a new `~480px` grid breakpoint, meaning there are now five total tiers.
 
+### Buttons
+
+- Dropped the `.btn-xs` class entirely.
+
+### Button group
+
+- Dropped the `.btn-group-xs` class entirely.
+
 ### Navs
 
 - Dropped nearly all `>` selectors for simpler styling via un-nested classes.
