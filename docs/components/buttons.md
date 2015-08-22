@@ -26,6 +26,9 @@ Bootstrap includes six predefined button styles, each serving its own semantic p
 <!-- Indicates a successful or positive action -->
 <button type="button" class="btn btn-success">Success</button>
 
+<!-- Contextual button for informational alert messages -->
+<button type="button" class="btn btn-info">Info</button>
+
 <!-- Indicates caution should be taken with this action -->
 <button type="button" class="btn btn-warning">Warning</button>
 
