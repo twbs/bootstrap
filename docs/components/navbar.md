@@ -178,6 +178,14 @@ Navbars can be statically placed (their default behavior), or fixed to the top o
 </nav>
 {% endexample %}
 
+When using full width, statically placed navbars you might want to remove the rounded corners, this can be done by including `.navbar-static-top`.
+
+{% example html %}
+<nav class="navbar navbar-static-top navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Static Top</a>
+</nav>
+{% endexample %}
+
 
 ## Collapsible content
 
