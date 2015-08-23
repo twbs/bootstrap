@@ -3951,7 +3951,6 @@ input[type="button"].btn-block {
 }
 
 .card-title {
-  margin-top: 0;
   margin-bottom: .75rem;
 }
 
@@ -4466,7 +4465,6 @@ a.label:hover {
 }
 
 .alert-heading {
-  margin-top: 0;
   color: inherit;
 }
 
