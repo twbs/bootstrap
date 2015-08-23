@@ -51,20 +51,20 @@
 }
 
 // Links, buttons, and more within the dropdown menu
+//
+// `<button>`-specific styles are denoted with `// for <button>s`
 .dropdown-item {
   display: block;
+  width: 100%; // For `<button>`s
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
   line-height: $line-height;
   color: $dropdown-link-color;
+  text-align: inherit; // For `<button>`s
   white-space: nowrap; // prevent links from randomly breaking onto new lines
-
-  // For `<button>`s
-  text-align: inherit;
-  width: 100%;
-  background: none;
-  border: 0;
+  background: none; // For `<button>`s
+  border: 0; // For `<button>`s
 
   @include hover-focus {
     color: $dropdown-link-hover-color;
