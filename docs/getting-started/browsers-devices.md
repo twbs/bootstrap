@@ -13,7 +13,7 @@ Bootstrap supports a wide variety of modern browsers and devices, and some older
 
 ## Supported browsers
 
-Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11**. More specific support information is provided below.
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11 / Microsoft Edge**. More specific support information is provided below.
 
 ### Mobile devices
 
@@ -64,6 +64,7 @@ Similarly, the latest versions of most desktop browsers are supported.
         <th>Chrome</th>
         <th>Firefox</th>
         <th>Internet Explorer</th>
+        <th>Microsoft Edge</th>
         <th>Opera</th>
         <th>Safari</th>
       </tr>
@@ -74,11 +75,13 @@ Similarly, the latest versions of most desktop browsers are supported.
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-muted">N/A</td>
+        <td class="text-muted">N/A</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
       </tr>
       <tr>
         <th scope="row">Windows</th>
+        <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
