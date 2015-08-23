@@ -4917,137 +4917,137 @@ button.list-group-item:hover {
   color: #a8d6fe;
 }
 
-.list-group-item-state {
+.list-group-item-success {
   color: #3c763d;
   background-color: #dff0d8;
 }
 
-a.list-group-item-state,
-button.list-group-item-state {
+a.list-group-item-success,
+button.list-group-item-success {
   color: #3c763d;
 }
 
-a.list-group-item-state .list-group-item-heading,
-button.list-group-item-state .list-group-item-heading {
+a.list-group-item-success .list-group-item-heading,
+button.list-group-item-success .list-group-item-heading {
   color: inherit;
 }
 
-a.list-group-item-state:focus,
-a.list-group-item-state:hover,
-button.list-group-item-state:focus,
-button.list-group-item-state:hover {
+a.list-group-item-success:focus,
+a.list-group-item-success:hover,
+button.list-group-item-success:focus,
+button.list-group-item-success:hover {
   color: #3c763d;
   background-color: #d0e9c6;
 }
 
-a.list-group-item-state.active,
-a.list-group-item-state.active:focus,
-a.list-group-item-state.active:hover,
-button.list-group-item-state.active,
-button.list-group-item-state.active:focus,
-button.list-group-item-state.active:hover {
+a.list-group-item-success.active,
+a.list-group-item-success.active:focus,
+a.list-group-item-success.active:hover,
+button.list-group-item-success.active,
+button.list-group-item-success.active:focus,
+button.list-group-item-success.active:hover {
   color: #fff;
   background-color: #3c763d;
   border-color: #3c763d;
 }
 
-.list-group-item-state {
+.list-group-item-info {
   color: #31708f;
   background-color: #d9edf7;
 }
 
-a.list-group-item-state,
-button.list-group-item-state {
+a.list-group-item-info,
+button.list-group-item-info {
   color: #31708f;
 }
 
-a.list-group-item-state .list-group-item-heading,
-button.list-group-item-state .list-group-item-heading {
+a.list-group-item-info .list-group-item-heading,
+button.list-group-item-info .list-group-item-heading {
   color: inherit;
 }
 
-a.list-group-item-state:focus,
-a.list-group-item-state:hover,
-button.list-group-item-state:focus,
-button.list-group-item-state:hover {
+a.list-group-item-info:focus,
+a.list-group-item-info:hover,
+button.list-group-item-info:focus,
+button.list-group-item-info:hover {
   color: #31708f;
   background-color: #c4e3f3;
 }
 
-a.list-group-item-state.active,
-a.list-group-item-state.active:focus,
-a.list-group-item-state.active:hover,
-button.list-group-item-state.active,
-button.list-group-item-state.active:focus,
-button.list-group-item-state.active:hover {
+a.list-group-item-info.active,
+a.list-group-item-info.active:focus,
+a.list-group-item-info.active:hover,
+button.list-group-item-info.active,
+button.list-group-item-info.active:focus,
+button.list-group-item-info.active:hover {
   color: #fff;
   background-color: #31708f;
   border-color: #31708f;
 }
 
-.list-group-item-state {
+.list-group-item-warning {
   color: #8a6d3b;
   background-color: #fcf8e3;
 }
 
-a.list-group-item-state,
-button.list-group-item-state {
+a.list-group-item-warning,
+button.list-group-item-warning {
   color: #8a6d3b;
 }
 
-a.list-group-item-state .list-group-item-heading,
-button.list-group-item-state .list-group-item-heading {
+a.list-group-item-warning .list-group-item-heading,
+button.list-group-item-warning .list-group-item-heading {
   color: inherit;
 }
 
-a.list-group-item-state:focus,
-a.list-group-item-state:hover,
-button.list-group-item-state:focus,
-button.list-group-item-state:hover {
+a.list-group-item-warning:focus,
+a.list-group-item-warning:hover,
+button.list-group-item-warning:focus,
+button.list-group-item-warning:hover {
   color: #8a6d3b;
   background-color: #faf2cc;
 }
 
-a.list-group-item-state.active,
-a.list-group-item-state.active:focus,
-a.list-group-item-state.active:hover,
-button.list-group-item-state.active,
-button.list-group-item-state.active:focus,
-button.list-group-item-state.active:hover {
+a.list-group-item-warning.active,
+a.list-group-item-warning.active:focus,
+a.list-group-item-warning.active:hover,
+button.list-group-item-warning.active,
+button.list-group-item-warning.active:focus,
+button.list-group-item-warning.active:hover {
   color: #fff;
   background-color: #8a6d3b;
   border-color: #8a6d3b;
 }
 
-.list-group-item-state {
+.list-group-item-danger {
   color: #a94442;
   background-color: #f2dede;
 }
 
-a.list-group-item-state,
-button.list-group-item-state {
+a.list-group-item-danger,
+button.list-group-item-danger {
   color: #a94442;
 }
 
-a.list-group-item-state .list-group-item-heading,
-button.list-group-item-state .list-group-item-heading {
+a.list-group-item-danger .list-group-item-heading,
+button.list-group-item-danger .list-group-item-heading {
   color: inherit;
 }
 
-a.list-group-item-state:focus,
-a.list-group-item-state:hover,
-button.list-group-item-state:focus,
-button.list-group-item-state:hover {
+a.list-group-item-danger:focus,
+a.list-group-item-danger:hover,
+button.list-group-item-danger:focus,
+button.list-group-item-danger:hover {
   color: #a94442;
   background-color: #ebcccc;
 }
 
-a.list-group-item-state.active,
-a.list-group-item-state.active:focus,
-a.list-group-item-state.active:hover,
-button.list-group-item-state.active,
-button.list-group-item-state.active:focus,
-button.list-group-item-state.active:hover {
+a.list-group-item-danger.active,
+a.list-group-item-danger.active:focus,
+a.list-group-item-danger.active:hover,
+button.list-group-item-danger.active,
+button.list-group-item-danger.active:focus,
+button.list-group-item-danger.active:hover {
   color: #fff;
   background-color: #a94442;
   border-color: #a94442;
