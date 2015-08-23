@@ -3509,7 +3509,6 @@ input[type="button"].btn-block {
   border: 1px solid #ccc;
 
      -moz-appearance: none;
-          appearance: none;
 }
 
 .c-select:focus {
