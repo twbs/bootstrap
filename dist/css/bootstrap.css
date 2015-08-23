@@ -3817,7 +3817,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-divider:before {
-  content: '\00a0';
+  content: "\00a0";
 }
 
 .navbar-toggler {
