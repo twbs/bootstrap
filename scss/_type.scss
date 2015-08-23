@@ -176,8 +176,8 @@ mark,
 
   > img {
     @extend .img-responsive;
-    line-height: 1;
     margin-bottom: ($spacer-y / 2);
+    line-height: 1;
   }
 }
 

@@ -12,6 +12,9 @@ linters:
   ColorKeyword:
     enabled: true
 
+  ColorVariable:
+    enabled: false
+
   Comment:
     enabled: true
     exclude: ['_normalize.scss', 'bootstrap.scss']
@@ -54,6 +57,9 @@ linters:
 
   IdSelector:
     enabled: true
+
+  ImportantRule:
+    enabled: false
 
   ImportPath:
     enabled: true

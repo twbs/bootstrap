@@ -266,9 +266,9 @@ input[type="checkbox"] {
 .form-control-warning,
 .form-control-error {
   padding-right: ($input-padding-x * 3);
+  background-repeat: no-repeat;
   background-position: center right ($input-height * .25);
   background-size: ($input-height * .65) ($input-height * .65);
-  background-repeat: no-repeat;
 }
 
 // Form validation states
