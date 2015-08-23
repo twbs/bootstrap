@@ -3274,7 +3274,7 @@ input[type="button"].btn-block {
 
 .input-group-addon.form-control-lg, .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.btn {
-  padding: 1.25rem 1.25rem;
+  padding: .75rem 1.25rem;
   font-size: 1.25rem;
   border-radius: .3rem;
 }
