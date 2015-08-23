@@ -35,7 +35,6 @@
   right: 0;
   left: 0;
   z-index: $zindex-navbar-fixed;
-  margin-bottom: 0; // override .navbar defaults
 
   // Undo the rounded corners
   @include media-breakpoint-up(sm) {
