@@ -86,7 +86,7 @@ Cards support a wide variety of content, including images, text, list groups, li
 
 ## Sizing
 
-Cards are block-level by default, so they'll fill the available horizontal space. Constrain their widths via inline styles, our predefined grid classes, or with custom styles using our grid mixins.
+Constrain the width or cards via custom CSS, our predefined grid classes, or with custom styles using our grid mixins.
 
 Using the grid:
 
