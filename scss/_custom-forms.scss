@@ -139,7 +139,6 @@
   // Have to include vendor prefixes as the `appearance` property isn't part of the CSS spec.
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
 
   // IE9 hacks to hide the background-image and reduce padding
   padding-right: .75rem \9;
