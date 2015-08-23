@@ -16,10 +16,11 @@
     padding: $tooltip-arrow-width 0;
     margin-top: -3px;
 
-    .tooltip-arrow {
+    .tooltip-inner:before {
       bottom: 0;
       left: 50%;
       margin-left: -$tooltip-arrow-width;
+      content: "";
       border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
       border-top-color: $tooltip-arrow-color;
     }
@@ -29,10 +30,11 @@
     padding: 0 $tooltip-arrow-width;
     margin-left: 3px;
 
-    .tooltip-arrow {
+    .tooltip-inner:before {
       top: 50%;
       left: 0;
       margin-top: -$tooltip-arrow-width;
+      content: "";
       border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
       border-right-color: $tooltip-arrow-color;
     }
@@ -42,10 +44,11 @@
     padding: $tooltip-arrow-width 0;
     margin-top: 3px;
 
-    .tooltip-arrow {
+    .tooltip-inner:before {
       top: 0;
       left: 50%;
       margin-left: -$tooltip-arrow-width;
+      content: "";
       border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
       border-bottom-color: $tooltip-arrow-color;
     }
@@ -55,10 +58,11 @@
     padding: 0 $tooltip-arrow-width;
     margin-left: -3px;
 
-    .tooltip-arrow {
+    .tooltip-inner:before {
       top: 50%;
       right: 0;
       margin-top: -$tooltip-arrow-width;
+      content: "";
       border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
       border-left-color: $tooltip-arrow-color;
     }
@@ -73,13 +77,12 @@
   text-align: center;
   background-color: $tooltip-bg;
   @include border-radius($border-radius);
-}
 
-// Arrows
-.tooltip-arrow {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
+  &:before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
 }
