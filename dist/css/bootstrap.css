@@ -3758,7 +3758,6 @@ input[type="button"].btn-block {
   right: 0;
   left: 0;
   z-index: 1030;
-  margin-bottom: 0;
 }
 
 @media (min-width: 34em) {
