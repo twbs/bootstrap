@@ -233,7 +233,7 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 
 ## Hidden content
 
-Hide any HTML element with the `[hidden]` attribute. Previously, v3.x included a `.hidden` class that forced toggled content. However, we removed it due to conflicts with jQuery's `hide()` function. It's taken from [PureCSS](http://purecss.io). While `[hidden]` technically isn't support in IE9-10, declaring it `display: none` in our CSS gets around.
+Hide any HTML element with the `[hidden]` attribute. Previously, v3.x included a `.hidden` class that forced toggled content. However, we removed it due to conflicts with jQuery's `hide()` function. It's taken from [PureCSS](http://purecss.io). While `[hidden]` isn't natively supported by IE9-10, declaring it `display: none` in our CSS gets around that problem.
 
 Furthermore, `.invisible` can be used to toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
 
