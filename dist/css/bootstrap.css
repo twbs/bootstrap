@@ -3448,6 +3448,11 @@ input[type="button"].btn-block {
   background-color: #0074d9;
 }
 
+.c-input > input:focus ~ .c-indicator {
+  -webkit-box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+          box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+}
+
 .c-input > input:active ~ .c-indicator {
   color: #fff;
   background-color: #84c6ff;
