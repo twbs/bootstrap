@@ -140,6 +140,10 @@
   .nav-item {
     float: left;
   }
+  
+  .nav-item:last-child {
+    margin-right: $navbar-padding-horizontal;
+  }
 
   .nav-link {
     display: block;
