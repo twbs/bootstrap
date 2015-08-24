@@ -93,7 +93,7 @@
   margin-left:  $navbar-padding-horizontal;
   overflow: hidden;
 
-  &:before {
+  &::before {
     content: "\00a0";
   }
 }
