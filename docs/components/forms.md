@@ -541,19 +541,21 @@ Block help text—for below inputs or for longer lines of help text—can be eas
 </p>
 {% endexample %}
 
+{% callout accessibility %}
+#### Associating help text with form controls
+If help text is used to provide additional instructions, hints or context, it should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.
+{% endcallout %}
+
+{% example html %}
+<label class="sr-only" for="inputHelpBlock">Input with help text</label>
+<input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+...
+<span id="helpBlock" class="text-muted">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+{% endexample %}
+
 ## Validation
 
-Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
-
-{% comment %}
-{% callout warning %}
-#### Conveying validation state to assistive technologies and colorblind users
-
-Using these validation styles to denote the state of a form control only provides a visual, color-based indication, which will not be conveyed to users of assistive technologies - such as screen readers - or to colorblind users.
-
-Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's `<label>` text itself (as is the case in the following code example), include a [Glyphicon](../components/#glyphicons) (with appropriate alternative text using the `.sr-only` class - see the [Glyphicon examples](../components/#glyphicons-examples)), or by providing an additional [help text](#forms-help-text) block. Specifically for assistive technologies, invalid form controls can also be assigned an `aria-invalid="true"` attribute.
-{% endcallout %}
-{% endcomment %}
+Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
 
 {% example html %}
 <div class="form-group has-success">
@@ -594,6 +596,14 @@ Ensure that an alternative indication of state is also provided. For instance, y
   </div>
 </div>
 {% endexample %}
+
+{% callout accessibility %}
+#### Conveying validation state to assistive technologies and colorblind users
+
+Using these validation styles to denote the state of a form control only provides a visual, color-based indication, which will not be conveyed to users of assistive technologies - such as screen readers - or to colorblind users.
+
+Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's `<label>` text itself, or by providing an additional [help text](#help-text) block. Specifically for assistive technologies, invalid form controls can also be assigned an `aria-invalid="true"` attribute.
+{% endcallout %}
 
 ## Custom forms
 
