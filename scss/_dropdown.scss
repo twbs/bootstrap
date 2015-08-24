@@ -24,6 +24,15 @@
   }
 }
 
+.dropup {
+  .dropdown-toggle {
+    &:after {
+      border-bottom: $caret-width solid;
+      border-top: 0;
+    }
+  }
+}
+
 // The dropdown menu (ul)
 .dropdown-menu {
   position: absolute;
