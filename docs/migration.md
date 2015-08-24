@@ -98,6 +98,20 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 Dropped entirely for the new card component.
 
+#### Panels
+
+- `.panel` to `.card`
+- `.panel-default` removed and no replacement
+- `.panel-heading` to `.card-header`
+- `.panel-title` to `.card-title`
+- `.panel-body` to `.card-block`
+- `.panel-footer` to `.card-footer`
+- `.panel-primary` to `.card-primary` and `.card-inverse`
+- `.panel-success` to `.card-success` and `.card-inverse`
+- `.panel-info` to `.card-info` and `.card-inverse`
+- `.panel-warning` to `.card-warning` and `.card-inverse`
+- `.panel-danger` to `.card-danger` and `.card-inverse`
+
 ### Carousel
 
 - Renamed `.item` to `.carousel-item`.
