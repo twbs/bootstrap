@@ -15,6 +15,10 @@ module.exports = function (grunt) {
     return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
   };
 
+  function capitalize (string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   var fs = require('fs');
   var path = require('path');
   var glob = require('glob');
@@ -116,7 +120,13 @@ module.exports = function (grunt) {
       },
       umd: {
         options: {
-          modules: 'umd'
+          modules: 'umd',
+          moduleIds: true,
+          getModuleId: function (moduleName) {
+            var parts = moduleName.split('/');
+            var fileName = parts[parts.length - 1].replace('.js', '');
+            return capitalize(fileName);;
+          }
         },
         files: {
           'dist/js/umd/util.js'      : 'js/src/util.js',
