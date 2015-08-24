@@ -5,8 +5,7 @@ git:
 node_js:
   - "0.12"
 before_install:
-  - export PATH=$HOME/.local/bin:$PATH
-  - travis_retry pip install -r test-infra/requirements.txt --user `whoami`
+  - travis_retry pip install -r test-infra/requirements.txt --user
   - rvm install 2.0.0 && rvm use 2.0.0
   - export GEMDIR=$(rvm gemdir)
   - if [ "$TWBS_TEST" = validate-html ]; then echo "ruby=$(basename $GEMDIR) jekyll=$JEKYLL_VERSION rouge=$ROUGE_VERSION" > pseudo_Gemfile.lock; fi
