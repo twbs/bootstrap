@@ -317,7 +317,7 @@ Build on the previous example by creating even more dynamic and powerful layouts
   <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
   <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
-  <div class="clearfix visible-xs-block"></div>
+  <div class="clearfix hidden-sm-up"></div>
   <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
 </div>
 {% endexample %}
@@ -348,7 +348,7 @@ With the four tiers of grids available you're bound to run into issues where, at
   <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
 
   <!-- Add the extra clearfix for only the required viewport -->
-  <div class="clearfix visible-xs-block"></div>
+  <div class="clearfix hidden-sm-up"></div>
 
   <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
   <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
