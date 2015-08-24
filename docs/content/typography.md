@@ -255,13 +255,13 @@ html {
 
 @include media-breakpoint-up(md) {
   html {
-    font-size: 28px;
+    font-size: 20px;
   }
 }
 
 @include media-breakpoint-up(lg) {
   html {
-    font-size: 20px;
+    font-size: 28px;
   }
 }
 {% endhighlight %}
