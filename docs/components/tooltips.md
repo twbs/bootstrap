@@ -15,7 +15,7 @@ Inspired by the excellent Tipsy jQuery plugin written by Jason Frame. Tooltips a
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on on the 3rd party library [tehter](http://github.hubspot.com/tether/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for tooltips to work!
+- Tooltips rely on on the 3rd party library [Tether](http://github.hubspot.com/tether/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for tooltips to work!
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -220,13 +220,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>constraints</td>
         <td>Array</td>
         <td>'hover focus'</td>
-        <td>An array of constraints - passed through to tether. For more information refer to tether's <a href="http://github.hubspot.com/tether/#constraints">constraint docs</a>.</td>
+        <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">constraint docs</a>.</td>
       </tr>
       <tr>
         <td>offsets</td>
         <td>string</td>
         <td>'0 0'</td>
-        <td>Offset of the popover relative to it's target. For more information refer to tether's <a href="http://github.hubspot.com/tether/#constraints">offset docs</a>.</td>
+        <td>Offset of the popover relative to it's target. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">offset docs</a>.</td>
       </tr>
     </tbody>
   </table>
@@ -264,7 +264,7 @@ Toggles an element's tooltip. **Returns to the caller before the tooltip has act
 
 #### .tooltip('destroy')
 
-Hides and destroys an element's tooltip. Tooltips that use delegation (which are created using [the `selector` option](#tooltips-options)) cannot be individually destroyed on descendant trigger elements.
+Hides and destroys an element's tooltip. Tooltips that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
 {% highlight js %}$('#element').tooltip('destroy'){% endhighlight %}
 

@@ -8,7 +8,7 @@
   > li {
     display: inline-block;
 
-    + li:before {
+    + li::before {
       $nbsp: "\00a0";
       padding-right: .5rem;
       padding-left: .5rem;

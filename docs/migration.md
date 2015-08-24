@@ -26,7 +26,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 - Media queries are now in `em`s instead of `px`s.
 - Global font-size increased from `14px` to `16px`.
 - Added a new grid tier for ~`480px` and below.
-- Replaced the separate optional theme with configurable options via SCSS variables (e.g., `@enable-gradients: true`).
+- Replaced the separate optional theme with configurable options via SCSS variables (e.g., `$enable-gradients: true`).
 
 ### Components
 
@@ -60,6 +60,8 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Responsive tables no longer require a wrapping element. Instead, just put the `.table-responsive` right on the `<table>`.
 - Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
+- Added a new `.table-reflow` option.
+- Added table header modifers: `.thead-default` and `.thead-inverse`
 
 ### Forms
 
@@ -75,6 +77,14 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Added a new `~480px` grid breakpoint, meaning there are now five total tiers.
 
+### Buttons
+
+- Dropped the `.btn-xs` class entirely.
+
+### Button group
+
+- Dropped the `.btn-group-xs` class entirely.
+
 ### Navs
 
 - Dropped nearly all `>` selectors for simpler styling via un-nested classes.
@@ -87,6 +97,20 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Panels, thumbnails, and wells
 
 Dropped entirely for the new card component.
+
+#### Panels
+
+- `.panel` to `.card`
+- `.panel-default` removed and no replacement
+- `.panel-heading` to `.card-header`
+- `.panel-title` to `.card-title`
+- `.panel-body` to `.card-block`
+- `.panel-footer` to `.card-footer`
+- `.panel-primary` to `.card-primary` and `.card-inverse`
+- `.panel-success` to `.card-success` and `.card-inverse`
+- `.panel-info` to `.card-info` and `.card-inverse`
+- `.panel-warning` to `.card-warning` and `.card-inverse`
+- `.panel-danger` to `.card-danger` and `.card-inverse`
 
 ### Carousel
 
@@ -112,7 +136,7 @@ We've added new components and changed some existing ones. Here are the new or u
 | Cards | New, more flexible component to replace v3's panels, thumbnails, and wells. |
 | New navbar | Replaces the previous navbar with a new, simpler component. |
 | New progress bars | Replaces the old `.progress` `<div>` with a real `<progress>` element. |
-| New table variants | |
+| New table variants | Adds `.table-inverse`, table head options, replaces `.table-condensed` with `.table-sm`, and `.table-reflow`. |
 | New utility classes | |
 
 TODO: audit new classes that didn't exist in v3

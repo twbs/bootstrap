@@ -4,7 +4,7 @@ title: Progress
 group: components
 ---
 
-Stylize the HTML5 `<progress>` element with a few extra classes and some crafty browser-specific CSS. Be sure to read up on the browser support.
+Stylize [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) with a few extra classes and some crafty browser-specific CSS. Be sure to read up on the browser support.
 
 ## Contents
 

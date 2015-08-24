@@ -86,7 +86,7 @@ Cards support a wide variety of content, including images, text, list groups, li
 
 ## Sizing
 
-Cards are block-level by default, so they'll fill the available horizontal space. Constrain their widths via inline styles, our predefined grid classes, or with custom styles using our grid mixins.
+Constrain the width of cards via custom CSS, our predefined grid classes, or with custom styles using our grid mixins.
 
 Using the grid:
 
@@ -121,7 +121,7 @@ Using custom widths:
 
 ## Text alignment
 
-You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]().
+You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.baseurl }}/components/utilities/#text-alignment).
 
 {% example html %}
 <div class="card card-block">
@@ -232,7 +232,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 Cards include a class for quickly toggling **the text color**. By default, cards use dark text and assume a light background. **Add `.card-inverse` for white text** and specify the `background-color` and `border-color` to go with it.
 
-You can also use `.card-inverse` with the [contextual backgrounds variants](#background-variations).
+You can also use `.card-inverse` with the [contextual backgrounds variants](#background-variants).
 
 {% example html %}
 <div class="card card-inverse" style="background-color: #333; border-color: #333;">
@@ -293,7 +293,7 @@ Cards include their own variant classes for quickly changing the `background-col
 
 ## Groups
 
-Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode](/layout/flexbox) can switch that to use `display: flex;` and provide the same effect.
+Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode]({{ site.baseurl }}/getting-started/flexbox) can switch that to use `display: flex;` and provide the same effect.
 
 {% example html %}
 <div class="card-group">
@@ -328,7 +328,7 @@ Use card groups to render cards as a single, attached element with equal width a
 
 Need a set of equal width and height cards that aren't attached to one another? Use card decks. By default, card decks require two wrapping elements: `.card-deck-wrapper` and a `.card-deck`. We use table styles for the sizing and the gutters on `.card-deck`. The `.card-deck-wrapper` is used to negative margin out the `border-spacing` on the `.card-deck`.
 
-**ProTip!** If you enable [flexbox mode](/layout/flexbox), you can remove the `.card-deck-wrapper`.
+**ProTip!** If you enable [flexbox mode]({{ site.baseurl }}/getting-started/flexbox/), you can remove the `.card-deck-wrapper`.
 
 {% example html %}
 <div class="card-deck-wrapper">
@@ -363,7 +363,9 @@ Need a set of equal width and height cards that aren't attached to one another? 
 
 ## Columns
 
-Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. **Heads up!** This is **not available in IE9 and below** as they have no support for the `column` CSS properties.
+Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`.
+
+**Heads up!** This is **not available in IE9 and below** as they have no support for the [`column-*` CSS properties](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_multi-column_layouts).
 
 {% example html %}
 <div class="card-columns">

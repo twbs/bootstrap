@@ -4,7 +4,7 @@ title: Button group
 group: components
 ---
 
-Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with [our buttons plugin](../javascript/#buttons).
+Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with [our buttons plugin]({{ site.baseurl }}/components/buttons/#button-plugin).
 
 ## Contents
 
@@ -68,19 +68,12 @@ Instead of applying button sizing classes to every button in a group, just add `
     <button type="button" class="btn btn-secondary">Middle</button>
     <button type="button" class="btn btn-secondary">Right</button>
   </div>
-  <br>
-  <div class="btn-group btn-group-xs" role="group" aria-label="Extra small button group">
-    <button type="button" class="btn btn-secondary">Left</button>
-    <button type="button" class="btn btn-secondary">Middle</button>
-    <button type="button" class="btn btn-secondary">Right</button>
-  </div>
 </div>
 
 {% highlight html %}
 <div class="btn-group btn-group-lg" role="group" aria-label="...">...</div>
 <div class="btn-group" role="group" aria-label="...">...</div>
 <div class="btn-group btn-group-sm" role="group" aria-label="...">...</div>
-<div class="btn-group btn-group-xs" role="group" aria-label="...">...</div>
 {% endhighlight %}
 
 ## Nesting
@@ -96,10 +89,10 @@ Place a `.btn-group` within another `.btn-group` when you want dropdown menus mi
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Dropdown
     </button>
-    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <li><a href="#">Dropdown link</a></li>
-      <li><a href="#">Dropdown link</a></li>
-    </ul>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a class="dropdown-item" href="#">Dropdown link</a>
+      <a class="dropdown-item" href="#">Dropdown link</a>
+    </div>
   </div>
 </div>
 {% endexample %}
@@ -116,10 +109,10 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
       <button id="btnGroupVerticalDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Dropdown
       </button>
-      <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1">
-        <li><a href="#">Dropdown link</a></li>
-        <li><a href="#">Dropdown link</a></li>
-      </ul>
+      <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1">
+        <a class="dropdown-item" href="#">Dropdown link</a>
+        <a class="dropdown-item" href="#">Dropdown link</a>
+      </div>
     </div>
     <button type="button" class="btn btn-secondary">Button</button>
     <button type="button" class="btn btn-secondary">Button</button>
@@ -127,28 +120,28 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
       <button id="btnGroupVerticalDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Dropdown
       </button>
-      <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop2">
-        <li><a href="#">Dropdown link</a></li>
-        <li><a href="#">Dropdown link</a></li>
-      </ul>
+      <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop2">
+        <a class="dropdown-item" href="#">Dropdown link</a>
+        <a class="dropdown-item" href="#">Dropdown link</a>
+      </div>
     </div>
     <div class="btn-group" role="group">
       <button id="btnGroupVerticalDrop3" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Dropdown
       </button>
-      <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop3">
-        <li><a href="#">Dropdown link</a></li>
-        <li><a href="#">Dropdown link</a></li>
-      </ul>
+      <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop3">
+        <a class="dropdown-item" href="#">Dropdown link</a>
+        <a class="dropdown-item" href="#">Dropdown link</a>
+      </div>
     </div>
     <div class="btn-group" role="group">
       <button id="btnGroupVerticalDrop4" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Dropdown
       </button>
-      <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
-        <li><a href="#">Dropdown link</a></li>
-        <li><a href="#">Dropdown link</a></li>
-      </ul>
+      <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
+        <a class="dropdown-item" href="#">Dropdown link</a>
+        <a class="dropdown-item" href="#">Dropdown link</a>
+      </div>
     </div>
   </div>
 </div>

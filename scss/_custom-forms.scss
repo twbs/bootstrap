@@ -19,14 +19,15 @@
     z-index: -1; // Put the input behind the label so it doesn't overlay text
     opacity: 0;
 
-    &:focus ~ .c-indicator {
-      @include box-shadow(0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9);
-    }
-
     &:checked ~ .c-indicator {
       color: #fff;
       background-color: #0074d9;
       @include box-shadow(none);
+    }
+
+    &:focus ~ .c-indicator {
+      // the mixin is not used here to make sure there is feedback
+      box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
     }
 
     &:active ~ .c-indicator {
@@ -108,7 +109,7 @@
   .c-input {
     display: inline;
 
-    &:after {
+    &::after {
       display: block;
       margin-bottom: .25rem;
       content: "";
@@ -125,29 +126,27 @@
 //
 // Replaces the browser default select with a custom one, mostly pulled from
 // http://primercss.io.
+//
+// Includes IE9-specific hacks (noted by ` \9`).
 
 .c-select {
   display: inline-block;
   max-width: 100%;
   padding: .375rem 1.75rem .375rem .75rem;
+  padding-right: .75rem \9;
   vertical-align: middle;
-	background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC) no-repeat right .75rem center;
+  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC) no-repeat right .75rem center;
+  background-image: none \9;
   background-size: 8px 10px;
   border: 1px solid $input-border;
-
-  // Have to include vendor prefixes as the `appearance` property isn't part of the CSS spec.
-  -webkit-appearance: none;
+  // Use vendor prefixes as `appearance` isn't part of the CSS spec.
   -moz-appearance: none;
-  appearance: none;
-
-  // IE9 hacks to hide the background-image and reduce padding
-  padding-right: .75rem \9;
-  background-image: none \9;
+  -webkit-appearance: none;
 
   &:focus {
-    outline: none;
     border-color: #51a7e8;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5);
+    outline: none;
+    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5));
   }
 
   // Hides the default caret in IE11
@@ -198,12 +197,12 @@
   background-color: #fff;
   border: .075rem solid #ddd;
   border-radius: .25rem;
-  box-shadow: inset 0 .2rem .4rem rgba(0,0,0,.05);
+  @include box-shadow(inset 0 .2rem .4rem rgba(0,0,0,.05));
 }
-.file-custom:after {
+.file-custom::after {
   content: "Choose file...";
 }
-.file-custom:before {
+.file-custom::before {
   position: absolute;
   top: -.075rem;
   right: -.075rem;
@@ -222,5 +221,5 @@
 
 // Focus state
 .file input:focus ~ .file-custom {
-  box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+  @include box-shadow(0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9);
 }

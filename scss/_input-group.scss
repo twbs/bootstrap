@@ -97,7 +97,7 @@
     @include border-radius($border-radius-sm);
   }
   &.form-control-lg {
-    padding: $input-padding-x-lg $input-padding-x-lg;
+    padding: $input-padding-y-lg $input-padding-x-lg;
     font-size: $font-size-lg;
     @include border-radius($border-radius-lg);
   }

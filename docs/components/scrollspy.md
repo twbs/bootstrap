@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Srollspy
+title: Scrollspy
 group: components
 ---
 
@@ -19,14 +19,14 @@ The ScrollSpy plugin is for automatically updating nav targets based on scroll p
     <ul class="nav nav-pills">
       <li class="nav-item"><a class="nav-link" href="#fat">@fat</a></li>
       <li class="nav-item"><a class="nav-link" href="#mdo">@mdo</a></li>
-      <li class="nav-item">
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-        <ul class="dropdown-menu">
-          <li><a href="#one">one</a></li>
-          <li><a href="#two">two</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#three">three</a></li>
-        </ul>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#one">one</a>
+          <a class="dropdown-item" href="#two">two</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#three">three</a>
+        </div>
       </li>
     </ul>
   </nav>
@@ -51,7 +51,7 @@ The ScrollSpy plugin is for automatically updating nav targets based on scroll p
 
 ### Requires Bootstrap nav
 
-Scrollspy currently requires the use of a [Bootstrap nav component](/components/nav/) for proper highlighting of active links.
+Scrollspy currently requires the use of a [Bootstrap nav component]({{ site.baseurl }}/components/nav/) for proper highlighting of active links.
 
 ### Requires relative positioning
 

@@ -35,7 +35,6 @@
   right: 0;
   left: 0;
   z-index: $zindex-navbar-fixed;
-  margin-bottom: 0; // override .navbar defaults
 
   // Undo the rounded corners
   @include media-breakpoint-up(sm) {
@@ -70,9 +69,9 @@
 
 .navbar-brand {
   float: left;
-  margin-right: 1rem;
   padding-top:    .25rem;
   padding-bottom: .25rem;
+  margin-right: 1rem;
   font-size: $font-size-lg;
 
   @include hover-focus {
@@ -90,12 +89,12 @@
   width: 1px;
   padding-top: .425rem;
   padding-bottom: .425rem;
-  overflow: hidden;
-  margin-left:  $navbar-padding-horizontal;
   margin-right: $navbar-padding-horizontal;
+  margin-left:  $navbar-padding-horizontal;
+  overflow: hidden;
 
-  &:before {
-    content: '\00a0';
+  &::before {
+    content: "\00a0";
   }
 }
 

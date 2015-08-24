@@ -9,7 +9,7 @@ Use any button to trigger a dropdown menu by placing it within a `.btn-group` an
 {% callout danger %}
 #### Plugin dependency
 
-Button dropdowns require the [dropdown plugin](../javascript/#dropdowns) to be included in your version of Bootstrap.
+Button dropdowns require the [dropdown plugin]({{ site.baseurl }}/components/dropdowns/) to be included in your version of Bootstrap.
 {% endcallout %}
 
 ## Contents
@@ -235,20 +235,6 @@ Button dropdowns work with buttons of all sizes.
       </div>
     </div><!-- /btn-group -->
   </div><!-- /btn-toolbar -->
-  <div class="btn-toolbar" role="toolbar">
-    <div class="btn-group">
-      <button class="btn btn-secondary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Extra small button
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-      </div>
-    </div><!-- /btn-group -->
-  </div><!-- /btn-toolbar -->
 </div><!-- /example -->
 
 {% highlight html %}
@@ -266,16 +252,6 @@ Button dropdowns work with buttons of all sizes.
 <div class="btn-group">
   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Small button
-  </button>
-  <div class="dropdown-menu">
-    ...
-  </div>
-</div>
-
-<!-- Extra small button group -->
-<div class="btn-group">
-  <button class="btn btn-secondary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Extra small button
   </button>
   <div class="dropdown-menu">
     ...

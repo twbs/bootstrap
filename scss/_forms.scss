@@ -148,7 +148,7 @@
   padding: $input-padding-y-sm $input-padding-x-sm;
   font-size: $font-size-sm;
   line-height: $line-height-sm;
-  border-radius: $input-border-radius-sm;
+  @include border-radius($input-border-radius-sm);
 }
 
 .form-control-lg {
@@ -156,7 +156,7 @@
   padding: $input-padding-y-lg $input-padding-x-lg;
   font-size: $font-size-lg;
   line-height: $line-height-lg;
-  border-radius: $input-border-radius-lg;
+  @include border-radius($input-border-radius-lg);
 }
 
 
@@ -266,9 +266,9 @@ input[type="checkbox"] {
 .form-control-warning,
 .form-control-error {
   padding-right: ($input-padding-x * 3);
+  background-repeat: no-repeat;
   background-position: center right ($input-height * .25);
   background-size: ($input-height * .65) ($input-height * .65);
-  background-repeat: no-repeat;
 }
 
 // Form validation states
