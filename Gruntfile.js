@@ -1,7 +1,7 @@
 /*!
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
- * Copyright 2013-2014 Twitter, Inc.
+ * Copyright 2013-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -336,6 +336,7 @@ module.exports = function (grunt) {
 
     jekyll: {
       options: {
+        bundleExec: true,
         config: '_config.yml'
       },
       docs: {},
@@ -350,7 +351,6 @@ module.exports = function (grunt) {
       options: {
         ignore: [
           'Element “img” is missing required attribute “src”.',
-          'Bad value “X-UA-Compatible” for attribute “http-equiv” on element “meta”.',
           'Attribute “autocomplete” not allowed on element “input” at this point.',
           'Attribute “autocomplete” not allowed on element “button” at this point.',
           'Element “div” not allowed as child of element “progress” in this context. (Suppressing further errors from this subtree.)',
@@ -438,7 +438,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs']);
+  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
