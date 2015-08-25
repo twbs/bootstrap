@@ -10,3 +10,7 @@ group :development, :test do
   gem 'scss-lint', '~> 0.31'
   gem 'jekyll-redirect-from', '~> 0.8.0'
 end
+
+group :jekyll_plugins do
+  gem 'jekyll-redirect-from', '~> 0.8'
+end
