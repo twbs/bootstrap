@@ -1,0 +1,13 @@
+---
+# Leave it empty to compile
+---
+
+[
+	{% for page in site.pages %}
+		{
+			"title"    : "{{ page.title | escape }}",
+			"url"      : "{{ site.baseurl }}{{ page.url }}",
+			"date"     : "{{ page.date }}"
+		} {% unless forloop.last %},{% endunless %}
+	{% endfor %}
+]

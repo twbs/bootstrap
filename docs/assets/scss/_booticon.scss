@@ -1,0 +1,25 @@
+//
+// Bootstrap "B" Booticon
+//
+
+.bd-booticon {
+  display: block;
+  width: 9rem;
+  height: 9rem;
+  font-size: 6.5rem;
+  line-height: 9rem;
+  color: #fff;
+  text-align: center;
+  cursor: default;
+  background-color: $bd-purple;
+  border-radius: 15%;
+
+  &.inverse {
+    color: $bd-purple;
+    background-color: #fff;
+  }
+  &.outline {
+    background-color: transparent;
+    border: 1px solid $bd-purple-light;
+  }
+}
