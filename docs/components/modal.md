@@ -336,11 +336,11 @@ Have a bunch of buttons that all trigger the same modal, just with slightly diff
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label for="recipient-name" class="control-label">Recipient:</label>
+              <label for="recipient-name" class="form-control-label">Recipient:</label>
               <input type="text" class="form-control" id="recipient-name">
             </div>
             <div class="form-group">
-              <label for="message-text" class="control-label">Message:</label>
+              <label for="message-text" class="form-control-label">Message:</label>
               <textarea class="form-control" id="message-text"></textarea>
             </div>
           </form>

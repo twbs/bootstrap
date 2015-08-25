@@ -535,7 +535,7 @@ Block help text—for below inputs or for longer lines of help text—can be eas
 
 ## Validation
 
-Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
+Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
 
 {% comment %}
 {% callout warning %}
@@ -549,15 +549,15 @@ Ensure that an alternative indication of state is also provided. For instance, y
 
 {% example html %}
 <div class="form-group has-success">
-  <label class="control-label" for="inputSuccess1">Input with success</label>
+  <label class="form-control-label" for="inputSuccess1">Input with success</label>
   <input type="text" class="form-control form-control-success" id="inputSuccess1">
 </div>
 <div class="form-group has-warning">
-  <label class="control-label" for="inputWarning1">Input with warning</label>
+  <label class="form-control-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
 </div>
 <div class="form-group has-error">
-  <label class="control-label" for="inputError1">Input with error</label>
+  <label class="form-control-label" for="inputError1">Input with error</label>
   <input type="text" class="form-control form-control-error" id="inputError1">
 </div>
 
