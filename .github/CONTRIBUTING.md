@@ -32,6 +32,8 @@ restrictions:
 * Please **do not** open issues regarding the official themes offered on <https://themes.getbootstrap.com/>.
   Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
 
+* Please **do not** open issues regarding the official themes offered on http://themes.getbootstrap.com/ . Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
+
 
 ## Issues and labels
 
