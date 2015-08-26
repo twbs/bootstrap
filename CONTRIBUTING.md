@@ -35,7 +35,7 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 
 - `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
 - `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Bootstrap.
-- `css` - Issues stemming from our compiled CSS or source Less files.
+- `css` - Issues stemming from our compiled CSS or source Sass files.
 - `docs` - Issues for improving or updating our documentation.
 - `examples` - Issues involving the example templates included in our docs.
 - `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
@@ -136,7 +136,7 @@ project (indentation, accurate comments, etc.) and any other requirements
 
 **Do not edit `bootstrap.css`, `bootstrap-theme.css`, or `bootstrap.js`
 directly!** Those files are automatically generated. You should edit the
-source files in [`/bootstrap/less/`](https://github.com/twbs/bootstrap/tree/master/less)
+source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/master/scss)
 and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/master/js) instead.
 
 Similarly, when contributing to Bootstrap's documentation, you should edit the
