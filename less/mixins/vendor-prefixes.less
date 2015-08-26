@@ -70,6 +70,13 @@
           box-shadow: @shadow;
 }
 
+.box-shadow-level-1(@color) {
+  -webkit-box-shadow: 0 1px 2px 0 fade(@color, 24),
+                      0 2px 2px 0 fade(@color, 12);
+          box-shadow: 0 1px 2px 0 fade(@color, 24),
+                      0 2px 2px 0 fade(@color, 12);
+}
+
 // Box sizing
 .box-sizing(@boxmodel) {
   -webkit-box-sizing: @boxmodel;

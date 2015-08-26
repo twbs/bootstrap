@@ -66,6 +66,36 @@
 <button type="button" class="btn btn-link">Link</button>
 {% endhighlight %}
 
+  <h2 id="outline-buttons">Outline Buttons</h2>
+  <p>Use any of the available outline buttons classes to quickly create a styled button.</p>
+  <div class="bs-example" data-example-id="btn-variants">
+    <button type="button" class="btn btn-default-outline">Default</button>
+    <button type="button" class="btn btn-primary-outline">Primary</button>
+    <button type="button" class="btn btn-success-outline">Success</button>
+    <button type="button" class="btn btn-info-outline">Info</button>
+    <button type="button" class="btn btn-warning-outline">Warning</button>
+    <button type="button" class="btn btn-danger-outline">Danger</button>
+  </div>
+{% highlight html %}
+<!-- Standard button -->
+<button type="button" class="btn btn-default-outline">Default</button>
+
+<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+<button type="button" class="btn btn-primary-outline">Primary</button>
+
+<!-- Indicates a successful or positive action -->
+<button type="button" class="btn btn-success-outline">Success</button>
+
+<!-- Contextual button for informational alert messages -->
+<button type="button" class="btn btn-info-outline">Info</button>
+
+<!-- Indicates caution should be taken with this action -->
+<button type="button" class="btn btn-warning-outline">Warning</button>
+
+<!-- Indicates a dangerous or potentially negative action -->
+<button type="button" class="btn btn-danger-outline">Danger</button>
+{% endhighlight %}
+
   <div class="bs-callout bs-callout-warning" id="callout-buttons-color-accessibility">
     <h4>Conveying meaning to assistive technologies</h4>
     <p>Using color to add meaning to a button only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the visible text of the button), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
@@ -157,6 +187,7 @@
   <p class="bs-example" data-example-id="disabled-button-btns">
     <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button>
     <button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button>
+    <button type="button" class="btn btn-info-outline btn-lg" disabled="disabled">Button</button>
   </p>
 {% highlight html %}
 <button type="button" class="btn btn-lg btn-primary" disabled="disabled">Primary button</button>
