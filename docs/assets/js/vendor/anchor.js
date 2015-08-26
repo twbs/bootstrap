@@ -1,5 +1,5 @@
 /*!
- * AnchorJS - v1.0.1 - 2015-05-15
+ * AnchorJS - v1.2.1 - 2015-07-02
  * https://github.com/bryanbraun/anchorjs
  * Copyright (c) 2015 Bryan Braun; Licensed MIT
  */
@@ -10,7 +10,7 @@ function AnchorJS(options) {
   this.options = options || {};
 
   this._applyRemainingDefaultOptions = function(opts) {
-    this.options.icon = this.options.hasOwnProperty('icon') ? opts.icon : '&#xe9cb'; // Accepts characters (and also URLs?), like  '#', '¶', '❡', or '§'.
+    this.options.icon = this.options.hasOwnProperty('icon') ? opts.icon : '\ue9cb'; // Accepts characters (and also URLs?), like  '#', '¶', '❡', or '§'.
     this.options.visible = this.options.hasOwnProperty('visible') ? opts.visible : 'hover'; // Also accepts 'always'
     this.options.placement = this.options.hasOwnProperty('placement') ? opts.placement : 'right'; // Also accepts 'left'
     this.options.class = this.options.hasOwnProperty('class') ? opts.class : ''; // Accepts any class name.
@@ -30,9 +30,7 @@ function AnchorJS(options) {
         count,
         newTidyText,
         readableID,
-        anchor,
-        div,
-        anchorNodes;
+        anchor;
 
     this._applyRemainingDefaultOptions(this.options);
 
@@ -66,13 +64,13 @@ function AnchorJS(options) {
         // Refine it so it makes a good ID. Strip out non-safe characters, replace
         // spaces with hyphens, truncate to 32 characters, and make toLowerCase.
         //
-        // Example string:                                // '⚡⚡⚡ Unicode icons are cool--but don't belong in a URL.'
-        tidyText = roughText.replace(/[^\w\s-]/gi, '')    // ' Unicode icons are cool--but dont belong in a URL'
-                                .replace(/\s+/g, '-')     // '-Unicode-icons-are-cool--but-dont-belong-in-a-URL'
-                                .replace(/-{2,}/g, '-')   // '-Unicode-icons-are-cool-but-dont-belong-in-a-URL'
-                                .substring(0, 32)         // '-Unicode-icons-are-cool-but-dont'
-                                .replace(/^-+|-+$/gm, '') // 'Unicode-icons-are-cool-but-dont'
-                                .toLowerCase();           // 'unicode-icons-are-cool-but-dont'
+        // Example string:                                // '⚡⚡⚡ Unicode icons are cool--but they definitely don't belong in a URL fragment.'
+        tidyText = roughText.replace(/[^\w\s-]/gi, '')    // ' Unicode icons are cool--but they definitely dont belong in a URL fragment'
+                                .replace(/\s+/g, '-')     // '-Unicode-icons-are-cool--but-they-definitely-dont-belong-in-a-URL-fragment'
+                                .replace(/-{2,}/g, '-')   // '-Unicode-icons-are-cool-but-they-definitely-dont-belong-in-a-URL-fragment'
+                                .substring(0, 64)         // '-Unicode-icons-are-cool-but-they-definitely-dont-belong-in-a-URL'
+                                .replace(/^-+|-+$/gm, '') // 'Unicode-icons-are-cool-but-they-definitely-dont-belong-in-a-URL'
+                                .toLowerCase();           // 'unicode-icons-are-cool-but-they-definitely-dont-belong-in-a-url'
 
         // Compare our generated ID to existing IDs (and increment it if needed)
         // before we add it to the page.
@@ -98,31 +96,34 @@ function AnchorJS(options) {
 
       readableID = elementID.replace(/-/g, ' ');
 
-      anchor = '<a class="anchorjs-link ' + this.options.class + '" href="#' + elementID + '" aria-label="Anchor link for: ' + readableID + '" data-anchorjs-icon="' + this.options.icon + '"></a>';
-
-      div = document.createElement('div');
-      div.innerHTML = anchor;
-      anchorNodes = div.childNodes;
+      // The following code builds the following DOM structure in a more effiecient (albeit opaque) way.
+      // '<a class="anchorjs-link ' + this.options.class + '" href="#' + elementID + '" aria-label="Anchor link for: ' + readableID + '" data-anchorjs-icon="' + this.options.icon + '"></a>';
+      anchor = document.createElement('a');
+      anchor.className = 'anchorjs-link ' + this.options.class;
+      anchor.href = '#' + elementID;
+      anchor.setAttribute('aria-label', 'Anchor link for: ' + readableID);
+      anchor.setAttribute('data-anchorjs-icon', this.options.icon);
 
       if (this.options.visible === 'always') {
-        anchorNodes[0].style.opacity = '1';
+        anchor.style.opacity = '1';
       }
 
-      if (this.options.icon === '&#xe9cb') {
-        anchorNodes[0].style.fontFamily = 'anchorjs-icons';
-        anchorNodes[0].style.fontStyle = 'normal';
-        anchorNodes[0].style.fontVariant = 'normal';
-        anchorNodes[0].style.fontWeight = 'normal';
+      if (this.options.icon === '\ue9cb') {
+        anchor.style.fontFamily = 'anchorjs-icons';
+        anchor.style.fontStyle = 'normal';
+        anchor.style.fontVariant = 'normal';
+        anchor.style.fontWeight = 'normal';
+        anchor.style.lineHeight = 1;
       }
 
       if (this.options.placement === 'left') {
-        anchorNodes[0].style.position = 'absolute';
-        anchorNodes[0].style.marginLeft = '-1em';
-        anchorNodes[0].style.paddingRight = '0.5em';
-        elements[i].insertBefore(anchorNodes[0], elements[i].firstChild);
+        anchor.style.position = 'absolute';
+        anchor.style.marginLeft = '-1em';
+        anchor.style.paddingRight = '0.5em';
+        elements[i].insertBefore(anchor, elements[i].firstChild);
       } else { // if the option provided is `right` (or anything else).
-        anchorNodes[0].style.paddingLeft = '0.375em';
-        elements[i].appendChild(anchorNodes[0]);
+        anchor.style.paddingLeft = '0.375em';
+        elements[i].appendChild(anchor);
       }
     }
 
