@@ -116,12 +116,12 @@ const Popover = (($) => {
       let tip          = this.getTipElement()
       let title        = this.getTitle()
       let content      = this._getContent()
-      let titleElement = $(tip).find(Selector.TITLE)[0]
+      let $titleElement = $(tip).find(Selector.TITLE)
 
-      if (titleElement) {
-        titleElement[
-          this.config.html ? 'innerHTML' : 'innerText'
-        ] = title
+      if ($titleElement) {
+        $titleElement[
+          this.config.html ? 'html' : 'text'
+        ](title)
       }
 
       // we use append for html objects to maintain js events
