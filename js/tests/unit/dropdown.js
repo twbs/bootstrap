@@ -119,6 +119,29 @@ $(function () {
     assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
   })
 
+  QUnit.test('should not open dropdown if event has default prevented', function (assert) {
+    assert.expect(1)
+    var dropdownHTML = '<ul class="tabs">'
+        + '<li class="dropdown">'
+        + '<button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>'
+        + '<ul class="dropdown-menu">'
+        + '<li><a href="#">Secondary link</a></li>'
+        + '<li><a href="#">Something else here</a></li>'
+        + '<li class="divider"/>'
+        + '<li><a href="#">Another link</a></li>'
+        + '</ul>'
+        + '</li>'
+        + '</ul>'
+    var $dropdownHTML = $(dropdownHTML)
+    $dropdownHTML.find('[data-toggle="dropdown"]').bootstrapDropdown()
+
+    $dropdownHTML.on('click', function (e) {
+      e.preventDefault()
+    }).trigger('click')
+
+    assert.ok(!$dropdownHTML.find('.dropdown').hasClass('open'), '"open" class added on click')
+  })
+
   QUnit.test('should add class open to menu if clicked', function (assert) {
     assert.expect(1)
     var dropdownHTML = '<ul class="tabs">'
