@@ -31,15 +31,21 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script>
 
+{% if page.layout == "docs" %}
+<script src="{{ site.baseurl }}/assets/js/vendor/jekyll-search.js"></script>
+
 <script>
 SimpleJekyllSearch.init({
   searchInput: document.getElementById('search-input'),
   resultsContainer: document.getElementById('search-results'),
   searchResultTemplate: '<a class="dropdown-item" href="{url}">{title}</a>',
   noResultsText: '<div class="dropdown-item no-results">Sorry, there are no results for that search.</div>',
-  dataSource: '/search.json'
+  json: '/search.json'
 })
+</script>
+{% endif %}
 
+<script>
 Holder.addTheme('gray', {
   background: '#777',
   foreground: 'rgba(255,255,255,.75)',
