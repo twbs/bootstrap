@@ -37,15 +37,14 @@
     outline: 0;
     @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
-
-  &.disabled,
-  &:disabled,
-  fieldset[disabled] & {
-    cursor: $cursor-disabled;
-    opacity: .65;
-    @include box-shadow(none);
-  }
 }
+
+@include form-state-disabled('.btn') {
+  cursor: $cursor-disabled;
+  opacity: .65;
+  @include box-shadow(none);
+}
+
 
 // Future-proof disabling of clicks on `<a>` elements
 a.btn.disabled,
@@ -58,44 +57,20 @@ fieldset[disabled] a.btn {
 // Alternate buttons
 //
 
-.btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-}
-.btn-secondary {
-  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
-}
-.btn-info {
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
-}
-.btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
-}
-.btn-warning {
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-}
-.btn-danger {
-  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
-}
+@include button-variant('.btn-primary', $btn-primary-color, $btn-primary-bg, $btn-primary-border);
+@include button-variant('.btn-secondary', $btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+@include button-variant('.btn-info', $btn-info-color, $btn-info-bg, $btn-info-border);
+@include button-variant('.btn-success', $btn-success-color, $btn-success-bg, $btn-success-border);
+@include button-variant('.btn-warning', $btn-warning-color, $btn-warning-bg, $btn-warning-border);
+@include button-variant('.btn-danger', $btn-danger-color, $btn-danger-bg, $btn-danger-border);
 
 // Remove all backgrounds
-.btn-primary-outline {
-  @include button-outline-variant($btn-primary-bg);
-}
-.btn-secondary-outline {
-  @include button-outline-variant($btn-secondary-border);
-}
-.btn-info-outline {
-  @include button-outline-variant($btn-info-bg);
-}
-.btn-success-outline {
-  @include button-outline-variant($btn-success-bg);
-}
-.btn-warning-outline {
-  @include button-outline-variant($btn-warning-bg);
-}
-.btn-danger-outline {
-  @include button-outline-variant($btn-danger-bg);
-}
+@include button-outline-variant('.btn-primary-outline', $btn-primary-bg);
+@include button-outline-variant('.btn-secondary-outline', $btn-secondary-border);
+@include button-outline-variant('.btn-info-outline', $btn-info-bg);
+@include button-outline-variant('.btn-success-outline', $btn-success-bg);
+@include button-outline-variant('.btn-warning-outline', $btn-warning-bg);
+@include button-outline-variant('.btn-danger-outline', $btn-danger-bg);
 
 
 //
@@ -110,9 +85,7 @@ fieldset[disabled] a.btn {
 
   &,
   &:active,
-  &.active,
-  &:disabled,
-  fieldset[disabled] & {
+  &.active {
     background-color: transparent;
     @include box-shadow(none);
   }
@@ -129,15 +102,13 @@ fieldset[disabled] a.btn {
     text-decoration: $link-hover-decoration;
     background-color: transparent;
   }
-  &:disabled,
-  fieldset[disabled] & {
-    @include hover-focus {
-      color: $btn-link-disabled-color;
-      text-decoration: none;
-    }
+}
+@include form-state-disabled('.btn-link') {
+  @include hover-focus {
+    color: $btn-link-disabled-color;
+    text-decoration: none;
   }
 }
-
 
 //
 // Button Sizes

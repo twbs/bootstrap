@@ -87,3 +87,31 @@
     height: auto;
   }
 }
+
+// Applies the content to the disabled state of the selector.
+//
+// For example:
+//
+//   @include form-state-disabled('.btn') {
+//     color: #111
+//   }
+//
+// Compiles to:
+//
+//   .btn.disabled,
+//   .btn:disabled,
+//   fieldset[disabled] .btn {
+//     color: #111;
+//   }
+//
+// This avoids issues with using the parent selector suffix, as in `fieldset[disabled] &`.
+// See https://github.com/sass/sass/issues/1817.
+@mixin form-state-disabled($selector, $modifiers: ':disabled, .disabled') {
+  #{selector-unify($selector, $modifiers), selector-nest('fieldset[disabled]', $selector)} {
+    @content;
+  }
+}
+
+@include form-state-disabled('button') {
+  color: red;
+}
