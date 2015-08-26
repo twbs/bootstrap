@@ -348,9 +348,9 @@
         value: function setContent() {
           var tip = this.getTipElement();
           var title = this.getTitle();
-          var method = this.config.html ? 'innerHTML' : 'innerText';
+          var method = this.config.html ? 'html' : 'text';
 
-          $(tip).find(Selector.TOOLTIP_INNER)[0][method] = title;
+          $(tip).find(Selector.TOOLTIP_INNER)[method](title);
 
           $(tip).removeClass(ClassName.FADE).removeClass(ClassName.IN);
 

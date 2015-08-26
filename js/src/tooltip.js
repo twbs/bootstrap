@@ -358,9 +358,9 @@ const Tooltip = (($) => {
     setContent() {
       let tip    = this.getTipElement()
       let title  = this.getTitle()
-      let method = this.config.html ? 'innerHTML' : 'innerText'
+      let method = this.config.html ? 'html' : 'text'
 
-      $(tip).find(Selector.TOOLTIP_INNER)[0][method] = title
+      $(tip).find(Selector.TOOLTIP_INNER)[method](title)
 
       $(tip)
         .removeClass(ClassName.FADE)
