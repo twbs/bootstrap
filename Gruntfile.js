@@ -399,14 +399,6 @@ module.exports = function (grunt) {
     exec: {
       npmUpdate: {
         command: 'npm update'
-      },
-      bundleUpdate: {
-        command: function () {
-          // Update dev gems and all the test gemsets
-          return 'bundle update && ' + glob.sync('test-infra/gemfiles/*.gemfile').map(function (gemfile) {
-            return 'BUNDLE_GEMFILE=' + gemfile + ' bundle update';
-          }).join(' && ');
-        }
       }
     },
 
@@ -531,7 +523,4 @@ module.exports = function (grunt) {
       done();
     });
   });
-  // Task for updating the cached RubyGem packages used by the Travis build (which are controlled by test-infra/Gemfile.lock).
-  // This task should be run and the updated file should be committed whenever Bootstrap's RubyGem dependencies change.
-  grunt.registerTask('update-gemfile-lock', ['exec:bundleUpdate']);
 };
