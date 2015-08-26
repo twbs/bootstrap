@@ -1,7 +1,0 @@
-// Responsive utilities
-
-@mixin responsive-invisibility($parent) {
-  #{$parent} {
-    display: none !important;
-  }
-}

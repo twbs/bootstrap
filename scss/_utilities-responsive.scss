@@ -44,6 +44,6 @@
 
 .hidden-print {
   @media print {
-    @include responsive-invisibility(".hidden-print");
+    display: none !important;
   }
 }
