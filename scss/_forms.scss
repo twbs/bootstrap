@@ -50,15 +50,13 @@
   // disabled if the fieldset is disabled. Due to implementation difficulty, we
   // don't honor that edge case; we style them as disabled anyway.
   &:disabled,
-  &[readonly],
-  fieldset[disabled] & {
+  &[readonly] {
     background-color: $input-bg-disabled;
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
   }
 
-  &[disabled],
-  fieldset[disabled] & {
+  &:disabled {
     cursor: $cursor-disabled;
   }
 }
@@ -233,24 +231,21 @@
 input[type="radio"],
 input[type="checkbox"] {
   &:disabled,
-  &.disabled,
-  fieldset[disabled] & {
+  &.disabled {
     cursor: $cursor-disabled;
   }
 }
 // These classes are used directly on <label>s
 .radio-inline,
 .checkbox-inline {
-  &.disabled,
-  fieldset[disabled] & {
+  &.disabled {
     cursor: $cursor-disabled;
   }
 }
 // These classes are used on elements with <label> descendants
 .radio,
 .checkbox {
-  &.disabled,
-  fieldset[disabled] & {
+  &.disabled {
     label {
       cursor: $cursor-disabled;
     }
