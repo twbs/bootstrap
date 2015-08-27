@@ -44,25 +44,22 @@
     opacity: 1;
   }
 
-  // Disabled and read-only inputs
-  //
-  // HTML5 says that controls under a fieldset > legend:first-child won't be
-  // disabled if the fieldset is disabled. Due to implementation difficulty, we
-  // don't honor that edge case; we style them as disabled anyway.
-  &:disabled,
-  &[readonly],
-  fieldset[disabled] & {
-    background-color: $input-bg-disabled;
-    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
-    opacity: 1;
-  }
-
-  &[disabled],
-  fieldset[disabled] & {
-    cursor: $cursor-disabled;
-  }
 }
 
+// Disabled and read-only inputs
+//
+// HTML5 says that controls under a fieldset > legend:first-child won't be
+// disabled if the fieldset is disabled. Due to implementation difficulty, we
+// don't honor that edge case; we style them as disabled anyway.
+@include form-state-disabled('.form-control', $modifiers: ':disabled, [readonly]') {
+  background-color: $input-bg-disabled;
+  // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+  opacity: 1;
+}
+
+@include form-state-disabled('.form-control') {
+  cursor: $cursor-disabled;
+}
 
 // Make file inputs better match text inputs by forcing them to new lines.
 .form-control-file,
@@ -230,30 +227,17 @@
 // Some special care is needed because <label>s don't inherit their parent's `cursor`.
 //
 // Note: Neither radios nor checkboxes can be readonly.
-input[type="radio"],
-input[type="checkbox"] {
-  &:disabled,
-  &.disabled,
-  fieldset[disabled] & {
-    cursor: $cursor-disabled;
-  }
+@include form-state-disabled('input[type="radio"], input[type="checkbox"]') {
+  cursor: $cursor-disabled;
 }
 // These classes are used directly on <label>s
-.radio-inline,
-.checkbox-inline {
-  &.disabled,
-  fieldset[disabled] & {
-    cursor: $cursor-disabled;
-  }
+@include form-state-disabled('.radio-inline, .checkbox-inline') {
+  cursor: $cursor-disabled;
 }
 // These classes are used on elements with <label> descendants
-.radio,
-.checkbox {
-  &.disabled,
-  fieldset[disabled] & {
-    label {
-      cursor: $cursor-disabled;
-    }
+@include form-state-disabled('.radio, .checkbox') {
+  label {
+    cursor: $cursor-disabled;
   }
 }
 
