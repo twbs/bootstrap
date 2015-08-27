@@ -16,7 +16,7 @@ Opt your images into responsive behavior (so they never become larger than their
 Images in Bootstrap are made responsive with `.img-fluid`. `max-width: 100%;` and `height: auto;` are applied to the image so that it scales with the parent element.
 
 <div class="bd-example">
-  <img data-src="holder.js/100%x250" class="img-fluid" alt="Generic responsive image">
+  <img data-src="holder.js/100px250" class="img-fluid" alt="Generic responsive image">
 </div>
 
 {% highlight html %}
