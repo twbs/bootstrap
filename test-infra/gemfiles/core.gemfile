@@ -1,7 +1,0 @@
-# Ruby Gems for the 'core' set of tests
-# Run `grunt update-gemfile-lock` to update to the latest compatible versions
-
-source 'https://rubygems.org'
-
-gem 'sass', '~> 3.4.9'
-gem 'scss-lint', '~> 0.31'

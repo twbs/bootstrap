@@ -52,7 +52,7 @@ Install Bootstrap in your Node powered apps with [the npm package](https://www.n
 
 Bootstrap's `package.json` contains some additional metadata under the following keys:
 
-- `less` - path to Bootstrap's main [Less](http://lesscss.org) source file
+- `sass` - path to Bootstrap's main [Sass](http://sass-lang.com/) source file
 - `style` - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)
 
 ### Meteor

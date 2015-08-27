@@ -151,7 +151,7 @@ The following components have been removed in v4.0.0.
 | Wells |  | Cards |
 | Justified navs | | |
 
-TODO: audit classes in v4 that aren't present in v4
+TODO: audit classes in v3 that aren't present in v4
 
 ### Responsive utilities
 

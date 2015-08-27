@@ -190,10 +190,6 @@ module.exports = function (grunt) {
         src: '<%= concat.bootstrap.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       },
-      customize: {
-        src: configBridge.paths.customizerJs,
-        dest: 'docs/assets/js/customize.min.js'
-      },
       docsJs: {
         src: configBridge.paths.docsJs,
         dest: 'docs/assets/js/docs.min.js'
@@ -403,14 +399,6 @@ module.exports = function (grunt) {
     exec: {
       npmUpdate: {
         command: 'npm update'
-      },
-      bundleUpdate: {
-        command: function () {
-          // Update dev gems and all the test gemsets
-          return 'bundle update && ' + glob.sync('test-infra/gemfiles/*.gemfile').map(function (gemfile) {
-            return 'BUNDLE_GEMFILE=' + gemfile + ' bundle update';
-          }).join(' && ');
-        }
       }
     },
 
@@ -467,6 +455,7 @@ module.exports = function (grunt) {
       runSubset('sauce-js-unit') &&
       // Skip Sauce on Travis when [skip sauce] is in the commit message
       isUndefOrNonZero(process.env.TWBS_DO_SAUCE)) {
+    testSubtasks.push('babel:dev');
     testSubtasks.push('connect');
     testSubtasks.push('saucelabs-qunit');
   }
@@ -474,7 +463,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['eslint', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'lineremover', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
+  grunt.registerTask('dist-js', ['babel:dev', 'concat', 'lineremover', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
 
   grunt.registerTask('test-scss', ['scsslint']);
 
@@ -535,7 +524,4 @@ module.exports = function (grunt) {
       done();
     });
   });
-  // Task for updating the cached RubyGem packages used by the Travis build (which are controlled by test-infra/Gemfile.lock).
-  // This task should be run and the updated file should be committed whenever Bootstrap's RubyGem dependencies change.
-  grunt.registerTask('update-gemfile-lock', ['exec:bundleUpdate']);
 };
