@@ -65,7 +65,7 @@ Put it all together and your pages should look like this:
 </html>
 {% endhighlight %}
 
-That's all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/scaffolding) or [our official examples]({{ site.baseurl }}/examples/) to start laying out your site's content and components.
+That's all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/overview) or [our official examples]({{ site.baseurl }}/examples/) to start laying out your site's content and components.
 
 ## Important globals
 
