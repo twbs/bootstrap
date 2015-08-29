@@ -444,7 +444,7 @@
           this._originalBodyPadding = document.body.style.paddingRight || '';
 
           if (this._isBodyOverflowing) {
-            document.body.style.paddingRight = bodyPadding + (this._scrollbarWidth + 'px');
+            document.body.style.paddingRight = bodyPadding + this._scrollbarWidth + 'px';
           }
         }
       }, {
