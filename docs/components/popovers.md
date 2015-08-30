@@ -193,7 +193,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       </tr>
       <tr>
         <td>content</td>
-        <td>string | function</td>
+        <td>string | element | function</td>
         <td>''</td>
         <td>
           <p>Default content value if <code>data-content</code> attribute isn't present.</p>
@@ -245,7 +245,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       </tr>
       <tr>
         <td>title</td>
-        <td>string | function</td>
+        <td>string | element | function</td>
         <td>''</td>
         <td>
           <p>Default title value if <code>title</code> attribute isn't present.</p>
