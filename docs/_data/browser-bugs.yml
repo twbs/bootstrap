@@ -1,0 +1,281 @@
+-
+  browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    Hovered element still remains in `:hover` state after scrolling away.
+  upstream_bug: >
+    IE#926665
+  origin: >
+    Bootstrap#14211
+
+-
+  browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
+  upstream_bug: >
+    IE#963961
+  origin: >
+    Bootstrap#14528
+
+-
+  browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
+  upstream_bug: >
+    IE#1463734
+  origin: >
+    Bootstrap#16671
+
+-
+  browser: >
+    Firefox
+  summary: >
+    `.table-bordered` with an empty `<tbody>` is missing borders.
+  upstream_bug: >
+    Mozilla#1023761
+  origin: >
+    Bootstrap#13453
+
+-
+  browser: >
+    Firefox
+  summary: >
+    `max-width: 100%;` doesn't work inside tables.
+  upstream_bug: >
+    Mozilla#975632
+  origin: >
+    Bootstrap#10690
+
+-
+  browser: >
+    Firefox (Windows)
+  summary: >
+    Java applets that are descendants of elements with forced hardware acceleration using `translate3d(0,0,0)` are invisible.
+  upstream_bug: >
+    Mozilla#1048279
+  origin: >
+    Bootstrap#14124
+
+-
+  browser: >
+    Firefox
+  summary: >
+    Button elements with `width: 100%` become cropped in long tables.
+  upstream_bug: >
+    Mozilla#1060131
+  origin: >
+    Bootstrap#14320
+
+-
+  browser: >
+    Firefox
+  summary: >
+    If the disabled state of a form control is changed via JavaScript, the normal state doesn't return after refreshing the page.
+  upstream_bug: >
+    Mozilla#654072
+  origin: >
+    Bootstrap#793
+
+-
+  browser: >
+    Chrome (OS X)
+  summary: >
+    Clicking above `<input type="number">` increment button flashes the decrement button.
+  upstream_bug: >
+    Chromium#419108
+  origin: >
+    Offshoot of Bootstrap#8350 & Chromium#337668
+
+-
+  browser: >
+    Chrome (OS X)
+  summary: >
+    Caps Lock indicator not shown in `<input type="password">` with `display: block`
+  upstream_bug: >
+    Chromium#460200
+  origin: >
+    Bootstrap#15832
+
+-
+  browser: >
+    Chrome
+  summary: >
+    Focus ring of image map within a modal is displayed in the wrong location.
+  upstream_bug: >
+    Chromium#475128
+  origin: >
+    Bootstrap#16180
+
+-
+  browser: >
+    Chrome
+  summary: >
+    Incorrect viewport size used for media queries when printing.
+  upstream_bug: >
+    Chromium#273306
+  origin: >
+    Bootstrap#12078
+
+-
+  browser: >
+    Chrome
+  summary: >
+    CSS infinite linear animation with alpha transparency leaks memory.
+  upstream_bug: >
+    Chromium#429375
+  origin: >
+    Bootstrap#14409
+
+-
+  browser: >
+    Chrome
+  summary: >
+    `:focus` `outline` style causes cursor to not be displayed when toggling a `readonly` `<input>` to read-write.
+  upstream_bug: >
+    Chromium#465274
+  origin: >
+    Bootstrap#16022
+
+-
+  browser: >
+    Chrome
+  summary: >
+    `width: 1%` on nested table cell causes its table to hog horizontal space.
+  upstream_bug: >
+    Chromium#427994
+  origin: >
+    Bootstrap#16372
+
+-
+  browser: >
+    Chrome (Windows & Linux)
+  summary: >
+    Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
+  upstream_bug: >
+    Chromium#449180
+  origin: >
+    Bootstrap#15298
+
+-
+  browser: >
+    Safari
+  summary: >
+    `width: 1%` on nested table cell causes its table to hog horizontal space.
+  upstream_bug: >
+    WebKit#144696, Safari#20839572
+  origin: >
+    Bootstrap#16372
+
+-
+  browser: >
+    Safari
+  summary: >
+    Incorrect placement of `position: fixed` element when it's a child of a `position: relative; left: X%;` element.
+  upstream_bug: >
+    WebKit#147284, Safari#21993128
+  origin: >
+    Bootstrap#16814
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Scrollbar clipped in `select[multiple]` with padding.
+  upstream_bug: >
+    WebKit#128489, Safari#19208483
+  origin: >
+    Bootstrap#12536
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Weird button behavior with some `<input type="number">` elements.
+  upstream_bug: >
+    WebKit#137269, Safari#18834768
+  origin: >
+    Bootstrap#8350,
+    Normalize#283,
+    Chromium#337668
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    `display: table-cell;` within media query renders incorrectly when resizing the window.
+  upstream_bug: >
+    WebKit#138167, Safari#18987206
+  origin: >
+    Bootstrap#9774
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Small font size when printing webpage with fixed-width `.container`.
+  upstream_bug: >
+    WebKit#138192, Safari#19435018
+  origin: >
+    Bootstrap#14868
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    Focus ring of image map within a modal is displayed in the wrong location.
+  upstream_bug: >
+    WebKit#143527, Safari#21908735
+  origin: >
+    Bootstrap#16180
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    `transform: translate3d(0,0,0);` rendering bug.
+  upstream_bug: >
+    WebKit#138162, Safari#18804973
+  origin: >
+    Bootstrap#14603
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Text input's cursor doesn't move while scrolling the page.
+  upstream_bug: >
+    WebKit#138201, Safari#18819624
+  origin: >
+    Bootstrap#14708
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Can't move cursor to start of text after entering long string of text into `<input type="text">`
+  upstream_bug: >
+    WebKit#148061, Safari#22299624
+  origin: >
+    Bootstrap#16988
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    `display: block` causes text of temporal `<input>`s to become vertically misaligned
+  upstream_bug: >
+    WebKit#139848, Safari#19434878
+  origin: >
+    Bootstrap#11266, Bootstrap#13098
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Tapping below `<input>`s can focus them in some cases
+  upstream_bug: >
+    WebKit#146244, Safari#21509310
+  origin: >
+    Bootstrap#15968

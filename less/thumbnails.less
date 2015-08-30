@@ -3,51 +3,34 @@
 // --------------------------------------------------
 
 
-// Note: `.thumbnails` and `.thumbnails > li` are overriden in responsive files
-
-// Make wrapper ul behave like the grid
-.thumbnails {
-  margin-left: -@gridGutterWidth;
-  list-style: none;
-  .clearfix();
-}
-// Fluid rows have no left margin
-.row-fluid .thumbnails {
-  margin-left: 0;
-}
-
-// Float li to make thumbnails appear in a row
-.thumbnails > li {
-  float: left; // Explicity set the float since we don't require .span* classes
-  margin-bottom: @baseLineHeight;
-  margin-left: @gridGutterWidth;
-}
-
-// The actual thumbnail (can be `a` or `div`)
+// Mixin and adjust the regular image class
 .thumbnail {
   display: block;
-  padding: 4px;
-  line-height: @baseLineHeight;
-  border: 1px solid #ddd;
-  .border-radius(@baseBorderRadius);
-  .box-shadow(0 1px 3px rgba(0,0,0,.055));
-  .transition(all .2s ease-in-out);
-}
-// Add a hover/focus state for linked versions only
-a.thumbnail:hover,
-a.thumbnail:focus {
-  border-color: @linkColor;
-  .box-shadow(0 1px 4px rgba(0,105,214,.25));
-}
+  padding: @thumbnail-padding;
+  margin-bottom: @line-height-computed;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 1px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(border .2s ease-in-out);
 
-// Images and captions
-.thumbnail > img {
-  display: block;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.thumbnail .caption {
-  padding: 9px;
-  color: @gray;
+  > img,
+  a > img {
+    &:extend(.img-responsive);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // Add a hover state for linked versions only
+  a&:hover,
+  a&:focus,
+  a&.active {
+    border-color: @link-color;
+  }
+
+  // Image captions
+  .caption {
+    padding: @thumbnail-caption-padding;
+    color: @thumbnail-caption-color;
+  }
 }

@@ -1,55 +1,66 @@
-// Media objects
-// Source: http://stubbornella.org/content/?p=497
-// --------------------------------------------------
+.media {
+  // Proper spacing between instances of .media
+  margin-top: 15px;
 
+  &:first-child {
+    margin-top: 0;
+  }
+}
 
-// Common styles
-// -------------------------
-
-// Clear the floats
 .media,
 .media-body {
-  overflow: hidden;
-  *overflow: visible;
   zoom: 1;
+  overflow: hidden;
 }
 
-// Proper spacing between instances of .media
-.media,
-.media .media {
-  margin-top: 15px;
-}
-.media:first-child {
-  margin-top: 0;
+.media-body {
+  width: 10000px;
 }
 
-// For images and videos, set to block
 .media-object {
   display: block;
+
+  // Fix collapse in webkit from max-width: 100% and display: table-cell.
+  &.img-thumbnail {
+    max-width: none;
+  }
+}
+
+.media-right,
+.media > .pull-right {
+  padding-left: 10px;
+}
+
+.media-left,
+.media > .pull-left {
+  padding-right: 10px;
+}
+
+.media-left,
+.media-right,
+.media-body {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.media-middle {
+  vertical-align: middle;
+}
+
+.media-bottom {
+  vertical-align: bottom;
 }
 
 // Reset margins on headings for tighter default spacing
 .media-heading {
-  margin: 0 0 5px;
+  margin-top: 0;
+  margin-bottom: 5px;
 }
-
-
-// Media image alignment
-// -------------------------
-
-.media > .pull-left {
-  margin-right: 10px;
-}
-.media > .pull-right {
-  margin-left: 10px;
-}
-
 
 // Media list variation
-// -------------------------
-
+//
 // Undo default ul/ol styles
 .media-list {
-  margin-left: 0;
+  padding-left: 0;
   list-style: none;
 }
