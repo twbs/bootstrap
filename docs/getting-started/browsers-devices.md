@@ -143,7 +143,7 @@ As of v4, Bootstrap no longer supports IE8. **If you require IE8 support, we rec
 
 Alternatively, you may add some third party JavaScript to backfill support for IE8 to Bootstrap 4. You'll need the following:
 
-* [The HTML5 shiv](http://en.wikipedia.org/wiki/HTML5_Shiv)
+* [The HTML5 shiv](https://en.wikipedia.org/wiki/HTML5_Shiv)
 * [Respond.js](https://github.com/scottjehl/Respond)
 * [Rem unit polyfill](https://github.com/chuckcarpenter/REM-unit-polyfill)
 
