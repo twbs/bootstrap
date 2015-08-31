@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../bastrap3/bootstrap.min.css">
     <link rel="stylesheet" href="../bastrap3/bastrap.css">
     <link rel="stylesheet" href="assets/buenosaires.css">
+    <link rel="stylesheet" href="../bastrap3/vendor/chosen/chosen.min.css">
     <!--[if lt IE 9]>
       <script src="../bastrap3/html5shiv.min.js"></script>
       <script src="../bastrap3/respond.min.js"></script>
@@ -102,6 +103,39 @@
     <main class="main-container" role="main">
       <div class="container">
         <h1>Noticias de Buenos Aires</h1>
+
+        <!-- Filto -->
+        <br>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+              <label class="control-label" for="inputSuccess2">Filtrar por áreas</label>
+              <select class="form-control chosen-select" data-placeholder="Elegí una opción">
+                <option value="">Todas las áreas</option>
+                <option value="">Subte</option>
+                <option value="">Salud</option>
+                <option value="">Cultura</option>
+                <option value="">Mantenimiento</option>
+                <option value="">Patrimonio e Instituto Histórico</option>
+                <option value="">Jefe de Gobierno</option>
+              </select>
+            </div>
+            <div class="clearfix visible-xs"></div>
+            <br class="visible-xs">
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+              <label class="control-label" for="inputSuccess2">Ordenar noticias por</label>
+              <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group btn-group-justified">
+                  <a href="#" class="btn btn-default active">Más recientes</a>
+                  <a href="#" class="btn btn-default">Más populares</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <!-- Fin de Filto -->
+
         <section class="row list-group list-group-content search-list">
           <div class="col-md-6 col-sm-12">
             <a href="#" class="list-group-item list-thumb" data-original-title="" title="">
@@ -246,5 +280,12 @@
     <script src="../bastrap3/jquery.min.js"></script>
     <script src="../bastrap3/bootstrap.min.js"></script>
     <script src="assets/buenosaires.js"></script>
+
+    <script src="../bastrap3/vendor/chosen/chosen.jquery.min.js"></script>
+    <script>
+      $(function(){
+        $(".chosen-select").chosen();
+      });
+    </script>
   </body>
 </html>
