@@ -603,7 +603,7 @@ We hide the default `<input>` with `opacity` and use the `.c-indicator` to build
 
 With the sibling selector (`~`), we use the `:checked` state to trigger a makeshift checked state on the custom control.
 
-In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](http://useiconic.com/open). This provides us the best control for styling and positioning across browsers and devices.
+In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](https://useiconic.com/open). This provides us the best control for styling and positioning across browsers and devices.
 
 #### Checkboxes
 

@@ -6328,7 +6328,7 @@ a.bg-danger:hover {
 }
 
 @media print {
-  .hidden-print .hidden-print {
+  .hidden-print {
     display: none !important;
   }
 }

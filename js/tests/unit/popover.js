@@ -86,6 +86,42 @@ $(function () {
     assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
+  QUnit.test('should allow DOMElement title and content (html: true)', function (assert) {
+    assert.expect(5)
+    var title = document.createTextNode('@glebm <3 writing tests')
+    var content = $('<i>¯\\_(ツ)_/¯</i>').get(0)
+    var $popover = $('<a href="#" rel="tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({ html: true, title: title, content: content })
+
+    $popover.bootstrapPopover('show')
+
+    assert.notEqual($('.popover').length, 0, 'popover inserted')
+    assert.strictEqual($('.popover .popover-title').text(), '@glebm <3 writing tests', 'title inserted')
+    assert.ok($.contains($('.popover').get(0), title), 'title node moved, not copied')
+    // toLowerCase because IE8 will return <I>...</I>
+    assert.strictEqual($('.popover .popover-content').html().toLowerCase(), '<i>¯\\_(ツ)_/¯</i>', 'content inserted')
+    assert.ok($.contains($('.popover').get(0), content), 'content node moved, not copied')
+  })
+
+  QUnit.test('should allow DOMElement title and content (html: false)', function (assert) {
+    assert.expect(5)
+    var title = document.createTextNode('@glebm <3 writing tests')
+    var content = $('<i>¯\\_(ツ)_/¯</i>').get(0)
+    var $popover = $('<a href="#" rel="tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({ title: title, content: content })
+
+    $popover.bootstrapPopover('show')
+
+    assert.notEqual($('.popover').length, 0, 'popover inserted')
+    assert.strictEqual($('.popover .popover-title').text(), '@glebm <3 writing tests', 'title inserted')
+    assert.ok(!$.contains($('.popover').get(0), title), 'title node copied, not moved')
+    assert.strictEqual($('.popover .popover-content').html(), '¯\\_(ツ)_/¯', 'content inserted')
+    assert.ok(!$.contains($('.popover').get(0), content), 'content node copied, not moved')
+  })
+
+
   QUnit.test('should not duplicate HTML object', function (assert) {
     assert.expect(6)
     var $div = $('<div/>').html('loves writing tests （╯°□°）╯︵ ┻━┻')

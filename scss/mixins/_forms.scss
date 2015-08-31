@@ -3,7 +3,7 @@
 // Used in _forms.scss to generate the form validation CSS for warnings, errors,
 // and successes.
 
-@mixin form-control-validation($state, $color) {
+@mixin form-control-validation($color) {
   // Color the label and help text
   .help-block,
   .control-label,

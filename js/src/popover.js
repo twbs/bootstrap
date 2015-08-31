@@ -34,7 +34,7 @@ const Popover = (($) => {
   })
 
   const DefaultType = $.extend({}, Tooltip.DefaultType, {
-    content : '(string|function)'
+    content : '(string|element|function)'
   })
 
   const ClassName = {
@@ -113,24 +113,13 @@ const Popover = (($) => {
     }
 
     setContent() {
-      let tip          = this.getTipElement()
-      let title        = this.getTitle()
-      let content      = this._getContent()
-      let $titleElement = $(tip).find(Selector.TITLE)
-
-      if ($titleElement) {
-        $titleElement[
-          this.config.html ? 'html' : 'text'
-        ](title)
-      }
+      let $tip = $(this.getTipElement())
 
       // we use append for html objects to maintain js events
-      $(tip).find(Selector.CONTENT).children().detach().end()[
-        this.config.html ?
-          (typeof content === 'string' ? 'html' : 'append') : 'text'
-      ](content)
+      this.setElementContent($tip.find(Selector.TITLE), this.getTitle())
+      this.setElementContent($tip.find(Selector.CONTENT), this._getContent())
 
-      $(tip)
+      $tip
         .removeClass(ClassName.FADE)
         .removeClass(ClassName.IN)
 

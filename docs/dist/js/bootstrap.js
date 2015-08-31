@@ -3054,9 +3054,9 @@ var Tooltip = (function ($) {
       value: function setContent() {
         var tip = this.getTipElement();
         var title = this.getTitle();
-        var method = this.config.html ? 'innerHTML' : 'innerText';
+        var method = this.config.html ? 'html' : 'text';
 
-        $(tip).find(Selector.TOOLTIP_INNER)[0][method] = title;
+        $(tip).find(Selector.TOOLTIP_INNER)[method](title);
 
         $(tip).removeClass(ClassName.FADE).removeClass(ClassName.IN);
 
@@ -3418,10 +3418,10 @@ var Popover = (function ($) {
         var tip = this.getTipElement();
         var title = this.getTitle();
         var content = this._getContent();
-        var titleElement = $(tip).find(Selector.TITLE)[0];
+        var $titleElement = $(tip).find(Selector.TITLE);
 
-        if (titleElement) {
-          titleElement[this.config.html ? 'innerHTML' : 'innerText'] = title;
+        if ($titleElement) {
+          $titleElement[this.config.html ? 'html' : 'text'](title);
         }
 
         // we use append for html objects to maintain js events

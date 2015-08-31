@@ -273,7 +273,7 @@ input[type="checkbox"] {
 
 // Form validation states
 .has-success {
-  @include form-control-validation(success, $brand-success);
+  @include form-control-validation($brand-success);
 
   .form-control-success {
     background-image: url($form-icon-success);
@@ -281,7 +281,7 @@ input[type="checkbox"] {
 }
 
 .has-warning {
-  @include form-control-validation(warning, $brand-warning);
+  @include form-control-validation($brand-warning);
 
   .form-control-warning {
     background-image: url($form-icon-warning);
@@ -289,7 +289,7 @@ input[type="checkbox"] {
 }
 
 .has-error {
-  @include form-control-validation(error, $brand-danger);
+  @include form-control-validation($brand-danger);
 
   .form-control-error {
     background-image: url($form-icon-error);
