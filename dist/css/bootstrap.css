@@ -1092,7 +1092,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5555555;
   color: #829ca9;
@@ -1202,7 +1202,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Sharp Sans Frontieres', "Avenir", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.2;
   color: #00b9ff;
@@ -6323,7 +6323,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: normal;
@@ -6442,7 +6442,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: normal;
@@ -7163,7 +7163,7 @@ h6,
 h1,
 h2,
 h3 {
-  font-family: "Sharp Sans Frontieres", "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Sharp Sans Frontieres', "Avenir", Helvetica, Arial, sans-serif;
 }
 h4,
 h5 {
