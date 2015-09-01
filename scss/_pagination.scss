@@ -24,13 +24,17 @@
       > a,
       > span {
         margin-left: 0;
-        @include border-left-radius($border-radius);
+        @if $enable-rounded {
+          @include border-left-radius($border-radius);
+        }
       }
     }
     &:last-child {
       > a,
       > span {
-        @include border-right-radius($border-radius);
+        @if $enable-rounded {
+          @include border-right-radius($border-radius);
+        }
       }
     }
   }
