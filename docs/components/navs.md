@@ -316,34 +316,32 @@ When showing a new tab, the events fire in the following order:
 
 If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events will not be fired.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-     <tr>
-       <th style="width: 150px;">Event Type</th>
-       <th>Description</th>
-     </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>show.bs.tab</td>
-        <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
-     </tr>
-     <tr>
-        <td>shown.bs.tab</td>
-        <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
-      </tr>
-      <tr>
-        <td>hide.bs.tab</td>
-        <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
-      </tr>
-      <tr>
-        <td>hidden.bs.tab</td>
-        <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+   <tr>
+     <th style="width: 150px;">Event Type</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>show.bs.tab</td>
+      <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
+   </tr>
+   <tr>
+      <td>shown.bs.tab</td>
+      <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
+    </tr>
+    <tr>
+      <td>hide.bs.tab</td>
+      <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
+    </tr>
+    <tr>
+      <td>hidden.bs.tab</td>
+      <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
+    </tr>
+  </tbody>
+</table>
 
 {% highlight js %}
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
