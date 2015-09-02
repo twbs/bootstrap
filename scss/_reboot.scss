@@ -279,13 +279,13 @@ legend {
 }
 
 input[type="search"] {
+  // Undo Normalize's default here to match our global overrides.
+  box-sizing: inherit;
   // This overrides the extra rounded corners on search inputs in iOS so that our
   // `.form-control` class can properly style them. Note that this cannot simply
   // be added to `.form-control` as it's not specific enough. For details, see
   // https://github.com/twbs/bootstrap/issues/11586.
   -webkit-appearance: none;
-  // Undo Normalize's default here to match our global overrides.
-  box-sizing: inherit;
 }
 
 // todo: needed?
