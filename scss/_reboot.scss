@@ -284,6 +284,8 @@ input[type="search"] {
   // be added to `.form-control` as it's not specific enough. For details, see
   // https://github.com/twbs/bootstrap/issues/11586.
   -webkit-appearance: none;
+  // Undo Normalize's default here to match our global overrides.
+  box-sizing: inherit;
 }
 
 // todo: needed?
