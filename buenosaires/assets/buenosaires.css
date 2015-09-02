@@ -1153,8 +1153,8 @@ margin-bottom: 16px;
   background: url(../../bastrap3/black4.png) !important;
 }
 .jumbotron.area-header .container {
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .jumbotron.area-header .navbar-collapse {
   padding:0;
@@ -1196,10 +1196,6 @@ header.jumbotron {
 .breadcrumb {
   margin: 0 0 8px 0;
   padding: 24px 0 0 0;
-}
-.breadcrumb {
-  margin-left:15px;
-  margin-right:15px;
 }
 .jumbotron .breadcrumb {
   margin: 0 0 8px 0;
@@ -1265,6 +1261,10 @@ header.jumbotron {
 
 /* Gallery - para museos*/
 
+.row-gallery {
+  margin-right: -15px;
+  margin-left: -15px;
+}
 .row-gallery a {
   padding-left: 15px;
   padding-right: 15px;
@@ -1377,6 +1377,10 @@ aside .thumbnail:focus {
 article .thumbnail:active,
 aside .thumbnail:active {
   opacity:1;
+}
+aside .row-modalcarousel {
+  margin-right: -15px;
+  margin-left: -15px;
 }
 aside .row-modalcarousel a {
   padding-left:15px;
@@ -1596,11 +1600,6 @@ section h2 {
     height:350px;
   }
 }*/
-.ba-noticias .main-container > .container h1,
-.ba-miba .main-container > .container h1,
-.ba-tramites .main-container > .container h1 {
-  margin-left:15px;
-}
 .ba-noticias .list-group-content > div {
   margin:0;
 }
