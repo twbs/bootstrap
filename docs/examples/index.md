@@ -34,7 +34,7 @@ Examples that focus on implementing uses of built-in components provided by Boot
     <p>Build around the jumbotron with a navbar and some basic grid columns.</p>
   </div>
   <div class="col-xs-6 col-md-4">
-    <a href="{{ site.baseurl }}/examples/jumbotron-narrow/">
+    <a href="{{ site.baseurl }}/examples/narrow-jumbotron/">
       <img class="img-thumbnail" src="{{ site.baseurl }}/examples/screenshots/jumbotron-narrow.jpg" alt="">
     </a>
     <h4>Narrow jumbotron</h4>
