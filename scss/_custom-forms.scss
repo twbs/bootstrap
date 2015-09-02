@@ -115,6 +115,10 @@
       content: "";
     }
 
+    &:last-child::after {
+      display: inherit;
+    }
+
     + .c-input {
       margin-left: 0;
     }
