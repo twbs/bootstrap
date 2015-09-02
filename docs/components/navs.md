@@ -62,8 +62,8 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
   <li class="nav-item">
     <a href="#" class="nav-link">Another link</a>
   </li>
-  <li class="nav-item disabled">
-    <a href="#" class="nav-link">Disabled</a>
+  <li class="nav-item">
+    <a href="#" class="nav-link disabled">Disabled</a>
   </li>
 </ul>
 {% endexample %}
