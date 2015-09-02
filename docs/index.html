@@ -55,17 +55,17 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
 
     <div class="row">
       <div class="col-sm-4 m-b-lg">
-        <img src="assets/img/sass.png" alt="Sass support" class="img-responsive">
+        <img src="assets/img/sass.png" alt="Sass support" class="img-fluid">
         <h4>Preprocessor</h4>
         <p>Bootstrap ships with vanilla CSS, but its source code utilizes <a href="http://sass-lang.com/">Sass</a>, a popular CSS preprocessor. Quickly get started with precompiled CSS or build on the source.</p>
       </div>
       <div class="col-sm-4 m-b-lg">
-        <img src="assets/img/devices.png" alt="Responsive across devices" class="img-responsive">
+        <img src="assets/img/devices.png" alt="Responsive across devices" class="img-fluid">
         <h4>One framework, every device.</h4>
         <p>Bootstrap easily and efficiently scales your websites and applications with a single code base, from phones to tablets to desktops with CSS media queries.</p>
       </div>
       <div class="col-sm-4 m-b-lg">
-        <img src="assets/img/components.png" alt="Components" class="img-responsive">
+        <img src="assets/img/components.png" alt="Components" class="img-fluid">
         <h4>Full of features</h4>
         <p>With Bootstrap, you get extensive and beautiful documentation for common HTML elements, dozens of custom HTML and CSS components, and awesome jQuery plugins.</p>
       </div>
@@ -89,7 +89,7 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
       <a href="{{ site.themes }}" class="btn btn-bs btn-outline">Browse themes</a>
     </p>
 
-    <img class="img-responsive center-block" src="{{ site.baseurl }}/assets/img/bs-themes.png" alt="Bootstrap Themes" width="1024" height="388">
+    <img class="img-fluid center-block" src="{{ site.baseurl }}/assets/img/bs-themes.png" alt="Bootstrap Themes" width="1024" height="388">
   </div>
 </div>
 
@@ -102,7 +102,7 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
     {% for showcase in site.data.showcase %}
       <div class="col-xs-6 col-sm-3">
         <a href="{{ showcase.expo_url }}" target="_blank" title="{{ showcase.name }}">
-          <img src="{{ site.baseurl }}/assets/img/expo-{{ showcase.img }}.jpg" alt="{{ showcase.name }}" class="img-responsive">
+          <img src="{{ site.baseurl }}/assets/img/expo-{{ showcase.img }}.jpg" alt="{{ showcase.name }}" class="img-fluid">
         </a>
       </div>
     {% endfor %}

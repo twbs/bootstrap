@@ -175,7 +175,7 @@ mark,
   display: inline-block;
 
   > img {
-    @extend .img-responsive;
+    @extend .img-fluid;
     margin-bottom: ($spacer-y / 2);
     line-height: 1;
   }

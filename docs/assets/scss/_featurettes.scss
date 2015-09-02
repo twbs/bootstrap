@@ -72,7 +72,7 @@
 }
 
 @media (min-width: 480px) {
-  .bd-featurette .img-responsive {
+  .bd-featurette .img-fluid {
     margin-top: 2rem;
   }
 }
@@ -91,7 +91,7 @@
   .bd-featurette .lead {
     max-width: 80%;
   }
-  .bd-featurette .img-responsive {
+  .bd-featurette .img-fluid {
     margin-top: 0;
   }
 }

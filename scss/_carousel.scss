@@ -16,7 +16,7 @@
     // Account for jankitude on images
     > img,
     > a > img {
-      @extend .img-responsive;
+      @extend .img-fluid;
       line-height: 1;
     }
 
