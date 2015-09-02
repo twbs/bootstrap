@@ -32,7 +32,7 @@ GEM
       toml (~> 0.1.0)
     jekyll-coffeescript (1.0.1)
       coffee-script (~> 2.2)
-    jekyll-gist (1.3.3)
+    jekyll-gist (1.3.4)
     jekyll-paginate (1.1.0)
     jekyll-redirect-from (0.8.0)
       jekyll (>= 2.0)
@@ -64,7 +64,7 @@ GEM
     scss_lint (0.41.0)
       rainbow (~> 2.0)
       sass (~> 3.4.15)
-    timers (4.0.1)
+    timers (4.0.4)
       hitimes
     toml (0.1.2)
       parslet (~> 1.5.0)
