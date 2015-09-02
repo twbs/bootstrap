@@ -37,6 +37,15 @@
 //
 // Common styles for small and large grid columns
 
+.col {
+  position: relative;
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Inner gutter via padding
+  padding-left: ($grid-gutter-width / 2);
+  padding-right: ($grid-gutter-width / 2);
+}
+
 @include make-grid-columns();
 
 
