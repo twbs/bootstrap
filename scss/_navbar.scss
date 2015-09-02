@@ -137,6 +137,7 @@
 // Custom navbar navigation built on the base `.nav` styles.
 
 .navbar-nav {
+  @include clearfix;
   .nav-item {
     float: left;
   }
