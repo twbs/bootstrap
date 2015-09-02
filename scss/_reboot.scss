@@ -146,7 +146,7 @@ blockquote {
 
 a {
   color: $link-color;
-  text-decoration: none;
+  text-decoration: $link-decoration;
 
   @include hover-focus {
     color: $link-hover-color;
