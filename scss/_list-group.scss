@@ -37,6 +37,12 @@
     border-width: .0625rem 0;
     border-radius: 0;
   }
+  &:first-child {
+    margin-top: -.0625rem;
+  }
+  &:last-child {
+    margin-bottom: -.0625rem;
+  }
 }
 
 
