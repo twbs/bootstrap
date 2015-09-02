@@ -6,7 +6,7 @@
 @mixin form-control-validation($color) {
   // Color the label and help text
   .help-block,
-  .control-label,
+  .form-control-label,
   .radio,
   .checkbox,
   .radio-inline,
