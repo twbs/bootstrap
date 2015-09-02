@@ -293,7 +293,8 @@
   .bg-success,
   .bg-info,
   .bg-warning,
-  .bg-danger {
+  .bg-danger,
+  .bg-inverse {
     &:not(.navbar) {
       padding: .5rem;
       margin-top: .5rem;
