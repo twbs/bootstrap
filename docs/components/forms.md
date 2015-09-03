@@ -396,7 +396,7 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 When you need to place plain text next to a form label within a form, use the `.form-control-static` class on a `<p>`.
 
 {% example html %}
-<form class="form-horizontal">
+<form>
   <div class="form-group row">
     <label class="col-sm-2 form-control-label">Email</label>
     <div class="col-sm-10">
