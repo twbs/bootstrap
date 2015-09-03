@@ -66,6 +66,7 @@ In need of a button, but not the hefty background colors they bring? Replace the
 <button type="button" class="btn btn-primary-outline">Primary</button>
 <button type="button" class="btn btn-secondary-outline">Secondary</button>
 <button type="button" class="btn btn-success-outline">Success</button>
+<button type="button" class="btn btn-info-outline">Info</button>
 <button type="button" class="btn btn-warning-outline">Warning</button>
 <button type="button" class="btn btn-danger-outline">Danger</button>
 {% endexample %}
