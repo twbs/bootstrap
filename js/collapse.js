@@ -158,8 +158,10 @@
     var href
     var target = $trigger.attr('data-target')
       || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
-
-    return $(target)
+    // look first in the closest modal
+    var realm = $trigger.closest('.modal')
+    if (!realm.length) realm = document
+    return $(target, realm)
   }
 
 
