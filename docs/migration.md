@@ -54,6 +54,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - `.dl-horizontal` now requires grid classes, increasing flexbility in column widths.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
 
+### Images
+
+- Renamed `.img-responsive` to `.img-fluid`.
+
 ### Tables
 
 - Nearly all instances of the `>` selector have been removed, meaning nested tables will now automatically inherit styles from their parents. This greatly simplifies our selectors and potential customizations.
