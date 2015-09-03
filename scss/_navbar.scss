@@ -129,6 +129,11 @@
       display: block !important;
     }
   }
+  &-md {
+    @include media-breakpoint-up(lg) {
+      display: block !important;
+    }
+  }
 }
 
 
