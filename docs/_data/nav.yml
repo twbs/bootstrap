@@ -1,13 +1,13 @@
 - title: Getting started
   pages:
     # - title: JavaScript
-    # - title: Accessibility
     - title: Introduction
     - title: Download
     - title: Browsers & devices
     - title: Options
     - title: Flexbox
     - title: Build tools
+    - title: Accessibility
     - title: Best practices
 
 - title: Layout
