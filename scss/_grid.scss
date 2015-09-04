@@ -4,13 +4,8 @@
 
 .container {
   @include make-container();
+  @include make-container-max-widths();
 
-  // For each breakpoint, define the maximum width of the container in a media query
-  @each $breakpoint, $container-max-width in $container-max-widths {
-    @include media-breakpoint-up($breakpoint) {
-      max-width: $container-max-width;
-    }
-  }
 }
 
 
@@ -28,8 +23,10 @@
 //
 // Rows contain and clear the floats of your columns.
 
-.row {
-  @include make-row();
+@if $enable-grid-classes {
+  .row {
+    @include make-row();
+  }
 }
 
 
@@ -37,14 +34,16 @@
 //
 // Common styles for small and large grid columns
 
-@include make-grid-columns();
+@if $enable-grid-classes {
+  @include make-grid-columns();
+}
 
 
 // Flex variation
 //
 // Custom styles for additional flex alignment options.
 
-@if $enable-flex {
+@if $enable-flex and $enable-grid-classes {
 
   // Flex column reordering
 

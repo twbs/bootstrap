@@ -278,16 +278,6 @@ module.exports = function (grunt) {
       }
     },
 
-    usebanner: {
-      options: {
-        position: 'top',
-        banner: '<%= banner %>'
-      },
-      files: {
-        src: 'dist/css/*.css'
-      }
-    },
-
     csscomb: {
       options: {
         config: 'scss/.csscomb.json'
@@ -475,7 +465,7 @@ module.exports = function (grunt) {
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
   grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
 
-  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'autoprefixer:core', 'usebanner', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
+  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'autoprefixer:core', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);

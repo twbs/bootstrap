@@ -59,24 +59,24 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
     <thead>
       <tr>
         <th></th>
-        <th>
-          Extra small
+        <th class="text-center">
+          Extra small<br>
           <small>&lt;34em / 480px</small>
         </th>
-        <th>
-          Small
+        <th class="text-center">
+          Small<br>
           <small>&ge;34em / 480px</small>
         </th>
-        <th>
-          Medium
+        <th class="text-center">
+          Medium<br>
           <small>&ge;45em / 720px</small>
         </th>
-        <th>
-          Large
+        <th class="text-center">
+          Large<br>
           <small>&ge;62em / 992px</small>
         </th>
-        <th>
-          Extra large
+        <th class="text-center">
+          Extra large<br>
           <small>&ge;75em / 1200px</small>
         </th>
       </tr>

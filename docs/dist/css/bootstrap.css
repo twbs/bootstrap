@@ -649,7 +649,7 @@ mark,
   color: #818a91;
 }
 
-.img-responsive, .figure > img, .carousel-inner > .carousel-item > img,
+.img-fluid, .figure > img, .carousel-inner > .carousel-item > img,
 .carousel-inner > .carousel-item > a > img {
   display: block;
   max-width: 100%;
