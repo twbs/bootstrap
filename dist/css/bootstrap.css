@@ -1411,11 +1411,11 @@ a.bg-success:focus {
 }
 .bg-info {
   color: #fff;
-  background-image: -webkit-linear-gradient(top, #2cc7f9 0%, #1bd0fb 100%);
-  background-image:      -o-linear-gradient(top, #2cc7f9 0%, #1bd0fb 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#2cc7f9), to(#1bd0fb));
-  background-image:         linear-gradient(to bottom, #2cc7f9 0%, #1bd0fb 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2cc7f9', endColorstr='#ff1bd0fb', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #00b9ff 0%, #36c9ff 100%);
+  background-image:      -o-linear-gradient(top, #00b9ff 0%, #36c9ff 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00b9ff), to(#36c9ff));
+  background-image:         linear-gradient(to bottom, #00b9ff 0%, #36c9ff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00b9ff', endColorstr='#ff36c9ff', GradientType=0);
   background-repeat: repeat-x;
 }
 .bg-warning {
@@ -7576,6 +7576,7 @@ footer a:not(.btn):active {
   font-weight: 800;
   color: #829ca9;
   text-align: center;
+  text-decoration: none;
   border: 1px solid #829ca9;
   border-radius: 50%;
 
