@@ -45,8 +45,7 @@
   }
 
   &.disabled,
-  &:disabled,
-  fieldset[disabled] & {
+  &:disabled {
     &:focus,
     &.focus {
       background-color: $background;
@@ -81,8 +80,7 @@
   }
 
   &.disabled,
-  &:disabled,
-  fieldset[disabled] & {
+  &:disabled {
     &:focus,
     &.focus {
       border-color: lighten($color, 20%);
