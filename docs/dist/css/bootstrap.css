@@ -3,8 +3,6 @@
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
-@charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
@@ -467,6 +465,8 @@ legend {
 }
 
 input[type="search"] {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
   -webkit-appearance: none;
 }
 
@@ -524,22 +524,22 @@ h6, .h6 {
 }
 
 .display-1 {
-  font-size: 3.5rem;
+  font-size: 6rem;
   font-weight: 300;
 }
 
 .display-2 {
-  font-size: 4.5rem;
-  font-weight: 300;
-}
-
-.display-3 {
   font-size: 5.5rem;
   font-weight: 300;
 }
 
+.display-3 {
+  font-size: 4.5rem;
+  font-weight: 300;
+}
+
 .display-4 {
-  font-size: 6rem;
+  font-size: 3.5rem;
   font-weight: 300;
 }
 
@@ -1971,7 +1971,7 @@ fieldset[disabled] .form-control {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 }
 
 .radio,
@@ -2059,7 +2059,7 @@ fieldset[disabled] .checkbox label {
 }
 
 .has-success .help-block,
-.has-success .control-label,
+.has-success .form-control-label,
 .has-success .radio,
 .has-success .checkbox,
 .has-success .radio-inline,
@@ -2090,7 +2090,7 @@ fieldset[disabled] .checkbox label {
 }
 
 .has-warning .help-block,
-.has-warning .control-label,
+.has-warning .form-control-label,
 .has-warning .radio,
 .has-warning .checkbox,
 .has-warning .radio-inline,
@@ -2121,7 +2121,7 @@ fieldset[disabled] .checkbox label {
 }
 
 .has-error .help-block,
-.has-error .control-label,
+.has-error .form-control-label,
 .has-error .radio,
 .has-error .checkbox,
 .has-error .radio-inline,
@@ -2177,7 +2177,7 @@ fieldset[disabled] .checkbox label {
   .form-inline .input-group > .form-control {
     width: 100%;
   }
-  .form-inline .control-label {
+  .form-inline .form-control-label {
     margin-bottom: 0;
     vertical-align: middle;
   }
@@ -3841,6 +3841,12 @@ input[type="button"].btn-block {
   }
 }
 
+@media (min-width: 62em) {
+  .navbar-toggleable-md {
+    display: block !important;
+  }
+}
+
 .navbar-nav .nav-item {
   float: left;
 }
@@ -4149,15 +4155,21 @@ input[type="button"].btn-block {
   border-radius: .25rem;
 }
 
+.breadcrumb::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
 .breadcrumb > li {
-  display: inline-block;
+  float: left;
 }
 
 .breadcrumb > li + li::before {
   padding-right: .5rem;
   padding-left: .5rem;
   color: #818a91;
-  content: "/ ";
+  content: "/";
 }
 
 .breadcrumb > .active {
