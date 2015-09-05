@@ -45,7 +45,7 @@
 // Use anchor or button elements instead of `li`s or `div`s to create interactive
 // list items. Includes an extra `.active` modifier class for selected items.
 
-a.list-group-item,
+.list-group-item-link,
 button.list-group-item {
   width: 100%;
   color: $list-group-link-color;
