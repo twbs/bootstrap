@@ -1,7 +1,5 @@
 - title: Getting started
   pages:
-    # - title: JavaScript
-    # - title: Accessibility
     - title: Introduction
     - title: Download
     - title: Browsers & devices
@@ -52,26 +50,6 @@
     - title: Carousel
     - title: Utilities
 
-# - title: Examples
-#   pages:
-#     - title: Starter template
-#     - title: Grid
-#     - title: Jumbotron
-#     - title: Narrow jumbotron
-#     - title: Navbar
-#     - title: Navbar top
-#     - title: Navbar top fixed
-#     - title: Cover
-#     - title: Album
-#     - title: Carousel
-#     - title: Blog
-#     - title: Dashboard
-#     - title: Sign-in page
-#     - title: Justified nav
-#     - title: Sticky footer
-#     - title: Sticky footer with navbar
-#     - title: Offcanvas
-
 # - title: Extend
 #   pages:
 #     - title: Approach
@@ -79,10 +57,9 @@
 
 - title: About
   pages:
-    # - title: JavaScript
-    # - title: Accessibility
     - title: History
     - title: Team
+    - title: Accessibility
     - title: Brand
     - title: License
     - title: Translations
