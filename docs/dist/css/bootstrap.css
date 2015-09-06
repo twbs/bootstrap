@@ -1884,14 +1884,12 @@ pre code {
 }
 
 .form-control:disabled,
-.form-control[readonly],
-fieldset[disabled] .form-control {
+.form-control[readonly] {
   background-color: #eceeef;
   opacity: 1;
 }
 
-.form-control[disabled],
-fieldset[disabled] .form-control {
+.form-control:disabled {
   cursor: not-allowed;
 }
 
@@ -2027,24 +2025,18 @@ fieldset[disabled] .form-control {
 
 input[type="radio"]:disabled,
 input[type="radio"].disabled,
-fieldset[disabled] input[type="radio"],
 input[type="checkbox"]:disabled,
-input[type="checkbox"].disabled,
-fieldset[disabled] input[type="checkbox"] {
+input[type="checkbox"].disabled {
   cursor: not-allowed;
 }
 
 .radio-inline.disabled,
-fieldset[disabled] .radio-inline,
-.checkbox-inline.disabled,
-fieldset[disabled] .checkbox-inline {
+.checkbox-inline.disabled {
   cursor: not-allowed;
 }
 
 .radio.disabled label,
-fieldset[disabled] .radio label,
-.checkbox.disabled label,
-fieldset[disabled] .checkbox label {
+.checkbox.disabled label {
   cursor: not-allowed;
 }
 
@@ -2249,8 +2241,7 @@ fieldset[disabled] .checkbox label {
 }
 
 .btn.disabled,
-.btn:disabled,
-fieldset[disabled] .btn {
+.btn:disabled {
   cursor: not-allowed;
   opacity: .65;
 }
@@ -2305,16 +2296,13 @@ fieldset[disabled] a.btn {
 .btn-primary.disabled:focus,
 .btn-primary.disabled.focus,
 .btn-primary:disabled:focus,
-.btn-primary:disabled.focus,
-fieldset[disabled] .btn-primary:focus,
-fieldset[disabled] .btn-primary.focus {
+.btn-primary:disabled.focus {
   background-color: #0275d8;
   border-color: #0275d8;
 }
 
 .btn-primary.disabled:hover,
-.btn-primary:disabled:hover,
-fieldset[disabled] .btn-primary:hover {
+.btn-primary:disabled:hover {
   background-color: #0275d8;
   border-color: #0275d8;
 }
@@ -2364,16 +2352,13 @@ fieldset[disabled] .btn-primary:hover {
 .btn-secondary.disabled:focus,
 .btn-secondary.disabled.focus,
 .btn-secondary:disabled:focus,
-.btn-secondary:disabled.focus,
-fieldset[disabled] .btn-secondary:focus,
-fieldset[disabled] .btn-secondary.focus {
+.btn-secondary:disabled.focus {
   background-color: #fff;
   border-color: #ccc;
 }
 
 .btn-secondary.disabled:hover,
-.btn-secondary:disabled:hover,
-fieldset[disabled] .btn-secondary:hover {
+.btn-secondary:disabled:hover {
   background-color: #fff;
   border-color: #ccc;
 }
@@ -2423,16 +2408,13 @@ fieldset[disabled] .btn-secondary:hover {
 .btn-info.disabled:focus,
 .btn-info.disabled.focus,
 .btn-info:disabled:focus,
-.btn-info:disabled.focus,
-fieldset[disabled] .btn-info:focus,
-fieldset[disabled] .btn-info.focus {
+.btn-info:disabled.focus {
   background-color: #5bc0de;
   border-color: #5bc0de;
 }
 
 .btn-info.disabled:hover,
-.btn-info:disabled:hover,
-fieldset[disabled] .btn-info:hover {
+.btn-info:disabled:hover {
   background-color: #5bc0de;
   border-color: #5bc0de;
 }
@@ -2482,16 +2464,13 @@ fieldset[disabled] .btn-info:hover {
 .btn-success.disabled:focus,
 .btn-success.disabled.focus,
 .btn-success:disabled:focus,
-.btn-success:disabled.focus,
-fieldset[disabled] .btn-success:focus,
-fieldset[disabled] .btn-success.focus {
+.btn-success:disabled.focus {
   background-color: #5cb85c;
   border-color: #5cb85c;
 }
 
 .btn-success.disabled:hover,
-.btn-success:disabled:hover,
-fieldset[disabled] .btn-success:hover {
+.btn-success:disabled:hover {
   background-color: #5cb85c;
   border-color: #5cb85c;
 }
@@ -2541,16 +2520,13 @@ fieldset[disabled] .btn-success:hover {
 .btn-warning.disabled:focus,
 .btn-warning.disabled.focus,
 .btn-warning:disabled:focus,
-.btn-warning:disabled.focus,
-fieldset[disabled] .btn-warning:focus,
-fieldset[disabled] .btn-warning.focus {
+.btn-warning:disabled.focus {
   background-color: #f0ad4e;
   border-color: #f0ad4e;
 }
 
 .btn-warning.disabled:hover,
-.btn-warning:disabled:hover,
-fieldset[disabled] .btn-warning:hover {
+.btn-warning:disabled:hover {
   background-color: #f0ad4e;
   border-color: #f0ad4e;
 }
@@ -2600,16 +2576,13 @@ fieldset[disabled] .btn-warning:hover {
 .btn-danger.disabled:focus,
 .btn-danger.disabled.focus,
 .btn-danger:disabled:focus,
-.btn-danger:disabled.focus,
-fieldset[disabled] .btn-danger:focus,
-fieldset[disabled] .btn-danger.focus {
+.btn-danger:disabled.focus {
   background-color: #d9534f;
   border-color: #d9534f;
 }
 
 .btn-danger.disabled:hover,
-.btn-danger:disabled:hover,
-fieldset[disabled] .btn-danger:hover {
+.btn-danger:disabled:hover {
   background-color: #d9534f;
   border-color: #d9534f;
 }
@@ -2640,15 +2613,12 @@ fieldset[disabled] .btn-danger:hover {
 .btn-primary-outline.disabled:focus,
 .btn-primary-outline.disabled.focus,
 .btn-primary-outline:disabled:focus,
-.btn-primary-outline:disabled.focus,
-fieldset[disabled] .btn-primary-outline:focus,
-fieldset[disabled] .btn-primary-outline.focus {
+.btn-primary-outline:disabled.focus {
   border-color: #43a7fd;
 }
 
 .btn-primary-outline.disabled:hover,
-.btn-primary-outline:disabled:hover,
-fieldset[disabled] .btn-primary-outline:hover {
+.btn-primary-outline:disabled:hover {
   border-color: #43a7fd;
 }
 
@@ -2678,15 +2648,12 @@ fieldset[disabled] .btn-primary-outline:hover {
 .btn-secondary-outline.disabled:focus,
 .btn-secondary-outline.disabled.focus,
 .btn-secondary-outline:disabled:focus,
-.btn-secondary-outline:disabled.focus,
-fieldset[disabled] .btn-secondary-outline:focus,
-fieldset[disabled] .btn-secondary-outline.focus {
+.btn-secondary-outline:disabled.focus {
   border-color: white;
 }
 
 .btn-secondary-outline.disabled:hover,
-.btn-secondary-outline:disabled:hover,
-fieldset[disabled] .btn-secondary-outline:hover {
+.btn-secondary-outline:disabled:hover {
   border-color: white;
 }
 
@@ -2716,15 +2683,12 @@ fieldset[disabled] .btn-secondary-outline:hover {
 .btn-info-outline.disabled:focus,
 .btn-info-outline.disabled.focus,
 .btn-info-outline:disabled:focus,
-.btn-info-outline:disabled.focus,
-fieldset[disabled] .btn-info-outline:focus,
-fieldset[disabled] .btn-info-outline.focus {
+.btn-info-outline:disabled.focus {
   border-color: #b0e1ef;
 }
 
 .btn-info-outline.disabled:hover,
-.btn-info-outline:disabled:hover,
-fieldset[disabled] .btn-info-outline:hover {
+.btn-info-outline:disabled:hover {
   border-color: #b0e1ef;
 }
 
@@ -2754,15 +2718,12 @@ fieldset[disabled] .btn-info-outline:hover {
 .btn-success-outline.disabled:focus,
 .btn-success-outline.disabled.focus,
 .btn-success-outline:disabled:focus,
-.btn-success-outline:disabled.focus,
-fieldset[disabled] .btn-success-outline:focus,
-fieldset[disabled] .btn-success-outline.focus {
+.btn-success-outline:disabled.focus {
   border-color: #a3d7a3;
 }
 
 .btn-success-outline.disabled:hover,
-.btn-success-outline:disabled:hover,
-fieldset[disabled] .btn-success-outline:hover {
+.btn-success-outline:disabled:hover {
   border-color: #a3d7a3;
 }
 
@@ -2792,15 +2753,12 @@ fieldset[disabled] .btn-success-outline:hover {
 .btn-warning-outline.disabled:focus,
 .btn-warning-outline.disabled.focus,
 .btn-warning-outline:disabled:focus,
-.btn-warning-outline:disabled.focus,
-fieldset[disabled] .btn-warning-outline:focus,
-fieldset[disabled] .btn-warning-outline.focus {
+.btn-warning-outline:disabled.focus {
   border-color: #f8d9ac;
 }
 
 .btn-warning-outline.disabled:hover,
-.btn-warning-outline:disabled:hover,
-fieldset[disabled] .btn-warning-outline:hover {
+.btn-warning-outline:disabled:hover {
   border-color: #f8d9ac;
 }
 
@@ -2830,15 +2788,12 @@ fieldset[disabled] .btn-warning-outline:hover {
 .btn-danger-outline.disabled:focus,
 .btn-danger-outline.disabled.focus,
 .btn-danger-outline:disabled:focus,
-.btn-danger-outline:disabled.focus,
-fieldset[disabled] .btn-danger-outline:focus,
-fieldset[disabled] .btn-danger-outline.focus {
+.btn-danger-outline:disabled.focus {
   border-color: #eba5a3;
 }
 
 .btn-danger-outline.disabled:hover,
-.btn-danger-outline:disabled:hover,
-fieldset[disabled] .btn-danger-outline:hover {
+.btn-danger-outline:disabled:hover {
   border-color: #eba5a3;
 }
 
@@ -2851,8 +2806,7 @@ fieldset[disabled] .btn-danger-outline:hover {
 .btn-link,
 .btn-link:active,
 .btn-link.active,
-.btn-link:disabled,
-fieldset[disabled] .btn-link {
+.btn-link:disabled {
   background-color: transparent;
 }
 
@@ -2874,9 +2828,7 @@ fieldset[disabled] .btn-link {
 }
 
 .btn-link:disabled:focus,
-.btn-link:disabled:hover,
-fieldset[disabled] .btn-link:focus,
-fieldset[disabled] .btn-link:hover {
+.btn-link:disabled:hover {
   color: #818a91;
   text-decoration: none;
 }
