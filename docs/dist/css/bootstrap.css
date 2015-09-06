@@ -3689,12 +3689,12 @@ input[type="button"].btn-block {
   }
 }
 
-.navbar-static-top {
+.navbar-full {
   z-index: 1000;
 }
 
 @media (min-width: 34em) {
-  .navbar-static-top {
+  .navbar-full {
     border-radius: 0;
   }
 }
