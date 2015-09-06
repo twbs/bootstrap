@@ -5,7 +5,6 @@ git:
 node_js:
   - "0.12"
 before_install:
-  - travis_retry pip install -r test-infra/requirements.txt --user
   - rvm install 2.0.0 && rvm use 2.0.0
   - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
