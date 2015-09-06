@@ -4027,76 +4027,71 @@ input[type="button"].btn-block {
   border-radius: 0 0 .25rem .25rem;
 }
 
-.card-deck {
-  display: table;
-  table-layout: fixed;
-  border-spacing: 1.25rem 0;
+@media (min-width: 34em) {
+  .card-deck {
+    display: table;
+    table-layout: fixed;
+    border-spacing: 1.25rem 0;
+  }
+  .card-deck .card {
+    display: table-cell;
+    width: 1%;
+    vertical-align: top;
+  }
+  .card-deck-wrapper {
+    margin-right: -1.25rem;
+    margin-left: -1.25rem;
+  }
 }
 
-.card-deck .card {
-  display: table-cell;
-  width: 1%;
-  vertical-align: top;
+@media (min-width: 34em) {
+  .card-group {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+  .card-group .card {
+    display: table-cell;
+    vertical-align: top;
+  }
+  .card-group .card + .card {
+    margin-left: 0;
+    border-left: 0;
+  }
+  .card-group .card:first-child .card-img-top {
+    border-top-right-radius: 0;
+  }
+  .card-group .card:first-child .card-img-bottom {
+    border-bottom-right-radius: 0;
+  }
+  .card-group .card:last-child .card-img-top {
+    border-top-left-radius: 0;
+  }
+  .card-group .card:last-child .card-img-bottom {
+    border-bottom-left-radius: 0;
+  }
+  .card-group .card:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+  .card-group .card:not(:first-child):not(:last-child) .card-img-top,
+  .card-group .card:not(:first-child):not(:last-child) .card-img-bottom {
+    border-radius: 0;
+  }
 }
 
-.card-deck-wrapper {
-  margin-right: -1.25rem;
-  margin-left: -1.25rem;
-}
-
-.card-group {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-}
-
-.card-group .card {
-  display: table-cell;
-  vertical-align: top;
-}
-
-.card-group .card + .card {
-  margin-left: 0;
-  border-left: 0;
-}
-
-.card-group .card:first-child .card-img-top {
-  border-top-right-radius: 0;
-}
-
-.card-group .card:first-child .card-img-bottom {
-  border-bottom-right-radius: 0;
-}
-
-.card-group .card:last-child .card-img-top {
-  border-top-left-radius: 0;
-}
-
-.card-group .card:last-child .card-img-bottom {
-  border-bottom-left-radius: 0;
-}
-
-.card-group .card:not(:first-child):not(:last-child) {
-  border-radius: 0;
-}
-
-.card-group .card:not(:first-child):not(:last-child) .card-img-top,
-.card-group .card:not(:first-child):not(:last-child) .card-img-bottom {
-  border-radius: 0;
-}
-
-.card-columns {
-  -webkit-column-count: 3;
-     -moz-column-count: 3;
-          column-count: 3;
-  -webkit-column-gap: 1.25rem;
-     -moz-column-gap: 1.25rem;
-          column-gap: 1.25rem;
-}
-
-.card-columns .card {
-  display: inline-block;
-  width: 100%;
+@media (min-width: 34em) {
+  .card-columns {
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
+    -webkit-column-gap: 1.25rem;
+       -moz-column-gap: 1.25rem;
+            column-gap: 1.25rem;
+  }
+  .card-columns .card {
+    display: inline-block;
+    width: 100%;
+  }
 }
 
 .breadcrumb {
