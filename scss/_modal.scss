@@ -29,7 +29,9 @@
   outline: 0;
   -webkit-overflow-scrolling: touch;
 
-  &:before {
+  // This inserts an element so that .modal-dialog has something
+  // to vertically align against
+  &::before {
     display: inline-block;
     height: 100%;
     margin-right: -0.25em;
@@ -59,6 +61,8 @@
   max-width: calc(100% - 20px);
 
   margin: 10px;
+
+  // Undo the center alignment & white-space on .modal
   text-align: left;
   white-space: normal;
   vertical-align: middle;
