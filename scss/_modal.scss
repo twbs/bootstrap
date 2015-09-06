@@ -24,6 +24,18 @@
   outline: 0;
   -webkit-overflow-scrolling: touch;
 
+  // Vertical align
+  text-align: center;
+  white-space: nowrap;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+  }
+
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
     transition: transform .3s ease-out;
@@ -39,8 +51,17 @@
 // Shell div to position the modal with bottom padding
 .modal-dialog {
   position: relative;
-  width: auto;
+  width: calc(100% - 20px);
   margin: 10px;
+
+  // Stops modal overflowing on mobiles
+  max-width: calc(100% - 20px);
+
+  // Vertical align
+  display: inline-block;
+  vertical-align: middle;
+  text-align : left;
+  white-space: normal;
 }
 
 // Actual modal
@@ -131,7 +152,6 @@
   // Automatically set modal's width for larger viewports
   .modal-dialog {
     width: $modal-md;
-    margin: 30px auto;
   }
   .modal-content {
     @include box-shadow(0 5px 15px rgba(0,0,0,.5));
