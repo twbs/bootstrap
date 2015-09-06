@@ -13,7 +13,7 @@
       padding-right: .5rem;
       padding-left: .5rem;
       color: $breadcrumb-divider-color;
-      content: "#{$breadcrumb-divider}"; // Unicode space added since inline-block means non-collapsing white-space
+      content: "#{$breadcrumb-divider}";
     }
   }
 
