@@ -28,6 +28,9 @@
     $('.tooltip-test').tooltip()
     $('.popover-test').popover()
 
+    // Indeterminate checkbox example
+    $('.bd-example-indeterminate [type="checkbox"]').prop('indeterminate', true)
+
     // Disable empty links in docs examples
     $('.bd-example [href=#]').click(function (e) {
       e.preventDefault()
