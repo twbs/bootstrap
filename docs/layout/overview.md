@@ -9,7 +9,7 @@ Bootstrap includes several components and options for laying out your project, i
 
 ## Containers
 
-Containers are the most basic layout element in Bootstrap and are **required when using our grid system**. Choose from a responsive, fixed-width container (meaning it's `max-width` changes at each breakpoint) or fluid-width (meaning it's `100%` wide all the time).
+Containers are the most basic layout element in Bootstrap and are **required when using our grid system**. Choose from a responsive, fixed-width container (meaning its `max-width` changes at each breakpoint) or fluid-width (meaning it's `100%` wide all the time).
 
 While containers *can* be nested, most layouts do not require a nested container.
 
