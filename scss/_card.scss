@@ -12,6 +12,9 @@
 
 .card-block {
   padding: $card-spacer-x;
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .card-title {
@@ -20,11 +23,6 @@
 
 .card-subtitle {
   margin-top: -($card-spacer-y / 2);
-  margin-bottom: 0;
-}
-
-.card-text:last-child {
-  margin-bottom: 0;
 }
 
 // .card-actions {
