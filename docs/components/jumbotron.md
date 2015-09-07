@@ -26,7 +26,7 @@ To make the jumbotron full width, and without rounded corners, add the `.jumbotr
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-3">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of it's parent.</p>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
   </div>
 </div>
 {% endexample %}
