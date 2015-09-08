@@ -225,12 +225,11 @@ const Tab = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let $this = $(this)
-        let data  = $this.data(DATA_KEY)
+        let data = $(this).data(DATA_KEY)
 
         if (!data) {
-          data = data = new Tab(this)
-          $this.data(DATA_KEY, data)
+          data = new Tab(this)
+          $(this).data(DATA_KEY, data)
         }
 
         if (typeof config === 'string') {

@@ -269,7 +269,7 @@ const ScrollSpy = (($) => {
     static _jQueryInterface(config) {
       return this.each(function () {
         let data    = $(this).data(DATA_KEY)
-        let _config = typeof config === 'object' && config || null
+        let _config = typeof config === 'object' ? config : null
 
         if (!data) {
           data = new ScrollSpy(this, _config)

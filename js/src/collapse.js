@@ -314,12 +314,11 @@ const Collapse = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let $this   = $(this)
-        let data    = $this.data(DATA_KEY)
+        let data    = $(this).data(DATA_KEY)
         let _config = $.extend(
           {},
           Default,
-          $this.data(),
+          $(this).data(),
           typeof config === 'object' && config
         )
 
@@ -329,7 +328,7 @@ const Collapse = (($) => {
 
         if (!data) {
           data = new Collapse(this, _config)
-          $this.data(DATA_KEY, data)
+          $(this).data(DATA_KEY, data)
         }
 
         if (typeof config === 'string') {

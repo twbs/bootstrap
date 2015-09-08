@@ -133,12 +133,11 @@ const Alert = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let $element = $(this)
-        let data     = $element.data(DATA_KEY)
+        let data = $(this).data(DATA_KEY)
 
         if (!data) {
           data = new Alert(this)
-          $element.data(DATA_KEY, data)
+          $(this).data(DATA_KEY, data)
         }
 
         if (config === 'close') {
