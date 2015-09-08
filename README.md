@@ -12,7 +12,7 @@ Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and
 To get started, check out <http://getbootstrap.com>!
 
 ## Table of contents
-
+- [Alpha Quick Start](#alpha-quick-start)
 - [Quick start](#quick-start)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Documentation](#documentation)
@@ -21,6 +21,14 @@ To get started, check out <http://getbootstrap.com>!
 - [Versioning](#versioning)
 - [Creators](#creators)
 - [Copyright and license](#copyright-and-license)
+
+## v4.0.0 Alpha quick start
+Multiple quick start options are available for those wanting to test out the v4 alpha:
+- [Download the alpha release](https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.zip)
+- Clone the repo: `git clone --branch v4.0.0-alpha https://github.com/twbs/bootstrap.git`
+
+Read the [v4.0.0 Alpha Documentation](http://v4-alpha.getbootstrap.com/getting-started) for more information about changed to the framework contents, templates and examples, and more.
+
 
 ## Quick start
 
