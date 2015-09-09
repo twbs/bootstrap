@@ -135,7 +135,7 @@ Please adhere to the [coding guidelines](#code-guidelines) used throughout the
 project (indentation, accurate comments, etc.) and any other requirements
 (such as test coverage).
 
-**Do not edit `bootstrap.css`, `bootstrap-theme.css`, or `bootstrap.js`
+**Do not edit `bootstrap.css`, or `bootstrap.js`
 directly!** Those files are automatically generated. You should edit the
 source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/master/scss)
 and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/master/js) instead.

@@ -169,7 +169,7 @@ Since Bootstrap applies `display: block` and `width: 100%` to almost all our for
 
 ### Form groups
 
-The `.form-group` class is the easiest way to add some structure to forms. It's only purpose is to provide `margin-bottom` around a label and control pairing. As a bonus, since it's a class you can use it with `<fieldset>`s, `<div>`s, or nearly any other element.
+The `.form-group` class is the easiest way to add some structure to forms. Its only purpose is to provide `margin-bottom` around a label and control pairing. As a bonus, since it's a class you can use it with `<fieldset>`s, `<div>`s, or nearly any other element.
 
 {% example html %}
 <form>

@@ -13,7 +13,7 @@ Bootstrap includes dozens of utilities—classes with a single purpose. They're 
 
 ## Spacing
 
-Assign `margin` or `padding` to an element or a subset of it's sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. All classes are multiples on the global default value, `1rem`.
+Assign `margin` or `padding` to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. All classes are multiples on the global default value, `1rem`.
 
 ### Margin
 

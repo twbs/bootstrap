@@ -39,8 +39,7 @@
   }
 
   &.disabled,
-  &:disabled,
-  fieldset[disabled] & {
+  &:disabled {
     cursor: $cursor-disabled;
     opacity: .65;
     @include box-shadow(none);
@@ -111,8 +110,7 @@ fieldset[disabled] a.btn {
   &,
   &:active,
   &.active,
-  &:disabled,
-  fieldset[disabled] & {
+  &:disabled {
     background-color: transparent;
     @include box-shadow(none);
   }
@@ -129,8 +127,7 @@ fieldset[disabled] a.btn {
     text-decoration: $link-hover-decoration;
     background-color: transparent;
   }
-  &:disabled,
-  fieldset[disabled] & {
+  &:disabled {
     @include hover-focus {
       color: $btn-link-disabled-color;
       text-decoration: none;

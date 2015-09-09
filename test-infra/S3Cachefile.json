@@ -1,7 +1,0 @@
-{
-    "npm-modules": {
-        "key": "./npm-shrinkwrap.json",
-        "cache": "../node_modules",
-        "generate": "./uncached-npm-install.sh"
-    }
-}

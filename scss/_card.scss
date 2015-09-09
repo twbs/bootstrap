@@ -181,33 +181,37 @@
 //
 
 @if $enable-flex {
-  .card-deck {
-    display: flex;
-    flex-flow: row wrap;
-    margin-right: -.625rem;
-    margin-left: -.625rem;
+  @include media-breakpoint-up(sm) {
+    .card-deck {
+      display: flex;
+      flex-flow: row wrap;
+      margin-right: -.625rem;
+      margin-left: -.625rem;
 
-    .card {
-      flex: 1 0 0;
-      margin-right: .625rem;
-      margin-left: .625rem;
+      .card {
+        flex: 1 0 0;
+        margin-right: .625rem;
+        margin-left: .625rem;
+      }
     }
   }
 } @else {
-  .card-deck {
-    display: table;
-    table-layout: fixed;
-    border-spacing: 1.25rem 0;
+  @include media-breakpoint-up(sm) {
+    .card-deck {
+      display: table;
+      table-layout: fixed;
+      border-spacing: 1.25rem 0;
 
-    .card {
-      display: table-cell;
-      width: 1%;
-      vertical-align: top;
+      .card {
+        display: table-cell;
+        width: 1%;
+        vertical-align: top;
+      }
     }
-  }
-  .card-deck-wrapper {
-    margin-right: -1.25rem;
-    margin-left: -1.25rem;
+    .card-deck-wrapper {
+      margin-right: -1.25rem;
+      margin-left: -1.25rem;
+    }
   }
 }
 
@@ -215,54 +219,56 @@
 // Card groups
 //
 
-.card-group {
-  @if $enable-flex {
-    display: flex;
-    flex-flow: row wrap;
-  } @else {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-  }
-
-  .card {
+@include media-breakpoint-up(sm) {
+  .card-group {
     @if $enable-flex {
-      flex: 1 0 0;
+      display: flex;
+      flex-flow: row wrap;
     } @else {
-      display: table-cell;
-      vertical-align: top;
+      display: table;
+      width: 100%;
+      table-layout: fixed;
     }
 
-    + .card {
-      margin-left: 0;
-      border-left: 0;
-    }
-
-    // Handle rounded corners
-    @if $enable-rounded {
-      &:first-child {
-        .card-img-top {
-          border-top-right-radius: 0;
-        }
-        .card-img-bottom {
-          border-bottom-right-radius: 0;
-        }
-      }
-      &:last-child {
-        .card-img-top {
-          border-top-left-radius: 0;
-        }
-        .card-img-bottom {
-          border-bottom-left-radius: 0;
-        }
+    .card {
+      @if $enable-flex {
+        flex: 1 0 0;
+      } @else {
+        display: table-cell;
+        vertical-align: top;
       }
 
-      &:not(:first-child):not(:last-child) {
-        border-radius: 0;
+      + .card {
+        margin-left: 0;
+        border-left: 0;
+      }
 
-        .card-img-top,
-        .card-img-bottom {
+      // Handle rounded corners
+      @if $enable-rounded {
+        &:first-child {
+          .card-img-top {
+            border-top-right-radius: 0;
+          }
+          .card-img-bottom {
+            border-bottom-right-radius: 0;
+          }
+        }
+        &:last-child {
+          .card-img-top {
+            border-top-left-radius: 0;
+          }
+          .card-img-bottom {
+            border-bottom-left-radius: 0;
+          }
+        }
+
+        &:not(:first-child):not(:last-child) {
           border-radius: 0;
+
+          .card-img-top,
+          .card-img-bottom {
+            border-radius: 0;
+          }
         }
       }
     }
@@ -274,12 +280,14 @@
 // Card
 //
 
-.card-columns {
-  column-count: 3;
-  column-gap: 1.25rem;
+@include media-breakpoint-up(sm) {
+  .card-columns {
+    column-count: 3;
+    column-gap: 1.25rem;
 
-  .card {
-    display: inline-block;
-    width: 100%; // Don't let them exceed the column width
+    .card {
+      display: inline-block;
+      width: 100%; // Don't let them exceed the column width
+    }
   }
 }

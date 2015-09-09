@@ -19,8 +19,8 @@
 // Display the navbar across the entirety of the page or fixed it to the top or
 // bottom of the page.
 
-// Static top (unfixed, but 100% wide) navbar
-.navbar-static-top {
+// A static, full width modifier with no rounded corners.
+.navbar-full {
   z-index: $zindex-navbar;
 
   @include media-breakpoint-up(sm) {
