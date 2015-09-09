@@ -143,6 +143,15 @@
   -moz-appearance: none;
   -webkit-appearance: none;
 
+  @if $enable-rounded {
+    @include border-radius($input-border-radius);
+  } @else {
+    // Reset border-radius, otherwise the control will have a 5px border-radius from Chrome's
+    // user agent stylesheet. Note that we can't use the border-radius mixin because it doesn't
+    // execute when $enable-rounded is false.
+    border-radius: 0;
+  }
+
   &:focus {
     border-color: #51a7e8;
     outline: none;
