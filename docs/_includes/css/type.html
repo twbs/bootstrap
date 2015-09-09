@@ -62,6 +62,33 @@
 {% endhighlight %}
 
 
+  <p>Create contextual headings with the built in background helper classes.</p>
+  <div class="bs-example" data-example-id="small-headings">
+    <div class="bg-default" style="padding: 10px;">
+        <h3>h3. Bootstrap heading <small>Secondary text</small></h3>
+        <h4>h4. Bootstrap heading <small>Secondary text</small></h4>
+        <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
+    </div>
+    <div class="bg-info" style="padding: 10px;">
+        <h3>h3. Bootstrap heading <small>Secondary text</small></h3>
+        <h4>h4. Bootstrap heading <small>Secondary text</small></h4>
+        <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
+    </div>
+  </div>
+{% highlight html %}
+<div class="bg-default">
+    <h3>h3. Bootstrap heading <small>Secondary text</small></h3>
+    <h4>h4. Bootstrap heading <small>Secondary text</small></h4>
+    <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
+</div>
+<div class="bg-info">
+    <h3>h3. Bootstrap heading <small>Secondary text</small></h3>
+    <h4>h4. Bootstrap heading <small>Secondary text</small></h4>
+    <h6>h6. Bootstrap heading <small>Secondary text</small></h6>
+</div>
+{% endhighlight %}
+
+
   <!-- Body copy -->
   <h2 id="type-body-copy">Body copy</h2>
   <p>Bootstrap's global default <code>font-size</code> is <strong>14px</strong>, with a <code>line-height</code> of <strong>1.428</strong>. This is applied to the <code>&lt;body&gt;</code> and all paragraphs. In addition, <code>&lt;p&gt;</code> (paragraphs) receive a bottom margin of half their computed line-height (10px by default).</p>

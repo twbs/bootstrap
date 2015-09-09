@@ -71,10 +71,10 @@
 // Text input groups
 // -------------------------
 .input-group-addon {
-  padding: @padding-base-vertical @padding-base-horizontal;
-  font-size: @font-size-base;
+  padding: (@padding-base-vertical + 1px) @padding-base-horizontal (@padding-base-vertical - 1px);
+  font-size: @input-font-size;
   font-weight: normal;
-  line-height: 1;
+  line-height: @input-line-height;
   color: @input-color;
   text-align: center;
   background-color: @input-group-addon-bg;
@@ -83,13 +83,15 @@
 
   // Sizing
   &.input-sm {
-    padding: @padding-small-vertical @padding-small-horizontal;
-    font-size: @font-size-small;
+    padding: (@padding-small-vertical + 1px) @padding-small-horizontal (@padding-small-vertical - 1px);
+    font-size: @input-font-size-small;
+    line-height: @input-line-height-small;
     border-radius: @border-radius-small;
   }
   &.input-lg {
-    padding: @padding-large-vertical @padding-large-horizontal;
-    font-size: @font-size-large;
+    padding: (@padding-large-vertical + 1px) @padding-large-horizontal (@padding-large-vertical - 1px);
+    font-size: @input-font-size-large;
+    line-height: @input-line-height-large;
     border-radius: @border-radius-large;
   }
 

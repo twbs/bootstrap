@@ -33,7 +33,6 @@ label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
   margin-bottom: 5px;
-  font-weight: bold;
 }
 
 
@@ -115,9 +114,9 @@ output {
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-base-vertical @padding-base-horizontal;
-  font-size: @font-size-base;
-  line-height: @line-height-base;
+  padding: (@padding-base-vertical + 1px) @padding-base-horizontal (@padding-base-vertical - 1px) @padding-base-horizontal;
+  font-size: @input-font-size;
+  line-height: @input-line-height;
   color: @input-color;
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
@@ -141,6 +140,9 @@ output {
   &[readonly],
   fieldset[disabled] & {
     background-color: @input-bg-disabled;
+    color: @input-color-disabled;
+    border-color: @input-border-disabled;
+    .placeholder(@input-color-disabled);
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
   }
 
@@ -298,7 +300,7 @@ input[type="checkbox"] {
   padding-bottom: (@padding-base-vertical + 1);
   // Remove default margin from `p`
   margin-bottom: 0;
-  min-height: (@line-height-computed + @font-size-base);
+  min-height: (@line-height-computed + @input-font-size);
 
   &.input-lg,
   &.input-sm {
@@ -317,14 +319,15 @@ input[type="checkbox"] {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @input-border-radius-small);
+  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @input-font-size-small; @input-line-height-small; @input-border-radius-small);
 }
-.form-group-sm {
+.form-group-sm,
+.navbar {
   .form-control {
     height: @input-height-small;
     padding: @padding-small-vertical @padding-small-horizontal;
-    font-size: @font-size-small;
-    line-height: @line-height-small;
+    font-size: @input-font-size-small;
+    line-height: @input-line-height-small;
     border-radius: @input-border-radius-small;
   }
   select.form-control {
@@ -337,22 +340,22 @@ input[type="checkbox"] {
   }
   .form-control-static {
     height: @input-height-small;
-    min-height: (@line-height-computed + @font-size-small);
+    min-height: (@line-height-computed + @input-font-size-small);
     padding: (@padding-small-vertical + 1) @padding-small-horizontal;
-    font-size: @font-size-small;
-    line-height: @line-height-small;
+    font-size: @input-font-size-small;
+    line-height: @input-line-height-small;
   }
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @input-border-radius-large);
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @input-font-size-large; @input-line-height-large; @input-border-radius-large);
 }
 .form-group-lg {
   .form-control {
     height: @input-height-large;
     padding: @padding-large-vertical @padding-large-horizontal;
-    font-size: @font-size-large;
-    line-height: @line-height-large;
+    font-size: @input-font-size-large;
+    line-height: @input-line-height-large;
     border-radius: @input-border-radius-large;
   }
   select.form-control {
@@ -365,10 +368,10 @@ input[type="checkbox"] {
   }
   .form-control-static {
     height: @input-height-large;
-    min-height: (@line-height-computed + @font-size-large);
+    min-height: (@line-height-computed + @input-font-size-large);
     padding: (@padding-large-vertical + 1) @padding-large-horizontal;
-    font-size: @font-size-large;
-    line-height: @line-height-large;
+    font-size: @input-font-size-large;
+    line-height: @input-line-height-large;
   }
 }
 
@@ -446,7 +449,8 @@ input[type="checkbox"] {
   display: block; // account for any element using help-block
   margin-top: 5px;
   margin-bottom: 10px;
-  color: lighten(@text-color, 25%); // lighten the text some for contrast
+  color: @gray-light; // lighten the text some for contrast
+  font-size: @font-size-small;
 }
 
 

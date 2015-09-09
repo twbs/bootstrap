@@ -19,6 +19,7 @@
 
 .media-object {
   display: block;
+  border-radius: 50%;
 
   // Fix collapse in webkit from max-width: 100% and display: table-cell.
   &.img-thumbnail {
@@ -63,4 +64,9 @@
 .media-list {
   padding-left: 0;
   list-style: none;
+}
+
+.media .media .media-object {
+    width: 48px;
+    height: 48px;
 }

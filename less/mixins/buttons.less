@@ -3,35 +3,39 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-.button-variant(@color; @background; @border) {
+.button-variant(
+    @color; @color-hover;
+    @background; @background-hover; @background-active;
+    @border; @border-hover; @border-active) {
+
   color: @color;
   background-color: @background;
   border-color: @border;
 
   &:focus,
   &.focus {
-    color: @color;
-    background-color: darken(@background, 10%);
-        border-color: darken(@border, 25%);
+    color: @color-hover;
+    background-color: @background-hover;
+        border-color: @border-hover;
   }
   &:hover {
-    color: @color;
-    background-color: darken(@background, 10%);
-        border-color: darken(@border, 12%);
+    color: @color-hover;
+    background-color: @background-hover;
+        border-color: @border-hover;
   }
   &:active,
   &.active,
   .open > .dropdown-toggle& {
-    color: @color;
-    background-color: darken(@background, 10%);
-        border-color: darken(@border, 12%);
+    color: @color-hover;
+    background-color: @background-active;
+        border-color: @border-active;
 
     &:hover,
     &:focus,
     &.focus {
-      color: @color;
-      background-color: darken(@background, 17%);
-          border-color: darken(@border, 25%);
+      color: @color-hover;
+      background-color: @background-active;
+          border-color: @border-active;
     }
   }
   &:active,
@@ -48,8 +52,9 @@
     &.focus,
     &:active,
     &.active {
-      background-color: @background;
-          border-color: @border;
+      background-color: @btn-disabled-bg;
+          border-color: @btn-disabled-bg;
+                 color: #FFF;
     }
   }
 
@@ -61,7 +66,7 @@
 
 // Button sizes
 .button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
-  padding: @padding-vertical @padding-horizontal;
+  padding: (@padding-vertical + 1px) @padding-horizontal (@padding-vertical - 1px) @padding-horizontal;
   font-size: @font-size;
   line-height: @line-height;
   border-radius: @border-radius;

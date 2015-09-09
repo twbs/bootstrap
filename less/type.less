@@ -94,6 +94,11 @@ mark,
   padding: .2em;
 }
 
+b,
+strong {
+  color: @text-bold-color;
+}
+
 // Alignment
 .text-left           { text-align: left; }
 .text-right          { text-align: right; }
@@ -139,7 +144,9 @@ mark,
   .bg-variant(@state-success-bg);
 }
 .bg-info {
-  .bg-variant(@state-info-bg);
+  //.bg-variant(@state-info-bg);
+  color: #fff;
+   #gradient > .vertical(@brand-light-blue, #36c9ff);
 }
 .bg-warning {
   .bg-variant(@state-warning-bg);

@@ -12,13 +12,21 @@
   position: relative;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
+  transition: border-top-width 0s linear,
+              background-color 0s linear;
+
 
   // Prevent floats from breaking the navbar
   &:extend(.clearfix all);
 
   @media (min-width: @grid-float-breakpoint) {
     border-radius: @navbar-border-radius;
+
+    .container,
+    .container-fluid {
+        border: 0px solid transparent;
+    }
   }
 }
 
@@ -78,6 +86,7 @@
 
     // Undo the collapse side padding for navbars with containers to ensure
     // alignment of right-aligned contents.
+    .navbar.affix &,
     .navbar-fixed-top &,
     .navbar-static-top &,
     .navbar-fixed-bottom & {
@@ -87,6 +96,7 @@
   }
 }
 
+.navbar.affix,
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   .navbar-collapse {
@@ -127,14 +137,21 @@
 // Static top (unfixed, but 100% wide) navbar
 .navbar-static-top {
   z-index: @zindex-navbar;
-  border-width: 0 0 1px;
+  margin-bottom: 0;
 
   @media (min-width: @grid-float-breakpoint) {
     border-radius: 0;
+
+    .container,
+    .container-fluid {
+        border-width: 0 0 1px;
+        margin-bottom: -1px;
+    }
   }
 }
 
 // Fix the top/bottom navbars when screen real estate supports it
+.navbar.affix,
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   position: fixed;
@@ -147,14 +164,30 @@
     border-radius: 0;
   }
 }
+.navbar.affix {
+    top: -60px;
+    border-top-width: 60px;
+    transition: border-top-width .2s ease-out,
+                background-color .2s ease-out;
+}
 .navbar-fixed-top {
   top: 0;
-  border-width: 0 0 1px;
+
+  .container,
+  .container-fluid {
+      border-width: 0 0 1px;
+      margin-bottom: -1px;
+  }
 }
 .navbar-fixed-bottom {
   bottom: 0;
   margin-bottom: 0; // override .navbar defaults
-  border-width: 1px 0 0;
+
+  .container,
+  .container-fluid {
+      border-width: 1px 0 0;
+      margin-top: -1px;
+  }
 }
 
 
@@ -387,6 +420,14 @@
   }
 }
 
+.navbar.affix {
+    background-color: @brand-primary;
+
+    .container,
+    .container-fluid {
+        border-bottom-color: transparent;
+    }
+}
 
 // Alternate navbars
 // --------------------------------------------------
@@ -394,7 +435,11 @@
 // Default navbar
 .navbar-default {
   background-color: @navbar-default-bg;
-  border-color: @navbar-default-border;
+
+  .container,
+  .container-fluid {
+      border-color: @navbar-default-border;
+  }
 
   .navbar-brand {
     color: @navbar-default-brand-color;
@@ -442,6 +487,7 @@
     &:hover,
     &:focus {
       background-color: @navbar-default-toggle-hover-bg;
+      border-color: @navbar-default-toggle-hover-border-color;
     }
     .icon-bar {
       background-color: @navbar-default-toggle-icon-bar-bg;
@@ -450,7 +496,7 @@
 
   .navbar-collapse,
   .navbar-form {
-    border-color: @navbar-default-border;
+    //border-color: @navbar-default-border;
   }
 
   // Dropdown menu items
@@ -502,9 +548,9 @@
   // Add a class to ensure links outside the navbar nav are colored correctly.
 
   .navbar-link {
-    color: @navbar-default-link-color;
+    color: @link-color;
     &:hover {
-      color: @navbar-default-link-hover-color;
+      color: @link-hover-color;
     }
   }
 
@@ -528,7 +574,11 @@
 
 .navbar-inverse {
   background-color: @navbar-inverse-bg;
-  border-color: @navbar-inverse-border;
+
+  .container,
+  .container-fluid {
+      border-color: @navbar-inverse-border;
+  }
 
   .navbar-brand {
     color: @navbar-inverse-brand-color;
@@ -577,6 +627,7 @@
     &:hover,
     &:focus {
       background-color: @navbar-inverse-toggle-hover-bg;
+      border-color: @navbar-inverse-toggle-hover-border-color;
     }
     .icon-bar {
       background-color: @navbar-inverse-toggle-icon-bar-bg;

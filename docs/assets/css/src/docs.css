@@ -439,10 +439,8 @@ h4 code {
   padding-bottom: 40px;
   font-size: 16px;
   line-height: 1.5;
-  color: #555;
   text-align: center;
   background-color: #fff;
-  border-bottom: 1px solid #e5e5e5;
 }
 .bs-docs-featurette + .bs-docs-footer {
   margin-top: 0;
@@ -452,8 +450,6 @@ h4 code {
 .bs-docs-featurette-title {
   margin-bottom: 5px;
   font-size: 30px;
-  font-weight: normal;
-  color: #333;
 }
 .half-rule {
   width: 100px;
@@ -462,7 +458,6 @@ h4 code {
 .bs-docs-featurette h3 {
   margin-bottom: 5px;
   font-weight: normal;
-  color: #333;
 }
 .bs-docs-featurette-img {
   display: block;
@@ -670,7 +665,7 @@ h4 code {
   }
   .bs-docs-sidebar.affix {
     position: fixed; /* Undo the static from mobile first approach */
-    top: 20px;
+    top: 80px;
   }
   .bs-docs-sidebar.affix-bottom {
     position: absolute; /* Undo the static from mobile first approach */
@@ -1077,23 +1072,27 @@ h1[id] {
   margin-left: 0;
 }
 .bs-navbar-top-example {
-  padding-bottom: 45px;
+  padding-bottom: 60px;
 }
 .bs-navbar-top-example:after {
   top: auto;
   bottom: 15px;
+  content: "";
 }
 .bs-navbar-top-example .navbar-fixed-top {
   top: -1px;
 }
 .bs-navbar-bottom-example {
-  padding-top: 45px;
+  padding-top: 60px;
 }
 .bs-navbar-bottom-example .navbar-fixed-bottom {
   bottom: -1px;
 }
 .bs-navbar-bottom-example .navbar {
   margin-bottom: 0;
+}
+.bs-navbar-bottom-example:after {
+  content: "";
 }
 @media (min-width: 768px) {
   .bs-navbar-top-example .navbar-fixed-top,
