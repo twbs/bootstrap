@@ -231,5 +231,5 @@
 // Focus state
 .file input:focus ~ .file-custom {
     // the mixin is not used here to make sure there is feedback
-    box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
+    box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem $input-border-focus;
 }
