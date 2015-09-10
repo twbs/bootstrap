@@ -5,6 +5,7 @@
   text-align: center;
   background-image: -webkit-linear-gradient(135deg, darken($bd-purple, 20%), $bd-purple, lighten(saturate($bd-purple, 5%), 15%));
   background-image:         linear-gradient(135deg, darken($bd-purple, 20%), $bd-purple, lighten(saturate($bd-purple, 5%), 15%));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str(darken($bd-purple, 20%))}', endColorstr='#{ie-hex-str(lighten(saturate($bd-purple, 5%), 15%))}', gradientType='1');   /* For IE9 */
 
   .bd-booticon {
     margin: 0 auto 2rem;
