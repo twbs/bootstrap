@@ -6,6 +6,7 @@ _site
 .ruby-version
 .bundle
 vendor/cache
+vendor/bundle
 
 # Numerous always-ignore extensions
 *.diff
