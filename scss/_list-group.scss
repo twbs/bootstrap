@@ -18,9 +18,9 @@
   display: block;
   padding: .75rem 1.25rem;
   // Place the border on the list items and negative margin up for better styling
-  margin-bottom: -.0625rem;
+  margin-bottom: -$border-width;
   background-color: $list-group-bg;
-  border: .0625rem solid $list-group-border;
+  border: $border-width solid $list-group-border;
 
   // Round the first and last items
   &:first-child {
@@ -34,7 +34,7 @@
 
 .list-group-flush {
   .list-group-item {
-    border-width: .0625rem 0;
+    border-width: $border-width 0;
     border-radius: 0;
   }
 }
