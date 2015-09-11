@@ -78,6 +78,21 @@ $(function () {
       .bootstrapCollapse('show')
   })
 
+  QUnit.test('should reset style to auto after finishing closing collapse', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    $('<div class="collapse"/>')
+      .on('shown.bs.collapse', function () {
+        $(this).bootstrapCollapse('hide')
+      })
+      .on('hidden.bs.collapse', function () {
+        assert.strictEqual(this.style.height, '', 'height is auto')
+        done()
+      })
+      .bootstrapCollapse('show')
+  })
+
   QUnit.test('should remove "collapsed" class from target when collapse is shown', function (assert) {
     assert.expect(1)
     var done = assert.async()
