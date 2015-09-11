@@ -69,6 +69,16 @@ You can also install and manage Bootstrap's Sass and JavaScript using [Composer]
 $ composer require twbs/bootstrap
 {% endhighlight %}
 
+### NuGet
+
+If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org):
+
+{% highlight powershell %}
+PM> Install-Package bootstrap -Pre
+PM> Install-Package bootstrap.sass -Pre
+{% endhighlight %}
+
+The `-Pre` is required until Bootstrap v4 has a stable release.
 
 ## Custom builds
 
