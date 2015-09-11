@@ -52,7 +52,7 @@ Install Bootstrap in your Node powered apps with [the npm package](https://www.n
 
 Bootstrap's `package.json` contains some additional metadata under the following keys:
 
-- `less` - path to Bootstrap's main [Less](http://lesscss.org) source file
+- `sass` - path to Bootstrap's main [Sass](http://sass-lang.com/) source file
 - `style` - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)
 
 ### Meteor
@@ -69,6 +69,16 @@ You can also install and manage Bootstrap's Sass and JavaScript using [Composer]
 $ composer require twbs/bootstrap
 {% endhighlight %}
 
+### NuGet
+
+If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org):
+
+{% highlight powershell %}
+PM> Install-Package bootstrap -Pre
+PM> Install-Package bootstrap.sass -Pre
+{% endhighlight %}
+
+The `-Pre` is required until Bootstrap v4 has a stable release.
 
 ## Custom builds
 

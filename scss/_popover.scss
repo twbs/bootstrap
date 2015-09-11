@@ -29,7 +29,7 @@
       margin-left: -$popover-arrow-outer-width;
       border-top-color: $popover-arrow-outer-color;
       border-bottom-width: 0;
-      &:after {
+      &::after {
         bottom: 1px;
         margin-left: -$popover-arrow-width;
         content: "";
@@ -49,7 +49,7 @@
       margin-top: -$popover-arrow-outer-width;
       border-right-color: $popover-arrow-outer-color;
       border-left-width: 0;
-      &:after {
+      &::after {
         bottom: -$popover-arrow-width;
         left: 1px;
         content: "";
@@ -69,7 +69,7 @@
       margin-left: -$popover-arrow-outer-width;
       border-top-width: 0;
       border-bottom-color: $popover-arrow-outer-color;
-      &:after {
+      &::after {
         top: 1px;
         margin-left: -$popover-arrow-width;
         content: "";
@@ -89,7 +89,7 @@
       margin-top: -$popover-arrow-outer-width;
       border-right-width: 0;
       border-left-color: $popover-arrow-outer-color;
-      &:after {
+      &::after {
         right: 1px;
         bottom: -$popover-arrow-width;
         content: "";
@@ -118,11 +118,11 @@
 
 // Arrows
 //
-// .popover-arrow is outer, .popover-arrow:after is inner
+// .popover-arrow is outer, .popover-arrow::after is inner
 
 .popover-arrow {
   &,
-  &:after {
+  &::after {
     position: absolute;
     display: block;
     width: 0;
@@ -134,7 +134,7 @@
 .popover-arrow {
   border-width: $popover-arrow-outer-width;
 }
-.popover-arrow:after {
+.popover-arrow::after {
   content: "";
   border-width: $popover-arrow-width;
 }

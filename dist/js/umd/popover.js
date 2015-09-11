@@ -54,7 +54,7 @@
     });
 
     var DefaultType = $.extend({}, _Tooltip2['default'].DefaultType, {
-      content: '(string|function)'
+      content: '(string|element|function)'
     });
 
     var ClassName = {
@@ -118,19 +118,13 @@
       }, {
         key: 'setContent',
         value: function setContent() {
-          var tip = this.getTipElement();
-          var title = this.getTitle();
-          var content = this._getContent();
-          var titleElement = $(tip).find(Selector.TITLE)[0];
-
-          if (titleElement) {
-            titleElement[this.config.html ? 'innerHTML' : 'innerText'] = title;
-          }
+          var $tip = $(this.getTipElement());
 
           // we use append for html objects to maintain js events
-          $(tip).find(Selector.CONTENT).children().detach().end()[this.config.html ? typeof content === 'string' ? 'html' : 'append' : 'text'](content);
+          this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
+          this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
 
-          $(tip).removeClass(ClassName.FADE).removeClass(ClassName.IN);
+          $tip.removeClass(ClassName.FADE).removeClass(ClassName.IN);
 
           this.cleanupTether();
         }

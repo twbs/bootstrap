@@ -16,7 +16,6 @@ The navbar is a simple wrapper for positioning branding, navigation, and other e
 Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` and a color scheme class (either `.navbar-default` or `.navbar-inverse`).
-- When using multiple components in a navbar, some [alignment classes](#alignment) are required.
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
 - Use `.pull-left` and `.pull-right` to quickly align sub-components.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
@@ -164,7 +163,13 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 
 ## Placement
 
-Navbars can be statically placed (their default behavior), or fixed to the top or bottom of the viewport.
+Navbars can be statically placed (their default behavior), static without rounded corners, or fixed to the top or bottom of the viewport.
+
+{% example html %}
+<nav class="navbar navbar-full navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Full width</a>
+</nav>
+{% endexample %}
 
 {% example html %}
 <nav class="navbar navbar-fixed-top navbar-light bg-faded">

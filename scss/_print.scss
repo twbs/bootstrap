@@ -7,8 +7,8 @@
 
 @media print {
   *,
-  *:before,
-  *:after {
+  *::before,
+  *::after {
     text-shadow: none !important;
     box-shadow: none !important;
   }
@@ -18,7 +18,7 @@
     text-decoration: underline;
   }
 
-  abbr[title]:after {
+  abbr[title]::after {
     content: " (" attr(title) ")";
   }
 

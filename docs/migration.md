@@ -54,6 +54,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - `.dl-horizontal` now requires grid classes, increasing flexbility in column widths.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
 
+### Images
+
+- Renamed `.img-responsive` to `.img-fluid`.
+
 ### Tables
 
 - Nearly all instances of the `>` selector have been removed, meaning nested tables will now automatically inherit styles from their parents. This greatly simplifies our selectors and potential customizations.
@@ -77,6 +81,14 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Added a new `~480px` grid breakpoint, meaning there are now five total tiers.
 
+### Buttons
+
+- Dropped the `.btn-xs` class entirely.
+
+### Button group
+
+- Dropped the `.btn-group-xs` class entirely.
+
 ### Navs
 
 - Dropped nearly all `>` selectors for simpler styling via un-nested classes.
@@ -89,6 +101,20 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Panels, thumbnails, and wells
 
 Dropped entirely for the new card component.
+
+#### Panels
+
+- `.panel` to `.card`
+- `.panel-default` removed and no replacement
+- `.panel-heading` to `.card-header`
+- `.panel-title` to `.card-title`
+- `.panel-body` to `.card-block`
+- `.panel-footer` to `.card-footer`
+- `.panel-primary` to `.card-primary` and `.card-inverse`
+- `.panel-success` to `.card-success` and `.card-inverse`
+- `.panel-info` to `.card-info` and `.card-inverse`
+- `.panel-warning` to `.card-warning` and `.card-inverse`
+- `.panel-danger` to `.card-danger` and `.card-inverse`
 
 ### Carousel
 
@@ -129,7 +155,7 @@ The following components have been removed in v4.0.0.
 | Wells |  | Cards |
 | Justified navs | | |
 
-TODO: audit classes in v4 that aren't present in v4
+TODO: audit classes in v3 that aren't present in v4
 
 ### Responsive utilities
 

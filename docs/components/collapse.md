@@ -96,7 +96,7 @@ The collapse plugin utilizes a few classes to handle the heavy lifting:
 - `.collapse.in` shows the content
 - `.collapsing` is added when the transition starts, and removed when it finishes
 
-These classes can be found in `component-animations.less`.
+These classes can be found in `_animation.scss`.
 
 ### Via data attributes
 

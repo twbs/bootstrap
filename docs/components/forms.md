@@ -169,7 +169,7 @@ Since Bootstrap applies `display: block` and `width: 100%` to almost all our for
 
 ### Form groups
 
-The `.form-group` class is the easiest way to add some structure to forms. It's only purpose is to provide `margin-bottom` around a label and control pairing. As a bonus, since it's a class you can use it with `<fieldset>`s, `<div>`s, or nearly any other element.
+The `.form-group` class is the easiest way to add some structure to forms. Its only purpose is to provide `margin-bottom` around a label and control pairing. As a bonus, since it's a class you can use it with `<fieldset>`s, `<div>`s, or nearly any other element.
 
 {% example html %}
 <form>
@@ -186,7 +186,7 @@ The `.form-group` class is the easiest way to add some structure to forms. It's 
 
 ### Inline forms
 
-Use the `.inline-form` class to to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms behave differently:
+Use the `.form-inline` class to to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms behave differently:
 
 - Controls are `display: inline-block` to provide alignment control via `vertical-align` and `margin`.
 - Controls receive `width: auto` to override the Bootstrap default `width: 100%`.
@@ -396,15 +396,15 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 When you need to place plain text next to a form label within a form, use the `.form-control-static` class on a `<p>`.
 
 {% example html %}
-<form class="form-horizontal">
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Email</label>
+<form>
+  <div class="form-group row">
+    <label class="col-sm-2 form-control-label">Email</label>
     <div class="col-sm-10">
       <p class="form-control-static">email@example.com</p>
     </div>
   </div>
-  <div class="form-group">
-    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 form-control-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword" placeholder="Password">
     </div>
@@ -535,7 +535,7 @@ Block help text—for below inputs or for longer lines of help text—can be eas
 
 ## Validation
 
-Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
+Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
 
 {% comment %}
 {% callout warning %}
@@ -549,15 +549,15 @@ Ensure that an alternative indication of state is also provided. For instance, y
 
 {% example html %}
 <div class="form-group has-success">
-  <label class="control-label" for="inputSuccess1">Input with success</label>
+  <label class="form-control-label" for="inputSuccess1">Input with success</label>
   <input type="text" class="form-control form-control-success" id="inputSuccess1">
 </div>
 <div class="form-group has-warning">
-  <label class="control-label" for="inputWarning1">Input with warning</label>
+  <label class="form-control-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
 </div>
 <div class="form-group has-error">
-  <label class="control-label" for="inputError1">Input with error</label>
+  <label class="form-control-label" for="inputError1">Input with error</label>
   <input type="text" class="form-control form-control-error" id="inputError1">
 </div>
 
@@ -603,7 +603,7 @@ We hide the default `<input>` with `opacity` and use the `.c-indicator` to build
 
 With the sibling selector (`~`), we use the `:checked` state to trigger a makeshift checked state on the custom control.
 
-In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](http://useiconic.com/open). This provides us the best control for styling and positioning across browsers and devices.
+In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](https://useiconic.com/open). This provides us the best control for styling and positioning across browsers and devices.
 
 #### Checkboxes
 

@@ -13,7 +13,7 @@ Bootstrap includes dozens of utilities—classes with a single purpose. They're 
 
 ## Spacing
 
-Assign `margin` or `padding` to an element or a subset of it's sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. All classes are multiples on the global default value, `1rem`.
+Assign `margin` or `padding` to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. All classes are multiples on the global default value, `1rem`.
 
 ### Margin
 
@@ -132,6 +132,7 @@ Similar to the contextual text color classes, easily set the background of an el
 <div class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</div>
 <div class="bg-warning">Etiam porta sem malesuada magna mollis euismod.</div>
 <div class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</div>
+<div class="bg-inverse">Cras mattis consectetur purus sit amet fermentum.</div>
 {% endexample %}
 
 {% callout info %}
@@ -233,7 +234,7 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 
 ## Hidden content
 
-Hide any HTML element with the `[hidden]` attribute. Previously, v3.x included a `.hidden` class that forced toggled content. However, we removed it due to conflicts with jQuery's `hide()` function. It's taken from [PureCSS](http://purecss.io).
+Hide any HTML element with the `[hidden]` attribute. Previously, v3.x included a `.hidden` class that forced toggled content. However, we removed it due to conflicts with jQuery's `hide()` function. It's taken from [PureCSS](http://purecss.io). While `[hidden]` isn't natively supported by IE9-10, declaring it `display: none` in our CSS gets around that problem.
 
 Furthermore, `.invisible` can be used to toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
 

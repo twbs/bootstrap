@@ -48,7 +48,7 @@ If you're using Bootstrap's compiled CSS, this the example you'll want to start 
 </div>
 {% endexample %}
 
-The above example creates three equal-width columns on small, medium, large, and extra large devices using our [predefined grid classes](). Those columns are centered in the page with the parent `.container`.
+The above example creates three equal-width columns on small, medium, large, and extra large devices using our [predefined grid classes](#predefined-classes). Those columns are centered in the page with the parent `.container`.
 
 ## Grid options
 
@@ -59,24 +59,24 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
     <thead>
       <tr>
         <th></th>
-        <th>
-          Extra small
+        <th class="text-center">
+          Extra small<br>
           <small>&lt;34em / 480px</small>
         </th>
-        <th>
-          Small
+        <th class="text-center">
+          Small<br>
           <small>&ge;34em / 480px</small>
         </th>
-        <th>
-          Medium
+        <th class="text-center">
+          Medium<br>
           <small>&ge;45em / 720px</small>
         </th>
-        <th>
-          Large
+        <th class="text-center">
+          Large<br>
           <small>&ge;62em / 992px</small>
         </th>
-        <th>
-          Extra large
+        <th class="text-center">
+          Extra large<br>
           <small>&ge;75em / 1200px</small>
         </th>
       </tr>
@@ -129,7 +129,7 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
 
 ## Sass mixins
 
-When using Bootstrap's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our [prebuilt grid classes](#example-stacked-to-horizontal) use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
+When using Bootstrap's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our [predefined grid classes](#predefined-classes) use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
 
 ### Variables
 
@@ -195,7 +195,7 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.
 
-See it in action in <a href="http://jsbin.com/qiqet/3/edit">this rendered example</a>.
+See it in action in <a href="http://jsbin.com/ruxona/edit">this rendered example</a>.
 
 {% highlight scss %}
 .container {
@@ -317,7 +317,7 @@ Build on the previous example by creating even more dynamic and powerful layouts
   <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
   <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
-  <div class="clearfix visible-xs-block"></div>
+  <div class="clearfix hidden-sm-up"></div>
   <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
 </div>
 {% endexample %}
@@ -348,7 +348,7 @@ With the four tiers of grids available you're bound to run into issues where, at
   <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
 
   <!-- Add the extra clearfix for only the required viewport -->
-  <div class="clearfix visible-xs-block"></div>
+  <div class="clearfix hidden-sm-up"></div>
 
   <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
   <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>

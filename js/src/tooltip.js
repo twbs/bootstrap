@@ -43,7 +43,7 @@ const Tooltip = (($) => {
   const DefaultType = {
     animation   : 'boolean',
     template    : 'string',
-    title       : '(string|function)',
+    title       : '(string|element|function)',
     trigger     : 'string',
     delay       : '(number|object)',
     html        : 'boolean',
@@ -356,17 +356,31 @@ const Tooltip = (($) => {
     }
 
     setContent() {
-      let tip    = this.getTipElement()
-      let title  = this.getTitle()
-      let method = this.config.html ? 'innerHTML' : 'innerText'
+      let $tip = $(this.getTipElement())
 
-      $(tip).find(Selector.TOOLTIP_INNER)[0][method] = title
+      this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
 
-      $(tip)
+      $tip
         .removeClass(ClassName.FADE)
         .removeClass(ClassName.IN)
 
       this.cleanupTether()
+    }
+
+    setElementContent($element, content) {
+      let html = this.config.html
+      if (typeof content === 'object' && (content.nodeType || content.jquery)) {
+        // content is a DOM node or a jQuery
+        if (html) {
+          if (!$(content).parent().is($element)) {
+            $element.empty().append(content)
+          }
+        } else {
+          $element.text($(content).text())
+        }
+      } else {
+        $element[html ? 'html' : 'text'](content)
+      }
     }
 
     getTitle() {

@@ -51,7 +51,7 @@ The ScrollSpy plugin is for automatically updating nav targets based on scroll p
 
 ### Requires Bootstrap nav
 
-Scrollspy currently requires the use of a [Bootstrap nav component]({{ site.baseurl }}/components/nav/) for proper highlighting of active links.
+Scrollspy currently requires the use of a [Bootstrap nav component]({{ site.baseurl }}/components/navs/) for proper highlighting of active links.
 
 ### Requires relative positioning
 
@@ -96,7 +96,7 @@ Navbar links must have resolvable id targets. For example, a `<a href="#home">ho
 {% callout info %}
 #### Non-`:visible` target elements ignored
 
-Target elements that are not [`:visible` according to jQuery](http://api.jquery.com/visible-selector/) will be ignored and their corresponding nav items will never be highlighted.
+Target elements that are not [`:visible` according to jQuery](https://api.jquery.com/visible-selector/) will be ignored and their corresponding nav items will never be highlighted.
 {% endcallout %}
 
 ### Methods

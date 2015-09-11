@@ -2,24 +2,13 @@
   "paths": {
     "docsJs": [
       "../assets/js/vendor/holder.min.js",
-      "assets/js/vendor/jekyll-search.js",
       "../assets/js/vendor/ZeroClipboard.min.js",
-      "../assets/js/vendor/anchor.js",
+      "../assets/js/vendor/anchor.min.js",
       "../assets/js/vendor/tether.min.js",
       "../assets/js/src/application.js"
     ]
   },
   "config": {
-    "autoprefixerBrowsers": [
-      "Android 2.3",
-      "Android >= 4",
-      "Chrome >= 20",
-      "Firefox >= 24",
-      "Explorer >= 8",
-      "iOS >= 6",
-      "Opera >= 12",
-      "Safari >= 6"
-    ],
     "jqueryCheck": [
       "if (typeof jQuery === 'undefined') {",
       "  throw new Error('Bootstrap\\'s JavaScript requires jQuery')",

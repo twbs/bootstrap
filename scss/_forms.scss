@@ -50,15 +50,13 @@
   // disabled if the fieldset is disabled. Due to implementation difficulty, we
   // don't honor that edge case; we style them as disabled anyway.
   &:disabled,
-  &[readonly],
-  fieldset[disabled] & {
+  &[readonly] {
     background-color: $input-bg-disabled;
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
   }
 
-  &[disabled],
-  fieldset[disabled] & {
+  &:disabled {
     cursor: $cursor-disabled;
   }
 }
@@ -233,24 +231,21 @@
 input[type="radio"],
 input[type="checkbox"] {
   &:disabled,
-  &.disabled,
-  fieldset[disabled] & {
+  &.disabled {
     cursor: $cursor-disabled;
   }
 }
 // These classes are used directly on <label>s
 .radio-inline,
 .checkbox-inline {
-  &.disabled,
-  fieldset[disabled] & {
+  &.disabled {
     cursor: $cursor-disabled;
   }
 }
 // These classes are used on elements with <label> descendants
 .radio,
 .checkbox {
-  &.disabled,
-  fieldset[disabled] & {
+  &.disabled {
     label {
       cursor: $cursor-disabled;
     }
@@ -266,14 +261,14 @@ input[type="checkbox"] {
 .form-control-warning,
 .form-control-error {
   padding-right: ($input-padding-x * 3);
+  background-repeat: no-repeat;
   background-position: center right ($input-height * .25);
   background-size: ($input-height * .65) ($input-height * .65);
-  background-repeat: no-repeat;
 }
 
 // Form validation states
 .has-success {
-  @include form-control-validation(success, $brand-success);
+  @include form-control-validation($brand-success);
 
   .form-control-success {
     background-image: url($form-icon-success);
@@ -281,7 +276,7 @@ input[type="checkbox"] {
 }
 
 .has-warning {
-  @include form-control-validation(warning, $brand-warning);
+  @include form-control-validation($brand-warning);
 
   .form-control-warning {
     background-image: url($form-icon-warning);
@@ -289,7 +284,7 @@ input[type="checkbox"] {
 }
 
 .has-error {
-  @include form-control-validation(error, $brand-danger);
+  @include form-control-validation($brand-danger);
 
   .form-control-error {
     background-image: url($form-icon-error);
@@ -384,7 +379,7 @@ input[type="checkbox"] {
 // Requires wrapping inputs and labels with `.form-group` for proper display of
 // default HTML form controls and our custom form controls (e.g., input groups).
 //
-// Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
+// Heads up! This is mixin-ed into `.navbar-form` in _navbar.scss.
 
 .form-inline {
 
@@ -425,7 +420,7 @@ input[type="checkbox"] {
       width: 100%;
     }
 
-    .control-label {
+    .form-control-label {
       margin-bottom: 0;
       vertical-align: middle;
     }

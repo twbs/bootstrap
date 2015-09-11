@@ -12,6 +12,9 @@ linters:
   ColorKeyword:
     enabled: true
 
+  ColorVariable:
+    enabled: false
+
   Comment:
     enabled: true
     exclude: ['_normalize.scss', 'bootstrap.scss']
@@ -55,6 +58,9 @@ linters:
   IdSelector:
     enabled: true
 
+  ImportantRule:
+    enabled: false
+
   ImportPath:
     enabled: true
     leading_underscore: false
@@ -96,6 +102,9 @@ linters:
       "bottom",
       "left",
       "z-index",
+      "-webkit-box-sizing",
+      "-moz-box-sizing",
+      "box-sizing",
       "display",
       "float",
       "width",
@@ -104,10 +113,6 @@ linters:
       "height",
       "min-height",
       "max-height",
-      "-webkit-box-sizing",
-      "-moz-box-sizing",
-      "box-sizing",
-      "-webkit-appearance",
       "flex",
       "flex-direction",
       "flex-flow",

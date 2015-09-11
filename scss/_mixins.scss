@@ -22,18 +22,17 @@
 
 // Utilities
 @import "mixins/breakpoints";
-@import "mixins/hide-text";
 @import "mixins/hover";
 @import "mixins/image";
 @import "mixins/label";
 @import "mixins/reset-filter";
 @import "mixins/resize";
-@import "mixins/responsive-visibility";
 @import "mixins/screen-reader";
 @import "mixins/size";
 @import "mixins/tab-focus";
 @import "mixins/reset-text";
 @import "mixins/text-emphasis";
+@import "mixins/text-hide";
 @import "mixins/text-truncate";
 
 // // Components

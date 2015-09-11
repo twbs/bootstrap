@@ -13,7 +13,7 @@ Bootstrap supports a wide variety of modern browsers and devices, and some older
 
 ## Supported browsers
 
-Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11**. More specific support information is provided below.
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11 / Microsoft Edge**. More specific support information is provided below.
 
 ### Mobile devices
 
@@ -64,6 +64,7 @@ Similarly, the latest versions of most desktop browsers are supported.
         <th>Chrome</th>
         <th>Firefox</th>
         <th>Internet Explorer</th>
+        <th>Microsoft Edge</th>
         <th>Opera</th>
         <th>Safari</th>
       </tr>
@@ -74,6 +75,7 @@ Similarly, the latest versions of most desktop browsers are supported.
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-muted">N/A</td>
+        <td class="text-muted">N/A</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
       </tr>
@@ -83,11 +85,14 @@ Similarly, the latest versions of most desktop browsers are supported.
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
+        <td class="text-success">Supported</td>
         <td class="text-danger">Not supported</td>
       </tr>
     </tbody>
   </table>
 </div>
+
+For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/organizations/faq/) version of Firefox.
 
 Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 8 and below, though they are not officially supported.
 
@@ -138,7 +143,7 @@ As of v4, Bootstrap no longer supports IE8. **If you require IE8 support, we rec
 
 Alternatively, you may add some third party JavaScript to backfill support for IE8 to Bootstrap 4. You'll need the following:
 
-* [The HTML5 shiv](http://en.wikipedia.org/wiki/HTML5_Shiv)
+* [The HTML5 shiv](https://en.wikipedia.org/wiki/HTML5_Shiv)
 * [Respond.js](https://github.com/scottjehl/Respond)
 * [Rem unit polyfill](https://github.com/chuckcarpenter/REM-unit-polyfill)
 

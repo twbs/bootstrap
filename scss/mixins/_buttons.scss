@@ -4,39 +4,48 @@
 // and disabled options for all buttons
 
 @mixin button-variant($color, $background, $border) {
-  color: $color;
-  background-color: $background;
-  border-color: $border;
-//  $shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
-//  .box-shadow($shadow);
-
   $active-background: darken($background, 10%);
   $active-border: darken($border, 12%);
 
-  &:focus,
-  &.focus,
-  &:active,
-  &.active,
-  .open > &.dropdown-toggle {
-    color: $color;
-    background-color: $active-background;
-        border-color: $active-border;
-  }
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  @include box-shadow(inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075));
+
   @include hover {
     color: $color;
     background-color: $active-background;
         border-color: $active-border;
   }
+
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: $active-background;
+        border-color: $active-border;
+  }
+
   &:active,
   &.active,
   .open > &.dropdown-toggle {
+    color: $color;
+    background-color: $active-background;
+        border-color: $active-border;
     // Remove the gradient for the pressed/active state
     background-image: none;
     @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: darken($background, 17%);
+          border-color: darken($border, 25%);
+    }
   }
+
   &.disabled,
-  &:disabled,
-  fieldset[disabled] & {
+  &:disabled {
     &:focus,
     &.focus {
       background-color: $background;
@@ -71,8 +80,7 @@
   }
 
   &.disabled,
-  &:disabled,
-  fieldset[disabled] & {
+  &:disabled {
     &:focus,
     &.focus {
       border-color: lighten($color, 20%);

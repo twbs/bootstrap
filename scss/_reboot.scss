@@ -1,7 +1,7 @@
 // Reboot
 //
 // Global resets to common HTML elements and more for easier usage by Bootstrap.
-// Builds on the resets of Normalize.css.
+// Adds additional rules on top of Normalize.css, including several overrides.
 
 
 // Reset the box-sizing
@@ -22,8 +22,8 @@ html {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -146,7 +146,7 @@ blockquote {
 
 a {
   color: $link-color;
-  text-decoration: none;
+  text-decoration: $link-decoration;
 
   @include hover-focus {
     color: $link-hover-color;
@@ -279,6 +279,8 @@ legend {
 }
 
 input[type="search"] {
+  // Undo Normalize's default here to match our global overrides.
+  box-sizing: inherit;
   // This overrides the extra rounded corners on search inputs in iOS so that our
   // `.form-control` class can properly style them. Note that this cannot simply
   // be added to `.form-control` as it's not specific enough. For details, see
