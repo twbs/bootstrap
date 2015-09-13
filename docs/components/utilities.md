@@ -187,7 +187,7 @@ Float an element to the left or right with a class. `!important` is included to 
 
 ## Center content
 
-Center an element via `margin`, center-block for most use cases, center-tables for tables. Available as mixins and classes.
+Center an element via `margin`, `center-block` for most use cases, `center-tables` for tables. Available as mixins and classes.
 
 {% example html %}
 <div class="center-block">Centered block</div>
