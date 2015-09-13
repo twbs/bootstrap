@@ -187,10 +187,16 @@ Float an element to the left or right with a class. `!important` is included to 
 
 ## Center content
 
-Set an element to `display: block;` and center via `margin`. Available as a mixin and class.
+Center an element via `margin`, center-block for most use cases, center-tables for tables. Available as mixins and classes.
 
 {% example html %}
 <div class="center-block">Centered block</div>
+
+<table class="center-table">
+  <tr>
+    <td>Plain old table</td>
+  </tr>
+</table>
 {% endexample %}
 
 {% highlight scss %}
@@ -201,10 +207,22 @@ Set an element to `display: block;` and center via `margin`. Available as a mixi
   margin-right: auto;
 }
 
+.center-table {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 // Usage as a mixin
 .element {
   @include center-block;
 }
+
+table.element {
+  @include center-table;
+}
+
 {% endhighlight %}
 
 Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes [the micro clearfix](http://nicolasgallagher.com/micro-clearfix-hack/) as popularized by Nicolas Gallagher. Can also be used as a mixin.
