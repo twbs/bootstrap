@@ -31,7 +31,7 @@ Add our JavaScript plugins and jQuery near the end of your pages, right before t
 <script src="{{ site.cdn.js }}"></script>
 {% endhighlight %}
 
-And that's it—you're your way to a fully Bootstrapped site. If you're at all unsure about the general page structure, keep reading for an example page template.
+And that's it—you're on your way to a fully Bootstrapped site. If you're at all unsure about the general page structure, keep reading for an example page template.
 
 ## Starter template
 
