@@ -9,7 +9,7 @@
 
 +function ($) {
   'use strict';
-
+  //Hello world!
   // AFFIX CLASS DEFINITION
   // ======================
 
