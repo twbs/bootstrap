@@ -463,8 +463,10 @@ const Modal = (($) => {
         }
 
         if (typeof config === 'string') {
+          if (data[config] === undefined) {
+            throw new Error(`No method named "${config}"`)
+          }
           data[config](relatedTarget)
-
         } else if (_config.show) {
           data.show(relatedTarget)
         }
