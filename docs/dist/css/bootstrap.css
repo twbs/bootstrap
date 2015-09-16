@@ -547,7 +547,7 @@ hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;
-  border-top: .0625rem solid rgba(0, 0, 0, .1);
+  border-top: 1px solid rgba(0, 0, 0, .1);
 }
 
 small,
@@ -1849,7 +1849,7 @@ pre code {
   color: #55595c;
   background-color: #fff;
   background-image: none;
-  border: .0625rem solid #ccc;
+  border: 1px solid #ccc;
   border-radius: .25rem;
 }
 
@@ -1899,7 +1899,7 @@ pre code {
 }
 
 .form-control-label {
-  padding: .4375rem .75rem;
+  padding: .375rem .75rem;
   margin-bottom: 0;
 }
 
@@ -1908,7 +1908,7 @@ pre code {
   input[type="time"].form-control,
   input[type="datetime-local"].form-control,
   input[type="month"].form-control {
-    line-height: 2.375rem;
+    line-height: 2.25rem;
   }
   input[type="date"].input-sm,
   .input-group-sm input[type="date"].form-control,
@@ -1918,7 +1918,7 @@ pre code {
   .input-group-sm input[type="datetime-local"].form-control,
   input[type="month"].input-sm,
   .input-group-sm input[type="month"].form-control {
-    line-height: 1.95rem;
+    line-height: 1.825rem;
   }
   input[type="date"].input-lg,
   .input-group-lg input[type="date"].form-control,
@@ -1928,14 +1928,14 @@ pre code {
   .input-group-lg input[type="datetime-local"].form-control,
   input[type="month"].input-lg,
   .input-group-lg input[type="month"].form-control {
-    line-height: 3.291667rem;
+    line-height: 3.166667rem;
   }
 }
 
 .form-control-static {
-  min-height: 2.375rem;
-  padding-top: .4375rem;
-  padding-bottom: .4375rem;
+  min-height: 2.25rem;
+  padding-top: .375rem;
+  padding-bottom: .375rem;
   margin-bottom: 0;
 }
 
@@ -2045,9 +2045,9 @@ input[type="checkbox"].disabled {
 .form-control-error {
   padding-right: 2.25rem;
   background-repeat: no-repeat;
-  background-position: center right .59375rem;
-  -webkit-background-size: 1.54375rem 1.54375rem;
-          background-size: 1.54375rem 1.54375rem;
+  background-position: center right .5625rem;
+  -webkit-background-size: 1.4625rem 1.4625rem;
+          background-size: 1.4625rem 1.4625rem;
 }
 
 .has-success .help-block,
@@ -2210,7 +2210,7 @@ input[type="checkbox"].disabled {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  border: .0625rem solid transparent;
+  border: 1px solid transparent;
   border-radius: .25rem;
 }
 
@@ -3772,7 +3772,7 @@ input[type="button"].btn-block {
   font-size: 1.25rem;
   line-height: 1;
   background: none;
-  border: .0625rem solid transparent;
+  border: 1px solid transparent;
   border-radius: .25rem;
 }
 
@@ -4744,9 +4744,9 @@ a.label:hover {
   position: relative;
   display: block;
   padding: .75rem 1.25rem;
-  margin-bottom: -.0625rem;
+  margin-bottom: -1px;
   background-color: #fff;
-  border: .0625rem solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .list-group-item:first-child {
@@ -4761,7 +4761,7 @@ a.label:hover {
 }
 
 .list-group-flush .list-group-item {
-  border-width: .0625rem 0;
+  border-width: 1px 0;
   border-radius: 0;
 }
 
