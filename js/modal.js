@@ -267,11 +267,15 @@
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
     this.originalBodyPad = document.body.style.paddingRight || ''
-    if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    // <!-- this line cause carousel left shift
+    // if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    // -->
   }
 
   Modal.prototype.resetScrollbar = function () {
-    this.$body.css('padding-right', this.originalBodyPad)
+    // <!-- this line cause carousel left shift
+    // this.$body.css('padding-right', this.originalBodyPad)
+    // -->
   }
 
   Modal.prototype.measureScrollbar = function () { // thx walsh
