@@ -28,7 +28,7 @@ restrictions:
   [`Normalize`](https://github.com/necolas/normalize.css) (open them in
   their respective repositories).
 
-* Please **do not** open issues regarding the official themes offered on <http://themes.getbootstrap.com/>. Instead, please email any questions or feedback regarding those themes to <themes@getbootstrap.com>.
+* Please **do not** open issues regarding the official themes offered on <http://themes.getbootstrap.com/>. Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
 
 
 ## Issues and labels
@@ -99,7 +99,7 @@ Example:
 
 ### Reporting upstream browser bugs
 
-Sometimes bugs reported to us are actually caused by bugs in the browser(s) themselves, not bugs in Bootstrap per say.
+Sometimes bugs reported to us are actually caused by bugs in the browser(s) themselves, not bugs in Bootstrap per se.
 When feasible, we aim to report such upstream bugs to the relevant browser vendor(s), and then list them on our [Wall of Browser Bugs](http://getbootstrap.com/browser-bugs/) and [document them in MDN](https://developer.mozilla.org/en-US/docs/Web).
 
 | Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                                                              | Notes                                                    |
@@ -124,7 +124,7 @@ provide as much detail and context as possible.
 
 ## Pull requests
 
-Good pull requests, patches, improvements, and new features are all fantastic
+Good pull requests - patches, improvements, and new features - are a fantastic
 help. They should remain focused in scope and avoid containing unrelated
 commits.
 
