@@ -262,11 +262,11 @@ Toggles an element's tooltip. **Returns to the caller before the tooltip has act
 
 {% highlight js %}$('#element').tooltip('toggle'){% endhighlight %}
 
-#### .tooltip('destroy')
+#### .tooltip('dispose')
 
 Hides and destroys an element's tooltip. Tooltips that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
-{% highlight js %}$('#element').tooltip('destroy'){% endhighlight %}
+{% highlight js %}$('#element').tooltip('dispose'){% endhighlight %}
 
 ### Events
 
