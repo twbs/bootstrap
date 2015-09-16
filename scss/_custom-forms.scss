@@ -199,12 +199,12 @@
   height: 2.5rem;
   padding: .5rem 1rem;
   line-height: 1.5;
-  color: #555;
+  color: $input-color;
   user-select: none;
-  background-color: #fff;
-  border: .075rem solid #ddd;
+  background-color: $input-bg;
+  border: .075rem solid $input-border;
   border-radius: $input-border-radius;
-  @include box-shadow(inset 0 .2rem .4rem rgba(0,0,0,.05));
+  @include box-shadow($input-box-shadow);
 }
 .file-custom::after {
   content: "Choose file...";
@@ -219,9 +219,9 @@
   height: 2.5rem;
   padding: .5rem 1rem;
   line-height: 1.5;
-  color: #555;
+  color: $btn-secondary-color;
   content: "Browse";
-  background-color: #eee;
+  background-color: $btn-secondary-bg;
   border: .075rem solid #ddd;
   border-radius: 0 .25rem .25rem 0;
 }
