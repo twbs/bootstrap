@@ -162,6 +162,17 @@ Add an optional header and/or footer within a card.
 
 {% example html %}
 <div class="card">
+  <h3 class="card-header">Featured</h3>
+  <div class="card-block">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="card">
   <div class="card-header">
     Quote
   </div>
