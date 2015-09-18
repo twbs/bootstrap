@@ -33,6 +33,19 @@ $(function () {
     assert.strictEqual($tooltip[0], $el[0], 'collection contains element')
   })
 
+  QUnit.test('should throw an exception if Tether is not included', function (assert) {
+    assert.expect(1)
+    var $el = $('<div/>')
+    var tmpTether = window.Tether;
+    window.Tether = undefined; // fake tether not included
+    try {
+      var $tooltip = $el.bootstrapTooltip()
+    } catch (e) {
+      assert.strictEqual(e.message, 'Bootstrap tooltips require Tether http://github.hubspot.com/tether/')
+      window.Tether = tmpTether; // restore Tether for other unit tests
+    }
+  })
+
   QUnit.test('should expose default settings', function (assert) {
     assert.expect(1)
     assert.ok($.fn.bootstrapTooltip.Constructor.Default, 'defaults is defined')
