@@ -122,6 +122,7 @@ Convey meaning through color with a handful of emphasis utility classes. These m
 <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
 <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
 <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+<p class="bg-inverse text-inverse">Curabitur blandit tempus porttitor.</p>
 {% endexample %}
 
 Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.
