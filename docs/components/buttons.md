@@ -76,21 +76,25 @@ In need of a button, but not the hefty background colors they bring? Replace the
 
 Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
 
-{% example html %}
-<button type="button" class="btn btn-primary btn-lg">Large button</button>
-<button type="button" class="btn btn-secondary btn-lg">Large button</button>
-{% endexample %}
-
-{% example html %}
-<button type="button" class="btn btn-primary btn-sm">Small button</button>
-<button type="button" class="btn btn-secondary btn-sm">Small button</button>
-{% endexample %}
-
 Create block level buttons—those that span the full width of a parent—by adding `.btn-block`.
 
 {% example html %}
+<p>
+<button type="button" class="btn btn-primary btn-lg">Large button</button>
+<button type="button" class="btn btn-secondary btn-lg">Large button</button>
+</p>
+<p>
+<button type="button" class="btn btn-primary">Normal button</button>
+<button type="button" class="btn btn-secondary">Normal button</button>
+</p>
+<p>
+<button type="button" class="btn btn-primary btn-sm">Small button</button>
+<button type="button" class="btn btn-secondary btn-sm">Small button</button>
+</p>
+<p>
 <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
 <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+</p>
 {% endexample %}
 
 ## Active state
