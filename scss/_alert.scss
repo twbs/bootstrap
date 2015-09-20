@@ -61,5 +61,5 @@
   @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-text);
 }
 .alert-danger {
-  @include alert-variant($alert-danger-bg, $alert-danger-border,$alert-danger-text);
+  @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
 }
