@@ -147,6 +147,19 @@
   );
 }
 
+.btn-input {
+  .button-variant(
+      @input-color;
+      @input-color;
+      @input-bg;
+      @input-bg;
+      @input-bg;
+      @input-border;
+      @input-border;
+      @input-border-focus
+  );
+}
+
 
 // Link buttons
 // -------------------------
@@ -224,5 +237,18 @@ input[type="reset"],
 input[type="button"] {
   &.btn-block {
     width: 100%;
+  }
+}
+
+.btn-input {
+  font-weight: 500;
+  outline: 0 !important;
+
+  &.active,
+  &:active,
+  &.focus,
+  &:focus {
+      border-color: @input-border-focus;
+      outline: 0 !important;
   }
 }
