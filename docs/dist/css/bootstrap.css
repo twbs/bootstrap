@@ -1096,7 +1096,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #829ca9;
-  background-color: #f2f5f7;
+  background-color: #fff;
 }
 input,
 button,
@@ -1148,7 +1148,7 @@ img {
   height: auto;
   padding: 4px;
   line-height: 1.5;
-  background-color: #f2f5f7;
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 3px;
   -webkit-transition: all .2s ease-in-out;
@@ -2399,7 +2399,7 @@ th {
   border-top: 2px solid #d3d5d8;
 }
 .table .table {
-  background-color: #f2f5f7;
+  background-color: #fff;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -4661,7 +4661,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #f2f5f7;
+    border-bottom-color: #fff;
   }
 }
 .nav-pills > li {
@@ -4729,7 +4729,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom-color: #f2f5f7;
+    border-bottom-color: #fff;
   }
 }
 .tab-content > .tab-pane {
@@ -5688,7 +5688,7 @@ a.badge:focus {
   padding: 4px;
   margin-bottom: 24px;
   line-height: 1.5;
-  background-color: #f2f5f7;
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 3px;
   -webkit-transition: border .2s ease-in-out;
