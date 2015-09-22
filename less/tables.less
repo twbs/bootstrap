@@ -232,3 +232,46 @@ table {
     }
   }
 }
+
+
+
+.table-bordered {
+    border-radius: @border-radius-small;
+
+    > thead {
+        background-color: @gray-base;
+    }
+
+    > tbody {
+        > tr > th {
+            color: @brand-primary;
+        }
+    }
+
+    > thead > tr > th,
+    > tbody > tr > th,
+    > tfoot > tr > th,
+    > thead > tr > td,
+    > tbody > tr > td,
+    > tfoot > tr > td {
+        border-left: none;
+        border-right: none;
+    }
+}
+
+.table {
+    font-size: 12px;
+
+    > thead > tr > th,
+    > tbody > tr > th,
+    > tfoot > tr > th,
+    > thead > tr > td,
+    > tbody > tr > td,
+    > tfoot > tr > td {
+        padding: 22px 16px 18px;
+    }
+
+    > thead > tr > th {
+       border-bottom-width: 1px;
+   }
+}

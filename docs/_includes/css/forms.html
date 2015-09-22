@@ -974,29 +974,34 @@
   <p>Wrap inputs in grid columns, or any custom parent element, to easily enforce desired widths.</p>
   <div class="bs-example" data-example-id="form-control-column-sizing">
     <form>
-      <div class="row">
-        <div class="col-xs-2">
-          <input type="text" class="form-control" placeholder=".col-xs-2">
-        </div>
-        <div class="col-xs-3">
-          <input type="text" class="form-control" placeholder=".col-xs-3">
-        </div>
-        <div class="col-xs-4">
-          <input type="text" class="form-control" placeholder=".col-xs-4">
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-2">
+            <input type="text" class="form-control" placeholder=".col-sm-2">
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder=".col-sm-3">
+          </div>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" placeholder=".col-sm-4">
+          </div>
         </div>
       </div>
     </form>
   </div><!-- /.bs-example -->
 {% highlight html %}
-<div class="row">
-  <div class="col-xs-2">
-    <input type="text" class="form-control" placeholder=".col-xs-2">
-  </div>
-  <div class="col-xs-3">
-    <input type="text" class="form-control" placeholder=".col-xs-3">
-  </div>
-  <div class="col-xs-4">
-    <input type="text" class="form-control" placeholder=".col-xs-4">
+<div class="form-group">
+  <div class="row">
+    <div class="col-sm-2">
+      <input type="text" class="form-control" placeholder=".col-sm-2">
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder=".col-sm-3">
+    </div>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" placeholder=".col-sm-4">
+    </div>
   </div>
 </div>
 {% endhighlight %}

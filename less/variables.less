@@ -133,22 +133,22 @@
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
-@font-size-base:          14px;
-@font-size-large:         18px; // ~18px
+@font-size-base:          16px;
+@font-size-large:         18px;
 @font-size-medium:        16px;
-@font-size-small:         12px; // ~12px
+@font-size-small:         14px;
 
 @font-size-h1:            36px;
 @font-size-h2:            28px; //floor((@font-size-base * 2.15)); // ~30px
-@font-size-h3:            24px; //ceil((@font-size-base * 1.7)); // ~24px
-@font-size-h4:            22px; //ceil((@font-size-base * 1.25)); // ~18px
-@font-size-h5:            18px; //@font-size-base;
+@font-size-h3:            22px; //ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h4:            18px; //ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h5:            16px; //@font-size-base;
 @font-size-h6:            14px; //ceil((@font-size-base * 0.85)); // ~12px
 
 //** Unit-less `line-height` for use in components like buttons.
-@line-height-base:        1.5555555; // 28/18
+@line-height-base:        1.5; // 24/16
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+@line-height-computed:    24px; // ~24px
 
 //** By default, this inherits from the `<body>`.
 @headings-font-family:    'Sharp Sans Frontieres', "Avenir", Helvetica, Arial, sans-serif;    //inherit;
@@ -175,8 +175,8 @@
 //
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
 
-@padding-base-vertical:     10px;
-@padding-base-horizontal:   15px;
+@padding-base-vertical:     8px;
+@padding-base-horizontal:   16px;
 
 @padding-large-vertical:    12px;
 @padding-large-horizontal:  18px;
@@ -193,6 +193,10 @@
 @border-radius-base:        3px;
 @border-radius-large:       3px;
 @border-radius-small:       2px;
+
+@spacer: @padding-base-vertical;
+@spacer-y: @spacer;
+@spacer-x: @spacer;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
@@ -233,7 +237,7 @@
 @btn-font-weight:                600;               //normal;
 
 @btn-font-size:                  16px;
-@btn-line-height:                26px;
+@btn-line-height:                24px;
 
 @btn-xs-font-size:               12px;
 @btn-xs-line-height:             18px;
@@ -334,7 +338,7 @@
 //** `<input disabled>` background color
 @input-bg-disabled:              @brand-smoke-plus-20;
 //** Text color for `<input>`s
-@input-color:                    @brand-primary;
+@input-color:                    @brand-blue-plus-20;
 //** `<input disabled>` color
 @input-color-disabled:           @brand-smoke;
 
@@ -343,7 +347,7 @@
 //** `<input disabled>` border color
 @input-border-disabled:          @brand-smoke-plus-10;
 
-@input-font-size:                20px;
+@input-font-size:                16px;
 @input-line-height:              @btn-line-height;
 
 @input-font-size-small:          14px;
@@ -355,11 +359,11 @@
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
 //** Default `.form-control` border radius
 // This has no effect on `<select>`s in some browsers, due to the limited stylability of `<select>`s in CSS.
-@input-border-radius:            @border-radius-small;  //@border-radius-base;
+@input-border-radius:            @border-radius-base;  //@border-radius-base;
 //** Large `.form-control` border radius
-@input-border-radius-large:      @border-radius-small;  //@border-radius-large;
+@input-border-radius-large:      @border-radius-base;  //@border-radius-large;
 //** Small `.form-control` border radius
-@input-border-radius-small:      @border-radius-small;
+@input-border-radius-small:      @border-radius-base;
 
 //** Border color for inputs on focus
 @input-border-focus:             #00B9FF;           //#66afe9;
@@ -375,7 +379,7 @@
 @input-height-small:             36px;  //(floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 //** `.form-group` margin
-@form-group-margin-bottom:       15px;
+@form-group-margin-bottom:       23px;  // Visible space is 24px but line height(20) is 6px bigger than font size(14)
 
 @legend-color:                   @gray-dark;
 @legend-border-color:            #e5e5e5;
@@ -486,7 +490,7 @@
 //** Number of columns in the grid.
 @grid-columns:              12;
 //** Padding between columns. Gets divided in half for the left and right.
-@grid-gutter-width:         30px;
+@grid-gutter-width:         24px;
 // Navbar collapse
 //** Point at which the navbar becomes uncollapsed.
 @grid-float-breakpoint:     @screen-sm-min;
@@ -586,7 +590,7 @@
 //##
 
 //=== Shared nav styles
-@nav-link-padding:                          10px 15px;
+@nav-link-padding:                          10px 16px;
 @nav-link-hover-bg:                         @brand-smoke-plus-20;
 
 @nav-disabled-link-color:                   @gray-light;
@@ -653,12 +657,13 @@
 //
 //##
 
-@jumbotron-padding:              30px;
+@jumbotron-padding:              32px;
 @jumbotron-color:                #FFF;  //inherit;
 @jumbotron-bg:                   @brand-primary;
 @jumbotron-heading-color:        #FFF;  //inherit;
 @jumbotron-font-size:            22px;
-@jumbotron-heading-font-size:    60px;
+@jumbotron-heading-font-size:    42px;
+@jumbotron-heading-line-height:  56px;
 
 
 //== Form states and alerts
@@ -757,10 +762,10 @@
 //##
 
 //** Padding applied to the modal body
-@modal-inner-padding:         15px;
+@modal-inner-padding:         16px;
 
 //** Padding applied to the modal title
-@modal-title-padding:         15px;
+@modal-title-padding:         16px;
 //** Modal title line-height
 @modal-title-line-height:     @line-height-base;
 
@@ -815,13 +820,13 @@
 //##
 
 //** Progress bar height
-@progress-height:             36px;
+@progress-height:             32px;
 //** Background color of the whole progress component
 @progress-bg:                 @brand-smoke-plus-20;
 //** Progress bar text color
 @progress-bar-color:          #fff;
 //** Variable for setting rounded corners on progress bar.
-@progress-border-radius:      18px;
+@progress-border-radius:      16px;
 
 //** Default progress bar color
 @progress-bar-bg:             @brand-primary;
@@ -874,17 +879,18 @@
 //##
 
 @panel-bg:                    #fff;
-@panel-body-padding:          15px;
-@panel-heading-padding:       10px 15px;
+@panel-body-padding:          24px;
+@panel-heading-color:         @brand-blue;
+@panel-heading-padding:       20px 24px;
 @panel-footer-padding:        @panel-heading-padding;
-@panel-border-radius:         @border-radius-small;
+@panel-border-radius:         @border-radius-base;
 
 //** Border color for elements within panels
 @panel-inner-border:          #FFF;     //#ddd;
 @panel-footer-bg:             #f5f5f5;
 
 @panel-default-text:          @gray-dark;
-@panel-default-border:        #FFF;     //#ddd;
+@panel-default-border:        @brand-smoke-plus-10;
 @panel-default-heading-bg:    #f5f5f5;
 
 @panel-primary-text:          #fff;
@@ -959,7 +965,7 @@
 //##
 
 @breadcrumb-padding-vertical:   8px;
-@breadcrumb-padding-horizontal: 15px;
+@breadcrumb-padding-horizontal: 16px;
 //** Breadcrumb background color
 @breadcrumb-bg:                 #f5f5f5;
 //** Breadcrumb text color

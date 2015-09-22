@@ -6,6 +6,9 @@
 // Normalize non-controls
 //
 // Restyle and baseline non-control form elements.
+form {
+    margin-bottom: 0;
+}
 
 fieldset {
   padding: 0;
@@ -22,7 +25,7 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: @line-height-computed;
-  font-size: (@font-size-base * 1.5);
+  font-size: @font-size-base;
   line-height: inherit;
   color: @legend-color;
   border: 0;
@@ -33,6 +36,10 @@ label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
   margin-bottom: 5px;
+  font-size: @font-size-small;
+  color: @brand-grey-plus-20;
+  line-height: 20px;
+  .transition(~"color ease-in-out .15s");
 }
 
 
@@ -114,7 +121,7 @@ output {
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: (@padding-base-vertical + 1px) @padding-base-horizontal (@padding-base-vertical - 1px) @padding-base-horizontal;
+  padding: (@padding-large-vertical + 1px) @padding-base-horizontal (@padding-large-vertical - 1px) @padding-base-horizontal;
   font-size: @input-font-size;
   line-height: @input-line-height;
   color: @input-color;
@@ -153,7 +160,9 @@ output {
 
   // Reset height for `textarea`s
   textarea& {
-    height: auto;
+    height: 144px;
+    padding: @padding-large-vertical @padding-base-horizontal @padding-large-vertical @padding-base-horizontal;
+
   }
 }
 
@@ -215,8 +224,8 @@ input[type="search"] {
 .checkbox {
   position: relative;
   display: block;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: @padding-base-vertical;
 
   label {
     min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
@@ -237,7 +246,7 @@ input[type="search"] {
 
 .radio + .radio,
 .checkbox + .checkbox {
-  margin-top: -5px; // Move up sibling radios or checkboxes for tighter spacing
+  margin-top: 0; // Move up sibling radios or checkboxes for tighter spacing
 }
 
 // Radios and checkboxes on same line
@@ -432,7 +441,7 @@ input[type="checkbox"] {
 .has-feedback label {
 
   & ~ .form-control-feedback {
-     top: (@line-height-computed + 5); // Height of the `label` and its margin
+     top: (@line-height-computed + 1); // Height of the `label` and its margin
   }
   &.sr-only ~ .form-control-feedback {
      top: 0;
@@ -604,4 +613,135 @@ input[type="checkbox"] {
       }
     }
   }
+}
+
+@import "checkbox-radio.less";
+
+
+.help-block {
+    font-size: 12px;
+}
+
+.input-group .input-group-btn + input {
+    border-left: 0px solid transparent;
+}
+
+.input-group-addon {
+    color: @gray-light;
+}
+
+
+.form-control-feedback {
+    font-size: 24px;
+}
+.form-horizontal .control-label {
+    padding-top: 13px;
+}
+
+.label {
+    padding-top: 0.25em;
+    position: relative;
+    top: -3px;
+
+    .label-default {
+        color: @gray-light;
+        background-color: @brand-smoke-plus-10;
+    }
+}
+
+.btn,
+.form-control {
+    &:focus {
+        outline: none;
+    }
+}
+
+.form-control {
+    font-weight: 500;
+
+    .placeholder(rgba(130,156,169, 0.5));
+}
+
+.form-group {
+    position: relative;
+    font-size: @font-size-small;
+    line-height: 20px;
+}
+@media (min-width: @screen-sm-min) {
+    .form-group .help-block {
+        position: absolute;
+        top: -5px;
+        right: 0;
+    }
+}
+.form-control {
+    + .text-muted,
+    + .text-primary,
+    + .text-success,
+    + .text-info,
+    + .text-warning,
+    + .text-danger {
+        margin-top: (@padding-base-vertical / 2);
+        font-size: 12px;
+    }
+}
+
+.form-group .row {
+    margin-left: -6px;
+    margin-right: -6px;
+
+    .col-sm-1,
+    .col-sm-2,
+    .col-sm-3,
+    .col-sm-4,
+    .col-sm-5,
+    .col-sm-6,
+    .col-sm-7,
+    .col-sm-8,
+    .col-sm-9,
+    .col-sm-10,
+    .col-sm-11,
+    .col-sm-12 {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    .form-group .row {
+        .col-sm-1,
+        .col-sm-2,
+        .col-sm-3,
+        .col-sm-4,
+        .col-sm-5,
+        .col-sm-6,
+        .col-sm-7,
+        .col-sm-8,
+        .col-sm-9,
+        .col-sm-10,
+        .col-sm-11,
+        .col-sm-12 {
+
+            .form-control {
+                margin-bottom: (@padding-base-vertical * 1.5);
+            }
+        }
+    }
+}
+:not(.has-error).focus {
+    > label {
+        color: @brand-light-blue
+    }
+    //input, textarea, select {
+    //    border-color: @brand-light-blue;
+    //}
+}
+
+.form-group.col-sm-6 .help-block {
+    right: 12px;
+}
+@media (min-width: @screen-sm-min) {
+    fieldset .form-group:nth-of-type(odd) {
+        clear: left;
+    }
 }

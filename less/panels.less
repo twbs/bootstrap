@@ -7,34 +7,46 @@
 .panel {
   margin-bottom: @line-height-computed;
   background-color: @panel-bg;
-  border: 1px solid transparent;
+  border: 1px solid @brand-smoke-plus-10;
   border-radius: @panel-border-radius;
-  .box-shadow(0 1px 1px rgba(0,0,0,.05));
+  .box-shadow(0 1px 0 rgba(0,0,0,.05));
 }
 
 // Panel contents
 .panel-body {
-  padding: @panel-body-padding;
+  padding: @panel-body-padding (@panel-body-padding / 2) 0 (@panel-body-padding / 2);
   &:extend(.clearfix all);
 }
 
 // Optional heading
 .panel-heading {
-  padding: @panel-heading-padding;
-  border-bottom: 1px solid transparent;
+  padding: 24px 0 23px;
+  padding-left: (@panel-body-padding / 2);
+  padding-right:(@panel-body-padding / 2);
   .border-top-radius((@panel-border-radius - 1));
 
   > .dropdown .dropdown-toggle {
     color: inherit;
   }
+
+  .btn {
+    margin-top: -12px;
+  }
+  .btn-sm {
+    margin-top: -5px;
+  }
 }
+
 
 // Within heading, strip any `h*` tag of its default margins for spacing.
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: ceil((@font-size-base * 1.125));
-  color: inherit;
+  font-size: 20px;
+  line-height: (@padding-base-vertical * 3);
+  color: @panel-heading-color;
+  border-bottom: 1px solid @brand-smoke-plus-10;
+  padding-bottom: (@padding-base-vertical * 3);
 
   > a,
   > small,
@@ -51,6 +63,22 @@
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-inner-border;
   .border-bottom-radius((@panel-border-radius - 1));
+}
+
+
+@media (min-width: @screen-sm-min) {
+    .panel-heading {
+        padding-left: @panel-body-padding;
+        padding-right: @panel-body-padding;
+    }
+    .panel-title {
+        //margin-left: @panel-body-padding;
+        //margin-right: @panel-body-padding;
+    }
+    .panel-body {
+        padding-left: @panel-body-padding;
+        padding-right: @panel-body-padding;
+    }
 }
 
 
@@ -316,7 +344,7 @@
     }
   }
   &.right > .arrow {
-    top: 20px;
+    top: (@padding-base-vertical * 3);
     left: -@popover-arrow-outer-width;
     margin-top: -@popover-arrow-outer-width;
     border-left-width: 0;
@@ -347,7 +375,7 @@
   }
 
   &.left > .arrow {
-    top: 20px;
+    top: (@padding-base-vertical * 3);
     right: -@popover-arrow-outer-width;
     margin-top: -@popover-arrow-outer-width;
     border-right-width: 0;

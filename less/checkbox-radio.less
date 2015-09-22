@@ -1,0 +1,201 @@
+.radio,
+.checkbox {
+    > label {
+      font-size: @font-size-base;
+
+      position: relative;
+      display: block;
+      cursor: pointer;
+      white-space: nowrap;
+
+      line-height: 48px;
+      height: 48px;
+      padding-left: 48px;
+
+      color: @brand-blue-plus-20;
+      border: 1px solid @brand-smoke;
+      border-radius: @border-radius-base;
+
+      .transition(all 0.1s ease-in-out);
+
+      &:hover,
+      &:focus {
+        background-color: @brand-smoke-plus-20;
+      }
+
+      &:active:hover {
+        border-color: @brand-light-blue;
+
+        input[type=radio],
+        input[type=checkbox] {
+          + .input-replacement {
+            border-color: @brand-light-blue;
+          }
+        }
+      }
+
+      input[type=radio],
+      input[type=checkbox] {
+        display: block;
+        position: absolute;
+        top: 13px;
+        left: 40px;
+      }
+
+      input[type=radio] + .input-replacement,
+      input[type=radio] + .input-replacement + .disabled-replacement {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+
+      input[type=radio]:checked,
+      input[type=checkbox]:checked {
+        + .input-replacement {
+          border-color: @brand-light-blue;
+        }
+      }
+      input[type=checkbox]:checked {
+        + .input-replacement {
+          background-color: @brand-light-blue;
+        }
+      }
+
+      input[type=radio]:checked + .input-replacement > span,
+      input[type=radio]:checked + .input-replacement + .disabled-replacement > span  {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin: 5px;
+        display: block;
+        background-color: @brand-light-blue;
+      }
+      input[type=checkbox]:checked + .input-replacement > span,
+      input[type=checkbox]:checked + .input-replacement + .disabled-replacement > span {
+        display: block;
+      }
+    }
+
+    &[disabled],
+    &[readonly],
+    fieldset[disabled] &,
+    &.disabled,
+    &.readonly {
+      label {
+        color: @input-color-disabled;
+        border-color: @input-border-disabled;
+        background-color: @input-bg-disabled;
+
+        input[type=radio],
+        input[type=checkbox] {
+          + .input-replacement {
+            display: none;
+            border-color: @input-border-disabled;
+
+            > span {
+                background-color: @input-border-disabled;
+            }
+          }
+        }
+      }
+    }
+}
+.form-group {
+    .input-replacement {
+      border: 1px solid @brand-smoke;
+      background: @brand-white;
+      width: 22px;
+      height: 22px;
+      border-radius: @border-radius-base;
+
+      position: absolute;
+      display: inline-block;
+      top: 11px;
+      left: 14px;
+      padding: 0;
+      vertical-align: middle;
+
+      .transition(all 0.1s ease-in-out);
+
+      > span {
+        text-align: center;
+        width: 0px;
+        height: 0px;
+        margin: 12px 0 0 12px;
+        .transition(all 0.1s ease-in);
+      }
+      > .glyphicon {
+        width: 20px;
+        height: 20px;
+        line-height: 18px;
+        margin: 0;
+        display: none;
+        color: @brand-white;
+      }
+
+      &:focus,
+      &:active {
+        border-color: @brand-light-blue;
+        outline: none;
+      }
+    }
+    .disabled-replacement {
+        border-color: @input-border-disabled;
+        display: none;
+
+        > span {
+            background-color: @input-border-disabled;
+        }
+    }
+    .disabled,
+    [disabled] + .input-replacement + {
+        .disabled-replacement {
+            display: block;
+        }
+    }
+}
+
+.has-success {
+    .radio,
+    .checkbox {
+        > label {
+            //color: @brand-green;
+            border-color: @brand-green;
+        }
+    }
+}
+.has-warning {
+    .radio,
+    .checkbox {
+        > label {
+            //color: @brand-orange;
+            border-color: @brand-orange;
+        }
+    }
+}
+.has-error {
+    .radio,
+    .checkbox {
+        > label {
+            //color: @brand-red;
+            border-color: @brand-red;
+        }
+    }
+}
+
+.form-horizontal {
+    .checkbox,
+    .radio {
+        padding-top: 0;
+
+        > label {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+.checkbox > label.focus,
+.radio > label.focus, {
+    border-color: @brand-light-blue;
+}
