@@ -217,8 +217,11 @@ $table-border-color:            $gray-lighter !default;
 $btn-padding-x:                  1rem !default;
 $btn-padding-y:                  .375rem !default;
 $btn-font-weight:                normal !default;
-$btn-darken:                     10% !default;
-$btn-border-darken:              12% !default;
+
+$btn-hover-darken:               10% !default;
+$btn-hover-border-darken:        12% !default;
+$btn-active-hover-darken:        17% !default;
+$btn-active-hover-border-darken: 25% !default;
 
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
