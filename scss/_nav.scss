@@ -91,6 +91,8 @@
 //
 
 .nav-pills {
+  @include clearfix();
+
   .nav-item {
     float: left;
 
