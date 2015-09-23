@@ -91,9 +91,22 @@ Create block level buttons—those that span the full width of a parent—by add
 <button type="button" class="btn btn-primary btn-sm">Small button</button>
 <button type="button" class="btn btn-secondary btn-sm">Small button</button>
 </p>
+{% endexample %}
+
+Create block level buttons—those that span the full width of a parent—by adding `.btn-block`.
+
+{% example html %}
 <p>
-<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-primary btn-lg btn-block">Large Block level button</button>
+<button type="button" class="btn btn-secondary btn-lg btn-block">Large Block level button</button>
+</p>
+<p>
+<button type="button" class="btn btn-primary btn-block">Normal Block level button</button>
+<button type="button" class="btn btn-secondary btn-block">Normal Block level button</button>
+</p>
+<p>
+<button type="button" class="btn btn-primary btn-sm btn-block">Small Block level button</button>
+<button type="button" class="btn btn-secondary btn-sm btn-block">Small Block level button</button>
 </p>
 {% endexample %}
 
