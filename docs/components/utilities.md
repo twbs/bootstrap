@@ -232,16 +232,6 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 }
 {% endhighlight %}
 
-## Hidden content
-
-Hide any HTML element with the `[hidden]` attribute. It's taken from [PureCSS](http://purecss.io). While `[hidden]` isn't natively supported by IE9-10, declaring it `display: none` in our CSS gets around that problem.
-
-Furthermore, `.invisible` can be used to toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
-
-{% highlight html %}
-<input type="text" hidden>
-{% endhighlight %}
-
 ## Invisible content
 
 The `.invisible` class can be used to toggle only the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
@@ -329,3 +319,19 @@ Aspect ratios can be customized with modifier classes.
   <iframe class="embed-responsive-item" src="..."></iframe>
 </div>
 {% endhighlight %}
+
+## HTML5 `[hidden]` attribute
+
+HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](http://purecss.io), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE9-10, the explicit declaration in our CSS gets around that problem.
+
+{% highlight html %}
+<input type="text" hidden>
+{% endhighlight %}
+
+{% callout warning %}
+#### jQuery incompatibility
+
+`[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. This could potentially change in jQuery 3, but we're not holding our breath. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
+{% endcallout %}
+
+To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class](#invisible-content) instead.

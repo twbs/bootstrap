@@ -179,7 +179,7 @@ Note that the changes to the grid breakpoints in v4 means that you'll need to go
 ## Misc notes to prioritize
 
 - Removed the `min--moz-device-pixel-ratio` typo hack for retina media queries
-- Dropped `.hidden` and `.show` because they conflict with jQuery's `$(...).hide()` function.
+- Dropped `.hidden` and `.show` because they conflict with jQuery's `$(...).hide()` and `$(...).show()` methods.
 - Change buttons' `[disabled]` to `:disabled` as IE9+ supports `:disabled`. However `fieldset[disabled]` is still necessary because [native disabled fieldsets are still buggy in IE11](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#Browser_compatibility).
 
 TODO: audit list of stuff in v3 that was marked as deprecated
