@@ -509,7 +509,7 @@ module.exports = function (grunt) {
       if (err) {
         grunt.fail.warn(err);
       }
-      var dest = 'test-infra/npm-shrinkwrap.json';
+      var dest = 'grunt/npm-shrinkwrap.json';
       fs.renameSync('npm-shrinkwrap.json', dest);
       grunt.log.writeln('File ' + dest.cyan + ' updated.');
       done();
