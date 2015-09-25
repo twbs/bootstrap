@@ -18,6 +18,7 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var glob = require('glob');
+  var isTravis = require('is-travis');
   var npmShrinkwrap = require('npm-shrinkwrap');
   var mq4HoverShim = require('mq4-hover-shim');
 
@@ -436,7 +437,8 @@ module.exports = function (grunt) {
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&
-      // Skip HTML5 validator on Travis when [skip validator] is in the commit message
+      isTravis &&
+      // Skip HTML5 validator when [skip validator] is in the commit message
       isUndefOrNonZero(process.env.TWBS_DO_VALIDATOR)) {
     testSubtasks.push('validate-html');
   }

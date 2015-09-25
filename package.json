@@ -58,6 +58,7 @@
     "grunt-scss-lint": "^0.3.8",
     "grunt-sed": "~0.1.1",
     "grunt-stamp": "^0.1.0",
+    "is-travis": "^1.0.0",
     "load-grunt-tasks": "~3.3.0",
     "markdown-it": "^4.4.0",
     "mq4-hover-shim": "^0.2.0",
