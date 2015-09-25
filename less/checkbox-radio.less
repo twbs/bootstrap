@@ -147,11 +147,9 @@
             background-color: @input-border-disabled;
         }
     }
-    .disabled,
-    [disabled] + .input-replacement + {
-        .disabled-replacement {
-            display: block;
-        }
+    .disabled .disabled-replacement,
+    [disabled] + .input-replacement + .disabled-replacement {
+        display: block;
     }
 }
 
