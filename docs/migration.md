@@ -21,7 +21,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Global changes
 
-- Switched from LESS to SCSS for our source CSS files.
+- Switched from [Less](http://lesscss.org/) to [SCSS](http://sass-lang.com/) for our source CSS files.
 - Switched from `px` to `rem` as our primary CSS unit.
 - Media queries are now in `em`s instead of `px`s.
 - Global font-size increased from `14px` to `16px`.
