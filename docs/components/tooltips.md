@@ -219,7 +219,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <tr>
         <td>constraints</td>
         <td>Array</td>
-        <td>'hover focus'</td>
+        <td>[]</td>
         <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">constraint docs</a>.</td>
       </tr>
       <tr>
