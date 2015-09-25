@@ -249,6 +249,8 @@ textarea {
   // properly inherited. However, `line-height` isn't addressed there. Using this
   // ensures we don't need to unnecessarily redeclare the global font stack.
   line-height: inherit;
+  // iOS adds rounded borders by default
+  border-radius: 0;
 }
 
 textarea {
