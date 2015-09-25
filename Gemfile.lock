@@ -58,7 +58,7 @@ GEM
     rouge (1.10.1)
     safe_yaml (1.0.4)
     sass (3.4.18)
-    scss_lint (0.41.0)
+    scss_lint (0.42.1)
       rainbow (~> 2.0)
       sass (~> 3.4.15)
     toml (0.1.2)
@@ -74,7 +74,7 @@ DEPENDENCIES
   jekyll-sitemap (~> 0.9.0)
   rouge (~> 1.10.1)
   sass (~> 3.4.18)
-  scss_lint (~> 0.41)
+  scss_lint (~> 0.42.1)
 
 BUNDLED WITH
    1.10.6
