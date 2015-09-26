@@ -26,7 +26,7 @@ restrictions:
 
 * Please **do not** open issues or pull requests regarding the code in
   [`Normalize`](https://github.com/necolas/normalize.css) (open them in
-  their respective repositories).
+  its repository).
 * Please **do not** open issues regarding the official themes offered on <http://themes.getbootstrap.com/>. Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
 
 
