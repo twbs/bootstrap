@@ -21,7 +21,7 @@
   <div class="page-header">
     <h1>Carousel <small>Bootstrap Visual Test</small></h1>
   </div>
-
+  <p>Also, the carousel shouldn't slide when its window/tab is hidden. Check the console log.</p>
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -53,6 +53,14 @@
 <script src="../vendor/jquery.min.js"></script>
 <script src="../../dist/util.js"></script>
 <script src="../../dist/carousel.js"></script>
+<script>
+  $(function () {
+    // Test to show that the carousel doesn't slide when the current tab isn't visible
+    $('#carousel-example-generic').on('slid.bs.carousel', function (event) {
+      console.log('slid at ', event.timeStamp);
+    })
+  });
+</script>
 
 </body>
 </html>

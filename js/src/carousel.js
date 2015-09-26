@@ -119,6 +119,13 @@ const Carousel = (($) => {
       }
     }
 
+    nextWhenVisible() {
+      // Don't call next when the page isn't visible
+      if (!document.hidden) {
+        this.next()
+      }
+    }
+
     prev() {
       if (!this._isSliding) {
         this._slide(Direction.PREVIOUS)
@@ -152,7 +159,7 @@ const Carousel = (($) => {
 
       if (this._config.interval && !this._isPaused) {
         this._interval = setInterval(
-          $.proxy(this.next, this), this._config.interval
+          $.proxy(document.visibilityState ? this.nextWhenVisible : this.next, this), this._config.interval
         )
       }
     }
