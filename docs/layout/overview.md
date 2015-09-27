@@ -51,7 +51,7 @@ Since Bootstrap is developed to be mobile first, we use a handful of [media quer
 Bootstrap primarily uses the following media query ranges—or breakpoints—in our source Sass files for our layout, grid system, and components.
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than ???px)
+// Extra small devices (portrait phones, less than 34em)
 // No media query since this is the default in Bootstrap
 
 // Small devices (landscape phones, 34em and up)
