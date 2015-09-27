@@ -10,6 +10,10 @@ We publicly list browser bugs that are impacting us here, in the hopes of expedi
 
 Also see [jQuery's browser bug workarounds](https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o).
 
+See also:
+* [Chromium issue 536263: [meta] Issues affecting Bootstrap](https://code.google.com/p/chromium/issues/detail?id=536263)
+* [jQuery's browser bug workarounds](https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o)
+
 <div class="table-responsive">
   <table class="bd-browser-bugs table table-bordered table-hover">
     <thead>
