@@ -94,9 +94,9 @@ Assign `margin` or `padding` to an element or a subset of its sides with shortha
 Easily realign text to components with text alignment classes.
 
 {% example html %}
-<p class="text-left">Left aligned text.</p>
+<p class="text-start">Left aligned text.</p>
 <p class="text-center">Center aligned text.</p>
-<p class="text-right">Right aligned text.</p>
+<p class="text-end">Right aligned text.</p>
 <p class="text-justify">Justified text.</p>
 <p class="text-nowrap">No wrap text.</p>
 {% endexample %}
@@ -163,25 +163,25 @@ Use a generic close icon for dismissing content like modals and alerts. **Be sur
 Float an element to the left or right with a class. `!important` is included to avoid specificity issues. Classes can also be used as mixins.
 
 {% example html %}
-<div class="pull-left">Float left</div>
-<div class="pull-right">Float right</div>
+<div class="pull-start">Float left</div>
+<div class="pull-end">Float right</div>
 {% endexample %}
 
 {% highlight scss %}
 // Classes
-.pull-left {
+.pull-start {
   float: left !important;
 }
-.pull-right {
+.pull-end {
   float: right !important;
 }
 
 // Usage as mixins
 .element {
-  @include pull-left;
+  @include pull-start;
 }
 .another-element {
-  @include pull-right;
+  @include pull-end;
 }
 {% endhighlight %}
 

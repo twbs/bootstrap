@@ -3030,7 +3030,7 @@ input[type="button"].btn-block {
   z-index: 990;
 }
 
-.pull-right > .dropdown-menu {
+.pull-end > .dropdown-menu {
   right: 0;
   left: auto;
 }
@@ -5696,11 +5696,11 @@ button.close {
   margin-left: auto;
 }
 
-.pull-right {
+.pull-end {
   float: right !important;
 }
 
-.pull-left {
+.pull-start {
   float: left !important;
 }
 
@@ -5741,11 +5741,11 @@ button.close {
   border: 0;
 }
 
-.text-left {
+.text-start {
   text-align: left;
 }
 
-.text-right {
+.text-end {
   text-align: right;
 }
 
