@@ -4868,10 +4868,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #444;
 }
 .breadcrumb {
-  padding: 8px 15px;
+  padding: 8px 0;
   margin-bottom: 21px;
   list-style: none;
-  background-color: #f5f5f5;
+  background-color: none;
   border-radius: 3px;
 }
 .breadcrumb > li {
@@ -4880,7 +4880,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .breadcrumb > li + li:before {
   padding: 0 5px;
   color: #ccc;
-  content: "/\00a0";
+  content: "❯\00a0";
 }
 .breadcrumb > .active {
   color: #829ca9;
