@@ -211,7 +211,7 @@ See it in action in <a href="http://jsbin.com/ruxona/edit">this rendered example
   @media (max-width: 32em) {
     @include make-col-span(6);
   }
-  @media (min-width: 32.1em) {
+  @media (min-width: 32.000001em) {
     @include make-col-span(8);
   }
 }
@@ -221,7 +221,7 @@ See it in action in <a href="http://jsbin.com/ruxona/edit">this rendered example
   @media (max-width: 32em) {
     @include make-col-span(6);
   }
-  @media (min-width: 32.1em) {
+  @media (min-width: 32.000001em) {
     @include make-col-span(4);
   }
 }

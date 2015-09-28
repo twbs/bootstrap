@@ -88,16 +88,16 @@ We occasionally use media queries that go in the other direction (the given scre
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 34em)
-@media (max-width: 33.9em) { ... }
+@media (max-width: 33.999999em) { ... }
 
 // Small devices (landscape phones, less than 48em)
-@media (max-width: 47.9em) { ... }
+@media (max-width: 47.999999em) { ... }
 
 // Medium devices (tablets, less than 62em)
-@media (max-width: 61.9em) { ... }
+@media (max-width: 61.9999999em) { ... }
 
 // Large devices (desktops, less than 75em)
-@media (max-width: 74.9em) { ... }
+@media (max-width: 74.9999999em) { ... }
 
 // Extra large devices (large desktops)
 // No media query since the extra-large breakpoint has no upper bound on its width

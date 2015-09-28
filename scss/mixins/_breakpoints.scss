@@ -29,13 +29,13 @@
 }
 
 // Maximum breakpoint width. Null for the largest (last) breakpoint.
-// The maximum value is calculated as the minimum of the next one less 0.1.
+// The maximum value is calculated as the minimum of the next one less 0.000001.
 //
 //    >> breakpoint-max(sm, (xs: 0, sm: 34rem, md: 45rem))
 //    44.9rem
 @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
   $next: breakpoint-next($name, $breakpoints);
-  @return if($next, breakpoint-min($next, $breakpoints) - 0.1, null);
+  @return if($next, breakpoint-min($next, $breakpoints) - 0.000001, null);
 }
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
