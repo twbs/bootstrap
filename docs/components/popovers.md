@@ -282,29 +282,29 @@ Options for individual popovers can alternatively be specified through the use o
 
 ### Methods
 
-#### $().popover(options)
+#### `$().popover(options)`
 
 Initializes popovers for an element collection.
 
-#### .popover('show')
+#### `.popover('show')`
 
 Reveals an element's popover. **Returns to the caller before the popover has actually been shown** (i.e. before the `shown.bs.popover` event occurs). This is considered a "manual" triggering of the popover. Popovers whose both title and content are zero-length are never displayed.
 
 {% highlight js %}$('#element').popover('show'){% endhighlight %}
 
-#### .popover('hide')
+#### `.popover('hide')`
 
 Hides an element's popover. **Returns to the caller before the popover has actually been hidden** (i.e. before the `hidden.bs.popover` event occurs). This is considered a "manual" triggering of the popover.
 
 {% highlight js %}$('#element').popover('hide'){% endhighlight %}
 
-#### .popover('toggle')
+#### `.popover('toggle')`
 
 Toggles an element's popover. **Returns to the caller before the popover has actually been shown or hidden** (i.e. before the `shown.bs.popover` or `hidden.bs.popover` event occurs). This is considered a "manual" triggering of the popover.
 
 {% highlight js %}$('#element').popover('toggle'){% endhighlight %}
 
-#### .popover('dispose')
+#### `.popover('dispose')`
 
 Hides and destroys an element's popover. Popvoers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
