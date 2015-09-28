@@ -101,7 +101,7 @@ Target elements that are not [`:visible` according to jQuery](https://api.jquery
 
 ### Methods
 
-#### .scrollspy('refresh')
+#### `.scrollspy('refresh')`
 
 When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:
 

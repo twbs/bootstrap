@@ -180,7 +180,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-#### .carousel(options)
+#### `.carousel(options)`
 
 Initializes the carousel with an optional options `object` and starts cycling through items.
 
@@ -190,23 +190,23 @@ $('.carousel').carousel({
 })
 {% endhighlight %}
 
-#### .carousel('cycle')
+#### `.carousel('cycle')`
 
 Cycles through the carousel items from left to right.
 
-#### .carousel('pause')
+#### `.carousel('pause')`
 
 Stops the carousel from cycling through items.
 
-#### .carousel(number)
+#### `.carousel(number)`
 
 Cycles the carousel to a particular frame (0 based, similar to an array).
 
-#### .carousel('prev')
+#### `.carousel('prev')`
 
 Cycles to the previous item.
 
-#### .carousel('next')
+#### `.carousel('next')`
 
 Cycles to the next item.
 

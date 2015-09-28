@@ -240,29 +240,29 @@ Options for individual tooltips can alternatively be specified through the use o
 
 ### Methods
 
-#### $().tooltip(options)
+#### `$().tooltip(options)`
 
 Attaches a tooltip handler to an element collection.
 
-#### .tooltip('show')
+#### `.tooltip('show')`
 
 Reveals an element's tooltip. **Returns to the caller before the tooltip has actually been shown** (i.e. before the `shown.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip. Tooltips with zero-length titles are never displayed.
 
 {% highlight js %}$('#element').tooltip('show'){% endhighlight %}
 
-#### .tooltip('hide')
+#### `.tooltip('hide')`
 
 Hides an element's tooltip. **Returns to the caller before the tooltip has actually been hidden** (i.e. before the `hidden.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip.
 
 {% highlight js %}$('#element').tooltip('hide'){% endhighlight %}
 
-#### .tooltip('toggle')
+#### `.tooltip('toggle')`
 
 Toggles an element's tooltip. **Returns to the caller before the tooltip has actually been shown or hidden** (i.e. before the `shown.bs.tooltip` or `hidden.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip.
 
 {% highlight js %}$('#element').tooltip('toggle'){% endhighlight %}
 
-#### .tooltip('dispose')
+#### `.tooltip('dispose')`
 
 Hides and destroys an element's tooltip. Tooltips that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 

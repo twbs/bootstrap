@@ -145,7 +145,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-#### .collapse(options)
+#### `.collapse(options)`
 
 Activates your content as a collapsible element. Accepts an optional options `object`.
 
@@ -155,15 +155,15 @@ $('#myCollapsible').collapse({
 })
 {% endhighlight %}
 
-#### .collapse('toggle')
+#### `.collapse('toggle')`
 
 Toggles a collapsible element to shown or hidden.
 
-#### .collapse('show')
+#### `.collapse('show')`
 
 Shows a collapsible element.
 
-#### .collapse('hide')
+#### `.collapse('hide')`
 
 Hides a collapsible element.
 

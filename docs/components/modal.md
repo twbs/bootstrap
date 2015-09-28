@@ -428,7 +428,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-#### .modal(options)
+#### `.modal(options)`
 
 Activates your content as a modal. Accepts an optional options `object`.
 
@@ -438,19 +438,19 @@ $('#myModal').modal({
 })
 {% endhighlight %}
 
-#### .modal('toggle')
+#### `.modal('toggle')`
 
 Manually toggles a modal. **Returns to the caller before the modal has actually been shown or hidden** (i.e. before the `shown.bs.modal` or `hidden.bs.modal` event occurs).
 
 {% highlight js %}$('#myModal').modal('toggle'){% endhighlight %}
 
-#### .modal('show')
+#### `.modal('show')`
 
 Manually opens a modal. **Returns to the caller before the modal has actually been shown** (i.e. before the `shown.bs.modal` event occurs).
 
 {% highlight js %}$('#myModal').modal('show'){% endhighlight %}
 
-#### .modal('hide')
+#### `.modal('hide')`
 
 Manually hides a modal. **Returns to the caller before the modal has actually been hidden** (i.e. before the `hidden.bs.modal` event occurs).
 
