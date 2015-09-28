@@ -13,7 +13,7 @@ Similar to git, `s3_cache.py` makes the assumption that [SHA-256 will effectivel
 
 
 ### For Bootstrap specifically
-`s3_cache.py` is used to cache the npm packages that our Grunt tasks depend on and the RubyGems that Jekyll depends on. (Jekyll is needed to compile our docs to HTML so that we can run them thru an HTML5 validator.)
+`s3_cache.py` is used to cache the npm packages that our Grunt tasks depend on and the RubyGems that Jekyll depends on. (Jekyll is needed to compile our docs to HTML so that we can run them through an HTML5 validator.)
 
 For npm, the `node_modules` directory is cached based on our `npm-shrinkwrap.json` file.
 

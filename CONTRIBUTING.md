@@ -124,7 +124,7 @@ provide as much detail and context as possible.
 
 ## Pull requests
 
-Good pull requests—patches, improvements, new features—are a fantastic
+Good pull requests - patches, improvements, and new features - are a fantastic
 help. They should remain focused in scope and avoid containing unrelated
 commits.
 
