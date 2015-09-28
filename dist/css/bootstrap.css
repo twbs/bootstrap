@@ -1146,7 +1146,7 @@ img {
   display: inline-block;
   max-width: 100%;
   height: auto;
-  padding: 4px;
+  padding: 0;
   line-height: 1.5555555;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -5179,7 +5179,7 @@ a.badge:focus {
 }
 .thumbnail {
   display: block;
-  padding: 4px;
+  padding: 0;
   margin-bottom: 21px;
   line-height: 1.5555555;
   background-color: #fff;
