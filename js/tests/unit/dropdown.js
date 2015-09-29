@@ -427,7 +427,7 @@ $(function () {
         + '<button type="button" data-toggle="dropdown">Dropdown</button>'
         + '<ul class="dropdown-menu">'
         + '<li>'
-        + '<select class="form-control input-sm" name="select" id="select">'
+        + '<select class="form-control" name="select" id="select">'
         + '<option value="first">First</option>'
         + '<option value="second">Second</option>'
         + '<option value="third">Third</option>'
@@ -446,12 +446,13 @@ $(function () {
     assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
   })
 
-  QUnit.test('should not close the dropdown if the user clicks on a checkbox-div', function (assert) {
+  QUnit.test('should not close the dropdown if the user clicks on a label', function (assert) {
     assert.expect(1)
     var dropdownHTML = '<div class="btn-group">'
         + '<button type="button" data-toggle="dropdown">Dropdown</button>'
         + '<ul class="dropdown-menu">'
-        + '<li><div class="checkbox"><label><input type="checkbox"> Remember me</label></div></li>'
+        + '<div><input type="radio" id="radio1" name="radio" value="1" checked="checked" /><label id="label1" for="radio1">Radio 1</label></div>'
+        + '<div><input type="radio" id="radio2" name="radio" value="2" checked="checked" /><label id="label2" for="radio2">Radio 2</label></div>'
         + '</ul>'
         + '</div>'
     var $dropdown = $(dropdownHTML)
@@ -460,26 +461,7 @@ $(function () {
       .bootstrapDropdown()
       .trigger('click')
 
-    $('.checkbox').trigger('click')
-
-    assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
-  })
-
-  QUnit.test('should not close the dropdown if the user clicks on a radio-div', function (assert) {
-    assert.expect(1)
-    var dropdownHTML = '<div class="btn-group">'
-        + '<button type="button" data-toggle="dropdown">Dropdown</button>'
-        + '<ul class="dropdown-menu">'
-        + '<li><div class="radio"><label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Option one is this and that&mdash;be sure to include why it\'s great</label></div></li>'
-        + '</ul>'
-        + '</div>'
-    var $dropdown = $(dropdownHTML)
-      .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
-      .bootstrapDropdown()
-      .trigger('click')
-
-    $('.radio').trigger('click')
+    $('#label1, #label2').trigger('click')
 
     assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
   })
