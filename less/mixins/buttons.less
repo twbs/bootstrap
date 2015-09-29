@@ -71,3 +71,17 @@
   line-height: @line-height;
   border-radius: @border-radius;
 }
+
+
+.button-outline(@color, @active) {
+    .button-variant(
+        @color;
+        #FFF;
+        transparent;
+        @color;
+        @active;
+        @color;
+        @color;
+        @active
+    );
+}

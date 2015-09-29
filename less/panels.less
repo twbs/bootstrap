@@ -8,21 +8,23 @@
   margin-bottom: @line-height-computed;
   background-color: @panel-bg;
   border: 1px solid @brand-smoke-plus-10;
-  border-radius: @panel-border-radius;
+
   .box-shadow(0 1px 0 rgba(0,0,0,.05));
+
+  margin-left: (@padding-base-vertical * -2 - 1);
+  margin-right: (@padding-base-vertical * -2 - 1);
 }
 
 // Panel contents
 .panel-body {
-  padding: @panel-body-padding (@panel-body-padding / 2) 0 (@panel-body-padding / 2);
+  padding: (@padding-base-vertical * 3) @panel-body-padding-collapse;
   &:extend(.clearfix all);
 }
 
 // Optional heading
 .panel-heading {
-  padding: 24px 0 23px;
-  padding-left: (@panel-body-padding / 2);
-  padding-right:(@panel-body-padding / 2);
+  padding: (@padding-base-vertical * 3) @panel-body-padding-collapse (@padding-base-vertical * 3 - 1px);
+  border-bottom: 1px solid @brand-smoke-plus-10;
   .border-top-radius((@panel-border-radius - 1));
 
   > .dropdown .dropdown-toggle {
@@ -42,11 +44,8 @@
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 20px;
   line-height: (@padding-base-vertical * 3);
   color: @panel-heading-color;
-  border-bottom: 1px solid @brand-smoke-plus-10;
-  padding-bottom: (@padding-base-vertical * 3);
 
   > a,
   > small,
@@ -59,7 +58,7 @@
 
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
-  padding: @panel-footer-padding;
+  padding: (@padding-base-vertical * 3) @panel-body-padding-collapse;
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-inner-border;
   .border-bottom-radius((@panel-border-radius - 1));
@@ -67,17 +66,19 @@
 
 
 @media (min-width: @screen-sm-min) {
-    .panel-heading {
-        padding-left: @panel-body-padding;
-        padding-right: @panel-body-padding;
+    .panel {
+        border-radius: @panel-border-radius;
+        margin-left: 0;
+        margin-right: 0;
     }
-    .panel-title {
-        //margin-left: @panel-body-padding;
-        //margin-right: @panel-body-padding;
+    .panel-heading {
+        padding: @panel-body-padding;
     }
     .panel-body {
-        padding-left: @panel-body-padding;
-        padding-right: @panel-body-padding;
+        padding: @panel-body-padding;
+    }
+    .panel-footer {
+        padding: @panel-body-padding;
     }
 }
 

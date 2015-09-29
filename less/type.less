@@ -52,6 +52,7 @@ h5, .h5,
 h6, .h6 {
   margin-top: 0;
   margin-bottom: 0;
+  font-weight: 800;
 
   small,
   .small {
@@ -179,9 +180,13 @@ strong {
 // -------------------------
 
 .page-header {
-  padding-bottom: (@padding-base-vertical / 2);
+  padding-bottom: (@padding-base-vertical * 2);
   margin: 0 0  (@padding-base-vertical * 3.5);
   border-bottom: 1px solid @page-header-border-color;
+
+  &:not(:first-child) {
+      margin-top: (@padding-base-vertical * 3);
+  }
 }
 
 
@@ -198,7 +203,7 @@ ol {
   ol {
     margin-bottom: 0;
   }
-  li {
+  &:not(.nav) li {
       padding-left: 4px;
   }
 }
@@ -345,11 +350,9 @@ h1, h2, h6 {
 }
 
 h3, h4, h5 {
-    font-weight: 500;
     color: @brand-blue;
 }
 h6 {
-    font-weight: 700;
     color: @brand-grey-plus-20;
 }
 

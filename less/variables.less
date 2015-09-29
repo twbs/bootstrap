@@ -105,7 +105,7 @@
 //** Background color for `<body>`.
 @body-bg:               @brand-white;
 //** Global text color on `<body>`.
-@text-color:            @gray-light;
+@text-color:            @brand-grey-plus-10;
 //** Bold text color on `<body>`.
 @text-bold-color:       @brand-grey-minus-10;
 
@@ -327,7 +327,10 @@
 @btn-danger-border-hover:        @brand-red-minus-10;
 @btn-danger-border-active:       @brand-red-minus-20;
 
-
+@btn-facebook:                   #3B5998;
+@btn-facebook-active:            #344F88;
+@btn-google:                     #DC4A38;
+@btn-google-active:              #C54232;
 
 //== Forms
 //
@@ -879,9 +882,10 @@
 //##
 
 @panel-bg:                    #fff;
-@panel-body-padding:          24px;
+@panel-body-padding:          40px;
+@panel-body-padding-collapse: 16px;
 @panel-heading-color:         @brand-blue;
-@panel-heading-padding:       20px 24px;
+@panel-heading-padding:       40px;
 @panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
 
@@ -948,16 +952,17 @@
 @badge-color:                 #fff;
 //** Linked badge text color on hover
 @badge-link-hover-color:      #fff;
-@badge-bg:                    @gray-light;
+@badge-bg:                    @brand-orange;
 
 //** Badge text color in active nav link
 @badge-active-color:          @link-color;
 //** Badge background color in active nav link
 @badge-active-bg:             #fff;
 
+@badge-font-size:             10px;
 @badge-font-weight:           bold;
 @badge-line-height:           1;
-@badge-border-radius:         10px;
+@badge-border-radius:         3px;
 
 
 //== Breadcrumbs

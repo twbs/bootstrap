@@ -131,14 +131,24 @@ blockquote footer {
     }
 }
 
-.navbar:not(.affix) + .jumbotron,
-.navbar:not(.affix) + .jumbotron-image {
-  margin-top: -60px;
+.navbar[data-spy~=affix] + * {
+    margin-top: 0;
 }
+.navbar[data-spy~=affix].affix + * {
+    margin-top: 60px;
+}
+
+.navbar + .jumbotron,
+.navbar + .jumbotron-image {
+    margin-top: -60px;
+}
+.navbar.affix + .jumbotron,
+.navbar.affix + .jumbotron-image {
+    margin-top: 0px;
+}
+
 .navbar + .jumbotron,
 .navbar + .jumbotron-image > .jumbotron {
-    padding-top: 55px;
-
     padding-bottom: 100px;
 
     @media (min-width: @screen-sm-min) {
@@ -233,9 +243,6 @@ footer {
 
 
 
-.btn .badge {
-    top: -2px;
-}
 .badge {
     top: -1px;
     position: relative;
@@ -274,4 +281,18 @@ footer {
 
 .dropdown-menu > li:not(.dropdown-header) {
     padding-left: 0;
+}
+
+.navbar {
+    .glyphicon {
+        font-size: 22px;
+
+        + .badge {
+            margin-top: -25px;
+            margin-left: -12px;
+            min-width: 18px;
+            padding: 2px 3px;
+            border: 2px solid @brand-blue;
+        }
+    }
 }

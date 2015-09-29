@@ -16,64 +16,8 @@
 	<link rel="stylesheet"
 		href="bootstrap-select/dist/css/bootstrap-select.min.css">
 
-	<script>
+	<script src="forms.js"></script>
 
-	$( document ).ready(function() {
-		function clickNeighbourInput(event) {
-			console.log("clicky");
-			$(this).parents('label').find('input').click();
-			event.stopPropagation();
-		}
-		function onFocus() {
-			$(this).parents('.form-group, .checkbox > label, .radio > label').addClass('focus');
-		}
-		function onBlur() {
-			$(this).parents('.form-group, .checkbox > label, .radio > label').removeClass('focus');
-		}
-		function onKeypress(event) {
-			if((event.keyCode ? event.keyCode : event.which) == 13) { // Space
-				clickNeighbourInput(e);
-			}
-		}
-
-		var checkReplace =
-			$("<button type='button' class='input-replacement'><span class='glyphicon glyphicon-ok'></span></button>"+
-			"<span class='disabled-replacement input-replacement'><span><span></span>")
-			.keypress(onKeypress)
-			.click(clickNeighbourInput)
-			.focus(onFocus)
-			.blur(onBlur);
-
-		var radioReplace =
-			$("<button type='button' class='input-replacement'><span></span></button>"+
-			"<span class='disabled-replacement input-replacement'><span><span></span>")
-			.keypress(onKeypress)
-			.click(clickNeighbourInput)
-			.focus(onFocus)
-			.blur(onBlur);
-
-		$("select").selectpicker();
-
-		$('.form-group input:checkbox')
-			.hide()
-			.after(checkReplace);
-
-		$('.form-group input:radio')
-			.hide()
-			.after(radioReplace);
-
-
-		$('.form-group input, .form-group select, .form-group .bootstrap-select .btn, .form-group textarea')
-			.focus(function() {
-				$(this).parents('.form-group').addClass('focus');
-			})
-			.blur(function() {
-				$(this).parents('.form-group').removeClass('focus');
-			});
-
-	});
-
-	</script>
 	<style>
 	body {
 		background-color: #f2f5f7;
@@ -81,7 +25,7 @@
 	</style>
 </head>
 <body>
-	<header class="navbar navbar-inverse navbar-static-top affix-top bg-primary" id="top"
+	<header class="navbar navbar-inverse navbar-static-top bg-primary" id="top"
 		role="banner"
 		data-spy="affix"
 		data-offset-top="60">
@@ -107,8 +51,8 @@
 			</nav>
 		</div>
 	</header>
-	<div class="container m-t-lg">
-		<div class="row">
+	<div class="container">
+		<div class="row m-t-lg">
 			<div class="col-md-3 col-md-push-9">
 				<h5 class="m-b-md">H4 side navigation heading</h5>
 				<ul>
@@ -164,35 +108,97 @@
 					fringilla a molestie vitae, faucibus a elit. Vivamus sodales eleifend
 					varius. Suspendisse eu urna iaculis, commodo leo ac, malesuada nisi.</p>
 
-	    <ul id="myTabs" class="nav nav-tabs" role="tablist">
-	      <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Home</a></li>
-	      <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Profile</a></li>
-	      <li role="presentation" class="dropdown">
-	        <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Dropdown <span class="caret"></span></a>
-	        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
-	          <li><a href="#dropdown1" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">@fat</a></li>
-	          <li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a></li>
-	        </ul>
-	      </li>
-	    </ul>
-	    <div id="myTabContent" class="tab-content m-t-lg">
-	      <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-	        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-	      </div>
-	      <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-	        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-	      </div>
-	      <div role="tabpanel" class="tab-pane fade" id="dropdown1" aria-labelledby="dropdown1-tab">
-	        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-	      </div>
-	      <div role="tabpanel" class="tab-pane fade" id="dropdown2" aria-labelledby="dropdown2-tab">
-	        <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-	      </div>
-	    </div>
+					<ul id="myTabs" class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active">
+							<a href="#home" id="home-tab" role="tab" data-toggle="tab"
+								aria-controls="home" aria-expanded="true">Home</a>
+						</li>
+						<li role="presentation">
+							<a href="#profile" role="tab" id="profile-tab"
+								data-toggle="tab" aria-controls="profile">Profile</a>
+						</li>
+						<li role="presentation" class="dropdown">
+							<a href="#" id="myTabDrop1" class="dropdown-toggle"
+							data-toggle="dropdown" aria-controls="myTabDrop1-contents">
+								Dropdown <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu"
+								aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+								<li><a href="#dropdown1" tabindex="-1" role="tab"
+									id="dropdown1-tab" data-toggle="tab"
+									aria-controls="dropdown1">@fat</a></li>
+								<li><a href="#dropdown2" tabindex="-1" role="tab"
+									id="dropdown2-tab" data-toggle="tab"
+									aria-controls="dropdown2">@mdo</a></li>
+							</ul>
+						</li>
+					</ul>
+					<div id="myTabContent" class="tab-content m-t-lg">
+						<div role="tabpanel" class="tab-pane fade in active"
+							id="home" aria-labelledby="home-tab">
+							<p>Raw denim you probably haven't heard of them jean
+								shorts Austin. Nesciunt tofu stumptown aliqua,
+								retro synth master cleanse. Mustache cliche tempor,
+								williamsburg carles vegan helvetica. Reprehenderit
+								butcher retro keffiyeh dreamcatcher synth. Cosby
+								sweater eu banh mi, qui irure terry richardson
+								ex squid. Aliquip placeat salvia cillum iphone.
+								Seitan aliquip quis cardigan american apparel,
+								butcher voluptate nisi qui.</p>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="profile"
+							aria-labelledby="profile-tab">
+							<p>Food truck fixie locavore, accusamus mcsweeney's
+								marfa nulla single-origin coffee squid.
+								Exercitation +1 labore velit, blog sartorial PBR
+								leggings next level wes anderson artisan four
+								loko farm-to-table craft beer twee. Qui photo
+								booth letterpress, commodo enim craft beer mlkshk
+								aliquip jean shorts ullamco ad vinyl cillum PBR.
+								Homo nostrud organic, assumenda labore aesthetic
+								magna delectus mollit. Keytar helvetica VHS
+								salvia yr, vero magna velit sapiente labore
+								stumptown. Vegan fanny pack odio cillum wes
+								anderson 8-bit, sustainable jean shorts beard ut
+								DIY ethical culpa terry richardson biodiesel.
+								Art party scenester stumptown, tumblr butcher
+								vero sint qui sapiente accusamus tattooed echo
+								park.</p>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="dropdown1"
+							aria-labelledby="dropdown1-tab">
+							<p>Etsy mixtape wayfarers, ethical wes anderson tofu
+								before they sold out mcsweeney's organic lomo
+								retro fanny pack lo-fi farm-to-table readymade.
+								Messenger bag gentrify pitchfork tattooed craft
+								beer, iphone skateboard locavore carles etsy
+								salvia banksy hoodie helvetica. DIY synth PBR
+								banksy irony. Leggings gentrify squid 8-bit cred
+								pitchfork. Williamsburg banh mi whatever
+								gluten-free, carles pitchfork biodiesel fixie
+								etsy retro mlkshk vice blog. Scenester cred you
+								probably haven't heard of them, vinyl craft beer
+								blog stumptown. Pitchfork sustainable tofu synth
+								chambray yr.</p>
+						</div>
+						<div role="tabpanel" class="tab-pane fade" id="dropdown2"
+							aria-labelledby="dropdown2-tab">
+							<p>Trust fund seitan letterpress, keytar raw denim
+								keffiyeh etsy art party before they sold out
+								master cleanse gluten-free squid scenester
+								freegan cosby sweater. Fanny pack portland
+								seitan DIY, art party locavore wolf cliche high
+								life echo park Austin. Cred vinyl keffiyeh DIY
+								salvia PBR, banh mi before they sold out
+								farm-to-table VHS viral locavore cosby sweater.
+								Lomo wolf viral, mustache readymade thundercats
+								keffiyeh craft beer marfa ethical. Wolf salvia
+								freegan, sartorial keffiyeh echo park vegan.</p>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="panel">
-
 				<div class="panel-heading">
 					<button class="btn btn-sm btn-default pull-right">Example</button>
 					<h3 class="panel-title">Panel title</h3>
@@ -206,7 +212,7 @@
 								<input class="form-control" placeholder="Always use placeholders" />
 							</div>
 							<div class="form-group col-sm-6">
-								<label>Sentence case labels</label>
+								<label>Sentence Case labels</label>
 								<input class="form-control" placeholder="Sentence case placeholders" />
 								<div class="help-block">Short help text</div>
 							</div>
