@@ -99,6 +99,9 @@
             .attr('aria-expanded', true)
       }
 
+      if (container.find('> .active').length > 1) {
+        container.find('> .active').eq(1).toggleClass('in active')
+      }
       callback && callback()
     }
 
