@@ -208,7 +208,7 @@ module.exports = function (grunt) {
     scsslint: {
       options: {
         bundleExec: true,
-        config: 'scss/.scsslint.yml',
+        config: 'scss/.scss-lint.yml',
         reporterOutput: null
       },
       src: ['scss/*.scss', '!scss/_normalize.scss']
