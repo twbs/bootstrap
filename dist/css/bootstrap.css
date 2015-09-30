@@ -1147,7 +1147,7 @@ img {
   display: inline-block;
   max-width: 100%;
   height: auto;
-  padding: 4px;
+  padding: 0;
   line-height: 1.5;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -5618,10 +5618,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   background-color: #f2f5f7;
 }
 .breadcrumb {
-  padding: 8px 16px;
+  padding: 8px 0;
   margin-bottom: 24px;
   list-style: none;
-  background-color: #f5f5f5;
+  background-color: none;
   border-radius: 3px;
 }
 .breadcrumb > li {
@@ -5630,7 +5630,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .breadcrumb > li + li:before {
   padding: 0 5px;
   color: #ccc;
-  content: "/\00a0";
+  content: "❯\00a0";
 }
 .breadcrumb > .active {
   color: #829ca9;
@@ -5967,7 +5967,7 @@ a.badge:focus {
 }
 .thumbnail {
   display: block;
-  padding: 4px;
+  padding: 0;
   margin-bottom: 24px;
   line-height: 1.5;
   background-color: #fff;
