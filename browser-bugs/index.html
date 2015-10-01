@@ -112,7 +112,11 @@
 
   <p class="lead">Bootstrap currently works around several outstanding browser bugs in major browsers to deliver the best cross-browser experience possible. Some bugs, like those listed below, cannot be solved by us.</p>
   <p>We publicly list browser bugs that are impacting us here, in the hopes of expediting the process of fixing them. For information on Bootstrap's browser compatibility, <a href="../getting-started/#support">see our browser compatibility docs</a>.</p>
-  <p>See also: <a href="https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o">jQuery's browser bug workarounds</a></p>
+  <p>See also:</p>
+  <ul>
+    <li><a href="https://code.google.com/p/chromium/issues/detail?id=536263">Chromium issue 536263: [meta] Issues affecting Bootstrap</a></li>
+    <li><a href="https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o">jQuery's browser bug workarounds</a></li>
+  </ul>
 
   <div class="table-responsive">
     <table class="bs-docs-browser-bugs table table-bordered table-hover">
@@ -125,9 +129,9 @@
         </tr>
       </thead>
       <tbody>
-
+        
         <tr>
-          <td>Internet Explorer 11
+          <td>Internet Explorer 11 & Microsoft Edge
 </td>
           <td><p>Hovered element still remains in <code>:hover</code> state after scrolling away.</p>
 </td>
@@ -136,9 +140,9 @@
           <td><a href="https://github.com/twbs/bootstrap/issues/14211">#14211</a>
 </td>
         </tr>
-
+        
         <tr>
-          <td>Internet Explorer 11
+          <td>Internet Explorer 11 & Microsoft Edge
 </td>
           <td><p>When hovering over a <code>&lt;select&gt;</code> menu item, the cursor for the element underneath the menu is displayed.</p>
 </td>
@@ -180,18 +184,7 @@
           <td><a href="https://github.com/twbs/bootstrap/issues/10690">#10690</a>
 </td>
         </tr>
-
-        <tr>
-          <td>Firefox (Windows)
-</td>
-          <td><p>Java applets that are descendants of elements with forced hardware acceleration using <code>translate3d(0,0,0)</code> are invisible.</p>
-</td>
-          <td><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1048279">Mozilla bug #1048279</a>
-</td>
-          <td><a href="https://github.com/twbs/bootstrap/issues/14124">#14124</a>
-</td>
-        </tr>
-
+        
         <tr>
           <td>Firefox
 </td>
@@ -400,7 +393,18 @@
           <td><a href="https://github.com/twbs/bootstrap/issues/14708">#14708</a>
 </td>
         </tr>
-
+        
+        <tr>
+          <td>Safari (iOS)
+</td>
+          <td><p>Can’t move cursor to start of text after entering long string of text into <code>&lt;input type="text"&gt;</code></p>
+</td>
+          <td><a href="https://bugs.webkit.org/show_bug.cgi?id=148061">WebKit bug #148061</a>, <a href="https://openradar.appspot.com/22299624">Apple Safari Radar #22299624</a>
+</td>
+          <td><a href="https://github.com/twbs/bootstrap/issues/16988">#16988</a>
+</td>
+        </tr>
+        
         <tr>
           <td>Safari (iOS)
 </td>
