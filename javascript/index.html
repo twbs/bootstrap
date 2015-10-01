@@ -408,7 +408,7 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h2 id="modals-grid-system">Using the grid system</h2>
-  <p>To take advantage of the Bootstrap grid system within a modal, just nest <code>.container-fluid</code> within the <code>.modal-body</code> and then use the normal grid system classes within this container.</p>
+  <p>To take advantage of the Bootstrap grid system within a modal, just nest <code>.row</code>s within the <code>.modal-body</code> and then use the normal grid system classes.</p>
 <!-- sample modal content -->
   <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel">
     <div class="modal-dialog" role="document">
@@ -418,28 +418,26 @@
           <h4 class="modal-title" id="gridModalLabel">Modal title</h4>
         </div>
         <div class="modal-body">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-4">.col-md-4</div>
-              <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-              <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-9">
-                Level 1: .col-sm-9
-                <div class="row">
-                  <div class="col-xs-8 col-sm-6">
-                    Level 2: .col-xs-8 .col-sm-6
-                  </div>
-                  <div class="col-xs-4 col-sm-6">
-                    Level 2: .col-xs-4 .col-sm-6
-                  </div>
+          <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+            <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-9">
+              Level 1: .col-sm-9
+              <div class="row">
+                <div class="col-xs-8 col-sm-6">
+                  Level 2: .col-xs-8 .col-sm-6
+                </div>
+                <div class="col-xs-4 col-sm-6">
+                  Level 2: .col-xs-4 .col-sm-6
                 </div>
               </div>
             </div>
@@ -465,28 +463,26 @@
         <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">id=</span><span class="s">"gridSystemModalLabel"</span><span class="nt">&gt;</span>Modal title<span class="nt">&lt;/h4&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-fluid"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4 col-md-offset-4"</span><span class="nt">&gt;</span>.col-md-4 .col-md-offset-4<span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 col-md-offset-3"</span><span class="nt">&gt;</span>.col-md-3 .col-md-offset-3<span class="nt">&lt;/div&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-2 col-md-offset-4"</span><span class="nt">&gt;</span>.col-md-2 .col-md-offset-4<span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6 col-md-offset-3"</span><span class="nt">&gt;</span>.col-md-6 .col-md-offset-3<span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;/div&gt;</span>
-          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9"</span><span class="nt">&gt;</span>
-              Level 1: .col-sm-9
-              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-8 col-sm-6"</span><span class="nt">&gt;</span>
-                  Level 2: .col-xs-8 .col-sm-6
-                <span class="nt">&lt;/div&gt;</span>
-                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4 col-sm-6"</span><span class="nt">&gt;</span>
-                  Level 2: .col-xs-4 .col-sm-6
-                <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4 col-md-offset-4"</span><span class="nt">&gt;</span>.col-md-4 .col-md-offset-4<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 col-md-offset-3"</span><span class="nt">&gt;</span>.col-md-3 .col-md-offset-3<span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-2 col-md-offset-4"</span><span class="nt">&gt;</span>.col-md-2 .col-md-offset-4<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6 col-md-offset-3"</span><span class="nt">&gt;</span>.col-md-6 .col-md-offset-3<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9"</span><span class="nt">&gt;</span>
+            Level 1: .col-sm-9
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-8 col-sm-6"</span><span class="nt">&gt;</span>
+                Level 2: .col-xs-8 .col-sm-6
+              <span class="nt">&lt;/div&gt;</span>
+              <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4 col-sm-6"</span><span class="nt">&gt;</span>
+                Level 2: .col-xs-4 .col-sm-6
               <span class="nt">&lt;/div&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
           <span class="nt">&lt;/div&gt;</span>
@@ -1110,7 +1106,7 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
   <h3>Fade effect</h3>
-  <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>. The first tab pane must also have <code>.in</code> to properly fade in initial content.</p>
+  <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>. The first tab pane must also have <code>.in</code> to make the initial content visible.</p>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">class=</span><span class="s">"tab-pane fade in active"</span> <span class="na">id=</span><span class="s">"home"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"profile"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
@@ -1125,7 +1121,7 @@
   </p>
 
   <h4><code>.tab('show')</code></h4>
-  <p>Selects the given tab and shows its associated content. Any other tab that was previously selected becomes unselected and its associated content is hidden.</p>
+  <p>Selects the given tab and shows its associated content. Any other tab that was previously selected becomes unselected and its associated content is hidden. <strong>Returns to the caller before the tab pane has actually been shown</strong> (i.e. before the <code>shown.bs.tab</code> event occurs).</p>
   <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#someTab'</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span></code></pre></div>
 
   <h3 id="tabs-events">Events</h3>
@@ -1522,8 +1518,8 @@
   <h4>Four directions</h4>
   <div class="bs-example popover-demo">
     <div class="bs-example-popovers">
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-        Popover on left
+      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover on right
       </button>
       <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
         Popover on top
@@ -1531,8 +1527,8 @@
       <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
         Popover on bottom
       </button>
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-        Popover on right
+      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover on left
       </button>
     </div>
   </div><!-- /example -->
@@ -1680,7 +1676,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
   </div>
 
-  <h3>Methods</h3>
+  <h3 id="popovers-methods">Methods</h3>
   <h4><code>$().popover(options)</code></h4>
   <p>Initializes popovers for an element collection.</p>
 
@@ -2161,13 +2157,13 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 <span class="p">})</span></code></pre></div>
 
   <h4><code>.collapse('toggle')</code></h4>
-  <p>Toggles a collapsible element to shown or hidden.</p>
+  <p>Toggles a collapsible element to shown or hidden. <strong>Returns to the caller before the collapsible element has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.collapse</code> or <code>hidden.bs.collapse</code> event occurs).</p>
 
   <h4><code>.collapse('show')</code></h4>
-  <p>Shows a collapsible element.</p>
+  <p>Shows a collapsible element. <strong>Returns to the caller before the collapsible element has actually been shown</strong> (i.e. before the <code>shown.bs.collapse</code> event occurs).</p>
 
   <h4><code>.collapse('hide')</code></h4>
-  <p>Hides a collapsible element.</p>
+  <p>Hides a collapsible element. <strong>Returns to the caller before the collapsible element has actually been hidden</strong> (i.e. before the <code>hidden.bs.collapse</code> event occurs).</p>
 
   <h3 id="collapse-events">Events</h3>
   <p>Bootstrap's collapse class exposes a few events for hooking into collapse functionality.</p>
@@ -2654,6 +2650,7 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <li><a href="#popovers-examples">Examples</a></li>
     <li><a href="#popovers-usage">Usage</a></li>
     <li><a href="#popovers-options">Options</a></li>
+    <li><a href="#popovers-methods">Methods</a></li>
     <li><a href="#popovers-events">Events</a></li>
   </ul>
 </li>
