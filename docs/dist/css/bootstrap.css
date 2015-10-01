@@ -7989,9 +7989,6 @@ blockquote footer {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-:not(.input-group).btn-default .glyphicon {
-  color: #00a4df;
-}
 .btn-default[disabled] .glyphicon {
   color: #829ca9;
 }
