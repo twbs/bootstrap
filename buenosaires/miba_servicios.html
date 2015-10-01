@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="es" class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="es" class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html lang="es" class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="es"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sitio del Gobierno de la Ciudad de Buenos Aires">
+    <meta name="author" content="Gobierno de la Ciudad de Buenos Aires">
+    <title>BA MiBA</title>
+    <link rel="shortcut icon" href="../bastrap3/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="../bastrap3/favicon-mobile.png">
+    <link rel="stylesheet" href="../bastrap3/bootstrap.min.css">
+    <link rel="stylesheet" href="../bastrap3/bastrap.css">
+    <link rel="stylesheet" href="assets/buenosaires.css">
+    <link rel="stylesheet" href="assets/miba/miba.css">
+    <!--[if lt IE 9]>
+      <script src="../bastrap3/html5shiv.min.js"></script>
+      <script src="../bastrap3/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="ba-miba">
+    <noscript class="how-to">
+      <a class="alert-spot alert-spot-danger text-center" href="http://www.enable-javascript.com/es/" target="_blank">
+        Para utilizar las funcionalidades completas de este sitio es necesario tener
+        JavaScript habilitado. Aquí están las instrucciones para habilitar JavaScript en tu navegador web.
+      </a>
+    </noscript>
+    <a class="lt-ie9-alert alert-spot alert-spot-danger text-center" href="http://browsehappy.com/" target="_blank">
+      Tu navegador no está actualizado. Tiene conocidas fallos de seguridad y podría no mostrar todas las características de este y otros sitios web.
+      Aprendé cómo podes actualizarlo.
+    </a>
+    <header class="navbar navbar-primary navbar-top yamm">
+      <div class="ba-navbar-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <a class="navbar-brand bac-header" href="index.html">Buenos Aires Ciudad</a>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <form class="navbar-form navbar-right" role="search">
+                <input class="form-control input-sm" placeholder="Buscar ..." type="text">
+                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle btn btn-primary btn-block btn-sm" data-toggle="collapse" data-target="#header-main-nav">
+              <span>Menú principal</span>
+              <span class="glyphicon glyphicon-chevron-down"></span>
+            </button>
+          </div>
+          <nav class="collapse navbar-collapse" id="header-main-nav" role="navigation">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">La Ciudad <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gobierno <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Trámites <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Red En todo estás Vos <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                </ul>
+              </li>
+              <div class="menu-divider"></div>
+              <li><a href="#">Transparencia</a></li>
+              <li><a href="#">Turismo</a></li>
+              <li><a href="#">Noticias</a></li>
+              <li><a href="#">Accesible</a></li>
+              <li class="sub-brand"><a href="#"><span class="avatar social-tw"></span> Pablo</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <header class="jumbotron jumbotron-main jumbotron-small area-header" style="background-image:url(../docs/misc2.jpg);">
+      <div class="jumbotron-overlay">
+        <div class="container">
+          <nav role="navigation">
+            <ol class="breadcrumb">
+              <li><a href="#4">Buenos Aires</a></li>
+              <li class="active">Mi BA</li>
+            </ol>
+          </nav>
+          <div class="area-title text-center">
+            <h1>Carla Sabrina Díaz</h1>
+            <ul class="nav nav-pills">
+              <li><a href="miba_inicio.html">inicio</a></li>
+              <li><a href="miba_actividades.html">Actividades</a></li>
+              <li><a href="miba_tramites.html">Trámites</a></li>
+              <li class="active"><a href="miba_servicios.html">Servicios</a></li>
+              <li><a href="miba_novedades.html">Novedades</a></li>
+              <li><a href="miba_datos.html">Mis datos</a></li>
+              <li><a href="miba_ayuda.html">Ayuda</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main-container" role="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>
+                  Cómo llego
+                  <button type="button" class="header-btn">+</button>
+                </h3>
+              </div>
+              <div class="panel-map">
+                <iframe src="http://epok.buenosaires.gob.ar/pub/mapa/ecobici/estaciones_de_bicicletas/" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>
+              </div>
+              <div class="panel-body">
+                <form action="#">
+                  <div class="form-group">
+                    <label>Medio</label>
+                    <br>
+                    <div class="btn-group btn-group-justified" data-toggle="buttons">
+                      <label href="#" class="btn btn-default btn-lg icon-pie">
+                        <input type="radio" name="medio" value="caminando">
+                      </label>
+                      <label href="#" class="btn btn-default btn-lg icon-bici">
+                        <input type="radio" name="medio" value="bicicleta">
+                      </label>
+                      <label href="#" class="btn btn-default btn-lg icon-transporte active">
+                        <input type="radio" name="medio" value="colectivo" checked>
+                      </label>
+                      <label href="#" class="btn btn-default btn-lg icon-auto">
+                        <input type="radio" name="medio" value="auto">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="desde">Desde</label>
+                    <div class="input-group">
+                      <input class="form-control input-lg" id="desde" name="desde" type="text">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default btn-lg btn-location icon-my_location" type="button"></button>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="hasta">Hasta</label>
+                    <input class="form-control input-lg" id="hasta" name="hasta" type="text">
+                  </div>
+                  <div class="row">
+                    <p class="col-sm-8 col-sm-offset-2 button-p">
+                      <button href="#" class="btn btn-blue btn-lg btn-block">Buscar</button>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>
+                  Estaciones EcoBici
+                  <button type="button" class="header-btn">+</button>
+                </h3>
+              </div>
+              <div class="panel-map">
+                <iframe src="http://epok.buenosaires.gob.ar/pub/mapa/ecobici/estaciones_de_bicicletas/" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>
+              </div>
+              <div class="panel-body">
+                <form action="#">
+                  <div class="form-group">
+                    <label for="desde">Mi dirección</label>
+                    <div class="input-group">
+                      <input class="form-control input-lg" id="desde" name="desde" type="text">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default btn-lg btn-location icon-my_location" type="button"></button>
+                      </span>
+                    </div>
+                  </div>
+                </form>
+                <br>
+
+                <h5><span class="pull-right text-muted">0,5km</span> Alsina, Adolfo 1001 </h5>
+                <p><a href="#" class="pull-right">Ver en mapa</a><strong class="text-warning">11 bicis disponibles</strong></p>
+
+                <h5><span class="pull-right text-muted">0,9km</span> Pellegrini, Carlos 179 </h5>
+                <p><a href="#" class="pull-right">Ver en mapa</a><strong class="text-success">24 bicis disponibles</strong></p>
+
+                <h5><span class="pull-right text-muted">1,2km</span> Viamonte 886 </h5>
+                <p><a href="#" class="pull-right">Ver en mapa</a><strong class="text-danger">3 bicis disponibles</strong></p>
+
+                <h5><span class="pull-right text-muted">2,4km</span> Libertad 602 </h5>
+                <p><a href="#" class="pull-right">Ver en mapa</a><strong class="text-success">16 bicis disponibles</strong></p>
+
+                <div class="row">
+                    <p class="col-sm-8 col-sm-offset-2 button-p">
+                      <button href="#" class="btn btn-default btn-lg btn-block">Todas las estaciones</button>
+                    </p>
+                  </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>
+                  Mis viajes EcoBici
+                  <button type="button" class="header-btn">+</button>
+                </h3>
+              </div>
+              <div class="panel-body">
+
+                <p class="lead no-margin-bottom">12/07/2015 - 12:00hs a 12:43hs</p>
+                <p class="text-muted">Alsina, Adolfo 1001 - Pellegrini, Carlos 179</p>
+
+                <p class="lead no-margin-bottom">09/07/2015 - 16:30hs a 18:43hs</p>
+                <p class="text-muted">Pellegrini, Carlos 179 - Viamonte 886</p>
+
+                <p class="lead no-margin-bottom">06/07/2015 - 12:00hs a 12:43hs</p>
+                <p class="text-muted">Pellegrini, Carlos 179</p>
+
+                <p class="lead no-margin-bottom">02/07/2015 - 16:30hs a 18:43hs</p>
+                <p class="text-muted">Alsina, Adolfo 1001 - Pellegrini, Carlos 179</p>
+
+                <div class="row">
+                    <p class="col-sm-8 col-sm-offset-2 button-p">
+                      <button href="#" class="btn btn-default btn-lg btn-block">Todos mis viajes</button>
+                    </p>
+                  </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>
+                  Sedes comunales
+                  <button type="button" class="header-btn">+</button>
+                </h3>
+              </div>
+              <div class="panel-map">
+                <iframe src="http://epok.buenosaires.gob.ar/pub/mapa/ecobici/estaciones_de_bicicletas/" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>
+              </div>
+              <div class="panel-body">
+                <form action="#">
+                  <div class="form-group">
+                    <label for="desde">Mi dirección</label>
+                    <div class="input-group">
+                      <input class="form-control input-lg" id="desde" name="desde" type="text">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default btn-lg btn-location icon-my_location" type="button"></button>
+                      </span>
+                    </div>
+                  </div>
+                </form>
+                <br>
+
+                <h5><span class="pull-right text-muted">0,5km</span> 1 - Uruguay 740 </h5>
+                <p><a href="#" class="pull-right">Ver en mapa</a><span class="text-muted">4370-9700 - de 08:15 a 17:00hs</span></p>
+
+                <h5><span class="pull-right text-muted">0,9km</span> 2 - Córdoba, Av. 5690 </h5>
+                <p><a href="#" class="pull-right">Ver en mapa</a><span class="text-muted">4370-9700 - de 08:15 a 17:00hs</span></p>
+
+                <h5><span class="pull-right text-muted">1,2km</span> 5 - Serrano 1978 </h5>
+                <p><a href="#" class="pull-right">Ver en mapa</a><span class="text-muted">4370-9700 - de 08:15 a 17:00hs</span></p>
+
+                <h5><span class="pull-right text-muted">2,4km</span> 7 - Bonpland 722 </h5>
+                <p><a href="#" class="pull-right">Ver en mapa</a><span class="text-muted">4370-9700 - de 08:15 a 17:00hs</span></p>
+
+                <div class="row">
+                    <p class="col-sm-8 col-sm-offset-2 button-p">
+                      <button href="#" class="btn btn-default btn-lg btn-block">Todas las sedes</button>
+                    </p>
+                  </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>
+                  Beneficios VOS
+                  <button type="button" class="header-btn">+</button>
+                </h3>
+              </div>
+              <div class="panel-body content-list">
+                <div class="list-group list-group-content list-group-small">
+                  <a href="#" class="list-group-item list-thumb" title="">
+                    <div style="background-image:url(../docs/jumbo1.jpg);"></div>
+                    <h4>50% Zoológico de Buenos Aires</h4>
+                    <p>2x1 en entradas.</p>
+                  </a>
+                  <a href="#" class="list-group-item list-thumb" title="">
+                    <div style="background-image:url(../docs/jumbo3.jpg);"></div>
+                    <h4>2x1 Planetario Galileo Galilei</h4>
+                    <p>Descuento en el menú ejecutivo, durante el mediodía.</p>
+                  </a>
+                  <a href="#" class="list-group-item list-thumb" title="">
+                    <div style="background-image:url(../docs/jumbo2.jpg);"></div>
+                    <h4>Promo Kilca Hostel</h4>
+                    <p>2x1 en alojamiento, de domingo a jueves.</p>
+                  </a>
+                  <div class="row">
+                    <p class="col-sm-8 col-sm-offset-2 button-p">
+                      <a href="#" class="btn btn-default btn-lg btn-block">Todos los beneficios</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>
+                  Mis consumos VOS
+                  <button type="button" class="header-btn">+</button>
+                </h3>
+              </div>
+              <div class="panel-body">
+                <h4>
+                  Total de Junio
+                  <span class="pull-right text-danger">$124,50</span>
+                </h4>
+                <p class="no-margin-bottom">
+                  <span class="text-muted pull-right">$3,25</span>
+                  Viaje en colectivo
+                </p>
+                <p class="no-margin-bottom">
+                  <span class="text-muted pull-right">$3,25</span>
+                  Entrada a Museo
+                </p>
+                <p class="no-margin-bottom">
+                  <span class="text-muted pull-right">$3,25</span>
+                  Viaje en colectivo
+                </p>
+                <p class="no-margin-bottom">
+                  <span class="text-muted pull-right">$3,25</span>
+                  Viaje en subte
+                </p>
+
+                <div class="row">
+                  <p class="col-sm-8 col-sm-offset-2 button-p">
+                    <a href="#" class="btn btn-default btn-lg btn-block">Todos mis consumos</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer id="ba-footer">
+    <br /><br /><br /><br />
+    </footer>
+    <script src="../bastrap3/jquery.min.js"></script>
+    <script src="../bastrap3/bootstrap.min.js"></script>
+    <script src="assets/buenosaires.js"></script>
+  </body>
+</html>

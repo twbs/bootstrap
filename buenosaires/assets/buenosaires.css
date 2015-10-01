@@ -1467,15 +1467,15 @@ article figcaption,
 .ba-aplicativo aside header a:active img {
   opacity:1;
 }
-.ba-miba .main-container .container > .row {
+./*ba-miba .main-container .container > .row {
   margin-top:-8px;
-}
+}*/
 .ba-miba .main-container .container section {
   margin-bottom:64px;
 }
-.ba-miba h1 {
+/*.ba-miba h1 {
   display:none;
-}
+}*/
 .ba-miba .well {
   margin:32px 0 0 0;
   padding-left:0;
