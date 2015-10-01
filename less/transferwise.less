@@ -1,8 +1,4 @@
-
-
-section,
 .section,
-footer,
 .footer {
     padding-top: 96px;
     padding-bottom: 96px;
@@ -138,13 +134,15 @@ blockquote footer {
     margin-top: 60px;
 }
 
-.navbar + .jumbotron,
-.navbar + .jumbotron-image {
-    margin-top: -60px;
-}
-.navbar.affix + .jumbotron,
-.navbar.affix + .jumbotron-image {
-    margin-top: 0px;
+@media (min-width: @screen-sm-min) {
+    .navbar + .jumbotron,
+    .navbar + .jumbotron-image {
+        margin-top: -60px;
+    }
+    .navbar.affix + .jumbotron,
+    .navbar.affix + .jumbotron-image {
+        margin-top: 0px;
+    }
 }
 
 .navbar + .jumbotron,

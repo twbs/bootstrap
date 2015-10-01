@@ -7894,9 +7894,7 @@ button.close {
     display: none !important;
   }
 }
-section,
 .section,
-footer,
 .footer {
   padding-top: 96px;
   padding-bottom: 96px;
@@ -8021,13 +8019,15 @@ blockquote footer {
 .navbar[data-spy~=affix].affix + * {
   margin-top: 60px;
 }
-.navbar + .jumbotron,
-.navbar + .jumbotron-image {
-  margin-top: -60px;
-}
-.navbar.affix + .jumbotron,
-.navbar.affix + .jumbotron-image {
-  margin-top: 0;
+@media (min-width: 768px) {
+  .navbar + .jumbotron,
+  .navbar + .jumbotron-image {
+    margin-top: -60px;
+  }
+  .navbar.affix + .jumbotron,
+  .navbar.affix + .jumbotron-image {
+    margin-top: 0;
+  }
 }
 .navbar + .jumbotron,
 .navbar + .jumbotron-image > .jumbotron {
