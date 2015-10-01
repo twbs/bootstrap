@@ -6,6 +6,8 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
 ---
 
 
+<div class="panel m-t-lg">
+	<div class="panel-body">
 <!-- less.js isn't IE8-compatible and throws an exception during initialization, so our Blob compatibility check and error messaging code never get called in that case.
   So we use a conditional comment instead to inform folks about the lack of IE8 support.
 -->
@@ -44,7 +46,7 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
 
 <form class="bs-customizer">
   <div class="bs-docs-section" id="less-section">
-    <button class="btn btn-default toggle" type="button">Toggle all</button>
+    <button class="btn btn-default btn-sm pull-right toggle" type="button">Toggle all</button>
     <h1 id="less" class="page-header">Less files</h1>
 
     <p class="lead">Choose which Less files to compile into your custom build of Bootstrap. Not sure which files to use? Read through the <a href="../css/">CSS</a> and <a href="../components/">Components</a> pages in the docs.</p>
@@ -269,7 +271,7 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
   </div>
 
   <div class="bs-docs-section" id="plugin-section">
-    <button class="btn btn-default toggle" type="button">Toggle all</button>
+    <button class="btn btn-default btn-sm toggle pull-right" type="button">Toggle all</button>
     <h1 id="plugins" class="page-header">jQuery plugins</h1>
 
     <p class="lead">Choose which jQuery plugins should be included in your custom JavaScript files. Unsure what to include? Read the <a href="../javascript/">JavaScript</a> page in the docs.</p>
@@ -366,7 +368,7 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
   </div>
 
   <div class="bs-docs-section" id="less-variables-section">
-    <button class="btn btn-default toggle" type="button">Reset to defaults</button>
+    <button class="btn btn-default btn-sm pull-right toggle" type="button">Reset to defaults</button>
     <h1 id="less-variables" class="page-header">Less variables</h1>
 
     <p class="lead">Customize Less variables to define colors, sizes and more inside your custom CSS stylesheets.</p>
@@ -382,8 +384,10 @@ lead: Customize Bootstrap's components, Less variables, and jQuery plugins to ge
       <h4>Warning for Firefox users!</h4>
       <p>Due to a possible browser bug, the customizer download randomly fails in Firefox. If this happens to you, we advise either retrying in Firefox or using one of the other browsers supported by the Customizer (Chrome or IE10+).</p>
     </div>
-    <div class="bs-customize-download">
+    <p class="bs-customize-download">
       <button type="submit" id="btn-compile" disabled class="btn btn-block btn-lg btn-success" onclick="ga('send', 'event', 'Customize', 'Download', 'Customize and Download');">Compile and Download</button>
-    </div>
+    </p>
   </div><!-- /download -->
 </form>
+    </div>
+</div>

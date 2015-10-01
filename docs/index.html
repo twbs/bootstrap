@@ -6,71 +6,105 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
 <div class="jumbotron-image" style="background-image: url('/assets/img/css2-bg.jpg')">
     <main class="jumbotron" id="content" role="main" tabindex="-1">
         <div class="container">
-            <h1>TransferWise Bootstrap</h1>
-            <p class="lead">Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.</p>
-            <p class="lead">This is a fork of the main Bootstrap project implementing the TransferWise style guide.</p>
+            <div class="row">
+                <div class="col-md-8 col-lg-7">
+                    <h1>TransferWise Bootstrap</h1>
+                    <p class="lead">
+                        Bootstrap is the most popular HTML, CSS, and
+                        JS framework for developing responsive, mobile first
+                        projects on the web.
+                    </p>
+                    <p>
+                        This is a fork of the main Bootstrap project
+                        implementing the TransferWise style guide.
+                    </p>
 
-            <p class="lead">
-              <a href="getting-started#download" class="btn btn-primary btn-lg" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download Bootstrap</a>
-            </p>
-            <p class="version">Currently v{{ site.current_version }}</p>
-            {% include ads.html %}
+                    <p class="lead">
+                      <a href="getting-started#download"
+                        class="btn btn-primary btn-lg"
+                        onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">
+                        Download Bootstrap
+                      </a>
+                    </p>
+                    <p class="version">Currently v{{ site.current_version }}</p>
+                </div>
+            </div>
         </div>
     </main>
 </div>
 
-<div class="bs-docs-featurette">
-  <div class="container">
-    <h2 class="bs-docs-featurette-title">Designed for everyone, everywhere.</h2>
-    <p class="lead">Bootstrap makes front-end web development faster and easier. It's made for folks of all skill levels, devices of all shapes, and projects of all sizes.</p>
+<section>
+  <div class="container text-center">
+    <h2>Designed for everyone, everywhere.</h2>
+    <p class="lead">
+        Bootstrap makes front-end web development faster and easier.
+        It's made for folks of all skill levels, devices of all shapes, and
+        projects of all sizes.
+    </p>
 
-    <hr class="half-rule">
-
-    <div class="row">
+    <div class="row text-center m-b-lg">
       <div class="col-sm-4">
-        <img src="assets/img/sass-less.png" alt="Sass and Less support" class="img-responsive">
-        <h3>Preprocessors</h3>
-        <p>Bootstrap ships with vanilla CSS, but its source code utilizes the two most popular CSS preprocessors, <a href="../css/#less">Less</a> and <a href="../css/#sass">Sass</a>. Quickly get started with precompiled CSS or build on the source.</p>
+        <img src="assets/img/sass-less.png" alt="Sass and Less support"
+            class="img-responsive m-b-lg">
+        <h4>Preprocessors</h4>
+        <p>Bootstrap ships with vanilla CSS, but its source code utilizes the
+            two most popular CSS preprocessors, <a href="../css/#less">Less</a>
+            and <a href="../css/#sass">Sass</a>. Quickly get started with
+            precompiled CSS or build on the source.</p>
       </div>
       <div class="col-sm-4">
-        <img src="assets/img/devices.png" alt="Responsive across devices" class="img-responsive">
-        <h3>One framework, every device.</h3>
-        <p>Bootstrap easily and efficiently scales your websites and applications with a single code base, from phones to tablets to desktops with CSS media queries.</p>
+        <img src="assets/img/devices.png" alt="Responsive across devices"
+            class="img-responsive m-b-lg">
+        <h4>One framework, every device.</h4>
+        <p>Bootstrap easily and efficiently scales your websites and applications
+            with a single code base, from phones to tablets to desktops with CSS
+            media queries.</p>
       </div>
       <div class="col-sm-4">
-        <img src="assets/img/components.png" alt="Components" class="img-responsive">
-        <h3>Full of features</h3>
-        <p>With Bootstrap, you get extensive and beautiful documentation for common HTML elements, dozens of custom HTML and CSS components, and awesome jQuery plugins.</p>
+        <img src="assets/img/components.png" alt="Components"
+            class="img-responsive m-b-lg">
+        <h4>Full of features</h4>
+        <p>With Bootstrap, you get extensive and beautiful documentation for
+            common HTML elements, dozens of custom HTML and CSS components, and
+            awesome jQuery plugins.</p>
       </div>
     </div>
 
-    <hr class="half-rule">
-
-    <p class="lead">Bootstrap is open source. It's hosted, developed, and maintained on GitHub.</p>
-    <a href="{{ site.repo }}" class="btn btn-success btn-lg">View the GitHub project</a>
+    <p class="lead">
+        Bootstrap is open source. It's hosted, developed, and maintained on GitHub.
+    </p>
+    <a href="{{ site.repo }}" class="btn btn-success btn-lg">
+        View the GitHub project
+    </a>
   </div>
-</div>
+</section>
 
-<div class="bs-docs-featurette bg-info">
+<section class="bg-info">
   <div class="container">
-    <h2 class="bs-docs-featurette-title">Built with Bootstrap.</h2>
-    <p class="lead">Millions of amazing sites across the web are being built with Bootstrap. Get started on your own with our growing <a href="../getting-started/#examples">collection of examples</a> or by exploring some of our favorites.</p>
-
-    <hr class="half-rule">
+    <h2>Built with Bootstrap.</h2>
+    <p class="lead">
+        Millions of amazing sites across the web are being built with Bootstrap.
+        Get started on your own with our growing
+        <a href="../getting-started/#examples">collection of examples</a> or by
+        exploring some of our favorites.
+    </p>
 
     <div class="row bs-docs-featured-sites">
     {% for showcase in site.data.showcase %}
       <div class="col-xs-6 col-sm-3">
         <a href="{{ showcase.expo_url }}" target="_blank" title="{{ showcase.name }}">
-          <img src="http://expo.getbootstrap.com/thumbs/{{ showcase.img }}-thumb.jpg" alt="{{ showcase.name }}" class="img-responsive">
+          <img src="http://expo.getbootstrap.com/thumbs/{{ showcase.img }}-thumb.jpg"
+            alt="{{ showcase.name }}"
+            class="img-responsive">
         </a>
       </div>
     {% endfor %}
     </div>
 
-    <hr class="half-rule">
-
-    <p class="lead">We showcase dozens of inspiring projects built with Bootstrap on the Bootstrap Expo.</p>
-    <a href="{{ site.expo }}" class="btn btn-success btn-lg">Explore the Expo</a>
+    <p class="lead">
+        We showcase dozens of inspiring projects built with Bootstrap on the
+        Bootstrap Expo.
+    </p>
+    <a href="{{ site.expo }}" class="btn btn-default btn-lg">Explore the Expo</a>
   </div>
-</div>
+</section>

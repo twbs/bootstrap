@@ -16,7 +16,6 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: @headings-font-family;
   font-weight: @headings-font-weight;
   line-height: @headings-line-height;
   color: @headings-color;
@@ -30,26 +29,47 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1,
-h2, .h2,
-h3, .h3 {
-  margin-top: @line-height-computed;
-  margin-bottom: (@line-height-computed / 2);
+h2, .h2 {
+  margin-top: 0;
+  margin-bottom: 0; // Mid-line of this font is high so no mragin bottom
+  font-family: @headings-font-family;
 
   small,
   .small {
     font-size: 65%;
   }
 }
+h1, .h1 {
+    line-height: (@padding-base-vertical * 6);
+}
+h2, .h2 {
+    line-height: (@padding-base-vertical * 5);
+}
+
+h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-top: (@line-height-computed / 2);
-  margin-bottom: (@line-height-computed / 2);
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 800;
 
   small,
   .small {
     font-size: 75%;
   }
+}
+
+h3, .h3 {
+  line-height: (@padding-base-vertical * 4);
+}
+h4, .h4 {
+  line-height: (@padding-base-vertical * 3);
+}
+
+h5, .h5,
+h6, .h6 {
+  line-height: (@padding-base-vertical * 3);
 }
 
 h1, .h1 { font-size: @font-size-h1; }
@@ -64,17 +84,17 @@ h6, .h6 { font-size: @font-size-h6; }
 // -------------------------
 
 p {
-  margin: 0 0 (@line-height-computed / 2);
+  margin: 0 0 (@padding-base-vertical * 3);
 }
 
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: floor((@font-size-base * 1.15));
+  font-size: 22px;
   font-weight: 300;
-  line-height: 1.4;
+  line-height: 32px;
 
   @media (min-width: @screen-sm-min) {
-    font-size: (@font-size-base * 1.5);
+    //font-size: (@font-size-base * 1.5);
   }
 }
 
@@ -85,7 +105,7 @@ p {
 // Ex: (12px small font / 14px base font) * 100% = about 85%
 small,
 .small {
-  font-size: floor((100% * @font-size-small / @font-size-base));
+  font-size: @font-size-small;
 }
 
 mark,
@@ -160,9 +180,13 @@ strong {
 // -------------------------
 
 .page-header {
-  padding-bottom: ((@line-height-computed / 2) - 1);
-  margin: (@line-height-computed * 2) 0 @line-height-computed;
+  padding-bottom: (@padding-base-vertical * 2);
+  margin: 0 0  (@padding-base-vertical * 3.5);
   border-bottom: 1px solid @page-header-border-color;
+
+  &:not(:first-child) {
+      margin-top: (@padding-base-vertical * 3);
+  }
 }
 
 
@@ -172,11 +196,15 @@ strong {
 // Unordered and Ordered lists
 ul,
 ol {
+  padding-left: 38px;
   margin-top: 0;
-  margin-bottom: (@line-height-computed / 2);
+  margin-bottom: (@padding-base-vertical * 3);
   ul,
   ol {
     margin-bottom: 0;
+  }
+  &:not(.nav) li {
+      padding-left: 4px;
   }
 }
 
@@ -292,7 +320,7 @@ blockquote {
 // Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
 .blockquote-reverse,
 blockquote.pull-right {
-  padding-right: 15px;
+  padding-right: 16px;
   padding-left: 0;
   border-right: 5px solid @blockquote-border-color;
   border-left: 0;
@@ -314,4 +342,80 @@ address {
   margin-bottom: @line-height-computed;
   font-style: normal;
   line-height: @line-height-base;
+}
+
+
+h1, h2, h6 {
+    text-transform: uppercase;
+}
+
+h3, h4, h5 {
+    color: @brand-blue;
+}
+h6 {
+    color: @brand-grey-plus-20;
+}
+
+
+
+/* Licensing for Avenir Next
+This CSS resource incorporates links to font software which is the valuable copyrighted
+property of Monotype Imaging and/or its suppliers. You may not attempt to copy, install,
+                                 redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
+Imaging with any questions regarding Web ../fonts:  http://webfonts.assets.com
+*/
+
+/*@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=609ed3e2-d259-4d7e-83d5-77c670b8bf35");*/
+@font-face{
+    font-family:"Avenir W02";
+    src:url("../fonts/cc232236-c38e-4181-b791-8be0f37e6f0e.eot?#iefix");
+    src:url("../fonts/cc232236-c38e-4181-b791-8be0f37e6f0e.eot?#iefix") format("eot"),
+        url("../fonts/baad6b40-55aa-412b-8698-8a408da0b742.woff2") format("woff2"),
+        url("../fonts/493b124a-f032-4d7d-9d9b-b3ebdb18c13a.woff") format("woff"),
+        url("../fonts/b2470f08-706e-4417-bcb4-64e4b3cb07b0.ttf") format("truetype"),
+        url("../fonts/71715770-8b1b-41d7-bc36-4e630e95fd3a.svg#71715770-8b1b-41d7-bc36-4e630e95fd3a") format("svg");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family:"Avenir W02";
+    src:url("../fonts/c7a58743-f241-4281-bfc0-f1df551cb37d.eot?#iefix");
+    src:url("../fonts/c7a58743-f241-4281-bfc0-f1df551cb37d.eot?#iefix") format("eot"),
+        url("../fonts/3dafb9ca-b7cc-48f0-953d-e6134cfcfa47.woff2") format("woff2"),
+        url("../fonts/b8db69f9-df9e-480f-9c1c-d76a1bb29a62.woff") format("woff"),
+        url("../fonts/63753503-2f58-4a8b-91af-058e8f73a1b0.ttf") format("truetype"),
+        url("../fonts/3cece34e-2cfb-4b8f-8a9c-04ec56d1e672.svg#3cece34e-2cfb-4b8f-8a9c-04ec56d1e672") format("svg");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family:"Avenir W02";
+    src:url("../fonts/e9427e66-afa8-4ceb-bb31-7a970fb469ea.eot?#iefix");
+    src:url("../fonts/e9427e66-afa8-4ceb-bb31-7a970fb469ea.eot?#iefix") format("eot"),
+        url("../fonts/cbf77bfc-3d9f-4856-86ea-db9643bf8c1e.woff2") format("woff2"),
+        url("../fonts/748da442-9dd9-4a4d-8da0-b114e16e5d7f.woff") format("woff"),
+        url("../fonts/6beeeb66-0b4e-4162-8788-8bf688b9829a.ttf") format("truetype"),
+        url("../fonts/8afe744b-89a2-4ae2-a88e-05c6882580f3.svg#8afe744b-89a2-4ae2-a88e-05c6882580f3") format("svg");
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Sharp Sans Frontieres';
+    src: url('../../assets/SharpSansFrontieres-Medium.eot');
+    src: local('☺'),
+    url('../fonts/SharpSansFrontieres-Medium.woff') format('woff'),
+    url('../fonts/SharpSansFrontieres-Medium.svg#font') format('svg');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Sharp Sans Frontieres';
+    src: url('../../assets/SharpSansFrontieres-Bold.eot');
+    src: local('☺'),
+        url('../fonts/SharpSansFrontieres-Bold.woff') format('woff'),
+        url('../fonts/SharpSansFrontieres-Bold.svg#font') format('svg');
+    font-weight: 800;
 }

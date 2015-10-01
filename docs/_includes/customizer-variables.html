@@ -215,7 +215,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@text-color">@text-color</label>
-    <input id="input-@text-color" type="text" aria-describedby="help-block-@text-color" value="@gray-light" data-var="@text-color" class="form-control"/>
+    <input id="input-@text-color" type="text" aria-describedby="help-block-@text-color" value="@brand-grey-plus-10" data-var="@text-color" class="form-control"/>
     <p id="help-block-@text-color" class="help-block">Global text color on <code>&lt;body&gt;</code>.</p>
   </div>
   <div class="col-xs-4">
@@ -279,7 +279,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@font-size-base">@font-size-base</label>
-    <input id="input-@font-size-base" type="text" value="14px" data-var="@font-size-base" class="form-control"/>
+    <input id="input-@font-size-base" type="text" value="16px" data-var="@font-size-base" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@font-size-large">@font-size-large</label>
@@ -292,7 +292,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@font-size-small">@font-size-small</label>
-    <input id="input-@font-size-small" type="text" value="12px" data-var="@font-size-small" class="form-control"/>
+    <input id="input-@font-size-small" type="text" value="14px" data-var="@font-size-small" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@font-size-h1">@font-size-h1</label>
@@ -301,16 +301,16 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@font-size-h5">@font-size-h5</label>
-    <input id="input-@font-size-h5" type="text" value="18px" data-var="@font-size-h5" class="form-control"/>
+    <input id="input-@font-size-h5" type="text" value="16px" data-var="@font-size-h5" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@line-height-base">@line-height-base</label>
-    <input id="input-@line-height-base" type="text" aria-describedby="help-block-@line-height-base" value="1.5555555" data-var="@line-height-base" class="form-control"/>
+    <input id="input-@line-height-base" type="text" aria-describedby="help-block-@line-height-base" value="1.5" data-var="@line-height-base" class="form-control"/>
     <p id="help-block-@line-height-base" class="help-block">Unit-less <code>line-height</code> for use in components like buttons.</p>
   </div>
   <div class="col-xs-4">
     <label for="input-@line-height-computed">@line-height-computed</label>
-    <input id="input-@line-height-computed" type="text" aria-describedby="help-block-@line-height-computed" value="floor((@font-size-base * @line-height-base))" data-var="@line-height-computed" class="form-control"/>
+    <input id="input-@line-height-computed" type="text" aria-describedby="help-block-@line-height-computed" value="24px" data-var="@line-height-computed" class="form-control"/>
     <p id="help-block-@line-height-computed" class="help-block">Computed &quot;line-height&quot; (<code>font-size</code> * <code>line-height</code>) for use with <code>margin</code>, <code>padding</code>, etc.</p>
   </div>
   <div class="clearfix"></div>
@@ -361,11 +361,11 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@padding-base-vertical">@padding-base-vertical</label>
-    <input id="input-@padding-base-vertical" type="text" value="10px" data-var="@padding-base-vertical" class="form-control"/>
+    <input id="input-@padding-base-vertical" type="text" value="8px" data-var="@padding-base-vertical" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@padding-base-horizontal">@padding-base-horizontal</label>
-    <input id="input-@padding-base-horizontal" type="text" value="15px" data-var="@padding-base-horizontal" class="form-control"/>
+    <input id="input-@padding-base-horizontal" type="text" value="16px" data-var="@padding-base-horizontal" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@padding-large-vertical">@padding-large-vertical</label>
@@ -414,6 +414,19 @@
   <div class="col-xs-4">
     <label for="input-@border-radius-small">@border-radius-small</label>
     <input id="input-@border-radius-small" type="text" value="2px" data-var="@border-radius-small" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@spacer">@spacer</label>
+    <input id="input-@spacer" type="text" value="@padding-base-vertical" data-var="@spacer" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@spacer-y">@spacer-y</label>
+    <input id="input-@spacer-y" type="text" value="@spacer" data-var="@spacer-y" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@spacer-x">@spacer-x</label>
+    <input id="input-@spacer-x" type="text" value="@spacer" data-var="@spacer-x" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@component-active-color">@component-active-color</label>
@@ -490,7 +503,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-line-height">@btn-line-height</label>
-    <input id="input-@btn-line-height" type="text" value="26px" data-var="@btn-line-height" class="form-control"/>
+    <input id="input-@btn-line-height" type="text" value="24px" data-var="@btn-line-height" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -725,6 +738,23 @@
     <label for="input-@btn-danger-border-active">@btn-danger-border-active</label>
     <input id="input-@btn-danger-border-active" type="text" value="@brand-red-minus-20" data-var="@btn-danger-border-active" class="form-control"/>
   </div>
+  <div class="col-xs-4">
+    <label for="input-@btn-facebook">@btn-facebook</label>
+    <input id="input-@btn-facebook" type="text" value="#3B5998" data-var="@btn-facebook" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@btn-facebook-active">@btn-facebook-active</label>
+    <input id="input-@btn-facebook-active" type="text" value="#344F88" data-var="@btn-facebook-active" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@btn-google">@btn-google</label>
+    <input id="input-@btn-google" type="text" value="#DC4A38" data-var="@btn-google" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@btn-google-active">@btn-google-active</label>
+    <input id="input-@btn-google-active" type="text" value="#C54232" data-var="@btn-google-active" class="form-control"/>
+  </div>
 </div>
 <h2 id="forms">Forms</h2>
 <div class="row">
@@ -740,7 +770,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@input-color">@input-color</label>
-    <input id="input-@input-color" type="text" aria-describedby="help-block-@input-color" value="@brand-primary" data-var="@input-color" class="form-control"/>
+    <input id="input-@input-color" type="text" aria-describedby="help-block-@input-color" value="@brand-blue-plus-20" data-var="@input-color" class="form-control"/>
     <p id="help-block-@input-color" class="help-block">Text color for <code>&lt;input&gt;</code>s</p>
   </div>
   <div class="clearfix"></div>
@@ -762,7 +792,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-font-size">@input-font-size</label>
-    <input id="input-@input-font-size" type="text" value="20px" data-var="@input-font-size" class="form-control"/>
+    <input id="input-@input-font-size" type="text" value="16px" data-var="@input-font-size" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@input-line-height">@input-line-height</label>
@@ -788,17 +818,17 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@input-border-radius">@input-border-radius</label>
-    <input id="input-@input-border-radius" type="text" aria-describedby="help-block-@input-border-radius" value="@border-radius-small" data-var="@input-border-radius" class="form-control"/>
+    <input id="input-@input-border-radius" type="text" aria-describedby="help-block-@input-border-radius" value="@border-radius-base" data-var="@input-border-radius" class="form-control"/>
     <p id="help-block-@input-border-radius" class="help-block">Default <code>.form-control</code> border radius</p>
   </div>
   <div class="col-xs-4">
     <label for="input-@input-border-radius-large">@input-border-radius-large</label>
-    <input id="input-@input-border-radius-large" type="text" aria-describedby="help-block-@input-border-radius-large" value="@border-radius-small" data-var="@input-border-radius-large" class="form-control"/>
+    <input id="input-@input-border-radius-large" type="text" aria-describedby="help-block-@input-border-radius-large" value="@border-radius-base" data-var="@input-border-radius-large" class="form-control"/>
     <p id="help-block-@input-border-radius-large" class="help-block">Large <code>.form-control</code> border radius</p>
   </div>
   <div class="col-xs-4">
     <label for="input-@input-border-radius-small">@input-border-radius-small</label>
-    <input id="input-@input-border-radius-small" type="text" aria-describedby="help-block-@input-border-radius-small" value="@border-radius-small" data-var="@input-border-radius-small" class="form-control"/>
+    <input id="input-@input-border-radius-small" type="text" aria-describedby="help-block-@input-border-radius-small" value="@border-radius-base" data-var="@input-border-radius-small" class="form-control"/>
     <p id="help-block-@input-border-radius-small" class="help-block">Small <code>.form-control</code> border radius</p>
   </div>
   <div class="clearfix"></div>
@@ -830,7 +860,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@form-group-margin-bottom">@form-group-margin-bottom</label>
-    <input id="input-@form-group-margin-bottom" type="text" aria-describedby="help-block-@form-group-margin-bottom" value="15px" data-var="@form-group-margin-bottom" class="form-control"/>
+    <input id="input-@form-group-margin-bottom" type="text" aria-describedby="help-block-@form-group-margin-bottom" value="23px" data-var="@form-group-margin-bottom" class="form-control"/>
     <p id="help-block-@form-group-margin-bottom" class="help-block"><code>.form-group</code> margin</p>
   </div>
   <div class="clearfix"></div>
@@ -1013,7 +1043,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@grid-gutter-width">@grid-gutter-width</label>
-    <input id="input-@grid-gutter-width" type="text" aria-describedby="help-block-@grid-gutter-width" value="30px" data-var="@grid-gutter-width" class="form-control"/>
+    <input id="input-@grid-gutter-width" type="text" aria-describedby="help-block-@grid-gutter-width" value="24px" data-var="@grid-gutter-width" class="form-control"/>
     <p id="help-block-@grid-gutter-width" class="help-block">Padding between columns. Gets divided in half for the left and right.</p>
   </div>
   <div class="col-xs-4">
@@ -1245,7 +1275,7 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@nav-link-padding">@nav-link-padding</label>
-    <input id="input-@nav-link-padding" type="text" value="10px 15px" data-var="@nav-link-padding" class="form-control"/>
+    <input id="input-@nav-link-padding" type="text" value="10px 16px" data-var="@nav-link-padding" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@nav-link-hover-bg">@nav-link-hover-bg</label>
@@ -1408,7 +1438,7 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@jumbotron-padding">@jumbotron-padding</label>
-    <input id="input-@jumbotron-padding" type="text" value="30px" data-var="@jumbotron-padding" class="form-control"/>
+    <input id="input-@jumbotron-padding" type="text" value="32px" data-var="@jumbotron-padding" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@jumbotron-color">@jumbotron-color</label>
@@ -1429,7 +1459,12 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@jumbotron-heading-font-size">@jumbotron-heading-font-size</label>
-    <input id="input-@jumbotron-heading-font-size" type="text" value="60px" data-var="@jumbotron-heading-font-size" class="form-control"/>
+    <input id="input-@jumbotron-heading-font-size" type="text" value="42px" data-var="@jumbotron-heading-font-size" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@jumbotron-heading-line-height">@jumbotron-heading-line-height</label>
+    <input id="input-@jumbotron-heading-line-height" type="text" value="56px" data-var="@jumbotron-heading-line-height" class="form-control"/>
   </div>
 </div>
 <h2 id="form-states-and-alerts">Form states and alerts</h2>
@@ -1625,12 +1660,12 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@modal-inner-padding">@modal-inner-padding</label>
-    <input id="input-@modal-inner-padding" type="text" aria-describedby="help-block-@modal-inner-padding" value="15px" data-var="@modal-inner-padding" class="form-control"/>
+    <input id="input-@modal-inner-padding" type="text" aria-describedby="help-block-@modal-inner-padding" value="16px" data-var="@modal-inner-padding" class="form-control"/>
     <p id="help-block-@modal-inner-padding" class="help-block">Padding applied to the modal body</p>
   </div>
   <div class="col-xs-4">
     <label for="input-@modal-title-padding">@modal-title-padding</label>
-    <input id="input-@modal-title-padding" type="text" aria-describedby="help-block-@modal-title-padding" value="15px" data-var="@modal-title-padding" class="form-control"/>
+    <input id="input-@modal-title-padding" type="text" aria-describedby="help-block-@modal-title-padding" value="16px" data-var="@modal-title-padding" class="form-control"/>
     <p id="help-block-@modal-title-padding" class="help-block">Padding applied to the modal title</p>
   </div>
   <div class="col-xs-4">
@@ -1762,7 +1797,7 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@progress-height">@progress-height</label>
-    <input id="input-@progress-height" type="text" aria-describedby="help-block-@progress-height" value="36px" data-var="@progress-height" class="form-control"/>
+    <input id="input-@progress-height" type="text" aria-describedby="help-block-@progress-height" value="32px" data-var="@progress-height" class="form-control"/>
     <p id="help-block-@progress-height" class="help-block">Progress bar height</p>
   </div>
   <div class="col-xs-4">
@@ -1778,7 +1813,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@progress-border-radius">@progress-border-radius</label>
-    <input id="input-@progress-border-radius" type="text" aria-describedby="help-block-@progress-border-radius" value="18px" data-var="@progress-border-radius" class="form-control"/>
+    <input id="input-@progress-border-radius" type="text" aria-describedby="help-block-@progress-border-radius" value="16px" data-var="@progress-border-radius" class="form-control"/>
     <p id="help-block-@progress-border-radius" class="help-block">Variable for setting rounded corners on progress bar.</p>
   </div>
   <div class="col-xs-4">
@@ -1890,44 +1925,53 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@panel-body-padding">@panel-body-padding</label>
-    <input id="input-@panel-body-padding" type="text" value="15px" data-var="@panel-body-padding" class="form-control"/>
+    <input id="input-@panel-body-padding" type="text" value="40px" data-var="@panel-body-padding" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@panel-body-padding-collapse">@panel-body-padding-collapse</label>
+    <input id="input-@panel-body-padding-collapse" type="text" value="16px" data-var="@panel-body-padding-collapse" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@panel-heading-color">@panel-heading-color</label>
+    <input id="input-@panel-heading-color" type="text" value="@brand-blue" data-var="@panel-heading-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@panel-heading-padding">@panel-heading-padding</label>
-    <input id="input-@panel-heading-padding" type="text" value="10px 15px" data-var="@panel-heading-padding" class="form-control"/>
+    <input id="input-@panel-heading-padding" type="text" value="40px" data-var="@panel-heading-padding" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-footer-padding">@panel-footer-padding</label>
     <input id="input-@panel-footer-padding" type="text" value="@panel-heading-padding" data-var="@panel-footer-padding" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-border-radius">@panel-border-radius</label>
-    <input id="input-@panel-border-radius" type="text" value="@border-radius-small" data-var="@panel-border-radius" class="form-control"/>
+    <input id="input-@panel-border-radius" type="text" value="@border-radius-base" data-var="@panel-border-radius" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@panel-inner-border">@panel-inner-border</label>
     <input id="input-@panel-inner-border" type="text" aria-describedby="help-block-@panel-inner-border" value="#FFF" data-var="@panel-inner-border" class="form-control"/>
     <p id="help-block-@panel-inner-border" class="help-block">Border color for elements within panels</p>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-footer-bg">@panel-footer-bg</label>
     <input id="input-@panel-footer-bg" type="text" value="#f5f5f5" data-var="@panel-footer-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-default-text">@panel-default-text</label>
     <input id="input-@panel-default-text" type="text" value="@gray-dark" data-var="@panel-default-text" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@panel-default-border">@panel-default-border</label>
-    <input id="input-@panel-default-border" type="text" value="#FFF" data-var="@panel-default-border" class="form-control"/>
+    <input id="input-@panel-default-border" type="text" value="@brand-smoke-plus-10" data-var="@panel-default-border" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-default-heading-bg">@panel-default-heading-bg</label>
     <input id="input-@panel-default-heading-bg" type="text" value="#f5f5f5" data-var="@panel-default-heading-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-primary-text">@panel-primary-text</label>
     <input id="input-@panel-primary-text" type="text" value="#fff" data-var="@panel-primary-text" class="form-control"/>
@@ -1936,11 +1980,11 @@
     <label for="input-@panel-primary-border">@panel-primary-border</label>
     <input id="input-@panel-primary-border" type="text" value="@brand-primary" data-var="@panel-primary-border" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-primary-heading-bg">@panel-primary-heading-bg</label>
     <input id="input-@panel-primary-heading-bg" type="text" value="@brand-primary" data-var="@panel-primary-heading-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-success-text">@panel-success-text</label>
     <input id="input-@panel-success-text" type="text" value="@state-success-text" data-var="@panel-success-text" class="form-control"/>
@@ -1949,11 +1993,11 @@
     <label for="input-@panel-success-border">@panel-success-border</label>
     <input id="input-@panel-success-border" type="text" value="@state-success-border" data-var="@panel-success-border" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-success-heading-bg">@panel-success-heading-bg</label>
     <input id="input-@panel-success-heading-bg" type="text" value="#FFF" data-var="@panel-success-heading-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-info-text">@panel-info-text</label>
     <input id="input-@panel-info-text" type="text" value="@state-info-text" data-var="@panel-info-text" class="form-control"/>
@@ -1962,11 +2006,11 @@
     <label for="input-@panel-info-border">@panel-info-border</label>
     <input id="input-@panel-info-border" type="text" value="@state-info-border" data-var="@panel-info-border" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-info-heading-bg">@panel-info-heading-bg</label>
     <input id="input-@panel-info-heading-bg" type="text" value="#FFF" data-var="@panel-info-heading-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-warning-text">@panel-warning-text</label>
     <input id="input-@panel-warning-text" type="text" value="@state-warning-text" data-var="@panel-warning-text" class="form-control"/>
@@ -1975,11 +2019,11 @@
     <label for="input-@panel-warning-border">@panel-warning-border</label>
     <input id="input-@panel-warning-border" type="text" value="@state-warning-border" data-var="@panel-warning-border" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-warning-heading-bg">@panel-warning-heading-bg</label>
     <input id="input-@panel-warning-heading-bg" type="text" value="#FFF" data-var="@panel-warning-heading-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-danger-text">@panel-danger-text</label>
     <input id="input-@panel-danger-text" type="text" value="@state-danger-text" data-var="@panel-danger-text" class="form-control"/>
@@ -1988,7 +2032,6 @@
     <label for="input-@panel-danger-border">@panel-danger-border</label>
     <input id="input-@panel-danger-border" type="text" value="@state-danger-border" data-var="@panel-danger-border" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-danger-heading-bg">@panel-danger-heading-bg</label>
     <input id="input-@panel-danger-heading-bg" type="text" value="#FFF" data-var="@panel-danger-heading-bg" class="form-control"/>
@@ -2052,7 +2095,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@badge-bg">@badge-bg</label>
-    <input id="input-@badge-bg" type="text" value="@gray-light" data-var="@badge-bg" class="form-control"/>
+    <input id="input-@badge-bg" type="text" value="@brand-orange" data-var="@badge-bg" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -2066,17 +2109,21 @@
     <p id="help-block-@badge-active-bg" class="help-block">Badge background color in active nav link</p>
   </div>
   <div class="col-xs-4">
+    <label for="input-@badge-font-size">@badge-font-size</label>
+    <input id="input-@badge-font-size" type="text" value="10px" data-var="@badge-font-size" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
     <label for="input-@badge-font-weight">@badge-font-weight</label>
     <input id="input-@badge-font-weight" type="text" value="bold" data-var="@badge-font-weight" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@badge-line-height">@badge-line-height</label>
     <input id="input-@badge-line-height" type="text" value="1" data-var="@badge-line-height" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@badge-border-radius">@badge-border-radius</label>
-    <input id="input-@badge-border-radius" type="text" value="10px" data-var="@badge-border-radius" class="form-control"/>
+    <input id="input-@badge-border-radius" type="text" value="3px" data-var="@badge-border-radius" class="form-control"/>
   </div>
 </div>
 <h2 id="breadcrumbs">Breadcrumbs</h2>

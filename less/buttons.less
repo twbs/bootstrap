@@ -18,7 +18,7 @@
   border: 1px solid transparent;
   white-space: nowrap;
   .button-size(
-      @padding-base-vertical;
+      @padding-large-vertical;
       @padding-base-horizontal;
       @btn-font-size;
       @btn-line-height;
@@ -147,6 +147,61 @@
   );
 }
 
+.btn-input {
+  .button-variant(
+      @input-color;
+      @input-color;
+      @input-bg;
+      @input-bg;
+      @input-bg;
+      @input-border;
+      @input-border;
+      @input-border-focus
+  );
+}
+
+.btn-facebook {
+  .button-outline(
+      @btn-facebook;
+      @btn-facebook-active;
+  );
+  background-image: url("../images/ic_facebook_default.svg");
+
+  &:hover,
+  &:focus {
+      background-image: url("../images/ic_facebook_hover.svg");
+  }
+}
+.btn-google {
+  .button-outline(
+      @btn-google;
+      @btn-google-active;
+  );
+  background-image: url("../images/ic_google_default.svg");
+
+  &:hover,
+  &:focus {
+      background-image: url("../images/ic_google_hover.svg");
+  }
+}
+
+.btn-facebook,
+.btn-google {
+  background-position: 11px center;
+  background-repeat: no-repeat;
+  padding-left: 44px;
+
+  &.btn-lg {
+      background-position: 14px center;
+      padding-left: 50px;
+  }
+  &.btn-block {
+      padding-right: 44px;
+      &.btn-lg {
+          padding-right: 50px;
+      }
+  }
+}
 
 // Link buttons
 // -------------------------
@@ -224,5 +279,18 @@ input[type="reset"],
 input[type="button"] {
   &.btn-block {
     width: 100%;
+  }
+}
+
+.btn-input {
+  font-weight: 500;
+  outline: 0 !important;
+
+  &.active,
+  &:active,
+  &.focus,
+  &:focus {
+      border-color: @input-border-focus;
+      outline: 0 !important;
   }
 }

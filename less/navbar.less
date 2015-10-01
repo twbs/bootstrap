@@ -382,6 +382,8 @@
   &.btn-xs {
     .navbar-vertical-align(22);
   }
+
+  font-weight: @btn-font-weight;
 }
 
 
@@ -412,7 +414,6 @@
   .navbar-left  { .pull-left(); }
   .navbar-right {
     .pull-right();
-    margin-right: -@navbar-padding-horizontal;
 
     ~ .navbar-right {
       margin-right: 0;
@@ -708,4 +709,41 @@
       }
     }
   }
+}
+
+
+.navbar .navbar-brand,
+.navbar-inverse .navbar-brand {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin-top: 9px;
+    margin-right: 10px;
+    height: 16px;
+    width: 118px;
+
+    color: transparent;
+
+    &:hover,
+    &:focus {
+        color: transparent;
+    }
+}
+.navbar .navbar-brand {
+    background-image: @logo-full-primary;
+}
+.navbar-inverse .navbar-brand {
+    background-image: @logo-full-inverse;
+}
+.navbar-form {
+    margin-top: 13px;
+}
+
+.navbar.bg-primary {
+    background-color: @brand-primary;
+}
+.navbar.bg-info {
+    background-color: @brand-light-blue;
+}
+.navbar.bg-default {
+    background-color: @gray-base;
 }

@@ -66,8 +66,22 @@
 
 // Button sizes
 .button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
-  padding: (@padding-vertical + 1px) @padding-horizontal (@padding-vertical - 1px) @padding-horizontal;
+  padding: (@padding-vertical - 1px) @padding-horizontal (@padding-vertical - 1px) @padding-horizontal;
   font-size: @font-size;
   line-height: @line-height;
   border-radius: @border-radius;
+}
+
+
+.button-outline(@color, @active) {
+    .button-variant(
+        @color;
+        #FFF;
+        transparent;
+        @color;
+        @active;
+        @color;
+        @color;
+        @active
+    );
 }

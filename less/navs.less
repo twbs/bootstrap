@@ -20,6 +20,8 @@
       position: relative;
       display: block;
       padding: @nav-link-padding;
+      font-weight: 500;
+      font-size: @font-size-small;
       &:hover,
       &:focus {
         text-decoration: none;
@@ -88,7 +90,6 @@
       //border-radius: @border-radius-base @border-radius-base 0 0;
       border-bottom: 2px solid transparent;
       color: @nav-tabs-color;
-      text-transform: uppercase;
       font-size: @nav-tabs-font-size;
       &:hover {
         border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
@@ -244,4 +245,28 @@
   margin-top: -1px;
   // Remove the top rounded corners here since there is a hard edge above the menu
   .border-top-radius(0);
+}
+
+
+.bg-primary,
+.bg-info {
+    .nav-tabs > li:not(.active) > a {
+        color: #FFF;
+
+        &:hover,
+        &:focus {
+            background-color: rgba(0,0,0,0.15);
+            border-bottom: 2px solid transparent;
+        }
+    }
+    .nav-tabs:last-child {
+        border-bottom: 0;
+        > li {
+            margin-bottom: 0;
+
+            &.active > a:hover {
+                background-color: rgba(0,0,0,0.15);
+            }
+        }
+    }
 }

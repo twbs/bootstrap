@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Creation Page Example</title>
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<script src="bootstrap-select/dist/js/bootstrap-select.js"></script>
+
+	<link rel="stylesheet"
+		href="bootstrap-select/dist/css/bootstrap-select.min.css">
+
+	<script src="forms.js"></script>
+
+	<style>
+	body {
+		background-color: #f2f5f7;
+	}
+	</style>
+</head>
+<body>
+	<header class="navbar navbar-inverse navbar-static-top bg-primary" id="top"
+		role="banner"
+		data-spy="affix"
+		data-offset-top="60">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" type="button"
+					data-toggle="collapse"
+					data-target="#bs-navbar"
+					aria-controls="bs-navbar"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="../" class="navbar-brand">Bootstrap</a>
+			</div>
+			<nav id="bs-navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li style="height: 60px;">
+						<a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"
+							role="button"
+							aria-expanded="false">
+							<span class="glyphicon glyphicon-bell"></span>
+							<span class="badge">3</span>
+						</a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Notification 1</a></li>
+							<li><a href="#">Notification 2</a></li>
+						</ul>
+					</li>
+					<li><button class="btn btn-info navbar-btn m-r">
+						Request money</button>
+					</li>
+					<li><button class="btn btn-primary navbar-btn">
+						Send money</button>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="bg-primary">
+		<div class="container p-t-lg">
+			<h1 class="m-t-lg m-b-lg">
+				<img height="40" width="40" class="img-circle pull-left m-r-md"
+					src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQjtPNjfYzMTXG3GUZgMXXHV7UNkH--duh9ML-DnyTjAjbBa3SERQ"
+					alt="profile" />
+				Name Here
+				<span class="caret"></span>
+			</h1>
+			<p class="small pull-right m-b-0 m-t text-muted">
+				Membership number: P1234567
+			</p>
+			<ul id="myTabs" class="nav nav-tabs" role="tablist">
+				<li role="presentation">
+					<a href="#transfers" id="transfers-tab">
+						Transfers
+					</a>
+				</li>
+				<li role="presentation">
+					<a href="#recipients" id="recipients-tab">
+						Recipients
+					</a>
+				</li>
+				<li role="presentation">
+					<a href="#rewards" id="rewards-tab">
+						Rewards
+					</a>
+				</li>
+				<li role="presentation" class="active">
+					<a href="#profile" id="profile-tab" role="tab">
+						Profile
+					</a>
+				</li>
+				<li role="presentation">
+					<a href="#help" id="help-tab">
+						Help
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="container m-t-lg">
+		<div class="row">
+			<div class="col-md-3">
+				<ul class="nav hidden-sm hidden-xs">
+					<li><a href="">
+						<span class="glyphicon glyphicon-user"></span>
+						Profile overview</a>
+					</li>
+					<li><a href="">
+						<span class="glyphicon glyphicon-pencil"></span>
+						Edit profile</a>
+					</li>
+					<li><a href="">
+						<span class="glyphicon glyphicon-ok"></span>
+						Verify profile <span class="badge m-l-md">3</span></a>
+					</li>
+					<li><a href="">
+						<span class="glyphicon glyphicon-camera"></span>
+						Profile picture</a>
+					</li>
+				</ul>
+				<div class="form-group hidden-md hidden-lg">
+					<select class="form-control">
+						<option>Profile overview</option>
+						<option>Edit profile</option>
+						<option>Verify profile</option>
+						<option>Profile picture</option>
+					</select>
+				</div>
+				<div class="hidden-sm hidden-xs m-t-lg">
+					<h5 class="page-header">Verification</h5>
+					<p class="small">
+						Some copy here about why you should verify your account goes
+						in this space right here <a href="#">Learn more</a>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-9">
+			<div class="panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">Edit Profile</h3>
+				</div>
+				<div class="panel-body">
+					<!--<h3 class="m-b-md">Form heading, h3</h3>-->
+					<form name="testForm">
+						<fieldset class="row">
+							<div class="form-group col-sm-6">
+								<label class="control-label">First name</label>
+								<input class="form-control"
+									placeholder="Enter your first name"
+									value="Mike"
+									disabled="disabled" />
+							</div>
+							<div class="form-group col-sm-6">
+								<label>Last name</label>
+								<input class="form-control"
+								placeholder="Enter your last name"
+								value="Marter"
+								disabled="disabled"  />
+							</div>
+							<div class="form-group col-sm-6">
+								<label class="control-label">Date of birth</label>
+								<div class="row">
+									<div class="col-sm-3">
+										<input class="form-control"
+											placeholder="DD"
+											value="24" />
+									</div>
+									<div class="col-sm-5">
+										<select class="form-control">
+											<option>January</option>
+											<option>February</option>
+											<option>March</option>
+											<option>April</option>
+											<option>May</option>
+											<option>June</option>
+											<option>July</option>
+											<option>August</option>
+											<option>September</option>
+											<option>October</option>
+											<option>November</option>
+											<option>December</option>
+										</select>
+									</div>
+									<div class="col-sm-4">
+										<input class="form-control" placeholder="YYYY" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group col-sm-6">
+								<label class="control-label">Phone number </label>
+								<div class="row">
+									<div class="col-sm-4">
+										<select class="form-control">
+											<option>+44</option>
+											<option>+33</option>
+											<option>+01</option>
+										</select>
+									</div>
+									<div class="col-sm-8">
+										<input class="form-control"
+											placeholder="Enter you phone number"
+											value="7763 123 456" />
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<h4 class="page-header">Personal address</h4>
+						<fieldset class="row">
+
+							<div class="form-group col-sm-6">
+								<label>Country</label>
+								<select class="form-control">
+									<option>United States</option>
+									<option>United Kingdom</option>
+								</select>
+							</div>
+							<div class="form-group col-sm-6">
+								<label>Address line 1</label>
+								<input class="form-control"
+									placeholder="The first line of your address"
+									value="11 Ridley Avenue" />
+							</div>
+							<div class="form-group col-sm-6">
+								<label>City</label>
+								<input class="form-control"
+									placeholder="The city or town you live in"
+									value="New York" />
+							</div>
+							<div class="form-group col-sm-6">
+								<label>State</label>
+								<select class="form-control">
+									<option>New York</option>
+									<option>California</option>
+								</select>
+							</div>
+
+							<div class="form-group col-sm-6">
+								<label>Zip code</label>
+								<input class="form-control"
+									placeholder="Your 5-digit zip code"
+									value="11234" />
+							</div>
+						</fieldset>
+					</form>
+					<div class="row m-t-md">
+						<div class="col-sm-6">
+							<button class="btn btn-primary btn-block">Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+
+.circle {
+    border: 1px solid @gray-light;
+    color: @gray-light;
+    border-radius: 50%;
+    text-align: center;
+    margin: 10px;
+    font-weight: 800;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    height: 66px;
+    width: 66px;
+    font-size: 24px;
+
+    &.circle-lg {
+        font-size: 36px;
+        width: 98px;
+        height: 98px;
+    }
+
+    &.circle-sm {
+        font-size: 14px;
+        height: 38px;
+        width: 38px;
+    }
+
+    &.active {
+        border-color: @brand-info;
+        background-color: @brand-info;
+        color: #FFF;
+    }
+
+    .glyphicon {
+        margin-top: -1px;
+    }
+    img {
+        width: 100%;
+    }
+}
+a:hover .circle,
+a.circle:hover {
+    border-color: @brand-info;
+    color: @brand-info;
+    text-decoration: none;
+}
+a:hover .circle.active,
+a.circle.active:hover {
+    text-decoration: none;
+    color: #FFF;
+}
+.bg-primary,
+.jumbotron {
+    .circle,
+    a.circle,
+    a .circle {
+        border-color: @brand-info;
+        color: @brand-info;
+    }
+    a:hover .circle,
+    a.circle:hover {
+        border-color: #FFF;
+        background-color: #FFF;
+    }
+    a .circle.active,
+    a.circle.active {
+        color: #FFF;
+    }
+    a:hover .circle.active,
+    a.circle.active:hover {
+        color: @brand-info;
+    }
+}

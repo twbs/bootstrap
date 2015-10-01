@@ -5,7 +5,6 @@
 
 .jumbotron {
   padding: @jumbotron-padding (@jumbotron-padding / 2);
-  margin-bottom: @jumbotron-padding;
   color: @jumbotron-color;
   background-color: @jumbotron-bg;
 
@@ -44,9 +43,10 @@
     h1,
     .h1 {
       font-size: @jumbotron-heading-font-size;
+      line-height: @jumbotron-heading-line-height;
     }
 
-    p {
+    .lead {
       font-size: @jumbotron-font-size;
     }
   }
@@ -54,4 +54,35 @@
   @media screen and (max-width: @screen-sm-max) {
       text-align: center;
   }
+}
+
+.jumbotron-image {
+  background-repeat: no-repeat;
+  background-position: center top;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+
+  > .jumbotron {
+    background-color: @brand-primary;
+
+    @media (min-width: @screen-sm-min) {
+        background-color: rgba(34, 48, 73, .9);
+    }
+    @media (min-width: @screen-md-min) {
+        background-color: rgba(34, 48, 73, .75);
+    }
+    @media (min-width: @screen-lg-min) {
+        background-color: transparent;
+    }
+  }
+}
+
+.jumbotron-image,
+:not(.jumbotron-image) > .jumbotron {
+    -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
+       -moz-clip-path: polygon(50% 17%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
+            clip-path: polygon(50% 17%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
+    //background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMTkyMHB4IiBoZWlnaHQ9IjExMHB4IiB2aWV3Qm94PSIwIDAgMTkyMCAxMTAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiPiAgICAgICAgPHRpdGxlPmltZ19oZWFkZXJfYW5nbGU8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+PC9kZWZzPiAgICA8ZyBpZD0iQXNzZXRzIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBza2V0Y2g6dHlwZT0iTVNQYWdlIj4gICAgICAgIDxnIGlkPSJpbWdfaGVhZGVyX2FuZ2xlIiBza2V0Y2g6dHlwZT0iTVNBcnRib2FyZEdyb3VwIiBmaWxsPSIjRkZGRkZGIj4gICAgICAgICAgICA8cGF0aCBkPSJNMCwxMTAgTDE5MjAsMTEwIEwxOTIwLDEgTDk2My45NjkwNzgsMTA5LjU0OTM0NCBDOTYxLjc3NzAxNywxMDkuNzk4MjM1IDk1OC4yMjY1NzEsMTA5Ljc5Njc5NSA5NTYuMDMwOTIyLDEwOS41NDUyMSBMMCwwIEwwLDExMCBaIiBpZD0iTWFzayIgc2tldGNoOnR5cGU9Ik1TU2hhcGVHcm91cCI+PC9wYXRoPiAgICAgICAgPC9nPiAgICA8L2c+PC9zdmc+) 50% 100% no-repeat, url('hero/bg-lady-computer.jpg') 50% 100% no-repeat;
 }

@@ -6,9 +6,9 @@
 // Base class
 .badge {
   display: inline-block;
-  min-width: 10px;
-  padding: 3px 7px;
-  font-size: @font-size-small;
+  min-width: 16px;
+  padding: 3px 3px;
+  font-size: @badge-font-size;
   font-weight: @badge-font-weight;
   color: @badge-color;
   line-height: @badge-line-height;
@@ -17,6 +17,9 @@
   text-align: center;
   background-color: @badge-bg;
   border-radius: @badge-border-radius;
+
+  top: -1px;
+  position: relative;
 
   // Empty badges collapse automatically (not available in IE8)
   &:empty {
@@ -27,6 +30,11 @@
   .btn & {
     position: relative;
     top: -1px;
+  }
+
+  .glyphicon & {
+      top: -20px;
+      left: -5px;
   }
 
   .btn-xs &,
@@ -46,11 +54,13 @@
   }
 
   // Account for badges in navs
+  /*
   .list-group-item.active > &,
   .nav-pills > .active > a > & {
     color: @badge-active-color;
     background-color: @badge-active-bg;
   }
+  */
 
   .list-group-item > & {
     float: right;
