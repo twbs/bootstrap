@@ -901,8 +901,8 @@
   <div class="bs-example" data-example-id="simple-address">
     <address>
       <strong>Twitter, Inc.</strong><br>
-      795 Folsom Ave, Suite 600<br>
-      San Francisco, CA 94107<br>
+      1355 Market Street, Suite 900<br>
+      San Francisco, CA 94103<br>
       <abbr title="Phone">P:</abbr> (123) 456-7890
     </address>
     <address>
@@ -912,8 +912,8 @@
   </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;address&gt;</span>
   <span class="nt">&lt;strong&gt;</span>Twitter, Inc.<span class="nt">&lt;/strong&gt;&lt;br&gt;</span>
-  795 Folsom Ave, Suite 600<span class="nt">&lt;br&gt;</span>
-  San Francisco, CA 94107<span class="nt">&lt;br&gt;</span>
+  1355 Market Street, Suite 900<span class="nt">&lt;br&gt;</span>
+  San Francisco, CA 94103<span class="nt">&lt;br&gt;</span>
   <span class="nt">&lt;abbr</span> <span class="na">title=</span><span class="s">"Phone"</span><span class="nt">&gt;</span>P:<span class="nt">&lt;/abbr&gt;</span> (123) 456-7890
 <span class="nt">&lt;/address&gt;</span>
 
@@ -1834,7 +1834,7 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 
   <h3>Checkboxes and radios</h3>
   <p>Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.</p>
-  <p>A checkbox or radio with the <code>disabled</code> attribute will be styled appropriately. To have the <code>&lt;label&gt;</code> for the checkbox or radio also display a "not-allowed" cursor when the user hovers over the label, add the <code>.disabled</code> class to your <code>.radio</code>, <code>.radio-inline</code>, <code>.checkbox</code>, <code>.checkbox-inline</code>, or <code>&lt;fieldset&gt;</code>.</p>
+  <p>Disabled checkboxes and radios are supported, but to provide a "not-allowed" cursor on hover of the parent <code>&lt;label&gt;</code>, you'll need to add the <code>.disabled</code> class to the parent <code>.radio</code>, <code>.radio-inline</code>, <code>.checkbox</code>, or <code>.checkbox-inline</code>.</p>
   <h4>Default (stacked)</h4>
   <div class="bs-example" data-example-id="block-checkboxes-radios">
     <form>
@@ -2167,6 +2167,28 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Readonly input here…"</span> <span class="na">readonly</span><span class="nt">&gt;</span></code></pre></div>
 
 
+  <h2 id="forms-help-text">Help text</h2>
+  <p>Block level help text for form controls.</p>
+  <div class="bs-callout bs-callout-info" id="callout-help-text-accessibility">
+    <h4>Associating help text with form controls</h4>
+    <p>Help text should be explicitly associated with the form control it relates to using the <code>aria-describedby</code> attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.</p>
+  </div>
+  <div class="bs-example" data-example-id="simple-help-text">
+    <form>
+      <div class="form-group">
+        <label for="inputHelpBlock">Input with help text</label>
+        <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+      </div>
+      <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+    </form>
+  </div><!-- /.bs-example -->
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"sr-only"</span> <span class="na">for=</span><span class="s">"inputHelpBlock"</span><span class="nt">&gt;</span>Input with help text<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"inputHelpBlock"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">aria-describedby=</span><span class="s">"helpBlock"</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"helpBlock"</span> <span class="na">class=</span><span class="s">"help-block"</span><span class="nt">&gt;</span>A block of help text that breaks onto a new line and may extend beyond one line.<span class="nt">&lt;/span&gt;</span></code></pre></div>
+</div>
+
+
   <h2 id="forms-control-validation">Validation states</h2>
   <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
@@ -2180,7 +2202,8 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
     <form>
       <div class="form-group has-success">
         <label class="control-label" for="inputSuccess1">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess1">
+        <input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
+        <span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
       </div>
       <div class="form-group has-warning">
         <label class="control-label" for="inputWarning1">Input with warning</label>
@@ -2218,7 +2241,8 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   </div><!-- /.bs-example -->
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group has-success"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"control-label"</span> <span class="na">for=</span><span class="s">"inputSuccess1"</span><span class="nt">&gt;</span>Input with success<span class="nt">&lt;/label&gt;</span>
-  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"inputSuccess1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"inputSuccess1"</span> <span class="na">aria-describedby=</span><span class="s">"helpBlock2"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"helpBlock2"</span> <span class="na">class=</span><span class="s">"help-block"</span><span class="nt">&gt;</span>A block of help text that breaks onto a new line and may extend beyond one line.<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group has-warning"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"control-label"</span> <span class="na">for=</span><span class="s">"inputWarning1"</span><span class="nt">&gt;</span>Input with warning<span class="nt">&lt;/label&gt;</span>
@@ -2543,26 +2567,6 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-  <h2 id="forms-help-text">Help text</h2>
-  <p>Block level help text for form controls.</p>
-  <div class="bs-callout bs-callout-info" id="callout-help-text-accessibility">
-    <h4>Associating help text with form controls</h4>
-    <p>Help text should be explicitly associated with the form control it relates to using the <code>aria-describedby</code> attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.</p>
-  </div>
-  <div class="bs-example" data-example-id="simple-help-text">
-    <form>
-      <div class="form-group">
-        <label for="inputHelpBlock">Input with help text</label>
-        <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
-      </div>
-      <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-    </form>
-  </div><!-- /.bs-example -->
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"sr-only"</span> <span class="na">for=</span><span class="s">"inputHelpBlock"</span><span class="nt">&gt;</span>Input with help text<span class="nt">&lt;/label&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"inputHelpBlock"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">aria-describedby=</span><span class="s">"helpBlock"</span><span class="nt">&gt;</span>
-...
-<span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">"helpBlock"</span> <span class="na">class=</span><span class="s">"help-block"</span><span class="nt">&gt;</span>A block of help text that breaks onto a new line and may extend beyond one line.<span class="nt">&lt;/span&gt;</span></code></pre></div>
-</div>
 
 <div class="bs-docs-section">
   <h1 id="buttons" class="page-header">Buttons</h1>
@@ -3782,9 +3786,9 @@ To edit settings, press <span class="nt">&lt;kbd&gt;&lt;kbd&gt;</span>ctrl<span 
     <li><a href="#forms-control-focus">Focus state</a></li>
     <li><a href="#forms-control-disabled">Disabled state</a></li>
     <li><a href="#forms-control-readonly">Readonly state</a></li>
+    <li><a href="#forms-help-text">Help text</a></li>
     <li><a href="#forms-control-validation">Validation states</a></li>
     <li><a href="#forms-control-sizes">Control sizing</a></li>
-    <li><a href="#forms-help-text">Help text</a></li>
   </ul>
 </li>
 <li>
