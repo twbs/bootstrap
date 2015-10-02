@@ -24,6 +24,18 @@ $(function () {
     assert.strictEqual($.fn.carousel, undefined, 'carousel was set back to undefined (orig value)')
   })
 
+  QUnit.test('should throw explicit error on undefined method', function (assert) {
+    assert.expect(1)
+    var $el = $('<div/>')
+    $el.bootstrapCarousel()
+    try {
+      $el.bootstrapCarousel('noMethod')
+    }
+    catch (err) {
+      assert.strictEqual(err.message, 'No method named "noMethod"')
+    }
+  })
+
   QUnit.test('should return jquery collection containing the element', function (assert) {
     assert.expect(2)
     var $el = $('<div/>')
