@@ -213,6 +213,12 @@
         color: $navbar-dark-hover-color;
       }
     }
+    
+    @include text-emphasis-variant-inverse('.text-primary', $brand-primary);
+    @include text-emphasis-variant-inverse('.text-success', $brand-success);
+    @include text-emphasis-variant-inverse('.text-info',    $brand-info);
+    @include text-emphasis-variant-inverse('.text-warning', $brand-warning);
+    @include text-emphasis-variant-inverse('.text-danger',  $brand-danger);
 
     .open > .nav-link,
     .active > .nav-link,
