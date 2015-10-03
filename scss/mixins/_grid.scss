@@ -63,3 +63,49 @@
     @include make-col-offset($size, $columns);
   }
 }
+
+
+@mixin make-flex-order($breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .col-#{$breakpoint}-first {
+        order: -1;
+      }
+      .col-#{$breakpoint}-last {
+        order: 1;
+      }
+    }
+  }
+}
+
+@mixin make-flex-row-alignment($breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .row-#{$breakpoint}-top {
+        align-items: flex-start;
+      }
+      .row-#{$breakpoint}-center {
+        align-items: center;
+      }
+      .row-#{$breakpoint}-bottom {
+        align-items: flex-end;
+      }
+    }
+  }
+}
+
+@mixin make-flex-col-alignment($breakpoints: $grid-breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .col-#{$breakpoint}-top {
+        align-self: flex-start;
+      }
+      .col-#{$breakpoint}-center {
+        align-self: center;
+      }
+      .col-#{$breakpoint}-bottom {
+        align-self: flex-end;
+      }
+    }
+  }
+}
