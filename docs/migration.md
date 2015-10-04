@@ -31,7 +31,10 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 ### Components
 
 - Dropped panels, thumbnails, and wells for a new all-encompassing component, cards.
-- Dropped the Glyphicons icon font.
+- Dropped the Glyphicons icon font. If you need icons, some options are:
+  - the upstream version of [Glyphicons](http://glyphicons.com/)
+  - [Octicons](https://octicons.github.com/)
+  - [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
 - Dropped the Affix jQuery plugin. We recommend using a `position: sticky` polyfill instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations.
 - Refactored nearly all components to use more unnested classes instead of children selectors.
 
