@@ -176,13 +176,20 @@ body {
 .panel .list-group .list-group-item p {
   margin-bottom: 0;
 }
-.panel .list-group.list-group-small .list-thumb > div {
-  width: 90px;
-  height: 60px;
+@media screen and (min-width: 540px){
+  .panel .list-group.list-group-small .list-thumb > div {
+    width: 90px;
+    height: 60px;
+  }
+  .panel .list-group.list-group-small .list-group-item h4,
+  .panel .list-group.list-group-small .list-group-item p {
+    padding-left: 105px;
+  }
 }
-.panel .list-group.list-group-small .list-group-item h4,
-.panel .list-group.list-group-small .list-group-item p {
-  padding-left: 105px;
+@media screen and (max-width: 540px){
+  .panel .list-group.list-group-small .list-thumb > div {
+    height: 80px;
+  }
 }
 
 /* Forms */
@@ -261,6 +268,56 @@ body {
 .glyphicon-lg {
   font-size: 1.6em;
   vertical-align: -0.3em;
+}
+
+
+@media screen and (max-width: 540px) {
+  /* Base */
+  .jumbotron .area-title h1 {
+    font-size: 30px;
+    line-height: 48px;
+  }
+  .jumbotron .nav-pills li {
+    display: block;
+  }
+  .panel h2 {
+    font-size: 26px;
+  }
+  .panel .panel-heading h3 {
+    font-size: 20px;
+  }
+  .panel .panel-body h4 {
+    font-size: 18px;
+  }
+  .panel .panel-body p {
+    font-size: 14px;
+  }
+  .panel .panel-body p.lead {
+    font-size: 16px;
+  }
+  .panel .panel-body .alert {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  /* forms */
+  label.input-lg {
+    font-size: 16px;
+  }
+  .multi-checks label {
+    display: block;
+    margin: 18px 0;
+    font-size: 16px;
+  }
+
+  /* Icons */
+  .glyphicon-lg-container {
+    text-align: center;
+  }
+  .glyphicon-lg-container .glyphicon-lg {
+    display: block;
+    margin-bottom: 10px;
+  }
 }
 
 
