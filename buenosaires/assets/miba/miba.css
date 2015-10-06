@@ -1,5 +1,11 @@
-/* main */
+/*!
+ * Mi BA v2.1 - BAstrap v3.1 (http://gcba.github.io/BAstrap/)
+ * Copyright 2015
+ * Direccion General de Gobierno Electronico
+ * Gobierno de la Ciudad de Buenos Aires
+ */
 
+/* main */
 body {
   background: #e0e0e0;
 }
@@ -38,31 +44,16 @@ body {
 .panel.panel-default .panel-heading {
   background-color: transparent;
 }
-.panel .panel-heading-img {
-  height: 180px;
-  padding: 0;
-  background-size: cover;
-  background-position: center center;
-}
-.panel .panel-heading-img h3 {
-  height: 80px;
-  padding: 5px 0 0 15px;
-  color: #FFF;
-  border-radius: 3px 3px 0 0;
-
-  background: -moz-linear-gradient(top,  rgba(0,0,0,.5) 30%, rgba(0,0,0,0) 100%); /* FF3.6+ */
-  background: -webkit-linear-gradient(top,  rgba(0,0,0,.5) 30%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(0,0,0,.5) 30%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(0,0,0,.5) 30%,rgba(0,0,0,0) 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(0,0,0,.5) 30%,rgba(0,0,0,0) 100%); /* W3C */
-}
 
 .panel .panel-heading h3 {
+  padding: 10px 48px 10px 0;
   margin: 0;
-  line-height: 48px;
+  line-height: 28px;
 }
 .panel .panel-heading .header-btn {
-  float: right;
+  position: absolute;
+  top: 5px;
+  right: 0;
   padding: 13px 15px 7px;
   margin-top: -5px;
   font-size: 34px;
@@ -83,6 +74,31 @@ body {
   filter: alpha(opacity=50);
   opacity: 0.6;
 }
+
+/* Panel heading con imagen de fonto (tarjeta vos)*/
+.panel .panel-heading.panel-heading-img {
+  height: 180px;
+  padding: 0;
+  background-size: cover;
+  background-position: center center;
+}
+.panel .panel-heading.panel-heading-img h3 {
+  height: 80px;
+  padding: 15px 0 0 15px;
+  color: #FFF;
+  border-radius: 3px 3px 0 0;
+
+  background: -moz-linear-gradient(top,  rgba(0,0,0,.5) 30%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,.5) 30%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(0,0,0,.5) 30%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(0,0,0,.5) 30%,rgba(0,0,0,0) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(0,0,0,.5) 30%,rgba(0,0,0,0) 100%); /* W3C */
+}
+.panel .panel-heading.panel-heading-img .header-btn {
+  color: #FFF;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
 .panel-map {
   height: 240px;
   background: #EEE;
@@ -128,7 +144,7 @@ body {
 }
 .panel .panel-body p {
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 18px;
 }
 .panel .panel-body p.lead {
