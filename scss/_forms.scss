@@ -283,7 +283,7 @@ input[type="checkbox"] {
   }
 }
 
-.has-error {
+.has-danger {
   @include form-control-validation($brand-danger);
 
   .form-control-error {
@@ -352,7 +352,7 @@ input[type="checkbox"] {
 // .has-warning {
 //   @include form-control-validation($state-warning-text, $state-warning-text, $state-warning-bg);
 // }
-// .has-error {
+// .has-danger {
 //   @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
 // }
 //
