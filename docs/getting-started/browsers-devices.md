@@ -112,27 +112,27 @@ Internet Explorer 9 is also supported, however, please be aware that some CSS3 p
     </thead>
     <tbody>
       <tr>
-        <th scope="row"><code>border-radius</code></th>
+        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius"><code>border-radius</code></a></th>
         <td class="text-success">Supported</td>
       </tr>
       <tr>
-        <th scope="row"><code>box-shadow</code></th>
+        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow"><code>box-shadow</code></a></th>
         <td class="text-success">Supported</td>
       </tr>
       <tr>
-        <th scope="row"><code>transform</code></th>
+        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform"><code>transform</code></a></th>
         <td class="text-success">Supported, with <code>-ms</code> prefix</td>
       </tr>
       <tr>
-        <th scope="row"><code>transition</code></th>
+        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition"><code>transition</code></a></th>
         <td class="text-danger">Not supported</td>
       </tr>
       <tr>
-        <th scope="row"><code>placeholder</code></th>
+        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-placeholder"><code>placeholder</code></a></th>
         <td class="text-danger">Not supported</td>
       </tr>
       <tr>
-      <th scope="row"><code>flexbox</code></th>
+      <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">Flexbox</a></th>
       <td class="text-danger">Not supported</td>
       </tr>
     </tbody>
