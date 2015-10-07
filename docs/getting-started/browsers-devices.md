@@ -131,6 +131,10 @@ Internet Explorer 9 is also supported, however, please be aware that some CSS3 p
         <th scope="row"><code>placeholder</code></th>
         <td class="text-danger">Not supported</td>
       </tr>
+      <tr>
+      <th scope="row"><code>flexbox</code></th>
+      <td class="text-danger">Not supported</td>
+      </tr>
     </tbody>
   </table>
 </div>
