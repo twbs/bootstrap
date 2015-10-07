@@ -132,8 +132,8 @@ Internet Explorer 9 is also supported, however, please be aware that some CSS3 p
         <td class="text-danger">Not supported</td>
       </tr>
       <tr>
-      <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">Flexbox</a></th>
-      <td class="text-danger">Not supported</td>
+        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">Flexbox</a></th>
+        <td class="text-danger">Not supported</td>
       </tr>
     </tbody>
   </table>
