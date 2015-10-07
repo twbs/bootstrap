@@ -2,12 +2,6 @@
 //
 // Used in conjunction with global variables to enable certain theme features.
 
-@mixin border-radius($radius: $border-radius) {
-  @if $enable-rounded {
-    border-radius: $radius;
-  }
-}
-
 @mixin box-shadow($shadow...) {
   @if $enable-shadows {
     box-shadow: $shadow;
