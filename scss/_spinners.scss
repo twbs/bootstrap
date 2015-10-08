@@ -62,84 +62,40 @@ $colors-s: ($spinner-primary-color-second,
 .spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots) {
   @include spinner-circle-variant($spinner-base-color-first, $spinner-base-color-second);
 
-  &.spinner-primary {
-    @include spinner-circle-variant($spinner-primary-color-first, $spinner-primary-color-second);
-  }
+  @for $i from 1 through length($colors) {
+    $c: nth($colors, $i);
+    $f: nth($colors-f, $i);
+    $s: nth($colors-s, $i);
 
-  &.spinner-success {
-    @include spinner-circle-variant($spinner-success-color-first, $spinner-success-color-second);
-  }
-
-  &.spinner-info {
-    @include spinner-circle-variant($spinner-info-color-first, $spinner-info-color-second);
-  }
-
-  &.spinner-warning {
-    @include spinner-circle-variant($spinner-warning-color-first, $spinner-warning-color-second);
-  }
-
-  &.spinner-danger {
-    @include spinner-circle-variant($spinner-danger-color-first, $spinner-danger-color-second);
-  }
-
-  &.spinner-white {
-    @include spinner-circle-variant($spinner-white-color-first, $spinner-white-color-second);
+    &.spinner-#{$c} {
+      @include spinner-circle-variant($f, $s);
+    }
   }
 }
 
 .spinner-comet {
   @include spinner-comet-variant($spinner-base-color-first);
 
-  &.spinner-primary {
-    @include spinner-comet-variant($spinner-primary-color-first);
-  }
+  @for $i from 1 through length($colors) {
+    $c: nth($colors, $i);
+    $f: nth($colors-f, $i);
 
-  &.spinner-success {
-    @include spinner-comet-variant($spinner-success-color-first);
-  }
-
-  &.spinner-info {
-    @include spinner-comet-variant($spinner-info-color-first);
-  }
-
-  &.spinner-warning {
-    @include spinner-comet-variant($spinner-warning-color-first);
-  }
-
-  &.spinner-danger {
-    @include spinner-comet-variant($spinner-danger-color-first);
-  }
-
-  &.spinner-white {
-    @include spinner-comet-variant($spinner-white-color-first);
+    &.spinner-#{$c} {
+      @include spinner-comet-variant($f);
+    }
   }
 }
 
 .spinner-hourglass {
   @include spinner-hourglass-variant($spinner-base-color-first);
 
-  &.spinner-primary {
-    @include spinner-hourglass-variant($spinner-primary-color-first);
-  }
+  @for $i from 1 through length($colors) {
+    $c: nth($colors, $i);
+    $f: nth($colors-f, $i);
 
-  &.spinner-success {
-    @include spinner-hourglass-variant($spinner-success-color-first);
-  }
-
-  &.spinner-info {
-    @include spinner-hourglass-variant($spinner-info-color-first);
-  }
-
-  &.spinner-warning {
-    @include spinner-hourglass-variant($spinner-warning-color-first);
-  }
-
-  &.spinner-danger {
-    @include spinner-hourglass-variant($spinner-danger-color-first);
-  }
-
-  &.spinner-white {
-    @include spinner-hourglass-variant($spinner-white-color-first);
+    &.spinner-#{$c} {
+      @include spinner-hourglass-variant($f);
+    }
   }
 }
 
