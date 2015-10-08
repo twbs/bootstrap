@@ -34,7 +34,7 @@
   }
 
   &:not(:required):before {
-    // animation: spinner $spinner-animation-duration linear infinite;
+    animation: spinner $spinner-animation-duration linear infinite;
   }
 }
 
@@ -49,7 +49,7 @@
   }
 
   &:not(:required):before {
-    // animation: spinner $spinner-animation-duration linear infinite;
+    animation: spinner $spinner-animation-duration linear infinite;
   }
 }
 
@@ -65,7 +65,7 @@
   }
 
   &:not(:required):before {
-    // animation: spinner $spinner-animation-duration ease infinite;
+    animation: spinner $spinner-animation-duration ease infinite;
   }
 }
 
@@ -115,7 +115,7 @@
   }
 
   &:not(:required):before {
-    // animation: spinner-dots-#{$variant} $spinner-animation-duration linear infinite;
+    animation: spinner-dots-#{$variant} $spinner-animation-duration linear infinite;
   }
 }
 
