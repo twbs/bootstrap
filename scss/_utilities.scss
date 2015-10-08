@@ -135,3 +135,15 @@
 @include bg-variant('.bg-warning', $brand-warning);
 
 @include bg-variant('.bg-danger', $brand-danger);
+
+
+//
+// Utility functions
+//
+
+// Strips the unit from a single value entered.
+// E.g. `strip-unit(30px)` returns `30`
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
