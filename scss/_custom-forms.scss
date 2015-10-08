@@ -35,6 +35,11 @@
       background-color: #84c6ff;
       @include box-shadow(none);
     }
+
+    &:disabled ~ .c-indicator {
+      cursor: $cursor-disabled;
+      background-color: $gray-lighter;
+    }
   }
 
   + .c-input {
@@ -58,7 +63,7 @@
   color: #eee;
   text-align: center;
   user-select: none;
-  background-color: #eee;
+  background-color: #fff;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
