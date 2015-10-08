@@ -23,13 +23,14 @@ const Spinner = (($) => {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   const ANIMATION_DURATION = 600
 
-  const Selector = {
-    DATA_SPY : '[data-spy="spinner"]'
-  }
-
   const ClassName = {
     FALLBACK      : 'spinner-fallback',
     FALLBACK_SPIN : 'spinner-fallback-spin'
+  }
+
+  const Selector = {
+    DATA_SPY      : '[data-spy="spinner"]',
+    FALLBACK_SPIN : `.${ClassName.FALLBACK_SPIN}`
   }
 
   const Event = {
@@ -46,7 +47,6 @@ const Spinner = (($) => {
 
     constructor(element) {
       this._element = element
-      this._timer   = null
 
       this._createAnimation()
     }
@@ -63,25 +63,26 @@ const Spinner = (($) => {
 
     destroy() {
       $.removeData(this._element, DATA_KEY)
+
+      const $element = $(this._element)
+      $element.removeClass(ClassName.FALLBACK)
+      $element.children(Selector.FALLBACK_SPIN).remove()
       this._element = null
     }
 
     // private
 
-    _isOldIe() {
+    _isOldIE() {
       // This is test for < IE9
-      return true
-      // return document.all && !window.atob
+      return document.all && !window.atob
     }
 
     _rotate(element) {
-      const $element = $(element)
-
       $({ deg: 0 }).animate({ deg: 360 }, {
         duration: ANIMATION_DURATION,
         easing: 'linear',
         step: now => {
-          $element.css({
+          $(element).css({
             transform: 'rotate(' + now + 'deg)'
           })
         },
@@ -92,7 +93,7 @@ const Spinner = (($) => {
     }
 
     _createAnimation() {
-      if (!this._isOldIe()) {
+      if (!this._isOldIE()) {
         return false
       }
 
