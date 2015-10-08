@@ -140,6 +140,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    `table-cell` borders not overlapping despite `margin-right: -1px`
+  upstream_bug: >
+    Chromium#534750
+  origin: >
+    Bootstrap#17438, Bootstrap#14237
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
