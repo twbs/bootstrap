@@ -1,0 +1,121 @@
+// Spinner variants
+//
+// Easily pump out default styles, sizes, styling variants
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@mixin spinner-size($size, $width: 0) {
+  $inside-size: ($size - 2 * $width);
+
+  min-width: $size;
+  min-height: $size;
+
+  &:before,
+  &.spinner-fallback .spinner-fallback-spin {
+    width: $inside-size;
+    height: $inside-size;
+    margin-top: (-$inside-size / 2);
+    margin-left: (-$inside-size / 2);
+    border-width: $width;
+  }
+}
+
+@mixin spinner-circle-variant($color-first, $color-second) {
+  &:not(.spinner-fallback):before,
+  &.spinner-fallback .spinner-fallback-spin {
+    border-style: solid;
+    border-color: $color-second;
+    border-top-color: $color-first;
+    border-radius: 50%;
+  }
+
+  &:not(:required):before {
+    // animation: spinner $spinner-animation-duration linear infinite;
+  }
+}
+
+@mixin spinner-comet-variant($color) {
+  &:not(.spinner-fallback):before,
+  &.spinner-fallback .spinner-fallback-spin {
+    border-top-style: solid;
+    border-right-style: solid;
+    border-top-color: $color;
+    border-right-color: transparent;
+    border-radius: 50%;
+  }
+
+  &:not(:required):before {
+    // animation: spinner $spinner-animation-duration linear infinite;
+  }
+}
+
+@mixin spinner-hourglass-variant($color) {
+  &:not(.spinner-fallback):before,
+  &.spinner-fallback .spinner-fallback-spin {
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: $color;
+    border-bottom-color: $color;
+    border-radius: 50%;
+
+  }
+
+  &:not(:required):before {
+    // animation: spinner $spinner-animation-duration ease infinite;
+  }
+}
+
+@mixin dots-shadow($color-first, $color-second, $index: 1) {
+  $colors: ();
+
+  @for $i from 1 through 8 {
+    @if $i == $index {
+      $colors: append($colors, $color-first);
+    } @else {
+      $colors: append($colors, $color-second);
+    }
+  }
+
+  box-shadow: 0 -3.5em 0 0 nth($colors, 1),
+  2.6em -2.6em 0 0 nth($colors, 2),
+  3.5em 0 0 0 nth($colors, 3),
+  2.6em 2.6em 0 0 nth($colors, 4),
+  0 3.5em 0 0 nth($colors, 5),
+  -2.6em 2.6em 0 0 nth($colors, 6),
+  -3.5em 0 0 0 nth($colors, 7),
+  -2.6em -2.6em 0 0 nth($colors, 8);
+}
+
+@mixin spinner-dots-keyframes($color-first, $color-second, $variant: "base") {
+  @keyframes spinner-dots-#{$variant} {
+    @for $i from 1 through 8 {
+      #{$i * 12.5%} {
+        @include dots-shadow($color-first, $color-second, $i);
+      }
+    }
+  }
+}
+
+@mixin spinner-dots-variant($color-first, $color-second, $width, $variant: "base") {
+  &:not(.spinner-fallback):before,
+  &.spinner-fallback .spinner-fallback-spin {
+    @include dots-shadow($color-first, $color-second);
+
+    margin-top: -$width;
+    margin-left: -$width;
+    font-size: $width;
+    width: 2 * $width;
+    height: 2 * $width;
+    border-width: 0;
+    border-radius: 50%;
+  }
+
+  &:not(:required):before {
+    // animation: spinner-dots-#{$variant} $spinner-animation-duration linear infinite;
+  }
+}
+

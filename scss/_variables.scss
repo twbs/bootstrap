@@ -335,6 +335,7 @@ $zindex-navbar-fixed:      1030 !default;
 $zindex-navbar-sticky:     1030 !default;
 $zindex-modal-bg:          1040 !default;
 $zindex-modal:             1050 !default;
+$zindex-spinner:           1020 !default;
 
 
 // Navbar
@@ -610,6 +611,37 @@ $carousel-indicator-border-color:             #fff !default;
 
 $carousel-caption-color:                      #fff !default;
 
+// Spinners
+
+$spinner-base-color-first:       $gray !default;
+$spinner-base-color-second:      lighten($spinner-base-color-first, 50%) !default;
+$spinner-primary-color-first:    darken($brand-primary, 20%) !default;
+$spinner-primary-color-second:   lighten($spinner-primary-color-first, 50%) !default;
+$spinner-success-color-first:    darken($brand-success, 20%) !default;
+$spinner-success-color-second:   lighten($spinner-success-color-first, 50%) !default;
+$spinner-info-color-first:       darken($brand-info, 20%) !default;
+$spinner-info-color-second:      lighten($spinner-info-color-first, 50%) !default;
+$spinner-warning-color-first:    darken($brand-warning, 20%) !default;
+$spinner-warning-color-second:   lighten($spinner-warning-color-first, 50%) !default;
+$spinner-danger-color-first:     darken($brand-danger, 20%) !default;
+$spinner-danger-color-second:    lighten($spinner-danger-color-first, 50%) !default;
+$spinner-white-color-first:      #fff !default;
+$spinner-white-color-second:     darken($spinner-white-color-first, 50%) !default;
+
+$spinner-base:                   36px !default;
+$spinner-base-width:             3px !default;
+$spinner-base-dot-width:         4px !default;
+$spinner-lg:                     46px !default;
+$spinner-lg-width:               5px !default;
+$spinner-lg-dot-width:           5px !default;
+$spinner-sm:                     30px !default;
+$spinner-sm-width:               3px !default;
+$spinner-sm-dot-width:           3px !default;
+$spinner-xs:                     22px !default;
+$spinner-xs-width:               2px !default;
+$spinner-xs-dot-width:           2px !default;
+
+$spinner-animation-duration:     .6s !default;
 
 // Close
 
@@ -630,3 +662,4 @@ $pre-bg:                      #f7f7f9 !default;
 $pre-color:                   $gray-dark !default;
 $pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;
+

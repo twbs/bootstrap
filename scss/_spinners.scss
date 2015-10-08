@@ -1,0 +1,182 @@
+// Spinners
+
+$colors: ("primary", "success", "info", "warning", "danger", "white");
+$sizes: ("lg", "sm", "xs");
+$colors-f: ($spinner-primary-color-first,
+            $spinner-success-color-first,
+            $spinner-info-color-first,
+            $spinner-warning-color-first,
+            $spinner-danger-color-first,
+            $spinner-white-color-first);
+$colors-s: ($spinner-primary-color-second,
+            $spinner-success-color-second,
+            $spinner-info-color-second,
+            $spinner-warning-color-second,
+            $spinner-danger-color-second,
+            $spinner-white-color-second);
+
+.spinner {
+  @include spinner-size($spinner-base, $spinner-base-width);
+
+  position: relative;
+  z-index: $zindex-spinner;
+  text-indent: -99999px;
+
+  &:before,
+  &.spinner-fallback .spinner-fallback-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: "";
+  }
+
+
+}
+
+// Sizing
+
+.spinner-lg {
+  @include spinner-size($spinner-lg, $spinner-lg-width);
+}
+
+.spinner-sm {
+  @include spinner-size($spinner-sm, $spinner-sm-width);
+}
+
+.spinner-xs {
+  @include spinner-size($spinner-xs, $spinner-xs-width);
+}
+
+// Positioning
+
+.spinner-center {
+  position: initial;
+}
+
+.spinner-inline {
+  display: inline-block;
+}
+
+// Variants
+
+.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots) {
+  @include spinner-circle-variant($spinner-base-color-first, $spinner-base-color-second);
+
+  &.spinner-primary {
+    @include spinner-circle-variant($spinner-primary-color-first, $spinner-primary-color-second);
+  }
+
+  &.spinner-success {
+    @include spinner-circle-variant($spinner-success-color-first, $spinner-success-color-second);
+  }
+
+  &.spinner-info {
+    @include spinner-circle-variant($spinner-info-color-first, $spinner-info-color-second);
+  }
+
+  &.spinner-warning {
+    @include spinner-circle-variant($spinner-warning-color-first, $spinner-warning-color-second);
+  }
+
+  &.spinner-danger {
+    @include spinner-circle-variant($spinner-danger-color-first, $spinner-danger-color-second);
+  }
+
+  &.spinner-white {
+    @include spinner-circle-variant($spinner-white-color-first, $spinner-white-color-second);
+  }
+}
+
+.spinner-comet {
+  @include spinner-comet-variant($spinner-base-color-first);
+
+  &.spinner-primary {
+    @include spinner-comet-variant($spinner-primary-color-first);
+  }
+
+  &.spinner-success {
+    @include spinner-comet-variant($spinner-success-color-first);
+  }
+
+  &.spinner-info {
+    @include spinner-comet-variant($spinner-info-color-first);
+  }
+
+  &.spinner-warning {
+    @include spinner-comet-variant($spinner-warning-color-first);
+  }
+
+  &.spinner-danger {
+    @include spinner-comet-variant($spinner-danger-color-first);
+  }
+
+  &.spinner-white {
+    @include spinner-comet-variant($spinner-white-color-first);
+  }
+}
+
+.spinner-hourglass {
+  @include spinner-hourglass-variant($spinner-base-color-first);
+
+  &.spinner-primary {
+    @include spinner-hourglass-variant($spinner-primary-color-first);
+  }
+
+  &.spinner-success {
+    @include spinner-hourglass-variant($spinner-success-color-first);
+  }
+
+  &.spinner-info {
+    @include spinner-hourglass-variant($spinner-info-color-first);
+  }
+
+  &.spinner-warning {
+    @include spinner-hourglass-variant($spinner-warning-color-first);
+  }
+
+  &.spinner-danger {
+    @include spinner-hourglass-variant($spinner-danger-color-first);
+  }
+
+  &.spinner-white {
+    @include spinner-hourglass-variant($spinner-white-color-first);
+  }
+}
+
+.spinner-dots {
+  $widths: ($spinner-lg-dot-width, $spinner-sm-dot-width, $spinner-xs-dot-width);
+
+  @include spinner-dots-keyframes($spinner-base-color-first, $spinner-base-color-second);
+  @include spinner-dots-variant($spinner-base-color-first, $spinner-base-color-second, $spinner-base-dot-width);
+
+  @for $j from 1 through length($sizes) {
+    $s: nth($sizes, $j);
+    $w: nth($widths, $j);
+
+    &.spinner-#{$s} {
+      @include spinner-dots-variant($spinner-base-color-first, $spinner-base-color-second, $w);
+    }
+  }
+
+  @for $i from 1 through length($colors) {
+    $c: nth($colors, $i);
+    $f: nth($colors-f, $i);
+    $s: nth($colors-s, $i);
+
+    @include spinner-dots-keyframes($f, $s, $c);
+
+    &.spinner-#{$c} {
+      @include spinner-dots-variant($f, $s, $spinner-base-dot-width, $c);
+
+      @for $j from 1 through length($sizes) {
+        $s: nth($sizes, $j);
+        $w: nth($widths, $j);
+
+        &.spinner-#{$s} {
+          @include spinner-dots-variant($f, $s, $w, $c);
+        }
+      }
+    }
+  }
+}
+
