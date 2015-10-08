@@ -147,3 +147,23 @@
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
 }
+
+// Converts numeric value(s) to rem units, based
+// on the $font-size-root variable.
+// E.g. `rem-calc(14px 16px 0)` returns `0.875rem 1rem 0`
+
+@function rem-calc($values) {
+  $rem-values: ();
+
+  @each $value in $values {
+    @if ($value > 0) {
+      $value: strip-unit($value) / strip-unit($font-size-root) * 1rem;
+    } @else {
+      $value: 0; // ensure that `0rem` becomes unitless
+    }
+
+    $rem-values: append($rem-values, $value);
+  }
+
+  @return $rem-values;
+}
