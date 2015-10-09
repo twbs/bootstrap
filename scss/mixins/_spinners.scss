@@ -27,8 +27,8 @@
 @mixin spinner-circle-variant($color-first, $color-second) {
   &:not(.spinner-fallback):before,
   &.spinner-fallback .spinner-fallback-spin {
-    border-style: solid;
     border-color: $color-second;
+    border-style: solid;
     border-top-color: $color-first;
     border-radius: 50%;
   }
@@ -41,10 +41,10 @@
 @mixin spinner-comet-variant($color) {
   &:not(.spinner-fallback):before,
   &.spinner-fallback .spinner-fallback-spin {
-    border-top-style: solid;
-    border-right-style: solid;
     border-top-color: $color;
+    border-top-style: solid;
     border-right-color: transparent;
+    border-right-style: solid;
     border-radius: 50%;
   }
 
@@ -56,8 +56,8 @@
 @mixin spinner-hourglass-variant($color) {
   &:not(.spinner-fallback):before,
   &.spinner-fallback .spinner-fallback-spin {
-    border-style: solid;
     border-color: transparent;
+    border-style: solid;
     border-top-color: $color;
     border-bottom-color: $color;
     border-radius: 50%;
@@ -105,11 +105,11 @@
   &.spinner-fallback .spinner-fallback-spin {
     @include dots-shadow($color-first, $color-second);
 
+    width: 2 * $width;
+    height: 2 * $width;
     margin-top: -$width;
     margin-left: -$width;
     font-size: $width;
-    width: 2 * $width;
-    height: 2 * $width;
     border-width: 0;
     border-radius: 50%;
   }
