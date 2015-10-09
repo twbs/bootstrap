@@ -10,12 +10,12 @@
   @include center-block();
 }
 
-.pull-right {
-  @include pull-right();
+.pull-end {
+  @include pull-end();
 }
 
-.pull-left {
-  @include pull-left();
+.pull-start {
+  @include pull-start();
 }
 
 
@@ -51,8 +51,8 @@
 
 // Alignment
 
-.text-left           { text-align: left; }
-.text-right          { text-align: right; }
+.text-start           { text-align: left; }
+.text-end          { text-align: right; }
 .text-center         { text-align: center; }
 .text-justify        { text-align: justify; }
 .text-nowrap         { white-space: nowrap; }

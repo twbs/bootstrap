@@ -136,7 +136,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
   <a href="#" class="btn btn-primary">Go somewhere</a>
 </div>
 
-<div class="card card-block text-right">
+<div class="card card-block text-end">
   <h4 class="card-title">Special title treatment</h4>
   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -427,7 +427,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
   <div class="card">
     <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
   </div>
-  <div class="card card-block text-right">
+  <div class="card card-block text-end">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       <footer>
