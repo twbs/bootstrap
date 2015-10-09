@@ -23,7 +23,7 @@ Bootstrap includes spinners which can be used to reflect loading state of the co
 {% callout warning %}
 #### CSS3 animation in IE9
 
-Internet Explorer 9 does not support CSS3's `@keyframes` ans `animation` properties and by default will render static spinner. 
+Internet Explorer 9 does not support CSS3's `@keyframes` and `animation` properties and by default will render static spinner. 
 If attribute `data-spy="spinner"` is present Javascript plugin will provide fallback for IE9 rotating animation. 
 {% endcallout %}
 
