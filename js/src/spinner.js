@@ -73,22 +73,22 @@ const Spinner = (($) => {
     // private
 
     _isOldIE() {
-      // This is test for < IE9
-      return document.all && !window.atob
+      // This is test for < IE10
+      return /MSIE\s/.test(navigator.userAgent) && parseFloat(navigator.appVersion.split('MSIE')[1]) < 10
     }
 
     _rotate(element) {
       $({ deg: 0 }).animate({ deg: 360 }, {
         duration: ANIMATION_DURATION,
         easing: 'linear',
-        step: now => {
+        step: (now) => {
           $(element).css({
-            transform: 'rotate(' + now + 'deg)'
+            transform: `rotate(${now}deg)`
           })
         },
-        complete: (() => {
+        complete: () => {
           this._rotate(element)
-        }).bind(this)
+        }
       })
     }
 
@@ -98,7 +98,7 @@ const Spinner = (($) => {
       }
 
       const $spinner = $(this._element)
-      const $spin    = $("<div/>", {
+      const $spin    = $('<div/>', {
         'class': ClassName.FALLBACK_SPIN
       })
 
