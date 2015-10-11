@@ -306,10 +306,10 @@ const Tooltip = (($) => {
 
         const complete = () => {
           const prevHoverState = this._hoverState
-          this._hoverState     = null
+          this._hoverState   = null
+          this._isTransitioning = false
 
           $(this.element).trigger(this.constructor.Event.SHOWN)
-          this._isTransitioning = false
 
           if (prevHoverState === HoverState.OUT) {
             this._leave(null, this)
@@ -334,7 +334,7 @@ const Tooltip = (($) => {
       if (this._isTransitioning) {
         throw new Error('Tooltip is transitioning')
       }
-      let complete  = () => {
+      const complete  = () => {
         if (this._hoverState !== HoverState.ACTIVE && tip.parentNode) {
           tip.parentNode.removeChild(tip)
         }

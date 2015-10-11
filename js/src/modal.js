@@ -115,9 +115,8 @@ const Modal = (($) => {
         throw new Error('Modal is transitioning')
       }
 
-      let transition = Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)
-      if (transition) {
+      if (Util.supportsTransitionEnd() &&
+        $(this._element).hasClass(ClassName.FADE)) {
         this._isTransitioning = true
       }
       const showEvent = $.Event(Event.SHOW, {
@@ -166,7 +165,7 @@ const Modal = (($) => {
         throw new Error('Modal is transitioning')
       }
 
-      let transition = Util.supportsTransitionEnd() &&
+      const transition = Util.supportsTransitionEnd() &&
         $(this._element).hasClass(ClassName.FADE)
       if (transition) {
         this._isTransitioning = true
@@ -191,8 +190,7 @@ const Modal = (($) => {
       $(this._element).off(Event.CLICK_DISMISS)
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
-      if (Util.supportsTransitionEnd() &&
-         $(this._element).hasClass(ClassName.FADE)) {
+      if (transition) {
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
           .emulateTransitionEnd(TRANSITION_DURATION)
