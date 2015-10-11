@@ -35,6 +35,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
   - [Octicons](https://octicons.github.com/)
   - [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
 - Dropped the Affix jQuery plugin. We recommend using a `position: sticky` polyfill instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations.
+  - If you were using Affix to apply additional, non-`position` styles, the polyfills might not support your use case. One option for such uses is the third-party [ScrollPos-Styler](https://github.com/acch/scrollpos-styler) library.
 - Refactored nearly all components to use more unnested classes instead of children selectors.
 
 ### Misc
