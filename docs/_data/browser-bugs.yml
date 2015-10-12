@@ -214,16 +214,6 @@
   browser: >
     Safari (OS X)
   summary: >
-    `display: table-cell;` within media query renders incorrectly when resizing the window.
-  upstream_bug: >
-    WebKit#138167, Safari#18987206
-  origin: >
-    Bootstrap#9774
-
--
-  browser: >
-    Safari (OS X)
-  summary: >
     Small font size when printing webpage with fixed-width `.container`.
   upstream_bug: >
     WebKit#138192, Safari#19435018
