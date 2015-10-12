@@ -108,7 +108,7 @@ Transform text in components with text capitalization classes.
 {% example html %}
 <p class="text-lowercase">Lowercased text.</p>
 <p class="text-uppercase">Uppercased text.</p>
-<p class="text-capitalize">Capitalized text.</p>
+<p class="text-capitalize">CapiTaliZed text.</p>
 {% endexample %}
 
 ## Contextual colors and backgrounds
