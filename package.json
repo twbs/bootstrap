@@ -60,8 +60,8 @@
     "grunt-stamp": "^0.1.0",
     "is-travis": "^1.0.0",
     "load-grunt-tasks": "~3.3.0",
-    "markdown-it": "^4.4.0",
-    "mq4-hover-shim": "^0.2.0",
+    "markdown-it": "^5.0.0",
+    "mq4-hover-shim": "^0.3.0",
     "npm-shrinkwrap": "^200.1.0",
     "time-grunt": "^1.2.1"
   },
@@ -79,13 +79,17 @@
   ],
   "jspm": {
     "main": "js/bootstrap",
-    "ignore": ["dist/js/npm"],
+    "ignore": [
+      "dist/js/npm"
+    ],
     "directories": {
       "lib": "dist"
     },
     "shim": {
       "js/bootstrap": {
-        "deps": ["jquery"],
+        "deps": [
+          "jquery"
+        ],
         "exports": "$"
       }
     },
