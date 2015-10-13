@@ -442,6 +442,7 @@ select,
 textarea {
   margin: 0;
   line-height: inherit;
+  border-radius: 0;
 }
 
 textarea {

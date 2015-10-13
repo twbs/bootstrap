@@ -651,6 +651,14 @@ var Carousel = (function ($) {
         }
       }
     }, {
+      key: 'nextWhenVisible',
+      value: function nextWhenVisible() {
+        // Don't call next when the page isn't visible
+        if (!document.hidden) {
+          this.next();
+        }
+      }
+    }, {
       key: 'prev',
       value: function prev() {
         if (!this._isSliding) {
@@ -685,7 +693,7 @@ var Carousel = (function ($) {
         }
 
         if (this._config.interval && !this._isPaused) {
-          this._interval = setInterval($.proxy(this.next, this), this._config.interval);
+          this._interval = setInterval($.proxy(document.visibilityState ? this.nextWhenVisible : this.next, this), this._config.interval);
         }
       }
     }, {
@@ -918,7 +926,10 @@ var Carousel = (function ($) {
 
           if (typeof config === 'number') {
             data.to(config);
-          } else if (action) {
+          } else if (typeof action === 'string') {
+            if (data[action] === undefined) {
+              throw new Error('No method named "' + action + '"');
+            }
             data[action]();
           } else if (_config.interval) {
             data.pause();
@@ -1306,6 +1317,9 @@ var Collapse = (function ($) {
           }
 
           if (typeof config === 'string') {
+            if (data[config] === undefined) {
+              throw new Error('No method named "' + config + '"');
+            }
             data[config]();
           }
         });
@@ -1496,6 +1510,9 @@ var Dropdown = (function ($) {
           }
 
           if (typeof config === 'string') {
+            if (data[config] === undefined) {
+              throw new Error('No method named "' + config + '"');
+            }
             data[config].call(this);
           }
         });
@@ -2093,6 +2110,9 @@ var Modal = (function ($) {
           }
 
           if (typeof config === 'string') {
+            if (data[config] === undefined) {
+              throw new Error('No method named "' + config + '"');
+            }
             data[config](relatedTarget);
           } else if (_config.show) {
             data.show(relatedTarget);
@@ -2429,6 +2449,9 @@ var ScrollSpy = (function ($) {
           }
 
           if (typeof config === 'string') {
+            if (data[config] === undefined) {
+              throw new Error('No method named "' + config + '"');
+            }
             data[config]();
           }
         });
@@ -2692,6 +2715,9 @@ var Tab = (function ($) {
           }
 
           if (typeof config === 'string') {
+            if (data[config] === undefined) {
+              throw new Error('No method named "' + config + '"');
+            }
             data[config]();
           }
         });
@@ -3283,6 +3309,9 @@ var Tooltip = (function ($) {
           }
 
           if (typeof config === 'string') {
+            if (data[config] === undefined) {
+              throw new Error('No method named "' + config + '"');
+            }
             data[config]();
           }
         });
@@ -3468,6 +3497,9 @@ var Popover = (function ($) {
           }
 
           if (typeof config === 'string') {
+            if (data[config] === undefined) {
+              throw new Error('No method named "' + config + '"');
+            }
             data[config]();
           }
         });

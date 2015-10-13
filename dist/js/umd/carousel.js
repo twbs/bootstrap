@@ -137,6 +137,14 @@
           }
         }
       }, {
+        key: 'nextWhenVisible',
+        value: function nextWhenVisible() {
+          // Don't call next when the page isn't visible
+          if (!document.hidden) {
+            this.next();
+          }
+        }
+      }, {
         key: 'prev',
         value: function prev() {
           if (!this._isSliding) {
@@ -171,7 +179,7 @@
           }
 
           if (this._config.interval && !this._isPaused) {
-            this._interval = setInterval($.proxy(this.next, this), this._config.interval);
+            this._interval = setInterval($.proxy(document.visibilityState ? this.nextWhenVisible : this.next, this), this._config.interval);
           }
         }
       }, {
