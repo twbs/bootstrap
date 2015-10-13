@@ -1,15 +1,16 @@
-/* main */
+/*!
+ * Buenosaires.css - BAstrap v3.1 (http://gcba.github.io/BAstrap/)
+ * Copyright 2011-2015
+ * Direccion General de Gobierno Electronico
+ * Gobierno de la Ciudad de Buenos Aires
+ * Licenciado bajo MIT (https://gcba.github.io/BAstrap/LICENSE)
+ */
 
+/* main */
 .main-container {
   padding-top:0;
   padding-bottom:64px;
 }
-/*@media (max-width: 767px) {
-  .container, .container-fluid {
-   margin-left:-15px;
-   margin-right:-15px;
-  }
-}*/
 aside form .btn[type*="submit"] {
   margin-top:24px;
 }

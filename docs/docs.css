@@ -1,3 +1,11 @@
+/*!
+ * Docs v1 - BAstrap v3.1 (http://gcba.github.io/BAstrap/)
+ * Copyright 2012-2015
+ * Direccion General de Gobierno Electronico
+ * Gobierno de la Ciudad de Buenos Aires
+ * Licenciado bajo MIT (https://gcba.github.io/BAstrap/LICENSE)
+ */
+
 /* misc */
 
 #main {
@@ -70,6 +78,12 @@ margin: 20px;
   .panel-docs > .panel-body {
     margin-top:15px;
     margin-bottom:15px;
+  }
+}
+@media (max-width: 767px) {
+  .panel-docs > .panel-heading h2 {
+    font-size: 1.4em;
+    margin: 5px 0;
   }
 }
 .panel-docs > .panel-body h1 {
@@ -150,7 +164,7 @@ pre.prettyprint {
   padding-bottom:10px;
   margin-bottom:10px;
   border-radius:4px;
-  color:#999;
+  color:#888;
 }
 
 /* Pigments code */
