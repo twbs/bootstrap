@@ -374,14 +374,19 @@ margin-bottom: 0;
   position:relative;
   top:2px;
 }
+.navbar-primary.navbar-top .navbar-brand {
+  margin-top: 0;
+}
+.navbar-primary.navbar-top .navbar-brand:hover,
+.navbar-primary.navbar-top .navbar-brand:focus,
+.navbar-primary.navbar-top .navbar-brand:active {
+  background-color: transparent;
+}
 .navbar-primary .navbar-form {
   margin: 0 -15px;
   padding-top:0;
   padding-bottom:0;
   margin-top:5px;
-}
-.navbar-primary.navbar-top .navbar-brand {
-  margin-top: 0;
 }
 @media (max-width: 767px) {
   .navbar-primary .navbar-brand {
