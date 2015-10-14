@@ -5,7 +5,7 @@
 .alert {
   padding: $alert-padding;
   margin-bottom: $spacer-y;
-  border: 1px solid transparent;
+  border: $alert-border-width solid transparent;
   @include border-radius($alert-border-radius);
 
   // Improve alignment and spacing of inner content
