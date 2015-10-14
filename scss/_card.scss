@@ -4,7 +4,7 @@
 
 $card-spacer-x:            1.25rem;
 $card-spacer-y:            .75rem;
-$card-border-width:        .0625rem;
+$card-border-width:         $border-width;
 $card-border-radius:       .25rem;
 $card-border-color:        #e5e5e5;
 $card-border-radius-inner: ($card-border-radius - $card-border-width);
