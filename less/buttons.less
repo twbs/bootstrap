@@ -147,6 +147,7 @@
   );
 }
 
+.bootstrap-select .btn-default,
 .btn-input {
   .button-variant(
       @input-color;
@@ -164,6 +165,7 @@
   .button-outline(
       @btn-facebook;
       @btn-facebook-active;
+      @brand-white;
   );
   background-image: url("../images/ic_facebook_default.svg");
 
@@ -176,6 +178,7 @@
   .button-outline(
       @btn-google;
       @btn-google-active;
+      @brand-white;
   );
   background-image: url("../images/ic_google_default.svg");
 
@@ -201,6 +204,28 @@
           padding-right: 50px;
       }
   }
+}
+
+.btn-image {
+    background: rgba(255,255,255, 0.8);
+    &:hover,
+    &:focus {
+        background: rgba(255,255,255, 0.64);
+        color: @brand-grey;
+    }
+
+    &:active,
+    &:hover:active {
+        background: rgba(255,255,255, 0.48);
+        color: @brand-grey-minus-20;
+    }
+}
+.btn-inverse {
+    .button-outline(
+        @brand-white;
+        @brand-smoke-plus-10;
+        @brand-grey
+    );
 }
 
 // Link buttons
@@ -282,6 +307,7 @@ input[type="button"] {
   }
 }
 
+.bootstrap-select .btn-default,
 .btn-input {
   font-weight: 500;
   outline: 0 !important;
@@ -291,6 +317,17 @@ input[type="button"] {
   &.focus,
   &:focus {
       border-color: @input-border-focus;
-      outline: 0 !important;
+      background-color:  @input-bg;
+      color: @input-color;
+      outline: 0px none !important;
   }
+}
+.bootstrap-select.open > .dropdown-toggle.btn-default {
+    border-color: @input-border-focus;
+    background-color:  @input-bg;
+    color: @input-color;
+    outline: 0px none !important;
+}
+.bootstrap-select .btn.dropdown-toggle:focus {
+    outline: 0px none !important;
 }
