@@ -23,14 +23,14 @@
 	}
 
 	function readCookie(name) {
-		var c_name = name + '=';
-		var c_split = document.cookie.split(';');
-		for(var i=0;i < c_split.length;i++) {
-			var c = c_split[i];
+		var cname = name + '=';
+		var csplit = document.cookie.split(';');
+		for(var i=0;i < csplit.length;i++) {
+			var c = csplit[i];
 			while (c.charAt(0)==' ') {
 				c = c.substring(1,c.length);
-				if (c.indexOf(c_name) === 0) {
-					return c.substring(c_name.length,c.length);
+				if (c.indexOf(cname) === 0) {
+					return c.substring(cname.length,c.length);
 				}
 			}
 		}
