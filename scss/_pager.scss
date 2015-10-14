@@ -1,0 +1,57 @@
+.pager {
+  padding-left: 0;
+  margin-top: $spacer-y;
+  margin-bottom: $spacer-y;
+  text-align: center;
+  list-style: none;
+  @include clearfix();
+
+  li {
+    display: inline;
+
+    > a,
+    > span {
+      display: inline-block;
+      padding: 5px 14px;
+      background-color: $pager-bg;
+      border: 1px solid $pager-border;
+      border-radius: $pager-border-radius;
+    }
+
+    > a {
+      @include hover-focus {
+        text-decoration: none;
+        background-color: $pager-hover-bg;
+      }
+    }
+  }
+
+  .disabled {
+    > a {
+      @include plain-hover-focus {
+        color: $pager-disabled-color;
+        cursor: $cursor-disabled;
+        background-color: $pager-bg;
+      }
+    }
+    > span {
+      color: $pager-disabled-color;
+      cursor: $cursor-disabled;
+      background-color: $pager-bg;
+    }
+  }
+}
+
+.pager-next {
+  > a,
+  > span {
+    float: right;
+  }
+}
+
+.pager-prev {
+  > a,
+  > span {
+    float: left;
+  }
+}

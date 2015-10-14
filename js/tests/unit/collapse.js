@@ -355,7 +355,7 @@ $(function () {
 
     $('<div id="body1" aria-expanded="true" class="in"/>').appendTo($groups.eq(0))
 
-    var $target2 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body2" data-parent="#accordion"/>').appendTo($groups.eq(1))
+    var $target2 = $('<a role="button" data-toggle="collapse" href="#body2" data-parent="#accordion" class="collapsed" />').appendTo($groups.eq(1))
 
     $('<div id="body2" aria-expanded="false"/>').appendTo($groups.eq(1))
 
@@ -400,7 +400,7 @@ $(function () {
 
     $body2
       .toggleClass('in collapsing')
-      .data('bs.collapse').transitioning = 1
+      .data('bs.collapse')._isTransitioning = 1
 
     $target1.trigger('click')
 

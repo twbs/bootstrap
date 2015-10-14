@@ -34,7 +34,7 @@ $(function () {
 
   QUnit.test('should expose defaults var for settings', function (assert) {
     assert.expect(1)
-    assert.ok($.fn.bootstrapModal.Constructor.DEFAULTS, 'default object exposed')
+    assert.ok($.fn.bootstrapModal.Constructor.Default, 'default object exposed')
   })
 
   QUnit.test('should insert into dom when show method is called', function (assert) {

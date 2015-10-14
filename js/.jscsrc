@@ -1,4 +1,5 @@
 {
+  "esnext": true,
   "disallowEmptyBlocks": true,
   "disallowKeywords": ["with"],
   "disallowMixedSpacesAndTabs": true,

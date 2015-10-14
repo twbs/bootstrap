@@ -1,0 +1,343 @@
+//
+// Grid examples
+//
+
+.bd-example-row {
+  .row {
+    margin-bottom: 1rem;
+
+    > [class^="col-"] {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      background-color: rgba(86,61,124,.15);
+      border: 1px solid rgba(86,61,124,.2);
+    }
+  }
+}
+
+
+//
+// Container illustrations
+//
+
+.bd-example-container {
+  min-width: 16rem;
+  max-width: 25rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bd-example-container-header {
+  height: 3rem;
+  margin-bottom: .5rem;
+  background-color: lighten($brand-primary, 50%);
+  border-radius: .25rem;
+}
+
+.bd-example-container-sidebar {
+  float: right;
+  width: 4rem;
+  height: 8rem;
+  background-color: lighten($brand-warning, 25%);
+  border-radius: .25rem;
+}
+
+.bd-example-container-body {
+  height: 8rem;
+  margin-right: 4.5rem;
+  background-color: lighten($bd-purple, 25%);
+  border-radius: .25rem;
+}
+
+.bd-example-container-fluid {
+  max-width: none;
+}
+
+
+//
+// Docs examples
+//
+
+.bd-example {
+  position: relative;
+  padding: 1rem;
+  margin: 1rem -1rem;
+  border: solid #f7f7f9;
+  border-width: .2rem 0 0;
+  @include clearfix();
+
+  @include media-breakpoint-up(sm) {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding: 1.5rem;
+    border-width: .2rem;
+  }
+
+  + .highlight,
+  + .zero-clipboard + .highlight {
+    margin-top: 0;
+  }
+
+  + p {
+    margin-top: 2rem;
+  }
+
+  // Undo width of container
+  .container {
+    width: auto;
+  }
+
+  > .form-control {
+    + .form-control {
+      margin-top: .5rem;
+    }
+  }
+
+  // Card examples should be horizontal
+  > .card {
+    max-width: 20rem;
+  }
+
+  > .nav + .nav,
+  > .alert + .alert,
+  > .navbar + .navbar,
+  > .progress + .progress,
+  > .progress + .btn {
+    margin-top: 1rem;
+  }
+
+  > .dropdown-menu:first-child {
+    position: static;
+    display: block;
+  }
+}
+
+.bd-example > .close {
+  float: none;
+}
+
+// Typography
+.bd-example-type .table .type-info {
+  color: #999;
+  vertical-align: middle;
+}
+.bd-example-type .table td {
+  padding: 1rem 0;
+  border-color: #eee;
+}
+.bd-example-type .table tr:first-child td {
+  border-top: 0;
+}
+.bd-example-type h1,
+.bd-example-type h2,
+.bd-example-type h3,
+.bd-example-type h4,
+.bd-example-type h5,
+.bd-example-type h6 {
+  margin: 0;
+}
+
+// Contextual background colors
+.bd-example-bg-classes p {
+  padding: 1rem;
+}
+
+// Images
+.bd-example > img {
+  + img {
+    margin-left: .5rem;
+  }
+}
+
+// Buttons
+.bd-example > .btn-group {
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+.bd-example > .btn-toolbar + .btn-toolbar {
+  margin-top: .5rem;
+}
+
+// Forms
+.bd-example-control-sizing select,
+.bd-example-control-sizing input[type="text"] + input[type="text"] {
+  margin-top: .5rem;
+}
+.bd-example-form .input-group {
+  margin-bottom: .5rem;
+}
+.bd-example > textarea.form-control {
+  resize: vertical;
+}
+
+// List groups
+.bd-example > .list-group {
+  max-width: 400px;
+}
+
+// Navbars
+.bd-example  {
+  .navbar-fixed-top {
+    position: static;
+    margin: -1rem -1rem 1rem;
+  }
+  .navbar-fixed-bottom {
+    position: static;
+    margin: 1rem -1rem -1rem;
+  }
+
+  @include media-breakpoint-up(sm) {
+    .navbar-fixed-top {
+      margin: -1.5rem -1.5rem 1rem;
+    }
+    .navbar-fixed-bottom {
+      margin: 1rem -1.5rem -1.5rem;
+    }
+  }
+}
+
+// Pagination
+.bd-example .pagination {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+// Pager
+.bd-example > .pager {
+  margin-top: 0;
+}
+
+// Example modals
+.bd-example-modal {
+  background-color: #f5f5f5;
+}
+.bd-example-modal .modal {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1;
+  display: block;
+}
+.bd-example-modal .modal-dialog {
+  left: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Example dropdowns
+.bd-example > .dropdown > .dropdown-toggle {
+  float: left;
+}
+.bd-example > .dropdown > .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: .25rem;
+  clear: left;
+}
+
+// Example tabbable tabs
+.bd-example-tabs .nav-tabs {
+  margin-bottom: 1rem;
+}
+
+// Tooltips
+.bd-example-tooltips {
+  text-align: center;
+}
+.bd-example-tooltips > .btn {
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+
+// Popovers
+.bd-example-popover {
+  padding-bottom: 1.5rem;
+  background-color: #f9f9f9;
+}
+.bd-example-popover .popover {
+  position: relative;
+  display: block;
+  float: left;
+  width: 260px;
+  margin: 1.25rem;
+}
+
+// Tooltips
+.bd-example-tooltip .tooltip {
+  position: relative;
+  display: inline-block;
+  margin: 10px 20px;
+  opacity: 1;
+}
+
+// Scrollspy demo on fixed height div
+.scrollspy-example {
+  position: relative;
+  height: 200px;
+  margin-top: .5rem;
+  overflow: auto;
+}
+
+// Helpers
+.bd-example > {
+  .center-block:not(img) {
+    max-width: 200px;
+    padding: .5rem;
+    background-color: #eee;
+  }
+
+  .bg-primary,
+  .bg-success,
+  .bg-info,
+  .bg-warning,
+  .bg-danger {
+    &:not(.navbar) {
+      padding: .5rem;
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+    }
+  }
+}
+
+
+//
+// Code snippets
+//
+
+.highlight {
+  padding: 1rem;
+  margin: 1rem -1rem;
+  background-color: #f7f7f9;
+
+  @include media-breakpoint-up(sm) {
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.highlight pre {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border: 0;
+}
+.highlight pre code {
+  font-size: inherit;
+  color: $gray-dark; // Effectively the base text color
+}
+
+
+// Pseudo focus
+//
+// Custom `:focus` state for showing how it looks in the docs.
+
+#focusedInput {
+  border-color: $input-border-focus;
+  outline: 0;
+  outline: thin dotted \9; // IE9
+  box-shadow: 0 0 .5rem $input-box-shadow-focus;
+}

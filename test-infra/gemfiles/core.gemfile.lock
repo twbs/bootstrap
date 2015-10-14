@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rainbow (2.0.0)
+    sass (3.4.9)
+    scss-lint (0.31.0)
+      rainbow (~> 2.0)
+      sass (~> 3.4.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  sass (~> 3.4.9)
+  scss-lint (~> 0.31)
