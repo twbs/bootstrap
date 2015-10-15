@@ -25,7 +25,7 @@
 
   Tab.prototype.show = function () {
     var $this    = this.element
-    var $list      = $this.closest('ul:not(.dropdown-menu), ol:not(.dropdown-menu)')
+    var $list    = $this.closest('ul:not(.dropdown-menu), ol:not(.dropdown-menu)')
     var selector = $this.data('target')
 
     if (!selector) {
