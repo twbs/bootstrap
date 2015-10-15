@@ -1,15 +1,16 @@
 
 $(document).ready(function() {
-	function clickNeighbourInput(event) {
-		console.log("clicky");
-		$(this).parents('label').find('input').click();
-		event.stopPropagation();
-	}
 	function onFocus() {
 		$(this).parents('.form-group, .checkbox > label, .radio > label').addClass('focus');
 	}
 	function onBlur() {
 		$(this).parents('.form-group, .checkbox > label, .radio > label').removeClass('focus');
+	}
+
+	function clickNeighbourInput(event) {
+		console.log("clicky");
+		$(this).parents('label').find('input').click();
+		event.stopPropagation();
 	}
 	function onKeypress(event) {
 		if((event.keyCode ? event.keyCode : event.which) == 13) { // Space
@@ -33,8 +34,6 @@ $(document).ready(function() {
 		.focus(onFocus)
 		.blur(onBlur);
 
-	$("select").selectpicker();
-
 	$('.form-group input:checkbox')
 		.hide()
 		.after(checkReplace);
@@ -51,5 +50,7 @@ $(document).ready(function() {
 		.blur(function() {
 			$(this).parents('.form-group').removeClass('focus');
 		});
+
+	$("select").selectpicker();
 
 });

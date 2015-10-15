@@ -701,7 +701,19 @@ input[type="checkbox"] {
     .col-sm-9,
     .col-sm-10,
     .col-sm-11,
-    .col-sm-12 {
+    .col-sm-12,
+    .col-xs-1,
+    .col-xs-2,
+    .col-xs-3,
+    .col-xs-4,
+    .col-xs-5,
+    .col-xs-6,
+    .col-xs-7,
+    .col-xs-8,
+    .col-xm-9,
+    .col-xs-10,
+    .col-xs-11,
+    .col-xs-12 {
         padding-left: 6px;
         padding-right: 6px;
     }
@@ -721,7 +733,6 @@ input[type="checkbox"] {
         .col-sm-10,
         .col-sm-11,
         .col-sm-12 {
-
             .form-control {
                 margin-bottom: (@padding-base-vertical * 1.5);
             }
@@ -730,7 +741,10 @@ input[type="checkbox"] {
 }
 :not(.has-error).focus {
     > label {
-        color: @brand-light-blue
+        color: @brand-light-blue;
+    }
+    .input-group-addon {
+        border-color: @brand-light-blue;
     }
     //input, textarea, select {
     //    border-color: @brand-light-blue;
@@ -744,4 +758,8 @@ input[type="checkbox"] {
     fieldset .form-group:nth-of-type(odd) {
         clear: left;
     }
+}
+
+.input-group-addon {
+    .transition(~"border-color ease-in-out .15s");
 }
