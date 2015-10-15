@@ -8,11 +8,11 @@
   position: absolute;
   z-index: @zindex-tooltip;
   display: block;
-  // Reset font and text properties given new insertion method
-  font-family: @font-family-base;
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  .reset-text();
   font-size: @font-size-small;
-  font-weight: normal;
-  line-height: 1.4;
+
   .opacity(0);
 
   &.in     { .opacity(@tooltip-opacity); }
@@ -28,7 +28,6 @@
   padding: 3px 8px;
   color: @tooltip-color;
   text-align: center;
-  text-decoration: none;
   background-color: @tooltip-bg;
   border-radius: @border-radius-base;
 }

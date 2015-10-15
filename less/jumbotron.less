@@ -4,7 +4,8 @@
 
 
 .jumbotron {
-  padding: @jumbotron-padding (@jumbotron-padding / 2);
+  padding-top:    @jumbotron-padding;
+  padding-bottom: @jumbotron-padding;
   margin-bottom: @jumbotron-padding;
   color: @jumbotron-color;
   background-color: @jumbotron-bg;
@@ -27,6 +28,8 @@
   .container &,
   .container-fluid & {
     border-radius: @border-radius-large; // Only round corners at higher resolutions if contained in a container
+    padding-left:  (@grid-gutter-width / 2);
+    padding-right: (@grid-gutter-width / 2);
   }
 
   .container {
@@ -34,7 +37,8 @@
   }
 
   @media screen and (min-width: @screen-sm-min) {
-    padding: (@jumbotron-padding * 1.6) 0;
+    padding-top:    (@jumbotron-padding * 1.6);
+    padding-bottom: (@jumbotron-padding * 1.6);
 
     .container &,
     .container-fluid & {

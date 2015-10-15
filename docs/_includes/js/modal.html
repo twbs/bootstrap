@@ -3,7 +3,7 @@
   <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
 
   <div class="bs-callout bs-callout-warning" id="callout-stacked-modals">
-    <h4>Overlapping modals not supported</h4>
+    <h4>Multiple open modals not supported</h4>
     <p>Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-modal-markup-placement">
@@ -69,7 +69,7 @@ $('#myModal').on('shown.bs.modal', function () {
   <p>Toggle a modal via JavaScript by clicking the button below. It will slide down and fade in from the top of the page.</p>
   <!-- sample modal content -->
   <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
 
         <div class="modal-header">
@@ -121,7 +121,7 @@ $('#myModal').on('shown.bs.modal', function () {
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -141,13 +141,13 @@ $('#myModal').on('shown.bs.modal', function () {
 
   <div class="bs-callout bs-callout-warning" id="callout-modal-accessibility">
     <h4>Make modals accessible</h4>
-    <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title.</p>
+    <p>Be sure to add <code>role="dialog"</code> and <code>aria-labelledby="..."</code>, referencing the modal title, to <code>.modal</code>, and <code>role="document"</code> to the <code>.modal-dialog</code>  itself.</p>
     <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
   </div>
 
   <div class="bs-callout bs-callout-info" id="callout-modal-youtube">
     <h4>Embedding YouTube videos</h4>
-    <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
+    <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
   </div>
 
   <h2 id="modals-sizes">Optional sizes</h2>
@@ -219,65 +219,16 @@ $('#myModal').on('shown.bs.modal', function () {
 {% endhighlight %}
 
   <h2 id="modals-grid-system">Using the grid system</h2>
-  <p>To take advantage of the Bootstrap grid system within a modal, just nest <code>.container-fluid</code> within the <code>.modal-body</code> and then use the normal grid system classes within this container.</p>
+  <p>To take advantage of the Bootstrap grid system within a modal, just nest <code>.row</code>s within the <code>.modal-body</code> and then use the normal grid system classes.</p>
 <!-- sample modal content -->
   <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel">
-    <div class="modal-dialog">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="gridModalLabel">Modal title</h4>
         </div>
         <div class="modal-body">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-4">.col-md-4</div>
-              <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-              <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
-            </div>
-            <div class="row">
-              <div class="col-sm-9">
-                Level 1: .col-sm-9
-                <div class="row">
-                  <div class="col-xs-8 col-sm-6">
-                    Level 2: .col-xs-8 .col-sm-6
-                  </div>
-                  <div class="col-xs-4 col-sm-6">
-                    Level 2: .col-xs-4 .col-sm-6
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-<div class="bs-example bs-example-padded-bottom">
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#gridSystemModal">
-    Launch demo modal
-  </button>
-</div><!-- /example -->
-{% highlight html %}
-<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
           <div class="row">
             <div class="col-md-4">.col-md-4</div>
             <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
@@ -303,6 +254,51 @@ $('#myModal').on('shown.bs.modal', function () {
             </div>
           </div>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+<div class="bs-example bs-example-padded-bottom">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#gridSystemModal">
+    Launch demo modal
+  </button>
+</div><!-- /example -->
+{% highlight html %}
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-4">.col-md-4</div>
+          <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+          <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            Level 1: .col-sm-9
+            <div class="row">
+              <div class="col-xs-8 col-sm-6">
+                Level 2: .col-xs-8 .col-sm-6
+              </div>
+              <div class="col-xs-4 col-sm-6">
+                Level 2: .col-xs-4 .col-sm-6
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -323,7 +319,7 @@ $('#myModal').on('shown.bs.modal', function () {
     ...more buttons...
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-      <div class="modal-dialog">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -356,7 +352,7 @@ $('#myModal').on('shown.bs.modal', function () {
 ...more buttons...
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

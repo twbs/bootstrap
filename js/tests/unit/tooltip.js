@@ -139,6 +139,20 @@ $(function () {
       .bootstrapTooltip('show')
   })
 
+  QUnit.test('should fire inserted event', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    $('<div title="tooltip title"/>')
+      .appendTo('#qunit-fixture')
+      .on('inserted.bs.tooltip', function () {
+        assert.notEqual($('.tooltip').length, 0, 'tooltip was inserted')
+        assert.ok(true, 'inserted event fired')
+        done()
+      })
+      .bootstrapTooltip('show')
+  })
+
   QUnit.test('should fire shown event', function (assert) {
     assert.expect(1)
     var done = assert.async()
@@ -362,23 +376,19 @@ $(function () {
     assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
   })
 
-  QUnit.test('should be placed dynamically with the dynamic placement option', function (assert) {
+  QUnit.test('should be placed dynamically to viewport with the dynamic placement option', function (assert) {
     assert.expect(6)
-    var $style = $('<style> a[rel="tooltip"] { display: inline-block; position: absolute; } </style>')
+    var $style = $('<style> div[rel="tooltip"] { position: absolute; } #qunit-fixture { top: inherit; left: inherit } </style>').appendTo('head')
     var $container = $('<div/>')
       .css({
-        position: 'absolute',
-        overflow: 'hidden',
-        width: 600,
-        height: 400,
-        top: 0,
-        left: 0
+        position: 'relative',
+        height: '100%'
       })
-      .appendTo(document.body)
+      .appendTo('#qunit-fixture')
 
     var $topTooltip = $('<div style="left: 0; top: 0;" rel="tooltip" title="Top tooltip">Top Dynamic Tooltip</div>')
       .appendTo($container)
-      .bootstrapTooltip({ placement: 'auto' })
+      .bootstrapTooltip({ placement: 'auto', viewport: '#qunit-fixture' })
 
     $topTooltip.bootstrapTooltip('show')
     assert.ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom')
@@ -388,7 +398,7 @@ $(function () {
 
     var $rightTooltip = $('<div style="right: 0;" rel="tooltip" title="Right tooltip">Right Dynamic Tooltip</div>')
       .appendTo($container)
-      .bootstrapTooltip({ placement: 'right auto' })
+      .bootstrapTooltip({ placement: 'right auto', viewport: '#qunit-fixture' })
 
     $rightTooltip.bootstrapTooltip('show')
     assert.ok($('.tooltip').is('.left'), 'right positioned tooltip is dynamically positioned left')
@@ -398,7 +408,7 @@ $(function () {
 
     var $leftTooltip = $('<div style="left: 0;" rel="tooltip" title="Left tooltip">Left Dynamic Tooltip</div>')
       .appendTo($container)
-      .bootstrapTooltip({ placement: 'auto left' })
+      .bootstrapTooltip({ placement: 'auto left', viewport: '#qunit-fixture' })
 
     $leftTooltip.bootstrapTooltip('show')
     assert.ok($('.tooltip').is('.right'), 'left positioned tooltip is dynamically positioned right')
@@ -425,6 +435,31 @@ $(function () {
       .bootstrapTooltip({
         placement: 'auto top',
         viewport: '#section'
+      })
+
+    $target.bootstrapTooltip('show')
+    assert.ok($('.tooltip').is('.top'), 'top positioned tooltip is dynamically positioned to top')
+
+    $target.bootstrapTooltip('hide')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $styles.remove()
+  })
+
+  QUnit.test('should position tip on top if viewport has enough space and is not parent', function (assert) {
+    assert.expect(2)
+    var styles = '<style>'
+        + '#section { height: 300px; border: 1px solid red; margin-top: 100px; }'
+        + 'div[rel="tooltip"] { width: 150px; border: 1px solid blue; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div id="section"/>').appendTo('#qunit-fixture')
+    var $target = $('<div rel="tooltip" title="tip"/>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        placement: 'auto top',
+        viewport: '#qunit-fixture'
       })
 
     $target.bootstrapTooltip('show')
@@ -711,6 +746,65 @@ $(function () {
     $target.bootstrapTooltip('show')
     var $tooltip = $container.find('.tooltip')
     assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].offsetWidth))
+
+    $target.bootstrapTooltip('hide')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $container.remove()
+    $styles.remove()
+  })
+
+  QUnit.test('should get viewport element from function', function (assert) {
+    assert.expect(3)
+    var styles = '<style>'
+        + '.tooltip, .tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+        + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
+        + 'a[rel="tooltip"] { position: fixed; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div class="container-viewport"/>').appendTo(document.body)
+    var $target = $('<a href="#" rel="tooltip" title="tip" style="top: 50px; left: 350px;"/>').appendTo($container)
+    $target
+      .bootstrapTooltip({
+        placement: 'bottom',
+        viewport: function ($element) {
+          assert.strictEqual($element[0], $target[0], 'viewport function was passed target as argument')
+          return ($element.closest('.container-viewport'))
+        }
+      })
+
+    $target.bootstrapTooltip('show')
+    var $tooltip = $container.find('.tooltip')
+    assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].offsetWidth))
+
+    $target.bootstrapTooltip('hide')
+    assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
+
+    $container.remove()
+    $styles.remove()
+  })
+
+  QUnit.test('should not misplace the tip when the right edge offset is greater or equal than the viewport width', function (assert) {
+    assert.expect(2)
+    var styles = '<style>'
+        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
+        + '.container-viewport, .container-viewport *, .container-viewport *:before, .container-viewport *:after { box-sizing: border-box; }'
+        + '.tooltip, .tooltip .tooltip-inner { width: 50px; height: 50px; max-width: none; background: red; }'
+        + '.container-viewport { padding: 100px; margin-left: 100px; width: 100px; }'
+        + '</style>'
+    var $styles = $(styles).appendTo('head')
+
+    var $container = $('<div class="container-viewport"/>').appendTo(document.body)
+    var $target = $('<a href="#" rel="tooltip" title="tip">foobar</a>')
+      .appendTo($container)
+      .bootstrapTooltip({
+        viewport: '.container-viewport'
+      })
+
+    $target.bootstrapTooltip('show')
+    var $tooltip = $container.find('.tooltip')
+    assert.strictEqual(Math.round($tooltip.offset().left), Math.round($target.position().left + $target.width() / 2 - $tooltip[0].offsetWidth / 2))
 
     $target.bootstrapTooltip('hide')
     assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
@@ -1178,6 +1272,54 @@ $(function () {
       })
       .bootstrapTooltip('hide')
     assert.strictEqual($tooltip.data('bs.tooltip'), undefined, 'should not initialize the tooltip')
+  })
+
+  QUnit.test('should throw an error when template contains multiple top-level elements', function (assert) {
+    assert.expect(1)
+    assert.throws(function () {
+      $('<a href="#" data-toggle="tooltip" title="Another tooltip"></a>')
+        .appendTo('#qunit-fixture')
+        .bootstrapTooltip({ template: '<div>Foo</div><div>Bar</div>' })
+        .bootstrapTooltip('show')
+    }, new Error('tooltip `template` option must consist of exactly 1 top-level element!'))
+  })
+
+  QUnit.test('should not remove tooltip if multiple triggers are set and one is still active', function (assert) {
+    assert.expect(41)
+    var $el = $('<button>Trigger</button>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({ trigger: 'click hover focus', animation: false })
+    var tooltip = $el.data('bs.tooltip')
+    var $tooltip = tooltip.tip()
+
+    function showingTooltip() { return $tooltip.hasClass('in') || tooltip.hoverState == 'in' }
+
+    var tests = [
+        ['mouseenter', 'mouseleave'],
+
+        ['focusin', 'focusout'],
+
+        ['click', 'click'],
+
+        ['mouseenter', 'focusin', 'focusout', 'mouseleave'],
+        ['mouseenter', 'focusin', 'mouseleave', 'focusout'],
+
+        ['focusin', 'mouseenter', 'mouseleave', 'focusout'],
+        ['focusin', 'mouseenter', 'focusout', 'mouseleave'],
+
+        ['click', 'focusin', 'mouseenter', 'focusout', 'mouseleave', 'click'],
+        ['mouseenter', 'click', 'focusin', 'focusout', 'mouseleave', 'click'],
+        ['mouseenter', 'focusin', 'click', 'click', 'mouseleave', 'focusout']
+    ]
+
+    assert.ok(!showingTooltip())
+
+    $.each(tests, function (idx, triggers) {
+      for (var i = 0, len = triggers.length; i < len; i++) {
+        $el.trigger(triggers[i]);
+        assert.equal(i < (len - 1), showingTooltip())
+      }
+    })
   })
 
 })

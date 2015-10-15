@@ -186,7 +186,7 @@ $(function () {
         + '<li><a href="#menu1">Menu 1</a></li>'
         + '<li class="dropdown" id="testmenu">'
         + '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <span class="caret"/></a>'
-        + '<ul class="dropdown-menu" role="menu">'
+        + '<ul class="dropdown-menu">'
         + '<li><a href="#sub1">Submenu 1</a></li>'
         + '</ul>'
         + '</li>'
@@ -286,6 +286,38 @@ $(function () {
     $(document.body).trigger('click')
   })
 
+  QUnit.test('should fire shown and hidden event with a relatedTarget', function (assert) {
+    assert.expect(2)
+    var dropdownHTML = '<ul class="tabs">'
+        + '<li class="dropdown">'
+        + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
+        + '<ul class="dropdown-menu">'
+        + '<li><a href="#">Secondary link</a></li>'
+        + '<li><a href="#">Something else here</a></li>'
+        + '<li class="divider"/>'
+        + '<li><a href="#">Another link</a></li>'
+        + '</ul>'
+        + '</li>'
+        + '</ul>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+    var done = assert.async()
+
+    $dropdown.parent('.dropdown')
+      .on('hidden.bs.dropdown', function (e) {
+        assert.strictEqual(e.relatedTarget, $dropdown[0])
+        done()
+      })
+      .on('shown.bs.dropdown', function (e) {
+        assert.strictEqual(e.relatedTarget, $dropdown[0])
+        $(document.body).trigger('click')
+      })
+
+    $dropdown.trigger('click')
+  })
+
   QUnit.test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
     assert.expect(3)
     var done = assert.async()
@@ -293,7 +325,7 @@ $(function () {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
-        + '<ul class="dropdown-menu" role="menu">'
+        + '<ul class="dropdown-menu">'
         + '<li><a href="#">Secondary link</a></li>'
         + '<li><a href="#">Something else here</a></li>'
         + '<li class="divider"/>'
@@ -333,7 +365,7 @@ $(function () {
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
-        + '<ul class="dropdown-menu" role="menu">'
+        + '<ul class="dropdown-menu">'
         + '<li class="disabled"><a href="#">Disabled link</a></li>'
         + '<li><a href="#">Another link</a></li>'
         + '</ul>'
@@ -355,7 +387,7 @@ $(function () {
     assert.expect(1)
     var dropdownHTML = '<div class="btn-group">'
         + '<button type="button" data-toggle="dropdown">Dropdown</button>'
-        + '<ul class="dropdown-menu" role="menu">'
+        + '<ul class="dropdown-menu">'
         + '<li><input id="textField" type="text" /></li>'
         + '</ul>'
         + '</div>'
@@ -374,7 +406,7 @@ $(function () {
     assert.expect(1)
     var dropdownHTML = '<div class="btn-group">'
         + '<button type="button" data-toggle="dropdown">Dropdown</button>'
-        + '<ul class="dropdown-menu" role="menu">'
+        + '<ul class="dropdown-menu">'
         + '<li><textarea id="textArea"></textarea></li>'
         + '</ul>'
         + '</div>'

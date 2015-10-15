@@ -57,7 +57,7 @@
   {
     browserName: "iphone",
     platform: "OS X 10.10",
-    version: "8.1"
+    version: "8.2"
   },
 
   # iOS Chrome not currently supported by Sauce Labs

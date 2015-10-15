@@ -76,6 +76,27 @@
 </div>
 {% endhighlight %}
 
+  <h2 id="list-group-buttons">Button items</h2>
+  <p>List group items may be buttons instead of list items (that also means a parent <code>&lt;div&gt;</code> instead of an <code>&lt;ul&gt;</code>). No need for individual parents around each element. <strong class="text-danger">Don't use the standard <code>.btn</code> classes here.</strong></p>
+  <div class="bs-example" data-example-id="list-group-btns">
+    <div class="list-group">
+      <button type="button" class="list-group-item">Cras justo odio</button>
+      <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+      <button type="button" class="list-group-item">Morbi leo risus</button>
+      <button type="button" class="list-group-item">Porta ac consectetur ac</button>
+      <button type="button" class="list-group-item">Vestibulum at eros</button>
+    </div>
+  </div>
+{% highlight html %}
+<div class="list-group">
+  <button type="button" class="list-group-item">Cras justo odio</button>
+  <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+  <button type="button" class="list-group-item">Morbi leo risus</button>
+  <button type="button" class="list-group-item">Porta ac consectetur ac</button>
+  <button type="button" class="list-group-item">Vestibulum at eros</button>
+</div>
+{% endhighlight %}
+
   <h2 id="list-group-disabled">Disabled items</h2>
   <p>Add <code>.disabled</code> to a <code>.list-group-item</code> to gray it out to appear disabled.</p>
   <div class="bs-example" data-example-id="list-group-disabled">

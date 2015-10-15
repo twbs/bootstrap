@@ -38,12 +38,13 @@
 }
 
 
-// Linked list items
+// Interactive list items
 //
-// Use anchor elements instead of `li`s or `div`s to create linked list items.
+// Use anchor or button elements instead of `li`s or `div`s to create interactive items.
 // Includes an extra `.active` modifier class for showing selected items.
 
-a.list-group-item {
+a.list-group-item,
+button.list-group-item {
   color: @list-group-link-color;
 
   .list-group-item-heading {
@@ -57,6 +58,11 @@ a.list-group-item {
     color: @list-group-link-hover-color;
     background-color: @list-group-hover-bg;
   }
+}
+
+button.list-group-item {
+  width: 100%;
+  text-align: left;
 }
 
 .list-group-item {

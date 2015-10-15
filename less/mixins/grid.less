@@ -6,15 +6,15 @@
 .container-fixed(@gutter: @grid-gutter-width) {
   margin-right: auto;
   margin-left: auto;
-  padding-left:  (@gutter / 2);
-  padding-right: (@gutter / 2);
+  padding-left:  floor((@gutter / 2));
+  padding-right: ceil((@gutter / 2));
   &:extend(.clearfix all);
 }
 
 // Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
-  margin-left:  (@gutter / -2);
-  margin-right: (@gutter / -2);
+  margin-left:  ceil((@gutter / -2));
+  margin-right: floor((@gutter / -2));
   &:extend(.clearfix all);
 }
 

@@ -7,9 +7,9 @@ The SHA-256 hash of the single file is used as the key for the cache. The direct
 
 All the tarballs are stored in S3's Reduced Redundancy Storage (RRS) storage class, since this is cheaper and the data is non-critical.
 
-`s3_cache.py` itself never deletes cache entries; deletion should either be done manually or using automatic S3 lifecycle rules on the bucket.
+`s3_cache.py` itself never deletes cache entries; deletion should either be done manually or using automatic S3 life cycle rules on the bucket.
 
-Similar to git, `s3_cache.py` makes the assumption that [SHA-256 will effectively never have a collision](http://stackoverflow.com/questions/4014090/is-it-safe-to-ignore-the-possibility-of-sha-collisions-in-practice).
+Similar to git, `s3_cache.py` makes the assumption that [SHA-256 will effectively never have a collision](https://stackoverflow.com/questions/4014090/is-it-safe-to-ignore-the-possibility-of-sha-collisions-in-practice).
 
 
 ### For Bootstrap specifically
@@ -51,7 +51,7 @@ If it had to `generate` the cache, it will later create a tarball of the `cache`
 1. Create an Amazon Web Services (AWS) account.
 2. Create an Identity & Access Management (IAM) user, and note their credentials.
 3. Create an S3 bucket.
-4. Set permissions on the bucket to grant the user read+write access.
+4. Set permissions on the bucket to grant the user read + write access.
 5. Set the user credentials as secure Travis environment variables.
 
 ### In detail
@@ -70,7 +70,7 @@ If it had to `generate` the cache, it will later create a tarball of the `cache`
 
 9. Determine and note what your bucket's ARN is. The ARN for an S3 bucket is of the form: `arn:aws:s3:::the-bucket-name-goes-here`
 10. In the bucket's Properties pane, in the "Permissions" section, click the "Edit bucket policy" button.
-11. Input and submit an IAM Policy that grants the user at least read+write rights to the bucket. AWS has a policy generator and some examples to help with crafting the policy. Here's the policy that Bootstrap uses, with the sensitive bits censored:
+11. Input and submit an IAM Policy that grants the user at least read + write rights to the bucket. AWS has a policy generator and some examples to help with crafting the policy. Here's the policy that Bootstrap uses, with the sensitive bits censored:
 
     ```json
     {

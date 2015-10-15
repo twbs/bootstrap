@@ -2,16 +2,16 @@
   <h1 id="tabs" class="page-header">Togglable tabs <small>tab.js</small></h1>
 
   <h2 id="tabs-examples">Example tabs</h2>
-  <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus.</p>
+  <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus. <strong>Nested tabs are not supported.</strong></p>
   <div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
     <ul id="myTabs" class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Home</a></li>
       <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">Profile</a></li>
       <li role="presentation" class="dropdown">
         <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown" aria-controls="myTabDrop1-contents">Dropdown <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
-          <li><a href="#dropdown1" tabindex="-1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">@fat</a></li>
-          <li><a href="#dropdown2" tabindex="-1" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a></li>
+        <ul class="dropdown-menu" aria-labelledby="myTabDrop1" id="myTabDrop1-contents">
+          <li><a href="#dropdown1" role="tab" id="dropdown1-tab" data-toggle="tab" aria-controls="dropdown1">@fat</a></li>
+          <li><a href="#dropdown2" role="tab" id="dropdown2-tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a></li>
         </ul>
       </li>
     </ul>
@@ -81,7 +81,7 @@ $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
 {% endhighlight %}
 
   <h3>Fade effect</h3>
-  <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>. The first tab pane must also have <code>.in</code> to properly fade in initial content.</p>
+  <p>To make tabs fade in, add <code>.fade</code> to each <code>.tab-pane</code>. The first tab pane must also have <code>.in</code> to make the initial content visible.</p>
 {% highlight html %}
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane fade in active" id="home">...</div>
@@ -98,7 +98,7 @@ $('#myTabs li:eq(2) a').tab('show') // Select third tab (0-indexed)
   </p>
 
   <h4><code>.tab('show')</code></h4>
-  <p>Selects the given tab and shows its associated content. Any other tab that was previously selected becomes unselected and its associated content is hidden.</p>
+  <p>Selects the given tab and shows its associated content. Any other tab that was previously selected becomes unselected and its associated content is hidden. <strong>Returns to the caller before the tab pane has actually been shown</strong> (i.e. before the <code>shown.bs.tab</code> event occurs).</p>
   {% highlight js %}$('#someTab').tab('show'){% endhighlight %}
 
   <h3 id="tabs-events">Events</h3>

@@ -1,7 +1,7 @@
 <div class="bs-docs-section">
   <h1 id="input-groups" class="page-header">Input groups</h1>
 
-  <p class="lead">Extend form controls by adding text or buttons before, after, or on both sides of any text-based <code>&lt;input&gt;</code>. Use <code>.input-group</code> with an <code>.input-group-addon</code> to prepend or append elements to a single <code>.form-control</code>.</p>
+  <p class="lead">Extend form controls by adding text or buttons before, after, or on both sides of any text-based <code>&lt;input&gt;</code>. Use <code>.input-group</code> with an <code>.input-group-addon</code> or <code>.input-group-btn</code> to prepend or append elements to a single <code>.form-control</code>.</p>
 
   <div class="bs-callout bs-callout-danger" id="callout-inputgroup-text-input-only">
     <h4>Textual <code>&lt;input&gt;</code>s only</h4>
@@ -19,12 +19,12 @@
   <div class="bs-callout bs-callout-warning" id="callout-inputgroup-form-labels">
     <h4>Always add labels</h4>
     <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.</p>
-    <p>The exact technique to be used (<code>&lt;label&gt;</code> elements hidden using the <code>.sr-only</code> class, or use of the <code>aria-label</code>, <code>aria-labelledby</code>, <code>aria-describedby</code>, <code>title</code> or <code>placeholder</code> attribute) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.</p>
+    <p>The exact technique to be used (visible <code>&lt;label&gt;</code> elements, <code>&lt;label&gt;</code> elements hidden using the <code>.sr-only</code> class, or use of the <code>aria-label</code>, <code>aria-labelledby</code>, <code>aria-describedby</code>, <code>title</code> or <code>placeholder</code> attribute) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.</p>
   </div>
 
   <h2 id="input-groups-basic">Basic example</h2>
   <p>Place one add-on or button on either side of an input. You may also place one on both sides of an input.</p>
-  <p><strong class="text-danger">We do not support multiple add-ons on a single side.</strong></p>
+  <p><strong class="text-danger">We do not support multiple add-ons (<code>.input-group-addon</code> or <code>.input-group-btn</code>) on a single side.</strong></p>
   <p><strong class="text-danger">We do not support multiple form-controls in a single input group.</strong></p>
   <form class="bs-example bs-example-form" data-example-id="simple-input-groups">
     <div class="input-group">
@@ -42,6 +42,12 @@
       <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
       <span class="input-group-addon">.00</span>
     </div>
+    <br>
+    <label for="basic-url">Your vanity URL</label>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+      <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
   </form>
 {% highlight html %}
 <div class="input-group">
@@ -58,6 +64,12 @@
   <span class="input-group-addon">$</span>
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
   <span class="input-group-addon">.00</span>
+</div>
+
+<label for="basic-url">Your vanity URL</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 </div>
 {% endhighlight %}
 
@@ -95,7 +107,6 @@
   <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon3">
 </div>
 {% endhighlight %}
-
 
   <h2 id="input-groups-checkboxes-radios">Checkboxes and radio addons</h2>
   <p>Place any checkbox or radio option within an input group's addon instead of text.</p>
@@ -139,7 +150,6 @@
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
 {% endhighlight %}
-
 
   <h2 id="input-groups-buttons">Button addons</h2>
   <p>Buttons in input groups are a bit different and require one extra level of nesting. Instead of <code>.input-group-addon</code>, you'll need to use <code>.input-group-btn</code> to wrap the buttons. This is required due to default browser styles that cannot be overridden.</p>
@@ -185,18 +195,17 @@
 {% endhighlight %}
 
   <h2 id="input-groups-buttons-dropdowns">Buttons with dropdowns</h2>
-  <p></p>
   <form class="bs-example bs-example-form" data-example-id="input-group-dropdowns">
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+            <ul class="dropdown-menu">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
+              <li role="separator" class="divider"></li>
               <li><a href="#">Separated link</a></li>
             </ul>
           </div><!-- /btn-group -->
@@ -207,12 +216,12 @@
         <div class="input-group">
           <input type="text" class="form-control" aria-label="Text input with dropdown button">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
-            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-right">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
+              <li role="separator" class="divider"></li>
               <li><a href="#">Separated link</a></li>
             </ul>
           </div><!-- /btn-group -->
@@ -225,12 +234,12 @@
   <div class="col-lg-6">
     <div class="input-group">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu" role="menu">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+        <ul class="dropdown-menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
+          <li role="separator" class="divider"></li>
           <li><a href="#">Separated link</a></li>
         </ul>
       </div><!-- /btn-group -->
@@ -241,12 +250,12 @@
     <div class="input-group">
       <input type="text" class="form-control" aria-label="...">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+        <ul class="dropdown-menu dropdown-menu-right">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
+          <li role="separator" class="divider"></li>
           <li><a href="#">Separated link</a></li>
         </ul>
       </div><!-- /btn-group -->
@@ -262,15 +271,15 @@
         <div class="input-group">
           <div class="input-group-btn">
             <button type="button" class="btn btn-default">Action</button>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="caret"></span>
               <span class="sr-only">Toggle Dropdown</span>
             </button>
-            <ul class="dropdown-menu" role="menu">
+            <ul class="dropdown-menu">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
+              <li role="separator" class="divider"></li>
               <li><a href="#">Separated link</a></li>
             </ul>
           </div>
@@ -282,15 +291,15 @@
           <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
           <div class="input-group-btn">
             <button type="button" class="btn btn-default">Action</button>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="caret"></span>
               <span class="sr-only">Toggle Dropdown</span>
             </button>
-            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <ul class="dropdown-menu dropdown-menu-right">
               <li><a href="#">Action</a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
+              <li role="separator" class="divider"></li>
               <li><a href="#">Separated link</a></li>
             </ul>
           </div>
@@ -310,6 +319,46 @@
   <input type="text" class="form-control" aria-label="...">
   <div class="input-group-btn">
     <!-- Button and dropdown menu -->
+  </div>
+</div>
+{% endhighlight %}
+
+  <h2 id="input-groups-buttons-multiple">Multiple buttons</h2>
+  <p>While you can only have one add-on per side, you can have multiple buttons inside a single <code>.input-group-btn</code>.</p>
+  <form class="bs-example bs-example-form" data-example-id="input-group-multiple-buttons">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default" aria-label="Bold"><span class="glyphicon glyphicon-bold"></span></button>
+            <button type="button" class="btn btn-default" aria-label="Italic"><span class="glyphicon glyphicon-italic"></span></button>
+          </div>
+          <input type="text" class="form-control" aria-label="Text input with multiple buttons">
+        </div><!-- /.input-group -->
+      </div><!-- /.col-lg-6 -->
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" class="form-control" aria-label="Text input with multiple buttons">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default" aria-label="Help"><span class="glyphicon glyphicon-question-sign"></span></button>
+            <button type="button" class="btn btn-default">Action</button>
+          </div>
+        </div><!-- /.input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+  </form>
+{% highlight html %}
+<div class="input-group">
+  <div class="input-group-btn">
+    <!-- Buttons -->
+  </div>
+  <input type="text" class="form-control" aria-label="...">
+</div>
+
+<div class="input-group">
+  <input type="text" class="form-control" aria-label="...">
+  <div class="input-group-btn">
+    <!-- Buttons -->
   </div>
 </div>
 {% endhighlight %}

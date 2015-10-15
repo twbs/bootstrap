@@ -130,19 +130,6 @@ $(function () {
     assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
-  QUnit.test('should toggle active when btn children are clicked within btn-group', function (assert) {
-    assert.expect(2)
-    var $btngroup = $('<div class="btn-group" data-toggle="buttons"/>')
-    var $btn = $('<button class="btn">fat</button>')
-    var $inner = $('<i/>')
-    $btngroup
-      .append($btn.append($inner))
-      .appendTo('#qunit-fixture')
-    assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
-    $inner.trigger('click')
-    assert.ok($btn.hasClass('active'), 'btn has class active')
-  })
-
   QUnit.test('should check for closest matching toggle', function (assert) {
     assert.expect(12)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">'
@@ -167,13 +154,13 @@ $(function () {
     assert.ok(!$btn2.find('input').prop('checked'), 'btn2 is not checked')
     $btn2.find('input').trigger('click')
     assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
-    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is checked')
+    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
     assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
 
     $btn2.find('input').trigger('click') // clicking an already checked radio should not un-check it
     assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
-    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is checked')
+    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
     assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
   })
