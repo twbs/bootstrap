@@ -149,12 +149,11 @@ Ensure that any meaning conveyed through color is also conveyed in a format that
 
 ## Close icon
 
-Use a generic close icon for dismissing content like modals and alerts. **Be sure to include screen reader text when you can** as we've done with `.sr-only`.
+Use a generic close icon for dismissing content like modals and alerts. **Be sure to include text for screen readers**, as we've done with `aria-label`.
 
 {% example html %}
 <button type="button" class="close" aria-label="Close">
   <span aria-hidden="true">&times;</span>
-  <span class="sr-only">Close</span>
 </button>
 {% endexample %}
 
