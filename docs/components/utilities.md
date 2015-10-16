@@ -149,12 +149,11 @@ Ensure that any meaning conveyed through color is also conveyed in a format that
 
 ## Close icon
 
-Use a generic close icon for dismissing content like modals and alerts. **Be sure to include screen reader text when you can** as we've done with `.sr-only`.
+Use a generic close icon for dismissing content like modals and alerts. **Be sure to include text for screen readers**, as we've done with `aria-label`.
 
 {% example html %}
 <button type="button" class="close" aria-label="Close">
   <span aria-hidden="true">&times;</span>
-  <span class="sr-only">Close</span>
 </button>
 {% endexample %}
 
@@ -252,7 +251,7 @@ The `.invisible` class can be used to toggle only the visibility of an element, 
 }
 {% endhighlight %}
 
-## Screen readers
+## Screen readers and keyboard users
 
 Hide an element to all devices **except screen readers** with `.sr-only`. Combine `.sr-only` with `.sr-only-focusable` to show the element again when it's focused (e.g. by a keyboard-only user). Can also be used as mixins.
 
