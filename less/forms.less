@@ -138,6 +138,10 @@ output {
     background-color: transparent;
   }
 
+//adjustment for the input file does not overflow in Firefox 
+&[type=file]{
+  height:auto;
+}
   // Disabled and read-only inputs
   //
   // HTML5 says that controls under a fieldset > legend:first-child won't be
