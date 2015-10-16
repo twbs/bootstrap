@@ -85,7 +85,7 @@
   }
 
   input:disabled ~ .c-indicator {
-    background-color: #bbb;
+    background-color: $input-color-disabled;
   }
 }
 
@@ -103,7 +103,7 @@
   }
 
   input:disabled ~ .c-indicator {
-    background-color: #bbb;
+    background-color: $input-color-disabled;
   }
 }
 
