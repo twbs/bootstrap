@@ -58,7 +58,7 @@
   color: #eee;
   text-align: center;
   user-select: none;
-  background-color: #eee;
+  background-color: $custom-form-bg-color;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
@@ -85,7 +85,8 @@
   }
 
   input:disabled ~ .c-indicator {
-    background-color: $input-color-disabled;
+    background-color: $custom-form-bg-color-disabled;
+    color: green;
   }
 }
 
@@ -103,7 +104,7 @@
   }
 
   input:disabled ~ .c-indicator {
-    background-color: $input-color-disabled;
+    background-color: $custom-form-bg-color-disabled;
   }
 }
 
