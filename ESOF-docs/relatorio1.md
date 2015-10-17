@@ -14,7 +14,16 @@ Com o Bootstrap 3.0, o projecto foi reescrito para ser *mobile friendly* enfatiz
 Existe já uma versão do Bootstrap 4.0 alpha que adicionou [Sass(style sheet designing)](https://en.wikipedia.org/wiki/Sass_%28stylesheet_language%29) e [CSS Flex Box(último modelo vindo do CSS3)](https://en.wikipedia.org/wiki/CSS_Flex_Box_Layout) suporte.  
 
 ##História do Projecto
-Este projecto, inicialmente designado **Twitter Blueprint**, foi desenvolvido por [Mark Otto](https://github.com/mdo) e [Jacob Thornton](https://github.com/fat) em 2010. Tudo começou no **Twitter** como uma *framework.
+Este projecto, inicialmente designado **Twitter Blueprint**, foi desenvolvido por [Mark Otto](https://github.com/mdo) e [Jacob Thornton](https://github.com/fat) em 2010. Tudo começou no **Twitter** como uma *framework* para encorajar consistência através de ferramentas internas. Antes do Bootstrap, muitas *libraries* foram usadas para desenvolvimento de interfaces o que levou a muitas inconsistências e a um custo muito elevado. O fundador, Mark Otto, tem uma afirmação que explica mesmo isso e mostra como foi inaugurada e criada esta ideia:
+
+>A super small group of developers and I got together to design and build a new internal tool and saw an opportunity to do something more. **Through that process, we saw ourselves build something much more substantial than another internal tool. Months later, we ended up with an early version of Bootstrap as a way to document and share common design patterns and assets within the company.**
+
+Após alguns meses de um desenvolvimento coordenado por um grupo pequeno, muitos fãs no **Twitter** começaram a contribuir para o projecto através de um evento chamado *Hack Week*. *Hack Week* é um evento organizado pelo Twitter onde vários programadores estão envolvidos em desenvolvimento de software e hardware. O termo provém de [Hackathon](https://en.wikipedia.org/wiki/Hackathon) que junta *graphic designers*, *interface designers* e *project managers* que colaboram exaustivamente em projectos de software. Foi aí que surgiu a mudança de nome de **Twitter Blueprint** para **Bootstrap** e o lançamento como *open source* projecto no dia 19 de Agosto de 2011. O projecto continuou a ser mantido por [Mark Otto](https://github.com/mdo), [Jacob Thornton](https://github.com/fat) e um pequeno grupo-núcleo de *developers* e uma larga comunidade de contribuidores. 
+Em Janeiro de 2012, a versão Bootstrap 2 foi anunciada e posteriormente, a 19 de Agosto de 2013, a versão 3 com novidades inovadoras e aliciantes como *responsive design*.
+Entretanto, a 29 de Outubro de 2014 [Mark Otto](https://github.com/mdo) anunciou que a versão 4 se encontra em desenvolvimento. A primeira versão alpha do Bootstrap 4 foi implantada a 19 de Agosto de 2015. 
+
+##Funcionamento e Estrutura
+
 
  
 Muito provavelmente, a força locomotora e o que mais impulsionou este projecto foi o grande "boom" das aplicações Web nos dias de hoje. Bootstrap, foi ganhando admiradores e seguidores por todos os cantos do mundo, que não largaram os seus criadores que outrora eram meros twitter "nerds". Não subestimando o trabalho árduo e o engenho deste grupo, acreditamos que se criou um ambiente favorável para que as coisas progredissem naturalmente. 
