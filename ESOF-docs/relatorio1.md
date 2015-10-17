@@ -1,4 +1,4 @@
-<img src="res/logo.png" width="300 px" alt="Bootstrap"/>
+<img src="res/logo.png" width="500 px" alt="Bootstrap"/>
 
 ###Descrição do Projecto
 
@@ -8,7 +8,7 @@ O [Bootstrap](http://getbootstrap.com/) é um front-end framework [open-source](
 Criado pela dupla de designers e programadores [Mark Otto](https://github.com/mdo) e e [Jacob Thornton](https://github.com/fat), no Twitter, em 2010, o projecto é actualmente mantido pelos criadores em conjunto com um pequeno grupo de contribuidores, contando também com o apoio da comunidade.
 
 ##Características
-O Boostrap é compatível com as mais recentes versões de browsers como [Google Chrome](https://en.wikipedia.org/wiki/Google_Chrome), [Firefox(https://en.wikipedia.org/wiki/Firefox), [Internet Explorer](https://en.wikipedia.org/wiki/Internet_Explorer) e [Safari](https://en.wikipedia.org/wiki/Safari_(web_browser)), embora alguns destes browsers não são suportados em todas as plataformas.
+O Boostrap é compatível com as mais recentes versões de browsers como [Google Chrome](https://en.wikipedia.org/wiki/Google_Chrome), [Firefox](https://en.wikipedia.org/wiki/Firefox), [Internet Explorer](https://en.wikipedia.org/wiki/Internet_Explorer) e [Safari](https://en.wikipedia.org/wiki/Safari_(web_browser)), embora alguns destes browsers não são suportados em todas as plataformas.
 Bootstrap vai actualmente na versão 3.3.5 e desde a versão 2.2.5 que esta framework suporta [*responsive web design*](https://en.wikipedia.org/wiki/Responsive_web_design), ou seja, mediante o dispositivo a ser usado (tablet, desktop, telemóvel), o layout das ṕáginas ajuda-se dinamica e optimizada, o que permite abranger um número muito maior de utilizadores e assim explorar e melhorar todo o seu desenvolvimento. 
 Com o Bootstrap 3.0, o projecto foi reescrito para ser *mobile friendly* enfatizando o *responsive design* por defeito.
 Existe já uma versão do Bootstrap 4.0 alpha que adicionou [Sass(style sheet designing)](https://en.wikipedia.org/wiki/Sass_%28stylesheet_language%29) e [CSS Flex Box(último modelo vindo do CSS3)](https://en.wikipedia.org/wiki/CSS_Flex_Box_Layout) suporte.  
