@@ -29,6 +29,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Components
 
+- Dropped button `.btn-default` class.
 - Dropped panels, thumbnails, and wells for a new all-encompassing component, cards.
 - Dropped the Glyphicons icon font. If you need icons, some options are:
   - the upstream version of [Glyphicons](http://glyphicons.com/)
@@ -79,6 +80,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
   - Dropped the `.form-horizontal` class requirement.
   - `.form-group` no longer mixins the `.row` class, so it's now required for grid layouts.
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
+
+### Buttons
+
+- Dropped the `.btn-default` class and additionaly add a new button class named `.btn-secondary`.
 
 ### Grid system
 
