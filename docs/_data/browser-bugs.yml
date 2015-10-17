@@ -150,6 +150,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    `float: right` doesn't consistently work correctly across page loads; possible race condition
+  upstream_bug: >
+    Chromium#544290
+  origin: >
+    Bootstrap#17913
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
@@ -187,6 +197,16 @@
     WebKit#149935
   origin: >
     Bootstrap#17438, Bootstrap#14237
+
+-
+  browser: >
+    Safari
+  summary: >
+    `float: right` doesn't consistently work correctly across page loads; possible race condition
+  upstream_bug: >
+    WebKit#150271
+  origin: >
+    Bootstrap#17913
 
 -
   browser: >
