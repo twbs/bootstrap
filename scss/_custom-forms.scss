@@ -90,8 +90,8 @@
       background-color: $custom-form-bg-color-disabled;
     }
     ~ .c-indicator-label {
+      color: $custom-form-label-color-disabled;    
       cursor: not-allowed;
-      color: $custom-form-label-color-disabled;
     }
   }
 }
@@ -115,8 +115,8 @@
       background-color: $custom-form-bg-color-disabled;
     }
     ~ .c-indicator-label {
+      color: $custom-form-label-color-disabled;    
       cursor: not-allowed;
-      color: $custom-form-label-color-disabled;
     }
   }
 }
