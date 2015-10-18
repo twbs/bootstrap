@@ -87,9 +87,11 @@
   input:disabled {
     ~ .c-indicator {
       background-color: $custom-form-bg-color-disabled;
+      cursor:not-allowed;
     }
     ~ .c-indicator-label {
       color: $custom-form-label-color-disabled;
+      cursor:not-allowed;
     }
   }
 }
@@ -110,9 +112,11 @@
   input:disabled {
     ~ .c-indicator {
       background-color: $custom-form-bg-color-disabled;
+      cursor:not-allowed;
     }
     ~ .c-indicator-label {
       color: $custom-form-label-color-disabled;
+      cursor:not-allowed;
     }
   }
 }
