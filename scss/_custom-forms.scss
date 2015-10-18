@@ -86,12 +86,12 @@
 
   input:disabled {
     ~ .c-indicator {
+      cursor: not-allowed;
       background-color: $custom-form-bg-color-disabled;
-      cursor:not-allowed;
     }
     ~ .c-indicator-label {
+      cursor: not-allowed;
       color: $custom-form-label-color-disabled;
-      cursor:not-allowed;
     }
   }
 }
@@ -111,12 +111,12 @@
 
   input:disabled {
     ~ .c-indicator {
+      cursor: not-allowed;
       background-color: $custom-form-bg-color-disabled;
-      cursor:not-allowed;
     }
     ~ .c-indicator-label {
+      cursor: not-allowed;
       color: $custom-form-label-color-disabled;
-      cursor:not-allowed;
     }
   }
 }
