@@ -1,6 +1,6 @@
 <img src="res/logo.png" width="500 px" alt="Bootstrap"/>
 
-###Descrição do Projecto
+##Descrição do Projecto
 
 O [Bootstrap](http://getbootstrap.com/) é um front-end framework [open-source](https://github.com/twbs/bootstrap) de HTML, CSS e Javascript que providencia um conjunto de ferramentas para a criação de websites e aplicações web. 
 
@@ -23,6 +23,12 @@ Em Janeiro de 2012, a versão Bootstrap 2 foi anunciada e posteriormente, a 19 d
 Entretanto, a 29 de Outubro de 2014 [Mark Otto](https://github.com/mdo) anunciou que a versão 4 se encontra em desenvolvimento. A primeira versão alpha do Bootstrap 4 foi implantada a 19 de Agosto de 2015. 
 
 ##Funcionamento e Estrutura
+
+<img src="res/exemplo.png" width="500 px" alt="Exemplo"/>
+
+#####Exemplo de uma webpage a utilizar Bootstrap framework no Mozilla Firefoxe (from Wikipedia)
+
+O Bootstrap é modular e consite 
 
 
  
