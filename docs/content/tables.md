@@ -451,7 +451,7 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
 {% callout warning %}
 #### Firefox and fieldsets
 
-Firefox has some awkward fieldset styling involving `width` that interferes with the responsive table. This cannot be overriden without a Firefox-specific hack that we **don't** provide in Bootstrap:
+Firefox has some awkward fieldset styling involving `width` that interferes with the responsive table. This cannot be overridden without a Firefox-specific hack that we **don't** provide in Bootstrap:
 
 {% highlight css %}
 @-moz-document url-prefix() {
