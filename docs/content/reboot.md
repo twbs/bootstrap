@@ -166,7 +166,7 @@ Various form elements have been rebooted for simpler base styles. Here are some 
 - `<legend>`s, like fieldsets, have also been restyled to be displayed as a heading of sorts.
 - `<label>`s are set to `display: inline-block` to allow `margin` to be applied.
 - `<input>`s, `<selects>`s, `<textareas>`s, and `<buttons>`s are mostly addressed by Normalize, but Reboot removes their `margin` and sets `line-height: inherit`, too.
-- `<textarea>`s are modified to only be resizeble vertically as horizontal resizing often "breaks" page layout.
+- `<textarea>`s are modified to only be resizable vertically as horizontal resizing often "breaks" page layout.
 
 These changes, and more, are demonstrated below.
 
@@ -280,7 +280,7 @@ The default `margin` on blockquotes is `1em 40px`, so we reset that to `0 0 1rem
 
 ### Inline elements
 
-The `<abbr>` element receives basic styling to make it stand the amongst paragraph text.
+The `<abbr>` element receives basic styling to make it stand out amongst paragraph text.
 
 <div class="bd-example">
   Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
