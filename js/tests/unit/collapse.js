@@ -45,7 +45,7 @@ $(function () {
   })
 
   QUnit.test('should show a collapsed element', function (assert) {
-    assert.expect(2)
+    assert.expect(1)
     var $el = $('<div class="collapse"/>').bootstrapCollapse('show')
 
     assert.ok($el.hasClass('in'), 'has class "in"')
