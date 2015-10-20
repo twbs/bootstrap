@@ -170,8 +170,6 @@ const Collapse = (($) => {
           .addClass(ClassName.COLLAPSE)
           .addClass(ClassName.IN)
 
-        this._element.style[dimension] = ''
-
         this.setTransitioning(false)
 
         $(this._element).trigger(Event.SHOWN)
