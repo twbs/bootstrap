@@ -116,7 +116,7 @@ const Util = (($) => {
     },
 
     reflow(element) {
-      return element.offsetHeight;
+      return element.offsetHeight
     },
 
     triggerTransitionEnd(element) {
