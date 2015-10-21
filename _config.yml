@@ -30,3 +30,65 @@ cdn:
   css:            https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
   css_theme:      https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css
   js:             https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js
+
+algolia:
+  application_id: NNYOET9BZD
+  index_name:     bootstrap
+  record_css_selector: p,h1,h2,h3,h4,h5,h6
+  excluded_files:
+    - index.html
+    - getting-started.html
+    - about.html
+    - browser-bugs.html
+    - customize.html
+    - migration.html
+  settings:
+    advancedSyntax: true
+    highlightPostTag: </mark>
+    highlightPreTag: <mark>
+    ignorePlurals: true
+    minWordSizefor1Typo: 3
+    minWordSizefor2Typos: 7
+    separatorsToIndex: '-.'
+    attributesToIndex:
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6
+      - unordered(codes)
+      - unordered(text)
+    attributesToRetrieve:
+      - anchor
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6
+      - tag_name
+      - text
+      - title
+      - url
+    ranking:
+      - typo
+      - geo
+      - words
+      - proximity
+      - attribute
+      - custom
+    customRanking:
+      - desc(weight.tag_name)
+      - desc(weight.page)
+      - desc(weight.number_of_words)
+    attributesToSnippet:
+      - text:20
+    attributesToHighlight:
+      - text
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6

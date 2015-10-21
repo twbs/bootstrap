@@ -1,15 +1,24 @@
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<input type="checkbox" id="bs-toggle-search" class="bs-toggle-search-checkbox" />
+<header class="navbar navbar-fixed-top bs-docs-nav bs-no-js" id="top" role="banner">
   <div class="container">
-    <div class="navbar-header">
+
+    <a href="../" class="navbar-brand">Bootstrap</a>
+
+    <div class="bs-navbar-toggles">
       <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="../" class="navbar-brand">Bootstrap</a>
+
+      <label for="bs-toggle-search" class="navbar-toggle bs-toggle-search-open">
+        <span class="sr-only">Open search</span>
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </label>
     </div>
-    <nav id="bs-navbar" class="collapse navbar-collapse">
+
+    <nav id="bs-navbar" class="collapse navbar-collapse bs-navbar">
       <ul class="nav navbar-nav">
         <li{% if page.slug == "getting-started" %} class="active"{% endif %}>
           <a href="../getting-started/">Getting started</a>
@@ -27,10 +36,35 @@
           <a href="../customize/">Customize</a>
         </li>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
         <li><a href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
       </ul>
+
+      <label for="bs-toggle-search" class="navbar-toggle bs-toggle-search-open">
+        <span class="sr-only">Open search</span>
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      </label>
+
+      <div class="navbar-form navbar-right bs-search" role="search">
+        <div class="input-group">
+          <label class="sr-only" aria-label="Search" for="bs-search-input">Search</label>
+          <div class="bs-search-input-wrapper">
+            <input type="text" class="form-control" id="bs-search-input" accesskey="s" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search the docs...">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </div>
+          </div>
+          <label for="bs-toggle-search" class="bs-toggle-search-close">
+            <span class="sr-only">Close search</span>
+            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
     </nav>
+
   </div>
 </header>
