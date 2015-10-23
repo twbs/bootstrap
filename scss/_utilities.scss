@@ -51,11 +51,11 @@
 
 // Alignment
 
-.text-left           { text-align: left; }
-.text-right          { text-align: right; }
-.text-center         { text-align: center; }
-.text-justify        { text-align: justify; }
-.text-nowrap         { white-space: nowrap; }
+.text-left           { text-align: left !important; }
+.text-right          { text-align: right !important; }
+.text-center         { text-align: center !important; }
+.text-justify        { text-align: justify !important; }
+.text-nowrap         { white-space: nowrap !important; }
 .text-truncate       { @include text-truncate; }
 
 // Responsive alignment
