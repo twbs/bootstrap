@@ -153,31 +153,29 @@
     }
 }
 
-.has-success {
-    .radio,
-    .checkbox {
-        > label {
-            //color: @brand-green;
-            border-color: @brand-green;
-        }
+.has-success .radio:not(.disabled),
+.radio.has-success,
+.checkbox.has-success {
+    > label {
+        //color: @brand-green;
+        border-color: @brand-green;
     }
 }
-.has-warning {
-    .radio,
-    .checkbox {
-        > label {
-            //color: @brand-orange;
-            border-color: @brand-orange;
-        }
+
+.has-warning .radio:not(.disabled),
+.radio.has-warning,
+.checkbox.has-warning {
+    > label {
+        //color: @brand-orange;
+        border-color: @brand-orange;
     }
 }
-.has-error {
-    .radio,
-    .checkbox {
-        > label {
-            //color: @brand-red;
-            border-color: @brand-red;
-        }
+
+.has-error .radio:not(.disabled),
+.checkbox.has-error {
+    > label {
+        //color: @brand-red;
+        border-color: @brand-red;
     }
 }
 
