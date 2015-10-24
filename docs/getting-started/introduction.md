@@ -9,10 +9,9 @@ Bootstrap is the world's most popular framework for building responsive, mobile-
 
 Here's how to quickly get started with the Bootstrap CDN and a template starter page.
 
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
+* [Accessibility]({{ site.baseurl }}/getting-started/accessibility)
+* [Download]({{ site.baseurl }}/getting-started/download)
+* [Javascript]({{ site.baseurl }}/getting-started/javascript)
 
 ## Quick start
 
