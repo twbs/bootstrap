@@ -172,59 +172,59 @@ Green checkmarks indicate the element **is visible** in your current viewport.
 
 <div class="row responsive-utilities-test visible-on">
   <div class="col-xs-6 col-sm-3">
-    <span class="hidden-sm-up visible">&#10004; Visible on extra small</span>
-    <span class="hidden-xs-down not-visible">Extra small</span>
+    <span class="hidden-sm-up visible" title="hidden-sm-up">&#10004; Visible on extra small</span>
+    <span class="hidden-xs-down not-visible" title="hidden-xs-down">Extra small</span>
   </div>
   <div class="col-xs-6 col-sm-3">
-    <span class="hidden-md-up visible">&#10004; Visible on small or narrower</span>
-    <span class="hidden-sm-down not-visible">Small or narrower</span>
+    <span class="hidden-md-up visible" title="hidden-md-up">&#10004; Visible on small or narrower</span>
+    <span class="hidden-sm-down not-visible" title="hidden-sm-down">Small or narrower</span>
   </div>
   <div class="col-xs-6 col-sm-3">
-    <span class="hidden-lg-up visible">&#10004; Visible on medium or narrower</span>
-    <span class="hidden-md-down not-visible">Medium or narrower</span>
+    <span class="hidden-lg-up visible" title="hidden-lg-up">&#10004; Visible on medium or narrower</span>
+    <span class="hidden-md-down not-visible" title="hidden-md-down">Medium or narrower</span>
   </div>
   <div class="col-xs-6 col-sm-3">
-    <span class="hidden-xl-up visible">&#10004; Visible on large or narrower</span>
-    <span class="hidden-lg-down not-visible">Large or narrower</span>
-  </div>
-</div>
-<div class="row responsive-utilities-test visible-on">
-  <div class="col-xs-6 col-sm-3">
-    <span class="hidden-xs-down visible">&#10004; Visible on small or wider</span>
-    <span class="hidden-sm-up not-visible">Small or wider</span>
-  </div>
-  <div class="col-xs-6 col-sm-3">
-    <span class="hidden-sm-down visible">&#10004; Visible on medium or wider</span>
-    <span class="hidden-md-up not-visible">Medium or wider</span>
-  </div>
-  <div class="col-xs-6 col-sm-3">
-    <span class="hidden-md-down visible">&#10004; Visible on large or wider</span>
-    <span class="hidden-lg-up not-visible">Large or wider</span>
-  </div>
-  <div class="col-xs-6 col-sm-3">
-    <span class="hidden-lg-down visible">&#10004; Visible on extra large</span>
-    <span class="hidden-xl-up not-visible">Extra large</span>
+    <span class="hidden-xl-up visible" title="hidden-xl-up">&#10004; Visible on large or narrower</span>
+    <span class="hidden-lg-down not-visible" title="hidden-lg-down">Large or narrower</span>
   </div>
 </div>
 <div class="row responsive-utilities-test visible-on">
   <div class="col-xs-6 col-sm-3">
-    <span class="hidden-sm-up visible">&#10004; Your viewport is exactly extra small</span>
-    <span class="hidden-xs-down not-visible">Your viewport is NOT exactly extra small</span>
+    <span class="hidden-xs-down visible" title="hidden-xs-down">&#10004; Visible on small or wider</span>
+    <span class="hidden-sm-up not-visible" title="hidden-sm-up">Small or wider</span>
   </div>
   <div class="col-xs-6 col-sm-3">
-    <span class="hidden-xs-down hidden-md-up visible">&#10004; Your viewport is exactly small</span>
+    <span class="hidden-sm-down visible" title="hidden-sm-down">&#10004; Visible on medium or wider</span>
+    <span class="hidden-md-up not-visible" title="hidden-md-up">Medium or wider</span>
+  </div>
+  <div class="col-xs-6 col-sm-3">
+    <span class="hidden-md-down visible" title="hidden-md-down">&#10004; Visible on large or wider</span>
+    <span class="hidden-lg-up not-visible" title="hidden-lg-up">Large or wider</span>
+  </div>
+  <div class="col-xs-6 col-sm-3">
+    <span class="hidden-lg-down visible" title="hidden-lg-down">&#10004; Visible on extra large</span>
+    <span class="hidden-xl-up not-visible" title="hidden-xl-up">Extra large</span>
+  </div>
+</div>
+<div class="row responsive-utilities-test visible-on">
+  <div class="col-xs-6 col-sm-3">
+    <span class="hidden-sm-up visible" title="hidden-sm-up">&#10004; Your viewport is exactly extra small</span>
+    <span class="hidden-xs-down not-visible" title="hidden-xs-down">Your viewport is NOT exactly extra small</span>
+  </div>
+  <div class="col-xs-6 col-sm-3">
+    <span class="hidden-xs-down hidden-md-up visible" title="hidden-xs-down hidden-md-up">&#10004; Your viewport is exactly small</span>
     <span class="hidden-sm-only not-visible">Your viewport is NOT exactly small</span>
   </div>
   <div class="col-xs-6 col-sm-3">
-    <span class="hidden-sm-down hidden-lg-up visible">&#10004; Your viewport is exactly medium</span>
+    <span class="hidden-sm-down hidden-lg-up visible" title="hidden-sm-down hidden-lg-up">&#10004; Your viewport is exactly medium</span>
     <span class="hidden-md-only not-visible">Your viewport is NOT exactly medium</span>
   </div>
   <div class="col-xs-6 col-sm-3">
-    <span class="hidden-md-down hidden-xl-up visible">&#10004; Your viewport is exactly large</span>
+    <span class="hidden-md-down hidden-xl-up visible" title="hidden-md-down hidden-xl-up">&#10004; Your viewport is exactly large</span>
     <span class="hidden-lg-only not-visible">Your viewport is NOT exactly large</span>
   </div>
   <div class="col-xs-6 col-sm-3">
-    <span class="hidden-lg-down visible">&#10004; Your viewport is exactly extra large</span>
+    <span class="hidden-lg-down visible" title="hidden-lg-down">&#10004; Your viewport is exactly extra large</span>
     <span class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</span>
   </div>
 </div>
