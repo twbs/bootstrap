@@ -21,14 +21,14 @@ Looking to quickly add Bootstrap to your project? Use the Bootstrap CDN, provide
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
 
 {% highlight html %}
-<link rel="stylesheet" href="{{ site.cdn.css }}">
+<link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 {% endhighlight %}
 
 Add our JavaScript plugins and jQuery near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery first as our code depends on it.
 
 {% highlight html %}
 <script src="{{ site.cdn.jquery }}"></script>
-<script src="{{ site.cdn.js }}"></script>
+<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
 And that's it—you're on your way to a fully Bootstrapped site. If you're at all unsure about the general page structure, keep reading for an example page template.
@@ -53,14 +53,14 @@ Put it all together and your pages should look like this:
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ site.cdn.css }}">
+    <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
   </head>
   <body>
     <h1>Hello, world!</h1>
 
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="{{ site.cdn.jquery }}"></script>
-    <script src="{{ site.cdn.js }}"></script>
+    <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
   </body>
 </html>
 {% endhighlight %}

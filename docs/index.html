@@ -33,8 +33,8 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
         <p>When you just need to include Bootstrap's compiled CSS and JS, use the Bootstrap CDN, free from the Max CDN folks.</p>
 {% comment %}
 {% highlight html %}
-<link rel="stylesheet" href="{{ site.cdn.css }}">
-<script src="{{ site.cdn.js }}"></script>
+<link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 {% endcomment %}
         <p class="text-muted">Not yet available, but hopefully soon!</p>
