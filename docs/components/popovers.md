@@ -53,7 +53,7 @@ $(function () {
 
 Four options are available: top, right, bottom, and left aligned.
 
-<div class="bd-example bd-example-popover">
+<div class="bd-example bd-example-popover-static">
   <div class="popover popover-top">
     <div class="popover-arrow"></div>
     <h3 class="popover-title">Popover top</h3>

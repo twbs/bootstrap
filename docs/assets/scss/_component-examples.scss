@@ -253,11 +253,11 @@
 }
 
 // Popovers
-.bd-example-popover {
+.bd-example-popover-static {
   padding-bottom: 1.5rem;
   background-color: #f9f9f9;
 }
-.bd-example-popover .popover {
+.bd-example-popover-static .popover {
   position: relative;
   display: block;
   float: left;
@@ -266,7 +266,7 @@
 }
 
 // Tooltips
-.bd-example-tooltip .tooltip {
+.bd-example-tooltip-static .tooltip {
   position: relative;
   display: inline-block;
   margin: 10px 20px;
