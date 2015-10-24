@@ -93,7 +93,7 @@ Four options are available: top, right, bottom, and left aligned.
 ## Live demo
 
 {% example html %}
-<button type="button" class="btn btn-lg btn-danger bd-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 {% endexample %}
 
 ### Four directions
@@ -145,7 +145,7 @@ For proper cross-browser and cross-platform behavior, you must use the `<a>` tag
 {% endcallout %}
 
 {% example html %}
-<a tabindex="0" class="btn btn-lg btn-danger bd-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {% endexample %}
 
 {% highlight js %}
@@ -306,7 +306,7 @@ Toggles an element's popover. **Returns to the caller before the popover has act
 
 #### `.popover('dispose')`
 
-Hides and destroys an element's popover. Popvoers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
+Hides and destroys an element's popover. Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
 
 {% highlight js %}$('#element').popover('dispose'){% endhighlight %}
