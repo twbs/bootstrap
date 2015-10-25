@@ -1,4 +1,4 @@
-java_script:
+javascript:
   enabled: false
 scss:
   config_file: scss/.scss-lint.yml

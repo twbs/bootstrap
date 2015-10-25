@@ -1,8 +1,8 @@
-// ZeroClipboard
+// clipboard.js
 //
 // Flash-based `Copy` buttons for code snippets.
 
-.zero-clipboard {
+.bd-clipboard {
   position: relative;
   display: none;
   float: right;
@@ -28,7 +28,7 @@
 }
 
 @media (min-width: 768px) {
-  .zero-clipboard {
+  .bd-clipboard {
     display: block;
   }
 }
