@@ -200,16 +200,6 @@
 
 -
   browser: >
-    Safari
-  summary: >
-    `float: right` doesn't consistently work correctly across page loads; possible race condition
-  upstream_bug: >
-    WebKit#150271
-  origin: >
-    Bootstrap#17913
-
--
-  browser: >
     Safari (OS X)
   summary: >
     Scrollbar clipped in `select[multiple]` with padding.
