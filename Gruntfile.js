@@ -21,9 +21,21 @@ module.exports = function (grunt) {
   var isTravis = require('is-travis');
   var npmShrinkwrap = require('npm-shrinkwrap');
   var mq4HoverShim = require('mq4-hover-shim');
+  var autoprefixer = require('autoprefixer');
 
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
+
+  var browsers = [
+          'Android 2.3',
+          'Android >= 4',
+          'Chrome >= 35',
+          'Firefox >= 31',
+          'Explorer >= 9',
+          'iOS >= 7',
+          'Opera >= 12',
+          'Safari >= 7.1'
+        ];
 
   Object.keys(configBridge.paths).forEach(function (key) {
     configBridge.paths[key].forEach(function (val, i, arr) {
@@ -46,8 +58,8 @@ module.exports = function (grunt) {
                  '}\n',
     jqueryVersionCheck: '+function ($) {\n' +
                         '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')\n' +
-                        '  if (version[0] !== \'2\') {\n' +
-                        '    throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery version 2.x.x\')\n' +
+                        '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1)) {\n' +
+                        '    throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery version 1.9.1 or higher\')\n' +
                         '  }\n' +
                         '}(jQuery);\n\n',
 
@@ -215,38 +227,30 @@ module.exports = function (grunt) {
     },
 
     postcss: {
-      options: {
-        map: true,
-        processors: [mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' })]
-      },
-      core: {
-        src: 'dist/css/*.css'
-      }
-    },
-
-    autoprefixer: {
-      options: {
-        browsers: [
-          'Android 2.3',
-          'Android >= 4',
-          'Chrome >= 35',
-          'Firefox >= 31',
-          'Explorer >= 9',
-          'iOS >= 7',
-          'Opera >= 12',
-          'Safari >= 7.1'
-        ]
-      },
       core: {
         options: {
-          map: true
+          map: true,
+          processors: [
+          mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' }),
+          autoprefixer({ browsers: browsers })
+          ]
         },
         src: 'dist/css/*.css'
       },
       docs: {
+        options: {
+          processors: [
+          autoprefixer({ browsers: browsers })
+          ]
+        },
         src: 'docs/assets/css/docs.min.css'
       },
       examples: {
+        options: {
+          processors: [
+          autoprefixer({ browsers: browsers })
+          ]
+        },
         expand: true,
         cwd: 'docs/examples/',
         src: ['**/*.css'],
@@ -468,7 +472,7 @@ module.exports = function (grunt) {
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
   grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
 
-  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'autoprefixer:core', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
+  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
@@ -492,7 +496,7 @@ module.exports = function (grunt) {
   });
 
   // Docs task.
-  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
+  grunt.registerTask('docs-css', ['postcss:docs', 'postcss:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
