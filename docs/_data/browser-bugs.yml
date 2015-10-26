@@ -152,9 +152,9 @@
   browser: >
     Chrome
   summary: >
-    `float`-ed box is misplaced after content change
+    `float: right` doesn't consistently work correctly across page loads; possible race condition
   upstream_bug: >
-    Chromium#523282
+    Chromium#544290
   origin: >
     Bootstrap#17913
 
