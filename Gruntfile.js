@@ -42,7 +42,6 @@ module.exports = function (grunt) {
     'Safari >= 7.1'
   ];
 
-
   Object.keys(configBridge.paths).forEach(function (key) {
     configBridge.paths[key].forEach(function (val, i, arr) {
       arr[i] = path.join('./docs/assets', val);
@@ -64,8 +63,8 @@ module.exports = function (grunt) {
                  '}\n',
     jqueryVersionCheck: '+function ($) {\n' +
                         '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')\n' +
-                        '  if (version[0] !== \'2\') {\n' +
-                        '    throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery version 2.x.x\')\n' +
+                        '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1)) {\n' +
+                        '    throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery version 1.9.1 or higher\')\n' +
                         '  }\n' +
                         '}(jQuery);\n\n',
 
