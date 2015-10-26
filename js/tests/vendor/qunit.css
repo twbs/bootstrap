@@ -1,12 +1,12 @@
 /*!
- * QUnit 1.18.0
+ * QUnit 1.19.0
  * http://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2015-04-03T10:23Z
+ * Date: 2015-09-01T15:00Z
  */
 
 /** Font Family and Sizes */
@@ -118,8 +118,8 @@
 #qunit-tests.hidepass li.pass {
 	visibility: hidden;
 	position: absolute;
-	width:   0px;
-	height:  0px;
+	width:   0;
+	height:  0;
 	padding: 0;
 	border:  0;
 	margin:  0;
@@ -160,6 +160,10 @@
 	background-color: #FFF;
 
 	border-radius: 5px;
+}
+
+.qunit-source {
+	margin: 0.6em 0 0.3em;
 }
 
 .qunit-collapsed {
