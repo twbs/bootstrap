@@ -9,7 +9,7 @@
 
 .c-input {
   position: relative;
-  display: inline;
+  display: inline-block;
   padding-left: 1.5rem;
   color: #555;
   cursor: pointer;
@@ -48,7 +48,7 @@
 
 .c-indicator {
   position: absolute;
-  top: 0;
+  top: 0.25rem;
   left: 0;
   display: block;
   width: 1rem;
@@ -107,7 +107,7 @@
 
 .c-inputs-stacked {
   .c-input {
-    display: inline;
+    display: block;
 
     &::after {
       display: block;
