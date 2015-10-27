@@ -42,6 +42,7 @@ module.exports = function (grunt) {
     'Safari >= 7.1'
   ];
 
+
   Object.keys(configBridge.paths).forEach(function (key) {
     configBridge.paths[key].forEach(function (val, i, arr) {
       arr[i] = path.join('./docs/assets', val);
