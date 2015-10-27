@@ -132,6 +132,10 @@ output {
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
+  &:hover {
+      border-color: @input-border-hover;
+  }
+
   // Customize the `:focus` state to imitate native WebKit styles.
   .form-control-focus();
 
@@ -242,11 +246,6 @@ input[type="search"] {
   position: absolute;
   margin-left: -20px;
   margin-top: 4px \9;
-}
-
-.radio + .radio,
-.checkbox + .checkbox {
-  margin-top: 0; // Move up sibling radios or checkboxes for tighter spacing
 }
 
 // Radios and checkboxes on same line
@@ -744,7 +743,7 @@ input[type="checkbox"] {
         color: @brand-light-blue;
     }
     .input-group-addon {
-        border-color: @brand-light-blue;
+        border-color: @input-border-focus;
     }
     //input, textarea, select {
     //    border-color: @brand-light-blue;
@@ -764,6 +763,81 @@ input[type="checkbox"] {
     .transition(~"border-color ease-in-out .15s");
 }
 
-.checkbox.has-error {
-    border-color: @state-danger-text;
+.checkbox,
+.radio {
+    > label {
+        font-size: @font-size-base;
+
+        display: block;
+        cursor: pointer;
+        white-space: nowrap;
+
+        line-height: 48px;
+        height: 48px;
+
+        color: @brand-blue-plus-20;
+        border: 1px solid @brand-smoke;
+        border-radius: @border-radius-base;
+
+        .transition(border 0.1s ease-in-out);
+
+        &:hover {
+            border-color: @input-border-hover;
+            background-color: @brand-smoke-plus-20;
+        }
+        &.focus,
+        &.focus:hover {
+            border-color: @input-border-focus;
+            background-color: @brand-smoke-plus-20;
+        }
+    }
+
+    &.has-success {
+        > label:not(.disabled) {
+            border-color: @state-success-text;
+            color: @brand-blue-plus-20;
+        }
+    }
+    &.has-warning {
+        > label:not(.disabled) {
+            border-color: @state-warning-text;
+            color: @brand-blue-plus-20;
+        }
+    }
+    &.has-error {
+        > label:not(.disabled) {
+            border-color: @state-danger-text;
+            color: @brand-blue-plus-20;
+        }
+    }
+
+    &[disabled],
+    &[readonly],
+    fieldset[disabled] &,
+    &.disabled,
+    &.readonly {
+        label {
+            color: @input-color-disabled;
+            border-color: @input-border-disabled;
+            background-color: @input-bg-disabled;
+        }
+    }
+}
+/* If a radio group has an error all section are invalid */
+.has-error {
+    .radio > label {
+        border-color: @state-danger-text;
+        color: @brand-blue-plus-20;
+    }
+}
+
+.disabled .checkbox,
+.checkbox.disabled,
+.disabled .radio,
+.radio.disabled {
+    > label,
+    > label:hover {
+        border-color: @input-border-disabled;
+        color: @input-color-disabled;
+    }
 }

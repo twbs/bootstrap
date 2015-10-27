@@ -2717,6 +2717,9 @@ output {
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+.form-control:hover {
+  border-color: #829ca9;
+}
 .form-control:focus {
   border-color: #00b9ff;
   outline: 0;
@@ -2819,10 +2822,6 @@ input[type="search"] {
   position: absolute;
   margin-top: 4px \9;
   margin-left: -20px;
-}
-.radio + .radio,
-.checkbox + .checkbox {
-  margin-top: 0;
 }
 .radio-inline,
 .checkbox-inline {
@@ -3163,25 +3162,11 @@ select[multiple].input-lg {
 .radio > label,
 .checkbox > label {
   position: relative;
-  display: block;
-  height: 48px;
   padding-left: 48px;
-  font-size: 16px;
-  line-height: 48px;
-  color: #2f4366;
-  white-space: nowrap;
-  cursor: pointer;
-  border: 1px solid #d3d5d8;
-  border-radius: 3px;
-  -webkit-transition: all .1s ease-in-out;
-       -o-transition: all .1s ease-in-out;
-          transition: all .1s ease-in-out;
 }
-.radio > label:hover,
-.checkbox > label:hover,
-.radio > label:focus,
-.checkbox > label:focus {
-  background-color: #f2f5f7;
+.radio > label:not(.focus):hover .input-replacement,
+.checkbox > label:not(.focus):hover .input-replacement {
+  border-color: #829ca9;
 }
 .radio > label:active:hover,
 .checkbox > label:active:hover {
@@ -3247,9 +3232,9 @@ fieldset[disabled] .checkbox label,
 .checkbox.disabled label,
 .radio.readonly label,
 .checkbox.readonly label {
-  color: #d3d5d8;
-  background-color: #f2f5f7;
-  border-color: #e2e6e8;
+  /*color: @input-color-disabled;
+        border-color: @input-border-disabled;
+        background-color: @input-bg-disabled;*/
 }
 .radio[disabled] label input[type=radio] + .input-replacement,
 .checkbox[disabled] label input[type=radio] + .input-replacement,
@@ -3345,20 +3330,6 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .form-group [disabled] + .input-replacement + .disabled-replacement {
   display: block;
 }
-.has-success .radio:not(.disabled) > label,
-.radio.has-success > label,
-.checkbox.has-success > label {
-  border-color: #59d941;
-}
-.has-warning .radio:not(.disabled) > label,
-.radio.has-warning > label,
-.checkbox.has-warning > label {
-  border-color: #ff9700;
-}
-.has-error .radio:not(.disabled) > label,
-.checkbox.has-error > label {
-  border-color: #f53720;
-}
 .form-horizontal .checkbox,
 .form-horizontal .radio {
   padding-top: 0;
@@ -3367,9 +3338,29 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .form-horizontal .radio > label {
   margin-bottom: 0;
 }
-.checkbox > label.focus,
-.radio > label.focus {
-  border-color: #00b9ff;
+.radio.has-success > label .input-replacement,
+.checkbox.has-success > label .input-replacement,
+.radio.has-success > label:hover .input-replacement,
+.checkbox.has-success > label:hover .input-replacement {
+  border-color: #59d941;
+}
+.radio.has-warning > label .input-replacement,
+.checkbox.has-warning > label .input-replacement,
+.radio.has-warning > label:hover .input-replacement,
+.checkbox.has-warning > label:hover .input-replacement {
+  border-color: #ff9700;
+}
+.radio.has-error > label .input-replacement,
+.checkbox.has-error > label .input-replacement,
+.radio.has-error > label:hover .input-replacement,
+.checkbox.has-error > label:hover .input-replacement {
+  border-color: #f53720;
+}
+.disabled .checkbox > label:hover .input-replacement,
+.checkbox.disabled > label:hover .input-replacement,
+.disabled .radio > label:hover .input-replacement,
+.radio.disabled > label:hover .input-replacement {
+  border-color: #e2e6e8;
 }
 .help-block {
   font-size: 12px;
@@ -3499,8 +3490,77 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
        -o-transition: border-color ease-in-out .15s;
           transition: border-color ease-in-out .15s;
 }
-.checkbox.has-error {
+.checkbox > label,
+.radio > label {
+  display: block;
+  height: 48px;
+  font-size: 16px;
+  line-height: 48px;
+  color: #2f4366;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid #d3d5d8;
+  border-radius: 3px;
+  -webkit-transition: border .1s ease-in-out;
+       -o-transition: border .1s ease-in-out;
+          transition: border .1s ease-in-out;
+}
+.checkbox > label:hover,
+.radio > label:hover {
+  background-color: #f2f5f7;
+  border-color: #829ca9;
+}
+.checkbox > label.focus,
+.radio > label.focus,
+.checkbox > label.focus:hover,
+.radio > label.focus:hover {
+  background-color: #f2f5f7;
+  border-color: #00b9ff;
+}
+.checkbox.has-success > label:not(.disabled),
+.radio.has-success > label:not(.disabled) {
+  color: #2f4366;
+  border-color: #4dba38;
+}
+.checkbox.has-warning > label:not(.disabled),
+.radio.has-warning > label:not(.disabled) {
+  color: #2f4366;
+  border-color: #ff9700;
+}
+.checkbox.has-error > label:not(.disabled),
+.radio.has-error > label:not(.disabled) {
+  color: #2f4366;
   border-color: #f53720;
+}
+.checkbox[disabled] label,
+.radio[disabled] label,
+.checkbox[readonly] label,
+.radio[readonly] label,
+fieldset[disabled] .checkbox label,
+fieldset[disabled] .radio label,
+.checkbox.disabled label,
+.radio.disabled label,
+.checkbox.readonly label,
+.radio.readonly label {
+  color: #d3d5d8;
+  background-color: #f2f5f7;
+  border-color: #e2e6e8;
+}
+/* If a radio group has an error all section are invalid */
+.has-error .radio > label {
+  color: #2f4366;
+  border-color: #f53720;
+}
+.disabled .checkbox > label,
+.checkbox.disabled > label,
+.disabled .radio > label,
+.radio.disabled > label,
+.disabled .checkbox > label:hover,
+.checkbox.disabled > label:hover,
+.disabled .radio > label:hover,
+.radio.disabled > label:hover {
+  color: #d3d5d8;
+  border-color: #e2e6e8;
 }
 .btn {
   display: inline-block;

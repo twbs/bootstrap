@@ -1,35 +1,20 @@
 .radio,
 .checkbox {
     > label {
-      font-size: @font-size-base;
-
       position: relative;
-      display: block;
-      cursor: pointer;
-      white-space: nowrap;
-
-      line-height: 48px;
-      height: 48px;
       padding-left: 48px;
 
-      color: @brand-blue-plus-20;
-      border: 1px solid @brand-smoke;
-      border-radius: @border-radius-base;
-
-      .transition(all 0.1s ease-in-out);
-
-      &:hover,
-      &:focus {
-        background-color: @brand-smoke-plus-20;
+      &:not(.focus):hover .input-replacement {
+          border-color: @input-border-hover;
       }
 
       &:active:hover {
-        border-color: @brand-light-blue;
+        border-color: @input-border-focus;
 
         input[type=radio],
         input[type=checkbox] {
           + .input-replacement {
-            border-color: @brand-light-blue;
+            border-color: @input-border-focus;
           }
         }
       }
@@ -52,12 +37,12 @@
       input[type=radio]:checked,
       input[type=checkbox]:checked {
         + .input-replacement {
-          border-color: @brand-light-blue;
+          border-color: @input-border-focus;
         }
       }
       input[type=checkbox]:checked {
         + .input-replacement {
-          background-color: @brand-light-blue;
+          background-color: @input-border-focus;
         }
       }
 
@@ -68,7 +53,7 @@
         border-radius: 50%;
         margin: 5px;
         display: block;
-        background-color: @brand-light-blue;
+        background-color: @input-border-focus;
       }
       input[type=checkbox]:checked + .input-replacement > span,
       input[type=checkbox]:checked + .input-replacement + .disabled-replacement > span {
@@ -82,9 +67,9 @@
     &.disabled,
     &.readonly {
       label {
-        color: @input-color-disabled;
+        /*color: @input-color-disabled;
         border-color: @input-border-disabled;
-        background-color: @input-bg-disabled;
+        background-color: @input-bg-disabled;*/
 
         input[type=radio],
         input[type=checkbox] {
@@ -102,42 +87,42 @@
 }
 .form-group {
     .input-replacement {
-      border: 1px solid @brand-smoke;
-      background: @brand-white;
-      width: 22px;
-      height: 22px;
-      border-radius: @border-radius-base;
+        border: 1px solid @input-border;
+        background: @brand-white;
+        width: 22px;
+        height: 22px;
+        border-radius: @border-radius-base;
 
-      position: absolute;
-      display: inline-block;
-      top: 11px;
-      left: 14px;
-      padding: 0;
-      vertical-align: middle;
+        position: absolute;
+        display: inline-block;
+        top: 11px;
+        left: 14px;
+        padding: 0;
+        vertical-align: middle;
 
-      .transition(all 0.1s ease-in-out);
+        .transition(all 0.1s ease-in-out);
 
-      > span {
-        text-align: center;
-        width: 0px;
-        height: 0px;
-        margin: 12px 0 0 12px;
-        .transition(all 0.1s ease-in);
-      }
-      > .glyphicon {
-        width: 20px;
-        height: 20px;
-        line-height: 18px;
-        margin: 0;
-        display: none;
-        color: @brand-white;
-      }
+        > span {
+            text-align: center;
+            width: 0px;
+            height: 0px;
+            margin: 12px 0 0 12px;
+            .transition(all 0.1s ease-in);
+        }
+        > .glyphicon {
+            width: 20px;
+            height: 20px;
+            line-height: 18px;
+            margin: 0;
+            display: none;
+            color: @brand-white;
+        }
 
-      &:focus,
-      &:active {
-        border-color: @brand-light-blue;
-        outline: none;
-      }
+        &:focus,
+        &:active {
+            border-color: @input-border-focus;
+            outline: none;
+        }
     }
     .disabled-replacement {
         border-color: @input-border-disabled;
@@ -153,32 +138,6 @@
     }
 }
 
-.has-success .radio:not(.disabled),
-.radio.has-success,
-.checkbox.has-success {
-    > label {
-        //color: @brand-green;
-        border-color: @brand-green;
-    }
-}
-
-.has-warning .radio:not(.disabled),
-.radio.has-warning,
-.checkbox.has-warning {
-    > label {
-        //color: @brand-orange;
-        border-color: @brand-orange;
-    }
-}
-
-.has-error .radio:not(.disabled),
-.checkbox.has-error {
-    > label {
-        //color: @brand-red;
-        border-color: @brand-red;
-    }
-}
-
 .form-horizontal {
     .checkbox,
     .radio {
@@ -190,8 +149,39 @@
     }
 }
 
+.radio,
+.checkbox {
+    &.has-success {
+        > label,
+        > label:hover {
+            .input-replacement {
+                border-color: @brand-green;
+            }
+        }
+    }
+    &.has-warning {
+        > label,
+        > label:hover {
+            .input-replacement {
+                border-color: @brand-orange;
+            }
+        }
+    }
+    &.has-error {
+        > label,
+        > label:hover {
+            .input-replacement {
+                border-color: @brand-red;
+            }
+        }
+    }
+}
 
-.checkbox > label.focus,
-.radio > label.focus, {
-    border-color: @brand-light-blue;
+.disabled .checkbox,
+.checkbox.disabled,
+.disabled .radio,
+.radio.disabled {
+    > label:hover .input-replacement {
+        border-color: @input-border-disabled;
+    }
 }
