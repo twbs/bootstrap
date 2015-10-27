@@ -44,33 +44,25 @@
 // Custom styles for additional flex alignment options.
 
 @if $enable-flex and $enable-grid-classes {
-
-  // Flex column reordering
-
   @each $breakpoint in map-keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
+      // Flex column reordering
       .col-#{$breakpoint}-first { order: -1; }
       .col-#{$breakpoint}-last  { order: 1; }
-    }
-  }
 
-  // Alignment for every column in row
-
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-      .row-#{$breakpoint}-top    { align-items: flex-start; }
-      .row-#{$breakpoint}-center { align-items: center; }
-      .row-#{$breakpoint}-bottom { align-items: flex-end; }
-    }
-  }
-
-  // Alignment per column
-
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-      .col-#{$breakpoint}-top    { align-self: flex-start; }
-      .col-#{$breakpoint}-center { align-self: center; }
-      .col-#{$breakpoint}-bottom { align-self: flex-end; }
+      // Alignment for every column in row and alignment per column
+      .row-#{$breakpoint}-top,
+      .col-#{$breakpoint}-top {
+        align-items: flex-start;
+      }
+      .row-#{$breakpoint}-center,
+      .col-#{$breakpoint}-center {
+        align-items: center;
+      }
+      .row-#{$breakpoint}-bottom,
+      .col-#{$breakpoint}-bottom {
+        align-items: flex-end;
+      }
     }
   }
 }
