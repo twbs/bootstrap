@@ -9,6 +9,7 @@
     background-color: $color;
   }
 
+  // IE9
   @media screen and (min-width:0\0) {
     .progress-bar {
       background-color: $color;
