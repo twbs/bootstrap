@@ -26,17 +26,17 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
-$gray-dark:                 #373a3c !default;
-$gray:                      #55595c !default;
-$gray-light:                #818a91 !default;
-$gray-lighter:              #eceeef !default;
-$gray-lightest:             #f7f7f9 !default;
+$gray-dark:                hsl(204, 4%, 22%)  !default;
+$gray:                     hsl(205, 3%, 34%)  !default;
+$gray-light:               hsl(206, 6%, 53%)  !default;
+$gray-lighter:             hsl(200, 8%, 93%)  !default;
+$gray-lightest:            hsl(240, 14%, 97%) !default;
 
-$brand-primary:             #0275d8 !default;
-$brand-success:             #5cb85c !default;
-$brand-info:                #5bc0de !default;
-$brand-warning:             #f0ad4e !default;
-$brand-danger:              #d9534f !default;
+$brand-primary:            hsl(207, 98%, 42%) !default;
+$brand-success:            hsl(120, 39%, 54%) !default;
+$brand-info:               hsl(193, 66%, 61%) !default;
+$brand-warning:            hsl(35, 84%, 62%)  !default;
+$brand-danger:             hsl(1, 64%, 58%)   !default;
 
 
 // Options
@@ -44,12 +44,12 @@ $brand-danger:              #d9534f !default;
 // Quickly modify global styling by enabling or disabling optional features.
 
 $enable-flex:               false !default;
-$enable-rounded:            true !default;
+$enable-rounded:            true  !default;
 $enable-shadows:            false !default;
 $enable-gradients:          false !default;
 $enable-transitions:        false !default;
 $enable-hover-media-query:  false !default;
-$enable-grid-classes:       true !default;
+$enable-grid-classes:       true  !default;
 
 
 // Spacing
@@ -67,7 +67,7 @@ $border-width:               1px !default;
 //
 // Settings for the `<body>` element.
 
-$body-bg:                    #fff !default;
+$body-bg:                    hsl(0, 0%, 100%) !default;
 $body-color:                 $gray-dark !default;
 
 
@@ -173,7 +173,7 @@ $blockquote-small-color:      $gray-light !default;
 $blockquote-font-size:        ($font-size-base * 1.25) !default;
 $blockquote-border-color:     $gray-lighter !default;
 
-$hr-border-color:             rgba(0,0,0,.1) !default;
+$hr-border-color:             hsla(0, 0%, 0%, 0.1) !default;
 $hr-border-width:             $border-width !default;
 
 
@@ -188,7 +188,7 @@ $border-radius:          .25rem !default;
 $border-radius-lg:       .3rem !default;
 $border-radius-sm:       .2rem !default;
 
-$component-active-color: #fff !default;
+$component-active-color: hsl(0, 0%, 100%) !default;
 $component-active-bg:    $brand-primary !default;
 
 $caret-width:            .3em !default;
@@ -203,8 +203,8 @@ $table-cell-padding:            .75rem !default;
 $table-sm-cell-padding:         .3rem !default;
 
 $table-bg:                      transparent !default;
-$table-bg-accent:               #f9f9f9 !default;
-$table-bg-hover:                #f5f5f5 !default;
+$table-bg-accent:               hsl(0, 0%, 97%) !default;
+$table-bg-hover:                hsl(0, 0%, 96%) !default;
 $table-bg-active:               $table-bg-hover !default;
 
 $table-border-color:            $gray-lighter !default;
@@ -218,27 +218,27 @@ $btn-padding-x:                  1rem !default;
 $btn-padding-y:                  .375rem !default;
 $btn-font-weight:                normal !default;
 
-$btn-primary-color:              #fff !default;
+$btn-primary-color:              hsl(0, 0%, 100%) !default;
 $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border:             $btn-primary-bg !default;
 
 $btn-secondary-color:            $gray-dark !default;
-$btn-secondary-bg:               #fff !default;
-$btn-secondary-border:           #ccc !default;
+$btn-secondary-bg:               hsl(0, 0%, 100%) !default;
+$btn-secondary-border:           hsl(0, 0%, 80%) !default;
 
-$btn-info-color:                 #fff !default;
+$btn-info-color:                 hsl(0, 0%, 100%) !default;
 $btn-info-bg:                    $brand-info !default;
 $btn-info-border:                $btn-info-bg !default;
 
-$btn-success-color:              #fff !default;
+$btn-success-color:              hsl(0, 0%, 100%) !default;
 $btn-success-bg:                 $brand-success !default;
 $btn-success-border:             $btn-success-bg !default;
 
-$btn-warning-color:              #fff !default;
+$btn-warning-color:              hsl(0, 0%, 100%) !default;
 $btn-warning-bg:                 $brand-warning !default;
 $btn-warning-border:             $btn-warning-bg !default;
 
-$btn-danger-color:               #fff !default;
+$btn-danger-color:               hsl(0, 0%, 100%) !default;
 $btn-danger-bg:                  $brand-danger !default;
 $btn-danger-border:              $btn-danger-bg !default;
 
@@ -261,21 +261,21 @@ $btn-border-radius-sm:           $border-radius-sm !default;
 $input-padding-x:                .75rem !default;
 $input-padding-y:                .375rem !default;
 
-$input-bg:                       #fff !default;
+$input-bg:                       hsl(0, 0%, 100%) !default;
 $input-bg-disabled:              $gray-lighter !default;
 
 $input-color:                    $gray !default;
-$input-border:                   #ccc !default;
-$input-box-shadow:               inset 0 1px 1px rgba(0,0,0,.075) !default;
+$input-border:                   hsl(0, 0%, 80%) !default;
+$input-box-shadow:               inset 0 1px 1px hsla(0, 0%, 0%, 0.07) !default;
 
 $input-border-radius:            $border-radius !default;
 $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
-$input-border-focus:             #66afe9 !default;
-$input-box-shadow-focus:         rgba(102,175,233,.6) !default;
+$input-border-focus:             hsl(206, 74%, 65%) !default;
+$input-box-shadow-focus:         hsla(206, 74%, 65%, 0.6) !default;
 
-$input-color-placeholder:        #999 !default;
+$input-color-placeholder:        hsl(0, 0%, 60%) !default;
 
 $input-padding-x-sm:             .75rem !default;
 $input-padding-y-sm:             .275rem !default;
@@ -304,13 +304,13 @@ $form-icon-error: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGl
 //
 // Dropdown menu container and contents.
 
-$dropdown-bg:                    #fff !default;
-$dropdown-border:                rgba(0,0,0,.15) !default;
-$dropdown-divider-bg:            #e5e5e5 !default;
+$dropdown-bg:                    hsl(0, 0%, 100%) !default;
+$dropdown-border:                hsla(0, 0%, 0%, 0.15) !default;
+$dropdown-divider-bg:            hsl(0, 0%, 89%) !default;
 
 $dropdown-link-color:            $gray-dark !default;
 $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
-$dropdown-link-hover-bg:         #f5f5f5 !default;
+$dropdown-link-hover-bg:         hsl(0, 0%, 96%) !default;
 
 $dropdown-link-active-color:     $component-active-color !default;
 $dropdown-link-active-bg:        $component-active-bg !default;
@@ -343,15 +343,15 @@ $navbar-border-radius:              $border-radius !default;
 $navbar-padding-horizontal:         $spacer !default;
 $navbar-padding-vertical:           ($spacer / 2) !default;
 
-$navbar-dark-color:                 rgba(255,255,255,.5) !default;
-$navbar-dark-hover-color:           rgba(255,255,255,.75) !default;
-$navbar-dark-active-color:          rgba(255,255,255,1) !default;
-$navbar-dark-disabled-color:        rgba(255,255,255,.25) !default;
+$navbar-dark-color:                 hsla(0, 0%, 100%, 0.5) !default;
+$navbar-dark-hover-color:           hsla(0, 0%, 100%, 0.75) !default;
+$navbar-dark-active-color:          hsl(0, 0%, 100%) !default;
+$navbar-dark-disabled-color:        hsla(0, 0%, 100%, 0.25) !default;
 
-$navbar-light-color:                rgba(0,0,0,.3) !default;
-$navbar-light-hover-color:          rgba(0,0,0,.6) !default;
-$navbar-light-active-color:         rgba(0,0,0,.8) !default;
-$navbar-light-disabled-color:       rgba(0,0,0,.15) !default;
+$navbar-light-color:                hsla(0, 0%, 0%, 0.3) !default;
+$navbar-light-hover-color:          hsla(0, 0%, 0%, 0.6) !default;
+$navbar-light-active-color:         hsla(0, 0%, 0%, 0.8) !default;
+$navbar-light-disabled-color:       hsla(0, 0%, 0%, 0.15) !default;
 
 
 // Navs
@@ -362,15 +362,15 @@ $nav-link-hover-bg:                         $gray-lighter !default;
 $nav-disabled-link-color:                   $gray-light !default;
 $nav-disabled-link-hover-color:             $gray-light !default;
 
-$nav-tabs-border-color:                     #ddd !default;
+$nav-tabs-border-color:                     hsl(0, 0%, 86%) !default;
 
 $nav-tabs-link-hover-border-color:          $gray-lighter !default;
 
 $nav-tabs-active-link-hover-bg:             $body-bg !default;
 $nav-tabs-active-link-hover-color:          $gray !default;
-$nav-tabs-active-link-hover-border-color:   #ddd !default;
+$nav-tabs-active-link-hover-border-color:   hsl(0, 0%, 86%) !default;
 
-$nav-tabs-justified-link-border-color:            #ddd !default;
+$nav-tabs-justified-link-border-color:      hsl(0, 0%, 86%) !default;
 $nav-tabs-justified-active-link-border-color:     $body-bg !default;
 
 $nav-pills-border-radius:                   $border-radius !default;
@@ -389,20 +389,20 @@ $pagination-padding-y-lg:             .75rem !default;
 
 
 $pagination-color:                     $link-color !default;
-$pagination-bg:                        #fff !default;
-$pagination-border:                    #ddd !default;
+$pagination-bg:                        hsl(0, 0%, 100%) !default;
+$pagination-border:                    hsl(0, 0%, 86%) !default;
 
 $pagination-hover-color:               $link-hover-color !default;
 $pagination-hover-bg:                  $gray-lighter !default;
-$pagination-hover-border:              #ddd !default;
+$pagination-hover-border:              hsl(0, 0%, 86%) !default;
 
-$pagination-active-color:              #fff !default;
+$pagination-active-color:              hsl(0, 0%, 100%) !default;
 $pagination-active-bg:                 $brand-primary !default;
 $pagination-active-border:             $brand-primary !default;
 
 $pagination-disabled-color:            $gray-light !default;
-$pagination-disabled-bg:               #fff !default;
-$pagination-disabled-border:           #ddd !default;
+$pagination-disabled-bg:               hsl(0, 0%, 100%) !default;
+$pagination-disabled-border:           hsl(0, 0%, 86%) !default;
 
 
 // Pager
@@ -429,20 +429,20 @@ $jumbotron-bg:                   $gray-lighter !default;
 //
 // Define colors for form feedback states and, by default, alerts.
 
-$state-success-text:             #3c763d !default;
-$state-success-bg:               #dff0d8 !default;
+$state-success-text:             hsl(121, 32%, 34%) !default;
+$state-success-bg:               hsl(102, 44%, 89%) !default;
 $state-success-border:           darken($state-success-bg, 5%) !default;
 
-$state-info-text:                #31708f !default;
-$state-info-bg:                  #d9edf7 !default;
+$state-info-text:                hsl(199, 48%, 37%) !default;
+$state-info-bg:                  hsl(200, 65%, 90%) !default;
 $state-info-border:              darken($state-info-bg, 7%) !default;
 
-$state-warning-text:             #8a6d3b !default;
-$state-warning-bg:               #fcf8e3 !default;
+$state-warning-text:             hsl(37, 40%, 38%) !default;
+$state-warning-bg:               hsl(50, 80%, 93%) !default;
 $state-warning-border:           darken($state-warning-bg, 5%) !default;
 
-$state-danger-text:              #a94442 !default;
-$state-danger-bg:                #f2dede !default;
+$state-danger-text:              hsl(1, 43%, 46%) !default;
+$state-danger-bg:                hsl(0, 43%, 90%) !default;
 $state-danger-border:            darken($state-danger-bg, 5%) !default;
 
 
@@ -451,16 +451,16 @@ $card-spacer-x:            1.25rem !default;
 $card-spacer-y:            .75rem !default;
 $card-border-width:        .0625rem !default;
 $card-border-radius:       $border-radius !default;
-$card-border-color:        #e5e5e5 !default;
+$card-border-color:        hsl(0, 0%, 89%) !default;
 $card-border-radius-inner: ($card-border-radius - $card-border-width) !default;
-$card-cap-bg:              #f5f5f5 !default;
-$card-bg:                  #fff !default;
+$card-cap-bg:              hsl(0, 0%, 96%) !default;
+$card-bg:                  hsl(0, 0%, 100%) !default;
 
 // Tooltips
 
 $tooltip-max-width:           200px !default;
-$tooltip-color:               #fff !default;
-$tooltip-bg:                  #000 !default;
+$tooltip-color:               hsl(0, 0%, 100%) !default;
+$tooltip-bg:                  hsl(0, 0%, 0%) !default;
 $tooltip-opacity:             .9 !default;
 
 $tooltip-arrow-width:         5px !default;
@@ -469,10 +469,10 @@ $tooltip-arrow-color:         $tooltip-bg !default;
 
 // Popovers
 
-$popover-bg:                          #fff !default;
+$popover-bg:                          hsl(0, 0%, 100%) !default;
 $popover-max-width:                   276px !default;
-$popover-border-color:                rgba(0,0,0,.2) !default;
-$popover-fallback-border-color:       #ccc !default;
+$popover-border-color:                hsla(0, 0%, 0%, 0.2) !default;
+$popover-fallback-border-color:       hsl(0, 0%, 80%) !default;
 
 $popover-title-bg:                    darken($popover-bg, 3%) !default;
 
@@ -493,8 +493,8 @@ $label-info-bg:               $brand-info !default;
 $label-warning-bg:            $brand-warning !default;
 $label-danger-bg:             $brand-danger !default;
 
-$label-color:                 #fff !default;
-$label-link-hover-color:      #fff !default;
+$label-color:                 hsl(0, 0%, 100%) !default;
+$label-link-hover-color:      hsl(0, 0%, 100%) !default;
 
 
 // Modals
@@ -505,12 +505,12 @@ $modal-inner-padding:         15px !default;
 $modal-title-padding:         15px !default;
 $modal-title-line-height:     $line-height !default;
 
-$modal-content-bg:                             #fff !default;
-$modal-content-border-color:                   rgba(0,0,0,.2) !default;
+$modal-content-bg:            hsl(0, 0%, 100%) !default;
+$modal-content-border-color:  hsla(0, 0%, 0%, 0.2) !default;
 
-$modal-backdrop-bg:           #000 !default;
+$modal-backdrop-bg:           hsl(0, 0%, 0%) !default;
 $modal-backdrop-opacity:      .5 !default;
-$modal-header-border-color:   #e5e5e5 !default;
+$modal-header-border-color:   hsl(0, 0%, 89%) !default;
 $modal-footer-border-color:   $modal-header-border-color !default;
 
 $modal-lg:                    900px !default;
@@ -545,8 +545,8 @@ $alert-danger-border:         $state-danger-border !default;
 
 // Progress bars
 
-$progress-bg:                 #f5f5f5 !default;
-$progress-bar-color:          #fff !default;
+$progress-bg:                 hsl(0, 0%, 96%) !default;
+$progress-bar-color:          hsl(0, 0%, 100%) !default;
 $progress-border-radius:      $border-radius !default;
 
 $progress-bar-bg:             $brand-primary !default;
@@ -558,11 +558,11 @@ $progress-bar-info-bg:        $brand-info !default;
 
 // List group
 
-$list-group-bg:                 #fff !default;
-$list-group-border:             #ddd !default;
+$list-group-bg:                 hsl(0, 0%, 100%) !default;
+$list-group-border:             hsl(0, 0%, 86%) !default;
 $list-group-border-radius:      $border-radius !default;
 
-$list-group-hover-bg:           #f5f5f5 !default;
+$list-group-hover-bg:           hsl(0, 0%, 96%) !default;
 $list-group-active-color:       $component-active-color !default;
 $list-group-active-bg:          $component-active-bg !default;
 $list-group-active-border:      $list-group-active-bg !default;
@@ -572,16 +572,16 @@ $list-group-disabled-color:      $gray-light !default;
 $list-group-disabled-bg:         $gray-lighter !default;
 $list-group-disabled-text-color: $list-group-disabled-color !default;
 
-$list-group-link-color:         #555 !default;
+$list-group-link-color:         hsl(0, 0%, 33%) !default;
 $list-group-link-hover-color:   $list-group-link-color !default;
-$list-group-link-heading-color: #333 !default;
+$list-group-link-heading-color: hsl(0, 0%, 20%) !default;
 
 
 // Image thumbnails
 
 $thumbnail-padding:           .25rem !default;
 $thumbnail-bg:                $body-bg !default;
-$thumbnail-border:            #ddd !default;
+$thumbnail-border:            hsl(0, 0%, 86%) !default;
 $thumbnail-border-radius:     $border-radius !default;
 
 
@@ -598,35 +598,35 @@ $breadcrumb-divider:            "/" !default;
 
 // Carousel
 
-$carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6) !default;
+$carousel-text-shadow:                        0 1px 2px hsla(0, 0%, 0%, 0.6) !default;
 
-$carousel-control-color:                      #fff !default;
+$carousel-control-color:                      hsl(0, 0%, 100%) !default;
 $carousel-control-width:                      15% !default;
 $carousel-control-opacity:                    .5 !default;
 $carousel-control-font-size:                  20px !default;
 
-$carousel-indicator-active-bg:                #fff !default;
-$carousel-indicator-border-color:             #fff !default;
+$carousel-indicator-active-bg:                hsl(0, 0%, 100%) !default;
+$carousel-indicator-border-color:             hsl(0, 0%, 100%) !default;
 
-$carousel-caption-color:                      #fff !default;
+$carousel-caption-color:                      hsl(0, 0%, 100%) !default;
 
 
 // Close
 
 $close-font-weight:           bold !default;
-$close-color:                 #000 !default;
-$close-text-shadow:           0 1px 0 #fff !default;
+$close-color:                 hsl(0, 0%, 0%) !default;
+$close-text-shadow:           0 1px 0 hsl(0, 0%, 100%) !default;
 
 
 // Code
 
-$code-color:                  #bd4147 !default;
-$code-bg:                     #f7f7f9 !default;
+$code-color:                  hsl(357, 48%, 49%) !default;
+$code-bg:                     hsl(240, 14%, 97%) !default;
 
-$kbd-color:                   #fff !default;
-$kbd-bg:                      #333 !default;
+$kbd-color:                   hsl(0, 0%, 100%) !default;
+$kbd-bg:                      hsl(0, 0%, 20%) !default;
 
-$pre-bg:                      #f7f7f9 !default;
+$pre-bg:                      hsl(240, 14%, 97%) !default;
 $pre-color:                   $gray-dark !default;
-$pre-border-color:            #ccc !default;
+$pre-border-color:            hsl(0, 0%, 80%) !default;
 $pre-scrollable-max-height:   340px !default;
