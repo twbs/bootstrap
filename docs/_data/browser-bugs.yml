@@ -50,16 +50,6 @@
 
 -
   browser: >
-    Firefox (Windows)
-  summary: >
-    Java applets that are descendants of elements with forced hardware acceleration using `translate3d(0,0,0)` are invisible.
-  upstream_bug: >
-    Mozilla#1048279
-  origin: >
-    Bootstrap#14124
-
--
-  browser: >
     Firefox
   summary: >
     Button elements with `width: 100%` become cropped in long tables.
@@ -150,6 +140,26 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    `table-cell` borders not overlapping despite `margin-right: -1px`
+  upstream_bug: >
+    Chromium#534750
+  origin: >
+    Bootstrap#17438, Bootstrap#14237
+
+-
+  browser: >
+    Chrome
+  summary: >
+    `float`-ed box is misplaced after content change
+  upstream_bug: >
+    Chromium#523282
+  origin: >
+    Bootstrap#17913
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
@@ -180,6 +190,16 @@
 
 -
   browser: >
+    Safari
+  summary: >
+    Unexplained `1px` horizontal space between `display: table-cell` elements
+  upstream_bug: >
+    WebKit#149935
+  origin: >
+    Bootstrap#17438, Bootstrap#14237
+
+-
+  browser: >
     Safari (OS X)
   summary: >
     Scrollbar clipped in `select[multiple]` with padding.
@@ -204,16 +224,6 @@
   browser: >
     Safari (OS X)
   summary: >
-    `display: table-cell;` within media query renders incorrectly when resizing the window.
-  upstream_bug: >
-    WebKit#138167, Safari#18987206
-  origin: >
-    Bootstrap#9774
-
--
-  browser: >
-    Safari (OS X)
-  summary: >
     Small font size when printing webpage with fixed-width `.container`.
   upstream_bug: >
     WebKit#138192, Safari#19435018
@@ -229,6 +239,16 @@
     WebKit#143527, Safari#21908735
   origin: >
     Bootstrap#16180
+
+-
+  browser: >
+    Safari (iPad)
+  summary: >
+    `<select>` menu on iPad causes shifting of hit-testing areas
+  upstream_bug: >
+    WebKit#150079, Safari#23082521
+  origin: >
+    Bootstrap#14975
 
 -
   browser: >
