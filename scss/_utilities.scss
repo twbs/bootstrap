@@ -90,6 +90,15 @@
 
 @include text-emphasis-variant('.text-danger', $brand-danger);
 
+@include text-emphasis-variant-inverse('.text-primary-lighten', $brand-primary);
+
+@include text-emphasis-variant-inverse('.text-success-lighten', $brand-success);
+
+@include text-emphasis-variant-inverse('.text-info-lighten',    $brand-info);
+
+@include text-emphasis-variant-inverse('.text-warning-lighten', $brand-warning);
+
+@include text-emphasis-variant-inverse('.text-danger-lighten',  $brand-danger);
 
 // Contextual backgrounds
 // For now we'll leave these alongside the text classes until v4 when we can
