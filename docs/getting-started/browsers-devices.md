@@ -181,7 +181,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
       '@-ms-viewport{width:auto!important}'
     )
   )
-  document.querySelector('head').appendChild(msViewportStyle)
+  document.head.appendChild(msViewportStyle)
 }
 {% endhighlight %}
 
