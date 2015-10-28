@@ -35,7 +35,7 @@ legend {
 label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   font-size: @font-size-small;
   color: @brand-grey-plus-10;
   line-height: 20px;
@@ -664,7 +664,6 @@ input[type="checkbox"] {
 .form-group {
     position: relative;
     font-size: @font-size-small;
-    line-height: 20px;
 }
 @media (min-width: @screen-sm-min) {
     .form-group .help-block {
@@ -680,8 +679,9 @@ input[type="checkbox"] {
     + .text-info,
     + .text-warning,
     + .text-danger {
-        margin-top: (@padding-base-vertical / 2);
+        margin-top: @padding-base-vertical;
         font-size: 12px;
+        line-height: 16px;
     }
 }
 
@@ -840,4 +840,28 @@ input[type="checkbox"] {
         border-color: @input-border-disabled;
         color: @input-color-disabled;
     }
+}
+
+.error-messages {
+	display: none;
+    color: @state-danger-text;
+    margin-top: @padding-base-vertical;
+    font-size: 12px;
+    line-height: 16px;
+}
+.has-error .error-messages {
+	display: block;
+}
+
+.error-required,
+.error-pattern,
+.error-minlength,
+.error-maxlength {
+    display: none;
+}
+.ng-invalid-required + .error-messages > .error-required,
+.ng-invalid-pattern + .error-messages > .error-pattern,
+.ng-invalid-minlength + .error-messages > .error-minlength,
+.ng-invalid-maxlength + .error-messages > .error-maxlength {
+	display: block;
 }
