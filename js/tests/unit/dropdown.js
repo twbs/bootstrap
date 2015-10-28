@@ -420,4 +420,49 @@ $(function () {
 
     assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
   })
+
+  QUnit.test('should not close the dropdown if the user clicks on a select', function (assert) {
+    assert.expect(1)
+    var dropdownHTML = '<div class="btn-group">'
+        + '<button type="button" data-toggle="dropdown">Dropdown</button>'
+        + '<ul class="dropdown-menu">'
+        + '<li>'
+        + '<select class="form-control" name="select" id="select">'
+        + '<option value="first">First</option>'
+        + '<option value="second">Second</option>'
+        + '<option value="third">Third</option>'
+        + '</select>'
+        + '</li>'
+        + '</ul>'
+        + '</div>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+      .trigger('click')
+
+    $('#select').trigger('click')
+
+    assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
+  })
+
+  QUnit.test('should not close the dropdown if the user clicks on a label', function (assert) {
+    assert.expect(1)
+    var dropdownHTML = '<div class="btn-group">'
+        + '<button type="button" data-toggle="dropdown">Dropdown</button>'
+        + '<ul class="dropdown-menu">'
+        + '<div><input type="radio" id="radio1" name="radio" value="1" checked="checked" /><label id="label1" for="radio1">Radio 1</label></div>'
+        + '<div><input type="radio" id="radio2" name="radio" value="2" checked="checked" /><label id="label2" for="radio2">Radio 2</label></div>'
+        + '</ul>'
+        + '</div>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+      .trigger('click')
+
+    $('#label1, #label2').trigger('click')
+
+    assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
+  })
 })
