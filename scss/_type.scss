@@ -110,8 +110,10 @@ mark,
 }
 
 // Horizontal description lists w/ grid classes
-.dl-horizontal {
-  @include make-row();
+@if $enable-grid-classes {
+  .dl-horizontal {
+    @include make-row();
+  }
 }
 
 
