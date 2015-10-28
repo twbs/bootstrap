@@ -2655,7 +2655,7 @@ legend {
 label {
   display: inline-block;
   max-width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   font-size: 14px;
   line-height: 20px;
   color: #6f8691;
@@ -2798,7 +2798,7 @@ input[type="search"] {
   }
 }
 .form-group {
-  margin-bottom: 23px;
+  margin-bottom: 24px;
 }
 .radio,
 .checkbox {
@@ -3406,7 +3406,6 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .form-group {
   position: relative;
   font-size: 14px;
-  line-height: 20px;
 }
 @media (min-width: 768px) {
   .form-group .help-block {
@@ -3421,8 +3420,9 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .form-control + .text-info,
 .form-control + .text-warning,
 .form-control + .text-danger {
-  margin-top: 4px;
+  margin-top: 8px;
   font-size: 12px;
+  line-height: 16px;
 }
 .form-group .row {
   margin-right: -6px;
@@ -3561,6 +3561,28 @@ fieldset[disabled] .radio label,
 .radio.disabled > label:hover {
   color: #d3d5d8;
   border-color: #e2e6e8;
+}
+.error-messages {
+  display: none;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #f53720;
+}
+.has-error .error-messages {
+  display: block;
+}
+.error-required,
+.error-pattern,
+.error-minlength,
+.error-maxlength {
+  display: none;
+}
+.ng-invalid-required + .error-messages > .error-required,
+.ng-invalid-pattern + .error-messages > .error-pattern,
+.ng-invalid-minlength + .error-messages > .error-minlength,
+.ng-invalid-maxlength + .error-messages > .error-maxlength {
+  display: block;
 }
 .btn {
   display: inline-block;
