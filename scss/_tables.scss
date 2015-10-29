@@ -109,13 +109,13 @@
 .table-responsive {
   display: block;
   width: 100%;
+  min-height: 0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
   overflow-x: auto;
 
-  // Todo: find out if we need this still.
+  // TODO: find out if we need this still.
   //
   // border: 1px solid $table-border-color;
-  // -ms-overflow-style: -ms-autohiding-scrollbar;
-  // min-height: 0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+  // -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
 }
 
 
