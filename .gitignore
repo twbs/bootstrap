@@ -48,6 +48,9 @@ scss-lint-report.xml
 # grunt-contrib-sass cache
 .sass-cache
 
+# Jekyll metadata
+docs/.jekyll-metadata
+
 # Folders to ignore
 bower_components
 node_modules
