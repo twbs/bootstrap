@@ -10,7 +10,7 @@
   @include border-radius($card-border-radius);
 
   > img {
-      @extend .img-fluid;
+    @extend .img-fluid;
   }
 }
 
