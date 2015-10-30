@@ -18,18 +18,18 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
 {% example html %}
 <nav>
   <ul class="pagination">
-    <li>
+    <li class="page">
       <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
+    <li class="page"><a href="#">1</a></li>
+    <li class="page"><a href="#">2</a></li>
+    <li class="page"><a href="#">3</a></li>
+    <li class="page"><a href="#">4</a></li>
+    <li class="page"><a href="#">5</a></li>
+    <li class="page">
       <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
@@ -46,20 +46,20 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 {% example html %}
 <nav>
   <ul class="pagination">
-    <li class="disabled">
+    <li class="page disabled">
       <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li class="active">
+    <li class="page active">
       <a href="#">1 <span class="sr-only">(current)</span></a>
     </li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
+    <li class="page"><a href="#">2</a></li>
+    <li class="page"><a href="#">3</a></li>
+    <li class="page"><a href="#">4</a></li>
+    <li class="page"><a href="#">5</a></li>
+    <li class="page">
       <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
@@ -74,13 +74,13 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
 {% example html %}
 <nav>
   <ul class="pagination">
-    <li class="disabled">
+    <li class="page disabled">
       <span aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </span>
     </li>
-    <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+    <li class="page active"><span>1 <span class="sr-only">(current)</span></span></li>
   </ul>
 </nav>
 {% endexample %}
@@ -93,16 +93,16 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {% example html %}
 <nav>
   <ul class="pagination pagination-lg">
-    <li>
+    <li class="page">
       <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li>
+    <li class="page"><a href="#">1</a></li>
+    <li class="page"><a href="#">2</a></li>
+    <li class="page"><a href="#">3</a></li>
+    <li class="page">
       <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
@@ -115,16 +115,16 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {% example html %}
 <nav>
   <ul class="pagination pagination-sm">
-    <li>
+    <li class="page">
       <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li>
+    <li class="page"><a href="#">1</a></li>
+    <li class="page"><a href="#">2</a></li>
+    <li class="page"><a href="#">3</a></li>
+    <li class="page">
       <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
