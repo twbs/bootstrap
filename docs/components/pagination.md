@@ -19,18 +19,18 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
 <nav>
   <ul class="pagination">
     <li class="page">
-      <a href="#" aria-label="Previous">
+      <a class="page-link" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li class="page"><a href="#">1</a></li>
-    <li class="page"><a href="#">2</a></li>
-    <li class="page"><a href="#">3</a></li>
-    <li class="page"><a href="#">4</a></li>
-    <li class="page"><a href="#">5</a></li>
+    <li class="page"><a class="page-link" href="#">1</a></li>
+    <li class="page"><a class="page-link" href="#">2</a></li>
+    <li class="page"><a class="page-link" href="#">3</a></li>
+    <li class="page"><a class="page-link" href="#">4</a></li>
+    <li class="page"><a class="page-link" href="#">5</a></li>
     <li class="page">
-      <a href="#" aria-label="Next">
+      <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
@@ -47,20 +47,20 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 <nav>
   <ul class="pagination">
     <li class="page disabled">
-      <a href="#" aria-label="Previous">
+      <a class="page-link" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
     <li class="page active">
-      <a href="#">1 <span class="sr-only">(current)</span></a>
+      <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
     </li>
-    <li class="page"><a href="#">2</a></li>
-    <li class="page"><a href="#">3</a></li>
-    <li class="page"><a href="#">4</a></li>
-    <li class="page"><a href="#">5</a></li>
+    <li class="page"><a class="page-link" href="#">2</a></li>
+    <li class="page"><a class="page-link" href="#">3</a></li>
+    <li class="page"><a class="page-link" href="#">4</a></li>
+    <li class="page"><a class="page-link" href="#">5</a></li>
     <li class="page">
-      <a href="#" aria-label="Next">
+      <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
@@ -75,12 +75,12 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
 <nav>
   <ul class="pagination">
     <li class="page disabled">
-      <span aria-label="Previous">
+      <span class="page-link" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </span>
     </li>
-    <li class="page active"><span>1 <span class="sr-only">(current)</span></span></li>
+    <li class="page active"><span class="page-link">1 <span class="sr-only">(current)</span></span></li>
   </ul>
 </nav>
 {% endexample %}
@@ -94,16 +94,16 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 <nav>
   <ul class="pagination pagination-lg">
     <li class="page">
-      <a href="#" aria-label="Previous">
+      <a class="page-link" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li class="page"><a href="#">1</a></li>
-    <li class="page"><a href="#">2</a></li>
-    <li class="page"><a href="#">3</a></li>
+    <li class="page"><a class="page-link" href="#">1</a></li>
+    <li class="page"><a class="page-link" href="#">2</a></li>
+    <li class="page"><a class="page-link" href="#">3</a></li>
     <li class="page">
-      <a href="#" aria-label="Next">
+      <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
@@ -116,16 +116,16 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 <nav>
   <ul class="pagination pagination-sm">
     <li class="page">
-      <a href="#" aria-label="Previous">
+      <a class="page-link" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li class="page"><a href="#">1</a></li>
-    <li class="page"><a href="#">2</a></li>
-    <li class="page"><a href="#">3</a></li>
+    <li class="page"><a class="page-link" href="#">1</a></li>
+    <li class="page"><a class="page-link" href="#">2</a></li>
+    <li class="page"><a class="page-link" href="#">3</a></li>
     <li class="page">
-      <a href="#" aria-label="Next">
+      <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
