@@ -8,7 +8,7 @@
 .m-x-0 { margin-right:  0 !important; margin-left:   0 !important; }
 .m-y-0 { margin-top:    0 !important; margin-bottom: 0 !important; }
 
-.m-a { margin:        $spacer !important; }
+.m-a { margin:        $spacer   !important; }
 .m-t { margin-top:    $spacer-y !important; }
 .m-r { margin-right:  $spacer-x !important; }
 .m-b { margin-bottom: $spacer-y !important; }
@@ -17,7 +17,7 @@
 .m-y { margin-top:    $spacer-y !important; margin-bottom: $spacer-y !important; }
 .m-x-auto { margin-right: auto  !important; margin-left: auto !important; }
 
-.m-a-2 { margin:        ($spacer   * 2) !important; }
+.m-a-2 { margin:        ($spacer * 2)   !important; }
 .m-t-2 { margin-top:    ($spacer-y * 2) !important; }
 .m-r-2 { margin-right:  ($spacer-y * 2) !important; }
 .m-b-2 { margin-bottom: ($spacer-y * 2) !important; }
@@ -25,7 +25,7 @@
 .m-x-2 { margin-right:  ($spacer-x * 2) !important; margin-left:   ($spacer-x * 2) !important; }
 .m-y-2 { margin-top:    ($spacer-y * 2) !important; margin-bottom: ($spacer-y * 2) !important; }
 
-.m-a-3 { margin:        ($spacer   * 3) !important; }
+.m-a-3 { margin:        ($spacer * 3) !important; }
 .m-t-3 { margin-top:    ($spacer-y * 3) !important; }
 .m-r-3 { margin-right:  ($spacer-y * 3) !important; }
 .m-b-3 { margin-bottom: ($spacer-y * 3) !important; }
@@ -43,7 +43,7 @@
 .p-x-0 { padding-right:  0 !important; padding-left:   0 !important; }
 .p-y-0 { padding-top:    0 !important; padding-bottom: 0 !important; }
 
-.p-a { padding:        $spacer !important; }
+.p-a { padding:        $spacer  !important; }
 .p-t { padding-top:    $spacer-y !important; }
 .p-r { padding-right:  $spacer-x !important; }
 .p-b { padding-bottom: $spacer-y !important; }
@@ -51,7 +51,7 @@
 .p-x { padding-right:  $spacer-x !important; padding-left:   $spacer-x !important; }
 .p-y { padding-top:    $spacer-y !important; padding-bottom: $spacer-y !important; }
 
-.p-a-2 { padding:        ($spacer   * 2) !important; }
+.p-a-2 { padding:        ($spacer * 2)   !important; }
 .p-t-2 { padding-top:    ($spacer-y * 2) !important; }
 .p-r-2 { padding-right:  ($spacer-y * 2) !important; }
 .p-b-2 { padding-bottom: ($spacer-y * 2) !important; }
@@ -59,7 +59,7 @@
 .p-x-2 { padding-right:  ($spacer-x * 2) !important; padding-left:   ($spacer-x * 2) !important; }
 .p-y-2 { padding-top:    ($spacer-y * 2) !important; padding-bottom: ($spacer-y * 2) !important; }
 
-.p-a-3 { padding:        ($spacer   * 3) !important; }
+.p-a-3 { padding:        ($spacer * 3)   !important; }
 .p-t-3 { padding-top:    ($spacer-y * 3) !important; }
 .p-r-3 { padding-right:  ($spacer-y * 3) !important; }
 .p-b-3 { padding-bottom: ($spacer-y * 3) !important; }
