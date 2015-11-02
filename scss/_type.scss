@@ -178,14 +178,11 @@ mark,
 .figure {
   // Ensures the caption's text aligns with the image.
   display: inline-block;
-
-  > img {
-    @extend .img-fluid;
-    margin-bottom: ($spacer-y / 2);
-    line-height: 1;
-  }
 }
-
+.figure-img {
+    margin-bottom: ($spacer-y / 2);
+    line-height: 1;  
+}
 .figure-caption {
   font-size: 90%;
   color: $gray-light;
