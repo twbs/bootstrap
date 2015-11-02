@@ -150,16 +150,6 @@
 
 -
   browser: >
-    Chrome
-  summary: >
-    `float`-ed box is misplaced after content change
-  upstream_bug: >
-    Chromium#523282
-  origin: >
-    Bootstrap#17913
-
--
-  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
@@ -187,16 +177,6 @@
     WebKit#147284, Safari#21993128
   origin: >
     Bootstrap#16814
-
--
-  browser: >
-    Safari
-  summary: >
-    Unexplained `1px` horizontal space between `display: table-cell` elements
-  upstream_bug: >
-    WebKit#149935
-  origin: >
-    Bootstrap#17438, Bootstrap#14237
 
 -
   browser: >
@@ -299,3 +279,13 @@
     WebKit#146244, Safari#21509310
   origin: >
     Bootstrap#15968
+
+-
+  browser: >
+    Safari (iOS 9+)
+  summary: >
+    Sometimes excessive automatic zoom is applied after opening a modal, and the user isn't allowed to zoom out
+  upstream_bug: >
+    WebKit#150715
+  origin: >
+    WebKit#138201
