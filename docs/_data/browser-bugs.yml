@@ -150,16 +150,6 @@
 
 -
   browser: >
-    Chrome
-  summary: >
-    `float`-ed box is misplaced after content change
-  upstream_bug: >
-    Chromium#523282
-  origin: >
-    Bootstrap#17913
-
--
-  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
