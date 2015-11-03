@@ -209,9 +209,9 @@ Place all list items on a single line with `display: inline-block;` and some lig
 
 {% example html %}
 <ul class="list-inline">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
+  <li class="list-inline-item">Lorem ipsum</li>
+  <li class="list-inline-item">Phasellus iaculis</li>
+  <li class="list-inline-item">Nulla volutpat</li>
 </ul>
 {% endexample %}
 
