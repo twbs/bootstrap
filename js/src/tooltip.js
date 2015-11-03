@@ -1,3 +1,5 @@
+/* global Tether */
+
 import Util from './util'
 
 
