@@ -138,7 +138,7 @@ const Modal = (($) => {
       $(this._dialog).on(Event.MOUSEDOWN_DISMISS, () => {
         $(this._element).one(Event.MOUSEUP_DISMISS, (event) => {
           if ($(event.target).is(this._element)) {
-            that._ignoreBackdropClick = true
+            this._ignoreBackdropClick = true
           }
         })
       })
