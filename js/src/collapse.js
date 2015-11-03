@@ -26,11 +26,13 @@ const Collapse = (($) => {
   const TRANSITION_DURATION = 600
 
   const Default = {
+    animate: true,
     toggle : true,
     parent : ''
   }
 
   const DefaultType = {
+    animate : 'boolean',
     toggle : 'boolean',
     parent : 'string'
   }
@@ -149,11 +151,6 @@ const Collapse = (($) => {
 
       let dimension = this._getDimension()
 
-      $(this._element)
-        .removeClass(ClassName.COLLAPSE)
-        .addClass(ClassName.COLLAPSING)
-
-      this._element.style[dimension] = 0
       this._element.setAttribute('aria-expanded', true)
 
       if (this._triggerArray.length) {
@@ -162,7 +159,13 @@ const Collapse = (($) => {
           .attr('aria-expanded', true)
       }
 
-      this.setTransitioning(true)
+      if (this._config.animate) {
+        $(this._element)
+          .removeClass(ClassName.COLLAPSE)
+          .addClass(ClassName.COLLAPSING)
+        this._element.style[dimension] = 0
+        this.setTransitioning(true)
+      }
 
       let complete = () => {
         $(this._element)
@@ -177,7 +180,7 @@ const Collapse = (($) => {
         $(this._element).trigger(Event.SHOWN)
       }
 
-      if (!Util.supportsTransitionEnd()) {
+      if (!Util.supportsTransitionEnd() || !this._config.animate) {
         complete()
         return
       }
@@ -204,17 +207,24 @@ const Collapse = (($) => {
         return
       }
 
-      let dimension       = this._getDimension()
-      let offsetDimension = dimension === Dimension.WIDTH ?
-        'offsetWidth' : 'offsetHeight'
+      let dimension = this._getDimension()
 
-      this._element.style[dimension] = `${this._element[offsetDimension]}px`
+      if (this._config.animate) {
+        let offsetDimension = dimension === Dimension.WIDTH ?
+          'offsetWidth' : 'offsetHeight'
 
-      Util.reflow(this._element)
+        this._element.style[dimension] = `${this._element[offsetDimension]}px`
+
+        Util.reflow(this._element)
+
+        $(this._element)
+          .addClass(ClassName.COLLAPSING)
+          .removeClass(ClassName.COLLAPSE)
+
+        this.setTransitioning(true)
+      }
 
       $(this._element)
-        .addClass(ClassName.COLLAPSING)
-        .removeClass(ClassName.COLLAPSE)
         .removeClass(ClassName.IN)
 
       this._element.setAttribute('aria-expanded', false)
@@ -224,8 +234,6 @@ const Collapse = (($) => {
           .addClass(ClassName.COLLAPSED)
           .attr('aria-expanded', false)
       }
-
-      this.setTransitioning(true)
 
       let complete = () => {
         this.setTransitioning(false)
@@ -237,7 +245,7 @@ const Collapse = (($) => {
 
       this._element.style[dimension] = 0
 
-      if (!Util.supportsTransitionEnd()) {
+      if (!Util.supportsTransitionEnd() || !this._config.animate) {
         complete()
         return
       }
