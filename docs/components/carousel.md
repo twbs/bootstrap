@@ -16,19 +16,19 @@ A slideshow component for cycling through elements—images or slides of text—
 {% example html %}
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li class="carousel-indicators-item active" data-target="#carousel-example-generic" data-slide-to="0"></li>
+    <li class="carousel-indicators-item" data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li class="carousel-indicators-item" data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
-      <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide">
+      <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#777&fg=#555&text=First slide" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img data-src="holder.js/900x500/auto/#666:#444/text:Second slide" alt="Second slide">
+      <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#666&fg=#444&text=First slide" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img data-src="holder.js/900x500/auto/#555:#333/text:Third slide" alt="Third slide">
+      <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#555&fg=#333&text=First slide" alt="Third slide">
     </div>
   </div>
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -61,27 +61,27 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 <div class="bd-example">
   <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-      <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-captions" data-slide-to="1"></li>
-      <li data-target="#carousel-example-captions" data-slide-to="2"></li>
+    <li class="carousel-indicators-item active" data-target="#carousel-example-captions" data-slide-to="0"></li>
+    <li class="carousel-indicators-item" data-target="#carousel-example-captions" data-slide-to="1"></li>
+    <li class="carousel-indicators-item" data-target="#carousel-example-captions" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
       <div class="carousel-item active">
-        <img data-src="holder.js/900x500/auto/#777:#777" alt="First slide image">
+        <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#777&fg=#777" alt="First slide image">
         <div class="carousel-caption">
           <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <button class="btn btn-primary carousel-caption-btn">Button</button>
         </div>
       </div>
       <div class="carousel-item">
-        <img data-src="holder.js/900x500/auto/#666:#666" alt="Second slide image">
+        <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#666&fg=#666" alt="Second slide image">
         <div class="carousel-caption">
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img data-src="holder.js/900x500/auto/#555:#555" alt="Third slide image">
+        <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#555&fg=#555" alt="Third slide image">
         <div class="carousel-caption">
           <h3>Third slide label</h3>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -101,7 +101,7 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 
 {% highlight html %}
 <div class="carousel-item">
-  <img src="..." alt="...">
+  <img class="carousel-item-img img-fluid" src="..." alt="...">
   <div class="carousel-caption">
     <h3>...</h3>
     <p>...</p>
