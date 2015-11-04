@@ -7,47 +7,47 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-
-  > .active,
-  > .next,
-  > .prev {
-    display: block;
-  }
-
-  > .active {
-    left: 0;
-  }
-
-  > .next,
-  > .prev {
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-
-  > .next {
-    left: 100%;
-  }
-  > .prev {
-    left: -100%;
-  }
-  > .next.left,
-  > .prev.right {
-    left: 0;
-  }
-
-  > .active.left {
-    left: -100%;
-  }
-  > .active.right {
-    left: 100%;
-  }
 }
 
 .carousel-item {
   position: relative;
   display: none;
   transition: .6s ease-in-out left;
+
+  &.active,
+  &.next,
+  &.prev {
+    display: block;
+  }
+
+  &.active {
+    left: 0;
+  }
+
+  &.next,
+  &.prev {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &.next {
+    left: 100%;
+  }
+  &.prev {
+    left: -100%;
+  }
+  &.next.left,
+  &.prev.right {
+    left: 0;
+  }
+
+  &.active.left {
+    left: -100%;
+  }
+  &.active.right {
+    left: 100%;
+  } 
 
   // WebKit CSS3 transforms for supported devices
   @media all and (transform-3d), (-webkit-transform-3d) {
@@ -97,16 +97,6 @@
   // We can't have this transition here because WebKit cancels the carousel
   // animation if you trip this while in the middle of another animation.
 
-  // Set gradients for backgrounds
-  &.left {
-    @include gradient-horizontal($start-color: rgba(0,0,0,.5), $end-color: rgba(0,0,0,.0001));
-  }
-  &.right {
-    right: 0;
-    left: auto;
-    @include gradient-horizontal($start-color: rgba(0,0,0,.0001), $end-color: rgba(0,0,0,.5));
-  }
-
   // Hover/focus state
   @include hover-focus {
     color: $carousel-control-color;
@@ -114,39 +104,50 @@
     outline: 0;
     opacity: .9;
   }
+}
 
-  // Toggles
-  .icon-prev,
-  .icon-next {
-    position: absolute;
-    top: 50%;
-    z-index: 5;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-top: -10px;
-    font-family: serif;
-    line-height: 1;
-  }
-  .icon-prev {
-    left: 50%;
-    margin-left: -10px;
-  }
-  .icon-next {
-    right: 50%;
-    margin-right: -10px;
-  }
 
-  .icon-prev {
-    &::before {
-      content: "\2039";// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
-    }
+// Toggles
+.carousel-control-icon-prev,
+.carousel-control-icon-next {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  font-family: serif;
+  line-height: 1;
+}
+.carousel-control-icon-prev {
+  left: 50%;
+  margin-left: -10px;
+}
+.carousel-control-icon-next {
+  right: 50%;
+  margin-right: -10px;
+}
+
+.carousel-control-icon-prev {
+  &::before {
+    content: "\2039";// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
   }
-  .icon-next {
-    &::before {
-      content: "\203a";// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
-    }
+}
+.carousel-control-icon-next {
+  &::before {
+    content: "\203a";// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
   }
+}
+
+// Set gradients for backgrounds
+.carousel-control-left {
+  @include gradient-horizontal($start-color: rgba(0,0,0,.5), $end-color: rgba(0,0,0,.0001));
+}
+.carousel-control-right {
+  right: 0;
+  left: auto;
+  @include gradient-horizontal($start-color: rgba(0,0,0,.0001), $end-color: rgba(0,0,0,.5));
 }
 
 
@@ -187,7 +188,7 @@
     height: 12px;
     margin: 0;
     background-color: $carousel-indicator-active-bg;
-  }
+  }  
 }
 
 
@@ -218,21 +219,21 @@
 
 @include media-breakpoint-up(sm) {
   // Scale up the controls a smidge
-  .carousel-control {
-    .icon-prev,
-    .icon-next {
-      width: 30px;
-      height: 30px;
-      margin-top: -15px;
-      font-size: 30px;
-    }
-    .icon-prev {
-      margin-left: -15px;
-    }
-    .icon-next {
-      margin-right: -15px;
-    }
+
+  .carousel-control-icon-prev,
+  .carousel-control-icon-next {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    font-size: 30px;
   }
+  .carousel-control-icon-prev {
+    margin-left: -15px;
+  }
+  .carousel-control-icon-next {
+    margin-right: -15px;
+  }
+
 
   // Show and left align the captions
   .carousel-caption {
