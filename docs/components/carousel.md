@@ -31,12 +31,12 @@ A slideshow component for cycling through elements—images or slides of text—
       <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#555&fg=#333&text=Third slide" alt="Third slide">
     </div>
   </div>
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="icon-prev" aria-hidden="true"></span>
+  <a class="carousel-control carousel-control-left" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="carousel-control-icon-prev" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="icon-next" aria-hidden="true"></span>
+  <a class="carousel-control carousel-control-right" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="carousel-control-icon-next" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
@@ -88,12 +88,12 @@ Add captions to your slides easily with the `.carousel-caption` element within a
         </div>
       </div>
     </div>
-    <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
-      <span class="icon-prev" aria-hidden="true"></span>
+    <a class="carousel-control carousel-control-left" href="#carousel-example-captions" role="button" data-slide="prev">
+      <span class="carousel-control-icon-prev" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
-      <span class="icon-next" aria-hidden="true"></span>
+    <a class="carousel-control carousel-control-right" href="#carousel-example-captions" role="button" data-slide="next">
+      <span class="carousel-control-icon-next" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
