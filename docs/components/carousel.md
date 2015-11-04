@@ -25,10 +25,10 @@ A slideshow component for cycling through elements—images or slides of text—
       <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#777&fg=#555&text=First slide" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#666&fg=#444&text=First slide" alt="Second slide">
+      <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#666&fg=#444&text=Second slide" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#555&fg=#333&text=First slide" alt="Third slide">
+      <img class="carousel-item-img img-fluid" data-src="holder.js/900x500?auto=yes&bg=#555&fg=#333&text=Third slide" alt="Third slide">
     </div>
   </div>
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
