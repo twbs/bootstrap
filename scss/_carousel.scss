@@ -47,7 +47,7 @@
   }
   &.active.right {
     left: 100%;
-  } 
+  }
 
   // WebKit CSS3 transforms for supported devices
   @media all and (transform-3d), (-webkit-transform-3d) {
@@ -188,7 +188,7 @@
     height: 12px;
     margin: 0;
     background-color: $carousel-indicator-active-bg;
-  }  
+  }
 }
 
 
