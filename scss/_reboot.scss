@@ -191,6 +191,8 @@ img {
   // By default, `<img>`s are `inline-block`. This assumes that, and vertically
   // centers them. This won't apply should you reset them to `block` level.
   vertical-align: middle;
+  // Note: `<img>`s are deliberately not made responsive by default.
+  // For the rationale behind this, see the comments on the `.img-fluid` class.
 }
 
 
