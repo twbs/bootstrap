@@ -46,11 +46,13 @@
 .calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
   .col-@{class}-@{index} {
     width: percentage((@index / @grid-columns));
+    width: calc(100% * @index / @grid-columns);
   }
 }
 .calc-grid-column(@index, @class, @type) when (@type = push) and (@index > 0) {
   .col-@{class}-push-@{index} {
     left: percentage((@index / @grid-columns));
+    left: calc(100% * @index / @grid-columns);
   }
 }
 .calc-grid-column(@index, @class, @type) when (@type = push) and (@index = 0) {
@@ -61,6 +63,7 @@
 .calc-grid-column(@index, @class, @type) when (@type = pull) and (@index > 0) {
   .col-@{class}-pull-@{index} {
     right: percentage((@index / @grid-columns));
+    right: calc(100% * @index / @grid-columns);
   }
 }
 .calc-grid-column(@index, @class, @type) when (@type = pull) and (@index = 0) {
@@ -71,6 +74,7 @@
 .calc-grid-column(@index, @class, @type) when (@type = offset) {
   .col-@{class}-offset-@{index} {
     margin-left: percentage((@index / @grid-columns));
+    margin-left: calc(100% * @index / @grid-columns);
   }
 }
 
