@@ -43,6 +43,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var $callout = $('<div class="bs-callout bs-callout-danger">' +
       '<h4>Attention!</h4>' +
       '<p>' + msg + '</p>' +
+      '<button type="button" class="btn btn-default" id="dismiss-callout">Let me view the variables anyway</button>' +
     '</div>')
 
     if (showUpTop) {
@@ -424,6 +425,11 @@ window.onload = function () { // wait for load in a dumb way because B-0
   $('#less-variables-section .toggle').on('click', function (e) {
     e.preventDefault()
     $inputsVariables.val('')
+  })
+
+  $(document).on('click', '#dismiss-callout', function () {
+    $(this).parent('.bs-callout').remove()
+    $('.bs-docs-section, .bs-docs-sidebar').css('display', 'block')
   })
 
   $('[data-dependencies]').on('click', function () {
