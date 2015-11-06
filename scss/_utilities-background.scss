@@ -28,9 +28,9 @@
 
 @include bg-variant('.bg-danger', $brand-danger);
 
-@include bg-variant('.bg-gray-100', $brand-gray-100);
-@include bg-variant('.bg-gray-300', $brand-gray-300);
-@include bg-variant('.bg-gray-500', $brand-gray-500);
-@include bg-variant('.bg-gray',     $brand-gray);
-@include bg-variant('.bg-gray-700', $brand-gray-700);
-@include bg-variant('.bg-gray-900', $brand-gray-900);
+@include bg-variant('.bg-gray-100', $gray-100);
+@include bg-variant('.bg-gray-300', $gray-300);
+@include bg-variant('.bg-gray-500', $gray-500);
+@include bg-variant('.bg-gray',     $gray);
+@include bg-variant('.bg-gray-700', $gray-700);
+@include bg-variant('.bg-gray-900', $gray-900);
