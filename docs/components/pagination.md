@@ -71,7 +71,7 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 
 You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality while retaining intended styles.
 
-{% highlight html %}
+{% example html %}
 <nav>
   <ul class="pagination">
     <li class="disabled">
@@ -83,7 +83,7 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
     <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
   </ul>
 </nav>
-{% endhighlight %}
+{% endexample %}
 
 
 ### Sizing
