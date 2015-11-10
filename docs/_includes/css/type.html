@@ -469,4 +469,39 @@ You can use the mark tag to <mark>highlight</mark> text.
     <h4>Auto-truncating</h4>
     <p>Horizontal description lists will truncate terms that are too long to fit in the left column with <code>text-overflow</code>. In narrower viewports, they will change to the default stacked layout.</p>
   </div>
+
+  <h3>Description Columns</h3>
+  <p>Use grids to align definitions in columns.</p>
+  <div class="bs-example" data-example-id="simple-dl">
+    <div class="row">
+      <dl class="col-sm-6">
+        <dt>Label</dt>
+        <dd>A definition</dd>
+      </dl>
+      <dl class="col-sm-6">
+        <dt>Label</dt>
+        <dd>A definition</dd>
+      </dl>
+      <dl class="col-sm-6">
+        <dt>Label</dt>
+        <dd>A definition</dd>
+      </dl>
+      <dl class="col-sm-6">
+        <dt>Label</dt>
+        <dd>A definition</dd>
+      </dl>
+    </div>
+  </div>
+{% highlight html %}
+<div class="row">
+  <dl class="col-sm-6">
+    <dt>...</dt>
+    <dd>...</dd>
+  </dl>
+  <dl class="col-sm-6">
+    <dt>...</dt>
+    <dd>...</dd>
+  </dl>
+</div>
+{% endhighlight %}
 </div>

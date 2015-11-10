@@ -20,6 +20,7 @@
 
 body {
   position: relative; /* For scrollspy */
+  background-color: #f2f5f7;
 }
 
 /* Keep code small in tables on account of limited space */
@@ -170,7 +171,7 @@ h4 code {
 }
 .bs-docs-footer-links {
   padding-left: 0;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 .bs-docs-footer-links li {
   display: inline;
@@ -195,7 +196,7 @@ h4 code {
  */
 
 .bs-docs-social {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   text-align: center;
 }
 .bs-docs-social-buttons {
@@ -206,7 +207,7 @@ h4 code {
 }
 .bs-docs-social-buttons li {
   display: inline-block;
-  padding: 5px 8px;
+  padding: 8px;
   line-height: 1;
 }
 .bs-docs-social-buttons .twitter-follow-button {
@@ -232,7 +233,7 @@ h4 code {
 .bs-docs-masthead,
 .bs-docs-header {
   position: relative;
-  padding: 30px 0;
+  padding: 32px 0;
   text-align: center;
   /*
   color: #cdbfe3;
@@ -249,7 +250,7 @@ h4 code {
 
 /* Masthead (headings and download button) */
 .bs-docs-masthead .bs-docs-booticon {
-  margin: 0 auto 30px;
+  margin: 0 auto 32px;
 }
 .bs-docs-masthead h1 {
   font-weight: 300;
@@ -257,18 +258,18 @@ h4 code {
   color: #fff;
 }
 .bs-docs-masthead .lead {
-  margin: 0 auto 30px;
+  margin: 0 auto 32px;
   font-size: 20px;
   color: #fff;
 }
 .bs-docs-masthead .version {
   margin-top: -15px;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
   color: #d3d5d8;
 }
 .bs-docs-masthead .btn {
   width: 100%;
-  padding: 15px 30px;
+  padding: 16px 32px;
   font-size: 20px;
 }
 
@@ -324,8 +325,8 @@ h4 code {
 
 @media (min-width: 768px) {
   .bs-docs-header {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 64px;
+    padding-bottom: 64px;
     font-size: 24px;
     text-align: left;
   }
@@ -460,12 +461,12 @@ h4 code {
 }
 .bs-docs-featurette-img img {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 @media (min-width: 480px) {
   .bs-docs-featurette .img-responsive {
-    margin-top: 30px;
+    margin-top: 32px;
   }
 }
 @media (min-width: 768px) {
@@ -524,12 +525,6 @@ h4 code {
 .bs-examples .thumbnail {
   margin-bottom: 10px;
 }
-.bs-examples h4 {
-  margin-bottom: 5px;
-}
-.bs-examples p {
-  margin-bottom: 20px;
-}
 
 @media (max-width: 480px) {
   .bs-examples {
@@ -553,11 +548,6 @@ h4 code {
 /* By default it's not affixed in mobile views, so undo that */
 .bs-docs-sidebar.affix {
   position: static;
-}
-@media (min-width: 768px) {
-  .bs-docs-sidebar {
-    padding-left: 20px;
-  }
 }
 
 /* First level of nav */
@@ -682,7 +672,7 @@ h4 code {
 
 /* Space things out */
 .bs-docs-section {
-  margin-bottom: 60px;
+  margin-bottom: 64px;
 }
 .bs-docs-section:last-child {
   margin-bottom: 0;
@@ -699,8 +689,8 @@ h4 code {
 
 /* Common styles for all types */
 .bs-callout {
-  padding: 20px;
-  margin: 20px 0;
+  padding: 24px;
+  margin: 24px 0;
   border: 1px solid #eee;
   border-left-width: 5px;
   border-radius: 3px;
@@ -716,29 +706,25 @@ h4 code {
   border-radius: 3px;
 }
 
-/* Tighten up space between multiple callouts */
-.bs-callout + .bs-callout {
-  margin-top: -5px;
-}
 
 /* Variations */
 .bs-callout-danger {
-  border-left-color: #ce4844;
+  border-left-color: #cf3131;
 }
 .bs-callout-danger h4 {
-  color: #ce4844;
+  color: #cf3131;
 }
 .bs-callout-warning {
-  border-left-color: #aa6708;
+  border-left-color: #df8700;
 }
 .bs-callout-warning h4 {
-  color: #aa6708;
+  color: #df8700;
 }
 .bs-callout-info {
-  border-left-color: #1b809e;
+  border-left-color: #00a4df;
 }
 .bs-callout-info h4 {
-  color: #1b809e;
+  color: #00a4df;
 }
 
 
@@ -886,19 +872,16 @@ h4 code {
 
 .bs-example {
   position: relative;
-  padding: 45px 16px 16px;
+  padding: 40px 0 16px;
   margin: 0 -16px 16px;
-  border-color: #e5e5e5 #eee #eee;
+  border: 0;
   border-style: solid;
-  border-width: 1px 0;
-  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-          box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
 }
 /* Echo out a label for the example */
 .bs-example:after {
   position: absolute;
   top: 16px;
-  left: 16px;
+  left: 0;
   font-size: 12px;
   font-weight: bold;
   color: #959595;
@@ -925,11 +908,6 @@ h4 code {
     margin-right: 0;
     margin-left: 0;
     background-color: #fff;
-    border-color: #ddd;
-    border-width: 1px;
-    border-radius: 4px 4px 0 0;
-    -webkit-box-shadow: none;
-            box-shadow: none;
   }
   .bs-example + .highlight,
   .bs-example + .zero-clipboard + .highlight {
@@ -937,11 +915,10 @@ h4 code {
     margin-right: 0;
     margin-left: 0;
     border-width: 1px;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
+    border-radius: 3px;
   }
   .bs-example-standalone {
-    border-radius: 4px;
+    border-radius: 3px;
   }
 }
 

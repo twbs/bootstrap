@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Explore Page Example</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+
 	<link type="text/css" rel="stylesheet"
 		href="../dist/css/bootstrap.min.css" />
 
@@ -46,64 +48,67 @@
 			<nav id="bs-navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="landing.html">Front</a></li>
-					<li><a href="create.html">Explore</a></li>
+					<li class="active"><a href="create.html">Explore</a></li>
 					<li><a href="article.html">Article</a></li>
 				</ul>
+				<div class="navbar-right">
+					<!--<ul class="nav navbar-nav">
+						<li>
+							<a href="#" class="dropdown-toggle"
+								data-toggle="dropdown"
+								role="button"
+								aria-expanded="false">
+								<span class="glyphicon glyphicon-bell"></span>
+								<span class="badge">3</span>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Notification 1</a></li>
+								<li><a href="#">Notification 2</a></li>
+							</ul>
+						</li>
+					</ul>-->
+					<div class="navbar-btn btn-group">
+						<button type="button" class="btn btn-success">Send money</button>
+						<button type="button" class="btn btn-success dropdown-toggle"
+							data-toggle="dropdown" aria-expanded="false">
+							<span class="caret"></span>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Send money</a></li>
+							<li><a href="#">Request money</a></li>
+						</ul>
+					</div>
+				</div>
 			</nav>
 		</div>
 	</header>
-	<div class="bg-primary">
-		<div class="container p-t-lg">
-			<div class="">
-				<h1 class="m-t-lg m-b-lg">
-					Explore Title
-				</h1>
-				<ul id="myTabs" class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active">
-						<a href="#transfers" id="transfers-tab">
-							Secondary
-						</a>
-					</li>
-					<li role="presentation">
-						<a href="#recipients" id="recipients-tab">
-							Navigation
-						</a>
-					</li>
-					<li role="presentation">
-						<a href="#rewards" id="rewards-tab">
-							Appears
-						</a>
-					</li>
-					<li role="presentation">
-						<a href="#profile" id="profile-tab" role="tab">
-							Here
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="container m-t-lg">
-		<div class="row">
+	<div class="container">
+		<div class="row m-t-lg">
 			<div class="col-md-3">
-				<ul class="nav hidden-sm hidden-xs">
-					<li><a href="">
-						<span class="glyphicon glyphicon-user"></span>
-						Profile overview</a>
-					</li>
-					<li><a href="">
-						<span class="glyphicon glyphicon-pencil"></span>
-						Edit profile</a>
-					</li>
-					<li><a href="">
-						<span class="glyphicon glyphicon-ok"></span>
-						Verify profile <span class="badge m-l-md">3</span></a>
-					</li>
-					<li><a href="">
-						<span class="glyphicon glyphicon-camera"></span>
-						Profile picture</a>
-					</li>
-				</ul>
+				<div class="nav hidden-sm hidden-xs">
+					<h3>John Smith</h3>
+					<p class="small">Your customer number is P123456</p>
+					<hr />
+					<ul class="nav nav-pills nav-stacked">
+						<li><a href="">
+							<span class="glyphicon glyphicon-user"></span>
+							Profile overview</a>
+						</li>
+						<li><a href="">
+							<span class="glyphicon glyphicon-pencil"></span>
+							Edit profile</a>
+						</li>
+						<li><a href="">
+							<span class="glyphicon glyphicon-ok"></span>
+							Verify profile <span class="badge m-l-md">3</span></a>
+						</li>
+						<li><a href="">
+							<span class="glyphicon glyphicon-camera"></span>
+							Profile picture</a>
+						</li>
+					</ul>
+				</div>
 				<div class="form-group hidden-md hidden-lg">
 					<select class="form-control">
 						<option>Profile overview</option>
@@ -270,6 +275,26 @@
 							<div class="col-sm-6">
 								<button class="btn btn-primary btn-block">Send by email</button>
 							</div>
+						</div>
+
+						<h4 class="page-header">Personal information</h4>
+						<div class="row">
+							<dl class="col-sm-6">
+								<dt>First name</dt>
+								<dd>John</dd>
+							</dl>
+							<dl class="col-sm-6">
+								<dt>Last name</dt>
+								<dd>Smith</dd>
+							</dl>
+							<dl class="col-sm-6">
+								<dt>Date of birth</dt>
+								<dd>01 January 1970</dd>
+							</dl>
+							<dl class="col-sm-6">
+								<dt>Phone number</dt>
+								<dd>+44 7123456789</dd>
+							</dl>
 						</div>
 					</div>
 				</div>
