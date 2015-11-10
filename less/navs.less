@@ -19,7 +19,7 @@
     > a {
       position: relative;
       display: block;
-      padding: @nav-link-padding;
+      padding: @nav-stacked-link-padding;
       font-weight: 500;
       font-size: @font-size-small;
       &:hover,
@@ -155,6 +155,7 @@
       color: @brand-blue-plus-20;
       .transition(all .2s ease-in-out);
       .glyphicon {
+        top: 2px;
         margin-right: 16px;
       }
       &:hover {
