@@ -236,16 +236,16 @@ module.exports = function (grunt) {
         options: {
           map: true,
           processors: [
-          mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' }),
-          autoprefixer({ browsers: browsers })
+            mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' }),
+            autoprefixer({ browsers: browsers })
           ]
         },
         src: 'dist/css/*.css'
       },
       docs: {
         options: {
-          processors: [
-          autoprefixer({ browsers: browsers })
+           processors: [
+           autoprefixer({ browsers: browsers })
           ]
         },
         src: 'docs/assets/css/docs.min.css'
@@ -253,7 +253,7 @@ module.exports = function (grunt) {
       examples: {
         options: {
           processors: [
-          autoprefixer({ browsers: browsers })
+            autoprefixer({ browsers: browsers })
           ]
         },
         expand: true,
