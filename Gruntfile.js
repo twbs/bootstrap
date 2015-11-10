@@ -244,8 +244,8 @@ module.exports = function (grunt) {
       },
       docs: {
         options: {
-           processors: [
-           autoprefixer({ browsers: browsers })
+          processors: [
+            autoprefixer({ browsers: browsers })
           ]
         },
         src: 'docs/assets/css/docs.min.css'
