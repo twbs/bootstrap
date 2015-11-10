@@ -54,16 +54,18 @@ a.btn {
 .label {
     padding: 0.3em 0.6em 0.2em;
 }
-
+/*
 .nav > li > a {
     padding: 11px 16px 5px;
 }
+
 .navbar-nav > li > a,
 .navbar-brand,
 .navbar-text {
     padding-top: 18.5px;
     padding-bottom: 16.5px;
 }
+*/
 
 address {
     margin-bottom: 11px;
@@ -125,13 +127,13 @@ blockquote footer {
     margin-top: 0;
 }
 .navbar[data-spy~=affix].affix + * {
-    margin-top: 60px;
+    margin-top: @navbar-height;
 }
 
 @media (min-width: @screen-sm-min) {
     .navbar + .jumbotron,
     .navbar + .jumbotron-image {
-        margin-top: -60px;
+        margin-top: (-1 * @navbar-height);
     }
     .navbar.affix + .jumbotron,
     .navbar.affix + .jumbotron-image {
@@ -153,11 +155,6 @@ blockquote footer {
     > .container .navbar-brand,
     > .container-fluid .navbar-brand {
         margin-left: 0;
-    }
-
-    .navbar-btn {
-        margin-top: 13px;
-        margin-bottom: 13px;
     }
 }
 

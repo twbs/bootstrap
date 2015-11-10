@@ -55,23 +55,23 @@
 //=== Reds
 //
 //
-@brand-red-minus-20: #b62a18;
-@brand-red-minus-10: #df321d;
-@brand-red: #f53720;
+@brand-red-minus-20: #B62A18;
+@brand-red-minus-10: #CF3131;
+@brand-red: #F53636;
 
 //=== Greens
 //
 //
-@brand-green-minus-20: #429c30;
-@brand-green-minus-10: #4dba38;
-@brand-green: #59d941;
+@brand-green-minus-20: #1D8547;
+@brand-green-minus-10: #28B862;
+@brand-green: #2ED06E;
 
 //=== Oranges
 //
 //
-@brand-orange-minus-20: #c07500;
-@brand-orange-minus-10: #df8700;
-@brand-orange: #ff9700;
+@brand-orange-minus-20: #C07500;
+@brand-orange-minus-10: #DF8700;
+@brand-orange: #FFA600;
 
 //=== Yellows
 //
@@ -179,13 +179,13 @@
 @padding-base-horizontal:   16px;
 
 @padding-large-vertical:    12px;
-@padding-large-horizontal:  18px;
+@padding-large-horizontal:  16px;
 
 @padding-small-vertical:    6px;
-@padding-small-horizontal:  10px;
+@padding-small-horizontal:  12px;
 
 @padding-xs-vertical:       1px;
-@padding-xs-horizontal:     5px;
+@padding-xs-horizontal:     8px;
 
 @line-height-large:         1.55555555; // 18*1.555 = 28
 @line-height-small:         1.5; // 12*1.5=18
@@ -227,7 +227,7 @@
 @table-bg-active:               @table-bg-hover;
 
 //** Border color for table and cell borders.
-@table-border-color:            @gray-lighter;      //#ddd;
+@table-border-color:            @gray-lighter;
 
 
 //== Buttons
@@ -242,7 +242,7 @@
 @btn-xs-font-size:               12px;
 @btn-xs-line-height:             18px;
 
-@btn-sm-font-size:               12px;
+@btn-sm-font-size:               14px;
 @btn-sm-line-height:             22px;
 
 @btn-lg-font-size:               18px;
@@ -405,11 +405,11 @@
 //** Background for the dropdown menu.
 @dropdown-bg:                    #fff;
 //** Dropdown menu `border-color`.
-@dropdown-border:                @gray-lighter; //rgba(0,0,0,.15);
+@dropdown-border:                @brand-smoke-plus-10;
 //** Dropdown menu `border-color` **for IE8**.
-@dropdown-fallback-border:       @gray-lighter; //#ccc;
+@dropdown-fallback-border:       @brand-white;
 //** Divider color for between dropdown items.
-@dropdown-divider-bg:            @gray-lighter; //#e5e5e5;
+@dropdown-divider-bg:            @brand-smoke-plus-20;
 
 //** Dropdown link text color.
 @dropdown-link-color:            @brand-primary;    //@gray-dark;
@@ -528,7 +528,7 @@
 //##
 
 // Basics of a navbar
-@navbar-height:                    60px;                    //50px;
+@navbar-height:                    56px;                    //50px;
 @navbar-margin-bottom:             @line-height-computed;
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
@@ -543,10 +543,10 @@
 
 //  Navbar links
 @navbar-default-link-color:                 @brand-primary;
-@navbar-default-link-hover-color:           @link-hover-color;
+@navbar-default-link-hover-color:           @brand-light-blue;
 @navbar-default-link-hover-bg:              transparent;
-@navbar-default-link-active-color:          @link-active-color;
-@navbar-default-link-active-bg:             rgba(0,0,0,0.05);
+@navbar-default-link-active-color:          @brand-light-blue;
+@navbar-default-link-active-bg:             transparent;
 @navbar-default-link-disabled-color:        @brand-smoke;
 @navbar-default-link-disabled-bg:           transparent;
 
@@ -571,10 +571,10 @@
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 #FFF;
-@navbar-inverse-link-hover-color:           @link-hover-color;
+@navbar-inverse-link-hover-color:           @brand-light-blue;
 @navbar-inverse-link-hover-bg:              transparent;
-@navbar-inverse-link-active-color:          @link-hover-color;
-@navbar-inverse-link-active-bg:             rgba(0,0,0,0.15);
+@navbar-inverse-link-active-color:          @brand-light-blue;
+@navbar-inverse-link-active-bg:             transparent;
 @navbar-inverse-link-disabled-color:        #444;
 @navbar-inverse-link-disabled-bg:           transparent;
 
@@ -595,8 +595,7 @@
 //##
 
 //=== Shared nav styles
-@nav-link-padding:                          10px 16px;
-@nav-stacked-link-padding:                  8px 16px;
+@nav-link-padding:                          8px 16px;
 @nav-link-hover-bg:                         @brand-smoke-plus-20;
 
 @nav-disabled-link-color:                   @gray-light;
@@ -628,11 +627,11 @@
 
 @pagination-color:                     @link-color;
 @pagination-bg:                        #fff;
-@pagination-border:                    #ddd;
+@pagination-border:                    @brand-smoke;
 
 @pagination-hover-color:               @link-hover-color;
 @pagination-hover-bg:                  @brand-smoke-plus-20;
-@pagination-hover-border:              #ddd;
+@pagination-hover-border:              @brand-smoke;
 
 @pagination-active-color:              #fff;
 @pagination-active-bg:                 @brand-primary;
@@ -640,7 +639,7 @@
 
 @pagination-disabled-color:            @gray-light;
 @pagination-disabled-bg:               #fff;
-@pagination-disabled-border:           #ddd;
+@pagination-disabled-border:           @brand-smoke;
 
 
 //== Pager
@@ -702,8 +701,8 @@
 //** Tooltip text color
 @tooltip-color:               #fff;
 //** Tooltip background color
-@tooltip-bg:                  #000;
-@tooltip-opacity:             .9;
+@tooltip-bg:                  @brand-blue;
+@tooltip-opacity:             1;
 
 //** Tooltip arrow width
 @tooltip-arrow-width:         5px;
@@ -853,7 +852,7 @@
 //** Background color on `.list-group-item`
 @list-group-bg:                 #fff;
 //** `.list-group-item` border color
-@list-group-border:             #ddd;
+@list-group-border:             @brand-smoke-plus-10;
 //** List group border radius
 @list-group-border-radius:      @border-radius-base;
 
@@ -893,12 +892,12 @@
 @panel-border-radius:         @border-radius-base;
 
 //** Border color for elements within panels
-@panel-inner-border:          #FFF;     //#ddd;
-@panel-footer-bg:             #f5f5f5;
+@panel-inner-border:          #FFF;
+@panel-footer-bg:             #fff;
 
 @panel-default-text:          @gray-dark;
 @panel-default-border:        @brand-smoke-plus-10;
-@panel-default-heading-bg:    #f5f5f5;
+@panel-default-heading-bg:    #fff;
 
 @panel-primary-text:          #fff;
 @panel-primary-border:        @brand-primary;
@@ -930,14 +929,14 @@
 //** Thumbnail background color
 @thumbnail-bg:                @body-bg;
 //** Thumbnail border color
-@thumbnail-border:            #ddd;
+@thumbnail-border:            @brand-smoke-plus-10;
 //** Thumbnail border radius
 @thumbnail-border-radius:     @border-radius-base;
 
 //** Custom text color for thumbnail captions
 @thumbnail-caption-color:     @text-color;
 //** Padding around the thumbnail caption
-@thumbnail-caption-padding:   9px;
+@thumbnail-caption-padding:   16px;
 
 
 //== Wells
@@ -1039,7 +1038,7 @@
 //** Blockquote font size
 @blockquote-font-size:        (@font-size-base * 1.25);
 //** Blockquote border color
-@blockquote-border-color:     @gray-lighter;
+@blockquote-border-color:     @brand-light-blue;
 //** Page header border color
 @page-header-border-color:    @gray-lighter;
 //** Width of horizontal description list titles

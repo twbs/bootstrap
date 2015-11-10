@@ -8,25 +8,17 @@
     <a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
 
     <!-- Docs master nav -->
+    <div class="bg-primary">
     {% include nav/main.html %}
-
-    <!-- Docs page layout -->
-    <div class="jumbotron" id="content" tabindex="-1">
-      <div class="container">
-        <h1>{{ page.title }}</h1>
-        <p>{{ page.lead }}</p>
-        {% include ads.html %}
-      </div>
     </div>
 
+    <!-- Docs page layout -->
     <div class="container bs-docs-container">
-
-      <div class="row">
-        <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
-          {{ content }}
-        </div>
+      <div class="row m-t-lg">
         {% unless page.fullwidth == true %}
         <div class="col-md-3" role="complementary">
+            <h3>{{ page.title }}</h3>
+            <p>{{ page.lead }}</p>
           <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
             <ul class="nav bs-docs-sidenav">
               {% if page.slug == "getting-started" %}
@@ -56,6 +48,17 @@
           </nav>
         </div>
         {% endunless %}
+
+          <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
+            <div class="panel">
+              <!--<div class="panel-heading">
+                  <h3 class="panel-title">{{ page.title }}</h3>
+              </div>-->
+              <div class="panel-body">
+                  {{ content }}
+              </div>
+            </div>
+          </div>
       </div>
     </div>
 

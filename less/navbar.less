@@ -195,7 +195,7 @@
 
 .navbar-brand {
   float: left;
-  padding: @navbar-padding-vertical @navbar-padding-horizontal;
+  padding: @navbar-padding-vertical @navbar-padding-horizontal (@navbar-padding-vertical - 3px);
   font-size: @font-size-large;
   line-height: @line-height-computed;
   height: @navbar-height;
@@ -266,8 +266,7 @@
   margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
 
   > li > a {
-    padding-top:    10px;
-    padding-bottom: 10px;
+    padding: 10px 24px;
     line-height: @line-height-computed;
   }
 
@@ -304,7 +303,7 @@
       float: left;
       > a {
         padding-top:    @navbar-padding-vertical;
-        padding-bottom: @navbar-padding-vertical;
+        padding-bottom: (@navbar-padding-vertical - 3px);
       }
     }
   }
@@ -320,10 +319,6 @@
   margin-left: -@navbar-padding-horizontal;
   margin-right: -@navbar-padding-horizontal;
   padding: 10px @navbar-padding-horizontal;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
-  //@shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
-  //.box-shadow(@shadow);
 
   // Mixin behavior for optimum display
   .form-inline();
@@ -339,7 +334,7 @@
   }
 
   // Vertically center in expanded, horizontal navbar
-  .navbar-vertical-align(@input-height-base);
+  .navbar-vertical-align(@input-height-small);
 
   // Undo 100% width for pull classes
   @media (min-width: @grid-float-breakpoint) {
@@ -374,7 +369,7 @@
 // Vertically center a button within a navbar (when *not* in a form).
 
 .navbar-btn {
-  .navbar-vertical-align(@input-height-base);
+  .navbar-vertical-align(@input-height-small);
 
   &.btn-sm {
     .navbar-vertical-align(@input-height-small);
@@ -458,6 +453,7 @@
   .navbar-nav {
     > li > a {
       color: @navbar-default-link-color;
+      border-bottom: 2px solid transparent;
 
       &:hover,
       &:focus {
@@ -471,6 +467,7 @@
       &:focus {
         color: @navbar-default-link-active-color;
         background-color: @navbar-default-link-active-bg;
+        border-color: @navbar-default-link-active-color;
       }
     }
     > .disabled > a {
@@ -597,6 +594,7 @@
   .navbar-nav {
     > li > a {
       color: @navbar-inverse-link-color;
+      border-bottom: 3px solid transparent;
 
       &:hover,
       &:focus {
@@ -610,6 +608,7 @@
       &:focus {
         color: @navbar-inverse-link-active-color;
         background-color: @navbar-inverse-link-active-bg;
+        border-color: @navbar-inverse-link-active-color;
       }
     }
     > .disabled > a {
@@ -733,9 +732,6 @@
 }
 .navbar-inverse .navbar-brand {
     background-image: @logo-full-inverse;
-}
-.navbar-form {
-    margin-top: 13px;
 }
 
 .navbar.bg-primary {
