@@ -1786,7 +1786,7 @@ var Modal = (function ($) {
         $(this._dialog).on(Event.MOUSEDOWN_DISMISS, function () {
           $(_this7._element).one(Event.MOUSEUP_DISMISS, function (event) {
             if ($(event.target).is(_this7._element)) {
-              that._ignoreBackdropClick = true;
+              _this7._ignoreBackdropClick = true;
             }
           });
         });
@@ -2752,6 +2752,8 @@ var Tab = (function ($) {
 
   return Tab;
 })(jQuery);
+
+/* global Tether */
 
 /**
  * --------------------------------------------------------------------------
