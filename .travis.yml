@@ -3,7 +3,8 @@ language: node_js
 git:
   depth: 10
 node_js:
-  - "0.12"
+  - "4"
+  - "stable"
 before_install:
   - rvm install 2.0.0 && rvm use 2.0.0
   - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
