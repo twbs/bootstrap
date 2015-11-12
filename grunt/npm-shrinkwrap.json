@@ -13,8 +13,8 @@
           "resolved": "https://registry.npmjs.org/acorn-to-esprima/-/acorn-to-esprima-1.0.5.tgz"
         },
         "babel-core": {
-          "version": "5.8.33",
-          "resolved": "https://registry.npmjs.org/babel-core/-/babel-core-5.8.33.tgz",
+          "version": "5.8.34",
+          "resolved": "https://registry.npmjs.org/babel-core/-/babel-core-5.8.34.tgz",
           "dependencies": {
             "babel-plugin-constant-folding": {
               "version": "1.0.1",
@@ -83,8 +83,8 @@
               "resolved": "https://registry.npmjs.org/babel-plugin-undefined-to-void/-/babel-plugin-undefined-to-void-1.1.6.tgz"
             },
             "babylon": {
-              "version": "5.8.29",
-              "resolved": "https://registry.npmjs.org/babylon/-/babylon-5.8.29.tgz"
+              "version": "5.8.34",
+              "resolved": "https://registry.npmjs.org/babylon/-/babylon-5.8.34.tgz"
             },
             "bluebird": {
               "version": "2.10.2",
@@ -129,8 +129,8 @@
               }
             },
             "convert-source-map": {
-              "version": "1.1.1",
-              "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.1.1.tgz"
+              "version": "1.1.2",
+              "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.1.2.tgz"
             },
             "core-js": {
               "version": "1.2.6",
@@ -969,8 +969,8 @@
               "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-0.4.0.tgz"
             },
             "caniuse-db": {
-              "version": "1.0.30000360",
-              "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000360.tgz"
+              "version": "1.0.30000361",
+              "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000361.tgz"
             },
             "num2fraction": {
               "version": "1.2.2",
@@ -1055,8 +1055,8 @@
       "resolved": "https://registry.npmjs.org/grunt-babel/-/grunt-babel-5.0.3.tgz",
       "dependencies": {
         "babel-core": {
-          "version": "5.8.33",
-          "resolved": "https://registry.npmjs.org/babel-core/-/babel-core-5.8.33.tgz",
+          "version": "5.8.34",
+          "resolved": "https://registry.npmjs.org/babel-core/-/babel-core-5.8.34.tgz",
           "dependencies": {
             "babel-plugin-constant-folding": {
               "version": "1.0.1",
@@ -1125,8 +1125,8 @@
               "resolved": "https://registry.npmjs.org/babel-plugin-undefined-to-void/-/babel-plugin-undefined-to-void-1.1.6.tgz"
             },
             "babylon": {
-              "version": "5.8.29",
-              "resolved": "https://registry.npmjs.org/babylon/-/babylon-5.8.29.tgz"
+              "version": "5.8.34",
+              "resolved": "https://registry.npmjs.org/babylon/-/babylon-5.8.34.tgz"
             },
             "bluebird": {
               "version": "2.10.2",
@@ -1171,8 +1171,8 @@
               }
             },
             "convert-source-map": {
-              "version": "1.1.1",
-              "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.1.1.tgz"
+              "version": "1.1.2",
+              "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.1.2.tgz"
             },
             "core-js": {
               "version": "1.2.6",
@@ -3055,8 +3055,8 @@
                       "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-1.0.2.tgz"
                     },
                     "node-uuid": {
-                      "version": "1.4.3",
-                      "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz"
+                      "version": "1.4.4",
+                      "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.4.tgz"
                     },
                     "oauth-sign": {
                       "version": "0.4.0",
@@ -3199,8 +3199,8 @@
       }
     },
     "grunt-contrib-uglify": {
-      "version": "0.10.0",
-      "resolved": "https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.10.0.tgz",
+      "version": "0.9.2",
+      "resolved": "https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-0.9.2.tgz",
       "dependencies": {
         "chalk": {
           "version": "1.1.1",
@@ -3589,8 +3589,8 @@
           }
         },
         "uri-path": {
-          "version": "1.0.0",
-          "resolved": "https://registry.npmjs.org/uri-path/-/uri-path-1.0.0.tgz"
+          "version": "0.0.2",
+          "resolved": "https://registry.npmjs.org/uri-path/-/uri-path-0.0.2.tgz"
         }
       }
     },
@@ -4715,8 +4715,8 @@
           "resolved": "https://registry.npmjs.org/jscs/-/jscs-2.5.1.tgz",
           "dependencies": {
             "babel-core": {
-              "version": "5.8.33",
-              "resolved": "https://registry.npmjs.org/babel-core/-/babel-core-5.8.33.tgz",
+              "version": "5.8.34",
+              "resolved": "https://registry.npmjs.org/babel-core/-/babel-core-5.8.34.tgz",
               "dependencies": {
                 "babel-plugin-constant-folding": {
                   "version": "1.0.1",
@@ -4785,16 +4785,16 @@
                   "resolved": "https://registry.npmjs.org/babel-plugin-undefined-to-void/-/babel-plugin-undefined-to-void-1.1.6.tgz"
                 },
                 "babylon": {
-                  "version": "5.8.29",
-                  "resolved": "https://registry.npmjs.org/babylon/-/babylon-5.8.29.tgz"
+                  "version": "5.8.34",
+                  "resolved": "https://registry.npmjs.org/babylon/-/babylon-5.8.34.tgz"
                 },
                 "bluebird": {
                   "version": "2.10.2",
                   "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-2.10.2.tgz"
                 },
                 "convert-source-map": {
-                  "version": "1.1.1",
-                  "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.1.1.tgz"
+                  "version": "1.1.2",
+                  "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.1.2.tgz"
                 },
                 "core-js": {
                   "version": "1.2.6",
@@ -5793,8 +5793,8 @@
                   }
                 },
                 "node-uuid": {
-                  "version": "1.4.3",
-                  "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz"
+                  "version": "1.4.4",
+                  "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.4.tgz"
                 },
                 "vow-queue": {
                   "version": "0.4.2",
@@ -6921,8 +6921,8 @@
                   }
                 },
                 "node-uuid": {
-                  "version": "1.4.3",
-                  "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz"
+                  "version": "1.4.4",
+                  "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.4.tgz"
                 },
                 "oauth-sign": {
                   "version": "0.8.0",
@@ -7205,8 +7205,8 @@
                   "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-1.0.2.tgz"
                 },
                 "node-uuid": {
-                  "version": "1.4.3",
-                  "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz"
+                  "version": "1.4.4",
+                  "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.4.tgz"
                 },
                 "oauth-sign": {
                   "version": "0.5.0",
@@ -7375,8 +7375,8 @@
                   "resolved": "https://registry.npmjs.org/mime/-/mime-1.2.11.tgz"
                 },
                 "node-uuid": {
-                  "version": "1.4.3",
-                  "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz"
+                  "version": "1.4.4",
+                  "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.4.tgz"
                 },
                 "oauth-sign": {
                   "version": "0.3.0",
