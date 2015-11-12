@@ -6,7 +6,9 @@ node_js:
   - "4"
   - "stable"
 before_install:
-  - rvm install 2.0.0 && rvm use 2.0.0
+  - rvm install 2.2
+  - rvm use 2.2 --fuzzy
+  - export GEMDIR=$(rvm gemdir)
   - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip sauce\]'; export TWBS_DO_SAUCE=$?; true
