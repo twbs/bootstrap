@@ -34,6 +34,11 @@ env:
     - TWBS_TEST=sauce-js-unit
 matrix:
   fast_finish: true
+  exclude:
+    - node_js: "4"
+      env: TWBS_TEST=validate-html
+    - node_js: "4"
+      env: TWBS_TEST=sauce-js-unit
 notifications:
   slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
   webhooks:
