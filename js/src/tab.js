@@ -253,9 +253,9 @@ const Tab = (($) => {
 
   $(document)
     .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    event.preventDefault()
-    Tab._jQueryInterface.call($(this), 'show')
-  })
+      event.preventDefault()
+      Tab._jQueryInterface.call($(this), 'show')
+    })
 
 
   /**
