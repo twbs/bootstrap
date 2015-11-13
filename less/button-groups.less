@@ -173,14 +173,12 @@
     border-radius: 0;
   }
   &:first-child:not(:last-child) {
-    border-top-left-radius: @btn-border-radius-base;
-    border-top-right-radius: @btn-border-radius-base;
+    .border-top-radius(@btn-border-radius-base);
     .border-bottom-radius(0);
   }
   &:last-child:not(:first-child) {
-    border-bottom-left-radius: @btn-border-radius-base;
-    border-bottom-right-radius: @btn-border-radius-base;
     .border-top-radius(0);
+    .border-bottom-radius(@btn-border-radius-base);
   }
 }
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
