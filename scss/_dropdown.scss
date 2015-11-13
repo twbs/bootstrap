@@ -45,6 +45,7 @@
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
+  color: $body-color;
   font-size: $font-size-base;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
