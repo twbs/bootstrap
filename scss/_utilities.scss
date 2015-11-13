@@ -70,9 +70,9 @@
 
 // Transformation
 
-.text-lowercase      { text-transform: lowercase; }
-.text-uppercase      { text-transform: uppercase; }
-.text-capitalize     { text-transform: capitalize; }
+.text-lowercase      { text-transform: lowercase !important; }
+.text-uppercase      { text-transform: uppercase !important; }
+.text-capitalize     { text-transform: capitalize !important; }
 
 // Contextual colors
 
