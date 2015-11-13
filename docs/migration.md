@@ -81,6 +81,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
   - `.form-group` no longer mixins the `.row` class, so it's now required for grid layouts.
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
 
+### Buttons
+
+- Renamed `.btn-default` to `.btn-secondary`.
+
 ### Grid system
 
 - Added a new `~480px` grid breakpoint, meaning there are now five total tiers.
