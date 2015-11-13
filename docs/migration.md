@@ -73,6 +73,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Forms
 
 - Moved element resets to the `_reboot.scss` file.
+- Renamed `.control-label` to `.form-control-label`.
 - Renamed `.input-lg` and `.input-sm` to `.form-control-lg` and `.form-control-sm`, respectively.
 - Dropped `.form-group-*` classes for simplicity's sake. Use `.form-control-*` classes instead now.
 - Horizontal forms overhauled:
