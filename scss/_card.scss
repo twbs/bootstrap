@@ -135,7 +135,7 @@
   }
   .card-link {
     @include hover-focus {
-      color: #fff;
+      color: $card-link-hover-color;
     }
   }
 }
