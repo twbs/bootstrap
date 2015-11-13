@@ -19,10 +19,25 @@
   z-index: $zindex-modal;
   display: none;
   overflow: hidden;
+
+  // Vertical align
+  text-align: center;
+  white-space: nowrap;
+
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
   -webkit-overflow-scrolling: touch;
+
+  // This inserts an element so that .modal-dialog has something
+  // to vertically align against
+  &::before {
+    display: inline-block;
+    height: 100%;
+    margin-right: -0.25em;
+    vertical-align: middle;
+    content: "";
+  }
 
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
@@ -39,8 +54,18 @@
 // Shell div to position the modal with bottom padding
 .modal-dialog {
   position: relative;
-  width: auto;
+  display: inline-block;
+  width: calc(100% - 20px);
+
+  // Stops modal overflowing on mobiles
+  max-width: calc(100% - 20px);
+
   margin: 10px;
+
+  // Undo the center alignment & white-space on .modal
+  text-align: left;
+  white-space: normal;
+  vertical-align: middle;
 }
 
 // Actual modal
@@ -131,7 +156,6 @@
   // Automatically set modal's width for larger viewports
   .modal-dialog {
     width: $modal-md;
-    margin: 30px auto;
   }
   .modal-content {
     @include box-shadow(0 5px 15px rgba(0,0,0,.5));
