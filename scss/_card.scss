@@ -257,7 +257,7 @@
         }
         &:last-child {
           @include border-left-radius(0);
-          
+
           .card-img-top {
             border-top-left-radius: 0;
           }
