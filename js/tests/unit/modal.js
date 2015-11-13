@@ -174,6 +174,19 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should not close modal when clicking outside of modal-content if data-backdrop="true"', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    $('<div id="modal-test" data-backdrop="false"><div class="contents"/></div>')
+      .on('shown.bs.modal', function () {
+        $('#modal-test').trigger('click')
+        assert.ok($('#modal-test').is(':visible'), 'modal not hidden')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should close modal when escape key is pressed via keydown', function (assert) {
     assert.expect(3)
     var done = assert.async()
