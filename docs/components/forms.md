@@ -573,13 +573,6 @@ Ensure that an alternative indication of state is also provided. For instance, y
     Checkbox with warning
   </label>
 </div>
-<div class="has-danger">
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" id="checkboxDanger" value="option1">
-      Checkbox with danger
-    </label>
-  </div>
 <div class="checkbox has-danger">
   <label>
     <input type="checkbox" id="checkboxDanger" value="option1">
