@@ -557,7 +557,7 @@ Ensure that an alternative indication of state is also provided. For instance, y
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
 </div>
 <div class="form-group has-danger">
-  <label class="form-control-label" for="inputError1">Input with error</label>
+  <label class="form-control-label" for="inputError1">Input with danger</label>
   <input type="text" class="form-control form-control-error" id="inputError1">
 </div>
 
