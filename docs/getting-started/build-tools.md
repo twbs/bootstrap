@@ -42,16 +42,10 @@ Bootstrap will be compiled with [libsass][libsass] by default, but you can opt i
 
 For example, run `TWBS_SASS=sass grunt` to test and build Bootstrap with Ruby Sass.
 
-[ruby-sass]: https://github.com/sass/sass
-[grunt-contrib-sass]: https://github.com/gruntjs/grunt-contrib-sass
-[libsass]: https://github.com/sass/libsass
-[grunt-sass]: https://github.com/sindresorhus/grunt-sass
-
 ## Autoprefixer
 
 Bootstrap uses [Autoprefixer][autoprefixer] (included in our Gruntfile and build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
 
-[autoprefixer]: https://github.com/postcss/autoprefixer
 
 ## Local documentation
 
@@ -66,3 +60,9 @@ Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com
 ## Troubleshooting
 
 Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
+
+[ruby-sass]: https://github.com/sass/sass
+[grunt-contrib-sass]: https://github.com/gruntjs/grunt-contrib-sass
+[libsass]: https://github.com/sass/libsass
+[grunt-sass]: https://github.com/sindresorhus/grunt-sass
+[autoprefixer]: https://github.com/postcss/autoprefixer
