@@ -108,6 +108,20 @@ Buttons in input groups are a bit different and require one extra level of nesti
     </div>
   </div>
 </div>
+<br>
+<div class="row">
+  <div class="col-lg-offset-3 col-lg-6">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button">Hate it</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Product name">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button">Love it</button>
+      </span>
+    </div>
+  </div>
+</div>
 {% endexample %}
 
 ## Buttons with dropdowns
