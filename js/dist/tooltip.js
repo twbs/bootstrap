@@ -250,7 +250,8 @@ var Tooltip = (function ($) {
             classes: TetherClass,
             classPrefix: CLASS_PREFIX,
             offset: this.config.offset,
-            constraints: this.config.constraints
+            constraints: this.config.constraints,
+            addTargetClasses: false
           });
 
           Util.reflow(tip);
@@ -372,12 +373,6 @@ var Tooltip = (function ($) {
       value: function cleanupTether() {
         if (this._tether) {
           this._tether.destroy();
-
-          // clean up after tether's junk classes
-          // remove after they fix issue
-          // (https://github.com/HubSpot/tether/issues/36)
-          $(this.element).removeClass(this._removeTetherClasses);
-          $(this.tip).removeClass(this._removeTetherClasses);
         }
       }
 
@@ -414,11 +409,6 @@ var Tooltip = (function ($) {
         } else {
           this._fixTitle();
         }
-      }
-    }, {
-      key: '_removeTetherClasses',
-      value: function _removeTetherClasses(i, css) {
-        return ((css.baseVal || css).match(new RegExp('(^|\\s)' + CLASS_PREFIX + '-\\S+', 'g')) || []).join(' ');
       }
     }, {
       key: '_fixTitle',
