@@ -51,7 +51,7 @@
   list-style: none;
   background-color: $dropdown-bg;
   background-clip: padding-box;
-  border: 1px solid $dropdown-border;
+  border: 1px solid $dropdown-border-color;
   @include border-radius($border-radius);
   @include box-shadow(0 6px 12px rgba(0,0,0,.175));
 }
