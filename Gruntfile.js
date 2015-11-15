@@ -21,6 +21,23 @@ module.exports = function (grunt) {
   var isTravis = require('is-travis');
   var npmShrinkwrap = require('npm-shrinkwrap');
   var mq4HoverShim = require('mq4-hover-shim');
+  var autoprefixer = require('autoprefixer')({
+    browsers: [
+      'Android 2.3',
+      'Android >= 4',
+      'Chrome >= 35',
+      'Firefox >= 31',
+      // Note: Edge versions in Autoprefixer & Can I Use refer to the EdgeHTML rendering engine version,
+      // NOT the Edge app version shown in Edge's "About" screen.
+      // For example, at the time of writing, Edge 20 on an up-to-date system uses EdgeHTML 12.
+      // See also https://github.com/Fyrd/caniuse/issues/1928
+      'Edge >= 12',
+      'Explorer >= 9',
+      'iOS >= 7',
+      'Opera >= 12',
+      'Safari >= 7.1'
+    ]
+  });
 
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
@@ -215,43 +232,30 @@ module.exports = function (grunt) {
     },
 
     postcss: {
-      options: {
-        map: true,
-        processors: [mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' })]
-      },
-      core: {
-        src: 'dist/css/*.css'
-      }
-    },
-
-    autoprefixer: {
-      options: {
-        browsers: [
-          'Android 2.3',
-          'Android >= 4',
-          'Chrome >= 35',
-          'Firefox >= 31',
-          // Note: Edge versions in Autoprefixer & Can I Use refer to the EdgeHTML rendering engine version,
-          // NOT the Edge app version shown in Edge's "About" screen.
-          // For example, at the time of writing, Edge 20 on an up-to-date system uses EdgeHTML 12.
-          // See also https://github.com/Fyrd/caniuse/issues/1928
-          'Edge >= 12',
-          'Explorer >= 9',
-          'iOS >= 7',
-          'Opera >= 12',
-          'Safari >= 7.1'
-        ]
-      },
       core: {
         options: {
-          map: true
+          map: true,
+          processors: [
+            mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' }),
+            autoprefixer
+          ]
         },
         src: 'dist/css/*.css'
       },
       docs: {
+        options: {
+          processors: [
+            autoprefixer
+          ]
+        },
         src: 'docs/assets/css/docs.min.css'
       },
       examples: {
+        options: {
+          processors: [
+            autoprefixer
+          ]
+        },
         expand: true,
         cwd: 'docs/examples/',
         src: ['**/*.css'],
@@ -474,7 +478,7 @@ module.exports = function (grunt) {
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
   grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
 
-  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'autoprefixer:core', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
+  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
@@ -498,7 +502,7 @@ module.exports = function (grunt) {
   });
 
   // Docs task.
-  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
+  grunt.registerTask('docs-css', ['postcss:docs', 'postcss:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
