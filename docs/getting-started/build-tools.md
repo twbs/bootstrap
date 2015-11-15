@@ -47,6 +47,12 @@ For example, run `TWBS_SASS=sass grunt` to test and build Bootstrap with Ruby Sa
 [libsass]: https://github.com/sass/libsass
 [grunt-sass]: https://github.com/sindresorhus/grunt-sass
 
+## Autoprefixer
+
+Bootstrap uses [Autoprefixer][autoprefixer] (included in our Gruntfile and build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
+
+[autoprefixer]: https://github.com/postcss/autoprefixer
+
 ## Local documentation
 
 Running our documentation locally requires the use of Jekyll, a decently flexible static site generator that provides us basic includes, Markdown-based files, templates, and more. Here's how to get it started:
