@@ -199,22 +199,26 @@
 // Hidden by default for smaller viewports.
 
 .carousel-caption {
-  position: absolute;
-  right: 15%;
-  bottom: 20px;
-  left: 15%;
-  z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: $carousel-caption-color;
-  text-align: center;
-  text-shadow: $carousel-text-shadow;
+  display: none;
 
-  .btn {
-    text-shadow: none; // No shadow for button elements in carousel-caption
+  @include media-breakpoint-up(sm) {
+    display: block;
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: $carousel-caption-color;
+    text-align: center;
+    text-shadow: $carousel-text-shadow;
+
+    .btn {
+      text-shadow: none; // No shadow for button elements in carousel-caption
+    }
   }
 }
-
 
 //
 // Responsive variations
