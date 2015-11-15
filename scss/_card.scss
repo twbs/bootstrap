@@ -4,6 +4,7 @@
 
 .card {
   position: relative;
+  display: block;
   margin-bottom: $card-spacer-y;
   background-color: $card-bg;
   border: $card-border-width solid $card-border-color;
