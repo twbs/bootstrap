@@ -12,6 +12,14 @@ import Util from './util'
 
 const Tooltip = (($) => {
 
+  /**
+   * Check for Tether dependency
+   * Tether - http://github.hubspot.com/tether/
+   */
+  if (!window.Tether) {
+    throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
+  }
+
 
   /**
    * ------------------------------------------------------------------------
