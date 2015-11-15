@@ -202,12 +202,12 @@
   display: none;
 
   @include media-breakpoint-up(sm) {
-    display: block;
     position: absolute;
     right: 15%;
     bottom: 20px;
     left: 15%;
     z-index: 10;
+    display: block;
     padding-top: 20px;
     padding-bottom: 20px;
     color: $carousel-caption-color;
