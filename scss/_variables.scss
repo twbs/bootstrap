@@ -393,7 +393,7 @@ $pagination-padding-y-lg:             .75rem !default;
 
 $pagination-color:                     $link-color !default;
 $pagination-bg:                        #fff !default;
-$pagination-border:                    #ddd !default;
+$pagination-border-color:              #ddd !default;
 
 $pagination-hover-color:               $link-hover-color !default;
 $pagination-hover-bg:                  $gray-lighter !default;
@@ -412,7 +412,7 @@ $pagination-disabled-border:           #ddd !default;
 
 $pager-bg:                             $pagination-bg !default;
 $pager-border-width:                   $border-width !default;
-$pager-border-color:                   $pagination-border !default;
+$pager-border-color:                   $pagination-border-color !default;
 $pager-border-radius:                  15px !default;
 
 $pager-hover-bg:                       $pagination-hover-bg !default;
