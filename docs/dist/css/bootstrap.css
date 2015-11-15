@@ -653,7 +653,7 @@ mark,
   content: "\00A0 \2014";
 }
 
-.img-fluid, .figure > img, .carousel-inner > .carousel-item > img,
+.img-fluid, .carousel-inner > .carousel-item > img,
 .carousel-inner > .carousel-item > a > img {
   display: block;
   max-width: 100%;
@@ -686,7 +686,7 @@ mark,
   display: inline-block;
 }
 
-.figure > img {
+.figure-img {
   margin-bottom: .5rem;
   line-height: 1;
 }
@@ -2061,7 +2061,7 @@ input[type="checkbox"].disabled {
 
 .form-control-success,
 .form-control-warning,
-.form-control-error {
+.form-control-danger {
   padding-right: 2.25rem;
   background-repeat: no-repeat;
   background-position: center right .5625rem;
@@ -2069,7 +2069,7 @@ input[type="checkbox"].disabled {
           background-size: 1.4625rem 1.4625rem;
 }
 
-.has-success .help-block,
+.has-success .text-help,
 .has-success .form-control-label,
 .has-success .radio,
 .has-success .checkbox,
@@ -2100,7 +2100,7 @@ input[type="checkbox"].disabled {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MTIgNzkyIj48cGF0aCBmaWxsPSIjNWNiODVjIiBkPSJNMjMzLjggNjEwYy0xMy4zIDAtMjYtNi0zNC0xNi44TDkwLjUgNDQ4LjhDNzYuMyA0MzAgODAgNDAzLjMgOTguOCAzODljMTguOC0xNC4yIDQ1LjUtMTAuNCA1OS44IDguNGw3MiA5NUw0NTEuMyAyNDJjMTIuNS0yMCAzOC44LTI2LjIgNTguOC0xMy43IDIwIDEyLjQgMjYgMzguNyAxMy43IDU4LjhMMjcwIDU5MGMtNy40IDEyLTIwLjIgMTkuNC0zNC4zIDIwaC0yeiIvPjwvc3ZnPg==");
 }
 
-.has-warning .help-block,
+.has-warning .text-help,
 .has-warning .form-control-label,
 .has-warning .radio,
 .has-warning .checkbox,
@@ -2131,7 +2131,7 @@ input[type="checkbox"].disabled {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MTIgNzkyIj48cGF0aCBmaWxsPSIjZjBhZDRlIiBkPSJNNjAzIDY0MC4ybC0yNzguNS01MDljLTMuOC02LjYtMTAuOC0xMC42LTE4LjUtMTAuNnMtMTQuNyA0LTE4LjUgMTAuNkw5IDY0MC4yYy0zLjcgNi41LTMuNiAxNC40LjIgMjAuOCAzLjggNi41IDEwLjggMTAuNCAxOC4zIDEwLjRoNTU3YzcuNiAwIDE0LjYtNCAxOC40LTEwLjQgMy41LTYuNCAzLjYtMTQuNCAwLTIwLjh6bS0yNjYuNC0zMGgtNjEuMlY1NDloNjEuMnY2MS4yem0wLTEwN2gtNjEuMlYzMDRoNjEuMnYxOTl6Ii8+PC9zdmc+");
 }
 
-.has-danger .help-block,
+.has-danger .text-help,
 .has-danger .form-control-label,
 .has-danger .radio,
 .has-danger .checkbox,
@@ -2158,7 +2158,7 @@ input[type="checkbox"].disabled {
   color: #d9534f;
 }
 
-.has-danger .form-control-error {
+.has-danger .form-control-danger {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MTIgNzkyIj48cGF0aCBmaWxsPSIjZDk1MzRmIiBkPSJNNDQ3IDU0NC40Yy0xNC40IDE0LjQtMzcuNiAxNC40LTUyIDBsLTg5LTkyLjctODkgOTIuN2MtMTQuNSAxNC40LTM3LjcgMTQuNC01MiAwLTE0LjQtMTQuNC0xNC40LTM3LjYgMC01Mmw5Mi40LTk2LjMtOTIuNC05Ni4zYy0xNC40LTE0LjQtMTQuNC0zNy42IDAtNTJzMzcuNi0xNC4zIDUyIDBsODkgOTIuOCA4OS4yLTkyLjdjMTQuNC0xNC40IDM3LjYtMTQuNCA1MiAwIDE0LjMgMTQuNCAxNC4zIDM3LjYgMCA1MkwzNTQuNiAzOTZsOTIuNCA5Ni40YzE0LjQgMTQuNCAxNC40IDM3LjYgMCA1MnoiLz48L3N2Zz4=");
 }
 
@@ -3644,6 +3644,12 @@ input[type="button"].btn-block {
   border-color: #ddd #ddd transparent;
 }
 
+.nav-pills::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
 .nav-pills .nav-item {
   float: left;
 }
@@ -4041,11 +4047,11 @@ input[type="button"].btn-block {
 }
 
 .card-img-top {
-  border-radius: .25rem .25rem 0 0;
+  border-radius: .1875rem .1875rem 0 0;
 }
 
 .card-img-bottom {
-  border-radius: 0 0 .25rem .25rem;
+  border-radius: 0 0 .1875rem .1875rem;
 }
 
 @media (min-width: 544px) {
@@ -5087,8 +5093,10 @@ button.close {
 
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform .3s ease-out;
-       -o-transition:      -o-transform .3s ease-out;
+       -o-transition:         transform .3s ease-out, -o-transform .3s ease-out;
+          transition: -webkit-transform .3s ease-out;
           transition:         transform .3s ease-out;
+          transition:         transform .3s ease-out, -webkit-transform .3s ease-out, -o-transform .3s ease-out;
   -webkit-transform: translate(0, -25%);
       -ms-transform: translate(0, -25%);
        -o-transform: translate(0, -25%);
@@ -5502,8 +5510,10 @@ button.close {
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .carousel-item {
     -webkit-transition: -webkit-transform .6s ease-in-out;
-         -o-transition:      -o-transform .6s ease-in-out;
+         -o-transition:         transform .6s ease-in-out, -o-transform .6s ease-in-out;
+            transition: -webkit-transform .6s ease-in-out;
             transition:         transform .6s ease-in-out;
+            transition:         transform .6s ease-in-out, -webkit-transform .6s ease-in-out, -o-transform .6s ease-in-out;
 
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
