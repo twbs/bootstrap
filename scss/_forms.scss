@@ -261,7 +261,7 @@ input[type="checkbox"] {
 
 .form-control-success,
 .form-control-warning,
-.form-control-error {
+.form-control-danger {
   padding-right: ($input-padding-x * 3);
   background-repeat: no-repeat;
   background-position: center right ($input-height * .25);
@@ -288,7 +288,7 @@ input[type="checkbox"] {
 .has-danger {
   @include form-control-validation($brand-danger);
 
-  .form-control-error {
+  .form-control-danger {
     background-image: url($form-icon-danger);
   }
 }

@@ -27,8 +27,8 @@ Our Gruntfile includes the following commands and tasks:
 
 | Task | Description |
 | --- | --- |
-| `grunt` | Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass](http://sass-lang.com/) and [UglifyJS](http://lisperator.net/uglifyjs/).** |
-| `grunt dist` | `grunt dist` creates the `/dist` directory with compiled files. **Uses [Sass](http://sass-lang.com/) and [UglifyJS](http://lisperator.net/uglifyjs/).** |
+| `grunt` | Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass](http://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
+| `grunt dist` | `grunt dist` creates the `/dist` directory with compiled files. **Uses [Sass](http://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
 | `grunt test` | Runs [scss-lint](https://github.com/brigade/scss-lint), [ESLint](http://eslint.org/) and [QUnit](http://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI). |
 | `grunt docs` | Builds and tests CSS, JavaScript, and other assets which are used when running the documentation locally via `jekyll serve`. |
 | `grunt watch` | This is a convenience method for watching just Sass files and automatically building them whenever you save. |
@@ -42,10 +42,10 @@ Bootstrap will be compiled with [libsass][libsass] by default, but you can opt i
 
 For example, run `TWBS_SASS=sass grunt` to test and build Bootstrap with Ruby Sass.
 
-[ruby-sass]: https://github.com/sass/sass
-[grunt-contrib-sass]: https://github.com/gruntjs/grunt-contrib-sass
-[libsass]: https://github.com/sass/libsass
-[grunt-sass]: https://github.com/sindresorhus/grunt-sass
+## Autoprefixer
+
+Bootstrap uses [Autoprefixer][autoprefixer] (included in our Gruntfile and build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
+
 
 ## Local documentation
 
@@ -60,3 +60,9 @@ Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com
 ## Troubleshooting
 
 Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
+
+[ruby-sass]: https://github.com/sass/sass
+[grunt-contrib-sass]: https://github.com/gruntjs/grunt-contrib-sass
+[libsass]: https://github.com/sass/libsass
+[grunt-sass]: https://github.com/sindresorhus/grunt-sass
+[autoprefixer]: https://github.com/postcss/autoprefixer
