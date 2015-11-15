@@ -20,7 +20,7 @@
   // Place the border on the list items and negative margin up for better styling
   margin-bottom: -$border-width;
   background-color: $list-group-bg;
-  border: $border-width solid $list-group-border;
+  border: $border-width solid $list-group-border-color;
 
   // Round the first and last items
   &:first-child {
