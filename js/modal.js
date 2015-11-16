@@ -23,7 +23,7 @@
     this.originalBodyPad     = null
     this.scrollbarWidth      = 0
     this.ignoreBackdropClick = false
-    this.loaded              = false
+    this.loaded              = typeof(this.options.remote) === 'undefined' || !this.options.remote || false // Always true if not remote
 
     if (this.options.remote) {
       this.$element
@@ -92,10 +92,10 @@
         that.$element[0].offsetWidth // force reflow
       }
 
-      if(that.options.remote && !that.loaded){
-        that.$element.one('loaded.bs.modal', function(){
+      if (that.options.remote && !that.loaded) {
+        that.$element.one('loaded.bs.modal', function () {
           that.$element.addClass('in')
-        }
+        });
       } else {
         that.$element.addClass('in')
       }
