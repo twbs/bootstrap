@@ -23,12 +23,14 @@
     this.originalBodyPad     = null
     this.scrollbarWidth      = 0
     this.ignoreBackdropClick = false
+    this.loaded              = !this.options.remote // Always true if not remote
 
     if (this.options.remote) {
       this.$element
         .find('.modal-content')
         .load(this.options.remote, $.proxy(function () {
           this.$element.trigger('loaded.bs.modal')
+          this.loaded = true
         }, this))
     }
   }
@@ -90,7 +92,13 @@
         that.$element[0].offsetWidth // force reflow
       }
 
-      that.$element.addClass('in')
+      if (that.options.remote && !that.loaded) {
+        that.$element.one('loaded.bs.modal', function () {
+          that.$element.addClass('in')
+        });
+      } else {
+        that.$element.addClass('in')
+      }
 
       that.enforceFocus()
 
