@@ -36,8 +36,8 @@
      * Check for Tether dependency
      * Tether - http://github.hubspot.com/tether/
      */
-    if (!window.Tether) {
-      throw new Error("Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)");
+    if (window.Tether === undefined) {
+      throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)');
     }
 
     /**
