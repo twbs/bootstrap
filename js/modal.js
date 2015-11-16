@@ -23,7 +23,7 @@
     this.originalBodyPad     = null
     this.scrollbarWidth      = 0
     this.ignoreBackdropClick = false
-    this.loaded              = !this.options.remote || false // Always true if not remote
+    this.loaded              = !this.options.remote // Always true if not remote
 
     if (this.options.remote) {
       this.$element
