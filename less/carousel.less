@@ -21,6 +21,7 @@
     // Account for jankitude on images
     > img,
     > a > img {
+      width: 100%; // Allow correct scaling of image on carousel slide in MS Edge https://github.com/twbs/bootstrap/issues/16915
       &:extend(.img-responsive);
       line-height: 1;
     }
