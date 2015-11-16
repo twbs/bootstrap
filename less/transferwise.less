@@ -16,7 +16,7 @@
 .jumbotron,
 .bg-primary,
 .bg-info {
-    h1, h2, h3, h4, h5, h6 {
+    h1, h2, h3, h4, h5, h6, small {
         color: @brand-white;
     }
 }
@@ -51,22 +51,6 @@ a.btn {
     text-decoration: none;
 }
 
-.label {
-    padding: 0.3em 0.6em 0.2em;
-}
-/*
-.nav > li > a {
-    padding: 11px 16px 5px;
-}
-
-.navbar-nav > li > a,
-.navbar-brand,
-.navbar-text {
-    padding-top: 18.5px;
-    padding-bottom: 16.5px;
-}
-*/
-
 address {
     margin-bottom: 11px;
 }
@@ -81,10 +65,11 @@ blockquote footer {
     footer {
         position: relative;
     }
-
+    /*
     .navbar .navbar-brand {
         margin-left: 15px !important;
     }
+    */
 }
 
 .well,
@@ -146,8 +131,8 @@ blockquote footer {
     padding-bottom: 100px;
 
     @media (min-width: @screen-sm-min) {
-        padding-top: 104px;
-        padding-bottom: 120px;
+        padding-top: 150px;
+        padding-bottom: 110px;
     }
 }
 
@@ -263,10 +248,16 @@ footer {
 .dropdown-menu > li:not(.dropdown-header) {
     padding-left: 0;
 }
+.nav > .navbar-icon > a {
+    padding-bottom: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
 
 .navbar {
     .glyphicon {
         font-size: 22px;
+        line-height: 22px;
 
         + .badge {
             margin-top: -25px;

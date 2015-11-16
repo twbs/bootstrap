@@ -36,7 +36,7 @@
   display: none; // none by default, but block on "open" of the menu
   float: left;
   min-width: 160px;
-  padding: 4px 0;
+  padding: 0;
   margin: 2px 0 0; // override default ul
   list-style: none;
   font-size: @font-size-base;
@@ -70,6 +70,12 @@
     line-height: @line-height-base;
     color: @dropdown-link-color;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
+  }
+  > li:first-child > a {
+      .border-top-radius((@border-radius-base - 1px))
+  }
+  > li:last-child > a {
+      .border-bottom-radius((@border-radius-base - 1px))
   }
 }
 
