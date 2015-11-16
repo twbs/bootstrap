@@ -121,7 +121,7 @@ output {
   display: block;
   width: 100%;
   height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: (@padding-large-vertical + 1px) @padding-base-horizontal (@padding-large-vertical - 1px) @padding-base-horizontal;
+  padding: @padding-large-vertical @padding-base-horizontal;
   font-size: @input-font-size;
   line-height: @input-line-height;
   color: @input-color;
@@ -599,7 +599,7 @@ input[type="checkbox"] {
   .form-group-lg {
     @media (min-width: @screen-sm-min) {
       .control-label {
-        padding-top: ((@padding-large-vertical * @line-height-large) + 1);
+        padding-top: 17px;
         font-size: @font-size-large;
       }
     }
@@ -607,7 +607,7 @@ input[type="checkbox"] {
   .form-group-sm {
     @media (min-width: @screen-sm-min) {
       .control-label {
-        padding-top: (@padding-small-vertical + 1);
+        padding-top: 8px;
         font-size: @font-size-small;
       }
     }
@@ -657,8 +657,6 @@ input[type="checkbox"] {
 
 .form-control {
     font-weight: 500;
-
-    .placeholder(rgba(130,156,169, 0.5));
 }
 
 .form-group {
@@ -689,52 +687,16 @@ input[type="checkbox"] {
     margin-left: -6px;
     margin-right: -6px;
 
-    .col-sm-1,
-    .col-sm-2,
-    .col-sm-3,
-    .col-sm-4,
-    .col-sm-5,
-    .col-sm-6,
-    .col-sm-7,
-    .col-sm-8,
-    .col-sm-9,
-    .col-sm-10,
-    .col-sm-11,
-    .col-sm-12,
-    .col-xs-1,
-    .col-xs-2,
-    .col-xs-3,
-    .col-xs-4,
-    .col-xs-5,
-    .col-xs-6,
-    .col-xs-7,
-    .col-xs-8,
-    .col-xm-9,
-    .col-xs-10,
-    .col-xs-11,
-    .col-xs-12 {
+    [class^="col-"] {
         padding-left: 6px;
         padding-right: 6px;
     }
 }
 
 @media (max-width: @screen-sm-max) {
-    .form-group .row {
-        .col-sm-1,
-        .col-sm-2,
-        .col-sm-3,
-        .col-sm-4,
-        .col-sm-5,
-        .col-sm-6,
-        .col-sm-7,
-        .col-sm-8,
-        .col-sm-9,
-        .col-sm-10,
-        .col-sm-11,
-        .col-sm-12 {
-            .form-control {
-                margin-bottom: (@padding-base-vertical * 1.5);
-            }
+    .form-group .row [class^="col-"] {
+        .form-control {
+            margin-bottom: (@padding-base-vertical * 1.5);
         }
     }
 }
