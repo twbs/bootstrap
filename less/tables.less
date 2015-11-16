@@ -62,6 +62,14 @@ th {
   .table {
     background-color: @body-bg;
   }
+
+  > thead,
+  > tfoot {
+      font-size: (@font-size-small - 2px);
+  }
+  > tbody {
+      font-size: @font-size-small;
+  }
 }
 
 
@@ -155,11 +163,11 @@ table {
 // inheritance to nested tables.
 
 // Generate the contextual variants
-.table-row-variant(active; @table-bg-active);
-.table-row-variant(success; @state-success-bg);
-.table-row-variant(info; @state-info-bg);
-.table-row-variant(warning; @state-warning-bg);
-.table-row-variant(danger; @state-danger-bg);
+.table-row-variant(active; @table-bg-active; @table-border-color);
+.table-row-variant(success; @state-success-bg; @state-success-text);
+.table-row-variant(info; @state-info-bg; @state-info-text);
+.table-row-variant(warning; @state-warning-bg; @state-warning-text);
+.table-row-variant(danger; @state-danger-bg; @state-danger-text);
 
 
 // Responsive tables
@@ -260,17 +268,6 @@ table {
 }
 
 .table {
-    font-size: 12px;
-
-    > thead > tr > th,
-    > tbody > tr > th,
-    > tfoot > tr > th,
-    > thead > tr > td,
-    > tbody > tr > td,
-    > tfoot > tr > td {
-        padding: 22px 16px 18px;
-    }
-
     > thead > tr > th {
        border-bottom-width: 1px;
    }

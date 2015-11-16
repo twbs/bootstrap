@@ -1,6 +1,6 @@
 // Tables
 
-.table-row-variant(@state; @background) {
+.table-row-variant(@state; @background; @border) {
   // Exact selectors below required to override `.table-striped` and prevent
   // inheritance to nested tables.
   .table > thead > tr,
@@ -10,7 +10,40 @@
     > th.@{state},
     &.@{state} > td,
     &.@{state} > th {
-      background-color: @background;
+      border-color: @border;
+    }
+  }
+
+  .table > thead > tr,
+  .table > tbody > tr,
+  .table > tfoot > tr {
+    &.@{state} > td:first-child,
+    &.@{state} > th:first-child {
+      position: relative;
+      &:before {
+          content: "";
+          width: @alert-bar-width;
+          background-color: @border;
+          position: absolute;
+          display: block;
+          height: 100%;
+          left: 0px;
+          top: -1px;
+      }
+      &:after {
+          content: "";
+          width: @alert-bar-width;
+          background-color: @border;
+          position: absolute;
+          display: block;
+          height: 100%;
+          left: 0px;
+          bottom: 0;
+      }
+    }
+    &.@{state} > td:last-child,
+    &.@{state} > th:last-child {
+      border-right: 1px solid @border !important;
     }
   }
 
