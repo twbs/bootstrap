@@ -46,6 +46,9 @@
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
   .input-sm();
+
+  padding-top: (@padding-small-vertical - 1);
+  padding-bottom: (@padding-small-vertical - 1);
 }
 
 
@@ -71,7 +74,7 @@
 // Text input groups
 // -------------------------
 .input-group-addon {
-  padding: (@padding-base-vertical + 1px) @padding-base-horizontal (@padding-base-vertical - 1px);
+  padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @input-font-size;
   font-weight: normal;
   line-height: @input-line-height;
@@ -83,13 +86,13 @@
 
   // Sizing
   &.input-sm {
-    padding: (@padding-small-vertical + 1px) @padding-small-horizontal (@padding-small-vertical - 1px);
+    padding: @padding-small-vertical @padding-small-horizontal;
     font-size: @input-font-size-small;
     line-height: @input-line-height-small;
     border-radius: @border-radius-small;
   }
   &.input-lg {
-    padding: (@padding-large-vertical + 1px) @padding-large-horizontal (@padding-large-vertical - 1px);
+    padding: @padding-large-vertical @padding-large-horizontal;
     font-size: @input-font-size-large;
     line-height: @input-line-height-large;
     border-radius: @border-radius-large;

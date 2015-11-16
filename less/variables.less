@@ -181,14 +181,17 @@
 @padding-large-vertical:    12px;
 @padding-large-horizontal:  16px;
 
-@padding-small-vertical:    6px;
+@padding-small-vertical:    4px;
 @padding-small-horizontal:  12px;
 
 @padding-xs-vertical:       1px;
 @padding-xs-horizontal:     8px;
 
-@line-height-large:         1.55555555; // 18*1.555 = 28
-@line-height-small:         1.5; // 12*1.5=18
+@line-height-large:         32px; // 18*1.555 = 28
+@line-height-small:         24px; // 12*1.5=18
+
+@padding-container: 		40px;
+@padding-container-collapse: 24px;
 
 @border-radius-base:        3px;
 @border-radius-large:       3px;
@@ -214,9 +217,9 @@
 //## Customizes the `.table` component with basic values, each used across all table variations.
 
 //** Padding for `<th>`s and `<td>`s.
-@table-cell-padding:            8px;
+@table-cell-padding:            16px;
 //** Padding for cells in `.table-condensed`.
-@table-condensed-cell-padding:  5px;
+@table-condensed-cell-padding:  8px;
 
 //** Default background color used for all tables.
 @table-bg:                      @brand-white;
@@ -243,7 +246,7 @@
 @btn-xs-line-height:             18px;
 
 @btn-sm-font-size:               14px;
-@btn-sm-line-height:             22px;
+@btn-sm-line-height:             24px;
 
 @btn-lg-font-size:               18px;
 @btn-lg-line-height:             28px;
@@ -358,7 +361,7 @@
 @input-font-size-small:          14px;
 @input-line-height-small:        @btn-sm-line-height;
 
-@input-font-size-large:          22px;
+@input-font-size-large:          18px;
 @input-line-height-large:        @btn-lg-line-height;
 
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
@@ -374,14 +377,14 @@
 @input-border-focus:             @brand-light-blue;
 
 //** Placeholder text color
-@input-color-placeholder:        #829CA9;           //#999;
+@input-color-placeholder:        @brand-smoke;
 
 //** Default `.form-control` height
 @input-height-base:              48px;  //(@line-height-computed + (@padding-base-vertical * 2) + 2);
 //** Large `.form-control` height
 @input-height-large:             54px;  //(ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 //** Small `.form-control` height
-@input-height-small:             36px;  //(floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+@input-height-small:             32px;  //(floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 //** `.form-group` margin
 @form-group-margin-bottom:       24px;  // Visible space is 24px but line height(20) is 6px bigger than font size(14)
@@ -529,7 +532,7 @@
 
 // Basics of a navbar
 @navbar-height:                    56px;                    //50px;
-@navbar-margin-bottom:             @line-height-computed;
+@navbar-margin-bottom:             40px;
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
@@ -767,31 +770,32 @@
 //##
 
 //** Padding applied to the modal body
-@modal-inner-padding:         24px;
+@modal-inner-padding:         @padding-container;
+@modal-inner-padding-collapse: @padding-container-collapse;
 
 //** Padding applied to the modal title
-@modal-title-padding:         24px;
+@modal-title-padding:         @padding-container;
 //** Modal title line-height
 @modal-title-line-height:     @line-height-base;
 
 //** Background color of modal content area
 @modal-content-bg:                             #fff;
 //** Modal content border color
-@modal-content-border-color:                   rgba(0,0,0,.2);
+@modal-content-border-color:                   @brand-smoke-plus-10;
 //** Modal content border color **for IE8**
 @modal-content-fallback-border-color:          #999;
 
 //** Modal backdrop background color
-@modal-backdrop-bg:           #000;
+@modal-backdrop-bg:           @brand-blue;
 //** Modal backdrop opacity
-@modal-backdrop-opacity:      .5;
+@modal-backdrop-opacity:      .8;
 //** Modal header border color
-@modal-header-border-color:   #e5e5e5;
+@modal-header-border-color:   @brand-smoke-plus-10;
 //** Modal footer border color
 @modal-footer-border-color:   @modal-header-border-color;
 
-@modal-lg:                    900px;
-@modal-md:                    600px;
+@modal-lg:                    736px;
+@modal-md:                    480px;
 @modal-sm:                    300px;
 
 
@@ -799,23 +803,24 @@
 //
 //## Define alert colors, border radius, and padding.
 
-@alert-padding:               5px;  // 15px;
-@alert-border-radius:         0;    //@border-radius-base;
+@alert-padding:               24px;
+@alert-border-radius:         @border-radius-base;
+@alert-bar-width: 			  8px;
 @alert-link-font-weight:      bold;
 
-@alert-success-bg:            transparent;          // @state-success-bg;
+@alert-success-bg:            @brand-white;           // @state-success-bg;
 @alert-success-text:          @state-success-text;
-@alert-success-border:        @state-success-text;  //@state-success-border;
+@alert-success-border:        @state-success-border;
 
-@alert-info-bg:               transparent;          // @state-info-bg;
+@alert-info-bg:               @brand-white;          // @state-info-bg;
 @alert-info-text:             @state-info-text;
-@alert-info-border:           @state-info-text;     // @state-info-border;
+@alert-info-border:           @state-info-border;
 
-@alert-warning-bg:            transparent;          // @state-warning-bg;
+@alert-warning-bg:            @brand-white;          // @state-warning-bg;
 @alert-warning-text:          @state-warning-text;
-@alert-warning-border:        @state-warning-text;  // @state-warning-border;
+@alert-warning-border:        @state-warning-border;
 
-@alert-danger-bg:             transparent;          // @state-danger-bg;
+@alert-danger-bg:             @brand-white;          // @state-danger-bg;
 @alert-danger-text:           @state-danger-text;
 @alert-danger-border:         @state-danger-border;
 
@@ -884,10 +889,10 @@
 //##
 
 @panel-bg:                    #fff;
-@panel-body-padding:          40px;
-@panel-body-padding-collapse: 16px;
+@panel-body-padding:          @padding-container;
+@panel-body-padding-collapse: @padding-container-collapse;
 @panel-heading-color:         @brand-blue;
-@panel-heading-padding:       40px;
+@panel-heading-padding:       @padding-container;
 @panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
 
@@ -1009,8 +1014,8 @@
 //
 //##
 
-@code-color:                  #c7254e;
-@code-bg:                     #f9f2f4;
+@code-color:                  @brand-grey-minus-10;
+@code-bg:                     @brand-smoke-plus-20;
 
 @kbd-color:                   #fff;
 @kbd-bg:                      #333;

@@ -523,17 +523,13 @@ h4 code {
  */
 
 .bs-examples .thumbnail {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 @media (max-width: 480px) {
-  .bs-examples {
-    margin-right: -10px;
-    margin-left: -10px;
-  }
   .bs-examples > [class^="col-"] {
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 16px;
+    padding-left: 16px;
   }
 }
 
@@ -550,58 +546,27 @@ h4 code {
   position: static;
 }
 
-/* First level of nav */
-.bs-docs-sidenav {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
 /* All levels of nav */
 .bs-docs-sidebar .nav > li > a {
   display: block;
-  padding: 4px 20px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #767676;
-}
-.bs-docs-sidebar .nav > li > a:hover,
-.bs-docs-sidebar .nav > li > a:focus {
-  padding-left: 19px;
-  color: #223049;
-  text-decoration: none;
-  background-color: transparent;
-  border-left: 1px solid #223049;
-}
-.bs-docs-sidebar .nav > .active > a,
-.bs-docs-sidebar .nav > .active:hover > a,
-.bs-docs-sidebar .nav > .active:focus > a {
-  padding-left: 18px;
-  font-weight: bold;
-  color: #223049;
-  background-color: transparent;
-  border-left: 2px solid #223049;
 }
 
 /* Nav: second level (shown on .active) */
 .bs-docs-sidebar .nav .nav {
   display: none; /* Hide by default, but at >768px, show it */
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 .bs-docs-sidebar .nav .nav > li > a {
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 30px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 24px;
   font-size: 12px;
   font-weight: normal;
 }
-.bs-docs-sidebar .nav .nav > li > a:hover,
-.bs-docs-sidebar .nav .nav > li > a:focus {
-  padding-left: 29px;
-}
+
 .bs-docs-sidebar .nav .nav > .active > a,
 .bs-docs-sidebar .nav .nav > .active:hover > a,
 .bs-docs-sidebar .nav .nav > .active:focus > a {
-  padding-left: 28px;
   font-weight: 500;
 }
 
@@ -609,9 +574,8 @@ h4 code {
 .back-to-top,
 .bs-docs-theme-toggle {
   display: none;
-  padding: 4px 10px;
+  padding: 4px 0;
   margin-top: 10px;
-  margin-left: 10px;
   font-size: 12px;
   font-weight: 500;
   color: #999;
@@ -644,7 +608,7 @@ h4 code {
   }
   .bs-docs-sidebar.affix {
     position: fixed; /* Undo the static from mobile first approach */
-    top: 80px;
+    top: 70px;
   }
   .bs-docs-sidebar.affix-bottom {
     position: absolute; /* Undo the static from mobile first approach */
@@ -873,7 +837,7 @@ h4 code {
 .bs-example {
   position: relative;
   padding: 40px 0 16px;
-  margin: 0 -16px 16px;
+  margin: 0 0 16px;
   border: 0;
   border-style: solid;
 }
@@ -892,14 +856,6 @@ h4 code {
 
 .bs-example-padded-bottom {
   padding-bottom: 24px;
-}
-
-/* Tweak display of the code snippets when following an example */
-.bs-example + .highlight,
-.bs-example + .zero-clipboard + .highlight {
-  margin: -16px -16px 24px;
-  border-width: 0 0 1px;
-  border-radius: 0;
 }
 
 /* Make the examples and snippets not full-width */
@@ -954,7 +910,7 @@ h4 code {
   vertical-align: middle;
 }
 .bs-example-type .table td {
-  padding: 15px 0;
+  padding: 16px 0;
   border-color: #eee;
 }
 .bs-example-type .table tr:first-child td {
@@ -971,14 +927,14 @@ h4 code {
 
 /* Contextual background colors */
 .bs-example-bg-classes p {
-  padding: 15px;
+  padding: 16px;
 }
 
 /* Images */
 .bs-example > .img-circle,
 .bs-example > .img-rounded,
 .bs-example > .img-thumbnail {
-  margin: 5px;
+  margin: 8px;
 }
 
 /* Tables */
@@ -989,20 +945,20 @@ h4 code {
 /* Buttons */
 .bs-example > .btn,
 .bs-example > .btn-group {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .bs-example > .btn-toolbar + .btn-toolbar {
-  margin-top: 10px;
+  margin-top: 16px;
 }
 
 /* Forms */
 .bs-example-control-sizing select,
 .bs-example-control-sizing input[type="text"] + input[type="text"] {
-  margin-top: 10px;
+  margin-top: 16px;
 }
 .bs-example-form .input-group {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 .bs-example > textarea.form-control {
   resize: vertical;
@@ -1038,7 +994,7 @@ h4 code {
 }
 .bs-navbar-top-example:after {
   top: auto;
-  bottom: 15px;
+  bottom: 16px;
   content: "";
 }
 .bs-navbar-top-example .navbar-fixed-top {
@@ -1065,8 +1021,8 @@ h4 code {
 
 /* Pagination */
 .bs-example .pagination {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 /* Pager */
@@ -1100,13 +1056,13 @@ h4 code {
 .bs-example > .dropdown > .dropdown-menu {
   position: static;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   clear: left;
 }
 
 /* Example tabbable tabs */
 .bs-example-tabs .nav-tabs {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 /* Tooltips */
@@ -1114,13 +1070,13 @@ h4 code {
   text-align: center;
 }
 .bs-example-tooltips > .btn {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .bs-example-tooltip .tooltip {
   position: relative;
   display: inline-block;
-  margin: 10px 20px;
+  margin: 16px 24px;
   opacity: 1;
 }
 
@@ -1198,6 +1154,7 @@ h4 code {
 .highlight pre code {
   font-size: inherit;
   color: #333; /* Effectively the base text color */
+  opacity: .8;
 }
 .highlight pre code:first-child {
   display: inline-block;
@@ -1247,7 +1204,7 @@ h4 code {
 }
 .responsive-utilities-test span {
   display: block;
-  padding: 15px 10px;
+  padding: 16px 8px;
   font-size: 14px;
   font-weight: bold;
   line-height: 1.1;
@@ -1346,7 +1303,7 @@ h4 code {
 }
 
 .bs-customizer .help-block {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 /* For the variables, use regular weight */
@@ -1381,7 +1338,7 @@ h4 code {
   margin-bottom: 0;
 }
 .bs-customizer-alert .glyphicon {
-  margin-right: 5px;
+  margin-right: 8px;
 }
 .bs-customizer-alert pre {
   margin: 10px 0 0;
@@ -1394,15 +1351,15 @@ h4 code {
 
 .bs-dropzone {
   position: relative;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
   color: #777;
   text-align: center;
   border: 2px dashed #eee;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 .bs-dropzone .import-header {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 .bs-dropzone .glyphicon-download-alt {
   font-size: 40px;
@@ -1411,7 +1368,7 @@ h4 code {
   width: 100px;
 }
 .bs-dropzone .lead {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   font-weight: normal;
   color: #333;
 }
@@ -1432,11 +1389,11 @@ h4 code {
 .bs-brand-logos {
   display: table;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   overflow: hidden;
   color: #223049;
   background-color: #f9f9f9;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 /* Individual items */
@@ -1514,7 +1471,7 @@ h4 code {
   cursor: pointer;
   background-color: #fff;
   border: 1px solid #e1e1e8;
-  border-radius: 0 4px 0 4px;
+  border-radius: 0 3px 0 3px;
 }
 .btn-clipboard-hover {
   color: #fff;

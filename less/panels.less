@@ -9,19 +9,19 @@
   background-color: @panel-bg;
   border-top: 1px solid @brand-smoke-plus-10;
   border-bottom: 1px solid @brand-smoke-plus-10;
-  margin-left: (@padding-base-vertical * -2);
-  margin-right: (@padding-base-vertical * -2);
+  margin-left: (@padding-container-collapse * -1);
+  margin-right: (@padding-container-collapse * -1);
 }
 
 // Panel contents
 .panel-body {
-  padding: (@padding-base-vertical * 3) @panel-body-padding-collapse;
+  padding: @panel-body-padding-collapse;
   &:extend(.clearfix all);
 }
 
 // Optional heading
 .panel-heading {
-  padding: (@padding-base-vertical * 3) @panel-body-padding-collapse (@padding-base-vertical * 3 - 1px);
+  padding: @panel-body-padding-collapse @panel-body-padding-collapse (@panel-body-padding-collapse - 1px);
   border-bottom: 1px solid @brand-smoke-plus-10;
   .border-top-radius((@panel-border-radius - 1));
 
@@ -42,7 +42,7 @@
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  line-height: (@padding-base-vertical * 3);
+  line-height: @line-height-computed;
   color: @panel-heading-color;
 
   > a,
@@ -56,7 +56,7 @@
 
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
-  padding: (@padding-base-vertical * 3) @panel-body-padding-collapse;
+  padding: @panel-body-padding-collapse;
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-inner-border;
   .border-bottom-radius((@panel-border-radius - 1));
@@ -238,6 +238,21 @@
   > .table-responsive {
     border: 0;
     margin-bottom: 0;
+  }
+  .table tr > :first-child {
+    padding-left: @panel-body-padding-collapse;
+  }
+  .table tr > :last-child {
+    padding-right: @panel-body-padding-collapse;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    .table tr > :first-child {
+      padding-left: @panel-body-padding;
+    }
+    .table tr > :last-child {
+      padding-right: @panel-body-padding;
+    }
   }
 }
 
@@ -502,7 +517,7 @@
     .panel-group .panel {
         .panel-heading,
         .panel-footer {
-            padding: (@padding-base-vertical * 3) @panel-body-padding;
+            padding: @panel-body-padding-collapse @panel-body-padding;
         }
     }
 }

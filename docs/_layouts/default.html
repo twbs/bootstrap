@@ -8,9 +8,11 @@
     <a id="skippy" class="sr-only sr-only-focusable" href="#content"><div class="container"><span class="skiplink-text">Skip to main content</span></div></a>
 
     <!-- Docs master nav -->
-    <div class="bg-primary">
+    <header class="navbar navbar-inverse navbar-static-top bg-primary"
+      id="top" role="banner"
+      data-spy="affix" data-offset-top="60">
     {% include nav/main.html %}
-    </div>
+    </header>
 
     <!-- Docs page layout -->
     <div class="container bs-docs-container">
@@ -19,8 +21,10 @@
         <div class="col-md-3" role="complementary">
             <h3>{{ page.title }}</h3>
             <p>{{ page.lead }}</p>
-          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
-            <ul class="nav bs-docs-sidenav">
+            <hr />
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm"
+            data-spy="affix" data-offset-top="230" data-offset-bottom="430">
+            <ul class="nav bs-docs-sidenav nav-stacked nav-pills">
               {% if page.slug == "getting-started" %}
                 {% include nav/getting-started.html %}
               {% elsif page.slug == "css" %}

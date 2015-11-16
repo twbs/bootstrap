@@ -44,7 +44,7 @@
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: 10px;
+  margin: 16px;
 }
 
 // Actual modal
@@ -77,7 +77,7 @@
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
-  padding: @modal-title-padding;
+  padding: @modal-inner-padding-collapse;
   border-bottom: 1px solid @modal-header-border-color;
   min-height: (@modal-title-padding + @modal-title-line-height);
 }
@@ -96,19 +96,19 @@
 // Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
-  padding: @modal-inner-padding;
+  padding: @modal-inner-padding-collapse;
 }
 
 // Footer (for actions)
 .modal-footer {
-  padding: @modal-inner-padding;
+  padding: @modal-inner-padding-collapse;
   text-align: right; // right align buttons
   border-top: 1px solid @modal-footer-border-color;
   &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
 
   // Properly space out buttons
   .btn + .btn {
-    margin-left: 5px;
+    margin-left: 8px;
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
   }
   // but override that for button groups
@@ -143,8 +143,24 @@
 
   // Modal sizes
   .modal-sm { width: @modal-sm; }
-}
-
-@media (min-width: @screen-md-min) {
   .modal-lg { width: @modal-lg; }
+
+
+  @media (min-width: @screen-sm-min) {
+      .panel {
+          border-radius: @panel-border-radius;
+          border: 1px solid @brand-smoke-plus-10;
+          margin-left: 0;
+          margin-right: 0;
+      }
+      .modal-header {
+          padding: @modal-title-padding;
+      }
+      .modal-body {
+          padding: @modal-inner-padding;
+      }
+      .modal-footer {
+          padding: @modal-inner-padding-collapse @modal-inner-padding;
+      }
+  }
 }

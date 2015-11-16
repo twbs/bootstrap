@@ -9,8 +9,10 @@
 .alert {
   padding: @alert-padding;
   margin-bottom: @line-height-computed;
-  //border: 2px solid transparent;
-  // border-radius: @alert-border-radius;
+  border-radius: @alert-border-radius;
+
+  border: 1px solid @brand-smoke-plus-10;
+  border-left-width: @alert-bar-width;
 
   // Headings for larger alerts
   h4 {
@@ -31,7 +33,7 @@
   }
 
   > p + p {
-    margin-top: 5px;
+    margin-top: 8px;
   }
 }
 
