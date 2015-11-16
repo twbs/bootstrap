@@ -3,20 +3,20 @@
 
   <p class="lead">Extend form controls by adding text or buttons before, after, or on both sides of any text-based <code>&lt;input&gt;</code>. Use <code>.input-group</code> with an <code>.input-group-addon</code> to prepend or append elements to a single <code>.form-control</code>.</p>
 
-  <div class="bs-callout bs-callout-danger" id="callout-inputgroup-text-input-only">
+  <div class="alert alert-danger" id="callout-inputgroup-text-input-only">
     <h4>Textual <code>&lt;input&gt;</code>s only</h4>
     <p>Avoid using <code>&lt;select&gt;</code> elements here as they cannot be fully styled in WebKit browsers.</p>
     <p>Avoid using <code>&lt;textarea&gt;</code> elements here as their <code>rows</code> attribute will not be respected in some cases.</p>
   </div>
-  <div class="bs-callout bs-callout-warning" id="callout-inputgroup-container-body">
+  <div class="alert alert-warning" id="callout-inputgroup-container-body">
     <h4>Tooltips &amp; popovers in input groups require special setting</h4>
     <p>When using tooltips or popovers on elements within an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).</p>
   </div>
-  <div class="bs-callout bs-callout-warning" id="callout-inputgroup-dont-mix">
+  <div class="alert alert-warning" id="callout-inputgroup-dont-mix">
     <h4>Don't mix with other components</h4>
     <p>Do not mix form groups or grid column classes directly with input groups. Instead, nest the input group inside of the form group or grid-related element.</p>
   </div>
-  <div class="bs-callout bs-callout-warning" id="callout-inputgroup-form-labels">
+  <div class="alert alert-warning" id="callout-inputgroup-form-labels">
     <h4>Always add labels</h4>
     <p>Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.</p>
     <p>The exact technique to be used (<code>&lt;label&gt;</code> elements hidden using the <code>.sr-only</code> class, or use of the <code>aria-label</code>, <code>aria-labelledby</code>, <code>aria-describedby</code>, <code>title</code> or <code>placeholder</code> attribute) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.</p>
@@ -154,7 +154,7 @@
         </div><!-- /input-group -->
       </div><!-- /.col-lg-6 -->
       <div class="col-lg-6">
-        <div class="input-group">
+        <div class="input-group input-group-sm">
           <input type="text" class="form-control" placeholder="Search for...">
           <span class="input-group-btn">
             <button class="btn btn-default" type="button">Go!</button>
@@ -174,7 +174,7 @@
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
   <div class="col-lg-6">
-    <div class="input-group">
+    <div class="input-group input-group-sm">
       <input type="text" class="form-control" placeholder="Search for...">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button">Go!</button>
@@ -204,7 +204,7 @@
         </div><!-- /input-group -->
       </div><!-- /.col-lg-6 -->
       <div class="col-lg-6">
-        <div class="input-group">
+        <div class="input-group input-group-lg">
           <input type="text" class="form-control" aria-label="Text input with dropdown button">
           <div class="input-group-btn">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
@@ -238,7 +238,7 @@
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
   <div class="col-lg-6">
-    <div class="input-group">
+    <div class="input-group input-group-lg">
       <input type="text" class="form-control" aria-label="...">
       <div class="input-group-btn">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>

@@ -31,7 +31,7 @@
     $('.bs-docs-container [href=#]').click(function (e) {
       e.preventDefault()
     })
-
+    /*
     // Sidenav affixing
     setTimeout(function () {
       var $sideBar = $('.bs-docs-sidebar')
@@ -55,6 +55,7 @@
     setTimeout(function () {
       $('.bs-top').affix()
     }, 100)
+    */
 
     // theme toggler
     ;(function () {

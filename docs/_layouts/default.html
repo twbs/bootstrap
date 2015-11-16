@@ -21,8 +21,10 @@
         <div class="col-md-3" role="complementary">
             <h3>{{ page.title }}</h3>
             <p>{{ page.lead }}</p>
-          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
-            <ul class="nav bs-docs-sidenav">
+            <hr />
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm"
+            data-spy="affix" data-offset-top="230" data-offset-bottom="430">
+            <ul class="nav bs-docs-sidenav nav-stacked nav-pills">
               {% if page.slug == "getting-started" %}
                 {% include nav/getting-started.html %}
               {% elsif page.slug == "css" %}

@@ -2,15 +2,15 @@
   <h1 id="modals" class="page-header">Modals <small>modal.js</small></h1>
   <p>Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.</p>
 
-  <div class="bs-callout bs-callout-warning" id="callout-stacked-modals">
+  <div class="alert alert-warning" id="callout-stacked-modals">
     <h4>Overlapping modals not supported</h4>
     <p>Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.</p>
   </div>
-  <div class="bs-callout bs-callout-warning" id="callout-modal-markup-placement">
+  <div class="alert alert-warning" id="callout-modal-markup-placement">
     <h4>Modal markup placement</h4>
     <p>Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.</p>
   </div>
-  <div class="bs-callout bs-callout-warning" id="callout-modal-mobile-caveats">
+  <div class="alert alert-warning" id="callout-modal-mobile-caveats">
     <h4>Mobile device caveats</h4>
     <p>There are some caveats regarding using modals on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
   </div>
@@ -139,13 +139,13 @@ $('#myModal').on('shown.bs.modal', function () {
 </div>
 {% endhighlight %}
 
-  <div class="bs-callout bs-callout-warning" id="callout-modal-accessibility">
+  <div class="alert alert-warning" id="callout-modal-accessibility">
     <h4>Make modals accessible</h4>
     <p>Be sure to add <code>role="dialog"</code> to <code>.modal</code>, <code>aria-labelledby="myModalLabel"</code> attribute to reference the modal title.</p>
     <p>Additionally, you may give a description of your modal dialog with <code>aria-describedby</code> on <code>.modal</code>.</p>
   </div>
 
-  <div class="bs-callout bs-callout-info" id="callout-modal-youtube">
+  <div class="alert alert-info" id="callout-modal-youtube">
     <h4>Embedding YouTube videos</h4>
     <p>Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. <a href="http://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal">See this helpful Stack Overflow post</a> for more information.</p>
   </div>
