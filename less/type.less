@@ -91,7 +91,7 @@ p {
   margin-bottom: @line-height-computed;
   font-size: 22px;
   font-weight: 300;
-  line-height: 32px;
+  line-height: @line-height-large;
 
   @media (min-width: @screen-sm-min) {
     //font-size: (@font-size-base * 1.5);
@@ -106,6 +106,7 @@ p {
 small,
 .small {
   font-size: @font-size-small;
+  line-height: @line-height-small;
 }
 
 mark,
