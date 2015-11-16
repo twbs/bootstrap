@@ -213,6 +213,7 @@ img {
 // DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
 // However, they DO support removing the click delay via `touch-action: manipulation`.
 // See:
+// * http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
 // * http://caniuse.com/#feat=css-touch-action
 // * http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
 
