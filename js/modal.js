@@ -46,7 +46,7 @@
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
-    return this.isShown && !this.isShowing ? 
+    return this.isShown && !this.isShowing ?
               this.hide() : this.show(_relatedTarget)
   }
 
