@@ -20,6 +20,7 @@
     this.$dialog             = this.$element.find('.modal-dialog')
     this.$backdrop           = null
     this.isShown             = null
+    this.isShowing           = null
     this.originalBodyPad     = null
     this.scrollbarWidth      = 0
     this.ignoreBackdropClick = false
@@ -45,7 +46,7 @@
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
-    return this.isShown ? this.hide() : this.show(_relatedTarget)
+    return this.isShown && !this.isShowing ? this.hide() : this.show(_relatedTarget)
   }
 
   Modal.prototype.show = function (_relatedTarget) {
@@ -56,6 +57,7 @@
 
     if (this.isShown || e.isDefaultPrevented()) return
 
+    this.isShowing = true
     this.isShown = true
 
     this.checkScrollbar()
@@ -99,6 +101,7 @@
       transition ?
         that.$dialog // wait for modal to slide in
           .one('bsTransitionEnd', function () {
+            this.isShowing = false
             that.$element.trigger('focus').trigger(e)
           })
           .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
