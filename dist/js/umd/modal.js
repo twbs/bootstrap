@@ -155,7 +155,7 @@
           $(this._dialog).on(Event.MOUSEDOWN_DISMISS, function () {
             $(_this._element).one(Event.MOUSEUP_DISMISS, function (event) {
               if ($(event.target).is(_this._element)) {
-                that._ignoreBackdropClick = true;
+                _this._ignoreBackdropClick = true;
               }
             });
           });

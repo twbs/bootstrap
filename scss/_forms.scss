@@ -261,7 +261,7 @@ input[type="checkbox"] {
 
 .form-control-success,
 .form-control-warning,
-.form-control-error {
+.form-control-danger {
   padding-right: ($input-padding-x * 3);
   background-repeat: no-repeat;
   background-position: center right ($input-height * .25);
@@ -285,11 +285,11 @@ input[type="checkbox"] {
   }
 }
 
-.has-error {
+.has-danger {
   @include form-control-validation($brand-danger);
 
-  .form-control-error {
-    background-image: url($form-icon-error);
+  .form-control-danger {
+    background-image: url($form-icon-danger);
   }
 }
 
@@ -354,7 +354,7 @@ input[type="checkbox"] {
 // .has-warning {
 //   @include form-control-validation($state-warning-text, $state-warning-text, $state-warning-bg);
 // }
-// .has-error {
+// .has-danger {
 //   @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
 // }
 //

@@ -10,8 +10,8 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   var version = $.fn.jquery.split(' ')[0].split('.')
-  if (version[0] !== '2') {
-    throw new Error('Bootstrap\'s JavaScript requires jQuery version 2.x.x')
+  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] >= 3)) {
+    throw new Error('Bootstrap\'s JavaScript requires at least jQuery v1.9.1 but less than v3.0.0')
   }
 }(jQuery);
 
@@ -1786,7 +1786,7 @@ var Modal = (function ($) {
         $(this._dialog).on(Event.MOUSEDOWN_DISMISS, function () {
           $(_this7._element).one(Event.MOUSEUP_DISMISS, function (event) {
             if ($(event.target).is(_this7._element)) {
-              that._ignoreBackdropClick = true;
+              _this7._ignoreBackdropClick = true;
             }
           });
         });
@@ -2753,6 +2753,8 @@ var Tab = (function ($) {
   return Tab;
 })(jQuery);
 
+/* global Tether */
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0): tooltip.js
@@ -2761,6 +2763,14 @@ var Tab = (function ($) {
  */
 
 var Tooltip = (function ($) {
+
+  /**
+   * Check for Tether dependency
+   * Tether - http://github.hubspot.com/tether/
+   */
+  if (window.Tether === undefined) {
+    throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)');
+  }
 
   /**
    * ------------------------------------------------------------------------
@@ -2997,7 +3007,8 @@ var Tooltip = (function ($) {
             classes: TetherClass,
             classPrefix: CLASS_PREFIX,
             offset: this.config.offset,
-            constraints: this.config.constraints
+            constraints: this.config.constraints,
+            addTargetClasses: false
           });
 
           Util.reflow(tip);
@@ -3119,12 +3130,6 @@ var Tooltip = (function ($) {
       value: function cleanupTether() {
         if (this._tether) {
           this._tether.destroy();
-
-          // clean up after tether's junk classes
-          // remove after they fix issue
-          // (https://github.com/HubSpot/tether/issues/36)
-          $(this.element).removeClass(this._removeTetherClasses);
-          $(this.tip).removeClass(this._removeTetherClasses);
         }
       }
 
@@ -3161,11 +3166,6 @@ var Tooltip = (function ($) {
         } else {
           this._fixTitle();
         }
-      }
-    }, {
-      key: '_removeTetherClasses',
-      value: function _removeTetherClasses(i, css) {
-        return ((css.baseVal || css).match(new RegExp('(^|\\s)' + CLASS_PREFIX + '-\\S+', 'g')) || []).join(' ');
       }
     }, {
       key: '_fixTitle',

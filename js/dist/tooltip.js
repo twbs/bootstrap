@@ -1,3 +1,5 @@
+/* global Tether */
+
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -12,6 +14,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  */
 
 var Tooltip = (function ($) {
+
+  /**
+   * Check for Tether dependency
+   * Tether - http://github.hubspot.com/tether/
+   */
+  if (window.Tether === undefined) {
+    throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)');
+  }
 
   /**
    * ------------------------------------------------------------------------
@@ -248,7 +258,8 @@ var Tooltip = (function ($) {
             classes: TetherClass,
             classPrefix: CLASS_PREFIX,
             offset: this.config.offset,
-            constraints: this.config.constraints
+            constraints: this.config.constraints,
+            addTargetClasses: false
           });
 
           Util.reflow(tip);
@@ -370,12 +381,6 @@ var Tooltip = (function ($) {
       value: function cleanupTether() {
         if (this._tether) {
           this._tether.destroy();
-
-          // clean up after tether's junk classes
-          // remove after they fix issue
-          // (https://github.com/HubSpot/tether/issues/36)
-          $(this.element).removeClass(this._removeTetherClasses);
-          $(this.tip).removeClass(this._removeTetherClasses);
         }
       }
 
@@ -412,11 +417,6 @@ var Tooltip = (function ($) {
         } else {
           this._fixTitle();
         }
-      }
-    }, {
-      key: '_removeTetherClasses',
-      value: function _removeTetherClasses(i, css) {
-        return ((css.baseVal || css).match(new RegExp('(^|\\s)' + CLASS_PREFIX + '-\\S+', 'g')) || []).join(' ');
       }
     }, {
       key: '_fixTitle',
