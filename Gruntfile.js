@@ -356,7 +356,7 @@ module.exports = function (grunt) {
           'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
         ]
       },
-      src: '_gh_pages/**/*.html'
+      src: ['_gh_pages/**/*.html', 'js/tests/visual/*.html']
     },
 
     watch: {
