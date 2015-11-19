@@ -99,14 +99,18 @@
 
       var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
 
-      transition ?
+      if (transition) {
         that.$dialog // wait for modal to slide in
           .one('bsTransitionEnd', function () {
-            this.isShowing = false
+            that.isShowing = false
             that.$element.trigger('focus').trigger(e)
           })
-          .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
+          .emulateTransitionEnd(Modal.TRANSITION_DURATION)
+      } else {
+        that.isShowing = false
         that.$element.trigger('focus').trigger(e)
+      }
+  
     })
   }
 
