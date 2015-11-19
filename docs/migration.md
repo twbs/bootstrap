@@ -57,6 +57,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - `.dl-horizontal` now requires grid classes, increasing flexbility in column widths.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
 
+### Buttons
+
+- `.btn-default` removed. Use `btn-primary` or the new `btn-secondary` instead.
+
 ### Images
 
 - Renamed `.img-responsive` to `.img-fluid`.
