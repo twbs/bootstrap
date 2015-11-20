@@ -180,7 +180,7 @@
   <p>These classes can be found in <code>component-animations.less</code>.</p>
 
   <h3>Via data attributes</h3>
-  <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to the element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
+  <p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to the element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a CSS selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>. However, the triggering element (e.g. a button) will get assigned <code>class="collapsed"</code> only if <code>data-target</code> has been given an element ID, not any other CSS selector.</p>
   <p>To add accordion-like group management to a collapsible control, add the data attribute <code>data-parent="#selector"</code>. Refer to the demo to see this in action.</p>
 
   <h3>Via JavaScript</h3>
