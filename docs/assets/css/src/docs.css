@@ -544,6 +544,8 @@ h4 code {
 /* By default it's not affixed in mobile views, so undo that */
 .bs-docs-sidebar.affix {
   position: static;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 /* All levels of nav */

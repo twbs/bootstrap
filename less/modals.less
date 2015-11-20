@@ -79,7 +79,7 @@
 .modal-header {
   padding: @modal-inner-padding-collapse;
   border-bottom: 1px solid @modal-header-border-color;
-  min-height: (@modal-title-padding + @modal-title-line-height);
+  min-height: (@modal-inner-padding-collapse + @modal-title-line-height);
 }
 // Close icon
 .modal-header .close {
@@ -101,7 +101,7 @@
 
 // Footer (for actions)
 .modal-footer {
-  padding: @modal-inner-padding-collapse;
+  padding: 16px @modal-inner-padding-collapse;
   text-align: right; // right align buttons
   border-top: 1px solid @modal-footer-border-color;
   &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
@@ -154,13 +154,14 @@
           margin-right: 0;
       }
       .modal-header {
-          padding: @modal-title-padding;
+          padding: @modal-title-vertical-padding @modal-title-padding;
+          min-height: (@modal-title-vertical-padding + @modal-title-line-height);
       }
       .modal-body {
           padding: @modal-inner-padding;
       }
       .modal-footer {
-          padding: @modal-inner-padding-collapse @modal-inner-padding;
+          padding: 16px @modal-inner-padding;
       }
   }
 }

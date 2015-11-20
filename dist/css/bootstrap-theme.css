@@ -4,15 +4,6 @@
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
 
-/*
-@ btn-default-color:              @gray-light;
-@ btn-default-bg:                 @gray-base;
-@ btn-default-bg-hover:           darken(@gray-base, 10%);
-@ btn-default-bg-active:          darken(@gray-base, 20%);
-@ btn-default-border:             @gray-lighter;
-@ btn-default-border-hover:       darken(@gray-lighter, 10%);
-@ btn-default-border-active:      darken(@gray-lighter, 20%);
-*/
 .btn-default,
 .btn-primary,
 .btn-success,

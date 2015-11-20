@@ -6,7 +6,8 @@
 .button-variant(
     @color; @color-hover;
     @background; @background-hover; @background-active;
-    @border; @border-hover; @border-active) {
+    @border; @border-hover; @border-active;
+    @dropdown-background: @background) {
 
   color: @color;
   background-color: @background;
@@ -55,13 +56,32 @@
     &.active {
       background-color: @btn-disabled-bg;
           border-color: @btn-disabled-bg;
-                 color: #FFF;
+                 color: @btn-link-disabled-color;
     }
   }
 
   .badge {
     color: @background;
     background-color: @color;
+  }
+
+  + .dropdown-menu {
+      background-color: @dropdown-background;
+      border-color: @background-hover; // @border;
+
+      > li > a {
+          color: @color;
+
+          &:hover,
+          &:focus,
+          &.focus {
+            color: @color-hover;
+            background-color: @background-hover;
+          }
+      }
+      .divider {
+          background-color: @background-hover;
+      }
   }
 }
 
@@ -71,6 +91,13 @@
   font-size: @font-size;
   line-height: @line-height;
   border-radius: @border-radius;
+
+  .dropdown-menu {
+      > li > a {
+          font-size: @font-size;
+          line-height: @line-height;
+      }
+  }
 }
 
 
@@ -83,6 +110,7 @@
         @active;
         @color;
         @color;
-        @active
+        @active;
+        #FFF
     );
 }

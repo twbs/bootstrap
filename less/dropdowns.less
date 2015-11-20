@@ -5,15 +5,18 @@
 
 // Dropdown arrow/caret
 .caret {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: 2px;
-  vertical-align: middle;
-  border-top:   @caret-width-base dashed;
-  border-top:   @caret-width-base solid ~"\9"; // IE8
-  border-right: @caret-width-base solid transparent;
-  border-left:  @caret-width-base solid transparent;
+    vertical-align: middle;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-left: 1px;
+
+    &:before { content: "\e114"; }
 }
 
 // The dropdown wrapper (div)
@@ -30,7 +33,7 @@
 // The dropdown menu (ul)
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: -2px; //100%;
   left: 0;
   z-index: @zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
@@ -64,7 +67,7 @@
   // Links within the dropdown menu
   > li > a {
     display: block;
-    padding: 8px 16px;
+    padding: 11px 16px;
     clear: both;
     font-weight: normal;
     line-height: @line-height-base;
@@ -191,14 +194,14 @@
 .navbar-fixed-bottom .dropdown {
   // Reverse the caret
   .caret {
-    border-top: 0;
-    border-bottom: @caret-width-base solid;
-    content: "";
+    //border-top: 0;
+    // border-bottom: @caret-width-base solid;
+    // content: "";
   }
   // Different positioning for bottom up menu
   .dropdown-menu {
     top: auto;
-    bottom: 100%;
+    bottom: -2px; // 100%;
     margin-bottom: 2px;
   }
 }
