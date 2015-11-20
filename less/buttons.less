@@ -78,7 +78,8 @@
       @btn-default-bg-active;
       @btn-default-border;
       @btn-default-border-hover;
-      @btn-default-border-active
+      @btn-default-border-active;
+      #FFF
   );
 }
 .input-group-btn :not(.btn-success).btn,
@@ -117,7 +118,8 @@
       @btn-info-bg-active;
       @btn-info-border;
       @btn-info-border-hover;
-      @btn-info-border-active
+      @btn-info-border-active;
+      #FFF
   );
 }
 // Warning appears as orange
@@ -130,7 +132,8 @@
       @btn-warning-bg-active;
       @btn-warning-border;
       @btn-warning-border-hover;
-      @btn-warning-border-active
+      @btn-warning-border-active;
+      #FFF
   );
 }
 // Danger and error appear as red
@@ -143,7 +146,8 @@
       @btn-danger-bg-active;
       @btn-danger-border;
       @btn-danger-border-hover;
-      @btn-danger-border-active
+      @btn-danger-border-active;
+      #FFF
   );
 }
 
@@ -207,11 +211,13 @@
 }
 
 .btn-image {
-    background: rgba(255,255,255, 0.4);
+    background-color: #7A8392;
+    background-color: rgba(255,255,255, 0.4);
     color: @brand-white;
     &:hover,
     &:focus {
-        background: rgba(24,33,56, 0.56);
+        background-color: #7A8392;
+        background-color: rgba(24,33,56, 0.56);
     }
 
     &:active,
@@ -306,6 +312,7 @@ input[type="button"] {
   }
 }
 
+.ui-select-bootstrap .btn-default
 .bootstrap-select .btn-default,
 .btn-input {
   font-weight: 500;
@@ -321,6 +328,10 @@ input[type="button"] {
       background-color:  @input-bg;
       color: @input-color;
       outline: 0px none !important;
+  }
+
+  .caret {
+      color: @brand-light-blue;
   }
 }
 .form-group-sm {
@@ -340,6 +351,9 @@ input[type="button"] {
     background-color:  @input-bg;
     color: @input-color;
     outline: 0px none !important;
+}
+.bootstrap-select.btn-group .dropdown-toggle .caret {
+    margin-top: -6px !important;
 }
 .bootstrap-select .btn.dropdown-toggle:focus {
     outline: 0px none !important;

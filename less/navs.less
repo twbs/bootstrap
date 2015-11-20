@@ -25,7 +25,7 @@
       &:hover,
       &:focus {
         text-decoration: none;
-        background-color: @nav-link-hover-bg;
+        color: @nav-link-hover-color;
       }
     }
 
@@ -92,7 +92,8 @@
       color: @nav-tabs-color;
       font-size: @nav-tabs-font-size;
       &:hover {
-        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+        color: @nav-tabs-link-hover;
+        //border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
       }
     }
 
@@ -127,6 +128,7 @@
     // Links rendered as pills
     > a {
       border-radius: @nav-pills-border-radius;
+      color: @nav-pills-color;
     }
     + li {
       margin-left: 2px;
@@ -151,25 +153,17 @@
     float: none;
 
     > a {
-      color: @brand-blue-plus-20;
       padding-left: 0;
       padding-right: 0;
+      color: @nav-pills-color;
       .transition(all .2s ease-in-out);
       .glyphicon {
         top: 2px;
         margin-right: 16px;
       }
-      &:hover {
-        color: @brand-light-blue;
-        background-color: @navbar-default-brand-hover-bg;
-        // .transition(none);
-      }
       &:active {
         .transition(none);
         color: @brand-light-blue-minus-20;
-      }
-      &:focus {
-        background-color: @navbar-default-brand-hover-bg;
       }
     }
 
@@ -181,8 +175,8 @@
       &,
       &:hover,
       &:focus {
+        background-color: inherit;
         color: @brand-light-blue;
-        background-color: @navbar-default-brand-hover-bg;
       }
     }
   }
@@ -284,21 +278,5 @@
 .bg-info {
     .nav-tabs > li:not(.active) > a {
         color: #FFF;
-
-        &:hover,
-        &:focus {
-            background-color: rgba(0,0,0,0.15);
-            border-bottom: 2px solid transparent;
-        }
-    }
-    .nav-tabs:last-child {
-        border-bottom: 0;
-        > li {
-            margin-bottom: 0;
-
-            &.active > a:hover {
-                background-color: rgba(0,0,0,0.15);
-            }
-        }
     }
 }
