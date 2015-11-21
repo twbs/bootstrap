@@ -4,19 +4,11 @@
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: $headings-margin-bottom;
   font-family: $headings-font-family;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
   color: $headings-color;
-}
-
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-  margin-bottom: $headings-margin-bottom;
 }
 
 h1 { font-size: $font-size-h1; }
@@ -169,24 +161,4 @@ mark,
       content: "\00A0 \2014"; // nbsp, em dash
     }
   }
-}
-
-//
-// Figures
-//
-
-.figure {
-  // Ensures the caption's text aligns with the image.
-  display: inline-block;
-
-  > img {
-    @extend .img-fluid;
-    margin-bottom: ($spacer-y / 2);
-    line-height: 1;
-  }
-}
-
-.figure-caption {
-  font-size: 90%;
-  color: $gray-light;
 }

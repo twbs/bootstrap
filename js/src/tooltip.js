@@ -1,3 +1,5 @@
+/* global Tether */
+
 import Util from './util'
 
 
@@ -9,6 +11,14 @@ import Util from './util'
  */
 
 const Tooltip = (($) => {
+
+  /**
+   * Check for Tether dependency
+   * Tether - http://github.hubspot.com/tether/
+   */
+  if (window.Tether === undefined) {
+    throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
+  }
 
 
   /**
@@ -270,12 +280,13 @@ const Tooltip = (($) => {
 
         this._tether = new Tether({
           attachment,
-          element     : tip,
-          target      : this.element,
-          classes     : TetherClass,
-          classPrefix : CLASS_PREFIX,
-          offset      : this.config.offset,
-          constraints : this.config.constraints
+          element         : tip,
+          target          : this.element,
+          classes         : TetherClass,
+          classPrefix     : CLASS_PREFIX,
+          offset          : this.config.offset,
+          constraints     : this.config.constraints,
+          addTargetClasses: false
         })
 
         Util.reflow(tip)
@@ -398,12 +409,6 @@ const Tooltip = (($) => {
     cleanupTether() {
       if (this._tether) {
         this._tether.destroy()
-
-        // clean up after tether's junk classes
-        // remove after they fix issue
-        // (https://github.com/HubSpot/tether/issues/36)
-        $(this.element).removeClass(this._removeTetherClasses)
-        $(this.tip).removeClass(this._removeTetherClasses)
       }
     }
 
@@ -455,12 +460,6 @@ const Tooltip = (($) => {
       } else {
         this._fixTitle()
       }
-    }
-
-    _removeTetherClasses(i, css) {
-      return ((css.baseVal || css).match(
-        new RegExp(`(^|\\s)${CLASS_PREFIX}-\\S+`, 'g')) || []
-      ).join(' ')
     }
 
     _fixTitle() {
