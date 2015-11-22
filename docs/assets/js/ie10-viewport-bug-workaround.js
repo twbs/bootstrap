@@ -17,7 +17,7 @@
         '@-ms-viewport{width:auto!important}'
       )
     )
-    document.querySelector('head').appendChild(msViewportStyle)
+    document.head.appendChild(msViewportStyle)
   }
 
 })();

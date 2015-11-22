@@ -43,9 +43,10 @@ a.label {
 .label-pill {
   padding-right: .6em;
   padding-left: .6em;
-  border-radius: 1rem;
+  // Use a higher than normal value to ensure completely rounded edges when
+  // customizing padding or font-size on labels.
+  @include border-radius(10rem);
 }
-
 
 // Colors
 //

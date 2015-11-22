@@ -150,16 +150,6 @@
 
 -
   browser: >
-    Chrome
-  summary: >
-    `float: right` doesn't consistently work correctly across page loads; possible race condition
-  upstream_bug: >
-    Chromium#544290
-  origin: >
-    Bootstrap#17913
-
--
-  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
@@ -187,26 +177,6 @@
     WebKit#147284, Safari#21993128
   origin: >
     Bootstrap#16814
-
--
-  browser: >
-    Safari
-  summary: >
-    Unexplained `1px` horizontal space between `display: table-cell` elements
-  upstream_bug: >
-    WebKit#149935
-  origin: >
-    Bootstrap#17438, Bootstrap#14237
-
--
-  browser: >
-    Safari
-  summary: >
-    `float: right` doesn't consistently work correctly across page loads; possible race condition
-  upstream_bug: >
-    WebKit#150271
-  origin: >
-    Bootstrap#17913
 
 -
   browser: >
@@ -302,10 +272,10 @@
 
 -
   browser: >
-    Safari (iOS)
+    Safari (iOS 9+)
   summary: >
-    Tapping below `<input>`s can focus them in some cases
+    Sometimes excessive automatic zoom is applied after opening a modal, and the user isn't allowed to zoom out
   upstream_bug: >
-    WebKit#146244, Safari#21509310
+    WebKit#150715
   origin: >
-    Bootstrap#15968
+    WebKit#138201

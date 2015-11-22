@@ -111,6 +111,7 @@
   @include gradient-striped();
   background-size: $spacer-y $spacer-y;
 }
+// IE9
 @media screen and (min-width:0\0) {
   .progress-bar-striped {
     @include gradient-striped();
@@ -129,6 +130,7 @@
 .progress-animated[value]::-moz-progress-bar {
   animation: progress-bar-stripes 2s linear infinite;
 }
+// IE9
 @media screen and (min-width:0\0) {
   .progress-animated .progress-bar-striped {
     animation: progress-bar-stripes 2s linear infinite;

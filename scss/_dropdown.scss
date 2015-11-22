@@ -10,6 +10,7 @@
     display: inline-block;
     width: 0;
     height: 0;
+    margin-right: .25rem;
     margin-left: .25rem;
     vertical-align: middle;
     content: "";
@@ -45,6 +46,7 @@
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
   font-size: $font-size-base;
+  color: $body-color;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
   background-color: $dropdown-bg;
@@ -170,7 +172,7 @@
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 //
-// Just add .dropup after the standard .dropdown class and you're set, bro.
+// Just add .dropup after the standard .dropdown class and you're set.
 // TODO: abstract this so that the navbar fixed styles are not placed here?
 
 .dropup,

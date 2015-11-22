@@ -15,13 +15,13 @@
   // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
   background-image: none;
   border: $border-width solid $input-border;
-   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius);
   @include box-shadow($input-box-shadow);
   @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
 
   // Make inputs at least the height of their button counterpart (base line-height + padding + border).
-  // Only apply the height to textual inputs and some selcts.
+  // Only apply the height to textual inputs and some selects.
   // &:not(textarea),
   // &:not(select[size]),
   // &:not(select[multiple]) {
@@ -261,7 +261,7 @@ input[type="checkbox"] {
 
 .form-control-success,
 .form-control-warning,
-.form-control-error {
+.form-control-danger {
   padding-right: ($input-padding-x * 3);
   background-repeat: no-repeat;
   background-position: center right ($input-height * .25);
@@ -285,11 +285,11 @@ input[type="checkbox"] {
   }
 }
 
-.has-error {
+.has-danger {
   @include form-control-validation($brand-danger);
 
-  .form-control-error {
-    background-image: url($form-icon-error);
+  .form-control-danger {
+    background-image: url($form-icon-danger);
   }
 }
 
@@ -354,7 +354,7 @@ input[type="checkbox"] {
 // .has-warning {
 //   @include form-control-validation($state-warning-text, $state-warning-text, $state-warning-bg);
 // }
-// .has-error {
+// .has-danger {
 //   @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
 // }
 //
