@@ -1,18 +1,18 @@
 body {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .pricing .card {
 	border-radius: 0;
 }
 .pricing .card-title {
 	text-align: center;
-	padding-top: 1rem;
+	padding-top: 15px;
 }
 .pricing .card-inverse {
 	width: 100%;
 }
-@media screen and (max-width: 47.938em) {
+@media screen and (max-width: 767px) {
 	.card-group .card {
 	display: block;
 	vertical-align: top;
