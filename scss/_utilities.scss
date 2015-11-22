@@ -57,9 +57,9 @@
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    .text-#{$breakpoint}-left   { text-align: left; }
-    .text-#{$breakpoint}-right  { text-align: right; }
-    .text-#{$breakpoint}-center { text-align: center; }
+    .text-#{$breakpoint}-left   { text-align: left !important; }
+    .text-#{$breakpoint}-right  { text-align: right !important; }
+    .text-#{$breakpoint}-center { text-align: center !important; }
   }
 }
 
