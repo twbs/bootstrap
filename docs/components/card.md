@@ -130,13 +130,13 @@ You can quickly change the text alignment of any card—in its entirety or speci
   <a href="#" class="btn btn-primary">Go somewhere</a>
 </div>
 
-<div class="card card-block text-center">
+<div class="card card-block text-xs-center">
   <h4 class="card-title">Special title treatment</h4>
   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   <a href="#" class="btn btn-primary">Go somewhere</a>
 </div>
 
-<div class="card card-block text-right">
+<div class="card card-block text-xs-right">
   <h4 class="card-title">Special title treatment</h4>
   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -186,7 +186,7 @@ Add an optional header and/or footer within a card.
 {% endexample %}
 
 {% example html %}
-<div class="card text-center">
+<div class="card text-xs-center">
   <div class="card-header">
     Featured
   </div>
@@ -260,7 +260,7 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
 Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-inverse`.**
 
 {% example html %}
-<div class="card card-inverse card-primary text-center">
+<div class="card card-inverse card-primary text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -268,7 +268,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-success text-center">
+<div class="card card-inverse card-success text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -276,7 +276,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-info text-center">
+<div class="card card-inverse card-info text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -284,7 +284,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-warning text-center">
+<div class="card card-inverse card-warning text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -292,7 +292,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-danger text-center">
+<div class="card card-inverse card-danger text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -409,7 +409,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
-  <div class="card card-block card-inverse card-primary text-center">
+  <div class="card card-block card-inverse card-primary text-xs-center">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
       <footer>
@@ -419,7 +419,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
       </footer>
     </blockquote>
   </div>
-  <div class="card card-block text-center">
+  <div class="card card-block text-xs-center">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -427,7 +427,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
   <div class="card">
     <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
   </div>
-  <div class="card card-block text-right">
+  <div class="card card-block text-xs-right">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       <footer>
