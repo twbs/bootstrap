@@ -43,7 +43,7 @@
     "grunt-contrib-cssmin": "~0.14.0",
     "grunt-contrib-qunit": "~0.7.0",
     "grunt-contrib-sass": "^0.9.2",
-    "grunt-contrib-uglify": "~0.10.1",
+    "grunt-contrib-uglify": "~0.11.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-csscomb": "~3.1.0",
     "grunt-eslint": "^17.1.0",
