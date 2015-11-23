@@ -5597,62 +5597,62 @@ button.close {
 }
 
 .text-xs-left {
-  text-align: left;
+  text-align: left !important;
 }
 
 .text-xs-right {
-  text-align: right;
+  text-align: right !important;
 }
 
 .text-xs-center {
-  text-align: center;
+  text-align: center !important;
 }
 
 @media (min-width: 544px) {
   .text-sm-left {
-    text-align: left;
+    text-align: left !important;
   }
   .text-sm-right {
-    text-align: right;
+    text-align: right !important;
   }
   .text-sm-center {
-    text-align: center;
+    text-align: center !important;
   }
 }
 
 @media (min-width: 768px) {
   .text-md-left {
-    text-align: left;
+    text-align: left !important;
   }
   .text-md-right {
-    text-align: right;
+    text-align: right !important;
   }
   .text-md-center {
-    text-align: center;
+    text-align: center !important;
   }
 }
 
 @media (min-width: 992px) {
   .text-lg-left {
-    text-align: left;
+    text-align: left !important;
   }
   .text-lg-right {
-    text-align: right;
+    text-align: right !important;
   }
   .text-lg-center {
-    text-align: center;
+    text-align: center !important;
   }
 }
 
 @media (min-width: 1200px) {
   .text-xl-left {
-    text-align: left;
+    text-align: left !important;
   }
   .text-xl-right {
-    text-align: right;
+    text-align: right !important;
   }
   .text-xl-center {
-    text-align: center;
+    text-align: center !important;
   }
 }
 
