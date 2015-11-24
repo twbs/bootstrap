@@ -166,63 +166,34 @@ h4 code {
  */
 
 .bs-docs-footer {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   margin-top: 100px;
-  color: #767676;
+  color: #99979c;
   text-align: center;
-  border-top: 1px solid #e5e5e5;
+  background-color: #2a2730;
+}
+.bs-docs-footer a {
+  color: #fff;
 }
 .bs-docs-footer-links {
   padding-left: 0;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .bs-docs-footer-links li {
-  display: inline;
-  padding: 0 2px;
+  display: inline-block;
 }
-.bs-docs-footer-links li:first-child {
-  padding-left: 0;
+.bs-docs-footer-links li + li {
+  margin-left: 15px;
 }
 
 @media (min-width: 768px) {
+  .bs-docs-footer {
+    text-align: left;
+  }
   .bs-docs-footer p {
     margin-bottom: 0;
   }
-}
-
-
-/*
- * Social buttons
- *
- * Twitter and GitHub social action buttons (for homepage and footer).
- */
-
-.bs-docs-social {
-  margin-bottom: 20px;
-  text-align: center;
-}
-.bs-docs-social-buttons {
-  display: inline-block;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-}
-.bs-docs-social-buttons li {
-  display: inline-block;
-  padding: 5px 8px;
-  line-height: 1;
-}
-.bs-docs-social-buttons .twitter-follow-button {
-  width: 225px !important;
-}
-.bs-docs-social-buttons .twitter-share-button {
-  width: 98px !important;
-}
-/* Style the GitHub buttons via CSS instead of inline attributes */
-.github-btn {
-  overflow: hidden;
-  border: 0;
 }
 
 
