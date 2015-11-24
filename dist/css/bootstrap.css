@@ -3670,11 +3670,12 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .checkbox > label,
 .radio > label {
   display: block;
-  height: 48px;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
   font-size: 16px;
-  line-height: 48px;
+  line-height: 24px;
   color: #2f4366;
-  white-space: nowrap;
   cursor: pointer;
   border: 1px solid #d3d5d8;
   border-radius: 3px;
@@ -5032,6 +5033,10 @@ tbody.collapse.in {
   line-height: 1.5;
   color: #223049;
   white-space: nowrap;
+}
+.dropdown-menu > li > a .glyphicon {
+  top: 2px;
+  margin-right: 8px;
 }
 .dropdown-menu > li:first-child > a {
   border-top-left-radius: 2px;
