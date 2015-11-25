@@ -128,6 +128,11 @@ Dropped entirely for the new card component.
 
 - Renamed `.item` to `.carousel-item`.
 
+### Utilities
+
+- Added `.pull-{left,right,none}-{xs,sm,md,lg,xl}` classes for responsive floats
+- Removed `.pull-left` and `.pull-right` since they're redundant to `.pull-left-xs` and `.pull-right-xs`
+
 ## Documentation
 
 Our documentation received an upgrade across the board as well. Here's the low down:

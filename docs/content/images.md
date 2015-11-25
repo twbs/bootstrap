@@ -50,13 +50,13 @@ Add classes to an `<img>` element to easily style images in any project.
 Align images with the [helper float classes]({{ site.baseurl }}/components/utilities/#floats) or [text alignment classes]({{ site.baseurl }}/components/utilities/#text-alignment). A simple centering class can also be used for `block` level images.
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/200x200" class="img-rounded pull-left" alt="A generic square placeholder image with rounded corners">
-  <img data-src="holder.js/200x200" class="img-rounded pull-right" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="img-rounded pull-xs-left" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="img-rounded pull-xs-right" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-rounded pull-left" alt="...">
-<img src="..." class="img-rounded pull-right" alt="...">
+<img src="..." class="img-rounded pull-xs-left" alt="...">
+<img src="..." class="img-rounded pull-xs-right" alt="...">
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">

@@ -168,25 +168,25 @@ Use a generic close icon for dismissing content like modals and alerts. **Be sur
 </button>
 {% endexample %}
 
-## Floats
+## Responsive floats
 
-Float an element to the left or right with a class. `!important` is included to avoid specificity issues. Classes can also be used as mixins.
+These utility classes float an element to the left or right, or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float). `!important` is included to avoid specificity issues. These use the same viewport width breakpoints as the grid system.
+
+Two similar non-responsive mixins (`pull-left` and `pull-right`) are also available.
 
 {% example html %}
-<div class="pull-left">Float left</div>
-<div class="pull-right">Float right</div>
+<div class="pull-xs-left">Float left on all viewport sizes</div>
+<div class="pull-xs-right">Float right on all viewport sizes</div>
+<div class="pull-xs-none">Don't float on all viewport sizes</div>
+
+<div class="pull-sm-left">Float left on viewports sized SM (small) or wider</div>
+<div class="pull-md-left">Float left on viewports sized MD (medium) or wider</div>
+<div class="pull-lg-left">Float left on viewports sized LG (large) or wider</div>
+<div class="pull-xl-left">Float left on viewports sized XL (extra-large) or wider</div>
 {% endexample %}
 
 {% highlight scss %}
-// Classes
-.pull-left {
-  float: left !important;
-}
-.pull-right {
-  float: right !important;
-}
-
-// Usage as mixins
+// Related simple non-responsive mixins
 .element {
   @include pull-left;
 }
