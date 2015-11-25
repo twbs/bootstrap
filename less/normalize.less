@@ -10,6 +10,8 @@ html {
   font-family: sans-serif; // 1
   -ms-text-size-adjust: 100%; // 2
   -webkit-text-size-adjust: 100%; // 2
+  -moz-text-size-adjust: 100%; 
+  text-size-adjust: 100%; 
 }
 
 //
@@ -211,6 +213,7 @@ figure {
 
 hr {
   box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   height: 0;
 }
 
@@ -292,6 +295,8 @@ html input[type="button"], // 1
 input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button; // 2
+  -moz-appearance: button;
+  appearance: button;
   cursor: pointer; // 3
 }
 
@@ -333,6 +338,7 @@ input {
 
 input[type="checkbox"],
 input[type="radio"] {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; // 1
   padding: 0; // 2
 }
