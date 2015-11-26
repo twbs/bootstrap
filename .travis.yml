@@ -22,7 +22,8 @@ install:
 cache:
   directories:
     - node_modules
-    - vendor/bundle
+# Disabled due to https://github.com/travis-ci/travis-ci/issues/5092
+#    - vendor/bundle
 env:
   global:
     - SAUCE_USERNAME="bootstrap"
