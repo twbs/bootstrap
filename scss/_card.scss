@@ -92,26 +92,20 @@
 //
 
 .card-primary {
-  background-color: $brand-primary;
-  border-color: $brand-primary;
+  @include card-variant($brand-primary);
 }
 .card-success {
-  background-color: $brand-success;
-  border-color: $brand-success;
+  @include card-variant($brand-success);
 }
 .card-info {
-  background-color: $brand-info;
-  border-color: $brand-info;
+  @include card-variant($brand-info);
 }
 .card-warning {
-  background-color: $brand-warning;
-  border-color: $brand-warning;
+  @include card-variant($brand-warning);
 }
 .card-danger {
-  background-color: $brand-danger;
-  border-color: $brand-danger;
+  @include card-variant($brand-danger);
 }
-
 
 //
 // Inverse text within a card for use with dark backgrounds
