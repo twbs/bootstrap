@@ -4,7 +4,7 @@ git:
   depth: 10
 node_js:
   - "4"
-  - "stable"
+  - "5"
 before_install:
   - rvm install 2.2
   - rvm use 2.2 --fuzzy
