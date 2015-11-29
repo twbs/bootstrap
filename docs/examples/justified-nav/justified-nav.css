@@ -37,8 +37,7 @@ body {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#e5e5e5));
   background-image: -webkit-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%);
   background-image:      -o-linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(top), color-stop(0%, #f5f5f5), to(#e5e5e5));
-  background-image:         linear-gradient(top, #f5f5f5 0%, #e5e5e5 100%);
+  background-image:         linear-gradient(to bottom, #f5f5f5 0%,#e5e5e5 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
   background-repeat: repeat-x; /* Repeat the gradient */
   border-bottom: 1px solid #d5d5d5;

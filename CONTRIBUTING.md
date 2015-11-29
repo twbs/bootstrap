@@ -18,8 +18,8 @@ the preferred channel for [bug reports](#bug-reports), [features requests](#feat
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
-* Please **do not** use the issue tracker for personal support requests.  Stack
-  Overflow ([`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag) or [IRC](README.md#community) are better places to get help.
+* Please **do not** use the issue tracker for personal support requests. Stack
+  Overflow ([`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -27,6 +27,8 @@ restrictions:
 * Please **do not** open issues or pull requests regarding the code in
   [`Normalize`](https://github.com/necolas/normalize.css) (open them in
   their respective repositories).
+
+* Please **do not** open issues regarding the official themes offered on <http://themes.getbootstrap.com/>. Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
 
 
 ## Issues and labels
@@ -105,7 +107,7 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 | Mozilla       | Firefox                      | Gecko            | https://bugzilla.mozilla.org/enter_bug.cgi                                            | "Core" is normally the right product option to choose.   |
 | Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit <br> https://bugreport.apple.com | In Apple's bug reporter, choose "Safari" as the product. |
 | Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://code.google.com/p/chromium/issues/list                                        | Click the "New issue" button.                            |
-| Microsoft     | Internet Explorer            | Trident          | https://connect.microsoft.com/IE/feedback/LoadSubmitFeedbackForm                      |                                                          |
+| Microsoft     | Internet Explorer / Edge     | Trident/EdgeHTML | https://connect.microsoft.com/IE/feedback/LoadSubmitFeedbackForm                      |                                                          |
 
 ### Issues bots
 
@@ -114,7 +116,13 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 
 ## Feature requests
 
-Feature requests are welcome. But take a moment to find out whether your idea
+Feature requests are welcome, but please note that they **must target
+[Bootstrap v4](https://github.com/twbs/bootstrap/tree/v4-dev),** because
+Bootstrap v3 is now in maintenance mode and is closed off to new features.
+This is so that we can focus our efforts on Bootstrap v4, the future of the
+framework.
+
+Before opening a feature request, please take a moment to find out whether your idea
 fits with the scope and aims of the project. It's up to *you* to make a strong
 case to convince the project's developers of the merits of this feature. Please
 provide as much detail and context as possible.
@@ -130,6 +138,13 @@ commits.
 implementing features, refactoring code, porting to a different language),
 otherwise you risk spending a lot of time working on something that the
 project's developers might not want to merge into the project.
+
+In particular, **pull requests that add new features to Bootstrap v3 will be
+rejected.** Bootstrap v3 is now in maintenance mode and is therefore closed
+off to new features, so that we can focus our efforts on Bootstrap v4, the
+future of the framework. Pull requests that add new features should target
+[Bootstrap v4 (the `v4-dev` git branch)](https://github.com/twbs/bootstrap/tree/v4-dev)
+instead, where they will be welcomed and duly considered.
 
 Please adhere to the [coding guidelines](#code-guidelines) used throughout the
 project (indentation, accurate comments, etc.) and any other requirements
@@ -149,7 +164,7 @@ documentation source files and is managed separately by the Bootstrap Core Team.
 Adhering to the following process is the best way to get your work
 included in the project:
 
-1. [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork,
+1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
    and configure the remotes:
 
    ```bash

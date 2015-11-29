@@ -19,8 +19,8 @@ $(function () {
 {% endhighlight %}
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-popover-groups">
-    <h4>Popovers in button groups and input groups require special setting</h4>
-    <p>When using popovers on elements within a <code>.btn-group</code> or an <code>.input-group</code>, you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the popover is triggered).</p>
+    <h4>Popovers in button groups, input groups, and tables require special setting</h4>
+    <p>When using popovers on elements within a <code>.btn-group</code> or an <code>.input-group</code>, or on table-related elements (<code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>), you'll have to specify the option <code>container: 'body'</code> (documented below) to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the popover is triggered).</p>
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-popover-hidden">
     <h4>Don't try to show popovers on hidden elements</h4>
@@ -86,8 +86,8 @@ $(function () {
   <h4>Four directions</h4>
   <div class="bs-example popover-demo">
     <div class="bs-example-popovers">
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-        Popover on left
+      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover on right
       </button>
       <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
         Popover on top
@@ -95,8 +95,8 @@ $(function () {
       <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
         Popover on bottom
       </button>
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-        Popover on right
+      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover on left
       </button>
     </div>
   </div><!-- /example -->
@@ -229,7 +229,7 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
           <td>trigger</td>
           <td>string</td>
           <td>'click'</td>
-          <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</td>
+          <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
         </tr>
         <tr>
           <td>viewport</td>
@@ -248,7 +248,7 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
     <p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
   </div>
 
-  <h3>Methods</h3>
+  <h3 id="popovers-methods">Methods</h3>
   <h4><code>$().popover(options)</code></h4>
   <p>Initializes popovers for an element collection.</p>
 

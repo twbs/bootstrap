@@ -101,6 +101,7 @@
   color: @carousel-control-color;
   text-align: center;
   text-shadow: @carousel-text-shadow;
+  background-color: rgba(0, 0, 0, 0); // Fix IE9 click-thru bug
   // We can't have this transition here because WebKit cancels the carousel
   // animation if you trip this while in the middle of another animation.
 
@@ -130,6 +131,7 @@
   .glyphicon-chevron-right {
     position: absolute;
     top: 50%;
+    margin-top: -10px;
     z-index: 5;
     display: inline-block;
   }
@@ -147,7 +149,6 @@
   .icon-next {
     width:  20px;
     height: 20px;
-    margin-top: -10px;
     line-height: 1;
     font-family: serif;
   }
@@ -240,18 +241,18 @@
     .glyphicon-chevron-right,
     .icon-prev,
     .icon-next {
-      width: 30px;
-      height: 30px;
-      margin-top: -15px;
-      font-size: 30px;
+      width: (@carousel-control-font-size * 1.5);
+      height: (@carousel-control-font-size * 1.5);
+      margin-top: (@carousel-control-font-size / -2);
+      font-size: (@carousel-control-font-size * 1.5);
     }
     .glyphicon-chevron-left,
     .icon-prev {
-      margin-left: -15px;
+      margin-left: (@carousel-control-font-size / -2);
     }
     .glyphicon-chevron-right,
     .icon-next {
-      margin-right: -15px;
+      margin-right: (@carousel-control-font-size / -2);
     }
   }
 

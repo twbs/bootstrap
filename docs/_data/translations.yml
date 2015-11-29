@@ -3,6 +3,11 @@
   description: Bootstrap 中文文档
   url: http://v3.bootcss.com/
 
+- name: Chinese (Traditional)
+  code: zh-TW
+  description: Bootstrap 3 中文手冊
+  url: https://kkbruce.tw/bs3/
+ 
 - name: Danish
   code: da
   description: Bootstrap på Dansk
@@ -26,7 +31,12 @@
 - name: Korean
   code: ko
   description: Bootstrap 한국어
-  url: http://bootstrapk.com/BS3/
+  url: http://bootstrapk.com/
+
+- name: Brazilian Portuguese
+  code: pt-BR
+  description: Bootstrap em Português do Brasil
+  url: http://bootstrapbrasil.github.io/
 
 - name: Russian
   code: ru
@@ -37,6 +47,11 @@
   code: es
   description: Bootstrap en Español
   url: http://www.oneskyapp.com/es/docs/bootstrap/
+
+- name: Turkish
+  code: tr
+  description: Türkçe Bootstrap
+  url: http://www.trbootstrap.com
 
 - name: Ukrainian
   code: uk

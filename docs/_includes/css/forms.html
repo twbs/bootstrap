@@ -7,7 +7,7 @@
     <form>
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
@@ -30,7 +30,7 @@
 <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
@@ -97,7 +97,7 @@
     <form class="form-inline">
       <div class="form-group">
         <label class="sr-only" for="exampleInputEmail3">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
+        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
       </div>
       <div class="form-group">
         <label class="sr-only" for="exampleInputPassword3">Password</label>
@@ -115,7 +115,7 @@
 <form class="form-inline">
   <div class="form-group">
     <label class="sr-only" for="exampleInputEmail3">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
+    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
   </div>
   <div class="form-group">
     <label class="sr-only" for="exampleInputPassword3">Password</label>
@@ -256,7 +256,7 @@
 
   <h3>Checkboxes and radios</h3>
   <p>Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.</p>
-  <p>A checkbox or radio with the <code>disabled</code> attribute will be styled appropriately. To have the <code>&lt;label&gt;</code> for the checkbox or radio also display a "not-allowed" cursor when the user hovers over the label, add the <code>.disabled</code> class to your <code>.radio</code>, <code>.radio-inline</code>, <code>.checkbox</code>, <code>.checkbox-inline</code>, or <code>&lt;fieldset&gt;</code>.</p>
+  <p>Disabled checkboxes and radios are supported, but to provide a "not-allowed" cursor on hover of the parent <code>&lt;label&gt;</code>, you'll need to add the <code>.disabled</code> class to the parent <code>.radio</code>, <code>.radio-inline</code>, <code>.checkbox</code>, or <code>.checkbox-inline</code>.</p>
   <h4>Default (stacked)</h4>
   <div class="bs-example" data-example-id="block-checkboxes-radios">
     <form>
@@ -609,6 +609,30 @@
 {% endhighlight %}
 
 
+  <h2 id="forms-help-text">Help text</h2>
+  <p>Block level help text for form controls.</p>
+  <div class="bs-callout bs-callout-info" id="callout-help-text-accessibility">
+    <h4>Associating help text with form controls</h4>
+    <p>Help text should be explicitly associated with the form control it relates to using the <code>aria-describedby</code> attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.</p>
+  </div>
+  <div class="bs-example" data-example-id="simple-help-text">
+    <form>
+      <div class="form-group">
+        <label for="inputHelpBlock">Input with help text</label>
+        <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+      </div>
+      <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+    </form>
+  </div><!-- /.bs-example -->
+{% highlight html %}
+<label class="sr-only" for="inputHelpBlock">Input with help text</label>
+<input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+...
+<span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+{% endhighlight %}
+</div>
+
+
   <h2 id="forms-control-validation">Validation states</h2>
   <p>Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add <code>.has-warning</code>, <code>.has-error</code>, or <code>.has-success</code> to the parent element. Any <code>.control-label</code>, <code>.form-control</code>, and <code>.help-block</code> within that element will receive the validation styles.</p>
 
@@ -622,7 +646,8 @@
     <form>
       <div class="form-group has-success">
         <label class="control-label" for="inputSuccess1">Input with success</label>
-        <input type="text" class="form-control" id="inputSuccess1">
+        <input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
+        <span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
       </div>
       <div class="form-group has-warning">
         <label class="control-label" for="inputWarning1">Input with warning</label>
@@ -661,7 +686,8 @@
 {% highlight html %}
 <div class="form-group has-success">
   <label class="control-label" for="inputSuccess1">Input with success</label>
-  <input type="text" class="form-control" id="inputSuccess1">
+  <input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
+  <span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
 </div>
 <div class="form-group has-warning">
   <label class="control-label" for="inputWarning1">Input with warning</label>
@@ -1001,25 +1027,3 @@
 </div>
 {% endhighlight %}
 
-  <h2 id="forms-help-text">Help text</h2>
-  <p>Block level help text for form controls.</p>
-  <div class="bs-callout bs-callout-info" id="callout-help-text-accessibility">
-    <h4>Associating help text with form controls</h4>
-    <p>Help text should be explicitly associated with the form control it relates to using the <code>aria-describedby</code> attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.</p>
-  </div>
-  <div class="bs-example" data-example-id="simple-help-text">
-    <form>
-      <div class="form-group">
-        <label for="inputHelpBlock">Input with help text</label>
-        <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
-      </div>
-      <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-    </form>
-  </div><!-- /.bs-example -->
-{% highlight html %}
-<label class="sr-only" for="inputHelpBlock">Input with help text</label>
-<input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
-...
-<span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-{% endhighlight %}
-</div>
