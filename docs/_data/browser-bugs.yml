@@ -70,6 +70,16 @@
 
 -
   browser: >
+    Firefox
+  summary: >
+    `focus` events should not be fired at the `document` object
+  upstream_bug: >
+    Mozilla#1228802
+  origin: >
+    Bootstrap#18365
+
+-
+  browser: >
     Chrome (OS X)
   summary: >
     Clicking above `<input type="number">` increment button flashes the decrement button.
