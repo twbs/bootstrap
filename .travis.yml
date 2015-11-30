@@ -19,10 +19,11 @@ install:
   - cp grunt/npm-shrinkwrap.json ./
   - npm install -g grunt-cli
   - npm install
-cache:
-  directories:
-    - node_modules
-    - vendor/bundle
+# Caching disabled due to https://github.com/travis-ci/travis-ci/issues/5092
+#cache:
+#  directories:
+#    - node_modules
+#    - vendor/bundle
 env:
   global:
     - SAUCE_USERNAME="bootstrap"
