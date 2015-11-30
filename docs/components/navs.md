@@ -17,7 +17,7 @@ If you are using navs to provide a navigation bar, be sure to add a `role="navig
 
 ## Base nav
 
-Roll your own navigation style by extending the base `.nav` component. All Bootstrap's nav components are built on top of this. Includes styles for the disabled state, but **not the active state**.
+Roll your own navigation style by extending the base `.nav` component. All Bootstrap's nav components are built on top of this by specifying additional styles. Includes styles for the disabled state, but **not the active state**.
 
 {% example html %}
 <ul class="nav">
@@ -36,7 +36,7 @@ Roll your own navigation style by extending the base `.nav` component. All Boots
 </ul>
 {% endexample %}
 
-Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element.
+Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element. The change in nav item display below **is intentional** as `<li>`s have a different default `display` than regular `<a>` elements.
 
 {% example html %}
 <nav class="nav">
