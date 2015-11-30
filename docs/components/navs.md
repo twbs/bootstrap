@@ -47,6 +47,38 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 </nav>
 {% endexample %}
 
+## Inline
+
+Easily space out nav links in a horizontal band with `.nav-inline`. Longer series of links will wrap to a new line.
+
+{% example html %}
+<nav class="nav nav-inline">
+  <a class="nav-link active" href="#">Active</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link" href="#">Another link</a>
+  <a class="nav-link disabled" href="#">Disabled</a>
+</nav>
+{% endexample %}
+
+The same works for a navigation build with lists.
+
+{% example html %}
+<ul class="nav nav-inline">
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Another link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
 ## Tabs
 
 Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [tab JavaScript plugin](#javascript-behavior).
