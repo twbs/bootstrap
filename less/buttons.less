@@ -358,3 +358,71 @@ input[type="button"] {
 .bootstrap-select .btn.dropdown-toggle:focus {
     outline: 0px none !important;
 }
+
+
+
+
+@rotation-speed: 0.4s;
+
+.btn-loader {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  margin-bottom: -7px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiPiAgICAgICAgPHRpdGxlPlNwaW5uZXI8L3RpdGxlPiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4gICAgPGRlZnM+ICAgICAgICA8bGluZWFyR3JhZGllbnQgeDE9IjUwJSIgeTE9IjkuMjA1NjQzNzklIiB4Mj0iMTAwJSIgeTI9IjIwLjc0NzEwMDclIiBpZD0ibGluZWFyR3JhZGllbnQtMSI+ICAgICAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0E4QUFBQyIgb2Zmc2V0PSIwJSI+PC9zdG9wPiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiNBOEFBQUMiIHN0b3Atb3BhY2l0eT0iMCIgb2Zmc2V0PSIxMDAlIj48L3N0b3A+ICAgICAgICA8L2xpbmVhckdyYWRpZW50PiAgICA8L2RlZnM+ICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHNrZXRjaDp0eXBlPSJNU1BhZ2UiPiAgICAgICAgPGcgaWQ9IlNwaW5uZXIiIHNrZXRjaDp0eXBlPSJNU0FydGJvYXJkR3JvdXAiIGZpbGw9InVybCgjbGluZWFyR3JhZGllbnQtMSkiPiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMiwyNCBDNS4zNzI1ODMsMjQgMCwxOC42Mjc0MTcgMCwxMiBDMCw1LjM3MjU4MyA1LjM3MjU4MywwIDEyLDAgTDEyLDIgQzYuNDc3MTUyNSwyIDIsNi40NzcxNTI1IDIsMTIgQzIsMTcuNTIyODQ3NSA2LjQ3NzE1MjUsMjIgMTIsMjIgQzE3LjUyMjg0NzUsMjIgMjIsMTcuNTIyODQ3NSAyMiwxMiBMMjQsMTIgQzI0LDE4LjYyNzQxNyAxOC42Mjc0MTcsMjQgMTIsMjQgWiIgaWQ9InNwaW4iIHNrZXRjaDp0eXBlPSJNU1NoYXBlR3JvdXAiPjwvcGF0aD4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==);
+
+  -webkit-animation: rotating @rotation-speed linear infinite;
+  -moz-animation: rotating @rotation-speed linear infinite;
+  -ms-animation: rotating @rotation-speed linear infinite;
+  -o-animation: rotating @rotation-speed linear infinite;
+  animation: rotating @rotation-speed linear infinite;
+}
+
+.btn-lg {
+  .btn-loader {
+    margin-top: 2px;
+  }
+}
+
+.btn-sm {
+  .btn-loader {
+    background-size: 16px 16px;
+  }
+}
+
+/* Animations */
+@-webkit-keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
