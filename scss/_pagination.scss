@@ -18,7 +18,7 @@
       color: $pagination-color;
       text-decoration: none;
       background-color: $pagination-bg;
-      border: 1px solid $pagination-border;
+      border: $pagination-border-width solid $pagination-border-color;
     }
     &:first-child {
       > a,
