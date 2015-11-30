@@ -17,6 +17,10 @@
   # Mac Opera not currently supported by Sauce Labs
 
   {
+    browserName: "MicrosoftEdge",
+    platform: "Windows 10"
+  },
+  {
     browserName: "internet explorer",
     version: "11",
     platform: "Windows 8.1"
