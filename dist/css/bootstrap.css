@@ -4870,6 +4870,10 @@ button.list-group-item-danger.active:hover {
   padding-bottom: 75%;
 }
 
+.embed-responsive-1by1 {
+  padding-bottom: 100%;
+}
+
 .close {
   float: right;
   font-size: 1.5rem;
