@@ -121,7 +121,7 @@
 .card-inverse {
   .card-header,
   .card-footer {
-    border-bottom: .075rem solid rgba(255,255,255,.2);
+    border-bottom: $card-border-width solid rgba(255,255,255,.2);
   }
   .card-header,
   .card-footer,
