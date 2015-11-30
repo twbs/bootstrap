@@ -41,8 +41,7 @@ html {
 // and apply some conditional CSS.
 //
 // See http://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
-
-
+//
 // Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
 // `.class-name { @import "bootstrap"; }`).
 @at-root {
@@ -52,6 +51,7 @@ html {
   @-webkit-viewport   { width: device-width; }
   @viewport           { width: device-width; }
 }
+
 
 //
 // Reset HTML, body, and more
