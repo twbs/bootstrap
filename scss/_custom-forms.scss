@@ -195,7 +195,7 @@
   color: #555;
   user-select: none;
   background-color: #fff;
-  border: .075rem solid #ddd;
+  border: $input-border-width solid #ddd;
   border-radius: .25rem;
   @include box-shadow(inset 0 .2rem .4rem rgba(0,0,0,.05));
 }
@@ -215,7 +215,7 @@
   color: #555;
   content: "Browse";
   background-color: #eee;
-  border: .075rem solid #ddd;
+  border: $input-border-width solid #ddd;
   border-radius: 0 .25rem .25rem 0;
 }
 
