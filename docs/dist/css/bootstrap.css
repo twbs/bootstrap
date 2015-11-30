@@ -3154,6 +3154,10 @@ input[type="button"].btn-block {
   margin-bottom: 0;
 }
 
+.input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover {
+  z-index: 3;
+}
+
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
@@ -3251,7 +3255,7 @@ input[type="button"].btn-block {
 }
 
 .input-group-btn > .btn:focus, .input-group-btn > .btn:active, .input-group-btn > .btn:hover {
-  z-index: 2;
+  z-index: 3;
 }
 
 .input-group-btn:first-child > .btn,
@@ -3263,6 +3267,13 @@ input[type="button"].btn-block {
 .input-group-btn:last-child > .btn-group {
   z-index: 2;
   margin-left: -1px;
+}
+
+.input-group-btn:last-child > .btn:focus, .input-group-btn:last-child > .btn:active, .input-group-btn:last-child > .btn:hover,
+.input-group-btn:last-child > .btn-group:focus,
+.input-group-btn:last-child > .btn-group:active,
+.input-group-btn:last-child > .btn-group:hover {
+  z-index: 3;
 }
 
 .c-input {
@@ -4273,14 +4284,14 @@ a.label:focus, a.label:hover {
   border-radius: .3rem;
 }
 
-.jumbotron-hr {
-  border-top-color: #d0d5d8;
-}
-
 @media (min-width: 544px) {
   .jumbotron {
     padding: 4rem 2rem;
   }
+}
+
+.jumbotron-hr {
+  border-top-color: #d0d5d8;
 }
 
 .jumbotron-fluid {
@@ -5577,18 +5588,6 @@ button.close {
   text-shadow: none;
   background-color: transparent;
   border: 0;
-}
-
-.text-left {
-  text-align: left !important;
-}
-
-.text-right {
-  text-align: right !important;
-}
-
-.text-center {
-  text-align: center !important;
 }
 
 .text-justify {

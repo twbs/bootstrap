@@ -64,7 +64,7 @@
   .nav-link {
     display: block;
     padding: $nav-link-padding;
-    border: 1px solid transparent;
+    border: $nav-tabs-link-border-width solid transparent;
     @include border-radius($border-radius $border-radius 0 0);
 
     @include hover-focus {
