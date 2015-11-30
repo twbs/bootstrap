@@ -94,11 +94,21 @@ Assign `margin` or `padding` to an element or a subset of its sides with shortha
 Easily realign text to components with text alignment classes.
 
 {% example html %}
-<p class="text-left">Left aligned text.</p>
-<p class="text-center">Center aligned text.</p>
-<p class="text-right">Right aligned text.</p>
 <p class="text-justify">Justified text.</p>
 <p class="text-nowrap">No wrap text.</p>
+{% endexample %}
+
+For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
+
+{% example html %}
+<p class="text-xs-left">Left aligned text on all viewport sizes.</p>
+<p class="text-xs-center">Center aligned text on all viewport sizes.</p>
+<p class="text-xs-right">Right aligned text on all viewport sizes.</p>
+
+<p class="text-sm-left">Left aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-left">Left aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-left">Left aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-left">Left aligned text on viewports sized XL (extra-large) or wider.</p>
 {% endexample %}
 
 ## Text transform
