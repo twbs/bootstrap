@@ -397,11 +397,11 @@
 @dropdown-divider-bg:            @brand-smoke-plus-20;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @brand-primary;    //@gray-dark;
+@dropdown-link-color:            @brand-primary;
 //** Hover color for dropdown links.
-@dropdown-link-hover-color:      @brand-info;       //darken(@gray-dark, 5%);
+@dropdown-link-hover-color:      @brand-primary;
 //** Hover background for dropdown links.
-@dropdown-link-hover-bg:         @gray-base;        //#f5f5f5;
+@dropdown-link-hover-bg:         @brand-smoke-plus-20;
 
 //** Active dropdown menu item text color.
 @dropdown-link-active-color:     @component-active-color;
@@ -664,19 +664,19 @@
 //## Define colors for form feedback states and, by default, alerts.
 
 @state-success-text:             @brand-success;
-@state-success-bg:               #dff0d8;
+@state-success-bg:               #F4FCF7; // #dff0d8;
 @state-success-border:           @brand-success;
 
 @state-info-text:                @brand-info;
-@state-info-bg:                  #d9edf7;
+@state-info-bg:                  #F3FBFE; // #d9edf7;
 @state-info-border:              @brand-info;
 
 @state-warning-text:             @brand-warning;
-@state-warning-bg:               #fcf8e3;
+@state-warning-bg:               #FFFBF3; // #fcf8e3;
 @state-warning-border:           @brand-warning;
 
 @state-danger-text:              @brand-danger;
-@state-danger-bg:                #f2dede;
+@state-danger-bg:                #FFF5F5; // #f2dede;
 @state-danger-border:            @brand-danger;
 
 
@@ -789,24 +789,24 @@
 //
 //## Define alert colors, border radius, and padding.
 
-@alert-padding:               24px;
+@alert-padding:               16px;
 @alert-border-radius:         @border-radius-base;
 @alert-bar-width: 			  8px;
 @alert-link-font-weight:      bold;
 
-@alert-success-bg:            @brand-white;           // @state-success-bg;
+@alert-success-bg:            @state-success-bg;
 @alert-success-text:          @state-success-text;
 @alert-success-border:        @state-success-border;
 
-@alert-info-bg:               @brand-white;          // @state-info-bg;
+@alert-info-bg:               @state-info-bg;
 @alert-info-text:             @state-info-text;
 @alert-info-border:           @state-info-border;
 
-@alert-warning-bg:            @brand-white;          // @state-warning-bg;
+@alert-warning-bg:            @state-warning-bg;
 @alert-warning-text:          @state-warning-text;
 @alert-warning-border:        @state-warning-border;
 
-@alert-danger-bg:             @brand-white;          // @state-danger-bg;
+@alert-danger-bg:             @state-danger-bg;
 @alert-danger-text:           @state-danger-text;
 @alert-danger-border:         @state-danger-border;
 
