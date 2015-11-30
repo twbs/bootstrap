@@ -60,7 +60,7 @@ Easily space out nav links in a horizontal band with `.nav-inline`. Longer serie
 </nav>
 {% endexample %}
 
-The same works for a navigation build with lists.
+The same works for a navigation built with lists.
 
 {% example html %}
 <ul class="nav nav-inline">
