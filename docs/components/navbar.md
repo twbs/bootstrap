@@ -17,7 +17,7 @@ Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` and a [color scheme](#color-schemes).
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
-- Use `.pull-left` and `.pull-right` to quickly align sub-components.
+- Use `.pull-*-left` and `.pull-*-right` to quickly align sub-components.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 
 ## Supported content
@@ -48,7 +48,7 @@ Here's an example of all the sub-components included in a default, light navbar:
       <a class="nav-link" href="#">About</a>
     </li>
   </ul>
-  <form class="form-inline navbar-form pull-right">
+  <form class="form-inline navbar-form pull-xs-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-success-outline" type="submit">Search</button>
   </form>
@@ -78,7 +78,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline navbar-form pull-right">
+    <form class="form-inline navbar-form pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-info-outline" type="submit">Search</button>
     </form>
@@ -99,7 +99,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline navbar-form pull-right">
+    <form class="form-inline navbar-form pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-secondary-outline" type="submit">Search</button>
     </form>
@@ -120,7 +120,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline navbar-form pull-right">
+    <form class="form-inline navbar-form pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-primary-outline" type="submit">Search</button>
     </form>
