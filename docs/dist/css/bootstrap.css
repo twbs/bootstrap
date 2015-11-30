@@ -3469,6 +3469,11 @@ input[type="button"].btn-block {
   background-color: transparent;
 }
 
+.nav-inline .nav-item {
+  display: inline-block;
+}
+
+.nav-inline .nav-item + .nav-item,
 .nav-inline .nav-link + .nav-link {
   margin-left: 1rem;
 }
