@@ -44,6 +44,8 @@ html {
 //
 // Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
 // `.class-name { @import "bootstrap"; }`).
+//
+// Includes future-proofed vendor prefixes as well.
 @at-root {
   @-moz-viewport      { width: device-width; }
   @-ms-viewport       { width: device-width; }
