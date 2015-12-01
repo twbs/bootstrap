@@ -179,9 +179,10 @@
   position: relative;
   display: block;
   // margin-top:    ($spacer * .75);
-  margin-bottom: ($spacer * .75);
+  margin-bottom: ($spacer * .75) - $input-padding-y;
 
   label {
+    padding-top: $input-padding-y;
     padding-left: 1.25rem;
     margin-bottom: 0;
     font-weight: normal;

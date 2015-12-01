@@ -264,7 +264,7 @@ For more structured form layouts, you can utilize Bootstrap's predefined grid cl
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-sm-2">Radios</label>
+    <label class="col-sm-2 form-control-label">Radios</label>
     <div class="col-sm-10">
       <div class="radio">
         <label>
@@ -287,7 +287,7 @@ For more structured form layouts, you can utilize Bootstrap's predefined grid cl
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-sm-2">Checkbox</label>
+    <label class="col-sm-2 form-control-label">Checkbox</label>
     <div class="col-sm-10">
       <div class="checkbox">
         <label>
