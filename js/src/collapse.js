@@ -56,7 +56,7 @@ const Collapse = (($) => {
   }
 
   const Selector = {
-    ACTIVES     : '.panel > .in, .panel > .collapsing',
+    ACTIVES     : '.card > .in, .card > .collapsing',
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
