@@ -8,6 +8,11 @@
     <p>Progress bars use CSS3 transitions and animations to achieve some of their effects. These features are not supported in Internet Explorer 9 and below or older versions of Firefox. Opera 12 does not support animations.</p>
   </div>
 
+  <div class="bs-callout bs-callout-info">
+    <h4 id="callout-progress-csp">Content Security Policy (CSP) compatibility</h4>
+    <p>If your website has a <a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP">Content Security Policy (CSP)</a> which doesn't allow <code>style-src 'unsafe-inline'</code>, then you won't be able to use inline <code>style</code> attributes to set progress bar widths as shown in our examples below. Alternative methods for setting the widths that are compatible with strict CSPs include using a little custom JavaScript (that sets <code>element.style.width</code>) or using custom CSS classes.</p>
+  </div>
+
   <h2 id="progress-basic">Basic example</h2>
   <p>Default progress bar.</p>
   <div class="bs-example" data-example-id="simple-progress-bar">
