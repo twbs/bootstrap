@@ -130,8 +130,8 @@ Dropped entirely for the new card component.
 
 ### Utilities
 
-- Added `.pull-{left,right,none}-{xs,sm,md,lg,xl}` classes for responsive floats
-- Removed `.pull-left` and `.pull-right` since they're redundant to `.pull-left-xs` and `.pull-right-xs`
+- Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats
+- Removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`
 
 ## Documentation
 
