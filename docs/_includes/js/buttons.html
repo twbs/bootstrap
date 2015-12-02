@@ -9,29 +9,21 @@
   </div>
 
   <h2 id="buttons-stateful">Stateful</h2>
-  <p>Add <code>data-loading-text="Loading..."</code> to use a loading state on a button.</p>
-  <p><strong class="text-danger">This feature is deprecated since v3.3.5 and will be removed in v4.</strong></p>
-  <div class="alert alert-info" id="callout-buttons-state-names">
-    <h4>Use whichever state you like!</h4>
-    <p>For the sake of this demonstration, we are using <code>data-loading-text</code> and <code>$().button('loading')</code>, but that's not the only state you can use. <a href="#buttons-methods">See more on this below in the <code>$().button(string)</code> documentation</a>.</p>
-  </div>
+  <p>To use a loading state with a button, you should set the button to disabled,
+      and add the <code>.btn-loader</code>.
+      The Bootstrap button loader is deprecated so you'll need to code up in your
+      favoured style.</p>
   <div class="bs-example">
-    <button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
-      Loading state
+    <button type="button" class="btn btn-primary" disabled>
+      Save
+      <span class="btn-loader m-l-md"></span>
     </button>
   </div><!-- /example -->
 {% highlight html %}
-<button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
-  Loading state
+<button type="button" class="btn btn-primary" disabled>
+  Save
+  <span class="btn-loader m-l-md"></span>
 </button>
-
-<script>
-  $('#myButton').on('click', function () {
-    var $btn = $(this).button('loading')
-    // business logic...
-    $btn.button('reset')
-  })
-</script>
 {% endhighlight %}
 
   <h2 id="buttons-single-toggle">Single toggle</h2>

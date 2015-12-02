@@ -9,19 +9,19 @@
 .alert {
   padding: @alert-padding;
   margin-bottom: @line-height-computed;
-  .border-right-radius(@alert-border-radius);
-
-  border: 1px solid @brand-smoke-plus-10;
-  border-left-width: @alert-bar-width;
+  border-radius: @alert-border-radius;
 
   // Headings for larger alerts
   h4 {
     margin-top: 0;
     // Specified for the h4 to prevent conflicts of changing @headings-color
     color: inherit;
+    font-size: 16px;
+    margin-bottom: 8px;
   }
 
   // Provide class for links that match alerts
+  a,
   .alert-link {
     font-weight: @alert-link-font-weight;
   }
@@ -33,7 +33,7 @@
   }
 
   > p + p {
-    margin-top: 8px;
+    margin-top: 16px;
   }
 }
 

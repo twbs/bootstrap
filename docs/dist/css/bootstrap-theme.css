@@ -411,40 +411,40 @@ fieldset[disabled] .btn-danger.active {
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 2px rgba(0, 0, 0, .05);
 }
 .alert-success {
-  background-image: -webkit-linear-gradient(top, #fff 0%, #ececec 100%);
-  background-image:      -o-linear-gradient(top, #fff 0%, #ececec 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ececec));
-  background-image:         linear-gradient(to bottom, #fff 0%, #ececec 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffececec', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #eafaf0 0%, #cbf3da 100%);
+  background-image:      -o-linear-gradient(top, #eafaf0 0%, #cbf3da 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#eafaf0), to(#cbf3da));
+  background-image:         linear-gradient(to bottom, #eafaf0 0%, #cbf3da 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeafaf0', endColorstr='#ffcbf3da', GradientType=0);
   background-repeat: repeat-x;
-  border-color: #d9d9d9;
+  border-color: #acebc4;
 }
 .alert-info {
-  background-image: -webkit-linear-gradient(top, #fff 0%, #ececec 100%);
-  background-image:      -o-linear-gradient(top, #fff 0%, #ececec 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ececec));
-  background-image:         linear-gradient(to bottom, #fff 0%, #ececec 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffececec', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #e5f8ff 0%, #bfeeff 100%);
+  background-image:      -o-linear-gradient(top, #e5f8ff 0%, #bfeeff 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e5f8ff), to(#bfeeff));
+  background-image:         linear-gradient(to bottom, #e5f8ff 0%, #bfeeff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe5f8ff', endColorstr='#ffbfeeff', GradientType=0);
   background-repeat: repeat-x;
-  border-color: #d9d9d9;
+  border-color: #99e3ff;
 }
 .alert-warning {
-  background-image: -webkit-linear-gradient(top, #fff 0%, #ececec 100%);
-  background-image:      -o-linear-gradient(top, #fff 0%, #ececec 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ececec));
-  background-image:         linear-gradient(to bottom, #fff 0%, #ececec 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffececec', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #fff6e5 0%, #ffe9bf 100%);
+  background-image:      -o-linear-gradient(top, #fff6e5 0%, #ffe9bf 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff6e5), to(#ffe9bf));
+  background-image:         linear-gradient(to bottom, #fff6e5 0%, #ffe9bf 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffff6e5', endColorstr='#ffffe9bf', GradientType=0);
   background-repeat: repeat-x;
-  border-color: #d9d9d9;
+  border-color: #ffdc99;
 }
 .alert-danger {
-  background-image: -webkit-linear-gradient(top, #fff 0%, #ececec 100%);
-  background-image:      -o-linear-gradient(top, #fff 0%, #ececec 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ececec));
-  background-image:         linear-gradient(to bottom, #fff 0%, #ececec 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffececec', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #feeaea 0%, #fcc5c5 100%);
+  background-image:      -o-linear-gradient(top, #feeaea 0%, #fcc5c5 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#feeaea), to(#fcc5c5));
+  background-image:         linear-gradient(to bottom, #feeaea 0%, #fcc5c5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffeeaea', endColorstr='#fffcc5c5', GradientType=0);
   background-repeat: repeat-x;
-  border-color: #d9d9d9;
+  border-color: #fba1a1;
 }
 .progress {
   background-image: -webkit-linear-gradient(top, #e5ebef 0%, #f2f5f7 100%);
