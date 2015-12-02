@@ -56,13 +56,13 @@
     "grunt-sass": "^1.0.0",
     "grunt-saucelabs": "~8.6.1",
     "grunt-scss-lint": "^0.3.8",
-    "grunt-sed": "~0.1.1",
     "grunt-stamp": "^0.1.0",
     "is-travis": "^1.0.0",
     "load-grunt-tasks": "~3.3.0",
     "markdown-it": "^5.0.0",
     "mq4-hover-shim": "^0.3.0",
     "npm-shrinkwrap": "^200.1.0",
+    "shelljs": "^0.5.3",
     "time-grunt": "^1.2.1"
   },
   "engines": {
@@ -96,5 +96,8 @@
     "dependencies": {
       "jquery": "*"
     }
+  },
+  "scripts": {
+    "change-version": "node grunt/change-version.js"
   }
 }
