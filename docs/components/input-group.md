@@ -110,13 +110,22 @@ Buttons in input groups are a bit different and require one extra level of nesti
 </div>
 <br>
 <div class="row">
-  <div class="col-lg-offset-3 col-lg-6">
+  <div class="col-lg-6">
     <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Hate it</button>
       </span>
       <input type="text" class="form-control" placeholder="Product name">
       <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button">Love it</button>
+      </span>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Product name">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button">Hate it</button>
         <button class="btn btn-secondary" type="button">Love it</button>
       </span>
     </div>
@@ -158,6 +167,38 @@ Buttons in input groups are a bit different and require one extra level of nesti
           <a class="dropdown-item" href="#">Something else here</a>
           <div role="separator" class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-lg-offset-3 col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" aria-label="Text input with dropdown button">
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Hate it
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#">Be annoyed by it</a>
+          <a class="dropdown-item" href="#">Be angry with it</a>
+          <a class="dropdown-item" href="#">Shout at it</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Throw it away</a>
+        </div>
+      </div>
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Love it
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#">Hug it</a>
+          <a class="dropdown-item" href="#">Laugh</a>
+          <a class="dropdown-item" href="#">Dance</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Share your love</a>
         </div>
       </div>
     </div>

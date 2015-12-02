@@ -35,7 +35,9 @@
   }
 
   // Customize the `:focus` state to imitate native WebKit styles.
-  @include form-control-focus();
+  &:focus {
+    @include form-control-focus();
+  }
 
   // Placeholder
   &::placeholder {
@@ -58,6 +60,12 @@
 
   &:disabled {
     cursor: $cursor-disabled;
+  }
+
+  // Also highlight buttons and dropdown toggles after the focused input in an input group.
+  .input-group > &:first-child:focus ~ .input-group-btn > .btn,
+  .input-group > &:first-child:focus ~ .input-group-btn > .dropdown-toggle {
+    @include form-control-focus();
   }
 }
 
