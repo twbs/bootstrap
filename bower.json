@@ -11,7 +11,7 @@
     "framework",
     "web"
   ],
-  "homepage": "http://getbootstrap.com",
+  "homepage": "http://bootstrap.transferwise.com",
   "license": "MIT",
   "moduleType": "globals",
   "main": [
@@ -29,7 +29,6 @@
     "test-infra"
   ],
   "dependencies": {
-    "jquery": ">= 1.9.1",
-    "bootstrap-select": "1.7.3"
+    "jquery": ">= 1.9.1"
   }
 }
