@@ -50,7 +50,4 @@ $(document).ready(function() {
 		.blur(function() {
 			$(this).parents('.form-group').removeClass('focus');
 		});
-
-	$("select").selectpicker();
-
 });
