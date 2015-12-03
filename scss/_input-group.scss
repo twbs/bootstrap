@@ -174,8 +174,8 @@
     }
     @include focus-active {
       z-index: 4;
-      border-left-width: 1px;
       margin-left: -1px;
+      border-left-width: 1px;
     }
   }
 
