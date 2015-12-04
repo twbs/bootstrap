@@ -37,6 +37,12 @@
       width: 100%;
     }
     margin-bottom: 0;
+
+    // Also highlight buttons and dropdown toggles after the focused input in an input group.
+    &:first-child:focus ~ .input-group-btn > .btn,
+    &:first-child:focus ~ .input-group-btn > .dropdown-toggle {
+      @include form-control-focus();
+    }
   }
 }
 

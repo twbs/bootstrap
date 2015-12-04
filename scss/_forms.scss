@@ -61,12 +61,6 @@
   &:disabled {
     cursor: $cursor-disabled;
   }
-
-  // Also highlight buttons and dropdown toggles after the focused input in an input group.
-  .input-group > &:first-child:focus ~ .input-group-btn > .btn,
-  .input-group > &:first-child:focus ~ .input-group-btn > .dropdown-toggle {
-    @include form-control-focus();
-  }
 }
 
 
