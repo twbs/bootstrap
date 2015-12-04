@@ -101,7 +101,7 @@
   color: $input-color;
   text-align: center;
   background-color: $input-group-addon-bg;
-  border: 1px solid $input-group-addon-border-color;
+  border: $input-border-width solid $input-group-addon-border-color;
   @include border-radius($border-radius);
 
   // Sizing
@@ -180,18 +180,18 @@
     }
     @include focus-active {
       z-index: 4;
-      margin-left: -1px;
-      border-left-width: 1px;
+      margin-left: -$input-border-width;
+      border-left-width: $input-border-width;
     }
   }
 
-  // Negative margin to only have a 1px border between the two
+  // Negative margin to not have a double border between the two
   &:first-child {
     > .btn,
     > .btn-group {
-      margin-right: -1px;
+      margin-right: -$input-border-width;
       // Undo having no border here, because it is the first element
-      border-left-width: 1px;
+      border-left-width: $input-border-width;
       // Also do not move left on focus
       @include focus-active {
         margin-left: 0;
