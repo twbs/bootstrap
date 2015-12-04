@@ -92,12 +92,12 @@ mark,
 // Inline turns list items into inline-block
 .list-inline {
   @include list-unstyled;
-  margin-left: -5px;
+  margin-left: -$list-inline-padding;
 
   > li {
     display: inline-block;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: $list-inline-padding;
+    padding-left: $list-inline-padding;
   }
 }
 
