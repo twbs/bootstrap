@@ -303,6 +303,11 @@
   }
 }
 
+.bd-example ~ .bd-clipboard {
+  position: relative;
+  top: 1.05rem;
+}
+
 
 //
 // Code snippets
