@@ -20,11 +20,11 @@
   cursor: pointer;
   background-color: transparent;
   border-radius: .25rem;
-}
 
-.btn-clipboard-hover {
-  color: #fff;
-  background-color: #027de7;
+  &:hover {
+    color: #fff;
+    background-color: #027de7;
+  }
 }
 
 @media (min-width: 768px) {
