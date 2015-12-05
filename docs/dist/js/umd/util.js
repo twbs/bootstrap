@@ -114,7 +114,7 @@
 
       getUID: function getUID(prefix) {
         do {
-          prefix += ~ ~(Math.random() * 1000000);
+          prefix += ~ ~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
         } while (document.getElementById(prefix));
         return prefix;
       },
