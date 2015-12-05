@@ -20,7 +20,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): util.js
+ * Bootstrap (v4.0.0-alpha): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -185,7 +185,7 @@ var Util = (function ($) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): alert.js
+ * Bootstrap (v4.0.0-alpha): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -199,7 +199,7 @@ var Alert = (function ($) {
    */
 
   var NAME = 'alert';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.alert';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -371,7 +371,7 @@ var Alert = (function ($) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): button.js
+ * Bootstrap (v4.0.0-alpha): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -385,7 +385,7 @@ var Button = (function ($) {
    */
 
   var NAME = 'button';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.button';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -537,7 +537,7 @@ var Button = (function ($) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): carousel.js
+ * Bootstrap (v4.0.0-alpha): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -551,7 +551,7 @@ var Carousel = (function ($) {
    */
 
   var NAME = 'carousel';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.carousel';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -1009,7 +1009,7 @@ var Carousel = (function ($) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): collapse.js
+ * Bootstrap (v4.0.0-alpha): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1023,7 +1023,7 @@ var Collapse = (function ($) {
    */
 
   var NAME = 'collapse';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.collapse';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -1367,7 +1367,7 @@ var Collapse = (function ($) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): dropdown.js
+ * Bootstrap (v4.0.0-alpha): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1381,7 +1381,7 @@ var Dropdown = (function ($) {
    */
 
   var NAME = 'dropdown';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.dropdown';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -1654,7 +1654,7 @@ var Dropdown = (function ($) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): modal.js
+ * Bootstrap (v4.0.0-alpha): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1668,7 +1668,7 @@ var Modal = (function ($) {
    */
 
   var NAME = 'modal';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.modal';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -2184,7 +2184,7 @@ var Modal = (function ($) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): scrollspy.js
+ * Bootstrap (v4.0.0-alpha): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2198,7 +2198,7 @@ var ScrollSpy = (function ($) {
    */
 
   var NAME = 'scrollspy';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.scrollspy';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -2498,7 +2498,7 @@ var ScrollSpy = (function ($) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): tab.js
+ * Bootstrap (v4.0.0-alpha): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2512,7 +2512,7 @@ var Tab = (function ($) {
    */
 
   var NAME = 'tab';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.tab';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -2757,7 +2757,7 @@ var Tab = (function ($) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): tooltip.js
+ * Bootstrap (v4.0.0-alpha): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2779,7 +2779,7 @@ var Tooltip = (function ($) {
    */
 
   var NAME = 'tooltip';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.tooltip';
   var EVENT_KEY = '.' + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
@@ -3368,7 +3368,7 @@ var Tooltip = (function ($) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): popover.js
+ * Bootstrap (v4.0.0-alpha): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3382,7 +3382,7 @@ var Popover = (function ($) {
    */
 
   var NAME = 'popover';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.popover';
   var EVENT_KEY = '.' + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];

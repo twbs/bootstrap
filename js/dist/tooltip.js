@@ -8,7 +8,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): tooltip.js
+ * Bootstrap (v4.0.0-alpha): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -30,7 +30,7 @@ var Tooltip = (function ($) {
    */
 
   var NAME = 'tooltip';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha';
   var DATA_KEY = 'bs.tooltip';
   var EVENT_KEY = '.' + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
