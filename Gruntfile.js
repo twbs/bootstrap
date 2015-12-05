@@ -45,7 +45,7 @@ module.exports = function (grunt) {
       'Explorer >= 9',
       // Out of leniency, we prefix these 1 version further back than the official policy.
       'iOS >= 8',
-      'Safari >= 7.1',
+      'Safari >= 8',
       // The following remain NOT officially supported, but we're lenient and include their prefixes to avoid severely breaking in them.
       'Android 2.3',
       'Android >= 4',
