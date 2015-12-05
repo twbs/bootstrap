@@ -28,11 +28,13 @@ var Collapse = (function ($) {
   var TRANSITION_DURATION = 600;
 
   var Default = {
+    animate: true,
     toggle: true,
     parent: ''
   };
 
   var DefaultType = {
+    animate: 'boolean',
     toggle: 'boolean',
     parent: 'string'
   };
@@ -149,16 +151,17 @@ var Collapse = (function ($) {
 
         var dimension = this._getDimension();
 
-        $(this._element).removeClass(ClassName.COLLAPSE).addClass(ClassName.COLLAPSING);
-
-        this._element.style[dimension] = 0;
         this._element.setAttribute('aria-expanded', true);
 
         if (this._triggerArray.length) {
           $(this._triggerArray).removeClass(ClassName.COLLAPSED).attr('aria-expanded', true);
         }
 
-        this.setTransitioning(true);
+        if (this._config.animate) {
+          $(this._element).removeClass(ClassName.COLLAPSE).addClass(ClassName.COLLAPSING);
+          this._element.style[dimension] = 0;
+          this.setTransitioning(true);
+        }
 
         var complete = function complete() {
           $(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.IN);
@@ -170,7 +173,7 @@ var Collapse = (function ($) {
           $(_this._element).trigger(Event.SHOWN);
         };
 
-        if (!Util.supportsTransitionEnd()) {
+        if (!Util.supportsTransitionEnd() || !this._config.animate) {
           complete();
           return;
         }
@@ -198,21 +201,26 @@ var Collapse = (function ($) {
         }
 
         var dimension = this._getDimension();
-        var offsetDimension = dimension === Dimension.WIDTH ? 'offsetWidth' : 'offsetHeight';
 
-        this._element.style[dimension] = this._element[offsetDimension] + 'px';
+        if (this._config.animate) {
+          var offsetDimension = dimension === Dimension.WIDTH ? 'offsetWidth' : 'offsetHeight';
 
-        Util.reflow(this._element);
+          this._element.style[dimension] = this._element[offsetDimension] + 'px';
 
-        $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.IN);
+          Util.reflow(this._element);
+
+          $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE);
+
+          this.setTransitioning(true);
+        }
+
+        $(this._element).removeClass(ClassName.IN);
 
         this._element.setAttribute('aria-expanded', false);
 
         if (this._triggerArray.length) {
           $(this._triggerArray).addClass(ClassName.COLLAPSED).attr('aria-expanded', false);
         }
-
-        this.setTransitioning(true);
 
         var complete = function complete() {
           _this2.setTransitioning(false);
@@ -221,7 +229,7 @@ var Collapse = (function ($) {
 
         this._element.style[dimension] = 0;
 
-        if (!Util.supportsTransitionEnd()) {
+        if (!Util.supportsTransitionEnd() || !this._config.animate) {
           complete();
           return;
         }
