@@ -80,6 +80,16 @@
 
 -
   browser: >
+    Firefox (Windows)
+  summary: >
+    Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
+  upstream_bug: >
+    Mozilla#1139853
+  origin: >
+    Bootstrap#15990
+
+-
+  browser: >
     Chrome (OS X)
   summary: >
     Clicking above `<input type="number">` increment button flashes the decrement button.
