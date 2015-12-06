@@ -87,3 +87,41 @@
 @include text-emphasis-variant('.text-warning', $brand-warning);
 
 @include text-emphasis-variant('.text-danger', $brand-danger);
+
+// Weight
+
+.text-weight-black {
+  font-weight: 900;
+}
+
+.text-weight-extra-bold {
+  font-weight: 800;
+}
+
+.text-weight-bold {
+  font-weight: 700;
+}
+
+.text-weight-semi-bold {
+  font-weight: 600;
+}
+
+.text-weight-medium {
+  font-weight: 500;
+}
+
+.text-weight-normal {
+  font-weight: 400;
+}
+
+.text-weight-light {
+  font-weight: 300;
+}
+
+.text-weight-extra-light {
+  font-weight: 200;
+}
+
+.text-weight-thin {
+  font-weight: 100;
+}
