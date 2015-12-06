@@ -23,7 +23,7 @@ Place one add-on or button on either side of an input. You may also place one on
 <br>
 <div class="input-group">
   <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-addon" id="basic-addon2">.00</span>
+  <span class="input-group-addon" id="basic-addon2">@example.com</span>
 </div>
 <br>
 <label for="basic-url">Your vanity URL</label>
