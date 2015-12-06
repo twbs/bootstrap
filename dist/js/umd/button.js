@@ -13,7 +13,7 @@
 })(this, function (exports, module) {
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.0.0): button.js
+   * Bootstrap (v4.0.0-alpha): button.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -33,7 +33,7 @@
      */
 
     var NAME = 'button';
-    var VERSION = '4.0.0';
+    var VERSION = '4.0.0-alpha';
     var DATA_KEY = 'bs.button';
     var EVENT_KEY = '.' + DATA_KEY;
     var DATA_API_KEY = '.data-api';
