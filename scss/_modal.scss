@@ -138,9 +138,9 @@
   }
 
   // Modal sizes
-  .modal-sm { width: $modal-sm; }
+  .modal-sm { max-width: $modal-sm; }
 }
 
 @include media-breakpoint-up(md) {
-  .modal-lg { width: $modal-lg; }
+  .modal-lg { max-width: $modal-lg; }
 }
