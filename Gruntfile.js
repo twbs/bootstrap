@@ -524,8 +524,9 @@ module.exports = function (grunt) {
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
+  grunt.registerTask('docs-github', ['jekyll:github', 'htmlmin']);
 
-  grunt.registerTask('prep-release', ['dist', 'docs', 'jekyll:github', 'htmlmin', 'compress']);
+  grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress']);
 
   // Publish to GitHub
   grunt.registerTask('publish', ['buildcontrol:pages']);
