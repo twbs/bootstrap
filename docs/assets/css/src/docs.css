@@ -1607,3 +1607,18 @@ h1[id] {
   -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
           box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
+
+/* v4 notice above main navbar */
+.v4-tease {
+  display: block;
+  padding: 15px 20px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  background-color: #0275d8;
+}
+.v4-tease:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #0269c2;
+}
