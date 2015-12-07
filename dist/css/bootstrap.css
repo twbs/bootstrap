@@ -4663,6 +4663,14 @@ a.label:focus, a.label:hover {
   border-radius: 0;
 }
 
+.list-group-flush:first-child .list-group-item:first-child {
+  border-top: 0;
+}
+
+.list-group-flush:last-child .list-group-item:last-child {
+  border-bottom: 0;
+}
+
 a.list-group-item,
 button.list-group-item {
   width: 100%;
@@ -5728,16 +5736,16 @@ button.close {
   text-transform: capitalize !important;
 }
 
-.font-normal {
+.font-weight-normal {
   font-weight: normal;
 }
 
-.font-bold {
+.font-weight-bold {
   font-weight: bold;
 }
 
 .font-italic {
-  font-style: normal;
+  font-style: italic;
 }
 
 .text-muted {
