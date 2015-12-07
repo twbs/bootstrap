@@ -54,6 +54,58 @@ Here's an example of all the sub-components included in a default, light navbar:
 </nav>
 {% endexample %}
 
+### Brand
+
+The `.navbar-brand` can be applied to most elements, but an anchor works best.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Navbar</a>
+</nav>
+
+<nav class="navbar navbar-light bg-faded">
+  <h1 class="navbar-brand">Navbar</h1>
+</nav>
+
+{% endexample %}
+
+### Nav
+
+Navbar navigation is similar to our regular nav options—use the `.nav` base class with a modifier to achieve a particular look. In this case you'll want `.nav.navbar-nav`.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <ul class="nav navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Features</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Pricing</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li>
+  </ul>
+</nav>
+{% endexample %}
+
+And because we use classes for our navs, you can omit the list-based approach entirely if you like.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <div class="nav navbar-nav">
+    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link" href="#">Features</a>
+    <a class="nav-item nav-link" href="#">Pricing</a>
+    <a class="nav-item nav-link" href="#">About</a>
+  </div>
+</nav>
+{% endexample %}
+
+
 ## Color schemes
 
 Theming the navbar has never been easier thanks to the combination of a simple link color modifier class and `background-color` utilities. Put another way, you specify light or dark and apply a background color.
