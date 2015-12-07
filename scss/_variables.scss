@@ -176,6 +176,10 @@ $blockquote-border-color:     $gray-lighter !default;
 $hr-border-color:             rgba(0,0,0,.1) !default;
 $hr-border-width:             $border-width !default;
 
+$dt-font-weight:              bold !default;
+
+$nested-kbd-font-weight:      bold !default;
+
 
 // Components
 //
@@ -501,6 +505,7 @@ $label-danger-bg:             $brand-danger !default;
 
 $label-color:                 #fff !default;
 $label-link-hover-color:      #fff !default;
+$label-font-weight:           bold !default;
 
 
 // Modals
