@@ -26,7 +26,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 
 - `.navbar-brand` for your company, product, or project name
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
-- `.navbar-toggler` for use with our collapse plugin and other navigation toggling behaviors.
+- `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsing-content) behaviors.
 
 Here's an example of all the sub-components included in a default, light navbar:
 
@@ -194,7 +194,7 @@ Here are some examples to show what we mean.
 
 ## Containers
 
-Although it's not required, you can wrap a navbar in a `.container` to center it on a page or add one within to only center the contents of the navbar.
+Although it's not required, you can wrap a navbar in a `.container` to center it on a page or add one within to only center the contents of a [fixed or static top navbar](#placement).
 
 {% example html %}
 <div class="container">
