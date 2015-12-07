@@ -121,6 +121,16 @@ Transform text in components with text capitalization classes.
 <p class="text-capitalize">CapiTaliZed text.</p>
 {% endexample %}
 
+## Font weight and style
+
+Quickly change the weight and style of text.
+
+{% example html %}
+<p class="font-normal">Normal text.</p>
+<p class="font-bold">Bold text.</p>
+<p class="font-italic">Italicized text.</p>
+{% endexample %}
+
 ## Contextual colors and backgrounds
 
 Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.
