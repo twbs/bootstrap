@@ -121,13 +121,13 @@ Transform text in components with text capitalization classes.
 <p class="text-capitalize">CapiTaliZed text.</p>
 {% endexample %}
 
-## Font weight and style
+## Font weight and italics
 
-Quickly change the weight and style of text.
+Quickly change the weight (boldness) of text or italicize text.
 
 {% example html %}
-<p class="font-normal">Normal text.</p>
-<p class="font-bold">Bold text.</p>
+<p class="font-weight-bold">Bold text.</p>
+<p class="font-weight-normal">Normal weight text.</p>
 <p class="font-italic">Italicized text.</p>
 {% endexample %}
 

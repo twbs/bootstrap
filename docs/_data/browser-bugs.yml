@@ -292,6 +292,16 @@
 
 -
   browser: >
+    Safari (iOS)
+  summary: >
+    Tapping on `<body>` doesn't fire `click` events
+  upstream_bug: >
+    WebKit#151933
+  origin: >
+    Bootstrap#16028
+
+-
+  browser: >
     Safari (iOS 9+)
   summary: >
     Sometimes excessive automatic zoom is applied after opening a modal, and the user isn't allowed to zoom out
