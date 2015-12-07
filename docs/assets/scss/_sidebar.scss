@@ -47,6 +47,7 @@
     padding: .75rem 1rem;
     color: #7a7a7a;
     text-align: center;
+    white-space: normal; // Undo .dropdown-item defaults
   }
 }
 
