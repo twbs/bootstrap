@@ -26,7 +26,6 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 
 - `.navbar-brand` for your company, product, or project name
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
-- `.navbar-form` for vertically centering default-sized inputs and buttons.
 - `.navbar-toggler` for use with our collapse plugin and other navigation toggling behaviors.
 
 Here's an example of all the sub-components included in a default, light navbar:
@@ -48,7 +47,7 @@ Here's an example of all the sub-components included in a default, light navbar:
       <a class="nav-link" href="#">About</a>
     </li>
   </ul>
-  <form class="form-inline navbar-form pull-xs-right">
+  <form class="form-inline pull-xs-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-success-outline" type="submit">Search</button>
   </form>
@@ -78,7 +77,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline navbar-form pull-xs-right">
+    <form class="form-inline pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-info-outline" type="submit">Search</button>
     </form>
@@ -99,7 +98,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline navbar-form pull-xs-right">
+    <form class="form-inline pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-secondary-outline" type="submit">Search</button>
     </form>
@@ -120,7 +119,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline navbar-form pull-xs-right">
+    <form class="form-inline pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-primary-outline" type="submit">Search</button>
     </form>
