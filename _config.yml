@@ -25,6 +25,7 @@ download:
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
+themes:           http://themes.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
