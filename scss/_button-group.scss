@@ -27,7 +27,7 @@
   .btn + .btn-group,
   .btn-group + .btn,
   .btn-group + .btn-group {
-    margin-left: -$btn-border-width;
+    margin-left: -$input-btn-border-width;
   }
 }
 
@@ -167,7 +167,7 @@
   > .btn + .btn-group,
   > .btn-group + .btn,
   > .btn-group + .btn-group {
-    margin-top: -$btn-border-width;
+    margin-top: -$input-btn-border-width;
     margin-left: 0;
   }
 }
