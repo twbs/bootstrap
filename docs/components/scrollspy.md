@@ -101,7 +101,7 @@ Target elements that are not [`:visible` according to jQuery](https://api.jquery
 
 ### Methods
 
-#### .scrollspy('refresh')
+#### `.scrollspy('refresh')`
 
 When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:
 
@@ -121,9 +121,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <thead>
      <tr>
        <th style="width: 100px;">Name</th>
-       <th style="width: 100px;">type</th>
-       <th style="width: 50px;">default</th>
-       <th>description</th>
+       <th style="width: 100px;">Type</th>
+       <th style="width: 50px;">Default</th>
+       <th>Description</th>
      </tr>
     </thead>
     <tbody>

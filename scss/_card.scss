@@ -4,8 +4,9 @@
 
 .card {
   position: relative;
+  display: block;
   margin-bottom: $card-spacer-y;
-  background-color: #fff;
+  background-color: $card-bg;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
 }
@@ -120,7 +121,7 @@
 .card-inverse {
   .card-header,
   .card-footer {
-    border-bottom: .075rem solid rgba(255,255,255,.2);
+    border-bottom: $card-border-width solid rgba(255,255,255,.2);
   }
   .card-header,
   .card-footer,
@@ -135,7 +136,7 @@
   }
   .card-link {
     @include hover-focus {
-      color: #fff;
+      color: $card-link-hover-color;
     }
   }
 }
@@ -169,10 +170,10 @@
 
 // Card image caps
 .card-img-top {
-  @include border-radius(.25rem .25rem 0 0);
+  @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
 }
 .card-img-bottom {
-  @include border-radius(0 0 .25rem .25rem);
+  @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
 }
 
 
@@ -246,6 +247,8 @@
       // Handle rounded corners
       @if $enable-rounded {
         &:first-child {
+          @include border-right-radius(0);
+
           .card-img-top {
             border-top-right-radius: 0;
           }
@@ -254,6 +257,8 @@
           }
         }
         &:last-child {
+          @include border-left-radius(0);
+
           .card-img-top {
             border-top-left-radius: 0;
           }

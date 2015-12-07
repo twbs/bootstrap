@@ -473,7 +473,7 @@ While Bootstrap will apply these styles in all browsers, Internet Explorer 11 an
 
 ## Readonly inputs
 
-Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.<
+Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
 {% example html %}
 <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
@@ -484,9 +484,9 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 Set heights using classes like `.form-control-lg`, and set widths using grid column classes like `.col-lg-*`.
 
 {% example html %}
-<input class="form-control form-control-lg" type="text" placeholder=".input-lg">
+<input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
 <input class="form-control" type="text" placeholder="Default input">
-<input class="form-control form-control-sm" type="text" placeholder=".input-sm">
+<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
 {% endexample %}
 
 {% example html %}
@@ -535,7 +535,7 @@ Block help text—for below inputs or for longer lines of help text—can be eas
 
 ## Validation
 
-Bootstrap includes validation styles for error, warning, and success states on form controls. To use, add `.has-warning`, `.has-error`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
+Bootstrap includes validation styles for danger, warning, and success states on form controls. To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
 
 {% comment %}
 {% callout warning %}
@@ -556,40 +556,34 @@ Ensure that an alternative indication of state is also provided. For instance, y
   <label class="form-control-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
 </div>
-<div class="form-group has-error">
-  <label class="form-control-label" for="inputError1">Input with error</label>
-  <input type="text" class="form-control form-control-error" id="inputError1">
+<div class="form-group has-danger">
+  <label class="form-control-label" for="inputDanger1">Input with danger</label>
+  <input type="text" class="form-control form-control-danger" id="inputDanger1">
 </div>
 
-<div class="has-success">
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" id="checkboxSuccess" value="option1">
-      Checkbox with success
-    </label>
-  </div>
+<div class="checkbox has-success">
+  <label>
+    <input type="checkbox" id="checkboxSuccess" value="option1">
+    Checkbox with success
+  </label>
 </div>
-<div class="has-warning">
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" id="checkboxWarning" value="option1">
-      Checkbox with warning
-    </label>
-  </div>
+<div class="checkbox has-warning">
+  <label>
+    <input type="checkbox" id="checkboxWarning" value="option1">
+    Checkbox with warning
+  </label>
 </div>
-<div class="has-error">
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" id="checkboxError" value="option1">
-      Checkbox with error
-    </label>
-  </div>
+<div class="checkbox has-danger">
+  <label>
+    <input type="checkbox" id="checkboxDanger" value="option1">
+    Checkbox with danger
+  </label>
 </div>
 {% endexample %}
 
 ## Custom forms
 
-For even more customization and cross browser consistency, use our completely custom form elements to replace the browser defaults. They're built on top of semantic and accessible markup, so they're solid replacements any default form control.
+For even more customization and cross browser consistency, use our completely custom form elements to replace the browser defaults. They're built on top of semantic and accessible markup, so they're solid replacements for any default form control.
 
 ### Checkboxes and radios
 

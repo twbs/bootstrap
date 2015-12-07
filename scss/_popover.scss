@@ -12,7 +12,7 @@
   font-size: $font-size-sm;
   background-color: $popover-bg;
   background-clip: padding-box;
-  border: 1px solid $popover-border-color;
+  border: $popover-border-width solid $popover-border-color;
   @include border-radius($border-radius-lg);
   @include box-shadow(0 5px 10px rgba(0,0,0,.2));
 
@@ -107,7 +107,7 @@
   margin: 0; // reset heading margin
   font-size: $font-size-base;
   background-color: $popover-title-bg;
-  border-bottom: 1px solid darken($popover-title-bg, 5%);
+  border-bottom: $popover-border-width solid darken($popover-title-bg, 5%);
   @include border-radius(($border-radius-lg - 1) ($border-radius-lg - 1) 0 0);
 }
 

@@ -40,13 +40,13 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 
 Install and manage Bootstrap's Sass and JavaScript using [Bower](http://bower.io).
 
-{% highlight bash %}$ bower install bootstrap{% endhighlight %}
+{% highlight bash %}$ bower install bootstrap#v{{ site.current_version }}{% endhighlight %}
 
 ### npm
 
 Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.org/package/bootstrap):
 
-{% highlight bash %}$ npm install bootstrap{% endhighlight %}
+{% highlight bash %}$ npm install bootstrap@{{ site.current_version }}{% endhighlight %}
 
 `require('bootstrap')` will load all of Bootstrap's jQuery plugins onto the jQuery object. The `bootstrap` module itself does not export anything. You can manually load Bootstrap's jQuery plugins individually by loading the `/js/*.js` files under the package's top-level directory.
 
@@ -58,7 +58,7 @@ Bootstrap's `package.json` contains some additional metadata under the following
 ### Meteor
 
 {% highlight bash %}
-$ meteor add twbs:bootstrap
+$ meteor add twbs:bootstrap@={{ site.current_version }}
 {% endhighlight %}
 
 ### Composer
@@ -101,3 +101,4 @@ Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag 
     <a class="btn btn-bs btn-outline" href="#">Download</a>
   </div>
 </div>
+

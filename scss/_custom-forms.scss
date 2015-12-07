@@ -142,7 +142,7 @@
   background-image: none \9;
 >>>>>>> twbs/v4-dev
   background-size: 8px 10px;
-  border: 1px solid $input-border;
+  border: $input-border-width solid $input-border-color;
   // Use vendor prefixes as `appearance` isn't part of the CSS spec.
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -199,7 +199,7 @@
   color: #555;
   user-select: none;
   background-color: #fff;
-  border: .075rem solid #ddd;
+  border: $input-border-width solid #ddd;
   border-radius: .25rem;
   @include box-shadow(inset 0 .2rem .4rem rgba(0,0,0,.05));
 }
@@ -219,7 +219,7 @@
   color: #555;
   content: "Browse";
   background-color: #eee;
-  border: .075rem solid #ddd;
+  border: $input-border-width solid #ddd;
   border-radius: 0 .25rem .25rem 0;
 }
 

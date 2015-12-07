@@ -14,7 +14,7 @@
       display: inline-block;
       padding: 5px 14px;
       background-color: $pager-bg;
-      border: 1px solid $pager-border;
+      border: $pager-border-width solid $pager-border-color;
       border-radius: $pager-border-radius;
     }
 

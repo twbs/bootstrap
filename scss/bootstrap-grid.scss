@@ -8,39 +8,44 @@
 // Variables
 //
 
-// Grid system
+
+// Grid breakpoints
 //
-// Define your custom responsive grid.
+// Define the minimum and maximum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
 $grid-breakpoints: (
   // Extra small screen / phone
   xs: 0,
   // Small screen / phone
-  sm: 34em,
+  sm: 544px,
   // Medium screen / tablet
-  md: 48em,
+  md: 768px,
   // Large screen / desktop
-  lg: 62em,
+  lg: 992px,
   // Extra large screen / wide desktop
-  xl: 75em
+  xl: 1200px
 ) !default;
 
-// Number of columns in the grid.
-$grid-columns:               12 !default;
 
-// Padding between columns. Gets divided in half for the left and right.
-$grid-gutter-width:          1.5rem !default;
-
-
-// Container sizes
+// Grid containers
 //
 // Define the maximum width of `.container` for different screen sizes.
 
 $container-max-widths: (
-  sm: 34rem,    // 480
-  md: 45rem,    // 720
-  lg: 60rem,    // 960
-  xl: 72.25rem  // 1140
+  sm: 576px,
+  md: 720px,
+  lg: 940px,
+  xl: 1140px
 ) !default;
+
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns:               12 !default;
+$grid-gutter-width:          1.875rem !default; // 30px
 
 
 //

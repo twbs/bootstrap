@@ -10,12 +10,18 @@
   @include center-block();
 }
 
-.pull-right {
-  @include pull-right();
-}
-
-.pull-left {
-  @include pull-left();
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    .pull-#{$breakpoint}-left {
+      @include pull-left();
+    }
+    .pull-#{$breakpoint}-right {
+      @include pull-right();
+    }
+    .pull-#{$breakpoint}-none {
+      float: none !important;
+    }
+  }
 }
 
 
@@ -31,13 +37,8 @@
   @include sr-only-focusable();
 }
 
-// Always hide an element with the `hidden` HTML attribute (from PureCSS).
-[hidden] {
-  display: none !important;
-}
-
 .invisible {
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 .text-hide {
@@ -51,48 +52,31 @@
 
 // Alignment
 
-.text-left           { text-align: left; }
-.text-right          { text-align: right; }
-.text-center         { text-align: center; }
-.text-justify        { text-align: justify; }
-.text-nowrap         { white-space: nowrap; }
+.text-justify        { text-align: justify !important; }
+.text-nowrap         { white-space: nowrap !important; }
 .text-truncate       { @include text-truncate; }
 
 // Responsive alignment
 
-.text-xs-left   { text-align: left; }
-.text-xs-right  { text-align: right; }
-.text-xs-center { text-align: center; }
-
-@include media-breakpoint-up(sm) {
-  .text-sm-left   { text-align: left; }
-  .text-sm-right  { text-align: right; }
-  .text-sm-center { text-align: center; }
-}
-
-@include media-breakpoint-up(md) {
-  .text-md-left   { text-align: left; }
-  .text-md-right  { text-align: right; }
-  .text-md-center { text-align: center; }
-}
-
-@include media-breakpoint-up(lg) {
-  .text-lg-left   { text-align: left; }
-  .text-lg-right  { text-align: right; }
-  .text-lg-center { text-align: center; }
-}
-
-@include media-breakpoint-up(xl) {
-  .text-xl-left   { text-align: left; }
-  .text-xl-right  { text-align: right; }
-  .text-xl-center { text-align: center; }
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    .text-#{$breakpoint}-left   { text-align: left !important; }
+    .text-#{$breakpoint}-right  { text-align: right !important; }
+    .text-#{$breakpoint}-center { text-align: center !important; }
+  }
 }
 
 // Transformation
 
-.text-lowercase      { text-transform: lowercase; }
-.text-uppercase      { text-transform: uppercase; }
-.text-capitalize     { text-transform: capitalize; }
+.text-lowercase      { text-transform: lowercase !important; }
+.text-uppercase      { text-transform: uppercase !important; }
+.text-capitalize     { text-transform: capitalize !important; }
+
+// Weight and italics
+
+.font-weight-normal  { font-weight: normal; }
+.font-weight-bold    { font-weight: bold; }
+.font-italic         { font-style: italic; }
 
 // Contextual colors
 
@@ -109,29 +93,3 @@
 @include text-emphasis-variant('.text-warning', $brand-warning);
 
 @include text-emphasis-variant('.text-danger', $brand-danger);
-
-
-// Contextual backgrounds
-// For now we'll leave these alongside the text classes until v4 when we can
-// safely shift things around (per SemVer rules).
-
-// Inverse
-// Todo: redo this as a proper class
-.bg-inverse {
-  color: $gray-lighter;
-  background-color: $gray-dark;
-}
-
-.bg-faded {
-  background-color: $gray-lightest;
-}
-
-@include bg-variant('.bg-primary', $brand-primary);
-
-@include bg-variant('.bg-success', $brand-success);
-
-@include bg-variant('.bg-info', $brand-info);
-
-@include bg-variant('.bg-warning', $brand-warning);
-
-@include bg-variant('.bg-danger', $brand-danger);

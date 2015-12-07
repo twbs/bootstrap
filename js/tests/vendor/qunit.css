@@ -1,27 +1,27 @@
 /*!
- * QUnit 1.18.0
+ * QUnit 1.20.0
  * http://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2015-04-03T10:23Z
+ * Date: 2015-10-27T17:53Z
  */
 
 /** Font Family and Sizes */
 
-#qunit-tests, #qunit-header, #qunit-banner, #qunit-testrunner-toolbar, #qunit-userAgent, #qunit-testresult {
+#qunit-tests, #qunit-header, #qunit-banner, #qunit-testrunner-toolbar, #qunit-filteredTest, #qunit-userAgent, #qunit-testresult {
 	font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
 }
 
-#qunit-testrunner-toolbar, #qunit-userAgent, #qunit-testresult, #qunit-tests li { font-size: small; }
+#qunit-testrunner-toolbar, #qunit-filteredTest, #qunit-userAgent, #qunit-testresult, #qunit-tests li { font-size: small; }
 #qunit-tests { font-size: smaller; }
 
 
 /** Resets */
 
-#qunit-tests, #qunit-header, #qunit-banner, #qunit-userAgent, #qunit-testresult, #qunit-modulefilter {
+#qunit-tests, #qunit-header, #qunit-banner, #qunit-filteredTest, #qunit-userAgent, #qunit-testresult, #qunit-modulefilter {
 	margin: 0;
 	padding: 0;
 }
@@ -66,6 +66,12 @@
 	color: #5E740B;
 	background-color: #EEE;
 	overflow: hidden;
+}
+
+#qunit-filteredTest {
+	padding: 0.5em 1em 0.5em 1em;
+	background-color: #F4FF77;
+	color: #366097;
 }
 
 #qunit-userAgent {
@@ -118,8 +124,8 @@
 #qunit-tests.hidepass li.pass {
 	visibility: hidden;
 	position: absolute;
-	width:   0px;
-	height:  0px;
+	width:   0;
+	height:  0;
 	padding: 0;
 	border:  0;
 	margin:  0;
@@ -160,6 +166,10 @@
 	background-color: #FFF;
 
 	border-radius: 5px;
+}
+
+.qunit-source {
+	margin: 0.6em 0 0.3em;
 }
 
 .qunit-collapsed {

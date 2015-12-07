@@ -7,7 +7,7 @@
   display: inline-block;
   padding: .25em .4em;
   font-size: 75%;
-  font-weight: bold;
+  font-weight: $label-font-weight;
   line-height: 1;
   color: $label-color;
   text-align: center;
@@ -43,9 +43,10 @@ a.label {
 .label-pill {
   padding-right: .6em;
   padding-left: .6em;
-  border-radius: 1rem;
+  // Use a higher than normal value to ensure completely rounded edges when
+  // customizing padding or font-size on labels.
+  @include border-radius(10rem);
 }
-
 
 // Colors
 //

@@ -23,7 +23,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.0.0): tab.js
+   * Bootstrap (v4.0.0-alpha): tab.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -37,7 +37,7 @@
      */
 
     var NAME = 'tab';
-    var VERSION = '4.0.0';
+    var VERSION = '4.0.0-alpha';
     var DATA_KEY = 'bs.tab';
     var EVENT_KEY = '.' + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -240,6 +240,9 @@
             }
 
             if (typeof config === 'string') {
+              if (data[config] === undefined) {
+                throw new Error('No method named "' + config + '"');
+              }
               data[config]();
             }
           });

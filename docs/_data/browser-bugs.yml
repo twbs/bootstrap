@@ -50,16 +50,6 @@
 
 -
   browser: >
-    Firefox (Windows)
-  summary: >
-    Java applets that are descendants of elements with forced hardware acceleration using `translate3d(0,0,0)` are invisible.
-  upstream_bug: >
-    Mozilla#1048279
-  origin: >
-    Bootstrap#14124
-
--
-  browser: >
     Firefox
   summary: >
     Button elements with `width: 100%` become cropped in long tables.
@@ -77,6 +67,26 @@
     Mozilla#654072
   origin: >
     Bootstrap#793
+
+-
+  browser: >
+    Firefox
+  summary: >
+    `focus` events should not be fired at the `document` object
+  upstream_bug: >
+    Mozilla#1228802
+  origin: >
+    Bootstrap#18365
+
+-
+  browser: >
+    Firefox (Windows)
+  summary: >
+    Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
+  upstream_bug: >
+    Mozilla#1139853
+  origin: >
+    Bootstrap#15990
 
 -
   browser: >
@@ -150,6 +160,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    `table-cell` borders not overlapping despite `margin-right: -1px`
+  upstream_bug: >
+    Chromium#534750
+  origin: >
+    Bootstrap#17438, Bootstrap#14237
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
@@ -204,16 +224,6 @@
   browser: >
     Safari (OS X)
   summary: >
-    `display: table-cell;` within media query renders incorrectly when resizing the window.
-  upstream_bug: >
-    WebKit#138167, Safari#18987206
-  origin: >
-    Bootstrap#9774
-
--
-  browser: >
-    Safari (OS X)
-  summary: >
     Small font size when printing webpage with fixed-width `.container`.
   upstream_bug: >
     WebKit#138192, Safari#19435018
@@ -229,6 +239,16 @@
     WebKit#143527, Safari#21908735
   origin: >
     Bootstrap#16180
+
+-
+  browser: >
+    Safari (iPad)
+  summary: >
+    `<select>` menu on iPad causes shifting of hit-testing areas
+  upstream_bug: >
+    WebKit#150079, Safari#23082521
+  origin: >
+    Bootstrap#14975
 
 -
   browser: >
@@ -254,6 +274,16 @@
   browser: >
     Safari (iOS)
   summary: >
+    Can't move cursor to start of text after entering long string of text into `<input type="text">`
+  upstream_bug: >
+    WebKit#148061, Safari#22299624
+  origin: >
+    Bootstrap#16988
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
     `display: block` causes text of temporal `<input>`s to become vertically misaligned
   upstream_bug: >
     WebKit#139848, Safari#19434878
@@ -264,8 +294,18 @@
   browser: >
     Safari (iOS)
   summary: >
-    Tapping below `<input>`s can focus them in some cases
+    Tapping on `<body>` doesn't fire `click` events
   upstream_bug: >
-    WebKit#146244, Safari#21509310
+    WebKit#151933
   origin: >
-    Bootstrap#15968
+    Bootstrap#16028
+
+-
+  browser: >
+    Safari (iOS 9+)
+  summary: >
+    Sometimes excessive automatic zoom is applied after opening a modal, and the user isn't allowed to zoom out
+  upstream_bug: >
+    WebKit#150715
+  origin: >
+    WebKit#138201

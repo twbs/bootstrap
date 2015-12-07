@@ -11,8 +11,10 @@
   </div>
 </footer>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="{{ site.cdn.jquery }}"></script>
 <script>window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+<script src="{{ site.baseurl }}/assets/js/vendor/tether.min.js"></script>
 
 {% if site.github %}
   <script src="{{ site.baseurl }}/dist/js/bootstrap.min.js"></script>
@@ -33,7 +35,7 @@
 <script src="{{ site.baseurl }}/assets/js/ie-emulation-modes-warning.js"></script>
 
 {% if page.layout == "docs" %}
-<script src="{{ site.baseurl }}/assets/js/vendor/jekyll-search.js"></script>
+<script src="{{ site.baseurl }}/assets/js/vendor/jekyll-search.min.js"></script>
 
 <script>
 SimpleJekyllSearch.init({

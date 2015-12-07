@@ -52,6 +52,9 @@ The above example creates three equal-width columns on small, medium, large, and
 
 ## Grid options
 
+While Bootstrap uses `em`s or `rem`s for defining most sizes, `px`s are used for grid breakpoints and container widths.
+This is because the viewport width is in pixels and does not change with the [font size](https://drafts.csswg.org/mediaqueries-3/#units).
+
 See how aspects of the Bootstrap grid system work across multiple devices with a handy table.
 
 <div class="table-responsive">
@@ -59,25 +62,25 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
     <thead>
       <tr>
         <th></th>
-        <th class="text-center">
+        <th class="text-xs-center">
           Extra small<br>
-          <small>&lt;34em / 480px</small>
+          <small>&lt;544px</small>
         </th>
-        <th class="text-center">
+        <th class="text-xs-center">
           Small<br>
-          <small>&ge;34em / 480px</small>
+          <small>&ge;544px</small>
         </th>
-        <th class="text-center">
+        <th class="text-xs-center">
           Medium<br>
-          <small>&ge;45em / 720px</small>
+          <small>&ge;768px</small>
         </th>
-        <th class="text-center">
+        <th class="text-xs-center">
           Large<br>
-          <small>&ge;62em / 992px</small>
+          <small>&ge;992px</small>
         </th>
-        <th class="text-center">
+        <th class="text-xs-center">
           Extra large<br>
-          <small>&ge;75em / 1200px</small>
+          <small>&ge;1200px</small>
         </th>
       </tr>
     </thead>
@@ -90,10 +93,10 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       <tr>
         <th class="text-nowrap" scope="row">Container width</th>
         <td>None (auto)</td>
-        <td>34rem / 480px</td>
-        <td>45rem / 720px</td>
-        <td>60rem / 960px</td>
-        <td>72.25rem / 1156px</td>
+        <td>576px</td>
+        <td>720px</td>
+        <td>940px</td>
+        <td>1140px</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Class prefix</th>
@@ -109,7 +112,7 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Gutter width</th>
-        <td colspan="5">30px (15px on each side of a column)</td>
+        <td colspan="5">1.875rem / 30px (15px on each side of a column)</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Nestable</th>
@@ -140,17 +143,18 @@ $grid-breakpoints: (
   // Extra small screen / phone
   xs: 0,
   // Small screen / phone
-  sm: 34em,    // 480px
+  sm: 544px,
   // Medium screen / tablet
-  md: 48em,    // 768px
+  md: 768px,
   // Large screen / desktop
-  lg: 62em,    // 992px
+  lg: 992px,
   // Extra large screen / wide desktop
-  xl: 75em     // 1200px
+  xl: 1200px
 ) !default;
 
+
 $grid-columns:      12;
-$grid-gutter-width: 1.5rem;
+$grid-gutter-width: 1.875rem;
 {% endhighlight %}
 
 ### Mixins

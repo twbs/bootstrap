@@ -53,7 +53,7 @@ $(function () {
 
 Four options are available: top, right, bottom, and left aligned.
 
-<div class="bd-example bd-example-popover">
+<div class="bd-example bd-example-popover-static">
   <div class="popover popover-top">
     <div class="popover-arrow"></div>
     <h3 class="popover-title">Popover top</h3>
@@ -93,7 +93,7 @@ Four options are available: top, right, bottom, and left aligned.
 ## Live demo
 
 {% example html %}
-<button type="button" class="btn btn-lg btn-danger bd-popover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 {% endexample %}
 
 ### Four directions
@@ -145,7 +145,7 @@ For proper cross-browser and cross-platform behavior, you must use the `<a>` tag
 {% endcallout %}
 
 {% example html %}
-<a tabindex="0" class="btn btn-lg btn-danger bd-popover" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 {% endexample %}
 
 {% highlight js %}
@@ -282,34 +282,34 @@ Options for individual popovers can alternatively be specified through the use o
 
 ### Methods
 
-#### $().popover(options)
+#### `$().popover(options)`
 
 Initializes popovers for an element collection.
 
-#### .popover('show')
+#### `.popover('show')`
 
 Reveals an element's popover. **Returns to the caller before the popover has actually been shown** (i.e. before the `shown.bs.popover` event occurs). This is considered a "manual" triggering of the popover. Popovers whose both title and content are zero-length are never displayed.
 
 {% highlight js %}$('#element').popover('show'){% endhighlight %}
 
-#### .popover('hide')
+#### `.popover('hide')`
 
 Hides an element's popover. **Returns to the caller before the popover has actually been hidden** (i.e. before the `hidden.bs.popover` event occurs). This is considered a "manual" triggering of the popover.
 
 {% highlight js %}$('#element').popover('hide'){% endhighlight %}
 
-#### .popover('toggle')
+#### `.popover('toggle')`
 
 Toggles an element's popover. **Returns to the caller before the popover has actually been shown or hidden** (i.e. before the `shown.bs.popover` or `hidden.bs.popover` event occurs). This is considered a "manual" triggering of the popover.
 
 {% highlight js %}$('#element').popover('toggle'){% endhighlight %}
 
-#### .popover('destroy')
+#### `.popover('dispose')`
 
-Hides and destroys an element's popover. Popvoers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
+Hides and destroys an element's popover. Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
 
-{% highlight js %}$('#element').popover('destroy'){% endhighlight %}
+{% highlight js %}$('#element').popover('dispose'){% endhighlight %}
 
 ### Events
 

@@ -23,7 +23,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.0.0): carousel.js
+   * Bootstrap (v4.0.0-alpha): carousel.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -37,7 +37,7 @@
      */
 
     var NAME = 'carousel';
-    var VERSION = '4.0.0';
+    var VERSION = '4.0.0-alpha';
     var DATA_KEY = 'bs.carousel';
     var EVENT_KEY = '.' + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -137,6 +137,14 @@
           }
         }
       }, {
+        key: 'nextWhenVisible',
+        value: function nextWhenVisible() {
+          // Don't call next when the page isn't visible
+          if (!document.hidden) {
+            this.next();
+          }
+        }
+      }, {
         key: 'prev',
         value: function prev() {
           if (!this._isSliding) {
@@ -171,7 +179,7 @@
           }
 
           if (this._config.interval && !this._isPaused) {
-            this._interval = setInterval($.proxy(this.next, this), this._config.interval);
+            this._interval = setInterval($.proxy(document.visibilityState ? this.nextWhenVisible : this.next, this), this._config.interval);
           }
         }
       }, {
@@ -404,7 +412,10 @@
 
             if (typeof config === 'number') {
               data.to(config);
-            } else if (action) {
+            } else if (typeof action === 'string') {
+              if (data[action] === undefined) {
+                throw new Error('No method named "' + action + '"');
+              }
               data[action]();
             } else if (_config.interval) {
               data.pause();

@@ -23,7 +23,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.0.0): collapse.js
+   * Bootstrap (v4.0.0-alpha): collapse.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -37,7 +37,7 @@
      */
 
     var NAME = 'collapse';
-    var VERSION = '4.0.0';
+    var VERSION = '4.0.0-alpha';
     var DATA_KEY = 'bs.collapse';
     var EVENT_KEY = '.' + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -331,6 +331,9 @@
             }
 
             if (typeof config === 'string') {
+              if (data[config] === undefined) {
+                throw new Error('No method named "' + config + '"');
+              }
               data[config]();
             }
           });

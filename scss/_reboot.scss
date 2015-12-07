@@ -41,10 +41,11 @@ html {
 // and apply some conditional CSS.
 //
 // See http://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
-
-
+//
 // Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
 // `.class-name { @import "bootstrap"; }`).
+//
+// Includes future-proofed vendor prefixes as well.
 @at-root {
   @-moz-viewport      { width: device-width; }
   @-ms-viewport       { width: device-width; }
@@ -52,6 +53,7 @@ html {
   @-webkit-viewport   { width: device-width; }
   @viewport           { width: device-width; }
 }
+
 
 //
 // Reset HTML, body, and more
@@ -127,7 +129,7 @@ ul ol {
 }
 
 dt {
-  font-weight: bold;
+  font-weight: $dt-font-weight;
 }
 
 dd {
@@ -191,6 +193,8 @@ img {
   // By default, `<img>`s are `inline-block`. This assumes that, and vertically
   // centers them. This won't apply should you reset them to `block` level.
   vertical-align: middle;
+  // Note: `<img>`s are deliberately not made responsive by default.
+  // For the rationale behind this, see the comments on the `.img-fluid` class.
 }
 
 
@@ -199,12 +203,33 @@ img {
 // Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
 // for traditionally non-focusable elements with role="button"
 // see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
-// Upstream patch for normalize.css submitted: https://github.com/necolas/normalize.css/pull/379 - remove this fix once that is merged
 
 [role="button"] {
   cursor: pointer;
 }
 
+
+// Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
+//
+// In particular, unlike most other browsers, IE11+Edge on Windows 10 on touch devices and IE Mobile 10-11
+// DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
+// However, they DO support removing the click delay via `touch-action: manipulation`.
+// See:
+// * http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
+// * http://caniuse.com/#feat=css-touch-action
+// * http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
 
 //
 // Tables
@@ -234,7 +259,7 @@ th {
 //
 
 label {
-  // Allow labels can use `margin` for spacing.
+  // Allow labels to use `margin` for spacing.
   display: inline-block;
   margin-bottom: .5rem;
 }
@@ -249,6 +274,8 @@ textarea {
   // properly inherited. However, `line-height` isn't addressed there. Using this
   // ensures we don't need to unnecessarily redeclare the global font stack.
   line-height: inherit;
+  // iOS adds rounded borders by default
+  border-radius: 0;
 }
 
 textarea {
@@ -294,4 +321,9 @@ output {
 //  font-size: $font-size-base;
 //  line-height: $line-height;
 //  color: $input-color;
+}
+
+// Always hide an element with the `hidden` HTML attribute (from PureCSS).
+[hidden] {
+  display: none !important;
 }

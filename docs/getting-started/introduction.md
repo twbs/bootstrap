@@ -21,17 +21,17 @@ Looking to quickly add Bootstrap to your project? Use the Bootstrap CDN, provide
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
 
 {% highlight html %}
-<link rel="stylesheet" href="{{ site.cdn.css }}">
+<link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 {% endhighlight %}
 
 Add our JavaScript plugins and jQuery near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery first as our code depends on it.
 
 {% highlight html %}
 <script src="{{ site.cdn.jquery }}"></script>
-<script src="{{ site.cdn.js }}"></script>
+<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
-And that's it—you're your way to a fully Bootstrapped site. If you're at all unsure about the general page structure, keep reading for an example page template.
+And that's it—you're on your way to a fully Bootstrapped site. If you're at all unsure about the general page structure, keep reading for an example page template.
 
 ## Starter template
 
@@ -49,18 +49,18 @@ Put it all together and your pages should look like this:
   <head>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ site.cdn.css }}">
+    <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
   </head>
   <body>
     <h1>Hello, world!</h1>
 
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="{{ site.cdn.jquery }}"></script>
-    <script src="{{ site.cdn.js }}"></script>
+    <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
   </body>
 </html>
 {% endhighlight %}
@@ -87,7 +87,7 @@ Bootstrap requires the use of the HTML5 doctype. Without it, you'll see some fun
 Bootstrap is developed *mobile first*, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, **add the responsive viewport meta tag** to your `<head>`.
 
 {% highlight html %}
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 {% endhighlight %}
 
 You can see an example of this in action in the [starter template](#starter-template).
@@ -119,10 +119,10 @@ For improved cross-browser rendering, we use [Normalize.css](http://necolas.gith
 Stay up to date on the development of Bootstrap and reach out to the community with these helpful resources.
 
 - Follow [@getbootstrap on Twitter](https://twitter.com/getbootstrap).
-- Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
-- Join [the official Slack room](https://bootstrap-slack.herokuapp.com).
+- Read and subscribe to [The Official Bootstrap Blog]({{ site.blog }}).
+- Join [the official Slack room]({{ site.slack }}).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
-- Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
+- Implementation help may be found at Stack Overflow (tagged [`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4)).
 - Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
 
 You can also follow [@getbootstrap on Twitter](https://twitter.com/getbootstrap) for the latest gossip and awesome music videos.

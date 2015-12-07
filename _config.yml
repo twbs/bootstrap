@@ -25,7 +25,6 @@ gems:
 # Custom vars
 current_version:  4.0.0-alpha
 repo:             https://github.com/twbs/bootstrap
-sass_repo:        https://github.com/twbs/bootstrap-sass
 slack:            https://bootstrap-slack.herokuapp.com
 
 download:
@@ -37,6 +36,9 @@ expo:             http://expo.getbootstrap.com
 themes:           http://themes.getbootstrap.com
 
 cdn:
+  # See https://www.srihash.org for info on how to generate the hashes
   css:            https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css
+  css_hash:       "sha384-XXXXXXXX"
   js:             https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js
+  js_hash:        "sha384-XXXXXXXX"
   jquery:         https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js

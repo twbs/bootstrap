@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): scrollspy.js
+ * Bootstrap (v4.0.0-alpha): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const ScrollSpy = (($) => {
    */
 
   const NAME               = 'scrollspy'
-  const VERSION            = '4.0.0'
+  const VERSION            = '4.0.0-alpha'
   const DATA_KEY           = 'bs.scrollspy'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
@@ -277,6 +277,9 @@ const ScrollSpy = (($) => {
         }
 
         if (typeof config === 'string') {
+          if (data[config] === undefined) {
+            throw new Error(`No method named "${config}"`)
+          }
           data[config]()
         }
       })

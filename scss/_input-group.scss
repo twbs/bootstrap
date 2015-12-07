@@ -19,6 +19,10 @@
     // proper border colors.
     position: relative;
     z-index: 2;
+    // Bring the "active" form control to the front
+    @include hover-focus-active {
+      z-index: 3;
+    }
     @if $enable-flex {
       flex: 1;
     } @else {
@@ -87,7 +91,7 @@
   color: $input-color;
   text-align: center;
   background-color: $input-group-addon-bg;
-  border: 1px solid $input-group-addon-border-color;
+  border: $input-border-width solid $input-group-addon-border-color;
   @include border-radius($border-radius);
 
   // Sizing
@@ -156,26 +160,30 @@
   > .btn {
     position: relative;
     + .btn {
-      margin-left: -1px;
+      margin-left: (-$btn-border-width);
     }
     // Bring the "active" button to the front
     @include hover-focus-active {
-      z-index: 2;
+      z-index: 3;
     }
   }
 
-  // Negative margin to only have a 1px border between the two
+  // Negative margin to only have a single, shared border between the two
   &:first-child {
     > .btn,
     > .btn-group {
-      margin-right: -1px;
+      margin-right: (-$btn-border-width);
     }
   }
   &:last-child {
     > .btn,
     > .btn-group {
       z-index: 2;
-      margin-left: -1px;
+      margin-left: (-$btn-border-width);
+      // Because specificity
+      @include hover-focus-active {
+        z-index: 3;
+      }
     }
   }
 }

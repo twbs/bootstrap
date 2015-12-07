@@ -47,78 +47,30 @@
 
   // Flex column reordering
 
-  .col-xs-first { order: -1; }
-  .col-xs-last { order: 1; }
-
-  @include media-breakpoint-up(sm) {
-    .col-sm-first { order: -1; }
-    .col-sm-last { order: 1; }
-  }
-  @include media-breakpoint-up(md) {
-    .col-md-first { order: -1; }
-    .col-md-last { order: 1; }
-  }
-  @include media-breakpoint-up(lg) {
-    .col-lg-first { order: -1; }
-    .col-lg-last { order: 1; }
-  }
-  @include media-breakpoint-up(xl) {
-    .col-xl-first { order: -1; }
-    .col-xl-last { order: 1; }
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .col-#{$breakpoint}-first { order: -1; }
+      .col-#{$breakpoint}-last  { order: 1; }
+    }
   }
 
   // Alignment for every column in row
 
-  .row-xs-top    { align-items: flex-start; }
-  .row-xs-center { align-items: center; }
-  .row-xs-bottom { align-items: flex-end; }
-
-  @include media-breakpoint-up(sm) {
-    .row-sm-top    { align-items: flex-start; }
-    .row-sm-center { align-items: center; }
-    .row-sm-bottom { align-items: flex-end; }
-  }
-  @include media-breakpoint-up(md) {
-    .row-md-top    { align-items: flex-start; }
-    .row-md-center { align-items: center; }
-    .row-md-bottom { align-items: flex-end; }
-  }
-  @include media-breakpoint-up(lg) {
-    .row-lg-top    { align-items: flex-start; }
-    .row-lg-center { align-items: center; }
-    .row-lg-bottom { align-items: flex-end; }
-  }
-  @include media-breakpoint-up(xl) {
-    .row-xl-top    { align-items: flex-start; }
-    .row-xl-center { align-items: center; }
-    .row-xl-bottom { align-items: flex-end; }
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .row-#{$breakpoint}-top    { align-items: flex-start; }
+      .row-#{$breakpoint}-center { align-items: center; }
+      .row-#{$breakpoint}-bottom { align-items: flex-end; }
+    }
   }
 
   // Alignment per column
 
-  .col-xs-top    { align-self: flex-start; }
-  .col-xs-center { align-self: center; }
-  .col-xs-bottom { align-self: flex-end; }
-
-  @include media-breakpoint-up(sm) {
-    .col-sm-top    { align-self: flex-start; }
-    .col-sm-center { align-self: center; }
-    .col-sm-bottom { align-self: flex-end; }
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      .col-#{$breakpoint}-top    { align-self: flex-start; }
+      .col-#{$breakpoint}-center { align-self: center; }
+      .col-#{$breakpoint}-bottom { align-self: flex-end; }
+    }
   }
-  @include media-breakpoint-up(md) {
-    .col-md-top    { align-self: flex-start; }
-    .col-md-center { align-self: center; }
-    .col-md-bottom { align-self: flex-end; }
-  }
-  @include media-breakpoint-up(lg) {
-    .col-lg-top    { align-self: flex-start; }
-    .col-lg-center { align-self: center; }
-    .col-lg-bottom { align-self: flex-end; }
-  }
-  @include media-breakpoint-up(xl) {
-    .col-xl-top    { align-self: flex-start; }
-    .col-xl-center { align-self: center; }
-    .col-xl-bottom { align-self: flex-end; }
-  }
-
 }

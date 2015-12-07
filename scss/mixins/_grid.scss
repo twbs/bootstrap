@@ -3,11 +3,13 @@
 // Generate semantic grid columns with these mixins.
 
 @mixin make-container($gutter: $grid-gutter-width) {
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
   padding-left:  ($gutter / 2);
   padding-right: ($gutter / 2);
-  @include clearfix();
+  @if not $enable-flex {
+    @include clearfix();
+  }
 }
 
 
@@ -33,9 +35,7 @@
 
 @mixin make-col($gutter: $grid-gutter-width) {
   position: relative;
-  @if $enable-flex {
-    // Do nothing
-  } @else {
+  @if not $enable-flex {
     float: left;
   }
   min-height: 1px;

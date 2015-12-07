@@ -4,7 +4,7 @@ title: Utility classes
 group: components
 ---
 
-Bootstrap includes dozens of utilities—classes with a single purpose. They're designed to reduce the frequency of highly repetitive declarations in your CSS down while allowing for quick and easy development.
+Bootstrap includes dozens of utilities—classes with a single purpose. They're designed to reduce the frequency of highly repetitive declarations in your CSS while allowing for quick and easy development.
 
 ## Contents
 
@@ -94,11 +94,21 @@ Assign `margin` or `padding` to an element or a subset of its sides with shortha
 Easily realign text to components with text alignment classes.
 
 {% example html %}
-<p class="text-left">Left aligned text.</p>
-<p class="text-center">Center aligned text.</p>
-<p class="text-right">Right aligned text.</p>
 <p class="text-justify">Justified text.</p>
 <p class="text-nowrap">No wrap text.</p>
+{% endexample %}
+
+For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
+
+{% example html %}
+<p class="text-xs-left">Left aligned text on all viewport sizes.</p>
+<p class="text-xs-center">Center aligned text on all viewport sizes.</p>
+<p class="text-xs-right">Right aligned text on all viewport sizes.</p>
+
+<p class="text-sm-left">Left aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-left">Left aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-left">Left aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-left">Left aligned text on viewports sized XL (extra-large) or wider.</p>
 {% endexample %}
 
 ## Text transform
@@ -108,7 +118,17 @@ Transform text in components with text capitalization classes.
 {% example html %}
 <p class="text-lowercase">Lowercased text.</p>
 <p class="text-uppercase">Uppercased text.</p>
-<p class="text-capitalize">Capitalized text.</p>
+<p class="text-capitalize">CapiTaliZed text.</p>
+{% endexample %}
+
+## Font weight and italics
+
+Quickly change the weight (boldness) of text or italicize text.
+
+{% example html %}
+<p class="font-weight-bold">Bold text.</p>
+<p class="font-weight-normal">Normal weight text.</p>
+<p class="font-italic">Italicized text.</p>
 {% endexample %}
 
 ## Contextual colors and backgrounds
@@ -122,6 +142,17 @@ Convey meaning through color with a handful of emphasis utility classes. These m
 <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
 <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
 <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+{% endexample %}
+
+Contextual text classes also work well on anchors with the provided hover and focus states.
+
+{% example html %}
+<a href="#" class="text-muted">Muted link</a>
+<a href="#" class="text-primary">Primary link</a>
+<a href="#" class="text-success">Success link</a>
+<a href="#" class="text-info">Info link</a>
+<a href="#" class="text-warning">Warning link</a>
+<a href="#" class="text-danger">Danger link</a>
 {% endexample %}
 
 Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.
@@ -149,34 +180,33 @@ Ensure that any meaning conveyed through color is also conveyed in a format that
 
 ## Close icon
 
-Use a generic close icon for dismissing content like modals and alerts. **Be sure to include screen reader text when you can** as we've done with `.sr-only`.
+Use a generic close icon for dismissing content like modals and alerts. **Be sure to include text for screen readers**, as we've done with `aria-label`.
 
 {% example html %}
 <button type="button" class="close" aria-label="Close">
   <span aria-hidden="true">&times;</span>
-  <span class="sr-only">Close</span>
 </button>
 {% endexample %}
 
-## Floats
+## Responsive floats
 
-Float an element to the left or right with a class. `!important` is included to avoid specificity issues. Classes can also be used as mixins.
+These utility classes float an element to the left or right, or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float). `!important` is included to avoid specificity issues. These use the same viewport width breakpoints as the grid system.
+
+Two similar non-responsive mixins (`pull-left` and `pull-right`) are also available.
 
 {% example html %}
-<div class="pull-left">Float left</div>
-<div class="pull-right">Float right</div>
+<div class="pull-xs-left">Float left on all viewport sizes</div>
+<div class="pull-xs-right">Float right on all viewport sizes</div>
+<div class="pull-xs-none">Don't float on all viewport sizes</div>
+
+<div class="pull-sm-left">Float left on viewports sized SM (small) or wider</div>
+<div class="pull-md-left">Float left on viewports sized MD (medium) or wider</div>
+<div class="pull-lg-left">Float left on viewports sized LG (large) or wider</div>
+<div class="pull-xl-left">Float left on viewports sized XL (extra-large) or wider</div>
 {% endexample %}
 
 {% highlight scss %}
-// Classes
-.pull-left {
-  float: left !important;
-}
-.pull-right {
-  float: right !important;
-}
-
-// Usage as mixins
+// Related simple non-responsive mixins
 .element {
   @include pull-left;
 }
@@ -232,16 +262,6 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 }
 {% endhighlight %}
 
-## Hidden content
-
-Hide any HTML element with the `[hidden]` attribute. Previously, v3.x included a `.hidden` class that forced toggled content. However, we removed it due to conflicts with jQuery's `hide()` function. It's taken from [PureCSS](http://purecss.io). While `[hidden]` isn't natively supported by IE9-10, declaring it `display: none` in our CSS gets around that problem.
-
-Furthermore, `.invisible` can be used to toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
-
-{% highlight html %}
-<input type="text" hidden>
-{% endhighlight %}
-
 ## Invisible content
 
 The `.invisible` class can be used to toggle only the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
@@ -262,7 +282,7 @@ The `.invisible` class can be used to toggle only the visibility of an element, 
 }
 {% endhighlight %}
 
-## Screen readers
+## Screen readers and keyboard users
 
 Hide an element to all devices **except screen readers** with `.sr-only`. Combine `.sr-only` with `.sr-only-focusable` to show the element again when it's focused (e.g. by a keyboard-only user). Can also be used as mixins.
 
@@ -326,6 +346,11 @@ Aspect ratios can be customized with modifier classes.
 
 <!-- 4:3 aspect ratio -->
 <div class="embed-responsive embed-responsive-4by3">
+  <iframe class="embed-responsive-item" src="..."></iframe>
+</div>
+
+<!-- 1:1 aspect ratio -->
+<div class="embed-responsive embed-responsive-1by1">
   <iframe class="embed-responsive-item" src="..."></iframe>
 </div>
 {% endhighlight %}

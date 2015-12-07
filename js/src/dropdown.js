@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): dropdown.js
+ * Bootstrap (v4.0.0-alpha): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,18 +18,18 @@ const Dropdown = (($) => {
    */
 
   const NAME                = 'dropdown'
-  const VERSION             = '4.0.0'
+  const VERSION             = '4.0.0-alpha'
   const DATA_KEY            = 'bs.dropdown'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
 
   const Event = {
-    HIDE             : `hide${EVENT_KEY}`,
-    HIDDEN           : `hidden${EVENT_KEY}`,
-    SHOW             : `show${EVENT_KEY}`,
-    SHOWN            : `shown${EVENT_KEY}`,
-    CLICK            : `click${EVENT_KEY}`,
+    HIDE             : `hide${EVENT_KEY}`,
+    HIDDEN           : `hidden${EVENT_KEY}`,
+    SHOW             : `show${EVENT_KEY}`,
+    SHOWN            : `shown${EVENT_KEY}`,
+    CLICK            : `click${EVENT_KEY}`,
     CLICK_DATA_API   : `click${EVENT_KEY}${DATA_API_KEY}`,
     KEYDOWN_DATA_API : `keydown${EVENT_KEY}${DATA_API_KEY}`
   }
@@ -143,6 +143,9 @@ const Dropdown = (($) => {
         }
 
         if (typeof config === 'string') {
+          if (data[config] === undefined) {
+            throw new Error(`No method named "${config}"`)
+          }
           data[config].call(this)
         }
       })

@@ -4,29 +4,29 @@
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: $headings-margin-bottom;
   font-family: $headings-font-family;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
   color: $headings-color;
 }
 
-h1, .h1,
-h2, .h2,
-h3, .h3 {
-  margin-bottom: $headings-margin-bottom;
-}
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-  margin-bottom: $headings-margin-bottom;
-}
+h1 { font-size: $font-size-h1; }
+h2 { font-size: $font-size-h2; }
+h3 { font-size: $font-size-h3; }
+h4 { font-size: $font-size-h4; }
+h5 { font-size: $font-size-h5; }
+h6 { font-size: $font-size-h6; }
 
-h1, .h1 { font-size: $font-size-h1; }
-h2, .h2 { font-size: $font-size-h2; }
-h3, .h3 { font-size: $font-size-h3; }
-h4, .h4 { font-size: $font-size-h4; }
-h5, .h5 { font-size: $font-size-h5; }
-h6, .h6 { font-size: $font-size-h6; }
+// These declarations are kept separate from and placed after
+// the previous tag-based declarations so that the classes beat the tags in
+// the CSS cascade, and thus <h1 class="h2"> will be styled like an h2.
+.h1 { font-size: $font-size-h1; }
+.h2 { font-size: $font-size-h2; }
+.h3 { font-size: $font-size-h3; }
+.h4 { font-size: $font-size-h4; }
+.h5 { font-size: $font-size-h5; }
+.h6 { font-size: $font-size-h6; }
 
 .lead {
   font-size: $lead-font-size;
@@ -85,22 +85,19 @@ mark,
 // Lists
 //
 
-// Unstyled keeps list items block level, just removes default browser padding and list-style
 .list-unstyled {
-  padding-left: 0;
-  list-style: none;
+  @include list-unstyled;
 }
 
 // Inline turns list items into inline-block
 .list-inline {
-  padding-left: 0;
-  margin-left: -5px;
-  list-style: none;
+  @include list-unstyled;
+  margin-left: -$list-inline-padding;
 
   > li {
     display: inline-block;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: $list-inline-padding;
+    padding-left: $list-inline-padding;
   }
 }
 
@@ -164,24 +161,4 @@ mark,
       content: "\00A0 \2014"; // nbsp, em dash
     }
   }
-}
-
-//
-// Figures
-//
-
-.figure {
-  // Ensures the caption's text aligns with the image.
-  display: inline-block;
-
-  > img {
-    @extend .img-fluid;
-    margin-bottom: ($spacer-y / 2);
-    line-height: 1;
-  }
-}
-
-.figure-caption {
-  font-size: 90%;
-  color: $gray-light;
 }

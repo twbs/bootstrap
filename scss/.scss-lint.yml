@@ -381,6 +381,9 @@ linters:
     enabled: true
     extra_properties: []
 
+  PseudoElement:
+    enabled: true
+
   QualifyingElement:
     enabled: false
     allow_element_with_attribute: false

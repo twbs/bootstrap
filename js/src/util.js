@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): util.js
+ * Bootstrap (v4.0.0-alpha): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -99,7 +99,7 @@ const Util = (($) => {
 
     getUID(prefix) {
       do {
-        prefix += ~~(Math.random() * 1000000)
+        prefix += ~~(Math.random() * 1000000) // "~~" acts like a faster Math.floor() here
       } while (document.getElementById(prefix))
       return prefix
     },

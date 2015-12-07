@@ -15,9 +15,9 @@ The navbar is a simple wrapper for positioning branding, navigation, and other e
 
 Here's what you need to know before getting started with the navbar:
 
-- Navbars require a wrapping `.navbar` and a color scheme class (either `.navbar-default` or `.navbar-inverse`).
+- Navbars require a wrapping `.navbar` and a [color scheme](#color-schemes).
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
-- Use `.pull-left` and `.pull-right` to quickly align sub-components.
+- Use `.pull-*-left` and `.pull-*-right` to quickly align sub-components.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 
 ## Supported content
@@ -26,8 +26,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 
 - `.navbar-brand` for your company, product, or project name
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
-- `.navbar-form` for vertically centering default-sized inputs and buttons.
-- `.navbar-toggler` for use with our collapse plugin and other navigation toggling behaviors.
+- `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsing-content) behaviors.
 
 Here's an example of all the sub-components included in a default, light navbar:
 
@@ -48,12 +47,64 @@ Here's an example of all the sub-components included in a default, light navbar:
       <a class="nav-link" href="#">About</a>
     </li>
   </ul>
-  <form class="form-inline navbar-form pull-right">
+  <form class="form-inline pull-xs-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-success-outline" type="submit">Search</button>
   </form>
 </nav>
 {% endexample %}
+
+### Brand
+
+The `.navbar-brand` can be applied to most elements, but an anchor works best.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Navbar</a>
+</nav>
+
+<nav class="navbar navbar-light bg-faded">
+  <h1 class="navbar-brand">Navbar</h1>
+</nav>
+
+{% endexample %}
+
+### Nav
+
+Navbar navigation is similar to our regular nav options—use the `.nav` base class with a modifier to achieve a particular look. In this case you'll want `.nav.navbar-nav`.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <ul class="nav navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Features</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Pricing</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li>
+  </ul>
+</nav>
+{% endexample %}
+
+And because we use classes for our navs, you can omit the list-based approach entirely if you like.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <div class="nav navbar-nav">
+    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+    <a class="nav-item nav-link" href="#">Features</a>
+    <a class="nav-item nav-link" href="#">Pricing</a>
+    <a class="nav-item nav-link" href="#">About</a>
+  </div>
+</nav>
+{% endexample %}
+
 
 ## Color schemes
 
@@ -78,7 +129,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline navbar-form pull-right">
+    <form class="form-inline pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-info-outline" type="submit">Search</button>
     </form>
@@ -99,7 +150,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline navbar-form pull-right">
+    <form class="form-inline pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-secondary-outline" type="submit">Search</button>
     </form>
@@ -120,7 +171,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline navbar-form pull-right">
+    <form class="form-inline pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-primary-outline" type="submit">Search</button>
     </form>
@@ -143,7 +194,7 @@ Here are some examples to show what we mean.
 
 ## Containers
 
-Although it's not required, you can wrap a navbar in a `.container` to center it on a page or add one within to only center the contents of the navbar.
+Although it's not required, you can wrap a navbar in a `.container` to center it on a page or add one within to only center the contents of a [fixed or static top navbar](#placement).
 
 {% example html %}
 <div class="container">

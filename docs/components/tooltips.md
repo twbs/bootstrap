@@ -15,7 +15,7 @@ Inspired by the excellent Tipsy jQuery plugin written by Jason Frame. Tooltips a
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on on the 3rd party library [Tether](http://github.hubspot.com/tether/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for tooltips to work!
+- Tooltips rely on the 3rd party library [Tether](http://github.hubspot.com/tether/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for tooltips to work!
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -48,7 +48,7 @@ Hover over the links below to see tooltips:
 
 Four options are available: top, right, bottom, and left aligned.
 
-<div class="bd-example bd-example-tooltip">
+<div class="bd-example bd-example-tooltip-static">
   <div class="tooltip top" role="tooltip">
     <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
@@ -219,7 +219,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <tr>
         <td>constraints</td>
         <td>Array</td>
-        <td>'hover focus'</td>
+        <td>[]</td>
         <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">constraint docs</a>.</td>
       </tr>
       <tr>
@@ -240,33 +240,33 @@ Options for individual tooltips can alternatively be specified through the use o
 
 ### Methods
 
-#### $().tooltip(options)
+#### `$().tooltip(options)`
 
 Attaches a tooltip handler to an element collection.
 
-#### .tooltip('show')
+#### `.tooltip('show')`
 
 Reveals an element's tooltip. **Returns to the caller before the tooltip has actually been shown** (i.e. before the `shown.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip. Tooltips with zero-length titles are never displayed.
 
 {% highlight js %}$('#element').tooltip('show'){% endhighlight %}
 
-#### .tooltip('hide')
+#### `.tooltip('hide')`
 
 Hides an element's tooltip. **Returns to the caller before the tooltip has actually been hidden** (i.e. before the `hidden.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip.
 
 {% highlight js %}$('#element').tooltip('hide'){% endhighlight %}
 
-#### .tooltip('toggle')
+#### `.tooltip('toggle')`
 
 Toggles an element's tooltip. **Returns to the caller before the tooltip has actually been shown or hidden** (i.e. before the `shown.bs.tooltip` or `hidden.bs.tooltip` event occurs). This is considered a "manual" triggering of the tooltip.
 
 {% highlight js %}$('#element').tooltip('toggle'){% endhighlight %}
 
-#### .tooltip('destroy')
+#### `.tooltip('dispose')`
 
 Hides and destroys an element's tooltip. Tooltips that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
-{% highlight js %}$('#element').tooltip('destroy'){% endhighlight %}
+{% highlight js %}$('#element').tooltip('dispose'){% endhighlight %}
 
 ### Events
 
