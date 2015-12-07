@@ -54,12 +54,10 @@
 // Example usage: change the default blue border and shadow to white for better
 // contrast against a dark gray background.
 @mixin form-control-focus() {
-  &:focus {
-    border-color: $input-border-focus;
-    outline: none;
-    $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $input-box-shadow-focus;
-    @include box-shadow($shadow);
-  }
+  border-color: $input-border-focus;
+  outline: none;
+  $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $input-box-shadow-focus;
+  @include box-shadow($shadow);
 }
 
 // Form control sizing

@@ -57,3 +57,10 @@
     }
   }
 }
+
+@mixin focus-active {
+  &:focus,
+  &:active {
+    @content
+  }
+}
