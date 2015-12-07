@@ -75,12 +75,12 @@
   }
 
   input:checked ~ .c-indicator {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik02LjQgMWwtLjcuNy0yLjggMi44LS44LS44LS43LS43TDAgNC40bC43LjcgMS41IDEuNS43LjcuNy0uNyAzLjUtMy41LjctLjdMNi40IDF6Ii8+PC9zdmc+);
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
   }
 
   input:indeterminate ~ .c-indicator {
     background-color: #0074d9;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4IDgiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDN2Mmg4VjNIMHoiLz48L3N2Zz4=);
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23fff' d='M0 2h4'/%3E%3C/svg%3E");
     @include box-shadow(none);
   }
 }
@@ -95,7 +95,7 @@
   }
 
   input:checked ~ .c-indicator {
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii00IC00IDggOCI+PGNpcmNsZSByPSIzIiBmaWxsPSIjZmZmIi8+PC9zdmc+);
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E");
   }
 }
 
@@ -135,12 +135,8 @@
   padding: .375rem 1.75rem .375rem .75rem;
   padding-right: .75rem \9;
   vertical-align: middle;
-<<<<<<< HEAD
-	background: #fff url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0IDUiPjxwYXRoIGZpbGw9IiMzMzMiIGQ9Ik0yIDBMMCAyaDR6bTAgNUwwIDNoNHoiLz48L3N2Zz4=) no-repeat right .75rem center;
-=======
-  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC) no-repeat right .75rem center;
+  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right .75rem center;
   background-image: none \9;
->>>>>>> twbs/v4-dev
   background-size: 8px 10px;
   border: $input-border-width solid $input-border-color;
   // Use vendor prefixes as `appearance` isn't part of the CSS spec.
