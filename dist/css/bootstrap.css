@@ -5728,6 +5728,18 @@ button.close {
   text-transform: capitalize !important;
 }
 
+.font-normal {
+  font-weight: normal;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-italic {
+  font-style: normal;
+}
+
 .text-muted {
   color: #818a91;
 }
