@@ -18,19 +18,19 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
 {% example html %}
 <nav>
   <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
@@ -46,21 +46,21 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 {% example html %}
 <nav>
   <ul class="pagination">
-    <li class="disabled">
-      <a href="#" aria-label="Previous">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li class="active">
-      <a href="#">1 <span class="sr-only">(current)</span></a>
+    <li class="page-item active">
+      <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
     </li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
@@ -74,13 +74,13 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
 {% example html %}
 <nav>
   <ul class="pagination">
-    <li class="disabled">
-      <span aria-label="Previous">
+    <li class="page-item disabled">
+      <span class="page-link" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </span>
     </li>
-    <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+    <li class="page-item active"><span class="page-link">1 <span class="sr-only">(current)</span></span></li>
   </ul>
 </nav>
 {% endexample %}
@@ -93,17 +93,17 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {% example html %}
 <nav>
   <ul class="pagination pagination-lg">
-    <li>
-      <a href="#" aria-label="Previous">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li>
-      <a href="#" aria-label="Next">
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
@@ -115,17 +115,17 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {% example html %}
 <nav>
   <ul class="pagination pagination-sm">
-    <li>
-      <a href="#" aria-label="Previous">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li>
-      <a href="#" aria-label="Next">
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
