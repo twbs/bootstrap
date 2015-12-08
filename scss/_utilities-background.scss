@@ -13,7 +13,12 @@
   background-color: $gray-lightest;
 }
 
-@include bg-variant('.bg-primary', $brand-primary);
+@include bg-variant('.bg-primary-100', $brand-primary-100);
+@include bg-variant('.bg-primary-300', $brand-primary-300);
+@include bg-variant('.bg-primary-500', $brand-primary-500);
+@include bg-variant('.bg-primary',     $brand-primary);
+@include bg-variant('.bg-primary-700', $brand-primary-700);
+@include bg-variant('.bg-primary-900', $brand-primary-900);
 
 @include bg-variant('.bg-success', $brand-success);
 
@@ -22,3 +27,10 @@
 @include bg-variant('.bg-warning', $brand-warning);
 
 @include bg-variant('.bg-danger', $brand-danger);
+
+@include bg-variant('.bg-gray-100', $gray-100);
+@include bg-variant('.bg-gray-300', $gray-300);
+@include bg-variant('.bg-gray-500', $gray-500);
+@include bg-variant('.bg-gray',     $gray);
+@include bg-variant('.bg-gray-700', $gray-700);
+@include bg-variant('.bg-gray-900', $gray-900);

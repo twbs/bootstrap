@@ -26,11 +26,25 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
-$gray-dark:                 #373a3c !default;
-$gray:                      #55595c !default;
-$gray-light:                #818a91 !default;
-$gray-lighter:              #eceeef !default;
-$gray-lightest:             #f7f7f9 !default;
+$gray-base:                 #000;
+
+$gray-lightest:             lighten($gray-base, 93%) !default;
+$gray-lighter:              lighten($gray-base, 72%) !default;
+$gray-light:                lighten($gray-base, 46%) !default;
+$gray:                      lighten($gray-base, 33%) !default;
+$gray-dark:                 lighten($gray-base, 20%) !default;
+$gray-darker:               lighten($gray-base, 13%) !default;
+$gray-darkest:              lighten($gray-base,  5%) !default;
+
+
+$gray-100:                  $gray-lightest !default;
+$gray-300:                  $gray-lighter !default;
+$gray-400:                  $gray-light !default;
+$gray-500:                  $gray !default;
+$gray-600:                  $gray-dark !default;
+$gray-700:                  $gray-darker !default;
+$gray-900:                  $gray-darkest !default;
+
 
 $brand-primary:             #0275d8 !default;
 $brand-success:             #5cb85c !default;
@@ -38,6 +52,12 @@ $brand-info:                #5bc0de !default;
 $brand-warning:             #f0ad4e !default;
 $brand-danger:              #d9534f !default;
 
+
+$brand-primary-100:         lighten($brand-primary,22%) !default;
+$brand-primary-300:         lighten($brand-primary,10%) !default;
+$brand-primary-500:         $brand-primary !default;
+$brand-primary-700:         darken($brand-primary,10%) !default;
+$brand-primary-900:         darken($brand-primary,22%) !default;
 
 // Options
 //
