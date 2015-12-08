@@ -643,20 +643,14 @@ mark,
   border-left: .25rem solid #eceeef;
 }
 
-.blockquote p:last-child,
-.blockquote ul:last-child,
-.blockquote ol:last-child {
-  margin-bottom: 0;
-}
-
-.blockquote footer {
+.blockquote-footer {
   display: block;
   font-size: 80%;
   line-height: 1.5;
   color: #818a91;
 }
 
-.blockquote footer::before {
+.blockquote-footer::before {
   content: "\2014 \00A0";
 }
 
@@ -668,11 +662,11 @@ mark,
   border-left: 0;
 }
 
-.blockquote-reverse footer::before {
+.blockquote-reverse .blockquote-footer::before {
   content: "";
 }
 
-.blockquote-reverse footer::after {
+.blockquote-reverse .blockquote-footer::after {
   content: "\00A0 \2014";
 }
 
