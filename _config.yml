@@ -20,6 +20,7 @@ exclude:          [assets/scss/]
 
 gems:
   - jekyll-redirect-from
+  - jekyll-seo-tag
   - jekyll-sitemap
 
 # Custom vars
@@ -45,3 +46,10 @@ cdn:
   jquery_hash:    "sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx"
   tether:         https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js
   tether_hash:    "sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
+twitter:
+  username: getbootstrap
+
+social:
+  type: organization
+  name: twbs
+  links: ["https://www.facebook.com/getbootstrap/", "https://twitter.com/getbootstrap"]
