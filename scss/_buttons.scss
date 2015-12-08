@@ -160,7 +160,7 @@ fieldset[disabled] a.btn {
 
 // Vertically space out multiple block buttons
 .btn-block + .btn-block {
-  margin-top: 5px;
+  margin-top: $btn-block-spacing-y;
 }
 
 // Specificity overrides
