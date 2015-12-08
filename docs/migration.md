@@ -109,6 +109,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Renamed `.previous` and `.next` to `.pager-prev` and `.pager-next`.
 
+### Pagination
+
+- Explicit classes (`.page-item`, `.page-link`) are now required on the descendants of `.pagination`s
+
 ### Panels, thumbnails, and wells
 
 Dropped entirely for the new card component.
