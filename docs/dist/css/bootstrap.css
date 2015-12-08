@@ -333,6 +333,10 @@ body {
   background-color: #fff;
 }
 
+[tabindex="-1"]:focus {
+  outline: none !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: .5rem;
@@ -447,6 +451,11 @@ th {
 label {
   display: inline-block;
   margin-bottom: .5rem;
+}
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
 }
 
 input,
