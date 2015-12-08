@@ -2,7 +2,7 @@
 
 @mixin bg-variant($parent, $color) {
   #{$parent} {
-    color: #fff !important;
+    color: contrast-color($color,$gray-dark,$gray-lightest) !important;
     background-color: $color !important;
   }
   a#{$parent} {
