@@ -125,24 +125,24 @@ mark,
   margin-bottom: $spacer;
   font-size: $blockquote-font-size;
   border-left: .25rem solid $blockquote-border-color;
+}
 
-  p,
-  ul,
-  ol {
-    &:last-child {
-      margin-bottom: 0;
-    }
+.blockquote-text,
+.blockquote-list // ul, ol
+ {
+  &:last-child {
+    margin-bottom: 0;
   }
+}
 
-  footer {
-    display: block;
-    font-size: 80%; // back to default font-size
-    line-height: $line-height;
-    color: $blockquote-small-color;
+.blockquote-footer {
+  display: block;
+  font-size: 80%; // back to default font-size
+  line-height: $line-height;
+  color: $blockquote-small-color;
 
-    &::before {
-      content: "\2014 \00A0"; // em dash, nbsp
-    }
+  &::before {
+    content: "\2014 \00A0"; // em dash, nbsp
   }
 }
 
@@ -153,12 +153,13 @@ mark,
   text-align: right;
   border-right: .25rem solid $blockquote-border-color;
   border-left: 0;
+}
 
-  // Account for citation
-  footer {
-    &::before { content: ""; }
-    &::after {
-      content: "\00A0 \2014"; // nbsp, em dash
-    }
+.blockquote-reverse .blockquote-footer {
+  &::before {
+    content: "";
+  }
+  &::after {
+    content: "\00A0 \2014"; // nbsp, em dash
   }
 }
