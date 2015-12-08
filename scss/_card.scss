@@ -93,19 +93,39 @@
 //
 
 .card-primary {
-  @include card-variant($brand-primary);
+  @include card-variant($brand-primary, $brand-primary);
 }
 .card-success {
-  @include card-variant($brand-success);
+  @include card-variant($brand-success, $brand-success);
 }
 .card-info {
-  @include card-variant($brand-info);
+  @include card-variant($brand-info, $brand-info);
 }
 .card-warning {
-  @include card-variant($brand-warning);
+  @include card-variant($brand-warning, $brand-warning);
 }
 .card-danger {
-  @include card-variant($brand-danger);
+  @include card-variant($brand-danger, $brand-danger);
+}
+
+// Remove all backgrounds
+.card-primary-outline {
+  @include card-outline-variant($btn-primary-bg);
+}
+.card-secondary-outline {
+  @include card-outline-variant($btn-secondary-border);
+}
+.card-info-outline {
+  @include card-outline-variant($btn-info-bg);
+}
+.card-success-outline {
+  @include card-outline-variant($btn-success-bg);
+}
+.card-warning-outline {
+  @include card-outline-variant($btn-warning-bg);
+}
+.card-danger-outline {
+  @include card-outline-variant($btn-danger-bg);
 }
 
 //
@@ -113,28 +133,8 @@
 //
 
 .card-inverse {
-  .card-header,
-  .card-footer {
-    border-bottom: $card-border-width solid rgba(255,255,255,.2);
-  }
-  .card-header,
-  .card-footer,
-  .card-title,
-  .card-blockquote {
-    color: #fff;
-  }
-  .card-link,
-  .card-text,
-  .card-blockquote > footer {
-    color: rgba(255,255,255,.65);
-  }
-  .card-link {
-    @include hover-focus {
-      color: $card-link-hover-color;
-    }
-  }
+  @include card-inverse;
 }
-
 
 //
 // Blockquote
