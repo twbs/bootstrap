@@ -387,7 +387,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@padding-xs-vertical">@padding-xs-vertical</label>
-    <input id="input-@padding-xs-vertical" type="text" value="1px" data-var="@padding-xs-vertical" class="form-control"/>
+    <input id="input-@padding-xs-vertical" type="text" value="2px" data-var="@padding-xs-vertical" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@padding-xs-horizontal">@padding-xs-horizontal</label>
@@ -1107,6 +1107,10 @@
 <h2 id="navbar">Navbar</h2>
 <div class="row">
   <div class="col-xs-4">
+    <label for="input-@navbar-font-size">@navbar-font-size</label>
+    <input id="input-@navbar-font-size" type="text" value="14px" data-var="@navbar-font-size" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@navbar-height">@navbar-height</label>
     <input id="input-@navbar-height" type="text" value="56px" data-var="@navbar-height" class="form-control"/>
   </div>
@@ -1114,11 +1118,11 @@
     <label for="input-@navbar-margin-bottom">@navbar-margin-bottom</label>
     <input id="input-@navbar-margin-bottom" type="text" value="40px" data-var="@navbar-margin-bottom" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@navbar-border-radius">@navbar-border-radius</label>
     <input id="input-@navbar-border-radius" type="text" value="@border-radius-base" data-var="@navbar-border-radius" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@navbar-padding-horizontal">@navbar-padding-horizontal</label>
     <input id="input-@navbar-padding-horizontal" type="text" value="floor((@grid-gutter-width / 2))" data-var="@navbar-padding-horizontal" class="form-control"/>
@@ -1127,6 +1131,7 @@
     <label for="input-@navbar-padding-vertical">@navbar-padding-vertical</label>
     <input id="input-@navbar-padding-vertical" type="text" value="((@navbar-height - @line-height-computed) / 2)" data-var="@navbar-padding-vertical" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@navbar-collapse-max-height">@navbar-collapse-max-height</label>
     <input id="input-@navbar-collapse-max-height" type="text" value="340px" data-var="@navbar-collapse-max-height" class="form-control"/>
@@ -1289,7 +1294,7 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@nav-link-padding">@nav-link-padding</label>
-    <input id="input-@nav-link-padding" type="text" value="8px 16px" data-var="@nav-link-padding" class="form-control"/>
+    <input id="input-@nav-link-padding" type="text" value="8px 24px" data-var="@nav-link-padding" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@nav-link-hover-color">@nav-link-hover-color</label>
@@ -1339,11 +1344,11 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@nav-tabs-active-link-hover-color">@nav-tabs-active-link-hover-color</label>
-    <input id="input-@nav-tabs-active-link-hover-color" type="text" value="@brand-light-blue-minus-10" data-var="@nav-tabs-active-link-hover-color" class="form-control"/>
+    <input id="input-@nav-tabs-active-link-hover-color" type="text" value="@brand-light-blue" data-var="@nav-tabs-active-link-hover-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@nav-tabs-active-link-hover-border-color">@nav-tabs-active-link-hover-border-color</label>
-    <input id="input-@nav-tabs-active-link-hover-border-color" type="text" value="@brand-light-blue-minus-10" data-var="@nav-tabs-active-link-hover-border-color" class="form-control"/>
+    <input id="input-@nav-tabs-active-link-hover-border-color" type="text" value="@brand-light-blue" data-var="@nav-tabs-active-link-hover-border-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@nav-tabs-justified-link-border-color">@nav-tabs-justified-link-border-color</label>
@@ -1441,7 +1446,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@pager-border-radius">@pager-border-radius</label>
-    <input id="input-@pager-border-radius" type="text" value="15px" data-var="@pager-border-radius" class="form-control"/>
+    <input id="input-@pager-border-radius" type="text" value="@border-radius-base" data-var="@pager-border-radius" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -2019,7 +2024,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@panel-primary-heading-bg">@panel-primary-heading-bg</label>
-    <input id="input-@panel-primary-heading-bg" type="text" value="@brand-primary" data-var="@panel-primary-heading-bg" class="form-control"/>
+    <input id="input-@panel-primary-heading-bg" type="text" value="#fff" data-var="@panel-primary-heading-bg" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -2104,7 +2109,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@thumbnail-caption-padding">@thumbnail-caption-padding</label>
-    <input id="input-@thumbnail-caption-padding" type="text" aria-describedby="help-block-@thumbnail-caption-padding" value="16px" data-var="@thumbnail-caption-padding" class="form-control"/>
+    <input id="input-@thumbnail-caption-padding" type="text" aria-describedby="help-block-@thumbnail-caption-padding" value="24px" data-var="@thumbnail-caption-padding" class="form-control"/>
     <p id="help-block-@thumbnail-caption-padding" class="help-block">Padding around the thumbnail caption</p>
   </div>
 </div>
