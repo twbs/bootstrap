@@ -21,42 +21,42 @@
   <body>
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
+    <div class="pos-f-t">
+      <div class="collapse" id="navbar-header">
+        <div class="container bg-inverse p-a">
+          <h3>Collapsed content</h3>
+          <p>Toggleable via the navbar brand.</p>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown</a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Nav header</h6>
-                <a class="dropdown-item" href="#">Separated link</a>
-                <a class="dropdown-item" href="#">One more separated link</a>
-              </div>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
-    </nav>
+      <nav class="navbar navbar-light navbar-static-top bg-faded">
+        <div class="container">
+          <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+            &#9776;
+          </button>
+          <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+            <a class="navbar-brand" href="#">Sticky footer</a>
+            <ul class="nav navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Nav item <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Another nav item</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">More nav</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Last link</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
 
     <!-- Begin page content -->
     <div class="container">
-      <div class="page-header">
+      <div class="page-header m-t">
         <h1>Sticky footer with fixed navbar</h1>
       </div>
       <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body > .container</code>.</p>
@@ -65,7 +65,7 @@
 
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
+        <span class="text-muted">Place sticky footer content here.</span>
       </div>
     </footer>
 
