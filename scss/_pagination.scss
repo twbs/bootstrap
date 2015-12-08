@@ -50,7 +50,7 @@
   color: $pagination-color;
   text-decoration: none;
   background-color: $pagination-bg;
-  border: 1px solid $pagination-border;
+  border: 1px solid $pagination-border-color;
 
   @include hover-focus {
     color: $pagination-hover-color;
