@@ -23,7 +23,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.0.0-alpha): tab.js
+   * Bootstrap (v4.0.0-alpha.2): tab.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */

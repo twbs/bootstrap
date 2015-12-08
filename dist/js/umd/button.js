@@ -13,7 +13,7 @@
 })(this, function (exports, module) {
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.0.0-alpha): button.js
+   * Bootstrap (v4.0.0-alpha.2): button.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */

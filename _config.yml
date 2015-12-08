@@ -23,13 +23,13 @@ gems:
   - jekyll-sitemap
 
 # Custom vars
-current_version:  4.0.0-alpha
+current_version:  4.0.0-alpha.2
 repo:             https://github.com/twbs/bootstrap
 slack:            https://bootstrap-slack.herokuapp.com
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha/bootstrap-4.0.0-alpha-dist.zip
+  source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.2.zip
+  dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha.2/bootstrap-4.0.0-alpha.2-dist.zip
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
