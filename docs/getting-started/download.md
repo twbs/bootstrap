@@ -6,7 +6,7 @@ group: getting-started
 
 **Bootstrap v{{ site.current_version}}** is available for download in several ways, including some of your favorite package managers. Choose from the options below to snag just what you need.
 
-<div class="row m-t-md">
+<div class="row m-t-2">
   <div class="col-sm-6">
 {% markdown %}
 ### Compiled
