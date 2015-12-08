@@ -91,7 +91,7 @@
   color: $input-color;
   text-align: center;
   background-color: $input-group-addon-bg;
-  border: $input-border-width solid $input-group-addon-border-color;
+  border: $input-btn-border-width solid $input-group-addon-border-color;
   @include border-radius($border-radius);
 
   // Sizing
@@ -160,7 +160,7 @@
   > .btn {
     position: relative;
     + .btn {
-      margin-left: (-$btn-border-width);
+      margin-left: (-$input-btn-border-width);
     }
     // Bring the "active" button to the front
     @include hover-focus-active {
@@ -172,14 +172,14 @@
   &:first-child {
     > .btn,
     > .btn-group {
-      margin-right: (-$btn-border-width);
+      margin-right: (-$input-btn-border-width);
     }
   }
   &:last-child {
     > .btn,
     > .btn-group {
       z-index: 2;
-      margin-left: (-$btn-border-width);
+      margin-left: (-$input-btn-border-width);
       // Because specificity
       @include hover-focus-active {
         z-index: 3;
