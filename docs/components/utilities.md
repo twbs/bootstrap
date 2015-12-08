@@ -38,7 +38,7 @@ Where *size* is one of:
 
 Here are some representative examples of these classes:
 
-```scss
+{% highlight scss %}
 .m-t-0 {
   margin-top: 0 !important;
 }
@@ -55,7 +55,7 @@ Here are some representative examples of these classes:
 .p-a-3 {
   padding: ($spacer-y * 3) ($spacer-x * 3) !important;
 }
-```
+{% endhighlight %}
 
 Additionally, Bootstrap also includes an `.m-x-auto` class which sets the horizontal margins to `auto`.
 
