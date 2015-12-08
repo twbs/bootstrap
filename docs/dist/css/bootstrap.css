@@ -3887,6 +3887,36 @@ input[type="button"].btn-block {
   border-color: #d9534f;
 }
 
+.card-primary-outline {
+  background-color: transparent;
+  border-color: #0275d8;
+}
+
+.card-secondary-outline {
+  background-color: transparent;
+  border-color: #ccc;
+}
+
+.card-info-outline {
+  background-color: transparent;
+  border-color: #5bc0de;
+}
+
+.card-success-outline {
+  background-color: transparent;
+  border-color: #5cb85c;
+}
+
+.card-warning-outline {
+  background-color: transparent;
+  border-color: #f0ad4e;
+}
+
+.card-danger-outline {
+  background-color: transparent;
+  border-color: #d9534f;
+}
+
 .card-inverse .card-header,
 .card-inverse .card-footer {
   border-bottom: .0625rem solid rgba(255, 255, 255, .2);
