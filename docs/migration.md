@@ -101,7 +101,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Dropped nearly all `>` selectors for simpler styling via un-nested classes.
 - Instead of HTML-specific selectors like `.nav > li > a`, we use separate classes for `.nav`s, `.nav-item`s, and `.nav-link`s. This makes your HTML more flexible while bringing along increased extensibility.
 
-## Navbar
+### Navbar
 
 - Dropped the `.navbar-form` class entirely. It's no longer necessary.
 
