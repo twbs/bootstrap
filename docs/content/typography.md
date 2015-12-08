@@ -205,7 +205,7 @@ Remove the default `list-style` and left margin on list items (immediate childre
 
 ### Inline
 
-Place all list items on a single line with `display: inline-block;` and some light padding.
+Place all list items on a single line with `display: inline-block;` and some basic margin between.
 
 {% example html %}
 <ul class="list-inline">
