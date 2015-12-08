@@ -1,4 +1,4 @@
-@function contrast-color($color, $dark: $contrasted-dark-default, $light: $contrasted-light-default) {
+@function contrast-color($color, $dark: $darkest-color, $light: $lightest-color) {
   @if $color == null {
     @return null;
   }
