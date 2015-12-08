@@ -32,6 +32,71 @@ $gray-light:                #818a91 !default;
 $gray-lighter:              #eceeef !default;
 $gray-lightest:             #f7f7f9 !default;
 
+$gray-100: #f7f7f8 !default;
+$gray-200: darken($gray-100, 5%) !default;
+$gray-300: darken($gray-100, 12%) !default;
+$gray-400: darken($gray-100, 20%) !default;
+$gray-500: darken($gray-100, 30%) !default;
+$gray-600: darken($gray-100, 40%) !default;
+$gray-700: darken($gray-100, 50%) !default;
+$gray-800: darken($gray-100, 65%) !default;
+$gray-900: darken($gray-100, 80%) !default;
+
+$blue: #0275d8 !default;
+$blue-100: lighten($blue, 32%) !default;
+$blue-200: lighten($blue, 24%) !default;
+$blue-300: lighten($blue, 16%) !default;
+$blue-400: lighten($blue, 8%) !default;
+$blue-500: $blue !default;
+$blue-600: darken($blue, 8%) !default;
+$blue-700: darken($blue, 16%) !default;
+$blue-800: darken($blue, 24%) !default;
+$blue-900: darken($blue, 32%) !default;
+
+$green: #5cb85c !default;
+$green-100: lighten($green, 32%) !default;
+$green-200: lighten($green, 24%) !default;
+$green-300: lighten($green, 16%) !default;
+$green-400: lighten($green, 8%) !default;
+$green-500: $green !default;
+$green-600: darken($green, 8%) !default;
+$green-700: darken($green, 16%) !default;
+$green-800: darken($green, 24%) !default;
+$green-900: darken($green, 32%) !default;
+
+$teal: #5bc0de !default;
+$teal-100: lighten($teal, 32%) !default;
+$teal-200: lighten($teal, 24%) !default;
+$teal-300: lighten($teal, 16%) !default;
+$teal-400: lighten($teal, 8%) !default;
+$teal-500: $teal !default;
+$teal-600: darken($teal, 8%) !default;
+$teal-700: darken($teal, 16%) !default;
+$teal-800: darken($teal, 24%) !default;
+$teal-900: darken($teal, 32%) !default;
+
+$orange: #f0ad4e !default;
+$orange-100: lighten($orange, 32%) !default;
+$orange-200: lighten($orange, 24%) !default;
+$orange-300: lighten($orange, 16%) !default;
+$orange-400: lighten($orange, 8%) !default;
+$orange-500: $orange !default;
+$orange-600: darken($orange, 8%) !default;
+$orange-700: darken($orange, 16%) !default;
+$orange-800: darken($orange, 24%) !default;
+$orange-900: darken($orange, 32%) !default;
+
+$red: #d9534f !default;
+$red-100: lighten($red, 32%) !default;
+$red-200: lighten($red, 24%) !default;
+$red-300: lighten($red, 16%) !default;
+$red-400: lighten($red, 8%) !default;
+$red-500: $red !default;
+$red-600: darken($red, 8%) !default;
+$red-700: darken($red, 16%) !default;
+$red-800: darken($red, 24%) !default;
+$red-900: darken($red, 32%) !default;
+
 $brand-primary:             #0275d8 !default;
 $brand-success:             #5cb85c !default;
 $brand-info:                #5bc0de !default;
@@ -581,7 +646,7 @@ $list-group-hover-bg:           #f5f5f5 !default;
 $list-group-active-color:       $component-active-color !default;
 $list-group-active-bg:          $component-active-bg !default;
 $list-group-active-border:      $list-group-active-bg !default;
-$list-group-active-text-color:  lighten($list-group-active-bg, 40%) !default;
+$list-group-active-text-color:  lighten($list-group-active-bg, 32%) !default;
 
 $list-group-disabled-color:      $gray-light !default;
 $list-group-disabled-bg:         $gray-lighter !default;
