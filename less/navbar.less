@@ -10,6 +10,7 @@
 
 .navbar {
   position: relative;
+  font-size: @navbar-font-size;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
   border: 0px solid transparent;
@@ -138,7 +139,7 @@
 
     .container,
     .container-fluid {
-        border-width: 0 0 1px;
+        border-width: 0;
         margin-bottom: -1px;
     }
   }
