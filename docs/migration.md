@@ -114,6 +114,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Explicit classes (`.page-item`, `.page-link`) are now required on the descendants of `.pagination`s
 
+### Breadcrumbs
+
+- An explicit class, `.breadcrumb-item`, is now required on the descendants of `.breadcrumb`s
+
 ### Badges
 
 - Dropped the badge component. Use the `.label-pill` modifier together with the label component instead.
