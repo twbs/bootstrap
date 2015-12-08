@@ -232,7 +232,7 @@ input[type="search"] {
   margin-bottom: @padding-base-vertical;
 
   label {
-    min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
+    min-height: (@line-height-computed * 2); // Ensure the input doesn't jump when there is no text
     padding-left: 20px;
     margin-bottom: 0;
     font-weight: normal;
@@ -693,8 +693,22 @@ input[type="checkbox"] {
     }
 }
 
+@media (max-width: @screen-xs-max) {
+    .form-group .row [class^="col-sm-"] {
+        .form-control {
+            margin-bottom: (@padding-base-vertical * 1.5);
+        }
+    }
+}
 @media (max-width: @screen-sm-max) {
-    .form-group .row [class^="col-"] {
+    .form-group .row [class^="col-md-"] {
+        .form-control {
+            margin-bottom: (@padding-base-vertical * 1.5);
+        }
+    }
+}
+@media (max-width: @screen-md-max) {
+    .form-group .row [class^="col-lg-"] {
         .form-control {
             margin-bottom: (@padding-base-vertical * 1.5);
         }
@@ -819,12 +833,16 @@ input[type="checkbox"] {
 .error-required,
 .error-pattern,
 .error-minlength,
-.error-maxlength {
+.error-maxlength,
+.error-min,
+.error-max {
     display: none;
 }
-.ng-invalid-required + .error-messages > .error-required,
-.ng-invalid-pattern + .error-messages > .error-pattern,
-.ng-invalid-minlength + .error-messages > .error-minlength,
-.ng-invalid-maxlength + .error-messages > .error-maxlength {
+.ng-invalid-required ~ .error-messages > .error-required,
+.ng-invalid-pattern ~ .error-messages > .error-pattern,
+.ng-invalid-minlength ~ .error-messages > .error-minlength,
+.ng-invalid-maxlength ~ .error-messages > .error-maxlength,
+.ng-invalid-min ~ .error-messages > .error-min ,
+.ng-invalid-max ~ .error-messages > .error-max  {
 	display: block;
 }

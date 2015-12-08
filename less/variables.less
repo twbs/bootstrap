@@ -174,7 +174,7 @@
 @padding-small-vertical:    4px;
 @padding-small-horizontal:  12px;
 
-@padding-xs-vertical:       1px;
+@padding-xs-vertical:       2px;
 @padding-xs-horizontal:     8px;
 
 @line-height-large:         32px; // 18*1.555 = 28
@@ -513,6 +513,7 @@
 //##
 
 // Basics of a navbar
+@navbar-font-size:                 14px;
 @navbar-height:                    56px;                    //50px;
 @navbar-margin-bottom:             40px;
 @navbar-border-radius:             @border-radius-base;
@@ -580,7 +581,7 @@
 //##
 
 //=== Shared nav styles
-@nav-link-padding:                          8px 16px;
+@nav-link-padding:                          8px 24px;
 @nav-link-hover-color:                      @brand-light-blue;
 @nav-link-hover-bg:                         @brand-smoke-plus-20;
 
@@ -596,8 +597,8 @@
 @nav-tabs-link-hover-border-color:          @brand-smoke;
 
 @nav-tabs-active-link-hover-bg:             @brand-smoke-plus-20;
-@nav-tabs-active-link-hover-color:          @brand-light-blue-minus-10;
-@nav-tabs-active-link-hover-border-color:   @brand-light-blue-minus-10;
+@nav-tabs-active-link-hover-color:          @brand-light-blue;
+@nav-tabs-active-link-hover-border-color:   @brand-light-blue;
 
 @nav-tabs-justified-link-border-color:            @brand-smoke;
 @nav-tabs-justified-active-link-border-color:     @body-bg;
@@ -636,7 +637,7 @@
 
 @pager-bg:                             @pagination-bg;
 @pager-border:                         @pagination-border;
-@pager-border-radius:                  15px;
+@pager-border-radius:                  @border-radius-base;
 
 @pager-hover-bg:                       @pagination-hover-bg;
 
@@ -892,7 +893,7 @@
 
 @panel-primary-text:          #fff;
 @panel-primary-border:        @brand-primary;
-@panel-primary-heading-bg:    @brand-primary;
+@panel-primary-heading-bg:    #fff;
 
 @panel-success-text:          @state-success-text;
 @panel-success-border:        @state-success-border;
@@ -927,7 +928,7 @@
 //** Custom text color for thumbnail captions
 @thumbnail-caption-color:     @text-color;
 //** Padding around the thumbnail caption
-@thumbnail-caption-padding:   16px;
+@thumbnail-caption-padding:   24px;
 
 
 //== Wells

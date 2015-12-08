@@ -30,7 +30,7 @@
 </ul>
 {% endhighlight %}
 
-
+<!--
   <h2 id="nav-pills">Pills</h2>
   <p>Take that same HTML, but use <code>.nav-pills</code> instead:</p>
   <div class="bs-example" data-example-id="simple-nav-pills">
@@ -47,9 +47,12 @@
   <li role="presentation"><a href="#">Messages</a></li>
 </ul>
 {% endhighlight %}
-  <p>Pills are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
+-->
+
+  <h2 id="nav-stacked">Stacked Nav</h2>
+  <p>Navs are also vertically stackable. Just add <code>.nav-stacked</code>.</p>
   <div class="bs-example" data-example-id="simple-nav-stacked">
-    <ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
+    <ul class="nav nav-stacked nav-pills-stacked-example">
       <li role="presentation" class="active"><a href="#"><span class="glyphicon glyphicon-user"></span>Profile overview</a></li>
       <li role="presentation"><a href="#"><span class="glyphicon glyphicon-pencil"></span>Edit profile</a></li>
       <li role="presentation"><a href="#"><span class="glyphicon glyphicon-ok"></span>Verification<span class="badge">2</span></a></li>
@@ -57,12 +60,12 @@
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-pills nav-stacked">
+<ul class="nav nav-stacked">
   ...
 </ul>
 {% endhighlight %}
 
-
+<!--
   <h2 id="nav-justified">Justified</h2>
   <p>Easily make tabs or pills equal widths of their parent at screens wider than 768px with <code>.nav-justified</code>. On smaller screens, the nav links are stacked.</p>
   <p><strong class="text-danger">Justified navbar nav links are currently not supported.</strong></p>
@@ -92,7 +95,6 @@
 </ul>
 {% endhighlight %}
 
-
   <h2 id="nav-disabled-links">Disabled links</h2>
   <p>For any nav component (tabs or pills), add <code>.disabled</code> for <strong>gray links and no hover effects</strong>.</p>
 
@@ -102,19 +104,21 @@
   </div>
 
   <div class="bs-example" data-example-id="disabled-nav-link">
-    <ul class="nav nav-pills">
+    <ul class="nav nav-tabs">
       <li role="presentation"><a href="#">Clickable link</a></li>
       <li role="presentation"><a href="#">Clickable link</a></li>
       <li role="presentation" class="disabled"><a href="#">Disabled link</a></li>
     </ul>
   </div>
 {% highlight html %}
-<ul class="nav nav-pills">
+<ul class="nav nav-tabs">
   ...
   <li role="presentation" class="disabled"><a href="#">Disabled link</a></li>
   ...
 </ul>
 {% endhighlight %}
+
+-->
 
 
   <h2 id="nav-dropdowns">Using dropdowns</h2>
@@ -153,7 +157,7 @@
   ...
 </ul>
 {% endhighlight %}
-
+<!--
   <h3>Pills with dropdowns</h3>
   <div class="bs-example" data-example-id="nav-pills-with-dropdown">
     <ul class="nav nav-pills">
@@ -172,7 +176,7 @@
         </ul>
       </li>
     </ul>
-  </div><!-- /example -->
+  </div>
 {% highlight html %}
 <ul class="nav nav-pills">
   ...
@@ -187,4 +191,5 @@
   ...
 </ul>
 {% endhighlight %}
+-->
 </div>

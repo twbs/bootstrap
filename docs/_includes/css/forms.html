@@ -5,40 +5,58 @@
   <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.form-group</code> for optimum spacing.</p>
   <div class="bs-example" data-example-id="basic-forms">
     <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        <p class="help-block">Example block-level help text here.</p>
-      </div>
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group col-sm-6">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <p class="help-block">Example block-level help text here.</p>
+          </div>
+          <div class="form-group col-sm-6">
+            <label>Checkbox label</label>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Check me out
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+              <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          </div>
+        </div>
+    </form>
+  </div><!-- /example -->
+{% highlight html %}
+<form>
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    </div>
+    <div class="form-group col-sm-6">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <div class="form-group col-sm-6">
+      <label>Checkbox label</label>
       <div class="checkbox">
         <label>
           <input type="checkbox"> Check me out
         </label>
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-  </div><!-- /example -->
-{% highlight html %}
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    </div>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    <p class="help-block">Example block-level help text here.</p>
+  <div class="row">
+    <div class="col-sm-6">
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div>
   </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
 </form>
 {% endhighlight %}
   <div class="alert alert-warning" id="callout-formgroup-inputgroup">
@@ -95,11 +113,6 @@
         <label class="sr-only" for="exampleInputPassword3">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
       </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Remember me
-        </label>
-      </div>
       <button type="submit" class="btn btn-default">Sign in</button>
     </form>
   </div><!-- /example -->
@@ -112,11 +125,6 @@
   <div class="form-group">
     <label class="sr-only" for="exampleInputPassword3">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Remember me
-    </label>
   </div>
   <button type="submit" class="btn btn-default">Sign in</button>
 </form>
@@ -419,7 +427,7 @@
   <option>5</option>
 </select>
 {% endhighlight %}
-
+<!--
   <p>For <code>&lt;select&gt;</code> controls with the <code>multiple</code> attribute, multiple options are shown by default.</p>
 
   <div class="bs-example" data-example-ids="select-multiple-form-control">
@@ -432,7 +440,7 @@
         <option>5</option>
       </select>
     </form>
-  </div><!-- /.bs-example -->
+  </div>
 
 {% highlight html %}
 <select multiple class="form-control">
@@ -443,7 +451,7 @@
   <option>5</option>
 </select>
 {% endhighlight %}
-
+-->
 
   <h2 id="forms-controls-static">Static control</h2>
   <p>When you need to place plain text next to a form label within a form, use the <code>.form-control-static</code> class on a <code>&lt;p&gt;</code>.</p>
