@@ -534,11 +534,11 @@ fieldset[disabled] .btn-danger.active {
   background-repeat: repeat-x;
 }
 .panel-primary > .panel-heading {
-  background-image: -webkit-linear-gradient(top, #223049 0%, #1a2538 100%);
-  background-image:      -o-linear-gradient(top, #223049 0%, #1a2538 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#223049), to(#1a2538));
-  background-image:         linear-gradient(to bottom, #223049 0%, #1a2538 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff223049', endColorstr='#ff1a2538', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #fff 0%, #f2f2f2 100%);
+  background-image:      -o-linear-gradient(top, #fff 0%, #f2f2f2 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f2f2f2));
+  background-image:         linear-gradient(to bottom, #fff 0%, #f2f2f2 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
   background-repeat: repeat-x;
 }
 .panel-success > .panel-heading {
