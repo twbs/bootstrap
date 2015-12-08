@@ -93,12 +93,12 @@ mark,
 .list-inline {
   @include list-unstyled;
   margin-left: -$list-inline-padding;
+}
 
-  > li {
-    display: inline-block;
-    padding-right: $list-inline-padding;
-    padding-left: $list-inline-padding;
-  }
+.list-inline-item {
+  display: inline-block;
+  padding-right: $list-inline-padding;
+  padding-left: $list-inline-padding;
 }
 
 // Horizontal description lists w/ grid classes
