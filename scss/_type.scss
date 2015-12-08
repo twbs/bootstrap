@@ -127,14 +127,6 @@ mark,
   border-left: .25rem solid $blockquote-border-color;
 }
 
-.blockquote-text,
-.blockquote-list // ul, ol
- {
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
 .blockquote-footer {
   display: block;
   font-size: 80%; // back to default font-size
