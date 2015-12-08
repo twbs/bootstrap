@@ -266,6 +266,10 @@
 }
 
 // Tooltips
+.tooltip-demo a {
+  white-space: nowrap;
+}
+
 .bd-example-tooltip-static .tooltip {
   position: relative;
   display: inline-block;
