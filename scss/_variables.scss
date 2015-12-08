@@ -224,7 +224,6 @@ $table-border-color:            $gray-lighter !default;
 $btn-padding-x:                  1rem !default;
 $btn-padding-y:                  .375rem !default;
 $btn-font-weight:                normal !default;
-$btn-border-width:               $border-width !default;
 
 $btn-primary-color:              #fff !default;
 $btn-primary-bg:                 $brand-primary !default;
@@ -274,7 +273,7 @@ $input-bg-disabled:              $gray-lighter !default;
 
 $input-color:                    $gray !default;
 $input-border-color:             #ccc !default;
-$input-border-width:             $border-width !default;
+$input-btn-border-width:         $border-width !default; // For form controls and buttons
 $input-box-shadow:               inset 0 1px 1px rgba(0,0,0,.075) !default;
 
 $input-border-radius:            $border-radius !default;
