@@ -27,7 +27,7 @@ linters:
 
   DuplicateProperty:
     enabled: true
-    exclude: ['mixins/_tab-focus.scss']
+    exclude: ['mixins/_tab-focus.scss', '_reboot.scss']
 
   ElsePlacement:
     enabled: true
