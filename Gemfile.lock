@@ -17,6 +17,8 @@ GEM
       jekyll (>= 2.0)
     jekyll-sass-converter (1.3.0)
       sass (~> 3.2)
+    jekyll-seo-tag (0.1.3)
+      jekyll (>= 2.0)
     jekyll-sitemap (0.9.0)
     jekyll-watch (1.3.0)
       listen (~> 3.0)
@@ -44,6 +46,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 3.0.1)
   jekyll-redirect-from (~> 0.9.0)
+  jekyll-seo-tag (~> 0.1.3)
   jekyll-sitemap (~> 0.9.0)
   sass (~> 3.4.19)
   scss_lint (~> 0.43)
