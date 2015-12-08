@@ -7,7 +7,7 @@
     line-height: $line-height;
   }
 
-  .page {
+  .page-item {
     &:first-child {
       .page-link {
         @include border-left-radius($border-radius);
