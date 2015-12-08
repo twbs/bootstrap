@@ -284,7 +284,7 @@ module.exports = function (grunt) {
         compatibility: 'ie9',
         keepSpecialComments: '*',
         sourceMap: true,
-        noAdvanced: true
+        advanced: false
       },
       core: {
         files: [
