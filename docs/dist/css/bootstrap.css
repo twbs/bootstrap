@@ -609,14 +609,15 @@ mark,
 
 .list-inline {
   padding-left: 0;
-  margin-left: -5px;
   list-style: none;
 }
 
-.list-inline > li {
+.list-inline-item {
   display: inline-block;
-  padding-right: 5px;
-  padding-left: 5px;
+}
+
+.list-inline-item:not(:last-child) {
+  margin-right: 5px;
 }
 
 .dl-horizontal {
