@@ -150,7 +150,7 @@ $grid-breakpoints: (
   lg: 992px,
   // Extra large screen / wide desktop
   xl: 1200px
-) !default;
+);
 
 
 $grid-columns:      12;
