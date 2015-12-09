@@ -30,6 +30,16 @@
 
 -
   browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    `background` of `<tr>` is only applied to first child cell instead of all cells in the row
+  upstream_bug: >
+    IE#2110930
+  origin: >
+    Bootstrap#18504
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
