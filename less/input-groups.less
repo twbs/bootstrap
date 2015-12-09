@@ -8,6 +8,7 @@
   position: relative; // For dropdowns
   display: table;
   border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
+  width: 100%; // when used without add-ons it should still takes up space
 
   // Undo padding and float of grid classes
   &[class*="col-"] {
@@ -105,28 +106,26 @@
 }
 
 // Reset rounded corners
-.input-group .form-control:first-child,
-.input-group-addon:first-child,
-.input-group-btn:first-child > .btn,
-.input-group-btn:first-child > .btn-group > .btn,
-.input-group-btn:first-child > .dropdown-toggle,
-.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+.input-group .form-control:not(:last-child),
+.input-group-addon:not(:last-child),
+.input-group-btn:not(:last-child) > .btn,
+.input-group-btn:not(:last-child) > .btn-group > .btn,
+.input-group-btn:not(:last-child) > .dropdown-toggle,
+.input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
   .border-right-radius(0);
 }
-.input-group-addon:first-child {
-  border-right: 0;
-}
-.input-group .form-control:last-child,
-.input-group-addon:last-child,
-.input-group-btn:last-child > .btn,
-.input-group-btn:last-child > .btn-group > .btn,
-.input-group-btn:last-child > .dropdown-toggle,
-.input-group-btn:first-child > .btn:not(:first-child),
-.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+.input-group .form-control:not(:first-child),
+.input-group-addon:not(:first-child),
+.input-group-btn:not(:first-child) > .btn,
+.input-group-btn:not(:first-child) > .btn-group > .btn,
+.input-group-btn:not(:first-child) > .dropdown-toggle,
+.input-group-btn:not(:last-child) > .btn:not(:first-child),
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
   .border-left-radius(0);
 }
-.input-group-addon:last-child {
+.input-group .form-control:not(:first-child),
+.input-group-addon:not(:first-child) {
   border-left: 0;
 }
 
@@ -155,17 +154,11 @@
   }
 
   // Negative margin to only have a 1px border between the two
-  &:first-child {
-    > .btn,
-    > .btn-group {
-      margin-right: -1px;
-    }
-  }
-  &:last-child {
+  &:not(:first-child) {
     > .btn,
     > .btn-group {
       z-index: 2;
-      margin-left: -1px;
+      margin-left: -2px;
     }
   }
 }
