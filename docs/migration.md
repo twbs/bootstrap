@@ -140,6 +140,7 @@ Dropped entirely for the new card component.
 
 - Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats
 - Removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`
+- Removed `.help-block`, you can use `.text-muted` instead.
 
 ## Documentation
 
