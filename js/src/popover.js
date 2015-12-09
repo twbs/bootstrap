@@ -18,7 +18,7 @@ const Popover = (($) => {
    */
 
   const NAME                = 'popover'
-  const VERSION             = '4.0.0-alpha'
+  const VERSION             = '4.0.0-alpha.2'
   const DATA_KEY            = 'bs.popover'
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
