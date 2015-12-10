@@ -60,7 +60,7 @@ Uses a gradient to create a striped effect.
 
 The striped gradient can also be animated. Add `.progress-animated` to `.progress` to animate the stripes right to left via CSS3 animations.
 
-**Animated progress bars do not work in IE9 and Opera 12** as they don't support CSS3 animations.
+**Animated progress bars do not work in IE9 and Opera 12** – as they don't support CSS3 animations – **nor in IE10+ and Microsoft Edge** – as they currently don't support CSS3 animations on the [`::-ms-fill` pseudo-element](https://msdn.microsoft.com/en-us/library/windows/apps/hh465757.aspx).
 
 <div class="bd-example">
   <progress class="progress progress-striped" value="25" max="100">25%</progress>
