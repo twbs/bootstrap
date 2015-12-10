@@ -1,8 +1,7 @@
 @function contrast-color($color, $dark: $darkest-color, $light: $lightest-color) {
   @if $color == null {
     @return null;
-  }
-  @else {
+  } @else {
     $color-brightness: brightness($color);
     $dark-text-brightness: brightness($dark);
     $light-text-brightness: brightness($light);
