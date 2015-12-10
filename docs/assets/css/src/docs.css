@@ -551,55 +551,6 @@ h4 code {
   margin-bottom: 20px;
 }
 
-/* All levels of nav */
-.bs-docs-sidebar .nav > li > a {
-  display: block;
-  padding: 4px 20px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #767676;
-}
-.bs-docs-sidebar .nav > li > a:hover,
-.bs-docs-sidebar .nav > li > a:focus {
-  padding-left: 19px;
-  color: #563d7c;
-  text-decoration: none;
-  background-color: transparent;
-  border-left: 1px solid #563d7c;
-}
-.bs-docs-sidebar .nav > .active > a,
-.bs-docs-sidebar .nav > .active:hover > a,
-.bs-docs-sidebar .nav > .active:focus > a {
-  padding-left: 18px;
-  font-weight: bold;
-  color: #563d7c;
-  background-color: transparent;
-  border-left: 2px solid #563d7c;
-}
-
-/* Nav: second level (shown on .active) */
-.bs-docs-sidebar .nav .nav {
-  display: none; /* Hide by default, but at >768px, show it */
-  padding-bottom: 10px;
-}
-.bs-docs-sidebar .nav .nav > li > a {
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 30px;
-  font-size: 12px;
-  font-weight: normal;
-}
-.bs-docs-sidebar .nav .nav > li > a:hover,
-.bs-docs-sidebar .nav .nav > li > a:focus {
-  padding-left: 29px;
-}
-.bs-docs-sidebar .nav .nav > .active > a,
-.bs-docs-sidebar .nav .nav > .active:hover > a,
-.bs-docs-sidebar .nav .nav > .active:focus > a {
-  padding-left: 28px;
-  font-weight: 500;
-}
-
 /* Back to top (hidden on mobile) */
 .back-to-top,
 .bs-docs-theme-toggle {
@@ -629,9 +580,6 @@ h4 code {
 
 /* Show and affix the side nav when space allows it */
 @media (min-width: 992px) {
-  .bs-docs-sidebar .nav > .active > ul {
-    display: block;
-  }
   /* Widen the fixed sidebar */
   .bs-docs-sidebar.affix,
   .bs-docs-sidebar.affix-bottom {
@@ -1625,7 +1573,7 @@ h1[id] {
 
 /* Nullify ill-advised printing of hrefs; see #18711 */
 @media print {
-  a[href]:after {		
-    content: "" !important;		
+  a[href]:after {
+    content: "" !important;
   }
 }

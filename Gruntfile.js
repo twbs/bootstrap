@@ -339,10 +339,6 @@ module.exports = function (grunt) {
       customizerVars: {
         src: 'docs/_jade/customizer-variables.jade',
         dest: 'docs/_includes/customizer-variables.html'
-      },
-      customizerNav: {
-        src: 'docs/_jade/customizer-nav.jade',
-        dest: 'docs/_includes/nav/customize.html'
       }
     },
 
