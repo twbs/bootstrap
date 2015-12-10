@@ -1,0 +1,19 @@
+// Computes the "brightness" of a color
+//
+// Brightness is similiar to lightness in HSL but more closely approximates
+// how humans perceive the intensity of the different RGB components of
+// a color. Brightness is sometimes called luminance.
+//
+// Returns a number between 0% and 100%, where 100% is fully bright
+// (white) and 0% is fully dark (black) for color values.
+
+// Credit: Compass (https://github.com/Compass/compass)
+
+@function brightness($color) {
+  @if type-of($color) == color {
+    @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114)) / 255 * 100%;
+  }
+  @else {
+    @return unquote("brightness(#{$color})");
+  }
+}
