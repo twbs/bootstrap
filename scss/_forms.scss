@@ -4,6 +4,7 @@
 
 .form-control {
   display: block;
+  font-weight: $input-font-weight;
   width: 100%;
   // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   // height: $input-height;
