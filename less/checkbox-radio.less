@@ -46,11 +46,16 @@
         }
       }
 
+      input[type=radio] + .input-replacement > span,
+      input[type=radio] + .input-replacement + .disabled-replacement > span  {
+        margin: 11px;
+        border-radius: 50%;
+      }
+
       input[type=radio]:checked + .input-replacement > span,
       input[type=radio]:checked + .input-replacement + .disabled-replacement > span  {
         width: 12px;
         height: 12px;
-        border-radius: 50%;
         margin: 5px;
         display: block;
         background-color: @input-border-focus;
@@ -80,6 +85,7 @@
         }
       }
     }
+
 }
 .form-group {
     .input-replacement {
@@ -96,14 +102,14 @@
         padding: 0;
         vertical-align: middle;
 
-        .transition(all 0.1s ease-in-out);
+        .transition(all 0.15s ease-in-out);
 
         > span {
             text-align: center;
             width: 0px;
             height: 0px;
             margin: 12px 0 0 12px;
-            .transition(all 0.1s ease-in);
+            .transition(all 0.15s ease-in-out);
         }
         > .glyphicon {
             width: 20px;
@@ -131,6 +137,13 @@
     .disabled .disabled-replacement,
     [disabled] + .input-replacement + .disabled-replacement {
         display: block;
+    }
+
+    &.checkbox-lg,
+    &.radio-lg {
+        .input-replacement {
+            top: 23px;
+        }
     }
 }
 

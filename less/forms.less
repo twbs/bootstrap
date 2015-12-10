@@ -304,11 +304,20 @@ input[type="checkbox"] {
 
 .form-control-static {
   // Size it appropriately next to real form controls
-  padding-top: (@padding-base-vertical + 1);
-  padding-bottom: (@padding-base-vertical + 1);
+  padding-top: (@line-height-computed / 2 - 1);
+  padding-bottom:(@line-height-computed / 2 - 1);
   // Remove default margin from `p`
   margin-bottom: 0;
-  min-height: (@line-height-computed + @input-font-size);
+  line-height: @line-height-computed;
+  min-height: (@line-height-computed * 2);
+
+  font-size: @input-font-size;
+  color: @input-color-disabled;
+  background-color: @input-bg-disabled;
+  border: 1px solid @input-border-disabled;
+  border-radius: @input-border-radius;
+  padding-left: @padding-base-horizontal;
+  padding-right: @padding-base-horizontal;
 
   &.input-lg,
   &.input-sm {
@@ -580,7 +589,7 @@ input[type="checkbox"] {
     .control-label {
       text-align: right;
       margin-bottom: 0;
-      padding-top: (@padding-base-vertical + 1); // Default padding plus a border
+      padding-top: 14px; // Default padding plus a border
     }
   }
 
@@ -632,9 +641,6 @@ input[type="checkbox"] {
 
 .form-control-feedback {
     font-size: 24px;
-}
-.form-horizontal .control-label {
-    padding-top: 13px;
 }
 
 .label {
@@ -748,15 +754,16 @@ input[type="checkbox"] {
         cursor: pointer;
 
         line-height: 24px;
-        padding-top: 12px;
-        padding-bottom: 12px;
+        padding-top: 11px;
+        padding-bottom: 11px;
         padding-right: 16px;
 
         color: @brand-blue-plus-20;
+        background-color: @brand-white;
         border: 1px solid @brand-smoke;
         border-radius: @border-radius-base;
 
-        .transition(border 0.1s ease-in-out);
+        .transition(border 0.1s ease-in-out, background-color 0.1s ease-in-out;);
 
         &:hover {
             border-color: @input-border-hover;
@@ -797,6 +804,20 @@ input[type="checkbox"] {
             color: @input-color-disabled;
             border-color: @input-border-disabled;
             background-color: @input-bg-disabled;
+        }
+    }
+
+    &.checkbox-lg,
+    &.radio-lg {
+        > label {
+            min-height: 72px;
+
+            small,
+            .small {
+                display: block;
+                font-size: @font-size-small;
+                color: @brand-grey-plus-20;
+            }
         }
     }
 }
