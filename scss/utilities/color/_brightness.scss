@@ -12,8 +12,7 @@
 @function brightness($color) {
   @if type-of($color) == color {
     @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114)) / 255 * 100%;
-  }
-  @else {
+  } @else {
     @return unquote("brightness(#{$color})");
   }
 }
