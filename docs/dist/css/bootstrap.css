@@ -1514,13 +1514,17 @@ ol ol {
 }
 .list-inline {
   padding-left: 0;
-  margin-left: -5px;
+  margin-left: -4px;
   list-style: none;
 }
 .list-inline > li {
   display: inline-block;
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-right: 8px;
+  padding-left: 4px;
+  border-right: 1px solid #6f8691;
+}
+.list-inline > li:last-child {
+  border-right: 0;
 }
 dl {
   margin-top: 0;
@@ -3094,10 +3098,18 @@ fieldset[disabled] .checkbox label {
   cursor: not-allowed;
 }
 .form-control-static {
-  min-height: 40px;
-  padding-top: 9px;
-  padding-bottom: 9px;
+  min-height: 48px;
+  padding-top: 11px;
+  padding-right: 16px;
+  padding-bottom: 11px;
+  padding-left: 16px;
   margin-bottom: 0;
+  font-size: 16px;
+  line-height: 24px;
+  color: #d3d5d8;
+  background-color: #f2f5f7;
+  border: 1px solid #e2e6e8;
+  border-radius: 3px;
 }
 .form-control-static.input-lg,
 .form-control-static.input-sm {
@@ -3374,7 +3386,7 @@ select[multiple].input-lg {
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {
-    padding-top: 9px;
+    padding-top: 14px;
     margin-bottom: 0;
     text-align: right;
   }
@@ -3440,6 +3452,13 @@ select[multiple].input-lg {
 .checkbox > label input[type=checkbox]:checked + .input-replacement {
   background-color: #00b9ff;
 }
+.radio > label input[type=radio] + .input-replacement > span,
+.checkbox > label input[type=radio] + .input-replacement > span,
+.radio > label input[type=radio] + .input-replacement + .disabled-replacement > span,
+.checkbox > label input[type=radio] + .input-replacement + .disabled-replacement > span {
+  margin: 11px;
+  border-radius: 50%;
+}
 .radio > label input[type=radio]:checked + .input-replacement > span,
 .checkbox > label input[type=radio]:checked + .input-replacement > span,
 .radio > label input[type=radio]:checked + .input-replacement + .disabled-replacement > span,
@@ -3449,7 +3468,6 @@ select[multiple].input-lg {
   height: 12px;
   margin: 5px;
   background-color: #00b9ff;
-  border-radius: 50%;
 }
 .radio > label input[type=checkbox]:checked + .input-replacement > span,
 .checkbox > label input[type=checkbox]:checked + .input-replacement > span,
@@ -3514,18 +3532,18 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
   background: #fff;
   border: 1px solid #d3d5d8;
   border-radius: 3px;
-  -webkit-transition: all .1s ease-in-out;
-       -o-transition: all .1s ease-in-out;
-          transition: all .1s ease-in-out;
+  -webkit-transition: all .15s ease-in-out;
+       -o-transition: all .15s ease-in-out;
+          transition: all .15s ease-in-out;
 }
 .form-group .input-replacement > span {
   width: 0;
   height: 0;
   margin: 12px 0 0 12px;
   text-align: center;
-  -webkit-transition: all .1s ease-in;
-       -o-transition: all .1s ease-in;
-          transition: all .1s ease-in;
+  -webkit-transition: all .15s ease-in-out;
+       -o-transition: all .15s ease-in-out;
+          transition: all .15s ease-in-out;
 }
 .form-group .input-replacement > .glyphicon {
   display: none;
@@ -3550,6 +3568,10 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .form-group .disabled .disabled-replacement,
 .form-group [disabled] + .input-replacement + .disabled-replacement {
   display: block;
+}
+.form-group.checkbox-lg .input-replacement,
+.form-group.radio-lg .input-replacement {
+  top: 23px;
 }
 .form-horizontal .checkbox,
 .form-horizontal .radio {
@@ -3594,9 +3616,6 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 }
 .form-control-feedback {
   font-size: 24px;
-}
-.form-horizontal .control-label {
-  padding-top: 13px;
 }
 .label {
   position: relative;
@@ -3680,18 +3699,19 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .checkbox > label,
 .radio > label {
   display: block;
-  padding-top: 12px;
+  padding-top: 11px;
   padding-right: 16px;
-  padding-bottom: 12px;
+  padding-bottom: 11px;
   font-size: 16px;
   line-height: 24px;
   color: #2f4366;
   cursor: pointer;
+  background-color: #fff;
   border: 1px solid #d3d5d8;
   border-radius: 3px;
-  -webkit-transition: border .1s ease-in-out;
-       -o-transition: border .1s ease-in-out;
-          transition: border .1s ease-in-out;
+  -webkit-transition: border .1s ease-in-out, background-color .1s ease-in-out;
+       -o-transition: border .1s ease-in-out, background-color .1s ease-in-out;
+          transition: border .1s ease-in-out, background-color .1s ease-in-out;
 }
 .checkbox > label:hover,
 .radio > label:hover {
@@ -3733,6 +3753,24 @@ fieldset[disabled] .radio label,
   color: #d3d5d8;
   background-color: #f2f5f7;
   border-color: #e2e6e8;
+}
+.checkbox.checkbox-lg > label,
+.radio.checkbox-lg > label,
+.checkbox.radio-lg > label,
+.radio.radio-lg > label {
+  min-height: 72px;
+}
+.checkbox.checkbox-lg > label small,
+.radio.checkbox-lg > label small,
+.checkbox.radio-lg > label small,
+.radio.radio-lg > label small,
+.checkbox.checkbox-lg > label .small,
+.radio.checkbox-lg > label .small,
+.checkbox.radio-lg > label .small,
+.radio.radio-lg > label .small {
+  display: block;
+  font-size: 14px;
+  color: #829ca9;
 }
 /* If a radio group has an error all section are invalid */
 .has-error .radio > label {
@@ -8716,7 +8754,7 @@ a.btn {
 address {
   margin-bottom: 16px;
 }
-footer {
+.footer {
   background-color: #f2f5f7;
 }
 blockquote footer {
@@ -8796,33 +8834,37 @@ blockquote footer {
     border-bottom-color: transparent;
   }
 }
-footer,
+.footer {
+  font-size: 14px;
+  line-height: 24px;
+}
+.footer a:not(.btn) {
+  color: #6f8691;
+}
+.footer a:not(.btn):hover,
+.footer a:not(.btn):focus {
+  color: #5d7079;
+}
+.footer a:not(.btn):active {
+  color: #2f4366;
+}
+.footer,
 .bg-default {
   background-color: #f2f5f7;
 }
-footer h1,
+.footer h1,
 .bg-default h1,
-footer h2,
+.footer h2,
 .bg-default h2,
-footer h3,
+.footer h3,
 .bg-default h3,
-footer h4,
+.footer h4,
 .bg-default h4,
-footer h5,
+.footer h5,
 .bg-default h5,
-footer h6,
+.footer h6,
 .bg-default h6 {
   color: #223049;
-}
-footer a:not(.btn) {
-  color: #829ca9;
-}
-footer a:not(.btn):hover,
-footer a:not(.btn):focus {
-  color: #6f8691;
-}
-footer a:not(.btn):active {
-  color: #5d7079;
 }
 .badge {
   position: relative;
