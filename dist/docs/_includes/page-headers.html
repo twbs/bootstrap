@@ -1,0 +1,41 @@
+{% if page.group == "getting-started" %}
+  <h1>Getting started</h1>
+  <p class="lead">
+    An overview of Bootstrap, including how to download and use it, some basic templates and examples, and more.
+  </p>
+{% elsif page.group == "layout" %}
+  <h1>Layout</h1>
+  <p class="lead">
+    Options for structuring your pages with Bootstrap, including global styles, required scaffolding, grid system, and more.
+  </p>
+{% elsif page.group == "content" %}
+  <h1>Content</h1>
+  <p class="lead">
+    Styles for displaying content with some of the most commonly used HTML elements, including normalization, typography, images, tables, and more.
+  </p>
+{% elsif page.group == "components" %}
+  <h1>Components</h1>
+  <p class="lead">
+    Over a dozen reusable components built to provide buttons, dropdowns, input groups, navigation, alerts, and much more.
+  </p>
+{% elsif page.group == "javascript" %}
+  <h1>JavaScript plugins</h1>
+  <p class="lead">
+    Bring Bootstrap's components to life with over a dozen custom jQuery plugins. Easily include them all, or one by one.
+  </p>
+{% elsif page.group == "about" %}
+  <h1>About</h1>
+  <p class="lead">
+    Learn about the project's history, meet the maintaining teams, and find out how to use the Bootstrap brand.
+  </p>
+{% elsif page.group == "migration" %}
+  <h1>Migration</h1>
+  <p class="lead">
+    Guidance on how to upgrade from Bootstrap v3.x to v4.x with emphasis on major changes, what's new, and what's been removed.
+  </p>
+{% elsif page.group == "browser-bugs" %}
+  <h1>Wall of browser bugs</h1>
+  <p class="lead">
+    A list of the browser bugs that Bootstrap is currently grappling with.
+  </p>
+{% endif %}
