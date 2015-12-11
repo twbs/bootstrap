@@ -54,7 +54,7 @@ a.btn {
 address {
     margin-bottom: 16px;
 }
-footer {
+.footer {
     background-color: @gray-base;
 }
 blockquote footer {
@@ -152,27 +152,30 @@ blockquote footer {
 }
 
 
-footer,
+.footer {
+    font-size: @font-size-small;
+    line-height: @line-height-computed;
+
+    a:not(.btn) {
+
+        color: @brand-grey-plus-10;
+
+        &:hover,
+        &:focus {
+            color: @brand-grey;
+        }
+
+        &:active {
+            color: @brand-blue-plus-20;
+        }
+    }
+}
+.footer,
 .bg-default {
     background-color: @gray-base;
 
     h1, h2, h3, h4, h5, h6 {
         color: @brand-primary;
-    }
-}
-footer {
-    a:not(.btn) {
-
-        color: @brand-grey-plus-20;
-
-        &:hover,
-        &:focus {
-            color: @brand-grey-plus-10;
-        }
-
-        &:active {
-            color: @brand-grey;
-        }
     }
 }
 
