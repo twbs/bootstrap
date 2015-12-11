@@ -128,6 +128,9 @@
 .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
   @include border-right-radius(0);
 }
+.input-group-addon:not(:last-child) {
+  border-right: 0;
+}
 .input-group .form-control:not(:first-child),
 .input-group-addon:not(:first-child),
 .input-group-btn:not(:first-child) > .btn,
@@ -137,11 +140,9 @@
 .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
   @include border-left-radius(0);
 }
-.input-group .form-control:not(:first-child),
-.input-group-addon:not(:first-child) {
+.form-control + .input-group-addon:not(:first-child) {
   border-left: 0;
 }
-
 
 //
 // Button input groups
@@ -168,11 +169,17 @@
   }
 
   // Negative margin to only have a single, shared border between the two
+  &:not(:last-child) {
+    > .btn,
+    > .btn-group {
+      margin-right: (-$input-btn-border-width);
+    }
+  }
   &:not(:first-child) {
     > .btn,
     > .btn-group {
       z-index: 2;
-      margin-left: (-$input-btn-border-width) * 2;
+      margin-left: (-$input-btn-border-width);
       // Because specificity
       @include hover-focus-active {
         z-index: 3;
