@@ -1,9 +1,0 @@
-- name: Chinese
-  code: zh
-  description: Bootstrap 中文文档
-  url: http://v4.bootcss.com/
-
-- name: Chinese
-  code: zh
-  description: Bootstrap 4 中文文档教程
-  url: http://boot4.com/

@@ -1928,6 +1928,24 @@ pre code {
   cursor: not-allowed;
 }
 
+.form-control {
+  height: 2.375rem;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+}
+
+select.form-control {
+  height: 2.375rem;
+  line-height: 2.375rem;
+}
+
+textarea.form-control,
+select[multiple].form-control {
+  height: auto;
+}
+
 .form-control-file,
 .form-control-range {
   display: block;
@@ -1943,7 +1961,7 @@ pre code {
   input[type="time"].form-control,
   input[type="datetime-local"].form-control,
   input[type="month"].form-control {
-    line-height: 2.25rem;
+    line-height: 2.375rem;
   }
   input[type="date"].input-sm,
   .input-group-sm input[type="date"].form-control,
@@ -1956,7 +1974,7 @@ pre code {
   input[type="month"].input-sm,
   .input-group-sm
   input[type="month"].form-control {
-    line-height: 1.8625rem;
+    line-height: 1.9875rem;
   }
   input[type="date"].input-lg,
   .input-group-lg input[type="date"].form-control,
@@ -1969,12 +1987,12 @@ pre code {
   input[type="month"].input-lg,
   .input-group-lg
   input[type="month"].form-control {
-    line-height: 3.166667rem;
+    line-height: 3.291667rem;
   }
 }
 
 .form-control-static {
-  min-height: 2.25rem;
+  min-height: 2.375rem;
   padding-top: .375rem;
   padding-bottom: .375rem;
   margin-bottom: 0;
@@ -1998,6 +2016,33 @@ pre code {
   border-radius: .2rem;
 }
 
+.form-control-sm, .input-group-sm > .form-control,
+.input-group-sm > .input-group-addon,
+.input-group-sm > .input-group-btn > .btn {
+  height: 1.9875rem;
+  padding: .275rem .75rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+}
+
+select.form-control-sm, .input-group-sm > select.form-control,
+.input-group-sm > select.input-group-addon,
+.input-group-sm > .input-group-btn > select.btn {
+  height: 1.9875rem;
+  line-height: 1.9875rem;
+}
+
+textarea.form-control-sm, .input-group-sm > textarea.form-control,
+.input-group-sm > textarea.input-group-addon,
+.input-group-sm > .input-group-btn > textarea.btn,
+select[multiple].form-control-sm,
+.input-group-sm > select[multiple].form-control,
+.input-group-sm > select[multiple].input-group-addon,
+.input-group-sm > .input-group-btn > select[multiple].btn {
+  height: auto;
+}
+
 .form-control-lg, .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
@@ -2005,6 +2050,33 @@ pre code {
   font-size: 1.25rem;
   line-height: 1.333333;
   border-radius: .3rem;
+}
+
+.form-control-lg, .input-group-lg > .form-control,
+.input-group-lg > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn {
+  height: 3.291667rem;
+  padding: .75rem 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.333333;
+  border-radius: .3rem;
+}
+
+select.form-control-lg, .input-group-lg > select.form-control,
+.input-group-lg > select.input-group-addon,
+.input-group-lg > .input-group-btn > select.btn {
+  height: 3.291667rem;
+  line-height: 3.291667rem;
+}
+
+textarea.form-control-lg, .input-group-lg > textarea.form-control,
+.input-group-lg > textarea.input-group-addon,
+.input-group-lg > .input-group-btn > textarea.btn,
+select[multiple].form-control-lg,
+.input-group-lg > select[multiple].form-control,
+.input-group-lg > select[multiple].input-group-addon,
+.input-group-lg > .input-group-btn > select[multiple].btn {
+  height: auto;
 }
 
 .form-group {
@@ -2083,9 +2155,9 @@ input[type="checkbox"].disabled {
 .form-control-danger {
   padding-right: 2.25rem;
   background-repeat: no-repeat;
-  background-position: center right .5625rem;
-  -webkit-background-size: 1.4625rem 1.4625rem;
-          background-size: 1.4625rem 1.4625rem;
+  background-position: center right .59375rem;
+  -webkit-background-size: 1.54375rem 1.54375rem;
+          background-size: 1.54375rem 1.54375rem;
 }
 
 .has-success .text-help,
@@ -4445,11 +4517,17 @@ a.label:focus, a.label:hover {
 
 .progress[value] {
   -webkit-appearance: none;
-  color: #0074d9;
+  background-color: #eee;
   border: 0;
+  border-radius: .25rem;
 
      -moz-appearance: none;
           appearance: none;
+}
+
+.progress[value]::-ms-fill {
+  background-color: #0074d9;
+  border: 0;
 }
 
 .progress[value]::-webkit-progress-bar {
@@ -4509,6 +4587,11 @@ a.label:focus, a.label:hover {
   background-size: 1rem 1rem;
 }
 
+.progress-striped[value]::-ms-fill {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  background-size: 1rem 1rem;
+}
+
 @media screen and (min-width: 0\0) {
   .progress-bar-striped {
     background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
@@ -4544,6 +4627,10 @@ a.label:focus, a.label:hover {
   background-color: #5cb85c;
 }
 
+.progress-success[value]::-ms-fill {
+  background-color: #5cb85c;
+}
+
 @media screen and (min-width: 0\0) {
   .progress-success .progress-bar {
     background-color: #5cb85c;
@@ -4555,6 +4642,10 @@ a.label:focus, a.label:hover {
 }
 
 .progress-info[value]::-moz-progress-bar {
+  background-color: #5bc0de;
+}
+
+.progress-info[value]::-ms-fill {
   background-color: #5bc0de;
 }
 
@@ -4572,6 +4663,10 @@ a.label:focus, a.label:hover {
   background-color: #f0ad4e;
 }
 
+.progress-warning[value]::-ms-fill {
+  background-color: #f0ad4e;
+}
+
 @media screen and (min-width: 0\0) {
   .progress-warning .progress-bar {
     background-color: #f0ad4e;
@@ -4583,6 +4678,10 @@ a.label:focus, a.label:hover {
 }
 
 .progress-danger[value]::-moz-progress-bar {
+  background-color: #d9534f;
+}
+
+.progress-danger[value]::-ms-fill {
   background-color: #d9534f;
 }
 
