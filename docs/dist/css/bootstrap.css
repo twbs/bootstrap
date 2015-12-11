@@ -3709,9 +3709,9 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
   background-color: #fff;
   border: 1px solid #d3d5d8;
   border-radius: 3px;
-  -webkit-transition: border .1s ease-in-out, background-color .1s ease-in-out;
-       -o-transition: border .1s ease-in-out, background-color .1s ease-in-out;
-          transition: border .1s ease-in-out, background-color .1s ease-in-out;
+  -webkit-transition: border .15s ease-in-out, background-color .15s ease-in-out;
+       -o-transition: border .15s ease-in-out, background-color .15s ease-in-out;
+          transition: border .15s ease-in-out, background-color .15s ease-in-out;
 }
 .checkbox > label:hover,
 .radio > label:hover {
