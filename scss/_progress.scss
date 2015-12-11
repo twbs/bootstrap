@@ -19,12 +19,19 @@
   margin-bottom: $spacer-y;
 }
 .progress[value] {
-  // IE10 uses `color` to set the bar background-color
-  color: #0074d9;
+  // Set overall background
+  background-color: #eee;
   // Remove Firefox and Opera border
   border: 0;
   // Reset the default appearance
   appearance: none;
+  // Set overall border radius
+  @include border-radius($border-radius);
+}
+.progress[value]::-ms-fill {
+  background-color: #0074d9;
+  // Remove right-hand border of value bar from IE10+/Edge
+  border: 0;
 }
 .progress[value]::-webkit-progress-bar {
   background-color: #eee;
@@ -108,6 +115,10 @@
   background-size: $spacer-y $spacer-y;
 }
 .progress-striped[value]::-moz-progress-bar {
+  @include gradient-striped();
+  background-size: $spacer-y $spacer-y;
+}
+.progress-striped[value]::-ms-fill {
   @include gradient-striped();
   background-size: $spacer-y $spacer-y;
 }
