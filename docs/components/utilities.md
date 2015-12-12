@@ -166,14 +166,14 @@ These utility classes float an element to the left or right, or disable floating
 Two similar non-responsive mixins (`pull-left` and `pull-right`) are also available.
 
 {% example html %}
-<div class="pull-xs-left">Float left on all viewport sizes</div>
-<div class="pull-xs-right">Float right on all viewport sizes</div>
-<div class="pull-xs-none">Don't float on all viewport sizes</div>
+<div class="pull-xs-left">Float left on all viewport sizes</div><br>
+<div class="pull-xs-right">Float right on all viewport sizes</div><br>
+<div class="pull-xs-none">Don't float on all viewport sizes</div><br>
 
-<div class="pull-sm-left">Float left on viewports sized SM (small) or wider</div>
-<div class="pull-md-left">Float left on viewports sized MD (medium) or wider</div>
-<div class="pull-lg-left">Float left on viewports sized LG (large) or wider</div>
-<div class="pull-xl-left">Float left on viewports sized XL (extra-large) or wider</div>
+<div class="pull-sm-left">Float left on viewports sized SM (small) or wider</div><br>
+<div class="pull-md-left">Float left on viewports sized MD (medium) or wider</div><br>
+<div class="pull-lg-left">Float left on viewports sized LG (large) or wider</div><br>
+<div class="pull-xl-left">Float left on viewports sized XL (extra-large) or wider</div><br>
 {% endexample %}
 
 {% highlight scss %}
