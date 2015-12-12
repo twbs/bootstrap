@@ -23,23 +23,23 @@ Try to use these on a limited basis and avoid creating entirely different versio
         <th></th>
         <th>
           Extra small devices
-          <small>Portrait phones (&lt;34em)</small>
+          <small>Portrait phones (&lt;544px)</small>
         </th>
         <th>
           Small devices
-          <small>Landscape phones (&ge;34em)</small>
+          <small>Landscape phones (&ge;544px - &lt;768px)</small>
         </th>
         <th>
           Medium devices
-          <small>Tablets (&ge;48em)</small>
+          <small>Tablets (&ge;768px - &lt;992px)</small>
         </th>
         <th>
           Large devices
-          <small>Desktops (&ge;62em)</small>
+          <small>Desktops (&ge;992px - &lt;1200px)</small>
         </th>
         <th>
           Extra large devices
-          <small>Desktops (&ge;75em)</small>
+          <small>Desktops (&ge;1200px)</small>
         </th>
       </tr>
     </thead>
