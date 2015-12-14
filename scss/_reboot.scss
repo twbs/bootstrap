@@ -41,10 +41,11 @@ html {
 // and apply some conditional CSS.
 //
 // See http://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
-
-
+//
 // Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
 // `.class-name { @import "bootstrap"; }`).
+//
+// Includes future-proofed vendor prefixes as well.
 @at-root {
   @-moz-viewport      { width: device-width; }
   @-ms-viewport       { width: device-width; }
@@ -52,6 +53,7 @@ html {
   @-webkit-viewport   { width: device-width; }
   @viewport           { width: device-width; }
 }
+
 
 //
 // Reset HTML, body, and more
@@ -73,6 +75,15 @@ body {
   color: $body-color;
   // By default, `<body>` has no `background-color` so we set one as a best practice.
   background-color: $body-bg;
+}
+
+// Suppress the focus outline on elements that cannot be accessed via keyboard.
+// This prevents an unwanted focus outline from appearing around elements that
+// might still respond to pointer events.
+//
+// Credit: https://github.com/suitcss/base
+[tabindex="-1"]:focus {
+  outline: none !important;
 }
 
 
@@ -127,7 +138,7 @@ ul ol {
 }
 
 dt {
-  font-weight: bold;
+  font-weight: $dt-font-weight;
 }
 
 dd {
@@ -182,7 +193,6 @@ figure {
 }
 
 
-
 //
 // Images
 //
@@ -229,6 +239,7 @@ textarea {
   touch-action: manipulation;
 }
 
+
 //
 // Tables
 //
@@ -257,9 +268,18 @@ th {
 //
 
 label {
-  // Allow labels can use `margin` for spacing.
+  // Allow labels to use `margin` for spacing.
   display: inline-block;
   margin-bottom: .5rem;
+}
+
+// Work around a Firefox/IE bug where the transparent `button` background
+// results in a loss of the default `button` focus styles.
+//
+// Credit: https://github.com/suitcss/base/
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
 }
 
 input,

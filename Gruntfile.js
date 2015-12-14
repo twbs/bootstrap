@@ -23,19 +23,33 @@ module.exports = function (grunt) {
   var mq4HoverShim = require('mq4-hover-shim');
   var autoprefixer = require('autoprefixer')({
     browsers: [
-      'Android 2.3',
-      'Android >= 4',
-      'Chrome >= 35',
-      'Firefox >= 31',
+      //
+      // Official browser support policy:
+      // http://v4-alpha.getbootstrap.com/getting-started/browsers-devices/#supported-browsers
+      //
+      'Chrome >= 35', // Exact version number here is kinda arbitrary
+      // Rather than using Autoprefixer's native "Firefox ESR" version specifier string,
+      // we deliberately hardcode the number. This is to avoid unwittingly severely breaking the previous ESR in the event that:
+      // (a) we happen to ship a new Bootstrap release soon after the release of a new ESR,
+      //     such that folks haven't yet had a reasonable amount of time to upgrade; and
+      // (b) the new ESR has unprefixed CSS properties/values whose absence would severely break webpages
+      //     (e.g. `box-sizing`, as opposed to `background: linear-gradient(...)`).
+      //     Since they've been unprefixed, Autoprefixer will stop prefixing them,
+      //     thus causing them to not work in the previous ESR (where the prefixes were required).
+      'Firefox >= 31', // Current Firefox Extended Support Release (ESR)
       // Note: Edge versions in Autoprefixer & Can I Use refer to the EdgeHTML rendering engine version,
       // NOT the Edge app version shown in Edge's "About" screen.
       // For example, at the time of writing, Edge 20 on an up-to-date system uses EdgeHTML 12.
       // See also https://github.com/Fyrd/caniuse/issues/1928
       'Edge >= 12',
       'Explorer >= 9',
-      'iOS >= 7',
-      'Opera >= 12',
-      'Safari >= 7.1'
+      // Out of leniency, we prefix these 1 version further back than the official policy.
+      'iOS >= 8',
+      'Safari >= 8',
+      // The following remain NOT officially supported, but we're lenient and include their prefixes to avoid severely breaking in them.
+      'Android 2.3',
+      'Android >= 4',
+      'Opera >= 12'
     ]
   });
 
@@ -270,7 +284,7 @@ module.exports = function (grunt) {
         compatibility: 'ie9',
         keepSpecialComments: '*',
         sourceMap: true,
-        noAdvanced: true
+        advanced: false
       },
       core: {
         files: [
@@ -356,7 +370,7 @@ module.exports = function (grunt) {
           'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
         ]
       },
-      src: '_gh_pages/**/*.html'
+      src: ['_gh_pages/**/*.html', 'js/tests/visual/*.html']
     },
 
     watch: {
@@ -371,17 +385,6 @@ module.exports = function (grunt) {
       docs: {
         files: 'docs/assets/scss/**/*.scss',
         tasks: ['dist-css', 'docs']
-      }
-    },
-
-    sed: {
-      versionNumber: {
-        pattern: (function () {
-          var old = grunt.option('oldver');
-          return old ? RegExp.quote(old) : old;
-        })(),
-        replacement: grunt.option('newver'),
-        recursive: true
       }
     },
 
@@ -417,7 +420,27 @@ module.exports = function (grunt) {
           branch: 'gh-pages'
         }
       }
+    },
+
+    compress: {
+      main: {
+        options: {
+          archive: 'bootstrap-<%= pkg.version %>-dist.zip',
+          mode: 'zip',
+          level: 9,
+          pretty: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'dist/',
+            src: ['**'],
+            dest: 'bootstrap-<%= pkg.version %>-dist'
+          }
+        ]
+      }
     }
+
   });
 
 
@@ -486,11 +509,6 @@ module.exports = function (grunt) {
   // Default task.
   grunt.registerTask('default', ['clean:dist', 'test']);
 
-  // Version numbering task.
-  // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
-  // This can be overzealous, so its changes should always be manually reviewed!
-  grunt.registerTask('change-version-number', 'sed');
-
   grunt.registerTask('commonjs', ['babel:umd', 'npm-js']);
 
   grunt.registerTask('npm-js', 'Generate npm-js entrypoint module in dist dir.', function () {
@@ -506,8 +524,9 @@ module.exports = function (grunt) {
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
+  grunt.registerTask('docs-github', ['jekyll:github']);
 
-  grunt.registerTask('prep-release', ['dist', 'docs', 'jekyll:github', 'htmlmin', 'compress']);
+  grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress']);
 
   // Publish to GitHub
   grunt.registerTask('publish', ['buildcontrol:pages']);

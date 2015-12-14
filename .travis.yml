@@ -4,7 +4,7 @@ git:
   depth: 10
 node_js:
   - "4"
-  - "stable"
+  - "5"
 before_install:
   - rvm install 2.2
   - rvm use 2.2 --fuzzy
@@ -19,10 +19,11 @@ install:
   - cp grunt/npm-shrinkwrap.json ./
   - npm install -g grunt-cli
   - npm install
-cache:
-  directories:
-    - node_modules
-    - vendor/bundle
+# Caching disabled due to https://github.com/travis-ci/travis-ci/issues/5092
+#cache:
+#  directories:
+#    - node_modules
+#    - vendor/bundle
 env:
   global:
     - SAUCE_USERNAME="bootstrap"

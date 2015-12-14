@@ -76,6 +76,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Renamed `.control-label` to `.form-control-label`.
 - Renamed `.input-lg` and `.input-sm` to `.form-control-lg` and `.form-control-sm`, respectively.
 - Dropped `.form-group-*` classes for simplicity's sake. Use `.form-control-*` classes instead now.
+- Dropped `.help-block`. Use the `.text-muted` utility class instead.
 - Horizontal forms overhauled:
   - Dropped the `.form-horizontal` class requirement.
   - `.form-group` no longer mixins the `.row` class, so it's now required for grid layouts.
@@ -84,27 +85,38 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Buttons
 
 - Renamed `.btn-default` to `.btn-secondary`.
-
-### Grid system
-
-- Added a new `~480px` grid breakpoint, meaning there are now five total tiers.
-
-### Buttons
-
 - Dropped the `.btn-xs` class entirely.
+- The [stateful button](http://getbootstrap.com/javascript/#buttons-methods) feature of the `button.js` jQuery plugin has been dropped. This includes the `$().button(string)` and `$().button('reset')` methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
+  - Note that the other features of the plugin (button checkboxes, button radios, single-toggle buttons) have been retained in v4.
 
 ### Button group
 
 - Dropped the `.btn-group-xs` class entirely.
+
+### Grid system
+
+- Added a new `~480px` grid breakpoint, meaning there are now five total tiers.
 
 ### Navs
 
 - Dropped nearly all `>` selectors for simpler styling via un-nested classes.
 - Instead of HTML-specific selectors like `.nav > li > a`, we use separate classes for `.nav`s, `.nav-item`s, and `.nav-link`s. This makes your HTML more flexible while bringing along increased extensibility.
 
+### Navbar
+
+- Dropped the `.navbar-form` class entirely. It's no longer necessary.
+
 ### Pager
 
 - Renamed `.previous` and `.next` to `.pager-prev` and `.pager-next`.
+
+### Pagination
+
+- Explicit classes (`.page-item`, `.page-link`) are now required on the descendants of `.pagination`s
+
+### Badges
+
+- Dropped the badge component. Use the `.label-pill` modifier together with the label component instead.
 
 ### Panels, thumbnails, and wells
 
@@ -127,6 +139,11 @@ Dropped entirely for the new card component.
 ### Carousel
 
 - Renamed `.item` to `.carousel-item`.
+
+### Utilities
+
+- Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats
+- Removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`
 
 ## Documentation
 

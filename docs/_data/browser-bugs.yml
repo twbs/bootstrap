@@ -30,6 +30,16 @@
 
 -
   browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    `background` of `<tr>` is only applied to first child cell instead of all cells in the row
+  upstream_bug: >
+    IE#2110930
+  origin: >
+    Bootstrap#18504
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
@@ -67,6 +77,26 @@
     Mozilla#654072
   origin: >
     Bootstrap#793
+
+-
+  browser: >
+    Firefox
+  summary: >
+    `focus` events should not be fired at the `document` object
+  upstream_bug: >
+    Mozilla#1228802
+  origin: >
+    Bootstrap#18365
+
+-
+  browser: >
+    Firefox (Windows)
+  summary: >
+    Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
+  upstream_bug: >
+    Mozilla#1139853
+  origin: >
+    Bootstrap#15990
 
 -
   browser: >
@@ -269,6 +299,16 @@
     WebKit#139848, Safari#19434878
   origin: >
     Bootstrap#11266, Bootstrap#13098
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Tapping on `<body>` doesn't fire `click` events
+  upstream_bug: >
+    WebKit#151933
+  origin: >
+    Bootstrap#16028
 
 -
   browser: >

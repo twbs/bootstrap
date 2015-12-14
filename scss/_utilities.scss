@@ -10,12 +10,18 @@
   @include center-block();
 }
 
-.pull-right {
-  @include pull-right();
-}
-
-.pull-left {
-  @include pull-left();
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    .pull-#{$breakpoint}-left {
+      @include pull-left();
+    }
+    .pull-#{$breakpoint}-right {
+      @include pull-right();
+    }
+    .pull-#{$breakpoint}-none {
+      float: none !important;
+    }
+  }
 }
 
 
@@ -46,9 +52,6 @@
 
 // Alignment
 
-.text-left           { text-align: left !important; }
-.text-right          { text-align: right !important; }
-.text-center         { text-align: center !important; }
 .text-justify        { text-align: justify !important; }
 .text-nowrap         { white-space: nowrap !important; }
 .text-truncate       { @include text-truncate; }
@@ -57,9 +60,9 @@
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    .text-#{$breakpoint}-left   { text-align: left; }
-    .text-#{$breakpoint}-right  { text-align: right; }
-    .text-#{$breakpoint}-center { text-align: center; }
+    .text-#{$breakpoint}-left   { text-align: left !important; }
+    .text-#{$breakpoint}-right  { text-align: right !important; }
+    .text-#{$breakpoint}-center { text-align: center !important; }
   }
 }
 
@@ -68,6 +71,12 @@
 .text-lowercase      { text-transform: lowercase !important; }
 .text-uppercase      { text-transform: uppercase !important; }
 .text-capitalize     { text-transform: capitalize !important; }
+
+// Weight and italics
+
+.font-weight-normal  { font-weight: normal; }
+.font-weight-bold    { font-weight: bold; }
+.font-italic         { font-style: italic; }
 
 // Contextual colors
 

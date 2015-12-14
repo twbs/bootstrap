@@ -11,7 +11,7 @@ Try to use these on a limited basis and avoid creating entirely different versio
 ##  Available classes
 
 * The `.hidden-*-up` classes hide the element when the viewport is at the given breakpoint or wider. For example, `.hidden-md-up` hides an element on medium, large, and extra-large viewports.
-* The `.hidden-*-down` classes hide the element when the viewport is at the given breakpoint or smaller. For example, `.hidden-md-down` hides an element on extra-small, small, and medium viewports).
+* The `.hidden-*-down` classes hide the element when the viewport is at the given breakpoint or smaller. For example, `.hidden-md-down` hides an element on extra-small, small, and medium viewports.
 * There are no explicit "visible"/"show" responsive utility classes; you make an element visible by simply not hiding it at that breakpoint size.
 * You can combine one `.hidden-*-up` class with one `.hidden-*-down` class to show an element only on a given interval of screen sizes. For example, `.hidden-sm-down.hidden-xl-up` shows the element only on medium and large viewports. Using multiple `.hidden-*-up` classes or multiple `.hidden-*-down` classes is redundant and pointless.
 * These classes don't attempt to accommodate less common cases where an element's visibility can't be expressed as a single contiguous range of viewport breakpoint sizes; you will instead need to use custom CSS in such cases.
@@ -23,23 +23,23 @@ Try to use these on a limited basis and avoid creating entirely different versio
         <th></th>
         <th>
           Extra small devices
-          <small>Portrait phones (&lt;34em)</small>
+          <small>Portrait phones (&lt;544px)</small>
         </th>
         <th>
           Small devices
-          <small>Landscape phones (&ge;34em)</small>
+          <small>Landscape phones (&ge;544px - &lt;768px)</small>
         </th>
         <th>
           Medium devices
-          <small>Tablets (&ge;48em)</small>
+          <small>Tablets (&ge;768px - &lt;992px)</small>
         </th>
         <th>
           Large devices
-          <small>Desktops (&ge;62em)</small>
+          <small>Desktops (&ge;992px - &lt;1200px)</small>
         </th>
         <th>
           Extra large devices
-          <small>Desktops (&ge;75em)</small>
+          <small>Desktops (&ge;1200px)</small>
         </th>
       </tr>
     </thead>

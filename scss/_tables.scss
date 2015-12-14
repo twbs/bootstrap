@@ -12,16 +12,16 @@
     padding: $table-cell-padding;
     line-height: $line-height;
     vertical-align: top;
-    border-top: 1px solid $table-border-color;
+    border-top: $table-border-width solid $table-border-color;
   }
 
   thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid $table-border-color;
+    border-bottom: (2 * $table-border-width) solid $table-border-color;
   }
 
   tbody + tbody {
-    border-top: 2px solid $table-border-color;
+    border-top: (2 * $table-border-width) solid $table-border-color;
   }
 
   .table {
@@ -47,17 +47,17 @@
 // Add borders all around the table and between all the columns.
 
 .table-bordered {
-  border: 1px solid $table-border-color;
+  border: $table-border-width solid $table-border-color;
 
   th,
   td {
-    border: 1px solid $table-border-color;
+    border: $table-border-width solid $table-border-color;
   }
 
   thead {
     th,
     td {
-      border-bottom-width: 2px;
+      border-bottom-width: (2 * $table-border-width);
     }
   }
 }
@@ -114,7 +114,7 @@
 
   // TODO: find out if we need this still.
   //
-  // border: 1px solid $table-border-color;
+  // border: $table-border-width solid $table-border-color;
   // -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
 }
 
@@ -160,11 +160,11 @@
 
   th,
   td {
-    border-top: 1px solid $table-border-color;
-    border-left: 1px solid $table-border-color;
+    border-top: $table-border-width solid $table-border-color;
+    border-left: $table-border-width solid $table-border-color;
 
     &:last-child {
-      border-right: 1px solid $table-border-color;
+      border-right: $table-border-width solid $table-border-color;
     }
   }
 
@@ -175,7 +175,7 @@
       tr:last-child {
         th,
         td {
-          border-bottom: 1px solid $table-border-color;
+          border-bottom: $table-border-width solid $table-border-color;
         }
       }
     }
@@ -187,7 +187,7 @@
     th,
     td {
       display: block !important;
-      border: 1px solid $table-border-color;
+      border: $table-border-width solid $table-border-color;
     }
   }
 }

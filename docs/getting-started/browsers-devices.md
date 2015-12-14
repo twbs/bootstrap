@@ -112,14 +112,6 @@ Internet Explorer 9 is also supported, however, please be aware that some CSS3 p
     </thead>
     <tbody>
       <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius"><code>border-radius</code></a></th>
-        <td class="text-success">Supported</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow"><code>box-shadow</code></a></th>
-        <td class="text-success">Supported</td>
-      </tr>
-      <tr>
         <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform"><code>transform</code></a></th>
         <td class="text-success">Supported, with <code>-ms</code> prefix</td>
       </tr>
@@ -218,7 +210,7 @@ Even in some modern browsers, printing can be quirky.
 
 In particular, as of Chrome v32 and regardless of margin settings, Chrome uses a viewport width significantly narrower than the physical paper size when resolving media queries while printing a webpage. This can result in Bootstrap's extra-small grid being unexpectedly activated when printing. [See #12078 for some details.](https://github.com/twbs/bootstrap/issues/12078) Suggested workarounds:
 
-Also, as of Safari v8.0, fixed-width <code>.container</code>s can cause Safari to use an unusually small font size when printing. See <a href="https://github.com/twbs/bootstrap/issues/14868">#14868</a> for more details. One potential workaround for this is adding the following CSS:</p>
+Also, as of Safari v8.0, fixed-width <code>.container</code>s can cause Safari to use an unusually small font size when printing. See <a href="https://github.com/twbs/bootstrap/issues/14868">#14868</a> for more details. One potential workaround for this is adding the following CSS:
 
 {% highlight css %}
 @media print {
