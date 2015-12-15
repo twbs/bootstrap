@@ -27,6 +27,17 @@
   top: -1px;
 }
 
+// Fix vertical alignment on floated labels in list group item
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    .list-group-item .label.pull-#{$breakpoint}-left,
+    .list-group-item .label.pull-#{$breakpoint}-right {
+        position: relative;
+        top: #{(($line-height / .75) - 1 - .5) / 2}em;
+    }
+  }
+}
+
 // Add hover effects, but only for links
 a.label {
   @include hover-focus {
