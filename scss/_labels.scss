@@ -32,8 +32,8 @@
   @include media-breakpoint-up($breakpoint) {
     .list-group-item .label.pull-#{$breakpoint}-left,
     .list-group-item .label.pull-#{$breakpoint}-right {
-        position: relative;
-        top: #{(($line-height / .75) - 1 - .5) / 2}em;
+      position: relative;
+      top: #{(($line-height / .75) - 1 - .5) / 2}em;
     }
   }
 }
