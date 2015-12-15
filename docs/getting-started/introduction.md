@@ -39,7 +39,7 @@ Be sure to have your pages set up with the latest design and development standar
 
 * Using an HTML5 doctype
 * Forcing Internet Explorer to use its latest rendering mode ([read more](http://stackoverflow.com/q/6771258))
-* And, utilizing the viewport meta tag.
+* And, utilizing the [viewport meta tag](#responsive-meta-tag).
 
 Put it all together and your pages should look like this:
 
