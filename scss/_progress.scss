@@ -38,9 +38,6 @@
   @include border-radius($border-radius);
   @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
 }
-.progress[value]::-webkit-progress-value::before {
-  content: attr(value);
-}
 .progress[value]::-webkit-progress-value {
   background-color: #0074d9;
   border-top-left-radius: $border-radius;
