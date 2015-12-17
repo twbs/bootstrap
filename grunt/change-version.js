@@ -100,6 +100,6 @@ function main(args) {
     '.yml'
   ]);
   replaceRecursively('.', EXCLUDED_DIRS, INCLUDED_EXTENSIONS, oldVersion, newVersion);
-};
+}
 
 main(process.argv.slice(2));
