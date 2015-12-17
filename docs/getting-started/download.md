@@ -36,17 +36,13 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 **Heads up!** Not all package managers have the v4 alpha published yet, but we should have them up shortly!
 {% endcallout %}
 
-### Bower
-
-Install and manage Bootstrap's Sass and JavaScript using [Bower](http://bower.io).
-
-{% highlight bash %}$ bower install bootstrap#v{{ site.current_version }}{% endhighlight %}
-
 ### npm
 
 Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.org/package/bootstrap):
 
-{% highlight bash %}$ npm install bootstrap@{{ site.current_version }}{% endhighlight %}
+{% highlight bash %}
+$ npm install bootstrap@{{ site.current_version }}
+{% endhighlight %}
 
 `require('bootstrap')` will load all of Bootstrap's jQuery plugins onto the jQuery object. The `bootstrap` module itself does not export anything. You can manually load Bootstrap's jQuery plugins individually by loading the `/js/*.js` files under the package's top-level directory.
 
@@ -54,6 +50,22 @@ Bootstrap's `package.json` contains some additional metadata under the following
 
 - `sass` - path to Bootstrap's main [Sass](http://sass-lang.com/) source file
 - `style` - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)
+
+### RubyGems
+
+Install Bootstrap in your Ruby apps using [Bundler](http://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](http://bundler.io/gemfile.html):
+
+{% highlight ruby %}
+gem 'bootstrap', '~> 4.0.0.alpha3'
+{% endhighlight %}
+
+Alternatively, if you're not using Bundler, you can install the gem by running this command:
+
+{% highlight bash %}
+$ gem install bootstrap -v 4.0.0.alpha3
+{% endhighlight %}
+
+[See the gem's README](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md) for further details.
 
 ### Meteor
 
@@ -67,6 +79,14 @@ You can also install and manage Bootstrap's Sass and JavaScript using [Composer]
 
 {% highlight bash %}
 $ composer require twbs/bootstrap
+{% endhighlight %}
+
+### Bower
+
+Install and manage Bootstrap's Sass and JavaScript using [Bower](http://bower.io).
+
+{% highlight bash %}
+$ bower install bootstrap#v{{ site.current_version }}
 {% endhighlight %}
 
 ### NuGet
