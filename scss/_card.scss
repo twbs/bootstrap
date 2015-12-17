@@ -180,22 +180,23 @@
     .card-deck {
       display: flex;
       flex-flow: row wrap;
-      margin-right: -.625rem;
-      margin-left: -.625rem;
+      margin-right: -$card-deck-margin;
+      margin-left: -$card-deck-margin;
 
       .card {
         flex: 1 0 0;
-        margin-right: .625rem;
-        margin-left: .625rem;
+        margin-right: $card-deck-margin;
+        margin-left: $card-deck-margin;
       }
     }
   }
 } @else {
   @include media-breakpoint-up(sm) {
+    $space-between-cards: (2 * $card-deck-margin);
     .card-deck {
       display: table;
       table-layout: fixed;
-      border-spacing: 1.25rem 0;
+      border-spacing: $space-between-cards 0;
 
       .card {
         display: table-cell;
@@ -204,8 +205,8 @@
       }
     }
     .card-deck-wrapper {
-      margin-right: -1.25rem;
-      margin-left: -1.25rem;
+      margin-right: (-$space-between-cards);
+      margin-left: (-$space-between-cards);
     }
   }
 }
