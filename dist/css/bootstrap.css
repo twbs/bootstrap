@@ -3617,6 +3617,8 @@ tbody.collapse.in {
   bottom: 0;
   left: 0;
   z-index: 990;
+
+  will-change: transform;
 }
 .pull-right > .dropdown-menu {
   right: 0;
@@ -4258,6 +4260,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   right: 0;
   left: 0;
   z-index: 1030;
+
+  will-change: transform;
 }
 @media (min-width: 768px) {
   .navbar-fixed-top,
@@ -5880,6 +5884,8 @@ button.close {
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   outline: 0;
+
+  will-change: transform;
 }
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform .3s ease-out;
@@ -5925,6 +5931,8 @@ button.close {
   left: 0;
   z-index: 1040;
   background-color: #000;
+
+  will-change: transform;
 }
 .modal-backdrop.fade {
   filter: alpha(opacity=0);
@@ -6546,6 +6554,8 @@ button.close {
 }
 .affix {
   position: fixed;
+
+  will-change: transform;
 }
 @-ms-viewport {
   width: device-width;
