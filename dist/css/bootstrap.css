@@ -1217,6 +1217,35 @@ h6 .small,
   line-height: 1;
   color: #777;
 }
+h1 big,
+h2 big,
+h3 big,
+h4 big,
+h5 big,
+h6 big,
+.h1 big,
+.h2 big,
+.h3 big,
+.h4 big,
+.h5 big,
+.h6 big,
+h1 .big,
+h2 .big,
+h3 .big,
+h4 .big,
+h5 .big,
+h6 .big,
+.h1 .big,
+.h2 .big,
+.h3 .big,
+.h4 .big,
+.h5 .big,
+.h6 .big {
+  font-weight: bold;
+  line-height: 2;
+  font-size: 80%;
+  color: #777;
+}
 h1,
 .h1,
 h2,
