@@ -17,7 +17,7 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
 
 ### Mobile devices
 
-Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini) are not supported.
+Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
 
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
