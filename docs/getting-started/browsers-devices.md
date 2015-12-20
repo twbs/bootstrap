@@ -17,7 +17,7 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
 
 ### Mobile devices
 
-Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers.
+Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini) are not supported.
 
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
@@ -26,7 +26,6 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
         <td></td>
         <th>Chrome</th>
         <th>Firefox</th>
-        <th>Opera</th>
         <th>Safari</th>
         <th>Android Browser &amp; WebView</th>
       </tr>
@@ -36,15 +35,13 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
         <th scope="row">Android</th>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
-        <td class="text-danger">Not supported</td>
         <td class="text-muted">N/A</td>
         <td class="text-success">Android v5.0+ supported</td>
       </tr>
       <tr>
         <th scope="row">iOS</th>
         <td class="text-success">Supported</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-danger">Not supported</td>
+        <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-muted">N/A</td>
       </tr>
@@ -86,7 +83,7 @@ Similarly, the latest versions of most desktop browsers are supported.
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
-        <td class="text-danger">Not supported</td>
+        <td class="text-muted">N/A</td>
       </tr>
     </tbody>
   </table>
