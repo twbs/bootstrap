@@ -98,34 +98,34 @@ Unofficially, Bootstrap should look and behave well enough in Chromium and Chrom
 
 For a list of some of the browser bugs that Bootstrap has to grapple with, see our [Wall of browser bugs]({{ site.baseurl }}/browser-bugs/).
 
-## Internet Explorer 9
+## Internet Explorer 9 & 10
 
-Internet Explorer 9 is also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported.
+Internet Explorer 9 & 10 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported.
 
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th scope="col">Feature</th>
-        <th scope="col">Status</th>
+        <th scope="col">Internet Explorer 9</th>
+        <th scope="col">Internet Explorer 10</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform"><code>transform</code></a></th>
-        <td class="text-success">Supported, with <code>-ms</code> prefix</td>
-      </tr>
-      <tr>
         <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition"><code>transition</code></a></th>
         <td class="text-danger">Not supported</td>
+        <td class="text-success">Supported</td>
       </tr>
       <tr>
         <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-placeholder"><code>placeholder</code></a></th>
         <td class="text-danger">Not supported</td>
+        <td class="text-success">Supported</td>
       </tr>
       <tr>
         <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">Flexbox</a></th>
         <td class="text-danger">Not supported</td>
+        <td class="text-warning">Partially supported, with <code>-ms</code> prefix<br><a href="http://caniuse.com/#feat=flexbox">See <em>Can I use</em> for details</a></td>
       </tr>
     </tbody>
   </table>
