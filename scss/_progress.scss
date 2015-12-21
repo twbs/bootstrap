@@ -29,7 +29,7 @@
   @include border-radius($border-radius);
 }
 .progress[value]::-ms-fill {
-  background-color: #0074d9;
+  background-color: $progress-bar-color;
   // Remove right-hand border of value bar from IE10+/Edge
   border: 0;
 }
@@ -39,7 +39,7 @@
   @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
 }
 .progress[value]::-webkit-progress-value {
-  background-color: #0074d9;
+  background-color: $progress-bar-color;
   border-top-left-radius: $border-radius;
   border-bottom-left-radius: $border-radius;
 }
@@ -59,7 +59,7 @@
 //     .box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
 //   }
 //   .progress[value]::-moz-progress-bar {
-//     background-color: #0074d9;
+//     background-color: $progress-bar-color;
 //     border-top-left-radius: $border-radius;
 //     border-bottom-left-radius: $border-radius;
 //   }
@@ -86,7 +86,7 @@
     display: inline-block;
     height: $spacer-y;
     text-indent: -999rem; // Simulate hiding of value as in native `<progress>`
-    background-color: #0074d9;
+    background-color: $progress-bar-color;
     border-top-left-radius: $border-radius;
     border-bottom-left-radius: $border-radius;
   }
