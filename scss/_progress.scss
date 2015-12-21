@@ -20,7 +20,7 @@
 }
 .progress[value] {
   // Set overall background
-  background-color: #eee;
+  background-color: $progress-bg;
   // Remove Firefox and Opera border
   border: 0;
   // Reset the default appearance
@@ -34,7 +34,7 @@
   border: 0;
 }
 .progress[value]::-webkit-progress-bar {
-  background-color: #eee;
+  background-color: $progress-bg;
   @include border-radius($border-radius);
   @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
 }
@@ -54,7 +54,7 @@
 //
 // $-moz-document url-prefix() {
 //   .progress[value] {
-//     background-color: #eee;
+//     background-color: $progress-bg;
 //     .border-radius($border-radius);
 //     .box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
 //   }
@@ -78,7 +78,7 @@
 // IE9 hacks to accompany custom markup. We don't need to scope this via media queries, but I feel better doing it anyway.
 @media screen and (min-width:0\0) {
   .progress {
-    background-color: #eee;
+    background-color: $progress-bg;
     @include border-radius($border-radius);
     @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
   }
