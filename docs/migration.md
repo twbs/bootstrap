@@ -127,7 +127,7 @@ Dropped entirely for the new card component.
 - `.panel` to `.card`
 - `.panel-default` removed and no replacement
 - `.panel-heading` to `.card-header`
-- `.panel-title` to `.card-title`
+- `.panel-title` to `.card-header`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/components/utilities/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
 - `.panel-body` to `.card-block`
 - `.panel-footer` to `.card-footer`
 - `.panel-primary` to `.card-primary` and `.card-inverse`
