@@ -5,53 +5,52 @@
   text-align: center;
   list-style: none;
   @include clearfix();
+}
 
-  li {
-    display: inline;
+.pager-item {
+  display: inline;
+}
 
-    > a,
-    > span {
-      display: inline-block;
-      padding: 5px 14px;
-      background-color: $pager-bg;
-      border: $pager-border-width solid $pager-border-color;
-      border-radius: $pager-border-radius;
-    }
+.pager-link, 
+.pager-text {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: $pager-bg;
+  border: $pager-border-width solid $pager-border-color;
+  border-radius: $pager-border-radius;
+}
 
-    > a {
-      @include hover-focus {
+.pager-link {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: $pager-bg;
+  border: $pager-border-width solid $pager-border-color;
+  border-radius: $pager-border-radius;
+  @include hover-focus {
         text-decoration: none;
         background-color: $pager-hover-bg;
-      }
+  }
+  &.disabled {
+    @include plain-hover-focus {
+    color: $pager-disabled-color;
+    cursor: $cursor-disabled;
+    background-color: $pager-bg;
     }
   }
+}
 
-  .disabled {
-    > a {
-      @include plain-hover-focus {
-        color: $pager-disabled-color;
-        cursor: $cursor-disabled;
-        background-color: $pager-bg;
-      }
-    }
-    > span {
-      color: $pager-disabled-color;
-      cursor: $cursor-disabled;
-      background-color: $pager-bg;
-    }
+.pager-text {
+  &.disabled {
+    color: $pager-disabled-color;
+    cursor: $cursor-disabled;
+    background-color: $pager-bg;
   }
 }
 
 .pager-next {
-  > a,
-  > span {
-    float: right;
-  }
+  float: right;
 }
 
 .pager-prev {
-  > a,
-  > span {
-    float: left;
-  }
+  float: left;
 }
