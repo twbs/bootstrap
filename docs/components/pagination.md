@@ -145,8 +145,8 @@ By default, the pager centers links.
 {% example html %}
 <nav>
   <ul class="pager">
-    <li><a href="#">Previous</a></li>
-    <li><a href="#">Next</a></li>
+    <li class="pager-item"><a class="pager-link" href="#">Previous</a></li>
+    <li class="pager-item"><a class="pager-link" href="#">Next</a></li>
   </ul>
 </nav>
 {% endexample %}
@@ -158,8 +158,8 @@ Alternatively, you can align each link to the sides:
 {% example html %}
 <nav>
   <ul class="pager">
-    <li class="pager-prev"><a href="#">Older</a></li>
-    <li class="pager-next"><a href="#">Newer</a></li>
+    <li class="pager-item pager-prev"><a class="pager-link" href="#">Older</a></li>
+    <li class="pager-item pager-next"><a class="pager-link" href="#">Newer</a></li>
   </ul>
 </nav>
 {% endexample %}
@@ -172,8 +172,30 @@ Pager links also use the `.disabled` class.
 {% example html %}
 <nav>
   <ul class="pager">
-    <li class="pager-prev disabled"><a href="#">Older</a></li>
-    <li class="pager-next"><a href="#">Newer</a></li>
+    <li class="pager-item pager-prev"><a class="pager-link disabled" href="#">Older</a></li>
+    <li class="pager-item pager-next"><a class="pager-link" href="#">Newer</a></li>
+  </ul>
+</nav>
+{% endexample %}
+
+### Without lists
+
+Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element.
+
+{% example html %}
+<nav class="pager">
+  <a class="pager-prev pager-link" href="#">Previous</a>
+  <a class="pager-next pager-link" href="#">Next</a>
+</nav>
+{% endexample %}
+
+### Pager texts
+
+{% example html %}
+<nav>
+  <ul class="pager">
+    <li class="pager-item"><span class="pager-text" href="#">Previous</span></li>
+    <li class="pager-item"><span class="pager-text" href="#">Next</span></li>
   </ul>
 </nav>
 {% endexample %}
