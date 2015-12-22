@@ -188,6 +188,9 @@
         color: $navbar-light-active-color;
       }
     }
+   .nav-link.disabled {
+      color: $navbar-light-disabled-color;
+    }
   }
 
   .navbar-divider {
@@ -221,6 +224,9 @@
       @include plain-hover-focus {
         color: $navbar-dark-active-color;
       }
+    }
+   .nav-link.disabled {
+      color: $navbar-dark-disabled-color;
     }
   }
 
