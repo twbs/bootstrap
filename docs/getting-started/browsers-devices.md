@@ -13,7 +13,7 @@ Bootstrap supports a wide variety of modern browsers and devices, and some older
 
 ## Supported browsers
 
-Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11 / Microsoft Edge**. Alternative browsers which use the latest version of Webkit, Blink, Gecko or the platform's own rendering engine / web view are not explicitly supported – however, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11 / Microsoft Edge**. Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported – however, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
 ### Mobile devices
 
