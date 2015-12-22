@@ -194,8 +194,8 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 {% example html %}
 <nav>
   <ul class="pager">
-    <li class="pager-item"><span class="pager-text" href="#">Previous</span></li>
-    <li class="pager-item"><span class="pager-text" href="#">Next</span></li>
+    <li class="pager-item"><span class="pager-text">Previous</span></li>
+    <li class="pager-item"><span class="pager-text">Next</span></li>
   </ul>
 </nav>
 {% endexample %}
