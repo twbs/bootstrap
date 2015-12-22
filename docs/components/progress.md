@@ -38,7 +38,7 @@ Internet Explorer 9 doesn't support the HTML5 `<progress>` element, but we can w
 Progress bars use some of the same button and alert classes for consistent styles.
 
 {% example html %}
-<progress class="progress progress-progress-primary" value="10" max="100">10%</progress>
+<progress class="progress progress-primary" value="10" max="100">10%</progress>
 <progress class="progress progress-success" value="25" max="100">25%</progress>
 <progress class="progress progress-info" value="50" max="100">50%</progress>
 <progress class="progress progress-warning" value="75" max="100">75%</progress>
