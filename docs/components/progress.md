@@ -61,7 +61,7 @@ Uses a gradient to create a striped effect.
 
 The striped gradient can also be animated. Add `.progress-animated` to `.progress` to animate the stripes right to left via CSS3 animations.
 
-**Most browser don't support CSS3 animations on the `::-*-fill` pseudo-element so apply `.progress` on <div>s to animate the stripes 
+**Most browser don't support CSS3 animations on the `::-*-fill` pseudo-element so apply `.progress` on `<div>`s to animate the stripes 
 
 {% example html %}
 <div class="progress progress-primary progress-animated">
