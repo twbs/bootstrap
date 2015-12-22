@@ -38,7 +38,7 @@ Here's an example of all the sub-components included in a default, light navbar:
       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
+      <a class="nav-link disabled" href="#">Features</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Pricing</a>
@@ -98,7 +98,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 <nav class="navbar navbar-light bg-faded">
   <div class="nav navbar-nav">
     <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-    <a class="nav-item nav-link" href="#">Features</a>
+    <a class="nav-item nav-link disabled" href="#">Features</a>
     <a class="nav-item nav-link" href="#">Pricing</a>
     <a class="nav-item nav-link" href="#">About</a>
   </div>
