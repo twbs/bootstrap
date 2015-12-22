@@ -11,7 +11,7 @@
   display: inline;
 }
 
-.pager-link, 
+.pager-link,
 .pager-text {
   display: inline-block;
   padding: 5px 14px;
@@ -27,14 +27,14 @@
   border: $pager-border-width solid $pager-border-color;
   border-radius: $pager-border-radius;
   @include hover-focus {
-        text-decoration: none;
-        background-color: $pager-hover-bg;
+    text-decoration: none;
+    background-color: $pager-hover-bg;
   }
   &.disabled {
     @include plain-hover-focus {
-    color: $pager-disabled-color;
-    cursor: $cursor-disabled;
-    background-color: $pager-bg;
+      color: $pager-disabled-color;
+      cursor: $cursor-disabled;
+      background-color: $pager-bg;
     }
   }
 }
