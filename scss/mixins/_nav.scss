@@ -9,7 +9,7 @@
   }
 
   .nav-link {
-    margin-bottom: 5px;
+    margin-bottom: $nav-tabs-justified-link-margin-bottom;
     text-align: center;
   }
 
@@ -37,24 +37,27 @@
 
   .nav-link { // Override margin from .nav-tabs
     margin-right: 0;
-    border-radius: $border-radius;
+    @include border-radius($nav-tabs-justified-link-border-radius);
   }
 
-  .nav-link.active,
-  .nav-link.active:hover,
-  .nav-link.active:focus {
-    border: 1px solid $nav-tabs-justified-link-border-color;
+  .nav-link.active {
+    @include plain-hover-focus {
+      border: $nav-tabs-justified-link-border-width solid $nav-tabs-justified-link-border-color;
+    }
   }
 
   @include media-breakpoint-up(md) {
-    .nav-link {
-      border-bottom: 1px solid $nav-tabs-justified-link-border-color;
-      border-radius: $border-radius $border-radius 0 0;
+    .nav-link, 
+    .nav-link.disabled,
+    .nav-link.disabled:hover
+    {
+      border-bottom: $nav-tabs-justified-link-border-width solid $nav-tabs-justified-link-border-color;
+      @include border-top-radius($nav-tabs-justified-link-border-radius);
     }
-   .nav-link.active,
-   .nav-link.active:hover,
-   .nav-link.active:focus {
-      border-bottom-color: $nav-tabs-justified-active-link-border-color;
-    }
+   .nav-link.active {
+      @include plain-hover-focus {
+        border-bottom-color: $nav-tabs-justified-active-link-border-color;
+      }
+    }  
   }
 }
