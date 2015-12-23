@@ -18,10 +18,12 @@ Assign `margin` or `padding` to an element or a subset of its sides with shortha
 The classes are named using the format: `{property}-{sides}-{size}`
 
 Where *property* is one of:
+
 * `m` - for classes that set `margin`
 * `p` - for classes that set `padding`
 
 Where *sides* is one of:
+
 * `t` - for classes that set `margin-top` or `padding-top`
 * `b` - for classes that set `margin-bottom` or `padding-bottom`
 * `l` - for classes that set `margin-left` or `padding-left`
@@ -31,6 +33,7 @@ Where *sides* is one of:
 * `a` - for classes that set a `margin` or `padding` on all 4 sides of the element
 
 Where *size* is one of:
+
 * `0` - for classes that eliminate the `margin` or `padding` by setting it to `0`
 * `1` - (by default) for classes that set the `margin` or `padding` to `$spacer-x` or `$spacer-y`
 * `2` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 1.5` or `$spacer-y * 1.5`
