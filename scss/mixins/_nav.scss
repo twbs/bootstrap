@@ -9,8 +9,8 @@
   }
 
   .nav-link {
-    text-align: center;
     margin-bottom: 5px;
+    text-align: center;
   }
 
   .dropdown .dropdown-menu {
@@ -24,7 +24,7 @@
       width: 1%;
     }
     .nav-link {
-        margin-bottom: 0;
+      margin-bottom: 0;
     }
   }
 }
@@ -35,8 +35,7 @@
 @mixin nav-tabs-justified {
   border-bottom: 0;
 
-  .nav-link {
-    // Override margin from .nav-tabs
+  .nav-link { // Override margin from .nav-tabs
     margin-right: 0;
     border-radius: $border-radius;
   }
