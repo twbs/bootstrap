@@ -54,10 +54,10 @@
       border-bottom: $nav-tabs-justified-link-border-width solid $nav-tabs-justified-link-border-color;
       @include border-top-radius($nav-tabs-justified-link-border-radius);
     }
-   .nav-link.active {
+    .nav-link.active {
       @include plain-hover-focus {
         border-bottom-color: $nav-tabs-justified-active-link-border-color;
       }
-    }  
+    }
   }
 }
