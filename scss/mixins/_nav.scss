@@ -49,8 +49,7 @@
   @include media-breakpoint-up(md) {
     .nav-link, 
     .nav-link.disabled,
-    .nav-link.disabled:hover
-    {
+    .nav-link.disabled:hover {
       border-bottom: $nav-tabs-justified-link-border-width solid $nav-tabs-justified-link-border-color;
       @include border-top-radius($nav-tabs-justified-link-border-radius);
     }
