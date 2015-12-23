@@ -517,19 +517,33 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 No official help text classes exist in Bootstrap 4 (previously we had `.help-block` in v3), but thanks to our utility classes like `.text-muted`, you can create much more flexible help text as you need it.
 
+{% callout warning %}
+#### Associating help text with form controls
+
+Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.
+{% endcallout %}
+
 Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else).
 
 {% example html %}
-<small class="text-muted">
-  Some inline text with a small tag looks like this.
-</small>
+<form class="form-inline">
+  <div class="form-group">
+    <label for="inputPassword4">Password</label>
+    <input type="password" id="inputPassword4" class="form-control" aria-describedby="passwordHelpInline">
+    <small id="passwordHelpInline" class="text-muted">
+      Must be 8-20 characters long.
+    </small>
+  </div>
+</form>
 {% endexample %}
 
 Block help text—for below inputs or for longer lines of help text—can be easily achieved with a `<p>`.
 
 {% example html %}
-<p class="text-muted">
-  A block of help text that breaks onto a new line and may extend beyond one line.
+<label for="inputPassword5">Password</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+<p id="passwordHelpBlock" class="text-muted">
+  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters or emoji. 
 </p>
 {% endexample %}
 
