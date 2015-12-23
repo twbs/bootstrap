@@ -95,6 +95,8 @@ Transform text in components with text capitalization classes.
 <p class="text-capitalize">CapiTaliZed text.</p>
 {% endexample %}
 
+Note how `text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
+
 ## Font weight and italics
 
 Quickly change the weight (boldness) of text or italicize text.
@@ -102,7 +104,7 @@ Quickly change the weight (boldness) of text or italicize text.
 {% example html %}
 <p class="font-weight-bold">Bold text.</p>
 <p class="font-weight-normal">Normal weight text.</p>
-<p class="font-italic">Italicized text.</p>
+<p class="font-italic">Italic text.</p>
 {% endexample %}
 
 ## Contextual colors and backgrounds
