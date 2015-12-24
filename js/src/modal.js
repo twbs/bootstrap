@@ -259,8 +259,9 @@ const Modal = (($) => {
       $(document)
         .off(Event.FOCUSIN) // guard against infinite focus loop
         .on(Event.FOCUSIN, (event) => {
-          if (this._element !== event.target &&
-             (!$(this._element).has(event.target).length)) {
+          if (document !== event.target &&
+              this._element !== event.target &&
+              (!$(this._element).has(event.target).length)) {
             this._element.focus()
           }
         })
