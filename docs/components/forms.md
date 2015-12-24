@@ -21,8 +21,8 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
 <form>
   <fieldset class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-    <small class="text-muted">We'll never share your email with anyone else.</small>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="text-muted">We'll never share your email with anyone else.</small>
   </fieldset>
   <fieldset class="form-group">
     <label for="exampleInputPassword1">Password</label>
@@ -54,8 +54,8 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   </fieldset>
   <fieldset class="form-group">
     <label for="exampleInputFile">File input</label>
-    <input type="file" class="form-control-file" id="exampleInputFile">
-    <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    <small id="fileHelp" class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </fieldset>
   <div class="radio">
     <label>
