@@ -1453,7 +1453,7 @@ dd {
   margin-left: 0;
 }
 @media (min-width: 768px) {
-  .dl-horizontal dt {
+  .dl-horizontal > dt {
     float: left;
     width: 160px;
     overflow: hidden;
@@ -1462,7 +1462,7 @@ dd {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .dl-horizontal dd {
+  .dl-horizontal > dd {
     margin-left: 180px;
   }
 }
@@ -6463,8 +6463,8 @@ button.close {
 }
 .clearfix:before,
 .clearfix:after,
-.dl-horizontal dd:before,
-.dl-horizontal dd:after,
+.dl-horizontal > dd:before,
+.dl-horizontal > dd:after,
 .container:before,
 .container:after,
 .container-fluid:before,
@@ -6497,7 +6497,7 @@ button.close {
   content: " ";
 }
 .clearfix:after,
-.dl-horizontal dd:after,
+.dl-horizontal > dd:after,
 .container:after,
 .container-fluid:after,
 .row:after,
