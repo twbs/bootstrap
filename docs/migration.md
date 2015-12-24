@@ -34,6 +34,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
   - the upstream version of [Glyphicons](http://glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
   - [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
+    - [How to add icon fonts](http://stackoverflow.com/a/33768443/1596547) 
 - Dropped the Affix jQuery plugin. We recommend using a `position: sticky` polyfill instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations.
   - If you were using Affix to apply additional, non-`position` styles, the polyfills might not support your use case. One option for such uses is the third-party [ScrollPos-Styler](https://github.com/acch/scrollpos-styler) library.
 - Refactored nearly all components to use more unnested classes instead of children selectors.
