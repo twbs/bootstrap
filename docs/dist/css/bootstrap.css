@@ -66,7 +66,7 @@ abbr[title] {
 
 b,
 strong {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 dfn {
@@ -214,7 +214,7 @@ textarea {
 }
 
 optgroup {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 table {
@@ -374,7 +374,7 @@ ul ol {
 }
 
 dt {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 dd {
@@ -739,7 +739,7 @@ kbd {
 kbd kbd {
   padding: 0;
   font-size: 100%;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 pre {
@@ -4217,7 +4217,7 @@ input[type="button"].btn-block {
   display: inline-block;
   padding: .25em .4em;
   font-size: 75%;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1;
   color: #fff;
   text-align: center;
@@ -4339,7 +4339,7 @@ a.label:focus, a.label:hover {
 }
 
 .alert-link {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .alert-dismissible {
@@ -4919,7 +4919,7 @@ button.list-group-item-danger.active:hover {
 .close {
   float: right;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
@@ -5759,7 +5759,7 @@ button.close {
 }
 
 .font-weight-bold {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .font-italic {

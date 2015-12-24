@@ -194,9 +194,9 @@ $blockquote-border-color:     $gray-lighter !default;
 $hr-border-color:             rgba(0,0,0,.1) !default;
 $hr-border-width:             $border-width !default;
 
-$dt-font-weight:              bold !default;
+$dt-font-weight:              700 !default;
 
-$nested-kbd-font-weight:      bold !default;
+$nested-kbd-font-weight:      700 !default;
 
 $list-inline-padding:         5px !default;
 
@@ -529,7 +529,7 @@ $label-danger-bg:             $brand-danger !default;
 
 $label-color:                 #fff !default;
 $label-link-hover-color:      #fff !default;
-$label-font-weight:           bold !default;
+$label-font-weight:           700 !default;
 
 
 // Modals
@@ -559,7 +559,7 @@ $modal-sm:                    300px !default;
 
 $alert-padding:               15px !default;
 $alert-border-radius:         $border-radius !default;
-$alert-link-font-weight:      bold !default;
+$alert-link-font-weight:      700 !default;
 $alert-border-width:          $border-width !default;
 
 $alert-success-bg:            $state-success-bg !default;
@@ -651,7 +651,7 @@ $carousel-caption-color:                      #fff !default;
 
 // Close
 
-$close-font-weight:           bold !default;
+$close-font-weight:           700 !default;
 $close-color:                 #000 !default;
 $close-text-shadow:           0 1px 0 #fff !default;
 
