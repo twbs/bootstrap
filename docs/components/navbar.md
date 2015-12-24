@@ -247,7 +247,7 @@ Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden con
   </div>
 </div>
 <nav class="navbar navbar-light bg-faded">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
     &#9776;
   </button>
 </nav>
@@ -257,7 +257,7 @@ For more complex navbar patterns, like those used in Bootstrap v3, use the `.nav
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
     &#9776;
   </button>
   <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
