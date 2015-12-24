@@ -108,6 +108,8 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 ### Pager
 
+- Dropped all `>` selectors for simpler styling via un-nested classes.
+- Instead of HTML-specific selectors like `.pager > li > a` and `.pager > li > span`, we use separate classes for `.pager`s, `.pager-item`s, `.pager-link`s and `.pager-text`. This makes your HTML more flexible while bringing along increased extensibility.
 - Renamed `.previous` and `.next` to `.pager-prev` and `.pager-next`.
 
 ### Pagination
