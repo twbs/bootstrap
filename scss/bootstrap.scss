@@ -8,6 +8,10 @@
 @import "variables";
 @import "mixins";
 
+// Utilities
+@import "utilities/color/brightness";
+@import "utilities/color/contrast";
+
 // Reset and dependencies
 @import "normalize";
 @import "print";
