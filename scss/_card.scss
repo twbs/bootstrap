@@ -12,6 +12,7 @@
 }
 
 .card-block {
+  @include clearfix;
   padding: $card-spacer-x;
 }
 
