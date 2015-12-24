@@ -43,21 +43,18 @@
 }
 
 .progress[value]::-webkit-progress-value {
-  border-top-left-radius: $progress-border-radius;
-  border-bottom-left-radius: $progress-border-radius;
+  @include border-left-radius($progress-border-radius);
 }
 
 .progress[value="100"]::-webkit-progress-value {
-  border-top-right-radius: $progress-border-radius;
-  border-bottom-right-radius: $progress-border-radius;
+  @include border-right-radius($progress-border-radius);
 }
 
 .progress-bar {
   display: inline-block;
   height: $spacer-y;
   text-indent: -999rem; // Simulate hiding of value as in native `<progress>`
-  border-top-left-radius: $progress-border-radius;
-  border-bottom-left-radius: $progress-border-radius;
+  @include border-left-radius($progress-border-radius);
 }
 
 .progress[width^="0"] {
@@ -67,8 +64,7 @@
   background-image: none;
 }
 .progress[width="100%"] {
-  border-top-right-radius: $progress-border-radius;
-  border-bottom-right-radius: $progress-border-radius;
+  @include border-right-radius($progress-border-radius);
 }
 
 //
