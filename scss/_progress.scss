@@ -28,15 +28,12 @@
   // Set overall border radius
   @include border-radius($border-radius);
 }
+
+// Filled-in portion of the bar
 .progress[value]::-ms-fill {
   background-color: $progress-bar-color;
   // Remove right-hand border of value bar from IE10+/Edge
   border: 0;
-}
-.progress[value]::-webkit-progress-bar {
-  background-color: $progress-bg;
-  @include border-radius($border-radius);
-  @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
 }
 .progress[value]::-webkit-progress-value {
   background-color: $progress-bar-color;
@@ -46,6 +43,13 @@
 .progress[value="100"]::-webkit-progress-value {
   border-top-right-radius: $border-radius;
   border-bottom-right-radius: $border-radius;
+}
+
+// Unfilled portion of the bar
+.progress[value]::-webkit-progress-bar {
+  background-color: $progress-bg;
+  @include border-radius($border-radius);
+  @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
 }
 
 // Firefox styles must be entirely separate or it busts Webkit styles.
