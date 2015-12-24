@@ -12,6 +12,7 @@
 }
 
 .card-block {
+  @include clearfix;
   padding: $card-spacer-x;
 }
 
@@ -68,6 +69,7 @@
 //
 
 .card-header {
+  @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-bottom: $card-border-width solid $card-border-color;
@@ -78,6 +80,7 @@
 }
 
 .card-footer {
+  @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;
