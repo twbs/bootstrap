@@ -140,6 +140,14 @@ Dropped entirely for the new card component.
 
 - Renamed `.item` to `.carousel-item`.
 
+### Progress bars
+
+- The `.progress` on `div`s is replaced with the HTML5 `progress` element
+- Still have to apply `.progress` on `<div>`s for animated progress bars
+- Use `.progress` together with a contextual styles; `.progress-primary`,`.progress-success`,`.progress-info`,`.progress-warning` or `.progress-danger`
+- Renamed `progress-bar-striped` and `progress-bar-animated` to `progress-striped` and `.progress-animated`
+- `progress-striped` and `.progress-animated` should be add to `.progress` now
+
 ### Utilities
 
 - Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats
