@@ -625,8 +625,9 @@ $thumbnail-border-radius:     $border-radius !default;
 
 // Breadcrumbs
 
-$breadcrumb-padding-vertical:   .75rem !default;
-$breadcrumb-padding-horizontal: 1rem !default;
+$breadcrumb-padding-y:          .75rem !default;
+$breadcrumb-padding-x:          1rem !default;
+$breadcrumb-item-padding:       .5rem !default;
 
 $breadcrumb-bg:                 $gray-lighter !default;
 $breadcrumb-divider-color:      $gray-light !default;
