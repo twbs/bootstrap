@@ -13,7 +13,7 @@ Styles for inline code snippets and longer, multiline blocks of code.
 
 ## Inline code
 
-Wrap inline snippets of code with `code`. Be sure to escape HTML angle brackets.
+Wrap inline snippets of code with `<code>`. Be sure to escape HTML angle brackets.
 
 {% example html %}
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
