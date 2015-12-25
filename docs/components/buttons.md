@@ -115,11 +115,11 @@ Make buttons look inactive by adding the `disabled` boolean attribute to any `<b
 <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>
 {% endexample %}
 
-As `<a>` elements don't support the `disabled` attribute, you must add the `.disabled` class to fake it.
+As `<a>` elements don't support the `disabled` attribute, you must add the `.disabled` class to fake it. In addition, include the `aria-disabled="true"` attribute, to indicate the state of the element to assistive technologies.
 
 {% example html %}
-<a href="#" class="btn btn-primary btn-lg disabled" role="button">Primary link</a>
-<a href="#" class="btn btn-secondary btn-lg disabled" role="button">Link</a>
+<a href="#" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Primary link</a>
+<a href="#" class="btn btn-secondary btn-lg disabled" role="button" aria-disabled="true">Link</a>
 {% endexample %}
 
 {% callout warning %}
