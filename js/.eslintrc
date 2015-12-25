@@ -10,7 +10,7 @@
         // Possible Errors
         "comma-dangle": [2, "never"],
         "handle-callback-err": 2,
-        "no-bitwise": 0,
+        "no-bitwise": 2,
         "no-cond-assign": 2,
         "no-console": 2,
         "no-constant-condition": 2,
