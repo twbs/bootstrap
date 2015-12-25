@@ -251,7 +251,7 @@ Modals have two optional sizes, available via modifier classes to be placed on a
 For modals that simply appear rather than fade in to view, remove the `.fade` class from your modal markup.
 
 {% highlight html %}
-<div class="modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="..." aria-hidden="true">
   ...
 </div>
 {% endhighlight %}
