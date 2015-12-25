@@ -41,6 +41,23 @@
   }
 }
 
+@mixin plain-focus-active {
+  @if $enable-hover-media-query {
+    &,
+    &:focus,
+    &:active {
+      @content
+    }
+  }
+  @else {
+    &,
+    &:focus,
+    &:active {
+      @content
+    }
+  }
+}
+
 @mixin hover-focus-active {
   @if $enable-hover-media-query {
     &:focus,
