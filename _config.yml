@@ -42,4 +42,5 @@ cdn:
   js:             https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js
   js_hash:        "sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
   jquery:         https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
+  jquery_hash:    "sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx"
   tether:         https://cdnjs.cloudflare.com/ajax/libs/tether/1.1.1/js/tether.min.js
