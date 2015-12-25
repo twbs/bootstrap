@@ -98,8 +98,8 @@ Create block level buttons—those that span the full width of a parent—by add
 Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. **There's no need to add a class to `<button>`s as they use a pseudo-class**. However, you can still force the same active appearance with `.active` (and include the <code>aria-pressed="true"</code> attribute) should you need to replicate the state programmatically.
 
 {% example html %}
-<a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a>
-<a href="#" class="btn btn-secondary btn-lg active" role="button">Link</a>
+<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>
+<a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Link</a>
 {% endexample %}
 
 ## Disabled state
