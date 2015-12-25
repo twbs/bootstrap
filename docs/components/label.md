@@ -32,6 +32,12 @@ Add any of the below mentioned modifier classes to change the appearance of a la
 <span class="label label-danger">Danger</span>
 {% endexample %}
 
+{% callout warning %}
+#### Conveying meaning to assistive technologies
+
+Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.sr-only` class.
+{% endcallout %}
+
 ## Pill labels
 
 Use the `.label-pill` modifier class to make labels more rounded (with a larger `border-radius` and additional horizontal `padding`). Useful if you miss the badges from v3.
