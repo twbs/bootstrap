@@ -12,13 +12,11 @@
   border-color: $border;
   @include box-shadow(inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075));
 
-  @include hover {
+  @include hover-focus {
     color: $color;
     background-color: $active-background;
         border-color: $active-border;
   }
-
-  &:focus,
   &.focus {
     color: $color;
     background-color: $active-background;
@@ -35,8 +33,11 @@
     background-image: none;
     @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
 
-    &:hover,
-    &:focus,
+    @include hover-focus {
+      color: $color;
+      background-color: darken($background, 17%);
+          border-color: darken($border, 25%);
+    }
     &.focus {
       color: $color;
       background-color: darken($background, 17%);
@@ -46,12 +47,11 @@
 
   &.disabled,
   &:disabled {
-    &:focus,
-    &.focus {
+    @include hover-focus {
       background-color: $background;
-          border-color: $border;
+          border-color: $border;    
     }
-    @include hover {
+    &.focus {
       background-color: $background;
           border-color: $border;
     }
@@ -63,17 +63,15 @@
   background-image: none;
   background-color: transparent;
   border-color: $color;
-
-  &:focus,
-  &.focus,
-  &:active,
-  &.active,
-  .open > &.dropdown-toggle {
+  
+  @include hover-focus-active {
     color: #fff;
     background-color: $color;
-        border-color: $color;
+        border-color: $color;  
   }
-  @include hover {
+  &.focus,
+  &.active,
+  .open > &.dropdown-toggle {
     color: #fff;
     background-color: $color;
         border-color: $color;
@@ -81,11 +79,10 @@
 
   &.disabled,
   &:disabled {
-    &:focus,
-    &.focus {
+    @include hover-focus {
       border-color: lighten($color, 20%);
     }
-    @include hover {
+    &.focus {
       border-color: lighten($color, 20%);
     }
   }
