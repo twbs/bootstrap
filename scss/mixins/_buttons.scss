@@ -28,9 +28,9 @@
   .open > &.dropdown-toggle {
     color: $color;
     background-color: $active-background;
-    border-color: $active-border;
     // Remove the gradient for the pressed/active state
     background-image: none;
+    border-color: $active-border;
     @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
 
     @include hover-focus {
@@ -49,7 +49,7 @@
   &:disabled {
     @include hover-focus {
       background-color: $background;
-      border-color: $border;    
+      border-color: $border;
     }
     &.focus {
       background-color: $background;
@@ -67,7 +67,7 @@
   @include hover-focus-active {
     color: #fff;
     background-color: $color;
-    border-color: $color;  
+    border-color: $color;
   }
   &.focus,
   &.active,
