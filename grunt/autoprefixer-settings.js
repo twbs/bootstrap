@@ -14,7 +14,7 @@ module.exports = {
       //     (e.g. `box-sizing`, as opposed to `background: linear-gradient(...)`).
       //     Since they've been unprefixed, Autoprefixer will stop prefixing them,
       //     thus causing them to not work in the previous ESR (where the prefixes were required).
-      'Firefox >= 31', // Current Firefox Extended Support Release (ESR); https://www.mozilla.org/en-US/firefox/organizations/faq/
+      'Firefox >= 38', // Current Firefox Extended Support Release (ESR); https://www.mozilla.org/en-US/firefox/organizations/faq/
       // Note: Edge versions in Autoprefixer & Can I Use refer to the EdgeHTML rendering engine version,
       // NOT the Edge app version shown in Edge's "About" screen.
       // For example, at the time of writing, Edge 20 on an up-to-date system uses EdgeHTML 12.
