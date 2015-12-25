@@ -22,7 +22,7 @@ module.exports = function (grunt) {
   var npmShrinkwrap = require('npm-shrinkwrap');
   var mq4HoverShim = require('mq4-hover-shim');
   var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
-  var autoprefixer = require('autoprefixer')(autoprefixerSettings.settings);
+  var autoprefixer = require('autoprefixer')(autoprefixerSettings);
 
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
