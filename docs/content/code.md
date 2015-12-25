@@ -19,9 +19,9 @@ Wrap inline snippets of code with `<code>`. Be sure to escape HTML angle bracket
 For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 {% endexample %}
 
-## Preformatted text
+## Code blocks
 
-Or, code blocks. Use `<pre>`s for multiple lines of code. Once again, be sure to escape any angle brackets in the code for proper rendering. You may optionally add the `.pre-scrollable` class, which will set a max-height of 350px and provide a y-axis scrollbar.
+Use `<pre>`s for multiple lines of code. Once again, be sure to escape any angle brackets in the code for proper rendering. You may optionally add the `.pre-scrollable` class, which will set a max-height of 350px and provide a y-axis scrollbar.
 
 {% example html %}
 <pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
@@ -48,7 +48,7 @@ To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
 
 ## Sample output
 
-For indicating blocks sample output from a program use the `<samp>` tag.
+For indicating sample output from a program use the `<samp>` tag.
 
 {% example html %}
 <samp>This text is meant to be treated as sample output from a computer program.</samp>
