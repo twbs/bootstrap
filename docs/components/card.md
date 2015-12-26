@@ -23,7 +23,7 @@ Cards require a small amount of markup and classes to provide you with as much c
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Button</a>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -260,7 +260,7 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
   <div class="card-block">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Button</a>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
