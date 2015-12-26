@@ -430,3 +430,45 @@ Easily change the order of our built-in grid columns with `.col-md-push-*` and `
 </div>
 {% endexample %}
 </div>
+
+## Predefined Flexbox classes
+
+When you compile [Bootstrap with Flexbox support](../getting-started/flexbox/) you can use some extra predefined grid classes.
+
+### Example: Alignment for every column in row
+
+You can set the vertical alignment of every column in a row with the `row-*-top`, `row-*-center` and `row-*-bottom` classes. These classes are avaible for each grid.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="row row-xs-top" style="height:100px;border:1px solid #000;">
+  <div class="col-xs-4">row-xs-top</div>
+  <div class="col-xs-4">row-xs-top</div>
+  <div class="col-xs-4">row-xs-top</div> 
+</div>  
+<div class="row row-xs-center" style="height:100px;border:1px solid #000;">
+  <div class="col-xs-4">row-xs-center</div>
+  <div class="col-xs-4">row-xs-center</div>
+  <div class="col-xs-4">row-xs-center</div> 
+</div>
+<div class="row row-xs-bottom" style="height:100px;border:1px solid #000;">
+  <div class="col-xs-4">row-xs-bottom</div>
+  <div class="col-xs-4">row-xs-bottom</div>
+  <div class="col-xs-4">row-xs-bottom</div> 
+</div> 
+{% endexample %}
+</div>
+
+### Example: Alignment per column
+
+You can set the vertical alignment of every column in a row with the `col-*-top`, `col-*-center` and `col-*-bottom` classes. These classes are avaible for each grid.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="row" style="height:100px;">
+  <div class="col-xs-4 col-xs-top">col-xs-top</div>
+  <div class="col-xs-4 col-xs-center">col-xs-center</div>
+  <div class="col-xs-4 col-xs-bottom">col-xs-bottom</div> 
+</div>
+{% endexample %}
+</div>
