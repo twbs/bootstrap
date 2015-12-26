@@ -73,12 +73,12 @@
       .col-#{$breakpoint}-bottom { align-self: flex-end; }
     }
   }
-  
+
   // Auto-width columns
 
   @each $breakpoint in map-keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
-      .col-#{$breakpoint}-auto { 
+      .col-#{$breakpoint}-auto {
         flex: 1;
       }
     }
