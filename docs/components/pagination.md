@@ -43,11 +43,18 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
 
 Links are customizable for different circumstances. Use `.disabled` for unclickable links and `.active` to indicate the current page.
 
+{% callout warning %}
+#### Link functionality caveat
+
+The `.disabled` class uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11\. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, add a `tabindex="-1"` attribute on these links (to prevent them from receiving keyboard focus) and use custom JavaScript to disable their functionality.
+{% endcallout %}
+
+
 {% example html %}
 <nav>
   <ul class="pagination">
     <li class="page-item disabled">
-      <a class="page-link" href="#" aria-label="Previous">
+      <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
@@ -69,7 +76,7 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 </nav>
 {% endexample %}
 
-You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality while retaining intended styles.
+You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality and prevent keyboard focus while retaining intended styles.
 
 {% example html %}
 <nav>
@@ -167,12 +174,12 @@ Alternatively, you can align each link to the sides:
 
 ### Optional disabled state
 
-Pager links also use the `.disabled` class.
+Pager links also support the `.disabled` class (though note that the same advice about keyboard focus as for the default pagination applies here as well).
 
 {% example html %}
 <nav>
   <ul class="pager">
-    <li class="pager-prev disabled"><a href="#">Older</a></li>
+    <li class="pager-prev disabled"><a href="#" tabindex="-1">Older</a></li>
     <li class="pager-next"><a href="#">Newer</a></li>
   </ul>
 </nav>
