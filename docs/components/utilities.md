@@ -39,6 +39,8 @@ Where *size* is one of:
 * `2` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 1.5` or `$spacer-y * 1.5`
 * `3` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 3` or `$spacer-y * 3`
 
+(You can add more sizes by adding entries to the `$spacers` Sass map variable.)
+
 Here are some representative examples of these classes:
 
 {% highlight scss %}

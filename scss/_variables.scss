@@ -69,6 +69,7 @@ $enable-print-styles:       true !default;
 //
 // Control the default styling of most Bootstrap elements by modifying these
 // variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
 
 $spacer:   1rem !default;
 $spacer-x: $spacer !default;
