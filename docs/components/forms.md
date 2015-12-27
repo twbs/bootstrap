@@ -551,6 +551,8 @@ Block help text—for below inputs or for longer lines of help text—can be eas
 
 Bootstrap includes validation styles for danger, warning, and success states on form controls. To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
 
+This makes `.text-help` the right choise to display error messages in your forms.
+
 {% comment %}
 {% callout warning %}
 #### Conveying validation state to assistive technologies and colorblind users
@@ -569,10 +571,13 @@ Ensure that an alternative indication of state is also provided. For instance, y
 <div class="form-group has-warning">
   <label class="form-control-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
+  <p class="text-help m-b-0">A clear and helpful error message</p>
+  <p class="text-muted">Some optional, additional and helpful information</p>
 </div>
 <div class="form-group has-danger">
   <label class="form-control-label" for="inputDanger1">Input with danger</label>
   <input type="text" class="form-control form-control-danger" id="inputDanger1">
+  <p class="text-help">A clear and helpful error message</p>
 </div>
 
 <div class="checkbox has-success">
@@ -586,12 +591,14 @@ Ensure that an alternative indication of state is also provided. For instance, y
     <input type="checkbox" id="checkboxWarning" value="option1">
     Checkbox with warning
   </label>
+  <p class="text-help">A clear and helpful error message</p>
 </div>
 <div class="checkbox has-danger">
   <label>
     <input type="checkbox" id="checkboxDanger" value="option1">
     Checkbox with danger
   </label>
+  <p class="text-help">A clear and helpful error message</p>
 </div>
 {% endexample %}
 
