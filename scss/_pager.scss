@@ -30,6 +30,7 @@
     > a {
       @include plain-hover-focus {
         color: $pager-disabled-color;
+        pointer-events: none;
         cursor: $cursor-disabled;
         background-color: $pager-bg;
       }
