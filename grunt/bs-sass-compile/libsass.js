@@ -27,6 +27,11 @@ module.exports = function configureLibsass(grunt) {
         files: {
           'docs/assets/css/docs.min.css': 'docs/assets/scss/docs.scss'
         }
+      },
+      examples: {
+        files: {
+          'docs/examples/album/album.css': 'docs/assets/scss/examples/album/album.scss'
+        }
       }
     }
   });
