@@ -10,31 +10,34 @@ body {
   margin-bottom: 0;
 }
 
-.navbar-collapse .container-fluid {
-  padding: 2rem 2.5rem;
-  border-bottom: 1px solid #55595c;
-}
+.navbar-collapse {
 
-.navbar-collapse h4 {
-  color: #818a91;
-}
+  .container-fluid {
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid #55595c;
+  }
 
-.navbar-collapse .text-muted {
-  color: #818a91;
-}
+  h4 {
+    color: #818a91;
+  }
 
-.about {
-  float: left;
-  max-width: 30rem;
-  margin-right: 3rem;
+  .text-muted {
+    color: #818a91;
+  }
+
+  .about {
+    float: left;
+    max-width: 30rem;
+    margin-right: 3rem;
+  }
 }
 
 .social a {
   font-weight: 500;
   color: #eceeef;
-}
-.social a:hover {
-  color: #fff;
+  @include hover {
+    color: #fff;
+  }
 }
 
 .jumbotron {
@@ -42,18 +45,18 @@ body {
   padding-bottom: 6rem;
   margin-bottom: 0;
   background-color: #fff;
-}
-
-.jumbotron p:last-child {
-  margin-bottom: 0;
+  
+  .container {
+    max-width: 40rem;
+  }
+  
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .jumbotron-heading {
   font-weight: 300;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
 }
 
 .album {
@@ -70,8 +73,8 @@ body {
   margin-bottom: 2rem;
   border: 0;
 }
-
-.card > img {
+  
+.card-img {
   margin-bottom: .75rem;
 }
 
