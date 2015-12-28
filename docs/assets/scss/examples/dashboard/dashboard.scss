@@ -109,7 +109,7 @@ body {
   }
 
   .nav-link.active {
-    @include plain-hover-focus{
+    @include plain-hover-focus {
       color: #fff;
       background-color: #428bca;
     }
