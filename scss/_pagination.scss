@@ -34,6 +34,7 @@
   &.disabled .page-link {
     @include plain-hover-focus {
       color: $pagination-disabled-color;
+      pointer-events: none;
       cursor: $cursor-disabled;
       background-color: $pagination-disabled-bg;
       border-color: $pagination-disabled-border;
