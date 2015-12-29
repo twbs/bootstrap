@@ -175,11 +175,13 @@
 .file {
   position: relative;
   display: inline-block;
+  max-width: 100%;
   height: 2.5rem;
   cursor: pointer;
 }
 .file input {
   min-width: 14rem;
+  max-width: 100%;
   margin: 0;
   filter: alpha(opacity = 0);
   opacity: 0;
