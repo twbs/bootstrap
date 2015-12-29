@@ -63,7 +63,7 @@
         if (($input.prop('checked')) !== this.$element.hasClass('active')) changed = false
         this.$element.toggleClass('active')
       }
-      $input.prop('checked', this.$element.hasClass('active'))
+      $parent.find('input').prop('checked', this.$element.hasClass('active'))
       if (changed) $input.trigger('change')
     } else {
       this.$element.attr('aria-pressed', !this.$element.hasClass('active'))
