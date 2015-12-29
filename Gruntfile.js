@@ -209,11 +209,16 @@ module.exports = function (grunt) {
     // CSS build configuration
     scsslint: {
       options: {
-        bundleExec: true,
-        config: 'scss/.scss-lint.yml',
-        reporterOutput: null
+          bundleExec: true,
+          config: 'scss/.scss-lint.yml',
+          reporterOutput: null
+        },
+      core: {
+        src: ['scss/*.scss', '!scss/_normalize.scss']
       },
-      src: ['scss/*.scss', '!scss/_normalize.scss']
+      examples: {
+        src: ['docs/assets/scss/examples/**/*.scss']
+      }
     },
 
     postcss: {
@@ -470,7 +475,7 @@ module.exports = function (grunt) {
     require('./grunt/bs-sass-compile/' + sassCompilerName + '.js')(grunt);
   })(process.env.TWBS_SASS || 'libsass');
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
-  grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
+  grunt.registerTask('sass-compile', ['sass:core', 'sass:docs', 'sass:examples']);
 
   grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
 

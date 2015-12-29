@@ -1,0 +1,174 @@
+// Load Bootstrap variables and mixins
+@import "../../../../../scss/variables";
+@import "../../../../../scss/mixins";
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+
+@include media-breakpoint-up(sm) {
+
+  .sidebar {
+    display: block;
+    @if $enable-flex { /* fix for https://github.com/twbs/bootstrap/pull/17756 */
+      max-width: calc(100% * (3/12));
+    }  
+  }
+  @if $enable-flex { /* fix for https://github.com/twbs/bootstrap/pull/17756 */
+    .main {
+      max-width: calc(100% * (9/12));
+    }
+  }
+
+  .nav-sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    @if $enable-flex {
+      width: calc(100% * (3/12)); /* see http://stackoverflow.com/questions/34344623/fixed-position-element-inheriting-width-of-flex-item */
+    } @else {
+      width: inherit;
+    }
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+@if $enable-flex { /* fixes for https://github.com/twbs/bootstrap/pull/17756 */
+  @include media-breakpoint-up(sm) {
+    .sidebar {
+      max-width: calc(100% * (2/12));
+    }
+    .main {
+      max-width: calc(100% * (10/12));
+    }
+    .nav-sidebar {
+      width: calc(100% * (2/12)); /* see http://stackoverflow.com/questions/34344623/fixed-position-element-inheriting-width-of-flex-item */
+    }
+  }
+}
+
+/* Main navigation */
+
+.navbar .nav {
+  padding-left: 20px;
+}
+
+/* Sidebar navigation */
+.nav-sidebar .nav {
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.nav-pills .nav-link {
+  margin-right: -20px;
+  margin-left: -20px;
+  border-radius: 0;
+}
+
+.nav-pills {
+  .nav-link {
+    @inlude hover-focus {
+      background-color: #eee;
+    }
+  }
+
+  .nav-link.active {
+    @include plain-hover-focus {
+      color: #fff;
+      background-color: #428bca;
+    }
+  }
+
+}
+
+.nav-stacked .nav-item + .nav-item {
+  margin: 0;
+}
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@include media-breakpoint-up(sm) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+@if $enable-flex {
+  /* fixes for https://github.com/twbs/bootstrap/pull/17756 */
+  @include media-breakpoint-down(sm) {
+    .col-sm-9 {
+      max-width: 100%;
+    }
+  }
+  @include media-breakpoint-up(sm) {
+    .col-sm-3.placeholder {
+      max-width: 25%;
+    }
+  }
+  .col-xs-6.placeholder {
+    max-width: 50%;
+  }
+}

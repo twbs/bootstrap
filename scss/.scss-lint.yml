@@ -17,7 +17,7 @@ linters:
 
   Comment:
     enabled: true
-    exclude: ['_normalize.scss', 'bootstrap.scss']
+    exclude: ['_normalize.scss', 'bootstrap.scss','../docs/assets/scss/examples/**/*.scss']
 
   DebugStatement:
     enabled: true
