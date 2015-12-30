@@ -22,11 +22,11 @@ You can find and customize these variables in our `_variables.scss` file.
 
 ## Color palette
 
-Bootstrap's color palette includes a numerical range of shades for each base color, heavily inspired by [Google's color palette](https://www.google.com/design/spec/style/color.html#color-color-palette). Base colors, which utilize Sass color functions to generate each shade, are indicated at the top of each stacked palette.
+Bootstrap's color palette includes a numerical range of shades for each base color, heavily inspired by [Google's color palette](https://www.google.com/design/spec/style/color.html#color-color-palette). Base colors, which utilize Sass color functions to generate each additional shade, are indicated at the top of each stacked palette.
 
 <div class="row">
   <div class="col-sm-6 col-md-4 color-palette">
-    <div class="color-slab color-slab-base gray-100">100</div>
+    <div class="color-slab color-slab-base gray-500">500</div>
     <div class="color-slab gray-100">100</div>
     <div class="color-slab gray-200">200</div>
     <div class="color-slab gray-300">300</div>
