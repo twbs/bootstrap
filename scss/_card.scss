@@ -12,6 +12,7 @@
 }
 
 .card-block {
+  @include clearfix;
   padding: $card-spacer-x;
 }
 
@@ -68,6 +69,7 @@
 //
 
 .card-header {
+  @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-bottom: $card-border-width solid $card-border-color;
@@ -78,6 +80,7 @@
 }
 
 .card-footer {
+  @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;
@@ -93,19 +96,39 @@
 //
 
 .card-primary {
-  @include card-variant($brand-primary);
+  @include card-variant($brand-primary, $brand-primary);
 }
 .card-success {
-  @include card-variant($brand-success);
+  @include card-variant($brand-success, $brand-success);
 }
 .card-info {
-  @include card-variant($brand-info);
+  @include card-variant($brand-info, $brand-info);
 }
 .card-warning {
-  @include card-variant($brand-warning);
+  @include card-variant($brand-warning, $brand-warning);
 }
 .card-danger {
-  @include card-variant($brand-danger);
+  @include card-variant($brand-danger, $brand-danger);
+}
+
+// Remove all backgrounds
+.card-primary-outline {
+  @include card-outline-variant($btn-primary-bg);
+}
+.card-secondary-outline {
+  @include card-outline-variant($btn-secondary-border);
+}
+.card-info-outline {
+  @include card-outline-variant($btn-info-bg);
+}
+.card-success-outline {
+  @include card-outline-variant($btn-success-bg);
+}
+.card-warning-outline {
+  @include card-outline-variant($btn-warning-bg);
+}
+.card-danger-outline {
+  @include card-outline-variant($btn-danger-bg);
 }
 
 //
@@ -113,28 +136,8 @@
 //
 
 .card-inverse {
-  .card-header,
-  .card-footer {
-    border-bottom: $card-border-width solid rgba(255,255,255,.2);
-  }
-  .card-header,
-  .card-footer,
-  .card-title,
-  .card-blockquote {
-    color: #fff;
-  }
-  .card-link,
-  .card-text,
-  .card-blockquote > footer {
-    color: rgba(255,255,255,.65);
-  }
-  .card-link {
-    @include hover-focus {
-      color: $card-link-hover-color;
-    }
-  }
+  @include card-inverse;
 }
-
 
 //
 // Blockquote
@@ -180,22 +183,23 @@
     .card-deck {
       display: flex;
       flex-flow: row wrap;
-      margin-right: -.625rem;
-      margin-left: -.625rem;
+      margin-right: -$card-deck-margin;
+      margin-left: -$card-deck-margin;
 
       .card {
         flex: 1 0 0;
-        margin-right: .625rem;
-        margin-left: .625rem;
+        margin-right: $card-deck-margin;
+        margin-left: $card-deck-margin;
       }
     }
   }
 } @else {
   @include media-breakpoint-up(sm) {
+    $space-between-cards: (2 * $card-deck-margin);
     .card-deck {
       display: table;
       table-layout: fixed;
-      border-spacing: 1.25rem 0;
+      border-spacing: $space-between-cards 0;
 
       .card {
         display: table-cell;
@@ -204,8 +208,8 @@
       }
     }
     .card-deck-wrapper {
-      margin-right: -1.25rem;
-      margin-left: -1.25rem;
+      margin-right: (-$space-between-cards);
+      margin-left: (-$space-between-cards);
     }
   }
 }

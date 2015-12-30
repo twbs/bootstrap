@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha): scrollspy.js
+ * Bootstrap (v4.0.0-alpha.2): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const ScrollSpy = (($) => {
    */
 
   const NAME               = 'scrollspy'
-  const VERSION            = '4.0.0-alpha'
+  const VERSION            = '4.0.0-alpha.2'
   const DATA_KEY           = 'bs.scrollspy'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'

@@ -57,7 +57,7 @@
     margin-bottom: -1px;
 
     + .nav-item {
-      margin-left: .2rem;
+      margin-left: $nav-item-margin;
     }
   }
 
@@ -102,7 +102,7 @@
     float: left;
 
     + .nav-item {
-      margin-left: .2rem;
+      margin-left: $nav-item-margin;
     }
   }
 
@@ -128,7 +128,7 @@
     float: none;
 
     + .nav-item {
-      margin-top: .2rem;
+      margin-top: $nav-item-margin;
       margin-left: 0;
     }
   }

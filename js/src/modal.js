@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha): modal.js
+ * Bootstrap (v4.0.0-alpha.2): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Modal = (($) => {
    */
 
   const NAME                         = 'modal'
-  const VERSION                      = '4.0.0-alpha'
+  const VERSION                      = '4.0.0-alpha.2'
   const DATA_KEY                     = 'bs.modal'
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
@@ -259,8 +259,9 @@ const Modal = (($) => {
       $(document)
         .off(Event.FOCUSIN) // guard against infinite focus loop
         .on(Event.FOCUSIN, (event) => {
-          if (this._element !== event.target &&
-             (!$(this._element).has(event.target).length)) {
+          if (document !== event.target &&
+              this._element !== event.target &&
+              (!$(this._element).has(event.target).length)) {
             this._element.focus()
           }
         })

@@ -147,22 +147,22 @@ Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
 ## Blockquotes
 
-For quoting blocks of content from another source within your document. Wrap `<blockquote>` around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes, we recommend a `<p>`.
+For quoting blocks of content from another source within your document. Wrap `<blockquote class="blockquote">` around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.
 
 {% example html %}
-<blockquote>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+<blockquote class="blockquote">
+  <p class="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 </blockquote>
 {% endexample %}
 
 ### Naming a source
 
-Add a `<footer>` for identifying the source. Wrap the name of the source work in `<cite>`.
+Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the name of the source work in `<cite>`.
 
 {% example html %}
 <blockquote class="blockquote">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  <p class="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 {% endexample %}
 
@@ -172,8 +172,8 @@ Add `.blockquote-reverse` for a blockquote with right-aligned content.
 
 {% example html %}
 <blockquote class="blockquote blockquote-reverse">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  <p class="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 {% endexample %}
 
@@ -205,13 +205,13 @@ Remove the default `list-style` and left margin on list items (immediate childre
 
 ### Inline
 
-Place all list items on a single line with `display: inline-block;` and some light padding.
+Place all list items on a single line with `display: inline-block;` and some basic margin between.
 
 {% example html %}
 <ul class="list-inline">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
+  <li class="list-inline-item">Lorem ipsum</li>
+  <li class="list-inline-item">Phasellus iaculis</li>
+  <li class="list-inline-item">Nulla volutpat</li>
 </ul>
 {% endexample %}
 

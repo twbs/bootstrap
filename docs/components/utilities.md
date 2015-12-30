@@ -15,78 +15,52 @@ Bootstrap includes dozens of utilities—classes with a single purpose. They're 
 
 Assign `margin` or `padding` to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. All classes are multiples on the global default value, `1rem`.
 
-### Margin
+The classes are named using the format: `{property}-{sides}-{size}`
+
+Where *property* is one of:
+
+* `m` - for classes that set `margin`
+* `p` - for classes that set `padding`
+
+Where *sides* is one of:
+
+* `t` - for classes that set `margin-top` or `padding-top`
+* `b` - for classes that set `margin-bottom` or `padding-bottom`
+* `l` - for classes that set `margin-left` or `padding-left`
+* `r` - for classes that set `margin-right` or `padding-right`
+* `x` - for classes that set both `*-left` and `*-right`
+* `y` - for classes that set both `*-top` and `*-bottom`
+* `a` - for classes that set a `margin` or `padding` on all 4 sides of the element
+
+Where *size* is one of:
+
+* `0` - for classes that eliminate the `margin` or `padding` by setting it to `0`
+* `1` - (by default) for classes that set the `margin` or `padding` to `$spacer-x` or `$spacer-y`
+* `2` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 1.5` or `$spacer-y * 1.5`
+* `3` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 3` or `$spacer-y * 3`
+
+Here are some representative examples of these classes:
 
 {% highlight scss %}
-.m-a-0 { margin:        0 !important; }
-.m-t-0 { margin-top:    0 !important; }
-.m-r-0 { margin-right:  0 !important; }
-.m-b-0 { margin-bottom: 0 !important; }
-.m-l-0 { margin-left:   0 !important; }
-.m-x-0 { margin-right:  0 !important; margin-left:   0 !important; }
-.m-y-0 { margin-top:    0 !important; margin-bottom: 0 !important; }
+.m-t-0 {
+  margin-top: 0 !important;
+}
 
-.m-a { margin:        $spacer !important; }
-.m-t { margin-top:    $spacer-y !important; }
-.m-r { margin-right:  $spacer-x !important; }
-.m-b { margin-bottom: $spacer-y !important; }
-.m-l { margin-left:   $spacer-x !important; }
-.m-x { margin-right:  $spacer-x !important; margin-left: $spacer-x !important; }
-.m-y { margin-top:    $spacer-y !important; margin-bottom: $spacer-y !important; }
-.m-x-auto { margin-right: auto !important; margin-left: auto !important; }
+.m-l-1 {
+  margin-left: $spacer-x !important;
+}
 
-.m-a-md { margin:        ($spacer * 1.5) !important; }
-.m-t-md { margin-top:    ($spacer-y * 1.5) !important; }
-.m-r-md { margin-right:  ($spacer-y * 1.5) !important; }
-.m-b-md { margin-bottom: ($spacer-y * 1.5) !important; }
-.m-l-md { margin-left:   ($spacer-y * 1.5) !important; }
-.m-x-md { margin-right:  ($spacer-x * 1.5) !important; margin-left:   ($spacer-x * 1.5) !important; }
-.m-y-md { margin-top:    ($spacer-y * 1.5) !important; margin-bottom: ($spacer-y * 1.5) !important; }
+.p-x-2 {
+  padding-left: ($spacer-x * 1.5) !important;
+  padding-right: ($spacer-x * 1.5) !important;
+}
 
-.m-a-lg { margin:        ($spacer * 3) !important; }
-.m-t-lg { margin-top:    ($spacer-y * 3) !important; }
-.m-r-lg { margin-right:  ($spacer-y * 3) !important; }
-.m-b-lg { margin-bottom: ($spacer-y * 3) !important; }
-.m-l-lg { margin-left:   ($spacer-y * 3) !important; }
-.m-x-lg { margin-right:  ($spacer-x * 3) !important; margin-left:   ($spacer-x * 3) !important; }
-.m-y-lg { margin-top:    ($spacer-y * 3) !important; margin-bottom: ($spacer-y * 3) !important; }
+.p-a-3 {
+  padding: ($spacer-y * 3) ($spacer-x * 3) !important;
+}
 {% endhighlight %}
 
-### Padding
-
-{% highlight scss %}
-.p-a-0 { padding:        0 !important; }
-.p-t-0 { padding-top:    0 !important; }
-.p-r-0 { padding-right:  0 !important; }
-.p-b-0 { padding-bottom: 0 !important; }
-.p-l-0 { padding-left:   0 !important; }
-.p-x-0 { padding-left:   0 !important; padding-right: 0 !important; }
-.p-y-0 { padding-top:    0 !important; padding-bottom: 0 !important; }
-
-.p-a { padding:        $spacer !important; }
-.p-t { padding-top:    $spacer-y !important; }
-.p-r { padding-right:  $spacer-x !important; }
-.p-b { padding-bottom: $spacer-y !important; }
-.p-l { padding-left:   $spacer-x !important; }
-.p-x { padding-right:  $spacer-x !important; padding-left:   $spacer-x !important; }
-.p-y { padding-top:    $spacer-y !important; padding-bottom: $spacer-y !important; }
-
-.p-a-md { padding:        ($spacer * 1.5) !important; }
-.p-t-md { padding-top:    ($spacer-y * 1.5) !important; }
-.p-r-md { padding-right:  ($spacer-y * 1.5) !important; }
-.p-b-md { padding-bottom: ($spacer-y * 1.5) !important; }
-.p-l-md { padding-left:   ($spacer-y * 1.5) !important; }
-.p-x-md { padding-right:  ($spacer-x * 1.5) !important; padding-left:   ($spacer-x * 1.5) !important; }
-.p-y-md { padding-top:    ($spacer-y * 1.5) !important; padding-bottom: ($spacer-y * 1.5) !important; }
-
-.p-a-lg { padding:        ($spacer * 3) !important; }
-.p-t-lg { padding-top:    ($spacer-y * 3) !important; }
-.p-r-lg { padding-right:  ($spacer-y * 3) !important; }
-.p-b-lg { padding-bottom: ($spacer-y * 3) !important; }
-.p-l-lg { padding-left:   ($spacer-y * 3) !important; }
-.p-x-lg { padding-right:  ($spacer-x * 3) !important; padding-left:   ($spacer-x * 3) !important; }
-.p-y-lg { padding-top:    ($spacer-y * 3) !important; padding-bottom: ($spacer-y * 3) !important; }
-{% endhighlight %}
+Additionally, Bootstrap also includes an `.m-x-auto` class which sets the horizontal margins to `auto`.
 
 
 ## Text alignment
@@ -121,6 +95,8 @@ Transform text in components with text capitalization classes.
 <p class="text-capitalize">CapiTaliZed text.</p>
 {% endexample %}
 
+Note how `text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
+
 ## Font weight and italics
 
 Quickly change the weight (boldness) of text or italicize text.
@@ -128,7 +104,7 @@ Quickly change the weight (boldness) of text or italicize text.
 {% example html %}
 <p class="font-weight-bold">Bold text.</p>
 <p class="font-weight-normal">Normal weight text.</p>
-<p class="font-italic">Italicized text.</p>
+<p class="font-italic">Italic text.</p>
 {% endexample %}
 
 ## Contextual colors and backgrounds
@@ -195,14 +171,14 @@ These utility classes float an element to the left or right, or disable floating
 Two similar non-responsive mixins (`pull-left` and `pull-right`) are also available.
 
 {% example html %}
-<div class="pull-xs-left">Float left on all viewport sizes</div>
-<div class="pull-xs-right">Float right on all viewport sizes</div>
-<div class="pull-xs-none">Don't float on all viewport sizes</div>
+<div class="pull-xs-left">Float left on all viewport sizes</div><br>
+<div class="pull-xs-right">Float right on all viewport sizes</div><br>
+<div class="pull-xs-none">Don't float on all viewport sizes</div><br>
 
-<div class="pull-sm-left">Float left on viewports sized SM (small) or wider</div>
-<div class="pull-md-left">Float left on viewports sized MD (medium) or wider</div>
-<div class="pull-lg-left">Float left on viewports sized LG (large) or wider</div>
-<div class="pull-xl-left">Float left on viewports sized XL (extra-large) or wider</div>
+<div class="pull-sm-left">Float left on viewports sized SM (small) or wider</div><br>
+<div class="pull-md-left">Float left on viewports sized MD (medium) or wider</div><br>
+<div class="pull-lg-left">Float left on viewports sized LG (large) or wider</div><br>
+<div class="pull-xl-left">Float left on viewports sized XL (extra-large) or wider</div><br>
 {% endexample %}
 
 {% highlight scss %}

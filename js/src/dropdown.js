@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha): dropdown.js
+ * Bootstrap (v4.0.0-alpha.2): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Dropdown = (($) => {
    */
 
   const NAME                = 'dropdown'
-  const VERSION             = '4.0.0-alpha'
+  const VERSION             = '4.0.0-alpha.2'
   const DATA_KEY            = 'bs.dropdown'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -250,7 +250,7 @@ const Dropdown = (($) => {
         index++
       }
 
-      if (!~index) {
+      if (index < 0) {
         index = 0
       }
 

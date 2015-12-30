@@ -92,7 +92,7 @@ Navbar navigation is similar to our regular nav options—use the `.nav` base cl
 </nav>
 {% endexample %}
 
-And because we use classes for our navs, you can omit the list-based approach entirely if you like.
+And because we use classes for our navs, you can avoid the list-based approach entirely if you like.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
@@ -241,7 +241,7 @@ Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden con
 
 {% example html %}
 <div class="collapse" id="exCollapsingNavbar">
-  <div class="bg-inverse p-a">
+  <div class="bg-inverse p-a-1">
     <h4>Collapsed content</h4>
     <span class="text-muted">Toggleable via the navbar brand.</span>
   </div>

@@ -125,6 +125,24 @@ $enable-grid-classes:       true !default;
 $spacer:                     1rem !default;
 $spacer-x:                   $spacer !default;
 $spacer-y:                   $spacer !default;
+$spacers: (
+  0: (
+    x:   0,
+    y:   0
+  ),
+  1: (
+    x:   $spacer-x,
+    y:   $spacer-y
+  ),
+  2: (
+    x:   ($spacer-x * 1.5),
+    y:   ($spacer-y * 1.5)
+  ),
+  3: (
+    x:   ($spacer-x * 3),
+    y:   ($spacer-y * 3)
+  )
+) !default;
 $border-width:               1px !default;
 
 
@@ -250,7 +268,7 @@ $list-inline-padding:         5px !default;
 
 // Components
 //
-// Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+// Define common padding and border radius sizes and more.
 
 $line-height-lg:         (4 / 3) !default;
 $line-height-sm:         1.5 !default;
@@ -321,6 +339,8 @@ $btn-padding-y-sm:               .25rem !default;
 
 $btn-padding-x-lg:               1.25rem !default;
 $btn-padding-y-lg:               .75rem !default;
+
+$btn-block-spacing-y:            5px !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:              $border-radius !default;
@@ -412,8 +432,8 @@ $zindex-modal:             1050 !default;
 // Navbar
 
 $navbar-border-radius:              $border-radius !default;
-$navbar-padding-horizontal:         $spacer !default;
-$navbar-padding-vertical:           ($spacer / 2) !default;
+$navbar-padding-x:                  $spacer !default;
+$navbar-padding-y:                  ($spacer / 2) !default;
 
 $navbar-dark-color:                 rgba(255,255,255,.5) !default;
 $navbar-dark-hover-color:           rgba(255,255,255,.75) !default;
@@ -427,6 +447,8 @@ $navbar-light-disabled-color:       rgba(0,0,0,.15) !default;
 
 
 // Navs
+
+$nav-item-margin:                           .2rem !default;
 
 $nav-link-padding:                          .5em 1em !default;
 $nav-link-hover-bg:                         $gray-lighter !default;
@@ -524,14 +546,16 @@ $state-danger-border:            darken($state-danger-bg, 5%) !default;
 // Cards
 $card-spacer-x:            1.25rem !default;
 $card-spacer-y:            .75rem !default;
-$card-border-width:        .0625rem !default;
+$card-border-width:        1px !default;
 $card-border-radius:       $border-radius !default;
 $card-border-color:        #e5e5e5 !default;
-$card-border-radius-inner: ($card-border-radius - $card-border-width) !default;
+$card-border-radius-inner: $card-border-radius !default;
 $card-cap-bg:              #f5f5f5 !default;
 $card-bg:                  #fff !default;
 
 $card-link-hover-color:    #fff !default;
+
+$card-deck-margin:         .625rem !default;
 
 
 // Tooltips
@@ -624,8 +648,8 @@ $alert-danger-border:         $state-danger-border !default;
 
 // Progress bars
 
-$progress-bg:                 #f5f5f5 !default;
-$progress-bar-color:          #fff !default;
+$progress-bg:                 #eee !default;
+$progress-bar-color:          #0074d9 !default;
 $progress-border-radius:      $border-radius !default;
 
 $progress-bar-bg:             $brand-primary !default;
@@ -668,8 +692,9 @@ $thumbnail-border-radius:     $border-radius !default;
 
 // Breadcrumbs
 
-$breadcrumb-padding-vertical:   .75rem !default;
-$breadcrumb-padding-horizontal: 1rem !default;
+$breadcrumb-padding-y:          .75rem !default;
+$breadcrumb-padding-x:          1rem !default;
+$breadcrumb-item-padding:       .5rem !default;
 
 $breadcrumb-bg:                 $gray-lighter !default;
 $breadcrumb-divider-color:      $gray-light !default;
