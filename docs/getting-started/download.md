@@ -70,7 +70,10 @@ $ gem install bootstrap -v 4.0.0.alpha3
 ### Meteor
 
 {% highlight bash %}
-$ meteor add twbs:bootstrap@={{ site.current_version }}
+$ cd packages
+$ git clone git@github.com:twbs/bootstrap.git
+$ git checkout v4-dev
+$ meteor add twbs:bootstrap
 {% endhighlight %}
 
 ### Composer
