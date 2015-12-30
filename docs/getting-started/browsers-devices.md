@@ -13,11 +13,13 @@ Bootstrap supports a wide variety of modern browsers and devices, and some older
 
 ## Supported browsers
 
-Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11 / Microsoft Edge**. More specific support information is provided below.
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11 / Microsoft Edge**.
+
+Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
 ### Mobile devices
 
-Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers.
+Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
 
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
@@ -26,9 +28,9 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
         <td></td>
         <th>Chrome</th>
         <th>Firefox</th>
-        <th>Opera</th>
         <th>Safari</th>
         <th>Android Browser &amp; WebView</th>
+        <th>Microsoft Edge</th>
       </tr>
     </thead>
     <tbody>
@@ -36,17 +38,25 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
         <th scope="row">Android</th>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
-        <td class="text-danger">Not supported</td>
         <td class="text-muted">N/A</td>
         <td class="text-success">Android v5.0+ supported</td>
+        <td class="text-muted">N/A</td>
       </tr>
       <tr>
         <th scope="row">iOS</th>
         <td class="text-success">Supported</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-danger">Not supported</td>
+        <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-muted">N/A</td>
+        <td class="text-muted">N/A</td>
+      </tr>
+      <tr>
+        <th scope="row">Windows 10 Mobile</th>
+        <td class="text-muted">N/A</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-success">Supported</td>
       </tr>
     </tbody>
   </table>
