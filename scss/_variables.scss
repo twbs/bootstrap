@@ -32,15 +32,16 @@ $gray-light:                #818a91 !default;
 $gray-lighter:              #eceeef !default;
 $gray-lightest:             #f7f7f9 !default;
 
+$gray-new: #a5a5b1 !default;
 $gray-100: #f7f7f8 !default;
-$gray-200: darken($gray-100, 5%) !default;
-$gray-300: darken($gray-100, 12%) !default;
-$gray-400: darken($gray-100, 20%) !default;
-$gray-500: darken($gray-100, 30%) !default;
-$gray-600: darken($gray-100, 40%) !default;
-$gray-700: darken($gray-100, 50%) !default;
-$gray-800: darken($gray-100, 65%) !default;
-$gray-900: darken($gray-100, 80%) !default;
+$gray-200: lighten($gray-new, 25%) !default;
+$gray-300: lighten($gray-new, 18%) !default;
+$gray-400: lighten($gray-new, 10%) !default;
+$gray-500: $gray-new !default;
+$gray-600: darken($gray-new, 10%) !default;
+$gray-700: darken($gray-new, 20%) !default;
+$gray-800: darken($gray-new, 35%) !default;
+$gray-900: darken($gray-new, 50%) !default;
 
 $blue: #0275d8 !default;
 $blue-100: lighten($blue, 32%) !default;
