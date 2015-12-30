@@ -33,7 +33,7 @@ $gray-lighter:              #eceeef !default;
 $gray-lightest:             #f7f7f9 !default;
 
 $gray-new: #a5a5b1 !default;
-$gray-100: #f7f7f8 !default;
+$gray-100: lighten($gray-new, 30%) !default;
 $gray-200: lighten($gray-new, 25%) !default;
 $gray-300: lighten($gray-new, 18%) !default;
 $gray-400: lighten($gray-new, 10%) !default;
