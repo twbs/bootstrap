@@ -15,6 +15,7 @@
     padding-left: $breadcrumb-item-padding;
     color: $breadcrumb-divider-color;
     content: "#{$breadcrumb-divider}";
+    display: inline-block;
   }
 
   &.active {
