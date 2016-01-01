@@ -19,6 +19,29 @@ body {
   font-size: 21px;
 }
 
+/* add .nav-justified, see: https://github.com/twbs/bootstrap/issues/18653 */
+.nav-justified {
+  width: 100%;
+}
+.nav-item {
+  float: none;
+}
+.nav-link {
+  text-align: center;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+   .nav-item {
+    display: table-cell;
+    width: 1%;
+  }
+  .nav-link {
+    margin-bottom: 0;
+  }
+}
+
 /* Customize the nav-justified links to be fill the entire space of the .navbar */
 
 .nav-justified {
@@ -26,7 +49,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-.nav-justified > li > a {
+.nav-link {
   padding-top: 15px;
   padding-bottom: 15px;
   margin-bottom: 0;
@@ -45,19 +68,18 @@ body {
   background-repeat: repeat-x; /* Repeat the gradient */
   border-bottom: 1px solid #d5d5d5;
 }
-.nav-justified > .active > a,
-.nav-justified > .active > a:hover,
-.nav-justified > .active > a:focus {
+.nav-link.active,
+.nav-link.active:hover,
+.nav-link.active:focus {
   background-color: #ddd;
   background-image: none;
   -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
           box-shadow: inset 0 3px 7px rgba(0,0,0,.15);
 }
-.nav-justified > li:first-child > a {
+.nav-item:first-child .nav-link {
   border-radius: 5px 5px 0 0;
 }
-.nav-justified > li:last-child > a {
-  border-bottom: 0;
+.nav-item:last-child .nav-link {
   border-radius: 0 0 5px 5px;
 }
 
@@ -65,15 +87,15 @@ body {
   .nav-justified {
     max-height: 52px;
   }
-  .nav-justified > li > a {
+  .nav-link {
     border-right: 1px solid #d5d5d5;
     border-left: 1px solid #fff;
   }
-  .nav-justified > li:first-child > a {
+  .nav-item:first-child .nav-link {
     border-left: 0;
     border-radius: 5px 0 0 5px;
   }
-  .nav-justified > li:last-child > a {
+  .nav-item:last-child .nav-link {
     border-right: 0;
     border-radius: 0 5px 5px 0;
   }
