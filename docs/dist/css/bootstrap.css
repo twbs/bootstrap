@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -4771,6 +4771,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .disabled > a:hover,
 .pagination > .disabled > a:focus {
   color: #777;
+  pointer-events: none;
   cursor: not-allowed;
   background-color: #fff;
   border-color: #ddd;
@@ -4842,6 +4843,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pager .disabled > a:focus,
 .pager .disabled > span {
   color: #777;
+  pointer-events: none;
   cursor: not-allowed;
   background-color: #fff;
 }
