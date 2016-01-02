@@ -6,12 +6,12 @@
   padding: 4rem 0;
   margin-top: 4rem;
   font-size: 85%;
-  background-color: #f7f7f7;
+  background-color: $gray-100;
   text-align: center;
 
   a {
     font-weight: 500;
-    color: $gray;
+    color: $gray-700;
 
     &:hover {
       color: $link-color;

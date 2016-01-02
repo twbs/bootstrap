@@ -12,12 +12,12 @@
       &.active,
       &:hover,
       &:focus {
-        color: $gray-dark;
+        color: $gray-900;
         background-color: transparent;
       }
 
       &.active {
-        color: darken($gray-dark, 25%);
+        color: darken($gray-900, 25%);
       }
     }
   }
