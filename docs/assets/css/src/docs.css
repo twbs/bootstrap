@@ -1622,3 +1622,10 @@ h1[id] {
   text-decoration: none;
   background-color: #0269c2;
 }
+
+/* Nullify ill-advised printing of hrefs; see #18711 */
+@media print {
+  a[href]:after {		
+    content: "" !important;		
+  }
+}
