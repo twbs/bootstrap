@@ -319,3 +319,13 @@
     WebKit#150715
   origin: >
     WebKit#138201
+
+-
+  browser: >
+    Safari (iPad Pro)
+  summary: >
+    Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation
+  upstream_bug: >
+    WebKit#152637, Safari#24030853
+  origin: >
+    Bootstrap#18738

@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v4.0.0-alpha.2 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -129,7 +129,9 @@ var Util = (function ($) {
 
     getUID: function getUID(prefix) {
       do {
+        /* eslint-disable no-bitwise */
         prefix += ~ ~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
+        /* eslint-enable no-bitwise */
       } while (document.getElementById(prefix));
       return prefix;
     },
@@ -1616,7 +1618,7 @@ var Dropdown = (function ($) {
           index++;
         }
 
-        if (! ~index) {
+        if (index < 0) {
           index = 0;
         }
 
@@ -1906,7 +1908,7 @@ var Modal = (function ($) {
 
         $(document).off(Event.FOCUSIN) // guard against infinite focus loop
         .on(Event.FOCUSIN, function (event) {
-          if (_this9._element !== event.target && !$(_this9._element).has(event.target).length) {
+          if (document !== event.target && _this9._element !== event.target && !$(_this9._element).has(event.target).length) {
             _this9._element.focus();
           }
         });
