@@ -49,10 +49,6 @@
   }
 }
 
-.carbonad #azcarbon > img {
-  display: none; // hide what I assume are tracking images
-}
-
 @include media-breakpoint-up(sm) {
   .carbonad {
     width: 330px !important;
