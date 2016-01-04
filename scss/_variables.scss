@@ -26,7 +26,28 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
-$gray: #a5a5b1 !default;
+$theme-colors: {
+  'primary': #0275d8,
+  'secondary': #767676,
+  'success': #5cb85c,
+  'info': #5bc0de,
+  'warning': #f0ad4e,
+  'danger': #d9534f,
+  'foreground': #6f6f81,
+  'background': #fff
+} !default;
+
+@function theme-color($key: 'primary') {
+  @return map-get($theme-colors, $key);
+}
+
+$brand-primary:   #0275d8 !default;
+$brand-success:   #5cb85c !default;
+$brand-info:      #5bc0de !default;
+$brand-warning:   #f0ad4e !default;
+$brand-danger:    #d9534f !default;
+
+$gray: theme-color('foreground') !default;
 $gray-100: lighten($gray, 30%) !default;
 $gray-200: lighten($gray, 25%) !default;
 $gray-300: lighten($gray, 18%) !default;
@@ -37,7 +58,7 @@ $gray-700: darken($gray, 20%) !default;
 $gray-800: darken($gray, 35%) !default;
 $gray-900: darken($gray, 50%) !default;
 
-$blue: #0275d8 !default;
+$blue: theme-color('primary') !default;
 $blue-100: lighten($blue, 32%) !default;
 $blue-200: lighten($blue, 24%) !default;
 $blue-300: lighten($blue, 16%) !default;
@@ -48,7 +69,7 @@ $blue-700: darken($blue, 16%) !default;
 $blue-800: darken($blue, 24%) !default;
 $blue-900: darken($blue, 32%) !default;
 
-$green: #5cb85c !default;
+$green: theme-color('success') !default;
 $green-100: lighten($green, 32%) !default;
 $green-200: lighten($green, 24%) !default;
 $green-300: lighten($green, 16%) !default;
@@ -91,12 +112,6 @@ $red-600: darken($red, 8%) !default;
 $red-700: darken($red, 16%) !default;
 $red-800: darken($red, 24%) !default;
 $red-900: darken($red, 32%) !default;
-
-$brand-primary:             #0275d8 !default;
-$brand-success:             #5cb85c !default;
-$brand-info:                #5bc0de !default;
-$brand-warning:             #f0ad4e !default;
-$brand-danger:              #d9534f !default;
 
 
 // Options
