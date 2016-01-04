@@ -23,8 +23,8 @@
 .bd-example-container {
   min-width: 16rem;
   max-width: 25rem;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .bd-example-container-header {
@@ -67,8 +67,8 @@
   @include clearfix();
 
   @include media-breakpoint-up(sm) {
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
     margin-bottom: 0;
     padding: 1.5rem;
     border-width: .2rem;
@@ -177,7 +177,7 @@
 }
 
 // Navbars
-.bd-example  {
+.bd-example {
   .navbar-fixed-top {
     position: static;
     margin: -1rem -1rem 1rem;
