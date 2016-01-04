@@ -26,12 +26,6 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
-// $gray-dark:                 #373a3c !default;
-// $gray:                      #55595c !default;
-// $gray-light:                #818a91 !default;
-// $gray-lighter:              #eceeef !default;
-// $gray-lightest:             #f7f7f9 !default;
-
 $gray: #a5a5b1 !default;
 $gray-100: lighten($gray, 30%) !default;
 $gray-200: lighten($gray, 25%) !default;
