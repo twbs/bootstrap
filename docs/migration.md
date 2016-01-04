@@ -54,7 +54,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Moved all `.text-` utilities to the `_utilities.scss` file.
 - Dropped the `.page-header` class entirely.
-- `.dl-horizontal` now requires grid classes, increasing flexbility in column widths.
+- `.dl-horizontal` has been dropped. Instead, use `.row` on `<dl>` and use grid column classes on its `<dt>` and `<dd>` children.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
 
 ### Images

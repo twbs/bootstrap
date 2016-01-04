@@ -215,12 +215,12 @@ Place all list items on a single line with `display: inline-block;` and some bas
 </ul>
 {% endexample %}
 
-### Horizontal description
+### Description list alignment
 
 Align terms and descriptions horizontally by using our grid system's predefined classes (or semantic mixins). For longer terms, you can optionally add a `.text-truncate` class to truncate the text with an ellipsis.
 
 {% example html %}
-<dl class="dl-horizontal">
+<dl class="row">
   <dt class="col-sm-3">Description lists</dt>
   <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
 
