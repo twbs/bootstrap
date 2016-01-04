@@ -334,15 +334,3 @@
   font-size: inherit;
   color: $gray-dark; // Effectively the base text color
 }
-
-
-// Pseudo focus
-//
-// Custom `:focus` state for showing how it looks in the docs.
-
-#focusedInput {
-  border-color: $input-border-focus;
-  outline: 0;
-  outline: thin dotted \9; // IE9
-  box-shadow: 0 0 .5rem $input-box-shadow-focus;
-}
