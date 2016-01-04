@@ -67,10 +67,10 @@
   @include clearfix();
 
   @include media-breakpoint-up(sm) {
+    padding: 1.5rem;
     margin-right: 0;
     margin-bottom: 0;
     margin-left: 0;
-    padding: 1.5rem;
     border-width: .2rem;
   }
 
