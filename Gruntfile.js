@@ -213,7 +213,12 @@ module.exports = function (grunt) {
         config: 'scss/.scss-lint.yml',
         reporterOutput: null
       },
-      src: ['scss/*.scss', '!scss/_normalize.scss']
+      core: {
+        src: ['scss/*.scss', '!scss/_normalize.scss']
+      },
+      docs: {
+        src: ['docs/assets/scss/*.scss', '!scss/_normalize.scss']
+      }
     },
 
     postcss: {
@@ -462,7 +467,7 @@ module.exports = function (grunt) {
   // JS distribution task.
   grunt.registerTask('dist-js', ['babel:dev', 'concat', 'lineremover', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
 
-  grunt.registerTask('test-scss', ['scsslint']);
+  grunt.registerTask('test-scss', ['scsslint:core']);
 
   // CSS distribution task.
   // Supported Compilers: sass (Ruby) and libsass.
@@ -491,7 +496,7 @@ module.exports = function (grunt) {
   });
 
   // Docs task.
-  grunt.registerTask('docs-css', ['postcss:docs', 'postcss:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
+  grunt.registerTask('docs-css', ['scsslint:docs', 'postcss:docs', 'postcss:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
