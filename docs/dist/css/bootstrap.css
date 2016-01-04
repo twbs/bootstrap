@@ -620,17 +620,6 @@ mark,
   margin-right: 5px;
 }
 
-.dl-horizontal {
-  margin-right: -1.875rem;
-  margin-left: -1.875rem;
-}
-
-.dl-horizontal::after {
-  display: table;
-  clear: both;
-  content: "";
-}
-
 .initialism {
   font-size: 90%;
   text-transform: uppercase;
