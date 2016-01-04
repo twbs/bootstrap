@@ -8,8 +8,8 @@
   padding: 1.25rem !important;
   margin: 2rem ($grid-gutter-width * -1) -2rem !important;
   overflow: hidden; // clearfix
-  font-size: .8rem !important;
   font-family: inherit !important;
+  font-size: .8rem !important;
   line-height: 1rem !important;
   color: $bd-purple-light !important;
   text-align: left;
@@ -47,10 +47,6 @@
   &:hover {
     color: #fff !important;
   }
-}
-
-.carbonad #azcarbon > img {
-  display: none; // hide what I assume are tracking images
 }
 
 @include media-breakpoint-up(sm) {

@@ -23,8 +23,8 @@
 .bd-example-container {
   min-width: 16rem;
   max-width: 25rem;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .bd-example-container-header {
@@ -67,10 +67,10 @@
   @include clearfix();
 
   @include media-breakpoint-up(sm) {
-    margin-left: 0;
+    padding: 1.5rem;
     margin-right: 0;
     margin-bottom: 0;
-    padding: 1.5rem;
+    margin-left: 0;
     border-width: .2rem;
   }
 
@@ -177,7 +177,7 @@
 }
 
 // Navbars
-.bd-example  {
+.bd-example {
   .navbar-fixed-top {
     position: static;
     margin: -1rem -1rem 1rem;
@@ -333,16 +333,4 @@
 .highlight pre code {
   font-size: inherit;
   color: $gray-dark; // Effectively the base text color
-}
-
-
-// Pseudo focus
-//
-// Custom `:focus` state for showing how it looks in the docs.
-
-#focusedInput {
-  border-color: $input-border-focus;
-  outline: 0;
-  outline: thin dotted \9; // IE9
-  box-shadow: 0 0 .5rem $input-box-shadow-focus;
 }

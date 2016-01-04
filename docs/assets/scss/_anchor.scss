@@ -10,9 +10,7 @@
 
 *:hover > .anchorjs-link {
   opacity: .75;
-  -webkit-transition: color .16s linear;
-       -o-transition: color .16s linear;
-          transition: color .16s linear;
+  transition: color .16s linear;
 }
 
 *:hover > .anchorjs-link:hover,
