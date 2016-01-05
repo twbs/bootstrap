@@ -13,12 +13,19 @@
   background-color: $foreground-100;
 }
 
-@include bg-variant('.bg-primary', $brand-primary);
+@each $color, $value in $theme-colors {
+  @if $color == "foreground" or $color == "background" {
+    // do nothing
+  } @else {
+    .bg-#{$color} {
+      color: #fff;
+      background-color: $value !important;
+    }
 
-@include bg-variant('.bg-success', $brand-success);
-
-@include bg-variant('.bg-info', $brand-info);
-
-@include bg-variant('.bg-warning', $brand-warning);
-
-@include bg-variant('.bg-danger', $brand-danger);
+    a.bg-#{$color} {
+      @include hover-focus {
+        background-color: darken($value, 10%);
+      }
+    }
+  }
+}
