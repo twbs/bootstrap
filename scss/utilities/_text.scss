@@ -36,15 +36,22 @@
   color: $text-muted;
 }
 
-@include text-emphasis-variant('.text-primary', $brand-primary);
+@each $color, $value in $theme-colors {
+  @if $color == "foreground" or $color == "background" {
+    // do nothing
+  } @else {
+    .text-#{$color} {
+      color: $value;
+    }
 
-@include text-emphasis-variant('.text-success', $brand-success);
+    a.text-#{$color} {
+      @include hover-focus {
+        color: darken($value, 10%);
+      }
+    }
+  }
+}
 
-@include text-emphasis-variant('.text-info', $brand-info);
-
-@include text-emphasis-variant('.text-warning', $brand-warning);
-
-@include text-emphasis-variant('.text-danger', $brand-danger);
 
 // Misc
 
