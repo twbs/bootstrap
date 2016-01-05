@@ -48,7 +48,7 @@
 // Tweaks for empty progress bar
 .progress[value="0"]::-moz-progress-bar {
   min-width: 2rem;
-  color: $gray-600;
+  color: $foreground-600;
   background-color: transparent;
   background-image: none;
 }
@@ -92,7 +92,7 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
   }
   .progress[width^="0"] {
     min-width: 2rem;
-    color: $gray-600;
+    color: $foreground-600;
     background-color: transparent;
     background-image: none;
   }

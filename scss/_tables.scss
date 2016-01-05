@@ -122,19 +122,19 @@
 .thead-inverse {
   th {
     color: #fff;
-    background-color: $gray-900;
+    background-color: $foreground-900;
   }
 }
 .thead-default {
   th {
-    color: $gray-600;
-    background-color: $gray-200;
+    color: $foreground-600;
+    background-color: $foreground-200;
   }
 }
 
 .table-inverse {
-  color: $gray-200;
-  background-color: $gray-900;
+  color: $foreground-200;
+  background-color: $foreground-900;
 
   &.table-bordered {
     border: 0;
@@ -143,7 +143,7 @@
   th,
   td,
   thead th {
-    border-color: $gray-600;
+    border-color: $foreground-600;
   }
 }
 
