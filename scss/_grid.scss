@@ -2,22 +2,23 @@
 //
 // Set the container width, and override it for fixed navbars in media queries.
 
-.container {
-  @include make-container();
-  @include make-container-max-widths();
-
+@if $enable-grid-classes {
+  .container {
+    @include make-container();
+    @include make-container-max-widths();
+  }
 }
-
 
 // Fluid container
 //
 // Utilizes the mixin meant for fixed width containers, but without any defined
 // width for fluid, full width layouts.
 
-.container-fluid {
-  @include make-container();
+@if $enable-grid-classes {
+  .container-fluid {
+    @include make-container();
+  }
 }
-
 
 // Row
 //
