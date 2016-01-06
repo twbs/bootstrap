@@ -656,7 +656,7 @@ $('.your-checkbox').prop('indeterminate', true)
 
 #### Disabled
 
-Custom checkboxes and radios can also be disabled. Add the `disabled` boolean attribute to the `<input>` and the `.custom-control-disabled` class to the `<label>`.
+Custom checkboxes and radios can also be disabled. Add the `disabled` boolean attribute to the `<input>` and the custom indicator and label description will be automatically styled.
 
 {% example html %}
 <label class="custom-control custom-checkbox">
