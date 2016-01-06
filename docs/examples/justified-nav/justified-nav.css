@@ -27,13 +27,13 @@ body {
   float: none;
 }
 .nav-link {
-  text-align: center;
-  margin-bottom: 5px;
   width: 100%;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
-   .nav-item {
+  .nav-item {
     display: table-cell;
     width: 1%;
   }
