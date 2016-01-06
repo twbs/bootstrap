@@ -184,21 +184,27 @@
 //
 // Custom file input.
 
-.file {
+.custom-file {
   position: relative;
   display: inline-block;
   max-width: 100%;
   height: 2.5rem;
   cursor: pointer;
 }
-.file input {
+
+.custom-file-input {
   min-width: 14rem;
   max-width: 100%;
   margin: 0;
   filter: alpha(opacity = 0);
   opacity: 0;
+
+  &:focus ~ .custom-file-control {
+    @include box-shadow(0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9);
+  }
 }
-.file-custom {
+
+.custom-file-control {
   position: absolute;
   top: 0;
   right: 0;
@@ -213,28 +219,25 @@
   border: $input-btn-border-width solid #ddd;
   border-radius: .25rem;
   @include box-shadow(inset 0 .2rem .4rem rgba(0,0,0,.05));
-}
-.file-custom::after {
-  content: "Choose file...";
-}
-.file-custom::before {
-  position: absolute;
-  top: -.075rem;
-  right: -.075rem;
-  bottom: -.075rem;
-  z-index: 6;
-  display: block;
-  height: 2.5rem;
-  padding: .5rem 1rem;
-  line-height: 1.5;
-  color: #555;
-  content: "Browse";
-  background-color: #eee;
-  border: $input-btn-border-width solid #ddd;
-  border-radius: 0 .25rem .25rem 0;
-}
 
-// Focus state
-.file input:focus ~ .file-custom {
-  @include box-shadow(0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9);
+  &::after {
+    content: "Choose file...";
+  }
+
+  &::before {
+    position: absolute;
+    top: -.075rem;
+    right: -.075rem;
+    bottom: -.075rem;
+    z-index: 6;
+    display: block;
+    height: 2.5rem;
+    padding: .5rem 1rem;
+    line-height: 1.5;
+    color: #555;
+    content: "Browse";
+    background-color: #eee;
+    border: $input-btn-border-width solid #ddd;
+    border-radius: 0 .25rem .25rem 0;
+  }
 }

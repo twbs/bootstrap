@@ -709,14 +709,16 @@ Custom selects degrade nicely in IE9, receiving only a handful of overrides to r
 
 ### File browser
 
+The file input is the most gnarly of the bunch and require additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
+
 {% example html %}
-<label class="file">
-  <input type="file" id="file">
-  <span class="file-custom"></span>
+<label class="custom-file">
+  <input type="file" id="file" class="custom-file-input">
+  <span class="custom-file-control"></span>
 </label>
 {% endexample %}
 
-The file input is the most gnarly of the bunch. Here's how it works:
+Here's how it works:
 
 - We wrap the `<input>` in a `<label>` so the custom control properly triggers the file browser.
 - We hide the default file `<input>` via `opacity`.
@@ -725,5 +727,3 @@ The file input is the most gnarly of the bunch. Here's how it works:
 - We declare a `height` on the `<input>` for proper spacing for surrounding content.
 
 In other words, it's an entirely custom element, all generated via CSS.
-
-**Heads up!** The custom file input is currently unable to update the *Choose file...* text with the filename. Without JavaScript, this might not be possible to change, but I'm open to ideas.
