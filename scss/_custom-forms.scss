@@ -151,6 +151,7 @@
   background-image: none \9;
   background-size: 8px 10px;
   border: $input-btn-border-width solid $input-border-color;
+  @include border-radius($border-radius);
   // Use vendor prefixes as `appearance` isn't part of the CSS spec.
   -moz-appearance: none;
   -webkit-appearance: none;
