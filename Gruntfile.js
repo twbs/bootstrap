@@ -343,7 +343,12 @@ module.exports = function (grunt) {
           'Attribute “autocomplete” not allowed on element “button” at this point.',
           'Element “div” not allowed as child of element “progress” in this context. (Suppressing further errors from this subtree.)',
           'Consider using the “h1” element as a top-level heading only (all “h1” elements are treated as top-level headings by many screen readers and other tools).',
-          'The “datetime-local” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
+          'The “color” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “date” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “datetime-local” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “month” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “time” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “week” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
         ]
       },
       src: ['_gh_pages/**/*.html', 'js/tests/visual/*.html']
