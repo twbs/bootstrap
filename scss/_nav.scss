@@ -38,7 +38,7 @@
 
   .nav-item + .nav-item,
   .nav-link + .nav-link {
-    margin-left: 1rem;
+    margin-left: $nav-item-inline-spacer;
   }
 }
 
