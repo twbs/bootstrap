@@ -3519,6 +3519,12 @@ input[type="button"].btn-block {
   border-color: #ddd #ddd transparent;
 }
 
+.nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 .nav-pills::after {
   display: table;
   clear: both;
@@ -3564,12 +3570,6 @@ input[type="button"].btn-block {
 
 .tab-content > .active {
   display: block;
-}
-
-.nav-tabs .dropdown-menu {
-  margin-top: -1px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 }
 
 .navbar {
