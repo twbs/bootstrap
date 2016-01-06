@@ -11,7 +11,7 @@ Provide pagination links for your site or app with the multi-page pagination com
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-## Default pagination
+## Overview
 
 Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.
 
@@ -39,7 +39,7 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
 </nav>
 {% endexample %}
 
-### Disabled and active states
+## Disabled and active states
 
 Links are customizable for different circumstances. Use `.disabled` for unclickable links and `.active` to indicate the current page.
 
@@ -48,7 +48,6 @@ Links are customizable for different circumstances. Use `.disabled` for unclicka
 
 The `.disabled` class uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, add a `tabindex="-1"` attribute on these links (to prevent them from receiving keyboard focus) and use custom JavaScript to disable their functionality.
 {% endcallout %}
-
 
 {% example html %}
 <nav>
@@ -93,7 +92,7 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
 {% endexample %}
 
 
-### Sizing
+## Sizing
 
 Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for additional sizes.
 
@@ -137,50 +136,6 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
         <span class="sr-only">Next</span>
       </a>
     </li>
-  </ul>
-</nav>
-{% endexample %}
-
-## Pager
-
-Quick previous and next links for simple pagination implementations with light markup and styles. It's great for simple sites like blogs or magazines.
-
-### Default example
-
-By default, the pager centers links.
-
-{% example html %}
-<nav>
-  <ul class="pager">
-    <li><a href="#">Previous</a></li>
-    <li><a href="#">Next</a></li>
-  </ul>
-</nav>
-{% endexample %}
-
-### Aligned links
-
-Alternatively, you can align each link to the sides:
-
-{% example html %}
-<nav>
-  <ul class="pager">
-    <li class="pager-prev"><a href="#">Older</a></li>
-    <li class="pager-next"><a href="#">Newer</a></li>
-  </ul>
-</nav>
-{% endexample %}
-
-
-### Optional disabled state
-
-Pager links also support the `.disabled` class (though note that the same advice about keyboard focus as for the default pagination applies here as well).
-
-{% example html %}
-<nav>
-  <ul class="pager">
-    <li class="pager-prev disabled"><a href="#" tabindex="-1">Older</a></li>
-    <li class="pager-next"><a href="#">Newer</a></li>
   </ul>
 </nav>
 {% endexample %}
