@@ -88,6 +88,13 @@
       border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color transparent;
     }
   }
+
+  .dropdown-menu {
+    // Make dropdown border overlap tab border
+    margin-top: -$nav-tabs-border-width;
+    // Remove the top rounded corners here since there is a hard edge above the menu
+    @include border-top-radius(0);
+  }
 }
 
 
@@ -147,16 +154,4 @@
   > .active {
     display: block;
   }
-}
-
-
-//
-// Dropdowns
-//
-
-.nav-tabs .dropdown-menu {
-  // Make dropdown border overlap tab border
-  margin-top: -1px;
-  // Remove the top rounded corners here since there is a hard edge above the menu
-  @include border-top-radius(0);
 }
