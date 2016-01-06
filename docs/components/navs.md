@@ -22,13 +22,13 @@ Roll your own navigation style by extending the base `.nav` component. All Boots
 {% example html %}
 <ul class="nav">
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link active" href="#">Active</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Another link</a>
+    <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
@@ -42,20 +42,20 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 <nav class="nav">
   <a class="nav-link active" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Another link</a>
+  <a class="nav-link" href="#">Link</a>
   <a class="nav-link disabled" href="#">Disabled</a>
 </nav>
 {% endexample %}
 
 ## Inline
 
-Easily space out nav links in a horizontal band with `.nav-inline`. Longer series of links will wrap to a new line.
+Space out nav links in a horizontal band with `.nav-inline`. Longer series of links will wrap to a new line.
 
 {% example html %}
 <nav class="nav nav-inline">
   <a class="nav-link active" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Another link</a>
+  <a class="nav-link" href="#">Link</a>
   <a class="nav-link disabled" href="#">Disabled</a>
 </nav>
 {% endexample %}
@@ -65,13 +65,13 @@ The same works for a navigation built with lists.
 {% example html %}
 <ul class="nav nav-inline">
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link active" href="#">Active</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Another link</a>
+    <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
@@ -92,7 +92,7 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Another link</a>
+    <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
@@ -113,7 +113,7 @@ Take that same HTML, but use `.nav-pills` instead:
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Another link</a>
+    <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
@@ -121,9 +121,9 @@ Take that same HTML, but use `.nav-pills` instead:
 </ul>
 {% endexample %}
 
-## Stacked pills
+### Stacked pills
 
-Just add `.nav-stacked` to the `.nav.nav-pills`.
+Add `.nav-stacked` to the `.nav.nav-pills` to stack them vertically. Each `.nav-link` becomes block-level, allowing for larger hit areas via mouse or tap.
 
 {% example html %}
 <ul class="nav nav-pills nav-stacked">
@@ -134,12 +134,23 @@ Just add `.nav-stacked` to the `.nav.nav-pills`.
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Another link</a>
+    <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
   </li>
 </ul>
+{% endexample %}
+
+As always, stacked pills are possible without `<ul>`s.
+
+{% example html %}
+<nav class="nav nav-pills nav-stacked">
+  <a class="nav-link active" href="#">Active</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled" href="#">Disabled</a>
+</nav>
 {% endexample %}
 
 ## Using dropdowns
@@ -164,7 +175,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Another link</a>
+    <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
@@ -190,7 +201,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Another link</a>
+    <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
