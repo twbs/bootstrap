@@ -134,11 +134,11 @@ Dropped entirely for the new card component.
 - `.panel-title` to `.card-header`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/components/utilities/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
 - `.panel-body` to `.card-block`
 - `.panel-footer` to `.card-footer`
-- `.panel-primary` to `.card-primary` and `.card-inverse`
-- `.panel-success` to `.card-success` and `.card-inverse`
-- `.panel-info` to `.card-info` and `.card-inverse`
-- `.panel-warning` to `.card-warning` and `.card-inverse`
-- `.panel-danger` to `.card-danger` and `.card-inverse`
+- `.panel-primary` to `.card-primary` and `.card-inverse` (or use `.bg-primary` on `.card-header`)
+- `.panel-success` to `.card-success` and `.card-inverse` (or use `.bg-success` on `.card-header`)
+- `.panel-info` to `.card-info` and `.card-inverse` (or use `.bg-info` on `.card-header`)
+- `.panel-warning` to `.card-warning` and `.card-inverse` (or use `.bg-warning` on `.card-header`)
+- `.panel-danger` to `.card-danger` and `.card-inverse` (or use `.bg-danger` on `.card-header`)
 
 ### Carousel
 
