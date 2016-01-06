@@ -1,3 +1,5 @@
+// scss-lint:disable PropertyCount
+
 // Embedded icons from Open Iconic.
 // Released under MIT and copyright 2014 Waybury.
 // http://useiconic.com/open
@@ -204,7 +206,6 @@
   }
 }
 
-// scss-lint:disable PropertyCount
 .custom-file-control {
   position: absolute;
   top: 0;
@@ -242,4 +243,3 @@
     border-radius: 0 .25rem .25rem 0;
   }
 }
-// scss-lint:enable PropertyCount
