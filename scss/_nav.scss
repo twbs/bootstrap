@@ -115,9 +115,9 @@
   .nav-link.active,
   .nav-item.open .nav-link {
     @include plain-hover-focus {
-      color: $component-active-color;
+      color: $nav-pills-active-link-color;
       cursor: default;
-      background-color: $component-active-bg;
+      background-color: $nav-pills-active-link-bg;
     }
   }
 }

@@ -399,15 +399,15 @@ $nav-disabled-link-hover-bg:    transparent !default;
 $nav-tabs-border-color:                       #ddd !default;
 $nav-tabs-border-width:                       $border-width !default;
 $nav-tabs-link-hover-border-color:            $gray-lighter !default;
-$nav-tabs-active-link-hover-bg:               $body-bg !default;
 $nav-tabs-active-link-hover-color:            $gray !default;
+$nav-tabs-active-link-hover-bg:               $body-bg !default;
 $nav-tabs-active-link-hover-border-color:     #ddd !default;
 $nav-tabs-justified-link-border-color:        #ddd !default;
 $nav-tabs-justified-active-link-border-color: $body-bg !default;
 
-$nav-pills-border-radius:           $border-radius !default;
-$nav-pills-active-link-hover-bg:    $component-active-bg !default;
-$nav-pills-active-link-hover-color: $component-active-color !default;
+$nav-pills-border-radius:     $border-radius !default;
+$nav-pills-active-link-color: $component-active-color !default;
+$nav-pills-active-link-bg:    $component-active-bg !default;
 
 
 // Pagination
