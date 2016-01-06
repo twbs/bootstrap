@@ -314,10 +314,10 @@ Cards include their own variant classes for quickly changing the `background-col
 
 ## Outline variants
 
-In need of a colored card, but not the hefty background colors they bring? Replace the default modifier classes with the `.card-*-outline` ones to style just the `border-color` of a card.
+In need of a colored card, but not the hefty background colors they bring? Replace the default modifier classes with the `.card-outline-*` ones to style just the `border-color` of a card.
 
 {% example html %}
-<div class="card card-primary-outline text-xs-center">
+<div class="card card-outline-primary text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -325,7 +325,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-secondary-outline text-xs-center">
+<div class="card card-outline-secondary text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -333,7 +333,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-success-outline text-xs-center">
+<div class="card card-outline-success text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -341,7 +341,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-info-outline text-xs-center">
+<div class="card card-outline-info text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -349,7 +349,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-warning-outline text-xs-center">
+<div class="card card-outline-warning text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -357,7 +357,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-danger-outline text-xs-center">
+<div class="card card-outline-danger text-xs-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
