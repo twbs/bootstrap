@@ -23,7 +23,7 @@
     @include plain-hover-focus {
       color: $nav-disabled-link-hover-color;
       cursor: $cursor-disabled;
-      background-color: transparent;
+      background-color: $nav-disabled-link-hover-bg;
     }
   }
 }
