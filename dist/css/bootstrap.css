@@ -3247,42 +3247,51 @@ input[type="button"].btn-block {
   z-index: 3;
 }
 
-.c-input {
+.custom-control {
   position: relative;
   display: inline;
   padding-left: 1.5rem;
   color: #555;
-  cursor: pointer;
 }
 
-.c-input > input {
+.custom-control + .custom-control {
+  margin-left: 1rem;
+}
+
+.custom-control-input {
   position: absolute;
   z-index: -1;
   opacity: 0;
 }
 
-.c-input > input:checked ~ .c-indicator {
+.custom-control-input:checked ~ .custom-control-indicator {
   color: #fff;
   background-color: #0074d9;
 }
 
-.c-input > input:focus ~ .c-indicator {
+.custom-control-input:focus ~ .custom-control-indicator {
   -webkit-box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
           box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
 }
 
-.c-input > input:active ~ .c-indicator {
+.custom-control-input:active ~ .custom-control-indicator {
   color: #fff;
   background-color: #84c6ff;
 }
 
-.c-input + .c-input {
-  margin-left: 1rem;
+.custom-control-input:disabled ~ .custom-control-indicator {
+  cursor: not-allowed;
+  background-color: #eee;
 }
 
-.c-indicator {
+.custom-control-input:disabled ~ .custom-control-description {
+  color: #767676;
+  cursor: not-allowed;
+}
+
+.custom-control-indicator {
   position: absolute;
-  top: 0;
+  top: .0625rem;
   left: 0;
   display: block;
   width: 1rem;
@@ -3295,49 +3304,49 @@ input[type="button"].btn-block {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background-color: #eee;
+  background-color: #ddd;
   background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: 50% 50%;
           background-size: 50% 50%;
 }
 
-.c-checkbox .c-indicator {
+.custom-checkbox .custom-control-indicator {
   border-radius: .25rem;
 }
 
-.c-checkbox input:checked ~ .c-indicator {
+.custom-checkbox .custom-control-input:checked ~ .custom-control-indicator {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgOCA4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA4IDgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTYuNCwxTDUuNywxLjdMMi45LDQuNUwyLjEsMy43TDEuNCwzTDAsNC40bDAuNywwLjdsMS41LDEuNWwwLjcsMC43bDAuNy0wLjdsMy41LTMuNWwwLjctMC43TDYuNCwxTDYuNCwxeiINCgkvPg0KPC9zdmc+DQo=);
 }
 
-.c-checkbox input:indeterminate ~ .c-indicator {
+.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-indicator {
   background-color: #0074d9;
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iOHB4IiBoZWlnaHQ9IjhweCIgdmlld0JveD0iMCAwIDggOCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgOCA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0wLDN2Mmg4VjNIMHoiLz4NCjwvc3ZnPg0K);
 }
 
-.c-radio .c-indicator {
+.custom-radio .custom-control-indicator {
   border-radius: 50%;
 }
 
-.c-radio input:checked ~ .c-indicator {
+.custom-radio .custom-control-input:checked ~ .custom-control-indicator {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgOCA4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA4IDgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQsMUMyLjMsMSwxLDIuMywxLDRzMS4zLDMsMywzczMtMS4zLDMtM1M1LjcsMSw0LDF6Ii8+DQo8L3N2Zz4NCg==);
 }
 
-.c-inputs-stacked .c-input {
+.custom-controls-stacked .custom-control {
   display: inline;
 }
 
-.c-inputs-stacked .c-input::after {
+.custom-controls-stacked .custom-control::after {
   display: block;
   margin-bottom: .25rem;
   content: "";
 }
 
-.c-inputs-stacked .c-input + .c-input {
+.custom-controls-stacked .custom-control + .custom-control {
   margin-left: 0;
 }
 
-.c-select {
+.custom-select {
   display: inline-block;
   max-width: 100%;
   -webkit-appearance: none;
@@ -3350,31 +3359,32 @@ input[type="button"].btn-block {
   -webkit-background-size: 8px 10px;
           background-size: 8px 10px;
   border: 1px solid #ccc;
+  border-radius: .25rem;
 
      -moz-appearance: none;
 }
 
-.c-select:focus {
+.custom-select:focus {
   border-color: #51a7e8;
   outline: none;
 }
 
-.c-select::-ms-expand {
+.custom-select::-ms-expand {
   opacity: 0;
 }
 
-.c-select-sm {
+.custom-select-sm {
   padding-top: 3px;
   padding-bottom: 3px;
   font-size: 12px;
 }
 
-.c-select-sm:not([multiple]) {
+.custom-select-sm:not([multiple]) {
   height: 26px;
   min-height: 26px;
 }
 
-.file {
+.custom-file {
   position: relative;
   display: inline-block;
   max-width: 100%;
@@ -3382,7 +3392,7 @@ input[type="button"].btn-block {
   cursor: pointer;
 }
 
-.file input {
+.custom-file-input {
   min-width: 14rem;
   max-width: 100%;
   margin: 0;
@@ -3390,7 +3400,7 @@ input[type="button"].btn-block {
   opacity: 0;
 }
 
-.file-custom {
+.custom-file-control {
   position: absolute;
   top: 0;
   right: 0;
@@ -3409,11 +3419,11 @@ input[type="button"].btn-block {
   border-radius: .25rem;
 }
 
-.file-custom::after {
+.custom-file-control::after {
   content: "Choose file...";
 }
 
-.file-custom::before {
+.custom-file-control::before {
   position: absolute;
   top: -.075rem;
   right: -.075rem;
@@ -4639,7 +4649,6 @@ base::-moz-progress-bar,
 .media,
 .media-body {
   overflow: hidden;
-  zoom: 1;
 }
 
 .media-body {
