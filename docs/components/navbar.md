@@ -49,7 +49,7 @@ Here's an example of all the sub-components included in a default, light navbar:
   </ul>
   <form class="form-inline pull-xs-right">
     <input class="form-control" type="text" placeholder="Search">
-    <button class="btn btn-success-outline" type="submit">Search</button>
+    <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
 </nav>
 {% endexample %}
@@ -131,7 +131,7 @@ Here are some examples to show what we mean.
     </ul>
     <form class="form-inline pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
-      <button class="btn btn-info-outline" type="submit">Search</button>
+      <button class="btn btn-outline-info" type="submit">Search</button>
     </form>
   </nav>
   <nav class="navbar navbar-dark bg-primary">
@@ -152,7 +152,7 @@ Here are some examples to show what we mean.
     </ul>
     <form class="form-inline pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
-      <button class="btn btn-secondary-outline" type="submit">Search</button>
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
     </form>
   </nav>
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
@@ -173,7 +173,7 @@ Here are some examples to show what we mean.
     </ul>
     <form class="form-inline pull-xs-right">
       <input class="form-control" type="text" placeholder="Search">
-      <button class="btn btn-primary-outline" type="submit">Search</button>
+      <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
   </nav>
 </div>
