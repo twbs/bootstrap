@@ -76,22 +76,22 @@ fieldset[disabled] a.btn {
 }
 
 // Remove all backgrounds
-.btn-primary-outline {
+.btn-outline-primary {
   @include button-outline-variant($btn-primary-bg);
 }
-.btn-secondary-outline {
+.btn-outline-secondary {
   @include button-outline-variant($btn-secondary-border);
 }
-.btn-info-outline {
+.btn-outline-info {
   @include button-outline-variant($btn-info-bg);
 }
-.btn-success-outline {
+.btn-outline-success {
   @include button-outline-variant($btn-success-bg);
 }
-.btn-warning-outline {
+.btn-outline-warning {
   @include button-outline-variant($btn-warning-bg);
 }
-.btn-danger-outline {
+.btn-outline-danger {
   @include button-outline-variant($btn-danger-bg);
 }
 
