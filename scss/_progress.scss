@@ -45,7 +45,6 @@
   border-top-left-radius: $border-radius;
   border-bottom-left-radius: $border-radius;
 }
-// Tweaks for empty progress bar
 // Tweaks for full progress bar
 .progress[value="100"]::-moz-progress-bar {
   border-top-right-radius: $border-radius;
