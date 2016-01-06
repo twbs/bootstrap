@@ -204,6 +204,7 @@
   }
 }
 
+// scss-lint:disable DuplicateProperty
 .custom-file-control {
   position: absolute;
   top: 0;
@@ -241,3 +242,4 @@
     border-radius: 0 .25rem .25rem 0;
   }
 }
+// scss-lint:enable DuplicateProperty
