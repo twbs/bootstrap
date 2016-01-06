@@ -312,6 +312,12 @@ Cards include their own variant classes for quickly changing the `background-col
 </div>
 {% endexample %}
 
+{% callout warning %}
+#### Conveying meaning to assistive technologies
+
+Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.sr-only` class.
+{% endcallout %}
+
 ## Groups
 
 Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode]({{ site.baseurl }}/getting-started/flexbox) can switch that to use `display: flex;` and provide the same effect.
