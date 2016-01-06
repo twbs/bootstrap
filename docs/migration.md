@@ -21,8 +21,8 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Global changes
 
-- Switched from [Less](http://lesscss.org/) to [SCSS](http://sass-lang.com/) for our source CSS files.
-- Switched from `px` to `rem` as our primary CSS unit.
+- Switched from [Less](http://lesscss.org/) to [Sass](http://sass-lang.com/) for our source CSS files.
+- Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and more as viewports are not affected by type size.
 - Global font-size increased from `14px` to `16px`.
 - Added a new grid tier for ~`480px` and below.
 - Replaced the separate optional theme with configurable options via SCSS variables (e.g., `$enable-gradients: true`).
@@ -54,7 +54,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Moved all `.text-` utilities to the `_utilities.scss` file.
 - Dropped the `.page-header` class entirely.
-- `.dl-horizontal` has been dropped. Instead, use `.row` on `<dl>` and use grid column classes on its `<dt>` and `<dd>` children.
+- `.dl-horizontal` has been dropped. Instead, use `.row` on `<dl>` and use grid column classes (or mixins) on its `<dt>` and `<dd>` children.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
 
 ### Images
@@ -68,7 +68,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
 - Added a new `.table-reflow` option.
-- Added table header modifers: `.thead-default` and `.thead-inverse`
+- Added table header modifiers: `.thead-default` and `.thead-inverse`
 
 ### Forms
 
