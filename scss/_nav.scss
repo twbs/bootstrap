@@ -48,13 +48,13 @@
 //
 
 .nav-tabs {
-  border-bottom: 1px solid $nav-tabs-border-color;
+  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
   @include clearfix();
 
   .nav-item {
     float: left;
     // Make the list-items overlay the bottom border
-    margin-bottom: -1px;
+    margin-bottom: -$nav-tabs-border-width;
 
     + .nav-item {
       margin-left: $nav-item-margin;
@@ -64,7 +64,7 @@
   .nav-link {
     display: block;
     padding: $nav-link-padding;
-    border: $nav-tabs-link-border-width solid transparent;
+    border: $nav-tabs-border-width solid transparent;
     @include border-radius($border-radius $border-radius 0 0);
 
     @include hover-focus {
