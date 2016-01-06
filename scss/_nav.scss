@@ -149,6 +149,14 @@
   }
 }
 
+//
+// Justified
+//
+
+.nav-justified {
+  @include nav-justified;
+  @include nav-tabs-justified;
+}
 
 //
 // Dropdowns

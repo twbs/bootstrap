@@ -142,6 +142,30 @@ Just add `.nav-stacked` to the `.nav.nav-pills`.
 </ul>
 {% endexample %}
 
+## Justified navs
+
+Just add `.nav-justified` to the `.nav.nav-tabs` or `.nav.nav-pills`. Easily make tabs or pills equal widths of their parent at screens wider than 768px with `.nav-justified`. On smaller screens, the nav links are stacked. Justified navbar nav links are currently not supported.
+
+### Safari and responsive justified navs
+As of v8.0, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing. This bug is also shown in the [justified nav example](../examples/justified-nav/).
+
+{% example html %}
+<ul class="nav nav-tabs nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Another link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
 ## Using dropdowns
 
 Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin]({{ site.baseurl }}/components/dropdowns/#usage).
