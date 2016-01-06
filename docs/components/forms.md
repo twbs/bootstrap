@@ -694,10 +694,10 @@ Custom checkboxes and radios are inline to start. Add a parent with class `.cust
 
 ### Select menu
 
-Custom `<select>` menus need only a custom class, `.c-select` to trigger the custom styles.
+Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles.
 
 {% example html %}
-<select class="c-select">
+<select class="custom-select">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>

@@ -140,7 +140,7 @@
 //
 // Includes IE9-specific hacks (noted by ` \9`).
 
-.c-select {
+.custom-select {
   display: inline-block;
   max-width: 100%;
   padding: .375rem 1.75rem .375rem .75rem;
@@ -167,7 +167,7 @@
   }
 }
 
-.c-select-sm {
+.custom-select-sm {
   padding-top: 3px;
   padding-bottom: 3px;
   font-size: 12px;
