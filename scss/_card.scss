@@ -112,22 +112,22 @@
 }
 
 // Remove all backgrounds
-.card-primary-outline {
+.card-outline-primary {
   @include card-outline-variant($btn-primary-bg);
 }
-.card-secondary-outline {
+.card-outline-secondary {
   @include card-outline-variant($btn-secondary-border);
 }
-.card-info-outline {
+.card-outline-info {
   @include card-outline-variant($btn-info-bg);
 }
-.card-success-outline {
+.card-outline-success {
   @include card-outline-variant($btn-success-bg);
 }
-.card-warning-outline {
+.card-outline-warning {
   @include card-outline-variant($btn-warning-bg);
 }
-.card-danger-outline {
+.card-outline-danger {
   @include card-outline-variant($btn-danger-bg);
 }
 
