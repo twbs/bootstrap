@@ -43,7 +43,6 @@
     // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
     opacity: 1;
   }
-
   // Disabled and read-only inputs
   //
   // HTML5 says that controls under a fieldset > legend:first-child won't be
@@ -60,7 +59,7 @@
     cursor: $cursor-disabled;
   }
 }
-
+@include input-size(".form-control",$input-height, $input-padding-y, $input-padding-x, $font-size-base, $line-height, $input-border-radius);
 
 // Make file inputs better match text inputs by forcing them to new lines.
 .form-control-file,
@@ -150,6 +149,7 @@
   line-height: $line-height-sm;
   @include border-radius($input-border-radius-sm);
 }
+@include input-size(".form-control-sm",$input-height-sm, $input-padding-y-sm, $input-padding-x-sm, $font-size-sm, $line-height-sm, $input-border-radius-sm);
 
 .form-control-lg {
   // height: $input-height-lg;
@@ -158,8 +158,7 @@
   line-height: $line-height-lg;
   @include border-radius($input-border-radius-lg);
 }
-
-
+@include input-size(".form-control-lg",$input-height-lg, $input-padding-y-lg, $input-padding-x-lg, $font-size-lg, $line-height-lg, $input-border-radius-lg);
 // Form groups
 //
 // Designed to help with the organization and spacing of vertical forms. For
