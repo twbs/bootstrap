@@ -5283,7 +5283,7 @@ button.close {
   font-size: 1rem;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
-  border-radius: -.7rem -.7rem 0 0;
+  border-radius: .2375rem .2375rem 0 0;
 }
 
 .popover-content {
