@@ -85,18 +85,18 @@ $border-width: 1px !default;
 //
 // Settings for the `<body>` element.
 
-$body-bg:                    #fff !default;
-$body-color:                 $gray-dark !default;
+$body-bg:    #fff !default;
+$body-color: $gray-dark !default;
 
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                 $brand-primary !default;
-$link-decoration:            none !default;
-$link-hover-color:           darken($link-color, 15%) !default;
-$link-hover-decoration:      underline !default;
+$link-color:            $brand-primary !default;
+$link-decoration:       none !default;
+$link-hover-color:      darken($link-color, 15%) !default;
+$link-hover-decoration: underline !default;
 
 
 // Grid breakpoints
