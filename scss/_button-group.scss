@@ -103,11 +103,11 @@
 //
 
 // Give the line between buttons some depth
-.btn-group > .btn + .dropdown-toggle {
+.btn-group > .btn ~ .dropdown-toggle {
   padding-right: 8px;
   padding-left: 8px;
 }
-.btn-group > .btn-lg + .dropdown-toggle {
+.btn-group > .btn-lg ~ .dropdown-toggle {
   padding-right: 12px;
   padding-left: 12px;
 }
