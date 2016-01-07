@@ -57,28 +57,28 @@ $enable-grid-classes:       true !default;
 // Control the default styling of most Bootstrap elements by modifying these
 // variables. Mostly focused on spacing.
 
-$spacer:                     1rem !default;
-$spacer-x:                   $spacer !default;
-$spacer-y:                   $spacer !default;
+$spacer:   1rem !default;
+$spacer-x: $spacer !default;
+$spacer-y: $spacer !default;
 $spacers: (
   0: (
-    x:   0,
-    y:   0
+    x: 0,
+    y: 0
   ),
   1: (
-    x:   $spacer-x,
-    y:   $spacer-y
+    x: $spacer-x,
+    y: $spacer-y
   ),
   2: (
-    x:   ($spacer-x * 1.5),
-    y:   ($spacer-y * 1.5)
+    x: ($spacer-x * 1.5),
+    y: ($spacer-y * 1.5)
   ),
   3: (
-    x:   ($spacer-x * 3),
-    y:   ($spacer-y * 3)
+    x: ($spacer-x * 3),
+    y: ($spacer-y * 3)
   )
 ) !default;
-$border-width:               1px !default;
+$border-width: 1px !default;
 
 
 // Body
