@@ -56,6 +56,7 @@ When using button classes on `<a>` elements that are used to trigger in-page fun
 <button class="btn btn-primary" type="submit">Button</button>
 <input class="btn btn-primary" type="button" value="Input">
 <input class="btn btn-primary" type="submit" value="Submit">
+<input class="btn btn-primary" type="reset" value="Reset">
 {% endexample %}
 
 ## Outline buttons
