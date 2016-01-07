@@ -10,12 +10,27 @@
 .breadcrumb-item {
   float: left;
 
+  // The separator between breadcrumbs (by default, a forward-slash: "/")
   + .breadcrumb-item::before {
-    display: inline-block;
+    display: inline-block; // Suppress underlining of the separator in modern browsers
     padding-right: $breadcrumb-item-padding;
     padding-left: $breadcrumb-item-padding;
     color: $breadcrumb-divider-color;
     content: "#{$breadcrumb-divider}";
+  }
+
+  // When not using <ul> markup, browsers normally underline the ::before pseudo-element
+  // (the separator between the breadcrumbs) when the user hovers over its originating breadcrumb <a> element.
+  // In modern browsers, this underline can be suppressed by setting `display:inline-block` on the pseudo-element.
+  // (Why doesn't simply setting `text-decoration:none` on the pseudo-element work? Because that's how text-decoration propagation has been spec'd in CSS.)
+  // IE9-11 suffer from a bug which prevents that solution from working.
+  // For them, we apply a hack where we first set `text-decoration:underline` and then later set `text-decoration:none`, both on the pseudo-element.
+  // This tricks IE into suppressing the underline.
+  + .breadcrumb-item:hover::before {
+    text-decoration: underline; // Part 1 of IE9-11 hack to suppress the underline
+  }
+  + .breadcrumb-item:hover::before {
+    text-decoration: none; // Suppress underlining of the separator in IE9-11 (requires an earlier setting of `text-decoration:underline`)
   }
 
   &.active {
