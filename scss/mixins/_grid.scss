@@ -46,6 +46,7 @@
 @mixin make-col-span($size, $columns: $grid-columns) {
   @if $enable-flex {
     flex: 0 0 percentage($size / $columns);
+    max-width: percentage($size / $columns);
   } @else {
     width: percentage($size / $columns);
   }
