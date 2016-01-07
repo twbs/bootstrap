@@ -33,7 +33,7 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  margin-left: -5px; // Offset the first child's margin
+  margin-left: -$btn-toolbar-margin; // Offset the first child's margin
   @include clearfix();
 
   .btn-group,
@@ -44,7 +44,7 @@
   > .btn,
   > .btn-group,
   > .input-group {
-    margin-left: 5px;
+    margin-left: $btn-toolbar-margin;
   }
 }
 
@@ -104,12 +104,12 @@
 
 // Give the line between buttons some depth
 .btn-group > .btn + .dropdown-toggle {
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: $split-btn-dropdown-toggle-padding-x;
+  padding-left: $split-btn-dropdown-toggle-padding-x;
 }
 .btn-group > .btn-lg + .dropdown-toggle {
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: $split-btn-lg-dropdown-toggle-padding-x;
+  padding-left: $split-btn-lg-dropdown-toggle-padding-x;
 }
 
 // The clickable button for toggling the menu
