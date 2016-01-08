@@ -302,16 +302,6 @@
 
 -
   browser: >
-    Safari (iOS 9+)
-  summary: >
-    Sometimes excessive automatic zoom is applied after opening a modal, and the user isn't allowed to zoom out
-  upstream_bug: >
-    WebKit#150715
-  origin: >
-    WebKit#138201
-
--
-  browser: >
     Safari (iPad Pro)
   summary: >
     Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation
