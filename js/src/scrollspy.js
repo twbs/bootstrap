@@ -195,12 +195,17 @@ const ScrollSpy = (($) => {
       )
     }
 
+    _getOffsetHeight() {
+      return this._scrollElement === window ?
+          window.innerHeight : this._scrollElement.offsetHeight
+    }
+
     _process() {
       let scrollTop    = this._getScrollTop() + this._config.offset
       let scrollHeight = this._getScrollHeight()
       let maxScroll    = this._config.offset
         + scrollHeight
-        - this._scrollElement.offsetHeight
+        - this._getOffsetHeight()
 
       if (this._scrollHeight !== scrollHeight) {
         this.refresh()
@@ -212,6 +217,7 @@ const ScrollSpy = (($) => {
         if (this._activeTarget !== target) {
           this._activate(target)
         }
+        return
       }
 
       if (this._activeTarget && scrollTop < this._offsets[0]) {
