@@ -62,6 +62,13 @@ Here are some representative examples of these classes:
 
 Additionally, Bootstrap also includes an `.m-x-auto` class which sets the horizontal margins to `auto`.
 
+## Fixed positioning
+
+Easily create fixed elements within the body using `position: fixed`. **Be sure you understand the ramifications of fixing elements within your project.**
+
+{% highlight html %}
+<p class="pos-f-t">Fixed top position</p>
+{% endhighlight %}
 
 ## Text alignment
 
