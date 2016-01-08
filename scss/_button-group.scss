@@ -103,13 +103,19 @@
 //
 
 // Give the line between buttons some depth
-.btn-group > .btn + .dropdown-toggle {
-  padding-right: $split-btn-dropdown-toggle-padding-x;
-  padding-left: $split-btn-dropdown-toggle-padding-x;
-}
-.btn-group > .btn-lg + .dropdown-toggle {
-  padding-right: $split-btn-lg-dropdown-toggle-padding-x;
-  padding-left: $split-btn-lg-dropdown-toggle-padding-x;
+.dropdown-toggle-split {
+  padding-left: $btn-dropdown-toggle-split-l;
+  padding-right: $btn-dropdown-toggle-split-r;
+
+  &.btn-sm {
+    padding-left: $btn-dropdown-toggle-split-l-sm;
+    padding-right: $btn-dropdown-toggle-split-r-sm;
+  }
+
+  &.btn-lg {
+    padding-left: $btn-dropdown-toggle-split-l-lg;
+    padding-right: $btn-dropdown-toggle-split-r-lg;
+  }
 }
 
 // The clickable button for toggling the menu

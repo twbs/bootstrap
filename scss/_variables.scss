@@ -270,11 +270,15 @@ $btn-padding-y-sm:               .25rem !default;
 $btn-padding-x-lg:               1.25rem !default;
 $btn-padding-y-lg:               .75rem !default;
 
-$btn-block-spacing-y:            5px !default;
-$btn-toolbar-margin:             5px !default;
+$btn-block-spacing-y:            .5rem !default;
+$btn-toolbar-margin:             .5rem !default;
 
-$split-btn-dropdown-toggle-padding-x:     8px !default;
-$split-btn-lg-dropdown-toggle-padding-x: 12px !default;
+$btn-dropdown-toggle-split-l:    (strip-unit($btn-padding-x) - ($caret-width * 1.5)) !default;
+$btn-dropdown-toggle-split-r:    (strip-unit($btn-padding-x) - ($caret-width * .5)) !default;
+$btn-dropdown-toggle-split-l-sm: (strip-unit($btn-padding-x-sm) - ($caret-width * 1.5)) !default;
+$btn-dropdown-toggle-split-r-sm: (strip-unit($btn-padding-x-sm) - ($caret-width * .5)) !default;
+$btn-dropdown-toggle-split-l-lg: (strip-unit($btn-padding-x-lg) - ($caret-width-lg * 1.5)) !default;
+$btn-dropdown-toggle-split-r-lg: (strip-unit($btn-padding-x-lg) - ($caret-width-lg * .5)) !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:              $border-radius !default;

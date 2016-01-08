@@ -102,12 +102,12 @@ Turn a button into a dropdown toggle with some basic markup changes.
 
 ### Split button dropdowns
 
-Similarly, create split button dropdowns with the same markup changes, only with a separate button.
+Similarly, create split button dropdowns with nearly the same markup as single button dropdowns, but add the `.dropdown-toggle-split` class for proper spacing around the dropdown caret.
 
 <div class="bd-example">
   <div class="btn-group">
     <button type="button" class="btn btn-secondary">Default</button>
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
@@ -120,7 +120,7 @@ Similarly, create split button dropdowns with the same markup changes, only with
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
@@ -133,7 +133,7 @@ Similarly, create split button dropdowns with the same markup changes, only with
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-success">Success</button>
-    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
@@ -146,7 +146,7 @@ Similarly, create split button dropdowns with the same markup changes, only with
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-info">Info</button>
-    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
@@ -159,7 +159,7 @@ Similarly, create split button dropdowns with the same markup changes, only with
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-warning">Warning</button>
-    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
@@ -172,7 +172,7 @@ Similarly, create split button dropdowns with the same markup changes, only with
   </div><!-- /btn-group -->
   <div class="btn-group">
     <button type="button" class="btn btn-danger">Danger</button>
-    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
@@ -186,10 +186,10 @@ Similarly, create split button dropdowns with the same markup changes, only with
 </div>
 
 {% highlight html %}
-<!-- Split button -->
+<!-- Example split button -->
 <div class="btn-group">
   <button type="button" class="btn btn-danger">Action</button>
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
   <div class="dropdown-menu">
@@ -220,11 +220,37 @@ Button dropdowns work with buttons of all sizes.
         <a class="dropdown-item" href="#">Separated link</a>
       </div>
     </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-lg btn-secondary">Large split button</button>
+      <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+    </div><!-- /btn-group -->
   </div><!-- /btn-toolbar -->
   <div class="btn-toolbar" role="toolbar">
     <div class="btn-group">
       <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Small button
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+    </div><!-- /btn-group -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-sm btn-secondary">Small split button</button>
+      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
       </button>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#">Action</a>

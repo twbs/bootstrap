@@ -10,8 +10,7 @@
     display: inline-block;
     width: 0;
     height: 0;
-    margin-right: .25rem;
-    margin-left: .25rem;
+    margin-left: $caret-width;
     vertical-align: middle;
     content: "";
     border-top: $caret-width solid;
