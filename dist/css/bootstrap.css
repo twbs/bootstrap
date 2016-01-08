@@ -187,6 +187,49 @@ td,
 th {
   padding: 0;
 }
+@media print{
+  .col-pr-1, .col-pr-2, .col-pr-3, .col-pr-4, .col-pr-5, .col-pr-6, .col-pr-7, .col-pr-8, .col-pr-9, .col-pr-10, .col-pr-11, .col-pr-12 {
+    float: left;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .col-pr-1{
+    width:8.333333333333333%;
+  }
+  .col-pr-2{
+    width: 16.66666666666667%;
+  }
+  .col-pr-3{
+    width: 25%;
+  }
+  .col-pr-4{
+    width: 33.33333333333333%;
+  }
+  .col-pr-5{
+    width: 41.66666666666667%;
+  }
+  .col-pr-6{
+    width: 50%;
+  }
+  .col-pr-7{
+    width: 58.33333333333333%;
+  }
+  .col-pr-8{
+    width: 66.66666666666667%;
+  }
+  .col-pr-9{
+    width: 75%;
+  }
+  .col-pr-10{
+    width: 83.33333333333333%;
+  }
+  .col-pr-11{
+    width: 91.66666666666667%;
+  }
+  .col-pr-12{
+    width: 100%;
+  }
+}
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
   *,
