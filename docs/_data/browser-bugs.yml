@@ -200,16 +200,6 @@
 
 -
   browser: >
-    Safari
-  summary: >
-    Incorrect placement of `position: fixed` element when it's a child of a `position: relative; left: X%;` element.
-  upstream_bug: >
-    WebKit#147284, Safari#21993128
-  origin: >
-    Bootstrap#16814
-
--
-  browser: >
     Safari (OS X)
   summary: >
     Scrollbar clipped in `select[multiple]` with padding.
@@ -309,16 +299,6 @@
     WebKit#151933
   origin: >
     Bootstrap#16028
-
--
-  browser: >
-    Safari (iOS 9+)
-  summary: >
-    Sometimes excessive automatic zoom is applied after opening a modal, and the user isn't allowed to zoom out
-  upstream_bug: >
-    WebKit#150715
-  origin: >
-    WebKit#138201
 
 -
   browser: >
