@@ -5,8 +5,7 @@
     @media (hover: hover) {
       &:hover { @content }
     }
-  }
-  @else {
+  } @else {
     &:hover { @content }
   }
 }
@@ -15,8 +14,7 @@
   @if $enable-hover-media-query {
     &:focus { @content }
     @include hover { @content }
-  }
-  @else {
+  } @else {
     &:focus,
     &:hover {
       @content
@@ -31,11 +29,26 @@
       @content
     }
     @include hover { @content }
-  }
-  @else {
+  } @else {
     &,
     &:focus,
     &:hover {
+      @content
+    }
+  }
+}
+
+@mixin plain-focus-active {
+  @if $enable-hover-media-query {
+    &,
+    &:focus,
+    &:active {
+      @content
+    }
+  } @else {
+    &,
+    &:focus,
+    &:active {
       @content
     }
   }
@@ -48,8 +61,7 @@
       @content
     }
     @include hover { @content }
-  }
-  @else {
+  } @else {
     &:focus,
     &:active,
     &:hover {
