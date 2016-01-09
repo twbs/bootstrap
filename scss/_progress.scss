@@ -59,13 +59,13 @@
 .progress[value]::-webkit-progress-bar {
   background-color: $progress-bg;
   @include border-radius($border-radius);
-  @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
+  @include box-shadow($progress-box-shadow);
 }
 base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make these styles Firefox-only
 .progress[value] {
   background-color: $progress-bg;
   @include border-radius($border-radius);
-  @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
+  @include box-shadow($progress-box-shadow);
 }
 
 // IE9 hacks to accompany custom markup. We don't need to scope this via media queries, but I feel better doing it anyway.
@@ -73,7 +73,7 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
   .progress {
     background-color: $progress-bg;
     @include border-radius($border-radius);
-    @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
+    @include box-shadow($progress-box-shadow);
   }
   .progress-bar {
     display: inline-block;
