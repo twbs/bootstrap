@@ -50,7 +50,7 @@
   background-clip: padding-box;
   border: 1px solid $modal-content-border-color;
   @include border-radius($border-radius-lg);
-  @include box-shadow(0 3px 9px rgba(0,0,0,.5));
+  @include box-shadow($modal-content-xs-box-shadow);
   // Remove focus outline from opened modal
   outline: 0;
 }
@@ -134,7 +134,7 @@
     margin: 30px auto;
   }
   .modal-content {
-    @include box-shadow(0 5px 15px rgba(0,0,0,.5));
+    @include box-shadow($modal-content-sm-up-box-shadow);
   }
 
   // Modal sizes

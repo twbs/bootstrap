@@ -541,8 +541,10 @@ $modal-inner-padding:         15px !default;
 $modal-title-padding:         15px !default;
 $modal-title-line-height:     $line-height !default;
 
-$modal-content-bg:                             #fff !default;
-$modal-content-border-color:                   rgba(0,0,0,.2) !default;
+$modal-content-bg:               #fff !default;
+$modal-content-border-color:     rgba(0,0,0,.2) !default;
+$modal-content-xs-box-shadow:    0 3px 9px rgba(0,0,0,.5) !default;
+$modal-content-sm-up-box-shadow: 0 5px 15px rgba(0,0,0,.5) !default;
 
 $modal-backdrop-bg:           #000 !default;
 $modal-backdrop-opacity:      .5 !default;
