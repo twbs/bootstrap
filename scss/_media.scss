@@ -14,7 +14,7 @@
   }
 } @else {
   .media {
-    margin-top: 15px;
+    margin-top: $media-margin-top;
 
     &:first-child {
       margin-top: 0;
@@ -61,11 +61,11 @@
 //
 
 .media-right {
-  padding-left: 10px;
+  padding-left: $media-alignment-padding-x;
 }
 
 .media-left {
-  padding-right: 10px;
+  padding-right: $media-alignment-padding-x;
 }
 
 
@@ -75,7 +75,7 @@
 
 .media-heading {
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: $media-heading-margin-bottom;
 }
 
 
