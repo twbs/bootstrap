@@ -258,7 +258,6 @@ input[type="checkbox"] {
 // Apply contextual and semantic states to individual form controls.
 
 .form-control-success,
-.form-control-warning,
 .form-control-danger {
   padding-right: ($input-padding-x * 3);
   background-repeat: no-repeat;
@@ -272,14 +271,6 @@ input[type="checkbox"] {
 
   .form-control-success {
     background-image: url($form-icon-success);
-  }
-}
-
-.has-warning {
-  @include form-control-validation($brand-warning);
-
-  .form-control-warning {
-    background-image: url($form-icon-warning);
   }
 }
 
