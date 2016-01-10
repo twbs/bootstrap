@@ -62,6 +62,8 @@ const Carousel = (($) => {
     SLIDE    : 'slide',
     RIGHT    : 'right',
     LEFT     : 'left',
+    NEXT     : 'carousel-next',
+    PREV     : 'carousel-prev',
     ITEM     : 'carousel-item'
   }
 
@@ -69,7 +71,7 @@ const Carousel = (($) => {
     ACTIVE      : '.active',
     ACTIVE_ITEM : '.active.carousel-item',
     ITEM        : '.carousel-item',
-    NEXT_PREV   : '.next, .prev',
+    NEXT_PREV   : '.carousel-next, .carousel-prev',
     INDICATORS  : '.carousel-indicators',
     DATA_SLIDE  : '[data-slide], [data-slide-to]',
     DATA_RIDE   : '[data-ride="carousel"]'
@@ -301,9 +303,16 @@ const Carousel = (($) => {
 
       let isCycling = Boolean(this._interval)
 
-      let directionalClassName = direction === Direction.NEXT ?
-        ClassName.LEFT :
-        ClassName.RIGHT
+      let directionalClassName
+      let orderClassName
+
+      if (direction === Direction.NEXT) {
+        directionalClassName = ClassName.LEFT
+        orderClassName = ClassName.NEXT
+      } else {
+        directionalClassName = ClassName.RIGHT
+        orderClassName = ClassName.PREV
+      }
 
       if (nextElement && $(nextElement).hasClass(ClassName.ACTIVE)) {
         this._isSliding = false
@@ -336,7 +345,7 @@ const Carousel = (($) => {
       if (Util.supportsTransitionEnd() &&
         $(this._element).hasClass(ClassName.SLIDE)) {
 
-        $(nextElement).addClass(direction)
+        $(nextElement).addClass(orderClassName)
 
         Util.reflow(nextElement)
 
@@ -347,13 +356,13 @@ const Carousel = (($) => {
           .one(Util.TRANSITION_END, () => {
             $(nextElement)
               .removeClass(directionalClassName)
-              .removeClass(direction)
+              .removeClass(orderClassName)
 
             $(nextElement).addClass(ClassName.ACTIVE)
 
             $(activeElement)
               .removeClass(ClassName.ACTIVE)
-              .removeClass(direction)
+              .removeClass(orderClassName)
               .removeClass(directionalClassName)
 
             this._isSliding = false

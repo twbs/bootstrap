@@ -26,18 +26,18 @@
       backface-visibility: hidden;
       perspective: 1000px;
 
-      &.next,
+      &.carousel-next,
       &.active.right {
         left: 0;
         transform: translate3d(100%, 0, 0);
       }
-      &.prev,
+      &.carousel-prev,
       &.active.left {
         left: 0;
         transform: translate3d(-100%, 0, 0);
       }
-      &.next.left,
-      &.prev.right,
+      &.carousel-next.left,
+      &.carousel-prev.right,
       &.active {
         left: 0;
         transform: translate3d(0, 0, 0);
@@ -46,8 +46,8 @@
   }
 
   > .active,
-  > .next,
-  > .prev {
+  > .carousel-next,
+  > .carousel-prev {
     display: block;
   }
 
@@ -55,21 +55,21 @@
     left: 0;
   }
 
-  > .next,
-  > .prev {
+  > .carousel-next,
+  > .carousel-prev {
     position: absolute;
     top: 0;
     width: 100%;
   }
 
-  > .next {
+  > .carousel-next {
     left: 100%;
   }
-  > .prev {
+  > .carousel-prev {
     left: -100%;
   }
-  > .next.left,
-  > .prev.right {
+  > .carousel-next.left,
+  > .carousel-prev.right {
     left: 0;
   }
 
