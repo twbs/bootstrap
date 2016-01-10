@@ -9,6 +9,7 @@
     - title: Flexbox
     - title: Build tools
     - title: Best practices
+    - title: Accessibility
 
 - title: Layout
   pages:
@@ -61,7 +62,6 @@
   pages:
     - title: History
     - title: Team
-    - title: Accessibility
     - title: Brand
     - title: License
     - title: Translations
