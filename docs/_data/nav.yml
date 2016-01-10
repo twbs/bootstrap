@@ -2,7 +2,9 @@
   pages:
     - title: Introduction
     - title: Download
+    - title: Contents
     - title: Browsers & devices
+    - title: JavaScript
     - title: Options
     - title: Flexbox
     - title: Build tools
