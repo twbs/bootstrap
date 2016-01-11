@@ -396,6 +396,7 @@ linters:
   SelectorFormat:
     enabled: true
     convention: hyphenated_lowercase # or 'BEM', or 'snake_case', or 'camel_case', or a regex pattern
+    ignored_types: ["element"]
 
   Shorthand:
     enabled: true
