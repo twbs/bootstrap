@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v3.3.5 (http://bootstrap.transferwise.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
 
@@ -1213,14 +1213,14 @@ Imaging with any questions regarding Web ../fonts:  http://webfonts.assets.com
   font-family: 'Sharp Sans Frontieres';
   font-weight: 500;
 
-  src: url('../../assets/SharpSansFrontieres-Medium.eot');
+  src: url('../fonts/SharpSansFrontieres-Medium.eot');
   src: local('☺'), url('../fonts/SharpSansFrontieres-Medium.woff') format('woff'), url('../fonts/SharpSansFrontieres-Medium.svg#font') format('svg');
 }
 @font-face {
   font-family: 'Sharp Sans Frontieres';
   font-weight: 800;
 
-  src: url('../../assets/SharpSansFrontieres-Bold.eot');
+  src: url('../fonts/SharpSansFrontieres-Bold.eot');
   src: local('☺'), url('../fonts/SharpSansFrontieres-Bold.woff') format('woff'), url('../fonts/SharpSansFrontieres-Bold.svg#font') format('svg');
 }
 body {
@@ -3434,6 +3434,10 @@ select[multiple].input-lg {
   left: 40px;
   display: block;
 }
+.radio > label .replaced,
+.checkbox > label .replaced {
+  display: none;
+}
 .radio > label input[type=radio] + .input-replacement,
 .checkbox > label input[type=radio] + .input-replacement,
 .radio > label input[type=radio] + .input-replacement + .disabled-replacement,
@@ -3569,8 +3573,8 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .form-group [disabled] + .input-replacement + .disabled-replacement {
   display: block;
 }
-.form-group.checkbox-lg .input-replacement,
-.form-group.radio-lg .input-replacement {
+.form-group .checkbox-lg .input-replacement,
+.form-group .radio-lg .input-replacement {
   top: 23px;
 }
 .form-horizontal .checkbox,
@@ -7738,17 +7742,19 @@ a.list-group-item-danger.active:focus {
 }
 .close {
   float: right;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
-  line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
+  line-height: 24px;
+  color: #00b9ff;
 }
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #00a4df;
   text-decoration: none;
   cursor: pointer;
+}
+.close:active {
+  color: #008ec0;
 }
 button.close {
   -webkit-appearance: none;
@@ -8877,9 +8883,6 @@ blockquote footer {
   border: none;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
           box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
-}
-.modal-header .close {
-  margin-top: 0;
 }
 .dropdown-menu > li:not(.dropdown-header) {
   padding-left: 0;
