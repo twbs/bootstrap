@@ -707,7 +707,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 code {
@@ -1908,39 +1908,46 @@ pre code {
   margin-bottom: 0;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="date"].form-control,
-  input[type="time"].form-control,
-  input[type="datetime-local"].form-control,
-  input[type="month"].form-control {
-    line-height: 2.25rem;
-  }
-  input[type="date"].input-sm,
-  .input-group-sm input[type="date"].form-control,
-  input[type="time"].input-sm,
-  .input-group-sm
-  input[type="time"].form-control,
-  input[type="datetime-local"].input-sm,
-  .input-group-sm
-  input[type="datetime-local"].form-control,
-  input[type="month"].input-sm,
-  .input-group-sm
-  input[type="month"].form-control {
-    line-height: 1.8625rem;
-  }
-  input[type="date"].input-lg,
-  .input-group-lg input[type="date"].form-control,
-  input[type="time"].input-lg,
-  .input-group-lg
-  input[type="time"].form-control,
-  input[type="datetime-local"].input-lg,
-  .input-group-lg
-  input[type="datetime-local"].form-control,
-  input[type="month"].input-lg,
-  .input-group-lg
-  input[type="month"].form-control {
-    line-height: 3.166667rem;
-  }
+_::-webkit-full-page-media.form-control,
+input[type="date"].form-control,
+input[type="time"].form-control,
+input[type="datetime-local"].form-control,
+input[type="month"].form-control {
+  line-height: 2.25rem;
+}
+
+_::-webkit-full-page-media.input-sm,
+.input-group-sm _::-webkit-full-page-media.form-control,
+input[type="date"].input-sm,
+.input-group-sm
+input[type="date"].form-control,
+input[type="time"].input-sm,
+.input-group-sm
+input[type="time"].form-control,
+input[type="datetime-local"].input-sm,
+.input-group-sm
+input[type="datetime-local"].form-control,
+input[type="month"].input-sm,
+.input-group-sm
+input[type="month"].form-control {
+  line-height: 1.8625rem;
+}
+
+_::-webkit-full-page-media.input-lg,
+.input-group-lg _::-webkit-full-page-media.form-control,
+input[type="date"].input-lg,
+.input-group-lg
+input[type="date"].form-control,
+input[type="time"].input-lg,
+.input-group-lg
+input[type="time"].form-control,
+input[type="datetime-local"].input-lg,
+.input-group-lg
+input[type="datetime-local"].form-control,
+input[type="month"].input-lg,
+.input-group-lg
+input[type="month"].form-control {
+  line-height: 3.166667rem;
 }
 
 .form-control-static {
@@ -3153,7 +3160,7 @@ input[type="button"].btn-block {
   padding: .375rem .75rem;
   font-size: 1rem;
   font-weight: normal;
-  line-height: 1;
+  line-height: 1.5;
   color: #55595c;
   text-align: center;
   background-color: #eceeef;
