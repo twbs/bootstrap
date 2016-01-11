@@ -6,42 +6,6 @@
   @include border-radius();
 }
 
-.page-item {
-  display: inline; // Remove list-style and block-level defaults
-
-  &:first-child {
-    .page-link {
-      margin-left: 0;
-      @include border-left-radius($border-radius);
-    }
-  }
-  &:last-child {
-    .page-link {
-      @include border-right-radius($border-radius);
-    }
-  }
-
-  &.active .page-link {
-    @include plain-hover-focus {
-      z-index: 2;
-      color: $pagination-active-color;
-      cursor: default;
-      background-color: $pagination-active-bg;
-      border-color: $pagination-active-border;
-    }
-  }
-
-  &.disabled .page-link {
-    @include plain-hover-focus {
-      color: $pagination-disabled-color;
-      pointer-events: none;
-      cursor: $cursor-disabled;
-      background-color: $pagination-disabled-bg;
-      border-color: $pagination-disabled-border;
-    }
-  }
-}
-
 .page-link {
   position: relative;
   float: left; // Collapse white-space
@@ -58,8 +22,54 @@
     background-color: $pagination-hover-bg;
     border-color: $pagination-hover-border;
   }
+
+  &:first-child {
+    margin-left: 0;
+    @include border-left-radius($border-radius);
+  }
+  &:last-child {
+    @include border-right-radius($border-radius);
+  }
+
+  &.active {
+    @include plain-hover-focus {
+      z-index: 2;
+      color: $pagination-active-color;
+      cursor: default;
+      background-color: $pagination-active-bg;
+      border-color: $pagination-active-border;
+    }
+  }
+
+  &.disabled {
+    @include plain-hover-focus {
+      color: $pagination-disabled-color;
+      pointer-events: none;
+      cursor: $cursor-disabled;
+      background-color: $pagination-disabled-bg;
+      border-color: $pagination-disabled-border;
+    }
+  }
 }
 
+.page-item {
+  display: inline; // Remove list-style and block-level defaults
+  .page-link { //reset
+    margin-left: -1px;
+    border-radius: 0;
+  }
+  &:first-child {
+    .page-link {
+      margin-left: 0;
+      @include border-left-radius($border-radius);
+    }
+  }
+  &:last-child {
+    .page-link {
+      @include border-right-radius($border-radius);
+    }
+  }
+}
 
 //
 // Sizing
