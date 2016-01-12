@@ -1,14 +1,14 @@
 /*!
- * Bootstrap v4.0.0-alpha (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v4.0.0-alpha.2 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
- // Core variables and mixins
+// Core variables and mixins
 @import "variables";
 @import "mixins";
 
-// // Reset and dependencies
+// Reset and dependencies
 @import "normalize";
 @import "print";
 
@@ -22,7 +22,7 @@
 @import "forms";
 @import "buttons";
 
-// // Components
+// Components
 @import "animation";
 @import "dropdown";
 @import "button-group";
@@ -33,7 +33,6 @@
 @import "card";
 @import "breadcrumb";
 @import "pagination";
-@import "pager";
 @import "labels";
 @import "jumbotron";
 @import "alert";
@@ -51,5 +50,3 @@
 
 // Utility classes
 @import "utilities";
-@import "utilities-spacing";
-@import "utilities-responsive";

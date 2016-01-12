@@ -6,7 +6,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): modal.js
+ * Bootstrap (v4.0.0-alpha.2): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -20,7 +20,7 @@ var Modal = (function ($) {
    */
 
   var NAME = 'modal';
-  var VERSION = '4.0.0';
+  var VERSION = '4.0.0-alpha.2';
   var DATA_KEY = 'bs.modal';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -138,7 +138,7 @@ var Modal = (function ($) {
         $(this._dialog).on(Event.MOUSEDOWN_DISMISS, function () {
           $(_this._element).one(Event.MOUSEUP_DISMISS, function (event) {
             if ($(event.target).is(_this._element)) {
-              that._ignoreBackdropClick = true;
+              _this._ignoreBackdropClick = true;
             }
           });
         });
@@ -258,7 +258,7 @@ var Modal = (function ($) {
 
         $(document).off(Event.FOCUSIN) // guard against infinite focus loop
         .on(Event.FOCUSIN, function (event) {
-          if (_this3._element !== event.target && !$(_this3._element).has(event.target).length) {
+          if (document !== event.target && _this3._element !== event.target && !$(_this3._element).has(event.target).length) {
             _this3._element.focus();
           }
         });
@@ -462,6 +462,9 @@ var Modal = (function ($) {
           }
 
           if (typeof config === 'string') {
+            if (data[config] === undefined) {
+              throw new Error('No method named "' + config + '"');
+            }
             data[config](relatedTarget);
           } else if (_config.show) {
             data.show(relatedTarget);

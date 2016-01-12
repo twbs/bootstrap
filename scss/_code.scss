@@ -27,7 +27,7 @@ kbd {
   kbd {
     padding: 0;
     font-size: 100%;
-    font-weight: bold;
+    font-weight: $nested-kbd-font-weight;
     @include box-shadow(none);
   }
 }

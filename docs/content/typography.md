@@ -15,11 +15,11 @@ Bootstrap includes simple and easily customized typography for headings, body te
 
 Bootstrap sets basic global display, typography, and link styles. Specifically, we:
 
-- Set `background-color: #fff;` on the `<body>`
+- Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default)
 - Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base
 - Set the global link color via `$link-color` and apply link underlines only on `:hover`
 
-These styles can be found within `_reboot.scss`.
+These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`.
 
 
 ## Headings
@@ -147,22 +147,22 @@ Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
 ## Blockquotes
 
-For quoting blocks of content from another source within your document. Wrap `<blockquote>` around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes, we recommend a `<p>`.
+For quoting blocks of content from another source within your document. Wrap `<blockquote class="blockquote">` around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.
 
 {% example html %}
-<blockquote>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+<blockquote class="blockquote">
+  <p class="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 </blockquote>
 {% endexample %}
 
 ### Naming a source
 
-Add a `<footer>` for identifying the source. Wrap the name of the source work in `<cite>`.
+Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the name of the source work in `<cite>`.
 
 {% example html %}
 <blockquote class="blockquote">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  <p class="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 {% endexample %}
 
@@ -172,8 +172,8 @@ Add `.blockquote-reverse` for a blockquote with right-aligned content.
 
 {% example html %}
 <blockquote class="blockquote blockquote-reverse">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  <p class="m-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 {% endexample %}
 
@@ -205,22 +205,22 @@ Remove the default `list-style` and left margin on list items (immediate childre
 
 ### Inline
 
-Place all list items on a single line with `display: inline-block;` and some light padding.
+Place all list items on a single line with `display: inline-block;` and some basic margin between.
 
 {% example html %}
 <ul class="list-inline">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
+  <li class="list-inline-item">Lorem ipsum</li>
+  <li class="list-inline-item">Phasellus iaculis</li>
+  <li class="list-inline-item">Nulla volutpat</li>
 </ul>
 {% endexample %}
 
-### Horizontal description
+### Description list alignment
 
 Align terms and descriptions horizontally by using our grid system's predefined classes (or semantic mixins). For longer terms, you can optionally add a `.text-truncate` class to truncate the text with an ellipsis.
 
 {% example html %}
-<dl class="dl-horizontal">
+<dl class="row">
   <dt class="col-sm-3">Description lists</dt>
   <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
 
@@ -233,6 +233,14 @@ Align terms and descriptions horizontally by using our grid system's predefined 
 
   <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
   <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+
+  <dt class="col-sm-3">Nesting</dt>
+  <dd class="col-sm-9">
+    <dl class="row">
+      <dt class="col-sm-3">Nested definition list</dt>
+      <dd class="col-sm-9">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+    </dl>
+  </dd>
 </dl>
 {% endexample %}
 

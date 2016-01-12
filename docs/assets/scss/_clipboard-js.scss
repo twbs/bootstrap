@@ -1,11 +1,15 @@
-// ZeroClipboard
+// clipboard.js
 //
 // Flash-based `Copy` buttons for code snippets.
 
-.zero-clipboard {
+.bd-clipboard {
   position: relative;
   display: none;
   float: right;
+
+  + .highlight {
+    margin-top: 0;
+  }
 }
 
 .btn-clipboard {
@@ -20,15 +24,15 @@
   cursor: pointer;
   background-color: transparent;
   border-radius: .25rem;
-}
 
-.btn-clipboard-hover {
-  color: #fff;
-  background-color: #027de7;
+  &:hover {
+    color: #fff;
+    background-color: #027de7;
+  }
 }
 
 @media (min-width: 768px) {
-  .zero-clipboard {
+  .bd-clipboard {
     display: block;
   }
 }

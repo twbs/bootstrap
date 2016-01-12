@@ -17,7 +17,7 @@ module Jekyll
 
       def render(context)
         site = context.registers[:site]
-        converter = site.getConverterImpl(::Jekyll::Converters::Markdown)
+        converter = site.find_converter_instance(::Jekyll::Converters::Markdown)
         output = converter.convert(super(context))
         "<div class=\"bd-callout bd-callout-#{@type}\">#{output}</div>"
       end

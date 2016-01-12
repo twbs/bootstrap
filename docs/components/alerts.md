@@ -64,7 +64,6 @@ You can see this in action with a live demo:
 <div class="alert alert-warning alert-dismissible fade in" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
-    <span class="sr-only">Close</span>
   </button>
   <strong>Holy guacamole!</strong> You should check in on some of those fields below.
 </div>
@@ -85,7 +84,6 @@ Or with `data` attributes on a button **within the alert**, as demonstrated abov
 {% highlight html %}
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
   <span aria-hidden="true">&times;</span>
-  <span class="sr-only">Close</span>
 </button>
 {% endhighlight %}
 

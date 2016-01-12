@@ -3,9 +3,7 @@
   padding: 3rem ($grid-gutter-width / 2) 2rem;
   color: $bd-purple-light;
   text-align: center;
-  background-image: -webkit-linear-gradient(135deg, darken($bd-purple, 20%), $bd-purple, lighten(saturate($bd-purple, 5%), 15%));
-  background-image:         linear-gradient(135deg, darken($bd-purple, 20%), $bd-purple, lighten(saturate($bd-purple, 5%), 15%));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str(darken($bd-purple, 20%))}', endColorstr='#{ie-hex-str(lighten(saturate($bd-purple, 5%), 15%))}', gradientType='1');   /* For IE9 */
+  background-image: linear-gradient(135deg, darken($bd-purple, 20%), $bd-purple, lighten(saturate($bd-purple, 5%), 15%));
 
   .bd-booticon {
     margin: 0 auto 2rem;
@@ -19,9 +17,9 @@
   }
 
   .lead {
-    margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
+    margin-left: auto;
     font-size: 1.25rem;
     color: #fff;
   }

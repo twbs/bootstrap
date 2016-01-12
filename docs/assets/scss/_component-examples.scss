@@ -23,8 +23,8 @@
 .bd-example-container {
   min-width: 16rem;
   max-width: 25rem;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .bd-example-container-header {
@@ -67,15 +67,15 @@
   @include clearfix();
 
   @include media-breakpoint-up(sm) {
-    margin-left: 0;
+    padding: 1.5rem;
     margin-right: 0;
     margin-bottom: 0;
-    padding: 1.5rem;
+    margin-left: 0;
     border-width: .2rem;
   }
 
   + .highlight,
-  + .zero-clipboard + .highlight {
+  + .clipboard + .highlight {
     margin-top: 0;
   }
 
@@ -177,7 +177,7 @@
 }
 
 // Navbars
-.bd-example  {
+.bd-example {
   .navbar-fixed-top {
     position: static;
     margin: -1rem -1rem 1rem;
@@ -201,11 +201,6 @@
 .bd-example .pagination {
   margin-top: .5rem;
   margin-bottom: .5rem;
-}
-
-// Pager
-.bd-example > .pager {
-  margin-top: 0;
 }
 
 // Example modals
@@ -253,11 +248,11 @@
 }
 
 // Popovers
-.bd-example-popover {
+.bd-example-popover-static {
   padding-bottom: 1.5rem;
   background-color: #f9f9f9;
 }
-.bd-example-popover .popover {
+.bd-example-popover-static .popover {
   position: relative;
   display: block;
   float: left;
@@ -266,7 +261,11 @@
 }
 
 // Tooltips
-.bd-example-tooltip .tooltip {
+.tooltip-demo a {
+  white-space: nowrap;
+}
+
+.bd-example-tooltip-static .tooltip {
   position: relative;
   display: inline-block;
   margin: 10px 20px;
@@ -310,7 +309,7 @@
 
 .highlight {
   padding: 1rem;
-  margin: 1rem -1rem;
+  margin: 1rem (-$grid-gutter-width / 2);
   background-color: #f7f7f9;
 
   @include media-breakpoint-up(sm) {
@@ -329,16 +328,4 @@
 .highlight pre code {
   font-size: inherit;
   color: $gray-dark; // Effectively the base text color
-}
-
-
-// Pseudo focus
-//
-// Custom `:focus` state for showing how it looks in the docs.
-
-#focusedInput {
-  border-color: $input-border-focus;
-  outline: 0;
-  outline: thin dotted \9; // IE9
-  box-shadow: 0 0 .5rem $input-box-shadow-focus;
 }

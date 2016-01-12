@@ -67,7 +67,7 @@ Guidelines for bug reports:
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
    case](https://css-tricks.com/reduced-test-cases/) and a live example.
-   [This JS Bin](http://jsbin.com/lefey/1/edit?html,output) is a helpful template.
+   [This JS Bin](http://jsbin.com/qusafa/edit?html,output) is a helpful template.
 
 
 A good bug report shouldn't leave others needing to chase you up for more
@@ -105,7 +105,7 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 | Mozilla       | Firefox                      | Gecko            | https://bugzilla.mozilla.org/enter_bug.cgi                                            | "Core" is normally the right product option to choose.   |
 | Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit <br> https://bugreport.apple.com | In Apple's bug reporter, choose "Safari" as the product. |
 | Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://code.google.com/p/chromium/issues/list                                        | Click the "New issue" button.                            |
-| Microsoft     | Internet Explorer            | Trident          | https://connect.microsoft.com/IE/feedback/LoadSubmitFeedbackForm                      |                                                          |
+| Microsoft     | Internet Explorer / Edge     | Trident/EdgeHTML | https://connect.microsoft.com/IE/feedback/LoadSubmitFeedbackForm                      |                                                          |
 
 ### Issues bots
 

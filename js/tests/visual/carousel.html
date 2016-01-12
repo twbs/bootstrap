@@ -6,13 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Carousel</title>
   <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 
@@ -21,7 +14,7 @@
   <div class="page-header">
     <h1>Carousel <small>Bootstrap Visual Test</small></h1>
   </div>
-
+  <p>Also, the carousel shouldn't slide when its window/tab is hidden. Check the console log.</p>
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -53,6 +46,14 @@
 <script src="../vendor/jquery.min.js"></script>
 <script src="../../dist/util.js"></script>
 <script src="../../dist/carousel.js"></script>
+<script>
+  $(function () {
+    // Test to show that the carousel doesn't slide when the current tab isn't visible
+    $('#carousel-example-generic').on('slid.bs.carousel', function (event) {
+      console.log('slid at ', event.timeStamp);
+    })
+  });
+</script>
 
 </body>
 </html>

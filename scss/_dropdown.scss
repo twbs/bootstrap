@@ -1,4 +1,4 @@
-// The dropdown wrapper (div)
+// The dropdown wrapper (`<div>`)
 .dropup,
 .dropdown {
   position: relative;
@@ -10,6 +10,7 @@
     display: inline-block;
     width: 0;
     height: 0;
+    margin-right: .25rem;
     margin-left: .25rem;
     vertical-align: middle;
     content: "";
@@ -33,7 +34,7 @@
   }
 }
 
-// The dropdown menu (ul)
+// The dropdown menu
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -45,23 +46,24 @@
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
   font-size: $font-size-base;
+  color: $body-color;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
   background-color: $dropdown-bg;
   background-clip: padding-box;
-  border: 1px solid $dropdown-border;
+  border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($border-radius);
   @include box-shadow(0 6px 12px rgba(0,0,0,.175));
 }
 
-// Dividers (basically an hr) within the dropdown
+// Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
   @include nav-divider($dropdown-divider-bg);
 }
 
 // Links, buttons, and more within the dropdown menu
 //
-// `<button>`-specific styles are denoted with `// for <button>s`
+// `<button>`-specific styles are denoted with `// For <button>s`
 .dropdown-item {
   display: block;
   width: 100%; // For `<button>`s
@@ -170,7 +172,7 @@
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 //
-// Just add .dropup after the standard .dropdown class and you're set, bro.
+// Just add .dropup after the standard .dropdown class and you're set.
 // TODO: abstract this so that the navbar fixed styles are not placed here?
 
 .dropup,
