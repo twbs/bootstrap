@@ -12,7 +12,7 @@ List groups are a flexible and powerful component for displaying not only simple
 {:toc}
 
 ## Basic example
-<p>The most basic list group is simply an unordered list with list items, and the proper classes. Build upon it with the options that follow, or your own CSS as needed.</p>
+The most basic list group is simply an unordered list with list items, and the proper classes. Build upon it with the options that follow, or your own CSS as needed.
 
 {% example html %}
 <ul class="list-group">
@@ -102,6 +102,7 @@ Use contextual classes to style list items, default or linked. Also includes `.a
   <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
   <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
 </ul>
+
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
   <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
