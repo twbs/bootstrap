@@ -68,10 +68,10 @@
 // horizontal sizing, wrap controls in the predefined grid classes. `<select>`
 // element gets special love because it's special, and that's a fact!
 
-@mixin input-size($parent, $input-height, $padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+@mixin input-size($parent, $input-height, $padding-y, $padding-x, $font-size, $line-height, $border-radius) {
   #{$parent} {
     height: $input-height;
-    padding: $padding-vertical $padding-horizontal;
+    padding: $padding-y $padding-x;
     font-size: $font-size;
     line-height: $line-height;
     @include border-radius($border-radius);

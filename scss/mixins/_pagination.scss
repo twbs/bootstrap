@@ -1,8 +1,8 @@
 // Pagination
 
-@mixin pagination-size($padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius) {
+@mixin pagination-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
   .page-link {
-    padding: $padding-vertical $padding-horizontal;
+    padding: $padding-y $padding-x;
     font-size: $font-size;
     line-height: $line-height;
   }
