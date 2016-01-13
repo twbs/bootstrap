@@ -302,6 +302,16 @@
 
 -
   browser: >
+    Safari (iOS)
+  summary: >
+    `position:fixed` is incorrectly positioned when tab bar is visible on iPhone 6S+ Safari
+  upstream_bug: >
+    WebKit#153056
+  origin: >
+    Bootstrap#18859
+
+-
+  browser: >
     Safari (iPad Pro)
   summary: >
     Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation
