@@ -1,6 +1,6 @@
 // Make the div behave like a button
 .btn-group,
-.btn-group-vertical {
+.btn-group-y {
   position: relative;
   display: inline-block;
   vertical-align: middle; // match .btn alignment given font-size hack above
@@ -144,7 +144,7 @@
 // Vertical button groups
 //
 
-.btn-group-vertical {
+.btn-group-y {
   > .btn,
   > .btn-group,
   > .btn-group > .btn {
@@ -172,7 +172,7 @@
   }
 }
 
-.btn-group-vertical > .btn {
+.btn-group-y > .btn {
   &:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
@@ -185,16 +185,16 @@
     @include border-top-radius(0);
   }
 }
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+.btn-group-y > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
-.btn-group-vertical > .btn-group:first-child:not(:last-child) {
+.btn-group-y > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     @include border-bottom-radius(0);
   }
 }
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group-y > .btn-group:last-child:not(:first-child) > .btn:first-child {
   @include border-top-radius(0);
 }
 
