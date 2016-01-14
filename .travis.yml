@@ -6,6 +6,8 @@ node_js:
   - "4"
   - "5"
 before_install:
+  # Remove ./node_modules/.bin from PATH so node-which doesn't replace Unix which and cause RVM to barf. See https://github.com/travis-ci/travis-ci/issues/5092
+  - export PATH=$(python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH")
   - rvm install 2.2
   - rvm use 2.2 --fuzzy
   - export GEMDIR=$(rvm gemdir)
@@ -19,11 +21,10 @@ install:
   - cp grunt/npm-shrinkwrap.json ./
   - npm install -g grunt-cli
   - npm install
-# Caching disabled due to https://github.com/travis-ci/travis-ci/issues/5092
-#cache:
-#  directories:
-#    - node_modules
-#    - vendor/bundle
+cache:
+  directories:
+    - node_modules
+    - vendor/bundle
 env:
   global:
     - SAUCE_USERNAME="bootstrap"
