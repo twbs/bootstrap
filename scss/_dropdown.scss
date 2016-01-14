@@ -161,7 +161,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: ($zindex-dropdown - 10);
+  z-index: $zindex-dropdown-backdrop;
 }
 
 // Right aligned dropdowns
