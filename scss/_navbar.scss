@@ -67,9 +67,9 @@
 
 .navbar-brand {
   float: left;
-  line-height: $navbar-height;
   margin-right: 1rem;
   font-size: $font-size-lg;
+  line-height: $navbar-height;
 
   @include hover-focus {
     text-decoration: none;

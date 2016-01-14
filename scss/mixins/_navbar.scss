@@ -29,10 +29,10 @@
             margin-left: inherit;
           }
           .dropdown-menu {
-            background: transparent;
-            border: 0;
             position: relative;
             float: none;
+            background: transparent;
+            border: 0;
             .dropdown-item {
               line-height: $navbar-line-height;
             }
