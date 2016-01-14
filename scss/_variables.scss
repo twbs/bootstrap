@@ -506,7 +506,7 @@ $popover-title-bg:                    darken($popover-bg, 3%) !default;
 $popover-arrow-width:                 10px !default;
 $popover-arrow-color:                 $popover-bg !default;
 
-$popover-arrow-outer-width:           ($popover-arrow-width + 1) !default;
+$popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
 $popover-arrow-outer-color:           fade-in($popover-border-color, 0.05) !default;
 
 
