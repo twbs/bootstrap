@@ -1,0 +1,76 @@
+
+.loader {
+	position: relative;
+	display: inline-block;
+	height: 160px;
+	width: 160px;
+
+	.loader-flag  {
+		top: 58px;
+		left: 52px;
+		position: relative;
+		height: 52px;
+		width: 52px;
+	}
+	.loader-flag-stroke {
+		animation: loaderStroke 3.5s infinite;
+	}
+	.loader-flag-fill {
+		display: block;
+		position: absolute;
+		top: 1px;
+		opacity: 1;
+		animation: loaderFill 3.5s infinite;
+	}
+	.loader-spinner {
+		width: 160px;
+		height: 160px;
+		position: absolute;
+		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iNTQgLTU0IDE2MCAxNjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgNTQgLTU0IDE2MCAxNjAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxsaW5lYXJHcmFkaWVudCBpZD0icGF0aC00XzJfIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjEwOC42NjI1IiB5MT0iNTIuMTc1IiB4Mj0iMTA3LjY2MjUiIHkyPSI1Mi4xNzUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMTYwIDAgMCAtODAgLTE3MTcyIDQxNjApIj48c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMDBCOUZGIi8+PHN0b3AgIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6IzAwQjlGRjtzdG9wLW9wYWNpdHk6MCIvPjwvbGluZWFyR3JhZGllbnQ+PHBhdGggaWQ9InBhdGgtNF8xXyIgZmlsbD0idXJsKCNwYXRoLTRfMl8pIiBkPSJNMjE0LDI2YzAtNDQuMi0zNS44LTgwLTgwLTgwUzU0LTE4LjIsNTQsMjZoMmMwLTQzLjEsMzQuOS03OCw3OC03OHM3OCwzNC45LDc4LDc4SDIxNHoiLz48L3N2Zz4=);
+		animation: rotating 1.4s linear infinite;
+	}
+}
+
+/* Animations */
+@keyframes loaderStroke {
+  30% {
+    stroke-dashoffset: 300;
+    opacity: 0;
+  }
+  40% {
+    stroke-dashoffset: 300;
+    opacity: 1;
+  }
+  70% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes loaderFill {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
