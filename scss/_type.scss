@@ -117,7 +117,7 @@ mark,
   padding: ($spacer / 2) $spacer;
   margin-bottom: $spacer;
   font-size: $blockquote-font-size;
-  border-left: .25rem solid $blockquote-border-color;
+  border-left: $blockquote-border-width solid $blockquote-border-color;
 }
 
 .blockquote-footer {
@@ -136,7 +136,7 @@ mark,
   padding-right: $spacer;
   padding-left: 0;
   text-align: right;
-  border-right: .25rem solid $blockquote-border-color;
+  border-right: $blockquote-border-width solid $blockquote-border-color;
   border-left: 0;
 }
 
