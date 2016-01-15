@@ -60,7 +60,8 @@
     "load-grunt-tasks": "~3.1.0",
     "markdown-it": "^4.2.1",
     "npm-shrinkwrap": "^200.4.0",
-    "time-grunt": "^1.2.0"
+    "time-grunt": "^1.2.0",
+    "transferwise-iconfont": "git://github.com/transferwise/iconfont.git"
   },
   "engines": {
     "node": ">=0.10.1"

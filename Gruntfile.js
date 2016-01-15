@@ -302,6 +302,12 @@ module.exports = function (grunt) {
           '**/*'
         ],
         dest: 'docs/dist/'
+      },
+      iconfonts: {
+        expand: true,
+        flatten: true,
+        src: 'node_modules/transferwise-iconfont/fonts/*',
+        dest: 'dist/fonts/'
       }
     },
 
@@ -495,10 +501,10 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:images', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:iconfonts', 'copy:images', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:images', 'test']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:iconfonts', 'copy:images', 'test']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
