@@ -26,16 +26,25 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
+// $gray-dark:                 #263238 !default;
+// $gray:                      #546e7a !default;
+// $gray-light:                #78909c !default;
+// $gray-lighter:              #b0bec5 !default;
+// $gray-lightest:             #eceff1 !default;
+
 $gray-dark:                 #373a3c !default;
 $gray:                      #55595c !default;
 $gray-light:                #818a91 !default;
 $gray-lighter:              #eceeef !default;
 $gray-lightest:             #f7f7f9 !default;
 
+$default-color:             #bcbebf !default;
+$default-bg:                $gray-dark !default;
+
 $brand-primary:             #e91e63 !default;
-$brand-success:             #5cb85c !default;
+$brand-success:             #388e3c !default;
 $brand-info:                #1e88e5 !default;
-$brand-warning:             #f0ad4e !default;
+$brand-warning:             #ff8f00 !default;
 $brand-danger:              #d32f2f !default;
 
 
@@ -85,9 +94,8 @@ $border-width: 1px !default;
 //
 // Settings for the `<body>` element.
 
-$body-bg:    #fff !default;
-$body-color: $gray-dark !default;
-
+$body-bg:    $default-bg !default;
+$body-color: lighten($default-color, 10%) !default;
 
 // Links
 //
@@ -207,7 +215,7 @@ $border-radius:          .25rem !default;
 $border-radius-lg:       .3rem !default;
 $border-radius-sm:       .2rem !default;
 
-$component-active-color: #fff !default;
+$component-active-color: $gray-lightest !default;
 $component-active-bg:    $brand-primary !default;
 
 $caret-width:            .3em !default;
@@ -234,32 +242,34 @@ $table-border-color:            $gray-lighter !default;
 //
 // For each of Bootstrap's buttons, define text, background and border color.
 
+$btn-color:                      #fff !default;
+
 $btn-padding-x:                  1rem !default;
 $btn-padding-y:                  .375rem !default;
 $btn-font-weight:                normal !default;
 $btn-active-box-shadow:          inset 0 3px 5px rgba(0,0,0,.125) !default;
 
-$btn-primary-color:              #fff !default;
+$btn-primary-color:              $btn-color !default;
 $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border:             $btn-primary-bg !default;
 
-$btn-secondary-color:            $gray-dark !default;
-$btn-secondary-bg:               #fff !default;
+$btn-secondary-color:            $btn-color !default;
+$btn-secondary-bg:               $default-color !default;
 $btn-secondary-border:           #ccc !default;
 
-$btn-info-color:                 #fff !default;
+$btn-info-color:                 $btn-color !default;
 $btn-info-bg:                    $brand-info !default;
 $btn-info-border:                $btn-info-bg !default;
 
-$btn-success-color:              #fff !default;
+$btn-success-color:              $btn-color !default;
 $btn-success-bg:                 $brand-success !default;
 $btn-success-border:             $btn-success-bg !default;
 
-$btn-warning-color:              #fff !default;
+$btn-warning-color:              $btn-color !default;
 $btn-warning-bg:                 $brand-warning !default;
 $btn-warning-border:             $btn-warning-bg !default;
 
-$btn-danger-color:               #fff !default;
+$btn-danger-color:               $btn-color !default;
 $btn-danger-bg:                  $brand-danger !default;
 $btn-danger-border:              $btn-danger-bg !default;
 
@@ -288,10 +298,10 @@ $btn-border-radius-sm:           $border-radius-sm !default;
 $input-padding-x:                .75rem !default;
 $input-padding-y:                .375rem !default;
 
-$input-bg:                       #fff !default;
+$input-bg:                       $default-bg !default;
 $input-bg-disabled:              $gray-lighter !default;
 
-$input-color:                    $gray !default;
+$input-color:                    $default-color !default;
 $input-border-color:             #ccc !default;
 $input-btn-border-width:         $border-width !default; // For form controls and buttons
 $input-box-shadow:               inset 0 1px 1px rgba(0,0,0,.075) !default;
@@ -300,10 +310,10 @@ $input-border-radius:            $border-radius !default;
 $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
-$input-border-focus:             #66afe9 !default;
+$input-border-focus:             $brand-primary !default;
 $input-box-shadow-focus:         rgba(102,175,233,.6) !default;
 
-$input-color-placeholder:        #999 !default;
+$input-color-placeholder:        darken($default-color, 25%) !default;
 
 $input-padding-x-sm:             .75rem !default;
 $input-padding-y-sm:             .275rem !default;
@@ -337,14 +347,14 @@ $form-icon-danger: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My
 //
 // Dropdown menu container and contents.
 
-$dropdown-bg:                    #fff !default;
+$dropdown-bg:                    $default-bg !default;
 $dropdown-border-color:          rgba(0,0,0,.15) !default;
 $dropdown-border-width:          $border-width !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
 
-$dropdown-link-color:            $gray-dark !default;
-$dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
-$dropdown-link-hover-bg:         #f5f5f5 !default;
+$dropdown-link-color:            $default-color !default;
+$dropdown-link-hover-color:      $brand-primary !default;
+$dropdown-link-hover-bg:         lighten($default-color, 10%) !default;
 
 $dropdown-link-active-color:     $component-active-color !default;
 $dropdown-link-active-bg:        $component-active-bg !default;
@@ -406,7 +416,7 @@ $nav-tabs-justified-link-border-color:        #ddd !default;
 $nav-tabs-justified-active-link-border-color: $body-bg !default;
 
 $nav-pills-border-radius:     $border-radius !default;
-$nav-pills-active-link-color: $component-active-color !default;
+$nav-pills-active-link-color: $gray-light !default;
 $nav-pills-active-link-bg:    $component-active-bg !default;
 
 
@@ -470,12 +480,12 @@ $card-spacer-x:            1.25rem !default;
 $card-spacer-y:            .75rem !default;
 $card-border-width:        1px !default;
 $card-border-radius:       $border-radius !default;
-$card-border-color:        #e5e5e5 !default;
+$card-border-color:        $default-color !default;
 $card-border-radius-inner: $card-border-radius !default;
-$card-cap-bg:              #f5f5f5 !default;
-$card-bg:                  #fff !default;
+$card-cap-bg:              $gray-dark !default;
+$card-bg:                  $default-bg !default;
 
-$card-link-hover-color:    #fff !default;
+$card-link-hover-color:    $default-color !default;
 
 $card-deck-margin:         .625rem !default;
 
@@ -483,7 +493,7 @@ $card-deck-margin:         .625rem !default;
 // Tooltips
 
 $tooltip-max-width:           200px !default;
-$tooltip-color:               #fff !default;
+$tooltip-color:               $default-color !default;
 $tooltip-bg:                  #000 !default;
 $tooltip-opacity:             .9 !default;
 $tooltip-padding-y:           3px !default;
@@ -496,7 +506,7 @@ $tooltip-arrow-color:         $tooltip-bg !default;
 
 // Popovers
 
-$popover-bg:                          #fff !default;
+$popover-bg:                          $default-color !default;
 $popover-max-width:                   276px !default;
 $popover-border-width:                $border-width !default;
 $popover-border-color:                rgba(0,0,0,.2) !default;
@@ -519,8 +529,8 @@ $label-info-bg:               $brand-info !default;
 $label-warning-bg:            $brand-warning !default;
 $label-danger-bg:             $brand-danger !default;
 
-$label-color:                 #fff !default;
-$label-link-hover-color:      #fff !default;
+$label-color:                 $default-color !default;
+$label-link-hover-color:      $default-color !default;
 $label-font-weight:           bold !default;
 
 
@@ -587,12 +597,12 @@ $progress-bar-info-bg:        $brand-info !default;
 
 // List group
 
-$list-group-bg:                 #fff !default;
-$list-group-border-color:       #ddd !default;
+$list-group-bg:                 $gray !default;
+$list-group-border-color:       $gray !default;
 $list-group-border-width:       $border-width !default;
 $list-group-border-radius:      $border-radius !default;
 
-$list-group-hover-bg:           #f5f5f5 !default;
+$list-group-hover-bg:           lighten($list-group-bg, 10%) !default;
 $list-group-active-color:       $component-active-color !default;
 $list-group-active-bg:          $component-active-bg !default;
 $list-group-active-border:      $list-group-active-bg !default;
@@ -602,9 +612,9 @@ $list-group-disabled-color:      $gray-light !default;
 $list-group-disabled-bg:         $gray-lighter !default;
 $list-group-disabled-text-color: $list-group-disabled-color !default;
 
-$list-group-link-color:         #555 !default;
+$list-group-link-color:         $component-active-color !default;
 $list-group-link-hover-color:   $list-group-link-color !default;
-$list-group-link-heading-color: #333 !default;
+$list-group-link-heading-color: $component-active-color !default;
 
 
 // Image thumbnails
