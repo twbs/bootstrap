@@ -254,7 +254,7 @@ The `.invisible` class can be used to toggle only the visibility of an element, 
 
 // Usage as a mixin
 .element {
-  .invisible();
+  @include invisible;
 }
 {% endhighlight %}
 
