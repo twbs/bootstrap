@@ -502,6 +502,11 @@ $popover-border-width:                $border-width !default;
 $popover-border-color:                rgba(0,0,0,.2) !default;
 
 $popover-title-bg:                    darken($popover-bg, 3%) !default;
+$popover-title-padding-x:             14px !default;
+$popover-title-padding-y:             8px !default;
+
+$popover-content-padding-x:           14px !default;
+$popover-content-padding-y:           9px !default;
 
 $popover-arrow-width:                 10px !default;
 $popover-arrow-color:                 $popover-bg !default;
