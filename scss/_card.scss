@@ -168,11 +168,11 @@
 // Card image caps
 .card-img-top {
   @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
-  max-width: 100%;
+  @include img-fluid(block);
 }
 .card-img-bottom {
   @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
-  max-width: 100%;
+  @include img-fluid(block);
 }
 
 
