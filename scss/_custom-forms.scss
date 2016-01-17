@@ -214,7 +214,7 @@
   user-select: none;
   background-color: $custom-file-bg;
   border: $custom-file-border-width solid $custom-file-border-color;
-  @include border-radius($custom-file-border-radius)
+  @include border-radius($custom-file-border-radius);
   @include box-shadow($custom-file-box-shadow);
 
   &::after {
