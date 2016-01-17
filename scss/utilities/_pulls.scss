@@ -9,5 +9,10 @@
     .pull-#{$breakpoint}-none {
       float: none !important;
     }
+    // Right aligned dropdowns
+    .pull-#{$breakpoint}-right > .dropdown-menu {
+      right: 0;
+      left: auto;
+    }
   }
 }

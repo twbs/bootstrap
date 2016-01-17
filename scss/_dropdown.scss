@@ -164,12 +164,6 @@
   z-index: ($zindex-dropdown - 10);
 }
 
-// Right aligned dropdowns
-.pull-right > .dropdown-menu {
-  right: 0;
-  left: auto;
-}
-
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 //
 // Just add .dropup after the standard .dropdown class and you're set.
