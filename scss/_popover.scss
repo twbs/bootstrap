@@ -14,7 +14,7 @@
   background-clip: padding-box;
   border: $popover-border-width solid $popover-border-color;
   @include border-radius($border-radius-lg);
-  @include box-shadow(0 5px 10px rgba(0,0,0,.2));
+  @include box-shadow($popover-box-shadow);
 
 
   // Popover directions

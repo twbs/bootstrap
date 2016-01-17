@@ -53,7 +53,7 @@
   background-clip: padding-box;
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($border-radius);
-  @include box-shadow(0 6px 12px rgba(0,0,0,.175));
+  @include box-shadow($dropdown-box-shadow);
 }
 
 // Dividers (basically an `<hr>`) within the dropdown

@@ -191,6 +191,7 @@ $hr-border-width: $border-width !default;
 
 $dt-font-weight: bold !default;
 
+$kbd-box-shadow:         inset 0 -.1rem 0 rgba(0,0,0,.25) !default;
 $nested-kbd-font-weight: bold !default;
 
 $list-inline-padding: 5px !default;
@@ -237,6 +238,7 @@ $table-border-color:            $gray-lighter !default;
 $btn-padding-x:                  1rem !default;
 $btn-padding-y:                  .375rem !default;
 $btn-font-weight:                normal !default;
+$btn-box-shadow:                 inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075) !default;
 $btn-active-box-shadow:          inset 0 3px 5px rgba(0,0,0,.125) !default;
 
 $btn-primary-color:              #fff !default;
@@ -341,6 +343,7 @@ $dropdown-bg:                    #fff !default;
 $dropdown-border-color:          rgba(0,0,0,.15) !default;
 $dropdown-border-width:          $border-width !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
+$dropdown-box-shadow:            0 6px 12px rgba(0,0,0,.175) !default;
 
 $dropdown-link-color:            $gray-dark !default;
 $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
@@ -500,6 +503,7 @@ $popover-bg:                          #fff !default;
 $popover-max-width:                   276px !default;
 $popover-border-width:                $border-width !default;
 $popover-border-color:                rgba(0,0,0,.2) !default;
+$popover-box-shadow:                  0 5px 10px rgba(0,0,0,.2) !default;
 
 $popover-title-bg:                    darken($popover-bg, 3%) !default;
 $popover-title-padding-x:             14px !default;
@@ -537,8 +541,10 @@ $modal-inner-padding:         15px !default;
 $modal-title-padding:         15px !default;
 $modal-title-line-height:     $line-height !default;
 
-$modal-content-bg:                             #fff !default;
-$modal-content-border-color:                   rgba(0,0,0,.2) !default;
+$modal-content-bg:               #fff !default;
+$modal-content-border-color:     rgba(0,0,0,.2) !default;
+$modal-content-xs-box-shadow:    0 3px 9px rgba(0,0,0,.5) !default;
+$modal-content-sm-up-box-shadow: 0 5px 15px rgba(0,0,0,.5) !default;
 
 $modal-backdrop-bg:           #000 !default;
 $modal-backdrop-opacity:      .5 !default;
@@ -619,6 +625,7 @@ $thumbnail-bg:                $body-bg !default;
 $thumbnail-border-width:      $border-width !default;
 $thumbnail-border-color:      #ddd !default;
 $thumbnail-border-radius:     $border-radius !default;
+$thumbnail-box-shadow:        0 1px 2px rgba(0,0,0,.075) !default;
 
 
 // Breadcrumbs
