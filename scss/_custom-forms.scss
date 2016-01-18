@@ -217,8 +217,10 @@
   @include border-radius($custom-file-border-radius);
   @include box-shadow($custom-file-box-shadow);
 
-  &::after {
-    content: $custom-file-placeholder;
+  @each $lang, $text in map-get($custom-file-text, placeholder) {
+    &:lang(#{$lang})::after {
+      content: $text;
+    }
   }
 
   &::before {
@@ -232,9 +234,14 @@
     padding: $custom-file-padding-x $custom-file-padding-y;
     line-height: $custom-file-line-height;
     color: $custom-file-button-color;
-    content: $custom-file-button-label;
     background-color: $custom-file-button-bg;
     border: $custom-file-border-width solid $custom-file-border-color;
     @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+  }
+
+  @each $lang, $text in map-get($custom-file-text, button-label) {
+    &:lang(#{$lang})::before {
+      content: $text;
+    }
   }
 }

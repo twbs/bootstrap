@@ -386,10 +386,16 @@ $custom-file-border-width:  $border-width !default;
 $custom-file-border-color:  #ddd !default;
 $custom-file-border-radius: $border-radius !default;
 $custom-file-box-shadow:    inset 0 .2rem .4rem rgba(0,0,0,.05) !default;
-$custom-file-placeholder:   "Choose file..." !default;
-$custom-file-button-label:  "Browse" !default;
 $custom-file-button-color:  $custom-file-color !default;
 $custom-file-button-bg:     #eee !default;
+$custom-file-text: (
+  placeholder: (
+    en: "Choose file..."
+  ),
+  button-label: (
+    en: "Browse"
+  )
+) !default;
 
 
 // Form validation icons
