@@ -40,6 +40,16 @@
 
 -
   browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
+  upstream_bug: >
+    IE#2256049
+  origin: >
+    Bootstrap#18543
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
