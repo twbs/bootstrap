@@ -37,22 +37,18 @@
 }
 .progress[value]::-moz-progress-bar {
   background-color: $progress-bar-color;
-  border-top-left-radius: $border-radius;
-  border-bottom-left-radius: $border-radius;
+  @include border-left-radius($border-radius);
 }
 .progress[value]::-webkit-progress-value {
   background-color: $progress-bar-color;
-  border-top-left-radius: $border-radius;
-  border-bottom-left-radius: $border-radius;
+  @include border-left-radius($border-radius);
 }
 // Tweaks for full progress bar
 .progress[value="100"]::-moz-progress-bar {
-  border-top-right-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
+  @include border-right-radius($border-radius);
 }
 .progress[value="100"]::-webkit-progress-value {
-  border-top-right-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
+  @include border-right-radius($border-radius);
 }
 
 // Unfilled portion of the bar
@@ -80,12 +76,10 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
     height: $spacer-y;
     text-indent: -999rem; // Simulate hiding of value as in native `<progress>`
     background-color: $progress-bar-color;
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
+    @include border-left-radius($border-radius);
   }
   .progress[width="100%"] {
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
+    @include border-right-radius($border-radius);
   }
 }
 
