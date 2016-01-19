@@ -322,6 +322,16 @@
 
 -
   browser: >
+    Safari (iOS)
+  summary: >
+    Tapping into an `<input>` within a `position:fixed` element scrolls to the top of the page
+  upstream_bug: >
+    WebKit#153224
+  origin: >
+    Bootstrap#17497
+
+-
+  browser: >
     Safari (iPad Pro)
   summary: >
     Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation
