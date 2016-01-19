@@ -30,7 +30,7 @@
     ],
     "jqueryCheck": [
       "if (typeof jQuery === 'undefined') {",
-      "  throw new Error('Bootstrap\\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\\'s Javascript.')",
+      "  throw new Error('Bootstrap\\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\\'s JavaScript.')",
       "}\n"
     ],
     "jqueryVersionCheck": [
