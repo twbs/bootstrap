@@ -65,6 +65,7 @@
   display: block;
   width: $custom-control-indicator-size;
   height: $custom-control-indicator-size;
+  pointer-events: none;
   user-select: none;
   background-color: $custom-control-indicator-bg;
   background-repeat: no-repeat;
