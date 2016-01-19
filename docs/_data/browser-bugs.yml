@@ -326,7 +326,7 @@
   summary: >
     Tapping into an `<input>` within a `position:fixed` element scrolls to the top of the page
   upstream_bug: >
-    WebKit#153224
+    WebKit#153224, Safari#24235301
   origin: >
     Bootstrap#17497
 
