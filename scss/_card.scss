@@ -12,6 +12,7 @@
 }
 
 .card-block {
+  @include clearfix;
   padding: $card-spacer-x;
 }
 
@@ -68,6 +69,7 @@
 //
 
 .card-header {
+  @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-bottom: $card-border-width solid $card-border-color;
@@ -78,6 +80,7 @@
 }
 
 .card-footer {
+  @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;
@@ -93,54 +96,48 @@
 //
 
 .card-primary {
-  background-color: $brand-primary;
-  border-color: $brand-primary;
+  @include card-variant($brand-primary, $brand-primary);
 }
 .card-success {
-  background-color: $brand-success;
-  border-color: $brand-success;
+  @include card-variant($brand-success, $brand-success);
 }
 .card-info {
-  background-color: $brand-info;
-  border-color: $brand-info;
+  @include card-variant($brand-info, $brand-info);
 }
 .card-warning {
-  background-color: $brand-warning;
-  border-color: $brand-warning;
+  @include card-variant($brand-warning, $brand-warning);
 }
 .card-danger {
-  background-color: $brand-danger;
-  border-color: $brand-danger;
+  @include card-variant($brand-danger, $brand-danger);
 }
 
+// Remove all backgrounds
+.card-outline-primary {
+  @include card-outline-variant($btn-primary-bg);
+}
+.card-outline-secondary {
+  @include card-outline-variant($btn-secondary-border);
+}
+.card-outline-info {
+  @include card-outline-variant($btn-info-bg);
+}
+.card-outline-success {
+  @include card-outline-variant($btn-success-bg);
+}
+.card-outline-warning {
+  @include card-outline-variant($btn-warning-bg);
+}
+.card-outline-danger {
+  @include card-outline-variant($btn-danger-bg);
+}
 
 //
 // Inverse text within a card for use with dark backgrounds
 //
 
 .card-inverse {
-  .card-header,
-  .card-footer {
-    border-bottom: .075rem solid rgba(255,255,255,.2);
-  }
-  .card-header,
-  .card-footer,
-  .card-title,
-  .card-blockquote {
-    color: #fff;
-  }
-  .card-link,
-  .card-text,
-  .card-blockquote > footer {
-    color: rgba(255,255,255,.65);
-  }
-  .card-link {
-    @include hover-focus {
-      color: $card-link-hover-color;
-    }
-  }
+  @include card-inverse;
 }
-
 
 //
 // Blockquote
@@ -186,22 +183,23 @@
     .card-deck {
       display: flex;
       flex-flow: row wrap;
-      margin-right: -.625rem;
-      margin-left: -.625rem;
+      margin-right: -$card-deck-margin;
+      margin-left: -$card-deck-margin;
 
       .card {
         flex: 1 0 0;
-        margin-right: .625rem;
-        margin-left: .625rem;
+        margin-right: $card-deck-margin;
+        margin-left: $card-deck-margin;
       }
     }
   }
 } @else {
   @include media-breakpoint-up(sm) {
+    $space-between-cards: (2 * $card-deck-margin);
     .card-deck {
       display: table;
       table-layout: fixed;
-      border-spacing: 1.25rem 0;
+      border-spacing: $space-between-cards 0;
 
       .card {
         display: table-cell;
@@ -210,8 +208,8 @@
       }
     }
     .card-deck-wrapper {
-      margin-right: -1.25rem;
-      margin-left: -1.25rem;
+      margin-right: (-$space-between-cards);
+      margin-left: (-$space-between-cards);
     }
   }
 }

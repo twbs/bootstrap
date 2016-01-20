@@ -23,7 +23,7 @@ Place one add-on or button on either side of an input. You may also place one on
 <br>
 <div class="input-group">
   <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-addon" id="basic-addon2">.00</span>
+  <span class="input-group-addon" id="basic-addon2">@example.com</span>
 </div>
 <br>
 <label for="basic-url">Your vanity URL</label>
@@ -104,6 +104,20 @@ Buttons in input groups are a bit different and require one extra level of nesti
       <input type="text" class="form-control" placeholder="Search for...">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Go!</button>
+      </span>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-lg-offset-3 col-lg-6">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button">Hate it</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Product name">
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button">Love it</button>
       </span>
     </div>
   </div>
