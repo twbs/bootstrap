@@ -21,8 +21,8 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
 <form>
   <fieldset class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="text-muted">We'll never share your email with anyone else.</small>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    <small class="text-muted">We'll never share your email with anyone else.</small>
   </fieldset>
   <fieldset class="form-group">
     <label for="exampleInputPassword1">Password</label>
@@ -54,8 +54,8 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   </fieldset>
   <fieldset class="form-group">
     <label for="exampleInputFile">File input</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-    <small id="fileHelp" class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    <input type="file" class="form-control-file" id="exampleInputFile">
+    <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </fieldset>
   <div class="radio">
     <label>
@@ -84,7 +84,7 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
 </form>
 {% endexample %}
 
-Below is a complete list of the specific form controls supported by Bootstrap and the classes that customize them. Additional documentation is available for each group.
+Below is a complete list of the specific from controls supported by Bootstrap and the classes that customize them. Additional documentation is available for each group.
 
 <table>
   <thead>
@@ -114,7 +114,7 @@ Below is a complete list of the specific form controls supported by Bootstrap an
         Textual inputs
       </td>
       <td>
-        {% markdown %}`text`, `password`, `datetime-local`, `date`, `month`, `time`, `week`, `number`, `email`, `url`, `search`, `tel`, `color`{% endmarkdown %}
+        {% markdown %}`text`, `password`, `datetime`, `datetime-local`, `date`, `month`, `time`, `week`, `number`, `email`, `url`, `search`, `tel`, `color`{% endmarkdown %}
       </td>
     </tr>
     <tr>
@@ -162,91 +162,6 @@ Below is a complete list of the specific form controls supported by Bootstrap an
     </tr>
   </tbody>
 </table>
-
-### Textual inputs
-
-Here are examples of `.form-control` applied to each textual HTML5 `<input>` `type`.
-
-{% example html %}
-<div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 form-control-label">Text</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-search-input" class="col-xs-2 form-control-label">Search</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-email-input" class="col-xs-2 form-control-label">Email</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-url-input" class="col-xs-2 form-control-label">URL</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="url" value="http://getbootstrap.com" id="example-url-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-tel-input" class="col-xs-2 form-control-label">Telephone</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-password-input" class="col-xs-2 form-control-label">Password</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="password" value="hunter2" id="example-password-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-number-input" class="col-xs-2 form-control-label">Number</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="number" value="42" id="example-number-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-datetime-local-input" class="col-xs-2 form-control-label">Date and time</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-date-input" class="col-xs-2 form-control-label">Date</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-month-input" class="col-xs-2 form-control-label">Month</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="month" value="2011-08" id="example-month-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-week-input" class="col-xs-2 form-control-label">Week</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="week" value="2011-W33" id="example-week-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-time-input" class="col-xs-2 form-control-label">Time</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="time" value="13:45:00" id="example-time-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-color-input" class="col-xs-2 form-control-label">Color</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="color" value="#563d7c" id="example-color-input">
-  </div>
-</div>
-{% endexample %}
 
 ## Form layouts
 
@@ -602,33 +517,19 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 No official help text classes exist in Bootstrap 4 (previously we had `.help-block` in v3), but thanks to our utility classes like `.text-muted`, you can create much more flexible help text as you need it.
 
-{% callout warning %}
-#### Associating help text with form controls
-
-Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.
-{% endcallout %}
-
 Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else).
 
 {% example html %}
-<form class="form-inline">
-  <div class="form-group">
-    <label for="inputPassword4">Password</label>
-    <input type="password" id="inputPassword4" class="form-control" aria-describedby="passwordHelpInline">
-    <small id="passwordHelpInline" class="text-muted">
-      Must be 8-20 characters long.
-    </small>
-  </div>
-</form>
+<small class="text-muted">
+  Some inline text with a small tag looks like this.
+</small>
 {% endexample %}
 
 Block help text—for below inputs or for longer lines of help text—can be easily achieved with a `<p>`.
 
 {% example html %}
-<label for="inputPassword5">Password</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-<p id="passwordHelpBlock" class="text-muted">
-  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters or emoji.
+<p class="text-muted">
+  A block of help text that breaks onto a new line and may extend beyond one line.
 </p>
 {% endexample %}
 
@@ -682,7 +583,7 @@ Ensure that an alternative indication of state is also provided. For instance, y
 
 ## Custom forms
 
-For even more customization and cross browser consistency, use our completely custom form elements to replace the browser defaults. They're built on top of semantic and accessible markup, so they're solid replacements for any default form control.
+For even more customization and cross browser consistency, use our completely custom form elements to replace the browser defaults. They're built on top of semantic and accessible markup, so they're solid replacements any default form control.
 
 ### Checkboxes and radios
 
@@ -692,33 +593,33 @@ Each checkbox and radio is wrapped in a `<label>` for three reasons:
 - It provides a helpful and semantic wrapper to help us replace the default `<input>`s.
 - It triggers the state of the `<input>` automatically, meaning no JavaScript is required.
 
-We hide the default `<input>` with `opacity` and use the `.custom-control-indicator` to build a new custom form indicator in its place. Unfortunately we can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.
+We hide the default `<input>` with `opacity` and use the `.c-indicator` to build a new custom form control. We can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.
 
-We use the sibling selector (`~`) for all our `<input>` states—like `:checked`—to properly style our custom form indicator. When combined with the `.custom-control-description` class, we can also style the text for each item based on the `<input>`'s state.
+With the sibling selector (`~`), we use the `:checked` state to trigger a makeshift checked state on the custom control.
 
 In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](https://useiconic.com/open). This provides us the best control for styling and positioning across browsers and devices.
 
 #### Checkboxes
 
 {% example html %}
-<label class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input">
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Check this custom checkbox</span>
+<label class="c-input c-checkbox">
+  <input type="checkbox">
+  <span class="c-indicator"></span>
+  Check this custom checkbox
 </label>
 {% endexample %}
 
 Custom checkboxes can also utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
 
 <div class="bd-example bd-example-indeterminate">
-  <label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Check this custom checkbox</span>
+  <label class="c-input c-checkbox">
+    <input type="checkbox">
+    <span class="c-indicator"></span>
+    Check this custom checkbox
   </label>
 </div>
 
-If you're using jQuery, something like this should suffice:
+ If you're using jQuery, something like this should suffice:
 
 {% highlight js %}
 $('.your-checkbox').prop('indeterminate', true)
@@ -727,62 +628,43 @@ $('.your-checkbox').prop('indeterminate', true)
 #### Radios
 
 {% example html %}
-<label class="custom-control custom-radio">
-  <input id="radio1" name="radio" type="radio" class="custom-control-input">
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Toggle this custom radio</span>
+<label class="c-input c-radio">
+  <input id="radio1" name="radio" type="radio">
+  <span class="c-indicator"></span>
+  Toggle this custom radio
 </label>
-<label class="custom-control custom-radio">
-  <input id="radio2" name="radio" type="radio" class="custom-control-input">
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Or toggle this other custom radio</span>
-</label>
-{% endexample %}
-
-#### Disabled
-
-Custom checkboxes and radios can also be disabled. Add the `disabled` boolean attribute to the `<input>` and the custom indicator and label description will be automatically styled.
-
-{% example html %}
-<label class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" disabled>
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Check this custom checkbox</span>
-</label>
-
-<label class="custom-control custom-radio">
-  <input id="radio3" name="radioDisabled" type="radio" class="custom-control-input" disabled>
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Toggle this custom radio</span>
+<label class="c-input c-radio">
+  <input id="radio2" name="radio" type="radio">
+  <span class="c-indicator"></span>
+  Or toggle this other custom radio
 </label>
 {% endexample %}
-
 
 #### Stacked
 
-Custom checkboxes and radios are inline to start. Add a parent with class `.custom-controls-stacked` to ensure each form control is on separate lines.
+Custom checkboxes and radios are inline to start. Add a parent with class `.c-inputs-stacked` to ensure each form control is on separate lines.
 
 {% example html %}
-<div class="custom-controls-stacked">
-  <label class="custom-control custom-radio">
-    <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Toggle this custom radio</span>
+<div class="c-inputs-stacked">
+  <label class="c-input c-radio">
+    <input id="radioStacked1" name="radio-stacked" type="radio">
+    <span class="c-indicator"></span>
+    Toggle this custom radio
   </label>
-  <label class="custom-control custom-radio">
-    <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Or toggle this other custom radio</span>
+  <label class="c-input c-radio">
+    <input id="radioStacked2" name="radio-stacked" type="radio">
+    <span class="c-indicator"></span>
+    Or toggle this other custom radio
   </label>
 </div>
 {% endexample %}
 
 ### Select menu
 
-Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles.
+Custom `<select>` menus need only a custom class, `.c-select` to trigger the custom styles.
 
 {% example html %}
-<select class="custom-select">
+<select class="c-select">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
@@ -794,16 +676,14 @@ Custom selects degrade nicely in IE9, receiving only a handful of overrides to r
 
 ### File browser
 
-The file input is the most gnarly of the bunch and require additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
-
 {% example html %}
-<label class="custom-file">
-  <input type="file" id="file" class="custom-file-input">
-  <span class="custom-file-control"></span>
+<label class="file">
+  <input type="file" id="file">
+  <span class="file-custom"></span>
 </label>
 {% endexample %}
 
-Here's how it works:
+The file input is the most gnarly of the bunch. Here's how it works:
 
 - We wrap the `<input>` in a `<label>` so the custom control properly triggers the file browser.
 - We hide the default file `<input>` via `opacity`.
@@ -812,3 +692,5 @@ Here's how it works:
 - We declare a `height` on the `<input>` for proper spacing for surrounding content.
 
 In other words, it's an entirely custom element, all generated via CSS.
+
+**Heads up!** The custom file input is currently unable to update the *Choose file...* text with the filename. Without JavaScript, this might not be possible to change, but I'm open to ideas.

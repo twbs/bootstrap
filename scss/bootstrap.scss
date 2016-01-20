@@ -1,11 +1,10 @@
 /*!
- * Bootstrap v4.0.0-alpha.2 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v4.0.0-alpha (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
 // Core variables and mixins
-@import "custom";
 @import "variables";
 @import "mixins";
 
@@ -34,6 +33,7 @@
 @import "card";
 @import "breadcrumb";
 @import "pagination";
+@import "pager";
 @import "labels";
 @import "jumbotron";
 @import "alert";
@@ -51,3 +51,6 @@
 
 // Utility classes
 @import "utilities";
+@import "utilities-background";
+@import "utilities-spacing";
+@import "utilities-responsive";

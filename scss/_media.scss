@@ -14,7 +14,7 @@
   }
 } @else {
   .media {
-    margin-top: $media-margin-top;
+    margin-top: 15px;
 
     &:first-child {
       margin-top: 0;
@@ -23,6 +23,7 @@
   .media,
   .media-body {
     overflow: hidden;
+    zoom: 1;
   }
   .media-body {
     width: 10000px;
@@ -61,11 +62,11 @@
 //
 
 .media-right {
-  padding-left: $media-alignment-padding-x;
+  padding-left: 10px;
 }
 
 .media-left {
-  padding-right: $media-alignment-padding-x;
+  padding-right: 10px;
 }
 
 
@@ -75,7 +76,7 @@
 
 .media-heading {
   margin-top: 0;
-  margin-bottom: $media-heading-margin-bottom;
+  margin-bottom: 5px;
 }
 
 

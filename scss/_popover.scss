@@ -12,9 +12,9 @@
   font-size: $font-size-sm;
   background-color: $popover-bg;
   background-clip: padding-box;
-  border: $popover-border-width solid $popover-border-color;
+  border: 1px solid $popover-border-color;
   @include border-radius($border-radius-lg);
-  @include box-shadow($popover-box-shadow);
+  @include box-shadow(0 5px 10px rgba(0,0,0,.2));
 
 
   // Popover directions
@@ -103,17 +103,16 @@
 
 // Offset the popover to account for the popover arrow
 .popover-title {
-  padding: $popover-title-padding-y $popover-title-padding-x;
+  padding: 8px 14px;
   margin: 0; // reset heading margin
   font-size: $font-size-base;
   background-color: $popover-title-bg;
-  border-bottom: $popover-border-width solid darken($popover-title-bg, 5%);
-  $offset-border-width: ($border-width / $font-size-root);
-  @include border-radius(($border-radius-lg - $offset-border-width) ($border-radius-lg - $offset-border-width) 0 0);
+  border-bottom: 1px solid darken($popover-title-bg, 5%);
+  @include border-radius(($border-radius-lg - 1) ($border-radius-lg - 1) 0 0);
 }
 
 .popover-content {
-  padding: $popover-content-padding-y $popover-content-padding-x;
+  padding: 9px 14px;
 }
 
 

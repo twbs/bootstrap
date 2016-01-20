@@ -1,4 +1,4 @@
-// The dropdown wrapper (`<div>`)
+// The dropdown wrapper (div)
 .dropup,
 .dropdown {
   position: relative;
@@ -34,7 +34,7 @@
   }
 }
 
-// The dropdown menu
+// The dropdown menu (ul)
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -51,19 +51,19 @@
   list-style: none;
   background-color: $dropdown-bg;
   background-clip: padding-box;
-  border: $dropdown-border-width solid $dropdown-border-color;
+  border: 1px solid $dropdown-border;
   @include border-radius($border-radius);
-  @include box-shadow($dropdown-box-shadow);
+  @include box-shadow(0 6px 12px rgba(0,0,0,.175));
 }
 
-// Dividers (basically an `<hr>`) within the dropdown
+// Dividers (basically an hr) within the dropdown
 .dropdown-divider {
   @include nav-divider($dropdown-divider-bg);
 }
 
 // Links, buttons, and more within the dropdown menu
 //
-// `<button>`-specific styles are denoted with `// For <button>s`
+// `<button>`-specific styles are denoted with `// for <button>s`
 .dropdown-item {
   display: block;
   width: 100%; // For `<button>`s
@@ -161,7 +161,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $zindex-dropdown-backdrop;
+  z-index: ($zindex-dropdown - 10);
 }
 
 // Right aligned dropdowns

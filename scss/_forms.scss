@@ -14,7 +14,7 @@
   background-color: $input-bg;
   // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
   background-image: none;
-  border: $input-btn-border-width solid $input-border-color;
+  border: $border-width solid $input-border;
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius);
   @include box-shadow($input-box-shadow);
@@ -90,30 +90,28 @@
 // set a pixel line-height that matches the given height of the input, but only
 // for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
 //
-// Note that as of 8.3, iOS doesn't support `week`.
+// Note that as of 8.3, iOS doesn't support `datetime` or `week`.
 
-// SCSS-Lint exemption until https://github.com/brigade/scss-lint/pull/672 gets merged
-// scss-lint:disable PseudoElement
-_::-webkit-full-page-media, // Hack to make this CSS be Safari-only; see http://browserbu.gs/css-hacks/webkit-full-page-media/
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
-  &.form-control {
-    line-height: $input-height;
-  }
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  input[type="month"] {
+    &.form-control {
+      line-height: $input-height;
+    }
 
-  &.input-sm,
-  .input-group-sm &.form-control {
-    line-height: $input-height-sm;
-  }
+    &.input-sm,
+    .input-group-sm &.form-control {
+      line-height: $input-height-sm;
+    }
 
-  &.input-lg,
-  .input-group-lg &.form-control {
-    line-height: $input-height-lg;
+    &.input-lg,
+    .input-group-lg &.form-control {
+      line-height: $input-height-lg;
+    }
   }
 }
-// scss-lint:enable PseudoElement
 
 
 // Static form control text
@@ -186,6 +184,7 @@ input[type="month"] {
   label {
     padding-left: 1.25rem;
     margin-bottom: 0;
+    font-weight: normal;
     cursor: pointer;
 
     // When there's no labels, don't position the input.
@@ -217,6 +216,7 @@ input[type="month"] {
   display: inline-block;
   padding-left: 1.25rem;
   margin-bottom: 0;
+  font-weight: normal;
   vertical-align: middle;
   cursor: pointer;
 }
@@ -380,6 +380,8 @@ input[type="checkbox"] {
 //
 // Requires wrapping inputs and labels with `.form-group` for proper display of
 // default HTML form controls and our custom form controls (e.g., input groups).
+//
+// Heads up! This is mixin-ed into `.navbar-form` in _navbar.scss.
 
 .form-inline {
 
@@ -392,7 +394,7 @@ input[type="checkbox"] {
       vertical-align: middle;
     }
 
-    // Allow folks to *not* use `.form-group`
+    // In navbar-form, allow folks to *not* use `.form-group`
     .form-control {
       display: inline-block;
       width: auto; // Prevent labels from stacking above inputs in `.form-group`

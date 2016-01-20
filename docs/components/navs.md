@@ -17,18 +17,18 @@ If you are using navs to provide a navigation bar, be sure to add a `role="navig
 
 ## Base nav
 
-Roll your own navigation style by extending the base `.nav` component. All Bootstrap's nav components are built on top of this by specifying additional styles. Includes styles for the disabled state, but **not the active state**.
+Roll your own navigation style by extending the base `.nav` component. All Bootstrap's nav components are built on top of this. Includes styles for the disabled state, but **not the active state**.
 
 {% example html %}
 <ul class="nav">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Another link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
@@ -36,47 +36,15 @@ Roll your own navigation style by extending the base `.nav` component. All Boots
 </ul>
 {% endexample %}
 
-Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element. The change in nav item display below **is intentional** as `<li>`s have a different default `display` than regular `<a>` elements.
+Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element.
 
 {% example html %}
 <nav class="nav">
   <a class="nav-link active" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link" href="#">Another link</a>
   <a class="nav-link disabled" href="#">Disabled</a>
 </nav>
-{% endexample %}
-
-## Inline
-
-Space out nav links in a horizontal band with `.nav-inline`. Longer series of links will wrap to a new line.
-
-{% example html %}
-<nav class="nav nav-inline">
-  <a class="nav-link active" href="#">Active</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#">Disabled</a>
-</nav>
-{% endexample %}
-
-The same works for a navigation built with lists.
-
-{% example html %}
-<ul class="nav nav-inline">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
 {% endexample %}
 
 ## Tabs
@@ -92,7 +60,7 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Another link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
@@ -113,7 +81,7 @@ Take that same HTML, but use `.nav-pills` instead:
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Another link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
@@ -121,9 +89,9 @@ Take that same HTML, but use `.nav-pills` instead:
 </ul>
 {% endexample %}
 
-### Stacked pills
+## Stacked pills
 
-Add `.nav-stacked` to the `.nav.nav-pills` to stack them vertically. Each `.nav-link` becomes block-level, allowing for larger hit areas via mouse or tap.
+Just add `.nav-stacked` to the `.nav.nav-pills`.
 
 {% example html %}
 <ul class="nav nav-pills nav-stacked">
@@ -134,23 +102,12 @@ Add `.nav-stacked` to the `.nav.nav-pills` to stack them vertically. Each `.nav-
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Another link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
   </li>
 </ul>
-{% endexample %}
-
-As always, stacked pills are possible without `<ul>`s.
-
-{% example html %}
-<nav class="nav nav-pills nav-stacked">
-  <a class="nav-link active" href="#">Active</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#">Disabled</a>
-</nav>
 {% endexample %}
 
 ## Using dropdowns
@@ -175,7 +132,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Another link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
@@ -201,7 +158,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Another link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>
@@ -346,14 +303,6 @@ Activates a tab element and content container. Tab should have either a `data-ta
     $('#myTab a:last').tab('show')
   })
 </script>
-{% endhighlight %}
-
-#### .tab('show')
-
-Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (i.e. before the `shown.bs.tab` event occurs).
-
-{% highlight js %}
-$('#someTab').tab('show')
 {% endhighlight %}
 
 ### Events

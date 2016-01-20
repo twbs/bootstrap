@@ -26,7 +26,7 @@ Images in Bootstrap are made responsive with `.img-fluid`. `max-width: 100%;` an
 {% callout warning %}
 #### SVG images and IE 9-10
 
-In Internet Explorer 9-10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so Bootstrap doesn't apply it automatically.
+In Internet Explorer 9-10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. Bootstrap doesn't apply this automatically as it causes complications to other image formats.
 {% endcallout %}
 
 ## Image shapes
@@ -47,34 +47,34 @@ Add classes to an `<img>` element to easily style images in any project.
 
 ## Aligning images
 
-Align images with the [helper float classes]({{ site.baseurl }}/components/utilities/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/components/utilities/#text-alignment). A simple centering class can also be used for `block` level images.
+Align images with the [helper float classes]({{ site.baseurl }}/components/utilities/#floats) or [text alignment classes]({{ site.baseurl }}/components/utilities/#text-alignment). A simple centering class can also be used for `block` level images.
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/200x200" class="img-rounded pull-xs-left" alt="A generic square placeholder image with rounded corners">
-  <img data-src="holder.js/200x200" class="img-rounded pull-xs-right" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="img-rounded pull-left" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="img-rounded pull-right" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-rounded pull-xs-left" alt="...">
-<img src="..." class="img-rounded pull-xs-right" alt="...">
+<img src="..." class="img-rounded pull-left" alt="...">
+<img src="..." class="img-rounded pull-right" alt="...">
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/200x200" class="img-rounded center-block" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="img-rounded center-block" style="display: block;" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-rounded center-block" alt="...">
+<img src="..." class="img-rounded center-block" style="display: block;" alt="...">
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
-  <div class="text-xs-center">
+  <div class="text-center">
     <img data-src="holder.js/200x200" class="img-rounded" alt="A generic square placeholder image with rounded corners">
   </div>
 </div>
 
 {% highlight html %}
-<div class="text-xs-center">
+<div class="text-center">
   <img src="..." class="img-rounded" alt="...">
 </div>
 {% endhighlight %}

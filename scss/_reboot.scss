@@ -41,11 +41,10 @@ html {
 // and apply some conditional CSS.
 //
 // See http://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
-//
+
+
 // Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
 // `.class-name { @import "bootstrap"; }`).
-//
-// Includes future-proofed vendor prefixes as well.
 @at-root {
   @-moz-viewport      { width: device-width; }
   @-ms-viewport       { width: device-width; }
@@ -54,7 +53,6 @@ html {
   @viewport           { width: device-width; }
 }
 
-
 //
 // Reset HTML, body, and more
 //
@@ -62,13 +60,6 @@ html {
 html {
   // Sets a specific default `font-size` for user with `rem` type scales.
   font-size: $font-size-root;
-  // As a side-effect of setting the @viewport above,
-  // IE11 & Edge make the scrollbar overlap the content and automatically hide itself when not in use.
-  // Unfortunately, the auto-showing of the scrollbar is sometimes too sensitive,
-  // thus making it hard to click on stuff near the right edge of the page.
-  // So we add this style to force IE11 & Edge to use a "normal", non-overlapping, non-auto-hiding scrollbar.
-  // See https://github.com/twbs/bootstrap/issues/18543
-  -ms-overflow-style: scrollbar;
   // Changes the default tap highlight to be completely transparent in iOS.
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -82,15 +73,6 @@ body {
   color: $body-color;
   // By default, `<body>` has no `background-color` so we set one as a best practice.
   background-color: $body-bg;
-}
-
-// Suppress the focus outline on elements that cannot be accessed via keyboard.
-// This prevents an unwanted focus outline from appearing around elements that
-// might still respond to pointer events.
-//
-// Credit: https://github.com/suitcss/base
-[tabindex="-1"]:focus {
-  outline: none !important;
 }
 
 
@@ -145,7 +127,7 @@ ul ol {
 }
 
 dt {
-  font-weight: $dt-font-weight;
+  font-weight: bold;
 }
 
 dd {
@@ -200,6 +182,7 @@ figure {
 }
 
 
+
 //
 // Images
 //
@@ -246,7 +229,6 @@ textarea {
   touch-action: manipulation;
 }
 
-
 //
 // Tables
 //
@@ -275,18 +257,9 @@ th {
 //
 
 label {
-  // Allow labels to use `margin` for spacing.
+  // Allow labels can use `margin` for spacing.
   display: inline-block;
   margin-bottom: .5rem;
-}
-
-// Work around a Firefox/IE bug where the transparent `button` background
-// results in a loss of the default `button` focus styles.
-//
-// Credit: https://github.com/suitcss/base/
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
 }
 
 input,

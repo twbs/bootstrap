@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): util.js
+ * Bootstrap (v4.0.0): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -101,9 +101,7 @@ var Util = (function ($) {
 
     getUID: function getUID(prefix) {
       do {
-        /* eslint-disable no-bitwise */
-        prefix += ~ ~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
-        /* eslint-enable no-bitwise */
+        prefix += ~ ~(Math.random() * 1000000);
       } while (document.getElementById(prefix));
       return prefix;
     },

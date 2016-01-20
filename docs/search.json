@@ -3,13 +3,11 @@
 ---
 
 [
-{% assign sorted_pages = site.html_pages | sort: 'title' %}
-{% for page in sorted_pages %}
-    {% if page.title %}
+    {% for page in site.pages %}
         {
-            "title" : {{ page.title | jsonify }},
-            "url"   : "{{ site.baseurl }}{{ page.url }}"
+            "title" : "{{ page.title | escape }}",
+            "url"   : "{{ site.baseurl }}{{ page.url }}",
+            "date"  : "{{ page.date }}"
         } {% unless forloop.last %},{% endunless %}
-    {% endif %}
-{% endfor %}
+    {% endfor %}
 ]

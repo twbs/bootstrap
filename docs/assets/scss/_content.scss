@@ -1,5 +1,3 @@
-// scss-lint:disable IdSelector
-
 //
 // Automatically style Markdown-based tables like a Bootstrap `.table`.
 //
@@ -9,8 +7,8 @@
     display: block;
     width: 100%;
     max-width: 100%;
-    margin-bottom: $spacer;
     overflow-y: auto;
+    margin-bottom: $spacer;
 
     // Cells
     > thead,

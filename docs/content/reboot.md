@@ -225,7 +225,7 @@ These changes, and more, are demonstrated below.
 
     <p>
       <label for="time">Example temporal</label>
-      <input type="datetime-local" id="time">
+      <input type="datetime" id="time">
     </p>
 
     <p>

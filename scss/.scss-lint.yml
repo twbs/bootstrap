@@ -27,7 +27,7 @@ linters:
 
   DuplicateProperty:
     enabled: true
-    exclude: ['mixins/_tab-focus.scss', '_reboot.scss']
+    exclude: ['mixins/_tab-focus.scss']
 
   ElsePlacement:
     enabled: true
@@ -381,9 +381,6 @@ linters:
     enabled: true
     extra_properties: []
 
-  PseudoElement:
-    enabled: true
-
   QualifyingElement:
     enabled: false
     allow_element_with_attribute: false
@@ -396,7 +393,6 @@ linters:
   SelectorFormat:
     enabled: true
     convention: hyphenated_lowercase # or 'BEM', or 'snake_case', or 'camel_case', or a regex pattern
-    ignored_types: ["element"]
 
   Shorthand:
     enabled: true

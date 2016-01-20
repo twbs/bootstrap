@@ -125,10 +125,14 @@ h6, .h6 {
 
 
 /* Pagination */
-.blog-pagination {
+.pager {
   margin-bottom: 4rem;
+  text-align: left;
 }
-.blog-pagination > .btn {
+.pager > li > a {
+  width: 8rem;
+  padding: .75rem 1.25rem;
+  text-align: center;
   border-radius: 2rem;
 }
 

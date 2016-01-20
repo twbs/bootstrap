@@ -59,7 +59,7 @@ eos
       end
     
       def remove_holderjs(code)
-        code = code.gsub(/data-src="holder.js.+?"/, 'src="..."')
+        code = code.gsub(/"holder.js.+?"/, '"..."')
       end
 
       def render_rouge(code)

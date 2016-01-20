@@ -5,7 +5,7 @@
 
 .navbar {
   position: relative;
-  padding: $navbar-padding-y $navbar-padding-x;
+  padding: $navbar-padding-vertical $navbar-padding-horizontal;
   @include clearfix;
 
   @include media-breakpoint-up(sm) {
@@ -89,8 +89,8 @@
   width: 1px;
   padding-top: .425rem;
   padding-bottom: .425rem;
-  margin-right: $navbar-padding-x;
-  margin-left:  $navbar-padding-x;
+  margin-right: $navbar-padding-horizontal;
+  margin-left:  $navbar-padding-horizontal;
   overflow: hidden;
 
   &::before {

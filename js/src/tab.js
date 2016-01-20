@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): tab.js
+ * Bootstrap (v4.0.0): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Tab = (($) => {
    */
 
   const NAME                = 'tab'
-  const VERSION             = '4.0.0-alpha.2'
+  const VERSION             = '4.0.0'
   const DATA_KEY            = 'bs.tab'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -253,9 +253,9 @@ const Tab = (($) => {
 
   $(document)
     .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-      event.preventDefault()
-      Tab._jQueryInterface.call($(this), 'show')
-    })
+    event.preventDefault()
+    Tab._jQueryInterface.call($(this), 'show')
+  })
 
 
   /**
