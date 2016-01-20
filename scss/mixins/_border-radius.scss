@@ -8,7 +8,7 @@ $radius-side-lists: (
 );
 
 // Defaults to all corners at $border-radius setting value with no arguments
-@mixin border-radius ($size: $border-radius , $side: all){
+@mixin border-radius ($size: $border-radius , $side: all) {
   @if $enable-rounded {
     $bools: map-get($radius-side-lists, $side);
     $radius-list: null;
