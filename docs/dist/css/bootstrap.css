@@ -4066,7 +4066,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  border-radius: 5px;
+  border-radius: .25rem;
 }
 
 .page-item {
@@ -4154,7 +4154,7 @@ input[type="button"].btn-block {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: 5px;
+  border-radius: .25rem;
 }
 
 .label:empty {
