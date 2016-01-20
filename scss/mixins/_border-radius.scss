@@ -11,7 +11,7 @@ $radius-side-lists: (
 @mixin border-radius ( $size: $border-radius , $side: all ) {
   @if $enable-rounded {
     $bools: map-get($radius-side-lists, $side);
-    $radius-list:;
+    $radius-list: null;
     @each $bool in $bools{
       $radius-list: if($bool, append($radius-list,$size), append($radius-list,0px));
     }
