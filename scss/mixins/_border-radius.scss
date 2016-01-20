@@ -13,7 +13,7 @@ $radius-side-lists: (
     $bools: map-get($radius-side-lists, $side);
     $radius-list: null;
     @each $bool in $bools{
-      $radius-list: if($bool, append($radius-list,$size), append($radius-list,0px));
+      $radius-list: if($bool, append($radius-list, $size), append($radius-list, 0));
     }
     border-radius: $radius-list;
   }
