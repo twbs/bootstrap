@@ -50,6 +50,16 @@
 
 -
   browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    Background color from lower layer bleeds through transparent border in some cases
+  upstream_bug: >
+    IE#2263132
+  origin: >
+    Bootstrap#18228
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
