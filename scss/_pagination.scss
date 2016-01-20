@@ -12,12 +12,12 @@
   &:first-child {
     .page-link {
       margin-left: 0;
-      @include border-left-radius($border-radius);
+      @include border-radius($border-radius,left);
     }
   }
   &:last-child {
     .page-link {
-      @include border-right-radius($border-radius);
+      @include border-radius($border-radius,right);
     }
   }
 

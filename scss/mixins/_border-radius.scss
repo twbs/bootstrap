@@ -1,35 +1,20 @@
 // Single side border-radius
+$radius-side-lists: (
+    all  : (true),
+    top  : (true, true, false, false),
+    bottom  : (false, false, true, true),
+    left  : (true, false, false, true),
+    right  : (false, true, true, false),
+);
 
-@mixin border-radius($radius: $border-radius) {
+// Defaults to all corners at $border-radius setting value with no arguments
+@mixin border-radius ( $size: $border-radius , $side: all ) {
   @if $enable-rounded {
-    border-radius: $radius;
-  }
-}
-
-@mixin border-top-radius($radius) {
-  @if $enable-rounded {
-    border-top-right-radius: $radius;
-    border-top-left-radius: $radius;
-  }
-}
-
-@mixin border-right-radius($radius) {
-  @if $enable-rounded {
-    border-bottom-right-radius: $radius;
-    border-top-right-radius: $radius;
-  }
-}
-
-@mixin border-bottom-radius($radius) {
-  @if $enable-rounded {
-    border-bottom-right-radius: $radius;
-    border-bottom-left-radius: $radius;
-  }
-}
-
-@mixin border-left-radius($radius) {
-  @if $enable-rounded {
-    border-bottom-left-radius: $radius;
-    border-top-left-radius: $radius;
+    $bools: map-get($radius-side-lists, $side);
+    $radius-list:;
+    @each $bool in $bools{
+      $radius-list: if($bool, append($radius-list,$size), append($radius-list,0px));
+    }
+    border-radius: $radius-list;
   }
 }
