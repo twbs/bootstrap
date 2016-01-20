@@ -31,16 +31,16 @@ Add labels to any list group item to show unread counts, activity, etc.
 {% example html %}
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="label label-default label-pill pull-xs-right">14</span>
     Cras justo odio
+    <span class="label label-default label-pill pull-right">14</span>
   </li>
   <li class="list-group-item">
-    <span class="label label-default label-pill pull-xs-right">2</span>
     Dapibus ac facilisis in
+    <span class="label label-default label-pill pull-right">2</span>
   </li>
   <li class="list-group-item">
-    <span class="label label-default label-pill pull-xs-right">1</span>
     Morbi leo risus
+    <span class="label label-default label-pill pull-right">1</span>
   </li>
 </ul>
 {% endexample %}
