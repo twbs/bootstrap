@@ -40,6 +40,16 @@
 
 -
   browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
+  upstream_bug: >
+    IE#2256049
+  origin: >
+    Bootstrap#18543
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
@@ -299,6 +309,26 @@
     WebKit#151933
   origin: >
     Bootstrap#16028
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    `position:fixed` is incorrectly positioned when tab bar is visible on iPhone 6S+ Safari
+  upstream_bug: >
+    WebKit#153056
+  origin: >
+    Bootstrap#18859
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Tapping into an `<input>` within a `position:fixed` element scrolls to the top of the page
+  upstream_bug: >
+    WebKit#153224, Safari#24235301
+  origin: >
+    Bootstrap#17497
 
 -
   browser: >
