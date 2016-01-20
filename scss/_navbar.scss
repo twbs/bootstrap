@@ -6,7 +6,20 @@
 .navbar {
   position: relative;
   padding: $navbar-padding-vertical $navbar-padding-horizontal;
-  @include clearfix;
+
+  @if $enable-flex {
+    display: flex;
+    flex-flow: row nowrap;
+    flex-shrink: 0;
+    align-items: center;
+    align-self: stretch;
+
+    > * {
+      flex-shrink: 0;
+    }
+  } @else {
+    @include clearfix;
+  }
 
   @include media-breakpoint-up(sm) {
     @include border-radius($navbar-border-radius);

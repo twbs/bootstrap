@@ -1,6 +1,12 @@
 @mixin pull-left {
   float: left !important;
+  @if $enable-flex {
+    margin-right: auto;
+  }
 }
 @mixin pull-right {
   float: right !important;
+  @if $enable-flex {
+    margin-left: auto;
+  }
 }
