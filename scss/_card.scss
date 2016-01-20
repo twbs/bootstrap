@@ -51,13 +51,13 @@
   .card {
     > .list-group:first-child {
       .list-group-item:first-child {
-        border-radius: $card-border-radius $card-border-radius 0 0;
+        @include border-radius($card-border-radius, top);
       }
     }
 
     > .list-group:last-child {
       .list-group-item:last-child {
-        border-radius: 0 0 $card-border-radius $card-border-radius;
+        @include border-radius($card-border-radius, bottom);
       }
     }
   }
@@ -75,7 +75,7 @@
   border-bottom: $card-border-width solid $card-border-color;
 
   &:first-child {
-    @include border-radius($card-border-radius-inner,top);
+    @include border-radius($card-border-radius-inner, top);
   }
 }
 
@@ -86,7 +86,7 @@
   border-top: $card-border-width solid $card-border-color;
 
   &:last-child {
-    @include border-radius($card-border-radius-inner,bottom);
+    @include border-radius($card-border-radius-inner, bottom);
   }
 }
 
@@ -167,10 +167,10 @@
 
 // Card image caps
 .card-img-top {
-  @include border-radius($card-border-radius-inner,top);
+  @include border-radius($card-border-radius-inner, top);
 }
 .card-img-bottom {
-  @include border-radius($card-border-radius-inner,bottom);
+  @include border-radius($card-border-radius-inner, bottom);
 }
 
 
@@ -245,7 +245,7 @@
       // Handle rounded corners
       @if $enable-rounded {
         &:first-child {
-          @include border-radius(0,right);
+          @include border-radius(0, right);
 
           .card-img-top {
             border-top-right-radius: 0;
@@ -255,7 +255,7 @@
           }
         }
         &:last-child {
-          @include border-radius(0,left);
+          @include border-radius(0, left);
 
           .card-img-top {
             border-top-left-radius: 0;

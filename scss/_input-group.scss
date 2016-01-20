@@ -125,7 +125,7 @@
 .input-group-btn:first-child > .dropdown-toggle,
 .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
 .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
-  @include border-radius(0,right);
+  @include border-radius(0, right);
 }
 .input-group-addon:first-child {
   border-right: 0;
@@ -137,7 +137,7 @@
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child),
 .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
-  @include border-radius(0,left);
+  @include border-radius(0, left);
 }
 .input-group-addon:last-child {
   border-left: 0;

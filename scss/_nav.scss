@@ -65,7 +65,7 @@
     display: block;
     padding: $nav-link-padding;
     border: $nav-tabs-border-width solid transparent;
-    @include border-radius($border-radius,top);
+    @include border-radius($border-radius, top);
 
     @include hover-focus {
       border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
@@ -93,7 +93,7 @@
     // Make dropdown border overlap tab border
     margin-top: -$nav-tabs-border-width;
     // Remove the top rounded corners here since there is a hard edge above the menu
-    @include border-radius(0,top);
+    @include border-radius(0, top);
   }
 }
 
