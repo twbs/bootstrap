@@ -236,6 +236,6 @@
     content: $custom-file-button-label;
     background-color: $custom-file-button-bg;
     border: $custom-file-border-width solid $custom-file-border-color;
-    @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+    @include border-radius($custom-file-border-radius,right);
   }
 }
