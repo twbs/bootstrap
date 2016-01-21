@@ -132,9 +132,9 @@ Styling for common inline HTML5 elements.
 <p><em>This line rendered as italicized text.</em></p>
 {% endexample %}
 
-While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
+`.mark` and `.small` classes are also available to apply the same styles as `<mark>` and `<small>` while avoiding any unwanted semantic implications that the tags would bring.
 
-Corresponding classes `.small` and `.mark` are also available and apply the respective styles without introducing additional semantics.
+While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
 
 ## Abbreviations
 
