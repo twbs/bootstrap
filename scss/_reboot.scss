@@ -123,6 +123,14 @@ abbr[data-original-title] {
   cursor: help;
   border-bottom: 1px dotted $abbr-border-color;
 }
+// Avoid double underline in Firefox 40+; see https://github.com/twbs/bootstrap/issues/16574
+@supports (text-decoration: underline dotted) {
+  abbr[title],
+  abbr[data-original-title] {
+    text-decoration: underline dotted $abbr-border-color;
+    border-bottom: 0;
+  }
+}
 
 address {
   margin-bottom: 1rem;
