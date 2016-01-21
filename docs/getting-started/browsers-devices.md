@@ -218,13 +218,13 @@ Bootstrap includes a workaround for this, although it is disabled by default. By
 
 Even in some modern browsers, printing can be quirky.
 
-In particular, as of Chrome v32 and regardless of margin settings, Chrome uses a viewport width significantly narrower than the physical paper size when resolving media queries while printing a webpage. This can result in Bootstrap's extra-small grid being unexpectedly activated when printing. [See #12078 for some details.](https://github.com/twbs/bootstrap/issues/12078) Suggested workarounds:
+In particular, as of Chrome v32 and regardless of margin settings, Chrome uses a viewport width significantly narrower than the physical paper size when resolving media queries while printing a webpage. This can result in Bootstrap's extra-small grid being unexpectedly activated when printing. See [issue #12078](https://github.com/twbs/bootstrap/issues/12078) for some details. Suggested workarounds:
 
 * Embrace the extra-small grid and make sure your page looks acceptable under it.
 * Customize the value of the `$grid-breakpoints` Sass variable so that your printer paper is considered larger than extra-small.
 * Add custom media queries to change the grid size breakpoints for print media only.
 
-Also, as of Safari v8.0, fixed-width <code>.container</code>s can cause Safari to use an unusually small font size when printing. See <a href="https://github.com/twbs/bootstrap/issues/14868">#14868</a> for more details. One potential workaround for this is adding the following CSS:
+Also, as of Safari v8.0, use of the fixed-width `.container` class can cause Safari to use an unusually small font size when printing. See [issue #14868](https://github.com/twbs/bootstrap/issues/14868) for more details. One potential workaround is the following CSS:
 
 {% highlight css %}
 @media print {
