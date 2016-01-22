@@ -90,28 +90,30 @@
 // set a pixel line-height that matches the given height of the input, but only
 // for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
 //
-// Note that as of 8.3, iOS doesn't support `datetime` or `week`.
+// Note that as of 8.3, iOS doesn't support `week`.
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="date"],
-  input[type="time"],
-  input[type="datetime-local"],
-  input[type="month"] {
-    &.form-control {
-      line-height: $input-height;
-    }
+// SCSS-Lint exemption until https://github.com/brigade/scss-lint/pull/672 gets merged
+// scss-lint:disable PseudoElement
+_::-webkit-full-page-media, // Hack to make this CSS be Safari-only; see http://browserbu.gs/css-hacks/webkit-full-page-media/
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  &.form-control {
+    line-height: $input-height;
+  }
 
-    &.input-sm,
-    .input-group-sm &.form-control {
-      line-height: $input-height-sm;
-    }
+  &.input-sm,
+  .input-group-sm &.form-control {
+    line-height: $input-height-sm;
+  }
 
-    &.input-lg,
-    .input-group-lg &.form-control {
-      line-height: $input-height-lg;
-    }
+  &.input-lg,
+  .input-group-lg &.form-control {
+    line-height: $input-height-lg;
   }
 }
+// scss-lint:enable PseudoElement
 
 
 // Static form control text
