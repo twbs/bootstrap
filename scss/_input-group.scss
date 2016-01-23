@@ -85,6 +85,7 @@
 
 .input-group-addon {
   padding: $input-padding-y $input-padding-x;
+  margin: 0;
   font-size: $font-size-base;
   font-weight: normal;
   line-height: 1.5;
@@ -93,7 +94,6 @@
   background-color: $input-group-addon-bg;
   border: $input-btn-border-width solid $input-group-addon-border-color;
   @include border-radius($border-radius);
-  margin: 0;
 
   // Sizing
   &.form-control-sm {
