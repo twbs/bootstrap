@@ -1,5 +1,15 @@
 -
   browser: >
+    Microsoft Edge
+  summary: >
+    Edge renders an SVG `<img>` with `max-width:100%;` too small
+  upstream_bug: >
+    IE#2274240
+  origin: >
+    Bootstrap#16915
+
+-
+  browser: >
     Internet Explorer 11 & Microsoft Edge
   summary: >
     Hovered element still remains in `:hover` state after scrolling away.
