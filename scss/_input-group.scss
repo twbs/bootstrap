@@ -85,6 +85,7 @@
 
 .input-group-addon {
   padding: $input-padding-y $input-padding-x;
+  margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base;
   font-weight: normal;
   line-height: 1.5;
