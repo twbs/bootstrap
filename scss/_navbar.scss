@@ -71,7 +71,7 @@
   float: left;
   padding-top:    .25rem;
   padding-bottom: .25rem;
-  margin-right: 1rem;
+  margin-right: $nav-item-inline-spacer;
   font-size: $font-size-lg;
 
   @include hover-focus {
@@ -152,12 +152,12 @@
     padding-bottom: .425rem;
 
     + .nav-link {
-      margin-left: 1rem;
+      margin-left: $nav-item-inline-spacer;
     }
   }
 
   .nav-item + .nav-item {
-    margin-left: 1rem;
+    margin-left: $nav-item-inline-spacer;
   }
 }
 
