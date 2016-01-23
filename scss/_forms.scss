@@ -92,8 +92,6 @@
 //
 // Note that as of 8.3, iOS doesn't support `week`.
 
-// SCSS-Lint exemption until https://github.com/brigade/scss-lint/pull/672 gets merged
-// scss-lint:disable PseudoElement
 _::-webkit-full-page-media, // Hack to make this CSS be Safari-only; see http://browserbu.gs/css-hacks/webkit-full-page-media/
 input[type="date"],
 input[type="time"],
@@ -113,7 +111,6 @@ input[type="month"] {
     line-height: $input-height-lg;
   }
 }
-// scss-lint:enable PseudoElement
 
 
 // Static form control text
