@@ -3301,6 +3301,7 @@ input[type="button"].btn-block {
   display: block;
   width: 1rem;
   height: 1rem;
+  pointer-events: none;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
