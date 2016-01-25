@@ -1,9 +1,15 @@
 .media {
   display: flex;
-  margin-bottom: @spacer;
+}
+.media + .media {
+    margin-top: (@spacer * 3);
 }
 .media-body {
   flex: 1;
+
+  > *:last-child {
+      margin-bottom: 0;
+  }
 }
 .media-middle {
   align-self: center;
@@ -19,11 +25,6 @@
 
 .media-object {
   display: block;
-
-  // Fix collapse in webkit from max-width: 100% and display: table-cell.
-  &.img-thumbnail {
-    max-width: none;
-  }
 }
 
 
@@ -32,11 +33,11 @@
 //
 
 .media-right {
-  padding-left: @media-alignment-padding-x;
+  padding-left: @media-object-padding-horizontal;
 }
 
 .media-left {
-  padding-right: @media-alignment-padding-x;
+  padding-right: @media-object-padding-horizontal;
 }
 
 
@@ -46,7 +47,7 @@
 
 .media-heading {
   margin-top: 0;
-  margin-bottom: @media-heading-margin-bottom;
+  margin-bottom: 0;
 }
 
 
