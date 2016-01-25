@@ -229,7 +229,7 @@ input[type="search"] {
   position: relative;
   display: block;
   margin-top: 0;
-  margin-bottom: @padding-base-vertical;
+  margin-bottom: (@padding-base-vertical * 1.5);
 
   label {
     min-height: (@line-height-computed * 2); // Ensure the input doesn't jump when there is no text
@@ -693,28 +693,34 @@ input[type="checkbox"] {
     margin-left: -6px;
     margin-right: -6px;
 
-    [class^="col-"] {
+    [class*="col-"] {
         padding-left: 6px;
         padding-right: 6px;
     }
 }
 
 @media (max-width: @screen-xs-max) {
-    .form-group .row [class^="col-sm-"] {
+    .form-group .row [class*="col-sm-"] {
+        margin-bottom: 0;
+        
         .form-control {
             margin-bottom: (@padding-base-vertical * 1.5);
         }
     }
 }
 @media (max-width: @screen-sm-max) {
-    .form-group .row [class^="col-md-"] {
+    .form-group .row [class*="col-md-"] {
+        margin-bottom: 0;
+
         .form-control {
             margin-bottom: (@padding-base-vertical * 1.5);
         }
     }
 }
 @media (max-width: @screen-md-max) {
-    .form-group .row [class^="col-lg-"] {
+    .form-group .row [class*="col-lg-"] {
+        margin-bottom: 0;
+
         .form-control {
             margin-bottom: (@padding-base-vertical * 1.5);
         }
