@@ -69,8 +69,8 @@
 
 .navbar-brand {
   float: left;
-  padding-top:    .25rem;
-  padding-bottom: .25rem;
+  padding-top: (($navbar-item-padding-y + 0.425rem) / $font-size-lg) + rem;
+  padding-bottom: (($navbar-item-padding-y + 0.425rem) / $font-size-lg) + rem;
   margin-right: 1rem;
   font-size: $font-size-lg;
 
@@ -144,6 +144,8 @@
 .navbar-nav {
   .nav-item {
     float: left;
+    margin: $navbar-item-margin-y $navbar-item-margin-x;
+    padding: $navbar-item-padding-y $navbar-item-padding-x;
   }
 
   .nav-link {
@@ -152,12 +154,19 @@
     padding-bottom: .425rem;
 
     + .nav-link {
-      margin-left: 1rem;
+      margin-left: 0;
     }
   }
 
   .nav-item + .nav-item {
-    margin-left: 1rem;
+    margin-left: 0;
+  }
+  
+  .dropdown-menu {
+    margin-top: $navbar-padding-y;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 }
 
