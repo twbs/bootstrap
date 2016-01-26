@@ -72,8 +72,8 @@
   padding-top: (($navbar-item-padding-y + 0.425rem) / $font-size-lg) + rem;
   padding-bottom: (($navbar-item-padding-y + 0.425rem) / $font-size-lg) + rem;
   margin-top: $navbar-item-margin-y;
-  margin-bottom: $navbar-item-margin-y;
   margin-right: 1rem;
+  margin-bottom: $navbar-item-margin-y;
   font-size: $font-size-lg;
 
   @include hover-focus {
@@ -146,8 +146,8 @@
 .navbar-nav {
   .nav-item {
     float: left;
-    margin: $navbar-item-margin-y $navbar-item-margin-x;
     padding: $navbar-item-padding-y $navbar-item-padding-x;
+    margin: $navbar-item-margin-y $navbar-item-margin-x;
   }
 
   .nav-link {
@@ -166,7 +166,7 @@
 
   .dropdown-menu {
     margin-top: $navbar-padding-y + $navbar-item-margin-y;
-    border-top: none;
+    border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
