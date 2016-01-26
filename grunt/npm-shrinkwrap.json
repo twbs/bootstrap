@@ -1173,20 +1173,12 @@
       "resolved": "https://registry.npmjs.org/grunt-exec/-/grunt-exec-0.4.6.tgz"
     },
     "grunt-html": {
-      "version": "5.0.1",
-      "resolved": "https://registry.npmjs.org/grunt-html/-/grunt-html-5.0.1.tgz",
+      "version": "6.0.0",
+      "resolved": "https://registry.npmjs.org/grunt-html/-/grunt-html-6.0.0.tgz",
       "dependencies": {
         "async": {
-          "version": "1.4.0",
-          "resolved": "https://registry.npmjs.org/async/-/async-1.4.0.tgz"
-        },
-        "chalk": {
-          "version": "1.1.0",
-          "resolved": "https://registry.npmjs.org/chalk/-/chalk-1.1.0.tgz"
-        },
-        "supports-color": {
-          "version": "2.0.0",
-          "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-2.0.0.tgz"
+          "version": "1.5.1",
+          "resolved": "https://registry.npmjs.org/async/-/async-1.5.1.tgz"
         }
       }
     },

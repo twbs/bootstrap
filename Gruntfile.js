@@ -327,8 +327,7 @@ module.exports = function (grunt) {
           'The “datetime-local” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “month” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “time” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-          'The “week” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-          'Attribute “integrity” not allowed on element “script” at this point.' // Until https://github.com/jzaefferer/grunt-html/issues/86 gets fixed
+          'The “week” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
         ]
       },
       src: ['_gh_pages/**/*.html', 'js/tests/visual/*.html']
