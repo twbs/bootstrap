@@ -205,6 +205,51 @@ $(function () {
       .then(function () { return testElementIsActiveAfterScroll('#a-2', '#div-2') })
   })
 
+  QUnit.test('should add the active class only for the current target and its parents when using nested navs', function (assert) {
+    assert.expect(3)
+    var navbarHtml =
+        '<nav class="navbar">'
+      + '<ul class="nav">'
+      + '<li>'
+      + '<a class="nav-link" id="a-1" href="#div-1">div 1</a>'
+      + '<ul class="nav">'
+      + '<li><a class="nav-link" id="a-2" href="#div-2">div 2</a></li>'
+      + '<li><a class="nav-link" id="a-3" href="#div-3">div 3</a></li>'
+      + '</ul>'
+      + '</li>'
+      + '</ul>'
+      + '</nav>'
+    var contentHtml =
+        '<div class="content" style="overflow: auto; height: 50px">'
+      + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+
+    $(navbarHtml).appendTo('#qunit-fixture')
+    var $content = $(contentHtml)
+      .appendTo('#qunit-fixture')
+      .bootstrapScrollspy({ offset: 0, target: '.navbar' })
+
+    var testElementIsActiveAfterScroll = function (element, target) {
+      var deferred = $.Deferred()
+      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
+      $content.one('scroll', function () {
+        assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
+        deferred.resolve()
+      })
+      $content.scrollTop(scrollHeight)
+      return deferred.promise()
+    }
+
+    var done = assert.async()
+    $.when(testElementIsActiveAfterScroll('#a-2', '#div-2'))
+      .then(function () {
+        assert.ok($('#a-1').hasClass('active'), 'parent #a-1 should be active');
+        assert.notOk($('#a-3').hasClass('active'), 'sibling #a-3 should not be active');
+        done()
+      })
+  })
+
   QUnit.test('should add the active class correctly when there are nested elements at 0 scroll offset', function (assert) {
     assert.expect(6)
     var times = 0
