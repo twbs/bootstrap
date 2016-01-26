@@ -71,6 +71,8 @@
   float: left;
   padding-top: (($navbar-item-padding-y + 0.425rem) / $font-size-lg) + rem;
   padding-bottom: (($navbar-item-padding-y + 0.425rem) / $font-size-lg) + rem;
+  margin-top: $navbar-item-margin-y;
+  margin-bottom: $navbar-item-margin-y;
   margin-right: 1rem;
   font-size: $font-size-lg;
 
@@ -161,9 +163,9 @@
   .nav-item + .nav-item {
     margin-left: 0;
   }
-  
+
   .dropdown-menu {
-    margin-top: $navbar-padding-y;
+    margin-top: $navbar-padding-y + $navbar-item-margin-y;
     border-top: none;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
