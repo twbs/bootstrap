@@ -62,6 +62,13 @@
   }
 }
 
+.body-navbar-top-spacer {
+  margin-top: ($navbar-item-padding-y + 0.425rem + $navbar-item-margin-y) * 2 + $line-height;
+}
+
+.body-navbar-bottom-spacer {
+  margin-bottom: ($navbar-item-padding-y + 0.425rem + $navbar-item-margin-y) * 2 + $line-height;
+}
 
 //
 // Brand/project name
