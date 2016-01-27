@@ -1,6 +1,6 @@
 # City Tech Branded Bootstrap
 
-This CUNY City Tech branded Bootstrap was developed by City Tech student [Don Phelps](https://github.com/donphelps) according to the design standards defined in [City Tech Visual Identity Package](http://www.citytech.cuny.edu/citytechbranding/CityTechIDbook.pdf). It was forked from twbs version 3.3.5.
+This CUNY City Tech branded Bootstrap was developed by City Tech student [Don Phelps](https://github.com/donphelps) according to the design standards defined in [City Tech Visual Identity Package](http://www.citytech.cuny.edu/citytechbranding/CityTechIDbook.pdf). It was forked from twbs/bootstrap version 3.3.5.
 
 The folders/files you should copy to your web root are located in the `dist` folder or can be downloaded all together by clicking on the `ctbs-dist.zip` file.
 
