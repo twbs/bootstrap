@@ -94,7 +94,7 @@
 .btn-info    { .btn-styles(@btn-info-bg); }
 .btn-warning { .btn-styles(@btn-warning-bg); }
 .btn-danger  { .btn-styles(@btn-danger-bg); }
-.btn-citytech  { .btn-styles(@btn-citytech-bg); }
+.btn-citytech { .btn-styles(@btn-citytech-bg); }
 
 
 //
@@ -166,7 +166,7 @@
 
 // Citytech navbar
 .navbar-citytech {
-  #gradient > .vertical(@start-color: @navbar-citytech-bg; @end-color: darken(@navbar-citytech-bg, 10%);
+  #gradient > .vertical(@start-color: @navbar-citytech-bg; @end-color: darken(@navbar-citytech-bg, 10%));
   .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered; see https://github.com/twbs/bootstrap/issues/10257
   border-radius: @navbar-border-radius;
   .navbar-nav > .open > a,
@@ -223,7 +223,7 @@
 .alert-info       { .alert-styles(@alert-info-bg); }
 .alert-warning    { .alert-styles(@alert-warning-bg); }
 .alert-danger     { .alert-styles(@alert-danger-bg); }
-.alert-citytech     { .alert-styles(@alert-citytech-bg); }
+.alert-citytech   { .alert-styles(@alert-citytech-bg); }
 
 
 //
@@ -246,7 +246,7 @@
 .progress-bar-info       { .progress-bar-styles(@progress-bar-info-bg); }
 .progress-bar-warning    { .progress-bar-styles(@progress-bar-warning-bg); }
 .progress-bar-danger     { .progress-bar-styles(@progress-bar-danger-bg); }
-.progress-bar-citytech     { .progress-bar-styles(@progress-bar-citytech-bg); }
+.progress-bar-citytech   { .progress-bar-styles(@progress-bar-citytech-bg); }
 
 // Reset the striped class because our mixins don't do multiple gradients and
 // the above custom styles override the new `.progress-bar-striped` in v3.2.0.
@@ -297,7 +297,7 @@
 .panel-info > .panel-heading      { .panel-heading-styles(@panel-info-heading-bg); }
 .panel-warning > .panel-heading   { .panel-heading-styles(@panel-warning-heading-bg); }
 .panel-danger > .panel-heading    { .panel-heading-styles(@panel-danger-heading-bg); }
-.panel-citytech > .panel-heading    { .panel-heading-styles(@panel-citytech-heading-bg); }
+.panel-citytech > .panel-heading  { .panel-heading-styles(@panel-citytech-heading-bg); }
 
 
 //
