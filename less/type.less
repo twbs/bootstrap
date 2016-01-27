@@ -53,6 +53,7 @@ h6, .h6 {
   margin-top: 0;
   margin-bottom: 0;
   font-weight: 800;
+  font-family: @font-family-base;
 
   small,
   .small {
@@ -368,14 +369,19 @@ address {
 }
 
 
-h1, h2, h6 {
+h1, .h1,
+h2, .h2,
+h6, .h6 {
     text-transform: uppercase;
 }
 
-h3, h4, h5 {
+h3, .h3,
+h4, .h4,
+h5, .h5 {
     color: @brand-blue;
     margin-bottom: @padding-base-vertical;
+    text-transform: none;
 }
-h6 {
+h6, .h6 {
     color: @brand-grey-plus-20;
 }
