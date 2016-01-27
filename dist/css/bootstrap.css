@@ -6923,11 +6923,11 @@ button.close {
 }
 @font-face {
   font-family: citytech_font;
-  src: url("fonts/TradeGothicLTStd.otf");
+  src: url("/fonts/TradeGothicLTStd.otf");
 }
 @font-face {
   font-family: citytech_font;
-  src: url("fonts/TradeGothicLTStd-Bold.otf");
+  src: url("/fonts/TradeGothicLTStd-Bold.otf");
   font-weight: bold;
 }
 .font-citytech {
