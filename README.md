@@ -1,3 +1,32 @@
+# City Tech Branded Bootstrap
+
+This CUNY City Tech branded Bootstrap was developed by City Tech student [Don Phelps](https://github.com/donphelps) according to the design standards defined in [City Tech Visual Identity Package](http://www.citytech.cuny.edu/citytechbranding/CityTechIDbook.pdf). It was forked from twbs version 3.3.5.
+
+The folders/files you should copy to your web root are located in the `dist` folder or can be downloaded all together by clicking on the `ctbs-dist.zip` file.
+
+## A Word About Fonts
+
+City Tech's Brand Font is "Trade Gothic LT Std", and is not included with CT-Bootstrap.
+You can find it here: [City Tech Visual Identity Package](http://www.citytech.cuny.edu/citytechbranding/CityTechIDbook.pdf).
+Once downloaded, place them in the /fonts folder of your website.
+
+Also, CT-Bootstrap uses Source Sans Pro for default text.
+Usage instructions are included at https://www.google.com/fonts but you can simply add the following to your &lt;head&gt; tag and use as your normally would in CSS:
+
+`<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>`
+
+## New City Tech Branded CSS Classes
+
+City Tech Bootstrap can be used as you would the original.
+The following CSS classes have been added:
+
+* `font-citytech` Sets the font to Trade Gothic LT Std.
+* `navbar-citytech`
+* `btn-citytech`
+* `alert-citytech`
+* `label-citytech`
+* `panel-citytech`
+
 # [Bootstrap](http://getbootstrap.com)
 
 [![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)

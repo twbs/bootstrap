@@ -28,6 +28,7 @@ _site
 *.sublime-workspace
 nbproject
 Thumbs.db
+desktop.ini
 
 # Komodo
 .komodotools
