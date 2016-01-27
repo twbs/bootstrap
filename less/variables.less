@@ -20,6 +20,9 @@
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
 
+@brand-citytech:        #0091B0;
+@brand-citytech-dark:   darken(@brand-citytech, 10%);
+@brand-citytech-light:  lighten(@brand-citytech, 10%);
 
 //== Scaffolding
 //
@@ -30,10 +33,14 @@
 //** Global text color on `<body>`.
 @text-color:            @gray-dark;
 
+@text-citytech:         #0091B0;
+@text-citytech-dark:    darken(@brand-citytech, 10%);
+@text-citytech-light:   lighten(@brand-citytech, 10%);
+
 //** Global textual link color.
-@link-color:            @brand-primary;
+@link-color:            @brand-citytech-dark;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      darken(@link-color, 15%);
+@link-hover-color:      darken(@link-color, 10%);
 //** Link hover decoration.
 @link-hover-decoration: underline;
 
@@ -42,11 +49,13 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
+
+@font-citytech:           "Trade Gothic LT Std" !important;
 
 @font-size-base:          14px;
 @font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
@@ -167,6 +176,10 @@
 @btn-danger-color:               #fff;
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              darken(@btn-danger-bg, 5%);
+
+@btn-citytech-color:             @gray-lightest;
+@btn-citytech-bg:                @brand-citytech;
+@btn-citytech-border:            @brand-citytech-dark;
 
 @btn-link-disabled-color:        @gray-light;
 
@@ -413,6 +426,30 @@
 @navbar-inverse-toggle-icon-bar-bg:         #fff;
 @navbar-inverse-toggle-border-color:        #333;
 
+//=== CityTech navbar
+// Reset CityTech navbar basics
+@navbar-citytech-color:                    	@gray-lighter; // lighten(@gray-light, 15%);
+@navbar-citytech-bg:                        @brand-citytech; // #222;
+@navbar-citytech-border:                    @brand-citytech-dark; // darken(@navbar-inverse-bg, 10%);
+
+// CityTech navbar links
+@navbar-citytech-link-color:                #fff; // lighten(@gray-light, 15%);
+@navbar-citytech-link-hover-color:          #fff;
+@navbar-citytech-link-hover-bg:             @brand-citytech-dark; // transparent;
+@navbar-citytech-link-active-color:         #fff; // @navbar-inverse-link-hover-color;
+@navbar-citytech-link-active-bg:            darken(@navbar-citytech-bg, 10%);
+@navbar-citytech-link-disabled-color:       @gray-light; // #444;
+@navbar-citytech-link-disabled-bg:          transparent;
+
+// CityTech navbar brand label
+@navbar-citytech-brand-color:               @navbar-citytech-link-color; // @navbar-inverse-link-color;
+@navbar-citytech-brand-hover-color:         #fff;
+@navbar-citytech-brand-hover-bg:            darken(@brand-citytech-dark, 5%);
+
+// CityTech navbar toggle
+@navbar-citytech-toggle-hover-bg:           @brand-citytech; // #333;
+@navbar-citytech-toggle-icon-bar-bg:        #fff;
+@navbar-citytech-toggle-border-color:       @brand-citytech-dark; // #333;
 
 //== Navs
 //
@@ -512,6 +549,9 @@
 @state-danger-bg:                #f2dede;
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
+@state-citytech-text:            @brand-citytech;
+@state-citytech-bg:              lighten(@brand-citytech, 50%);
+@state-citytech-border:          lighten(@brand-citytech, 42%);
 
 //== Tooltips
 //
@@ -576,6 +616,8 @@
 @label-warning-bg:            @brand-warning;
 //** Danger label background color
 @label-danger-bg:             @brand-danger;
+//** CityTech label background color
+@label-citytech-bg:           @brand-citytech;
 
 //** Default label text color
 @label-color:                 #fff;
@@ -640,6 +682,9 @@
 @alert-danger-text:           @state-danger-text;
 @alert-danger-border:         @state-danger-border;
 
+@alert-citytech-bg:           @state-citytech-bg;
+@alert-citytech-text:         @state-citytech-text;
+@alert-citytech-border:       @state-citytech-border;
 
 //== Progress bars
 //
@@ -663,6 +708,7 @@
 //** Info progress bar color
 @progress-bar-info-bg:        @brand-info;
 
+@progress-bar-citytech-bg:    @brand-citytech;
 
 //== List group
 //
@@ -736,6 +782,9 @@
 @panel-danger-border:         @state-danger-border;
 @panel-danger-heading-bg:     @state-danger-bg;
 
+@panel-citytech-text:         @state-citytech-text;
+@panel-citytech-border:       @state-citytech-border;
+@panel-citytech-heading-bg:   @state-citytech-bg;
 
 //== Thumbnails
 //
