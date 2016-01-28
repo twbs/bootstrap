@@ -1,10 +1,13 @@
 sudo: false
-language: node_js
+
+language: java
+
 git:
   depth: 10
-node_js:
-  - "4"
-  - "5"
+
+jdk:
+  - oraclejdk8
+
 before_install:
   # Remove ./node_modules/.bin from PATH so node-which doesn't replace Unix which and cause RVM to barf. See https://github.com/travis-ci/travis-ci/issues/5092
   - export PATH=$(python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH")
@@ -16,15 +19,23 @@ before_install:
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip sauce\]'; export TWBS_DO_SAUCE=$?; true
   - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then export TWBS_DO_VALIDATOR=0; fi
+
 install:
+  - nvm install $NODE_VERSION
   - bundle install --deployment --jobs=3
   - cp grunt/npm-shrinkwrap.json ./
   - npm install -g grunt-cli
   - npm install
+
+script:
+  - nvm use $NODE_VERSION
+  - npm test
+
 cache:
   directories:
     - node_modules
     - vendor/bundle
+
 env:
   global:
     - NPM_CONFIG_PROGRESS="false"
@@ -33,16 +44,19 @@ env:
     - secure: "RKWpS+P20b4tG9tawzCMJSmQftoonmC7tJzyGYiHuEM1TcpHALLBcnzKlr/+DiPTfzDJWY4kS8pxfhK4uXOe8OHnhpMNub7LEWtFPePlZIervOJcsOydaQocTKqVVWD6OUubMeQmQ+tZmvmpjoJ1uPPEbFs9ciF7+dv3U5tLUZ0="
     - secure: "XswSKBY0HJ/aO9VOBeWlvGpqSFF/DsJmNKz7o5RkJMJX340qe44J929uUNwwOwlv9YrgptzC2W6l8bpmZQV+p6IYs99SoSA8CCaUfIJaqeU9x/UiT5vIHgqaNax+vFJwvzHLpF5v/ggFqFEKCd54gCDasePLTztHeC4oL104iaQ="
   matrix:
-    - TWBS_TEST=core
-    - TWBS_TEST=validate-html
-    - TWBS_TEST=sauce-js-unit
+    - NODE_VERSION=4 TWBS_TEST=core
+    - NODE_VERSION=5 TWBS_TEST=core
+    - NODE_VERSION=5 TWBS_TEST=validate-html
+    - NODE_VERSION=5 TWBS_TEST=sauce-js-unit
+
 matrix:
   fast_finish: true
   exclude:
-    - node_js: "4"
+    - NODE_VERSION: "4"
       env: TWBS_TEST=validate-html
-    - node_js: "4"
+    - NODE_VERSION: "4"
       env: TWBS_TEST=sauce-js-unit
+
 notifications:
   slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
   webhooks:
