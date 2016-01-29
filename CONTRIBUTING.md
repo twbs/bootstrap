@@ -192,7 +192,7 @@ included in the project:
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-   or your code is unlikely be merged into the main project. Use Git's
+   or your code is unlikely to be merged into the main project. Use Git's
    [interactive rebase](https://help.github.com/articles/interactive-rebase)
    feature to tidy up your commits before making them public.
 
