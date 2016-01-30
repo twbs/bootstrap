@@ -140,7 +140,7 @@
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
       .on('focusin.bs.modal', $.proxy(function (e) {
-        if (document !== event.target &&
+        if (document !== e.target &&
             this.$element[0] !== e.target &&
             !this.$element.has(e.target).length) {
           this.$element.trigger('focus')
