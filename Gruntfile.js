@@ -317,6 +317,22 @@ module.exports = function (grunt) {
       }
     },
 
+    'string-replace': {
+      dist: {
+        files: {
+          'less/iconfont/style.less': 'less/iconfont/style.less'
+        },
+        options: {
+          replacements: [
+            {
+              pattern: /fonts/ig,
+              replacement: '..\/fonts'
+            }
+          ]
+        }
+      }
+    },
+
     connect: {
       server: {
         options: {
@@ -507,10 +523,10 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'usebanner', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:iconfonts', 'copy:iconfontsless', 'copy:images', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:iconfonts', 'copy:iconfontsless', 'string-replace', 'copy:images', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:iconfonts', 'copy:iconfontsless', 'copy:images', 'test']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:iconfonts', 'copy:iconfontsless', 'string-replace', 'copy:images', 'test']);
 
   // Version numbering task.
   // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
@@ -557,4 +573,8 @@ module.exports = function (grunt) {
       done();
     });
   });
+
+  // String replacement
+  grunt.loadNpmTasks('grunt-string-replace');
+
 };
