@@ -2382,6 +2382,29 @@ pre code {
     padding-left: 24px;
   }
 }
+[class*="col-sm"],
+[class*="col-md"],
+[class*="col-lg"] {
+  margin-bottom: 16px;
+}
+[class*="col-xs"] {
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  [class*="col-sm"] {
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 992px) {
+  [class*="col-md"] {
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 1200px) {
+  [class*="col-lg"] {
+    margin-bottom: 0;
+  }
+}
 table {
   background-color: #fff;
 }
@@ -3053,7 +3076,7 @@ input[type="search"] {
   position: relative;
   display: block;
   margin-top: 0;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 .radio label,
 .checkbox label {
@@ -3671,22 +3694,31 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
   margin-right: -6px;
   margin-left: -6px;
 }
-.form-group .row [class^="col-"] {
+.form-group .row [class*="col-"] {
   padding-right: 6px;
   padding-left: 6px;
 }
 @media (max-width: 767px) {
-  .form-group .row [class^="col-sm-"] .form-control {
+  .form-group .row [class*="col-sm-"] {
+    margin-bottom: 0;
+  }
+  .form-group .row [class*="col-sm-"] .form-control {
     margin-bottom: 12px;
   }
 }
 @media (max-width: 991px) {
-  .form-group .row [class^="col-md-"] .form-control {
+  .form-group .row [class*="col-md-"] {
+    margin-bottom: 0;
+  }
+  .form-group .row [class*="col-md-"] .form-control {
     margin-bottom: 12px;
   }
 }
 @media (max-width: 1199px) {
-  .form-group .row [class^="col-lg-"] .form-control {
+  .form-group .row [class*="col-lg-"] {
+    margin-bottom: 0;
+  }
+  .form-group .row [class*="col-lg-"] .form-control {
     margin-bottom: 12px;
   }
 }
@@ -9157,6 +9189,12 @@ blockquote footer {
   margin-top: 24px !important;
   margin-bottom: 24px !important;
 }
+.m-b-xl {
+  margin-bottom: 32px !important;
+}
+.m-b-xxl {
+  margin-bottom: 40px !important;
+}
 .p-a-0 {
   padding: 0 !important;
 }
@@ -9359,5 +9397,196 @@ a.circle.active:hover {
 }
 .flag.flag-info {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJ0cmFuc2Zlcndpc2UtZmxhZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IgoJIHk9IjBweCIgdmlld0JveD0iMCAwIDQ4IDUyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA0OCA1MiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxwYXRoIGZpbGw9IiMwMEM2RkYiIGQ9Ik01LjgsMGw4LjIsMTMuNkwwLjEsMjcuMmgyNC4xbDIuNi01LjRIMTNsOC4yLTguM2wtNS04aDIyLjZMMTkuMiw1Mmg2LjdsMjItNTJINS44eiIvPgo8L3N2Zz4=);
+}
+@font-face {
+  font-family: 'TransferWise-IconFont';
+  font-style: normal;
+  font-weight: normal;
+
+  src: url('../fonts/TransferWise-IconFont.ttf?eu2k23') format('truetype'), url('../fonts/TransferWise-IconFont.woff?eu2k23') format('woff'), url('../fonts/TransferWise-IconFont.svg?eu2k23#TransferWise-IconFont') format('svg');
+}
+.icon {
+  /* use !important to prevent issues with browser extensions that change ../fonts */
+  font-family: 'TransferWise-IconFont' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-transform: none;
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+
+  speak: none;
+  -webkit-font-feature-settings: "liga";
+     -moz-font-feature-settings: "liga=1";
+     -moz-font-feature-settings: "liga";
+      -ms-font-feature-settings: "liga" 1;
+       -o-font-feature-settings: "liga";
+          font-feature-settings: "liga";
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-send:before {
+  content: "\e900";
+}
+.icon-request:before {
+  content: "\e935";
+}
+.icon-man:before {
+  content: "\e901";
+}
+.icon-woman:before {
+  content: "\e902";
+}
+.icon-profile:before {
+  content: "\e903";
+}
+.icon-add-profile:before {
+  content: "\e904";
+}
+.icon-delete-profile:before {
+  content: "\e905";
+}
+.icon-trash:before {
+  content: "\e906";
+}
+.icon-ach:before {
+  content: "\e907";
+}
+.icon-bank:before {
+  content: "\e908";
+}
+.icon-alert-circle:before {
+  content: "\e909";
+}
+.icon-alert:before {
+  content: "\e90a";
+}
+.icon-lock:before {
+  content: "\e90b";
+}
+.icon-camera:before {
+  content: "\e90c";
+}
+.icon-wifi:before {
+  content: "\e90d";
+}
+.icon-globe:before {
+  content: "\e90e";
+}
+.icon-check-circle:before {
+  content: "\e90f";
+}
+.icon-close-circle:before {
+  content: "\e910";
+}
+.icon-card:before {
+  content: "\e911";
+}
+.icon-id:before {
+  content: "\e912";
+}
+.icon-up:before {
+  content: "\e913";
+}
+.icon-down:before {
+  content: "\e914";
+}
+.icon-transfer:before {
+  content: "\e915";
+}
+.icon-check:before {
+  content: "\e916";
+}
+.icon-close:before {
+  content: "\e917";
+}
+.icon-help-circle:before {
+  content: "\e918";
+}
+.icon-help:before {
+  content: "\e919";
+}
+.icon-setting:before {
+  content: "\e91a";
+}
+.icon-logout:before {
+  content: "\e91b";
+}
+.icon-mobile:before {
+  content: "\e91c";
+}
+.icon-pending:before {
+  content: "\e91d";
+}
+.icon-comments:before {
+  content: "\e91e";
+}
+.icon-home:before {
+  content: "\e91f";
+}
+.icon-link:before {
+  content: "\e920";
+}
+.icon-joint-account:before {
+  content: "\e921";
+}
+.icon-notification:before {
+  content: "\e922";
+}
+.icon-message:before {
+  content: "\e923";
+}
+.icon-eye:before {
+  content: "\e924";
+}
+.icon-notification-2:before {
+  content: "\e925";
+}
+.icon-gift:before {
+  content: "\e926";
+}
+.icon-search:before {
+  content: "\e927";
+}
+.icon-verification:before {
+  content: "\e928";
+}
+.icon-briefcase:before {
+  content: "\e929";
+}
+.icon-receipt:before {
+  content: "\e92a";
+}
+.icon-comment:before {
+  content: "\e92b";
+}
+.icon-edit:before {
+  content: "\e92c";
+}
+.icon-money:before {
+  content: "\e92d";
+}
+.icon-line-graph:before {
+  content: "\e92e";
+}
+.icon-bar-chart:before {
+  content: "\e92f";
+}
+.icon-chat-pending:before {
+  content: "\e930";
+}
+.icon-document:before {
+  content: "\e931";
+}
+.icon-documents:before {
+  content: "\e932";
+}
+.icon-pdf:before {
+  content: "\e933";
+}
+.icon-menu:before {
+  content: "\e934";
 }
 /*# sourceMappingURL=bootstrap.css.map */
