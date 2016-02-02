@@ -89,3 +89,31 @@
       padding-left: @padding-container-collapse;
   }
 }
+
+[class*="col-sm"],
+[class*="col-md"],
+[class*="col-lg"] {
+    margin-bottom: (@spacer-y * 2);
+}
+
+[class*="col-xs"] {
+    margin-bottom: 0;
+}
+
+@media (min-width: @screen-sm-min) {
+	[class*="col-sm"] {
+		margin-bottom: 0;
+	}
+}
+
+@media (min-width: @screen-md-min) {
+	[class*="col-md"] {
+		margin-bottom: 0;
+	}
+}
+
+@media (min-width: @screen-lg-min) {
+	[class*="col-lg"] {
+		margin-bottom: 0;
+	}
+}

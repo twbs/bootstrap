@@ -1,72 +1,61 @@
 .media {
-  // Proper spacing between instances of .media
-  margin-top: 16px;
+  display: flex;
+}
+.media + .media {
+    margin-top: (@spacer * 3);
+}
+.media-body {
+  flex: 1;
 
-  &:first-child {
-    margin-top: 0;
+  > *:last-child {
+      margin-bottom: 0;
   }
 }
-
-.media,
-.media-body {
-  zoom: 1;
-  overflow: hidden;
+.media-middle {
+  align-self: center;
+}
+.media-bottom {
+  align-self: flex-end;
 }
 
-.media-body {
-  width: 10000px;
-}
+
+//
+// Images/elements as the media anchor
+//
 
 .media-object {
   display: block;
-  border-radius: 50%;
-
-  // Fix collapse in webkit from max-width: 100% and display: table-cell.
-  &.img-thumbnail {
-    max-width: none;
-  }
 }
 
-.media-right,
-.media > .pull-right {
-  padding-left: 16px;
+
+//
+// Alignment
+//
+
+.media-right {
+  padding-left: @media-object-padding-horizontal;
 }
 
-.media-left,
-.media > .pull-left {
-  padding-right: 16px;
+.media-left {
+  padding-right: @media-object-padding-horizontal;
 }
 
-.media-left,
-.media-right,
-.media-body {
-  display: table-cell;
-  vertical-align: top;
-}
 
-.media-middle {
-  vertical-align: middle;
-}
+//
+// Headings
+//
 
-.media-bottom {
-  vertical-align: bottom;
-}
-
-// Reset margins on headings for tighter default spacing
 .media-heading {
   margin-top: 0;
   margin-bottom: 0;
 }
 
+
+//
 // Media list variation
 //
-// Undo default ul/ol styles
+
 .media-list {
   padding-left: 0;
   list-style: none;
-}
-
-.media .media .media-object {
-    width: 48px;
-    height: 48px;
 }
