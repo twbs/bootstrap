@@ -3,15 +3,15 @@
 @font-face {
     font-family: 'TransferWise-IconFont';
     src:
-        url('../fonts/TransferWise-IconFont.ttf?pozhlz') format('truetype'),
-        url('../fonts/TransferWise-IconFont.woff?pozhlz') format('woff'),
-        url('../fonts/TransferWise-IconFont.svg?pozhlz#TransferWise-IconFont') format('svg');
+        url('../fonts/TransferWise-IconFont.ttf?eu2k23') format('truetype'),
+        url('../fonts/TransferWise-IconFont.woff?eu2k23') format('woff'),
+        url('../fonts/TransferWise-IconFont.svg?eu2k23#TransferWise-IconFont') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 .icon {
-    /* use !important to prevent issues with browser extensions that change fonts */
+    /* use !important to prevent issues with browser extensions that change ../fonts */
     font-family: 'TransferWise-IconFont' !important;
     speak: none;
     font-style: normal;
@@ -19,7 +19,7 @@
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-
+    
     /* Enable Ligatures ================ */
     letter-spacing: 0;
     -webkit-font-feature-settings: "liga";
@@ -304,3 +304,4 @@
         content: @icon-menu;
     }
 }
+
