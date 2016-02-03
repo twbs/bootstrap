@@ -185,7 +185,7 @@ table {
     margin-bottom: (@line-height-computed * 0.75);
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    border: 1px solid @table-border-color;
+    /*border: 1px solid @table-border-color;*/
 
     // Tighten up spacing
     > .table {
@@ -271,4 +271,131 @@ table {
     > thead > tr > th {
        border-bottom-width: 1px;
    }
+}
+
+@media screen and (max-width: @screen-sm-max) {
+
+	/* Force table to not be like tables anymore */
+	.table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+    .table {
+    	thead, tbody, th, td, tr {
+            display: block;
+        }
+    	/* Hide table headers (but not display: none;, for accessibility) */
+    	thead tr {
+    		position: absolute;
+    		top: -9999px;
+    		left: -9999px;
+    	}
+
+    	tr {
+            border: 1px solid @table-border-color;
+            border-radius: @border-radius-base;
+            margin-bottom: (@padding-base-vertical * 3);
+        }
+        tr:last-child {
+            margin-bottom: 0;
+        }
+
+    	td {
+    		/* Behave  like a "row" */
+    		border: none;
+    		border-top: 1px solid #eee;
+    		position: relative;
+    		padding-left: 50% !important;
+            white-space: nowrap;
+            overflow-x: auto;
+    	}
+        th {
+            border-top: 0 !important;
+        }
+
+    	td:before {
+    		/* Now like a table header */
+    		position: absolute;
+    		width: 45%;
+
+    		/* Top/left values mimic padding */
+            /*
+    		padding-right: 10px;*/
+            top: 0px;
+    		left: 0px;
+    		white-space: nowrap;
+            background-color: @gray-base;
+            padding: @table-cell-padding;
+    	}
+
+    	/*
+    	Label the data
+    	*/
+    	td:nth-of-type(1):before { content: "First Name"; }
+    	td:nth-of-type(2):before { content: "Last Name"; }
+    	td:nth-of-type(3):before { content: "Job Title"; }
+    	td:nth-of-type(4):before { content: "Favorite Color"; }
+    	td:nth-of-type(5):before { content: "City"; }
+    	td:nth-of-type(6):before { content: "Country"; }
+    	td:nth-of-type(7):before { content: "Date of Birth"; }
+
+        &.table-bordered {
+            border: 0 !important;
+            tr {
+                border-top-width: 1px;
+            }
+            td, th {
+                border-left-width: 0px !important;
+                border-right-width: 0px !important;
+                border-bottom-width: 0px !important;
+            }
+        }
+        caption {
+            display: block;
+        }
+
+        &.table-responsive {
+            border: 0 !important;
+        }
+    }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+    /* Display like description list */
+    &.table {
+        tr {
+            padding-top: (@padding-base-vertical * 2);
+            clear: both;
+        }
+        tbody th {
+            border-bottom: 1px solid @table-border-color;
+            margin-bottom: @line-height-computed;
+
+            &:first-child {
+                margin-top: (@padding-base-vertical * -2);
+            }
+        }
+        td {
+            padding: @line-height-computed @table-cell-padding 0 !important;
+            color: @brand-blue-plus-20;
+            margin-bottom: @line-height-computed;
+            border-top: 0 !important;
+            white-space: normal;
+
+            float: left;
+            min-width: 50%;
+        }
+        td:before {
+    		/* Now like a table header */
+    		position: absolute;
+            top: 0px;
+    		left: 0px;
+            width: 100%;
+            font-size: @font-size-small;
+            line-height: @line-height-computed;
+            color: @brand-grey-plus-10;
+            background-color: transparent !important;
+            padding-top: 0;
+    	}
+    }
 }
