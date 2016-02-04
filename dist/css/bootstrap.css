@@ -3,7 +3,7 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css commit fe56763 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -21,7 +21,6 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
 main,
 menu,
 nav,
@@ -188,8 +187,6 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 input[type="search"] {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
   -webkit-appearance: textfield;
 }
 
@@ -230,7 +227,9 @@ th {
 @media print {
   *,
   *::before,
-  *::after {
+  *::after,
+  *::first-letter,
+  *::first-line {
     text-shadow: none !important;
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
@@ -254,9 +253,6 @@ th {
   tr,
   img {
     page-break-inside: avoid;
-  }
-  img {
-    max-width: 100% !important;
   }
   p,
   h2,
@@ -489,8 +485,6 @@ legend {
 }
 
 input[type="search"] {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
   -webkit-appearance: none;
 }
 
@@ -3156,6 +3150,7 @@ input[type="button"].btn-block {
 
 .input-group-addon {
   padding: .375rem .75rem;
+  margin-bottom: 0;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -5090,7 +5085,7 @@ button.close {
   letter-spacing: normal;
   word-break: normal;
   word-spacing: normal;
-  word-wrap: normal;
+  word-wrap: break-word;
   white-space: normal;
   opacity: 0;
 
@@ -5191,7 +5186,7 @@ button.close {
   letter-spacing: normal;
   word-break: normal;
   word-spacing: normal;
-  word-wrap: normal;
+  word-wrap: break-word;
   white-space: normal;
   background-color: #fff;
   -webkit-background-clip: padding-box;
