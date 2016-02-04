@@ -195,7 +195,7 @@ As a heads up, we include this in all of Bootstrap's documentation and examples 
 
 ### Overflow and scrolling
 
-Support for `overflow: hidden;` on the `<body>` element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the `<body>` content will begin to scroll.
+Support for `overflow: hidden;` on the `<body>` element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the `<body>` content will begin to scroll. See [WebKit bug #153852](https://bugs.webkit.org/show_bug.cgi?id=153852).
 
 ### Virtual keyboards
 
