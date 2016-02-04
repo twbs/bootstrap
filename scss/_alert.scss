@@ -7,15 +7,6 @@
   margin-bottom: $spacer-y;
   border: $alert-border-width solid transparent;
   @include border-radius($alert-border-radius);
-
-  // Improve alignment and spacing of inner content
-  > p,
-  > ul {
-    margin-bottom: 0;
-  }
-  > p + p {
-    margin-top: 5px;
-  }
 }
 
 // Headings for larger alerts
