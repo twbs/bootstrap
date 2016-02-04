@@ -16,6 +16,11 @@
   > p + p {
     margin-top: 5px;
   }
+
+  // Empty alerts collapse automatically
+  &:empty {
+    display: none;
+  }
 }
 
 // Headings for larger alerts
