@@ -131,3 +131,13 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 ## Copyright and license
 
 Code and documentation copyright 2011-2016 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+
+
+
+## Developing
+
+1. Run `grunt` once to compile the CSS and JS into `/dist`.
+1. In one tab, run `grunt watch` to continue syncing files as you edit them.
+1. In another tab, `cd` into the `/docs` directory and run `jekyll serve` to serve up the documentation site with style guide.
+1. Go to `localhost:4000` to view the documentation site.
+1. As you update and save files, `grunt watch` will rebuild the assets. When it is done, you can refresh a page on the doc site and you will see the page has been updated with the new styles.

@@ -1,4 +1,200 @@
-// Bootstrap overrides
+// Custom SCSS
 //
-// Copy variables from `_variables.scss` to this file to override default values
-// without modifying source files.
+
+// Buttons
+//
+
+.btn {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  text-transform: uppercase; // Custom
+  letter-spacing: 1px; // Custom
+  border: $input-btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-xs, $line-height, $btn-border-radius);
+  @include transition(all .15s ease-in-out);
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      @include tab-focus();
+    }
+  }
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+  &.focus {
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+    outline: 0;
+    @include box-shadow($btn-active-box-shadow);
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: $cursor-disabled;
+    opacity: .65;
+    @include box-shadow(none);
+  }
+}
+
+// Forms
+//
+
+.form-control {
+  display: block;
+  width: 100%;
+  // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  // height: $input-height;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-base;
+  line-height: $line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
+  background-image: none;
+  border: $input-btn-border-width solid $input-border-color;
+  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  @include border-radius($input-border-radius);
+  @include box-shadow($input-box-shadow);
+  @include transition(all .15s ease-in-out);
+
+  // Make inputs at least the height of their button counterpart (base line-height + padding + border).
+  // Only apply the height to textual inputs and some selects.
+  // &:not(textarea),
+  // &:not(select[size]),
+  // &:not(select[multiple]) {
+  //   height: $input-height;
+  // }
+
+  // Unstyle the caret on `<select>`s in IE10+.
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  @include form-control-focus();
+  @include form-placeholder-fade-focus(); // Custom
+
+  // Placeholder
+  &::placeholder {
+    color: $input-color-placeholder;
+    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
+  }
+
+  // Disabled and read-only inputs
+  //
+  // HTML5 says that controls under a fieldset > legend:first-child won't be
+  // disabled if the fieldset is disabled. Due to implementation difficulty, we
+  // don't honor that edge case; we style them as disabled anyway.
+  &:disabled,
+  &[readonly] {
+    background-color: $input-bg-disabled;
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: $cursor-disabled;
+  }
+}
+.form-inverse-control {
+  display: block;
+  width: 100%;
+  // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  // height: $input-height;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-base;
+  line-height: $line-height;
+  color: $input-color-inverse;
+  background-color: $input-bg-inverse;
+  // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
+  background-image: none;
+  border: $input-btn-border-width solid $input-border-color-inverse;
+  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  @include border-radius($input-border-radius);
+  @include box-shadow($input-box-shadow);
+  @include transition(all .15s ease-in-out);
+
+  // Make inputs at least the height of their button counterpart (base line-height + padding + border).
+  // Only apply the height to textual inputs and some selects.
+  // &:not(textarea),
+  // &:not(select[size]),
+  // &:not(select[multiple]) {
+  //   height: $input-height;
+  // }
+
+  // Unstyle the caret on `<select>`s in IE10+.
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  @include form-inverse-control-focus();
+  @include form-placeholder-fade-focus(); // Custom
+
+  // Placeholder
+  &::placeholder {
+    color: $input-color-placeholder;
+    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
+  }
+
+  // Disabled and read-only inputs
+  //
+  // HTML5 says that controls under a fieldset > legend:first-child won't be
+  // disabled if the fieldset is disabled. Due to implementation difficulty, we
+  // don't honor that edge case; we style them as disabled anyway.
+  &:disabled,
+  &[readonly] {
+    background-color: $input-bg-disabled;
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: $cursor-disabled;
+  }
+}
+
+// For use with horizontal and inline forms, when you need the label text to
+// align with the form controls.
+.form-control-label {
+  padding: $input-padding-y $spacer-x;
+  margin-bottom: 0; // Override the `<label>` default
+  font-size: 12px;
+}
+.form-inverse-control-label {
+  width: 150px;
+  color: $gray-blue-50;
+  text-align: right;
+  padding-right: $spacer-x * 1.5;
+}
+
+
+
+// Type
+//
+
+.lead-out {
+  font-size: $lead-out-font-size;
+  font-weight: $lead-out-font-weight;
+  color: $gray-blue-50;
+}
+a, a:focus {
+  outline: $link-outline;
+}
