@@ -20,6 +20,7 @@ const Modal = (($) => {
   const NAME                         = 'modal'
   const VERSION                      = '4.0.0-alpha.2'
   const DATA_KEY                     = 'bs.modal'
+  const REFCOUNT_KEY                 = `${DATA_KEY}.refcount`
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
   const JQUERY_NO_CONFLICT           = $.fn[NAME]
@@ -85,10 +86,18 @@ const Modal = (($) => {
       this._dialog              = $(element).find(Selector.DIALOG)[0]
       this._backdrop            = null
       this._isShown             = false
+      this._hasRefcountItem     = false
       this._isBodyOverflowing   = false
       this._ignoreBackdropClick = false
-      this._originalBodyPadding = 0
+      this._originalBodyPadding = ''
       this._scrollbarWidth      = 0
+      this._resizeHandler       = null
+      this._focusHandler        = null
+
+      this._showTimeout         = null
+      this._hideTimeout         = null
+      this._backdropShowTimeout = null
+      this._backdropHideTimeout = null
     }
 
 
@@ -122,10 +131,16 @@ const Modal = (($) => {
 
       this._isShown = true
 
-      this._checkScrollbar()
-      this._setScrollbar()
+      if (!this._hasRefcountItem) {
+        this._hasRefcountItem = true
+        let refCount = this._addRefcount(1)
+        if (refCount === 1) {
+          this._checkScrollbar()
+          this._setScrollbar()
 
-      $(document.body).addClass(ClassName.OPEN)
+          $(document.body).addClass(ClassName.OPEN)
+        }
+      }
 
       this._setEscapeEvent()
       this._setResizeEvent()
@@ -147,6 +162,10 @@ const Modal = (($) => {
       this._showBackdrop(
         $.proxy(this._showElement, this, relatedTarget)
       )
+
+      $(this._element).off(Util.TRANSITION_END)
+      clearTimeout(this._hideTimeout)
+
     }
 
     hide(event) {
@@ -166,6 +185,7 @@ const Modal = (($) => {
 
       this._setEscapeEvent()
       this._setResizeEvent()
+      this._setEnforceFocus()
 
       $(document).off(Event.FOCUSIN)
 
@@ -177,35 +197,57 @@ const Modal = (($) => {
       if (Util.supportsTransitionEnd() &&
          ($(this._element).hasClass(ClassName.FADE))) {
 
-        $(this._element)
-          .one(Util.TRANSITION_END, $.proxy(this._hideModal, this))
+        clearTimeout(this._hideTimeout)
+        this._hideTimeout = $(this._element)
+          .off(Util.TRANSITION_END).one(Util.TRANSITION_END, $.proxy(this._hideModal, this))
           .emulateTransitionEnd(TRANSITION_DURATION)
+
       } else {
         this._hideModal()
       }
     }
 
     dispose() {
-      $.removeData(this._element, DATA_KEY)
+      this._element.style.display = 'none'
 
-      $(window).off(EVENT_KEY)
-      $(document).off(EVENT_KEY)
-      $(this._element).off(EVENT_KEY)
+      let refs = this._addRefcount(this._hasRefcountItem ? -1 : 0)
+      if (refs === 0) {
+        $(document.body).removeClass(ClassName.OPEN)
+        this._resetAdjustments()
+        this._resetScrollbar()
+      }
+      this._removeBackdrop()
+
+      this._isShown = false
+      this._setEscapeEvent()
+      this._setResizeEvent()
+      this._setEnforceFocus()
+      $(this._dialog).off(EVENT_KEY)
       $(this._backdrop).off(EVENT_KEY)
+      $(this._element).off(EVENT_KEY).removeClass(ClassName.IN).removeData(DATA_KEY)
 
-      this._config              = null
-      this._element             = null
-      this._dialog              = null
-      this._backdrop            = null
-      this._isShown             = null
-      this._isBodyOverflowing   = null
-      this._ignoreBackdropClick = null
-      this._originalBodyPadding = null
-      this._scrollbarWidth      = null
+      clearTimeout(this._showTimeout)
+      clearTimeout(this._hideTimeout)
+      clearTimeout(this._backdropShowTimeout)
+      clearTimeout(this._backdropHideTimeout)
+
+      this._element = null
+      this._backdrop = null
+      this._dialog = null
+
     }
 
 
     // private
+
+    _addRefcount(increment) {
+      let refCount = (Number($(document.body).data(REFCOUNT_KEY)) || 0) + increment
+      $(document.body).data(REFCOUNT_KEY, refCount)
+      if (refCount === 0) {
+        $(document.body).removeData(REFCOUNT_KEY)
+      }
+      return refCount
+    }
 
     _getConfig(config) {
       config = $.extend({}, Default, config)
@@ -233,9 +275,7 @@ const Modal = (($) => {
 
       $(this._element).addClass(ClassName.IN)
 
-      if (this._config.focus) {
-        this._enforceFocus()
-      }
+      this._setEnforceFocus()
 
       let shownEvent = $.Event(Event.SHOWN, {
         relatedTarget
@@ -249,24 +289,32 @@ const Modal = (($) => {
       }
 
       if (transition) {
-        $(this._dialog)
-          .one(Util.TRANSITION_END, transitionComplete)
+
+        clearTimeout(this._showTimeout)
+        this._showTimeout = $(this._dialog)
+          .off(Util.TRANSITION_END).one(Util.TRANSITION_END, transitionComplete)
           .emulateTransitionEnd(TRANSITION_DURATION)
+
       } else {
         transitionComplete()
       }
     }
 
-    _enforceFocus() {
-      $(document)
-        .off(Event.FOCUSIN) // guard against infinite focus loop
-        .on(Event.FOCUSIN, (event) => {
+    _setEnforceFocus() {
+      if (this._focusHandler) {
+        $(document).off(Event.FOCUSIN, this._focusHandler)
+      }
+      if (this._isShown && this._config.focus) {
+        this._focusHandler = (event) => {
           if (document !== event.target &&
               this._element !== event.target &&
               (!$(this._element).has(event.target).length)) {
             this._element.focus()
           }
-        })
+        }
+        $(document).off(Event.FOCUSIN) // guard against infinite focus loop
+          .on(Event.FOCUSIN, this._focusHandler)
+      }
     }
 
     _setEscapeEvent() {
@@ -283,10 +331,11 @@ const Modal = (($) => {
     }
 
     _setResizeEvent() {
+      if (this._resizeHandler) {
+        $(window).off(Event.RESIZE, this._resizeHandler)
+      }
       if (this._isShown) {
-        $(window).on(Event.RESIZE, $.proxy(this._handleUpdate, this))
-      } else {
-        $(window).off(Event.RESIZE)
+        $(window).on(Event.RESIZE, this._resizeHandler = $.proxy(this._handleUpdate, this))
       }
     }
 
@@ -294,10 +343,16 @@ const Modal = (($) => {
       this._element.style.display = 'none'
       this._element.setAttribute('aria-hidden', 'true')
       this._showBackdrop(() => {
-        $(document.body).removeClass(ClassName.OPEN)
-        this._resetAdjustments()
-        this._resetScrollbar()
-        $(this._element).trigger(Event.HIDDEN)
+        if (this._hasRefcountItem) {
+          let refCount = this._addRefcount(-1)
+          this._hasRefcountItem = false
+          if (refCount === 0) {
+            $(document.body).removeClass(ClassName.OPEN)
+            this._resetAdjustments()
+            this._resetScrollbar()
+          }
+          $(this._element).trigger(Event.HIDDEN)
+        }
       })
     }
 
@@ -309,10 +364,15 @@ const Modal = (($) => {
     }
 
     _showBackdrop(callback) {
+
       let animate = $(this._element).hasClass(ClassName.FADE) ?
         ClassName.FADE : ''
 
       if (this._isShown && this._config.backdrop) {
+        if (this._backdrop) {
+          this._removeBackdrop()
+        }
+
         let doAnimate = Util.supportsTransitionEnd() && animate
 
         this._backdrop = document.createElement('div')
@@ -354,11 +414,14 @@ const Modal = (($) => {
           return
         }
 
-        $(this._backdrop)
-          .one(Util.TRANSITION_END, callback)
+        clearTimeout(this._backdropShowTimeout)
+        clearTimeout(this._backdropHideTimeout)
+        this._backdropHideTimeout = $(this._backdrop)
+          .off(Util.TRANSITION_END).one(Util.TRANSITION_END, callback)
           .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
 
       } else if (!this._isShown && this._backdrop) {
+
         $(this._backdrop).removeClass(ClassName.IN)
 
         let callbackRemove = () => {
@@ -370,8 +433,11 @@ const Modal = (($) => {
 
         if (Util.supportsTransitionEnd() &&
            ($(this._element).hasClass(ClassName.FADE))) {
-          $(this._backdrop)
-            .one(Util.TRANSITION_END, callbackRemove)
+
+          clearTimeout(this._backdropShowTimeout)
+          clearTimeout(this._backdropHideTimeout)
+          this._backdropShowTimeout = $(this._backdrop)
+            .off(Util.TRANSITION_END).one(Util.TRANSITION_END, callbackRemove)
             .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
         } else {
           callbackRemove()

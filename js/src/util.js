@@ -70,13 +70,11 @@ const Util = (($) => {
       called = true
     })
 
-    setTimeout(() => {
+    return setTimeout(() => {
       if (!called) {
         Util.triggerTransitionEnd(this)
       }
     }, duration)
-
-    return this
   }
 
   function setTransitionEndSupport() {
