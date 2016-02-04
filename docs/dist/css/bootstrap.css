@@ -3767,8 +3767,9 @@ input[type="button"].btn-block {
   display: block;
   margin-bottom: .75rem;
   background-color: #fff;
-  border: 1px solid #e5e5e5;
   border-radius: .25rem;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .125);
 }
 
 .card-block {
@@ -3813,7 +3814,8 @@ input[type="button"].btn-block {
 .card-header {
   padding: .75rem 1.25rem;
   background-color: #f5f5f5;
-  border-bottom: 1px solid #e5e5e5;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .125);
 }
 
 .card-header::after {
@@ -3829,7 +3831,8 @@ input[type="button"].btn-block {
 .card-footer {
   padding: .75rem 1.25rem;
   background-color: #f5f5f5;
-  border-top: 1px solid #e5e5e5;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .125);
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .125);
 }
 
 .card-footer::after {
@@ -3840,6 +3843,22 @@ input[type="button"].btn-block {
 
 .card-footer:last-child {
   border-radius: 0 0 .25rem .25rem;
+}
+
+.card-header-tabs {
+  margin-right: -.625rem;
+  margin-bottom: -.75rem;
+  margin-left: -.625rem;
+  border-bottom: 0;
+}
+
+.card-header-tabs .nav-item {
+  margin-bottom: 0;
+}
+
+.card-header-pills {
+  margin-right: -.625rem;
+  margin-left: -.625rem;
 }
 
 .card-primary {
@@ -4633,16 +4652,7 @@ base::-moz-progress-bar,
 }
 
 .list-group-flush .list-group-item {
-  border-width: 1px 0;
   border-radius: 0;
-}
-
-.list-group-flush:first-child .list-group-item:first-child {
-  border-top: 0;
-}
-
-.list-group-flush:last-child .list-group-item:last-child {
-  border-bottom: 0;
 }
 
 a.list-group-item,
