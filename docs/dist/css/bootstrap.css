@@ -4257,15 +4257,6 @@ a.label:focus, a.label:hover {
   border-radius: .25rem;
 }
 
-.alert > p,
-.alert > ul {
-  margin-bottom: 0;
-}
-
-.alert > p + p {
-  margin-top: 5px;
-}
-
 .alert-heading {
   color: inherit;
 }
