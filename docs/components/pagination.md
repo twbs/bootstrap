@@ -52,14 +52,14 @@ The `.disabled` class uses `pointer-events: none` to try to disable the link fun
 {% example html %}
 <nav>
   <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
+    <li class="page-item">
+      <a class="page-link disabled" href="#" tabindex="-1" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
-    <li class="page-item active">
-      <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+    <li class="page-item">
+      <a class="page-link active" href="#">1 <span class="sr-only">(current)</span></a>
     </li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
@@ -75,18 +75,38 @@ The `.disabled` class uses `pointer-events: none` to try to disable the link fun
 </nav>
 {% endexample %}
 
+Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element.
+
+{% example html %}
+<nav>
+  <a class="page-link disabled" href="#" aria-label="Previous">
+    <span aria-hidden="true">&laquo;</span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="page-link active" href="#">1 <span class="sr-only">(current)</span></a>
+  <a class="page-link" href="#">2</a></li>
+  <a class="page-link" href="#">3</a></li>
+  <a class="page-link" href="#">4</a></li>
+  <a class="page-link" href="#">5</a></li>
+  <a class="page-link" href="#" aria-label="Next">
+    <span aria-hidden="true">&raquo;</span>
+    <span class="sr-only">Next</span>
+  </a>
+</nav>
+{% endexample %}
+
 You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality and prevent keyboard focus while retaining intended styles.
 
 {% example html %}
 <nav>
   <ul class="pagination">
-    <li class="page-item disabled">
-      <span class="page-link" aria-label="Previous">
+    <li class="page-item">
+      <span class="page-link disabled" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </span>
     </li>
-    <li class="page-item active"><span class="page-link">1 <span class="sr-only">(current)</span></span></li>
+    <li class="page-item"><span class="page-link active">1 <span class="sr-only">(current)</span></span></li>
   </ul>
 </nav>
 {% endexample %}
