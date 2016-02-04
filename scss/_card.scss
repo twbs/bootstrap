@@ -117,17 +117,6 @@
   margin-left: -($card-spacer-x / 2);
 }
 
-.card-nav {
-
-  .nav-item {
-    float: left;
-
-    + .nav-item {
-      margin-left: $nav-item-margin;
-    }
-  }
-
-}
 
 //
 // Background variations

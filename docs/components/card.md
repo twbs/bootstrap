@@ -211,42 +211,9 @@ Add an optional header and/or footer within a card.
 </div>
 {% endexample %}
 
-## Heading nav
+## Header nav
 
-- Custom card nav (full width)
-- Tabs
-- Pills
-- Alignment:
-  - left
-  - center
-  - right
-
-{% example html %}
-<div class="card text-xs-center">
-  <div class="card-header">
-    <ul class="nav card-nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-block">
-    <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-{% endexample %}
-
-
-
-Or, use Bootstrap's nav pills or tabs to a card header. Be sure to always include a `.pull-*-*` utility class for proper alignment.
+Use Bootstrap's nav pills or tabs within a card header. Be sure to always include a `.pull-*-*` utility class for proper alignment.
 
 {% example html %}
 <div class="card text-xs-center">
