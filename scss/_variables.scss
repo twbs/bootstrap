@@ -140,7 +140,7 @@ $grid-gutter-width: 1.875rem !default; // 30px
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base:       $font-family-sans-serif !default;
+$font-family-base: $font-family-sans-serif !default;
 
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
 $font-size-root: 16px !default;
@@ -149,6 +149,8 @@ $font-size-base: 1rem !default;
 $font-size-lg:   1.25rem !default;
 $font-size-sm:   .875rem !default;
 $font-size-xs:   .75rem !default;
+
+$line-height-base: 1.5 !default;
 
 $font-size-h1: 2.5rem !default;
 $font-size-h2: 2rem !default;
@@ -166,8 +168,6 @@ $display1-weight: 300 !default;
 $display2-weight: 300 !default;
 $display3-weight: 300 !default;
 $display4-weight: 300 !default;
-
-$line-height: 1.5 !default;
 
 $headings-margin-bottom: ($spacer / 2) !default;
 $headings-font-family:   inherit !default;
@@ -314,7 +314,7 @@ $input-padding-y-sm:             .275rem !default;
 $input-padding-x-lg:             1.25rem !default;
 $input-padding-y-lg:             .75rem !default;
 
-$input-height:                   (($font-size-base * $line-height) + ($input-padding-y * 2)) !default;
+$input-height:                   (($font-size-base * $line-height-base) + ($input-padding-y * 2)) !default;
 $input-height-lg:                (($font-size-lg * $line-height-lg) + ($input-padding-y-lg * 2)) !default;
 $input-height-sm:                (($font-size-sm * $line-height-sm) + ($input-padding-y-sm * 2)) !default;
 
@@ -604,7 +604,7 @@ $label-font-weight:           bold !default;
 $modal-inner-padding:         15px !default;
 
 $modal-title-padding:         15px !default;
-$modal-title-line-height:     $line-height !default;
+$modal-title-line-height:     $line-height-base !default;
 
 $modal-content-bg:               #fff !default;
 $modal-content-border-color:     rgba(0,0,0,.2) !default;
