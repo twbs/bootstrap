@@ -630,7 +630,6 @@ mark,
 .blockquote-footer {
   display: block;
   font-size: 80%;
-  line-height: 1.5;
   color: #818a91;
 }
 
@@ -670,7 +669,6 @@ mark,
   max-width: 100%;
   height: auto;
   padding: .25rem;
-  line-height: 1.5;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: .25rem;
@@ -731,7 +729,6 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 90%;
-  line-height: 1.5;
   color: #373a3c;
 }
 
@@ -1649,7 +1646,6 @@ pre code {
 .table th,
 .table td {
   padding: .75rem;
-  line-height: 1.5;
   vertical-align: top;
   border-top: 1px solid #eceeef;
 }
@@ -1845,7 +1841,6 @@ pre code {
   width: 100%;
   padding: .375rem .75rem;
   font-size: 1rem;
-  line-height: 1.5;
   color: #55595c;
   background-color: #fff;
   background-image: none;
@@ -2206,7 +2201,6 @@ input[type="checkbox"].disabled {
   padding: .375rem 1rem;
   font-size: 1rem;
   font-weight: normal;
-  line-height: 1.5;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -2718,14 +2712,12 @@ fieldset[disabled] a.btn {
 .btn-lg, .btn-group-lg > .btn {
   padding: .75rem 1.25rem;
   font-size: 1.25rem;
-  line-height: 1.333333;
   border-radius: .3rem;
 }
 
 .btn-sm, .btn-group-sm > .btn {
   padding: .25rem .75rem;
   font-size: .875rem;
-  line-height: 1.5;
   border-radius: .2rem;
 }
 
@@ -2839,7 +2831,6 @@ input[type="button"].btn-block {
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
-  line-height: 1.5;
   color: #373a3c;
   text-align: inherit;
   white-space: nowrap;
@@ -2892,9 +2883,8 @@ input[type="button"].btn-block {
 
 .dropdown-header {
   display: block;
-  padding: 3px 20px;
+  padding: 5px 20px;
   font-size: .875rem;
-  line-height: 1.5;
   color: #818a91;
   white-space: nowrap;
 }
@@ -4113,7 +4103,6 @@ input[type="button"].btn-block {
   float: left;
   padding: .5rem .75rem;
   margin-left: -1px;
-  line-height: 1.5;
   color: #0275d8;
   text-decoration: none;
   background-color: #fff;
@@ -4129,7 +4118,6 @@ input[type="button"].btn-block {
 .pagination-lg .page-link {
   padding: .75rem 1.5rem;
   font-size: 1.25rem;
-  line-height: 1.333333;
 }
 
 .pagination-lg .page-item:first-child .page-link {
@@ -4145,7 +4133,6 @@ input[type="button"].btn-block {
 .pagination-sm .page-link {
   padding: .275rem .75rem;
   font-size: .875rem;
-  line-height: 1.5;
 }
 
 .pagination-sm .page-item:first-child .page-link {
