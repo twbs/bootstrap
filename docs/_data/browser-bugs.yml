@@ -342,6 +342,16 @@
 
 -
   browser: >
+    Safari (iOS)
+  summary: >
+    `<body>` with `overflow:hidden` CSS is scrollable on iOS
+  upstream_bug: >
+    WebKit#153852
+  origin: >
+    Bootstrap#14839
+
+-
+  browser: >
     Safari (iPad Pro)
   summary: >
     Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation
