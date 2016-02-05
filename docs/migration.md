@@ -107,10 +107,6 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Dropped the `.navbar-form` class entirely. It's no longer necessary.
 
-### Pager
-
-- Renamed `.previous` and `.next` to `.pager-prev` and `.pager-next`.
-
 ### Pagination
 
 - Explicit classes (`.page-item`, `.page-link`) are now required on the descendants of `.pagination`s
