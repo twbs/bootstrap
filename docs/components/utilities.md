@@ -62,6 +62,20 @@ Here are some representative examples of these classes:
 
 Additionally, Bootstrap also includes an `.m-x-auto` class which sets the horizontal margins to `auto`.
 
+## Borders
+Like margins and padding, borders can easily be removed from an element using the same format:
+
+b-{sides}-0
+
+Where *sides* is one of:
+
+* `t` - for removing `border-top` 
+* `b` - for removing `border-bottom`
+* `l` - for removing `border-left`
+* `r` - for removing `border-right`
+* `x` - for removing both `border-left` and `border-right`
+* `y` - for removing both `border-top` and `border-bottom`
+* `a` - for removing all borders 
 
 ## Text alignment
 
