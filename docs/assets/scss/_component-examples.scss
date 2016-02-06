@@ -15,7 +15,9 @@
     }
   }
 
-  [class*="flex-items-"] {
+  .flex-items-xs-top,
+  .flex-items-xs-middle,
+  .flex-items-xs-bottom {
     min-height: 6rem;
     background-color: rgba(255,0,0,.1);
   }
