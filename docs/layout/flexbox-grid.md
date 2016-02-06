@@ -88,7 +88,7 @@ Use the flexbox alignment utilities to vertically align columns.
       One of three columns
     </div>
   </div>
-  <div class="row flex-items-xs-center">
+  <div class="row flex-items-xs-middle">
     <div class="col">
       One of three columns
     </div>
@@ -121,11 +121,62 @@ Use the flexbox alignment utilities to vertically align columns.
     <div class="col flex-xs-top">
       One of three columns
     </div>
-    <div class="col flex-xs-center">
+    <div class="col flex-xs-middle">
       One of three columns
     </div>
     <div class="col flex-xs-bottom">
       One of three columns
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+## Horizontal alignment
+
+Flexbox utilities for horizontal alignment also exist for a number of layout options.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row flex-items-xs-left">
+    <div class="col col-xs-4">
+      One of two columns
+    </div>
+    <div class="col col-xs-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-items-xs-center">
+    <div class="col col-xs-4">
+      One of two columns
+    </div>
+    <div class="col col-xs-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-items-xs-right">
+    <div class="col col-xs-4">
+      One of two columns
+    </div>
+    <div class="col col-xs-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-items-xs-around">
+    <div class="col col-xs-4">
+      One of two columns
+    </div>
+    <div class="col col-xs-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-items-xs-between">
+    <div class="col col-xs-4">
+      One of two columns
+    </div>
+    <div class="col col-xs-4">
+      One of two columns
     </div>
   </div>
 </div>
