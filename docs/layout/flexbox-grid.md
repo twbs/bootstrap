@@ -23,37 +23,36 @@ The flexbox grid system behaves similar to our default grid system, but with a f
 
 - [Grid mixins](/layout/grid#sass-mixins) and [predefined classes](/layout/grid#predefined-classes) include support for flexbox. Just [enable flexbox support](/getting-started/flexbox) to utilize them as you would otherwise.
 - Nesting, offsets, pushes, and pulls are all supported in the flexbox grid system.
-- Flexbox grid columns without a set width will automatically layout with even widths. For example, four columns will each automatically be 25% wide.
+- Flexbox grid columns without a set width will automatically layout with equal widths. For example, four columns will each automatically be 25% wide.
 - Flexbox grid columns have significantly more alignment options available, including vertical alignment.
+- Unlike the default grid system where a grid column starts as full-width in the `xs` tier, flexbox requires a `.col-{breakpoint}` class for each tier.
 
 Chill? Awesome—keep reading for more information and some code snippets.
 
 ## Auto-layout columns
 
-As mentioned above, flexbox grid columns will automatically layout with even widths. Add any number of `.col-*`s for each breakpoint you need and you're good to go.
+When flexbox support is enabled, you can utilize breakpoint-specific column classes for equal-width columns. Add any number of `.col-{breakpoint}`s for each breakpoint you need and you're good to go. For example, here's are two grid layouts that apply to every device and viewport possible.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
   <div class="row">
     <div class="col-xs">
-      One of two columns
+      1 of 2
     </div>
     <div class="col-xs">
-      One of two columns
+      1 of 2
     </div>
   </div>
-</div>
-<div class="container">
   <div class="row">
     <div class="col-xs">
-      One of three columns
+      1 of 3
     </div>
     <div class="col-xs">
-      One of three columns
+      1 of 3
     </div>
     <div class="col-xs">
-      One of three columns
+      1 of 3
     </div>
   </div>
 </div>
@@ -67,13 +66,32 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
 <div class="container">
   <div class="row">
     <div class="col-xs">
-      One of three columns
+      1 of 3
     </div>
     <div class="col-xs-6">
-      One of three columns
+      2 of 3 (wider)
     </div>
     <div class="col-xs">
-      One of three columns
+      3 of 3
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+## Responsive flexbox
+
+Unlike the default grid system, the flexbox grid requires a class for full-width columns. If you have a `.col-sm-6` and don't add `.col-xs-12`, your `xs` grid will not render correctly. Note that flexbox grid tiers still scale up across breakpoints, so if you want two 50% wide columns across `sm`, `md`, and `lg`, you only need to set `.col-sm-6`.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      1 of 2 (stacked on mobile)
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      1 of 2 (stacked on mobile)
     </div>
   </div>
 </div>

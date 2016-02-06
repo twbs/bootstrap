@@ -8,26 +8,21 @@
   @each $breakpoint in map-keys($breakpoints) {
     $breakpoint-counter: ($breakpoint-counter + 1);
     @include media-breakpoint-up($breakpoint, $breakpoints) {
-      // Work around cross-media @extend (https://github.com/sass/sass/issues/1050)
-      // %grid-column-float-#{$breakpoint} {
-      //   float: left;
-      // }
       @if $enable-flex {
         .col-#{$breakpoint} {
-          @include make-col($gutter);
+          @extend column-basics; // Relative position, min-height, and horizontal padding
           flex-basis: 0;
           flex-grow: 1;
           max-width: 100%;
         }
       }
+
       @for $i from 1 through $columns {
         .col-#{$breakpoint}-#{$i} {
-          // @if not $enable-flex {
-          //   @extend %grid-column-float-#{$breakpoint};
-          // }
-          @include make-col-span($i, $columns);
+          @include make-col($i, $columns);
         }
       }
+
       @each $modifier in (pull, push) {
         @for $i from 0 through $columns {
           .#{$modifier}-#{$breakpoint}-#{$i} {
@@ -35,6 +30,7 @@
           }
         }
       }
+      
       // `$columns - 1` because offsetting by the width of an entire row isn't possible
       @for $i from 0 through ($columns - 1) {
         @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .col-xs-offset-0
