@@ -136,6 +136,10 @@ Styling for common inline HTML5 elements.
 
 While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
 
+## Text utilities
+
+Change text alignment, transform, style, weight, and color with our [text utilities](http://localhost:9001/components/utilities/#text-alignment).
+
 ## Abbreviations
 
 Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a `title` attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover and to users of assistive technologies.
