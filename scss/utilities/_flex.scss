@@ -11,9 +11,9 @@
 
   // Alignment for every column in row
   @include media-breakpoint-up($breakpoint) {
-    .flex-all-#{$breakpoint}-top    { align-items: flex-start; }
-    .flex-all-#{$breakpoint}-center { align-items: center; }
-    .flex-all-#{$breakpoint}-bottom { align-items: flex-end; }
+    .flex-items-#{$breakpoint}-top    { align-items: flex-start; }
+    .flex-items-#{$breakpoint}-center { align-items: center; }
+    .flex-items-#{$breakpoint}-bottom { align-items: flex-end; }
   }
 
   // Alignment per column
