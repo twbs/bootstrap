@@ -35,7 +35,9 @@
 
 @mixin make-col($gutter: $grid-gutter-width) {
   position: relative;
-  @if not $enable-flex {
+  @if $enable-flex {
+    flex: 1;
+  } @else {
     float: left;
   }
   min-height: 1px;
