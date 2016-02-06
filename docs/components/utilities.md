@@ -193,10 +193,11 @@ Two similar non-responsive mixins (`pull-left` and `pull-right`) are also availa
 
 ## Center content
 
-Set an element to `display: block;` and center via `margin`. Available as a mixin and class.
+Set an element to `display: block;` and center via `margin`. Available as a mixin and class. Elements other than buttons or form elements should get a fixed width. You can set this fixed width `width` or `max-width`.
 
 {% example html %}
-<div class="center-block">Centered block</div>
+<div class="center-block" style="max-width:200px;">Centered block</div>
+<button class="center-block">Centered button</button>
 {% endexample %}
 
 {% highlight scss %}
