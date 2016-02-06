@@ -452,3 +452,25 @@ Easily change the order of our built-in grid columns with `.col-md-push-*` and `
 </div>
 {% endexample %}
 </div>
+
+## Customizing the grid
+
+Using our built-in grid Sass variables and maps, it's possible to completely customize the predefined grid classes. Change the number of tiers, the media query dimensions, and the container widths—then recompile.
+
+For example, if you wanted just three grid tiers, you'd update the `$grid-breakpoints` and `$container-max-widths` to something like this:
+
+{% highlight scss %}
+$grid-breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px
+);
+
+$container-max-widths: (
+  sm: 420px,
+  md: 720px,
+  lg: 940px
+) !default;
+{% endhighlight %}
+
+Save your changes and recompile to have a brand new set of predefined grid classes for column widths, offsets, pushes, and pulls. Responsive visibility utilities will also be updated to use the custom breakpoints.
