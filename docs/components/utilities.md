@@ -62,6 +62,8 @@ Here are some representative examples of these classes:
 
 Additionally, Bootstrap also includes an `.m-x-auto` class which sets the horizontal margins to `auto`.
 
+You can add more sizes by extending the `$spacers` array in your bootstrap variables file.
+
 
 ## Text alignment
 
