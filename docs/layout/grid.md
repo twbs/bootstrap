@@ -135,9 +135,12 @@ When using Bootstrap's source Sass files, you have the option of using Sass vari
 
 ### Variables
 
-Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
+Variables and maps determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
 
 {% highlight scss %}
+$grid-columns:      12;
+$grid-gutter-width: 15px;
+
 $grid-breakpoints: (
   // Extra small screen / phone
   xs: 0,
@@ -151,9 +154,12 @@ $grid-breakpoints: (
   xl: 1200px
 );
 
-
-$grid-columns:      12;
-$grid-gutter-width: 1.875rem;
+$container-max-widths: (
+  sm: 576px,
+  md: 720px,
+  lg: 940px,
+  xl: 1140px
+) !default;
 {% endhighlight %}
 
 ### Mixins
