@@ -7,7 +7,6 @@ body {
   padding-top: 50px;
 }
 
-
 /*
  * Global add-ons
  */
@@ -33,39 +32,77 @@ body {
 .sidebar {
   display: none;
 }
-@media (min-width: 768px) {
+
+@media (min-width: 544px) {
+  /* fixes for https://github.com/twbs/bootstrap/pull/17756 */
   .sidebar {
+    display: block;
+    max-width: calc(100% * (3/12));
+  }
+  .main {
+    max-width: calc(100% * (9/12));
+  }
+
+  .nav-sidebar {
     position: fixed;
     top: 51px;
     bottom: 0;
     left: 0;
     z-index: 1000;
-    display: block;
-    padding: 20px;
+    /* width: inherit; */
+    width: calc(100% * (3/12)); /* see http://stackoverflow.com/questions/34344623/fixed-position-element-inheriting-width-of-flex-item */
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #f5f5f5;
     border-right: 1px solid #eee;
   }
 }
-
-/* Sidebar navigation */
-.nav-sidebar {
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
+@media (min-width: 768px) {
+  /* fixes for https://github.com/twbs/bootstrap/pull/17756 */
+  .sidebar {
+    max-width: calc(100% * (2/12));
+  }
+  .main {
+    max-width: calc(100% * (10/12));
+  }
+  .nav-sidebar {
+    width: calc(100% * (2/12)); /* see http://stackoverflow.com/questions/34344623/fixed-position-element-inheriting-width-of-flex-item */
+  }
 }
-.nav-sidebar > li > a {
-  padding-right: 20px;
+
+/* Main navigation */
+
+#navbar .nav {
   padding-left: 20px;
 }
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
+
+/* Sidebar navigation */
+.nav-sidebar .nav {
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.nav-pills .nav-link {
+  margin-right: -20px;
+  margin-left: -20px;
+  border-radius: 0;
+}
+.nav-pills .nav-link:hover,
+.nav-pills .nav-link:focus {
+  background-color: #eee;
+}
+
+.nav-link.active,
+.nav-link.active:hover,
+.nav-link.active:focus {
   color: #fff;
   background-color: #428bca;
 }
 
+.nav-stacked .nav-item + .nav-item {
+  margin: 0;
+}
 
 /*
  * Main content
@@ -84,11 +121,9 @@ body {
   margin-top: 0;
 }
 
-
 /*
  * Placeholder dashboard ideas
  */
-
 .placeholders {
   margin-bottom: 30px;
   text-align: center;
@@ -103,3 +138,19 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+/* fixes for https://github.com/twbs/bootstrap/pull/17756 */
+@media (max-width: 543px) {
+  .col-sm-9 {
+    max-width: 100%;
+  }
+}
+.col-xs-6.placeholder {
+  max-width: 50%;
+}
+@media (min-width: 544px) {
+  .col-sm-3.placeholder {
+    max-width: 25%;
+  }
+}
+
