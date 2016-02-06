@@ -154,8 +154,8 @@ Dropped entirely for the new card component.
 
 ### Utilities
 
-- Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats.
-- Removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`.
+- Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`.
+- Added responsive variations to our text alignment classes `.text-{xs,sm,md,lg,xl}-{left,center,right}` and removed the redundant `.text-{left,center,right}` utilities as they are the same as the `xs` variation.
 - Dropped `.center-block` for the new `.m-x-auto` class.
 
 ### Vendor prefix mixins

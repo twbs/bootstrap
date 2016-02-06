@@ -22,7 +22,6 @@ Bootstrap sets basic global display, typography, and link styles. Specifically, 
 
 These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`.
 
-
 ## Headings
 
 All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.
@@ -136,6 +135,10 @@ Styling for common inline HTML5 elements.
 `.mark` and `.small` classes are also available to apply the same styles as `<mark>` and `<small>` while avoiding any unwanted semantic implications that the tags would bring.
 
 While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
+
+## Text utilities
+
+Change text alignment, transform, style, weight, and color with our [text utilities](http://localhost:9001/components/utilities/#text-alignment).
 
 ## Abbreviations
 
