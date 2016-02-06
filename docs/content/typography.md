@@ -15,9 +15,10 @@ Bootstrap includes simple and easily customized typography for headings, body te
 
 Bootstrap sets basic global display, typography, and link styles. Specifically, we:
 
-- Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default)
-- Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base
-- Set the global link color via `$link-color` and apply link underlines only on `:hover`
+- Use a [native font stack](/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
+- Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
+- Set the global link color via `$link-color` and apply link underlines only on `:hover`.
+- Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
 These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`.
 
