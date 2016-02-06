@@ -5,14 +5,13 @@
 
 .navbar {
   position: relative;
-  padding: $navbar-padding-y $navbar-padding-x;
+  padding: 0 $navbar-padding-x;
   @include clearfix;
 
   @include media-breakpoint-up(sm) {
     @include border-radius($navbar-border-radius);
   }
 }
-
 
 // Navbar alignment options
 //
@@ -62,17 +61,15 @@
   }
 }
 
-
 //
 // Brand/project name
 //
 
 .navbar-brand {
   float: left;
-  padding-top:    .25rem;
-  padding-bottom: .25rem;
   margin-right: 1rem;
   font-size: $font-size-lg;
+  line-height: $navbar-height;
 
   @include hover-focus {
     text-decoration: none;
@@ -83,14 +80,13 @@
   }
 }
 
-
 .navbar-divider {
   float: left;
   width: 1px;
   padding-top: .425rem;
   padding-bottom: .425rem;
   margin-right: $navbar-padding-x;
-  margin-left:  $navbar-padding-x;
+  margin-left: $navbar-padding-x;
   overflow: hidden;
 
   &::before {
@@ -98,13 +94,13 @@
   }
 }
 
-
 // Navbar toggle
 //
 // Custom button for toggling the `.navbar-collapse`, powered by the collapse
 // Bootstrap JavaScript plugin.
 
 .navbar-toggler {
+  @include pull-right();
   padding: .5rem .75rem;
   font-size: $font-size-lg;
   line-height: 1;
@@ -117,47 +113,34 @@
   }
 }
 
-// Custom override for
-.navbar-toggleable {
-  &-xs {
-    @include media-breakpoint-up(sm) {
-      display: block !important;
-    }
-  }
-  &-sm {
-    @include media-breakpoint-up(md) {
-      display: block !important;
-    }
-  }
-  &-md {
-    @include media-breakpoint-up(lg) {
-      display: block !important;
-    }
+@each $name in map-keys($grid-breakpoints) {
+  @if (breakpoint-next($name)) {
+    @include navbar-toggleable($name, breakpoint-next($name))
   }
 }
-
 
 // Navigation
 //
 // Custom navbar navigation built on the base `.nav` styles.
 
 .navbar-nav {
+  float: left;
   .nav-item {
+    position: relative;
     float: left;
   }
 
   .nav-link {
     display: block;
-    padding-top:    .425rem;
-    padding-bottom: .425rem;
+    line-height: $navbar-height;
 
     + .nav-link {
-      margin-left: 1rem;
+      margin-left: $spacer;
     }
   }
 
   .nav-item + .nav-item {
-    margin-left: 1rem;
+    margin-left: $spacer;
   }
 }
 
@@ -191,7 +174,7 @@
   }
 
   .navbar-divider {
-    background-color: rgba(0,0,0,.075);
+    background-color: rgba(0, 0, 0, .075);
   }
 }
 
@@ -225,6 +208,6 @@
   }
 
   .navbar-divider {
-    background-color: rgba(255,255,255,.075);
+    background-color: rgba(255, 255, 255, .075);
   }
 }
