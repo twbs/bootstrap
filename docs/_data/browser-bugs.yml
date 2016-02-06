@@ -352,6 +352,16 @@
 
 -
   browser: >
+    Safari (iOS)
+  summary: >
+    Scroll gesture in text field in `position:fixed` element sometimes scrolls `<body>` instead of scrollable ancestor
+  upstream_bug: >
+    WebKit#153856
+  origin: >
+    Bootstrap#14839
+
+-
+  browser: >
     Safari (iPad Pro)
   summary: >
     Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation
