@@ -35,17 +35,25 @@
 
 @mixin make-col($gutter: $grid-gutter-width) {
   position: relative;
-  @if $enable-flex {
-    flex: 1;
-  } @else {
-    float: left;
-  }
+  // @if $enable-flex {
+  //   flex: 1;
+  // } @else {
+  //   float: left;
+  // }
   min-height: 1px;
   padding-left:  ($gutter / 2);
   padding-right: ($gutter / 2);
 }
 
 @mixin make-col-span($size, $columns: $grid-columns) {
+  position: relative;
+  @if $enable-flex {
+    flex: 0 0 auto;
+  }
+  min-height: 1px;
+  padding-left:  ($grid-gutter-width / 2);
+  padding-right: ($grid-gutter-width / 2);
+
   @if $enable-flex {
     flex: 0 0 percentage($size / $columns);
     // Add a `max-width` to ensure content within each column does not blow out
@@ -53,6 +61,7 @@
     // do not appear to require this.
     max-width: percentage($size / $columns);
   } @else {
+    float: left;
     width: percentage($size / $columns);
   }
 }

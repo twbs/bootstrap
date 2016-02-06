@@ -30,19 +30,29 @@ Chill? Awesome—keep reading for more information and some code snippets.
 
 ## Auto-layout columns
 
-As mentioned above, flexbox grid columns will automatically layout with even widths. Add any number of `.col`s and you're good to go.
+As mentioned above, flexbox grid columns will automatically layout with even widths. Add any number of `.col-*`s for each breakpoint you need and you're good to go.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-xs">
+      One of two columns
+    </div>
+    <div class="col-xs">
+      One of two columns
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs">
       One of three columns
     </div>
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
   </div>
@@ -56,13 +66,13 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
-    <div class="col col-md-6">
+    <div class="col-xs-6">
       One of three columns
     </div>
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
   </div>
@@ -78,35 +88,35 @@ Use the flexbox alignment utilities to vertically align columns.
 {% example html %}
 <div class="container">
   <div class="row flex-items-xs-top">
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
   </div>
   <div class="row flex-items-xs-middle">
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
   </div>
   <div class="row flex-items-xs-bottom">
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
-    <div class="col">
+    <div class="col-xs">
       One of three columns
     </div>
   </div>
@@ -118,13 +128,13 @@ Use the flexbox alignment utilities to vertically align columns.
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col flex-xs-top">
+    <div class="col-xs flex-xs-top">
       One of three columns
     </div>
-    <div class="col flex-xs-middle">
+    <div class="col-xs flex-xs-middle">
       One of three columns
     </div>
-    <div class="col flex-xs-bottom">
+    <div class="col-xs flex-xs-bottom">
       One of three columns
     </div>
   </div>
@@ -140,42 +150,42 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
 {% example html %}
 <div class="container">
   <div class="row flex-items-xs-left">
-    <div class="col col-xs-4">
+    <div class="col-xs-4">
       One of two columns
     </div>
-    <div class="col col-xs-4">
+    <div class="col-xs-4">
       One of two columns
     </div>
   </div>
   <div class="row flex-items-xs-center">
-    <div class="col col-xs-4">
+    <div class="col-xs-4">
       One of two columns
     </div>
-    <div class="col col-xs-4">
+    <div class="col-xs-4">
       One of two columns
     </div>
   </div>
   <div class="row flex-items-xs-right">
-    <div class="col col-xs-4">
+    <div class="col-xs-4">
       One of two columns
     </div>
-    <div class="col col-xs-4">
+    <div class="col-xs-4">
       One of two columns
     </div>
   </div>
   <div class="row flex-items-xs-around">
-    <div class="col col-xs-4">
+    <div class="col-xs-4">
       One of two columns
     </div>
-    <div class="col col-xs-4">
+    <div class="col-xs-4">
       One of two columns
     </div>
   </div>
   <div class="row flex-items-xs-between">
-    <div class="col col-xs-4">
+    <div class="col-xs-4">
       One of two columns
     </div>
-    <div class="col col-xs-4">
+    <div class="col-xs-4">
       One of two columns
     </div>
   </div>

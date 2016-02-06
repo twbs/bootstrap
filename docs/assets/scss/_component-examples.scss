@@ -3,9 +3,11 @@
 //
 
 .bd-example-row {
-  .row {
-    margin-bottom: 1rem;
+  .row + .row {
+    margin-top: 1rem;
+  }
 
+  .row {
     > .col,
     > [class^="col-"] {
       padding-top: .75rem;

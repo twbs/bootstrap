@@ -36,16 +36,16 @@
 // Common styles for small and large grid columns
 
 @if $enable-grid-classes {
-  .col {
+  [class^="col"] {
     position: relative;
     min-height: 1px;
     padding-right: ($grid-gutter-width / 2);
     padding-left: ($grid-gutter-width / 2);
-
-    // Allow `.col` to use an automatic, even width when flex mode is enabled
-    @if $enable-flex {
-      flex: 1;
-    }
+    // 
+    // // Allow `.col` to use an automatic, even width when flex mode is enabled
+    // @if $enable-flex {
+    //   flex: 1;
+    // }
   }
 
   @include make-grid-columns();
