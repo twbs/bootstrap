@@ -5,9 +5,12 @@
 //
 
 .bd-example-row {
-  .row {
-    margin-bottom: 1rem;
+  .row + .row {
+    margin-top: 1rem;
+  }
 
+  .row {
+    > .col,
     > [class^="col-"] {
       padding-top: .75rem;
       padding-bottom: .75rem;
@@ -15,6 +18,18 @@
       border: 1px solid rgba(86,61,124,.2);
     }
   }
+
+  .flex-items-xs-top,
+  .flex-items-xs-middle,
+  .flex-items-xs-bottom {
+    min-height: 6rem;
+    background-color: rgba(255,0,0,.1);
+  }
+}
+
+.bd-example-row-flex-cols .row {
+  min-height: 10rem;
+  background-color: rgba(255,0,0,.1);
 }
 
 

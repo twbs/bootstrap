@@ -22,10 +22,20 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 ### Global changes
 
 - Switched from [Less](http://lesscss.org/) to [Sass](http://sass-lang.com/) for our source CSS files.
-- Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and more as viewports are not affected by type size.
+- Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and grid behavior as viewports are not affected by type size.
 - Global font-size increased from `14px` to `16px`.
 - Added a new grid tier for ~`480px` and below.
 - Replaced the separate optional theme with configurable options via SCSS variables (e.g., `$enable-gradients: true`).
+
+### Grid system
+
+- Added support for flexbox (set `$enable-flex: true` and recompile) in the grid mixins and predefined classes.
+- As part of flexbox, included support for vertical and horizontal alignment classes.
+- Overhauled grid mixins to merge `make-col-span` into `make-col` for a singular mixin.
+- Added a new `sm` grid tier below `768px` for more granular control. We now have `xs`, `sm`, `md`, `lg`, and `xl`. This also means every tier has been bumped up one level (so `.col-md-6` in v3 is now `.col-lg-6` in v4).
+- Changed grid system media query breakpoints and container widths to account for new grid tier and ensure columns are evenly divisible by `12` at their max width.
+- Grid breakpoints and container widths are now handled via Sass maps instead of a handful of separate variables. These replace the `@screen-*` variables entirely and allow you to fully customize the grid tiers.
+- Media queries have also changed. Instead of repeating our media query declarations with the same value each time, we now have `@include media-breakpoint-up/down/only`. Now, instead of writing `@media (min-width: @screen-sm-min) { ... }`, you can write `@include media-breakpoint-up(sm) { ... }`.
 
 ### Components
 

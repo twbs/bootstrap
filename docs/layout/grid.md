@@ -52,8 +52,7 @@ The above example creates three equal-width columns on small, medium, large, and
 
 ## Grid options
 
-While Bootstrap uses `em`s or `rem`s for defining most sizes, `px`s are used for grid breakpoints and container widths.
-This is because the viewport width is in pixels and does not change with the [font size](https://drafts.csswg.org/mediaqueries-3/#units).
+While Bootstrap uses `em`s or `rem`s for defining most sizes, `px`s are used for grid breakpoints and container widths. This is because the viewport width is in pixels and does not change with the [font size](https://drafts.csswg.org/mediaqueries-3/#units).
 
 See how aspects of the Bootstrap grid system work across multiple devices with a handy table.
 
@@ -136,9 +135,12 @@ When using Bootstrap's source Sass files, you have the option of using Sass vari
 
 ### Variables
 
-Variables determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
+Variables and maps determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
 
 {% highlight scss %}
+$grid-columns:      12;
+$grid-gutter-width: 15px;
+
 $grid-breakpoints: (
   // Extra small screen / phone
   xs: 0,
@@ -152,9 +154,12 @@ $grid-breakpoints: (
   xl: 1200px
 );
 
-
-$grid-columns:      12;
-$grid-gutter-width: 1.875rem;
+$container-max-widths: (
+  sm: 576px,
+  md: 720px,
+  lg: 940px,
+  xl: 1140px
+) !default;
 {% endhighlight %}
 
 ### Mixins
@@ -263,36 +268,36 @@ In addition to our semantic mixins, Bootstrap includes an extensive set of prebu
 
 ### Example: Stacked-to-horizontal
 
-Using a single set of `.col-md-*` grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any `.row`.
+Using a single set of `.col-md-*` grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns with the `.col` base class and a modifier within any `.row`.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">md-1</div>
 </div>
 <div class="row">
-  <div class="col-md-8">.col-md-8</div>
-  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-8">md-8</div>
+  <div class="col-md-4">md-4</div>
 </div>
 <div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4">md-4</div>
+  <div class="col-md-4">md-4</div>
+  <div class="col-md-4">md-4</div>
 </div>
 <div class="row">
-  <div class="col-md-6">.col-md-6</div>
-  <div class="col-md-6">.col-md-6</div>
+  <div class="col-md-6">md-6</div>
+  <div class="col-md-6">md-6</div>
 </div>
 {% endexample %}
 </div>
@@ -383,32 +388,32 @@ In addition to column clearing at responsive breakpoints, you may need to **rese
 {% example html %}
 <div class="row">
   <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
-  <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">.col-sm-5 .col-sm-offset-2 .col-md-6 .col-md-offset-0</div>
+  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
 </div>
 
 <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">.col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0</div>
+  <div class="col-sm-6 col-md-5 col-lg-6">.col.col-sm-6.col-md-5.col-lg-6</div>
+  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
 </div>
 {% endexample %}
 </div>
 
 ### Example: Offsetting columns
 
-Move columns to the right using `.col-md-offset-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.col-md-offset-4` moves `.col-md-4` over four columns.
+Move columns to the right using `.offset-md-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.offset-md-4` moves `.col-md-4` over four columns.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
   <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+  <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
 </div>
 <div class="row">
-  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
 </div>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+  <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
 </div>
 {% endexample %}
 </div>
@@ -442,8 +447,30 @@ Easily change the order of our built-in grid columns with `.col-md-push-*` and `
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
-  <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+  <div class="col-md-9 push-md-3">.col-md-9 .push-md-3</div>
+  <div class="col-md-3 pull-md-9">.col-md-3 .pull-md-9</div>
 </div>
 {% endexample %}
 </div>
+
+## Customizing the grid
+
+Using our built-in grid Sass variables and maps, it's possible to completely customize the predefined grid classes. Change the number of tiers, the media query dimensions, and the container widths—then recompile.
+
+For example, if you wanted just three grid tiers, you'd update the `$grid-breakpoints` and `$container-max-widths` to something like this:
+
+{% highlight scss %}
+$grid-breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px
+);
+
+$container-max-widths: (
+  sm: 420px,
+  md: 720px,
+  lg: 940px
+) !default;
+{% endhighlight %}
+
+Save your changes and recompile to have a brand new set of predefined grid classes for column widths, offsets, pushes, and pulls. Responsive visibility utilities will also be updated to use the custom breakpoints.
