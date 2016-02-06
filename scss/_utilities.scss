@@ -6,3 +6,7 @@
 @import "utilities/spacing";
 @import "utilities/text";
 @import "utilities/visibility";
+
+@if $enable-flex and $enable-grid-classes {
+  @import "utilities/flex";
+}
