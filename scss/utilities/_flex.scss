@@ -10,14 +10,14 @@
       .flex-#{$breakpoint}-last  { order: 1; }
     }
 
-    // Alignment for every column in row
+    // Alignment for every item
     @include media-breakpoint-up($breakpoint) {
       .flex-items-#{$breakpoint}-top    { align-items: flex-start; }
       .flex-items-#{$breakpoint}-center { align-items: center; }
       .flex-items-#{$breakpoint}-bottom { align-items: flex-end; }
     }
 
-    // Alignment per column
+    // Alignment per item
     @include media-breakpoint-up($breakpoint) {
       .flex-#{$breakpoint}-top    { align-self: flex-start; }
       .flex-#{$breakpoint}-center { align-self: center; }
