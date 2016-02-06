@@ -69,3 +69,65 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
 </div>
 {% endexample %}
 </div>
+
+## Vertical alignment
+
+Use the flexbox alignment utilities to vertically align columns.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row flex-items-xs-top">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+  <div class="row flex-items-xs-center">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+  <div class="row flex-items-xs-bottom">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+<div class="bd-example-row bd-example-row-flex-cols">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col flex-xs-top">
+      One of three columns
+    </div>
+    <div class="col flex-xs-center">
+      One of three columns
+    </div>
+    <div class="col flex-xs-bottom">
+      One of three columns
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
