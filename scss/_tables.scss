@@ -108,7 +108,7 @@
 .table-responsive {
   display: block;
   width: 100%;
-  min-height: 0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+  min-height: .01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
   overflow-x: auto;
 
   // TODO: find out if we need this still.
@@ -171,15 +171,14 @@
   tbody,
   tfoot {
     &:last-child {
-      tr:last-child {
-        th,
-        td {
-          border-bottom: $table-border-width solid $table-border-color;
-        }
+      tr:last-child th,
+      tr:last-child td {
+        border-bottom: $table-border-width solid $table-border-color;
       }
     }
   }
 
+  // scss-lint:disable ImportantRule
   tr {
     float: left;
 
@@ -189,4 +188,5 @@
       border: $table-border-width solid $table-border-color;
     }
   }
+  // scss-lint:enable ImportantRule
 }
