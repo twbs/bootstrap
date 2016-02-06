@@ -22,7 +22,6 @@ Bootstrap sets basic global display, typography, and link styles. Specifically, 
 
 These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`.
 
-
 ## Headings
 
 All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.
