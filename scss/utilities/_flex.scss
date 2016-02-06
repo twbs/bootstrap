@@ -13,14 +13,14 @@
     // Alignment for every item
     @include media-breakpoint-up($breakpoint) {
       .flex-items-#{$breakpoint}-top    { align-items: flex-start; }
-      .flex-items-#{$breakpoint}-center { align-items: center; }
+      .flex-items-#{$breakpoint}-middle { align-items: center; }
       .flex-items-#{$breakpoint}-bottom { align-items: flex-end; }
     }
 
     // Alignment per item
     @include media-breakpoint-up($breakpoint) {
       .flex-#{$breakpoint}-top    { align-self: flex-start; }
-      .flex-#{$breakpoint}-center { align-self: center; }
+      .flex-#{$breakpoint}-middle { align-self: center; }
       .flex-#{$breakpoint}-bottom { align-self: flex-end; }
     }
   }
