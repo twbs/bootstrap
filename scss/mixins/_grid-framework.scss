@@ -11,9 +11,9 @@
       @if $enable-flex {
         .col-#{$breakpoint} {
           @extend column-basics; // Relative position, min-height, and horizontal padding
+          max-width: 100%;
           flex-basis: 0;
           flex-grow: 1;
-          max-width: 100%;
         }
       }
 
@@ -30,7 +30,7 @@
           }
         }
       }
-      
+
       // `$columns - 1` because offsetting by the width of an entire row isn't possible
       @for $i from 0 through ($columns - 1) {
         @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .col-xs-offset-0
