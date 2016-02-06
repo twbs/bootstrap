@@ -164,23 +164,40 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 {% highlight scss %}
 // Creates a wrapper for a series of columns
 @mixin make-row($gutter: $grid-gutter-width) {
+  @if $enable-flex {
+    display: flex;
+    flex-wrap: wrap;
+  } @else {
+    @include clearfix();
+  }
   margin-left:  ($gutter / -2);
   margin-right: ($gutter / -2);
-  @include clearfix();
 }
 
 // Make the element grid-ready (applying everything but the width)
 @mixin make-col($gutter: $grid-gutter-width) {
   position: relative;
-  float: left;
+  @if $enable-flex {
+    flex: 1;
+  } @else {
+    float: left;
+  }
   min-height: 1px;
   padding-left:  ($gutter / 2);
   padding-right: ($gutter / 2);
 }
 
-// Set a width (to be used in or out of media queries)
-@mixin make-col-span($columns) {
-  width: percentage(($columns / $grid-columns));
+@mixin make-col-span($size, $columns: $grid-columns) {
+  // Set a width (to be used in or out of media queries)
+  @if $enable-flex {
+    flex: 0 0 percentage($size / $columns);
+    // Add a `max-width` to ensure content within each column does not blow out
+    // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+    // do not appear to require this.
+    max-width: percentage($size / $columns);
+  } @else {
+    width: percentage($size / $columns);
+  }
 }
 
 // Get fancy by offsetting, or changing the sort order
