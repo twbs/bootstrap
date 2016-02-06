@@ -154,8 +154,9 @@ Dropped entirely for the new card component.
 
 ### Utilities
 
-- Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats
-- Removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`
+- Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats.
+- Removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`.
+- Dropped `.center-block` for the new `.m-x-auto` class.
 
 ### Vendor prefix mixins
 Bootstrap 3's [vendor prefix](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm) mixins, which were deprecated in v3.2.0, have been removed in Bootstrap 4. Since we use [Autoprefixer](https://github.com/postcss/autoprefixer), they're no longer necessary.
