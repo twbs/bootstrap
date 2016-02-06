@@ -6,6 +6,7 @@
   .row {
     margin-bottom: 1rem;
 
+    > .col,
     > [class^="col-"] {
       padding-top: .75rem;
       padding-bottom: .75rem;
