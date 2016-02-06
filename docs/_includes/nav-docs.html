@@ -25,6 +25,7 @@
       <ul class="nav bd-sidenav">
         {% for doc in group.pages %}
           {% assign slug = doc.title | downcase | replace: ' ', '-' | replace:'-&-','-' %}
+          {% capture slug %}/{{ slug }}{% endcapture %}
           {% assign active = nil %}
 
           {% if page.url contains slug %}
