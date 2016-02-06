@@ -35,13 +35,13 @@ If you're using Bootstrap's compiled CSS, this the example you'll want to start 
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col col-sm-4">
       One of three columns
     </div>
-    <div class="col-sm-4">
+    <div class="col col-sm-4">
       One of three columns
     </div>
-    <div class="col-sm-4">
+    <div class="col col-sm-4">
       One of three columns
     </div>
   </div>
@@ -246,36 +246,36 @@ In addition to our semantic mixins, Bootstrap includes an extensive set of prebu
 
 ### Example: Stacked-to-horizontal
 
-Using a single set of `.col-md-*` grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any `.row`.
+Using a single set of `.col-md-*` grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns with the `.col` base class and a modifier within any `.row`.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
+  <div class="col col-md-1">md-1</div>
 </div>
 <div class="row">
-  <div class="col-md-8">.col-md-8</div>
-  <div class="col-md-4">.col-md-4</div>
+  <div class="col col-md-8">md-8</div>
+  <div class="col col-md-4">md-4</div>
 </div>
 <div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
+  <div class="col col-md-4">md-4</div>
+  <div class="col col-md-4">md-4</div>
+  <div class="col col-md-4">md-4</div>
 </div>
 <div class="row">
-  <div class="col-md-6">.col-md-6</div>
-  <div class="col-md-6">.col-md-6</div>
+  <div class="col col-md-6">md-6</div>
+  <div class="col col-md-6">md-6</div>
 </div>
 {% endexample %}
 </div>
@@ -288,21 +288,21 @@ Don't want your columns to simply stack in smaller devices? Use the extra small 
 {% example html %}
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
-  <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col col-xs-12 col-md-8">.col .col-xs-12 .col-md-8</div>
+  <div class="col col-xs-6 col-md-4">.col .col-xs-6 .col-md-4</div>
 </div>
 
 <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 <div class="row">
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col col-xs-6 col-md-4">.col .col-xs-6 .col-md-4</div>
+  <div class="col col-xs-6 col-md-4">.col .col-xs-6 .col-md-4</div>
+  <div class="col col-xs-6 col-md-4">.col .col-xs-6 .col-md-4</div>
 </div>
 
 <!-- Columns are always 50% wide, on mobile and desktop -->
 <div class="row">
-  <div class="col-xs-6">.col-xs-6</div>
-  <div class="col-xs-6">.col-xs-6</div>
+  <div class="col col-xs-6">.col .col-xs-6</div>
+  <div class="col col-xs-6">.col .col-xs-6</div>
 </div>
 {% endexample %}
 </div>
@@ -314,15 +314,15 @@ Build on the previous example by creating even more dynamic and powerful layouts
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
+  <div class="col col-xs-6 col-md-4">.col .col-xs-6 .col-md-4</div>
 </div>
 <div class="row">
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col col-xs-6 col-sm-4">.col .col-xs-6 .col-sm-4</div>
+  <div class="col col-xs-6 col-sm-4">.col .col-xs-6 .col-sm-4</div>
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
   <div class="clearfix hidden-sm-up"></div>
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col col-xs-6 col-sm-4">.col .col-xs-6 .col-sm-4</div>
 </div>
 {% endexample %}
 </div>
@@ -334,9 +334,9 @@ If more than 12 columns are placed within a single row, each group of extra colu
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-xs-9">.col-xs-9</div>
-  <div class="col-xs-4">.col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
-  <div class="col-xs-6">.col-xs-6<br>Subsequent columns continue along the new line.</div>
+  <div class="col col-xs-9">.col .col-xs-9</div>
+  <div class="col col-xs-4">.col .col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+  <div class="col col-xs-6">.col .col-xs-6<br>Subsequent columns continue along the new line.</div>
 </div>
 {% endexample %}
 </div>
@@ -348,14 +348,14 @@ With the four tiers of grids available you're bound to run into issues where, at
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col col-xs-6 col-sm-3">.col .col-xs-6 .col-sm-3</div>
+  <div class="col col-xs-6 col-sm-3">.col .col-xs-6 .col-sm-3</div>
 
   <!-- Add the extra clearfix for only the required viewport -->
   <div class="clearfix hidden-sm-up"></div>
 
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col col-xs-6 col-sm-3">.col .col-xs-6 .col-sm-3</div>
+  <div class="col col-xs-6 col-sm-3">.col .col-xs-6 .col-sm-3</div>
 </div>
 {% endexample %}
 </div>
@@ -365,33 +365,33 @@ In addition to column clearing at responsive breakpoints, you may need to **rese
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
-  <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">.col-sm-5 .col-sm-offset-2 .col-md-6 .col-md-offset-0</div>
+  <div class="col col-sm-5 col-md-6">.col .col-sm-5 .col-md-6</div>
+  <div class="col col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col .col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
 </div>
 
 <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">.col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0</div>
+  <div class="col col-sm-6 col-md-5 col-lg-6">.col.col-sm-6.col-md-5.col-lg-6</div>
+  <div class="col col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col .col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
 </div>
 {% endexample %}
 </div>
 
 ### Example: Offsetting columns
 
-Move columns to the right using `.col-md-offset-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.col-md-offset-4` moves `.col-md-4` over four columns.
+Move columns to the right using `.offset-md-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.offset-md-4` moves `.col-md-4` over four columns.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+  <div class="col col-md-4">.col-md-4</div>
+  <div class="col col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
 </div>
 <div class="row">
-  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+  <div class="col col-md-3 offset-md-3">.col .col-md-3 .offset-md-3</div>
+  <div class="col col-md-3 offset-md-3">.col .col-md-3 .offset-md-3</div>
 </div>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+  <div class="col col-md-6 offset-md-3">.col .col-md-6 .offset-md-3</div>
 </div>
 {% endexample %}
 </div>
@@ -403,14 +403,14 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-sm-9">
-    Level 1: .col-sm-9
+  <div class="col col-sm-9">
+    Level 1: .col .col-sm-9
     <div class="row">
-      <div class="col-xs-8 col-sm-6">
-        Level 2: .col-xs-8 .col-sm-6
+      <div class="col col-xs-8 col-sm-6">
+        Level 2: .col .col-xs-8 .col-sm-6
       </div>
-      <div class="col-xs-4 col-sm-6">
-        Level 2: .col-xs-4 .col-sm-6
+      <div class="col col-xs-4 col-sm-6">
+        Level 2: .col .col-xs-4 .col-sm-6
       </div>
     </div>
   </div>
@@ -425,8 +425,8 @@ Easily change the order of our built-in grid columns with `.col-md-push-*` and `
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
-  <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+  <div class="col col-md-9 push-md-3">.col .col-md-9 .push-md-3</div>
+  <div class="col col-md-3 pull-md-9">.col .col-md-3 .pull-md-9</div>
 </div>
 {% endexample %}
 </div>
