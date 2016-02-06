@@ -44,6 +44,7 @@
 // Use anchor or button elements instead of `li`s or `div`s to create interactive
 // list items. Includes an extra `.active` modifier class for selected items.
 
+// scss-lint:disable QualifyingElement
 a.list-group-item,
 button.list-group-item {
   width: 100%;
@@ -61,6 +62,7 @@ button.list-group-item {
     background-color: $list-group-hover-bg;
   }
 }
+// scss-lint:enable QualifyingElement
 
 .list-group-item {
   // Disabled state

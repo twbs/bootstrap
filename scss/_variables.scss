@@ -369,7 +369,7 @@ $custom-select-border-color:  $input-border-color !default;
 $custom-select-border-radius: $border-radius !default;
 
 $custom-select-focus-border-color: #51a7e8 !default;
-$custom-select-focus-box-shadow:   inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5) !default;
+$custom-select-focus-box-shadow:   inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba(81, 167, 232, .5) !default;
 
 $custom-select-sm-padding-y: .2rem !default;
 $custom-select-sm-font-size: 75% !default;
@@ -581,7 +581,7 @@ $popover-arrow-width:                 10px !default;
 $popover-arrow-color:                 $popover-bg !default;
 
 $popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
-$popover-arrow-outer-color:           fade-in($popover-border-color, 0.05) !default;
+$popover-arrow-outer-color:           fade-in($popover-border-color, .05) !default;
 
 
 // Labels
