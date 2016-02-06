@@ -10,10 +10,13 @@
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       @if $enable-flex {
         .col-#{$breakpoint} {
-          @extend column-basics; // Relative position, min-height, and horizontal padding
+          position: relative;
           max-width: 100%;
+          min-height: 1px;
           flex-basis: 0;
           flex-grow: 1;
+          padding-right: ($grid-gutter-width / 2);
+          padding-left:  ($grid-gutter-width / 2);
         }
       }
 
