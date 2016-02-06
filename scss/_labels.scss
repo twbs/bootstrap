@@ -27,6 +27,7 @@
   top: -1px;
 }
 
+// scss-lint:disable QualifyingElement
 // Add hover effects, but only for links
 a.label {
   @include hover-focus {
@@ -35,6 +36,7 @@ a.label {
     cursor: pointer;
   }
 }
+// scss-lint:enable QualifyingElement
 
 // Pill labels
 //

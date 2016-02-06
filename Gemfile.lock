@@ -4,7 +4,7 @@ GEM
     colorator (0.1)
     ffi (1.9.10)
     ffi (1.9.10-x64-mingw32)
-    jekyll (3.1.0)
+    jekyll (3.1.1)
       colorator (~> 0.1)
       jekyll-sass-converter (~> 1.0)
       jekyll-watch (~> 1.1)
@@ -28,7 +28,7 @@ GEM
     mercenary (0.3.5)
     rake (10.5.0)
     rb-fsevent (0.9.7)
-    rb-inotify (0.9.5)
+    rb-inotify (0.9.6)
       ffi (>= 0.5.0)
     rouge (1.10.1)
     safe_yaml (1.0.4)
@@ -42,7 +42,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  jekyll (~> 3.1.0)
+  jekyll (~> 3.1.1)
   jekyll-redirect-from (~> 0.9.1)
   jekyll-sitemap (~> 0.10.0)
   sass (~> 3.4.21)
