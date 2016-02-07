@@ -1,7 +1,7 @@
 <div class="bs-docs-section">
   <h1 id="helper-classes" class="page-header">Helper classes</h1>
 
-  <h3 id="helper-classes-colors">Contextual colors</h3>
+  <h2 id="helper-classes-colors">Contextual colors</h2>
   <p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
   <div class="bs-example" data-example-id="contextual-colors-helpers">
     <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
@@ -28,7 +28,7 @@
     <p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the contextual colors are only used to reinforce meaning that is already present in the text/markup), or is included through alternative means, such as additional text hidden with the <code>.sr-only</code> class.</p>
   </div>
 
-  <h3 id="helper-classes-backgrounds">Contextual backgrounds</h3>
+  <h2 id="helper-classes-backgrounds">Contextual backgrounds</h2>
   <p>Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.</p>
   <div class="bs-example bs-example-bg-classes" data-example-id="contextual-backgrounds-helpers">
     <p class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -53,7 +53,7 @@
     <p>As with <a href="#helper-classes-colors">contextual colors</a>, ensure that any meaning conveyed through color is also conveyed in a format that is not purely presentational.</p>
   </div>
 
-  <h3 id="helper-classes-close">Close icon</h3>
+  <h2 id="helper-classes-close">Close icon</h2>
   <p>Use the generic close icon for dismissing content like modals and alerts.</p>
   <div class="bs-example" data-example-id="close-icon">
     <p><button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></p>
@@ -63,7 +63,7 @@
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-carets">Carets</h3>
+  <h2 id="helper-classes-carets">Carets</h2>
   <p>Use carets to indicate dropdown functionality and direction. Note that the default caret will reverse automatically in <a href="../components/#btn-dropdowns-dropup">dropup menus</a>.</p>
   <div class="bs-example" data-example-id="caret">
     <span class="caret"></span>
@@ -73,7 +73,7 @@
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-floats">Quick floats</h3>
+  <h2 id="helper-classes-floats">Quick floats</h2>
   <p>Float an element to the left or right with a class. <code>!important</code> is included to avoid specificity issues. Classes can also be used as mixins.</p>
 {% highlight html %}
 <div class="pull-left">...</div>
@@ -103,7 +103,7 @@
   </div>
 
 
-  <h3 id="helper-classes-center">Center content blocks</h3>
+  <h2 id="helper-classes-center">Center content blocks</h2>
   <p>Set an element to <code>display: block</code> and center via <code>margin</code>. Available as a mixin and class.</p>
 {% highlight html %}
 <div class="center-block">...</div>
@@ -123,7 +123,7 @@
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-clearfix">Clearfix</h3>
+  <h2 id="helper-classes-clearfix">Clearfix</h2>
   <p>Easily clear <code>float</code>s by adding <code>.clearfix</code> <strong>to the parent element</strong>. Utilizes <a href="http://nicolasgallagher.com/micro-clearfix-hack/">the micro clearfix</a> as popularized by Nicolas Gallagher. Can also be used as a mixin.</p>
 {% highlight html %}
 <!-- Usage as a class -->
@@ -149,7 +149,7 @@
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-show-hide">Showing and hiding content</h3>
+  <h2 id="helper-classes-show-hide">Showing and hiding content</h2>
   <p>Force an element to be shown or hidden (<strong>including for screen readers</strong>) with the use of <code>.show</code> and <code>.hidden</code> classes. These classes use <code>!important</code> to avoid specificity conflicts, just like the <a href="#helper-classes-floats">quick floats</a>. They are only available for block level toggling. They can also be used as mixins.</p>
   <p><code>.hide</code> is available, but it does not always affect screen readers and is <strong>deprecated</strong> as of v3.0.1. Use <code>.hidden</code> or <code>.sr-only</code> instead.</p>
   <p>Furthermore, <code>.invisible</code> can be used to toggle only the visibility of an element, meaning its <code>display</code> is not modified and the element can still affect the flow of the document.</p>
@@ -179,7 +179,7 @@
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-screen-readers">Screen reader and keyboard navigation content</h3>
+  <h2 id="helper-classes-screen-readers">Screen reader and keyboard navigation content</h2>
   <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Combine <code>.sr-only</code> with <code>.sr-only-focusable</code> to show the element again when it's focused (e.g. by a keyboard-only user). Necessary for following <a href="../getting-started/#accessibility">accessibility best practices</a>. Can also be used as mixins.</p>
 {% highlight html %}
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
@@ -193,7 +193,7 @@
 {% endhighlight %}
 
 
-  <h3 id="helper-classes-image-replacement">Image replacement</h3>
+  <h2 id="helper-classes-image-replacement">Image replacement</h2>
   <p>Utilize the <code>.text-hide</code> class or mixin to help replace an element's text content with a background image.</p>
 {% highlight html %}
 <h1 class="text-hide">Custom heading</h1>
