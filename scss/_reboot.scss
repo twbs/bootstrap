@@ -34,8 +34,7 @@ html {
 //
 // @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in
 // some cases. See http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/.
-// Eventually @viewport will replace <meta name="viewport">. It's been manually
-// prefixed for forward-compatibility.
+// Eventually @viewport will replace <meta name="viewport">.
 //
 // However, `device-width` is broken on IE 10 on Windows (Phone) 8,
 // (see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
