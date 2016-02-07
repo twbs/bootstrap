@@ -138,11 +138,13 @@ mark,
   }
 }
 
-// Clean up some horizontal `<dl>`s built with grids
-// scss-lint:disable QualifyingElement
-dl.row {
-  > dd + dt {
-    clear: left;
+@if not $enable-flex {
+  // Clean up some horizontal `<dl>`s built with grids
+  // scss-lint:disable QualifyingElement
+  dl.row {
+    > dd + dt {
+      clear: left;
+    }
   }
+  // scss-lint:enable QualifyingElement
 }
-// scss-lint:enable QualifyingElement
