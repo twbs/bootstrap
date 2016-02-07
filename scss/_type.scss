@@ -137,3 +137,14 @@ mark,
     content: "\00A0 \2014"; // nbsp, em dash
   }
 }
+
+@if not $enable-flex {
+  // Clean up some horizontal `<dl>`s built with grids
+  // scss-lint:disable QualifyingElement
+  dl.row {
+    > dd + dt {
+      clear: left;
+    }
+  }
+  // scss-lint:enable QualifyingElement
+}
