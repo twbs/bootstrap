@@ -22,50 +22,15 @@
   background-color: $list-group-bg;
   border: $list-group-border-width solid $list-group-border-color;
 
-  // Round the first and last items
   &:first-child {
     @include border-top-radius($list-group-border-radius);
   }
+
   &:last-child {
     margin-bottom: 0;
     @include border-bottom-radius($list-group-border-radius);
   }
-}
 
-.list-group-flush {
-  .list-group-item {
-    border-radius: 0;
-  }
-}
-
-
-// Interactive list items
-//
-// Use anchor or button elements instead of `li`s or `div`s to create interactive
-// list items. Includes an extra `.active` modifier class for selected items.
-
-// scss-lint:disable QualifyingElement
-a.list-group-item,
-button.list-group-item {
-  width: 100%;
-  color: $list-group-link-color;
-  text-align: inherit;
-
-  .list-group-item-heading {
-    color: $list-group-link-heading-color;
-  }
-
-  // Hover state
-  @include hover-focus {
-    color: $list-group-link-hover-color;
-    text-decoration: none;
-    background-color: $list-group-hover-bg;
-  }
-}
-// scss-lint:enable QualifyingElement
-
-.list-group-item {
-  // Disabled state
   &.disabled {
     @include plain-hover-focus {
       color: $list-group-disabled-color;
@@ -82,11 +47,11 @@ button.list-group-item {
     }
   }
 
-  // Active class on item itself, not parent
   &.active {
     @include plain-hover-focus {
       z-index: 2; // Place active items above their siblings for proper border styling
       color: $list-group-active-color;
+      text-decoration: none; // Repeat here because it inherits global a:hover otherwise
       background-color: $list-group-active-bg;
       border-color: $list-group-active-border;
 
@@ -100,6 +65,35 @@ button.list-group-item {
         color: $list-group-active-text-color;
       }
     }
+  }
+}
+
+.list-group-flush {
+  .list-group-item {
+    border-radius: 0;
+  }
+}
+
+
+// Interactive list items
+//
+// Use anchor or button elements instead of `li`s or `div`s to create interactive
+// list items. Includes an extra `.active` modifier class for selected items.
+
+.list-group-item-action {
+  width: 100%; // For `<button>`s (anchors become 100% by default though)
+  color: $list-group-link-color;
+  text-align: inherit; // For `<button>`s (anchors inherit)
+
+  .list-group-item-heading {
+    color: $list-group-link-heading-color;
+  }
+
+  // Hover state
+  @include hover-focus {
+    color: $list-group-link-hover-color;
+    text-decoration: none;
+    background-color: $list-group-hover-bg;
   }
 }
 
