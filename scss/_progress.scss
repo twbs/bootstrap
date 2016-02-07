@@ -3,8 +3,8 @@
 //
 
 @keyframes progress-bar-stripes {
-  from  { background-position: $spacer-y 0; }
-  to    { background-position: 0 0; }
+  from { background-position: $spacer-y 0; }
+  to { background-position: 0 0; }
 }
 
 
@@ -37,35 +37,31 @@
 }
 .progress[value]::-moz-progress-bar {
   background-color: $progress-bar-color;
-  border-top-left-radius: $border-radius;
-  border-bottom-left-radius: $border-radius;
+  @include border-left-radius($border-radius);
 }
 .progress[value]::-webkit-progress-value {
   background-color: $progress-bar-color;
-  border-top-left-radius: $border-radius;
-  border-bottom-left-radius: $border-radius;
+  @include border-left-radius($border-radius);
 }
 // Tweaks for full progress bar
 .progress[value="100"]::-moz-progress-bar {
-  border-top-right-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
+  @include border-right-radius($border-radius);
 }
 .progress[value="100"]::-webkit-progress-value {
-  border-top-right-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
+  @include border-right-radius($border-radius);
 }
 
 // Unfilled portion of the bar
 .progress[value]::-webkit-progress-bar {
   background-color: $progress-bg;
   @include border-radius($border-radius);
-  @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
+  @include box-shadow($progress-box-shadow);
 }
 base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make these styles Firefox-only
 .progress[value] {
   background-color: $progress-bg;
   @include border-radius($border-radius);
-  @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
+  @include box-shadow($progress-box-shadow);
 }
 
 // IE9 hacks to accompany custom markup. We don't need to scope this via media queries, but I feel better doing it anyway.
@@ -73,19 +69,17 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
   .progress {
     background-color: $progress-bg;
     @include border-radius($border-radius);
-    @include box-shadow(inset 0 .1rem .1rem rgba(0,0,0,.1));
+    @include box-shadow($progress-box-shadow);
   }
   .progress-bar {
     display: inline-block;
     height: $spacer-y;
     text-indent: -999rem; // Simulate hiding of value as in native `<progress>`
     background-color: $progress-bar-color;
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
+    @include border-left-radius($border-radius);
   }
   .progress[width="100%"] {
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
+    @include border-right-radius($border-radius);
   }
 }
 

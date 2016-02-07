@@ -116,7 +116,11 @@ Make buttons look inactive by adding the `disabled` boolean attribute to any `<b
 <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>
 {% endexample %}
 
-As `<a>` elements don't support the `disabled` attribute, you must add the `.disabled` class to fake it. In addition, include the `aria-disabled="true"` attribute, to indicate the state of the element to assistive technologies.
+Disabled buttons using the `<a>` element behave a bit different:
+
+- `<a>`s don't support the `disabled` attribute, so you must add the `.disabled` class to make it visually appear disabled.
+- Some future-friendly styles are included to disable all `pointer-events` on anchor buttons. For browsers that support that proper, you won't see the disabled cursor at all.
+- Disabled buttons should include the `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
 
 {% example html %}
 <a href="#" class="btn btn-primary btn-lg disabled" role="button" aria-disabled="true">Primary link</a>

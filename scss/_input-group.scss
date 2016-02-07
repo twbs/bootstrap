@@ -85,6 +85,7 @@
 
 .input-group-addon {
   padding: $input-padding-y $input-padding-x;
+  margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base;
   font-weight: normal;
   line-height: 1.5;
@@ -106,11 +107,13 @@
     @include border-radius($border-radius-lg);
   }
 
+  // scss-lint:disable QualifyingElement
   // Nuke default margins from checkboxes and radios to vertically center within.
   input[type="radio"],
   input[type="checkbox"] {
     margin-top: 0;
   }
+  // scss-lint:enable QualifyingElement
 }
 
 

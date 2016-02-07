@@ -211,6 +211,56 @@ Add an optional header and/or footer within a card.
 </div>
 {% endexample %}
 
+## Header nav
+
+Use Bootstrap's nav pills or tabs within a card header. Be sure to always include a `.pull-*-*` utility class for proper alignment.
+
+{% example html %}
+<div class="card text-xs-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs pull-xs-left">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="card text-xs-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills pull-xs-left">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endexample %}
+
 ## Image caps
 
 Similar to headers and footers, cards include top and bottom image caps.

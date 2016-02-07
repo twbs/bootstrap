@@ -1,4 +1,4 @@
-// scss-lint:disable IdSelector
+// scss-lint:disable IdSelector, NestingDepth, SelectorDepth
 
 //
 // Automatically style Markdown-based tables like a Bootstrap `.table`.
@@ -20,7 +20,6 @@
         > th,
         > td {
           padding: $table-cell-padding;
-          line-height: $line-height;
           vertical-align: top;
           border: 1px solid $table-border-color;
 

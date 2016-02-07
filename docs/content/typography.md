@@ -15,12 +15,12 @@ Bootstrap includes simple and easily customized typography for headings, body te
 
 Bootstrap sets basic global display, typography, and link styles. Specifically, we:
 
-- Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default)
-- Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base
-- Set the global link color via `$link-color` and apply link underlines only on `:hover`
+- Use a [native font stack](/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
+- Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
+- Set the global link color via `$link-color` and apply link underlines only on `:hover`.
+- Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
 These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`.
-
 
 ## Headings
 
@@ -132,7 +132,13 @@ Styling for common inline HTML5 elements.
 <p><em>This line rendered as italicized text.</em></p>
 {% endexample %}
 
+`.mark` and `.small` classes are also available to apply the same styles as `<mark>` and `<small>` while avoiding any unwanted semantic implications that the tags would bring.
+
 While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
+
+## Text utilities
+
+Change text alignment, transform, style, weight, and color with our [text utilities](http://localhost:9001/components/utilities/#text-alignment).
 
 ## Abbreviations
 
@@ -226,7 +232,7 @@ Align terms and descriptions horizontally by using our grid system's predefined 
 
   <dt class="col-sm-3">Euismod</dt>
   <dd class="col-sm-9">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-  <dd class="col-sm-9 col-sm-offset-3">Donec id elit non mi porta gravida at eget metus.</dd>
+  <dd class="col-sm-9 offset-sm-3">Donec id elit non mi porta gravida at eget metus.</dd>
 
   <dt class="col-sm-3">Malesuada porta</dt>
   <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
@@ -237,8 +243,8 @@ Align terms and descriptions horizontally by using our grid system's predefined 
   <dt class="col-sm-3">Nesting</dt>
   <dd class="col-sm-9">
     <dl class="row">
-      <dt class="col-sm-3">Nested definition list</dt>
-      <dd class="col-sm-9">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+      <dt class="col-sm-4">Nested definition list</dt>
+      <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
     </dl>
   </dd>
 </dl>

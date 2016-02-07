@@ -10,11 +10,13 @@
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
   font-size: $font-size-sm;
+  // Allow breaking very long words so they don't overflow the popover's bounds
+  word-wrap: break-word;
   background-color: $popover-bg;
   background-clip: padding-box;
   border: $popover-border-width solid $popover-border-color;
   @include border-radius($border-radius-lg);
-  @include box-shadow(0 5px 10px rgba(0,0,0,.2));
+  @include box-shadow($popover-box-shadow);
 
 
   // Popover directions
@@ -103,7 +105,7 @@
 
 // Offset the popover to account for the popover arrow
 .popover-title {
-  padding: 8px 14px;
+  padding: $popover-title-padding-y $popover-title-padding-x;
   margin: 0; // reset heading margin
   font-size: $font-size-base;
   background-color: $popover-title-bg;
@@ -113,7 +115,7 @@
 }
 
 .popover-content {
-  padding: 9px 14px;
+  padding: $popover-content-padding-y $popover-content-padding-x;
 }
 
 

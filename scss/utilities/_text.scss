@@ -32,9 +32,7 @@
 
 // Contextual colors
 
-.text-muted {
-  color: $text-muted;
-}
+@include text-emphasis-variant('.text-muted', $text-muted);
 
 @include text-emphasis-variant('.text-primary', $brand-primary);
 

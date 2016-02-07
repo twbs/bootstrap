@@ -1,3 +1,5 @@
+// scss-lint:disable ImportantRule
+
 //
 // Responsive tests
 //
@@ -20,11 +22,11 @@
 .responsive-utilities td {
   text-align: center;
 }
-.responsive-utilities td.is-visible {
+.responsive-utilities .is-visible {
   color: #468847;
   background-color: #dff0d8 !important;
 }
-.responsive-utilities td.is-hidden {
+.responsive-utilities .is-hidden {
   color: #ccc;
   background-color: #f9f9f9 !important;
 }

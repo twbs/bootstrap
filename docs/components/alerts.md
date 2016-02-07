@@ -49,6 +49,19 @@ Use the `.alert-link` utility class to quickly provide matching colored links wi
 </div>
 {% endexample %}
 
+### Additional content
+
+Alerts can also contain additional HTML elements like headings and paragraphs.
+
+{% example html %}
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Well done!</h4>
+  <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+  <p class="m-b-0">Whenever you need to, be sure to use a margin utilities to keep things nice and tidy.</p>
+</div>
+{% endexample %}
+
+
 ### Dismissing
 
 Using the alert JavaScript plugin, it's possible to dismiss any alert inline. Here's how:

@@ -40,6 +40,26 @@
 
 -
   browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
+  upstream_bug: >
+    IE#2256049
+  origin: >
+    Bootstrap#18543
+
+-
+  browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    Background color from lower layer bleeds through transparent border in some cases
+  upstream_bug: >
+    IE#2263132
+  origin: >
+    Bootstrap#18228
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
@@ -200,16 +220,6 @@
 
 -
   browser: >
-    Safari
-  summary: >
-    Incorrect placement of `position: fixed` element when it's a child of a `position: relative; left: X%;` element.
-  upstream_bug: >
-    WebKit#147284, Safari#21993128
-  origin: >
-    Bootstrap#16814
-
--
-  browser: >
     Safari (OS X)
   summary: >
     Scrollbar clipped in `select[multiple]` with padding.
@@ -312,13 +322,43 @@
 
 -
   browser: >
-    Safari (iOS 9+)
+    Safari (iOS)
   summary: >
-    Sometimes excessive automatic zoom is applied after opening a modal, and the user isn't allowed to zoom out
+    `position:fixed` is incorrectly positioned when tab bar is visible on iPhone 6S+ Safari
   upstream_bug: >
-    WebKit#150715
+    WebKit#153056
   origin: >
-    WebKit#138201
+    Bootstrap#18859
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Tapping into an `<input>` within a `position:fixed` element scrolls to the top of the page
+  upstream_bug: >
+    WebKit#153224, Safari#24235301
+  origin: >
+    Bootstrap#17497
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    `<body>` with `overflow:hidden` CSS is scrollable on iOS
+  upstream_bug: >
+    WebKit#153852
+  origin: >
+    Bootstrap#14839
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Scroll gesture in text field in `position:fixed` element sometimes scrolls `<body>` instead of scrollable ancestor
+  upstream_bug: >
+    WebKit#153856
+  origin: >
+    Bootstrap#14839
 
 -
   browser: >

@@ -279,28 +279,6 @@ module.exports = function (grunt) {
       }
     },
 
-    csscomb: {
-      options: {
-        config: 'scss/.csscomb.json'
-      },
-      dist: {
-        expand: true,
-        cwd: 'dist/css/',
-        src: ['*.css', '!*.min.css'],
-        dest: 'dist/css/'
-      },
-      examples: {
-        expand: true,
-        cwd: 'docs/examples/',
-        src: '**/*.css',
-        dest: 'docs/examples/'
-      },
-      docs: {
-        src: 'docs/assets/css/src/docs.css',
-        dest: 'docs/assets/css/src/docs.css'
-      }
-    },
-
     copy: {
       docs: {
         expand: true,
@@ -343,12 +321,14 @@ module.exports = function (grunt) {
           'Attribute “autocomplete” not allowed on element “button” at this point.',
           'Element “div” not allowed as child of element “progress” in this context. (Suppressing further errors from this subtree.)',
           'Consider using the “h1” element as a top-level heading only (all “h1” elements are treated as top-level headings by many screen readers and other tools).',
+          'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “color” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “date” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “datetime-local” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “month” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “time” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-          'The “week” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
+          'The “week” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'Attribute “integrity” not allowed on element “script” at this point.' // Until https://github.com/jzaefferer/grunt-html/issues/86 gets fixed
         ]
       },
       src: ['_gh_pages/**/*.html', 'js/tests/visual/*.html']
@@ -482,7 +462,7 @@ module.exports = function (grunt) {
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
   grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
 
-  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
+  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
@@ -501,7 +481,7 @@ module.exports = function (grunt) {
   });
 
   // Docs task.
-  grunt.registerTask('docs-css', ['postcss:docs', 'postcss:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
+  grunt.registerTask('docs-css', ['postcss:docs', 'postcss:examples', 'cssmin:docs']);
   grunt.registerTask('lint-docs-css', ['scsslint:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jscs:assets']);

@@ -60,8 +60,19 @@ Here are some representative examples of these classes:
 }
 {% endhighlight %}
 
-Additionally, Bootstrap also includes an `.m-x-auto` class which sets the horizontal margins to `auto`.
+Additionally, Bootstrap also includes an `.m-x-auto` class for centering fixed-width block level content by setting the horizontal margins to `auto`.
 
+<div class="bd-example">
+  <div class="m-x-auto" style="width: 200px; background-color: rgba(86,61,124,.15);">
+    Centered element
+  </div>
+</div>
+
+{% highlight html %}
+<div class="m-x-auto" style="width: 200px;"">
+  Centered element
+</div>
+{% endhighlight %}
 
 ## Text alignment
 
@@ -191,27 +202,7 @@ Two similar non-responsive mixins (`pull-left` and `pull-right`) are also availa
 }
 {% endhighlight %}
 
-## Center content
-
-Set an element to `display: block;` and center via `margin`. Available as a mixin and class.
-
-{% example html %}
-<div class="center-block">Centered block</div>
-{% endexample %}
-
-{% highlight scss %}
-// Class
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-// Usage as a mixin
-.element {
-  @include center-block;
-}
-{% endhighlight %}
+## Clearfix
 
 Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes [the micro clearfix](http://nicolasgallagher.com/micro-clearfix-hack/) as popularized by Nicolas Gallagher. Can also be used as a mixin.
 
@@ -254,7 +245,7 @@ The `.invisible` class can be used to toggle only the visibility of an element, 
 
 // Usage as a mixin
 .element {
-  .invisible();
+  @include invisible;
 }
 {% endhighlight %}
 

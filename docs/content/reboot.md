@@ -32,6 +32,30 @@ The `<html>` and `<body>` elements are updated to provide better page-wide defau
 - The `<body>` also sets a global `font-family` and `line-height`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
 
+## Native font stack
+
+The default web (Helvetica Neue, Helvetica, and Arial) fonts have been dropped in Bootstrap 4 and replaced with a "native font stack" for optimum text rendering on every device and OS. Read more about [native font stacks in this Smashing Magazine article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
+
+{% highlight sass %}
+$font-family-sans-serif:
+  // Safari for OS X and iOS (San Francisco)
+  -apple-system,
+  // Chrome for OS X (San Francisco) and Windows (Segoe UI)
+  BlinkMacSystemFont,
+  // Windows
+  "Segoe UI",
+  // Android
+  "Roboto",
+  // Linux distros
+  "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+  // Older Android
+  "Droid Sans",
+  // Basic web fallback
+  "Helvetica Neue", Arial, sans-serif !default;
+{% endhighlight %}
+
+This `font-family` is applied to the `<body>` and automatically inherited globally throughout Bootstrap. To switch the global `font-family`, update `$font-family-base` and recompile Bootstrap.
+
 ## Headings and paragraphs
 
 All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-top` removed. Headings have `margin-bottom: .5rem` added and paragraphs `margin-bottom: 1rem` for easy spacing.

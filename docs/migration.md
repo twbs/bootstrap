@@ -22,10 +22,20 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 ### Global changes
 
 - Switched from [Less](http://lesscss.org/) to [Sass](http://sass-lang.com/) for our source CSS files.
-- Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and more as viewports are not affected by type size.
+- Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and grid behavior as viewports are not affected by type size.
 - Global font-size increased from `14px` to `16px`.
 - Added a new grid tier for ~`480px` and below.
 - Replaced the separate optional theme with configurable options via SCSS variables (e.g., `$enable-gradients: true`).
+
+### Grid system
+
+- Added support for flexbox (set `$enable-flex: true` and recompile) in the grid mixins and predefined classes.
+- As part of flexbox, included support for vertical and horizontal alignment classes.
+- Overhauled grid mixins to merge `make-col-span` into `make-col` for a singular mixin.
+- Added a new `sm` grid tier below `768px` for more granular control. We now have `xs`, `sm`, `md`, `lg`, and `xl`. This also means every tier has been bumped up one level (so `.col-md-6` in v3 is now `.col-lg-6` in v4).
+- Changed grid system media query breakpoints and container widths to account for new grid tier and ensure columns are evenly divisible by `12` at their max width.
+- Grid breakpoints and container widths are now handled via Sass maps instead of a handful of separate variables. These replace the `@screen-*` variables entirely and allow you to fully customize the grid tiers.
+- Media queries have also changed. Instead of repeating our media query declarations with the same value each time, we now have `@include media-breakpoint-up/down/only`. Now, instead of writing `@media (min-width: @screen-sm-min) { ... }`, you can write `@include media-breakpoint-up(sm) { ... }`.
 
 ### Components
 
@@ -107,10 +117,6 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Dropped the `.navbar-form` class entirely. It's no longer necessary.
 
-### Pager
-
-- Renamed `.previous` and `.next` to `.pager-prev` and `.pager-next`.
-
 ### Pagination
 
 - Explicit classes (`.page-item`, `.page-link`) are now required on the descendants of `.pagination`s
@@ -148,8 +154,14 @@ Dropped entirely for the new card component.
 
 ### Utilities
 
-- Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats
-- Removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`
+- Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`.
+- Added responsive variations to our text alignment classes `.text-{xs,sm,md,lg,xl}-{left,center,right}` and removed the redundant `.text-{left,center,right}` utilities as they are the same as the `xs` variation.
+- Dropped `.center-block` for the new `.m-x-auto` class.
+
+### Vendor prefix mixins
+Bootstrap 3's [vendor prefix](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm) mixins, which were deprecated in v3.2.0, have been removed in Bootstrap 4. Since we use [Autoprefixer](https://github.com/postcss/autoprefixer), they're no longer necessary.
+
+Removed the following mixins: `animation`, `animation-delay`, `animation-direction`, `animation-duration`, `animation-fill-mode`, `animation-iteration-count`, `animation-name`, `animation-timing-function`, `backface-visibility`, `box-sizing`, `content-columns`, `hyphens`, `opacity`, `perspective`, `perspective-origin`, `rotate`, `rotateX`, `rotateY`, `scale`, `scaleX`, `scaleY`, `skew`, `transform-origin`, `transition-delay`, `transition-duration`, `transition-property`, `transition-timing-function`, `transition-transform`, `translate`, `translate3d`, `user-select`
 
 ## Documentation
 

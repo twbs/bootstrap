@@ -22,7 +22,7 @@ kbd {
   color: $kbd-color;
   background-color: $kbd-bg;
   @include border-radius($border-radius-sm);
-  @include box-shadow(inset 0 -.1rem 0 rgba(0,0,0,.25));
+  @include box-shadow($kbd-box-shadow);
 
   kbd {
     padding: 0;
@@ -38,7 +38,6 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 90%;
-  line-height: $line-height;
   color: $pre-color;
 
   // Account for some code outputs that place code tags in pre tags

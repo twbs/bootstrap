@@ -1,3 +1,5 @@
+// scss-lint:disable ImportantRule, QualifyingElement, DuplicateProperty
+
 // Reboot
 //
 // Global resets to common HTML elements and more for easier usage by Bootstrap.
@@ -44,14 +46,8 @@ html {
 //
 // Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
 // `.class-name { @import "bootstrap"; }`).
-//
-// Includes future-proofed vendor prefixes as well.
 @at-root {
-  @-moz-viewport      { width: device-width; }
-  @-ms-viewport       { width: device-width; }
-  @-o-viewport        { width: device-width; }
-  @-webkit-viewport   { width: device-width; }
-  @viewport           { width: device-width; }
+  @-ms-viewport { width: device-width; }
 }
 
 
@@ -77,7 +73,7 @@ body {
   // Make the `body` use the `font-size-root`
   font-family: $font-family-base;
   font-size: $font-size-base;
-  line-height: $line-height;
+  line-height: $line-height-base;
   // Go easy on the eyes and use something other than `#000` for text
   color: $body-color;
   // By default, `<body>` has no `background-color` so we set one as a best practice.
@@ -331,8 +327,6 @@ legend {
 }
 
 input[type="search"] {
-  // Undo Normalize's default here to match our global overrides.
-  box-sizing: inherit;
   // This overrides the extra rounded corners on search inputs in iOS so that our
   // `.form-control` class can properly style them. Note that this cannot simply
   // be added to `.form-control` as it's not specific enough. For details, see
