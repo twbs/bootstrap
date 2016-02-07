@@ -263,7 +263,7 @@ input[type="checkbox"] {
   padding-right: ($input-padding-x * 3);
   background-repeat: no-repeat;
   background-position: center right ($input-height * .25);
-  background-size: ($input-height * .65) ($input-height * .65);
+  background-size: ($input-height * .5) ($input-height * .50);
 }
 
 // Form validation states
