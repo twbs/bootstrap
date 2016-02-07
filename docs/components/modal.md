@@ -181,7 +181,7 @@ Embedding YouTube videos in modals requires additional JavaScript not in Bootstr
 
 ## Optional sizes
 
-Modals have two optional sizes, available via modifier classes to be placed on a `.modal-dialog`. These size kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
+Modals have two optional sizes, available via modifier classes to be placed on a `.modal-dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
 
 <div class="bd-example">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
