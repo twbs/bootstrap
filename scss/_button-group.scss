@@ -106,17 +106,17 @@
 
 // Give the line between buttons some depth
 .dropdown-toggle-split {
-  padding-left: $btn-dropdown-toggle-split-l;
   padding-right: $btn-dropdown-toggle-split-r;
+  padding-left: $btn-dropdown-toggle-split-l;
 
   &.btn-sm {
-    padding-left: $btn-dropdown-toggle-split-l-sm;
     padding-right: $btn-dropdown-toggle-split-r-sm;
+    padding-left: $btn-dropdown-toggle-split-l-sm;
   }
 
   &.btn-lg {
-    padding-left: $btn-dropdown-toggle-split-l-lg;
     padding-right: $btn-dropdown-toggle-split-r-lg;
+    padding-left: $btn-dropdown-toggle-split-l-lg;
   }
 }
 
