@@ -14,11 +14,21 @@ Stylize [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/doc
 ### Example
 
 {% example html %}
-<progress class="progress" value="0" max="100">0%</progress>
-<progress class="progress" value="25" max="100">25%</progress>
-<progress class="progress" value="50" max="100">50%</progress>
-<progress class="progress" value="75" max="100">75%</progress>
-<progress class="progress" value="100" max="100">100%</progress>
+
+<div class="text-xs-center" id="example-caption-1">Reticulating splines&hellip; 0%</div>
+<progress class="progress" value="0" max="100" aria-describedby="example-caption-1"></progress>
+
+<div class="text-xs-center" id="example-caption-2">Reticulating splines&hellip; 25%</div>
+<progress class="progress" value="25" max="100" aria-describedby="example-caption-2"></progress>
+
+<div class="text-xs-center" id="example-caption-3">Reticulating splines&hellip; 50%</div>
+<progress class="progress" value="50" max="100" aria-describedby="example-caption-3"></progress>
+
+<div class="text-xs-center" id="example-caption-4">Reticulating splines&hellip; 75%</div>
+<progress class="progress" value="75" max="100" aria-describedby="example-caption-4"></progress>
+
+<div class="text-xs-center" id="example-caption-5">Reticulating splines&hellip; 100%</div>
+<progress class="progress" value="100" max="100" aria-describedby="example-caption-5"></progress>
 {% endexample %}
 
 ### IE9 support
@@ -26,9 +36,10 @@ Stylize [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/doc
 Internet Explorer 9 doesn't support the HTML5 `<progress>` element, but we can work around that.
 
 {% example html %}
-<progress class="progress" value="25" max="100">
+<div class="text-xs-center" id="example-caption-6">Reticulating splines&hellip; 25%</div>
+<progress class="progress" value="25" max="100" aria-describedby="example-caption-6">
   <div class="progress">
-    <span class="progress-bar" style="width: 25%;">25%</span>
+    <span class="progress-bar" style="width: 25%;"></span>
   </div>
 </progress>
 {% endexample %}
@@ -38,10 +49,17 @@ Internet Explorer 9 doesn't support the HTML5 `<progress>` element, but we can w
 Progress bars use some of the same button and alert classes for consistent styles.
 
 {% example html %}
-<progress class="progress progress-success" value="25" max="100">25%</progress>
-<progress class="progress progress-info" value="50" max="100">50%</progress>
-<progress class="progress progress-warning" value="75" max="100">75%</progress>
-<progress class="progress progress-danger" value="100" max="100">100%</progress>
+<div class="text-xs-center" id="example-caption-7">Reticulating successful splines&hellip; 25%</div>
+<progress class="progress progress-success" value="25" max="100" aria-describedby="example-caption-7"></progress>
+
+<div class="text-xs-center" id="example-caption-8">Reticulating informative splines&hellip; 50%</div>
+<progress class="progress progress-info" value="50" max="100" aria-describedby="example-caption-8"></progress>
+
+<div class="text-xs-center" id="example-caption-9">Reticulating warning splines&hellip; 75%</div>
+<progress class="progress progress-warning" value="75" max="100" aria-describedby="example-caption-9"></progress>
+
+<div class="text-xs-center" id="example-caption-10">Reticulating dangerous splines&hellip; 100%</div>
+<progress class="progress progress-danger" value="100" max="100" aria-describedby="example-caption-10"></progress>
 {% endexample %}
 
 ### Striped
@@ -49,11 +67,20 @@ Progress bars use some of the same button and alert classes for consistent style
 Uses a gradient to create a striped effect.
 
 {% example html %}
-<progress class="progress progress-striped" value="10" max="100">10%</progress>
-<progress class="progress progress-striped progress-success" value="25" max="100">25%</progress>
-<progress class="progress progress-striped progress-info" value="50" max="100">50%</progress>
-<progress class="progress progress-striped progress-warning" value="75" max="100">75%</progress>
-<progress class="progress progress-striped progress-danger" value="100" max="100">100%</progress>
+<div class="text-xs-center" id="example-caption-11">Reticulating plain splines&hellip; 10%</div>
+<progress class="progress progress-striped" value="10" max="100" aria-describedby="example-caption-11">10%</progress>
+
+<div class="text-xs-center" id="example-caption-12">Reticulating successful splines&hellip; 25%</div>
+<progress class="progress progress-striped progress-success" value="25" max="100" aria-describedby="example-caption-12">25%</progress>
+
+<div class="text-xs-center" id="example-caption-13">Reticulating informative splines&hellip; 50%</div>
+<progress class="progress progress-striped progress-info" value="50" max="100" aria-describedby="example-caption-13">50%</progress>
+
+<div class="text-xs-center" id="example-caption-14">Reticulating warning splines&hellip; 75%</div>
+<progress class="progress progress-striped progress-warning" value="75" max="100" aria-describedby="example-caption-14">75%</progress>
+
+<div class="text-xs-center" id="example-caption-15">Reticulating dangerous splines&hellip; 100%</div>
+<progress class="progress progress-striped progress-danger" value="100" max="100" aria-describedby="example-caption-15">100%</progress>
 {% endexample %}
 
 ### Animated stripes
@@ -63,12 +90,14 @@ The striped gradient can also be animated. Add `.progress-animated` to `.progres
 **Animated progress bars do not work in IE9 and Opera 12** – as they don't support CSS3 animations – **nor in IE10+ and Microsoft Edge** – as they currently don't support CSS3 animations on the [`::-ms-fill` pseudo-element](https://msdn.microsoft.com/en-us/library/windows/apps/hh465757.aspx).
 
 <div class="bd-example">
-  <progress class="progress progress-striped" value="25" max="100">25%</progress>
+  <div class="text-xs-center" id="example-caption-16">Reticulating splines&hellip; 25%</div>
+  <progress class="progress progress-striped" value="25" max="100" aria-describedby="example-caption-16">25%</progress>
   <button type="button" class="btn btn-secondary bd-activate-animated-progressbar" data-toggle="button" aria-pressed="false" autocomplete="off">
     Toggle animation
   </button>
 </div>
 
 {% highlight html %}
-<progress class="progress progress-striped progress-animated" value="25" max="100">25%</progress>
+<div class="text-xs-center" id="example-caption-16">Reticulating splines&hellip; 25%</div>
+<progress class="progress progress-striped progress-animated" value="25" max="100" aria-describedby="example-caption-16">25%</progress>
 {% endhighlight %}
