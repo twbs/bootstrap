@@ -17,6 +17,18 @@
 // Fonts
 // Components
 
+@mixin _assert-ascending($map, $map-name) {
+  $prev-key: null;
+  $prev-num: null;
+  @each $key, $num in $map {
+    @if $prev-num != null and $prev-num >= $num {
+      @warn "Invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} which isn't greater than #{$prev-num}, the value of the previous key '#{$prev-key}' !";
+    }
+    $prev-key: $key;
+    $prev-num: $num;
+  }
+}
+
 // General variable structure
 //
 // Variable format should follow the `$component-modifier-state-property` order.
@@ -112,6 +124,7 @@ $grid-breakpoints: (
   lg: 992px,
   xl: 1200px
 ) !default;
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 
 
 // Grid containers
@@ -124,6 +137,7 @@ $container-max-widths: (
   lg: 940px,
   xl: 1140px
 ) !default;
+@include _assert-ascending($container-max-widths, "$container-max-widths");
 
 
 // Grid columns
