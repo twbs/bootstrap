@@ -55,7 +55,7 @@
 }
 
 select.form-control {
-  &:not([size], [multiple]) {
+  &:not([size]):not([multiple]) {
     height: $input-height;
   }
 }
