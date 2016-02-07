@@ -137,3 +137,30 @@ mark,
     content: "\00A0 \2014"; // nbsp, em dash
   }
 }
+
+@include media-breakpoint-down(xs) {
+  // decrease font size on portrait phones and smallest devices
+
+  .lead {
+    font-size: $lead-font-size / 1.1;
+    font-weight: $lead-font-weight;
+  }
+
+  // Type display classes
+  .display-1 {
+    font-size: $display1-size / 2.5;
+    font-weight: $display1-weight;
+  }
+  .display-2 {
+    font-size: $display2-size / 2;
+    font-weight: $display2-weight;
+  }
+  .display-3 {
+    font-size: $display3-size / 1.75;
+    font-weight: $display3-weight;
+  }
+  .display-4 {
+    font-size: $display4-size / 1.5;
+    font-weight: $display4-weight;
+  }
+}
