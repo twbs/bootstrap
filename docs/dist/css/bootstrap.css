@@ -615,6 +615,10 @@ mark,
   content: "\00A0 \2014";
 }
 
+dl.row > dd + dt {
+  clear: left;
+}
+
 .img-fluid, .carousel-inner > .carousel-item > img,
 .carousel-inner > .carousel-item > a > img {
   display: block;
@@ -710,8 +714,8 @@ pre code {
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding-left: 7.5px;
-  padding-right: 7.5px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .container::after {
@@ -747,8 +751,8 @@ pre code {
 .container-fluid {
   margin-left: auto;
   margin-right: auto;
-  padding-left: 7.5px;
-  padding-right: 7.5px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .container-fluid::after {
@@ -758,8 +762,8 @@ pre code {
 }
 
 .row {
-  margin-left: -7.5px;
-  margin-right: -7.5px;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 .row::after {
@@ -771,8 +775,8 @@ pre code {
 .col-xs-1 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 8.333333%;
 }
@@ -780,8 +784,8 @@ pre code {
 .col-xs-2 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 16.666667%;
 }
@@ -789,8 +793,8 @@ pre code {
 .col-xs-3 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 25%;
 }
@@ -798,8 +802,8 @@ pre code {
 .col-xs-4 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 33.333333%;
 }
@@ -807,8 +811,8 @@ pre code {
 .col-xs-5 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 41.666667%;
 }
@@ -816,8 +820,8 @@ pre code {
 .col-xs-6 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 50%;
 }
@@ -825,8 +829,8 @@ pre code {
 .col-xs-7 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 58.333333%;
 }
@@ -834,8 +838,8 @@ pre code {
 .col-xs-8 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 66.666667%;
 }
@@ -843,8 +847,8 @@ pre code {
 .col-xs-9 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 75%;
 }
@@ -852,8 +856,8 @@ pre code {
 .col-xs-10 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 83.333333%;
 }
@@ -861,8 +865,8 @@ pre code {
 .col-xs-11 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 91.666667%;
 }
@@ -870,8 +874,8 @@ pre code {
 .col-xs-12 {
   position: relative;
   min-height: 1px;
-  padding-right: 7.5px;
-  padding-left: 7.5px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
   width: 100%;
 }
@@ -1028,96 +1032,96 @@ pre code {
   .col-sm-1 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 8.333333%;
   }
   .col-sm-2 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 16.666667%;
   }
   .col-sm-3 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 25%;
   }
   .col-sm-4 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 33.333333%;
   }
   .col-sm-5 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 41.666667%;
   }
   .col-sm-6 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 50%;
   }
   .col-sm-7 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 58.333333%;
   }
   .col-sm-8 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 66.666667%;
   }
   .col-sm-9 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 75%;
   }
   .col-sm-10 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 83.333333%;
   }
   .col-sm-11 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 91.666667%;
   }
   .col-sm-12 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 100%;
   }
@@ -1241,96 +1245,96 @@ pre code {
   .col-md-1 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 8.333333%;
   }
   .col-md-2 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 16.666667%;
   }
   .col-md-3 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 25%;
   }
   .col-md-4 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 33.333333%;
   }
   .col-md-5 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 41.666667%;
   }
   .col-md-6 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 50%;
   }
   .col-md-7 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 58.333333%;
   }
   .col-md-8 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 66.666667%;
   }
   .col-md-9 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 75%;
   }
   .col-md-10 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 83.333333%;
   }
   .col-md-11 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 91.666667%;
   }
   .col-md-12 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 100%;
   }
@@ -1454,96 +1458,96 @@ pre code {
   .col-lg-1 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 8.333333%;
   }
   .col-lg-2 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 16.666667%;
   }
   .col-lg-3 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 25%;
   }
   .col-lg-4 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 33.333333%;
   }
   .col-lg-5 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 41.666667%;
   }
   .col-lg-6 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 50%;
   }
   .col-lg-7 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 58.333333%;
   }
   .col-lg-8 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 66.666667%;
   }
   .col-lg-9 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 75%;
   }
   .col-lg-10 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 83.333333%;
   }
   .col-lg-11 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 91.666667%;
   }
   .col-lg-12 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 100%;
   }
@@ -1667,96 +1671,96 @@ pre code {
   .col-xl-1 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 8.333333%;
   }
   .col-xl-2 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 16.666667%;
   }
   .col-xl-3 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 25%;
   }
   .col-xl-4 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 33.333333%;
   }
   .col-xl-5 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 41.666667%;
   }
   .col-xl-6 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 50%;
   }
   .col-xl-7 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 58.333333%;
   }
   .col-xl-8 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 66.666667%;
   }
   .col-xl-9 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 75%;
   }
   .col-xl-10 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 83.333333%;
   }
   .col-xl-11 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 91.666667%;
   }
   .col-xl-12 {
     position: relative;
     min-height: 1px;
-    padding-right: 7.5px;
-    padding-left: 7.5px;
+    padding-right: 15px;
+    padding-left: 15px;
     float: left;
     width: 100%;
   }
@@ -4892,30 +4896,6 @@ base::-moz-progress-bar,
   border-bottom-left-radius: 0.25rem;
 }
 
-.list-group-flush .list-group-item {
-  border-radius: 0;
-}
-
-a.list-group-item,
-button.list-group-item {
-  width: 100%;
-  color: #555;
-  text-align: inherit;
-}
-
-a.list-group-item .list-group-item-heading,
-button.list-group-item .list-group-item-heading {
-  color: #333;
-}
-
-a.list-group-item:focus, a.list-group-item:hover,
-button.list-group-item:focus,
-button.list-group-item:hover {
-  color: #555;
-  text-decoration: none;
-  background-color: #f5f5f5;
-}
-
 .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
   color: #818a91;
   cursor: not-allowed;
@@ -4933,6 +4913,7 @@ button.list-group-item:hover {
 .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
   z-index: 2;
   color: #fff;
+  text-decoration: none;
   background-color: #0275d8;
   border-color: #0275d8;
 }
@@ -4949,6 +4930,26 @@ button.list-group-item:hover {
 
 .list-group-item.active .list-group-item-text, .list-group-item.active:focus .list-group-item-text, .list-group-item.active:hover .list-group-item-text {
   color: #a8d6fe;
+}
+
+.list-group-flush .list-group-item {
+  border-radius: 0;
+}
+
+.list-group-item-action {
+  width: 100%;
+  color: #555;
+  text-align: inherit;
+}
+
+.list-group-item-action .list-group-item-heading {
+  color: #333;
+}
+
+.list-group-item-action:focus, .list-group-item-action:hover {
+  color: #555;
+  text-decoration: none;
+  background-color: #f5f5f5;
 }
 
 .list-group-item-success {
@@ -5283,17 +5284,17 @@ button.close {
 
 @media (min-width: 544px) {
   .modal-dialog {
-    width: 600px;
+    max-width: 600px;
     margin: 30px auto;
   }
   .modal-sm {
-    width: 300px;
+    max-width: 300px;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .modal-lg {
-    width: 900px;
+    max-width: 900px;
   }
 }
 
