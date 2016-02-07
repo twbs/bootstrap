@@ -84,12 +84,12 @@
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: url(#{$custom-checkbox-checked-icon});
+    background-image: $custom-checkbox-checked-icon;
   }
 
   .custom-control-input:indeterminate ~ .custom-control-indicator {
     background-color: $custom-checkbox-indeterminate-bg;
-    background-image: url(#{$custom-checkbox-indeterminate-icon});
+    background-image: $custom-checkbox-indeterminate-icon;
     @include box-shadow($custom-checkbox-indeterminate-box-shadow);
   }
 }
@@ -104,7 +104,7 @@
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: url(#{$custom-radio-checked-icon});
+    background-image: $custom-radio-checked-icon;
   }
 }
 

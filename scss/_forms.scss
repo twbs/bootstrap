@@ -271,7 +271,7 @@ input[type="checkbox"] {
   @include form-control-validation($brand-success);
 
   .form-control-success {
-    background-image: url($form-icon-success);
+    background-image: $form-icon-success;
   }
 }
 
@@ -279,7 +279,7 @@ input[type="checkbox"] {
   @include form-control-validation($brand-warning);
 
   .form-control-warning {
-    background-image: url($form-icon-warning);
+    background-image: $form-icon-warning;
   }
 }
 
@@ -287,7 +287,7 @@ input[type="checkbox"] {
   @include form-control-validation($brand-danger);
 
   .form-control-danger {
-    background-image: url($form-icon-danger);
+    background-image: $form-icon-danger;
   }
 }
 
