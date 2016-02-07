@@ -232,7 +232,7 @@ Align terms and descriptions horizontally by using our grid system's predefined 
 
   <dt class="col-sm-3">Euismod</dt>
   <dd class="col-sm-9">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-  <dd class="col-sm-9 col-sm-offset-3">Donec id elit non mi porta gravida at eget metus.</dd>
+  <dd class="col-sm-9 offset-sm-3">Donec id elit non mi porta gravida at eget metus.</dd>
 
   <dt class="col-sm-3">Malesuada porta</dt>
   <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
@@ -243,8 +243,8 @@ Align terms and descriptions horizontally by using our grid system's predefined 
   <dt class="col-sm-3">Nesting</dt>
   <dd class="col-sm-9">
     <dl class="row">
-      <dt class="col-sm-3">Nested definition list</dt>
-      <dd class="col-sm-9">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+      <dt class="col-sm-4">Nested definition list</dt>
+      <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
     </dl>
   </dd>
 </dl>
