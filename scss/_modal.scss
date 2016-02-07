@@ -130,17 +130,17 @@
 @include media-breakpoint-up(sm) {
   // Automatically set modal's width for larger viewports
   .modal-dialog {
-    width: $modal-md;
+    max-width: $modal-md;
     margin: 30px auto;
   }
+
   .modal-content {
     @include box-shadow($modal-content-sm-up-box-shadow);
   }
 
-  // Modal sizes
-  .modal-sm { width: $modal-sm; }
+  .modal-sm { max-width: $modal-sm; }
 }
 
-@include media-breakpoint-up(md) {
-  .modal-lg { width: $modal-lg; }
+@include media-breakpoint-up(lg) {
+  .modal-lg { max-width: $modal-lg; }
 }
