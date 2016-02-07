@@ -21,14 +21,6 @@
   @include box-shadow($input-box-shadow);
   @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
 
-  // Make inputs at least the height of their button counterpart (base line-height + padding + border).
-  // Only apply the height to textual inputs and some selects.
-  // &:not(textarea),
-  // &:not(select[size]),
-  // &:not(select[multiple]) {
-  //   height: $input-height;
-  // }
-
   // Unstyle the caret on `<select>`s in IE10+.
   &::-ms-expand {
     background-color: transparent;
@@ -62,6 +54,11 @@
   }
 }
 
+select.form-control {
+  &:not([size], [multiple]) {
+    height: $input-height;
+  }
+}
 
 // Make file inputs better match text inputs by forcing them to new lines.
 .form-control-file,
