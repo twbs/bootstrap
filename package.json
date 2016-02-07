@@ -64,6 +64,7 @@
     "is-travis": "^1.0.0",
     "load-grunt-tasks": "^3.4.0",
     "mq4-hover-shim": "^0.3.0",
+    "postcss-flexbugs-fixes": "^2.0.0",
     "shelljs": "^0.6.0",
     "time-grunt": "^1.2.1"
   },
