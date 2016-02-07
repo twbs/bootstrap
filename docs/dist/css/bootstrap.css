@@ -5837,12 +5837,6 @@ a.bg-danger:focus, a.bg-danger:hover {
   background-color: #c9302c !important;
 }
 
-.center-block {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 .clearfix::after {
   display: table;
   clear: both;
@@ -6281,7 +6275,11 @@ a.bg-danger:focus, a.bg-danger:hover {
 }
 
 .text-muted {
-  color: #818a91;
+  color: #818a91 !important;
+}
+
+a.text-muted:focus, a.text-muted:hover {
+  color: #687077;
 }
 
 .text-primary {
