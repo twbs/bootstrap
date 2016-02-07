@@ -145,7 +145,7 @@
   padding-right: $custom-select-padding-x \9;
   color: $custom-select-color;
   vertical-align: middle;
-  background: $custom-select-bg url(#{$custom-select-indicator}) no-repeat right $custom-select-padding-x center;
+  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
   background-image: none \9;
   background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
