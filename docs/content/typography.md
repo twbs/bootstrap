@@ -138,7 +138,7 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities](http://localhost:9001/components/utilities/#text-alignment).
+Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/components/utilities/#text-alignment).
 
 ## Abbreviations
 

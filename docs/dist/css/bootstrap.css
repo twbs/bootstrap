@@ -2130,7 +2130,7 @@ pre code {
   cursor: not-allowed;
 }
 
-select.form-control:not([size], [multiple]) {
+select.form-control:not([size]):not([multiple]) {
   height: 2.25rem;
 }
 
@@ -3143,11 +3143,6 @@ input[type="button"].btn-block {
   bottom: 0;
   left: 0;
   z-index: 990;
-}
-
-.pull-right > .dropdown-menu {
-  right: 0;
-  left: auto;
 }
 
 .dropup .caret,

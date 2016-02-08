@@ -639,7 +639,7 @@ Bootstrap includes validation styles for danger, warning, and success states on 
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` declarations for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
-- Icons can also be disabled entirely by changing the variables to `non` or commenting out the source Sass.
+- Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
 
 {% comment %}
 {% callout warning %}
