@@ -13,7 +13,7 @@ Easily extend form controls by adding text, buttons, or button groups on either 
 
 ## Basic example
 
-Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple add-ons on a single side, nor multiple form-controls in a single input group.**
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple form-controls in a single input group.**
 
 {% example html %}
 <div class="input-group">

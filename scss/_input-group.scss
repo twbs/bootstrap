@@ -4,6 +4,7 @@
 
 .input-group {
   position: relative;
+  width: 100%;
 
   @if $enable-flex {
     display: flex;
@@ -121,31 +122,30 @@
 // Reset rounded corners
 //
 
-.input-group .form-control:first-child,
-.input-group-addon:first-child,
-.input-group-btn:first-child > .btn,
-.input-group-btn:first-child > .btn-group > .btn,
-.input-group-btn:first-child > .dropdown-toggle,
-.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+.input-group .form-control:not(:last-child),
+.input-group-addon:not(:last-child),
+.input-group-btn:not(:last-child) > .btn,
+.input-group-btn:not(:last-child) > .btn-group > .btn,
+.input-group-btn:not(:last-child) > .dropdown-toggle,
+.input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
   @include border-right-radius(0);
 }
-.input-group-addon:first-child {
+.input-group-addon:not(:last-child) {
   border-right: 0;
 }
-.input-group .form-control:last-child,
-.input-group-addon:last-child,
-.input-group-btn:last-child > .btn,
-.input-group-btn:last-child > .btn-group > .btn,
-.input-group-btn:last-child > .dropdown-toggle,
-.input-group-btn:first-child > .btn:not(:first-child),
-.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+.input-group .form-control:not(:first-child),
+.input-group-addon:not(:first-child),
+.input-group-btn:not(:first-child) > .btn,
+.input-group-btn:not(:first-child) > .btn-group > .btn,
+.input-group-btn:not(:first-child) > .dropdown-toggle,
+.input-group-btn:not(:last-child) > .btn:not(:first-child),
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
   @include border-left-radius(0);
 }
-.input-group-addon:last-child {
+.form-control + .input-group-addon:not(:first-child) {
   border-left: 0;
 }
-
 
 //
 // Button input groups
@@ -172,13 +172,13 @@
   }
 
   // Negative margin to only have a single, shared border between the two
-  &:first-child {
+  &:not(:last-child) {
     > .btn,
     > .btn-group {
       margin-right: (-$input-btn-border-width);
     }
   }
-  &:last-child {
+  &:not(:first-child) {
     > .btn,
     > .btn-group {
       z-index: 2;
