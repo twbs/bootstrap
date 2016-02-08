@@ -256,8 +256,8 @@ input[type="checkbox"] {
 .form-control-danger {
   padding-right: ($input-padding-x * 3);
   background-repeat: no-repeat;
-  background-position: center right ($input-height * .25);
-  background-size: ($input-height * .5) ($input-height * .5);
+  background-position: center right ($input-height / 4);
+  background-size: ($input-height / 2) ($input-height / 2);
 }
 
 // Form validation states
