@@ -252,7 +252,8 @@ $table-border-color:            $gray-lighter !default;
 // For each of Bootstrap's buttons, define text, background and border color.
 
 $btn-padding-x:                  1rem !default;
-$btn-padding-y:                  .375rem !default;
+$btn-padding-y:                  .5rem !default;
+$btn-line-height:                1.25 !default;
 $btn-font-weight:                normal !default;
 $btn-box-shadow:                 inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075) !default;
 $btn-active-box-shadow:          inset 0 3px 5px rgba(0,0,0,.125) !default;
@@ -283,10 +284,10 @@ $btn-danger-border:              $btn-danger-bg !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
-$btn-padding-x-sm:               .75rem !default;
+$btn-padding-x-sm:               .5rem !default;
 $btn-padding-y-sm:               .25rem !default;
 
-$btn-padding-x-lg:               1.25rem !default;
+$btn-padding-x-lg:               1.5rem !default;
 $btn-padding-y-lg:               .75rem !default;
 
 $btn-block-spacing-y:            5px !default;
@@ -304,7 +305,8 @@ $btn-border-radius-sm:           $border-radius-sm !default;
 // Forms
 
 $input-padding-x:                .75rem !default;
-$input-padding-y:                .375rem !default;
+$input-padding-y:                .5rem !default;
+$input-line-height:              1.25 !default;
 
 $input-bg:                       #fff !default;
 $input-bg-disabled:              $gray-lighter !default;
@@ -323,10 +325,10 @@ $input-box-shadow-focus:         rgba(102,175,233,.6) !default;
 
 $input-color-placeholder:        #999 !default;
 
-$input-padding-x-sm:             .75rem !default;
-$input-padding-y-sm:             .275rem !default;
+$input-padding-x-sm:             .5rem !default;
+$input-padding-y-sm:             .25rem !default;
 
-$input-padding-x-lg:             1.25rem !default;
+$input-padding-x-lg:             1.5rem !default;
 $input-padding-y-lg:             .75rem !default;
 
 $input-height:                   (($font-size-base * $line-height-base) + ($input-padding-y * 2)) !default;

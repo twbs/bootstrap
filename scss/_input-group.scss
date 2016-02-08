@@ -88,7 +88,7 @@
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: $input-line-height;
   color: $input-color;
   text-align: center;
   background-color: $input-group-addon-bg;
