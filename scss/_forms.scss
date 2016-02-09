@@ -265,6 +265,10 @@ input[type="checkbox"] {
 //
 // Apply contextual and semantic states to individual form controls.
 
+.form-control-feedback {
+  margin-top: .5rem;
+}
+
 .form-control-success,
 .form-control-warning,
 .form-control-danger {

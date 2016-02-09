@@ -663,6 +663,8 @@ Block help text—for below inputs or for longer lines of help text—can be eas
 Bootstrap includes validation styles for danger, warning, and success states on form controls.
 
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
+- To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, or custom form element will receive the validation styles.
+- Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` declarations for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
 - Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
