@@ -60,8 +60,8 @@
 
     > .list-group:last-child {
       .list-group-item:last-child {
-        border-bottom-left-radius: $card-border-radius;
         border-bottom-right-radius: $card-border-radius;
+        border-bottom-left-radius: $card-border-radius;
       }
     }
   }
