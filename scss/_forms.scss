@@ -81,6 +81,18 @@ select.form-control {
   margin-bottom: 0; // Override the `<label>` default
 }
 
+.form-control-label-lg {
+  padding-top: $input-padding-y-lg;
+  padding-bottom: $input-padding-y-lg;
+  font-size: $font-size-lg;
+}
+
+.form-control-label-sm {
+  padding-top: $input-padding-y-sm;
+  padding-bottom: $input-padding-y-sm;
+  font-size: $font-size-sm;
+}
+
 
 // Todo: clear this up
 
