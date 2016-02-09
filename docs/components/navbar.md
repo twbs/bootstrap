@@ -56,7 +56,7 @@ Here's an example of all the sub-components included in a default, light navbar:
 
 ### Brand
 
-The `.navbar-brand` can be applied to most elements, but an anchor works best.
+The `.navbar-brand` can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
@@ -64,7 +64,7 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best.
 </nav>
 
 <nav class="navbar navbar-light bg-faded">
-  <h1 class="navbar-brand">Navbar</h1>
+  <h1 class="navbar-brand m-b-0">Navbar</h1>
 </nav>
 
 {% endexample %}
