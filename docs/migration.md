@@ -90,7 +90,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Dropped `.help-block`. Use the `.text-muted` utility class instead.
 - Horizontal forms overhauled:
   - Dropped the `.form-horizontal` class requirement.
-  - `.form-group` no longer mixins the `.row` class, so it's now required for grid layouts.
+  - Requires the addition of `.row` to `.form-group`.
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
 
 ### Buttons
