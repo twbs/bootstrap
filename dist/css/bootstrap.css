@@ -2088,7 +2088,9 @@ pre code {
   color: #55595c;
   background-color: #fff;
   background-image: none;
-  border: 1px solid #ccc;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
 }
 
@@ -3390,7 +3392,7 @@ input[type="button"].btn-block {
   color: #55595c;
   text-align: center;
   background-color: #eceeef;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
 }
 
@@ -3587,7 +3589,7 @@ input[type="button"].btn-block {
   background-image: none \9;
   -webkit-background-size: 8px 10px;
           background-size: 8px 10px;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -4046,11 +4048,13 @@ input[type="button"].btn-block {
 }
 
 .card > .list-group:first-child .list-group-item:first-child {
-  border-radius: 0.25rem 0.25rem 0 0;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 
 .card > .list-group:last-child .list-group-item:last-child {
-  border-radius: 0 0 0.25rem 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .card-header {
@@ -5255,19 +5259,6 @@ button.close {
   content: "";
   display: table;
   clear: both;
-}
-
-.modal-footer .btn + .btn {
-  margin-bottom: 0;
-  margin-left: 5px;
-}
-
-.modal-footer .btn-group .btn + .btn {
-  margin-left: -1px;
-}
-
-.modal-footer .btn-block + .btn-block {
-  margin-left: 0;
 }
 
 .modal-scrollbar-measure {
