@@ -660,14 +660,21 @@ Block help text—for below inputs or for longer lines of help text—can be eas
 
 ## Validation
 
-Bootstrap includes validation styles for danger, warning, and success states on form controls.
+Bootstrap includes validation styles for danger, warning, and success states on form controls. Here's a rundown of how they work:
 
-- To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, or custom form element will receive the validation styles.
 - Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` declarations for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
 - Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
+
+Generally speaking, you'll want to use a particular state for specific types of feedback:
+
+- **Danger** is great for when there's a blocking or required field. A user *must* fill in this field properly to submit the form.
+- **Warning** works well for input values that are in progress, like password strength, or soft validation before a user attempts to submit a form.
+- And lastly, **success** is ideal for situations when you have per-field validation throughout a form and want to encourage a user through the rest of the fields.
+
+Here are some examples of the aforementioned classes in action.
 
 {% comment %}
 {% callout warning %}
@@ -683,16 +690,24 @@ Ensure that an alternative indication of state is also provided. For instance, y
 <div class="form-group has-success">
   <label class="form-control-label" for="inputSuccess1">Input with success</label>
   <input type="text" class="form-control form-control-success" id="inputSuccess1">
+  <div class="form-control-feedback">Success! You've done it.</div>
+  <small class="text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-warning">
   <label class="form-control-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
+  <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
+  <small class="text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-danger">
   <label class="form-control-label" for="inputDanger1">Input with danger</label>
   <input type="text" class="form-control form-control-danger" id="inputDanger1">
+  <div class="form-control-feedback">Shit, that username's taken. Try another?</div>
+  <small class="text-muted">Example help text that remains unchanged.</small>
 </div>
+{% endexample %}
 
+{% example html %}
 <div class="checkbox has-success">
   <label>
     <input type="checkbox" id="checkboxSuccess" value="option1">
