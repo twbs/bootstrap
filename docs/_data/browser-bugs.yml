@@ -284,6 +284,16 @@
   browser: >
     Safari (iOS)
   summary: >
+    Text input's cursor doesn't move while scrolling the page.
+  upstream_bug: >
+    WebKit#138201, Safari#18819624
+  origin: >
+    Bootstrap#14708
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
     Can't move cursor to start of text after entering long string of text into `<input type="text">`
   upstream_bug: >
     WebKit#148061, Safari#22299624
