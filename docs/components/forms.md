@@ -626,7 +626,7 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 ## Help text
 
-No official help text classes exist in Bootstrap 4 (previously we had `.help-block` in v3), but thanks to our utility classes like `.text-muted`, you can create much more flexible help text as you need it.
+No official classes exist in Bootstrap 4 for stylizing help text (previously we had `.help-block` in v3), but thanks to utility classes like `.text-muted`, you can create much more flexible help text as needed.
 
 {% callout warning %}
 #### Associating help text with form controls
