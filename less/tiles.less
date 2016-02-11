@@ -1,11 +1,11 @@
 .tile-row {
   display: flex;
 
-  & > .tile-container {
+  .tile-container {
     display: flex;
     align-items: stretch;
 
-    & > .tile {
+    .tile {
       position: relative;
       display: inline-block;
       padding: @tile-padding;
@@ -33,11 +33,11 @@
         border: 1px solid @brand-light-blue;
       }
 
-      & >  p {
+      p {
         margin-bottom: 0;
       }
 
-      & > .circle {
+      .circle {
         margin: auto;
         margin-bottom: 16px;
         background-color: @brand-white;
@@ -50,12 +50,12 @@
         font-weight: @tile-font-weight;
         text-transform: uppercase;
 
-        & > i {
+        i {
           font-size: 40px;
         }
       }
 
-      & > .tile-ribbon-benefit {
+      .tile-ribbon-benefit {
         position: absolute;
         top: 24px;
         left: -40px;
@@ -72,21 +72,21 @@
       }
     }
 
-    & > .tile-disabled {
+    .tile-disabled {
       background-color: @brand-white;
       border: 1px solid @brand-smoke-plus-10;
       cursor: not-allowed;
       color: @brand-smoke-minus-10;
 
-      & > h5{
+      h5{
         color: @brand-smoke-minus-10;
       }
 
-      & > .circle {
+      .circle {
         color: @brand-smoke-minus-10;
       }
 
-      & > i {
+      i {
         color: @brand-smoke-minus-10;
       }
     }
