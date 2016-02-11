@@ -9403,7 +9403,7 @@ a.circle.active:hover {
   font-style: normal;
   font-weight: normal;
 
-  src: url('../fonts/TransferWise-IconFont.ttf?eu2k23') format('truetype'), url('../fonts/TransferWise-IconFont.woff?eu2k23') format('woff'), url('../fonts/TransferWise-IconFont.svg?eu2k23#TransferWise-IconFont') format('svg');
+  src: url('../fonts/TransferWise-IconFont.ttf?ny1zvb') format('truetype'), url('../fonts/TransferWise-IconFont.woff?ny1zvb') format('woff'), url('../fonts/TransferWise-IconFont.svg?ny1zvb#TransferWise-IconFont') format('svg');
 }
 .icon {
   /* use !important to prevent issues with browser extensions that change ../fonts */
@@ -9426,6 +9426,57 @@ a.circle.active:hover {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.icon-chart:before {
+  content: "\e936";
+}
+.icon-chat:before {
+  content: "\e937";
+}
+.icon-down-arrow:before {
+  content: "\e938";
+}
+.icon-download:before {
+  content: "\e939";
+}
+.icon-facebook-inverse:before {
+  content: "\e93a";
+}
+.icon-facebook:before {
+  content: "\e93b";
+}
+.icon-fast-flag:before {
+  content: "\e93c";
+}
+.icon-google:before {
+  content: "\e93d";
+}
+.icon-left-arrow:before {
+  content: "\e93e";
+}
+.icon-left:before {
+  content: "\e93f";
+}
+.icon-login:before {
+  content: "\e940";
+}
+.icon-right-arrow:before {
+  content: "\e941";
+}
+.icon-right:before {
+  content: "\e942";
+}
+.icon-twitter:before {
+  content: "\e947";
+}
+.icon-unlock:before {
+  content: "\e948";
+}
+.icon-up-arrow:before {
+  content: "\e949";
+}
+.icon-upload:before {
+  content: "\e94a";
 }
 .icon-send:before {
   content: "\e900";
@@ -9468,9 +9519,6 @@ a.circle.active:hover {
 }
 .icon-camera:before {
   content: "\e90c";
-}
-.icon-wifi:before {
-  content: "\e90d";
 }
 .icon-globe:before {
   content: "\e90e";
