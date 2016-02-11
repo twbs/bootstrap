@@ -607,18 +607,18 @@ $popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
 $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !default;
 
 
-// Labels
+// Tags
 
-$label-default-bg:            $gray-light !default;
-$label-primary-bg:            $brand-primary !default;
-$label-success-bg:            $brand-success !default;
-$label-info-bg:               $brand-info !default;
-$label-warning-bg:            $brand-warning !default;
-$label-danger-bg:             $brand-danger !default;
+$tag-default-bg:              $gray-light !default;
+$tag-primary-bg:              $brand-primary !default;
+$tag-success-bg:              $brand-success !default;
+$tag-info-bg:                 $brand-info !default;
+$tag-warning-bg:              $brand-warning !default;
+$tag-danger-bg:               $brand-danger !default;
 
-$label-color:                 #fff !default;
-$label-link-hover-color:      #fff !default;
-$label-font-weight:           bold !default;
+$tag-color:                   #fff !default;
+$tag-link-hover-color:        #fff !default;
+$tag-font-weight:             bold !default;
 
 
 // Modals

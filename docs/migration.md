@@ -128,7 +128,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 ### Badges
 
-- Dropped the badge component. Use the `.label-pill` modifier together with the label component instead.
+- Dropped the badge component. Use the `.tag-pill` modifier together with the tag component instead.
 
 ### Panels, thumbnails, and wells
 
