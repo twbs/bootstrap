@@ -22,7 +22,7 @@
     <h1>Button <small>Bootstrap Visual Test</small></h1>
   </div>
 
-  <button type="button" data-loading-text="Loading for 3 seconds..." class="btn btn-primary js-loading-button">
+  <button type="button" data-loading-text="Loading for 3 seconds..." class="btn btn-primary js-loading-button" onClick="alert('lol')">
     Loading state
   </button>
 
@@ -47,10 +47,12 @@
     <label class="btn btn-primary">
       <input type="radio" name="options" id="option2"> Radio 2
     </label>
-    <label class="btn btn-primary">
-      <input type="radio" name="options" id="option3"> Radio 3
+    <label class="btn btn-primary disabled" disabled>
+      <input type="radio" name="options" id="option3" disabled> Radio 3
     </label>
   </div>
+
+  <button type="button" class="btn btn-primary disabled" disabled>disabled</button>
 
 </div>
 
