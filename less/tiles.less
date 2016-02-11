@@ -1,0 +1,100 @@
+.tile-row {
+  display: flex;
+
+  .tile-container {
+    display: flex;
+    align-items: stretch;
+
+    .tile {
+      position: relative;
+      display: inline-block;
+      padding: @tile-padding;
+      margin-bottom: @line-height-small;
+      min-width: 100%;
+      background-color: @brand-smoke-plus-20;
+      border: 1px solid @brand-smoke;
+      border-radius: @border-radius-base;
+      text-align: center;
+      font-weight: @tile-font-weight;
+      font-size: @font-size-small;
+      line-height: @line-height-small;
+      cursor: pointer;
+      outline: none;
+      -webkit-transition: all 0.1s ease-in-out;
+      transition: all 0.1s ease-in-out;
+      overflow: hidden;
+
+      &:hover:not(.tile-disabled)  {
+        background-color: @brand-smoke-plus-10;
+      }
+
+      &:active:not(.tile-disabled) {
+        background-color: @brand-smoke-plus-10;
+        border: 1px solid @brand-light-blue;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      .circle {
+        margin: auto;
+        margin-bottom: 16px;
+        background-color: @brand-white;
+        background-repeat:no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-color: @brand-smoke;
+        color: @brand-light-blue;
+        font-size: @tile-initials-font-size;
+        font-weight: @tile-font-weight;
+        text-transform: uppercase;
+
+        i {
+          font-size: 40px;
+        }
+      }
+
+      .tile-ribbon-benefit {
+        position: absolute;
+        top: 24px;
+        left: -40px;
+        width: 160px;
+        background-color: @brand-light-blue;
+        text-align:center;
+        color: @brand-white;
+        font-weight: @tile-font-weight;
+        font-size: @font-size-small;
+        line-height: @line-height-large;
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+    }
+
+    .tile-disabled {
+      background-color: @brand-white;
+      border: 1px solid @brand-smoke-plus-10;
+      cursor: not-allowed;
+      color: @brand-smoke-minus-10;
+
+      h5{
+        color: @brand-smoke-minus-10;
+      }
+
+      .circle {
+        color: @brand-smoke-minus-10;
+      }
+
+      i {
+        color: @brand-smoke-minus-10;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+  .tile-row {
+    display: block;
+  }
+}
