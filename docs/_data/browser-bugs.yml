@@ -72,16 +72,6 @@
   browser: >
     Firefox
   summary: >
-    Button elements with `width: 100%` become cropped in long tables.
-  upstream_bug: >
-    Mozilla#1060131
-  origin: >
-    Bootstrap#14320
-
--
-  browser: >
-    Firefox
-  summary: >
     If the disabled state of a form control is changed via JavaScript, the normal state doesn't return after refreshing the page.
   upstream_bug: >
     Mozilla#654072
