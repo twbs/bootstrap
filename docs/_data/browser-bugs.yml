@@ -72,16 +72,6 @@
   browser: >
     Firefox
   summary: >
-    `max-width: 100%;` doesn't work inside tables.
-  upstream_bug: >
-    Mozilla#975632
-  origin: >
-    Bootstrap#10690
-
--
-  browser: >
-    Firefox
-  summary: >
     Button elements with `width: 100%` become cropped in long tables.
   upstream_bug: >
     Mozilla#1060131
