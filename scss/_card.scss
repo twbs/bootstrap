@@ -53,13 +53,15 @@
   .card {
     > .list-group:first-child {
       .list-group-item:first-child {
-        border-radius: $card-border-radius $card-border-radius 0 0;
+        border-top-left-radius: $card-border-radius;
+        border-top-right-radius: $card-border-radius;
       }
     }
 
     > .list-group:last-child {
       .list-group-item:last-child {
-        border-radius: 0 0 $card-border-radius $card-border-radius;
+        border-bottom-right-radius: $card-border-radius;
+        border-bottom-left-radius: $card-border-radius;
       }
     }
   }

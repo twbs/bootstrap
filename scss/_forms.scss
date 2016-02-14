@@ -16,6 +16,7 @@
   background-color: $input-bg;
   // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
   background-image: none;
+  background-clip: padding-box;
   border: $input-btn-border-width solid $input-border-color;
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius);
