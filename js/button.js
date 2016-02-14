@@ -114,7 +114,6 @@
       if (!($(e.target).is('input[type="radio"]') || $(e.target).is('input[type="checkbox"]'))) {
         // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
         e.preventDefault()
-        
         // The target component still receive the focus
         $(e.target).focus()
       }
