@@ -3645,7 +3645,7 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
 }
 
-.custom-file-control::after {
+.custom-file-control:lang(en)::after {
   content: "Choose file...";
 }
 
@@ -3660,10 +3660,13 @@ input[type="button"].btn-block {
   padding: 0.5rem 1rem;
   line-height: 1.5;
   color: #555;
-  content: "Browse";
   background-color: #eee;
   border: 1px solid #ddd;
   border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.custom-file-control:lang(en)::before {
+  content: "Browse";
 }
 
 .nav {
