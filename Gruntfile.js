@@ -217,7 +217,7 @@ module.exports = function (grunt) {
         src: ['scss/*.scss', '!scss/_normalize.scss']
       },
       docs: {
-        src: ['docs/assets/scss/*.scss', '!scss/_normalize.scss', '!docs/assets/scss/docs.scss']
+        src: ['docs/assets/scss/*.scss', '!docs/assets/scss/docs.scss']
       }
     },
 
