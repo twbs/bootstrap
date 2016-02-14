@@ -114,7 +114,7 @@
         // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
         e.preventDefault()
         // The target component still receive the focus
-        $btn.find('input').focus()
+        $btn.find('input:visible,button:visible').first().focus()
       }
     })
     .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
