@@ -14,7 +14,8 @@
   &.radio label,
   &.checkbox label,
   &.radio-inline label,
-  &.checkbox-inline label  {
+  &.checkbox-inline label,
+  .custom-control {
     color: $color;
   }
   // Set the border and box shadow on specific inputs to match
