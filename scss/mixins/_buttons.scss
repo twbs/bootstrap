@@ -64,19 +64,33 @@
   background-color: transparent;
   border-color: $color;
 
+  @include hover {
+    color: #fff;
+    background-color: $color;
+        border-color: $color;
+  }
+
   &:focus,
-  &.focus,
+  &.focus {
+    color: #fff;
+    background-color: $color;
+        border-color: $color;
+  }
+
   &:active,
   &.active,
   .open > &.dropdown-toggle {
     color: #fff;
     background-color: $color;
         border-color: $color;
-  }
-  @include hover {
-    color: #fff;
-    background-color: $color;
-        border-color: $color;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: #fff;
+      background-color: darken($color, 17%);
+          border-color: darken($color, 25%);
+    }
   }
 
   &.disabled,
