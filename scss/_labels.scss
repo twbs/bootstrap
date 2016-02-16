@@ -6,7 +6,7 @@
 .label {
   display: inline-block;
   padding: $label-padding-y $label-padding-x;
-  font-size: 75%;
+  font-size: $label-font-size;
   font-weight: $label-font-weight;
   line-height: 1;
   color: $label-color;
