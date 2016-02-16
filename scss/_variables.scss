@@ -426,6 +426,7 @@ $form-icon-danger: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www
 //
 // Dropdown menu container and contents.
 
+$dropdown-min-width:             160px !default;
 $dropdown-bg:                    #fff !default;
 $dropdown-border-color:          rgba(0,0,0,.15) !default;
 $dropdown-border-width:          $border-width !default;
