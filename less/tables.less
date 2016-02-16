@@ -365,7 +365,15 @@ table {
     &.table {
         tr {
             padding-top: (@padding-base-vertical * 2);
-            clear: both;
+
+            &:before,
+            &:after {
+              content: " "; // 1
+              display: table; // 2
+            }
+            &:after {
+              clear: both;
+            }
         }
         tbody th {
             border-bottom: 1px solid @table-border-color;
@@ -397,5 +405,11 @@ table {
             background-color: transparent !important;
             padding-top: 0;
     	}
+    }
+}
+
+@media screen and (max-width: 400px) {
+    td {
+        min-width: 100% !important;
     }
 }
