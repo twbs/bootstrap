@@ -48,7 +48,7 @@
   position: relative;
   background-color: $modal-content-bg;
   background-clip: padding-box;
-  border: 1px solid $modal-content-border-color;
+  border: $modal-content-border-width solid $modal-content-border-color;
   @include border-radius($border-radius-lg);
   @include box-shadow($modal-content-xs-box-shadow);
   // Remove focus outline from opened modal
