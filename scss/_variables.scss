@@ -641,6 +641,8 @@ $modal-backdrop-bg:           #000 !default;
 $modal-backdrop-opacity:      .5 !default;
 $modal-header-border-color:   #e5e5e5 !default;
 $modal-footer-border-color:   $modal-header-border-color !default;
+$modal-header-border-width:   $border-width !default;
+$modal-footer-border-width:   $modal-header-border-width !default;
 
 $modal-lg:                    900px !default;
 $modal-md:                    600px !default;
