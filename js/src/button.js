@@ -93,7 +93,7 @@ const Button = (($) => {
             $(this._element).trigger('change')
           }
 
-          $(input).trigger('focus')
+          input.focus()
         }
 
       } else {
