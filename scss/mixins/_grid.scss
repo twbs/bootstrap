@@ -33,11 +33,11 @@
   margin-right: ($gutter / -2);
 }
 
-@mixin make-col($size, $columns: $grid-columns) {
+@mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
   position: relative;
   min-height: 1px;
-  padding-right: ($grid-gutter-width / 2);
-  padding-left:  ($grid-gutter-width / 2);
+  padding-right: ($gutter / 2);
+  padding-left:  ($gutter / 2);
 
   @if $enable-flex {
     flex: 0 0 percentage($size / $columns);
