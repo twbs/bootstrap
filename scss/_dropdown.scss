@@ -44,7 +44,7 @@
   float: left;
   min-width: $dropdown-min-width;
   padding: 5px 0;
-  margin: 2px 0 0; // override default ul
+  margin: $dropdown-margin-top 0 0; // override default ul
   font-size: $font-size-base;
   color: $body-color;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
@@ -175,6 +175,6 @@
   .dropdown-menu {
     top: auto;
     bottom: 100%;
-    margin-bottom: 2px;
+    margin-bottom: $dropdown-margin-top;
   }
 }
