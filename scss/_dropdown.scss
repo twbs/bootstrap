@@ -67,7 +67,7 @@
 .dropdown-item {
   display: block;
   width: 100%; // For `<button>`s
-  padding: 3px 20px;
+  padding: 3px $dropdown-item-padding-x;
   clear: both;
   font-weight: normal;
   color: $dropdown-link-color;
@@ -141,7 +141,7 @@
 // Dropdown section headers
 .dropdown-header {
   display: block;
-  padding: 5px 20px;
+  padding: 5px $dropdown-item-padding-x;
   font-size: $font-size-sm;
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a
