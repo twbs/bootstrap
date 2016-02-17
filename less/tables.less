@@ -5,6 +5,7 @@
 
 table {
   background-color: @table-bg;
+  border-collapse: separate;
 }
 caption {
   padding-top: @table-cell-padding;
@@ -40,7 +41,10 @@ th {
   // Bottom align for column headings
   > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 2px solid @table-border-color;
+
+    a {
+      text-decoration: none;
+    }
   }
   // Remove top border from thead by default
   > caption + thead,
@@ -55,7 +59,7 @@ th {
   }
   // Account for multiple tbody instances
   > tbody + tbody {
-    border-top: 2px solid @table-border-color;
+    border-top: 1px solid @table-border-color;
   }
 
   // Nesting
@@ -65,10 +69,15 @@ th {
 
   > thead,
   > tfoot {
-      font-size: (@font-size-small - 2px);
+      font-size: @font-size-small;
+      color: @brand-blue;
   }
   > tbody {
       font-size: @font-size-small;
+
+      > tr > th {
+          color: @brand-primary;
+      }
   }
 }
 
@@ -101,14 +110,8 @@ th {
     > tr {
       > th,
       > td {
-        border: 1px solid @table-border-color;
+        // border: 1px solid @table-border-color;
       }
-    }
-  }
-  > thead > tr {
-    > th,
-    > td {
-      border-bottom-width: 2px;
     }
   }
 }
@@ -180,9 +183,13 @@ table {
   overflow-x: auto;
   min-height: 0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
 
+  &.table-bordered {
+    border: 0;
+  }
+
   @media screen and (max-width: @screen-xs-max) {
     width: 100%;
-    margin-bottom: (@line-height-computed * 0.75);
+    margin-bottom: @line-height-computed;
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     /*border: 1px solid @table-border-color;*/
@@ -236,180 +243,49 @@ table {
           }
         }
       }
+    }
 
+    &.table-bordered {
+      border: 1px solid @table-border-color;
+      border-radius: @border-radius-base;
     }
   }
 }
 
-
-
 .table-bordered {
-    border-radius: @border-radius-small;
+    border-radius: @border-radius-base;
 
     > thead {
         background-color: @gray-base;
     }
-
-    > tbody {
-        > tr > th {
-            color: @brand-primary;
-        }
-    }
-
-    > thead > tr > th,
-    > tbody > tr > th,
-    > tfoot > tr > th,
-    > thead > tr > td,
-    > tbody > tr > td,
-    > tfoot > tr > td {
-        border-left: none;
-        border-right: none;
-    }
 }
 
-.table {
-    > thead > tr > th {
-       border-bottom-width: 1px;
-   }
-}
-
-@media screen and (max-width: @screen-sm-max) {
-
-	/* Force table to not be like tables anymore */
-	.table, thead, tbody, th, td, tr {
-		display: block;
-	}
-
-    .table {
-    	thead, tbody, th, td, tr {
-            display: block;
+.panel {
+    > .table,
+    > .table-responsive {
+        th:first-child,
+        td:first-child {
+            padding-left: @panel-body-padding-collapse;
         }
-    	/* Hide table headers (but not display: none;, for accessibility) */
-    	thead tr {
-    		position: absolute;
-    		top: -9999px;
-    		left: -9999px;
-    	}
-
-    	tr {
-            border: 1px solid @table-border-color;
-            border-radius: @border-radius-base;
-            margin-bottom: (@padding-base-vertical * 3);
-        }
-        tr:last-child {
-            margin-bottom: 0;
-        }
-
-    	td {
-    		/* Behave  like a "row" */
-    		border: none;
-    		border-top: 1px solid #eee;
-    		position: relative;
-    		padding-left: 50% !important;
-            white-space: nowrap;
-            overflow-x: auto;
-    	}
-        th {
-            border-top: 0 !important;
-        }
-
-    	td:before {
-    		/* Now like a table header */
-    		position: absolute;
-    		width: 45%;
-
-    		/* Top/left values mimic padding */
-            /*
-    		padding-right: 10px;*/
-            top: 0px;
-    		left: 0px;
-    		white-space: nowrap;
-            background-color: @gray-base;
-            padding: @table-cell-padding;
-    	}
-
-    	/*
-    	Label the data
-    	*/
-    	td:nth-of-type(1):before { content: "First Name"; }
-    	td:nth-of-type(2):before { content: "Last Name"; }
-    	td:nth-of-type(3):before { content: "Job Title"; }
-    	td:nth-of-type(4):before { content: "Favorite Color"; }
-    	td:nth-of-type(5):before { content: "City"; }
-    	td:nth-of-type(6):before { content: "Country"; }
-    	td:nth-of-type(7):before { content: "Date of Birth"; }
-
-        &.table-bordered {
-            border: 0 !important;
-            tr {
-                border-top-width: 1px;
-            }
-            td, th {
-                border-left-width: 0px !important;
-                border-right-width: 0px !important;
-                border-bottom-width: 0px !important;
-            }
-        }
-        caption {
-            display: block;
-        }
-
-        &.table-responsive {
-            border: 0 !important;
+        th:last-child,
+        td:last-child {
+            padding-right: @panel-body-padding-collapse;
         }
     }
 }
 
-@media screen and (max-width: @screen-xs-max) {
-    /* Display like description list */
-    &.table {
-        tr {
-            padding-top: (@padding-base-vertical * 2);
-
-            &:before,
-            &:after {
-              content: " "; // 1
-              display: table; // 2
+@media screen and (min-width: @screen-sm-min) {
+    .panel {
+        > .table,
+        > .table-responsive {
+            th:first-child,
+            td:first-child {
+                padding-left: @panel-body-padding;
             }
-            &:after {
-              clear: both;
+            th:last-child,
+            td:last-child {
+                padding-right: @panel-body-padding;
             }
         }
-        tbody th {
-            border-bottom: 1px solid @table-border-color;
-            margin-bottom: @line-height-computed;
-
-            &:first-child {
-                margin-top: (@padding-base-vertical * -2);
-            }
-        }
-        td {
-            padding: @line-height-computed @table-cell-padding 0 !important;
-            color: @brand-blue-plus-20;
-            margin-bottom: @line-height-computed;
-            border-top: 0 !important;
-            white-space: normal;
-
-            float: left;
-            min-width: 50%;
-        }
-        td:before {
-    		/* Now like a table header */
-    		position: absolute;
-            top: 0px;
-    		left: 0px;
-            width: 100%;
-            font-size: @font-size-small;
-            line-height: @line-height-computed;
-            color: @brand-grey-plus-10;
-            background-color: transparent !important;
-            padding-top: 0;
-    	}
-    }
-}
-
-@media screen and (max-width: 400px) {
-    td {
-        min-width: 100% !important;
     }
 }
