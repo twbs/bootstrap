@@ -9,7 +9,7 @@ samp {
 // Inline code
 code {
   padding: .2rem .4rem;
-  font-size: 90%;
+  font-size: $code-font-size;
   color: $code-color;
   background-color: $code-bg;
   @include border-radius($border-radius);
@@ -18,7 +18,7 @@ code {
 // User input typically entered via keyboard
 kbd {
   padding: .2rem .4rem;
-  font-size: 90%;
+  font-size: $code-font-size;
   color: $kbd-color;
   background-color: $kbd-bg;
   @include border-radius($border-radius-sm);
@@ -37,7 +37,7 @@ pre {
   display: block;
   margin-top: 0;
   margin-bottom: 1rem;
-  font-size: 90%;
+  font-size: $code-font-size;
   color: $pre-color;
 
   // Account for some code outputs that place code tags in pre tags
