@@ -108,6 +108,8 @@
                 input.checked = !$(this._element).hasClass(ClassName.ACTIVE);
                 $(this._element).trigger('change');
               }
+
+              $(input).trigger('focus');
             }
           } else {
             this._element.setAttribute('aria-pressed', !$(this._element).hasClass(ClassName.ACTIVE));
