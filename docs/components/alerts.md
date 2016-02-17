@@ -30,6 +30,9 @@ Alerts are available for any length of text, as well as an optional dismiss butt
 </div>
 {% endexample %}
 
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 ### Link color
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
