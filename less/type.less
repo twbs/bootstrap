@@ -267,13 +267,14 @@ dd {
   @media (min-width: @grid-float-breakpoint) {
     dt {
       float: left;
-      width: (@dl-horizontal-offset - 20);
+      width: (@dl-horizontal-offset - 24);
       clear: left;
       text-align: right;
       .text-overflow();
     }
     dd {
       margin-left: @dl-horizontal-offset;
+      margin-bottom: (@padding-base-vertical * 2);
     }
   }
 }

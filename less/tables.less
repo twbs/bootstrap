@@ -5,6 +5,7 @@
 
 table {
   background-color: @table-bg;
+  border-collapse: separate;
 }
 caption {
   padding-top: @table-cell-padding;
@@ -40,7 +41,10 @@ th {
   // Bottom align for column headings
   > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 2px solid @table-border-color;
+
+    a {
+      text-decoration: none;
+    }
   }
   // Remove top border from thead by default
   > caption + thead,
@@ -55,7 +59,7 @@ th {
   }
   // Account for multiple tbody instances
   > tbody + tbody {
-    border-top: 2px solid @table-border-color;
+    border-top: 1px solid @table-border-color;
   }
 
   // Nesting
@@ -65,10 +69,15 @@ th {
 
   > thead,
   > tfoot {
-      font-size: (@font-size-small - 2px);
+      font-size: @font-size-small;
+      color: @brand-blue;
   }
   > tbody {
       font-size: @font-size-small;
+
+      > tr > th {
+          color: @brand-primary;
+      }
   }
 }
 
@@ -101,14 +110,8 @@ th {
     > tr {
       > th,
       > td {
-        border: 1px solid @table-border-color;
+        // border: 1px solid @table-border-color;
       }
-    }
-  }
-  > thead > tr {
-    > th,
-    > td {
-      border-bottom-width: 2px;
     }
   }
 }
@@ -180,12 +183,16 @@ table {
   overflow-x: auto;
   min-height: 0.01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
 
+  &.table-bordered {
+    border: 0;
+  }
+
   @media screen and (max-width: @screen-xs-max) {
     width: 100%;
-    margin-bottom: (@line-height-computed * 0.75);
+    margin-bottom: @line-height-computed;
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    border: 1px solid @table-border-color;
+    /*border: 1px solid @table-border-color;*/
 
     // Tighten up spacing
     > .table {
@@ -236,39 +243,49 @@ table {
           }
         }
       }
+    }
 
+    &.table-bordered {
+      border: 1px solid @table-border-color;
+      border-radius: @border-radius-base;
     }
   }
 }
 
-
-
 .table-bordered {
-    border-radius: @border-radius-small;
+    border-radius: @border-radius-base;
 
     > thead {
         background-color: @gray-base;
     }
+}
 
-    > tbody {
-        > tr > th {
-            color: @brand-primary;
+.panel {
+    > .table,
+    > .table-responsive {
+        th:first-child,
+        td:first-child {
+            padding-left: @panel-body-padding-collapse;
         }
-    }
-
-    > thead > tr > th,
-    > tbody > tr > th,
-    > tfoot > tr > th,
-    > thead > tr > td,
-    > tbody > tr > td,
-    > tfoot > tr > td {
-        border-left: none;
-        border-right: none;
+        th:last-child,
+        td:last-child {
+            padding-right: @panel-body-padding-collapse;
+        }
     }
 }
 
-.table {
-    > thead > tr > th {
-       border-bottom-width: 1px;
-   }
+@media screen and (min-width: @screen-sm-min) {
+    .panel {
+        > .table,
+        > .table-responsive {
+            th:first-child,
+            td:first-child {
+                padding-left: @panel-body-padding;
+            }
+            th:last-child,
+            td:last-child {
+                padding-right: @panel-body-padding;
+            }
+        }
+    }
 }

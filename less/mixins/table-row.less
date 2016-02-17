@@ -10,40 +10,7 @@
     > th.@{state},
     &.@{state} > td,
     &.@{state} > th {
-      border-color: @border;
-    }
-  }
-
-  .table > thead > tr,
-  .table > tbody > tr,
-  .table > tfoot > tr {
-    &.@{state} > td:first-child,
-    &.@{state} > th:first-child {
-      position: relative;
-      &:before {
-          content: "";
-          width: @alert-bar-width;
-          background-color: @border;
-          position: absolute;
-          display: block;
-          height: 100%;
-          left: 0px;
-          top: -1px;
-      }
-      &:after {
-          content: "";
-          width: @alert-bar-width;
-          background-color: @border;
-          position: absolute;
-          display: block;
-          height: 100%;
-          left: 0px;
-          bottom: 0;
-      }
-    }
-    &.@{state} > td:last-child,
-    &.@{state} > th:last-child {
-      border-right: 1px solid @border !important;
+      background-color: @background;
     }
   }
 
