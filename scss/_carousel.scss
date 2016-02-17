@@ -171,8 +171,8 @@
 
   li {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: $carousel-indicator-size;
+    height: $carousel-indicator-size;
     margin: 1px;
     text-indent: -999px;
     cursor: pointer;
@@ -183,11 +183,12 @@
     // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Internet_Explorer
     background-color: rgba(0,0,0,0); // IE9
     border: 1px solid $carousel-indicator-border-color;
-    border-radius: 10px;
+    border-radius: $carousel-indicator-size;
   }
+
   .active {
-    width: 12px;
-    height: 12px;
+    width: $carousel-indicator-active-size;
+    height: $carousel-indicator-active-size;
     margin: 0;
     background-color: $carousel-indicator-active-bg;
   }
