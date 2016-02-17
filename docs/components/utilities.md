@@ -160,11 +160,8 @@ Similar to the contextual text color classes, easily set the background of an el
 Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
 {% endcallout %}
 
-{% callout warning %}
-#### Conveying meaning to assistive technologies
-
-Ensure that any meaning conveyed through color is also conveyed in a format that is not purely presentational.
-{% endcallout %}
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 ## Close icon
 

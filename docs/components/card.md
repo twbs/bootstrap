@@ -362,6 +362,9 @@ Cards include their own variant classes for quickly changing the `background-col
 </div>
 {% endexample %}
 
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 ## Outline variants
 
 In need of a colored card, but not the hefty background colors they bring? Replace the default modifier classes with the `.card-outline-*` ones to style just the `border-color` of a card.

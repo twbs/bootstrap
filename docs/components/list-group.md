@@ -104,6 +104,9 @@ Use contextual classes to style list items, default or linked. Also includes `.a
 </div>
 {% endexample %}
 
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 ## Custom content
 
 Add nearly any HTML within, even for linked list groups like the one below.

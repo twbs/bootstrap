@@ -32,6 +32,9 @@ Add any of the below mentioned modifier classes to change the appearance of a ta
 <span class="tag tag-danger">Danger</span>
 {% endexample %}
 
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 ## Pill tags
 
 Use the `.tag-pill` modifier class to make tags more rounded (with a larger `border-radius` and additional horizontal `padding`). Useful if you miss the badges from v3.
