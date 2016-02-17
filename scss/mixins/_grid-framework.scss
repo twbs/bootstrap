@@ -22,7 +22,7 @@
 
       @for $i from 1 through $columns {
         .col-#{$breakpoint}-#{$i} {
-          @include make-col($i, $columns);
+          @include make-col($i, $columns, $gutter);
         }
       }
 
