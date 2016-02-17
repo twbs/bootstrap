@@ -15,13 +15,13 @@
   vertical-align: baseline;
   @include border-radius();
 
-  // Empty labels collapse automatically
+  // Empty tags collapse automatically
   &:empty {
     display: none;
   }
 }
 
-// Quick fix for labels in buttons
+// Quick fix for tags in buttons
 .btn .tag {
   position: relative;
   top: -1px;
@@ -38,7 +38,7 @@ a.tag {
 }
 // scss-lint:enable QualifyingElement
 
-// Pill labels
+// Pill tags
 //
 // Make them extra rounded with a modifier to replace v3's badges.
 
@@ -50,7 +50,7 @@ a.tag {
 
 // Colors
 //
-// Contextual variations (linked labels get darker on :hover).
+// Contextual variations (linked tags get darker on :hover).
 
 .tag-default {
   @include tag-variant($tag-default-bg);
