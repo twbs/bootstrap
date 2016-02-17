@@ -270,7 +270,7 @@ th {
   .dropup > .btn > .caret {
     border-top-color: #000 !important;
   }
-  .label {
+  .tag {
     border: 1px solid #000;
   }
   .table {
@@ -4506,7 +4506,7 @@ input[type="button"].btn-block {
   border-top-right-radius: 0.2rem;
 }
 
-.label {
+.tag {
   display: inline-block;
   padding: 0.25em 0.4em;
   font-size: 75%;
@@ -4519,72 +4519,72 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
 }
 
-.label:empty {
+.tag:empty {
   display: none;
 }
 
-.btn .label {
+.btn .tag {
   position: relative;
   top: -1px;
 }
 
-a.label:focus, a.label:hover {
+a.tag:focus, a.tag:hover {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
 
-.label-pill {
+.tag-pill {
   padding-right: 0.6em;
   padding-left: 0.6em;
   border-radius: 10rem;
 }
 
-.label-default {
+.tag-default {
   background-color: #818a91;
 }
 
-.label-default[href]:focus, .label-default[href]:hover {
+.tag-default[href]:focus, .tag-default[href]:hover {
   background-color: #687077;
 }
 
-.label-primary {
+.tag-primary {
   background-color: #0275d8;
 }
 
-.label-primary[href]:focus, .label-primary[href]:hover {
+.tag-primary[href]:focus, .tag-primary[href]:hover {
   background-color: #025aa5;
 }
 
-.label-success {
+.tag-success {
   background-color: #5cb85c;
 }
 
-.label-success[href]:focus, .label-success[href]:hover {
+.tag-success[href]:focus, .tag-success[href]:hover {
   background-color: #449d44;
 }
 
-.label-info {
+.tag-info {
   background-color: #5bc0de;
 }
 
-.label-info[href]:focus, .label-info[href]:hover {
+.tag-info[href]:focus, .tag-info[href]:hover {
   background-color: #31b0d5;
 }
 
-.label-warning {
+.tag-warning {
   background-color: #f0ad4e;
 }
 
-.label-warning[href]:focus, .label-warning[href]:hover {
+.tag-warning[href]:focus, .tag-warning[href]:hover {
   background-color: #ec971f;
 }
 
-.label-danger {
+.tag-danger {
   background-color: #d9534f;
 }
 
-.label-danger[href]:focus, .label-danger[href]:hover {
+.tag-danger[href]:focus, .tag-danger[href]:hover {
   background-color: #c9302c;
 }
 
