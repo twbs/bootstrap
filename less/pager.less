@@ -14,7 +14,7 @@
     > a,
     > span {
       display: inline-block;
-      padding: 8px 16px;
+      padding: (@padding-base-vertical - 1px) (@padding-base-horizontal - 1px);
       background-color: @pager-bg;
       border: 1px solid @pager-border;
       border-radius: @pager-border-radius;
@@ -24,6 +24,8 @@
     > a:focus {
       text-decoration: none;
       background-color: @pager-hover-bg;
+      border-color: @pager-hover-border;
+      color: @pager-hover-color;
     }
   }
 
@@ -49,6 +51,7 @@
       color: @pager-disabled-color;
       background-color: @pager-bg;
       cursor: @cursor-disabled;
+      border-color: @pager-border;
     }
   }
 }
