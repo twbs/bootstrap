@@ -163,9 +163,9 @@
   bottom: 10px;
   left: 50%;
   z-index: 15;
-  width: 60%;
+  width: $carousel-indicators-width;
   padding-left: 0;
-  margin-left: -30%;
+  margin-left: -($carousel-indicators-width / 2);
   text-align: center;
   list-style: none;
 
