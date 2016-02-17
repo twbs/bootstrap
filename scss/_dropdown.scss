@@ -43,7 +43,7 @@
   display: none; // none by default, but block on "open" of the menu
   float: left;
   min-width: $dropdown-min-width;
-  padding: 5px 0;
+  padding: $dropdown-padding-y 0;
   margin: $dropdown-margin-top 0 0; // override default ul
   font-size: $font-size-base;
   color: $body-color;
@@ -141,7 +141,7 @@
 // Dropdown section headers
 .dropdown-header {
   display: block;
-  padding: 5px $dropdown-item-padding-x;
+  padding: $dropdown-padding-y $dropdown-item-padding-x;
   font-size: $font-size-sm;
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a
