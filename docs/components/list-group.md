@@ -24,22 +24,22 @@ The most basic list group is simply an unordered list with list items, and the p
 </ul>
 {% endexample %}
 
-## Labels
+## Tags
 
-Add labels to any list group item to show unread counts, activity, etc.
+Add tags to any list group item to show unread counts, activity, etc.
 
 {% example html %}
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="label label-default label-pill pull-xs-right">14</span>
+    <span class="tag tag-default tag-pill pull-xs-right">14</span>
     Cras justo odio
   </li>
   <li class="list-group-item">
-    <span class="label label-default label-pill pull-xs-right">2</span>
+    <span class="tag tag-default tag-pill pull-xs-right">2</span>
     Dapibus ac facilisis in
   </li>
   <li class="list-group-item">
-    <span class="label label-default label-pill pull-xs-right">1</span>
+    <span class="tag tag-default tag-pill pull-xs-right">1</span>
     Morbi leo risus
   </li>
 </ul>
