@@ -13,6 +13,7 @@
   position: relative;
   display: inline;
   padding-left: $custom-control-gutter;
+  cursor: pointer;
 
   + .custom-control {
     margin-left: $custom-control-spacer-x;
