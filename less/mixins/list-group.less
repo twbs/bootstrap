@@ -3,14 +3,10 @@
 .list-group-item-variant(@state; @background; @color) {
   .list-group-item-@{state} {
     color: inherit;
-    background-color: @brand-white;
-    border-left-width: @alert-bar-width !important;
-    border-right-width: 1px !important;
-    border-color: @color;
-    padding-left: (@padding-container-collapse - @alert-bar-width + 1);
+    background-color: @background;
 
     .list-group-item-heading {
-    color: @color;
+      color: @color;
     }
 
     a& {
@@ -26,28 +22,7 @@
       &.active:focus {
         color: #fff;
         background-color: @color;
-        border-color: @color;
       }
-    }
-
-    + .list-group-item {
-        border-top-color: @color;
-    }
-  }
-
-  .panel .list-group-item-@{state} {
-      padding-left: (@padding-container-collapse - @alert-bar-width);
-  }
-
-  @media (min-width: @screen-sm-min) {
-    .list-group-item-@{state} {
-      padding-left: (@padding-container - @alert-bar-width + 1px);
-    }
-
-    .panel > .list-group > .list-group-item-@{state} {
-        padding-left: (@padding-container - @alert-bar-width + 1px);
-        margin-left: -1px;
-        margin-right: -1px;
     }
   }
 }
