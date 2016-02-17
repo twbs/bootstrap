@@ -225,16 +225,16 @@
   .carousel-control {
     .icon-prev,
     .icon-next {
-      width: 30px;
-      height: 30px;
-      margin-top: -15px;
-      font-size: 30px;
+      width: $carousel-control-sm-up-size;
+      height: $carousel-control-sm-up-size;
+      margin-top: -($carousel-control-sm-up-size / 2);
+      font-size: $carousel-control-sm-up-size;
     }
     .icon-prev {
-      margin-left: -15px;
+      margin-left: -($carousel-control-sm-up-size / 2);
     }
     .icon-next {
-      margin-right: -15px;
+      margin-right: -($carousel-control-sm-up-size / 2);
     }
   }
 
