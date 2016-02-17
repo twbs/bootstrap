@@ -60,14 +60,14 @@ hr {
 
 small,
 .small {
-  font-size: 80%;
+  font-size: $small-font-size;
   font-weight: normal;
 }
 
 mark,
 .mark {
   padding: $mark-padding;
-  background-color: $state-warning-bg;
+  background-color: $mark-bg;
 }
 
 

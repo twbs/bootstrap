@@ -114,7 +114,7 @@ $link-hover-decoration: underline !default;
 
 // Grid breakpoints
 //
-// Define the minimum and maximum dimensions at which your layout will change,
+// Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
 $grid-breakpoints: (
@@ -192,6 +192,8 @@ $headings-color:         inherit !default;
 
 $lead-font-size:   1.25rem !default;
 $lead-font-weight: 300 !default;
+
+$small-font-size: 80% !default;
 
 $text-muted: $gray-light !default;
 
@@ -428,6 +430,7 @@ $form-icon-danger: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www
 //
 // Dropdown menu container and contents.
 
+$dropdown-min-width:             160px !default;
 $dropdown-bg:                    #fff !default;
 $dropdown-border-color:          rgba(0,0,0,.15) !default;
 $dropdown-border-width:          $border-width !default;
@@ -551,6 +554,7 @@ $state-info-border:              darken($state-info-bg, 7%) !default;
 
 $state-warning-text:             #8a6d3b !default;
 $state-warning-bg:               #fcf8e3 !default;
+$mark-bg:                        $state-warning-bg !default;
 $state-warning-border:           darken($state-warning-bg, 5%) !default;
 
 $state-danger-text:              #a94442 !default;
@@ -620,8 +624,15 @@ $label-danger-bg:             $brand-danger !default;
 
 $label-color:                 #fff !default;
 $label-link-hover-color:      #fff !default;
+$label-font-size:             75% !default;
 $label-font-weight:           bold !default;
+$label-padding-x:             .4em !default;
+$label-padding-y:             .25em !default;
 
+$label-pill-padding-x:        .6em !default;
+// Use a higher than normal value to ensure completely rounded edges when
+// customizing padding or font-size on labels.
+$label-pill-border-radius:    10rem !default;
 
 // Modals
 

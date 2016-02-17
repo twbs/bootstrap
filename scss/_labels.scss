@@ -5,8 +5,8 @@
 
 .label {
   display: inline-block;
-  padding: .25em .4em;
-  font-size: 75%;
+  padding: $label-padding-y $label-padding-x;
+  font-size: $label-font-size;
   font-weight: $label-font-weight;
   line-height: 1;
   color: $label-color;
@@ -43,11 +43,9 @@ a.label {
 // Make them extra rounded with a modifier to replace v3's badges.
 
 .label-pill {
-  padding-right: .6em;
-  padding-left: .6em;
-  // Use a higher than normal value to ensure completely rounded edges when
-  // customizing padding or font-size on labels.
-  @include border-radius(10rem);
+  padding-right: $label-pill-padding-x;
+  padding-left: $label-pill-padding-x;
+  @include border-radius($label-pill-border-radius);
 }
 
 // Colors
