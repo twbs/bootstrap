@@ -126,9 +126,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - An explicit class, `.breadcrumb-item`, is now required on the descendants of `.breadcrumb`s
 
-### Badges
+### Labels and badges
 
-- Dropped the badge component. Use the `.tag-pill` modifier together with the tag component instead.
+- Renamed `.label` to `.tag` to disambiguate from the `<label>` element.
+- Dropped the badge component. Use the `.tag-pill` modifier together with the label component instead.
 
 ### Panels, thumbnails, and wells
 
