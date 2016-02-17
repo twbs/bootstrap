@@ -6210,6 +6210,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #829ca9;
   cursor: not-allowed;
   background-color: #fff;
+  border-color: #d3d5d8;
 }
 .label {
   display: inline;
