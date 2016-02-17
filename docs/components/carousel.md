@@ -56,7 +56,7 @@ The `.active` class needs to be added to one of the slides. Otherwise, the carou
 
 ### Optional captions
 
-Add captions to your slides easily with the `.carousel-caption` element within any `.carousel-item`. Place just about any optional HTML within there and it will be automatically aligned and formatted.
+Add captions to your slides easily with the `.carousel-caption` element within any `.carousel-item`. Place just about any optional HTML within there and it will be automatically aligned and formatted. Captions are hidden by default for smaller viewports.
 
 <div class="bd-example">
   <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
