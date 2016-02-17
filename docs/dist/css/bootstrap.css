@@ -7953,6 +7953,106 @@ button.close {
             transform: rotate(360deg);
   }
 }
+.tile-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.tile-row .tile-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+          align-items: stretch;
+}
+.tile-row .tile-container .tile {
+  position: relative;
+  display: inline-block;
+  min-width: 100%;
+  padding: 24px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #f2f5f7;
+  border: 1px solid #d3d5d8;
+  border-radius: 3px;
+  outline: none;
+  -webkit-transition: all .1s ease-in-out;
+       -o-transition: all .1s ease-in-out;
+          transition: all .1s ease-in-out;
+}
+.tile-row .tile-container .tile:hover:not(.tile-disabled) {
+  background-color: #e2e6e8;
+}
+.tile-row .tile-container .tile:active:not(.tile-disabled) {
+  background-color: #e2e6e8;
+  border: 1px solid #00b9ff;
+}
+.tile-row .tile-container .tile p {
+  margin-bottom: 0;
+}
+.tile-row .tile-container .tile .circle {
+  margin: auto;
+  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: 500;
+  color: #00b9ff;
+  text-transform: uppercase;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+          background-size: cover;
+  border-color: #d3d5d8;
+}
+.tile-row .tile-container .tile .circle i {
+  font-size: 40px;
+}
+.tile-row .tile-container .tile .tile-ribbon-benefit {
+  position: absolute;
+  top: 24px;
+  left: -40px;
+  width: 160px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 32px;
+  color: #fff;
+  text-align: center;
+  background-color: #00b9ff;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+       -o-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.tile-row .tile-container .tile-disabled {
+  color: #a8aaac;
+  cursor: not-allowed;
+  background-color: #fff;
+  border: 1px solid #e2e6e8;
+}
+.tile-row .tile-container .tile-disabled h5 {
+  color: #a8aaac;
+}
+.tile-row .tile-container .tile-disabled .circle {
+  color: #a8aaac;
+}
+.tile-row .tile-container .tile-disabled i {
+  color: #a8aaac;
+}
+@media screen and (max-width: 767px) {
+  .tile-row {
+    display: block;
+  }
+}
 .modal-open {
   overflow: hidden;
 }
@@ -9403,7 +9503,7 @@ a.circle.active:hover {
   font-style: normal;
   font-weight: normal;
 
-  src: url('../fonts/TransferWise-IconFont.ttf?eu2k23') format('truetype'), url('../fonts/TransferWise-IconFont.woff?eu2k23') format('woff'), url('../fonts/TransferWise-IconFont.svg?eu2k23#TransferWise-IconFont') format('svg');
+  src: url('../fonts/TransferWise-IconFont.ttf?ny1zvb') format('truetype'), url('../fonts/TransferWise-IconFont.woff?ny1zvb') format('woff'), url('../fonts/TransferWise-IconFont.svg?ny1zvb#TransferWise-IconFont') format('svg');
 }
 .icon {
   /* use !important to prevent issues with browser extensions that change ../fonts */
@@ -9426,6 +9526,57 @@ a.circle.active:hover {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.icon-chart:before {
+  content: "\e936";
+}
+.icon-chat:before {
+  content: "\e937";
+}
+.icon-down-arrow:before {
+  content: "\e938";
+}
+.icon-download:before {
+  content: "\e939";
+}
+.icon-facebook-inverse:before {
+  content: "\e93a";
+}
+.icon-facebook:before {
+  content: "\e93b";
+}
+.icon-fast-flag:before {
+  content: "\e93c";
+}
+.icon-google:before {
+  content: "\e93d";
+}
+.icon-left-arrow:before {
+  content: "\e93e";
+}
+.icon-left:before {
+  content: "\e93f";
+}
+.icon-login:before {
+  content: "\e940";
+}
+.icon-right-arrow:before {
+  content: "\e941";
+}
+.icon-right:before {
+  content: "\e942";
+}
+.icon-twitter:before {
+  content: "\e947";
+}
+.icon-unlock:before {
+  content: "\e948";
+}
+.icon-up-arrow:before {
+  content: "\e949";
+}
+.icon-upload:before {
+  content: "\e94a";
 }
 .icon-send:before {
   content: "\e900";
@@ -9468,9 +9619,6 @@ a.circle.active:hover {
 }
 .icon-camera:before {
   content: "\e90c";
-}
-.icon-wifi:before {
-  content: "\e90d";
 }
 .icon-globe:before {
   content: "\e90e";

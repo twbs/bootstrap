@@ -1,0 +1,232 @@
+<div class="bs-docs-section">
+  <h1 id="tiles" class="page-header">Tiles</h1>
+  <p class="lead">Provide a set of related clickable options that are easily glanceable and compareable.</p>
+
+  <p class="text-warning">
+    Use Bootstrap's grid system to arrange the tiles with sensible sizing. Tiles always sit within a <code>class="row tile-row"</code>
+  </p>
+
+  <h2 id="tiles-simple">Simple Tile</h2>
+  <p>At it's simplest form, tiles show an abbreviation or icon and a title.</p>
+
+  <div class="row tile-row">
+
+    <div class="col-md-4 tile-container">
+      <div class="tile">
+        <div class="circle circle-lg">
+          KP
+        </div>
+        <h5>Myself</h5>
+      </div>
+    </div>
+
+    <div class="col-md-4 tile-container">
+      <div class="tile">
+        <div class="circle circle-lg">
+          <i class="icon icon-profile"></i>
+        </div>
+        <h5>Someone else</h5>
+      </div>
+    </div>
+
+    <div class="col-md-4 tile-container">
+      <div class="tile">
+        <div class="circle circle-lg">
+          <i class="icon icon-briefcase"></i>
+        </div>
+        <h5>TransferWise Ltd.</h5>
+      </div>
+    </div>
+
+  </div>
+
+  {% highlight html %}
+  <div class="col-md-4 tile-container">
+    <div class="tile">
+      <div class="circle circle-lg">
+        ...
+      </div>
+      <h5>...</h5>
+    </div>
+  </div>
+  {% endhighlight %}
+
+
+  <h2 id="tiles-images">Tiles with images</h2>
+  <p>If you want an image e.g. a user avatar, add a <code>background-image</code> as a <code>style</code> property on the <code>.circle</code> div. </p>
+
+  <div class="row tile-row">
+
+    <div class="col-md-4 tile-container">
+      <div class="tile">
+        <div class="circle circle-lg" style="background-image: url('/assets/img/kish.jpg');"></div>
+        <h5>Myself</h5>
+      </div>
+    </div>
+
+  </div>
+
+  {% highlight html %}
+  <div class="col-md-4 tile-container">
+    <div class="tile">
+      <div class="circle circle-lg" style="background-image: url('...');"></div>
+      <h5>...</h5>
+    </div>
+  </div>
+  {% endhighlight %}
+
+
+  <h2 id="tiles-descriptive">Tiles with a short descriptive text</h2>
+  <p>Be concise when adding more text. The user will use this information to compare between options.</p>
+
+  <div class="row tile-row">
+
+    <div class="col-md-4 tile-container">
+      <div class="tile">
+        <div class="circle circle-lg" style="background-image: url('/assets/img/mike.jpg');"></div>
+        <h5>Mike Marter</h5>
+        <p>EUR account ending 2843</p>
+      </div>
+    </div>
+
+    <div class="col-md-4 tile-container">
+      <div class="tile">
+        <div class="circle circle-lg" style="background-image: url('/assets/img/mo.jpg');"></div>
+        <h5>The Mo</h5>
+        <p>EUR account ending 5234</p>
+      </div>
+    </div>
+
+    <div class="col-md-4 tile-container">
+      <div class="tile">
+        <div class="circle circle-lg" style="background-image: url('/assets/img/kish.jpg');"></div>
+        <h5>Kish Patel</h5>
+        <p>EUR account ending 6798</p>
+      </div>
+    </div>
+
+  </div>
+
+  {% highlight html %}
+  <div class="col-md-4 tile-container">
+    <div class="tile">
+      <div class="circle circle-lg" style="background-image: url('...');"></div>
+      <h5>...</h5>
+      <p>...</p>
+    </div>
+  </div>
+  {% endhighlight %}
+
+
+  <h2 id="tiles-unique">Tiles with unique information</h2>
+  <p>When the option has further information unique to it alone and it is 100% necessary to show it, do so below a <code>hr</code> tag within a <code>p</code></p>
+
+  <div class="row tile-row">
+
+    <div class="col-md-4 col-sm-12 tile-container">
+      <div class="tile">
+        <div class="circle circle-lg">
+          <i class="icon icon-card"></i>
+        </div>
+        <h5>Credit Card</h5>
+        <p>Visa and Mastercard are supported</p>
+        <hr>
+        <p>+£1 card fee</p>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-12 tile-container">
+      <div class="tile">
+          <div class="circle circle-lg">
+            <i class="icon icon-card"></i>
+          </div>
+          <h5>Bank Transfer</h5>
+          <p>Send the money from your Internet Banking</p>
+          <hr>
+          <p>1 day slower</p>
+        </div>
+    </div>
+
+  </div>
+
+  {% highlight html %}
+  <div class="col-md-4 tile-container">
+    <div class="tile">
+      <div class="circle circle-lg">
+        ...
+      </div>
+      <h5>...</h5>
+      <p>...</p>
+      <hr>
+      <p>...</p>
+    </div>
+  </div>
+  {% endhighlight %}
+
+
+  <h2 id="tiles-benefits">Benefits of a certain tile</h2>
+  <p>Add a <code>tile-ribbon-benefit</code> div within the tile if benefits of that tile are worth showing to the user. Copy should be kept short as space is limited.</p>
+
+  <div class="row tile-row">
+
+    <div class="col-md-4 col-sm-12 tile-container">
+      <div class="tile">
+          <div class="circle circle-lg">
+            <i class="icon icon-card"></i>
+          </div>
+          <div class="tile-ribbon-benefit">Faster</div>
+          <h5>Debit Card</h5>
+          <p>Visa and Mastercard are supported</p>
+        </div>
+    </div>
+
+  </div>
+
+  {% highlight html %}
+  <div class="col-md-4 tile-container">
+    <div class="tile">
+      <div class="circle circle-lg">
+        ...
+      </div>
+      <div class="tile-ribbon-benefit">...</div>
+      <h5>...</h5>
+      <p>...</p>
+    </div>
+  </div>
+  {% endhighlight %}
+
+
+  <h2 id="tiles-disabled">Disabled Tile</h2>
+  <p>Add a <code>tile-disabled</code> class to <code>tile</code> when the option is disabled, providing an explanation to the user as to why they cannot select that option.</p>
+
+  <div class="row tile-row">
+
+    <div class="col-md-4 col-sm-12 tile-container">
+      <div class="tile tile-disabled">
+          <div class="circle circle-lg">
+            <i class="icon icon-card"></i>
+          </div>
+          <h5>Credit Card</h5>
+          <p>Visa and Mastercard are supported</p>
+          <hr>
+          <p><span class="text-warning">Unavailable</span> for amounts larger than £2000</p>
+        </div>
+    </div>
+
+  </div>
+
+  {% highlight html %}
+  <div class="col-md-4 tile-container">
+    <div class="tile tile-disabled">
+      <div class="circle circle-lg">
+        ...
+      </div>
+      <h5>...</h5>
+      <p>...</p>
+      <hr>
+      <p>...</p>
+    </div>
+  </div>
+  {% endhighlight %}
+
+</div>
