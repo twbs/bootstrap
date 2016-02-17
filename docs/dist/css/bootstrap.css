@@ -3580,6 +3580,7 @@ input[type="button"].btn-block {
   position: relative;
   display: inline;
   padding-left: 1.5rem;
+  cursor: pointer;
 }
 
 .custom-control + .custom-control {
