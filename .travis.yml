@@ -1,19 +1,10 @@
 sudo: false
-
 language: node_js
-
-addons:
-  apt:
-    packages:
-    - oracle-java8-installer
-
 git:
   depth: 10
-
 node_js:
   - "4"
   - "5"
-
 before_install:
   # Remove ./node_modules/.bin from PATH so node-which doesn't replace Unix which and cause RVM to barf. See https://github.com/travis-ci/travis-ci/issues/5092
   - export PATH=$(python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH")
@@ -25,18 +16,15 @@ before_install:
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip sauce\]'; export TWBS_DO_SAUCE=$?; true
   - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then export TWBS_DO_VALIDATOR=0; fi
-
 install:
   - bundle install --deployment --jobs=3
   - cp grunt/npm-shrinkwrap.json ./
   - npm install -g grunt-cli
   - npm install
-
 cache:
   directories:
     - node_modules
     - vendor/bundle
-
 env:
   global:
     - NPM_CONFIG_PROGRESS="false"
@@ -48,7 +36,6 @@ env:
     - TWBS_TEST=core
     - TWBS_TEST=validate-html
     - TWBS_TEST=sauce-js-unit
-
 matrix:
   fast_finish: true
   exclude:
@@ -56,7 +43,6 @@ matrix:
       env: TWBS_TEST=validate-html
     - node_js: "4"
       env: TWBS_TEST=sauce-js-unit
-
 notifications:
   slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
   webhooks:
