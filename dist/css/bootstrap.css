@@ -669,7 +669,7 @@ samp {
 }
 
 code {
-  padding: .2rem .4rem;
+  padding: 0.2rem 0.4rem;
   font-size: 90%;
   color: #bd4147;
   background-color: #f7f7f9;
@@ -677,7 +677,7 @@ code {
 }
 
 kbd {
-  padding: .2rem .4rem;
+  padding: 0.2rem 0.4rem;
   font-size: 90%;
   color: #fff;
   background-color: #333;
@@ -3960,8 +3960,8 @@ input[type="button"].btn-block {
 
 .navbar-brand {
   float: left;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   margin-right: 1rem;
   font-size: 1.25rem;
 }
@@ -4976,7 +4976,7 @@ base::-moz-progress-bar,
 .list-group-item {
   position: relative;
   display: block;
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #ddd;

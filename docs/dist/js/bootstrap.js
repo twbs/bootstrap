@@ -463,7 +463,7 @@ var Button = (function ($) {
               $(this._element).trigger('change');
             }
 
-            $(input).trigger('focus');
+            input.focus();
           }
         } else {
           this._element.setAttribute('aria-pressed', !$(this._element).hasClass(ClassName.ACTIVE));
