@@ -19,16 +19,16 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
 
 {% example html %}
 <form>
-  <fieldset class="form-group">
+  <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="text-muted">We'll never share your email with anyone else.</small>
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="exampleSelect1">Example select</label>
     <select class="form-control" id="exampleSelect1">
       <option>1</option>
@@ -37,8 +37,8 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
       <option>4</option>
       <option>5</option>
     </select>
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="exampleSelect2">Example multiple select</label>
     <select multiple class="form-control" id="exampleSelect2">
       <option>1</option>
@@ -47,34 +47,37 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
       <option>4</option>
       <option>5</option>
     </select>
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="exampleTextarea">Example textarea</label>
     <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="exampleInputFile">File input</label>
     <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
     <small id="fileHelp" class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+  </div>
+  <fieldset class="form-group">
+    <legend>Radio buttons</legend>
+    <div class="radio">
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+        Option one is this and that&mdash;be sure to include why it's great
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+        Option two can be something else and selecting it will deselect option one
+      </label>
+    </div>
+    <div class="radio disabled">
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+        Option three is disabled
+      </label>
+    </div>
   </fieldset>
-  <div class="radio">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-      Option one is this and that&mdash;be sure to include why it's great
-    </label>
-  </div>
-  <div class="radio">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-      Option two can be something else and selecting it will deselect option one
-    </label>
-  </div>
-  <div class="radio disabled">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-      Option three is disabled
-    </label>
-  </div>
   <div class="checkbox">
     <label>
       <input type="checkbox"> Check me out
@@ -258,14 +261,14 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 
 {% example html %}
 <form>
-  <fieldset class="form-group">
+  <div class="form-group">
     <label for="formGroupExampleInput">Example label</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="formGroupExampleInput2">Another label</label>
     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-  </fieldset>
+  </div>
 </form>
 {% endexample %}
 
@@ -330,11 +333,16 @@ Because of this, you may need to manually address the width and alignment of ind
 </form>
 {% endexample %}
 
+{% callout warning %}
+ #### Alternatives to hidden labels
+ Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
+ {% endcallout %}
+
 ### Using the Grid
 
 For more structured form layouts, you can utilize Bootstrap's predefined grid classes (or mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
 
-Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated labels.
+Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.form-control-legend` to make them appear similar to regular `<label>` elements.
 
 {% example html %}
 <form>
@@ -350,8 +358,8 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
       <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
   </div>
-  <div class="form-group row">
-    <label class="col-sm-2">Radios</label>
+  <fieldset class="form-group row">
+    <legend class="col-sm-2 form-control-legend">Radios</legend>
     <div class="col-sm-10">
       <div class="radio">
         <label>
@@ -372,9 +380,9 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
         </label>
       </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2">Checkbox</label>
+  </fieldset>
+  <fieldset class="form-group row">
+    <legend class="col-sm-2 form-control-legend">Checkbox</legend>
     <div class="col-sm-10">
       <div class="checkbox">
         <label>
@@ -382,7 +390,7 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
         </label>
       </div>
     </div>
-  </div>
+  </fieldset>
   <div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-secondary">Sign in</button>
@@ -463,17 +471,17 @@ Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes 
 
 ### Without labels
 
-Should you have no text within the `<label>`, the input is positioned as you'd expect. **Currently only works on non-inline checkboxes and radios.**
+Should you have no text within the `<label>`, the input is positioned as you'd expect. **Currently only works on non-inline checkboxes and radios.** Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
 
 {% example html %}
 <div class="checkbox">
   <label>
-    <input type="checkbox" id="blankCheckbox" value="option1">
+    <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
   </label>
 </div>
 <div class="radio">
   <label>
-    <input type="radio" name="blankRadio" id="blankRadio1" value="option1">
+    <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
   </label>
 </div>
 {% endexample %}
