@@ -55,6 +55,21 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 **Heads up!** Dropdowns are positioned only with CSS and may need some additional styles for exact alignment.
 {% endcallout %}
 
+<div class="bd-example">
+  <div class="bd-example-dropdown-alignment">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Right dropdown
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu3">
+        <button class="dropdown-item" type="button">Action</button>
+        <button class="dropdown-item" type="button">Another action</button>
+        <button class="dropdown-item" type="button">Something else here</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% highlight html %}
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">
   ...
