@@ -3,7 +3,43 @@
   <p class="lead">Bootstrap is built to work best in the latest desktop and mobile browsers, meaning older browsers might display differently styled, though fully functional, renderings of certain components.</p>
 
   <h2 id="support-browsers">Supported browsers</h2>
-  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms. On Windows, <strong>we support Internet Explorer 8-11</strong>. More specific support information is provided below.</p>
+  <p>Specifically, we support the <strong>latest versions</strong> of the following browsers and platforms.</p>
+
+  <p>Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.</p>
+
+  <h3 id="mobile-devices">Mobile devices</h3>
+  <p>Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.</p>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <td></td>
+          <th>Chrome</th>
+          <th>Firefox</th>
+          <th>Safari</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Android</th>
+          <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
+          <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
+          <td class="text-muted">N/A</td>
+        </tr>
+        <tr>
+          <th scope="row">iOS</th>
+          <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
+          <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
+          <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="desktop-browsers">Desktop browsers</h3>
+  <p>Similarly, the latest versions of most desktop browsers are supported.</p>
+
   <div class="table-responsive">
     <table class="table table-bordered table-striped">
       <thead>
@@ -18,24 +54,10 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="row">Android</th>
+          <th scope="row">Mac</th>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
-          <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
-          <td class="text-muted" rowspan="3" style="vertical-align: middle;">N/A</td>
-          <td class="text-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Not Supported</td>
-          <td class="text-muted">N/A</td>
-        </tr>
-        <tr>
-          <th scope="row">iOS</th>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-muted">N/A</td>
-          <td class="text-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Not Supported</td>
-          <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
-        </tr>
-        <tr>
-          <th scope="row">Mac OS X</th>
-          <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
-          <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
         </tr>
@@ -45,12 +67,17 @@
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
           <td class="text-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Supported</td>
-          <td class="text-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Not Supported</td>
+          <td class="text-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Not supported</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p>Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 7, though they are not officially supported.</p>
+
+  <p>On Windows, <strong>we support Internet Explorer 8-11</strong>.</p>
+  
+  <p>For Firefox, in addition to the latest normal stable release, we also support the latest <a href="https://www.mozilla.org/en-US/firefox/organizations/faq/">Extended Support Release (ESR)</a> version of Firefox.</p>
+
+  <p>Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 7, as well as Microsoft Edge, though they are not officially supported.</p>
   <p>For a list of some of the browser bugs that Bootstrap has to grapple with, see our <a href="../browser-bugs/">Wall of browser bugs</a>.</p>
 
   <h2 id="support-ie8-ie9">Internet Explorer 8 and 9</h2>
