@@ -26,11 +26,10 @@
   @if $enable-flex {
     display: flex;
     flex-wrap: wrap;
-  } @else {
-    @include clearfix();
   }
   margin-left:  ($gutter / -2);
   margin-right: ($gutter / -2);
+  font-size: 0; // Collapse white-space
 }
 
 @mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
@@ -38,6 +37,9 @@
   min-height: 1px;
   padding-right: ($gutter / 2);
   padding-left:  ($gutter / 2);
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
 
   @if $enable-flex {
     flex: 0 0 percentage($size / $columns);
@@ -46,30 +48,29 @@
     // do not appear to require this.
     max-width: percentage($size / $columns);
   } @else {
-    float: left;
     width: percentage($size / $columns);
   }
 }
 
-@mixin make-col-offset($size, $columns: $grid-columns) {
-  margin-left: percentage($size / $columns);
+@mixin make-col-offset($size, $columns, $direction) {
+  margin-#{$direction}: percentage($size / $columns);
 }
 
-@mixin make-col-push($size, $columns: $grid-columns) {
-  left: if($size > 0, percentage($size / $columns), auto);
+@mixin make-col-push($size, $columns, $direction) {
+  #{$direction}: if($size > 0, percentage($size / $columns), auto);
 }
 
-@mixin make-col-pull($size, $columns: $grid-columns) {
-  right: if($size > 0, percentage($size / $columns), auto);
+@mixin make-col-pull($size, $columns, $direction) {
+  #{$direction}: if($size > 0, percentage($size / $columns), auto);
 }
 
-@mixin make-col-modifier($type, $size, $columns) {
+@mixin make-col-modifier($type, $size, $columns, $directions) {
   // Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
   @if $type == push {
-    @include make-col-push($size, $columns);
+    @include make-col-push($size, $columns, $directions);
   } @else if $type == pull {
-    @include make-col-pull($size, $columns);
+    @include make-col-pull($size, $columns, $directions);
   } @else if $type == offset {
-    @include make-col-offset($size, $columns);
+    @include make-col-offset($size, $columns, $directions);
   }
 }

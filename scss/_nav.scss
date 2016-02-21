@@ -5,8 +5,11 @@
 
 .nav {
   padding-left: 0;
+  padding-right: 0;
   margin-bottom: 0;
   list-style: none;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .nav-link {
@@ -48,11 +51,12 @@
 //
 
 .nav-tabs {
+  display: block;
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
   @include clearfix();
 
   .nav-item {
-    float: left;
+    display: inline-block;
     // Make the list-items overlay the bottom border
     margin-bottom: -$nav-tabs-border-width;
 
@@ -103,10 +107,11 @@
 //
 
 .nav-pills {
-  @include clearfix();
 
   .nav-item {
-    float: left;
+    display: inline-block;
+    margin-left: .1rem;
+    margin-right: .1rem;
 
     + .nav-item {
       margin-left: $nav-item-margin;
@@ -130,9 +135,10 @@
 }
 
 .nav-stacked {
+  display: block;
+
   .nav-item {
     display: block;
-    float: none;
 
     + .nav-item {
       margin-top: $nav-item-margin;

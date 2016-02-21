@@ -68,11 +68,13 @@
 //
 
 .navbar-brand {
-  float: left;
   padding-top:    $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
-  margin-right: 1rem;
+  margin-right: $spacer;
+  margin-left: $spacer;
   font-size: $font-size-lg;
+  vertical-align: middle;
+  display: inline-block;
 
   @include hover-focus {
     text-decoration: none;
@@ -145,22 +147,24 @@
 
 .navbar-nav {
   .nav-item {
-    float: left;
+    display: inline-block;
+    margin-left: ($spacer / 2);
+    margin-right: ($spacer / 2);
   }
 
   .nav-link {
-    display: block;
+    outline: none;
     padding-top:    .425rem;
     padding-bottom: .425rem;
-
-    + .nav-link {
-      margin-left: 1rem;
-    }
+    margin-left: ($spacer / 2);
+    margin-right: ($spacer / 2);
   }
+}
 
-  .nav-item + .nav-item {
-    margin-left: 1rem;
-  }
+.navbar-side {
+  float: right;
+  margin-right: $spacer;
+  margin-left: $spacer;
 }
 
 // Dark links against a light background

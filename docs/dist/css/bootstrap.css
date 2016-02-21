@@ -65,6 +65,7 @@ abbr[title] {
 
 b,
 strong {
+  display: inline-block;
   font-weight: bold;
 }
 
@@ -482,6 +483,992 @@ output {
   display: none !important;
 }
 
+[dir=rtl] caption,
+[dir=rtl] th {
+  text-align: right;
+}
+
+[dir=rtl] .navbar-side {
+  float: left;
+}
+
+[dir=rtl] .close {
+  float: left;
+}
+
+[dir=rtl] .modal {
+  direction: ltr;
+}
+
+[dir=rtl] .modal .modal-dialog {
+  direction: rtl;
+}
+
+[dir=rtl] .modal-footer {
+  text-align: left;
+}
+
+[dir=rtl] .modal-footer .dropdow-menu {
+  text-align: right;
+}
+
+[dir=rtl] .alert-dismissible {
+  padding-left: 35px;
+  padding-right: 15px;
+}
+
+[dir=rtl] .alert-dismissible .close {
+  margin-left: -21px;
+  margin-right: 0;
+}
+
+[dir=rtl] .list-group,
+[dir=rtl] .pagination,
+[dir=rtl] .pager {
+  padding-right: 0;
+}
+
+[dir=rtl] .list-group-item > .label {
+  float: left;
+}
+
+[dir=rtl] .pager-prev > a,
+[dir=rtl] .pager-prev > span {
+  float: right;
+}
+
+[dir=rtl] .pager-next > a,
+[dir=rtl] .pager-next > span {
+  float: left;
+}
+
+[dir=rtl] .page-link {
+  margin-right: 0;
+  margin-left: -1px;
+}
+
+[dir=rtl] .page-item:first-child .page-link {
+  margin-left: -1px;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+[dir=rtl] .page-item:last-child .page-link {
+  margin-left: 0;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+[dir=rtl] .input-group-addon:first-child {
+  border-right-width: 1px;
+  border-left: 0;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+[dir=rtl] .input-group-addon:last-child {
+  border-left-width: 1px;
+  border-right: 0;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+[dir=rtl] .input-group-btn:first-child > .btn,
+[dir=rtl] .input-group-btn:first-child > .btn-group {
+  margin-right: 0;
+  margin-left: -1px;
+}
+
+[dir=rtl] .input-group-btn:last-child > .btn,
+[dir=rtl] .input-group-btn:last-child > .btn-group {
+  margin-left: 0;
+  margin-right: -1px;
+}
+
+[dir=rtl] .input-group .form-control:not(:last-child),
+[dir=rtl] .input-group-addon:not(:last-child),
+[dir=rtl] .input-group-btn:not(:last-child) > .btn,
+[dir=rtl] .input-group-btn:not(:last-child) > .btn-group > .btn,
+[dir=rtl] .input-group-btn:not(:last-child) > .dropdown-toggle,
+[dir=rtl] .input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
+[dir=rtl] .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+[dir=rtl] .form-control + .input-group .form-control:not(:first-child),
+[dir=rtl] .form-control + .input-group-addon:not(:first-child),
+[dir=rtl] .form-control + .input-group-btn:not(:first-child) > .btn,
+[dir=rtl] .form-control + .input-group-btn:not(:first-child) > .btn-group > .btn,
+[dir=rtl] .form-control + .input-group-btn:not(:first-child) > .dropdown-toggle,
+[dir=rtl] .form-control + .input-group-btn:not(:last-child) > .btn:not(:first-child),
+[dir=rtl] .form-control + .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
+  border-left-width: 1px;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+[dir=rtl] .checkbox label,
+[dir=rtl] .radio label,
+[dir=rtl] .custom-control {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+[dir=rtl] .checkbox input[type=checkbox],
+[dir=rtl] .checkbox-inline input[type=checkbox],
+[dir=rtl] .radio input[type=radio],
+[dir=rtl] .radio-inline input[type=radio] {
+  margin-left: 0;
+  margin-right: -1.5rem;
+}
+
+[dir=rtl] .custom-control-indicator {
+  left: auto;
+  right: 0;
+}
+
+[dir=rtl] .file-custom::before {
+  right: auto;
+  left: -.075rem;
+  top: -.037rem;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+[dir=rtl] [class*=pull-xs] {
+  right: auto;
+}
+
+[dir=rtl] .pull-xs-0 {
+  left: auto;
+}
+
+[dir=rtl] .pull-xs-1 {
+  left: 8.333333%;
+}
+
+[dir=rtl] .pull-xs-2 {
+  left: 16.666667%;
+}
+
+[dir=rtl] .pull-xs-3 {
+  left: 25%;
+}
+
+[dir=rtl] .pull-xs-4 {
+  left: 33.333333%;
+}
+
+[dir=rtl] .pull-xs-5 {
+  left: 41.666667%;
+}
+
+[dir=rtl] .pull-xs-6 {
+  left: 50%;
+}
+
+[dir=rtl] .pull-xs-7 {
+  left: 58.333333%;
+}
+
+[dir=rtl] .pull-xs-8 {
+  left: 66.666667%;
+}
+
+[dir=rtl] .pull-xs-9 {
+  left: 75%;
+}
+
+[dir=rtl] .pull-xs-10 {
+  left: 83.333333%;
+}
+
+[dir=rtl] .pull-xs-11 {
+  left: 91.666667%;
+}
+
+[dir=rtl] .pull-xs-12 {
+  left: 100%;
+}
+
+[dir=rtl] [class*=push-xs] {
+  left: auto;
+}
+
+[dir=rtl] .push-xs-0 {
+  right: auto;
+}
+
+[dir=rtl] .push-xs-1 {
+  right: 8.333333%;
+}
+
+[dir=rtl] .push-xs-2 {
+  right: 16.666667%;
+}
+
+[dir=rtl] .push-xs-3 {
+  right: 25%;
+}
+
+[dir=rtl] .push-xs-4 {
+  right: 33.333333%;
+}
+
+[dir=rtl] .push-xs-5 {
+  right: 41.666667%;
+}
+
+[dir=rtl] .push-xs-6 {
+  right: 50%;
+}
+
+[dir=rtl] .push-xs-7 {
+  right: 58.333333%;
+}
+
+[dir=rtl] .push-xs-8 {
+  right: 66.666667%;
+}
+
+[dir=rtl] .push-xs-9 {
+  right: 75%;
+}
+
+[dir=rtl] .push-xs-10 {
+  right: 83.333333%;
+}
+
+[dir=rtl] .push-xs-11 {
+  right: 91.666667%;
+}
+
+[dir=rtl] .push-xs-12 {
+  right: 100%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-1 {
+  margin-right: 8.333333%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-2 {
+  margin-right: 16.666667%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-3 {
+  margin-right: 25%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-4 {
+  margin-right: 33.333333%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-5 {
+  margin-right: 41.666667%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-6 {
+  margin-right: 50%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-7 {
+  margin-right: 58.333333%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-8 {
+  margin-right: 66.666667%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-9 {
+  margin-right: 75%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-10 {
+  margin-right: 83.333333%;
+}
+
+[dir=rtl] [class*=offset-xs] {
+  left: auto;
+}
+
+[dir=rtl] .offset-xs-11 {
+  margin-right: 91.666667%;
+}
+
+@media (min-width: 544px) {
+  [dir=rtl] [class*=pull-sm] {
+    right: auto;
+  }
+  [dir=rtl] .pull-sm-0 {
+    left: auto;
+  }
+  [dir=rtl] .pull-sm-1 {
+    left: 8.333333%;
+  }
+  [dir=rtl] .pull-sm-2 {
+    left: 16.666667%;
+  }
+  [dir=rtl] .pull-sm-3 {
+    left: 25%;
+  }
+  [dir=rtl] .pull-sm-4 {
+    left: 33.333333%;
+  }
+  [dir=rtl] .pull-sm-5 {
+    left: 41.666667%;
+  }
+  [dir=rtl] .pull-sm-6 {
+    left: 50%;
+  }
+  [dir=rtl] .pull-sm-7 {
+    left: 58.333333%;
+  }
+  [dir=rtl] .pull-sm-8 {
+    left: 66.666667%;
+  }
+  [dir=rtl] .pull-sm-9 {
+    left: 75%;
+  }
+  [dir=rtl] .pull-sm-10 {
+    left: 83.333333%;
+  }
+  [dir=rtl] .pull-sm-11 {
+    left: 91.666667%;
+  }
+  [dir=rtl] .pull-sm-12 {
+    left: 100%;
+  }
+  [dir=rtl] [class*=push-sm] {
+    left: auto;
+  }
+  [dir=rtl] .push-sm-0 {
+    right: auto;
+  }
+  [dir=rtl] .push-sm-1 {
+    right: 8.333333%;
+  }
+  [dir=rtl] .push-sm-2 {
+    right: 16.666667%;
+  }
+  [dir=rtl] .push-sm-3 {
+    right: 25%;
+  }
+  [dir=rtl] .push-sm-4 {
+    right: 33.333333%;
+  }
+  [dir=rtl] .push-sm-5 {
+    right: 41.666667%;
+  }
+  [dir=rtl] .push-sm-6 {
+    right: 50%;
+  }
+  [dir=rtl] .push-sm-7 {
+    right: 58.333333%;
+  }
+  [dir=rtl] .push-sm-8 {
+    right: 66.666667%;
+  }
+  [dir=rtl] .push-sm-9 {
+    right: 75%;
+  }
+  [dir=rtl] .push-sm-10 {
+    right: 83.333333%;
+  }
+  [dir=rtl] .push-sm-11 {
+    right: 91.666667%;
+  }
+  [dir=rtl] .push-sm-12 {
+    right: 100%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-0 {
+    margin-right: 0%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-1 {
+    margin-right: 8.333333%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-2 {
+    margin-right: 16.666667%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-3 {
+    margin-right: 25%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-4 {
+    margin-right: 33.333333%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-5 {
+    margin-right: 41.666667%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-6 {
+    margin-right: 50%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-7 {
+    margin-right: 58.333333%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-8 {
+    margin-right: 66.666667%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-9 {
+    margin-right: 75%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-10 {
+    margin-right: 83.333333%;
+  }
+  [dir=rtl] [class*=offset-sm] {
+    left: auto;
+  }
+  [dir=rtl] .offset-sm-11 {
+    margin-right: 91.666667%;
+  }
+}
+
+@media (min-width: 768px) {
+  [dir=rtl] [class*=pull-md] {
+    right: auto;
+  }
+  [dir=rtl] .pull-md-0 {
+    left: auto;
+  }
+  [dir=rtl] .pull-md-1 {
+    left: 8.333333%;
+  }
+  [dir=rtl] .pull-md-2 {
+    left: 16.666667%;
+  }
+  [dir=rtl] .pull-md-3 {
+    left: 25%;
+  }
+  [dir=rtl] .pull-md-4 {
+    left: 33.333333%;
+  }
+  [dir=rtl] .pull-md-5 {
+    left: 41.666667%;
+  }
+  [dir=rtl] .pull-md-6 {
+    left: 50%;
+  }
+  [dir=rtl] .pull-md-7 {
+    left: 58.333333%;
+  }
+  [dir=rtl] .pull-md-8 {
+    left: 66.666667%;
+  }
+  [dir=rtl] .pull-md-9 {
+    left: 75%;
+  }
+  [dir=rtl] .pull-md-10 {
+    left: 83.333333%;
+  }
+  [dir=rtl] .pull-md-11 {
+    left: 91.666667%;
+  }
+  [dir=rtl] .pull-md-12 {
+    left: 100%;
+  }
+  [dir=rtl] [class*=push-md] {
+    left: auto;
+  }
+  [dir=rtl] .push-md-0 {
+    right: auto;
+  }
+  [dir=rtl] .push-md-1 {
+    right: 8.333333%;
+  }
+  [dir=rtl] .push-md-2 {
+    right: 16.666667%;
+  }
+  [dir=rtl] .push-md-3 {
+    right: 25%;
+  }
+  [dir=rtl] .push-md-4 {
+    right: 33.333333%;
+  }
+  [dir=rtl] .push-md-5 {
+    right: 41.666667%;
+  }
+  [dir=rtl] .push-md-6 {
+    right: 50%;
+  }
+  [dir=rtl] .push-md-7 {
+    right: 58.333333%;
+  }
+  [dir=rtl] .push-md-8 {
+    right: 66.666667%;
+  }
+  [dir=rtl] .push-md-9 {
+    right: 75%;
+  }
+  [dir=rtl] .push-md-10 {
+    right: 83.333333%;
+  }
+  [dir=rtl] .push-md-11 {
+    right: 91.666667%;
+  }
+  [dir=rtl] .push-md-12 {
+    right: 100%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-0 {
+    margin-right: 0%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-1 {
+    margin-right: 8.333333%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-2 {
+    margin-right: 16.666667%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-3 {
+    margin-right: 25%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-4 {
+    margin-right: 33.333333%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-5 {
+    margin-right: 41.666667%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-6 {
+    margin-right: 50%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-7 {
+    margin-right: 58.333333%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-8 {
+    margin-right: 66.666667%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-9 {
+    margin-right: 75%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-10 {
+    margin-right: 83.333333%;
+  }
+  [dir=rtl] [class*=offset-md] {
+    left: auto;
+  }
+  [dir=rtl] .offset-md-11 {
+    margin-right: 91.666667%;
+  }
+}
+
+@media (min-width: 992px) {
+  [dir=rtl] [class*=pull-lg] {
+    right: auto;
+  }
+  [dir=rtl] .pull-lg-0 {
+    left: auto;
+  }
+  [dir=rtl] .pull-lg-1 {
+    left: 8.333333%;
+  }
+  [dir=rtl] .pull-lg-2 {
+    left: 16.666667%;
+  }
+  [dir=rtl] .pull-lg-3 {
+    left: 25%;
+  }
+  [dir=rtl] .pull-lg-4 {
+    left: 33.333333%;
+  }
+  [dir=rtl] .pull-lg-5 {
+    left: 41.666667%;
+  }
+  [dir=rtl] .pull-lg-6 {
+    left: 50%;
+  }
+  [dir=rtl] .pull-lg-7 {
+    left: 58.333333%;
+  }
+  [dir=rtl] .pull-lg-8 {
+    left: 66.666667%;
+  }
+  [dir=rtl] .pull-lg-9 {
+    left: 75%;
+  }
+  [dir=rtl] .pull-lg-10 {
+    left: 83.333333%;
+  }
+  [dir=rtl] .pull-lg-11 {
+    left: 91.666667%;
+  }
+  [dir=rtl] .pull-lg-12 {
+    left: 100%;
+  }
+  [dir=rtl] [class*=push-lg] {
+    left: auto;
+  }
+  [dir=rtl] .push-lg-0 {
+    right: auto;
+  }
+  [dir=rtl] .push-lg-1 {
+    right: 8.333333%;
+  }
+  [dir=rtl] .push-lg-2 {
+    right: 16.666667%;
+  }
+  [dir=rtl] .push-lg-3 {
+    right: 25%;
+  }
+  [dir=rtl] .push-lg-4 {
+    right: 33.333333%;
+  }
+  [dir=rtl] .push-lg-5 {
+    right: 41.666667%;
+  }
+  [dir=rtl] .push-lg-6 {
+    right: 50%;
+  }
+  [dir=rtl] .push-lg-7 {
+    right: 58.333333%;
+  }
+  [dir=rtl] .push-lg-8 {
+    right: 66.666667%;
+  }
+  [dir=rtl] .push-lg-9 {
+    right: 75%;
+  }
+  [dir=rtl] .push-lg-10 {
+    right: 83.333333%;
+  }
+  [dir=rtl] .push-lg-11 {
+    right: 91.666667%;
+  }
+  [dir=rtl] .push-lg-12 {
+    right: 100%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-0 {
+    margin-right: 0%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-1 {
+    margin-right: 8.333333%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-2 {
+    margin-right: 16.666667%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-3 {
+    margin-right: 25%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-4 {
+    margin-right: 33.333333%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-5 {
+    margin-right: 41.666667%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-6 {
+    margin-right: 50%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-7 {
+    margin-right: 58.333333%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-8 {
+    margin-right: 66.666667%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-9 {
+    margin-right: 75%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-10 {
+    margin-right: 83.333333%;
+  }
+  [dir=rtl] [class*=offset-lg] {
+    left: auto;
+  }
+  [dir=rtl] .offset-lg-11 {
+    margin-right: 91.666667%;
+  }
+}
+
+@media (min-width: 1200px) {
+  [dir=rtl] [class*=pull-xl] {
+    right: auto;
+  }
+  [dir=rtl] .pull-xl-0 {
+    left: auto;
+  }
+  [dir=rtl] .pull-xl-1 {
+    left: 8.333333%;
+  }
+  [dir=rtl] .pull-xl-2 {
+    left: 16.666667%;
+  }
+  [dir=rtl] .pull-xl-3 {
+    left: 25%;
+  }
+  [dir=rtl] .pull-xl-4 {
+    left: 33.333333%;
+  }
+  [dir=rtl] .pull-xl-5 {
+    left: 41.666667%;
+  }
+  [dir=rtl] .pull-xl-6 {
+    left: 50%;
+  }
+  [dir=rtl] .pull-xl-7 {
+    left: 58.333333%;
+  }
+  [dir=rtl] .pull-xl-8 {
+    left: 66.666667%;
+  }
+  [dir=rtl] .pull-xl-9 {
+    left: 75%;
+  }
+  [dir=rtl] .pull-xl-10 {
+    left: 83.333333%;
+  }
+  [dir=rtl] .pull-xl-11 {
+    left: 91.666667%;
+  }
+  [dir=rtl] .pull-xl-12 {
+    left: 100%;
+  }
+  [dir=rtl] [class*=push-xl] {
+    left: auto;
+  }
+  [dir=rtl] .push-xl-0 {
+    right: auto;
+  }
+  [dir=rtl] .push-xl-1 {
+    right: 8.333333%;
+  }
+  [dir=rtl] .push-xl-2 {
+    right: 16.666667%;
+  }
+  [dir=rtl] .push-xl-3 {
+    right: 25%;
+  }
+  [dir=rtl] .push-xl-4 {
+    right: 33.333333%;
+  }
+  [dir=rtl] .push-xl-5 {
+    right: 41.666667%;
+  }
+  [dir=rtl] .push-xl-6 {
+    right: 50%;
+  }
+  [dir=rtl] .push-xl-7 {
+    right: 58.333333%;
+  }
+  [dir=rtl] .push-xl-8 {
+    right: 66.666667%;
+  }
+  [dir=rtl] .push-xl-9 {
+    right: 75%;
+  }
+  [dir=rtl] .push-xl-10 {
+    right: 83.333333%;
+  }
+  [dir=rtl] .push-xl-11 {
+    right: 91.666667%;
+  }
+  [dir=rtl] .push-xl-12 {
+    right: 100%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-0 {
+    margin-right: 0%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-1 {
+    margin-right: 8.333333%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-2 {
+    margin-right: 16.666667%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-3 {
+    margin-right: 25%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-4 {
+    margin-right: 33.333333%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-5 {
+    margin-right: 41.666667%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-6 {
+    margin-right: 50%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-7 {
+    margin-right: 58.333333%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-8 {
+    margin-right: 66.666667%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-9 {
+    margin-right: 75%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-10 {
+    margin-right: 83.333333%;
+  }
+  [dir=rtl] [class*=offset-xl] {
+    left: auto;
+  }
+  [dir=rtl] .offset-xl-11 {
+    margin-right: 91.666667%;
+  }
+}
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-bottom: 0.5rem;
@@ -764,12 +1751,7 @@ pre code {
 .row {
   margin-left: -15px;
   margin-right: -15px;
-}
-
-.row::after {
-  content: "";
-  display: table;
-  clear: both;
+  font-size: 0;
 }
 
 .col-xs-1 {
@@ -777,7 +1759,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 8.333333%;
 }
 
@@ -786,7 +1770,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 16.666667%;
 }
 
@@ -795,7 +1781,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 25%;
 }
 
@@ -804,7 +1792,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 33.333333%;
 }
 
@@ -813,7 +1803,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 41.666667%;
 }
 
@@ -822,7 +1814,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 50%;
 }
 
@@ -831,7 +1825,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 58.333333%;
 }
 
@@ -840,7 +1836,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 66.666667%;
 }
 
@@ -849,7 +1847,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 75%;
 }
 
@@ -858,7 +1858,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 83.333333%;
 }
 
@@ -867,7 +1869,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 91.666667%;
 }
 
@@ -876,7 +1880,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
   width: 100%;
 }
 
@@ -1034,7 +2040,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 8.333333%;
   }
   .col-sm-2 {
@@ -1042,7 +2050,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 16.666667%;
   }
   .col-sm-3 {
@@ -1050,7 +2060,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 25%;
   }
   .col-sm-4 {
@@ -1058,7 +2070,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 33.333333%;
   }
   .col-sm-5 {
@@ -1066,7 +2080,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 41.666667%;
   }
   .col-sm-6 {
@@ -1074,7 +2090,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 50%;
   }
   .col-sm-7 {
@@ -1082,7 +2100,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 58.333333%;
   }
   .col-sm-8 {
@@ -1090,7 +2110,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 66.666667%;
   }
   .col-sm-9 {
@@ -1098,7 +2120,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 75%;
   }
   .col-sm-10 {
@@ -1106,7 +2130,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 83.333333%;
   }
   .col-sm-11 {
@@ -1114,7 +2140,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 91.666667%;
   }
   .col-sm-12 {
@@ -1122,7 +2150,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 100%;
   }
   .pull-sm-0 {
@@ -1247,7 +2277,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 8.333333%;
   }
   .col-md-2 {
@@ -1255,7 +2287,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 16.666667%;
   }
   .col-md-3 {
@@ -1263,7 +2297,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 25%;
   }
   .col-md-4 {
@@ -1271,7 +2307,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 33.333333%;
   }
   .col-md-5 {
@@ -1279,7 +2317,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 41.666667%;
   }
   .col-md-6 {
@@ -1287,7 +2327,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 50%;
   }
   .col-md-7 {
@@ -1295,7 +2337,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 58.333333%;
   }
   .col-md-8 {
@@ -1303,7 +2347,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 66.666667%;
   }
   .col-md-9 {
@@ -1311,7 +2357,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 75%;
   }
   .col-md-10 {
@@ -1319,7 +2367,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 83.333333%;
   }
   .col-md-11 {
@@ -1327,7 +2377,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 91.666667%;
   }
   .col-md-12 {
@@ -1335,7 +2387,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 100%;
   }
   .pull-md-0 {
@@ -1460,7 +2514,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 8.333333%;
   }
   .col-lg-2 {
@@ -1468,7 +2524,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 16.666667%;
   }
   .col-lg-3 {
@@ -1476,7 +2534,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 25%;
   }
   .col-lg-4 {
@@ -1484,7 +2544,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 33.333333%;
   }
   .col-lg-5 {
@@ -1492,7 +2554,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 41.666667%;
   }
   .col-lg-6 {
@@ -1500,7 +2564,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 50%;
   }
   .col-lg-7 {
@@ -1508,7 +2574,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 58.333333%;
   }
   .col-lg-8 {
@@ -1516,7 +2584,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 66.666667%;
   }
   .col-lg-9 {
@@ -1524,7 +2594,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 75%;
   }
   .col-lg-10 {
@@ -1532,7 +2604,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 83.333333%;
   }
   .col-lg-11 {
@@ -1540,7 +2614,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 91.666667%;
   }
   .col-lg-12 {
@@ -1548,7 +2624,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 100%;
   }
   .pull-lg-0 {
@@ -1673,7 +2751,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 8.333333%;
   }
   .col-xl-2 {
@@ -1681,7 +2761,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 16.666667%;
   }
   .col-xl-3 {
@@ -1689,7 +2771,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 25%;
   }
   .col-xl-4 {
@@ -1697,7 +2781,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 33.333333%;
   }
   .col-xl-5 {
@@ -1705,7 +2791,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 41.666667%;
   }
   .col-xl-6 {
@@ -1713,7 +2801,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 50%;
   }
   .col-xl-7 {
@@ -1721,7 +2811,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 58.333333%;
   }
   .col-xl-8 {
@@ -1729,7 +2821,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 66.666667%;
   }
   .col-xl-9 {
@@ -1737,7 +2831,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 75%;
   }
   .col-xl-10 {
@@ -1745,7 +2841,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 83.333333%;
   }
   .col-xl-11 {
@@ -1753,7 +2851,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 91.666667%;
   }
   .col-xl-12 {
@@ -1761,7 +2861,9 @@ pre code {
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    font-size: initial;
     width: 100%;
   }
   .pull-xl-0 {
@@ -2394,6 +3496,10 @@ input[type="checkbox"].disabled {
 
 .has-danger .form-control-danger {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
+}
+
+.form-inline {
+  display: inline-block;
 }
 
 @media (min-width: 544px) {
@@ -3254,6 +4360,15 @@ input[type="button"].btn-block {
   margin-bottom: 2px;
 }
 
+.dropdown-dark .dropdown-item {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dropdown-dark .dropdown-item:focus, .dropdown-dark .dropdown-item:hover {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.75);
+}
+
 .btn-group,
 .btn-group-vertical {
   position: relative;
@@ -3522,7 +4637,7 @@ input[type="button"].btn-block {
 }
 
 .input-group-addon:not(:last-child) {
-  border-right: 0;
+  border-right-width: 0;
 }
 
 .input-group .form-control:not(:first-child),
@@ -3537,7 +4652,7 @@ input[type="button"].btn-block {
 }
 
 .form-control + .input-group-addon:not(:first-child) {
-  border-left: 0;
+  border-left-width: 0;
 }
 
 .input-group-btn {
@@ -3578,8 +4693,9 @@ input[type="button"].btn-block {
 
 .custom-control {
   position: relative;
-  display: inline;
+  display: inline-block;
   padding-left: 1.5rem;
+  line-height: 1rem;
   cursor: pointer;
 }
 
@@ -3659,7 +4775,7 @@ input[type="button"].btn-block {
 }
 
 .custom-controls-stacked .custom-control {
-  display: inline;
+  display: block;
 }
 
 .custom-controls-stacked .custom-control::after {
@@ -3765,8 +4881,11 @@ input[type="button"].btn-block {
 
 .nav {
   padding-left: 0;
+  padding-right: 0;
   margin-bottom: 0;
   list-style: none;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .nav-link {
@@ -3797,6 +4916,7 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs {
+  display: block;
   border-bottom: 1px solid #ddd;
 }
 
@@ -3807,7 +4927,7 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs .nav-item {
-  float: left;
+  display: inline-block;
   margin-bottom: -1px;
 }
 
@@ -3847,14 +4967,10 @@ input[type="button"].btn-block {
   border-top-left-radius: 0;
 }
 
-.nav-pills::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .nav-pills .nav-item {
-  float: left;
+  display: inline-block;
+  margin-left: .1rem;
+  margin-right: .1rem;
 }
 
 .nav-pills .nav-item + .nav-item {
@@ -3876,9 +4992,12 @@ input[type="button"].btn-block {
   background-color: #0275d8;
 }
 
+.nav-stacked {
+  display: block;
+}
+
 .nav-stacked .nav-item {
   display: block;
-  float: none;
 }
 
 .nav-stacked .nav-item + .nav-item {
@@ -3896,7 +5015,7 @@ input[type="button"].btn-block {
 
 .navbar {
   position: relative;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
 }
 
 .navbar::after {
@@ -3959,11 +5078,13 @@ input[type="button"].btn-block {
 }
 
 .navbar-brand {
-  float: left;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   margin-right: 1rem;
+  margin-left: 1rem;
   font-size: 1.25rem;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .navbar-brand:focus, .navbar-brand:hover {
@@ -3979,8 +5100,8 @@ input[type="button"].btn-block {
   width: 1px;
   padding-top: .425rem;
   padding-bottom: .425rem;
-  margin-right: 1rem;
-  margin-left: 1rem;
+  margin-right: 0;
+  margin-left: 0;
   overflow: hidden;
 }
 
@@ -4020,20 +5141,22 @@ input[type="button"].btn-block {
 }
 
 .navbar-nav .nav-item {
-  float: left;
+  display: inline-block;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .navbar-nav .nav-link {
-  display: block;
+  outline: none;
   padding-top: .425rem;
   padding-bottom: .425rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
-.navbar-nav .nav-link + .nav-link {
-  margin-left: 1rem;
-}
-
-.navbar-nav .nav-item + .nav-item {
+.navbar-side {
+  float: right;
+  margin-right: 1rem;
   margin-left: 1rem;
 }
 
@@ -4398,7 +5521,7 @@ input[type="button"].btn-block {
 }
 
 .breadcrumb-item {
-  float: left;
+  display: inline-block;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -4426,11 +5549,13 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  font-size: 0;
   border-radius: 0.25rem;
 }
 
 .page-item {
-  display: inline;
+  display: inline-block;
+  font-size: initial;
 }
 
 .page-item:first-child .page-link {
@@ -4462,7 +5587,7 @@ input[type="button"].btn-block {
 
 .page-link {
   position: relative;
-  float: left;
+  display: inline-block;
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   color: #0275d8;
@@ -4632,9 +5757,8 @@ a.tag:focus, a.tag:hover {
 }
 
 .alert-dismissible .close {
-  position: relative;
-  top: -2px;
-  right: -21px;
+  margin-top: -2px;
+  margin-right: -21px;
   color: inherit;
 }
 
@@ -4982,6 +6106,11 @@ base::-moz-progress-bar,
   border: 1px solid #ddd;
 }
 
+.list-group-item > .label {
+  float: right;
+  margin: 0.3em 0;
+}
+
 .list-group-item:first-child {
   border-top-right-radius: 0.25rem;
   border-top-left-radius: 0.25rem;
@@ -5248,6 +6377,11 @@ button.close {
 
 .modal-open {
   overflow: hidden;
+}
+
+.modal-open .navbar-fixed-bottom,
+.modal-open .navbar-fixed-top {
+  right: 15px;
 }
 
 .modal {
@@ -5582,6 +6716,7 @@ button.close {
 }
 
 .popover.popover-left .popover-arrow::after, .popover.bs-tether-element-attached-right .popover-arrow::after {
+  left: auto;
   right: 1px;
   bottom: -10px;
   content: "";
@@ -5618,6 +6753,7 @@ button.close {
 .popover-arrow::after {
   content: "";
   border-width: 10px;
+  left: 0;
 }
 
 .carousel {

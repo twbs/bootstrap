@@ -11,8 +11,9 @@
 
 .custom-control {
   position: relative;
-  display: inline;
+  display: inline-block;
   padding-left: $custom-control-gutter;
+  line-height: 1rem;
   cursor: pointer;
 
   + .custom-control {
@@ -117,7 +118,7 @@
 
 .custom-controls-stacked {
   .custom-control {
-    display: inline;
+    display: block;
 
     &::after {
       display: block;

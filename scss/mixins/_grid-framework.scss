@@ -17,6 +17,7 @@
           min-height: 1px;
           padding-right: ($gutter / 2);
           padding-left:  ($gutter / 2);
+          font-size: initial;
         }
       }
 
@@ -29,7 +30,7 @@
       @each $modifier in (pull, push) {
         @for $i from 0 through $columns {
           .#{$modifier}-#{$breakpoint}-#{$i} {
-            @include make-col-modifier($modifier, $i, $columns)
+            @include make-col-modifier($modifier, $i, $columns, #{map-get($modifier-directions, $modifier)})
           }
         }
       }
@@ -38,7 +39,7 @@
       @for $i from 0 through ($columns - 1) {
         @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .col-xs-offset-0
           .offset-#{$breakpoint}-#{$i} {
-            @include make-col-modifier(offset, $i, $columns)
+            @include make-col-modifier(offset, $i, $columns, #{map-get($modifier-directions, offset)})
           }
         }
       }

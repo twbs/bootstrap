@@ -7,6 +7,11 @@
 // Kill the scroll on the body
 .modal-open {
   overflow: hidden;
+
+  .navbar-fixed-bottom,
+  .navbar-fixed-top {
+    right: 15px;
+  }
 }
 
 // Container that the modal scrolls within

@@ -3,11 +3,13 @@
   padding-left: 0;
   margin-top: $spacer-y;
   margin-bottom: $spacer-y;
+  font-size: 0; // Collapse white-space
   @include border-radius();
 }
 
 .page-item {
-  display: inline; // Remove list-style and block-level defaults
+  display: inline-block;
+  font-size: initial;
 
   &:first-child {
     .page-link {
@@ -44,7 +46,7 @@
 
 .page-link {
   position: relative;
-  float: left; // Collapse white-space
+  display: inline-block;
   padding: $pagination-padding-y $pagination-padding-x;
   margin-left: -1px;
   color: $pagination-color;

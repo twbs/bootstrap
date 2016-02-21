@@ -140,6 +140,11 @@ $container-max-widths: (
 ) !default;
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
+$modifier-directions: (
+  pull: right,
+  push: left,
+  offset: left
+) !default;
 
 // Grid columns
 //
@@ -473,7 +478,7 @@ $zindex-modal:             1050 !default;
 // Navbar
 
 $navbar-border-radius:              $border-radius !default;
-$navbar-padding-x:                  $spacer !default;
+$navbar-padding-x:                  0 !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
 $navbar-brand-padding-y:            .25rem !default;
 

@@ -178,3 +178,15 @@
     margin-bottom: $dropdown-margin-top;
   }
 }
+
+// White links against a dark background
+.dropdown-dark {
+  .dropdown-item {
+    color: $navbar-dark-color;
+
+    @include hover-focus {
+      background-color: transparent;
+      color: $navbar-dark-hover-color;
+    }
+  }
+}
