@@ -140,6 +140,12 @@ $container-max-widths: (
 ) !default;
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
+
+// Page rendering direction
+//
+// Set the default direction of how content and components will be rendered from
+
+$direction: ltr !default;
 $modifier-directions: (
   pull: right,
   push: left,

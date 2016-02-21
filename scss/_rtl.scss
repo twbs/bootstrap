@@ -8,17 +8,12 @@ $modifier-directions-rtl: (
   offset: right
 ) !default;
 
-// scss-lint:disable QualifyingElement
-[dir=rtl] {
-
+@mixin rtl-rules {
   caption,
   th {
     text-align: right;
   }
 
-  .navbar-side {
-    float: left;
-  }
   .close {
     float: left;
   }
@@ -126,10 +121,13 @@ $modifier-directions-rtl: (
   }
   .checkbox label,
   .radio label,
+  .checkbox-inline,
+  .radio-inline,
   .custom-control {
     padding-left: 0;
     padding-right: $input-padding-x-lg;
   }
+  // scss-lint:disable QualifyingElement
   .checkbox input[type=checkbox],
   .checkbox-inline input[type=checkbox],
   .radio input[type=radio],
@@ -137,11 +135,12 @@ $modifier-directions-rtl: (
     margin-left: 0;
     margin-right: $input-padding-x-lg * -1;
   }
+  // scss-lint:enable QualifyingElement
   .custom-control-indicator {
     left: auto;
     right: 0;
   }
-  .file-custom::before {
+  .custom-file-control::before {
     right: auto;
     left: -.075rem;
     top: -.037rem;
@@ -154,11 +153,9 @@ $modifier-directions-rtl: (
     @include media-breakpoint-up($breakpoint) {
 
       @each $modifier in (pull, push) {
-        [class*=#{$modifier}-#{$breakpoint}] {
-          #{map-get($modifier-directions, $modifier)}: auto;
-        }
         @for $i from 0 through $grid-columns {
           .#{$modifier}-#{$breakpoint}-#{$i} {
+            #{map-get($modifier-directions, $modifier)}: auto;
             @include make-col-modifier($modifier, $i, $grid-columns, #{map-get($modifier-directions-rtl, $modifier)})
           }
         }
@@ -166,16 +163,34 @@ $modifier-directions-rtl: (
 
       // `$grid-columns - 1` because offsetting by the width of an entire row isn't possible
       @for $i from 0 through ($grid-columns - 1) {
-        [class*=offset-#{$breakpoint}] {
-          #{map-get($modifier-directions, offset)}: auto;
-        }
         @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .offset-xs-0
           .offset-#{$breakpoint}-#{$i} {
+            margin-#{map-get($modifier-directions, offset)}: auto;
             @include make-col-modifier(offset, $i, $grid-columns, #{map-get($modifier-directions-rtl, offset)})
           }
         }
       }
+
+      .pull-#{$breakpoint}-start {
+        @include pull-start(right);
+      }
+      .pull-#{$breakpoint}-end {
+        @include pull-end(left);
+      }
+
     }
   }
+}
+
+@if $direction == rtl {
+  html:not([dir=ltr]) {
+    direction: rtl;
+    @include rtl-rules();
+  }
+}
+
+// scss-lint:disable QualifyingElement
+[dir=rtl] {
+  @include rtl-rules();
 }
 // scss-lint:enable QualifyingElement
