@@ -15,7 +15,6 @@
 
 // Core CSS
 @import "reboot";
-@import "rtl";
 @import "type";
 @import "images";
 @import "code";
@@ -49,6 +48,9 @@
 @import "tooltip";
 @import "popover";
 @import "carousel";
+
+// Rendering direction
+@import "direction";
 
 // Utility classes
 @import "utilities";

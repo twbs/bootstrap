@@ -7,7 +7,7 @@
   $breakpoint-counter: 0;
   @each $breakpoint in map-keys($breakpoints) {
     $breakpoint-counter: ($breakpoint-counter + 1);
-    @include media-breakpoint-up($breakpoint, $breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
       @if $enable-flex {
         .col-#{$breakpoint} {
           position: relative;
@@ -26,22 +26,42 @@
           @include make-col($i, $columns, $gutter);
         }
       }
+    }
+  }
+}
+
+@mixin make-grid-column-modifiers($directions, $columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+  $start: #{map-get($directions, start)};
+  $end: #{map-get($directions, end)};
+  $breakpoint-counter: 0;
+  @each $breakpoint in map-keys($breakpoints) {
+    $breakpoint-counter: ($breakpoint-counter + 1);
+    @include media-breakpoint-up($breakpoint) {
 
       @each $modifier in (pull, push) {
         @for $i from 0 through $columns {
           .#{$modifier}-#{$breakpoint}-#{$i} {
-            @include make-col-modifier($modifier, $i, $columns, #{map-get($modifier-directions, $modifier)})
+            #{if($modifier == pull, $start, $end)}: auto;
+            @include make-col-modifier($modifier, $i, $columns, if($modifier == pull, $end, $start));
           }
         }
       }
 
       // `$columns - 1` because offsetting by the width of an entire row isn't possible
       @for $i from 0 through ($columns - 1) {
-        @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .col-xs-offset-0
+        @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .offset-xs-0
           .offset-#{$breakpoint}-#{$i} {
-            @include make-col-modifier(offset, $i, $columns, #{map-get($modifier-directions, offset)})
+            margin-#{$end}: auto;
+            @include make-col-modifier(offset, $i, $columns, $start);
           }
         }
+      }
+
+      .pull-#{$breakpoint}-start {
+        @include pull-start($start);
+      }
+      .pull-#{$breakpoint}-end {
+        @include pull-end($end);
       }
     }
   }
