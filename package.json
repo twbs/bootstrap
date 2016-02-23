@@ -38,7 +38,7 @@
     "grunt-build-control": "~0.6.0",
     "grunt-contrib-clean": "~1.0.0",
     "grunt-contrib-compress": "~1.0.0",
-    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-concat": "~1.0.0",
     "grunt-contrib-connect": "~0.11.2",
     "grunt-contrib-copy": "~0.8.1",
     "grunt-contrib-cssmin": "~0.14.0",
