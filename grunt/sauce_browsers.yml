@@ -38,11 +38,11 @@
 
   {
     browserName: "chrome",
-    platform: "Windows 8.1"
+    platform: "Windows 10"
   },
   {
     browserName: "firefox",
-    platform: "Windows 8.1"
+    platform: "Windows 10"
   },
 
   # Win Opera 15+ not currently supported by Sauce Labs
