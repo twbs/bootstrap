@@ -24,7 +24,7 @@ Examples that focus on implementing uses of built-in components provided by Boot
     <h4>Grids</h4>
     <p>Multiple examples of grid layouts with all four tiers, nesting, and more.</p>
   </div>
-  <div class="clearfix hidden-sm-up"></div>
+  <div class="clearfix hidden-md-up"></div>
 
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/jumbotron/">
@@ -61,7 +61,7 @@ Taking the default navbar component and showing how it can be moved, placed, and
     <h4>Static top navbar</h4>
     <p>Super basic template with a static top navbar along with some additional content.</p>
   </div>
-  <div class="clearfix hidden-sm-up"></div>
+  <div class="clearfix hidden-md-up"></div>
 
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/navbar-top-fixed/">
@@ -91,7 +91,7 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Cover</h4>
     <p>A one-page template for building simple and beautiful home pages.</p>
   </div>
-  <div class="clearfix hidden-sm-up"></div>
+  <div class="clearfix hidden-md-up"></div>
 
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/carousel/">
@@ -107,7 +107,7 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Blog</h4>
     <p>Simple two-column blog layout with custom navigation, header, and type.</p>
   </div>
-  <div class="clearfix hidden-sm-up"></div>
+  <div class="clearfix hidden-md-up"></div>
 
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/dashboard/">
@@ -123,7 +123,7 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Sign-in page</h4>
     <p>Custom form layout and design for a simple sign in form.</p>
   </div>
-  <div class="clearfix hidden-sm-up"></div>
+  <div class="clearfix hidden-md-up"></div>
 
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/justified-nav/">
@@ -139,7 +139,7 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Sticky footer</h4>
     <p>Attach a footer to the bottom of the viewport when the content is shorter than it.</p>
   </div>
-  <div class="clearfix hidden-sm-up"></div>
+  <div class="clearfix hidden-md-up"></div>
 
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/sticky-footer-navbar/">
