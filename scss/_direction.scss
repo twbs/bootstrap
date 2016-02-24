@@ -2,14 +2,6 @@
 // Handling of rendering direction - right to left or left to right
 //
 
-@mixin border-radius-direction($direction) {
-  @if $direction == right {
-    @include border-radius(0 $border-radius $border-radius 0);
-  } @else {
-    @include border-radius($border-radius 0 0 $border-radius);
-  }
-}
-
 @mixin direction-rules($start, $end) {
   caption,
   th {

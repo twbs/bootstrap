@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags-->
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap 4 with rtl support</title>
+
+    <!-- Bootstrap core CSS-->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="dashboard2.css" rel="stylesheet">
+    <script>
+      var dir = sessionStorage.getItem('dir') || 'ltr';
+      document.querySelector('html').setAttribute('dir', dir);
+    </script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
+      <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggler hidden-sm-up">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" class="navbar-brand navbar-item">Project name</a>
+      <nav class="nav navbar-nav">
+        <a href="#" class="nav-item nav-link">Dashboard</a>
+        <a href="#" class="nav-item nav-link">Settings</a>
+        <a href="#" class="nav-item nav-link">Profile</a>
+        <a href="#" class="nav-item nav-link">Help</a>
+        <a href="#" data-toggle="modal" data-target="#myModal" class="nav-item nav-link">Launch demo modal</a>
+      </nav>
+      <div class="navbar-item pull-xs-end">
+        <form class="form-inline">
+          <div id="google_translate_element"></div><input type="text" placeholder="Search..." class="form-control"></form>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 sidebar">
+          <div class="list-group">
+            <a href="#" class="list-group-item active">Current item</a>
+            <a href="#" class="list-group-item">Next item <span class="tag tag-pill tag-default pull-xs-end">2</span></a>
+            <a href="#" class="list-group-item">Another item</a>
+            <a href="#" class="list-group-item">More item</a>
+            <a href="#" class="list-group-item">Last item</a></div>
+        </div>
+        <div class="col-md-10 main">
+          <div class="card-block">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="#">Library</a>
+              </li>
+              <li class="breadcrumb-item active">Data</li>
+            </ol>
+            <h1 class="page-header">Dashboard</h1>
+            <div class="row placeholders">
+              <div class="col-xs-6 col-sm-3 placeholder">
+                <div class="orb"></div>
+                <h4>Label 1</h4><span class="text-muted">Something else</span></div>
+              <div class="col-xs-6 col-sm-3 placeholder">
+                <div class="orb"></div>
+                <h4>Label 2</h4><span class="text-muted">Something else</span></div>
+              <div class="col-xs-6 col-sm-3 placeholder">
+                <div class="orb"></div>
+                <h4>Label 3</h4><span class="text-muted">Something else</span></div>
+              <div class="col-xs-6 col-sm-3 placeholder">
+                <div class="orb"></div>
+                <h4>Label 4</h4><span class="text-muted">Something else</span></div>
+            </div>
+          </div>
+          <div class="card-block">
+            <h2>Section title</h2>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Header</th>
+                    <th>Header</th>
+                    <th>Header</th>
+                    <th>Header</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1,001</td>
+                    <td>Lorem</td>
+                    <td>ipsum</td>
+                    <td>dolor</td>
+                    <td>sit</td>
+                  </tr>
+                  <tr>
+                    <td>1,002</td>
+                    <td>amet</td>
+                    <td>consectetur</td>
+                    <td>adipiscing</td>
+                    <td>elit</td>
+                  </tr>
+                  <tr>
+                    <td>1,003</td>
+                    <td>Integer</td>
+                    <td>nec</td>
+                    <td>odio</td>
+                    <td>Praesent</td>
+                  </tr>
+                  <tr>
+                    <td>1,003</td>
+                    <td>libero</td>
+                    <td>Sed</td>
+                    <td>cursus</td>
+                    <td>ante</td>
+                  </tr>
+                  <tr>
+                    <td>1,004</td>
+                    <td>dapibus</td>
+                    <td>diam</td>
+                    <td>Sed</td>
+                    <td>nisi</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-block">
+            <h2>Components</h2>
+            <div class="row">
+              <div class="col-md-4">
+                <div role="alert" class="alert alert-warning alert-dismissible fade in"><button type="button" data-dismiss="alert" aria-label="Close" class="close"><span>×</span></button>
+                  <h6>Holy guacamole!</h6> You should check in on some of those fields below.</div>
+                <div class="card card-block card-inverse bg-inverse">
+                  <h3 class="card-title">Special title treatment</h3>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p><a href="#" class="btn btn-primary">Button</a></div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <div class="input-group"><span class="input-group-addon">$</span><input type="text" aria-label="Amount (to the nearest dollar)" class="form-control"><span class="input-group-addon">.00</span></div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group"><span class="input-group-addon"><input type="checkbox" aria-label="Checkbox for following text input"></span><input type="text" aria-label="Text input with checkbox" class="form-control"></div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group"><span class="input-group-addon"><input type="radio" aria-label="Radio button for following text input"></span><input type="text" aria-label="Text input with radio button" class="form-control"></div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group"><input type="text" aria-label="Text input with segmented button dropdown" class="form-control">
+                    <div class="input-group-btn"><button type="button" class="btn btn-secondary">Action</button><button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-secondary dropdown-toggle"><span class="sr-only">Toggle Dropdown</span></button>
+                      <div class="dropdown-menu dropdown-menu-right"><a href="#" class="dropdown-item">Action</a><a href="#" class="dropdown-item">Another action</a><a href="#" class="dropdown-item">Something else here</a>
+                        <div role="separator" class="dropdown-divider"></div><a href="#" class="dropdown-item">Separated link</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <h3 class="card-header">Featured</h3>
+                  <div class="card-block">
+                    <h4 class="card-title">Special title treatment</h4>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p><a href="#" class="btn btn-primary">Go somewhere</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-block">
+            <h2>Forms</h2>
+            <form class="form-inline form-group"><label>Inline form</label>
+              <div class="form-group"><label for="exampleInputEmail3" class="sr-only">Email address</label><input id="exampleInputEmail3" type="email" placeholder="Enter email" class="form-control"></div>
+              <div class="form-group"><label for="exampleInputPassword3" class="sr-only">Password</label><input id="exampleInputPassword3" type="password" placeholder="Password" class="form-control"></div>
+              <div class="checkbox"><label><input type="checkbox"> 
+  Remember me</label></div> <button type="submit" class="btn btn-primary">Sign in</button></form>
+            <div class="row">
+              <div class="col-md-6">
+                <form>
+                  <div class="form-group row">
+                    <div class="col-sm-2"><label for="inputEmail3" class="form-control-label">Email</label></div>
+                    <div class="col-sm-10"><input id="inputEmail3" type="email" placeholder="Email" class="form-control"></div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-2"><label for="inputPassword3" class="form-control-label">Password</label></div>
+                    <div class="col-sm-10"><input id="inputPassword3" type="password" placeholder="Password" class="form-control"></div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-2"><label class="form-control-label">Radios</label></div>
+                    <div class="col-sm-10">
+                      <div class="radio"><label><input id="gridRadios1" type="radio" name="gridRadios" value="option1" checked="">          Option one is this and that—be sure to include why it's great</label></div>
+                      <div class="radio"><label><input id="gridRadios2" type="radio" name="gridRadios" value="option2">          Option two can be something else and selecting it will deselect option one</label></div>
+                      <div class="radio disabled"><label><input id="gridRadios3" type="radio" name="gridRadios" value="option3" disabled="">          Option three is disabled</label></div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-2"><label class="form-control-label">Checkbox</label></div>
+                    <div class="col-sm-10">
+                      <div class="checkbox"><label><input type="checkbox"> Check me out</label></div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-offset-2 col-sm-10"><button type="submit" class="btn btn-primary">Sign in</button></div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group has-success"><label for="inputSuccess1" class="form-control-label">Input with success</label><input id="inputSuccess1" type="text" class="form-control form-control-success"></div>
+                <div class="form-group has-warning"><label for="inputWarning1" class="form-control-label">Input with warning</label><input id="inputWarning1" type="text" class="form-control form-control-warning"></div>
+                <div class="form-group has-danger"><label for="inputDanger1" class="form-control-label">Input with danger</label><input id="inputDanger1" type="text" class="form-control form-control-danger"></div>
+                <div class="checkbox has-success"><label><input id="checkboxSuccess" type="checkbox" value="option1">    Checkbox with success</label></div>
+                <div class="checkbox has-warning"><label><input id="checkboxWarning" type="checkbox" value="option1">    Checkbox with warning</label></div>
+                <div class="checkbox has-danger"><label><input id="checkboxDanger" type="checkbox" value="option1">    Checkbox with danger</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"><button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title">Modal title</h4></div>
+          <div class="modal-body">
+            <p>One fine body…<progress value="0" max="100" class="progress">0%</progress><progress value="25" max="100" class="progress progress-info">25%</progress><progress value="50" max="100" class="progress progress-success">50%</progress><progress value="75" max="100" class="progress progress-warning">75%</progress><progress value="100" max="100" class="progress progress-danger">100%</progress></p>
+          </div>
+          <div class="modal-footer"><button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button> <button type="button" class="btn btn-primary">Save changes</button> </div>
+        </div>
+      </div>
+    </div>
+    <script src="../../assets/js/vendor/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script>
+      $('.language-select .dropdown-item').on('click', function(e) {
+        e.preventDefault();
+        var dir = $(this).data().dir,
+          lang = $(this).data().lang;
+        setDir(dir);
+        sessionStorage.setItem('lang', lang);
+      });
+
+      setTimeout(function() {
+        $('.goog-te-combo').on('change', function() {
+          var lang = this.value,
+            dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+          setDir(dir);
+          //sessionStorage.setItem('lang', lang);
+        });
+      }, 500);
+
+      $(document).bind('keydown', function(e) {
+        // ctrl+alt+r or on mac cmd+alt+r
+        if (e.altKey && (e.metaKey || e.ctrlKey) && String.fromCharCode(e.which) === 'R') {
+          var dir = $('html').attr('dir') === 'ltr' ? 'rtl' : 'ltr';
+          setDir(dir);
+        }
+      });
+
+      function setDir(dir) {
+        $('html').attr('dir', dir);
+        sessionStorage.setItem('dir', dir);
+      }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,ar'
+        }, 'google_translate_element');
+      }
+    </script>
+  </body>
+</html>

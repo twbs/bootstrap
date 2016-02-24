@@ -33,3 +33,14 @@
     border-top-left-radius: $radius;
   }
 }
+
+// Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
+@mixin border-radius-direction($direction, $radius: $border-radius) {
+  @if $enable-rounded {
+    @if $direction == right {
+      @include border-radius(0 $radius $radius 0);
+    } @else {
+      @include border-radius($radius 0 0 $radius);
+    }
+  }
+}
