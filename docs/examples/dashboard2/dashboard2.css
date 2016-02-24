@@ -103,7 +103,8 @@ body > .skiptranslate {
   padding: .375rem 1.75rem .375rem .75rem;
   padding-right: .75rem\9;
   vertical-align: middle;
-  background-size: 8px 10px;
+  -webkit-background-size: 8px 10px;
+          background-size: 8px 10px;
   -moz-appearance: none;
 
   background: transparent;
@@ -119,6 +120,7 @@ body > .skiptranslate {
 }
 .goog-text-highlight {
   background-color: inherit !important;
-  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
   position: static !important;
 }

@@ -3330,12 +3330,6 @@ input[type="button"].btn-block {
   border-bottom: 1px solid #ddd;
 }
 
-.nav-tabs::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .nav-tabs .nav-item {
   display: inline-block;
   margin-bottom: -1px;
