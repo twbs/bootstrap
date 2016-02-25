@@ -264,12 +264,12 @@ dd {
     &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
   }
 
-  @media (min-width: @grid-float-breakpoint) {
+  @media (min-width: @screen-sm-min) {
     dt {
       float: left;
       width: (@dl-horizontal-offset - 24);
       clear: left;
-      text-align: right;
+      text-align: left;
       .text-overflow();
     }
     dd {
@@ -277,6 +277,15 @@ dd {
       margin-bottom: (@padding-base-vertical * 2);
     }
   }
+}
+
+.list-group-item dd {
+    margin-bottom: 0;
+}
+ @media (max-width: @screen-xs-max) {
+    .list-group-item dl {
+        margin-top: 8px;
+    }
 }
 
 
