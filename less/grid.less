@@ -10,14 +10,14 @@
 .container {
   .container-fixed();
 
-  @media (min-width: @screen-sm-min) {
-    width: @container-sm;
-  }
   @media (min-width: @screen-md-min) {
     width: @container-md;
   }
   @media (min-width: @screen-lg-min) {
     width: @container-lg;
+  }
+  @media (min-width: @screen-xl-min) {
+    width: @container-xl;
   }
 }
 
@@ -83,7 +83,15 @@
   .make-grid(lg);
 }
 
-@media (max-width: @screen-xs-max) {
+// Extra Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media (min-width: @screen-xl-min) {
+  .make-grid(xl);
+}
+
+@media (max-width: @screen-sm-max) {
   .container {
       padding-right: @padding-container-collapse;
       padding-left: @padding-container-collapse;
@@ -92,7 +100,8 @@
 
 [class*="col-sm"],
 [class*="col-md"],
-[class*="col-lg"] {
+[class*="col-lg"],
+[class*="col-xl"] {
     margin-bottom: (@spacer-y * 2);
 }
 
@@ -116,4 +125,19 @@
 	[class*="col-lg"] {
 		margin-bottom: 0;
 	}
+}
+
+@media (min-width: @screen-xl-min) {
+	[class*="col-xl"] {
+		margin-bottom: 0;
+	}
+}
+
+.row-equal-height {
+    display: flex;
+    flex-wrap: wrap;
+
+    > [class*="col-"] {
+        display: flex;
+    }
 }

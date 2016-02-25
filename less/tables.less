@@ -45,6 +45,9 @@ th {
     a {
       text-decoration: none;
     }
+    .caret {
+        margin-top: -3px;
+    }
   }
   // Remove top border from thead by default
   > caption + thead,
@@ -187,7 +190,7 @@ table {
     border: 0;
   }
 
-  @media screen and (max-width: @screen-xs-max) {
+  @media screen and (max-width: @screen-sm-max) {
     width: 100%;
     margin-bottom: @line-height-computed;
     overflow-y: hidden;
@@ -274,7 +277,7 @@ table {
     }
 }
 
-@media screen and (min-width: @screen-sm-min) {
+@media screen and (min-width: @screen-md-min) {
     .panel {
         > .table,
         > .table-responsive {
