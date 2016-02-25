@@ -14,26 +14,31 @@
           <th></th>
           <th>
             Extra small devices
-            <small>Phones (&lt;768px)</small>
+            <small>Phones (&lt;576px)</small>
           </th>
           <th>
             Small devices
-            <small>Tablets (&ge;768px)</small>
+            <small>Tablets (&ge;576px)</small>
           </th>
           <th>
             Medium devices
-            <small>Desktops (&ge;992px)</small>
+            <small>Desktops (&ge;768px)</small>
           </th>
           <th>
             Large devices
-            <small>Desktops (&ge;1200px)</small>
+            <small>Desktops (&ge;992px)</small>
           </th>
+           <th>
+             Extra Large devices
+             <small>Desktops (&ge;1200px)</small>
+           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <th scope="row"><code>.visible-xs-*</code></th>
           <td class="is-visible">Visible</td>
+          <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
@@ -44,6 +49,7 @@
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
+          <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
           <th scope="row"><code>.visible-md-*</code></th>
@@ -51,9 +57,19 @@
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
+          <td class="is-hidden">Hidden</td>
         </tr>
         <tr>
           <th scope="row"><code>.visible-lg-*</code></th>
+          <td class="is-hidden">Hidden</td>
+          <td class="is-hidden">Hidden</td>
+          <td class="is-hidden">Hidden</td>
+          <td class="is-visible">Visible</td>
+          <td class="is-hidden">Hidden</td>
+        </tr>
+        <tr>
+          <th scope="row"><code>.visible-xl-*</code></th>
+          <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-hidden">Hidden</td>
@@ -67,11 +83,13 @@
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
+          <td class="is-visible">Visible</td>
         </tr>
         <tr>
           <th scope="row"><code>.hidden-sm</code></th>
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
+          <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
         </tr>
@@ -81,9 +99,19 @@
           <td class="is-visible">Visible</td>
           <td class="is-hidden">Hidden</td>
           <td class="is-visible">Visible</td>
+          <td class="is-visible">Visible</td>
         </tr>
         <tr>
           <th scope="row"><code>.hidden-lg</code></th>
+          <td class="is-visible">Visible</td>
+          <td class="is-visible">Visible</td>
+          <td class="is-visible">Visible</td>
+          <td class="is-hidden">Hidden</td>
+          <td class="is-visible">Visible</td>
+        </tr>
+        <tr>
+          <th scope="row"><code>.hidden-xl</code></th>
+          <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
           <td class="is-visible">Visible</td>
@@ -159,22 +187,26 @@
   <h3>Visible on...</h3>
   <p>Green checkmarks indicate the element <strong>is visible</strong> in your current viewport.</p>
   <div class="row responsive-utilities-test visible-on">
-    <div class="col-xs-6 col-sm-3">
+    <div class="col-xs-6 col-sm-2">
       <span class="hidden-xs">Extra small</span>
       <span class="visible-xs-block">&#10004; Visible on x-small</span>
     </div>
-    <div class="col-xs-6 col-sm-3">
+    <div class="col-xs-6 col-sm-2">
       <span class="hidden-sm">Small</span>
       <span class="visible-sm-block">&#10004; Visible on small</span>
     </div>
     <div class="clearfix visible-xs-block"></div>
-    <div class="col-xs-6 col-sm-3">
+    <div class="col-xs-6 col-sm-2">
       <span class="hidden-md">Medium</span>
       <span class="visible-md-block">&#10004; Visible on medium</span>
     </div>
-    <div class="col-xs-6 col-sm-3">
+    <div class="col-xs-6 col-sm-2">
       <span class="hidden-lg">Large</span>
       <span class="visible-lg-block">&#10004; Visible on large</span>
+    </div>
+    <div class="col-xs-6 col-sm-2">
+      <span class="hidden-xl">Extra Large</span>
+      <span class="visible-xl-block">&#10004; Visible on x-large</span>
     </div>
   </div>
   <div class="row responsive-utilities-test visible-on">
@@ -192,8 +224,8 @@
       <span class="visible-xs-block visible-md-block">&#10004; Visible on x-small and medium</span>
     </div>
     <div class="col-xs-6">
-      <span class="hidden-sm hidden-lg">Small and large</span>
-      <span class="visible-sm-block visible-lg-block">&#10004; Visible on small and large</span>
+      <span class="hidden-sm hidden-xl">Small and extra large</span>
+      <span class="visible-sm-block visible-xl-block">&#10004; Visible on small and x-large</span>
     </div>
     <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6">
@@ -209,22 +241,26 @@
   <h3>Hidden on...</h3>
   <p>Here, green checkmarks also indicate the element <strong>is hidden</strong> in your current viewport.</p>
   <div class="row responsive-utilities-test hidden-on">
-    <div class="col-xs-6 col-sm-3">
+    <div class="col-xs-6 col-sm-2">
       <span class="hidden-xs">Extra small</span>
       <span class="visible-xs-block">&#10004; Hidden on x-small</span>
     </div>
-    <div class="col-xs-6 col-sm-3">
+    <div class="col-xs-6 col-sm-2">
       <span class="hidden-sm">Small</span>
       <span class="visible-sm-block">&#10004; Hidden on small</span>
     </div>
     <div class="clearfix visible-xs-block"></div>
-    <div class="col-xs-6 col-sm-3">
+    <div class="col-xs-6 col-sm-2">
       <span class="hidden-md">Medium</span>
       <span class="visible-md-block">&#10004; Hidden on medium</span>
     </div>
-    <div class="col-xs-6 col-sm-3">
+    <div class="col-xs-6 col-sm-2">
       <span class="hidden-lg">Large</span>
       <span class="visible-lg-block">&#10004; Hidden on large</span>
+    </div>
+    <div class="col-xs-6 col-sm-2">
+      <span class="hidden-xl">Extra Large</span>
+      <span class="visible-xl-block">&#10004; Hidden on x-large</span>
     </div>
   </div>
   <div class="row responsive-utilities-test hidden-on">
@@ -242,8 +278,8 @@
       <span class="visible-xs-block visible-md-block">&#10004; Hidden on x-small and medium</span>
     </div>
     <div class="col-xs-6">
-      <span class="hidden-sm hidden-lg">Small and large</span>
-      <span class="visible-sm-block visible-lg-block">&#10004; Hidden on small and large</span>
+      <span class="hidden-sm hidden-xl">Small and large</span>
+      <span class="visible-sm-block visible-xl-block">&#10004; Hidden on small and x-large</span>
     </div>
     <div class="clearfix visible-xs-block"></div>
     <div class="col-xs-6">

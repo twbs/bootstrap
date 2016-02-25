@@ -38,8 +38,8 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="../" class="navbar-brand hidden-sm">Bootstrap</a>
-				<div class="flag flag-info hidden-md hidden-lg hidden-xs"></div>
+				<a href="../" class="navbar-brand hidden-md">TransferWise</a>
+				<a href="../" class="flag flag-info visible-md-block"></a>
 			</div>
 			<nav id="bs-navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -94,18 +94,38 @@
 		</div>
 	</header>
 	<div class="container">
-
-		<div class="form-group hidden-md hidden-lg m-t-lg">
-			<select class="form-control">
-				<option>Profile overview</option>
-				<option>Edit profile</option>
-				<option>Verify profile</option>
-				<option>Profile picture</option>
-			</select>
+		<div class="form-group hidden-lg hidden-xl m-t-lg">
+			<div class="btn-group btn-block">
+				<button type="button" class="btn btn-input dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<span class="glyphicon glyphicon-user m-r-1"></span> Form example <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#form-example">
+						<span class="glyphicon glyphicon-user"></span>
+						Form example</a>
+					</li>
+					<li><a href="#review-example">
+						<span class="glyphicon glyphicon-pencil"></span>
+						Review example</a>
+					</li>
+					<li><a href="#list-example">
+						<span class="glyphicon glyphicon-ok"></span>
+						List example <span class="badge m-l-md">3</span></a>
+					</li>
+					<li><a href="#table-example">
+						<span class="glyphicon glyphicon-camera"></span>
+						Table example</a>
+					</li>
+					<li><a href="#tile-example">
+						<span class="glyphicon glyphicon-th-large"></span>
+						Tile example</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div class="row m-t-lg">
-			<div class="col-md-9 col-md-push-3">
-				<div class="panel">
+			<div class="col-lg-9 col-lg-push-3">
+				<div class="panel" id="form-example">
 					<div class="panel-heading">
 						<button class="btn btn-sm btn-default pull-right">Example</button>
 						<h3 class="panel-title">Panel title</h3>
@@ -283,7 +303,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="panel">
+				<div class="panel" id="review-example">
 					<div class="panel-heading">
 						<h3 class="panel-title">Personal information</h3>
 					</div>
@@ -328,7 +348,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="panel">
+				<div class="panel" id="list-example">
 					<div class="panel-heading">
 						<h3 class="panel-title">List Group</h3>
 					</div>
@@ -340,13 +360,13 @@
 								</div>
 								<div class="media-body">
 									<div class="row">
-										<div class="col-sm-8">
+										<div class="col-md-8">
 											<h5 class="media-heading">Al Green</h5>
 											300 GBP to EUR<br />
 											When I request GBP, I receive it to this account
 										</div>
-										<div class="col-sm-4">
-											<div class="btn-group btn-group-sm pull-right-sm">
+										<div class="col-md-4">
+											<div class="btn-group btn-group-sm pull-md-right">
 												<button type="button" class="btn btn-default">Send money</button>
 												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown" aria-expanded="false">
@@ -372,13 +392,13 @@
 								</div>
 								<div class="media-body">
 									<div class="row">
-										<div class="col-sm-8">
+										<div class="col-md-8">
 											<h5 class="media-heading">Ann Peebles</h5>
 											250 USD to GBP<br />
 											When I request USD, I receive it to this account
 										</div>
-										<div class="col-sm-4">
-											<div class="btn-group btn-group-sm pull-right-sm">
+										<div class="col-md-4">
+											<div class="btn-group btn-group-sm pull-md-right">
 												<button type="button" class="btn btn-default">Send money</button>
 												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown" aria-expanded="false">
@@ -412,12 +432,21 @@
 								</div>
 								<div class="media-body">
 									<div class="row">
-										<div class="col-sm-8">
+										<div class="col-md-8">
 											<h5 class="media-heading">Jean Knight</h5>
-											300 EUR to PLN<br />
+											<dl class="dl-horizontal">
+												<dt>Type</dt>
+												<dd>Personal</dd>
+
+												<dt>Sort code</dt>
+												<dd>01-23-45</dd>
+
+												<dt>Account number</dt>
+												<dd>012345678</dd>
+											</dl>
 										</div>
-										<div class="col-sm-4">
-											<div class="btn-group btn-group-sm pull-right-sm">
+										<div class="col-md-4">
+											<div class="btn-group btn-group-sm pull-md-right">
 												<button type="button" class="btn btn-default">Send money</button>
 												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown" aria-expanded="false">
@@ -436,7 +465,7 @@
 							</div>
 						</li>
 
-						<li class="list-group-item list-group-item-warning">
+						<li class="list-group-item">
 							<div class="media">
 								<div class="media-left">
 									<div class="circle">
@@ -445,12 +474,21 @@
 								</div>
 								<div class="media-body">
 									<div class="row">
-										<div class="col-sm-8">
+										<div class="col-md-8">
 											<h5 class="media-heading">Jean Knight</h5>
-											300 EUR to PLN<br />
+											<dl class="dl-horizontal">
+												<dt>Type</dt>
+												<dd>Personal</dd>
+
+												<dt>Sort code</dt>
+												<dd>01-23-45</dd>
+
+												<dt>Account number</dt>
+												<dd>012345678</dd>
+											</dl>
 										</div>
-										<div class="col-sm-4">
-											<div class="btn-group btn-group-sm pull-right-sm">
+										<div class="col-md-4">
+											<div class="btn-group btn-group-sm pull-md-right">
 												<button type="button" class="btn btn-default">Send money</button>
 												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown" aria-expanded="false">
@@ -479,12 +517,21 @@
 								</div>
 								<div class="media-body">
 									<div class="row">
-										<div class="col-sm-8">
+										<div class="col-md-8">
 											<h5 class="media-heading">Jean Knight</h5>
-											300 EUR to PLN<br />
+											<dl class="dl-horizontal">
+												<dt>Type</dt>
+												<dd>Personal</dd>
+
+												<dt>Sort code</dt>
+												<dd>01-23-45</dd>
+
+												<dt title="Really really really long label">Really really really long label</dt>
+												<dd>012345678</dd>
+											</dl>
 										</div>
-										<div class="col-sm-4">
-											<div class="btn-group btn-group-sm pull-right-sm">
+										<div class="col-md-4">
+											<div class="btn-group btn-group-sm pull-md-right">
 												<button type="button" class="btn btn-default">Send money</button>
 												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown" aria-expanded="false">
@@ -507,7 +554,7 @@
 					</ul>
 				</div>
 
-				<div class="panel">
+				<div class="panel" id="table-example">
 					<div class="panel-heading">
 						<h3 class="panel-title">Table</h3>
 					</div>
@@ -544,29 +591,75 @@
 						</table>
 					</div>
 				</div>
+				<div class="panel" id="tile-example">
+					<div class="panel-heading">
+						<h3 class="panel-title">Tiles</h3>
+					</div>
+					<div class="panel-body">
+						<div class="tile-row">
+							<div class="tile-container col-sm-6 col-md-4">
+								<div class="tile">
+									<div class="circle circle-lg">
+										<i class="icon icon-card"></i>
+									</div>
+									<h5>Credit Card</h5>
+									<p>Visa and Mastercard are supported</p>
+									<hr />
+									<p>&plus;&pound;1 card fee</p>
+								</div>
+							</div>
+
+							<div class="tile-container col-sm-6 col-md-4">
+								<div class="tile">
+									<div class="circle circle-lg">
+										<i class="icon icon-card"></i>
+									</div>
+									<h5>Bank Transfer</h5>
+									<p>Send the money from your Internet Banking</p>
+									<hr />
+									<p>1 day slower</p>
+								</div>
+							</div>
+							<div class="tile-container col-sm-6 col-md-4">
+								<div class="tile">
+									<div class="circle circle-lg">
+										<i class="icon icon-card"></i>
+									</div>
+									<div class="tile-ribbon-benefit">Faster</div>
+									<h5>Debit Card</h5>
+									<p>Visa and Mastercard are supported</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div class="col-md-3 col-md-pull-9">
-				<div class="nav hidden-sm hidden-xs">
+			<div class="col-lg-3 col-lg-pull-9">
+				<div class="nav hidden-sm hidden-xs hidden-md">
 					<h3>John Smith</h3>
 					<p class="small">Your customer number is P123456</p>
 					<hr />
 					<ul class="nav nav-pills nav-stacked">
-						<li><a href="">
+						<li><a href="#form-example">
 							<span class="glyphicon glyphicon-user"></span>
-							Profile overview</a>
+							Form example</a>
 						</li>
-						<li><a href="">
+						<li><a href="#review-example">
 							<span class="glyphicon glyphicon-pencil"></span>
-							Edit profile</a>
+							Review example</a>
 						</li>
-						<li><a href="">
+						<li><a href="#list-example">
 							<span class="glyphicon glyphicon-ok"></span>
-							Verify profile <span class="badge m-l-md">3</span></a>
+							List example <span class="badge m-l-md">3</span></a>
 						</li>
-						<li><a href="">
+						<li><a href="#table-example">
 							<span class="glyphicon glyphicon-camera"></span>
-							Profile picture</a>
+							Table example</a>
+						</li>
+						<li><a href="#tile-example">
+							<span class="glyphicon glyphicon-th-large"></span>
+							Tile example</a>
 						</li>
 					</ul>
 				</div>
@@ -589,7 +682,7 @@
 						a couple of taps.</p>
 				</div>
 				<div class="col-md-5">
-					<div class="pull-right-md">
+					<div class="pull-md-right">
 						<button class="btn btn-primary btn-lg">App Store</button>
 						<button class="btn btn-primary btn-lg">Google Play</button>
 					</div>
