@@ -250,3 +250,30 @@
         border-left: 1px solid @brand-light-blue-minus-10;
     }
 }
+
+.btn-group.btn-block {
+    display: inline-flex;
+    .clearfix();
+
+    .btn {
+        display: block;
+        width: 100%;
+        text-align: left;
+        .caret {
+            position: absolute;
+            right: 16px;
+            top: 16px;
+        }
+    }
+    .btn + .dropdown-toggle {
+        flex: 0;
+        .caret {
+            position: relative;
+            top: 0;
+            right: 0;
+        }
+    }
+    .dropdown-menu {
+        width: 100%;
+    }
+}
