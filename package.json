@@ -70,8 +70,7 @@
   },
   "files": [
     "dist",
-    "grunt/*.js",
-    "grunt/*.json",
+    "grunt",
     "js/*.js",
     "scss/**/*.scss",
     "Gruntfile.js",
