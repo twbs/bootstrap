@@ -79,6 +79,11 @@ body {
   border-bottom: .25rem solid transparent;
 }
 
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255,255,255,.25);
+}
+
 .nav-masthead .nav-link + .nav-link {
   margin-left: 1rem;
 }
