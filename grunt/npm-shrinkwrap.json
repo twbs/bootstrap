@@ -1790,20 +1790,6 @@
       "version": "1.0.1",
       "resolved": "https://registry.npmjs.org/map-obj/-/map-obj-1.0.1.tgz"
     },
-    "markdown-it": {
-      "version": "6.0.0",
-      "resolved": "https://registry.npmjs.org/markdown-it/-/markdown-it-6.0.0.tgz",
-      "dependencies": {
-        "argparse": {
-          "version": "1.0.6",
-          "resolved": "https://registry.npmjs.org/argparse/-/argparse-1.0.6.tgz"
-        },
-        "entities": {
-          "version": "1.1.1",
-          "resolved": "https://registry.npmjs.org/entities/-/entities-1.1.1.tgz"
-        }
-      }
-    },
     "marked": {
       "version": "0.3.5",
       "resolved": "https://registry.npmjs.org/marked/-/marked-0.3.5.tgz"
