@@ -1,0 +1,163 @@
+//
+// Handling of rendering direction - right to left or left to right
+//
+
+@mixin direction-rules($start, $end) {
+  caption,
+  th {
+    text-align: $start;
+  }
+
+  .close {
+    float: $end;
+  }
+  .modal {
+    direction: ltr; // Aligns the modal scrollbar to the right
+
+    .modal-dialog {
+      direction: if($start == left, ltr, rtl);
+    }
+  }
+  .modal-footer {
+    text-align: $end;
+
+    .dropdow-menu {
+      text-align: $start;
+    }
+  }
+  .alert-dismissible {
+    padding-#{$start}: $alert-padding;
+    padding-#{$end}: ($alert-padding + 20);
+
+    .close {
+      margin-#{$start}: 0;
+      margin-#{$end}: -21px;
+    }
+  }
+  .list-group,
+  .pagination,
+  .pager {
+    padding-#{$start}: 0;
+  }
+  .pager-prev > a,
+  .pager-prev > span {
+    float: $start;
+  }
+  .pager-next > a,
+  .pager-next > span {
+    float: $end;
+  }
+  .page-link {
+    margin-#{$start}: 0;
+    margin-#{$end}: -1px;
+  }
+  .page-item {
+
+    &:first-child .page-link {
+      margin-#{$end}: -1px;
+      @include border-radius-direction($start);
+    }
+    &:last-child .page-link {
+      margin-#{$end}: 0;
+      @include border-radius-direction($end);
+    }
+  }
+  .input-group-addon {
+
+    &:first-child {
+      border-#{$end}-width: 0;
+      border-#{$start}-width: 1px;
+      @include border-radius-direction($start);
+    }
+    &:last-child {
+      border-#{$start}-width: 0;
+      border-#{$end}-width: 1px;
+      @include border-radius-direction($end);
+    }
+  }
+  .input-group-btn {
+
+    &:first-child > .btn,
+    &:first-child > .btn-group {
+      margin-#{$start}: 0;
+      margin-#{$end}: -1px;
+    }
+    &:last-child > .btn,
+    &:last-child > .btn-group {
+      margin-#{$end}: 0;
+      margin-#{$start}: -1px;
+    }
+  }
+  .input-group .form-control:not(:last-child),
+  .input-group-addon:not(:last-child),
+  .input-group-btn:not(:last-child) > .btn,
+  .input-group-btn:not(:last-child) > .btn-group > .btn,
+  .input-group-btn:not(:last-child) > .dropdown-toggle,
+  .input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
+  .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
+    @include border-radius-direction($start);
+  }
+  .input-group .form-control:not(:first-child),
+  .input-group-addon:not(:first-child),
+  .input-group-btn:not(:first-child) > .btn,
+  .input-group-btn:not(:first-child) > .btn-group > .btn,
+  .input-group-btn:not(:first-child) > .dropdown-toggle,
+  .input-group-btn:not(:last-child) > .btn:not(:first-child),
+  .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
+    @include border-radius-direction($end);
+  }
+  .form-control + .input-group-addon:not(:first-child) {
+    border-#{$end}-width: 1px;
+  }
+  .checkbox label,
+  .radio label,
+  .checkbox-inline,
+  .radio-inline,
+  .custom-control {
+    padding-#{$end}: 0;
+    padding-#{$start}: $input-padding-x-lg;
+  }
+  // scss-lint:disable QualifyingElement
+  .checkbox input[type=checkbox],
+  .checkbox-inline input[type=checkbox],
+  .radio input[type=radio],
+  .radio-inline input[type=radio] {
+    margin-#{$end}: 0;
+    margin-#{$start}: $input-padding-x-lg * -1;
+  }
+  // scss-lint:enable QualifyingElement
+  .custom-control-indicator {
+    #{$end}: auto;
+    #{$start}: 0;
+  }
+  .custom-file-control::before {
+    #{$start}: auto;
+    #{$end}: -.075rem;
+    top: -.037rem;
+    @include border-radius-direction($end);
+  }
+
+  @include make-grid-column-modifiers($directions: (
+    start: $start,
+    end: $end
+  ));
+}
+
+html {
+  direction: $direction;
+}
+
+$start: if($direction == ltr, left, right);
+$end: if($direction == ltr, right, left);
+@include direction-rules($start, $end);
+
+// scss-lint:disable QualifyingElement
+[dir=ltr] {
+  direction: ltr;
+  @include direction-rules($start: left, $end: right);
+}
+[dir=rtl] {
+  direction: rtl;
+  @include direction-rules($start: right, $end: left);
+}
+// scss-lint:enable QualifyingElement

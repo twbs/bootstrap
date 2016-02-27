@@ -1,6 +1,6 @@
-@mixin pull-left {
-  float: left !important;
+@mixin pull-start($direction) {
+  float: $direction !important;
 }
-@mixin pull-right {
-  float: right !important;
+@mixin pull-end($direction) {
+  float: $direction !important;
 }

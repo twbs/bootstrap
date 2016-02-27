@@ -92,6 +92,7 @@
       border-right-width: 0;
       border-left-color: $popover-arrow-outer-color;
       &::after {
+        left: auto;
         right: 1px;
         bottom: -$popover-arrow-width;
         content: "";
@@ -136,8 +137,10 @@
 }
 .popover-arrow {
   border-width: $popover-arrow-outer-width;
-}
-.popover-arrow::after {
-  content: "";
-  border-width: $popover-arrow-width;
+
+  &::after {
+    content: "";
+    border-width: $popover-arrow-width;
+    left: 0;
+  }
 }

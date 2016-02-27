@@ -84,6 +84,7 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Album</h4>
     <p>Simple one-page template for photo galleries, portfolios, and more.</p>
   </div>
+
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/cover/">
       <img class="img-thumbnail" src="{{ site.baseurl }}/examples/screenshots/cover.jpg" alt="">
@@ -91,6 +92,7 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Cover</h4>
     <p>A one-page template for building simple and beautiful home pages.</p>
   </div>
+
   <div class="clearfix hidden-sm-up"></div>
 
   <div class="col-xs-6 col-md-4">
@@ -100,6 +102,7 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Carousel</h4>
     <p>Customize the navbar and carousel, then add some new components.</p>
   </div>
+
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/blog/">
       <img class="img-thumbnail" src="{{ site.baseurl }}/examples/screenshots/blog.jpg" alt="">
@@ -107,6 +110,7 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Blog</h4>
     <p>Simple two-column blog layout with custom navigation, header, and type.</p>
   </div>
+
   <div class="clearfix hidden-sm-up"></div>
 
   <div class="col-xs-6 col-md-4">
@@ -116,6 +120,15 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Dashboard</h4>
     <p>Basic admin dashboard shell with fixed sidebar and navbar.</p>
   </div>
+
+  <div class="col-xs-6 col-md-4">
+    <a href="{{ site.baseurl }}/examples/dashboard2/">
+      <img class="img-thumbnail" src="{{ site.baseurl }}/examples/screenshots/dashboard.jpg" alt="">
+    </a>
+    <h4>Dashboard 2</h4>
+    <p>Basic admin dashboard shell with fixed sidebar and navbar working with RTL.</p>
+  </div>
+
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/signin/">
       <img class="img-thumbnail" src="{{ site.baseurl }}/examples/screenshots/sign-in.jpg" alt="">
@@ -132,6 +145,7 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Justified nav</h4>
     <p>Create a custom navbar with justified links. Heads up! <a href="{{ site.baseurl }}components/#nav-justified">Not too Safari friendly.</a></p>
   </div>
+
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/sticky-footer/">
       <img class="img-thumbnail" src="{{ site.baseurl }}/examples/screenshots/sticky-footer.jpg" alt="">
@@ -139,6 +153,7 @@ Brand new components and templates to help folks quickly get started with Bootst
     <h4>Sticky footer</h4>
     <p>Attach a footer to the bottom of the viewport when the content is shorter than it.</p>
   </div>
+
   <div class="clearfix hidden-sm-up"></div>
 
   <div class="col-xs-6 col-md-4">

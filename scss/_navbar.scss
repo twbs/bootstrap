@@ -6,10 +6,14 @@
 .navbar {
   position: relative;
   padding: $navbar-padding-y $navbar-padding-x;
-  @include clearfix;
 
   @include media-breakpoint-up(sm) {
     @include border-radius($navbar-border-radius);
+  }
+
+  .navbar-item {
+    display: inline-block;
+    margin: 0 $spacer;
   }
 }
 
@@ -68,11 +72,11 @@
 //
 
 .navbar-brand {
-  float: left;
   padding-top:    $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
-  margin-right: 1rem;
   font-size: $font-size-lg;
+  vertical-align: middle;
+  display: inline-block;
 
   @include hover-focus {
     text-decoration: none;
@@ -145,21 +149,17 @@
 
 .navbar-nav {
   .nav-item {
-    float: left;
+    display: inline-block;
+    margin-left: ($spacer / 2);
+    margin-right: ($spacer / 2);
   }
 
   .nav-link {
-    display: block;
+    outline: none;
     padding-top:    .425rem;
     padding-bottom: .425rem;
-
-    + .nav-link {
-      margin-left: 1rem;
-    }
-  }
-
-  .nav-item + .nav-item {
-    margin-left: 1rem;
+    margin-left: ($spacer / 2);
+    margin-right: ($spacer / 2);
   }
 }
 

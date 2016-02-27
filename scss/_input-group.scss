@@ -131,8 +131,10 @@
 .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
   @include border-right-radius(0);
 }
+// We set width because if rtl mode is on we would like to make 
+// this 1px widthout having to re add color
 .input-group-addon:not(:last-child) {
-  border-right: 0;
+  border-right-width: 0;
 }
 .input-group .form-control:not(:first-child),
 .input-group-addon:not(:first-child),
@@ -143,8 +145,10 @@
 .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
   @include border-left-radius(0);
 }
+// We set width because if rtl mode is on we would like to make 
+// this 1px widthout having to re add color
 .form-control + .input-group-addon:not(:first-child) {
-  border-left: 0;
+  border-left-width: 0;
 }
 
 //

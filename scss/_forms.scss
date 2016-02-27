@@ -387,6 +387,7 @@ input[type="checkbox"] {
 // default HTML form controls and our custom form controls (e.g., input groups).
 
 .form-inline {
+  display: inline-block;
 
   // Kick in the inline
   @include media-breakpoint-up(sm) {

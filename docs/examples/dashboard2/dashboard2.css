@@ -1,0 +1,126 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 54px;
+  background-color: #f5f5f5;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/*
+ * Sidebar
+ */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 54px;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  }
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+.placeholders {
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder .orb {
+  display: inline-block;
+  background-color: #0275D8;
+  width: 61%;
+  padding-top: 61%;
+  border-radius: 61%;
+  opacity: 0.5;
+}
+.placeholder:nth-child(odd) .orb {
+  background-color: #43DAAD;
+}
+
+/*
+ * Main content
+ */
+.main {
+  float: right;
+}
+.main > .card-block {
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+/*
+ * Rtl support
+ */
+[dir=rtl] .main {
+  float: left;
+}
+
+/*
+ * Google translate toolbar
+ */
+body {
+  position: static !important;
+}
+body > .skiptranslate {
+  display: none;
+}
+#google_translate_element {
+  display: inline-block;
+  vertical-align: middle;
+}
+.goog-te-gadget {
+  font-size: 0 !important;
+}
+.goog-te-gadget > span {
+  display: none;
+}
+.goog-te-gadget .goog-te-combo {
+  display: inline-block;
+  max-width: 100%;
+  -webkit-appearance: none;
+  padding: .375rem 1.75rem .375rem .75rem;
+  padding-right: .75rem\9;
+  vertical-align: middle;
+  -webkit-background-size: 8px 10px;
+          background-size: 8px 10px;
+  -moz-appearance: none;
+
+  background: transparent;
+  border: 0;
+  color: rgba(255,255,255,.5);
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0 !important;
+}
+.goog-tooltip {
+  display: none !important;
+}
+.goog-text-highlight {
+  background-color: inherit !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  position: static !important;
+}
