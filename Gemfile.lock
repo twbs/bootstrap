@@ -33,7 +33,7 @@ GEM
     rouge (1.10.1)
     safe_yaml (1.0.4)
     sass (3.4.21)
-    scss_lint (0.46.0)
+    scss_lint (0.47.0)
       rake (>= 0.9, < 11)
       sass (~> 3.4.15)
 
@@ -46,7 +46,7 @@ DEPENDENCIES
   jekyll-redirect-from (~> 0.9.1)
   jekyll-sitemap (~> 0.10.0)
   sass (~> 3.4.21)
-  scss_lint (~> 0.46.0)
+  scss_lint (~> 0.47.0)
 
 BUNDLED WITH
    1.11.2
