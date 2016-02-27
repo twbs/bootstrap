@@ -2147,6 +2147,12 @@ select.form-control:not([size]):not([multiple]) {
   margin-bottom: 0;
 }
 
+.form-control-legend {
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
 _::-webkit-full-page-media.form-control,
 input[type="date"].form-control,
 input[type="time"].form-control,
