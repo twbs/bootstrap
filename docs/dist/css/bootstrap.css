@@ -1723,11 +1723,6 @@ pre code {
   padding-left: 12px;
   margin-right: auto;
   margin-left: auto;
-  /*
-  @media (min-width: @screen-sm-min) {
-    width: @container-sm;
-  }
-  */
 }
 @media (min-width: 768px) {
   .container {
@@ -4938,6 +4933,26 @@ tbody.collapse.in {
        -o-transition-property: height, visibility;
           transition-property: height, visibility;
 }
+[data-toggle=collapse] {
+  text-decoration: none;
+}
+[data-toggle=collapse]:hover,
+[data-toggle=collapse]:focus {
+  text-decoration: none;
+}
+[data-toggle=collapse] .caret {
+  margin-top: -3px;
+  -webkit-transition: -webkit-transform .15s linear;
+       -o-transition:      -o-transform .15s linear;
+          transition:         transform .15s linear;
+}
+[data-toggle=collapse][aria-expanded=false] .caret,
+[data-toggle=collapse].collapsed .caret {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+       -o-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
 .caret {
   display: inline-block;
   margin-left: 1px;
@@ -6824,82 +6839,66 @@ a.thumbnail.active {
   }
 }
 .progress {
-  height: 32px;
-  margin-bottom: 24px;
+  height: 4px;
+  margin-bottom: 28px;
   overflow: hidden;
   background-color: #f2f5f7;
-  border-radius: 16px;
+  border-radius: 2px;
 }
 .progress-bar {
   float: left;
   width: 0;
-  min-width: 32px;
   height: 100%;
-  padding-right: 12px;
-  padding-left: 6px;
   font-size: 16px;
   font-weight: bold;
-  line-height: 32px;
   color: #fff;
   text-align: right;
-  background-color: #223049;
+  background-color: #00b9ff;
   -webkit-transition: width .6s ease;
        -o-transition: width .6s ease;
           transition: width .6s ease;
 }
 .progress-bar:first-child {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.progress-bar:last-child {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.progress-lg {
+  height: 32px;
+  margin-bottom: 24px;
+  border-radius: 16px;
+}
+.progress-lg .progress-bar {
+  min-width: 32px;
+  padding-right: 8px;
+  padding-left: 5px;
+  line-height: 32px;
+}
+.progress-lg .progress-bar:first-child {
   border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
 }
-.progress-bar:last-child {
+.progress-lg .progress-bar:last-child {
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
 }
-.progress-striped .progress-bar,
-.progress-bar-striped {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  -webkit-background-size: 40px 40px;
-          background-size: 40px 40px;
-}
-.progress.active .progress-bar,
-.progress-bar.active {
-  -webkit-animation: progress-bar-stripes 2s linear infinite;
-       -o-animation: progress-bar-stripes 2s linear infinite;
-          animation: progress-bar-stripes 2s linear infinite;
+.progress-bar-primary {
+  background-color: #223049;
 }
 .progress-bar-success {
-  background-color: #28b862;
-}
-.progress-striped .progress-bar-success {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  background-color: #2ed06e;
 }
 .progress-bar-info {
-  background-color: #00a4df;
-}
-.progress-striped .progress-bar-info {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+  background-color: #00b9ff;
 }
 .progress-bar-warning {
   background-color: #ffa600;
 }
-.progress-striped .progress-bar-warning {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-}
 .progress-bar-danger {
   background-color: #f53636;
-}
-.progress-striped .progress-bar-danger {
-  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
 }
 .media {
   display: -webkit-box;
@@ -7674,6 +7673,14 @@ a.list-group-item-danger.active:focus {
     padding: 24px 40px;
   }
 }
+@media (min-width: 576px) {
+  .panel {
+    margin-right: 0;
+    margin-left: 0;
+    border: 1px solid #e2e6e8;
+    border-radius: 3px;
+  }
+}
 .embed-responsive {
   position: relative;
   display: block;
@@ -8086,26 +8093,12 @@ button.close {
 }
 @media (min-width: 576px) {
   .modal-dialog {
-    width: 480px;
+    width: 540px;
     margin: 32px auto;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
             box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-  }
-  .modal-sm {
-    width: 300px;
-  }
-  .modal-lg {
-    width: 736px;
-  }
-}
-@media (min-width: 576px) and (min-width: 576px) {
-  .panel {
-    margin-right: 0;
-    margin-left: 0;
-    border: 1px solid #e2e6e8;
-    border-radius: 3px;
   }
   .modal-header {
     min-height: 52px;
@@ -8116,6 +8109,25 @@ button.close {
   }
   .modal-footer {
     padding: 16px 40px;
+  }
+}
+@media (min-width: 576px) {
+  .modal-sm,
+  .modal-lg {
+    width: auto;
+    margin: 32px 24px;
+  }
+}
+@media (min-width: 332px) {
+  .modal-sm {
+    width: 300px;
+    margin: 32px auto;
+  }
+}
+@media (min-width: 768px) {
+  .modal-lg {
+    width: 720px;
+    margin: 32px auto;
   }
 }
 .tooltip {
