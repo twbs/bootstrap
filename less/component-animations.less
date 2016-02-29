@@ -31,3 +31,20 @@
   .transition-duration(.35s);
   .transition-timing-function(ease);
 }
+
+[data-toggle=collapse] {
+    text-decoration: none;
+    
+    &:hover,
+    &:focus  {
+        text-decoration: none;
+    }
+    .caret {
+        transition: transform .15s linear;
+        margin-top: -3px;
+    }
+    &[aria-expanded=false] .caret,
+    &.collapsed .caret {
+        transform: rotate(-90deg);
+    }
+}
