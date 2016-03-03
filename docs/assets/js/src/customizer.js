@@ -6,8 +6,7 @@
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* jshint es3:false */
-/* global JSZip, less, autoprefixer, saveAs, UglifyJS, __configBridge, __js, __less, __fonts */
+/* global JSON, JSZip, less, autoprefixer, saveAs, UglifyJS, __configBridge, __js, __less, __fonts */
 
 window.onload = function () { // wait for load in a dumb way because B-0
   'use strict';
