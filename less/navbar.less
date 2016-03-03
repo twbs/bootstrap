@@ -17,7 +17,6 @@
   transition: border-top-width 0s linear,
               background-color 0s linear;
 
-
   // Prevent floats from breaking the navbar
   &:extend(.clearfix all);
 
@@ -58,12 +57,11 @@
 
 .navbar-collapse {
   overflow-x: visible;
-  border-top: 1px solid transparent;
   &:extend(.clearfix all);
   -webkit-overflow-scrolling: touch;
 
   &.in {
-    overflow-y: auto;
+    // overflow-y: auto;
   }
 
   @media (min-width: @grid-float-breakpoint) {
@@ -73,13 +71,13 @@
 
     &.collapse {
       display: block !important;
-      height: auto !important;
+      // height: auto !important;
       padding-bottom: 0; // Override default setting
-      overflow: visible !important;
+      // overflow: visible !important;
     }
 
     &.in {
-      overflow-y: visible;
+      // overflow-y: visible;
     }
 
     // Undo the collapse side padding for navbars with containers to ensure
@@ -98,10 +96,10 @@
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   .navbar-collapse {
-    max-height: @navbar-collapse-max-height;
+    // max-height: @navbar-collapse-max-height;
 
     @media (max-device-width: @screen-xs-min) and (orientation: landscape) {
-      max-height: 200px;
+      // max-height: 200px;
     }
   }
 }
@@ -213,13 +211,13 @@
 
 .navbar-toggle {
   position: relative;
-  float: right;
-  padding: 9px 10px;
+  float: left;
+  padding: 9px 0px;
   .navbar-vertical-align(34px);
   background-color: transparent;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: 1px solid transparent;
-  border-radius: @border-radius-base;
+  border: 0;    // 1px solid transparent;
+  // border-radius: @border-radius-base;
 
   // We remove the `outline` here, but later compensate by attaching `:hover`
   // styles to `:focus`.
@@ -237,6 +235,9 @@
   .icon-bar + .icon-bar {
     margin-top: 4px;
   }
+  &:hover .icon-bar {
+
+  }
 
   @media (min-width: @grid-float-breakpoint) {
     display: none;
@@ -253,7 +254,7 @@
   margin: (@navbar-padding-vertical / 2) 0;
 
   > li > a {
-    padding: 10px 0;
+    padding: (@line-height-computed / 2) @navbar-padding-horizontal;
     line-height: @line-height-computed;
   }
 
@@ -289,8 +290,9 @@
     > li {
       float: left;
       > a {
-        padding: @navbar-padding-vertical 24px (@navbar-padding-vertical - 3px);
-
+        padding-top: @navbar-padding-vertical;
+        padding-bottom: (@navbar-padding-vertical - 3px);
+        font-size: @navbar-font-size;
       }
     }
   }
@@ -468,11 +470,18 @@
   }
 
   .navbar-toggle {
-    border-color: @navbar-default-toggle-border-color;
+    // border-color: @navbar-default-toggle-border-color;
+    color: @brand-light-blue;
+
     &:hover,
     &:focus {
-      background-color: @navbar-default-toggle-hover-bg;
-      border-color: @navbar-default-toggle-hover-border-color;
+      // background-color: @navbar-default-toggle-hover-bg;
+      // border-color: @navbar-default-toggle-hover-border-color;
+      color: @brand-light-blue-minus-10;
+
+      .icon-bar {
+        background-color: @brand-light-blue-minus-10;
+      }
     }
     .icon-bar {
       background-color: @navbar-default-toggle-icon-bar-bg;
@@ -613,11 +622,18 @@
 
   // Darken the responsive nav toggle
   .navbar-toggle {
-    border-color: @navbar-inverse-toggle-border-color;
+    //border-color: @navbar-inverse-toggle-border-color;
+    color: @brand-light-blue;
+
     &:hover,
     &:focus {
-      background-color: @navbar-inverse-toggle-hover-bg;
-      border-color: @navbar-inverse-toggle-hover-border-color;
+      //background-color: @navbar-inverse-toggle-hover-bg;
+      //border-color: @navbar-inverse-toggle-hover-border-color;
+      color: @brand-light-blue-minus-10;
+
+      .icon-bar {
+        background-color: @brand-light-blue-minus-10;
+      }
     }
     .icon-bar {
       background-color: @navbar-inverse-toggle-icon-bar-bg;
@@ -739,4 +755,112 @@
     width: 24px;
     margin-top: 16px;
     margin-right: 8px;
+}
+.navbar .logo-text {
+    height: 20px;
+    width: 104px;
+    margin-top: 16px;
+    margin-right: 8px;
+    margin-left: 32px;
+}
+
+@media (max-width: @grid-float-breakpoint-max) {
+    .navbar-nav,
+    .navbar-inverse .navbar-nav {
+        margin: 0;
+        border-bottom: 1px solid @brand-smoke-plus-20;
+
+        > li > a {
+            color: @brand-primary;
+            border-radius: @border-radius-base;
+
+            &:hover,
+            &:focus {
+                background-color: @brand-smoke-plus-20;
+                color: @brand-primary;
+            }
+        }
+        .dropdown-toggle {
+            display: none;
+        }
+        .dropdown-menu {
+            display: block;
+            // position: relative;
+            padding: 0;
+            margin-top: 0;
+            width: 100%;
+        }
+        > li > .dropdown-menu {
+            margin-top: 0;
+            box-shadow: none;
+        }
+    }
+}
+
+@media (max-width: @grid-float-breakpoint-max) {
+    .navbar-collapse {
+        transition: all .35s ease;
+        position: fixed;
+        left: (-@navbar-collapse-max-width);
+        bottom: 0;
+        height: 100% !important;
+        width: @navbar-collapse-max-width;
+
+
+        // Backwards compatibility if collapse-panel missing
+        background-color: @brand-white;
+        max-width: 264px !important;
+
+        .navbar-collapse-panel {
+            position: relative;
+            height: 100%;
+            overflow-y: scroll;
+            padding: 8px;
+            background-color: @brand-white;
+            color: @brand-primary !important;
+        }
+
+        .navbar-toggle {
+            left: 280px;
+            opacity: 0;
+            transition: opacity .35s ease;
+            display: inline-block;
+
+            &.close {
+                position: absolute;
+                top: 4px;
+                margin-top: 0;
+            }
+        }
+
+        //&.collapse-open {
+        //    left: 0;
+        //}
+        &.in {
+            .navbar-toggle {
+                opacity: 1;
+            }
+        }
+
+        .cover {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: @brand-primary;
+            opacity: 0;
+            transition: all .35s ease;
+        }
+
+        &[aria-expanded=true]
+        //&.collapse-open
+        {
+            .cover {
+                opacity: 0.9;
+            }
+
+            left: 0;
+        }
+    }
 }
