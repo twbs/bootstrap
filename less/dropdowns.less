@@ -51,6 +51,16 @@
   .box-shadow(0px 20px 66px 0px rgba(34,48,73,.2));
   background-clip: padding-box;
 
+  &.dropdown-menu-sm {
+      width: 220px;
+  }
+  &.dropdown-menu-md {
+      width: 300px;
+  }
+  &.dropdown-menu-lg {
+      width: 420px;
+  }
+
   // Aligns the dropdown menu to right
   //
   // Deprecated as of 3.1.0 in favor of `.dropdown-menu-[dir]`
@@ -76,8 +86,7 @@
     white-space: nowrap; // prevent links from randomly breaking onto new lines
 
     .glyphicon {
-        top: 2px;
-        margin-right: 8px;
+      top: 2px;
     }
   }
   > li:first-child > a {
@@ -171,7 +180,7 @@
   display: block;
   padding: 8px 16px 8px;
   font-size: @font-size-small;
-  line-height: @line-height-base;
+  line-height: @line-height-computed;
   color: @dropdown-header-color;
   white-space: nowrap; // as with > li > a
 }
