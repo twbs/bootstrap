@@ -97,7 +97,7 @@ blockquote footer {
     margin-top: @navbar-height;
 }
 
-@media (min-width: @screen-sm-min) {
+@media (min-width: @screen-md-min) {
     .navbar + .jumbotron,
     .navbar + .jumbotron-image {
         margin-top: (-1 * @navbar-height);
@@ -112,7 +112,7 @@ blockquote footer {
 .navbar + .jumbotron-image > .jumbotron {
     padding-bottom: 100px;
 
-    @media (min-width: @screen-sm-min) {
+    @media (min-width: @screen-md-min) {
         padding-top: 150px;
         padding-bottom: 110px;
     }
@@ -126,12 +126,7 @@ blockquote footer {
 }
 
 
-@media (max-width: @screen-xs-max) {
-    .navbar .collapse,
-    .navbar .collapsing {
-        background-color: @brand-primary;
-    }
-
+@media (max-width: @screen-sm-max) {
     .navbar {
         background-color: @brand-primary;
         border-bottom-color: transparent;
@@ -201,4 +196,21 @@ blockquote footer {
             border: 2px solid @brand-blue;
         }
     }
+}
+
+ul li,
+ol li,
+.btn {
+  .icon:first-child {
+      display: inline-block;
+      position: relative;
+      top: -2px;
+      font-size: 24px;
+      vertical-align: middle;
+      margin-right: 8px;
+      margin-bottom: -3px;
+  }
+  .circle-xs:first-child {
+      margin-top: -1px;
+  }
 }
