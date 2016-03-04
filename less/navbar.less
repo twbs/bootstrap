@@ -238,29 +238,50 @@
   > li > a {
     padding: (@line-height-computed / 2) @navbar-padding-horizontal;
     line-height: @line-height-computed;
+
+  }
+  > li.divider {
+    display: none;
   }
 
   @media (max-width: @grid-float-breakpoint-max) {
     border-bottom: 1px solid @brand-smoke-plus-20;
 
-    // Dropdowns get custom display when collapsed
-    .dropdown-menu {
-      position: static;
-      float: none;
-      width: auto;
-      margin-top: 0;
-      background-color: transparent;
-      border: 0;
-      box-shadow: none;
+    .open .dropdown-menu {
+        position: relative;
+        width: 100%;
+        box-shadow: none;
+        padding: 0;
+        float: none;
+    }
 
-      display: block;
-      padding: 0;
-      width: 100%;
+    // Dropdowns get custom display when collapsed
+    .navbar-collapse-flatten {
+        .dropdown-toggle {
+            display: none;
+        }
+        .dropdown-menu {
+          position: static;
+          margin-top: 0;
+          background-color: transparent;
+          border: 0;
+          display: block;
+
+          float: none;
+          width: 100%;
+          box-shadow: none;
+          padding: 0;
+        }
     }
 
     > li > a {
         color: @brand-primary;
         border-radius: @border-radius-base;
+    }
+
+    > li.divider {
+      display: block;
+      .nav-divider(@dropdown-divider-bg);
     }
 
     li > a {
@@ -273,10 +294,6 @@
           background-color: @brand-smoke-plus-20;
           color: @brand-primary;
       }
-    }
-
-    .dropdown-toggle {
-        display: none;
     }
   }
 
@@ -302,10 +319,7 @@
 // our navbars.
 
 .navbar-form {
-  padding: 10px @navbar-padding-horizontal;
-
-  // Mixin behavior for optimum display
-  .form-inline();
+  padding: 8px @navbar-padding-horizontal;
 
   .form-group {
     @media (max-width: @grid-float-breakpoint-max) {
@@ -317,8 +331,6 @@
     }
   }
 
-  // Vertically center in expanded, horizontal navbar
-  .navbar-vertical-align(@input-height-small);
 
   // Undo 100% width for pull classes
   @media (min-width: @grid-float-breakpoint) {
@@ -329,6 +341,16 @@
     padding-top: 0;
     padding-bottom: 0;
     .box-shadow(none);
+
+    // Vertically center in expanded, horizontal navbar
+    .navbar-vertical-align(@input-height-small);
+
+    // Mixin behavior for optimum display
+    .form-inline();
+  }
+
+  @media (max-width: @grid-float-breakpoint) {
+      border-bottom: 1px solid @brand-smoke-plus-20;
   }
 }
 
@@ -697,41 +719,40 @@
     float: left;
 }
 
-.navbar-inverse .navbar-nav {
-
-}
-
-
 .cover {
     display: none;
 }
 @media (max-width: @grid-float-breakpoint-max) {
     .navbar-collapse {
-        transition: left .35s ease;
         position: fixed;
-        left: (-@navbar-collapse-max-width);
         bottom: 0;
+        left: 0;
+        right: 0;
         height: 100% !important;
-        width: @navbar-collapse-max-width;
 
         // Backwards compatibility if collapse-panel missing
-        background-color: @brand-white !important;
-        max-width: 264px !important;
-        top: @navbar-height;
+        background-color: @brand-white;
+        top: (@navbar-height - 2px);
         padding: 8px;
 
         &.navbar-collapse-with-panel {
             top: 0;
             padding: 0;
+            background-color: transparent;
         }
 
         .navbar-collapse-panel {
-            position: relative;
+            position: fixed;
             height: 100%;
+            top: 0;
             overflow-y: scroll;
             padding: 8px;
             background-color: @brand-white;
             color: @brand-primary !important;
+            max-width: 264px !important;
+            transition: left .35s ease;
+
+            left: (-@navbar-collapse-max-width);
         }
 
         .navbar-toggle {
@@ -747,9 +768,7 @@
             }
         }
 
-        //&.collapse-open {
-        //    left: 0;
-        //}
+        // Only show toggle after animation finished
         &.in {
             .navbar-toggle {
                 opacity: 1;
@@ -758,24 +777,21 @@
 
         .cover {
             display: block;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            width: 100%;
+            height: 100%;
             background-color: @brand-primary;
             opacity: 0;
             transition: opacity .35s ease;
         }
 
-        &[aria-expanded=true]
-        //&.collapse-open
-        {
+        &.in,
+        &[aria-expanded=true] {
             .cover {
                 opacity: 0.9;
             }
-
-            left: 0;
+            .navbar-collapse-panel {
+                left: 0;
+            }
         }
 
         .navbar-btn.btn-group {
