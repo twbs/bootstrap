@@ -153,7 +153,7 @@ project (indentation, accurate comments, etc.) and any other requirements
 **Do not edit `bootstrap.css`, `bootstrap-theme.css`, or `bootstrap.js`
 directly!** Those files are automatically generated. You should edit the
 source files in [`/bootstrap/less/`](https://github.com/twbs/bootstrap/tree/master/less),
-[`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/v4-dev/scss) (for Bootstrap v4)
+[`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/v4-dev/scss) (for Bootstrap v4),
 and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/master/js) instead.
 
 Similarly, when contributing to Bootstrap's documentation, you should edit the
