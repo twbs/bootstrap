@@ -38,11 +38,11 @@
   function clearMenus(e) {
     if (e && e.which === 3) return
 
-    activeBackdrops.forEach(function removeBackdrop($backdrop) {
+    $.each(activeBackdrops, function removeBackdrop(index, $backdrop) {
       $backdrop.remove()
     })
 
-    activeToggles.forEach(function closeToggles($toggle) {
+    $.each(activeToggles, function closeToggles(index, $toggle) {
       var $this         = $toggle
       var $parent       = getParent($this)
       var relatedTarget = { relatedTarget: $this[0] }
