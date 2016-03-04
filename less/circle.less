@@ -66,6 +66,29 @@
         }
     }
 
+    &.circle-xs {
+        font-size: 14px;
+        height: 24px;
+        width: 24px;
+        line-height: 24px;
+
+        .glyphicon,
+        .icon {
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .glyphicon {
+            margin-top: 0px;
+        }
+    }
+
+    &.circle-inverse {
+        background-color: @brand-smoke-plus-10;
+        border-color: @brand-smoke-plus-10;
+        color: @brand-grey-plus-10;
+    }
+
     &.active {
         border-color: @brand-info;
         background-color: @brand-info;
@@ -92,26 +115,4 @@ a:hover .circle.active,
 a.circle.active:hover {
     text-decoration: none;
     color: #FFF;
-}
-.bg-primary,
-.jumbotron {
-    .circle,
-    a.circle,
-    a .circle {
-        border-color: @brand-info;
-        color: @brand-info;
-    }
-    a:hover .circle,
-    a.circle:hover {
-        border-color: #FFF;
-        background-color: #FFF;
-    }
-    a .circle.active,
-    a.circle.active {
-        color: #FFF;
-    }
-    a:hover .circle.active,
-    a.circle.active:hover {
-        color: @brand-info;
-    }
 }
