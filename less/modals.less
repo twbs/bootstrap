@@ -141,27 +141,37 @@
     .box-shadow(0 5px 15px rgba(0,0,0,.5));
   }
 
-  // Modal sizes
-  .modal-sm { width: @modal-sm; }
-  .modal-lg { width: @modal-lg; }
-
-
-  @media (min-width: @screen-sm-min) {
-      .panel {
-          border-radius: @panel-border-radius;
-          border: 1px solid @brand-smoke-plus-10;
-          margin-left: 0;
-          margin-right: 0;
-      }
-      .modal-header {
-          padding: @modal-title-vertical-padding @modal-title-padding;
-          min-height: (@modal-title-vertical-padding + @modal-title-line-height);
-      }
-      .modal-body {
-          padding: @modal-inner-padding;
-      }
-      .modal-footer {
-          padding: 16px @modal-inner-padding;
-      }
+  .modal-header {
+      padding: @modal-title-vertical-padding @modal-title-padding;
+      min-height: (@modal-title-vertical-padding + @modal-title-line-height);
   }
+  .modal-body {
+      padding: @modal-inner-padding;
+  }
+  .modal-footer {
+      padding: 16px @modal-inner-padding;
+  }
+}
+
+
+// Modal sizes
+@media (min-width: @screen-sm-min) {
+    .modal-sm,
+    .modal-lg {
+        width: auto;
+        margin: (@padding-base-vertical * 4) @grid-gutter-width;
+    }
+}
+
+@media (min-width: (@modal-sm + 32px) ) {
+    .modal-sm {
+        width: @modal-sm;
+        margin: (@padding-base-vertical * 4) auto;
+    }
+}
+@media (min-width: @screen-md-min) {
+    .modal-lg {
+        width: @modal-lg;
+        margin: (@padding-base-vertical * 4) auto;
+    }
 }

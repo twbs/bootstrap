@@ -1,31 +1,92 @@
 
 .circle {
-    border: 1px solid @gray-light;
+    border: 1px solid @brand-smoke;
     color: @gray-light;
     border-radius: 50%;
     text-align: center;
-    font-weight: 800;
     text-decoration: none;
+    text-transform: uppercase;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: @brand-white;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    display: block;
     overflow: hidden;
 
     height: 72px;
     width: 72px;
     font-size: 24px;
+    line-height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .glyphicon,
+    .icon {
+        font-size: 32px;
+        line-height: 70px;
+    }
+
+    .glyphicon {
+        margin-top: -1px;
+    }
 
     &.circle-lg {
         font-size: 32px;
         width: 96px;
         height: 96px;
+        line-height: 94px;
+
+        .glyphicon,
+        .icon {
+            font-size: 40px;
+            line-height: 94px;
+        }
+
+        .glyphicon {
+            margin-top: -2px;
+        }
     }
 
     &.circle-sm {
         font-size: 16px;
         height: 48px;
         width: 48px;
+        line-height: 46px;
+
+        .glyphicon,
+        .icon {
+            font-size: 24px;
+            line-height: 46px;
+        }
+
+        .glyphicon {
+            margin-top: 0px;
+        }
+    }
+
+    &.circle-xs {
+        font-size: 14px;
+        height: 24px;
+        width: 24px;
+        line-height: 24px;
+
+        .glyphicon,
+        .icon {
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .glyphicon {
+            margin-top: 0px;
+        }
+    }
+
+    &.circle-inverse {
+        background-color: @brand-smoke-plus-10;
+        border-color: @brand-smoke-plus-10;
+        color: @brand-grey-plus-10;
     }
 
     &.active {
@@ -34,14 +95,14 @@
         color: #FFF;
     }
 
-    .glyphicon {
-        margin-top: -1px;
-    }
+
     img {
         width: 100%;
     }
 }
-a.circle {
+a.circle,
+a.circle .icon,
+a.circle .glyphicon, {
     text-decoration: none;
 }
 a:hover .circle,
@@ -54,26 +115,4 @@ a:hover .circle.active,
 a.circle.active:hover {
     text-decoration: none;
     color: #FFF;
-}
-.bg-primary,
-.jumbotron {
-    .circle,
-    a.circle,
-    a .circle {
-        border-color: @brand-info;
-        color: @brand-info;
-    }
-    a:hover .circle,
-    a.circle:hover {
-        border-color: #FFF;
-        background-color: #FFF;
-    }
-    a .circle.active,
-    a.circle.active {
-        color: #FFF;
-    }
-    a:hover .circle.active,
-    a.circle.active:hover {
-        color: @brand-info;
-    }
 }

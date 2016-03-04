@@ -18,11 +18,11 @@
     <div class="container bs-docs-container">
       <div class="row m-t-lg">
         {% unless page.fullwidth == true %}
-        <div class="col-md-3" role="complementary">
+        <div class="col-lg-3" role="complementary">
             <h3>{{ page.title }}</h3>
             <p>{{ page.lead }}</p>
             <hr />
-          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm"
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm hidden-md"
             data-spy="affix" data-offset-top="230" data-offset-bottom="430">
             <ul class="nav bs-docs-sidenav nav-stacked nav-pills">
               {% if page.slug == "getting-started" %}
@@ -53,7 +53,7 @@
         </div>
         {% endunless %}
 
-          <div class="col-md-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
+          <div class="col-lg-{% if page.fullwidth == true %}12{% else %}9{% endif %}" role="main">
             <div class="panel">
               <!--<div class="panel-heading">
                   <h3 class="panel-title">{{ page.title }}</h3>

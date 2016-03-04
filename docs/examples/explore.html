@@ -27,85 +27,195 @@
 		data-spy="affix"
 		data-offset-top="60">
 		<div class="container">
-			<div class="navbar-header">
+			<div class="navbar-header pull-left">
 				<button class="navbar-toggle collapsed" type="button"
 					data-toggle="collapse"
-					data-target="#bs-navbar"
-					aria-controls="bs-navbar"
+					data-target="#navbar"
+					aria-controls="navbar"
 					aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="../" class="navbar-brand hidden-sm">Bootstrap</a>
-				<div class="flag flag-info hidden-md hidden-lg hidden-xs"></div>
+				<a href="../" class="navbar-brand hidden-md hidden-sm hidden-xs">TransferWise</a>
+				<a href="../" class="logo-text logo-text-inverse visible-xs-block visible-sm-block"></a>
+				<a href="../" class="flag flag-info visible-md-block"></a>
 			</div>
-			<nav id="bs-navbar" class="collapse navbar-collapse">
+			<div class="navbar-btn btn-group pull-right visible-xs visible-sm ">
+				<button type="button" class="btn btn-success">Send <span class="hidden-xs">money</span></button>
+				<button type="button" class="btn btn-success dropdown-toggle"
+					data-toggle="dropdown" aria-expanded="false">
+					<span class="caret"></span>
+					<span class="sr-only">Toggle Dropdown</span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#"><i class="icon icon-send"></i>Send money</a></li>
+					<li class="divider"></li>
+					<li><a href="#"><i class="icon icon-request"></i>Request money</a></li>
+				</ul>
+			</div>
+			<nav id="navbar" class="collapse navbar-collapse navbar-collapse-with-panel">
+				<a class="cover collapsed"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-controls="navbar"
+					aria-expanded="false">
+				</a>
+				<!--
 				<ul class="nav navbar-nav">
 					<li><a href="landing.html">Front</a></li>
 					<li class="active"><a href="create.html">Explore</a></li>
 					<li><a href="article.html">Article</a></li>
 				</ul>
-				<div class="navbar-right">
-					<ul class="nav navbar-nav">
-						<li class="navbar-icon">
-							<a href="#" class="dropdown-toggle"
-								data-toggle="dropdown"
-								role="button"
-								aria-expanded="false">
-								<span class="glyphicon glyphicon-bell"></span>
-								<span class="badge">3</span>
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Notification 1</a></li>
-								<li><a href="#">Notification 2</a></li>
-							</ul>
+				-->
+				<div class="navbar-collapse-panel orderable-xs orderable-sm">
+					<ul class="nav navbar-nav order-2">
+						<li><a href="landing.html">
+							<i class="icon icon-transfer visible-xs-inline-block visible-sm-inline-block"></i>Transfers</a>
 						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button"
-								aria-expanded="false">
-								John Smith <span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Mike Marter</a></li>
-								<li class="divider"></li>
-								<li><a href="#">TransferWise</a></li>
-								<li><a href="#">Acme Corp.</a></li>
-							</ul>
+						<li class="active">
+							<a href="create.html">
+								<i class="icon icon-joint-account visible-xs-inline-block visible-sm-inline-block"></i>Recipients</a>
 						</li>
+						<li><a href="article.html">
+							<i class="icon icon-gift visible-xs-inline-block visible-sm-inline-block"></i>Rewards</a>
+						</li>
+						<li><a href="article.html">
+							<i class="icon icon-help-circle visible-xs-inline-block visible-sm-inline-block"></i>Help</a>
+						</li>
+						<li class="visible-xs-block visible-sm-block"><a href="#"><i class="icon icon-mobile"></i>Get the app</a></li>
+						<li class="visible-xs-block visible-sm-block"><a href="#"><i class="icon icon-setting"></i>Settings</a></li>
+						<li class="divider visible-xs-block visible-sm-block"></li>
+						<li class="visible-xs-block visible-sm-block"><a href="#"><i class="icon icon-logout"></i>Logout</a></li>
 					</ul>
-					<div class="navbar-btn btn-group">
-						<button type="button" class="btn btn-success">Send money</button>
-						<button type="button" class="btn btn-success dropdown-toggle"
-							data-toggle="dropdown" aria-expanded="false">
-							<span class="caret"></span>
-							<span class="sr-only">Toggle Dropdown</span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Send money</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Request money</a></li>
+					<div class="navbar-right order-1">
+						<ul class="nav navbar-nav">
+							<!--
+							<li class="navbar-icon">
+								<a href="#" class="dropdown-toggle"
+									data-toggle="dropdown"
+									role="button"
+									aria-expanded="false">
+									<span class="glyphicon glyphicon-bell"></span>
+									<span class="badge">3</span>
+								</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Notification 1</a></li>
+									<li><a href="#">Notification 2</a></li>
+								</ul>
+							</li>
+							-->
+							<!--
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle"
+									data-toggle="dropdown"
+									role="button"
+									aria-expanded="false">
+									English
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">English</a></li>
+									<li><a href="#">French</a></li>
+									<li><a href="#">Spanish</a></li>
+									<li><a href="#">German</a></li>
+									<li><a href="#">Italian</a></li>
+								</ul>
+							</li>
+							-->
+							<li class="dropdown navbar-collapse-flatten">
+								<a href="#" class="dropdown-toggle"
+									data-toggle="dropdown" role="button"
+									aria-expanded="false">
+									<span class="profile-name text-ellipses"
+										title="Jonathan Smith-Henry">
+										Jonathan Smith-Henry
+									</span>
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-md" role="menu">
+									<li class="p-a-2">
+										<div class="media">
+											<div class="media-left">
+												<div class="circle circle-sm circle-inverse">MM</div>
+											</div>
+											<div class="media-body">
+												<h5 class="text-primary m-b-0">Jonathan Smith-Henry</h5>
+												<div class="small text-muted">Customer no. 1234567</div>
+												<a href="#" class="small">View personal profile</a>
+											</div>
+										</div>
+									</li>
+									<li class="divider"></li>
+									<li class="p-t-1 p-b-1">
+										<a href="#" class="text-ellipses">
+											<div class="circle circle-xs circle-inverse pull-left m-r-1">
+												T
+											</div>Use as TransferWise
+										</a>
+									</li>
+									<li class="divider hidden-sm hidden-xs"></li>
+									<li class="hidden-sm hidden-xs"><a href="#"><i class="icon icon-setting"></i>Settings</a></li>
+									<li class="hidden-sm hidden-xs"><a href="#"><i class="icon icon-logout"></i>Logout</a></li>
+								</ul>
+							</li>
 						</ul>
+						<div class="navbar-right hidden-xs hidden-sm">
+							<div class="navbar-btn btn-group">
+								<button type="button" class="btn btn-success">Send <span class="hidden-xs hidden-sm hidden-md">money</span></button>
+								<button type="button" class="btn btn-success dropdown-toggle"
+									data-toggle="dropdown" aria-expanded="false">
+									<span class="caret"></span>
+									<span class="sr-only">Toggle Dropdown</span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#"><i class="icon icon-send"></i>Send money</a></li>
+									<li class="divider"></li>
+									<li><a href="#"><i class="icon icon-request"></i>Request money</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
+				<a href="#" role="button"
+					class="navbar-toggle close collapsed"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-controls="navbar"
+					aria-expanded="false">&times;</a>
 			</nav>
 		</div>
 	</header>
 	<div class="container">
-
-		<div class="form-group hidden-md hidden-lg m-t-lg">
-			<select class="form-control">
-				<option>Profile overview</option>
-				<option>Edit profile</option>
-				<option>Verify profile</option>
-				<option>Profile picture</option>
-			</select>
+		<div class="form-group hidden-lg hidden-xl m-t-lg">
+			<div class="btn-group btn-block">
+				<button type="button" class="btn btn-input dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<span class="icon icon-profile m-r-1"></span>Form example <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#form-example">
+						<span class="icon icon-profile"></span>Form example</a>
+					</li>
+					<li><a href="#review-example">
+						<span class="icon icon-id"></span>Review example</a>
+					</li>
+					<li><a href="#list-example">
+						<span class="icon icon-menu"></span>List example
+						<span class="badge m-l-md">3</span></a>
+					</li>
+					<li><a href="#table-example">
+						<span class="icon icon-money"></span>Table example</a>
+					</li>
+					<li><a href="#tile-example">
+						<span class="icon icon-camera"></span>Tile example</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div class="row m-t-lg">
-			<div class="col-md-9 col-md-push-3">
-				<div class="panel">
+			<div class="col-lg-9 col-lg-push-3">
+				<div class="panel" id="form-example">
 					<div class="panel-heading">
 						<button class="btn btn-sm btn-default pull-right">Example</button>
 						<h3 class="panel-title">Panel title</h3>
@@ -283,7 +393,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="panel">
+				<div class="panel" id="review-example">
 					<div class="panel-heading">
 						<h3 class="panel-title">Personal information</h3>
 					</div>
@@ -328,7 +438,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="panel">
+				<div class="panel" id="list-example">
 					<div class="panel-heading">
 						<h3 class="panel-title">List Group</h3>
 					</div>
@@ -340,13 +450,13 @@
 								</div>
 								<div class="media-body">
 									<div class="row">
-										<div class="col-sm-8">
+										<div class="col-md-8">
 											<h5 class="media-heading">Al Green</h5>
 											300 GBP to EUR<br />
 											When I request GBP, I receive it to this account
 										</div>
-										<div class="col-sm-4">
-											<div class="btn-group btn-group-sm pull-right-sm">
+										<div class="col-md-4">
+											<div class="btn-group btn-group-sm pull-md-right">
 												<button type="button" class="btn btn-default">Send money</button>
 												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown" aria-expanded="false">
@@ -372,13 +482,13 @@
 								</div>
 								<div class="media-body">
 									<div class="row">
-										<div class="col-sm-8">
+										<div class="col-md-8">
 											<h5 class="media-heading">Ann Peebles</h5>
 											250 USD to GBP<br />
 											When I request USD, I receive it to this account
 										</div>
-										<div class="col-sm-4">
-											<div class="btn-group btn-group-sm pull-right-sm">
+										<div class="col-md-4">
+											<div class="btn-group btn-group-sm pull-md-right">
 												<button type="button" class="btn btn-default">Send money</button>
 												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown" aria-expanded="false">
@@ -412,12 +522,21 @@
 								</div>
 								<div class="media-body">
 									<div class="row">
-										<div class="col-sm-8">
+										<div class="col-md-8">
 											<h5 class="media-heading">Jean Knight</h5>
-											300 EUR to PLN<br />
+											<dl class="dl-horizontal">
+												<dt>Type</dt>
+												<dd>Personal</dd>
+
+												<dt>Sort code</dt>
+												<dd>01-23-45</dd>
+
+												<dt>Account number</dt>
+												<dd>012345678</dd>
+											</dl>
 										</div>
-										<div class="col-sm-4">
-											<div class="btn-group btn-group-sm pull-right-sm">
+										<div class="col-md-4">
+											<div class="btn-group btn-group-sm pull-md-right">
 												<button type="button" class="btn btn-default">Send money</button>
 												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown" aria-expanded="false">
@@ -436,7 +555,7 @@
 							</div>
 						</li>
 
-						<li class="list-group-item list-group-item-warning">
+						<li class="list-group-item">
 							<div class="media">
 								<div class="media-left">
 									<div class="circle">
@@ -445,12 +564,21 @@
 								</div>
 								<div class="media-body">
 									<div class="row">
-										<div class="col-sm-8">
+										<div class="col-md-8">
 											<h5 class="media-heading">Jean Knight</h5>
-											300 EUR to PLN<br />
+											<dl class="dl-horizontal">
+												<dt>Type</dt>
+												<dd>Personal</dd>
+
+												<dt>Sort code</dt>
+												<dd>01-23-45</dd>
+
+												<dt>Account number</dt>
+												<dd>012345678</dd>
+											</dl>
 										</div>
-										<div class="col-sm-4">
-											<div class="btn-group btn-group-sm pull-right-sm">
+										<div class="col-md-4">
+											<div class="btn-group btn-group-sm pull-md-right">
 												<button type="button" class="btn btn-default">Send money</button>
 												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown" aria-expanded="false">
@@ -479,12 +607,21 @@
 								</div>
 								<div class="media-body">
 									<div class="row">
-										<div class="col-sm-8">
+										<div class="col-md-8">
 											<h5 class="media-heading">Jean Knight</h5>
-											300 EUR to PLN<br />
+											<dl class="dl-horizontal">
+												<dt>Type</dt>
+												<dd>Personal</dd>
+
+												<dt>Sort code</dt>
+												<dd>01-23-45</dd>
+
+												<dt title="Really really really long label">Really really really long label</dt>
+												<dd>012345678</dd>
+											</dl>
 										</div>
-										<div class="col-sm-4">
-											<div class="btn-group btn-group-sm pull-right-sm">
+										<div class="col-md-4">
+											<div class="btn-group btn-group-sm pull-md-right">
 												<button type="button" class="btn btn-default">Send money</button>
 												<button type="button" class="btn btn-default dropdown-toggle"
 													data-toggle="dropdown" aria-expanded="false">
@@ -507,7 +644,7 @@
 					</ul>
 				</div>
 
-				<div class="panel">
+				<div class="panel" id="table-example">
 					<div class="panel-heading">
 						<h3 class="panel-title">Table</h3>
 					</div>
@@ -544,29 +681,75 @@
 						</table>
 					</div>
 				</div>
+				<div class="panel" id="tile-example">
+					<div class="panel-heading">
+						<h3 class="panel-title">Tiles</h3>
+					</div>
+					<div class="panel-body">
+						<div class="tile-row">
+							<div class="tile-container col-sm-6 col-md-4">
+								<div class="tile">
+									<div class="circle circle-lg">
+										<i class="icon icon-card"></i>
+									</div>
+									<h5>Credit Card</h5>
+									<p>Visa and Mastercard are supported</p>
+									<hr />
+									<p>&plus;&pound;1 card fee</p>
+								</div>
+							</div>
+
+							<div class="tile-container col-sm-6 col-md-4">
+								<div class="tile">
+									<div class="circle circle-lg">
+										<i class="icon icon-card"></i>
+									</div>
+									<h5>Bank Transfer</h5>
+									<p>Send the money from your Internet Banking</p>
+									<hr />
+									<p>1 day slower</p>
+								</div>
+							</div>
+							<div class="tile-container col-sm-6 col-md-4">
+								<div class="tile">
+									<div class="circle circle-lg">
+										<i class="icon icon-card"></i>
+									</div>
+									<div class="tile-ribbon-benefit">Faster</div>
+									<h5>Debit Card</h5>
+									<p>Visa and Mastercard are supported</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div class="col-md-3 col-md-pull-9">
-				<div class="nav hidden-sm hidden-xs">
-					<h3>John Smith</h3>
+			<div class="col-lg-3 col-lg-pull-9">
+				<div class="nav hidden-sm hidden-xs hidden-md">
+					<h3>Jonathan Smith-Henry</h3>
 					<p class="small">Your customer number is P123456</p>
 					<hr />
 					<ul class="nav nav-pills nav-stacked">
-						<li><a href="">
-							<span class="glyphicon glyphicon-user"></span>
-							Profile overview</a>
+						<li><a href="#form-example">
+							<span class="icon icon-profile"></span>
+							Form example</a>
 						</li>
-						<li><a href="">
-							<span class="glyphicon glyphicon-pencil"></span>
-							Edit profile</a>
+						<li><a href="#review-example">
+							<span class="icon icon-id"></span>
+							Review example</a>
 						</li>
-						<li><a href="">
-							<span class="glyphicon glyphicon-ok"></span>
-							Verify profile <span class="badge m-l-md">3</span></a>
+						<li><a href="#list-example">
+							<span class="icon icon-menu"></span>
+							List example <span class="badge m-l-md">3</span></a>
 						</li>
-						<li><a href="">
-							<span class="glyphicon glyphicon-camera"></span>
-							Profile picture</a>
+						<li><a href="#table-example">
+							<span class="icon icon-money"></span>
+							Table example</a>
+						</li>
+						<li><a href="#tile-example">
+							<span class="icon icon-camera"></span>
+							Tile example</a>
 						</li>
 					</ul>
 				</div>
@@ -589,7 +772,7 @@
 						a couple of taps.</p>
 				</div>
 				<div class="col-md-5">
-					<div class="pull-right-md">
+					<div class="pull-md-right">
 						<button class="btn btn-primary btn-lg">App Store</button>
 						<button class="btn btn-primary btn-lg">Google Play</button>
 					</div>

@@ -6,38 +6,40 @@
       and padding <code>p-</code> classes, that add spacing to the top <code>t</code>,
       bottom <code>b</code>, left <code>l</code>, right <code>r</code>, or all
       <code>a</code>.  For example to add margin to the top use class
-      <code>.m-t</code>, to adding padding on all sides use <code>.p-a</code></p>
-  <p>By default these classes add 8px of spacing, you can also add the
-      <code>-md</code> modifier to add 16px, or the <code>-lg</code> modifier to
-      add 24px e.g. <code>.m-b-lg</code> adds 24px of bottom margin.</p>
+      <code>.m-t-1</code>, to adding padding on all sides use <code>.p-a</code></p>
+  <p>These classes add spacing in multiples of 8px, so adding the
+      <code>-1</code> modifier add 8px, <code>-2</code> adds 16px, <code>-3</code> for
+      24px e.g. <code>.m-b-3</code> adds 24px of bottom margin.</p>
+  <p>You can also use the <code>-0</code> modifier to remove any existing spacing,
+      e.g. <code>.m-b-0</code> to remove bottom margin</p>
   <div class="bs-example" data-example-id="helper-classes-spacing">
-      <div class="m-a"><span style="display: inline-block;" class="bg-default"><button class="btn btn-primary m-b">.m-b</button></span></div>
-      <div class="m-a"><span style="display: inline-block;"  class="bg-default"><button class="btn btn-primary m-b-md">.m-b-md</button></span></div>
-      <div class="m-a"><span style="display: inline-block;"  class="bg-default"><button class="btn btn-primary m-l-lg m-b-lg">.m-l-lg .m-b-lg</button></span></div>
-      <div class="m-a"><button class="btn btn-primary p-a">.p-a</button></div>
-      <div class="m-a"><button class="btn btn-primary p-a-md">.p-a-md</button></div>
-      <div class="m-a"><button class="btn btn-primary p-a-lg">.p-a-lg</button></div>
+      <div class="m-a"><span style="display: inline-block;" class="bg-default"><button class="btn btn-primary m-b-1">.m-b-1</button></span></div>
+      <div class="m-a"><span style="display: inline-block;"  class="bg-default"><button class="btn btn-primary m-b-2">.m-b-2</button></span></div>
+      <div class="m-a"><span style="display: inline-block;"  class="bg-default"><button class="btn btn-primary m-l-3 m-b-3">.m-l-3 .m-b-3</button></span></div>
+      <div class="m-a"><button class="btn btn-primary p-a-1">.p-a-1</button></div>
+      <div class="m-a"><button class="btn btn-primary p-a-2">.p-a-2</button></div>
+      <div class="m-a"><button class="btn btn-primary p-a-3">.p-a-3</button></div>
   </div>
 {% highlight html %}
-<button class="btn m-b">.m-b</button>
-<button class="btn m-a-md">.m-a-md</button>
-<button class="btn m-l-lg m-b-lg">.m-l-lg .m-b-lg</button>
-<button class="btn p-a">.p-a</button>
-<button class="btn p-a-md">.p-a-md</button>
-<button class="btn p-a-lg">.p-a-lg</button>
+<button class="btn m-b">.m-b-1</button>
+<button class="btn m-a-md">.m-a-2</button>
+<button class="btn m-l-lg m-b-lg">.m-l-3 .m-b-3</button>
+<button class="btn p-a-1">.p-a-1</button>
+<button class="btn p-a-2">.p-a-2</button>
+<button class="btn p-a-3">.p-a-3</button>
 {% endhighlight %}
 
-<h3 id="helper-classes-xl-spacing">xl and xxl</h3>
-<p>There are two additional sizes, xl and xxl, that are only available for margin
-    bottom, use <code>.m-b-xl</code> or <code>.m-b-xxl</code> to provide 32px
+<h3 id="helper-classes-xl-spacing">m-b-4 and m-b-5</h3>
+<p>There are two additional sizes, m-b-4 and m-b-5, that are only available for margin
+    bottom, use <code>.m-b-4</code> or <code>.m-b-5</code> to provide 32px
     or 40px of spacing.</p>
 <div class="bs-example" data-example-id="helper-classes-xl-spacing">
-    <div class="m-a"><span style="display: inline-block;" class="bg-default"><button class="btn btn-primary m-b-xl">.m-b-xl</button></span></div>
-    <div class="m-a"><span style="display: inline-block;"  class="bg-default"><button class="btn btn-primary m-b-xxl">.m-b-xxl</button></span></div>
+    <div class="m-a-1"><span style="display: inline-block;" class="bg-default"><button class="btn btn-primary m-b-4">.m-b-4</button></span></div>
+    <div class="m-a-1"><span style="display: inline-block;"  class="bg-default"><button class="btn btn-primary m-b-5">.m-b-5</button></span></div>
 </div>
 {% highlight html %}
-<button class="btn m-b-xl">.m-b-xl</button>
-<button class="btn m-b-xxl">.m-b-xxl</button>
+<button class="btn m-b-4">.m-b-4</button>
+<button class="btn m-b-5">.m-b-5</button>
 {% endhighlight %}
 
   <h3 id="helper-classes-colors">Contextual colors</h3>
@@ -145,34 +147,44 @@
 
   <h3>Responsive floats</h3>
   <p>Float an element to the left or right only until grid collapse.</p>
-  <div class="bs-example" data-example-id="contextual-colors-helpers">
+  <div class="bs-example text-center" data-example-id="contextual-colors-helpers">
     <div class="clearfix">
-      <div class="pull-left-sm">.pull-left-sm</div>
+      <div class="pull-sm-left">.pull-sm-left</div>
     </div>
     <div class="clearfix">
-      <div class="pull-left-md">.pull-left-md</div>
+      <div class="pull-md-left">.pull-md-left</div>
     </div>
     <div class="clearfix">
-      <div class="pull-left-lg">.pull-left-lg</div>
+      <div class="pull-lg-left">.pull-lg-left</div>
     </div>
     <div class="clearfix">
-      <div class="pull-right-sm">.pull-right-sm</div>
+      <div class="pull-xl-left">.pull-xl-left</div>
     </div>
     <div class="clearfix">
-      <div class="pull-right-md">.pull-right-md</div>
+      <div class="pull-sm-right">.pull-sm-right</div>
     </div>
     <div class="clearfix">
-      <div class="pull-right-lg">.pull-right-lg</div>
+      <div class="pull-md-right">.pull-md-right</div>
+    </div>
+    <div class="clearfix">
+      <div class="pull-lg-right">.pull-lg-right</div>
+    </div>
+    <div class="clearfix">
+      <div class="pull-xl-right">.pull-xl-right</div>
     </div>
   </div>
 
 {% highlight html %}
-<div class="pull-left-sm">.pull-left-sm</div>
-<div class="pull-left-md">.pull-left-md</div>
-<div class="pull-left-lg">.pull-left-lg</div>
-<div class="pull-right-sm">.pull-right-sm</div>
-<div class="pull-right-md">.pull-right-md</div>
-<div class="pull-right-lg">.pull-right-lg</div>
+<div class="text-center">
+  <div class="pull-sm-left">.pull-sm-left</div>
+  <div class="pull-md-left">.pull-md-left</div>
+  <div class="pull-lg-left">.pull-lg-left</div>
+  <div class="pull-xl-left">.pull-xl-left</div>
+  <div class="pull-sm-right">.pull-sm-right</div>
+  <div class="pull-md-right">.pull-md-right</div>
+  <div class="pull-lg-right">.pull-lg-right</div>
+  <div class="pull-xl-right">.pull-xl-right</div>
+</div>
 {% endhighlight %}
 
   <h3 id="helper-classes-center">Center content blocks</h3>

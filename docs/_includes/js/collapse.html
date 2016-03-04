@@ -18,31 +18,43 @@
   <p>You can use a link with the <code>href</code> attribute, or a button with the <code>data-target</code> attribute. In both cases, the <code>data-toggle="collapse"</code> is required.</p>
 
   <div class="bs-example">
-    <p>
-      <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Link with href
+    <div class="page-header">
+      <a role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+        <i class="caret"></i> Link with href and caret
       </a>
+    </div>
+    <div class="collapse" id="collapseExample2">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+    </div>
+  </div>
+{% highlight html %}
+<div class="page-header">
+    <a role="button" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+      <i class="caret"></i> Link with caret
+    </a>
+</div>
+<div class="collapse" id="collapseExample2">
+    ...
+</div>
+{% endhighlight %}
+
+  <p>Using a button and data-target</p>
+  <div class="bs-example">
+    <p>
       <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         Button with data-target
       </button>
     </p>
     <div class="collapse" id="collapseExample">
-      <div class="well">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
     </div>
   </div>
 {% highlight html %}
-<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Link with href
-</a>
 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
   Button with data-target
 </button>
 <div class="collapse" id="collapseExample">
-  <div class="well">
     ...
-  </div>
 </div>
 {% endhighlight %}
 

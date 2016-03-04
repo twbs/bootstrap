@@ -28,7 +28,8 @@
 .visible-xs,
 .visible-sm,
 .visible-md,
-.visible-lg {
+.visible-lg,
+.visible-xl {
   .responsive-invisibility();
 }
 
@@ -43,7 +44,10 @@
 .visible-md-inline-block,
 .visible-lg-block,
 .visible-lg-inline,
-.visible-lg-inline-block {
+.visible-lg-inline-block,
+.visible-xl-block,
+.visible-xl-inline,
+.visible-xl-inline-block  {
   display: none !important;
 }
 
@@ -111,22 +115,43 @@
 }
 
 .visible-lg {
-  @media (min-width: @screen-lg-min) {
+  @media (min-width: @screen-lg-min) and (max-width: @screen-lg-max) {
     .responsive-visibility();
   }
 }
 .visible-lg-block {
-  @media (min-width: @screen-lg-min) {
+  @media (min-width: @screen-lg-min) and (max-width: @screen-lg-max) {
     display: block !important;
   }
 }
 .visible-lg-inline {
-  @media (min-width: @screen-lg-min) {
+  @media (min-width: @screen-lg-min) and (max-width: @screen-lg-max) {
     display: inline !important;
   }
 }
 .visible-lg-inline-block {
-  @media (min-width: @screen-lg-min) {
+  @media (min-width: @screen-lg-min) and (max-width: @screen-lg-max) {
+    display: inline-block !important;
+  }
+}
+
+.visible-xl {
+  @media (min-width: @screen-xl-min) {
+    .responsive-visibility();
+  }
+}
+.visible-xl-block {
+  @media (min-width: @screen-xl-min) {
+    display: block !important;
+  }
+}
+.visible-xl-inline {
+  @media (min-width: @screen-xl-min) {
+    display: inline !important;
+  }
+}
+.visible-xl-inline-block {
+  @media (min-width: @screen-xl-min) {
     display: inline-block !important;
   }
 }
@@ -147,7 +172,12 @@
   }
 }
 .hidden-lg {
-  @media (min-width: @screen-lg-min) {
+  @media (min-width: @screen-lg-min) and (max-width: @screen-lg-max) {
+    .responsive-invisibility();
+  }
+}
+.hidden-xl {
+  @media (min-width: @screen-xl-min) {
     .responsive-invisibility();
   }
 }
@@ -192,3 +222,42 @@
     .responsive-invisibility();
   }
 }
+
+// Vertically reorder elements
+.orderable-xs {
+  @media (max-width: @screen-xs-max) {
+    display: flex;
+    flex-flow: column;
+  }
+}
+.orderable-sm {
+  @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    display: flex;
+    flex-flow: column;
+  }
+}
+.orderable-md {
+  @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    display: flex;
+    flex-flow: column;
+  }
+}
+.orderable-lg {
+  @media (min-width: @screen-lg-min) and (max-width: @screen-lg-max) {
+    display: flex;
+    flex-flow: column;
+  }
+}
+.orderable-xl {
+  @media (min-width: @screen-xl-min) {
+    display: flex;
+    flex-flow: column;
+  }
+}
+
+.order-1 { order: 1; }
+.order-2 { order: 2; }
+.order-3 { order: 3; }
+.order-4 { order: 4; }
+.order-5 { order: 5; }
+.order-6 { order: 6; }

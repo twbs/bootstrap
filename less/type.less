@@ -153,6 +153,12 @@ strong {
   .text-emphasis-variant(@state-danger-text);
 }
 
+.text-ellipses {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 // Contextual backgrounds
 // For now we'll leave these alongside the text classes until v4 when we can
 // safely shift things around (per SemVer rules).
@@ -205,9 +211,6 @@ ol {
   ol {
     margin-bottom: 0;
   }
-  //&:not(.nav) li {
-  //    padding-left: 4px;
-  //}
 }
 
 // List options
@@ -264,12 +267,12 @@ dd {
     &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
   }
 
-  @media (min-width: @grid-float-breakpoint) {
+  @media (min-width: @screen-sm-min) {
     dt {
       float: left;
       width: (@dl-horizontal-offset - 24);
       clear: left;
-      text-align: right;
+      text-align: left;
       .text-overflow();
     }
     dd {
@@ -277,6 +280,15 @@ dd {
       margin-bottom: (@padding-base-vertical * 2);
     }
   }
+}
+
+.list-group-item dd {
+    margin-bottom: 0;
+}
+ @media (max-width: @screen-xs-max) {
+    .list-group-item dl {
+        margin-top: 8px;
+    }
 }
 
 

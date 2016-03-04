@@ -991,7 +991,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@screen-sm">@screen-sm</label>
-    <input id="input-@screen-sm" type="text" aria-describedby="help-block-@screen-sm" value="768px" data-var="@screen-sm" class="form-control"/>
+    <input id="input-@screen-sm" type="text" aria-describedby="help-block-@screen-sm" value="576px" data-var="@screen-sm" class="form-control"/>
     <p id="help-block-@screen-sm" class="help-block">Deprecated <code>@screen-sm</code> as of v3.0.1</p>
   </div>
   <div class="col-xs-4">
@@ -1006,7 +1006,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@screen-md">@screen-md</label>
-    <input id="input-@screen-md" type="text" aria-describedby="help-block-@screen-md" value="992px" data-var="@screen-md" class="form-control"/>
+    <input id="input-@screen-md" type="text" aria-describedby="help-block-@screen-md" value="768px" data-var="@screen-md" class="form-control"/>
     <p id="help-block-@screen-md" class="help-block">Deprecated <code>@screen-md</code> as of v3.0.1</p>
   </div>
   <div class="col-xs-4">
@@ -1021,7 +1021,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@screen-lg">@screen-lg</label>
-    <input id="input-@screen-lg" type="text" aria-describedby="help-block-@screen-lg" value="1200px" data-var="@screen-lg" class="form-control"/>
+    <input id="input-@screen-lg" type="text" aria-describedby="help-block-@screen-lg" value="992px" data-var="@screen-lg" class="form-control"/>
     <p id="help-block-@screen-lg" class="help-block">Deprecated <code>@screen-lg</code> as of v3.0.1</p>
   </div>
   <div class="col-xs-4">
@@ -1035,9 +1035,19 @@
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
+    <label for="input-@screen-xl">@screen-xl</label>
+    <input id="input-@screen-xl" type="text" aria-describedby="help-block-@screen-xl" value="1200px" data-var="@screen-xl" class="form-control"/>
+    <p id="help-block-@screen-xl" class="help-block">Deprecated <code>@screen-lg</code> as of v3.0.1</p>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@screen-xl-min">@screen-xl-min</label>
+    <input id="input-@screen-xl-min" type="text" value="@screen-xl" data-var="@screen-xl-min" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@screen-xs-max">@screen-xs-max</label>
     <input id="input-@screen-xs-max" type="text" value="(@screen-sm-min - 1)" data-var="@screen-xs-max" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@screen-sm-max">@screen-sm-max</label>
     <input id="input-@screen-sm-max" type="text" value="(@screen-md-min - 1)" data-var="@screen-sm-max" class="form-control"/>
@@ -1045,6 +1055,10 @@
   <div class="col-xs-4">
     <label for="input-@screen-md-max">@screen-md-max</label>
     <input id="input-@screen-md-max" type="text" value="(@screen-lg-min - 1)" data-var="@screen-md-max" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@screen-lg-max">@screen-lg-max</label>
+    <input id="input-@screen-lg-max" type="text" value="(@screen-xl-min - 1)" data-var="@screen-lg-max" class="form-control"/>
   </div>
 </div>
 <h2 id="grid-system">Grid system</h2>
@@ -1062,7 +1076,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@grid-float-breakpoint">@grid-float-breakpoint</label>
-    <input id="input-@grid-float-breakpoint" type="text" aria-describedby="help-block-@grid-float-breakpoint" value="@screen-sm-min" data-var="@grid-float-breakpoint" class="form-control"/>
+    <input id="input-@grid-float-breakpoint" type="text" aria-describedby="help-block-@grid-float-breakpoint" value="@screen-md-min" data-var="@grid-float-breakpoint" class="form-control"/>
     <p id="help-block-@grid-float-breakpoint" class="help-block">Point at which the navbar becomes uncollapsed.</p>
   </div>
   <div class="clearfix"></div>
@@ -1077,7 +1091,7 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@container-tablet">@container-tablet</label>
-    <input id="input-@container-tablet" type="text" value="(720px + @grid-gutter-width)" data-var="@container-tablet" class="form-control"/>
+    <input id="input-@container-tablet" type="text" value="(544px + @grid-gutter-width)" data-var="@container-tablet" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@container-sm">@container-sm</label>
@@ -1086,7 +1100,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@container-desktop">@container-desktop</label>
-    <input id="input-@container-desktop" type="text" value="(940px + @grid-gutter-width)" data-var="@container-desktop" class="form-control"/>
+    <input id="input-@container-desktop" type="text" value="(720px + @grid-gutter-width)" data-var="@container-desktop" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -1096,12 +1110,22 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@container-large-desktop">@container-large-desktop</label>
-    <input id="input-@container-large-desktop" type="text" value="(1140px + @grid-gutter-width)" data-var="@container-large-desktop" class="form-control"/>
+    <input id="input-@container-large-desktop" type="text" value="(940px + @grid-gutter-width)" data-var="@container-large-desktop" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@container-lg">@container-lg</label>
     <input id="input-@container-lg" type="text" aria-describedby="help-block-@container-lg" value="@container-large-desktop" data-var="@container-lg" class="form-control"/>
     <p id="help-block-@container-lg" class="help-block">For <code>@screen-lg-min</code> and up.</p>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@container-xlarge-desktop">@container-xlarge-desktop</label>
+    <input id="input-@container-xlarge-desktop" type="text" value="(1140px + @grid-gutter-width)" data-var="@container-xlarge-desktop" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@container-xl">@container-xl</label>
+    <input id="input-@container-xl" type="text" aria-describedby="help-block-@container-xl" value="@container-xlarge-desktop" data-var="@container-xl" class="form-control"/>
+    <p id="help-block-@container-xl" class="help-block">For <code>@screen-xl-min</code> and up.</p>
   </div>
 </div>
 <h2 id="navbar">Navbar</h2>
@@ -1125,7 +1149,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@navbar-padding-horizontal">@navbar-padding-horizontal</label>
-    <input id="input-@navbar-padding-horizontal" type="text" value="floor((@grid-gutter-width / 2))" data-var="@navbar-padding-horizontal" class="form-control"/>
+    <input id="input-@navbar-padding-horizontal" type="text" value="16px" data-var="@navbar-padding-horizontal" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@navbar-padding-vertical">@navbar-padding-vertical</label>
@@ -1135,6 +1159,10 @@
   <div class="col-xs-4">
     <label for="input-@navbar-collapse-max-height">@navbar-collapse-max-height</label>
     <input id="input-@navbar-collapse-max-height" type="text" value="340px" data-var="@navbar-collapse-max-height" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@navbar-collapse-max-width">@navbar-collapse-max-width</label>
+    <input id="input-@navbar-collapse-max-width" type="text" value="(320px - 56px)" data-var="@navbar-collapse-max-width" class="form-control"/>
   </div>
 </div>
 <h3 id="standard-navbar">Standard navbar</h3>
@@ -1758,12 +1786,12 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@modal-lg">@modal-lg</label>
-    <input id="input-@modal-lg" type="text" value="736px" data-var="@modal-lg" class="form-control"/>
+    <input id="input-@modal-lg" type="text" value="720px" data-var="@modal-lg" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@modal-md">@modal-md</label>
-    <input id="input-@modal-md" type="text" value="480px" data-var="@modal-md" class="form-control"/>
+    <input id="input-@modal-md" type="text" value="540px" data-var="@modal-md" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@modal-sm">@modal-sm</label>
@@ -1847,50 +1875,50 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@progress-height">@progress-height</label>
-    <input id="input-@progress-height" type="text" aria-describedby="help-block-@progress-height" value="32px" data-var="@progress-height" class="form-control"/>
+    <input id="input-@progress-height" type="text" aria-describedby="help-block-@progress-height" value="4px" data-var="@progress-height" class="form-control"/>
     <p id="help-block-@progress-height" class="help-block">Progress bar height</p>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@progress-height-lg">@progress-height-lg</label>
+    <input id="input-@progress-height-lg" type="text" aria-describedby="help-block-@progress-height-lg" value="32px" data-var="@progress-height-lg" class="form-control"/>
+    <p id="help-block-@progress-height-lg" class="help-block">Large progress bar height</p>
   </div>
   <div class="col-xs-4">
     <label for="input-@progress-bg">@progress-bg</label>
     <input id="input-@progress-bg" type="text" aria-describedby="help-block-@progress-bg" value="@brand-smoke-plus-20" data-var="@progress-bg" class="form-control"/>
     <p id="help-block-@progress-bg" class="help-block">Background color of the whole progress component</p>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@progress-bar-color">@progress-bar-color</label>
     <input id="input-@progress-bar-color" type="text" aria-describedby="help-block-@progress-bar-color" value="#fff" data-var="@progress-bar-color" class="form-control"/>
     <p id="help-block-@progress-bar-color" class="help-block">Progress bar text color</p>
   </div>
-  <div class="clearfix"></div>
-  <div class="col-xs-4">
-    <label for="input-@progress-border-radius">@progress-border-radius</label>
-    <input id="input-@progress-border-radius" type="text" aria-describedby="help-block-@progress-border-radius" value="16px" data-var="@progress-border-radius" class="form-control"/>
-    <p id="help-block-@progress-border-radius" class="help-block">Variable for setting rounded corners on progress bar.</p>
-  </div>
   <div class="col-xs-4">
     <label for="input-@progress-bar-bg">@progress-bar-bg</label>
-    <input id="input-@progress-bar-bg" type="text" aria-describedby="help-block-@progress-bar-bg" value="@brand-primary" data-var="@progress-bar-bg" class="form-control"/>
+    <input id="input-@progress-bar-bg" type="text" aria-describedby="help-block-@progress-bar-bg" value="@brand-light-blue" data-var="@progress-bar-bg" class="form-control"/>
     <p id="help-block-@progress-bar-bg" class="help-block">Default progress bar color</p>
   </div>
   <div class="col-xs-4">
-    <label for="input-@progress-bar-success-bg">@progress-bar-success-bg</label>
-    <input id="input-@progress-bar-success-bg" type="text" aria-describedby="help-block-@progress-bar-success-bg" value="@brand-success" data-var="@progress-bar-success-bg" class="form-control"/>
-    <p id="help-block-@progress-bar-success-bg" class="help-block">Success progress bar color</p>
+    <label for="input-@progress-bar-primary-bg">@progress-bar-primary-bg</label>
+    <input id="input-@progress-bar-primary-bg" type="text" aria-describedby="help-block-@progress-bar-primary-bg" value="@brand-blue" data-var="@progress-bar-primary-bg" class="form-control"/>
+    <p id="help-block-@progress-bar-primary-bg" class="help-block">Primary progress bar color</p>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
+    <label for="input-@progress-bar-success-bg">@progress-bar-success-bg</label>
+    <input id="input-@progress-bar-success-bg" type="text" aria-describedby="help-block-@progress-bar-success-bg" value="@brand-green" data-var="@progress-bar-success-bg" class="form-control"/>
+    <p id="help-block-@progress-bar-success-bg" class="help-block">Success progress bar color</p>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@progress-bar-warning-bg">@progress-bar-warning-bg</label>
-    <input id="input-@progress-bar-warning-bg" type="text" aria-describedby="help-block-@progress-bar-warning-bg" value="@brand-warning" data-var="@progress-bar-warning-bg" class="form-control"/>
+    <input id="input-@progress-bar-warning-bg" type="text" aria-describedby="help-block-@progress-bar-warning-bg" value="@brand-orange" data-var="@progress-bar-warning-bg" class="form-control"/>
     <p id="help-block-@progress-bar-warning-bg" class="help-block">Warning progress bar color</p>
   </div>
   <div class="col-xs-4">
     <label for="input-@progress-bar-danger-bg">@progress-bar-danger-bg</label>
-    <input id="input-@progress-bar-danger-bg" type="text" aria-describedby="help-block-@progress-bar-danger-bg" value="@brand-danger" data-var="@progress-bar-danger-bg" class="form-control"/>
+    <input id="input-@progress-bar-danger-bg" type="text" aria-describedby="help-block-@progress-bar-danger-bg" value="@brand-red" data-var="@progress-bar-danger-bg" class="form-control"/>
     <p id="help-block-@progress-bar-danger-bg" class="help-block">Danger progress bar color</p>
-  </div>
-  <div class="col-xs-4">
-    <label for="input-@progress-bar-info-bg">@progress-bar-info-bg</label>
-    <input id="input-@progress-bar-info-bg" type="text" aria-describedby="help-block-@progress-bar-info-bg" value="@brand-info" data-var="@progress-bar-info-bg" class="form-control"/>
-    <p id="help-block-@progress-bar-info-bg" class="help-block">Info progress bar color</p>
   </div>
 </div>
 <h2 id="list-group">List group</h2>

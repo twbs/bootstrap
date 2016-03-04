@@ -21,24 +21,28 @@
   <h2 id="grid-media-queries">Media queries</h2>
   <p>We use the following media queries in our Less files to create the key breakpoints in our grid system.</p>
 {% highlight scss %}
-/* Extra small devices (phones, less than 768px) */
+/* Extra small devices (phones, less than 576px) */
 /* No media query since this is the default in Bootstrap */
 
-/* Small devices (tablets, 768px and up) */
+/* Small devices (phablets, 576px and up) */
 @media (min-width: @screen-sm-min) { ... }
 
-/* Medium devices (desktops, 992px and up) */
+/* Medium devices (tablets, 768px and up) */
 @media (min-width: @screen-md-min) { ... }
 
-/* Large devices (large desktops, 1200px and up) */
+/* Large devices (desktops, 992px and up) */
 @media (min-width: @screen-lg-min) { ... }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-xl-min) { ... }
 {% endhighlight %}
   <p>We occasionally expand on these media queries to include a <code>max-width</code> to limit CSS to a narrower set of devices.</p>
 {% highlight scss %}
 @media (max-width: @screen-xs-max) { ... }
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
-@media (min-width: @screen-lg-min) { ... }
+@media (min-width: @screen-lg-min) and (max-width: @screen-lg-max) { ... }
+@media (min-width: @screen-xl-min) { ... }
 {% endhighlight %}
 
   <h2 id="grid-options">Grid options</h2>
@@ -50,18 +54,22 @@
           <th></th>
           <th>
             Extra small devices
-            <small>Phones (&lt;768px)</small>
+            <small>Phones (&lt;576px)</small>
           </th>
           <th>
             Small devices
-            <small>Tablets (&ge;768px)</small>
+            <small>Tablets (&ge;576px)</small>
           </th>
           <th>
             Medium devices
-            <small>Desktops (&ge;992px)</small>
+            <small>Desktops (&ge;768px)</small>
           </th>
           <th>
             Large devices
+            <small>Desktops (&ge;992px)</small>
+          </th>
+          <th>
+            Extra large devices
             <small>Desktops (&ge;1200px)</small>
           </th>
         </tr>
@@ -70,14 +78,15 @@
         <tr>
           <th class="text-nowrap" scope="row">Grid behavior</th>
           <td>Horizontal at all times</td>
-          <td colspan="3">Collapsed to start, horizontal above breakpoints</td>
+          <td colspan="4">Collapsed to start, horizontal above breakpoints</td>
         </tr>
         <tr>
           <th class="text-nowrap" scope="row">Container width</th>
           <td>None (auto)</td>
-          <td>750px</td>
-          <td>970px</td>
-          <td>1170px</td>
+          <td>None (auto)</td>
+          <td>720px</td>
+          <td>940px</td>
+          <td>1140px</td>
         </tr>
         <tr>
           <th class="text-nowrap" scope="row">Class prefix</th>
@@ -85,33 +94,35 @@
           <td><code>.col-sm-</code></td>
           <td><code>.col-md-</code></td>
           <td><code>.col-lg-</code></td>
+          <td><code>.col-xl-</code></td>
         </tr>
         <tr>
           <th class="text-nowrap" scope="row"># of columns</th>
-          <td colspan="4">12</td>
+          <td colspan="5">12</td>
         </tr>
         <tr>
           <th class="text-nowrap" scope="row">Column width</th>
           <td class="text-muted">Auto</td>
-          <td>~62px</td>
-          <td>~81px</td>
-          <td>~97px</td>
+          <td class="text-muted">Auto</td>
+          <td>~46px</td>
+          <td>~56px</td>
+          <td>~73px</td>
         </tr>
         <tr>
           <th class="text-nowrap" scope="row">Gutter width</th>
-          <td colspan="4">30px (15px on each side of a column)</td>
+          <td colspan="5">24px (12px on each side of a column)</td>
         </tr>
         <tr>
           <th class="text-nowrap" scope="row">Nestable</th>
-          <td colspan="4">Yes</td>
+          <td colspan="5">Yes</td>
         </tr>
         <tr>
           <th class="text-nowrap" scope="row">Offsets</th>
-          <td colspan="4">Yes</td>
+          <td colspan="5">Yes</td>
         </tr>
         <tr>
           <th class="text-nowrap" scope="row">Column ordering</th>
-          <td colspan="4">Yes</td>
+          <td colspan="5">Yes</td>
         </tr>
       </tbody>
     </table>
@@ -269,6 +280,36 @@
   <div class="col-xs-9">.col-xs-9</div>
   <div class="col-xs-4">.col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
   <div class="col-xs-6">.col-xs-6<br>Subsequent columns continue along the new line.</div>
+</div>
+{% endhighlight %}
+
+  <h2 id="grid-example-equal-height">Equal height columns</h2>
+  <p>If you want the columns of your grid to have the same height, add the <code>.row-equal-height</code> modifier.</p>
+  <p>This can be used to match the height of nested containers, or to control the
+      behaviour of columns that wrap to a new line.</p>
+  <p class="text-warning">Equal height columns use flexbox which is not supported in earlier versions of some browsers.</p>
+  <div class="bs-docs-grid">
+    <h5>Without row-equal-height</h5>
+    <div class="row show-grid">
+      <div class="col-xs-4">Column 1. This column contains more content than the following columns and would naturally have a greater height.</div>
+      <div class="col-xs-4">Column 2.</div>
+      <div class="col-xs-4">Column 3.</div>
+      <div class="col-xs-4">Column 4.</div>
+    </div>
+    <h5>With row-equal-height</h5>
+    <div class="row row-equal-height show-grid">
+      <div class="col-xs-4">Column 1. This column contains more content than the following columns and would naturally have a greater height.</div>
+      <div class="col-xs-4">Column 2.</div>
+      <div class="col-xs-4">Column 3.</div>
+      <div class="col-xs-4">Column 4.</div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="row row-equal-height">
+  <div class="col-xs-4">Column 1. This column...</div>
+  <div class="col-xs-4">Column 2.</div>
+  <div class="col-xs-4">Column 3.</div>
+  <div class="col-xs-4">Column 4.</div>
 </div>
 {% endhighlight %}
 
