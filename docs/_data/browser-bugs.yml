@@ -100,6 +100,16 @@
 
 -
   browser: >
+    Firefox (Windows)
+  summary: >
+    Buttons in footer of very long Bootstrap modal not clickable in Firefox 33+
+  upstream_bug: >
+    Mozilla#1253468
+  origin: >
+    Bootstrap#19390
+
+-
+  browser: >
     Chrome (OS X)
   summary: >
     Clicking above `<input type="number">` increment button flashes the decrement button.
