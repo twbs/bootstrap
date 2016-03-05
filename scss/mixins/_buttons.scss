@@ -4,8 +4,8 @@
 // and disabled options for all buttons
 
 @mixin button-variant($color, $background, $border) {
-  $active-background: darken($background, 10%);
-  $active-border: darken($border, 12%);
+  $active-background: darken($background, $btn-active-bg-darken);
+  $active-border: darken($border, $btn-active-border-darken);
 
   color: $color;
   background-color: $background;
@@ -39,8 +39,8 @@
     &:focus,
     &.focus {
       color: $color;
-      background-color: darken($background, 17%);
-          border-color: darken($border, 25%);
+      background-color: darken($background, $btn-active-hover-bg-darken);
+          border-color: darken($border, $btn-active-hover-border-darken);
     }
   }
 
@@ -88,8 +88,8 @@
     &:focus,
     &.focus {
       color: #fff;
-      background-color: darken($color, 17%);
-          border-color: darken($color, 25%);
+      background-color: darken($color, $btn-active-hover-bg-darken);
+          border-color: darken($color, $btn-active-hover-border-darken);
     }
   }
 
