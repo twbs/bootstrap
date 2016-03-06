@@ -171,10 +171,10 @@ a {
   }
 }
 
-// and undo these styles for placeholder links/named anchors (without href)
-// would be more straightforward to just use a[href] in previous block, but this
-// causes specificity issues in many other styles that are too complex to fix
-// see https://github.com/twbs/bootstrap/issues/19402
+// And undo these styles for placeholder links/named anchors (without href).
+// It would be more straightforward to just use a[href] in previous block, but that
+// causes specificity issues in many other styles that are too complex to fix.
+// See https://github.com/twbs/bootstrap/issues/19402
 
 a:not([href]) {
   color: inherit;
