@@ -564,6 +564,16 @@ For more information, read [this Stack Overflow answer](https://stackoverflow.co
 
 
 ### Reflow
+Turn traditional tables on their side by using `table-reflow`. When using reflow, the table header becomes the first column of the table, the first row within the table body becomes the second column, the second row becomes the third column, etc.
+
+{% callout warning %}
+#### Content order and complex tables
+
+Beware that the `table-reflow` style changes the visual order of content. Make sure that you only apply this style to well-formed and simple data tables (and in particular, don't use this for layout tables) with appropriate `<th>` table header cells for each row and column.
+
+In addition, this class will not work correctly for tables with cells that span multiple rows or columns (using `rowspan` or `colspan` attributes).
+
+{% endcallout %}
 
 {% example html %}
 <table class="table table-reflow">
