@@ -543,6 +543,7 @@ if (typeof jQuery === 'undefined') {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
+/* jshint latedef: false */
 
 +function ($) {
   'use strict';
