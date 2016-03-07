@@ -385,6 +385,20 @@ a:focus {
   outline-offset: -2px;
 }
 
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):focus, a:not([href]):hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):focus {
+  outline: none;
+}
+
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
