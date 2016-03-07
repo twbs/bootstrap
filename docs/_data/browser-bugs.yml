@@ -2,6 +2,16 @@
   browser: >
     Internet Explorer 11 & Microsoft Edge
   summary: >
+    Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
+  upstream_bug: >
+    IE#2445370
+  origin: >
+    Bootstrap#18692
+
+-
+  browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
     IE#926665
