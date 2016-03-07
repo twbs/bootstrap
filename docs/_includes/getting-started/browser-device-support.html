@@ -198,13 +198,13 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 
   <h2 id="support-printing">Printing</h2>
   <p>Even in some modern browsers, printing can be quirky.</p>
-  <p>In particular, as of Chrome v32 and regardless of margin settings, Chrome uses a viewport width significantly narrower than the physical paper size when resolving media queries while printing a webpage. This can result in Bootstrap's extra-small grid being unexpectedly activated when printing. <a href="https://github.com/twbs/bootstrap/issues/12078">See #12078 for some details.</a> Suggested workarounds:</p>
+  <p>In particular, as of Chrome v32 and regardless of margin settings, Chrome uses a viewport width significantly narrower than the physical paper size when resolving media queries while printing a webpage. This can result in Bootstrap's extra-small grid being unexpectedly activated when printing. <a href="https://github.com/twbs/bootstrap/issues/12078">See issue #12078</a> and <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=273306">Chrome bug #273306</a> for some details. Suggested workarounds:</p>
   <ul>
     <li>Embrace the extra-small grid and make sure your page looks acceptable under it.</li>
     <li>Customize the values of the <code>@screen-*</code> Less variables so that your printer paper is considered larger than extra-small.</li>
     <li>Add custom media queries to change the grid size breakpoints for print media only.</li>
   </ul>
-  <p>Also, as of Safari v8.0, fixed-width <code>.container</code>s can cause Safari to use an unusually small font size when printing. See <a href="https://github.com/twbs/bootstrap/issues/14868">#14868</a> for more details. One potential workaround for this is adding the following CSS:</p>
+  <p>Also, as of Safari v8.0, fixed-width <code>.container</code>s can cause Safari to use an unusually small font size when printing. See <a href="https://github.com/twbs/bootstrap/issues/14868">#14868</a> and <a href="https://bugs.webkit.org/show_bug.cgi?id=138192">WebKit bug #138192</a> for more details. One potential workaround for this is adding the following CSS:</p>
 {% highlight css %}
 @media print {
   .container {
