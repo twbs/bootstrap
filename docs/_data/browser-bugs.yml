@@ -2,6 +2,16 @@
   browser: >
     Internet Explorer 11 & Microsoft Edge
   summary: >
+    Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
+  upstream_bug: >
+    IE#2445370
+  origin: >
+    Bootstrap#18692
+
+-
+  browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
     IE#926665
@@ -30,6 +40,36 @@
 
 -
   browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    `background` of `<tr>` is only applied to first child cell instead of all cells in the row
+  upstream_bug: >
+    IE#2110930
+  origin: >
+    Bootstrap#18504
+
+-
+  browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
+  upstream_bug: >
+    IE#2256049
+  origin: >
+    Bootstrap#18543
+
+-
+  browser: >
+    Internet Explorer 11 & Microsoft Edge
+  summary: >
+    Background color from lower layer bleeds through transparent border in some cases
+  upstream_bug: >
+    IE#2263132
+  origin: >
+    Bootstrap#18228
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
@@ -37,26 +77,6 @@
     Mozilla#1023761
   origin: >
     Bootstrap#13453
-
--
-  browser: >
-    Firefox
-  summary: >
-    `max-width: 100%;` doesn't work inside tables.
-  upstream_bug: >
-    Mozilla#975632
-  origin: >
-    Bootstrap#10690
-
--
-  browser: >
-    Firefox
-  summary: >
-    Button elements with `width: 100%` become cropped in long tables.
-  upstream_bug: >
-    Mozilla#1060131
-  origin: >
-    Bootstrap#14320
 
 -
   browser: >
@@ -77,6 +97,16 @@
     Mozilla#1228802
   origin: >
     Bootstrap#18365
+
+-
+  browser: >
+    Firefox (Windows)
+  summary: >
+    Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
+  upstream_bug: >
+    Mozilla#1139853
+  origin: >
+    Bootstrap#15990
 
 -
   browser: >
@@ -180,16 +210,6 @@
 
 -
   browser: >
-    Safari
-  summary: >
-    Incorrect placement of `position: fixed` element when it's a child of a `position: relative; left: X%;` element.
-  upstream_bug: >
-    WebKit#147284, Safari#21993128
-  origin: >
-    Bootstrap#16814
-
--
-  browser: >
     Safari (OS X)
   summary: >
     Scrollbar clipped in `select[multiple]` with padding.
@@ -282,10 +302,50 @@
 
 -
   browser: >
-    Safari (iOS 9+)
+    Safari (iOS)
   summary: >
-    Sometimes excessive automatic zoom is applied after opening a modal, and the user isn't allowed to zoom out
+    Tapping on `<body>` doesn't fire `click` events
   upstream_bug: >
-    WebKit#150715
+    WebKit#151933
   origin: >
-    WebKit#138201
+    Bootstrap#16028
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    `position:fixed` is incorrectly positioned when tab bar is visible on iPhone 6S+ Safari
+  upstream_bug: >
+    WebKit#153056
+  origin: >
+    Bootstrap#18859
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Tapping into an `<input>` within a `position:fixed` element scrolls to the top of the page
+  upstream_bug: >
+    WebKit#153224, Safari#24235301
+  origin: >
+    Bootstrap#17497
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    `<body>` with `overflow:hidden` CSS is scrollable on iOS
+  upstream_bug: >
+    WebKit#153852
+  origin: >
+    Bootstrap#14839
+
+-
+  browser: >
+    Safari (iPad Pro)
+  summary: >
+    Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation
+  upstream_bug: >
+    WebKit#152637, Safari#24030853
+  origin: >
+    Bootstrap#18738

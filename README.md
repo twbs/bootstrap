@@ -32,7 +32,7 @@ Several quick start options are available:
 * [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.3.6.zip).
 * Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
 * Install with [Bower](http://bower.io): `bower install bootstrap`.
-* Install with [npm](https://www.npmjs.com): `npm install bootstrap`.
+* Install with [npm](https://www.npmjs.com): `npm install bootstrap@3`.
 * Install with [Meteor](https://www.meteor.com): `meteor add twbs:bootstrap`.
 * Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap`.
 
@@ -140,4 +140,4 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 
 ## Copyright and license
 
-Code and documentation copyright 2011-2015 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+Code and documentation copyright 2011-2016 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).

@@ -1,6 +1,6 @@
 /*!
  * Bootstrap Docs (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -1606,4 +1606,26 @@ h1[id] {
   outline: thin dotted \9; /* IE6-9 */
   -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
           box-shadow: 0 0 8px rgba(82,168,236,.6);
+}
+
+/* v4 notice above main navbar */
+.v4-tease {
+  display: block;
+  padding: 15px 20px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  background-color: #0275d8;
+}
+.v4-tease:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #0269c2;
+}
+
+/* Nullify ill-advised printing of hrefs; see #18711 */
+@media print {
+  a[href]:after {
+    content: "" !important;
+  }
 }

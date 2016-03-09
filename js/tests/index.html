@@ -43,7 +43,10 @@
           'undelegate'
         ]
         for (var i = 0; i < eventAliases.length; i++) {
-          $.fn[eventAliases[i]] = undefined
+          var eventAlias = eventAliases[i]
+          $.fn[eventAlias] = function () {
+            throw new Error('Using the ".' + eventAlias + '()" method is not allowed, so that Bootstrap can be compatible with custom jQuery builds which exclude the "event aliases" module that defines said method. See https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js')
+          }
         }
       })()
     </script>

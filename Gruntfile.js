@@ -1,7 +1,7 @@
 /*!
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
- * Copyright 2013-2015 Twitter, Inc.
+ * Copyright 2013-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -130,7 +130,7 @@ module.exports = function (grunt) {
           warnings: false
         },
         mangle: true,
-        preserveComments: 'some'
+        preserveComments: /^!|@preserve|@license|@cc_on/i
       },
       core: {
         src: '<%= concat.bootstrap.dest %>',
@@ -372,25 +372,6 @@ module.exports = function (grunt) {
       }
     },
 
-    sed: {
-      versionNumber: {
-        pattern: (function () {
-          var old = grunt.option('oldver');
-          return old ? RegExp.quote(old) : old;
-        })(),
-        replacement: grunt.option('newver'),
-        exclude: [
-          'dist/fonts',
-          'docs/assets',
-          'fonts',
-          'js/tests/vendor',
-          'node_modules',
-          'test-infra'
-        ],
-        recursive: true
-      }
-    },
-
     'saucelabs-qunit': {
       all: {
         options: {
@@ -485,11 +466,6 @@ module.exports = function (grunt) {
   // Default task.
   grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
 
-  // Version numbering task.
-  // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
-  // This can be overzealous, so its changes should always be manually reviewed!
-  grunt.registerTask('change-version-number', 'sed');
-
   grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
 
   // task for building customizer
@@ -512,8 +488,9 @@ module.exports = function (grunt) {
   grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
+  grunt.registerTask('docs-github', ['jekyll:github', 'htmlmin']);
 
-  grunt.registerTask('prep-release', ['dist', 'docs', 'jekyll:github', 'htmlmin', 'compress']);
+  grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress']);
 
   // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
   // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
