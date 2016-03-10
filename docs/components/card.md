@@ -496,7 +496,9 @@ Only applies to small devices and above.
 
 ## Columns
 
-Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. Only applies to small devices and above.
+Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. Cards are ordered vertically when wrapped in `.card-columns`. 
+
+Only applies to small devices and above.
 
 **Heads up!** This is **not available in IE9 and below** as they have no support for the [`column-*` CSS properties](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_multi-column_layouts).
 
