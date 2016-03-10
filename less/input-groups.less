@@ -19,8 +19,8 @@
   .form-control {
     // Ensure that the input is always above the *appended* addon button for
     // proper border colors.
-    position: relative;
-    z-index: 2;
+    // position: relative;
+    // z-index: 2;
 
     // IE9 fubars the placeholder attribute in text inputs and the arrows on
     // select elements in input groups. To fix it, we float the input. Details:
@@ -29,6 +29,30 @@
 
     width: 100%;
     margin-bottom: 0;
+
+    &:not(:first-child) {
+      border-left: 0;
+    }
+    &:not(:last-child) {
+      border-right: 0;
+    }
+  }
+
+  .input-group-addon + .form-control {
+    padding-left: 0;
+  }
+  .form-control + .input-group-addon {
+    padding-left: 0;
+  }
+
+  &:hover {
+    .input-group-addon,
+    .form-control {
+      border-color: @input-border-hover;
+    }
+  }
+  &:focus {
+    border-color: @input-border;
   }
 }
 
@@ -78,7 +102,7 @@
   font-size: @input-font-size;
   font-weight: normal;
   line-height: @input-line-height;
-  color: @input-color;
+  color: @input-group-color;
   text-align: center;
   background-color: @input-group-addon-bg;
   border: 1px solid @input-group-addon-border-color;
@@ -102,6 +126,18 @@
   input[type="radio"],
   input[type="checkbox"] {
     margin-top: 0;
+  }
+
+  .icon {
+    font-size: 24px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: -3px;
+    margin-left: -4px;
+    margin-right: -4px;
+  }
+  a {
+    text-decoration: none;
   }
 }
 
@@ -169,4 +205,18 @@
       margin-left: -1px;
     }
   }
+}
+
+.focus .input-group,
+.focus.input-group {
+    .form-control,
+    .input-group-addon {
+        border-color: @input-border-focus;
+    }
+}
+.input-group .form-control:focus {
+    border-color: @input-border;
+}
+.input-group:hover .form-control:focus {
+    border-color: @input-border-hover;
 }
