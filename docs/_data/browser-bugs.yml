@@ -104,7 +104,7 @@
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
   upstream_bug: >
-    Mozilla#1139853
+    Mozilla#924068
   origin: >
     Bootstrap#15990
 
