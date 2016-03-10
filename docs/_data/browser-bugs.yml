@@ -1,6 +1,6 @@
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
   upstream_bug: >
@@ -10,7 +10,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
@@ -20,7 +20,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
   upstream_bug: >
@@ -30,7 +30,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
   upstream_bug: >
@@ -40,7 +40,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     `background` of `<tr>` is only applied to first child cell instead of all cells in the row
   upstream_bug: >
@@ -50,7 +50,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
   upstream_bug: >
@@ -60,7 +60,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     Background color from lower layer bleeds through transparent border in some cases
   upstream_bug: >
