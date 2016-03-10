@@ -403,7 +403,7 @@ input[type="checkbox"] {
 
   // Ensure icons don't overlap text
   .form-control {
-    padding-right: (@input-height-base * 1.25);
+    padding-right: @input-height-base;
   }
 }
 // Feedback icon (requires .glyphicon classes)
@@ -449,7 +449,7 @@ input[type="checkbox"] {
 .has-feedback label {
 
   & ~ .form-control-feedback {
-     top: (@line-height-computed + 1); // Height of the `label` and its margin
+     top: @line-height-computed; // Height of the `label` and its margin
   }
   &.sr-only ~ .form-control-feedback {
      top: 0;
@@ -639,8 +639,10 @@ input[type="checkbox"] {
 }
 
 
-.form-control-feedback {
+.form-control-feedback,
+.form-control-feedback.icon {
     font-size: 24px;
+    line-height: 48px;
 }
 
 .label {
@@ -702,7 +704,7 @@ input[type="checkbox"] {
 @media (max-width: @screen-xs-max) {
     .form-group .row [class*="col-sm-"] {
         margin-bottom: 0;
-        
+
         .form-control {
             margin-bottom: (@padding-base-vertical * 1.5);
         }

@@ -28,36 +28,70 @@
   <p><strong class="text-danger">We do not support multiple form-controls in a single input group.</strong></p>
   <form class="bs-example bs-example-form" data-example-id="simple-input-groups">
     <div class="input-group">
-      <span class="input-group-addon" id="basic-addon1">@</span>
-      <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
-    </div>
-    <br>
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
-      <span class="input-group-addon" id="basic-addon2">@example.com</span>
+      <span class="input-group-addon"><i class="icon icon-search"></i></span>
+      <input type="text" class="form-control" aria-label="Search" placeholder="Search...">
+      <span class="input-group-addon"><a href=""><i class="icon icon-close"></i></a></span>
     </div>
     <br>
     <div class="input-group">
       <span class="input-group-addon">$</span>
-      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-      <span class="input-group-addon">.00</span>
+      <input type="text" class="form-control text-right p-r-0" aria-label="Amount (to the nearest dollar)">
+      <span class="input-group-addon p-l-0">.00</span>
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="icon icon-profile"></i></span>
+      <input type="password" class="form-control" aria-label="Enter password" placeholder="Enter password...">
+      <span class="input-group-addon">
+          <a href="">show</a> / <a href="">hide</a>
+          &nbsp;
+          <a href=""><i class="icon icon-close"></i></a>
+      </span>
+    </div>
+    <br>
+    <div class="input-group">
+      <span class="input-group-addon p-r-0">https://</span>
+      <input type="text" class="form-control" aria-label="Your website" placeholder="www.example.com">
+      <span class="input-group-addon">
+        <i class="icon icon-globe"></i>
+      </span>
     </div>
   </form>
 {% highlight html %}
 <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
-</div>
-
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-addon" id="basic-addon2">@example.com</span>
+  <span class="input-group-addon">
+      <i class="icon icon-search"></i>
+  </span>
+  <input type="text" class="form-control" aria-label="Search" placeholder="Search...">
+  <span class="input-group-addon">
+      <a href=""><i class="icon icon-close"></i></a>
+  </span>
 </div>
 
 <div class="input-group">
   <span class="input-group-addon">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-addon">.00</span>
+  <input type="text" class="form-control text-right p-r-0" aria-label="Amount (to the nearest dollar)">
+  <span class="input-group-addon p-l-0">.00</span>
+</div>
+
+<div class="input-group">
+  <span class="input-group-addon">
+      <i class="icon icon-profile"></i>
+  </span>
+  <input type="password" class="form-control" aria-label="Enter password" placeholder="Enter password...">
+  <span class="input-group-addon">
+    <a href="">show</a> / <a href="">hide</a>
+    &nbsp;
+    <a href=""><i class="icon icon-close"></i></a>
+  </span>
+</div>
+
+<div class="input-group">
+  <span class="input-group-addon p-r-0">https://</span>
+  <input type="text" class="form-control" aria-label="Your website" placeholder="www.example.com">
+  <span class="input-group-addon">
+    <i class="icon icon-globe"></i>
+  </span>
 </div>
 {% endhighlight %}
 

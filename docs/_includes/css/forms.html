@@ -329,7 +329,7 @@
 
   <h4>Two line checkbox and radio</h4>
   <p>Add the <code>.checkbox-lg</code> or <code>.radio-lg</code> to utilise a
-      two line form control.  Use <code>small</code> to position the second line 
+      two line form control.  Use <code>small</code> to position the second line
       of text.</p>
   <div class="bs-example" data-example-id="large-checkboxes-radios">
     <form>
@@ -654,7 +654,7 @@
   <div class="alert alert-warning" id="callout-form-validation-state-accessibility">
     <h4>Conveying validation state to assistive technologies and colorblind users</h4>
     <p>Using these validation styles to denote the state of a form control only provides a visual, color-based indication, which will not be conveyed to users of assistive technologies - such as screen readers - or to colorblind users.</p>
-    <p>Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's <code>&lt;label&gt;</code> text itself (as is the case in the following code example), include a <a href="../components/#glyphicons">Glyphicon</a> (with appropriate alternative text using the <code>.sr-only</code> class - see the <a href="../components/#glyphicons-examples">Glyphicon examples</a>), or by providing an additional <a href="#forms-help-text">help text</a> block. Specifically for assistive technologies, invalid form controls can also be assigned an <code>aria-invalid="true"</code> attribute.</p>
+    <p>Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's <code>&lt;label&gt;</code> text itself (as is the case in the following code example), include a <a href="../components/#icons">icon</a> (with appropriate alternative text using the <code>.sr-only</code> class - see the <a href="../components/#icons-examples">icon examples</a>), or by providing an additional <a href="#forms-help-text">help text</a> block. Specifically for assistive technologies, invalid form controls can also be assigned an <code>aria-invalid="true"</code> attribute.</p>
   </div>
 
   <div class="bs-example" data-example-id="form-validation-states">
@@ -719,19 +719,19 @@
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess2">Input with success</label>
         <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
         <span id="inputSuccess2Status" class="sr-only">(success)</span>
       </div>
       <div class="form-group has-warning has-feedback">
         <label class="control-label" for="inputWarning2">Input with warning</label>
         <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
-        <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+        <span class="icon icon-close form-control-feedback" aria-hidden="true"></span>
         <span id="inputWarning2Status" class="sr-only">(warning)</span>
       </div>
       <div class="form-group has-error has-feedback">
         <label class="control-label" for="inputError2">Input with error</label>
         <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <span class="icon icon-close form-control-feedback" aria-hidden="true"></span>
         <span id="inputError2Status" class="sr-only">(error)</span>
       </div>
       <div class="form-group has-success has-feedback">
@@ -740,7 +740,7 @@
           <span class="input-group-addon">@</span>
           <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
         </div>
-        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
         <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
       </div>
     </form>
@@ -749,19 +749,19 @@
 <div class="form-group has-success has-feedback">
   <label class="control-label" for="inputSuccess2">Input with success</label>
   <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
   <span id="inputSuccess2Status" class="sr-only">(success)</span>
 </div>
 <div class="form-group has-warning has-feedback">
   <label class="control-label" for="inputWarning2">Input with warning</label>
   <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
-  <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+  <span class="icon icon-alert form-control-feedback" aria-hidden="true"></span>
   <span id="inputWarning2Status" class="sr-only">(warning)</span>
 </div>
 <div class="form-group has-error has-feedback">
   <label class="control-label" for="inputError2">Input with error</label>
   <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
-  <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+  <span class="icon icon-close form-control-feedback" aria-hidden="true"></span>
   <span id="inputError2Status" class="sr-only">(error)</span>
 </div>
 <div class="form-group has-success has-feedback">
@@ -770,7 +770,7 @@
     <span class="input-group-addon">@</span>
     <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
   </div>
-  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
   <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
 </div>
 {% endhighlight %}
@@ -782,7 +782,7 @@
         <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
-          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+          <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
           <span id="inputSuccess3Status" class="sr-only">(success)</span>
         </div>
       </div>
@@ -793,7 +793,7 @@
             <span class="input-group-addon">@</span>
             <input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
           </div>
-          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+          <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
           <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
         </div>
       </div>
@@ -805,7 +805,7 @@
     <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
     <div class="col-sm-9">
       <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+      <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
       <span id="inputSuccess3Status" class="sr-only">(success)</span>
     </div>
   </div>
@@ -816,7 +816,7 @@
         <span class="input-group-addon">@</span>
         <input type="text" class="form-control" id="inputGroupSuccess2" aria-describedby="inputGroupSuccess2Status">
       </div>
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+      <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
       <span id="inputGroupSuccess2Status" class="sr-only">(success)</span>
     </div>
   </div>
@@ -828,7 +828,7 @@
       <div class="form-group has-success has-feedback">
         <label class="control-label" for="inputSuccess4">Input with success</label>
         <input type="text" class="form-control" id="inputSuccess4" aria-describedby="inputSuccess4Status">
-        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
         <span id="inputSuccess4Status" class="sr-only">(success)</span>
       </div>
     </form>
@@ -840,7 +840,7 @@
           <span class="input-group-addon">@</span>
           <input type="text" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
         </div>
-        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
         <span id="inputGroupSuccess3Status" class="sr-only">(success)</span>
       </div>
     </form>
@@ -850,7 +850,7 @@
   <div class="form-group has-success has-feedback">
     <label class="control-label" for="inputSuccess4">Input with success</label>
     <input type="text" class="form-control" id="inputSuccess4" aria-describedby="inputSuccess4Status">
-    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
     <span id="inputSuccess4Status" class="sr-only">(success)</span>
   </div>
 </form>
@@ -861,7 +861,7 @@
       <span class="input-group-addon">@</span>
       <input type="text" class="form-control" id="inputGroupSuccess3" aria-describedby="inputGroupSuccess3Status">
     </div>
-    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+    <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
     <span id="inputGroupSuccess3Status" class="sr-only">(success)</span>
   </div>
 </form>
@@ -873,7 +873,7 @@
     <div class="form-group has-success has-feedback">
       <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
       <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Status">
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+      <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
       <span id="inputSuccess5Status" class="sr-only">(success)</span>
     </div>
     <div class="form-group has-success has-feedback">
@@ -882,7 +882,7 @@
         <span class="input-group-addon">@</span>
         <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status">
       </div>
-      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+      <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
       <span id="inputGroupSuccess4Status" class="sr-only">(success)</span>
     </div>
   </div>
@@ -890,7 +890,7 @@
 <div class="form-group has-success has-feedback">
   <label class="control-label sr-only" for="inputSuccess5">Hidden label</label>
   <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Status">
-  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
   <span id="inputSuccess5Status" class="sr-only">(success)</span>
 </div>
 <div class="form-group has-success has-feedback">
@@ -899,7 +899,7 @@
     <span class="input-group-addon">@</span>
     <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status">
   </div>
-  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span class="icon icon-check form-control-feedback" aria-hidden="true"></span>
   <span id="inputGroupSuccess4Status" class="sr-only">(success)</span>
 </div>
 {% endhighlight %}
