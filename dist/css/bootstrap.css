@@ -3211,7 +3211,7 @@ select[multiple].input-lg {
   position: relative;
 }
 .has-feedback .form-control {
-  padding-right: 60px;
+  padding-right: 48px;
 }
 .form-control-feedback {
   position: absolute;
@@ -3259,7 +3259,6 @@ select[multiple].input-lg {
 }
 .has-success .input-group-addon {
   color: #28b862;
-  background-color: #eafaf0;
   border-color: #28b862;
 }
 .has-success .form-control-feedback {
@@ -3285,7 +3284,6 @@ select[multiple].input-lg {
 }
 .has-warning .input-group-addon {
   color: #ffa600;
-  background-color: #fff6e5;
   border-color: #ffa600;
 }
 .has-warning .form-control-feedback {
@@ -3311,14 +3309,13 @@ select[multiple].input-lg {
 }
 .has-error .input-group-addon {
   color: #f53636;
-  background-color: #feeaea;
   border-color: #f53636;
 }
 .has-error .form-control-feedback {
   color: #f53636;
 }
 .has-feedback label ~ .form-control-feedback {
-  top: 25px;
+  top: 24px;
 }
 .has-feedback label.sr-only ~ .form-control-feedback {
   top: 0;
@@ -3630,8 +3627,10 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .input-group-addon {
   color: #829ca9;
 }
-.form-control-feedback {
+.form-control-feedback,
+.form-control-feedback.icon {
   font-size: 24px;
+  line-height: 48px;
 }
 .label {
   position: relative;
@@ -5358,11 +5357,28 @@ tbody.collapse.in {
   padding-left: 0;
 }
 .input-group .form-control {
-  position: relative;
-  z-index: 2;
   float: left;
   width: 100%;
   margin-bottom: 0;
+}
+.input-group .form-control:not(:first-child) {
+  border-left: 0;
+}
+.input-group .form-control:not(:last-child) {
+  border-right: 0;
+}
+.input-group .input-group-addon + .form-control {
+  padding-left: 0;
+}
+.input-group .form-control + .input-group-addon {
+  padding-left: 0;
+}
+.input-group:hover .input-group-addon,
+.input-group:hover .form-control {
+  border-color: #829ca9;
+}
+.input-group:focus {
+  border-color: #d3d5d8;
 }
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
@@ -5441,9 +5457,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-size: 16px;
   font-weight: normal;
   line-height: 24px;
-  color: #2f4366;
+  color: #a8aaac;
   text-align: center;
-  background-color: #f2f5f7;
+  background-color: #fff;
   border: 1px solid #d3d5d8;
   border-radius: 3px;
 }
@@ -5462,6 +5478,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-addon input[type="radio"],
 .input-group-addon input[type="checkbox"] {
   margin-top: 0;
+}
+.input-group-addon .icon {
+  display: inline-block;
+  margin-top: -3px;
+  margin-right: -4px;
+  margin-left: -4px;
+  font-size: 24px;
+  vertical-align: middle;
+}
+.input-group-addon a {
+  text-decoration: none;
 }
 .input-group .form-control:first-child,
 .input-group-addon:first-child,
@@ -5513,6 +5540,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-btn:last-child > .btn-group {
   z-index: 2;
   margin-left: -1px;
+}
+.focus .input-group .form-control,
+.focus.input-group .form-control,
+.focus .input-group .input-group-addon,
+.focus.input-group .input-group-addon {
+  border-color: #00b9ff;
+}
+.input-group .form-control:focus {
+  border-color: #d3d5d8;
+}
+.input-group:hover .form-control:focus {
+  border-color: #829ca9;
 }
 .nav {
   padding-left: 0;
