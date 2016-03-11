@@ -82,7 +82,6 @@
       #FFF
   );
 }
-.input-group-btn :not(.btn-success).btn,
 .btn-primary {
   .button-variant(
       @btn-primary-color;
@@ -151,6 +150,7 @@
   );
 }
 
+.ui-select-bootstrap .btn-default,
 .bootstrap-select .btn-default,
 .btn-input {
   .button-variant(
@@ -312,13 +312,17 @@ input[type="button"] {
   }
 }
 
-.ui-select-bootstrap .btn-default
+.ui-select-bootstrap .btn-default,
 .bootstrap-select .btn-default,
 .btn-input {
   font-weight: 500;
   outline: 0 !important;
   padding-left: @padding-base-horizontal;
   padding-right: @padding-base-horizontal;
+
+  &:hover {
+      border-color: @input-border-hover;
+  }
 
   &.active,
   &:active,
@@ -335,31 +339,27 @@ input[type="button"] {
   }
 }
 .form-group-sm {
+    .ui-select-bootstrap .btn-default,
     .bootstrap-select .btn-default,
     .btn-input {
       padding: @padding-small-vertical @padding-small-horizontal;
     }
 }
 .form-group-lg {
+    .ui-select-bootstrap .btn-default,
     .bootstrap-select .btn-default,
     .btn-input {
       padding: @padding-large-vertical @padding-large-horizontal;
     }
 }
-.bootstrap-select.open > .dropdown-toggle.btn-default {
+
+.bootstrap-select.open > .dropdown-toggle.btn-default,
+.ui-select-bootstrap.open > .dropdown-toggle.btn-default {
     border-color: @input-border-focus;
     background-color:  @input-bg;
     color: @input-color;
     outline: 0px none !important;
 }
-.bootstrap-select.btn-group .dropdown-toggle .caret {
-    margin-top: -6px !important;
-}
-.bootstrap-select .btn.dropdown-toggle:focus {
-    outline: 0px none !important;
-}
-
-
 
 
 @rotation-speed: 0.4s;
