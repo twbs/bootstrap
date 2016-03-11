@@ -7,15 +7,6 @@
   margin-bottom: $spacer-y;
   border: $alert-border-width solid transparent;
   @include border-radius($alert-border-radius);
-
-  // Improve alignment and spacing of inner content
-  > p,
-  > ul {
-    margin-bottom: 0;
-  }
-  > p + p {
-    margin-top: 5px;
-  }
 }
 
 // Headings for larger alerts
@@ -35,7 +26,7 @@
 // Expand the right padding and account for the close button's positioning.
 
 .alert-dismissible {
-  padding-right: ($alert-padding + 20);
+  padding-right: ($alert-padding + 20px);
 
   // Adjust close link position
   .close {

@@ -5,7 +5,7 @@
 
 .navbar {
   position: relative;
-  padding: $navbar-padding-vertical $navbar-padding-horizontal;
+  padding: $navbar-padding-y $navbar-padding-x;
   @include clearfix;
 
   @include media-breakpoint-up(sm) {
@@ -69,8 +69,8 @@
 
 .navbar-brand {
   float: left;
-  padding-top:    .25rem;
-  padding-bottom: .25rem;
+  padding-top:    $navbar-brand-padding-y;
+  padding-bottom: $navbar-brand-padding-y;
   margin-right: 1rem;
   font-size: $font-size-lg;
 
@@ -89,8 +89,8 @@
   width: 1px;
   padding-top: .425rem;
   padding-bottom: .425rem;
-  margin-right: $navbar-padding-horizontal;
-  margin-left:  $navbar-padding-horizontal;
+  margin-right: $navbar-padding-x;
+  margin-left:  $navbar-padding-x;
   overflow: hidden;
 
   &::before {
@@ -117,6 +117,7 @@
   }
 }
 
+// scss-lint:disable ImportantRule
 // Custom override for
 .navbar-toggleable {
   &-xs {
@@ -135,6 +136,7 @@
     }
   }
 }
+// scss-lint:enable ImportantRule
 
 
 // Navigation

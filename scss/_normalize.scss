@@ -1,4 +1,4 @@
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css commit fe56763 | MIT License | github.com/necolas/normalize.css */
 
 //
 // 1. Set default font family to sans-serif.
@@ -37,7 +37,6 @@ figcaption,
 figure,
 footer,
 header,
-hgroup,
 main,
 menu,
 nav,
@@ -353,13 +352,11 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 //
-// 1. Address `appearance` set to `searchfield` in Safari and Chrome.
-// 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+// Address `appearance` set to `searchfield` in Safari and Chrome.
 //
 
 input[type="search"] {
-  -webkit-appearance: textfield; // 1
-  box-sizing: content-box; //2
+  -webkit-appearance: textfield;
 }
 
 //
