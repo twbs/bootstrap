@@ -3,3 +3,4 @@ javascript:
   enabled: true
 scss:
   enabled: false
+fail_on_violations: true
