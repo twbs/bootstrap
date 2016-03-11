@@ -45,10 +45,15 @@
   </div>
 </div>
 {% endhighlight %}
-
-  <h2 id="collapse-example-accordion">Accordion example</h2>
-  <p>Extend the default collapse behavior to create an accordion with the panel component.</p>
-
+  <h2 id="collapse-example-accordion">Example of collapsing panels</h2>
+  <p>Extending the default collapse behavior allows us to create an accordion.</p>
+  <p>Just like with the previous example, clicking the panel titles below show and hide another element via class changes:</p>
+  <ul>
+    <li><code>.collapse</code> hides content</li>
+	<li><code>.collapsing</code> is applied during transitions</li>
+	<li><code>.collapse.in</code> shows content</li>
+  </ul>
+  
   <div class="bs-example" data-example-id="collapse-accordion">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <div class="panel panel-default">
