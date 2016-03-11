@@ -51,6 +51,8 @@ Cards support a wide variety of content, including images, text, list groups, li
 </div>
 {% endexample %}
 
+Lists can be added to a card by adding a list group.
+
 {% example html %}
 <div class="card">
   <ul class="list-group list-group-flush">
@@ -61,6 +63,8 @@ Cards support a wide variety of content, including images, text, list groups, li
 </div>
 {% endexample %}
 
+`.card-img-top` places an image to the top of the card. With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
+
 {% example html %}
 <div class="card">
   <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
@@ -70,6 +74,8 @@ Cards support a wide variety of content, including images, text, list groups, li
 </div>
 {% endexample %}
 
+Card titles are used by adding `.card-title` to a `<h*>` tag. In the same way, links are added and placed next to each other by adding `.card-link` to  a `<a>` tag.
+
 {% example html %}
 <div class="card card-block">
   <h4 class="card-title">Card title</h4>
@@ -78,6 +84,10 @@ Cards support a wide variety of content, including images, text, list groups, li
   <a href="#" class="card-link">Another link</a>
 </div>
 {% endexample %}
+
+Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
+
+The multiple content types can easily be combined to create the card you need. See below for an example.
 
 {% example html %}
 <div class="card">
@@ -169,6 +179,8 @@ Add an optional header and/or footer within a card.
   </div>
 </div>
 {% endexample %}
+
+Card headers can be styled by adding `.card-header` to `<h*>` elements.
 
 {% example html %}
 <div class="card">
