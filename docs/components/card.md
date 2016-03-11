@@ -85,9 +85,9 @@ Card titles are used by adding `.card-title` to a `<h*>` tag. In the same way, l
 </div>
 {% endexample %}
 
-Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
+Subtitles are used by adding a `.card-subtitle` to an `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
 
-The multiple content types can easily be combined to create the card you need. See below for an example.
+The multiple content types can be easily combined to create the card you need. See below for an example.
 
 {% example html %}
 <div class="card">
