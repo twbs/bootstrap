@@ -9,6 +9,12 @@
     background-color: $color;
   }
 
+  // IE10+, Microsoft Edge
+  &[value]::-ms-fill {
+    background-color: $color;
+  }
+
+  // IE9
   @media screen and (min-width:0\0) {
     .progress-bar {
       background-color: $color;

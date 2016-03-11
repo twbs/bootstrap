@@ -1,0 +1,11 @@
+scss:
+  config_file: scss/.scss-lint.yml
+  enabled: true
+  ignore_file: scss/_normalize.scss
+
+javascript:
+  enabled: false
+
+ruby:
+  enabled: false
+fail_on_violations: true

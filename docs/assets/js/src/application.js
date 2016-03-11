@@ -4,12 +4,12 @@
 
 /*!
  * JavaScript for Bootstrap's docs (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ZeroClipboard, anchors */
+/* global Clipboard, anchors */
 
 !function ($) {
   'use strict';
@@ -36,49 +36,50 @@
       e.preventDefault()
     })
 
-    // Config ZeroClipboard
-    ZeroClipboard.config({
-      moviePath: '/assets/flash/ZeroClipboard.swf',
-      hoverClass: 'btn-clipboard-hover'
+    // Modal relatedTarget demo
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var $button = $(event.relatedTarget)      // Button that triggered the modal
+      var recipient = $button.data('whatever')  // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var $modal = $(this)
+      $modal.find('.modal-title').text('New message to ' + recipient)
+      $modal.find('.modal-body input').val(recipient)
     })
 
     // Insert copy to clipboard button before .highlight
     $('.highlight').each(function () {
-      var btnHtml = '<div class="zero-clipboard"><span class="btn-clipboard">Copy</span></div>'
+      var btnHtml = '<div class="bd-clipboard"><span class="btn-clipboard" title="Copy to clipboard">Copy</span></div>'
       $(this).before(btnHtml)
+      $('.btn-clipboard').tooltip()
     })
-    var zeroClipboard = new ZeroClipboard($('.btn-clipboard'))
-    var $htmlBridge = $('#global-zeroclipboard-html-bridge')
 
-    // Handlers for ZeroClipboard
-    zeroClipboard.on('load', function () {
-      $htmlBridge
-        .data('placement', 'top')
+    var clipboard = new Clipboard('.btn-clipboard', {
+      target: function (trigger) {
+        return trigger.parentNode.nextElementSibling
+      }
+    })
+
+    clipboard.on('success', function (e) {
+      $(e.trigger)
+        .attr('title', 'Copied!')
+        .tooltip('_fixTitle')
+        .tooltip('show')
         .attr('title', 'Copy to clipboard')
-        .tooltip()
+        .tooltip('_fixTitle')
 
-      // Copy to clipboard
-      zeroClipboard.on('dataRequested', function (client) {
-        var highlight = $(this).parent().nextAll('.highlight').first()
-        client.setText(highlight.text())
-      })
-
-      // Notify copy success and reset tooltip title
-      zeroClipboard.on('complete', function () {
-        $htmlBridge
-          .attr('title', 'Copied!')
-          .tooltip('fixTitle')
-          .tooltip('show')
-          .attr('title', 'Copy to clipboard')
-          .tooltip('fixTitle')
-      })
+      e.clearSelection()
     })
 
-    // Hide copy button when no Flash is found
-    // or wrong Flash version is present
-    zeroClipboard.on('noflash wrongflash', function () {
-      $('.zero-clipboard').remove()
-      ZeroClipboard.destroy()
+    clipboard.on('error', function (e) {
+      var fallbackMsg = /Mac/i.test(navigator.userAgent) ? 'Press \u2318 to copy' : 'Press Ctrl-C to copy'
+
+      $(e.trigger)
+        .attr('title', fallbackMsg)
+        .tooltip('_fixTitle')
+        .tooltip('show')
+        .attr('title', 'Copy to clipboard')
+        .tooltip('_fixTitle')
     })
 
   })

@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): modal.js
+ * Bootstrap (v4.0.0-alpha.2): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Modal = (($) => {
    */
 
   const NAME                         = 'modal'
-  const VERSION                      = '4.0.0'
+  const VERSION                      = '4.0.0-alpha.2'
   const DATA_KEY                     = 'bs.modal'
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
@@ -41,10 +41,10 @@ const Modal = (($) => {
   }
 
   const Event = {
-    HIDE              : `hide${EVENT_KEY}`,
-    HIDDEN            : `hidden${EVENT_KEY}`,
-    SHOW              : `show${EVENT_KEY}`,
-    SHOWN             : `shown${EVENT_KEY}`,
+    HIDE              : `hide${EVENT_KEY}`,
+    HIDDEN            : `hidden${EVENT_KEY}`,
+    SHOW              : `show${EVENT_KEY}`,
+    SHOWN             : `shown${EVENT_KEY}`,
     FOCUSIN           : `focusin${EVENT_KEY}`,
     RESIZE            : `resize${EVENT_KEY}`,
     CLICK_DISMISS     : `click.dismiss${EVENT_KEY}`,
@@ -138,7 +138,7 @@ const Modal = (($) => {
       $(this._dialog).on(Event.MOUSEDOWN_DISMISS, () => {
         $(this._element).one(Event.MOUSEUP_DISMISS, (event) => {
           if ($(event.target).is(this._element)) {
-            that._ignoreBackdropClick = true
+            this._ignoreBackdropClick = true
           }
         })
       })
@@ -259,8 +259,9 @@ const Modal = (($) => {
       $(document)
         .off(Event.FOCUSIN) // guard against infinite focus loop
         .on(Event.FOCUSIN, (event) => {
-          if (this._element !== event.target &&
-             (!$(this._element).has(event.target).length)) {
+          if (document !== event.target &&
+              this._element !== event.target &&
+              (!$(this._element).has(event.target).length)) {
             this._element.focus()
           }
         })
@@ -463,8 +464,10 @@ const Modal = (($) => {
         }
 
         if (typeof config === 'string') {
+          if (data[config] === undefined) {
+            throw new Error(`No method named "${config}"`)
+          }
           data[config](relatedTarget)
-
         } else if (_config.show) {
           data.show(relatedTarget)
         }

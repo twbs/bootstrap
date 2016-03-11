@@ -14,7 +14,7 @@ group: components
 The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.
 
 <div class="bd-example">
-  <nav id="navbar-example2" class="navbar navbar-default" role="navigation">
+  <nav id="navbar-example2" class="navbar navbar-default">
     <h3 class="navbar-brand">Project Name</h3>
     <ul class="nav nav-pills">
       <li class="nav-item"><a class="nav-link" href="#fat">@fat</a></li>
@@ -101,7 +101,7 @@ Target elements that are not [`:visible` according to jQuery](https://api.jquery
 
 ### Methods
 
-#### .scrollspy('refresh')
+#### `.scrollspy('refresh')`
 
 When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:
 
@@ -121,9 +121,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <thead>
      <tr>
        <th style="width: 100px;">Name</th>
-       <th style="width: 100px;">type</th>
-       <th style="width: 50px;">default</th>
-       <th>description</th>
+       <th style="width: 100px;">Type</th>
+       <th style="width: 50px;">Default</th>
+       <th>Description</th>
      </tr>
     </thead>
     <tbody>

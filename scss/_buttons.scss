@@ -1,3 +1,5 @@
+// scss-lint:disable QualifyingElement
+
 //
 // Base styles
 //
@@ -5,14 +7,14 @@
 .btn {
   display: inline-block;
   font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  touch-action: manipulation;
   cursor: pointer;
   user-select: none;
-  border: $border-width solid transparent;
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $line-height, $btn-border-radius);
+  border: $input-btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
   @include transition(all .2s ease-in-out);
 
   &,
@@ -35,7 +37,7 @@
   &.active {
     background-image: none;
     outline: 0;
-    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    @include box-shadow($btn-active-box-shadow);
   }
 
   &.disabled,
@@ -77,22 +79,22 @@ fieldset[disabled] a.btn {
 }
 
 // Remove all backgrounds
-.btn-primary-outline {
+.btn-outline-primary {
   @include button-outline-variant($btn-primary-bg);
 }
-.btn-secondary-outline {
+.btn-outline-secondary {
   @include button-outline-variant($btn-secondary-border);
 }
-.btn-info-outline {
+.btn-outline-info {
   @include button-outline-variant($btn-info-bg);
 }
-.btn-success-outline {
+.btn-outline-success {
   @include button-outline-variant($btn-success-bg);
 }
-.btn-warning-outline {
+.btn-outline-warning {
   @include button-outline-variant($btn-warning-bg);
 }
-.btn-danger-outline {
+.btn-outline-danger {
   @include button-outline-variant($btn-danger-bg);
 }
 
@@ -142,11 +144,11 @@ fieldset[disabled] a.btn {
 
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $line-height-lg, $btn-border-radius-lg);
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
 }
 .btn-sm {
   // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
 }
 
 
@@ -161,7 +163,7 @@ fieldset[disabled] a.btn {
 
 // Vertically space out multiple block buttons
 .btn-block + .btn-block {
-  margin-top: 5px;
+  margin-top: $btn-block-spacing-y;
 }
 
 // Specificity overrides

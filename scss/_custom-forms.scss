@@ -1,3 +1,5 @@
+// scss-lint:disable PropertyCount
+
 // Embedded icons from Open Iconic.
 // Released under MIT and copyright 2014 Waybury.
 // http://useiconic.com/open
@@ -7,38 +9,49 @@
 //
 // Base class takes care of all the key behavioral aspects.
 
-.c-input {
+.custom-control {
   position: relative;
   display: inline;
-  padding-left: 1.5rem;
-  color: #555;
+  padding-left: $custom-control-gutter;
   cursor: pointer;
 
-  > input {
-    position: absolute;
-    z-index: -1; // Put the input behind the label so it doesn't overlay text
-    opacity: 0;
+  + .custom-control {
+    margin-left: $custom-control-spacer-x;
+  }
+}
 
-    &:checked ~ .c-indicator {
-      color: #fff;
-      background-color: #0074d9;
-      @include box-shadow(none);
-    }
+.custom-control-input {
+  position: absolute;
+  z-index: -1; // Put the input behind the label so it doesn't overlay text
+  opacity: 0;
 
-    &:focus ~ .c-indicator {
-      // the mixin is not used here to make sure there is feedback
-      box-shadow: 0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9;
-    }
-
-    &:active ~ .c-indicator {
-      color: #fff;
-      background-color: #84c6ff;
-      @include box-shadow(none);
-    }
+  &:checked ~ .custom-control-indicator {
+    color: $custom-control-checked-indicator-color;
+    background-color: $custom-control-checked-indicator-bg;
+    @include box-shadow($custom-control-checked-indicator-box-shadow);
   }
 
-  + .c-input {
-    margin-left: 1rem;
+  &:focus ~ .custom-control-indicator {
+    // the mixin is not used here to make sure there is feedback
+    box-shadow: $custom-control-focus-indicator-box-shadow;
+  }
+
+  &:active ~ .custom-control-indicator {
+    color: $custom-control-active-indicator-color;
+    background-color: $custom-control-active-indicator-bg;
+    @include box-shadow($custom-control-active-indicator-box-shadow);
+  }
+
+  &:disabled {
+    ~ .custom-control-indicator {
+      cursor: $custom-control-disabled-cursor;
+      background-color: $custom-control-disabled-indicator-bg;
+    }
+
+    ~ .custom-control-description {
+      color: $custom-control-disabled-description-color;
+      cursor: $custom-control-disabled-cursor;
+    }
   }
 }
 
@@ -46,42 +59,39 @@
 //
 // Generates a shadow element to create our makeshift checkbox/radio background.
 
-.c-indicator {
+.custom-control-indicator {
   position: absolute;
-  top: 0;
+  top: .0625rem;
   left: 0;
   display: block;
-  width: 1rem;
-  height: 1rem;
-  font-size: 65%;
-  line-height: 1rem;
-  color: #eee;
-  text-align: center;
+  width: $custom-control-indicator-size;
+  height: $custom-control-indicator-size;
+  pointer-events: none;
   user-select: none;
-  background-color: #eee;
+  background-color: $custom-control-indicator-bg;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 50% 50%;
-  @include box-shadow(inset 0 .125rem .125rem rgba(0,0,0,.1));
+  background-size: $custom-control-indicator-bg-size;
+  @include box-shadow($custom-control-indicator-box-shadow);
 }
 
 // Checkboxes
 //
 // Tweak just a few things for checkboxes.
 
-.c-checkbox {
-  .c-indicator {
-    border-radius: .25rem;
+.custom-checkbox {
+  .custom-control-indicator {
+    @include border-radius($custom-checkbox-radius);
   }
 
-  input:checked ~ .c-indicator {
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgOCA4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA4IDgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTYuNCwxTDUuNywxLjdMMi45LDQuNUwyLjEsMy43TDEuNCwzTDAsNC40bDAuNywwLjdsMS41LDEuNWwwLjcsMC43bDAuNy0wLjdsMy41LTMuNWwwLjctMC43TDYuNCwxTDYuNCwxeiINCgkvPg0KPC9zdmc+DQo=);
+  .custom-control-input:checked ~ .custom-control-indicator {
+    background-image: $custom-checkbox-checked-icon;
   }
 
-  input:indeterminate ~ .c-indicator {
-    background-color: #0074d9;
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iOHB4IiBoZWlnaHQ9IjhweCIgdmlld0JveD0iMCAwIDggOCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgOCA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0wLDN2Mmg4VjNIMHoiLz4NCjwvc3ZnPg0K);
-    @include box-shadow(none);
+  .custom-control-input:indeterminate ~ .custom-control-indicator {
+    background-color: $custom-checkbox-indeterminate-bg;
+    background-image: $custom-checkbox-indeterminate-icon;
+    @include box-shadow($custom-checkbox-indeterminate-box-shadow);
   }
 }
 
@@ -89,13 +99,13 @@
 //
 // Tweak just a few things for radios.
 
-.c-radio {
-  .c-indicator {
-    border-radius: 50%;
+.custom-radio {
+  .custom-control-indicator {
+    border-radius: $custom-radio-radius;
   }
 
-  input:checked ~ .c-indicator {
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgOCA4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA4IDgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQsMUMyLjMsMSwxLDIuMywxLDRzMS4zLDMsMywzczMtMS4zLDMtM1M1LjcsMSw0LDF6Ii8+DQo8L3N2Zz4NCg==);
+  .custom-control-input:checked ~ .custom-control-indicator {
+    background-image: $custom-radio-checked-icon;
   }
 }
 
@@ -105,17 +115,17 @@
 // By default radios and checkboxes are `inline-block` with no additional spacing
 // set. Use these optional classes to tweak the layout.
 
-.c-inputs-stacked {
-  .c-input {
+.custom-controls-stacked {
+  .custom-control {
     display: inline;
 
     &::after {
       display: block;
-      margin-bottom: .25rem;
+      margin-bottom: $custom-control-spacer-y;
       content: "";
     }
 
-    + .c-input {
+    + .custom-control {
       margin-left: 0;
     }
   }
@@ -129,24 +139,26 @@
 //
 // Includes IE9-specific hacks (noted by ` \9`).
 
-.c-select {
+.custom-select {
   display: inline-block;
   max-width: 100%;
-  padding: .375rem 1.75rem .375rem .75rem;
-  padding-right: .75rem \9;
+  padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
+  padding-right: $custom-select-padding-x \9;
+  color: $custom-select-color;
   vertical-align: middle;
-  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC) no-repeat right .75rem center;
+  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
   background-image: none \9;
-  background-size: 8px 10px;
-  border: 1px solid $input-border;
+  background-size: $custom-select-bg-size;
+  border: $custom-select-border-width solid $custom-select-border-color;
+  @include border-radius($custom-select-border-radius);
   // Use vendor prefixes as `appearance` isn't part of the CSS spec.
   -moz-appearance: none;
   -webkit-appearance: none;
 
   &:focus {
-    border-color: #51a7e8;
+    border-color: $custom-select-focus-border-color;
     outline: none;
-    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5));
+    @include box-shadow($custom-select-focus-box-shadow);
   }
 
   // Hides the default caret in IE11
@@ -155,15 +167,15 @@
   }
 }
 
-.c-select-sm {
-  padding-top: 3px;
-  padding-bottom: 3px;
-  font-size: 12px;
+.custom-select-sm {
+  padding-top: $custom-select-padding-y;
+  padding-bottom: $custom-select-padding-y;
+  font-size: $custom-select-sm-font-size;
 
-  &:not([multiple]) {
-    height: 26px;
-    min-height: 26px;
-  }
+  // &:not([multiple]) {
+  //   height: 26px;
+  //   min-height: 26px;
+  // }
 }
 
 
@@ -171,55 +183,67 @@
 //
 // Custom file input.
 
-.file {
+.custom-file {
   position: relative;
   display: inline-block;
-  height: 2.5rem;
+  max-width: 100%;
+  height: $custom-file-height;
   cursor: pointer;
 }
-.file input {
-  min-width: 14rem;
+
+.custom-file-input {
+  min-width: $custom-file-width;
+  max-width: 100%;
   margin: 0;
   filter: alpha(opacity = 0);
   opacity: 0;
+
+  &:focus ~ .custom-file-control {
+    @include box-shadow($custom-file-focus-box-shadow);
+  }
 }
-.file-custom {
+
+.custom-file-control {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   z-index: 5;
-  height: 2.5rem;
-  padding: .5rem 1rem;
-  line-height: 1.5;
-  color: #555;
+  height: $custom-file-height;
+  padding: $custom-file-padding-x $custom-file-padding-y;
+  line-height: $custom-file-line-height;
+  color: $custom-file-color;
   user-select: none;
-  background-color: #fff;
-  border: .075rem solid #ddd;
-  border-radius: .25rem;
-  @include box-shadow(inset 0 .2rem .4rem rgba(0,0,0,.05));
-}
-.file-custom::after {
-  content: "Choose file...";
-}
-.file-custom::before {
-  position: absolute;
-  top: -.075rem;
-  right: -.075rem;
-  bottom: -.075rem;
-  z-index: 6;
-  display: block;
-  height: 2.5rem;
-  padding: .5rem 1rem;
-  line-height: 1.5;
-  color: #555;
-  content: "Browse";
-  background-color: #eee;
-  border: .075rem solid #ddd;
-  border-radius: 0 .25rem .25rem 0;
-}
+  background-color: $custom-file-bg;
+  border: $custom-file-border-width solid $custom-file-border-color;
+  @include border-radius($custom-file-border-radius);
+  @include box-shadow($custom-file-box-shadow);
 
-// Focus state
-.file input:focus ~ .file-custom {
-  @include box-shadow(0 0 0 .075rem #fff, 0 0 0 .2rem #0074d9);
+  @each $lang, $text in map-get($custom-file-text, placeholder) {
+    &:lang(#{$lang})::after {
+      content: $text;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: -$custom-file-border-width;
+    right: -$custom-file-border-width;
+    bottom: -$custom-file-border-width;
+    z-index: 6;
+    display: block;
+    height: $custom-file-height;
+    padding: $custom-file-padding-x $custom-file-padding-y;
+    line-height: $custom-file-line-height;
+    color: $custom-file-button-color;
+    background-color: $custom-file-button-bg;
+    border: $custom-file-border-width solid $custom-file-border-color;
+    @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+  }
+
+  @each $lang, $text in map-get($custom-file-text, button-label) {
+    &:lang(#{$lang})::before {
+      content: $text;
+    }
+  }
 }

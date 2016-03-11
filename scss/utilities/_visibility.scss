@@ -1,6 +1,14 @@
+// scss-lint:disable ImportantRule
+
 //
-// Mixins
+// Visibility utilities
 //
+
+.invisible {
+  visibility: hidden !important;
+}
+
+// Responsive visibility utilities
 
 @each $bp in map-keys($grid-breakpoints) {
   .hidden-#{$bp}-up {

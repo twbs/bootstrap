@@ -1,7 +1,7 @@
 /*!
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
- * Copyright 2013-2015 Twitter, Inc.
+ * Copyright 2013-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -18,8 +18,11 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var glob = require('glob');
+  var isTravis = require('is-travis');
   var npmShrinkwrap = require('npm-shrinkwrap');
   var mq4HoverShim = require('mq4-hover-shim');
+  var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
+  var autoprefixer = require('autoprefixer')(autoprefixerSettings);
 
   var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
@@ -45,8 +48,8 @@ module.exports = function (grunt) {
                  '}\n',
     jqueryVersionCheck: '+function ($) {\n' +
                         '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')\n' +
-                        '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1)) {\n' +
-                        '    throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery version 1.9.1 or higher\')\n' +
+                        '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] >= 3)) {\n' +
+                        '    throw new Error(\'Bootstrap\\\'s JavaScript requires at least jQuery v1.9.1 but less than v3.0.0\')\n' +
                         '  }\n' +
                         '}(jQuery);\n\n',
 
@@ -184,7 +187,7 @@ module.exports = function (grunt) {
           warnings: false
         },
         mangle: true,
-        preserveComments: 'some'
+        preserveComments: /^!|@preserve|@license|@cc_on/i
       },
       core: {
         src: '<%= concat.bootstrap.dest %>',
@@ -207,45 +210,42 @@ module.exports = function (grunt) {
     scsslint: {
       options: {
         bundleExec: true,
-        config: 'scss/.scsslint.yml',
+        config: 'scss/.scss-lint.yml',
         reporterOutput: null
       },
-      src: ['scss/*.scss', '!scss/_normalize.scss']
-    },
-
-    postcss: {
-      options: {
-        map: true,
-        processors: [mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' })]
-      },
       core: {
-        src: 'dist/css/*.css'
+        src: ['scss/*.scss', '!scss/_normalize.scss']
+      },
+      docs: {
+        src: ['docs/assets/scss/*.scss', '!docs/assets/scss/docs.scss']
       }
     },
 
-    autoprefixer: {
-      options: {
-        browsers: [
-          'Android 2.3',
-          'Android >= 4',
-          'Chrome >= 35',
-          'Firefox >= 31',
-          'Explorer >= 9',
-          'iOS >= 7',
-          'Opera >= 12',
-          'Safari >= 7.1'
-        ]
-      },
+    postcss: {
       core: {
         options: {
-          map: true
+          map: true,
+          processors: [
+            mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' }),
+            autoprefixer
+          ]
         },
         src: 'dist/css/*.css'
       },
       docs: {
+        options: {
+          processors: [
+            autoprefixer
+          ]
+        },
         src: 'docs/assets/css/docs.min.css'
       },
       examples: {
+        options: {
+          processors: [
+            autoprefixer
+          ]
+        },
         expand: true,
         cwd: 'docs/examples/',
         src: ['**/*.css'],
@@ -260,7 +260,7 @@ module.exports = function (grunt) {
         compatibility: 'ie9',
         keepSpecialComments: '*',
         sourceMap: true,
-        noAdvanced: true
+        advanced: false
       },
       core: {
         files: [
@@ -276,28 +276,6 @@ module.exports = function (grunt) {
       docs: {
         src: 'docs/assets/css/docs.min.css',
         dest: 'docs/assets/css/docs.min.css'
-      }
-    },
-
-    csscomb: {
-      options: {
-        config: 'scss/.csscomb.json'
-      },
-      dist: {
-        expand: true,
-        cwd: 'dist/css/',
-        src: ['*.css', '!*.min.css'],
-        dest: 'dist/css/'
-      },
-      examples: {
-        expand: true,
-        cwd: 'docs/examples/',
-        src: '**/*.css',
-        dest: 'docs/examples/'
-      },
-      docs: {
-        src: 'docs/assets/css/src/docs.css',
-        dest: 'docs/assets/css/src/docs.css'
       }
     },
 
@@ -324,7 +302,8 @@ module.exports = function (grunt) {
     jekyll: {
       options: {
         bundleExec: true,
-        config: '_config.yml'
+        config: '_config.yml',
+        incremental: false
       },
       docs: {},
       github: {
@@ -342,10 +321,16 @@ module.exports = function (grunt) {
           'Attribute “autocomplete” not allowed on element “button” at this point.',
           'Element “div” not allowed as child of element “progress” in this context. (Suppressing further errors from this subtree.)',
           'Consider using the “h1” element as a top-level heading only (all “h1” elements are treated as top-level headings by many screen readers and other tools).',
-          'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
+          'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “color” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “date” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “datetime-local” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “month” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “time” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “week” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
         ]
       },
-      src: '_gh_pages/**/*.html'
+      src: ['_gh_pages/**/*.html', 'js/tests/visual/*.html']
     },
 
     watch: {
@@ -360,17 +345,6 @@ module.exports = function (grunt) {
       docs: {
         files: 'docs/assets/scss/**/*.scss',
         tasks: ['dist-css', 'docs']
-      }
-    },
-
-    sed: {
-      versionNumber: {
-        pattern: (function () {
-          var old = grunt.option('oldver');
-          return old ? RegExp.quote(old) : old;
-        })(),
-        replacement: grunt.option('newver'),
-        recursive: true
       }
     },
 
@@ -406,7 +380,27 @@ module.exports = function (grunt) {
           branch: 'gh-pages'
         }
       }
+    },
+
+    compress: {
+      main: {
+        options: {
+          archive: 'bootstrap-<%= pkg.version %>-dist.zip',
+          mode: 'zip',
+          level: 9,
+          pretty: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'dist/',
+            src: ['**'],
+            dest: 'bootstrap-<%= pkg.version %>-dist'
+          }
+        ]
+      }
     }
+
   });
 
 
@@ -436,7 +430,8 @@ module.exports = function (grunt) {
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&
-      // Skip HTML5 validator on Travis when [skip validator] is in the commit message
+      isTravis &&
+      // Skip HTML5 validator when [skip validator] is in the commit message
       isUndefOrNonZero(process.env.TWBS_DO_VALIDATOR)) {
     testSubtasks.push('validate-html');
   }
@@ -456,7 +451,7 @@ module.exports = function (grunt) {
   // JS distribution task.
   grunt.registerTask('dist-js', ['babel:dev', 'concat', 'lineremover', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
 
-  grunt.registerTask('test-scss', ['scsslint']);
+  grunt.registerTask('test-scss', ['scsslint:core']);
 
   // CSS distribution task.
   // Supported Compilers: sass (Ruby) and libsass.
@@ -466,18 +461,13 @@ module.exports = function (grunt) {
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
   grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
 
-  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'autoprefixer:core', 'csscomb:dist', 'cssmin:core', 'cssmin:docs']);
+  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
 
   // Default task.
   grunt.registerTask('default', ['clean:dist', 'test']);
-
-  // Version numbering task.
-  // grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
-  // This can be overzealous, so its changes should always be manually reviewed!
-  grunt.registerTask('change-version-number', 'sed');
 
   grunt.registerTask('commonjs', ['babel:umd', 'npm-js']);
 
@@ -490,12 +480,14 @@ module.exports = function (grunt) {
   });
 
   // Docs task.
-  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
+  grunt.registerTask('docs-css', ['postcss:docs', 'postcss:examples', 'cssmin:docs']);
+  grunt.registerTask('lint-docs-css', ['scsslint:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('lint-docs-js', ['jscs:assets']);
-  grunt.registerTask('docs', ['docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
+  grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
+  grunt.registerTask('docs-github', ['jekyll:github']);
 
-  grunt.registerTask('prep-release', ['dist', 'docs', 'jekyll:github', 'htmlmin', 'compress']);
+  grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress']);
 
   // Publish to GitHub
   grunt.registerTask('publish', ['buildcontrol:pages']);
@@ -509,7 +501,7 @@ module.exports = function (grunt) {
       if (err) {
         grunt.fail.warn(err);
       }
-      var dest = 'test-infra/npm-shrinkwrap.json';
+      var dest = 'grunt/npm-shrinkwrap.json';
       fs.renameSync('npm-shrinkwrap.json', dest);
       grunt.log.writeln('File ' + dest.cyan + ' updated.');
       done();

@@ -57,11 +57,16 @@ eos
       def example(output)
         "<div class=\"bd-example\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
       end
+    
+      def remove_holderjs(code)
+        code = code.gsub(/data-src="holder.js.+?"/, 'src="..."')
+      end
 
       def render_rouge(code)
         require 'rouge'
         formatter = Rouge::Formatters::HTML.new(line_numbers: @options[:linenos], wrap: false)
         lexer = Rouge::Lexer.find_fancy(@lang, code) || Rouge::Lexers::PlainText
+        code = remove_holderjs(code)
         code = formatter.format(lexer.lex(code))
         "<div class=\"highlight\"><pre>#{code}</pre></div>"
       end

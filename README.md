@@ -3,8 +3,12 @@
 [![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
 ![Bower version](https://img.shields.io/bower/v/bootstrap.svg)
 [![npm version](https://img.shields.io/npm/v/bootstrap.svg)](https://www.npmjs.com/package/bootstrap)
+[![Gem version](https://img.shields.io/gem/v/bootstrap.svg)](https://rubygems.org/gems/bootstrap)
 [![Build Status](https://img.shields.io/travis/twbs/bootstrap/master.svg)](https://travis-ci.org/twbs/bootstrap)
 [![devDependency Status](https://img.shields.io/david/dev/twbs/bootstrap.svg)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
+[![Meteor Atmosphere](https://img.shields.io/badge/meteor-twbs%3Abootstrap-blue.svg)](https://atmospherejs.com/twbs/bootstrap)
+[![Packagist Prerelease](https://img.shields.io/packagist/vpre/twbs/bootstrap.svg)](https://packagist.org/packages/twbs/bootstrap)
+[![NuGet](https://img.shields.io/nuget/vpre/bootstrap.svg)](https://www.nuget.org/packages/bootstrap/4.0.0-alpha2)
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thornton](https://twitter.com/fat), and maintained by the [core team](https://github.com/orgs/twbs/people) with the massive support and involvement of the community.
@@ -26,12 +30,12 @@ To get started, check out <http://getbootstrap.com>!
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.zip).
-- Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
-- Install with [Bower](http://bower.io): `bower install bootstrap`.
-- Install with [npm](https://www.npmjs.com): `npm install bootstrap`.
-- Install with [Meteor](https://www.meteor.com): `meteor add twbs:bootstrap`.
-- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap`.
+- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.2.zip)
+- Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
+- Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-alpha.2`
+- Install with [Meteor](https://www.meteor.com): `meteor add twbs:bootstrap@=4.0.0-alpha.2`
+- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap`
+- Install with [Bower](http://bower.io): `bower install bootstrap#v4.0.0-alpha.2`
 - Install with [NuGet](https://www.nuget.org): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
 
 Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
@@ -66,11 +70,9 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 
 ### Running documentation locally
 
-1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v2.5.x).
-  - **Windows users:** Read [this unofficial guide](http://jekyll-windows.juthilo.com/) to get Jekyll up and running without problems.
-2. Install the Ruby-based syntax highlighter, [Rouge](https://github.com/jneen/rouge), with `gem install rouge`.
-3. From the root `/bootstrap` directory, run `jekyll serve` in the command line.
-4. Open <http://localhost:9001> in your browser, and voilà.
+1. Run through the [tooling setup](https://github.com/twbs/bootstrap/blob/v4-dev/docs/getting-started/build-tools.md#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
+2. From the root `/bootstrap` directory, run `bundle exec jekyll serve` in the command line.
+3. Open <http://localhost:9001> in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
 
@@ -100,7 +102,7 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 - Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
 - Join [the official Slack room](https://bootstrap-slack.herokuapp.com).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
-- Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
+- Implementation help may be found at Stack Overflow (tagged [`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4)).
 - Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
 
 
@@ -109,6 +111,7 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 
 For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
+See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](http://blog.getbootstrap.com) contain summaries of the most noteworthy changes made in each release.
 
 
 ## Creators
@@ -127,4 +130,4 @@ For transparency into our release cycle and in striving to maintain backward com
 
 ## Copyright and license
 
-Code and documentation copyright 2011-2015 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+Code and documentation copyright 2011-2016 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).

@@ -1,5 +1,6 @@
 {
   "esnext": true,
+  "verbose": true,
   "disallowEmptyBlocks": true,
   "disallowKeywords": ["with"],
   "disallowMixedSpacesAndTabs": true,
@@ -28,7 +29,7 @@
   "requireSpaceAfterLineComment": true,
   "requireSpaceBeforeBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", "<", ">=", "<="],
   "requireSpaceBetweenArguments": true,
-  "requireSpacesInAnonymousFunctionExpression": { "beforeOpeningCurlyBrace": true, "beforeOpeningRoundBrace": true },
+  "requireSpacesInAnonymousFunctionExpression": { "beforeOpeningCurlyBrace": true, "beforeOpeningRoundBrace": true, "allExcept": ["shorthand"] },
   "requireSpacesInConditionalExpression": true,
   "requireSpacesInForStatement": true,
   "requireSpacesInFunctionDeclaration": { "beforeOpeningCurlyBrace": true },
