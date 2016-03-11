@@ -13,6 +13,9 @@ port:             9001
 url:              http://getbootstrap.com
 encoding:         UTF-8
 
+gems:
+  - jekyll-sitemap
+
 # Custom vars
 current_version:  3.3.6
 repo:             https://github.com/twbs/bootstrap
