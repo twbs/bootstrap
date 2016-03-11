@@ -8,3 +8,4 @@ javascript:
 
 ruby:
   enabled: false
+fail_on_violations: true
