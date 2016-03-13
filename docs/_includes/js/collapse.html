@@ -46,14 +46,8 @@
 </div>
 {% endhighlight %}
   <h2 id="collapse-example-accordion">Example of collapsing panels</h2>
-  <p>Extending the default collapse behavior allows us to create an accordion.</p>
-  <p>Just like with the previous example, clicking the panel titles below show and hide another element via class changes:</p>
-  <ul>
-    <li><code>.collapse</code> hides content</li>
-	<li><code>.collapsing</code> is applied during transitions</li>
-	<li><code>.collapse.in</code> shows content</li>
-  </ul>
-  
+  <p>There is an additional wrapper panel-collapse class div compared to a normal panel. It can wrap around either a <code>panel-body</code>, or a <code>panel-body</code> and <code>panel-footer</code> . See the example HTML below, which creates an accordion.</p>
+
   <div class="bs-example" data-example-id="collapse-accordion">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <div class="panel panel-default">
