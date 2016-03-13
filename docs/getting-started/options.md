@@ -37,3 +37,4 @@ You can find and customize these variables for key global options in our `_varia
 | `$enable-gradients`         | `true` or `false` (default)        | Enables predefined gradients via `background-image` styles on various components. |
 | `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components.                 |
 | `$enable-hover-media-query` | `true` or `false` (default)        | ...                                                                     |
+| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the use of grid classes in HTML |
