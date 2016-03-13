@@ -1,6 +1,16 @@
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
+  summary: >
+    Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
+  upstream_bug: >
+    IE#2445370
+  origin: >
+    Bootstrap#18692
+
+-
+  browser: >
+    Microsoft Edge
   summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
@@ -10,7 +20,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
   upstream_bug: >
@@ -20,7 +30,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
   upstream_bug: >
@@ -30,7 +40,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     `background` of `<tr>` is only applied to first child cell instead of all cells in the row
   upstream_bug: >
@@ -40,7 +50,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
   upstream_bug: >
@@ -50,7 +60,7 @@
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     Background color from lower layer bleeds through transparent border in some cases
   upstream_bug: >
@@ -94,7 +104,7 @@
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
   upstream_bug: >
-    Mozilla#1139853
+    Mozilla#924068
   origin: >
     Bootstrap#15990
 
@@ -327,6 +337,16 @@
     `<body>` with `overflow:hidden` CSS is scrollable on iOS
   upstream_bug: >
     WebKit#153852
+  origin: >
+    Bootstrap#14839
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Scroll gesture in text field in `position:fixed` element sometimes scrolls `<body>` instead of scrollable ancestor
+  upstream_bug: >
+    WebKit#153856
   origin: >
     Bootstrap#14839
 
