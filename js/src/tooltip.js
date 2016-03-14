@@ -16,7 +16,7 @@ const Tooltip = (($) => {
    * Check for Tether dependency
    * Tether - http://github.hubspot.com/tether/
    */
-  if ('undefined' === typeof Tether) {
+  if (typeof Tether === 'undefined') {
     throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
   }
 
