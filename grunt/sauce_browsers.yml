@@ -70,13 +70,14 @@
     browserName: "firefox",
     platform: "Linux",
     version: "latest"
-  }
+  },
 
-  # Android Chrome not currently supported by Sauce Labs
-  # Android v5.0+ not currently supported by Sauce Labs
-  # { # Android Browser
-  #   browserName: "android",
-  #   version: "5.0",
-  #   platform: "Linux"
-  # }
+  # Android
+  {
+    platform: "Linux",
+    browserName: "android",
+    deviceName: "Android Emulator",
+    version: "latest",
+    deviceType: "phone"
+  }
 ]
