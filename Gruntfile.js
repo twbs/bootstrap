@@ -17,7 +17,6 @@ module.exports = function (grunt) {
 
   var fs = require('fs');
   var path = require('path');
-  var glob = require('glob');
   var isTravis = require('is-travis');
   var npmShrinkwrap = require('npm-shrinkwrap');
   var mq4HoverShim = require('mq4-hover-shim');
