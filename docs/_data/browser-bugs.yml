@@ -110,6 +110,16 @@
 
 -
   browser: >
+    Chrome (Android)
+  summary: >
+    Tapping on an `<input>` in a scrollable overlay doesn't scroll the `<input>` into view
+  upstream_bug: >
+    Chromium#595210
+  origin: >
+    Bootstrap#17338
+
+-
+  browser: >
     Chrome (OS X)
   summary: >
     Clicking above `<input type="number">` increment button flashes the decrement button.
