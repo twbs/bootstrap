@@ -3701,7 +3701,8 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
     margin-bottom: 12px;
   }
 }
-:not(.has-error).focus > label {
+:not(.has-error).focus label,
+:not(.has-error).focus .control-label {
   color: #00b9ff;
 }
 :not(.has-error).focus .input-group-addon {
