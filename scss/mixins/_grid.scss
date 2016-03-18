@@ -52,7 +52,7 @@
 }
 
 @mixin mak-col-span($size, $columns: $grid-columns) {
-  width: percentage($size / $grid-columns);
+  width: percentage($size / $columns);
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
