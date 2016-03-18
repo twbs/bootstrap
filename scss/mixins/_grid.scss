@@ -51,6 +51,10 @@
   }
 }
 
+@mixin mak-col-span($size, $columns: $grid-columns) {
+  width: percentage($size / $grid-columns);
+}
+
 @mixin make-col-offset($size, $columns: $grid-columns) {
   margin-left: percentage($size / $columns);
 }
@@ -71,5 +75,7 @@
     @include make-col-pull($size, $columns);
   } @else if $type == offset {
     @include make-col-offset($size, $columns);
+  } @else if $type == span {
+    @include make-col-span($size, $columns);
   }
 }
