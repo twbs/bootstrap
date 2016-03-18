@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
+    define(['exports', 'module', './util', 'jquery', 'tether'], factory);
   } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+    factory(exports, module, require('./util'), require('jquery'), require('tether'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, mod, global.Util, global.jQuery, global.Tether);
     global.tooltip = mod.exports;
   }
-})(this, function (exports, module, _util) {
+})(this, function (exports, module, _util, _jquery, _tether) {
   /* global Tether */
 
   'use strict';
@@ -30,15 +30,22 @@
    * --------------------------------------------------------------------------
    */
 
+  var _jQuery = _interopRequireDefault(_jquery);
+
+  var _Tether = _interopRequireDefault(_tether);
+
   var Tooltip = (function ($) {
 
     /**
      * Check for Tether dependency
      * Tether - http://github.hubspot.com/tether/
      */
-    if (window.Tether === undefined) {
-      throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)');
-    }
+
+    /* Commented out as Tether is required instead */
+
+    // if (window.Tether === undefined) {
+    //   throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
+    // }
 
     /**
      * ------------------------------------------------------------------------
@@ -268,7 +275,7 @@
 
             $(this.element).trigger(this.constructor.Event.INSERTED);
 
-            this._tether = new Tether({
+            this._tether = new _Tether['default']({
               attachment: attachment,
               element: tip,
               target: this.element,
@@ -632,7 +639,7 @@
     };
 
     return Tooltip;
-  })(jQuery);
+  })(_jQuery['default']);
 
   module.exports = Tooltip;
 });

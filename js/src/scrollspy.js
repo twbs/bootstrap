@@ -8,6 +8,8 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
+
+import jQuery from 'jquery';
 const ScrollSpy = (($) => {
 
 

@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './tooltip'], factory);
+    define(['exports', 'module', './tooltip', 'jquery'], factory);
   } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./tooltip'));
+    factory(exports, module, require('./tooltip'), require('jquery'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Tooltip);
+    factory(mod.exports, mod, global.Tooltip, global.jQuery);
     global.popover = mod.exports;
   }
-})(this, function (exports, module, _tooltip) {
+})(this, function (exports, module, _tooltip, _jquery) {
   'use strict';
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -31,6 +31,8 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
+
+  var _jQuery = _interopRequireDefault(_jquery);
 
   var Popover = (function ($) {
 
@@ -214,7 +216,7 @@
     };
 
     return Popover;
-  })(jQuery);
+  })(_jQuery['default']);
 
   module.exports = Popover;
 });

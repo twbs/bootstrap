@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
+    define(['exports', 'module', './util', 'jquery'], factory);
   } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+    factory(exports, module, require('./util'), require('jquery'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, mod, global.Util, global.$);
     global.scrollspy = mod.exports;
   }
-})(this, function (exports, module, _util) {
+})(this, function (exports, module, _util, _jquery) {
   'use strict';
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -28,7 +28,9 @@
    * --------------------------------------------------------------------------
    */
 
-  var ScrollSpy = (function ($) {
+  var _$ = _interopRequireDefault(_jquery);
+
+  var ScrollSpy = (function () {
 
     /**
      * ------------------------------------------------------------------------
@@ -41,7 +43,7 @@
     var DATA_KEY = 'bs.scrollspy';
     var EVENT_KEY = '.' + DATA_KEY;
     var DATA_API_KEY = '.data-api';
-    var JQUERY_NO_CONFLICT = $.fn[NAME];
+    var JQUERY_NO_CONFLICT = _$['default'].fn[NAME];
 
     var Default = {
       offset: 10,
@@ -105,7 +107,7 @@
         this._activeTarget = null;
         this._scrollHeight = 0;
 
-        $(this._scrollElement).on(Event.SCROLL, $.proxy(this._process, this));
+        (0, _$['default'])(this._scrollElement).on(Event.SCROLL, _$['default'].proxy(this._process, this));
 
         this.refresh();
         this._process();
@@ -138,19 +140,19 @@
 
           this._scrollHeight = this._getScrollHeight();
 
-          var targets = $.makeArray($(this._selector));
+          var targets = _$['default'].makeArray((0, _$['default'])(this._selector));
 
           targets.map(function (element) {
             var target = undefined;
             var targetSelector = _Util['default'].getSelectorFromElement(element);
 
             if (targetSelector) {
-              target = $(targetSelector)[0];
+              target = (0, _$['default'])(targetSelector)[0];
             }
 
             if (target && (target.offsetWidth || target.offsetHeight)) {
               // todo (fat): remove sketch reliance on jQuery position/offset
-              return [$(target)[offsetMethod]().top + offsetBase, targetSelector];
+              return [(0, _$['default'])(target)[offsetMethod]().top + offsetBase, targetSelector];
             }
           }).filter(function (item) {
             return item;
@@ -164,8 +166,8 @@
       }, {
         key: 'dispose',
         value: function dispose() {
-          $.removeData(this._element, DATA_KEY);
-          $(this._scrollElement).off(EVENT_KEY);
+          _$['default'].removeData(this._element, DATA_KEY);
+          (0, _$['default'])(this._scrollElement).off(EVENT_KEY);
 
           this._element = null;
           this._scrollElement = null;
@@ -182,13 +184,13 @@
       }, {
         key: '_getConfig',
         value: function _getConfig(config) {
-          config = $.extend({}, Default, config);
+          config = _$['default'].extend({}, Default, config);
 
           if (typeof config.target !== 'string') {
-            var id = $(config.target).attr('id');
+            var id = (0, _$['default'])(config.target).attr('id');
             if (!id) {
               id = _Util['default'].getUID(NAME);
-              $(config.target).attr('id', id);
+              (0, _$['default'])(config.target).attr('id', id);
             }
             config.target = '#' + id;
           }
@@ -252,7 +254,7 @@
             return selector + '[data-target="' + target + '"],' + (selector + '[href="' + target + '"]');
           });
 
-          var $link = $(queries.join(','));
+          var $link = (0, _$['default'])(queries.join(','));
 
           if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
             $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
@@ -263,14 +265,14 @@
             $link.parents(Selector.LI).find(Selector.NAV_LINKS).addClass(ClassName.ACTIVE);
           }
 
-          $(this._scrollElement).trigger(Event.ACTIVATE, {
+          (0, _$['default'])(this._scrollElement).trigger(Event.ACTIVATE, {
             relatedTarget: target
           });
         }
       }, {
         key: '_clear',
         value: function _clear() {
-          $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
+          (0, _$['default'])(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
         }
 
         // static
@@ -279,12 +281,12 @@
         key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
-            var data = $(this).data(DATA_KEY);
+            var data = (0, _$['default'])(this).data(DATA_KEY);
             var _config = typeof config === 'object' && config || null;
 
             if (!data) {
               data = new ScrollSpy(this, _config);
-              $(this).data(DATA_KEY, data);
+              (0, _$['default'])(this).data(DATA_KEY, data);
             }
 
             if (typeof config === 'string') {
@@ -310,11 +312,11 @@
       return ScrollSpy;
     })();
 
-    $(window).on(Event.LOAD_DATA_API, function () {
-      var scrollSpys = $.makeArray($(Selector.DATA_SPY));
+    (0, _$['default'])(window).on(Event.LOAD_DATA_API, function () {
+      var scrollSpys = _$['default'].makeArray((0, _$['default'])(Selector.DATA_SPY));
 
       for (var i = scrollSpys.length; i--;) {
-        var $spy = $(scrollSpys[i]);
+        var $spy = (0, _$['default'])(scrollSpys[i]);
         ScrollSpy._jQueryInterface.call($spy, $spy.data());
       }
     });
@@ -325,10 +327,10 @@
      * ------------------------------------------------------------------------
      */
 
-    $.fn[NAME] = ScrollSpy._jQueryInterface;
-    $.fn[NAME].Constructor = ScrollSpy;
-    $.fn[NAME].noConflict = function () {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
+    _$['default'].fn[NAME] = ScrollSpy._jQueryInterface;
+    _$['default'].fn[NAME].Constructor = ScrollSpy;
+    _$['default'].fn[NAME].noConflict = function () {
+      _$['default'].fn[NAME] = JQUERY_NO_CONFLICT;
       return ScrollSpy._jQueryInterface;
     };
 

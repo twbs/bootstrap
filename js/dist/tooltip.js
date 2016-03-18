@@ -6,22 +6,18 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): tooltip.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-
 var Tooltip = (function ($) {
 
   /**
    * Check for Tether dependency
    * Tether - http://github.hubspot.com/tether/
    */
-  if (window.Tether === undefined) {
-    throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)');
-  }
+
+  /* Commented out as Tether is required instead */
+
+  // if (window.Tether === undefined) {
+  //   throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
+  // }
 
   /**
    * ------------------------------------------------------------------------
@@ -616,4 +612,11 @@ var Tooltip = (function ($) {
 
   return Tooltip;
 })(jQuery);
+
+/**
+ * --------------------------------------------------------------------------
+ * Bootstrap (v4.0.0-alpha.2): tooltip.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * --------------------------------------------------------------------------
+ */
 //# sourceMappingURL=tooltip.js.map

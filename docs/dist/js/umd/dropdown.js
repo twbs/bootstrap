@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
+    define(['exports', 'module', './util', 'jquery'], factory);
   } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+    factory(exports, module, require('./util'), require('jquery'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, mod, global.Util, global.$);
     global.dropdown = mod.exports;
   }
-})(this, function (exports, module, _util) {
+})(this, function (exports, module, _util, _jquery) {
   'use strict';
 
   var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -28,7 +28,9 @@
    * --------------------------------------------------------------------------
    */
 
-  var Dropdown = (function ($) {
+  var _$ = _interopRequireDefault(_jquery);
+
+  var Dropdown = (function () {
 
     /**
      * ------------------------------------------------------------------------
@@ -41,7 +43,7 @@
     var DATA_KEY = 'bs.dropdown';
     var EVENT_KEY = '.' + DATA_KEY;
     var DATA_API_KEY = '.data-api';
-    var JQUERY_NO_CONFLICT = $.fn[NAME];
+    var JQUERY_NO_CONFLICT = _$['default'].fn[NAME];
 
     var Event = {
       HIDE: 'hide' + EVENT_KEY,
@@ -98,12 +100,12 @@
         // public
 
         value: function toggle() {
-          if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
+          if (this.disabled || (0, _$['default'])(this).hasClass(ClassName.DISABLED)) {
             return false;
           }
 
           var parent = Dropdown._getParentFromElement(this);
-          var isActive = $(parent).hasClass(ClassName.OPEN);
+          var isActive = (0, _$['default'])(parent).hasClass(ClassName.OPEN);
 
           Dropdown._clearMenus();
 
@@ -111,19 +113,19 @@
             return false;
           }
 
-          if ('ontouchstart' in document.documentElement && !$(parent).closest(Selector.NAVBAR_NAV).length) {
+          if ('ontouchstart' in document.documentElement && !(0, _$['default'])(parent).closest(Selector.NAVBAR_NAV).length) {
 
             // if mobile we use a backdrop because click events don't delegate
             var dropdown = document.createElement('div');
             dropdown.className = ClassName.BACKDROP;
-            $(dropdown).insertBefore(this);
-            $(dropdown).on('click', Dropdown._clearMenus);
+            (0, _$['default'])(dropdown).insertBefore(this);
+            (0, _$['default'])(dropdown).on('click', Dropdown._clearMenus);
           }
 
           var relatedTarget = { relatedTarget: this };
-          var showEvent = $.Event(Event.SHOW, relatedTarget);
+          var showEvent = _$['default'].Event(Event.SHOW, relatedTarget);
 
-          $(parent).trigger(showEvent);
+          (0, _$['default'])(parent).trigger(showEvent);
 
           if (showEvent.isDefaultPrevented()) {
             return false;
@@ -132,16 +134,16 @@
           this.focus();
           this.setAttribute('aria-expanded', 'true');
 
-          $(parent).toggleClass(ClassName.OPEN);
-          $(parent).trigger($.Event(Event.SHOWN, relatedTarget));
+          (0, _$['default'])(parent).toggleClass(ClassName.OPEN);
+          (0, _$['default'])(parent).trigger(_$['default'].Event(Event.SHOWN, relatedTarget));
 
           return false;
         }
       }, {
         key: 'dispose',
         value: function dispose() {
-          $.removeData(this._element, DATA_KEY);
-          $(this._element).off(EVENT_KEY);
+          _$['default'].removeData(this._element, DATA_KEY);
+          (0, _$['default'])(this._element).off(EVENT_KEY);
           this._element = null;
         }
 
@@ -150,7 +152,7 @@
       }, {
         key: '_addEventListeners',
         value: function _addEventListeners() {
-          $(this._element).on(Event.CLICK, this.toggle);
+          (0, _$['default'])(this._element).on(Event.CLICK, this.toggle);
         }
 
         // static
@@ -159,10 +161,10 @@
         key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
-            var data = $(this).data(DATA_KEY);
+            var data = (0, _$['default'])(this).data(DATA_KEY);
 
             if (!data) {
-              $(this).data(DATA_KEY, data = new Dropdown(this));
+              (0, _$['default'])(this).data(DATA_KEY, data = new Dropdown(this));
             }
 
             if (typeof config === 'string') {
@@ -180,34 +182,34 @@
             return;
           }
 
-          var backdrop = $(Selector.BACKDROP)[0];
+          var backdrop = (0, _$['default'])(Selector.BACKDROP)[0];
           if (backdrop) {
             backdrop.parentNode.removeChild(backdrop);
           }
 
-          var toggles = $.makeArray($(Selector.DATA_TOGGLE));
+          var toggles = _$['default'].makeArray((0, _$['default'])(Selector.DATA_TOGGLE));
 
           for (var i = 0; i < toggles.length; i++) {
             var _parent = Dropdown._getParentFromElement(toggles[i]);
             var relatedTarget = { relatedTarget: toggles[i] };
 
-            if (!$(_parent).hasClass(ClassName.OPEN)) {
+            if (!(0, _$['default'])(_parent).hasClass(ClassName.OPEN)) {
               continue;
             }
 
-            if (event && event.type === 'click' && /input|textarea/i.test(event.target.tagName) && $.contains(_parent, event.target)) {
+            if (event && event.type === 'click' && /input|textarea/i.test(event.target.tagName) && _$['default'].contains(_parent, event.target)) {
               continue;
             }
 
-            var hideEvent = $.Event(Event.HIDE, relatedTarget);
-            $(_parent).trigger(hideEvent);
+            var hideEvent = _$['default'].Event(Event.HIDE, relatedTarget);
+            (0, _$['default'])(_parent).trigger(hideEvent);
             if (hideEvent.isDefaultPrevented()) {
               continue;
             }
 
             toggles[i].setAttribute('aria-expanded', 'false');
 
-            $(_parent).removeClass(ClassName.OPEN).trigger($.Event(Event.HIDDEN, relatedTarget));
+            (0, _$['default'])(_parent).removeClass(ClassName.OPEN).trigger(_$['default'].Event(Event.HIDDEN, relatedTarget));
           }
         }
       }, {
@@ -217,7 +219,7 @@
           var selector = _Util['default'].getSelectorFromElement(element);
 
           if (selector) {
-            parent = $(selector)[0];
+            parent = (0, _$['default'])(selector)[0];
           }
 
           return parent || element.parentNode;
@@ -232,25 +234,25 @@
           event.preventDefault();
           event.stopPropagation();
 
-          if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
+          if (this.disabled || (0, _$['default'])(this).hasClass(ClassName.DISABLED)) {
             return;
           }
 
           var parent = Dropdown._getParentFromElement(this);
-          var isActive = $(parent).hasClass(ClassName.OPEN);
+          var isActive = (0, _$['default'])(parent).hasClass(ClassName.OPEN);
 
           if (!isActive && event.which !== 27 || isActive && event.which === 27) {
 
             if (event.which === 27) {
-              var toggle = $(parent).find(Selector.DATA_TOGGLE)[0];
-              $(toggle).trigger('focus');
+              var toggle = (0, _$['default'])(parent).find(Selector.DATA_TOGGLE)[0];
+              (0, _$['default'])(toggle).trigger('focus');
             }
 
-            $(this).trigger('click');
+            (0, _$['default'])(this).trigger('click');
             return;
           }
 
-          var items = $.makeArray($(Selector.VISIBLE_ITEMS));
+          var items = _$['default'].makeArray((0, _$['default'])(Selector.VISIBLE_ITEMS));
 
           items = items.filter(function (item) {
             return item.offsetWidth || item.offsetHeight;
@@ -288,7 +290,7 @@
       return Dropdown;
     })();
 
-    $(document).on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler).on(Event.CLICK_DATA_API, Dropdown._clearMenus).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
+    (0, _$['default'])(document).on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler).on(Event.CLICK_DATA_API, Dropdown._clearMenus).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
       e.stopPropagation();
     });
 
@@ -298,10 +300,10 @@
      * ------------------------------------------------------------------------
      */
 
-    $.fn[NAME] = Dropdown._jQueryInterface;
-    $.fn[NAME].Constructor = Dropdown;
-    $.fn[NAME].noConflict = function () {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
+    _$['default'].fn[NAME] = Dropdown._jQueryInterface;
+    _$['default'].fn[NAME].Constructor = Dropdown;
+    _$['default'].fn[NAME].noConflict = function () {
+      _$['default'].fn[NAME] = JQUERY_NO_CONFLICT;
       return Dropdown._jQueryInterface;
     };
 

@@ -24,7 +24,6 @@ if (typeof jQuery === 'undefined') {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-
 'use strict';
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -35,7 +34,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var Util = (function ($) {
+var Util = (function () {
 
   /**
    * ------------------------------------------------------------------------
@@ -378,7 +377,7 @@ var Alert = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Button = (function ($) {
+var Button = (function () {
 
   /**
    * ------------------------------------------------------------------------
@@ -1018,7 +1017,7 @@ var Carousel = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Collapse = (function ($) {
+var Collapse = (function () {
 
   /**
    * ------------------------------------------------------------------------
@@ -1375,8 +1374,7 @@ var Collapse = (function ($) {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-
-var Dropdown = (function ($) {
+var Dropdown = (function () {
 
   /**
    * ------------------------------------------------------------------------
@@ -1663,7 +1661,7 @@ var Dropdown = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Modal = (function ($) {
+var Modal = (function () {
 
   /**
    * ------------------------------------------------------------------------
@@ -2193,7 +2191,7 @@ var Modal = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var ScrollSpy = (function ($) {
+var ScrollSpy = (function () {
 
   /**
    * ------------------------------------------------------------------------
@@ -2507,7 +2505,7 @@ var ScrollSpy = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Tab = (function ($) {
+var Tab = (function () {
 
   /**
    * ------------------------------------------------------------------------
@@ -2766,7 +2764,7 @@ var Tab = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Tooltip = (function ($) {
+var Tooltip = (function () {
 
   /**
    * Check for Tether dependency
@@ -3376,8 +3374,7 @@ var Tooltip = (function ($) {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-
-var Popover = (function ($) {
+var Popover = (function () {
 
   /**
    * ------------------------------------------------------------------------
