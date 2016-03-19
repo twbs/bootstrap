@@ -149,7 +149,7 @@
 
 .table-reflow {
   thead {
-    float: left;
+    float: $left;
   }
 
   tbody {
@@ -160,10 +160,10 @@
   th,
   td {
     border-top: $table-border-width solid $table-border-color;
-    border-left: $table-border-width solid $table-border-color;
+    border-#{$left}: $table-border-width solid $table-border-color;
 
     &:last-child {
-      border-right: $table-border-width solid $table-border-color;
+      border-#{$right}: $table-border-width solid $table-border-color;
     }
   }
 
@@ -180,7 +180,7 @@
 
   // scss-lint:disable ImportantRule
   tr {
-    float: left;
+    float: $left;
 
     th,
     td {

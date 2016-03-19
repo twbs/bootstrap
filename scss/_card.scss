@@ -45,7 +45,7 @@
   }
 
   + .card-link {
-    margin-left: $card-spacer-x;
+    margin-#{$left}: $card-spacer-x;
   }
 }
 
@@ -81,7 +81,11 @@
   box-shadow: inset 0 0 0 $card-border-width $card-border-color;
 
   &:first-child {
-    @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+    @if $enable-rtl{
+      @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+    } @else{
+      @include border-radius($card-border-radius-inner 0 0 $card-border-radius-inner);
+    }
   }
 }
 
@@ -94,7 +98,11 @@
   box-shadow: inset 0 0 0 $card-border-width $card-border-color;
 
   &:last-child {
-    @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+    @if $enable-rtl{
+      @include border-radius(0 $card-border-radius-inner $card-border-radius-inner 0);
+    } @else{
+      @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+    }
   }
 }
 
@@ -175,7 +183,7 @@
 .card-blockquote {
   padding: 0;
   margin-bottom: 0;
-  border-left: 0;
+  border-#{$left}: 0;
 }
 
 // Card image
@@ -196,10 +204,20 @@
 
 // Card image caps
 .card-img-top {
-  @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+  @if $enable-rtl {
+    @include border-radius($card-border-radius-inner 0 0 $card-border-radius-inner);
+  } @else{
+    @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+  }
+
 }
 .card-img-bottom {
-  @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+  @if $enable-rtl {
+    @include border-radius(0 $card-border-radius-inner $card-border-radius-inner 0);
+  } @else{
+    @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+  }
+
 }
 
 
@@ -267,30 +285,39 @@
       }
 
       + .card {
-        margin-left: 0;
-        border-left: 0;
+        margin-#{$left}: 0;
+        border-#{$left}: 0;
       }
 
       // Handle rounded corners
       @if $enable-rounded {
         &:first-child {
+          @if $enable-rtl {
+            @include border-left-radius(0);
+          } @else {
+            @include border-right-radius(0);
+          }
           @include border-right-radius(0);
 
           .card-img-top {
-            border-top-right-radius: 0;
+            border-top-#{$right}-radius: 0;
           }
           .card-img-bottom {
-            border-bottom-right-radius: 0;
+            border-bottom-#{$right}-radius: 0;
           }
         }
         &:last-child {
-          @include border-left-radius(0);
+          @if $enable-rtl {
+              @include border-right-radius(0);
+            } @else {
+              @include border-left-radius(0);
+            }
 
           .card-img-top {
-            border-top-left-radius: 0;
+            border-top-#{$left}-radius: 0;
           }
           .card-img-bottom {
-            border-bottom-left-radius: 0;
+            border-bottom-#{$left}-radius: 0;
           }
         }
 

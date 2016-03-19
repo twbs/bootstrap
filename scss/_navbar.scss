@@ -68,10 +68,10 @@
 //
 
 .navbar-brand {
-  float: left;
+  float: $left;
   padding-top:    $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
-  margin-right: 1rem;
+  margin-#{$right}: 1rem;
   font-size: $font-size-lg;
 
   @include hover-focus {
@@ -85,7 +85,7 @@
 
 
 .navbar-divider {
-  float: left;
+  float: $left;
   width: 1px;
   padding-top: .425rem;
   padding-bottom: .425rem;
@@ -145,7 +145,7 @@
 
 .navbar-nav {
   .nav-item {
-    float: left;
+    float: $left;
   }
 
   .nav-link {
@@ -154,12 +154,12 @@
     padding-bottom: .425rem;
 
     + .nav-link {
-      margin-left: 1rem;
+      margin-#{$left}: 1rem;
     }
   }
 
   .nav-item + .nav-item {
-    margin-left: 1rem;
+    margin-#{$left}: 1rem;
   }
 }
 

@@ -4,7 +4,7 @@
 // `<nav>`s or `<ul>`s.
 
 .nav {
-  padding-left: 0;
+  padding-#{$left}: 0;
   margin-bottom: 0;
   list-style: none;
 }
@@ -38,7 +38,7 @@
 
   .nav-item + .nav-item,
   .nav-link + .nav-link {
-    margin-left: $nav-item-inline-spacer;
+    margin-#{$left}: $nav-item-inline-spacer;
   }
 }
 
@@ -52,12 +52,12 @@
   @include clearfix();
 
   .nav-item {
-    float: left;
+    float: $left;
     // Make the list-items overlay the bottom border
     margin-bottom: -$nav-tabs-border-width;
 
     + .nav-item {
-      margin-left: $nav-item-margin;
+      margin-#{$left}: $nav-item-margin;
     }
   }
 
@@ -65,8 +65,11 @@
     display: block;
     padding: $nav-link-padding;
     border: $nav-tabs-border-width solid transparent;
-    @include border-radius($border-radius $border-radius 0 0);
-
+    @if $enable-rtl {
+      @include border-radius($border-radius 0 0  $border-radius);
+    } @else {
+      @include border-radius($border-radius $border-radius 0 0);
+    }
     @include hover-focus {
       border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
     }
@@ -106,10 +109,10 @@
   @include clearfix();
 
   .nav-item {
-    float: left;
+    float: $left;
 
     + .nav-item {
-      margin-left: $nav-item-margin;
+      margin-#{$left}: $nav-item-margin;
     }
   }
 
@@ -136,7 +139,7 @@
 
     + .nav-item {
       margin-top: $nav-item-margin;
-      margin-left: 0;
+      margin-#{$left}: 0;
     }
   }
 }

@@ -4,7 +4,7 @@
 
 .list-group {
   // No need to set list-style: none; since .list-group-item is block level
-  padding-left: 0; // reset padding because ul and ol
+  padding-#{$left}: 0; // reset padding because ul and ol
   margin-bottom: 0;
 }
 

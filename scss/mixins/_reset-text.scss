@@ -6,13 +6,8 @@
   letter-spacing: normal;
   line-break: auto;
   line-height: $line-height-base;
-  @if $enable-rtl {
-    text-align: right; // Fallback for where `end` is not supported
-    text-align: end;
-  } @else{
-    text-align: left; // Fallback for where `start` is not supported
-    text-align: start;
-  }
+  text-align: $right; // Fallback for where `end` is not supported
+  text-align: $end;
   text-decoration: none;
   text-shadow: none;
   text-transform: none;

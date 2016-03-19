@@ -1,6 +1,6 @@
 .pagination {
   display: inline-block;
-  padding-left: 0;
+  padding-#{$left}: 0;
   margin-top: $spacer-y;
   margin-bottom: $spacer-y;
   @include border-radius();
@@ -11,13 +11,21 @@
 
   &:first-child {
     .page-link {
-      margin-left: 0;
-      @include border-left-radius($border-radius);
+      margin-#{$left}: 0;
+      @if $enable-rtl {
+        @include border-right-radius($border-radius);
+      } @else {
+        @include border-left-radius($border-radius);
+      }
     }
   }
   &:last-child {
     .page-link {
-      @include border-right-radius($border-radius);
+      @if $enable-rtl {
+        @include border-left-radius($border-radius);
+      } @else {
+        @include border-right-radius($border-radius);
+      }
     }
   }
 
@@ -44,9 +52,9 @@
 
 .page-link {
   position: relative;
-  float: left; // Collapse white-space
+  float: $left; // Collapse white-space
   padding: $pagination-padding-y $pagination-padding-x;
-  margin-left: -1px;
+  margin-#{$left}: -1px;
   color: $pagination-color;
   text-decoration: none;
   background-color: $pagination-bg;

@@ -87,7 +87,7 @@ mark,
   display: inline-block;
 
   &:not(:last-child) {
-    margin-right: $list-inline-padding;
+    margin-#{$right}: $list-inline-padding;
   }
 }
 
@@ -107,7 +107,7 @@ mark,
   padding: ($spacer / 2) $spacer;
   margin-bottom: $spacer;
   font-size: $blockquote-font-size;
-  border-left: $blockquote-border-width solid $blockquote-border-color;
+  border-#{$left}: $blockquote-border-width solid $blockquote-border-color;
 }
 
 .blockquote-footer {
@@ -122,11 +122,11 @@ mark,
 
 // Opposite alignment of blockquote
 .blockquote-reverse {
-  padding-right: $spacer;
-  padding-left: 0;
+  padding-#{$right}: $spacer;
+  padding-#{$left}: 0;
   text-align: right;
-  border-right: $blockquote-border-width solid $blockquote-border-color;
-  border-left: 0;
+  border-#{$right}: $blockquote-border-width solid $blockquote-border-color;
+  border-#{$left}: 0;
 }
 
 .blockquote-reverse .blockquote-footer {
@@ -143,7 +143,7 @@ mark,
   // scss-lint:disable QualifyingElement
   dl.row {
     > dd + dt {
-      clear: left;
+      clear: $left;
     }
   }
   // scss-lint:enable QualifyingElement
