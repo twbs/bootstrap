@@ -6,7 +6,7 @@ $start: start !default;
 $end: end !default;
 
 @if $enable-rtl {
-  $dir : rtl;
+  $dir: rtl;
   $right: left;
   $left: right;
   $start: end !default;
