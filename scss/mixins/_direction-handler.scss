@@ -1,0 +1,12 @@
+// Handles direction of the page depending on variable $enable-rtl
+$float: left !default;
+$dir: ltr !default;
+$right: left !default;
+$left: right !default;
+
+@if $enable-rtl {
+  $float: right;
+  $dir : rtl;
+  $right: left;
+  $left: right;
+}

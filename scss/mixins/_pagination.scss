@@ -9,12 +9,20 @@
   .page-item {
     &:first-child {
       .page-link {
-        @include border-left-radius($border-radius);
+        @if $enable-rtl {
+          @include border-right-radius($border-radius);
+        } @else{
+          @include border-left-radius($border-radius);
+        }
       }
     }
     &:last-child {
       .page-link {
-        @include border-right-radius($border-radius);
+        @if $enable-rtl {
+          @include border-left-radius($border-radius);
+        } @else{
+          @include border-right-radius($border-radius);
+        }
       }
     }
   }

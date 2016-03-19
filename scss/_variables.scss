@@ -63,7 +63,8 @@ $enable-transitions:        false !default;
 $enable-hover-media-query:  false !default;
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
-
+//enables rtl rendering of bootstrap
+$enable-rtl:                false !default;
 
 // Spacing
 //
