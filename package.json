@@ -47,7 +47,7 @@
     "grunt-contrib-qunit": "^1.0.1",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.0",
-    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-eslint": "^17.1.0",
     "grunt-exec": "^0.4.6",
     "grunt-html": "^6.0.0",
