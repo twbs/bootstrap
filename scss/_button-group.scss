@@ -61,7 +61,7 @@
   &:not(:last-child):not(.dropdown-toggle) {
     @if $enable-rtl {
       @include border-left-radius(0);
-    } @else{
+    } @else {
       @include border-right-radius(0);
     }
   }
@@ -89,17 +89,17 @@
   > .dropdown-toggle {
     @if $enable-rtl {
       @include border-left-radius(0);
-    } @else{
+    } @else {
       @include border-right-radius(0);
     }
   }
 }
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
   @if $enable-rtl {
-      @include border-right-radius(0);
-    } @else{
-      @include border-left-radius(0);
-    }
+    @include border-right-radius(0);
+  } @else {
+    @include border-left-radius(0);
+  }
 }
 
 // On active and open, don't show outline
