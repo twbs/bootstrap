@@ -1,3 +1,6 @@
+//SHOULD CHECK THIS PART AGAIN AND TEST IT.
+
+
 // Wrapper for the slide container and indicators
 .carousel {
   position: relative;
@@ -11,7 +14,7 @@
   > .carousel-item {
     position: relative;
     display: none;
-    transition: .6s ease-in-out left;
+    transition: .6s ease-in-out #{$left};
 
     // Account for jankitude on images
     > img,
@@ -28,18 +31,18 @@
 
       &.next,
       &.active.right {
-        left: 0;
+        #{$left}: 0;
         transform: translate3d(100%, 0, 0);
       }
       &.prev,
       &.active.left {
-        left: 0;
+        #{$left}: 0;
         transform: translate3d(-100%, 0, 0);
       }
       &.next.left,
       &.prev.right,
       &.active {
-        left: 0;
+        #{$left}: 0;
         transform: translate3d(0, 0, 0);
       }
     }
@@ -52,7 +55,7 @@
   }
 
   > .active {
-    left: 0;
+    #{$left}: 0;
   }
 
   > .next,
@@ -63,21 +66,21 @@
   }
 
   > .next {
-    left: 100%;
+    #{$left}: 100%;
   }
   > .prev {
-    left: -100%;
+    #{$left}: -100%;
   }
   > .next.left,
   > .prev.right {
-    left: 0;
+    #{$left}: 0;
   }
 
   > .active.left {
-    left: -100%;
+    #{$left}: -100%;
   }
   > .active.right {
-    left: 100%;
+    #{$left}: 100%;
   }
 }
 
@@ -90,7 +93,11 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
+  @if $enable-rtl {
+    right: 0;
+  } @else{
+    left: 0;
+  }
   width: $carousel-control-width;
   font-size: $carousel-control-font-size;
   color: $carousel-control-color;
@@ -161,11 +168,11 @@
 .carousel-indicators {
   position: absolute;
   bottom: 10px;
-  left: 50%;
+  #{$left}: 50%;
   z-index: 15;
   width: $carousel-indicators-width;
-  padding-left: 0;
-  margin-left: -($carousel-indicators-width / 2);
+  padding-#{$left}: 0;
+  margin-#{$left}: -($carousel-indicators-width / 2);
   text-align: center;
   list-style: none;
 

@@ -9,7 +9,7 @@
 
   > .btn {
     position: relative;
-    float: left;
+    float: $left;
 
     // Bring the "active" button to the front
     &:focus,
@@ -29,24 +29,24 @@
   .btn + .btn-group,
   .btn-group + .btn,
   .btn-group + .btn-group {
-    margin-left: -$input-btn-border-width;
+    margin-#{$left}: -$input-btn-border-width;
   }
 }
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  margin-left: -$btn-toolbar-margin; // Offset the first child's margin
+  margin-#{$left}: -$btn-toolbar-margin; // Offset the first child's margin
   @include clearfix();
 
   .btn-group,
   .input-group {
-    float: left;
+    float: $left;
   }
 
   > .btn,
   > .btn-group,
   > .input-group {
-    margin-left: $btn-toolbar-margin;
+    margin-#{$left}: $btn-toolbar-margin;
   }
 }
 
@@ -56,21 +56,30 @@
 
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
-  margin-left: 0;
+  margin-#{$left}: 0;
 
   &:not(:last-child):not(.dropdown-toggle) {
-    @include border-right-radius(0);
+    @if $enable-rtl {
+      @include border-left-radius(0);
+    } @else {
+      @include border-right-radius(0);
+    }
   }
 }
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
-  @include border-left-radius(0);
+
+  @if $enable-rtl {
+    @include border-left-radius(0);
+  } @else{
+    @include border-left-radius(0);
+  }
 }
 
 // Custom edits for including btn-groups within btn-groups (useful for including dropdown buttons within a btn-group)
 .btn-group > .btn-group {
-  float: left;
+  float: $left;
 }
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
@@ -78,11 +87,19 @@
 .btn-group > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
-    @include border-right-radius(0);
+    @if $enable-rtl {
+      @include border-left-radius(0);
+    } @else {
+      @include border-right-radius(0);
+    }
   }
 }
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
-  @include border-left-radius(0);
+  @if $enable-rtl {
+    @include border-right-radius(0);
+  } @else {
+    @include border-left-radius(0);
+  }
 }
 
 // On active and open, don't show outline
@@ -106,12 +123,12 @@
 
 // Give the line between buttons some depth
 .btn-group > .btn + .dropdown-toggle {
-  padding-right: $split-btn-dropdown-toggle-padding-x;
-  padding-left: $split-btn-dropdown-toggle-padding-x;
+  padding-#{$right}: $split-btn-dropdown-toggle-padding-x;
+  padding-#{$left}: $split-btn-dropdown-toggle-padding-x;
 }
 .btn-group > .btn-lg + .dropdown-toggle {
-  padding-right: $split-btn-lg-dropdown-toggle-padding-x;
-  padding-left: $split-btn-lg-dropdown-toggle-padding-x;
+  padding-#{$right}: $split-btn-lg-dropdown-toggle-padding-x;
+  padding-#{$left}: $split-btn-lg-dropdown-toggle-padding-x;
 }
 
 // The clickable button for toggling the menu
@@ -128,7 +145,7 @@
 
 // Reposition the caret
 .btn .caret {
-  margin-left: 0;
+  margin-#{$left}: 0;
 }
 // Carets in other button sizes
 .btn-lg .caret {

@@ -189,7 +189,7 @@ input[type="month"] {
   margin-bottom: ($spacer * .75);
 
   label {
-    padding-left: 1.25rem;
+    padding-#{$left}: 1.25rem;
     margin-bottom: 0;
     cursor: pointer;
 
@@ -206,7 +206,7 @@ input[type="month"] {
   position: absolute;
   margin-top: .25rem;
   // margin-top: 4px \9;
-  margin-left: -1.25rem;
+  margin-#{$left}: -1.25rem;
 }
 
 .radio + .radio,
@@ -220,7 +220,7 @@ input[type="month"] {
 .checkbox-inline {
   position: relative;
   display: inline-block;
-  padding-left: 1.25rem;
+  padding-#{$left}: 1.25rem;
   margin-bottom: 0;
   vertical-align: middle;
   cursor: pointer;
@@ -228,7 +228,7 @@ input[type="month"] {
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
-  margin-left: .75rem;
+  margin-#{$left}: .75rem;
 }
 
 // Apply same disabled cursor tweak as for inputs
@@ -267,7 +267,7 @@ input[type="checkbox"] {
 .form-control-success,
 .form-control-warning,
 .form-control-danger {
-  padding-right: ($input-padding-x * 3);
+  padding-#{$right}: ($input-padding-x * 3);
   background-repeat: no-repeat;
   background-position: center right ($input-height / 4);
   background-size: ($input-height / 2) ($input-height / 2);
@@ -440,13 +440,13 @@ input[type="checkbox"] {
       vertical-align: middle;
 
       label {
-        padding-left: 0;
+        padding-#{$left}: 0;
       }
     }
     .radio input[type="radio"],
     .checkbox input[type="checkbox"] {
       position: relative;
-      margin-left: 0;
+      margin-#{$left}: 0;
     }
 
     // Re-override the feedback icon.

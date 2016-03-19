@@ -8,7 +8,8 @@
 }
 
 .breadcrumb-item {
-  float: left;
+
+  float: $left;
 
   // The separator between breadcrumbs (by default, a forward-slash: "/")
   + .breadcrumb-item::before {

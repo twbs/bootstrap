@@ -12,11 +12,11 @@
 .custom-control {
   position: relative;
   display: inline;
-  padding-left: $custom-control-gutter;
+  padding-#{$left}: $custom-control-gutter;
   cursor: pointer;
 
   + .custom-control {
-    margin-left: $custom-control-spacer-x;
+    margin-#{$left}: $custom-control-spacer-x;
   }
 }
 
@@ -62,7 +62,7 @@
 .custom-control-indicator {
   position: absolute;
   top: .0625rem;
-  left: 0;
+  #{$left}: 0;
   display: block;
   width: $custom-control-indicator-size;
   height: $custom-control-indicator-size;
@@ -126,7 +126,7 @@
     }
 
     + .custom-control {
-      margin-left: 0;
+      margin-#{$left}: 0;
     }
   }
 }
@@ -142,11 +142,14 @@
 .custom-select {
   display: inline-block;
   max-width: 100%;
-  padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
-  padding-right: $custom-select-padding-x \9;
+  padding-top: $custom-select-padding-y;
+  padding-#{$right}: ($custom-select-padding-x + $custom-select-indicator-padding);
+  padding-bottom: $custom-select-padding-y;
+  padding-#{$left}: $custom-select-padding-x;
+  padding-#{$right}: $custom-select-padding-x \9;
   color: $custom-select-color;
   vertical-align: middle;
-  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
+  background: $custom-select-bg $custom-select-indicator no-repeat $right $custom-select-padding-x center;
   background-image: none \9;
   background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
@@ -228,7 +231,7 @@
   &::before {
     position: absolute;
     top: -$custom-file-border-width;
-    right: -$custom-file-border-width;
+    #{$right}: -$custom-file-border-width;
     bottom: -$custom-file-border-width;
     z-index: 6;
     display: block;
@@ -238,7 +241,11 @@
     color: $custom-file-button-color;
     background-color: $custom-file-button-bg;
     border: $custom-file-border-width solid $custom-file-border-color;
-    @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+    @if $enable-rtl {
+      @include border-radius(0 0 $custom-file-border-radius $custom-file-border-radius);
+    } @else {
+      @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+    }
   }
 
   @each $lang, $text in map-get($custom-file-text, button-label) {
