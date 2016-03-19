@@ -6,8 +6,8 @@
   letter-spacing: normal;
   line-break: auto;
   line-height: $line-height-base;
-  text-align: $right; // Fallback for where `end` is not supported
-  text-align: $end;
+  text-align: $left; // Fallback for where `end` is not supported
+  text-align: $start;
   text-decoration: none;
   text-shadow: none;
   text-transform: none;
