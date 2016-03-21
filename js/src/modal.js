@@ -105,7 +105,8 @@ const Modal = (($) => {
     // public
 
     toggle(relatedTarget) {
-      return this._isShown ? this.hide() : this.show(relatedTarget)
+      return this._isShow      $('.popover.inModal').popover('hide')
+n ? this.hide() : this.show(relatedTarget)
     }
 
     show(relatedTarget) {
@@ -182,6 +183,9 @@ const Modal = (($) => {
       } else {
         this._hideModal()
       }
+
+      $('.popover.inModal').popover('hide')
+
     }
 
     dispose() {

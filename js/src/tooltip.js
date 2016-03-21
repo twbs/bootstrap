@@ -242,6 +242,18 @@ const Tooltip = (($) => {
     show() {
       let showEvent = $.Event(this.constructor.Event.SHOW)
 
+      let isInModal = false
+
+      $(this.element).parents().each(function(index, elem){
+          if ($(elem).hasClass('modal') && $(elem).hasClass('in')) {
+            isInModal = true
+          }
+      })
+
+      if (isInModal) {
+        $(this.tip).addClass('inModal')
+      }
+
       if (this.isWithContent() && this._isEnabled) {
         $(this.element).trigger(showEvent)
 
