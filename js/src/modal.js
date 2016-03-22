@@ -182,7 +182,7 @@ const Modal = (($) => {
       } else {
         this._hideModal()
       }
-
+      
       $('.popover.inModal').popover('hide')
 
     }
