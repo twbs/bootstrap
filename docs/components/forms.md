@@ -19,16 +19,16 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
 
 {% example html %}
 <form>
-  <fieldset class="form-group">
+  <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="text-muted">We'll never share your email with anyone else.</small>
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="exampleSelect1">Example select</label>
     <select class="form-control" id="exampleSelect1">
       <option>1</option>
@@ -37,8 +37,8 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
       <option>4</option>
       <option>5</option>
     </select>
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="exampleSelect2">Example multiple select</label>
     <select multiple class="form-control" id="exampleSelect2">
       <option>1</option>
@@ -47,34 +47,37 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
       <option>4</option>
       <option>5</option>
     </select>
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="exampleTextarea">Example textarea</label>
     <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="exampleInputFile">File input</label>
     <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
     <small id="fileHelp" class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+  </div>
+  <fieldset class="form-group">
+    <legend>Radio buttons</legend>
+    <div class="radio">
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+        Option one is this and that&mdash;be sure to include why it's great
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+        Option two can be something else and selecting it will deselect option one
+      </label>
+    </div>
+    <div class="radio disabled">
+      <label>
+        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+        Option three is disabled
+      </label>
+    </div>
   </fieldset>
-  <div class="radio">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-      Option one is this and that&mdash;be sure to include why it's great
-    </label>
-  </div>
-  <div class="radio">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-      Option two can be something else and selecting it will deselect option one
-    </label>
-  </div>
-  <div class="radio disabled">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-      Option three is disabled
-    </label>
-  </div>
   <div class="checkbox">
     <label>
       <input type="checkbox"> Check me out
@@ -84,7 +87,7 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
 </form>
 {% endexample %}
 
-Below is a complete list of the specific from controls supported by Bootstrap and the classes that customize them. Additional documentation is available for each group.
+Below is a complete list of the specific form controls supported by Bootstrap and the classes that customize them. Additional documentation is available for each group.
 
 <table>
   <thead>
@@ -114,7 +117,7 @@ Below is a complete list of the specific from controls supported by Bootstrap an
         Textual inputs
       </td>
       <td>
-        {% markdown %}`text`, `password`, `datetime`, `datetime-local`, `date`, `month`, `time`, `week`, `number`, `email`, `url`, `search`, `tel`, `color`{% endmarkdown %}
+        {% markdown %}`text`, `password`, `datetime-local`, `date`, `month`, `time`, `week`, `number`, `email`, `url`, `search`, `tel`, `color`{% endmarkdown %}
       </td>
     </tr>
     <tr>
@@ -163,6 +166,91 @@ Below is a complete list of the specific from controls supported by Bootstrap an
   </tbody>
 </table>
 
+### Textual inputs
+
+Here are examples of `.form-control` applied to each textual HTML5 `<input>` `type`.
+
+{% example html %}
+<div class="form-group row">
+  <label for="example-text-input" class="col-xs-2 form-control-label">Text</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-search-input" class="col-xs-2 form-control-label">Search</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-email-input" class="col-xs-2 form-control-label">Email</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-url-input" class="col-xs-2 form-control-label">URL</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="url" value="http://getbootstrap.com" id="example-url-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-tel-input" class="col-xs-2 form-control-label">Telephone</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-password-input" class="col-xs-2 form-control-label">Password</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="password" value="hunter2" id="example-password-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-number-input" class="col-xs-2 form-control-label">Number</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="number" value="42" id="example-number-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-datetime-local-input" class="col-xs-2 form-control-label">Date and time</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-date-input" class="col-xs-2 form-control-label">Date</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-month-input" class="col-xs-2 form-control-label">Month</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="month" value="2011-08" id="example-month-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-week-input" class="col-xs-2 form-control-label">Week</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="week" value="2011-W33" id="example-week-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-time-input" class="col-xs-2 form-control-label">Time</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-color-input" class="col-xs-2 form-control-label">Color</label>
+  <div class="col-xs-10">
+    <input class="form-control" type="color" value="#563d7c" id="example-color-input">
+  </div>
+</div>
+{% endexample %}
+
 ## Form layouts
 
 Since Bootstrap applies `display: block` and `width: 100%` to almost all our form controls, forms will by default stack vertically. Additional classes can be used to vary this layout on a per-form basis.
@@ -173,20 +261,20 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 
 {% example html %}
 <form>
-  <fieldset class="form-group">
+  <div class="form-group">
     <label for="formGroupExampleInput">Example label</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-  </fieldset>
-  <fieldset class="form-group">
+  </div>
+  <div class="form-group">
     <label for="formGroupExampleInput2">Another label</label>
     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-  </fieldset>
+  </div>
 </form>
 {% endexample %}
 
 ### Inline forms
 
-Use the `.form-inline` class to to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms behave differently:
+Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms behave differently:
 
 - Controls are `display: inline-block` to provide alignment control via `vertical-align` and `margin`.
 - Controls receive `width: auto` to override the Bootstrap default `width: 100%`.
@@ -245,9 +333,16 @@ Because of this, you may need to manually address the width and alignment of ind
 </form>
 {% endexample %}
 
+{% callout warning %}
+ #### Alternatives to hidden labels
+ Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
+ {% endcallout %}
+
 ### Using the Grid
 
-For more structured form layouts, you can utilize Bootstrap's predefined grid classes (or mixins). Add the `.row` class to form groups and use the `.col-*` classes to specify the width of your labels and controls. To vertically center the labels with the textual inputs—nearly anything with `.form-control`—use the `.form-control-label` class.
+For more structured form layouts, you can utilize Bootstrap's predefined grid classes (or mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
+
+Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.form-control-legend` to make them appear similar to regular `<label>` elements.
 
 {% example html %}
 <form>
@@ -263,8 +358,8 @@ For more structured form layouts, you can utilize Bootstrap's predefined grid cl
       <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
   </div>
-  <div class="form-group row">
-    <label class="col-sm-2">Radios</label>
+  <fieldset class="form-group row">
+    <legend class="col-sm-2 form-control-legend">Radios</legend>
     <div class="col-sm-10">
       <div class="radio">
         <label>
@@ -285,9 +380,9 @@ For more structured form layouts, you can utilize Bootstrap's predefined grid cl
         </label>
       </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2">Checkbox</label>
+  </fieldset>
+  <fieldset class="form-group row">
+    <legend class="col-sm-2 form-control-legend">Checkbox</legend>
     <div class="col-sm-10">
       <div class="checkbox">
         <label>
@@ -295,7 +390,7 @@ For more structured form layouts, you can utilize Bootstrap's predefined grid cl
         </label>
       </div>
     </div>
-  </div>
+  </fieldset>
   <div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-secondary">Sign in</button>
@@ -376,17 +471,17 @@ Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes 
 
 ### Without labels
 
-Should you have no text within the `<label>`, the input is positioned as you'd expect. **Currently only works on non-inline checkboxes and radios.**
+Should you have no text within the `<label>`, the input is positioned as you'd expect. **Currently only works on non-inline checkboxes and radios.** Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
 
 {% example html %}
 <div class="checkbox">
   <label>
-    <input type="checkbox" id="blankCheckbox" value="option1">
+    <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
   </label>
 </div>
 <div class="radio">
   <label>
-    <input type="radio" name="blankRadio" id="blankRadio1" value="option1">
+    <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
   </label>
 </div>
 {% endexample %}
@@ -543,13 +638,18 @@ Block help text—for below inputs or for longer lines of help text—can be eas
 <label for="inputPassword5">Password</label>
 <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
 <p id="passwordHelpBlock" class="text-muted">
-  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters or emoji. 
+  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters or emoji.
 </p>
 {% endexample %}
 
 ## Validation
 
-Bootstrap includes validation styles for danger, warning, and success states on form controls. To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
+Bootstrap includes validation styles for danger, warning, and success states on form controls.
+
+- To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
+- Validation icons are `url()`s configured via Sass variables that are applied to `background-image` declarations for each state.
+- You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
+- Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
 
 {% comment %}
 {% callout warning %}
@@ -607,33 +707,33 @@ Each checkbox and radio is wrapped in a `<label>` for three reasons:
 - It provides a helpful and semantic wrapper to help us replace the default `<input>`s.
 - It triggers the state of the `<input>` automatically, meaning no JavaScript is required.
 
-We hide the default `<input>` with `opacity` and use the `.c-indicator` to build a new custom form control. We can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.
+We hide the default `<input>` with `opacity` and use the `.custom-control-indicator` to build a new custom form indicator in its place. Unfortunately we can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.
 
-With the sibling selector (`~`), we use the `:checked` state to trigger a makeshift checked state on the custom control.
+We use the sibling selector (`~`) for all our `<input>` states—like `:checked`—to properly style our custom form indicator. When combined with the `.custom-control-description` class, we can also style the text for each item based on the `<input>`'s state.
 
 In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](https://useiconic.com/open). This provides us the best control for styling and positioning across browsers and devices.
 
 #### Checkboxes
 
 {% example html %}
-<label class="c-input c-checkbox">
-  <input type="checkbox">
-  <span class="c-indicator"></span>
-  Check this custom checkbox
+<label class="custom-control custom-checkbox">
+  <input type="checkbox" class="custom-control-input">
+  <span class="custom-control-indicator"></span>
+  <span class="custom-control-description">Check this custom checkbox</span>
 </label>
 {% endexample %}
 
 Custom checkboxes can also utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
 
 <div class="bd-example bd-example-indeterminate">
-  <label class="c-input c-checkbox">
-    <input type="checkbox">
-    <span class="c-indicator"></span>
-    Check this custom checkbox
+  <label class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Check this custom checkbox</span>
   </label>
 </div>
 
- If you're using jQuery, something like this should suffice:
+If you're using jQuery, something like this should suffice:
 
 {% highlight js %}
 $('.your-checkbox').prop('indeterminate', true)
@@ -642,43 +742,89 @@ $('.your-checkbox').prop('indeterminate', true)
 #### Radios
 
 {% example html %}
-<label class="c-input c-radio">
-  <input id="radio1" name="radio" type="radio">
-  <span class="c-indicator"></span>
-  Toggle this custom radio
+<label class="custom-control custom-radio">
+  <input id="radio1" name="radio" type="radio" class="custom-control-input">
+  <span class="custom-control-indicator"></span>
+  <span class="custom-control-description">Toggle this custom radio</span>
 </label>
-<label class="c-input c-radio">
-  <input id="radio2" name="radio" type="radio">
-  <span class="c-indicator"></span>
-  Or toggle this other custom radio
+<label class="custom-control custom-radio">
+  <input id="radio2" name="radio" type="radio" class="custom-control-input">
+  <span class="custom-control-indicator"></span>
+  <span class="custom-control-description">Or toggle this other custom radio</span>
 </label>
+{% endexample %}
+
+#### Disabled
+
+Custom checkboxes and radios can also be disabled. Add the `disabled` boolean attribute to the `<input>` and the custom indicator and label description will be automatically styled.
+
+{% example html %}
+<label class="custom-control custom-checkbox">
+  <input type="checkbox" class="custom-control-input" disabled>
+  <span class="custom-control-indicator"></span>
+  <span class="custom-control-description">Check this custom checkbox</span>
+</label>
+
+<label class="custom-control custom-radio">
+  <input id="radio3" name="radioDisabled" type="radio" class="custom-control-input" disabled>
+  <span class="custom-control-indicator"></span>
+  <span class="custom-control-description">Toggle this custom radio</span>
+</label>
+{% endexample %}
+
+#### Validation states
+
+Add other states to your custom forms with our validation classes.
+
+{% example html %}
+<div class="form-group has-success">
+  <label class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Check this custom checkbox</span>
+  </label>
+</div>
+<div class="form-group has-warning">
+  <label class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Check this custom checkbox</span>
+  </label>
+</div>
+<div class="form-group has-danger m-b-0">
+  <label class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Check this custom checkbox</span>
+  </label>
+</div>
 {% endexample %}
 
 #### Stacked
 
-Custom checkboxes and radios are inline to start. Add a parent with class `.c-inputs-stacked` to ensure each form control is on separate lines.
+Custom checkboxes and radios are inline to start. Add a parent with class `.custom-controls-stacked` to ensure each form control is on separate lines.
 
 {% example html %}
-<div class="c-inputs-stacked">
-  <label class="c-input c-radio">
-    <input id="radioStacked1" name="radio-stacked" type="radio">
-    <span class="c-indicator"></span>
-    Toggle this custom radio
+<div class="custom-controls-stacked">
+  <label class="custom-control custom-radio">
+    <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Toggle this custom radio</span>
   </label>
-  <label class="c-input c-radio">
-    <input id="radioStacked2" name="radio-stacked" type="radio">
-    <span class="c-indicator"></span>
-    Or toggle this other custom radio
+  <label class="custom-control custom-radio">
+    <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Or toggle this other custom radio</span>
   </label>
 </div>
 {% endexample %}
 
 ### Select menu
 
-Custom `<select>` menus need only a custom class, `.c-select` to trigger the custom styles.
+Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles.
 
 {% example html %}
-<select class="c-select">
+<select class="custom-select">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
@@ -690,14 +836,16 @@ Custom selects degrade nicely in IE9, receiving only a handful of overrides to r
 
 ### File browser
 
+The file input is the most gnarly of the bunch and require additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
+
 {% example html %}
-<label class="file">
-  <input type="file" id="file">
-  <span class="file-custom"></span>
+<label class="custom-file">
+  <input type="file" id="file" class="custom-file-input">
+  <span class="custom-file-control"></span>
 </label>
 {% endexample %}
 
-The file input is the most gnarly of the bunch. Here's how it works:
+Here's how it works:
 
 - We wrap the `<input>` in a `<label>` so the custom control properly triggers the file browser.
 - We hide the default file `<input>` via `opacity`.
@@ -707,4 +855,21 @@ The file input is the most gnarly of the bunch. Here's how it works:
 
 In other words, it's an entirely custom element, all generated via CSS.
 
-**Heads up!** The custom file input is currently unable to update the *Choose file...* text with the filename. Without JavaScript, this might not be possible to change, but I'm open to ideas.
+#### Translating or customizing the strings
+
+The [`:lang()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:lang) is used to allow for easy translation of the "Browse" and "Choose file..." text into other languages. Simply override or add entries to the `$custom-file-text` SCSS variable with the relevant [language tag](https://en.wikipedia.org/wiki/IETF_language_tag) and localized strings. The English strings can be customized the same way. For example, here's how one might add a Spanish translation (Spanish's language code is `es`):
+
+{% highlight scss %}
+$custom-file-text: (
+  placeholder: (
+    en: "Choose file...",
+    es: "Seleccionar archivo..."
+  ),
+  button-label: (
+    en: "Browse",
+    es: "Navegar"
+  )
+);
+{% endhighlight %}
+
+You'll need to set the language of your document (or subtree thereof) correctly in order for the correct text to be shown. This can be done using [the `lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) or the [`Content-Language` HTTP header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.12), among other methods.

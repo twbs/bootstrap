@@ -7,8 +7,10 @@
   display: block;
   margin-bottom: $card-spacer-y;
   background-color: $card-bg;
-  border: $card-border-width solid $card-border-color;
+  // border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
+  // Doesn't use mixin so that cards always have a "border"
+  box-shadow: inset 0 0 0 $card-border-width $card-border-color;
 }
 
 .card-block {
@@ -51,13 +53,15 @@
   .card {
     > .list-group:first-child {
       .list-group-item:first-child {
-        border-radius: $card-border-radius $card-border-radius 0 0;
+        border-top-left-radius: $card-border-radius;
+        border-top-right-radius: $card-border-radius;
       }
     }
 
     > .list-group:last-child {
       .list-group-item:last-child {
-        border-radius: 0 0 $card-border-radius $card-border-radius;
+        border-bottom-right-radius: $card-border-radius;
+        border-bottom-left-radius: $card-border-radius;
       }
     }
   }
@@ -72,7 +76,9 @@
   @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
-  border-bottom: $card-border-width solid $card-border-color;
+  // border-bottom: $card-border-width solid $card-border-color;
+  // Doesn't use mixin so that cards always have a "border"
+  box-shadow: inset 0 0 0 $card-border-width $card-border-color;
 
   &:first-child {
     @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
@@ -83,11 +89,34 @@
   @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
-  border-top: $card-border-width solid $card-border-color;
+  // border-top: $card-border-width solid $card-border-color;
+  // Doesn't use mixin so that cards always have a "border"
+  box-shadow: inset 0 0 0 $card-border-width $card-border-color;
 
   &:last-child {
     @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
   }
+}
+
+
+//
+// Header navs
+//
+
+.card-header-tabs {
+  margin-right: -($card-spacer-x / 2);
+  margin-bottom: -$card-spacer-y;
+  margin-left: -($card-spacer-x / 2);
+  border-bottom: 0;
+
+  .nav-item {
+    margin-bottom: 0;
+  }
+}
+
+.card-header-pills {
+  margin-right: -($card-spacer-x / 2);
+  margin-left: -($card-spacer-x / 2);
 }
 
 
@@ -112,22 +141,22 @@
 }
 
 // Remove all backgrounds
-.card-primary-outline {
+.card-outline-primary {
   @include card-outline-variant($btn-primary-bg);
 }
-.card-secondary-outline {
+.card-outline-secondary {
   @include card-outline-variant($btn-secondary-border);
 }
-.card-info-outline {
+.card-outline-info {
   @include card-outline-variant($btn-info-bg);
 }
-.card-success-outline {
+.card-outline-success {
   @include card-outline-variant($btn-success-bg);
 }
-.card-warning-outline {
+.card-outline-warning {
   @include card-outline-variant($btn-warning-bg);
 }
-.card-danger-outline {
+.card-outline-danger {
   @include card-outline-variant($btn-danger-bg);
 }
 
@@ -286,7 +315,7 @@
 @include media-breakpoint-up(sm) {
   .card-columns {
     column-count: 3;
-    column-gap: 1.25rem;
+    column-gap: $card-columns-sm-up-column-gap;
 
     .card {
       display: inline-block;

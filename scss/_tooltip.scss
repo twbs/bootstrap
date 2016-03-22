@@ -7,6 +7,8 @@
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
   font-size: $font-size-sm;
+  // Allow breaking very long words so they don't overflow the tooltip's bounds
+  word-wrap: break-word;
   opacity: 0;
 
   &.in { opacity: $tooltip-opacity; }
@@ -14,7 +16,7 @@
   &.tooltip-top,
   &.bs-tether-element-attached-bottom {
     padding: $tooltip-arrow-width 0;
-    margin-top: -3px;
+    margin-top: -$tooltip-margin;
 
     .tooltip-arrow {
       bottom: 0;
@@ -27,7 +29,7 @@
   &.tooltip-right,
   &.bs-tether-element-attached-left {
     padding: 0 $tooltip-arrow-width;
-    margin-left: 3px;
+    margin-left: $tooltip-margin;
 
     .tooltip-arrow {
       top: 50%;
@@ -40,7 +42,7 @@
   &.tooltip-bottom,
   &.bs-tether-element-attached-top {
     padding: $tooltip-arrow-width 0;
-    margin-top: 3px;
+    margin-top: $tooltip-margin;
 
     .tooltip-arrow {
       top: 0;
@@ -53,7 +55,7 @@
   &.tooltip-left,
   &.bs-tether-element-attached-right {
     padding: 0 $tooltip-arrow-width;
-    margin-left: -3px;
+    margin-left: -$tooltip-margin;
 
     .tooltip-arrow {
       top: 50%;
@@ -68,7 +70,7 @@
 // Wrapper for the tooltip content
 .tooltip-inner {
   max-width: $tooltip-max-width;
-  padding: 3px 8px;
+  padding: $tooltip-padding-y $tooltip-padding-x;
   color: $tooltip-color;
   text-align: center;
   background-color: $tooltip-bg;

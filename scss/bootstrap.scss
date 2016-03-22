@@ -5,6 +5,7 @@
  */
 
 // Core variables and mixins
+@import "custom";
 @import "variables";
 @import "mixins";
 
@@ -33,8 +34,7 @@
 @import "card";
 @import "breadcrumb";
 @import "pagination";
-@import "pager";
-@import "labels";
+@import "tags";
 @import "jumbotron";
 @import "alert";
 @import "progress";

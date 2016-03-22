@@ -462,6 +462,8 @@ var Button = (function ($) {
               input.checked = !$(this._element).hasClass(ClassName.ACTIVE);
               $(this._element).trigger('change');
             }
+
+            input.focus();
           }
         } else {
           this._element.setAttribute('aria-pressed', !$(this._element).hasClass(ClassName.ACTIVE));
@@ -2421,7 +2423,7 @@ var ScrollSpy = (function ($) {
           $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
           $link.addClass(ClassName.ACTIVE);
         } else {
-          // todo (fat) this is kinda sus…
+          // todo (fat) this is kinda sus...
           // recursively add actives to tested nav-links
           $link.parents(Selector.LI).find(Selector.NAV_LINKS).addClass(ClassName.ACTIVE);
         }

@@ -18,7 +18,7 @@
 @import "mixins/breakpoints";
 @import "mixins/hover";
 @import "mixins/image";
-@import "mixins/label";
+@import "mixins/tag";
 @import "mixins/reset-filter";
 @import "mixins/resize";
 @import "mixins/screen-reader";
@@ -46,7 +46,6 @@
 
 // // Layout
 @import "mixins/clearfix";
-@import "mixins/center-block";
 // @import "mixins/navbar-align";
 @import "mixins/grid-framework";
 @import "mixins/grid";

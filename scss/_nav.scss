@@ -23,7 +23,7 @@
     @include plain-hover-focus {
       color: $nav-disabled-link-hover-color;
       cursor: $cursor-disabled;
-      background-color: transparent;
+      background-color: $nav-disabled-link-hover-bg;
     }
   }
 }
@@ -38,7 +38,7 @@
 
   .nav-item + .nav-item,
   .nav-link + .nav-link {
-    margin-left: 1rem;
+    margin-left: $nav-item-inline-spacer;
   }
 }
 
@@ -48,13 +48,13 @@
 //
 
 .nav-tabs {
-  border-bottom: 1px solid $nav-tabs-border-color;
+  border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
   @include clearfix();
 
   .nav-item {
     float: left;
     // Make the list-items overlay the bottom border
-    margin-bottom: -1px;
+    margin-bottom: -$nav-tabs-border-width;
 
     + .nav-item {
       margin-left: $nav-item-margin;
@@ -64,7 +64,7 @@
   .nav-link {
     display: block;
     padding: $nav-link-padding;
-    border: $nav-tabs-link-border-width solid transparent;
+    border: $nav-tabs-border-width solid transparent;
     @include border-radius($border-radius $border-radius 0 0);
 
     @include hover-focus {
@@ -87,6 +87,13 @@
       background-color: $nav-tabs-active-link-hover-bg;
       border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color transparent;
     }
+  }
+
+  .dropdown-menu {
+    // Make dropdown border overlap tab border
+    margin-top: -$nav-tabs-border-width;
+    // Remove the top rounded corners here since there is a hard edge above the menu
+    @include border-top-radius(0);
   }
 }
 
@@ -115,9 +122,9 @@
   .nav-link.active,
   .nav-item.open .nav-link {
     @include plain-hover-focus {
-      color: $component-active-color;
+      color: $nav-pills-active-link-color;
       cursor: default;
-      background-color: $component-active-bg;
+      background-color: $nav-pills-active-link-bg;
     }
   }
 }
@@ -147,16 +154,4 @@
   > .active {
     display: block;
   }
-}
-
-
-//
-// Dropdowns
-//
-
-.nav-tabs .dropdown-menu {
-  // Make dropdown border overlap tab border
-  margin-top: -1px;
-  // Remove the top rounded corners here since there is a hard edge above the menu
-  @include border-top-radius(0);
 }

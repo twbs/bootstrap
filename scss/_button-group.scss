@@ -1,3 +1,5 @@
+// scss-lint:disable QualifyingElement
+
 // Make the div behave like a button
 .btn-group,
 .btn-group-vertical {
@@ -33,7 +35,7 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  margin-left: -5px; // Offset the first child's margin
+  margin-left: -$btn-toolbar-margin; // Offset the first child's margin
   @include clearfix();
 
   .btn-group,
@@ -44,7 +46,7 @@
   > .btn,
   > .btn-group,
   > .input-group {
-    margin-left: 5px;
+    margin-left: $btn-toolbar-margin;
   }
 }
 
@@ -104,18 +106,18 @@
 
 // Give the line between buttons some depth
 .btn-group > .btn + .dropdown-toggle {
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: $split-btn-dropdown-toggle-padding-x;
+  padding-left: $split-btn-dropdown-toggle-padding-x;
 }
 .btn-group > .btn-lg + .dropdown-toggle {
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: $split-btn-lg-dropdown-toggle-padding-x;
+  padding-left: $split-btn-lg-dropdown-toggle-padding-x;
 }
 
 // The clickable button for toggling the menu
 // Remove the gradient and set the same inset shadow as the :active state
 .btn-group.open .dropdown-toggle {
-  @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  @include box-shadow($btn-active-box-shadow);
 
   // Show no shadow for `.btn-link` since it has no other button styles.
   &.btn-link {
@@ -177,11 +179,9 @@
     border-radius: 0;
   }
   &:first-child:not(:last-child) {
-    border-top-right-radius: $btn-border-radius;
     @include border-bottom-radius(0);
   }
   &:last-child:not(:first-child) {
-    border-bottom-left-radius: $btn-border-radius;
     @include border-top-radius(0);
   }
 }

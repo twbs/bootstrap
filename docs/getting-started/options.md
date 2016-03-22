@@ -17,8 +17,9 @@ You can find and customize these variables in our `_variables.scss` file.
 | `$enable-rounded`           | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components.        |
 | `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components.           |
 | `$enable-gradients`         | `true` or `false` (default)        | Enables predefined gradients via `background-image` various components. |
-| `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components.                 |
-| `$enable-hover-media-query` | `true` or `false` (default)        | ...                                                                     |
+| `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components. |
+| `$enable-hover-media-query` | `true` or `false` (default)        | ... |
+| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.col-md-1` etc.). |
 
 ## Color palette
 

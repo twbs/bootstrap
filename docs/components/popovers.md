@@ -268,7 +268,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>offsets</td>
         <td>string</td>
         <td>'0 0'</td>
-        <td>Offset of the popover relative to its target. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">offset docs</a>.</td>
+        <td>Offset of the popover relative to its target. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#offset">offset docs</a>.</td>
       </tr>
     </tbody>
   </table>

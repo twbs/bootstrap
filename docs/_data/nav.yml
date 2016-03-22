@@ -2,16 +2,20 @@
   pages:
     - title: Introduction
     - title: Download
+    - title: Contents
     - title: Browsers & devices
+    - title: JavaScript
     - title: Options
     - title: Flexbox
     - title: Build tools
     - title: Best practices
+    - title: Accessibility
 
 - title: Layout
   pages:
     - title: Overview
     - title: Grid
+    - title: Flexbox grid
     - title: Media object
     - title: Responsive utilities
 
@@ -33,7 +37,7 @@
     - title: Input group
     - title: Dropdowns
     - title: Jumbotron
-    - title: Label
+    - title: Tag
     - title: Alerts
     - title: Card
     - title: Navs
@@ -59,7 +63,6 @@
   pages:
     - title: History
     - title: Team
-    - title: Accessibility
     - title: Brand
     - title: License
     - title: Translations
