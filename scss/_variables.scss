@@ -78,11 +78,11 @@ $theme-colors: (
 ) !default;
 
 // Allow us to reference the `$theme-colors` map color names (e.g., "primary")
-@function theme-color($key: 'primary') {
+@function theme-color($key: "primary") {
   @return map-get($theme-colors, $key);
 }
 
-$foreground: theme-color('foreground') !default;
+$foreground: theme-color("foreground") !default;
 $foreground-100: lighten($foreground, 47%) !default;
 $foreground-200: lighten($foreground, 35%) !default;
 $foreground-300: lighten($foreground, 25%) !default;
@@ -93,7 +93,7 @@ $foreground-700: darken($foreground, 20%) !default;
 $foreground-800: darken($foreground, 30%) !default;
 $foreground-900: darken($foreground, 40%) !default;
 
-$primary: theme-color('primary') !default;
+$primary: theme-color("primary") !default;
 $primary-100: lighten($primary, 32%) !default;
 $primary-200: lighten($primary, 24%) !default;
 $primary-300: lighten($primary, 16%) !default;
@@ -104,7 +104,7 @@ $primary-700: darken($primary, 16%) !default;
 $primary-800: darken($primary, 24%) !default;
 $primary-900: darken($primary, 32%) !default;
 
-$success: theme-color('success') !default;
+$success: theme-color("success") !default;
 $success-100: lighten($success, 32%) !default;
 $success-200: lighten($success, 24%) !default;
 $success-300: lighten($success, 16%) !default;
