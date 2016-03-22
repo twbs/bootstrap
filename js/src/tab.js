@@ -7,6 +7,7 @@ import Util from './util'
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+import jQuery from 'jquery';
 
 const Tab = (($) => {
 

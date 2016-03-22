@@ -10,15 +10,21 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
+import jQuery from 'jquery';
+import Tether from 'tether';
+
 const Tooltip = (($) => {
 
   /**
    * Check for Tether dependency
    * Tether - http://github.hubspot.com/tether/
    */
-  if (window.Tether === undefined) {
-    throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
-  }
+   
+   /* Commented out as Tether is required instead */
+
+  // if (window.Tether === undefined) {
+  //   throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
+  // }
 
 
   /**

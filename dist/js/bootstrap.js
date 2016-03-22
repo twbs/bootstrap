@@ -24,7 +24,6 @@ if (typeof jQuery === 'undefined') {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-
 'use strict';
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -1375,7 +1374,6 @@ var Collapse = (function ($) {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-
 var Dropdown = (function ($) {
 
   /**
@@ -2772,9 +2770,12 @@ var Tooltip = (function ($) {
    * Check for Tether dependency
    * Tether - http://github.hubspot.com/tether/
    */
-  if (window.Tether === undefined) {
-    throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)');
-  }
+
+  /* Commented out as Tether is required instead */
+
+  // if (window.Tether === undefined) {
+  //   throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
+  // }
 
   /**
    * ------------------------------------------------------------------------
@@ -3376,7 +3377,6 @@ var Tooltip = (function ($) {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-
 var Popover = (function ($) {
 
   /**
@@ -3560,5 +3560,13 @@ var Popover = (function ($) {
 
   return Popover;
 })(jQuery);
+
+$(function () {
+  $('[data-toggle="popover"]').popover();
+});
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
 
 }(jQuery);

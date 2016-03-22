@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
+    define(['exports', 'module', './util', 'jquery', 'tether'], factory);
   } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+    factory(exports, module, require('./util'), require('jquery'), require('tether'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, mod, global.Util, global.$, global.Tether);
     global.tooltip = mod.exports;
   }
-})(this, function (exports, module, _util) {
+})(this, function (exports, module, _util, _jquery, _tether) {
   /* global Tether */
 
   'use strict';
@@ -30,7 +30,11 @@
    * --------------------------------------------------------------------------
    */
 
-  var Tooltip = (function ($) {
+  var _$ = _interopRequireDefault(_jquery);
+
+  var _Tether = _interopRequireDefault(_tether);
+
+  var Tooltip = (function () {
 
     /**
      * Check for Tether dependency
@@ -50,7 +54,7 @@
     var VERSION = '4.0.0-alpha.2';
     var DATA_KEY = 'bs.tooltip';
     var EVENT_KEY = '.' + DATA_KEY;
-    var JQUERY_NO_CONFLICT = $.fn[NAME];
+    var JQUERY_NO_CONFLICT = _$['default'].fn[NAME];
     var TRANSITION_DURATION = 150;
     var CLASS_PREFIX = 'bs-tether';
 
@@ -183,11 +187,11 @@
         value: function toggle(event) {
           if (event) {
             var dataKey = this.constructor.DATA_KEY;
-            var context = $(event.currentTarget).data(dataKey);
+            var context = (0, _$['default'])(event.currentTarget).data(dataKey);
 
             if (!context) {
               context = new this.constructor(event.currentTarget, this._getDelegateConfig());
-              $(event.currentTarget).data(dataKey, context);
+              (0, _$['default'])(event.currentTarget).data(dataKey, context);
             }
 
             context._activeTrigger.click = !context._activeTrigger.click;
@@ -199,7 +203,7 @@
             }
           } else {
 
-            if ($(this.getTipElement()).hasClass(ClassName.IN)) {
+            if ((0, _$['default'])(this.getTipElement()).hasClass(ClassName.IN)) {
               this._leave(null, this);
               return;
             }
@@ -214,12 +218,12 @@
 
           this.cleanupTether();
 
-          $.removeData(this.element, this.constructor.DATA_KEY);
+          _$['default'].removeData(this.element, this.constructor.DATA_KEY);
 
-          $(this.element).off(this.constructor.EVENT_KEY);
+          (0, _$['default'])(this.element).off(this.constructor.EVENT_KEY);
 
           if (this.tip) {
-            $(this.tip).remove();
+            (0, _$['default'])(this.tip).remove();
           }
 
           this._isEnabled = null;
@@ -237,12 +241,12 @@
         value: function show() {
           var _this = this;
 
-          var showEvent = $.Event(this.constructor.Event.SHOW);
+          var showEvent = _$['default'].Event(this.constructor.Event.SHOW);
 
           if (this.isWithContent() && this._isEnabled) {
-            $(this.element).trigger(showEvent);
+            (0, _$['default'])(this.element).trigger(showEvent);
 
-            var isInTheDom = $.contains(this.element.ownerDocument.documentElement, this.element);
+            var isInTheDom = _$['default'].contains(this.element.ownerDocument.documentElement, this.element);
 
             if (showEvent.isDefaultPrevented() || !isInTheDom) {
               return;
@@ -257,18 +261,18 @@
             this.setContent();
 
             if (this.config.animation) {
-              $(tip).addClass(ClassName.FADE);
+              (0, _$['default'])(tip).addClass(ClassName.FADE);
             }
 
             var placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this.element) : this.config.placement;
 
             var attachment = this._getAttachment(placement);
 
-            $(tip).data(this.constructor.DATA_KEY, this).appendTo(document.body);
+            (0, _$['default'])(tip).data(this.constructor.DATA_KEY, this).appendTo(document.body);
 
-            $(this.element).trigger(this.constructor.Event.INSERTED);
+            (0, _$['default'])(this.element).trigger(this.constructor.Event.INSERTED);
 
-            this._tether = new Tether({
+            this._tether = new _Tether['default']({
               attachment: attachment,
               element: tip,
               target: this.element,
@@ -282,21 +286,21 @@
             _Util['default'].reflow(tip);
             this._tether.position();
 
-            $(tip).addClass(ClassName.IN);
+            (0, _$['default'])(tip).addClass(ClassName.IN);
 
             var complete = function complete() {
               var prevHoverState = _this._hoverState;
               _this._hoverState = null;
 
-              $(_this.element).trigger(_this.constructor.Event.SHOWN);
+              (0, _$['default'])(_this.element).trigger(_this.constructor.Event.SHOWN);
 
               if (prevHoverState === HoverState.OUT) {
                 _this._leave(null, _this);
               }
             };
 
-            if (_Util['default'].supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
-              $(this.tip).one(_Util['default'].TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
+            if (_Util['default'].supportsTransitionEnd() && (0, _$['default'])(this.tip).hasClass(ClassName.FADE)) {
+              (0, _$['default'])(this.tip).one(_Util['default'].TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
               return;
             }
 
@@ -309,14 +313,14 @@
           var _this2 = this;
 
           var tip = this.getTipElement();
-          var hideEvent = $.Event(this.constructor.Event.HIDE);
+          var hideEvent = _$['default'].Event(this.constructor.Event.HIDE);
           var complete = function complete() {
             if (_this2._hoverState !== HoverState.IN && tip.parentNode) {
               tip.parentNode.removeChild(tip);
             }
 
             _this2.element.removeAttribute('aria-describedby');
-            $(_this2.element).trigger(_this2.constructor.Event.HIDDEN);
+            (0, _$['default'])(_this2.element).trigger(_this2.constructor.Event.HIDDEN);
             _this2.cleanupTether();
 
             if (callback) {
@@ -324,17 +328,17 @@
             }
           };
 
-          $(this.element).trigger(hideEvent);
+          (0, _$['default'])(this.element).trigger(hideEvent);
 
           if (hideEvent.isDefaultPrevented()) {
             return;
           }
 
-          $(tip).removeClass(ClassName.IN);
+          (0, _$['default'])(tip).removeClass(ClassName.IN);
 
-          if (_Util['default'].supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+          if (_Util['default'].supportsTransitionEnd() && (0, _$['default'])(this.tip).hasClass(ClassName.FADE)) {
 
-            $(tip).one(_Util['default'].TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
+            (0, _$['default'])(tip).one(_Util['default'].TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
           } else {
             complete();
           }
@@ -352,12 +356,12 @@
       }, {
         key: 'getTipElement',
         value: function getTipElement() {
-          return this.tip = this.tip || $(this.config.template)[0];
+          return this.tip = this.tip || (0, _$['default'])(this.config.template)[0];
         }
       }, {
         key: 'setContent',
         value: function setContent() {
-          var $tip = $(this.getTipElement());
+          var $tip = (0, _$['default'])(this.getTipElement());
 
           this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle());
 
@@ -372,11 +376,11 @@
           if (typeof content === 'object' && (content.nodeType || content.jquery)) {
             // content is a DOM node or a jQuery
             if (html) {
-              if (!$(content).parent().is($element)) {
+              if (!(0, _$['default'])(content).parent().is($element)) {
                 $element.empty().append(content);
               }
             } else {
-              $element.text($(content).text());
+              $element.text((0, _$['default'])(content).text());
             }
           } else {
             $element[html ? 'html' : 'text'](content);
@@ -417,17 +421,17 @@
 
           triggers.forEach(function (trigger) {
             if (trigger === 'click') {
-              $(_this3.element).on(_this3.constructor.Event.CLICK, _this3.config.selector, $.proxy(_this3.toggle, _this3));
+              (0, _$['default'])(_this3.element).on(_this3.constructor.Event.CLICK, _this3.config.selector, _$['default'].proxy(_this3.toggle, _this3));
             } else if (trigger !== Trigger.MANUAL) {
               var eventIn = trigger === Trigger.HOVER ? _this3.constructor.Event.MOUSEENTER : _this3.constructor.Event.FOCUSIN;
               var eventOut = trigger === Trigger.HOVER ? _this3.constructor.Event.MOUSELEAVE : _this3.constructor.Event.FOCUSOUT;
 
-              $(_this3.element).on(eventIn, _this3.config.selector, $.proxy(_this3._enter, _this3)).on(eventOut, _this3.config.selector, $.proxy(_this3._leave, _this3));
+              (0, _$['default'])(_this3.element).on(eventIn, _this3.config.selector, _$['default'].proxy(_this3._enter, _this3)).on(eventOut, _this3.config.selector, _$['default'].proxy(_this3._leave, _this3));
             }
           });
 
           if (this.config.selector) {
-            this.config = $.extend({}, this.config, {
+            this.config = _$['default'].extend({}, this.config, {
               trigger: 'manual',
               selector: ''
             });
@@ -449,18 +453,18 @@
         value: function _enter(event, context) {
           var dataKey = this.constructor.DATA_KEY;
 
-          context = context || $(event.currentTarget).data(dataKey);
+          context = context || (0, _$['default'])(event.currentTarget).data(dataKey);
 
           if (!context) {
             context = new this.constructor(event.currentTarget, this._getDelegateConfig());
-            $(event.currentTarget).data(dataKey, context);
+            (0, _$['default'])(event.currentTarget).data(dataKey, context);
           }
 
           if (event) {
             context._activeTrigger[event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER] = true;
           }
 
-          if ($(context.getTipElement()).hasClass(ClassName.IN) || context._hoverState === HoverState.IN) {
+          if ((0, _$['default'])(context.getTipElement()).hasClass(ClassName.IN) || context._hoverState === HoverState.IN) {
             context._hoverState = HoverState.IN;
             return;
           }
@@ -485,11 +489,11 @@
         value: function _leave(event, context) {
           var dataKey = this.constructor.DATA_KEY;
 
-          context = context || $(event.currentTarget).data(dataKey);
+          context = context || (0, _$['default'])(event.currentTarget).data(dataKey);
 
           if (!context) {
             context = new this.constructor(event.currentTarget, this._getDelegateConfig());
-            $(event.currentTarget).data(dataKey, context);
+            (0, _$['default'])(event.currentTarget).data(dataKey, context);
           }
 
           if (event) {
@@ -529,7 +533,7 @@
       }, {
         key: '_getConfig',
         value: function _getConfig(config) {
-          config = $.extend({}, this.constructor.Default, $(this.element).data(), config);
+          config = _$['default'].extend({}, this.constructor.Default, (0, _$['default'])(this.element).data(), config);
 
           if (config.delay && typeof config.delay === 'number') {
             config.delay = {
@@ -564,7 +568,7 @@
         key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
-            var data = $(this).data(DATA_KEY);
+            var data = (0, _$['default'])(this).data(DATA_KEY);
             var _config = typeof config === 'object' ? config : null;
 
             if (!data && /destroy|hide/.test(config)) {
@@ -573,7 +577,7 @@
 
             if (!data) {
               data = new Tooltip(this, _config);
-              $(this).data(DATA_KEY, data);
+              (0, _$['default'])(this).data(DATA_KEY, data);
             }
 
             if (typeof config === 'string') {
@@ -624,10 +628,10 @@
       return Tooltip;
     })();
 
-    $.fn[NAME] = Tooltip._jQueryInterface;
-    $.fn[NAME].Constructor = Tooltip;
-    $.fn[NAME].noConflict = function () {
-      $.fn[NAME] = JQUERY_NO_CONFLICT;
+    _$['default'].fn[NAME] = Tooltip._jQueryInterface;
+    _$['default'].fn[NAME].Constructor = Tooltip;
+    _$['default'].fn[NAME].noConflict = function () {
+      _$['default'].fn[NAME] = JQUERY_NO_CONFLICT;
       return Tooltip._jQueryInterface;
     };
 

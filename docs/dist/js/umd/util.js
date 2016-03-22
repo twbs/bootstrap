@@ -1,26 +1,29 @@
 (function (global, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module'], factory);
+    define(['exports', 'module', 'jquery'], factory);
   } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module);
+    factory(exports, module, require('jquery'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod);
+    factory(mod.exports, mod, global.$);
     global.util = mod.exports;
   }
-})(this, function (exports, module) {
+})(this, function (exports, module, _jquery) {
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v4.0.0-alpha.2): util.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
-
   'use strict';
 
-  var Util = (function ($) {
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+  var _$ = _interopRequireDefault(_jquery);
+
+  var Util = (function () {
 
     /**
      * ------------------------------------------------------------------------
@@ -51,7 +54,7 @@
         bindType: transition.end,
         delegateType: transition.end,
         handle: function handle(event) {
-          if ($(event.target).is(this)) {
+          if ((0, _$['default'])(event.target).is(this)) {
             return event.handleObj.handler.apply(this, arguments);
           }
         }
@@ -79,7 +82,7 @@
 
       var called = false;
 
-      $(this).one(Util.TRANSITION_END, function () {
+      (0, _$['default'])(this).one(Util.TRANSITION_END, function () {
         called = true;
       });
 
@@ -95,10 +98,10 @@
     function setTransitionEndSupport() {
       transition = transitionEndTest();
 
-      $.fn.emulateTransitionEnd = transitionEndEmulator;
+      _$['default'].fn.emulateTransitionEnd = transitionEndEmulator;
 
       if (Util.supportsTransitionEnd()) {
-        $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+        _$['default'].event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
       }
     }
 
@@ -137,7 +140,7 @@
       },
 
       triggerTransitionEnd: function triggerTransitionEnd(element) {
-        $(element).trigger(transition.end);
+        (0, _$['default'])(element).trigger(transition.end);
       },
 
       supportsTransitionEnd: function supportsTransitionEnd() {
