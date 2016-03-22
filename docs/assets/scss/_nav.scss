@@ -17,6 +17,7 @@
       }
 
       &.active {
+        font-weight: 500;
         color: darken($gray-dark, 25%);
       }
     }
