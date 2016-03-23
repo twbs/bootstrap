@@ -242,16 +242,10 @@ const Tooltip = (($) => {
     show() {
       let showEvent = $.Event(this.constructor.Event.SHOW)
 
-      let isInModal = false
-
-      $(this.element).parents().each((index, elem) => {
-        if ($(elem).hasClass('modal') && $(elem).hasClass('in')) {
-          isInModal = true
-        }
-      })
+      let isInModal  = $(this.element).parents('.modal.in').length > 0
 
       if (isInModal) {
-        $(this.tip).addClass('inModal')
+        $(this.tip).addClass('popover-in-modal')
       }
 
       if (this.isWithContent() && this._isEnabled) {

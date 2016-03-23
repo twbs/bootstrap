@@ -100,9 +100,10 @@
       }
     }
   }
-  &.inModal {
-    z-index: 1060;
-  }
+}
+
+.popover-in-modal {
+  z-index: 1060;
 }
 
 
