@@ -129,8 +129,9 @@
 // Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
 // menu with the parent.
 .dropdown-menu-right {
-  right: 0;
+	display: inline-block;
   left: auto; // Reset the default from `.dropdown-menu`
+  right: 0;
 }
 
 .dropdown-menu-left {
