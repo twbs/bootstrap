@@ -15,7 +15,6 @@
   "author": "Twitter, Inc.",
   "scripts": {
     "change-version": "node grunt/change-version.js",
-    "shrinkwrap": "npm shrinkwrap --dev && mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
     "test": "grunt test"
   },
   "style": "dist/css/bootstrap.css",
@@ -56,6 +55,7 @@
     "grunt-saucelabs": "~8.6.2",
     "load-grunt-tasks": "~3.4.1",
     "markdown-it": "^6.0.0",
+    "npm-shrinkwrap": "^200.4.0",
     "shelljs": "^0.6.0",
     "time-grunt": "^1.3.0"
   },
