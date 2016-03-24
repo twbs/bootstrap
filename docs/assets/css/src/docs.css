@@ -8,7 +8,7 @@
 
 /*
  * Bootstrap Documentation
- * Special styles for presenting Bootstrap's documentation and code examples.
+ * Special styles for presenting Bootstrap's documentation andgit code examples.
  */
 
 
@@ -822,6 +822,7 @@ h1[id] {
   width: 180px;
   height: 20px;
   margin-top: 6px;
+  border: none;
 }
 .bs-team img {
   float: left;
