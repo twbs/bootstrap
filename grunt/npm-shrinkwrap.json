@@ -1407,9 +1407,9 @@
       "resolved": "https://registry.npmjs.org/grunt-exec/-/grunt-exec-0.4.6.tgz"
     },
     "grunt-html": {
-      "version": "6.0.0",
-      "from": "grunt-html@>=6.0.0 <6.1.0",
-      "resolved": "https://registry.npmjs.org/grunt-html/-/grunt-html-6.0.0.tgz",
+      "version": "7.0.0",
+      "from": "grunt-html@>=7.0.0 <7.1.0",
+      "resolved": "https://registry.npmjs.org/grunt-html/-/grunt-html-7.0.0.tgz",
       "dependencies": {
         "ansi-regex": {
           "version": "2.0.0",
@@ -1417,9 +1417,9 @@
           "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-2.0.0.tgz"
         },
         "async": {
-          "version": "1.5.1",
-          "from": "async@1.5.1",
-          "resolved": "https://registry.npmjs.org/async/-/async-1.5.1.tgz"
+          "version": "1.5.2",
+          "from": "async@1.5.2",
+          "resolved": "https://registry.npmjs.org/async/-/async-1.5.2.tgz"
         },
         "chalk": {
           "version": "1.1.1",
