@@ -50,7 +50,7 @@
     "grunt-contrib-watch": "~1.0.0",
     "grunt-csscomb": "~3.1.0",
     "grunt-exec": "~0.4.6",
-    "grunt-html": "~6.0.0",
+    "grunt-html": "~7.0.0",
     "grunt-jekyll": "~0.4.4",
     "grunt-jscs": "~2.8.0",
     "grunt-saucelabs": "~8.6.2",
