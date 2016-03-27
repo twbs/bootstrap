@@ -39,16 +39,16 @@
 // Grayscale and brand colors for use across Bootstrap.
 
 // Declare all colors
-$red: #d9534f;
-$pink: #ff5b77;
-$purple: #613d7c;
-$blue: #0275d8;
-$teal: #5bc0de;
-$green: #5cb85c;
-$yellow: #ffd500;
-$orange: #f0ad4e;
-$gray: #6f6f81;
-$white: #fff;
+$red: #d9534f !default;
+$pink: #ff5b77 !default;
+$purple: #613d7c !default;
+$blue: #0275d8 !default;
+$teal: #5bc0de !default;
+$green: #5cb85c !default;
+$yellow: #ffd500 !default;
+$orange: #f0ad4e !default;
+$gray: #6f6f81 !default;
+$white: #fff !default;
 
 // Assign all colors to a map so we can use them in additional Sass maps to
 // generate shades fo colors on the fly.
