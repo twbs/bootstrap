@@ -50,21 +50,6 @@ $orange: #f0ad4e !default;
 $gray: #6f6f81 !default;
 $white: #fff !default;
 
-// Assign all colors to a map so we can use them in additional Sass maps to
-// generate shades fo colors on the fly.
-$colors: (
-  "red": $red,
-  "pink": $pink,
-  "purple": $purple,
-  "blue": $blue,
-  "teal": $teal,
-  "green": $green,
-  "yellow": $yellow,
-  "orange": $orange,
-  "gray": $gray,
-  "white": $white
-) !default;
-
 // Declare a subset of colors for semantic/contextual usage
 $theme-colors: (
   "primary": $blue,
