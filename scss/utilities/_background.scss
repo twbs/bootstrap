@@ -13,6 +13,7 @@
   background-color: $foreground-100;
 }
 
+// scss-lint:disable ImportantRule
 @each $color, $value in $theme-colors {
   @if $color == "foreground" or $color == "background" {
     // do nothing
@@ -24,8 +25,9 @@
 
     a.bg-#{$color} {
       @include hover-focus {
-        background-color: darken($value, 10%);
+        background-color: darken($value, 10%) !important;
       }
     }
   }
 }
+// scss-lint:enable ImportantRule
