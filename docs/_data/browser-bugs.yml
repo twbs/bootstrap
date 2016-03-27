@@ -110,6 +110,16 @@
 
 -
   browser: >
+    Firefox (OS X & Linux)
+  summary: >
+    Badge widget causes bottom border of Tabs widget to unexpectedly not overlap
+  upstream_bug: >
+    Mozilla#1259972
+  origin: >
+    Bootstrap#19626
+
+-
+  browser: >
     Chrome (Android)
   summary: >
     Tapping on an `<input>` in a scrollable overlay doesn't scroll the `<input>` into view
