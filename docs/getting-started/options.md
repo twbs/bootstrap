@@ -101,3 +101,52 @@ Bootstrap's color palette includes a numerical range of shades for each base col
     <div class="color-slab danger-900">900</div>
   </div>
 </div>
+
+### Using the variables
+
+The Bootstrap color palette is built with variables, a Sass map, and a function. Generic variables are included for a standard set of colors (e.g., `$blue`). A subset of those variables are then referenced into the `$theme-colors` Sass map, allowing for easy generation of themed component modifier classes with the `theme-color` function.
+
+Modify the source color variables and reassign values to the theme colors in `$theme-colors` as you like.
+
+{% highlight sass %}
+// Declare all colors
+$red: #d9534f !default;
+$pink: #ff5b77 !default;
+$purple: #613d7c !default;
+$blue: #0275d8 !default;
+$teal: #5bc0de !default;
+$green: #5cb85c !default;
+$yellow: #ffd500 !default;
+$orange: #f0ad4e !default;
+$gray: #6f6f81 !default;
+$white: #fff !default;
+
+// Declare a subset of colors for semantic/contextual usage
+$theme-colors: (
+  "primary": $blue,
+  "secondary": $gray,
+  "success": $green,
+  "info": $teal,
+  "warning": $orange,
+  "danger": $red,
+  "foreground": $gray,
+  "background": $white
+) !default;
+
+// Allow us to reference the `$theme-colors` map color names (e.g., "primary")
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
+
+// Example: Use `theme-color` function to generate color shade variables
+$primary: theme-color("primary") !default;
+$primary-100: lighten($primary, 32%) !default;
+$primary-200: lighten($primary, 24%) !default;
+$primary-300: lighten($primary, 16%) !default;
+$primary-400: lighten($primary, 8%) !default;
+$primary-500: $primary !default;
+$primary-600: darken($primary, 8%) !default;
+$primary-700: darken($primary, 16%) !default;
+$primary-800: darken($primary, 24%) !default;
+$primary-900: darken($primary, 32%) !default;
+{% endhighlight %}
