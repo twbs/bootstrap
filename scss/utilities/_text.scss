@@ -36,21 +36,23 @@
   color: $text-muted;
 }
 
+// scss-lint:disable ImportantRule
 @each $color, $value in $theme-colors {
   @if $color == "foreground" or $color == "background" {
     // do nothing
   } @else {
     .text-#{$color} {
-      color: $value;
+      color: $value !important;
     }
 
     a.text-#{$color} {
       @include hover-focus {
-        color: darken($value, 10%);
+        color: darken($value, 10%) !important;
       }
     }
   }
 }
+// scss-lint:enable ImportantRule
 
 
 // Misc
