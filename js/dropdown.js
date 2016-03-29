@@ -36,13 +36,16 @@
   }
 
   function clearMenus(e) {
+    var i;
+
     if (e && e.which === 3) return
 
-    $.each(activeBackdrops, function removeBackdrop(index, $backdrop) {
-      $backdrop.remove()
-    })
+    for (i = 0; i < activeBackdrops.length; i++) {
+      activeBackdrops[i].remove();
+    }
 
-    $.each(activeToggles, function closeToggles(index, $toggle) {
+    for (i = 0; i < activeToggles.length; i++) {
+      var $toggle = activeToggles[i];
       var $this         = $toggle
       var $parent       = getParent($this)
       var relatedTarget = { relatedTarget: $this[0] }
@@ -57,7 +60,7 @@
 
       $this.attr('aria-expanded', 'false')
       $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
-    })
+    }
 
     activeBackdrops = []
     activeToggles = []
