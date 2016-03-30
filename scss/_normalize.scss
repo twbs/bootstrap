@@ -1,4 +1,4 @@
-/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
+// normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css
 
 //
 // 1. Change the default font family in all browsers (opinionated).
@@ -111,8 +111,7 @@ a:hover {
 //
 
 abbr[title] {
-  border-bottom: none; // 1
-  text-decoration: underline; // 2
+  border-bottom: 0; // 1
   text-decoration: underline dotted; // 2
 }
 
@@ -157,8 +156,8 @@ h1 {
 //
 
 mark {
-  background-color: #ff0;
   color: #000;
+  background-color: #ff0;
 }
 
 //
@@ -187,7 +186,7 @@ sub {
 }
 
 sup {
-  top: -0.5em;
+  top: -.5em;
 }
 
 // Embedded content
@@ -338,8 +337,8 @@ html [type="button"], // 1
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-  border: 0;
   padding: 0;
+  border: 0;
 }
 
 //
@@ -370,10 +369,10 @@ fieldset {
 
 legend {
   box-sizing: border-box; // 1
-  color: inherit; // 2
   display: table; // 1
   max-width: 100%; // 1
   padding: 0; // 3
+  color: inherit; // 2
   white-space: normal; // 1
 }
 
