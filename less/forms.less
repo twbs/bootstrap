@@ -864,14 +864,38 @@ input[type="checkbox"] {
 .error-minlength,
 .error-maxlength,
 .error-min,
-.error-max {
+.error-max,
+.error-async,
+.error-number,
+.error-date,
+.error-time,
+.error-datetime,
+.error-email,
+.error-url,
+.error-week,
+.error-month,
+.error-datetimelocal {
     display: none;
 }
 .ng-invalid-required ~ .error-messages > .error-required,
 .ng-invalid-pattern ~ .error-messages > .error-pattern,
 .ng-invalid-minlength ~ .error-messages > .error-minlength,
 .ng-invalid-maxlength ~ .error-messages > .error-maxlength,
-.ng-invalid-min ~ .error-messages > .error-min ,
-.ng-invalid-max ~ .error-messages > .error-max  {
+.ng-invalid-min ~ .error-messages > .error-min,
+.ng-invalid-max ~ .error-messages > .error-max,
+.ng-invalid-async ~ .error-messages > .error-async,
+.ng-invalid-number ~ .error-messages > .error-number,
+.ng-invalid-date ~ .error-messages > .error-date,
+.ng-invalid-time ~ .error-messages > .error-time,
+.ng-invalid-datetime ~ .error-messages > .error-datetime,
+.ng-invalid-email ~ .error-messages > .error-email,
+.ng-invalid-url ~ .error-messages > .error-url,
+.ng-invalid-week ~ .error-messages > .error-week,
+.ng-invalid-month ~ .error-messages > .error-month,
+.ng-invalid-datetimelocal ~ .error-messages > .error-datetimelocal {
 	display: block;
+}
+
+.form-control-placeholder {
+    color: @input-color-placeholder;
 }

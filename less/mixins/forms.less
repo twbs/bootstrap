@@ -18,8 +18,10 @@
     color: @text-color;
   }
   // Set the border and box shadow on specific inputs to match
-  .form-control {
+  .form-control,
+  .btn-input {
     border-color: @border-color;
+    &:hover,
     &:focus {
       border-color: darken(@border-color, 10%);
     }
