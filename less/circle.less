@@ -1,3 +1,12 @@
+@circle-xs-diameter: 24px;
+@circle-sm-diameter: 48px;
+@circle-md-diameter: 72px;
+@circle-lg-diameter: 96px;
+
+@circle-xs-font-size: 14px;
+@circle-sm-font-size: 16px;
+@circle-md-font-size: 24px;
+@circle-lg-font-size: 32px;
 
 .circle {
     border: 1px solid @brand-smoke;
@@ -15,34 +24,17 @@
     display: block;
     overflow: hidden;
 
-    height: 72px;
-    width: 72px;
-    font-size: 24px;
-    line-height: 70px;
     margin-left: auto;
     margin-right: auto;
 
-    .glyphicon,
-    .icon {
-        font-size: 32px;
-        line-height: 70px;
-    }
+    .circle-variant(@circle-md-diameter, @circle-md-font-size, (@circle-md-font-size + 8px));
 
     .glyphicon {
         margin-top: -1px;
     }
 
     &.circle-lg {
-        font-size: 32px;
-        width: 96px;
-        height: 96px;
-        line-height: 94px;
-
-        .glyphicon,
-        .icon {
-            font-size: 40px;
-            line-height: 94px;
-        }
+        .circle-variant(@circle-lg-diameter, @circle-lg-font-size, (@circle-lg-font-size + 8px));
 
         .glyphicon {
             margin-top: -2px;
@@ -50,16 +42,7 @@
     }
 
     &.circle-sm {
-        font-size: 16px;
-        height: 48px;
-        width: 48px;
-        line-height: 46px;
-
-        .glyphicon,
-        .icon {
-            font-size: 24px;
-            line-height: 46px;
-        }
+        .circle-variant(@circle-sm-diameter, @circle-sm-font-size, (@circle-sm-font-size + 8px));
 
         .glyphicon {
             margin-top: 0px;
@@ -67,16 +50,7 @@
     }
 
     &.circle-xs {
-        font-size: 14px;
-        height: 24px;
-        width: 24px;
-        line-height: 24px;
-
-        .glyphicon,
-        .icon {
-            font-size: 16px;
-            line-height: 24px;
-        }
+        .circle-variant(@circle-xs-diameter, @circle-xs-font-size, 16px);
 
         .glyphicon {
             margin-top: 0px;
@@ -94,7 +68,6 @@
         background-color: @brand-info;
         color: #FFF;
     }
-
 
     img {
         width: 100%;
@@ -115,4 +88,22 @@ a:hover .circle.active,
 a.circle.active:hover {
     text-decoration: none;
     color: #FFF;
+}
+
+
+@media (max-width: @screen-sm-max) {
+  .circle.circle-responsive {
+    .circle-variant(@circle-sm-diameter, @circle-sm-font-size, (@circle-sm-font-size + 8px));
+
+    .glyphicon {
+      margin-top: 0px;
+    }
+  }
+  .circle-lg.circle-responsive {
+    .circle-variant(@circle-md-diameter, @circle-md-font-size, (@circle-md-font-size + 8px));
+
+    .glyphicon {
+      margin-top: -1px;
+    }
+  }
 }

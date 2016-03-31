@@ -148,11 +148,23 @@
   // Show the menu
   > .dropdown-menu {
     display: block;
+    animation: showDropdown 0.2s cubic-bezier( 0.6, 0.2, 0.1, 1 ) both;
   }
 
   // Remove the outline when :focus is triggered
   > a {
     outline: 0;
+  }
+}
+
+@keyframes showDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95,0.95);
+  }
+  to {
+    opacity: 1;
+    transform:none;
   }
 }
 

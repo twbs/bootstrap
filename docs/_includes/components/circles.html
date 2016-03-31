@@ -3,10 +3,12 @@
   <p>Circles are used to add visual interest to body text, they often help
       to represent steps in a process or to accompany a set of discrete
       points.  Circles may contain images, iconography or letters, and
-      are generally central in their column.
+      are generally central in their column, or used as avatars, left-aligned in
+      lists.
   </p>
 
-  <div class="bs-example" data-example-id="circle">
+  <div class="bs-example bg-default" data-example-id="circle">
+      <div class="well">
       <div class="circle m-b-1">
           <i class="glyphicon glyphicon-globe"></i>
       </div>
@@ -18,70 +20,85 @@
       </div>
       <img class="circle m-b-1" src="/assets/img/mike.jpg" alt="Mike" />
       <div class="circle m-b-1" style="background-image: url('/assets/img/mike.jpg');"></div>
+      </div>
   </div>
 {% highlight html %}
 <div class="circle">
-    <i class="glyphicon glyphicon-globe"></i>
+  <i class="glyphicon glyphicon-globe"></i>
+</div>
+<div href="..." class="circle">
+  <i class="icon icon-card"></i>
 </div>
 <div class="circle">
-    AZ
+  AZ
 </div>
 <img class="circle" src="..." alt="..." />
 <div class="circle" style="background-image: url('...');"></div>
 {% endhighlight %}
 
-  <h2>Circle variations</h2>
+  <h2>Size variations</h2>
   <p>Add any of the below modifier classes to change the size of a circle.
       Nest circles in links to gain hover states.</p>
 
   <div class="bs-example" data-example-id="circle-variants">
-    <a href="" class="circle circle-lg">
+    <div class="well">
+    <a href="" class="circle circle-lg m-b-1">
         <i class="icon icon-card"></i>
     </a>
-    <a href="" class="circle circle-lg">
-        <img data-holder-rendered="true"
-          src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzE5IiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMxOSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTRkODVlZDIyZTIgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxNnB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNGQ4NWVkMjJlMiI+PHJlY3Qgd2lkdGg9IjMxOSIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMTcuNDY2NjY3MTc1MjkyOTciIHk9Ijk3LjM1Ij4zMTl4MTgwPC90ZXh0PjwvZz48L2c+PC9zdmc+" style="" data-src="holder.js/100%x100%" alt="100%x100%" />
+    <a href="">
+        <img class="circle circle m-b-1" src="/assets/img/mike.jpg" alt="Mike" />
     </a>
-    <a href="" class="circle circle-sm">
+    <a href="" class="circle circle-sm m-b-1">
         <i class="glyphicon glyphicon-upload"></i>
     </a>
-    <a href="" class="circle circle-sm active">
-        <i class="icon icon-check-circle"></i>
+    <a href="" class="circle circle-xs m-b-1">
+        A
     </a>
-    <div class="bg-primary p-a-1 clearfix">
-        <a href="" class="circle circle-sm pull-left m-r-1">
-            A
-        </a>
-        <a href="" class="circle circle-sm active pull-left m-r-1">
-            B
-        </a>
-        <a href="" class="circle circle-sm pull-left m-r-1">
-            C
-        </a>
-        <a href="" class="circle circle-sm pull-left m-r-1">
-            D
-        </a>
     </div>
   </div>
 {% highlight html %}
-<a class="circle circle-lg">
+<a class="circle circle-lg">...</a>
+<a href="...">
+  <img class="circle circle-md" src="..." />
+</a>
+<a class="circle circle-sm">...</a>
+<a class="circle circle-xs">...</a>
+{% endhighlight %}
+
+<h2>Inverse circles</h2>
+<p>There are two styling variants.  If you are using a circle on a white background
+    use the <code>.circle-inverse</code> class to apply a contrasting background.</p>
+
+<div class="bs-example" data-example-id="circle-variants">
+  <a href="" class="circle circle-sm circle-inverse m-b-1">
     <i class="icon icon-card"></i>
-</a>
-<a class="circle circle-lg">
-    <img src="..." />
-</a>
-<a class="circle circle-sm">
-    <i class="glyphicon glyphicon-upload"></i>
-</a>
-<a class="circle circle-sm active">
-    <i class="glyphicon glyphicon-ok-sign"></i>
-</a>
-<div class="bg-primary clearfix">
-    <a class="circle circle-sm pull-left">A</a>
-    <a class="circle circle-sm active pull-left">B</a>
-    <a class="circle circle-sm pull-left">C</a>
-    <a class="circle circle-sm pull-left">D</a>
+  </a>
+  <a href="" class="circle circle-sm circle-inverse m-b-1">
+    AZ
+  </a>
 </div>
+{% highlight html %}
+<a class="circle circle-sm circle-inverse">...</a>
+
+{% endhighlight %}
+
+<h2>Responsive circles</h2>
+<p>The responsive circle variant decreases in size on smaller screen widths,
+    the md circle takes the size of an sm, and the lg variant takes on the size
+    of an md.  Simply add the <code>.circle-responsize</code> class.</p>
+
+<div class="bs-example" data-example-id="circle-variants">
+  <div class="circle circle-lg circle-inverse circle-responsive m-b-1">
+    <i class="icon icon-card"></i>
+  </div>
+  <div class="circle circle-md circle-inverse circle-responsive m-b-1">
+    AZ
+  </div>
+</div>
+{% highlight html %}
+<div class="circle circle-lg circle-inverse circle-responsive">...</div>
+<div class="circle circle-md circle-inverse circle-responsive">...</div>
+
 {% endhighlight %}
 
 </div>
