@@ -320,7 +320,8 @@ input[type="button"] {
   padding-left: @padding-base-horizontal;
   padding-right: @padding-base-horizontal;
 
-  &:hover {
+  &:hover,
+  &:focus {
       border-color: @input-border-hover;
   }
 
@@ -336,6 +337,21 @@ input[type="button"] {
 
   .caret {
       color: @brand-light-blue;
+  }
+
+  &[disabled] {
+      background-color: @input-bg-disabled;
+      color: @input-color-disabled;
+
+      .caret {
+          color: @input-color-disabled;
+      }
+
+      &:hover,
+      &:focus {
+          background-color: @input-bg-disabled;
+          color: @input-color-disabled;
+      }
   }
 }
 .form-group-sm {
