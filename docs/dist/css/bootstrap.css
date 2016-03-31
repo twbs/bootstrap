@@ -9529,16 +9529,16 @@ blockquote footer {
   margin-left: -12px;
   border: 2px solid #223049;
 }
-ul li > .glyphicon:first-child,
-ol li > .glyphicon:first-child,
+li > .glyphicon:first-child,
+li > a > .glyphicon:first-child,
 .btn > .glyphicon:first-child,
-ul li > .icon:first-child,
-ol li > .icon:first-child,
+li > .icon:first-child,
+li > a > .icon:first-child,
 .btn > .icon:first-child {
   margin-right: 8px;
 }
-ul li > .icon:first-child,
-ol li > .icon:first-child,
+li > .icon:first-child,
+li > a > .icon:first-child,
 .btn > .icon:first-child {
   position: relative;
   top: -2px;
@@ -9547,8 +9547,8 @@ ol li > .icon:first-child,
   font-size: 24px;
   vertical-align: middle;
 }
-ul li > .circle-xs:first-child,
-ol li > .circle-xs:first-child,
+li > .circle-xs:first-child,
+li > a > .circle-xs:first-child,
 .btn > .circle-xs:first-child {
   margin-top: -1px;
 }
