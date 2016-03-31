@@ -223,3 +223,20 @@
 .input-group:hover .form-control:focus {
     border-color: @input-border-hover;
 }
+.focus .input-group .form-control {
+    border-color: @input-border-focus;
+}
+.focus .input-group:hover .form-control {
+    border-color: @input-border-focus;
+}
+.has-error {
+    .input-group:hover {
+        .form-control,
+        .input-group-addon {
+            border-color: @state-danger-text;
+        }
+    }
+    .input-group .form-control:focus {
+        border-color: @state-danger-text;
+    }
+}
