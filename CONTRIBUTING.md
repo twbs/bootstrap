@@ -10,7 +10,6 @@ the developers managing and developing this open source project. In return,
 they should reciprocate that respect in addressing your issue or assessing
 patches and features.
 
-
 ## Using the issue tracker
 
 The [issue tracker](https://github.com/twbs/bootstrap/issues) is
@@ -18,14 +17,12 @@ the preferred channel for [bug reports](#bug-reports), [features requests](#feat
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
-* Please **do not** use the issue tracker for personal support requests.  Stack
+* Please **do not** use the issue tracker for personal support requests. Stack
   Overflow ([`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
-
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
-
 * Please **do not** post comments consisting solely of "+1" or ":thumbsup:".
-  Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments) 
+  Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)
   instead. We reserve the right to delete comments which violate this rule.
 
 * Please **do not** open issues or pull requests regarding the code in
@@ -35,24 +32,22 @@ restrictions:
 * Please **do not** open issues regarding the official themes offered on <http://themes.getbootstrap.com/>.
   Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
 
-
 ## Issues and labels
 
 Our bug tracker utilizes several labels to help organize and identify issues. Here's what they represent and how we use them:
 
-- `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
-- `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Bootstrap.
-- `css` - Issues stemming from our compiled CSS or source Sass files.
-- `docs` - Issues for improving or updating our documentation.
-- `examples` - Issues involving the example templates included in our docs.
-- `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
-- `grunt` - Issues with our included JavaScript-based Gruntfile, which is used to run all our tests, concatenate and compile source files, and more.
-- `help wanted` - Issues we need or would love help from the community to resolve.
-- `js` - Issues stemming from our compiled or source JavaScript files.
-- `meta` - Issues with the project itself or our GitHub repository.
+* `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
+* `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Bootstrap.
+* `css` - Issues stemming from our compiled CSS or source Sass files.
+* `docs` - Issues for improving or updating our documentation.
+* `examples` - Issues involving the example templates included in our docs.
+* `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
+* `grunt` - Issues with our included JavaScript-based Gruntfile, which is used to run all our tests, concatenate and compile source files, and more.
+* `help wanted` - Issues we need or would love help from the community to resolve.
+* `js` - Issues stemming from our compiled or source JavaScript files.
+* `meta` - Issues with the project itself or our GitHub repository.
 
 For a complete look at our labels, see the [project labels page](https://github.com/twbs/bootstrap/labels).
-
 
 ## Bug reports
 
@@ -61,20 +56,16 @@ Good bug reports are extremely helpful, so thanks!
 
 Guidelines for bug reports:
 
-0. **Validate and lint your code** &mdash; [validate your HTML](http://html5.validator.nu)
+1. **Validate and lint your code** — [validate your HTML](http://html5.validator.nu)
    and [lint your HTML](https://github.com/twbs/bootlint) to ensure your
    problem isn't caused by a simple error in your own code.
-
-1. **Use the GitHub issue search** &mdash; check if the issue has already been
+2. **Use the GitHub issue search** — check if the issue has already been
    reported.
-
-2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
+3. **Check if the issue has been fixed** — try to reproduce it using the
    latest `master` or development branch in the repository.
-
-3. **Isolate the problem** &mdash; ideally create a [reduced test
+4. **Isolate the problem** — ideally create a [reduced test
    case](https://css-tricks.com/reduced-test-cases/) and a live example.
    [This JS Bin](http://jsbin.com/qusafa/edit?html,output) is a helpful template.
-
 
 A good bug report shouldn't leave others needing to chase you up for more
 information. Please try to be as detailed as possible in your report. What is
@@ -106,12 +97,12 @@ Example:
 Sometimes bugs reported to us are actually caused by bugs in the browser(s) themselves, not bugs in Bootstrap per se.
 When feasible, we aim to report such upstream bugs to the relevant browser vendor(s), and then list them on our [Wall of Browser Bugs](http://getbootstrap.com/browser-bugs/) and [document them in MDN](https://developer.mozilla.org/en-US/docs/Web).
 
-| Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                                                              | Notes                                                    |
-| ------------- | ---------------------------- | ---------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Mozilla       | Firefox                      | Gecko            | https://bugzilla.mozilla.org/enter_bug.cgi                                            | "Core" is normally the right product option to choose.   |
-| Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit <br> https://bugreport.apple.com | In Apple's bug reporter, choose "Safari" as the product. |
-| Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://code.google.com/p/chromium/issues/list                                        | Click the "New issue" button.                            |
-| Microsoft     | Edge                         | EdgeHTML         | https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/                 |                                                          |
+| Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                                                                  | Notes                                                    |
+| ------------- | ---------------------------- | ---------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Mozilla       | Firefox                      | Gecko            | <https://bugzilla.mozilla.org/enter_bug.cgi>                                              | "Core" is normally the right product option to choose.   |
+| Apple         | Safari                       | WebKit           | <https://bugs.webkit.org/enter_bug.cgi?product=WebKit> <br> <https://bugreport.apple.com> | In Apple's bug reporter, choose "Safari" as the product. |
+| Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | <https://code.google.com/p/chromium/issues/list>                                          | Click the "New issue" button.                            |
+| Microsoft     | Edge                         | EdgeHTML         | <https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/>                   |                                                          |
 
 ### Issues bots
 
@@ -141,9 +132,9 @@ Please adhere to the [coding guidelines](#code-guidelines) used throughout the
 project (indentation, accurate comments, etc.) and any other requirements
 (such as test coverage).
 
-**Do not edit `bootstrap.css`, or `bootstrap.js`
-directly!** Those files are automatically generated. You should edit the
-source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/master/scss)
+**Do not edit `bootstrap.css`, or `bootstrap.js` directly!**
+Those files are automatically generated. You should edit the source files in
+[`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/master/scss)
 and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/master/js) instead.
 
 Similarly, when contributing to Bootstrap's documentation, you should edit the
@@ -200,7 +191,7 @@ included in the project:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-    with a clear title and description against the `master` branch.
+   with a clear title and description against the `master` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](LICENSE) (if it
@@ -224,24 +215,24 @@ includes code changes) and under the terms of the
 
 [Adhere to the Code Guide.](http://codeguide.co/#html)
 
-- Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
-- Use CDNs and HTTPS for third-party JS when possible. We don't use protocol-relative URLs in this case because they break when viewing the page locally via `file://`.
-- Use [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) attributes in documentation examples to promote accessibility.
+* Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
+* Use CDNs and HTTPS for third-party JS when possible. We don't use protocol-relative URLs in this case because they break when viewing the page locally via `file://`.
+* Use [WAI-ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) attributes in documentation examples to promote accessibility.
 
 ### CSS
 
 [Adhere to the Code Guide.](http://codeguide.co/#css)
 
-- When feasible, default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
-- Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines) for more details.
+* When feasible, default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
+* Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines) for more details.
 
 ### JS
 
-- No semicolons (in client-side JS)
-- 2 spaces (no tabs)
-- strict mode
-- "Attractive"
-- Don't use [jQuery event alias convenience methods](https://github.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](http://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](http://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
+* No semicolons (in client-side JS)
+* 2 spaces (no tabs)
+* strict mode
+* "Attractive"
+* Don't use [jQuery event alias convenience methods](https://github.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](http://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](http://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
 
 ### Checking coding style
 
