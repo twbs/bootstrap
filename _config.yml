@@ -19,6 +19,7 @@ encoding:         UTF-8
 exclude:          [assets/scss/]
 
 gems:
+  - jekyll-avatar
   - jekyll-redirect-from
   - jekyll-seo-tag
   - jekyll-sitemap
