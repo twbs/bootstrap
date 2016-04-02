@@ -319,6 +319,7 @@ module.exports = function (grunt) {
           conservativeCollapse: true,
           minifyCSS: true,
           minifyJS: true,
+          processConditionalComments: true,
           removeAttributeQuotes: true,
           removeComments: true
         },
