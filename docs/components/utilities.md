@@ -173,6 +173,28 @@ Easily make an element as wide as its parent using the `.w-100` utility class, w
 <img class="w-100" data-src="holder.js/200px100?outline=yes&text=Width%20%3D%20100%25" alt="Width = 100%">
 {% endexample %}
 
+## CSS `display` (`block`, `inline`, `inline-block`)
+
+Use `.d-block`, `.d-inline`, or `.d-inline-block` to simply set an element's [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) to `block`, `inline`, or `inline-block` (respectively).
+
+To make an element `display: none`, use our [responsive utilities](../layout/responsive-utilities/) instead.
+
+{% example html %}
+<div class="d-inline bg-success">Inline</div>
+<div class="d-inline bg-success">Inline</div>
+
+<span class="d-block bg-primary">Block</span>
+
+<div class="d-inline-block bg-warning">
+  <h3>inline-block</h3>
+  Boot that strap!
+</div>
+<div class="d-inline-block bg-warning">
+  <h3>inline-block</h3>
+  Strap that boot!
+</div>
+{% endexample %}
+
 ## Close icon
 
 Use a generic close icon for dismissing content like modals and alerts. **Be sure to include text for screen readers**, as we've done with `aria-label`.
