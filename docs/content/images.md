@@ -60,11 +60,11 @@ Align images with the [helper float classes]({{ site.baseurl }}/components/utili
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/200x200" class="img-rounded center-block" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="img-rounded m-x-auto d-block" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-rounded center-block" alt="...">
+<img src="..." class="img-rounded m-x-auto d-block" alt="...">
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
