@@ -49,20 +49,16 @@
   }
 }
 
-@if $enable-rounded {
-  .card {
-    > .list-group:first-child {
-      .list-group-item:first-child {
-        border-top-left-radius: $card-border-radius;
-        border-top-right-radius: $card-border-radius;
-      }
+.card {
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($card-border-radius);
     }
+  }
 
-    > .list-group:last-child {
-      .list-group-item:last-child {
-        border-bottom-right-radius: $card-border-radius;
-        border-bottom-left-radius: $card-border-radius;
-      }
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($card-border-radius);
     }
   }
 }
@@ -196,10 +192,10 @@
 
 // Card image caps
 .card-img-top {
-  @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+  @include border-top-radius($card-border-radius-inner);
 }
 .card-img-bottom {
-  @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+  @include border-bottom-radius($card-border-radius-inner);
 }
 
 
