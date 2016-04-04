@@ -112,7 +112,7 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 | Mozilla       | Firefox                      | Gecko            | https://bugzilla.mozilla.org/enter_bug.cgi                                            | "Core" is normally the right product option to choose.   |
 | Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit <br> https://bugreport.apple.com | In Apple's bug reporter, choose "Safari" as the product. |
 | Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://code.google.com/p/chromium/issues/list                                        | Click the "New issue" button.                            |
-| Microsoft     | Internet Explorer / Edge     | Trident/EdgeHTML | https://connect.microsoft.com/IE/feedback/LoadSubmitFeedbackForm                      |                                                          |
+| Microsoft     | Edge                         | EdgeHTML         | https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/                 |                                                          |
 
 ### Issues bots
 
