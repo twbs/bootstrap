@@ -14,7 +14,7 @@
   summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
-    IE#926665
+    Edge#7108183
   origin: >
     Bootstrap#14211
 
@@ -24,7 +24,7 @@
   summary: >
     When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
   upstream_bug: >
-    IE#963961
+    Edge#817822
   origin: >
     Bootstrap#14528
 
@@ -34,7 +34,7 @@
   summary: >
     CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
   upstream_bug: >
-    IE#1463734
+    Edge#3342037
   origin: >
     Bootstrap#16671
 
