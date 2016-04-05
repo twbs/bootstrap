@@ -44,7 +44,7 @@
   summary: >
     `background` of `<tr>` is only applied to first child cell instead of all cells in the row
   upstream_bug: >
-    IE#2110930
+    Edge#5865620
   origin: >
     Bootstrap#18504
 
@@ -64,7 +64,7 @@
   summary: >
     Background color from lower layer bleeds through transparent border in some cases
   upstream_bug: >
-    IE#2263132
+    Edge#6274505
   origin: >
     Bootstrap#18228
 
