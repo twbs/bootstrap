@@ -14,7 +14,7 @@
   summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
-    Edge#7108183
+    Edge#5381673
   origin: >
     Bootstrap#14211
 
