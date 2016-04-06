@@ -165,6 +165,14 @@ Sometimes contextual classes cannot be applied due to the specificity of another
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
+## Widths
+
+Easily make an element as wide as its parent using the `.w-100` utility class, which sets `width: 100%`.
+
+{% example html %}
+<img class="w-100" data-src="holder.js/200px100?outline=yes&text=Width%20%3D%20100%25" alt="Width = 100%">
+{% endexample %}
+
 ## Close icon
 
 Use a generic close icon for dismissing content like modals and alerts. **Be sure to include text for screen readers**, as we've done with `aria-label`.
