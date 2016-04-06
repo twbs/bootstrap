@@ -189,8 +189,8 @@
     if (this.isShown && this.options.backdrop) {
       var doAnimate = $.support.transition && animate
 
-	  if(this.options.customBackdrop){
-    	  this.$backdrop = $("#" + this.options.customBackdrop)
+	  if(this.options.customBackdrop && $(this.options.customBackdrop)){
+    	  this.$backdrop = $(this.options.customBackdrop)
           .addClass('modal-backdrop ' + animate)
       }else{
     	  this.$backdrop = $(document.createElement('div'))
