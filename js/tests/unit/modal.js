@@ -169,7 +169,7 @@ $(function () {
     var $div = $('<div id="modal-test"/>')
     $div
       .on('shown.bs.modal', function () {
-        assert.ok($('#modal-test').length, 'modal insterted into dom')
+        assert.ok($('#modal-test').length, 'modal inserted into dom')
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         $div.trigger($.Event('keydown', { which: 27 }))
 

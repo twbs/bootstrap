@@ -29,10 +29,10 @@ To get started, check out <http://getbootstrap.com>!
 
 Several quick start options are available:
 
-* [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.3.5.zip).
+* [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.3.6.zip).
 * Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
 * Install with [Bower](http://bower.io): `bower install bootstrap`.
-* Install with [npm](https://www.npmjs.com): `npm install bootstrap`.
+* Install with [npm](https://www.npmjs.com): `npm install bootstrap@3`.
 * Install with [Meteor](https://www.meteor.com): `meteor add twbs:bootstrap`.
 * Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap`.
 
@@ -71,6 +71,8 @@ We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified
 
 Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/twbs/bootstrap/issues/new).
 
+Note that **feature requests must target [Bootstrap v4](https://github.com/twbs/bootstrap/tree/v4-dev),** because Bootstrap v3 is now in maintenance mode and is closed off to new features. This is so that we can focus our efforts on Bootstrap v4.
+
 
 ## Documentation
 
@@ -78,10 +80,9 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 
 ### Running documentation locally
 
-1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v3.0.x).
+1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) and other Ruby dependencies with `bundle install`.
    **Note for Windows users:** Read [this unofficial guide](http://jekyll-windows.juthilo.com/) to get Jekyll up and running without problems.
-2. Install the Ruby-based syntax highlighter, [Rouge](https://github.com/jneen/rouge), with `gem install rouge`.
-3. From the root `/bootstrap` directory, run `jekyll serve` in the command line.
+2. From the root `/bootstrap` directory, run `bundle exec jekyll serve` in the command line.
 4. Open `http://localhost:9001` in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
@@ -98,6 +99,8 @@ Documentation for v2.3.2 has been made available for the time being at <http://g
 Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
 Moreover, if your pull request contains JavaScript patches or features, you must include [relevant unit tests](https://github.com/twbs/bootstrap/tree/master/js/tests). All HTML and CSS should conform to the [Code Guide](https://github.com/mdo/code-guide), maintained by [Mark Otto](https://github.com/mdo).
+
+**Bootstrap v3 is now closed off to new features.** It has gone into maintenance mode so that we can focus our efforts on [Bootstrap v4](https://github.com/twbs/bootstrap/tree/v4-dev), the future of the framework. Pull requests which add new features (rather than fix bugs) should target [Bootstrap v4 (the `v4-dev` git branch)](https://github.com/twbs/bootstrap/tree/v4-dev) instead.
 
 Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
@@ -136,4 +139,4 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 
 ## Copyright and license
 
-Code and documentation copyright 2011-2015 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+Code and documentation copyright 2011-2016 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).

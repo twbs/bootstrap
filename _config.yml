@@ -13,24 +13,28 @@ port:             9001
 url:              http://getbootstrap.com
 encoding:         UTF-8
 
+gems:
+  - jekyll-sitemap
+
 # Custom vars
-current_version:  3.3.5
+current_version:  3.3.6
 repo:             https://github.com/twbs/bootstrap
 sass_repo:        https://github.com/twbs/bootstrap-sass
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v3.3.5.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v3.3.5/bootstrap-3.3.5-dist.zip
-  sass:           https://github.com/twbs/bootstrap-sass/archive/v3.3.5.tar.gz
+  source:         https://github.com/twbs/bootstrap/archive/v3.3.6.zip
+  dist:           https://github.com/twbs/bootstrap/releases/download/v3.3.6/bootstrap-3.3.6-dist.zip
+  sass:           https://github.com/twbs/bootstrap-sass/archive/v3.3.6.tar.gz
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
+themes:           http://themes.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:            https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
-  css_hash:       "sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
-  css_theme:      https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css
-  css_theme_hash: "sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX"
-  js:             https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js
-  js_hash:        "sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+  css:            https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css
+  css_hash:       "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+  css_theme:      https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css
+  css_theme_hash: "sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+  js:             https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js
+  js_hash:        "sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
