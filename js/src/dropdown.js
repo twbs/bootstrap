@@ -38,7 +38,7 @@ const Dropdown = (($) => {
   const Default = {
     attachment       : 'top left',
     targetAttachment : 'bottom left',
-    offset           : '2 0',
+    offset           : '0 0',
     constraints      : [
       {
         to: 'window',
