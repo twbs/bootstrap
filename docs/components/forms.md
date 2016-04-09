@@ -172,79 +172,79 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
 
 {% example html %}
 <div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 form-control-label">Text</label>
+  <label for="example-text-input" class="col-xs-2 col-form-label">Text</label>
   <div class="col-xs-10">
     <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-search-input" class="col-xs-2 form-control-label">Search</label>
+  <label for="example-search-input" class="col-xs-2 col-form-label">Search</label>
   <div class="col-xs-10">
     <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-email-input" class="col-xs-2 form-control-label">Email</label>
+  <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
   <div class="col-xs-10">
     <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-url-input" class="col-xs-2 form-control-label">URL</label>
+  <label for="example-url-input" class="col-xs-2 col-form-label">URL</label>
   <div class="col-xs-10">
     <input class="form-control" type="url" value="http://getbootstrap.com" id="example-url-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-tel-input" class="col-xs-2 form-control-label">Telephone</label>
+  <label for="example-tel-input" class="col-xs-2 col-form-label">Telephone</label>
   <div class="col-xs-10">
     <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-password-input" class="col-xs-2 form-control-label">Password</label>
+  <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
   <div class="col-xs-10">
     <input class="form-control" type="password" value="hunter2" id="example-password-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-number-input" class="col-xs-2 form-control-label">Number</label>
+  <label for="example-number-input" class="col-xs-2 col-form-label">Number</label>
   <div class="col-xs-10">
     <input class="form-control" type="number" value="42" id="example-number-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-datetime-local-input" class="col-xs-2 form-control-label">Date and time</label>
+  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Date and time</label>
   <div class="col-xs-10">
     <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-date-input" class="col-xs-2 form-control-label">Date</label>
+  <label for="example-date-input" class="col-xs-2 col-form-label">Date</label>
   <div class="col-xs-10">
     <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-month-input" class="col-xs-2 form-control-label">Month</label>
+  <label for="example-month-input" class="col-xs-2 col-form-label">Month</label>
   <div class="col-xs-10">
     <input class="form-control" type="month" value="2011-08" id="example-month-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-week-input" class="col-xs-2 form-control-label">Week</label>
+  <label for="example-week-input" class="col-xs-2 col-form-label">Week</label>
   <div class="col-xs-10">
     <input class="form-control" type="week" value="2011-W33" id="example-week-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-time-input" class="col-xs-2 form-control-label">Time</label>
+  <label for="example-time-input" class="col-xs-2 col-form-label">Time</label>
   <div class="col-xs-10">
     <input class="form-control" type="time" value="13:45:00" id="example-time-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-color-input" class="col-xs-2 form-control-label">Color</label>
+  <label for="example-color-input" class="col-xs-2 col-form-label">Color</label>
   <div class="col-xs-10">
     <input class="form-control" type="color" value="#563d7c" id="example-color-input">
   </div>
@@ -342,25 +342,25 @@ Because of this, you may need to manually address the width and alignment of ind
 
 For more structured form layouts that are also responsive, you can utilize Bootstrap's [predefined grid classes](/layout/grid/#predefined-classes) or [mixins](/layout/grid/#sass-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
 
-Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.form-control-legend` to make them appear similar to regular `<label>` elements.
+Be sure to add `.col-form-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.col-form-legend` to make them appear similar to regular `<label>` elements.
 
 {% example html %}
 <div class="container">
   <form>
     <div class="form-group row">
-      <label for="inputEmail3" class="col-sm-2 form-control-label">Email</label>
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-10">
         <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
       </div>
     </div>
     <div class="form-group row">
-      <label for="inputPassword3" class="col-sm-2 form-control-label">Password</label>
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
       <div class="col-sm-10">
         <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
       </div>
     </div>
     <fieldset class="form-group row">
-      <legend class="form-control-legend col-sm-2">Radios</legend>
+      <legend class="col-form-legend col-sm-2">Radios</legend>
       <div class="col-sm-10">
         <div class="radio">
           <label>
@@ -407,13 +407,13 @@ Grid-based form layouts also support large and small inputs.
 <div class="container">
   <form>
     <div class="form-group row">
-      <label for="lgFormGroupInput" class="col-sm-2 form-control-label form-control-label-lg">Email</label>
+      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
       <div class="col-sm-10">
         <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="you@example.com">
       </div>
     </div>
     <div class="form-group row">
-      <label for="smFormGroupInput" class="col-sm-2 form-control-label form-control-label-sm">Email</label>
+      <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
       <div class="col-sm-10">
         <input type="email" class="form-control form-control-sm" id="smFormGroupInput" placeholder="you@example.com">
       </div>
@@ -517,13 +517,13 @@ When you need to place plain text next to a form label within a form, use the `.
 {% example html %}
 <form>
   <div class="form-group row">
-    <label class="col-sm-2 form-control-label">Email</label>
+    <label class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
       <p class="form-control-static">email@example.com</p>
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputPassword" class="col-sm-2 form-control-label">Password</label>
+    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword" placeholder="Password">
     </div>
@@ -670,7 +670,7 @@ Block help text—for below inputs or for longer lines of help text—can be eas
 
 Bootstrap includes validation styles for danger, warning, and success states on form controls. Here's a rundown of how they work:
 
-- To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, or custom form element will receive the validation styles.
+- To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.col-form-label`, `.form-control`, or custom form element will receive the validation styles.
 - Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` declarations for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
@@ -696,19 +696,19 @@ Ensure that an alternative indication of state is also provided. For instance, y
 
 {% example html %}
 <div class="form-group has-success">
-  <label class="form-control-label" for="inputSuccess1">Input with success</label>
+  <label class="col-form-label" for="inputSuccess1">Input with success</label>
   <input type="text" class="form-control form-control-success" id="inputSuccess1">
   <div class="form-control-feedback">Success! You've done it.</div>
   <small class="text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-warning">
-  <label class="form-control-label" for="inputWarning1">Input with warning</label>
+  <label class="col-form-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
   <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
   <small class="text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-danger">
-  <label class="form-control-label" for="inputDanger1">Input with danger</label>
+  <label class="col-form-label" for="inputDanger1">Input with danger</label>
   <input type="text" class="form-control form-control-danger" id="inputDanger1">
   <div class="form-control-feedback">Shit, that username's taken. Try another?</div>
   <small class="text-muted">Example help text that remains unchanged.</small>

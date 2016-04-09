@@ -75,19 +75,19 @@ select.form-control {
 
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
-.form-control-label {
+.col-form-label {
   padding-top: $input-padding-y;
   padding-bottom: $input-padding-y;
   margin-bottom: 0; // Override the `<label>` default
 }
 
-.form-control-label-lg {
+.col-form-label-lg {
   padding-top: $input-padding-y-lg;
   padding-bottom: $input-padding-y-lg;
   font-size: $font-size-lg;
 }
 
-.form-control-label-sm {
+.col-form-label-sm {
   padding-top: $input-padding-y-sm;
   padding-bottom: $input-padding-y-sm;
   font-size: $font-size-sm;
@@ -100,7 +100,7 @@ select.form-control {
 
 // For use with horizontal and inline forms, when you need the legend text to
 // be the same size as regular labels, and to align with the form controls.
-.form-control-legend {
+.col-form-legend {
   padding-top: $input-padding-y;
   padding-bottom: $input-padding-y;
   margin-bottom: 0;
