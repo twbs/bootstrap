@@ -69,8 +69,8 @@
 
 .navbar-brand {
   float: left;
-  padding-top:    .25rem;
-  padding-bottom: .25rem;
+  padding-top:    $navbar-brand-padding-y;
+  padding-bottom: $navbar-brand-padding-y;
   margin-right: 1rem;
   font-size: $font-size-lg;
 

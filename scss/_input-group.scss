@@ -40,9 +40,7 @@
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
-  @if $enable-flex {
-    // do nothing
-  } @else {
+  @if not $enable-flex {
     display: table-cell;
   }
 
@@ -53,9 +51,7 @@
 
 .input-group-addon,
 .input-group-btn {
-  @if $enable-flex {
-    // do nothing
-  } @else {
+  @if not $enable-flex {
     width: 1%;
   }
   white-space: nowrap;

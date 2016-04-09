@@ -30,6 +30,9 @@ Alerts are available for any length of text, as well as an optional dismiss butt
 </div>
 {% endexample %}
 
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 ### Link color
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
@@ -57,7 +60,7 @@ Alerts can also contain additional HTML elements like headings and paragraphs.
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Well done!</h4>
   <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-  <p class="m-b-0">Whenever you need to, be sure to use a margin utilities to keep things nice and tidy.</p>
+  <p class="m-b-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
 </div>
 {% endexample %}
 

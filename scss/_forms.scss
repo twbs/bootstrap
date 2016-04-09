@@ -94,6 +94,19 @@ select.form-control {
 }
 
 
+//
+// Legends
+//
+
+// For use with horizontal and inline forms, when you need the legend text to
+// be the same size as regular labels, and to align with the form controls.
+.form-control-legend {
+  padding: $input-padding-y $input-padding-x;
+  margin-bottom: 0;
+  font-size: $font-size-base;
+}
+
+
 // Todo: clear this up
 
 // Special styles for iOS temporal inputs

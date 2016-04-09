@@ -16,7 +16,7 @@
 .list-group-item {
   position: relative;
   display: block;
-  padding: .75rem 1.25rem;
+  padding: $list-group-item-padding-y $list-group-item-padding-x;
   // Place the border on the list items and negative margin up for better styling
   margin-bottom: -$list-group-border-width;
   background-color: $list-group-bg;
@@ -115,7 +115,7 @@
 
 .list-group-item-heading {
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: $list-group-item-heading-margin-bottom;
 }
 .list-group-item-text {
   margin-bottom: 0;

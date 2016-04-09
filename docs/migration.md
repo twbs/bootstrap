@@ -126,9 +126,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - An explicit class, `.breadcrumb-item`, is now required on the descendants of `.breadcrumb`s
 
-### Badges
+### Labels and badges
 
-- Dropped the badge component. Use the `.label-pill` modifier together with the label component instead.
+- Renamed `.label` to `.tag` to disambiguate from the `<label>` element.
+- Dropped the badge component. Use the `.tag-pill` modifier together with the label component instead.
 
 ### Panels, thumbnails, and wells
 
@@ -202,11 +203,11 @@ TODO: audit classes in v3 that aren't present in v4
 
 ### Responsive utilities
 
-The following deprecated variables have been removed in v4.0.0:
+The following variables have been removed in v4.0.0. Use the `media-breakpoint-up()`, `media-breakpoint-down()`, or `media-breakpoint-only()` Sass mixins or the `$grid-breakpoints` Sass map instead of:
 
-* `@screen-phone`, `@screen-tablet`, `@screen-desktop`, `@screen-lg-desktop`. Use the more abstract `$screen-{xs,sm,md,lg,xl}-*` variables instead.
-* `@screen-sm`, `@screen-md`, `@screen-lg`. Use the more clearly named `$screen-{xs,sm,md,lg,xl}-min` variables instead.
-* `@screen-xs`, `@screen-xs-min`. The extra small breakpoint has no lower bound, so these variables were logically absurd. Reformulate your expression in terms of `$screen-xs-max` instead.
+* `@screen-phone`, `@screen-tablet`, `@screen-desktop`, `@screen-lg-desktop`.
+* `@screen-xs`, `@screen-sm`, `@screen-md`, `@screen-lg`.
+* `@screen-xs-min`, `@screen-xs-max`, `@screen-sm-min`, `@screen-sm-max`, `@screen-md-min`, `@screen-md-max`, `@screen-lg-min`, `@screen-lg-max`
 
 The responsive utility classes have also been overhauled.
 

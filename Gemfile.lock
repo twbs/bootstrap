@@ -4,7 +4,7 @@ GEM
     colorator (0.1)
     ffi (1.9.10)
     ffi (1.9.10-x64-mingw32)
-    jekyll (3.1.1)
+    jekyll (3.1.2)
       colorator (~> 0.1)
       jekyll-sass-converter (~> 1.0)
       jekyll-watch (~> 1.1)
@@ -13,18 +13,18 @@ GEM
       mercenary (~> 0.3.3)
       rouge (~> 1.7)
       safe_yaml (~> 1.0)
-    jekyll-redirect-from (0.9.1)
+    jekyll-redirect-from (0.10.0)
       jekyll (>= 2.0)
     jekyll-sass-converter (1.4.0)
       sass (~> 3.4)
     jekyll-sitemap (0.10.0)
     jekyll-watch (1.3.1)
       listen (~> 3.0)
-    kramdown (1.9.0)
+    kramdown (1.10.0)
     liquid (3.0.6)
-    listen (3.0.5)
+    listen (3.0.6)
       rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
+      rb-inotify (>= 0.9.7)
     mercenary (0.3.5)
     rake (10.5.0)
     rb-fsevent (0.9.7)
@@ -33,8 +33,8 @@ GEM
     rouge (1.10.1)
     safe_yaml (1.0.4)
     sass (3.4.21)
-    scss_lint (0.44.0)
-      rake (~> 10.0)
+    scss_lint (0.47.1)
+      rake (>= 0.9, < 11)
       sass (~> 3.4.15)
 
 PLATFORMS
@@ -42,11 +42,10 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  jekyll (~> 3.1.1)
-  jekyll-redirect-from (~> 0.9.1)
+  jekyll (~> 3.1.2)
+  jekyll-redirect-from (~> 0.10.0)
   jekyll-sitemap (~> 0.10.0)
-  sass (~> 3.4.21)
-  scss_lint (~> 0.44.0)
+  scss_lint (~> 0.47.1)
 
 BUNDLED WITH
    1.11.2

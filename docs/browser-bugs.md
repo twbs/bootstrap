@@ -11,6 +11,7 @@ We publicly list browser bugs that are impacting us here, in the hopes of expedi
 Also see [jQuery's browser bug workarounds](https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o).
 
 See also:
+
 * [Chromium issue 536263: [meta] Issues affecting Bootstrap](https://code.google.com/p/chromium/issues/detail?id=536263)
 * [Mozilla bug 1230801: Fix the issues that affect Bootstrap](https://bugzilla.mozilla.org/show_bug.cgi?id=1230801)
 * [jQuery's browser bug workarounds](https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o)

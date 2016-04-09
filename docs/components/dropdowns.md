@@ -45,8 +45,6 @@ You can optionally use `<button>` elements in your dropdowns instead of `<a>`s.
 </div>
 {% endexample %}
 
-
-
 ## Alignment
 
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-right` to a `.dropdown-menu` to right align the dropdown menu.
@@ -55,11 +53,18 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 **Heads up!** Dropdowns are positioned only with CSS and may need some additional styles for exact alignment.
 {% endcallout %}
 
-{% highlight html %}
-<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">
-  ...
+{% example html %}
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    This dropdown's menu is right-aligned
+  </button>
+  <div class="dropdown-menu dropdown-menu-right">
+    <button class="dropdown-item" type="button">Action</button>
+    <button class="dropdown-item" type="button">Another action</button>
+    <button class="dropdown-item" type="button">Something else here</button>
+  </div>
 </div>
-{% endhighlight %}
+{% endexample %}
 
 ## Menu headers
 

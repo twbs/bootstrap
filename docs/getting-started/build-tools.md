@@ -49,7 +49,7 @@ Bootstrap uses [Autoprefixer][autoprefixer] (included in our Gruntfile and build
 
 ## Local documentation
 
-Running our documentation locally requires the use of Jekyll, a decently flexible static site generator that provides us basic includes, Markdown-based files, templates, and more. Here's how to get it started:
+Running our documentation locally requires the use of Jekyll, a decently flexible static site generator that provides us: basic includes, Markdown-based files, templates, and more. Here's how to get it started:
 
 1. Run through the [tooling setup](#tooling-setup) above to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
 2. From the root `/bootstrap` directory, run `bundle exec jekyll serve` in the command line.
