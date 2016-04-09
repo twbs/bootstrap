@@ -359,25 +359,27 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
         <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
       </div>
     </div>
-    <fieldset class="form-group">
-      <legend>Radio buttons</legend>
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-          Option one is this and that&mdash;be sure to include why it's great
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-          Option two can be something else and selecting it will deselect option one
-        </label>
-      </div>
-      <div class="radio disabled">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-          Option three is disabled
-        </label>
+    <fieldset class="form-group row">
+      <legend class="form-control-legend col-sm-2">Radios</legend>
+      <div class="col-sm-10">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            Option one is this and that&mdash;be sure to include why it's great
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+          </label>
+        </div>
+        <div class="radio disabled">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+            Option three is disabled
+          </label>
+        </div>
       </div>
     </fieldset>
     <div class="form-group row">

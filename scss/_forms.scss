@@ -101,7 +101,8 @@ select.form-control {
 // For use with horizontal and inline forms, when you need the legend text to
 // be the same size as regular labels, and to align with the form controls.
 .form-control-legend {
-  padding: $input-padding-y $input-padding-x;
+  padding-top: $input-padding-y;
+  padding-bottom: $input-padding-y;
   margin-bottom: 0;
   font-size: $font-size-base;
 }
