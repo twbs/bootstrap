@@ -2175,7 +2175,8 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .form-control-legend {
-  padding: 0.5rem 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   margin-bottom: 0;
   font-size: 1rem;
 }
