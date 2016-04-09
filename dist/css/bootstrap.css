@@ -2156,25 +2156,25 @@ select.form-control:not([size]):not([multiple]) {
   display: block;
 }
 
-.form-control-label {
+.col-form-label {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin-bottom: 0;
 }
 
-.form-control-label-lg {
+.col-form-label-lg {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   font-size: 1.25rem;
 }
 
-.form-control-label-sm {
+.col-form-label-sm {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   font-size: 0.875rem;
 }
 
-.form-control-legend {
+.col-form-legend {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin-bottom: 0;
