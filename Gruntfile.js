@@ -18,7 +18,6 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var isTravis = require('is-travis');
-  var npmShrinkwrap = require('npm-shrinkwrap');
   var mq4HoverShim = require('mq4-hover-shim');
   var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
   var autoprefixer = require('autoprefixer')(autoprefixerSettings);
@@ -59,17 +58,6 @@ module.exports = function (grunt) {
     },
 
     // JS build configuration
-    lineremover: {
-      es6Import: {
-        files: {
-          '<%= concat.bootstrap.dest %>': '<%= concat.bootstrap.dest %>'
-        },
-        options: {
-          exclusionPattern: /^(import|export)/g
-        }
-      }
-    },
-
     babel: {
       dev: {
         options: {
@@ -160,6 +148,10 @@ module.exports = function (grunt) {
 
     concat: {
       options: {
+        // Custom function to remove all export and import statements
+        process: function (src) {
+          return src.replace(/^(export|import).*/gm, '');
+        },
         stripBanners: false
       },
       bootstrap: {
@@ -448,7 +440,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test-js', ['eslint', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['babel:dev', 'concat', 'lineremover', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
+  grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
 
   grunt.registerTask('test-scss', ['scsslint:core']);
 
@@ -490,20 +482,4 @@ module.exports = function (grunt) {
 
   // Publish to GitHub
   grunt.registerTask('publish', ['buildcontrol:pages']);
-
-  // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
-  // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
-  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', '_update-shrinkwrap']);
-  grunt.registerTask('_update-shrinkwrap', function () {
-    var done = this.async();
-    npmShrinkwrap({ dev: true, dirname: __dirname }, function (err) {
-      if (err) {
-        grunt.fail.warn(err);
-      }
-      var dest = 'grunt/npm-shrinkwrap.json';
-      fs.renameSync('npm-shrinkwrap.json', dest);
-      grunt.log.writeln('File ' + dest.cyan + ' updated.');
-      done();
-    });
-  });
 };
