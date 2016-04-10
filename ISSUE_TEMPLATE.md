@@ -1,4 +1,5 @@
 If you're reporting a bug:
+
 * Have you [searched for duplicate issues, including closed issues?]( https://github.com/twbs/bootstrap/issues?utf8=%E2%9C%93&q=is%3Aissue ): 
 * Have you [validated]( http://validator.w3.org/nu/ ) your page's HTML?: 
 * Have you [linted]( https://github.com/twbs/bootlint#in-the-browser ) your page's HTML?: 
@@ -23,6 +24,7 @@ See https://github.com/twbs/bootstrap/blob/master/README.md#community for links 
 ---
 
 If you have a feature request:
+
 * Have you [searched for duplicate issues, including closed issues?]( https://github.com/twbs/bootstrap/issues?utf8=%E2%9C%93&q=is%3Aissue ): 
 * Note that your request will only be considered for Bootstrap 4.
   * [Bootstrap 3 is no longer receiving new features.]( https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#feature-requests )
