@@ -71,6 +71,10 @@
       border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
     }
 
+    &:focus {
+      outline-offset: -2px;
+    }
+
     &.disabled {
       @include plain-hover-focus {
         color: $nav-disabled-link-color;
