@@ -18,7 +18,7 @@ If you're reporting a bug:
 ---
 
 If you need help debugging your specific webpage or have a "How do I...?" question,
-DON'T open an issue. Ask for help on StackOverflow, IRC, or Slack instead.
+**DON'T** open an issue. Ask for help on StackOverflow, IRC, or Slack instead.
 See https://github.com/twbs/bootstrap/blob/master/README.md#community for links to those personal support forums.
 
 ---
