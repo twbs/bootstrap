@@ -6,7 +6,7 @@
   <h2 id="pagination-default">Default pagination</h2>
   <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
   <div class="bs-example" data-example-id="simple-pagination">
-    <nav>
+    <nav aria-label="Page navigation">
       <ul class="pagination">
         <li>
           <a href="#" aria-label="Previous">
@@ -27,7 +27,7 @@
     </nav>
   </div>
 {% highlight html %}
-<nav>
+<nav aria-label="Page navigation">
   <ul class="pagination">
     <li>
       <a href="#" aria-label="Previous">
@@ -48,10 +48,15 @@
 </nav>
 {% endhighlight %}
 
+  <div class="bs-callout bs-callout-info" id="callout-pagination-label">
+    <h4>Labelling the pagination component</h4>
+    <p>The pagination component should be wrapped in a <code>&lt;nav&gt;</code> element to identify it as a navigation section to screen readers and other assistive technologies. In addition, as a page is likely to have more than one such navigation section already (such as the primary navigation in the header, or a sidebar navigation), it is advisable to provide a descriptive <code>aria-label</code> for the <code>&lt;nav&gt;</code> which reflects its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be <code>aria-label="Search results pages"</code>.</p>
+  </div>
+
   <h3>Disabled and active states</h3>
   <p>Links are customizable for different circumstances. Use <code>.disabled</code> for unclickable links and <code>.active</code> to indicate the current page.</p>
   <div class="bs-example" data-example-id="disabled-active-pagination">
-    <nav>
+    <nav aria-label="...">
       <ul class="pagination">
         <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
         <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
@@ -64,7 +69,7 @@
    </nav>
   </div>
 {% highlight html %}
-<nav>
+<nav aria-label="...">
   <ul class="pagination">
     <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
     <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
@@ -74,7 +79,7 @@
 {% endhighlight %}
   <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code>, or omit the anchor in the case of the previous/next arrows, to remove click functionality while retaining intended styles.</p>
 {% highlight html %}
-<nav>
+<nav aria-label="...">
   <ul class="pagination">
     <li class="disabled">
       <span>
@@ -93,7 +98,7 @@
   <h3>Sizing</h3>
   <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
   <div class="bs-example" data-example-id="pagination-sizing">
-    <nav>
+    <nav aria-label="...">
       <ul class="pagination pagination-lg">
         <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
         <li><a href="#">1</a></li>
@@ -104,7 +109,7 @@
         <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
       </ul>
     </nav>
-    <nav>
+    <nav aria-label="...">
       <ul class="pagination">
         <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
         <li><a href="#">1</a></li>
@@ -115,7 +120,7 @@
         <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
       </ul>
     </nav>
-    <nav>
+    <nav aria-label="...">
       <ul class="pagination pagination-sm">
         <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
         <li><a href="#">1</a></li>
@@ -128,9 +133,9 @@
     </nav>
   </div>
 {% highlight html %}
-<nav><ul class="pagination pagination-lg">...</ul></nav>
-<nav><ul class="pagination">...</ul></nav>
-<nav><ul class="pagination pagination-sm">...</ul></nav>
+<nav aria-label="..."><ul class="pagination pagination-lg">...</ul></nav>
+<nav aria-label="..."><ul class="pagination">...</ul></nav>
+<nav aria-label="..."><ul class="pagination pagination-sm">...</ul></nav>
 {% endhighlight %}
 
 
@@ -140,7 +145,7 @@
   <h3>Default example</h3>
   <p>By default, the pager centers links.</p>
   <div class="bs-example" data-example-id="simple-pager">
-    <nav>
+    <nav aria-label="...">
       <ul class="pager">
         <li><a href="#">Previous</a></li>
         <li><a href="#">Next</a></li>
@@ -148,7 +153,7 @@
     </nav>
   </div>
 {% highlight html %}
-<nav>
+<nav aria-label="...">
   <ul class="pager">
     <li><a href="#">Previous</a></li>
     <li><a href="#">Next</a></li>
@@ -159,7 +164,7 @@
   <h3>Aligned links</h3>
   <p>Alternatively, you can align each link to the sides:</p>
   <div class="bs-example" data-example-id="aligned-pager-links">
-    <nav>
+    <nav aria-label="...">
       <ul class="pager">
         <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
         <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
@@ -167,7 +172,7 @@
     </nav>
   </div>
 {% highlight html %}
-<nav>
+<nav aria-label="...">
   <ul class="pager">
     <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
     <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
@@ -179,7 +184,7 @@
   <h3>Optional disabled state</h3>
   <p>Pager links also use the general <code>.disabled</code> utility class from the pagination.</p>
   <div class="bs-example" data-example-id="disabled-pager">
-    <nav>
+    <nav aria-label="...">
       <ul class="pager">
         <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
         <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
@@ -187,7 +192,7 @@
     </nav>
   </div>
 {% highlight html %}
-<nav>
+<nav aria-label="...">
   <ul class="pager">
     <li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
     <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
