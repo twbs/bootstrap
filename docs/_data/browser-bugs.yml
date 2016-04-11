@@ -162,16 +162,6 @@
   browser: >
     Chrome
   summary: >
-    Incorrect viewport size used for media queries when printing.
-  upstream_bug: >
-    Chromium#273306
-  origin: >
-    Bootstrap#12078
-
--
-  browser: >
-    Chrome
-  summary: >
     CSS infinite linear animation with alpha transparency leaks memory.
   upstream_bug: >
     Chromium#429375
