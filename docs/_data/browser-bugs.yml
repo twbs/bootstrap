@@ -4,7 +4,7 @@
   summary: >
     Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
   upstream_bug: >
-    IE#2445370
+    Edge#6793560
   origin: >
     Bootstrap#18692
 
@@ -54,7 +54,7 @@
   summary: >
     `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
   upstream_bug: >
-    IE#2256049
+    Edge#7165383
   origin: >
     Bootstrap#18543
 
