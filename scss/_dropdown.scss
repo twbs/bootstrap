@@ -1,5 +1,4 @@
 // The dropdown wrapper (`<div>`)
-.dropup,
 .dropdown {
   position: relative;
 }
@@ -22,15 +21,6 @@
   // Prevent the focus on the dropdown toggle when closing dropdowns
   &:focus {
     outline: 0;
-  }
-}
-
-.dropup {
-  .dropdown-toggle {
-    &::after {
-      border-top: 0;
-      border-bottom: $caret-width solid;
-    }
   }
 }
 
@@ -143,19 +133,4 @@
   bottom: 0;
   left: 0;
   z-index: $zindex-dropdown-backdrop;
-}
-
-// Allow for dropdowns to go bottom up (aka, dropup-menu)
-//
-// Just add .dropup after the standard .dropdown class and you're set.
-// TODO: abstract this so that the navbar fixed styles are not placed here?
-
-.dropup,
-.navbar-fixed-bottom .dropdown {
-  // Reverse the caret
-  .caret {
-    content: "";
-    border-top: 0;
-    border-bottom: $caret-width solid;
-  }
 }

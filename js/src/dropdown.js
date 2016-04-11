@@ -160,8 +160,6 @@ const Dropdown = (($) => {
         addTargetClasses : false
       })
 
-      context._tether.position()
-
       if ('ontouchstart' in document.documentElement &&
          (!$(parent).closest(Selector.NAVBAR_NAV).length)) {
 
@@ -306,8 +304,10 @@ const Dropdown = (($) => {
           toggles[i].setAttribute('aria-expanded', false)
           $(dropdownMenu).removeClass(ClassName.OPEN)
 
+          // move the dropdownMenu back to underneath the parent
           $(parent)
             .removeClass(ClassName.OPEN)
+            .append(dropdownMenu)
             .trigger($.Event(Event.HIDDEN, relatedTarget))
         }
       }
