@@ -71,7 +71,7 @@ $theme-color-interval: 8% !default;
 
 @function theme-color-level($color-name: "primary", $level: 0) {
   $color: theme-color($color-name);
-  $color-base: if($level > 0, black, white);
+  $color-base: if($level > 0, #000, #fff);
 
   @if $level < 0 {
     // Lighter values need a quick double negative for the Sass math to work
