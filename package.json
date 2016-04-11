@@ -49,7 +49,7 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-eslint": "^17.1.0",
+    "grunt-eslint": "^18.0.0",
     "grunt-exec": "^0.4.6",
     "grunt-html": "^7.0.0",
     "grunt-jekyll": "^0.4.2",
