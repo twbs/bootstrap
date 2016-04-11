@@ -67,72 +67,87 @@ $theme-colors: (
   @return map-get($theme-colors, $key);
 }
 
-$foreground: theme-color("foreground") !default;
-$foreground-100: lighten($foreground, 47%) !default;
-$foreground-200: lighten($foreground, 35%) !default;
-$foreground-300: lighten($foreground, 25%) !default;
-$foreground-400: lighten($foreground, 15%) !default;
+$theme-color-interval: 8% !default;
+
+@function theme-color-level($color-name: "primary", $level: 0) {
+  $color: theme-color($color-name);
+  $color-base: if($level > 0, black, white);
+
+  @if $level < 0 {
+    // Lighter values need a quick double negative for the Sass math to work
+    @return mix($color-base, $color, $level * -1 * $theme-color-interval);
+  } @else {
+    @return mix($color-base, $color, $level * $theme-color-interval);
+  }
+}
+
+// Purposefully use different values for the foreground color as grays tend
+// to need a bit more control for the lighter values.
+$foreground: theme-color-level("foreground", 0) !default;
+$foreground-100: theme-color-level("foreground", -11) !default;
+$foreground-200: theme-color-level("foreground", -8) !default;
+$foreground-300: theme-color-level("foreground", -6) !default;
+$foreground-400: theme-color-level("foreground", -3) !default;
 $foreground-500: $foreground !default;
-$foreground-600: darken($foreground, 10%) !default;
-$foreground-700: darken($foreground, 20%) !default;
-$foreground-800: darken($foreground, 30%) !default;
-$foreground-900: darken($foreground, 40%) !default;
+$foreground-600: theme-color-level("foreground", 2) !default;
+$foreground-700: theme-color-level("foreground", 4) !default;
+$foreground-800: theme-color-level("foreground", 6) !default;
+$foreground-900: theme-color-level("foreground", 8) !default;
 
-$primary: theme-color("primary") !default;
-$primary-100: lighten($primary, 32%) !default;
-$primary-200: lighten($primary, 24%) !default;
-$primary-300: lighten($primary, 16%) !default;
-$primary-400: lighten($primary, 8%) !default;
+$primary: theme-color-level("primary", 0) !default;
+$primary-100: theme-color-level("primary", -9.5) !default;
+$primary-200: theme-color-level("primary", -7) !default;
+$primary-300: theme-color-level("primary", -4) !default;
+$primary-400: theme-color-level("primary", -2) !default;
 $primary-500: $primary !default;
-$primary-600: darken($primary, 8%) !default;
-$primary-700: darken($primary, 16%) !default;
-$primary-800: darken($primary, 24%) !default;
-$primary-900: darken($primary, 32%) !default;
+$primary-600: theme-color-level("primary", 2) !default;
+$primary-700: theme-color-level("primary", 4) !default;
+$primary-800: theme-color-level("primary", 6) !default;
+$primary-900: theme-color-level("primary", 8) !default;
 
-$success: theme-color("success") !default;
-$success-100: lighten($success, 32%) !default;
-$success-200: lighten($success, 24%) !default;
-$success-300: lighten($success, 16%) !default;
-$success-400: lighten($success, 8%) !default;
+$success: theme-color-level("success", 0) !default;
+$success-100: theme-color-level("success", -9.5) !default;
+$success-200: theme-color-level("success", -7) !default;
+$success-300: theme-color-level("success", -4) !default;
+$success-400: theme-color-level("success", -2) !default;
 $success-500: $success !default;
-$success-600: darken($success, 8%) !default;
-$success-700: darken($success, 16%) !default;
-$success-800: darken($success, 24%) !default;
-$success-900: darken($success, 32%) !default;
+$success-600: theme-color-level("success", 2) !default;
+$success-700: theme-color-level("success", 4) !default;
+$success-800: theme-color-level("success", 6) !default;
+$success-900: theme-color-level("success", 8) !default;
 
-$info: #5bc0de !default;
-$info-100: lighten($info, 32%) !default;
-$info-200: lighten($info, 24%) !default;
-$info-300: lighten($info, 16%) !default;
-$info-400: lighten($info, 8%) !default;
+$info: theme-color-level("info", 0) !default;
+$info-100: theme-color-level("info", -9.5) !default;
+$info-200: theme-color-level("info", -7) !default;
+$info-300: theme-color-level("info", -4) !default;
+$info-400: theme-color-level("info", -2) !default;
 $info-500: $info !default;
-$info-600: darken($info, 8%) !default;
-$info-700: darken($info, 16%) !default;
-$info-800: darken($info, 24%) !default;
-$info-900: darken($info, 32%) !default;
+$info-600: theme-color-level("info", 2) !default;
+$info-700: theme-color-level("info", 4) !default;
+$info-800: theme-color-level("info", 6) !default;
+$info-900: theme-color-level("info", 8) !default;
 
-$warning: #f0ad4e !default;
-$warning-100: lighten($warning, 32%) !default;
-$warning-200: lighten($warning, 24%) !default;
-$warning-300: lighten($warning, 16%) !default;
-$warning-400: lighten($warning, 8%) !default;
+$warning: theme-color-level("warning", 0) !default;
+$warning-100: theme-color-level("warning", -9.5) !default;
+$warning-200: theme-color-level("warning", -7) !default;
+$warning-300: theme-color-level("warning", -4) !default;
+$warning-400: theme-color-level("warning", -2) !default;
 $warning-500: $warning !default;
-$warning-600: darken($warning, 8%) !default;
-$warning-700: darken($warning, 16%) !default;
-$warning-800: darken($warning, 24%) !default;
-$warning-900: darken($warning, 32%) !default;
+$warning-600: theme-color-level("warning", 2) !default;
+$warning-700: theme-color-level("warning", 4) !default;
+$warning-800: theme-color-level("warning", 6) !default;
+$warning-900: theme-color-level("warning", 8) !default;
 
-$danger: #d9534f !default;
-$danger-100: lighten($danger, 32%) !default;
-$danger-200: lighten($danger, 24%) !default;
-$danger-300: lighten($danger, 16%) !default;
-$danger-400: lighten($danger, 8%) !default;
+$danger: theme-color-level("danger", 0) !default;
+$danger-100: theme-color-level("danger", -9.5) !default;
+$danger-200: theme-color-level("danger", -7) !default;
+$danger-300: theme-color-level("danger", -4) !default;
+$danger-400: theme-color-level("danger", -2) !default;
 $danger-500: $danger !default;
-$danger-600: darken($danger, 8%) !default;
-$danger-700: darken($danger, 16%) !default;
-$danger-800: darken($danger, 24%) !default;
-$danger-900: darken($danger, 32%) !default;
-
+$danger-600: theme-color-level("danger", 2) !default;
+$danger-700: theme-color-level("danger", 4) !default;
+$danger-800: theme-color-level("danger", 6) !default;
+$danger-900: theme-color-level("danger", 8) !default;
 
 $brand-primary:   #0275d8 !default;
 $brand-success:   #5cb85c !default;
