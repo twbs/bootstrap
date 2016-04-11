@@ -419,7 +419,7 @@ $input-padding-y:                .5rem !default;
 $input-line-height:              1.25 !default;
 
 $input-bg:                       #fff !default;
-$input-bg-disabled:              $foreground-200 !default;
+$input-bg-disabled:              $foreground-100 !default;
 
 $input-color:                    $foreground-600 !default;
 $input-border-color:             rgba(0,0,0,.15) !default;
@@ -597,18 +597,18 @@ $navbar-light-disabled-color:       rgba(0,0,0,.15) !default;
 $nav-item-margin:               .2rem !default;
 $nav-item-inline-spacer:        1rem !default;
 $nav-link-padding:              .5em 1em !default;
-$nav-link-hover-bg:             $foreground-200 !default;
+$nav-link-hover-bg:             $foreground-100 !default;
 $nav-disabled-link-color:       $foreground-600 !default;
 $nav-disabled-link-hover-color: $foreground-600 !default;
 $nav-disabled-link-hover-bg:    transparent !default;
 
-$nav-tabs-border-color:                       $foreground-200 !default;
+$nav-tabs-border-color:                       $foreground-100 !default;
 $nav-tabs-border-width:                       $border-width !default;
-$nav-tabs-link-hover-border-color:            $foreground-200 !default;
+$nav-tabs-link-hover-border-color:            $foreground-100 !default;
 $nav-tabs-active-link-hover-color:            $foreground-600 !default;
 $nav-tabs-active-link-hover-bg:               $body-bg !default;
-$nav-tabs-active-link-hover-border-color:     $foreground-200 !default;
-$nav-tabs-justified-link-border-color:        $foreground-200 !default;
+$nav-tabs-active-link-hover-border-color:     $foreground-100 !default;
+$nav-tabs-justified-link-border-color:        $foreground-100 !default;
 $nav-tabs-justified-active-link-border-color: $body-bg !default;
 
 $nav-pills-border-radius:     $border-radius !default;
@@ -632,7 +632,7 @@ $pagination-border-width:              $border-width !default;
 $pagination-border-color:              #ddd !default;
 
 $pagination-hover-color:               $link-hover-color !default;
-$pagination-hover-bg:                  $foreground-200 !default;
+$pagination-hover-bg:                  $foreground-100 !default;
 $pagination-hover-border:              #ddd !default;
 
 $pagination-active-color:              #fff !default;
@@ -829,7 +829,7 @@ $list-group-active-border:      $list-group-active-bg !default;
 $list-group-active-text-color:  lighten($list-group-active-bg, 32%) !default;
 
 $list-group-disabled-color:      $foreground-600 !default;
-$list-group-disabled-bg:         $foreground-200 !default;
+$list-group-disabled-bg:         $foreground-100 !default;
 $list-group-disabled-text-color: $list-group-disabled-color !default;
 
 $list-group-link-color:         #555 !default;
@@ -862,7 +862,7 @@ $breadcrumb-padding-y:          .75rem !default;
 $breadcrumb-padding-x:          1rem !default;
 $breadcrumb-item-padding:       .5rem !default;
 
-$breadcrumb-bg:                 $foreground-200 !default;
+$breadcrumb-bg:                 $foreground-100 !default;
 $breadcrumb-divider-color:      $foreground-600 !default;
 $breadcrumb-active-color:       $foreground-600 !default;
 $breadcrumb-divider:            "/" !default;
