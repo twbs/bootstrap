@@ -104,7 +104,7 @@ Bootstrap's color palette includes a numerical range of shades for each base col
 
 ### Using the variables
 
-The Bootstrap color palette is built with variables, a Sass map, and a function. Generic variables are included for a standard set of colors (e.g., `$blue`). A subset of those variables are then referenced into the `$theme-colors` Sass map, allowing for easy generation of themed component modifier classes with the `theme-color` function.
+The Bootstrap color palette is built with variables, a Sass map, and some functions. Generic variables are included for a standard set of colors (e.g., `$red` or `$blue`). A subset of those variables are then referenced into the `$theme-colors` Sass map, allowing for easy generation of themed component modifier classes with the `theme-color` or `theme-color-level` functions.
 
 Modify the source color variables and reassign values to the theme colors in `$theme-colors` as you like.
 
@@ -138,15 +138,28 @@ $theme-colors: (
   @return map-get($theme-colors, $key);
 }
 
-// Example: Use `theme-color` function to generate color shade variables
-$primary: theme-color("primary") !default;
-$primary-100: lighten($primary, 32%) !default;
-$primary-200: lighten($primary, 24%) !default;
-$primary-300: lighten($primary, 16%) !default;
-$primary-400: lighten($primary, 8%) !default;
+// Allow us to reference mixed shades of the colors in `$theme-colors`
+@function theme-color-level($color-name: "primary", $level: 0) {
+  $color: theme-color($color-name);
+  $color-base: if($level > 0, black, white);
+
+  @if $level < 0 {
+    // Lighter values need a quick double negative for the Sass math to work
+    @return mix($color-base, $color, $level * -1 * $theme-color-interval);
+  } @else {
+    @return mix($color-base, $color, $level * $theme-color-interval);
+  }
+}
+
+// Example: Use `theme-color-level` function to generate color shade variables
+$primary: theme-color-level("primary", 0) !default;
+$primary-100: theme-color-level("primary", -9.5) !default;
+$primary-200: theme-color-level("primary", -7) !default;
+$primary-300: theme-color-level("primary", -4) !default;
+$primary-400: theme-color-level("primary", -2) !default;
 $primary-500: $primary !default;
-$primary-600: darken($primary, 8%) !default;
-$primary-700: darken($primary, 16%) !default;
-$primary-800: darken($primary, 24%) !default;
-$primary-900: darken($primary, 32%) !default;
+$primary-600: theme-color-level("primary", 2) !default;
+$primary-700: theme-color-level("primary", 4) !default;
+$primary-800: theme-color-level("primary", 6) !default;
+$primary-900: theme-color-level("primary", 8) !default;
 {% endhighlight %}
