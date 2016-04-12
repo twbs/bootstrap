@@ -100,6 +100,16 @@
 
 -
   browser: >
+    Firefox
+  summary: >
+    Fire `transitioncancel` event when a transition is canceled
+  upstream_bug: >
+    Mozilla#1264125
+  origin: >
+    Mozilla#1182856
+
+-
+  browser: >
     Firefox (Windows)
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
