@@ -3,6 +3,7 @@
 <head>
 	<title>Explore Page Example</title>
 	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
 
 	<link type="text/css" rel="stylesheet"
 		href="../dist/css/bootstrap.min.css" />
@@ -11,9 +12,41 @@
 	<script src="../dist/js/bootstrap.min.js"></script>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular-sanitize.js"></script>
 
 	<script src="forms.js"></script>
+
+	<script>
+	(function(angular) {
+		angular.module('NavbarApp', [])
+		.controller('TranslationsController', TranslationsController);
+
+		function TranslationsController() {
+			var vm = this;
+
+			vm.translations = {
+				"en": {
+					"transfers": "Transfers",
+					"history": "History",
+					"recipients": "Recipients",
+					"rewards": "Rewards",
+					"help": "Help",
+					"send1": "Send money",
+					"send2": "Send"
+				},
+				"de": {
+					"transfers": "Überweisungen",
+					"history": "Verlauf",
+					"recipients": "Empfänger",
+					"rewards": "Freunde einladen",
+					"help": "Hilfe",
+					"send1": "Geld überweisen",
+					"send2": "Überweisen"
+				}
+			}
+			vm.language = "en";
+		}
+	})(window.angular);
+	</script>
 
 	<style>
 	body {
@@ -21,11 +54,12 @@
 	}
 	</style>
 </head>
-<body>
+<body ng-app="NavbarApp">
 	<header class="navbar navbar-inverse navbar-static-top bg-primary" id="top"
 		role="banner"
 		data-spy="affix"
-		data-offset-top="60">
+		data-offset-top="60"
+		ng-controller="TranslationsController as vm">
 		<div class="container">
 			<div class="navbar-header pull-left">
 				<button class="navbar-toggle collapsed" type="button"
@@ -39,11 +73,14 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a href="../" class="navbar-brand hidden-md hidden-sm hidden-xs">TransferWise</a>
-				<a href="../" class="logo-text logo-text-inverse visible-xs-block visible-sm-block"></a>
-				<a href="../" class="flag flag-info visible-md-block"></a>
+				<a href="../" class="logo-text logo-text-inverse visible-xs-block visible-sm-block" title="TransferWise"></a>
+				<a href="../" class="flag flag-info visible-md-block" title="TransferWise"></a>
 			</div>
 			<div class="navbar-btn btn-group pull-right visible-xs visible-sm ">
-				<button type="button" class="btn btn-success">Send <span class="hidden-xs">money</span></button>
+				<button type="button" class="btn btn-success">
+					<span class="hidden-xs" ng-bind="vm.translations[vm.language].send1"></span>
+					<span class="hidden-sm" ng-bind="vm.translations[vm.language].send2"></span>
+				</button>
 				<button type="button" class="btn btn-success dropdown-toggle"
 					data-toggle="dropdown" aria-expanded="false">
 					<span class="caret"></span>
@@ -72,17 +109,20 @@
 				<div class="navbar-collapse-panel orderable-xs orderable-sm">
 					<ul class="nav navbar-nav order-2">
 						<li><a href="landing.html">
-							<i class="icon icon-transfer visible-xs-inline-block visible-sm-inline-block"></i>Transfers</a>
+							<i class="icon icon-transfer visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].transfers"></span></a>
+						</li>
+						<li class="hidden-lg hidden-md"><a href="landing.html">
+							<i class="icon icon-document visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].history"></span></a>
 						</li>
 						<li class="active">
 							<a href="create.html">
-								<i class="icon icon-joint-account visible-xs-inline-block visible-sm-inline-block"></i>Recipients</a>
+								<i class="icon icon-joint-account visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].recipients"></span></a>
 						</li>
 						<li><a href="article.html">
-							<i class="icon icon-gift visible-xs-inline-block visible-sm-inline-block"></i>Rewards</a>
+							<i class="icon icon-gift visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].rewards"></span></a>
 						</li>
-						<li><a href="article.html">
-							<i class="icon icon-help-circle visible-xs-inline-block visible-sm-inline-block"></i>Help</a>
+						<li><a href="" ng-click="vm.language = 'de'">
+							<i class="icon icon-help-circle visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].help"></span></a>
 						</li>
 						<li class="visible-xs-block visible-sm-block"><a href=""><i class="icon icon-mobile"></i>Get the app</a></li>
 						<li class="visible-xs-block visible-sm-block"><a href=""><i class="icon icon-setting"></i>Settings</a></li>
@@ -125,12 +165,12 @@
 							</li>
 							-->
 							<li class="dropdown navbar-collapse-flatten">
-								<a href="" class="dropdown-toggle"
+								<a href="" class="dropdown-toggle profile-name"
 									data-toggle="dropdown" role="button"
 									aria-expanded="false">
-									<span class="profile-name text-ellipses"
+									<span class="text-ellipses"
 										title="Jonathan Smith-Henry">
-										Jonathan Smith-Henry
+										Jonathan Smith-Henry Smith-Henry
 									</span>
 									<span class="caret"></span>
 								</a>
@@ -163,7 +203,10 @@
 						</ul>
 						<div class="navbar-right hidden-xs hidden-sm">
 							<div class="navbar-btn btn-group">
-								<button type="button" class="btn btn-success">Send <span class="hidden-xs hidden-sm hidden-md">money</span></button>
+								<button type="button" class="btn btn-success">
+									<span class="hidden-xs hidden-sm hidden-md" ng-bind="vm.translations[vm.language].send1"></span>
+									<span class="hidden-lg hidden-xl" ng-bind="vm.translations[vm.language].send2"></span>
+								</button>
 								<button type="button" class="btn btn-success dropdown-toggle"
 									data-toggle="dropdown" aria-expanded="false">
 									<span class="caret"></span>
@@ -228,7 +271,7 @@
 								<span aria-hidden="true">&times;</span>
 							</button>
 							<h4>Sorry, there was an error</h4>
-							<p>You did a bad one in that form underneath here.</p>
+							<p>This is how it will appear in real pages.</p>
 						</div>
 						<form name="testForm">
 							<fieldset class="row">
@@ -250,7 +293,9 @@
 									<label class="control-label">Error state</label>
 									<input class="form-control" placeholder="Placeholder"
 										value="Invalid" />
-									<div class="text-danger">Error messages appear beneath</div>
+									<div class="error-messages">
+										<div>Error messages appear beneath</div>
+									</div>
 								</div>
 								<div class="form-group col-sm-6 col-sm-offset-6">
 									<label class="control-label">Date controls</label>
@@ -683,7 +728,7 @@
 					</div>
 					<div class="panel-body">
 						<div class="tile-row">
-							<div class="tile-container col-sm-6 col-md-4">
+							<div class="tile-container col-xs-12 col-sm-6 col-md-4">
 								<div class="tile">
 									<div class="circle circle-lg">
 										<i class="icon icon-card"></i>
@@ -695,7 +740,7 @@
 								</div>
 							</div>
 
-							<div class="tile-container col-sm-6 col-md-4">
+							<div class="tile-container col-xs-12 col-sm-6 col-md-4">
 								<div class="tile">
 									<div class="circle circle-lg">
 										<i class="icon icon-card"></i>
@@ -706,7 +751,7 @@
 									<p>1 day slower</p>
 								</div>
 							</div>
-							<div class="tile-container col-sm-6 col-md-4">
+							<div class="tile-container col-xs-12 col-sm-6 col-md-4">
 								<div class="tile">
 									<div class="circle circle-lg">
 										<i class="icon icon-card"></i>

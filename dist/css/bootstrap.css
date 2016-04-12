@@ -5907,9 +5907,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 40px;
   font-size: 14px;
   border: 0 solid transparent;
-  -webkit-transition: border-top-width 0s linear, background-color 0s linear;
-       -o-transition: border-top-width 0s linear, background-color 0s linear;
-          transition: border-top-width 0s linear, background-color 0s linear;
+  -webkit-transition: border-top-width 0s linear, background-color .2s linear;
+       -o-transition: border-top-width 0s linear, background-color .2s linear;
+          transition: border-top-width 0s linear, background-color .2s linear;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -6065,6 +6065,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-nav > li > a {
   padding: 12px 16px;
   line-height: 24px;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-nav > li > a {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
 }
 .navbar-nav > li.divider {
   display: none;
@@ -6505,7 +6511,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   .navbar-collapse .navbar-collapse-panel {
     position: fixed;
     top: 0;
-    left: -264px;
     width: 264px;
     max-width: 264px !important;
     height: 100%;
@@ -6513,9 +6518,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     overflow-y: scroll;
     color: #223049 !important;
     background-color: #fff;
-    -webkit-transition: left .35s ease;
-         -o-transition: left .35s ease;
-            transition: left .35s ease;
+    -webkit-transition: -webkit-transform .35s ease;
+         -o-transition:      -o-transform .35s ease;
+            transition:         transform .35s ease;
+    -webkit-transform: translateX(-264px);
+        -ms-transform: translateX(-264px);
+         -o-transform: translateX(-264px);
+            transform: translateX(-264px);
   }
   .navbar-collapse .navbar-toggle {
     position: absolute;
@@ -6549,7 +6558,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   }
   .navbar-collapse.in .navbar-collapse-panel,
   .navbar-collapse[aria-expanded=true] .navbar-collapse-panel {
-    left: 0;
+    -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+         -o-transform: translateX(0);
+            transform: translateX(0);
   }
   .navbar-collapse .navbar-btn.btn-group {
     display: -webkit-box;
@@ -6570,6 +6582,31 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   }
   .navbar-collapse .navbar-btn.btn-group .dropdown-menu {
     width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .navbar-bordered:not(.affix) .navbar-collapse {
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+  }
+}
+.navbar .profile-name {
+  padding-bottom: 3px;
+}
+.navbar .profile-name .caret {
+  margin-top: -16px;
+}
+.navbar .profile-name .text-ellipses {
+  display: inline-block;
+  max-width: 95px;
+}
+@media (min-width: 992px) {
+  .navbar .profile-name .text-ellipses {
+    max-width: 140px;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar .profile-name .text-ellipses {
+    max-width: 220px;
   }
 }
 .breadcrumb {
@@ -6856,6 +6893,9 @@ a.badge:focus {
   padding: 32px 16px;
   color: #fff;
   background-color: #223049;
+  -webkit-transition: background-color .2s ease-in;
+       -o-transition: background-color .2s ease-in;
+          transition: background-color .2s ease-in;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -6893,7 +6933,7 @@ a.badge:focus {
     font-size: 22px;
   }
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1199px) {
   .jumbotron {
     text-align: center;
   }
@@ -8234,6 +8274,8 @@ button.close {
   display: -webkit-flex;
   display: -ms-flexbox;
   display:         flex;
+  margin-right: -12px;
+  margin-left: -12px;
 
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;

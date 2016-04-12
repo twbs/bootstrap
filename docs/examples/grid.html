@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Grid Complete</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<style>
+	body {
+		background-color: #f2f5f7;
+	}
+	.grid-overlay {
+		top: 0;
+		display: none;
+	}
+	.grid-overlay .col-xs-1 div {
+		background-color: rgba(255,0,0,0.1);
+
+		margin-top: -3000px;
+		height: 5000px;
+	}
+	.thumbnail img {
+		width: 100%;
+	}
+	</style>
+</head>
+<body>
+	<header class="navbar navbar-inverse navbar-static-top bg-primary" id="top"
+		role="banner"
+		data-spy="affix"
+		data-offset-top="60">
+		<div class="container">
+			<div class="navbar-header pull-left">
+				<button class="navbar-toggle collapsed" type="button"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="../" class="navbar-brand hidden-xs hidden-sm">TransferWise</a>
+				<a href="../" class="logo-text logo-text-inverse visible-xs-block visible-sm-block"></a>
+			</div>
+			<div class="navbar-btn pull-right">
+				<button type="button" class="btn btn-success" id="toggle-overlay">Toggle Grid</button>
+			</div>
+		</div>
+	</header>
+	<div class="container m-t-3">
+		<div class="row">
+			<div class="col-xl-10 col-xl-offset-1 col-md-10 col-md-offset-1 col-lg-12 col-lg-offset-0">
+				<div class="row">
+					<div class="col-sm-6 col-lg-4">
+						<div class="thumbnail">
+							<div class="row">
+								<div class="col-xs-6 col-sm-12">
+									<img src="../assets/img/css2-bg.jpg" alt="...">
+								</div>
+								<div class="col-xs-6 col-sm-12">
+									<div class="caption">
+										<h4>Thumbnail One</h4>
+										<p>Example image</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-lg-4">
+						<div class="thumbnail">
+							<div class="row">
+								<div class="col-xs-6 col-sm-12">
+									<img src="../assets/img/css2-bg.jpg" alt="...">
+								</div>
+								<div class="col-xs-6 col-sm-12">
+									<div class="caption">
+										<h4>Thumbnail Two</h4>
+										<p>Example image</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-lg-4 hidden-sm hidden-md">
+						<div class="thumbnail">
+							<div class="row">
+								<div class="col-xs-6 col-sm-12">
+									<img src="../assets/img/css2-bg.jpg" alt="...">
+								</div>
+								<div class="col-xs-6 col-sm-12">
+									<div class="caption">
+										<h4>Thumbnail Three</h4>
+										<p>Example image</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<button class="btn btn-primary pull-lg-right">
+						More
+					</button>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="m-t-3">
+			<h1 class="text-center">
+				<span class="visible-xs-block">XS &lt;576px</span>
+				<span class="visible-sm-block">576px &lt; SM &lt;768px</span>
+				<span class="visible-md-block">768px &lt; MD &lt;992px</span>
+				<span class="visible-lg-block">992px &lt; LG &lt;1200px</span>
+				<span class="visible-xl-block">1200px &lt; XL</span>
+			</h1>
+		</div>
+	</div>
+
+	<div class="container grid-overlay">
+		<div class="row">
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+			<div class="col-xs-1"><div></div></div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#toggle-overlay').on('click', function() {
+			$('.grid-overlay').toggle();
+		});
+	});
+	</script>
+</body>
+</html>
