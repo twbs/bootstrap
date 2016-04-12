@@ -3,6 +3,7 @@
 <head>
 	<title>Front Page Example</title>
 	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
 
 	<link type="text/css" rel="stylesheet"
 		href="../dist/css/bootstrap.min.css" />
@@ -10,48 +11,135 @@
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="../dist/js/bootstrap.min.js"></script>
 
-	<style>
-	body {
-		background-color: #f2f5f7;
-	}
-	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+
+	<script>
+	(function(angular) {
+		angular.module('NavbarApp', [])
+		.controller('TranslationsController', TranslationsController);
+
+		function TranslationsController() {
+			var vm = this;
+
+			vm.translations = {
+				"en": {
+					"language": "English",
+					"business": "Business",
+					"requestMoney": "Request money",
+					"help": "Help",
+					"login": "Login",
+					"getApp": "Get the app",
+					"signUp": "Sign up"
+				},
+				"de": {
+					"language": "Deutsch",
+					"business": "Geschäftlich",
+					"requestMoney": "Geld anfordern",
+					"help": "Hilfe",
+					"login": "Einloggen",
+					"getApp": "Get the app",
+					"signUp": "Registrieren"
+				}
+			}
+			vm.language = "en";
+		}
+	})(window.angular);
+	</script>
 </head>
-<body>
-	<header class="navbar navbar-inverse navbar-static-top affix-top" id="top"
+<body ng-app="NavbarApp">
+	<header class="navbar navbar-inverse navbar-bordered navbar-static-top affix-top" id="top"
 		role="banner"
 		data-spy="affix"
-		data-offset-top="60">
+		data-offset-top="60"
+		ng-controller="TranslationsController as vm">
 		<div class="container">
-			<div class="navbar-header">
+			<div class="navbar-header pull-left">
 				<button class="navbar-toggle collapsed" type="button"
 					data-toggle="collapse"
-					data-target="#bs-navbar"
-					aria-controls="bs-navbar"
+					data-target="#navbar"
+					aria-controls="navbar"
 					aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="../" class="navbar-brand">Bootstrap</a>
+				<a href="../" class="navbar-brand hidden-sm hidden-xs">TransferWise</a>
+				<a href="../" class="logo-text logo-text-inverse visible-xs-block visible-sm-block" title="TransferWise"></a>
 			</div>
-			<nav id="bs-navbar" class="collapse navbar-collapse">
+
+			<div class="navbar-btn pull-right  "> <!-- visible-xs visible-sm -->
+				<button type="button" class="btn btn-image" ng-bind="vm.translations[vm.language].signUp"></button>
+			</div>
+			<nav id="navbar" class="collapse navbar-collapse navbar-collapse-with-panel">
+				<a class="cover collapsed"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-controls="navbar"
+					aria-expanded="false">
+				</a>
+				<div class="navbar-collapse-panel">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="" class="dropdown-toggle"
+								data-toggle="dropdown"
+								role="button"
+								aria-expanded="false">
+								<i class="icon icon-globe visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].language"></span>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li class="active"><a href="" ng-click="vm.language = 'en'">English</a></li>
+								<li><a href="">French</a></li>
+								<li><a href="">Spanish</a></li>
+								<li><a href="" ng-click="vm.language = 'de'">German</a></li>
+								<li><a href="">Italian</a></li>
+							</ul>
+						</li>
+						<li><a href="landing.html">
+							<i class="icon icon-briefcase visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].business"></span></a>
+						</li>
+						<li>
+							<a href="create.html">
+								<i class="icon icon-request visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].requestMoney"></span></a>
+						</li>
+						<li><a href="article.html">
+							<i class="icon icon-help-circle visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].help"></span></a>
+						</li>
+						<li><a href="article.html">
+							<i class="icon icon-profile visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].login"></span></a>
+						</li>
+						<li class="divider visible-xs-block visible-sm-block"></li>
+						<li class="visible-xs-block visible-sm-block"><a href=""><i class="icon icon-mobile"></i><span ng-bind="vm.translations[vm.language].getApp"></span></a></li>
+					</ul>
+				</div>
+				<a href="" role="button"
+					class="navbar-toggle close collapsed"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-controls="navbar"
+					aria-expanded="false">&times;</a>
+			</nav>
+
+			<!--
+			<nav id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="landing.html">Front</a></li>
 					<li><a href="explore.html">Explore</a></li>
 					<li><a href="article.html">Article</a></li>
 				</ul>
 			</nav>
+			-->
 		</div>
 	</header>
 	<div class="jumbotron-image" style="background-image: url('http://bootstrap.transferwise.com/assets/img/css2-bg.jpg')">
 		<main class="jumbotron" id="content" role="main" tabindex="-1">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-8 col-lg-7">
+					<div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 col-xl-7 col-xl-offset-0">
 						<h1>Landing Pages</h1>
 						<p class="lead">
-							Landing pages uses a <em>jumbotron</em> with
+							Landing pages use a <em>jumbotron</em> with
 							background imagery.  The imagery should have a focal
 							point on the right hand side of the page
 						</p>
@@ -66,7 +154,6 @@
 								Large buttons
 							</a>
 						</p>
-						<p>Currently v3.3.4</p>
 					</div>
 				</div>
 			</div>
@@ -82,7 +169,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3">
-					<p class="m-t-lg">Text is centred and the colour of text is reactive to the background
+					<p class="m-t-3">Text is centred and the colour of text is reactive to the background
 						colour.  The first section following a jumbotron should be have a
 						white or grey background.  The title of a section uses h2.
 					</p>
@@ -100,7 +187,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
-					<p class="lead m-t-lg">Triptychs have 3 columns of andnormally feature
+					<p class="lead m-t-3">Triptychs have 3 columns and normally feature
 						iconography. If preceded by text it should use <em>lead</em>.
 						Triptychs should feature the approximately the same amount
 						of text in each column.
@@ -108,7 +195,10 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-4 m-b-lg">
+				<div class="col-md-4 m-b-3">
+					<div class="circle circle-lg m-b-2">
+						<i class="icon icon-bank"></i>
+					</div>
 					<h3>Landing Template</h3>
 					<p>Our landing template features a <em>jumbotron</em> and a number of
 						<em>sections</em>.
@@ -117,7 +207,10 @@
 						first arrive on the site, or when entering a new section of
 						the site, e.g. business</p>
 				</div>
-				<div class="col-sm-4 m-b-lg">
+				<div class="col-md-4 m-b-3">
+					<div class="circle circle-lg m-b-2">
+						<i class="icon icon-bank"></i>
+					</div>
 					<h3>Create Template</h3>
 					<p>The create template is used for forms and where we expect a
 						user to create something.  It uses a two column layout with
@@ -126,7 +219,10 @@
 					</p>
 					<a href="create.html" class="">Create Template</a>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-md-4">
+					<div class="circle circle-lg m-b-2">
+						<i class="icon icon-bank"></i>
+					</div>
 					<h3>Consume template</h3>
 					<p>the consume template is for us to share information with the
 						user it features one central column of information in a
@@ -137,7 +233,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="section bg-default text-center">
+	<section class="section text-center">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
@@ -145,25 +241,100 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-md-3">
 					<p>Lorem ipsum</p>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-md-3">
 					<p>Lorem ipsum</p>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-md-3">
 					<p>Lorem ipsum</p>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-md-3">
 					<p>Lorem ipsum</p>
 				</div>
 			</div>
 		</div>
 	</section>
+
 	<footer class="footer">
 		<div class="container">
-			<p>Footer text is smaller than the rest of the page</p>
-			<p>Footers contain list of links to other parts of the site</p>
+			<div class="row">
+				<div class="col-md-7">
+					<h2>Get the app</h2>
+					<p>Track your transfers or make new ones on the go, all in
+						a couple of taps.</p>
+				</div>
+				<div class="col-md-5">
+					<div class="pull-md-right">
+						<button class="btn btn-primary btn-lg">App Store</button>
+						<button class="btn btn-primary btn-lg">Google Play</button>
+					</div>
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<h5 class="m-b-md"><a href="">Company &amp; Team</a></h5>
+					<ul class="list-unstyled">
+						<li><a href="">Company &amp; Team</a></li>
+						<li><a href="">News &amp; Blog</a></li>
+						<li><a href="">Press</a></li>
+						<li><a href="">Careers</a></li>
+						<li><a href="">Affiliates &amp; Partnerships</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<h5 class="m-b-md"><a href="">Help &amp; Support</a></h5>
+					<ul class="list-unstyled">
+						<li><a href="">Getting Started</a></li>
+						<li><a href="">Pricing</a></li>
+						<li><a href="">Supported Currencies</a></li>
+						<li><a href="">Best Price Guarantee</a></li>
+						<li><a href="">FAQ</a></li>
+						<li><a href="">SWIFT/BIC Codes</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<h5 class="m-b-md"><a href="">Contact</a></h5>
+					<ul class="list-unstyled">
+						<li><a href="">support@transferwise.com</a></li>
+						<li><a href="">UK: +44(0) 203 6950 999</a></li>
+						<li><a href="">More Ways</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<h5 class="m-b-md">Follow us</h5>
+					<button class="btn btn-info btn-sm">
+						F
+					</button>
+					<button class="btn btn-info btn-sm">
+						G+
+					</button>
+					<button class="btn btn-info btn-sm">
+						T
+					</button>
+				</div>
+			</div>
+			<hr />
+			<p>TransferWise is a registered money service business. Her Majesty's
+				Revenue and Customs certificate number <a href="">12591871</a>.
+				We are authorised by the UK Financial Conduct Authority (FCA) as
+				a payments institution with reference <a href="">571669</a>.
+
+				&copy; TransferWise Ltd 2012
+			</p>
+
+
+			<ul class="list-inline">
+				<li><a href="">Terms of use</a></li>
+				<li><a href="">Privacy policy</a></li>
+				<li><a href="">Cookie policy</a></li>
+			</ul>
+			<!--
+			<p>TransferWise is secured with 256-bit SSL encryption.  All card
+			payments are fully PCI (DSS 2.0 standard) Level 1 compliant.</p>
+		-->
 		</div>
 	</footer>
 </body>
