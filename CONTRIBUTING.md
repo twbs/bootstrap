@@ -32,7 +32,7 @@ restrictions:
   [`Normalize`](https://github.com/necolas/normalize.css) (open them in
   their respective repositories).
 
-* Please **do not** open issues regarding the official themes offered on <http://themes.getbootstrap.com/>.
+* Please **do not** open issues regarding the official themes offered on <https://themes.getbootstrap.com/>.
   Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
 
 
@@ -62,7 +62,7 @@ Good bug reports are extremely helpful, so thanks!
 
 Guidelines for bug reports:
 
-0. **Validate and lint your code** &mdash; [validate your HTML](http://html5.validator.nu)
+0. **Validate and lint your code** &mdash; [validate your HTML](https://validator.w3.org)
    and [lint your HTML](https://github.com/twbs/bootlint) to ensure your
    problem isn't caused by a simple error in your own code.
 
@@ -74,7 +74,7 @@ Guidelines for bug reports:
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
    case](https://css-tricks.com/reduced-test-cases/) and a live example.
-   [This JS Bin](http://jsbin.com/lefey/1/edit?html,output) is a helpful template.
+   [This JS Bin](https://jsbin.com/lefey/1/edit?html,output) is a helpful template.
 
 
 A good bug report shouldn't leave others needing to chase you up for more
@@ -105,7 +105,7 @@ Example:
 ### Reporting upstream browser bugs
 
 Sometimes bugs reported to us are actually caused by bugs in the browser(s) themselves, not bugs in Bootstrap per se.
-When feasible, we aim to report such upstream bugs to the relevant browser vendor(s), and then list them on our [Wall of Browser Bugs](http://getbootstrap.com/browser-bugs/) and [document them in MDN](https://developer.mozilla.org/en-US/docs/Web).
+When feasible, we aim to report such upstream bugs to the relevant browser vendor(s), and then list them on our [Wall of Browser Bugs](https://getbootstrap.com/browser-bugs/) and [document them in MDN](https://developer.mozilla.org/en-US/docs/Web).
 
 | Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                                                              | Notes                                                    |
 | ------------- | ---------------------------- | ---------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
