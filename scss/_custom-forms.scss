@@ -161,6 +161,12 @@
     @include box-shadow($custom-select-focus-box-shadow);
   }
 
+  &:disabled {
+    color: $custom-select-disabled-color;
+    cursor: $cursor-disabled;
+    background-color: $custom-select-disabled-bg;
+  }
+
   // Hides the default caret in IE11
   &::-ms-expand {
     opacity: 0;

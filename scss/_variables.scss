@@ -382,8 +382,10 @@ $custom-radio-checked-icon: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='h
 $custom-select-padding-x:          .75rem  !default;
 $custom-select-padding-y:          .375rem !default;
 $custom-select-indicator-padding:  1rem !default; // Extra padding to account for the presence of the background-image based indicator
-$custom-select-color:         $input-color !default;
+$custom-select-color:          $input-color !default;
+$custom-select-disabled-color: $gray-light !default;
 $custom-select-bg:            #fff !default;
+$custom-select-disabled-bg:   $gray-lighter !default;
 $custom-select-bg-size:       8px 10px !default; // In pixels because image dimensions
 $custom-select-indicator:     url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") !default;
 $custom-select-border-width:  $input-btn-border-width !default;
