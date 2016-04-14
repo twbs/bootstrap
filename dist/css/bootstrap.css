@@ -5046,7 +5046,7 @@ base::-moz-progress-bar,
 }
 
 .list-group-item.active .list-group-item-text, .list-group-item.active:focus .list-group-item-text, .list-group-item.active:hover .list-group-item-text {
-  color: #7fc3fe;
+  color: #daeeff;
 }
 
 .list-group-flush .list-group-item {
@@ -5248,14 +5248,14 @@ button.list-group-item-danger.active:hover {
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
-  opacity: .2;
+  opacity: .42;
 }
 
 .close:focus, .close:hover {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-  opacity: .5;
+  opacity: .65;
 }
 
 button.close {
