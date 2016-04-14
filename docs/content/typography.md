@@ -211,7 +211,7 @@ Remove the default `list-style` and left margin on list items (immediate childre
 
 ### Inline
 
-Place all list items on a single line with `display: inline-block;` and some basic margin between.
+Remove a list's bullets and apply some light `margin` with a combination of two classes, `.list-inline` and `.list-inline-item`.
 
 {% example html %}
 <ul class="list-inline">

@@ -3,7 +3,7 @@ module Jekyll
     def bugify(input)
       upstream_map = {
         "Bootstrap" => "https://github.com/twbs/bootstrap/issues/",
-        "IE" => ["https://connect.microsoft.com/IE/feedback/details/", "IE bug"],
+        "Edge" => ["https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/", "Edge issue"],
         "Mozilla" => ["https://bugzilla.mozilla.org/show_bug.cgi?id=", "Mozilla bug"],
         "Chromium" => ["https://bugs.chromium.org/p/chromium/issues/detail?id=", "Chromium issue"],
         "WebKit" => ["https://bugs.webkit.org/show_bug.cgi?id=", "WebKit bug"],
