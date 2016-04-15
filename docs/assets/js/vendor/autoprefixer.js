@@ -15043,7 +15043,7 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var Container = _interopRequire(require("./container"));
 
-// CSS at-rule like “this.keyframes name { }”.
+// CSS at-rule like ï¿½this.keyframes name { }ï¿½.
 //
 // Can contain declarations (like this.font-face or this.page) ot another rules.
 
@@ -15819,7 +15819,7 @@ var vendor = _interopRequire(require("./vendor"));
 
 var Node = _interopRequire(require("./node"));
 
-// CSS declaration like “color: black” in rules
+// CSS declaration like ï¿½color: blackï¿½ in rules
 
 var Declaration = (function (Node) {
     function Declaration(defaults) {
@@ -16019,7 +16019,7 @@ module.exports = {
         return array;
     },
 
-    // Split list devided by space:
+    // Split list divided by space:
     //
     //   list.space('a b') #=> ['a', 'b']
     //
@@ -16030,7 +16030,7 @@ module.exports = {
         return this.split(string, [" ", "\n", "\t"]);
     },
 
-    // Split list devided by comma
+    // Split list divided by comma
     //
     //   list.comma('a, b') #=> ['a', 'b']
     //
@@ -17791,7 +17791,7 @@ var Container = _interopRequire(require("./container"));
 
 var list = _interopRequire(require("./list"));
 
-// CSS rule like “a { }”
+// CSS rule like ï¿½a { }ï¿½
 
 var Rule = (function (Container) {
     function Rule(defaults) {
@@ -18869,7 +18869,7 @@ define(function (require, exports, module) {
   /**
    * Returns the original source content. The only argument is the url of the
    * original source file. Returns null if no original source content is
-   * availible.
+   * available.
    */
   BasicSourceMapConsumer.prototype.sourceContentFor =
     function SourceMapConsumer_sourceContentFor(aSource, nullOnMissing) {
