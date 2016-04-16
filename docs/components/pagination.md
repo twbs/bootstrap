@@ -16,7 +16,7 @@ Provide pagination links for your site or app with the multi-page pagination com
 Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.
 
 {% example html %}
-<nav>
+<nav aria-label="Page navigation">
   <ul class="pagination">
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Previous">
@@ -39,6 +39,12 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
 </nav>
 {% endexample %}
 
+{% callout info %}
+### Labelling the pagination component
+
+The pagination component should be wrapped in a `<nav>` element to identify it as a navigation section to screen readers and other assistive technologies. In addition, as a page is likely to have more than one such navigation section already (such as the primary navigation in the header, or a sidebar navigation), it is advisable to provide a descriptive `aria-label` for the `<nav>` which reflects its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be `aria-label="Search results pages"`.
+{% endcallout %}
+
 ## Disabled and active states
 
 Links are customizable for different circumstances. Use `.disabled` for unclickable links and `.active` to indicate the current page.
@@ -50,7 +56,7 @@ The `.disabled` class uses `pointer-events: none` to try to disable the link fun
 {% endcallout %}
 
 {% example html %}
-<nav>
+<nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
       <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
@@ -78,7 +84,7 @@ The `.disabled` class uses `pointer-events: none` to try to disable the link fun
 You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality and prevent keyboard focus while retaining intended styles.
 
 {% example html %}
-<nav>
+<nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
       <span class="page-link" aria-label="Previous">
@@ -97,7 +103,7 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
 Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for additional sizes.
 
 {% example html %}
-<nav>
+<nav aria-label="...">
   <ul class="pagination pagination-lg">
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Previous">
@@ -119,7 +125,7 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {% endexample %}
 
 {% example html %}
-<nav>
+<nav aria-label="...">
   <ul class="pagination pagination-sm">
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Previous">
