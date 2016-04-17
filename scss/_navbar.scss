@@ -86,7 +86,7 @@
 
 .navbar-divider {
   float: left;
-  width: 1px;
+  width: $border-width;
   padding-top: .425rem;
   padding-bottom: .425rem;
   margin-right: $navbar-padding-x;
