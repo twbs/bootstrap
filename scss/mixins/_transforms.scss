@@ -1,0 +1,14 @@
+// Applies the given styles only when the browser support CSS3 3D transforms.
+@mixin if-supports-3d-transforms() {
+  @media (-webkit-transform-3d) {
+    // Old Safari, Old Android
+    // http://caniuse.com/#feat=css-featurequeries
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/@media/-webkit-transform-3d
+    @content;
+  }
+
+  @supports (transform: translate3d(0,0,0)) {
+    // The Proper Way: Using a CSS feature query
+    @content;
+  }
+}
