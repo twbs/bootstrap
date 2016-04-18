@@ -244,9 +244,13 @@ $table-cell-padding:            .75rem !default;
 $table-sm-cell-padding:         .3rem !default;
 
 $table-bg:                      transparent !default;
+$table-bg-inverse:              $gray-dark !default;
 $table-bg-accent:               #f9f9f9 !default;
 $table-bg-hover:                #f5f5f5 !default;
 $table-bg-active:               $table-bg-hover !default;
+
+$table-head-bg:                 $gray-lighter !default;
+$table-head-color:              $gray !default;
 
 $table-border-width:            $border-width !default;
 $table-border-color:            $gray-lighter !default;
@@ -750,6 +754,7 @@ $thumbnail-box-shadow:        0 1px 2px rgba(0,0,0,.075) !default;
 // Figures
 
 $figure-caption-font-size: 90% !default;
+$figure-caption-color:     $gray-light !default;
 
 
 // Breadcrumbs
