@@ -230,6 +230,26 @@
 
 -
   browser: >
+    Safari
+  summary: >
+    `rem` units in media queries should be calculated using `font-size: initial`, not the root element's `font-size`
+  upstream_bug: >
+    WebKit#156684
+  origin: >
+    Bootstrap#17403
+
+-
+  browser: >
+    Safari (OS X)
+  summary: >
+    `px`, `em`, and `rem` should all behave the same in media queries when page zoom is applied
+  upstream_bug: >
+    WebKit#156687
+  origin: >
+    Bootstrap#17403
+
+-
+  browser: >
     Safari (OS X)
   summary: >
     Weird button behavior with some `<input type="number">` elements.
