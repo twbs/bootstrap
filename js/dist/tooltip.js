@@ -209,7 +209,6 @@ var Tooltip = (function ($) {
         this._timeout = null;
         this._hoverState = null;
         this._activeTrigger = null;
-        this._tether = null;
 
         this.element = null;
         this.config = null;
@@ -381,6 +380,7 @@ var Tooltip = (function ($) {
       value: function cleanupTether() {
         if (this._tether) {
           this._tether.destroy();
+          this._tether = null;
         }
       }
 

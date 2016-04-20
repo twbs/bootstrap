@@ -232,7 +232,6 @@ const Tooltip = (($) => {
       this._timeout        = null
       this._hoverState     = null
       this._activeTrigger  = null
-      this._tether         = null
 
       this.element = null
       this.config  = null
@@ -409,6 +408,7 @@ const Tooltip = (($) => {
     cleanupTether() {
       if (this._tether) {
         this._tether.destroy()
+        this._tether = null
       }
     }
 

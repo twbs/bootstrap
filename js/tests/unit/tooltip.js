@@ -14,9 +14,11 @@ $(function () {
       $.fn.bootstrapTooltip = $.fn.tooltip.noConflict()
     },
     afterEach: function () {
+      // Dispose tooltip to make sure all tethers get destroyed after each test
+      $('.tooltip').bootstrapTooltip('dispose')
+
       $.fn.tooltip = $.fn.bootstrapTooltip
       delete $.fn.bootstrapTooltip
-      $('.tooltip').remove()
     }
   })
 
@@ -334,6 +336,26 @@ $(function () {
 
     $('.tooltip').bootstrapTooltip('toggle')
     assert.ok($('.tooltip').not('.fade.in'), 'tooltip was faded out')
+  })
+
+  QUnit.test('should not error when hiding the tooltip second time', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    $('<div title="tooltip title"/>')
+      .appendTo('#qunit-fixture')
+      .on('shown.bs.tooltip', function () {
+        assert.ok(true, 'tooltip shown')
+
+        $(this)
+          .bootstrapTooltip('hide')
+          .bootstrapTooltip('hide')
+
+        assert.ok(true, 'did not throw error')
+        done()
+      })
+      .bootstrapTooltip({ trigger: 'manual' })
+      .bootstrapTooltip('show')
   })
 
   QUnit.test('should place tooltips inside body when container is body', function (assert) {
