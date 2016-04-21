@@ -18,7 +18,7 @@
     this.$element      = $(element)
     this.options       = $.extend({}, Collapse.DEFAULTS, options)
     this.$trigger      = $('[data-toggle="collapse"][href="#' + element.id + '"],' +
-                           '[data-toggle="collapse"][data-target="' + (options.target || ("#" + element.id)) + '"]')
+                           '[data-toggle="collapse"][data-target="' + (options.target || ('#' + element.id)) + '"]')
     this.transitioning = null
 
     if (this.options.parent) {
