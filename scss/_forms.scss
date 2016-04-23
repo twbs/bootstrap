@@ -118,38 +118,6 @@ select.form-control {
 }
 
 
-// Todo: clear this up
-
-// Special styles for iOS temporal inputs
-//
-// In Mobile Safari, setting `display: block` on temporal inputs causes the
-// text within the input to become vertically misaligned. As a workaround, we
-// set a pixel line-height that matches the given height of the input, but only
-// for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
-//
-// Note that as of 8.3, iOS doesn't support `week`.
-
-_::-webkit-full-page-media, // Hack to make this CSS be Safari-only; see http://browserbu.gs/css-hacks/webkit-full-page-media/
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
-  &.form-control {
-    line-height: $input-height;
-  }
-
-  &.input-sm,
-  .input-group-sm &.form-control {
-    line-height: $input-height-sm;
-  }
-
-  &.input-lg,
-  .input-group-lg &.form-control {
-    line-height: $input-height-lg;
-  }
-}
-
-
 // Static form control text
 //
 // Apply class to an element to make any string of text align with labels in a

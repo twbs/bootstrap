@@ -317,6 +317,18 @@ textarea {
   border-radius: 0;
 }
 
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  // Remove the default appearance of temporal inputs to avoid a Mobile Safari
+  // bug where setting a custom line-height prevents text from being vertically
+  // centered within the input.
+  //
+  // Bug report: https://github.com/twbs/bootstrap/issues/11266
+  -webkit-appearance: listbox;
+}
+
 textarea {
   // Textareas should really only resize vertically so they don't break their (horizontal) containers.
   resize: vertical;
