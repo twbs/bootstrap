@@ -2151,6 +2151,11 @@ select.form-control:not([size]):not([multiple]) {
   height: 2.5rem;
 }
 
+select.form-control:focus::-ms-value {
+  color: #55595c;
+  background-color: #fff;
+}
+
 .form-control-file,
 .form-control-range {
   display: block;
@@ -3730,6 +3735,11 @@ input[type="button"].btn-block {
 .custom-select:focus {
   border-color: #51a7e8;
   outline: none;
+}
+
+.custom-select:focus::-ms-value {
+  color: #55595c;
+  background-color: #fff;
 }
 
 .custom-select::-ms-expand {

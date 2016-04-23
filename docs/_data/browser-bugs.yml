@@ -4,7 +4,7 @@
   summary: >
     Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
   upstream_bug: >
-    IE#2445370
+    Edge#6793560
   origin: >
     Bootstrap#18692
 
@@ -54,7 +54,7 @@
   summary: >
     `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
   upstream_bug: >
-    IE#2256049
+    Edge#7165383
   origin: >
     Bootstrap#18543
 
@@ -97,6 +97,16 @@
     Mozilla#1228802
   origin: >
     Bootstrap#18365
+
+-
+  browser: >
+    Firefox
+  summary: >
+    Fire `transitioncancel` event when a transition is canceled
+  upstream_bug: >
+    Mozilla#1264125
+  origin: >
+    Mozilla#1182856
 
 -
   browser: >
@@ -162,16 +172,6 @@
   browser: >
     Chrome
   summary: >
-    Incorrect viewport size used for media queries when printing.
-  upstream_bug: >
-    Chromium#273306
-  origin: >
-    Bootstrap#12078
-
--
-  browser: >
-    Chrome
-  summary: >
     CSS infinite linear animation with alpha transparency leaks memory.
   upstream_bug: >
     Chromium#429375
@@ -230,13 +230,23 @@
 
 -
   browser: >
+    Safari
+  summary: >
+    `rem` units in media queries should be calculated using `font-size: initial`, not the root element's `font-size`
+  upstream_bug: >
+    WebKit#156684
+  origin: >
+    Bootstrap#17403
+
+-
+  browser: >
     Safari (OS X)
   summary: >
-    Scrollbar clipped in `select[multiple]` with padding.
+    `px`, `em`, and `rem` should all behave the same in media queries when page zoom is applied
   upstream_bug: >
-    WebKit#128489, Safari#19208483
+    WebKit#156687
   origin: >
-    Bootstrap#12536
+    Bootstrap#17403
 
 -
   browser: >
