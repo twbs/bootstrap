@@ -211,6 +211,7 @@ The following variables have been removed in v4.0.0. Use the `media-breakpoint-u
 
 The responsive utility classes have also been overhauled.
 
+- The `.hidden` and `.show` classes have been removed because they conflicted with jQuery's `$(...).hide()` and `$(...).show()` methods; you will instead need to use `style="display: none;", `style="display: block;" or `.invisible`.
 - The old classes (`.hidden-xs` `.hidden-sm` `.hidden-md` `.hidden-lg` `.visible-xs-block` `.visible-xs-inline` `.visible-xs-inline-block` `.visible-sm-block` `.visible-sm-inline` `.visible-sm-inline-block` `.visible-md-block` `.visible-md-inline` `.visible-md-inline-block` `.visible-lg-block` `.visible-lg-inline` `.visible-lg-inline-block`) are gone.
 - They have been replaced by `.hidden-xs-up` `.hidden-xs-down` `.hidden-sm-up` `.hidden-sm-down` `.hidden-md-up` `.hidden-md-down` `.hidden-lg-up` `.hidden-lg-down`.
 - The `.hidden-*-up` classes hide the element when the viewport is at the given breakpoint or larger (e.g. `.hidden-md-up` hides an element on medium, large, and extra-large devices).
@@ -223,7 +224,6 @@ Note that the changes to the grid breakpoints in v4 means that you'll need to go
 ## Misc notes to prioritize
 
 - Removed the `min--moz-device-pixel-ratio` typo hack for retina media queries
-- Dropped `.hidden` and `.show` because they conflict with jQuery's `$(...).hide()` and `$(...).show()` methods.
 - Change buttons' `[disabled]` to `:disabled` as IE9+ supports `:disabled`. However `fieldset[disabled]` is still necessary because [native disabled fieldsets are still buggy in IE11](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#Browser_compatibility).
 
 TODO: audit list of stuff in v3 that was marked as deprecated
