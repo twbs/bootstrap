@@ -58,10 +58,10 @@
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
+  position: relative; // Allow color changes via dropdown-bg-variant()
   height: 1px;
   margin: $dropdown-divider-margin-y 0;
   background-color: $dropdown-divider-bg;
-  position: relative; // Allow color changes via dropdown-bg-variant()
 }
 
 // Links, buttons, and more within the dropdown menu
