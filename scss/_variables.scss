@@ -435,9 +435,15 @@ $dropdown-min-width:             160px !default;
 $dropdown-padding-y:             5px !default;
 $dropdown-margin-top:            2px !default;
 $dropdown-bg:                    #fff !default;
+$dropdown-primary-bg:            lighten($brand-light-primary, 60%);
+$dropdown-success-bg:            $state-success-bg;
+$dropdown-info-bg:               $state-warning-bg;
+$dropdown-warning-bg:            $state-warning-bg;
+$dropdown-danger-bg:             $state-danger-bg;
 $dropdown-border-color:          rgba(0,0,0,.15) !default;
 $dropdown-border-width:          $border-width !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
+$dropdown-divider-margin-y:      $spacer-y / 2;
 $dropdown-box-shadow:            0 6px 12px rgba(0,0,0,.175) !default;
 
 $dropdown-link-color:            $gray-dark !default;

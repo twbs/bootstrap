@@ -104,6 +104,23 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 </div>
 {% endexample %}
 
+## Contextual classes
+
+Add any of the below mentioned modifier classes to change the appearance of a dropdown items.
+
+{% example html %}
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="#">Regular link</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item dropdown-primary" href="#">Highlighted primary link</a>
+  <a class="dropdown-item dropdown-success" href="#">Highlighted success link</a>
+  <a class="dropdown-item dropdown-info" href="#">Highlighted info link</a>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item dropdown-warning" href="#">Highlighted warning link</a>
+  <a class="dropdown-item dropdown-danger" href="#">Highlighted danger link</a>
+</div>
+{% endexample %}
+
 ## Usage
 
 Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.open` class on the parent list item.
