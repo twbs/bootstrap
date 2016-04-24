@@ -5,7 +5,7 @@
     background-color: $background;
   }
   // the divider that comes after a dropdown-item with color
-  .dropdown-#{$state} + .dropdown-divider:before {
+  .dropdown-#{$state} + .dropdown-divider::before {
     content: '';
     position: absolute;
     height: $dropdown-divider-margin-y;
@@ -18,12 +18,12 @@
     margin-top: -$dropdown-divider-margin-y;
     border-top: $dropdown-divider-margin-y $background solid;
   }
-  .dropdown-item.dropdown-#{$state}:first-child {
+  .dropdown-#{$state}:first-child {
     margin-top: -$dropdown-divider-margin-y;
     border-top: $dropdown-divider-margin-y $background solid;
     @include border-top-radius($border-radius);
   }
-  .dropdown-item.dropdown-#{$state}:last-child {
+  .dropdown-#{$state}:last-child {
     margin-bottom: -$dropdown-divider-margin-y;
     border-bottom: $dropdown-divider-margin-y $background solid;
     @include border-bottom-radius($border-radius);
