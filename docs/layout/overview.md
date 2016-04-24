@@ -139,6 +139,7 @@ These media queries are also available via Sass mixins:
 @include media-breakpoint-only(md) { ... }
 @include media-breakpoint-only(lg) { ... }
 @include media-breakpoint-only(xl) { ... }
+{% endhighlight %}
 
 And finally media that spans multiple breakpoint widths:
 
