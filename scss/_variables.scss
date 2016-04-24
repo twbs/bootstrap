@@ -435,7 +435,7 @@ $dropdown-min-width:             160px !default;
 $dropdown-padding-y:             5px !default;
 $dropdown-margin-top:            2px !default;
 $dropdown-bg:                    #fff !default;
-$dropdown-primary-bg:            lighten($brand-light-primary, 60%);
+$dropdown-primary-bg:            lighten($brand-primary, 60%); // todo, find a good color or remove the primary-bg
 $dropdown-success-bg:            $state-success-bg;
 $dropdown-info-bg:               $state-warning-bg;
 $dropdown-warning-bg:            $state-warning-bg;
