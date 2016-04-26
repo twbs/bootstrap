@@ -670,74 +670,57 @@ form.bs-docs-example {
 /* Ads in headers
 -------------------------------------------------- */
 
-.subhead h1,
-.subhead .lead {
-  margin-right: 340px;
-}
-
-.carbonad {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 0 !important;
-  padding: 15px;
-  height: auto !important;
-  overflow: hidden; /* clearfix */
-  font-size: 13px !important;
-  line-height: 16px !important;
-  background: #222 !important; /* reset image and color in one line */
-  background: rgba(0,0,0,.5) !important;
-  border: 0 !important;
-  border-radius: 4px;
-  box-shadow: inset 0 3px 5px rgba(0,0,0,.5), 0 1px 0 rgba(255,255,255,.1);
-}
-.carbonad-img {
-  margin: 0 !important;
-}
-.carbonad-text,
-.carbonad-tag,
-.carbonad-tag a {
-  color: #fff !important;
-}
-.carbonad-text,
-.carbonad-tag {
-  float: none !important;
-  display: block !important;
-  width: auto !important;
-  height: auto !important;
-  margin-left: 145px !important;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-}
-.carbonad-text {
-  padding-top: 0 !important;
-}
-.carbonad-tag {
-  text-align: left !important;
-}
-
-/* Ads on homepage */
-.masthead .carbonad {
-  position: static;
-  margin: 30px auto 0 !important;
-  text-align: left !important;
-}
-
-@media (max-width: 980px) {
-  .carbonad {
-    position: static;
-    width: auto !important;
-    margin-top: 30px !important;
+@media (min-width: 992px) {
+  .subhead h1,
+  .subhead .lead {
+    margin-right: 350px;
   }
 }
 
-@media (max-width: 767px) {
-  .carbonad {
+#carbonads {
+  display: block;
+  overflow: hidden;
+  margin: 40px -20px -40px;
+  padding: 15px 15px 15px 160px;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: left;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.5), 0 1px 0 rgba(255,255,255,.1);
+}
+
+#carbonads a {
+  color: #fff;
+}
+
+.carbon-img {
+  float: left;
+  margin-left: -145px;
+}
+
+.carbon-poweredby {
+  display: block;
+  color: #cdbfe3 !important;
+}
+
+@media (min-width: 480px) {
+  #carbonads {
+    max-width: 155px; /* 330 - padding */
+    margin: 50px auto 0;
+    border-radius: 4px;
+  }
+}
+
+@media (min-width: 992px) {
+  #carbonads {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    margin-top: 0;
+  }
+  .masthead #carbonads {
     position: static;
-    width: auto !important;
-    margin: 40px -20px -40px !important;
-    padding: 20px !important;
-    overflow: hidden; /* clearfix */
-    border-radius: 0;
+    margin: 30px auto 0;
   }
 }
 
