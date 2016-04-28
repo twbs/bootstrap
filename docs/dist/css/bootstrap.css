@@ -5933,6 +5933,18 @@ a.bg-danger:focus, a.bg-danger:hover {
   clear: both;
 }
 
+.d-block {
+  display: block !important;
+}
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+.d-inline {
+  display: inline !important;
+}
+
 .pull-xs-left {
   float: left !important;
 }
@@ -6011,6 +6023,10 @@ a.bg-danger:focus, a.bg-danger:hover {
   margin: 0;
   overflow: visible;
   clip: auto;
+}
+
+.w-100 {
+  width: 100% !important;
 }
 
 .m-x-auto {
