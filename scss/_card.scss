@@ -244,10 +244,10 @@
   .card-deck-responsive {
     flex-wrap: wrap;
     .card {
-      max-width: 100%;
-      flex-basis: 100%;
       display: flex;
+      flex-basis: 100%;
       flex-direction: column;
+      max-width: 100%;
       .card-block {
         flex-grow: 1;
       }
