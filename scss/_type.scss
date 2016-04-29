@@ -110,6 +110,11 @@ mark,
   border-left: $blockquote-border-width solid $blockquote-border-color;
 }
 
+.blockquote-center {
+  border-left: none;
+  text-align: center;
+}
+
 .blockquote-footer {
   display: block;
   font-size: 80%; // back to default font-size
