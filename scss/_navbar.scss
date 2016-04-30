@@ -199,7 +199,8 @@
 
 // White links against a dark background
 .navbar-dark {
-  .navbar-brand {
+  .navbar-brand,
+  .navbar-toggler {
     color: $navbar-dark-active-color;
 
     @include hover-focus {
