@@ -370,7 +370,7 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="gridRadios" id="gridRadios1" value="option2">
+            <input type="radio" name="gridRadios" id="gridRadios2" value="option2">
             Option two can be something else and selecting it will deselect option one
           </label>
         </div>
