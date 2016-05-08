@@ -364,19 +364,19 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
       <div class="col-sm-10">
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            <input type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
             Option one is this and that&mdash;be sure to include why it's great
           </label>
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" name="gridRadios" id="gridRadios1" value="option2">
             Option two can be something else and selecting it will deselect option one
           </label>
         </div>
         <div class="radio disabled">
           <label>
-            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+            <input type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
             Option three is disabled
           </label>
         </div>
