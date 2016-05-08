@@ -103,6 +103,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Button group
 
 - Dropped the `.btn-group-xs` class entirely.
+- Renamed `.btn-group-vertical` to `.btn-group-y` to conform to new naming conventions.
 
 ### Grid system
 

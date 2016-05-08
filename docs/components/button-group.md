@@ -102,7 +102,7 @@ Place a `.btn-group` within another `.btn-group` when you want dropdown menus mi
 Make a set of buttons appear vertically stacked rather than horizontally. **Split button dropdowns are not supported here.**
 
 <div class="bd-example">
-  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+  <div class="btn-group-y" role="group" aria-label="Vertical button group">
     <button type="button" class="btn btn-secondary">Button</button>
     <button type="button" class="btn btn-secondary">Button</button>
     <div class="btn-group" role="group">
@@ -147,7 +147,7 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
 </div>
 
 {% highlight html %}
-<div class="btn-group-vertical">
+<div class="btn-group-y">
   ...
 </div>
 {% endhighlight %}
