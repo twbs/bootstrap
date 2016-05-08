@@ -9,8 +9,7 @@
   background-color: $card-bg;
   // border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
-  // Doesn't use mixin so that cards always have a "border"
-  box-shadow: inset 0 0 0 $card-border-width $card-border-color;
+  border: $card-border-width solid $card-border-color;
 }
 
 .card-block {
