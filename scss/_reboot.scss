@@ -200,6 +200,8 @@ pre {
   margin-top: 0;
   // Reset browser default of `1em` to use `rem`s
   margin-bottom: 1rem;
+  // Normalize v4 removed this property, causing `<pre>` content to break out of wrapping code snippets
+  overflow: auto;
 }
 
 
