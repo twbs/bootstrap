@@ -24,7 +24,7 @@ These styles can be found within `_reboot.scss`, and the global variables are de
 
 ## Headings
 
-All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.
+All HTML headings, `<h1>` through `<h6>`, are available.
 
 <div class="bd-example bd-example-type">
   <table class="table">
@@ -65,6 +65,17 @@ All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` cla
 <h5>h5. Bootstrap heading</h5>
 <h6>h6. Bootstrap heading</h6>
 {% endhighlight %}
+
+`.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.
+
+{% example html %}
+<p class="h1">h1. Bootstrap heading</p>
+<p class="h2">h2. Bootstrap heading</p>
+<p class="h3">h3. Bootstrap heading</p>
+<p class="h4">h4. Bootstrap heading</p>
+<p class="h5">h5. Bootstrap heading</p>
+<p class="h6">h6. Bootstrap heading</p>
+{% endexample %}
 
 ### Customizing headings
 

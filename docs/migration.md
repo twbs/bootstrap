@@ -64,7 +64,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Typography
 
 - Moved all `.text-` utilities to the `_utilities.scss` file.
-- Dropped the `.page-header` class entirely.
+- Dropped `.page-header` as, aside from the border, all it's styles can be applied via utilities.
 - `.dl-horizontal` has been dropped. Instead, use `.row` on `<dl>` and use grid column classes (or mixins) on its `<dt>` and `<dd>` children.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
 
@@ -87,22 +87,30 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Renamed `.control-label` to `.form-control-label`.
 - Renamed `.input-lg` and `.input-sm` to `.form-control-lg` and `.form-control-sm`, respectively.
 - Dropped `.form-group-*` classes for simplicity's sake. Use `.form-control-*` classes instead now.
-- Dropped `.help-block`. Use the `.text-muted` utility class instead.
+- Dropped `.help-block`; superseded by the `.text-muted` utility class to reduce duplicate code.
 - Horizontal forms overhauled:
   - Dropped the `.form-horizontal` class requirement.
-  - Requires the addition of `.row` to `.form-group`.
+  - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
 
 ### Buttons
 
 - Renamed `.btn-default` to `.btn-secondary`.
-- Dropped the `.btn-xs` class entirely.
+- Dropped the `.btn-xs` class entirely as `.btn-sm` is proportionally much smaller than v3's.
 - The [stateful button](http://getbootstrap.com/javascript/#buttons-methods) feature of the `button.js` jQuery plugin has been dropped. This includes the `$().button(string)` and `$().button('reset')` methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
   - Note that the other features of the plugin (button checkboxes, button radios, single-toggle buttons) have been retained in v4.
 
 ### Button group
 
-- Dropped the `.btn-group-xs` class entirely.
+- Dropped the `.btn-group-xs` class entirely given removal of `.btn-xs`.
+
+### Dropdowns
+
+- Switched from parent selectors to singular classes for all components, modifiers, etc.
+- Dropdowns can be built with `<div>`s or `<ul>`s now.
+- Rebuilt dropdown styles and markup to provide easy, built-in support for `<a>` and `<button>` based dropdown items.
+- Dropdown items now require `.dropdown-item`.
+- Dropdown toggles no longer require an explicit `<span class="caret"></span>`; this is now provided automatically via CSS's `::after` on `.dropdown-toggle`.
 
 ### Grid system
 

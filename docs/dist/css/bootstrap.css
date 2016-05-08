@@ -3,7 +3,7 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-/*! normalize.css commit fe56763 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -34,7 +34,6 @@ canvas,
 progress,
 video {
   display: inline-block;
-  vertical-align: baseline;
 }
 
 audio:not([controls]) {
@@ -42,8 +41,12 @@ audio:not([controls]) {
   height: 0;
 }
 
-[hidden],
-template {
+progress {
+  vertical-align: baseline;
+}
+
+template,
+[hidden] {
   display: none;
 }
 
@@ -51,21 +54,25 @@ a {
   background-color: transparent;
 }
 
-a:active {
-  outline: 0;
-}
-
+a:active,
 a:hover {
-  outline: 0;
+  outline-width: 0;
 }
 
 abbr[title] {
-  border-bottom: 1px dotted;
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
 }
 
 b,
 strong {
-  font-weight: bold;
+  font-weight: inherit;
+}
+
+b,
+strong {
+  font-weight: bolder;
 }
 
 dfn {
@@ -78,7 +85,7 @@ h1 {
 }
 
 mark {
-  background: #ff0;
+  background-color: #ff0;
   color: #000;
 }
 
@@ -94,34 +101,20 @@ sup {
   vertical-align: baseline;
 }
 
-sup {
-  top: -0.5em;
-}
-
 sub {
   bottom: -0.25em;
 }
 
+sup {
+  top: -0.5em;
+}
+
 img {
-  border: 0;
+  border-style: none;
 }
 
 svg:not(:root) {
   overflow: hidden;
-}
-
-figure {
-  margin: 1em 40px;
-}
-
-hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  height: 0;
-}
-
-pre {
-  overflow: auto;
 }
 
 code,
@@ -132,18 +125,39 @@ samp {
   font-size: 1em;
 }
 
-button,
-input,
-optgroup,
-select,
-textarea {
-  color: inherit;
-  font: inherit;
-  margin: 0;
+figure {
+  margin: 1em 40px;
 }
 
-button {
+hr {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  height: 0;
   overflow: visible;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+button,
+input,
+select {
+  overflow: visible;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
 }
 
 button,
@@ -152,16 +166,21 @@ select {
 }
 
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
+[type="button"],
+[type="reset"],
+[type="submit"] {
   cursor: pointer;
 }
 
-button[disabled],
-html input[disabled] {
+[disabled] {
   cursor: default;
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
 }
 
 button::-moz-focus-inner,
@@ -170,29 +189,9 @@ input::-moz-focus-inner {
   padding: 0;
 }
 
-input {
-  line-height: normal;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 0;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-input[type="search"] {
-  -webkit-appearance: textfield;
-}
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
+button:-moz-focusring,
+input:-moz-focusring {
+  outline: 1px dotted ButtonText;
 }
 
 fieldset {
@@ -202,26 +201,38 @@ fieldset {
 }
 
 legend {
-  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
   padding: 0;
+  white-space: normal;
 }
 
 textarea {
   overflow: auto;
 }
 
-optgroup {
-  font-weight: bold;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-td,
-th {
+[type="checkbox"],
+[type="radio"] {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
 }
 
 @media print {
@@ -402,6 +413,7 @@ a:not([href]):focus {
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
+  overflow: auto;
 }
 
 figure {
@@ -430,6 +442,7 @@ textarea {
 }
 
 table {
+  border-collapse: collapse;
   background-color: transparent;
 }
 
@@ -462,6 +475,13 @@ textarea {
   margin: 0;
   line-height: inherit;
   border-radius: 0;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  -webkit-appearance: listbox;
 }
 
 textarea {
@@ -2186,48 +2206,6 @@ select.form-control:focus::-ms-value {
   font-size: 1rem;
 }
 
-_::-webkit-full-page-media.form-control,
-input[type="date"].form-control,
-input[type="time"].form-control,
-input[type="datetime-local"].form-control,
-input[type="month"].form-control {
-  line-height: 2.5rem;
-}
-
-_::-webkit-full-page-media.input-sm,
-.input-group-sm _::-webkit-full-page-media.form-control,
-input[type="date"].input-sm,
-.input-group-sm
-input[type="date"].form-control,
-input[type="time"].input-sm,
-.input-group-sm
-input[type="time"].form-control,
-input[type="datetime-local"].input-sm,
-.input-group-sm
-input[type="datetime-local"].form-control,
-input[type="month"].input-sm,
-.input-group-sm
-input[type="month"].form-control {
-  line-height: 1.8125rem;
-}
-
-_::-webkit-full-page-media.input-lg,
-.input-group-lg _::-webkit-full-page-media.form-control,
-input[type="date"].input-lg,
-.input-group-lg
-input[type="date"].form-control,
-input[type="time"].input-lg,
-.input-group-lg
-input[type="time"].form-control,
-input[type="datetime-local"].input-lg,
-.input-group-lg
-input[type="datetime-local"].form-control,
-input[type="month"].input-lg,
-.input-group-lg
-input[type="month"].form-control {
-  line-height: 3.166667rem;
-}
-
 .form-control-static {
   min-height: 2.5rem;
   padding-top: 0.5rem;
@@ -3742,6 +3720,12 @@ input[type="button"].btn-block {
   background-color: #fff;
 }
 
+.custom-select:disabled {
+  color: #818a91;
+  cursor: not-allowed;
+  background-color: #eceeef;
+}
+
 .custom-select::-ms-expand {
   opacity: 0;
 }
@@ -4157,8 +4141,7 @@ input[type="button"].btn-block {
   margin-bottom: 0.75rem;
   background-color: #fff;
   border-radius: 0.25rem;
-  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
-          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card-block {
