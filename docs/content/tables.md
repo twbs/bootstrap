@@ -4,14 +4,16 @@ title: Tables
 group: content
 ---
 
-Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`.
+Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`, then extend with custom styles or our various included modifier classes.
 
 ## Contents
 
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-## Basic example
+## Examples
+
+Using the most basic table markup, here's how `.table`-based tables look in Bootstrap.
 
 {% example html %}
 <table class="table">
@@ -46,7 +48,7 @@ Due to the widespread use of tables across third-party widgets like calendars an
 </table>
 {% endexample %}
 
-## Inverse table
+You can also invert the colors—with light text on dark backgrounds—with `.table-inverse`.
 
 {% example html %}
 <table class="table table-inverse">
@@ -83,7 +85,7 @@ Due to the widespread use of tables across third-party widgets like calendars an
 
 ## Table head options
 
-Use one of two modifier classes to make `<thead>`s appear light or dark gray.
+Similar to default and inverse tables, use one of two modifier classes to make `<thead>`s appear light or dark gray.
 
 {% example html %}
 <table class="table">
@@ -420,9 +422,6 @@ Use contextual classes to color table rows or individual cells.
   </table>
 </div>
 
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
-
 {% highlight html %}
 <!-- On rows -->
 <tr class="table-active">...</tr>
@@ -440,6 +439,98 @@ Use contextual classes to color table rows or individual cells.
   <td class="table-info">...</td>
 </tr>
 {% endhighlight %}
+
+Regular table background variants are not available with the inverse table, however, you may use [text or background utilities](/components/utilities/#contextual-colors-and-backgrounds) to achieve similar styles.
+
+<div class="bd-example">
+  <table class="table table-inverse">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Column heading</th>
+        <th>Column heading</th>
+        <th>Column heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-primary">
+        <th scope="row">1</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="bg-success">
+        <th scope="row">3</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="bg-info">
+        <th scope="row">5</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="bg-warning">
+        <th scope="row">7</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="bg-danger">
+        <th scope="row">9</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% highlight html %}
+<!-- On rows -->
+<tr class="bg-primary">...</tr>
+<tr class="bg-success">...</tr>
+<tr class="bg-warning">...</tr>
+<tr class="bg-danger">...</tr>
+<tr class="bg-info">...</tr>
+
+<!-- On cells (`td` or `th`) -->
+<tr>
+  <td class="bg-primary">...</td>
+  <td class="bg-success">...</td>
+  <td class="bg-warning">...</td>
+  <td class="bg-danger">...</td>
+  <td class="bg-info">...</td>
+</tr>
+{% endhighlight %}
+
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 ## Responsive tables
 
