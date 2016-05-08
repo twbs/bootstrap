@@ -35,6 +35,7 @@ kbd {
 // Blocks of code
 pre {
   display: block;
+  overflow: auto; // Normalize v4 removed this property, causing `<pre>` content to break out of wrapping code snippets
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: $code-font-size;
