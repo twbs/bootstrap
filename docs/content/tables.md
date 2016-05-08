@@ -511,6 +511,24 @@ Regular table background variants are not available with the inverse table, howe
   </table>
 </div>
 
+{% highlight html %}
+<!-- On rows -->
+<tr class="bg-primary">...</tr>
+<tr class="bg-success">...</tr>
+<tr class="bg-warning">...</tr>
+<tr class="bg-danger">...</tr>
+<tr class="bg-info">...</tr>
+
+<!-- On cells (`td` or `th`) -->
+<tr>
+  <td class="bg-primary">...</td>
+  <td class="bg-success">...</td>
+  <td class="bg-warning">...</td>
+  <td class="bg-danger">...</td>
+  <td class="bg-info">...</td>
+</tr>
+{% endhighlight %}
+
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
