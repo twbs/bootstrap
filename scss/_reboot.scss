@@ -200,6 +200,8 @@ pre {
   margin-top: 0;
   // Reset browser default of `1em` to use `rem`s
   margin-bottom: 1rem;
+  // Normalize v4 removed this property, causing `<pre>` content to break out of wrapping code snippets
+  overflow: auto;
 }
 
 
@@ -266,6 +268,8 @@ textarea {
 //
 
 table {
+  // No longer part of Normalize since v4
+  border-collapse: collapse;
   // Reset for nesting within parents with `background-color`.
   background-color: $table-bg;
 }
@@ -341,7 +345,6 @@ legend {
   margin-bottom: .5rem;
   font-size: 1.5rem;
   line-height: inherit;
-//  border: 0;
 }
 
 input[type="search"] {
