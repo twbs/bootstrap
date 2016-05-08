@@ -2151,6 +2151,11 @@ select.form-control:not([size]):not([multiple]) {
   height: 2.5rem;
 }
 
+select.form-control:focus::-ms-value {
+  color: #55595c;
+  background-color: #fff;
+}
+
 .form-control-file,
 .form-control-range {
   display: block;
@@ -3714,6 +3719,11 @@ input[type="button"].btn-block {
   outline: none;
 }
 
+.custom-select:focus::-ms-value {
+  color: #55595c;
+  background-color: #fff;
+}
+
 .custom-select::-ms-expand {
   opacity: 0;
 }
@@ -4129,8 +4139,7 @@ input[type="button"].btn-block {
   margin-bottom: 0.75rem;
   background-color: #fff;
   border-radius: 0.25rem;
-  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
-          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card-block {
