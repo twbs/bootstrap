@@ -425,41 +425,41 @@ Grid-based form layouts also support large and small inputs.
 
 ## Checkboxes and radios
 
-Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
+Default checkboxes and radios are improved upon with the help of `.form-check`, **a single class for both input types that improves the layout and behavior of their HTML elements**. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
 
-Disabled checkboxes and radios are supported, but to provide a "not-allowed" cursor on hover of the parent `<label>`, you'll need to add the <code>.disabled</code> class to the parent `.radio`, `.radio-inline`, `.checkbox`, or `.checkbox-inline`.
+Disabled checkboxes and radios are supported, but to provide a `not-allowed` cursor on hover of the parent `<label>`, you'll need to add the `.disabled` class to the parent `.form-check`.
 
 ### Default (stacked)
 
 {% example html %}
-<div class="checkbox">
-  <label>
-    <input type="checkbox" value="">
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" value="">
     Option one is this and that&mdash;be sure to include why it's great
   </label>
 </div>
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" disabled>
+<div class="form-check disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" value="" disabled>
     Option two is disabled
   </label>
 </div>
 
-<div class="radio">
-  <label>
-    <input type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
     Option one is this and that&mdash;be sure to include why it's great
   </label>
 </div>
-<div class="radio">
-  <label>
-    <input type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
     Option two can be something else and selecting it will deselect option one
   </label>
 </div>
-<div class="radio disabled">
-  <label>
-    <input type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+<div class="form-check disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
     Option three is disabled
   </label>
 </div>
@@ -467,29 +467,29 @@ Disabled checkboxes and radios are supported, but to provide a "not-allowed" cur
 
 ### Inline
 
-Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes or radios for controls that appear on the same line.
+Groups of checkboxes or radios that appear on the same horizontal row are similar to their stacked counterparts, but require different HTML and a single class. To switch from stacked to inline, drop the surrounding `<div>`, add `.form-check-inline` to the `<label>`, and keep the `.form-check-input` on the `<input>`.
 
 {% example html %}
-<label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+<label class="form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
 </label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+<label class="form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
 </label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+<label class="form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> 3
 </label>
 {% endexample %}
 
 {% example html %}
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+<label class="form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
 </label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+<label class="form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
 </label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+<label class="form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
 </label>
 {% endexample %}
 
@@ -498,14 +498,14 @@ Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes 
 Should you have no text within the `<label>`, the input is positioned as you'd expect. **Currently only works on non-inline checkboxes and radios.** Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
 
 {% example html %}
-<div class="checkbox">
-  <label>
-    <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
   </label>
 </div>
-<div class="radio">
-  <label>
-    <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
   </label>
 </div>
 {% endexample %}

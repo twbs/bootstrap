@@ -321,6 +321,17 @@ textarea {
   border-radius: 0;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+  // Apply a disabled cursor for radios and checkboxes.
+  //
+  // Note: Neither radios nor checkboxes can be readonly.
+  &:disabled {
+    cursor: $cursor-disabled;
+  }
+}
+
+
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
