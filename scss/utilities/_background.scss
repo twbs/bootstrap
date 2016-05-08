@@ -5,20 +5,29 @@
 // Inverse
 // TODO: redo this as a proper class
 .bg-inverse {
-  color: $gray-lighter;
-  background-color: $gray-dark;
+  color: $foreground-200;
+  background-color: $foreground-900;
 }
 
 .bg-faded {
-  background-color: $gray-lightest;
+  background-color: $foreground-100;
 }
 
-@include bg-variant('.bg-primary', $brand-primary);
+// scss-lint:disable ImportantRule
+@each $color, $value in $theme-colors {
+  @if $color == "foreground" or $color == "background" {
+    // do nothing
+  } @else {
+    .bg-#{$color} {
+      color: #fff;
+      background-color: $value !important;
+    }
 
-@include bg-variant('.bg-success', $brand-success);
-
-@include bg-variant('.bg-info', $brand-info);
-
-@include bg-variant('.bg-warning', $brand-warning);
-
-@include bg-variant('.bg-danger', $brand-danger);
+    a.bg-#{$color} {
+      @include hover-focus {
+        background-color: darken($value, 10%) !important;
+      }
+    }
+  }
+}
+// scss-lint:enable ImportantRule

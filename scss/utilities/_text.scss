@@ -32,17 +32,28 @@
 
 // Contextual colors
 
-@include text-emphasis-variant('.text-muted', $text-muted);
+.text-muted {
+  color: $text-muted;
+}
 
-@include text-emphasis-variant('.text-primary', $brand-primary);
+// scss-lint:disable ImportantRule
+@each $color, $value in $theme-colors {
+  @if $color == "foreground" or $color == "background" {
+    // do nothing
+  } @else {
+    .text-#{$color} {
+      color: $value !important;
+    }
 
-@include text-emphasis-variant('.text-success', $brand-success);
+    a.text-#{$color} {
+      @include hover-focus {
+        color: darken($value, 10%) !important;
+      }
+    }
+  }
+}
+// scss-lint:enable ImportantRule
 
-@include text-emphasis-variant('.text-info', $brand-info);
-
-@include text-emphasis-variant('.text-warning', $brand-warning);
-
-@include text-emphasis-variant('.text-danger', $brand-danger);
 
 // Misc
 

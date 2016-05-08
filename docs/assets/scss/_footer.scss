@@ -7,11 +7,11 @@
   margin-top: 4rem;
   font-size: 85%;
   text-align: center;
-  background-color: #f7f7f7;
+  background-color: $foreground-100;
 
   a {
     font-weight: 500;
-    color: $gray;
+    color: $foreground-700;
 
     &:hover {
       color: $link-color;

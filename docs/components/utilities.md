@@ -156,12 +156,6 @@ Similar to the contextual text color classes, easily set the background of an el
 <div class="bg-inverse">Cras mattis consectetur purus sit amet fermentum.</div>
 {% endexample %}
 
-{% callout info %}
-#### Dealing with specificity
-
-Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
-{% endcallout %}
-
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
