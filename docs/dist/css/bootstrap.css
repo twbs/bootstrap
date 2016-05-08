@@ -413,6 +413,7 @@ a:not([href]):focus {
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
+  overflow: auto;
 }
 
 figure {
@@ -441,6 +442,7 @@ textarea {
 }
 
 table {
+  border-collapse: collapse;
   background-color: transparent;
 }
 
@@ -3733,6 +3735,12 @@ input[type="button"].btn-block {
 .custom-select:focus::-ms-value {
   color: #55595c;
   background-color: #fff;
+}
+
+.custom-select:disabled {
+  color: #818a91;
+  cursor: not-allowed;
+  background-color: #eceeef;
 }
 
 .custom-select::-ms-expand {
