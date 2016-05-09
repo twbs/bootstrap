@@ -508,7 +508,7 @@ Only applies to small devices and above.
 
 ## Columns
 
-Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. Cards are ordered vertically when wrapped in `.card-columns`. 
+Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. Cards are ordered from top to bottom and left to right when wrapped in `.card-columns`. 
 
 Only applies to small devices and above.
 
