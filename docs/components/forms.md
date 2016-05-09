@@ -310,9 +310,9 @@ Because of this, you may need to manually address the width and alignment of ind
     <label class="sr-only" for="exampleInputPassword3">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
   </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Remember me
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox"> Remember me
     </label>
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
