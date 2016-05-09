@@ -180,7 +180,7 @@ select.form-control {
   margin-bottom: ($spacer * .75);
 
   // Move up sibling radios or checkboxes for tighter spacing
-  + .form-check  {
+  + .form-check {
     margin-top: -.25rem;
   }
 
