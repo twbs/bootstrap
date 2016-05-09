@@ -609,9 +609,15 @@ Set heights using classes like `.form-control-lg`, and set widths using grid col
 {% endexample %}
 
 {% example html %}
-<select class="form-control form-control-lg"></select>
-<select class="form-control"></select>
-<select class="form-control form-control-sm"></select>
+<select class="form-control form-control-lg">
+  <option>Large select</option>
+</select>
+<select class="form-control">
+  <option>Default select</option>
+</select>
+<select class="form-control form-control-sm">
+  <option>Small select</option>
+</select>
 {% endexample %}
 
 ## Column sizing
