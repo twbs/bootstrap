@@ -325,8 +325,10 @@ $input-border-radius:            $border-radius !default;
 $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
+$input-bg-focus:                 $input-bg;
 $input-border-focus:             #66afe9 !default;
 $input-box-shadow-focus:         rgba(102,175,233,.6) !default;
+$input-color-focus:              $input-color;
 
 $input-color-placeholder:        #999 !default;
 
