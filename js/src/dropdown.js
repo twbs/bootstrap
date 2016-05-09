@@ -44,11 +44,9 @@ const Dropdown = (($) => {
     BACKDROP      : '.dropdown-backdrop',
     DATA_TOGGLE   : '[data-toggle="dropdown"]',
     FORM_CHILD    : '.dropdown form',
-    ROLE_MENU     : '[role="menu"]',
-    ROLE_LISTBOX  : '[role="listbox"]',
+    MENU          : '.dropdown-menu',
     NAVBAR_NAV    : '.navbar-nav',
-    VISIBLE_ITEMS : '[role="menu"] li:not(.disabled) a, '
-                  + '[role="listbox"] li:not(.disabled) a'
+    VISIBLE_ITEMS : '.dropdown-menu .dropdown-item:not(.disabled)'
   }
 
 
@@ -268,8 +266,7 @@ const Dropdown = (($) => {
 
   $(document)
     .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
-    .on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU,    Dropdown._dataApiKeydownHandler)
-    .on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
+    .on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler)
     .on(Event.CLICK_DATA_API, Dropdown._clearMenus)
     .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
     .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
