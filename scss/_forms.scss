@@ -198,6 +198,7 @@ select.form-control-lg {
 
   &.disabled {
     .form-check-label {
+      color: $text-muted;
       cursor: $cursor-disabled;
     }
   }

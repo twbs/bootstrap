@@ -427,9 +427,11 @@ Grid-based form layouts also support large and small inputs.
 
 Default checkboxes and radios are improved upon with the help of `.form-check`, **a single class for both input types that improves the layout and behavior of their HTML elements**. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
 
-Disabled checkboxes and radios are supported, but to provide a `not-allowed` cursor on hover of the parent `<label>`, you'll need to add the `.disabled` class to the parent `.form-check`.
+Disabled checkboxes and radios are supported, but to provide a `not-allowed` cursor on hover of the parent `<label>`, you'll need to add the `.disabled` class to the parent `.form-check`. The disabled class will also lighten the text color to help indicate the input's state.
 
 ### Default (stacked)
+
+By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with `.form-check`.
 
 {% example html %}
 <div class="form-check">
@@ -444,7 +446,9 @@ Disabled checkboxes and radios are supported, but to provide a `not-allowed` cur
     Option two is disabled
   </label>
 </div>
+{% endexample %}
 
+{% example html %}
 <div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
