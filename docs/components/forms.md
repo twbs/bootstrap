@@ -22,7 +22,7 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="text-muted">We'll never share your email with anyone else.</small>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
@@ -55,7 +55,7 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   <div class="form-group">
     <label for="exampleInputFile">File input</label>
     <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-    <small id="fileHelp" class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </div>
   <fieldset class="form-group">
     <legend>Radio buttons</legend>
@@ -644,13 +644,27 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 ## Help text
 
-No official classes exist in Bootstrap 4 for stylizing help text (previously we had `.help-block` in v3), but thanks to utility classes like `.text-muted`, you can create much more flexible help text as needed.
+Block-level help text in forms can be created using `.form-text` (previously known as `.help-block` in v3). Inline help text can be flexibly implemented using any inline HTML element and utility classes like `.text-muted`.
 
 {% callout warning %}
 #### Associating help text with form controls
 
 Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.
 {% endcallout %}
+
+### Block level
+
+Block help text—for below inputs or for longer lines of help text—can be easily achieved with `.form-text`. This class includes `display: block` and adds some top margin for easy spacing from the inputs above.
+
+{% example html %}
+<label for="inputPassword5">Password</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+<p id="passwordHelpBlock" class="form-text text-muted">
+  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+</p>
+{% endexample %}
+
+### Inline
 
 Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else).
 
@@ -664,16 +678,6 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
     </small>
   </div>
 </form>
-{% endexample %}
-
-Block help text—for below inputs or for longer lines of help text—can be easily achieved with a `<p>`.
-
-{% example html %}
-<label for="inputPassword5">Password</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-<p id="passwordHelpBlock" class="text-muted">
-  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters or emoji.
-</p>
 {% endexample %}
 
 ## Validation
@@ -709,19 +713,19 @@ Ensure that an alternative indication of state is also provided. For instance, y
   <label class="col-form-label" for="inputSuccess1">Input with success</label>
   <input type="text" class="form-control form-control-success" id="inputSuccess1">
   <div class="form-control-feedback">Success! You've done it.</div>
-  <small class="text-muted">Example help text that remains unchanged.</small>
+  <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-warning">
   <label class="col-form-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
   <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
-  <small class="text-muted">Example help text that remains unchanged.</small>
+  <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-danger">
   <label class="col-form-label" for="inputDanger1">Input with danger</label>
   <input type="text" class="form-control form-control-danger" id="inputDanger1">
   <div class="form-control-feedback">Shit, that username's taken. Try another?</div>
-  <small class="text-muted">Example help text that remains unchanged.</small>
+  <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 {% endexample %}
 

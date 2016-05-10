@@ -181,6 +181,11 @@ select.form-control-lg {
   margin-bottom: $form-group-margin-bottom;
 }
 
+.form-text {
+  display: block;
+  margin-top: ($spacer * .25);
+}
+
 
 // Checkboxes and radios
 //
@@ -244,7 +249,7 @@ select.form-control-lg {
 // Apply contextual and semantic states to individual form controls.
 
 .form-control-feedback {
-  margin-top: .5rem;
+  margin-top: ($spacer * .25);
 }
 
 .form-control-success,
