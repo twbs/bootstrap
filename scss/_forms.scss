@@ -181,6 +181,11 @@ select.form-control-lg {
   margin-bottom: $form-group-margin-bottom;
 }
 
+.form-text {
+  display: block;
+  margin-top: ($spacer * .25);
+}
+
 
 // Checkboxes and radios
 //
@@ -244,7 +249,7 @@ select.form-control-lg {
 // Apply contextual and semantic states to individual form controls.
 
 .form-control-feedback {
-  margin-top: .5rem;
+  margin-top: ($spacer * .25);
 }
 
 .form-control-success,
@@ -337,19 +342,16 @@ select.form-control-lg {
 
     // Remove default margin on radios/checkboxes that were used for stacking, and
     // then undo the floating of radios and checkboxes to match.
-    .radio,
-    .checkbox {
+    .form-check {
       display: inline-block;
       margin-top: 0;
       margin-bottom: 0;
       vertical-align: middle;
-
-      label {
-        padding-left: 0;
-      }
     }
-    .radio input[type="radio"],
-    .checkbox input[type="checkbox"] {
+    .form-check-label {
+      padding-left: 0;
+    }
+    .form-check-input {
       position: relative;
       margin-left: 0;
     }
