@@ -79,7 +79,7 @@
   position: relative;
   padding: 1rem;
   margin: 1rem -1rem;
-  border: solid #f7f7f9;
+  border: solid $gray-lightest;
   border-width: .2rem 0 0;
   @include clearfix();
 
@@ -226,7 +226,7 @@
 
 // Example modals
 .bd-example-modal {
-  background-color: #f5f5f5;
+  background-color: $gray-lightest;
 }
 .bd-example-modal .modal {
   position: relative;
@@ -325,7 +325,7 @@
 .highlight {
   padding: 1rem;
   margin: 1rem (-$grid-gutter-width / 2);
-  background-color: #f7f7f9;
+  background-color: $gray-lightest;
 
   @include media-breakpoint-up(sm) {
     padding: 1.5rem;
