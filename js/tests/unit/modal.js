@@ -233,6 +233,23 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should remove aria-hidden attribute when shown, add it back when hidden', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    $('<div id="modal-test" aria-hidden="true"/>')
+      .on('shown.bs.modal', function () {
+        assert.notOk($('#modal-test').is('[aria-hidden]'), 'aria-hidden attribute removed')
+        $(this).bootstrapModal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        assert.ok($('#modal-test').is('[aria-hidden]'), 'aria-hidden attribute added')
+        assert.strictEqual($('#modal-test').attr('aria-hidden'), 'true', 'correct aria-hidden="true" added')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should close reopened modal with [data-dismiss="modal"] click', function (assert) {
     assert.expect(2)
     var done = assert.async()

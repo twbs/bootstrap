@@ -223,6 +223,7 @@ const Modal = (($) => {
       }
 
       this._element.style.display = 'block'
+      this._element.removeAttribute('aria-hidden')
       this._element.scrollTop = 0
 
       if (transition) {
@@ -290,6 +291,7 @@ const Modal = (($) => {
 
     _hideModal() {
       this._element.style.display = 'none'
+      this._element.setAttribute('aria-hidden', 'true')
       this._showBackdrop(() => {
         $(document.body).removeClass(ClassName.OPEN)
         this._resetAdjustments()
