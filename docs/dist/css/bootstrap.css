@@ -2139,6 +2139,8 @@ pre code {
 }
 
 .form-control:focus {
+  color: #55595c;
+  background-color: #fff;
   border-color: #66afe9;
   outline: none;
 }
@@ -2259,6 +2261,11 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   margin-bottom: 1rem;
 }
 
+.form-text {
+  display: block;
+  margin-top: 0.25rem;
+}
+
 .form-check {
   position: relative;
   display: block;
@@ -2308,7 +2315,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .form-control-feedback {
-  margin-top: .5rem;
+  margin-top: 0.25rem;
 }
 
 .form-control-success,
@@ -2447,19 +2454,16 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     margin-bottom: 0;
     vertical-align: middle;
   }
-  .form-inline .radio,
-  .form-inline .checkbox {
+  .form-inline .form-check {
     display: inline-block;
     margin-top: 0;
     margin-bottom: 0;
     vertical-align: middle;
   }
-  .form-inline .radio label,
-  .form-inline .checkbox label {
+  .form-inline .form-check-label {
     padding-left: 0;
   }
-  .form-inline .radio input[type="radio"],
-  .form-inline .checkbox input[type="checkbox"] {
+  .form-inline .form-check-input {
     position: relative;
     margin-left: 0;
   }
@@ -3090,7 +3094,7 @@ fieldset[disabled] a.btn {
 }
 
 .btn-block + .btn-block {
-  margin-top: 5px;
+  margin-top: 0.5rem;
 }
 
 input[type="submit"].btn-block,
@@ -3142,8 +3146,7 @@ input[type="button"].btn-block {
   display: inline-block;
   width: 0;
   height: 0;
-  margin-right: .25rem;
-  margin-left: .25rem;
+  margin-left: 0.3em;
   vertical-align: middle;
   content: "";
   border-top: 0.3em solid;
@@ -3308,7 +3311,7 @@ input[type="button"].btn-block {
 }
 
 .btn-toolbar {
-  margin-left: -5px;
+  margin-left: -0.5rem;
 }
 
 .btn-toolbar::after {
@@ -3325,7 +3328,7 @@ input[type="button"].btn-block {
 .btn-toolbar > .btn,
 .btn-toolbar > .btn-group,
 .btn-toolbar > .input-group {
-  margin-left: 5px;
+  margin-left: 0.5rem;
 }
 
 .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
@@ -3371,14 +3374,23 @@ input[type="button"].btn-block {
   outline: 0;
 }
 
-.btn-group > .btn + .dropdown-toggle {
-  padding-right: 8px;
-  padding-left: 8px;
+.btn + .dropdown-toggle-split {
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
 }
 
-.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle {
-  padding-right: 12px;
-  padding-left: 12px;
+.btn + .dropdown-toggle-split::after {
+  margin-left: 0;
+}
+
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split {
+  padding-right: 0.375rem;
+  padding-left: 0.375rem;
+}
+
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split {
+  padding-right: 1.125rem;
+  padding-left: 1.125rem;
 }
 
 .btn .caret {
@@ -3851,7 +3863,8 @@ input[type="button"].btn-block {
   display: block;
   padding: 0.5em 1em;
   border: 1px solid transparent;
-  border-radius: 0.25rem 0.25rem 0 0;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
 }
 
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
@@ -4176,8 +4189,8 @@ input[type="button"].btn-block {
 }
 
 .card > .list-group:first-child .list-group-item:first-child {
-  border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
 }
 
 .card > .list-group:last-child .list-group-item:last-child {
@@ -4332,11 +4345,13 @@ input[type="button"].btn-block {
 }
 
 .card-img-top {
-  border-radius: 0.25rem 0.25rem 0 0;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
 }
 
 .card-img-bottom {
-  border-radius: 0 0 0.25rem 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 @media (min-width: 544px) {
