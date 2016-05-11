@@ -2270,6 +2270,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .form-check.disabled .form-check-label {
+  color: #818a91;
   cursor: not-allowed;
 }
 
