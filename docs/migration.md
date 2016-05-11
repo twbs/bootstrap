@@ -134,10 +134,11 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - An explicit class, `.breadcrumb-item`, is now required on the descendants of `.breadcrumb`s
 
-### Labels and badges
+### Labels, badges, and tags
 
 - Renamed `.label` to `.tag` to disambiguate from the `<label>` element.
-- Dropped the badge component as it was nearly identical to labels/tags. Use the `.tag-pill` modifier together with the label component instead for that rounded look.
+- Dropped the `.badge` component as it was nearly identical to labels/tags. Use the `.tag-pill` modifier together with the label component instead for that rounded look.
+- Tags are no longer floated automatically in list groups and other components. Utility classes are now required for that.
 
 ### Panels, thumbnails, and wells
 
