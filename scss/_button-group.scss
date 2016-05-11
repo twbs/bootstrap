@@ -104,15 +104,25 @@
 // Split button dropdowns
 //
 
-// Give the line between buttons some depth
-.btn-group > .btn + .dropdown-toggle {
-  padding-right: $split-btn-dropdown-toggle-padding-x;
-  padding-left: $split-btn-dropdown-toggle-padding-x;
+.btn + .dropdown-toggle-split {
+  padding-right: $btn-padding-x * .75;
+  padding-left: $btn-padding-x * .75;
+
+  &::after {
+    margin-left: 0;
+  }
 }
-.btn-group > .btn-lg + .dropdown-toggle {
-  padding-right: $split-btn-lg-dropdown-toggle-padding-x;
-  padding-left: $split-btn-lg-dropdown-toggle-padding-x;
+
+.btn-sm + .dropdown-toggle-split {
+  padding-right: $btn-padding-x-sm * .75;
+  padding-left: $btn-padding-x-sm * .75;
 }
+
+.btn-lg + .dropdown-toggle-split {
+  padding-right: $btn-padding-x-lg * .75;
+  padding-left: $btn-padding-x-lg * .75;
+}
+
 
 // The clickable button for toggling the menu
 // Remove the gradient and set the same inset shadow as the :active state
