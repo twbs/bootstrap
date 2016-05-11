@@ -159,7 +159,7 @@ $container-max-widths: (
   md: 720px,
   lg: 940px,
   xl: 1140px
-) !default;
+);
 {% endhighlight %}
 
 ### Mixins
@@ -470,7 +470,7 @@ $container-max-widths: (
   sm: 420px,
   md: 720px,
   lg: 940px
-) !default;
+);
 {% endhighlight %}
 
 Save your changes and recompile to have a brand new set of predefined grid classes for column widths, offsets, pushes, and pulls. Responsive visibility utilities will also be updated to use the custom breakpoints.

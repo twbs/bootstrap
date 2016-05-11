@@ -39,11 +39,8 @@ Bootstrap includes six predefined button styles, each serving its own semantic p
 <button type="button" class="btn btn-link">Link</button>
 {% endexample %}
 
-{% callout warning %}
-#### Conveying meaning to assistive technologies
-
-Using color to add meaning to a button only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (the visible text of the button), or is included through alternative means, such as additional text hidden with the `.sr-only` class.
-{% endcallout %}
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 ## Button tags
 
@@ -61,7 +58,7 @@ When using button classes on `<a>` elements that are used to trigger in-page fun
 
 ## Outline buttons
 
-In need of a button, but not the hefty background colors they bring? Replace the default modifier classes with the `.btn-*-outline` ones to remove all background images and colors on any button.
+In need of a button, but not the hefty background colors they bring? Replace the default modifier classes with the `.btn-outline-*` ones to remove all background images and colors on any button.
 
 {% example html %}
 <button type="button" class="btn btn-outline-primary">Primary</button>
@@ -119,7 +116,7 @@ Make buttons look inactive by adding the `disabled` boolean attribute to any `<b
 Disabled buttons using the `<a>` element behave a bit different:
 
 - `<a>`s don't support the `disabled` attribute, so you must add the `.disabled` class to make it visually appear disabled.
-- Some future-friendly styles are included to disable all `pointer-events` on anchor buttons. For browsers that support that proper, you won't see the disabled cursor at all.
+- Some future-friendly styles are included to disable all `pointer-events` on anchor buttons. In browsers which support that property, you won't see the disabled cursor at all.
 - Disabled buttons should include the `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
 
 {% example html %}

@@ -39,6 +39,8 @@ Where *size* is one of:
 * `2` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 1.5` or `$spacer-y * 1.5`
 * `3` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 3` or `$spacer-y * 3`
 
+(You can add more sizes by adding entries to the `$spacers` Sass map variable.)
+
 Here are some representative examples of these classes:
 
 {% highlight scss %}
@@ -60,7 +62,8 @@ Here are some representative examples of these classes:
 }
 {% endhighlight %}
 
-Additionally, Bootstrap also includes an `.m-x-auto` class for centering fixed-width block level content by setting the horizontal margins to `auto`.
+### Horizontal centering
+Additionally, Bootstrap also includes an `.m-x-auto` class for horizontally centering fixed-width block level content by setting the horizontal margins to `auto`.
 
 <div class="bd-example">
   <div class="m-x-auto" style="width: 200px; background-color: rgba(86,61,124,.15);">
@@ -69,7 +72,7 @@ Additionally, Bootstrap also includes an `.m-x-auto` class for centering fixed-w
 </div>
 
 {% highlight html %}
-<div class="m-x-auto" style="width: 200px;"">
+<div class="m-x-auto" style="width: 200px;">
   Centered element
 </div>
 {% endhighlight %}
@@ -159,11 +162,38 @@ Similar to the contextual text color classes, easily set the background of an el
 Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
 {% endcallout %}
 
-{% callout warning %}
-#### Conveying meaning to assistive technologies
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
-Ensure that any meaning conveyed through color is also conveyed in a format that is not purely presentational.
-{% endcallout %}
+## Widths
+
+Easily make an element as wide as its parent using the `.w-100` utility class, which sets `width: 100%`.
+
+{% example html %}
+<img class="w-100" data-src="holder.js/200px100?outline=yes&text=Width%20%3D%20100%25" alt="Width = 100%">
+{% endexample %}
+
+## CSS `display` (`block`, `inline`, `inline-block`)
+
+Use `.d-block`, `.d-inline`, or `.d-inline-block` to simply set an element's [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) to `block`, `inline`, or `inline-block` (respectively).
+
+To make an element `display: none`, use our [responsive utilities](../layout/responsive-utilities/) instead.
+
+{% example html %}
+<div class="d-inline bg-success">Inline</div>
+<div class="d-inline bg-success">Inline</div>
+
+<span class="d-block bg-primary">Block</span>
+
+<div class="d-inline-block bg-warning">
+  <h3>inline-block</h3>
+  Boot that strap!
+</div>
+<div class="d-inline-block bg-warning">
+  <h3>inline-block</h3>
+  Strap that boot!
+</div>
+{% endexample %}
 
 ## Close icon
 
@@ -226,6 +256,20 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 // Usage as a mixin
 .element {
   @include clearfix;
+}
+{% endhighlight %}
+
+## Fixed positioning
+
+The `.pos-f-t` class can be used to easily position elements at the top of the viewport and make them as wide as the viewport. **Be sure you understand the ramifications of fixed-position elements within your project.** Here's how the class is defined:
+
+{% highlight scss %}
+.pos-f-t {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $zindex-navbar-fixed;
 }
 {% endhighlight %}
 

@@ -19,7 +19,7 @@
   padding: $thumbnail-padding;
   background-color: $thumbnail-bg;
   border: $thumbnail-border-width solid $thumbnail-border-color;
-  border-radius: $thumbnail-border-radius;
+  @include border-radius($thumbnail-border-radius);
   transition: all .2s ease-in-out;
   @include box-shadow($thumbnail-box-shadow);
 
@@ -47,6 +47,6 @@
 }
 
 .figure-caption {
-  font-size: 90%;
+  font-size: $figure-caption-font-size;
   color: $gray-light;
 }

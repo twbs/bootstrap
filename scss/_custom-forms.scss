@@ -13,6 +13,7 @@
   position: relative;
   display: inline;
   padding-left: $custom-control-gutter;
+  cursor: pointer;
 
   + .custom-control {
     margin-left: $custom-control-spacer-x;
@@ -158,6 +159,22 @@
     border-color: $custom-select-focus-border-color;
     outline: none;
     @include box-shadow($custom-select-focus-box-shadow);
+
+    &::-ms-value {
+      // For visual consistency with other platforms/browsers,
+      // supress the default white text on blue background highlight given to
+      // the selected option text when the (still closed) <select> receives focus
+      // in IE and (under certain conditions) Edge.
+      // See https://github.com/twbs/bootstrap/issues/19398.
+      color: $input-color;
+      background-color: $input-bg;
+    }
+  }
+
+  &:disabled {
+    color: $custom-select-disabled-color;
+    cursor: $cursor-disabled;
+    background-color: $custom-select-disabled-bg;
   }
 
   // Hides the default caret in IE11
@@ -218,8 +235,10 @@
   @include border-radius($custom-file-border-radius);
   @include box-shadow($custom-file-box-shadow);
 
-  &::after {
-    content: $custom-file-placeholder;
+  @each $lang, $text in map-get($custom-file-text, placeholder) {
+    &:lang(#{$lang})::after {
+      content: $text;
+    }
   }
 
   &::before {
@@ -233,9 +252,14 @@
     padding: $custom-file-padding-x $custom-file-padding-y;
     line-height: $custom-file-line-height;
     color: $custom-file-button-color;
-    content: $custom-file-button-label;
     background-color: $custom-file-button-bg;
     border: $custom-file-border-width solid $custom-file-border-color;
     @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+  }
+
+  @each $lang, $text in map-get($custom-file-text, button-label) {
+    &:lang(#{$lang})::before {
+      content: $text;
+    }
   }
 }

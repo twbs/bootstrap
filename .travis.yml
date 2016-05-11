@@ -1,4 +1,5 @@
-sudo: false
+sudo: required
+dist: trusty
 language: node_js
 git:
   depth: 10
@@ -10,7 +11,6 @@ before_install:
   - export PATH=$(python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH")
   - rvm install 2.2
   - rvm use 2.2 --fuzzy
-  - export GEMDIR=$(rvm gemdir)
   - npm install -g npm@3
   - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true

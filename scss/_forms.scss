@@ -11,10 +11,12 @@
   // height: $input-height;
   padding: $input-padding-y $input-padding-x;
   font-size: $font-size-base;
+  line-height: $input-line-height;
   color: $input-color;
   background-color: $input-bg;
   // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
   background-image: none;
+  background-clip: padding-box;
   border: $input-btn-border-width solid $input-border-color;
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius);
@@ -55,8 +57,18 @@
 }
 
 select.form-control {
-  &:not([size], [multiple]) {
+  &:not([size]):not([multiple]) {
     height: $input-height;
+  }
+
+  &:focus::-ms-value {
+    // Suppress the nested default white text on blue background highlight given to
+    // the selected option text when the (still closed) <select> receives focus
+    // in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
+    // match the appearance of the native widget.
+    // See https://github.com/twbs/bootstrap/issues/19398.
+    color: $input-color;
+    background-color: $input-bg;
   }
 }
 
@@ -73,41 +85,36 @@ select.form-control {
 
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
-.form-control-label {
-  padding: $input-padding-y $input-padding-x;
+.col-form-label {
+  padding-top: $input-padding-y;
+  padding-bottom: $input-padding-y;
   margin-bottom: 0; // Override the `<label>` default
 }
 
+.col-form-label-lg {
+  padding-top: $input-padding-y-lg;
+  padding-bottom: $input-padding-y-lg;
+  font-size: $font-size-lg;
+}
 
-// Todo: clear this up
+.col-form-label-sm {
+  padding-top: $input-padding-y-sm;
+  padding-bottom: $input-padding-y-sm;
+  font-size: $font-size-sm;
+}
 
-// Special styles for iOS temporal inputs
+
 //
-// In Mobile Safari, setting `display: block` on temporal inputs causes the
-// text within the input to become vertically misaligned. As a workaround, we
-// set a pixel line-height that matches the given height of the input, but only
-// for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
+// Legends
 //
-// Note that as of 8.3, iOS doesn't support `week`.
 
-_::-webkit-full-page-media, // Hack to make this CSS be Safari-only; see http://browserbu.gs/css-hacks/webkit-full-page-media/
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
-  &.form-control {
-    line-height: $input-height;
-  }
-
-  &.input-sm,
-  .input-group-sm &.form-control {
-    line-height: $input-height-sm;
-  }
-
-  &.input-lg,
-  .input-group-lg &.form-control {
-    line-height: $input-height-lg;
-  }
+// For use with horizontal and inline forms, when you need the legend text to
+// be the same size as regular labels, and to align with the form controls.
+.col-form-legend {
+  padding-top: $input-padding-y;
+  padding-bottom: $input-padding-y;
+  margin-bottom: 0;
+  font-size: $font-size-base;
 }
 
 
@@ -141,19 +148,27 @@ input[type="month"] {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .form-control-sm {
-  // height: $input-height-sm;
   padding: $input-padding-y-sm $input-padding-x-sm;
   font-size: $font-size-sm;
-  line-height: $line-height-sm;
   @include border-radius($input-border-radius-sm);
 }
 
+select.form-control-sm {
+  &:not([size]):not([multiple]) {
+    height: $input-height-sm;
+  }
+}
+
 .form-control-lg {
-  // height: $input-height-lg;
   padding: $input-padding-y-lg $input-padding-x-lg;
   font-size: $font-size-lg;
-  line-height: $line-height-lg;
   @include border-radius($input-border-radius-lg);
+}
+
+select.form-control-lg {
+  &:not([size]):not([multiple]) {
+    height: $input-height-lg;
+  }
 }
 
 
@@ -166,86 +181,65 @@ input[type="month"] {
   margin-bottom: $form-group-margin-bottom;
 }
 
+.form-text {
+  display: block;
+  margin-top: ($spacer * .25);
+}
+
 
 // Checkboxes and radios
 //
 // Indent the labels to position radios/checkboxes as hanging controls.
 
-.radio,
-.checkbox {
+.form-check {
   position: relative;
   display: block;
-  // margin-top:    ($spacer * .75);
   margin-bottom: ($spacer * .75);
 
-  label {
-    padding-left: 1.25rem;
-    margin-bottom: 0;
-    cursor: pointer;
+  // Move up sibling radios or checkboxes for tighter spacing
+  + .form-check {
+    margin-top: -.25rem;
+  }
 
-    // When there's no labels, don't position the input.
-    input:only-child {
-      position: static;
+  &.disabled {
+    .form-check-label {
+      color: $text-muted;
+      cursor: $cursor-disabled;
     }
   }
 }
-.radio input[type="radio"],
-.radio-inline input[type="radio"],
-.checkbox input[type="checkbox"],
-.checkbox-inline input[type="checkbox"] {
-  position: absolute;
-  margin-top: .25rem;
-  // margin-top: 4px \9;
-  margin-left: -1.25rem;
+
+.form-check-label {
+  padding-left: 1.25rem;
+  margin-bottom: 0; // Override default `<label>` bottom margin
+  cursor: pointer;
 }
 
-.radio + .radio,
-.checkbox + .checkbox {
-  // Move up sibling radios or checkboxes for tighter spacing
-  margin-top: -.25rem;
+.form-check-input {
+  position: absolute;
+  margin-top: .25rem;
+  margin-left: -1.25rem;
+
+  &:only-child {
+    position: static;
+  }
 }
 
 // Radios and checkboxes on same line
-.radio-inline,
-.checkbox-inline {
+.form-check-inline {
   position: relative;
   display: inline-block;
   padding-left: 1.25rem;
-  margin-bottom: 0;
+  margin-bottom: 0; // Override default `<label>` bottom margin
   vertical-align: middle;
   cursor: pointer;
-}
-.radio-inline + .radio-inline,
-.checkbox-inline + .checkbox-inline {
-  margin-top: 0;
-  margin-left: .75rem;
-}
 
-// Apply same disabled cursor tweak as for inputs
-// Some special care is needed because <label>s don't inherit their parent's `cursor`.
-//
-// Note: Neither radios nor checkboxes can be readonly.
-input[type="radio"],
-input[type="checkbox"] {
-  &:disabled,
+  + .form-check-inline {
+    margin-left: .75rem;
+  }
+
   &.disabled {
     cursor: $cursor-disabled;
-  }
-}
-// These classes are used directly on <label>s
-.radio-inline,
-.checkbox-inline {
-  &.disabled {
-    cursor: $cursor-disabled;
-  }
-}
-// These classes are used on elements with <label> descendants
-.radio,
-.checkbox {
-  &.disabled {
-    label {
-      cursor: $cursor-disabled;
-    }
   }
 }
 
@@ -254,13 +248,17 @@ input[type="checkbox"] {
 //
 // Apply contextual and semantic states to individual form controls.
 
+.form-control-feedback {
+  margin-top: ($spacer * .25);
+}
+
 .form-control-success,
 .form-control-warning,
 .form-control-danger {
   padding-right: ($input-padding-x * 3);
   background-repeat: no-repeat;
-  background-position: center right ($input-height * .25);
-  background-size: ($input-height * .5) ($input-height * .50);
+  background-position: center right ($input-height / 4);
+  background-size: ($input-height / 2) ($input-height / 2);
 }
 
 // Form validation states
@@ -287,84 +285,6 @@ input[type="checkbox"] {
     background-image: $form-icon-danger;
   }
 }
-
-
-
-
-// .form-control-success {
-//   background-image: url("#{$form-icon-success}");
-//   border-color: $brand-success;
-// }
-//
-// .form-control-warning {
-//   background-image: url("#{$form-icon-warning}");
-//   border-color: $brand-warning;
-// }
-//
-// .form-control-error {
-//   background-image: url("#{$form-icon-danger}");
-//   border-color: $brand-danger;
-// }
-
-
-// .has-feedback {
-//   // Enable absolute positioning
-//   position: relative;
-//
-//   // Ensure icons don't overlap text
-//   .form-control {
-//     padding-right: ($input-height * 1.25);
-//   }
-// }
-// // Feedback icon
-// .form-control-feedback {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   z-index: 2; // Ensure icon is above input groups
-//   display: block;
-//   width: $input-height;
-//   height: $input-height;
-//   line-height: $input-height;
-//   text-align: center;
-//   pointer-events: none;
-// }
-// .input-lg + .form-control-feedback,
-// .input-group-lg + .form-control-feedback {
-//   width: $input-height-lg;
-//   height: $input-height-lg;
-//   line-height: $input-height-lg;
-// }
-// .input-sm + .form-control-feedback,
-// .input-group-sm + .form-control-feedback {
-//   width: $input-height-sm;
-//   height: $input-height-sm;
-//   line-height: $input-height-sm;
-// }
-//
-// // Form validation states
-// .has-success {
-//   @include form-control-validation($state-success-text, $state-success-text, $state-success-bg);
-// }
-// .has-warning {
-//   @include form-control-validation($state-warning-text, $state-warning-text, $state-warning-bg);
-// }
-// .has-danger {
-//   @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
-// }
-//
-// // Reposition feedback icon if input has visible label above
-// .has-feedback label {
-//
-//   ~ .form-control-feedback {
-//     // TODO: redo this since we nuked the `$line-height-computed`
-//     top: 0; // Height of the `label` and its margin
-//   }
-//
-//   &.sr-only ~ .form-control-feedback {
-//     top: 0;
-//   }
-// }
 
 
 // Inline forms
@@ -422,19 +342,16 @@ input[type="checkbox"] {
 
     // Remove default margin on radios/checkboxes that were used for stacking, and
     // then undo the floating of radios and checkboxes to match.
-    .radio,
-    .checkbox {
+    .form-check {
       display: inline-block;
       margin-top: 0;
       margin-bottom: 0;
       vertical-align: middle;
-
-      label {
-        padding-left: 0;
-      }
     }
-    .radio input[type="radio"],
-    .checkbox input[type="checkbox"] {
+    .form-check-label {
+      padding-left: 0;
+    }
+    .form-check-input {
       position: relative;
       margin-left: 0;
     }

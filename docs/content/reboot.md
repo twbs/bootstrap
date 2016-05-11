@@ -34,20 +34,24 @@ The `<html>` and `<body>` elements are updated to provide better page-wide defau
 
 ## Native font stack
 
-The default web (Helvetica Neue, Helvetica, and Arial) fonts have been dropped in Bootstrap 4 and replaced with a "native font stack" for optimum text rendering on every device and OS. Read more about [native font stacks in this Smashing Magazine article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
+The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped in Bootstrap 4 and replaced with a "native font stack" for optimum text rendering on every device and OS. Read more about [native font stacks in this *Smashing Magazine* article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
 
 {% highlight sass %}
 $font-family-sans-serif:
   // Safari for OS X and iOS (San Francisco)
   -apple-system,
-  // Chrome for OS X (San Francisco) and Windows (Segoe UI)
+  // Chrome for OS X (San Francisco)
   BlinkMacSystemFont,
   // Windows
   "Segoe UI",
   // Android
   "Roboto",
-  // Linux distros
-  "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+  // Linux
+  "Oxygen", // KDE
+  "Ubuntu",
+  "Cantarell", // GNOME
+  // Firefox OS [R.I.P.]
+  "Fira Sans",
   // Older Android
   "Droid Sans",
   // Basic web fallback
@@ -144,7 +148,7 @@ The `<pre>` element is reset to remove its `margin-top` and use `rem` units for 
 
 ## Tables
 
-Tables are slightly adjusted to style `<caption>`s and ensure consistent `text-align` throughout. Additional changes for borders, padding, and more come with [the `.table` class]({{ site.baseurl }}/content/tables/).
+Tables are slightly adjusted to style `<caption>`s, collapse borders, and ensure consistent `text-align` throughout. Additional changes for borders, padding, and more come with [the `.table` class]({{ site.baseurl }}/content/tables/).
 
 <div class="bd-example">
   <table>
@@ -189,7 +193,7 @@ Various form elements have been rebooted for simpler base styles. Here are some 
 - `<fieldset>`s have no borders, padding, or margin so they can be easily used as wrappers for individual inputs or groups of inputs.
 - `<legend>`s, like fieldsets, have also been restyled to be displayed as a heading of sorts.
 - `<label>`s are set to `display: inline-block` to allow `margin` to be applied.
-- `<input>`s, `<selects>`s, `<textareas>`s, and `<buttons>`s are mostly addressed by Normalize, but Reboot removes their `margin` and sets `line-height: inherit`, too.
+- `<input>`s, `<select>`s, `<textarea>`s, and `<button>`s are mostly addressed by Normalize, but Reboot removes their `margin` and sets `line-height: inherit`, too.
 - `<textarea>`s are modified to only be resizable vertically as horizontal resizing often "breaks" page layout.
 
 These changes, and more, are demonstrated below.
@@ -330,12 +334,12 @@ To merely toggle the visibility of an element, meaning its `display` is not modi
 
 Traditionally, browsers on touchscreen devices have a delay of approximately 300ms between the end of a "tap" – the moment when a finger/stylus is lifted from screen – and the [`click` event](https://developer.mozilla.org/en-US/docs/Web/Events/click) being fired. This delay is necessary for these browsers to correctly handle "double-tap to zoom" gestures without prematurely triggering actions or links after the first "tap", but it can make your site feel slightly sluggish and unresponsive.
 
-Most mobile browsers automatically optimize away this 300ms delay for sites that use the `width=device-width` property as part of their [responsive meta tag]({{ site.baseurl }}/getting-started/introduction/#responsive-meta-tag) (as well as for sites that disable zooming, for instance with `user-scalable=no`, though this practice is strongly discouraged for accessibility and usability reasons). The biggest exceptions here are currently iOS Safari (and any other iOS WebView-based browser) – though this is likely to change in iOS 10, see [WebKit bug #150604](https://bugs.webkit.org/show_bug.cgi?id=150604) – and IE11 on Windows Phone 8.1.
+Most mobile browsers automatically optimize away this 300ms delay for sites that use the `width=device-width` property as part of their [responsive meta tag]({{ site.baseurl }}/getting-started/introduction/#responsive-meta-tag) (as well as for sites that disable zooming, for instance with `user-scalable=no`, though this practice is strongly discouraged for accessibility and usability reasons). The biggest exceptions here are IE11 on Windows Phone 8.1, and iOS Safari (and any other iOS WebView-based browser) [prior to iOS 9.3](https://webkit.org/blog/5610/more-responsive-tapping-on-ios/).
 
 On touch-enabled laptop/desktop devices, IE11 and Microsoft Edge are currently the only browsers with "double-tap to zoom" functionality. As the [responsive meta tag]({{ site.baseurl }}/getting-started/introduction/#responsive-meta-tag) is ignored by all desktop browsers, using `width=device-width` will have no effect on the 300ms delay here.
 
 To address this problem in IE11 and Microsoft Edge on desktop, as well as IE11 on Windows Phone 8.1, Bootstrap explicitly uses the [`touch-action:manipulation` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action) on all interactive elements (such as buttons and links). This property essentially disables double-tap functionality on those elements, eliminating the 300ms delay.
 
-In the case of iOS, the currently suggested approach is to use additional scripts such as [FastClick](https://github.com/ftlabs/fastclick) to explicitly work around the delay.
+In the case of old iOS versions (prior to 9.3), the suggested approach is to use additional scripts such as [FastClick](https://github.com/ftlabs/fastclick) to explicitly work around the delay.
 
 For further details, see the compatibility table for [suppressing 300ms delay for touchscreen interactions](http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay).

@@ -34,8 +34,7 @@ html {
 //
 // @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in
 // some cases. See http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/.
-// Eventually @viewport will replace <meta name="viewport">. It's been manually
-// prefixed for forward-compatibility.
+// Eventually @viewport will replace <meta name="viewport">.
 //
 // However, `device-width` is broken on IE 10 on Windows (Phone) 8,
 // (see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
@@ -172,6 +171,25 @@ a {
   }
 }
 
+// And undo these styles for placeholder links/named anchors (without href).
+// It would be more straightforward to just use a[href] in previous block, but that
+// causes specificity issues in many other styles that are too complex to fix.
+// See https://github.com/twbs/bootstrap/issues/19402
+
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+
+  @include hover-focus {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
 
 //
 // Code
@@ -182,6 +200,8 @@ pre {
   margin-top: 0;
   // Reset browser default of `1em` to use `rem`s
   margin-bottom: 1rem;
+  // Normalize v4 removed this property, causing `<pre>` content to break out of wrapping code snippets
+  overflow: auto;
 }
 
 
@@ -248,6 +268,8 @@ textarea {
 //
 
 table {
+  // No longer part of Normalize since v4
+  border-collapse: collapse;
   // Reset for nesting within parents with `background-color`.
   background-color: $table-bg;
 }
@@ -299,6 +321,29 @@ textarea {
   border-radius: 0;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+  // Apply a disabled cursor for radios and checkboxes.
+  //
+  // Note: Neither radios nor checkboxes can be readonly.
+  &:disabled {
+    cursor: $cursor-disabled;
+  }
+}
+
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  // Remove the default appearance of temporal inputs to avoid a Mobile Safari
+  // bug where setting a custom line-height prevents text from being vertically
+  // centered within the input.
+  //
+  // Bug report: https://github.com/twbs/bootstrap/issues/11266
+  -webkit-appearance: listbox;
+}
+
 textarea {
   // Textareas should really only resize vertically so they don't break their (horizontal) containers.
   resize: vertical;
@@ -323,7 +368,6 @@ legend {
   margin-bottom: .5rem;
   font-size: 1.5rem;
   line-height: inherit;
-//  border: 0;
 }
 
 input[type="search"] {

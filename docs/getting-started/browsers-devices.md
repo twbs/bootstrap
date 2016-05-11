@@ -191,15 +191,15 @@ For more information and usage guidelines, read [Windows Phone 8 and Device-Widt
 
 As a heads up, we include this in all of Bootstrap's documentation and examples as a demonstration.
 
-## Modals, navbars, and virtual keyboards
+## Modals and dropdowns on mobile
 
 ### Overflow and scrolling
 
-Support for `overflow: hidden;` on the `<body>` element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the `<body>` content will begin to scroll. See [WebKit bug #153852](https://bugs.webkit.org/show_bug.cgi?id=153852).
+Support for `overflow: hidden;` on the `<body>` element is quite limited in iOS and Android. To that end, when you scroll past the top or bottom of a modal in either of those devices' browsers, the `<body>` content will begin to scroll. See [Chrome bug #175502](https://bugs.chromium.org/p/chromium/issues/detail?id=175502) (fixed in Chrome v40) and [WebKit bug #153852](https://bugs.webkit.org/show_bug.cgi?id=153852).
 
-### Virtual keyboards
+### iOS text fields and scrolling
 
-Also, note that if you're using a fixed navbar or using inputs within a modal, iOS has a rendering bug that doesn't update the position of fixed elements when the virtual keyboard is triggered. A few workarounds for this include transforming your elements to `position: absolute;` or invoking a timer on focus to try to correct the positioning manually. This is not handled by Bootstrap, so it is up to you to decide which solution is best for your application.
+As of iOS 9.2, while a modal is open, if the initial touch of a scroll gesture is within the boundary of a textual `<input>` or a `<textarea>`, the `<body>` content underneath the modal will be scrolled instead of the modal itself. See [WebKit bug #153856](https://bugs.webkit.org/show_bug.cgi?id=153856).
 
 ### Navbar Dropdowns
 
@@ -218,13 +218,13 @@ Bootstrap includes a workaround for this, although it is disabled by default. By
 
 Even in some modern browsers, printing can be quirky.
 
-In particular, as of Chrome v32 and regardless of margin settings, Chrome uses a viewport width significantly narrower than the physical paper size when resolving media queries while printing a webpage. This can result in Bootstrap's extra-small grid being unexpectedly activated when printing. See [issue #12078](https://github.com/twbs/bootstrap/issues/12078) for some details. Suggested workarounds:
+In particular, as of Chrome v32 and regardless of margin settings, Chrome uses a viewport width significantly narrower than the physical paper size when resolving media queries while printing a webpage. This can result in Bootstrap's extra-small grid being unexpectedly activated when printing. See [issue #12078](https://github.com/twbs/bootstrap/issues/12078) and [Chrome bug #273306](https://bugs.chromium.org/p/chromium/issues/detail?id=273306) for some details. Suggested workarounds:
 
 * Embrace the extra-small grid and make sure your page looks acceptable under it.
 * Customize the value of the `$grid-breakpoints` Sass variable so that your printer paper is considered larger than extra-small.
 * Add custom media queries to change the grid size breakpoints for print media only.
 
-Also, as of Safari v8.0, use of the fixed-width `.container` class can cause Safari to use an unusually small font size when printing. See [issue #14868](https://github.com/twbs/bootstrap/issues/14868) for more details. One potential workaround is the following CSS:
+Also, as of Safari v8.0, use of the fixed-width `.container` class can cause Safari to use an unusually small font size when printing. See [issue #14868](https://github.com/twbs/bootstrap/issues/14868) and [WebKit bug #138192](https://bugs.webkit.org/show_bug.cgi?id=138192) for more details. One potential workaround is the following CSS:
 
 {% highlight css %}
 @media print {

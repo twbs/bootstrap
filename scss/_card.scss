@@ -9,8 +9,7 @@
   background-color: $card-bg;
   // border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
-  // Doesn't use mixin so that cards always have a "border"
-  box-shadow: inset 0 0 0 $card-border-width $card-border-color;
+  border: $card-border-width solid $card-border-color;
 }
 
 .card-block {
@@ -49,18 +48,16 @@
   }
 }
 
-@if $enable-rounded {
-  .card {
-    > .list-group:first-child {
-      .list-group-item:first-child {
-        border-radius: $card-border-radius $card-border-radius 0 0;
-      }
+.card {
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($card-border-radius);
     }
+  }
 
-    > .list-group:last-child {
-      .list-group-item:last-child {
-        border-radius: 0 0 $card-border-radius $card-border-radius;
-      }
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($card-border-radius);
     }
   }
 }
@@ -187,17 +184,17 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1.25rem;
+  padding: $card-img-overlay-padding;
 }
 
 
 
 // Card image caps
 .card-img-top {
-  @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+  @include border-top-radius($card-border-radius-inner);
 }
 .card-img-bottom {
-  @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+  @include border-bottom-radius($card-border-radius-inner);
 }
 
 
@@ -313,7 +310,7 @@
 @include media-breakpoint-up(sm) {
   .card-columns {
     column-count: 3;
-    column-gap: 1.25rem;
+    column-gap: $card-columns-sm-up-column-gap;
 
     .card {
       display: inline-block;

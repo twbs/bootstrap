@@ -34,7 +34,7 @@ Always try to place a modal's HTML code in a top-level position in your document
 {% callout warning %}
 #### Mobile device caveats
 
-There are some caveats regarding using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/getting-started/browsers-devices/#modals-navbars-and-virtual-keyboards) for details.
+There are some caveats regarding using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/getting-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
 {% endcallout %}
 
 ### Static example
@@ -181,7 +181,7 @@ Embedding YouTube videos in modals requires additional JavaScript not in Bootstr
 
 ## Optional sizes
 
-Modals have two optional sizes, available via modifier classes to be placed on a `.modal-dialog`. These size kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
+Modals have two optional sizes, available via modifier classes to be placed on a `.modal-dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
 
 <div class="bd-example">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>

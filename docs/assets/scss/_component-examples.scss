@@ -128,6 +128,10 @@
     position: static;
     display: block;
   }
+
+  > .form-group:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .bd-example > .close {
@@ -299,12 +303,6 @@
 
 // Helpers
 .bd-example > {
-  .center-block:not(img) {
-    max-width: 200px;
-    padding: .5rem;
-    background-color: #eee;
-  }
-
   .bg-primary,
   .bg-success,
   .bg-info,

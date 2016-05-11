@@ -1,60 +1,70 @@
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
+  summary: >
+    Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
+  upstream_bug: >
+    Edge#6793560
+  origin: >
+    Bootstrap#18692
+
+-
+  browser: >
+    Microsoft Edge
   summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
-    IE#926665
+    Edge#5381673
   origin: >
     Bootstrap#14211
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
   upstream_bug: >
-    IE#963961
+    Edge#817822
   origin: >
     Bootstrap#14528
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
   upstream_bug: >
-    IE#1463734
+    Edge#3342037
   origin: >
     Bootstrap#16671
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     `background` of `<tr>` is only applied to first child cell instead of all cells in the row
   upstream_bug: >
-    IE#2110930
+    Edge#5865620
   origin: >
     Bootstrap#18504
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
   upstream_bug: >
-    IE#2256049
+    Edge#7165383
   origin: >
     Bootstrap#18543
 
 -
   browser: >
-    Internet Explorer 11 & Microsoft Edge
+    Microsoft Edge
   summary: >
     Background color from lower layer bleeds through transparent border in some cases
   upstream_bug: >
-    IE#2263132
+    Edge#6274505
   origin: >
     Bootstrap#18228
 
@@ -67,26 +77,6 @@
     Mozilla#1023761
   origin: >
     Bootstrap#13453
-
--
-  browser: >
-    Firefox
-  summary: >
-    `max-width: 100%;` doesn't work inside tables.
-  upstream_bug: >
-    Mozilla#975632
-  origin: >
-    Bootstrap#10690
-
--
-  browser: >
-    Firefox
-  summary: >
-    Button elements with `width: 100%` become cropped in long tables.
-  upstream_bug: >
-    Mozilla#1060131
-  origin: >
-    Bootstrap#14320
 
 -
   browser: >
@@ -110,13 +100,43 @@
 
 -
   browser: >
+    Firefox
+  summary: >
+    Fire `transitioncancel` event when a transition is canceled
+  upstream_bug: >
+    Mozilla#1264125
+  origin: >
+    Mozilla#1182856
+
+-
+  browser: >
     Firefox (Windows)
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
   upstream_bug: >
-    Mozilla#1139853
+    Mozilla#924068
   origin: >
     Bootstrap#15990
+
+-
+  browser: >
+    Firefox (OS X & Linux)
+  summary: >
+    Badge widget causes bottom border of Tabs widget to unexpectedly not overlap
+  upstream_bug: >
+    Mozilla#1259972
+  origin: >
+    Bootstrap#19626
+
+-
+  browser: >
+    Chrome (Android)
+  summary: >
+    Tapping on an `<input>` in a scrollable overlay doesn't scroll the `<input>` into view
+  upstream_bug: >
+    Chromium#595210
+  origin: >
+    Bootstrap#17338
 
 -
   browser: >
@@ -147,16 +167,6 @@
     Chromium#475128
   origin: >
     Bootstrap#16180
-
--
-  browser: >
-    Chrome
-  summary: >
-    Incorrect viewport size used for media queries when printing.
-  upstream_bug: >
-    Chromium#273306
-  origin: >
-    Bootstrap#12078
 
 -
   browser: >
@@ -220,13 +230,23 @@
 
 -
   browser: >
+    Safari
+  summary: >
+    `rem` units in media queries should be calculated using `font-size: initial`, not the root element's `font-size`
+  upstream_bug: >
+    WebKit#156684
+  origin: >
+    Bootstrap#17403
+
+-
+  browser: >
     Safari (OS X)
   summary: >
-    Scrollbar clipped in `select[multiple]` with padding.
+    `px`, `em`, and `rem` should all behave the same in media queries when page zoom is applied
   upstream_bug: >
-    WebKit#128489, Safari#19208483
+    WebKit#156687
   origin: >
-    Bootstrap#12536
+    Bootstrap#17403
 
 -
   browser: >
@@ -249,16 +269,6 @@
     WebKit#138192, Safari#19435018
   origin: >
     Bootstrap#14868
-
--
-  browser: >
-    Safari (OS X)
-  summary: >
-    Focus ring of image map within a modal is displayed in the wrong location.
-  upstream_bug: >
-    WebKit#143527, Safari#21908735
-  origin: >
-    Bootstrap#16180
 
 -
   browser: >

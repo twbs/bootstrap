@@ -24,7 +24,7 @@ These styles can be found within `_reboot.scss`, and the global variables are de
 
 ## Headings
 
-All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.
+All HTML headings, `<h1>` through `<h6>`, are available.
 
 <div class="bd-example bd-example-type">
   <table class="table">
@@ -65,6 +65,17 @@ All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` cla
 <h5>h5. Bootstrap heading</h5>
 <h6>h6. Bootstrap heading</h6>
 {% endhighlight %}
+
+`.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.
+
+{% example html %}
+<p class="h1">h1. Bootstrap heading</p>
+<p class="h2">h2. Bootstrap heading</p>
+<p class="h3">h3. Bootstrap heading</p>
+<p class="h4">h4. Bootstrap heading</p>
+<p class="h5">h5. Bootstrap heading</p>
+<p class="h6">h6. Bootstrap heading</p>
+{% endexample %}
 
 ### Customizing headings
 
@@ -138,7 +149,7 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities](http://localhost:9001/components/utilities/#text-alignment).
+Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/components/utilities/#text-alignment).
 
 ## Abbreviations
 
@@ -211,7 +222,7 @@ Remove the default `list-style` and left margin on list items (immediate childre
 
 ### Inline
 
-Place all list items on a single line with `display: inline-block;` and some basic margin between.
+Remove a list's bullets and apply some light `margin` with a combination of two classes, `.list-inline` and `.list-inline-item`.
 
 {% example html %}
 <ul class="list-inline">

@@ -34,7 +34,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 - Overhauled grid mixins to merge `make-col-span` into `make-col` for a singular mixin.
 - Added a new `sm` grid tier below `768px` for more granular control. We now have `xs`, `sm`, `md`, `lg`, and `xl`. This also means every tier has been bumped up one level (so `.col-md-6` in v3 is now `.col-lg-6` in v4).
 - Changed grid system media query breakpoints and container widths to account for new grid tier and ensure columns are evenly divisible by `12` at their max width.
-- Grid breakpoints and container widths are now handled via Sass maps instead of a handful of separate variables. These replace the `@screen-*` variables entirely and allow you to fully customize the grid tiers.
+- Grid breakpoints and container widths are now handled via Sass maps (`$grid-breakpoints` and `$container-max-widths`) instead of a handful of separate variables. These replace the `@screen-*` variables entirely and allow you to fully customize the grid tiers.
 - Media queries have also changed. Instead of repeating our media query declarations with the same value each time, we now have `@include media-breakpoint-up/down/only`. Now, instead of writing `@media (min-width: @screen-sm-min) { ... }`, you can write `@include media-breakpoint-up(sm) { ... }`.
 
 ### Components
@@ -64,7 +64,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Typography
 
 - Moved all `.text-` utilities to the `_utilities.scss` file.
-- Dropped the `.page-header` class entirely.
+- Dropped `.page-header` as, aside from the border, all it's styles can be applied via utilities.
 - `.dl-horizontal` has been dropped. Instead, use `.row` on `<dl>` and use grid column classes (or mixins) on its `<dt>` and `<dd>` children.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
 
@@ -87,22 +87,30 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Renamed `.control-label` to `.form-control-label`.
 - Renamed `.input-lg` and `.input-sm` to `.form-control-lg` and `.form-control-sm`, respectively.
 - Dropped `.form-group-*` classes for simplicity's sake. Use `.form-control-*` classes instead now.
-- Dropped `.help-block`. Use the `.text-muted` utility class instead.
+- Dropped `.help-block` and replaced it with `.form-text` for block-level help text. For inline help text and other flexible options, use utility classes like `.text-muted`.
 - Horizontal forms overhauled:
   - Dropped the `.form-horizontal` class requirement.
-  - `.form-group` no longer mixins the `.row` class, so it's now required for grid layouts.
+  - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
 
 ### Buttons
 
 - Renamed `.btn-default` to `.btn-secondary`.
-- Dropped the `.btn-xs` class entirely.
+- Dropped the `.btn-xs` class entirely as `.btn-sm` is proportionally much smaller than v3's.
 - The [stateful button](http://getbootstrap.com/javascript/#buttons-methods) feature of the `button.js` jQuery plugin has been dropped. This includes the `$().button(string)` and `$().button('reset')` methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
   - Note that the other features of the plugin (button checkboxes, button radios, single-toggle buttons) have been retained in v4.
 
 ### Button group
 
-- Dropped the `.btn-group-xs` class entirely.
+- Dropped the `.btn-group-xs` class entirely given removal of `.btn-xs`.
+
+### Dropdowns
+
+- Switched from parent selectors to singular classes for all components, modifiers, etc.
+- Dropdowns can be built with `<div>`s or `<ul>`s now.
+- Rebuilt dropdown styles and markup to provide easy, built-in support for `<a>` and `<button>` based dropdown items.
+- Dropdown items now require `.dropdown-item`.
+- Dropdown toggles no longer require an explicit `<span class="caret"></span>`; this is now provided automatically via CSS's `::after` on `.dropdown-toggle`.
 
 ### Grid system
 
@@ -126,9 +134,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - An explicit class, `.breadcrumb-item`, is now required on the descendants of `.breadcrumb`s
 
-### Badges
+### Labels and badges
 
-- Dropped the badge component. Use the `.label-pill` modifier together with the label component instead.
+- Renamed `.label` to `.tag` to disambiguate from the `<label>` element.
+- Dropped the badge component. Use the `.tag-pill` modifier together with the label component instead.
 
 ### Panels, thumbnails, and wells
 
@@ -202,14 +211,15 @@ TODO: audit classes in v3 that aren't present in v4
 
 ### Responsive utilities
 
-The following deprecated variables have been removed in v4.0.0:
+The following variables have been removed in v4.0.0. Use the `media-breakpoint-up()`, `media-breakpoint-down()`, or `media-breakpoint-only()` Sass mixins or the `$grid-breakpoints` Sass map instead of:
 
-* `@screen-phone`, `@screen-tablet`, `@screen-desktop`, `@screen-lg-desktop`. Use the more abstract `$screen-{xs,sm,md,lg,xl}-*` variables instead.
-* `@screen-sm`, `@screen-md`, `@screen-lg`. Use the more clearly named `$screen-{xs,sm,md,lg,xl}-min` variables instead.
-* `@screen-xs`, `@screen-xs-min`. The extra small breakpoint has no lower bound, so these variables were logically absurd. Reformulate your expression in terms of `$screen-xs-max` instead.
+* `@screen-phone`, `@screen-tablet`, `@screen-desktop`, `@screen-lg-desktop`.
+* `@screen-xs`, `@screen-sm`, `@screen-md`, `@screen-lg`.
+* `@screen-xs-min`, `@screen-xs-max`, `@screen-sm-min`, `@screen-sm-max`, `@screen-md-min`, `@screen-md-max`, `@screen-lg-min`, `@screen-lg-max`
 
 The responsive utility classes have also been overhauled.
 
+- The `.hidden` and `.show` classes have been removed because they conflicted with jQuery's `$(...).hide()` and `$(...).show()` methods. Instead, try toggling the `[hidden]` attribute, use inline styles like `style="display: none;"` and `style="display: block;"`, or toggle the `.invisible` class.
 - The old classes (`.hidden-xs` `.hidden-sm` `.hidden-md` `.hidden-lg` `.visible-xs-block` `.visible-xs-inline` `.visible-xs-inline-block` `.visible-sm-block` `.visible-sm-inline` `.visible-sm-inline-block` `.visible-md-block` `.visible-md-inline` `.visible-md-inline-block` `.visible-lg-block` `.visible-lg-inline` `.visible-lg-inline-block`) are gone.
 - They have been replaced by `.hidden-xs-up` `.hidden-xs-down` `.hidden-sm-up` `.hidden-sm-down` `.hidden-md-up` `.hidden-md-down` `.hidden-lg-up` `.hidden-lg-down`.
 - The `.hidden-*-up` classes hide the element when the viewport is at the given breakpoint or larger (e.g. `.hidden-md-up` hides an element on medium, large, and extra-large devices).
@@ -222,7 +232,6 @@ Note that the changes to the grid breakpoints in v4 means that you'll need to go
 ## Misc notes to prioritize
 
 - Removed the `min--moz-device-pixel-ratio` typo hack for retina media queries
-- Dropped `.hidden` and `.show` because they conflict with jQuery's `$(...).hide()` and `$(...).show()` methods.
 - Change buttons' `[disabled]` to `:disabled` as IE9+ supports `:disabled`. However `fieldset[disabled]` is still necessary because [native disabled fieldsets are still buggy in IE11](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#Browser_compatibility).
 
 TODO: audit list of stuff in v3 that was marked as deprecated

@@ -1,4 +1,4 @@
-<footer class="bd-footer text-muted" role="contentinfo">
+<footer class="bd-footer text-muted">
   <div class="container">
     <ul class="bd-footer-links">
       <li><a href="{{ site.repo }}">GitHub</a></li>
@@ -43,15 +43,15 @@ SimpleJekyllSearch.init({
   resultsContainer: document.getElementById('search-results'),
   searchResultTemplate: '<a class="dropdown-item" href="{url}">{title}</a>',
   noResultsText: '<div class="dropdown-item no-results">Sorry, there are no results for that search.</div>',
-  json: '/search.json'
+  json: '{{ site.baseurl }}/search.json'
 })
 </script>
 {% endif %}
 
 <script>
 Holder.addTheme('gray', {
-  background: '#777',
-  foreground: 'rgba(255,255,255,.75)',
+  bg: '#777',
+  fg: 'rgba(255,255,255,.75)',
   font: 'Helvetica',
   fontweight: 'normal'
 })

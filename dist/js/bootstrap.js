@@ -462,6 +462,8 @@ var Button = (function ($) {
               input.checked = !$(this._element).hasClass(ClassName.ACTIVE);
               $(this._element).trigger('change');
             }
+
+            input.focus();
           }
         } else {
           this._element.setAttribute('aria-pressed', !$(this._element).hasClass(ClassName.ACTIVE));
@@ -2060,13 +2062,7 @@ var Modal = (function ($) {
     }, {
       key: '_checkScrollbar',
       value: function _checkScrollbar() {
-        var fullWindowWidth = window.innerWidth;
-        if (!fullWindowWidth) {
-          // workaround for missing window.innerWidth in IE8
-          var documentElementRect = document.documentElement.getBoundingClientRect();
-          fullWindowWidth = documentElementRect.right - Math.abs(documentElementRect.left);
-        }
-        this._isBodyOverflowing = document.body.clientWidth < fullWindowWidth;
+        this._isBodyOverflowing = document.body.clientWidth < window.innerWidth;
         this._scrollbarWidth = this._getScrollbarWidth();
       }
     }, {

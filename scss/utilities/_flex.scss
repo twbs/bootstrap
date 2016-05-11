@@ -2,7 +2,7 @@
 //
 // Custom styles for additional flex alignment options.
 
-@if $enable-flex and $enable-grid-classes {
+@if $enable-flex {
   @each $breakpoint in map-keys($grid-breakpoints) {
     // Flex column reordering
     @include media-breakpoint-up($breakpoint) {

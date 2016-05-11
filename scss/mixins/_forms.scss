@@ -5,7 +5,7 @@
 
 @mixin form-control-validation($color) {
   // Color the label and help text
-  .text-help,
+  .form-control-feedback,
   .form-control-label,
   .radio,
   .checkbox,
@@ -14,7 +14,8 @@
   &.radio label,
   &.checkbox label,
   &.radio-inline label,
-  &.checkbox-inline label  {
+  &.checkbox-inline label,
+  .custom-control {
     color: $color;
   }
   // Set the border and box shadow on specific inputs to match
@@ -55,6 +56,8 @@
 // contrast against a dark gray background.
 @mixin form-control-focus() {
   &:focus {
+    color: $input-color-focus;
+    background-color: $input-bg-focus;
     border-color: $input-border-focus;
     outline: none;
     $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $input-box-shadow-focus;

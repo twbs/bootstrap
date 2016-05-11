@@ -1,24 +1,27 @@
 [
-  # Docs: https://saucelabs.com/docs/platforms/webdriver
+  # Docs: https://wiki.saucelabs.com/display/DOCS/Platform+Configurator
 
   {
     browserName: "safari",
-    platform: "OS X 10.10"
+    platform: "OS X 10.11"
   },
   {
     browserName: "chrome",
-    platform: "OS X 10.10"
+    platform: "OS X 10.11",
+    version: "latest"
   },
   {
     browserName: "firefox",
-    platform: "OS X 10.10"
+    platform: "OS X 10.11",
+    version: "latest"
   },
 
   # Mac Opera not currently supported by Sauce Labs
 
   {
     browserName: "MicrosoftEdge",
-    platform: "Windows 10"
+    platform: "Windows 10",
+    version: "latest"
   },
   {
     browserName: "internet explorer",
@@ -38,11 +41,13 @@
 
   {
     browserName: "chrome",
-    platform: "Windows 8.1"
+    platform: "Windows 10",
+    version: "latest"
   },
   {
     browserName: "firefox",
-    platform: "Windows 8.1"
+    platform: "Windows 10",
+    version: "latest"
   },
 
   # Win Opera 15+ not currently supported by Sauce Labs
@@ -50,7 +55,7 @@
   {
     browserName: "iphone",
     platform: "OS X 10.10",
-    version: "9.1"
+    version: "latest"
   },
 
   # iOS Chrome not currently supported by Sauce Labs
@@ -58,18 +63,21 @@
   # Linux (unofficial)
   {
     browserName: "chrome",
-    platform: "Linux"
+    platform: "Linux",
+    version: "latest"
   },
   {
     browserName: "firefox",
-    platform: "Linux"
-  }
+    platform: "Linux",
+    version: "latest"
+  },
 
-  # Android Chrome not currently supported by Sauce Labs
-  # Android v5.0+ not currently supported by Sauce Labs
-  # { # Android Browser
-  #   browserName: "android",
-  #   version: "5.0",
-  #   platform: "Linux"
-  # }
+  # Android
+  {
+    platform: "Linux",
+    browserName: "android",
+    deviceName: "Android Emulator",
+    version: "latest",
+    deviceType: "phone"
+  }
 ]
