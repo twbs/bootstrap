@@ -1965,26 +1965,26 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .table-hover tbody tr:hover {
-  background-color: #f5f5f5;
+  background-color: rgba(0, 0, 0, 0.075);
 }
 
 .table-active,
 .table-active > th,
 .table-active > td {
-  background-color: #f5f5f5;
+  background-color: rgba(0, 0, 0, 0.075);
 }
 
 .table-hover .table-active:hover {
-  background-color: #e8e8e8;
+  background-color: rgba(0, 0, 0, 0.075);
 }
 
 .table-hover .table-active:hover > td,
 .table-hover .table-active:hover > th {
-  background-color: #e8e8e8;
+  background-color: rgba(0, 0, 0, 0.075);
 }
 
 .table-success,
@@ -2047,13 +2047,6 @@ pre code {
   background-color: #ebcccc;
 }
 
-.table-responsive {
-  display: block;
-  width: 100%;
-  min-height: .01%;
-  overflow-x: auto;
-}
-
 .thead-inverse th {
   color: #fff;
   background-color: #373a3c;
@@ -2069,14 +2062,21 @@ pre code {
   background-color: #373a3c;
 }
 
-.table-inverse.table-bordered {
-  border: 0;
-}
-
 .table-inverse th,
 .table-inverse td,
 .table-inverse thead th {
   border-color: #55595c;
+}
+
+.table-inverse.table-bordered {
+  border: 0;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  min-height: .01%;
+  overflow-x: auto;
 }
 
 .table-reflow thead {
