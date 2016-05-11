@@ -22,7 +22,7 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="text-muted">We'll never share your email with anyone else.</small>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
@@ -55,7 +55,7 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   <div class="form-group">
     <label for="exampleInputFile">File input</label>
     <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-    <small id="fileHelp" class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </div>
   <fieldset class="form-group">
     <legend>Radio buttons</legend>
@@ -172,79 +172,79 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
 
 {% example html %}
 <div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 form-control-label">Text</label>
+  <label for="example-text-input" class="col-xs-2 col-form-label">Text</label>
   <div class="col-xs-10">
     <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-search-input" class="col-xs-2 form-control-label">Search</label>
+  <label for="example-search-input" class="col-xs-2 col-form-label">Search</label>
   <div class="col-xs-10">
     <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-email-input" class="col-xs-2 form-control-label">Email</label>
+  <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
   <div class="col-xs-10">
     <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-url-input" class="col-xs-2 form-control-label">URL</label>
+  <label for="example-url-input" class="col-xs-2 col-form-label">URL</label>
   <div class="col-xs-10">
     <input class="form-control" type="url" value="http://getbootstrap.com" id="example-url-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-tel-input" class="col-xs-2 form-control-label">Telephone</label>
+  <label for="example-tel-input" class="col-xs-2 col-form-label">Telephone</label>
   <div class="col-xs-10">
     <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-password-input" class="col-xs-2 form-control-label">Password</label>
+  <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
   <div class="col-xs-10">
     <input class="form-control" type="password" value="hunter2" id="example-password-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-number-input" class="col-xs-2 form-control-label">Number</label>
+  <label for="example-number-input" class="col-xs-2 col-form-label">Number</label>
   <div class="col-xs-10">
     <input class="form-control" type="number" value="42" id="example-number-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-datetime-local-input" class="col-xs-2 form-control-label">Date and time</label>
+  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Date and time</label>
   <div class="col-xs-10">
     <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-date-input" class="col-xs-2 form-control-label">Date</label>
+  <label for="example-date-input" class="col-xs-2 col-form-label">Date</label>
   <div class="col-xs-10">
     <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-month-input" class="col-xs-2 form-control-label">Month</label>
+  <label for="example-month-input" class="col-xs-2 col-form-label">Month</label>
   <div class="col-xs-10">
     <input class="form-control" type="month" value="2011-08" id="example-month-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-week-input" class="col-xs-2 form-control-label">Week</label>
+  <label for="example-week-input" class="col-xs-2 col-form-label">Week</label>
   <div class="col-xs-10">
     <input class="form-control" type="week" value="2011-W33" id="example-week-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-time-input" class="col-xs-2 form-control-label">Time</label>
+  <label for="example-time-input" class="col-xs-2 col-form-label">Time</label>
   <div class="col-xs-10">
     <input class="form-control" type="time" value="13:45:00" id="example-time-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-color-input" class="col-xs-2 form-control-label">Color</label>
+  <label for="example-color-input" class="col-xs-2 col-form-label">Color</label>
   <div class="col-xs-10">
     <input class="form-control" type="color" value="#563d7c" id="example-color-input">
   </div>
@@ -310,9 +310,9 @@ Because of this, you may need to manually address the width and alignment of ind
     <label class="sr-only" for="exampleInputPassword3">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
   </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Remember me
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox"> Remember me
     </label>
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
@@ -334,108 +334,136 @@ Because of this, you may need to manually address the width and alignment of ind
 {% endexample %}
 
 {% callout warning %}
- #### Alternatives to hidden labels
- Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
- {% endcallout %}
+#### Alternatives to hidden labels
+Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
+{% endcallout %}
 
 ### Using the Grid
 
-For more structured form layouts, you can utilize Bootstrap's predefined grid classes (or mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
+For more structured form layouts that are also responsive, you can utilize Bootstrap's [predefined grid classes](/layout/grid/#predefined-classes) or [mixins](/layout/grid/#sass-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
 
-Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.form-control-legend` to make them appear similar to regular `<label>` elements.
+Be sure to add `.col-form-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.col-form-legend` to make them appear similar to regular `<label>` elements.
 
 {% example html %}
-<form>
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 form-control-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 form-control-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-    </div>
-  </div>
-  <fieldset class="form-group row">
-    <legend class="col-sm-2 form-control-legend">Radios</legend>
-    <div class="col-sm-10">
-      <div class="radio">
-        <label>
-          <input type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-          Option one is this and that&mdash;be sure to include why it's great
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="gridRadios" id="gridRadios2" value="option2">
-          Option two can be something else and selecting it will deselect option one
-        </label>
-      </div>
-      <div class="radio disabled">
-        <label>
-          <input type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-          Option three is disabled
-        </label>
+<div class="container">
+  <form>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
       </div>
     </div>
-  </fieldset>
-  <fieldset class="form-group row">
-    <legend class="col-sm-2 form-control-legend">Checkbox</legend>
-    <div class="col-sm-10">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Check me out
-        </label>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
       </div>
     </div>
-  </fieldset>
-  <div class="form-group row">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-secondary">Sign in</button>
+    <fieldset class="form-group row">
+      <legend class="col-form-legend col-sm-2">Radios</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+            Option one is this and that&mdash;be sure to include why it's great
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+            Option three is disabled
+          </label>
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-group row">
+      <label class="col-sm-2">Checkbox</label>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> Check me out
+          </label>
+        </div>
+      </div>
     </div>
-  </div>
-</form>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </div>
+    </div>
+  </form>
+</div>
 {% endexample %}
+
+Grid-based form layouts also support large and small inputs.
+
+{% example html %}
+<div class="container">
+  <form>
+    <div class="form-group row">
+      <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="you@example.com">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="smFormGroupInput" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-sm" id="smFormGroupInput" placeholder="you@example.com">
+      </div>
+    </div>
+  </form>
+</div>
+{% endexample %}
+
 
 ## Checkboxes and radios
 
-Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
+Default checkboxes and radios are improved upon with the help of `.form-check`, **a single class for both input types that improves the layout and behavior of their HTML elements**. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
 
-Disabled checkboxes and radios are supported, but to provide a "not-allowed" cursor on hover of the parent `<label>`, you'll need to add the <code>.disabled</code> class to the parent `.radio`, `.radio-inline`, `.checkbox`, or `.checkbox-inline`.
+Disabled checkboxes and radios are supported, but to provide a `not-allowed` cursor on hover of the parent `<label>`, you'll need to add the `.disabled` class to the parent `.form-check`. The disabled class will also lighten the text color to help indicate the input's state.
 
 ### Default (stacked)
 
+By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with `.form-check`.
+
 {% example html %}
-<div class="checkbox">
-  <label>
-    <input type="checkbox" value="">
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" value="">
     Option one is this and that&mdash;be sure to include why it's great
   </label>
 </div>
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" disabled>
+<div class="form-check disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" value="" disabled>
     Option two is disabled
   </label>
 </div>
+{% endexample %}
 
-<div class="radio">
-  <label>
-    <input type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+{% example html %}
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
     Option one is this and that&mdash;be sure to include why it's great
   </label>
 </div>
-<div class="radio">
-  <label>
-    <input type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
     Option two can be something else and selecting it will deselect option one
   </label>
 </div>
-<div class="radio disabled">
-  <label>
-    <input type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+<div class="form-check disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
     Option three is disabled
   </label>
 </div>
@@ -443,29 +471,29 @@ Disabled checkboxes and radios are supported, but to provide a "not-allowed" cur
 
 ### Inline
 
-Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes or radios for controls that appear on the same line.
+Groups of checkboxes or radios that appear on the same horizontal row are similar to their stacked counterparts, but require different HTML and a single class. To switch from stacked to inline, drop the surrounding `<div>`, add `.form-check-inline` to the `<label>`, and keep the `.form-check-input` on the `<input>`.
 
 {% example html %}
-<label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+<label class="form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
 </label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+<label class="form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
 </label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+<label class="form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> 3
 </label>
 {% endexample %}
 
 {% example html %}
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+<label class="form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
 </label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+<label class="form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
 </label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+<label class="form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
 </label>
 {% endexample %}
 
@@ -474,14 +502,14 @@ Use the `.checkbox-inline` or `.radio-inline` classes on a series of checkboxes 
 Should you have no text within the `<label>`, the input is positioned as you'd expect. **Currently only works on non-inline checkboxes and radios.** Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
 
 {% example html %}
-<div class="checkbox">
-  <label>
-    <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
   </label>
 </div>
-<div class="radio">
-  <label>
-    <input type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+<div class="form-check">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
   </label>
 </div>
 {% endexample %}
@@ -493,13 +521,13 @@ When you need to place plain text next to a form label within a form, use the `.
 {% example html %}
 <form>
   <div class="form-group row">
-    <label class="col-sm-2 form-control-label">Email</label>
+    <label class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
       <p class="form-control-static">email@example.com</p>
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputPassword" class="col-sm-2 form-control-label">Password</label>
+    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword" placeholder="Password">
     </div>
@@ -585,9 +613,15 @@ Set heights using classes like `.form-control-lg`, and set widths using grid col
 {% endexample %}
 
 {% example html %}
-<select class="form-control form-control-lg"></select>
-<select class="form-control"></select>
-<select class="form-control form-control-sm"></select>
+<select class="form-control form-control-lg">
+  <option>Large select</option>
+</select>
+<select class="form-control">
+  <option>Default select</option>
+</select>
+<select class="form-control form-control-sm">
+  <option>Small select</option>
+</select>
 {% endexample %}
 
 ## Column sizing
@@ -610,13 +644,27 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 ## Help text
 
-No official help text classes exist in Bootstrap 4 (previously we had `.help-block` in v3), but thanks to our utility classes like `.text-muted`, you can create much more flexible help text as you need it.
+Block-level help text in forms can be created using `.form-text` (previously known as `.help-block` in v3). Inline help text can be flexibly implemented using any inline HTML element and utility classes like `.text-muted`.
 
 {% callout warning %}
 #### Associating help text with form controls
 
 Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies – such as screen readers – will announce this help text when the user focuses or enters the control.
 {% endcallout %}
+
+### Block level
+
+Block help text—for below inputs or for longer lines of help text—can be easily achieved with `.form-text`. This class includes `display: block` and adds some top margin for easy spacing from the inputs above.
+
+{% example html %}
+<label for="inputPassword5">Password</label>
+<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+<p id="passwordHelpBlock" class="form-text text-muted">
+  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+</p>
+{% endexample %}
+
+### Inline
 
 Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else).
 
@@ -632,24 +680,23 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 </form>
 {% endexample %}
 
-Block help text—for below inputs or for longer lines of help text—can be easily achieved with a `<p>`.
-
-{% example html %}
-<label for="inputPassword5">Password</label>
-<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-<p id="passwordHelpBlock" class="text-muted">
-  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters or emoji.
-</p>
-{% endexample %}
-
 ## Validation
 
-Bootstrap includes validation styles for danger, warning, and success states on form controls.
+Bootstrap includes validation styles for danger, warning, and success states on form controls. Here's a rundown of how they work:
 
-- To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, and `.text-help` within that element will receive the validation styles.
+- To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.col-form-label`, `.form-control`, or custom form element will receive the validation styles.
+- Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` declarations for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
 - Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
+
+Generally speaking, you'll want to use a particular state for specific types of feedback:
+
+- **Danger** is great for when there's a blocking or required field. A user *must* fill in this field properly to submit the form.
+- **Warning** works well for input values that are in progress, like password strength, or soft validation before a user attempts to submit a form.
+- And lastly, **success** is ideal for situations when you have per-field validation throughout a form and want to encourage a user through the rest of the fields.
+
+Here are some examples of the aforementioned classes in action.
 
 {% comment %}
 {% callout warning %}
@@ -663,18 +710,26 @@ Ensure that an alternative indication of state is also provided. For instance, y
 
 {% example html %}
 <div class="form-group has-success">
-  <label class="form-control-label" for="inputSuccess1">Input with success</label>
+  <label class="col-form-label" for="inputSuccess1">Input with success</label>
   <input type="text" class="form-control form-control-success" id="inputSuccess1">
+  <div class="form-control-feedback">Success! You've done it.</div>
+  <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-warning">
-  <label class="form-control-label" for="inputWarning1">Input with warning</label>
+  <label class="col-form-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
+  <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
+  <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-danger">
-  <label class="form-control-label" for="inputDanger1">Input with danger</label>
+  <label class="col-form-label" for="inputDanger1">Input with danger</label>
   <input type="text" class="form-control form-control-danger" id="inputDanger1">
+  <div class="form-control-feedback">Shit, that username's taken. Try another?</div>
+  <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
+{% endexample %}
 
+{% example html %}
 <div class="checkbox has-success">
   <label>
     <input type="checkbox" id="checkboxSuccess" value="option1">
