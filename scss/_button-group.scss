@@ -105,8 +105,8 @@
 //
 
 .btn + .dropdown-toggle-split {
-  padding-left: $btn-padding-x * .75;
   padding-right: $btn-padding-x * .75;
+  padding-left: $btn-padding-x * .75;
 
   &::after {
     margin-left: 0;
@@ -114,13 +114,13 @@
 }
 
 .btn-sm + .dropdown-toggle-split {
-  padding-left: $btn-padding-x-sm * .75;
   padding-right: $btn-padding-x-sm * .75;
+  padding-left: $btn-padding-x-sm * .75;
 }
 
 .btn-lg + .dropdown-toggle-split {
-  padding-left: $btn-padding-x-lg * .75;
   padding-right: $btn-padding-x-lg * .75;
+  padding-left: $btn-padding-x-lg * .75;
 }
 
 
