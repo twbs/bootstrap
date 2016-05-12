@@ -214,12 +214,12 @@
     $space-between-cards: (2 * $card-deck-margin);
     .card-deck {
       display: table;
+      width: 100%;
       table-layout: fixed;
       border-spacing: $space-between-cards 0;
 
       .card {
         display: table-cell;
-        width: 1%;
         vertical-align: top;
       }
     }
