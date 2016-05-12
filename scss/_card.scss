@@ -190,9 +190,14 @@
 }
 
 
-//
 // Card set
 //
+// Heads up! We do some funky style resetting here for margins across our two
+// variations (one flex, one table). Individual cards have margin-bottom by
+// default, but they're ignored due to table styles. For a consistent design,
+// we've done the same to the flex variation.
+//
+// Those changes are noted by `// Margin balancing`.
 
 @if $enable-flex {
   @include media-breakpoint-up(sm) {
@@ -200,11 +205,13 @@
       display: flex;
       flex-flow: row wrap;
       margin-right: -$card-deck-margin;
+      margin-bottom: $card-spacer-y; // Margin balancing
       margin-left: -$card-deck-margin;
 
       .card {
         flex: 1 0 0;
         margin-right: $card-deck-margin;
+        margin-bottom: 0; // Margin balancing
         margin-left: $card-deck-margin;
       }
     }
@@ -215,11 +222,13 @@
     .card-deck {
       display: table;
       width: 100%;
+      margin-bottom: $card-spacer-y; // Margin balancing
       table-layout: fixed;
       border-spacing: $space-between-cards 0;
 
       .card {
         display: table-cell;
+        margin-bottom: 0; // Margin balancing
         vertical-align: top;
       }
     }
