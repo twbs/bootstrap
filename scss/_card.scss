@@ -71,9 +71,7 @@
   @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
-  // border-bottom: $card-border-width solid $card-border-color;
-  // Doesn't use mixin so that cards always have a "border"
-  box-shadow: inset 0 0 0 $card-border-width $card-border-color;
+  border-bottom: $card-border-width solid $card-border-color;
 
   &:first-child {
     @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
@@ -84,9 +82,7 @@
   @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
-  // border-top: $card-border-width solid $card-border-color;
-  // Doesn't use mixin so that cards always have a "border"
-  box-shadow: inset 0 0 0 $card-border-width $card-border-color;
+  border-top: $card-border-width solid $card-border-color;
 
   &:last-child {
     @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
@@ -103,10 +99,6 @@
   margin-bottom: -$card-spacer-y;
   margin-left: -($card-spacer-x / 2);
   border-bottom: 0;
-
-  .nav-item {
-    margin-bottom: 0;
-  }
 }
 
 .card-header-pills {
