@@ -4201,8 +4201,7 @@ input[type="button"].btn-block {
 .card-header {
   padding: 0.75rem 1.25rem;
   background-color: #f5f5f5;
-  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
-          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card-header::after {
@@ -4218,8 +4217,7 @@ input[type="button"].btn-block {
 .card-footer {
   padding: 0.75rem 1.25rem;
   background-color: #f5f5f5;
-  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
-          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card-footer::after {
@@ -4239,10 +4237,6 @@ input[type="button"].btn-block {
   border-bottom: 0;
 }
 
-.card-header-tabs .nav-item {
-  margin-bottom: 0;
-}
-
 .card-header-pills {
   margin-right: -0.625rem;
   margin-left: -0.625rem;
@@ -4253,9 +4247,19 @@ input[type="button"].btn-block {
   border-color: #0275d8;
 }
 
+.card-primary .card-header,
+.card-primary .card-footer {
+  background-color: transparent;
+}
+
 .card-success {
   background-color: #5cb85c;
   border-color: #5cb85c;
+}
+
+.card-success .card-header,
+.card-success .card-footer {
+  background-color: transparent;
 }
 
 .card-info {
@@ -4263,14 +4267,29 @@ input[type="button"].btn-block {
   border-color: #5bc0de;
 }
 
+.card-info .card-header,
+.card-info .card-footer {
+  background-color: transparent;
+}
+
 .card-warning {
   background-color: #f0ad4e;
   border-color: #f0ad4e;
 }
 
+.card-warning .card-header,
+.card-warning .card-footer {
+  background-color: transparent;
+}
+
 .card-danger {
   background-color: #d9534f;
   border-color: #d9534f;
+}
+
+.card-danger .card-header,
+.card-danger .card-footer {
+  background-color: transparent;
 }
 
 .card-outline-primary {
@@ -4305,7 +4324,7 @@ input[type="button"].btn-block {
 
 .card-inverse .card-header,
 .card-inverse .card-footer {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .card-inverse .card-header,
@@ -4317,7 +4336,8 @@ input[type="button"].btn-block {
 
 .card-inverse .card-link,
 .card-inverse .card-text,
-.card-inverse .card-blockquote > footer {
+.card-inverse .card-subtitle,
+.card-inverse .card-blockquote .blockquote-footer {
   color: rgba(255, 255, 255, 0.65);
 }
 
@@ -4357,12 +4377,14 @@ input[type="button"].btn-block {
 @media (min-width: 544px) {
   .card-deck {
     display: table;
+    width: 100%;
+    margin-bottom: 0.75rem;
     table-layout: fixed;
     border-spacing: 1.25rem 0;
   }
   .card-deck .card {
     display: table-cell;
-    width: 1%;
+    margin-bottom: 0;
     vertical-align: top;
   }
   .card-deck-wrapper {
