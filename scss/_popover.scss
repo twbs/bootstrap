@@ -112,6 +112,10 @@
   border-bottom: $popover-border-width solid darken($popover-title-bg, 5%);
   $offset-border-width: ($border-width / $font-size-root);
   @include border-radius(($border-radius-lg - $offset-border-width) ($border-radius-lg - $offset-border-width) 0 0);
+
+  &:empty {
+    display: none;
+  }
 }
 
 .popover-content {
