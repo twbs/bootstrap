@@ -120,6 +120,11 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Overhauled the grid mixins to merge `make-col` and `make-col-span` into a single `make-col` mixin, thereby ensuring mixins and predefined classes utilize the same float/flex behaviors.
 - Added flexbox utility classes for grid system and components.
 
+### List groups
+
+- Replaced `a.list-group-item` with an explicit class, `.list-group-item-action`, for styling link and button versions of list group items.
+-
+
 ### Navs
 
 - Dropped nearly all `>` selectors for simpler styling via un-nested classes.
