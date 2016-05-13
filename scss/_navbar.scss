@@ -110,7 +110,7 @@
   line-height: 1;
   background: none;
   border: $border-width solid transparent;
-  @include border-radius($btn-border-radius);
+  @include border-radius($navbar-toggle-border-radius);
 
   @include hover-focus {
     text-decoration: none;
