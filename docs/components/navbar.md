@@ -59,10 +59,12 @@ Here's an example of all the sub-components included in a default, light navbar:
 The `.navbar-brand` can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
 
 {% example html %}
+<!-- As a link -->
 <nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">Navbar</a>
 </nav>
 
+<!-- As a heading -->
 <nav class="navbar navbar-light bg-faded">
   <h1 class="navbar-brand m-b-0">Navbar</h1>
 </nav>
