@@ -106,11 +106,11 @@
 
 .navbar-toggler {
   padding: .5rem .75rem;
-  font-size: $navbar-toggle-font-size;
+  font-size: $navbar-toggler-font-size;
   line-height: 1;
   background: none;
   border: $border-width solid transparent;
-  @include border-radius($navbar-toggle-border-radius);
+  @include border-radius($navbar-toggler-border-radius);
 
   @include hover-focus {
     text-decoration: none;
