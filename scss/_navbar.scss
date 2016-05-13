@@ -87,8 +87,8 @@
 .navbar-divider {
   float: left;
   width: $border-width;
-  padding-top: .425rem;
-  padding-bottom: .425rem;
+  padding-top: $navbar-divider-padding-y;
+  padding-bottom: $navbar-divider-padding-y;
   margin-right: $navbar-padding-x;
   margin-left:  $navbar-padding-x;
   overflow: hidden;
@@ -105,7 +105,7 @@
 // Bootstrap JavaScript plugin.
 
 .navbar-toggler {
-  padding: .5rem .75rem;
+  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
   font-size: $navbar-toggler-font-size;
   line-height: 1;
   background: none;
