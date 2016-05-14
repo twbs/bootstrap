@@ -75,6 +75,8 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 
 Navbar navigation is similar to our regular nav options—use the `.nav` base class with a modifier to achieve a particular look. In this case you'll want `.nav.navbar-nav`.
 
+Active states—with `.active`—to indicate the current page can be applied directly to `.nav-link`s or their immediate parent `.nav-item`s.
+
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <ul class="nav navbar-nav">
