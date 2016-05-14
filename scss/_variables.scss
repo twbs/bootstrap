@@ -477,7 +477,10 @@ $zindex-modal:             1050 !default;
 $navbar-border-radius:              $border-radius !default;
 $navbar-padding-x:                  $spacer !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
+
 $navbar-brand-padding-y:            .25rem !default;
+
+$navbar-divider-padding-y:          .425rem !default;
 
 $navbar-toggler-font-size:           $font-size-lg !default;
 $navbar-toggler-border-radius:       $btn-border-radius !default;
