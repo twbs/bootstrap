@@ -68,7 +68,6 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 <nav class="navbar navbar-light bg-faded">
   <h1 class="navbar-brand m-b-0">Navbar</h1>
 </nav>
-
 {% endexample %}
 
 ### Nav
@@ -134,6 +133,24 @@ You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrap
       </div>
     </li>
   </ul>
+</nav>
+{% endexample %}
+
+### Text
+
+Navbars may contain bits of text with the help of `.navbar-text`. This class adjusts vertical alignment and horizontal spacing for strings of text.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <span class="navbar-text">Navbar text with an inline element</span>
+</nav>
+{% endexample %}
+
+Using our utility classes, you can change the alignment of your navbar text.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <span class="navbar-text pull-xs-right">Navbar text that's floated right</span>
 </nav>
 {% endexample %}
 
