@@ -142,18 +142,32 @@ Navbars may contain bits of text with the help of `.navbar-text`. This class adj
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <span class="navbar-text">Navbar text with an inline element</span>
+  <span class="navbar-text">
+    Navbar text with an inline element
+  </span>
 </nav>
 {% endexample %}
 
-Using our utility classes, you can change the alignment of your navbar text.
+Using our utility classes, you can change the alignment and appearance of your navbar text.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <span class="navbar-text pull-xs-right">Navbar text that's floated right</span>
+  <span class="navbar-text pull-xs-right text-muted">
+    Muted navbar text that's floated right
+  </span>
 </nav>
 {% endexample %}
 
+Similarly, you can use utility classes to align navbar text to other navbar elements like the brand and navigation (which are automatically floated already).
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <span class="navbar-text pull-xs-left">
+    Navbar text that's floated left
+  </span>
+</nav>
+{% endexample %}
 
 ## Color schemes
 
