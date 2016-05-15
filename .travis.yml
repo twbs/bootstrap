@@ -21,6 +21,7 @@ install:
   - cp grunt/npm-shrinkwrap.json ./
   - npm install -g grunt-cli
   - npm install
+  - npm install grunt-babel
 cache:
   directories:
     - node_modules

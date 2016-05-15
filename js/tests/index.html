@@ -60,6 +60,7 @@
       var log = []
       // Require assert.expect in each test
       QUnit.config.requireExpects = true
+      QUnit.config.autostart = false
       QUnit.done(function (testResults) {
         var tests = []
         for (var i = 0, len = log.length; i < len; i++) {
@@ -134,17 +135,16 @@
     </script>
 
     <!-- es6 Plugin sources -->
-    <script src="../../js/dist/util.js"></script>
-    <script src="../../js/dist/alert.js"></script>
-    <script src="../../js/dist/button.js"></script>
-    <script src="../../js/dist/carousel.js"></script>
-    <script src="../../js/dist/collapse.js"></script>
-    <script src="../../js/dist/dropdown.js"></script>
-    <script src="../../js/dist/modal.js"></script>
-    <script src="../../js/dist/scrollspy.js"></script>
-    <script src="../../js/dist/tab.js"></script>
-    <script src="../../js/dist/tooltip.js"></script>
-    <script src="../../js/dist/popover.js"></script>
+    <script>
+      var require = {
+        baseUrl: '../../js/dist/',
+        deps: ['util', 'alert', 'button', 'carousel', 'collapse', 'dropdown', 'modal', 'scrollspy', 'tab', 'tooltip', 'popover'],
+        callback: function() {
+          QUnit.start()
+        }
+      };
+    </script>
+    <script src="vendor/require.min.js"></script>
 
     <!-- Unit tests -->
     <script src="unit/alert.js"></script>

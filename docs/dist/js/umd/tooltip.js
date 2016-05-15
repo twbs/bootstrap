@@ -1,27 +1,59 @@
 (function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
-  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+  if (typeof define === "function" && define.amd) {
+    define(['exports', './util'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('./util'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, global.util);
     global.tooltip = mod.exports;
   }
-})(this, function (exports, module, _util) {
-  /* global Tether */
-
+})(this, function (exports, _util) {
   'use strict';
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+  var _util2 = _interopRequireDefault(_util);
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-  var _Util = _interopRequireDefault(_util);
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+  };
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
 
   /**
    * --------------------------------------------------------------------------
@@ -30,7 +62,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Tooltip = (function ($) {
+  var Tooltip = function ($) {
 
     /**
      * Check for Tether dependency
@@ -133,7 +165,7 @@
      * ------------------------------------------------------------------------
      */
 
-    var Tooltip = (function () {
+    var Tooltip = function () {
       function Tooltip(element, config) {
         _classCallCheck(this, Tooltip);
 
@@ -152,19 +184,10 @@
         this._setListeners();
       }
 
-      /**
-       * ------------------------------------------------------------------------
-       * jQuery
-       * ------------------------------------------------------------------------
-       */
-
       // getters
 
       _createClass(Tooltip, [{
         key: 'enable',
-
-        // public
-
         value: function enable() {
           this._isEnabled = true;
         }
@@ -249,7 +272,7 @@
             }
 
             var tip = this.getTipElement();
-            var tipId = _Util['default'].getUID(this.constructor.NAME);
+            var tipId = _util2.default.getUID(this.constructor.NAME);
 
             tip.setAttribute('id', tipId);
             this.element.setAttribute('aria-describedby', tipId);
@@ -279,7 +302,7 @@
               addTargetClasses: false
             });
 
-            _Util['default'].reflow(tip);
+            _util2.default.reflow(tip);
             this._tether.position();
 
             $(tip).addClass(ClassName.IN);
@@ -295,8 +318,8 @@
               }
             };
 
-            if (_Util['default'].supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
-              $(this.tip).one(_Util['default'].TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
+            if (_util2.default.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+              $(this.tip).one(_util2.default.TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
               return;
             }
 
@@ -332,18 +355,15 @@
 
           $(tip).removeClass(ClassName.IN);
 
-          if (_Util['default'].supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+          if (_util2.default.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
 
-            $(tip).one(_Util['default'].TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
+            $(tip).one(_util2.default.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
           } else {
             complete();
           }
 
           this._hoverState = '';
         }
-
-        // protected
-
       }, {
         key: 'isWithContent',
         value: function isWithContent() {
@@ -369,7 +389,7 @@
         key: 'setElementContent',
         value: function setElementContent($element, content) {
           var html = this.config.html;
-          if (typeof content === 'object' && (content.nodeType || content.jquery)) {
+          if ((typeof content === 'undefined' ? 'undefined' : _typeof(content)) === 'object' && (content.nodeType || content.jquery)) {
             // content is a DOM node or a jQuery
             if (html) {
               if (!$(content).parent().is($element)) {
@@ -400,9 +420,6 @@
             this._tether.destroy();
           }
         }
-
-        // private
-
       }, {
         key: '_getAttachment',
         value: function _getAttachment(placement) {
@@ -438,7 +455,7 @@
       }, {
         key: '_fixTitle',
         value: function _fixTitle() {
-          var titleType = typeof this.element.getAttribute('data-original-title');
+          var titleType = _typeof(this.element.getAttribute('data-original-title'));
           if (this.element.getAttribute('title') || titleType !== 'string') {
             this.element.setAttribute('data-original-title', this.element.getAttribute('title') || '');
             this.element.setAttribute('title', '');
@@ -538,7 +555,7 @@
             };
           }
 
-          _Util['default'].typeCheckConfig(NAME, config, this.constructor.DefaultType);
+          _util2.default.typeCheckConfig(NAME, config, this.constructor.DefaultType);
 
           return config;
         }
@@ -557,15 +574,12 @@
 
           return config;
         }
-
-        // static
-
       }], [{
         key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
             var data = $(this).data(DATA_KEY);
-            var _config = typeof config === 'object' ? config : null;
+            var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' ? config : null;
 
             if (!data && /destroy|hide/.test(config)) {
               return;
@@ -622,7 +636,13 @@
       }]);
 
       return Tooltip;
-    })();
+    }();
+
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
 
     $.fn[NAME] = Tooltip._jQueryInterface;
     $.fn[NAME].Constructor = Tooltip;
@@ -632,7 +652,7 @@
     };
 
     return Tooltip;
-  })(jQuery);
+  }(jQuery);
 
-  module.exports = Tooltip;
+  exports.default = Tooltip;
 });

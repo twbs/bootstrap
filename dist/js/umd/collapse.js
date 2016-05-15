@@ -1,25 +1,59 @@
 (function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
-  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+  if (typeof define === "function" && define.amd) {
+    define(['exports', './util'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('./util'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, global.util);
     global.collapse = mod.exports;
   }
-})(this, function (exports, module, _util) {
+})(this, function (exports, _util) {
   'use strict';
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+  var _util2 = _interopRequireDefault(_util);
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-  var _Util = _interopRequireDefault(_util);
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+  };
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
 
   /**
    * --------------------------------------------------------------------------
@@ -28,7 +62,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Collapse = (function ($) {
+  var Collapse = function ($) {
 
     /**
      * ------------------------------------------------------------------------
@@ -85,7 +119,7 @@
      * ------------------------------------------------------------------------
      */
 
-    var Collapse = (function () {
+    var Collapse = function () {
       function Collapse(element, config) {
         _classCallCheck(this, Collapse);
 
@@ -105,19 +139,10 @@
         }
       }
 
-      /**
-       * ------------------------------------------------------------------------
-       * Data Api implementation
-       * ------------------------------------------------------------------------
-       */
-
       // getters
 
       _createClass(Collapse, [{
         key: 'toggle',
-
-        // public
-
         value: function toggle() {
           if ($(this._element).hasClass(ClassName.IN)) {
             this.hide();
@@ -134,8 +159,8 @@
             return;
           }
 
-          var actives = undefined;
-          var activesData = undefined;
+          var actives = void 0;
+          var activesData = void 0;
 
           if (this._parent) {
             actives = $.makeArray($(Selector.ACTIVES));
@@ -187,7 +212,7 @@
             $(_this._element).trigger(Event.SHOWN);
           };
 
-          if (!_Util['default'].supportsTransitionEnd()) {
+          if (!_util2.default.supportsTransitionEnd()) {
             complete();
             return;
           }
@@ -195,7 +220,7 @@
           var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
           var scrollSize = 'scroll' + capitalizedDimension;
 
-          $(this._element).one(_Util['default'].TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
+          $(this._element).one(_util2.default.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
 
           this._element.style[dimension] = this._element[scrollSize] + 'px';
         }
@@ -219,7 +244,7 @@
 
           this._element.style[dimension] = this._element[offsetDimension] + 'px';
 
-          _Util['default'].reflow(this._element);
+          _util2.default.reflow(this._element);
 
           $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.IN);
 
@@ -238,12 +263,12 @@
 
           this._element.style[dimension] = 0;
 
-          if (!_Util['default'].supportsTransitionEnd()) {
+          if (!_util2.default.supportsTransitionEnd()) {
             complete();
             return;
           }
 
-          $(this._element).one(_Util['default'].TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
+          $(this._element).one(_util2.default.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
         }
       }, {
         key: 'setTransitioning',
@@ -261,15 +286,12 @@
           this._triggerArray = null;
           this._isTransitioning = null;
         }
-
-        // private
-
       }, {
         key: '_getConfig',
         value: function _getConfig(config) {
           config = $.extend({}, Default, config);
           config.toggle = Boolean(config.toggle); // coerce string values
-          _Util['default'].typeCheckConfig(NAME, config, DefaultType);
+          _util2.default.typeCheckConfig(NAME, config, DefaultType);
           return config;
         }
       }, {
@@ -304,13 +326,10 @@
             }
           }
         }
-
-        // static
-
       }], [{
         key: '_getTargetFromElement',
         value: function _getTargetFromElement(element) {
-          var selector = _Util['default'].getSelectorFromElement(element);
+          var selector = _util2.default.getSelectorFromElement(element);
           return selector ? $(selector)[0] : null;
         }
       }, {
@@ -319,7 +338,7 @@
           return this.each(function () {
             var $this = $(this);
             var data = $this.data(DATA_KEY);
-            var _config = $.extend({}, Default, $this.data(), typeof config === 'object' && config);
+            var _config = $.extend({}, Default, $this.data(), (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config);
 
             if (!data && _config.toggle && /show|hide/.test(config)) {
               _config.toggle = false;
@@ -351,7 +370,13 @@
       }]);
 
       return Collapse;
-    })();
+    }();
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
 
     $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
       event.preventDefault();
@@ -377,7 +402,7 @@
     };
 
     return Collapse;
-  })(jQuery);
+  }(jQuery);
 
-  module.exports = Collapse;
+  exports.default = Collapse;
 });

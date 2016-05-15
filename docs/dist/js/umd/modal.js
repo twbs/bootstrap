@@ -1,25 +1,59 @@
 (function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
-  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+  if (typeof define === "function" && define.amd) {
+    define(['exports', './util'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('./util'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, global.util);
     global.modal = mod.exports;
   }
-})(this, function (exports, module, _util) {
+})(this, function (exports, _util) {
   'use strict';
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+  var _util2 = _interopRequireDefault(_util);
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-  var _Util = _interopRequireDefault(_util);
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+  };
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
 
   /**
    * --------------------------------------------------------------------------
@@ -28,7 +62,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Modal = (function ($) {
+  var Modal = function ($) {
 
     /**
      * ------------------------------------------------------------------------
@@ -94,7 +128,7 @@
      * ------------------------------------------------------------------------
      */
 
-    var Modal = (function () {
+    var Modal = function () {
       function Modal(element, config) {
         _classCallCheck(this, Modal);
 
@@ -109,19 +143,10 @@
         this._scrollbarWidth = 0;
       }
 
-      /**
-       * ------------------------------------------------------------------------
-       * Data Api implementation
-       * ------------------------------------------------------------------------
-       */
-
       // getters
 
       _createClass(Modal, [{
         key: 'toggle',
-
-        // public
-
         value: function toggle(relatedTarget) {
           return this._isShown ? this.hide() : this.show(relatedTarget);
         }
@@ -189,9 +214,9 @@
           $(this._element).off(Event.CLICK_DISMISS);
           $(this._dialog).off(Event.MOUSEDOWN_DISMISS);
 
-          if (_Util['default'].supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
+          if (_util2.default.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
 
-            $(this._element).one(_Util['default'].TRANSITION_END, $.proxy(this._hideModal, this)).emulateTransitionEnd(TRANSITION_DURATION);
+            $(this._element).one(_util2.default.TRANSITION_END, $.proxy(this._hideModal, this)).emulateTransitionEnd(TRANSITION_DURATION);
           } else {
             this._hideModal();
           }
@@ -216,14 +241,11 @@
           this._originalBodyPadding = null;
           this._scrollbarWidth = null;
         }
-
-        // private
-
       }, {
         key: '_getConfig',
         value: function _getConfig(config) {
           config = $.extend({}, Default, config);
-          _Util['default'].typeCheckConfig(NAME, config, DefaultType);
+          _util2.default.typeCheckConfig(NAME, config, DefaultType);
           return config;
         }
       }, {
@@ -231,7 +253,7 @@
         value: function _showElement(relatedTarget) {
           var _this2 = this;
 
-          var transition = _Util['default'].supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE);
+          var transition = _util2.default.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE);
 
           if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
             // don't move modals dom position
@@ -239,10 +261,11 @@
           }
 
           this._element.style.display = 'block';
+          this._element.removeAttribute('aria-hidden');
           this._element.scrollTop = 0;
 
           if (transition) {
-            _Util['default'].reflow(this._element);
+            _util2.default.reflow(this._element);
           }
 
           $(this._element).addClass(ClassName.IN);
@@ -263,7 +286,7 @@
           };
 
           if (transition) {
-            $(this._dialog).one(_Util['default'].TRANSITION_END, transitionComplete).emulateTransitionEnd(TRANSITION_DURATION);
+            $(this._dialog).one(_util2.default.TRANSITION_END, transitionComplete).emulateTransitionEnd(TRANSITION_DURATION);
           } else {
             transitionComplete();
           }
@@ -310,6 +333,7 @@
           var _this5 = this;
 
           this._element.style.display = 'none';
+          this._element.setAttribute('aria-hidden', 'true');
           this._showBackdrop(function () {
             $(document.body).removeClass(ClassName.OPEN);
             _this5._resetAdjustments();
@@ -333,7 +357,7 @@
           var animate = $(this._element).hasClass(ClassName.FADE) ? ClassName.FADE : '';
 
           if (this._isShown && this._config.backdrop) {
-            var doAnimate = _Util['default'].supportsTransitionEnd() && animate;
+            var doAnimate = _util2.default.supportsTransitionEnd() && animate;
 
             this._backdrop = document.createElement('div');
             this._backdrop.className = ClassName.BACKDROP;
@@ -360,7 +384,7 @@
             });
 
             if (doAnimate) {
-              _Util['default'].reflow(this._backdrop);
+              _util2.default.reflow(this._backdrop);
             }
 
             $(this._backdrop).addClass(ClassName.IN);
@@ -374,7 +398,7 @@
               return;
             }
 
-            $(this._backdrop).one(_Util['default'].TRANSITION_END, callback).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
+            $(this._backdrop).one(_util2.default.TRANSITION_END, callback).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
           } else if (!this._isShown && this._backdrop) {
             $(this._backdrop).removeClass(ClassName.IN);
 
@@ -385,8 +409,8 @@
               }
             };
 
-            if (_Util['default'].supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
-              $(this._backdrop).one(_Util['default'].TRANSITION_END, callbackRemove).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
+            if (_util2.default.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
+              $(this._backdrop).one(_util2.default.TRANSITION_END, callbackRemove).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
             } else {
               callbackRemove();
             }
@@ -394,12 +418,6 @@
             callback();
           }
         }
-
-        // ----------------------------------------------------------------------
-        // the following methods are used to handle overflowing modals
-        // todo (fat): these should probably be refactored out of modal.js
-        // ----------------------------------------------------------------------
-
       }, {
         key: '_handleUpdate',
         value: function _handleUpdate() {
@@ -457,15 +475,12 @@
           document.body.removeChild(scrollDiv);
           return scrollbarWidth;
         }
-
-        // static
-
       }], [{
         key: '_jQueryInterface',
         value: function _jQueryInterface(config, relatedTarget) {
           return this.each(function () {
             var data = $(this).data(DATA_KEY);
-            var _config = $.extend({}, Modal.Default, $(this).data(), typeof config === 'object' && config);
+            var _config = $.extend({}, Modal.Default, $(this).data(), (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config);
 
             if (!data) {
               data = new Modal(this, _config);
@@ -495,13 +510,19 @@
       }]);
 
       return Modal;
-    })();
+    }();
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
 
     $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
       var _this7 = this;
 
-      var target = undefined;
-      var selector = _Util['default'].getSelectorFromElement(this);
+      var target = void 0;
+      var selector = _util2.default.getSelectorFromElement(this);
 
       if (selector) {
         target = $(selector)[0];
@@ -543,7 +564,7 @@
     };
 
     return Modal;
-  })(jQuery);
+  }(jQuery);
 
-  module.exports = Modal;
+  exports.default = Modal;
 });

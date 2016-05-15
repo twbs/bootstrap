@@ -11,10 +11,7 @@ javascript:
 eslint:
   enabled: true
   config_file: js/.eslintrc
-
-jscs:
-  enabled: true
-  config_file: js/.jscsrc
+  ignore_file: js/.eslintignore
 
 ruby:
   enabled: false
