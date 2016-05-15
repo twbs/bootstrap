@@ -1,29 +1,83 @@
 (function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './tooltip'], factory);
-  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./tooltip'));
+  if (typeof define === "function" && define.amd) {
+    define(['exports', './tooltip'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('./tooltip'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Tooltip);
+    factory(mod.exports, global.tooltip);
     global.popover = mod.exports;
   }
-})(this, function (exports, module, _tooltip) {
+})(this, function (exports, _tooltip) {
   'use strict';
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+  var _tooltip2 = _interopRequireDefault(_tooltip);
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+  };
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  var _Tooltip2 = _interopRequireDefault(_tooltip);
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
+
+  function _possibleConstructorReturn(self, call) {
+    if (!self) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+
+    return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  }
+
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+    }
+
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+      constructor: {
+        value: subClass,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  }
 
   /**
    * --------------------------------------------------------------------------
@@ -32,7 +86,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Popover = (function ($) {
+  var Popover = function ($) {
 
     /**
      * ------------------------------------------------------------------------
@@ -46,14 +100,14 @@
     var EVENT_KEY = '.' + DATA_KEY;
     var JQUERY_NO_CONFLICT = $.fn[NAME];
 
-    var Default = $.extend({}, _Tooltip2['default'].Default, {
+    var Default = $.extend({}, _tooltip2.default.Default, {
       placement: 'right',
       trigger: 'click',
       content: '',
       template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-title"></h3>' + '<div class="popover-content"></div></div>'
     });
 
-    var DefaultType = $.extend({}, _Tooltip2['default'].DefaultType, {
+    var DefaultType = $.extend({}, _tooltip2.default.DefaultType, {
       content: '(string|element|function)'
     });
 
@@ -87,26 +141,17 @@
      * ------------------------------------------------------------------------
      */
 
-    var Popover = (function (_Tooltip) {
+    var Popover = function (_Tooltip) {
       _inherits(Popover, _Tooltip);
 
       function Popover() {
         _classCallCheck(this, Popover);
 
-        _get(Object.getPrototypeOf(Popover.prototype), 'constructor', this).apply(this, arguments);
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Popover).apply(this, arguments));
       }
-
-      /**
-       * ------------------------------------------------------------------------
-       * jQuery
-       * ------------------------------------------------------------------------
-       */
 
       _createClass(Popover, [{
         key: 'isWithContent',
-
-        // overrides
-
         value: function isWithContent() {
           return this.getTitle() || this._getContent();
         }
@@ -128,23 +173,17 @@
 
           this.cleanupTether();
         }
-
-        // private
-
       }, {
         key: '_getContent',
         value: function _getContent() {
           return this.element.getAttribute('data-content') || (typeof this.config.content === 'function' ? this.config.content.call(this.element) : this.config.content);
         }
-
-        // static
-
       }], [{
         key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
             var data = $(this).data(DATA_KEY);
-            var _config = typeof config === 'object' ? config : null;
+            var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' ? config : null;
 
             if (!data && /destroy|hide/.test(config)) {
               return;
@@ -165,9 +204,6 @@
         }
       }, {
         key: 'VERSION',
-
-        // getters
-
         get: function get() {
           return VERSION;
         }
@@ -204,7 +240,13 @@
       }]);
 
       return Popover;
-    })(_Tooltip2['default']);
+    }(_tooltip2.default);
+
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
 
     $.fn[NAME] = Popover._jQueryInterface;
     $.fn[NAME].Constructor = Popover;
@@ -214,7 +256,7 @@
     };
 
     return Popover;
-  })(jQuery);
+  }(jQuery);
 
-  module.exports = Popover;
+  exports.default = Popover;
 });

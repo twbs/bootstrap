@@ -1,16 +1,21 @@
 (function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module'], factory);
-  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module);
+  if (typeof define === "function" && define.amd) {
+    define(['exports'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports);
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod);
+    factory(mod.exports);
     global.util = mod.exports;
   }
-})(this, function (exports, module) {
+})(this, function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v4.0.0-alpha.2): util.js
@@ -18,9 +23,7 @@
    * --------------------------------------------------------------------------
    */
 
-  'use strict';
-
-  var Util = (function ($) {
+  var Util = function ($) {
 
     /**
      * ------------------------------------------------------------------------
@@ -39,7 +42,7 @@
 
     // shoutout AngusCroll (https://goo.gl/pxwQGp)
     function toType(obj) {
-      return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+      return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
     }
 
     function isElement(obj) {
@@ -65,9 +68,9 @@
 
       var el = document.createElement('bootstrap');
 
-      for (var _name in TransitionEndEvent) {
-        if (el.style[_name] !== undefined) {
-          return { end: TransitionEndEvent[_name] };
+      for (var name in TransitionEndEvent) {
+        if (el.style[name] !== undefined) {
+          return { end: TransitionEndEvent[name] };
         }
       }
 
@@ -120,7 +123,6 @@
         } while (document.getElementById(prefix));
         return prefix;
       },
-
       getSelectorFromElement: function getSelectorFromElement(element) {
         var selector = element.getAttribute('data-target');
 
@@ -131,25 +133,21 @@
 
         return selector;
       },
-
       reflow: function reflow(element) {
         new Function('bs', 'return bs')(element.offsetHeight);
       },
-
       triggerTransitionEnd: function triggerTransitionEnd(element) {
         $(element).trigger(transition.end);
       },
-
       supportsTransitionEnd: function supportsTransitionEnd() {
         return Boolean(transition);
       },
-
       typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
         for (var property in configTypes) {
           if (configTypes.hasOwnProperty(property)) {
             var expectedTypes = configTypes[property];
             var value = config[property];
-            var valueType = undefined;
+            var valueType = void 0;
 
             if (value && isElement(value)) {
               valueType = 'element';
@@ -168,7 +166,7 @@
     setTransitionEndSupport();
 
     return Util;
-  })(jQuery);
+  }(jQuery);
 
-  module.exports = Util;
+  exports.default = Util;
 });

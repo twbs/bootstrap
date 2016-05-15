@@ -396,17 +396,17 @@ a:focus {
   outline-offset: -2px;
 }
 
-a:not([href]) {
+a:not([href]):not([tabindex]) {
   color: inherit;
   text-decoration: none;
 }
 
-a:not([href]):focus, a:not([href]):hover {
+a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
   color: inherit;
   text-decoration: none;
 }
 
-a:not([href]):focus {
+a:not([href]):not([tabindex]):focus {
   outline: none;
 }
 
@@ -5664,6 +5664,10 @@ button.close {
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
   border-radius: 0.2375rem 0.2375rem 0 0;
+}
+
+.popover-title:empty {
+  display: none;
 }
 
 .popover-content {

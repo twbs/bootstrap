@@ -1,159 +1,173 @@
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): util.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(['exports'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports);
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod.exports);
+    global.util = mod.exports;
+  }
+})(this, function (exports) {
+  'use strict';
 
-'use strict';
-
-var Util = (function ($) {
-
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
   /**
-   * ------------------------------------------------------------------------
-   * Private TransitionEnd Helpers
-   * ------------------------------------------------------------------------
+   * --------------------------------------------------------------------------
+   * Bootstrap (v4.0.0-alpha.2): util.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * --------------------------------------------------------------------------
    */
 
-  var transition = false;
+  var Util = function ($) {
 
-  var TransitionEndEvent = {
-    WebkitTransition: 'webkitTransitionEnd',
-    MozTransition: 'transitionend',
-    OTransition: 'oTransitionEnd otransitionend',
-    transition: 'transitionend'
-  };
+    /**
+     * ------------------------------------------------------------------------
+     * Private TransitionEnd Helpers
+     * ------------------------------------------------------------------------
+     */
 
-  // shoutout AngusCroll (https://goo.gl/pxwQGp)
-  function toType(obj) {
-    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
-  }
+    var transition = false;
 
-  function isElement(obj) {
-    return (obj[0] || obj).nodeType;
-  }
+    var TransitionEndEvent = {
+      WebkitTransition: 'webkitTransitionEnd',
+      MozTransition: 'transitionend',
+      OTransition: 'oTransitionEnd otransitionend',
+      transition: 'transitionend'
+    };
 
-  function getSpecialTransitionEndEvent() {
-    return {
-      bindType: transition.end,
-      delegateType: transition.end,
-      handle: function handle(event) {
-        if ($(event.target).is(this)) {
-          return event.handleObj.handler.apply(this, arguments);
+    // shoutout AngusCroll (https://goo.gl/pxwQGp)
+    function toType(obj) {
+      return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+    }
+
+    function isElement(obj) {
+      return (obj[0] || obj).nodeType;
+    }
+
+    function getSpecialTransitionEndEvent() {
+      return {
+        bindType: transition.end,
+        delegateType: transition.end,
+        handle: function handle(event) {
+          if ($(event.target).is(this)) {
+            return event.handleObj.handler.apply(this, arguments);
+          }
+        }
+      };
+    }
+
+    function transitionEndTest() {
+      if (window.QUnit) {
+        return false;
+      }
+
+      var el = document.createElement('bootstrap');
+
+      for (var name in TransitionEndEvent) {
+        if (el.style[name] !== undefined) {
+          return { end: TransitionEndEvent[name] };
         }
       }
-    };
-  }
 
-  function transitionEndTest() {
-    if (window.QUnit) {
       return false;
     }
 
-    var el = document.createElement('bootstrap');
+    function transitionEndEmulator(duration) {
+      var _this = this;
 
-    for (var _name in TransitionEndEvent) {
-      if (el.style[_name] !== undefined) {
-        return { end: TransitionEndEvent[_name] };
+      var called = false;
+
+      $(this).one(Util.TRANSITION_END, function () {
+        called = true;
+      });
+
+      setTimeout(function () {
+        if (!called) {
+          Util.triggerTransitionEnd(_this);
+        }
+      }, duration);
+
+      return this;
+    }
+
+    function setTransitionEndSupport() {
+      transition = transitionEndTest();
+
+      $.fn.emulateTransitionEnd = transitionEndEmulator;
+
+      if (Util.supportsTransitionEnd()) {
+        $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
       }
     }
 
-    return false;
-  }
+    /**
+     * --------------------------------------------------------------------------
+     * Public Util Api
+     * --------------------------------------------------------------------------
+     */
 
-  function transitionEndEmulator(duration) {
-    var _this = this;
+    var Util = {
 
-    var called = false;
+      TRANSITION_END: 'bsTransitionEnd',
 
-    $(this).one(Util.TRANSITION_END, function () {
-      called = true;
-    });
+      getUID: function getUID(prefix) {
+        do {
+          /* eslint-disable no-bitwise */
+          prefix += ~ ~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
+          /* eslint-enable no-bitwise */
+        } while (document.getElementById(prefix));
+        return prefix;
+      },
+      getSelectorFromElement: function getSelectorFromElement(element) {
+        var selector = element.getAttribute('data-target');
 
-    setTimeout(function () {
-      if (!called) {
-        Util.triggerTransitionEnd(_this);
-      }
-    }, duration);
+        if (!selector) {
+          selector = element.getAttribute('href') || '';
+          selector = /^#[a-z]/i.test(selector) ? selector : null;
+        }
 
-    return this;
-  }
+        return selector;
+      },
+      reflow: function reflow(element) {
+        new Function('bs', 'return bs')(element.offsetHeight);
+      },
+      triggerTransitionEnd: function triggerTransitionEnd(element) {
+        $(element).trigger(transition.end);
+      },
+      supportsTransitionEnd: function supportsTransitionEnd() {
+        return Boolean(transition);
+      },
+      typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
+        for (var property in configTypes) {
+          if (configTypes.hasOwnProperty(property)) {
+            var expectedTypes = configTypes[property];
+            var value = config[property];
+            var valueType = void 0;
 
-  function setTransitionEndSupport() {
-    transition = transitionEndTest();
+            if (value && isElement(value)) {
+              valueType = 'element';
+            } else {
+              valueType = toType(value);
+            }
 
-    $.fn.emulateTransitionEnd = transitionEndEmulator;
-
-    if (Util.supportsTransitionEnd()) {
-      $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
-    }
-  }
-
-  /**
-   * --------------------------------------------------------------------------
-   * Public Util Api
-   * --------------------------------------------------------------------------
-   */
-
-  var Util = {
-
-    TRANSITION_END: 'bsTransitionEnd',
-
-    getUID: function getUID(prefix) {
-      do {
-        /* eslint-disable no-bitwise */
-        prefix += ~ ~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
-        /* eslint-enable no-bitwise */
-      } while (document.getElementById(prefix));
-      return prefix;
-    },
-
-    getSelectorFromElement: function getSelectorFromElement(element) {
-      var selector = element.getAttribute('data-target');
-
-      if (!selector) {
-        selector = element.getAttribute('href') || '';
-        selector = /^#[a-z]/i.test(selector) ? selector : null;
-      }
-
-      return selector;
-    },
-
-    reflow: function reflow(element) {
-      new Function('bs', 'return bs')(element.offsetHeight);
-    },
-
-    triggerTransitionEnd: function triggerTransitionEnd(element) {
-      $(element).trigger(transition.end);
-    },
-
-    supportsTransitionEnd: function supportsTransitionEnd() {
-      return Boolean(transition);
-    },
-
-    typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
-      for (var property in configTypes) {
-        if (configTypes.hasOwnProperty(property)) {
-          var expectedTypes = configTypes[property];
-          var value = config[property];
-          var valueType = undefined;
-
-          if (value && isElement(value)) {
-            valueType = 'element';
-          } else {
-            valueType = toType(value);
-          }
-
-          if (!new RegExp(expectedTypes).test(valueType)) {
-            throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
+            if (!new RegExp(expectedTypes).test(valueType)) {
+              throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
+            }
           }
         }
       }
-    }
-  };
+    };
 
-  setTransitionEndSupport();
+    setTransitionEndSupport();
 
-  return Util;
-})(jQuery);
+    return Util;
+  }(jQuery);
+
+  exports.default = Util;
+});
 //# sourceMappingURL=util.js.map
