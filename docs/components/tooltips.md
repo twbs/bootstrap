@@ -85,6 +85,7 @@ Hover over the buttons below to see their tooltips.
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
   </div>
 </div>
 
@@ -100,6 +101,9 @@ Hover over the buttons below to see their tooltips.
 </button>
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
   Tooltip on left
+</button>
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+  Tooltip with HTML
 </button>
 {% endhighlight %}
 
@@ -179,7 +183,11 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>html</td>
         <td>boolean</td>
         <td>false</td>
-        <td>Insert HTML into the tooltip. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
+        <td>
+          <p>Allow HTML in the tooltip.</p>
+          <p>If true, HTML tags in the tooltip's <code>title</code> will be rendered in the tooltip. If false, jQuery's <code>text</code> method will be used to insert content into the DOM.</p>
+          <p>Use text if you're worried about XSS attacks.</p>
+        </td>
       </tr>
       <tr>
         <td>placement</td>
