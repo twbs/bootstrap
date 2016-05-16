@@ -2,7 +2,7 @@
 each section in sections
   if section.customizable
     h2(id=section.id)= section.heading
-    if section.docstring
+    if (section.docstring && section.docstring.html !== "")
       p!= section.docstring.html
     each subsection in section.subsections
       if subsection.heading
