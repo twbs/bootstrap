@@ -400,7 +400,7 @@ const Modal = (($) => {
       }
 
       if (this._isBodyOverflowing && !isModalOverflowing) {
-        this._element.style.paddingRight = `${this._scrollbarWidth}px~`
+        this._element.style.paddingRight = `${this._scrollbarWidth}px`
       }
     }
 
