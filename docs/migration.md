@@ -123,7 +123,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### List groups
 
 - Replaced `a.list-group-item` with an explicit class, `.list-group-item-action`, for styling link and button versions of list group items.
--
+
+### Modal
+
+- The `remote` option (which could be used to automatically load and inject external content into a modal) and the correspending `loaded.bs.modal` event were removed. We recommend instead using client-side templating or a data binding framework, or calling [jQuery.load](http://api.jquery.com/load/) yourself.
 
 ### Navs
 
