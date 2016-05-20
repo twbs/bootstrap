@@ -3334,8 +3334,8 @@ select[multiple].input-lg {
 }
 .help-block {
   display: block;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   font-size: 14px;
   color: #829ca9;
 }
@@ -3630,9 +3630,6 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .radio.disabled > label:hover .input-replacement {
   border-color: #e2e6e8;
 }
-.help-block {
-  font-size: 12px;
-}
 .input-group .input-group-btn + input {
   border-left: 0 solid transparent;
 }
@@ -3663,13 +3660,6 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .form-group {
   position: relative;
   font-size: 14px;
-}
-@media (min-width: 576px) {
-  .form-group .help-block {
-    position: absolute;
-    top: -5px;
-    right: 0;
-  }
 }
 .form-control + .text-muted,
 .form-control + .text-primary,
@@ -3718,9 +3708,6 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 }
 :not(.has-error).focus .input-group-addon {
   border-color: #00b9ff;
-}
-.form-group.col-sm-6 .help-block {
-  right: 12px;
 }
 @media (min-width: 576px) {
   fieldset .form-group:nth-of-type(odd) {
@@ -3827,7 +3814,7 @@ fieldset[disabled] .radio label,
 .error-messages {
   display: none;
   margin-top: 8px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
   color: #f53636;
 }
@@ -9377,6 +9364,74 @@ button.close {
   -webkit-order: 6;
   -ms-flex-order: 6;
           order: 6;
+}
+@media (min-width: 576px) {
+  .text-left-sm {
+    text-align: left;
+  }
+  .text-right-sm {
+    text-align: right;
+  }
+  .text-center-sm {
+    text-align: center;
+  }
+  .text-justify-sm {
+    text-align: justify;
+  }
+  .text-nowrap-sm {
+    white-space: nowrap;
+  }
+}
+@media (min-width: 768px) {
+  .text-left-md {
+    text-align: left;
+  }
+  .text-right-md {
+    text-align: right;
+  }
+  .text-center-md {
+    text-align: center;
+  }
+  .text-justify-md {
+    text-align: justify;
+  }
+  .text-nowrap-md {
+    white-space: nowrap;
+  }
+}
+@media (min-width: 992px) {
+  .text-left-lg {
+    text-align: left;
+  }
+  .text-right-lg {
+    text-align: right;
+  }
+  .text-center-lg {
+    text-align: center;
+  }
+  .text-justify-lg {
+    text-align: justify;
+  }
+  .text-nowrap-lg {
+    white-space: nowrap;
+  }
+}
+@media (min-width: 1200px) {
+  .text-left-xl {
+    text-align: left;
+  }
+  .text-right-xl {
+    text-align: right;
+  }
+  .text-center-xl {
+    text-align: center;
+  }
+  .text-justify-xl {
+    text-align: justify;
+  }
+  .text-nowrap-xl {
+    white-space: nowrap;
+  }
 }
 .section,
 .footer {

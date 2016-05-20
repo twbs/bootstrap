@@ -464,8 +464,8 @@ input[type="checkbox"] {
 
 .help-block {
   display: block; // account for any element using help-block
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   color: @gray-light; // lighten the text some for contrast
   font-size: @font-size-small;
 }
@@ -625,11 +625,6 @@ input[type="checkbox"] {
 
 @import "checkbox-radio.less";
 
-
-.help-block {
-    font-size: 12px;
-}
-
 .input-group .input-group-btn + input {
     border-left: 0px solid transparent;
 }
@@ -671,13 +666,7 @@ input[type="checkbox"] {
     position: relative;
     font-size: @font-size-small;
 }
-@media (min-width: @screen-sm-min) {
-    .form-group .help-block {
-        position: absolute;
-        top: -5px;
-        right: 0;
-    }
-}
+
 .form-control {
     + .text-muted,
     + .text-primary,
@@ -740,9 +729,6 @@ input[type="checkbox"] {
     //}
 }
 
-.form-group.col-sm-6 .help-block {
-    right: 12px;
-}
 @media (min-width: @screen-sm-min) {
     fieldset .form-group:nth-of-type(odd) {
         clear: left;
@@ -852,7 +838,7 @@ input[type="checkbox"] {
 	display: none;
     color: @state-danger-text;
     margin-top: @padding-base-vertical;
-    font-size: 12px;
+    font-size: @font-size-small;
     line-height: 16px;
 }
 .has-error .error-messages {
