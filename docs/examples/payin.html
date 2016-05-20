@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Payin example</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<style>
+	body {
+		background-color: #f2f5f7;
+	}
+	</style>
+</head>
+<body>
+	<header class="navbar navbar-inverse navbar-static-top bg-primary" id="top"
+		role="banner"
+		data-spy="affix"
+		data-offset-top="60">
+		<div class="container">
+			<div class="navbar-header pull-left">
+				<button class="navbar-toggle collapsed" type="button"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="../" class="navbar-brand hidden-xs hidden-sm">TransferWise</a>
+				<a href="../" class="logo-text logo-text-inverse visible-xs-block visible-sm-block"></a>
+			</div>
+		</div>
+	</header>
+	<div class="container m-t-3">
+		<div class="row panel p-a-3">
+			<div class="col-sm-10 col-sm-offset-2">
+
+
+
+
+
+
+
+
+
+				<h2 class="m-b-3">How would you like to pay?</h2>
+
+				<ul class="nav nav-tabs m-b-3">
+					<li role="presentation"><a href="">Debit card/Credit card</a></li>
+					<li role="presentation"><a href="">Bank transfer</a></li>
+					<li role="presentation" class="active"><a href="">Direct debit</a></li>
+					<li role="presentation"><a href="">SOFORT banking</a></li>
+					<li role="presentation"><a href="">iDEAL</a></li>
+				</ul>
+
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="home">
+
+						<div class="alert alert-danger alert-dismissible" role="alert">
+							<button type="button" class="close"
+								data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4>Something's not right</h4>
+							<p>Dynamic error message here. It might be much longer and
+								eventually wrap onto second line.</p>
+						</div>
+						<p>Simply enter your own IBAN number to pay by direct debit.</p>
+
+						<div class="row">
+							<div class="col-xs-12 col-lg-6">
+								<div class="form-group has-error">
+									<label class="control-label">IBAN</label>
+									<input type="text" class="form-control"
+										placeholder="ABCD34899 98329889 JDKDKSKS" />
+									<div class="error-messages">
+										Error message.  Hide the help-block when
+										error is shown.
+										<!-- validation messages here -->
+									</div>
+									<div class="help-block">
+										This must be a bank account in your name, not
+										a friend or relative's account.
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Reference</label>
+									<input type="text" class="form-control"
+										placeholder="Up to 50 characters" />
+									<div class="error-messages">
+										<!-- validation messages here -->
+									</div>
+									<div class="help-block">
+										This will show up on your bank statement.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-lg-6">
+								<button class="btn btn-success btn-block">Pay &euro;600</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
