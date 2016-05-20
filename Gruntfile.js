@@ -1,6 +1,7 @@
 /*!
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
+ * Copyright 2013-2016 The Bootstrap Authors
  * Copyright 2013-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */

@@ -12,7 +12,8 @@
     "web"
   ],
   "homepage": "http://getbootstrap.com",
-  "author": "Twitter, Inc.",
+  "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)",
+  "contributors": ["Twitter, Inc."],
   "scripts": {
     "change-version": "node grunt/change-version.js",
     "shrinkwrap": "npm shrinkwrap --dev && mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
