@@ -162,16 +162,6 @@
   browser: >
     Chrome
   summary: >
-    Focus ring of image map within a modal is displayed in the wrong location.
-  upstream_bug: >
-    Chromium#475128
-  origin: >
-    Bootstrap#16180
-
--
-  browser: >
-    Chrome
-  summary: >
     CSS infinite linear animation with alpha transparency leaks memory.
   upstream_bug: >
     Chromium#429375
