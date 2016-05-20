@@ -318,8 +318,8 @@ $(function () {
     $dropdown.trigger('click')
   })
 
-  QUnit.test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
-    assert.expect(3)
+  QUnit.test('should ignore keyboard events within <input>s, <textarea>s and contenteditables ', function (assert) {
+    assert.expect(13)
     var done = assert.async()
 
     var dropdownHTML = '<ul class="tabs">'
@@ -332,6 +332,7 @@ $(function () {
         + '<li><a href="#">Another link</a></li>'
         + '<li><input type="text" id="input"></li>'
         + '<li><textarea id="textarea"/></li>'
+        + '<li><div id="contenteditable" contenteditable="true"></div></li>'
         + '</ul>'
         + '</li>'
         + '</ul>'
@@ -342,19 +343,32 @@ $(function () {
 
     var $input = $('#input')
     var $textarea = $('#textarea')
+    var $contenteditable = $('#contenteditable')
+
+    var keys = [38,40,27,32]
 
     $dropdown
       .parent('.dropdown')
       .on('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
 
-        $input.trigger('focus').trigger($.Event('keydown', { which: 38 }))
-        assert.ok($(document.activeElement).is($input), 'input still focused')
+        for (var i = 0; i < keys.length; i++) {
+          $input.trigger('focus').trigger($.Event('keydown', { which: keys[i] }))
+          assert.ok($(document.activeElement).is($input), 'input still focused')
+        }
 
-        $textarea.trigger('focus').trigger($.Event('keydown', { which: 38 }))
-        assert.ok($(document.activeElement).is($textarea), 'textarea still focused')
+        for (var j = 0; j < keys.length; j++) {
+          $textarea.trigger('focus').trigger($.Event('keydown', { which: keys[j] }))
+          assert.ok($(document.activeElement).is($textarea), 'textarea still focused')
+        }
+
+        for (var k = 0; k < keys.length; k++) {
+          $contenteditable.trigger('focus').trigger($.Event('keydown', { which: keys[k] }))
+          assert.ok($(document.activeElement).is($contenteditable), 'contenteditable still focused')
+        }
 
         done()
+
       })
 
     $dropdown.trigger('click')
@@ -420,4 +434,25 @@ $(function () {
 
     assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
   })
+
+  QUnit.test('should not close the dropdown if the user clicks on a contenteditable', function (assert) {
+    assert.expect(1)
+    var dropdownHTML = '<div class="btn-group">'
+      + '<button type="button" data-toggle="dropdown">Dropdown</button>'
+      + '<ul class="dropdown-menu">'
+      + '<li><div id="contenteditable" contenteditable="true"></div></li>'
+      + '</ul>'
+      + '</div>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+      .trigger('click')
+
+    $('#contenteditable').trigger('click')
+
+    assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
+  })
+
+
 })
