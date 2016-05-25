@@ -322,14 +322,19 @@ Because of this, you may need to manually address the width and alignment of ind
 {% example html %}
 <form class="form-inline">
   <div class="form-group">
-    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+    <label class="sr-only" for="exampleSelectCurrency">Currency</label>
+    <select class="form-control" id="exampleSelectCurrency">
+      <option>USD ($)</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputAmount">Amount</label>
     <div class="input-group">
-      <div class="input-group-addon">$</div>
       <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
       <div class="input-group-addon">.00</div>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Transfer cash</button>
+  <button type="submit" class="btn btn-primary">Convert</button>
 </form>
 {% endexample %}
 
