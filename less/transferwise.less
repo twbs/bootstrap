@@ -198,14 +198,15 @@ blockquote footer {
     }
 }
 
-li,
-li > a,
+li >,
+li > a >,
 .btn {
-  > .glyphicon:first-child,
-  > .icon:first-child {
+  .glyphicon:first-child,
+  .icon:first-child,
+  .currency-flag {
       margin-right: 8px;
   }
-  > .icon:first-child {
+  .icon {
       display: inline-block;
       position: relative;
       top: -2px;
@@ -213,7 +214,7 @@ li > a,
       vertical-align: middle;
       margin-bottom: -3px;
   }
-  > .circle-xs:first-child {
+ .circle-xs:first-child {
       margin-top: -1px;
   }
 }

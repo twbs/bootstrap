@@ -273,7 +273,28 @@
             right: 0;
         }
     }
+    .btn.dropdown-toggle {
+        padding-right: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     .dropdown-menu {
         width: 100%;
+
+        > li > a {
+            overflow: hidden;
+            width: 100%;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.btn-group .dropdown-menu {
+    max-height: 90vh;
+    overflow: scroll;
+}
+@media (min-height: 592px) {
+    .btn-group .dropdown-menu {
+        max-height: 592px;	// (12 * 48) + 16 = 592
     }
 }
