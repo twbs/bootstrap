@@ -4880,6 +4880,14 @@ input[type="button"].btn-block {
   color: #d3d5d8;
   background-color: #f2f5f7;
 }
+.ui-select-bootstrap .btn-default .form-control-placeholder,
+.bootstrap-select .btn-default .form-control-placeholder,
+.btn-input .form-control-placeholder {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .form-group-sm .ui-select-bootstrap .btn-default,
 .form-group-sm .bootstrap-select .btn-default,
 .form-group-sm .btn-input {
@@ -5441,8 +5449,27 @@ tbody.collapse.in {
   top: 0;
   right: 0;
 }
+.btn-group.btn-block .btn.dropdown-toggle {
+  padding-right: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .btn-group.btn-block .dropdown-menu {
   width: 100%;
+}
+.btn-group.btn-block .dropdown-menu > li > a {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.btn-group .dropdown-menu {
+  max-height: 90vh;
+  overflow: scroll;
+}
+@media (min-height: 592px) {
+  .btn-group .dropdown-menu {
+    max-height: 592px;
+  }
 }
 .input-group {
   position: relative;
@@ -9626,17 +9653,20 @@ blockquote footer {
   margin-left: -12px;
   border: 2px solid #223049;
 }
-li > .glyphicon:first-child,
-li > a > .glyphicon:first-child,
-.btn > .glyphicon:first-child,
-li > .icon:first-child,
-li > a > .icon:first-child,
-.btn > .icon:first-child {
+li .glyphicon:first-child,
+li > a .glyphicon:first-child,
+.btn .glyphicon:first-child,
+li .icon:first-child,
+li > a .icon:first-child,
+.btn .icon:first-child,
+li .currency-flag,
+li > a .currency-flag,
+.btn .currency-flag {
   margin-right: 8px;
 }
-li > .icon:first-child,
-li > a > .icon:first-child,
-.btn > .icon:first-child {
+li .icon,
+li > a .icon,
+.btn .icon {
   position: relative;
   top: -2px;
   display: inline-block;
@@ -9644,9 +9674,9 @@ li > a > .icon:first-child,
   font-size: 24px;
   vertical-align: middle;
 }
-li > .circle-xs:first-child,
-li > a > .circle-xs:first-child,
-.btn > .circle-xs:first-child {
+li .circle-xs:first-child,
+li > a .circle-xs:first-child,
+.btn .circle-xs:first-child {
   margin-top: -1px;
 }
 .m-a-0 {
