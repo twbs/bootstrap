@@ -202,16 +202,6 @@
   browser: >
     Safari
   summary: >
-    `width: 1%` on nested table cell causes its table to hog horizontal space.
-  upstream_bug: >
-    WebKit#144696, Safari#20839572
-  origin: >
-    Bootstrap#16372
-
--
-  browser: >
-    Safari
-  summary: >
     `rem` units in media queries should be calculated using `font-size: initial`, not the root element's `font-size`
   upstream_bug: >
     WebKit#156684
