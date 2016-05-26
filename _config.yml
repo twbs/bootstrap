@@ -41,7 +41,7 @@ cdn:
   css_hash:       "sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
   js:             https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js
   js_hash:        "sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7"
-  jquery:         https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js
-  jquery_hash:    "sha384-mXQoED/lFIuocc//nss8aJOIrz7X7XruhR6bO+sGceiSyMELoVdZkN7F0oYwcFH+"
+  jquery:         https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js
+  jquery_hash:    "sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB"
   tether:         https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js
   tether_hash:    "sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
