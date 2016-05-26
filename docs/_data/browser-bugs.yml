@@ -212,14 +212,6 @@
   browser: >
     Safari
   summary: >
-    `width: 1%` on nested table cell causes its table to hog horizontal space.
-  upstream_bug: >
-    WebKit#144696, Safari#20839572
-  origin: >
-    Bootstrap#16372
-
--
-  browser: >
     Safari (OS X)
   summary: >
     Weird button behavior with some `<input type="number">` elements.
