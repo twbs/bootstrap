@@ -31,6 +31,7 @@ const Dropdown = (($) => {
     SHOWN            : `shown${EVENT_KEY}`,
     CLICK            : `click${EVENT_KEY}`,
     CLICK_DATA_API   : `click${EVENT_KEY}${DATA_API_KEY}`,
+    FOCUSIN_DATA_API : `focusin${EVENT_KEY}${DATA_API_KEY}`,
     KEYDOWN_DATA_API : `keydown${EVENT_KEY}${DATA_API_KEY}`
   }
 
@@ -171,8 +172,9 @@ const Dropdown = (($) => {
           continue
         }
 
-        if (event && event.type === 'click' &&
-           (/input|textarea/i.test(event.target.tagName)) &&
+        if (event && (event.type === 'click' &&
+           (/input|textarea/i.test(event.target.tagName)) ||
+           event.type === 'focusin') &&
            ($.contains(parent, event.target))) {
           continue
         }
@@ -271,6 +273,7 @@ const Dropdown = (($) => {
     .on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU,    Dropdown._dataApiKeydownHandler)
     .on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
     .on(Event.CLICK_DATA_API, Dropdown._clearMenus)
+    .on(Event.FOCUSIN_DATA_API, Dropdown._clearMenus)
     .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
     .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
       e.stopPropagation()
