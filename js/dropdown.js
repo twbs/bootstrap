@@ -34,6 +34,13 @@
     return $parent && $parent.length ? $parent : $this.parent()
   }
 
+  // INPUT TYPE CHECK
+  // ================
+  function IsEditableElement(e) {
+    return /input|textarea/i.test(e.target.tagName)
+      || e.target.isContentEditable
+  }
+
   function clearMenus(e) {
     if (e && e.which === 3) return
     $(backdrop).remove()
@@ -44,7 +51,7 @@
 
       if (!$parent.hasClass('open')) return
 
-      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent[0], e.target)) return
+      if (e && e.type == 'click' && IsEditableElement(e) && $.contains($parent[0], e.target)) return
 
       $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
 
@@ -92,7 +99,7 @@
   }
 
   Dropdown.prototype.keydown = function (e) {
-    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
+    if (!/(38|40|27|32)/.test(e.which) || IsEditableElement(e)) return
 
     var $this = $(this)
 
