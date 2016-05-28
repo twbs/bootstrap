@@ -8,6 +8,7 @@
     @include media-breakpoint-up($breakpoint) {
       .flex-#{$breakpoint}-first { order: -1; }
       .flex-#{$breakpoint}-last { order: 1; }
+      .flex-#{$breakpoint}-unordered { order: 0; }
     }
 
     // Alignment for every item
