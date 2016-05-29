@@ -9,7 +9,7 @@
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ZeroClipboard, anchors */
+/* global Toc, ZeroClipboard, anchors */
 
 !function ($) {
   'use strict';
@@ -20,6 +20,11 @@
     var $window = $(window)
     var $body   = $(document.body)
 
+    // Sidebar
+    Toc.init({
+      $nav: $('.bs-docs-sidebar .bs-docs-sidenav'),
+      $scope: $('.bs-docs-section > h1,.bs-docs-section > h2')
+    })
     $body.scrollspy({
       target: '.bs-docs-sidebar'
     })
