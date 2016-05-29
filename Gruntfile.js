@@ -333,17 +333,17 @@ module.exports = function (grunt) {
       }
     },
 
-    jade: {
+    pug: {
       options: {
         pretty: true,
         data: getLessVarsData
       },
       customizerVars: {
-        src: 'docs/_jade/customizer-variables.jade',
+        src: 'docs/_pug/customizer-variables.pug',
         dest: 'docs/_includes/customizer-variables.html'
       },
       customizerNav: {
-        src: 'docs/_jade/customizer-nav.jade',
+        src: 'docs/_pug/customizer-nav.pug',
         dest: 'docs/_includes/nav/customize.html'
       }
     },
@@ -472,7 +472,7 @@ module.exports = function (grunt) {
 
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
-  grunt.registerTask('build-customizer-html', 'jade');
+  grunt.registerTask('build-customizer-html', 'pug');
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
     var banner = grunt.template.process('<%= banner %>');
     generateRawFiles(grunt, banner);
