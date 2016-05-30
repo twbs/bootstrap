@@ -362,7 +362,7 @@ $(function () {
       var $target = $('#div-' + type + 'm-2')
       var scrollspy = $content.data('bs.scrollspy')
 
-      assert.ok(scrollspy._offsets[1] === $target.offset().top, 'offsed method with ' + type + ' option')
+      assert.ok(scrollspy._offsets[1] === $target.offset().top, 'offset method with ' + type + ' option')
       assert.ok(scrollspy._offsets[1] !== $target.position().top, 'position method with ' + type + ' option')
 
       deferred.resolve()
@@ -405,7 +405,7 @@ $(function () {
       var $target = $('#div-' + type + 'm-2')
       var scrollspy = $content.data('bs.scrollspy')
 
-      assert.ok(scrollspy._offsets[1] !== $target.offset().top, 'offsed method with ' + type + ' option')
+      assert.ok(scrollspy._offsets[1] !== $target.offset().top, 'offset method with ' + type + ' option')
       assert.ok(scrollspy._offsets[1] === $target.position().top, 'position method with ' + type + ' option')
 
       deferred.resolve()
