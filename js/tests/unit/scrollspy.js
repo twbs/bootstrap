@@ -81,7 +81,7 @@ $(function () {
       .find('#scrollspy-example')
       .bootstrapScrollspy({ target: '#ss-target' })
 
-    $scrollspy.on('scroll.bs.scrollspy', function () {
+    $scrollspy.one('scroll', function () {
       assert.ok($section.hasClass('active'), '"active" class still on root node')
       done()
     })
@@ -126,7 +126,7 @@ $(function () {
       .find('#scrollspy-example')
       .bootstrapScrollspy({ target: document.getElementById('#ss-target') })
 
-    $scrollspy.on('scroll.bs.scrollspy', function () {
+    $scrollspy.one('scroll', function () {
       assert.ok($section.hasClass('active'), '"active" class still on root node')
       done()
     })
@@ -158,7 +158,7 @@ $(function () {
 
     $scrollspy.bootstrapScrollspy({ target: '#navigation', offset: $scrollspy.position().top })
 
-    $scrollspy.on('scroll.bs.scrollspy', function () {
+    $scrollspy.one('scroll', function () {
       assert.ok(!$section.find('#one-link').hasClass('active'), '"active" class removed from first section')
       assert.ok($section.find('#two-link').hasClass('active'), '"active" class on middle section')
       assert.ok(!$section.find('#three-link').hasClass('active'), '"active" class not on last section')
@@ -272,11 +272,11 @@ $(function () {
         target: '#navigation',
         offset: $scrollspy.position().top
       })
-      .one('scroll.bs.scrollspy', function () {
+      .one('scroll', function () {
         assert.strictEqual($('.active').length, 1, '"active" class on only one element present')
         assert.strictEqual($('.active').is('#two-link'), true, '"active" class on second section')
         $scrollspy
-          .one('scroll.bs.scrollspy', function () {
+          .one('scroll', function () {
             assert.strictEqual($('.active').length, 0, 'selection cleared')
             done()
           })
@@ -357,7 +357,7 @@ $(function () {
         .appendTo('#qunit-fixture')
 
       if (type === 'js') $content.bootstrapScrollspy({ target: '.navbar', offset: 0, method: 'offset' })
-      else if (type === 'data') $(window).trigger('load.bs.scrollspy.data-api')
+      else if (type === 'data') $(window).trigger('load')
 
       var $target = $('#div-' + type + 'm-2')
       var scrollspy = $content.data('bs.scrollspy')
@@ -400,7 +400,7 @@ $(function () {
         .appendTo('#qunit-fixture')
 
       if (type === 'js') $content.bootstrapScrollspy({ target: '.navbar', offset: 0, method: 'position' })
-      else if (type === 'data') $(window).trigger('load.bs.scrollspy.data-api')
+      else if (type === 'data') $(window).trigger('load')
 
       var $target = $('#div-' + type + 'm-2')
       var scrollspy = $content.data('bs.scrollspy')
