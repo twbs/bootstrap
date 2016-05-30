@@ -18,6 +18,18 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
 
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-alpha.2): util.js
@@ -25,17 +37,7 @@ if (typeof jQuery === 'undefined') {
  * --------------------------------------------------------------------------
  */
 
-'use strict';
-
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-var Util = (function ($) {
+var Util = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -54,7 +56,7 @@ var Util = (function ($) {
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
-    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+    return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
   }
 
   function isElement(obj) {
@@ -80,9 +82,9 @@ var Util = (function ($) {
 
     var el = document.createElement('bootstrap');
 
-    for (var _name in TransitionEndEvent) {
-      if (el.style[_name] !== undefined) {
-        return { end: TransitionEndEvent[_name] };
+    for (var name in TransitionEndEvent) {
+      if (el.style[name] !== undefined) {
+        return { end: TransitionEndEvent[name] };
       }
     }
 
@@ -135,7 +137,6 @@ var Util = (function ($) {
       } while (document.getElementById(prefix));
       return prefix;
     },
-
     getSelectorFromElement: function getSelectorFromElement(element) {
       var selector = element.getAttribute('data-target');
 
@@ -146,25 +147,21 @@ var Util = (function ($) {
 
       return selector;
     },
-
     reflow: function reflow(element) {
       new Function('bs', 'return bs')(element.offsetHeight);
     },
-
     triggerTransitionEnd: function triggerTransitionEnd(element) {
       $(element).trigger(transition.end);
     },
-
     supportsTransitionEnd: function supportsTransitionEnd() {
       return Boolean(transition);
     },
-
     typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
       for (var property in configTypes) {
         if (configTypes.hasOwnProperty(property)) {
           var expectedTypes = configTypes[property];
           var value = config[property];
-          var valueType = undefined;
+          var valueType = void 0;
 
           if (value && isElement(value)) {
             valueType = 'element';
@@ -183,7 +180,7 @@ var Util = (function ($) {
   setTransitionEndSupport();
 
   return Util;
-})(jQuery);
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -192,7 +189,7 @@ var Util = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Alert = (function ($) {
+var Alert = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -230,23 +227,18 @@ var Alert = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  var Alert = (function () {
+  var Alert = function () {
     function Alert(element) {
       _classCallCheck(this, Alert);
 
       this._element = element;
     }
 
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
-
     // getters
 
     _createClass(Alert, [{
       key: 'close',
+
 
       // public
 
@@ -351,7 +343,13 @@ var Alert = (function ($) {
     }]);
 
     return Alert;
-  })();
+  }();
+
+  /**
+   * ------------------------------------------------------------------------
+   * Data Api implementation
+   * ------------------------------------------------------------------------
+   */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
 
@@ -369,7 +367,7 @@ var Alert = (function ($) {
   };
 
   return Alert;
-})(jQuery);
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -378,7 +376,7 @@ var Alert = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Button = (function ($) {
+var Button = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -418,23 +416,18 @@ var Button = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  var Button = (function () {
+  var Button = function () {
     function Button(element) {
       _classCallCheck(this, Button);
 
       this._element = element;
     }
 
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
-
     // getters
 
     _createClass(Button, [{
       key: 'toggle',
+
 
       // public
 
@@ -506,7 +499,13 @@ var Button = (function ($) {
     }]);
 
     return Button;
-  })();
+  }();
+
+  /**
+   * ------------------------------------------------------------------------
+   * Data Api implementation
+   * ------------------------------------------------------------------------
+   */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
     event.preventDefault();
@@ -537,7 +536,7 @@ var Button = (function ($) {
   };
 
   return Button;
-})(jQuery);
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -546,7 +545,7 @@ var Button = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Carousel = (function ($) {
+var Carousel = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -618,7 +617,7 @@ var Carousel = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  var Carousel = (function () {
+  var Carousel = function () {
     function Carousel(element, config) {
       _classCallCheck(this, Carousel);
 
@@ -636,16 +635,11 @@ var Carousel = (function ($) {
       this._addEventListeners();
     }
 
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
-
     // getters
 
     _createClass(Carousel, [{
       key: 'next',
+
 
       // public
 
@@ -917,7 +911,7 @@ var Carousel = (function ($) {
           var data = $(this).data(DATA_KEY);
           var _config = $.extend({}, Default, $(this).data());
 
-          if (typeof config === 'object') {
+          if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object') {
             $.extend(_config, config);
           }
 
@@ -984,7 +978,13 @@ var Carousel = (function ($) {
     }]);
 
     return Carousel;
-  })();
+  }();
+
+  /**
+   * ------------------------------------------------------------------------
+   * Data Api implementation
+   * ------------------------------------------------------------------------
+   */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
 
@@ -1009,7 +1009,7 @@ var Carousel = (function ($) {
   };
 
   return Carousel;
-})(jQuery);
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -1018,7 +1018,7 @@ var Carousel = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Collapse = (function ($) {
+var Collapse = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -1075,7 +1075,7 @@ var Collapse = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  var Collapse = (function () {
+  var Collapse = function () {
     function Collapse(element, config) {
       _classCallCheck(this, Collapse);
 
@@ -1095,16 +1095,11 @@ var Collapse = (function ($) {
       }
     }
 
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
-
     // getters
 
     _createClass(Collapse, [{
       key: 'toggle',
+
 
       // public
 
@@ -1124,8 +1119,8 @@ var Collapse = (function ($) {
           return;
         }
 
-        var actives = undefined;
-        var activesData = undefined;
+        var actives = void 0;
+        var activesData = void 0;
 
         if (this._parent) {
           actives = $.makeArray($(Selector.ACTIVES));
@@ -1309,7 +1304,7 @@ var Collapse = (function ($) {
         return this.each(function () {
           var $this = $(this);
           var data = $this.data(DATA_KEY);
-          var _config = $.extend({}, Default, $this.data(), typeof config === 'object' && config);
+          var _config = $.extend({}, Default, $this.data(), (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config);
 
           if (!data && _config.toggle && /show|hide/.test(config)) {
             _config.toggle = false;
@@ -1341,7 +1336,13 @@ var Collapse = (function ($) {
     }]);
 
     return Collapse;
-  })();
+  }();
+
+  /**
+   * ------------------------------------------------------------------------
+   * Data Api implementation
+   * ------------------------------------------------------------------------
+   */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault();
@@ -1367,7 +1368,7 @@ var Collapse = (function ($) {
   };
 
   return Collapse;
-})(jQuery);
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -1376,7 +1377,7 @@ var Collapse = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Dropdown = (function ($) {
+var Dropdown = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -1423,7 +1424,7 @@ var Dropdown = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  var Dropdown = (function () {
+  var Dropdown = function () {
     function Dropdown(element) {
       _classCallCheck(this, Dropdown);
 
@@ -1432,16 +1433,11 @@ var Dropdown = (function ($) {
       this._addEventListeners();
     }
 
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
-
     // getters
 
     _createClass(Dropdown, [{
       key: 'toggle',
+
 
       // public
 
@@ -1536,32 +1532,32 @@ var Dropdown = (function ($) {
         var toggles = $.makeArray($(Selector.DATA_TOGGLE));
 
         for (var i = 0; i < toggles.length; i++) {
-          var _parent = Dropdown._getParentFromElement(toggles[i]);
+          var parent = Dropdown._getParentFromElement(toggles[i]);
           var relatedTarget = { relatedTarget: toggles[i] };
 
-          if (!$(_parent).hasClass(ClassName.OPEN)) {
+          if (!$(parent).hasClass(ClassName.OPEN)) {
             continue;
           }
 
-          if (event && event.type === 'click' && /input|textarea/i.test(event.target.tagName) && $.contains(_parent, event.target)) {
+          if (event && event.type === 'click' && /input|textarea/i.test(event.target.tagName) && $.contains(parent, event.target)) {
             continue;
           }
 
           var hideEvent = $.Event(Event.HIDE, relatedTarget);
-          $(_parent).trigger(hideEvent);
+          $(parent).trigger(hideEvent);
           if (hideEvent.isDefaultPrevented()) {
             continue;
           }
 
           toggles[i].setAttribute('aria-expanded', 'false');
 
-          $(_parent).removeClass(ClassName.OPEN).trigger($.Event(Event.HIDDEN, relatedTarget));
+          $(parent).removeClass(ClassName.OPEN).trigger($.Event(Event.HIDDEN, relatedTarget));
         }
       }
     }, {
       key: '_getParentFromElement',
       value: function _getParentFromElement(element) {
-        var parent = undefined;
+        var parent = void 0;
         var selector = Util.getSelectorFromElement(element);
 
         if (selector) {
@@ -1634,7 +1630,13 @@ var Dropdown = (function ($) {
     }]);
 
     return Dropdown;
-  })();
+  }();
+
+  /**
+   * ------------------------------------------------------------------------
+   * Data Api implementation
+   * ------------------------------------------------------------------------
+   */
 
   $(document).on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler).on(Event.CLICK_DATA_API, Dropdown._clearMenus).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
     e.stopPropagation();
@@ -1654,7 +1656,7 @@ var Dropdown = (function ($) {
   };
 
   return Dropdown;
-})(jQuery);
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -1663,7 +1665,7 @@ var Dropdown = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Modal = (function ($) {
+var Modal = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -1729,7 +1731,7 @@ var Modal = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  var Modal = (function () {
+  var Modal = function () {
     function Modal(element, config) {
       _classCallCheck(this, Modal);
 
@@ -1744,16 +1746,11 @@ var Modal = (function ($) {
       this._scrollbarWidth = 0;
     }
 
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
-
     // getters
 
     _createClass(Modal, [{
       key: 'toggle',
+
 
       // public
 
@@ -1874,6 +1871,7 @@ var Modal = (function ($) {
         }
 
         this._element.style.display = 'block';
+        this._element.removeAttribute('aria-hidden');
         this._element.scrollTop = 0;
 
         if (transition) {
@@ -1945,6 +1943,7 @@ var Modal = (function ($) {
         var _this11 = this;
 
         this._element.style.display = 'none';
+        this._element.setAttribute('aria-hidden', 'true');
         this._showBackdrop(function () {
           $(document.body).removeClass(ClassName.OPEN);
           _this11._resetAdjustments();
@@ -2100,7 +2099,7 @@ var Modal = (function ($) {
       value: function _jQueryInterface(config, relatedTarget) {
         return this.each(function () {
           var data = $(this).data(DATA_KEY);
-          var _config = $.extend({}, Modal.Default, $(this).data(), typeof config === 'object' && config);
+          var _config = $.extend({}, Modal.Default, $(this).data(), (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config);
 
           if (!data) {
             data = new Modal(this, _config);
@@ -2130,12 +2129,18 @@ var Modal = (function ($) {
     }]);
 
     return Modal;
-  })();
+  }();
+
+  /**
+   * ------------------------------------------------------------------------
+   * Data Api implementation
+   * ------------------------------------------------------------------------
+   */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     var _this13 = this;
 
-    var target = undefined;
+    var target = void 0;
     var selector = Util.getSelectorFromElement(this);
 
     if (selector) {
@@ -2178,7 +2183,7 @@ var Modal = (function ($) {
   };
 
   return Modal;
-})(jQuery);
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -2187,7 +2192,7 @@ var Modal = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var ScrollSpy = (function ($) {
+var ScrollSpy = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -2251,7 +2256,7 @@ var ScrollSpy = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  var ScrollSpy = (function () {
+  var ScrollSpy = function () {
     function ScrollSpy(element, config) {
       _classCallCheck(this, ScrollSpy);
 
@@ -2270,16 +2275,11 @@ var ScrollSpy = (function ($) {
       this._process();
     }
 
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
-
     // getters
 
     _createClass(ScrollSpy, [{
       key: 'refresh',
+
 
       // public
 
@@ -2300,7 +2300,7 @@ var ScrollSpy = (function ($) {
         var targets = $.makeArray($(this._selector));
 
         targets.map(function (element) {
-          var target = undefined;
+          var target = void 0;
           var targetSelector = Util.getSelectorFromElement(element);
 
           if (targetSelector) {
@@ -2439,7 +2439,7 @@ var ScrollSpy = (function ($) {
       value: function _jQueryInterface(config) {
         return this.each(function () {
           var data = $(this).data(DATA_KEY);
-          var _config = typeof config === 'object' && config || null;
+          var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config || null;
 
           if (!data) {
             data = new ScrollSpy(this, _config);
@@ -2467,7 +2467,13 @@ var ScrollSpy = (function ($) {
     }]);
 
     return ScrollSpy;
-  })();
+  }();
+
+  /**
+   * ------------------------------------------------------------------------
+   * Data Api implementation
+   * ------------------------------------------------------------------------
+   */
 
   $(window).on(Event.LOAD_DATA_API, function () {
     var scrollSpys = $.makeArray($(Selector.DATA_SPY));
@@ -2492,7 +2498,7 @@ var ScrollSpy = (function ($) {
   };
 
   return ScrollSpy;
-})(jQuery);
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -2501,7 +2507,7 @@ var ScrollSpy = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Tab = (function ($) {
+var Tab = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -2551,23 +2557,18 @@ var Tab = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  var Tab = (function () {
+  var Tab = function () {
     function Tab(element) {
       _classCallCheck(this, Tab);
 
       this._element = element;
     }
 
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
-
     // getters
 
     _createClass(Tab, [{
       key: 'show',
+
 
       // public
 
@@ -2578,8 +2579,8 @@ var Tab = (function ($) {
           return;
         }
 
-        var target = undefined;
-        var previous = undefined;
+        var target = void 0;
+        var previous = void 0;
         var ulElement = $(this._element).closest(Selector.UL)[0];
         var selector = Util.getSelectorFromElement(this._element);
 
@@ -2728,7 +2729,13 @@ var Tab = (function ($) {
     }]);
 
     return Tab;
-  })();
+  }();
+
+  /**
+   * ------------------------------------------------------------------------
+   * Data Api implementation
+   * ------------------------------------------------------------------------
+   */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault();
@@ -2749,7 +2756,7 @@ var Tab = (function ($) {
   };
 
   return Tab;
-})(jQuery);
+}(jQuery);
 
 /* global Tether */
 
@@ -2760,7 +2767,7 @@ var Tab = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Tooltip = (function ($) {
+var Tooltip = function ($) {
 
   /**
    * Check for Tether dependency
@@ -2863,7 +2870,7 @@ var Tooltip = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  var Tooltip = (function () {
+  var Tooltip = function () {
     function Tooltip(element, config) {
       _classCallCheck(this, Tooltip);
 
@@ -2882,16 +2889,11 @@ var Tooltip = (function ($) {
       this._setListeners();
     }
 
-    /**
-     * ------------------------------------------------------------------------
-     * jQuery
-     * ------------------------------------------------------------------------
-     */
-
     // getters
 
     _createClass(Tooltip, [{
       key: 'enable',
+
 
       // public
 
@@ -3099,7 +3101,7 @@ var Tooltip = (function ($) {
       key: 'setElementContent',
       value: function setElementContent($element, content) {
         var html = this.config.html;
-        if (typeof content === 'object' && (content.nodeType || content.jquery)) {
+        if ((typeof content === 'undefined' ? 'undefined' : _typeof(content)) === 'object' && (content.nodeType || content.jquery)) {
           // content is a DOM node or a jQuery
           if (html) {
             if (!$(content).parent().is($element)) {
@@ -3168,7 +3170,7 @@ var Tooltip = (function ($) {
     }, {
       key: '_fixTitle',
       value: function _fixTitle() {
-        var titleType = typeof this.element.getAttribute('data-original-title');
+        var titleType = _typeof(this.element.getAttribute('data-original-title'));
         if (this.element.getAttribute('title') || titleType !== 'string') {
           this.element.setAttribute('data-original-title', this.element.getAttribute('title') || '');
           this.element.setAttribute('title', '');
@@ -3295,7 +3297,7 @@ var Tooltip = (function ($) {
       value: function _jQueryInterface(config) {
         return this.each(function () {
           var data = $(this).data(DATA_KEY);
-          var _config = typeof config === 'object' ? config : null;
+          var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' ? config : null;
 
           if (!data && /destroy|hide/.test(config)) {
             return;
@@ -3352,7 +3354,13 @@ var Tooltip = (function ($) {
     }]);
 
     return Tooltip;
-  })();
+  }();
+
+  /**
+   * ------------------------------------------------------------------------
+   * jQuery
+   * ------------------------------------------------------------------------
+   */
 
   $.fn[NAME] = Tooltip._jQueryInterface;
   $.fn[NAME].Constructor = Tooltip;
@@ -3362,7 +3370,7 @@ var Tooltip = (function ($) {
   };
 
   return Tooltip;
-})(jQuery);
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -3371,7 +3379,7 @@ var Tooltip = (function ($) {
  * --------------------------------------------------------------------------
  */
 
-var Popover = (function ($) {
+var Popover = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -3426,23 +3434,18 @@ var Popover = (function ($) {
    * ------------------------------------------------------------------------
    */
 
-  var Popover = (function (_Tooltip) {
+  var Popover = function (_Tooltip) {
     _inherits(Popover, _Tooltip);
 
     function Popover() {
       _classCallCheck(this, Popover);
 
-      _get(Object.getPrototypeOf(Popover.prototype), 'constructor', this).apply(this, arguments);
+      return _possibleConstructorReturn(this, Object.getPrototypeOf(Popover).apply(this, arguments));
     }
-
-    /**
-     * ------------------------------------------------------------------------
-     * jQuery
-     * ------------------------------------------------------------------------
-     */
 
     _createClass(Popover, [{
       key: 'isWithContent',
+
 
       // overrides
 
@@ -3483,7 +3486,7 @@ var Popover = (function ($) {
       value: function _jQueryInterface(config) {
         return this.each(function () {
           var data = $(this).data(DATA_KEY);
-          var _config = typeof config === 'object' ? config : null;
+          var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' ? config : null;
 
           if (!data && /destroy|hide/.test(config)) {
             return;
@@ -3504,6 +3507,7 @@ var Popover = (function ($) {
       }
     }, {
       key: 'VERSION',
+
 
       // getters
 
@@ -3543,7 +3547,13 @@ var Popover = (function ($) {
     }]);
 
     return Popover;
-  })(Tooltip);
+  }(Tooltip);
+
+  /**
+   * ------------------------------------------------------------------------
+   * jQuery
+   * ------------------------------------------------------------------------
+   */
 
   $.fn[NAME] = Popover._jQueryInterface;
   $.fn[NAME].Constructor = Popover;
@@ -3553,6 +3563,6 @@ var Popover = (function ($) {
   };
 
   return Popover;
-})(jQuery);
+}(jQuery);
 
 }(jQuery);

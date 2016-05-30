@@ -658,7 +658,7 @@ $(function () {
   QUnit.test('should not reload the tooltip on subsequent mouseenter events', function (assert) {
     assert.expect(1)
     var titleHtml = function () {
-      var uid = Util.getUID('tooltip')
+      var uid = document.getElementById('tooltip')
       return '<p id="tt-content">' + uid + '</p><p>' + uid + '</p><p>' + uid + '</p>'
     }
 
@@ -686,7 +686,7 @@ $(function () {
     assert.expect(4)
 
     var titleHtml = function () {
-      var uid = Util.getUID('tooltip')
+      var uid = document.getElementById('tooltip')
       return '<p id="tt-content">' + uid + '</p><p>' + uid + '</p><p>' + uid + '</p>'
     }
 

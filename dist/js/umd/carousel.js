@@ -1,25 +1,59 @@
 (function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
-  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+  if (typeof define === "function" && define.amd) {
+    define(['exports', './util'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('./util'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, global.util);
     global.carousel = mod.exports;
   }
-})(this, function (exports, module, _util) {
+})(this, function (exports, _util) {
   'use strict';
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+  var _util2 = _interopRequireDefault(_util);
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-  var _Util = _interopRequireDefault(_util);
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+  };
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
 
   /**
    * --------------------------------------------------------------------------
@@ -28,7 +62,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Carousel = (function ($) {
+  var Carousel = function ($) {
 
     /**
      * ------------------------------------------------------------------------
@@ -100,7 +134,7 @@
      * ------------------------------------------------------------------------
      */
 
-    var Carousel = (function () {
+    var Carousel = function () {
       function Carousel(element, config) {
         _classCallCheck(this, Carousel);
 
@@ -118,19 +152,10 @@
         this._addEventListeners();
       }
 
-      /**
-       * ------------------------------------------------------------------------
-       * Data Api implementation
-       * ------------------------------------------------------------------------
-       */
-
       // getters
 
       _createClass(Carousel, [{
         key: 'next',
-
-        // public
-
         value: function next() {
           if (!this._isSliding) {
             this._slide(Direction.NEXT);
@@ -158,8 +183,8 @@
             this._isPaused = true;
           }
 
-          if ($(this._element).find(Selector.NEXT_PREV)[0] && _Util['default'].supportsTransitionEnd()) {
-            _Util['default'].triggerTransitionEnd(this._element);
+          if ($(this._element).find(Selector.NEXT_PREV)[0] && _util2.default.supportsTransitionEnd()) {
+            _util2.default.triggerTransitionEnd(this._element);
             this.cycle(true);
           }
 
@@ -227,14 +252,11 @@
           this._activeElement = null;
           this._indicatorsElement = null;
         }
-
-        // private
-
       }, {
         key: '_getConfig',
         value: function _getConfig(config) {
           config = $.extend({}, Default, config);
-          _Util['default'].typeCheckConfig(NAME, config, DefaultType);
+          _util2.default.typeCheckConfig(NAME, config, DefaultType);
           return config;
         }
       }, {
@@ -355,16 +377,16 @@
             direction: directionalClassName
           });
 
-          if (_Util['default'].supportsTransitionEnd() && $(this._element).hasClass(ClassName.SLIDE)) {
+          if (_util2.default.supportsTransitionEnd() && $(this._element).hasClass(ClassName.SLIDE)) {
 
             $(nextElement).addClass(direction);
 
-            _Util['default'].reflow(nextElement);
+            _util2.default.reflow(nextElement);
 
             $(activeElement).addClass(directionalClassName);
             $(nextElement).addClass(directionalClassName);
 
-            $(activeElement).one(_Util['default'].TRANSITION_END, function () {
+            $(activeElement).one(_util2.default.TRANSITION_END, function () {
               $(nextElement).removeClass(directionalClassName).removeClass(direction);
 
               $(nextElement).addClass(ClassName.ACTIVE);
@@ -389,9 +411,6 @@
             this.cycle();
           }
         }
-
-        // static
-
       }], [{
         key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
@@ -399,7 +418,7 @@
             var data = $(this).data(DATA_KEY);
             var _config = $.extend({}, Default, $(this).data());
 
-            if (typeof config === 'object') {
+            if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object') {
               $.extend(_config, config);
             }
 
@@ -426,7 +445,7 @@
       }, {
         key: '_dataApiClickHandler',
         value: function _dataApiClickHandler(event) {
-          var selector = _Util['default'].getSelectorFromElement(this);
+          var selector = _util2.default.getSelectorFromElement(this);
 
           if (!selector) {
             return;
@@ -466,7 +485,13 @@
       }]);
 
       return Carousel;
-    })();
+    }();
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
 
     $(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
 
@@ -491,7 +516,7 @@
     };
 
     return Carousel;
-  })(jQuery);
+  }(jQuery);
 
-  module.exports = Carousel;
+  exports.default = Carousel;
 });
