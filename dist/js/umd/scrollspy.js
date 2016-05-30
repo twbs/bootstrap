@@ -1,25 +1,59 @@
 (function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
-  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+  if (typeof define === "function" && define.amd) {
+    define(['exports', './util'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('./util'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, global.util);
     global.scrollspy = mod.exports;
   }
-})(this, function (exports, module, _util) {
+})(this, function (exports, _util) {
   'use strict';
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+  var _util2 = _interopRequireDefault(_util);
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-  var _Util = _interopRequireDefault(_util);
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+  };
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
 
   /**
    * --------------------------------------------------------------------------
@@ -28,7 +62,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var ScrollSpy = (function ($) {
+  var ScrollSpy = function ($) {
 
     /**
      * ------------------------------------------------------------------------
@@ -92,7 +126,7 @@
      * ------------------------------------------------------------------------
      */
 
-    var ScrollSpy = (function () {
+    var ScrollSpy = function () {
       function ScrollSpy(element, config) {
         _classCallCheck(this, ScrollSpy);
 
@@ -111,19 +145,10 @@
         this._process();
       }
 
-      /**
-       * ------------------------------------------------------------------------
-       * Data Api implementation
-       * ------------------------------------------------------------------------
-       */
-
       // getters
 
       _createClass(ScrollSpy, [{
         key: 'refresh',
-
-        // public
-
         value: function refresh() {
           var _this = this;
 
@@ -141,8 +166,8 @@
           var targets = $.makeArray($(this._selector));
 
           targets.map(function (element) {
-            var target = undefined;
-            var targetSelector = _Util['default'].getSelectorFromElement(element);
+            var target = void 0;
+            var targetSelector = _util2.default.getSelectorFromElement(element);
 
             if (targetSelector) {
               target = $(targetSelector)[0];
@@ -176,9 +201,6 @@
           this._activeTarget = null;
           this._scrollHeight = null;
         }
-
-        // private
-
       }, {
         key: '_getConfig',
         value: function _getConfig(config) {
@@ -187,13 +209,13 @@
           if (typeof config.target !== 'string') {
             var id = $(config.target).attr('id');
             if (!id) {
-              id = _Util['default'].getUID(NAME);
+              id = _util2.default.getUID(NAME);
               $(config.target).attr('id', id);
             }
             config.target = '#' + id;
           }
 
-          _Util['default'].typeCheckConfig(NAME, config, DefaultType);
+          _util2.default.typeCheckConfig(NAME, config, DefaultType);
 
           return config;
         }
@@ -272,15 +294,12 @@
         value: function _clear() {
           $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
         }
-
-        // static
-
       }], [{
         key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
           return this.each(function () {
             var data = $(this).data(DATA_KEY);
-            var _config = typeof config === 'object' && config || null;
+            var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config || null;
 
             if (!data) {
               data = new ScrollSpy(this, _config);
@@ -308,7 +327,13 @@
       }]);
 
       return ScrollSpy;
-    })();
+    }();
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
 
     $(window).on(Event.LOAD_DATA_API, function () {
       var scrollSpys = $.makeArray($(Selector.DATA_SPY));
@@ -333,7 +358,7 @@
     };
 
     return ScrollSpy;
-  })(jQuery);
+  }(jQuery);
 
-  module.exports = ScrollSpy;
+  exports.default = ScrollSpy;
 });

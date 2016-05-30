@@ -63,7 +63,7 @@ module.exports = function (grunt) {
       dev: {
         options: {
           sourceMap: true,
-          modules: 'ignore'
+          plugins: ['transform-es2015-modules-umd']
         },
         files: {
           'js/dist/util.js'      : 'js/src/util.js',
@@ -80,16 +80,13 @@ module.exports = function (grunt) {
         }
       },
       dist: {
-        options: {
-          modules: 'ignore'
-        },
         files: {
           '<%= concat.bootstrap.dest %>' : '<%= concat.bootstrap.dest %>'
         }
       },
       umd: {
         options: {
-          modules: 'umd'
+          plugins: ['transform-es2015-modules-umd']
         },
         files: {
           'dist/js/umd/util.js'      : 'js/src/util.js',

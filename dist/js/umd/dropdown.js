@@ -1,25 +1,53 @@
 (function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
-  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+  if (typeof define === "function" && define.amd) {
+    define(['exports', './util'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('./util'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, global.util);
     global.dropdown = mod.exports;
   }
-})(this, function (exports, module, _util) {
+})(this, function (exports, _util) {
   'use strict';
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+  var _util2 = _interopRequireDefault(_util);
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-  var _Util = _interopRequireDefault(_util);
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
 
   /**
    * --------------------------------------------------------------------------
@@ -28,7 +56,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Dropdown = (function ($) {
+  var Dropdown = function ($) {
 
     /**
      * ------------------------------------------------------------------------
@@ -75,7 +103,7 @@
      * ------------------------------------------------------------------------
      */
 
-    var Dropdown = (function () {
+    var Dropdown = function () {
       function Dropdown(element) {
         _classCallCheck(this, Dropdown);
 
@@ -84,19 +112,10 @@
         this._addEventListeners();
       }
 
-      /**
-       * ------------------------------------------------------------------------
-       * Data Api implementation
-       * ------------------------------------------------------------------------
-       */
-
       // getters
 
       _createClass(Dropdown, [{
         key: 'toggle',
-
-        // public
-
         value: function toggle() {
           if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
             return false;
@@ -144,17 +163,11 @@
           $(this._element).off(EVENT_KEY);
           this._element = null;
         }
-
-        // private
-
       }, {
         key: '_addEventListeners',
         value: function _addEventListeners() {
           $(this._element).on(Event.CLICK, this.toggle);
         }
-
-        // static
-
       }], [{
         key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
@@ -188,33 +201,33 @@
           var toggles = $.makeArray($(Selector.DATA_TOGGLE));
 
           for (var i = 0; i < toggles.length; i++) {
-            var _parent = Dropdown._getParentFromElement(toggles[i]);
+            var parent = Dropdown._getParentFromElement(toggles[i]);
             var relatedTarget = { relatedTarget: toggles[i] };
 
-            if (!$(_parent).hasClass(ClassName.OPEN)) {
+            if (!$(parent).hasClass(ClassName.OPEN)) {
               continue;
             }
 
-            if (event && event.type === 'click' && /input|textarea/i.test(event.target.tagName) && $.contains(_parent, event.target)) {
+            if (event && event.type === 'click' && /input|textarea/i.test(event.target.tagName) && $.contains(parent, event.target)) {
               continue;
             }
 
             var hideEvent = $.Event(Event.HIDE, relatedTarget);
-            $(_parent).trigger(hideEvent);
+            $(parent).trigger(hideEvent);
             if (hideEvent.isDefaultPrevented()) {
               continue;
             }
 
             toggles[i].setAttribute('aria-expanded', 'false');
 
-            $(_parent).removeClass(ClassName.OPEN).trigger($.Event(Event.HIDDEN, relatedTarget));
+            $(parent).removeClass(ClassName.OPEN).trigger($.Event(Event.HIDDEN, relatedTarget));
           }
         }
       }, {
         key: '_getParentFromElement',
         value: function _getParentFromElement(element) {
-          var parent = undefined;
-          var selector = _Util['default'].getSelectorFromElement(element);
+          var parent = void 0;
+          var selector = _util2.default.getSelectorFromElement(element);
 
           if (selector) {
             parent = $(selector)[0];
@@ -286,7 +299,13 @@
       }]);
 
       return Dropdown;
-    })();
+    }();
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
 
     $(document).on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler).on(Event.CLICK_DATA_API, Dropdown._clearMenus).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
       e.stopPropagation();
@@ -306,7 +325,7 @@
     };
 
     return Dropdown;
-  })(jQuery);
+  }(jQuery);
 
-  module.exports = Dropdown;
+  exports.default = Dropdown;
 });

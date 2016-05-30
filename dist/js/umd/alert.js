@@ -1,25 +1,53 @@
 (function (global, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['exports', 'module', './util'], factory);
-  } else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-    factory(exports, module, require('./util'));
+  if (typeof define === "function" && define.amd) {
+    define(['exports', './util'], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require('./util'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, mod, global.Util);
+    factory(mod.exports, global.util);
     global.alert = mod.exports;
   }
-})(this, function (exports, module, _util) {
+})(this, function (exports, _util) {
   'use strict';
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+  var _util2 = _interopRequireDefault(_util);
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+      default: obj
+    };
+  }
 
-  var _Util = _interopRequireDefault(_util);
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
 
   /**
    * --------------------------------------------------------------------------
@@ -28,7 +56,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Alert = (function ($) {
+  var Alert = function ($) {
 
     /**
      * ------------------------------------------------------------------------
@@ -66,26 +94,17 @@
      * ------------------------------------------------------------------------
      */
 
-    var Alert = (function () {
+    var Alert = function () {
       function Alert(element) {
         _classCallCheck(this, Alert);
 
         this._element = element;
       }
 
-      /**
-       * ------------------------------------------------------------------------
-       * Data Api implementation
-       * ------------------------------------------------------------------------
-       */
-
       // getters
 
       _createClass(Alert, [{
         key: 'close',
-
-        // public
-
         value: function close(element) {
           element = element || this._element;
 
@@ -104,13 +123,10 @@
           $.removeData(this._element, DATA_KEY);
           this._element = null;
         }
-
-        // private
-
       }, {
         key: '_getRootElement',
         value: function _getRootElement(element) {
-          var selector = _Util['default'].getSelectorFromElement(element);
+          var selector = _util2.default.getSelectorFromElement(element);
           var parent = false;
 
           if (selector) {
@@ -136,21 +152,18 @@
         value: function _removeElement(element) {
           $(element).removeClass(ClassName.IN);
 
-          if (!_Util['default'].supportsTransitionEnd() || !$(element).hasClass(ClassName.FADE)) {
+          if (!_util2.default.supportsTransitionEnd() || !$(element).hasClass(ClassName.FADE)) {
             this._destroyElement(element);
             return;
           }
 
-          $(element).one(_Util['default'].TRANSITION_END, $.proxy(this._destroyElement, this, element)).emulateTransitionEnd(TRANSITION_DURATION);
+          $(element).one(_util2.default.TRANSITION_END, $.proxy(this._destroyElement, this, element)).emulateTransitionEnd(TRANSITION_DURATION);
         }
       }, {
         key: '_destroyElement',
         value: function _destroyElement(element) {
           $(element).detach().trigger(Event.CLOSED).remove();
         }
-
-        // static
-
       }], [{
         key: '_jQueryInterface',
         value: function _jQueryInterface(config) {
@@ -187,7 +200,13 @@
       }]);
 
       return Alert;
-    })();
+    }();
+
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
 
     $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
 
@@ -205,7 +224,7 @@
     };
 
     return Alert;
-  })(jQuery);
+  }(jQuery);
 
-  module.exports = Alert;
+  exports.default = Alert;
 });
