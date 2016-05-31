@@ -149,7 +149,7 @@
         "semi": [2, "never"],
         "semi-spacing": 2,
         "sort-vars": 2,
-        "keyword-spacing": ["error", { "before": true , "after":true }],
+        "keyword-spacing": [2, { "before": true , "after":true }],
         "space-before-blocks": 2,
         "space-before-function-paren": 0,
         "spaced-comment": 2,
