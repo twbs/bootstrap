@@ -25,7 +25,7 @@ const Modal = (($) => {
   const JQUERY_NO_CONFLICT           = $.fn[NAME]
   const TRANSITION_DURATION          = 300
   const BACKDROP_TRANSITION_DURATION = 150
-  const ESCAPE_KEYCODE               = 27 // Escape (Esc) key
+  const ESCAPE_KEYCODE               = 27 // KeyboardEvent.which value for Escape (Esc) key
 
   const Default = {
     backdrop : true,
