@@ -107,13 +107,6 @@ module.exports = function (grunt) {
       }
     },
 
-    eslint: {
-      options: {
-        configFile: 'js/.eslintrc'
-      },
-      target: 'js/src/*.js'
-    },
-
     jscs: {
       options: {
         config: 'js/.jscsrc'
@@ -438,7 +431,7 @@ module.exports = function (grunt) {
     testSubtasks.push('saucelabs-qunit');
   }
   grunt.registerTask('test', testSubtasks);
-  grunt.registerTask('test-js', ['eslint', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
+  grunt.registerTask('test-js', ['jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
