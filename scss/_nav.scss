@@ -89,12 +89,6 @@
     }
   }
 
-  .dropdown-menu {
-    // Make dropdown border overlap tab border
-    margin-top: -$nav-tabs-border-width;
-    // Remove the top rounded corners here since there is a hard edge above the menu
-    @include border-top-radius(0);
-  }
 }
 
 

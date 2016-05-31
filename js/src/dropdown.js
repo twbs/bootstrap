@@ -1,3 +1,5 @@
+/* global Tether */
+
 import Util from './util'
 
 
@@ -9,6 +11,14 @@ import Util from './util'
  */
 
 const Dropdown = (($) => {
+
+  /**
+   * Check for Tether dependency
+   * Tether - http://github.hubspot.com/tether/
+   */
+  if (window.Tether === undefined) {
+    throw new Error('Bootstrap dropdowns require Tether (http://github.hubspot.com/tether/)')
+  }
 
 
   /**
@@ -23,6 +33,27 @@ const Dropdown = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
+  const CLASS_PREFIX        = 'bs-tether'
+
+  const Default = {
+    attachment       : 'top left',
+    targetAttachment : 'bottom left',
+    offset           : '0 0',
+    constraints      : [
+      {
+        to: 'window',
+        attachment: 'together',
+        pin: true
+      }
+    ]
+  }
+
+  const DefaultType = {
+    attachment       : 'string',
+    targetAttachment : 'string',
+    offset           : 'string',
+    constraints      : 'array'
+  }
 
   const Event = {
     HIDE             : `hide${EVENT_KEY}`,
@@ -44,11 +75,17 @@ const Dropdown = (($) => {
     BACKDROP      : '.dropdown-backdrop',
     DATA_TOGGLE   : '[data-toggle="dropdown"]',
     FORM_CHILD    : '.dropdown form',
+    DROPDOWN_MENU : '.dropdown-menu',
     ROLE_MENU     : '[role="menu"]',
     ROLE_LISTBOX  : '[role="listbox"]',
     NAVBAR_NAV    : '.navbar-nav',
     VISIBLE_ITEMS : '[role="menu"] li:not(.disabled) a, '
                   + '[role="listbox"] li:not(.disabled) a'
+  }
+
+  const TetherClass = {
+    element : false,
+    enabled : false
   }
 
 
@@ -60,8 +97,14 @@ const Dropdown = (($) => {
 
   class Dropdown {
 
-    constructor(element) {
-      this._element = element
+    constructor(element, config) {
+      // private
+      this._tether  = null
+
+      // protected
+      this.element   = element
+      this.config    = this._getConfig(config)
+      this.menu      = this.getMenuElement()
 
       this._addEventListeners()
     }
@@ -73,22 +116,49 @@ const Dropdown = (($) => {
       return VERSION
     }
 
+    static get Default() {
+      return Default
+    }
+
+    static get DefaultType() {
+      return DefaultType
+    }
+
 
     // public
 
     toggle() {
+      let context = $(this).data(DATA_KEY)
+
+      if (!context) {
+        context = new Dropdown(this)
+        $(this).data(DATA_KEY, context)
+      }
+
       if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
         return false
       }
 
       let parent   = Dropdown._getParentFromElement(this)
-      let isActive = $(parent).hasClass(ClassName.OPEN)
+      let isActive = $(context.menu).hasClass(ClassName.OPEN)
 
       Dropdown._clearMenus()
 
       if (isActive) {
         return false
       }
+
+      context._tether = new Tether({
+        attachment       : context.config.attachment,
+        targetAttachment : context.config.targetAttachment,
+        element          : context.menu,
+        target           : this,
+        classes          : TetherClass,
+        classPrefix      : CLASS_PREFIX,
+        offset           : context.config.offset,
+        constraints      : context.config.constraints,
+        addTargetClasses : false
+      })
 
       if ('ontouchstart' in document.documentElement &&
          (!$(parent).closest(Selector.NAVBAR_NAV).length)) {
@@ -110,36 +180,80 @@ const Dropdown = (($) => {
       }
 
       this.focus()
-      this.setAttribute('aria-expanded', 'true')
 
-      $(parent).toggleClass(ClassName.OPEN)
-      $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
+      this.setAttribute('aria-expanded', true)
+
+      $(context.menu).toggleClass(ClassName.OPEN)
+      $(parent)
+        .toggleClass(ClassName.OPEN)
+        .trigger($.Event(Event.SHOWN, relatedTarget))
 
       return false
     }
 
     dispose() {
-      $.removeData(this._element, DATA_KEY)
-      $(this._element).off(EVENT_KEY)
-      this._element = null
+      this.cleanupTether()
+
+      $.removeData(this.element, DATA_KEY)
+      $(this.element).off(EVENT_KEY)
+
+      this._tether = null
+      this.menu    = null
+      this.element = null
+    }
+
+    cleanupTether() {
+      if (this._tether) {
+        this._tether.destroy()
+      }
+    }
+
+
+    // protected
+
+    getMenuElement() {
+      if (!this.menu) {
+        let parent = Dropdown._getParentFromElement(this.element)
+        this.menu = $(parent).find(Selector.DROPDOWN_MENU)[0]
+      }
+      return this.menu
     }
 
 
     // private
 
     _addEventListeners() {
-      $(this._element).on(Event.CLICK, this.toggle)
+      $(this.element).on(Event.CLICK, this.toggle)
     }
 
+    _getConfig(config) {
+      config = $.extend(
+        {},
+        this.constructor.Default,
+        $(this.element).data(),
+        config
+      )
+
+      Util.typeCheckConfig(
+        NAME,
+        config,
+        this.constructor.DefaultType
+      )
+
+      return config
+    }
 
     // static
 
     static _jQueryInterface(config) {
       return this.each(function () {
         let data  = $(this).data(DATA_KEY)
+        let _config = typeof config === 'object' ?
+          config : null
 
         if (!data) {
-          $(this).data(DATA_KEY, (data = new Dropdown(this)))
+          data = new Dropdown(this, _config)
+          $(this).data(DATA_KEY, data)
         }
 
         if (typeof config === 'string') {
@@ -166,28 +280,36 @@ const Dropdown = (($) => {
       for (let i = 0; i < toggles.length; i++) {
         let parent        = Dropdown._getParentFromElement(toggles[i])
         let relatedTarget = { relatedTarget : toggles[i] }
+        let context       = $(toggles[i]).data(DATA_KEY)
 
-        if (!$(parent).hasClass(ClassName.OPEN)) {
-          continue
+        if (context) {
+          let dropdownMenu  = context.menu
+
+          if (!$(dropdownMenu).hasClass(ClassName.OPEN)) {
+            continue
+          }
+
+          if (event && event.type === 'click' &&
+             (/input|textarea/i.test(event.target.tagName)) &&
+             ($.contains(dropdownMenu, event.target))) {
+            continue
+          }
+
+          let hideEvent = $.Event(Event.HIDE, relatedTarget)
+          $(parent).trigger(hideEvent)
+          if (hideEvent.isDefaultPrevented()) {
+            continue
+          }
+
+          toggles[i].setAttribute('aria-expanded', false)
+          $(dropdownMenu).removeClass(ClassName.OPEN)
+
+          // move the dropdownMenu back to underneath the parent
+          $(parent)
+            .removeClass(ClassName.OPEN)
+            .append(dropdownMenu)
+            .trigger($.Event(Event.HIDDEN, relatedTarget))
         }
-
-        if (event && event.type === 'click' &&
-           (/input|textarea/i.test(event.target.tagName)) &&
-           ($.contains(parent, event.target))) {
-          continue
-        }
-
-        let hideEvent = $.Event(Event.HIDE, relatedTarget)
-        $(parent).trigger(hideEvent)
-        if (hideEvent.isDefaultPrevented()) {
-          continue
-        }
-
-        toggles[i].setAttribute('aria-expanded', 'false')
-
-        $(parent)
-          .removeClass(ClassName.OPEN)
-          .trigger($.Event(Event.HIDDEN, relatedTarget))
       }
     }
 
@@ -216,7 +338,7 @@ const Dropdown = (($) => {
       }
 
       let parent   = Dropdown._getParentFromElement(this)
-      let isActive = $(parent).hasClass(ClassName.OPEN)
+      let isActive = $(this).hasClass(ClassName.OPEN)
 
       if ((!isActive && event.which !== 27) ||
            (isActive && event.which === 27)) {
