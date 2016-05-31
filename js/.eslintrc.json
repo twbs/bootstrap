@@ -1,8 +1,13 @@
 {
     "root": true,
     "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
     "env": {
         "browser": true,
+        "es6": true,
         "jquery": true
     },
     "rules": {
@@ -33,6 +38,7 @@
         "no-negated-in-lhs": 2,
         "no-obj-calls": 2,
         "no-regex-spaces": 2,
+        "no-self-assign": 2,
         "no-sparse-arrays": 2,
         "no-unexpected-multiline": 2,
         "no-unreachable": 2,
@@ -55,7 +61,6 @@
         "no-case-declarations": 2,
         "no-div-regex": 2,
         "no-else-return": 2,
-        "no-empty-label": 2,
         "no-eq-null": 2,
         "no-eval": 2,
         "no-extend-native": 2,
@@ -125,6 +130,7 @@
         "func-style": 0,
         "indent": [2, 2, {"SwitchCase": 1}],
         "key-spacing": 0,
+        "keyword-spacing": 2,
         "linebreak-style": 2,
         "lines-around-comment": 0,
         "new-cap": 0,
@@ -153,13 +159,11 @@
         "semi": [2, "never"],
         "semi-spacing": 2,
         "sort-vars": 2,
-        "space-after-keywords": 2,
         "space-before-blocks": 2,
         "space-before-function-paren": 0,
         "spaced-comment": 2,
         "space-infix-ops": 2,
         "space-in-parens": 2,
-        "space-return-throw-case": 2,
         "space-unary-ops": 2,
 
         // es6
@@ -170,6 +174,7 @@
         "no-class-assign": 2,
         "no-const-assign": 2,
         "no-dupe-class-members": 2,
+        "no-new-symbol": 2,
         "no-this-before-super": 2,
         "no-var": 2,
         "object-shorthand": 2,

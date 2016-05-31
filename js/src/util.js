@@ -42,6 +42,7 @@ const Util = (($) => {
         if ($(event.target).is(this)) {
           return event.handleObj.handler.apply(this, arguments)
         }
+        return undefined
       }
     }
   }
