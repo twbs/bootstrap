@@ -824,9 +824,9 @@
       "resolved": "https://registry.npmjs.org/escope/-/escope-3.6.0.tgz"
     },
     "eslint": {
-      "version": "1.9.0",
-      "from": "eslint@1.9.0",
-      "resolved": "https://registry.npmjs.org/eslint/-/eslint-1.9.0.tgz",
+      "version": "1.10.3",
+      "from": "eslint@1.10.3",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-1.10.3.tgz",
       "dependencies": {
         "argparse": {
           "version": "1.0.7",
@@ -844,9 +844,9 @@
           "resolved": "https://registry.npmjs.org/globals/-/globals-8.18.0.tgz"
         },
         "js-yaml": {
-          "version": "3.6.1",
-          "from": "js-yaml@>=3.2.5 <4.0.0",
-          "resolved": "https://registry.npmjs.org/js-yaml/-/js-yaml-3.6.1.tgz",
+          "version": "3.4.5",
+          "from": "js-yaml@3.4.5",
+          "resolved": "https://registry.npmjs.org/js-yaml/-/js-yaml-3.4.5.tgz",
           "dependencies": {
             "esprima": {
               "version": "2.7.2",
