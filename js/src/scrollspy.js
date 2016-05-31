@@ -140,6 +140,7 @@ const ScrollSpy = (($) => {
               targetSelector
             ]
           }
+          return null
         })
         .filter((item)  => item)
         .sort((a, b)    => a[0] - b[0])
