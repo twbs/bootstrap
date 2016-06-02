@@ -190,6 +190,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    Clicking scrollbar in `<select multiple>` with overflowed options will select nearby `<option>`
+  upstream_bug: >
+    Chromium#597642
+  origin: >
+    Bootstrap#19810
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
