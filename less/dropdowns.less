@@ -97,7 +97,7 @@
   }
 }
 
-// Hover/Focus state
+// Hover/Focus/Active state
 .dropdown-menu > li > a {
   &:hover,
   &:focus {
@@ -105,6 +105,10 @@
     color: @dropdown-link-hover-color;
     background-color: @dropdown-link-hover-bg;
     outline: 0;
+  }
+  &:active {
+      color: @dropdown-link-active-color;
+      background-color: @dropdown-link-active-bg;
   }
 }
 

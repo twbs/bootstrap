@@ -12,6 +12,7 @@
   background-color: @thumbnail-bg;
   border: 1px solid @thumbnail-border;
   border-radius: @thumbnail-border-radius;
+  position: relative;
   .transition(border .2s ease-in-out);
 
   > img,
@@ -19,6 +20,13 @@
     &:extend(.img-responsive);
     margin-left: auto;
     margin-right: auto;
+    border-top-left-radius: @border-radius-base;
+    border-top-right-radius: @border-radius-base;
+  }
+
+  a& {
+    font-weight: 400;
+    text-decoration: none;
   }
 
   // Add a hover state for linked versions only
@@ -36,5 +44,16 @@
     :last-child {
         margin-bottom: 0;
     }
+  }
+  .thumbnail-title {
+    position: absolute;
+    color: @brand-white;
+    top: @thumbnail-caption-padding;
+    margin-left: @thumbnail-caption-padding;
+    margin-right: @thumbnail-caption-padding;
+    z-index: 1;
+  }
+  .thumbnail-title + img {
+    filter: brightness(50%);
   }
 }

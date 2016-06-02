@@ -8,22 +8,22 @@
   <p>By default, Bootstrap's thumbnails are designed to showcase linked images with minimal required markup.</p>
   <div class="bs-example" data-example-id="simple-thumbnails">
     <div class="row">
-      <div class="col-xs-6 col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <a href="#" class="thumbnail">
           <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail">
         </a>
       </div>
-      <div class="col-xs-6 col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <a href="#" class="thumbnail">
           <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail">
         </a>
       </div>
-      <div class="col-xs-6 col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <a href="#" class="thumbnail">
           <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail">
         </a>
       </div>
-      <div class="col-xs-6 col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <a href="#" class="thumbnail">
           <img data-src="holder.js/100%x180" alt="Generic placeholder thumbnail">
         </a>
@@ -32,7 +32,7 @@
   </div><!-- /.bs-example -->
 {% highlight html %}
 <div class="row">
-  <div class="col-xs-6 col-md-3">
+  <div class="col-xs-12 col-sm-6 col-md-3">
     <a href="#" class="thumbnail">
       <img src="..." alt="...">
     </a>
@@ -46,7 +46,7 @@
   <p>Use the <code>.row-equal-height</code> modifier to match the height of the thumbnails.</p>
   <div class="bs-example" data-example-id="thumbnails-with-custom-content">
     <div class="row row-equal-height">
-      <div class="col-sm-6 col-xl-4">
+      <div class="col-xs-12 col-sm-6 col-xl-4">
         <div class="thumbnail">
           <img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
           <div class="caption">
@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-xl-4">
+      <div class="col-xs-12 col-sm-6 col-xl-4">
         <div class="thumbnail">
           <img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
           <div class="caption">
@@ -66,9 +66,10 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-xl-4">
+      <div class="col-xs-12 col-sm-6 col-xl-4">
         <div class="thumbnail">
           <img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
+          <h2 class="thumbnail-title">Example title</h2>
           <div class="caption">
             <h4>Thumbnail label</h4>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -80,7 +81,7 @@
   </div><!-- /.bs-example -->
 {% highlight html %}
 <div class="row row-equal-height">
-  <div class="col-sm-6 col-xl-4">
+  <div class="col-xs-12 col-sm-6 col-xl-4">
     <div class="thumbnail">
       <img src="..." alt="...">
       <div class="caption">
