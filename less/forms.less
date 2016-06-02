@@ -129,8 +129,9 @@ output {
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
   border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+  .transition(~"border-color ease-in-out .15s");
+
+  background-clip: padding-box; // Remove iOS drop shadow
 
   &:hover {
       border-color: @input-border-hover;
@@ -464,10 +465,11 @@ input[type="checkbox"] {
 
 .help-block {
   display: block; // account for any element using help-block
-  margin-top: 8px;
+  margin-top: 4px;
   margin-bottom: 8px;
   color: @gray-light; // lighten the text some for contrast
   font-size: @font-size-small;
+  line-height: 20px;
 }
 
 
@@ -694,7 +696,8 @@ input[type="checkbox"] {
     .form-group .row [class*="col-sm-"] {
         margin-bottom: 0;
 
-        .form-control {
+        .form-control,
+        .btn-input {
             margin-bottom: (@padding-base-vertical * 1.5);
         }
     }
@@ -703,7 +706,8 @@ input[type="checkbox"] {
     .form-group .row [class*="col-md-"] {
         margin-bottom: 0;
 
-        .form-control {
+        .form-control,
+        .btn-input {
             margin-bottom: (@padding-base-vertical * 1.5);
         }
     }
@@ -712,7 +716,19 @@ input[type="checkbox"] {
     .form-group .row [class*="col-lg-"] {
         margin-bottom: 0;
 
-        .form-control {
+        .form-control,
+        .btn-input {
+            margin-bottom: (@padding-base-vertical * 1.5);
+        }
+    }
+}
+
+@media (max-width: @screen-lg-max) {
+    .form-group .row [class*="col-xl-"] {
+        margin-bottom: 0;
+
+        .form-control,
+        .btn-input {
             margin-bottom: (@padding-base-vertical * 1.5);
         }
     }
@@ -837,9 +853,9 @@ input[type="checkbox"] {
 .error-messages {
 	display: none;
     color: @state-danger-text;
-    margin-top: @padding-base-vertical;
+    margin-top: 4px;
     font-size: @font-size-small;
-    line-height: 16px;
+    line-height: 20px;
 }
 .has-error .error-messages {
 	display: block;

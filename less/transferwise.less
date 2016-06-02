@@ -198,14 +198,9 @@ blockquote footer {
     }
 }
 
-li >,
-li > a >,
+li,
+li > a,
 .btn {
-  .glyphicon:first-child,
-  .icon:first-child,
-  .currency-flag {
-      margin-right: 8px;
-  }
   .icon {
       display: inline-block;
       position: relative;
@@ -216,5 +211,20 @@ li > a >,
   }
  .circle-xs:first-child {
       margin-top: -1px;
+  }
+}
+li,
+li > a {
+  > .glyphicon:first-child,
+  > .icon:first-child,
+  > .currency-flag:first-child {
+      margin-right: 8px;
+  }
+}
+.btn {
+  .glyphicon:first-child,
+  .icon:first-child,
+  .currency-flag:first-child {
+      margin-right: 8px;
   }
 }
