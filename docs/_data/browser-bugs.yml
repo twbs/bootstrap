@@ -342,6 +342,16 @@
 
 -
   browser: >
+    Safari (iOS)
+  summary: >
+    Tapping from one `<input>` to another in an overlay can cause shaking/jiggling effect
+  upstream_bug: >
+    WebKit#158276
+  origin: >
+    Bootstrap#19927
+
+-
+  browser: >
     Safari (iPad Pro)
   summary: >
     Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation
