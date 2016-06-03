@@ -372,6 +372,16 @@
 
 -
   browser: >
+    Safari (iOS)
+  summary: >
+    Modal with `-webkit-overflow-scrolling: touch` doesn't become scrollable after added text makes it taller
+  upstream_bug: >
+    WebKit#158342
+  origin: >
+    Bootstrap#17695
+
+-
+  browser: >
     Safari (iPad Pro)
   summary: >
     Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation
