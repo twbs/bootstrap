@@ -1,6 +1,7 @@
 /*!
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
+ * Copyright 2013-2016 The Bootstrap Authors
  * Copyright 2013-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -104,13 +105,6 @@ module.exports = function (grunt) {
           'dist/js/umd/popover.js'   : 'js/src/popover.js'
         }
       }
-    },
-
-    eslint: {
-      options: {
-        configFile: 'js/.eslintrc'
-      },
-      target: 'js/src/*.js'
     },
 
     jscs: {
@@ -437,7 +431,7 @@ module.exports = function (grunt) {
     testSubtasks.push('saucelabs-qunit');
   }
   grunt.registerTask('test', testSubtasks);
-  grunt.registerTask('test-js', ['eslint', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
+  grunt.registerTask('test-js', ['jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);

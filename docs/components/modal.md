@@ -480,10 +480,6 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
        <td>hidden.bs.modal</td>
        <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
      </tr>
-     <tr>
-       <td>loaded.bs.modal</td>
-       <td>This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
-     </tr>
     </tbody>
   </table>
 </div>

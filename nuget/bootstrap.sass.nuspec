@@ -4,7 +4,7 @@
     <id>bootstrap.sass</id>
     <version>4.0.0-alpha</version>
     <title>Bootstrap Sass</title>
-    <authors>Twitter, Inc.</authors>
+    <authors>The Bootstrap Authors, Twitter Inc.</authors>
     <owners>bootstrap</owners>
 	<description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
     <releaseNotes>http://blog.getbootstrap.com</releaseNotes>

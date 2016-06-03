@@ -25,6 +25,7 @@ const Modal = (($) => {
   const JQUERY_NO_CONFLICT           = $.fn[NAME]
   const TRANSITION_DURATION          = 300
   const BACKDROP_TRANSITION_DURATION = 150
+  const ESCAPE_KEYCODE               = 27 // KeyboardEvent.which value for Escape (Esc) key
 
   const Default = {
     backdrop : true,
@@ -271,7 +272,7 @@ const Modal = (($) => {
     _setEscapeEvent() {
       if (this._isShown && this._config.keyboard) {
         $(this._element).on(Event.KEYDOWN_DISMISS, (event) => {
-          if (event.which === 27) {
+          if (event.which === ESCAPE_KEYCODE) {
             this.hide()
           }
         })
@@ -400,7 +401,7 @@ const Modal = (($) => {
       }
 
       if (this._isBodyOverflowing && !isModalOverflowing) {
-        this._element.style.paddingRight = `${this._scrollbarWidth}px~`
+        this._element.style.paddingRight = `${this._scrollbarWidth}px`
       }
     }
 
