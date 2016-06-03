@@ -110,6 +110,16 @@
 
 -
   browser: >
+    Firefox
+  summary: >
+    Wide floated table doesn't wrap onto new line
+  upstream_bug: >
+    Mozilla#1277782
+  origin: >
+    Bootstrap#19839
+
+-
+  browser: >
     Firefox (Windows)
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
