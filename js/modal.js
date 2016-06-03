@@ -28,7 +28,7 @@
       this.$element
         .find('.modal-content')
         .load(this.options.remote, $.proxy(function (data, textStatus, response) {
-          this.$element.trigger('loaded.bs.modal', {data: data, textStatus: textStatus, response: response})
+          this.$element.trigger('loaded.bs.modal', {data: data, textStatus: textStatus, response: response} )
         }, this))
     }
   }
