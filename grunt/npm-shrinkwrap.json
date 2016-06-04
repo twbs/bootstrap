@@ -18,14 +18,14 @@
       "resolved": "https://registry.npmjs.org/acorn/-/acorn-1.2.2.tgz"
     },
     "acorn-jsx": {
-      "version": "2.0.1",
-      "from": "acorn-jsx@>=2.0.1 <3.0.0",
-      "resolved": "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-2.0.1.tgz",
+      "version": "3.0.1",
+      "from": "acorn-jsx@>=3.0.0 <4.0.0",
+      "resolved": "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-3.0.1.tgz",
       "dependencies": {
         "acorn": {
-          "version": "2.7.0",
-          "from": "acorn@>=2.0.1 <3.0.0",
-          "resolved": "https://registry.npmjs.org/acorn/-/acorn-2.7.0.tgz"
+          "version": "3.1.0",
+          "from": "acorn@^3.0.4",
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-3.1.0.tgz"
         }
       }
     },
@@ -916,9 +916,9 @@
       "resolved": "https://registry.npmjs.org/escope/-/escope-3.6.0.tgz"
     },
     "eslint": {
-      "version": "2.8.0",
-      "from": "eslint@2.8.0",
-      "resolved": "https://registry.npmjs.org/eslint/-/eslint-2.8.0.tgz",
+      "version": "2.9.0",
+      "from": "eslint@2.9.0",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-2.9.0.tgz",
       "dependencies": {
         "argparse": {
           "version": "1.0.7",
@@ -958,9 +958,9 @@
       }
     },
     "espree": {
-      "version": "3.1.3",
-      "from": "espree@3.1.3",
-      "resolved": "https://registry.npmjs.org/espree/-/espree-3.1.3.tgz",
+      "version": "3.1.4",
+      "from": "espree@3.1.4",
+      "resolved": "https://registry.npmjs.org/espree/-/espree-3.1.4.tgz",
       "dependencies": {
         "acorn": {
           "version": "3.1.0",
