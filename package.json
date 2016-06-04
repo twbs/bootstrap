@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "4.0.0-alpha.2-joblocal",
+  "version": "4.0.0-alpha.2-joblocal.0",
   "keywords": [
     "css",
     "sass",
@@ -13,7 +13,9 @@
   ],
   "homepage": "http://getbootstrap.com",
   "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)",
-  "contributors": ["Twitter, Inc."],
+  "contributors": [
+    "Twitter, Inc."
+  ],
   "scripts": {
     "change-version": "node grunt/change-version.js",
     "shrinkwrap": "npm shrinkwrap --dev && mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
