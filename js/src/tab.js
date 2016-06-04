@@ -77,10 +77,8 @@ const Tab = (($) => {
     // public
 
     show() {
-    let tablist = this._element.closest('.nav-tabs');
-    if (tablist.getAttribute('role') == 'tablist') {
-    $(tablist).find('.active').removeClass('active');
-    }
+      let tablist = Selector.UL;
+      $(tablist).find('.active').removeClass(ClassName.ACTIVE);
       if (this._element.parentNode &&
          (this._element.parentNode.nodeType === Node.ELEMENT_NODE) &&
          ($(this._element).hasClass(ClassName.ACTIVE))) {
@@ -196,13 +194,13 @@ const Tab = (($) => {
         }
 
         active.setAttribute('aria-expanded', false)
-      }         
-   for (let i = 0; i < element.parentNode.children.length; i++) {
-   let tab = element.parentNode.children[i];
-   if (tab.getAttribute('role') == 'tab') {
-   $(tab).removeClass(ClassName.ACTIVE);
-   }
-   }
+      }
+
+      for (let i = 0; i < element.parentNode.children.length; i++) {
+        let tab = element.parentNode.children[i];
+        if (tab.getAttribute('role') == 'tab') {
+        $(tab).removeClass(ClassName.ACTIVE);}
+      }
       $(element).addClass(ClassName.ACTIVE)
       element.setAttribute('aria-expanded', true)
 
