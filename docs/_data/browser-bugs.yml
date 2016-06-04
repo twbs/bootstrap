@@ -120,6 +120,16 @@
 
 -
   browser: >
+    Firefox
+  summary: >
+    Mouse sometimes not within element for purposes of `mouseenter`/`mouseleave` when it's within SVG elements
+  upstream_bug: >
+    Mozilla#1278000
+  origin: >
+    Bootstrap#19670
+
+-
+  browser: >
     Firefox (Windows)
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
