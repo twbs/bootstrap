@@ -238,9 +238,14 @@ const Carousel = (($) => {
       }
 
       switch (event.which) {
-        case ARROW_LEFT_KEYCODE: this.prev(); break
-        case ARROW_RIGHT_KEYCODE: this.next(); break
-        default: return
+        case ARROW_LEFT_KEYCODE:
+          this.prev()
+          break
+        case ARROW_RIGHT_KEYCODE:
+          this.next()
+          break
+        default:
+          return
       }
     }
 
