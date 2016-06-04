@@ -12,3 +12,8 @@
   code: ja
   description: Bootstrap 4 日本語リファレンス
   url: http://bootstrap4.jp/
+
+- name: Korean
+  code: ko
+  description: Bootstrap 4 한글문서
+  url: http://bootstrap4.kr/
