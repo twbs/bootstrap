@@ -18,14 +18,14 @@
       "resolved": "https://registry.npmjs.org/acorn/-/acorn-1.2.2.tgz"
     },
     "acorn-jsx": {
-      "version": "3.0.1",
-      "from": "acorn-jsx@>=3.0.0 <4.0.0",
-      "resolved": "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-3.0.1.tgz",
+      "version": "2.0.1",
+      "from": "acorn-jsx@>=2.0.1 <3.0.0",
+      "resolved": "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-2.0.1.tgz",
       "dependencies": {
         "acorn": {
-          "version": "3.1.0",
-          "from": "acorn@^3.0.4",
-          "resolved": "https://registry.npmjs.org/acorn/-/acorn-3.1.0.tgz"
+          "version": "2.7.0",
+          "from": "acorn@>=2.0.1 <3.0.0",
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-2.7.0.tgz"
         }
       }
     },
@@ -916,9 +916,9 @@
       "resolved": "https://registry.npmjs.org/escope/-/escope-3.6.0.tgz"
     },
     "eslint": {
-      "version": "2.4.0",
-      "from": "eslint@2.4.0",
-      "resolved": "https://registry.npmjs.org/eslint/-/eslint-2.4.0.tgz",
+      "version": "2.5.3",
+      "from": "eslint@2.5.3",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-2.5.3.tgz",
       "dependencies": {
         "argparse": {
           "version": "1.0.7",
@@ -931,14 +931,14 @@
           "resolved": "https://registry.npmjs.org/esprima/-/esprima-2.7.2.tgz"
         },
         "glob": {
-          "version": "6.0.4",
-          "from": "glob@>=6.0.4 <7.0.0",
-          "resolved": "https://registry.npmjs.org/glob/-/glob-6.0.4.tgz"
+          "version": "7.0.3",
+          "from": "glob@>=7.0.3 <8.0.0",
+          "resolved": "https://registry.npmjs.org/glob/-/glob-7.0.3.tgz"
         },
         "globals": {
-          "version": "8.18.0",
-          "from": "globals@>=8.11.0 <9.0.0",
-          "resolved": "https://registry.npmjs.org/globals/-/globals-8.18.0.tgz"
+          "version": "9.7.0",
+          "from": "globals@>=9.2.0 <10.0.0",
+          "resolved": "https://registry.npmjs.org/globals/-/globals-9.7.0.tgz"
         },
         "js-yaml": {
           "version": "3.6.1",
@@ -950,11 +950,6 @@
           "from": "lodash@>=4.0.0 <5.0.0",
           "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.13.1.tgz"
         },
-        "shelljs": {
-          "version": "0.5.3",
-          "from": "shelljs@>=0.5.3 <0.6.0",
-          "resolved": "https://registry.npmjs.org/shelljs/-/shelljs-0.5.3.tgz"
-        },
         "user-home": {
           "version": "2.0.0",
           "from": "user-home@>=2.0.0 <3.0.0",
@@ -963,9 +958,9 @@
       }
     },
     "espree": {
-      "version": "3.1.5",
-      "from": "espree@>=3.0.0 <4.0.0",
-      "resolved": "https://registry.npmjs.org/espree/-/espree-3.1.5.tgz",
+      "version": "3.1.3",
+      "from": "espree@3.1.3",
+      "resolved": "https://registry.npmjs.org/espree/-/espree-3.1.3.tgz",
       "dependencies": {
         "acorn": {
           "version": "3.1.0",
@@ -1734,9 +1729,14 @@
       "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.13.tgz"
     },
     "ignore": {
-      "version": "2.2.19",
-      "from": "ignore@>=2.2.19 <3.0.0",
-      "resolved": "https://registry.npmjs.org/ignore/-/ignore-2.2.19.tgz"
+      "version": "3.1.2",
+      "from": "ignore@>=3.0.10 <4.0.0",
+      "resolved": "https://registry.npmjs.org/ignore/-/ignore-3.1.2.tgz"
+    },
+    "imurmurhash": {
+      "version": "0.1.4",
+      "from": "imurmurhash@>=0.1.4 <0.2.0",
+      "resolved": "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz"
     },
     "in-publish": {
       "version": "2.0.0",

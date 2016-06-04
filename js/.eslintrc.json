@@ -24,6 +24,7 @@
         "no-dupe-args": "error",
         "no-dupe-keys": "error",
         "no-duplicate-case": "error",
+        "no-duplicate-imports": "error",
         "no-empty": "error",
         "no-empty-character-class": "error",
         "no-empty-pattern": "error",
@@ -43,6 +44,7 @@
         "no-sparse-arrays": "error",
         "no-unexpected-multiline": "error",
         "no-unreachable": "error",
+        "no-useless-escape": "error",
         "use-isnan": "error",
         "valid-jsdoc": "off",
         "valid-typeof": "error",
@@ -166,6 +168,7 @@
         "space-infix-ops": "error",
         "space-in-parens": "error",
         "space-unary-ops": "error",
+        "max-statements-per-line": ["error", { "max": 1 }],
 
         // es6
         "arrow-parens": "error",
