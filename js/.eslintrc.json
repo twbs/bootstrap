@@ -38,6 +38,7 @@
         "no-negated-in-lhs": "error",
         "no-obj-calls": "error",
         "no-regex-spaces": "error",
+        "no-restricted-globals": ["error", "event"],
         "no-self-assign": "error",
         "no-sparse-arrays": "error",
         "no-unexpected-multiline": "error",
