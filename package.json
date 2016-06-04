@@ -18,7 +18,9 @@
     "change-version": "node grunt/change-version.js",
     "shrinkwrap": "npm shrinkwrap --dev && mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
     "eslint": "eslint --config js/.eslintrc.json js/src",
-    "test": "npm run eslint && grunt test"
+    "test": "npm run eslint && grunt test",
+    "dist-n-push": "grunt dist && git add dist && git commit -m 'Version bump' && git push --follow-tags",
+    "release": "npm version prerelease && npm run dist-n-push"
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
