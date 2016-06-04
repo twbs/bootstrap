@@ -149,7 +149,7 @@
         "no-trailing-spaces": "error",
         "no-underscore-dangle": "off",
         "no-unneeded-ternary": "error",
-        "object-curly-spacing": [1, "always"],
+        "object-curly-spacing": ["warn", "always"],
         "one-var": "off",
         "operator-assignment": "error",
         "operator-linebreak": "off",
