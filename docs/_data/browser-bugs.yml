@@ -144,7 +144,7 @@
   summary: >
     Mouse sometimes not within element for purposes of `mouseenter`/`mouseleave` when it's within SVG elements
   upstream_bug: >
-    Mozilla#1278000
+    Mozilla#577785
   origin: >
     Bootstrap#19670
 
