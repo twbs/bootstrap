@@ -2641,6 +2641,11 @@
       "from": "postcss@>=5.0.19 <6.0.0",
       "resolved": "https://registry.npmjs.org/postcss/-/postcss-5.0.21.tgz"
     },
+    "postcss-flexbugs-fixes": {
+      "version": "2.0.0",
+      "from": "postcss-flexbugs-fixes@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/postcss-flexbugs-fixes/-/postcss-flexbugs-fixes-2.0.0.tgz"
+    },
     "postcss-value-parser": {
       "version": "3.3.0",
       "from": "postcss-value-parser@>=3.2.3 <4.0.0",

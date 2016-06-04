@@ -212,6 +212,7 @@ module.exports = function (grunt) {
           map: true,
           processors: [
             mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' }),
+            require('postcss-flexbugs-fixes')(),
             autoprefixer
           ]
         },
