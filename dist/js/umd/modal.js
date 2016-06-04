@@ -44,6 +44,7 @@
     var JQUERY_NO_CONFLICT = $.fn[NAME];
     var TRANSITION_DURATION = 300;
     var BACKDROP_TRANSITION_DURATION = 150;
+    var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
 
     var Default = {
       backdrop: true,
@@ -239,6 +240,7 @@
           }
 
           this._element.style.display = 'block';
+          this._element.removeAttribute('aria-hidden');
           this._element.scrollTop = 0;
 
           if (transition) {
@@ -287,7 +289,7 @@
 
           if (this._isShown && this._config.keyboard) {
             $(this._element).on(Event.KEYDOWN_DISMISS, function (event) {
-              if (event.which === 27) {
+              if (event.which === ESCAPE_KEYCODE) {
                 _this4.hide();
               }
             });
@@ -310,6 +312,7 @@
           var _this5 = this;
 
           this._element.style.display = 'none';
+          this._element.setAttribute('aria-hidden', 'true');
           this._showBackdrop(function () {
             $(document.body).removeClass(ClassName.OPEN);
             _this5._resetAdjustments();
@@ -415,7 +418,7 @@
           }
 
           if (this._isBodyOverflowing && !isModalOverflowing) {
-            this._element.style.paddingRight = this._scrollbarWidth + 'px~';
+            this._element.style.paddingRight = this._scrollbarWidth + 'px';
           }
         }
       }, {
