@@ -197,7 +197,7 @@ const Tab = (($) => {
       }
 
       for (let i = 0; i < element.parentNode.children.length; i++) {
-        let tab = element.parentNode.children[i];
+        let tab = element.parentNode.children[i]
         if (tab.getAttribute('role') === 'tab') {
           $(tab).removeClass(ClassName.ACTIVE)
         }
