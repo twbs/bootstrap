@@ -916,9 +916,9 @@
       "resolved": "https://registry.npmjs.org/escope/-/escope-3.6.0.tgz"
     },
     "eslint": {
-      "version": "2.10.2",
-      "from": "eslint@2.10.2",
-      "resolved": "https://registry.npmjs.org/eslint/-/eslint-2.10.2.tgz",
+      "version": "2.11.1",
+      "from": "eslint@2.11.1",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-2.11.1.tgz",
       "dependencies": {
         "argparse": {
           "version": "1.0.7",
