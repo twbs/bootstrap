@@ -136,6 +136,7 @@
         "keyword-spacing": "error",
         "linebreak-style": "error",
         "lines-around-comment": "off",
+        "max-statements-per-line": ["error", { "max": 1 }],
         "new-cap": "off",
         "newline-after-var": "off",
         "new-parens": "error",
@@ -152,6 +153,8 @@
         "no-trailing-spaces": "error",
         "no-underscore-dangle": "off",
         "no-unneeded-ternary": "error",
+        "no-unsafe-finally": "error",
+        "no-useless-computed-key": "error",
         "object-curly-spacing": ["warn", "always"],
         "one-var": "off",
         "operator-assignment": "error",
@@ -168,7 +171,6 @@
         "space-infix-ops": "error",
         "space-in-parens": "error",
         "space-unary-ops": "error",
-        "max-statements-per-line": ["error", { "max": 1 }],
 
         // es6
         "arrow-parens": "error",
