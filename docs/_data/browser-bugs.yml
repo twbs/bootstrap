@@ -80,6 +80,16 @@
 
 -
   browser: >
+    Microsoft Edge
+  summary: >
+    Hovering over descendant SVG element fires `mouseleave` event at ancestor
+  upstream_bug: >
+    Edge#7787318
+  origin: >
+    Bootstrap#19670
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
