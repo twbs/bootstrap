@@ -43,6 +43,8 @@
     var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $.fn[NAME];
     var TRANSITION_DURATION = 600;
+    var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
+    var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
 
     var Default = {
       interval: 5000,
@@ -258,10 +260,12 @@
           }
 
           switch (event.which) {
-            case 37:
-              this.prev();break;
-            case 39:
-              this.next();break;
+            case ARROW_LEFT_KEYCODE:
+              this.prev();
+              break;
+            case ARROW_RIGHT_KEYCODE:
+              this.next();
+              break;
             default:
               return;
           }
