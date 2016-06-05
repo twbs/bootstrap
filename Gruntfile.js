@@ -327,9 +327,6 @@ module.exports = function (grunt) {
     },
 
     exec: {
-      npmUpdate: {
-        command: 'npm update'
-      }
     },
 
     buildcontrol: {
