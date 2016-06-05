@@ -107,27 +107,6 @@ module.exports = function (grunt) {
       }
     },
 
-    jscs: {
-      options: {
-        config: 'js/.jscsrc'
-      },
-      grunt: {
-        src: ['Gruntfile.js', 'grunt/*.js']
-      },
-      core: {
-        src: 'js/src/*.js'
-      },
-      test: {
-        src: 'js/tests/unit/*.js'
-      },
-      assets: {
-        options: {
-          requireCamelCaseOrUpperCaseIdentifiers: null
-        },
-        src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
-      }
-    },
-
     stamp: {
       options: {
         banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>\n+function ($) {\n',
@@ -321,7 +300,7 @@ module.exports = function (grunt) {
 
     watch: {
       src: {
-        files: '<%= jscs.core.src %>',
+        files: '<%= concat.bootstrap.src %>',
         tasks: ['babel:dev']
       },
       sass: {
@@ -412,7 +391,7 @@ module.exports = function (grunt) {
   if (runSubset('core') &&
     // Skip core tests if this is a Savage build
     process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {
-    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'test-scss', 'test-js', 'docs']);
+    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'test-scss', 'qunit', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&
@@ -432,7 +411,6 @@ module.exports = function (grunt) {
     testSubtasks.push('saucelabs-qunit');
   }
   grunt.registerTask('test', testSubtasks);
-  grunt.registerTask('test-js', ['jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
@@ -469,8 +447,7 @@ module.exports = function (grunt) {
   grunt.registerTask('docs-css', ['postcss:docs', 'postcss:examples', 'cssmin:docs']);
   grunt.registerTask('lint-docs-css', ['scsslint:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
-  grunt.registerTask('lint-docs-js', ['jscs:assets']);
-  grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs']);
+  grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs']);
   grunt.registerTask('docs-github', ['jekyll:github']);
 
   grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress']);

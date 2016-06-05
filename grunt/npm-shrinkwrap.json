@@ -1492,18 +1492,6 @@
       "from": "grunt-jekyll@>=0.4.2 <0.5.0",
       "resolved": "https://registry.npmjs.org/grunt-jekyll/-/grunt-jekyll-0.4.4.tgz"
     },
-    "grunt-jscs": {
-      "version": "2.8.0",
-      "from": "grunt-jscs@>=2.8.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/grunt-jscs/-/grunt-jscs-2.8.0.tgz",
-      "dependencies": {
-        "lodash": {
-          "version": "4.6.1",
-          "from": "lodash@>=4.6.1 <4.7.0",
-          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.6.1.tgz"
-        }
-      }
-    },
     "grunt-legacy-log": {
       "version": "0.1.3",
       "from": "grunt-legacy-log@>=0.1.0 <0.2.0",
@@ -1936,7 +1924,7 @@
         },
         "esprima": {
           "version": "2.7.2",
-          "from": "esprima@~2.7.0",
+          "from": "esprima@>=2.7.0 <2.8.0",
           "resolved": "https://registry.npmjs.org/esprima/-/esprima-2.7.2.tgz"
         },
         "js-yaml": {
@@ -3627,7 +3615,7 @@
     },
     "vow": {
       "version": "0.4.12",
-      "from": "vow@>=0.4.1 <0.5.0",
+      "from": "vow@>=0.4.8 <0.5.0",
       "resolved": "https://registry.npmjs.org/vow/-/vow-0.4.12.tgz"
     },
     "vow-fs": {
@@ -3674,7 +3662,7 @@
       "dependencies": {
         "async": {
           "version": "0.2.10",
-          "from": "async@>=0.2.0 <0.3.0",
+          "from": "async@0.2.x",
           "resolved": "https://registry.npmjs.org/async/-/async-0.2.10.tgz"
         },
         "pkginfo": {
