@@ -929,6 +929,11 @@
           "version": "9.7.0",
           "from": "globals@>=9.2.0 <10.0.0",
           "resolved": "https://registry.npmjs.org/globals/-/globals-9.7.0.tgz"
+        },
+        "shelljs": {
+          "version": "0.6.0",
+          "from": "shelljs@>=0.6.0 <0.7.0",
+          "resolved": "https://registry.npmjs.org/shelljs/-/shelljs-0.6.0.tgz"
         }
       }
     },
@@ -1715,6 +1720,11 @@
       "version": "0.12.0",
       "from": "inquirer@>=0.12.0 <0.13.0",
       "resolved": "https://registry.npmjs.org/inquirer/-/inquirer-0.12.0.tgz"
+    },
+    "interpret": {
+      "version": "1.0.1",
+      "from": "interpret@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/interpret/-/interpret-1.0.1.tgz"
     },
     "invariant": {
       "version": "2.2.1",
@@ -2628,6 +2638,11 @@
         }
       }
     },
+    "rechoir": {
+      "version": "0.6.2",
+      "from": "rechoir@>=0.6.2 <0.7.0",
+      "resolved": "https://registry.npmjs.org/rechoir/-/rechoir-0.6.2.tgz"
+    },
     "redent": {
       "version": "1.0.0",
       "from": "redent@>=1.0.0 <2.0.0",
@@ -3089,9 +3104,9 @@
       "resolved": "https://registry.npmjs.org/shebang-regex/-/shebang-regex-1.0.0.tgz"
     },
     "shelljs": {
-      "version": "0.6.0",
-      "from": "shelljs@>=0.6.0 <0.7.0",
-      "resolved": "https://registry.npmjs.org/shelljs/-/shelljs-0.6.0.tgz"
+      "version": "0.7.0",
+      "from": "shelljs@>=0.7.0 <0.8.0",
+      "resolved": "https://registry.npmjs.org/shelljs/-/shelljs-0.7.0.tgz"
     },
     "sigmund": {
       "version": "1.0.1",
