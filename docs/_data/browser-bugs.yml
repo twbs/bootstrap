@@ -190,16 +190,6 @@
 
 -
   browser: >
-    Chrome (OS X)
-  summary: >
-    Caps Lock indicator not shown in `<input type="password">` with `display: block`
-  upstream_bug: >
-    Chromium#460200
-  origin: >
-    Bootstrap#15832
-
--
-  browser: >
     Chrome
   summary: >
     CSS infinite linear animation with alpha transparency leaks memory.
