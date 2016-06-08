@@ -240,6 +240,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    Don't make `:hover` sticky on touch-friendly webpages
+  upstream_bug: >
+    Chromium#370155
+  origin: >
+    Bootstrap#12832
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
@@ -429,6 +439,16 @@
     WebKit#158342
   origin: >
     Bootstrap#17695
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Don't make `:hover` sticky on touch-friendly webpages
+  upstream_bug: >
+    WebKit#158517
+  origin: >
+    Bootstrap#12832
 
 -
   browser: >
