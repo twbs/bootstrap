@@ -93,6 +93,7 @@ const Modal = (($) => {
       this._scrollbarWidth      = 0
       this._resizeHandler       = null
       this._focusHandler        = null
+      this._isDisposed          = false
 
       this._showTimeout         = null
       this._hideTimeout         = null
@@ -125,7 +126,7 @@ const Modal = (($) => {
 
       $(this._element).trigger(showEvent)
 
-      if (this._isShown || showEvent.isDefaultPrevented()) {
+      if (this._isDisposed || this._isShown || showEvent.isDefaultPrevented()) {
         return
       }
 
@@ -209,6 +210,7 @@ const Modal = (($) => {
 
     dispose() {
       this._element.style.display = 'none'
+      this._isDisposed = true
 
       let refs = this._addRefcount(this._hasRefcountItem ? -1 : 0)
       if (refs === 0) {

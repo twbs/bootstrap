@@ -13,7 +13,13 @@ $(function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapModal = $.fn.modal.noConflict()
     },
-    afterEach: function () {
+    afterEach: function (assert) {
+      if ($(document.body).data('bs.modal.refcount') !== undefined) {
+        throw new Error('bs.modal.refcount must not be set')  
+      }
+      if ($(document.body).hasClass('modal-open')) {
+        throw new Error('body must not have .modal-open')  
+      }
       $.fn.modal = $.fn.bootstrapModal
       delete $.fn.bootstrapModal
     }
@@ -34,6 +40,7 @@ $(function () {
     catch (err) {
       assert.strictEqual(err.message, 'No method named "noMethod"')
     }
+    $el.bootstrapModal('dispose')
   })
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
@@ -42,6 +49,7 @@ $(function () {
     var $modal = $el.bootstrapModal()
     assert.ok($modal instanceof $, 'returns jquery collection')
     assert.strictEqual($modal[0], $el[0], 'collection contains element')
+    $el.bootstrapModal('dispose')
   })
 
   QUnit.test('should expose defaults var for settings', function (assert) {
@@ -56,6 +64,7 @@ $(function () {
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
+        $(this).bootstrapModal("hide")
         done()
       })
       .bootstrapModal('show')
@@ -68,6 +77,7 @@ $(function () {
     $('<div id="modal-test"/>')
       .on('show.bs.modal', function () {
         assert.ok(true, 'show event fired')
+        $(this).bootstrapModal('dispose') 
         done()
       })
       .bootstrapModal('show')
@@ -207,7 +217,7 @@ $(function () {
 
         setTimeout(function () {
           assert.ok($div.is(':visible'), 'modal still visible')
-          $div.remove()
+          $div.bootstrapModal('dispose')
           done()
         }, 0)
       })
@@ -403,4 +413,46 @@ $(function () {
       })
       .bootstrapModal('show')
   })
+
+  QUnit.test('should remove global resources when disposed', function (assert) {
+    assert.expect(4)
+    var done = assert.async()
+    var $body = $(document.body)
+    
+    $('<div id="modal-test"/>')
+      .on('shown.bs.modal', function () {
+        assert.strictEqual($body.data('bs.modal.refcount'), 1, 'bs.modal.refcount must be 1')
+        assert.ok($body.hasClass('modal-open'), 'modal-open class must be set')
+        $(this).bootstrapModal('dispose')
+        assert.strictEqual($body.data('bs.modal.refcount'), undefined, 'bs.modal.refcount not be set')
+        assert.notOk($body.hasClass('modal-open'), 'modal-open class must not be set')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+  
+  QUnit.test('should add refcount on open and remove it after closing', function (assert) {
+    assert.expect(4)
+    var done = assert.async()
+    var $body = $(document.body)
+    
+    var desiredRefcount = 0
+    
+    $('<div id="modal-test"/><div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        desiredRefcount--
+        assert.strictEqual($body.data('bs.modal.refcount'), desiredRefcount || undefined,
+                           'bs.modal.refcount must be ' + desiredRefcount + ' after hiding modal')
+        if (desiredRefcount === 0) {
+            done()
+        }
+      })
+      .on('shown.bs.modal', function () {
+        desiredRefcount++
+        assert.strictEqual($body.data('bs.modal.refcount'), desiredRefcount,
+                           'bs.modal.refcount must be ' + desiredRefcount + ' after showing modal')
+      })
+      .bootstrapModal('show').bootstrapModal('hide')
+  })
+  
 })
