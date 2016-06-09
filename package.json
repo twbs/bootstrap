@@ -80,22 +80,16 @@
   ],
   "jspm": {
     "main": "js/bootstrap",
-    "ignore": [
-      "dist/js/npm"
-    ],
-    "directories": {
-      "lib": "dist"
-    },
     "shim": {
       "js/bootstrap": {
-        "deps": [
-          "jquery"
-        ],
+        "deps": "jquery",
         "exports": "$"
       }
     },
-    "dependencies": {
-      "jquery": "*"
-    }
+    "files": [
+      "css",
+      "fonts",
+      "js"
+    ]
   }
 }
