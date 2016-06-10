@@ -23,7 +23,6 @@ module.exports = function (grunt) {
   var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
   var autoprefixer = require('autoprefixer')(autoprefixerSettings);
 
-  var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
 
   Object.keys(configBridge.paths).forEach(function (key) {
@@ -85,24 +84,6 @@ module.exports = function (grunt) {
         },
         files: {
           '<%= concat.bootstrap.dest %>' : '<%= concat.bootstrap.dest %>'
-        }
-      },
-      umd: {
-        options: {
-          modules: 'umd'
-        },
-        files: {
-          'dist/js/umd/util.js'      : 'js/src/util.js',
-          'dist/js/umd/alert.js'     : 'js/src/alert.js',
-          'dist/js/umd/button.js'    : 'js/src/button.js',
-          'dist/js/umd/carousel.js'  : 'js/src/carousel.js',
-          'dist/js/umd/collapse.js'  : 'js/src/collapse.js',
-          'dist/js/umd/dropdown.js'  : 'js/src/dropdown.js',
-          'dist/js/umd/modal.js'     : 'js/src/modal.js',
-          'dist/js/umd/scrollspy.js' : 'js/src/scrollspy.js',
-          'dist/js/umd/tab.js'       : 'js/src/tab.js',
-          'dist/js/umd/tooltip.js'   : 'js/src/tooltip.js',
-          'dist/js/umd/popover.js'   : 'js/src/popover.js'
         }
       }
     },
@@ -410,7 +391,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'uglify:core', 'commonjs']);
+  grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'uglify:core']);
 
   grunt.registerTask('test-scss', ['scsslint:core']);
 
@@ -429,16 +410,6 @@ module.exports = function (grunt) {
 
   // Default task.
   grunt.registerTask('default', ['clean:dist', 'test']);
-
-  grunt.registerTask('commonjs', ['babel:umd', 'npm-js']);
-
-  grunt.registerTask('npm-js', 'Generate npm-js entrypoint module in dist dir.', function () {
-    var srcFiles = Object.keys(grunt.config.get('babel.umd.files')).map(function (filename) {
-      return './' + path.join('umd', path.basename(filename))
-    })
-    var destFilepath = 'dist/js/npm.js';
-    generateCommonJSModule(grunt, srcFiles, destFilepath);
-  });
 
   // Docs task.
   grunt.registerTask('docs-css', ['postcss:docs', 'postcss:examples', 'cssmin:docs']);
