@@ -243,12 +243,6 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
     <input class="form-control" type="time" value="13:45:00" id="example-time-input">
   </div>
 </div>
-<div class="form-group row">
-  <label for="example-color-input" class="col-xs-2 col-form-label">Color</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="color" value="#563d7c" id="example-color-input">
-  </div>
-</div>
 {% endexample %}
 
 ## Form layouts
@@ -888,6 +882,20 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 {% endexample %}
 
 Custom selects degrade nicely in IE9, receiving only a handful of overrides to remove the custom `background-image`. **Multiple selects (e.g., `<select multiple>`) are not currently supported.**
+
+### Color picker
+
+{% callout danger %}
+#### Internet Explorer compatibility
+
+While Bootstrap supports styling `<input type="color">` elements, Internet Explorer Edge 13 and below don’t support. Use custom JavaScript to handle it in these browsers.
+{% endcallout %}
+
+`<input type="color">` element need only a custom class, `.custom-color` to trigger the custom styles.
+
+{% example html %}
+<input class="custom-color" type="color" value="#563d7c" id="color">
+{% endexample %}
 
 ### File browser
 
