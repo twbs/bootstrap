@@ -57,6 +57,10 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
     <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
     <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </div>
+  <div class="form-group">
+    <label for="exampleInputColor">File color</label>
+    <input type="color" class="form-control-color" value="#563d7c" id="exampleInputColor">
+  </div>
   <fieldset class="form-group">
     <legend>Radio buttons</legend>
     <div class="radio">
@@ -899,7 +903,7 @@ Custom selects degrade nicely in IE9, receiving only a handful of overrides to r
 {% callout danger %}
 #### Browser compatibility
 
-While Bootstrap supports styling `<input type="color">` elements, Internet Explorer Edge 13 and below don’t support. Use custom JavaScript to handle it in these browsers.
+For details, see [Can I Use](http://caniuse.com/#feat=input-color){:target="_blank"}
 {% endcallout %}
 
 `<input type="color">` element need only a custom class, `.custom-color` to trigger the custom styles.
