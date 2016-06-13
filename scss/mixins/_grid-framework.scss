@@ -16,9 +16,11 @@
           max-width: 100%;
           padding-right: ($gutter / 2);
           padding-left:  ($gutter / 2);
-        }
-        .col-#{$breakpoint}:empty {
-          min-height: 1px;
+
+          // Prevent columns from collapsing when empty
+          &:empty {
+            min-height: 1px;
+          }
         }
       }
 
