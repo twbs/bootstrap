@@ -270,7 +270,8 @@
 
 .custom-color {
   display: block;
-  width: $input-height;
+  width: auto;
+  min-width: $input-height;
   height: $input-height;
   font-size: $font-size-base;
   line-height: $input-line-height;
