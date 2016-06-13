@@ -224,11 +224,7 @@ TODO: audit classes in v3 that aren't present in v4
 
 ### Responsive utilities
 
-The following variables have been removed in v4.0.0. Use the `media-breakpoint-up()`, `media-breakpoint-down()`, or `media-breakpoint-only()` Sass mixins or the `$grid-breakpoints` Sass map instead of:
-
-* `@screen-phone`, `@screen-tablet`, `@screen-desktop`, `@screen-lg-desktop`.
-* `@screen-xs`, `@screen-sm`, `@screen-md`, `@screen-lg`.
-* `@screen-xs-min`, `@screen-xs-max`, `@screen-sm-min`, `@screen-sm-max`, `@screen-md-min`, `@screen-md-max`, `@screen-lg-min`, `@screen-lg-max`
+All `@screen-` variables have been removed in v4.0.0. Use the `media-breakpoint-up()`, `media-breakpoint-down()`, or `media-breakpoint-only()` Sass mixins or the `$grid-breakpoints` Sass map instead.
 
 The responsive utility classes have also been overhauled.
 
