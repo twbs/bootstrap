@@ -19,7 +19,7 @@ Flexbox support is available for a number of Bootstrap's components:
 - Input groups, which move from `display: table;` to `display: flex;`.
 - The media component moves from `display: table;` and a number of hacky styles to a simple `display: flex;`.
 
-Vendor prefixes are provided in our compiled CSS with Autoprefixer via Grunt.
+Vendor prefixes are provided in our compiled CSS with [Autoprefixer](https://github.com/postcss/autoprefixer) via Grunt. Some bugs in IE10-11's Flexbox implementation are worked around via [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes).
 
 ## Why flexbox?
 

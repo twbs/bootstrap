@@ -70,6 +70,26 @@
 
 -
   browser: >
+    Microsoft Edge
+  summary: >
+    Implement the `:dir()` pseudo-class from Selectors Level 4
+  upstream_bug: >
+    [Edge UserVoice idea #12299532](https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/suggestions/12299532--dir)
+  origin: >
+    Bootstrap#19984
+
+-
+  browser: >
+    Microsoft Edge
+  summary: >
+    Hovering over descendant SVG element fires `mouseleave` event at ancestor
+  upstream_bug: >
+    Edge#7787318
+  origin: >
+    Bootstrap#19670
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
@@ -107,6 +127,26 @@
     Mozilla#1264125
   origin: >
     Mozilla#1182856
+
+-
+  browser: >
+    Firefox
+  summary: >
+    Wide floated table doesn't wrap onto new line
+  upstream_bug: >
+    Mozilla#1277782
+  origin: >
+    Bootstrap#19839
+
+-
+  browser: >
+    Firefox
+  summary: >
+    Mouse sometimes not within element for purposes of `mouseenter`/`mouseleave` when it's within SVG elements
+  upstream_bug: >
+    Mozilla#577785
+  origin: >
+    Bootstrap#19670
 
 -
   browser: >
@@ -150,16 +190,6 @@
 
 -
   browser: >
-    Chrome (OS X)
-  summary: >
-    Caps Lock indicator not shown in `<input type="password">` with `display: block`
-  upstream_bug: >
-    Chromium#460200
-  origin: >
-    Bootstrap#15832
-
--
-  browser: >
     Chrome
   summary: >
     CSS infinite linear animation with alpha transparency leaks memory.
@@ -200,6 +230,26 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    Implement the `:dir()` pseudo-class from Selectors Level 4
+  upstream_bug: >
+    Chromium#576815
+  origin: >
+    Bootstrap#19984
+
+-
+  browser: >
+    Chrome
+  summary: >
+    Don't make `:hover` sticky on touch-friendly webpages
+  upstream_bug: >
+    Chromium#370155
+  origin: >
+    Bootstrap#12832
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
@@ -217,6 +267,26 @@
     WebKit#156684
   origin: >
     Bootstrap#17403
+
+-
+  browser: >
+    Safari
+  summary: >
+    `:hover` CSS pseudo-class sometimes keeps matching ever after mouse has left the element
+  upstream_bug: >
+    WebKit#158340
+  origin: >
+    Bootstrap#20012
+
+-
+  browser: >
+    Safari
+  summary: >
+    Implement the `:dir()` pseudo-class from Selectors Level 4
+  upstream_bug: >
+    WebKit#64861
+  origin: >
+    Bootstrap#19984
 
 -
   browser: >
@@ -359,6 +429,26 @@
     WebKit#158276
   origin: >
     Bootstrap#19927
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Modal with `-webkit-overflow-scrolling: touch` doesn't become scrollable after added text makes it taller
+  upstream_bug: >
+    WebKit#158342
+  origin: >
+    Bootstrap#17695
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Don't make `:hover` sticky on touch-friendly webpages
+  upstream_bug: >
+    WebKit#158517
+  origin: >
+    Bootstrap#12832
 
 -
   browser: >

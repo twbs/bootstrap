@@ -40,7 +40,7 @@ const Util = (($) => {
       delegateType: transition.end,
       handle(event) {
         if ($(event.target).is(this)) {
-          return event.handleObj.handler.apply(this, arguments)
+          return event.handleObj.handler.apply(this, arguments) // eslint-disable-line prefer-rest-params
         }
         return undefined
       }
