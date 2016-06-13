@@ -117,7 +117,7 @@ Below is a complete list of the specific form controls supported by Bootstrap an
         Textual inputs
       </td>
       <td>
-        {% markdown %}`text`, `password`, `datetime-local`, `date`, `month`, `time`, `week`, `number`, `email`, `url`, `search`, `tel`, `color`{% endmarkdown %}
+        {% markdown %}`text`, `password`, `datetime-local`, `date`, `month`, `time`, `week`, `number`, `email`, `url`, `search`, `tel`{% endmarkdown %}
       </td>
     </tr>
     <tr>
@@ -145,6 +145,17 @@ Below is a complete list of the specific form controls supported by Bootstrap an
       </td>
       <td>
         {% markdown %}`file`{% endmarkdown %}
+      </td>
+    </tr>
+    <tr>
+      <td class="text-nowrap">
+        {% markdown %}`.form-control-color`{% endmarkdown %}
+      </td>
+      <td>
+        Color inputs
+      </td>
+      <td>
+        {% markdown %}`color`{% endmarkdown %}
       </td>
     </tr>
     <tr>
@@ -886,7 +897,7 @@ Custom selects degrade nicely in IE9, receiving only a handful of overrides to r
 ### Color picker
 
 {% callout danger %}
-#### Internet Explorer compatibility
+#### Browser compatibility
 
 While Bootstrap supports styling `<input type="color">` elements, Internet Explorer Edge 13 and below don’t support. Use custom JavaScript to handle it in these browsers.
 {% endcallout %}
