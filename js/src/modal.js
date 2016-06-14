@@ -131,7 +131,15 @@ const Modal = (($) => {
       }
 
       this._isShown = true
-
+      
+      // When the open class does not exist and the refcount is 1 is an invalid
+      // state, caused by manual removal of the modal open class. It's safe to fix
+      // the refcount in this case. (but not if the refcount is > 1, that'll prevent
+      // multiple simultanious modals from working)
+      if (!$(document.body).hasClass(ClassName.OPEN) && this._addRefcount(0) === 1) {
+          this._addRefcount(-1)
+      }
+      
       if (!this._hasRefcountItem) {
         this._hasRefcountItem = true
         let refCount = this._addRefcount(1)
@@ -243,7 +251,7 @@ const Modal = (($) => {
     // private
 
     _addRefcount(increment) {
-      let refCount = (Number($(document.body).data(REFCOUNT_KEY)) || 0) + increment
+      let refCount = Math.max(0, (Number($(document.body).data(REFCOUNT_KEY)) || 0) + increment)
       $(document.body).data(REFCOUNT_KEY, refCount)
       if (refCount === 0) {
         $(document.body).removeData(REFCOUNT_KEY)

@@ -15,10 +15,10 @@ $(function () {
     },
     afterEach: function (assert) {
       if ($(document.body).data('bs.modal.refcount') !== undefined) {
-        throw new Error('bs.modal.refcount must not be set')  
+        throw new Error('bs.modal.refcount must not be set')
       }
       if ($(document.body).hasClass('modal-open')) {
-        throw new Error('body must not have .modal-open')  
+        throw new Error('body must not have .modal-open')
       }
       $.fn.modal = $.fn.bootstrapModal
       delete $.fn.bootstrapModal
