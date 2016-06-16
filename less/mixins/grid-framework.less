@@ -2,7 +2,28 @@
 //
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `@grid-columns`.
-
+.make-grid-even-columns() {
+  // Common styles for all sizes of grid columns, widths 1-10
+  .col-even(@index) { // initial
+    @item: ~".col-even-xs-@{index}, .col-even-sm-@{index}, .col-even-md-@{index}, .col-even-lg-@{index}";
+    .col-even((@index + 2), @item);
+  }
+  .col-even(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
+    @item:  ~".col-even-xs-@{index}, .col-even-sm-@{index}, .col-even-md-@{index}, .col-even-lg-@{index}";
+    .col-even((@index + 2), ~"@{list}, @{item}");
+  }
+  .col-even(@index, @list) when (@index > @grid-columns) { // terminal
+    @{list} {
+      position: relative;
+      // Prevent columns from collapsing when empty
+      min-height: 1px;
+      // Inner gutter via padding
+      padding-left:  ceil((@grid-gutter-width / 2));
+      padding-right: floor((@grid-gutter-width / 2));
+    }
+  }
+  .col(2); // kickstart it
+}
 .make-grid-columns() {
   // Common styles for all sizes of grid columns, widths 1-12
   .col(@index) { // initial
