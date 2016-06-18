@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v4.0.0-alpha.2-joblocal.0 (http://getbootstrap.com)
+ * Bootstrap v4.0.0-alpha.2-joblocal.1 (http://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
