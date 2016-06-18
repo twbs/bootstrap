@@ -30,6 +30,8 @@
 
     var transition = false;
 
+    var MAX_UID = 1000000;
+
     var TransitionEndEvent = {
       WebkitTransition: 'webkitTransitionEnd',
       MozTransition: 'transitionend',
@@ -54,6 +56,7 @@
           if ($(event.target).is(this)) {
             return event.handleObj.handler.apply(this, arguments);
           }
+          return undefined;
         }
       };
     }
@@ -115,7 +118,7 @@
       getUID: function getUID(prefix) {
         do {
           /* eslint-disable no-bitwise */
-          prefix += ~ ~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
+          prefix += ~ ~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
           /* eslint-enable no-bitwise */
         } while (document.getElementById(prefix));
         return prefix;
