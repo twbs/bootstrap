@@ -2,3 +2,25 @@
 //
 // Copy variables from `_variables.scss` to this file to override default values
 // without modifying source files.
+
+// Colors
+//
+// Grayscale and brand colors for use across Bootstrap.
+
+$gray-dark:                 #323A45;
+
+// @see http://www.colourlovers.com/palette/1416354/GiorgosPalette1
+$brand-primary:             #009999;
+$brand-success:             #97C133;
+$brand-info:                #57D9C7;
+$brand-warning:             #F2A900;
+$brand-danger:              #E55C00;
+
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-flex:               true;
+$enable-shadows:            true;
+$enable-transitions:        true;
