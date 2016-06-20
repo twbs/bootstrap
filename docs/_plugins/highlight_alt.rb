@@ -30,11 +30,11 @@ module Jekyll
           @options[:linenos] = "inline" if @options.key?(:linenos) and @options[:linenos] == true
         else
           raise SyntaxError.new <<-eos
-Syntax Error in tag 'highlight' while parsing the following markup:
+Syntax Error in tag 'example' while parsing the following markup:
 
   #{markup}
 
-Valid syntax: highlight <lang> [linenos]
+Valid syntax: example <lang>
 eos
         end
       end
