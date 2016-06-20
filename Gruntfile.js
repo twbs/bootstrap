@@ -19,7 +19,6 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var isTravis = require('is-travis');
-  var mq4HoverShim = require('mq4-hover-shim');
   var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
   var autoprefixer = require('autoprefixer')(autoprefixerSettings);
 
@@ -171,7 +170,6 @@ module.exports = function (grunt) {
         options: {
           map: true,
           processors: [
-            mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' }),
             require('postcss-flexbugs-fixes')(),
             autoprefixer
           ]
