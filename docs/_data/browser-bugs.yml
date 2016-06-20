@@ -150,6 +150,16 @@
 
 -
   browser: >
+    Firefox
+  summary: >
+    Implement the `of <selector-list>` clause of the `:nth-child()` pseudo-class
+  upstream_bug: >
+    Mozilla#854148
+  origin: >
+    Bootstrap#20143
+
+-
+  browser: >
     Firefox (Windows)
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
@@ -247,6 +257,16 @@
     Chromium#370155
   origin: >
     Bootstrap#12832
+
+-
+  browser: >
+    Chrome
+  summary: >
+    Implement the `of <selector-list>` clause of the `:nth-child()` pseudo-class
+  upstream_bug: >
+    Chromium#304163
+  origin: >
+    Bootstrap#20143
 
 -
   browser: >
