@@ -1,14 +1,15 @@
 @mixin hover {
-  @if $enable-hover-media-query {
-    // See Media Queries Level 4: http://drafts.csswg.org/mediaqueries/#hover
-    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
-    @media (hover: hover) {
-      &:hover { @content }
-    }
-  }
-  @else {
+  // TODO: re-enable along with mq4-hover-shim
+//  @if $enable-hover-media-query {
+//    // See Media Queries Level 4: http://drafts.csswg.org/mediaqueries/#hover
+//    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
+//    @media (hover: hover) {
+//      &:hover { @content }
+//    }
+//  }
+//  @else {
     &:hover { @content }
-  }
+//  }
 }
 
 @mixin hover-focus {
