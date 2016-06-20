@@ -70,7 +70,7 @@
     "time-grunt": "^1.2.1"
   },
   "engines": {
-    "node": ">=0.10.1"
+    "node": ">=4"
   },
   "files": [
     "dist",
