@@ -19,8 +19,6 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var isTravis = require('is-travis');
-  var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
-  var autoprefixer = require('autoprefixer')(autoprefixerSettings);
 
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
 
@@ -165,38 +163,6 @@ module.exports = function (grunt) {
       }
     },
 
-    postcss: {
-      core: {
-        options: {
-          map: true,
-          processors: [
-            require('postcss-flexbugs-fixes')(),
-            autoprefixer
-          ]
-        },
-        src: 'dist/css/*.css'
-      },
-      docs: {
-        options: {
-          processors: [
-            autoprefixer
-          ]
-        },
-        src: 'docs/assets/css/docs.min.css'
-      },
-      examples: {
-        options: {
-          processors: [
-            autoprefixer
-          ]
-        },
-        expand: true,
-        cwd: 'docs/examples/',
-        src: ['**/*.css'],
-        dest: 'docs/examples/'
-      }
-    },
-
     cssmin: {
       options: {
         // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
@@ -306,6 +272,12 @@ module.exports = function (grunt) {
     },
 
     exec: {
+      postcss: {
+        command: 'npm run postcss'
+      },
+      'postcss-docs': {
+        command: 'npm run postcss-docs'
+      }
     },
 
     buildcontrol: {
@@ -401,7 +373,7 @@ module.exports = function (grunt) {
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
   grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
 
-  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'cssmin:core', 'cssmin:docs']);
+  grunt.registerTask('dist-css', ['sass-compile', 'exec:postcss', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
@@ -410,7 +382,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['clean:dist', 'test']);
 
   // Docs task.
-  grunt.registerTask('docs-css', ['postcss:docs', 'postcss:examples', 'cssmin:docs']);
+  grunt.registerTask('docs-css', ['cssmin:docs', 'exec:postcss-docs']);
   grunt.registerTask('lint-docs-css', ['scsslint:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs']);
