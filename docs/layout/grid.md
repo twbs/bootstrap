@@ -474,3 +474,18 @@ $container-max-widths: (
 {% endhighlight %}
 
 Save your changes and recompile to have a brand new set of predefined grid classes for column widths, offsets, pushes, and pulls. Responsive visibility utilities will also be updated to use the custom breakpoints.
+
+### Example: Mixing percentages and specific widths
+
+It's also possible to mix relative and specific widths for your `$container-max-widths`, this way you can have a specific width for one breakpoint and a relative width for another.
+
+{% highlight scss %}
+$container-max-widths: (
+        sm: 100%,
+        md: 100%,
+        lg: 940px,
+        xl: 1140px
+);
+{% endhighlight %}
+
+In this specific example the width of the container is 100% when the `$grid-breakpoints` sm or md are used, while for larger breakpoints, the website is still limited to a specific width.
