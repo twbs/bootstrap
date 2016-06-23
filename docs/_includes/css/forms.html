@@ -327,6 +327,125 @@
 </div>
 {% endhighlight %}
 
+  <h4>Custom checkboxes and radios</h4>
+  <p>We provide styles for custom checkbox and radio replacements.  These are
+      styles only, for an implementation in Angular 1.x refer to our
+      styleguide-components repository.</p>
+  <div class="bs-example" data-example-id="custom-checkbox-radios">
+    <div class="checkbox">
+      <label>
+        <button class="tw-checkbox-button checked">
+          <span class="tw-checkbox-check glyphicon glyphicon-ok"></span>
+        </button>
+        Custom checkbox
+      </label>
+    </div>
+  </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">Checkbox classes &amp; styles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>.tw-checkbox-button</code></td>
+                <td><button class="tw-checkbox-button"><span class="tw-checkbox-check glyphicon glyphicon-ok"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-checkbox-button:focus</code></td>
+                <td><button class="tw-checkbox-button focus"><span class="tw-checkbox-check glyphicon glyphicon-ok"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-checkbox-button.checked</code></td>
+                <td><button class="tw-checkbox-button checked" ><span class="tw-checkbox-check glyphicon glyphicon-ok"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-checkbox-button[disabled]</code></td>
+                <td><button class="tw-checkbox-button" disabled><span class="tw-checkbox-check glyphicon glyphicon-ok"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-checkbox-button.checked[disabled]</code></td>
+                <td><button class="tw-checkbox-button checked" disabled><span class="tw-checkbox-check glyphicon glyphicon-ok"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-checkbox-button.has-error</code></td>
+                <td><button class="tw-checkbox-button has-error"><span class="tw-checkbox-check glyphicon glyphicon-ok"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-checkbox-button.has-error.checked</code></td>
+                <td><button class="tw-checkbox-button has-error checked"><span class="tw-checkbox-check glyphicon glyphicon-ok"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-checkbox-button.has-error.checked[disabled]</code></td>
+                <td><button class="tw-checkbox-button has-error checked" disabled><span class="tw-checkbox-check glyphicon glyphicon-ok"></span></button></td>
+            </tr>
+        </tbody>
+    </table>
+{% highlight html %}
+<button class="tw-checkbox-button">
+  <span class="tw-checkbox-check glyphicon glyphicon-ok"></span>
+</button>
+{% endhighlight %}
+
+  <div class="bs-example" data-example-id="custom-checkbox-radios">
+    <div class="radio">
+      <label>
+        <button class="tw-radio-button checked">
+          <span class="tw-radio-check"></span>
+        </button>
+        Custom radio
+      </label>
+    </div>
+  </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">Radio &amp; styles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>.tw-radio-button</code></td>
+                <td><button class="tw-radio-button"><span class="tw-radio-check"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-radio-button:focus</code></td>
+                <td><button class="tw-radio-button focus"><span class="tw-radio-check"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-radio-button.checked</code></td>
+                <td><button class="tw-radio-button checked" ><span class="tw-radio-check"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-radio-button[disabled]</code></td>
+                <td><button class="tw-radio-button" disabled><span class="tw-radio-check"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-radio-button.checked[disabled]</code></td>
+                <td><button class="tw-radio-button checked" disabled><span class="tw-radio-check"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-radio-button.has-error </code></td>
+                <td><button class="tw-radio-button has-error"><span class="tw-radio-check"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-radio-button.has-error.checked</code></td>
+                <td><button class="tw-radio-button has-error checked"><span class="tw-radio-check"></span></button></td>
+            </tr>
+            <tr>
+                <td><code>.tw-radio-button.has-error.checked[disabled]</code></td>
+                <td><button class="tw-radio-button has-error checked" disabled><span class="tw-radio-check"></span></button></td>
+            </tr>
+        </tbody>
+    </table>
+
+{% highlight html %}
+<button class="tw-radio-button">
+  <span class="tw-radio-check"></span>
+</button>
+{% endhighlight %}
+
   <h4>Two line checkbox and radio</h4>
   <p>Add the <code>.checkbox-lg</code> or <code>.radio-lg</code> to utilise a
       two line form control.  Use <code>small</code> to position the second line
