@@ -3433,10 +3433,6 @@ select[multiple].input-lg {
   position: relative;
   padding-left: 48px;
 }
-.radio > label:not(.focus):hover .input-replacement,
-.checkbox > label:not(.focus):hover .input-replacement {
-  border-color: #829ca9;
-}
 .radio > label:active:hover,
 .checkbox > label:active:hover {
   border-color: #00b9ff;
@@ -3455,6 +3451,147 @@ select[multiple].input-lg {
   top: 13px;
   left: 40px;
   display: block;
+}
+.tw-checkbox-button {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  background: #fff;
+  border: 1px solid #d3d5d8;
+  border-radius: 3px;
+  -webkit-transition: all .15s ease-in-out;
+       -o-transition: all .15s ease-in-out;
+          transition: all .15s ease-in-out;
+}
+.tw-checkbox-button .tw-checkbox-check {
+  display: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  line-height: 18px;
+  color: #fff;
+}
+.tw-checkbox-button:focus,
+.tw-checkbox-button.focus,
+.tw-checkbox-button:active,
+.tw-checkbox-button.active {
+  border-color: #00b9ff;
+  outline: none;
+}
+.tw-checkbox-button[checked],
+.tw-checkbox-button.checked {
+  background-color: #00b9ff;
+  border-color: #00b9ff;
+}
+.tw-checkbox-button[checked] .tw-checkbox-check,
+.tw-checkbox-button.checked .tw-checkbox-check {
+  display: inline-block;
+}
+.tw-checkbox-button[disabled] {
+  cursor: not-allowed;
+  background-color: #f2f5f7;
+  border-color: #e2e6e8;
+}
+.tw-checkbox-button[disabled] .tw-checkbox-check {
+  color: #e2e6e8;
+}
+.checkbox.has-error .tw-checkbox-button,
+.tw-checkbox-button.has-error {
+  border-color: #f53636;
+}
+.checkbox.has-error .tw-checkbox-button[checked],
+.tw-checkbox-button.has-error[checked],
+.checkbox.has-error .tw-checkbox-button.checked,
+.tw-checkbox-button.has-error.checked {
+  background-color: #f53636;
+}
+.checkbox.has-error .tw-checkbox-button[disabled],
+.tw-checkbox-button.has-error[disabled] {
+  background-color: #f2f5f7;
+}
+.tw-radio-button {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  vertical-align: middle;
+  background: #fff;
+  border: 1px solid #d3d5d8;
+  border-radius: 50%;
+}
+.tw-radio-button .tw-radio-check {
+  width: 0;
+  height: 0;
+  margin: 0 0 0 11px;
+  text-align: center;
+  border-radius: 50%;
+  -webkit-transition: all .15s ease-in-out;
+       -o-transition: all .15s ease-in-out;
+          transition: all .15s ease-in-out;
+}
+.tw-radio-button:focus,
+.tw-radio-button.focus,
+.tw-radio-button:active,
+.tw-radio-button.active {
+  border-color: #00b9ff;
+  outline: none;
+}
+.tw-radio-button[checked],
+.tw-radio-button.checked {
+  border-color: #00b9ff;
+}
+.tw-radio-button[checked] .tw-radio-check,
+.tw-radio-button.checked .tw-radio-check {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 5px;
+  background-color: #00b9ff;
+}
+.tw-radio-button[disabled] {
+  cursor: not-allowed;
+  background-color: #f2f5f7;
+  border-color: #e2e6e8;
+}
+.tw-radio-button[disabled] .tw-radio-check {
+  background-color: #e2e6e8;
+}
+.radio.has-error .tw-radio-button,
+.tw-radio-button.has-error {
+  border-color: #f53636;
+}
+.radio.has-error .tw-radio-button[checked] .tw-radio-check,
+.tw-radio-button.has-error[checked] .tw-radio-check,
+.radio.has-error .tw-radio-button.checked .tw-radio-check,
+.tw-radio-button.has-error.checked .tw-radio-check {
+  background-color: #f53636;
+}
+.radio.has-error .tw-radio-button[disabled] .tw-radio-check,
+.tw-radio-button.has-error[disabled] .tw-radio-check {
+  background-color: #e2e6e8;
+}
+.checkbox.disabled label,
+.checkbox.disabled label:hover {
+  color: #d3d5d8 !important;
+  border-color: #e2e6e8;
+}
+.checkbox .tw-checkbox-button,
+.radio .tw-radio-button {
+  position: absolute;
+  top: 11px;
+  left: 14px;
+}
+.form-inline .tw-checkbox-button,
+.form-inline .tw-radio-button {
+  vertical-align: bottom;
+}
+/* Deprecate below */
+.radio > label:not(.focus):hover .input-replacement,
+.checkbox > label:not(.focus):hover .input-replacement {
+  border-color: #829ca9;
 }
 .radio > label .replaced,
 .checkbox > label .replaced {
@@ -3631,6 +3768,7 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .radio.disabled > label:hover .input-replacement {
   border-color: #e2e6e8;
 }
+/* Deprecate above */
 .input-group .input-group-btn + input {
   border-left: 0 solid transparent;
 }
