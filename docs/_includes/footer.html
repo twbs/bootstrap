@@ -1,0 +1,67 @@
+<!-- Footer
+================================================== -->
+<footer class="bs-docs-footer">
+  <div class="container">
+
+    <ul class="bs-docs-footer-links">
+      <li><a href="{{ site.repo }}">GitHub</a></li>
+      <li><a href="https://twitter.com/getbootstrap">Twitter</a></li>
+      <li><a href="../getting-started/#examples">Examples</a></li>
+      <li><a href="../about/">About</a></li>
+    </ul>
+
+    <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>. Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
+
+    <p>Code licensed <a rel="license" href="https://github.com/twbs/bootstrap/blob/master/LICENSE" target="_blank">MIT</a>, docs <a rel="license" href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
+
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+{% if site.github %}
+  <script src="../dist/js/bootstrap.min.js"></script>
+{% else %}
+  <script src="../dist/js/bootstrap.js"></script>
+{% endif %}
+
+{% if site.github %}
+  <script src="../assets/js/docs.min.js"></script>
+{% else %}
+  {% for file in site.data.configBridge.paths.docsJs %}
+  <script src="{{ file }}"></script>
+  {% endfor %}
+{% endif %}
+
+{% if page.slug == "customize" %}
+  <script>var __configBridge = {{ site.data.configBridge.config | jsonify }}</script>
+  {% if site.github %}
+    <script src="../assets/js/customize.min.js"></script>
+  {% else %}
+    {% for file in site.data.configBridge.paths.customizerJs %}
+    <script src="{{ file }}"></script>
+    {% endfor %}
+  {% endif %}
+{% endif %}
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<!-- Analytics
+================================================== -->
+<script>
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>

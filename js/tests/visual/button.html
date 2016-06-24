@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Button</title>
+  <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+  <div class="page-header">
+    <h1>Button <small>Bootstrap Visual Test</small></h1>
+  </div>
+
+  <button type="button" data-loading-text="Loading for 3 seconds..." class="btn btn-primary js-loading-button">
+    Loading state
+  </button>
+
+  <button type="button" class="btn btn-primary" data-toggle="button">Single toggle</button>
+
+  <p>For checkboxes and radio buttons, ensure that keyboard behavior is functioning correctly.</p>
+  <p>Navigate to the checkboxes with the keyboard (generally, using <kbd>TAB</kbd> / <kbd>SHIFT + TAB</kbd>), and ensure that <kbd>SPACE</kbd> toggles the currently focused checkbox. Click on one of the checkboxes using the mouse, ensure that focus was correctly set on the actual checkbox, and that <kbd>SPACE</kbd> toggles the checkbox again.</p>
+
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary">
+      <input type="checkbox"> checkbox 1
+    </label>
+    <label class="btn btn-primary">
+      <input type="checkbox"> checkbox 2
+    </label>
+    <label class="btn btn-primary">
+      <input type="checkbox"> checkbox 3
+    </label>
+  </div>
+
+  <p>Navigate to the radio button group with the keyboard (generally, using <kbd>TAB</kbd> / <kbd>SHIFT + TAB</kbd>). If no radio button was initially set to be selected, the first/last radio button should receive focus (depending on whether you navigated "forward" to the group with <kbd>TAB</kbd> or "backwards" using <kbd>SHIFT + TAB</kbd>). If a radio button was already selected, navigating with the keyboard should set focus to that particular radio button. Only one radio button in a group should receive focus at any given time.  Ensure that the selected radio button can be changed by using the <kbd>←</kbd> and <kbd>→</kbd> arrow keys. Click on one of the radio buttons with the mouse,  ensure that focus was correctly set on the actual radio button, and that <kbd>←</kbd> and <kbd>→</kbd> change the selected radio button again.</p>
+
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option1"> Radio 1
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option2"> Radio 2
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option3"> Radio 3
+    </label>
+  </div>
+
+</div>
+
+<!-- JavaScript Includes -->
+<script src="../vendor/jquery.min.js"></script>
+<script src="../../transition.js"></script>
+<script src="../../button.js"></script>
+
+<!-- JavaScript Test -->
+<script>
+$(function () {
+  $('.js-loading-button').on('click', function () {
+    var btn = $(this).button('loading')
+    setTimeout(function (){
+      btn.button('reset')
+    }, 3000)
+  })
+})
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 
-// Base classes
+// Base class
 .badge {
   display: inline-block;
   min-width: 10px;
@@ -12,7 +12,7 @@
   font-weight: @badge-font-weight;
   color: @badge-color;
   line-height: @badge-line-height;
-  vertical-align: baseline;
+  vertical-align: middle;
   white-space: nowrap;
   text-align: center;
   background-color: @badge-bg;
@@ -22,30 +22,45 @@
   &:empty {
     display: none;
   }
-}
 
-// Hover state, but only for links
-a.badge {
-  &:hover,
-  &:focus {
-    color: @badge-link-hover-color;
-    text-decoration: none;
-    cursor: pointer;
+  // Quick fix for badges in buttons
+  .btn & {
+    position: relative;
+    top: -1px;
   }
-}
 
-// Quick fix for labels/badges in buttons
-.btn .badge {
-  position: relative;
-  top: -1px;
-}
+  .btn-xs &,
+  .btn-group-xs > .btn & {
+    top: 0;
+    padding: 1px 5px;
+  }
 
-// Account for counters in navs
-a.list-group-item.active > .badge,
-.nav-pills > .active > a > .badge {
-  color: @badge-active-color;
-  background-color: @badge-active-bg;
-}
-.nav-pills > li > a > .badge {
-  margin-left: 3px;
+  // Hover state, but only for links
+  a& {
+    &:hover,
+    &:focus {
+      color: @badge-link-hover-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  // Account for badges in navs
+  .list-group-item.active > &,
+  .nav-pills > .active > a > & {
+    color: @badge-active-color;
+    background-color: @badge-active-bg;
+  }
+
+  .list-group-item > & {
+    float: right;
+  }
+
+  .list-group-item > & + & {
+    margin-right: 5px;
+  }
+
+  .nav-pills > li > a > & {
+    margin-left: 3px;
+  }
 }
