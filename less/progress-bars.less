@@ -6,10 +6,22 @@
 // Bar animations
 // -------------------------
 
-// WebKit
+// Webkit
 @-webkit-keyframes progress-bar-stripes {
   from  { background-position: 40px 0; }
   to    { background-position: 0 0; }
+}
+
+// Firefox
+@-moz-keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+// Opera
+@-o-keyframes progress-bar-stripes {
+  from  { background-position: 0 0; }
+  to    { background-position: 40px 0; }
 }
 
 // Spec and IE10+
@@ -17,6 +29,7 @@
   from  { background-position: 40px 0; }
   to    { background-position: 0 0; }
 }
+
 
 
 // Bar itself
@@ -28,7 +41,7 @@
   height: @line-height-computed;
   margin-bottom: @line-height-computed;
   background-color: @progress-bg;
-  border-radius: @progress-border-radius;
+  border-radius: @border-radius-base;
   .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
 }
 
@@ -47,24 +60,20 @@
 }
 
 // Striped bars
-//
-// `.progress-striped .progress-bar` is deprecated as of v3.2.0 in favor of the
-// `.progress-bar-striped` class, which you just add to an existing
-// `.progress-bar`.
-.progress-striped .progress-bar,
-.progress-bar-striped {
+.progress-striped .progress-bar {
   #gradient > .striped();
   background-size: 40px 40px;
 }
 
 // Call animation for the active one
-//
-// `.progress.active .progress-bar` is deprecated as of v3.2.0 in favor of the
-// `.progress-bar.active` approach.
-.progress.active .progress-bar,
-.progress-bar.active {
-  .animation(progress-bar-stripes 2s linear infinite);
+.progress.active .progress-bar {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+     -moz-animation: progress-bar-stripes 2s linear infinite;
+      -ms-animation: progress-bar-stripes 2s linear infinite;
+       -o-animation: progress-bar-stripes 2s linear infinite;
+          animation: progress-bar-stripes 2s linear infinite;
 }
+
 
 
 // Variations

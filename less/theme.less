@@ -1,8 +1,3 @@
-/*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
 
 //
 // Load core variables and mixins
@@ -10,6 +5,7 @@
 
 @import "variables.less";
 @import "mixins.less";
+
 
 
 //
@@ -32,22 +28,11 @@
   &.active {
     .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    .box-shadow(none);
-  }
-
-  .badge {
-    text-shadow: none;
-  }
 }
 
 // Mixin for generating new styles
 .btn-styles(@btn-color: #555) {
   #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 12%));
-  .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners; see https://github.com/twbs/bootstrap/issues/10620
   background-repeat: repeat-x;
   border-color: darken(@btn-color, 14%);
 
@@ -61,20 +46,6 @@
   &.active {
     background-color: darken(@btn-color, 12%);
     border-color: darken(@btn-color, 14%);
-  }
-
-  &.disabled,
-  &[disabled],
-  fieldset[disabled] & {
-    &,
-    &:hover,
-    &:focus,
-    &.focus,
-    &:active,
-    &.active {
-      background-color: darken(@btn-color, 12%);
-      background-image: none;
-    }
   }
 }
 
@@ -91,9 +62,10 @@
 .btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
 .btn-primary { .btn-styles(@btn-primary-bg); }
 .btn-success { .btn-styles(@btn-success-bg); }
-.btn-info    { .btn-styles(@btn-info-bg); }
 .btn-warning { .btn-styles(@btn-warning-bg); }
 .btn-danger  { .btn-styles(@btn-danger-bg); }
+.btn-info    { .btn-styles(@btn-info-bg); }
+
 
 
 //
@@ -104,6 +76,7 @@
 .img-thumbnail {
   .box-shadow(0 1px 2px rgba(0,0,0,.075));
 }
+
 
 
 //
@@ -123,6 +96,7 @@
 }
 
 
+
 //
 // Navbar
 // --------------------------------------------------
@@ -135,9 +109,8 @@
   @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
   .box-shadow(@shadow);
 
-  .navbar-nav > .open > a,
   .navbar-nav > .active > a {
-    #gradient > .vertical(@start-color: darken(@navbar-default-link-active-bg, 5%); @end-color: darken(@navbar-default-link-active-bg, 2%));
+    #gradient > .vertical(@start-color: darken(@navbar-default-bg, 5%); @end-color: darken(@navbar-default-bg, 2%));
     .box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
   }
 }
@@ -149,11 +122,10 @@
 // Inverted navbar
 .navbar-inverse {
   #gradient > .vertical(@start-color: lighten(@navbar-inverse-bg, 10%); @end-color: @navbar-inverse-bg);
-  .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered; see https://github.com/twbs/bootstrap/issues/10257
-  border-radius: @navbar-border-radius;
-  .navbar-nav > .open > a,
+  .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
+
   .navbar-nav > .active > a {
-    #gradient > .vertical(@start-color: @navbar-inverse-link-active-bg; @end-color: lighten(@navbar-inverse-link-active-bg, 2.5%));
+    #gradient > .vertical(@start-color: @navbar-inverse-bg; @end-color: lighten(@navbar-inverse-bg, 2.5%));
     .box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
   }
 
@@ -170,17 +142,6 @@
   border-radius: 0;
 }
 
-// Fix active state of dropdown items in collapsed mode
-@media (max-width: @grid-float-breakpoint-max) {
-  .navbar .navbar-nav .open .dropdown-menu > .active > a {
-    &,
-    &:hover,
-    &:focus {
-      color: #fff;
-      #gradient > .vertical(@start-color: @dropdown-link-active-bg; @end-color: darken(@dropdown-link-active-bg, 5%));
-    }
-  }
-}
 
 
 //
@@ -207,6 +168,7 @@
 .alert-danger     { .alert-styles(@alert-danger-bg); }
 
 
+
 //
 // Progress bars
 // --------------------------------------------------
@@ -228,11 +190,6 @@
 .progress-bar-warning    { .progress-bar-styles(@progress-bar-warning-bg); }
 .progress-bar-danger     { .progress-bar-styles(@progress-bar-danger-bg); }
 
-// Reset the striped class because our mixins don't do multiple gradients and
-// the above custom styles override the new `.progress-bar-striped` in v3.2.0.
-.progress-bar-striped {
-  #gradient > .striped();
-}
 
 
 //
@@ -249,11 +206,8 @@
   text-shadow: 0 -1px 0 darken(@list-group-active-bg, 10%);
   #gradient > .vertical(@start-color: @list-group-active-bg; @end-color: darken(@list-group-active-bg, 7.5%));
   border-color: darken(@list-group-active-border, 7.5%);
-
-  .badge {
-    text-shadow: none;
-  }
 }
+
 
 
 //
@@ -277,6 +231,7 @@
 .panel-info > .panel-heading      { .panel-heading-styles(@panel-info-heading-bg); }
 .panel-warning > .panel-heading   { .panel-heading-styles(@panel-warning-heading-bg); }
 .panel-danger > .panel-heading    { .panel-heading-styles(@panel-danger-heading-bg); }
+
 
 
 //

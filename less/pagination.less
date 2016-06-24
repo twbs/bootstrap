@@ -16,7 +16,6 @@
       padding: @padding-base-vertical @padding-base-horizontal;
       line-height: @line-height-base;
       text-decoration: none;
-      color: @pagination-color;
       background-color: @pagination-bg;
       border: 1px solid @pagination-border;
       margin-left: -1px;
@@ -40,10 +39,7 @@
   > li > span {
     &:hover,
     &:focus {
-      z-index: 2;
-      color: @pagination-hover-color;
       background-color: @pagination-hover-bg;
-      border-color: @pagination-hover-border;
     }
   }
 
@@ -52,10 +48,10 @@
     &,
     &:hover,
     &:focus {
-      z-index: 3;
+      z-index: 2;
       color: @pagination-active-color;
       background-color: @pagination-active-bg;
-      border-color: @pagination-active-border;
+      border-color: @pagination-active-bg;
       cursor: default;
     }
   }
@@ -68,10 +64,9 @@
     > a:hover,
     > a:focus {
       color: @pagination-disabled-color;
-      background-color: @pagination-disabled-bg;
-      border-color: @pagination-disabled-border;
-      cursor: @cursor-disabled;
-      pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+      background-color: @pagination-bg;
+      border-color: @pagination-border;
+      cursor: not-allowed;
     }
   }
 }
@@ -81,10 +76,10 @@
 
 // Large
 .pagination-lg {
-  .pagination-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+  .pagination-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @border-radius-large);
 }
 
 // Small
 .pagination-sm {
-  .pagination-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+  .pagination-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @border-radius-small);
 }
