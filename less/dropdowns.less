@@ -10,14 +10,15 @@
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top:   @caret-width-base dashed;
-  border-top:   @caret-width-base solid ~"\9"; // IE8
+  border-top:   @caret-width-base solid @dropdown-caret-color;
   border-right: @caret-width-base solid transparent;
   border-left:  @caret-width-base solid transparent;
+  // Firefox fix for https://github.com/twbs/bootstrap/issues/9538. Once fixed,
+  // we can just straight up remove this.
+  border-bottom: 0 dotted;
 }
 
 // The dropdown wrapper (div)
-.dropup,
 .dropdown {
   position: relative;
 }
@@ -40,7 +41,6 @@
   margin: 2px 0 0; // override default ul
   list-style: none;
   font-size: @font-size-base;
-  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   background-color: @dropdown-bg;
   border: 1px solid @dropdown-fallback-border; // IE8 fallback
   border: 1px solid @dropdown-border;
@@ -49,8 +49,6 @@
   background-clip: padding-box;
 
   // Aligns the dropdown menu to right
-  //
-  // Deprecated as of 3.1.0 in favor of `.dropdown-menu-[dir]`
   &.pull-right {
     right: 0;
     left: auto;
@@ -105,15 +103,16 @@
   &:focus {
     color: @dropdown-link-disabled-color;
   }
-
-  // Nuke hover/focus effects
+}
+// Nuke hover/focus effects
+.dropdown-menu > .disabled > a {
   &:hover,
   &:focus {
     text-decoration: none;
     background-color: transparent;
     background-image: none; // Remove CSS gradient
     .reset-filter();
-    cursor: @cursor-disabled;
+    cursor: not-allowed;
   }
 }
 
@@ -130,25 +129,6 @@
   }
 }
 
-// Menu positioning
-//
-// Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
-// menu with the parent.
-.dropdown-menu-right {
-  left: auto; // Reset the default from `.dropdown-menu`
-  right: 0;
-}
-// With v3, we enabled auto-flipping if you have a dropdown within a right
-// aligned nav component. To enable the undoing of that, we provide an override
-// to restore the default dropdown menu alignment.
-//
-// This is only for left-aligning a dropdown menu within a `.navbar-right` or
-// `.pull-right` nav component.
-.dropdown-menu-left {
-  left: 0;
-  right: auto;
-}
-
 // Dropdown section headers
 .dropdown-header {
   display: block;
@@ -156,7 +136,6 @@
   font-size: @font-size-small;
   line-height: @line-height-base;
   color: @dropdown-header-color;
-  white-space: nowrap; // as with > li > a
 }
 
 // Backdrop to catch body clicks on mobile, etc.
@@ -166,7 +145,7 @@
   right: 0;
   bottom: 0;
   top: 0;
-  z-index: (@zindex-dropdown - 10);
+  z-index: @zindex-dropdown - 10;
 }
 
 // Right aligned dropdowns
@@ -184,16 +163,17 @@
 .navbar-fixed-bottom .dropdown {
   // Reverse the caret
   .caret {
-    border-top: 0;
-    border-bottom: @caret-width-base dashed;
-    border-bottom: @caret-width-base solid ~"\9"; // IE8
+    // Firefox fix for https://github.com/twbs/bootstrap/issues/9538. Once this
+    // gets fixed, restore `border-top: 0;`.
+    border-top: 0 dotted;
+    border-bottom: 4px solid @dropdown-caret-color;
     content: "";
   }
   // Different positioning for bottom up menu
   .dropdown-menu {
     top: auto;
     bottom: 100%;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
 }
 
@@ -205,12 +185,8 @@
 @media (min-width: @grid-float-breakpoint) {
   .navbar-right {
     .dropdown-menu {
-      .dropdown-menu-right();
-    }
-    // Necessary for overrides of the default right aligned menu.
-    // Will remove come v4 in all likelihood.
-    .dropdown-menu-left {
-      .dropdown-menu-left();
+      .pull-right > .dropdown-menu();
     }
   }
 }
+
