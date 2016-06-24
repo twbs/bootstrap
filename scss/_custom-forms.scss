@@ -12,7 +12,7 @@
 .custom-control {
   position: relative;
   display: inline;
-  padding-left: $custom-control-gutter;
+  padding-left: $custom-control-indicator-size;
   cursor: pointer;
 
   + .custom-control {
@@ -73,6 +73,12 @@
   background-position: center center;
   background-size: $custom-control-indicator-bg-size;
   @include box-shadow($custom-control-indicator-box-shadow);
+}
+
+// Custom description
+
+.custom-control-description {
+  padding-left: ($custom-control-gutter - $custom-control-indicator-size);
 }
 
 // Checkboxes
