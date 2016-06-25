@@ -37,7 +37,8 @@ const Tab = (($) => {
     DROPDOWN_MENU : 'dropdown-menu',
     ACTIVE        : 'active',
     FADE          : 'fade',
-    IN            : 'in'
+    IN            : 'in',
+    DISABLED      : 'disabled'
   }
 
   const Selector = {
@@ -77,15 +78,24 @@ const Tab = (($) => {
     // public
 
     show() {
-      if (this._element.parentNode &&
-         (this._element.parentNode.nodeType === Node.ELEMENT_NODE) &&
-         ($(this._element).hasClass(ClassName.ACTIVE))) {
+      let $thisEl = $(this._element)
+
+      if (
+        (
+          this._element.parentNode &&
+          (this._element.parentNode.nodeType === Node.ELEMENT_NODE) &&
+          ($thisEl.hasClass(ClassName.ACTIVE))
+        ) || (
+          this._element.hasAttribute('disabled') ||
+          $thisEl.hasClass(ClassName.DISABLED)
+        )
+       ) {
         return
       }
 
       let target
       let previous
-      let ulElement = $(this._element).closest(Selector.UL)[0]
+      let ulElement = $thisEl.closest(Selector.UL)[0]
       let selector  = Util.getSelectorFromElement(this._element)
 
       if (ulElement) {
@@ -105,7 +115,7 @@ const Tab = (($) => {
         $(previous).trigger(hideEvent)
       }
 
-      $(this._element).trigger(showEvent)
+      $thisEl.trigger(showEvent)
 
       if (showEvent.isDefaultPrevented() ||
          (hideEvent.isDefaultPrevented())) {
@@ -131,7 +141,7 @@ const Tab = (($) => {
         })
 
         $(previous).trigger(hiddenEvent)
-        $(this._element).trigger(shownEvent)
+        $thisEl.trigger(shownEvent)
       }
 
       if (target) {

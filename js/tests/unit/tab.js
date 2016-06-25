@@ -225,4 +225,36 @@ $(function () {
     assert.strictEqual($tabs.find('a:not(.active)').attr('aria-expanded'), 'false', 'after second show event, hidden tab has aria-expanded = false')
   })
 
+  QUnit.test('should not active element when disabled by class', function (assert) {
+    assert.expect(0)
+
+    var tabsHTML = '<ul class="tabs">'
+        + '<li><a href="#home">Home</a></li>'
+        + '<li><a href="#profile" class="disabled">Profile</a></li>'
+        + '</ul>'
+
+    $(tabsHTML)
+      .find('li:last a')
+        .on('show.bs.tab', function (e) {
+          assert.ok(false, 'show event fired')
+        })
+        .bootstrapTab('show')
+  })
+
+  QUnit.test('should not active element when disabled by attribute', function (assert) {
+    assert.expect(0)
+
+    var tabsHTML = '<ul class="tabs">'
+        + '<li><a href="#home">Home</a></li>'
+        + '<li><a href="#profile" disabled>Profile</a></li>'
+        + '</ul>'
+
+    $(tabsHTML)
+      .find('li:last a')
+        .on('show.bs.tab', function (e) {
+          assert.ok(false, 'show event fired')
+        })
+        .bootstrapTab('show')
+  })
+
 })
