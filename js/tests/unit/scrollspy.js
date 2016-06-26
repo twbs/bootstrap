@@ -371,7 +371,7 @@ $(function () {
     }
 
     $.when(testOffsetMethod('js'))
-      .then(function () { testOffsetMethod('data') })
+      .done(function () { testOffsetMethod('data') })
   })
 
   QUnit.test('should allow passed in option offset method: position', function (assert) {
@@ -414,7 +414,7 @@ $(function () {
     }
 
     $.when(testOffsetMethod('js'))
-      .then(function () { testOffsetMethod('data') })
+      .done(function () { testOffsetMethod('data') })
   })
 
 })
