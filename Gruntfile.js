@@ -24,7 +24,7 @@ module.exports = function (grunt) {
 
   Object.keys(configBridge.paths).forEach(function (key) {
     configBridge.paths[key].forEach(function (val, i, arr) {
-      arr[i] = path.join('./docs/assets', val);
+      arr[i] = path.join('./docs', val);
     });
   });
 
