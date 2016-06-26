@@ -74,7 +74,7 @@
   summary: >
     Implement the `:dir()` pseudo-class from Selectors Level 4
   upstream_bug: >
-    [Edge UserVoice idea #12299532](https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/suggestions/12299532--dir)
+    UserVoice#12299532
   origin: >
     Bootstrap#19984
 
