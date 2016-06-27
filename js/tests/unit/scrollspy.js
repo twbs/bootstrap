@@ -335,8 +335,7 @@ $(function () {
     assert.expect(4)
 
     var testOffsetMethod = function (type) {
-      var deferred = $.Deferred()
-      var navbarHtml =
+      var $navbar = $(
           '<nav class="navbar"' + (type === 'data' ? ' id="navbar-offset-method-menu"' : '') + '>'
         + '<ul class="nav">'
         + '<li><a id="li-' + type + 'm-1" class="nav-link" href="#div-' + type + 'm-1">div 1</a></li>'
@@ -344,42 +343,43 @@ $(function () {
         + '<li><a id="li-' + type + 'm-3" class="nav-link" href="#div-' + type + 'm-3">div 3</a></li>'
         + '</ul>'
         + '</nav>'
-      var contentHtml =
+      )
+      var $content = $(
           '<div class="content"' + (type === 'data' ? ' data-spy="scroll" data-target="#navbar-offset-method-menu" data-offset="0" data-method="offset"' : '') + ' style="position: relative; overflow: auto; height: 100px">'
         + '<div id="div-' + type + 'm-1" style="position: relative; height: 200px; padding: 0; margin: 0">div 1</div>'
         + '<div id="div-' + type + 'm-2" style="position: relative; height: 150px; padding: 0; margin: 0">div 2</div>'
         + '<div id="div-' + type + 'm-3" style="position: relative; height: 250px; padding: 0; margin: 0">div 3</div>'
         + '</div>'
+      )
 
+      $navbar.appendTo('#qunit-fixture')
+      $content.appendTo('#qunit-fixture')
 
-      $(navbarHtml).appendTo('#qunit-fixture')
-      var $content = $(contentHtml)
-        .appendTo('#qunit-fixture')
-
-      if (type === 'js') $content.bootstrapScrollspy({ target: '.navbar', offset: 0, method: 'offset' })
-      else if (type === 'data') $(window).trigger('load')
+      if (type === 'js') {
+        $content.bootstrapScrollspy({ target: '.navbar', offset: 0, method: 'offset' })
+      }
+      else if (type === 'data') {
+        $(window).trigger('load')
+      }
 
       var $target = $('#div-' + type + 'm-2')
       var scrollspy = $content.data('bs.scrollspy')
 
       assert.ok(scrollspy._offsets[1] === $target.offset().top, 'offset method with ' + type + ' option')
       assert.ok(scrollspy._offsets[1] !== $target.position().top, 'position method with ' + type + ' option')
-
-      deferred.resolve()
-
-      return deferred.promise()
+      $navbar.remove()
+      $content.remove()
     }
 
-    $.when(testOffsetMethod('js'))
-      .then(function () { testOffsetMethod('data') })
+    testOffsetMethod('js')
+    testOffsetMethod('data')
   })
 
   QUnit.test('should allow passed in option offset method: position', function (assert) {
     assert.expect(4)
 
     var testOffsetMethod = function (type) {
-      var deferred = $.Deferred()
-      var navbarHtml =
+      var $navbar = $(
           '<nav class="navbar"' + (type === 'data' ? ' id="navbar-offset-method-menu"' : '') + '>'
         + '<ul class="nav">'
         + '<li><a class="nav-link" id="li-' + type + 'm-1" href="#div-' + type + 'm-1">div 1</a></li>'
@@ -387,17 +387,17 @@ $(function () {
         + '<li><a class="nav-link" id="li-' + type + 'm-3" href="#div-' + type + 'm-3">div 3</a></li>'
         + '</ul>'
         + '</nav>'
-      var contentHtml =
+      )
+      var $content = $(
           '<div class="content"' + (type === 'data' ? ' data-spy="scroll" data-target="#navbar-offset-method-menu" data-offset="0" data-method="position"' : '') + ' style="position: relative; overflow: auto; height: 100px">'
         + '<div id="div-' + type + 'm-1" style="position: relative; height: 200px; padding: 0; margin: 0">div 1</div>'
         + '<div id="div-' + type + 'm-2" style="position: relative; height: 150px; padding: 0; margin: 0">div 2</div>'
         + '<div id="div-' + type + 'm-3" style="position: relative; height: 250px; padding: 0; margin: 0">div 3</div>'
         + '</div>'
+      )
 
-
-      $(navbarHtml).appendTo('#qunit-fixture')
-      var $content = $(contentHtml)
-        .appendTo('#qunit-fixture')
+      $navbar.appendTo('#qunit-fixture')
+      $content.appendTo('#qunit-fixture')
 
       if (type === 'js') $content.bootstrapScrollspy({ target: '.navbar', offset: 0, method: 'position' })
       else if (type === 'data') $(window).trigger('load')
@@ -407,14 +407,12 @@ $(function () {
 
       assert.ok(scrollspy._offsets[1] !== $target.offset().top, 'offset method with ' + type + ' option')
       assert.ok(scrollspy._offsets[1] === $target.position().top, 'position method with ' + type + ' option')
-
-      deferred.resolve()
-
-      return deferred.promise()
+      $navbar.remove()
+      $content.remove()
     }
 
-    $.when(testOffsetMethod('js'))
-      .then(function () { testOffsetMethod('data') })
+    testOffsetMethod('js')
+    testOffsetMethod('data')
   })
 
 })
