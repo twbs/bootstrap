@@ -277,6 +277,9 @@ module.exports = function (grunt) {
       },
       'postcss-docs': {
         command: 'npm run postcss-docs'
+      },
+      'upload-preview': {
+        command: './grunt/upload-preview.sh'
       }
     },
 
@@ -351,12 +354,13 @@ module.exports = function (grunt) {
   // Only run Sauce Labs tests if there's a Sauce access key
   if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' &&
       // Skip Sauce if running a different subset of the test suite
-      runSubset('sauce-js-unit') &&
-      // Skip Sauce on Travis when [skip sauce] is in the commit message
-      isUndefOrNonZero(process.env.TWBS_DO_SAUCE)) {
-    testSubtasks.push('babel:dev');
-    testSubtasks.push('connect');
-    testSubtasks.push('saucelabs-qunit');
+      runSubset('sauce-js-unit')) {
+    testSubtasks = testSubtasks.concat(['dist', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs', 'exec:upload-preview']);
+    // Skip Sauce on Travis when [skip sauce] is in the commit message
+    if (isUndefOrNonZero(process.env.TWBS_DO_SAUCE)) {
+      testSubtasks.push('connect');
+      testSubtasks.push('saucelabs-qunit');
+    }
   }
   grunt.registerTask('test', testSubtasks);
 

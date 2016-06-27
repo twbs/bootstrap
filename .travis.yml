@@ -25,6 +25,7 @@ cache:
   directories:
     - node_modules
     - vendor/bundle
+    - "$HOME/google-cloud-sdk"
 env:
   global:
     - NPM_CONFIG_PROGRESS="false"
