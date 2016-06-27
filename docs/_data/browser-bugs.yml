@@ -160,6 +160,16 @@
 
 -
   browser: >
+    Firefox
+  summary: >
+    `position: absolute` element that's wider than its column renders differently than other browsers
+  upstream_bug: >
+    Mozilla#1282363
+  origin: >
+    Bootstrap#20161
+
+-
+  browser: >
     Firefox (Windows)
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
