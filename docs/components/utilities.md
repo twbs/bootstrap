@@ -147,7 +147,7 @@ Contextual text classes also work well on anchors with the provided hover and fo
 
 Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.
 
-{% example html %}
+{% example html id=ex-utils-bgs %}
 <div class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</div>
 <div class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</div>
 <div class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</div>
