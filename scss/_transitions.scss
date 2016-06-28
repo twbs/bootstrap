@@ -33,4 +33,11 @@ tbody {
   height: 0;
   overflow: hidden;
   @include transition($transition-collapse);
+  transition-property: height;
+
+  &.width {
+    width: 0;
+    height: auto;
+    transition-property: width;
+  }
 }
