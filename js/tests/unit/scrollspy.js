@@ -188,13 +188,12 @@ $(function () {
       .appendTo('#qunit-fixture')
       .bootstrapScrollspy({ offset: 0, target: '.navbar' })
 
+    var done = assert.async()
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
       var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
-      var done = assert.async()
       $content.one('scroll', function () {
         assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
-        done()
         deferred.resolve()
       })
       $content.scrollTop(scrollHeight)
@@ -203,6 +202,7 @@ $(function () {
 
     $.when(testElementIsActiveAfterScroll('#a-1', '#div-1'))
       .then(function () { return testElementIsActiveAfterScroll('#a-2', '#div-2') })
+      .then(function () { done() })
   })
 
   QUnit.test('should add the active class correctly when there are nested elements at 0 scroll offset', function (assert) {
