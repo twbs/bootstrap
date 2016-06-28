@@ -126,7 +126,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 ### Modal
 
-- The `remote` option (which could be used to automatically load and inject external content into a modal) and the correspending `loaded.bs.modal` event were removed. We recommend instead using client-side templating or a data binding framework, or calling [jQuery.load](http://api.jquery.com/load/) yourself.
+- The `remote` option (which could be used to automatically load and inject external content into a modal) and the corresponding `loaded.bs.modal` event were removed. We recommend instead using client-side templating or a data binding framework, or calling [jQuery.load](http://api.jquery.com/load/) yourself.
 
 ### Navs
 
