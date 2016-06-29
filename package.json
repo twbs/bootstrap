@@ -19,7 +19,7 @@
   "scripts": {
     "change-version": "node grunt/change-version.js",
     "eslint": "eslint --config js/.eslintrc.json js/src",
-    "jscs": "jscs --config=js/.jscsrc js/src js/tests/unit docs/assets/js/src docs/assets/js/ie*.js grunt Gruntfile.js",
+    "jscs": "jscs --config=js/.jscsrc js/src js/tests/unit docs/assets/js/src grunt Gruntfile.js docs/assets/js/ie-emulation-modes-warning.js docs/assets/js/ie10-viewport-bug-workaround.js",
     "postcss": "postcss --config grunt/postcss.js --replace dist/css/*.css",
     "postcss-docs": "postcss --config grunt/postcss.js --no-map --replace docs/assets/css/docs.min.css && postcss --config grunt/postcss.js --no-map --replace docs/examples/**/*.css",
     "shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
