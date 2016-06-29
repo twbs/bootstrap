@@ -51,7 +51,7 @@
   }
 }
 
-@mixin mak-col-span($size, $columns: $grid-columns) {
+@mixin make-col-span($size, $columns: $grid-columns) {
   width: percentage($size / $columns);
 }
 
