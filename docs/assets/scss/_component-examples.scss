@@ -302,19 +302,10 @@
 }
 
 // Helpers
-.bd-example > {
-  .bg-primary,
-  .bg-success,
-  .bg-info,
-  .bg-warning,
-  .bg-danger,
-  .bg-inverse {
-    &:not(.navbar) {
-      padding: .5rem;
-      margin-top: .5rem;
-      margin-bottom: .5rem;
-    }
-  }
+.bd-example[data-example-id="ex-utils-bgs"] > div[class*="bg-"] {
+  padding: .5rem;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
 }
 
 
