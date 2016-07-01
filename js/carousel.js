@@ -28,6 +28,33 @@
     this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
       .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
       .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
+
+	if(this.options.touch){
+		  var touchStartX = 0, distRequired = 60;
+		  if( this.options.touchDist && !isNaN( parseInt( this.options.touchDist ) ) ){
+			  distRequired = Math.abs(parseInt(this.options.touchDist))
+		  }
+		  this.$element.on('touchstart.bs.carousel', $.proxy(
+			  function(e){
+				  touchStartX = e.originalEvent.touches[0].pageX;
+			  },
+			  this
+		  ));
+		  this.$element.on('touchmove.bs.carousel', $.proxy(
+			  function(e){
+				  var dist = touchStartX - e.originalEvent.touches[0].pageX;
+				  if(Math.abs(dist) < distRequired) return false;
+				  if(dist < 0){
+					  // move right, slide to prev
+					  this.prev();
+				  }else{
+					  // move left, slide to next
+					  this.next();
+				  }
+			  },
+			  this
+		  ));
+	}
   }
 
   Carousel.VERSION  = '3.3.6'
