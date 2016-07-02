@@ -17,7 +17,6 @@ before_install:
 install:
   - bundle install --deployment --jobs=1
   - cp grunt/npm-shrinkwrap.json ./
-  - npm install -g grunt-cli
   - npm install
 cache:
   directories:
