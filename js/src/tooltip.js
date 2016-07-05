@@ -1,5 +1,6 @@
 /* global Tether */
 
+import Tether from 'tether'
 import Util from './util'
 
 
@@ -16,7 +17,7 @@ const Tooltip = (($) => {
    * Check for Tether dependency
    * Tether - http://github.hubspot.com/tether/
    */
-  if (window.Tether === undefined) {
+  if (window.Tether === undefined && Tether === undefined) {
     throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
   }
 
