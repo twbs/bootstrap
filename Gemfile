@@ -4,5 +4,5 @@ group :development, :test do
   gem 'jekyll', '~> 3.1.2'
   gem 'jekyll-redirect-from', '~> 0.10.0'
   gem 'jekyll-sitemap', '~> 0.10.0'
-  gem 'scss_lint', '~> 0.48.0'
+  gem 'scss_lint', '~> 0.49.0'
 end
