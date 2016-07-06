@@ -3,6 +3,20 @@ $(function () {
 
   QUnit.module('scrollspy plugin')
 
+  // To keep unit tests consistent with DRY principles
+  var testElementIsActiveAfterScroll = function (element, target) {
+    var deferred = $.Deferred()
+    var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
+    var done = assert.async()
+    $content.one('scroll', function () {
+      assert.ok($(element).hasClass('active'), 'target:' + target + ', element: ' + element)
+      done()
+      deferred.resolve()
+    })
+    $content.scrollTop(scrollHeight)
+    return deferred.promise()
+  }
+
   QUnit.test('should be defined on jquery object', function (assert) {
     assert.expect(1)
     assert.ok($(document.body).scrollspy, 'scrollspy method is defined')
@@ -131,19 +145,6 @@ $(function () {
       .appendTo('#qunit-fixture')
       .bootstrapScrollspy({ offset: 0, target: '.navbar' })
 
-    var testElementIsActiveAfterScroll = function (element, target) {
-      var deferred = $.Deferred()
-      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
-      var done = assert.async()
-      $content.one('scroll', function () {
-        assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
-        done()
-        deferred.resolve()
-      })
-      $content.scrollTop(scrollHeight)
-      return deferred.promise()
-    }
-
     $.when(testElementIsActiveAfterScroll('#li-1', '#div-1'))
       .then(function () { return testElementIsActiveAfterScroll('#li-2', '#div-2') })
   })
@@ -254,19 +255,6 @@ $(function () {
     var $content = $(contentHtml)
       .appendTo('#qunit-fixture')
       .bootstrapScrollspy({ offset: 0, target: '.navbar' })
-
-    var testElementIsActiveAfterScroll = function (element, target) {
-      var deferred = $.Deferred()
-      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
-      var done = assert.async()
-      $content.one('scroll', function () {
-        assert.ok($(element).hasClass('active'), 'target:' + target + ', element: ' + element)
-        done()
-        deferred.resolve()
-      })
-      $content.scrollTop(scrollHeight)
-      return deferred.promise()
-    }
 
     $.when(testElementIsActiveAfterScroll('#li-100-5', '#div-100-5'))
       .then(function () { return testElementIsActiveAfterScroll('#li-100-4', '#div-100-4') })
