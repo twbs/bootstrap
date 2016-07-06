@@ -308,7 +308,7 @@ button:focus {
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-input,
+input:not([type="radio"]):not([type="checkbox"]),
 button,
 select,
 textarea {
@@ -319,7 +319,7 @@ textarea {
   // ensures we don't need to unnecessarily redeclare the global font stack.
   line-height: inherit;
   // iOS adds rounded borders by default
-  border-radius: 0;
+  border-radius: 0;  //ios bug, input[type="radio"] don't
 }
 
 input[type="radio"],
