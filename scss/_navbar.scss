@@ -115,6 +115,12 @@
   @include hover-focus {
     text-decoration: none;
   }
+
+  &::before {
+    font-weight: 500;
+    content: "\2261"; // see http://unicode.johnholtripley.co.uk/2261/
+  }
+
 }
 
 // scss-lint:disable ImportantRule
