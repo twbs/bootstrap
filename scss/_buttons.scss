@@ -22,7 +22,7 @@
   &.active {
     &:focus,
     &.focus {
-      @include tab-focus();
+      outline: none;
     }
   }
 
