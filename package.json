@@ -61,7 +61,7 @@
     "grunt-html": "^8.0.1",
     "grunt-jekyll": "^0.4.2",
     "grunt-sass": "^1.0.0",
-    "grunt-saucelabs": "^8.6.1",
+    "grunt-saucelabs": "^9.0.0",
     "grunt-scss-lint": "^0.3.8",
     "grunt-stamp": "^0.3.0",
     "is-travis": "^1.0.0",
