@@ -4,6 +4,16 @@
 
 @if $enable-flex {
   @each $breakpoint in map-keys($grid-breakpoints) {
+    // Flex direction per breakpoint
+    @each $breakpoint in map-keys($grid-breakpoints) {
+      @include media-breakpoint-up($breakpoint) {
+        .flex-#{$breakpoint}-column      { flex-direction: column; }
+        .flex-#{$breakpoint}-row         { flex-direction: row; }
+        .flex-#{$breakpoint}-column-rev  { flex-direction: column-reverse; }
+        .flex-#{$breakpoint}-row-rev     { flex-direction: row-reverse; }
+      }
+    }
+
     // Flex column reordering
     @include media-breakpoint-up($breakpoint) {
       .flex-#{$breakpoint}-first { order: -1; }
