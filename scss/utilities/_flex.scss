@@ -14,6 +14,14 @@
       }
     }
 
+    // Flex wrap per breakpoint
+    @each $breakpoint in map-keys($grid-breakpoints) {
+      @include media-breakpoint-up($breakpoint) {
+        .flex-#{$breakpoint}-wrap    { flex-wrap: wrap; }
+        .flex-#{$breakpoint}-no-wrap { flex-wrap: nowrap; }
+      }
+    }
+
     // Flex column reordering
     @include media-breakpoint-up($breakpoint) {
       .flex-#{$breakpoint}-first { order: -1; }
