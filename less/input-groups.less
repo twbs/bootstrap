@@ -54,8 +54,23 @@
       border-color: @input-border-hover;
     }
   }
-  &:focus {
-    border-color: @input-border;
+  .focus {
+    .input-group-addon,
+    .form-control,
+    .btn-input,
+    .ui-select-bootstrap .btn-default,
+    .bootstrap-select .btn-default {
+      border-color: @input-border;
+    }
+  }
+  &.disabled {
+    .input-group-addon {
+      background-color: @input-bg-disabled;
+      border-color: @input-border-disabled;
+    }
+    &:hover .input-group-addon {
+      border-color: @input-border-hover;
+    }
   }
 }
 
