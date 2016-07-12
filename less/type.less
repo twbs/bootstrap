@@ -153,10 +153,12 @@ strong {
   .text-emphasis-variant(@state-danger-text);
 }
 
+.text-ellipsis,
 .text-ellipses {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 // Contextual backgrounds
@@ -397,4 +399,16 @@ h5, .h5 {
 }
 h6, .h6 {
     color: @brand-grey-plus-20;
+}
+
+.lang_ja {
+  font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
+    font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+  }
 }

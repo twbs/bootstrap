@@ -298,3 +298,14 @@
         max-height: 592px;	// (12 * 48) + 16 = 592
     }
 }
+.btn-group {
+  .small {
+    font-size: @font-size-small;
+    color: @brand-grey-plus-20 !important;
+    
+    line-height: (@line-height-computed - 1px);
+    &.text-ellipsis {
+      line-height: @line-height-computed;
+    }
+  }
+}

@@ -1451,7 +1451,9 @@ a.text-danger:hover,
 a.text-danger:focus {
   color: #ec0c0c;
 }
+.text-ellipsis,
 .text-ellipses {
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1668,6 +1670,23 @@ h5,
 h6,
 .h6 {
   color: #829ca9;
+}
+.lang_ja {
+  font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+}
+.lang_ja h1,
+.lang_ja .h1,
+.lang_ja h2,
+.lang_ja .h2,
+.lang_ja h3,
+.lang_ja .h3,
+.lang_ja h4,
+.lang_ja .h4,
+.lang_ja h5,
+.lang_ja .h5,
+.lang_ja h6,
+.lang_ja .h6 {
+  font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
 }
 code,
 kbd,
@@ -3588,6 +3607,14 @@ select[multiple].input-lg {
 .form-inline .tw-radio-button {
   vertical-align: bottom;
 }
+.form-horizontal .checkbox,
+.form-horizontal .radio {
+  padding-top: 0;
+}
+.form-horizontal .checkbox > label,
+.form-horizontal .radio > label {
+  margin-bottom: 0;
+}
 /* Deprecate below */
 .radio > label:not(.focus):hover .input-replacement,
 .checkbox > label:not(.focus):hover .input-replacement {
@@ -3735,14 +3762,6 @@ fieldset[disabled] .checkbox label input[type=checkbox] + .input-replacement > s
 .form-group .checkbox-lg .input-replacement,
 .form-group .radio-lg .input-replacement {
   top: 23px;
-}
-.form-horizontal .checkbox,
-.form-horizontal .radio {
-  padding-top: 0;
-}
-.form-horizontal .checkbox > label,
-.form-horizontal .radio > label {
-  margin-bottom: 0;
 }
 .radio.has-success > label .input-replacement,
 .checkbox.has-success > label .input-replacement,
@@ -5626,6 +5645,14 @@ tbody.collapse.in {
     max-height: 592px;
   }
 }
+.btn-group .small {
+  font-size: 14px;
+  line-height: 23px;
+  color: #829ca9 !important;
+}
+.btn-group .small.text-ellipsis {
+  line-height: 24px;
+}
 .input-group {
   position: relative;
   display: table;
@@ -5660,8 +5687,19 @@ tbody.collapse.in {
 .input-group:hover .bootstrap-select .btn-default {
   border-color: #829ca9;
 }
-.input-group:focus {
+.input-group .focus .input-group-addon,
+.input-group .focus .form-control,
+.input-group .focus .btn-input,
+.input-group .focus .ui-select-bootstrap .btn-default,
+.input-group .focus .bootstrap-select .btn-default {
   border-color: #d3d5d8;
+}
+.input-group.disabled .input-group-addon {
+  background-color: #f2f5f7;
+  border-color: #e2e6e8;
+}
+.input-group.disabled:hover .input-group-addon {
+  border-color: #829ca9;
 }
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
@@ -9842,33 +9880,52 @@ blockquote footer {
   margin-left: -12px;
   border: 2px solid #223049;
 }
-li .icon,
-li > a .icon,
+.dropdown-menu li .icon,
+.dropdown-menu li > a .icon,
+.nav li > a .icon,
 .btn .icon {
-  position: relative;
-  top: -2px;
-  display: inline-block;
-  margin-bottom: -3px;
   font-size: 24px;
-  vertical-align: middle;
-}
-li .circle-xs:first-child,
-li > a .circle-xs:first-child,
-.btn .circle-xs:first-child {
-  margin-top: -1px;
+  vertical-align: bottom;
 }
 li > .glyphicon:first-child,
 li > a > .glyphicon:first-child,
 li > .icon:first-child,
 li > a > .icon:first-child,
 li > .currency-flag:first-child,
-li > a > .currency-flag:first-child {
+li > a > .currency-flag:first-child,
+li > .circle:first-child,
+li > a > .circle:first-child {
   margin-right: 8px;
 }
 .btn .glyphicon:first-child,
 .btn .icon:first-child,
-.btn .currency-flag:first-child {
+.btn .currency-flag:first-child,
+.btn .circle:first-child {
   margin-right: 8px;
+}
+/* Aligns with radio/checkbox */
+.btn-group .icon,
+.btn-group .circle,
+.btn-group .currency-flag,
+.nav li .icon,
+.nav li .circle,
+.nav li .currency-flag {
+  margin-left: -2px;
+}
+li .circle {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.btn .currency-flag,
+.dropdown-menu li .currency-flag {
+  margin-top: 4px;
+}
+.btn .circle .icon,
+.dropdown-menu li .circle .icon {
+  float: none;
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
 }
 .m-a-0 {
   margin: 0 !important;
@@ -10168,12 +10225,12 @@ li > a > .currency-flag:first-child {
 .circle.circle-xs {
   width: 24px;
   height: 24px;
-  font-size: 14px;
+  font-size: 10px;
   line-height: 22px;
 }
 .circle.circle-xs .glyphicon,
 .circle.circle-xs .icon {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 22px;
 }
 .circle.circle-xs .glyphicon {
