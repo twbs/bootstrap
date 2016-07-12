@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>bootstrap.sass</id>
-    <version>4.0.0-alpha</version>
+    <version>4.0.0-alpha.2</version>
     <title>Bootstrap Sass</title>
     <authors>The Bootstrap Authors, Twitter Inc.</authors>
     <owners>bootstrap</owners>
