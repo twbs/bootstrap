@@ -198,36 +198,55 @@ blockquote footer {
     }
 }
 
-li,
-li > a,
+.dropdown-menu li,
+.dropdown-menu li > a,
+.nav li > a,
 .btn {
   .icon {
-      display: inline-block;
-      position: relative;
-      top: -2px;
       font-size: 24px;
-      vertical-align: middle;
-      margin-bottom: -3px;
-  }
- .circle-xs:first-child {
-      margin-top: -1px;
+      vertical-align: bottom;
   }
 }
 li,
 li > a {
   > .glyphicon:first-child,
   > .icon:first-child,
-  > .currency-flag:first-child {
+  > .currency-flag:first-child,
+  > .circle:first-child {
       margin-right: 8px;
   }
 }
 .btn {
   .glyphicon:first-child,
   .icon:first-child,
-  .currency-flag:first-child {
+  .currency-flag:first-child,
+  .circle:first-child {
       margin-right: 8px;
   }
-  .currency-flag {
-      vertical-align: sub;
-  }
+}
+
+/* Aligns with radio/checkbox */
+.btn-group .icon,
+.btn-group .circle,
+.btn-group .currency-flag,
+.nav li .icon,
+.nav li .circle,
+.nav li .currency-flag  {
+  margin-left: -2px;
+}
+li .circle {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.btn .currency-flag,
+.dropdown-menu li .currency-flag {
+  margin-top: 4px;
+}
+.btn .circle .icon,
+.dropdown-menu li .circle .icon {
+  float: none;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
