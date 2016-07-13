@@ -10,11 +10,25 @@
 
 // Responsive alignment
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    .text-#{$breakpoint}-left   { text-align: left !important; }
-    .text-#{$breakpoint}-right  { text-align: right !important; }
-    .text-#{$breakpoint}-center { text-align: center !important; }
+// Text directions for responsive alignment
+// _variables.scss might be a better place
+$text-directions: left center right;
+
+@each $direction in $text-directions {
+  .text-#{$direction} { text-align: #{$direction} }   // set directions as usual e. g. text-right
+
+  @each $bp in map-keys($grid-breakpoints) {
+    .text-#{$bp}-#{$direction} {
+      @include media-breakpoint-only($bp) {
+        text-align: #{$direction} !important;         // overwrite rule an certain breakpoint only
+      }
+    }
+
+    .text-#{$bp}-not-#{$direction} {
+      @include media-breakpoint-only($bp) {
+        text-align: inherit;                          // to apply alignments for any screen sizes except
+      }                                               // a certain screen size (e. g. text-right text-md-not-right)
+    }
   }
 }
 
