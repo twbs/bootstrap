@@ -15,12 +15,12 @@
 $text-directions: left center right;
 
 @each $direction in $text-directions {
-  .text-#{$direction} { text-align: #{$direction} }   // set directions as usual e. g. text-right
+  .text-#{$direction} { text-align: #{$direction}; }  // set directions as usual e. g. text-right
 
   @each $bp in map-keys($grid-breakpoints) {
     .text-#{$bp}-#{$direction} {
       @include media-breakpoint-only($bp) {
-        text-align: #{$direction} !important;         // overwrite rule an certain breakpoint only
+        text-align: #{$direction} !important;         // overwrite rule on certain breakpoint only
       }
     }
 
