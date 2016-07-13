@@ -7,17 +7,17 @@
     // Flex direction per breakpoint
     @each $breakpoint in map-keys($grid-breakpoints) {
       @include media-breakpoint-up($breakpoint) {
-        .flex-#{$breakpoint}-column      { flex-direction: column; }
-        .flex-#{$breakpoint}-row         { flex-direction: row; }
-        .flex-#{$breakpoint}-column-rev  { flex-direction: column-reverse; }
-        .flex-#{$breakpoint}-row-rev     { flex-direction: row-reverse; }
+        .flex-#{$breakpoint}-column { flex-direction: column; }
+        .flex-#{$breakpoint}-row { flex-direction: row; }
+        .flex-#{$breakpoint}-column-rev { flex-direction: column-reverse; }
+        .flex-#{$breakpoint}-row-rev { flex-direction: row-reverse; }
       }
     }
 
     // Flex wrap per breakpoint
     @each $breakpoint in map-keys($grid-breakpoints) {
       @include media-breakpoint-up($breakpoint) {
-        .flex-#{$breakpoint}-wrap    { flex-wrap: wrap; }
+        .flex-#{$breakpoint}-wrap { flex-wrap: wrap; }
         .flex-#{$breakpoint}-no-wrap { flex-wrap: nowrap; }
       }
     }
@@ -38,7 +38,7 @@
 
     // Alignment per item
     @include media-breakpoint-up($breakpoint) {
-      .flex-#{$breakpoint}-top   { align-self: flex-start; }
+      .flex-#{$breakpoint}-top { align-self: flex-start; }
       .flex-#{$breakpoint}-middle { align-self: center; }
       .flex-#{$breakpoint}-bottom { align-self: flex-end; }
     }
