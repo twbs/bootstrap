@@ -1,11 +1,13 @@
 // Text truncate
 // Requires inline-block or block for proper styling
 
-@mixin text-truncate($width: 100%, $no-wrap: true) {
-  @if ($no-wrap) {
-    white-space: nowrap;
+@mixin text-truncate($width: 100%, $wrap: false) {
+  @if ($wrap) {
+    overflow-wrap: break-word;
+    word-break: normal;
+    word-wrap: break-word;
   } @else {
-    @include word-wrap();
+    white-space: nowrap;
   }
   overflow: hidden;
   width: $width;

@@ -1,7 +1,0 @@
-// Word wrap
-
-@mixin word-wrap($wrap: break-word, $break: normal) {
-  overflow-wrap: $wrap;
-  word-wrap: $wrap;
-  word-break: $break;
-}
