@@ -1,4 +1,4 @@
-# [Bootstrap](http://getbootstrap.com)
+# [Bootstrap](https://getbootstrap.com)
 
 [![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
 ![Bower version](https://img.shields.io/bower/v/bootstrap.svg)
@@ -10,7 +10,7 @@
 
 Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thornton](https://twitter.com/fat), and maintained by the [core team](https://github.com/orgs/twbs/people) with the massive support and involvement of the community.
 
-To get started, check out <http://getbootstrap.com>!
+To get started, check out <https://getbootstrap.com>!
 
 
 ## Table of contents
@@ -31,12 +31,12 @@ Several quick start options are available:
 
 * [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.3.6.zip).
 * Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
-* Install with [Bower](http://bower.io): `bower install bootstrap`.
+* Install with [Bower](https://bower.io): `bower install bootstrap`.
 * Install with [npm](https://www.npmjs.com): `npm install bootstrap@3`.
 * Install with [Meteor](https://www.meteor.com): `meteor add twbs:bootstrap`.
 * Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap`.
 
-Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
+Read the [Getting started page](https://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
 ### What's included
 
@@ -76,7 +76,7 @@ Note that **feature requests must target [Bootstrap v4](https://github.com/twbs/
 
 ## Documentation
 
-Bootstrap's documentation, included in this repo in the root directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at <http://getbootstrap.com>. The docs may also be run locally.
+Bootstrap's documentation, included in this repo in the root directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at <https://getbootstrap.com>. The docs may also be run locally.
 
 ### Running documentation locally
 
@@ -89,7 +89,7 @@ Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com
 
 ### Documentation for previous releases
 
-Documentation for v2.3.2 has been made available for the time being at <http://getbootstrap.com/2.3.2/> while folks transition to Bootstrap 3.
+Documentation for v2.3.2 has been made available for the time being at <https://getbootstrap.com/2.3.2/> while folks transition to Bootstrap 3.
 
 [Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
 
@@ -110,7 +110,7 @@ Editor preferences are available in the [editor config](https://github.com/twbs/
 Get updates on Bootstrap's development and chat with the project maintainers and community members.
 
 * Follow [@getbootstrap on Twitter](https://twitter.com/getbootstrap).
-* Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
+* Read and subscribe to [The Official Bootstrap Blog](https://blog.getbootstrap.com).
 * Join [the official Slack room](https://bootstrap-slack.herokuapp.com).
 * Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 * Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
@@ -121,7 +121,7 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 
 For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
-See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](http://blog.getbootstrap.com) contain summaries of the most noteworthy changes made in each release.
+See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](https://blog.getbootstrap.com) contain summaries of the most noteworthy changes made in each release.
 
 
 ## Creators
