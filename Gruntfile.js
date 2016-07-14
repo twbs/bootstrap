@@ -278,6 +278,9 @@ module.exports = function (grunt) {
       'postcss-docs': {
         command: 'npm run postcss-docs'
       },
+      htmlhint: {
+        command: 'npm run htmlhint'
+      },
       'upload-preview': {
         command: './grunt/upload-preview.sh'
       }
@@ -327,7 +330,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
+  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint', 'exec:htmlhint']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
