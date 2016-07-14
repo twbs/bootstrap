@@ -72,16 +72,6 @@
   browser: >
     Microsoft Edge
   summary: >
-    Implement the `:dir()` pseudo-class from Selectors Level 4
-  upstream_bug: >
-    UserVoice#12299532
-  origin: >
-    Bootstrap#19984
-
--
-  browser: >
-    Microsoft Edge
-  summary: >
     Hovering over descendant SVG element fires `mouseleave` event at ancestor
   upstream_bug: >
     Edge#7787318
@@ -122,16 +112,6 @@
   browser: >
     Firefox
   summary: >
-    Fire `transitioncancel` event when a transition is canceled
-  upstream_bug: >
-    Mozilla#1264125
-  origin: >
-    Mozilla#1182856
-
--
-  browser: >
-    Firefox
-  summary: >
     Wide floated table doesn't wrap onto new line
   upstream_bug: >
     Mozilla#1277782
@@ -147,16 +127,6 @@
     Mozilla#577785
   origin: >
     Bootstrap#19670
-
--
-  browser: >
-    Firefox
-  summary: >
-    Implement the `of <selector-list>` clause of the `:nth-child()` pseudo-class
-  upstream_bug: >
-    Mozilla#854148
-  origin: >
-    Bootstrap#20143
 
 -
   browser: >
@@ -252,31 +222,11 @@
   browser: >
     Chrome
   summary: >
-    Implement the `:dir()` pseudo-class from Selectors Level 4
-  upstream_bug: >
-    Chromium#576815
-  origin: >
-    Bootstrap#19984
-
--
-  browser: >
-    Chrome
-  summary: >
     Don't make `:hover` sticky on touch-friendly webpages
   upstream_bug: >
     Chromium#370155
   origin: >
     Bootstrap#12832
-
--
-  browser: >
-    Chrome
-  summary: >
-    Implement the `of <selector-list>` clause of the `:nth-child()` pseudo-class
-  upstream_bug: >
-    Chromium#304163
-  origin: >
-    Bootstrap#20143
 
 -
   browser: >
@@ -297,16 +247,6 @@
     WebKit#156684
   origin: >
     Bootstrap#17403
-
--
-  browser: >
-    Safari
-  summary: >
-    Implement the `:dir()` pseudo-class from Selectors Level 4
-  upstream_bug: >
-    WebKit#64861
-  origin: >
-    Bootstrap#19984
 
 -
   browser: >
