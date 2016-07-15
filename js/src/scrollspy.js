@@ -252,7 +252,7 @@ const ScrollSpy = (($) => {
       } else {
         // todo (fat) this is kinda sus...
         // recursively add actives to tested nav-links
-        $link.parents(Selector.LI).find('> ' + Selector.NAV_LINKS).addClass(ClassName.ACTIVE)
+        $link.parents(Selector.LI).find(`> ${Selector.NAV_LINKS}`).addClass(ClassName.ACTIVE)
       }
 
       $(this._scrollElement).trigger(Event.ACTIVATE, {
