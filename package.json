@@ -15,7 +15,7 @@
   "author": "Twitter, Inc.",
   "scripts": {
     "change-version": "node grunt/change-version.js",
-    "shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
+    "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
     "test": "grunt test"
   },
   "style": "dist/css/bootstrap.css",
