@@ -10,6 +10,16 @@
 
 -
   browser: >
+    Microsoft Edge
+  summary: >
+    Implement [sticky positioning](http://html5please.com/#position:sticky) from CSS Positioned Layout Level 3
+  upstream_bug: >
+    UserVoice#6263621
+  origin: >
+    Bootstrap#17021
+
+-
+  browser: >
     Firefox
   summary: >
     Fire a [`transitioncancel` event](https://developer.mozilla.org/en-US/docs/Web/Events/transitioncancel) when a CSS transition is canceled
@@ -57,6 +67,16 @@
     Chromium#576815
   origin: >
     Bootstrap#19984
+
+-
+  browser: >
+    Chrome
+  summary: >
+    Implement [sticky positioning](http://html5please.com/#position:sticky) from CSS Positioned Layout Level 3
+  upstream_bug: >
+    Chromium#231752
+  origin: >
+    Bootstrap#17021
 
 -
   browser: >
