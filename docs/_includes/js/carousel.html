@@ -180,7 +180,7 @@ $('.carousel').carousel()
          <td>pause</td>
          <td>string</td>
          <td>"hover"</td>
-         <td>Pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave.</td>
+         <td>Pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. To disable use value <code>false</code>.</td>
        </tr>
        <tr>
          <td>wrap</td>
@@ -212,7 +212,7 @@ $('.carousel').carousel({
   <p>Cycles through the carousel items from left to right.</p>
 
   <h4><code>.carousel('pause')</code></h4>
-  <p>Stops the carousel from cycling through items.</p>
+  <p>Stops the carousel from cycling through items. Note that this does <i>not</i> work when the <code>pause</code> option has been set to <code>false</code>.</p>
 
 
   <h4><code>.carousel(number)</code></h4>
