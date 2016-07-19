@@ -105,10 +105,16 @@
 // Bootstrap JavaScript plugin.
 
 .navbar-toggler {
+  box-sizing: content-box;
+  width: 1em;
+  height: 1em;
   padding: .5rem .75rem;
   font-size: $font-size-lg;
   line-height: 1;
-  background: none;
+  background: url(data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2016%2016%22%3E%3Crect%20y%3D%222%22%20width%3D%2216%22%20height%3D%221%22%2F%3E%3Crect%20y%3D%227%22%20width%3D%2216%22%20height%3D%221%22%2F%3E%3Crect%20y%3D%2212%22%20width%3D%2216%22%20height%3D%221%22%2F%3E%3C%2Fsvg%3E) no-repeat 50% 50%;
+  background-clip: content-box;
+  background-origin: content-box;
+  background-size: 1em 1em;
   border: $border-width solid transparent;
   @include border-radius($btn-border-radius);
 
