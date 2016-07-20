@@ -1,0 +1,1 @@
+node-sass docs/assets/scss/docs.scss | cleancss -o docs/assets/css/docs.min.css --source-map

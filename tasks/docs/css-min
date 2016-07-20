@@ -1,0 +1,1 @@
+node-sass scss/bootstrap.scss | cleancss -o dist/css/bootstrap.min.css --source-map
