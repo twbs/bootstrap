@@ -442,7 +442,7 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
 
 ### Example: Column ordering
 
-Easily change the order of our built-in grid columns with `.col-md-push-*` and `.col-md-pull-*` modifier classes.
+Easily change the order of our built-in grid columns with `.push-md-*` and `.pull-md-*` modifier classes.
 
 <div class="bd-example-row">
 {% example html %}
