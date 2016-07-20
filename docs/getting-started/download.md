@@ -78,7 +78,7 @@ $ meteor add twbs:bootstrap@={{ site.current_version }}
 You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org):
 
 {% highlight bash %}
-$ composer require twbs/bootstrap
+$ composer require twbs/bootstrap:{{ site.current_version }}
 {% endhighlight %}
 
 ### Bower
