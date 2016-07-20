@@ -38,8 +38,9 @@ const Tooltip = (($) => {
   const Default = {
     animation   : true,
     template    : '<div class="tooltip" role="tooltip">'
+                + '<div class="tooltip-inner-wrap">'
                 + '<div class="tooltip-arrow"></div>'
-                + '<div class="tooltip-inner"></div></div>',
+                + '<div class="tooltip-inner"></div></div></div>',
     trigger     : 'hover focus',
     title       : '',
     delay       : 0,
@@ -51,7 +52,7 @@ const Tooltip = (($) => {
   }
 
   const DefaultType = {
-    animation   : 'boolean',
+    animation   : 'string',
     template    : 'string',
     title       : '(string|element|function)',
     trigger     : 'string',
@@ -95,7 +96,8 @@ const Tooltip = (($) => {
 
   const Selector = {
     TOOLTIP       : '.tooltip',
-    TOOLTIP_INNER : '.tooltip-inner'
+    TOOLTIP_INNER : '.tooltip-inner',
+    TOOLTIP_WRAP  : '.tooltip-inner-wrap'
   }
 
   const TetherClass = {
@@ -205,8 +207,7 @@ const Tooltip = (($) => {
         }
 
       } else {
-
-        if ($(this.getTipElement()).hasClass(ClassName.IN)) {
+        if ($(this.getTipElement()).find(Selector.TOOLTIP_WRAP).hasClass(this.config.animation)) {
           this._leave(null, this)
           return
         }
@@ -262,10 +263,6 @@ const Tooltip = (($) => {
 
         this.setContent()
 
-        if (this.config.animation) {
-          $(tip).addClass(ClassName.FADE)
-        }
-
         let placement  = typeof this.config.placement === 'function' ?
           this.config.placement.call(this, tip, this.element) :
           this.config.placement
@@ -292,8 +289,6 @@ const Tooltip = (($) => {
         Util.reflow(tip)
         this._tether.position()
 
-        $(tip).addClass(ClassName.IN)
-
         let complete = () => {
           let prevHoverState = this._hoverState
           this._hoverState   = null
@@ -305,7 +300,12 @@ const Tooltip = (($) => {
           }
         }
 
-        if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+        if (this.config.animation) {
+          $(tip).find(Selector.TOOLTIP_WRAP).addClass(this.config.animation)  
+        }
+
+        if (Util.supportsTransitionEnd() && $(this.tip).find(Selector.TOOLTIP_WRAP).hasClass(this.config.animation)) {
+
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
             .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
@@ -339,11 +339,11 @@ const Tooltip = (($) => {
         return
       }
 
-      $(tip).removeClass(ClassName.IN)
-
       if (Util.supportsTransitionEnd() &&
-         ($(this.tip).hasClass(ClassName.FADE))) {
+         ($(this.tip).find(Selector.TOOLTIP_WRAP).hasClass(this.config.animation))) {
 
+
+        $(tip).find(Selector.TOOLTIP_WRAP).removeClass(this.config.animation);
         $(tip)
           .one(Util.TRANSITION_END, complete)
           .emulateTransitionEnd(TRANSITION_DURATION)
@@ -371,9 +371,7 @@ const Tooltip = (($) => {
 
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
 
-      $tip
-        .removeClass(ClassName.FADE)
-        .removeClass(ClassName.IN)
+      $tip.find(Selector.TOOLTIP_WRAP).removeClass(this.config.animation)
 
       this.cleanupTether()
     }
@@ -493,7 +491,7 @@ const Tooltip = (($) => {
         ] = true
       }
 
-      if ($(context.getTipElement()).hasClass(ClassName.IN) ||
+      if ($(context.getTipElement()).find(Selector.TOOLTIP_WRAP).hasClass(this.config.animation) ||
          (context._hoverState === HoverState.IN)) {
         context._hoverState = HoverState.IN
         return
@@ -577,6 +575,12 @@ const Tooltip = (($) => {
           show : config.delay,
           hide : config.delay
         }
+      }
+
+      if ( typeof config.animation === 'boolean' ) {
+        config.animation = config.animation ? `${ClassName.FADE} ${ClassName.IN}` : '';
+      } else if ( typeof config.animation !== 'string' ) {
+        config.animation = '';
       }
 
       Util.typeCheckConfig(
