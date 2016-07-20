@@ -39,7 +39,7 @@ var Tooltip = (function ($) {
 
   var Default = {
     animation: true,
-    template: '<div class="tooltip" role="tooltip">' + '<div class="tooltip-arrow"></div>' + '<div class="tooltip-inner"></div></div>',
+    template: '<div class="tooltip" role="tooltip">' + '<div class="tooltip-inner-wrap">' + '<div class="tooltip-arrow"></div>' + '<div class="tooltip-inner"></div></div></div>',
     trigger: 'hover focus',
     title: '',
     delay: 0,
@@ -51,7 +51,7 @@ var Tooltip = (function ($) {
   };
 
   var DefaultType = {
-    animation: 'boolean',
+    animation: 'string',
     template: 'string',
     title: '(string|element|function)',
     trigger: 'string',
@@ -95,7 +95,8 @@ var Tooltip = (function ($) {
 
   var Selector = {
     TOOLTIP: '.tooltip',
-    TOOLTIP_INNER: '.tooltip-inner'
+    TOOLTIP_INNER: '.tooltip-inner',
+    TOOLTIP_WRAP: '.tooltip-inner-wrap'
   };
 
   var TetherClass = {
@@ -181,8 +182,7 @@ var Tooltip = (function ($) {
             context._leave(null, context);
           }
         } else {
-
-          if ($(this.getTipElement()).hasClass(ClassName.IN)) {
+          if ($(this.getTipElement()).find(Selector.TOOLTIP_WRAP).hasClass(this.config.animation)) {
             this._leave(null, this);
             return;
           }
@@ -239,10 +239,6 @@ var Tooltip = (function ($) {
 
           this.setContent();
 
-          if (this.config.animation) {
-            $(tip).addClass(ClassName.FADE);
-          }
-
           var placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this.element) : this.config.placement;
 
           var attachment = this._getAttachment(placement);
@@ -265,8 +261,6 @@ var Tooltip = (function ($) {
           Util.reflow(tip);
           this._tether.position();
 
-          $(tip).addClass(ClassName.IN);
-
           var complete = function complete() {
             var prevHoverState = _this._hoverState;
             _this._hoverState = null;
@@ -278,7 +272,12 @@ var Tooltip = (function ($) {
             }
           };
 
-          if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+          if (this.config.animation) {
+            $(tip).find(Selector.TOOLTIP_WRAP).addClass(this.config.animation);
+          }
+
+          if (Util.supportsTransitionEnd() && $(this.tip).find(Selector.TOOLTIP_WRAP).hasClass(this.config.animation)) {
+
             $(this.tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
             return;
           }
@@ -313,10 +312,9 @@ var Tooltip = (function ($) {
           return;
         }
 
-        $(tip).removeClass(ClassName.IN);
+        if (Util.supportsTransitionEnd() && $(this.tip).find(Selector.TOOLTIP_WRAP).hasClass(this.config.animation)) {
 
-        if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
-
+          $(tip).find(Selector.TOOLTIP_WRAP).removeClass(this.config.animation);
           $(tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
         } else {
           complete();
@@ -344,7 +342,7 @@ var Tooltip = (function ($) {
 
         this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle());
 
-        $tip.removeClass(ClassName.FADE).removeClass(ClassName.IN);
+        $tip.find(Selector.TOOLTIP_WRAP).removeClass(this.config.animation);
 
         this.cleanupTether();
       }
@@ -443,7 +441,7 @@ var Tooltip = (function ($) {
           context._activeTrigger[event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER] = true;
         }
 
-        if ($(context.getTipElement()).hasClass(ClassName.IN) || context._hoverState === HoverState.IN) {
+        if ($(context.getTipElement()).find(Selector.TOOLTIP_WRAP).hasClass(this.config.animation) || context._hoverState === HoverState.IN) {
           context._hoverState = HoverState.IN;
           return;
         }
@@ -519,6 +517,12 @@ var Tooltip = (function ($) {
             show: config.delay,
             hide: config.delay
           };
+        }
+
+        if (typeof config.animation === 'boolean') {
+          config.animation = config.animation ? ClassName.FADE + ' ' + ClassName.IN : '';
+        } else if (typeof config.animation !== 'string') {
+          config.animation = '';
         }
 
         Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
