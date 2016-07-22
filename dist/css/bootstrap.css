@@ -9942,6 +9942,9 @@ li .circle {
   color: #00b9ff !important;
   text-decoration: none;
 }
+.tw-select-filter {
+  border: 0;
+}
 .tw-select-filter-link:hover,
 .tw-select-filter-link:active {
   background-color: #fff !important;
