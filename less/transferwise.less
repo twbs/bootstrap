@@ -224,6 +224,17 @@ li > a {
       margin-right: 8px;
   }
 }
+li,
+li > a {
+  > .circle-sm:first-child {
+      margin-right: 12px;
+  }
+}
+.btn {
+  .circle-sm:first-child {
+      margin-right: 12px;
+  }
+}
 
 /* Aligns with radio/checkbox */
 .btn-group .icon,
@@ -249,4 +260,13 @@ li .circle {
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
+}
+
+.tw-select-transcluded a {
+  color: @link-color !important;
+  text-decoration: none;
+}
+.tw-select-filter-link:hover,
+.tw-select-filter-link:active {
+  background-color: @brand-white !important;
 }

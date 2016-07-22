@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v3.3.5 (http://bootstrap.transferwise.com)
+ * Bootstrap v4.1.11 (http://bootstrap.transferwise.com)
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
@@ -5887,6 +5887,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .has-error .input-group .form-control:focus {
   border-color: #f53636;
 }
+.dropdown-menu .input-group-addon {
+  color: #a8aaac;
+  border: 0;
+}
 .nav {
   padding-left: 0;
   margin-bottom: 0;
@@ -9903,6 +9907,13 @@ li > a > .circle:first-child {
 .btn .circle:first-child {
   margin-right: 8px;
 }
+li > .circle-sm:first-child,
+li > a > .circle-sm:first-child {
+  margin-right: 12px;
+}
+.btn .circle-sm:first-child {
+  margin-right: 12px;
+}
 /* Aligns with radio/checkbox */
 .btn-group .icon,
 .btn-group .circle,
@@ -9926,6 +9937,14 @@ li .circle {
   margin-top: 0;
   margin-right: 0;
   margin-left: 0;
+}
+.tw-select-transcluded a {
+  color: #00b9ff !important;
+  text-decoration: none;
+}
+.tw-select-filter-link:hover,
+.tw-select-filter-link:active {
+  background-color: #fff !important;
 }
 .m-a-0 {
   margin: 0 !important;
@@ -10294,6 +10313,17 @@ a.circle.active:hover {
   .circle-lg.circle-responsive .glyphicon {
     margin-top: -1px;
   }
+}
+.dropdown-menu li > .circle-sm:first-child,
+.dropdown-menu li > a > .circle-sm:first-child {
+  margin-right: 12px;
+}
+.dropdown-menu a:hover .circle {
+  color: #829ca9;
+  border-color: #d3d5d8;
+}
+.btn .circle-sm:first-child {
+  margin-right: 12px;
 }
 .logo,
 .logo-primary {
