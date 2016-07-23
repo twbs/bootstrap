@@ -301,7 +301,7 @@ const Tooltip = (($) => {
         }
 
         if (this.config.animation) {
-          $(tip).find(Selector.TOOLTIP_WRAP).addClass(this.config.animation)  
+          $(tip).find(Selector.TOOLTIP_WRAP).addClass(this.config.animation)
         }
 
         if (Util.supportsTransitionEnd() && $(this.tip).find(Selector.TOOLTIP_WRAP).hasClass(this.config.animation)) {
@@ -343,7 +343,7 @@ const Tooltip = (($) => {
          ($(this.tip).find(Selector.TOOLTIP_WRAP).hasClass(this.config.animation))) {
 
 
-        $(tip).find(Selector.TOOLTIP_WRAP).removeClass(this.config.animation);
+        $(tip).find(Selector.TOOLTIP_WRAP).removeClass(this.config.animation)
         $(tip)
           .one(Util.TRANSITION_END, complete)
           .emulateTransitionEnd(TRANSITION_DURATION)
@@ -577,10 +577,10 @@ const Tooltip = (($) => {
         }
       }
 
-      if ( typeof config.animation === 'boolean' ) {
-        config.animation = config.animation ? `${ClassName.FADE} ${ClassName.IN}` : '';
-      } else if ( typeof config.animation !== 'string' ) {
-        config.animation = '';
+      if (typeof config.animation === 'boolean') {
+        config.animation = config.animation ? `${ClassName.FADE} ${ClassName.IN}` : ''
+      } else if (typeof config.animation !== 'string') {
+        config.animation = ''
       }
 
       Util.typeCheckConfig(
