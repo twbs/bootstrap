@@ -9,7 +9,6 @@
   font-size: $font-size-sm;
   // Allow breaking very long words so they don't overflow the tooltip's bounds
   word-wrap: break-word;
-  opacity: 0;
 
   &.in { opacity: $tooltip-opacity; }
 
@@ -65,6 +64,12 @@
       border-left-color: $tooltip-arrow-color;
     }
   }
+}
+
+// Wrapper for animations on tooltip
+.tooltip-inner-wrap {
+  padding-bottom: 5px;
+  margin-bottom: -5px;
 }
 
 // Wrapper for the tooltip content

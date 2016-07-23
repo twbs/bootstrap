@@ -1,10 +1,10 @@
 .fade {
-  opacity: 0;
-  transition: opacity .15s linear;
+  animation: bs-fade-in .15s linear;
+}
 
-  &.in {
-    opacity: 1;
-  }
+@keyframes bs-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .collapse {

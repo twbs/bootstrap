@@ -392,7 +392,6 @@ a:focus, a:hover {
 }
 
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2492,7 +2491,6 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3105,14 +3103,36 @@ input[type="button"].btn-block {
 }
 
 .fade {
-  opacity: 0;
-  -webkit-transition: opacity .15s linear;
-  -o-transition: opacity .15s linear;
-  transition: opacity .15s linear;
+  -webkit-animation: bs-fade-in .15s linear;
+       -o-animation: bs-fade-in .15s linear;
+          animation: bs-fade-in .15s linear;
 }
 
-.fade.in {
-  opacity: 1;
+@-webkit-keyframes bs-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes bs-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bs-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .collapse {
@@ -5471,7 +5491,6 @@ button.close {
   word-spacing: normal;
   font-size: 0.875rem;
   word-wrap: break-word;
-  opacity: 0;
 }
 
 .tooltip.in {
@@ -5528,6 +5547,11 @@ button.close {
   margin-top: -5px;
   border-width: 5px 0 5px 5px;
   border-left-color: #000;
+}
+
+.tooltip-inner-wrap {
+  margin-bottom: -5px;
+  padding-bottom: 5px;
 }
 
 .tooltip-inner {
