@@ -59,7 +59,7 @@ This list highlights key changes by component between v3.x.x and v4.0.0.
 
 ### Reboot
 
-New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border` change, moving from `rem` to `em` units on many elements, link styles, and many form element resets.
+New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border-box` change, moving from `rem` to `em` units on many elements, link styles, and many form element resets.
 
 ### Typography
 
@@ -67,6 +67,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Dropped `.page-header` as, aside from the border, all it's styles can be applied via utilities.
 - `.dl-horizontal` has been dropped. Instead, use `.row` on `<dl>` and use grid column classes (or mixins) on its `<dt>` and `<dd>` children.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
+- `.list-inline` now requires that its children list items have the new `.list-inline-item` class applied to them.
 
 ### Images
 
@@ -123,7 +124,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### List groups
 
 - Replaced `a.list-group-item` with an explicit class, `.list-group-item-action`, for styling link and button versions of list group items.
--
+
+### Modal
+
+- The `remote` option (which could be used to automatically load and inject external content into a modal) and the corresponding `loaded.bs.modal` event were removed. We recommend instead using client-side templating or a data binding framework, or calling [jQuery.load](http://api.jquery.com/load/) yourself.
 
 ### Navs
 
@@ -221,11 +225,7 @@ TODO: audit classes in v3 that aren't present in v4
 
 ### Responsive utilities
 
-The following variables have been removed in v4.0.0. Use the `media-breakpoint-up()`, `media-breakpoint-down()`, or `media-breakpoint-only()` Sass mixins or the `$grid-breakpoints` Sass map instead of:
-
-* `@screen-phone`, `@screen-tablet`, `@screen-desktop`, `@screen-lg-desktop`.
-* `@screen-xs`, `@screen-sm`, `@screen-md`, `@screen-lg`.
-* `@screen-xs-min`, `@screen-xs-max`, `@screen-sm-min`, `@screen-sm-max`, `@screen-md-min`, `@screen-md-max`, `@screen-lg-min`, `@screen-lg-max`
+All `@screen-` variables have been removed in v4.0.0. Use the `media-breakpoint-up()`, `media-breakpoint-down()`, or `media-breakpoint-only()` Sass mixins or the `$grid-breakpoints` Sass map instead.
 
 The responsive utility classes have also been overhauled.
 

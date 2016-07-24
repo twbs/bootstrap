@@ -1,6 +1,4 @@
 {
-  "esnext": true,
-  "verbose": true,
   "disallowEmptyBlocks": true,
   "disallowKeywords": ["with"],
   "disallowMixedSpacesAndTabs": true,
