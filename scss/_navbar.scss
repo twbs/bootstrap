@@ -132,16 +132,19 @@
 // Custom override for
 .navbar-toggleable {
   &-xs {
+    @include clearfix;
     @include media-breakpoint-up(sm) {
       display: block !important;
     }
   }
   &-sm {
+    @include clearfix;
     @include media-breakpoint-up(md) {
       display: block !important;
     }
   }
   &-md {
+    @include clearfix;
     @include media-breakpoint-up(lg) {
       display: block !important;
     }
