@@ -4,22 +4,32 @@
 // any value of `$grid-columns`.
 
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+
+  // Common properties for all breakpoints
+  %grid-column {
+    position: relative;
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    // Inner gutter via padding
+    padding-right: ($gutter / 2);
+    padding-left: ($gutter / 2);
+
+    @if $enable-flex {
+      width: 100%;
+    }
+  }
+
   $breakpoint-counter: 0;
   @each $breakpoint in map-keys($breakpoints) {
     $breakpoint-counter: ($breakpoint-counter + 1);
-    @include media-breakpoint-up($breakpoint, $breakpoints) {
-      @if $enable-flex {
-        .col-#{$breakpoint} {
-          position: relative;
-          flex-basis: 0;
-          flex-grow: 1;
-          max-width: 100%;
-          min-height: 1px;
-          padding-right: ($gutter / 2);
-          padding-left:  ($gutter / 2);
-        }
-      }
 
+    @for $i from 1 through $columns {
+      .col-#{$breakpoint}-#{$i} {
+        @extend %grid-column;
+      }
+    }
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
       @for $i from 1 through $columns {
         .col-#{$breakpoint}-#{$i} {
           @include make-col($i, $columns, $gutter);
