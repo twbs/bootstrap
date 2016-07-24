@@ -180,20 +180,21 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 }
 
 // Make the element grid-ready (applying everything but the width)
-@mixin make-col($gutter: $grid-gutter-width) {
+@mixin make-col-ready($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
   position: relative;
-  @if $enable-flex {
-    flex: 1;
-  } @else {
-    float: left;
-  }
-  min-height: 1px;
-  padding-left:  ($gutter / 2);
+  min-height: 1px; // Prevent collapsing
   padding-right: ($gutter / 2);
+  padding-left:  ($gutter / 2);
+
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we use `flex` values
+  // later on to override this initial width.
+  @if $enable-flex {
+    width: 100%;
+  }
 }
 
-@mixin make-col-span($size, $columns: $grid-columns) {
-  // Set a width (to be used in or out of media queries)
+@mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
   @if $enable-flex {
     flex: 0 0 percentage($size / $columns);
     // Add a `max-width` to ensure content within each column does not blow out
@@ -201,6 +202,7 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
     // do not appear to require this.
     max-width: percentage($size / $columns);
   } @else {
+    float: left;
     width: percentage($size / $columns);
   }
 }
@@ -232,23 +234,23 @@ See it in action in <a href="http://jsbin.com/ruxona/edit">this rendered example
   @include make-row();
 }
 .content-main {
-  @include make-col();
+  @include make-col-ready();
 
   @media (max-width: 32em) {
-    @include make-col-span(6);
+    @include make-col(6);
   }
   @media (min-width: 32.1em) {
-    @include make-col-span(8);
+    @include make-col(8);
   }
 }
 .content-secondary {
-  @include make-col();
+  @include make-col-ready();
 
   @media (max-width: 32em) {
-    @include make-col-span(6);
+    @include make-col(6);
   }
   @media (min-width: 32.1em) {
-    @include make-col-span(4);
+    @include make-col(4);
   }
 }
 {% endhighlight %}
