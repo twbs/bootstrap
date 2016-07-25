@@ -97,6 +97,8 @@ function main(args) {
     '.json',
     '.less',
     '.md',
+    '.nuspec',
+    '.ps1',
     '.scss',
     '.txt',
     '.yml'
