@@ -95,6 +95,7 @@ function main(args) {
     '.html',
     '.js',
     '.json',
+    '.less',
     '.md',
     '.scss',
     '.txt',
