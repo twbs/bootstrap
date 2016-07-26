@@ -270,36 +270,36 @@ In addition to our semantic mixins, Bootstrap includes an extensive set of prebu
 
 ### Example: Stacked-to-horizontal
 
-Using a single set of `.col-md-*` grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns with the `.col` base class and a modifier within any `.row`.
+Using a single set of `.col-md-*` grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns within any `.row`.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
 </div>
 <div class="row">
-  <div class="col-md-8">md-8</div>
-  <div class="col-md-4">md-4</div>
+  <div class="col-md-8">col-md-8</div>
+  <div class="col-md-4">col-md-4</div>
 </div>
 <div class="row">
-  <div class="col-md-4">md-4</div>
-  <div class="col-md-4">md-4</div>
-  <div class="col-md-4">md-4</div>
+  <div class="col-md-4">col-md-4</div>
+  <div class="col-md-4">col-md-4</div>
+  <div class="col-md-4">col-md-4</div>
 </div>
 <div class="row">
-  <div class="col-md-6">md-6</div>
-  <div class="col-md-6">md-6</div>
+  <div class="col-md-6">col-md-6</div>
+  <div class="col-md-6">col-md-6</div>
 </div>
 {% endexample %}
 </div>
