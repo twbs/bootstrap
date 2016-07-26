@@ -10,7 +10,7 @@
 }
 
 // Rounded corners
-.img-rounded {
+.rounded {
   @include border-radius($border-radius-lg);
 }
 
