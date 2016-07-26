@@ -30,6 +30,19 @@
     }
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      @if $enable-flex {
+        .col-#{$breakpoint} {
+          position: relative;
+          flex-basis: 0;
+          flex-grow: 1;
+          max-width: 100%;
+          min-height: 1px;
+          padding-right: ($grid-gutter-width / 2);
+          padding-left:  ($grid-gutter-width / 2);
+        }
+      }
+
       @for $i from 1 through $columns {
         .col-#{$breakpoint}-#{$i} {
           @include make-col($i, $columns, $gutter);
