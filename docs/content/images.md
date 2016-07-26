@@ -34,13 +34,13 @@ In Internet Explorer 9-10, SVG images with `.img-fluid` are disproportionately s
 Add classes to an `<img>` element to easily style images in any project.
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/200x200" class="img-rounded" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="rounded" alt="A generic square placeholder image with rounded corners">
   <img data-src="holder.js/200x200" class="img-circle" alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible">
   <img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
 </div>
 
 {% highlight html %}
-<img src="..." alt="..." class="img-rounded">
+<img src="..." alt="..." class="rounded">
 <img src="..." alt="..." class="img-circle">
 <img src="..." alt="..." class="img-thumbnail">
 {% endhighlight %}
@@ -50,31 +50,31 @@ Add classes to an `<img>` element to easily style images in any project.
 Align images with the [helper float classes]({{ site.baseurl }}/components/utilities/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/components/utilities/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/components/utilities/#horizontal-centering).
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/200x200" class="img-rounded pull-xs-left" alt="A generic square placeholder image with rounded corners">
-  <img data-src="holder.js/200x200" class="img-rounded pull-xs-right" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="rounded pull-xs-left" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="rounded pull-xs-right" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-rounded pull-xs-left" alt="...">
-<img src="..." class="img-rounded pull-xs-right" alt="...">
+<img src="..." class="rounded pull-xs-left" alt="...">
+<img src="..." class="rounded pull-xs-right" alt="...">
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/200x200" class="img-rounded mx-auto d-block" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="rounded mx-auto d-block" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-rounded mx-auto d-block" alt="...">
+<img src="..." class="rounded mx-auto d-block" alt="...">
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
   <div class="text-xs-center">
-    <img data-src="holder.js/200x200" class="img-rounded" alt="A generic square placeholder image with rounded corners">
+    <img data-src="holder.js/200x200" class="rounded" alt="A generic square placeholder image with rounded corners">
   </div>
 </div>
 
 {% highlight html %}
 <div class="text-xs-center">
-  <img src="..." class="img-rounded" alt="...">
+  <img src="..." class="rounded" alt="...">
 </div>
 {% endhighlight %}
