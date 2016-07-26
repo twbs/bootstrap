@@ -70,7 +70,7 @@ $ gem install bootstrap -v 4.0.0.alpha3
 ### Meteor
 
 {% highlight bash %}
-$ meteor add twbs:bootstrap@={{ site.current_version }}
+$ meteor add twbs:bootstrap@4.0.0-alpha2
 {% endhighlight %}
 
 ### Composer
@@ -121,4 +121,3 @@ Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag 
     <a class="btn btn-bs btn-outline" href="#">Download</a>
   </div>
 </div>
-
