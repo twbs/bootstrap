@@ -123,16 +123,19 @@
   &-xs {
     @include media-breakpoint-up(sm) {
       display: block !important;
+      height: auto !important;
     }
   }
   &-sm {
     @include media-breakpoint-up(md) {
       display: block !important;
+      height: auto !important;
     }
   }
   &-md {
     @include media-breakpoint-up(lg) {
       display: block !important;
+      height: auto !important;
     }
   }
 }
