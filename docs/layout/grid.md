@@ -139,7 +139,7 @@ Variables and maps determine the number of columns, the gutter width, and the me
 
 {% highlight scss %}
 $grid-columns:      12;
-$grid-gutter-width: 15px;
+$grid-gutter-width: 30px;
 
 $grid-breakpoints: (
   // Extra small screen / phone
