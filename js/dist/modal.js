@@ -6,7 +6,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): modal.js
+ * Bootstrap (v4.0.0-alpha.3): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -20,7 +20,7 @@ var Modal = (function ($) {
    */
 
   var NAME = 'modal';
-  var VERSION = '4.0.0-alpha.2';
+  var VERSION = '4.0.0-alpha.3';
   var DATA_KEY = 'bs.modal';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';

@@ -1,6 +1,6 @@
 {
   "name": "bootstrap",
-  "version": "4.0.0-alpha.2",
+  "version": "4.0.0-alpha.3",
   "dependencies": {
     "abbrev": {
       "version": "1.0.9",
