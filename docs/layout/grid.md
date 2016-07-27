@@ -94,7 +94,7 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
         <td>None (auto)</td>
         <td>576px</td>
         <td>720px</td>
-        <td>940px</td>
+        <td>948px</td>
         <td>1140px</td>
       </tr>
       <tr>
