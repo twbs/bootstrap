@@ -2248,6 +2248,18 @@ pre code {
     margin-left: 0;
   }
 }
+
+  .h-scrollable {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .h-scrollable [class*="col"] {
+    display: inline-block;
+    float: none;
+    white-space: normal;
+    vertical-align: top;
+  }
+  
 table {
   background-color: transparent;
 }
