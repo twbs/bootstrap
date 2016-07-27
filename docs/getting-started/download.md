@@ -83,6 +83,7 @@ PM> Install-Package bootstrap.sass -Pre
 
 The `-Pre` is required until Bootstrap v4 has a stable release.
 
+{% comment %}
 ## Custom builds
 
 Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag just what you need.
@@ -104,3 +105,4 @@ Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag 
     <a class="btn btn-bs btn-outline" href="#">Download</a>
   </div>
 </div>
+{% endcomment %}
