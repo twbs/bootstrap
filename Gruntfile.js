@@ -184,8 +184,15 @@ module.exports = function (grunt) {
         ]
       },
       docs: {
-        src: 'docs/assets/css/docs.min.css',
-        dest: 'docs/assets/css/docs.min.css'
+        files: [
+          {
+            expand: true,
+            cwd: 'docs/assets/css',
+            src: ['*.css', '!*.min.css'],
+            dest: 'docs/assets/css',
+            ext: '.min.css'
+          }
+        ]
       }
     },
 
