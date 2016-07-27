@@ -82,3 +82,15 @@
 @media (min-width: @screen-lg-min) {
   .make-grid(lg);
 }
+
+// Scrollable Horizontal Grid
+  .h-scrollable {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .h-scrollable [class*="col"] {
+    display: inline-block;
+    float: none;
+    white-space: normal;
+    vertical-align: top;
+  }
