@@ -70,6 +70,7 @@
 
 .list-group-flush {
   .list-group-item {
+    border-width: $list-group-border-width 0;
     border-radius: 0;
   }
 }
