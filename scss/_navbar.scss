@@ -222,6 +222,7 @@
       .navbar-nav .nav-item {
         float: none;
         margin-left: 0;
+        clear: both;
       }
     }
     @include media-breakpoint-up(sm) {
@@ -235,6 +236,7 @@
       .navbar-nav .nav-item {
         float: none;
         margin-left: 0;
+        clear: both;
       }
     }
     @include media-breakpoint-up(md) {
@@ -248,6 +250,7 @@
       .navbar-nav .nav-item {
         float: none;
         margin-left: 0;
+        clear: both;
       }
     }
     @include media-breakpoint-up(lg) {
