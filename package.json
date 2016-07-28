@@ -28,7 +28,7 @@
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
-  "main": "./dist/js/npm",
+  "main": "dist/js/bootstrap",
   "repository": {
     "type": "git",
     "url": "https://github.com/twbs/bootstrap.git"
