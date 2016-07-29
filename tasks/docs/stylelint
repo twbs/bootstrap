@@ -1,1 +1,1 @@
-stylelint docs/assets/scss/**/*.scss --syntax scss --config scss/.stylelintrc
+stylelint docs/assets/scss/**/*.scss --syntax scss --config stylelint-config-bootstrap
