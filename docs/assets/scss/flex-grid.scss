@@ -11,7 +11,6 @@
 // Override for flexbox mode
 $enable-flex: true;
 
-
 //
 // Grid mixins
 //
@@ -20,5 +19,15 @@ $enable-flex: true;
 @import "mixins/breakpoints";
 @import "mixins/grid-framework";
 @import "mixins/grid";
+
+//
+// Utilities for flex alignment
+//
+
+@import "utilities/flex";
+
+//
+// Generate the grid class
+//
 
 @import "grid";
