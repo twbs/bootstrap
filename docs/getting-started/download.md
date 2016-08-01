@@ -6,27 +6,10 @@ group: getting-started
 
 **Bootstrap v{{ site.current_version}}** is available for download in several ways, including some of your favorite package managers. Choose from the options below to snag just what you need.
 
-<div class="row m-t-2">
-  <div class="col-sm-6">
-{% markdown %}
-### Compiled
-Download just the compiled and minified CSS and JavaScript. Doesn't include any documentation or original source files.
-
-{% comment %}
-<a href="{{ site.download.dist }}" class="btn btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download compiled');">Download Bootstrap</a>
-{% endcomment %}
-<span class="text-muted">Coming soon!</span>
-{% endmarkdown %}
-  </div>
-  <div class="col-sm-6">
-{% markdown %}
 ### Source files
 Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/getting-started/build-tools/#tooling-setup).**
 
 <a href="{{ site.download.source }}" class="btn btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
-{% endmarkdown %}
-  </div>
-</div>
 
 ## Package managers
 
@@ -78,7 +61,7 @@ $ meteor add twbs:bootstrap@={{ site.current_version }}
 You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org):
 
 {% highlight bash %}
-$ composer require twbs/bootstrap
+$ composer require twbs/bootstrap:{{ site.current_version }}
 {% endhighlight %}
 
 ### Bower
@@ -100,6 +83,7 @@ PM> Install-Package bootstrap.sass -Pre
 
 The `-Pre` is required until Bootstrap v4 has a stable release.
 
+{% comment %}
 ## Custom builds
 
 Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag just what you need.
@@ -121,4 +105,4 @@ Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag 
     <a class="btn btn-bs btn-outline" href="#">Download</a>
   </div>
 </div>
-
+{% endcomment %}
