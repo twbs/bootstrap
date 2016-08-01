@@ -117,28 +117,6 @@
   }
 }
 
-// scss-lint:disable ImportantRule
-// Custom override for
-.navbar-toggleable {
-  &-xs {
-    @include media-breakpoint-up(sm) {
-      display: block !important;
-    }
-  }
-  &-sm {
-    @include media-breakpoint-up(md) {
-      display: block !important;
-    }
-  }
-  &-md {
-    @include media-breakpoint-up(lg) {
-      display: block !important;
-    }
-  }
-}
-// scss-lint:enable ImportantRule
-
-
 // Navigation
 //
 // Custom navbar navigation built on the base `.nav` styles.
@@ -230,3 +208,51 @@
     background-color: rgba(255,255,255,.075);
   }
 }
+
+
+// Navbar toggleable
+//
+// Custom override for collapse plugin in navbar.
+
+// scss-lint:disable ImportantRule
+.navbar-toggleable {
+  &-xs {
+    @include clearfix;
+    @include media-breakpoint-down(xs) {
+      .navbar-nav .nav-item {
+        float: none;
+        margin-left: 0;
+      }
+    }
+    @include media-breakpoint-up(sm) {
+      display: block !important;
+    }
+  }
+
+  &-sm {
+    @include clearfix;
+    @include media-breakpoint-down(sm) {
+      .navbar-nav .nav-item {
+        float: none;
+        margin-left: 0;
+      }
+    }
+    @include media-breakpoint-up(md) {
+      display: block !important;
+    }
+  }
+
+  &-md {
+    @include clearfix;
+    @include media-breakpoint-down(md) {
+      .navbar-nav .nav-item {
+        float: none;
+        margin-left: 0;
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      display: block !important;
+    }
+  }
+}
+// scss-lint:enable ImportantRule

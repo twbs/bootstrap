@@ -29,7 +29,8 @@ module.exports = function configureRubySass(grunt) {
       docs: {
         options: options,
         files: {
-          'docs/assets/css/docs.min.css': 'docs/assets/scss/docs.scss'
+          'docs/assets/css/docs.min.css': 'docs/assets/scss/docs.scss',
+          'docs/assets/css/docs-flexbox.min.css': 'docs/assets/scss/flex-grid.scss'
         }
       }
     }

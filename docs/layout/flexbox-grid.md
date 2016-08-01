@@ -9,7 +9,7 @@ Fancy a more modern grid system? [Enable flexbox support in Bootstrap](/getting-
 Bootstrap's flexbox grid includes support for every feature from our [default grid system](/layout/grid), and then some. Please read the [default grid system docs](/layout/grid) before proceeding through this page. Features that are covered there are only summarized here. Please note that **Internet Explorer 9 does not support flexbox**, so proceed with caution when enabling it.
 
 {% callout warning %}
-**Heads up!** The flexbox grid documentation is only functional when flexbox support is explicitly enabled.
+**Heads up!** This flexbox grid documentation is powered by an additional CSS file that overrides our default grid system's CSS. This is only available in our hosted docs and is disabled in development.
 {% endcallout %}
 
 ## Contents

@@ -184,8 +184,15 @@ module.exports = function (grunt) {
         ]
       },
       docs: {
-        src: 'docs/assets/css/docs.min.css',
-        dest: 'docs/assets/css/docs.min.css'
+        files: [
+          {
+            expand: true,
+            cwd: 'docs/assets/css',
+            src: ['*.css', '!*.min.css'],
+            dest: 'docs/assets/css',
+            ext: '.min.css'
+          }
+        ]
       }
     },
 
@@ -278,6 +285,9 @@ module.exports = function (grunt) {
       'postcss-docs': {
         command: 'npm run postcss-docs'
       },
+      htmlhint: {
+        command: 'npm run htmlhint'
+      },
       'upload-preview': {
         command: './grunt/upload-preview.sh'
       }
@@ -327,7 +337,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
+  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint', 'exec:htmlhint']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
