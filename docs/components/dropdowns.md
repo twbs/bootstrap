@@ -36,7 +36,7 @@ And with `<a>` elements:
 
 {% example html %}
 <div class="dropdown open">
-  <a class="btn btn-secondary dropdown-toggle" href="http://example.com" id="dropdownMenuLink" data-target="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a class="btn btn-secondary dropdown-toggle" href="http://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown link
   </a>
 
@@ -494,20 +494,6 @@ Add `data-toggle="dropdown"` to a link or button to toggle a dropdown.
   <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown trigger
   </button>
-  <div class="dropdown-menu" aria-labelledby="dLabel">
-    ...
-  </div>
-</div>
-{% endhighlight %}
-
-To keep URLs intact with link buttons, use the `data-target` attribute instead of `href="#"`.
-
-{% highlight html %}
-<div class="dropdown">
-  <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown trigger
-  </a>
-
   <div class="dropdown-menu" aria-labelledby="dLabel">
     ...
   </div>
