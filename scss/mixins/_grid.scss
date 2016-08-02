@@ -33,12 +33,21 @@
   margin-right: ($gutter / -2);
 }
 
-@mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
+@mixin make-col-ready($columns: $grid-columns, $gutter: $grid-gutter-width) {
   position: relative;
-  min-height: 1px;
+  min-height: 1px; // Prevent collapsing
   padding-right: ($gutter / 2);
   padding-left:  ($gutter / 2);
 
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we use `flex` values
+  // later on to override this initial width.
+  @if $enable-flex {
+    width: 100%;
+  }
+}
+
+@mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
   @if $enable-flex {
     flex: 0 0 percentage($size / $columns);
     // Add a `max-width` to ensure content within each column does not blow out

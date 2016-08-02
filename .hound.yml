@@ -10,7 +10,7 @@ javascript:
 
 eslint:
   enabled: true
-  config_file: js/.eslintrc
+  config_file: js/.eslintrc.json
 
 jscs:
   enabled: true

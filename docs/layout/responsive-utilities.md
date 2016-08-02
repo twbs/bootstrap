@@ -188,6 +188,9 @@ Green checkmarks indicate the element **is visible** in your current viewport.
     <span class="hidden-lg-down not-visible">Large or narrower</span>
   </div>
 </div>
+
+<hr>
+
 <div class="row responsive-utilities-test visible-on">
   <div class="col-xs-6 col-sm-3">
     <span class="hidden-xs-down visible">&#10004; Visible on small or wider</span>
@@ -206,24 +209,30 @@ Green checkmarks indicate the element **is visible** in your current viewport.
     <span class="hidden-xl-up not-visible">Extra large</span>
   </div>
 </div>
+
+<hr>
+
 <div class="row responsive-utilities-test visible-on">
-  <div class="col-xs-6 col-sm-3">
+  <div class="col-xs-6 col-sm-4">
     <span class="hidden-sm-up visible">&#10004; Your viewport is exactly extra small</span>
     <span class="hidden-xs-down not-visible">Your viewport is NOT exactly extra small</span>
   </div>
-  <div class="col-xs-6 col-sm-3">
+  <div class="col-xs-6 col-sm-4">
     <span class="hidden-xs-down hidden-md-up visible">&#10004; Your viewport is exactly small</span>
     <span class="hidden-sm-only not-visible">Your viewport is NOT exactly small</span>
   </div>
-  <div class="col-xs-6 col-sm-3">
+  <div class="col-xs-6 col-sm-4">
     <span class="hidden-sm-down hidden-lg-up visible">&#10004; Your viewport is exactly medium</span>
     <span class="hidden-md-only not-visible">Your viewport is NOT exactly medium</span>
   </div>
-  <div class="col-xs-6 col-sm-3">
+  </div>
+
+<div class="row responsive-utilities-test visible-on">
+  <div class="col-xs-6 col-sm-4">
     <span class="hidden-md-down hidden-xl-up visible">&#10004; Your viewport is exactly large</span>
     <span class="hidden-lg-only not-visible">Your viewport is NOT exactly large</span>
   </div>
-  <div class="col-xs-6 col-sm-3">
+  <div class="col-xs-6 col-sm-4">
     <span class="hidden-lg-down visible">&#10004; Your viewport is exactly extra large</span>
     <span class="hidden-xl-only not-visible">Your viewport is NOT exactly extra large</span>
   </div>

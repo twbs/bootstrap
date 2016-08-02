@@ -6,7 +6,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): dropdown.js
+ * Bootstrap (v4.0.0-alpha.3): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -20,11 +20,15 @@ var Dropdown = (function ($) {
    */
 
   var NAME = 'dropdown';
-  var VERSION = '4.0.0-alpha.2';
+  var VERSION = '4.0.0-alpha.3';
   var DATA_KEY = 'bs.dropdown';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
+  var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
+  var ARROW_UP_KEYCODE = 38; // KeyboardEvent.which value for up arrow key
+  var ARROW_DOWN_KEYCODE = 40; // KeyboardEvent.which value for down arrow key
+  var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
 
   var Event = {
     HIDE: 'hide' + EVENT_KEY,
@@ -159,7 +163,7 @@ var Dropdown = (function ($) {
     }, {
       key: '_clearMenus',
       value: function _clearMenus(event) {
-        if (event && event.which === 3) {
+        if (event && event.which === RIGHT_MOUSE_BUTTON_WHICH) {
           return;
         }
 
@@ -222,9 +226,9 @@ var Dropdown = (function ($) {
         var parent = Dropdown._getParentFromElement(this);
         var isActive = $(parent).hasClass(ClassName.OPEN);
 
-        if (!isActive && event.which !== 27 || isActive && event.which === 27) {
+        if (!isActive && event.which !== ESCAPE_KEYCODE || isActive && event.which === ESCAPE_KEYCODE) {
 
-          if (event.which === 27) {
+          if (event.which === ESCAPE_KEYCODE) {
             var toggle = $(parent).find(Selector.DATA_TOGGLE)[0];
             $(toggle).trigger('focus');
           }
@@ -245,12 +249,12 @@ var Dropdown = (function ($) {
 
         var index = items.indexOf(event.target);
 
-        if (event.which === 38 && index > 0) {
+        if (event.which === ARROW_UP_KEYCODE && index > 0) {
           // up
           index--;
         }
 
-        if (event.which === 40 && index < items.length - 1) {
+        if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) {
           // down
           index++;
         }

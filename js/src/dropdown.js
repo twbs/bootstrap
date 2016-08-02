@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): dropdown.js
+ * Bootstrap (v4.0.0-alpha.3): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -17,12 +17,16 @@ const Dropdown = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  const NAME                = 'dropdown'
-  const VERSION             = '4.0.0-alpha.2'
-  const DATA_KEY            = 'bs.dropdown'
-  const EVENT_KEY           = `.${DATA_KEY}`
-  const DATA_API_KEY        = '.data-api'
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
+  const NAME                     = 'dropdown'
+  const VERSION                  = '4.0.0-alpha.3'
+  const DATA_KEY                 = 'bs.dropdown'
+  const EVENT_KEY                = `.${DATA_KEY}`
+  const DATA_API_KEY             = '.data-api'
+  const JQUERY_NO_CONFLICT       = $.fn[NAME]
+  const ESCAPE_KEYCODE           = 27 // KeyboardEvent.which value for Escape (Esc) key
+  const ARROW_UP_KEYCODE         = 38 // KeyboardEvent.which value for up arrow key
+  const ARROW_DOWN_KEYCODE       = 40 // KeyboardEvent.which value for down arrow key
+  const RIGHT_MOUSE_BUTTON_WHICH = 3 // MouseEvent.which value for the right button (assuming a right-handed mouse)
 
   const Event = {
     HIDE             : `hide${EVENT_KEY}`,
@@ -152,7 +156,7 @@ const Dropdown = (($) => {
     }
 
     static _clearMenus(event) {
-      if (event && event.which === 3) {
+      if (event && event.which === RIGHT_MOUSE_BUTTON_WHICH) {
         return
       }
 
@@ -218,10 +222,10 @@ const Dropdown = (($) => {
       let parent   = Dropdown._getParentFromElement(this)
       let isActive = $(parent).hasClass(ClassName.OPEN)
 
-      if ((!isActive && event.which !== 27) ||
-           (isActive && event.which === 27)) {
+      if ((!isActive && event.which !== ESCAPE_KEYCODE) ||
+           (isActive && event.which === ESCAPE_KEYCODE)) {
 
-        if (event.which === 27) {
+        if (event.which === ESCAPE_KEYCODE) {
           let toggle = $(parent).find(Selector.DATA_TOGGLE)[0]
           $(toggle).trigger('focus')
         }
@@ -242,11 +246,11 @@ const Dropdown = (($) => {
 
       let index = items.indexOf(event.target)
 
-      if (event.which === 38 && index > 0) { // up
+      if (event.which === ARROW_UP_KEYCODE && index > 0) { // up
         index--
       }
 
-      if (event.which === 40 && index < items.length - 1) { // down
+      if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) { // down
         index++
       }
 

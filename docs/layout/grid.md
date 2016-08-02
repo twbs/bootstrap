@@ -139,7 +139,7 @@ Variables and maps determine the number of columns, the gutter width, and the me
 
 {% highlight scss %}
 $grid-columns:      12;
-$grid-gutter-width: 15px;
+$grid-gutter-width: 30px;
 
 $grid-breakpoints: (
   // Extra small screen / phone
@@ -180,20 +180,21 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 }
 
 // Make the element grid-ready (applying everything but the width)
-@mixin make-col($gutter: $grid-gutter-width) {
+@mixin make-col-ready($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
   position: relative;
-  @if $enable-flex {
-    flex: 1;
-  } @else {
-    float: left;
-  }
-  min-height: 1px;
-  padding-left:  ($gutter / 2);
+  min-height: 1px; // Prevent collapsing
   padding-right: ($gutter / 2);
+  padding-left:  ($gutter / 2);
+
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we use `flex` values
+  // later on to override this initial width.
+  @if $enable-flex {
+    width: 100%;
+  }
 }
 
-@mixin make-col-span($size, $columns: $grid-columns) {
-  // Set a width (to be used in or out of media queries)
+@mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
   @if $enable-flex {
     flex: 0 0 percentage($size / $columns);
     // Add a `max-width` to ensure content within each column does not blow out
@@ -201,6 +202,7 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
     // do not appear to require this.
     max-width: percentage($size / $columns);
   } @else {
+    float: left;
     width: percentage($size / $columns);
   }
 }
@@ -232,23 +234,23 @@ See it in action in <a href="http://jsbin.com/ruxona/edit">this rendered example
   @include make-row();
 }
 .content-main {
-  @include make-col();
+  @include make-col-ready();
 
   @media (max-width: 32em) {
-    @include make-col-span(6);
+    @include make-col(6);
   }
   @media (min-width: 32.1em) {
-    @include make-col-span(8);
+    @include make-col(8);
   }
 }
 .content-secondary {
-  @include make-col();
+  @include make-col-ready();
 
   @media (max-width: 32em) {
-    @include make-col-span(6);
+    @include make-col(6);
   }
   @media (min-width: 32.1em) {
-    @include make-col-span(4);
+    @include make-col(4);
   }
 }
 {% endhighlight %}
@@ -268,36 +270,36 @@ In addition to our semantic mixins, Bootstrap includes an extensive set of prebu
 
 ### Example: Stacked-to-horizontal
 
-Using a single set of `.col-md-*` grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns with the `.col` base class and a modifier within any `.row`.
+Using a single set of `.col-md-*` grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns within any `.row`.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
-  <div class="col-md-1">md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
+  <div class="col-md-1">col-md-1</div>
 </div>
 <div class="row">
-  <div class="col-md-8">md-8</div>
-  <div class="col-md-4">md-4</div>
+  <div class="col-md-8">col-md-8</div>
+  <div class="col-md-4">col-md-4</div>
 </div>
 <div class="row">
-  <div class="col-md-4">md-4</div>
-  <div class="col-md-4">md-4</div>
-  <div class="col-md-4">md-4</div>
+  <div class="col-md-4">col-md-4</div>
+  <div class="col-md-4">col-md-4</div>
+  <div class="col-md-4">col-md-4</div>
 </div>
 <div class="row">
-  <div class="col-md-6">md-6</div>
-  <div class="col-md-6">md-6</div>
+  <div class="col-md-6">col-md-6</div>
+  <div class="col-md-6">col-md-6</div>
 </div>
 {% endexample %}
 </div>
@@ -442,7 +444,7 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
 
 ### Example: Column ordering
 
-Easily change the order of our built-in grid columns with `.col-md-push-*` and `.col-md-pull-*` modifier classes.
+Easily change the order of our built-in grid columns with `.push-md-*` and `.pull-md-*` modifier classes.
 
 <div class="bd-example-row">
 {% example html %}
@@ -457,7 +459,18 @@ Easily change the order of our built-in grid columns with `.col-md-push-*` and `
 
 Using our built-in grid Sass variables and maps, it's possible to completely customize the predefined grid classes. Change the number of tiers, the media query dimensions, and the container widths—then recompile.
 
-For example, if you wanted just three grid tiers, you'd update the `$grid-breakpoints` and `$container-max-widths` to something like this:
+### Columns and gutters
+
+The number of grid columns and their horizontal padding (aka, gutters) can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` is divided evenly across `padding-left` and `padding-right` for the column gutters.
+
+{% highlight scss %}
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+{% endhighlight %}
+
+### Grid tiers
+
+Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just three grid tiers, you'd update the `$grid-breakpoints` and `$container-max-widths` to something like this:
 
 {% highlight scss %}
 $grid-breakpoints: (
@@ -473,4 +486,4 @@ $container-max-widths: (
 );
 {% endhighlight %}
 
-Save your changes and recompile to have a brand new set of predefined grid classes for column widths, offsets, pushes, and pulls. Responsive visibility utilities will also be updated to use the custom breakpoints.
+When making any changes to the Sass variables or maps, you'll need to save your changes and recompile. Doing so will out a brand new set of predefined grid classes for column widths, offsets, pushes, and pulls. Responsive visibility utilities will also be updated to use the custom breakpoints.
