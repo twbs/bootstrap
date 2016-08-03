@@ -20,6 +20,16 @@
 
 -
   browser: >
+    Microsoft Edge
+  summary: >
+    Implement the HTML5 [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+  upstream_bug: >
+    UserVoice#6508895
+  origin: >
+    Bootstrap#20175
+
+-
+  browser: >
     Firefox
   summary: >
     Fire a [`transitioncancel` event](https://developer.mozilla.org/en-US/docs/Web/Events/transitioncancel) when a CSS transition is canceled
