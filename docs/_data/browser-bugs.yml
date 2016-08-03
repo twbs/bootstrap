@@ -150,6 +150,16 @@
 
 -
   browser: >
+    Firefox
+  summary: >
+    `min-width: 0` has no effect on `<fieldset>`
+  upstream_bug: >
+    Mozilla#504622
+  origin: >
+    Bootstrap#12359
+
+-
+  browser: >
     Firefox (Windows)
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
