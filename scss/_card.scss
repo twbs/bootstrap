@@ -14,7 +14,7 @@
 
 .card-block {
   @include clearfix;
-  padding: $card-spacer-x;
+  padding: $card-spacer-y $card-spacer-x;
 }
 
 .card-title {
