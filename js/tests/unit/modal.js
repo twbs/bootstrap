@@ -403,4 +403,26 @@ $(function () {
       })
       .bootstrapModal('show')
   })
+
+  QUnit.test('should not follow link in area tag', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    $('<map><area id="test" shape="default" data-toggle="modal" data-target="#modal-test" href="demo.html"/></map>')
+      .appendTo('#qunit-fixture')
+
+    $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
+      .appendTo('#qunit-fixture')
+
+    $('#test')
+      .on('click.bs.modal.data-api', function (event) {
+        assert.notOk(event.isDefaultPrevented(), 'navigating to href will happen')
+
+        setTimeout(function () {
+          assert.ok(event.isDefaultPrevented(), 'model shown instead of navigating to href')
+          done()
+        }, 1)
+      })
+      .trigger('click')
+  })
 })
