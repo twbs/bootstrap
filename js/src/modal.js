@@ -447,7 +447,7 @@ const Modal = (($) => {
 
     static _jQueryInterface(config, relatedTarget) {
       return this.each(function () {
-        let $this = $(this);
+        let $this = $(this)
         let data    = $this.data(DATA_KEY)
         let _config = $.extend(
           {},
@@ -488,8 +488,8 @@ const Modal = (($) => {
     if (selector) {
       target = $(selector)[0]
     }
-    
-    let $target = $(target);
+
+    let $target = $(target)
 
     let config = $target.data(DATA_KEY) ?
       'toggle' : $.extend({}, $target.data(), $(this).data())
