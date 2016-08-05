@@ -95,6 +95,10 @@ $spacers: (
   3: (
     x: ($spacer-x * 3),
     y: ($spacer-y * 3)
+  ),
+  auto: (
+    x: auto,
+    y: auto
   )
 ) !default;
 $border-width: 1px !default;
