@@ -2,27 +2,15 @@
 
 .list-group-item-variant(@state; @background; @color) {
   .list-group-item-@{state} {
-    color: inherit;
-    background-color: @background;
+    border-left: 2px solid @color;
 
-    .list-group-item-heading {
+    .list-group-item-text {
       color: @color;
     }
-
-    a& {
-      color: @color;
-
-      &:hover,
-      &:focus {
-        color: @color;
-        background-color: darken(@background, 5%);
-      }
-      &.active,
-      &.active:hover,
-      &.active:focus {
-        color: #fff;
-        background-color: @color;
-      }
+  }
+  @media (min-width: @screen-lg-min) {
+    .list-group-item-@{state} {
+      padding: @padding-container @padding-container @padding-container (@padding-container - 2px);
     }
   }
 }

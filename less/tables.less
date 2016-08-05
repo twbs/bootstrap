@@ -31,10 +31,12 @@ th {
     > tr {
       > th,
       > td {
-        padding: @table-cell-padding;
+        padding: @line-height-computed @table-cell-padding;
         line-height: @line-height-base;
         vertical-align: top;
         border-top: 1px solid @table-border-color;
+        border-bottom: 0px solid @table-border-color;
+        transition: border ease @panel-focus-transtion;
       }
     }
   }

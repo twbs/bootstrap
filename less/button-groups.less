@@ -33,18 +33,30 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  margin-left: -5px; // Offset the first child's margin
-  &:extend(.clearfix all);
-
   .btn,
   .btn-group,
   .input-group {
-    float: left;
+    width: 100%;
+    margin-bottom: 16px;
   }
-  > .btn,
-  > .btn-group,
-  > .input-group {
-    margin-left: 5px;
+}
+
+@media (min-width: @screen-md-min) {
+  .btn-toolbar {
+    margin-left: -8px; // Offset the first child's margin
+
+    .btn,
+    .btn-group,
+    .input-group {
+      width: auto;
+      margin-bottom: 0;
+      float: left;
+    }
+    > .btn,
+    > .btn-group,
+    > .input-group {
+      margin-left: 8px;
+    }
   }
 }
 
@@ -261,7 +273,7 @@
         text-align: left;
         .caret {
             position: absolute;
-            right: 16px;
+            right: 10px;
             top: 16px;
         }
     }
@@ -302,7 +314,7 @@
   .small {
     font-size: @font-size-small;
     color: @brand-grey-plus-20 !important;
-    
+
     line-height: (@line-height-computed - 1px);
     &.text-ellipsis {
       line-height: @line-height-computed;

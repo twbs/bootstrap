@@ -97,7 +97,7 @@
 //** Global text color on `<body>`.
 @text-color:            @brand-grey-plus-10;
 //** Bold text color on `<body>`.
-@text-bold-color:       @brand-grey-minus-10;
+@text-bold-color:       @brand-blue-plus-10;
 
 //** Global textual link color.
 @link-color:            @brand-light-blue;
@@ -141,10 +141,10 @@
 @line-height-computed:    24px; // ~24px
 
 //** By default, this inherits from the `<body>`.
-@headings-font-family:    'Sharp Sans Frontieres', "Avenir", Helvetica, Arial, sans-serif;    //inherit;
-@headings-font-weight:    500;              //500;
+@headings-font-family:    "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;    //inherit;
+@headings-font-weight:    600;
 @headings-line-height:    1.2;              //1.1;
-@headings-color:          @brand-light-blue;   //inherit;
+@headings-color:          @brand-blue-plus-10;
 
 @buttons-font-family:     "Avenir W02", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -180,8 +180,9 @@
 @line-height-large:         32px; // 18*1.555 = 28
 @line-height-small:         24px; // 12*1.5=18
 
-@padding-container: 		40px;
-@padding-container-collapse: 24px;
+@padding-container:             32px;
+@padding-container-collapse:    24px;
+@padding-container-collapse-xs: 16px;
 
 @border-radius-base:        3px;
 @border-radius-large:       3px;
@@ -220,7 +221,7 @@
 @table-bg-active:               @table-bg-hover;
 
 //** Border color for table and cell borders.
-@table-border-color:            @brand-smoke-plus-10;
+@table-border-color:            @brand-smoke-plus-20;
 
 
 //== Buttons
@@ -418,6 +419,8 @@
 
 //** Deprecated `@dropdown-caret-color` as of v3.1.0
 @dropdown-caret-color:           #000;
+
+@transition-duration:            0.15s;
 
 
 //-- Z-index master list
@@ -630,16 +633,16 @@
 //##
 
 @pagination-color:                     @link-color;
-@pagination-bg:                        #fff;
-@pagination-border:                    @brand-smoke;
+@pagination-bg:                        transparent;
+@pagination-border:                    @brand-light-blue;
 
-@pagination-hover-color:               #fff;
-@pagination-hover-bg:                  @brand-light-blue;
-@pagination-hover-border:              @brand-light-blue;
+@pagination-hover-color:               @link-hover-color;
+@pagination-hover-bg:                  @brand-white;
+@pagination-hover-border:              @brand-white;
 
-@pagination-active-color:              #fff;
-@pagination-active-bg:                 @brand-light-blue-minus-10;
-@pagination-active-border:             @brand-light-blue-minus-10;
+@pagination-active-color:              @brand-grey;
+@pagination-active-bg:                 #FFF;
+@pagination-active-border:             @brand-light-blue;
 
 @pagination-disabled-color:            @gray-light;
 @pagination-disabled-bg:               #fff;
@@ -681,7 +684,7 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-@state-success-text:             @brand-success;
+@state-success-text:             @brand-green-minus-10;
 @state-success-bg:               #EAFAF0; // #dff0d8;
 @state-success-border:           @brand-success;
 
@@ -872,35 +875,37 @@
 //** Text color of active list items
 @list-group-active-color:       @component-active-color;
 //** Background color of active list items
-@list-group-active-bg:          @component-active-bg;
+@list-group-active-bg:          #fff;
 //** Border color of active list elements
 @list-group-active-border:      @list-group-active-bg;
 //** Text color for content within active list items
 @list-group-active-text-color:  #FFF;  // lighten(@list-group-active-bg, 40%);
 
 //** Text color of disabled list items
-@list-group-disabled-color:      @gray-light;
+@list-group-disabled-color:      @brand-smoke-minus-10;
 //** Background color of disabled list items
-@list-group-disabled-bg:         @gray-lighter;
+@list-group-disabled-bg:         #FFF;
 //** Text color for content within disabled list items
 @list-group-disabled-text-color: @list-group-disabled-color;
 
-@list-group-link-color:         #555;
+@list-group-link-color:         @link-color;
 @list-group-link-hover-color:   @list-group-link-color;
-@list-group-link-heading-color: #333;
+@list-group-link-heading-color: @link-color;
 
 
 //== Panels
 //
 //##
 
-@panel-bg:                    #fff;
+@panel-bg:                    transparent;
 @panel-body-padding:          @padding-container;
 @panel-body-padding-collapse: @padding-container-collapse;
+@panel-collapse-xs:           @padding-container-collapse-xs;
 @panel-heading-color:         @brand-blue;
 @panel-heading-padding:       @padding-container;
 @panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
+@panel-focus-transtion:       @transition-duration;
 
 //** Border color for elements within panels
 @panel-inner-border:          #FFF;
@@ -965,7 +970,7 @@
 //== Media objects
 //
 //##
-@media-object-padding-horizontal:   (@spacer * 2);
+@media-object-padding-horizontal:   (@spacer * 3);
 
 
 //== Wells
@@ -1014,13 +1019,13 @@
 
 @carousel-text-shadow:                        0 1px 7px rgba(0,0,0,.8);
 
-@carousel-control-color:                      #fff;
+@carousel-control-color:                      @brand-light-blue;
 @carousel-control-width:                      15%;
-@carousel-control-opacity:                    .5;
+@carousel-control-opacity:                    1;
 @carousel-control-font-size:                  20px;
 
-@carousel-indicator-active-bg:                #fff;
-@carousel-indicator-border-color:             #fff;
+@carousel-indicator-active-bg:                @brand-light-blue;
+@carousel-indicator-border-color:             @brand-light-blue;
 
 @carousel-caption-color:                      #fff;
 
@@ -1046,7 +1051,7 @@
 @kbd-color:                   #fff;
 @kbd-bg:                      #333;
 
-@pre-bg:                      #f5f5f5;
+@pre-bg:                      @brand-smoke-plus-20;
 @pre-color:                   @gray-dark;
 @pre-border-color:            #ccc;
 @pre-scrollable-max-height:   340px;
@@ -1067,7 +1072,7 @@
 //** Blockquote small color
 @blockquote-small-color:      @gray-light;
 //** Blockquote font size
-@blockquote-font-size:        (@font-size-base * 1.25);
+@blockquote-font-size:        22px;
 //** Blockquote border color
 @blockquote-border-color:     @brand-light-blue;
 //** Page header border color
@@ -1075,4 +1080,4 @@
 //** Width of horizontal description list titles
 @dl-horizontal-offset:        @component-offset-horizontal;
 //** Horizontal line color.
-@hr-border:                   @gray-lighter;
+@hr-border:                   @brand-smoke-plus-10;

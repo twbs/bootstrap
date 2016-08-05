@@ -7,17 +7,18 @@
   outline: none;
   transition: all 0.1s ease-in-out;
 
-  padding: @tile-padding;
+  padding: @padding-container-collapse;
   background-color: @brand-smoke-plus-20;
-  border: 1px solid @brand-smoke;
+  border: 1px solid @brand-smoke-plus-20;
   border-radius: @border-radius-base;
   font-size: @font-size-small;
 
   width: 100%;
   margin-bottom: @grid-gutter-width;
 
-  &:hover:not(.tile-disabled)  {
-    background-color: @brand-smoke-plus-10;
+  &:hover:not(.tile-disabled),
+  &:focus:not(.tile-disabled) {
+    border-color: @brand-light-blue;
   }
 
   &:active:not(.tile-disabled) {
@@ -65,6 +66,10 @@
   }
 }
 
+.tile-inverse {
+  background-color: @brand-white;
+}
+
 /* Backwards compaibility for early tile implementation */
 .tile-row {
     display: flex;
@@ -75,4 +80,17 @@
     > [class*="col-"] {
         display: flex;
     }
+}
+
+
+@media (min-width: @screen-sm-min) {
+  .tile {
+    padding: @padding-container-collapse;
+  }
+}
+
+@media (min-width: @screen-lg-min) {
+  .tile {
+    padding: @padding-container;
+  }
 }

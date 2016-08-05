@@ -1,0 +1,105 @@
+<div class="panel">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-6 col-lg-8">
+				<h3 class="panel-title">
+					Transfer history
+				</h3>
+			</div>
+			<div class="col-md-6 col-lg-4">
+				<div class="input-group input-group-sm m-t-1">
+					<span class="input-group-addon"><i class="icon icon-search m-r-0"></i></span>
+					<input type="text" class="form-control" placeholder="Search..." />
+					 <span class="input-group-btn">
+						 <button class="btn btn-sm btn-primary">Go</button>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th style="width: 48px;">&nbsp;</th>
+					<th><a href="">From</a></th>
+					<th><a href="">To</a></th>
+					<th class="text-right"><a href="">Sent</a></th>
+					<th class="text-right"><a href="">Received</a></th>
+					<th class="text-right"><a href="">Created <span class="caret"></span></a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="transfer in $ctrl.transfers"
+					onclick="expand(event, this)">
+					<td>
+						<div class="circle circle-sm circle-inverse m-l-0 m-r-0">
+							<i class="icon"
+								ng-class="{
+									'icon-send': transfer.type == 'TRANSFER',
+									'icon-request': transfer.type == 'REQUEST',
+									'icon-card': transfer.type == 'CARD' || transfer.type == 'TOPUP',
+									'icon-transfer': transfer.type == 'CONVERSION',
+									'icon-gift': transfer.type == 'REWARD'
+								}"></i>
+						</div>
+					</td>
+					<td>
+						<h5 class="m-b-0">
+							<span ng-if="transfer.sourceAccount">{{transfer.sourceAccount.name}}</span>
+							<span ng-if="!transfer.sourceAccount">You</span>
+						</h5>
+						<div ng-if="transfer.sourceAccount" class="small">
+							{{transfer.sourceAccount.shortString}}
+						</div>
+					</td>
+					<td>
+						<h5 class="m-b-0">
+							<span ng-if="transfer.targetAccount">{{transfer.targetAccount.name}}</span>
+							<span ng-if="!transfer.targetAccount">You</span>
+						</h5>
+						<div ng-if="transfer.targetAccount" class="small">
+							{{transfer.targetAccount.shortString}}
+						</div>
+					</td>
+					<td class="text-right">
+						{{$ctrl.currencies[transfer.source].symbol}}{{transfer.sourceAmount | number:$ctrl.currencies[transfer.source].digits}}
+						{{transfer.source}}
+					</td>
+					<td class="text-right">
+						{{$ctrl.currencies[transfer.target].symbol}}{{transfer.targetAmount | number:$ctrl.currencies[transfer.source].digits}}
+						{{transfer.target}}
+					</td>
+					<td class="text-right">
+						{{transfer.created | date:"dd MMM yy"}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="panel-footer">
+		<nav>
+			<ul class="pagination pagination-sm">
+				<li class="disabled">
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">
+							<i class="glyphicon glyphicon-chevron-left"></i>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">
+							<i class="glyphicon glyphicon-chevron-right"></i>
+						</span>
+					</a>
+				</li>
+			</ul>
+			<div class="pull-left m-l-md" style="margin-top: 12px;">
+				<small>
+					<strong>Showing 1 - 10 out of 14</strong>
+				</small>
+			</div>
+		</nav>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<div class="row">
+	<dl class="col-sm-6">
+		<dt>Sent to</dt>
+		<dd>{{$ctrl.targetAccount.shortString}}</dd>
+	</dl>
+	<dl class="col-sm-6">
+		<dt>Reference</dt>
+		<dd>{{$ctrl.transfer.reference}}</dd>
+	</dl>
+	<dl class="col-sm-6">
+		<dt>Exchange rate</dt>
+		<dd>{{$ctrl.transfer.rate | number:4}}</dd>
+	</dl>
+	<dl class="col-sm-6">
+		<dt>Fee</dt>
+		<dd>
+			{{$ctrl.currencies[$ctrl.transfer.source].symbol}}{{$ctrl.transfer.fee | number:2}}
+			{{$ctrl.transfer.source}}
+		</dd>
+	</dl>
+</div>

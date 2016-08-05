@@ -9,8 +9,8 @@
 @circle-lg-font-size: 32px;
 
 .circle {
-    border: 1px solid @brand-smoke;
-    color: @gray-light;
+    border: 1px solid @brand-white;
+    color: @brand-blue-plus-10;
     border-radius: 50%;
     text-align: center;
     text-decoration: none;
@@ -26,6 +26,9 @@
 
     margin-left: auto;
     margin-right: auto;
+
+    transition: background-color ease @transition-duration,
+                color ease @transition-duration;
 
     .circle-variant(@circle-md-diameter, @circle-md-font-size, (@circle-md-font-size + 8px));
 
@@ -58,9 +61,8 @@
     }
 
     &.circle-inverse {
-        background-color: @brand-smoke-plus-10;
-        border-color: @brand-smoke-plus-10;
-        color: @brand-grey-plus-10;
+        background-color: @brand-smoke-plus-20;
+        border-color: @brand-smoke-plus-20;
     }
 
     &.active {

@@ -1,0 +1,120 @@
+<div class="panel panel-inactive">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-6 col-lg-8">
+				<h3 class="panel-title">
+					Transfer history
+				</h3>
+			</div>
+			<div class="col-md-6 col-lg-4 m-b-1">
+				<div class="input-group input-group-sm m-t-1">
+					<span class="input-group-addon"><i class="icon icon-search m-r-0"></i></span>
+					<input type="text" class="form-control" placeholder="Search..." />
+					 <span class="input-group-btn">
+						 <button class="btn btn-sm btn-primary">Go</button>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<ul class="list-group">
+		<li class="list-group-item"
+			ng-repeat="transfer in $ctrl.transfers"
+			ng-click="$ctrl.activate(transfer.id, $event)"
+			ng-class="{
+				'active': $ctrl.active == transfer.id,
+				'disabled': transfer.status == 'CANCELLED'
+			}">
+			<div class="media">
+				<div class="media-left">
+					<div class="circle circle-sm hidden-xs" ng-class="{
+							'circle-inverse': transfer.id == $ctrl.active
+						}">
+						<transfer-type-icon type="transfer.type"></transfer-type-icon>
+					</div>
+					<b class="visible-xs-block">
+						<transfer-type-icon
+							type="transfer.type"
+							size="md">
+						</transfer-type-icon>
+					</b>
+				</div>
+				<div class="media-body">
+					<p class="list-group-item-heading">
+						<transfer-description
+							transfer="transfer"
+							currencies="$ctrl.currencies"
+							source-account="transfer.sourceAccount"
+							target-account="transfer.targetAccount">
+						</transfer-description>
+					</p>
+					<p class="small m-b-0">
+						<span class="pull-right">
+							{{$ctrl.currencies[transfer.target].symbol}}{{transfer.targetAmount | number:$ctrl.currencies[transfer.source].digits}}
+							<span class="hidden-xs">{{transfer.source}}</span>
+						</span>
+						<span ng-if="transfer.completed"
+							class="list-group-item-text readable"
+							title="{{transfer.completed | date:'dd MMMM yyyy h:mm a'}}">
+							Completed {{transfer.completed | date:"dd MMMM yy"}}
+						</span>
+						<span ng-if="!transfer.completed && transfer.updated"
+							class="list-group-item-text readable"
+							title="{{transfer.updated | date:'dd MMMM yyyy h:mm a'}}">
+							Cancelled {{transfer.updated | date:"dd MMMM yy"}}
+						</span>
+					</p>
+					<div class="collapse"
+						ng-attr-aria-expanded="{{$ctrl.active == transfer.id}}"
+						ng-class="{'in': $ctrl.active == transfer.id}">
+						<hr class="panel-m-t panel-m-b" />
+						<transfer-details
+							transfer="transfer"
+							currencies="$ctrl.currencies"
+							source-account="transfer.sourceAccount"
+							target-account="transfer.targetAccount">
+						</transfer-details>
+						<div class="row">
+							<div class="col-sm-12 col-lg-3 m-b-0">
+								<a class="" href="">
+									Export PDF
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="media-right hidden-xs">
+					<div class="pips">
+						<div class="pip"></div>
+						<div class="pip"></div>
+						<div class="pip"></div>
+					</div>
+				</div>
+			</div>
+			<div class="collapse m-t-3"
+				ng-attr-aria-expanded="{{$ctrl.active == transfer.id}}"
+				ng-class="{'in': $ctrl.active == transfer.id}">
+				<div class="well panel-m-l-negative panel-m-r-negative panel-m-b-negative panel-p-l panel-p-r panel-p-b"
+					ng-if="transfer.type !== 'CARD' && transfer.type !== 'REQUEST'">
+					<div class="media">
+						<div class="media-left hidden-xs">
+							<div class="circle circle-sm invisible">
+								<i class="icon icon-transfer"></i>
+							</div>
+						</div>
+						<div class="media-body">
+							<repeat-transfer
+								transfer="transfer"
+								currencies="$ctrl.currencies">
+							</repeat-transfer>
+						</div>
+						<div class="media-right hidden-xs">
+							<div class="pips invisible"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
