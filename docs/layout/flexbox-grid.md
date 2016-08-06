@@ -59,7 +59,7 @@ When flexbox support is enabled, you can utilize breakpoint-specific column clas
 {% endexample %}
 </div>
 
-Auto-layout for flexbox grid columns also means you can set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
+Auto-layout for flexbox grid columns also means you can set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths. Note that the other columns will resize no matter the width of the center column.
 
 <div class="bd-example-row">
 {% example html %}
@@ -69,6 +69,17 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
       1 of 3
     </div>
     <div class="col-xs-6">
+      2 of 3 (wider)
+    </div>
+    <div class="col-xs">
+      3 of 3
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs">
+      1 of 3
+    </div>
+    <div class="col-xs-5">
       2 of 3 (wider)
     </div>
     <div class="col-xs">
