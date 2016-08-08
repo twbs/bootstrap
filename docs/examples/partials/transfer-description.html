@@ -20,8 +20,4 @@
 	<strong ng-if="$ctrl.transfer.type == 'CONVERSION'">
 		{{$ctrl.sourceAccount.shortString}}
 	</strong>
-	<strong class="pull-right">
-		{{$ctrl.currencies[$ctrl.transfer.source].symbol}}{{$ctrl.transfer.sourceAmount | number:$ctrl.currencies[$ctrl.transfer.source].digits}}
-		<span class="hidden-xs">{{$ctrl.transfer.source}}</span>
-	</strong>
 </span>

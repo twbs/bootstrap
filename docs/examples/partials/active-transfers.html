@@ -14,7 +14,7 @@
 				'list-group-item-info': transfer.status == 'PROCESSING',
 				'active': $ctrl.active == transfer.id
 			}">
-			<div class="media">
+			<div class="media" role="button">
 				<div class="media-left">
 					<div class="circle circle-sm circle-inverse hidden-xs">
 						<transfer-type-icon type="transfer.type"></transfer-type-icon>
@@ -27,23 +27,38 @@
 					</b>
 				</div>
 				<div class="media-body">
-					<p class="list-group-item-heading">
-						<transfer-description
-							transfer="transfer"
-							currencies="$ctrl.currencies"
-							source-account="transfer.sourceAccount"
-							target-account="transfer.targetAccount">
-						</transfer-description>
-					</p>
-					<p class="m-b-0 small">
-						<span class="pull-right">
-							{{$ctrl.currencies[transfer.target].symbol}}{{transfer.targetAmount | number:$ctrl.currencies[transfer.source].digits}}
-							<span class="hidden-xs">{{transfer.target}}</span>
-						</span>
-						<span class="list-group-item-text readable">
-							{{transfer.reason}}
-						</span>
-					</p>
+					<div class="media">
+						<div class="media-body"
+							ng-class="{'p-r-3': $ctrl.active == transfer.id}">
+							<p class="list-group-item-heading text-max-width">
+								<transfer-description
+									transfer="transfer"
+									currencies="$ctrl.currencies"
+									source-account="transfer.sourceAccount"
+									target-account="transfer.targetAccount">
+								</transfer-description>
+							</p>
+							<p class="small m-b-0 text-max-width">
+								<span class="list-group-item-text">
+									{{transfer.reason}}
+								</span>
+							</p>
+						</div>
+						<div class="media-right text-right">
+							<p class="m-b-0">
+								<strong>
+									<span class="sr-only">Sent</span>
+									{{$ctrl.currencies[transfer.source].symbol}}{{transfer.sourceAmount | number:$ctrl.currencies[transfer.source].digits}}
+									<span class="hidden-xs">{{transfer.source}}</span>
+								</strong>
+							</p>
+							<p class="m-b-0 small">
+								<span class="sr-only">Received</span>
+								{{$ctrl.currencies[transfer.target].symbol}}{{transfer.targetAmount | number:$ctrl.currencies[transfer.source].digits}}
+								<span class="hidden-xs">{{transfer.target}}</span>
+							</p>
+						</div>
+					</div>
 					<div class="collapse"
 						ng-attr-aria-expanded="{{$ctrl.active == transfer.id}}"
 						ng-class="{'in': $ctrl.active == transfer.id}">
@@ -61,12 +76,12 @@
 								</a>
 							</div>
 						</div>
-						<hr class="panel-m-t panel-m-b" />
-						<transfer-actions transfer="transfer"></transfer-actions>
+						<hr class="panel-m-t panel-m-b hidden-xs hidden-sm" />
+						<transfer-actions transfer="transfer" class="m-t-2"></transfer-actions>
 					</div>
 				</div>
-				<div class="media-right hidden-xs">
-					<div class="btn-group">
+				<div class="media-right text-right">
+					<div class="btn-group pull-right hidden-xs">
 						<a href="" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 							<div class="pips">
 								<div class="pip"></div>

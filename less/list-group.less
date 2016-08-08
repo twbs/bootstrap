@@ -126,6 +126,12 @@ a.list-group-item {
       margin-left: -12px;
       margin-right: -12px;
     }
+
+    /* In combination with applying extra padding to the media-body,
+    this prevents text reflow on panel expansion */
+    .media-body {
+      transition: padding ease @panel-focus-transtion;
+    }
   }
 }
 

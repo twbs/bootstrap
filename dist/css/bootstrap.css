@@ -1611,7 +1611,7 @@ ul,
 ol {
   padding-left: 38px;
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 ul ul,
 ol ul,
@@ -1778,39 +1778,9 @@ h6, .h6 {
   dd {
     margin-bottom: 24px;
   }
-  ol,
-  ul {
-    margin-bottom: 24px;
-  }
 }
-.readable {
-  display: block;
-  width: 65%;
-}
-@media (min-width: 576px) {
-  .readable {
-    width: 240px;
-  }
-}
-@media (min-width: 678px) {
-  .readable {
-    width: 320px;
-  }
-}
-@media (min-width: 768px) {
-  .readable {
-    width: 380px;
-  }
-}
-@media (min-width: 992px) {
-  .readable {
-    width: 520px;
-  }
-}
-@media (min-width: 1200px) {
-  .readable {
-    width: 580px;
-  }
+.text-max-width {
+  max-width: 540px;
 }
 code,
 kbd,
@@ -7727,9 +7697,18 @@ a.list-group-item:focus {
   margin-bottom: 0;
 }
 @media (min-width: 576px) {
+  .list-group-item {
+    /* In combination with applying extra padding to the media-body,
+    this prevents text reflow on panel expansion */
+  }
   .list-group-item.active {
     margin-right: -12px;
     margin-left: -12px;
+  }
+  .list-group-item .media-body {
+    -webkit-transition: padding ease .15s;
+         -o-transition: padding ease .15s;
+            transition: padding ease .15s;
   }
 }
 .list-group-item-success {
@@ -8486,8 +8465,6 @@ a.list-group-item:focus {
   margin-bottom: 24px;
   background-color: #f2f5f7;
   border-radius: 3px;
-  /*
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));*/
 }
 .well blockquote {
   border-color: #ddd;
@@ -9997,9 +9974,6 @@ button.close {
 .navbar a,
 .pager a,
 .dropdown-menu a {
-  text-decoration: none;
-}
-.list-group a.list-group-item {
   text-decoration: none;
 }
 a.btn {

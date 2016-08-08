@@ -25,7 +25,7 @@
 				'active': $ctrl.active == transfer.id,
 				'disabled': transfer.status == 'CANCELLED'
 			}">
-			<div class="media">
+			<div class="media" role="button">
 				<div class="media-left">
 					<div class="circle circle-sm hidden-xs" ng-class="{
 							'circle-inverse': transfer.id == $ctrl.active
@@ -40,30 +40,43 @@
 					</b>
 				</div>
 				<div class="media-body">
-					<p class="list-group-item-heading">
-						<transfer-description
-							transfer="transfer"
-							currencies="$ctrl.currencies"
-							source-account="transfer.sourceAccount"
-							target-account="transfer.targetAccount">
-						</transfer-description>
-					</p>
-					<p class="small m-b-0">
-						<span class="pull-right">
-							{{$ctrl.currencies[transfer.target].symbol}}{{transfer.targetAmount | number:$ctrl.currencies[transfer.source].digits}}
-							<span class="hidden-xs">{{transfer.source}}</span>
-						</span>
-						<span ng-if="transfer.completed"
-							class="list-group-item-text readable"
-							title="{{transfer.completed | date:'dd MMMM yyyy h:mm a'}}">
-							Completed {{transfer.completed | date:"dd MMMM yy"}}
-						</span>
-						<span ng-if="!transfer.completed && transfer.updated"
-							class="list-group-item-text readable"
-							title="{{transfer.updated | date:'dd MMMM yyyy h:mm a'}}">
-							Cancelled {{transfer.updated | date:"dd MMMM yy"}}
-						</span>
-					</p>
+					<div class="media">
+						<div class="media-body"
+							ng-class="{'p-r-3': $ctrl.active == transfer.id}">
+							<p class="list-group-item-heading text-max-width">
+								<transfer-description
+									transfer="transfer"
+									currencies="$ctrl.currencies"
+									source-account="transfer.sourceAccount"
+									target-account="transfer.targetAccount">
+								</transfer-description>
+							</p>
+							<p class="small m-b-0 text-max-width">
+								<span ng-if="transfer.completed"
+									class="list-group-item-text"
+									title="{{transfer.completed | date:'dd MMMM yyyy h:mm a'}}">
+									Completed {{transfer.completed | date:"dd MMMM yy"}}
+								</span>
+								<span ng-if="!transfer.completed && transfer.updated"
+									class="list-group-item-text"
+									title="{{transfer.updated | date:'dd MMMM yyyy h:mm a'}}">
+									Cancelled {{transfer.updated | date:"dd MMMM yy"}}
+								</span>
+							</p>
+						</div>
+						<div class="media-right text-right">
+							<p class="m-b-0 strong">
+								<strong>
+									{{$ctrl.currencies[transfer.source].symbol}}{{transfer.sourceAmount | number:$ctrl.currencies[transfer.source].digits}}
+									<span class="hidden-xs">{{transfer.source}}</span>
+								</strong>
+							</p>
+							<p class="m-b-0 small">
+								{{$ctrl.currencies[transfer.target].symbol}}{{transfer.targetAmount | number:$ctrl.currencies[transfer.source].digits}}
+								<span class="hidden-xs">{{transfer.source}}</span>
+							</p>
+						</div>
+					</div>
 					<div class="collapse"
 						ng-attr-aria-expanded="{{$ctrl.active == transfer.id}}"
 						ng-class="{'in': $ctrl.active == transfer.id}">
