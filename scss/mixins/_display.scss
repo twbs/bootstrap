@@ -1,0 +1,10 @@
+@mixin display-block {
+  display: block !important;
+}
+@mixin display-inline-block {
+  display: inline-block !important;
+}
+@mixin display-inline {
+  display: inline !important;
+}
+
