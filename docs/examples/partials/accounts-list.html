@@ -1,0 +1,78 @@
+<ul class="list-group list-group-inactive">
+	<li class="list-group-item"
+		ng-repeat="account in $ctrl.accounts"
+		ng-click="$ctrl.activate(account.id, $event)"
+		ng-class="{
+			'active': $ctrl.active == account.id
+		}">
+		<div class="media" role="button">
+			<div class="media-left">
+				<div class="circle circle-md circle-responsive" ng-if="account.id == 1">
+					AZ
+				</div>
+				<div class="circle circle-md circle-responsive" ng-if="account.id == 2">
+					<i class="icon icon-bank"></i>
+				</div>
+				<div class="circle circle-md circle-responsive" ng-if="account.id == 3">
+					<img src="../assets/img/mike.jpg" alt="Mike Marter" />
+				</div>
+
+				<img src="../assets/img/mike.jpg" alt="Mike Marter" class="circle circle-md circle-responsive"
+					ng-if="account.id == 4" />
+			</div>
+			<div class="media-body"
+				ng-class="{'p-r-3': $ctrl.active == transfer.id}">
+
+				<p class="list-group-item-heading text-max-width">
+					{{account.name}}
+				</p>
+				<p class="small m-b-0 text-max-width">
+					<span class="list-group-item-text">
+						{{account.shortString}}
+					</span>
+				</p>
+
+				<div class="collapse"
+					ng-attr-aria-expanded="{{$ctrl.active == account.id}}"
+					ng-class="{'in': $ctrl.active == account.id}">
+					<hr class="panel-m-t panel-m-b" />
+
+					<p>Details!!</p>
+				</div>
+			</div>
+			<div class="media-right text-right">
+				<div class="btn-group pull-right hidden-xs">
+					<a href="" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<div class="pips">
+							<div class="pip"></div>
+							<div class="pip"></div>
+							<div class="pip"></div>
+						</div>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right" role="menu">
+						<li><a href="">Repeat</a></li>
+						<li><a href="">View details</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="collapse"
+			ng-attr-aria-expanded="{{$ctrl.active == account.id}}"
+			ng-class="{'in': $ctrl.active == account.id}">
+			<div class="well panel-m-l-negative panel-m-r-negative panel-m-b-negative panel-p-l panel-p-r panel-p-b">
+				<div class="media">
+					<div class="media-left hidden-xs">
+						<div class="circle circle-sm invisible">
+							<i class="icon icon-transfer"></i>
+						</div>
+					</div>
+					<div class="media-body">
+						<repeat-transfer
+							currencies="$ctrl.currencies">
+						</repeat-transfer>
+					</div>
+				</div>
+			</div>
+		</div>
+	</li>
+</ul>

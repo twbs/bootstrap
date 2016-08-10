@@ -7,6 +7,13 @@
     .list-group-item-text {
       color: @color;
     }
+
+    a& {
+      color: @color;
+      &:hover {
+        color: @color;
+      }
+    }
   }
   @media (min-width: @screen-lg-min) {
     .list-group-item-@{state} {

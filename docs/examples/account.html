@@ -20,6 +20,8 @@
 	</script>
 
 	<script src="js/transfers.service.js"></script>
+	<script src="js/currencies.service.js"></script>
+
 	<script src="js/one-click.directive.js"></script>
 	<script src="js/nav.directive.js"></script>
 	<script src="js/next-cards.directive.js"></script>
@@ -31,34 +33,25 @@
 	<script src="js/transfer-type-icon.directive.js"></script>
 	<script src="js/transfer-actions.directive.js"></script>
 	<script src="js/repeat-transfer.directive.js"></script>
+	<script src="js/pagination.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
 
 	<script>
 	(function(angular) {
 
 		angular.module('ExampleApp')
-		.controller('PageController', ['TransferService', PageController]);
+		.controller('PageController', [
+			'TransferService',
+			'CurrencyService',
+			PageController
+		]);
 
-		function PageController(TransferService) {
+		function PageController(TransferService, CurrencyService) {
 			var vm = this;
 
-			vm.currencies = {
-				"USD": {
-					symbol: "$",
-					code: "USD",
-					digits: 2
-				},
-				"GBP": {
-					symbol: "£",
-					code: "USD",
-					digits: 2
-				},
-				"EUR": {
-					symbol: "€",
-					code: "EUR",
-					digits: 2
-				}
-			}
+			CurrencyService.map().then(function(currencies) {
+				vm.currencies = currencies;
+			});
 
 			TransferService.list({status: [
 				"PAUSED",
@@ -103,17 +96,17 @@
 		<div class="bg-primary p-t-4 p-b-5">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6 col-xs-12">
+					<div class="col-sm-6 col-md-8 col-xs-12">
 						<h2 class="m-b-0">Patrick Mullen</h2>
 						<p class="m-b-0">Membership number P1234567</p>
 					</div>
-					<div class="col-sm-3 col-xs-6 p-t-1">
+					<div class="col-sm-3 col-md-2 col-xs-6 p-t-1">
 						<dl class="text-right-sm">
 							<dt>Free transfers</dt>
 							<dd class="text-inverse m-b-0">2</dd>
 						</dl>
 					</div>
-					<div class="col-sm-3 col-xs-6 p-t-1">
+					<div class="col-sm-3 col-md-2 col-xs-6 p-t-1">
 						<dl class="text-right-sm">
 							<dt>Fee credit</dt>
 							<dd class="text-inverse m-b-0">£100 GBP</dd>
@@ -124,9 +117,9 @@
 		</div>
 		<div class="container">
 			<next-cards></next-cards>
-			<!--
+			<!-- -->
 			<one-click></one-click>
-			-->
+			<!-- -->
 			<active-transfers
 				transfers="ctrl.activeTransfers"
 				currencies="ctrl.currencies">
@@ -142,32 +135,11 @@
 				currencies="ctrl.currencies">
 			</transfer-history-table>
 			-->
-			<nav class="panel-p-l panel-p-r text-center">
-				<p class="pagination-text pull-left-md text-left-md">
-					Transfers 1 - 10 of 200
-				</p>
-				<ul class="pagination pull-right-md text-right-md">
-					<li>
-						<a href="#" aria-label="Previous">
-							<span aria-hidden="true">
-								<i class="glyphicon glyphicon-chevron-left"></i>
-							</span>
-						</a>
-					</li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li>
-						<a href="#" aria-label="Next">
-							<span aria-hidden="true">
-								<i class="glyphicon glyphicon-chevron-right"></i>
-							</span>
-						</a>
-					</li>
-				</ul>
-			</nav>
+			<div class="panel">
+				<div class="panel-p-l panel-p-r">
+					<pagination page="1" total="200"></pagination>
+				</div>
+			</div>
 		</div>
 	</div>
 	<footer-example></footer-example>

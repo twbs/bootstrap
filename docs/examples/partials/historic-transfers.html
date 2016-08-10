@@ -1,4 +1,4 @@
-<div class="panel panel-inactive">
+<div class="panel">
 	<div class="panel-heading">
 		<div class="row">
 			<div class="col-md-6 col-lg-8">
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 	</div>
-	<ul class="list-group">
+	<ul class="list-group list-group-inactive">
 		<li class="list-group-item"
 			ng-repeat="transfer in $ctrl.transfers"
 			ng-click="$ctrl.activate(transfer.id, $event)"
@@ -27,17 +27,11 @@
 			}">
 			<div class="media" role="button">
 				<div class="media-left">
-					<div class="circle circle-sm hidden-xs" ng-class="{
+					<div class="circle circle-sm circle-responsive" ng-class="{
 							'circle-inverse': transfer.id == $ctrl.active
 						}">
 						<transfer-type-icon type="transfer.type"></transfer-type-icon>
 					</div>
-					<b class="visible-xs-block">
-						<transfer-type-icon
-							type="transfer.type"
-							size="md">
-						</transfer-type-icon>
-					</b>
 				</div>
 				<div class="media-body">
 					<div class="media">
@@ -79,8 +73,9 @@
 					</div>
 					<div class="collapse"
 						ng-attr-aria-expanded="{{$ctrl.active == transfer.id}}"
-						ng-class="{'in': $ctrl.active == transfer.id}">
-						<hr class="panel-m-t panel-m-b" />
+						ng-class="{'in': $ctrl.active == transfer.id}"
+						ng-if="$ctrl.active == transfer.id">
+						<hr />
 						<transfer-details
 							transfer="transfer"
 							currencies="$ctrl.currencies"
@@ -107,11 +102,12 @@
 			</div>
 			<div class="collapse m-t-3"
 				ng-attr-aria-expanded="{{$ctrl.active == transfer.id}}"
-				ng-class="{'in': $ctrl.active == transfer.id}">
+				ng-class="{'in': $ctrl.active == transfer.id}"
+				ng-if="$ctrl.active == transfer.id">
 				<div class="well panel-m-l-negative panel-m-r-negative panel-m-b-negative panel-p-l panel-p-r panel-p-b"
 					ng-if="transfer.type !== 'CARD' && transfer.type !== 'REQUEST'">
 					<div class="media">
-						<div class="media-left hidden-xs">
+						<div class="media-left">
 							<div class="circle circle-sm invisible">
 								<i class="icon icon-transfer"></i>
 							</div>

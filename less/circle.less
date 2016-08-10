@@ -8,15 +8,22 @@
 @circle-md-font-size: 24px;
 @circle-lg-font-size: 32px;
 
+@circle-xs-icon-size: 14px;
+@circle-sm-icon-size: 24px;
+@circle-md-icon-size: 32px;
+@circle-lg-icon-size: 40px;
+
+
 .circle {
-    border: 1px solid @brand-white;
     color: @brand-blue-plus-10;
-    border-radius: 50%;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
 
+    border: 1px solid @brand-white;
     background-color: @brand-white;
+    border-radius: 50%;
+
     background-repeat:no-repeat;
     background-size: cover;
     background-position: center;
@@ -30,41 +37,6 @@
     transition: background-color ease @transition-duration,
                 color ease @transition-duration;
 
-    .circle-variant(@circle-md-diameter, @circle-md-font-size, (@circle-md-font-size + 8px));
-
-    .glyphicon {
-        margin-top: -1px;
-    }
-
-    &.circle-lg {
-        .circle-variant(@circle-lg-diameter, @circle-lg-font-size, (@circle-lg-font-size + 8px));
-
-        .glyphicon {
-            margin-top: -2px;
-        }
-    }
-
-    &.circle-sm {
-        .circle-variant(@circle-sm-diameter, @circle-sm-font-size, (@circle-sm-font-size + 8px));
-
-        .glyphicon {
-            margin-top: 0px;
-        }
-    }
-
-    &.circle-xs {
-        .circle-variant(@circle-xs-diameter, @circle-xs-font-size, 14px);
-
-        .glyphicon {
-            margin-top: 0px;
-        }
-    }
-
-    &.circle-inverse {
-        background-color: @brand-smoke-plus-20;
-        border-color: @brand-smoke-plus-20;
-    }
-
     &.active {
         border-color: @brand-info;
         background-color: @brand-info;
@@ -74,7 +46,31 @@
     img {
         width: 100%;
     }
+
+    img&,
+    img {
+        border-radius: 50%;
+    }
 }
+
+.circle,
+.circle-sm {
+    .circle-variant(@circle-sm-diameter, @circle-sm-font-size, @circle-sm-icon-size);
+    .glyphicon { margin-top: 0px; }
+}
+.circle-xs {
+    .circle-variant(@circle-xs-diameter, @circle-xs-font-size, @circle-xs-icon-size);
+    .glyphicon { margin-top: 0px; }
+}
+.circle-md {
+    .circle-variant(@circle-md-diameter, @circle-md-font-size, @circle-md-icon-size);
+    .glyphicon { margin-top: -1px; }
+}
+.circle-lg {
+    .circle-variant(@circle-lg-diameter, @circle-lg-font-size, @circle-lg-icon-size);
+    .glyphicon { margin-top: -2px; }
+}
+
 a.circle,
 a.circle .icon,
 a.circle .glyphicon, {
@@ -92,20 +88,71 @@ a.circle.active:hover {
     color: #FFF;
 }
 
+.circle-inverse {
+  border-color: @brand-smoke-plus-20;
+  background-color: @brand-smoke-plus-20;
+}
 
-@media (max-width: @screen-sm-max) {
-  .circle.circle-responsive {
-    .circle-variant(@circle-sm-diameter, @circle-sm-font-size, (@circle-sm-font-size + 8px));
+.circle-responsive {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  width: @line-height-computed;
+  height: @line-height-computed;
+  line-height: @line-height-computed;
+  font-size: @circle-sm-font-size;
+  overflow: visible;
 
-    .glyphicon {
-      margin-top: 0px;
+  .glyphicon,
+  .icon {
+      font-size: @circle-sm-icon-size;
+      line-height: @circle-sm-icon-size;
+  }
+
+  &.circle-lg {
+    border-radius: 50%;
+    border-color: @brand-white;
+    background-color: @brand-white;
+    &.circle-inverse {
+      border-color: @brand-smoke-plus-20;
+      background-color: @brand-smoke-plus-20;
+    }
+    .circle-variant(@circle-sm-diameter, @circle-sm-font-size, @circle-sm-icon-size);
+    .glyphicon { margin-top: 0px; }
+  }
+}
+@media (min-width: @screen-sm-min) {
+  .circle-responsive {
+    border-radius: 50%;
+    border-color: @brand-white;
+    background-color: @brand-white;
+    &.circle-inverse {
+      border-color: @brand-smoke-plus-20;
+      background-color: @brand-smoke-plus-20;
     }
   }
-  .circle-lg.circle-responsive {
-    .circle-variant(@circle-md-diameter, @circle-md-font-size, (@circle-md-font-size + 8px));
 
-    .glyphicon {
-      margin-top: -1px;
+  .circle-responsive {
+    &.circle-sm,
+    &.circle-md {
+      .circle-variant(@circle-sm-diameter, @circle-sm-font-size, @circle-sm-icon-size);
+      .glyphicon { margin-top: 0px;}
+    }
+    &.circle-lg {
+      .circle-variant(@circle-md-diameter, @circle-md-font-size, @circle-md-icon-size);
+      .glyphicon { margin-top: -1px; }
+    }
+  }
+}
+@media (min-width: @screen-md-min) {
+  .circle-responsive {
+    &.circle-md {
+      .circle-variant(@circle-md-diameter, @circle-md-font-size, @circle-md-icon-size);
+      .glyphicon { margin-top: -1px; }
+    }
+    &.circle-lg {
+      .circle-variant(@circle-lg-diameter, @circle-lg-font-size, @circle-lg-icon-size);
+      .glyphicon { margin-top: -2px; }
     }
   }
 }
@@ -116,10 +163,6 @@ a.circle.active:hover {
     > .circle-sm:first-child {
       margin-right: 12px;
     }
-  }
-  a:hover .circle {
-    border-color: @brand-smoke;
-    color: @brand-grey-plus-20;
   }
 }
 .btn {

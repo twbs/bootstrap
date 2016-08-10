@@ -130,11 +130,21 @@ img {
 // Horizontal rules
 
 hr {
-  margin-top:    @line-height-computed;
-  margin-bottom: @line-height-computed;
+  margin-top:    @padding-container-collapse-xs;
+  margin-bottom: @padding-container-collapse-xs;
   border: 0;
   border-top: 1px solid @hr-border;
+
+  @media (min-width: @screen-sm-min) {
+    margin-top:    @padding-container-collapse;
+    margin-bottom: @padding-container-collapse;
+  }
+  @media (min-width: @screen-lg-min) {
+    margin-top:    @padding-container;
+    margin-bottom: @padding-container;
+  }
 }
+
 
 
 // Only display content to screen readers

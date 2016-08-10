@@ -16,15 +16,9 @@
 			}">
 			<div class="media" role="button">
 				<div class="media-left">
-					<div class="circle circle-sm circle-inverse hidden-xs">
+					<div class="circle circle-sm circle-inverse circle-responsive">
 						<transfer-type-icon type="transfer.type"></transfer-type-icon>
 					</div>
-					<b class="visible-xs-block">
-						<transfer-type-icon
-							type="transfer.type"
-							size="md">
-						</transfer-type-icon>
-					</b>
 				</div>
 				<div class="media-body">
 					<div class="media">
@@ -61,8 +55,9 @@
 					</div>
 					<div class="collapse"
 						ng-attr-aria-expanded="{{$ctrl.active == transfer.id}}"
-						ng-class="{'in': $ctrl.active == transfer.id}">
-						<hr class="panel-m-t panel-m-b" />
+						ng-class="{'in': $ctrl.active == transfer.id}"
+						ng-if="$ctrl.active == transfer.id">
+						<hr  />
 						<transfer-details
 							transfer="transfer"
 							currencies="$ctrl.currencies"
@@ -76,12 +71,12 @@
 								</a>
 							</div>
 						</div>
-						<hr class="panel-m-t panel-m-b hidden-xs hidden-sm" />
+						<hr class="hidden-xs hidden-sm" />
 						<transfer-actions transfer="transfer" class="m-t-2"></transfer-actions>
 					</div>
 				</div>
-				<div class="media-right text-right">
-					<div class="btn-group pull-right hidden-xs">
+				<div class="media-right text-right hidden-xs">
+					<div class="btn-group pull-right">
 						<a href="" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 							<div class="pips">
 								<div class="pip"></div>

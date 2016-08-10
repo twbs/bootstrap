@@ -11,6 +11,8 @@
   // No need to set list-style: none; since .list-group-item is block level
   margin-bottom: 20px;
   padding-left: 0; // reset padding because ul and ol
+  border-left: 1px solid @brand-smoke-plus-20;
+  border-right: 1px solid @brand-smoke-plus-20;
   border-bottom: 1px solid @brand-smoke-plus-20;
 }
 
@@ -29,15 +31,6 @@
 
   line-height: @line-height-computed;
   transition: all ease @panel-focus-transtion;
-
-  &:hover,
-  .active {
-    background-color: #fff !important;
-
-    .circle {
-      background-color: @brand-smoke-plus-20;
-    }
-  }
 }
 
 @media (min-width: @screen-sm-min) {
@@ -112,12 +105,14 @@ a.list-group-item {
   &.active {
     z-index: 2; // Place active items above their siblings for proper border styling
     background-color: @list-group-active-bg;
-
-    margin: @line-height-computed 0;
     box-shadow: 0 1px 10px @brand-smoke-plus-10;
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    + .list-group-item {
+      border-top-width: 0;
     }
   }
 
@@ -135,6 +130,23 @@ a.list-group-item {
   }
 }
 
+.list-group-inactive {
+  .list-group-item {
+    background-color: transparent;
+    border-top: 1px solid @brand-smoke-plus-10;
+
+    &:hover,
+    &.active {
+      background-color: @brand-white;
+
+      @media (min-width: @screen-sm-min) {
+        .circle {
+          background-color: @brand-smoke-plus-20;
+        }
+      }
+    }
+  }
+}
 
 // Contextual variants
 //

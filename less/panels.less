@@ -55,20 +55,6 @@
   border-top: 1px solid @panel-inner-border;
 }
 
-.panel-inactive {
-  .list-group-item {
-    background-color: transparent;
-    border-top: 1px solid @brand-smoke-plus-10;
-
-    &.active {
-      background-color: @brand-white;
-    }
-  }
-  .active + .list-group-item {
-    border-top-width: 0;
-  }
-}
-
 @media (min-width: @screen-sm-min) {
   .panel {
     margin-bottom: (@panel-body-padding-collapse + 8px);;
@@ -116,9 +102,16 @@
   > .list-group,
   > .panel-collapse > .list-group {
     margin-bottom: 0;
+    border-left: 0;
+    border-right: 0;
 
     .list-group-item {
       border-radius: 0;
+
+      &.active {
+        margin-top: @line-height-computed;
+        margin-bottom: @line-height-computed;
+      }
     }
   }
   > .panel-heading + .panel-collapse > .list-group {

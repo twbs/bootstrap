@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Recipient Page Example</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular.js"></script>
+
+	<script src="forms.js"></script>
+
+	<script>
+	angular.module('ExampleApp', []);
+	</script>
+
+	<script src="js/accounts.service.js"></script>
+	<script src="js/currencies.service.js"></script>
+
+	<script src="js/nav.directive.js"></script>
+	<script src="js/next-cards.directive.js"></script>
+	<script src="js/accounts-list.directive.js"></script>
+	<script src="js/repeat-transfer.directive.js"></script>
+	<script src="js/pagination.directive.js"></script>
+	<script src="js/footer.directive.js"></script>
+
+	<script>
+	(function(angular) {
+
+		angular.module('ExampleApp')
+		.controller('PageController', [
+			'AccountService',
+			'CurrencyService',
+			PageController
+		]);
+
+		function PageController(AccountService, CurrencyService) {
+			var vm = this;
+
+			CurrencyService.map().then(function(currencies) {
+				vm.currencies = currencies;
+			});
+
+			AccountService.list({isOwned: true}).then(function(accounts) {
+				vm.ownedAccounts = accounts;
+			});
+
+			AccountService.list({isOwned: false}).then(function(accounts) {
+				vm.otherAccounts = accounts;
+			});
+		}
+	})(window.angular);
+	</script>
+
+	<style>
+	body {
+		background-color: #f2f5f7;
+	}
+	</style>
+</head>
+<body ng-app="ExampleApp">
+	<nav-bar></nav-bar>
+	<div ng-controller="PageController as ctrl">
+		<div class="container">
+			<next-cards></next-cards>
+
+			<div class="panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">Your accounts</h3>
+				</div>
+				<accounts-list
+					accounts="ctrl.ownedAccounts"
+					currencies="ctrl.currencies">
+				</accounts-list>
+			</div>
+
+			<div class="panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">Other accounts</h3>
+				</div>
+				<accounts-list
+					accounts="ctrl.otherAccounts"
+					currencies="ctrl.currencies">
+				</accounts-list>
+			</div>
+
+			<div class="panel">
+				<div class="panel-p-l panel-p-r">
+					<pagination page="1" total="200"></pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer-example></footer-example>
+</body>
+
+</html>
