@@ -31,7 +31,8 @@
 			restrict: 'E',
 			scope: {
 				accounts: "=",
-				currencies: "="
+				currencies: "=",
+				inactive: "="
 			},
 			templateUrl: "partials/accounts-list.html"
 		}

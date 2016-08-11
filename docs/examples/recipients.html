@@ -61,6 +61,19 @@
 	body {
 		background-color: #f2f5f7;
 	}
+	.pips {
+		margin-top: 14px;
+		width: 32px;
+	}
+	.pip {
+		height: 4px;
+		width: 4px;
+		border-radius: 2px;
+		background-color: #00a4df;
+		margin-bottom: 4px;
+		margin-left: 13px;
+		display: block;
+	}
 	</style>
 </head>
 <body ng-app="ExampleApp">
@@ -71,7 +84,8 @@
 
 			<div class="panel">
 				<div class="panel-heading">
-					<h3 class="panel-title">Your accounts</h3>
+					<button class="btn btn-sm btn-default pull-xs-right">Add recipient</button>
+					<h3 class="panel-title">My accounts</h3>
 				</div>
 				<accounts-list
 					accounts="ctrl.ownedAccounts"
@@ -81,11 +95,12 @@
 
 			<div class="panel">
 				<div class="panel-heading">
-					<h3 class="panel-title">Other accounts</h3>
+					<h3 class="panel-title">Other recipients</h3>
 				</div>
 				<accounts-list
 					accounts="ctrl.otherAccounts"
-					currencies="ctrl.currencies">
+					currencies="ctrl.currencies"
+					inactive="true">
 				</accounts-list>
 			</div>
 

@@ -6,9 +6,13 @@
   <p>In it's simplest form, a tile shows a <a href="#circles">circle</a> containing
        intials or an icon, alongside a title.</p>
 
+  <p class="text-warning">Tiles should have <code>role="button"</code> so that
+    screen readers will recognise them as clickable, and <code>tabindex="0"</code>
+    to provide focus support for keyboards.</p>
+
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile" tabindex="0">
+      <div class="tile" tabindex="0" role="button">
         <div class="circle circle-lg">
           AZ
         </div>
@@ -18,7 +22,7 @@
   </div>
 
 {% highlight html %}
-<div class="tile" tabindex="0">
+<div class="tile" tabindex="0" role="button">
   <div class="circle circle-lg">AZ</div>
   <h5>...</h5>
 </div>
@@ -40,21 +44,21 @@
 
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile" tabindex="0">
+      <div class="tile" tabindex="0" role="button">
         <div class="circle circle-lg" style="background-image: url('/assets/img/mo.jpg');"></div>
         <h5>Someone else</h5>
         <p>EUR account ending 2843</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile" tabindex="0">
+      <div class="tile" tabindex="0" role="button">
         <div class="circle circle-lg" style="background-image: url('/assets/img/kish.jpg');"></div>
         <h5>Myself</h5>
         <p>EUR account ending 5234</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile" tabindex="0">
+      <div class="tile" tabindex="0" role="button">
         <div class="circle circle-lg" style="background-image: url('/assets/img/mike.jpg');"></div>
         <h5>Really long title that causes text wrap</h5>
         <p>EUR account ending 6798</p>
@@ -65,21 +69,21 @@
 {% highlight html %}
 <div class="row row-equal-height">
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="tile" tabindex="0">
+    <div class="tile" tabindex="0" role="button">
       <img class="circle circle-lg" src="..." />
       <h5>...</h5>
       <p>...</p>
     </div>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="tile" tabindex="0">
+    <div class="tile" tabindex="0" role="button">
       <img class="circle circle-lg" src="..." />
       <h5>...</h5>
       <p>...</p>
     </div>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="tile" tabindex="0">
+    <div class="tile" tabindex="0" role="button">
       <img class="circle circle-lg" src="..." />
       <h5>...</h5>
       <p>...</p>
@@ -93,20 +97,18 @@
 
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile" tabindex="0">
+      <div class="tile" tabindex="0" role="button">
         <div class="circle circle-lg">
           <i class="icon icon-card"></i>
         </div>
-        <div class="text-left text-center-md">
-            <h5>Credit Card</h5>
-            <p>Visa and Mastercard are supported</p>
-            <hr>
-            <p>&plus;&pound;1 card fee</p>
-        </div>
+        <h5>Credit Card</h5>
+        <p>Visa and Mastercard are supported</p>
+        <hr>
+        <p>&plus;&pound;1 card fee</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile" tabindex="0">
+      <div class="tile" tabindex="0" role="button">
           <div class="circle circle-lg">
             <i class="icon icon-card"></i>
           </div>
@@ -119,7 +121,7 @@
   </div>
 
 {% highlight html %}
-<div class="tile" tabindex="0">
+<div class="tile" tabindex="0" role="button">
   <div class="circle circle-lg">
     <i class="icon icon-card"></i>
   </div>
@@ -136,7 +138,7 @@
 
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile" tabindex="0">
+      <div class="tile" tabindex="0" role="button">
           <div class="circle circle-lg">
             <i class="icon icon-card"></i>
           </div>
@@ -148,7 +150,7 @@
   </div>
 
 {% highlight html %}
-<div class="tile" tabindex="0">
+<div class="tile" tabindex="0" role="button">
   <div class="circle circle-lg">
     ...
   </div>

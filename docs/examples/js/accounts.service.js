@@ -23,6 +23,10 @@
 			type: "BANK",
 			shortString: "Account ending 1234",
 			currency: "GBP",
+			number: "12345678",
+			sort: "654321",
+			iban: "1234 5678 1234 5678",
+			bic: "ABC 123 56 DE",
 			isOwned: false
 		},{
 			id: 2,
@@ -30,6 +34,10 @@
 			type: "BANK",
 			shortString: "Account ending 4321",
 			currency: "GBP",
+			number: "12345678",
+			sort: "654321",
+			iban: "1234 5678 1234 5678",
+			bic: "ABC 123 56 DE",
 			isOwned: true
 		},{
 			id: 3,
@@ -37,6 +45,10 @@
 			type: "WALLET",
 			shortString: "USD balance",
 			currency: "USD",
+			number: "12345678",
+			sort: "654321",
+			iban: "1234 5678 1234 5678",
+			bic: "ABC 123 56 DE",
 			isOwned: true
 		},{
 			id: 4,
@@ -44,6 +56,10 @@
 			type: "WALLET",
 			shortString: "GBP balance",
 			currency: "GBP",
+			number: "12345678",
+			sort: "654321",
+			iban: "1234 5678 1234 5678",
+			bic: "ABC 123 56 DE",
 			isOwned: true
 		}];
 	}

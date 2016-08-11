@@ -1,4 +1,5 @@
-<ul class="list-group list-group-inactive">
+<ul class="list-group"
+ 	ng-class="{'list-group-inactive': $ctrl.inactive}">
 	<li class="list-group-item"
 		ng-repeat="account in $ctrl.accounts"
 		ng-click="$ctrl.activate(account.id, $event)"
@@ -7,21 +8,27 @@
 		}">
 		<div class="media" role="button">
 			<div class="media-left">
-				<div class="circle circle-md circle-responsive" ng-if="account.id == 1">
+				<div class="circle circle-sm circle-responsive"
+					ng-if="account.id == 1"
+					ng-class="{'circle-inverse': !$ctrl.inactive}">
 					AZ
 				</div>
-				<div class="circle circle-md circle-responsive" ng-if="account.id == 2">
+				<div class="circle circle-sm circle-responsive"
+					ng-if="account.id == 2"
+					ng-class="{'circle-inverse': !$ctrl.inactive}">
 					<i class="icon icon-bank"></i>
 				</div>
-				<div class="circle circle-md circle-responsive" ng-if="account.id == 3">
+				<div class="circle circle-sm circle-responsive"
+					ng-if="account.id == 3"
+					ng-class="{'circle-inverse': !$ctrl.inactive}">
 					<img src="../assets/img/mike.jpg" alt="Mike Marter" />
 				</div>
-
-				<img src="../assets/img/mike.jpg" alt="Mike Marter" class="circle circle-md circle-responsive"
-					ng-if="account.id == 4" />
+				<img src="../assets/img/mike.jpg" alt="Mike Marter" class="circle circle-sm circle-responsive"
+					ng-if="account.id == 4"
+					ng-class="{'circle-inverse': !$ctrl.inactive}" />
 			</div>
 			<div class="media-body"
-				ng-class="{'p-r-3': $ctrl.active == transfer.id}">
+				ng-class="{'p-r-3': $ctrl.active == account.id}">
 
 				<p class="list-group-item-heading text-max-width">
 					{{account.name}}
@@ -37,11 +44,29 @@
 					ng-class="{'in': $ctrl.active == account.id}">
 					<hr class="panel-m-t panel-m-b" />
 
-					<p>Details!!</p>
+					<div class="row">
+						<dl class="col-sm-6">
+							<dt>Account number</dt>
+							<dd>{{account.number}}</dd>
+						</dl>
+						<dl class="col-sm-6">
+							<dt>Sort code</dt>
+							<dd>{{account.sort}}</dd>
+						</dl>
+						<dl class="col-sm-6">
+							<dt>IBAN</dt>
+							<dd>{{account.iban}}</dd>
+						</dl>
+						<dl class="col-sm-6">
+							<dt>Bank code (BIC/Swift)</dt>
+							<dd>{{account.bic}}</dd>
+						</dl>
+					</div>
+					<a href="">Download details as a PDF</a>
 				</div>
 			</div>
-			<div class="media-right text-right">
-				<div class="btn-group pull-right hidden-xs">
+			<div class="media-right text-xs-right">
+				<div class="btn-group pull-xs-right">
 					<a href="" role="button" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 						<div class="pips">
 							<div class="pip"></div>
@@ -59,7 +84,7 @@
 		<div class="collapse"
 			ng-attr-aria-expanded="{{$ctrl.active == account.id}}"
 			ng-class="{'in': $ctrl.active == account.id}">
-			<div class="well panel-m-l-negative panel-m-r-negative panel-m-b-negative panel-p-l panel-p-r panel-p-b">
+			<div class="well panel-m-l-negative panel-m-r-negative panel-m-b-negative panel-p-l panel-p-r panel-m-t">
 				<div class="media">
 					<div class="media-left hidden-xs">
 						<div class="circle circle-sm invisible">

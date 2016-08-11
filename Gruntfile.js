@@ -415,6 +415,8 @@ module.exports = function (grunt) {
           'Attribute “ng-class” not allowed on element “li” at this point.',
           'Attribute “ng-class” not allowed on element “i” at this point.',
           'Attribute “ng-class” not allowed on element “div” at this point.',
+          'Attribute “ng-class” not allowed on element “ul” at this point.',
+          'Attribute “ng-class” not allowed on element “img” at this point.',
           'Attribute “ng-repeat” not allowed on element “li” at this point.',
           'Attribute “ng-repeat” not allowed on element “tr” at this point.',
           'Attribute “ng-attr-aria-expanded” not allowed on element “div” at this point.',

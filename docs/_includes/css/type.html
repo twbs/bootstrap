@@ -242,18 +242,34 @@ You can use the mark tag to <mark>highlight</mark> text.
   <h2 id="type-alignment">Alignment classes</h2>
   <p>Easily realign text to components with text alignment classes.</p>
   <div class="bs-example" data-example-id="text-alignment">
-    <p class="text-left">Left aligned text.</p>
-    <p class="text-center">Center aligned text.</p>
-    <p class="text-right">Right aligned text.</p>
-    <p class="text-justify">Justified text.</p>
-    <p class="text-nowrap">No wrap text.</p>
+    <p class="text-xs-left">Left aligned text.</p>
+    <p class="text-xs-center">Center aligned text.</p>
+    <p class="text-xs-right">Right aligned text.</p>
+    <p class="text-xs-justify">Justified text.</p>
+    <p class="text-xs-nowrap">No wrap text.</p>
   </div>
 {% highlight html %}
-<p class="text-left">Left aligned text.</p>
-<p class="text-center">Center aligned text.</p>
-<p class="text-right">Right aligned text.</p>
-<p class="text-justify">Justified text.</p>
-<p class="text-nowrap">No wrap text.</p>
+<p class="text-xs-left">Left aligned text.</p>
+<p class="text-xs-center">Center aligned text.</p>
+<p class="text-xs-right">Right aligned text.</p>
+<p class="text-xs-justify">Justified text.</p>
+<p class="text-xs-nowrap">No wrap text.</p>
+{% endhighlight %}
+
+  <p>For text that only aligns above a given break point use the appropriate modifier.</p>
+  <div class="bs-example" data-example-id="responsive-text-alignment">
+    <p class="text-xs-right">Text right on extra small grids.</p>
+    <p class="text-sm-right">Text right on small grids.</p>
+    <p class="text-md-right">Text right on medium grids.</p>
+    <p class="text-lg-right">Text right on large grids.</p>
+    <p class="text-xl-right">Text right on extra large grids.</p>
+  </div>
+{% highlight html %}
+<p class="text-xs-right">Text right on extra small grids.</p>
+<p class="text-sm-right">Text right on small grids.</p>
+<p class="text-md-right">Text right on medium grids.</p>
+<p class="text-lg-right">Text right on large grids.</p>
+<p class="text-xl-right">Text right on extra large grids.</p>
 {% endhighlight %}
 
   <h2 id="type-transformation">Transformation classes</h2>

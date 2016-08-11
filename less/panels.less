@@ -25,10 +25,6 @@
   > .dropdown .dropdown-toggle {
     color: inherit;
   }
-
-  > .btn-sm {
-    margin-top: 8px;
-  }
 }
 
 
@@ -61,6 +57,7 @@
   }
   .panel-heading {
     padding: (@panel-body-padding / 2) @panel-body-padding-collapse;
+
   }
   .panel-body {
     padding: @panel-body-padding-collapse;
@@ -89,6 +86,11 @@
 @media (min-width: @screen-md-min) {
   .panel-title {
     line-height: (@line-height-computed * 2);
+  }
+  .panel-heading {
+    > .btn-sm {
+      margin-top: 8px;
+    }
   }
 }
 

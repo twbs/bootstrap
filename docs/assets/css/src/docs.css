@@ -1022,10 +1022,6 @@ h4 code {
 }
 
 /* Pagination */
-.bs-example .pagination {
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
 
 /* Pager */
 .bs-example > .pager {

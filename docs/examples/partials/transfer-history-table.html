@@ -24,9 +24,9 @@
 					<th style="width: 48px;">&nbsp;</th>
 					<th><a href="">From</a></th>
 					<th><a href="">To</a></th>
-					<th class="text-right"><a href="">Sent</a></th>
-					<th class="text-right"><a href="">Received</a></th>
-					<th class="text-right"><a href="">Created <span class="caret"></span></a></th>
+					<th class="text-xs-right"><a href="">Sent</a></th>
+					<th class="text-xs-right"><a href="">Received</a></th>
+					<th class="text-xs-right"><a href="">Created <span class="caret"></span></a></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -62,15 +62,15 @@
 							{{transfer.targetAccount.shortString}}
 						</div>
 					</td>
-					<td class="text-right">
+					<td class="text-xs-right">
 						{{$ctrl.currencies[transfer.source].symbol}}{{transfer.sourceAmount | number:$ctrl.currencies[transfer.source].digits}}
 						{{transfer.source}}
 					</td>
-					<td class="text-right">
+					<td class="text-xs-right">
 						{{$ctrl.currencies[transfer.target].symbol}}{{transfer.targetAmount | number:$ctrl.currencies[transfer.source].digits}}
 						{{transfer.target}}
 					</td>
-					<td class="text-right">
+					<td class="text-xs-right">
 						{{transfer.created | date:"dd MMM yy"}}
 					</td>
 				</tr>
