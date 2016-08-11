@@ -8692,7 +8692,7 @@ button.close {
   text-align: center;
   cursor: pointer;
   background-color: #f2f5f7;
-  border: 1px solid #f2f5f7;
+  border: 1px solid #e2e6e8;
   border-radius: 3px;
   outline: none;
   -webkit-transition: all .1s ease-in-out;
@@ -8752,6 +8752,7 @@ button.close {
 }
 .tile-inverse {
   background-color: #fff;
+  border-color: #fff;
 }
 /* Backwards compaibility for early tile implementation */
 .tile-row {
@@ -8788,6 +8789,34 @@ button.close {
   .tile {
     padding: 32px;
   }
+}
+.tile-success .icon,
+.tile-success a {
+  color: #28b862;
+}
+.tile-success:hover:not(.tile-disabled) {
+  border-color: #2ed06e;
+}
+.tile-info .icon,
+.tile-info a {
+  color: #28b862;
+}
+.tile-info:hover:not(.tile-disabled) {
+  border-color: #2ed06e;
+}
+.tile-warning .icon,
+.tile-warning a {
+  color: #ffa600;
+}
+.tile-warning:hover:not(.tile-disabled) {
+  border-color: #ffa600;
+}
+.tile-danger .icon,
+.tile-danger a {
+  color: #f53636;
+}
+.tile-danger:hover:not(.tile-disabled) {
+  border-color: #f53636;
 }
 .modal-open {
   overflow: hidden;

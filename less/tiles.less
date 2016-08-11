@@ -9,7 +9,7 @@
 
   padding: @padding-container-collapse-xs;
   background-color: @brand-smoke-plus-20;
-  border: 1px solid @brand-smoke-plus-20;
+  border: 1px solid @brand-smoke-plus-10;
   border-radius: @border-radius-base;
   font-size: @font-size-small;
 
@@ -77,6 +77,7 @@
 
 .tile-inverse {
   background-color: @brand-white;
+  border-color: @brand-white;
 }
 
 /* Backwards compaibility for early tile implementation */
@@ -109,5 +110,38 @@
 @media (min-width: @screen-lg-min) {
   .tile {
     padding: @padding-container;
+  }
+}
+
+.tile-success {
+  .icon, a {
+    color: @state-success-text;
+  }
+  &:hover:not(.tile-disabled) {
+      border-color: @state-success-border;
+  }
+}
+.tile-info {
+  .icon, a {
+    color: @state-success-text;
+  }
+  &:hover:not(.tile-disabled) {
+    border-color: @state-success-border;
+  }
+}
+.tile-warning {
+  .icon, a {
+    color: @state-warning-text;
+  }
+  &:hover:not(.tile-disabled) {
+    border-color: @state-warning-border;
+  }
+}
+.tile-danger {
+  .icon, a {
+    color: @state-danger-text;
+  }
+  &:hover:not(.tile-disabled) {
+    border-color: @state-danger-border;
   }
 }
