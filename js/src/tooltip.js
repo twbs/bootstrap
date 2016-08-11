@@ -304,7 +304,7 @@ const Tooltip = (($) => {
             this._leave(null, this)
           }
 
-          if ($(this.element).parents('.modal').length > 0){
+          if ($(this.element).parents('.modal').length > 0) {
             $(tip).appendTo($(this.element).parents('.modal').get(0))
           }
         }
