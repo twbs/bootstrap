@@ -9,27 +9,39 @@
       <tbody>
         <tr>
           <td><h1>h1. Bootstrap heading</h1></td>
-          <td class="type-info">Medium Uppercase 36px</td>
+          <td class="type-info">
+            <span class="hidden-xs hidden-sm">Bold 42px, line-height: 48px, margin-bottom: 8px</span>
+            <span class="visible-xs visible-sm">Bold 28px, line-height: 32px, margin-bottom: 4px</span>
+          </td>
         </tr>
         <tr>
           <td><h2>h2. Bootstrap heading</h2></td>
-          <td class="type-info">Medium Uppercase 28px</td>
+          <td class="type-info">
+            <span class="hidden-xs hidden-sm">Bold 28px, line-height: 32px, margin-bottom: 4px</span>
+            <span class="visible-xs visible-sm">Bold 22px, line-height: 30px, margin-bottom: 2px</span>
+          </td>
         </tr>
         <tr>
           <td><h3>h3. Bootstrap heading</h3></td>
-          <td class="type-info">Medium 22px</td>
+          <td class="type-info">
+            <span class="hidden-xs hidden-sm">Semi-bold 22px, line-height: 30px, margin-bottom: 2px</span>
+            <span class="visible-xs visible-sm">Semi-bold 18px, line-height: 24px</span>
+          </td>
         </tr>
         <tr>
           <td><h4>h4. Bootstrap heading</h4></td>
-          <td class="type-info">Heavy 18px</td>
+          <td class="type-info">
+            <span class="hidden-xs hidden-sm">Semi-bold 18px, line-height: 24px</span>
+            <span class="visible-xs visible-sm">Semi-bold 16px, line-height: 24px</span>
+          </td>
         </tr>
         <tr>
           <td><h5>h5. Bootstrap heading</h5></td>
-          <td class="type-info">Heavy 16px</td>
+          <td class="type-info">Semi-bold 16px, line-height: 24px</td>
         </tr>
         <tr>
           <td><h6>h6. Bootstrap heading</h6></td>
-          <td class="type-info">Heavy Uppercase 14px</td>
+          <td class="type-info">Semi-bold 14px, line-height: 24px</td>
         </tr>
       </tbody>
     </table>
@@ -230,18 +242,34 @@ You can use the mark tag to <mark>highlight</mark> text.
   <h2 id="type-alignment">Alignment classes</h2>
   <p>Easily realign text to components with text alignment classes.</p>
   <div class="bs-example" data-example-id="text-alignment">
-    <p class="text-left">Left aligned text.</p>
-    <p class="text-center">Center aligned text.</p>
-    <p class="text-right">Right aligned text.</p>
-    <p class="text-justify">Justified text.</p>
-    <p class="text-nowrap">No wrap text.</p>
+    <p class="text-xs-left">Left aligned text.</p>
+    <p class="text-xs-center">Center aligned text.</p>
+    <p class="text-xs-right">Right aligned text.</p>
+    <p class="text-xs-justify">Justified text.</p>
+    <p class="text-xs-nowrap">No wrap text.</p>
   </div>
 {% highlight html %}
-<p class="text-left">Left aligned text.</p>
-<p class="text-center">Center aligned text.</p>
-<p class="text-right">Right aligned text.</p>
-<p class="text-justify">Justified text.</p>
-<p class="text-nowrap">No wrap text.</p>
+<p class="text-xs-left">Left aligned text.</p>
+<p class="text-xs-center">Center aligned text.</p>
+<p class="text-xs-right">Right aligned text.</p>
+<p class="text-xs-justify">Justified text.</p>
+<p class="text-xs-nowrap">No wrap text.</p>
+{% endhighlight %}
+
+  <p>For text that only aligns above a given break point use the appropriate modifier.</p>
+  <div class="bs-example" data-example-id="responsive-text-alignment">
+    <p class="text-xs-right">Text right on extra small grids.</p>
+    <p class="text-sm-right">Text right on small grids.</p>
+    <p class="text-md-right">Text right on medium grids.</p>
+    <p class="text-lg-right">Text right on large grids.</p>
+    <p class="text-xl-right">Text right on extra large grids.</p>
+  </div>
+{% highlight html %}
+<p class="text-xs-right">Text right on extra small grids.</p>
+<p class="text-sm-right">Text right on small grids.</p>
+<p class="text-md-right">Text right on medium grids.</p>
+<p class="text-lg-right">Text right on large grids.</p>
+<p class="text-xl-right">Text right on extra large grids.</p>
 {% endhighlight %}
 
   <h2 id="type-transformation">Transformation classes</h2>

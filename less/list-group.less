@@ -11,8 +11,10 @@
   // No need to set list-style: none; since .list-group-item is block level
   margin-bottom: 20px;
   padding-left: 0; // reset padding because ul and ol
+  border-left: 1px solid @brand-smoke-plus-20;
+  border-right: 1px solid @brand-smoke-plus-20;
+  border-bottom: 1px solid @brand-smoke-plus-20;
 }
-
 
 // Individual list items
 //
@@ -21,30 +23,40 @@
 .list-group-item {
   position: relative;
   display: block;
-  padding: 16px @padding-container-collapse;
+  padding: @padding-container-collapse-xs @padding-container-collapse-xs @padding-container-collapse-xs (@padding-container-collapse-xs - 2px);
   // Place the border on the list items and negative margin up for better styling
-  margin-bottom: -1px;
   background-color: @list-group-bg;
-  border: 1px solid @list-group-border;
-  font-size: @font-size-small;
+  border-left: 2px solid transparent;
+  border-top: 1px solid @brand-smoke-plus-20;
+
   line-height: @line-height-computed;
-
-  // Round the first and last items
-  &:first-child {
-    .border-top-radius(@list-group-border-radius);
-  }
-  &:last-child {
-    margin-bottom: 0;
-    .border-bottom-radius(@list-group-border-radius);
-  }
+  transition: all ease @panel-focus-transtion;
 }
 
-@media (min-width: @screen-md-min) {
+@media (min-width: @screen-sm-min) {
   .list-group-item {
-    padding: 32px @padding-container;
+    padding: @padding-container-collapse @padding-container-collapse @padding-container-collapse (@padding-container-collapse - 2px);
+  }
+}
+@media (min-width: @screen-lg-min) {
+  .list-group-item {
+    padding: @padding-container @padding-container @padding-container (@padding-container - 2px);
   }
 }
 
+// Custom content options
+//
+// Extra classes for creating well-formatted content within `.list-group-item`s.
+
+.list-group-item-heading {
+  margin-bottom: 0;
+  font-size: @font-size-base;
+  color: @brand-blue-plus-10;
+}
+.list-group-item-text {
+  margin-bottom: 0;
+  color: @text-color;
+}
 
 // Linked list items
 //
@@ -53,6 +65,7 @@
 
 a.list-group-item {
   color: @list-group-link-color;
+  text-decoration: none;
 
   .list-group-item-heading {
     color: @list-group-link-heading-color;
@@ -69,43 +82,71 @@ a.list-group-item {
 
 .list-group-item {
   // Disabled state
-  &.disabled,
   &.disabled:hover,
-  &.disabled:focus {
-    background-color: @list-group-disabled-bg;
+  &.disabled:focus,
+  &.disabled:not(.active):not(:hover) {
     color: @list-group-disabled-color;
-    cursor: @cursor-disabled;
 
     // Force color to inherit for custom content
-    .list-group-item-heading {
-      color: inherit;
+    .list-group-item-heading,
+    .list-group-item-heading strong {
+      color: @list-group-disabled-color;
     }
     .list-group-item-text {
-      color: @list-group-disabled-text-color;
+      color: @list-group-disabled-color;
+    }
+    .circle,
+    .icon {
+      color: @list-group-disabled-color;
     }
   }
 
   // Active class on item itself, not parent
-  &.active,
-  &.active:hover,
-  &.active:focus {
+  &.active {
     z-index: 2; // Place active items above their siblings for proper border styling
-    color: @list-group-active-color;
     background-color: @list-group-active-bg;
-    border-color: @list-group-active-border;
+    box-shadow: 0 1px 10px @brand-smoke-plus-10;
 
-    // Force color to inherit for custom content
-    .list-group-item-heading,
-    .list-group-item-heading > small,
-    .list-group-item-heading > .small {
-      color: inherit;
+    &:last-child {
+      margin-bottom: 0;
     }
-    .list-group-item-text {
-      color: @list-group-active-text-color;
+
+    + .list-group-item {
+      border-top-width: 0;
+    }
+  }
+
+  @media (min-width: @screen-sm-min) {
+    &.active {
+      margin-left: -12px;
+      margin-right: -12px;
+    }
+
+    .media-body {
+      /* In combination with applying extra padding to the media-body,
+      this prevents text reflow on panel expansion */
+      transition: padding ease @panel-focus-transtion;
     }
   }
 }
 
+.list-group-inactive {
+  .list-group-item {
+    background-color: transparent;
+    border-top: 1px solid @brand-smoke-plus-10;
+
+    &:hover,
+    &.active {
+      background-color: @brand-white;
+
+      @media (min-width: @screen-sm-min) {
+        .circle {
+          background-color: @brand-smoke-plus-20;
+        }
+      }
+    }
+  }
+}
 
 // Contextual variants
 //
@@ -116,18 +157,3 @@ a.list-group-item {
 .list-group-item-variant(info; @state-info-bg; @state-info-text);
 .list-group-item-variant(warning; @state-warning-bg; @state-warning-text);
 .list-group-item-variant(danger; @state-danger-bg; @state-danger-text);
-
-
-// Custom content options
-//
-// Extra classes for creating well-formatted content within `.list-group-item`s.
-
-.list-group-item-heading {
-  margin-top: 0;
-  margin-bottom: 8px;
-  font-size: @font-size-base;
-}
-.list-group-item-text {
-  margin-bottom: 0;
-  line-height: 1.3;
-}

@@ -1022,10 +1022,6 @@ h4 code {
 }
 
 /* Pagination */
-.bs-example .pagination {
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
 
 /* Pager */
 .bs-example > .pager {
@@ -1138,20 +1134,14 @@ h4 code {
  */
 
 .highlight {
-  padding: 8px 16px;
   margin-bottom: 24px;
-  background-color: #f7f7f9;
-  border: 1px solid #e1e1e8;
-  border-radius: 4px;
+  background-color: #f2f5f7;
+  border-radius: 3px;
 }
 .highlight pre {
-  padding: 0;
-  margin-top: 0;
   margin-bottom: 0;
   word-break: normal;
   white-space: nowrap;
-  background-color: transparent;
-  border: 0;
 }
 .highlight pre code {
   font-size: inherit;

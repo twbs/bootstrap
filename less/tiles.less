@@ -7,22 +7,22 @@
   outline: none;
   transition: all 0.1s ease-in-out;
 
-  padding: @tile-padding;
+  padding: @padding-container-collapse-xs;
   background-color: @brand-smoke-plus-20;
-  border: 1px solid @brand-smoke;
+  border: 1px solid @brand-smoke-plus-10;
   border-radius: @border-radius-base;
-  font-size: @font-size-small;
 
   width: 100%;
   margin-bottom: @grid-gutter-width;
 
-  &:hover:not(.tile-disabled)  {
-    background-color: @brand-smoke-plus-10;
+  &:hover:not(.tile-disabled),
+  &:focus:not(.tile-disabled) {
+    border-color: @brand-light-blue;
   }
 
   &:active:not(.tile-disabled) {
     background-color: @brand-smoke-plus-10;
-    border: 1px solid @brand-light-blue;
+    border-color: @brand-light-blue-minus-10;
   }
 
   p {
@@ -49,6 +49,15 @@
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
+
+  .tile-icon {
+    float: left;
+    margin-right: @padding-container-collapse-xs;
+  }
+  .tile-text {
+    overflow-y: hidden;
+    text-align: left;
+  }
 }
 
 .tile-disabled {
@@ -65,6 +74,11 @@
   }
 }
 
+.tile-inverse {
+  background-color: @brand-white;
+  border-color: @brand-white;
+}
+
 /* Backwards compaibility for early tile implementation */
 .tile-row {
     display: flex;
@@ -75,4 +89,58 @@
     > [class*="col-"] {
         display: flex;
     }
+}
+
+
+@media (min-width: @screen-sm-min) {
+  .tile {
+    padding: @padding-container-collapse;
+
+    .tile-icon {
+      float: none;
+      margin-right: auto;
+    }
+    .tile-text {
+      text-align: center;
+    }
+  }
+}
+
+@media (min-width: @screen-lg-min) {
+  .tile {
+    padding: @padding-container;
+  }
+}
+
+.tile-success {
+  .icon, a {
+    color: @state-success-text;
+  }
+  &:hover:not(.tile-disabled) {
+    border-color: @state-success-border;
+  }
+}
+.tile-info {
+  .icon, a {
+    color: @state-info-text;
+  }
+  &:hover:not(.tile-disabled) {
+    border-color: @state-info-border;
+  }
+}
+.tile-warning {
+  .icon, a {
+    color: @state-warning-text;
+  }
+  &:hover:not(.tile-disabled) {
+    border-color: @state-warning-border;
+  }
+}
+.tile-danger {
+  .icon, a {
+    color: @state-danger-text;
+  }
+  &:hover:not(.tile-disabled) {
+    border-color: @state-danger-border;
+  }
 }

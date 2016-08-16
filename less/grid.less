@@ -91,7 +91,13 @@
   .make-grid(xl);
 }
 
-@media (max-width: @screen-sm-max) {
+@media (max-width: @screen-xs-max) {
+  .container {
+      padding-right: @padding-container-collapse-xs;
+      padding-left: @padding-container-collapse-xs;
+  }
+}
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
   .container {
       padding-right: @padding-container-collapse;
       padding-left: @padding-container-collapse;
@@ -139,5 +145,8 @@
 
     > [class*="col-"] {
         display: flex;
+    }
+    .col-xs-12 {
+        margin-bottom: 16px;
     }
 }

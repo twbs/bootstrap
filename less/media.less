@@ -33,12 +33,24 @@
 //
 
 .media-right {
-  padding-left: @media-object-padding-horizontal;
+  padding-left: @padding-container-collapse-xs;
 }
 
 .media-left {
-  padding-right: @media-object-padding-horizontal;
+  padding-right: @padding-container-collapse-xs;
 }
+
+
+@media (min-width: @screen-sm-min) {
+  .media-right {
+    padding-left: @padding-container-collapse;
+  }
+
+  .media-left {
+    padding-right: @padding-container-collapse;
+  }
+}
+
 
 
 //

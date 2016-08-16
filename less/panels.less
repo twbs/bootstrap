@@ -2,38 +2,28 @@
 // Panels
 // --------------------------------------------------
 
-
 // Base class
 .panel {
-  margin-bottom: @line-height-computed;
+  margin-bottom: (@padding-container-collapse-xs + 8px);
   background-color: @panel-bg;
-  border-top: 1px solid @brand-smoke-plus-10;
-  border-bottom: 1px solid @brand-smoke-plus-10;
-  margin-left: (@padding-container-collapse * -1);
-  margin-right: (@padding-container-collapse * -1);
+  border: 0;
+  margin-left: (-@padding-container-collapse-xs);
+  margin-right: (-@padding-container-collapse-xs);
 }
 
 // Panel contents
 .panel-body {
-  padding: @panel-body-padding-collapse;
+  padding: @panel-collapse-xs;
+  background-color: #fff;
   &:extend(.clearfix all);
 }
 
 // Optional heading
 .panel-heading {
-  padding: @panel-body-padding-collapse @panel-body-padding-collapse (@panel-body-padding-collapse - 1px);
-  border-bottom: 1px solid @brand-smoke-plus-10;
-  .border-top-radius((@panel-border-radius - 1));
+  padding: (@panel-body-padding / 2) @panel-collapse-xs;
 
   > .dropdown .dropdown-toggle {
     color: inherit;
-  }
-
-  .btn {
-    margin-top: -12px;
-  }
-  .btn-sm {
-    margin-top: -5px;
   }
 }
 
@@ -42,7 +32,7 @@
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  line-height: @line-height-computed;
+  line-height: (@line-height-computed + 8px);
   color: @panel-heading-color;
 
   > a,
@@ -56,29 +46,52 @@
 
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
-  padding: @panel-body-padding-collapse;
+  padding: @panel-collapse-xs;
   background-color: @panel-footer-bg;
   border-top: 1px solid @panel-inner-border;
-  .border-bottom-radius((@panel-border-radius - 1));
 }
 
+@media (min-width: @screen-sm-min) {
+  .panel {
+    margin-bottom: (@panel-body-padding-collapse + 8px);;
+  }
+  .panel-heading {
+    padding: (@panel-body-padding / 2) @panel-body-padding-collapse;
 
+  }
+  .panel-body {
+    padding: @panel-body-padding-collapse;
+  }
+  .panel-footer {
+    padding: @panel-body-padding-collapse;
+  }
+}
+@media (min-width: @screen-lg-min) {
+  .panel {
+    margin-bottom: (@panel-body-padding + 8px);
+    border-radius: @panel-border-radius;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .panel-heading {
+    padding: (@panel-body-padding / 2) @panel-body-padding;
+  }
+  .panel-body {
+    padding: @panel-body-padding;
+  }
+  .panel-footer {
+    padding: @panel-body-padding;
+  }
+}
 @media (min-width: @screen-md-min) {
-    .panel {
-        border-radius: @panel-border-radius;
-        border: 1px solid @brand-smoke-plus-10;
-        margin-left: 0;
-        margin-right: 0;
+  .panel-title {
+    line-height: (@line-height-computed * 2);
+  }
+  .panel-heading {
+    > .btn-sm {
+      margin-top: 8px;
     }
-    .panel-heading {
-        padding: @panel-body-padding;
-    }
-    .panel-body {
-        padding: @panel-body-padding;
-    }
-    .panel-footer {
-        padding: @panel-body-padding;
-    }
+  }
 }
 
 
@@ -91,25 +104,15 @@
   > .list-group,
   > .panel-collapse > .list-group {
     margin-bottom: 0;
+    border-left: 0;
+    border-right: 0;
 
     .list-group-item {
-      border-width: 1px 0;
       border-radius: 0;
-    }
 
-    // Add border top radius for first one
-    &:first-child {
-      .list-group-item:first-child {
-        border-top: 0;
-        .border-top-radius((@panel-border-radius - 1));
-      }
-    }
-
-    // Add border bottom radius for last one
-    &:last-child {
-      .list-group-item:last-child {
-        border-bottom: 0;
-        .border-bottom-radius((@panel-border-radius - 1));
+      &.active {
+        margin-top: @line-height-computed;
+        margin-bottom: @line-height-computed;
       }
     }
   }
@@ -120,11 +123,6 @@
   }
 }
 // Collapse space between when there's no additional content.
-.panel-heading + .list-group {
-  .list-group-item:first-child {
-    border-top-width: 0;
-  }
-}
 .list-group + .panel-footer {
   border-top-width: 0;
 }
@@ -246,7 +244,7 @@
     padding-right: @panel-body-padding-collapse;
   }
 
-  @media (min-width: @screen-md-min) {
+  @media (min-width: @screen-lg-min) {
     > .table tr > :first-child {
       padding-left: @panel-body-padding;
     }
@@ -271,7 +269,7 @@
     border-radius: @panel-border-radius;
 
     + .panel {
-      margin-top: 5px;
+      margin-top: 8px;
     }
   }
 
@@ -509,24 +507,146 @@
     }
     .panel-heading,
     .panel-footer {
-        padding: @panel-body-padding-collapse;
+        padding: @panel-collapse-xs;
     }
 }
 
-@media (min-width: @screen-md-min) {
+.panel-m-l {
+    margin-left: @panel-collapse-xs !important;
+}
+.panel-m-r {
+    margin-right: @panel-collapse-xs !important;
+}
+.panel-m-t {
+    margin-top: @panel-collapse-xs !important;
+}
+.panel-m-b {
+    margin-bottom: @panel-collapse-xs !important;
+}
+.panel-p-l {
+    padding-left: @panel-collapse-xs !important;
+}
+.panel-p-r {
+    padding-right: @panel-collapse-xs !important;
+}
+.panel-p-t {
+    padding-top: @panel-collapse-xs !important;
+}
+.panel-p-b {
+    padding-bottom: @panel-collapse-xs !important;
+}
+
+.panel-m-l-negative {
+    margin-left: (-@panel-collapse-xs) !important;
+}
+.panel-m-r-negative {
+    margin-right: (-@panel-collapse-xs) !important;
+}
+.panel-m-t-negative {
+    margin-top: (-@panel-collapse-xs) !important;
+}
+.panel-m-b-negative {
+    margin-bottom: (-@panel-collapse-xs) !important;
+}
+@media (min-width: @screen-sm-min) {
+    .panel-group .panel {
+        .panel-heading,
+        .panel-footer {
+            padding: @panel-body-padding-collapse !important;
+        }
+    }
+    .panel-m-l {
+        margin-left: @panel-body-padding-collapse !important;
+    }
+    .panel-m-r {
+        margin-right: @panel-body-padding-collapse !important;
+    }
+    .panel-m-t {
+        margin-top: @panel-body-padding-collapse !important;
+    }
+    .panel-m-b {
+        margin-bottom: @panel-body-padding-collapse !important;
+    }
+    .panel-p-l {
+        padding-left: @panel-body-padding-collapse !important;
+    }
+    .panel-p-r {
+        padding-right: @panel-body-padding-collapse !important;
+    }
+    .panel-p-t {
+        padding-top: @panel-body-padding-collapse !important;
+    }
+    .panel-p-b {
+        padding-bottom: @panel-body-padding-collapse !important;
+    }
+
+    .panel-m-l-negative {
+        margin-left: (-@panel-body-padding-collapse) !important;
+    }
+    .panel-m-r-negative {
+        margin-right: (-@panel-body-padding-collapse) !important;
+    }
+    .panel-m-t-negative {
+        margin-top: (-@panel-body-padding-collapse) !important;
+    }
+    .panel-m-b-negative {
+        margin-bottom: (-@panel-body-padding-collapse) !important;
+    }
+}
+@media (min-width: @screen-lg-min) {
     .panel-group .panel {
         .panel-heading,
         .panel-footer {
             padding: @panel-body-padding-collapse @panel-body-padding;
         }
     }
-}
+    .panel-m-l {
+        margin-left: @panel-body-padding !important;
+    }
+    .panel-m-r {
+        margin-right: @panel-body-padding !important;
+    }
+    .panel-m-t {
+        margin-top: @panel-body-padding !important;
+    }
+    .panel-m-b {
+        margin-bottom: @panel-body-padding !important;
+    }
+    .panel-p-l {
+        padding-left: @panel-body-padding !important;
+    }
+    .panel-p-r {
+        padding-right: @panel-body-padding !important;
+    }
+    .panel-p-t {
+        padding-top: @panel-body-padding !important;
+    }
+    .panel-p-b {
+        padding-bottom: @panel-body-padding !important;
+    }
 
+
+    .panel-m-l-negative {
+        margin-left: (-@panel-body-padding) !important;
+    }
+    .panel-m-r-negative {
+        margin-right: (-@panel-body-padding) !important;
+    }
+    .panel-m-t-negative {
+        margin-top: (-@panel-body-padding) !important;
+    }
+    .panel-m-b-negative {
+        margin-bottom: (-@panel-body-padding) !important;
+    }
+}
 @media (min-width: @screen-sm-min) {
-  .panel {
-      border-radius: @panel-border-radius;
-      border: 1px solid @brand-smoke-plus-10;
+    .panel {
       margin-left: 0;
       margin-right: 0;
-  }
+    }
+}
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    .panel-heading {
+      padding: (@panel-body-padding / 2) 0;
+    }
 }

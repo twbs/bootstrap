@@ -1,49 +1,31 @@
 <div class="bs-docs-section">
   <h1 id="pagination" class="page-header">Pagination</h1>
 
-  <p class="lead">Provide pagination links for your site or app with the multi-page pagination component, or the simpler <a href="#pagination-pager">pager alternative</a>.</p>
+  <p class="lead">
+    Provide pagination links for your site or app with the multi-page pagination component.
+  </p>
 
   <h2 id="pagination-default">Default pagination</h2>
   <p>Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.</p>
   <div class="bs-example" data-example-id="simple-pagination">
     <nav>
       <ul class="pagination">
-        <li>
-          <a href="#" aria-label="Previous">
-            <span aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span>
-          </a>
-        </li>
         <li><a href="#">1</a></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
         <li><a href="#">4</a></li>
         <li><a href="#">5</a></li>
-        <li>
-          <a href="#" aria-label="Next">
-            <span aria-hidden="true"><i class="glyphicon glyphicon-chevron-right"></i></span>
-          </a>
-        </li>
       </ul>
     </nav>
   </div>
 {% highlight html %}
 <nav>
   <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span>
-      </a>
-    </li>
     <li><a href="#">1</a></li>
     <li><a href="#">2</a></li>
     <li><a href="#">3</a></li>
     <li><a href="#">4</a></li>
     <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true"><i class="glyphicon glyphicon-chevron-right"></i></span>
-      </a>
-    </li>
   </ul>
 </nav>
 {% endhighlight %}
@@ -54,7 +36,7 @@
     <nav>
       <ul class="pagination">
         <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span></a></li>
-        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
         <li><a href="#">2</a></li>
         <li><a href="#">3</a></li>
         <li><a href="#">4</a></li>
@@ -66,74 +48,128 @@
 {% highlight html %}
 <nav>
   <ul class="pagination">
-    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span></a></li>
-    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-    ...
+    <li class="active">
+      <span>1 <span class="sr-only">(current)</span></span>
+    </li>
+    <li>
+      <a href="">2 <span class="sr-only">(current)</span></a>
+    </li>
+    <li>
+      <span>...</span>
+    </li>
+    <li class="active">
+      <a href="">2 </a>
+    </li>
   </ul>
 </nav>
 {% endhighlight %}
   <p>You can optionally swap out active or disabled anchors for <code>&lt;span&gt;</code>, or omit the anchor in the case of the previous/next arrows, to remove click functionality while retaining intended styles.</p>
+  <div class="bs-example" data-example-id="disabled-active-pagination">
+    <nav>
+      <ul class="pagination">
+        <li class="active">
+          <span>1 <span class="sr-only">(current)</span></span>
+        </li>
+        <li>
+          <a href="">2</a>
+        </li>
+        <li>
+          <span>...</span>
+        </li>
+        <li>
+          <a href="">12</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 {% highlight html %}
 <nav>
   <ul class="pagination">
-    <li class="disabled">
-      <span>
-        <span aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span>
-      </span>
-    </li>
     <li class="active">
       <span>1 <span class="sr-only">(current)</span></span>
     </li>
-    ...
+    <li>
+      <a href="">2</a>
+    </li>
+    <li>
+      <span>...</span>
+    </li>
+    <li>
+      <a href="">12</a>
+    </li>
   </ul>
 </nav>
 {% endhighlight %}
 
 
-  <h3>Sizing</h3>
-  <p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
+  <h3 id="pagination-text">Pagination text</h3>
+  <p>Our pagination will normally be associated with <code>.pagination-text</code>
+      to describe what is visualised and the total available.</p>
   <div class="bs-example" data-example-id="pagination-sizing">
-    <nav>
-      <ul class="pagination pagination-lg">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span></a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true"><i class="glyphicon glyphicon-chevron-right"></i></span></a></li>
-      </ul>
-    </nav>
-    <nav>
-      <ul class="pagination">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span></a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true"><i class="glyphicon glyphicon-chevron-right"></i></span></a></li>
-      </ul>
-    </nav>
-    <nav>
-      <ul class="pagination pagination-sm">
-        <li><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="glyphicon glyphicon-chevron-left"></i></span></a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#" aria-label="Next"><span aria-hidden="true"><i class="glyphicon glyphicon-chevron-right"></i></span></a></li>
-      </ul>
-    </nav>
+    <div class="clearfix text-center">
+      <div class="pagination-text pull-md-left text-md-left">
+        Showing <strong>1 &mdash; 10</strong> of <strong>120</strong>.
+      </div>
+      <nav class="pull-md-right text-md-right">
+        <ul class="pagination">
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><span>...</span></li>
+          <li><a href="#">12</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 {% highlight html %}
-<nav><ul class="pagination pagination-lg">...</ul></nav>
-<nav><ul class="pagination">...</ul></nav>
-<nav><ul class="pagination pagination-sm">...</ul></nav>
+<div class="clearfix text-center">
+  <div class="pagination-text pull-md-left text-md-left">
+    Showing <strong>1 &mdash; 10</strong> of <strong>120</strong>.
+  </div>
+  <nav class="pull-md-right text-md-right">
+    <ul class="pagination">...</ul>
+  </nav>
+</div>
 {% endhighlight %}
 
 
+  <h3 id="pagination-inverse">Inverse</h3>
+  <p>On grey backgrounds we invert our hover states, add <code>.pagination-inverse</code> for additional styles.</p>
+  <div class="bs-example" data-example-id="pagination-sizing">
+  <div class="well">
+    <div class="clearfix text-center">
+      <div class="pagination-text pull-md-left text-md-left">
+        Showing
+        <div class="btn-group m-l-1 m-r-1">
+          <button type="button" class="btn btn-input dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            10 <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">10</a></li>
+            <li><a href="#">25</a></li>
+            <li><a href="#">50</a></li>
+            <li><a href="#">100</a></li>
+          </ul>
+        </div>
+        of 120
+      </div>
+      <nav class="pull-md-right text-md-right">
+        <ul class="pagination pagination-inverse">
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><span>...</span></li>
+          <li><a href="#">12</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  </div>
+{% highlight html %}
+<nav><ul class="pagination pagination-inverse">...</ul></nav>
+{% endhighlight %}
+
+<!--
   <h2 id="pagination-pager">Pager</h2>
   <p>Quick previous and next links for simple pagination implementations with light markup and styles. It's great for simple sites like blogs or magazines.</p>
 
@@ -194,4 +230,5 @@
   </ul>
 </nav>
 {% endhighlight %}
+-->
 </div>

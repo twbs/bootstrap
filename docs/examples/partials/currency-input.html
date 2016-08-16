@@ -1,0 +1,7 @@
+<div class="input-group">
+	<span class="input-group-addon">{{$ctrl.currency.symbol}}</span>
+	<input class="form-control text-xs-right p-r-0" value="{{$ctrl.amount}}" type="text">
+	<span class="input-group-addon">
+		<span class="currency-flag currency-flag-{{$ctrl.currency.code | lowercase}} m-r-1"></span>{{$ctrl.currency.code}}
+	</span>
+</div>

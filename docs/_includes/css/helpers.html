@@ -23,7 +23,7 @@
 {% highlight html %}
 <button class="btn m-b">.m-b-1</button>
 <button class="btn m-a-md">.m-a-2</button>
-<button class="btn m-l-lg m-b-lg">.m-l-3 .m-b-3</button>
+<button class="btn m-l-3 m-b-3">.m-l-3 .m-b-3</button>
 <button class="btn p-a-1">.p-a-1</button>
 <button class="btn p-a-2">.p-a-2</button>
 <button class="btn p-a-3">.p-a-3</button>
@@ -118,15 +118,15 @@
   <h3 id="helper-classes-floats">Quick floats</h3>
   <p>Float an element to the left or right with a class. <code>!important</code> is included to avoid specificity issues. Classes can also be used as mixins.</p>
 {% highlight html %}
-<div class="pull-left">...</div>
-<div class="pull-right">...</div>
+<div class="pull-xs-left">...</div>
+<div class="pull-xs-right">...</div>
 {% endhighlight %}
 {% highlight scss %}
 // Classes
-.pull-left {
+.pull-xs-left {
   float: left !important;
 }
-.pull-right {
+.pull-xs-right {
   float: right !important;
 }
 

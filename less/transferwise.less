@@ -40,7 +40,6 @@
 .nav,
 .navbar,
 .pager,
-.list-group,
 .dropdown-menu {
     a {
         text-decoration: none;
@@ -213,7 +212,8 @@ li > a {
   > .icon:first-child,
   > .currency-flag:first-child,
   > .circle:first-child {
-      margin-right: 8px;
+      margin-left: -4px;
+      margin-right: 12px;
   }
 }
 .btn {
@@ -221,30 +221,11 @@ li > a {
   .icon:first-child,
   .currency-flag:first-child,
   .circle:first-child {
-      margin-right: 8px;
-  }
-}
-li,
-li > a {
-  > .circle-sm:first-child {
-      margin-right: 12px;
-  }
-}
-.btn {
-  .circle-sm:first-child {
-      margin-right: 12px;
+      margin-left: -3px;
+      margin-right: 11px;
   }
 }
 
-/* Aligns with radio/checkbox */
-.btn-group .icon,
-.btn-group .circle,
-.btn-group .currency-flag,
-.nav li .icon,
-.nav li .circle,
-.nav li .currency-flag  {
-  margin-left: -2px;
-}
 li .circle {
   display: inline-block;
   vertical-align: bottom;
@@ -272,4 +253,20 @@ li .circle {
 .tw-select-filter-link:hover,
 .tw-select-filter-link:active {
   background-color: @brand-white !important;
+}
+
+.icon-sm {
+    font-size: 16px;
+}
+.icon-md {
+    font-size: 24px;
+}
+.icon-lg {
+    font-size: 32px;
+}
+.icon-xl {
+    font-size: 40px;
+}
+.icon-xxl {
+    font-size: 48px;
 }

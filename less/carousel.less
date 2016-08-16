@@ -6,6 +6,7 @@
 // Wrapper for the slide container and indicators
 .carousel {
   position: relative;
+  margin-bottom: 40px;
 }
 
 .carousel-inner {
@@ -100,18 +101,12 @@
   font-size: @carousel-control-font-size;
   color: @carousel-control-color;
   text-align: center;
-  text-shadow: @carousel-text-shadow;
   // We can't have this transition here because WebKit cancels the carousel
   // animation if you trip this while in the middle of another animation.
 
-  // Set gradients for backgrounds
-  &.left {
-    #gradient > .horizontal(@start-color: rgba(0,0,0,.5); @end-color: rgba(0,0,0,.0001));
-  }
   &.right {
     left: auto;
     right: 0;
-    #gradient > .horizontal(@start-color: rgba(0,0,0,.0001); @end-color: rgba(0,0,0,.5));
   }
 
   // Hover/focus state
@@ -172,8 +167,8 @@
 
 .carousel-indicators {
   position: absolute;
-  bottom: 8px;
-  margin-bottom: 8px;
+  bottom: -32px;
+  margin-bottom: 0px;
   left: 50%;
   z-index: 15;
   width: 60%;
@@ -184,12 +179,12 @@
 
   li {
     display: inline-block;
-    width:  10px;
-    height: 10px;
-    margin: 1px;
+    width:  12px;
+    height: 12px;
+    margin: 0 3px;
     text-indent: -999px;
     border: 1px solid @carousel-indicator-border-color;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
 
     // IE8-9 hack for event handling
@@ -201,13 +196,14 @@
     //
     // For IE8, we set solid black as it doesn't support `rgba()`. For IE9, we
     // set alpha transparency for the best results possible.
-    background-color: #666 \9; // IE8
-    background-color: rgba(0,0,0,0.3); // IE9
+    /*background-color: #666 \9; // IE8
+    background-color: rgba(0,0,0,0.3); // IE9*/
+    background-color: #FFF;
   }
   .active {
-    margin: 0;
+    /*margin: 0;
     width:  12px;
-    height: 12px;
+    height: 12px;*/
     background-color: @carousel-indicator-active-bg;
   }
 }
@@ -219,10 +215,8 @@
   position: absolute;
   left: 15%;
   right: 15%;
-  bottom: 40px;
+  bottom: 24px;
   z-index: 10;
-  padding-top: 24px;
-  padding-bottom: 24px;
   color: @carousel-caption-color;
   text-align: center;
   text-shadow: @carousel-text-shadow;
@@ -264,12 +258,12 @@
   .carousel-caption {
     left: 20%;
     right: 20%;
-    bottom: 72px;
+    bottom: 32px;
   }
 
   // Move up the indicators
   .carousel-indicators {
-    bottom: 24px;
+    bottom: -32px;
   }
 }
 

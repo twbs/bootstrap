@@ -164,6 +164,9 @@
       @input-border-focus
   );
 }
+.btn-input .caret {
+  margin-left: 8px;
+}
 
 .btn-facebook {
 	.button-outline (
@@ -239,8 +242,8 @@
 // Make a button look and behave like a link
 .btn-link {
   color: @link-color;
-  font-weight: normal;
-  border-radius: 0;
+  text-decoration: @link-decoration;
+  border-color: transparent;
 
   &,
   &:active,
@@ -250,17 +253,15 @@
     background-color: transparent;
     .box-shadow(none);
   }
-  &,
-  &:hover,
-  &:focus,
-  &:active {
-    border-color: transparent;
-  }
+
   &:hover,
   &:focus {
-    color: @link-hover-color;
-    text-decoration: @link-hover-decoration;
-    background-color: transparent;
+    border-color: @btn-default-border;
+    text-decoration: @link-decoration;
+  }
+  &:active {
+    color: @btn-default-border-active;
+    border-color: @btn-default-border-active;
   }
   &[disabled],
   fieldset[disabled] & {

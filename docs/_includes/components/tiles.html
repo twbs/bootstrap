@@ -6,9 +6,13 @@
   <p>In it's simplest form, a tile shows a <a href="#circles">circle</a> containing
        intials or an icon, alongside a title.</p>
 
+  <p class="text-warning">Tiles should have <code>role="button"</code> so that
+    screen readers will recognise them as clickable, and <code>tabindex="0"</code>
+    to provide focus support for keyboards.</p>
+
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile">
+      <div class="tile" tabindex="0" role="button">
         <div class="circle circle-lg">
           AZ
         </div>
@@ -18,7 +22,7 @@
   </div>
 
 {% highlight html %}
-<div class="tile">
+<div class="tile" tabindex="0" role="button">
   <div class="circle circle-lg">AZ</div>
   <h5>...</h5>
 </div>
@@ -40,21 +44,21 @@
 
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile">
+      <div class="tile" tabindex="0" role="button">
         <div class="circle circle-lg" style="background-image: url('/assets/img/mo.jpg');"></div>
         <h5>Someone else</h5>
         <p>EUR account ending 2843</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile">
+      <div class="tile" tabindex="0" role="button">
         <div class="circle circle-lg" style="background-image: url('/assets/img/kish.jpg');"></div>
         <h5>Myself</h5>
         <p>EUR account ending 5234</p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile">
+      <div class="tile" tabindex="0" role="button">
         <div class="circle circle-lg" style="background-image: url('/assets/img/mike.jpg');"></div>
         <h5>Really long title that causes text wrap</h5>
         <p>EUR account ending 6798</p>
@@ -65,21 +69,21 @@
 {% highlight html %}
 <div class="row row-equal-height">
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="tile">
+    <div class="tile" tabindex="0" role="button">
       <img class="circle circle-lg" src="..." />
       <h5>...</h5>
       <p>...</p>
     </div>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="tile">
+    <div class="tile" tabindex="0" role="button">
       <img class="circle circle-lg" src="..." />
       <h5>...</h5>
       <p>...</p>
     </div>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="tile">
+    <div class="tile" tabindex="0" role="button">
       <img class="circle circle-lg" src="..." />
       <h5>...</h5>
       <p>...</p>
@@ -93,7 +97,7 @@
 
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile">
+      <div class="tile" tabindex="0" role="button">
         <div class="circle circle-lg">
           <i class="icon icon-card"></i>
         </div>
@@ -104,7 +108,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile">
+      <div class="tile" tabindex="0" role="button">
           <div class="circle circle-lg">
             <i class="icon icon-card"></i>
           </div>
@@ -117,7 +121,7 @@
   </div>
 
 {% highlight html %}
-<div class="tile">
+<div class="tile" tabindex="0" role="button">
   <div class="circle circle-lg">
     <i class="icon icon-card"></i>
   </div>
@@ -134,7 +138,7 @@
 
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="tile">
+      <div class="tile" tabindex="0" role="button">
           <div class="circle circle-lg">
             <i class="icon icon-card"></i>
           </div>
@@ -146,7 +150,7 @@
   </div>
 
 {% highlight html %}
-<div class="tile">
+<div class="tile" tabindex="0" role="button">
   <div class="circle circle-lg">
     ...
   </div>
@@ -163,7 +167,7 @@
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4 tile-container">
       <div class="tile tile-disabled">
-          <div class="circle circle-lg">
+          <div class="circle circle-lg circle-inverse">
             <i class="icon icon-card"></i>
           </div>
           <h5>Credit Card</h5>
@@ -183,6 +187,111 @@
   <p>...</p>
   <hr>
   <p>...</p>
+</div>
+{% endhighlight %}
+
+  <h2 id="tiles-inverse">Inverse Tiles</h2>
+  <p>On grey backgrounds use the <code>.tile-inverse</code> variant.</p>
+
+  <div class="well">
+    <div class="row">
+      <div class="col-md-6 col-xs-12">
+        <div class="tile tile-inverse" tabindex="0" role="button">
+          <div class="media">
+            <div class="media-left text-info">
+              <i class="icon icon-gift icon-xxl"></i>
+            </div>
+            <div class="media-body text-xs-left text-max-width">
+              <h5>Earn £50 credit</h5>
+              <p>Give someone a free transfer for up to £500</p>
+              <p class="m-t-1"><a href="">Click here to share</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% highlight html %}
+<div class="tile tile-inverse" tabindex="0" role="button">
+  ...
+</div>
+{% endhighlight %}
+
+  <h2 id="tiles-contextual">Contextual Tile Variants</h2>
+  <p>Add a contextual class convey state within the tile.</p>
+
+  <div class="row row-equal-height">
+    <div class="col-lg-6 col-xs-12">
+      <div class="tile tile-success" tabindex="0" role="button">
+        <div class="media">
+          <div class="media-left">
+            <i class="icon icon-gift icon-xxl"></i>
+          </div>
+          <div class="media-body text-xs-left text-max-width">
+            <h5>Earn £50 credit</h5>
+            <p>Give someone a free transfer for up to £500</p>
+            <p class="m-t-1"><a href="">Click here to share</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-xs-12">
+      <div class="tile tile-warning" tabindex="0" role="button">
+        <div class="media">
+          <div class="media-left">
+            <i class="icon icon-request icon-xxl"></i>
+          </div>
+          <div class="media-body text-xs-left text-max-width">
+            <h5>Request money</h5>
+            <p>From friends and family and customers</p>
+            <p class="m-t-1"><a href="">Click here to request</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-xs-12">
+      <div class="tile tile-danger" tabindex="0" role="button">
+        <div class="media">
+          <div class="media-left">
+            <i class="icon icon-line-graph icon-xxl"></i>
+          </div>
+          <div class="media-body text-xs-left text-max-width">
+            <h5>Rate alerts</h5>
+            <p>Sign up no to be alerted when the rate reaches your chosen value</p>
+            <p class="m-t-1"><a href="">Click here to sign up</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-xs-12">
+      <div class="tile tile-info" tabindex="0" role="button">
+        <div class="media">
+          <div class="media-left">
+            <i class="icon icon-line-graph icon-xxl"></i>
+          </div>
+          <div class="media-body text-xs-left text-max-width">
+            <h5>Please verify</h5>
+            <p>You will need to verify your identity when you have transferred over £10000.</p>
+            <p class="m-t-1"><a href="">Click here to verify now</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% highlight html %}
+<div class="tile tile-success" tabindex="0" role="button">
+  ...
+</div>
+<div class="tile tile-warning" tabindex="0" role="button">
+  ...
+</div>
+<div class="tile tile-danger" tabindex="0" role="button">
+  ...
+</div>
+<div class="tile tile-info" tabindex="0" role="button">
+  ...
 </div>
 {% endhighlight %}
 

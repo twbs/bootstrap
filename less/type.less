@@ -8,6 +8,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: @font-spacing-base;
 }
 
 
@@ -16,9 +17,13 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @headings-font-family;
   font-weight: @headings-font-weight;
   line-height: @headings-line-height;
   color: @headings-color;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-transform: none;
 
   small,
   .small {
@@ -28,74 +33,123 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+h1, .h1 {
+  font-size: @font-size-h2;
+  line-height: @line-height-h2;
+}
+h2, .h2 {
+  font-size: @font-size-h3;
+  line-height: @line-height-h3;
+}
+h3, .h3 {
+  font-size: @font-size-h4;
+  line-height: @line-height-h4;
+}
+h4, .h4 {
+  font-size: @font-size-h5;
+  line-height: @line-height-h5;
+}
+h5, .h5 {
+  font-size: @font-size-h5;
+  line-height: @line-height-h5;
+}
+h6, .h6 {
+  font-size: @font-size-h6;
+  line-height: @line-height-h6;
+}
+
+h1, .h1 {
+  margin-bottom: 4px;
+}
+h2, .h2 {
+  margin-bottom: 2px;
+}
+
+
+@media (min-width: @screen-md-min) {
+  h1, .h1 {
+    font-size: @font-size-h1;
+    line-height: @line-height-h1;
+  }
+  h2, .h2 {
+    font-size: @font-size-h2;
+    line-height: @line-height-h2;
+  }
+  h3, .h3 {
+    font-size: @font-size-h3;
+    line-height: @line-height-h3;
+  }
+  h4, .h4 {
+    font-size: @font-size-h4;
+    line-height: @line-height-h4;
+  }
+  h5, .h5 {
+    font-size: @font-size-h5;
+    line-height: @line-height-h5;
+  }
+  h6, .h6 {
+    font-size: @font-size-h6;
+    line-height: @line-height-h6;
+  }
+
+  h1, .h1 {
+    margin-bottom: 8px;
+  }
+  h2, .h2 {
+    margin-bottom: 4px;
+  }
+  h3, .h3 {
+    margin-bottom: 2px;
+  }
+}
+
+p {
+  + h1, + h2, + h3, + h4, + h5, + h6,
+  + .h1, + .h2, + .h3, + .h4, + .h5, + .h6 {
+    margin-top: 32px;
+  }
+}
+
+
 h1, .h1,
 h2, .h2 {
-  margin-top: 0;
-  margin-bottom: 0; // Mid-line of this font is high so no mragin bottom
-  font-family: @headings-font-family;
+  font-weight: 800;
 
   small,
   .small {
     font-size: 65%;
   }
 }
-h1, .h1 {
-    line-height: (@padding-base-vertical * 6);
-}
-h2, .h2 {
-    line-height: (@padding-base-vertical * 5);
-}
 
 h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-weight: 800;
-  font-family: @font-family-base;
-
   small,
   .small {
     font-size: 75%;
   }
 }
 
-h3, .h3 {
-  line-height: (@padding-base-vertical * 4);
-}
-h4, .h4 {
-  line-height: (@padding-base-vertical * 3);
-}
-
-h5, .h5,
 h6, .h6 {
-  line-height: (@padding-base-vertical * 3);
+  color: @brand-grey-plus-20;
 }
-
-h1, .h1 { font-size: @font-size-h1; }
-h2, .h2 { font-size: @font-size-h2; }
-h3, .h3 { font-size: @font-size-h3; }
-h4, .h4 { font-size: @font-size-h4; }
-h5, .h5 { font-size: @font-size-h5; }
-h6, .h6 { font-size: @font-size-h6; }
-
 
 // Body text
 // -------------------------
 
 p {
-  margin: 0 0 (@padding-base-vertical * 3);
+  margin: 0 0 @line-height-computed;
 }
 
 .lead {
   margin-bottom: @line-height-computed;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 300;
   line-height: @line-height-large;
 
-  @media (min-width: @screen-sm-min) {
-    //font-size: (@font-size-base * 1.5);
+  @media (min-width: @screen-md-min) {
+    font-size: 22px;
   }
 }
 
@@ -119,14 +173,44 @@ mark,
 b,
 strong {
   color: @text-bold-color;
+  font-weight: 600;
 }
 
 // Alignment
-.text-left           { text-align: left; }
-.text-right          { text-align: right; }
-.text-center         { text-align: center; }
-.text-justify        { text-align: justify; }
-.text-nowrap         { white-space: nowrap; }
+.text-xs-left    { text-align: left; }
+.text-xs-right   { text-align: right; }
+.text-xs-center  { text-align: center; }
+.text-xs-justify { text-align: justify; }
+.text-xs-nowrap  { white-space: nowrap; }
+
+@media (min-width: @screen-sm-min) {
+  .text-sm-left    { text-align: left; }
+  .text-sm-right   { text-align: right; }
+  .text-sm-center  { text-align: center; }
+  .text-sm-justify { text-align: justify; }
+  .text-sm-nowrap  { white-space: nowrap; }
+}
+@media (min-width: @screen-md-min) {
+  .text-md-left    { text-align: left; }
+  .text-md-right   { text-align: right; }
+  .text-md-center  { text-align: center; }
+  .text-md-justify { text-align: justify; }
+  .text-md-nowrap  { white-space: nowrap; }
+}
+@media (min-width: @screen-lg-min) {
+  .text-lg-left    { text-align: left; }
+  .text-lg-right   { text-align: right; }
+  .text-lg-center  { text-align: center; }
+  .text-lg-justify { text-align: justify; }
+  .text-lg-nowrap  { white-space: nowrap; }
+}
+@media (min-width: @screen-xl-min) {
+  .text-xl-left    { text-align: left; }
+  .text-xl-right   { text-align: right; }
+  .text-xl-center  { text-align: center; }
+  .text-xl-justify { text-align: justify; }
+  .text-xl-nowrap  { white-space: nowrap; }
+}
 
 // Transformation
 .text-lowercase      { text-transform: lowercase; }
@@ -151,6 +235,9 @@ strong {
 }
 .text-danger {
   .text-emphasis-variant(@state-danger-text);
+}
+.text-inverse {
+  .text-emphasis-variant(@brand-white);
 }
 
 .text-ellipsis,
@@ -208,7 +295,7 @@ ul,
 ol {
   padding-left: 38px;
   margin-top: 0;
-  margin-bottom: (@padding-base-vertical * 3);
+  margin-bottom: @line-height-computed;
   ul,
   ol {
     margin-bottom: 0;
@@ -256,7 +343,7 @@ dt {
 dd {
   color: @brand-blue-plus-20;
   margin-left: 0; // Undo browser default
-  margin-bottom: @line-height-computed;
+  margin-bottom: @padding-container-collapse-xs;
 }
 
 // Horizontal description lists
@@ -284,16 +371,6 @@ dd {
   }
 }
 
-.list-group-item dd {
-    margin-bottom: 0;
-}
- @media (max-width: @screen-xs-max) {
-    .list-group-item dl {
-        margin-top: 8px;
-    }
-}
-
-
 // Misc
 // -------------------------
 
@@ -311,10 +388,10 @@ abbr[data-original-title] {
 
 // Blockquotes
 blockquote {
-  padding: 0 20px;
-  margin: 24px 0;
-  font-size: @blockquote-font-size;
-  border-left: 4px solid @blockquote-border-color;
+  padding: 0 @padding-container-collapse-xs 0 (@padding-container-collapse-xs - 2px);
+  margin: @padding-container-collapse 0;
+  font-size: @font-size-base;
+  border-left: 2px solid @blockquote-border-color;
 
   p {
       margin-bottom: 8px;
@@ -343,14 +420,10 @@ blockquote {
     }
   }
 }
-@media (min-width: @screen-sm-min) {
-    blockquote {
-        margin: 32px;
-    }
-}
 @media (min-width: @screen-md-min) {
     blockquote {
-        margin: 40px;
+        margin: @padding-container;
+        font-size: @blockquote-font-size;
     }
 }
 
@@ -359,9 +432,9 @@ blockquote {
 // Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
 .blockquote-reverse,
 blockquote.pull-right {
-  padding-right: 20px;
+  padding-right: 22px;
   padding-left: 0;
-  border-right: 4px solid @blockquote-border-color;
+  border-right: 2px solid @blockquote-border-color;
   border-left: 0;
   text-align: right;
 
@@ -383,24 +456,6 @@ address {
   line-height: @line-height-base;
 }
 
-
-h1, .h1,
-h2, .h2,
-h6, .h6 {
-    text-transform: uppercase;
-}
-
-h3, .h3,
-h4, .h4,
-h5, .h5 {
-    color: @brand-blue;
-    margin-bottom: @padding-base-vertical;
-    text-transform: none;
-}
-h6, .h6 {
-    color: @brand-grey-plus-20;
-}
-
 .lang_ja {
   font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
   h1, .h1,
@@ -411,4 +466,15 @@ h6, .h6 {
   h6, .h6 {
     font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
   }
+}
+
+
+@media (min-width: @screen-sm-min) {
+  dd {
+    margin-bottom: @line-height-computed;
+  }
+}
+
+.text-max-width {
+  max-width: 600px;
 }
