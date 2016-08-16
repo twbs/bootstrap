@@ -26,6 +26,7 @@
 	<script src="js/next-cards.directive.js"></script>
 	<script src="js/accounts-list.directive.js"></script>
 	<script src="js/repeat-transfer.directive.js"></script>
+	<script src="js/currency-input.directive.js"></script>
 	<script src="js/pagination.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
 
@@ -84,7 +85,16 @@
 
 			<div class="panel">
 				<div class="panel-heading">
-					<button class="btn btn-sm btn-default pull-xs-right">Add recipient</button>
+					<div class="pull-xs-right form-inline text-right m-t-1">
+						<button class="btn btn-sm btn-default">Add recipient</button>
+						<div class="input-group input-group-sm m-l-1">
+							<span class="input-group-addon"><i class="icon icon-search"></i></span>
+							<input class="form-control" type="text" placeholder="Search">
+							<span class="input-group-btn">
+								<button class="btn  btn-sm btn-primary">Go</button>
+							</span>
+						</div>
+					</div>
 					<h3 class="panel-title">My accounts</h3>
 				</div>
 				<accounts-list
@@ -95,6 +105,7 @@
 
 			<div class="panel">
 				<div class="panel-heading">
+					<button class="btn btn-sm btn-default pull-xs-right">Add recipient</button>
 					<h3 class="panel-title">Other recipients</h3>
 				</div>
 				<accounts-list

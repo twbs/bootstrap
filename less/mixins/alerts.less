@@ -4,16 +4,22 @@
   background-color: @background;
   border-color: @border;
   color: @text-color;
-  a {
-      color: @text-color;
+
+  a,
+  b,
+  strong,
+  .close,
+  .alert-link,
+  .icon {
+    color: @text-color;
   }
   hr {
-    border-top-color: darken(@border, 5%);
+    border-top-color: @border;
   }
-  b, strong, .close {
-      color: @text-color;
-  }
-  .alert-link,
+  a:hover,
+  a:focus,
+  .alert-link:hover,
+  .alert-link:focus,
   .close:hover,
   .close:focus {
       color: darken(@text-color, 10%);

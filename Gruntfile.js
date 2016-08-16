@@ -436,7 +436,8 @@ module.exports = function (grunt) {
           'Element “transfer-actions” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
           'Element “accounts-list” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
           'Element “pagination” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
-          'Element “one-click” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)'
+          'Element “one-click” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
+          'Element “currency-input” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)'
         ],
         'attr-name-style': false,
         'label-req-for': false,
