@@ -177,11 +177,40 @@ strong {
 }
 
 // Alignment
-.text-left,    .text-xs-left    { text-align: left; }
-.text-right,   .text-xs-right   { text-align: right; }
-.text-center,  .text-xs-center  { text-align: center; }
-.text-justify, .text-xs-justify { text-align: justify; }
-.text-nowrap,  .text-xs-nowrap  { white-space: nowrap; }
+.text-xs-left    { text-align: left; }
+.text-xs-right   { text-align: right; }
+.text-xs-center  { text-align: center; }
+.text-xs-justify { text-align: justify; }
+.text-xs-nowrap  { white-space: nowrap; }
+
+@media (min-width: @screen-sm-min) {
+  .text-sm-left    { text-align: left; }
+  .text-sm-right   { text-align: right; }
+  .text-sm-center  { text-align: center; }
+  .text-sm-justify { text-align: justify; }
+  .text-sm-nowrap  { white-space: nowrap; }
+}
+@media (min-width: @screen-md-min) {
+  .text-md-left    { text-align: left; }
+  .text-md-right   { text-align: right; }
+  .text-md-center  { text-align: center; }
+  .text-md-justify { text-align: justify; }
+  .text-md-nowrap  { white-space: nowrap; }
+}
+@media (min-width: @screen-lg-min) {
+  .text-lg-left    { text-align: left; }
+  .text-lg-right   { text-align: right; }
+  .text-lg-center  { text-align: center; }
+  .text-lg-justify { text-align: justify; }
+  .text-lg-nowrap  { white-space: nowrap; }
+}
+@media (min-width: @screen-xl-min) {
+  .text-xl-left    { text-align: left; }
+  .text-xl-right   { text-align: right; }
+  .text-xl-center  { text-align: center; }
+  .text-xl-justify { text-align: justify; }
+  .text-xl-nowrap  { white-space: nowrap; }
+}
 
 // Transformation
 .text-lowercase      { text-transform: lowercase; }
@@ -341,17 +370,6 @@ dd {
     }
   }
 }
-/*
-.list-group-item dd {
-    margin-bottom: 0;
-}
- @media (max-width: @screen-xs-max) {
-    .list-group-item dl {
-        margin-top: 8px;
-    }
-}
-*/
-
 
 // Misc
 // -------------------------
@@ -437,14 +455,6 @@ address {
   font-style: normal;
   line-height: @line-height-base;
 }
-
-/*
-h1, .h1,
-h2, .h2,
-h6, .h6 {
-    text-transform: uppercase;
-}
-*/
 
 .lang_ja {
   font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
