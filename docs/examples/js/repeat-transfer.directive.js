@@ -13,7 +13,11 @@
 			replace: true,
 			restrict: 'E',
 			scope: {
-				transfer: "=",
+				source: "=",
+				target: "=",
+				sourceAmount: "@",
+				targetAmount: "@",
+				receivingAccount: "=",
 				currencies: "="
 			},
 			templateUrl: "partials/repeat-transfer.html"

@@ -5,15 +5,17 @@
 				Send
 			</label>
 			<div class="input-group">
-				<span class="input-group-addon">{{$ctrl.currencies[$ctrl.transfer.source].symbol}}</span>
-				<input class="form-control text-xs-right p-r-0" value="{{$ctrl.transfer.sourceAmount}}" type="text">
+				<span class="input-group-addon">{{$ctrl.currencies[$ctrl.source].symbol}}</span>
+				<input class="form-control text-xs-right p-r-0" value="{{$ctrl.sourceAmount}}" type="text">
 				<span class="input-group-addon">
-					<span class="currency-flag currency-flag-usd m-r-1"></span>{{$ctrl.transfer.source}}
+					<span class="currency-flag currency-flag-usd m-r-1"></span>{{$ctrl.source}}
 				</span>
 			</div>
+			<!--
 			<div class="help-block">
 				Rate 1 EUR = 0.7459
 			</div>
+			-->
 		</div>
 	</div>
 	<div class="col-sm-6 col-lg-4 m-b-0">
@@ -22,15 +24,17 @@
 				Receive
 			</label>
 			<div class="input-group">
-				<span class="input-group-addon">{{$ctrl.currencies[$ctrl.transfer.target].symbol}}</span>
-				<input class="form-control text-xs-right p-r-0" value="{{$ctrl.transfer.targetAmount}}" type="text">
+				<span class="input-group-addon">{{$ctrl.currencies[$ctrl.target].symbol}}</span>
+				<input class="form-control text-xs-right p-r-0" value="{{$ctrl.targetAmount}}" type="text">
 				<span class="input-group-addon">
-					<span class="currency-flag currency-flag-usd m-r-1"></span>{{$ctrl.transfer.target}}
+					<span class="currency-flag currency-flag-usd m-r-1"></span>{{$ctrl.target}}
 				</span>
 			</div>
+			<!--
 			<div class="help-block">
 				This includes a fee of 1.00 GBP
 			</div>
+			-->
 		</div>
 	</div>
 	<div class="col-sm-12 col-lg-4 p-t-3 m-b-0">

@@ -93,6 +93,11 @@
 					</div>
 					<div class="media-body">
 						<repeat-transfer
+							source="'GBP'"
+							target="account.currency"
+							source-amount="1000.00"
+							target-amount="1234.56"
+							receiving-account="account.id"
 							currencies="$ctrl.currencies">
 						</repeat-transfer>
 					</div>

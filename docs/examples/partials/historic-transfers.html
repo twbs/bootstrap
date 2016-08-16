@@ -114,7 +114,11 @@
 						</div>
 						<div class="media-body">
 							<repeat-transfer
-								transfer="transfer"
+								source="transfer.source"
+								target="transfer.target"
+								source-amount="{{transfer.sourceAmount}}"
+								target-amount="{{transfer.targetAmount}}"
+								receiving-account="transfer.account.id"
 								currencies="$ctrl.currencies">
 							</repeat-transfer>
 						</div>

@@ -117,7 +117,7 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;   //"Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  "Averta", "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;   //"Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -128,25 +128,35 @@
 @font-size-medium:        16px;
 @font-size-small:         14px;
 
-@font-size-h1:            36px;
-@font-size-h2:            28px; //floor((@font-size-base * 2.15)); // ~30px
-@font-size-h3:            22px; //ceil((@font-size-base * 1.7)); // ~24px
-@font-size-h4:            18px; //ceil((@font-size-base * 1.25)); // ~18px
-@font-size-h5:            16px; //@font-size-base;
-@font-size-h6:            14px; //ceil((@font-size-base * 0.85)); // ~12px
+@font-size-h1:            42px;
+@font-size-h2:            28px;
+@font-size-h3:            22px;
+@font-size-h4:            18px;
+@font-size-h5:            16px;
+@font-size-h6:            14px;
+
+@line-height-h1:          48px;
+@line-height-h2:          32px;
+@line-height-h3:          30px;
+@line-height-h4:          24px;
+@line-height-h5:          24px;
+@line-height-h6:          24px;
+
+@font-spacing-base:       0.028em;
+
 
 //** Unit-less `line-height` for use in components like buttons.
-@line-height-base:        1.5; // 24/16
+@line-height-base:        24px; // 24/16
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 @line-height-computed:    24px; // ~24px
 
 //** By default, this inherits from the `<body>`.
-@headings-font-family:    "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;    //inherit;
+@headings-font-family:    "Averta", "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;    //inherit;
 @headings-font-weight:    600;
 @headings-line-height:    1.2;              //1.1;
 @headings-color:          @brand-blue-plus-10;
 
-@buttons-font-family:     "Avenir W02", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@buttons-font-family:     "Averta", "Avenir W02", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 
 //== Iconography
@@ -1070,7 +1080,7 @@
 //** Blockquote small color
 @blockquote-small-color:      @gray-light;
 //** Blockquote font size
-@blockquote-font-size:        22px;
+@blockquote-font-size:        @font-size-large;
 //** Blockquote border color
 @blockquote-border-color:     @brand-light-blue;
 //** Page header border color

@@ -8,7 +8,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 0.01em;
+  letter-spacing: @font-spacing-base;
 }
 
 
@@ -35,57 +35,79 @@ h1, h2, h3, h4, h5, h6,
 
 h1, .h1 {
   font-size: @font-size-h2;
-  line-height: (@padding-base-vertical * 5);
+  line-height: @line-height-h2;
 }
 h2, .h2 {
   font-size: @font-size-h3;
-  line-height: (@padding-base-vertical * 4);
+  line-height: @line-height-h3;
 }
-h3, .h3 { font-size: @font-size-h4; }
-h4, .h4 { font-size: @font-size-h5; }
-h5, .h5 { font-size: @font-size-h5; }
-h6, .h6 { font-size: @font-size-h6; }
-
-h1, .h1,
-h2, .h2,
 h3, .h3 {
-  margin-bottom: @padding-base-vertical;
+  font-size: @font-size-h4;
+  line-height: @line-height-h4;
+}
+h4, .h4 {
+  font-size: @font-size-h5;
+  line-height: @line-height-h5;
+}
+h5, .h5 {
+  font-size: @font-size-h5;
+  line-height: @line-height-h5;
+}
+h6, .h6 {
+  font-size: @font-size-h6;
+  line-height: @line-height-h6;
 }
 
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-  line-height: (@padding-base-vertical * 3);
+h1, .h1 {
+  margin-bottom: 4px;
+}
+h2, .h2 {
+  margin-bottom: 2px;
 }
 
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-  margin-bottom: (@padding-base-vertical / 2);
-}
 
 @media (min-width: @screen-md-min) {
   h1, .h1 {
     font-size: @font-size-h1;
-    line-height: (@padding-base-vertical * 6);
+    line-height: @line-height-h1;
   }
   h2, .h2 {
     font-size: @font-size-h2;
-    line-height: (@padding-base-vertical * 5);
+    line-height: @line-height-h2;
   }
   h3, .h3 {
     font-size: @font-size-h3;
-    line-height: (@padding-base-vertical * 4);
+    line-height: @line-height-h3;
   }
-  h4, .h4 { font-size: @font-size-h4; }
-  h5, .h5 { font-size: @font-size-h5; }
-  h6, .h6 { font-size: @font-size-h6; }
+  h4, .h4 {
+    font-size: @font-size-h4;
+    line-height: @line-height-h4;
+  }
+  h5, .h5 {
+    font-size: @font-size-h5;
+    line-height: @line-height-h5;
+  }
+  h6, .h6 {
+    font-size: @font-size-h6;
+    line-height: @line-height-h6;
+  }
 
-  h1, h2, h3, h4, h5, h6,
-  .h1, .h2, .h3, .h4, .h5, .h6 {
-    margin-bottom: @padding-base-vertical;
- }
+  h1, .h1 {
+    margin-bottom: 8px;
+  }
+  h2, .h2 {
+    margin-bottom: 4px;
+  }
+  h3, .h3 {
+    margin-bottom: 2px;
+  }
+}
+
+p {
+  + h1, + h2, + h3, + h4, + h5, + h6,
+  + .h1, + .h2, + .h3, + .h4, + .h5, + .h6 {
+    margin-top: 32px;
+  }
 }
 
 
@@ -350,7 +372,7 @@ abbr[data-original-title] {
 blockquote {
   padding: 0 @padding-container-collapse-xs 0 (@padding-container-collapse-xs - 2px);
   margin: @padding-container-collapse 0;
-  font-size: 18px;
+  font-size: @font-size-base;
   border-left: 2px solid @blockquote-border-color;
 
   p {
@@ -392,9 +414,9 @@ blockquote {
 // Heads up: `blockquote.pull-right` has been deprecated as of v3.1.0.
 .blockquote-reverse,
 blockquote.pull-right {
-  padding-right: 20px;
+  padding-right: 22px;
   padding-left: 0;
-  border-right: 4px solid @blockquote-border-color;
+  border-right: 2px solid @blockquote-border-color;
   border-left: 0;
   text-align: right;
 
@@ -443,7 +465,6 @@ h6, .h6 {
   }
 }
 
-
 .text-max-width {
-  max-width: 540px;
+  max-width: 600px;
 }

@@ -1084,7 +1084,7 @@ html {
 }
 body {
   position: relative;
-  font-family: "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Averta", "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 24px;
   color: #6f8691;
@@ -1154,7 +1154,7 @@ img {
   max-width: 100%;
   height: auto;
   padding: 0;
-  line-height: 1.5;
+  line-height: 24px;
   background-color: #fff;
   border: 1px solid #e2e6e8;
   border-radius: 3px;
@@ -1205,84 +1205,29 @@ hr {
 [role="button"] {
   cursor: pointer;
 }
-/* Licensing for Avenir Next
-This CSS resource incorporates links to font software which is the valuable copyrighted
-property of Monotype Imaging and/or its suppliers. You may not attempt to copy, install,
-                                 redistribute, convert, modify or reverse engineer this font software. Please contact Monotype
-Imaging with any questions regarding Web ../fonts:  http://webfonts.assets.com
-*/
-/*@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=609ed3e2-d259-4d7e-83d5-77c670b8bf35");*/
 @font-face {
-  font-family: "Avenir W02";
-  font-style: normal;
-  font-weight: 300;
-
-  src: url("../fonts/cc232236-c38e-4181-b791-8be0f37e6f0e.eot?#iefix");
-  src: url("../fonts/cc232236-c38e-4181-b791-8be0f37e6f0e.eot?#iefix") format("eot"), url("../fonts/baad6b40-55aa-412b-8698-8a408da0b742.woff2") format("woff2"), url("../fonts/493b124a-f032-4d7d-9d9b-b3ebdb18c13a.woff") format("woff"), url("../fonts/b2470f08-706e-4417-bcb4-64e4b3cb07b0.ttf") format("truetype"), url("../fonts/71715770-8b1b-41d7-bc36-4e630e95fd3a.svg#71715770-8b1b-41d7-bc36-4e630e95fd3a") format("svg");
-}
-@font-face {
-  font-family: "Avenir W02";
-  font-style: normal;
+  font-family: 'Averta';
   font-weight: 500;
 
-  src: url("../fonts/c7a58743-f241-4281-bfc0-f1df551cb37d.eot?#iefix");
-  src: url("../fonts/c7a58743-f241-4281-bfc0-f1df551cb37d.eot?#iefix") format("eot"), url("../fonts/3dafb9ca-b7cc-48f0-953d-e6134cfcfa47.woff2") format("woff2"), url("../fonts/b8db69f9-df9e-480f-9c1c-d76a1bb29a62.woff") format("woff"), url("../fonts/63753503-2f58-4a8b-91af-058e8f73a1b0.ttf") format("truetype"), url("../fonts/3cece34e-2cfb-4b8f-8a9c-04ec56d1e672.svg#3cece34e-2cfb-4b8f-8a9c-04ec56d1e672") format("svg");
+  src: url('../fonts/TW-Averta-Regular.eot');
+  src: url('../fonts/TW-Averta-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/TW-Averta-Regular.woff2') format('woff2'), url('../fonts/TW-Averta-Regular.woff') format('woff'), url('../fonts/TW-Averta-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: "Avenir W02";
-  font-style: normal;
+  font-family: 'Averta';
+  font-weight: 600;
+
+  src: url('../fonts/TW-Averta-Semibold.eot');
+  src: url('../fonts/TW-Averta-Semibold.eot?#iefix') format('embedded-opentype'), url('../fonts/TW-Averta-Semibold.woff2') format('woff2'), url('../fonts/TW-Averta-Semibold.woff') format('woff'), url('../fonts/TW-Averta-Semibold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Averta';
   font-weight: 800;
 
-  src: url("../fonts/e9427e66-afa8-4ceb-bb31-7a970fb469ea.eot?#iefix");
-  src: url("../fonts/e9427e66-afa8-4ceb-bb31-7a970fb469ea.eot?#iefix") format("eot"), url("../fonts/cbf77bfc-3d9f-4856-86ea-db9643bf8c1e.woff2") format("woff2"), url("../fonts/748da442-9dd9-4a4d-8da0-b114e16e5d7f.woff") format("woff"), url("../fonts/6beeeb66-0b4e-4162-8788-8bf688b9829a.ttf") format("truetype"), url("../fonts/8afe744b-89a2-4ae2-a88e-05c6882580f3.svg#8afe744b-89a2-4ae2-a88e-05c6882580f3") format("svg");
+  src: url('../fonts/TW-Averta-Bold.eot');
+  src: url('../fonts/TW-Averta-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/TW-Averta-Bold.woff2') format('woff2'), url('../fonts/TW-Averta-Bold.woff') format('woff'), url('../fonts/TW-Averta-Bold.ttf') format('truetype');
 }
-/*
-@font-face {
-    font-family: 'Sharp Sans Frontieres';
-    src: url('../fonts/SharpSansFrontieres-Medium.eot');
-    src: local('☺'),
-    url('../fonts/SharpSansFrontieres-Medium.woff') format('woff'),
-    url('../fonts/SharpSansFrontieres-Medium.svg#font') format('svg');
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: 'Sharp Sans Frontieres';
-    src: url('../fonts/SharpSansFrontieres-Bold.eot');
-    src: local('☺'),
-        url('../fonts/SharpSansFrontieres-Bold.woff') format('woff'),
-        url('../fonts/SharpSansFrontieres-Bold.svg#font') format('svg');
-    font-weight: 800;
-}
-*/
-/*
-@font-face {
-    font-family: 'Averta';
-    src: url('../fonts/Averta-Regular.otf');
-    // src: local('☺'),
-    //    url('../fonts/SharpSansFrontieres-Bold.woff') format('woff'),
-    //    url('../fonts/SharpSansFrontieres-Bold.svg#font') format('svg');
-    font-weight: 500;
-}
-@font-face {
-    font-family: 'Averta';
-    src: url('../fonts/Averta-Semibold.otf');
-    // src: local('☺'),
-    //    url('../fonts/SharpSansFrontieres-Bold.woff') format('woff'),
-    //     url('../fonts/SharpSansFrontieres-Bold.svg#font') format('svg');
-    font-weight: 600;
-}
-@font-face {
-    font-family: 'Averta';
-    src: url('../fonts/Averta-Bold.otf');
-    // src: local('☺'),
-    //    url('../fonts/SharpSansFrontieres-Bold.woff') format('woff'),
-    //    url('../fonts/SharpSansFrontieres-Bold.svg#font') format('svg');
-    font-weight: 800;
-}
-*/
 body {
-  letter-spacing: .01em;
+  letter-spacing: .028em;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1301,7 +1246,7 @@ h6,
 .h6 {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Averta", "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
   font-weight: 600;
   line-height: 1.2;
   color: #283957;
@@ -1338,97 +1283,98 @@ h6 .small,
 h1,
 .h1 {
   font-size: 28px;
-  line-height: 40px;
+  line-height: 32px;
 }
 h2,
 .h2 {
   font-size: 22px;
-  line-height: 32px;
+  line-height: 30px;
 }
 h3,
 .h3 {
   font-size: 18px;
+  line-height: 24px;
 }
 h4,
 .h4 {
   font-size: 16px;
+  line-height: 24px;
 }
 h5,
 .h5 {
   font-size: 16px;
+  line-height: 24px;
 }
 h6,
 .h6 {
   font-size: 14px;
-}
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3 {
-  margin-bottom: 8px;
-}
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
   line-height: 24px;
 }
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
+h1,
+.h1 {
   margin-bottom: 4px;
+}
+h2,
+.h2 {
+  margin-bottom: 2px;
 }
 @media (min-width: 768px) {
   h1,
   .h1 {
-    font-size: 36px;
+    font-size: 42px;
     line-height: 48px;
   }
   h2,
   .h2 {
     font-size: 28px;
-    line-height: 40px;
+    line-height: 32px;
   }
   h3,
   .h3 {
     font-size: 22px;
-    line-height: 32px;
+    line-height: 30px;
   }
   h4,
   .h4 {
     font-size: 18px;
+    line-height: 24px;
   }
   h5,
   .h5 {
     font-size: 16px;
+    line-height: 24px;
   }
   h6,
   .h6 {
     font-size: 14px;
+    line-height: 24px;
   }
   h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  .h1,
-  .h2,
-  .h3,
-  .h4,
-  .h5,
-  .h6 {
+  .h1 {
     margin-bottom: 8px;
   }
+  h2,
+  .h2 {
+    margin-bottom: 4px;
+  }
+  h3,
+  .h3 {
+    margin-bottom: 2px;
+  }
+}
+p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6,
+p + .h1,
+p + .h2,
+p + .h3,
+p + .h4,
+p + .h5,
+p + .h6 {
+  margin-top: 32px;
 }
 h1,
 .h1,
@@ -1708,7 +1654,7 @@ abbr[data-original-title] {
 blockquote {
   padding: 0 16px 0 14px;
   margin: 24px 0;
-  font-size: 18px;
+  font-size: 16px;
   border-left: 2px solid #00b9ff;
 }
 blockquote p {
@@ -1724,7 +1670,7 @@ blockquote small,
 blockquote .small {
   display: block;
   font-size: 80%;
-  line-height: 1.5;
+  line-height: 24px;
   color: #829ca9;
 }
 blockquote footer:before,
@@ -1735,15 +1681,15 @@ blockquote .small:before {
 @media (min-width: 768px) {
   blockquote {
     margin: 32px;
-    font-size: 22px;
+    font-size: 18px;
   }
 }
 .blockquote-reverse,
 blockquote.pull-right {
-  padding-right: 20px;
+  padding-right: 22px;
   padding-left: 0;
   text-align: right;
-  border-right: 4px solid #00b9ff;
+  border-right: 2px solid #00b9ff;
   border-left: 0;
 }
 .blockquote-reverse footer:before,
@@ -1765,7 +1711,7 @@ blockquote.pull-right .small:after {
 address {
   margin-bottom: 24px;
   font-style: normal;
-  line-height: 1.5;
+  line-height: 24px;
 }
 /*
 h1, .h1,
@@ -1797,7 +1743,7 @@ h6, .h6 {
   }
 }
 .text-max-width {
-  max-width: 540px;
+  max-width: 600px;
 }
 code,
 kbd,
@@ -1833,7 +1779,7 @@ pre {
   padding: 16px;
   margin: 0 0 24px;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 24px;
   color: #4a5860;
   word-break: break-all;
   word-wrap: break-word;
@@ -2762,7 +2708,7 @@ th {
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
   padding: 24px 16px;
-  line-height: 1.5;
+  line-height: 24px;
   vertical-align: top;
   border-top: 1px solid #f2f5f7;
   border-bottom: 0 solid #f2f5f7;
@@ -3089,7 +3035,7 @@ output {
   display: block;
   padding-top: 9px;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 24px;
   color: #2f4366;
 }
 .form-control {
@@ -4161,7 +4107,7 @@ fieldset[disabled] .radio label,
 .btn {
   display: inline-block;
   min-height: 48px;
-  padding: 10.5px 24px 11.5px 24px;
+  padding: 11px 24px;
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 600;
@@ -4784,6 +4730,9 @@ fieldset[disabled] .btn-input.active {
   color: #fff;
   background-color: #2f4366;
 }
+.btn-input .caret {
+  margin-left: 8px;
+}
 .btn-facebook {
   color: #3b5998;
   background-color: transparent;
@@ -5070,7 +5019,7 @@ fieldset[disabled] .btn-link:focus {
 .btn-lg,
 .btn-group-lg > .btn {
   min-height: 54px;
-  padding: 11.5px 32px 12.5px 32px;
+  padding: 12px 32px;
   font-size: 18px;
   line-height: 28px;
   border-radius: 3px;
@@ -5083,7 +5032,7 @@ fieldset[disabled] .btn-link:focus {
 .navbar .btn,
 .btn-group-sm > .btn {
   min-height: 32px;
-  padding: 2.5px 16px 3.5px 16px;
+  padding: 3px 16px;
   font-size: 14px;
   line-height: 24px;
   border-radius: 2px;
@@ -5096,7 +5045,7 @@ fieldset[disabled] .btn-link:focus {
 .btn-xs,
 .btn-group-xs > .btn {
   min-height: 22px;
-  padding: .5px 8px 1.5px 8px;
+  padding: 1px 8px;
   font-size: 12px;
   line-height: 18px;
   border-radius: 2px;
@@ -5319,7 +5268,7 @@ tbody.collapse.in {
 }
 .caret {
   display: inline-block;
-  width: 24px;
+  width: 16px;
   margin-left: 1px;
   font-family: 'Glyphicons Halflings';
   font-size: 14px;
@@ -5387,7 +5336,7 @@ tbody.collapse.in {
   padding: 12px 16px;
   clear: both;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 24px;
   color: #223049;
   white-space: nowrap;
   border-radius: 3px;
@@ -5569,6 +5518,22 @@ tbody.collapse.in {
   .btn-toolbar {
     margin-left: -8px;
   }
+  .btn-toolbar:before,
+  .btn-toolbar:after {
+    display: table;
+    content: " ";
+  }
+  .btn-toolbar:after {
+    clear: both;
+  }
+  .btn-toolbar:before,
+  .btn-toolbar:after {
+    display: table;
+    content: " ";
+  }
+  .btn-toolbar:after {
+    clear: both;
+  }
   .btn-toolbar .btn,
   .btn-toolbar .btn-group,
   .btn-toolbar .input-group {
@@ -5617,8 +5582,8 @@ tbody.collapse.in {
   outline: 0;
 }
 .btn-group > .btn + .dropdown-toggle {
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
 }
 .btn-group > .btn-lg + .dropdown-toggle {
   padding-right: 12px;
@@ -5631,9 +5596,6 @@ tbody.collapse.in {
 .btn-group.open .dropdown-toggle.btn-link {
   -webkit-box-shadow: none;
           box-shadow: none;
-}
-.btn .caret {
-  margin-left: 1px;
 }
 .btn-lg .caret {
   border-width: 5px 5px 0;
@@ -5747,7 +5709,7 @@ tbody.collapse.in {
 .btn-group.btn-block .btn .caret {
   position: absolute;
   top: 16px;
-  right: 10px;
+  right: 16px;
 }
 .btn-group.btn-block .btn + .dropdown-toggle {
   -webkit-box-flex: 0;
@@ -5761,7 +5723,7 @@ tbody.collapse.in {
   right: 0;
 }
 .btn-group.btn-block .btn.dropdown-toggle {
-  padding-right: 40px;
+  padding-right: 48px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -6089,7 +6051,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li > a {
   margin-right: 2px;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 24px;
   color: #6f8691;
   border-bottom: 3px solid transparent;
 }
@@ -7043,6 +7005,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   line-height: 48px;
   color: #223049;
 }
+.pagination-text .btn-group {
+  vertical-align: top;
+}
 .pagination-inverse > li > a:hover,
 .pagination-inverse > li > a:focus,
 .pagination-inverse > li.active > a,
@@ -7296,7 +7261,7 @@ a.badge:focus {
   display: block;
   padding: 0;
   margin-bottom: 24px;
-  line-height: 1.5;
+  line-height: 24px;
   background-color: #fff;
   border: 1px solid #e2e6e8;
   border-radius: 3px;
@@ -7343,11 +7308,13 @@ a.thumbnail.active {
 .alert {
   padding: 24px;
   margin-bottom: 24px;
+  border: 1px solid #e2e6e8;
   border-radius: 3px;
 }
-.alert h4 {
-  margin-top: 0;
-  margin-bottom: 8px;
+.alert h4,
+.alert .h4,
+.alert h5,
+.alert .h5 {
   font-size: 16px;
   color: inherit;
 }
@@ -7361,6 +7328,9 @@ a.thumbnail.active {
 }
 .alert > p + p {
   margin-top: 16px;
+}
+.panel .alert {
+  border: 0;
 }
 .alert-dismissable,
 .alert-dismissible {
@@ -7686,15 +7656,13 @@ a.list-group-item:focus {
   border-top-width: 0;
 }
 @media (min-width: 576px) {
-  .list-group-item {
-    /* In combination with applying extra padding to the media-body,
-    this prevents text reflow on panel expansion */
-  }
   .list-group-item.active {
     margin-right: -12px;
     margin-left: -12px;
   }
   .list-group-item .media-body {
+    /* In combination with applying extra padding to the media-body,
+      this prevents text reflow on panel expansion */
     -webkit-transition: padding ease .15s;
          -o-transition: padding ease .15s;
             transition: padding ease .15s;
@@ -8688,7 +8656,6 @@ button.close {
   padding: 16px;
   margin-bottom: 24px;
   overflow: hidden;
-  font-size: 14px;
   text-align: center;
   cursor: pointer;
   background-color: #f2f5f7;
@@ -8799,10 +8766,10 @@ button.close {
 }
 .tile-info .icon,
 .tile-info a {
-  color: #28b862;
+  color: #00b9ff;
 }
 .tile-info:hover:not(.tile-disabled) {
-  border-color: #2ed06e;
+  border-color: #00b9ff;
 }
 .tile-warning .icon,
 .tile-warning a {
@@ -8967,11 +8934,11 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Averta", "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 24px;
   text-align: left;
   text-align: start;
   text-decoration: none;
@@ -9086,11 +9053,11 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 19px 24px;
-  font-family: "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Averta", "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 24px;
   text-align: left;
   text-align: start;
   text-decoration: none;
