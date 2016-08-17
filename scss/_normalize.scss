@@ -274,7 +274,7 @@ optgroup {
 
 button,
 input, // 1
-select { // 2
+select:not([multiple]) { // 2
   overflow: visible;
 }
 
