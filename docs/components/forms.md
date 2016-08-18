@@ -724,7 +724,7 @@ Ensure that an alternative indication of state is also provided. For instance, y
 <div class="form-group has-danger">
   <label class="col-form-label" for="inputDanger1">Input with danger</label>
   <input type="text" class="form-control form-control-danger" id="inputDanger1">
-  <div class="form-control-feedback">Shit, that username's taken. Try another?</div>
+  <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 {% endexample %}
