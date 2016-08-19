@@ -111,7 +111,7 @@ const Modal = (($) => {
     }
 
     show(relatedTarget) {
-	  NumOpenModals++	
+	    NumOpenModals++	
 	
       let showEvent = $.Event(Event.SHOW, {
         relatedTarget
@@ -296,26 +296,26 @@ const Modal = (($) => {
     _hideModal() {
       this._element.style.display = 'none'
       this._element.setAttribute('aria-hidden', 'true')
-	  if(NumOpenModals === 1){
+	    if(NumOpenModals === 1){
         this._showBackdrop(() => {
           $(document.body).removeClass(ClassName.OPEN)
           this._resetAdjustments()
           this._resetScrollbar()
           $(this._element).trigger(Event.HIDDEN)
         })
-	  } else {
-		this._removeBackdrop()
-	  }
-	  NumOpenModals--
+	    } else {
+		    this._removeBackdrop()
+	    }
+	    NumOpenModals--
     }
 
     _removeBackdrop() {
-	  if(NumOpenModals < 1){
+	    if(NumOpenModals < 1){
         if (this._backdrop) {
           $(this._backdrop).remove()
           this._backdrop = null
         }
-	  }
+	    }
     }
 
     _showBackdrop(callback) {
