@@ -45,6 +45,7 @@ const ScrollSpy = (($) => {
   const ClassName = {
     DROPDOWN_ITEM : 'dropdown-item',
     DROPDOWN_MENU : 'dropdown-menu',
+    NAV_ITEM      : 'nav-item',
     NAV_LINK      : 'nav-link',
     NAV           : 'nav',
     ACTIVE        : 'active'
@@ -57,6 +58,7 @@ const ScrollSpy = (($) => {
     LI              : 'li',
     LI_DROPDOWN     : 'li.dropdown',
     NAV_LINKS       : '.nav-link',
+    NAV_ITEMS       : '.nav-item',
     DROPDOWN        : '.dropdown',
     DROPDOWN_ITEMS  : '.dropdown-item',
     DROPDOWN_TOGGLE : '.dropdown-toggle'
@@ -252,7 +254,7 @@ const ScrollSpy = (($) => {
       } else {
         // todo (fat) this is kinda sus...
         // recursively add actives to tested nav-links
-        $link.parents(Selector.LI).find(Selector.NAV_LINKS).addClass(ClassName.ACTIVE)
+        $link.parents(Selector.LI).addClass(ClassName.ACTIVE)
       }
 
       $(this._scrollElement).trigger(Event.ACTIVATE, {
@@ -261,7 +263,7 @@ const ScrollSpy = (($) => {
     }
 
     _clear() {
-      $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
+      $(this._selector).parents(Selector.LI).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
     }
 
 
@@ -324,3 +326,4 @@ const ScrollSpy = (($) => {
 })(jQuery)
 
 export default ScrollSpy
+lSpy
