@@ -11,3 +11,18 @@
 .d-inline {
   display: inline !important;
 }
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    .d-#{$breakpoint}-block {
+      @include display-block();
+    }
+    .d-#{$breakpoint}-inline-block {
+      @include display-inline-block();
+    }
+    .d-#{$breakpoint}-inline {
+      @include display-inline();
+    }
+  }
+}
+
+
