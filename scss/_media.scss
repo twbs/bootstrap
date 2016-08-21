@@ -1,7 +1,6 @@
 @if $enable-flex {
   .media {
     display: flex;
-    margin-bottom: $spacer;
   }
   .media-body {
     flex: 1;
@@ -13,13 +12,6 @@
     align-self: flex-end;
   }
 } @else {
-  .media {
-    margin-top: $media-margin-top;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
   .media,
   .media-body {
     overflow: hidden;
