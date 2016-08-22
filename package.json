@@ -88,9 +88,6 @@
   ],
   "jspm": {
     "main": "js/bootstrap",
-    "ignore": [
-      "dist/js/npm"
-    ],
     "directories": {
       "lib": "dist"
     },
