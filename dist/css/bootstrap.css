@@ -4783,14 +4783,6 @@ base::-moz-progress-bar,
   }
 }
 
-.media {
-  margin-top: 15px;
-}
-
-.media:first-child {
-  margin-top: 0;
-}
-
 .media,
 .media-body {
   overflow: hidden;
