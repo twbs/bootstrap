@@ -111,6 +111,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Simplified dropdown styles to no longer ship with upward or downward facing arrows attached to the dropdown menu.
 - Dropdowns can be built with `<div>`s or `<ul>`s now.
 - Rebuilt dropdown styles and markup to provide easy, built-in support for `<a>` and `<button>` based dropdown items.
+- Renamed `.divider` to `.dropdown-divider`.
 - Dropdown items now require `.dropdown-item`.
 - Dropdown toggles no longer require an explicit `<span class="caret"></span>`; this is now provided automatically via CSS's `::after` on `.dropdown-toggle`.
 
