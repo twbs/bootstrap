@@ -209,7 +209,7 @@ Use a generic close icon for dismissing content like modals and alerts. **Be sur
 
 These utility classes float an element to the left or right, or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float). `!important` is included to avoid specificity issues. These use the same viewport width breakpoints as the grid system.
 
-Two similar non-responsive mixins (`pull-left` and `pull-right`) are also available.
+Two similar non-responsive Sass mixins (`pull-left` and `pull-right`) are also available.
 
 {% example html %}
 <div class="pull-xs-left">Float left on all viewport sizes</div><br>
