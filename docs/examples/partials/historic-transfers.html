@@ -49,12 +49,12 @@
 								<span ng-if="transfer.completed"
 									class="list-group-item-text"
 									title="{{transfer.completed | date:'dd MMMM yyyy h:mm a'}}">
-									Completed {{transfer.completed | date:"dd MMMM yy"}}
+									Completed {{transfer.completed | date:"dd MMMM yyyy"}}
 								</span>
 								<span ng-if="!transfer.completed && transfer.updated"
 									class="list-group-item-text"
 									title="{{transfer.updated | date:'dd MMMM yyyy h:mm a'}}">
-									Cancelled {{transfer.updated | date:"dd MMMM yy"}}
+									Cancelled {{transfer.updated | date:"dd MMMM yyyy"}}
 								</span>
 							</p>
 						</div>
@@ -108,7 +108,7 @@
 					ng-if="transfer.type !== 'CARD' && transfer.type !== 'REQUEST'">
 					<div class="media">
 						<div class="media-left">
-							<div class="circle circle-sm invisible">
+							<div class="circle circle-sm circle-responsive invisible">
 								<i class="icon icon-transfer"></i>
 							</div>
 						</div>
