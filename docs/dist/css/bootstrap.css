@@ -1113,6 +1113,7 @@ a,
   font-weight: 600;
   color: #00b9ff;
   text-decoration: underline;
+  letter-spacing: 0;
 }
 a:hover,
 .anchor:hover,
@@ -1251,6 +1252,7 @@ h6,
   line-height: 1.2;
   color: #283957;
   text-transform: none;
+  letter-spacing: 0;
 }
 h1 small,
 h2 small,
@@ -1442,6 +1444,7 @@ b,
 strong {
   font-weight: 600;
   color: #283957;
+  letter-spacing: 0;
 }
 .text-xs-left {
   text-align: left;
@@ -5560,7 +5563,7 @@ tbody.collapse.in {
   width: 100%;
   margin-bottom: 16px;
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .btn-toolbar {
     margin-left: -8px;
   }
@@ -7679,30 +7682,15 @@ a.list-group-item:focus {
   text-decoration: none;
   background-color: #f2f5f7;
 }
-.list-group-item.disabled:hover,
-.list-group-item.disabled:focus,
-.list-group-item.disabled:not(.active):not(:hover) {
+.list-group-item.disabled {
   color: #a8aaac;
 }
-.list-group-item.disabled:hover .list-group-item-heading,
-.list-group-item.disabled:focus .list-group-item-heading,
-.list-group-item.disabled:not(.active):not(:hover) .list-group-item-heading,
-.list-group-item.disabled:hover .list-group-item-heading strong,
-.list-group-item.disabled:focus .list-group-item-heading strong,
-.list-group-item.disabled:not(.active):not(:hover) .list-group-item-heading strong {
-  color: #a8aaac;
-}
-.list-group-item.disabled:hover .list-group-item-text,
-.list-group-item.disabled:focus .list-group-item-text,
-.list-group-item.disabled:not(.active):not(:hover) .list-group-item-text {
-  color: #a8aaac;
-}
-.list-group-item.disabled:hover .circle,
-.list-group-item.disabled:focus .circle,
-.list-group-item.disabled:not(.active):not(:hover) .circle,
-.list-group-item.disabled:hover .icon,
-.list-group-item.disabled:focus .icon,
-.list-group-item.disabled:not(.active):not(:hover) .icon {
+.list-group-item.disabled .list-group-item-heading,
+.list-group-item.disabled .list-group-item-text,
+.list-group-item.disabled b,
+.list-group-item.disabled strong,
+.list-group-item.disabled .circle,
+.list-group-item.disabled .icon {
   color: #a8aaac;
 }
 .list-group-item.active {
