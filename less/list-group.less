@@ -82,19 +82,13 @@ a.list-group-item {
 
 .list-group-item {
   // Disabled state
-  &.disabled:hover,
-  &.disabled:focus,
-  &.disabled:not(.active):not(:hover) {
+  &.disabled {
     color: @list-group-disabled-color;
 
-    // Force color to inherit for custom content
     .list-group-item-heading,
-    .list-group-item-heading strong {
-      color: @list-group-disabled-color;
-    }
-    .list-group-item-text {
-      color: @list-group-disabled-color;
-    }
+    .list-group-item-text,
+    b,
+    strong,
     .circle,
     .icon {
       color: @list-group-disabled-color;
