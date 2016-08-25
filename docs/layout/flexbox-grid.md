@@ -41,7 +41,7 @@ When flexbox support is enabled, you can utilize breakpoint-specific column clas
       1 of 2
     </div>
     <div class="col-xs">
-      1 of 2
+      2 of 2
     </div>
   </div>
   <div class="row">
@@ -49,10 +49,10 @@ When flexbox support is enabled, you can utilize breakpoint-specific column clas
       1 of 3
     </div>
     <div class="col-xs">
-      1 of 3
+      2 of 3
     </div>
     <div class="col-xs">
-      1 of 3
+      3 of 3
     </div>
   </div>
 </div>
@@ -102,7 +102,7 @@ Unlike the default grid system, the flexbox grid requires a class for full-width
       1 of 2 (stacked on mobile)
     </div>
     <div class="col-xs-12 col-sm-6">
-      1 of 2 (stacked on mobile)
+      2 of 2 (stacked on mobile)
     </div>
   </div>
 </div>
@@ -121,10 +121,10 @@ Use the flexbox alignment utilities to vertically align columns.
       One of three columns
     </div>
     <div class="col-xs">
-      One of three columns
+      Two of three columns
     </div>
     <div class="col-xs">
-      One of three columns
+      Three of three columns
     </div>
   </div>
   <div class="row flex-items-xs-middle">
@@ -132,10 +132,10 @@ Use the flexbox alignment utilities to vertically align columns.
       One of three columns
     </div>
     <div class="col-xs">
-      One of three columns
+      Two of three columns
     </div>
     <div class="col-xs">
-      One of three columns
+      Three of three columns
     </div>
   </div>
   <div class="row flex-items-xs-bottom">
@@ -143,10 +143,10 @@ Use the flexbox alignment utilities to vertically align columns.
       One of three columns
     </div>
     <div class="col-xs">
-      One of three columns
+      Two of three columns
     </div>
     <div class="col-xs">
-      One of three columns
+      Three of three columns
     </div>
   </div>
 </div>
@@ -161,10 +161,10 @@ Use the flexbox alignment utilities to vertically align columns.
       One of three columns
     </div>
     <div class="col-xs flex-xs-middle">
-      One of three columns
+      Two of three columns
     </div>
     <div class="col-xs flex-xs-bottom">
-      One of three columns
+      Three of three columns
     </div>
   </div>
 </div>
@@ -183,7 +183,7 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
       One of two columns
     </div>
     <div class="col-xs-4">
-      One of two columns
+      Two of two columns
     </div>
   </div>
   <div class="row flex-items-xs-center">
@@ -191,7 +191,7 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
       One of two columns
     </div>
     <div class="col-xs-4">
-      One of two columns
+      Two of two columns
     </div>
   </div>
   <div class="row flex-items-xs-right">
@@ -199,7 +199,7 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
       One of two columns
     </div>
     <div class="col-xs-4">
-      One of two columns
+      Two of two columns
     </div>
   </div>
   <div class="row flex-items-xs-around">
@@ -207,7 +207,7 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
       One of two columns
     </div>
     <div class="col-xs-4">
-      One of two columns
+      Two of two columns
     </div>
   </div>
   <div class="row flex-items-xs-between">
@@ -215,7 +215,7 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
       One of two columns
     </div>
     <div class="col-xs-4">
-      One of two columns
+      Two of two columns
     </div>
   </div>
 </div>
