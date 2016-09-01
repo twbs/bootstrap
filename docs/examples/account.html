@@ -89,6 +89,11 @@
 		margin-left: 13px;
 		display: block;
 	}
+
+	.table > tbody > tr.active > td {
+		border-top-width: 16px;
+		border-bottom-width: 16px;
+	}
 	</style>
 </head>
 <body ng-app="ExampleApp">
@@ -118,9 +123,7 @@
 		</div>
 		<div class="container">
 			<next-cards></next-cards>
-			<!--
-			<one-click></one-click>
-			 -->
+
 			<active-transfers
 				transfers="ctrl.activeTransfers"
 				currencies="ctrl.currencies">
@@ -141,6 +144,8 @@
 					<pagination page="1" total="200"></pagination>
 				</div>
 			</div>
+
+			<one-click></one-click>
 		</div>
 	</div>
 	<footer-example></footer-example>

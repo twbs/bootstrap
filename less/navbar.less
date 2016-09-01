@@ -694,12 +694,14 @@
         color: transparent;
     }
 }
+/* Moved to logo.less so as not to repeat SVG.
 .navbar .navbar-brand {
     background-image: @logo-full-primary;
 }
 .navbar-inverse .navbar-brand {
     background-image: @logo-full-inverse;
 }
+*/
 
 .navbar.bg-primary {
     background-color: @brand-primary;
@@ -818,11 +820,6 @@
         }
     }
 }
-@media (min-width: @grid-float-breakpoint) {
-    .navbar-bordered:not(.affix) .navbar-collapse {
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-}
 .navbar .profile-name {
     padding-bottom: 3px;
 
@@ -831,12 +828,12 @@
     }
 
     .text-ellipses {
-        max-width: 95px;
+        max-width: 75px;
         display: inline-block;
     }
     @media (min-width: @screen-lg-min) {
         .text-ellipses {
-            max-width: 140px;
+            max-width: 125px;
         }
     }
     @media (min-width: @screen-xl-min) {

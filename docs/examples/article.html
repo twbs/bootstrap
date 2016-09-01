@@ -3,6 +3,7 @@
 <head>
 	<title>Article Page Example</title>
 	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
 
 	<link type="text/css" rel="stylesheet"
 		href="../dist/css/bootstrap.min.css" />
@@ -13,10 +14,12 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular-sanitize.js"></script>
 
-	<script src="bootstrap-select/dist/js/bootstrap-select.js"></script>
+	<script>
+	angular.module('ExampleApp', []);
+	</script>
 
-	<link rel="stylesheet"
-		href="bootstrap-select/dist/css/bootstrap-select.min.css">
+	<script src="js/nav.directive.js"></script>
+	<script src="js/footer.directive.js"></script>
 
 	<script src="forms.js"></script>
 
@@ -25,66 +28,35 @@
 	}
 	</style>
 </head>
-<body>
-	<header class="navbar navbar-static-top navbar-inverse" id="top"
-		role="banner"
-		data-spy="affix"
-		data-offset-top="60">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="navbar-header">
-						<button class="navbar-toggle collapsed" type="button"
-							data-toggle="collapse"
-							data-target="#bs-navbar"
-							aria-controls="bs-navbar"
-							aria-expanded="false">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a href="../" class="navbar-brand">Bootstrap</a>
+<body ng-app="ExampleApp">
+	<nav-bar transparent="true"></nav-bar>
+	<div class="jumbotron-image" style="background-image: url('http://bootstrap.transferwise.com/assets/img/css2-bg.jpg')">
+		<div class="jumbotron">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-xs-12 text-xs-center">
+						<h1>H1 Title goes here</h1>
+						<p class="lead">This is lead text, it normally provides a brief summary of the article contents.</p>
 					</div>
-					<nav id="bs-navbar" class="collapse navbar-collapse">
-						<div class="navbar-right">
-							<ul class="nav navbar-nav">
-								<li><a href="landing.html">Front</a></li>
-								<li><a href="explore.html">Explore</a></li>
-							</ul>
-							<button class="btn btn-image navbar-btn">Article</button>
-						</div>
-					</nav>
 				</div>
 			</div>
 		</div>
-	</header>
-	<div class="jumbotron-image" style="background-image: url('http://bootstrap.transferwise.com/assets/img/css2-bg.jpg')">
-		<main class="jumbotron" id="content" role="main" tabindex="-1">
-			<div class="container">
-				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-xs-center">
-					<h1>Title goes here</h1>
-
-					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-					convallis ipsum ac congue imperdiet.</p>
-
-				</div>
-			</div>
-		</main>
 	</div>
 	<div class="container">
 		<div class="row m-b-3">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<ol class="breadcrumb m-t-3">
+			<article class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<ol class="breadcrumb m-t-2 m-b-2">
 					<li><a href="landing.html">Front</a></li>
 					<li><a href="explore.html">Explore</a></li>
 					<li class="active">Article</li>
 				</ol>
-				<hr />
+				<hr class="m-t-0" />
+				<!--
 				<h1>H1 Title text, sentence case</h1>
 				<p>Sed sit amet sapien tristique, accumsan dolor sed, placerat tellus.
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisis
 				lectus sed ligula luctus, ut sollicitudin erat commodo. </p>
+				-->
 
 				<h2>H2 Title text, sentence case</h2>
 				<p>Sed sit amet sapien tristique, accumsan dolor sed, placerat tellus.
@@ -122,14 +94,14 @@
 				sem, ut efficitur magna sapien et massa.</p>
 
 				<blockquote>
-  					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Integer posuere erat a ante.</p>
+  					<p>This is a blockquote, it's normally used to pull out a quote
+						from the body text that emphasises the point of the article.</p>
 				</blockquote>
 
 				<p>Phasellus libero metus,
 				fringilla a molestie vitae, faucibus a elit. Vivamus sodales eleifend
 				varius. Suspendisse eu urna iaculis, commodo leo ac, malesuada nisi.</p>
-			</div>
+			</article>
 		</div>
 	</div>
 </body>

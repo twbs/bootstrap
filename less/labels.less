@@ -4,7 +4,7 @@
 
 .label {
   display: inline;
-  padding: .2em .6em .3em;
+  padding: .3em .6em .2em;
   font-size: 75%;
   font-weight: bold;
   line-height: 1;
@@ -40,26 +40,26 @@
 // Contextual variations (linked labels get darker on :hover)
 
 .label-default {
-  .label-variant(@label-default-bg);
+  .label-variant(@label-default-bg, @label-default-bg-hover);
   color: @gray;
 }
 
 .label-primary {
-  .label-variant(@label-primary-bg);
+  .label-variant(@label-primary-bg, @label-primary-bg-hover);
 }
 
 .label-success {
-  .label-variant(@label-success-bg);
+  .label-variant(@label-success-bg, @label-success-bg-hover);
 }
 
 .label-info {
-  .label-variant(@label-info-bg);
+  .label-variant(@label-info-bg, @label-info-bg-hover);
 }
 
 .label-warning {
-  .label-variant(@label-warning-bg);
+  .label-variant(@label-warning-bg, @label-warning-bg-hover);
 }
 
 .label-danger {
-  .label-variant(@label-danger-bg);
+  .label-variant(@label-danger-bg, @label-danger-bg-hover);
 }

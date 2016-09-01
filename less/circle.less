@@ -20,7 +20,7 @@
     text-decoration: none;
     text-transform: uppercase;
 
-    border: 1px solid @brand-white;
+    border: 1px solid transparent;
     background-color: @brand-white;
     border-radius: 50%;
 
@@ -89,7 +89,7 @@ a.circle.active:hover {
 }
 
 .circle-inverse {
-  border-color: @brand-smoke-plus-20;
+  border-color: transparent;
   background-color: @brand-smoke-plus-20;
 }
 
@@ -111,10 +111,10 @@ a.circle.active:hover {
 
   &.circle-lg {
     border-radius: 50%;
-    border-color: @brand-white;
+    border-color: transparent;
     background-color: @brand-white;
     &.circle-inverse {
-      border-color: @brand-smoke-plus-20;
+      border-color: transparent;
       background-color: @brand-smoke-plus-20;
     }
     .circle-variant(@circle-sm-diameter, @circle-sm-font-size, @circle-sm-icon-size);
@@ -124,10 +124,10 @@ a.circle.active:hover {
 @media (min-width: @screen-sm-min) {
   .circle-responsive {
     border-radius: 50%;
-    border-color: @brand-white;
+    border-color: transparent;
     background-color: @brand-white;
     &.circle-inverse {
-      border-color: @brand-smoke-plus-20;
+      border-color: transparent;
       background-color: @brand-smoke-plus-20;
     }
   }

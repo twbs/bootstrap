@@ -26,17 +26,11 @@ html {
 
 body {
   font-family: @font-family-base;
-  font-size: @font-size-small;
+  font-size: (@font-size-base - 1px);
   line-height: @line-height-computed;
   color: @text-color;
   background-color: @body-bg;
   position: relative;
-}
-
-@media (min-width: @screen-sm-min) {
-  body {
-    font-size: (@font-size-base - 1px);
-  }
 }
 
 @media (min-width: @screen-md-min) {
@@ -44,7 +38,6 @@ body {
     font-size: @font-size-base;
   }
 }
-
 
 // Reset fonts for relevant elements
 input,

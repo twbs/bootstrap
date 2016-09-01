@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Examples</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular.js"></script>
+
+	<script src="forms.js"></script>
+
+	<script>
+	angular.module('ExampleApp', []);
+	</script>
+
+	<script src="js/nav.directive.js"></script>
+	<script>
+	(function(angular) {
+
+		angular.module('ExampleApp')
+		.controller('PageController', [
+			'$window',
+			PageController
+		]);
+
+		function PageController($window) {
+			var $ctrl = this;
+			$ctrl.navigate = function(destination) {
+				$window.location = destination;
+			};
+		}
+	})(window.angular);
+	</script>
+
+	<style>
+	body {
+		background-color: #f2f5f7;
+	}
+	</style>
+</head>
+<body ng-app="ExampleApp">
+	<nav-bar></nav-bar>
+	<div class="container m-t-3" ng-controller="PageController as ctrl">
+		<div class="tile-row">
+			<div class="tile-container col-xs-12 col-sm-6 col-lg-4">
+				<div class="tile tile-inverse" role="button" tabindex="0"
+					ng-click="ctrl.navigate('account.html')">
+					<div class="media">
+						<div class="media-left text-info">
+							<i class="icon icon-fast-flag icon-xxl"></i>
+						</div>
+						<div class="media-body text-xs-left text-max-width">
+							<h3 class="h5">Account page example</h3>
+							<p>An example page for listing user content, with expandable details.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tile-container col-xs-12 col-sm-6 col-lg-4">
+				<div class="tile tile-inverse" role="button" tabindex="0"
+					ng-click="ctrl.navigate('recipients.html')">
+					<div class="media">
+						<div class="media-left text-info">
+							<i class="icon icon-profile icon-xxl"></i>
+						</div>
+						<div class="media-body text-xs-left text-max-width">
+							<h3 class="h5">Recipient page example</h3>
+							<p>Another page featuring a list of use content with expandable detail.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tile-container col-xs-12 col-sm-6 col-lg-4">
+				<div class="tile tile-inverse" role="button" tabindex="0"
+					ng-click="ctrl.navigate('article.html')">
+					<div class="media">
+						<div class="media-left text-info">
+							<i class="icon icon-document icon-xxl"></i>
+						</div>
+						<div class="media-body text-xs-left text-max-width">
+							<h3 class="h5">Article page example</h3>
+							<p>An example page for long form text.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tile-container col-xs-12 col-sm-6 col-lg-4">
+				<div class="tile tile-inverse" role="button" tabindex="0"
+					ng-click="ctrl.navigate('landing.html')">
+					<div class="media">
+						<div class="media-left text-info">
+							<i class="icon icon-home icon-xxl"></i>
+						</div>
+						<div class="media-body text-xs-left text-max-width">
+							<h3 class="h5">Landing page example</h3>
+							<p>An example page for when someone first arrives at our site.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tile-container col-xs-12 col-sm-6 col-lg-4">
+				<div class="tile tile-inverse" role="button" tabindex="0"
+					ng-click="ctrl.navigate('explore.html')">
+					<div class="media">
+						<div class="media-left text-info">
+							<i class="icon icon-setting icon-xxl"></i>
+						</div>
+						<div class="media-body text-xs-left text-max-width">
+							<h3 class="h5">Explore page example</h3>
+							<p>A two column layout for pages with forms and for displaying detailed information.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="tile-container col-xs-12 col-sm-6 col-lg-4">
+				<div class="tile tile-inverse" role="button" tabindex="0"
+					ng-click="ctrl.navigate('grid.html')">
+					<div class="media">
+						<div class="media-left text-info">
+							<i class="icon icon-menu icon-xxl"></i>
+						</div>
+						<div class="media-body text-xs-left text-max-width">
+							<h3 class="h5">Advanced grid</h3>
+							<p>An example using grids for complex layouts with responsive utility classes.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

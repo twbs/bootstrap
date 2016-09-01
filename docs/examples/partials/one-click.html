@@ -1,8 +1,13 @@
-<form class="panel" name="oneClickForm" novalidate="">
+<form class="panel m-b-3" name="oneClickForm" novalidate="">
 	<div class="panel-heading">
-		<h3 class="panel-title">One click transfer</h3>
+		<h3 class="panel-title">
+			<a href="" ng-click="$ctrl.isOpen = !$ctrl.isOpen">
+				<span class="caret m-r-1"
+					ng-class="{'rotate-90': !$ctrl.isOpen}"></span>One click transfer
+			</a>
+		</h3>
 	</div>
-	<div class="panel-body">
+	<div class="panel-body" ng-if="$ctrl.isOpen">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group sendFrom">

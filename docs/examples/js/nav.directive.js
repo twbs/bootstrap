@@ -1,6 +1,6 @@
 (function(angular) {
 	'use strict';
-	
+
 	angular
 		.module('ExampleApp')
 		.directive('navBar', NavBarDirective);
@@ -33,10 +33,12 @@
 				}
 				vm.language = "en";
 			},
-			controllerAs: 'vm',
+			controllerAs: '$ctrl',
 			replace: true,
 			restrict: 'E',
-			scope: {},
+			scope: {
+				transparent: "="
+			},
 			templateUrl: "partials/nav-bar.html"
 		}
 	}

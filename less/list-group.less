@@ -14,6 +14,7 @@
   border-left: 1px solid @brand-smoke-plus-20;
   border-right: 1px solid @brand-smoke-plus-20;
   border-bottom: 1px solid @brand-smoke-plus-20;
+  margin-top: 1px;
 }
 
 // Individual list items
@@ -27,7 +28,7 @@
   // Place the border on the list items and negative margin up for better styling
   background-color: @list-group-bg;
   border-left: 2px solid transparent;
-  border-top: 1px solid @brand-smoke-plus-20;
+  margin-top: 1px;
 
   line-height: @line-height-computed;
   transition: all ease @panel-focus-transtion;
@@ -51,6 +52,7 @@
 .list-group-item-heading {
   margin-bottom: 0;
   font-size: @font-size-base;
+  font-weight: 500;
   color: @brand-blue-plus-10;
 }
 .list-group-item-text {
@@ -81,6 +83,11 @@ a.list-group-item {
 }
 
 .list-group-item {
+  // Ideally would use role=button on list group item but invalid markup on li
+  [ng-click] {
+    cursor: pointer;
+  }
+
   // Disabled state
   &.disabled {
     color: @list-group-disabled-color;
@@ -100,13 +107,11 @@ a.list-group-item {
     z-index: 2; // Place active items above their siblings for proper border styling
     background-color: @list-group-active-bg;
     box-shadow: 0 1px 10px @brand-smoke-plus-10;
+    margin-top: @line-height-computed;
+    margin-bottom: @line-height-computed;
 
     &:last-child {
       margin-bottom: 0;
-    }
-
-    + .list-group-item {
-      border-top-width: 0;
     }
   }
 
@@ -128,6 +133,7 @@ a.list-group-item {
   .list-group-item {
     background-color: transparent;
     border-top: 1px solid @brand-smoke-plus-10;
+    margin-top: 0;
 
     &:hover,
     &.active {
@@ -138,6 +144,9 @@ a.list-group-item {
           background-color: @brand-smoke-plus-20;
         }
       }
+    }
+    &.active {
+      border-top: 0px;
     }
   }
 }

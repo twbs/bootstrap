@@ -193,17 +193,10 @@
     // `background-color`. We cannot use `filter` since that's not viewed as a
     // background color by the browser. Thus, a hack is needed.
     // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Internet_Explorer
-    //
-    // For IE8, we set solid black as it doesn't support `rgba()`. For IE9, we
-    // set alpha transparency for the best results possible.
-    /*background-color: #666 \9; // IE8
-    background-color: rgba(0,0,0,0.3); // IE9*/
+
     background-color: #FFF;
   }
   .active {
-    /*margin: 0;
-    width:  12px;
-    height: 12px;*/
     background-color: @carousel-indicator-active-bg;
   }
 }
