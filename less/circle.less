@@ -35,6 +35,7 @@
     margin-right: auto;
 
     transition: background-color ease @transition-duration,
+                border-color ease @transition-duration,
                 color ease @transition-duration;
 
     &.active {
@@ -89,7 +90,6 @@ a.circle.active:hover {
 }
 
 .circle-inverse {
-  border-color: transparent;
   background-color: @brand-smoke-plus-20;
 }
 
@@ -111,10 +111,8 @@ a.circle.active:hover {
 
   &.circle-lg {
     border-radius: 50%;
-    border-color: transparent;
     background-color: @brand-white;
     &.circle-inverse {
-      border-color: transparent;
       background-color: @brand-smoke-plus-20;
     }
     .circle-variant(@circle-sm-diameter, @circle-sm-font-size, @circle-sm-icon-size);
@@ -124,10 +122,8 @@ a.circle.active:hover {
 @media (min-width: @screen-sm-min) {
   .circle-responsive {
     border-radius: 50%;
-    border-color: transparent;
     background-color: @brand-white;
     &.circle-inverse {
-      border-color: transparent;
       background-color: @brand-smoke-plus-20;
     }
   }

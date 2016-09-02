@@ -7364,7 +7364,8 @@ a.thumbnail.active {
 .alert p + p {
   margin-top: 8px;
 }
-.panel .alert {
+.panel .alert,
+.modal .alert {
   border: 0;
 }
 @media (min-width: 576px) {
@@ -7633,6 +7634,7 @@ a.thumbnail.active {
   position: relative;
   display: block;
   padding: 16px 16px 16px 14px;
+  /*border-top: 1px solid @brand-smoke-plus-20;*/
   margin-top: 1px;
   line-height: 24px;
   background-color: #fff;
@@ -7640,6 +7642,10 @@ a.thumbnail.active {
   -webkit-transition: all ease .15s;
        -o-transition: all ease .15s;
           transition: all ease .15s;
+}
+.panel-group .list-group-item {
+  margin-top: 0;
+  border-top: 1px solid #f2f5f7;
 }
 @media (min-width: 576px) {
   .list-group-item {
@@ -7674,8 +7680,12 @@ a.list-group-item:focus {
   text-decoration: none;
   background-color: #f2f5f7;
 }
-.list-group-item [ng-click] {
+.list-group-item[ng-click] {
   cursor: pointer;
+}
+.list-group-item[ng-click]:hover {
+  /* tell the browser there is a likelihood this will animate when clicked */
+  will-change: margin, contents;
 }
 .list-group-item.disabled {
   color: #a8aaac;
@@ -7696,8 +7706,14 @@ a.list-group-item:focus {
   -webkit-box-shadow: 0 1px 10px #e2e6e8;
           box-shadow: 0 1px 10px #e2e6e8;
 }
+.list-group-item.active:first-child {
+  margin-top: 0;
+}
 .list-group-item.active:last-child {
   margin-bottom: 0;
+}
+.list-group-item.active + .list-group-item {
+  border-top-width: 0;
 }
 @media (min-width: 576px) {
   .list-group-item.active {
@@ -7731,6 +7747,7 @@ a.list-group-item:focus {
   border-top: 0;
 }
 .list-group-item-success {
+  background-color: #fff;
   border-left: 2px solid #28b862;
 }
 .list-group-item-success .list-group-item-text {
@@ -7748,6 +7765,7 @@ a.list-group-item-success:hover {
   }
 }
 .list-group-item-info {
+  background-color: #fff;
   border-left: 2px solid #00b9ff;
 }
 .list-group-item-info .list-group-item-text {
@@ -7765,6 +7783,7 @@ a.list-group-item-info:hover {
   }
 }
 .list-group-item-warning {
+  background-color: #fff;
   border-left: 2px solid #ffa600;
 }
 .list-group-item-warning .list-group-item-text {
@@ -7782,6 +7801,7 @@ a.list-group-item-warning:hover {
   }
 }
 .list-group-item-danger {
+  background-color: #fff;
   border-left: 2px solid #f53636;
 }
 .list-group-item-danger .list-group-item-text {
@@ -8325,8 +8345,7 @@ a.list-group-item-danger:hover {
 .panel-group .panel {
   margin-right: 0;
   margin-left: 0;
-  border-right: 1px solid #e2e6e8;
-  border-left: 1px solid #e2e6e8;
+  border: 1px solid #e2e6e8;
 }
 .panel-group .panel-heading,
 .panel-group .panel-footer {
@@ -10462,9 +10481,9 @@ li .circle {
           background-size: cover;
   border: 1px solid transparent;
   border-radius: 50%;
-  -webkit-transition: background-color ease .15s, color ease .15s;
-       -o-transition: background-color ease .15s, color ease .15s;
-          transition: background-color ease .15s, color ease .15s;
+  -webkit-transition: background-color ease .15s, border-color ease .15s, color ease .15s;
+       -o-transition: background-color ease .15s, border-color ease .15s, color ease .15s;
+          transition: background-color ease .15s, border-color ease .15s, color ease .15s;
 }
 .circle.active {
   color: #fff;
@@ -10556,7 +10575,6 @@ a.circle.active:hover {
 }
 .circle-inverse {
   background-color: #f2f5f7;
-  border-color: transparent;
 }
 .circle-responsive {
   width: 24px;
@@ -10579,12 +10597,10 @@ a.circle.active:hover {
   font-size: 16px;
   line-height: 46px;
   background-color: #fff;
-  border-color: transparent;
   border-radius: 50%;
 }
 .circle-responsive.circle-lg.circle-inverse {
   background-color: #f2f5f7;
-  border-color: transparent;
 }
 .circle-responsive.circle-lg .glyphicon,
 .circle-responsive.circle-lg .icon {
@@ -10597,12 +10613,10 @@ a.circle.active:hover {
 @media (min-width: 576px) {
   .circle-responsive {
     background-color: #fff;
-    border-color: transparent;
     border-radius: 50%;
   }
   .circle-responsive.circle-inverse {
     background-color: #f2f5f7;
-    border-color: transparent;
   }
   .circle-responsive.circle,
   .circle-responsive.circle-sm,

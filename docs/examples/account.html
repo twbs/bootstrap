@@ -76,9 +76,11 @@
 	body {
 		background-color: #f2f5f7;
 	}
+	/* */
 	.pips {
 		margin-top: 14px;
 		width: 32px;
+		transition: margin ease 0.15s;
 	}
 	.pip {
 		height: 4px;
@@ -88,7 +90,139 @@
 		margin-bottom: 4px;
 		margin-left: 13px;
 		display: block;
+		transition: margin ease 0.15s;
 	}
+	.list-group-item:hover .pips {
+		margin-top: 10px;
+	}
+	.list-group-item:hover .pip {
+		margin-bottom: 8px;
+	}
+	/* */
+
+
+	/*
+	.pips {
+		margin-top: 18px;
+		width: 32px;
+		transition: margin ease 0.15s;
+	}
+	.pip {
+		height: 4px;
+		width: 4px;
+		border-radius: 50%;
+		background-color: #00a4df;
+		margin-bottom: 4px;
+		margin-left: 13px;
+		display: block;
+		transition: margin ease 0.15s;
+	}
+	.pip + .pip {
+		margin-top: -8px;
+	}
+	.pip + .pip + .pip {
+		margin-top: -8px;
+	}
+	.list-group-item:hover .pips {
+		margin-top: 10px;
+	}
+	.list-group-item:hover .pip {
+		margin-top: 0;
+	}
+	.list-group-item:hover .pip + .pip {
+		margin-top: 0;
+	}
+	.list-group-item:hover .pip + .pip + .pip{
+		margin-top: 0;
+	}
+	*/
+
+	/*
+	.pips {
+		width: 32px;
+		transition: margin ease 0.15s;
+		position: relative;
+	}
+	.pip {
+		height: 4px;
+		width: 4px;
+		border-radius: 2px;
+		background-color: #00a4df;
+		margin-bottom: 4px;
+		margin-left: 13px;
+		display: block;
+		transition: height ease 0.15s, width ease 0.15s, margin ease 0.15s;
+		position: absolute;
+
+	}
+	.pip {
+		top: 14px;
+	}
+	.pip + .pip {
+		top: 22px;
+	}
+	.pip + .pip + .pip {
+		top: 30px;
+	}
+	.list-group-item:hover .pips {
+		margin-top: -8px;
+	}
+	.list-group-item:hover .pip {
+		// width: 28px;
+		// margin-left: 1px;
+	}
+	.list-group-item:hover .pip:nth-child(2) {
+		height: 26px;
+	}*/
+
+	/*
+	.pips {
+		margin-top: 14px;
+		width: 32px;
+		transition: margin ease 0.15s;
+		position: relative;
+	}
+	.pip {
+		height: 2px;
+		width: 16px;
+		border-radius: 2px;
+		background-color: #00a4df;
+		margin-bottom: 4px;
+		margin-left: 13px;
+		display: block;
+
+		background-color: #d5d7d9;
+		transition: height ease 0.15s, width ease 0.15s, margin ease 0.15s, background-color ease 0.15s;
+		position: absolute;
+	}
+	.pip:first-child {
+		height: 6px;
+	}
+
+	.pip {
+		margin-top: 0;
+	}
+	.pip + .pip {
+		margin-top: 0;
+	}
+	.pip + .pip + .pip {
+		margin-top: 0;
+	}
+	.list-group-item:hover .pip {
+		margin-left: 11px;
+		width: 20px;
+		background-color: #00a4df;
+	}
+	.list-group-item:hover .pip:nth-child(1) {
+		margin-top: -4px;
+	}
+	.list-group-item:hover .pip:nth-child(2) {
+		margin-top: 8px;
+	}
+	.list-group-item:hover .pip:nth-child(3) {
+		margin-top: 16px;
+	}
+	*/
 
 	.table > tbody > tr.active > td {
 		border-top-width: 16px;

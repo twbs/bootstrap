@@ -6,19 +6,31 @@
 			</label>
 			<currency-input
 				currency="$ctrl.currencies[$ctrl.source]"
-				amount="$ctrl.sourceAmount">
+				amount="$ctrl.sourceAmount"
+				on-change="$ctrl.switchFixed('SOURCE');">
 			</currency-input>
+			<div class="help-block m-b-0">
+				Rate {{$ctrl.currencies[$ctrl.source].symbol}}1 =
+				{{$ctrl.currencies[$ctrl.target].symbol}}1.2345
+			</div>
 		</div>
 	</div>
 	<div class="col-sm-6 col-lg-4 m-b-0">
 		<div class="form-group m-b-0">
 			<label class="control-label">
 				Receive
+				<span ng-if="$ctrl.fixed === 'TARGET'">exactly</span>
+				<span ng-if="$ctrl.fixed !== 'TARGET'">about</span>
 			</label>
 			<currency-input
 				currency="$ctrl.currencies[$ctrl.target]"
-				amount="$ctrl.targetAmount">
+				amount="$ctrl.targetAmount"
+				on-change="$ctrl.switchFixed('TARGET');">
 			</currency-input>
+			<div class="help-block m-b-0">
+				Fee {{$ctrl.currencies[$ctrl.source].symbol}}1.00
+				{{$ctrl.currencies[$ctrl.source].code}}
+			</div>
 		</div>
 	</div>
 	<div class="col-sm-12 col-lg-4 p-t-3 m-b-0">

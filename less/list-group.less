@@ -32,6 +32,11 @@
 
   line-height: @line-height-computed;
   transition: all ease @panel-focus-transtion;
+
+  .panel-group & {
+    border-top: 1px solid @brand-smoke-plus-20;
+    margin-top: 0;
+  }
 }
 
 @media (min-width: @screen-sm-min) {
@@ -84,8 +89,13 @@ a.list-group-item {
 
 .list-group-item {
   // Ideally would use role=button on list group item but invalid markup on li
-  [ng-click] {
+  &[ng-click] {
     cursor: pointer;
+
+    &:hover {
+      /* tell the browser there is a likelihood this will animate when clicked */
+      will-change: margin, contents;
+    }
   }
 
   // Disabled state
@@ -110,8 +120,15 @@ a.list-group-item {
     margin-top: @line-height-computed;
     margin-bottom: @line-height-computed;
 
+    &:first-child {
+      margin-top: 0;
+    }
     &:last-child {
       margin-bottom: 0;
+    }
+
+    + .list-group-item {
+      border-top-width: 0;
     }
   }
 
@@ -146,7 +163,7 @@ a.list-group-item {
       }
     }
     &.active {
-      border-top: 0px;
+      border-top: 0;
     }
   }
 }
