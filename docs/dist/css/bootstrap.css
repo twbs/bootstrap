@@ -4251,7 +4251,6 @@ input[type="button"].btn-block {
             column-gap: 1.25rem;
   }
   .card-columns .card {
-    display: inline-block;
     width: 100%;
   }
 }
