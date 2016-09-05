@@ -2,6 +2,13 @@
 // Side navigation
 //
 
+.bd-sidebar {
+  @include media-breakpoint-up(md) {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
 .bd-search {
   position: relative;
   margin-bottom: 1.5rem;
