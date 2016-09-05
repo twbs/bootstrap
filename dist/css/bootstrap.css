@@ -7624,7 +7624,6 @@ a.thumbnail.active {
 }
 .list-group {
   padding-left: 0;
-  margin-top: 1px;
   margin-bottom: 20px;
   border-right: 1px solid #f2f5f7;
   border-bottom: 1px solid #f2f5f7;
@@ -7634,7 +7633,6 @@ a.thumbnail.active {
   position: relative;
   display: block;
   padding: 16px 16px 16px 14px;
-  /*border-top: 1px solid @brand-smoke-plus-20;*/
   margin-top: 1px;
   line-height: 24px;
   background-color: #fff;
