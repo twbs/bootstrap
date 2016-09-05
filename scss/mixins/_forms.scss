@@ -7,14 +7,8 @@
   // Color the label and help text
   .form-control-feedback,
   .form-control-label,
-  .radio,
-  .checkbox,
-  .radio-inline,
-  .checkbox-inline,
-  &.radio label,
-  &.checkbox label,
-  &.radio-inline label,
-  &.checkbox-inline label,
+  .form-check-label,
+  .form-check-inline,
   .custom-control {
     color: $color;
   }
