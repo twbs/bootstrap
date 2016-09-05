@@ -206,7 +206,7 @@
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
 //** Global background color for active items (e.g., navs or dropdowns).
-@component-active-bg:       @brand-primary;
+@component-active-bg:       @brand-blue;
 
 //** Width of the `border` for generating carets that indicator dropdowns.
 @caret-width-base:          4px;
@@ -411,9 +411,9 @@
 @dropdown-divider-bg:            @brand-smoke-plus-20;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @brand-primary;
+@dropdown-link-color:            @brand-blue;
 //** Hover color for dropdown links.
-@dropdown-link-hover-color:      @brand-primary;
+@dropdown-link-hover-color:      @brand-blue;
 //** Hover background for dropdown links.
 @dropdown-link-hover-bg:         @brand-smoke-plus-20;
 
@@ -552,12 +552,12 @@
 
 //=== Standard navbar
 // Navbar basics
-@navbar-default-color:                      @brand-primary;
+@navbar-default-color:                      @brand-blue;
 @navbar-default-bg:                         transparent;
 @navbar-default-border:                     @brand-grey-minus-10;
 
 //  Navbar links
-@navbar-default-link-color:                 @brand-primary;
+@navbar-default-link-color:                 @brand-blue;
 @navbar-default-link-hover-color:           @brand-light-blue;
 @navbar-default-link-hover-bg:              transparent;
 @navbar-default-link-active-color:          @brand-light-blue;
@@ -682,7 +682,7 @@
 
 @jumbotron-padding:              32px;
 @jumbotron-color:                #FFF;  //inherit;
-@jumbotron-bg:                   @brand-primary;
+@jumbotron-bg:                   @brand-blue;
 @jumbotron-heading-color:        #FFF;  //inherit;
 @jumbotron-font-size:            22px;
 @jumbotron-heading-font-size:    42px;
@@ -694,20 +694,24 @@
 //## Define colors for form feedback states and, by default, alerts.
 
 @state-success-text:             @brand-green-minus-10;
-@state-success-bg:               #EAFAF0; // #dff0d8;
-@state-success-border:           @brand-success;
+@state-success-text-hover:       @brand-green-minus-20;
+@state-success-bg:               #EAFAF0;
+@state-success-border:           @brand-green;
 
-@state-info-text:                @brand-info;
-@state-info-bg:                  #E5F8FF; // #d9edf7;
-@state-info-border:              @brand-info;
+@state-info-text:                @brand-light-blue;
+@state-info-text-hover:          @brand-light-blue-minus-10;
+@state-info-bg:                  #E5F8FF;
+@state-info-border:              @brand-light-blue;
 
-@state-warning-text:             @brand-warning;
-@state-warning-bg:               #FFF6E5; // #fcf8e3;
-@state-warning-border:           @brand-warning;
+@state-warning-text:             @brand-orange;
+@state-warning-text-hover:       @brand-orange-minus-10;
+@state-warning-bg:               #FFF6E5;
+@state-warning-border:           @brand-orange;
 
-@state-danger-text:              @brand-danger;
-@state-danger-bg:                #FEEAEA; // #f2dede;
-@state-danger-border:            @brand-danger;
+@state-danger-text:              @brand-red;
+@state-danger-text-hover:        @brand-red-minus-10;
+@state-danger-bg:                #FEEAEA;
+@state-danger-border:            @brand-red;
 
 
 //== Tooltips
@@ -762,17 +766,23 @@
 //##
 
 //** Default label background color
-@label-default-bg:            @gray-lighter;     // @gray-light;
+@label-default-bg:            @brand-smoke;
+@label-default-bg-hover:      @brand-smoke-minus-10;
 //** Primary label background color
-@label-primary-bg:            @brand-primary;
+@label-primary-bg:            @brand-blue;
+@label-primary-bg-hover:      @brand-blue-minus-10;
 //** Success label background color
-@label-success-bg:            @brand-success;
+@label-success-bg:            @brand-green;
+@label-success-bg-hover:      @brand-green-minus-10;
 //** Info label background color
-@label-info-bg:               @brand-info;
+@label-info-bg:               @brand-light-blue;
+@label-info-bg-hover:         @brand-light-blue-minus-10;
 //** Warning label background color
-@label-warning-bg:            @brand-warning;
+@label-warning-bg:            @brand-orange;
+@label-warning-bg-hover:      @brand-orange-minus-10;
 //** Danger label background color
-@label-danger-bg:             @brand-danger;
+@label-danger-bg:             @brand-red;
+@label-danger-bg-hover:       @brand-red-minus-10;
 
 //** Default label text color
 @label-color:                 #fff;
@@ -826,18 +836,22 @@
 
 @alert-success-bg:            @state-success-bg;
 @alert-success-text:          @state-success-text;
+@alert-success-text-hover:    @state-success-text-hover;
 @alert-success-border:        @state-success-border;
 
 @alert-info-bg:               @state-info-bg;
 @alert-info-text:             @state-info-text;
+@alert-info-text-hover:       @state-info-text-hover;
 @alert-info-border:           @state-info-border;
 
 @alert-warning-bg:            @state-warning-bg;
 @alert-warning-text:          @state-warning-text;
+@alert-warning-text-hover:    @state-warning-text-hover;
 @alert-warning-border:        @state-warning-border;
 
 @alert-danger-bg:             @state-danger-bg;
 @alert-danger-text:           @state-danger-text;
+@alert-danger-text-hover:     @state-danger-text-hover;
 @alert-danger-border:         @state-danger-border;
 
 
@@ -925,7 +939,7 @@
 @panel-default-heading-bg:    #fff;
 
 @panel-primary-text:          #fff;
-@panel-primary-border:        @brand-primary;
+@panel-primary-border:        @brand-blue;
 @panel-primary-heading-bg:    #fff;
 
 @panel-success-text:          @state-success-text;
@@ -969,11 +983,8 @@
 //##
 
 //** Padding around the tile
-@tile-padding:                24px;
-//** Tile font-weights
-@tile-font-weight:            500;
-//** Tile initials font size e.g. KP > Kish Patel
-@tile-initials-font-size:     32px;
+@tile-font-size:              @font-size-small;
+
 
 
 //== Media objects
@@ -986,8 +997,8 @@
 //
 //##
 
-@well-bg:                     @gray-base;       //#f5f5f5;
-@well-border:                 @gray-lighter;    //darken(@well-bg, 7%);
+@well-bg:                     @gray-base;
+@well-border:                 @gray-lighter;
 
 
 //== Badges

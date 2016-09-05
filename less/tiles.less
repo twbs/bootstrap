@@ -11,6 +11,7 @@
   background-color: @brand-smoke-plus-20;
   border: 1px solid @brand-smoke-plus-10;
   border-radius: @border-radius-base;
+  font-size: @font-size-small;
 
   width: 100%;
   margin-bottom: @grid-gutter-width;
@@ -37,17 +38,12 @@
   .tile-ribbon-benefit {
     position: absolute;
     top: 24px;
-    left: -40px;
+    right: -43px;
     width: 160px;
     background-color: @brand-light-blue;
     text-align:center;
     color: @brand-white;
-    font-weight: @tile-font-weight;
-    font-size: @font-size-small;
-    line-height: @line-height-large;
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
   }
 
   .tile-icon {
@@ -103,12 +99,29 @@
     .tile-text {
       text-align: center;
     }
+    .tile-ribbon-benefit {
+      left: -43px;
+      transform: rotate(-45deg);
+    }
   }
 }
 
 @media (min-width: @screen-lg-min) {
   .tile {
     padding: @padding-container;
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  .tile-text h5,
+  .tile-text .h5 {
+    padding-right: 64px;
+  }
+  .tile-text p {
+    padding-right: 32px;
+  }
+  .tile-icon .circle {
+      margin-bottom: 0;
   }
 }
 

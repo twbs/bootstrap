@@ -59,7 +59,7 @@
 							</p>
 						</div>
 						<div class="media-right text-xs-right">
-							<p class="m-b-0 strong">
+							<p class="h5">
 								<strong>
 									{{$ctrl.currencies[transfer.source].symbol}}{{transfer.sourceAmount | number:$ctrl.currencies[transfer.source].digits}}
 									<span class="hidden-xs">{{transfer.source}}</span>
@@ -104,7 +104,7 @@
 				ng-attr-aria-expanded="{{$ctrl.active == transfer.id}}"
 				ng-class="{'in': $ctrl.active == transfer.id}"
 				ng-if="$ctrl.active == transfer.id">
-				<div class="well panel-m-l-negative panel-m-r-negative panel-m-b-negative panel-p-l panel-p-r panel-p-b"
+				<div class="well panel-m-l-negative panel-m-r-negative panel-m-b-negative panel-p-l panel-p-r p-t-3 p-b-3"
 					ng-if="transfer.type !== 'CARD' && transfer.type !== 'REQUEST'">
 					<div class="media">
 						<div class="media-left">

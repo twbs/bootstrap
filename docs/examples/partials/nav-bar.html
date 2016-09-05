@@ -1,4 +1,5 @@
-<header class="navbar navbar-inverse navbar-static-top bg-primary" id="top"
+<header class="navbar navbar-inverse navbar-static-top" id="top"
+	ng-class="{'bg-primary': !$ctrl.transparent}"
 	role="banner"
 	data-spy="affix"
 	data-offset-top="60">
@@ -20,8 +21,8 @@
 		</div>
 		<div class="navbar-btn btn-group pull-xs-right visible-xs visible-sm ">
 			<button type="button" class="btn btn-success">
-				<span class="hidden-xs" ng-bind="vm.translations[vm.language].send1"></span>
-				<span class="hidden-sm" ng-bind="vm.translations[vm.language].send2"></span>
+				<span class="hidden-xs" ng-bind="$ctrl.translations[$ctrl.language].send1"></span>
+				<span class="hidden-sm" ng-bind="$ctrl.translations[$ctrl.language].send2"></span>
 			</button>
 			<button type="button" class="btn btn-success dropdown-toggle"
 				data-toggle="dropdown" aria-expanded="false">
@@ -53,24 +54,24 @@
 				<ul class="nav navbar-nav order-2">
 					<li class="active">
 						<a href="account.html">
-							<i class="icon icon-transfer visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].transfers"></span>
+							<i class="icon icon-transfer visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="$ctrl.translations[$ctrl.language].transfers"></span>
 						</a>
 					</li>
 					<li class="hidden-lg hidden-md">
 						<a href="landing.html">
-							<i class="icon icon-document visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].history"></span>
+							<i class="icon icon-document visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="$ctrl.translations[$ctrl.language].history"></span>
 						</a>
 					</li>
 					<li>
 						<a href="recipients.html">
-							<i class="icon icon-joint-account visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].recipients"></span>
+							<i class="icon icon-joint-account visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="$ctrl.translations[$ctrl.language].recipients"></span>
 						</a>
 					</li>
 					<li><a href="article.html">
-						<i class="icon icon-gift visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].rewards"></span></a>
+						<i class="icon icon-gift visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="$ctrl.translations[$ctrl.language].rewards"></span></a>
 					</li>
-					<li><a href="" ng-click="vm.language = 'de'">
-						<i class="icon icon-help-circle visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="vm.translations[vm.language].help"></span></a>
+					<li><a href="" ng-click="$ctrl.language = 'de'">
+						<i class="icon icon-help-circle visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="$ctrl.translations[$ctrl.language].help"></span></a>
 					</li>
 					<li class="visible-xs-block visible-sm-block"><a href=""><i class="icon icon-mobile"></i>Get the app</a></li>
 					<li class="visible-xs-block visible-sm-block"><a href=""><i class="icon icon-setting"></i>Settings</a></li>
@@ -152,8 +153,8 @@
 					<div class="navbar-right hidden-xs hidden-sm">
 						<div class="navbar-btn btn-group">
 							<button type="button" class="btn btn-success">
-								<span class="hidden-xs hidden-sm hidden-md" ng-bind="vm.translations[vm.language].send1"></span>
-								<span class="hidden-lg hidden-xl" ng-bind="vm.translations[vm.language].send2"></span>
+								<span class="hidden-xs hidden-sm hidden-md" ng-bind="$ctrl.translations[$ctrl.language].send1"></span>
+								<span class="hidden-lg hidden-xl" ng-bind="$ctrl.translations[$ctrl.language].send2"></span>
 							</button>
 							<button type="button" class="btn btn-success dropdown-toggle"
 								data-toggle="dropdown" aria-expanded="false">

@@ -9,14 +9,16 @@
 
 
 .logo,
-.logo-primary  {
+.logo-primary,
+.navbar .navbar-brand  {
 	background-image: @logo-full-primary;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
+}
 
-	&.logo-inverse {
-		background-image: @logo-full-inverse;
-	}
+.logo-inverse,
+.navbar-inverse .navbar-brand  {
+	background-image: @logo-full-inverse;
 }
 
 .logo-text,
@@ -24,10 +26,9 @@
 	background-image: @logo-text-primary;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
-
-	&.logo-text-inverse {
-		background-image: @logo-text-inverse;
-	}
+}
+.logo-text-inverse {
+	background-image: @logo-text-inverse;
 }
 
 .flag {

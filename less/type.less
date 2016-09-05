@@ -11,6 +11,18 @@ body {
   letter-spacing: @font-spacing-base;
 }
 
+article,
+.article {
+  font-size: (@font-size-base - 1px);
+}
+
+@media (min-width: @screen-md-min) {
+  article,
+  .article {
+    font-size: @font-size-base;
+  }
+}
+
 
 // Headings
 // -------------------------
@@ -224,22 +236,22 @@ strong {
   color: @text-muted;
 }
 .text-primary {
-  .text-emphasis-variant(@brand-primary);
+  .text-emphasis-variant(@brand-blue, @brand-blue-minus-10);
 }
 .text-success {
-  .text-emphasis-variant(@state-success-text);
+  .text-emphasis-variant(@state-success-text, @state-success-text-hover);
 }
 .text-info {
-  .text-emphasis-variant(@state-info-text);
+  .text-emphasis-variant(@state-info-text, @state-info-text-hover);
 }
 .text-warning {
-  .text-emphasis-variant(@state-warning-text);
+  .text-emphasis-variant(@state-warning-text, @state-warning-text-hover);
 }
 .text-danger {
-  .text-emphasis-variant(@state-danger-text);
+  .text-emphasis-variant(@state-danger-text, @state-danger-text-hover);
 }
 .text-inverse {
-  .text-emphasis-variant(@brand-white);
+  .text-emphasis-variant(@brand-white, @brand-smoke-plus-20);
 }
 
 .text-ellipsis,
@@ -346,6 +358,7 @@ dd {
   color: @brand-blue-plus-20;
   margin-left: 0; // Undo browser default
   margin-bottom: @padding-container-collapse-xs;
+  font-size: @font-size-base;
 }
 
 // Horizontal description lists

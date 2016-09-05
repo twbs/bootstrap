@@ -24,14 +24,14 @@
 					<div class="media">
 						<div class="media-body"
 							ng-class="{'p-r-3': $ctrl.active == transfer.id}">
-							<p class="list-group-item-heading text-max-width">
+							<h5 class="list-group-item-heading text-max-width">
 								<transfer-description
 									transfer="transfer"
 									currencies="$ctrl.currencies"
 									source-account="transfer.sourceAccount"
 									target-account="transfer.targetAccount">
-								</transfer-description>
-							</p>
+								</transfer-description> &nbsp;
+							</h5>
 							<p class="small m-b-0 text-max-width">
 								<span class="list-group-item-text">
 									{{transfer.reason}}
@@ -39,12 +39,10 @@
 							</p>
 						</div>
 						<div class="media-right text-xs-right">
-							<p class="m-b-0">
-								<strong>
-									<span class="sr-only">Sent</span>
-									{{$ctrl.currencies[transfer.source].symbol}}{{transfer.sourceAmount | number:$ctrl.currencies[transfer.source].digits}}
-									<span class="hidden-xs">{{transfer.source}}</span>
-								</strong>
+							<p class="h5">
+								<span class="sr-only">Sent</span>
+								{{$ctrl.currencies[transfer.source].symbol}}{{transfer.sourceAmount | number:$ctrl.currencies[transfer.source].digits}}
+								<span class="hidden-xs">{{transfer.source}}</span>
 							</p>
 							<p class="m-b-0 small">
 								<span class="sr-only">Received</span>

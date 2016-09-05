@@ -8,7 +8,11 @@
 	function TransferHistoryTableDirective() {
 		return {
 			bindToController: true,
-			controller: function() {},
+			controller: function() {
+				this.setActive = function(transferId) {
+					this.active = transferId;
+				}
+			},
 			controllerAs: '$ctrl',
 			replace: false,
 			restrict: 'E',

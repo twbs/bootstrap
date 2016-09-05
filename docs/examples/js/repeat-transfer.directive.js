@@ -8,7 +8,13 @@
 	function RepeatTransferDirective() {
 		return {
 			bindToController: true,
-			controller: function() {},
+			controller: function() {
+				this.fixed = "SOURCE";
+				this.switchFixed = function(type) {
+					this.fixed = type;
+					console.log("fix");
+				}
+			},
 			controllerAs: '$ctrl',
 			replace: true,
 			restrict: 'E',

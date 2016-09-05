@@ -28,6 +28,42 @@
 </div>
 {% endhighlight %}
 
+  <h2 id="tiles-responsive">Responsive Tiles</h2>
+  <p>Better responsive behaviour can be achieved using
+    the <code>.tile-icon</code> and <code>.tile-text</code> containers.</p>
+
+  <p class="text-warning">When using responsive tiles always use
+    <code>.circle-responsive</code> to scale your icon on smaller
+    screens.</p>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="tile" tabindex="0" role="button">
+        <div class="tile-icon">
+          <div class="circle circle-lg circle-responsive">
+            AZ
+          </div>
+        </div>
+        <div class="tile-text">
+          <h5>Myself</h5>
+          <p>Summary description</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% highlight html %}
+<div class="tile" tabindex="0" role="button">
+  <div class="tile-icon">
+      <div class="circle circle-lg circle-responsive">AZ</div>
+  </div>
+  <div class="tile-text">
+    <h5>...</h5>
+    <p>...</p>
+  </div>
+</div>
+{% endhighlight %}
+
   <h2 id="tile-rows">Tile rows</h2>
   <p>Normally tiles are used in rows, we use our grid columns to dictate
       how many tiles appear in each row at various screen sizes, our tiles should
@@ -45,23 +81,35 @@
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="tile" tabindex="0" role="button">
-        <div class="circle circle-lg" style="background-image: url('/assets/img/mo.jpg');"></div>
-        <h5>Someone else</h5>
-        <p>EUR account ending 2843</p>
+        <div class="tile-icon">
+          <div class="circle circle-lg circle-responsive" style="background-image: url('/assets/img/mo.jpg');"></div>
+        </div>
+        <div class="tile-text">
+          <h5>Someone else</h5>
+          <p>EUR account ending 2843</p>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="tile" tabindex="0" role="button">
-        <div class="circle circle-lg" style="background-image: url('/assets/img/kish.jpg');"></div>
-        <h5>Myself</h5>
-        <p>EUR account ending 5234</p>
+        <div class="tile-icon">
+          <div class="circle circle-lg circle-responsive" style="background-image: url('/assets/img/kish.jpg');"></div>
+        </div>
+        <div class="tile-text">
+          <h5>Myself</h5>
+          <p>EUR account ending 5234</p>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="tile" tabindex="0" role="button">
-        <div class="circle circle-lg" style="background-image: url('/assets/img/mike.jpg');"></div>
-        <h5>Really long title that causes text wrap</h5>
-        <p>EUR account ending 6798</p>
+        <div class="tile-icon">
+          <div class="circle circle-lg circle-responsive" style="background-image: url('/assets/img/mike.jpg');"></div>
+        </div>
+        <div class="tile-text">
+          <h5>Really long title that causes text wrap</h5>
+          <p>EUR account ending 6798</p>
+        </div>
       </div>
     </div>
   </div>
@@ -70,23 +118,17 @@
 <div class="row row-equal-height">
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="tile" tabindex="0" role="button">
-      <img class="circle circle-lg" src="..." />
-      <h5>...</h5>
-      <p>...</p>
+      ...
     </div>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="tile" tabindex="0" role="button">
-      <img class="circle circle-lg" src="..." />
-      <h5>...</h5>
-      <p>...</p>
+      ...
     </div>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="tile" tabindex="0" role="button">
-      <img class="circle circle-lg" src="..." />
-      <h5>...</h5>
-      <p>...</p>
+      ...
     </div>
   </div>
 </div>
@@ -98,37 +140,49 @@
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="tile" tabindex="0" role="button">
-        <div class="circle circle-lg">
-          <i class="icon icon-card"></i>
+        <div class="tile-icon">
+          <div class="circle circle-lg circle-responsive">
+            <i class="icon icon-card"></i>
+          </div>
         </div>
-        <h5>Credit Card</h5>
-        <p>Visa and Mastercard are supported</p>
-        <hr>
-        <p>&plus;&pound;1 card fee</p>
+        <div class="tile-text">
+          <h5>Credit Card</h5>
+          <p>Visa and Mastercard are supported</p>
+          <hr />
+          <p>&plus;&pound;1 card fee</p>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="tile" tabindex="0" role="button">
-          <div class="circle circle-lg">
+        <div class="tile-icon">
+          <div class="circle circle-lg circle-responsive">
             <i class="icon icon-card"></i>
           </div>
+        </div>
+        <div class="tile-text">
           <h5>Bank Transfer</h5>
           <p>Send the money from your Internet Banking</p>
           <hr />
           <p>1 day slower</p>
         </div>
+      </div>
     </div>
   </div>
 
 {% highlight html %}
 <div class="tile" tabindex="0" role="button">
-  <div class="circle circle-lg">
-    <i class="icon icon-card"></i>
+  <div class="tile-icon">
+    <div class="circle circle-lg circle-responsive">
+      <i class="icon icon-card"></i>
+    </div>
   </div>
-  <h5>...</h5>
-  <p>...</p>
-  <hr />
-  <p>...</p>
+  <div class="tile-text">
+    <h5>...</h5>
+    <p>...</p>
+    <hr />
+    <p>...</p>
+  </div>
 </div>
 {% endhighlight %}
 
@@ -139,24 +193,32 @@
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="tile" tabindex="0" role="button">
-          <div class="circle circle-lg">
+        <div class="tile-ribbon-benefit">Faster</div>
+        <div class="tile-icon">
+          <div class="circle circle-lg circle-responsive">
             <i class="icon icon-card"></i>
           </div>
-          <div class="tile-ribbon-benefit">Faster</div>
+        </div>
+        <div class="tile-text">
           <h5>Debit Card</h5>
           <p>Visa and Mastercard are supported</p>
         </div>
+      </div>
     </div>
   </div>
 
 {% highlight html %}
 <div class="tile" tabindex="0" role="button">
-  <div class="circle circle-lg">
-    ...
-  </div>
   <div class="tile-ribbon-benefit">...</div>
-  <h5>...</h5>
-  <p>...</p>
+  <div class="tile-icon">
+    <div class="circle circle-lg circle-responsive">
+      ...
+    </div>
+  </div>
+  <div class="tile-text">
+    <h5>...</h5>
+    <p>...</p>
+  </div>
 </div>
 {% endhighlight %}
 
@@ -167,26 +229,34 @@
   <div class="row row-equal-height">
     <div class="col-xs-12 col-sm-6 col-md-4 tile-container">
       <div class="tile tile-disabled">
-          <div class="circle circle-lg circle-inverse">
+        <div class="tile-icon">
+          <div class="circle circle-lg circle-inverse circle-responsive">
             <i class="icon icon-card"></i>
           </div>
+        </div>
+        <div class="tile-text">
           <h5>Credit Card</h5>
           <p>Visa and Mastercard are supported</p>
           <hr>
           <p><span class="text-warning">Unavailable</span> for amounts larger than £2000</p>
         </div>
+      </div>
     </div>
   </div>
 
 {% highlight html %}
 <div class="tile tile-disabled">
-  <div class="circle circle-lg">
-    ...
+  <div class="tile-icon">
+    <div class="circle circle-lg circle-responsive">
+      ...
+    </div>
   </div>
-  <h5>...</h5>
-  <p>...</p>
-  <hr>
-  <p>...</p>
+  <div class="tile-text">
+    <h5>...</h5>
+    <p>...</p>
+    <hr />
+    <p>...</p>
+  </div>
 </div>
 {% endhighlight %}
 

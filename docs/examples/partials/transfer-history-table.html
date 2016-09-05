@@ -31,7 +31,8 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="transfer in $ctrl.transfers"
-					onclick="expand(event, this)">
+					ng-class="{'active': transfer.id === $ctrl.active}"
+					ng-click="$ctrl.setActive(transfer.id)">
 					<td>
 						<div class="circle circle-sm circle-inverse m-l-0 m-r-0">
 							<i class="icon"

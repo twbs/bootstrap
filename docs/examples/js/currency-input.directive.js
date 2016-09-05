@@ -7,13 +7,19 @@
 	function CurrencyInputDirective() {
 		return {
 			bindToController: true,
-			controller: function() {},
+			controller: function() {
+				this.change = function() {
+					console.log("change");
+					this.onChange && this.onChange();
+				}
+			},
 			controllerAs: '$ctrl',
 			replace: false,
 			restrict: 'E',
 			scope: {
 				currency: "=",
-				amount: "="
+				amount: "=",
+				onChange: "&"
 			},
 			templateUrl: "partials/currency-input.html"
 		}
