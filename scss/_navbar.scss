@@ -214,7 +214,6 @@
 //
 // Custom override for collapse plugin in navbar.
 
-// scss-lint:disable ImportantRule
 .navbar-toggleable {
   &-xs {
     @include clearfix;
@@ -255,4 +254,3 @@
     }
   }
 }
-// scss-lint:enable ImportantRule
