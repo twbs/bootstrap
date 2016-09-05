@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v4.0.0-alpha.3 (http://getbootstrap.com)
+ * Bootstrap v4.0.0-alpha.4 (http://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -2097,14 +2097,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .has-success .form-control-feedback,
 .has-success .form-control-label,
-.has-success .radio,
-.has-success .checkbox,
-.has-success .radio-inline,
-.has-success .checkbox-inline,
-.has-success.radio label,
-.has-success.checkbox label,
-.has-success.radio-inline label,
-.has-success.checkbox-inline label,
+.has-success .form-check-label,
+.has-success .form-check-inline,
 .has-success .custom-control {
   color: #5cb85c;
 }
@@ -2129,14 +2123,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .has-warning .form-control-feedback,
 .has-warning .form-control-label,
-.has-warning .radio,
-.has-warning .checkbox,
-.has-warning .radio-inline,
-.has-warning .checkbox-inline,
-.has-warning.radio label,
-.has-warning.checkbox label,
-.has-warning.radio-inline label,
-.has-warning.checkbox-inline label,
+.has-warning .form-check-label,
+.has-warning .form-check-inline,
 .has-warning .custom-control {
   color: #f0ad4e;
 }
@@ -2161,14 +2149,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .has-danger .form-control-feedback,
 .has-danger .form-control-label,
-.has-danger .radio,
-.has-danger .checkbox,
-.has-danger .radio-inline,
-.has-danger .checkbox-inline,
-.has-danger.radio label,
-.has-danger.checkbox label,
-.has-danger.radio-inline label,
-.has-danger.checkbox-inline label,
+.has-danger .form-check-label,
+.has-danger .form-check-inline,
 .has-danger .custom-control {
   color: #d9534f;
 }
@@ -4251,7 +4233,6 @@ input[type="button"].btn-block {
             column-gap: 1.25rem;
   }
   .card-columns .card {
-    display: inline-block;
     width: 100%;
   }
 }
@@ -4486,7 +4467,7 @@ a.tag:focus, a.tag:hover {
 }
 
 .alert {
-  padding: 15px;
+  padding: 1rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
@@ -4501,13 +4482,13 @@ a.tag:focus, a.tag:hover {
 }
 
 .alert-dismissible {
-  padding-right: 35px;
+  padding-right: 2rem;
 }
 
 .alert-dismissible .close {
   position: relative;
-  top: -2px;
-  right: -21px;
+  top: -.125rem;
+  right: -1rem;
   color: inherit;
 }
 
@@ -5131,7 +5112,7 @@ button.close {
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform .3s ease-out;
   transition: -webkit-transform .3s ease-out;
-  -o-transition: transform .3s ease-out, -o-transform .3s ease-out;
+  -o-transition: -o-transform .3s ease-out;
   transition: transform .3s ease-out;
   transition: transform .3s ease-out, -webkit-transform .3s ease-out, -o-transform .3s ease-out;
   -webkit-transform: translate(0, -25%);
@@ -5516,7 +5497,7 @@ button.close {
   .carousel-inner > .carousel-item {
     -webkit-transition: -webkit-transform .6s ease-in-out;
     transition: -webkit-transform .6s ease-in-out;
-    -o-transition: transform .6s ease-in-out, -o-transform .6s ease-in-out;
+    -o-transition: -o-transform .6s ease-in-out;
     transition: transform .6s ease-in-out;
     transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out, -o-transform .6s ease-in-out;
     -webkit-backface-visibility: hidden;
@@ -6238,7 +6219,7 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 }
 
 a.text-muted:focus, a.text-muted:hover {
-  color: #687077;
+  color: #687077 !important;
 }
 
 .text-primary {
@@ -6246,7 +6227,7 @@ a.text-muted:focus, a.text-muted:hover {
 }
 
 a.text-primary:focus, a.text-primary:hover {
-  color: #025aa5;
+  color: #025aa5 !important;
 }
 
 .text-success {
@@ -6254,7 +6235,7 @@ a.text-primary:focus, a.text-primary:hover {
 }
 
 a.text-success:focus, a.text-success:hover {
-  color: #449d44;
+  color: #449d44 !important;
 }
 
 .text-info {
@@ -6262,7 +6243,7 @@ a.text-success:focus, a.text-success:hover {
 }
 
 a.text-info:focus, a.text-info:hover {
-  color: #31b0d5;
+  color: #31b0d5 !important;
 }
 
 .text-warning {
@@ -6270,7 +6251,7 @@ a.text-info:focus, a.text-info:hover {
 }
 
 a.text-warning:focus, a.text-warning:hover {
-  color: #ec971f;
+  color: #ec971f !important;
 }
 
 .text-danger {
@@ -6278,7 +6259,7 @@ a.text-warning:focus, a.text-warning:hover {
 }
 
 a.text-danger:focus, a.text-danger:hover {
-  color: #c9302c;
+  color: #c9302c !important;
 }
 
 .text-hide {

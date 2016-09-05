@@ -184,7 +184,6 @@
     }
   }
 
-  // scss-lint:disable ImportantRule
   tr {
     float: left;
 
@@ -194,5 +193,4 @@
       border: $table-border-width solid $table-border-color;
     }
   }
-  // scss-lint:enable ImportantRule
 }

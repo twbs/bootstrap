@@ -59,28 +59,29 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   </div>
   <fieldset class="form-group">
     <legend>Radio buttons</legend>
-    <div class="radio">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
         Option one is this and that&mdash;be sure to include why it's great
       </label>
     </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
         Option two can be something else and selecting it will deselect option one
       </label>
     </div>
-    <div class="radio disabled">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+    <div class="form-check disabled">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
         Option three is disabled
       </label>
     </div>
   </fieldset>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      Check me out
     </label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
@@ -150,10 +151,8 @@ Below is a complete list of the specific form controls supported by Bootstrap an
     <tr>
       <td class="text-nowrap">
 {% markdown %}
-`.radio`<br>
-`.radio-inline`<br>
-`.checkbox`<br>
-`.checkbox-inline`
+`.form-check`<br>
+`.form-check-inline`
 {% endmarkdown %}
       </td>
       <td class="text-nowrap">
@@ -730,21 +729,21 @@ Ensure that an alternative indication of state is also provided. For instance, y
 {% endexample %}
 
 {% example html %}
-<div class="checkbox has-success">
-  <label>
-    <input type="checkbox" id="checkboxSuccess" value="option1">
+<div class="form-check has-success">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" id="checkboxSuccess" value="option1">
     Checkbox with success
   </label>
 </div>
-<div class="checkbox has-warning">
-  <label>
-    <input type="checkbox" id="checkboxWarning" value="option1">
+<div class="form-check has-warning">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" id="checkboxWarning" value="option1">
     Checkbox with warning
   </label>
 </div>
-<div class="checkbox has-danger">
-  <label>
-    <input type="checkbox" id="checkboxDanger" value="option1">
+<div class="form-check has-danger">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" id="checkboxDanger" value="option1">
     Checkbox with danger
   </label>
 </div>
