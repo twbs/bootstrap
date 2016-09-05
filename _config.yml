@@ -23,13 +23,13 @@ gems:
   - jekyll-sitemap
 
 # Custom vars
-current_version:  4.0.0-alpha.3
+current_version:  4.0.0-alpha.4
 repo:             https://github.com/twbs/bootstrap
 slack:            https://bootstrap-slack.herokuapp.com
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.3.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha.3/bootstrap-4.0.0-alpha.3-dist.zip
+  source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.4.zip
+  dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha.4/bootstrap-4.0.0-alpha.4-dist.zip
 
 blog:             http://blog.getbootstrap.com
 expo:             http://expo.getbootstrap.com
@@ -37,9 +37,9 @@ themes:           http://themes.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:            https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css
+  css:            https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css
   css_hash:       "sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY"
-  js:             https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js
+  js:             https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js
   js_hash:        "sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD"
   jquery:         https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js
   jquery_hash:    "sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY"
