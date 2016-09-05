@@ -57,7 +57,10 @@
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
-  @include nav-divider($dropdown-divider-bg);
+  position: relative; // Allow color changes via dropdown-bg-variant()
+  height: 1px;
+  margin: $dropdown-divider-margin-y 0;
+  background-color: $dropdown-divider-bg;
 }
 
 // Links, buttons, and more within the dropdown menu
@@ -109,6 +112,13 @@
     }
   }
 }
+
+// Background variations
+@include dropdown-bg-variant(primary, $dropdown-primary-bg);
+@include dropdown-bg-variant(success, $dropdown-success-bg);
+@include dropdown-bg-variant(info,    $dropdown-info-bg);
+@include dropdown-bg-variant(warning, $dropdown-warning-bg);
+@include dropdown-bg-variant(danger,  $dropdown-danger-bg);
 
 // Open state for the dropdown
 .open {

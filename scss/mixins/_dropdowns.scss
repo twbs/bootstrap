@@ -1,0 +1,31 @@
+// Dropdown background variants
+
+@mixin dropdown-bg-variant($state, $background) {
+  .dropdown-#{$state} {
+    background-color: $background;
+  }
+  // the divider that comes after a dropdown-item with color
+  .dropdown-#{$state} + .dropdown-divider::before {
+    content: '';
+    position: absolute;
+    height: $dropdown-divider-margin-y;
+    width: 100%;
+    background-color: $background;
+    top: -$dropdown-divider-margin-y;
+  }
+  // the divider followed by a dropdown item with color
+  .dropdown-divider + .dropdown-#{$state} {
+    margin-top: -$dropdown-divider-margin-y;
+    border-top: $dropdown-divider-margin-y $background solid;
+  }
+  .dropdown-#{$state}:first-child {
+    margin-top: -$dropdown-divider-margin-y;
+    border-top: $dropdown-divider-margin-y $background solid;
+    @include border-top-radius($border-radius);
+  }
+  .dropdown-#{$state}:last-child {
+    margin-bottom: -$dropdown-divider-margin-y;
+    border-bottom: $dropdown-divider-margin-y $background solid;
+    @include border-bottom-radius($border-radius);
+  }
+}

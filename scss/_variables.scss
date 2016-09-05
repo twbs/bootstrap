@@ -441,9 +441,15 @@ $dropdown-min-width:             160px !default;
 $dropdown-padding-y:             5px !default;
 $dropdown-margin-top:            2px !default;
 $dropdown-bg:                    #fff !default;
+$dropdown-primary-bg:            lighten($brand-primary, 60%); // todo, find a good color or remove the primary-bg
+$dropdown-success-bg:            lighten($brand-success, 60%); // todo, use $state-success-bg or something similar but those are specified below
+$dropdown-info-bg:               lighten($brand-info, 60%);    // todo, use $state-info-bg    or something similar but those are specified below
+$dropdown-warning-bg:            lighten($brand-warning, 60%); // todo, use $state-warning-bg or something similar but those are specified below
+$dropdown-danger-bg:             lighten($brand-danger, 60%);  // todo, use $state-danger-bg  or something similar but those are specified below
 $dropdown-border-color:          rgba(0,0,0,.15) !default;
 $dropdown-border-width:          $border-width !default;
 $dropdown-divider-bg:            #e5e5e5 !default;
+$dropdown-divider-margin-y:      $spacer-y / 2;
 $dropdown-box-shadow:            0 6px 12px rgba(0,0,0,.175) !default;
 
 $dropdown-link-color:            $gray-dark !default;
