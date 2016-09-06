@@ -168,7 +168,7 @@ const Dropdown = (($) => {
 
       let toggles = $.makeArray($(Selector.DATA_TOGGLE))
 
-      for (let i = 0; i < toggles.length; i++) {
+      for (let i = 0, l = toggles.length; i < l; i++) {
         let parent        = Dropdown._getParentFromElement(toggles[i])
         let relatedTarget = { relatedTarget : toggles[i] }
 
