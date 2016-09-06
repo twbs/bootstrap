@@ -131,13 +131,12 @@ $(function () {
       .appendTo('#qunit-fixture')
       .bootstrapScrollspy({ offset: 0, target: '.navbar' })
 
+    var done = assert.async()
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
       var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
-      var done = assert.async()
       $content.one('scroll', function () {
         assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
-        done()
         deferred.resolve()
       })
       $content.scrollTop(scrollHeight)
@@ -146,6 +145,7 @@ $(function () {
 
     $.when(testElementIsActiveAfterScroll('#li-1', '#div-1'))
       .then(function () { return testElementIsActiveAfterScroll('#li-2', '#div-2') })
+      .then(function () { done() })
   })
 
   QUnit.test('should add the active class correctly when there are nested elements at 0 scroll offset', function (assert) {
@@ -258,21 +258,21 @@ $(function () {
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
       var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
-      var done = assert.async()
       $content.one('scroll', function () {
         assert.ok($(element).hasClass('active'), 'target:' + target + ', element: ' + element)
-        done()
         deferred.resolve()
       })
       $content.scrollTop(scrollHeight)
       return deferred.promise()
     }
 
+    var done = assert.async()
     $.when(testElementIsActiveAfterScroll('#li-100-5', '#div-100-5'))
       .then(function () { return testElementIsActiveAfterScroll('#li-100-4', '#div-100-4') })
       .then(function () { return testElementIsActiveAfterScroll('#li-100-3', '#div-100-3') })
       .then(function () { return testElementIsActiveAfterScroll('#li-100-2', '#div-100-2') })
       .then(function () { return testElementIsActiveAfterScroll('#li-100-1', '#div-100-1') })
+      .then(function () { done() })
   })
 
 })
