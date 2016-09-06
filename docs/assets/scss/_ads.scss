@@ -48,3 +48,22 @@
   display: block;
   color: #cdbfe3 !important;
 }
+
+.bd-content {
+  #carbonads {
+    position: static;
+    max-width: 400px;
+    margin: 2rem 0;
+    line-height: 1.4;
+    background-color: #f5f5f5;
+    border: 0;
+
+    a {
+      color: #333;
+    }
+
+    .carbon-poweredby {
+      color: #777 !important;
+    }
+  }
+}

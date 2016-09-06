@@ -6,17 +6,18 @@
   @include media-breakpoint-up(md) {
     position: sticky;
     top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
   }
 }
 
 .bd-search {
   position: relative;
-  margin-bottom: 1.5rem;
 
   .form-control {
-    height: 2.45rem;
-    padding-top: .4rem;
-    padding-bottom: .4rem;
+    // height: 2.45rem;
+    // padding-top: .4rem;
+    // padding-bottom: .4rem;
     background-color: #fafafa;
 
     &:focus {
@@ -63,7 +64,9 @@
 
 .bd-toc-link {
   display: block;
-  padding: .25rem .75rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  // padding: .25rem .75rem;
   color: $gray;
 }
 .bd-toc-link:hover,
@@ -93,7 +96,9 @@
 // All levels of nav
 .bd-sidebar .nav > li > a {
   display: block;
-  padding: .25rem .75rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  // padding: .25rem .75rem;
   font-size: 90%;
   color: #99979c;
 }
