@@ -174,7 +174,7 @@
   }
 
   .navbar-divider {
-    background-color: rgba(0,0,0,.075);
+    background-color: $navbar-light-bg;
   }
 }
 
@@ -208,7 +208,7 @@
   }
 
   .navbar-divider {
-    background-color: rgba(255,255,255,.075);
+    background-color: $navbar-dark-bg;
   }
 }
 
