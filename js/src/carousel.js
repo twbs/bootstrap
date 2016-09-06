@@ -353,15 +353,10 @@ const Carousel = (($) => {
         $(activeElement)
           .one(Util.TRANSITION_END, () => {
             $(nextElement)
-              .removeClass(directionalClassName)
-              .removeClass(direction)
+              .removeClass(directionalClassName + ' ' + direction)
+              .addClass(ClassName.ACTIVE)
 
-            $(nextElement).addClass(ClassName.ACTIVE)
-
-            $(activeElement)
-              .removeClass(ClassName.ACTIVE)
-              .removeClass(direction)
-              .removeClass(directionalClassName)
+            $(activeElement).removeClass(ClassName.ACTIVE + ' ' + direction + ' ' + directionalClassName)
 
             this._isSliding = false
 
