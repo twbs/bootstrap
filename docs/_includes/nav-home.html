@@ -55,6 +55,11 @@
             <a class="nav-item nav-link" href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a>
           </li>
         </ul>
+
+        <form class="bd-search hidden-sm-down pull-md-right">
+          <input type="text" class="form-control" id="search-input" placeholder="Search..." autocomplete="off">
+          <div class="dropdown-menu bd-search-results" id="search-results"></div>
+        </form>
       </div>
     </nav>
   </div>
