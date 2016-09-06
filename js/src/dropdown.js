@@ -113,8 +113,9 @@ const Dropdown = (($) => {
         return false
       }
 
-      this.focus()
-      this.setAttribute('aria-expanded', 'true')
+      $(this)
+        .focus()
+        .attr('aria-expanded', 'true')
 
       $(parent).toggleClass(ClassName.OPEN)
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
