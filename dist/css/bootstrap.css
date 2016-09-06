@@ -3987,7 +3987,7 @@ input[type="button"].btn-block {
 
 .card-header {
   padding: 0.75rem 1.25rem;
-  background-color: #f5f5f5;
+  background-color: whitesmoke;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -4003,7 +4003,7 @@ input[type="button"].btn-block {
 
 .card-footer {
   padding: 0.75rem 1.25rem;
-  background-color: #f5f5f5;
+  background-color: whitesmoke;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -4036,7 +4036,7 @@ input[type="button"].btn-block {
 
 .card-primary .card-header,
 .card-primary .card-footer {
-  background-color: transparent;
+  background-color: #026ac4;
 }
 
 .card-success {
@@ -4046,7 +4046,7 @@ input[type="button"].btn-block {
 
 .card-success .card-header,
 .card-success .card-footer {
-  background-color: transparent;
+  background-color: #4eb24e;
 }
 
 .card-info {
@@ -4056,7 +4056,7 @@ input[type="button"].btn-block {
 
 .card-info .card-header,
 .card-info .card-footer {
-  background-color: transparent;
+  background-color: #4ab9db;
 }
 
 .card-warning {
@@ -4066,7 +4066,7 @@ input[type="button"].btn-block {
 
 .card-warning .card-header,
 .card-warning .card-footer {
-  background-color: transparent;
+  background-color: #eea43b;
 }
 
 .card-danger {
@@ -4076,7 +4076,7 @@ input[type="button"].btn-block {
 
 .card-danger .card-header,
 .card-danger .card-footer {
-  background-color: transparent;
+  background-color: #d5433e;
 }
 
 .card-outline-primary {
