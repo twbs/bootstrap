@@ -478,6 +478,8 @@ $zindex-modal:             1050 !default;
 
 // Navbar
 
+$navbar-font-family:                inherit !default;
+$navbar-font-weight:                inherit !default;
 $navbar-border-radius:              $border-radius !default;
 $navbar-padding-x:                  $spacer !default;
 $navbar-padding-y:                  ($spacer / 2) !default;

@@ -6,6 +6,9 @@
 .navbar {
   position: relative;
   padding: $navbar-padding-y $navbar-padding-x;
+  font-family: $navbar-font-family;
+  font-weight: $navbar-font-weight;
+
   @include clearfix;
 
   @include media-breakpoint-up(sm) {
