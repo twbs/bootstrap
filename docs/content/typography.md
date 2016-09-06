@@ -39,19 +39,19 @@ All HTML headings, `<h1>` through `<h6>`, are available.
       </tr>
       <tr>
         <td><h3>h3. Bootstrap heading</h3></td>
-        <td class="type-info">Semibold 1.75rem (30.8px)</td>
+        <td class="type-info">Semibold 1.75rem (28px)</td>
       </tr>
       <tr>
         <td><h4>h4. Bootstrap heading</h4></td>
-        <td class="type-info">Semibold 1.5rem (26.4px)</td>
+        <td class="type-info">Semibold 1.5rem (24px)</td>
       </tr>
       <tr>
         <td><h5>h5. Bootstrap heading</h5></td>
-        <td class="type-info">Semibold 1.25rem (22px)</td>
+        <td class="type-info">Semibold 1.25rem (20px)</td>
       </tr>
       <tr>
         <td><h6>h6. Bootstrap heading</h6></td>
-        <td class="type-info">Semibold 1rem (17.6px)</td>
+        <td class="type-info">Semibold 1rem (16px)</td>
       </tr>
     </tbody>
   </table>
