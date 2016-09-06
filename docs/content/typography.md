@@ -31,27 +31,27 @@ All HTML headings, `<h1>` through `<h6>`, are available.
     <tbody>
       <tr>
         <td><h1>h1. Bootstrap heading</h1></td>
-        <td class="type-info">Semibold 36px</td>
+        <td class="type-info">Semibold 40px</td>
       </tr>
       <tr>
         <td><h2>h2. Bootstrap heading</h2></td>
-        <td class="type-info">Semibold 30px</td>
+        <td class="type-info">Semibold 32px</td>
       </tr>
       <tr>
         <td><h3>h3. Bootstrap heading</h3></td>
-        <td class="type-info">Semibold 24px</td>
+        <td class="type-info">Semibold 30.8px</td>
       </tr>
       <tr>
         <td><h4>h4. Bootstrap heading</h4></td>
-        <td class="type-info">Semibold 18px</td>
+        <td class="type-info">Semibold 26.4px</td>
       </tr>
       <tr>
         <td><h5>h5. Bootstrap heading</h5></td>
-        <td class="type-info">Semibold 14px</td>
+        <td class="type-info">Semibold 22px</td>
       </tr>
       <tr>
         <td><h6>h6. Bootstrap heading</h6></td>
-        <td class="type-info">Semibold 12px</td>
+        <td class="type-info">Semibold 17.6px</td>
       </tr>
     </tbody>
   </table>
