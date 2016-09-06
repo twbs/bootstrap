@@ -6,7 +6,7 @@
 
   .card-header,
   .card-footer {
-    background-color: transparent;
+    background-color: darken($background, $card-cap-bg-percent);
   }
 }
 
