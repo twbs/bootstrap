@@ -517,7 +517,7 @@ Only applies to small devices and above.
 {% example html %}
 <div class="card-columns">
   <div class="card">
-    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
+    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title that wraps to a new line</h4>
       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -534,7 +534,7 @@ Only applies to small devices and above.
     </blockquote>
   </div>
   <div class="card">
-    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
+    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -557,7 +557,7 @@ Only applies to small devices and above.
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
   <div class="card">
-    <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
+    <img class="card-img img-fluid" data-src="holder.js/100px260/" alt="Card image">
   </div>
   <div class="card card-block text-xs-right">
     <blockquote class="card-blockquote">

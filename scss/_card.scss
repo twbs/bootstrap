@@ -168,7 +168,7 @@
 // Card image
 .card-img {
   // margin: -1.325rem;
-  @include border-radius(.25rem);
+  @include border-radius($card-border-radius-inner);
 }
 .card-img-overlay {
   position: absolute;
