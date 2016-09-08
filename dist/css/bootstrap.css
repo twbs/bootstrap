@@ -3998,7 +3998,7 @@ input[type="button"].btn-block {
 }
 
 .card-header:first-child {
-  border-radius: 0.25rem 0.25rem 0 0;
+  border-radius: calc($card-border-radius - 1px) calc($card-border-radius - 1px) 0 0;
 }
 
 .card-footer {
@@ -4014,7 +4014,7 @@ input[type="button"].btn-block {
 }
 
 .card-footer:last-child {
-  border-radius: 0 0 0.25rem 0.25rem;
+  border-radius: 0 0 calc($card-border-radius - 1px) calc($card-border-radius - 1px);
 }
 
 .card-header-tabs {
@@ -4139,7 +4139,7 @@ input[type="button"].btn-block {
 }
 
 .card-img {
-  border-radius: 0.25rem;
+  border-radius: calc($card-border-radius - 1px);
 }
 
 .card-img-overlay {
@@ -4152,13 +4152,13 @@ input[type="button"].btn-block {
 }
 
 .card-img-top {
-  border-top-right-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
+  border-top-right-radius: calc($card-border-radius - 1px);
+  border-top-left-radius: calc($card-border-radius - 1px);
 }
 
 .card-img-bottom {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: calc($card-border-radius - 1px);
+  border-bottom-left-radius: calc($card-border-radius - 1px);
 }
 
 @media (min-width: 544px) {
@@ -4233,6 +4233,7 @@ input[type="button"].btn-block {
             column-gap: 1.25rem;
   }
   .card-columns .card {
+    display: inline-block;
     width: 100%;
   }
 }
