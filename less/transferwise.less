@@ -1,7 +1,14 @@
 .section,
 .footer {
-    padding-top: 96px;
-    padding-bottom: 96px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+@media (min-width: @screen-md-min) {
+    .section,
+    .footer {
+        padding-top: 96px;
+        padding-bottom: 96px;
+    }
 }
 
 .bg-default {
@@ -109,11 +116,11 @@ blockquote footer {
 
 .navbar + .jumbotron,
 .navbar + .jumbotron-image > .jumbotron {
-    padding-bottom: 100px;
+    padding-bottom: 64px;
 
     @media (min-width: @screen-md-min) {
-        padding-top: 150px;
-        padding-bottom: 110px;
+        padding-top: 140px;
+        padding-bottom: 104px;
     }
 }
 

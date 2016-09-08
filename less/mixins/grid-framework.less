@@ -46,6 +46,10 @@
 .calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
   .col-@{class}-@{index} {
     width: percentage((@index / @grid-columns));
+
+    .row-equal-height & {
+      width: -webkit-calc((percentage((@index / @grid-columns))) - 1px);
+    }
   }
 }
 .calc-grid-column(@index, @class, @type) when (@type = push) and (@index > 0) {

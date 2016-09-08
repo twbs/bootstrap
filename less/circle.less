@@ -46,11 +46,19 @@
 
     img {
         width: 100%;
-    }
-
-    img&,
-    img {
         border-radius: 50%;
+    }
+    img& {
+        background-color: transparent;
+    }
+    &[style] {
+        border: 0;
+        border-radius: 50% !important;
+    }
+    a& {
+        &[style]:hover {
+            border: 1px solid @brand-info;
+        }
     }
 }
 
