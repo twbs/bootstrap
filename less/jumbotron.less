@@ -33,13 +33,14 @@
   }
 
   @media screen and (min-width: @screen-md-min) {
-    padding: (@jumbotron-padding * 1.6);
-
+    padding: (@jumbotron-padding * 1.5) 0;
+    /*
     .container &,
     .container-fluid & {
       padding-left:  (@jumbotron-padding * 2);
       padding-right: (@jumbotron-padding * 2);
     }
+    */
 
     h1,
     .h1 {
@@ -51,19 +52,12 @@
       font-size: @jumbotron-font-size;
     }
   }
-
-  @media screen and (max-width: @screen-lg-max) {
-      text-align: center;
-  }
 }
 
 .jumbotron-image {
   background-repeat: no-repeat;
   background-position: center top;
-  -webkit-background-size: cover;
-     -moz-background-size: cover;
-       -o-background-size: cover;
-          background-size: cover;
+  background-size: cover;
 
   > .jumbotron {
     background-color: @brand-blue;
@@ -80,11 +74,4 @@
         background-color: transparent;
     }
   }
-}
-
-.jumbotron-image,
-:not(.jumbotron-image) > .jumbotron {
-    -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
-       -moz-clip-path: polygon(50% 17%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
-            clip-path: polygon(50% 17%, 100% 0, 100% 84%, 50% 100%, 0 84%, 0 0);
 }
