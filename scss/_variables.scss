@@ -581,7 +581,7 @@ $card-spacer-y:            .75rem !default;
 $card-border-width:        1px !default;
 $card-border-radius:       $border-radius !default;
 $card-border-color:        rgba(0,0,0,.125) !default;
-$card-border-radius-inner: calc($card-border-radius - 1px) !default;
+$card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-cap-bg:              #f5f5f5 !default;
 $card-bg:                  #fff !default;
 
