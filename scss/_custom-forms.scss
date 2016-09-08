@@ -117,13 +117,8 @@
 
 .custom-controls-stacked {
   .custom-control {
-    display: inline;
-
-    &::after {
-      display: block;
-      margin-bottom: $custom-control-spacer-y;
-      content: "";
-    }
+    float: left;
+    clear: left;
 
     + .custom-control {
       margin-left: 0;
