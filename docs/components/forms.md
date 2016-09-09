@@ -845,7 +845,7 @@ Add other states to your custom forms with our validation classes.
     <span class="custom-control-description">Check this custom checkbox</span>
   </label>
 </div>
-<div class="form-group has-danger m-b-0">
+<div class="form-group has-danger mb-0">
   <label class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input">
     <span class="custom-control-indicator"></span>

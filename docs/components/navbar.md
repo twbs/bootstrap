@@ -64,7 +64,7 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 </nav>
 
 <nav class="navbar navbar-light bg-faded">
-  <h1 class="navbar-brand m-b-0">Navbar</h1>
+  <h1 class="navbar-brand mb-0">Navbar</h1>
 </nav>
 
 {% endexample %}
@@ -245,7 +245,7 @@ Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden con
     &#9776;
   </button>
   <div class="collapse" id="exCollapsingNavbar">
-    <div class="bg-inverse p-a-1">
+    <div class="bg-inverse p-1">
       <h4>Collapsed content</h4>
       <span class="text-muted">Toggleable via the navbar brand.</span>
     </div>

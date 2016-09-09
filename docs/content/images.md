@@ -47,7 +47,7 @@ Add classes to an `<img>` element to easily style images in any project.
 
 ## Aligning images
 
-Align images with the [helper float classes]({{ site.baseurl }}/components/utilities/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/components/utilities/#text-alignment). `block`-level images can be centered using [the `.m-x-auto` margin utility class]({{ site.baseurl }}/components/utilities/#horizontal-centering).
+Align images with the [helper float classes]({{ site.baseurl }}/components/utilities/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/components/utilities/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/components/utilities/#horizontal-centering).
 
 <div class="bd-example bd-example-images">
   <img data-src="holder.js/200x200" class="img-rounded pull-xs-left" alt="A generic square placeholder image with rounded corners">
@@ -60,11 +60,11 @@ Align images with the [helper float classes]({{ site.baseurl }}/components/utili
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/200x200" class="img-rounded m-x-auto d-block" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="img-rounded mx-auto d-block" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-rounded m-x-auto d-block" alt="...">
+<img src="..." class="img-rounded mx-auto d-block" alt="...">
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
