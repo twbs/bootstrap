@@ -29,19 +29,15 @@ Images in Bootstrap are made responsive with `.img-fluid`. `max-width: 100%;` an
 In Internet Explorer 9-10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so Bootstrap doesn't apply it automatically.
 {% endcallout %}
 
-## Image shapes
+## Image thumbnails
 
-Add classes to an `<img>` element to easily style images in any project.
+In addition to our [border-radius utilities]({{ site.baseurl }}/utilities/borders/), you can use `.img-thumbnail` to give an image a rounded 1px border appearance.
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/200x200" class="rounded" alt="A generic square placeholder image with rounded corners">
-  <img data-src="holder.js/200x200" class="img-circle" alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible">
   <img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
 </div>
 
 {% highlight html %}
-<img src="..." alt="..." class="rounded">
-<img src="..." alt="..." class="img-circle">
 <img src="..." alt="..." class="img-thumbnail">
 {% endhighlight %}
 

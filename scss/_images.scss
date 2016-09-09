@@ -9,10 +9,6 @@
   @include img-fluid();
 }
 
-// Rounded corners
-.rounded {
-  @include border-radius($border-radius-lg);
-}
 
 // Image thumbnails
 .img-thumbnail {
@@ -25,11 +21,6 @@
 
   // Keep them at most 100% wide
   @include img-fluid(inline-block);
-}
-
-// Perfect circle
-.img-circle {
-  border-radius: 50%;
 }
 
 //
