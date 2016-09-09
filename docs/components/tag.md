@@ -32,6 +32,19 @@ Add any of the below mentioned modifier classes to change the appearance of a ta
 <span class="tag tag-danger">Danger</span>
 {% endexample %}
 
+## Outline tags
+
+Match the `.btn-outline-*` classes with the `.tag-outline-*` variations to remove all background images and colors on any tag.
+
+{% example html %}
+<span class="tag tag-outline-default">Default</span>
+<span class="tag tag-outline-primary">Primary</span>
+<span class="tag tag-outline-success">Success</span>
+<span class="tag tag-outline-info">Info</span>
+<span class="tag tag-outline-warning">Warning</span>
+<span class="tag tag-outline-danger">Danger</span>
+{% endexample %}
+
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
