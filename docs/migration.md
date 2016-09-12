@@ -174,6 +174,10 @@ Dropped entirely for the new card component.
 - `.panel-warning` to `.card-warning` and `.card-inverse` (or use `.bg-warning` on `.card-header`)
 - `.panel-danger` to `.card-danger` and `.card-inverse` (or use `.bg-danger` on `.card-header`)
 
+### Tooltips
+
+- Removed support for `auto` placement options.
+
 ### Carousel
 
 - Renamed `.item` to `.carousel-item`.
