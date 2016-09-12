@@ -3359,7 +3359,7 @@ input[type="button"].btn-block {
 
 .custom-control {
   position: relative;
-  display: inline;
+  display: inline-block;
   padding-left: 1.5rem;
   cursor: pointer;
 }
@@ -3401,7 +3401,7 @@ input[type="button"].btn-block {
 
 .custom-control-indicator {
   position: absolute;
-  top: .0625rem;
+  top: .25rem;
   left: 0;
   display: block;
   width: 1rem;
@@ -3440,13 +3440,8 @@ input[type="button"].btn-block {
 }
 
 .custom-controls-stacked .custom-control {
-  display: inline;
-}
-
-.custom-controls-stacked .custom-control::after {
-  display: block;
-  margin-bottom: 0.25rem;
-  content: "";
+  float: left;
+  clear: left;
 }
 
 .custom-controls-stacked .custom-control + .custom-control {
@@ -3998,7 +3993,7 @@ input[type="button"].btn-block {
 }
 
 .card-header:first-child {
-  border-radius: calc($card-border-radius - 1px) calc($card-border-radius - 1px) 0 0;
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
 
 .card-footer {
@@ -4014,7 +4009,7 @@ input[type="button"].btn-block {
 }
 
 .card-footer:last-child {
-  border-radius: 0 0 calc($card-border-radius - 1px) calc($card-border-radius - 1px);
+  border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
 }
 
 .card-header-tabs {
@@ -4139,7 +4134,7 @@ input[type="button"].btn-block {
 }
 
 .card-img {
-  border-radius: calc($card-border-radius - 1px);
+  border-radius: calc(0.25rem - 1px);
 }
 
 .card-img-overlay {
@@ -4152,13 +4147,13 @@ input[type="button"].btn-block {
 }
 
 .card-img-top {
-  border-top-right-radius: calc($card-border-radius - 1px);
-  border-top-left-radius: calc($card-border-radius - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+  border-top-left-radius: calc(0.25rem - 1px);
 }
 
 .card-img-bottom {
-  border-bottom-right-radius: calc($card-border-radius - 1px);
-  border-bottom-left-radius: calc($card-border-radius - 1px);
+  border-bottom-right-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
 }
 
 @media (min-width: 544px) {
