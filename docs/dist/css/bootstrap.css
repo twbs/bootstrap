@@ -3782,7 +3782,6 @@ input[type="button"].btn-block {
   padding: .5rem .75rem;
   font-size: 1.25rem;
   line-height: 1;
-  background-color: transparent;
   background: transparent no-repeat center center;
   -webkit-background-size: 24px 24px;
           background-size: 24px 24px;
@@ -6269,6 +6268,14 @@ a.text-warning:focus, a.text-warning:hover {
 
 a.text-danger:focus, a.text-danger:hover {
   color: #c9302c !important;
+}
+
+.text-gray-dark {
+  color: #373a3c !important;
+}
+
+a.text-gray-dark:focus, a.text-gray-dark:hover {
+  color: #1f2021 !important;
 }
 
 .text-hide {
