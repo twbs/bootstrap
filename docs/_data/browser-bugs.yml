@@ -2,16 +2,6 @@
   browser: >
     Microsoft Edge
   summary: >
-    Dynamically generated `<label><input type="file"></label>` causes infinite loop of file dialogs.
-  upstream_bug: >
-    Edge#8282613
-  origin: >
-    Bootstrap#20335
-
--
-  browser: >
-    Microsoft Edge
-  summary: >
     Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
   upstream_bug: >
     Edge#6793560
