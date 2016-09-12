@@ -221,3 +221,25 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
 </div>
 {% endexample %}
 </div>
+
+## Reordering
+
+Flexbox utilities for controlling the **visual order** of your content.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col-xs flex-xs-unordered">
+      First, but unordered
+    </div>
+    <div class="col-xs flex-xs-last">
+      Second, but last
+    </div>
+    <div class="col-xs flex-xs-first">
+      Third, but first
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
