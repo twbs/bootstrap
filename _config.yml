@@ -20,7 +20,16 @@ exclude:          [assets/scss/]
 
 gems:
   - jekyll-redirect-from
+  - jekyll-seo-tag
   - jekyll-sitemap
+
+# SEO plugin
+title: Bootstrap
+description: "Bootstrap is the most popular HTML, CSS, and JS framework in the world"
+author: Mark Otto, Jacob Thornton, and Bootstrap contributors
+twitter:
+  username: getbootstrap
+logo: /assets/brand/bootstrap-solid.svg
 
 # Custom vars
 current_version:  4.0.0-alpha.4
