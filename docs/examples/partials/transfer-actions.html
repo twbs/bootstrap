@@ -5,9 +5,21 @@
 	<button class="btn btn-primary" ng-if="$ctrl.transfer.status == 'AWAITING_FUNDS'">
 		I've already paid
 	</button>
+	<button class="btn btn-default" ng-if="$ctrl.transfer.status == 'FUNDED'">
+		I haven't paid
+	</button>
 	<button class="btn btn-primary" ng-if="$ctrl.transfer.status == 'PAUSED'">
 		Fix this transfer
 	</button>
+
+	<!--
+	<button class="btn btn-default">
+		View details
+	</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#help-modal">
+		Help
+	</button>
+	-->
 
 	<button class="btn btn-danger pull-md-right m-b-0">
 		Cancel transfer

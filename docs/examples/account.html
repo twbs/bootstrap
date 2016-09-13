@@ -36,6 +36,7 @@
 	<script src="js/currency-input.directive.js"></script>
 	<script src="js/pagination.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
+	<script src="js/help-modal.directive.js"></script>
 
 	<script>
 	(function(angular) {
@@ -57,7 +58,9 @@
 			TransferService.list({status: [
 				"PAUSED",
 				"AWAITING_FUNDS",
-				"PROCESSING"
+				"PROCESSING",
+				"FUNDED",
+				"PAID_OUT"
 			]}).then(function(transfers) {
 				vm.activeTransfers = transfers;
 			});
@@ -280,6 +283,7 @@
 			</div>
 
 			<one-click></one-click>
+			<help-modal></help-modal>
 		</div>
 	</div>
 	<footer-example></footer-example>

@@ -1,0 +1,60 @@
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="help-modalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="help-modalLabel">Help</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#chat" aria-controls="chat" role="tab" data-toggle="tab">Chat</a></li>
+          <li role="presentation"><a href="#phone" aria-controls="phone" role="tab" data-toggle="tab">Phone</a></li>
+          <li role="presentation"><a href="#email" aria-controls="email" role="tab" data-toggle="tab">Email</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content m-t-3">
+          <div role="tabpanel" class="tab-pane active" id="chat">
+              <div class="well">
+                <div class="text-xs-left">
+                  <p class="m-b-0"><strong>You:</strong></p>
+                  <p class="small">"Help with transfer 12345678"</p>
+                </div>
+                <div class="text-xs-right">
+                  <p class="m-b-0"><strong>Steve from TransferWise</strong> (is typing...)</p>
+                </div>
+              </div>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Write your message here...">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary">Send</button>
+              </span>
+              </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="phone">
+            <p>Please call us on number <strong>01234 567 890</strong></p>
+            <p>Your transfer number is <strong>123456789</strong></p>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="email">
+            <div class="form-group">
+              <label class="control-label">Subject</label>
+              <input type="text" class="form-control" value="Help with transfer 123456789" disabled="">
+            </div>
+            <div class="form-group">
+              <label class="control-label">Message</label>
+              <textarea class="form-control"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

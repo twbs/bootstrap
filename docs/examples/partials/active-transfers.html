@@ -1,8 +1,21 @@
 <div class="panel">
 	<div class="panel-heading">
-		<h3 class="panel-title">
-			Active transfers
-		</h3>
+		<div class="row">
+			<div class="col-md-6 col-lg-8">
+				<h3 class="panel-title">
+					In progress
+				</h3>
+			</div>
+			<div class="col-md-6 col-lg-4 m-b-1">
+				<div class="input-group input-group-sm m-t-1">
+					<span class="input-group-addon"><i class="icon icon-search m-r-0"></i></span>
+					<input type="text" class="form-control" placeholder="Search..." />
+					 <span class="input-group-btn">
+						 <button class="btn btn-sm btn-primary">Go</button>
+					</span>
+				</div>
+			</div>
+		</div>
 	</div>
 	<ul class="list-group">
 		<li class="list-group-item"
@@ -11,7 +24,8 @@
 			ng-class="{
 				'list-group-item-danger': transfer.status == 'PAUSED',
 				'list-group-item-warning': transfer.status == 'AWAITING_FUNDS',
-				'list-group-item-info': transfer.status == 'PROCESSING',
+				'list-group-item-info': transfer.status == 'PROCESSING' || transfer.status == 'FUNDED',
+				'list-group-item-success': transfer.status == 'PAID_OUT',
 				'active': $ctrl.active == transfer.id
 			}">
 			<div class="media" role="button">
@@ -62,14 +76,18 @@
 							source-account="transfer.sourceAccount"
 							target-account="transfer.targetAccount">
 						</transfer-details>
+
 						<div class="row">
 							<div class="col-sm-12 col-lg-3 m-b-0">
 								<a class="" href="">
-									Export PDF
+									View details
 								</a>
+								<!--<a class="" href="">
+									Export PDF
+								</a>-->
 							</div>
 						</div>
-						<hr class="hidden-xs hidden-sm" />
+						<hr class="hidden-xs hidden-sm hidden-md" />
 						<transfer-actions transfer="transfer" class="m-t-2"></transfer-actions>
 					</div>
 				</div>
