@@ -451,7 +451,8 @@ module.exports = function (grunt) {
           'Element “tw-select” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
           'Element “tw-checkbox” not allowed as child of element “label” in this context. (Suppressing further errors from this subtree.)',
           'Element “tw-radio” not allowed as child of element “label” in this context. (Suppressing further errors from this subtree.)',
-          'Element “tw-date” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)'
+          'Element “tw-date” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
+          'Element “help-modal” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)'
         ],
         'attr-name-style': false,
         'label-req-for': false,

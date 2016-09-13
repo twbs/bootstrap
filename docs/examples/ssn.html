@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Account Page Example</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular.js"></script>
+
+	<script src="forms.js"></script>
+
+	<script>
+	angular.module('ExampleApp', []);
+	</script>
+
+	<script src="js/nav.directive.js"></script>
+	<script src="js/footer.directive.js"></script>
+
+	<script>
+	(function(angular) {
+
+		angular.module('ExampleApp')
+		.controller('PageController', [
+			PageController
+		]);
+
+		function PageController() {
+			var vm = this;
+		}
+	})(window.angular);
+	</script>
+
+	<style>
+	body {
+		background-color: #f2f5f7;
+	}
+
+	</style>
+</head>
+<body ng-app="ExampleApp">
+	<nav-bar></nav-bar>
+	<div ng-controller="PageController as ctrl">
+		<div class="container m-t-3">
+			<div class="panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">Confirm your account details</h3>
+				</div>
+				<div class="panel-body">
+					<p>We take the security of your money bery seriously.  That's why we ask our customers to confirm their account details.  All data is stored securely, encrypted and kept private.  You'll only need to do this one.</p>
+					<h5 class="page-header">Your US social security number</h5>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="control-label">SSN</label>
+								<div class="row">
+									<div class="col-xs-4">
+										<input type="number" class="form-control" placeholder="111" />
+									</div>
+									<div class="col-xs-3">
+										<input type="number" class="form-control" placeholder="22" />
+									</div>
+									<div class="col-xs-5">
+										<input type="number" class="form-control" placeholder="3333" />
+									</div>
+								</div>
+							</div>
+							<button class="btn btn-primary btn-block">
+								Confirm
+							</button>
+
+							<p class="m-t-3"><a href="" ><span class="caret rotate-90"></span> Show options for non-US citizens</a></p>
+						</div>
+					</div>
+
+					<h5 class="page-header">Confirm your identity</h5>
+					<p>Scan or upload you passport's photo page, driver;s license or national ID card confirming your details as:
+
+					<p>
+						<strong>Ivan Marinkovic</strong>
+						<br />
+						<strong>24 January 1991</strong>
+					</p>
+				</div>
+
+
+				<div class="panel-p-l panel-p-r">
+					<pagination page="1" total="200"></pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer-example></footer-example>
+</body>
+
+</html>

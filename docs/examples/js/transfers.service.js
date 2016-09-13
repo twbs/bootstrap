@@ -33,7 +33,7 @@
 				shortString: "Account ending 1234"
 			},
 			status: "PAUSED",
-			reason: "Problem with your documents",
+			reason: "We received your money. There was a problem with your documents.",
 			reference: "Ref123",
 			fee: 0.50,
 			rate: 1.2345,
@@ -57,7 +57,7 @@
 				shortString: "USD balance"
 			},
 			status: "PROCESSING",
-			reason: "Processing",
+			reason: "We received your money. We're processing your transfer.",
 			reference: "Ref123",
 			fee: 0.50,
 			rate: 1.2345,
@@ -104,7 +104,7 @@
 				shortString: "Account ending 1234"
 			},
 			status: "AWAITING_FUNDS",
-			reason: "Awaiting your payment",
+			reason: "Waiting for you to pay in.",
 			reference: "Ref123",
 			fee: 0.50,
 			rate: 1.2345,
@@ -127,8 +127,8 @@
 				name: "Mike Marter",
 				shortString: "Account ending 1234"
 			},
-			status: "PAUSED",
-			reason: "Holy shit, someone wrote a really long error message about what was wrong with this transfer. Someone should have a word, but at least our layout didn't break.",
+			status: "FUNDED",
+			reason: "We're waiting for your money to arrive in our account.",
 			reference: "Ref123",
 			fee: 50.00,
 			rate: 1.2345,
@@ -148,11 +148,12 @@
 				shortString: "Debite card ending 4321"
 			},
 			targetAccount: {
-				name: "Mike Marter",
+				name: "Steve Pole",
 				type: "ACCOUNT",
 				shortString: "Account ending 1234"
 			},
-			status: "COMPLETED",
+			status: "PAID_OUT",
+			reason: "We've sent out your money, it may take some time to arrive in the account.",
 			reference: "Ref123",
 			fee: 0.50,
 			rate: 1.2345,
