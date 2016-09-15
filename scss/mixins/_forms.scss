@@ -7,14 +7,8 @@
   // Color the label and help text
   .form-control-feedback,
   .form-control-label,
-  .radio,
-  .checkbox,
-  .radio-inline,
-  .checkbox-inline,
-  &.radio label,
-  &.checkbox label,
-  &.radio-inline label,
-  &.checkbox-inline label,
+  .form-check-label,
+  .form-check-inline,
   .custom-control {
     color: $color;
   }
@@ -60,8 +54,7 @@
     background-color: $input-bg-focus;
     border-color: $input-border-focus;
     outline: none;
-    $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $input-box-shadow-focus;
-    @include box-shadow($shadow);
+    @include box-shadow($input-box-shadow-focus);
   }
 }
 

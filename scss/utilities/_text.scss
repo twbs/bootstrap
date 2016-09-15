@@ -44,6 +44,10 @@
 
 @include text-emphasis-variant('.text-danger', $brand-danger);
 
+// Font color
+
+@include text-emphasis-variant('.text-gray-dark', $gray-dark);
+
 // Misc
 
 .text-hide {

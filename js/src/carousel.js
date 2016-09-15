@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.3): carousel.js
+ * Bootstrap (v4.0.0-alpha.4): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Carousel = (($) => {
    */
 
   const NAME                = 'carousel'
-  const VERSION             = '4.0.0-alpha.3'
+  const VERSION             = '4.0.0-alpha.4'
   const DATA_KEY            = 'bs.carousel'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'

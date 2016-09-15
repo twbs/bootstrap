@@ -46,14 +46,6 @@ $font-family-sans-serif:
   "Segoe UI",
   // Android
   "Roboto",
-  // Linux
-  "Oxygen", // KDE
-  "Ubuntu",
-  "Cantarell", // GNOME
-  // Firefox OS [R.I.P.]
-  "Fira Sans",
-  // Older Android
-  "Droid Sans",
   // Basic web fallback
   "Helvetica Neue", Arial, sans-serif !default;
 {% endhighlight %}

@@ -368,7 +368,7 @@ $(function () {
 
     var $tooltip = $($target.data('bs.tooltip').tip)
 
-    // this is some dumb hack shit because sub pixels in firefox
+    // this is some dumb hack stuff because sub pixels in firefox
     var top = Math.round($target.offset().top + ($target[0].offsetHeight / 2) - ($tooltip[0].offsetHeight / 2))
     var top2 = Math.round($tooltip.offset().top)
     var topDiff = top - top2

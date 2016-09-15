@@ -281,62 +281,52 @@
   }
 }
 
-.carbonad {
-  width: auto !important;
-  height: auto !important;
-  padding: 1.25rem !important;
-  margin: 2rem -30px -2rem !important;
+#carbonads {
+  display: block;
+  padding: 15px 15px 15px 160px;
+  margin: 50px -15px 0;
   overflow: hidden;
-  font-family: inherit !important;
-  font-size: .8rem !important;
-  line-height: 1rem !important;
-  color: #cdbfe3 !important;
+  font-size: 13px;
+  line-height: 1.5;
   text-align: left;
-  background: #3e2c5a !important;
-  border: 0 !important;
+  border: solid #866ab3;
+  border-width: 1px 0 0;
 }
 
-.carbonad-img {
-  margin: 0 !important;
-}
-
-.carbonad-text,
-.carbonad-tag {
-  display: block !important;
-  float: none !important;
-  width: auto !important;
-  height: auto !important;
-  margin-left: 145px !important;
-  font-family: inherit !important;
-}
-
-.carbonad-text {
-  padding-top: 0 !important;
-}
-
-.carbonad-tag {
-  color: inherit !important;
-  text-align: left !important;
-}
-
-.carbonad-text a,
-.carbonad-tag a {
-  color: #cdbfe3 !important;
-}
-
-.carbonad-text a:hover,
-.carbonad-tag a:hover {
-  color: #fff !important;
+#carbonads a {
+  color: #fff;
+  text-decoration: none;
 }
 
 @media (min-width: 544px) {
-  .carbonad {
-    width: 330px !important;
-    padding: 1rem !important;
-    margin-right: auto !important;
-    margin-left: auto !important;
-    border-radius: .25rem;
+  #carbonads {
+    max-width: 330px;
+    margin: 50px auto 0;
+    border-width: 1px;
+    border-radius: 4px;
   }
+}
+
+@media (min-width: 992px) {
+  #carbonads {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    margin-top: 0;
+  }
+  .bd-masthead #carbonads {
+    position: static;
+  }
+}
+
+.carbon-img {
+  float: left;
+  margin-left: -145px;
+}
+
+.carbon-poweredby {
+  display: block;
+  color: #cdbfe3 !important;
 }
 
 .bd-content > table {
