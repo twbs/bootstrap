@@ -95,7 +95,10 @@ function main(args) {
     '.html',
     '.js',
     '.json',
+    '.less',
     '.md',
+    '.nuspec',
+    '.ps1',
     '.scss',
     '.txt',
     '.yml'
