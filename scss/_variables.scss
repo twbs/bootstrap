@@ -158,7 +158,7 @@ $grid-gutter-width: 30px !default;
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:       $font-family-sans-serif !default;
@@ -327,10 +327,10 @@ $input-border-radius:            $border-radius !default;
 $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
-$input-bg-focus:                 $input-bg;
+$input-bg-focus:                 $input-bg !default;
 $input-border-focus:             #66afe9 !default;
-$input-box-shadow-focus:         rgba(102,175,233,.6) !default;
-$input-color-focus:              $input-color;
+$input-box-shadow-focus:         $input-box-shadow, 0 0 8px rgba(102,175,233,.6) !default;
+$input-color-focus:              $input-color !default;
 
 $input-color-placeholder:        #999 !default;
 
@@ -495,11 +495,13 @@ $navbar-dark-color:                 rgba(255,255,255,.5) !default;
 $navbar-dark-hover-color:           rgba(255,255,255,.75) !default;
 $navbar-dark-active-color:          rgba(255,255,255,1) !default;
 $navbar-dark-disabled-color:        rgba(255,255,255,.25) !default;
+$navbar-dark-toggler-bg: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !default;
 
 $navbar-light-color:                rgba(0,0,0,.3) !default;
 $navbar-light-hover-color:          rgba(0,0,0,.6) !default;
 $navbar-light-active-color:         rgba(0,0,0,.8) !default;
 $navbar-light-disabled-color:       rgba(0,0,0,.15) !default;
+$navbar-light-toggler-bg: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !default;
 
 
 // Navs
@@ -589,7 +591,7 @@ $card-spacer-y:            .75rem !default;
 $card-border-width:        1px !default;
 $card-border-radius:       $border-radius !default;
 $card-border-color:        rgba(0,0,0,.125) !default;
-$card-border-radius-inner: $card-border-radius !default;
+$card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-cap-bg:              #f5f5f5 !default;
 $card-bg:                  #fff !default;
 
@@ -693,7 +695,7 @@ $modal-sm:                    300px !default;
 //
 // Define alert colors, border radius, and padding.
 
-$alert-padding:               15px !default;
+$alert-padding:               1rem !default;
 $alert-border-radius:         $border-radius !default;
 $alert-link-font-weight:      bold !default;
 $alert-border-width:          $border-width !default;

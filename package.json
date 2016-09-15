@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "4.0.0-alpha.2",
+  "version": "4.0.0-alpha.4",
   "keywords": [
     "css",
     "sass",
@@ -28,7 +28,7 @@
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
-  "main": "./dist/js/npm",
+  "main": "dist/js/bootstrap",
   "repository": {
     "type": "git",
     "url": "https://github.com/twbs/bootstrap.git"
@@ -81,16 +81,13 @@
   "files": [
     "dist",
     "grunt",
-    "js/*.js",
+    "js/**/*.js",
     "scss/**/*.scss",
     "Gruntfile.js",
     "LICENSE"
   ],
   "jspm": {
     "main": "js/bootstrap",
-    "ignore": [
-      "dist/js/npm"
-    ],
     "directories": {
       "lib": "dist"
     },

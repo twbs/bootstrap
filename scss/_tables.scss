@@ -101,7 +101,7 @@
 
 // Inverse styles
 //
-// Same table markup, but inverted color scheme—dark background and light text.
+// Same table markup, but inverted color scheme: dark background and light text.
 
 .thead-inverse {
   th {
@@ -184,7 +184,6 @@
     }
   }
 
-  // scss-lint:disable ImportantRule
   tr {
     float: left;
 
@@ -194,5 +193,4 @@
       border: $table-border-width solid $table-border-color;
     }
   }
-  // scss-lint:enable ImportantRule
 }

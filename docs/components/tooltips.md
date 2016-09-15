@@ -49,25 +49,25 @@ Hover over the links below to see tooltips:
 Four options are available: top, right, bottom, and left aligned.
 
 <div class="bd-example bd-example-tooltip-static">
-  <div class="tooltip top" role="tooltip">
+  <div class="tooltip tooltip-top" role="tooltip">
     <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the top
     </div>
   </div>
-  <div class="tooltip right" role="tooltip">
+  <div class="tooltip tooltip-right" role="tooltip">
     <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the right
     </div>
   </div>
-  <div class="tooltip bottom" role="tooltip">
+  <div class="tooltip tooltip-bottom" role="tooltip">
     <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the bottom
     </div>
   </div>
-  <div class="tooltip left" role="tooltip">
+  <div class="tooltip tooltip-left" role="tooltip">
     <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the left
@@ -128,7 +128,7 @@ You should only add tooltips to HTML elements that are traditionally keyboard-fo
 <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
 
 <!-- Generated markup by the plugin -->
-<div class="tooltip top" role="tooltip">
+<div class="tooltip tooltip-top" role="tooltip">
   <div class="tooltip-arrow"></div>
   <div class="tooltip-inner">
     Some tooltip text!
@@ -186,7 +186,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>string | function</td>
         <td>'top'</td>
         <td>
-          <p>How to position the tooltip - top | bottom | left | right | auto.<br>When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.</p>
+          <p>How to position the tooltip - top | bottom | left | right.</p>
           <p>When a function is used to determine the placement, it is called with the tooltip DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the tooltip instance.</p>
         </td>
       </tr>

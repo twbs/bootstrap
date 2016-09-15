@@ -59,7 +59,7 @@ This list highlights key changes by component between v3.x.x and v4.0.0.
 
 ### Reboot
 
-New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border-box` change, moving from `rem` to `em` units on many elements, link styles, and many form element resets.
+New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border-box` change, moving from `em` to `rem` units on many elements, link styles, and many form element resets.
 
 ### Typography
 
@@ -80,7 +80,8 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
 - Added a new `.table-reflow` option.
-- Added table header modifiers: `.thead-default` and `.thead-inverse`
+- Added table header modifiers: `.thead-default` and `.thead-inverse`.
+- Renamed contextual classes to have a `.table-`-prefix. Hence `.active`, `.success`, `.warning`, `.danger` and `.table-info` to `.table-active`, `.table-success`, `.table-warning`, `.table-danger` and `.table-info`.
 
 ### Forms
 
@@ -111,6 +112,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Simplified dropdown styles to no longer ship with upward or downward facing arrows attached to the dropdown menu.
 - Dropdowns can be built with `<div>`s or `<ul>`s now.
 - Rebuilt dropdown styles and markup to provide easy, built-in support for `<a>` and `<button>` based dropdown items.
+- Renamed `.divider` to `.dropdown-divider`.
 - Dropdown items now require `.dropdown-item`.
 - Dropdown toggles no longer require an explicit `<span class="caret"></span>`; this is now provided automatically via CSS's `::after` on `.dropdown-toggle`.
 
@@ -161,6 +163,7 @@ Dropped entirely for the new card component.
 
 - `.panel` to `.card`
 - `.panel-default` removed and no replacement
+- `.panel-group` removed and no replacement. `.card-group` is not a replacement, it is different.
 - `.panel-heading` to `.card-header`
 - `.panel-title` to `.card-header`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/components/utilities/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
 - `.panel-body` to `.card-block`
@@ -170,6 +173,10 @@ Dropped entirely for the new card component.
 - `.panel-info` to `.card-info` and `.card-inverse` (or use `.bg-info` on `.card-header`)
 - `.panel-warning` to `.card-warning` and `.card-inverse` (or use `.bg-warning` on `.card-header`)
 - `.panel-danger` to `.card-danger` and `.card-inverse` (or use `.bg-danger` on `.card-header`)
+
+### Tooltips
+
+- Removed support for `auto` placement options.
 
 ### Carousel
 

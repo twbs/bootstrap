@@ -184,8 +184,15 @@ module.exports = function (grunt) {
         ]
       },
       docs: {
-        src: 'docs/assets/css/docs.min.css',
-        dest: 'docs/assets/css/docs.min.css'
+        files: [
+          {
+            expand: true,
+            cwd: 'docs/assets/css',
+            src: ['*.css', '!*.min.css'],
+            dest: 'docs/assets/css',
+            ext: '.min.css'
+          }
+        ]
       }
     },
 
@@ -378,7 +385,7 @@ module.exports = function (grunt) {
     require('./grunt/bs-sass-compile/' + sassCompilerName + '.js')(grunt);
   })(process.env.TWBS_SASS || 'libsass');
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
-  grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
+  grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
 
   grunt.registerTask('dist-css', ['sass-compile', 'exec:postcss', 'cssmin:core', 'cssmin:docs']);
 
