@@ -180,7 +180,7 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 }
 
 // Make the element grid-ready (applying everything but the width)
-@mixin make-col-ready($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
+@mixin make-col-ready($gutter: $grid-gutter-width) {
   position: relative;
   min-height: 1px; // Prevent collapsing
   padding-right: ($gutter / 2);
@@ -194,7 +194,7 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
   }
 }
 
-@mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
+@mixin make-col($size, $columns: $grid-columns) {
   @if $enable-flex {
     flex: 0 0 percentage($size / $columns);
     // Add a `max-width` to ensure content within each column does not blow out
@@ -208,14 +208,16 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 }
 
 // Get fancy by offsetting, or changing the sort order
-@mixin make-col-offset($columns) {
-  margin-left: percentage(($columns / $grid-columns));
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  margin-left: percentage($size / $columns);
 }
-@mixin make-col-push($columns) {
-  left: percentage(($columns / $grid-columns));
+
+@mixin make-col-push($size, $columns: $grid-columns) {
+  left: if($size > 0, percentage($size / $columns), auto);
 }
-@mixin make-col-pull($columns) {
-  right: percentage(($columns / $grid-columns));
+
+@mixin make-col-pull($size, $columns: $grid-columns) {
+  right: if($size > 0, percentage($size / $columns), auto);
 }
 {% endhighlight %}
 
