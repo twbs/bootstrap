@@ -73,7 +73,7 @@
     "LICENSE"
   ],
   "jspm": {
-    "main": "js/bootstrap",
+    "main": "dist/js/bootstrap",
     "shim": {
       "js/bootstrap": {
         "deps": "jquery",
@@ -81,9 +81,9 @@
       }
     },
     "files": [
-      "css",
-      "fonts",
-      "js"
+      "dist/css",
+      "dist/fonts",
+      "dist/js"
     ]
   }
 }
