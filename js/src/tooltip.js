@@ -10,13 +10,21 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
+let _Tether
+// Webpack workaround
+try {
+  _Tether = Tether
+} catch (exc) {
+  _Tether = window.Tether
+}
+
 const Tooltip = (($, Tether) => {
 
   /**
    * Check for Tether dependency
    * Tether - http://github.hubspot.com/tether/
    */
-  if (Tether === undefined && window.Tether === undefined) {
+  if (Tether === undefined) {
     throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
   }
 
@@ -647,6 +655,6 @@ const Tooltip = (($, Tether) => {
 
   return Tooltip
 
-})(jQuery, Tether)
+})(jQuery, _Tether)
 
 export default Tooltip
