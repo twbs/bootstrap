@@ -10,13 +10,13 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Tooltip = (($) => {
+const Tooltip = (($, Tether) => {
 
   /**
    * Check for Tether dependency
    * Tether - http://github.hubspot.com/tether/
    */
-  if (Tether === undefined) {
+  if (Tether === undefined && window.Tether === undefined) {
     throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
   }
 
@@ -647,6 +647,6 @@ const Tooltip = (($) => {
 
   return Tooltip
 
-})(jQuery)
+})(jQuery, Tether)
 
 export default Tooltip
