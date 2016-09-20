@@ -1,0 +1,41 @@
+//
+// Footer
+//
+
+.bd-footer {
+  padding: 4rem 0;
+  margin-top: 4rem;
+  font-size: 85%;
+  text-align: center;
+  background-color: #f7f7f7;
+
+  a {
+    font-weight: 500;
+    color: $gray;
+
+    &:hover {
+      color: $link-color;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-up(sm) {
+    text-align: left;
+  }
+}
+
+.bd-footer-links {
+  padding-left: 0;
+  margin-bottom: 1rem;
+
+  li {
+    display: inline-block;
+
+    + li {
+      margin-left: 1rem;
+    }
+  }
+}

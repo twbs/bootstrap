@@ -1,0 +1,267 @@
+// Wrapper and base class
+//
+// Provide a static navbar from which we expand to create full-width, fixed, and
+// other navbar variations.
+
+.navbar {
+  position: relative;
+  padding: $navbar-padding-y $navbar-padding-x;
+  @include clearfix;
+
+  @include media-breakpoint-up(sm) {
+    @include border-radius($navbar-border-radius);
+  }
+}
+
+
+// Navbar alignment options
+//
+// Display the navbar across the entirety of the page or fixed it to the top or
+// bottom of the page.
+
+// A static, full width modifier with no rounded corners.
+.navbar-full {
+  z-index: $zindex-navbar;
+
+  @include media-breakpoint-up(sm) {
+    @include border-radius(0);
+  }
+}
+
+// Fix the top/bottom navbars when screen real estate supports it
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: $zindex-navbar-fixed;
+
+  // Undo the rounded corners
+  @include media-breakpoint-up(sm) {
+    @include border-radius(0);
+  }
+}
+
+.navbar-fixed-top {
+  top: 0;
+}
+
+.navbar-fixed-bottom {
+  bottom: 0;
+}
+
+.navbar-sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: $zindex-navbar-sticky;
+  width: 100%;
+
+  // Undo the rounded corners
+  @include media-breakpoint-up(sm) {
+    @include border-radius(0);
+  }
+}
+
+
+//
+// Brand/project name
+//
+
+.navbar-brand {
+  float: left;
+  padding-top:    $navbar-brand-padding-y;
+  padding-bottom: $navbar-brand-padding-y;
+  margin-right: 1rem;
+  font-size: $font-size-lg;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  > img {
+    display: block;
+  }
+}
+
+
+.navbar-divider {
+  float: left;
+  width: $border-width;
+  padding-top: .425rem;
+  padding-bottom: .425rem;
+  margin-right: $navbar-padding-x;
+  margin-left:  $navbar-padding-x;
+  overflow: hidden;
+
+  &::before {
+    content: "\00a0";
+  }
+}
+
+
+// Navbar toggle
+//
+// Custom button for toggling the `.navbar-collapse`, powered by the collapse
+// Bootstrap JavaScript plugin.
+
+.navbar-toggler {
+  width: 2.5em;
+  height: 2em;
+  padding: .5rem .75rem;
+  font-size: $font-size-lg;
+  line-height: 1;
+  background: transparent no-repeat center center;
+  background-size: 24px 24px;
+  border: $border-width solid transparent;
+  @include border-radius($btn-border-radius);
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+// Navigation
+//
+// Custom navbar navigation built on the base `.nav` styles.
+
+.navbar-nav {
+  .nav-item {
+    float: left;
+  }
+
+  .nav-link {
+    display: block;
+    padding-top:    .425rem;
+    padding-bottom: .425rem;
+
+    + .nav-link {
+      margin-left: 1rem;
+    }
+  }
+
+  .nav-item + .nav-item {
+    margin-left: 1rem;
+  }
+}
+
+// Dark links against a light background
+.navbar-light {
+  .navbar-brand {
+    color: $navbar-light-active-color;
+
+    @include hover-focus {
+      color: $navbar-light-active-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $navbar-light-color;
+
+      @include hover-focus {
+        color: $navbar-light-hover-color;
+      }
+    }
+
+    .open > .nav-link,
+    .active > .nav-link,
+    .nav-link.open,
+    .nav-link.active {
+      @include plain-hover-focus {
+        color: $navbar-light-active-color;
+      }
+    }
+  }
+
+  .navbar-toggler {
+    background-image: $navbar-light-toggler-bg;
+  }
+
+  .navbar-divider {
+    background-color: rgba(0,0,0,.075);
+  }
+}
+
+// White links against a dark background
+.navbar-dark {
+  .navbar-brand {
+    color: $navbar-dark-active-color;
+
+    @include hover-focus {
+      color: $navbar-dark-active-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $navbar-dark-color;
+
+      @include hover-focus {
+        color: $navbar-dark-hover-color;
+      }
+    }
+
+    .open > .nav-link,
+    .active > .nav-link,
+    .nav-link.open,
+    .nav-link.active {
+      @include plain-hover-focus {
+        color: $navbar-dark-active-color;
+      }
+    }
+  }
+
+  .navbar-toggler {
+    background-image: $navbar-dark-toggler-bg;
+  }
+
+  .navbar-divider {
+    background-color: rgba(255,255,255,.075);
+  }
+}
+
+
+// Navbar toggleable
+//
+// Custom override for collapse plugin in navbar.
+
+.navbar-toggleable {
+  &-xs {
+    @include clearfix;
+    @include media-breakpoint-down(xs) {
+      .navbar-nav .nav-item {
+        float: none;
+        margin-left: 0;
+      }
+    }
+    @include media-breakpoint-up(sm) {
+      display: block !important;
+    }
+  }
+
+  &-sm {
+    @include clearfix;
+    @include media-breakpoint-down(sm) {
+      .navbar-nav .nav-item {
+        float: none;
+        margin-left: 0;
+      }
+    }
+    @include media-breakpoint-up(md) {
+      display: block !important;
+    }
+  }
+
+  &-md {
+    @include clearfix;
+    @include media-breakpoint-down(md) {
+      .navbar-nav .nav-item {
+        float: none;
+        margin-left: 0;
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      display: block !important;
+    }
+  }
+}

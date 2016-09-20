@@ -1,9 +1,15 @@
 #!/usr/bin/env node
 'use strict';
 
+<<<<<<< HEAD
 /* globals Set */
 /*!
  * Script to update version number references in the project.
+=======
+/*!
+ * Script to update version number references in the project.
+ * Copyright 2015 The Bootstrap Authors
+>>>>>>> twbs/v4-dev
  * Copyright 2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */

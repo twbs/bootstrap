@@ -24,6 +24,18 @@ $(function () {
     assert.strictEqual($.fn.modal, undefined, 'modal was set back to undefined (orig value)')
   })
 
+  QUnit.test('should throw explicit error on undefined method', function (assert) {
+    assert.expect(1)
+    var $el = $('<div id="modal-test"/>')
+    $el.bootstrapModal()
+    try {
+      $el.bootstrapModal('noMethod')
+    }
+    catch (err) {
+      assert.strictEqual(err.message, 'No method named "noMethod"')
+    }
+  })
+
   QUnit.test('should return jquery collection containing the element', function (assert) {
     assert.expect(2)
     var $el = $('<div id="modal-test"/>')
@@ -34,7 +46,7 @@ $(function () {
 
   QUnit.test('should expose defaults var for settings', function (assert) {
     assert.expect(1)
-    assert.ok($.fn.bootstrapModal.Constructor.DEFAULTS, 'default object exposed')
+    assert.ok($.fn.bootstrapModal.Constructor.Default, 'default object exposed')
   })
 
   QUnit.test('should insert into dom when show method is called', function (assert) {
@@ -216,6 +228,23 @@ $(function () {
       .on('hide.bs.modal', function () {
         triggered += 1
         assert.strictEqual(triggered, 1, 'modal hide triggered once')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should remove aria-hidden attribute when shown, add it back when hidden', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    $('<div id="modal-test" aria-hidden="true"/>')
+      .on('shown.bs.modal', function () {
+        assert.notOk($('#modal-test').is('[aria-hidden]'), 'aria-hidden attribute removed')
+        $(this).bootstrapModal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        assert.ok($('#modal-test').is('[aria-hidden]'), 'aria-hidden attribute added')
+        assert.strictEqual($('#modal-test').attr('aria-hidden'), 'true', 'correct aria-hidden="true" added')
         done()
       })
       .bootstrapModal('show')

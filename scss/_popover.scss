@@ -1,0 +1,147 @@
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: $zindex-popover;
+  display: block;
+  max-width: $popover-max-width;
+  padding: $popover-inner-padding;
+  // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
+  // So reset our font and text properties to avoid inheriting weird values.
+  @include reset-text();
+  font-size: $font-size-sm;
+  // Allow breaking very long words so they don't overflow the popover's bounds
+  word-wrap: break-word;
+  background-color: $popover-bg;
+  background-clip: padding-box;
+  border: $popover-border-width solid $popover-border-color;
+  @include border-radius($border-radius-lg);
+  @include box-shadow($popover-box-shadow);
+
+
+  // Popover directions
+
+  &.popover-top,
+  &.bs-tether-element-attached-bottom {
+    margin-top: -$popover-arrow-width;
+
+    .popover-arrow {
+      bottom: -$popover-arrow-outer-width;
+      left: 50%;
+      margin-left: -$popover-arrow-outer-width;
+      border-top-color: $popover-arrow-outer-color;
+      border-bottom-width: 0;
+      &::after {
+        bottom: 1px;
+        margin-left: -$popover-arrow-width;
+        content: "";
+        border-top-color: $popover-arrow-color;
+        border-bottom-width: 0;
+      }
+    }
+  }
+
+  &.popover-right,
+  &.bs-tether-element-attached-left {
+    margin-left: $popover-arrow-width;
+
+    .popover-arrow {
+      top: 50%;
+      left: -$popover-arrow-outer-width;
+      margin-top: -$popover-arrow-outer-width;
+      border-right-color: $popover-arrow-outer-color;
+      border-left-width: 0;
+      &::after {
+        bottom: -$popover-arrow-width;
+        left: 1px;
+        content: "";
+        border-right-color: $popover-arrow-color;
+        border-left-width: 0;
+      }
+    }
+  }
+
+  &.popover-bottom,
+  &.bs-tether-element-attached-top {
+    margin-top: $popover-arrow-width;
+
+    .popover-arrow {
+      top: -$popover-arrow-outer-width;
+      left: 50%;
+      margin-left: -$popover-arrow-outer-width;
+      border-top-width: 0;
+      border-bottom-color: $popover-arrow-outer-color;
+      &::after {
+        top: 1px;
+        margin-left: -$popover-arrow-width;
+        content: "";
+        border-top-width: 0;
+        border-bottom-color: $popover-arrow-color;
+      }
+    }
+  }
+
+  &.popover-left,
+  &.bs-tether-element-attached-right {
+    margin-left: -$popover-arrow-width;
+
+    .popover-arrow {
+      top: 50%;
+      right: -$popover-arrow-outer-width;
+      margin-top: -$popover-arrow-outer-width;
+      border-right-width: 0;
+      border-left-color: $popover-arrow-outer-color;
+      &::after {
+        right: 1px;
+        bottom: -$popover-arrow-width;
+        content: "";
+        border-right-width: 0;
+        border-left-color: $popover-arrow-color;
+      }
+    }
+  }
+}
+
+
+// Offset the popover to account for the popover arrow
+.popover-title {
+  padding: $popover-title-padding-y $popover-title-padding-x;
+  margin: 0; // reset heading margin
+  font-size: $font-size-base;
+  background-color: $popover-title-bg;
+  border-bottom: $popover-border-width solid darken($popover-title-bg, 5%);
+  $offset-border-width: ($border-width / $font-size-root);
+  @include border-radius(($border-radius-lg - $offset-border-width) ($border-radius-lg - $offset-border-width) 0 0);
+
+  &:empty {
+    display: none;
+  }
+}
+
+.popover-content {
+  padding: $popover-content-padding-y $popover-content-padding-x;
+}
+
+
+// Arrows
+//
+// .popover-arrow is outer, .popover-arrow::after is inner
+
+.popover-arrow {
+  &,
+  &::after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+}
+.popover-arrow {
+  border-width: $popover-arrow-outer-width;
+}
+.popover-arrow::after {
+  content: "";
+  border-width: $popover-arrow-width;
+}

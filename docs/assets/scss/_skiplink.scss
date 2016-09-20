@@ -1,0 +1,14 @@
+// scss-lint:disable IdSelector
+
+#skippy {
+  display: block;
+  padding: 1em;
+  color: #fff;
+  background-color: $bd-purple;
+  outline: 0;
+
+  .skiplink-text {
+    padding: .5em;
+    outline: 1px dotted;
+  }
+}

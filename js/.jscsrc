@@ -27,7 +27,7 @@
   "requireSpaceAfterLineComment": true,
   "requireSpaceBeforeBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", "<", ">=", "<="],
   "requireSpaceBetweenArguments": true,
-  "requireSpacesInAnonymousFunctionExpression": { "beforeOpeningCurlyBrace": true, "beforeOpeningRoundBrace": true },
+  "requireSpacesInAnonymousFunctionExpression": { "beforeOpeningCurlyBrace": true, "beforeOpeningRoundBrace": true, "allExcept": ["shorthand"] },
   "requireSpacesInConditionalExpression": true,
   "requireSpacesInForStatement": true,
   "requireSpacesInFunctionDeclaration": { "beforeOpeningCurlyBrace": true },

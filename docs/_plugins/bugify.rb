@@ -4,6 +4,10 @@ module Jekyll
       upstream_map = {
         "Bootstrap" => "https://github.com/twbs/bootstrap/issues/",
         "Edge" => ["https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/", "Edge issue"],
+<<<<<<< HEAD
+=======
+        "UserVoice" => ["https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/suggestions/", "Edge UserVoice idea"],
+>>>>>>> twbs/v4-dev
         "Mozilla" => ["https://bugzilla.mozilla.org/show_bug.cgi?id=", "Mozilla bug"],
         "Chromium" => ["https://bugs.chromium.org/p/chromium/issues/detail?id=", "Chromium issue"],
         "WebKit" => ["https://bugs.webkit.org/show_bug.cgi?id=", "WebKit bug"],
