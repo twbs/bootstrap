@@ -18,6 +18,11 @@
   background-color: @badge-bg;
   border-radius: @badge-border-radius;
 
+  // for adjacent badges, some spacing is needed
+  + .badge {
+    margin-left: .2em;
+  }
+
   // Empty badges collapse automatically (not available in IE8)
   &:empty {
     display: none;
