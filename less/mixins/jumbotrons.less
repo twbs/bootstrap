@@ -1,0 +1,15 @@
+// Jumbotrons variants
+
+.jumbotron-variant(@color; @background) {
+  color: @color;
+  background-color: @background;
+
+  h1,
+  .h1 {
+    color: @color;
+  }
+
+  > hr {
+    border-top-color: darken(@background, 10%);
+  }
+}
