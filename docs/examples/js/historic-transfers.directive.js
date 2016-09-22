@@ -11,11 +11,6 @@
 				var $ctrl = this;
 
 				$ctrl.activate = function(id, $event) {
-					if ($event.target.tagName === 'INPUT' ||
-				 		$event.target.tagName === 'BUTTON') {
-						return;
-					}
-
 					if ($ctrl.active === id) {
 						$ctrl.active = false;
 					} else {

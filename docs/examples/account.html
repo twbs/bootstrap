@@ -36,7 +36,6 @@
 	<script src="js/currency-input.directive.js"></script>
 	<script src="js/pagination.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
-	<script src="js/help-modal.directive.js"></script>
 
 	<script>
 	(function(angular) {
@@ -58,9 +57,7 @@
 			TransferService.list({status: [
 				"PAUSED",
 				"AWAITING_FUNDS",
-				"PROCESSING",
-				"FUNDED",
-				"PAID_OUT"
+				"PROCESSING"
 			]}).then(function(transfers) {
 				vm.activeTransfers = transfers;
 			});
@@ -79,6 +76,11 @@
 	body {
 		background-color: #f2f5f7;
 	}
+
+	.list-group-item > * {
+		margin-left: -2px;
+	}
+
 	/* */
 	.pips {
 		margin-top: 14px;
@@ -283,7 +285,6 @@
 			</div>
 
 			<one-click></one-click>
-			<help-modal></help-modal>
 		</div>
 	</div>
 	<footer-example></footer-example>

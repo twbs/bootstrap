@@ -1,0 +1,66 @@
+.spacing(@spacing, @postfix) {
+  .@{postfix}-m-a,
+  .m-a-@{postfix} {
+    margin: @spacing !important;
+  }
+  .@{postfix}-m-l,
+  .m-l-@{postfix} {
+    margin-left: @spacing !important;
+  }
+  .@{postfix}-m-r,
+  .m-r-@{postfix} {
+    margin-right: @spacing !important;
+  }
+  .@{postfix}-m-t,
+  .m-t-@{postfix} {
+    margin-top: @spacing !important;
+  }
+  .@{postfix}-m-b,
+  .m-b-@{postfix} {
+    margin-bottom: @spacing !important;
+  }
+  .@{postfix}-p-a,
+  .p-a-@{postfix} {
+    padding: @spacing !important;
+  }
+  .@{postfix}-p-l,
+  .p-l-@{postfix} {
+    padding-left: @spacing !important;
+  }
+  .@{postfix}-p-r,
+  .p-r-@{postfix} {
+    padding-right: @spacing !important;
+  }
+  .@{postfix}-p-t,
+  .p-t-@{postfix} {
+      padding-top: @spacing !important;
+  }
+  .@{postfix}-p-b,
+  .p-b-@{postfix} {
+      padding-bottom: @spacing !important;
+  }
+
+}
+
+.negative-spacing(@spacing, @postfix) {
+  .@{postfix}-m-a-negative,
+  .m-a-@{postfix}-negative {
+      margin: (-@spacing) !important;
+  }
+  .@{postfix}-m-l-negative,
+  .m-l-@{postfix}-negative {
+      margin-left: (-@spacing) !important;
+  }
+  .@{postfix}-m-r-negative,
+  .m-r-@{postfix}-negative {
+      margin-right: (-@spacing) !important;
+  }
+  .@{postfix}-m-t-negative,
+  .m-t-@{postfix}-negative {
+      margin-top: (-@spacing) !important;
+  }
+  .@{postfix}-m-b-negative,
+  .m-b-@{postfix}-negative {
+      margin-bottom: (-@spacing) !important;
+  }
+}
