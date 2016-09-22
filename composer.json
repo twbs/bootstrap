@@ -27,6 +27,11 @@
   },
   "license": "MIT",
   "extra": {
+    "component": {
+      "files": [
+        "dist/**"
+      ],
+    },
     "branch-alias": {
       "dev-master": "3.3.x-dev"
     }
