@@ -1,0 +1,45 @@
+body {
+  padding-top: 80px;
+}
+.spacer {
+  min-height: 1000px;
+}
+
+/*
+*
+* Affixed Sidebar
+*
+*/
+
+#sidebar {
+  background-color: #eee;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Undo the affixed behavior in mobile views */
+#sidebar.affix {
+  position: static;
+}
+
+/* Apply the affixed behavior in large views */
+@media screen and (min-width: 1200px) {
+
+  /* affix-top: The affix-top class should be inline to the page. */
+  #sidebar.affix-top {
+    /* for reference - no additional styling */
+  }
+
+  /* affix: The affix class should be fixed to the page. */
+  #sidebar.affix {
+    position: fixed;
+    top: 80px;      /* same as body padding or outer navbar height */
+    width: 263px;   /* stop it from growing - anyone know how to fix this? */
+  }
+
+  /* affix bottom: The affix-bottom class should be positioned absolute. */
+  #sidebar.affix-bottom {
+    position: absolute;
+  }
+
+}
