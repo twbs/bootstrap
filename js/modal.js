@@ -26,7 +26,7 @@
 
     if (this.options.remote) {
       this.$element
-        .find('.modal-content')
+        .find(this.options.remotePlacement)
         .load(this.options.remote, $.proxy(function () {
           this.$element.trigger('loaded.bs.modal')
         }, this))
@@ -41,7 +41,8 @@
   Modal.DEFAULTS = {
     backdrop: true,
     keyboard: true,
-    show: true
+    show: true,
+    remotePlacement: '.modal-content'
   }
 
   Modal.prototype.toggle = function (_relatedTarget) {
