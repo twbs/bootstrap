@@ -136,6 +136,10 @@
       }
     }
   }
+
+  &.nav-justified {
+    .nav-pills-justified();
+  }
 }
 
 
@@ -212,6 +216,21 @@
     > .active > a:focus {
       border-bottom-color: @nav-tabs-justified-active-link-border-color;
     }
+  }
+}
+
+// Mixin to fix spacing for justified pills
+.nav-pills-justified {
+  .nav-stacked();
+
+  > li > a {
+    // Margin handled by li instead
+    margin-bottom: 0;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    // Replace li margin (which does not work on table-cell)
+    border-spacing: 2px 0;
   }
 }
 
