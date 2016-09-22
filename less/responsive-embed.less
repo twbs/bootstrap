@@ -5,9 +5,14 @@
 .embed-responsive {
   position: relative;
   display: block;
-  height: 0;
+  width: 100%;
   padding: 0;
   overflow: hidden;
+
+  &:before {
+    display: block;
+    content: "";
+  }
 
   .embed-responsive-item,
   iframe,
@@ -26,10 +31,14 @@
 
 // Modifier class for 16:9 aspect ratio
 .embed-responsive-16by9 {
-  padding-bottom: 56.25%;
+  &:before {
+    padding-top: 56.25%;
+  }
 }
 
 // Modifier class for 4:3 aspect ratio
 .embed-responsive-4by3 {
-  padding-bottom: 75%;
+  &:before {
+    padding-top: 75%;
+  }
 }
