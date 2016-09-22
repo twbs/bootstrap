@@ -159,6 +159,8 @@
 
 .nav-justified {
   width: 100%;
+  display: table;
+  table-layout: fixed;
 
   > li {
     float: none;
@@ -176,7 +178,7 @@
   @media (min-width: @screen-sm-min) {
     > li {
       display: table-cell;
-      width: 1%;
+      width: 100%;
       > a {
         margin-bottom: 0;
       }
