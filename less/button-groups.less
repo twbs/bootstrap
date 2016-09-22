@@ -216,6 +216,39 @@
   > .btn-group .dropdown-menu {
     left: auto;
   }
+
+  > .btn {
+    border-right-width: 0px;
+  }
+
+  > .btn:last-child {
+    border-right-width: 1px;
+  }
+
+  > :hover,
+  > :focus,
+  > :active,
+  > .active {
+    &.btn-default + .btn {
+        border-left-color: darken(@btn-default-border, 14%);
+    }
+    &.btn-primary + .btn {
+        border-left-color: darken(@btn-primary-border, 14%);
+    }
+    &.btn-success + .btn {
+        border-left-color: darken(@btn-success-border, 14%);
+    }
+    &.btn-info + .btn {
+        border-left-color: darken(@btn-info-border, 14%);
+    }
+    &.btn-warning + .btn {
+        border-left-color: darken(@btn-warning-border, 14%);
+    }
+    &.btn-danger + .btn {
+        border-left-color: darken(@btn-default-border, 14%);
+    }
+  }
+
 }
 
 
