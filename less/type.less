@@ -97,6 +97,12 @@ mark,
 .text-lowercase      { text-transform: lowercase; }
 .text-uppercase      { text-transform: uppercase; }
 .text-capitalize     { text-transform: capitalize; }
+.text-sentencecase {
+  text-transform: lowercase;
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
 
 // Contextual colors
 .text-muted {
