@@ -36,11 +36,13 @@
         .translate3d(100%, 0, 0);
         left: 0;
       }
+      
       &.prev,
       &.active.left {
         .translate3d(-100%, 0, 0);
         left: 0;
       }
+      
       &.next.left,
       &.prev.right,
       &.active {
@@ -109,6 +111,7 @@
   &.left {
     #gradient > .horizontal(@start-color: rgba(0,0,0,.5); @end-color: rgba(0,0,0,.0001));
   }
+  
   &.right {
     left: auto;
     right: 0;
@@ -135,16 +138,19 @@
     z-index: 5;
     display: inline-block;
   }
+  
   .icon-prev,
   .glyphicon-chevron-left {
     left: 50%;
     margin-left: -10px;
   }
+  
   .icon-next,
   .glyphicon-chevron-right {
     right: 50%;
     margin-right: -10px;
   }
+  
   .icon-prev,
   .icon-next {
     width:  20px;
@@ -159,6 +165,7 @@
       content: '\2039';// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
     }
   }
+  
   .icon-next {
     &:before {
       content: '\203a';// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
@@ -204,6 +211,7 @@
     background-color: #000 \9; // IE8
     background-color: rgba(0,0,0,0); // IE9
   }
+  
   .active {
     margin: 0;
     width:  12px;
@@ -226,6 +234,7 @@
   color: @carousel-caption-color;
   text-align: center;
   text-shadow: @carousel-text-shadow;
+  
   & .btn {
     text-shadow: none; // No shadow for button elements in carousel-caption
   }
@@ -246,10 +255,12 @@
       margin-top: (@carousel-control-font-size / -2);
       font-size: (@carousel-control-font-size * 1.5);
     }
+    
     .glyphicon-chevron-left,
     .icon-prev {
       margin-left: (@carousel-control-font-size / -2);
     }
+    
     .glyphicon-chevron-right,
     .icon-next {
       margin-right: (@carousel-control-font-size / -2);
