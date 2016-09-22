@@ -107,9 +107,10 @@
     &:after {
       content: " ";
       top: 1px;
-      margin-left: -@popover-arrow-width;
+      margin-left: (-@popover-arrow-width - 1px);
+      border-width: (@popover-arrow-width + 1px);
       border-top-width: 0;
-      border-bottom-color: @popover-arrow-color;
+      border-bottom-color: @popover-title-bg;
     }
   }
 
