@@ -72,6 +72,7 @@
 
     this.$trigger
       .removeClass('collapsed')
+      .addClass('triggerExpanding')
       .attr('aria-expanded', true)
 
     this.transitioning = 1
@@ -83,6 +84,8 @@
       this.transitioning = 0
       this.$element
         .trigger('shown.bs.collapse')
+      this.$trigger
+        .removeClass('triggerExpanding')
     }
 
     if (!$.support.transition) return complete.call(this)
@@ -112,6 +115,7 @@
 
     this.$trigger
       .addClass('collapsed')
+      .addClass('triggerCollapsing')
       .attr('aria-expanded', false)
 
     this.transitioning = 1
@@ -122,6 +126,8 @@
         .removeClass('collapsing')
         .addClass('collapse')
         .trigger('hidden.bs.collapse')
+      this.$trigger
+        .removeClass('triggerCollapsing')
     }
 
     if (!$.support.transition) return complete.call(this)
