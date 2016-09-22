@@ -57,12 +57,16 @@
       .map(function () {
         var $el   = $(this)
         var href  = $el.data('target') || $el.attr('href')
-        var $href = /^#./.test(href) && $(href)
+        if (!/^#./.test(href)) {
+          return null
+        }
+        var escapedIdSelector = '#' + href.slice(1).replace(/[`~!@#$%^&*()=+{}|[\\\];:'",.<>\/?]/g, '\\$&')
+        var $href = $(escapedIdSelector)
 
         return ($href
           && $href.length
           && $href.is(':visible')
-          && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+          && [[$href[offsetMethod]().top + offsetBase, escapedIdSelector]]) || null
       })
       .sort(function (a, b) { return a[0] - b[0] })
       .each(function () {

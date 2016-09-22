@@ -32,6 +32,49 @@ $(function () {
     assert.strictEqual($scrollspy[0], $el[0], 'collection contains element')
   })
 
+  QUnit.test('should handle IDs with sizzle selector special characters', function (assert) {
+    assert.expect(4)
+    var done = assert.async()
+
+    var sectionHTML = '<div id="header" style="height: 500px;"></div>'
+        + '<nav id="navigation" class="navbar">'
+        + '<ul class="nav navbar-nav">'
+        + '<li><a id="one-link" href="#html5:allows-punctuation-in-IDs!">Special Heading One</a></li>'
+        + '<li><a id="two-link" href="#special-selector-characters-`~!@#$%^&amp;*()+=[{]}\\|;:\'&quot;,.<>/?">Special Heading Two</a></li>'
+        + '<li><a id="three-link" href="#test@example.com">Special Heading Three</a></li>'
+        + '</ul>'
+        + '</nav>'
+    $(sectionHTML).appendTo('#qunit-fixture')
+
+    var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">'
+        + '<div id="spacer" style="height: 100px;"></div>'
+        + '<div id="html5:allows-punctuation-in-IDs!" style="height: 100px;"></div>'
+        + '<div id="special-selector-characters-`~!@#$%^&amp;*()+=[{]}\\|;:\'&quot;,.<>/?" style="height: 100px;"></div>'
+        + '<div id="test@example.com" style="height: 100px;"></div>'
+        + '<div id="spacer" style="height: 100px;"></div>'
+        + '</div>'
+    var $scrollspy = $(scrollspyHTML).appendTo('#qunit-fixture')
+
+    $scrollspy
+      .bootstrapScrollspy({
+        target: '#navigation',
+        offset: $scrollspy.position().top
+      })
+      .one('scroll.bs.scrollspy', function () {
+        assert.strictEqual($('.active').length, 1, '"active" class on only one element present')
+        assert.strictEqual($('.active').has('#one-link').length, 1, '"active" class on first section')
+
+        $scrollspy
+          .one('scroll.bs.scrollspy', function () {
+            assert.strictEqual($('.active').length, 1, '"active" class on only one element present')
+            assert.strictEqual($('.active').has('#two-link').length, 1, '"active" class on second section')
+            done()
+          })
+          .scrollTop(201)
+      })
+      .scrollTop(101)
+  })
+
   QUnit.test('should only switch "active" class on current target', function (assert) {
     assert.expect(1)
     var done = assert.async()
