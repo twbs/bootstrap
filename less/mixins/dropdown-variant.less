@@ -1,0 +1,33 @@
+// Dropdown variants
+
+.dropdown-variant(@color, @background) {
+  & > a {
+    &:hover,
+    &:focus {
+      color: @color;
+      text-decoration: none;
+      outline: 0;
+      background-color: @background;
+    }
+  }
+
+  &.active > a {
+    &,
+    &:hover,
+    &:focus {
+      color: @color;
+      text-decoration: none;
+      outline: 0;
+      background-color: @background;
+    }
+  }
+
+  &.disabled > a {
+    &,
+    &:hover,
+    &:focus {
+      color: @dropdown-link-disabled-color;
+      background-color: transparent;
+    }
+  }
+}
