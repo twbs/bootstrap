@@ -98,6 +98,18 @@ mark,
 .text-uppercase      { text-transform: uppercase; }
 .text-capitalize     { text-transform: capitalize; }
 
+// Overflow
+// Requires inline-block or block for proper styling
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  .text-nowrap;
+  td &{
+    max-width: 0;
+  }
+}
+
 // Contextual colors
 .text-muted {
   color: @text-muted;
