@@ -13,11 +13,12 @@
   // DROPDOWN CLASS DEFINITION
   // =========================
 
-  var backdrop = '.dropdown-backdrop'
   var toggle   = '[data-toggle="dropdown"]'
   var Dropdown = function (element) {
     $(element).on('click.bs.dropdown', this.toggle)
   }
+  var activeToggles = []
+  var activeBackdrops = []
 
   Dropdown.VERSION = '3.3.7'
 
@@ -35,12 +36,19 @@
   }
 
   function clearMenus(e) {
+    var i;
+
     if (e && e.which === 3) return
-    $(backdrop).remove()
-    $(toggle).each(function () {
-      var $this         = $(this)
+
+    for (i = 0; i < activeBackdrops.length; i++) {
+      activeBackdrops[i].remove();
+    }
+
+    for (i = 0; i < activeToggles.length; i++) {
+      var $toggle = activeToggles[i];
+      var $this         = $toggle
       var $parent       = getParent($this)
-      var relatedTarget = { relatedTarget: this }
+      var relatedTarget = { relatedTarget: $this[0] }
 
       if (!$parent.hasClass('open')) return
 
@@ -52,7 +60,10 @@
 
       $this.attr('aria-expanded', 'false')
       $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
-    })
+    }
+
+    activeBackdrops = []
+    activeToggles = []
   }
 
   Dropdown.prototype.toggle = function (e) {
@@ -66,12 +77,15 @@
     clearMenus()
 
     if (!isActive) {
+      activeToggles.push($this)
+
       if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
         // if mobile we use a backdrop because click events don't delegate
-        $(document.createElement('div'))
+        var $backdrop = $(document.createElement('div'))
           .addClass('dropdown-backdrop')
           .insertAfter($(this))
           .on('click', clearMenus)
+        activeBackdrops.push($backdrop)
       }
 
       var relatedTarget = { relatedTarget: this }
