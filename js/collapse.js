@@ -133,6 +133,7 @@
   }
 
   Collapse.prototype.toggle = function () {
+    if (this.options.collapseown == false && this.$element.hasClass('in')) return;
     this[this.$element.hasClass('in') ? 'hide' : 'show']()
   }
 
