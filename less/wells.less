@@ -1,8 +1,17 @@
 //
 // Wells
 // --------------------------------------------------
-
-
+// Var for colors
+  @well-bg-primary: #2269B4;
+  @well-border-primary: #2269B4 + #999;
+  @well-bg-success: #007601;
+  @well-border-success: #007601 + #999;
+  @well-bg-info: #2F9C9D;
+  @well-border-info:#2F9C9D + #999;
+  @well-bg-warning:#999D2F;
+  @well-border-warning:#999D2F + #999;
+  @well-bg-danger: #9D2F2F;
+  @well-border-danger: #9D2F2F + #999;
 // Base class
 .well {
   min-height: 20px;
@@ -10,6 +19,71 @@
   margin-bottom: 20px;
   background-color: @well-bg;
   border: 1px solid @well-border;
+  border-radius: @border-radius-base;
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+.well-primary {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: @well-bg-primary;
+  border: 1px solid @well-border-primary;
+  border-radius: @border-radius-base;
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+.well-success {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: @well-bg-success;
+  border: 1px solid @well-border-success;
+  border-radius: @border-radius-base;
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+.well-info {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: @well-bg-info;
+  border: 1px solid @well-border-info;
+  border-radius: @border-radius-base;
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+.well-warning {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: @well-bg-warning;
+  border: 1px solid @well-border-warning;
+  border-radius: @border-radius-base;
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+.well-danger {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: @well-bg-danger;
+  border: 1px solid @well-border-danger;
   border-radius: @border-radius-base;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
   blockquote {
