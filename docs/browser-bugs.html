@@ -1,0 +1,44 @@
+---
+layout: default
+title: Wall of browser bugs
+slug: browser-bugs
+lead: "A list of the browser bugs that Bootstrap is currently grappling with."
+fullwidth: true
+---
+
+
+<div class="bs-docs-section">
+  <h1 id="browser-bugs" class="page-header">Browser bugs</h1>
+
+  <p class="lead">Bootstrap currently works around several outstanding browser bugs in major browsers to deliver the best cross-browser experience possible. Some bugs, like those listed below, cannot be solved by us.</p>
+  <p>We publicly list browser bugs that are impacting us here, in the hopes of expediting the process of fixing them. For information on Bootstrap's browser compatibility, <a href="../getting-started/#support">see our browser compatibility docs</a>.</p>
+  <p>See also:</p>
+  <ul>
+    <li><a href="https://code.google.com/p/chromium/issues/detail?id=536263">Chromium issue 536263: [meta] Issues affecting Bootstrap</a></li>
+    <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1230801">Mozilla bug 1230801: Fix the issues that affect Bootstrap</a></li>
+    <li><a href="https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o">jQuery's browser bug workarounds</a></li>
+  </ul>
+
+  <div class="table-responsive">
+    <table class="bs-docs-browser-bugs table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Browser(s)</th>
+          <th>Summary of bug</th>
+          <th>Upstream bug(s)</th>
+          <th>Bootstrap issue(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bug in site.data.browser-bugs %}
+        <tr>
+          <td>{{ bug.browser }}</td>
+          <td>{{ bug.summary | markdownify | bugify }}</td>
+          <td>{{ bug.upstream_bug | bugify }}</td>
+          <td>{{ bug.origin | bugify }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -80,6 +80,8 @@
 
 -
   browser: >
+<<<<<<< HEAD
+=======
     Microsoft Edge
   summary: >
     Hovering over descendant SVG element fires `mouseleave` event at ancestor
@@ -100,6 +102,7 @@
 
 -
   browser: >
+>>>>>>> twbs/v4-dev
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
@@ -132,21 +135,57 @@
   browser: >
     Firefox
   summary: >
+<<<<<<< HEAD
+    Fire `transitioncancel` event when a transition is canceled
+  upstream_bug: >
+    Mozilla#1264125
+  origin: >
+    Mozilla#1182856
+=======
     Wide floated table doesn't wrap onto new line
   upstream_bug: >
     Mozilla#1277782
   origin: >
     Bootstrap#19839
+>>>>>>> twbs/v4-dev
 
 -
   browser: >
-    Firefox
+    Firefox (Windows)
   summary: >
+<<<<<<< HEAD
+    Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
+  upstream_bug: >
+    Mozilla#924068
+  origin: >
+    Bootstrap#15990
+
+-
+  browser: >
+    Firefox (OS X & Linux)
+  summary: >
+    Badge widget causes bottom border of Tabs widget to unexpectedly not overlap
+  upstream_bug: >
+    Mozilla#1259972
+  origin: >
+    Bootstrap#19626
+
+-
+  browser: >
+    Chrome (Android)
+  summary: >
+    Tapping on an `<input>` in a scrollable overlay doesn't scroll the `<input>` into view
+  upstream_bug: >
+    Chromium#595210
+  origin: >
+    Bootstrap#17338
+=======
     Mouse sometimes not within element for purposes of `mouseenter`/`mouseleave` when it's within SVG elements
   upstream_bug: >
     Mozilla#577785
   origin: >
     Bootstrap#19670
+>>>>>>> twbs/v4-dev
 
 -
   browser: >
@@ -192,6 +231,8 @@
   browser: >
     Chrome (Android)
   summary: >
+<<<<<<< HEAD
+=======
     Tapping on an `<input>` in a scrollable overlay doesn't scroll the `<input>` into view
   upstream_bug: >
     Chromium#595210
@@ -212,6 +253,7 @@
   browser: >
     Chrome
   summary: >
+>>>>>>> twbs/v4-dev
     CSS infinite linear animation with alpha transparency leaks memory.
   upstream_bug: >
     Chromium#429375
@@ -241,6 +283,19 @@
 -
   browser: >
     Chrome
+<<<<<<< HEAD
+  summary: >
+    `table-cell` borders not overlapping despite `margin-right: -1px`
+  upstream_bug: >
+    Chromium#534750
+  origin: >
+    Bootstrap#17438, Bootstrap#14237
+
+-
+  browser: >
+    Chrome (Windows & Linux)
+=======
+>>>>>>> twbs/v4-dev
   summary: >
     Clicking scrollbar in `<select multiple>` with overflowed options will select nearby `<option>`
   upstream_bug: >
@@ -260,6 +315,8 @@
 
 -
   browser: >
+<<<<<<< HEAD
+=======
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
@@ -280,6 +337,7 @@
 
 -
   browser: >
+>>>>>>> twbs/v4-dev
     Safari (OS X)
   summary: >
     `px`, `em`, and `rem` should all behave the same in media queries when page zoom is applied
@@ -292,6 +350,8 @@
   browser: >
     Safari (OS X)
   summary: >
+<<<<<<< HEAD
+=======
     Weird button behavior with some `<input type="number">` elements.
   upstream_bug: >
     WebKit#137269, Safari#18834768
@@ -304,6 +364,7 @@
   browser: >
     Safari (OS X)
   summary: >
+>>>>>>> twbs/v4-dev
     Small font size when printing webpage with fixed-width `.container`.
   upstream_bug: >
     WebKit#138192, Safari#19435018
@@ -412,6 +473,8 @@
 
 -
   browser: >
+<<<<<<< HEAD
+=======
     Safari (iOS)
   summary: >
     Tapping from one `<input>` to another in an overlay can cause shaking/jiggling effect
@@ -442,6 +505,7 @@
 
 -
   browser: >
+>>>>>>> twbs/v4-dev
     Safari (iPad Pro)
   summary: >
     Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation

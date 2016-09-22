@@ -1,6 +1,10 @@
 /*!
+<<<<<<< HEAD
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+=======
  * Bootstrap v4.0.0-alpha.4 (http://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors
+>>>>>>> twbs/v4-dev
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -3186,13 +3190,23 @@ input[type="button"].btn-block {
 }
 
 .btn-group-vertical > .btn:first-child:not(:last-child) {
+<<<<<<< HEAD
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+=======
+>>>>>>> twbs/v4-dev
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
 .btn-group-vertical > .btn:last-child:not(:first-child) {
   border-top-right-radius: 0;
+<<<<<<< HEAD
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+=======
   border-top-left-radius: 0;
+>>>>>>> twbs/v4-dev
 }
 
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
@@ -3233,9 +3247,60 @@ input[type="button"].btn-block {
   width: 100%;
   margin-bottom: 0;
 }
+<<<<<<< HEAD
+.input-group .form-control:focus {
+  z-index: 3;
+}
+.input-group-lg > .form-control,
+.input-group-lg > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn {
+  height: 46px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+select.input-group-lg > .form-control,
+select.input-group-lg > .input-group-addon,
+select.input-group-lg > .input-group-btn > .btn {
+  height: 46px;
+  line-height: 46px;
+}
+textarea.input-group-lg > .form-control,
+textarea.input-group-lg > .input-group-addon,
+textarea.input-group-lg > .input-group-btn > .btn,
+select[multiple].input-group-lg > .form-control,
+select[multiple].input-group-lg > .input-group-addon,
+select[multiple].input-group-lg > .input-group-btn > .btn {
+  height: auto;
+}
+.input-group-sm > .form-control,
+.input-group-sm > .input-group-addon,
+.input-group-sm > .input-group-btn > .btn {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+select.input-group-sm > .form-control,
+select.input-group-sm > .input-group-addon,
+select.input-group-sm > .input-group-btn > .btn {
+  height: 30px;
+  line-height: 30px;
+}
+textarea.input-group-sm > .form-control,
+textarea.input-group-sm > .input-group-addon,
+textarea.input-group-sm > .input-group-btn > .btn,
+select[multiple].input-group-sm > .form-control,
+select[multiple].input-group-sm > .input-group-addon,
+select[multiple].input-group-sm > .input-group-btn > .btn {
+  height: auto;
+=======
 
 .input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover {
   z-index: 3;
+>>>>>>> twbs/v4-dev
 }
 
 .input-group-addon,
@@ -4339,10 +4404,36 @@ input[type="button"].btn-block {
   background-color: #eceeef;
   border-color: #ddd;
 }
+<<<<<<< HEAD
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 3;
+  color: #fff;
+  cursor: default;
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #777;
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #ddd;
+=======
 
 .pagination-lg .page-link {
   padding: 0.75rem 1.5rem;
   font-size: 1.25rem;
+>>>>>>> twbs/v4-dev
 }
 
 .pagination-lg .page-item:first-child .page-link {
@@ -4372,7 +4463,40 @@ input[type="button"].btn-block {
 
 .tag {
   display: inline-block;
+<<<<<<< HEAD
+  padding: 5px 14px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+.pager li > a:hover,
+.pager li > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+}
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span {
+  color: #777;
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: #fff;
+}
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+=======
   padding: 0.25em 0.4em;
+>>>>>>> twbs/v4-dev
   font-size: 75%;
   font-weight: bold;
   line-height: 1;
@@ -6068,9 +6192,25 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 .p-r-2 {
   padding-right: 1.5rem !important;
 }
+<<<<<<< HEAD
+.carousel-control {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 15%;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0);
+  filter: alpha(opacity=50);
+  opacity: .5;
+=======
 
 .p-b-2 {
   padding-bottom: 1.5rem !important;
+>>>>>>> twbs/v4-dev
 }
 
 .p-l-2 {
@@ -6146,6 +6286,25 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 .text-xs-right {
   text-align: right !important;
 }
+<<<<<<< HEAD
+@media screen and (min-width: 768px) {
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .glyphicon-chevron-right,
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
+    width: 30px;
+    height: 30px;
+    margin-top: -10px;
+    font-size: 30px;
+  }
+  .carousel-control .glyphicon-chevron-left,
+  .carousel-control .icon-prev {
+    margin-left: -10px;
+  }
+  .carousel-control .glyphicon-chevron-right,
+  .carousel-control .icon-next {
+    margin-right: -10px;
+=======
 
 .text-xs-center {
   text-align: center !important;
@@ -6160,6 +6319,7 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   }
   .text-sm-center {
     text-align: center !important;
+>>>>>>> twbs/v4-dev
   }
 }
 

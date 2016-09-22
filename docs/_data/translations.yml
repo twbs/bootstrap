@@ -3,10 +3,37 @@
   description: Bootstrap 中文文档
   url: http://v4.bootcss.com/
 
+<<<<<<< HEAD
+- name: Chinese (Traditional)
+  code: zh-TW
+  description: Bootstrap 3 中文手冊
+  url: https://kkbruce.tw/bs3/
+ 
+- name: Danish
+  code: da
+  description: Bootstrap på Dansk
+  url: http://getbootstrap.dk/
+
+- name: French
+  code: fr
+  description: Bootstrap en Français
+  url: http://www.oneskyapp.com/fr/docs/bootstrap/getting-started/
+
+- name: German
+  code: de
+  description: Bootstrap auf Deutsch
+  url: http://holdirbootstrap.de/
+
+- name: Italian
+  code: it
+  description: Bootstrap in Italiano
+  url: http://www.hackerstribe.com/guide/IT-bootstrap-3.1.1/
+=======
 - name: Chinese
   code: zh
   description: Bootstrap 4 中文文档教程
   url: http://boot4.com/
+>>>>>>> twbs/v4-dev
 
 - name: Japanese
   code: ja

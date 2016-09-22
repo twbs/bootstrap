@@ -55,7 +55,11 @@
   {
     browserName: "iphone",
     platform: "OS X 10.10",
+<<<<<<< HEAD
+    version: "9.2"
+=======
     version: "latest"
+>>>>>>> twbs/v4-dev
   },
 
   # iOS Chrome not currently supported by Sauce Labs

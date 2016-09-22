@@ -95,8 +95,13 @@
   font-size: $carousel-control-font-size;
   color: $carousel-control-color;
   text-align: center;
+<<<<<<< HEAD:less/carousel.less
+  text-shadow: @carousel-text-shadow;
+  background-color: rgba(0, 0, 0, 0); // Fix IE9 click-thru bug
+=======
   text-shadow: $carousel-text-shadow;
   opacity: $carousel-control-opacity;
+>>>>>>> twbs/v4-dev:scss/_carousel.scss
   // We can't have this transition here because WebKit cancels the carousel
   // animation if you trip this while in the middle of another animation.
 
@@ -226,16 +231,31 @@
   .carousel-control {
     .icon-prev,
     .icon-next {
+<<<<<<< HEAD:less/carousel.less
+      width: (@carousel-control-font-size * 1.5);
+      height: (@carousel-control-font-size * 1.5);
+      margin-top: (@carousel-control-font-size / -2);
+      font-size: (@carousel-control-font-size * 1.5);
+=======
       width: $carousel-control-sm-up-size;
       height: $carousel-control-sm-up-size;
       margin-top: -($carousel-control-sm-up-size / 2);
       font-size: $carousel-control-sm-up-size;
+>>>>>>> twbs/v4-dev:scss/_carousel.scss
     }
     .icon-prev {
+<<<<<<< HEAD:less/carousel.less
+      margin-left: (@carousel-control-font-size / -2);
+=======
       margin-left: -($carousel-control-sm-up-size / 2);
+>>>>>>> twbs/v4-dev:scss/_carousel.scss
     }
     .icon-next {
+<<<<<<< HEAD:less/carousel.less
+      margin-right: (@carousel-control-font-size / -2);
+=======
       margin-right: -($carousel-control-sm-up-size / 2);
+>>>>>>> twbs/v4-dev:scss/_carousel.scss
     }
   }
 

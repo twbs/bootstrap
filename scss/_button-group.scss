@@ -62,7 +62,7 @@
     @include border-right-radius(0);
   }
 }
-// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+// Need .dropdown-toggle since :last-child doesn't apply, given that a .dropdown-menu is used immediately after it
 .btn-group > .btn:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
   @include border-left-radius(0);
@@ -189,10 +189,19 @@
     border-radius: 0;
   }
   &:first-child:not(:last-child) {
+<<<<<<< HEAD:less/button-groups.less
+    .border-top-radius(@btn-border-radius-base);
+    .border-bottom-radius(0);
+  }
+  &:last-child:not(:first-child) {
+    .border-top-radius(0);
+    .border-bottom-radius(@btn-border-radius-base);
+=======
     @include border-bottom-radius(0);
   }
   &:last-child:not(:first-child) {
     @include border-top-radius(0);
+>>>>>>> twbs/v4-dev:scss/_button-group.scss
   }
 }
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {

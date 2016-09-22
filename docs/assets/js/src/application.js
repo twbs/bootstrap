@@ -4,7 +4,10 @@
 
 /*!
  * JavaScript for Bootstrap's docs (http://getbootstrap.com)
+<<<<<<< HEAD
+=======
  * Copyright 2011-2016 The Bootstrap Authors
+>>>>>>> twbs/v4-dev
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
@@ -17,6 +20,76 @@
 
   $(function () {
 
+<<<<<<< HEAD
+    // Scrollspy
+    var $window = $(window)
+    var $body   = $(document.body)
+
+    $body.scrollspy({
+      target: '.bs-docs-sidebar'
+    })
+    $window.on('load', function () {
+      $body.scrollspy('refresh')
+    })
+
+    // Kill links
+    $('.bs-docs-container [href=#]').click(function (e) {
+      e.preventDefault()
+    })
+
+    // Sidenav affixing
+    setTimeout(function () {
+      var $sideBar = $('.bs-docs-sidebar')
+
+      $sideBar.affix({
+        offset: {
+          top: function () {
+            var offsetTop      = $sideBar.offset().top
+            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+            var navOuterHeight = $('.bs-docs-nav').height()
+
+            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+          },
+          bottom: function () {
+            return (this.bottom = $('.bs-docs-footer').outerHeight(true))
+          }
+        }
+      })
+    }, 100)
+
+    setTimeout(function () {
+      $('.bs-top').affix()
+    }, 100)
+
+    // Theme toggler
+    ;(function () {
+      var $stylesheetLink = $('#bs-theme-stylesheet')
+      var $themeBtn = $('.bs-docs-theme-toggle')
+
+      var activateTheme = function () {
+        $stylesheetLink.attr('href', $stylesheetLink.attr('data-href'))
+        $themeBtn.text('Disable theme preview')
+        localStorage.setItem('previewTheme', true)
+      }
+
+      if (localStorage.getItem('previewTheme')) {
+        activateTheme()
+      }
+
+      $themeBtn.click(function () {
+        var href = $stylesheetLink.attr('href')
+        if (!href || href.indexOf('data') === 0) {
+          activateTheme()
+        } else {
+          $stylesheetLink.attr('href', '')
+          $themeBtn.text('Preview theme')
+          localStorage.removeItem('previewTheme')
+        }
+      })
+    })();
+
+=======
+>>>>>>> twbs/v4-dev
     // Tooltip and popover demos
     $('.tooltip-demo').tooltip({
       selector: '[data-toggle="tooltip"]',

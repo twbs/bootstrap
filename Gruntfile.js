@@ -1,7 +1,10 @@
 /*!
  * Bootstrap's Gruntfile
  * http://getbootstrap.com
+<<<<<<< HEAD
+=======
  * Copyright 2013-2016 The Bootstrap Authors
+>>>>>>> twbs/v4-dev
  * Copyright 2013-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -18,8 +21,21 @@ module.exports = function (grunt) {
 
   var fs = require('fs');
   var path = require('path');
+<<<<<<< HEAD
+  var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
+  var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
+  var getLessVarsData = function () {
+    var filePath = path.join(__dirname, 'less/variables.less');
+    var fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
+    var parser = new BsLessdocParser(fileContent);
+    return { sections: parser.parseFile() };
+  };
+  var generateRawFiles = require('./grunt/bs-raw-files-generator.js');
+  var generateCommonJSModule = require('./grunt/bs-commonjs-generator.js');
+=======
   var isTravis = require('is-travis');
 
+>>>>>>> twbs/v4-dev
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
 
   Object.keys(configBridge.paths).forEach(function (key) {
@@ -172,6 +188,41 @@ module.exports = function (grunt) {
         sourceMap: true,
         advanced: false
       },
+<<<<<<< HEAD
+      minifyCore: {
+        src: 'dist/css/<%= pkg.name %>.css',
+        dest: 'dist/css/<%= pkg.name %>.min.css'
+      },
+      minifyTheme: {
+        src: 'dist/css/<%= pkg.name %>-theme.css',
+        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+      },
+      docs: {
+        src: [
+          'docs/assets/css/ie10-viewport-bug-workaround.css',
+          'docs/assets/css/src/pygments-manni.css',
+          'docs/assets/css/src/docs.css'
+        ],
+        dest: 'docs/assets/css/docs.min.css'
+      }
+    },
+
+    csscomb: {
+      options: {
+        config: 'less/.csscomb.json'
+      },
+      dist: {
+        expand: true,
+        cwd: 'dist/css/',
+        src: ['*.css', '!*.min.css'],
+        dest: 'dist/css/'
+      },
+      examples: {
+        expand: true,
+        cwd: 'docs/examples/',
+        src: '**/*.css',
+        dest: 'docs/examples/'
+=======
       core: {
         files: [
           {
@@ -182,6 +233,7 @@ module.exports = function (grunt) {
             ext: '.min.css'
           }
         ]
+>>>>>>> twbs/v4-dev
       },
       docs: {
         files: [
@@ -230,6 +282,50 @@ module.exports = function (grunt) {
       }
     },
 
+<<<<<<< HEAD
+    htmlmin: {
+      dist: {
+        options: {
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          minifyCSS: true,
+          minifyJS: true,
+          processConditionalComments: true,
+          removeAttributeQuotes: true,
+          removeComments: true
+        },
+        expand: true,
+        cwd: '_gh_pages',
+        dest: '_gh_pages',
+        src: [
+          '**/*.html',
+          '!examples/**/*.html'
+        ]
+      }
+    },
+
+    jade: {
+      options: {
+        pretty: true,
+        data: getLessVarsData
+      },
+      customizerVars: {
+        src: 'docs/_jade/customizer-variables.jade',
+        dest: 'docs/_includes/customizer-variables.html'
+      },
+      customizerNav: {
+        src: 'docs/_jade/customizer-nav.jade',
+        dest: 'docs/_includes/nav/customize.html'
+      }
+    },
+
+    htmllint: {
+      options: {
+        ignore: [
+          'Attribute "autocomplete" not allowed on element "button" at this point.',
+          'Attribute "autocomplete" is only allowed when the input type is "color", "date", "datetime", "datetime-local", "email", "month", "number", "password", "range", "search", "tel", "text", "time", "url", or "week".',
+          'Element "img" is missing required attribute "src".'
+=======
     htmllint: {
       options: {
         ignore: [
@@ -245,6 +341,7 @@ module.exports = function (grunt) {
           'The “month” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “time” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “week” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
+>>>>>>> twbs/v4-dev
         ]
       },
       src: ['_gh_pages/**/*.html', 'js/tests/visual/*.html']
@@ -259,9 +356,15 @@ module.exports = function (grunt) {
         files: 'scss/**/*.scss',
         tasks: ['dist-css', 'docs']
       },
+<<<<<<< HEAD
+      less: {
+        files: 'less/**/*.less',
+        tasks: 'less'
+=======
       docs: {
         files: 'docs/assets/scss/**/*.scss',
         tasks: ['dist-css', 'docs']
+>>>>>>> twbs/v4-dev
       }
     },
 
@@ -393,7 +496,13 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
 
   // Default task.
+<<<<<<< HEAD
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
+
+  grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
+=======
   grunt.registerTask('default', ['clean:dist', 'test']);
+>>>>>>> twbs/v4-dev
 
   // Docs task.
   grunt.registerTask('docs-css', ['cssmin:docs', 'exec:postcss-docs']);
@@ -404,6 +513,18 @@ module.exports = function (grunt) {
 
   grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress']);
 
+<<<<<<< HEAD
+  // Docs task.
+  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
+  grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
+  grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
+  grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
+  grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);
+  grunt.registerTask('docs-github', ['jekyll:github', 'htmlmin']);
+
+  grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress']);
+=======
   // Publish to GitHub
   grunt.registerTask('publish', ['buildcontrol:pages']);
+>>>>>>> twbs/v4-dev
 };

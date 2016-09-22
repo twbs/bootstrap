@@ -23,7 +23,25 @@
 {% endif %}
 
 <!-- Documentation extras -->
+<<<<<<< HEAD
+{% if site.github %}
+<link href="../assets/css/docs.min.css" rel="stylesheet">
+{% else %}
+<link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<link href="../assets/css/src/pygments-manni.css" rel="stylesheet">
+<link href="../assets/css/src/docs.css" rel="stylesheet">
+{% endif %}
+<!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="../assets/js/ie-emulation-modes-warning.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+=======
 <link href="{{ site.baseurl }}/assets/css/docs.min.css" rel="stylesheet">
+>>>>>>> twbs/v4-dev
 
 <!-- Favicons -->
 <link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png">

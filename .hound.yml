@@ -1,6 +1,13 @@
 fail_on_violations: true
 
 scss:
+<<<<<<< HEAD
+  enabled: false
+
+javascript:
+  enabled: true
+  config_file: js/.jshintrc
+=======
   config_file: scss/.scss-lint.yml
   enabled: true
   ignore_file: scss/_normalize.scss
@@ -11,10 +18,14 @@ javascript:
 eslint:
   enabled: true
   config_file: js/.eslintrc.json
+>>>>>>> twbs/v4-dev
 
 jscs:
   enabled: true
   config_file: js/.jscsrc
+<<<<<<< HEAD
+=======
 
 ruby:
   enabled: false
+>>>>>>> twbs/v4-dev
