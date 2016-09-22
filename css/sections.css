@@ -1,0 +1,101 @@
+/*
+-----------------------------------------------
+Sections Grid CSS
+-----------------------------------------------
+Site Name
+file:       css/sections.css
+author:     Stephen Bau
+date:       2 July 2010
+-----------------------------------------------
+A grid system by Craig Zheng designed
+for publicculture.org and symphony-cms.com.
+Adapted by Stephen Bau.
+-----------------------------------------------
+
+1) class="section" basically designates a 'row', within which any
+number of class="subsection" elements represent 'columns'
+2) The 'column' widths are specified with another class: either
+"fragment" "simple" "compound" or "complex" (semantic nomenclature I
+borrowed right from English grammar).
+
+So we end up with something like this:
+
+	<div class="section">
+		<div class="subsection simple">
+		</div>
+		<div class="subsection compound">
+		</div>
+		<div class="subsection simple">
+		</div>
+	</div>
+
+Which gives you a half-width column in the middle with two
+quarter-width columns on either side. Of course, you could dispense
+with the DIVs if you don't need them and just apply those classes to
+any other block-level elements. The CSS looks like this:
+
+*/
+
+.area {
+	width: 960px;
+	margin: 0 auto;
+}
+.section:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.section {
+  zoom: 1;
+  display: block;
+}
+.subsection {
+	float: left;
+	width: 240px;
+}
+
+/* 3-column grid */
+.thirds .subsection,
+.thirds .simple {
+	width: 320px;
+}
+.thirds .fragment {
+	width: 160px;
+}
+.thirds .compound {
+	width: 640px;
+}
+
+/* 4-column grid (default) */
+.fragment {
+	width: 120px;
+}
+.simple {
+	width: 240px;
+}
+.compound {
+	width: 480px;
+}
+.complex {
+	width: 720px;
+}
+
+/* 5-column grid */
+.fifths .subsection,
+.fifths .simple {
+	width: 192px;
+}
+.fifths .fragment {
+	width: 96px;
+}
+.fifths .compound {
+	width: 384px;
+}
+.fifths .complex {
+	width: 576px;
+}
+.fifths .compound-complex {
+	width: 768px;
+}

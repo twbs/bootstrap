@@ -1,0 +1,274 @@
+/*
+-----------------------------------------------
+Responsive CSS
+-----------------------------------------------
+Site Name
+file:       css/responsive.css
+author:     Stephen Bau
+date:       21 September 2011
+----------------------------------------------- */
+
+
+/* fluid images
+----------------------------------------------- */
+img {
+  max-width: 100%;
+}
+
+
+/* topbar
+----------------------------------------------- */
+.topbar .container {
+  width: 960px;
+}
+.topbar .brand {
+  margin-left: 0;
+  padding: 8px 15px 12px;
+}
+
+
+/* spacing
+----------------------------------------------- */
+.main-section {
+  padding-top: 60px;
+}
+.section .section {
+  padding-top: 0;
+  padding-bottom: 15px;
+}
+.display-grids .section {
+  padding-top: 0;
+}
+.display-grids .content {
+  padding: 15px;
+}
+.section .display-grids .section {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+
+/* masthead
+----------------------------------------------- */
+.jumbotron {
+  min-width: 0;
+}
+.jumbotron .container {
+  width: auto;
+  padding: 0 30px;
+}
+
+
+/* quickstart
+----------------------------------------------- */
+.quickstart .section {
+  padding-top: 0;
+  margin-top: 0;
+  margin-left: -1px;
+  margin-right: -1px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+.quickstart .subsection {
+  padding-top: 15px;
+}
+.quickstart .subsection:nth-child(2) {
+  margin-left: -1px;
+  margin-right: -1px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+.quickstart textarea {
+  width: 100%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+/* tabs
+----------------------------------------------- */
+.tabs {
+  float: none;
+}
+
+
+/* footer
+----------------------------------------------- */
+.footer {
+  min-width: 0;
+}
+.footer .content {
+  padding: 0 30px;
+}
+
+
+/*
+--------------------------------------------------
+Large and Medium Screens (above 750 pixels wide)
+-------------------------------------------------- */
+
+@media only screen and (min-width: 750px) {
+
+  .masthead h1 br {
+    display: none;
+  }
+
+}
+
+
+/*
+--------------------------------------------------
+Medium Screens (below 960 pixels wide)
+-------------------------------------------------- */
+
+@media only screen and (max-width: 960px) {
+
+  .masthead .lead br {
+    display: none;
+  }
+
+  /* topbar navigation
+  ----------------------------------------------- */
+  .topbar {
+    height: auto;
+    position: static;
+  }
+  .topbar .container {
+    width: auto;
+  }
+  .topbar .brand {
+    float: left;
+    width: 94%;
+    padding-left: 3%;
+    padding-right: 3%;
+    background: #000;
+  }
+  .topbar div > ul {
+    margin: 0;
+  }
+  .topbar .nav {
+    float: none;
+  }
+  .topbar .nav > li {
+    float: left;
+    width: 16.6666666%;
+    margin: 0;
+  }
+  .section:first-child {
+    padding-top: 15px;
+  }
+  .jumbotron {
+    padding-top: 0;
+  }
+  .quickstart .section {
+    padding-top: 0;
+    margin: 0;
+    border: none;
+  }
+
+}
+
+
+/*
+--------------------------------------------------
+Narrow Screens (300 pixels wide)
+-------------------------------------------------- */
+
+@media only screen and (max-width: 600px) {
+
+
+  /* body
+  ----------------------------------------------- */
+  body {
+    padding-top: 0;
+  }
+
+
+  /* topbar
+  ----------------------------------------------- */
+  .topbar .nav > li {
+    float: left;
+    width: 25%;
+    margin: 0;
+  }
+
+
+  /* masthead
+  ----------------------------------------------- */
+  .jumbotron {
+    padding-top: 0;
+  }
+  .jumbotron h1 {
+    font-size: 2.5em;
+  }
+
+
+  /* quickstart
+  ----------------------------------------------- */
+  .quickstart h6,
+  .quickstart p {
+    text-align: left;
+  }
+  .quickstart .content {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .quickstart .section {
+    padding-bottom: 15px;
+    border: none;
+  }
+
+
+  /* headings
+  ----------------------------------------------- */
+  h1 small {
+    display: block;
+    margin-top: .3em;
+    line-height: 1.25em;
+  }
+
+
+  /* tabs
+  ----------------------------------------------- */
+  .tabs {
+    float: none;
+  }
+
+
+  /* pagination
+  ----------------------------------------------- */
+  .pagination {
+    height: auto;
+  }
+  .pagination ul {
+    float: none;
+  }
+
+
+  /* clearing
+  ----------------------------------------------- */
+  .tabs,
+  .pagination ul {
+    zoom: 1;
+    display: block;
+  }
+  .tabs:after,
+  .pagination ul:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+
+
+  /* footer
+  ----------------------------------------------- */
+  .footer .pull-right {
+    float: none;
+    text-align: right;
+  }
+
+
+}

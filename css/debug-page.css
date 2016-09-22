@@ -1,0 +1,77 @@
+/*
+-----------------------------------------------
+Semantic Page Divisions - Debug
+-----------------------------------------------
+Site Name
+file:		css/debug-page.css
+author:		Stephen Bau
+date:		30 March 2010
+----------------------------------------------- */
+
+
+/* div - view borders around all div elements
+----------------------------------------------- */
+div {
+	border: 1px solid #0f0;
+	margin: -1px;
+} */
+
+
+/* page divisions
+----------------------------------------------- */
+.site {
+	background: #888;
+}
+.site-info {
+	background: #888;
+}
+
+
+/* page division classes
+----------------------------------------------- */
+.page {
+	background: #777;
+}
+.division {
+
+}
+.area {
+	background: #999;
+}
+.sections {
+	background: #aaa;
+}
+.section {
+	background: #bbb;
+}
+.subsection {
+	background: #ccc;
+}
+.block {
+	background: #ddd;
+}
+.unit {
+	background: #eee;
+}
+
+
+/* content class
+----------------------------------------------- */
+.content {
+	background: #fff;
+}
+
+
+/* content divisions
+----------------------------------------------- */
+.head {
+
+}
+.body {
+
+}
+.foot {
+
+}
+
+
