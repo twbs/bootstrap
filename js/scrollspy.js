@@ -78,7 +78,6 @@
     var offsets      = this.offsets
     var targets      = this.targets
     var activeTarget = this.activeTarget
-    var i
 
     if (this.scrollHeight != scrollHeight) {
       this.refresh()
@@ -93,7 +92,7 @@
       return this.clear()
     }
 
-    for (i = offsets.length; i--;) {
+    for (var i = offsets.length; i--;) {
       activeTarget != targets[i]
         && scrollTop >= offsets[i]
         && (offsets[i + 1] === undefined || scrollTop < offsets[i + 1])
