@@ -103,3 +103,7 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+.img-responsive {
+  display: inline-block;
+}
