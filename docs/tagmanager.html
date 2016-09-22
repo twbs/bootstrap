@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-tagmanager.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">bootstrap tagmanager plugin</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+    <div class="row">
+
+        <form class="wwell form-inline" id="addexpenses">
+
+        <div class="input-prepend"><input type="text" class="input-small" placeholder="Billing date" size="16" name="postingdate"/><span class="add-on"><i class="icon-calendar"></i></span></div>
+        <input type="text" class="input-small span2 control-group error" placeholder="Description" name="description"/>
+        <input type="text" class="input-small tagManager typeahead" style=""placeholder="Tags" name="tags" data-provide="typeahead" data-items="6" autocomplete="off"/>
+        <div class="input-prepend" style="white-space: nowrap;-webkit-padding-end: 27px;"><span class="add-on currencySymbol" >$</span><input type="text" class="input-small" placeholder="How much"  size="16" name="howmuch"/></div>
+        <button type="submit" class="btn btn-inverse submit">Add record</button>
+        
+        </form>
+
+        <form class="wwell form-inline" id="addexpenses">
+
+        <div class="input-prepend"><input type="text" class="input-small" placeholder="Posting date" size="16" name="postingdate"/><span class="add-on"><i class="icon-calendar"></i></span></div>
+        <input type="text" class="input-small tagManager typeahead" style=""placeholder="Tags" name="tags" data-provide="typeahead" data-items="6" autocomplete="off"/>
+        <div class="input-prepend" style="white-space: nowrap;-webkit-padding-end: 27px;"><span class="add-on currencySymbol" >$</span><input type="text" class="input-small" placeholder="How much"  size="16" name="howmuch"/></div>
+        <button type="submit" class="btn btn-inverse submit">Add record</button>
+        
+        </form>
+
+    </div>
+
+    <div class="row">
+
+<p>
+Type something in field "tags" and end it with a comma or tab or hit return.
+In this example typeahead is activated.
+</p>
+
+<h3>How to initialize it.</h3>
+<p>
+Hope the options are pretty obvious, yes there is an ajax source option for the typeahead, it actually refresh the array from the ajax source only on setup right now, I will make it more flexible soon I hope, for my needs this was enough.
+</p>
+
+<div>
+<pre class="prettyprint linenums">
+        var SourceArray = ["Lombardia", "Abruzzo", "Toscana", "Liguria"];
+
+        $(".tagManager").tagsManager({
+          prefilled: "Scarpe,Vestiti,Pranzo",
+          preventSubmitOnEnter: true,
+          typeahead: true,
+          typeaheadAjaxSource: null,
+          typeaheadSource: SourceArray,
+          blinkBGColor_1: '#FFFF9C',
+          blinkBGColor_2: '#CDE69C'
+        });
+</pre>
+</div>
+
+<h3>Remember to...</h3>
+<p>
+Include all the necessary files!
+</p>
+
+<div>
+<pre class="prettyprint linenums">
+  /css/bootstrap-tagmanager.css
+  /js/bootstrap-tagmanager.js
+</pre>
+</div>
+
+    </div>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-tagmanager.js"></script>
+
+    <script>
+
+      jQuery(document).ready(function () {
+
+        var SourceArray = ["Lombardia", "Abruzzo", "Toscana", "Liguria"];
+
+        $(".tagManager").tagsManager({
+          preventSubmitOnEnter: true,
+          typeahead: true,
+          typeaheadAjaxSource: null,
+          typeaheadSource: SourceArray,
+          blinkBGColor_1: '#FFFF9C',
+          blinkBGColor_2: '#CDE69C'
+        });
+      });
+    </script>
+
+  </body>
+</html>

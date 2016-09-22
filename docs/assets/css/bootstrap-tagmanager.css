@@ -1,0 +1,36 @@
+  .myTag
+  {
+    background: none repeat scroll 0 0 #CDE69C;
+    border: 1px solid #A5D24A;
+    border-radius: 3px 3px 3px 3px;
+    color: #638421;
+    //display: block;
+    //float: left;
+    font-family: helvetica;
+    font-size: 13px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    //padding-top: 6px;
+    //padding-bottom: 5px;
+    padding: 6px 5px 5px 5px;
+    text-decoration: none;
+    
+    vertical-align: middle;
+    line-height: 18px;
+    height:18px;
+    -moz-transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  }      
+  .myTagError
+  {
+    background-color: #F2DEDE;
+  }      
+  .myTagRemover
+  {
+    color:silver;
+  }
+  .tagManager
+  {
+    border-radius: 3px 3px 3px 3px;
+    margin-top:0;
+  }
