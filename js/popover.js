@@ -70,6 +70,16 @@
             o.content.call($e[0]) :
             o.content)
   }
+  
+  Popover.prototype.getTitle = function () {
+    var $e = this.$element
+    var o  = this.options
+
+    return $e.attr('data-title')
+      || (typeof o.title == 'function' ?
+            o.title.call($e[0]) :
+            o.title)
+  }
 
   Popover.prototype.arrow = function () {
     return (this.$arrow = this.$arrow || this.tip().find('.arrow'))
