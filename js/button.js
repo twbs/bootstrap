@@ -57,7 +57,7 @@
       var $input = this.$element.find('input')
       if ($input.prop('type') == 'radio') {
         if ($input.prop('checked')) changed = false
-        $parent.find('.active').removeClass('active')
+        $parent.find('.active').removeClass('active').find('input').prop('checked', false)
         this.$element.addClass('active')
       } else if ($input.prop('type') == 'checkbox') {
         if (($input.prop('checked')) !== this.$element.hasClass('active')) changed = false
