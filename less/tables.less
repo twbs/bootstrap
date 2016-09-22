@@ -232,3 +232,31 @@ table {
     }
   }
 }
+
+// Table Reflow
+//
+// Add this class to any table to enable 'reflowing' of the table data
+// for display on smaller screens, where scrolling horizontally is not
+// desired. This changes each row into a 'tile' similar to a panel.
+// 
+// Requires adding secondary label inside a '<b>' tag, which will only
+// be visible when the screen width is at or below 'small'.
+
+.table-reflow {
+  b { display: none; }
+  @media (max-width: @screen-sm-min) {
+    table { border: 0; }
+    thead { display: none; }
+    td, tr { display: block; }
+    td:first-of-type { border-top: 0;}
+    b {
+      display: inline-block;
+      &:after { content: ":\00a0"; }
+    }
+    tr {
+      margin-bottom: @line-height-computed;
+      border: 1px solid @table-border-color;
+      border-radius: @panel-border-radius;
+    }
+  }
+}
