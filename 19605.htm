@@ -1,0 +1,1501 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class=" is-copy-enabled">
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
+
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/frameworks-955f288f0b4b712de2ef42f97b4677be82cd31fa462681fb8eaf053c7d20eb97.css" integrity="sha256-lV8ojwtLcS3i70L5e0Z3voLNMfpGJoH7jq8FPH0g65c=" media="all" rel="stylesheet" />
+    <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-41234c54b27c35a470af0756de2199addaa8f9bc47b98caccc7754cdbad4e480.css" integrity="sha256-QSNMVLJ8NaRwrwdW3iGZrdqo+bxHuYyszHdUzbrU5IA=" media="all" rel="stylesheet" />
+    
+    
+    
+    
+
+    <link as="script" href="https://assets-cdn.github.com/assets/frameworks-7d972a322dae1542abb7cb60f0de07aea97b141be4e33ab42ec004458eac25f4.js" rel="preload" />
+    <link as="script" href="https://assets-cdn.github.com/assets/github-9bfdb65961a4a4bbb31475a677a7c6262f18b9f00f84f777cdeb05d354ae2979.js" rel="preload" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=1020">
+    
+    
+    <title>Use vanilla npm shrinkwrap instead of uber/npm-shrinkwrap by cvrebert · Pull Request #19605 · twbs/bootstrap</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="https://avatars0.githubusercontent.com/u/419884?v=3&amp;s=400" name="twitter:image:src" /><meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="Use vanilla npm shrinkwrap instead of uber/npm-shrinkwrap by cvrebert · Pull Request #19605 · twbs/bootstrap" name="twitter:title" /><meta content="Ports #19604 to v3.
+Fixes #18559 for v3." name="twitter:description" />
+      <meta content="https://avatars0.githubusercontent.com/u/419884?v=3&amp;s=400" property="og:image" /><meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="Use vanilla npm shrinkwrap instead of uber/npm-shrinkwrap by cvrebert · Pull Request #19605 · twbs/bootstrap" property="og:title" /><meta content="https://github.com/twbs/bootstrap/pull/19605" property="og:url" /><meta content="Ports #19604 to v3.
+Fixes #18559 for v3." property="og:description" />
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="web-socket" href="wss://live.github.com/_sockets/MTY5NDk5MTU6NDdhMmE5Zjg1OTAwZjUxYjQ4M2ZlNGZlMWI4ZDhhMWQ6OTkzZDZjNGRmNTVmNjYzNmIxODQ3NTNiMmQxMjE4YTBiNTI0OTY5YmE3OGJjZTU0OThmOTE1Njk5NjVlOWE3ZQ==--cd4e754c26ac78ee47d4c1bee1211923413ea139">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="/sessions/sudo_modal">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_pulls" data-pjax-transient>
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+<meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="46500D48:3F8D:123FA34B:56F41BB3" name="octolytics-dimension-request_id" /><meta content="16949915" name="octolytics-actor-id" /><meta content="Cristhoper29" name="octolytics-actor-login" /><meta content="0ebee59ce77d795d57426a2ee055654243ce2c2a8a4545a9232c1b569e93fb32" name="octolytics-actor-hash" />
+<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/pull_requests/show" data-pjax-transient="true" name="analytics-location" />
+
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+
+        <meta name="hostname" content="github.com">
+    <meta name="user-login" content="Cristhoper29">
+
+        <meta name="expected-hostname" content="github.com">
+      <meta name="js-proxy-site-detection-payload" content="YmQ2Yjc2M2M4OTNkN2Y5YTE3NTdkNmQ4YTkzYTI3NDA3M2I1NjU5MTE1ZDhiNTk3Mzk3YjhlODY1MjQ3ZjA2N3x7InJlbW90ZV9hZGRyZXNzIjoiNzAuODAuMTMuNzIiLCJyZXF1ZXN0X2lkIjoiNDY1MDBENDg6M0Y4RDoxMjNGQTM0Qjo1NkY0MUJCMyIsInRpbWVzdGFtcCI6MTQ1ODgzODQ2MH0=">
+
+      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#4078c0">
+      <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+    <meta content="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" name="form-nonce" />
+
+    <meta http-equiv="x-pjax-version" content="2bbbd1b863731265a3f649e1a516ba25">
+    
+
+        <style type="text/css" media="screen">
+    span.labelstyle-bfd4f2, .linked-labelstyle-bfd4f2 {  background-color: #bfd4f2 !important;  color: #282c33 !important;}.labelstyle-bfd4f2.selected {  background-color: #bfd4f2 !important;  color: #282c33 !important;}.label-select-menu .labelstyle-bfd4f2.selected {  background:rgba(191, 212, 242, 0.12) !important;  color: #788699 !important;}
+
+span.labelstyle-d4c5f9, .linked-labelstyle-d4c5f9 {  background-color: #d4c5f9 !important;  color: #2b2833 !important;}.labelstyle-d4c5f9.selected {  background-color: #d4c5f9 !important;  color: #2b2833 !important;}.label-select-menu .labelstyle-d4c5f9.selected {  background:rgba(212, 197, 249, 0.12) !important;  color: #827999 !important;}
+
+span.labelstyle-00abe1, .linked-labelstyle-00abe1 {  background-color: #00abe1 !important;  color: #fff !important;}.labelstyle-00abe1.selected {  background-color: #00abe1 !important;  color: #fff !important;}.label-select-menu .labelstyle-00abe1.selected {  background:rgba(0, 171, 225, 0.12) !important;  color: #007499 !important;}
+
+span.labelstyle-b94a48, .linked-labelstyle-b94a48 {  background-color: #b94a48 !important;  color: #fff !important;}.labelstyle-b94a48.selected {  background-color: #b94a48 !important;  color: #fff !important;}.label-select-menu .labelstyle-b94a48.selected {  background:rgba(185, 74, 72, 0.12) !important;  color: #993d3b !important;}
+
+span.labelstyle-563d7c, .linked-labelstyle-563d7c {  background-color: #563d7c !important;  color: #fff !important;}.labelstyle-563d7c.selected {  background-color: #563d7c !important;  color: #fff !important;}.label-select-menu .labelstyle-563d7c.selected {  background:rgba(86, 61, 124, 0.12) !important;  color: #6a4b99 !important;}
+
+span.labelstyle-eb6420, .linked-labelstyle-eb6420 {  background-color: #eb6420 !important;  color: #fff !important;}.labelstyle-eb6420.selected {  background-color: #eb6420 !important;  color: #fff !important;}.label-select-menu .labelstyle-eb6420.selected {  background:rgba(235, 100, 32, 0.12) !important;  color: #994114 !important;}
+
+span.labelstyle-0088cc, .linked-labelstyle-0088cc {  background-color: #0088cc !important;  color: #fff !important;}.labelstyle-0088cc.selected {  background-color: #0088cc !important;  color: #fff !important;}.label-select-menu .labelstyle-0088cc.selected {  background:rgba(0, 136, 204, 0.12) !important;  color: #006599 !important;}
+
+span.labelstyle-005299, .linked-labelstyle-005299 {  background-color: #005299 !important;  color: #fff !important;}.labelstyle-005299.selected {  background-color: #005299 !important;  color: #fff !important;}.label-select-menu .labelstyle-005299.selected {  background:rgba(0, 82, 153, 0.12) !important;  color: #005199 !important;}
+
+span.labelstyle-4bb14b, .linked-labelstyle-4bb14b {  background-color: #4bb14b !important;  color: #fff !important;}.labelstyle-4bb14b.selected {  background-color: #4bb14b !important;  color: #fff !important;}.label-select-menu .labelstyle-4bb14b.selected {  background:rgba(75, 177, 75, 0.12) !important;  color: #409940 !important;}
+
+span.labelstyle-eeeeee, .linked-labelstyle-eeeeee {  background-color: #eeeeee !important;  color: #333333 !important;}.labelstyle-eeeeee.selected {  background-color: #eeeeee !important;  color: #333333 !important;}.label-select-menu .labelstyle-eeeeee.selected {  background:rgba(238, 238, 238, 0.12) !important;  color: #999999 !important;}
+
+span.labelstyle-bfe5bf, .linked-labelstyle-bfe5bf {  background-color: #bfe5bf !important;  color: #2a332a !important;}.labelstyle-bfe5bf.selected {  background-color: #bfe5bf !important;  color: #2a332a !important;}.label-select-menu .labelstyle-bfe5bf.selected {  background:rgba(191, 229, 191, 0.12) !important;  color: #7f997f !important;}
+
+span.labelstyle-ffc40d, .linked-labelstyle-ffc40d {  background-color: #ffc40d !important;  color: #332702 !important;}.labelstyle-ffc40d.selected {  background-color: #ffc40d !important;  color: #332702 !important;}.label-select-menu .labelstyle-ffc40d.selected {  background:rgba(255, 196, 13, 0.12) !important;  color: #997507 !important;}
+
+span.labelstyle-444444, .linked-labelstyle-444444 {  background-color: #444444 !important;  color: #fff !important;}.labelstyle-444444.selected {  background-color: #444444 !important;  color: #fff !important;}.label-select-menu .labelstyle-444444.selected {  background:rgba(68, 68, 68, 0.12) !important;  color: #999999 !important;}
+
+span.labelstyle-de4f4f, .linked-labelstyle-de4f4f {  background-color: #de4f4f !important;  color: #fff !important;}.labelstyle-de4f4f.selected {  background-color: #de4f4f !important;  color: #fff !important;}.label-select-menu .labelstyle-de4f4f.selected {  background:rgba(222, 79, 79, 0.12) !important;  color: #993636 !important;}
+
+span.labelstyle-000000, .linked-labelstyle-000000 {  background-color: #000000 !important;  color: #fff !important;}.labelstyle-000000.selected {  background-color: #000000 !important;  color: #fff !important;}.label-select-menu .labelstyle-000000.selected {  background:rgba(247, 247, 247, 1.0) !important;  color: #666666 !important;}
+
+span.labelstyle-d9534f, .linked-labelstyle-d9534f {  background-color: #d9534f !important;  color: #fff !important;}.labelstyle-d9534f.selected {  background-color: #d9534f !important;  color: #fff !important;}.label-select-menu .labelstyle-d9534f.selected {  background:rgba(217, 83, 79, 0.12) !important;  color: #983a37 !important;}
+  </style>
+
+  <meta name="description" content="bootstrap - The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.">
+  <meta name="go-import" content="github.com/twbs/bootstrap git https://github.com/twbs/bootstrap.git">
+
+  <meta content="2918581" name="octolytics-dimension-user_id" /><meta content="twbs" name="octolytics-dimension-user_login" /><meta content="2126244" name="octolytics-dimension-repository_id" /><meta content="twbs/bootstrap" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="2126244" name="octolytics-dimension-repository_network_root_id" /><meta content="twbs/bootstrap" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="https://github.com/twbs/bootstrap/commits/6eec5776bef65048b3efa5935b395273302bc0fa.atom" rel="alternate" title="Recent Commits to bootstrap:6eec5776bef65048b3efa5935b395273302bc0fa" type="application/atom+xml">
+
+
+  </head>
+
+
+  <body class="logged-in   env-production windows vis-public">
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"></div>
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+
+    
+    
+    
+
+
+
+        <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <svg aria-hidden="true" class="octicon octicon-mark-github" height="28" role="img" version="1.1" viewBox="0 0 16 16" width="28"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59 0.4 0.07 0.55-0.17 0.55-0.38 0-0.19-0.01-0.82-0.01-1.49-2.01 0.37-2.53-0.49-2.69-0.94-0.09-0.23-0.48-0.94-0.82-1.13-0.28-0.15-0.68-0.52-0.01-0.53 0.63-0.01 1.08 0.58 1.23 0.82 0.72 1.21 1.87 0.87 2.33 0.66 0.07-0.52 0.28-0.87 0.51-1.07-1.78-0.2-3.64-0.89-3.64-3.95 0-0.87 0.31-1.59 0.82-2.15-0.08-0.2-0.36-1.02 0.08-2.12 0 0 0.67-0.21 2.2 0.82 0.64-0.18 1.32-0.27 2-0.27 0.68 0 1.36 0.09 2 0.27 1.53-1.04 2.2-0.82 2.2-0.82 0.44 1.1 0.16 1.92 0.08 2.12 0.51 0.56 0.82 1.27 0.82 2.15 0 3.07-1.87 3.75-3.65 3.95 0.29 0.25 0.54 0.73 0.54 1.48 0 1.07-0.01 1.93-0.01 2.2 0 0.21 0.15 0.46 0.55 0.38C13.71 14.53 16 11.53 16 8 16 3.58 12.42 0 8 0z"></path></svg>
+</a>
+
+
+        <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/twbs/bootstrap/search" class="js-site-search-form" data-scoped-search-url="/twbs/bootstrap/search" data-unscoped-search-url="/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+    <label class="form-control header-search-wrapper js-chromeless-input-container">
+      <div class="header-search-scope">This repository</div>
+      <input type="text"
+        class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable"
+        data-hotkey="s"
+        name="q"
+        placeholder="Search"
+        aria-label="Search this repository"
+        data-unscoped-placeholder="Search GitHub"
+        data-scoped-placeholder="Search"
+        tabindex="1"
+        autocapitalize="off">
+    </label>
+</form></div>
+
+
+      <ul class="header-nav left" role="navigation">
+        <li class="header-nav-item">
+          <a href="/pulls" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:pulls context:user" data-hotkey="g p" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls">
+            Pull requests
+</a>        </li>
+        <li class="header-nav-item">
+          <a href="/issues" class="js-selected-navigation-item header-nav-link" data-ga-click="Header, click, Nav menu - item:issues context:user" data-hotkey="g i" data-selected-links="/issues /issues/assigned /issues/mentioned /issues">
+            Issues
+</a>        </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://gist.github.com/" data-ga-click="Header, go to gist, text:gist">Gist</a>
+          </li>
+      </ul>
+
+    
+<ul class="header-nav user-nav right" id="user-links">
+  <li class="header-nav-item">
+    
+
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link tooltipped tooltipped-s js-menu-target" href="/new"
+       aria-label="Create new…"
+       data-ga-click="Header, create new, icon:add">
+      <svg aria-hidden="true" class="octicon octicon-plus left" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg>
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <ul class="dropdown-menu dropdown-menu-sw">
+        
+<a class="dropdown-item" href="/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+
+  <a class="dropdown-item" href="/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+
+  <div class="dropdown-divider"></div>
+  <div class="dropdown-header">
+    <span title="twbs/bootstrap">This repository</span>
+  </div>
+    <a class="dropdown-item" href="/twbs/bootstrap/issues/new" data-ga-click="Header, create new issue">
+      New issue
+    </a>
+
+      </ul>
+    </div>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link name tooltipped tooltipped-sw js-menu-target" href="/Cristhoper29"
+       aria-label="View profile and more"
+       data-ga-click="Header, show menu, icon:avatar">
+      <img alt="@Cristhoper29" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/16949915?v=3&amp;s=40" width="20" />
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      <div class="dropdown-menu  dropdown-menu-sw">
+        <div class=" dropdown-header header-nav-current-user css-truncate">
+            Signed in as <strong class="css-truncate-target">Cristhoper29</strong>
+
+        </div>
+
+
+        <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="/Cristhoper29" data-ga-click="Header, go to profile, text:your profile">
+            Your profile
+          </a>
+        <a class="dropdown-item" href="/stars" data-ga-click="Header, go to starred repos, text:your stars">
+          Your stars
+        </a>
+          <a class="dropdown-item" href="/explore" data-ga-click="Header, go to explore, text:explore">
+            Explore
+          </a>
+          <a class="dropdown-item" href="/integrations" data-ga-click="Header, go to integrations, text:integrations">
+            Integrations
+          </a>
+        <a class="dropdown-item" href="https://help.github.com" data-ga-click="Header, go to help, text:help">
+          Help
+        </a>
+
+
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="/settings/profile" data-ga-click="Header, go to settings, icon:settings">
+            Settings
+          </a>
+
+          <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/logout" class="logout-form" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="q+mjwsV5WUgqTlCKrYjz5OB7xgQy3L1GZEXllXPmeYsPrsD7dq6xtNoZ+WNTS9aebYeDp1uDT42VtCH6tZjK0w==" /></div>
+            <button class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+              Sign out
+            </button>
+</form>
+      </div>
+    </div>
+  </li>
+</ul>
+
+
+    
+  </div>
+</div>
+
+
+      
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+      <div id="js-flash-container">
+</div>
+
+
+    <div role="main" class="main-content">
+        <div itemscope itemtype="http://schema.org/SoftwareSourceCode">
+    <div id="js-repo-pjax-container" data-pjax-container>
+      
+<div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+  <div class="container repohead-details-container">
+
+    
+
+<ul class="pagehead-actions">
+
+  <li>
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="uor0CbNplw8Qr0SDH9oCy7FGCMlhEe6guOWZJ12rEE1gP7aHp53Yv61DEAfJ7lgEOg/UIJpf1iNv31bY/pvbCA==" /></div>      <input class="form-control" id="repository_id" name="repository_id" type="hidden" value="2126244" />
+
+        <div class="select-menu js-menu-container js-select-menu">
+          <a href="/twbs/bootstrap/subscription"
+            class="btn btn-sm btn-with-count select-menu-button js-menu-target" role="button" tabindex="0" aria-haspopup="true"
+            data-ga-click="Repository, click Watch settings, action:pull_requests#show">
+            <span class="js-select-button">
+              <svg aria-hidden="true" class="octicon octicon-eye" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6c4.94 0 7.94-6 7.94-6S13 2 8.06 2z m-0.06 10c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4z m2-4c0 1.11-0.89 2-2 2s-2-0.89-2-2 0.89-2 2-2 2 0.89 2 2z"></path></svg>
+              Watch
+            </span>
+          </a>
+          <a class="social-count js-social-count" href="/twbs/bootstrap/watchers">
+            6,126
+          </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+            <div class="select-menu-header js-navigation-enable" tabindex="-1">
+              <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z"></path></svg>
+              <span class="select-menu-title">Notifications</span>
+            </div>
+
+              <div class="select-menu-list js-navigation-container" role="menu">
+
+                <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5L4 13 0 9l1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input checked="checked" id="do_included" name="do" type="radio" value="included" />
+                    <span class="select-menu-item-heading">Not watching</span>
+                    <span class="description">Be notified when participating or @mentioned.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6c4.94 0 7.94-6 7.94-6S13 2 8.06 2z m-0.06 10c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4z m2-4c0 1.11-0.89 2-2 2s-2-0.89-2-2 0.89-2 2-2 2 0.89 2 2z"></path></svg>
+                      Watch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5L4 13 0 9l1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_subscribed" name="do" type="radio" value="subscribed" />
+                    <span class="select-menu-item-heading">Watching</span>
+                    <span class="description">Be notified of all conversations.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6c4.94 0 7.94-6 7.94-6S13 2 8.06 2z m-0.06 10c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4z m2-4c0 1.11-0.89 2-2 2s-2-0.89-2-2 0.89-2 2-2 2 0.89 2 2z"></path></svg>
+                      Unwatch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5L4 13 0 9l1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5z"></path></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_ignore" name="do" type="radio" value="ignore" />
+                    <span class="select-menu-item-heading">Ignoring</span>
+                    <span class="description">Never be notified.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-mute" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8 2.81v10.38c0 0.67-0.81 1-1.28 0.53L3 10H1c-0.55 0-1-0.45-1-1V7c0-0.55 0.45-1 1-1h2l3.72-3.72c0.47-0.47 1.28-0.14 1.28 0.53z m7.53 3.22l-1.06-1.06-1.97 1.97-1.97-1.97-1.06 1.06 1.97 1.97-1.97 1.97 1.06 1.06 1.97-1.97 1.97 1.97 1.06-1.06-1.97-1.97 1.97-1.97z"></path></svg>
+                      Stop ignoring
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+</form>
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container ">
+
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/twbs/bootstrap/unstar" class="js-toggler-form starred" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="uwmrRzXgmCKwqQLsVuigRkHXqpCo4Vd6IP2qcA1cJdYtuopgvCbuK/aKm/cxQ0Q40OuJ92W2X4Aldbhnwn3APg==" /></div>
+      <button
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Unstar this repository" title="Unstar twbs/bootstrap"
+        data-ga-click="Repository, click unstar button, action:pull_requests#show; text:Unstar">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 6l-4.9-0.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14l4.33-2.33 4.33 2.33L10.4 9.26 14 6z"></path></svg>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="/twbs/bootstrap/stargazers">
+          94,067
+        </a>
+</form>
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/twbs/bootstrap/star" class="js-toggler-form unstarred" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="lKKrikmGc4/+k2P9c21oejKWwG6MZ5EfrwL19Zjn4pkewMNI0j/XjteuBljPD6roVmuZFfp2WRqR5LKOm3Bf1A==" /></div>
+      <button
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Star this repository" title="Star twbs/bootstrap"
+        data-ga-click="Repository, click star button, action:pull_requests#show; text:Star">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M14 6l-4.9-0.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14l4.33-2.33 4.33 2.33L10.4 9.26 14 6z"></path></svg>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="/twbs/bootstrap/stargazers">
+          94,067
+        </a>
+</form>  </div>
+
+  </li>
+
+  <li>
+          <a href="#fork-destination-box" class="btn btn-sm btn-with-count"
+              title="Fork your own copy of twbs/bootstrap to your account"
+              aria-label="Fork your own copy of twbs/bootstrap to your account"
+              rel="facebox"
+              data-ga-click="Repository, show fork modal, action:pull_requests#show; text:Fork">
+              <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" role="img" version="1.1" viewBox="0 0 10 16" width="10"><path d="M8 1c-1.11 0-2 0.89-2 2 0 0.73 0.41 1.38 1 1.72v1.28L5 8 3 6v-1.28c0.59-0.34 1-0.98 1-1.72 0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72v1.78l3 3v1.78c-0.59 0.34-1 0.98-1 1.72 0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72V9.5l3-3V4.72c0.59-0.34 1-0.98 1-1.72 0-1.11-0.89-2-2-2zM2 4.2c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m3 10c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m3-10c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z"></path></svg>
+            Fork
+          </a>
+
+          <div id="fork-destination-box" style="display: none;">
+            <h2 class="facebox-header" data-facebox-id="facebox-header">Where should we fork this repository?</h2>
+            <include-fragment src=""
+                class="js-fork-select-fragment fork-select-fragment"
+                data-url="/twbs/bootstrap/fork?fragment=1">
+              <img alt="Loading" height="64" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-128.gif" width="64" />
+            </include-fragment>
+          </div>
+
+    <a href="/twbs/bootstrap/network" class="social-count">
+      40,471
+    </a>
+  </li>
+</ul>
+
+    <h1 class="entry-title public ">
+  <svg aria-hidden="true" class="octicon octicon-repo" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M4 9h-1v-1h1v1z m0-3h-1v1h1v-1z m0-2h-1v1h1v-1z m0-2h-1v1h1v-1z m8-1v12c0 0.55-0.45 1-1 1H6v2l-1.5-1.5-1.5 1.5V14H1c-0.55 0-1-0.45-1-1V1C0 0.45 0.45 0 1 0h10c0.55 0 1 0.45 1 1z m-1 10H1v2h2v-1h3v1h5V11z m0-10H2v9h9V1z"></path></svg>
+  <span class="author" itemprop="author"><a href="/twbs" class="url fn" rel="author">twbs</a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong itemprop="name"><a href="/twbs/bootstrap" data-pjax="#js-repo-pjax-container">bootstrap</a></strong>
+
+</h1>
+
+  </div>
+  <div class="container">
+    
+<nav class="reponav js-repo-nav js-sidenav-container-pjax"
+     itemscope
+     itemtype="http://schema.org/BreadcrumbList"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container">
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="/twbs/bootstrap" class="js-selected-navigation-item reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /twbs/bootstrap" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-code" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M9.5 3l-1.5 1.5 3.5 3.5L8 11.5l1.5 1.5 4.5-5L9.5 3zM4.5 3L0 8l4.5 5 1.5-1.5L2.5 8l3.5-3.5L4.5 3z"></path></svg>
+      <span itemprop="name">Code</span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+    <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+      <a href="/twbs/bootstrap/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /twbs/bootstrap/issues" itemprop="url">
+        <svg aria-hidden="true" class="octicon octicon-issue-opened" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7S10.14 13.7 7 13.7 1.3 11.14 1.3 8s2.56-5.7 5.7-5.7m0-1.3C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7S10.86 1 7 1z m1 3H6v5h2V4z m0 6H6v2h2V10z"></path></svg>
+        <span itemprop="name">Issues</span>
+        <span class="counter">391</span>
+        <meta itemprop="position" content="2">
+</a>    </span>
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="/twbs/bootstrap/pulls" aria-selected="true" class="js-selected-navigation-item selected reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /twbs/bootstrap/pulls" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M11 11.28c0-1.73 0-6.28 0-6.28-0.03-0.78-0.34-1.47-0.94-2.06s-1.28-0.91-2.06-0.94c0 0-1.02 0-1 0V0L4 3l3 3V4h1c0.27 0.02 0.48 0.11 0.69 0.31s0.3 0.42 0.31 0.69v6.28c-0.59 0.34-1 0.98-1 1.72 0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72z m-1 2.92c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2zM4 3c0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72 0 1.55 0 5.56 0 6.56-0.59 0.34-1 0.98-1 1.72 0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72V4.72c0.59-0.34 1-0.98 1-1.72z m-0.8 10c0 0.66-0.55 1.2-1.2 1.2s-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2z m-1.2-8.8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z"></path></svg>
+      <span itemprop="name">Pull requests</span>
+      <span class="counter">144</span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+
+  <a href="/twbs/bootstrap/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="pulse /twbs/bootstrap/pulse">
+    <svg aria-hidden="true" class="octicon octicon-pulse" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M11.5 8L8.8 5.4 6.6 8.5 5.5 1.6 2.38 8H0V10h3.6L4.5 8.2l0.9 5.4L9 8.5l1.6 1.5H14V8H11.5z"></path></svg>
+    Pulse
+</a>
+  <a href="/twbs/bootstrap/graphs" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors /twbs/bootstrap/graphs">
+    <svg aria-hidden="true" class="octicon octicon-graph" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M16 14v1H0V0h1v14h15z m-11-1H3V8h2v5z m4 0H7V3h2v10z m4 0H11V6h2v7z"></path></svg>
+    Graphs
+</a>
+
+</nav>
+
+  </div>
+</div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+    
+
+<!-- base sha1: &quot;1a906a8a1919215b0aa677983a87c98ddde80c1f&quot; -->
+<!-- head sha1: &quot;6eec5776bef65048b3efa5935b395273302bc0fa&quot; -->
+
+
+<div class="issues-listing" data-pjax>
+    <div class="clearfix js-issues-results">
+    
+  <div
+    id="partial-discussion-header"
+    class="gh-header js-details-container js-socket-channel js-updatable-content pull request"
+    data-channel="twbs/bootstrap:pull_request:63997597"
+    data-url="/twbs/bootstrap/pull/19605/show_partial?partial=pull_requests%2Ftitle">
+
+  <div class="gh-header-show ">
+      <div class="gh-header-actions">
+      </div>
+
+    <h1 class="gh-header-title">
+      <span class="js-issue-title">Use vanilla npm shrinkwrap instead of uber/npm-shrinkwrap</span>
+      <span class="gh-header-number">#19605</span>
+    </h1>
+  </div>
+
+
+  <div class="flex-table gh-header-meta">
+    <div class="flex-table-item">
+        <div class="state state-merged">
+          <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M11 11.28c0-1.73 0-6.28 0-6.28-0.03-0.78-0.34-1.47-0.94-2.06s-1.28-0.91-2.06-0.94c0 0-1.02 0-1 0V0L4 3l3 3V4h1c0.27 0.02 0.48 0.11 0.69 0.31s0.3 0.42 0.31 0.69v6.28c-0.59 0.34-1 0.98-1 1.72 0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72z m-1 2.92c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2zM4 3c0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72 0 1.55 0 5.56 0 6.56-0.59 0.34-1 0.98-1 1.72 0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72V4.72c0.59-0.34 1-0.98 1-1.72z m-0.8 10c0 0.66-0.55 1.2-1.2 1.2s-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2z m-1.2-8.8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z"></path></svg>
+          Merged
+        </div>
+    </div>
+    <div class="flex-table-item flex-table-item-primary">
+          <a href="/cvrebert" class="author pull-header-username css-truncate css-truncate-target expandable">
+    cvrebert
+  </a>
+  merged 2 commits into
+
+<span class="commit-ref current-branch css-truncate user-select-contain expandable" title="twbs/bootstrap:master"><span class="css-truncate-target">master</span></span>
+
+from
+
+<span class="commit-ref current-branch css-truncate user-select-contain expandable" title="twbs/bootstrap:fix-18559-v3"><span class="css-truncate-target">fix-18559-v3</span></span>
+
+
+  <time datetime="2016-03-24T07:30:03Z" is="relative-time">Mar 24, 2016</time>
+
+    </div>
+  </div>
+</div>
+
+
+    <div class="tabnav tabnav-pr">
+    <div class="tabnav-extra right">
+      <span class="diffstat" id="diffstat">
+        <span class="text-diff-added">
+          +741
+        </span>
+        <span class="text-diff-deleted">
+          −1,176
+        </span>
+        <span class="tooltipped tooltipped-s" aria-label="1,917 lines changed">
+          <span class="block-diff-added"></span><span class="block-diff-deleted"></span><span class="block-diff-deleted"></span><span class="block-diff-deleted"></span><span class="block-diff-neutral"></span>
+        </span>
+      </span>
+    </div>
+
+  <nav class="tabnav-tabs">
+    <a href="/twbs/bootstrap/pull/19605" class="tabnav-tab selected js-pjax-history-navigate">
+      <svg aria-hidden="true" class="octicon octicon-comment-discussion" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M15 2H6c-0.55 0-1 0.45-1 1v2H1c-0.55 0-1 0.45-1 1v6c0 0.55 0.45 1 1 1h1v3l3-3h4c0.55 0 1-0.45 1-1V10h1l3 3V10h1c0.55 0 1-0.45 1-1V3c0-0.55-0.45-1-1-1zM9 12H4.5l-1.5 1.5v-1.5H1V6h4v3c0 0.55 0.45 1 1 1h3v2z m6-3H13v1.5l-1.5-1.5H6V3h9v6z"></path></svg>
+      Conversation
+
+      <span id="conversation_tab_counter" class="counter">
+        0
+      </span>
+    </a>
+
+    <a href="/twbs/bootstrap/pull/19605/commits" class="tabnav-tab  js-pjax-history-navigate">
+      <svg aria-hidden="true" class="octicon octicon-git-commit" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z"></path></svg>
+      Commits
+
+      <span id="commits_tab_counter" class="counter">
+        2
+      </span>
+    </a>
+
+      <link rel="pjax-prefetch" href="/twbs/bootstrap/pull/19605/files">
+    <a href="/twbs/bootstrap/pull/19605/files" class="tabnav-tab  js-pjax-history-navigate">
+      <svg aria-hidden="true" class="octicon octicon-diff" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M6 7h2v1H6v2h-1V8H3v-1h2V5h1v2zM3 13h5v-1H3v1z m4.5-11l3.5 3.5v9.5c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h6.5z m2.5 4L7 3H1v12h9V6zM8.5 0S3 0 3 0v1h5l4 4v8h1V4.5L8.5 0z"></path></svg>
+      Files changed
+
+      <span id="files_tab_counter" class="counter">
+          3
+      </span>
+    </a>
+  </nav>
+</div>
+
+
+    <div id="discussion_bucket" class="clearfix pull-request-tab-content is-visible">
+      <div class="discussion-sidebar js-sticky">
+  <div id="partial-discussion-sidebar"
+     class="js-socket-channel js-updatable-content"
+     data-channel="twbs/bootstrap:pull_request:63997597"
+     data-url="/twbs/bootstrap/issues/19605/show_partial?partial=issues%2Fsidebar">
+     <div class="discussion-sidebar-item sidebar-labels js-discussion-sidebar-item">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/twbs/bootstrap/issues/19605?partial=issues%2Fsidebar%2Fshow%2Flabels" class="js-issue-sidebar-form" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="WKgyUCKVxeg/Y7iWMWTcz0PNjCGHDBzCQszBVwy7WWGfq4tGdUg/hR/TNABkUO1b/3sqtY5gzpW5GHbIZk/CdA==" /></div>
+      
+  <h3 class="discussion-sidebar-heading">
+    Labels
+  </h3>
+
+
+    <div class="labels css-truncate">
+      <a href="/twbs/bootstrap/labels/grunt" class="label css-truncate-target linked-labelstyle-eeeeee" title="grunt">grunt</a>
+  <a href="/twbs/bootstrap/labels/v3" class="label css-truncate-target linked-labelstyle-d9534f" title="v3">v3</a>
+
+</div>
+
+</form></div>
+
+     <div class="discussion-sidebar-item sidebar-milestone js-discussion-sidebar-item">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/twbs/bootstrap/issues/19605/set_milestone?partial=issues%2Fsidebar%2Fshow%2Fmilestone" class="js-issue-sidebar-form" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="Ey0fbvnY8Ri3xJnmC5JbtANn9qpL0AhfU6qFUBYopiEeikqkzIlx1zaB7wUya39/m+PukAsoPvcxcZS28FukBw==" /></div>
+    
+  <h3 class="discussion-sidebar-heading">
+    Milestone
+  </h3>
+
+
+      <span class="progress-bar"><span class="progress" style="width: 76.76537585421413%">&nbsp;</span></span>
+  <a title="v4.0.0-alpha.3" href="/twbs/bootstrap/milestones/v4.0.0-alpha.3" class="milestone-name css-truncate">
+    <span class="css-truncate-target">v4.0.0-alpha.3</span>
+  </a>
+
+</form></div>
+
+
+       <div class="discussion-sidebar-item sidebar-assignee js-discussion-sidebar-item">
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/twbs/bootstrap/issues/19605?partial=issues%2Fsidebar%2Fshow%2Fassignee" class="js-issue-sidebar-form" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="6sv8Rx4yMhZHhLwIc+XZwctO0+L/2E/L58eYaaedFyTI0/rWu2Q+ipo84dXySNapgaIekASpKTpaJPqVPMBJSA==" /></div>
+    
+  <h3 class="discussion-sidebar-heading">
+    Assignee
+  </h3>
+
+
+    <span class="css-truncate">
+      No one assigned
+</span>
+
+</form></div>
+
+
+       <div class="discussion-sidebar-item sidebar-notifications">
+    <h3 class="discussion-sidebar-heading">Notifications</h3>
+    <div class="thread-subscription-status js-thread-subscription-status js-socket-channel js-updatable-content"
+  data-channel="twbs/bootstrap:thread-subscription:143171017:Cristhoper29"
+  data-url="/notifications/thread_subscription?repository_id=2126244&amp;thread_class=Issue&amp;thread_id=143171017">
+
+  <svg aria-hidden="true" class="octicon octicon-radio-tower" height="32" role="img" version="1.1" viewBox="0 0 16 16" width="32"><path d="M4.79 6.11c0.25-0.25 0.25-0.67 0-0.92-0.32-0.33-0.48-0.76-0.48-1.19 0-0.43 0.16-0.86 0.48-1.19 0.25-0.26 0.25-0.67 0-0.92-0.12-0.13-0.29-0.19-0.45-0.19-0.16 0-0.33 0.06-0.45 0.19-0.57 0.58-0.85 1.35-0.85 2.11 0 0.76 0.29 1.53 0.85 2.11C4.14 6.36 4.55 6.36 4.79 6.11zM2.33 0.52c-0.13-0.13-0.29-0.19-0.46-0.19-0.16 0-0.33 0.06-0.46 0.19C0.48 1.48 0.01 2.74 0.01 3.99 0.01 5.25 0.48 6.51 1.41 7.47c0.25 0.26 0.66 0.26 0.91 0 0.25-0.26 0.25-0.68 0-0.94-0.68-0.7-1.02-1.62-1.02-2.54s0.34-1.84 1.02-2.54C2.58 1.2 2.58 0.78 2.33 0.52zM8.02 5.62c0.9 0 1.62-0.73 1.62-1.62 0-0.9-0.73-1.62-1.62-1.62-0.9 0-1.62 0.73-1.62 1.62C6.39 4.89 7.12 5.62 8.02 5.62zM14.59 0.53c-0.25-0.26-0.66-0.26-0.91 0-0.25 0.26-0.25 0.68 0 0.94 0.68 0.7 1.02 1.62 1.02 2.54 0 0.92-0.34 1.83-1.02 2.54-0.25 0.26-0.25 0.68 0 0.94 0.13 0.13 0.29 0.19 0.46 0.19 0.16 0 0.33-0.06 0.46-0.19 0.93-0.96 1.4-2.22 1.4-3.48C15.99 2.75 15.52 1.49 14.59 0.53zM8.02 6.92L8.02 6.92c-0.41 0-0.83-0.1-1.2-0.3L3.67 14.99h1.49l0.86-1h4l0.84 1h1.49L9.21 6.62C8.83 6.82 8.43 6.92 8.02 6.92zM8.01 7.4L9.02 11H7.02L8.01 7.4zM6.02 12.99l1-1h2l1 1H6.02zM11.21 1.89c-0.25 0.25-0.25 0.67 0 0.92 0.32 0.33 0.48 0.76 0.48 1.19 0 0.43-0.16 0.86-0.48 1.19-0.25 0.26-0.25 0.67 0 0.92 0.12 0.13 0.29 0.19 0.45 0.19 0.16 0 0.32-0.06 0.45-0.19 0.57-0.58 0.85-1.35 0.85-2.11 0-0.76-0.28-1.53-0.85-2.11C11.86 1.64 11.45 1.64 11.21 1.89z"></path></svg>
+
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/notifications/thread" class="thread-subscribe-form" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="6JZn6JXKDVj6TjiQodTmhOQKCr7UrCKskIbKzyCyn/6TUbrEcONEhyPx7h/mHF2i3tDx5Jd6F2ZgtPxp//+4/Q==" /></div>    <input type="hidden" name="repository_id" value="2126244">
+    <input type="hidden" name="thread_id" value="143171017">
+    <input type="hidden" name="thread_class" value="Issue">
+    <input type="hidden" name="id" value="subscribe">
+
+    <button class="btn btn-sm" type="submit" data-disable-with>
+      <svg aria-hidden="true" class="octicon octicon-unmute" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M11 8.02c0 1.09-0.45 2.09-1.17 2.83l-0.67-0.67c0.55-0.56 0.89-1.31 0.89-2.16s-0.34-1.61-0.89-2.16l0.67-0.67c0.72 0.72 1.17 1.72 1.17 2.83zM6.72 2.28L3 6H1c-0.55 0-1 0.45-1 1v2c0 0.55 0.45 1 1 1h2l3.72 3.72c0.47 0.47 1.28 0.14 1.28-0.53V2.81c0-0.67-0.81-1-1.28-0.53z m5.94 0.08l-0.67 0.67c1.28 1.28 2.06 3.03 2.06 4.98 0 1.94-0.78 3.7-2.06 4.98l0.67 0.67c1.45-1.45 2.34-3.45 2.34-5.66 0-2.22-0.89-4.22-2.34-5.66z m-1.41 1.41l-0.69 0.67c0.92 0.92 1.48 2.19 1.48 3.58s-0.56 2.66-1.48 3.56l0.69 0.67c1.08-1.08 1.75-2.58 1.75-4.23s-0.67-3.16-1.75-4.25z"></path></svg>
+      Subscribe
+    </button>
+</form>
+  <p class="reason text-small text-muted">You’re not receiving notifications from this thread.</p>
+</div>
+
+  </div>
+
+     <div id="partial-users-participants" class="discussion-sidebar-item">
+  <div class="participation">
+
+    <h3 class="discussion-sidebar-heading">
+      1 participant
+    </h3>
+    <div class="participation-avatars">
+        <a class="participant-avatar tooltipped tooltipped-s" aria-label="cvrebert" href="/cvrebert"><img alt="@cvrebert" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/419884?v=3&amp;s=40" width="20" /> </a>
+    </div>
+  </div>
+</div>
+
+
+     
+</div>
+
+
+</div>
+
+<div class="discussion-timeline pull-discussion-timeline js-pull-discussion-timeline js-quote-selection-container ">
+  <div class="js-discussion js-socket-channel" data-channel="twbs/bootstrap:marked-as-read:63997597">
+    
+
+  <div class="timeline-comment-wrapper js-comment-container">
+    <a href="/cvrebert"><img alt="@cvrebert" class="timeline-comment-avatar" height="48" src="https://avatars0.githubusercontent.com/u/419884?v=3&amp;s=96" width="48" /></a>
+    <div id="issue-143171017"
+     class="comment previewable-edit timeline-comment js-comment js-task-list-container "
+     data-body-version="29536b715fb167400a39e1540df94eb1">
+
+  <div class="timeline-comment-header ">
+
+    <div class="timeline-comment-actions">
+          <span class="reaction-popover-container dropdown js-socket-channel js-updatable-content js-reaction-popover-container js-comment-header-reaction-button js-menu-container"
+    >
+    <button class="btn-link timeline-comment-action tooltipped tooltipped-n js-menu-target"  aria-label="Add your reaction">
+      <svg aria-hidden="true" class="octicon octicon-plus add-reaction-plus-icon" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg>
+      <svg aria-hidden="true" class="octicon octicon-smiley" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8S12.42 0 8 0z m4.81 12.81c-0.63 0.63-1.36 1.11-2.17 1.45-0.83 0.36-1.72 0.53-2.64 0.53s-1.81-0.17-2.64-0.53c-0.81-0.34-1.55-0.83-2.17-1.45s-1.11-1.36-1.45-2.17c-0.36-0.83-0.53-1.72-0.53-2.64s0.17-1.81 0.53-2.64c0.34-0.81 0.83-1.55 1.45-2.17s1.36-1.11 2.17-1.45c0.83-0.36 1.72-0.53 2.64-0.53s1.81 0.17 2.64 0.53c0.81 0.34 1.55 0.83 2.17 1.45s1.11 1.36 1.45 2.17c0.36 0.83 0.53 1.72 0.53 2.64s-0.17 1.81-0.53 2.64c-0.34 0.81-0.83 1.55-1.45 2.17zM4 5.8v-0.59c0-0.66 0.53-1.19 1.2-1.19h0.59c0.66 0 1.19 0.53 1.19 1.19v0.59c0 0.67-0.53 1.2-1.19 1.2h-0.59c-0.67 0-1.2-0.53-1.2-1.2z m5 0v-0.59c0-0.66 0.53-1.19 1.2-1.19h0.59c0.66 0 1.19 0.53 1.19 1.19v0.59c0 0.67-0.53 1.2-1.19 1.2h-0.59c-0.67 0-1.2-0.53-1.2-1.2z m4 4.2c-0.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-0.14-0.39 0.23-1 0.66-1h8.59c0.41 0 0.89 0.61 0.75 1z"></path></svg>
+    </button>
+    <div class="dropdown-menu-content anim-scale-in js-menu-content">
+  <div class="dropdown-menu dropdown-menu-sw add-reaction-popover js-add-reaction-popover">
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/twbs/bootstrap/reactions/update" class="reaction-popover-form js-pick-reaction" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" data-remote="true" data-type="json" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="8Hy1J/CRkxUEv4f7KMKAnq0IYVzLCfP7H7k3cusvULxY+ERt2WMMUgGwlOso3l2PYlY6s8KiVp+WI5bVbZNXFg==" /></div>
+      <p class="text-muted mx-3 my-2">
+        <span class="js-reaction-description">Pick your reaction</span>
+        <img alt="" class="loading-spinner" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+      </p>
+
+      <div class="dropdown-divider"></div>
+
+      <div class="add-reactions-options mx-2 mb-1">
+        <input type="hidden" name="reaction[subject_id]" value="143171017">
+        <input type="hidden" name="reaction[subject_type]" value="Issue">
+
+          <button type="submit"
+            class="btn-link add-reactions-options-item js-reaction-option-item"
+            data-reaction-label="+1"
+            name="reaction[content]"
+            value="+1 react">
+            <g-emoji alias="+1" class="emoji" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png">
+              👍
+            </g-emoji>
+          </button>
+          <button type="submit"
+            class="btn-link add-reactions-options-item js-reaction-option-item"
+            data-reaction-label="-1"
+            name="reaction[content]"
+            value="-1 react">
+            <g-emoji alias="-1" class="emoji" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44e.png">
+              👎
+            </g-emoji>
+          </button>
+          <button type="submit"
+            class="btn-link add-reactions-options-item js-reaction-option-item"
+            data-reaction-label="Laugh"
+            name="reaction[content]"
+            value="smile react">
+            <g-emoji alias="smile" class="emoji" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png">
+              😄
+            </g-emoji>
+          </button>
+          <button type="submit"
+            class="btn-link add-reactions-options-item js-reaction-option-item"
+            data-reaction-label="Confused"
+            name="reaction[content]"
+            value="thinking_face react">
+            <g-emoji alias="thinking_face" class="emoji" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f615.png">
+              😕
+            </g-emoji>
+          </button>
+          <button type="submit"
+            class="btn-link add-reactions-options-item js-reaction-option-item"
+            data-reaction-label="Heart"
+            name="reaction[content]"
+            value="heart react">
+            <g-emoji alias="heart" class="emoji" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png">
+              ❤️
+            </g-emoji>
+          </button>
+          <button type="submit"
+            class="btn-link add-reactions-options-item js-reaction-option-item"
+            data-reaction-label="Hooray"
+            name="reaction[content]"
+            value="tada react">
+            <g-emoji alias="tada" class="emoji" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png">
+              🎉
+            </g-emoji>
+          </button>
+      </div>
+</form>  </div>
+</div>
+
+  </span>
+
+    </div>
+
+    <span class="timeline-comment-label">Bootstrap member</span>
+
+
+  <div class="timeline-comment-header-text">
+
+    <strong>
+      <a href="/cvrebert" class="author">cvrebert</a>
+    </strong>
+
+    commented
+
+    <a href="#issue-143171017" class="timestamp">
+      <time datetime="2016-03-24T07:14:49Z" is="relative-time">Mar 24, 2016</time>
+    </a>
+  </div>
+</div>
+
+
+  <div class="comment-content">
+
+    <div class="edit-comment-hide">
+      <div class="comment-body markdown-body markdown-format js-comment-body">
+          <p>Ports <a href="https://github.com/twbs/bootstrap/pull/19604" class="issue-link js-issue-link" data-url="https://github.com/twbs/bootstrap/issues/19604" data-id="143167258" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#19604</a> to v3.<br>
+Fixes <a href="https://github.com/twbs/bootstrap/issues/18559" class="issue-link js-issue-link" data-url="https://github.com/twbs/bootstrap/issues/18559" data-id="121885706" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#18559</a> for v3.</p>
+      </div>
+    </div>
+
+  </div>
+
+    
+<div class="js-socket-channel js-updatable-content comment-reactions  js-reactions-container"
+
+
+  >
+</div>
+
+</div>
+
+  </div>
+  
+<div class="discussion-item discussion-commits" id="commits-pushed-0af30aa">
+    <div class="discussion-item-header">
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-repo-push" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M4 3h-1v-1h1v1z m-1 2h1v-1h-1v1z m4 0L4 9h2v7h2V9h2L7 5zM11 0H1C0.45 0 0 0.45 0 1v12c0 0.55 0.45 1 1 1h4v-1H1V11h4v-1H2V1h9.02l-0.02 9H9v1h2v2H9v1h2c0.55 0 1-0.45 1-1V1c0-0.55-0.45-1-1-1z"></path></svg>
+      </span>
+      <a href="/cvrebert" class="author" rel="contributor" truncate="true">cvrebert</a>
+      added
+        some commits
+      <a href="#commits-pushed-0af30aa" class="timestamp">
+        <time datetime="2016-03-24T06:56:46Z" is="relative-time">Mar 23, 2016</time>
+      </a>
+    </div>
+  <div class="discussion-item-body">
+    <table class="timeline-commits">
+        
+<tr class="commit js-details-container js-socket-channel js-updatable-content" data-channel="twbs/bootstrap:commit:0af30aa65ea26c7b99075d2723851265cbc529db" data-url="/twbs/bootstrap/pull/19605/commit/0af30aa65ea26c7b99075d2723851265cbc529db/show_partial?partial=commit%2Fpull_condensed">
+  <td class="commit-icon">
+    <svg aria-hidden="true" class="octicon octicon-git-commit" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z"></path></svg>
+  </td>
+
+  <td class="commit-gravatar">
+      <a href="/cvrebert">
+    <img alt="@cvrebert" class="avatar avatar-small" height="16" src="https://avatars3.githubusercontent.com/u/419884?v=3&amp;s=32" width="16" />
+  </a>
+
+  </td>
+
+  <td class="commit-author">
+    <strong><a href="/cvrebert" class="author" rel="contributor">cvrebert</a></strong>
+  </td>
+
+  <td class="commit-message">
+    <code><a href="/twbs/bootstrap/pull/19605/commits/0af30aa65ea26c7b99075d2723851265cbc529db" class="message">Use vanilla npm shrinkwrap instead of uber/npm-shrinkwrap; fixes <a href="https://github.com/twbs/bootstrap/issues/18559" class="issue-link js-issue-link" data-url="https://github.com/twbs/bootstrap/issues/18559" data-id="121885706" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#18559</a></a></code>
+
+      <span class="hidden-text-expander inline">
+        <a href="#" class="js-details-target">&hellip;</a>
+      </span>
+      <div class="commit-desc"><pre class="text-small">Ports <a href="https://github.com/twbs/bootstrap/pull/19604" class="issue-link js-issue-link" data-url="https://github.com/twbs/bootstrap/issues/19604" data-id="143167258" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">#19604</a> to v3.
+
+Special thanks to <a href="https://github.com/kikinteractive" class="user-mention">@kikinteractive</a>, <a href="https://github.com/azer" class="user-mention">@azer</a>, and <a href="https://github.com/npm" class="user-mention">@npm</a>.</pre></div>
+
+  </td>
+
+  <td class="commit-sig-status">
+    
+
+  </td>
+
+  <td class="commit-ci-status">
+      
+
+  </td>
+
+  <td class="commit-meta">
+    <code><a href="/twbs/bootstrap/pull/19605/commits/0af30aa65ea26c7b99075d2723851265cbc529db" class="commit-id">0af30aa</a></code>
+  </td>
+</tr>
+
+        
+<tr class="commit js-details-container js-socket-channel js-updatable-content" data-channel="twbs/bootstrap:commit:6eec5776bef65048b3efa5935b395273302bc0fa" data-url="/twbs/bootstrap/pull/19605/commit/6eec5776bef65048b3efa5935b395273302bc0fa/show_partial?partial=commit%2Fpull_condensed">
+  <td class="commit-icon">
+    <svg aria-hidden="true" class="octicon octicon-git-commit" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M10.86 7c-0.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H0v2h3.14c0.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3h3.14V7H10.86zM7 10.2c-1.22 0-2.2-0.98-2.2-2.2s0.98-2.2 2.2-2.2 2.2 0.98 2.2 2.2-0.98 2.2-2.2 2.2z"></path></svg>
+  </td>
+
+  <td class="commit-gravatar">
+      <a href="/cvrebert">
+    <img alt="@cvrebert" class="avatar avatar-small" height="16" src="https://avatars3.githubusercontent.com/u/419884?v=3&amp;s=32" width="16" />
+  </a>
+
+  </td>
+
+  <td class="commit-author">
+    <strong><a href="/cvrebert" class="author" rel="contributor">cvrebert</a></strong>
+  </td>
+
+  <td class="commit-message">
+    <code><a href="/twbs/bootstrap/pull/19605/commits/6eec5776bef65048b3efa5935b395273302bc0fa" class="message">update shrinkwrap</a></code>
+
+
+  </td>
+
+  <td class="commit-sig-status">
+    
+
+  </td>
+
+  <td class="commit-ci-status">
+      
+    <div class="commit-build-statuses js-menu-container">
+      <a class="text-failure tooltipped tooltipped-w js-menu-target"
+         aria-label="1 / 3 checks OK" href="#">
+        <svg aria-hidden="true" class="octicon octicon-x" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z"></path></svg>
+      </a>
+        <div class="dropdown-menu-content js-menu-content">
+          <div class="dropdown-menu dropdown-menu-w">
+            
+  <div class="branch-action-item js-details-container
+              open
+              branch-action-item-simple">
+
+    <div class="">
+
+          <h4 class="status-heading text-error">Some checks were not successful</h4>
+        <span class="status-meta">1 errored, 1 pending, and 1 successful checks</span>
+    </div>
+
+    <div class="build-statuses-list">
+        <div class="build-status-item">
+            <a href="https://travis-ci.org" class="creator tooltipped tooltipped-e muted-link" aria-label="Travis CI (@travis-ci) generated this status.">
+              <img alt="" class="avatar" height="19" src="https://avatars0.githubusercontent.com/u/639823?v=3&amp;s=38" width="19" />
+            </a>
+
+            <a class="build-status-details right" href="https://travis-ci.org/twbs/bootstrap/builds/118167807">Details</a>
+
+
+          <svg aria-hidden="true" class="octicon octicon-x build-status-icon text-error" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z"></path></svg>
+          <span class="text-muted css-truncate css-truncate-target">
+            <strong class="text-emphasized">
+              continuous-integration/travis-ci/pr
+            </strong>
+              — The Travis CI build could not complete due to an error
+          </span>
+        </div>
+        <div class="build-status-item">
+            <a href="https://houndci.com" class="creator tooltipped tooltipped-e muted-link" aria-label="Hound CI (@thoughtbot) generated this status.">
+              <img alt="" class="avatar" height="19" src="https://cloud.githubusercontent.com/assets/198/26050/8f6f33d2-9e93-11e5-8fcb-04cbec9aea60.png" width="19" />
+            </a>
+
+
+
+          <svg aria-hidden="true" class="octicon octicon-primitive-dot build-status-icon text-pending" height="16" role="img" version="1.1" viewBox="0 0 8 16" width="8"><path d="M0 8c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4S0 10.2 0 8z"></path></svg>
+          <span class="text-muted css-truncate css-truncate-target">
+            <strong class="text-emphasized">
+              hound
+            </strong>
+              — Hound is busy reviewing changes...
+          </span>
+        </div>
+        <div class="build-status-item">
+            <a href="https://travis-ci.org" class="creator tooltipped tooltipped-e muted-link" aria-label="Travis CI (@travis-ci) generated this status.">
+              <img alt="" class="avatar" height="19" src="https://avatars0.githubusercontent.com/u/639823?v=3&amp;s=38" width="19" />
+            </a>
+
+            <a class="build-status-details right" href="https://travis-ci.org/twbs/bootstrap/builds/118167732">Details</a>
+
+
+          <svg aria-hidden="true" class="octicon octicon-check build-status-icon text-success" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 5L4 13 0 9l1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5z"></path></svg>
+          <span class="text-muted css-truncate css-truncate-target">
+            <strong class="text-emphasized">
+              continuous-integration/travis-ci/push
+            </strong>
+              — The Travis CI build passed
+          </span>
+        </div>
+    </div>
+  </div>
+
+          </div>
+        </div>
+    </div>
+
+  </td>
+
+  <td class="commit-meta">
+    <code><a href="/twbs/bootstrap/pull/19605/commits/6eec5776bef65048b3efa5935b395273302bc0fa" class="commit-id">6eec577</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+</div>
+
+  
+      
+
+
+  <div class="discussion-item discussion-item-labeled">
+    <div class="discussion-item-header" id="event-601370737">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-tag" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M6.73 2.73c-0.47-0.47-1.11-0.73-1.77-0.73H2.5C1.13 2 0 3.13 0 4.5v2.47c0 0.66 0.27 1.3 0.73 1.77l6.06 6.06c0.39 0.39 1.02 0.39 1.41 0l4.59-4.59c0.39-0.39 0.39-1.02 0-1.41L6.73 2.73zM1.38 8.09c-0.31-0.3-0.47-0.7-0.47-1.13V4.5c0-0.88 0.72-1.59 1.59-1.59h2.47c0.42 0 0.83 0.16 1.13 0.47l6.14 6.13-4.73 4.73L1.38 8.09z m0.63-4.09h2v2H2V4z"></path></svg>
+      </span>
+      <img alt="@cvrebert" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/419884?v=3&amp;s=32" width="16" />
+      <a href="/cvrebert" class="author">cvrebert</a>
+        added <span class="label-color" style="background-color: #eeeeee;" title="by cvrebert at 2016-03-24 03:14:49"><a href="/twbs/bootstrap/labels/grunt" style="color: #333333">grunt</a></span> <span class="label-color" style="background-color: #d9534f;" title="by cvrebert at 2016-03-24 03:14:49"><a href="/twbs/bootstrap/labels/v3" style="color: #fff">v3</a></span> labels <a href="https://github.com/twbs/bootstrap/pull/19605#event-601370737" class="timestamp"><time class="timestamp" datetime="2016-03-24T07:14:49Z" is="relative-time">Mar 24, 2016</time></a>
+    </div>
+  </div>
+
+
+
+
+
+      
+
+
+  <div class="discussion-item discussion-item-milestoned">
+    <div class="discussion-item-header" id="event-601370739">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-milestone" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M8 2H6V0h2v2z m4 5H2c-0.55 0-1-0.45-1-1V4c0-0.55 0.45-1 1-1h10l2 2-2 2zM8 4H6v2h2V4z m-2 12h2V8H6v8z"></path></svg>
+      </span>
+      <img alt="@cvrebert" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/419884?v=3&amp;s=32" width="16" />
+      <a href="/cvrebert" class="author">cvrebert</a>
+      added this to the <a href="/twbs/bootstrap/milestones/v4.0.0-alpha.3" class="discussion-item-entity">v4.0.0-alpha.3</a> milestone <a href="https://github.com/twbs/bootstrap/pull/19605#event-601370739" class="timestamp"><time class="timestamp" datetime="2016-03-24T07:14:49Z" is="relative-time">Mar 24, 2016</time></a>
+    </div>
+  </div>
+
+
+
+
+
+      
+
+
+
+
+      
+
+
+  <div class="discussion-item discussion-item-merged js-details-container">
+  <div class="discussion-item-header" id="event-601379292">
+        <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/twbs/bootstrap/pull/19605/revert" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="n/uBTptB7M8jgXyj65QDKxCJcptPpzJkSMzh3RUMPPZ7a745hL6o4Iy1fNa/XOOGxSuL9BWbZ65NCgHxMeo4pg==" /></div>
+          <button type="submit" aria-label="Create a new pull request to revert these changes" class="btn btn-outline tooltipped tooltipped-s"
+            data-ga-click="Repository, revert, location:pull request event; text:Revert">
+            Revert
+          </button>
+</form>
+      <button type="button" class="btn btn-outline js-details-target">
+        <span class="discussion-item-toggler-opened">Hide details</span>
+        <span class="discussion-item-toggler-closed">View details</span>
+      </button>
+
+    <span class="discussion-item-icon">
+      <svg aria-hidden="true" class="octicon octicon-git-merge" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M10 7c-0.73 0-1.38 0.41-1.73 1.02v-0.02c-1.05-0.02-2.27-0.36-3.13-1.02-0.75-0.58-1.5-1.61-1.89-2.44 0.45-0.36 0.75-0.92 0.75-1.55 0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72v6.56C0.41 11.63 0 12.27 0 13c0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.73-0.41-1.38-1-1.72V7.67c0.67 0.7 1.44 1.27 2.3 1.69s2.03 0.63 2.97 0.64v-0.02c0.36 0.61 1 1.02 1.73 1.02 1.11 0 2-0.89 2-2s-0.89-2-2-2zM3.2 13c0 0.66-0.55 1.2-1.2 1.2s-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2z m-1.2-8.8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m8 6c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z"></path></svg>
+    </span>
+    <img alt="@cvrebert" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/419884?v=3&amp;s=32" width="16" />
+    <a href="/cvrebert" class="author">cvrebert</a>
+    merged commit <a href="/twbs/bootstrap/commit/66a386745049cf8cf120096b63436748539566fa"><code class="discussion-item-entity">66a3867</code></a> into <span class="commit-ref user-select-contain"><span title="twbs/bootstrap:master"><span class="css-truncate-target">master</span></span></span>  <a href="https://github.com/twbs/bootstrap/pull/19605#event-601379292" class="timestamp"><time class="timestamp" datetime="2016-03-24T07:30:03Z" is="relative-time">Mar 24, 2016</time></a>
+
+      <div class="discussion-item-footer">
+        0 of 3 checks passed
+      </div>
+  </div>
+
+    <div class="discussion-item-details">
+      <h4 class="discussion-item-details-header">
+        0 of 3 checks passed
+      </h4>
+      <div class="build-statuses-list">
+          <div class="build-status-item">
+              <a href="https://travis-ci.org/twbs/bootstrap/builds/118167807" class="build-status-details right">Details</a>
+
+            <svg aria-hidden="true" class="octicon octicon-x build-status-icon text-error" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z"></path></svg>
+            <span class="text-muted css-truncate css-truncate-target">
+              <strong class="text-emphasized">
+                continuous-integration/travis-ci/pr
+              </strong>
+              The Travis CI build could not complete due to an error
+            </span>
+          </div>
+          <div class="build-status-item">
+              <a href="https://travis-ci.org/twbs/bootstrap/builds/118167732" class="build-status-details right">Details</a>
+
+            <svg aria-hidden="true" class="octicon octicon-primitive-dot build-status-icon text-pending" height="16" role="img" version="1.1" viewBox="0 0 8 16" width="8"><path d="M0 8c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4S0 10.2 0 8z"></path></svg>
+            <span class="text-muted css-truncate css-truncate-target">
+              <strong class="text-emphasized">
+                continuous-integration/travis-ci/push
+              </strong>
+              The Travis CI build is in progress
+            </span>
+          </div>
+          <div class="build-status-item">
+
+            <svg aria-hidden="true" class="octicon octicon-primitive-dot build-status-icon text-pending" height="16" role="img" version="1.1" viewBox="0 0 8 16" width="8"><path d="M0 8c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4S0 10.2 0 8z"></path></svg>
+            <span class="text-muted css-truncate css-truncate-target">
+              <strong class="text-emphasized">
+                hound
+              </strong>
+              Hound is busy reviewing changes...
+            </span>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
+  <div class="closed-banner"></div>
+
+
+
+
+      
+
+
+  <div class="discussion-item discussion-item-head_ref_deleted">
+    <div class="discussion-item-header" id="event-601379327">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-git-branch" height="16" role="img" version="1.1" viewBox="0 0 10 16" width="10"><path d="M10 5c0-1.11-0.89-2-2-2s-2 0.89-2 2c0 0.73 0.41 1.38 1 1.72v0.3c-0.02 0.52-0.23 0.98-0.63 1.38s-0.86 0.61-1.38 0.63c-0.83 0.02-1.48 0.16-2 0.45V4.72c0.59-0.34 1-0.98 1-1.72 0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72v6.56C0.41 11.63 0 12.27 0 13c0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.53-0.2-1-0.53-1.36 0.09-0.06 0.48-0.41 0.59-0.47 0.25-0.11 0.56-0.17 0.94-0.17 1.05-0.05 1.95-0.45 2.75-1.25s1.2-1.98 1.25-3.02h-0.02c0.61-0.36 1.02-1 1.02-1.73zM2 1.8c0.66 0 1.2 0.55 1.2 1.2s-0.55 1.2-1.2 1.2-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2z m0 12.41c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m6-8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z"></path></svg>
+      </span>
+      <img alt="@cvrebert" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/419884?v=3&amp;s=32" width="16" />
+      <a href="/cvrebert" class="author">cvrebert</a>
+      deleted the  <span class="commit-ref user-select-contain"><span title="twbs/bootstrap:fix-18559-v3"><span class="css-truncate-target">fix-18559-v3</span></span></span> branch <a href="https://github.com/twbs/bootstrap/pull/19605#event-601379327" class="timestamp"><time class="timestamp" datetime="2016-03-24T07:30:06Z" is="relative-time">Mar 24, 2016</time></a>
+    </div>
+  </div>
+
+
+
+  
+      <div class="discussion-item discussion-item-ref">
+    <div class="discussion-item-header" id="ref-issue-143004490">
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-bookmark" height="16" role="img" version="1.1" viewBox="0 0 10 16" width="10"><path d="M9 0H1C0.27 0 0 0.27 0 1v15l5-3.09 5 3.09V1c0-0.73-0.27-1-1-1z m-0.78 4.25l-1.86 1.36 0.72 2.16c0.06 0.22-0.02 0.28-0.2 0.17l-1.88-1.34-1.88 1.34c-0.19 0.11-0.25 0.05-0.2-0.17l0.72-2.16-1.86-1.36c-0.17-0.16-0.14-0.23 0.09-0.23l2.3-0.03 0.7-2.16h0.25l0.7 2.16 2.3 0.03c0.23 0 0.27 0.08 0.09 0.23z"></path></svg>
+      </span>
+
+      <img alt="@cvrebert" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/419884?v=3&amp;s=32" width="16" />
+      <a href="/cvrebert" class="author" truncate="true">cvrebert</a>
+
+      referenced
+      this pull request
+      <a class="timestamp" href="#ref-issue-143004490">
+        <time datetime="2016-03-24T07:31:49Z" is="relative-time">Mar 24, 2016</time>
+      </a>
+    </div>
+
+      <span class="state state-closed right">
+          <svg aria-hidden="true" class="octicon octicon-issue-opened" height="14" role="img" version="1.1" viewBox="0 0 14 16" width="12"><path d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7S10.14 13.7 7 13.7 1.3 11.14 1.3 8s2.56-5.7 5.7-5.7m0-1.3C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7S10.86 1 7 1z m1 3H6v5h2V4z m0 6H6v2h2V10z"></path></svg>
+        Closed
+      </span>
+
+
+
+    <h3 class="discussion-item-ref-title">
+      <a href="/twbs/bootstrap/issues/19596" class="title-link">
+        version not found: read-json@0.1.0
+        <span class="issue-num">#19596</span>
+</a>    </h3>
+    
+  </div>
+
+
+
+
+
+
+
+<!-- Rendered timeline since 2016-03-24 00:31:49 -->
+<div id="partial-timeline-marker"
+      class="js-timeline-marker js-socket-channel js-updatable-content"
+      data-channel="twbs/bootstrap:pull_request:63997597"
+      data-url="/twbs/bootstrap/pull/19605/show_partial?partial=pull_requests%2Ftimeline_marker&amp;since=1458804709"
+      data-last-modified="Thu, 24 Mar 2016 07:31:49 GMT">
+
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/twbs/bootstrap/notifications/mark?ids=132055700" class="hidden js-timeline-marker-form" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="upUTYGY7FtzFeKeNQSU3Oo6EOeeN6DMis8nbsDCXCBAHVbLD4i5u4b9loHnKVzU1cuGe5ziMeK9wXklnlA/eLQ==" /></div>
+</form></div>
+
+
+  </div>
+
+    <div class="discussion-timeline-actions">
+                
+
+<div id="partial-pull-merging" class="pull-merging js-pull-merging js-socket-channel js-updatable-content"
+     data-channel="twbs/bootstrap:branch:fix-18559-v3 twbs/bootstrap:branch:master twbs/bootstrap:commit:6eec5776bef65048b3efa5935b395273302bc0fa twbs/bootstrap:issue:143171017:state"
+     data-url="/twbs/bootstrap/pull/19605/show_partial?partial=pull_requests%2Fmerging">
+
+
+
+
+  
+
+<div class="branch-action branch-action-state-error pull-merging-error js-pull-merging-error">
+  <span class="branch-action-icon">
+    <svg aria-hidden="true" class="octicon octicon-git-branch" height="32" role="img" version="1.1" viewBox="0 0 10 16" width="20"><path d="M10 5c0-1.11-0.89-2-2-2s-2 0.89-2 2c0 0.73 0.41 1.38 1 1.72v0.3c-0.02 0.52-0.23 0.98-0.63 1.38s-0.86 0.61-1.38 0.63c-0.83 0.02-1.48 0.16-2 0.45V4.72c0.59-0.34 1-0.98 1-1.72 0-1.11-0.89-2-2-2S0 1.89 0 3c0 0.73 0.41 1.38 1 1.72v6.56C0.41 11.63 0 12.27 0 13c0 1.11 0.89 2 2 2s2-0.89 2-2c0-0.53-0.2-1-0.53-1.36 0.09-0.06 0.48-0.41 0.59-0.47 0.25-0.11 0.56-0.17 0.94-0.17 1.05-0.05 1.95-0.45 2.75-1.25s1.2-1.98 1.25-3.02h-0.02c0.61-0.36 1.02-1 1.02-1.73zM2 1.8c0.66 0 1.2 0.55 1.2 1.2s-0.55 1.2-1.2 1.2-1.2-0.55-1.2-1.2 0.55-1.2 1.2-1.2z m0 12.41c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z m6-8c-0.66 0-1.2-0.55-1.2-1.2s0.55-1.2 1.2-1.2 1.2 0.55 1.2 1.2-0.55 1.2-1.2 1.2z"></path></svg>
+  </span>
+  <div class="branch-action-body" style="padding:15px">
+    <button class="btn right js-pull-merging-refresh" type="button">
+      <svg aria-hidden="true" class="octicon octicon-sync" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M10.24 7.4c0.19 1.28-0.2 2.62-1.2 3.6-1.47 1.45-3.74 1.63-5.41 0.54l1.17-1.14L0.5 9.8 1.1 14l1.31-1.26c2.36 1.74 5.7 1.57 7.84-0.54 1.24-1.23 1.81-2.85 1.74-4.46L10.24 7.4zM2.96 5c1.47-1.45 3.74-1.63 5.41-0.54l-1.17 1.14 4.3 0.6L10.9 2l-1.31 1.26C7.23 1.52 3.89 1.69 1.74 3.8 0.5 5.03-0.06 6.65 0.01 8.26l1.75 0.35C1.57 7.33 1.96 5.98 2.96 5z"></path></svg>
+      Try again
+    </button>
+    <h3 class="merge-branch-heading">Couldn’t update branch</h3>
+    <p class="merge-branch-description">Oops, something went wrong.</p>
+    
+  </div>
+</div>
+
+</div>
+
+
+  
+<div class="timeline-comment-wrapper timeline-new-comment js-comment-container ">
+  <a href="/Cristhoper29"><img alt="@Cristhoper29" class="timeline-comment-avatar" height="48" src="https://avatars0.githubusercontent.com/u/16949915?v=3&amp;s=96" width="48" /></a>
+
+  <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/twbs/bootstrap/pull/19605/comment" class="js-new-comment-form" data-form-nonce="aad8815a4bde3c44ccc95e25d9ddbf6cab541951" data-remote="true" data-type="json" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="C2UAebYrTmote2YOcMuqkxLFEuDONWlGJOWo5vsdfTvuldXyfFLIlubgCbjlVV2fJRfDSdlm9oJhbs1Iu6KeLQ==" /></div>
+    <div class="timeline-comment">
+      <input type="hidden" name="issue" value="19605">
+        <div class="js-suggester-container js-previewable-comment-form previewable-comment-form write-selected" data-preview-url="/preview?markdown_unsupported=false&amp;repository=2126244&amp;subject=19605&amp;subject_type=PullRequest">
+  <div class="comment-form-head tabnav">
+    <div class="js-toolbar toolbar-commenting">
+      <div class="toolbar-group">
+        <div class="toolbar-item dropdown js-menu-container">
+          <button type="button" class="js-menu-target menu-target tooltipped tooltipped-n" aria-label="Add header text" tabindex="-1">
+            <svg aria-hidden="true" class="octicon octicon-text-size" height="16" role="img" version="1.1" viewBox="0 0 18 16" width="18"><path d="M17.97 14h-2.25l-0.95-3.25H10.7l-0.95 3.25H7.5l-0.69-2.33H3.53l-0.7 2.33H0.66l3.3-9.59h2.5l2.17 6.34 2.89-8.75h2.52l3.94 12zM6.36 10.13s-1.02-3.61-1.17-4.11h-0.08l-1.13 4.11h2.38z m7.92-1.05l-1.52-5.42h-0.06l-1.5 5.42h3.08z"></path></svg>
+            <span class="dropdown-caret"></span>
+          </button>
+
+          <div class="dropdown-menu-content js-menu-content">
+            <ul class="dropdown-menu dropdown-menu-s">
+              <button type="button" class="js-toolbar-item dropdown-item dropdown-header1" data-prefix="# " data-ga-click="Markdown Toolbar, click, header1">
+                Header
+              </button>
+              <button type="button" class="js-toolbar-item dropdown-item dropdown-header2" data-prefix="## " data-ga-click="Markdown Toolbar, click, header2">
+                Header
+              </button>
+              <button type="button" class="js-toolbar-item dropdown-item dropdown-header3" data-prefix="### " data-ga-click="Markdown Toolbar, click, header3">
+                Header
+              </button>
+            </ul>
+          </div>
+        </div>
+
+        <button type="button" class="js-toolbar-item toolbar-item tooltipped tooltipped-n" aria-label="Add bold text <ctrl+b>" tabindex="-1" data-prefix="**" data-suffix="**" data-toolbar-hotkey="b" data-ga-click="Markdown Toolbar, click, bold">
+          <svg aria-hidden="true" class="octicon octicon-bold" height="16" role="img" version="1.1" viewBox="0 0 10 16" width="10"><path d="M0 2h3.83c2.48 0 4.3 0.75 4.3 2.95 0 1.14-0.63 2.23-1.67 2.61v0.06c1.33 0.3 2.3 1.23 2.3 2.86 0 2.39-1.97 3.52-4.61 3.52H0V2z m3.66 4.95c1.67 0 2.38-0.66 2.38-1.69 0-1.17-0.78-1.61-2.34-1.61H2.13v3.3h1.53z m0.27 5.39c1.77 0 2.75-0.64 2.75-1.98 0-1.27-0.95-1.81-2.75-1.81H2.13v3.8h1.8z"></path></svg>
+        </button>
+
+        <button type="button" class="js-toolbar-item toolbar-item tooltipped tooltipped-n" aria-label="Add italic text <ctrl+i>" tabindex="-1" data-prefix="_" data-suffix="_" data-toolbar-hotkey="i" data-ga-click="Markdown Toolbar, click, italic">
+          <svg aria-hidden="true" class="octicon octicon-italic" height="16" role="img" version="1.1" viewBox="0 0 6 16" width="6"><path d="M2.81 5h1.98L3 14H1l1.81-9z m0.36-2.7c0-0.7 0.58-1.3 1.33-1.3 0.56 0 1.13 0.38 1.13 1.03 0 0.75-0.59 1.3-1.33 1.3-0.58 0-1.13-0.38-1.13-1.03z"></path></svg>
+        </button>
+      </div>
+
+      <div class="toolbar-group">
+        <button type="button" class="js-toolbar-item toolbar-item tooltipped tooltipped-n" aria-label="Insert a quote" tabindex="-1" data-prefix="> " data-multiline="true" data-ga-click="Markdown Toolbar, click, quote" data-surround-with-newlines="true">
+          <svg aria-hidden="true" class="octicon octicon-quote" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M6.16 3.17C3.73 4.73 2.55 6.34 2.55 9.03c0.16-0.05 0.3-0.05 0.44-0.05 1.27 0 2.5 0.86 2.5 2.41 0 1.61-1.03 2.61-2.5 2.61C1.09 14 0 12.48 0 9.75 0 5.95 1.75 3.22 5.02 1.33l1.14 1.84z m7 0C10.73 4.73 9.55 6.34 9.55 9.03c0.16-0.05 0.3-0.05 0.44-0.05 1.27 0 2.5 0.86 2.5 2.41 0 1.61-1.03 2.61-2.5 2.61-1.89 0-2.98-1.52-2.98-4.25 0-3.8 1.75-6.53 5.02-8.42l1.14 1.84z"></path></svg>
+        </button>
+
+        <button type="button" class="js-toolbar-item toolbar-item tooltipped tooltipped-n" aria-label="Insert code" tabindex="-1" data-prefix="`" data-suffix="`" data-block-prefix="```" data-block-suffix="```" data-ga-click="Markdown Toolbar, click, code">
+          <svg aria-hidden="true" class="octicon octicon-code" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M9.5 3l-1.5 1.5 3.5 3.5L8 11.5l1.5 1.5 4.5-5L9.5 3zM4.5 3L0 8l4.5 5 1.5-1.5L2.5 8l3.5-3.5L4.5 3z"></path></svg>
+        </button>
+
+        <button type="button" class="js-toolbar-item toolbar-item tooltipped tooltipped-n" aria-label="Add a link <ctrl+k>" tabindex="-1" data-prefix="[" data-suffix="](url)" data-replace-next="url" data-toolbar-hotkey="k" data-scan-for="https?://" data-ga-click="Markdown Toolbar, click, link">
+          <svg aria-hidden="true" class="octicon octicon-link" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1h-1c-1.5 0-3-1.69-3-3.5s1.55-3.5 3-3.5h4c1.45 0 3 1.69 3 3.5 0 1.41-0.91 2.72-2 3.25v-1.16c0.58-0.45 1-1.27 1-2.09 0-1.28-1.02-2.5-2-2.5H4c-0.98 0-2 1.22-2 2.5s1 2.5 2 2.5z m9-3h-1v1h1c1 0 2 1.22 2 2.5s-1.02 2.5-2 2.5H9c-0.98 0-2-1.22-2-2.5 0-0.83 0.42-1.64 1-2.09v-1.16c-1.09 0.53-2 1.84-2 3.25 0 1.81 1.55 3.5 3 3.5h4c1.45 0 3-1.69 3-3.5s-1.5-3.5-3-3.5z"></path></svg>
+        </button>
+      </div>
+
+      <div class="toolbar-group">
+        <button type="button" class="js-toolbar-item toolbar-item tooltipped tooltipped-n" aria-label="Add a bulleted list" tabindex="-1" data-multiline="true" data-prefix="- " data-multiline="true" data-ga-click="Markdown Toolbar, click, unordered list" data-surround-with-newlines="true">
+          <svg aria-hidden="true" class="octicon octicon-list-unordered" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M2 13c0 0.59 0 1-0.59 1H0.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1h0.81c0.59 0 0.59 0.41 0.59 1z m2.59-9h6.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1H4.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1zM1.41 7H0.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1h0.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1z m0-5H0.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1h0.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1z m10 5H4.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1h6.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1z m0 5H4.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1h6.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1z"></path></svg>
+        </button>
+        <button type="button" class="js-toolbar-item toolbar-item tooltipped tooltipped-n" aria-label="Add a numbered list" tabindex="-1" data-prefix="1. " data-multiline="true" data-ga-click="Markdown Toolbar, click, ordered list" data-ordered-list="true">
+          <svg aria-hidden="true" class="octicon octicon-list-ordered" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M12 13c0 0.59 0 1-0.59 1H4.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1h6.81c0.59 0 0.59 0.41 0.59 1zM4.59 4h6.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1H4.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1z m6.81 3H4.59c-0.59 0-0.59 0.41-0.59 1s0 1 0.59 1h6.81c0.59 0 0.59-0.41 0.59-1s0-1-0.59-1zM2 1H1.28C0.98 1.19 0.7 1.25 0.25 1.34v0.66h0.75v2.14H0.16v0.86h2.84v-0.86h-1V1z m0.25 8.13c-0.17 0-0.45 0.03-0.66 0.06 0.53-0.56 1.14-1.25 1.14-1.89-0.02-0.78-0.56-1.3-1.36-1.3-0.59 0-0.97 0.2-1.38 0.64l0.58 0.58c0.19-0.19 0.38-0.38 0.64-0.38 0.28 0 0.48 0.16 0.48 0.52 0 0.53-0.77 1.2-1.7 2.06v0.58h3l-0.09-0.88h-0.66z m-0.08 3.78v-0.03c0.44-0.19 0.64-0.47 0.64-0.86 0-0.7-0.56-1.11-1.44-1.11-0.48 0-0.89 0.19-1.28 0.52l0.55 0.64c0.25-0.2 0.44-0.31 0.69-0.31 0.27 0 0.42 0.13 0.42 0.36 0 0.27-0.2 0.44-0.86 0.44v0.75c0.83 0 0.98 0.17 0.98 0.47 0 0.25-0.23 0.38-0.58 0.38-0.28 0-0.56-0.14-0.81-0.38L0 14.44c0.3 0.36 0.77 0.56 1.41 0.56 0.83 0 1.53-0.41 1.53-1.16 0-0.5-0.31-0.81-0.77-0.94z"></path></svg>
+        </button>
+        <button type="button" class="js-toolbar-item toolbar-item tooltipped tooltipped-n" aria-label="Add a task list" tabindex="-1" data-prefix="- [ ] " data-toolbar-hotkey="L" data-multiline="true" data-ga-click="Markdown Toolbar, click, task list" data-surround-with-newlines="true">
+          <svg aria-hidden="true" class="octicon octicon-tasklist" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M15.41 9H7.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1h7.81c0.59 0 0.59 0.41 0.59 1s0 1-0.59 1zM9.59 4c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1h5.81c0.59 0 0.59 0.41 0.59 1s0 1-0.59 1H9.59zM0 3.91l1.41-1.3 1.59 1.59L7.09 0l1.41 1.41-5.5 5.5L0 3.91z m7.59 8.09h7.81c0.59 0 0.59 0.41 0.59 1s0 1-0.59 1H7.59c-0.59 0-0.59-0.41-0.59-1s0-1 0.59-1z"></path></svg>
+        </button>
+      </div>
+
+        <div class="toolbar-group">
+
+
+          <button type="button" class="js-toolbar-item toolbar-item tooltipped tooltipped-nw" aria-label="Directly mention a user or team" tabindex="-1" data-prefix="@" data-prefix-space="true" data-ga-click="Markdown Toolbar, click, mention">
+            <svg aria-hidden="true" class="octicon octicon-mention" height="16" role="img" version="1.1" viewBox="0 0 14 16" width="14"><path d="M6.58 15c1.25 0 2.52-0.31 3.56-0.94l-0.42-0.94c-0.84 0.52-1.89 0.83-3.03 0.83-3.23 0-5.64-2.08-5.64-5.72C1.05 3.86 4.28 1.05 7.63 1.05c3.45 0 5.22 2.19 5.22 5.2 0 2.39-1.34 3.86-2.5 3.86-1.05 0-1.36-0.73-1.05-2.19l0.73-3.75h-1.05l-0.11 0.72c-0.41-0.63-0.94-0.83-1.56-0.83-2.19 0-3.66 2.39-3.66 4.38 0 1.67 0.94 2.61 2.3 2.61 0.84 0 1.67-0.53 2.3-1.25 0.11 0.94 0.94 1.45 1.98 1.45 1.67 0 3.77-1.67 3.77-5C14 2.61 11.59 0 7.83 0 3.66 0 0 3.33 0 8.33c0 4.38 2.92 6.67 6.58 6.67z m-0.31-5c-0.73 0-1.36-0.52-1.36-1.67 0-1.45 0.94-3.22 2.41-3.22 0.52 0 0.84 0.2 1.25 0.83l-0.52 3.02c-0.63 0.73-1.25 1.05-1.78 1.05z"></path></svg>
+          </button>
+          <button type="button" class="js-toolbar-item toolbar-item tooltipped tooltipped-nw" aria-label="Reference an issue or pull request" tabindex="-1" data-prefix="#" data-prefix-space="true" data-ga-click="Markdown Toolbar, click, reference">
+            <svg aria-hidden="true" class="octicon octicon-bookmark" height="16" role="img" version="1.1" viewBox="0 0 10 16" width="10"><path d="M9 0H1C0.27 0 0 0.27 0 1v15l5-3.09 5 3.09V1c0-0.73-0.27-1-1-1z m-0.78 4.25l-1.86 1.36 0.72 2.16c0.06 0.22-0.02 0.28-0.2 0.17l-1.88-1.34-1.88 1.34c-0.19 0.11-0.25 0.05-0.2-0.17l0.72-2.16-1.86-1.36c-0.17-0.16-0.14-0.23 0.09-0.23l2.3-0.03 0.7-2.16h0.25l0.7 2.16 2.3 0.03c0.23 0 0.27 0.08 0.09 0.23z"></path></svg>
+          </button>
+        </div>
+    </div>
+    <nav class="tabnav-tabs" role="tablist">
+      <button type="button" class="btn-link tabnav-tab write-tab js-write-tab selected" role="tab" aria-selected="true">Write</button>
+      <button type="button" class="btn-link tabnav-tab preview-tab js-preview-tab" role="tab">Preview</button>
+    </nav>
+  </div>
+
+  <div class="comment-form-error js-comment-form-error" style="display:none">    There was an error creating your PullRequest.
+</div>
+  <div class="write-content js-write-bucket js-uploadable-container js-upload-markdown-image upload-enabled is-default"
+      data-upload-policy-url="/upload/policies/assets"
+        data-upload-repository-id="2126244"
+      >
+
+    <textarea name="comment[body]"
+              tabindex="1"
+              id="new_comment_field"
+              placeholder="Leave a comment"
+              aria-label="Comment body"
+              class="form-control input-contrast comment-form-textarea js-comment-field js-improved-comment-field js-task-list-field js-quick-submit js-size-to-fit js-suggester-field js-quote-selection-target js-session-resumable"
+              ></textarea>
+
+          <p class="drag-and-drop">
+    <span class="default">
+        Attach files by dragging &amp; dropping or
+        <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+        <a class="manual-file-chooser-text" href="#">selecting them</a>.
+    </span>
+    <span class="loading">
+      <img alt="" height="16" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" /> Uploading your files…
+    </span>
+    <span class="error bad-file">
+      Unfortunately, we don’t support that file type.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with a
+        PNG, GIF, JPG, DOCX, PPTX, XLSX, TXT, PDF, or ZIP.
+      </span>
+    </span>
+    <span class="error bad-permissions">
+      Attaching documents requires write permission to this repository.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with a PNG, GIF, or JPG.
+      </span>
+    </span>
+    <span class="error repository-required">
+      Unfortunately, we don’t support that file type.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with a PNG, GIF, or JPG.
+      </span>
+    </span>
+    <span class="error too-big">
+      Yowza, that’s a big file.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with a file smaller than 10MB.
+      </span>
+    </span>
+    <span class="error empty">
+      This file is empty.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again</a> with a file that’s not empty.
+      </span>
+    </span>
+    <span class="error bad-browser">
+      This browser doesn’t support file attachments.
+      <span class="drag-and-drop-error-info">
+        We recommend updating to the latest
+        <a href="https://www.microsoft.com/ie">Internet Explorer</a>,
+        <a href="https://chrome.google.com">Google Chrome</a>, or
+        <a href="https://www.mozilla.org/firefox">Firefox</a>.
+      </span>
+    </span>
+    <span class="error failed-request">
+      Something went really wrong, and we can’t process that file.
+      <input type="file" multiple="multiple" class="manual-file-chooser js-manual-file-chooser">
+      <span class="drag-and-drop-error-info">
+        <a class="manual-file-chooser-text" href="#">Try again.</a>
+      </span>
+    </span>
+  </p>
+
+
+    <div class="suggester-container">
+      <div class="suggester js-suggester js-navigation-container"
+           data-url="/twbs/bootstrap/suggestions/pull_request/63997597">
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-content">
+    <div class="comment">
+  <div class="comment-content">
+    <div class="comment-body markdown-body js-preview-body">
+      <p>Nothing to preview</p>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <div class="toolbar-help">
+    <a class="tabnav-extra" href="https://guides.github.com/features/mastering-markdown/" target="_blank" data-ga-click="Markdown Toolbar, click, help">
+      <svg aria-hidden="true" class="octicon octicon-markdown" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M14.85 3H1.15C0.52 3 0 3.52 0 4.15v7.69C0 12.48 0.52 13 1.15 13h13.69c0.64 0 1.15-0.52 1.15-1.15V4.15C16 3.52 15.48 3 14.85 3zM9 11L7 11V8l-1.5 1.92L4 8v3H2V5h2l1.5 2 1.5-2 2 0V11zM11.99 11.5L9.5 8h1.5V5h2v3h1.5L11.99 11.5z"></path></svg>
+      Styling with Markdown is supported
+    </a>
+  </div>
+
+
+  <div class="comment-form-error comment-form-bottom js-comment-update-error"></div>
+</div>
+
+        <div class="form-actions">
+          <div id="partial-new-comment-form-actions"
+      class="js-socket-channel js-updatable-content"
+      data-channel="twbs/bootstrap:issue:143171017:state"
+        data-url="/twbs/bootstrap/pull/19605/show_partial?partial=pull_requests%2Fform_actions"
+  >
+
+  <button type="submit" class="btn btn-primary" tabindex="2" data-disable-with data-disable-invalid>
+    Comment
+  </button>
+
+  
+</div>
+
+        </div>
+    </div>
+</form>
+    <div class="protip">
+      <svg aria-hidden="true" class="octicon octicon-light-bulb text-muted" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M5.5 0C2.48 0 0 2.19 0 5c0 0.92 0.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c0.22-1.22 0.66-1.75 2-4 0.45-0.75 1-2.08 1-3C11 2.19 8.52 0 5.5 0z m3.64 7.48c-0.25 0.44-0.47 0.8-0.67 1.11-0.86 1.41-1.25 2.06-1.45 3.23-0.02 0.05-0.02 0.11-0.02 0.17H4c0-0.06 0-0.13-0.02-0.17-0.2-1.17-0.59-1.83-1.45-3.23-0.2-0.31-0.42-0.67-0.67-1.11-0.42-0.7-0.86-1.83-0.86-2.48C1 2.8 3.02 1 5.5 1c1.22 0 2.36 0.42 3.22 1.19 0.83 0.75 1.28 1.75 1.28 2.81 0 0.66-0.44 1.78-0.86 2.48zM3 14h5c-0.23 1.14-1.3 2-2.5 2s-2.27-0.86-2.5-2z"></path></svg>
+      <strong>ProTip!</strong>
+      Add comments to specific lines under <a href='/twbs/bootstrap/pull/19605/files'>Files changed</a>.
+    </div>
+</div>
+
+
+    </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+
+
+  </div>
+  <div class="modal-backdrop"></div>
+</div>
+
+
+    </div>
+  </div>
+
+    </div>
+
+        <div class="container site-footer-container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+      <li><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com" aria-label="Homepage" class="site-footer-mark">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" role="img" title="GitHub " version="1.1" viewBox="0 0 16 16" width="24"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59 0.4 0.07 0.55-0.17 0.55-0.38 0-0.19-0.01-0.82-0.01-1.49-2.01 0.37-2.53-0.49-2.69-0.94-0.09-0.23-0.48-0.94-0.82-1.13-0.28-0.15-0.68-0.52-0.01-0.53 0.63-0.01 1.08 0.58 1.23 0.82 0.72 1.21 1.87 0.87 2.33 0.66 0.07-0.52 0.28-0.87 0.51-1.07-1.78-0.2-3.64-0.89-3.64-3.95 0-0.87 0.31-1.59 0.82-2.15-0.08-0.2-0.36-1.02 0.08-2.12 0 0 0.67-0.21 2.2 0.82 0.64-0.18 1.32-0.27 2-0.27 0.68 0 1.36 0.09 2 0.27 1.53-1.04 2.2-0.82 2.2-0.82 0.44 1.1 0.16 1.92 0.08 2.12 0.51 0.56 0.82 1.27 0.82 2.15 0 3.07-1.87 3.75-3.65 3.95 0.29 0.25 0.54 0.73 0.54 1.48 0 1.07-0.01 1.93-0.01 2.2 0 0.21 0.15 0.46 0.55 0.38C13.71 14.53 16 11.53 16 8 16 3.58 12.42 0 8 0z"></path></svg>
+</a>
+    <ul class="site-footer-links">
+      <li>&copy; 2016 <span title="0.29089s from github-fe125-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+        <li><a href="https://help.github.com" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+    
+    
+    
+
+    <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+      <svg aria-hidden="true" class="octicon octicon-alert" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M15.72 12.5l-6.85-11.98C8.69 0.21 8.36 0.02 8 0.02s-0.69 0.19-0.87 0.5l-6.85 11.98c-0.18 0.31-0.18 0.69 0 1C0.47 13.81 0.8 14 1.15 14h13.7c0.36 0 0.69-0.19 0.86-0.5S15.89 12.81 15.72 12.5zM9 12H7V10h2V12zM9 9H7V5h2V9z"></path></svg>
+      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <svg aria-hidden="true" class="octicon octicon-x" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z"></path></svg>
+      </button>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      
+      <script crossorigin="anonymous" integrity="sha256-fZcqMi2uFUKrt8tg8N4Hrql7FBvk4zq0LsAERY6sJfQ=" src="https://assets-cdn.github.com/assets/frameworks-7d972a322dae1542abb7cb60f0de07aea97b141be4e33ab42ec004458eac25f4.js"></script>
+      <script async="async" crossorigin="anonymous" integrity="sha256-m/22WWGkpLuzFHWmd6fGJi8YufAPhPd3zesF01SuKXk=" src="https://assets-cdn.github.com/assets/github-9bfdb65961a4a4bbb31475a677a7c6262f18b9f00f84f777cdeb05d354ae2979.js"></script>
+      
+      
+      
+      
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner hidden">
+      <svg aria-hidden="true" class="octicon octicon-alert" height="16" role="img" version="1.1" viewBox="0 0 16 16" width="16"><path d="M15.72 12.5l-6.85-11.98C8.69 0.21 8.36 0.02 8 0.02s-0.69 0.19-0.87 0.5l-6.85 11.98c-0.18 0.31-0.18 0.69 0 1C0.47 13.81 0.8 14 1.15 14h13.7c0.36 0 0.69-0.19 0.86-0.5S15.89 12.81 15.72 12.5zM9 12H7V10h2V12zM9 9H7V5h2V9z"></path></svg>
+      <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+      <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    </div>
+    <div class="facebox" id="facebox" style="display:none;">
+  <div class="facebox-popup">
+    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
+    </div>
+    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path d="M7.48 8l3.75 3.75-1.48 1.48-3.75-3.75-3.75 3.75-1.48-1.48 3.75-3.75L0.77 4.25l1.48-1.48 3.75 3.75 3.75-3.75 1.48 1.48-3.75 3.75z"></path></svg>
+    </button>
+  </div>
+</div>
+
+  </body>
+</html>
+
