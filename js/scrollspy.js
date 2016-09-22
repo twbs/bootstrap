@@ -40,14 +40,15 @@
 
   ScrollSpy.prototype.refresh = function () {
     var that          = this
-    var offsetMethod  = 'offset'
+    var forcePosition = this.options.position
+    var offsetMethod  = forcePosition ? 'position' : 'offset'
     var offsetBase    = 0
 
     this.offsets      = []
     this.targets      = []
     this.scrollHeight = this.getScrollHeight()
 
-    if (!$.isWindow(this.$scrollElement[0])) {
+    if (forcePosition == null && !$.isWindow(this.$scrollElement[0])) {
       offsetMethod = 'position'
       offsetBase   = this.$scrollElement.scrollTop()
     }
