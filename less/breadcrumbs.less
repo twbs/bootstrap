@@ -14,7 +14,7 @@
     display: inline-block;
 
     + li:before {
-      content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+      content: "@{breadcrumb-separator}@{breadcrumb-nonbreaking-space}"; // Unicode space added since inline-block means non-collapsing white-space
       padding: 0 5px;
       color: @breadcrumb-color;
     }
