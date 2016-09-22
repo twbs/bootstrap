@@ -40,7 +40,7 @@
     $(toggle).each(function () {
       var $this         = $(this)
       var $parent       = getParent($this)
-      var relatedTarget = { relatedTarget: this }
+      var relatedTarget = { relatedTarget: this, clickTarget: e.target }
 
       if (!$parent.hasClass('open')) return
 
