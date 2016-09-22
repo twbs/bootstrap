@@ -24,8 +24,6 @@
     "CNAME",
     "composer.json",
     "CONTRIBUTING.md",
-    "docs",
-    "js/tests",
     "test-infra"
   ],
   "dependencies": {
