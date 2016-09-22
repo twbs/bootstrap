@@ -431,16 +431,16 @@ a {
   <p>Specify the dimensions of an object more easily.</p>
 {% highlight scss %}
 // Mixins
-.size(@width; @height) {
+.size(@width, @height) {
   width: @width;
   height: @height;
 }
 .square(@size) {
-  .size(@size; @size);
+  .size(@size, @size);
 }
 
 // Usage
-.image { .size(400px; 300px); }
+.image { .size(400px, 300px); }
 .avatar { .square(48px); }
 {% endhighlight %}
 
