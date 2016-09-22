@@ -115,11 +115,13 @@
   }
 
   Carousel.prototype.slide = function (type, next) {
-    var $active   = this.$element.find('.item.active')
+    var that      = this
+    var $active   = this.$element.find('.item.active').filter(function(){
+        return (that.$element.context.id == this.closest('.carousel').id);
+    });
     var $next     = next || this.getItemForDirection(type, $active)
     var isCycling = this.interval
     var direction = type == 'next' ? 'left' : 'right'
-    var that      = this
 
     if ($next.hasClass('active')) return (this.sliding = false)
 
