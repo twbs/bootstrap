@@ -27,8 +27,8 @@
     if (this.options.remote) {
       this.$element
         .find('.modal-content')
-        .load(this.options.remote, $.proxy(function () {
-          this.$element.trigger('loaded.bs.modal')
+        .load(this.options.remote, $.proxy(function (response,status,xhr) {
+          this.$element.trigger('loaded.bs.modal',[response,status,xhr])
         }, this))
     }
   }
