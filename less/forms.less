@@ -158,6 +158,10 @@ output {
   // Reset height for `textarea`s
   textarea& {
     height: auto;
+    resize: vertical; // fix to stop horizontal resize.
+    &[disabled] {
+     resize: vertical;
+    }
   }
 }
 
