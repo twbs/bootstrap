@@ -10,6 +10,7 @@
 
 @import "variables.less";
 @import "mixins.less";
+@import "glyphicons.less";
 
 
 //
@@ -289,3 +290,39 @@
   @shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
   .box-shadow(@shadow);
 }
+
+
+
+//
+// Lists
+// --------------------------------------------------
+
+.list-feedback li {
+  position: relative;
+}
+.list-style-variant(@color, @character) {
+  color: @color;
+  list-style-type: none;
+  
+  &:before {
+    .glyphicon();
+    
+    position: absolute;
+    
+    left: 0;
+    margin-left: -1.4em;
+    width: 1.4em;
+    
+    content: @character;
+  }
+}
+li.list-success {
+  .list-style-variant(@state-success-text, "\e013"); //glyphicon-ok
+}
+li.list-warning {
+  .list-style-variant(@state-warning-text, "\e107"); //glyphicon-warning-sign
+}
+li.list-error {
+  .list-style-variant(@state-danger-text, "\e014"); //glyphicon-remove
+}
+
