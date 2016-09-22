@@ -43,6 +43,38 @@
     keyboard: true,
     show: true
   }
+  
+  Modal.zIndex = {
+    index: null,
+    openModalCnt: 0,
+    onSet: function (backdrop, modalCont) {
+      Modal.zIndex.openModalCnt++
+
+      if (Modal.zIndex.index === null) Modal.zIndex.index = $(backdrop).css('z-index') - 0
+
+      if (!$.data(modalCont, 'targets')) {
+        $.data(modalCont, 'targets', {
+          $modal_dialog: modalCont.$element.find('.modal-dialog'),
+          $backdrop: $(backdrop)
+        })
+      }
+
+      modalCont.$element.on('hidden.bs.modal', function () {
+        $(this).off('hidden.bs.modal')
+        Modal.zIndex.openModalCnt--
+      })
+
+      if (Modal.zIndex.openModalCnt > 1) {
+        var index = Modal.zIndex.index + ((Modal.zIndex.openModalCnt - 1) * 100)
+        var modals = $.data(modalCont, 'targets')
+
+        modals.$backdrop.css('z-index', index)
+        modalCont.$element.css('z-index', index + 1)
+        if (modals.$modal_dialog[0]) modals.$modal_dialog.css('z-index', index + 2)
+      }
+
+    }
+  }
 
   Modal.prototype.toggle = function (_relatedTarget) {
     return this.isShown ? this.hide() : this.show(_relatedTarget)
@@ -79,6 +111,8 @@
       if (!that.$element.parent().length) {
         that.$element.appendTo(that.$body) // don't move modals dom position
       }
+      
+      Modal.zIndex.onSet(this, that)
 
       that.$element
         .show()
