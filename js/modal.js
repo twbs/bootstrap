@@ -83,6 +83,9 @@
       that.$element
         .show()
         .scrollTop(0)
+        
+      // Allow additional positioning and/or animation which can't be done until element is visible
+      that.$element.trigger($.Event('showing.bs.modal', { relatedTarget: _relatedTarget }))
 
       that.adjustDialog()
 
