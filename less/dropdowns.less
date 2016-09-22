@@ -61,37 +61,56 @@
     .nav-divider(@dropdown-divider-bg);
   }
 
+  // Reset buttons within the dropdown
+  > li > button {
+    border: 0 none @dropdown-link-color;
+    background-color: transparent;
+    box-shadow: none;
+    text-align: left;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
   // Links within the dropdown menu
-  > li > a {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: normal;
-    line-height: @line-height-base;
-    color: @dropdown-link-color;
-    white-space: nowrap; // prevent links from randomly breaking onto new lines
+  > li {
+    > a,
+    > button {
+      display: block;
+      padding: 3px 20px;
+      clear: both;
+      font-weight: normal;
+      line-height: @line-height-base;
+      color: @dropdown-link-color;
+      white-space: nowrap; // prevent links from randomly breaking onto new lines
+    }
   }
 }
 
 // Hover/Focus state
-.dropdown-menu > li > a {
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    color: @dropdown-link-hover-color;
-    background-color: @dropdown-link-hover-bg;
+.dropdown-menu > li {
+  > a,
+  > button {
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: @dropdown-link-hover-color;
+      background-color: @dropdown-link-hover-bg;
+    }
   }
 }
 
 // Active state
-.dropdown-menu > .active > a {
-  &,
-  &:hover,
-  &:focus {
-    color: @dropdown-link-active-color;
-    text-decoration: none;
-    outline: 0;
-    background-color: @dropdown-link-active-bg;
+.dropdown-menu > .active {
+  > a,
+  > button {
+    &,
+    &:hover,
+    &:focus {
+      color: @dropdown-link-active-color;
+      text-decoration: none;
+      outline: 0;
+      background-color: @dropdown-link-active-bg;
+    }
   }
 }
 
@@ -99,21 +118,24 @@
 //
 // Gray out text and ensure the hover/focus state remains gray
 
-.dropdown-menu > .disabled > a {
-  &,
-  &:hover,
-  &:focus {
-    color: @dropdown-link-disabled-color;
-  }
+.dropdown-menu > .disabled {
+  > a,
+  > button {
+    &,
+    &:hover,
+    &:focus {
+      color: @dropdown-link-disabled-color;
+    }
 
-  // Nuke hover/focus effects
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    background-color: transparent;
-    background-image: none; // Remove CSS gradient
-    .reset-filter();
-    cursor: @cursor-disabled;
+    // Nuke hover/focus effects
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      background-color: transparent;
+      background-image: none; // Remove CSS gradient
+      .reset-filter();
+      cursor: @cursor-disabled;
+    }
   }
 }
 
@@ -125,7 +147,8 @@
   }
 
   // Remove the outline when :focus is triggered
-  > a {
+  > a,
+  > button {
     outline: 0;
   }
 }

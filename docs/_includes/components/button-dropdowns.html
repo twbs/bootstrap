@@ -318,4 +318,29 @@
   </ul>
 </div>
 {% endhighlight %}
+
+  <h2 id="btn-dropdowns-button-item">Buttons elements as items</h2>
+  <p>Dropdown list items can also be <code>button</code> elements.</p>
+  <div class="bs-example" data-example-id="button-dropdown-button-item">
+    <div class="btn-toolbar" role="toolbar">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Default <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><button type="button">Action</button></li>
+          <li class="disabled"><button type="button">Disabled action</button></li>
+        </ul>
+      </div><!-- /btn-group -->
+    </div>
+  </div><!-- /example -->
+{% highlight html %}
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Default <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><button type="button">Action</button></li>
+      <li class="disabled"><button type="button">Disabled action</button></li>
+    </ul>
+  </div>
+{% endhighlight %}
 </div>
