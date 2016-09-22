@@ -492,7 +492,7 @@
   // =========================
 
   function Plugin(option) {
-    return this.each(function () {
+    var tooltipList = this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bs.tooltip')
       var options = typeof option == 'object' && option
@@ -501,6 +501,80 @@
       if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
       if (typeof option == 'string') data[option]()
     })
+
+    var $container = $(this).parents().filter(function () {
+      if (
+        $(this).css('overflow-x') == 'auto'
+        || $(this).css('overflow-y') == 'auto'
+        || $(this).css('overflow-x') == 'scroll'
+        || $(this).css('overflow-y') == 'scroll') {
+        return true;
+      }
+      return false;
+    }).first()
+    var delay = 100
+
+    function adjustPosition() {
+      tooltipList.each(function () {
+        if (typeof($(this).data('bs.tooltip')) !== 'object') {
+          return
+        }
+        if ($(this).data('bs.tooltip').hasOwnProperty('$tip')) {
+          if ($(this).data('bs.tooltip').$tip.hasClass('in')) {
+            var containerWidth = $container.width()
+            var containerHeight = $container.height()
+            var containerTop
+            var containerLeft
+            if ($container.selector === 'body') {
+              containerWidth = $(window).width()
+              containerHeight = $(window).height()
+              containerTop = $(window).scrollTop()
+              containerLeft = $(window).scrollLeft()
+            }
+            else {
+              containerTop = $container.position().top
+              containerLeft = $container.position().left
+            }
+            containerTop = containerTop + parseInt($container.css('margin-top'), 0)
+            var containerBottom = containerTop + containerHeight
+            containerLeft = containerLeft + parseInt($container.css('margin-left'), 0)
+            var containerRight = containerLeft + containerWidth
+
+            var triggerTop = $(this).position().top
+            var triggerBottom = triggerTop + $(this).height()
+            var triggerLeft = $(this).position().left
+            var triggerRight = triggerLeft + $(this).width()
+
+            if (triggerTop < containerTop
+              || triggerBottom > containerBottom
+              || triggerLeft < containerLeft
+              || triggerRight > containerRight
+            ) {
+              $(this).data('bs.tooltip').$tip.css('visibility', 'hidden')
+            }
+            else {
+              $(this).data('bs.tooltip').$tip.css('visibility', 'visible')
+            }
+            $(this).data('bs.tooltip').show()
+          }
+        }
+      })
+    }
+    if ($container.length === 0) {
+      $container = $('body')
+      $(window).onDelayed('scroll', delay, function () {
+        adjustPosition()
+      })
+    }
+    else {
+      $container.onDelayed('scroll', delay, function () {
+        adjustPosition()
+      })
+    }
+    $(window).onDelayed('resize', delay, function () {
+      adjustPosition()
+    })
+    return tooltipList
   }
 
   var old = $.fn.tooltip
@@ -517,4 +591,16 @@
     return this
   }
 
+  // http://stackoverflow.com/questions/24460808/efficient-way-of-using-window-resize-or-other-method-to-fire-jquery-functions
+  $.fn.onDelayed = function (eventName, delayInMs, callback) {
+    var _timeout;
+    this.on(eventName, function (e) {
+      if (!!_timeout){
+        clearTimeout(_timeout);
+      }
+      _timeout = setTimeout(function () {
+        callback(e);
+      }, delayInMs);
+    });
+  };
 }(jQuery);
