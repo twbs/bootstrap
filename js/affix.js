@@ -112,6 +112,17 @@
     }
   }
 
+  Affix.prototype.destroy = function () {
+    this.$target = $(this.options.target)
+      .off('scroll.bs.affix.data-api')
+      .off('click.bs.affix.data-api')
+
+    this.$element
+      .removeClass(Affix.RESET)
+      .removeAttr('style')
+
+    $(this.$element).removeData()
+  }
 
   // AFFIX PLUGIN DEFINITION
   // =======================

@@ -104,4 +104,12 @@ $(function () {
       }, 250)
     }, 250)
   })
+
+  QUnit.test('should be destroyed', function (assert) {
+    assert.expect(1)
+    var $el = $('<div />')
+    var $affix = $el.bootstrapAffix()
+    $el.bootstrapAffix('destroy')
+    assert.strictEqual($affix.data('bs.affix'), undefined, 'affix was removed')
+  })
 })
