@@ -55,11 +55,11 @@
 
     if ($parent.length) {
       var $input = this.$element.find('input')
-      if ($input.prop('type') == 'radio') {
+      if ($input.attr('type') == 'radio') {
         if ($input.prop('checked')) changed = false
         $parent.find('.active').removeClass('active')
         this.$element.addClass('active')
-      } else if ($input.prop('type') == 'checkbox') {
+      } else if ($input.attr('type') == 'checkbox') {
         if (($input.prop('checked')) !== this.$element.hasClass('active')) changed = false
         this.$element.toggleClass('active')
       }
