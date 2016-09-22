@@ -159,6 +159,13 @@ output {
   textarea& {
     height: auto;
   }
+  
+  // <select> arrow fix for IE to make it cover all available area
+  select&::-ms-expand {
+    margin: -@padding-base-vertical -@padding-base-horizontal -@padding-base-vertical 0;
+    padding-top: 1px;
+    border: 0;
+  }
 }
 
 
