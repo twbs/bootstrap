@@ -74,7 +74,7 @@
   Affix.prototype.checkPosition = function () {
     if (!this.$element.is(':visible')) return
 
-    var height       = this.$element.height()
+    var height       = this.$element.outerHeight(true)
     var offset       = this.options.offset
     var offsetTop    = offset.top
     var offsetBottom = offset.bottom
