@@ -420,4 +420,26 @@ $(function () {
 
     assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
   })
+
+  QUnit.test('should not close the dropup if the user clicks on form', function (assert) {
+    assert.expect(1)
+    var dropUpHTML = [
+      '<div class="dropup">',
+        '<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">',
+          'Dropup',
+          '<span class="caret"></span>',
+        '</button>',
+        '<form class="dropdown-menu" aria-labelledby="dropdownMenu2">',
+          '<input type="text" />',
+        '</form>',
+      '</div>'
+    ].join('')
+    var $dropUp = $(dropUpHTML)
+      .appendTo('#qunit-fixture')
+      .addClass('open')
+
+    $dropUp.find('form').trigger('click')
+
+    assert.ok($dropUp.hasClass('open'), 'dropup menu is open')
+  })
 })
