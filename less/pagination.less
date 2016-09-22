@@ -60,13 +60,11 @@
     }
   }
 
-  > .disabled {
-    > span,
-    > span:hover,
-    > span:focus,
-    > a,
-    > a:hover,
-    > a:focus {
+  > .disabled > a,
+  > .disabled > span {
+    &,
+    &:hover,
+    &:focus {
       color: @pagination-disabled-color;
       background-color: @pagination-disabled-bg;
       border-color: @pagination-disabled-border;
