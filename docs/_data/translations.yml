@@ -7,7 +7,7 @@
   code: zh-TW
   description: Bootstrap 3 中文手冊
   url: https://kkbruce.tw/bs3/
- 
+
 - name: Danish
   code: da
   description: Bootstrap på Dansk
@@ -36,7 +36,7 @@
 - name: Brazilian Portuguese
   code: pt-BR
   description: Bootstrap em Português do Brasil
-  url: http://bootstrapbrasil.github.io/
+  url: http://getbootstrap.com.br/
 
 - name: Russian
   code: ru
