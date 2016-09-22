@@ -21,6 +21,7 @@
       display: block;
       padding: @nav-link-padding;
       &:hover,
+      &.hover,
       &:focus {
         text-decoration: none;
         background-color: @nav-link-hover-bg;
@@ -32,6 +33,7 @@
       color: @nav-disabled-link-color;
 
       &:hover,
+      &.hover,
       &:focus {
         color: @nav-disabled-link-hover-color;
         text-decoration: none;
@@ -45,6 +47,7 @@
   .open > a {
     &,
     &:hover,
+    &.hover,
     &:focus {
       background-color: @nav-link-hover-bg;
       border-color: @link-color;
@@ -86,7 +89,8 @@
       line-height: @line-height-base;
       border: 1px solid transparent;
       border-radius: @border-radius-base @border-radius-base 0 0;
-      &:hover {
+      &:hover,
+      &.hover {
         border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
       }
     }
@@ -95,6 +99,7 @@
     &.active > a {
       &,
       &:hover,
+      &.hover,
       &:focus {
         color: @nav-tabs-active-link-hover-color;
         background-color: @nav-tabs-active-link-hover-bg;
@@ -130,6 +135,7 @@
     &.active > a {
       &,
       &:hover,
+      &.hover,
       &:focus {
         color: @nav-pills-active-link-hover-color;
         background-color: @nav-pills-active-link-hover-bg;
@@ -198,6 +204,7 @@
 
   > .active > a,
   > .active > a:hover,
+  > .active > a.hover,
   > .active > a:focus {
     border: 1px solid @nav-tabs-justified-link-border-color;
   }
@@ -209,6 +216,7 @@
     }
     > .active > a,
     > .active > a:hover,
+    > .active > a.hover,
     > .active > a:focus {
       border-bottom-color: @nav-tabs-justified-active-link-border-color;
     }
