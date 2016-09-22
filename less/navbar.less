@@ -17,6 +17,11 @@
   // Prevent floats from breaking the navbar
   &:extend(.clearfix all);
 
+  // Disable double-tap-zoom via Pointer Events to remove 300ms click delay
+  -ms-touch-action: none;
+  touch-action: none;
+
+  
   @media (min-width: @grid-float-breakpoint) {
     border-radius: @navbar-border-radius;
   }
