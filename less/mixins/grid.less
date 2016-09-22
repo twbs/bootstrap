@@ -13,8 +13,10 @@
 
 // Creates a wrapper for a series of columns
 .make-row(@gutter: @grid-gutter-width) {
-  margin-left:  ceil((@gutter / -2));
-  margin-right: floor((@gutter / -2));
+  // Note: As Less's "Strict Math" option is set to true we need two sets of
+  // parentheses around `ceil` and `floor`.
+  margin-left:  -((ceil((@gutter / 2))));
+  margin-right: -((floor((@gutter / 2))));
   &:extend(.clearfix all);
 }
 
