@@ -410,13 +410,47 @@
     return delta
   }
 
+  Tooltip.prototype.checkValidType = function (contentType, o) {
+    var returnedContent
+    var returnedContentType
+
+    switch (contentType) {
+      case 'function':
+        returnedContent = o[this.type == 'Popover' ? 'content' : 'title'].call(this.$element[0])
+        returnedContentType = typeof returnedContent
+
+        if (returnedContentType !== 'string' && !(returnedContent.jquery)) {
+          throw new Error(this.type + ' received type function which returned type ' + returnedContentType + '. ' +
+          'Was expecting type string as the return type.')
+        }
+
+        return returnedContent
+        break
+
+      case 'string':
+        return o[this.type == 'Popover' ? 'content' : 'title'].call(this.$element[0])
+        break
+
+      case 'object':
+        return contentType.nodeType == 3 ?
+        o[this.type == 'Popover' ? 'content' : 'title'].call(this.$element[0]) : false
+        break
+
+      default:
+        throw new Error(this.type + ' received type ' + returnedContentType + '. Was expecting type string or a function.')
+    }
+  }
+
   Tooltip.prototype.getTitle = function () {
     var title
     var $e = this.$element
     var o  = this.options
+    var titleType = typeof o.title
+
+    var returnedContent = this.checkValidType(titleType, o)
 
     title = $e.attr('data-original-title')
-      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+      || (titleType == 'function' ? returnedContent :  o.title)
 
     return title
   }
