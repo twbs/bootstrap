@@ -426,13 +426,13 @@ input[type="checkbox"] {
 
 // Feedback states
 .has-success {
-  .form-control-validation(@state-success-text; @state-success-text; @state-success-bg);
+  .form-control-validation(@state-success-text; @state-success-border; @state-success-bg);
 }
 .has-warning {
-  .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-bg);
+  .form-control-validation(@state-warning-text; @state-warning-border; @state-warning-bg);
 }
 .has-error {
-  .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-bg);
+  .form-control-validation(@state-danger-text; @state-danger-border; @state-danger-bg);
 }
 
 // Reposition feedback icon if input has visible label above
