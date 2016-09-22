@@ -19,6 +19,7 @@
     this.options       = $.extend({}, Collapse.DEFAULTS, options)
     this.$trigger      = $('[data-toggle="collapse"][href="#' + element.id + '"],' +
                            '[data-toggle="collapse"][data-target="#' + element.id + '"]')
+                           .add(options.$trigger)
     this.transitioning = null
 
     if (this.options.parent) {
@@ -204,9 +205,11 @@
 
     var $target = getTargetFromTrigger($this)
     var data    = $target.data('bs.collapse')
-    var option  = data ? 'toggle' : $this.data()
+    var option  = data ? { toggle: true } : $this.data()
+    option.$trigger = $this
 
     Plugin.call($target, option)
+    $target.data('bs.collapse').toggle()
   })
 
 }(jQuery);
