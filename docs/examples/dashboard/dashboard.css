@@ -65,7 +65,9 @@ body {
   color: #fff;
   background-color: #428bca;
 }
-
+.nav-sidebar > .active > a:hover {
+  background-color: #5093ce;
+}
 
 /*
  * Main content
