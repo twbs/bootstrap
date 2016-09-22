@@ -10,6 +10,11 @@
 // Kill the scroll on the body
 .modal-open {
   overflow: hidden;
+
+  // Assists in fix to lessen scrolling bugginess in mobile safari
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 // Container that the modal scrolls within
@@ -45,6 +50,9 @@
   position: relative;
   width: auto;
   margin: 10px;
+
+  // Assists in fix to lessen scrolling bugginess in mobile safari
+  transform: translateZ(0);
 }
 
 // Actual modal
