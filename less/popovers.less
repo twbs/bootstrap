@@ -129,3 +129,20 @@
     }
   }
 }
+
+// Alternate styles
+//
+// Generate contextual modifier classes for colorizing the popover.
+
+.popover-success {
+  .popover-variant(@popover-success-title-bg; @popover-success-title-text);
+}
+.popover-info {
+  .popover-variant(@popover-info-title-bg; @popover-info-title-text);
+}
+.popover-warning {
+  .popover-variant(@popover-warning-title-bg; @popover-warning-title-text);
+}
+.popover-danger {
+  .popover-variant(@popover-danger-title-bg; @popover-danger-title-text);
+}
