@@ -40,7 +40,7 @@ $(function () {
   QUnit.test('should empty title attribute', function (assert) {
     assert.expect(1)
     var $trigger = $('<a href="#" rel="tooltip" title="Another tooltip"/>').bootstrapTooltip()
-    assert.strictEqual($trigger.attr('title'), '', 'title attribute was emptied')
+    assert.strictEqual($trigger.attr('title'), undefined, 'title attribute was removed')
   })
 
   QUnit.test('should add data attribute for referencing original title', function (assert) {
