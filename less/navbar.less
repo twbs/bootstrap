@@ -260,6 +260,13 @@
         }
       }
     }
+
+    // Buttons display as block when collapsed
+    > li > button {
+      .btn-block();
+      margin-top:    5px;
+      margin-bottom: 5px;
+    }
   }
 
   // Uncollapse the nav
@@ -272,6 +279,10 @@
       > a {
         padding-top:    @navbar-padding-vertical;
         padding-bottom: @navbar-padding-vertical;
+      }
+      > button {
+        margin-left:  2px;
+        margin-right: 2px;
       }
     }
   }
