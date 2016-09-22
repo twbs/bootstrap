@@ -6,11 +6,11 @@
 .make-grid-columns() {
   // Common styles for all sizes of grid columns, widths 1-12
   .col(@index) { // initial
-    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}, .col-fifth-xs-@{index}, .col-fifth-sm-@{index}, .col-fifth-md-@{index}, .col-fifth-lg-@{index}";
     .col((@index + 1), @item);
   }
   .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
-    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+    @item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}, .col-fifth-xs-@{index}, .col-fifth-sm-@{index}, .col-fifth-md-@{index}, .col-fifth-lg-@{index}";
     .col((@index + 1), ~"@{list}, @{item}");
   }
   .col(@index, @list) when (@index > @grid-columns) { // terminal
@@ -28,11 +28,11 @@
 
 .float-grid-columns(@class) {
   .col(@index) { // initial
-    @item: ~".col-@{class}-@{index}";
+    @item: ~".col-@{class}-@{index}, .col-fifth-@{class}-@{index}";
     .col((@index + 1), @item);
   }
   .col(@index, @list) when (@index =< @grid-columns) { // general
-    @item: ~".col-@{class}-@{index}";
+    @item: ~".col-@{class}-@{index}, .col-fifth-@{class}-@{index}";
     .col((@index + 1), ~"@{list}, @{item}");
   }
   .col(@index, @list) when (@index > @grid-columns) { // terminal
@@ -74,18 +74,59 @@
   }
 }
 
+.calc-grid-column-fifth(@index, @class, @type) when (@type = width) and (@index > 0) {
+  .col-fifth-@{class}-@{index} {
+    width: percentage((@index / 5));
+  }
+}
+.calc-grid-column-fifth(@index, @class, @type) when (@type = push) and (@index > 0) {
+  .col-fifth-@{class}-push-@{index} {
+    left: percentage((@index / 5));
+  }
+}
+.calc-grid-column-fifth(@index, @class, @type) when (@type = push) and (@index = 0) {
+  .col-fifth-@{class}-push-0 {
+    left: auto;
+  }
+}
+.calc-grid-column-fifth(@index, @class, @type) when (@type = pull) and (@index > 0) {
+  .col-fifth-@{class}-pull-@{index} {
+    right: percentage((@index / 5));
+  }
+}
+.calc-grid-column-fifth(@index, @class, @type) when (@type = pull) and (@index = 0) {
+  .col-fifth-@{class}-pull-0 {
+    right: auto;
+  }
+}
+.calc-grid-column-fifth(@index, @class, @type) when (@type = offset) {
+  .col-fifth-@{class}-offset-@{index} {
+    margin-left: percentage((@index / 5));
+  }
+}
+
+
 // Basic looping in LESS
 .loop-grid-columns(@index, @class, @type) when (@index >= 0) {
   .calc-grid-column(@index, @class, @type);
   // next iteration
   .loop-grid-columns((@index - 1), @class, @type);
 }
+.loop-grid-columns-fifth(@index, @class, @type) when (@index >= 0) {
+  .calc-grid-column-fifth(@index, @class, @type);
+  // next iteration
+  .loop-grid-columns-fifth((@index - 1), @class, @type);
+}
 
 // Create grid for specific class
 .make-grid(@class) {
   .float-grid-columns(@class);
   .loop-grid-columns(@grid-columns, @class, width);
+  .loop-grid-columns-fifth(5, @class, width);
   .loop-grid-columns(@grid-columns, @class, pull);
+  .loop-grid-columns-fifth(5, @class, pull);
   .loop-grid-columns(@grid-columns, @class, push);
+  .loop-grid-columns-fifth(5, @class, push);
   .loop-grid-columns(@grid-columns, @class, offset);
+  .loop-grid-columns-fifth(5, @class, offset);
 }
