@@ -1,0 +1,119 @@
+/*!
+ * This is an Additional file, Include it only on the RTL websites.
+ */ 
+
+//
+// Override LTR style.
+//
+
+
+/*
+ * General edits
+ *************************/
+
+//
+// Make pre tag direction LTR, Because most programming languages ​​are LTR
+//
+
+pre {
+  direction: ltr;
+}
+
+pre.rtl {
+  direction: rtl;
+}
+
+
+/*
+ * normalize.less
+ ************************/
+
+//
+// Set consistent quote types.
+//
+
+q {
+  quotes: "\201D" "\201C" "\2019" "\2018";
+}
+
+/*
+ * print.less
+ ************************/
+/// No thing to do.
+
+/*
+ * scaffolding.less
+ ************************/
+/// No thing to do.
+
+/*
+ * type.less
+ *******************/
+
+// Description Lists
+
+// List options
+
+// Unstyled removes default browser padding
+.list-unstyled {
+  padding-right: 0;
+}
+
+.list-inline {
+  .list-unstyled();
+
+  > li:first-child {
+      padding-right: 0;
+    }
+  }
+}
+
+// Description Lists
+dd {
+  margin-right: 0; // Undo browser default
+}
+
+// Horizontal description lists
+@media (min-width: @grid-float-breakpoint) {
+  .dl-horizontal {
+    dt {
+      float: right;
+      clear: right;
+      text-align: left;
+    }
+    dd {
+      margin-right: @component-offset-horizontal;
+      margin-left: 0;
+    }
+  }
+}
+
+// Blockquotes
+blockquote {
+  border-right: 5px solid @blockquote-border-color;
+  border-left: none;
+
+  // Float right with text-align: left
+  &.pull-left {
+    padding-left: 15px;
+    padding-right: 0;
+    border-left: 5px solid @blockquote-border-color;
+    border-right: 0;
+    p,
+    small,
+    .small {
+      text-align: left;
+    }
+    small,
+    .small {
+      &:before {
+        content: '';
+      }
+      &:after {
+        content: '\00A0 \2014'; // NBSP, EM DASH
+      }
+    }
+  }
+}
+
+
