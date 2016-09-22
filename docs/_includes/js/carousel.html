@@ -5,7 +5,7 @@
 
   <h2 id="carousel-examples">Examples</h2>
   <div class="bs-example" data-example-id="simple-carousel">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-touch="true">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -33,7 +33,7 @@
     </div>
   </div><!-- /example -->
 {% highlight html %}
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-touch="true">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -93,7 +93,7 @@
   <h3>Optional captions</h3>
   <p>Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.item</code>. Place just about any optional HTML within there and it will be automatically aligned and formatted.</p>
   <div class="bs-example" data-example-id="carousel-with-captions">
-    <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+    <div id="carousel-example-captions" class="carousel slide" data-ride="carousel" data-touch="true">
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
         <li data-target="#carousel-example-captions" data-slide-to="1"></li>
@@ -193,6 +193,18 @@ $('.carousel').carousel()
          <td>boolean</td>
          <td>true</td>
          <td>Whether the carousel should react to keyboard events.</td>
+       </tr>
+       <tr>
+         <td>touch</td>
+         <td>boolean</td>
+         <td>false</td>
+         <td>Whether the carousel should react to touch events (swiping left/right).</td>
+       </tr>
+       <tr>
+         <td>touch-dist</td>
+         <td>number</td>
+         <td>60</td>
+         <td>Minimal distance of touch swipe to activate sliding.</td>
        </tr>
       </tbody>
     </table>
