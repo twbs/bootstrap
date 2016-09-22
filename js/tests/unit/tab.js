@@ -213,4 +213,22 @@ $(function () {
     assert.strictEqual($tabs.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after second show event, hidden tab has aria-expanded = false')
   })
 
+  QUnit.test('should not show tab when disabled', function (assert) {
+    assert.expect(4)
+    var tabsHTML = '<ul class="tabs">'
+        + '<li class="active"><a href="#home" data-toggle="tab">Home</a></li>'
+        + '<li class="disabled"><a href="#profile" data-toggle="tab" aria-disabled="true">Profile</a></li>'
+        + '<li><a href="#settings" data-toggle="tab">Settings</a></li>'
+        + '</ul>'
+
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+    $tabs.find('a[href=#profile]').trigger('click')
+
+    assert.strictEqual($tabs.find('a[href=#profile]').attr('aria-disabled'), 'true', 'expected aria-disabled on tab')
+    assert.ok(!$tabs.find('a[href=#profile]').parent('li').hasClass('active'), 'active flag is present on disabled tab')
+
+    $tabs.find('a[href=#settings]').trigger('click')
+    assert.strictEqual($tabs.find('a[href=#settings]').attr('aria-disabled'), undefined, 'aria-disabled is found on enabled tab')
+    assert.ok($tabs.find('a[href=#settings]').parent('li').hasClass('active'), 'active flag is missing from enabled tab')
+  })
 })
