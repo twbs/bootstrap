@@ -229,35 +229,36 @@
   }
 }
 
-.focus .input-group,
-.focus.input-group {
-    .form-control,
-    .input-group-addon {
-        border-color: @input-border-focus;
-    }
-}
-.input-group .form-control:focus {
+.input-group {
+  .form-control:focus {
     border-color: @input-border;
-}
-.input-group:hover .form-control:focus {
-    border-color: @input-border-hover;
-}
-.focus .input-group .form-control {
-    border-color: @input-border-focus;
-}
-.focus .input-group:hover .form-control {
-    border-color: @input-border-focus;
-}
-.has-error {
-    .input-group:hover {
-        .form-control,
-        .input-group-addon {
-            border-color: @state-danger-text;
-        }
+
+    :hover& {
+      border-color: @input-border-hover;
     }
-    .input-group .form-control:focus {
-        border-color: @state-danger-text;
+  }
+}
+
+.focus .input-group {
+  .form-control,
+  .input-group-addon {
+    border-color: @input-border-focus;
+
+    :hover& {
+      border-color: @input-border-focus;
     }
+  }
+}
+
+.has-error .input-group {
+  .form-control,
+  .input-group-addon {
+    border-color: @state-danger-text;
+
+    :hover& {
+      border-color: @state-danger-text;
+    }
+  }
 }
 
 .dropdown-menu {
