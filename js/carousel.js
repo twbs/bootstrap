@@ -169,6 +169,10 @@
     return this
   }
 
+  Carousel.prototype.destroy = function () {
+    this.hide().$element.off('.' + this.type).removeData('bs.' + this.type)
+  }
+
 
   // CAROUSEL PLUGIN DEFINITION
   // ==========================
