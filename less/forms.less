@@ -154,6 +154,15 @@ output {
   fieldset[disabled] & {
     cursor: @cursor-disabled;
   }
+  
+  // Range
+  // Hack for Chrome 30.x 
+  // https://github.com/twbs/bootstrap/issues/11177
+  &[type="range"] {
+    .box-shadow(none);
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   // Reset height for `textarea`s
   textarea& {
