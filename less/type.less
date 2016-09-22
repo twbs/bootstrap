@@ -229,7 +229,7 @@ dd {
 // Misc
 // -------------------------
 
-// Abbreviations and acronyms
+// Abbreviations
 abbr[title],
 // Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
@@ -239,6 +239,17 @@ abbr[data-original-title] {
 .initialism {
   font-size: 90%;
   .text-uppercase();
+}
+
+// Acronyms
+acronym[title],
+acronym[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted @grayLight;
+}
+acronym.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
 }
 
 // Blockquotes
