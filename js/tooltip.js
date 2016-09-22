@@ -339,6 +339,8 @@
 
     this.hoverState = null
 
+    this.inState = { click: false, hover: false, focus: false }
+
     return this
   }
 
