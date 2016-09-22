@@ -17,7 +17,7 @@
     this.options = $.extend({}, Affix.DEFAULTS, options)
 
     this.$target = $(this.options.target)
-      .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
+      .on('scroll.bs.affix.data-api', $.proxy(this.checkPositionWithEventLoop, this))
       .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
 
     this.$element     = $(element)
@@ -25,7 +25,7 @@
     this.unpin        = null
     this.pinnedOffset = null
 
-    this.checkPosition()
+    this.checkPositionWithEventLoop()
   }
 
   Affix.VERSION  = '3.3.7'
