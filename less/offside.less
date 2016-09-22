@@ -1,0 +1,169 @@
+﻿/*
+	OFF CANVAS RELATED BASE CSS
+	-------------------------------------------------------
+	Copyright: balazs hideghety
+	Licencing: MIT
+
+	Added: -webkit-transform: translateZ(0); to force GPU rendering in webkit...
+	*/
+
+.off-canvas-container {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+}
+
+.oc-viewport {
+	position: relative;
+	overflow: visible;
+	width: 100%;
+	min-height: 100%;
+	left: 0%;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	transition: all .5s ease;
+}
+
+.oc-exit {
+	cursor: pointer;
+	display: none;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background: rgba(255, 255, 255, 0.2);
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	transition: all .5s ease;
+}
+
+	.oc-exit:hover {
+		background: rgba(255, 255, 255, 0.05);
+	}
+
+.oc-left-push .oc-exit,
+.oc-left-slide .oc-exit,
+.oc-right-push .oc-exit,
+.oc-right-slide .oc-exit,
+.oc-show-panel-1 .oc-exit,
+.oc-show-panel-2 .oc-exit,
+.oc-show-panel-3 .oc-exit,
+.oc-show-panel-4 .oc-exit,
+.oc-show-panel-5 .oc-exit {
+	display: block;
+}
+
+.oc-left-menu {
+	width: 90%;
+	left: -90%;
+	top: 0;
+	bottom: 0;
+	min-height: 100%;
+	position: absolute;
+	overflow-y: auto;
+	z-index: 1005;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	transition: all .5s ease;
+}
+
+.oc-right-menu {
+	width: 90%;
+	right: -90%;
+	top: 0;
+	bottom: 0;
+	min-height: 100%;
+	position: absolute;
+	overflow-y: auto;
+	z-index: 1005;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	transition: all .5s ease;
+}
+
+.oc-left-push .oc-viewport {
+	left: 90%;
+}
+
+.oc-left-slide .oc-left-menu {
+	left: 0%;
+}
+
+.oc-right-push .oc-viewport {
+	left: -90%;
+}
+
+.oc-right-slide .oc-right-menu {
+	right: 0%;
+}
+
+/*
+	Original solution where parent had only absolutely positioned childrens had to be replaced, cause the height of the parent had to been set manually...
+	The solution below solves the parent's height problem...
+	*/
+
+.oc-panel {
+	width: 20%; /* 1/5 of parent's width ~ 1/5 * 500 % */
+	display: table-cell;
+}
+
+.oc-viewport.oc-panel-viewport {
+	width: 500%; /* 5x width = 100% */
+	position: relative;
+	display: table;
+	/*min-height: 100vh;*/
+}
+
+.oc-panel-1 {
+	left: 0%;
+}
+
+.oc-panel-2 {
+	left: 100%;
+}
+
+.oc-panel-3 {
+	left: 200%;
+}
+
+.oc-panel-4 {
+	left: 300%;
+}
+
+.oc-panel-5 {
+	left: 400%;
+}
+
+.oc-show-panel-1 .oc-viewport {
+	left: 0%;
+}
+
+.oc-show-panel-2 .oc-viewport {
+	left: -100%;
+}
+
+.oc-show-panel-3 .oc-viewport {
+	left: -200%;
+}
+
+.oc-show-panel-4 .oc-viewport {
+	left: -300%;
+}
+
+.oc-show-panel-5 .oc-viewport {
+	left: -400%;
+}
