@@ -65,7 +65,7 @@ p {
   font-weight: 300;
   line-height: 1.4;
 
-  @media (min-width: @screen-sm-min) {
+  @media all and (min-width: @screen-sm-min) {
     font-size: (@font-size-base * 1.5);
   }
 }
@@ -211,7 +211,7 @@ dd {
     &:extend(.clearfix all); // Clear the floated `dt` if an empty `dd` is present
   }
 
-  @media (min-width: @dl-horizontal-breakpoint) {
+  @media all and (min-width: @dl-horizontal-breakpoint) {
     dt {
       float: left;
       width: (@dl-horizontal-offset - 20);
