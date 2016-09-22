@@ -48,7 +48,7 @@
     width: percentage((@index / @grid-columns));
 
     .row-equal-height & {
-      width: -webkit-calc((percentage((@index / @grid-columns))) - 1px);
+      width: -webkit-calc(percentage((@index / @grid-columns)) - 1px);
     }
   }
 }
