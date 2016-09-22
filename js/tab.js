@@ -25,7 +25,7 @@
 
   Tab.prototype.show = function () {
     var $this    = this.element
-    var $ul      = $this.closest('ul:not(.dropdown-menu)')
+    var $list    = $this.closest('ul:not(.dropdown-menu), ol:not(.dropdown-menu)')
     var selector = $this.data('target')
 
     if (!selector) {
@@ -35,7 +35,7 @@
 
     if ($this.parent('li').hasClass('active')) return
 
-    var $previous = $ul.find('.active:last a')
+    var $previous = $list.find('.active:last a')
     var hideEvent = $.Event('hide.bs.tab', {
       relatedTarget: $this[0]
     })
@@ -50,7 +50,7 @@
 
     var $target = $(selector)
 
-    this.activate($this.closest('li'), $ul)
+    this.activate($this.closest('li'), $list)
     this.activate($target, $target.parent(), function () {
       $previous.trigger({
         type: 'hidden.bs.tab',
