@@ -10,6 +10,12 @@
 // Kill the scroll on the body
 .modal-open {
   overflow: hidden;
+
+  // On iOS prevent from scrolling the body while scrolling an overlay. For details, see
+  // https://github.com/twbs/bootstrap/issues/16557
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 // Container that the modal scrolls within
