@@ -36,7 +36,7 @@
     selector: false,
     template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
     trigger: 'hover focus',
-    title: '',
+    title: false,
     delay: 0,
     html: false,
     container: false,
@@ -415,10 +415,13 @@
     var $e = this.$element
     var o  = this.options
 
-    title = $e.attr('data-original-title')
-      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+    if (typeof o.title == 'function') {
+      return o.title.call($e[0])
+    } else if (o.title) {
+      return o.title
+    }
 
-    return title
+    return title = $e.attr('data-original-title') || ''
   }
 
   Tooltip.prototype.getUID = function (prefix) {
