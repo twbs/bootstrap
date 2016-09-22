@@ -87,3 +87,19 @@
 .pagination-sm {
   .pagination-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
 }
+
+// Collapsing on narrow devices
+// --------------------------------------------------
+@media screen and (max-width: @screen-sm-max) {
+  .pagination {
+    ul > li {
+      display: none;
+
+      // Note: This is buggy on Chrome 31 (Mac and Windows).
+      &:nth-child(-n+3),        // Display first first arrow and 2 pages.
+      &:nth-last-child(-n+4) {  // Display "...", last 2 pages and arrow.
+        display: inline;
+      }
+    }
+  }
+}
