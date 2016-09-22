@@ -1065,6 +1065,9 @@ th {
 .glyphicon-menu-up:before {
   content: "\e260";
 }
+.glyphicon-inr:before {
+  content: "\20b9";
+}
 * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
