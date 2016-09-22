@@ -330,7 +330,8 @@
 @grid-float-breakpoint:     @screen-sm-min;
 //** Point at which the navbar begins collapsing.
 @grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
-
+// This here is some crazy as these variables are defined in deprecated syntax above eg, @screen-sm defines
+// @grid-float-breakpoint and @grid-float-breakpoint-max, which in turn, have dependant breakpoints defined in navbar.less (lines 241, 266, 299, etc)
 
 //== Container sizes
 //
