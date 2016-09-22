@@ -23,6 +23,7 @@ _site
 .project
 .settings
 .tmproj
+.tm_properties
 *.esproj
 *.sublime-project
 *.sublime-workspace
@@ -39,3 +40,5 @@ docs/.jekyll-metadata
 # Folders to ignore
 bower_components
 node_modules
+cache
+temp
