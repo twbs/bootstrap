@@ -55,7 +55,7 @@
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
-  &:not(:last-child):not(.dropdown-toggle) {
+  &:not(:last-child) {
     .border-right-radius(0);
   }
 }
