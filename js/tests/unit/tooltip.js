@@ -1322,4 +1322,23 @@ $(function () {
     })
   })
 
+  QUnit.test('should only place tooltip in closest container', function (assert) {
+    assert.expect(2)
+    var $tooltipContainers = $('<div class="containers"/>').appendTo('#qunit-fixture');
+    var $firstContainer = $('<div id="container1" class="container"/>');
+    var $secondContainer = $('<div id="container2" class="container"/>');
+    $tooltipContainers.append($firstContainer, $secondContainer);
+
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+    .appendTo($secondContainer)
+    .bootstrapTooltip({ container: '.container' });
+
+    $tooltip.bootstrapTooltip('show');
+    assert.strictEqual($('.tooltip').length, 1, 'multiple tooltips added')
+
+    $tooltip.bootstrapTooltip('hide');
+    assert.strictEqual($('.tooltip').length, 0, 'not all tooltips were removed')
+
+  })
+
 })
