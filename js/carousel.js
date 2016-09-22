@@ -80,12 +80,11 @@
   }
 
   Carousel.prototype.to = function (pos) {
-    var that        = this
     var activeIndex = this.getItemIndex(this.$active = this.$element.find('.item.active'))
 
     if (pos > (this.$items.length - 1) || pos < 0) return
 
-    if (this.sliding)       return this.$element.one('slid.bs.carousel', function () { that.to(pos) }) // yes, "slid"
+    if (this.sliding)       return this.$element.one('slid.bs.carousel', $.proxy(this.to, this, pos)) // yes, "slid"
     if (activeIndex == pos) return this.pause().cycle()
 
     return this.slide(pos > activeIndex ? 'next' : 'prev', this.$items.eq(pos))
@@ -105,13 +104,11 @@
   }
 
   Carousel.prototype.next = function () {
-    if (this.sliding) return
-    return this.slide('next')
+    if (!this.sliding) return this.slide('next')
   }
 
   Carousel.prototype.prev = function () {
-    if (this.sliding) return
-    return this.slide('prev')
+    if (!this.sliding) return this.slide('prev')
   }
 
   Carousel.prototype.slide = function (type, next) {
