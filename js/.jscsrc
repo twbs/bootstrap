@@ -1,5 +1,6 @@
 {
   "disallowEmptyBlocks": true,
+  "disallowMultipleVarDecl": true,
   "disallowKeywords": ["with"],
   "disallowMixedSpacesAndTabs": true,
   "disallowMultipleLineStrings": true,
