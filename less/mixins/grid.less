@@ -120,3 +120,30 @@
     right: percentage((@columns / @grid-columns));
   }
 }
+
+// Apply styles to elements when breakpoints are hit
+.at-breakpoint(@break, @rules) {
+    @media (min-width: @break) {
+        @rules();
+    }
+}
+
+// Apply styles when extra small column size
+.at-xs(@rules) {
+  .at-breakpoint(@screen-xs-min, @rules);
+}
+
+// Apply styles when small column size
+.at-sm(@rules) {
+  .at-breakpoint(@screen-sm-min, @rules);
+}
+
+// Apply styles when medium column size
+.at-md(@rules) {
+  .at-breakpoint(@screen-md-min, @rules);
+}
+
+// Apply styles when large column size
+.at-lg(@rules) {
+  .at-breakpoint(@screen-lg-min, @rules);
+}
