@@ -14,12 +14,7 @@
   "homepage": "http://getbootstrap.com",
   "authors": [
     {
-      "name": "Mark Otto",
-      "email": "markdotto@gmail.com"
-    },
-    {
-      "name": "Jacob Thornton",
-      "email": "jacobthornton@gmail.com"
+      "name": "Twitter, Inc."
     }
   ],
   "support": {
