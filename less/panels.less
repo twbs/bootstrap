@@ -64,14 +64,14 @@
   > .panel-collapse > .list-group {
     margin-bottom: 0;
 
-    .list-group-item {
+    > .list-group-item {
       border-width: 1px 0;
       border-radius: 0;
     }
 
     // Add border top radius for first one
     &:first-child {
-      .list-group-item:first-child {
+      > .list-group-item:first-child {
         border-top: 0;
         .border-top-radius((@panel-border-radius - 1));
       }
@@ -79,21 +79,21 @@
 
     // Add border bottom radius for last one
     &:last-child {
-      .list-group-item:last-child {
+      > .list-group-item:last-child {
         border-bottom: 0;
         .border-bottom-radius((@panel-border-radius - 1));
       }
     }
   }
   > .panel-heading + .panel-collapse > .list-group {
-    .list-group-item:first-child {
+    > .list-group-item:first-child {
       .border-top-radius(0);
     }
   }
 }
 // Collapse space between when there's no additional content.
 .panel-heading + .list-group {
-  .list-group-item:first-child {
+  > .list-group-item:first-child {
     border-top-width: 0;
   }
 }
