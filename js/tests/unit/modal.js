@@ -61,6 +61,30 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should trigger shown event after modal was filled', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    $('<div id="modal-test"/>')
+      .on('show.bs.modal', function () {
+        var modalContent = [
+          '<div class="modal-dialog">',
+            '<div class="modal-content">',
+              '<div class="modal-body">',
+                '<p>Body of the modal</p>',
+              '</div>',
+            '</div>',
+          '</div>'
+        ].join('');
+        $(this).html(modalContent);
+      })
+      .on('shown.bs.modal', function () {
+        assert.ok(true, 'shown event fired')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should not fire shown when show was prevented', function (assert) {
     assert.expect(1)
     var done = assert.async()
