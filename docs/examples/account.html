@@ -25,13 +25,14 @@
 	<script src="js/one-click.directive.js"></script>
 	<script src="js/nav.directive.js"></script>
 	<script src="js/next-cards.directive.js"></script>
-	<script src="js/active-transfers.directive.js"></script>
-	<script src="js/historic-transfers.directive.js"></script>
+	<script src="js/transfer-list.directive.js"></script>
 	<script src="js/transfer-history-table.directive.js"></script>
 	<script src="js/transfer-description.directive.js"></script>
 	<script src="js/transfer-details.directive.js"></script>
 	<script src="js/transfer-type-icon.directive.js"></script>
 	<script src="js/transfer-actions.directive.js"></script>
+	<script src="js/transfer-activity.directive.js"></script>
+	<script src="js/transfer-activity-expanded.directive.js"></script>
 	<script src="js/repeat-transfer.directive.js"></script>
 	<script src="js/currency-input.directive.js"></script>
 	<script src="js/pagination.directive.js"></script>
@@ -263,6 +264,47 @@
 		<div class="container">
 			<next-cards></next-cards>
 
+			<div class="panel">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-md-6 col-lg-8">
+							<h3 class="panel-title">
+								In progress
+							</h3>
+						</div>
+						<div class="col-md-6 col-lg-4 m-b-1">
+							<div class="input-group input-group-sm m-t-1">
+								<span class="input-group-addon"><i class="icon icon-search m-r-0"></i></span>
+								<input type="text" class="form-control" placeholder="Search..." />
+								 <span class="input-group-btn">
+									 <button class="btn btn-sm btn-primary">Go</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<transfer-list
+					transfers="ctrl.activeTransfers"
+					currencies="ctrl.currencies"
+					inactive="false">
+				</transfer-list>
+			</div>
+
+			<div class="panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Recent
+					</h3>
+				</div>
+				<transfer-list
+					transfers="ctrl.historicTransfers"
+					currencies="ctrl.currencies"
+					inactive="true">
+				</transfer-list>
+			</div>
+
+
+			<!--
 			<active-transfers
 				transfers="ctrl.activeTransfers"
 				currencies="ctrl.currencies">
@@ -272,7 +314,6 @@
 				transfers="ctrl.historicTransfers"
 				currencies="ctrl.currencies">
 			</historic-transfers>
-			<!--
 			<transfer-history-table
 				transfers="ctrl.historicTransfers"
 				currencies="ctrl.currencies">

@@ -1,0 +1,41 @@
+<div class="media">
+	<div class="media-body"
+		ng-class="{'p-r-3': $ctrl.active == $ctrl.transfer.id}">
+		<p class="list-group-item-heading text-max-width">
+			<transfer-description
+				transfer="$ctrl.transfer"
+				currencies="$ctrl.currencies"
+				source-account="$ctrl.transfer.sourceAccount"
+				target-account="$ctrl.transfer.targetAccount">
+			</transfer-description>
+		</p>
+		<p class="small m-b-0 text-max-width">
+			<span ng-if="$ctrl.transfer.status !== 'COMPLETED' && $ctrl.transfer.status !== 'CANCELLED'"
+				class="list-group-item-text" >
+				{{$ctrl.transfer.reason}}
+			</span>
+			<span ng-if="$ctrl.transfer.status === 'COMPLETED'"
+				class="list-group-item-text"
+				title="{{$ctrl.transfer.completed | date:'dd MMMM yyyy h:mm a'}}">
+				Completed {{$ctrl.transfer.completed | date:"dd MMMM yyyy"}}
+			</span>
+			<span ng-if="$ctrl.transfer.status === 'CANCELLED'"
+				class="list-group-item-text"
+				title="{{$ctrl.transfer.updated | date:'dd MMMM yyyy h:mm a'}}">
+				Cancelled {{$ctrl.transfer.updated | date:"dd MMMM yyyy"}}
+			</span>
+		</p>
+	</div>
+	<div class="media-right text-xs-right">
+		<p class="h5">
+			<span class="sr-only">Sent</span>
+			{{$ctrl.currencies[$ctrl.transfer.source].symbol}}{{$ctrl.transfer.sourceAmount | number:$ctrl.currencies[$ctrl.transfer.source].digits}}
+			<span class="hidden-xs">{{$ctrl.transfer.source}}</span>
+		</p>
+		<p class="m-b-0 small">
+			<span class="sr-only">Received</span>
+			{{$ctrl.currencies[$ctrl.transfer.target].symbol}}{{$ctrl.transfer.targetAmount | number:$ctrl.currencies[$ctrl.transfer.source].digits}}
+			<span class="hidden-xs">{{$ctrl.transfer.source}}</span>
+		</p>
+	</div>
+</div>
