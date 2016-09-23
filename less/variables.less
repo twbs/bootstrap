@@ -42,12 +42,16 @@
 @brand-light-blue-minus-10: #00a4df;
 @brand-light-blue: #00b9ff;
 
+@brand-light-blue-wash: #D8F1fA;
+
 //=== Reds
 //
 //
 @brand-red-minus-20: #B62A18;
 @brand-red-minus-10: #CF3131;
 @brand-red: #F53636;
+
+@brand-red-wash: #FFDFDF;
 
 //=== Greens
 //
@@ -56,12 +60,16 @@
 @brand-green-minus-10: #28B862;
 @brand-green: #2ED06E;
 
+@brand-green-wash: #D6F5E2;
+
 //=== Oranges
 //
 //
 @brand-orange-minus-20: #C07500;
 @brand-orange-minus-10: #DF8700;
 @brand-orange: #FFA600;
+
+@brand-orange-wash: #FFF3DD;
 
 //=== Yellows
 //
@@ -695,22 +703,22 @@
 
 @state-success-text:             @brand-green-minus-10;
 @state-success-text-hover:       @brand-green-minus-20;
-@state-success-bg:               #EAFAF0;
+@state-success-bg:               @brand-green-wash;
 @state-success-border:           @brand-green;
 
 @state-info-text:                @brand-light-blue;
 @state-info-text-hover:          @brand-light-blue-minus-10;
-@state-info-bg:                  #E5F8FF;
+@state-info-bg:                  @brand-light-blue-wash;
 @state-info-border:              @brand-light-blue;
 
 @state-warning-text:             @brand-orange;
 @state-warning-text-hover:       @brand-orange-minus-10;
-@state-warning-bg:               #FFF6E5;
+@state-warning-bg:               @brand-orange-wash;
 @state-warning-border:           @brand-orange;
 
 @state-danger-text:              @brand-red;
 @state-danger-text-hover:        @brand-red-minus-10;
-@state-danger-bg:                #FEEAEA;
+@state-danger-bg:                @brand-red-wash;
 @state-danger-border:            @brand-red;
 
 
@@ -944,19 +952,19 @@
 
 @panel-success-text:          @state-success-text;
 @panel-success-border:        @state-success-border;
-@panel-success-heading-bg:    #FFF;         //@state-success-bg;
+@panel-success-heading-bg:    #FFF;
 
 @panel-info-text:             @state-info-text;
 @panel-info-border:           @state-info-border;
-@panel-info-heading-bg:       #FFF;         //@state-info-bg;
+@panel-info-heading-bg:       #FFF;
 
 @panel-warning-text:          @state-warning-text;
 @panel-warning-border:        @state-warning-border;
-@panel-warning-heading-bg:    #FFF;         //@state-warning-bg;
+@panel-warning-heading-bg:    #FFF;
 
 @panel-danger-text:           @state-danger-text;
 @panel-danger-border:         @state-danger-border;
-@panel-danger-heading-bg:     #FFF;         // @state-danger-bg;
+@panel-danger-heading-bg:     #FFF;
 
 
 //== Thumbnails
