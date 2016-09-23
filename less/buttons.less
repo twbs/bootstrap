@@ -26,13 +26,12 @@
   );
   .user-select(none);
 
-  &,
   &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      .tab-focus();
-    }
+  &.active,
+  &:focus,
+  &.focus {
+    .tab-focus();
+    outline-offset: -2px;
   }
 
   &:hover,
@@ -40,13 +39,6 @@
   &.focus {
     color: @btn-default-color;
     text-decoration: none;
-  }
-
-  &:active,
-  &.active {
-    outline: 0;
-    background-image: none;
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
   }
 
   &.disabled,
@@ -317,7 +309,6 @@ input[type="button"] {
 .bootstrap-select .btn-default,
 .btn-input {
   font-weight: 500;
-  outline: 0 !important;
   padding-left: @padding-base-horizontal;
   padding-right: @padding-base-horizontal;
 
@@ -382,7 +373,6 @@ input[type="button"] {
     border-color: @input-border-focus;
     background-color:  @input-bg;
     color: @input-color;
-    outline: 0px none !important;
 }
 
 

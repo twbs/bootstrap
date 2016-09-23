@@ -1,23 +1,23 @@
 <span>
-	<span ng-if="$ctrl.transfer.type == 'TOPUP'">Top up</span>
+	<span ng-if="$ctrl.transfer.type === 'TOPUP'">Top up</span>
 	<span class="hidden-xs">
-		<span ng-if="$ctrl.transfer.type == 'CARD'">Card payment to</span>
-		<span ng-if="$ctrl.transfer.type == 'REWARD'">Reward payment to your</span>
-		<span ng-if="$ctrl.transfer.type == 'TRANSFER'">Transfer to</span>
-		<span ng-if="$ctrl.transfer.type == 'REQUEST'">Transfer from</span>
-		<span ng-if="$ctrl.transfer.type == 'CONVERSION'">Conversion from</span>
+		<span ng-if="$ctrl.transfer.type === 'CARD'">Card payment to</span>
+		<span ng-if="$ctrl.transfer.type === 'REWARD'">Reward payment to your</span>
+		<span ng-if="$ctrl.transfer.type === 'TRANSFER'">Transfer to</span>
+		<span ng-if="$ctrl.transfer.type === 'REQUEST'">Transfer from</span>
+		<span ng-if="$ctrl.transfer.type === 'CONVERSION'">Conversion from</span>
 	</span>
-	<strong ng-if="$ctrl.transfer.type == 'CARD' || $ctrl.transfer.type == 'TRANSFER'">
+	<strong ng-if="$ctrl.transfer.type === 'CARD' || $ctrl.transfer.type === 'TRANSFER'">
 		{{$ctrl.targetAccount.name}}
 	</strong>
 	<strong ng-if="$ctrl.transfer.type !== 'CARD' && $ctrl.transfer.type !== 'TRANSFER' && $ctrl.transfer.type !== 'REQUEST'">
 		{{$ctrl.targetAccount.shortString}}
 	</strong>
-	<span ng-if="$ctrl.transfer.type == 'CONVERSION'">to</span>
-	<strong ng-if="$ctrl.transfer.type == 'REQUEST'">
+	<span ng-if="$ctrl.transfer.type === 'CONVERSION'">to</span>
+	<strong ng-if="$ctrl.transfer.type === 'REQUEST'">
 		{{$ctrl.sourceAccount.name}}
 	</strong>
-	<strong ng-if="$ctrl.transfer.type == 'CONVERSION'">
+	<strong ng-if="$ctrl.transfer.type === 'CONVERSION'">
 		{{$ctrl.sourceAccount.shortString}}
 	</strong>
 </span>

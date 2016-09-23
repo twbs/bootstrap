@@ -105,21 +105,21 @@
 							<fieldset class="row">
 								<div class="form-group col-md-6">
 									<label class="control-label">Label for input</label>
-									<input class="form-control" placeholder="Always use placeholders" />
+									<input class="form-control" placeholder="Always use placeholders" tw-focusable  />
 								</div>
 								<div class="form-group col-md-6">
 									<label>Sentence case labels</label>
-									<input class="form-control" placeholder="Sentence case placeholders" />
+									<input class="form-control" placeholder="Sentence case placeholders" tw-focusable  />
 									<div class="help-block">Short help text</div>
 								</div>
 								<div class="form-group col-md-6">
 									<label class="control-label">Disabled state</label>
-									<input class="form-control" placeholder="Placeholder"
+									<input class="form-control" placeholder="Placeholder" tw-focusable
 									 	value="Example" disabled />
 								</div>
 								<div class="form-group col-md-6 has-error">
 									<label class="control-label">Error state</label>
-									<input class="form-control" placeholder="Placeholder"
+									<input class="form-control" placeholder="Placeholder" tw-focusable
 										value="Invalid" />
 									<div class="error-messages">
 										<div>Error messages appear beneath</div>
@@ -127,25 +127,41 @@
 								</div>
 								<div class="form-group col-md-6 col-md-offset-6">
 									<label class="control-label">Date controls</label>
-									<tw-date ng-model="ctrl.date"></tw-date>
+									<tw-date ng-model="ctrl.date" tw-focusable></tw-date>
 								</div>
 							</fieldset>
 							<h4 class="page-header">New section</h4>
 							<fieldset class="row">
 								<div class="col-md-6">
-									<div class="form-group">
-										<label>Label separate fieldset</label>
-										<input class="form-control" placeholder="Always use placeholders" />
+									<div class="form-group has-error">
+										<label class="control-label">Currency input</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												$
+											</span>
+											<input type="number" class="form-control text-xs-right" tw-focusable />
+											<span class="input-group-addon">
+												USD
+											</span>
+										</div>
 									</div>
 									<div class="form-group">
-										<label>Label separate fieldset</label>
-										<input class="form-control" placeholder="Always use placeholders" />
+										<label class="control-label">Label separate fieldset</label>
+										<div class="input-group">
+											<span class="input-group-addon">
+												<i class="icon icon-search"></i>
+											</span>
+											<input type="number" class="form-control" placeholder="Search..." tw-focusable />
+											<span class="input-group-btn">
+												<button class="btn btn-primary">Go</button>
+											</span>
+										</div>
 										<div class="help-block">Help text here!</div>
 									</div>
 								</div>
 								<div class="form-group col-md-6">
 									<label>Textareas match two inputs</label>
-									<textarea class="form-control" placeholder="Always use placeholders"></textarea>
+									<textarea class="form-control" placeholder="Always use placeholders" tw-focusable></textarea>
 								</div>
 							</fieldset>
 							<fieldset class="row">
@@ -153,19 +169,19 @@
 									<label>Selection of checkboxes</label>
 									<div class="checkbox">
 										<label ng-init="checkbox1 = true">
-											<tw-checkbox ng-model="checkbox1"></tw-checkbox>
+											<tw-checkbox ng-model="checkbox1" tw-focusable></tw-checkbox>
 											Option description
 										</label>
 									</div>
 									<div class="checkbox">
 										<label>
-											<tw-checkbox ng-model="checkbox2"></tw-checkbox>
+											<tw-checkbox ng-model="checkbox2" tw-focusable></tw-checkbox>
 											Sentence case
 										</label>
 									</div>
 									<div class="checkbox disabled">
 										<label>
-											<tw-checkbox ng-model="checkbox3" ng-disabled="true"></tw-checkbox>
+											<tw-checkbox ng-model="checkbox3" ng-disabled="true" tw-focusable></tw-checkbox>
 											Sentence case
 										</label>
 									</div>
@@ -175,42 +191,42 @@
 									<label>Selection of radio buttons</label>
 									<div class="radio" ng-init="radio1 = 1">
 										<label>
-											<tw-radio name="radio1" ng-model="radio1" ng-value="1"></tw-radio>
+											<tw-radio name="radio1" ng-model="radio1" ng-value="1" tw-focusable></tw-radio>
 											Option description
 										</label>
 									</div>
 									<div class="radio">
 										<label>
-											<tw-radio name="radio1" ng-model="radio1" ng-value="2"></tw-radio>
+											<tw-radio name="radio1" ng-model="radio1" ng-value="2" tw-focusable></tw-radio>
 											Sentence case
 										</label>
 									</div>
 									<div class="radio disabled">
 										<label>
-											<tw-radio name="radio1" ng-model="radio1" ng-value="3" ng-disabled="true"></tw-radio>
+											<tw-radio name="radio1" ng-model="radio1" ng-value="3" ng-disabled="true" tw-focusable></tw-radio>
 											Sentence case
 										</label>
 									</div>
 								</div>
 								<div class="form-group col-md-6">
 									<label>Label separate fieldset</label>
-									<input class="form-control" placeholder="Example" />
+									<input class="form-control" placeholder="Example" tw-focusable  />
 								</div>
 								<div class="form-group col-md-6">
 									<label>Label separate fieldset</label>
-									<tw-select options="ctrl.options.months"
+									<tw-select options="ctrl.options.months" tw-focusable
 										ng-model="ctrl.month"></tw-select>
 								</div>
 								<div class="form-group col-md-6">
 									<label class="control-label">Phone number</label>
 									<div class="row">
-										<div class="col-sm-5" ng-init="ctrl.countryCode == '44'">
-											<tw-select options="ctrl.options.countryCodes"
+										<div class="col-sm-5" ng-init="ctrl.countryCode === '44'">
+											<tw-select options="ctrl.options.countryCodes" tw-focusable
 												ng-model="ctrl.countryCode"
 												ng-required="true"></tw-select>
 										</div>
 										<div class="col-sm-7">
-											<input type="number" class="form-control" placeholder="8 digits" />
+											<input type="number" class="form-control" placeholder="8 digits" tw-focusable />
 										</div>
 									</div>
 								</div>
@@ -219,7 +235,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="control-label">Detailed select</label>
-										<tw-select options="ctrl.options.accounts"
+										<tw-select options="ctrl.options.accounts" tw-focusable
 											ng-model="ctrl.account"
 											ng-required="true"></tw-select>
 									</div>
@@ -230,7 +246,7 @@
 										<label class="control-label">Detailed label</label>
 										<div class="checkbox checkbox-lg">
 											<label>
-												<tw-checkbox ng-model="checkboxSecondary"></tw-checkbox>
+												<tw-checkbox ng-model="checkboxSecondary" tw-focusable></tw-checkbox>
 												Label
 												<small>Subsequent information</small>
 											</label>
@@ -240,7 +256,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="control-label">Detailed select</label>
-										<tw-select options="ctrl.options.currencies"
+										<tw-select options="ctrl.options.currencies" tw-focusable
 											placeholder="Choose a currency..."
 											ng-model="ctrl.currency"></tw-select>
 									</div>
@@ -248,7 +264,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="control-label">Detailed select</label>
-										<tw-select options="ctrl.options.notes"
+										<tw-select options="ctrl.options.notes" tw-focusable
 											ng-model="ctrl.note"
 											ng-required="true"></tw-select>
 									</div>
@@ -556,7 +572,7 @@
 					<div class="panel-body">
 						<div class="tile-row">
 							<div class="tile-container col-xs-12 col-sm-6 col-md-4">
-								<div class="tile">
+								<div class="tile" role="button" tabindex="0">
 									<div class="tile-icon">
 										<div class="circle circle-lg circle-responsive">
 											<i class="icon icon-card"></i>
@@ -571,7 +587,7 @@
 								</div>
 							</div>
 							<div class="tile-container col-xs-12 col-sm-6 col-md-4">
-								<div class="tile">
+								<div class="tile" role="button" tabindex="0">
 									<div class="tile-icon">
 										<div class="circle circle-lg circle-responsive">
 											<i class="icon icon-bank"></i>
@@ -586,7 +602,7 @@
 								</div>
 							</div>
 							<div class="tile-container col-xs-12 col-sm-6 col-md-4">
-								<div class="tile">
+								<div class="tile" role="button" tabindex="0">
 									<div class="tile-ribbon-benefit">Faster</div>
 									<div class="tile-icon">
 										<div class="circle circle-lg circle-responsive">

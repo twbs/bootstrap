@@ -37,11 +37,11 @@
 						<div class="circle circle-sm circle-inverse m-l-0 m-r-0">
 							<i class="icon"
 								ng-class="{
-									'icon-send': transfer.type == 'TRANSFER',
-									'icon-request': transfer.type == 'REQUEST',
-									'icon-card': transfer.type == 'CARD' || transfer.type == 'TOPUP',
-									'icon-transfer': transfer.type == 'CONVERSION',
-									'icon-gift': transfer.type == 'REWARD'
+									'icon-send': transfer.type === 'TRANSFER',
+									'icon-request': transfer.type === 'REQUEST',
+									'icon-card': transfer.type === 'CARD' || transfer.type === 'TOPUP',
+									'icon-transfer': transfer.type === 'CONVERSION',
+									'icon-gift': transfer.type === 'REWARD'
 								}"></i>
 						</div>
 					</td>
