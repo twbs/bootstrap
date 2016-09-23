@@ -1,13 +1,13 @@
 <i class="icon"
 	ng-class="{
-		'icon-send': $ctrl.type == 'TRANSFER',
-		'icon-request': $ctrl.type == 'REQUEST',
-		'icon-card': $ctrl.type == 'CARD' || $ctrl.type == 'TOPUP',
-		'icon-transfer': $ctrl.type == 'CONVERSION',
-		'icon-gift': $ctrl.type == 'REWARD',
-		'icon-sm': $ctrl.size == 'sm',
-		'icon-md': !$ctrl.size || $ctrl.size == 'md',
-		'icon-lg': $ctrl.size == 'lg',
-		'icon-xl': $ctrl.size == 'xl',
-		'icon-xxl': $ctrl.size == 'xxl'
+		'icon-send': $ctrl.type === 'TRANSFER',
+		'icon-request': $ctrl.type === 'REQUEST',
+		'icon-card': $ctrl.type === 'CARD' || $ctrl.type === 'TOPUP',
+		'icon-transfer': $ctrl.type === 'CONVERSION',
+		'icon-gift': $ctrl.type === 'REWARD',
+		'icon-sm': $ctrl.size === 'sm',
+		'icon-md': !$ctrl.size || $ctrl.size === 'md',
+		'icon-lg': $ctrl.size === 'lg',
+		'icon-xl': $ctrl.size === 'xl',
+		'icon-xxl': $ctrl.size === 'xxl'
 	}"></i>

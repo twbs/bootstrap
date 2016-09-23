@@ -3,33 +3,33 @@
 	<li class="list-group-item p-a-0"
 		ng-repeat="account in $ctrl.accounts"
 		ng-class="{
-			'active': $ctrl.active == account.id
+			'active': $ctrl.active === account.id
 		}">
 		<div class="p-a-panel" role="button"
 			ng-click="$ctrl.activate(account.id, $event)">
 			<div class="media" role="button">
 				<div class="media-left">
 					<div class="circle circle-sm circle-responsive"
-						ng-if="account.id == 1"
+						ng-if="account.id === 1"
 						ng-class="{'circle-inverse': !$ctrl.inactive}">
 						AZ
 					</div>
 					<div class="circle circle-sm circle-responsive"
-						ng-if="account.id == 2"
+						ng-if="account.id === 2"
 						ng-class="{'circle-inverse': !$ctrl.inactive}">
 						<i class="icon icon-bank"></i>
 					</div>
 					<div class="circle circle-sm circle-responsive"
-						ng-if="account.id == 3"
+						ng-if="account.id === 3"
 						ng-class="{'circle-inverse': !$ctrl.inactive}">
 						<img src="../assets/img/mike.jpg" alt="Mike Marter" />
 					</div>
 					<img src="../assets/img/mike.jpg" alt="Mike Marter" class="circle circle-sm circle-responsive"
-						ng-if="account.id == 4"
+						ng-if="account.id === 4"
 						ng-class="{'circle-inverse': !$ctrl.inactive}" />
 				</div>
 				<div class="media-body"
-					ng-class="{'p-r-3': $ctrl.active == account.id}">
+					ng-class="{'p-r-3': $ctrl.active === account.id}">
 
 					<p class="list-group-item-heading text-max-width">
 						{{account.name}}
@@ -58,9 +58,9 @@
 			</div>
 		</div>
 		<div class="collapse p-l-panel p-r-panel p-b-panel"
-			ng-attr-aria-expanded="{{$ctrl.active == account.id}}"
-			ng-class="{'in': $ctrl.active == account.id}"
-			ng-if="$ctrl.active == account.id">
+			ng-attr-aria-expanded="{{$ctrl.active === account.id}}"
+			ng-class="{'in': $ctrl.active === account.id}"
+			ng-if="$ctrl.active === account.id">
 			<div class="media">
 				<div class="media-left">
 					<div class="circle circle-sm circle-responsive invisible">
@@ -92,8 +92,8 @@
 			</div>
 		</div>
 		<div class="collapse"
-			ng-attr-aria-expanded="{{$ctrl.active == account.id}}"
-			ng-class="{'in': $ctrl.active == account.id}">
+			ng-attr-aria-expanded="{{$ctrl.active === account.id}}"
+			ng-class="{'in': $ctrl.active === account.id}">
 			<div class="well p-l-panel p-r-panel">
 				<div class="media">
 					<div class="media-left">

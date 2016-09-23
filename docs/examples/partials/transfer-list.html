@@ -3,19 +3,19 @@
 	<li class="list-group-item p-a-0"
 		ng-repeat="transfer in $ctrl.transfers"
 		ng-class="{
-			'list-group-item-danger': transfer.status == 'PAUSED',
-			'list-group-item-warning': transfer.status == 'AWAITING_FUNDS',
-			'list-group-item-info': transfer.status == 'PROCESSING' || transfer.status == 'FUNDED',
-			'list-group-item-success': transfer.status == 'PAID_OUT',
-			'active': $ctrl.active == transfer.id,
-			'disabled': transfer.status == 'CANCELLED'
+			'list-group-item-danger': transfer.status === 'PAUSED',
+			'list-group-item-warning': transfer.status === 'AWAITING_FUNDS',
+			'list-group-item-info': transfer.status === 'PROCESSING' || transfer.status === 'FUNDED',
+			'list-group-item-success': transfer.status === 'PAID_OUT',
+			'active': $ctrl.active === transfer.id,
+			'disabled': transfer.status === 'CANCELLED'
 		}">
 		<div class="p-a-panel" role="button"
 			ng-click="$ctrl.activate(transfer.id, $event)">
 			<div class="media">
 				<div class="media-left">
 					<div class="circle circle-sm circle-responsive" ng-class="{
-							'circle-inverse': !$ctrl.inactive || transfer.id == $ctrl.active
+							'circle-inverse': !$ctrl.inactive || transfer.id === $ctrl.active
 						}">
 						<transfer-type-icon type="transfer.type"></transfer-type-icon>
 					</div>
@@ -25,7 +25,7 @@
 					<transfer-activity
 						activity="transfer"
 						currencies="$ctrl.currencies"
-						is-active="$ctrl.active == transfer.id">
+						is-active="$ctrl.active === transfer.id">
 					</transfer-activity>
 
 				</div>
@@ -48,9 +48,9 @@
 			</div>
 		</div>
 		<div class="collapse"
-			ng-attr-aria-expanded="{{$ctrl.active == transfer.id}}"
-			ng-class="{'in': $ctrl.active == transfer.id}"
-			ng-if="$ctrl.active == transfer.id">
+			ng-attr-aria-expanded="{{$ctrl.active === transfer.id}}"
+			ng-class="{'in': $ctrl.active === transfer.id}"
+			ng-if="$ctrl.active === transfer.id">
 			<div class="p-l-panel p-r-panel p-b-panel">
 				<div class="media">
 					<div class="media-left">

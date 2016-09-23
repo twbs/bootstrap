@@ -1,14 +1,14 @@
 <div class="btn-toolbar">
-	<button class="btn btn-primary" ng-if="$ctrl.transfer.status == 'AWAITING_FUNDS'">
+	<button class="btn btn-primary" ng-if="$ctrl.transfer.status === 'AWAITING_FUNDS'">
 		Pay for this transfer
 	</button>
-	<button class="btn btn-primary" ng-if="$ctrl.transfer.status == 'AWAITING_FUNDS'">
+	<button class="btn btn-primary" ng-if="$ctrl.transfer.status === 'AWAITING_FUNDS'">
 		I've already paid
 	</button>
-	<button class="btn btn-default" ng-if="$ctrl.transfer.status == 'FUNDED'">
+	<button class="btn btn-default" ng-if="$ctrl.transfer.status === 'FUNDED'">
 		I haven't paid
 	</button>
-	<button class="btn btn-primary" ng-if="$ctrl.transfer.status == 'PAUSED'">
+	<button class="btn btn-primary" ng-if="$ctrl.transfer.status === 'PAUSED'">
 		Fix this transfer
 	</button>
 
