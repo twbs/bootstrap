@@ -121,7 +121,7 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray($(Selector.ACTIVES))
+        actives = $.makeArray($(this._parent).find(Selector.ACTIVES))
         if (!actives.length) {
           actives = null
         }
