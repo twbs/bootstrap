@@ -15,7 +15,7 @@
 			<div class="media">
 				<div class="media-left">
 					<div class="circle circle-sm circle-responsive" ng-class="{
-							'circle-inverse': !$ctrl.inactive || transfer.id === $ctrl.active
+							'circle-inverse': !$ctrl.inactive || (transfer.id === $ctrl.active)
 						}">
 						<transfer-type-icon type="transfer.type"></transfer-type-icon>
 					</div>
