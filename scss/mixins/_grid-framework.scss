@@ -37,9 +37,9 @@
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       @if $enable-flex {
         .col-#{$breakpoint} {
-          width: auto !important;
           flex-basis: 0;
           flex-grow: 1;
+          width: auto !important;
           max-width: 100%;
           min-height: 1px;
         }
