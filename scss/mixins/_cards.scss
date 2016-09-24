@@ -13,8 +13,6 @@
 @mixin card-outline-variant($color) {
   background-color: transparent;
   border-color: $color;
-  border-style: $card-border-style;
-  border-width: $card-border-width;
 }
 
 //
