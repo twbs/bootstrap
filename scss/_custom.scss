@@ -2,3 +2,10 @@
 //
 // Copy variables from `_variables.scss` to this file to override default values
 // without modifying source files.
+@mixin card-outline-variant
+{
+  border-style:$card-border-style;
+  border-width:$card-border-width;
+}
+
+$card-border-style: solid !default;
