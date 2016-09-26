@@ -28,7 +28,7 @@
         @extend %grid-column;
       }
     }
-    
+
     @if $enable-flex {
       .col-#{$breakpoint} {
         @extend %grid-column;
