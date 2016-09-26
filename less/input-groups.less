@@ -121,8 +121,7 @@
 // -------------------------
 .input-group-addon {
   padding: @padding-base-vertical @padding-base-horizontal;
-  font-size: @input-font-size;
-  font-weight: normal;
+  font-size: @input-group-addon-font-size;
   line-height: @input-line-height;
   color: @input-group-color;
   text-align: center;
@@ -178,11 +177,11 @@
 }
 .input-group .form-control:last-child,
 .input-group-addon:last-child,
-.input-group-btn:last-child > .btn,
-.input-group-btn:last-child > .btn-group > .btn,
-.input-group-btn:last-child > .dropdown-toggle,
-.input-group-btn:first-child > .btn:not(:first-child),
-.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+.input-group-btn:last-child .btn,
+.input-group-btn:last-child .btn-group > .btn,
+.input-group-btn:last-child .dropdown-toggle,
+.input-group-btn:first-child .btn:not(:first-child),
+.input-group-btn:first-child .btn-group:not(:first-child) > .btn {
   .border-left-radius(0);
 }
 .input-group-addon:last-child {

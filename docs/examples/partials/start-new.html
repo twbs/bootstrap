@@ -1,0 +1,131 @@
+
+<ul class="nav nav-tabs" ng-if="$ctrl.tabs">
+	<li role="presentation" ng-class="{active: $ctrl.active === 'SEND'}"><a href="" ng-click="$ctrl.active = 'SEND'">Send money</a></li>
+	<li role="presentation" ng-class="{active: $ctrl.active === 'REQUEST'}"><a href="" ng-click="$ctrl.active = 'REQUEST'">Request money</a></li>
+	<!--<li role="presentation" ng-class="{active: $ctrl.active === 'ALERTS'}"><a href="" ng-click="$ctrl.active = 'ALERTS'">Rate alert</a></li>-->
+	<li role="presentation" ng-class="{active: $ctrl.active === 'INVITE'}"><a href="" ng-click="$ctrl.active = 'INVITE'">Invite</a></li>
+</ul>
+
+<form class="panel m-b-3" name="oneClickForm" novalidate="" >
+	<div class="panel-heading" ng-if="!$ctrl.tabs">
+		<h3 class="panel-title">
+			I'd like to
+			<span class="m-l-1" style="width: 250px; display: inline-block;">
+				<tw-select ng-model="$ctrl.active" options="[{value: 'SEND', label: 'Send money'},{value: 'REQUEST', label: 'Request money'},{value: 'INVITE', label: 'Invite friends'}]" ng-required="true"></tw-select>
+			</span>
+		</h3>
+	</div>
+	<div class="panel-body">
+		<div class="row one-click" ng-if="$ctrl.active === 'SEND'">
+			<div class="col-lg-3 col-md-4 col-xs-12">
+				<div class="form-group m-b-0">
+					<label class="control-label">
+						Send exactly
+					</label>
+					<div class="input-group">
+						<span class="input-group-addon p-r-0">$</span>
+						<input class="form-control text-xs-right" value="1,000" type="text">
+						<span class="input-group-btn">
+							<tw-select options="[{label: 'USD', value: '$'}]" ng-model="$ctrl.currency" ng-required="true"></tw-select>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-8 col-xs-12">
+				<div class="form-group m-b-0">
+					<label class="control-label">
+						To
+					</label>
+					<tw-select
+						ng-model="$ctrl.targetAccount"
+						ng-required="true"
+						options="[{value: '1', label: 'Bob Smith', note: 'GBP', secondary: 'Account ending 1234'}]"></tw-select>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-xs-12">
+				<div class="form-group m-b-0">
+					<label class="control-label">
+						Receives
+					</label>
+					<div class="input-group">
+						<span class="input-group-addon p-r-0">£</span>
+						<input class="form-control text-xs-right p-r-0" value="1,000" type="text">
+						<span class="input-group-addon">
+							<span class="currency-flag currency-flag-gbp m-r-1"></span>GBP
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-8">
+				<button class="btn btn-block btn-success m-t-3">
+					Send money
+				</button>
+			</div>
+		</div>
+
+		<div class="row one-click" ng-if="$ctrl.active === 'REQUEST'">
+			<div class="col-lg-3 col-md-4 col-xs-12">
+				<div class="form-group m-b-0">
+					<label class="control-label">
+						How much do you need?
+					</label>
+					<div class="input-group">
+						<span class="input-group-addon">$</span>
+						<input class="form-control text-xs-right" value="1,000" type="text">
+						<span class="input-group-btn">
+							<tw-select options="[{label: 'USD', value: '$', note: 'United States Dollar'}]" ng-model="$ctrl.currency" ng-required="true"></tw-select>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-8 col-xs-12">
+				<div class="form-group m-b-0">
+					<label class="control-label">
+						Where should the money go?
+					</label>
+					<tw-select
+						ng-model="$ctrl.targetAccount"
+						ng-required="true"
+						options="[{value: '1', label: 'Bob Smith', note: 'GBP', secondary: 'Account ending 1234'}]"></tw-select>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-xs-12">
+				<div class="form-group m-b-0">
+					<label class="control-label">
+						What's the money for?
+					</label>
+					<input class="form-control" value="" type="text" placeholder="Keep it short">
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-8">
+				<button class="btn btn-block btn-primary m-t-3">
+					Create link
+				</button>
+			</div>
+		</div>
+
+
+		<div class="row one-click" ng-if="$ctrl.active === 'INVITE'">
+			<div class="col-md-9">
+				<div class="form-group m-b-0">
+					<label class="control-label">
+						Invite via email
+					</label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="icon icon-message"></i></span>
+						<input class="form-control" value="" type="text" placeholder="Separate multiple emails with commas...">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<button class="btn btn-block btn-primary m-t-3">
+					Send invites
+				</button>
+			</div>
+		</div>
+
+		<!--
+		<one-click></one-click>
+		-->
+	</div>
+</form>

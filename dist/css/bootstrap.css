@@ -5958,9 +5958,9 @@ tbody.collapse.in {
   }
 }
 .btn-group .small {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 23px;
-  color: #829ca9 !important;
+  color: #a8aaac !important;
 }
 .btn-group .small.text-ellipsis {
   line-height: 24px;
@@ -6093,7 +6093,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .input-group-addon {
   padding: 8px 16px;
   font-size: 16px;
-  font-weight: normal;
   line-height: 24px;
   color: #a8aaac;
   text-align: center;
@@ -6143,11 +6142,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .input-group .form-control:last-child,
 .input-group-addon:last-child,
-.input-group-btn:last-child > .btn,
-.input-group-btn:last-child > .btn-group > .btn,
-.input-group-btn:last-child > .dropdown-toggle,
-.input-group-btn:first-child > .btn:not(:first-child),
-.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+.input-group-btn:last-child .btn,
+.input-group-btn:last-child .btn-group > .btn,
+.input-group-btn:last-child .dropdown-toggle,
+.input-group-btn:first-child .btn:not(:first-child),
+.input-group-btn:first-child .btn-group:not(:first-child) > .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -6254,29 +6253,33 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a > img {
   max-width: none;
 }
-.nav-tabs {
-  border-bottom: 1px solid #d3d5d8;
-}
 .nav-tabs > li {
   float: left;
   margin-bottom: -1px;
 }
 .nav-tabs > li > a {
+  padding: 16px 32px;
   margin-right: 2px;
   font-size: 16px;
   line-height: 24px;
   color: #6f8691;
+  color: #00b9ff;
   border-bottom: 3px solid transparent;
+  border-radius: 3px 3px 0 0;
 }
 .nav-tabs > li > a:hover {
   color: #00b9ff;
+  color: #008ec0;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: #00b9ff;
+  color: #223049;
   cursor: default;
-  border-bottom: 3px solid #00b9ff;
+  background-color: #fff;
+  border-bottom-color: transparent;
+  -webkit-box-shadow: 0 0 0;
+          box-shadow: 0 0 0;
 }
 .nav-tabs.nav-justified {
   width: 100%;

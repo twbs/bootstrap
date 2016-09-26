@@ -22,6 +22,7 @@
 			type: "REQUEST",
 			source: "GBP",
 			target: "USD",
+			fixed: "RATE",
 			sourceAmount: 10.00,
 			targetAmount: 12.34,
 			sourceAccount: {
@@ -44,6 +45,7 @@
 			type: "TRANSFER",
 			source: "GBP",
 			target: "USD",
+			fixed: "TARGET",
 			sourceAmount: 10.00,
 			targetAmount: 12.34,
 			sourceAccount: {
@@ -68,6 +70,7 @@
 			type: "TRANSFER",
 			source: "GBP",
 			target: "USD",
+			fixed: "SOURCE",
 			sourceAmount: 10.00,
 			targetAmount: 12.34,
 			sourceAccount: {
@@ -92,6 +95,7 @@
 			type: "TRANSFER",
 			source: "GBP",
 			target: "USD",
+			fixed: "SOURCE",
 			sourceAmount: 10.00,
 			targetAmount: 12.34,
 			sourceAccount: {
@@ -116,6 +120,7 @@
 			type: "TRANSFER",
 			source: "GBP",
 			target: "USD",
+			fixed: "SOURCE",
 			sourceAmount: 10000000.00,
 			targetAmount: 12345000.00,
 			sourceAccount: {
@@ -140,6 +145,7 @@
 			type: "TRANSFER",
 			source: "GBP",
 			target: "USD",
+			fixed: "SOURCE",
 			sourceAmount: 100.00,
 			targetAmount: 123.45,
 			sourceAccount: {
@@ -165,6 +171,7 @@
 			type: "TRANSFER",
 			source: "GBP",
 			target: "GBP",
+			fixed: "SOURCE",
 			sourceAmount: 2.50,
 			targetAmount: 2.50,
 			sourceAccount: {
@@ -189,6 +196,7 @@
 			type: "REQUEST",
 			source: "GBP",
 			target: "GBP",
+			fixed: "SOURCE",
 			sourceAmount: 2.50,
 			targetAmount: 2.50,
 			sourceAccount: {
@@ -213,6 +221,7 @@
 			type: "TRANSFER",
 			source: "GBP",
 			target: "EUR",
+			fixed: "SOURCE",
 			sourceAmount: 10000000.00,
 			targetAmount: 11987000.00,
 			sourceAccount: {
@@ -236,6 +245,7 @@
 			type: "TRANSFER",
 			source: "GBP",
 			target: "GBP",
+			fixed: "SOURCE",
 			sourceAmount: 100.00,
 			targetAmount: 100.00,
 			sourceAccount: {
@@ -260,6 +270,7 @@
 			type: "TRANSFER",
 			source: "EUR",
 			target: "GBP",
+			fixed: "SOURCE",
 			sourceAmount: 100.00,
 			targetAmount: 91.23,
 			sourceAccount: {
@@ -284,6 +295,7 @@
 			type: "REWARD",
 			source: "GBP",
 			target: "GBP",
+			fixed: "SOURCE",
 			sourceAmount: 10.00,
 			targetAmount: 10.00,
 			sourceAccount: {
@@ -311,6 +323,7 @@
 			type: "TOPUP",
 			source: "GBP",
 			target: "USD",
+			fixed: "SOURCE",
 			sourceAmount: 10.00,
 			targetAmount: 12.34,
 			sourceAccount: {
@@ -335,6 +348,7 @@
 			type: "TOPUP",
 			source: "GBP",
 			target: "USD",
+			fixed: "SOURCE",
 			sourceAmount: 10.00,
 			targetAmount: 12.34,
 			sourceAccount: {
@@ -359,6 +373,7 @@
 			type: "CARD",
 			source: "GBP",
 			target: "GBP",
+			fixed: "SOURCE",
 			sourceAmount: 2.50,
 			targetAmount: 2.50,
 			sourceAccount: {
@@ -383,6 +398,7 @@
 			type: "TOPUP",
 			source: "GBP",
 			target: "GBP",
+			fixed: "SOURCE",
 			sourceAmount: 100.00,
 			targetAmount: 100.00,
 			sourceAccount: {
@@ -407,6 +423,7 @@
 			type: "CONVERSION",
 			source: "EUR",
 			target: "GBP",
+			fixed: "SOURCE",
 			sourceAmount: 100.00,
 			targetAmount: 91.23,
 			sourceAccount: {

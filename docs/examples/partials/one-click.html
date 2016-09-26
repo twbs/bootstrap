@@ -1,44 +1,104 @@
+	<!--
+<ul class="nav nav-tabs">
+	<li role="presentation" class="active"><a href="#">Send money</a></li>
+	<li role="presentation" class=""><a href="#">Request money</a></li>
+	<li role="presentation" class=""><a href="#">Rate alert</a></li>
+	<li role="presentation" class=""><a href="#">Invite</a></li>
+</ul>
 <form class="panel m-b-3" name="oneClickForm" novalidate="">
-	<div class="panel-heading">
-		<h3 class="panel-title">
+
+	<div class="panel-heading p-b-0">
+		<h3 class="panel-title pull-xs-left">
+			Start new
 			<a href="" ng-click="$ctrl.isOpen = !$ctrl.isOpen">
 				<span class="caret m-r-1"
 					ng-class="{'rotate-90': !$ctrl.isOpen}"></span>One click transfer
 			</a>
 		</h3>
 	</div>
-	<div class="panel-body" ng-if="$ctrl.isOpen">
+	<div class="panel-body" ng-if="$ctrl.isOpen || true">
+
+	-->
+		<div class="row one-click">
+			<div class="col-lg-4 col-sm-8 col-xs-12">
+				<div class="form-group sendFrom">
+					<label class="control-label">
+						From
+					</label>
+					<tw-select
+						ng-model="$ctrl.sourceAccount"
+						ng-required="true"
+						options="[{value: '1', label: 'Bob Smith', note: 'USD', secondary: 'Account ending 4321'}]"></tw-select>
+				</div>
+			</div>
+			<div class="col-lg-2 col-sm-4 col-xs-12">
+				<div class="form-group">
+					<label class="control-label">
+						Send
+					</label>
+					<div class="input-group">
+						<span class="input-group-addon">$</span>
+						<input class="form-control text-xs-right" value="1,000" type="text">
+						<span class="input-group-btn">
+							<tw-select options="[{label: 'USD', value: '$'}]" ng-model="$ctrl.currency" ng-required="true"></tw-select>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-8 col-xs-12">
+				<div class="form-group sendTo">
+					<label class="control-label">
+						Send to
+					</label>
+					<tw-select
+						ng-model="$ctrl.targetAccount"
+						ng-required="true"
+						options="[{value: '1', label: 'Bob Smith', note: 'GBP', secondary: 'Account ending 1234'}]"></tw-select>
+				</div>
+			</div>
+			<div class="col-lg-2 col-sm-4 col-xs-12">
+				<div class="form-group">
+					<label class="control-label">
+						Receive
+					</label>
+					<div class="input-group">
+						<span class="input-group-addon">£</span>
+						<input class="form-control text-xs-right" value="1,000" type="text">
+						<span class="input-group-addon">
+							<span class="currency-flag currency-flag-gbp m-r-1"></span>GBP
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4 col-md-push-8">
+				<button class="btn btn-block btn-success">
+					Send $1,000 now
+				</button>
+			</div>
+			<div class="col-md-4 col-md-pull-4">
+				<p class="m-b-0">Arrives in <span class="text-success">2-3 working days</span></p>
+				<p><small>By continuing you accept the <a href="">Terms of Use</a></small></p>
+			</div>
+			<div class="col-md-4 col-md-pull-4">
+				<p class="m-b-0">This includes a fee of $9.90</p>
+				<p class="m-b-0">Guaranteed rate $1 = 0.878888</p>
+			</div>
+		</div>
+
+		<!--
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group sendFrom">
 					<label class="control-label">
 						From
 					</label>
-					<div class="btn-group btn-block dropdown tw-select" aria-hidden="false">
-						<button type="button" class="btn btn-input dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							<span class="tw-select-selected">
-								<span class="circle circle-inverse pull-left circle-sm" >
-									<img src="../assets/img/mike.jpg" alt="" />
-								</span>
-								<span class="text-ellipsis">
-									<span class="tw-select-label">Bob Smith</span>
-									<span class="tw-select-note small m-l-1">GBP</span>
-									<span class="tw-select-secondary small text-ellipsis">Account ending 1234</span>
-								</span>
-							</span>
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li class="tw-select-option active">
-								<a href="" class="tw-select-option-link" >
-									<span class="circle circle-inverse pull-left circle-sm">
-										<img src="../assets/img/mike.jpg" alt="" />
-									</span>Bob Smith<span class="tw-select-note small m-l-1">GBP</span>
-									<span class="tw-select-secondary small text-ellipsis">Account ending 1234</span>
-								</a>
-							</li>
-						</ul>
-					</div>
+					<tw-select
+						ng-model="$ctrl.sourceAccount"
+						ng-required="true"
+						options="[{value: '1', label: 'Bob Smith', note: 'USD', secondary: 'Account ending 4321'}]"></tw-select>
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -46,31 +106,10 @@
 					<label class="control-label">
 						Send to
 					</label>
-					<div class="btn-group btn-block dropdown tw-select" aria-hidden="false">
-						<button type="button" class="btn btn-input dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							<span class="tw-select-selected">
-								<span class="circle circle-inverse pull-left circle-sm" >
-									<img src="../assets/img/mike.jpg" alt="" />
-								</span>
-								<span class="text-ellipsis">
-									<span class="tw-select-label">Bob Smith</span>
-									<span class="tw-select-note small m-l-1">GBP</span>
-									<span class="tw-select-secondary small text-ellipsis">Account ending 1234</span>
-								</span>
-							</span>
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li class="tw-select-option active">
-								<a href="" class="tw-select-option-link" >
-									<span class="circle circle-inverse pull-left circle-sm">
-										<img src="../assets/img/mike.jpg" alt="" />
-									</span>Bob Smith<span class="tw-select-note small m-l-1">GBP</span>
-									<span class="tw-select-secondary small text-ellipsis">Account ending 1234</span>
-								</a>
-							</li>
-						</ul>
-					</div>
+					<tw-select
+						ng-model="$ctrl.targetAccount"
+						ng-required="true"
+						options="[{value: '1', label: 'Bob Smith', note: 'GBP', secondary: 'Account ending 1234'}]"></tw-select>
 				</div>
 			</div>
 		</div>
@@ -119,5 +158,8 @@
 				</button>
 			</div>
 		</div>
+		-->
+		<!--
 	</div>
 </form>
+-->
