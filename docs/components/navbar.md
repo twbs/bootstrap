@@ -47,7 +47,7 @@ Here's an example of all the sub-components included in a default, light navbar:
       <a class="nav-link" href="#">About</a>
     </li>
   </ul>
-  <form class="form-inline pull-xs-right">
+  <form class="form-inline float-xs-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
@@ -129,7 +129,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-info" type="submit">Search</button>
     </form>
@@ -150,7 +150,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-secondary" type="submit">Search</button>
     </form>
@@ -171,7 +171,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
