@@ -92,9 +92,9 @@ $(function () {
       .bootstrapTab('show')
   })
 
-  QUnit.test('should not fire shown when tab is already active', (assert) => {
+  QUnit.test('should not fire shown when tab is already active', function (assert) {
     assert.expect(0)
-    let tabsHTML = '<ul class="nav nav-tabs" role="tablist">'
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist">'
       + '<li class="nav-item"><a href="#home" class="nav-link active" role="tab">Home</a></li>'
       + '<li class="nav-item"><a href="#profile" class="nav-link" role="tab">Profile</a></li>'
       + '</ul>'
@@ -105,15 +105,15 @@ $(function () {
 
     $(tabsHTML)
       .find('a.active')
-      .on('shown.bs.tab', () => {
+      .on('shown.bs.tab', function () {
         assert.ok(true, 'shown event fired')
       })
       .bootstrapTab('show')
   })
 
-  QUnit.test('should not fire shown when tab is disabled', (assert) => {
+  QUnit.test('should not fire shown when tab is disabled', function (assert) {
     assert.expect(0)
-    let tabsHTML = '<ul class="nav nav-tabs" role="tablist">'
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist">'
       + '<li class="nav-item"><a href="#home" class="nav-link active" role="tab">Home</a></li>'
       + '<li class="nav-item"><a href="#profile" class="nav-link disabled" role="tab">Profile</a></li>'
       + '</ul>'
@@ -124,7 +124,7 @@ $(function () {
 
     $(tabsHTML)
       .find('a.disabled')
-      .on('shown.bs.tab', () => {
+      .on('shown.bs.tab', function () {
         assert.ok(true, 'shown event fired')
       })
       .bootstrapTab('show')
