@@ -22,6 +22,12 @@ gems:
   - jekyll-redirect-from
   - jekyll-sitemap
 
+# Social
+title: Bootstrap
+description: The most popular HTML, CSS, and JS framework in the world.
+social_logo_path: /assets/brand/bootstrap-social-logo.png
+social_image_path: /assets/brand/bootstrap-social.png
+
 # Custom vars
 current_version:  4.0.0-alpha.4
 repo:             https://github.com/twbs/bootstrap
