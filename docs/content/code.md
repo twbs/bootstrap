@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Code
-description: Styles for inline code snippets and longer, multiline blocks of code with Bootstrap.
+description: Documentation and examples for displaying inline and multiline blocks of code with Bootstrap.
 group: content
 ---
 

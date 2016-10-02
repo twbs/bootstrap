@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Responsive utilities
-description: Use responsive display utilitiy classes for showing and hiding content by device, via media query.
+description: Use responsive display utility classes for showing and hiding content by device, via media query.
 group: layout
 ---
 

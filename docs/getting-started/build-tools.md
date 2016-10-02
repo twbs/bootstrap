@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Build tools
-description: Details on how to use Bootstrap's included build tools to compile code, run tests, and more.
+description: Details on how to use Bootstrap's included build tools to compile source code, run tests, and more.
 group: getting-started
 ---
 

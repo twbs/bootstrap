@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Customization options
-description: Customize Bootstrap with our built-in Sass variables, easily toggling global preferences with a quick compile.
+description: Customize Bootstrap with Sass variables, easily toggling global preferences with a quick recompile.
 group: getting-started
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Tooltips
+description: Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript.
 group: components
 ---
 

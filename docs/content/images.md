@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Images
-description: Opt your images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them—all via classes.
+description: Documentation and examples for styling images with Bootstrap.
 group: content
 ---
 

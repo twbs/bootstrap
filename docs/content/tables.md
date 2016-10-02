@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Tables
-description: Quickly and easily style any table element with our predefined classes and more.
+description: Documentation and examples for styling tables with Bootstrap.
 group: content
 ---
 

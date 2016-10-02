@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Accessibility
-description: Learn how Bootstrap supports common web standards for making sites that are accessibile to thouse using assistive technology.
+description: Learn how Bootstrap supports common web standards for making sites that are accessibile to those using assistive technology.
 group: getting-started
 ---
 
