@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Typography
+description: Simple and easily customized typography for headings, body text, lists, and more with Bootstrap.
 group: content
 ---
 

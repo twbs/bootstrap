@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Tables
+description: Quickly and easily style any table element with our predefined classes and more.
 group: content
 ---
 

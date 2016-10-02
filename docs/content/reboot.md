@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Reboot
+description: Reboot is Bootstrap's collection of element-specific CSS changes that provide an elegant, consistent, and simple baseline to build upon.
 group: content
 redirect_from: "/content/"
 ---
