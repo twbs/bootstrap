@@ -118,6 +118,15 @@
   @include hover-focus {
     text-decoration: none;
   }
+
+  // Hamburger menu icon
+  &::before {
+    font-weight: 500;
+    content: "\2261"; // IDENTICAL TO (U+2261)
+    // wider overall support (see http://unicode.johnholtripley.co.uk/2261/)
+    // compared to previously used TRIGRAM FOR HEAVEN (U+2630)
+  }
+
 }
 
 // Navigation
