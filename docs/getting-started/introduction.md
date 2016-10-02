@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Introduction
+description: Jumpstart your front-end development with the Bootstrap CDN and a template starter page.
 group: getting-started
 redirect_from: "/getting-started/"
 ---

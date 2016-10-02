@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Download
+description: Options for downloading Bootstrap—choose from the compiled code, source code, or your favorite package manager.
 group: getting-started
 ---
 
