@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Flexbox grid system
+description: Learn how to enable and use Bootstrap's optional flexbox grid system in place of the default grid.
 group: layout
 ---
 

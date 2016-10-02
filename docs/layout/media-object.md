@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Media object
+description: Use Bootstrap's media object to build repetitive components like blog comments, tweets, and the like.
 group: layout
 ---
 
