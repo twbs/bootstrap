@@ -239,6 +239,7 @@ select.form-control-lg {
   }
 
   &.disabled {
+    color: $text-muted;
     cursor: $cursor-disabled;
   }
 }
