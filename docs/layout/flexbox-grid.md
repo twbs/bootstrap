@@ -5,9 +5,9 @@ description: Documentation and examples for using Bootstrap's optional flexbox g
 group: layout
 ---
 
-Fancy a more modern grid system? [Enable flexbox support in Bootstrap](/getting-started/flexbox) to take full advantage of CSS's Flexible Box module for even more control over your site's layout, alignment, and distribution of content.
+Fancy a more modern grid system? [Enable flexbox support in Bootstrap]({{ site.baseurl }}/getting-started/flexbox/) to take full advantage of CSS's Flexible Box module for even more control over your site's layout, alignment, and distribution of content.
 
-Bootstrap's flexbox grid includes support for every feature from our [default grid system](/layout/grid), and then some. Please read the [default grid system docs](/layout/grid) before proceeding through this page. Features that are covered there are only summarized here. Please note that **Internet Explorer 9 does not support flexbox**, so proceed with caution when enabling it.
+Bootstrap's flexbox grid includes support for every feature from our [default grid system]({{ site.baseurl }}/layout/grid/), and then some. Please read the [default grid system docs]({{ site.baseurl }}/layout/grid/) before proceeding through this page. Features that are covered there are only summarized here. Please note that **Internet Explorer 9 does not support flexbox**, so proceed with caution when enabling it.
 
 {% callout warning %}
 **Heads up!** This flexbox grid documentation is powered by an additional CSS file that overrides our default grid system's CSS. This is only available in our hosted docs and is disabled in development.
@@ -22,7 +22,7 @@ Bootstrap's flexbox grid includes support for every feature from our [default gr
 
 The flexbox grid system behaves similar to our default grid system, but with a few notable differences:
 
-- [Grid mixins](/layout/grid#sass-mixins) and [predefined classes](/layout/grid#predefined-classes) include support for flexbox. Just [enable flexbox support](/getting-started/flexbox) to utilize them as you would otherwise.
+- [Grid mixins]({{ site.baseurl }}/layout/grid#sass-mixins) and [predefined classes]({{ site.baseurl }}/layout/grid#predefined-classes) include support for flexbox. Just [enable flexbox support]({{ site.baseurl }}/getting-started/flexbox/) to utilize them as you would otherwise.
 - Nesting, offsets, pushes, and pulls are all supported in the flexbox grid system.
 - Flexbox grid columns without a set width will automatically layout with equal widths. For example, four columns will each automatically be 25% wide.
 - Flexbox grid columns have significantly more alignment options available, including vertical alignment.

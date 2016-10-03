@@ -14,7 +14,7 @@ Stylize [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/doc
 
 ## Example
 
-To caption a progress bar, simply add a `<div>` with your caption text, [align the text using a utility class]({{ site.baseurl }}/components/utilities/#text-alignment), and associate the caption with the `<progress>` element using the `aria-describedby` attribute.
+To caption a progress bar, simply add a `<div>` with your caption text, [align the text using a utility class]({{ site.baseurl }}/utilities/typography/#text-alignment), and associate the caption with the `<progress>` element using the `aria-describedby` attribute.
 
 {% example html %}
 

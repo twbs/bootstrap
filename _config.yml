@@ -14,7 +14,7 @@ destination:      _gh_pages
 host:             0.0.0.0
 port:             9001
 baseurl:          ""
-url:              http://v4-alpha.getbootstrap.com
+url:              https://v4-alpha.getbootstrap.com
 encoding:         UTF-8
 exclude:          [assets/scss/]
 
@@ -39,9 +39,9 @@ download:
   source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.4.zip
   dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha.4/bootstrap-4.0.0-alpha.4-dist.zip
 
-blog:             http://blog.getbootstrap.com
-expo:             http://expo.getbootstrap.com
-themes:           http://themes.getbootstrap.com
+blog:             https://blog.getbootstrap.com
+expo:             https://expo.getbootstrap.com
+themes:           https://themes.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes

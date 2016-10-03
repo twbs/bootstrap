@@ -246,7 +246,7 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.
 
-See it in action in <a href="http://jsbin.com/ruxona/edit">this rendered example</a>.
+See it in action in <a href="https://jsbin.com/ruxona/edit?html,output">this rendered example</a>.
 
 {% highlight scss %}
 .container {
