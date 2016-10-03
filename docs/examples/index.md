@@ -130,7 +130,7 @@ Brand new components and templates to help folks quickly get started with Bootst
       <img class="img-thumbnail" src="{{ site.baseurl }}/examples/screenshots/justified-nav.jpg" alt="">
     </a>
     <h4>Justified nav</h4>
-    <p>Create a custom navbar with justified links. Heads up! <a href="{{ site.baseurl }}components/#nav-justified">Not too Safari friendly.</a></p>
+    <p>Create a custom navbar with justified links. Heads up! Not too Safari friendly.</p>
   </div>
   <div class="col-xs-6 col-md-4">
     <a href="{{ site.baseurl }}/examples/sticky-footer/">

@@ -27,7 +27,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 
 - `.navbar-brand` for your company, product, or project name
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
-- `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsing-content) behaviors.
+- `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
 
 Here's an example of all the sub-components included in a default, light navbar:
 
