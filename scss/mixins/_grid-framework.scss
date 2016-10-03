@@ -27,13 +27,19 @@
       }
     }
 
+    @if $enable-flex {
+      .col-#{$breakpoint} {
+        @extend %grid-column;
+      }
+    }
+
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       @if $enable-flex {
         .col-#{$breakpoint} {
-          position: relative;
           flex-basis: 0;
           flex-grow: 1;
+          width: auto !important;
           max-width: 100%;
           min-height: 1px;
         }
