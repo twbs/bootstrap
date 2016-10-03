@@ -1,4 +1,4 @@
-atom---
+---
 layout: docs
 title: Grid system
 description: Documentation and examples for using Bootstrap's powerful, responsive, and mobile-first grid system.
@@ -34,14 +34,14 @@ Sounds good? Great, let's move on to seeing all that in an example.
 If you're using Bootstrap's compiled CSS, this the example you'll want to start with.
 
 {% example html %}
-<div class="container">a
+<div class="container">
   <div class="row">
     <div class="col-sm-4">
-      One of three columnsa
+      One of three columns
     </div>
     <div class="col-sm-4">
       One of three columns
-    </div>atom
+    </div>
     <div class="col-sm-4">
       One of three columns
     </div>
