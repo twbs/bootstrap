@@ -27,7 +27,7 @@
     }
 
     a,
-    a::visited {
+    a:visited {
       text-decoration: underline;
     }
 
@@ -47,8 +47,8 @@
     //
 
     //a[href^="#"]::after,
-    //a[href^="javascript:"]:after {
-    //    content: "";
+    //a[href^="javascript:"]::after {
+    // content: "";
     //}
 
     pre {
