@@ -1,4 +1,4 @@
----
+atom---
 layout: docs
 title: Grid system
 description: Documentation and examples for using Bootstrap's powerful, responsive, and mobile-first grid system.
@@ -34,14 +34,14 @@ Sounds good? Great, let's move on to seeing all that in an example.
 If you're using Bootstrap's compiled CSS, this the example you'll want to start with.
 
 {% example html %}
-<div class="container">
+<div class="container">a
   <div class="row">
     <div class="col-sm-4">
-      One of three columns
+      One of three columnsa
     </div>
     <div class="col-sm-4">
       One of three columns
-    </div>
+    </div>atom
     <div class="col-sm-4">
       One of three columns
     </div>
@@ -140,7 +140,15 @@ Variables and maps determine the number of columns, the gutter width, and the me
 
 {% highlight scss %}
 $grid-columns:      12;
-$grid-gutter-width: 30px;
+$grid-gutter-width-base: 30px;
+
+$grid-gutter-widths: (
+  xs: $grid-gutter-width-base, // 30px
+  sm: $grid-gutter-width-base, // 30px
+  md: $grid-gutter-width-base, // 30px
+  lg: $grid-gutter-width-base, // 30px
+  xl: $grid-gutter-width-base  // 30px
+)
 
 $grid-breakpoints: (
   // Extra small screen / phone
@@ -169,29 +177,41 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 {% highlight scss %}
 // Creates a wrapper for a series of columns
-@mixin make-row($gutter: $grid-gutter-width) {
+@mixin make-row($gutters: $grid-gutter-widths) {
   @if $enable-flex {
     display: flex;
     flex-wrap: wrap;
   } @else {
     @include clearfix();
   }
-  margin-left:  ($gutter / -2);
-  margin-right: ($gutter / -2);
+
+  @each $breakpoint in map-keys($gutters) {
+    @include media-breakpoint-up($breakpoint) {
+      $gutter: map-get($gutters, $breakpoint);
+      margin-right: ($gutter / -2);
+      margin-left:  ($gutter / -2);
+    }
+  }
 }
 
 // Make the element grid-ready (applying everything but the width)
-@mixin make-col-ready($gutter: $grid-gutter-width) {
+@mixin make-col-ready($gutters: $grid-gutter-widths) {
   position: relative;
   min-height: 1px; // Prevent collapsing
-  padding-right: ($gutter / 2);
-  padding-left:  ($gutter / 2);
 
   // Prevent columns from becoming too narrow when at smaller grid tiers by
   // always setting `width: 100%;`. This works because we use `flex` values
   // later on to override this initial width.
   @if $enable-flex {
     width: 100%;
+  }
+
+  @each $breakpoint in map-keys($gutters) {
+    @include media-breakpoint-up($breakpoint) {
+      $gutter: map-get($gutters, $breakpoint);
+      padding-right: ($gutter / 2);
+      padding-left:  ($gutter / 2);
+    }
   }
 }
 
@@ -464,11 +484,18 @@ Using our built-in grid Sass variables and maps, it's possible to completely cus
 
 ### Columns and gutters
 
-The number of grid columns and their horizontal padding (aka, gutters) can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` is divided evenly across `padding-left` and `padding-right` for the column gutters.
+The number of grid columns and their horizontal padding (aka, gutters) can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-widths` allows breakpoint-specific widths that are divided evenly across `padding-left` and `padding-right` for the column gutters.
 
 {% highlight scss %}
-$grid-columns: 12;
-$grid-gutter-width: 30px;
+$grid-columns:               12 !default;
+$grid-gutter-width-base:     30px !default;
+$grid-gutter-widths: (
+  xs: $grid-gutter-width-base,
+  sm: $grid-gutter-width-base,
+  md: $grid-gutter-width-base,
+  lg: $grid-gutter-width-base,
+  xl: $grid-gutter-width-base
+) !default;
 {% endhighlight %}
 
 ### Grid tiers
