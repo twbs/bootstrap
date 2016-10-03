@@ -29,6 +29,7 @@ Where *size* is one of:
 * `1` - (by default) for classes that set the `margin` or `padding` to `$spacer-x` or `$spacer-y`
 * `2` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 1.5` or `$spacer-y * 1.5`
 * `3` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 3` or `$spacer-y * 3`
+* `auto` - for classes that set the `margin` to `auto`
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
@@ -53,8 +54,7 @@ Here are some representative examples of these classes:
 }
 {% endhighlight %}
 
-### Horizontal centering
-Additionally, Bootstrap also includes an `.m-x-auto` class for horizontally centering fixed-width block level content by setting the horizontal margins to `auto`.
+The `.m-x-auto` class can be used for horizontally centering fixed-width block level content by setting the horizontal margins to `auto`.
 
 <div class="bd-example">
   <div class="m-x-auto" style="width: 200px; background-color: rgba(86,61,124,.15);">

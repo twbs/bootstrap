@@ -4,11 +4,6 @@
 
 // Margin and Padding
 
-.m-x-auto {
-  margin-right: auto !important;
-  margin-left:  auto !important;
-}
-
 @each $prop, $abbrev in (margin: m, padding: p) {
   @each $size, $lengths in $spacers {
     $length-x:   map-get($lengths, x);
