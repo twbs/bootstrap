@@ -170,6 +170,7 @@ module.exports = function (grunt) {
         compatibility: 'ie9',
         keepSpecialComments: '*',
         sourceMap: true,
+        sourceMapInlineSources: true,
         advanced: false
       },
       core: {
