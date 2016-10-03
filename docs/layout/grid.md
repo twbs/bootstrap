@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Grid system
+description: Documentation and examples for using Bootstrap's powerful, responsive, and mobile-first grid system.
 group: layout
 ---
 

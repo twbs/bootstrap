@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Download
+description: Download Bootstrap's compiled CSS and JavaScript, source code, or include it with your favorite package manager.
 group: getting-started
 ---
 

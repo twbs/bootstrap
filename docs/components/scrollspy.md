@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Scrollspy
+description: Documentation and examples for the scrollspy plugin with Bootstrap's navigation components.
 group: components
 ---
 

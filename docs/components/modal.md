@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Modal
+description: Learn how to use Bootstrap's modals to add dialog prompts to your site.
 group: components
 ---
 

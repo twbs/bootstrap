@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Tables
+description: Documentation and examples for styling tables with Bootstrap.
 group: content
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Flexbox
+description: Learn how to enable flexbox support in Bootstrap 4 with the flick of a variable or the swap of a stylesheet.
 group: getting-started
 ---
 
