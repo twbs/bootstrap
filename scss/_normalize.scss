@@ -112,7 +112,6 @@ a:hover {
 
 abbr[title] {
   border-bottom: none; // 1
-  text-decoration: underline; // 2
   text-decoration: underline dotted; // 2
 }
 
@@ -275,7 +274,7 @@ optgroup {
 button,
 input, // 1
 select { // 2
-  overflow: visible;
+  overflow: auto;
 }
 
 //
