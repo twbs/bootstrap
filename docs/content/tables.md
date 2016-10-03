@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Tables
+description: Documentation and examples for styling tables with Bootstrap.
 group: content
 ---
 
@@ -13,7 +14,7 @@ Due to the widespread use of tables across third-party widgets like calendars an
 
 ## Examples
 
-Using the most basic table markup, here's how `.table`-based tables look in Bootstrap.
+Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. **All table styles are inherited in Bootstrap 4**, meaning any nested tables will be styled in the same manner as the parent.
 
 {% example html %}
 <table class="table">

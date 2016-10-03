@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Typography
+description: Documentation and examples for Bootstrap typography, including global settings, body text, lists, and more.
 group: content
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Popovers
+description: Documentation and examples for adding Bootstrap popovers to your site.
 group: components
 ---
 

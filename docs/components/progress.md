@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Progress
+description: Documentation and examples for using Bootstrap progress bars.
 group: components
 ---
 

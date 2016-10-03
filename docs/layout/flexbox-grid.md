@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Flexbox grid system
+description: Documentation and examples for using Bootstrap's optional flexbox grid system.
 group: layout
 ---
 

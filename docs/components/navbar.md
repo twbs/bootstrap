@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Navbar
+description: Documentation and examples for Bootstrap's powerful, responsive navigation header.
 group: components
 ---
 

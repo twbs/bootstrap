@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Tags
+description: Documentation and examples for tags, our small label-badge component.
 group: components
 ---
 
