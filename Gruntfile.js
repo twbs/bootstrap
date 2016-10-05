@@ -428,6 +428,7 @@ module.exports = function (grunt) {
           'Attribute “ng-repeat” not allowed on element “tr” at this point.',
           'Attribute “ng-init” not allowed on element “label” at this point.',
           'Attribute “ng-init” not allowed on element “div” at this point.',
+          'Attribute “ng-init” not allowed on element “span” at this point.',
           'Attribute “ng-model” not allowed on element “input” at this point.',
           'Attribute “ng-change” not allowed on element “input” at this point.',
           'Attribute “ng-attr-aria-expanded” not allowed on element “div” at this point.',
