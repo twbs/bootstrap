@@ -79,6 +79,17 @@ h2, .h2 {
 }
 
 
+h1, .h1 {
+  font-weight: @font-weight-bold;
+}
+h1, .h1,
+h2, .h2 {
+  small,
+  .small {
+    font-size: 65%;
+  }
+}
+
 @media (min-width: @screen-md-min) {
   h1, .h1 {
     font-size: @font-size-h1;
@@ -110,6 +121,7 @@ h2, .h2 {
   }
   h2, .h2 {
     margin-bottom: 4px;
+    font-weight: @font-weight-bold;
   }
   h3, .h3 {
     margin-bottom: 2px;
@@ -124,15 +136,6 @@ p {
 }
 
 
-h1, .h1,
-h2, .h2 {
-  font-weight: 800;
-
-  small,
-  .small {
-    font-size: 65%;
-  }
-}
 
 h3, .h3,
 h4, .h4,
@@ -186,7 +189,7 @@ mark,
 b,
 strong {
   color: @text-bold-color;
-  font-weight: 600;
+  font-weight: @font-weight-semi-bold;
   letter-spacing: @font-spacing-semi-bold;
 }
 
@@ -231,12 +234,17 @@ strong {
 .text-uppercase      { text-transform: uppercase; }
 .text-capitalize     { text-transform: capitalize; }
 
+.font-weight-bold      { font-weight: @font-weight-semi-bold !important; }
+.font-weight-semi-bold { font-weight: @font-weight-semi-bold !important; }
+.font-weight-normal    { font-weight: @font-weight-normal !important; }
+.font-italic           { font-style: italic !important; }
+
 // Contextual colors
 .text-muted {
   color: @text-muted;
 }
 .text-primary {
-  .text-emphasis-variant(@brand-blue, @brand-blue-minus-10);
+  .text-emphasis-variant(@brand-navy-minus-10, @brand-navy-minus-20);
 }
 .text-success {
   .text-emphasis-variant(@state-success-text, @state-success-text-hover);
@@ -270,6 +278,10 @@ strong {
   // automatically.
   color: #fff;
   .bg-variant(@brand-primary);
+
+  dt {
+    color: #fff;
+  }
 }
 .bg-success {
   .bg-variant(@state-success-bg);
@@ -355,7 +367,7 @@ dt {
   color: @brand-grey-plus-10;
 }
 dd {
-  color: @brand-blue-plus-20;
+  color: @headings-color;
   margin-left: 0; // Undo browser default
   margin-bottom: @padding-container-collapse-xs;
   font-size: @font-size-base;

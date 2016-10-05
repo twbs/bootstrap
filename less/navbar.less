@@ -694,20 +694,8 @@
         color: transparent;
     }
 }
-/* Moved to logo.less so as not to repeat SVG.
-.navbar .navbar-brand {
-    background-image: @logo-full-primary;
-}
-.navbar-inverse .navbar-brand {
-    background-image: @logo-full-inverse;
-}
-*/
-
 .navbar.bg-primary {
     background-color: @brand-primary;
-}
-.navbar.bg-info {
-    background-color: @brand-light-blue;
 }
 .navbar.bg-default {
     background-color: @gray-base;
@@ -827,18 +815,65 @@
         margin-top: -16px;
     }
 
-    .text-ellipses {
+    .text-ellipses,
+    .text-ellipsis {
         max-width: 75px;
         display: inline-block;
     }
     @media (min-width: @screen-lg-min) {
-        .text-ellipses {
+        .text-ellipses,
+        .text-ellipsis {
             max-width: 125px;
         }
     }
     @media (min-width: @screen-xl-min) {
-        .text-ellipses {
+        .text-ellipses,
+        .text-ellipsis {
             max-width: 220px;
         }
+    }
+}
+
+
+
+.navbar[data-spy~=affix] + * {
+    margin-top: 0;
+}
+.navbar[data-spy~=affix].affix + * {
+    margin-top: @navbar-height;
+}
+
+@media (min-width: @screen-md-min) {
+    .navbar + .jumbotron,
+    .navbar + .jumbotron-image {
+        margin-top: (-1 * @navbar-height);
+    }
+    .navbar.affix + .jumbotron,
+    .navbar.affix + .jumbotron-image {
+        margin-top: 0px;
+    }
+}
+
+.navbar + .jumbotron,
+.navbar + .jumbotron-image > .jumbotron {
+    padding-bottom: 64px;
+
+    @media (min-width: @screen-md-min) {
+        padding-top: 140px;
+        padding-bottom: 104px;
+    }
+}
+
+.navbar {
+    > .container .navbar-brand,
+    > .container-fluid .navbar-brand {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+    .navbar {
+        background-color: @navbar-collapse-bg;
+        border-bottom-color: transparent;
     }
 }
