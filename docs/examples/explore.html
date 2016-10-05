@@ -39,6 +39,23 @@
 		function PageController(SelectOptionsService) {
 			var $ctrl = this;
 			$ctrl.options = SelectOptionsService;
+
+			$ctrl.currencies = [
+				{header: 'Popular currencies'},
+				{value: 'eur', label: 'EUR', note: 'Euro', currency: 'EUR'},
+				{value: 'gbp', label: 'GBP', note: 'Great British Pound', currency: 'GBP'},
+				{value: 'usd', label: 'USD', note: 'United States Dollar', currency: 'USD'},
+				{header: 'All currencies'},
+				{value: 'aud', label: 'AUD', note: 'Australian Dollar', currency: 'AUD'}
+			];
+
+			$ctrl.currencySelectConfig = {
+				inverse: true,
+				hideNote: true,
+				dropdownRight: 'xs',
+				dropdownSize: 'lg',
+				buttonSize: 'lg'
+			};
 		}
 	})(window.angular);
 	</script>
@@ -46,6 +63,13 @@
 	<style>
 	body {
 		background-color: #f2f5f7;
+	}
+
+	.currency-select {
+		width: 160px;
+	}
+	.currency-select .tw-select-selected .tw-select-note {
+		display: none;
 	}
 	</style>
 </head>
@@ -230,6 +254,19 @@
 										</div>
 									</div>
 								</div>
+
+								<div class="form-group col-md-6">
+									<label class="control-label">Input group</label>
+									<div class="input-group">
+										<span class="input-group-addon">
+											$
+										</span>
+										<input type="number" class="form-control text-xs-right" tw-focusable />
+										<span class="input-group-addon">
+											USD
+										</span>
+									</div>
+								</div>
 							</fieldset>
 							<div class="row">
 								<div class="col-md-6">
@@ -254,12 +291,71 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<div class="form-group">
+									<div class="form-group form-group-lg">
+										<label class="control-label">.form-group-lg</label>
+										<div class="input-group input-group-lg">
+											<input type="text" class="form-control" placeholder=".form-control" />
+											<span class="input-group-addon">
+												USD
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group" ng-init="ctrl.currency1 = 'gbp'">
 										<label class="control-label">Detailed select</label>
 										<tw-select options="ctrl.options.currencies" tw-focusable
 											placeholder="Choose a currency..."
-											ng-model="ctrl.currency"></tw-select>
+											ng-model="ctrl.currency1"
+											ng-required="true"></tw-select>
 									</div>
+								</div>
+
+								<div class="col-md-12">
+									<div class="form-group form-group-lg">
+										<label class="control-label">.form-group-lg</label>
+										<div class="input-group input-group-lg">
+											<input type="text" class="form-control" placeholder=".input-group" />
+											<span class="input-group-addon input-lg">
+												<i class="icon icon-lock"></i>
+											</span>
+											<span class="input-group-btn currency-select" ng-init="ctrl.currency = 'eur'">
+												<tw-select options="ctrl.currencies" tw-focusable
+													ng-model="ctrl.currency"
+													ng-required="true"
+													config="ctrl.currencySelectConfig"></tw-select>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input class="form-control input-lg" placeholder=".input-lg" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-group-lg">
+										<label class="control-label">
+											.form-group-lg
+										</label>
+										<input class="form-control input-lg" placeholder=".input-lg" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group input-group-lg">
+											<span class="input-group-addon">
+												$
+											</span>
+											<input class="form-control text-xs-right" placeholder=".input-group-lg" />
+											<span class="input-group-addon">
+												USD
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<button class="btn btn-lg btn-block btn-primary m-b-3">Large button</button>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
@@ -277,6 +373,66 @@
 							</div>
 							<div class="col-sm-6">
 								<button class="btn btn-primary btn-block"><i class="icon icon-globe"></i>Send by email</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title">Quick transfer</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6 m-b-3">
+								<div class="form-group form-group-lg m-b-0">
+									<label class="control-label">You send</label>
+									<div class="input-group input-group-lg" ng-init="ctrl.currency1 = 'usd'">
+										<input type="text" class="form-control"
+											value="1,000"
+											placeholder=".input-group" />
+										<span class="input-group-btn currency-select">
+											<tw-select options="ctrl.currencies" tw-focusable
+												ng-model="ctrl.currency1"
+												ng-required="true"
+												filter="Search for currency / country"
+												config="ctrl.currencySelectConfig"
+												size="lg"></tw-select>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 m-b-3">
+								<label class="sr-only">Detailed select</label>
+								<tw-select options="ctrl.options.accounts" tw-focusable
+									ng-model="ctrl.account"
+									ng-required="true"></tw-select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 m-b-3">
+								<div class="form-group form-group-lg m-b-0">
+									<label class="control-label">You receive</label>
+									<div class="input-group input-group-lg" ng-init="ctrl.currency2 = 'gbp'">
+										<input type="text" class="form-control"
+											value="1,000"
+											placeholder=".input-group" />
+										<span class="input-group-addon">
+											<i class="icon icon-lock"></i>
+										</span>
+										<span class="input-group-btn currency-select">
+											<tw-select options="ctrl.currencies" tw-focusable
+												ng-model="ctrl.currency2"
+												ng-required="true"
+												filter="Search for currency / country"
+												config="ctrl.currencySelectConfig"></tw-select>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<button class="btn btn-success btn-block">Create transfer</button>
 							</div>
 						</div>
 					</div>

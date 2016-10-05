@@ -6,29 +6,55 @@
     <label for="input-@brand-white">@brand-white</label>
     <input id="input-@brand-white" type="text" value="#fff" data-var="@brand-white" class="form-control"/>
   </div>
+  <div class="col-xs-4">
+    <label for="input-@brand-pale-blue-minus-20">@brand-pale-blue-minus-20</label>
+    <input id="input-@brand-pale-blue-minus-20" type="text" value="#77d9f7" data-var="@brand-pale-blue-minus-20" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@brand-pale-blue-minus-10">@brand-pale-blue-minus-10</label>
+    <input id="input-@brand-pale-blue-minus-10" type="text" value="#a7e2f9" data-var="@brand-pale-blue-minus-10" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@brand-pale-blue">@brand-pale-blue</label>
+    <input id="input-@brand-pale-blue" type="text" value="#dbf0fd" data-var="@brand-pale-blue" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@brand-navy-minus-20">@brand-navy-minus-20</label>
+    <input id="input-@brand-navy-minus-20" type="text" value="#253655" data-var="@brand-navy-minus-20" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@brand-navy-minus-10">@brand-navy-minus-10</label>
+    <input id="input-@brand-navy-minus-10" type="text" value="#2e4369" data-var="@brand-navy-minus-10" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@brand-navy">@brand-navy</label>
+    <input id="input-@brand-navy" type="text" value="#37517e" data-var="@brand-navy" class="form-control"/>
+  </div>
 </div>
-<h3 id="blues">Blues</h3>
+<h3 id="blues-(deprecated)">Blues (Deprecated)</h3>
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@brand-blue-minus-20">@brand-blue-minus-20</label>
-    <input id="input-@brand-blue-minus-20" type="text" value="#111824" data-var="@brand-blue-minus-20" class="form-control"/>
+    <input id="input-@brand-blue-minus-20" type="text" value="@brand-navy-minus-20" data-var="@brand-blue-minus-20" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@brand-blue-minus-10">@brand-blue-minus-10</label>
-    <input id="input-@brand-blue-minus-10" type="text" value="#192439" data-var="@brand-blue-minus-10" class="form-control"/>
+    <input id="input-@brand-blue-minus-10" type="text" value="@brand-navy-minus-20" data-var="@brand-blue-minus-10" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@brand-blue">@brand-blue</label>
-    <input id="input-@brand-blue" type="text" value="#223049" data-var="@brand-blue" class="form-control"/>
+    <input id="input-@brand-blue" type="text" value="@brand-navy-minus-10" data-var="@brand-blue" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@brand-blue-plus-10">@brand-blue-plus-10</label>
-    <input id="input-@brand-blue-plus-10" type="text" value="#283957" data-var="@brand-blue-plus-10" class="form-control"/>
+    <input id="input-@brand-blue-plus-10" type="text" value="@brand-navy" data-var="@brand-blue-plus-10" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@brand-blue-plus-20">@brand-blue-plus-20</label>
-    <input id="input-@brand-blue-plus-20" type="text" value="#2f4366" data-var="@brand-blue-plus-20" class="form-control"/>
+    <input id="input-@brand-blue-plus-20" type="text" value="@brand-navy" data-var="@brand-blue-plus-20" class="form-control"/>
   </div>
 </div>
 <h3 id="dark-grays">Dark Grays</h3>
@@ -205,7 +231,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@brand-primary">@brand-primary</label>
-    <input id="input-@brand-primary" type="text" value="@brand-blue" data-var="@brand-primary" class="form-control"/>
+    <input id="input-@brand-primary" type="text" value="@brand-navy-minus-10" data-var="@brand-primary" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@brand-success">@brand-success</label>
@@ -240,40 +266,8 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@text-bold-color">@text-bold-color</label>
-    <input id="input-@text-bold-color" type="text" aria-describedby="help-block-@text-bold-color" value="@brand-blue-plus-10" data-var="@text-bold-color" class="form-control"/>
+    <input id="input-@text-bold-color" type="text" aria-describedby="help-block-@text-bold-color" value="@brand-navy-minus-10" data-var="@text-bold-color" class="form-control"/>
     <p id="help-block-@text-bold-color" class="help-block">Bold text color on <code>&lt;body&gt;</code>.</p>
-  </div>
-  <div class="clearfix"></div>
-  <div class="col-xs-4">
-    <label for="input-@link-color">@link-color</label>
-    <input id="input-@link-color" type="text" aria-describedby="help-block-@link-color" value="@brand-light-blue" data-var="@link-color" class="form-control"/>
-    <p id="help-block-@link-color" class="help-block">Global textual link color.</p>
-  </div>
-  <div class="col-xs-4">
-    <label for="input-@link-decoration">@link-decoration</label>
-    <input id="input-@link-decoration" type="text" aria-describedby="help-block-@link-decoration" value="underline" data-var="@link-decoration" class="form-control"/>
-    <p id="help-block-@link-decoration" class="help-block">Global textual link color.</p>
-  </div>
-  <div class="col-xs-4">
-    <label for="input-@link-hover-color">@link-hover-color</label>
-    <input id="input-@link-hover-color" type="text" aria-describedby="help-block-@link-hover-color" value="@brand-light-blue-minus-10" data-var="@link-hover-color" class="form-control"/>
-    <p id="help-block-@link-hover-color" class="help-block">Link hover color</p>
-  </div>
-  <div class="clearfix"></div>
-  <div class="col-xs-4">
-    <label for="input-@link-hover-decoration">@link-hover-decoration</label>
-    <input id="input-@link-hover-decoration" type="text" aria-describedby="help-block-@link-hover-decoration" value="underline" data-var="@link-hover-decoration" class="form-control"/>
-    <p id="help-block-@link-hover-decoration" class="help-block">Link hover decoration.</p>
-  </div>
-  <div class="col-xs-4">
-    <label for="input-@link-active-color">@link-active-color</label>
-    <input id="input-@link-active-color" type="text" aria-describedby="help-block-@link-active-color" value="@brand-light-blue-minus-20" data-var="@link-active-color" class="form-control"/>
-    <p id="help-block-@link-active-color" class="help-block">Link active color</p>
-  </div>
-  <div class="col-xs-4">
-    <label for="input-@link-font-weight">@link-font-weight</label>
-    <input id="input-@link-font-weight" type="text" aria-describedby="help-block-@link-font-weight" value="600" data-var="@link-font-weight" class="form-control"/>
-    <p id="help-block-@link-font-weight" class="help-block">Link font weight</p>
   </div>
 </div>
 <h2 id="typography">Typography</h2>
@@ -376,6 +370,19 @@
     <input id="input-@font-spacing-semi-bold" type="text" value="0" data-var="@font-spacing-semi-bold" class="form-control"/>
   </div>
   <div class="col-xs-4">
+    <label for="input-@font-weight-normal">@font-weight-normal</label>
+    <input id="input-@font-weight-normal" type="text" value="500" data-var="@font-weight-normal" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@font-weight-semi-bold">@font-weight-semi-bold</label>
+    <input id="input-@font-weight-semi-bold" type="text" value="600" data-var="@font-weight-semi-bold" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@font-weight-bold">@font-weight-bold</label>
+    <input id="input-@font-weight-bold" type="text" value="800" data-var="@font-weight-bold" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@line-height-base">@line-height-base</label>
     <input id="input-@line-height-base" type="text" aria-describedby="help-block-@line-height-base" value="24px" data-var="@line-height-base" class="form-control"/>
     <p id="help-block-@line-height-base" class="help-block">Unit-less <code>line-height</code> for use in components like buttons.</p>
@@ -393,7 +400,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@headings-font-weight">@headings-font-weight</label>
-    <input id="input-@headings-font-weight" type="text" value="600" data-var="@headings-font-weight" class="form-control"/>
+    <input id="input-@headings-font-weight" type="text" value="@font-weight-semi-bold" data-var="@headings-font-weight" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@headings-line-height">@headings-line-height</label>
@@ -402,11 +409,43 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@headings-color">@headings-color</label>
-    <input id="input-@headings-color" type="text" value="@brand-blue-plus-10" data-var="@headings-color" class="form-control"/>
+    <input id="input-@headings-color" type="text" value="@brand-navy-minus-10" data-var="@headings-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@buttons-font-family">@buttons-font-family</label>
     <input id="input-@buttons-font-family" type="text" value="&quot;Averta&quot;, &quot;Avenir W02&quot;, &quot;Avenir&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif" data-var="@buttons-font-family" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@link-color">@link-color</label>
+    <input id="input-@link-color" type="text" aria-describedby="help-block-@link-color" value="@brand-light-blue" data-var="@link-color" class="form-control"/>
+    <p id="help-block-@link-color" class="help-block">Global textual link color.</p>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@link-decoration">@link-decoration</label>
+    <input id="input-@link-decoration" type="text" aria-describedby="help-block-@link-decoration" value="underline" data-var="@link-decoration" class="form-control"/>
+    <p id="help-block-@link-decoration" class="help-block">Global textual link color.</p>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@link-hover-color">@link-hover-color</label>
+    <input id="input-@link-hover-color" type="text" aria-describedby="help-block-@link-hover-color" value="@brand-light-blue-minus-10" data-var="@link-hover-color" class="form-control"/>
+    <p id="help-block-@link-hover-color" class="help-block">Link hover color</p>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@link-hover-decoration">@link-hover-decoration</label>
+    <input id="input-@link-hover-decoration" type="text" aria-describedby="help-block-@link-hover-decoration" value="underline" data-var="@link-hover-decoration" class="form-control"/>
+    <p id="help-block-@link-hover-decoration" class="help-block">Link hover decoration.</p>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@link-active-color">@link-active-color</label>
+    <input id="input-@link-active-color" type="text" aria-describedby="help-block-@link-active-color" value="@brand-light-blue-minus-20" data-var="@link-active-color" class="form-control"/>
+    <p id="help-block-@link-active-color" class="help-block">Link active color</p>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@link-font-weight">@link-font-weight</label>
+    <input id="input-@link-font-weight" type="text" aria-describedby="help-block-@link-font-weight" value="@font-weight-semi-bold" data-var="@link-font-weight" class="form-control"/>
+    <p id="help-block-@link-font-weight" class="help-block">Link font weight</p>
   </div>
 </div>
 <h2 id="iconography">Iconography</h2>
@@ -520,7 +559,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@component-active-bg">@component-active-bg</label>
-    <input id="input-@component-active-bg" type="text" aria-describedby="help-block-@component-active-bg" value="@brand-blue" data-var="@component-active-bg" class="form-control"/>
+    <input id="input-@component-active-bg" type="text" aria-describedby="help-block-@component-active-bg" value="@brand-navy-minus-10" data-var="@component-active-bg" class="form-control"/>
     <p id="help-block-@component-active-bg" class="help-block">Global background color for active items (e.g., navs or dropdowns).</p>
   </div>
   <div class="clearfix"></div>
@@ -580,7 +619,7 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@btn-font-weight">@btn-font-weight</label>
-    <input id="input-@btn-font-weight" type="text" value="600" data-var="@btn-font-weight" class="form-control"/>
+    <input id="input-@btn-font-weight" type="text" value="@font-weight-semi-bold" data-var="@btn-font-weight" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-font-size">@btn-font-size</label>
@@ -610,11 +649,11 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-lg-font-size">@btn-lg-font-size</label>
-    <input id="input-@btn-lg-font-size" type="text" value="18px" data-var="@btn-lg-font-size" class="form-control"/>
+    <input id="input-@btn-lg-font-size" type="text" value="22px" data-var="@btn-lg-font-size" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-lg-line-height">@btn-lg-line-height</label>
-    <input id="input-@btn-lg-line-height" type="text" value="28px" data-var="@btn-lg-line-height" class="form-control"/>
+    <input id="input-@btn-lg-line-height" type="text" value="32px" data-var="@btn-lg-line-height" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -855,7 +894,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@input-color">@input-color</label>
-    <input id="input-@input-color" type="text" aria-describedby="help-block-@input-color" value="@brand-blue-plus-20" data-var="@input-color" class="form-control"/>
+    <input id="input-@input-color" type="text" aria-describedby="help-block-@input-color" value="@brand-navy-minus-10" data-var="@input-color" class="form-control"/>
     <p id="help-block-@input-color" class="help-block">Text color for <code>&lt;input&gt;</code>s</p>
   </div>
   <div class="clearfix"></div>
@@ -899,7 +938,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@input-font-size-large">@input-font-size-large</label>
-    <input id="input-@input-font-size-large" type="text" value="18px" data-var="@input-font-size-large" class="form-control"/>
+    <input id="input-@input-font-size-large" type="text" value="22px" data-var="@input-font-size-large" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -940,7 +979,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@input-height-large">@input-height-large</label>
-    <input id="input-@input-height-large" type="text" aria-describedby="help-block-@input-height-large" value="54px" data-var="@input-height-large" class="form-control"/>
+    <input id="input-@input-height-large" type="text" aria-describedby="help-block-@input-height-large" value="72px" data-var="@input-height-large" class="form-control"/>
     <p id="help-block-@input-height-large" class="help-block">Large <code>.form-control</code> height</p>
   </div>
   <div class="col-xs-4">
@@ -964,9 +1003,22 @@
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
+    <label for="input-@control-label-color">@control-label-color</label>
+    <input id="input-@control-label-color" type="text" value="@brand-grey-plus-10" data-var="@control-label-color" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@control-label-font-size">@control-label-font-size</label>
+    <input id="input-@control-label-font-size" type="text" value="@font-size-small" data-var="@control-label-font-size" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@input-group-color">@input-group-color</label>
     <input id="input-@input-group-color" type="text" aria-describedby="help-block-@input-group-color" value="@brand-smoke-minus-10" data-var="@input-group-color" class="form-control"/>
     <p id="help-block-@input-group-color" class="help-block">Color for textual input addons</p>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@input-group-addon-font-size">@input-group-addon-font-size</label>
+    <input id="input-@input-group-addon-font-size" type="text" value="@input-font-size" data-var="@input-group-addon-font-size" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@input-group-addon-bg">@input-group-addon-bg</label>
@@ -1011,12 +1063,12 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@dropdown-link-color">@dropdown-link-color</label>
-    <input id="input-@dropdown-link-color" type="text" aria-describedby="help-block-@dropdown-link-color" value="@brand-blue" data-var="@dropdown-link-color" class="form-control"/>
+    <input id="input-@dropdown-link-color" type="text" aria-describedby="help-block-@dropdown-link-color" value="@brand-navy-minus-10" data-var="@dropdown-link-color" class="form-control"/>
     <p id="help-block-@dropdown-link-color" class="help-block">Dropdown link text color.</p>
   </div>
   <div class="col-xs-4">
     <label for="input-@dropdown-link-hover-color">@dropdown-link-hover-color</label>
-    <input id="input-@dropdown-link-hover-color" type="text" aria-describedby="help-block-@dropdown-link-hover-color" value="@brand-blue" data-var="@dropdown-link-hover-color" class="form-control"/>
+    <input id="input-@dropdown-link-hover-color" type="text" aria-describedby="help-block-@dropdown-link-hover-color" value="@brand-navy-minus-10" data-var="@dropdown-link-hover-color" class="form-control"/>
     <p id="help-block-@dropdown-link-hover-color" class="help-block">Hover color for dropdown links.</p>
   </div>
   <div class="clearfix"></div>
@@ -1251,12 +1303,16 @@
     <label for="input-@navbar-collapse-max-width">@navbar-collapse-max-width</label>
     <input id="input-@navbar-collapse-max-width" type="text" value="(320px - 56px)" data-var="@navbar-collapse-max-width" class="form-control"/>
   </div>
+  <div class="col-xs-4">
+    <label for="input-@navbar-collapse-bg">@navbar-collapse-bg</label>
+    <input id="input-@navbar-collapse-bg" type="text" value="@brand-navy-minus-10" data-var="@navbar-collapse-bg" class="form-control"/>
+  </div>
 </div>
 <h3 id="standard-navbar">Standard navbar</h3>
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@navbar-default-color">@navbar-default-color</label>
-    <input id="input-@navbar-default-color" type="text" value="@brand-blue" data-var="@navbar-default-color" class="form-control"/>
+    <input id="input-@navbar-default-color" type="text" value="@brand-navy-minus-10" data-var="@navbar-default-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@navbar-default-bg">@navbar-default-bg</label>
@@ -1269,7 +1325,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@navbar-default-link-color">@navbar-default-link-color</label>
-    <input id="input-@navbar-default-link-color" type="text" value="@brand-blue" data-var="@navbar-default-link-color" class="form-control"/>
+    <input id="input-@navbar-default-link-color" type="text" value="@brand-navy-minus-10" data-var="@navbar-default-link-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@navbar-default-link-hover-color">@navbar-default-link-hover-color</label>
@@ -1479,7 +1535,7 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@nav-pills-color">@nav-pills-color</label>
-    <input id="input-@nav-pills-color" type="text" value="@brand-blue-plus-20" data-var="@nav-pills-color" class="form-control"/>
+    <input id="input-@nav-pills-color" type="text" value="@brand-navy-minus-10" data-var="@nav-pills-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@nav-pills-border-radius">@nav-pills-border-radius</label>
@@ -1499,11 +1555,11 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@pagination-color">@pagination-color</label>
-    <input id="input-@pagination-color" type="text" value="@brand-blue" data-var="@pagination-color" class="form-control"/>
+    <input id="input-@pagination-color" type="text" value="@brand-navy" data-var="@pagination-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@pagination-font-weight">@pagination-font-weight</label>
-    <input id="input-@pagination-font-weight" type="text" value="500" data-var="@pagination-font-weight" class="form-control"/>
+    <input id="input-@pagination-font-weight" type="text" value="@font-weight-normal" data-var="@pagination-font-weight" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@pagination-bg">@pagination-bg</label>
@@ -1512,7 +1568,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@pagination-hover-color">@pagination-hover-color</label>
-    <input id="input-@pagination-hover-color" type="text" value="@brand-blue" data-var="@pagination-hover-color" class="form-control"/>
+    <input id="input-@pagination-hover-color" type="text" value="@brand-navy" data-var="@pagination-hover-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@pagination-hover-bg">@pagination-hover-bg</label>
@@ -1520,7 +1576,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@pagination-active-color">@pagination-active-color</label>
-    <input id="input-@pagination-active-color" type="text" value="@brand-blue" data-var="@pagination-active-color" class="form-control"/>
+    <input id="input-@pagination-active-color" type="text" value="@brand-navy" data-var="@pagination-active-color" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -1594,7 +1650,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@jumbotron-bg">@jumbotron-bg</label>
-    <input id="input-@jumbotron-bg" type="text" value="@brand-blue" data-var="@jumbotron-bg" class="form-control"/>
+    <input id="input-@jumbotron-bg" type="text" value="@brand-navy" data-var="@jumbotron-bg" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -1702,7 +1758,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@tooltip-bg">@tooltip-bg</label>
-    <input id="input-@tooltip-bg" type="text" aria-describedby="help-block-@tooltip-bg" value="@brand-blue" data-var="@tooltip-bg" class="form-control"/>
+    <input id="input-@tooltip-bg" type="text" aria-describedby="help-block-@tooltip-bg" value="@brand-navy" data-var="@tooltip-bg" class="form-control"/>
     <p id="help-block-@tooltip-bg" class="help-block">Tooltip background color</p>
   </div>
   <div class="clearfix"></div>
@@ -1790,13 +1846,13 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@label-primary-bg">@label-primary-bg</label>
-    <input id="input-@label-primary-bg" type="text" aria-describedby="help-block-@label-primary-bg" value="@brand-blue" data-var="@label-primary-bg" class="form-control"/>
+    <input id="input-@label-primary-bg" type="text" aria-describedby="help-block-@label-primary-bg" value="@brand-navy" data-var="@label-primary-bg" class="form-control"/>
     <p id="help-block-@label-primary-bg" class="help-block">Primary label background color</p>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@label-primary-bg-hover">@label-primary-bg-hover</label>
-    <input id="input-@label-primary-bg-hover" type="text" value="@brand-blue-minus-10" data-var="@label-primary-bg-hover" class="form-control"/>
+    <input id="input-@label-primary-bg-hover" type="text" value="@brand-navy-minus-10" data-var="@label-primary-bg-hover" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@label-success-bg">@label-success-bg</label>
@@ -1888,7 +1944,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@modal-backdrop-bg">@modal-backdrop-bg</label>
-    <input id="input-@modal-backdrop-bg" type="text" aria-describedby="help-block-@modal-backdrop-bg" value="@brand-blue" data-var="@modal-backdrop-bg" class="form-control"/>
+    <input id="input-@modal-backdrop-bg" type="text" aria-describedby="help-block-@modal-backdrop-bg" value="@brand-navy" data-var="@modal-backdrop-bg" class="form-control"/>
     <p id="help-block-@modal-backdrop-bg" class="help-block">Modal backdrop background color</p>
   </div>
   <div class="col-xs-4">
@@ -2041,7 +2097,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@progress-bar-primary-bg">@progress-bar-primary-bg</label>
-    <input id="input-@progress-bar-primary-bg" type="text" aria-describedby="help-block-@progress-bar-primary-bg" value="@brand-blue" data-var="@progress-bar-primary-bg" class="form-control"/>
+    <input id="input-@progress-bar-primary-bg" type="text" aria-describedby="help-block-@progress-bar-primary-bg" value="@brand-navy" data-var="@progress-bar-primary-bg" class="form-control"/>
     <p id="help-block-@progress-bar-primary-bg" class="help-block">Primary progress bar color</p>
   </div>
   <div class="clearfix"></div>
@@ -2156,7 +2212,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@panel-heading-color">@panel-heading-color</label>
-    <input id="input-@panel-heading-color" type="text" value="@brand-blue" data-var="@panel-heading-color" class="form-control"/>
+    <input id="input-@panel-heading-color" type="text" value="@brand-navy-minus-10" data-var="@panel-heading-color" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@panel-heading-padding">@panel-heading-padding</label>
@@ -2205,7 +2261,7 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-primary-border">@panel-primary-border</label>
-    <input id="input-@panel-primary-border" type="text" value="@brand-blue" data-var="@panel-primary-border" class="form-control"/>
+    <input id="input-@panel-primary-border" type="text" value="@brand-navy" data-var="@panel-primary-border" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@panel-primary-heading-bg">@panel-primary-heading-bg</label>

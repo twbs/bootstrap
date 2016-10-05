@@ -140,6 +140,10 @@
   border-width: @caret-width-large @caret-width-large 0;
   border-bottom-width: 0;
 }
+.btn-lg .caret,
+.input-group-lg .btn .caret {
+  top: 28px !important;
+}
 // Upside down carets for .dropup
 .dropup .btn-lg .caret {
   border-width: 0 @caret-width-large @caret-width-large;
@@ -286,15 +290,17 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    .dropdown-menu {
-        width: 100%;
+}
+.btn-block {
+  .dropdown-menu {
+    width: 100%;
 
-        > li > a {
-            overflow: hidden;
-            width: 100%;
-            text-overflow: ellipsis;
-        }
+    > li > a {
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
     }
+  }
 }
 
 .btn-group .dropdown-menu {
@@ -308,12 +314,17 @@
 }
 .btn-group {
   .small {
-    font-size: @font-size-small;
-    color: @brand-grey-plus-20 !important;
-
+    font-size: @input-group-addon-font-size;
+    color: @input-group-color;
     line-height: (@line-height-computed - 1px);
+
     &.text-ellipsis {
       line-height: @line-height-computed;
     }
   }
+}
+.btn-group .secondary {
+  font-size: @control-label-font-size;
+  color: @control-label-color;
+  line-height: 24px;
 }

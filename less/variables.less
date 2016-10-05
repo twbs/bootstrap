@@ -8,14 +8,23 @@
 
 @brand-white: #fff;
 
-//=== Blues
+
+@brand-pale-blue-minus-20: #77d9f7;
+@brand-pale-blue-minus-10: #a7e2f9;
+@brand-pale-blue: #dbf0fd;
+
+@brand-navy-minus-20: #253655;
+@brand-navy-minus-10: #2e4369;
+@brand-navy: #37517e;
+
+//=== Blues (Deprecated)
 //
 //
-@brand-blue-minus-20: #111824;
-@brand-blue-minus-10: #192439;
-@brand-blue: #223049;
-@brand-blue-plus-10: #283957;
-@brand-blue-plus-20: #2f4366;
+@brand-blue-minus-20: @brand-navy-minus-20; //#111824;
+@brand-blue-minus-10: @brand-navy-minus-20; //#192439;
+@brand-blue: @brand-navy-minus-10;          //#223049;
+@brand-blue-plus-10: @brand-navy;           //#283957;
+@brand-blue-plus-20: @brand-navy;           //#2f4366;
 
 //=== Dark Grays
 //
@@ -90,7 +99,7 @@
 @gray-light:            @brand-grey-plus-20;
 @gray-lighter:          @brand-smoke;
 
-@brand-primary:         @brand-blue;
+@brand-primary:         @brand-navy-minus-10;
 @brand-success:         @brand-green;
 @brand-info:            @brand-light-blue;
 @brand-warning:         @brand-orange;
@@ -105,21 +114,7 @@
 //** Global text color on `<body>`.
 @text-color:            @brand-grey-plus-10;
 //** Bold text color on `<body>`.
-@text-bold-color:       @brand-blue-plus-10;
-
-//** Global textual link color.
-@link-color:            @brand-light-blue;
-//** Global textual link color.
-@link-decoration:       underline;
-//** Link hover color
-@link-hover-color:      @brand-light-blue-minus-10;
-//** Link hover decoration.
-@link-hover-decoration: underline;
-//** Link active color
-@link-active-color:     @brand-light-blue-minus-20;
-//** Link font weight
-@link-font-weight:      600;
-
+@text-bold-color:       @brand-navy-minus-10;
 
 //== Typography
 //
@@ -153,6 +148,10 @@
 @font-spacing-base:       0.028em;
 @font-spacing-semi-bold:  0;
 
+@font-weight-normal:      500;
+@font-weight-semi-bold:   600;
+@font-weight-bold:        800;
+
 
 //** Unit-less `line-height` for use in components like buttons.
 @line-height-base:        24px; // 24/16
@@ -161,12 +160,24 @@
 
 //** By default, this inherits from the `<body>`.
 @headings-font-family:    "Averta", "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;    //inherit;
-@headings-font-weight:    600;
+@headings-font-weight:    @font-weight-semi-bold;
 @headings-line-height:    1.2;              //1.1;
-@headings-color:          @brand-blue-plus-10;
+@headings-color:          @brand-navy-minus-10;
 
 @buttons-font-family:     "Averta", "Avenir W02", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
+//** Global textual link color.
+@link-color:            @brand-light-blue;
+//** Global textual link color.
+@link-decoration:       underline;
+//** Link hover color
+@link-hover-color:      @brand-light-blue-minus-10;
+//** Link hover decoration.
+@link-hover-decoration: underline;
+//** Link active color
+@link-active-color:     @brand-light-blue-minus-20;
+//** Link font weight
+@link-font-weight:      @font-weight-semi-bold;
 
 //== Iconography
 //
@@ -214,7 +225,7 @@
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
 //** Global background color for active items (e.g., navs or dropdowns).
-@component-active-bg:       @brand-blue;
+@component-active-bg:       @brand-navy-minus-10;
 
 //** Width of the `border` for generating carets that indicator dropdowns.
 @caret-width-base:          4px;
@@ -247,7 +258,7 @@
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
 
-@btn-font-weight:                600;               //normal;
+@btn-font-weight:                @font-weight-semi-bold;               //normal;
 
 @btn-font-size:                  16px;
 @btn-line-height:                24px;
@@ -258,8 +269,8 @@
 @btn-sm-font-size:               14px;
 @btn-sm-line-height:             24px;
 
-@btn-lg-font-size:               18px;
-@btn-lg-line-height:             28px;
+@btn-lg-font-size:               22px;
+@btn-lg-line-height:             32px;
 
 
 @btn-disabled-bg:                @brand-smoke-plus-10;
@@ -346,7 +357,7 @@
 //** `<input disabled>` background color
 @input-bg-disabled:              @brand-smoke-plus-20;
 //** Text color for `<input>`s
-@input-color:                    @brand-blue-plus-20;
+@input-color:                    @brand-navy-minus-10;
 //** `<input disabled>` color
 @input-color-disabled:           @brand-smoke;
 
@@ -363,7 +374,7 @@
 @input-font-size-small:          14px;
 @input-line-height-small:        @btn-sm-line-height;
 
-@input-font-size-large:          18px;
+@input-font-size-large:          22px;
 @input-line-height-large:        @btn-lg-line-height;
 
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
@@ -384,7 +395,7 @@
 //** Default `.form-control` height
 @input-height-base:              48px;  //(@line-height-computed + (@padding-base-vertical * 2) + 2);
 //** Large `.form-control` height
-@input-height-large:             54px;  //(ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-large:             72px;  //(ceil(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 //** Small `.form-control` height
 @input-height-small:             32px;  //(floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
@@ -394,8 +405,13 @@
 @legend-color:                   @gray-dark;
 @legend-border-color:            #e5e5e5;
 
+@control-label-color:            @brand-grey-plus-10;
+@control-label-font-size:        @font-size-small;
+
 //** Color for textual input addons
-@input-group-color:              @brand-smoke-minus-10;
+@input-group-color:              @brand-smoke-minus-10; //@control-label-color;
+@input-group-addon-font-size:    @input-font-size;
+
 //** Background color for textual input addons
 @input-group-addon-bg:           @input-bg;
 //** Border color for textual input addons
@@ -403,6 +419,7 @@
 
 //** Disabled cursor for form controls and buttons.
 @cursor-disabled:                not-allowed;
+
 
 
 //== Dropdowns
@@ -419,9 +436,9 @@
 @dropdown-divider-bg:            @brand-smoke-plus-20;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @brand-blue;
+@dropdown-link-color:            @brand-navy-minus-10;
 //** Hover color for dropdown links.
-@dropdown-link-hover-color:      @brand-blue;
+@dropdown-link-hover-color:      @brand-navy-minus-10;
 //** Hover background for dropdown links.
 @dropdown-link-hover-bg:         @brand-smoke-plus-20;
 
@@ -557,15 +574,16 @@
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height:       340px;
 @navbar-collapse-max-width:        (320px - 56px);
+@navbar-collapse-bg:               @brand-navy-minus-10;
 
 //=== Standard navbar
 // Navbar basics
-@navbar-default-color:                      @brand-blue;
+@navbar-default-color:                      @brand-navy-minus-10;
 @navbar-default-bg:                         transparent;
 @navbar-default-border:                     @brand-grey-minus-10;
 
 //  Navbar links
-@navbar-default-link-color:                 @brand-blue;
+@navbar-default-link-color:                 @brand-navy-minus-10;
 @navbar-default-link-hover-color:           @brand-light-blue;
 @navbar-default-link-hover-bg:              transparent;
 @navbar-default-link-active-color:          @brand-light-blue;
@@ -641,7 +659,7 @@
 @nav-tabs-justified-active-link-border-color:     @body-bg;
 
 //== Pills
-@nav-pills-color:                           @brand-blue-plus-20;
+@nav-pills-color:                           @brand-navy-minus-10;
 @nav-pills-border-radius:                   @border-radius-base;
 @nav-pills-active-link-hover-bg:            @component-active-bg;
 @nav-pills-active-link-hover-color:         @component-active-color;
@@ -651,14 +669,14 @@
 //
 //##
 
-@pagination-color:                     @brand-blue;
-@pagination-font-weight:               500;
+@pagination-color:                     @brand-navy;
+@pagination-font-weight:               @font-weight-normal;
 @pagination-bg:                        transparent;
 
-@pagination-hover-color:               @brand-blue;
+@pagination-hover-color:               @brand-navy;
 @pagination-hover-bg:                  @brand-smoke-plus-20;
 
-@pagination-active-color:              @brand-blue;
+@pagination-active-color:              @brand-navy;
 @pagination-active-bg:                 @brand-smoke-plus-20;
 
 @pagination-disabled-color:            @gray-light;
@@ -690,7 +708,7 @@
 
 @jumbotron-padding:              32px;
 @jumbotron-color:                #FFF;  //inherit;
-@jumbotron-bg:                   @brand-blue;
+@jumbotron-bg:                   @brand-navy;
 @jumbotron-heading-color:        #FFF;  //inherit;
 @jumbotron-font-size:            22px;
 @jumbotron-heading-font-size:    42px;
@@ -731,7 +749,7 @@
 //** Tooltip text color
 @tooltip-color:               #fff;
 //** Tooltip background color
-@tooltip-bg:                  @brand-blue;
+@tooltip-bg:                  @brand-navy;
 @tooltip-opacity:             1;
 
 //** Tooltip arrow width
@@ -777,8 +795,8 @@
 @label-default-bg:            @brand-smoke;
 @label-default-bg-hover:      @brand-smoke-minus-10;
 //** Primary label background color
-@label-primary-bg:            @brand-blue;
-@label-primary-bg-hover:      @brand-blue-minus-10;
+@label-primary-bg:            @brand-navy;
+@label-primary-bg-hover:      @brand-navy-minus-10;
 //** Success label background color
 @label-success-bg:            @brand-green;
 @label-success-bg-hover:      @brand-green-minus-10;
@@ -820,7 +838,7 @@
 @modal-content-fallback-border-color:          #999;
 
 //** Modal backdrop background color
-@modal-backdrop-bg:           @brand-blue;
+@modal-backdrop-bg:           @brand-navy;
 //** Modal backdrop opacity
 @modal-backdrop-opacity:      .8;
 //** Modal header border color
@@ -879,7 +897,7 @@
 //** Default progress bar color
 @progress-bar-bg:             @brand-light-blue;
 //** Primary progress bar color
-@progress-bar-primary-bg:     @brand-blue;
+@progress-bar-primary-bg:     @brand-navy;
 //** Success progress bar color
 @progress-bar-success-bg:     @brand-green;
 //** Warning progress bar color
@@ -932,7 +950,7 @@
 @panel-body-padding:          @padding-container;
 @panel-body-padding-collapse: @padding-container-collapse;
 @panel-collapse-xs:           @padding-container-collapse-xs;
-@panel-heading-color:         @brand-blue;
+@panel-heading-color:         @brand-navy-minus-10;
 @panel-heading-padding:       @padding-container;
 @panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
@@ -947,7 +965,7 @@
 @panel-default-heading-bg:    #fff;
 
 @panel-primary-text:          #fff;
-@panel-primary-border:        @brand-blue;
+@panel-primary-border:        @brand-navy;
 @panel-primary-heading-bg:    #fff;
 
 @panel-success-text:          @state-success-text;

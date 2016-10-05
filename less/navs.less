@@ -20,7 +20,7 @@
       position: relative;
       display: block;
       padding: @nav-link-padding;
-      font-weight: 500;
+      font-weight: @font-weight-normal;
       font-size: @font-size-base;
       &:hover,
       &:focus {
@@ -107,10 +107,10 @@
       &:focus {
         color: @nav-tabs-active-link-hover-color;
         //background-color: @nav-tabs-active-link-hover-bg;
-        //border: 1px solid @nav-tabs-active-link-hover-border-color;
-        //border-bottom-color: transparent;
+        // border: 1px solid @nav-tabs-active-link-hover-border-color;
         border-bottom: 3px solid @nav-tabs-active-link-hover-border-color;
         cursor: default;
+        box-shadow: 0 0 0;
       }
     }
   }

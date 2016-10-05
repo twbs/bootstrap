@@ -35,9 +35,14 @@ legend {
 label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
-  margin-bottom: 4px;
-  font-size: @font-size-small;
-  color: @brand-grey-plus-10;
+}
+// TODO remove tw-select-secondary once launched in styleguide
+label,
+.secondary,
+.btn-group .btn .tw-select-secondary,
+.btn-group .dropdown-menu .tw-select-secondary {
+  font-size: @control-label-font-size;
+  color: @control-label-color;
   line-height: 20px;
   .transition(~"color ease-in-out .15s");
 }
@@ -176,7 +181,6 @@ output {
   textarea& {
     height: 144px;
     padding: @padding-large-vertical @padding-base-horizontal @padding-large-vertical @padding-base-horizontal;
-
   }
 }
 
@@ -214,7 +218,7 @@ input[type="search"] {
 
     &.input-lg,
     .input-group-lg & {
-      line-height: @input-height-large;
+      line-height: (@input-height-large - @line-height-computed);
     }
   }
 }
@@ -227,6 +231,10 @@ input[type="search"] {
 
 .form-group {
   margin-bottom: @form-group-margin-bottom;
+
+  label {
+    margin-bottom: 2px;
+  }
 }
 
 
@@ -378,15 +386,17 @@ input[type="checkbox"] {
   .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @input-font-size-large; @input-line-height-large; @input-border-radius-large);
 }
 .form-group-lg {
-  .form-control {
+  position: relative;
+  .input-lg,
+  .input-group-lg > .form-control,
+  .input-group-lg > .input-group-addon {
     height: @input-height-large;
-    padding: @padding-large-vertical @padding-large-horizontal;
+    padding: (@padding-small-vertical + @line-height-computed) @padding-small-horizontal @padding-small-vertical;
     font-size: @input-font-size-large;
     line-height: @input-line-height-large;
-    border-radius: @input-border-radius-large;
   }
+
   select.form-control {
-    height: @input-height-large;
     line-height: @input-height-large;
   }
   textarea.form-control,
@@ -399,6 +409,14 @@ input[type="checkbox"] {
     padding: (@line-height-computed / 2 + 1) @padding-large-horizontal;
     font-size: @input-font-size-large;
     line-height: @input-line-height-large;
+  }
+
+  .control-label {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    margin-bottom: 0;
+    z-index: 1;
   }
 }
 
@@ -670,7 +688,7 @@ input[type="checkbox"] {
 }
 
 .form-control {
-    font-weight: 500;
+    font-weight: @font-weight-normal;
 }
 
 .form-group {
@@ -746,12 +764,14 @@ input[type="checkbox"] {
     .control-label {
         color: @brand-light-blue;
     }
-    .input-group-addon {
+    .form-control,
+    .input-group-addon,
+    .btn-input {
         border-color: @input-border-focus;
+        &:hover {
+            border-color: @input-border-focus;
+        }
     }
-    //input, textarea, select {
-    //    border-color: @brand-light-blue;
-    //}
 }
 
 @media (min-width: @screen-sm-min) {
@@ -777,7 +797,7 @@ input[type="checkbox"] {
         padding-bottom: 11px;
         padding-right: 16px;
 
-        color: @brand-blue-plus-20;
+        color: @input-color;
         background-color: @brand-white;
         border: 1px solid @brand-smoke;
         border-radius: @border-radius-base;
@@ -798,19 +818,19 @@ input[type="checkbox"] {
     &.has-success {
         > label:not(.disabled) {
             border-color: @state-success-text;
-            color: @brand-blue-plus-20;
+            color: @input-color;
         }
     }
     &.has-warning {
         > label:not(.disabled) {
             border-color: @state-warning-text;
-            color: @brand-blue-plus-20;
+            color: @input-color;
         }
     }
     &.has-error {
         > label:not(.disabled) {
             border-color: @state-danger-text;
-            color: @brand-blue-plus-20;
+            color: @input-color;
         }
     }
 
@@ -834,8 +854,8 @@ input[type="checkbox"] {
             small,
             .small {
                 display: block;
-                font-size: @font-size-small;
-                color: @brand-grey-plus-20;
+                font-size: @control-label-font-size;
+                color: @control-label-color;
             }
         }
     }
@@ -844,7 +864,7 @@ input[type="checkbox"] {
 .has-error {
     .radio > label {
         border-color: @state-danger-text;
-        color: @brand-blue-plus-20;
+        color: @input-color;
     }
 }
 

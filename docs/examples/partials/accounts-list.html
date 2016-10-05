@@ -6,7 +6,8 @@
 			'active': $ctrl.active === account.id
 		}">
 		<div class="p-a-panel" role="button"
-			ng-click="$ctrl.activate(account.id, $event)">
+			ng-click="$ctrl.activate(account.id, $event)"
+			aria-haspopup="true" ng-attr-aria-expanded="$ctrl.active === account.id">
 			<div class="media" role="button">
 				<div class="media-left">
 					<div class="circle circle-sm circle-responsive"

@@ -13,12 +13,6 @@
 
 .bg-default {
     background-color: @gray-base;
-
-    :not(.panel) {
-        h1, h2 {
-            color: @brand-blue;
-        }
-    }
 }
 .jumbotron,
 .bg-primary,
@@ -96,50 +90,6 @@ blockquote footer {
     }
 }
 
-.navbar[data-spy~=affix] + * {
-    margin-top: 0;
-}
-.navbar[data-spy~=affix].affix + * {
-    margin-top: @navbar-height;
-}
-
-@media (min-width: @screen-md-min) {
-    .navbar + .jumbotron,
-    .navbar + .jumbotron-image {
-        margin-top: (-1 * @navbar-height);
-    }
-    .navbar.affix + .jumbotron,
-    .navbar.affix + .jumbotron-image {
-        margin-top: 0px;
-    }
-}
-
-.navbar + .jumbotron,
-.navbar + .jumbotron-image > .jumbotron {
-    padding-bottom: 64px;
-
-    @media (min-width: @screen-md-min) {
-        padding-top: 140px;
-        padding-bottom: 104px;
-    }
-}
-
-.navbar {
-    > .container .navbar-brand,
-    > .container-fluid .navbar-brand {
-        margin-left: 0;
-    }
-}
-
-
-@media (max-width: @screen-sm-max) {
-    .navbar {
-        background-color: @brand-primary;
-        border-bottom-color: transparent;
-    }
-}
-
-
 .footer {
     font-size: @font-size-small;
     line-height: @line-height-computed;
@@ -154,17 +104,13 @@ blockquote footer {
         }
 
         &:active {
-            color: @brand-blue-plus-20;
+            color: @brand-navy;
         }
     }
 }
 .footer,
 .bg-default {
     background-color: @gray-base;
-
-    h1, h2, h3, h4, h5, h6 {
-        color: @brand-primary;
-    }
 }
 
 .badge {
@@ -190,7 +136,8 @@ blockquote footer {
 }
 
 .navbar {
-    .glyphicon {
+    .glyphicon,
+    .icon {
         font-size: 22px;
         line-height: 22px;
 
@@ -199,14 +146,12 @@ blockquote footer {
             margin-left: -12px;
             min-width: 18px;
             padding: 2px 3px;
-            border: 2px solid @brand-blue;
+            border: 2px solid @brand-navy;
         }
     }
 }
-
-.dropdown-menu li,
-.dropdown-menu li > a,
-.nav li > a,
+.dropdown-menu,
+.nav,
 .btn {
   .icon {
       font-size: 24px;
@@ -240,7 +185,7 @@ li .circle {
 
 .btn .currency-flag,
 .dropdown-menu li .currency-flag {
-  margin-top: 4px;
+  margin-top: 3px;
 }
 .btn .circle .icon,
 .dropdown-menu li .circle .icon {
@@ -248,6 +193,14 @@ li .circle {
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
+}
+.input-group-sm .btn .currency-flag,
+.btn-sm .currency-flag {
+  margin-top: 2px;
+}
+.input-group-lg .btn .currency-flag,
+.btn-lg .currency-flag {
+  margin-top: 7px;
 }
 
 .tw-select-transcluded a {
