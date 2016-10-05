@@ -49,24 +49,6 @@
   .box-shadow(0px 20px 66px 0px rgba(34,48,73,.2));
   background-clip: padding-box;
 
-  &.dropdown-menu-sm {
-      width: 220px;
-  }
-  &.dropdown-menu-md {
-      width: 300px;
-  }
-  &.dropdown-menu-lg {
-      width: 420px;
-  }
-
-  // Aligns the dropdown menu to right
-  //
-  // Deprecated as of 3.1.0 in favor of `.dropdown-menu-[dir]`
-  &.pull-right {
-    right: 0;
-    left: auto;
-  }
-
   // Dividers (basically an hr) within the dropdown
   .divider {
     .nav-divider(@dropdown-divider-bg);
@@ -92,6 +74,19 @@
   }
   > li:last-child > a {
       .border-bottom-radius((@border-radius-base - 1px))
+  }
+}
+
+.dropdown-menu,
+.btn-group .dropdown-menu  {
+  &.dropdown-menu-sm {
+      width: 220px;
+  }
+  &.dropdown-menu-md {
+      width: 300px;
+  }
+  &.dropdown-menu-lg {
+      width: 420px;
   }
 }
 
@@ -174,19 +169,56 @@
 //
 // Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
 // menu with the parent.
-.dropdown-menu-right {
-  left: auto; // Reset the default from `.dropdown-menu`
+.dropdown-menu-right,
+.dropdown-menu-xs-right {
+  left: auto;
   right: 0;
 }
-// With v3, we enabled auto-flipping if you have a dropdown within a right
-// aligned nav component. To enable the undoing of that, we provide an override
-// to restore the default dropdown menu alignment.
-//
-// This is only for left-aligning a dropdown menu within a `.navbar-right` or
-// `.pull-right` nav component.
-.dropdown-menu-left {
+.dropdown-menu-left,
+.dropdown-menu-xs-left {
   left: 0;
   right: auto;
+}
+
+@media (min-width: @screen-sm-min) {
+  .dropdown-menu-sm-right {
+    left: auto;
+    right: 0;
+  }
+  .dropdown-menu-sm-left {
+    left: 0;
+    right: auto;
+  }
+}
+@media (min-width: @screen-md-min) {
+  .dropdown-menu-md-right {
+    left: auto;
+    right: 0;
+  }
+  .dropdown-menu-md-left {
+    left: 0;
+    right: auto;
+  }
+}
+@media (min-width: @screen-lg-min) {
+  .dropdown-menu-lg-right {
+    left: auto;
+    right: 0;
+  }
+  .dropdown-menu-lg-left {
+    left: 0;
+    right: auto;
+  }
+}
+@media (min-width: @screen-xl-min) {
+  .dropdown-menu-xl-right {
+    left: auto; // Reset the default from `.dropdown-menu`
+    right: 0;
+  }
+  .dropdown-menu-xl-left {
+    left: 0;
+    right: auto;
+  }
 }
 
 // Dropdown section headers
@@ -207,12 +239,6 @@
   bottom: 0;
   top: 0;
   z-index: (@zindex-dropdown - 10);
-}
-
-// Right aligned dropdowns
-.pull-right > .dropdown-menu {
-  right: 0;
-  left: auto;
 }
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
