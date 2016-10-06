@@ -103,12 +103,24 @@
         <li><a href="#">Option 2</a></li>
         <li><a href="#">Option 3</a></li>
       </ul>
-    </div><!-- /btn-group -->
+    </div>
+
+    <div class="btn-group btn-block">
+      <button type="button" class="btn btn-input btn-input-inverse dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <span class="form-control-placeholder">Select an option...</span> <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li class="active"><a href="#">Option 1</a></li>
+        <li><a href="#">Option 2</a></li>
+        <li><a href="#">Option 3</a></li>
+      </ul>
+    </div>
   </div>
 {% highlight html %}
-<!-- Single button -->
+<!-- Regular dropdown -->
 <div class="btn-group btn-block">
-  <button type="button" class="btn btn-input dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+  <button type="button" class="btn btn-input dropdown-toggle"
+    data-toggle="dropdown" aria-expanded="false">
     <span class="form-control-placeholder">Select an option...</span>
     <span class="caret"></span>
   </button>
@@ -116,6 +128,18 @@
     <li class="active"><a href="#">Option 1</a></li>
     <li><a href="#">Option 2</a></li>
     <li><a href="#">Option 3</a></li>
+  </ul>
+</div>
+
+<!-- Inverse dropdown -->
+<div class="btn-group btn-block">
+  <button type="button" class="btn btn-input btn-input-inverse dropdown-toggle"
+    data-toggle="dropdown" aria-expanded="false">
+    <span class="form-control-placeholder">Select an option...</span>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    ...
   </ul>
 </div>
 {% endhighlight %}
@@ -230,7 +254,7 @@
   <h2 id="btn-dropdowns-sizing">Sizing</h2>
   <p>Button dropdowns work with buttons of all sizes.</p>
   <div class="bs-example" data-example-id="button-dropdown-sizing">
-    <div class="btn-toolbar" role="toolbar">
+    <div class="m-b-3">
       <div class="btn-group">
         <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
           Large button <span class="caret"></span>
@@ -244,7 +268,7 @@
         </ul>
       </div><!-- /btn-group -->
     </div><!-- /btn-toolbar -->
-    <div class="btn-toolbar" role="toolbar">
+    <div class="m-b-3">
       <div class="btn-group">
         <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
           Small button <span class="caret"></span>
@@ -258,7 +282,7 @@
         </ul>
       </div><!-- /btn-group -->
     </div><!-- /btn-toolbar -->
-    <div class="btn-toolbar" role="toolbar">
+    <div class="m-b-3">
       <div class="btn-group">
         <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
           Extra small button <span class="caret"></span>

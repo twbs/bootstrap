@@ -20,7 +20,7 @@
 
 // Optional heading
 .panel-heading {
-  padding: (@panel-body-padding / 2) 0;
+  padding: (@panel-body-padding / 2) @padding-container-collapse-xs;
 
   > .dropdown .dropdown-toggle {
     color: inherit;
@@ -42,8 +42,6 @@
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
   padding: @panel-collapse-xs;
-  background-color: @panel-footer-bg;
-  border-top: 1px solid @panel-inner-border;
 }
 
 @media (min-width: @screen-sm-min) {
@@ -67,9 +65,6 @@
     border-radius: @panel-border-radius;
     margin-left: 0;
     margin-right: 0;
-  }
-  .panel-heading {
-    padding: (@panel-body-padding / 2) 0;
   }
   .panel-body {
     padding: @panel-body-padding;
