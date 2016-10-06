@@ -78,9 +78,6 @@
 	</script>
 
 	<style>
-	body {
-		background-color: #f2f5f7;
-	}
 
 	.list-group-item > * {
 		margin-left: -2px;
@@ -120,7 +117,7 @@
 	}
 	</style>
 </head>
-<body ng-app="ExampleApp">
+<body ng-app="ExampleApp" class="bg-default">
 	<nav-bar></nav-bar>
 	<div ng-controller="PageController as ctrl">
 		<div class="bg-primary p-t-4 p-b-5">
@@ -190,14 +187,10 @@
 					currencies="ctrl.currencies"
 					inactive="true">
 				</transfer-list>
-			</div>
-
-			<div class="panel">
-				<div class="panel-p-l panel-p-r">
+				<div class="panel-footer">
 					<pagination page="1" total="200"></pagination>
 				</div>
 			</div>
-
 		</div>
 	</div>
 	<footer-example></footer-example>

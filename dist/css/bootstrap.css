@@ -1608,13 +1608,13 @@ a.text-inverse:focus {
 }
 .bg-primary {
   color: #fff;
-  background-color: #2e4369;
+  background-color: #2e4369 !important;
 }
 .bg-primary dt {
   color: #fff;
 }
 .bg-success {
-  background-color: #d6f5e2;
+  background-color: #d6f5e2 !important;
 }
 .bg-info {
   color: #fff;
@@ -1626,10 +1626,13 @@ a.text-inverse:focus {
   background-repeat: repeat-x;
 }
 .bg-warning {
-  background-color: #fff3dd;
+  background-color: #fff3dd !important;
 }
 .bg-danger {
-  background-color: #ffdfdf;
+  background-color: #ffdfdf !important;
+}
+.bg-default {
+  background-color: #f2f5f7 !important;
 }
 .page-header {
   padding-bottom: 16px;
@@ -5829,6 +5832,11 @@ tbody.collapse.in {
   width: 100%;
   margin-bottom: 16px;
 }
+.btn-toolbar .btn-group .btn,
+.btn-toolbar .input-group .btn {
+  width: auto;
+  margin-bottom: 0;
+}
 @media (min-width: 992px) {
   .btn-toolbar {
     margin-left: -8px;
@@ -7098,12 +7106,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .navbar-inverse .navbar-brand:focus {
   color: transparent;
 }
-.navbar.bg-primary {
-  background-color: #2e4369;
-}
-.navbar.bg-default {
-  background-color: #f2f5f7;
-}
 .navbar .flag {
   float: left;
   width: 24px;
@@ -8127,7 +8129,7 @@ a.list-group-item-danger:hover {
   background-color: #fff;
 }
 .panel-heading {
-  padding: 16px 0;
+  padding: 16px 16px;
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;
@@ -8142,8 +8144,6 @@ a.list-group-item-danger:hover {
 }
 .panel-footer {
   padding: 16px;
-  background-color: #fff;
-  border-top: 1px solid #fff;
 }
 @media (min-width: 576px) {
   .panel {
@@ -8165,9 +8165,6 @@ a.list-group-item-danger:hover {
     margin-bottom: 40px;
     margin-left: 0;
     border-radius: 3px;
-  }
-  .panel-heading {
-    padding: 16px 0;
   }
   .panel-body {
     padding: 32px;
@@ -10455,8 +10452,7 @@ blockquote footer {
 .footer a:not(.btn):active {
   color: #37517e;
 }
-.footer,
-.bg-default {
+.footer {
   background-color: #f2f5f7;
 }
 .badge {
@@ -10519,6 +10515,10 @@ li > a > .circle:first-child {
 li .circle {
   display: inline-block;
   vertical-align: bottom;
+}
+.currency-flag {
+  -webkit-box-shadow: 0 0 1px 0 rgba(0, 0, 0, .6);
+          box-shadow: 0 0 1px 0 rgba(0, 0, 0, .6);
 }
 .btn .currency-flag,
 .dropdown-menu li .currency-flag {

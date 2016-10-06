@@ -62,21 +62,22 @@
 			TransferService.list({status: [
 				"PAUSED",
 				"AWAITING_FUNDS",
-				"PROCESSING",
+				"PROCESSING"
+			]}).then(function(transfers) {
+				vm.activeTransfers = transfers;
+			});
+
+			TransferService.list({status: [
 				"COMPLETED",
 				"CANCELLED",
 			]}).then(function(transfers) {
-				vm.activeTransfers = transfers;
+				vm.historicTransfers = transfers;
 			});
 		}
 	})(window.angular);
 	</script>
 
 	<style>
-	body {
-		background-color: #f2f5f7;
-	}
-
 	.list-group-item > * {
 		margin-left: -2px;
 	}
@@ -115,7 +116,7 @@
 	}
 	</style>
 </head>
-<body ng-app="ExampleApp">
+<body ng-app="ExampleApp" class="bg-default">
 	<nav-bar></nav-bar>
 	<div ng-controller="PageController as ctrl">
 		<div class="bg-primary p-t-4 p-b-5">
@@ -148,7 +149,7 @@
 					<div class="row">
 						<div class="col-md-6 col-lg-8">
 							<h3 class="panel-title">
-								Transfers
+								In progress
 							</h3>
 						</div>
 						<div class="col-md-6 col-lg-4 m-b-1">
@@ -165,12 +166,24 @@
 				<transfer-list
 					transfers="ctrl.activeTransfers"
 					currencies="ctrl.currencies"
-					inactive="true">
+					inactive="false">
 				</transfer-list>
 			</div>
 
-			<div class="p-l-panel p-r-panel">
-				<pagination page="1" total="200"></pagination>
+			<div class="panel">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Recent
+					</h3>
+				</div>
+				<transfer-list
+					transfers="ctrl.historicTransfers"
+					currencies="ctrl.currencies"
+					inactive="true">
+				</transfer-list>
+				<div class="panel-footer">
+					<pagination page="1" total="200"></pagination>
+				</div>
 			</div>
 		</div>
 	</div>
