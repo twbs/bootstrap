@@ -41,7 +41,7 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   </div>
   <div class="form-group">
     <label for="exampleSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleSelect2">
+    <select multiple size="5" class="form-control" id="exampleSelect2">
       <option>1</option>
       <option>2</option>
       <option>3</option>
