@@ -26,7 +26,7 @@ Here's what you need to know before getting started with the navbar:
 Navbars come with built-in support for a handful of sub-components. Mix and match from the following as you need:
 
 - `.navbar-brand` for your company, product, or project name
-- `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
+- `.navbar-nav` for a full-width and lightweight navigation (including support for dropdowns)
 - `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
 
 Here's an example of all the sub-components included in a default, light navbar:
