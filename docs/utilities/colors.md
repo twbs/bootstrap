@@ -36,6 +36,7 @@ Similar to the contextual text color classes, easily set the background of an el
 <div class="bg-warning text-white">Etiam porta sem malesuada magna mollis euismod.</div>
 <div class="bg-danger text-white">Donec ullamcorper nulla non metus auctor fringilla.</div>
 <div class="bg-inverse text-white">Cras mattis consectetur purus sit amet fermentum.</div>
+<div class="bg-faded">Cras mattis consectetur purus sit amet fermentum.</div>
 {% endexample %}
 
 {% callout info %}
