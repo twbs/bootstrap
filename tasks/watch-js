@@ -1,0 +1,1 @@
+nodemon -e js -w public/js -x "npm run build-js"
