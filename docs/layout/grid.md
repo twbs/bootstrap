@@ -91,7 +91,7 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
         <td colspan="4">Collapsed to start, horizontal above breakpoints</td>
       </tr>
       <tr>
-        <th class="text-nowrap" scope="row">Container width</th>
+        <th class="text-nowrap" scope="row">Max container width</th>
         <td>None (auto)</td>
         <td>540px</td>
         <td>720px</td>
