@@ -710,19 +710,19 @@ Ensure that an alternative indication of state is also provided. For instance, y
 
 {% example html %}
 <div class="form-group has-success">
-  <label class="col-form-label" for="inputSuccess1">Input with success</label>
+  <label class="form-control-label" for="inputSuccess1">Input with success</label>
   <input type="text" class="form-control form-control-success" id="inputSuccess1">
   <div class="form-control-feedback">Success! You've done it.</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-warning">
-  <label class="col-form-label" for="inputWarning1">Input with warning</label>
+  <label class="form-control-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
   <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-danger">
-  <label class="col-form-label" for="inputDanger1">Input with danger</label>
+  <label class="form-control-label" for="inputDanger1">Input with danger</label>
   <input type="text" class="form-control form-control-danger" id="inputDanger1">
   <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
