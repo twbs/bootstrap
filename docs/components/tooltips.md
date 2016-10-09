@@ -103,6 +103,11 @@ Hover over the buttons below to see their tooltips.
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
   Tooltip on left
 </button>
+{% endhighlight %}
+
+And with custom HTML added:
+
+{% highlight html %}
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
   Tooltip with HTML
 </button>
