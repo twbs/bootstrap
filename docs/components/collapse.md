@@ -46,7 +46,7 @@ Extend the default collapse behavior to create an accordion.
 <div id="accordion" role="tablist" aria-multiselectable="true">
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
-      <h5 class="m-b-0">
+      <h5 class="mb-0">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           Collapsible Group Item #1
         </a>
@@ -58,7 +58,7 @@ Extend the default collapse behavior to create an accordion.
   </div>
   <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
-      <h5 class="m-b-0">
+      <h5 class="mb-0">
         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           Collapsible Group Item #2
         </a>
@@ -70,7 +70,7 @@ Extend the default collapse behavior to create an accordion.
   </div>
   <div class="card">
     <div class="card-header" role="tab" id="headingThree">
-      <h5 class="m-b-0">
+      <h5 class="mb-0">
         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           Collapsible Group Item #3
         </a>

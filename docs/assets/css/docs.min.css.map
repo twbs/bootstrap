@@ -34,7 +34,7 @@
 		"../../../scss/mixins/_clearfix.scss",
 		"../../../scss/mixins/_grid-framework.scss",
 		"../../../scss/mixins/_grid.scss",
-		"../../../scss/mixins/_pulls.scss",
+		"../../../scss/mixins/_float.scss",
 		"../scss/_booticon.scss",
 		"../scss/_nav.scss",
 		"../scss/_masthead.scss",

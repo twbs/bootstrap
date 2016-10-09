@@ -48,7 +48,7 @@ Here's an example of all the sub-components included in a default, light navbar:
       <a class="nav-link" href="#">About</a>
     </li>
   </ul>
-  <form class="form-inline pull-xs-right">
+  <form class="form-inline float-xs-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
@@ -65,7 +65,7 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 </nav>
 
 <nav class="navbar navbar-light bg-faded">
-  <h1 class="navbar-brand m-b-0">Navbar</h1>
+  <h1 class="navbar-brand mb-0">Navbar</h1>
 </nav>
 
 {% endexample %}
@@ -130,7 +130,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-info" type="submit">Search</button>
     </form>
@@ -151,7 +151,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-secondary" type="submit">Search</button>
     </form>
@@ -172,7 +172,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
@@ -244,7 +244,7 @@ Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden con
 <nav class="navbar navbar-light bg-faded">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"></button>
   <div class="collapse" id="exCollapsingNavbar">
-    <div class="bg-inverse p-a-1">
+    <div class="bg-inverse p-1">
       <h4>Collapsed content</h4>
       <span class="text-muted">Toggleable via the navbar brand.</span>
     </div>
