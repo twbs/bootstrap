@@ -1,7 +1,7 @@
 // .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
-// .modal-content   - actual modal w/ bg and corners and shit
+// .modal-content   - actual modal w/ bg and corners and stuff
 
 
 // Kill the scroll on the body
@@ -22,7 +22,9 @@
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
-  -webkit-overflow-scrolling: touch;
+  // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
+  // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
+  // See also https://github.com/twbs/bootstrap/issues/17695
 
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {

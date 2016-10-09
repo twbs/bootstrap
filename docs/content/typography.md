@@ -1,10 +1,11 @@
 ---
 layout: docs
 title: Typography
+description: Documentation and examples for Bootstrap typography, including global settings, body text, lists, and more.
 group: content
 ---
 
-Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/components/utilities/).
+Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/utilities/).
 
 ## Contents
 
@@ -15,7 +16,7 @@ Bootstrap includes simple and easily customized typography for headings, body te
 
 Bootstrap sets basic global display, typography, and link styles. Specifically, we:
 
-- Use a [native font stack](/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
+- Use a [native font stack]({{ site.baseurl }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
 - Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
 - Set the global link color via `$link-color` and apply link underlines only on `:hover`.
 - Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
@@ -149,7 +150,7 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/components/utilities/#text-alignment).
+Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/utilities/typography/#text-alignment).
 
 ## Abbreviations
 

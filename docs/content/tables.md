@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Tables
+description: Documentation and examples for styling tables with Bootstrap.
 group: content
 ---
 
@@ -13,7 +14,7 @@ Due to the widespread use of tables across third-party widgets like calendars an
 
 ## Examples
 
-Using the most basic table markup, here's how `.table`-based tables look in Bootstrap.
+Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. **All table styles are inherited in Bootstrap 4**, meaning any nested tables will be styled in the same manner as the parent.
 
 {% example html %}
 <table class="table">
@@ -575,7 +576,7 @@ Use contextual classes to color table rows or individual cells.
 </tr>
 {% endhighlight %}
 
-Regular table background variants are not available with the inverse table, however, you may use [text or background utilities](/components/utilities/#contextual-colors-and-backgrounds) to achieve similar styles.
+Regular table background variants are not available with the inverse table, however, you may use [text or background utilities]({{ site.baseurl }}/utilities/colors/) to achieve similar styles.
 
 <div class="bd-example">
   <table class="table table-inverse">

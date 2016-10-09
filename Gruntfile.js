@@ -1,6 +1,6 @@
 /*!
  * Bootstrap's Gruntfile
- * http://getbootstrap.com
+ * https://getbootstrap.com
  * Copyright 2013-2016 The Bootstrap Authors
  * Copyright 2013-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -170,6 +170,7 @@ module.exports = function (grunt) {
         compatibility: 'ie9',
         keepSpecialComments: '*',
         sourceMap: true,
+        // sourceMapInlineSources: true,
         advanced: false
       },
       core: {
@@ -385,7 +386,7 @@ module.exports = function (grunt) {
     require('./grunt/bs-sass-compile/' + sassCompilerName + '.js')(grunt);
   })(process.env.TWBS_SASS || 'libsass');
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
-  grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
+  grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
 
   grunt.registerTask('dist-css', ['sass-compile', 'exec:postcss', 'cssmin:core', 'cssmin:docs']);
 

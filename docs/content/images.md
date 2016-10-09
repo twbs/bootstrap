@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Images
+description: Documentation and examples for styling images with Bootstrap.
 group: content
 ---
 
@@ -43,7 +44,7 @@ In addition to our [border-radius utilities]({{ site.baseurl }}/utilities/border
 
 ## Aligning images
 
-Align images with the [helper float classes]({{ site.baseurl }}/components/utilities/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/components/utilities/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/components/utilities/#horizontal-centering).
+Align images with the [helper float classes]({{ site.baseurl }}/utilities/responsive-helpers/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
 
 <div class="bd-example bd-example-images">
   <img data-src="holder.js/200x200" class="rounded float-xs-left" alt="A generic square placeholder image with rounded corners">

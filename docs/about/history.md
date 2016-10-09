@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: History
+description: A brief overview of the history of Bootstrap.
 group: about
 redirect_from: "/about/"
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Navbar
+description: Documentation and examples for Bootstrap's powerful, responsive navigation header.
 group: components
 ---
 
@@ -26,7 +27,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 
 - `.navbar-brand` for your company, product, or project name
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
-- `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsing-content) behaviors.
+- `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
 
 Here's an example of all the sub-components included in a default, light navbar:
 
@@ -241,9 +242,7 @@ Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden con
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
-    &#9776;
-  </button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"></button>
   <div class="collapse" id="exCollapsingNavbar">
     <div class="bg-inverse p-1">
       <h4>Collapsed content</h4>
@@ -257,9 +256,7 @@ For more complex navbar patterns, like those used in Bootstrap v3, use the `.nav
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
-    &#9776;
-  </button>
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation"></button>
   <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
     <a class="navbar-brand" href="#">Responsive navbar</a>
     <ul class="nav navbar-nav">

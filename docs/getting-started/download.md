@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Download
+description: Download Bootstrap's compiled CSS and JavaScript, source code, or include it with your favorite package manager.
 group: getting-started
 ---
 
@@ -36,7 +37,7 @@ Bootstrap's `package.json` contains some additional metadata under the following
 
 ### RubyGems
 
-Install Bootstrap in your Ruby apps using [Bundler](http://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](http://bundler.io/gemfile.html):
+Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/gemfile.html):
 
 {% highlight ruby %}
 gem 'bootstrap', '~> 4.0.0.alpha3'
@@ -66,7 +67,7 @@ $ composer require twbs/bootstrap:{{ site.current_version }}
 
 ### Bower
 
-Install and manage Bootstrap's Sass and JavaScript using [Bower](http://bower.io).
+Install and manage Bootstrap's Sass and JavaScript using [Bower](https://bower.io).
 
 {% highlight bash %}
 $ bower install bootstrap#v{{ site.current_version }}

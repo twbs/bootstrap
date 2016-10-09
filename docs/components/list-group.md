@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: List group
+description: Learn about Bootstrap's list group component for rendering series of related content.
 group: components
 ---
 

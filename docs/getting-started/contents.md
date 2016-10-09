@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Contents
+description: Learn about what's included in Bootstrap's precompiled and source code directories.
 group: getting-started
 ---
 

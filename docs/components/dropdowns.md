@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Dropdowns
+description: Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin.
 group: components
 ---
 
@@ -36,7 +37,7 @@ And with `<a>` elements:
 
 {% example html %}
 <div class="dropdown open">
-  <a class="btn btn-secondary dropdown-toggle" href="http://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown link
   </a>
 
