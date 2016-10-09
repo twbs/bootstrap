@@ -12,7 +12,7 @@ module.exports = {
     browsers: [
       //
       // Official browser support policy:
-      // http://v4-alpha.getbootstrap.com/getting-started/browsers-devices/#supported-browsers
+      // https://v4-alpha.getbootstrap.com/getting-started/browsers-devices/#supported-browsers
       //
       'Chrome >= 35', // Exact version number here is kinda arbitrary
       // Rather than using Autoprefixer's native "Firefox ESR" version specifier string,

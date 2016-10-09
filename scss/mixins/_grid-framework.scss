@@ -21,6 +21,11 @@
   @each $breakpoint in map-keys($breakpoints) {
     $breakpoint-counter: ($breakpoint-counter + 1);
 
+    // Allow columns to stretch full width below their breakpoints
+    .col-#{$breakpoint} {
+      @extend %grid-column;
+    }
+
     @for $i from 1 through $columns {
       .col-#{$breakpoint}-#{$i} {
         @extend %grid-column;
@@ -31,11 +36,9 @@
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       @if $enable-flex {
         .col-#{$breakpoint} {
-          position: relative;
           flex-basis: 0;
           flex-grow: 1;
           max-width: 100%;
-          min-height: 1px;
         }
       }
 

@@ -11,16 +11,16 @@ Use the included `.figure` , `.figure-img` and `.figure-caption` classes to prov
 
 {% example html %}
 <figure class="figure">
-  <img data-src="holder.js/400x300" class="figure-img img-fluid img-rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <img data-src="holder.js/400x300" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
   <figcaption class="figure-caption">A caption for the above image.</figcaption>
 </figure>
 {% endexample %}
 
-Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl }}/components/utilities/#text-alignment).
+Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl }}/utilities/typography/#text-alignment).
 
 {% example html %}
 <figure class="figure">
-  <img data-src="holder.js/400x300" class="figure-img img-fluid img-rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+  <img data-src="holder.js/400x300" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
   <figcaption class="figure-caption text-xs-right">A caption for the above image.</figcaption>
 </figure>
 {% endexample %}

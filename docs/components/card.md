@@ -142,7 +142,7 @@ Using custom widths:
 
 ## Text alignment
 
-You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.baseurl }}/components/utilities/#text-alignment).
+You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.baseurl }}/utilities/typography/#text-alignment).
 
 {% example html %}
 <div class="card card-block">
@@ -231,7 +231,7 @@ Use Bootstrap's nav pills or tabs within a card header. Be sure to always includ
 {% example html %}
 <div class="card text-xs-center">
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs pull-xs-left">
+    <ul class="nav nav-tabs card-header-tabs float-xs-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -254,7 +254,7 @@ Use Bootstrap's nav pills or tabs within a card header. Be sure to always includ
 {% example html %}
 <div class="card text-xs-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills pull-xs-left">
+    <ul class="nav nav-pills card-header-pills float-xs-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -435,7 +435,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
 
 ## Groups
 
-Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode]({{ site.baseurl }}/getting-started/flexbox) can switch that to use `display: flex;` and provide the same effect.
+Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode]({{ site.baseurl }}/getting-started/flexbox/) can switch that to use `display: flex;` and provide the same effect.
 
 Only applies to small devices and above.
 
