@@ -307,13 +307,23 @@ select.form-control-lg {
 
 .form-inline {
 
+  @if $enable-flex {
+    display: flex;
+    flex-flow: row wrap;
+  }
   // Kick in the inline
   @include media-breakpoint-up(sm) {
     // Inline-block all the things for "inline"
     .form-group {
-      display: inline-block;
+      @if $enable-flex {
+        display: flex;
+        flex: 0 0 auto;
+        flex-flow: row wrap;
+      } @else {
+        display: inline-block;
+        vertical-align: middle;
+      }
       margin-bottom: 0;
-      vertical-align: middle;
     }
 
     // Allow folks to *not* use `.form-group`
@@ -329,19 +339,26 @@ select.form-control-lg {
     }
 
     .input-group {
-      display: inline-table;
-      vertical-align: middle;
+      @if $enable-flex {
+        //do nothing
+      } @else {
+        display: inline-table;
+        vertical-align: middle;
 
-      .input-group-addon,
-      .input-group-btn,
-      .form-control {
-        width: auto;
+        .input-group-addon,
+        .input-group-btn,
+        .form-control {
+          width: auto;
+        }
       }
+
     }
 
     // Input groups need that 100% width though
     .input-group > .form-control {
-      width: 100%;
+      @if not $enable-flex {
+        width: 100%;
+      }
     }
 
     .form-control-label {
