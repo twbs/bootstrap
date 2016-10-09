@@ -307,7 +307,6 @@ Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden con
 <nav class="navbar navbar-light bg-faded">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"></button>
   <div class="collapse" id="exCollapsingNavbar">
-    <div class="bg-inverse text-muted p-a-1">
     <div class="bg-inverse text-muted p-1">
       <h4>Collapsed content</h4>
       <span class="text-muted">Toggleable via the navbar brand.</span>
