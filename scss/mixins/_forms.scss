@@ -19,7 +19,7 @@
 
     @if $enable-rounded {
       &:focus {
-        box-shadow: $input-box-shadow, 0 0 6px lighten($color, 20%)
+        box-shadow: $input-box-shadow, 0 0 6px lighten($color, 20%);
       }
     }
   }
