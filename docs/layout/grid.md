@@ -112,7 +112,7 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Gutter width</th>
-        <td colspan="5">1.875rem / 30px (15px on each side of a column)</td>
+        <td colspan="5">30px (15px on each side of a column)</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Nestable</th>
