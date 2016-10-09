@@ -64,11 +64,11 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
         <th></th>
         <th class="text-xs-center">
           Extra small<br>
-          <small>&lt;544px</small>
+          <small>&lt;576px</small>
         </th>
         <th class="text-xs-center">
           Small<br>
-          <small>&ge;544px</small>
+          <small>&ge;576px</small>
         </th>
         <th class="text-xs-center">
           Medium<br>
@@ -93,9 +93,9 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       <tr>
         <th class="text-nowrap" scope="row">Container width</th>
         <td>None (auto)</td>
-        <td>576px</td>
+        <td>540px</td>
         <td>720px</td>
-        <td>940px</td>
+        <td>960px</td>
         <td>1140px</td>
       </tr>
       <tr>
@@ -154,7 +154,7 @@ $grid-breakpoints: (
   // Extra small screen / phone
   xs: 0,
   // Small screen / phone
-  sm: 544px,
+  sm: 576px,
   // Medium screen / tablet
   md: 768px,
   // Large screen / desktop
@@ -164,9 +164,9 @@ $grid-breakpoints: (
 );
 
 $container-max-widths: (
-  sm: 576px,
+  sm: 540px,
   md: 720px,
-  lg: 940px,
+  lg: 960px,
   xl: 1140px
 );
 {% endhighlight %}
@@ -512,7 +512,7 @@ $grid-breakpoints: (
 $container-max-widths: (
   sm: 420px,
   md: 720px,
-  lg: 940px
+  lg: 960px
 );
 {% endhighlight %}
 
