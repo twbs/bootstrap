@@ -30,10 +30,6 @@
     border-color: $color;
     background-color: lighten($color, 40%);
   }
-  // Optional feedback icon
-  .form-control-feedback {
-    color: $color;
-  }
 }
 
 // Form control focus state
