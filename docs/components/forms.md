@@ -516,14 +516,14 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 
 ## Static controls
 
-When you need to place plain text next to a form label within a form, use the `.form-control-static` class on a `<p>`.
+When you need to place plain text next to a form label within a form, use the `.form-control-static` class on an element of your choice. Using an element like `<p>` with a default margin? Be sure to use a margin override (as shown below).
 
 {% example html %}
 <form>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <p class="form-control-static">email@example.com</p>
+      <p class="form-control-static mb-0">email@example.com</p>
     </div>
   </div>
   <div class="form-group row">
