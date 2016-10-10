@@ -137,6 +137,8 @@
 .custom-select {
   display: inline-block;
   max-width: 100%;
+  $select-border-width: ($border-width * 2);
+  height: calc(#{$input-height} - #{$select-border-width});
   padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
   padding-right: $custom-select-padding-x \9;
   color: $custom-select-color;
