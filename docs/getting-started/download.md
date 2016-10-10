@@ -7,10 +7,25 @@ group: getting-started
 
 **Bootstrap v{{ site.current_version}}** is available for download in several ways, including some of your favorite package managers. Choose from the options below to snag just what you need.
 
+### Bootstrap CSS and JS
+
+**Download Bootstrap's ready-to-use code to easily drop into your project.** Includes compiled and minified versions of all our CSS bundles (default, flexbox-enabled, grid only, or Reboot only) and JavaScript plugins. Doesn't include documentation or source files.
+
+<a href="{{ site.download.dist }}" class="btn btn-lg btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download Bootstrap</a>
+
 ### Source files
-Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/getting-started/build-tools/#tooling-setup).**
+**Want to compile Bootstrap with your project's asset pipeline?** Choose this option to download our source Sass, JavaScript, and documentation files. Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/getting-started/build-tools/#tooling-setup).
 
 <a href="{{ site.download.source }}" class="btn btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
+
+### Bootstrap CDN
+
+Skip the download and use the Bootstrap CDN to deliver Bootstrap's compiled CSS and JS to your project.
+
+{% highlight html %}
+<link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+{% endhighlight %}
 
 ## Package managers
 
@@ -86,27 +101,3 @@ Install-Package bootstrap.sass -Pre
 {% endhighlight %}
 
 The `-Pre` is required until Bootstrap v4 has a stable release.
-
-{% comment %}
-## Custom builds
-
-Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag just what you need.
-
-<div class="row">
-  <div class="col-sm-4">
-    <h3>Reboot</h3>
-    <p>Includes variables/mixins, Normalize, and Reboot. No JavaScript.</p>
-    <a class="btn btn-bs btn-outline" href="#">Download</a>
-  </div>
-  <div class="col-sm-4">
-    <h3>Grid only</h3>
-    <p>Includes variables/mixins and our grid system. No JavaScript.</p>
-    <a class="btn btn-bs btn-outline" href="#">Download</a>
-  </div>
-  <div class="col-sm-4">
-    <h3>Flexbox</h3>
-    <p>All of Bootstrap with flexbox enabled and <strong>lower browser support</strong>.</p>
-    <a class="btn btn-bs btn-outline" href="#">Download</a>
-  </div>
-</div>
-{% endcomment %}
