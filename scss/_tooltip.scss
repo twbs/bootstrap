@@ -80,7 +80,7 @@
   background-color: $tooltip-bg;
   @include border-radius($border-radius);
 
-  &:before {
+  &::before {
     position: absolute;
     width: 0;
     height: 0;
