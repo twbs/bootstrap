@@ -39,41 +39,43 @@
   "license": "MIT",
   "dependencies": {
     "jquery": "1.9.1 - 3",
-    "tether": "^1.1.1"
+    "tether": "^1.3.7"
   },
   "devDependencies": {
-    "autoprefixer": "^6.0.3",
-    "babel-eslint": "^6.0.4",
-    "eslint": "^3.0.0",
+    "autoprefixer": "^6.5.0",
+    "babel-eslint": "^7.0.0",
+    "babel-plugin-transform-es2015-modules-strip": "^0.1.0",
+    "babel-preset-es2015": "^6.16.0",
+    "eslint": "^3.7.1",
     "grunt": "^1.0.1",
-    "grunt-babel": "^5.0.3",
-    "grunt-build-control": "^0.7.0",
+    "grunt-babel": "^6.0.0",
+    "grunt-build-control": "^0.7.1",
     "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-compress": "^1.1.0",
-    "grunt-contrib-concat": "^1.0.0",
-    "grunt-contrib-connect": "^1.0.0",
+    "grunt-contrib-compress": "^1.3.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^1.0.0",
-    "grunt-contrib-qunit": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-qunit": "^1.2.0",
     "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-uglify": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-exec": "^1.0.0",
-    "grunt-html": "^8.0.1",
-    "grunt-jekyll": "^0.4.2",
-    "grunt-sass": "^1.0.0",
+    "grunt-exec": "^1.0.1",
+    "grunt-html": "^8.0.2",
+    "grunt-jekyll": "^0.4.4",
+    "grunt-sass": "^1.2.1",
     "grunt-saucelabs": "^9.0.0",
-    "grunt-scss-lint": "^0.3.8",
+    "grunt-scss-lint": "^0.5.0",
     "grunt-stamp": "^0.3.0",
     "htmlhint": "^0.9.13",
     "is-travis": "^1.0.0",
-    "jscs": "^3.0.4",
-    "load-grunt-tasks": "^3.4.0",
-    "postcss-cli": "^2.5.2",
+    "jscs": "^3.0.7",
+    "load-grunt-tasks": "^3.5.2",
+    "postcss-cli": "^2.6.0",
     "postcss-flexbugs-fixes": "^2.0.0",
-    "shelljs": "^0.7.0",
-    "shx": "^0.1.2",
-    "time-grunt": "^1.2.1"
+    "shelljs": "^0.7.4",
+    "shx": "^0.1.4",
+    "time-grunt": "^1.4.0"
   },
   "engines": {
     "node": ">=4"
@@ -100,7 +102,7 @@
       }
     },
     "dependencies": {
-      "jquery": "1.9.1 - 3"
+      "jquery": "3"
     }
   }
 }
