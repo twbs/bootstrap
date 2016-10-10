@@ -25,7 +25,7 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.org/package/bootstrap):
 
 {% highlight bash %}
-$ npm install bootstrap@{{ site.current_version }}
+npm install bootstrap@{{ site.current_version }}
 {% endhighlight %}
 
 `require('bootstrap')` will load all of Bootstrap's jQuery plugins onto the jQuery object. The `bootstrap` module itself does not export anything. You can manually load Bootstrap's jQuery plugins individually by loading the `/js/*.js` files under the package's top-level directory.
@@ -46,7 +46,7 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 Alternatively, if you're not using Bundler, you can install the gem by running this command:
 
 {% highlight bash %}
-$ gem install bootstrap -v 4.0.0.alpha3
+gem install bootstrap -v 4.0.0.alpha3
 {% endhighlight %}
 
 [See the gem's README](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md) for further details.
@@ -54,7 +54,7 @@ $ gem install bootstrap -v 4.0.0.alpha3
 ### Meteor
 
 {% highlight bash %}
-$ meteor add twbs:bootstrap@={{ site.current_version }}
+meteor add twbs:bootstrap@={{ site.current_version }}
 {% endhighlight %}
 
 ### Composer
@@ -62,7 +62,7 @@ $ meteor add twbs:bootstrap@={{ site.current_version }}
 You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org):
 
 {% highlight bash %}
-$ composer require twbs/bootstrap:{{ site.current_version }}
+composer require twbs/bootstrap:{{ site.current_version }}
 {% endhighlight %}
 
 ### Bower
@@ -70,7 +70,7 @@ $ composer require twbs/bootstrap:{{ site.current_version }}
 Install and manage Bootstrap's Sass and JavaScript using [Bower](https://bower.io).
 
 {% highlight bash %}
-$ bower install bootstrap#v{{ site.current_version }}
+bower install bootstrap#v{{ site.current_version }}
 {% endhighlight %}
 
 ### NuGet
@@ -78,8 +78,11 @@ $ bower install bootstrap#v{{ site.current_version }}
 If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org):
 
 {% highlight powershell %}
-PM> Install-Package bootstrap -Pre
-PM> Install-Package bootstrap.sass -Pre
+Install-Package bootstrap -Pre
+{% endhighlight %}
+
+{% highlight powershell %}
+Install-Package bootstrap.sass -Pre
 {% endhighlight %}
 
 The `-Pre` is required until Bootstrap v4 has a stable release.

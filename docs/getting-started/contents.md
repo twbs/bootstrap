@@ -13,7 +13,7 @@ Once downloaded, unzip the compressed folder and you'll see something like this:
 
 <!-- NOTE: This info is intentionally duplicated in the README. Copy any changes made here over to the README too. -->
 
-{% highlight bash %}
+{% highlight plaintext %}
 bootstrap/
 ├── css/
 │   ├── bootstrap.css
@@ -31,7 +31,7 @@ This is the most basic form of Bootstrap: precompiled files for quick drop-in us
 
 The Bootstrap source code download includes the precompiled CSS and JavaScript assets, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:
 
-{% highlight bash %}
+{% highlight plaintext %}
 bootstrap/
 ├── dist/
 │   ├── css/
