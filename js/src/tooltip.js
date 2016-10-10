@@ -610,7 +610,7 @@ const Tooltip = (($) => {
         let _config = typeof config === 'object' ?
           config : null
 
-        if (!data && /destroy|hide/.test(config)) {
+        if (!data && /dispose|hide/.test(config)) {
           return
         }
 
