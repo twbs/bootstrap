@@ -19,10 +19,16 @@ The `.pos-f-t` class can be used to easily position elements at the top of the v
 {% endhighlight %}
 
 
-## Full width
+## Width and height
 
-Easily make an element as wide as its parent using the `.w-100` utility class, which sets `width: 100%`.
+Easily make an element as wide or as tall as its parent using the `.w-100` and `.h-100` utility classes.
 
 {% example html %}
 <img class="w-100" data-src="holder.js/200px100?outline=yes&text=Width%20%3D%20100%25" alt="Width = 100%">
+{% endexample %}
+
+{% example html %}
+<div style="height: 100px; background-color: rgba(255,0,0,0.1);">
+  <div class="h-100" style="width: 100px; background-color: rgba(0,0,255,0.1);">Full height</div>
+</div>
 {% endexample %}
