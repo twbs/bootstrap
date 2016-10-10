@@ -1181,7 +1181,7 @@ var Collapse = function ($) {
         $(_this5._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).trigger(Event.HIDDEN);
       };
 
-      this._element.style[dimension] = 0;
+      this._element.style[dimension] = '';
 
       if (!Util.supportsTransitionEnd()) {
         complete();
