@@ -2692,7 +2692,7 @@ var Tooltip = function ($) {
 
   var Default = {
     animation: true,
-    template: '<div class="tooltip" role="tooltip">' + '<div class="tooltip-arrow"></div>' + '<div class="tooltip-inner"></div></div>',
+    template: '<div class="tooltip" role="tooltip">' + '<div class="tooltip-inner"></div></div>',
     trigger: 'hover focus',
     title: '',
     delay: 0,
@@ -3269,7 +3269,7 @@ var Popover = function ($) {
     placement: 'right',
     trigger: 'click',
     content: '',
-    template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-title"></h3>' + '<div class="popover-content"></div></div>'
+    template: '<div class="popover" role="tooltip">' + '<h3 class="popover-title"></h3>' + '<div class="popover-content"></div></div>'
   });
 
   var DefaultType = $.extend({}, Tooltip.DefaultType, {
@@ -3283,8 +3283,7 @@ var Popover = function ($) {
 
   var Selector = {
     TITLE: '.popover-title',
-    CONTENT: '.popover-content',
-    ARROW: '.popover-arrow'
+    CONTENT: '.popover-content'
   };
 
   var Event = {

@@ -5569,10 +5569,11 @@ button.close {
   margin-top: -3px;
 }
 
-.tooltip.tooltip-top .tooltip-arrow, .tooltip.bs-tether-element-attached-bottom .tooltip-arrow {
+.tooltip.tooltip-top .tooltip-inner::before, .tooltip.bs-tether-element-attached-bottom .tooltip-inner::before {
   bottom: 0;
   left: 50%;
   margin-left: -5px;
+  content: "";
   border-width: 5px 5px 0;
   border-top-color: #000;
 }
@@ -5582,10 +5583,11 @@ button.close {
   margin-left: 3px;
 }
 
-.tooltip.tooltip-right .tooltip-arrow, .tooltip.bs-tether-element-attached-left .tooltip-arrow {
+.tooltip.tooltip-right .tooltip-inner::before, .tooltip.bs-tether-element-attached-left .tooltip-inner::before {
   top: 50%;
   left: 0;
   margin-top: -5px;
+  content: "";
   border-width: 5px 5px 5px 0;
   border-right-color: #000;
 }
@@ -5595,10 +5597,11 @@ button.close {
   margin-top: 3px;
 }
 
-.tooltip.tooltip-bottom .tooltip-arrow, .tooltip.bs-tether-element-attached-top .tooltip-arrow {
+.tooltip.tooltip-bottom .tooltip-inner::before, .tooltip.bs-tether-element-attached-top .tooltip-inner::before {
   top: 0;
   left: 50%;
   margin-left: -5px;
+  content: "";
   border-width: 0 5px 5px;
   border-bottom-color: #000;
 }
@@ -5608,10 +5611,11 @@ button.close {
   margin-left: -3px;
 }
 
-.tooltip.tooltip-left .tooltip-arrow, .tooltip.bs-tether-element-attached-right .tooltip-arrow {
+.tooltip.tooltip-left .tooltip-inner::before, .tooltip.bs-tether-element-attached-right .tooltip-inner::before {
   top: 50%;
   right: 0;
   margin-top: -5px;
+  content: "";
   border-width: 5px 0 5px 5px;
   border-left-color: #000;
 }
@@ -5625,7 +5629,7 @@ button.close {
   border-radius: 0.25rem;
 }
 
-.tooltip-arrow {
+.tooltip-inner::before {
   position: absolute;
   width: 0;
   height: 0;
@@ -5668,79 +5672,94 @@ button.close {
   margin-top: -10px;
 }
 
-.popover.popover-top .popover-arrow, .popover.bs-tether-element-attached-bottom .popover-arrow {
-  bottom: -11px;
+.popover.popover-top::before, .popover.popover-top::after, .popover.bs-tether-element-attached-bottom::before, .popover.bs-tether-element-attached-bottom::after {
   left: 50%;
-  margin-left: -11px;
-  border-top-color: rgba(0, 0, 0, 0.25);
   border-bottom-width: 0;
 }
 
-.popover.popover-top .popover-arrow::after, .popover.bs-tether-element-attached-bottom .popover-arrow::after {
-  bottom: 1px;
+.popover.popover-top::before, .popover.bs-tether-element-attached-bottom::before {
+  bottom: -11px;
+  margin-left: -11px;
+  border-top-color: rgba(0, 0, 0, 0.25);
+}
+
+.popover.popover-top::after, .popover.bs-tether-element-attached-bottom::after {
+  bottom: -10px;
   margin-left: -10px;
-  content: "";
   border-top-color: #fff;
-  border-bottom-width: 0;
 }
 
 .popover.popover-right, .popover.bs-tether-element-attached-left {
   margin-left: 10px;
 }
 
-.popover.popover-right .popover-arrow, .popover.bs-tether-element-attached-left .popover-arrow {
+.popover.popover-right::before, .popover.popover-right::after, .popover.bs-tether-element-attached-left::before, .popover.bs-tether-element-attached-left::after {
   top: 50%;
-  left: -11px;
-  margin-top: -11px;
-  border-right-color: rgba(0, 0, 0, 0.25);
   border-left-width: 0;
 }
 
-.popover.popover-right .popover-arrow::after, .popover.bs-tether-element-attached-left .popover-arrow::after {
-  bottom: -10px;
-  left: 1px;
-  content: "";
+.popover.popover-right::before, .popover.bs-tether-element-attached-left::before {
+  left: -11px;
+  margin-top: -11px;
+  border-right-color: rgba(0, 0, 0, 0.25);
+}
+
+.popover.popover-right::after, .popover.bs-tether-element-attached-left::after {
+  left: -10px;
+  margin-top: -10px;
   border-right-color: #fff;
-  border-left-width: 0;
 }
 
 .popover.popover-bottom, .popover.bs-tether-element-attached-top {
   margin-top: 10px;
 }
 
-.popover.popover-bottom .popover-arrow, .popover.bs-tether-element-attached-top .popover-arrow {
-  top: -11px;
+.popover.popover-bottom::before, .popover.popover-bottom::after, .popover.bs-tether-element-attached-top::before, .popover.bs-tether-element-attached-top::after {
   left: 50%;
-  margin-left: -11px;
   border-top-width: 0;
+}
+
+.popover.popover-bottom::before, .popover.bs-tether-element-attached-top::before {
+  top: -11px;
+  margin-left: -11px;
   border-bottom-color: rgba(0, 0, 0, 0.25);
 }
 
-.popover.popover-bottom .popover-arrow::after, .popover.bs-tether-element-attached-top .popover-arrow::after {
-  top: 1px;
+.popover.popover-bottom::after, .popover.bs-tether-element-attached-top::after {
+  top: -10px;
+  margin-left: -10px;
+  border-bottom-color: #f7f7f7;
+}
+
+.popover.popover-bottom .popover-title::before, .popover.bs-tether-element-attached-top .popover-title::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: block;
+  width: 20px;
   margin-left: -10px;
   content: "";
-  border-top-width: 0;
-  border-bottom-color: #fff;
+  border-bottom: 1px solid #f7f7f7;
 }
 
 .popover.popover-left, .popover.bs-tether-element-attached-right {
   margin-left: -10px;
 }
 
-.popover.popover-left .popover-arrow, .popover.bs-tether-element-attached-right .popover-arrow {
+.popover.popover-left::before, .popover.popover-left::after, .popover.bs-tether-element-attached-right::before, .popover.bs-tether-element-attached-right::after {
   top: 50%;
+  border-right-width: 0;
+}
+
+.popover.popover-left::before, .popover.bs-tether-element-attached-right::before {
   right: -11px;
   margin-top: -11px;
-  border-right-width: 0;
   border-left-color: rgba(0, 0, 0, 0.25);
 }
 
-.popover.popover-left .popover-arrow::after, .popover.bs-tether-element-attached-right .popover-arrow::after {
-  right: 1px;
-  bottom: -10px;
-  content: "";
-  border-right-width: 0;
+.popover.popover-left::after, .popover.bs-tether-element-attached-right::after {
+  right: -10px;
+  margin-top: -10px;
   border-left-color: #fff;
 }
 
@@ -5761,7 +5780,8 @@ button.close {
   padding: 9px 14px;
 }
 
-.popover-arrow, .popover-arrow::after {
+.popover::before,
+.popover::after {
   position: absolute;
   display: block;
   width: 0;
@@ -5770,11 +5790,12 @@ button.close {
   border-style: solid;
 }
 
-.popover-arrow {
+.popover::before {
+  content: "";
   border-width: 11px;
 }
 
-.popover-arrow::after {
+.popover::after {
   content: "";
   border-width: 10px;
 }
