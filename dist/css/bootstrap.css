@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v5.1.0 (http://bootstrap.transferwise.com)
+ * Bootstrap v5.1.2 (http://bootstrap.transferwise.com)
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
@@ -5419,6 +5419,7 @@ fieldset[disabled] .btn-input-inverse.active {
 .btn-lg .btn-input-inverse {
   font-weight: 600;
 }
+/* TODO Remove bootstrap-select rules after checking tw-currency-select */
 .form-group-sm .bootstrap-select .btn-default {
   padding: 4px 12px;
 }
@@ -5924,9 +5925,13 @@ tbody.collapse.in {
   border-width: 5px 5px 0;
   border-bottom-width: 0;
 }
+.btn-sm .caret,
+.input-group-sm .btn .caret {
+  top: 8px !important;
+}
 .btn-lg .caret,
 .input-group-lg .btn .caret {
-  top: 28px !important;
+  top: 27px !important;
 }
 .dropup .btn-lg .caret {
   border-width: 0 5px 5px;
@@ -10502,27 +10507,17 @@ li > .currency-flag:first-child,
 li > a > .currency-flag:first-child,
 li > .circle:first-child,
 li > a > .circle:first-child {
-  margin-right: 12px;
-  margin-left: -4px;
+  margin-right: 8px;
 }
 .btn .glyphicon:first-child,
 .btn .icon:first-child,
 .btn .currency-flag:first-child,
 .btn .circle:first-child {
-  margin-right: 11px;
-  margin-left: -3px;
+  margin-right: 8px;
 }
 li .circle {
   display: inline-block;
   vertical-align: bottom;
-}
-.currency-flag {
-  -webkit-box-shadow: 0 0 1px 0 rgba(0, 0, 0, .6);
-          box-shadow: 0 0 1px 0 rgba(0, 0, 0, .6);
-}
-.btn .currency-flag,
-.dropdown-menu li .currency-flag {
-  margin-top: 3px;
 }
 .btn .circle .icon,
 .dropdown-menu li .circle .icon {
@@ -10530,14 +10525,6 @@ li .circle {
   margin-top: 0;
   margin-right: 0;
   margin-left: 0;
-}
-.input-group-sm .btn .currency-flag,
-.btn-sm .currency-flag {
-  margin-top: 2px;
-}
-.input-group-lg .btn .currency-flag,
-.btn-lg .currency-flag {
-  margin-top: 7px;
 }
 .tw-select-transcluded a {
   color: #00b9ff !important;
@@ -10549,6 +10536,21 @@ li .circle {
 .tw-select-filter-link:hover,
 .tw-select-filter-link:active {
   background-color: #fff !important;
+}
+.btn-sm .icon {
+  margin-bottom: -4px;
+}
+.btn-lg .icon {
+  vertical-align: -3px;
+}
+.circle .icon {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.btn-lg .pull-left.icon,
+.input-group-lg .btn .pull-left.icon,
+.form-group-lg .btn .pull-left.icon {
+  margin-top: 2px !important;
 }
 .icon-sm {
   font-size: 16px;
@@ -11281,5 +11283,28 @@ a.circle.active:hover {
 }
 .icon-menu:before {
   content: "\e934";
+}
+.currency-flag {
+  -webkit-box-shadow: 0 0 1px 0 rgba(0, 0, 0, .6);
+          box-shadow: 0 0 1px 0 rgba(0, 0, 0, .6);
+}
+.btn .currency-flag,
+.dropdown-menu li .currency-flag {
+  vertical-align: -3px;
+}
+.btn-sm .currency-flag,
+.form-group-sm .btn .currency-flag,
+.input-group-sm .btn .currency-flag {
+  vertical-align: -4px;
+}
+.btn-lg .currency-flag,
+.form-group-lg .btn .currency-flag,
+.input-group-lg .btn .currency-flag {
+  vertical-align: 0;
+}
+.btn-lg .pull-left.currency-flag,
+.input-group-lg .btn .pull-left.currency-flag,
+.form-group-lg .btn .pull-left.currency-flag {
+  margin-top: 6px !important;
 }
 /*# sourceMappingURL=bootstrap.css.map */
