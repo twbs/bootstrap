@@ -18,6 +18,12 @@
 			{value: 'aud', label: 'AUD', note: 'Australian Dollar', currency: 'AUD'}
 		];
 
+		this.circles = [
+			{value: '1', label: 'Image', circleImage: "../assets/img/mike.jpg"},
+			{value: '2', label: 'Initials', circleText: "JD"},
+			{value: '3', label: 'Icon', circleIcon: "icon-globe"}
+		];
+
 		this.accounts = [
 			{value: '1', label: 'Bob Smith', note: "GBP", secondary: 'Account ending 1234', circleImage: "../assets/img/mike.jpg"},
 			{value: '2', label: 'James Davies', note: "GBP", secondary: 'Account ending 9876', circleText: "JD"},

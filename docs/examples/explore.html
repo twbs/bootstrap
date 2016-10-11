@@ -278,7 +278,6 @@
 											ng-required="true"></tw-select>
 									</div>
 								</div>
-
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="control-label">Detailed label</label>
@@ -349,8 +348,8 @@
 												$
 											</span>
 											<input class="form-control text-xs-right" placeholder=".input-group-lg" />
-											<span class="input-group-addon">
-												USD
+											<span class="input-group-btn">
+												<button class="btn btn-primary">Update</button>
 											</span>
 										</div>
 									</div>
@@ -366,6 +365,31 @@
 											ng-required="true"></tw-select>
 									</div>
 								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">Icon select</label>
+										<tw-select options="ctrl.options.icons" tw-focusable
+											ng-model="ctrl.icon"
+											ng-required="true"></tw-select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group input-group-lg">
+										<label class="control-label">Icon select</label>
+										<tw-select options="ctrl.options.icons" tw-focusable
+											ng-model="ctrl.icon"
+											ng-required="true"></tw-select>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group input-group-lg">
+										<label class="control-label">Circle select</label>
+										<tw-select options="ctrl.options.circles" tw-focusable
+											ng-model="ctrl.circle"
+											ng-required="true"></tw-select>
+									</div>
+								</div>
 							</div>
 						</form>
 						<div class="row m-b-3">
@@ -373,7 +397,38 @@
 								<button class="btn btn-default btn-block">Send to Facebook</button>
 							</div>
 							<div class="col-sm-6">
-								<button class="btn btn-primary btn-block"><i class="icon icon-globe"></i>Send by email</button>
+								<button class="btn btn-primary btn-block">Send by email</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title">Buttons</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-6 m-b-3">
+								<button class="btn btn-sm btn-default btn-block">
+									<i class="icon icon-globe"></i>.btn-sm .icon
+								</button>
+								<button class="btn btn-default btn-block">
+									<i class="icon icon-globe"></i>.btn .icon
+								</button>
+								<button class="btn btn-lg btn-default btn-block">
+									<i class="icon icon-globe"></i>.btn-lg .icon
+								</button>
+							</div>
+							<div class="col-md-6 m-b-3">
+								<button class="btn btn-sm btn-default btn-block">
+									<i class="currency-flag currency-flag-gbp"></i>.btn-sm .currency-flag
+								</button>
+								<button class="btn btn-default btn-block">
+									<i class="currency-flag currency-flag-gbp"></i>.btn .currency-flag
+								</button>
+								<button class="btn btn-lg btn-default btn-block">
+									<i class="currency-flag currency-flag-gbp"></i>.btn-lg .currency-flag
+								</button>
 							</div>
 						</div>
 					</div>
