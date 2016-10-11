@@ -323,7 +323,11 @@
 												<tw-select options="ctrl.currencies" tw-focusable
 													ng-model="ctrl.currency"
 													ng-required="true"
-													config="ctrl.currencySelectConfig"></tw-select>
+													size="lg"
+													inverse="true"
+													dropdown-right="xs"
+													dropdown-width="lg"
+													hide-note="true"></tw-select>
 											</span>
 										</div>
 									</div>
@@ -374,11 +378,12 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<div class="form-group input-group-lg">
+									<div class="form-group">
 										<label class="control-label">Icon select</label>
 										<tw-select options="ctrl.options.icons" tw-focusable
 											ng-model="ctrl.icon"
-											ng-required="true"></tw-select>
+											ng-required="true"
+											size="lg"></tw-select>
 									</div>
 								</div>
 
@@ -404,7 +409,7 @@
 				</div>
 				<div class="panel">
 					<div class="panel-heading">
-						<h3 class="panel-title">Buttons</h3>
+						<h3 class="panel-title">Icon and flag buttons</h3>
 					</div>
 					<div class="panel-body">
 						<div class="row">
@@ -431,6 +436,30 @@
 								</button>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-md-6 m-b-3">
+								<button class="btn btn-sm btn-default btn-block">
+									<i class="icon icon-globe pull-xs-left"></i>.btn-sm .icon
+								</button>
+								<button class="btn btn-default btn-block">
+									<i class="icon icon-globe pull-xs-left"></i>.btn .icon
+								</button>
+								<button class="btn btn-lg btn-default btn-block">
+									<i class="icon icon-globe pull-xs-left"></i>.btn-lg .icon
+								</button>
+							</div>
+							<div class="col-md-6 m-b-3">
+								<button class="btn btn-sm btn-default btn-block">
+									<i class="currency-flag currency-flag-gbp pull-xs-left"></i>.btn-sm .currency-flag
+								</button>
+								<button class="btn btn-default btn-block">
+									<i class="currency-flag currency-flag-gbp pull-xs-left"></i>.btn .currency-flag
+								</button>
+								<button class="btn btn-lg btn-default btn-block">
+									<i class="currency-flag currency-flag-gbp pull-xs-left"></i>.btn-lg .currency-flag
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="panel">
@@ -451,8 +480,11 @@
 												ng-model="ctrl.currency1"
 												ng-required="true"
 												filter="Search for currency / country"
-												config="ctrl.currencySelectConfig"
-												size="lg"></tw-select>
+												size="lg"
+												inverse="true"
+												dropdown-right="xs"
+												dropdown-width="lg"
+												hide-note="true"></tw-select>
 										</span>
 									</div>
 								</div>
@@ -480,7 +512,11 @@
 												ng-model="ctrl.currency2"
 												ng-required="true"
 												filter="Search for currency / country"
-												config="ctrl.currencySelectConfig"></tw-select>
+												size="lg"
+												inverse="true"
+												dropdown-right="xs"
+												dropdown-width="lg"
+												hide-note="true"></tw-select>
 										</span>
 									</div>
 								</div>
