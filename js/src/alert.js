@@ -121,7 +121,7 @@ const Alert = (($) => {
         .emulateTransitionEnd(TRANSITION_DURATION)
     }
 
-    _destroyElement(element) {
+    _destroyElement(element2) {
       $(element)
         .detach()
         .trigger(Event.CLOSED)
