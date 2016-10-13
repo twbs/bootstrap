@@ -69,9 +69,8 @@
 
 .navbar-brand {
   float: left;
-  padding-top:    $navbar-brand-padding-y;
-  padding-bottom: $navbar-brand-padding-y;
-  margin-right: 1rem;
+  padding: $navbar-brand-padding-y 0;
+  margin: 0 1rem 0 0;
   font-size: $font-size-lg;
 
   @include hover-focus {
