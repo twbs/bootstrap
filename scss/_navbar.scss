@@ -6,6 +6,9 @@
 .navbar {
   position: relative;
   padding: $navbar-padding-y $navbar-padding-x;
+  font-family: $navbar-font-family;
+  font-weight: $navbar-font-weight;
+
   @include clearfix;
 
   @include media-breakpoint-up(sm) {
@@ -178,7 +181,7 @@
   }
 
   .navbar-divider {
-    background-color: rgba(0,0,0,.075);
+    background-color: $navbar-light-bg;
   }
 }
 
@@ -216,7 +219,7 @@
   }
 
   .navbar-divider {
-    background-color: rgba(255,255,255,.075);
+    background-color: $navbar-dark-bg;
   }
 }
 
