@@ -63,7 +63,6 @@ const Alert = (($) => {
     }
     
      static get OUT() {
-      //does nothing atm
     }
 
     // public
