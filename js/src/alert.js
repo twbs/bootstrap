@@ -38,7 +38,8 @@ const Alert = (($) => {
   const ClassName = {
     ALERT : 'alert',
     FADE  : 'fade',
-    IN    : 'in'
+    IN    : 'in',
+    OUT   : 'out'
   }
 
 
@@ -60,7 +61,9 @@ const Alert = (($) => {
     static get VERSION() {
       return VERSION
     }
-
+ static get OUT() {
+      //does nothing atm
+    }
 
     // public
 
