@@ -61,7 +61,8 @@ const Alert = (($) => {
     static get VERSION() {
       return VERSION
     }
- static get OUT() {
+    
+     static get OUT() {
       //does nothing atm
     }
 
