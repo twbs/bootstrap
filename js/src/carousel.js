@@ -231,17 +231,17 @@ const Carousel = (($) => {
     }
 
     _keydown(event) {
-      event.preventDefault()
-
       if (/input|textarea/i.test(event.target.tagName)) {
         return
       }
 
       switch (event.which) {
         case ARROW_LEFT_KEYCODE:
+          event.preventDefault()
           this.prev()
           break
         case ARROW_RIGHT_KEYCODE:
+          event.preventDefault()
           this.next()
           break
         default:
