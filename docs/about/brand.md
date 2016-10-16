@@ -40,7 +40,7 @@ Download the Bootstrap mark in one of three styles, each available as an SVG fil
     <img class="svg" src="../assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
   </div>
   <div class="bd-brand-item inverse">
-    <img class="svg" src="..}/assets/brand/bootstrap-punchout.svg" alt="Bootstrap" width="144" height="144">
+    <img class="svg" src="../assets/brand/bootstrap-punchout.svg" alt="Bootstrap" width="144" height="144">
   </div>
 </div>
 
