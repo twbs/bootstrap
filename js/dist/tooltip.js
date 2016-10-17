@@ -515,7 +515,7 @@ var Tooltip = function ($) {
         var data = $(this).data(DATA_KEY);
         var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' ? config : null;
 
-        if (!data && /destroy|hide/.test(config)) {
+        if (!data && /dispose|hide/.test(config)) {
           return;
         }
 
