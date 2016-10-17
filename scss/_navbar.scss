@@ -99,6 +99,17 @@
 }
 
 
+// Navbar text
+//
+//
+
+.navbar-text {
+  display: inline-block;
+  padding-top:    .425rem;
+  padding-bottom: .425rem;
+}
+
+
 // Navbar toggle
 //
 // Custom button for toggling the `.navbar-collapse`, powered by the collapse
@@ -119,6 +130,31 @@
     text-decoration: none;
   }
 }
+
+// scss-lint:disable ImportantRule
+// Custom override for
+.navbar-toggleable {
+  &-xs {
+    @include clearfix;
+    @include media-breakpoint-up(sm) {
+      display: block !important;
+    }
+  }
+  &-sm {
+    @include clearfix;
+    @include media-breakpoint-up(md) {
+      display: block !important;
+    }
+  }
+  &-md {
+    @include clearfix;
+    @include media-breakpoint-up(lg) {
+      display: block !important;
+    }
+  }
+}
+// scss-lint:enable ImportantRule
+
 
 // Navigation
 //

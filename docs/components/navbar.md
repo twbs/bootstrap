@@ -69,12 +69,13 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 <nav class="navbar navbar-light bg-faded">
   <h1 class="navbar-brand mb-0">Navbar</h1>
 </nav>
-
 {% endexample %}
 
 ### Nav
 
 Navbar navigation is similar to our regular nav options—use the `.nav` base class with a modifier to achieve a particular look. In this case you'll want `.nav.navbar-nav`.
+
+Active states—with `.active`—to indicate the current page can be applied directly to `.nav-link`s or their immediate parent `.nav-item`s.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
@@ -136,6 +137,38 @@ You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrap
 </nav>
 {% endexample %}
 
+### Text
+
+Navbars may contain bits of text with the help of `.navbar-text`. This class adjusts vertical alignment and horizontal spacing for strings of text.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <span class="navbar-text">
+    Navbar text with an inline element
+  </span>
+</nav>
+{% endexample %}
+
+Using our utility classes, you can change the alignment and appearance of your navbar text.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <span class="navbar-text pull-xs-right text-muted">
+    Muted navbar text that's floated right
+  </span>
+</nav>
+{% endexample %}
+
+Similarly, you can use utility classes to align navbar text to other navbar elements like the brand and navigation (which are automatically floated already).
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <span class="navbar-text pull-xs-left">
+    Navbar text that's floated left
+  </span>
+</nav>
+{% endexample %}
 
 ## Color schemes
 
