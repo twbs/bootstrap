@@ -68,10 +68,9 @@
 //
 
 .navbar-brand {
-  float: left;
+  display: block;
   padding-top:    $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
-  margin-right: 1rem;
   font-size: $font-size-lg;
 
   @include hover-focus {
@@ -132,24 +131,18 @@
 }
 
 // scss-lint:disable ImportantRule
-// Custom override for
 .navbar-toggleable {
-  &-xs {
-    @include clearfix;
-    @include media-breakpoint-up(sm) {
-      display: block !important;
-    }
-  }
-  &-sm {
-    @include clearfix;
-    @include media-breakpoint-up(md) {
-      display: block !important;
-    }
-  }
-  &-md {
-    @include clearfix;
-    @include media-breakpoint-up(lg) {
-      display: block !important;
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    &-#{$breakpoint} {
+      @include clearfix;
+      @include media-breakpoint-up($breakpoint) {
+        display: block !important;
+
+        .navbar-brand {
+          float: left;
+          margin-right: 1rem;
+        }
+      }
     }
   }
 }
