@@ -41,7 +41,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 - Dropped panels, thumbnails, and wells for a new all-encompassing component, cards.
 - Dropped the Glyphicons icon font. If you need icons, some options are:
-  - the upstream version of [Glyphicons](http://glyphicons.com/)
+  - the upstream version of [Glyphicons](https://glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
   - [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
 - Dropped the Affix jQuery plugin. We recommend using a `position: sticky` polyfill instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations.
@@ -59,7 +59,7 @@ This list highlights key changes by component between v3.x.x and v4.0.0.
 
 ### Reboot
 
-New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border` change, moving from `rem` to `em` units on many elements, link styles, and many form element resets.
+New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border-box` change, moving from `em` to `rem` units on many elements, link styles, and many form element resets.
 
 ### Typography
 
@@ -67,6 +67,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Dropped `.page-header` as, aside from the border, all it's styles can be applied via utilities.
 - `.dl-horizontal` has been dropped. Instead, use `.row` on `<dl>` and use grid column classes (or mixins) on its `<dt>` and `<dd>` children.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
+- `.list-inline` now requires that its children list items have the new `.list-inline-item` class applied to them.
 
 ### Images
 
@@ -79,7 +80,8 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
 - Added a new `.table-reflow` option.
-- Added table header modifiers: `.thead-default` and `.thead-inverse`
+- Added table header modifiers: `.thead-default` and `.thead-inverse`.
+- Renamed contextual classes to have a `.table-`-prefix. Hence `.active`, `.success`, `.warning`, `.danger` and `.table-info` to `.table-active`, `.table-success`, `.table-warning`, `.table-danger` and `.table-info`.
 
 ### Forms
 
@@ -97,7 +99,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Renamed `.btn-default` to `.btn-secondary`.
 - Dropped the `.btn-xs` class entirely as `.btn-sm` is proportionally much smaller than v3's.
-- The [stateful button](http://getbootstrap.com/javascript/#buttons-methods) feature of the `button.js` jQuery plugin has been dropped. This includes the `$().button(string)` and `$().button('reset')` methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
+- The [stateful button](https://getbootstrap.com/javascript/#buttons-methods) feature of the `button.js` jQuery plugin has been dropped. This includes the `$().button(string)` and `$().button('reset')` methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
   - Note that the other features of the plugin (button checkboxes, button radios, single-toggle buttons) have been retained in v4.
 
 ### Button group
@@ -110,6 +112,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Simplified dropdown styles to no longer ship with upward or downward facing arrows attached to the dropdown menu.
 - Dropdowns can be built with `<div>`s or `<ul>`s now.
 - Rebuilt dropdown styles and markup to provide easy, built-in support for `<a>` and `<button>` based dropdown items.
+- Renamed `.divider` to `.dropdown-divider`.
 - Dropdown items now require `.dropdown-item`.
 - Dropdown toggles no longer require an explicit `<span class="caret"></span>`; this is now provided automatically via CSS's `::after` on `.dropdown-toggle`.
 
@@ -123,7 +126,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### List groups
 
 - Replaced `a.list-group-item` with an explicit class, `.list-group-item-action`, for styling link and button versions of list group items.
--
+
+### Modal
+
+- The `remote` option (which could be used to automatically load and inject external content into a modal) and the corresponding `loaded.bs.modal` event were removed. We recommend instead using client-side templating or a data binding framework, or calling [jQuery.load](https://api.jquery.com/load/) yourself.
 
 ### Navs
 
@@ -157,8 +163,9 @@ Dropped entirely for the new card component.
 
 - `.panel` to `.card`
 - `.panel-default` removed and no replacement
+- `.panel-group` removed and no replacement. `.card-group` is not a replacement, it is different.
 - `.panel-heading` to `.card-header`
-- `.panel-title` to `.card-header`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/components/utilities/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
+- `.panel-title` to `.card-header`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/utilities/typography/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
 - `.panel-body` to `.card-block`
 - `.panel-footer` to `.card-footer`
 - `.panel-primary` to `.card-primary` and `.card-inverse` (or use `.bg-primary` on `.card-header`)
@@ -167,15 +174,19 @@ Dropped entirely for the new card component.
 - `.panel-warning` to `.card-warning` and `.card-inverse` (or use `.bg-warning` on `.card-header`)
 - `.panel-danger` to `.card-danger` and `.card-inverse` (or use `.bg-danger` on `.card-header`)
 
+### Tooltips
+
+- Removed support for `auto` placement options.
+
 ### Carousel
 
 - Renamed `.item` to `.carousel-item`.
 
 ### Utilities
 
-- Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`.
+- Added `.float-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-xs-left` and `.float-xs-right`.
 - Added responsive variations to our text alignment classes `.text-{xs,sm,md,lg,xl}-{left,center,right}` and removed the redundant `.text-{left,center,right}` utilities as they are the same as the `xs` variation.
-- Dropped `.center-block` for the new `.m-x-auto` class.
+- Dropped `.center-block` for the new `.mx-auto` class.
 
 ### Vendor prefix mixins
 Bootstrap 3's [vendor prefix](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm) mixins, which were deprecated in v3.2.0, have been removed in Bootstrap 4. Since we use [Autoprefixer](https://github.com/postcss/autoprefixer), they're no longer necessary.
@@ -221,11 +232,7 @@ TODO: audit classes in v3 that aren't present in v4
 
 ### Responsive utilities
 
-The following variables have been removed in v4.0.0. Use the `media-breakpoint-up()`, `media-breakpoint-down()`, or `media-breakpoint-only()` Sass mixins or the `$grid-breakpoints` Sass map instead of:
-
-* `@screen-phone`, `@screen-tablet`, `@screen-desktop`, `@screen-lg-desktop`.
-* `@screen-xs`, `@screen-sm`, `@screen-md`, `@screen-lg`.
-* `@screen-xs-min`, `@screen-xs-max`, `@screen-sm-min`, `@screen-sm-max`, `@screen-md-min`, `@screen-md-max`, `@screen-lg-min`, `@screen-lg-max`
+All `@screen-` variables have been removed in v4.0.0. Use the `media-breakpoint-up()`, `media-breakpoint-down()`, or `media-breakpoint-only()` Sass mixins or the `$grid-breakpoints` Sass map instead.
 
 The responsive utility classes have also been overhauled.
 

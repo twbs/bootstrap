@@ -5,7 +5,7 @@ git:
   depth: 10
 node_js:
   - "4"
-  - "5"
+  - "6"
 before_install:
   # Remove ./node_modules/.bin from PATH so node-which doesn't replace Unix which and cause RVM to barf. See https://github.com/travis-ci/travis-ci/issues/5092
   - export PATH=$(python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH")
@@ -19,19 +19,15 @@ before_install:
 install:
   - bundle install --deployment --jobs=3
   - cp grunt/npm-shrinkwrap.json ./
-  - npm install -g grunt-cli
   - npm install
 cache:
   directories:
     - node_modules
     - vendor/bundle
+    - "$HOME/google-cloud-sdk"
 env:
   global:
     - NPM_CONFIG_PROGRESS="false"
-    - SAUCE_USERNAME="bootstrap"
-    - secure: "pJkBwnuae9dKU5tEcCqccfS1QQw7/meEcfz63fM7ba7QJNjoA6BaXj08L5Z3Vb5vBmVPwBawxo5Hp0jC0r/Z/O0hGnAmz/Cz09L+cy7dSAZ9x4hvZePSja/UAusaB5ogMoO8l2b773MzgQeSmrLbExr9BWLeqEfjC2hFgdgHLaQ="
-    - secure: "RKWpS+P20b4tG9tawzCMJSmQftoonmC7tJzyGYiHuEM1TcpHALLBcnzKlr/+DiPTfzDJWY4kS8pxfhK4uXOe8OHnhpMNub7LEWtFPePlZIervOJcsOydaQocTKqVVWD6OUubMeQmQ+tZmvmpjoJ1uPPEbFs9ciF7+dv3U5tLUZ0="
-    - secure: "XswSKBY0HJ/aO9VOBeWlvGpqSFF/DsJmNKz7o5RkJMJX340qe44J929uUNwwOwlv9YrgptzC2W6l8bpmZQV+p6IYs99SoSA8CCaUfIJaqeU9x/UiT5vIHgqaNax+vFJwvzHLpF5v/ggFqFEKCd54gCDasePLTztHeC4oL104iaQ="
   matrix:
     - TWBS_TEST=core
     - TWBS_TEST=validate-html

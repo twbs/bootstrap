@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): carousel.js
+ * Bootstrap (v4.0.0-alpha.4): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,12 +18,14 @@ const Carousel = (($) => {
    */
 
   const NAME                = 'carousel'
-  const VERSION             = '4.0.0-alpha.2'
+  const VERSION             = '4.0.0-alpha.4'
   const DATA_KEY            = 'bs.carousel'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 600
+  const ARROW_LEFT_KEYCODE  = 37 // KeyboardEvent.which value for left arrow key
+  const ARROW_RIGHT_KEYCODE = 39 // KeyboardEvent.which value for right arrow key
 
   const Default = {
     interval : 5000,
@@ -236,9 +238,14 @@ const Carousel = (($) => {
       }
 
       switch (event.which) {
-        case 37: this.prev(); break
-        case 39: this.next(); break
-        default: return
+        case ARROW_LEFT_KEYCODE:
+          this.prev()
+          break
+        case ARROW_RIGHT_KEYCODE:
+          this.next()
+          break
+        default:
+          return
       }
     }
 

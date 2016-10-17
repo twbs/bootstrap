@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule, QualifyingElement, DuplicateProperty
+// scss-lint:disable QualifyingElement, DuplicateProperty
 
 // Reboot
 //
@@ -15,7 +15,7 @@
 //
 // Heads up! This reset may cause conflicts with some third-party widgets. For
 // recommendations on resolving such conflicts, see
-// http://getbootstrap.com/getting-started/#third-box-sizing.
+// https://getbootstrap.com/getting-started/#third-box-sizing.
 //
 // Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 
@@ -33,15 +33,15 @@ html {
 // Make viewport responsive
 //
 // @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in
-// some cases. See http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/.
+// some cases. See https://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/.
 // Eventually @viewport will replace <meta name="viewport">.
 //
 // However, `device-width` is broken on IE 10 on Windows (Phone) 8,
-// (see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
+// (see https://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
 // and the fix for that involves a snippet of JavaScript to sniff the user agent
 // and apply some conditional CSS.
 //
-// See http://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
+// See https://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
 //
 // Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
 // `.class-name { @import "bootstrap"; }`).
@@ -171,12 +171,13 @@ a {
   }
 }
 
-// And undo these styles for placeholder links/named anchors (without href).
+// And undo these styles for placeholder links/named anchors (without href)
+// which have not been made explicitly keyboard-focusable (without tabindex).
 // It would be more straightforward to just use a[href] in previous block, but that
 // causes specificity issues in many other styles that are too complex to fix.
 // See https://github.com/twbs/bootstrap/issues/19402
 
-a:not([href]) {
+a:not([href]):not([tabindex]) {
   color: inherit;
   text-decoration: none;
 
@@ -246,9 +247,9 @@ img {
 // DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
 // However, they DO support removing the click delay via `touch-action: manipulation`.
 // See:
-// * http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
+// * https://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
 // * http://caniuse.com/#feat=css-touch-action
-// * http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+// * https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
 
 a,
 area,
@@ -311,14 +312,9 @@ input,
 button,
 select,
 textarea {
-  // Remove all `margin`s so our classes don't have to do it themselves.
-  margin: 0;
   // Normalize includes `font: inherit;`, so `font-family`. `font-size`, etc are
-  // properly inherited. However, `line-height` isn't addressed there. Using this
-  // ensures we don't need to unnecessarily redeclare the global font stack.
+  // properly inherited. However, `line-height` isn't inherited there.
   line-height: inherit;
-  // iOS adds rounded borders by default
-  border-radius: 0;
 }
 
 input[type="radio"],

@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): collapse.js
+ * Bootstrap (v4.0.0-alpha.4): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Collapse = (($) => {
    */
 
   const NAME                = 'collapse'
-  const VERSION             = '4.0.0-alpha.2'
+  const VERSION             = '4.0.0-alpha.4'
   const DATA_KEY            = 'bs.collapse'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -56,7 +56,7 @@ const Collapse = (($) => {
   }
 
   const Selector = {
-    ACTIVES     : '.panel > .in, .panel > .collapsing',
+    ACTIVES     : '.card > .in, .card > .collapsing',
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
@@ -235,7 +235,7 @@ const Collapse = (($) => {
           .trigger(Event.HIDDEN)
       }
 
-      this._element.style[dimension] = 0
+      this._element.style[dimension] = ''
 
       if (!Util.supportsTransitionEnd()) {
         complete()

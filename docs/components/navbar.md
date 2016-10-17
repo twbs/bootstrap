@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Navbar
+description: Documentation and examples for Bootstrap's powerful, responsive navigation header.
 group: components
 ---
 
@@ -26,7 +27,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 
 - `.navbar-brand` for your company, product, or project name
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
-- `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsing-content) behaviors.
+- `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
 
 Here's an example of all the sub-components included in a default, light navbar:
 
@@ -47,7 +48,7 @@ Here's an example of all the sub-components included in a default, light navbar:
       <a class="nav-link" href="#">About</a>
     </li>
   </ul>
-  <form class="form-inline pull-xs-right">
+  <form class="form-inline float-xs-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
@@ -66,7 +67,7 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 
 <!-- As a heading -->
 <nav class="navbar navbar-light bg-faded">
-  <h1 class="navbar-brand m-b-0">Navbar</h1>
+  <h1 class="navbar-brand mb-0">Navbar</h1>
 </nav>
 
 {% endexample %}
@@ -159,7 +160,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-info" type="submit">Search</button>
     </form>
@@ -180,7 +181,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-secondary" type="submit">Search</button>
     </form>
@@ -201,7 +202,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-xs-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
@@ -271,25 +272,9 @@ Our collapse plugin allows you to use a `<button>` or `<a>` to toggle hidden con
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
-    &#9776;
-  </button>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation"></button>
   <div class="collapse" id="exCollapsingNavbar">
-    <div class="bg-inverse text-muted p-a-1">
-      <h4>Collapsed content</h4>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
-    </div>
-  </div>
-</nav>
-{% endexample %}
-
-{% example html %}
-<nav class="navbar navbar-dark bg-inverse">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbarDark" aria-controls="exCollapsingNavbarDark" aria-expanded="false" aria-label="Toggle navigation">
-    &#9776;
-  </button>
-  <div class="collapse" id="exCollapsingNavbarDark">
-    <div class="bg-inverse text-muted p-a-1">
+    <div class="bg-inverse text-muted p-1">
       <h4>Collapsed content</h4>
       <span class="text-muted">Toggleable via the navbar brand.</span>
     </div>
@@ -301,9 +286,7 @@ For more complex navbar patterns, like those used in Bootstrap v3, use the `.nav
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
-    &#9776;
-  </button>
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation"></button>
   <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
     <a class="navbar-brand" href="#">Responsive navbar</a>
     <ul class="nav navbar-nav">

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Reboot
+description: Documentation and examples for Reboot, Bootstrap's collection of element-specific CSS that builds on Normalize.css.
 group: content
 redirect_from: "/content/"
 ---
@@ -28,7 +29,7 @@ Here are our guidelines and reasons for choosing what to override in Reboot:
 The `<html>` and `<body>` elements are updated to provide better page-wide defaults. More specifically:
 
 - The `box-sizing` is globally set on every element—including `*:before` and `*:after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
-- A base `font-size: 16px` is declared on the `<html>` and `font-size: 1rem` on the `<body>` for easy responsive type-scaling via media queryies.
+- A base `font-size: 16px` is declared on the `<html>` and `font-size: 1rem` on the `<body>` for easy responsive type-scaling via media queries.
 - The `<body>` also sets a global `font-family` and `line-height`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
 
@@ -46,14 +47,6 @@ $font-family-sans-serif:
   "Segoe UI",
   // Android
   "Roboto",
-  // Linux
-  "Oxygen", // KDE
-  "Ubuntu",
-  "Cantarell", // GNOME
-  // Firefox OS [R.I.P.]
-  "Fira Sans",
-  // Older Android
-  "Droid Sans",
   // Basic web fallback
   "Helvetica Neue", Arial, sans-serif !default;
 {% endhighlight %}
@@ -328,7 +321,7 @@ HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.o
 `[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. This could potentially change in jQuery 3, but we're not holding our breath. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
 {% endcallout %}
 
-To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/components/utilities/#invisible-content) instead.
+To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/utilities/invisible-content/) instead.
 
 ## Click delay optimization for touch
 
@@ -342,4 +335,4 @@ To address this problem in IE11 and Microsoft Edge on desktop, as well as IE11 o
 
 In the case of old iOS versions (prior to 9.3), the suggested approach is to use additional scripts such as [FastClick](https://github.com/ftlabs/fastclick) to explicitly work around the delay.
 
-For further details, see the compatibility table for [suppressing 300ms delay for touchscreen interactions](http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay).
+For further details, see the compatibility table for [suppressing 300ms delay for touchscreen interactions](https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay).

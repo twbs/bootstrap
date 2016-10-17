@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Overview
+description: Components and options for laying out your Bootstrap project, including wrapping containers, a powerful grid system, a flexible media object, and responsive utility classes.
 group: layout
 redirect_from: "/layout/"
 ---
@@ -144,7 +145,7 @@ These media queries are also available via Sass mixins:
 And finally media that spans multiple breakpoint widths:
 
 {% highlight scss %}
-// Example 
+// Example
 // Medium devices (tablets, 768px and up) and  Large devices (desktops, 992px and up)
 @media (min-width: 768px) and (max-width: 1199px) { ... }
 {% endhighlight %}

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Build tools
+description: Details on how to use Bootstrap's included build tools to compile source code, run tests, and more.
 group: getting-started
 ---
 
@@ -19,7 +20,7 @@ To use our Gruntfile and run our documentation locally, you'll need a copy of Bo
 When completed, you'll be able to run the various Grunt commands provided from the command line.
 
 [install-ruby]: https://www.ruby-lang.org/en/documentation/installation/
-[gembundler]: http://bundler.io/
+[gembundler]: https://bundler.io/
 
 ## Using Grunt
 
@@ -29,7 +30,7 @@ Our Gruntfile includes the following commands and tasks:
 | --- | --- |
 | `grunt` | Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass](http://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
 | `grunt dist` | `grunt dist` creates the `/dist` directory with compiled files. **Uses [Sass](http://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
-| `grunt test` | Runs [scss-lint](https://github.com/brigade/scss-lint), [ESLint](http://eslint.org/) and [QUnit](http://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI). |
+| `grunt test` | Runs [scss-lint](https://github.com/brigade/scss-lint), [ESLint](http://eslint.org/) and [QUnit](https://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI). |
 | `grunt docs` | Builds and tests CSS, JavaScript, and other assets which are used when running the documentation locally via `jekyll serve`. |
 | `grunt watch` | This is a convenience method for watching just Sass files and automatically building them whenever you save. |
 
@@ -46,7 +47,7 @@ For example, run `TWBS_SASS=sass grunt` to test and build Bootstrap with Ruby Sa
 
 Bootstrap uses [Autoprefixer][autoprefixer] (included in our Gruntfile and build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
 
-We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [`/grunt/autoprefixer-settings.json`](https://github.com/twbs/bootstrap/blob/master/grunt/autoprefixer-settings.js) for details.
+We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [`/grunt/postcss.js`](https://github.com/twbs/bootstrap/blob/master/grunt/postcss.js) for details.
 
 ## Local documentation
 
@@ -56,7 +57,7 @@ Running our documentation locally requires the use of Jekyll, a decently flexibl
 2. From the root `/bootstrap` directory, run `bundle exec jekyll serve` in the command line.
 3. Open <http://localhost:9001> in your browser, and voilà.
 
-Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
+Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
 
 ## Troubleshooting
 

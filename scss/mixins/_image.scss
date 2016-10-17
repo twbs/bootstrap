@@ -7,10 +7,12 @@
 //
 // Keep images from scaling beyond the width of their parents.
 
-@mixin img-fluid($display: block) {
-  display: $display;
-  max-width: 100%; // Part 1: Set a maximum relative to the parent
-  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+@mixin img-fluid {
+  // Part 1: Set a maximum relative to the parent
+  max-width: 100%;
+  // Part 2: Override the height to auto, otherwise images will be stretched
+  // when setting a width and height attribute on the img element.
+  height: auto;
 }
 
 

@@ -1,15 +1,16 @@
 ---
 layout: docs
 title: Flexbox grid system
+description: Documentation and examples for using Bootstrap's optional flexbox grid system.
 group: layout
 ---
 
-Fancy a more modern grid system? [Enable flexbox support in Bootstrap](/getting-started/flexbox) to take full advantage of CSS's Flexible Box module for even more control over your site's layout, alignment, and distribution of content.
+Fancy a more modern grid system? [Enable flexbox support in Bootstrap]({{ site.baseurl }}/getting-started/flexbox/) to take full advantage of CSS's Flexible Box module for even more control over your site's layout, alignment, and distribution of content.
 
-Bootstrap's flexbox grid includes support for every feature from our [default grid system](/layout/grid), and then some. Please read the [default grid system docs](/layout/grid) before proceeding through this page. Features that are covered there are only summarized here. Please note that **Internet Explorer 9 does not support flexbox**, so proceed with caution when enabling it.
+Bootstrap's flexbox grid includes support for every feature from our [default grid system]({{ site.baseurl }}/layout/grid/), and then some. Please read the [default grid system docs]({{ site.baseurl }}/layout/grid/) before proceeding through this page. Features that are covered there are only summarized here. Please note that **Internet Explorer 9 does not support flexbox**, so proceed with caution when enabling it.
 
 {% callout warning %}
-**Heads up!** The flexbox grid documentation is only functional when flexbox support is explicitly enabled.
+**Heads up!** This flexbox grid documentation is powered by an additional CSS file that overrides our default grid system's CSS. This is only available in our hosted docs and is disabled in development.
 {% endcallout %}
 
 ## Contents
@@ -21,7 +22,7 @@ Bootstrap's flexbox grid includes support for every feature from our [default gr
 
 The flexbox grid system behaves similar to our default grid system, but with a few notable differences:
 
-- [Grid mixins](/layout/grid#sass-mixins) and [predefined classes](/layout/grid#predefined-classes) include support for flexbox. Just [enable flexbox support](/getting-started/flexbox) to utilize them as you would otherwise.
+- [Grid mixins]({{ site.baseurl }}/layout/grid#sass-mixins) and [predefined classes]({{ site.baseurl }}/layout/grid#predefined-classes) include support for flexbox. Just [enable flexbox support]({{ site.baseurl }}/getting-started/flexbox/) to utilize them as you would otherwise.
 - Nesting, offsets, pushes, and pulls are all supported in the flexbox grid system.
 - Flexbox grid columns without a set width will automatically layout with equal widths. For example, four columns will each automatically be 25% wide.
 - Flexbox grid columns have significantly more alignment options available, including vertical alignment.
@@ -59,7 +60,7 @@ When flexbox support is enabled, you can utilize breakpoint-specific column clas
 {% endexample %}
 </div>
 
-Auto-layout for flexbox grid columns also means you can set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
+Auto-layout for flexbox grid columns also means you can set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths. Note that the other columns will resize no matter the width of the center column.
 
 <div class="bd-example-row">
 {% example html %}
@@ -69,6 +70,17 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
       1 of 3
     </div>
     <div class="col-xs-6">
+      2 of 3 (wider)
+    </div>
+    <div class="col-xs">
+      3 of 3
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs">
+      1 of 3
+    </div>
+    <div class="col-xs-5">
       2 of 3 (wider)
     </div>
     <div class="col-xs">
@@ -205,6 +217,28 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
     </div>
     <div class="col-xs-4">
       One of two columns
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+## Reordering
+
+Flexbox utilities for controlling the **visual order** of your content.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col-xs flex-xs-unordered">
+      First, but unordered
+    </div>
+    <div class="col-xs flex-xs-last">
+      Second, but last
+    </div>
+    <div class="col-xs flex-xs-first">
+      Third, but first
     </div>
   </div>
 </div>

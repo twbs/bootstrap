@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): util.js
+ * Bootstrap (v4.0.0-alpha.4): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,6 +15,8 @@ const Util = (($) => {
    */
 
   let transition = false
+
+  const MAX_UID = 1000000
 
   const TransitionEndEvent = {
     WebkitTransition : 'webkitTransitionEnd',
@@ -38,8 +40,9 @@ const Util = (($) => {
       delegateType: transition.end,
       handle(event) {
         if ($(event.target).is(this)) {
-          return event.handleObj.handler.apply(this, arguments)
+          return event.handleObj.handler.apply(this, arguments) // eslint-disable-line prefer-rest-params
         }
+        return undefined
       }
     }
   }
@@ -100,7 +103,7 @@ const Util = (($) => {
     getUID(prefix) {
       do {
         /* eslint-disable no-bitwise */
-        prefix += ~~(Math.random() * 1000000) // "~~" acts like a faster Math.floor() here
+        prefix += ~~(Math.random() * MAX_UID) // "~~" acts like a faster Math.floor() here
         /* eslint-enable no-bitwise */
       } while (document.getElementById(prefix))
       return prefix

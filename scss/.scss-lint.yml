@@ -3,6 +3,9 @@ scss_files:
   - "**/*.scss"
   - "docs/assets/scss/**/*.scss"
 
+exclude:
+  - "scss/_normalize.scss"
+
 plugin_directories: ['.scss-linters']
 
 # List of gem names to load custom linters from (make sure they are already
@@ -89,7 +92,7 @@ linters:
     enabled: true
 
   ImportantRule:
-    enabled: true
+    enabled: false
 
   ImportPath:
     enabled: true
@@ -457,7 +460,7 @@ linters:
 
   Shorthand:
     enabled: true
-    allowed_shorthands: [1, 2, 3]
+    allowed_shorthands: [1, 2, 3, 4]
 
   SingleLinePerProperty:
     enabled: false
