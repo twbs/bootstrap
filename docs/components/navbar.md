@@ -32,6 +32,37 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 Here's an example of all the sub-components included in a default, light navbar:
 
 {% example html %}
+<nav class="navbar navbar-sm navbar-light navbar-rounded bg-faded" id="testingLever">
+  <div class="navbar-container">
+    <button class="navbar-toggler float-xs-right hidden-sm-up" type="button" data-toggle="lever" data-target="#testingLever"></button>
+
+    <a class="navbar-item navbar-brand" href="#">New navbar</a>
+
+    <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+      <ul class="navbar-item nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="navbar-item form-inline text-sm-right">
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-outline-success mt-xs-2 mt-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+{% endexample %}
+
+{% example html %}
 <nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav navbar-nav">

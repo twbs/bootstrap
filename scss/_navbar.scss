@@ -5,11 +5,17 @@
 
 .navbar {
   position: relative;
-  padding: $navbar-padding-y $navbar-padding-x;
-  @include clearfix;
+  // padding: $navbar-padding-y $navbar-padding-x;
+  // @include clearfix;
 
   @include media-breakpoint-up(sm) {
     @include border-radius($navbar-border-radius);
+  }
+
+  &.open {
+    .navbar-toggleable-xs {
+      display: block;
+    }
   }
 }
 
@@ -62,6 +68,47 @@
   }
 }
 
+.navbar-container {
+  display: table;
+  width: 100%;
+
+  // @each $breakpoint in map-keys($grid-breakpoints) {
+  //   &-#{$breakpoint} {
+  //     @include media-breakpoint-up($breakpoint) {
+  //       display: block !important;
+  //
+  //       .navbar-brand {
+  //         float: left;
+  //         margin-right: 1rem;
+  //       }
+  //     }
+  //   }
+  // }
+  //
+}
+
+.navbar-item {
+  padding: .5rem .75rem;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.navbar {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    &-#{$breakpoint} {
+      @include media-breakpoint-up($breakpoint) {
+        .navbar-item {
+          display: table-cell;
+        }
+
+        .navbar-item-primary {
+          width: 99%;
+        }
+      }
+    }
+  }
+}
+
 
 //
 // Brand/project name
@@ -69,8 +116,8 @@
 
 .navbar-brand {
   display: block;
-  padding-top:    $navbar-brand-padding-y;
-  padding-bottom: $navbar-brand-padding-y;
+  // padding-top:    $navbar-brand-padding-y;
+  // padding-bottom: $navbar-brand-padding-y;
   font-size: $font-size-lg;
 
   @include hover-focus {
@@ -135,12 +182,13 @@
   @each $breakpoint in map-keys($grid-breakpoints) {
     &-#{$breakpoint} {
       @include clearfix;
+
       @include media-breakpoint-up($breakpoint) {
-        display: block !important;
+        // display: table-cell;
 
         .navbar-brand {
-          float: left;
-          margin-right: 1rem;
+          // float: left;
+          // margin-right: 1rem;
         }
       }
     }
@@ -155,7 +203,8 @@
 
 .navbar-nav {
   .nav-item {
-    float: left;
+    // float: left;
+    display: inline-block;
   }
 
   .nav-link {

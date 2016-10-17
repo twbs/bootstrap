@@ -67,6 +67,7 @@ module.exports = function (grunt) {
           'js/dist/carousel.js'  : 'js/src/carousel.js',
           'js/dist/collapse.js'  : 'js/src/collapse.js',
           'js/dist/dropdown.js'  : 'js/src/dropdown.js',
+          'js/dist/lever.js'     : 'js/src/lever.js',
           'js/dist/modal.js'     : 'js/src/modal.js',
           'js/dist/scrollspy.js' : 'js/src/scrollspy.js',
           'js/dist/tab.js'       : 'js/src/tab.js',
@@ -111,6 +112,7 @@ module.exports = function (grunt) {
           'js/src/carousel.js',
           'js/src/collapse.js',
           'js/src/dropdown.js',
+          'js/src/lever.js',
           'js/src/modal.js',
           'js/src/scrollspy.js',
           'js/src/tab.js',
@@ -250,6 +252,10 @@ module.exports = function (grunt) {
       src: {
         files: '<%= concat.bootstrap.src %>',
         tasks: ['babel:dev']
+      },
+      babel: {
+        files: 'js/**/*.js',
+        tasks: ['dist-js', 'docs']
       },
       sass: {
         files: 'scss/**/*.scss',
