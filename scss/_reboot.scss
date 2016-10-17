@@ -112,8 +112,7 @@ p {
 }
 
 // Abbreviations and acronyms
-abbr[title]
-{
+abbr[title] {
   cursor: help;
 }
 // Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
