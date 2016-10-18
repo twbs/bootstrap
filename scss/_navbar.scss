@@ -141,8 +141,8 @@
 
       @include media-breakpoint-down($breakpoint) {
         .navbar-brand {
-          float: none;
           display: block;
+          float: none;
           margin-top: .5rem;
           margin-right: 0;
         }
