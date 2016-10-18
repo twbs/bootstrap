@@ -68,9 +68,10 @@
 //
 
 .navbar-brand {
-  display: block;
-  padding-top:    $navbar-brand-padding-y;
+  float: left;
+  padding-top: $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
+  margin-right: 1rem;
   font-size: $font-size-lg;
 
   @include hover-focus {
@@ -134,15 +135,31 @@
 .navbar-toggleable {
   @each $breakpoint in map-keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
+
     &-#{$breakpoint} {
       @include clearfix;
-      @include media-breakpoint-up($next) {
-        display: block !important;
 
+      @include media-breakpoint-down($breakpoint) {
         .navbar-brand {
-          float: left;
-          margin-right: 1rem;
+          float: none;
+          display: block;
+          margin-top: .5rem;
+          margin-right: 0;
         }
+
+        .navbar-nav {
+          margin-top: .5rem;
+          margin-bottom: .5rem;
+
+          .dropdown-menu {
+            position: static;
+            float: none;
+          }
+        }
+      }
+
+      @include media-breakpoint-up($next) {
+        display: block;
       }
     }
   }
