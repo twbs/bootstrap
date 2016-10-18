@@ -45,8 +45,8 @@ Here's an example of all the sub-components included in a default, non-responsiv
       <a class="nav-link" href="#">Link</a>
     </li>
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <a class="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+      <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
@@ -324,7 +324,7 @@ For more complex navbar patterns, like those used in Bootstrap v3, use the `.nav
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation"></button>
+  <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
   <div class="collapse navbar-toggleable-md" id="navbarResponsive">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav navbar-nav">
