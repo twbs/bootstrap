@@ -5,7 +5,7 @@ description: Documentation and examples for Bootstrap's powerful, responsive nav
 group: components
 ---
 
-The navbar is a simple wrapper for positioning branding, navigation, and other elements into a concise navigation header. It's easily extensible and, with the help of our collapse plugin, it can easily integrate offscreen content.
+The navbar is a wrapper that positions branding, navigation, and other elements into a concise header. It's easily extensible and thanks to our Collapse plugin, it can easily integrate responsive behaviors.
 
 ## Contents
 
@@ -18,18 +18,18 @@ Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` and a [color scheme](#color-schemes).
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
-- Use `.pull-*-left` and `.pull-*-right` to quickly align sub-components.
+- Use `.float-*-left` and `.float-*-right` to quickly align sub-components.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 
 ## Supported content
 
-Navbars come with built-in support for a handful of sub-components. Mix and match from the following as you need:
+Navbars come with built-in support for a handful of sub-components. Mix and match from the following as needed:
 
 - `.navbar-brand` for your company, product, or project name
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
 - `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
 
-Here's an example of all the sub-components included in a default, light navbar:
+Here's an example of all the sub-components included in a responsive, "light" themed navbar.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
@@ -39,13 +39,18 @@ Here's an example of all the sub-components included in a default, light navbar:
       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
+      <a class="nav-link" href="#">Link</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
+      <a class="nav-link" href="#">Link</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
     </li>
   </ul>
   <form class="form-inline float-xs-right">
@@ -153,7 +158,7 @@ Using our utility classes, you can change the alignment and appearance of your n
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <span class="navbar-text pull-xs-right text-muted">
+  <span class="navbar-text float-xs-right text-muted">
     Muted navbar text that's floated right
   </span>
 </nav>
@@ -164,7 +169,7 @@ Similarly, you can use utility classes to align navbar text to other navbar elem
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">Navbar</a>
-  <span class="navbar-text pull-xs-left">
+  <span class="navbar-text float-xs-left">
     Navbar text that's floated left
   </span>
 </nav>
@@ -319,23 +324,32 @@ For more complex navbar patterns, like those used in Bootstrap v3, use the `.nav
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation"></button>
-  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-    <a class="navbar-brand" href="#">Responsive navbar</a>
+  <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation"></button>
+  <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+    <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">Link</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
       </li>
     </ul>
+    <form class="form-inline float-lg-right">
+      <input class="form-control" type="text" placeholder="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
   </div>
 </nav>
 {% endexample %}
