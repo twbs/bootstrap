@@ -206,6 +206,7 @@
 
   .navbar-toggler {
     background-image: $navbar-light-toggler-bg;
+    border-color: $navbar-light-toggler-border;
   }
 
   .navbar-divider {
@@ -245,6 +246,7 @@
 
   .navbar-toggler {
     background-image: $navbar-dark-toggler-bg;
+    border-color: $navbar-dark-toggler-border;
   }
 
   .navbar-divider {
