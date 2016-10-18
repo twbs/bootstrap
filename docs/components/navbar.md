@@ -29,7 +29,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
 - `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
 
-Here's an example of all the sub-components included in a responsive, "light" themed navbar.
+Here's an example of all the sub-components included in a default, non-responsive light themed navbar. [See the responsive examples](#collapsible-content) for collapsing nav support.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
