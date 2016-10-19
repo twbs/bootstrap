@@ -31,13 +31,13 @@ social_logo_path: /assets/brand/bootstrap-social-logo.png
 social_image_path: /assets/brand/bootstrap-social.png
 
 # Custom vars
-current_version:  4.0.0-alpha.4
+current_version:  4.0.0-alpha.5
 repo:             https://github.com/twbs/bootstrap
 slack:            https://bootstrap-slack.herokuapp.com
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.4.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha.4/bootstrap-4.0.0-alpha.4-dist.zip
+  source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.5.zip
+  dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha.5/bootstrap-4.0.0-alpha.5-dist.zip
 
 blog:             https://blog.getbootstrap.com
 expo:             https://expo.getbootstrap.com
@@ -45,9 +45,9 @@ themes:           https://themes.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:            https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css
+  css:            https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css
   css_hash:       "sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj"
-  js:             https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js
+  js:             https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js
   js_hash:        "sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU"
   jquery:         https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
   jquery_hash:    "sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
