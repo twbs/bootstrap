@@ -188,6 +188,20 @@
   }
 }
 
+// Navigation items into toggleable navbar
+.navbar-nav {
+  .nav-item {
+    @each $breakpoint in xs, sm, md {
+      .navbar-toggleable-#{$breakpoint} & {
+        @include media-breakpoint-down($breakpoint) {
+          float: none;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
 // Dark links against a light background
 .navbar-light {
   .navbar-brand,
