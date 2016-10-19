@@ -73,6 +73,7 @@
   padding-bottom: $navbar-brand-padding-y;
   margin-right: 1rem;
   font-size: $font-size-lg;
+  line-height: inherit;
 
   @include hover-focus {
     text-decoration: none;
