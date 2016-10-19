@@ -28,6 +28,8 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 - `.navbar-brand` for your company, product, or project name
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
 - `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
+- Inline forms with `.float-` utilities for form controls and components.
+- `.navbar-text` for adding vertically centered strings of text.
 
 Here's an example of all the sub-components included in a default, non-responsive light themed navbar. [See the responsive examples](#collapsible-content) for collapsing nav support.
 
@@ -160,6 +162,43 @@ You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrap
       </div>
     </li>
   </ul>
+</nav>
+{% endexample %}
+
+### Forms
+
+Place various form controls and components within a navbar with `.form-inline`. Align them with `.float-` utilities as needed.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <form class="form-inline float-xs-left">
+    <input class="form-control" type="text" placeholder="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</nav>
+{% endexample %}
+
+Input groups work, too:
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <form class="form-inline float-xs-left">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">@</span>
+      <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+    </div>
+  </form>
+</nav>
+{% endexample %}
+
+Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilites can be used to align different sized elements.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+  <form class="form-inline float-xs-left">
+    <button class="btn btn-outline-success" type="button">Main button</button>
+    <button class="btn btn-sm align-middle btn-outline-secondary" type="button">Smaller button</button>
+  </form>
 </nav>
 {% endexample %}
 
