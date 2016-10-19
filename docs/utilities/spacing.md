@@ -4,7 +4,7 @@ title: Spacing
 group: utilities
 ---
 
-Assign `margin` or `padding` to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. All classes are multiples on the global default value, `1rem`.
+Assign `margin` or `padding` to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are built from a default Sass map ranging from `.25rem` to `3rem`.
 
 The classes are named using the format: `{property}{sides}-{size}`
 
@@ -26,9 +26,11 @@ Where *sides* is one of:
 Where *size* is one of:
 
 * `0` - for classes that eliminate the `margin` or `padding` by setting it to `0`
-* `1` - (by default) for classes that set the `margin` or `padding` to `$spacer-x` or `$spacer-y`
-* `2` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 1.5` or `$spacer-y * 1.5`
-* `3` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 3` or `$spacer-y * 3`
+* `1` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * .25` or `$spacer-y * .25`
+* `2` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * .5` or `$spacer-y * .5`
+* `3` - (by default) for classes that set the `margin` or `padding` to `$spacer-x` or `$spacer-y`
+* `4` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 1.5` or `$spacer-y * 1.5`
+* `5` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 3` or `$spacer-y * 3`
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
