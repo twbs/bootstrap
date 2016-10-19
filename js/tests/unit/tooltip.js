@@ -185,6 +185,19 @@ $(function () {
       .bootstrapTooltip('show')
   })
 
+  QUnit.test('should throw an error when show is called on hidden elements', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    try {
+      $('<div title="tooltip title" style="display: none"/>').bootstrapTooltip('show')
+    }
+    catch (err) {
+      assert.strictEqual(err.message, 'Please use show on visible elements')
+      done()
+    }
+  })
+
   QUnit.test('should fire inserted event', function (assert) {
     assert.expect(2)
     var done = assert.async()

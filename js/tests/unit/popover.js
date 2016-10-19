@@ -320,4 +320,16 @@ $(function () {
       .bootstrapPopover('show')
   })
 
+  QUnit.test('should throw an error when show is called on hidden elements', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    try {
+      $('<div data-toggle="popover" data-title="some title" data-content="@Johann-S" style="display: none"/>').bootstrapPopover('show')
+    }
+    catch (err) {
+      assert.strictEqual(err.message, 'Please use show on visible elements')
+      done()
+    }
+  })
 })

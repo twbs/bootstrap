@@ -239,6 +239,9 @@ const Tooltip = (($) => {
     }
 
     show() {
+      if ($(this.element).css('display') === 'none') {
+        throw new Error('Please use show on visible elements')
+      }
       let showEvent = $.Event(this.constructor.Event.SHOW)
 
       if (this.isWithContent() && this._isEnabled) {
