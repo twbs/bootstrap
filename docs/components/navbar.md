@@ -76,6 +76,27 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 </nav>
 {% endexample %}
 
+Adding images to the `.navbar-brand` will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.
+
+{% example html %}
+<!-- Just an image -->
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">
+    <img src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" width="30" height="30">
+  </a>
+</nav>
+{% endexample %}
+
+{% example html %}
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">
+    <img src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block">
+    Bootstrap
+  </a>
+</nav>
+{% endexample %}
+
 ### Nav
 
 Navbar navigation is similar to our regular nav options—use the `.nav` base class with a modifier to achieve a particular look. In this case you'll want `.nav.navbar-nav`.
