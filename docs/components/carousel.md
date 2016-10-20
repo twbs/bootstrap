@@ -1,10 +1,11 @@
 ---
 layout: docs
 title: Carousel
+description: A slideshow component for cycling through elements—images or slides of text—like a carousel.
 group: components
 ---
 
-A slideshow component for cycling through elements—images or slides of text—like a carousel. In browsers where the [Page Visibility API](http://www.w3.org/TR/page-visibility/) is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.). **Nested carousels are not supported.**
+A slideshow component for cycling through elements—images or slides of text—like a carousel. In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibility/) is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.). **Nested carousels are not supported.**
 
 ## Contents
 

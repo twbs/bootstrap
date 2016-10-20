@@ -23,16 +23,14 @@
     <!-- Fixed navbar -->
     <div class="pos-f-t">
       <div class="collapse" id="navbar-header">
-        <div class="container bg-inverse p-a-1">
+        <div class="container bg-inverse p-1">
           <h3>Collapsed content</h3>
           <p>Toggleable via the navbar brand.</p>
         </div>
       </div>
       <nav class="navbar navbar-light navbar-static-top bg-faded">
         <div class="container">
-          <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
-            &#9776;
-          </button>
+          <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-expanded="false" aria-controls="exCollapsingNavbar2" aria-label="Toggle navigation"></button>
           <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
             <a class="navbar-brand" href="#">Sticky footer</a>
             <ul class="nav navbar-nav">
@@ -56,7 +54,7 @@
 
     <!-- Begin page content -->
     <div class="container">
-      <div class="m-t-1">
+      <div class="mt-1">
         <h1>Sticky footer with fixed navbar</h1>
       </div>
       <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>

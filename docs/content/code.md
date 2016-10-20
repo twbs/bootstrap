@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Code
+description: Documentation and examples for displaying inline and multiline blocks of code with Bootstrap.
 group: content
 ---
 

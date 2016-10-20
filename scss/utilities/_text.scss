@@ -32,6 +32,10 @@
 
 // Contextual colors
 
+.text-white {
+  color: #fff !important;
+}
+
 @include text-emphasis-variant('.text-muted', $text-muted);
 
 @include text-emphasis-variant('.text-primary', $brand-primary);
@@ -43,6 +47,10 @@
 @include text-emphasis-variant('.text-warning', $brand-warning);
 
 @include text-emphasis-variant('.text-danger', $brand-danger);
+
+// Font color
+
+@include text-emphasis-variant('.text-gray-dark', $gray-dark);
 
 // Misc
 

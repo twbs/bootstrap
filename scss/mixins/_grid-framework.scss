@@ -3,25 +3,28 @@
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `$grid-columns`.
 
-@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
-
+@mixin make-grid-columns($columns: $grid-columns, $gutters: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
   // Common properties for all breakpoints
   %grid-column {
     position: relative;
     // Prevent columns from collapsing when empty
     min-height: 1px;
-    // Inner gutter via padding
-    padding-right: ($gutter / 2);
-    padding-left: ($gutter / 2);
 
     @if $enable-flex {
       width: 100%;
     }
+
+    @include make-gutters($gutters);
   }
 
   $breakpoint-counter: 0;
   @each $breakpoint in map-keys($breakpoints) {
     $breakpoint-counter: ($breakpoint-counter + 1);
+
+    // Allow columns to stretch full width below their breakpoints
+    .col-#{$breakpoint} {
+      @extend %grid-column;
+    }
 
     @for $i from 1 through $columns {
       .col-#{$breakpoint}-#{$i} {
@@ -33,19 +36,15 @@
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       @if $enable-flex {
         .col-#{$breakpoint} {
-          position: relative;
           flex-basis: 0;
           flex-grow: 1;
           max-width: 100%;
-          min-height: 1px;
-          padding-right: ($grid-gutter-width / 2);
-          padding-left:  ($grid-gutter-width / 2);
         }
       }
 
       @for $i from 1 through $columns {
         .col-#{$breakpoint}-#{$i} {
-          @include make-col($i, $columns, $gutter);
+          @include make-col($i, $columns);
         }
       }
 

@@ -2,11 +2,11 @@
   browser: >
     Microsoft Edge
   summary: >
-    Dynamically generated `<label><input type="file"></label>` causes infinite loop of file dialogs.
+    Visual artifacts in scrollable modal dialogs
   upstream_bug: >
-    Edge#8282613
+    Edge#9011176
   origin: >
-    Bootstrap#20335
+    Bootstrap#20755
 
 -
   browser: >
@@ -90,6 +90,16 @@
 
 -
   browser: >
+    Microsoft Edge
+  summary: >
+    Active `position: fixed;` `<button>` flickers when scrolling
+  upstream_bug: >
+    Edge#8770398
+  origin: >
+    Bootstrap#20507
+
+-
+  browser: >
     Firefox
   summary: >
     `.table-bordered` with an empty `<tbody>` is missing borders.
@@ -147,6 +157,16 @@
     Mozilla#1282363
   origin: >
     Bootstrap#20161
+
+-
+  browser: >
+    Firefox
+  summary: >
+    `min-width: 0` has no effect on `<fieldset>`
+  upstream_bug: >
+    Mozilla#504622
+  origin: >
+    Bootstrap#12359
 
 -
   browser: >

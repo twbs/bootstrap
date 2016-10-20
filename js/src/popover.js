@@ -3,7 +3,7 @@ import Tooltip from './tooltip'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.3): popover.js
+ * Bootstrap (v4.0.0-alpha.5): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Popover = (($) => {
    */
 
   const NAME                = 'popover'
-  const VERSION             = '4.0.0-alpha.3'
+  const VERSION             = '4.0.0-alpha.5'
   const DATA_KEY            = 'bs.popover'
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
@@ -28,7 +28,6 @@ const Popover = (($) => {
     trigger   : 'click',
     content   : '',
     template  : '<div class="popover" role="tooltip">'
-              + '<div class="popover-arrow"></div>'
               + '<h3 class="popover-title"></h3>'
               + '<div class="popover-content"></div></div>'
   })
@@ -44,8 +43,7 @@ const Popover = (($) => {
 
   const Selector = {
     TITLE   : '.popover-title',
-    CONTENT : '.popover-content',
-    ARROW   : '.popover-arrow'
+    CONTENT : '.popover-content'
   }
 
   const Event = {

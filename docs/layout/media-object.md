@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Media object
+description: Documentation and examples for Bootstrap's media object to construct highly repetitive components like blog comments, tweets, and the like.
 group: layout
 ---
 
@@ -45,7 +46,7 @@ Media components can also be nested.
   <div class="media-body">
     <h4 class="media-heading">Media heading</h4>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-    <div class="media">
+    <div class="media mt-2">
       <a class="media-left" href="#">
         <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
       </a>
@@ -123,7 +124,7 @@ With a bit of extra markup, you can use media inside list (useful for comment th
       <h4 class="media-heading">Media heading</h4>
       <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
       <!-- Nested media object -->
-      <div class="media">
+      <div class="media mt-2">
         <a class="media-left" href="#">
           <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
         </a>
@@ -131,7 +132,7 @@ With a bit of extra markup, you can use media inside list (useful for comment th
           <h4 class="media-heading">Nested media heading</h4>
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
           <!-- Nested media object -->
-          <div class="media">
+          <div class="media mt-2">
             <div class="media-left">
               <a href="#">
                 <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
@@ -145,7 +146,7 @@ With a bit of extra markup, you can use media inside list (useful for comment th
         </div>
       </div>
       <!-- Nested media object -->
-      <div class="media">
+      <div class="media mt-2">
         <div class="media-left">
           <a href="#">
             <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
@@ -158,7 +159,7 @@ With a bit of extra markup, you can use media inside list (useful for comment th
       </div>
     </div>
   </li>
-  <li class="media">
+  <li class="media mt-2">
     <div class="media-body">
       <h4 class="media-heading">Media heading</h4>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
