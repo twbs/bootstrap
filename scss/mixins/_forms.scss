@@ -17,7 +17,7 @@
   .form-control {
     border-color: $color;
 
-    @if $enable-rounded {
+    @if $enable-shadows {
       &:focus {
         box-shadow: $input-box-shadow, 0 0 6px lighten($color, 20%);
       }
