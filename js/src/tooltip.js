@@ -5,7 +5,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.4): tooltip.js
+ * Bootstrap (v4.0.0-alpha.5): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -22,10 +22,10 @@ const Tooltip = (($, Tether) => {
 
   /**
    * Check for Tether dependency
-   * Tether - http://github.hubspot.com/tether/
+   * Tether - http://tether.io/
    */
   if (Tether === undefined) {
-    throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
+    throw new Error('Bootstrap tooltips require Tether (http://tether.io/)')
   }
 
 
@@ -36,7 +36,7 @@ const Tooltip = (($, Tether) => {
    */
 
   const NAME                = 'tooltip'
-  const VERSION             = '4.0.0-alpha.4'
+  const VERSION             = '4.0.0-alpha.5'
   const DATA_KEY            = 'bs.tooltip'
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
@@ -46,7 +46,6 @@ const Tooltip = (($, Tether) => {
   const Default = {
     animation   : true,
     template    : '<div class="tooltip" role="tooltip">'
-                + '<div class="tooltip-arrow"></div>'
                 + '<div class="tooltip-inner"></div></div>',
     trigger     : 'hover focus',
     title       : '',
@@ -619,7 +618,7 @@ const Tooltip = (($, Tether) => {
         let _config = typeof config === 'object' ?
           config : null
 
-        if (!data && /destroy|hide/.test(config)) {
+        if (!data && /dispose|hide/.test(config)) {
           return
         }
 

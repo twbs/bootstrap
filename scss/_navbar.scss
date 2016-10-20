@@ -69,17 +69,14 @@
 
 .navbar-brand {
   float: left;
-  padding-top:    $navbar-brand-padding-y;
+  padding-top: $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
   margin-right: 1rem;
   font-size: $font-size-lg;
+  line-height: inherit;
 
   @include hover-focus {
     text-decoration: none;
-  }
-
-  > img {
-    display: block;
   }
 }
 
@@ -87,8 +84,8 @@
 .navbar-divider {
   float: left;
   width: $border-width;
-  padding-top: .425rem;
-  padding-bottom: .425rem;
+  padding-top: $navbar-divider-padding-y;
+  padding-bottom: $navbar-divider-padding-y;
   margin-right: $navbar-padding-x;
   margin-left:  $navbar-padding-x;
   overflow: hidden;
@@ -96,6 +93,17 @@
   &::before {
     content: "\00a0";
   }
+}
+
+
+// Navbar text
+//
+//
+
+.navbar-text {
+  display: inline-block;
+  padding-top:    .425rem;
+  padding-bottom: .425rem;
 }
 
 
@@ -107,18 +115,54 @@
 .navbar-toggler {
   width: 2.5em;
   height: 2em;
-  padding: .5rem .75rem;
-  font-size: $font-size-lg;
+  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+  font-size: $navbar-toggler-font-size;
   line-height: 1;
   background: transparent no-repeat center center;
   background-size: 24px 24px;
   border: $border-width solid transparent;
-  @include border-radius($btn-border-radius);
+  @include border-radius($navbar-toggler-border-radius);
 
   @include hover-focus {
     text-decoration: none;
   }
 }
+
+// scss-lint:disable ImportantRule
+.navbar-toggleable {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+
+    &-#{$breakpoint} {
+      @include clearfix;
+
+      @include media-breakpoint-down($breakpoint) {
+        .navbar-brand {
+          display: block;
+          float: none;
+          margin-top: .5rem;
+          margin-right: 0;
+        }
+
+        .navbar-nav {
+          margin-top: .5rem;
+          margin-bottom: .5rem;
+
+          .dropdown-menu {
+            position: static;
+            float: none;
+          }
+        }
+      }
+
+      @include media-breakpoint-up($next) {
+        display: block;
+      }
+    }
+  }
+}
+// scss-lint:enable ImportantRule
+
 
 // Navigation
 //
@@ -146,7 +190,8 @@
 
 // Dark links against a light background
 .navbar-light {
-  .navbar-brand {
+  .navbar-brand,
+  .navbar-toggler {
     color: $navbar-light-active-color;
 
     @include hover-focus {
@@ -175,6 +220,7 @@
 
   .navbar-toggler {
     background-image: $navbar-light-toggler-bg;
+    border-color: $navbar-light-toggler-border;
   }
 
   .navbar-divider {
@@ -184,7 +230,8 @@
 
 // White links against a dark background
 .navbar-dark {
-  .navbar-brand {
+  .navbar-brand,
+  .navbar-toggler {
     color: $navbar-dark-active-color;
 
     @include hover-focus {
@@ -213,6 +260,7 @@
 
   .navbar-toggler {
     background-image: $navbar-dark-toggler-bg;
+    border-color: $navbar-dark-toggler-border;
   }
 
   .navbar-divider {

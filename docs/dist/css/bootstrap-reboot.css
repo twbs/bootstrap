@@ -1,6 +1,7 @@
-/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v4.2.0 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
+  line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -47,6 +48,7 @@ template,
 
 a {
   background-color: transparent;
+  -webkit-text-decoration-skip: objects;
 }
 
 a:active,
@@ -133,9 +135,11 @@ hr {
 
 button,
 input,
+optgroup,
 select,
 textarea {
   font: inherit;
+  margin: 0;
 }
 
 optgroup {
@@ -143,32 +147,13 @@ optgroup {
 }
 
 button,
-input,
-select {
+input {
   overflow: visible;
-}
-
-button,
-input,
-select,
-textarea {
-  margin: 0;
 }
 
 button,
 select {
   text-transform: none;
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  cursor: pointer;
-}
-
-[disabled] {
-  cursor: default;
 }
 
 button,
@@ -179,13 +164,17 @@ html [type="button"],
 }
 
 button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
   padding: 0;
 }
 
 button:-moz-focusring,
-input:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -223,11 +212,22 @@ textarea {
 
 [type="search"] {
   -webkit-appearance: textfield;
+  outline-offset: -2px;
 }
 
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
+}
+
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
 }
 
 html {
@@ -404,9 +404,7 @@ input,
 button,
 select,
 textarea {
-  margin: 0;
   line-height: inherit;
-  border-radius: 0;
 }
 
 input[type="radio"]:disabled,

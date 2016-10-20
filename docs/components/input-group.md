@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Input group
+description: Extend form controls with the input group.
 group: components
 ---
 

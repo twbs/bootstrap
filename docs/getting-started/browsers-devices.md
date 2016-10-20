@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Browsers and devices
+description: Learn which browsers and devices are supported by Bootstrap.
 group: getting-started
 ---
 
@@ -171,7 +172,7 @@ See [this StackOverflow question](https://stackoverflow.com/questions/6771258/wh
 
 ## Internet Explorer 10 in Windows Phone 8
 
-Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you'll need to **include the following JavaScript to work around the bug**.
+Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](https://blogs.windows.com/buildingapps/2013/10/14/introducing-windows-phone-preview-for-developers/) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you'll need to **include the following JavaScript to work around the bug**.
 
 {% highlight js %}
 // Copyright 2014-2015 The Bootstrap Authors
@@ -188,7 +189,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 }
 {% endhighlight %}
 
-For more information and usage guidelines, read [Windows Phone 8 and Device-Width](http://timkadlec.com/2013/01/windows-phone-8-and-device-width/).
+For more information and usage guidelines, read [Windows Phone 8 and Device-Width](https://timkadlec.com/2013/01/windows-phone-8-and-device-width/).
 
 As a heads up, we include this in all of Bootstrap's documentation and examples as a demonstration.
 
