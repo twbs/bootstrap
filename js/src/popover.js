@@ -37,8 +37,8 @@ const Popover = (($) => {
   })
 
   const ClassName = {
-    FADE : 'fade',
-    IN  : 'in'
+    FADE   : 'fade',
+    ACTIVE : 'active'
   }
 
   const Selector = {
@@ -119,7 +119,7 @@ const Popover = (($) => {
 
       $tip
         .removeClass(ClassName.FADE)
-        .removeClass(ClassName.IN)
+        .removeClass(ClassName.ACTIVE)
 
       this.cleanupTether()
     }
