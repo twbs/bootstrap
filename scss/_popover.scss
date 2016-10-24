@@ -124,6 +124,9 @@
       border-left-color: $popover-arrow-color;
     }
   }
+  &.inModal {
+    z-index: 1060;
+  }
 }
 
 
