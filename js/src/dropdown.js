@@ -80,8 +80,10 @@ const Dropdown = (($) => {
 
     // public
 
-    toggle() {
-      if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
+    toggle(event) {
+      if (this.disabled ||
+        $(this).hasClass(ClassName.DISABLED) ||
+        event.isDefaultPrevented()) {
         return false
       }
 
