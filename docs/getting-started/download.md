@@ -1,15 +1,31 @@
 ---
 layout: docs
 title: Download
+description: Download Bootstrap's compiled CSS and JavaScript, source code, or include it with your favorite package manager.
 group: getting-started
 ---
 
 **Bootstrap v{{ site.current_version}}** is available for download in several ways, including some of your favorite package managers. Choose from the options below to snag just what you need.
 
+### Bootstrap CSS and JS
+
+**Download Bootstrap's ready-to-use code to easily drop into your project.** Includes compiled and minified versions of all our CSS bundles (default, flexbox-enabled, grid only, or Reboot only) and JavaScript plugins. Doesn't include documentation or source files.
+
+<a href="{{ site.download.dist }}" class="btn btn-lg btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download Bootstrap</a>
+
 ### Source files
-Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/getting-started/build-tools/#tooling-setup).**
+**Want to compile Bootstrap with your project's asset pipeline?** Choose this option to download our source Sass, JavaScript, and documentation files. Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/getting-started/build-tools/#tooling-setup).
 
 <a href="{{ site.download.source }}" class="btn btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
+
+### Bootstrap CDN
+
+Skip the download and use the Bootstrap CDN to deliver Bootstrap's compiled CSS and JS to your project.
+
+{% highlight html %}
+<link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+{% endhighlight %}
 
 ## Package managers
 
@@ -24,7 +40,7 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.org/package/bootstrap):
 
 {% highlight bash %}
-$ npm install bootstrap@{{ site.current_version }}
+npm install bootstrap@{{ site.current_version }}
 {% endhighlight %}
 
 `require('bootstrap')` will load all of Bootstrap's jQuery plugins onto the jQuery object. The `bootstrap` module itself does not export anything. You can manually load Bootstrap's jQuery plugins individually by loading the `/js/*.js` files under the package's top-level directory.
@@ -36,7 +52,7 @@ Bootstrap's `package.json` contains some additional metadata under the following
 
 ### RubyGems
 
-Install Bootstrap in your Ruby apps using [Bundler](http://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](http://bundler.io/gemfile.html):
+Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/gemfile.html):
 
 {% highlight ruby %}
 gem 'bootstrap', '~> 4.0.0.alpha3'
@@ -45,7 +61,7 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 Alternatively, if you're not using Bundler, you can install the gem by running this command:
 
 {% highlight bash %}
-$ gem install bootstrap -v 4.0.0.alpha3
+gem install bootstrap -v 4.0.0.alpha3
 {% endhighlight %}
 
 [See the gem's README](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md) for further details.
@@ -53,7 +69,7 @@ $ gem install bootstrap -v 4.0.0.alpha3
 ### Meteor
 
 {% highlight bash %}
-$ meteor add twbs:bootstrap@={{ site.current_version }}
+meteor add twbs:bootstrap@={{ site.current_version }}
 {% endhighlight %}
 
 ### Composer
@@ -61,15 +77,15 @@ $ meteor add twbs:bootstrap@={{ site.current_version }}
 You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org):
 
 {% highlight bash %}
-$ composer require twbs/bootstrap:{{ site.current_version }}
+composer require twbs/bootstrap:{{ site.current_version }}
 {% endhighlight %}
 
 ### Bower
 
-Install and manage Bootstrap's Sass and JavaScript using [Bower](http://bower.io).
+Install and manage Bootstrap's Sass and JavaScript using [Bower](https://bower.io).
 
 {% highlight bash %}
-$ bower install bootstrap#v{{ site.current_version }}
+bower install bootstrap#v{{ site.current_version }}
 {% endhighlight %}
 
 ### NuGet
@@ -77,32 +93,11 @@ $ bower install bootstrap#v{{ site.current_version }}
 If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org):
 
 {% highlight powershell %}
-PM> Install-Package bootstrap -Pre
-PM> Install-Package bootstrap.sass -Pre
+Install-Package bootstrap -Pre
+{% endhighlight %}
+
+{% highlight powershell %}
+Install-Package bootstrap.sass -Pre
 {% endhighlight %}
 
 The `-Pre` is required until Bootstrap v4 has a stable release.
-
-{% comment %}
-## Custom builds
-
-Need only a part of Bootstrap's CSS or JS? Use one of the custom builds to snag just what you need.
-
-<div class="row">
-  <div class="col-sm-4">
-    <h3>Reboot</h3>
-    <p>Includes variables/mixins, Normalize, and Reboot. No JavaScript.</p>
-    <a class="btn btn-bs btn-outline" href="#">Download</a>
-  </div>
-  <div class="col-sm-4">
-    <h3>Grid only</h3>
-    <p>Includes variables/mixins and our grid system. No JavaScript.</p>
-    <a class="btn btn-bs btn-outline" href="#">Download</a>
-  </div>
-  <div class="col-sm-4">
-    <h3>Flexbox</h3>
-    <p>All of Bootstrap with flexbox enabled and <strong>lower browser support</strong>.</p>
-    <a class="btn btn-bs btn-outline" href="#">Download</a>
-  </div>
-</div>
-{% endcomment %}

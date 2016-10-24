@@ -32,7 +32,7 @@ See also:
       <tr>
         <td>{{ bug.browser }}</td>
         <td>{{ bug.summary | markdownify | bugify }}</td>
-        <td>{{ bug.upstream_bug | bugify }}</td>
+        <td>{{ bug.upstream_bug | bugify }}</td>
         <td>{{ bug.origin | bugify }}</td>
       </tr>
       {% endfor %}

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Cards
+description: Bootstrap Cards provide a flexible and extensible content container with multiple variants and options.
 group: components
 ---
 
@@ -141,7 +142,7 @@ Using custom widths:
 
 ## Text alignment
 
-You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.baseurl }}/components/utilities/#text-alignment).
+You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.baseurl }}/utilities/typography/#text-alignment).
 
 {% example html %}
 <div class="card card-block">
@@ -230,7 +231,7 @@ Use Bootstrap's nav pills or tabs within a card header. Be sure to always includ
 {% example html %}
 <div class="card text-xs-center">
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs pull-xs-left">
+    <ul class="nav nav-tabs card-header-tabs float-xs-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -253,7 +254,7 @@ Use Bootstrap's nav pills or tabs within a card header. Be sure to always includ
 {% example html %}
 <div class="card text-xs-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills pull-xs-left">
+    <ul class="nav nav-pills card-header-pills float-xs-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -434,7 +435,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
 
 ## Groups
 
-Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode]({{ site.baseurl }}/getting-started/flexbox) can switch that to use `display: flex;` and provide the same effect.
+Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode]({{ site.baseurl }}/getting-started/flexbox/) can switch that to use `display: flex;` and provide the same effect.
 
 Only applies to small devices and above.
 
@@ -517,7 +518,7 @@ Only applies to small devices and above.
 {% example html %}
 <div class="card-columns">
   <div class="card">
-    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
+    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title that wraps to a new line</h4>
       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -534,7 +535,7 @@ Only applies to small devices and above.
     </blockquote>
   </div>
   <div class="card">
-    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
+    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -557,7 +558,7 @@ Only applies to small devices and above.
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
   <div class="card">
-    <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
+    <img class="card-img img-fluid" data-src="holder.js/100px260/" alt="Card image">
   </div>
   <div class="card card-block text-xs-right">
     <blockquote class="card-blockquote">

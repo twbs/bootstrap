@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Alerts
+description: Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 group: components
 ---
 
@@ -60,7 +61,7 @@ Alerts can also contain additional HTML elements like headings and paragraphs.
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Well done!</h4>
   <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-  <p class="m-b-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
 </div>
 {% endexample %}
 

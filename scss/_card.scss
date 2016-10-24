@@ -70,6 +70,7 @@
 .card-header {
   @include clearfix;
   padding: $card-spacer-y $card-spacer-x;
+  margin-bottom: 0; // Removes the default margin-bottom of <hN>
   background-color: $card-cap-bg;
   border-bottom: $card-border-width solid $card-border-color;
 
@@ -168,7 +169,7 @@
 // Card image
 .card-img {
   // margin: -1.325rem;
-  @include border-radius(.25rem);
+  @include border-radius($card-border-radius-inner);
 }
 .card-img-overlay {
   position: absolute;
@@ -314,6 +315,7 @@
     column-gap: $card-columns-sm-up-column-gap;
 
     .card {
+      display: inline-block; // Don't let them vertically span multiple columns
       width: 100%; // Don't let them exceed the column width
     }
   }

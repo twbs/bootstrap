@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Tooltips
+description: Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript.
 group: components
 ---
 
@@ -15,7 +16,7 @@ Inspired by the excellent Tipsy jQuery plugin written by Jason Frame. Tooltips a
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on the 3rd party library [Tether](http://github.hubspot.com/tether/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for tooltips to work!
+- Tooltips rely on the 3rd party library [Tether](http://tether.io/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for tooltips to work!
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -50,25 +51,21 @@ Four options are available: top, right, bottom, and left aligned.
 
 <div class="bd-example bd-example-tooltip-static">
   <div class="tooltip tooltip-top" role="tooltip">
-    <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the top
     </div>
   </div>
   <div class="tooltip tooltip-right" role="tooltip">
-    <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the right
     </div>
   </div>
   <div class="tooltip tooltip-bottom" role="tooltip">
-    <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the bottom
     </div>
   </div>
   <div class="tooltip tooltip-left" role="tooltip">
-    <div class="tooltip-arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the left
     </div>
@@ -85,6 +82,7 @@ Hover over the buttons below to see their tooltips.
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
   </div>
 </div>
 
@@ -100,6 +98,14 @@ Hover over the buttons below to see their tooltips.
 </button>
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
   Tooltip on left
+</button>
+{% endhighlight %}
+
+And with custom HTML added:
+
+{% highlight html %}
+<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+  Tooltip with HTML
 </button>
 {% endhighlight %}
 
@@ -179,14 +185,18 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>html</td>
         <td>boolean</td>
         <td>false</td>
-        <td>Insert HTML into the tooltip. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
+        <td>
+          <p>Allow HTML in the tooltip.</p>
+          <p>If true, HTML tags in the tooltip's <code>title</code> will be rendered in the tooltip. If false, jQuery's <code>text</code> method will be used to insert content into the DOM.</p>
+          <p>Use text if you're worried about XSS attacks.</p>
+        </td>
       </tr>
       <tr>
         <td>placement</td>
         <td>string | function</td>
         <td>'top'</td>
         <td>
-          <p>How to position the tooltip - top | bottom | left | right | auto.<br>When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.</p>
+          <p>How to position the tooltip - top | bottom | left | right.</p>
           <p>When a function is used to determine the placement, it is called with the tooltip DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the tooltip instance.</p>
         </td>
       </tr>
@@ -194,7 +204,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>selector</td>
         <td>string</td>
         <td>false</td>
-        <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="http://jsbin.com/zopod/1/edit">an informative example</a>.</td>
+        <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="https://jsbin.com/zopod/1/edit">an informative example</a>.</td>
       </tr>
       <tr>
         <td>template</td>
@@ -226,13 +236,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>constraints</td>
         <td>Array</td>
         <td>[]</td>
-        <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">constraint docs</a>.</td>
+        <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://tether.io/#constraints">constraint docs</a>.</td>
       </tr>
       <tr>
         <td>offset</td>
         <td>string</td>
         <td>'0 0'</td>
-        <td>Offset of the popover relative to its target. For more information refer to Tether's <a href="http://github.hubspot.com/tether/#constraints">offset docs</a>.</td>
+        <td>Offset of the popover relative to its target. For more information refer to Tether's <a href="http://tether.io/#constraints">offset docs</a>.</td>
       </tr>
     </tbody>
   </table>
