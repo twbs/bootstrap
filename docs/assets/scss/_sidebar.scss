@@ -11,6 +11,17 @@
   }
 }
 
+.bd-links {
+  // padding-top: .25rem;
+  // padding-bottom: .25rem;
+  border: 1px solid $gray-lighter;
+  border-radius: .25rem;
+
+  @include media-breakpoint-up(md) {
+    margin-right: 1.5rem;
+  }
+}
+
 .bd-search {
   position: relative;
 
@@ -26,7 +37,7 @@
   }
 
   @include media-breakpoint-up(md) {
-    padding-right: 1rem;
+    // padding-right: 1rem;
   }
 }
 
@@ -35,7 +46,7 @@
   display: block;
   padding: 0;
   overflow: hidden;
-  font-size: .9rem;
+  font-size: .85rem;
 
   &:empty {
     display: none;
@@ -64,9 +75,9 @@
 
 .bd-toc-link {
   display: block;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
-  // padding: .25rem .75rem;
+  // padding-top: .25rem;
+  // padding-bottom: .25rem;
+  padding: .75rem 1rem;
   color: $gray;
 }
 .bd-toc-link:hover,
@@ -82,23 +93,29 @@
   display: block;
 }
 
+.bd-toc-item {
+  &:not(:last-child) {
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
 .bd-toc-item.active {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  padding-top: .25rem;
+  padding-bottom: 1rem;
 }
 .bd-toc-item:first-child {
-  margin-top: 0;
+  // margin-top: 0;
 }
 .bd-toc-item:last-child {
-  margin-bottom: 2rem;
+  // margin-bottom: 2rem;
 }
 
 // All levels of nav
 .bd-sidebar .nav > li > a {
   display: block;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
-  // padding: .25rem .75rem;
+  // padding-top: .25rem;
+  // padding-bottom: .25rem;
+  padding: .25rem 1rem;
   font-size: 90%;
   color: #99979c;
 }
