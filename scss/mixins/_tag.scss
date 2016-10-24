@@ -9,3 +9,19 @@
     }
   }
 }
+
+@mixin tag-outline-variant($color) {
+  background-image: none;
+  background-color: transparent;
+  border-color: $color;
+  border-style: solid;
+  border-width: 1px;
+  color: $color;
+
+  &[href] {
+    @include hover-focus {
+      color: #fff;
+      background-color: $color;
+    }
+  }
+}

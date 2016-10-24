@@ -75,3 +75,24 @@ a.tag {
 .tag-danger {
   @include tag-variant($tag-danger-bg);
 }
+
+// Outline variations (change color and border to $color and background to none/transparent)
+
+.tag-outline-default {
+  @include tag-outline-variant($tag-default-bg);
+}
+.tag-outline-primary {
+  @include tag-outline-variant($tag-primary-bg);
+}
+.tag-outline-info {
+  @include tag-outline-variant($tag-info-bg);
+}
+.tag-outline-success {
+  @include tag-outline-variant($tag-success-bg);
+}
+.tag-outline-warning {
+  @include tag-outline-variant($tag-warning-bg);
+}
+.tag-outline-danger {
+  @include tag-outline-variant($tag-danger-bg);
+}
