@@ -1,7 +1,7 @@
 <nav class="bd-links" id="docsNavbarContent">
   {% for group in site.data.nav %}
   {% assign link = group.pages | first %}
-  {% assign slug = group.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-' %}
+  {% assign slug = group.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-' | append: '/' %}
   {% assign active = nil %}
 
   {% if page.url contains slug %}
