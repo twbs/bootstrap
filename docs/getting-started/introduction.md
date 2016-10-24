@@ -8,9 +8,10 @@ redirect_from: "/getting-started/"
 
 Bootstrap is the world's most popular framework for building responsive, mobile-first sites and applications. Inside you'll find high quality HTML, CSS, and JavaScript to make starting any project easier than ever.
 
-Here's how to quickly get started with the Bootstrap CDN and a template starter page.
-
 {% include ads.html %}
+
+<!-- Here's how to quickly get started with the Bootstrap CDN and a template starter page. -->
+
 
 ## Contents
 
