@@ -137,17 +137,53 @@
     </div>
   </div>
 
+  <div id="myModal3" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel3">Race Condition Test</h4>
+        </div>
+        <div class="modal-body">
+          You should see a lot of modals created and destroyed. Afterwards, the page should be in an ok state (code below
+          should print trues). Some modals will flicker (destroyed before completing their animations) and numbers displayed
+          on the modals will not be in order. This test should work multiple times without refreshing the page.
+          <br/>
+          <small><code><pre>/* Close all modals first. */ console.log(!$(document.body).hasClass('modal-open'),!$(document.body).data('bs.modal.refcount'))</pre></code></small>
+          <br/>
+          <button id="race-condition-test-1" class="btn btn-lg">show/hide</button>
+          <button id="race-condition-test-2" class="btn btn-lg">show/hide/dispose</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="raceModal0" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"> Race Modal 0 </div></div></div></div>
+  <div id="raceModal1" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"> Race Modal 1 </div></div></div></div>
+  <div id="raceModal2" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"> Race Modal 2 </div></div></div></div>
+  <div id="raceModal3" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"> Race Modal 3 </div></div></div></div>
+  <div id="raceModal4" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"> Race Modal 4 </div></div></div></div>
+  <div id="raceModal5" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"> Race Modal 5 </div></div></div></div>
+  <div id="raceModal6" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"> Race Modal 6 </div></div></div></div>
+  <div id="raceModal7" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"> Race Modal 7 </div></div></div></div>
+  <div id="raceModal8" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"> Race Modal 8 </div></div></div></div>
+  <div id="raceModal9" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"> Race Modal 9 </div></div></div></div>
+    
+
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Launch demo modal
   </button>
 
   <button id="tall-toggle" class="btn btn-default">Toggle tall &lt;body&gt; content</button>
-  <br><br>
+  <br/><br/>
   <button class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#myModal2">
     Launch Firefox bug test modal
   </button>
   (<a href="https://github.com/twbs/bootstrap/issues/18365">See Issue #18365</a>)
-  <br><br>
+  <br/><br/>
+  <button class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#myModal3">
+    Launch race condition test
+  </button>
+  <br/><br/>
   <div id="tall" style="display: none;">
     Tall body content to force the page to have a scrollbar.
   </div>
@@ -193,6 +229,43 @@ $(function () {
     $('#ff-bug-input').on('focus', function () {
       reportFirefoxTestResult(true)
     })
+  })
+  function doTest(fn, speed, count) {
+    setTimeout(function () {
+      if (count === 10) return
+      fn(count)
+      doTest(fn, speed, count + 1)
+    }, speed)
+  }
+  function raceTest(start, speed, hide, dispose) {
+    setTimeout(doTest.bind(this, function (i) {
+      $("#raceModal" + i).modal("show")
+      if (hide !== undefined) {
+        setTimeout(function () {
+          $("#raceModal" + i).modal("hide")
+        }, hide);
+      }
+      if (dispose !== undefined) {
+        setTimeout(function () {
+          $("#raceModal" + i).modal("dispose")
+        }, dispose)
+      }
+    }, speed, 0), start)
+  }
+  $('#race-condition-test-1').click(function () {
+    var interval = 400
+    $("#myModal3").modal("dispose")
+    raceTest(0, interval * 1.0, interval * 0.5)
+    raceTest(0, interval * 1.6, interval * 1.5)
+    raceTest(0, interval * 2.1, interval * 1.2)
+  })
+  $('#race-condition-test-2').click(function () {
+    var interval = 400
+    $("#myModal3").modal("dispose")
+    raceTest(0, interval * 1.0, interval * 0.5, interval * 1.5)
+    raceTest(0, interval * 1.6, interval * 1.5, interval * 1.5)
+    raceTest(0, interval * 1.7, interval * 0.9, interval * 0.9)
+    raceTest(0, interval * 1.9, interval * 1.2, interval * 0.7)
   })
 })
 </script>

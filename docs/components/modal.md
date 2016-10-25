@@ -449,14 +449,23 @@ Manually toggles a modal. **Returns to the caller before the modal has actually 
 #### `.modal('show')`
 
 Manually opens a modal. **Returns to the caller before the modal has actually been shown** (i.e. before the `shown.bs.modal` event occurs).
+Showing a modal that is transitioning out cancels the `hidden.bs.modal` event.
 
 {% highlight js %}$('#myModal').modal('show'){% endhighlight %}
 
 #### `.modal('hide')`
 
 Manually hides a modal. **Returns to the caller before the modal has actually been hidden** (i.e. before the `hidden.bs.modal` event occurs).
+Hiding a modal that is transitioning in cancels the `shown.bs.modal` event.
 
 {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
+
+#### `.modal('dispose')`
+
+Hides and deactivates an element's modal. Does not fire a hide or hidden event, and if the modal was transitioning
+in or out, the `shown.bs.modal` or `hidden.bs.modal` events will be cancelled.
+
+{% highlight js %}$('#element').modal('dispose'){% endhighlight %}
 
 ### Events
 
