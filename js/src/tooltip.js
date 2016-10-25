@@ -339,6 +339,7 @@ const Tooltip = (($) => {
       }
 
       $(tip).removeClass(ClassName.IN)
+      this._activeTrigger.click = false
 
       if (Util.supportsTransitionEnd() &&
          ($(this.tip).hasClass(ClassName.FADE))) {
