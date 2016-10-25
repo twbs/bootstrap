@@ -52,6 +52,29 @@ $(function () {
     assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
   })
 
+  QUnit.test('should collapse only the first collapse', function (assert) {
+    assert.expect(2)
+    var html = [
+      '<div class="panel-group" id="accordion1">',
+        '<div class="panel">',
+          '<div id="collapse1" class="collapse"/>',
+        '</div>',
+      '</div>',
+      '<div class="panel-group" id="accordion2">',
+        '<div class="panel">',
+          '<div id="collapse2" class="collapse in"/>',
+        '</div>',
+      '</div>'
+    ].join('')
+    $(html).appendTo('#qunit-fixture')
+    var $el1 = $('#collapse1')
+    var $el2 = $('#collapse2')
+    $el1.bootstrapCollapse('show')
+
+    assert.ok($el1.hasClass('in'))
+    assert.ok($el2.hasClass('in'))
+  })
+
   QUnit.test('should hide a collapsed element', function (assert) {
     assert.expect(1)
     var $el = $('<div class="collapse"/>').bootstrapCollapse('hide')
