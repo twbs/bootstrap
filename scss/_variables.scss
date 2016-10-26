@@ -193,6 +193,9 @@ $font-size-lg:   1.25rem !default;
 $font-size-sm:   .875rem !default;
 $font-size-xs:   .75rem !default;
 
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
 $line-height-base: 1.5 !default;
 
 $font-size-h1: 2.5rem !default;
@@ -237,10 +240,10 @@ $hr-border-width: $border-width !default;
 
 $mark-padding: .2em !default;
 
-$dt-font-weight: bold !default;
+$dt-font-weight: $font-weight-bold !default;
 
 $kbd-box-shadow:         inset 0 -.1rem 0 rgba(0,0,0,.25) !default;
-$nested-kbd-font-weight: bold !default;
+$nested-kbd-font-weight: $font-weight-bold !default;
 
 $list-inline-padding: 5px !default;
 
@@ -286,7 +289,7 @@ $table-border-color:            $gray-lighter !default;
 $btn-padding-x:                  1rem !default;
 $btn-padding-y:                  .5rem !default;
 $btn-line-height:                1.25 !default;
-$btn-font-weight:                normal !default;
+$btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075) !default;
 $btn-active-box-shadow:          inset 0 3px 5px rgba(0,0,0,.125) !default;
 
@@ -684,7 +687,7 @@ $tag-danger-bg:             $brand-danger !default;
 $tag-color:                 #fff !default;
 $tag-link-hover-color:      #fff !default;
 $tag-font-size:             75% !default;
-$tag-font-weight:           bold !default;
+$tag-font-weight:           $font-weight-bold !default;
 $tag-padding-x:             .4em !default;
 $tag-padding-y:             .25em !default;
 
@@ -729,7 +732,7 @@ $modal-sm:                    300px !default;
 $alert-padding-x:             1.25rem !default;
 $alert-padding-y:             .75rem !default;
 $alert-border-radius:         $border-radius !default;
-$alert-link-font-weight:      bold !default;
+$alert-link-font-weight:      $font-weight-bold !default;
 $alert-border-width:          $border-width !default;
 
 $alert-success-bg:            $state-success-bg !default;
@@ -849,7 +852,7 @@ $carousel-icon-width:                         20px !default;
 
 // Close
 
-$close-font-weight:           bold !default;
+$close-font-weight:           $font-weight-bold !default;
 $close-color:                 #000 !default;
 $close-text-shadow:           0 1px 0 #fff !default;
 
