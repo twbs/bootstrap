@@ -1,25 +1,25 @@
-@mixin spacer( $abbrev: "p", $sides: "", $size: 1, $important: false ) {
+@mixin spacer($abbrev: "p", $sides: "", $size: 1, $important: false) {
 
-  @if ( $sides == "x" ) {
+  @if ($sides == "x") {
 
-    @include spacer( $abbrev, "r", $size, $important );
-    @include spacer( $abbrev, "l", $size, $important );
+    @include spacer($abbrev, "r", $size, $important);
+    @include spacer($abbrev, "l", $size, $important);
 
-  } @else if ( $sides == "y" ) {
+  } @else if ($sides == "y") {
 
-    @include spacer( $abbrev, "t", $size, $important );
-    @include spacer( $abbrev, "b", $size, $important );
+    @include spacer($abbrev, "t", $size, $important);
+    @include spacer($abbrev, "b", $size, $important);
 
   } @else {
 
-    $lengths:    map-get( $spacers, $size );
+    $lengths:    map-get($spacers, $size);
 
-    $length-x:   map-get( $lengths, x );
-    $length-y:   map-get( $lengths, y );
+    $length-x:   map-get($lengths, x);
+    $length-y:   map-get($lengths, y);
 
     $prop:      "padding";
 
-    @if ( $abbrev == "m" ) {
+    @if ($abbrev == "m") {
 
       $prop: "margin";
 
@@ -28,26 +28,26 @@
     $prop-sides: "";
     $length:     $length-y $length-x;
 
-    @if ( $length-x == $length-y ) {
+    @if ($length-x == $length-y) {
       $length: $length-x;
     }
 
-    @if ( $sides == "t" ) {
+    @if ($sides == "t") {
 
       $prop-sides:  "-top";
       $length:      $length-y;
 
-    } @else if ( $sides == "r" ) {
+    } @else if ($sides == "r") {
 
       $prop-sides:  "-right";
       $length:      $length-x;
 
-    } @else if ( $sides == "b" ) {
+    } @else if ($sides == "b") {
 
       $prop-sides:  "-bottom";
       $length:      $length-y;
 
-    } @else if ( $sides == "l" ) {
+    } @else if ($sides == "l") {
 
       $prop-sides:  "-left";
       $length:      $length-x;
@@ -56,7 +56,7 @@
 
     $_important: "";
 
-    @if ( $important ) {
+    @if ($important) {
       $_important: " !important";
     }
 
