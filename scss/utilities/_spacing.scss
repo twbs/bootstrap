@@ -12,8 +12,8 @@
 
 @each $prop, $abbrev in (margin: m, padding: p) {
   @each $size, $lengths in $spacers {
-    @each $side in ( '', 'x', 'y', 't', 'r', 'b', 'l') {
-      .#{$abbrev}#{$side}-#{$size} { @include spacer( $abbrev, $side, $size, true ); }
+    @each $side in ("", "x", "y", "t", "r", "b", "l") {
+      .#{$abbrev}#{$side}-#{$size} { @include spacer($abbrev, $side, $size, true); }
     }
   }
 }
