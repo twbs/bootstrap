@@ -44,7 +44,7 @@ const Collapse = (($) => {
   }
 
   const ClassName = {
-    IN         : 'in',
+    ACTIVE     : 'active',
     COLLAPSE   : 'collapse',
     COLLAPSING : 'collapsing',
     COLLAPSED  : 'collapsed'
@@ -56,7 +56,7 @@ const Collapse = (($) => {
   }
 
   const Selector = {
-    ACTIVES     : '.card > .in, .card > .collapsing',
+    ACTIVES     : '.card > .active, .card > .collapsing',
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
@@ -104,7 +104,7 @@ const Collapse = (($) => {
     // public
 
     toggle() {
-      if ($(this._element).hasClass(ClassName.IN)) {
+      if ($(this._element).hasClass(ClassName.ACTIVE)) {
         this.hide()
       } else {
         this.show()
@@ -113,7 +113,7 @@ const Collapse = (($) => {
 
     show() {
       if (this._isTransitioning ||
-        $(this._element).hasClass(ClassName.IN)) {
+        $(this._element).hasClass(ClassName.ACTIVE)) {
         return
       }
 
@@ -168,7 +168,7 @@ const Collapse = (($) => {
         $(this._element)
           .removeClass(ClassName.COLLAPSING)
           .addClass(ClassName.COLLAPSE)
-          .addClass(ClassName.IN)
+          .addClass(ClassName.ACTIVE)
 
         this._element.style[dimension] = ''
 
@@ -194,7 +194,7 @@ const Collapse = (($) => {
 
     hide() {
       if (this._isTransitioning ||
-        !$(this._element).hasClass(ClassName.IN)) {
+        !$(this._element).hasClass(ClassName.ACTIVE)) {
         return
       }
 
@@ -215,7 +215,7 @@ const Collapse = (($) => {
       $(this._element)
         .addClass(ClassName.COLLAPSING)
         .removeClass(ClassName.COLLAPSE)
-        .removeClass(ClassName.IN)
+        .removeClass(ClassName.ACTIVE)
 
       this._element.setAttribute('aria-expanded', false)
 
@@ -293,7 +293,7 @@ const Collapse = (($) => {
 
     _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
-        let isOpen = $(element).hasClass(ClassName.IN)
+        let isOpen = $(element).hasClass(ClassName.ACTIVE)
         element.setAttribute('aria-expanded', isOpen)
 
         if (triggerArray.length) {

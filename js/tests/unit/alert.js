@@ -34,7 +34,7 @@ $(function () {
 
   QUnit.test('should fade element out on clicking .close', function (assert) {
     assert.expect(1)
-    var alertHTML = '<div class="alert alert-danger fade in">'
+    var alertHTML = '<div class="alert alert-danger fade active">'
         + '<a class="close" href="#" data-dismiss="alert">×</a>'
         + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
         + '</div>'
@@ -43,12 +43,12 @@ $(function () {
 
     $alert.find('.close').trigger('click')
 
-    assert.strictEqual($alert.hasClass('in'), false, 'remove .in class on .close click')
+    assert.strictEqual($alert.hasClass('active'), false, 'remove .active class on .close click')
   })
 
   QUnit.test('should remove element when clicking .close', function (assert) {
     assert.expect(2)
-    var alertHTML = '<div class="alert alert-danger fade in">'
+    var alertHTML = '<div class="alert alert-danger fade active">'
         + '<a class="close" href="#" data-dismiss="alert">×</a>'
         + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
         + '</div>'

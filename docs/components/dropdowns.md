@@ -21,7 +21,7 @@ Wrap the dropdown's toggle (your button or link) and the dropdown menu within `.
 Any single `.btn` can be turned into a dropdown toggle with some markup changes. Here's how you can put them to work with either `<button>` elements:
 
 {% example html %}
-<div class="dropdown open">
+<div class="dropdown active">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown button
   </button>
@@ -36,7 +36,7 @@ Any single `.btn` can be turned into a dropdown toggle with some markup changes.
 And with `<a>` elements:
 
 {% example html %}
-<div class="dropdown open">
+<div class="dropdown active">
   <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown link
   </a>
@@ -407,7 +407,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 Historically dropdown menu contents *had* to be links, but that's no longer the case with v4. Now you can optionally use `<button>` elements in your dropdowns instead of just `<a>`s.
 
 {% example html %}
-<div class="dropdown open">
+<div class="dropdown active">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown
   </button>
@@ -480,7 +480,7 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 
 ## Usage
 
-Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.open` class on the parent list item.
+Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.active` class on the parent list item.
 
 On mobile devices, opening a dropdown adds a `.dropdown-backdrop` as a tap area for closing dropdown menus when tapping outside the menu, a requirement for proper iOS support. **This means that switching from an open dropdown menu to a different dropdown menu requires an extra tap on mobile.**
 
