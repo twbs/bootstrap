@@ -33,7 +33,11 @@ Chill? Awesome—keep reading for more information and some code snippets.
 
 ## Auto-layout columns
 
-When flexbox support is enabled, you can utilize breakpoint-specific column classes for equal-width columns. Add any number of `.col-{breakpoint}`s for each breakpoint you need and you're good to go. For example, here's are two grid layouts that apply to every device and viewport possible.
+When flexbox support is enabled, you can utilize breakpoint-specific column classes for equal-width columns. Add any number of `.col-{breakpoint}`s for each breakpoint you need and every column will be the same width.
+
+### Equal-width
+
+For example, here are two grid layouts that apply to every device and viewport, from `xs` to `xl`.
 
 <div class="bd-example-row">
 {% example html %}
@@ -60,6 +64,8 @@ When flexbox support is enabled, you can utilize breakpoint-specific column clas
 </div>
 {% endexample %}
 </div>
+
+### Setting one column width
 
 Auto-layout for flexbox grid columns also means you can set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths. Note that the other columns will resize no matter the width of the center column.
 
@@ -92,7 +98,9 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
 {% endexample %}
 </div>
 
-Sometimes it's useful to have a column that lays itself out based on the natural width of its content, especially single line content like inputs, numbers, etc. Using the `col-{breakpoint}-auto` classes, you can guide this behavior as desired. This, in conjunction with [horizontal alignment](#horizontal-alignment) classes, is very useful for centering layouts with uneven column sizes as viewport width grows.
+### Variable width content
+
+Using the `col-{breakpoint}-auto` classes, columns can size itself based on the natural width of its content. This is super handy with single line content like inputs, numbers, etc. This, in conjunction with [horizontal alignment](#horizontal-alignment) classes, is very useful for centering layouts with uneven column sizes as viewport width changes.
 
 <div class="bd-example-row">
 {% example html %}
