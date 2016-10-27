@@ -105,6 +105,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Button group
 
 - Dropped the `.btn-group-xs` class entirely given removal of `.btn-xs`.
+- Removed justified button groups as they were only available for `<a>` elements and not `<button>` elements.
 
 ### Dropdowns
 
