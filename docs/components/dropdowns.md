@@ -53,7 +53,7 @@ The best part is you can do this with any button variant, too:
 
 <div class="bd-example">
   <div class="btn-group">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Default</button>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Primary</button>
     <div class="dropdown-menu">
       <a class="dropdown-item" href="#">Action</a>
       <a class="dropdown-item" href="#">Another action</a>
@@ -63,7 +63,7 @@ The best part is you can do this with any button variant, too:
     </div>
   </div><!-- /btn-group -->
   <div class="btn-group">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Primary</button>
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Secondary</button>
     <div class="dropdown-menu">
       <a class="dropdown-item" href="#">Action</a>
       <a class="dropdown-item" href="#">Another action</a>
@@ -138,8 +138,8 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 
 <div class="bd-example">
   <div class="btn-group">
-    <button type="button" class="btn btn-secondary">Default</button>
-    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
@@ -151,8 +151,8 @@ We use this extra class to reduce the horizontal `padding` on either side of the
     </div>
   </div><!-- /btn-group -->
   <div class="btn-group">
-    <button type="button" class="btn btn-primary">Primary</button>
-    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
