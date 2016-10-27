@@ -26,8 +26,8 @@ The flexbox grid system behaves similar to our default grid system, but with a f
 - Nesting, offsets, pushes, and pulls are all supported in the flexbox grid system.
 - Flexbox grid columns without a set width will automatically layout with equal widths. For example, four columns will each automatically be 25% wide.
 - Flexbox grid columns have significantly more alignment options available, including vertical alignment.
-- Unlike the default grid system where a grid column starts as full-width in the `xs` tier, flexbox requires a `.col-{breakpoint}` class for each tier.
-- Be aware of the limitations and [bugs around flexbox](https://github.com/philipwalton/flexbugs), like the [inability to use some HTML elements as flex containers](https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers). 
+- Unlike the default grid system where a grid column starts as full-width in the `xs` tier, **flexbox requires a `.col-{breakpoint}` class for each tier.**
+- Be aware of the limitations and [bugs around flexbox](https://github.com/philipwalton/flexbugs), like the [inability to use some HTML elements as flex containers](https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers).
 
 Chill? Awesome—keep reading for more information and some code snippets.
 
