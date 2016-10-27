@@ -92,6 +92,37 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
 {% endexample %}
 </div>
 
+Sometimes it's useful to have a column that lays itself out based on the natural width of its content, especially single line content like inputs, numbers, etc. Using the `col-{breakpoint}-auto` classes, you can guide this behavior as desired. This, in conjunction with [horizontal alignment](#horizontal-alignment) classes, is very useful for centering layouts with uneven column sizes as viewport width grows.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row flex-items-md-center">
+    <div class="col-xs col-lg-2">
+      1 of 3
+    </div>
+    <div class="col-xs-12 col-md-auto">
+      Variable width content
+    </div>
+    <div class="col-xs col-lg-2">
+      3 of 3
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs">
+      1 of 3
+    </div>
+    <div class="col-xs-12 col-md-auto">
+      Variable width content
+    </div>
+    <div class="col-xs col-lg-2">
+      3 of 3
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
 ## Responsive flexbox
 
 Unlike the default grid system, the flexbox grid requires a class for full-width columns. If you have a `.col-sm-6` and don't add `.col-xs-12`, your `xs` grid will not render correctly. Note that flexbox grid tiers still scale up across breakpoints, so if you want two 50% wide columns across `sm`, `md`, and `lg`, you only need to set `.col-sm-6`.
