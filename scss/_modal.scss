@@ -31,7 +31,7 @@
     @include transition(transform .3s ease-out);
     transform: translate(0, -25%);
   }
-  &.active .modal-dialog { transform: translate(0, 0); }
+  &.show .modal-dialog { transform: translate(0, 0); }
 }
 .modal-open .modal {
   overflow-x: hidden;
@@ -69,7 +69,7 @@
 
   // Fade for backdrop
   &.fade { opacity: 0; }
-  &.active { opacity: $modal-backdrop-opacity; }
+  &.show { opacity: $modal-backdrop-opacity; }
 }
 
 // Modal header

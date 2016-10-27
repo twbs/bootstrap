@@ -3,26 +3,26 @@
 
   @include transition(opacity .15s linear);
 
-  &.active {
+  &.show {
     opacity: 1;
   }
 }
 
 .collapse {
   display: none;
-  &.active {
+  &.show {
     display: block;
   }
 }
 
 tr {
-  &.collapse.active {
+  &.collapse.show {
     display: table-row;
   }
 }
 
 tbody {
-  &.collapse.active {
+  &.collapse.show {
     display: table-row-group;
   }
 }

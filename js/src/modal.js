@@ -60,7 +60,7 @@ const Modal = (($) => {
     BACKDROP           : 'modal-backdrop',
     OPEN               : 'modal-open',
     FADE               : 'fade',
-    ACTIVE             : 'active'
+    SHOW               : 'show'
   }
 
   const Selector = {
@@ -185,7 +185,7 @@ const Modal = (($) => {
 
       $(document).off(Event.FOCUSIN)
 
-      $(this._element).removeClass(ClassName.ACTIVE)
+      $(this._element).removeClass(ClassName.SHOW)
 
       $(this._element).off(Event.CLICK_DISMISS)
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
@@ -242,7 +242,7 @@ const Modal = (($) => {
         Util.reflow(this._element)
       }
 
-      $(this._element).addClass(ClassName.ACTIVE)
+      $(this._element).addClass(ClassName.SHOW)
 
       if (this._config.focus) {
         this._enforceFocus()
@@ -356,7 +356,7 @@ const Modal = (($) => {
           Util.reflow(this._backdrop)
         }
 
-        $(this._backdrop).addClass(ClassName.ACTIVE)
+        $(this._backdrop).addClass(ClassName.SHOW)
 
         if (!callback) {
           return
@@ -372,7 +372,7 @@ const Modal = (($) => {
           .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
 
       } else if (!this._isShown && this._backdrop) {
-        $(this._backdrop).removeClass(ClassName.ACTIVE)
+        $(this._backdrop).removeClass(ClassName.SHOW)
 
         const callbackRemove = () => {
           this._removeBackdrop()

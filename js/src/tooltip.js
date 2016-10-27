@@ -72,8 +72,8 @@ const Tooltip = (($) => {
   }
 
   const HoverState = {
-    ACTIVE : 'active',
-    OUT    : 'out'
+    SHOW : 'show',
+    OUT  : 'out'
   }
 
   const Event = {
@@ -90,8 +90,8 @@ const Tooltip = (($) => {
   }
 
   const ClassName = {
-    FADE   : 'fade',
-    ACTIVE : 'active'
+    FADE : 'fade',
+    SHOW : 'show'
   }
 
   const Selector = {
@@ -208,7 +208,7 @@ const Tooltip = (($) => {
 
       } else {
 
-        if ($(this.getTipElement()).hasClass(ClassName.ACTIVE)) {
+        if ($(this.getTipElement()).hasClass(ClassName.SHOW)) {
           this._leave(null, this)
           return
         }
@@ -303,7 +303,7 @@ const Tooltip = (($) => {
         Util.reflow(tip)
         this._tether.position()
 
-        $(tip).addClass(ClassName.ACTIVE)
+        $(tip).addClass(ClassName.SHOW)
 
         const complete = () => {
           const prevHoverState = this._hoverState
@@ -336,7 +336,7 @@ const Tooltip = (($) => {
         throw new Error('Tooltip is transitioning')
       }
       const complete  = () => {
-        if (this._hoverState !== HoverState.ACTIVE && tip.parentNode) {
+        if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
           tip.parentNode.removeChild(tip)
         }
 
@@ -356,7 +356,7 @@ const Tooltip = (($) => {
         return
       }
 
-      $(tip).removeClass(ClassName.ACTIVE)
+      $(tip).removeClass(ClassName.SHOW)
 
       if (Util.supportsTransitionEnd() &&
           $(this.tip).hasClass(ClassName.FADE)) {
@@ -388,7 +388,7 @@ const Tooltip = (($) => {
 
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
 
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.ACTIVE}`)
+      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
 
       this.cleanupTether()
     }
@@ -513,15 +513,15 @@ const Tooltip = (($) => {
         ] = true
       }
 
-      if ($(context.getTipElement()).hasClass(ClassName.ACTIVE) ||
-         context._hoverState === HoverState.ACTIVE) {
-        context._hoverState = HoverState.ACTIVE
+      if ($(context.getTipElement()).hasClass(ClassName.SHOW) ||
+         context._hoverState === HoverState.SHOW) {
+        context._hoverState = HoverState.SHOW
         return
       }
 
       clearTimeout(context._timeout)
 
-      context._hoverState = HoverState.ACTIVE
+      context._hoverState = HoverState.SHOW
 
       if (!context.config.delay || !context.config.delay.show) {
         context.show()
@@ -529,7 +529,7 @@ const Tooltip = (($) => {
       }
 
       context._timeout = setTimeout(() => {
-        if (context._hoverState === HoverState.ACTIVE) {
+        if (context._hoverState === HoverState.SHOW) {
           context.show()
         }
       }, context.config.delay.show)

@@ -111,7 +111,7 @@ $(function () {
 
     assert
       .ok($('.tooltip')
-      .is('.fade.bs-tether-element-attached-top.bs-tether-element-attached-center.active'), 'has correct classes applied')
+      .is('.fade.bs-tether-element-attached-top.bs-tether-element-attached-center.show'), 'has correct classes applied')
 
     $tooltip.bootstrapTooltip('hide')
 
@@ -306,7 +306,7 @@ $(function () {
     $tooltip.bootstrapTooltip('show')
     $tooltip.bootstrapTooltip('dispose')
 
-    assert.ok(!$tooltip.hasClass('active'), 'tooltip is hidden')
+    assert.ok(!$tooltip.hasClass('show'), 'tooltip is hidden')
     assert.ok(!$._data($tooltip[0], 'bs.tooltip'), 'tooltip does not have data')
     assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip still has click.foo')
     assert.ok(!$._data($tooltip[0], 'events').mouseover && !$._data($tooltip[0], 'events').mouseout, 'tooltip does not have hover events')
@@ -335,7 +335,7 @@ $(function () {
       .bootstrapTooltip({ trigger: 'manual' })
       .bootstrapTooltip('toggle')
 
-    assert.ok($('.tooltip').is('.fade.active'), 'tooltip is faded active')
+    assert.ok($('.tooltip').is('.fade.show'), 'tooltip is faded active')
   })
 
   QUnit.test('should hide previously shown tooltip when toggle is called on tooltip', function (assert) {
@@ -346,7 +346,7 @@ $(function () {
       .bootstrapTooltip('show')
 
     $('.tooltip').bootstrapTooltip('toggle')
-    assert.ok($('.tooltip').not('.fade.active'), 'tooltip was faded out')
+    assert.ok($('.tooltip').not('.fade.show'), 'tooltip was faded out')
   })
 
   QUnit.test('should place tooltips inside body when container is body', function (assert) {
@@ -502,11 +502,11 @@ $(function () {
       .bootstrapTooltip({ delay: 150 })
 
     setTimeout(function () {
-      assert.ok(!$('.tooltip').is('.fade.active'), '100ms: tooltip is not faded active')
+      assert.ok(!$('.tooltip').is('.fade.show'), '100ms: tooltip is not faded active')
     }, 100)
 
     setTimeout(function () {
-      assert.ok($('.tooltip').is('.fade.active'), '200ms: tooltip is faded active')
+      assert.ok($('.tooltip').is('.fade.show'), '200ms: tooltip is faded active')
       done()
     }, 200)
 
@@ -522,12 +522,12 @@ $(function () {
       .bootstrapTooltip({ delay: 150 })
 
     setTimeout(function () {
-      assert.ok(!$('.tooltip').is('.fade.active'), '100ms: tooltip not faded active')
+      assert.ok(!$('.tooltip').is('.fade.show'), '100ms: tooltip not faded active')
       $tooltip.trigger('mouseout')
     }, 100)
 
     setTimeout(function () {
-      assert.ok(!$('.tooltip').is('.fade.active'), '200ms: tooltip not faded active')
+      assert.ok(!$('.tooltip').is('.fade.show'), '200ms: tooltip not faded active')
       done()
     }, 200)
 
@@ -543,16 +543,16 @@ $(function () {
       .bootstrapTooltip({ delay: { show: 0, hide: 150 } })
 
     setTimeout(function () {
-      assert.ok($('.tooltip').is('.fade.active'), '1ms: tooltip faded active')
+      assert.ok($('.tooltip').is('.fade.show'), '1ms: tooltip faded active')
       $tooltip.trigger('mouseout')
 
       setTimeout(function () {
-        assert.ok($('.tooltip').is('.fade.active'), '100ms: tooltip still faded active')
+        assert.ok($('.tooltip').is('.fade.show'), '100ms: tooltip still faded active')
         $tooltip.trigger('mouseenter')
       }, 100)
 
       setTimeout(function () {
-        assert.ok($('.tooltip').is('.fade.active'), '200ms: tooltip still faded active')
+        assert.ok($('.tooltip').is('.fade.show'), '200ms: tooltip still faded active')
         done()
       }, 200)
     }, 0)
@@ -569,12 +569,12 @@ $(function () {
       .bootstrapTooltip({ delay: 150 })
 
     setTimeout(function () {
-      assert.ok(!$('.tooltip').is('.fade.active'), '100ms: tooltip not faded active')
+      assert.ok(!$('.tooltip').is('.fade.show'), '100ms: tooltip not faded active')
       $tooltip.trigger('mouseout')
     }, 100)
 
     setTimeout(function () {
-      assert.ok(!$('.tooltip').is('.fade.active'), '200ms: tooltip not faded active')
+      assert.ok(!$('.tooltip').is('.fade.show'), '200ms: tooltip not faded active')
       done()
     }, 200)
 
@@ -590,12 +590,12 @@ $(function () {
       .bootstrapTooltip({ delay: { show: 150, hide: 0 } })
 
     setTimeout(function () {
-      assert.ok(!$('.tooltip').is('.fade.active'), '100ms: tooltip not faded active')
+      assert.ok(!$('.tooltip').is('.fade.show'), '100ms: tooltip not faded active')
       $tooltip.trigger('mouseout')
     }, 100)
 
     setTimeout(function () {
-      assert.ok(!$('.tooltip').is('.fade.active'), '250ms: tooltip not faded active')
+      assert.ok(!$('.tooltip').is('.fade.show'), '250ms: tooltip not faded active')
       done()
     }, 250)
 
@@ -611,16 +611,16 @@ $(function () {
       .bootstrapTooltip({ delay: { show: 0, hide: 150 } })
 
     setTimeout(function () {
-      assert.ok($($tooltip.data('bs.tooltip').tip).is('.fade.active'), '1ms: tooltip faded active')
+      assert.ok($($tooltip.data('bs.tooltip').tip).is('.fade.show'), '1ms: tooltip faded active')
 
       $tooltip.trigger('mouseout')
 
       setTimeout(function () {
-        assert.ok($($tooltip.data('bs.tooltip').tip).is('.fade.active'), '100ms: tooltip still faded active')
+        assert.ok($($tooltip.data('bs.tooltip').tip).is('.fade.show'), '100ms: tooltip still faded active')
       }, 100)
 
       setTimeout(function () {
-        assert.ok(!$($tooltip.data('bs.tooltip').tip).is('.active'), '200ms: tooltip removed')
+        assert.ok(!$($tooltip.data('bs.tooltip').tip).is('.show'), '200ms: tooltip removed')
         done()
       }, 200)
 
@@ -726,7 +726,7 @@ $(function () {
     assert.ok(obj._hoverState === 'out', 'the tooltip hoverState should be set to "out"')
 
     $('#tt-outer').trigger('mouseenter')
-    assert.ok(obj._hoverState === 'active', 'the tooltip hoverState should be set to "active"')
+    assert.ok(obj._hoverState === 'show', 'the tooltip hoverState should be set to "show"')
 
     assert.strictEqual(currentUid, $('#tt-content').text())
   })
@@ -788,7 +788,7 @@ $(function () {
     var tooltip = $el.data('bs.tooltip')
     var $tooltip = $(tooltip.getTipElement())
 
-    function showingTooltip() { return $tooltip.hasClass('active') || tooltip._hoverState === 'active' }
+    function showingTooltip() { return $tooltip.hasClass('show') || tooltip._hoverState === 'show' }
 
     var tests = [
         ['mouseenter', 'mouseleave'],

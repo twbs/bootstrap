@@ -44,7 +44,7 @@ const Collapse = (($) => {
   }
 
   const ClassName = {
-    ACTIVE     : 'active',
+    SHOW       : 'show',
     COLLAPSE   : 'collapse',
     COLLAPSING : 'collapsing',
     COLLAPSED  : 'collapsed'
@@ -56,7 +56,7 @@ const Collapse = (($) => {
   }
 
   const Selector = {
-    ACTIVES     : '.card > .active, .card > .collapsing',
+    ACTIVES     : '.card > .show, .card > .collapsing',
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
@@ -104,7 +104,7 @@ const Collapse = (($) => {
     // public
 
     toggle() {
-      if ($(this._element).hasClass(ClassName.ACTIVE)) {
+      if ($(this._element).hasClass(ClassName.SHOW)) {
         this.hide()
       } else {
         this.show()
@@ -116,7 +116,7 @@ const Collapse = (($) => {
         throw new Error('Collapse is transitioning')
       }
 
-      if ($(this._element).hasClass(ClassName.ACTIVE)) {
+      if ($(this._element).hasClass(ClassName.SHOW)) {
         return
       }
 
@@ -171,7 +171,7 @@ const Collapse = (($) => {
         $(this._element)
           .removeClass(ClassName.COLLAPSING)
           .addClass(ClassName.COLLAPSE)
-          .addClass(ClassName.ACTIVE)
+          .addClass(ClassName.SHOW)
 
         this._element.style[dimension] = ''
 
@@ -200,7 +200,7 @@ const Collapse = (($) => {
         throw new Error('Collapse is transitioning')
       }
 
-      if (!$(this._element).hasClass(ClassName.ACTIVE)) {
+      if (!$(this._element).hasClass(ClassName.SHOW)) {
         return
       }
 
@@ -221,7 +221,7 @@ const Collapse = (($) => {
       $(this._element)
         .addClass(ClassName.COLLAPSING)
         .removeClass(ClassName.COLLAPSE)
-        .removeClass(ClassName.ACTIVE)
+        .removeClass(ClassName.SHOW)
 
       this._element.setAttribute('aria-expanded', false)
 
@@ -299,7 +299,7 @@ const Collapse = (($) => {
 
     _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
-        const isOpen = $(element).hasClass(ClassName.ACTIVE)
+        const isOpen = $(element).hasClass(ClassName.SHOW)
         element.setAttribute('aria-expanded', isOpen)
 
         if (triggerArray.length) {
