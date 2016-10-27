@@ -219,7 +219,7 @@ var Alert = function ($) {
   var ClassName = {
     ALERT: 'alert',
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   /**
@@ -282,7 +282,7 @@ var Alert = function ($) {
     };
 
     Alert.prototype._removeElement = function _removeElement(element) {
-      $(element).removeClass(ClassName.IN);
+      $(element).removeClass(ClassName.ACTIVE);
 
       if (!Util.supportsTransitionEnd() || !$(element).hasClass(ClassName.FADE)) {
         this._destroyElement(element);
@@ -1019,7 +1019,7 @@ var Collapse = function ($) {
   };
 
   var ClassName = {
-    IN: 'in',
+    ACTIVE: 'active',
     COLLAPSE: 'collapse',
     COLLAPSING: 'collapsing',
     COLLAPSED: 'collapsed'
@@ -1031,7 +1031,7 @@ var Collapse = function ($) {
   };
 
   var Selector = {
-    ACTIVES: '.card > .in, .card > .collapsing',
+    ACTIVES: '.card > .active, .card > .collapsing',
     DATA_TOGGLE: '[data-toggle="collapse"]'
   };
 
@@ -1066,7 +1066,7 @@ var Collapse = function ($) {
     // public
 
     Collapse.prototype.toggle = function toggle() {
-      if ($(this._element).hasClass(ClassName.IN)) {
+      if ($(this._element).hasClass(ClassName.ACTIVE)) {
         this.hide();
       } else {
         this.show();
@@ -1076,7 +1076,7 @@ var Collapse = function ($) {
     Collapse.prototype.show = function show() {
       var _this4 = this;
 
-      if (this._isTransitioning || $(this._element).hasClass(ClassName.IN)) {
+      if (this._isTransitioning || $(this._element).hasClass(ClassName.ACTIVE)) {
         return;
       }
 
@@ -1084,7 +1084,7 @@ var Collapse = function ($) {
       var activesData = void 0;
 
       if (this._parent) {
-        actives = $.makeArray($(Selector.ACTIVES));
+        actives = $.makeArray($(this._parent).find(Selector.ACTIVES));
         if (!actives.length) {
           actives = null;
         }
@@ -1124,7 +1124,7 @@ var Collapse = function ($) {
       this.setTransitioning(true);
 
       var complete = function complete() {
-        $(_this4._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.IN);
+        $(_this4._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.ACTIVE);
 
         _this4._element.style[dimension] = '';
 
@@ -1149,7 +1149,7 @@ var Collapse = function ($) {
     Collapse.prototype.hide = function hide() {
       var _this5 = this;
 
-      if (this._isTransitioning || !$(this._element).hasClass(ClassName.IN)) {
+      if (this._isTransitioning || !$(this._element).hasClass(ClassName.ACTIVE)) {
         return;
       }
 
@@ -1166,7 +1166,7 @@ var Collapse = function ($) {
 
       Util.reflow(this._element);
 
-      $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.IN);
+      $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.ACTIVE);
 
       this._element.setAttribute('aria-expanded', false);
 
@@ -1234,7 +1234,7 @@ var Collapse = function ($) {
 
     Collapse.prototype._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
-        var isOpen = $(element).hasClass(ClassName.IN);
+        var isOpen = $(element).hasClass(ClassName.ACTIVE);
         element.setAttribute('aria-expanded', isOpen);
 
         if (triggerArray.length) {
@@ -1360,7 +1360,7 @@ var Dropdown = function ($) {
   var ClassName = {
     BACKDROP: 'dropdown-backdrop',
     DISABLED: 'disabled',
-    OPEN: 'open'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -1398,7 +1398,7 @@ var Dropdown = function ($) {
       }
 
       var parent = Dropdown._getParentFromElement(this);
-      var isActive = $(parent).hasClass(ClassName.OPEN);
+      var isActive = $(parent).hasClass(ClassName.ACTIVE);
 
       Dropdown._clearMenus();
 
@@ -1427,7 +1427,7 @@ var Dropdown = function ($) {
       this.focus();
       this.setAttribute('aria-expanded', 'true');
 
-      $(parent).toggleClass(ClassName.OPEN);
+      $(parent).toggleClass(ClassName.ACTIVE);
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget));
 
       return false;
@@ -1480,7 +1480,7 @@ var Dropdown = function ($) {
         var parent = Dropdown._getParentFromElement(toggles[i]);
         var relatedTarget = { relatedTarget: toggles[i] };
 
-        if (!$(parent).hasClass(ClassName.OPEN)) {
+        if (!$(parent).hasClass(ClassName.ACTIVE)) {
           continue;
         }
 
@@ -1496,7 +1496,7 @@ var Dropdown = function ($) {
 
         toggles[i].setAttribute('aria-expanded', 'false');
 
-        $(parent).removeClass(ClassName.OPEN).trigger($.Event(Event.HIDDEN, relatedTarget));
+        $(parent).removeClass(ClassName.ACTIVE).trigger($.Event(Event.HIDDEN, relatedTarget));
       }
     };
 
@@ -1524,7 +1524,7 @@ var Dropdown = function ($) {
       }
 
       var parent = Dropdown._getParentFromElement(this);
-      var isActive = $(parent).hasClass(ClassName.OPEN);
+      var isActive = $(parent).hasClass(ClassName.ACTIVE);
 
       if (!isActive && event.which !== ESCAPE_KEYCODE || isActive && event.which === ESCAPE_KEYCODE) {
 
@@ -1660,7 +1660,7 @@ var Modal = function ($) {
     BACKDROP: 'modal-backdrop',
     OPEN: 'modal-open',
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -1755,7 +1755,7 @@ var Modal = function ($) {
 
       $(document).off(Event.FOCUSIN);
 
-      $(this._element).removeClass(ClassName.IN);
+      $(this._element).removeClass(ClassName.ACTIVE);
 
       $(this._element).off(Event.CLICK_DISMISS);
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS);
@@ -1813,7 +1813,7 @@ var Modal = function ($) {
         Util.reflow(this._element);
       }
 
-      $(this._element).addClass(ClassName.IN);
+      $(this._element).addClass(ClassName.ACTIVE);
 
       if (this._config.focus) {
         this._enforceFocus();
@@ -1926,7 +1926,7 @@ var Modal = function ($) {
           Util.reflow(this._backdrop);
         }
 
-        $(this._backdrop).addClass(ClassName.IN);
+        $(this._backdrop).addClass(ClassName.ACTIVE);
 
         if (!callback) {
           return;
@@ -1939,7 +1939,7 @@ var Modal = function ($) {
 
         $(this._backdrop).one(Util.TRANSITION_END, callback).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
       } else if (!this._isShown && this._backdrop) {
-        $(this._backdrop).removeClass(ClassName.IN);
+        $(this._backdrop).removeClass(ClassName.ACTIVE);
 
         var callbackRemove = function callbackRemove() {
           _this12._removeBackdrop();
@@ -2450,7 +2450,7 @@ var Tab = function ($) {
     A: 'a',
     LI: 'li',
     DROPDOWN: '.dropdown',
-    UL: 'ul:not(.dropdown-menu)',
+    LIST: 'ul:not(.dropdown-menu), ol:not(.dropdown-menu)',
     FADE_CHILD: '> .nav-item .fade, > .fade',
     ACTIVE: '.active',
     ACTIVE_CHILD: '> .nav-item > .active, > .active',
@@ -2485,11 +2485,11 @@ var Tab = function ($) {
 
       var target = void 0;
       var previous = void 0;
-      var ulElement = $(this._element).closest(Selector.UL)[0];
+      var listElement = $(this._element).closest(Selector.LIST)[0];
       var selector = Util.getSelectorFromElement(this._element);
 
-      if (ulElement) {
-        previous = $.makeArray($(ulElement).find(Selector.ACTIVE));
+      if (listElement) {
+        previous = $.makeArray($(listElement).find(Selector.ACTIVE));
         previous = previous[previous.length - 1];
       }
 
@@ -2515,7 +2515,7 @@ var Tab = function ($) {
         target = $(selector)[0];
       }
 
-      this._activate(this._element, ulElement);
+      this._activate(this._element, listElement);
 
       var complete = function complete() {
         var hiddenEvent = $.Event(Event.HIDDEN, {
@@ -2724,7 +2724,7 @@ var Tooltip = function ($) {
   };
 
   var HoverState = {
-    IN: 'in',
+    ACTIVE: 'active',
     OUT: 'out'
   };
 
@@ -2743,7 +2743,7 @@ var Tooltip = function ($) {
 
   var ClassName = {
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -2823,7 +2823,7 @@ var Tooltip = function ($) {
         }
       } else {
 
-        if ($(this.getTipElement()).hasClass(ClassName.IN)) {
+        if ($(this.getTipElement()).hasClass(ClassName.ACTIVE)) {
           this._leave(null, this);
           return;
         }
@@ -2904,7 +2904,7 @@ var Tooltip = function ($) {
         Util.reflow(tip);
         this._tether.position();
 
-        $(tip).addClass(ClassName.IN);
+        $(tip).addClass(ClassName.ACTIVE);
 
         var complete = function complete() {
           var prevHoverState = _this16._hoverState;
@@ -2932,7 +2932,7 @@ var Tooltip = function ($) {
       var tip = this.getTipElement();
       var hideEvent = $.Event(this.constructor.Event.HIDE);
       var complete = function complete() {
-        if (_this17._hoverState !== HoverState.IN && tip.parentNode) {
+        if (_this17._hoverState !== HoverState.ACTIVE && tip.parentNode) {
           tip.parentNode.removeChild(tip);
         }
 
@@ -2951,7 +2951,7 @@ var Tooltip = function ($) {
         return;
       }
 
-      $(tip).removeClass(ClassName.IN);
+      $(tip).removeClass(ClassName.ACTIVE);
 
       if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
 
@@ -2978,7 +2978,7 @@ var Tooltip = function ($) {
 
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle());
 
-      $tip.removeClass(ClassName.FADE).removeClass(ClassName.IN);
+      $tip.removeClass(ClassName.FADE).removeClass(ClassName.ACTIVE);
 
       this.cleanupTether();
     };
@@ -3069,14 +3069,14 @@ var Tooltip = function ($) {
         context._activeTrigger[event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER] = true;
       }
 
-      if ($(context.getTipElement()).hasClass(ClassName.IN) || context._hoverState === HoverState.IN) {
-        context._hoverState = HoverState.IN;
+      if ($(context.getTipElement()).hasClass(ClassName.ACTIVE) || context._hoverState === HoverState.ACTIVE) {
+        context._hoverState = HoverState.ACTIVE;
         return;
       }
 
       clearTimeout(context._timeout);
 
-      context._hoverState = HoverState.IN;
+      context._hoverState = HoverState.ACTIVE;
 
       if (!context.config.delay || !context.config.delay.show) {
         context.show();
@@ -3084,7 +3084,7 @@ var Tooltip = function ($) {
       }
 
       context._timeout = setTimeout(function () {
-        if (context._hoverState === HoverState.IN) {
+        if (context._hoverState === HoverState.ACTIVE) {
           context.show();
         }
       }, context.config.delay.show);
@@ -3278,7 +3278,7 @@ var Popover = function ($) {
 
   var ClassName = {
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -3331,7 +3331,7 @@ var Popover = function ($) {
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
 
-      $tip.removeClass(ClassName.FADE).removeClass(ClassName.IN);
+      $tip.removeClass(ClassName.FADE).removeClass(ClassName.ACTIVE);
 
       this.cleanupTether();
     };

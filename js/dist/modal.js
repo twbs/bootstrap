@@ -62,7 +62,7 @@ var Modal = function ($) {
     BACKDROP: 'modal-backdrop',
     OPEN: 'modal-open',
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -157,7 +157,7 @@ var Modal = function ($) {
 
       $(document).off(Event.FOCUSIN);
 
-      $(this._element).removeClass(ClassName.IN);
+      $(this._element).removeClass(ClassName.ACTIVE);
 
       $(this._element).off(Event.CLICK_DISMISS);
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS);
@@ -215,7 +215,7 @@ var Modal = function ($) {
         Util.reflow(this._element);
       }
 
-      $(this._element).addClass(ClassName.IN);
+      $(this._element).addClass(ClassName.ACTIVE);
 
       if (this._config.focus) {
         this._enforceFocus();
@@ -328,7 +328,7 @@ var Modal = function ($) {
           Util.reflow(this._backdrop);
         }
 
-        $(this._backdrop).addClass(ClassName.IN);
+        $(this._backdrop).addClass(ClassName.ACTIVE);
 
         if (!callback) {
           return;
@@ -341,7 +341,7 @@ var Modal = function ($) {
 
         $(this._backdrop).one(Util.TRANSITION_END, callback).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
       } else if (!this._isShown && this._backdrop) {
-        $(this._backdrop).removeClass(ClassName.IN);
+        $(this._backdrop).removeClass(ClassName.ACTIVE);
 
         var callbackRemove = function callbackRemove() {
           _this6._removeBackdrop();

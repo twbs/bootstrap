@@ -1,14 +1,42 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding-left: 15px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 .container::after {
   content: "";
   display: table;
   clear: both;
+}
+
+@media (min-width: 576px) {
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 }
 
 @media (min-width: 576px) {
@@ -42,14 +70,42 @@
 .container-fluid {
   margin-left: auto;
   margin-right: auto;
-  padding-left: 15px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 .container-fluid::after {
   content: "";
   display: table;
   clear: both;
+}
+
+@media (min-width: 576px) {
+  .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 }
 
 .row {
