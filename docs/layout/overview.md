@@ -155,3 +155,23 @@ The Sass mixin for the above example look like that shown beneath:
 {% highlight scss %}
 @include media-breakpoint-between(md, lg) { ... }
 {% endhighlight %}
+
+## Z-index
+
+Several Bootstrap components utilize `z-index`, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Bootstrap that's been designed to properly layer navigation, tooltips and popovers, modals, and more.
+
+We don't encourage customization of these values; should you change one, you likely need to change them all.
+
+```scss
+$zindex-dropdown-backdrop:  990 !default;
+$zindex-navbar:            1000 !default;
+$zindex-dropdown:          1000 !default;
+$zindex-navbar-fixed:      1030 !default;
+$zindex-navbar-sticky:     1030 !default;
+$zindex-modal-backdrop:    1040 !default;
+$zindex-modal:             1050 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;
+```
+
+Background elements—like the backdrops that allow click-dismissing—tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content.
