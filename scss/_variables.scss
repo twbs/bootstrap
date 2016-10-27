@@ -677,24 +677,24 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !defau
 
 // Tags
 
-$tag-default-bg:            $gray-light !default;
-$tag-primary-bg:            $brand-primary !default;
-$tag-success-bg:            $brand-success !default;
-$tag-info-bg:               $brand-info !default;
-$tag-warning-bg:            $brand-warning !default;
-$tag-danger-bg:             $brand-danger !default;
+$badge-default-bg:            $gray-light !default;
+$badge-primary-bg:            $brand-primary !default;
+$badge-success-bg:            $brand-success !default;
+$badge-info-bg:               $brand-info !default;
+$badge-warning-bg:            $brand-warning !default;
+$badge-danger-bg:             $brand-danger !default;
 
-$tag-color:                 #fff !default;
-$tag-link-hover-color:      #fff !default;
-$tag-font-size:             75% !default;
-$tag-font-weight:           $font-weight-bold !default;
-$tag-padding-x:             .4em !default;
-$tag-padding-y:             .25em !default;
+$badge-color:                 #fff !default;
+$badge-link-hover-color:      #fff !default;
+$badge-font-size:             75% !default;
+$badge-font-weight:           $font-weight-bold !default;
+$badge-padding-x:             .4em !default;
+$badge-padding-y:             .25em !default;
 
-$tag-pill-padding-x:        .6em !default;
+$badge-pill-padding-x:        .6em !default;
 // Use a higher than normal value to ensure completely rounded edges when
 // customizing padding or font-size on labels.
-$tag-pill-border-radius:    10rem !default;
+$badge-pill-border-radius:    10rem !default;
 
 // Modals
 

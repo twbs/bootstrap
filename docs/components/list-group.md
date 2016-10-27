@@ -32,15 +32,15 @@ Add tags to any list group item to show unread counts, activity, etc.
 {% example html %}
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="tag tag-default tag-pill float-xs-right">14</span>
+    <span class="badge badge-default tag-pill float-xs-right">14</span>
     Cras justo odio
   </li>
   <li class="list-group-item">
-    <span class="tag tag-default tag-pill float-xs-right">2</span>
+    <span class="badge badge-default tag-pill float-xs-right">2</span>
     Dapibus ac facilisis in
   </li>
   <li class="list-group-item">
-    <span class="tag tag-default tag-pill float-xs-right">1</span>
+    <span class="badge badge-default tag-pill float-xs-right">1</span>
     Morbi leo risus
   </li>
 </ul>
