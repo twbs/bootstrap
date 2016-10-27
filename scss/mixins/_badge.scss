@@ -1,6 +1,6 @@
 // Tags
 
-@mixin tag-variant($color) {
+@mixin badge-variant($color) {
   background-color: $color;
 
   &[href] {
