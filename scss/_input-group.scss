@@ -44,8 +44,8 @@
   @if $enable-flex {
     // Vertically centers the content of the addons within the input group
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
   } @else {
     display: table-cell;
   }
