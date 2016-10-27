@@ -321,7 +321,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledBy="home-tab">
+    <div role="tabpanel" class="tab-pane fade show active" id="home" aria-labelledBy="home-tab">
       <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledBy="profile-tab">
@@ -390,11 +390,11 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 
 ### Fade effect
 
-To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must also have `.in` to make the initial content visible.
+To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must also have `.show` to make the initial content visible.
 
 {% highlight html %}
 <div class="tab-content">
-  <div class="tab-pane fade in active" id="home" role="tabpanel">...</div>
+  <div class="tab-pane fade show active" id="home" role="tabpanel">...</div>
   <div class="tab-pane fade" id="profile" role="tabpanel">...</div>
   <div class="tab-pane fade" id="messages" role="tabpanel">...</div>
   <div class="tab-pane fade" id="settings" role="tabpanel">...</div>
