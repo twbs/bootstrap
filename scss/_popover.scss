@@ -126,6 +126,10 @@
   }
 }
 
+.popover-in-modal {
+  z-index: 1060;
+}
+
 
 // Offset the popover to account for the popover arrow
 .popover-title {

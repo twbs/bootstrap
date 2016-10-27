@@ -183,6 +183,9 @@ const Modal = (($) => {
       } else {
         this._hideModal()
       }
+
+      $('.popover-in-modal').popover('hide')
+
     }
 
     dispose() {
