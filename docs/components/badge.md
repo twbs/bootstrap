@@ -41,10 +41,10 @@ Add any of the below mentioned modifier classes to change the appearance of a ba
 Use the `.badge-pill` modifier class to make badges more rounded (with a larger `border-radius` and additional horizontal `padding`). Useful if you miss the badges from v3.
 
 {% example html %}
-<span class="badge badge-pill tag-default">Default</span>
-<span class="badge badge-pill tag-primary">Primary</span>
-<span class="badge badge-pill tag-success">Success</span>
-<span class="badge badge-pill tag-info">Info</span>
-<span class="badge badge-pill tag-warning">Warning</span>
-<span class="badge badge-pill tag-danger">Danger</span>
+<span class="badge badge-pill badge-default">Default</span>
+<span class="badge badge-pill badge-primary">Primary</span>
+<span class="badge badge-pill badge-success">Success</span>
+<span class="badge badge-pill badge-info">Info</span>
+<span class="badge badge-pill badge-warning">Warning</span>
+<span class="badge badge-pill badge-danger">Danger</span>
 {% endexample %}
