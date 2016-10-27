@@ -24,6 +24,7 @@
     @include hover-focus-active {
       z-index: 3;
     }
+
     @if $enable-flex {
       flex: 1;
     } @else {
@@ -40,7 +41,12 @@
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
-  @if not $enable-flex {
+  @if $enable-flex {
+    // Vertically centers the content of the addons within the input group
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  } @else {
     display: table-cell;
   }
 
@@ -158,9 +164,16 @@
   // element above the siblings.
   > .btn {
     position: relative;
+
+    @if $enable-flex {
+      // Vertically stretch the button and center its content
+      flex: 1;
+    }
+
     + .btn {
       margin-left: (-$input-btn-border-width);
     }
+
     // Bring the "active" button to the front
     @include hover-focus-active {
       z-index: 3;
