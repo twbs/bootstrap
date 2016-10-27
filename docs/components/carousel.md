@@ -14,6 +14,8 @@ A slideshow component for cycling through elements—images or slides of text—
 
 ## Example
 
+When building carousels, be sure your slides are the same size as one another. The carousel doesn't automatically crop images to the same dimensions for you across slides.
+
 {% example html %}
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
