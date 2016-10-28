@@ -65,8 +65,6 @@
   padding: 3rem 15px 2rem;
   color: #cdbfe3;
   text-align: center;
-  background-image: -webkit-linear-gradient(315deg, #271b38, #563d7c, #7952b3);
-  background-image: -o-linear-gradient(315deg, #271b38, #563d7c, #7952b3);
   background-image: linear-gradient(135deg, #271b38, #563d7c, #7952b3);
 }
 
@@ -1518,19 +1516,13 @@
 .language-bash::before {
   color: #009;
   content: "$ ";
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .language-powershell::before {
   color: #009;
   content: "PM> ";
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .anchorjs-link {
@@ -1545,8 +1537,6 @@
 
 *:hover > .anchorjs-link {
   opacity: .75;
-  -webkit-transition: color .16s linear;
-  -o-transition: color .16s linear;
   transition: color .16s linear;
 }
 
@@ -1555,3 +1545,5 @@
   text-decoration: none;
   opacity: 1;
 }
+
+/*# sourceMappingURL=docs.min.css.map */
