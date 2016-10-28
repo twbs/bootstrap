@@ -160,22 +160,28 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
        <td>The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.</td>
      </tr>
      <tr>
+       <td>keyboard</td>
+       <td>boolean</td>
+       <td>true</td>
+       <td>Whether the carousel should react to keyboard events.</td>
+     </tr>
+     <tr>
        <td>pause</td>
        <td>string | null</td>
        <td>"hover"</td>
        <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>null</code>, hovering over the carousel won't pause it.</td>
      </tr>
      <tr>
+       <td>ride</td>
+       <td>string</td>
+       <td>false</td>
+       <td>Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.</td>
+     </tr>
+     <tr>
        <td>wrap</td>
        <td>boolean</td>
        <td>true</td>
        <td>Whether the carousel should cycle continuously or have hard stops.</td>
-     </tr>
-     <tr>
-       <td>keyboard</td>
-       <td>boolean</td>
-       <td>true</td>
-       <td>Whether the carousel should react to keyboard events.</td>
      </tr>
     </tbody>
   </table>
