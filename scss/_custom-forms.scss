@@ -61,7 +61,7 @@
 
 .custom-control-indicator {
   position: absolute;
-  top: .25rem;
+  top: (($line-height-base - $custom-control-indicator-size) / 2);
   left: 0;
   display: block;
   width: $custom-control-indicator-size;
