@@ -69,7 +69,7 @@ var Tooltip = function ($) {
   };
 
   var HoverState = {
-    IN: 'in',
+    ACTIVE: 'active',
     OUT: 'out'
   };
 
@@ -88,7 +88,7 @@ var Tooltip = function ($) {
 
   var ClassName = {
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -168,7 +168,7 @@ var Tooltip = function ($) {
         }
       } else {
 
-        if ($(this.getTipElement()).hasClass(ClassName.IN)) {
+        if ($(this.getTipElement()).hasClass(ClassName.ACTIVE)) {
           this._leave(null, this);
           return;
         }
@@ -249,7 +249,7 @@ var Tooltip = function ($) {
         Util.reflow(tip);
         this._tether.position();
 
-        $(tip).addClass(ClassName.IN);
+        $(tip).addClass(ClassName.ACTIVE);
 
         var complete = function complete() {
           var prevHoverState = _this._hoverState;
@@ -277,7 +277,7 @@ var Tooltip = function ($) {
       var tip = this.getTipElement();
       var hideEvent = $.Event(this.constructor.Event.HIDE);
       var complete = function complete() {
-        if (_this2._hoverState !== HoverState.IN && tip.parentNode) {
+        if (_this2._hoverState !== HoverState.ACTIVE && tip.parentNode) {
           tip.parentNode.removeChild(tip);
         }
 
@@ -296,7 +296,7 @@ var Tooltip = function ($) {
         return;
       }
 
-      $(tip).removeClass(ClassName.IN);
+      $(tip).removeClass(ClassName.ACTIVE);
 
       if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
 
@@ -323,7 +323,7 @@ var Tooltip = function ($) {
 
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle());
 
-      $tip.removeClass(ClassName.FADE).removeClass(ClassName.IN);
+      $tip.removeClass(ClassName.FADE).removeClass(ClassName.ACTIVE);
 
       this.cleanupTether();
     };
@@ -414,14 +414,14 @@ var Tooltip = function ($) {
         context._activeTrigger[event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER] = true;
       }
 
-      if ($(context.getTipElement()).hasClass(ClassName.IN) || context._hoverState === HoverState.IN) {
-        context._hoverState = HoverState.IN;
+      if ($(context.getTipElement()).hasClass(ClassName.ACTIVE) || context._hoverState === HoverState.ACTIVE) {
+        context._hoverState = HoverState.ACTIVE;
         return;
       }
 
       clearTimeout(context._timeout);
 
-      context._hoverState = HoverState.IN;
+      context._hoverState = HoverState.ACTIVE;
 
       if (!context.config.delay || !context.config.delay.show) {
         context.show();
@@ -429,7 +429,7 @@ var Tooltip = function ($) {
       }
 
       context._timeout = setTimeout(function () {
-        if (context._hoverState === HoverState.IN) {
+        if (context._hoverState === HoverState.ACTIVE) {
           context.show();
         }
       }, context.config.delay.show);

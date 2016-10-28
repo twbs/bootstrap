@@ -539,7 +539,7 @@ When you need to place plain text next to a form label within a form, use the `.
 <form class="form-inline">
   <div class="form-group">
     <label class="sr-only">Email</label>
-    <p class="form-control-static">email@example.com</p>
+    <p class="form-control-static mb-0">email@example.com</p>
   </div>
   <div class="form-group">
     <label for="inputPassword2" class="sr-only">Password</label>

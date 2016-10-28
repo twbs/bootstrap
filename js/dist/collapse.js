@@ -46,7 +46,7 @@ var Collapse = function ($) {
   };
 
   var ClassName = {
-    IN: 'in',
+    ACTIVE: 'active',
     COLLAPSE: 'collapse',
     COLLAPSING: 'collapsing',
     COLLAPSED: 'collapsed'
@@ -58,7 +58,7 @@ var Collapse = function ($) {
   };
 
   var Selector = {
-    ACTIVES: '.card > .in, .card > .collapsing',
+    ACTIVES: '.card > .active, .card > .collapsing',
     DATA_TOGGLE: '[data-toggle="collapse"]'
   };
 
@@ -93,7 +93,7 @@ var Collapse = function ($) {
     // public
 
     Collapse.prototype.toggle = function toggle() {
-      if ($(this._element).hasClass(ClassName.IN)) {
+      if ($(this._element).hasClass(ClassName.ACTIVE)) {
         this.hide();
       } else {
         this.show();
@@ -103,7 +103,7 @@ var Collapse = function ($) {
     Collapse.prototype.show = function show() {
       var _this = this;
 
-      if (this._isTransitioning || $(this._element).hasClass(ClassName.IN)) {
+      if (this._isTransitioning || $(this._element).hasClass(ClassName.ACTIVE)) {
         return;
       }
 
@@ -111,7 +111,7 @@ var Collapse = function ($) {
       var activesData = void 0;
 
       if (this._parent) {
-        actives = $.makeArray($(Selector.ACTIVES));
+        actives = $.makeArray($(this._parent).find(Selector.ACTIVES));
         if (!actives.length) {
           actives = null;
         }
@@ -151,7 +151,7 @@ var Collapse = function ($) {
       this.setTransitioning(true);
 
       var complete = function complete() {
-        $(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.IN);
+        $(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.ACTIVE);
 
         _this._element.style[dimension] = '';
 
@@ -176,7 +176,7 @@ var Collapse = function ($) {
     Collapse.prototype.hide = function hide() {
       var _this2 = this;
 
-      if (this._isTransitioning || !$(this._element).hasClass(ClassName.IN)) {
+      if (this._isTransitioning || !$(this._element).hasClass(ClassName.ACTIVE)) {
         return;
       }
 
@@ -193,7 +193,7 @@ var Collapse = function ($) {
 
       Util.reflow(this._element);
 
-      $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.IN);
+      $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.ACTIVE);
 
       this._element.setAttribute('aria-expanded', false);
 
@@ -261,7 +261,7 @@ var Collapse = function ($) {
 
     Collapse.prototype._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
-        var isOpen = $(element).hasClass(ClassName.IN);
+        var isOpen = $(element).hasClass(ClassName.ACTIVE);
         element.setAttribute('aria-expanded', isOpen);
 
         if (triggerArray.length) {

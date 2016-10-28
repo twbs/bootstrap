@@ -6,16 +6,41 @@
 
 // Table of Contents
 //
-// Colors
-// Options
-// Spacing
-// Body
-// Links
-// Grid breakpoints
-// Grid containers
-// Grid columns
-// Fonts
-// Components
+//  1. Colors
+//  2. Options
+//  3. Spacing
+//  4. Body
+//  5. Links
+//  6. Grid breakpoints
+//  7. Grid containers
+//  8. Grid columns
+//  9. Fonts
+// 10. Components
+// 11. Tables
+// 12. Buttons
+// 13. Forms
+// 14. Dropdowns
+// 15. Z-index master list
+// 16. Navbar
+// 17. Navs
+// 18. Pagination
+// 19. Jumbotron
+// 20. Form states and alerts
+// 21. Cards
+// 22. Tooltips
+// 23. Popovers
+// 24. Tags
+// 25. Modals
+// 26. Alerts
+// 27. Progress bars
+// 28. List group
+// 29. Image thumbnails
+// 30. Figures
+// 31. Breadcrumbs
+// 32. Media objects
+// 33. Carousel
+// 34. Close
+// 35. Code
 
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
@@ -54,7 +79,7 @@
 // Variable format should follow the `$component-modifier-state-property` order.
 
 
-// Colors
+// 1. Colors
 //
 // Grayscale and brand colors for use across Bootstrap.
 
@@ -72,7 +97,7 @@ $brand-danger:              #d9534f !default;
 $brand-inverse:             $gray-dark !default;
 
 
-// Options
+// 2. Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
@@ -86,7 +111,7 @@ $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
 
 
-// Spacing
+// 3. Spacing
 //
 // Control the default styling of most Bootstrap elements by modifying these
 // variables. Mostly focused on spacing.
@@ -116,7 +141,7 @@ $spacers: (
 $border-width: 1px !default;
 
 
-// Body
+// 4. Body
 //
 // Settings for the `<body>` element.
 
@@ -124,7 +149,7 @@ $body-bg:    #fff !default;
 $body-color: $gray-dark !default;
 
 
-// Links
+// 5. Links
 //
 // Style anchor elements.
 
@@ -134,7 +159,7 @@ $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
 
 
-// Grid breakpoints
+// 6. Grid breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
@@ -149,7 +174,7 @@ $grid-breakpoints: (
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 
 
-// Grid containers
+// 7. Grid containers
 //
 // Define the maximum width of `.container` for different screen sizes.
 
@@ -162,7 +187,7 @@ $container-max-widths: (
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
 
-// Grid columns
+// 8. Grid columns
 //
 // Set the number of columns and specify the width of the gutters.
 
@@ -176,7 +201,7 @@ $grid-gutter-widths: (
   xl: $grid-gutter-width-base
 ) !default;
 
-// Typography
+// 9. Fonts
 //
 // Font, line-height, and color for body text, headings, and more.
 
@@ -248,7 +273,7 @@ $nested-kbd-font-weight: $font-weight-bold !default;
 $list-inline-padding: 5px !default;
 
 
-// Components
+// 10. Components
 //
 // Define common padding and border radius sizes and more.
 
@@ -266,7 +291,7 @@ $caret-width:            .3em !default;
 $caret-width-lg:         $caret-width !default;
 
 
-// Tables
+// 11. Tables
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
@@ -282,7 +307,7 @@ $table-border-width:            $border-width !default;
 $table-border-color:            $gray-lighter !default;
 
 
-// Buttons
+// 12. Buttons
 //
 // For each of Bootstrap's buttons, define text, background and border color.
 
@@ -334,7 +359,7 @@ $btn-border-radius-lg:           $border-radius-lg !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
 
 
-// Forms
+// 13. Forms
 
 $input-padding-x:                .75rem !default;
 $input-padding-y:                .5rem !default;
@@ -466,7 +491,7 @@ $form-icon-danger-color: $brand-danger !default;
 $form-icon-danger: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$form-icon-danger-color}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 
-// Dropdowns
+// 14. Dropdowns
 //
 // Dropdown menu container and contents.
 
@@ -493,7 +518,7 @@ $dropdown-item-padding-x:        1.5rem !default;
 $dropdown-header-color:          $gray-light !default;
 
 
-// Z-index master list
+// 15. Z-index master list
 //
 // Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
@@ -501,15 +526,15 @@ $dropdown-header-color:          $gray-light !default;
 $zindex-dropdown-backdrop:  990 !default;
 $zindex-navbar:            1000 !default;
 $zindex-dropdown:          1000 !default;
-$zindex-popover:           1060 !default;
-$zindex-tooltip:           1070 !default;
 $zindex-navbar-fixed:      1030 !default;
 $zindex-navbar-sticky:     1030 !default;
-$zindex-modal-bg:          1040 !default;
+$zindex-modal-backdrop:    1040 !default;
 $zindex-modal:             1050 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;
 
 
-// Navbar
+// 16. Navbar
 
 $navbar-border-radius:              $border-radius !default;
 $navbar-padding-x:                  $spacer !default;
@@ -538,7 +563,7 @@ $navbar-light-disabled-color:       rgba(0,0,0,.3) !default;
 $navbar-light-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"), "#", "%23") !default;
 $navbar-light-toggler-border:       rgba(0,0,0,.1) !default;
 
-// Navs
+// 17. Navs
 
 $nav-item-margin:               .2rem !default;
 $nav-item-inline-spacer:        1rem !default;
@@ -563,7 +588,7 @@ $nav-pills-active-link-color: $component-active-color !default;
 $nav-pills-active-link-bg:    $component-active-bg !default;
 
 
-// Pagination
+// 18. Pagination
 
 $pagination-padding-x:                .75rem !default;
 $pagination-padding-y:                .5rem !default;
@@ -591,13 +616,13 @@ $pagination-disabled-bg:               #fff !default;
 $pagination-disabled-border:           #ddd !default;
 
 
-// Jumbotron
+// 19. Jumbotron
 
 $jumbotron-padding:              2rem !default;
 $jumbotron-bg:                   $gray-lighter !default;
 
 
-// Form states and alerts
+// 20. Form states and alerts
 //
 // Define colors for form feedback states and, by default, alerts.
 
@@ -619,7 +644,7 @@ $state-danger-bg:                #f2dede !default;
 $state-danger-border:            darken($state-danger-bg, 5%) !default;
 
 
-// Cards
+// 21. Cards
 $card-spacer-x:            1.25rem !default;
 $card-spacer-y:            .75rem !default;
 $card-border-width:        1px !default;
@@ -638,7 +663,7 @@ $card-deck-margin:         .625rem !default;
 $card-columns-sm-up-column-gap: 1.25rem !default;
 
 
-// Tooltips
+// 22. Tooltips
 
 $tooltip-max-width:           200px !default;
 $tooltip-color:               #fff !default;
@@ -652,7 +677,7 @@ $tooltip-arrow-width:         5px !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
 
-// Popovers
+// 23. Popovers
 
 $popover-inner-padding:               1px !default;
 $popover-bg:                          #fff !default;
@@ -675,7 +700,7 @@ $popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
 $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !default;
 
 
-// Tags
+// 24. Tags
 
 $badge-default-bg:            $gray-light !default;
 $badge-primary-bg:            $brand-primary !default;
@@ -696,7 +721,8 @@ $badge-pill-padding-x:        .6em !default;
 // customizing padding or font-size on labels.
 $badge-pill-border-radius:    10rem !default;
 
-// Modals
+
+// 25. Modals
 
 // Padding applied to the modal body
 $modal-inner-padding:         15px !default;
@@ -725,7 +751,7 @@ $modal-md:                    600px !default;
 $modal-sm:                    300px !default;
 
 
-// Alerts
+// 26. Alerts
 //
 // Define alert colors, border radius, and padding.
 
@@ -752,7 +778,7 @@ $alert-danger-text:           $state-danger-text !default;
 $alert-danger-border:         $state-danger-border !default;
 
 
-// Progress bars
+// 27. Progress bars
 
 $progress-bg:                 #eee !default;
 $progress-bar-color:          #0074d9 !default;
@@ -766,7 +792,7 @@ $progress-bar-danger-bg:      $brand-danger !default;
 $progress-bar-info-bg:        $brand-info !default;
 
 
-// List group
+// 28. List group
 
 $list-group-bg:                 #fff !default;
 $list-group-border-color:       #ddd !default;
@@ -792,7 +818,7 @@ $list-group-item-padding-y:             .75rem !default;
 $list-group-item-heading-margin-bottom: 5px !default;
 
 
-// Image thumbnails
+// 29. Image thumbnails
 
 $thumbnail-padding:           .25rem !default;
 $thumbnail-bg:                $body-bg !default;
@@ -802,12 +828,12 @@ $thumbnail-border-radius:     $border-radius !default;
 $thumbnail-box-shadow:        0 1px 2px rgba(0,0,0,.075) !default;
 
 
-// Figures
+// 30. Figures
 
 $figure-caption-font-size: 90% !default;
 
 
-// Breadcrumbs
+// 31. Breadcrumbs
 
 $breadcrumb-padding-y:          .75rem !default;
 $breadcrumb-padding-x:          1rem !default;
@@ -819,14 +845,14 @@ $breadcrumb-active-color:       $gray-light !default;
 $breadcrumb-divider:            "/" !default;
 
 
-// Media objects
+// 32. Media objects
 
 $media-margin-top:            15px !default;
 $media-heading-margin-bottom:  5px !default;
 $media-alignment-padding-x:   10px !default;
 
 
-// Carousel
+// 33. Carousel
 
 $carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6) !default;
 
@@ -850,14 +876,14 @@ $carousel-caption-color:                      #fff !default;
 $carousel-icon-width:                         20px !default;
 
 
-// Close
+// 34. Close
 
 $close-font-weight:           $font-weight-bold !default;
 $close-color:                 #000 !default;
 $close-text-shadow:           0 1px 0 #fff !default;
 
 
-// Code
+// 35. Code
 
 $code-font-size:              90% !default;
 $code-padding-x:              .4rem !default;
