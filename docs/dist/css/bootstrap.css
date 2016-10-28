@@ -3472,6 +3472,7 @@ tbody.collapse.active {
 .custom-control {
   position: relative;
   display: inline-block;
+  min-height: 1.5rem;
   padding-left: 1.5rem;
   cursor: pointer;
 }
@@ -3513,7 +3514,7 @@ tbody.collapse.active {
 
 .custom-control-indicator {
   position: absolute;
-  top: .25rem;
+  top: 0.25rem;
   left: 0;
   display: block;
   width: 1rem;
@@ -3609,6 +3610,7 @@ tbody.collapse.active {
   display: inline-block;
   max-width: 100%;
   height: 2.5rem;
+  margin-bottom: 0;
   cursor: pointer;
 }
 

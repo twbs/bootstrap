@@ -3882,6 +3882,7 @@ tbody.collapse.active {
   display: inline-block;
   max-width: 100%;
   height: 2.5rem;
+  margin-bottom: 0;
   cursor: pointer;
 }
 

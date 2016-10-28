@@ -3607,6 +3607,24 @@ tbody.collapse.active {
   z-index: 3;
 }
 
+.input-group-addon,
+.input-group-btn,
+.input-group .form-control {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .input-group-addon:not(:first-child):not(:last-child),
 .input-group-btn:not(:first-child):not(:last-child),
 .input-group .form-control:not(:first-child):not(:last-child) {
@@ -3691,6 +3709,10 @@ tbody.collapse.active {
 
 .input-group-btn > .btn {
   position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 0%;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
 }
 
 .input-group-btn > .btn + .btn {
@@ -3722,6 +3744,7 @@ tbody.collapse.active {
 .custom-control {
   position: relative;
   display: inline-block;
+  min-height: 1.5rem;
   padding-left: 1.5rem;
   cursor: pointer;
 }
@@ -3763,7 +3786,7 @@ tbody.collapse.active {
 
 .custom-control-indicator {
   position: absolute;
-  top: .25rem;
+  top: 0.25rem;
   left: 0;
   display: block;
   width: 1rem;
@@ -3859,6 +3882,7 @@ tbody.collapse.active {
   display: inline-block;
   max-width: 100%;
   height: 2.5rem;
+  margin-bottom: 0;
   cursor: pointer;
 }
 
@@ -4472,12 +4496,6 @@ tbody.collapse.active {
   padding: 1.25rem;
 }
 
-.card-block::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .card-title {
   margin-bottom: 0.75rem;
 }
@@ -4516,12 +4534,6 @@ tbody.collapse.active {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.card-header::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .card-header:first-child {
   border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
 }
@@ -4530,12 +4542,6 @@ tbody.collapse.active {
   padding: 0.75rem 1.25rem;
   background-color: #f5f5f5;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
-}
-
-.card-footer::after {
-  content: "";
-  display: table;
-  clear: both;
 }
 
 .card-footer:last-child {
