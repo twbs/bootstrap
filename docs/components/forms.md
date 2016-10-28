@@ -737,6 +737,41 @@ Here are some examples of the aforementioned classes in action. First up is your
 </div>
 {% endexample %}
 
+Those same states can also be used with horizontal forms.
+
+{% example html %}
+<div class="container">
+  <form>
+    <div class="form-group row has-success">
+      <label for="inputHorizontalSuccess" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="name@example.com">
+        <div class="form-control-feedback">Success! You've done it.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+    <div class="form-group row has-warning">
+      <label for="inputHorizontalWarning" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-warning" id="inputHorizontalWarning" placeholder="name@example.com">
+        <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+    <div class="form-group row has-danger">
+      <label for="inputHorizontalDnger" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-danger" id="inputHorizontalDnger" placeholder="name@example.com">
+        <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+  </form>
+</div>
+{% endexample %}
+
+Checkboxes and radios are also supported.
+
 {% example html %}
 <div class="form-check has-success">
   <label class="form-check-label">
