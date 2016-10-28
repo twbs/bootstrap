@@ -796,7 +796,7 @@ $progress-bar-info-bg:        $brand-info !default;
 // 28. List group
 
 $list-group-bg:                 #fff !default;
-$list-group-border-color:       #ddd !default;
+$list-group-border-color:       rgba(0,0,0,.125) !default;
 $list-group-border-width:       $border-width !default;
 $list-group-border-radius:      $border-radius !default;
 
