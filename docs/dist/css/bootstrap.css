@@ -2210,6 +2210,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .has-success .form-control-feedback,
 .has-success .form-control-label,
+.has-success .col-form-label,
 .has-success .form-check-label,
 .has-success .form-check-inline,
 .has-success .custom-control {
@@ -2232,6 +2233,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .has-warning .form-control-feedback,
 .has-warning .form-control-label,
+.has-warning .col-form-label,
 .has-warning .form-check-label,
 .has-warning .form-check-inline,
 .has-warning .custom-control {
@@ -2254,6 +2256,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .has-danger .form-control-feedback,
 .has-danger .form-control-label,
+.has-danger .col-form-label,
 .has-danger .form-check-label,
 .has-danger .form-check-inline,
 .has-danger .custom-control {
