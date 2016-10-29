@@ -682,7 +682,11 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 
 ## Validation
 
-Bootstrap includes validation styles for danger, warning, and success states on form controls. Here's a rundown of how they work:
+Bootstrap includes validation styles for danger, warning, and success states on most form controls.
+
+### How it works
+
+Here's a rundown of how they work:
 
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.col-form-label`, `.form-control`, or custom form element will receive the validation styles.
 - Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
@@ -690,13 +694,13 @@ Bootstrap includes validation styles for danger, warning, and success states on 
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
 - Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
 
+### Defining states
+
 Generally speaking, you'll want to use a particular state for specific types of feedback:
 
 - **Danger** is great for when there's a blocking or required field. A user *must* fill in this field properly to submit the form.
 - **Warning** works well for input values that are in progress, like password strength, or soft validation before a user attempts to submit a form.
 - And lastly, **success** is ideal for situations when you have per-field validation throughout a form and want to encourage a user through the rest of the fields.
-
-Here are some examples of the aforementioned classes in action.
 
 {% comment %}
 {% callout warning %}
@@ -707,6 +711,10 @@ Using these validation styles to denote the state of a form control only provide
 Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's `<label>` text itself (as is the case in the following code example), include a [Glyphicon]({{ site.baseurl }}/components/#glyphicons) (with appropriate alternative text using the `.sr-only` class - see the [Glyphicon examples]({{ site.baseurl }}/components/#glyphicons-examples)), or by providing an additional [help text](#forms-help-text) block. Specifically for assistive technologies, invalid form controls can also be assigned an `aria-invalid="true"` attribute.
 {% endcallout %}
 {% endcomment %}
+
+### Examples
+
+Here are some examples of the aforementioned classes in action. First up is your standard left-aligned fields with labels, help text, and validation messaging.
 
 {% example html %}
 <div class="form-group has-success">
@@ -728,6 +736,41 @@ Ensure that an alternative indication of state is also provided. For instance, y
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 {% endexample %}
+
+Those same states can also be used with horizontal forms.
+
+{% example html %}
+<div class="container">
+  <form>
+    <div class="form-group row has-success">
+      <label for="inputHorizontalSuccess" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="name@example.com">
+        <div class="form-control-feedback">Success! You've done it.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+    <div class="form-group row has-warning">
+      <label for="inputHorizontalWarning" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-warning" id="inputHorizontalWarning" placeholder="name@example.com">
+        <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+    <div class="form-group row has-danger">
+      <label for="inputHorizontalDnger" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-danger" id="inputHorizontalDnger" placeholder="name@example.com">
+        <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+  </form>
+</div>
+{% endexample %}
+
+Checkboxes and radios are also supported.
 
 {% example html %}
 <div class="form-check has-success">
