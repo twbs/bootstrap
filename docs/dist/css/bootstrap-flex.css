@@ -3600,9 +3600,10 @@ tbody.collapse.active {
   position: relative;
   z-index: 2;
   -webkit-box-flex: 1;
-  -webkit-flex: 1 1 0%;
-      -ms-flex: 1 1 0%;
-          flex: 1 1 0%;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: 1%;
   margin-bottom: 0;
 }
 
@@ -5372,13 +5373,32 @@ base::-moz-progress-bar,
 }
 
 .list-group {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
 }
 
 .list-group-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
-  display: block;
   padding: 0.75rem 1.25rem;
   margin-bottom: -1px;
   background-color: #fff;

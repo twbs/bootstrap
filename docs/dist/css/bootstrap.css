@@ -5109,8 +5109,8 @@ base::-moz-progress-bar,
 }
 
 .list-group-item {
-  position: relative;
   display: block;
+  position: relative;
   padding: 0.75rem 1.25rem;
   margin-bottom: -1px;
   background-color: #fff;
