@@ -155,6 +155,7 @@ linters:
       - flex-align
       - flex-basis
       - flex-direction
+      - flex-wrap
       - flex-flow
       - flex-grow
       - flex-order
@@ -231,6 +232,7 @@ linters:
       - word-spacing
       - -ms-word-wrap
       - word-wrap
+      - overflow-wrap
       - -moz-tab-size
       - -o-tab-size
       - tab-size

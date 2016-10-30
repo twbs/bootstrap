@@ -21,7 +21,7 @@ Where *sides* is one of:
 * `r` - for classes that set `margin-right` or `padding-right`
 * `x` - for classes that set both `*-left` and `*-right`
 * `y` - for classes that set both `*-top` and `*-bottom`
-* `a` - for classes that set a `margin` or `padding` on all 4 sides of the element
+* blank - for classes that set a `margin` or `padding` on all 4 sides of the element
 
 Where *size* is one of:
 

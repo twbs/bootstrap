@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.4): modal.js
+ * Bootstrap (v4.0.0-alpha.5): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Modal = (($) => {
    */
 
   const NAME                         = 'modal'
-  const VERSION                      = '4.0.0-alpha.4'
+  const VERSION                      = '4.0.0-alpha.5'
   const DATA_KEY                     = 'bs.modal'
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
@@ -60,7 +60,7 @@ const Modal = (($) => {
     BACKDROP           : 'modal-backdrop',
     OPEN               : 'modal-open',
     FADE               : 'fade',
-    IN                 : 'in'
+    ACTIVE             : 'active'
   }
 
   const Selector = {
@@ -169,7 +169,7 @@ const Modal = (($) => {
 
       $(document).off(Event.FOCUSIN)
 
-      $(this._element).removeClass(ClassName.IN)
+      $(this._element).removeClass(ClassName.ACTIVE)
 
       $(this._element).off(Event.CLICK_DISMISS)
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
@@ -231,7 +231,7 @@ const Modal = (($) => {
         Util.reflow(this._element)
       }
 
-      $(this._element).addClass(ClassName.IN)
+      $(this._element).addClass(ClassName.ACTIVE)
 
       if (this._config.focus) {
         this._enforceFocus()
@@ -343,7 +343,7 @@ const Modal = (($) => {
           Util.reflow(this._backdrop)
         }
 
-        $(this._backdrop).addClass(ClassName.IN)
+        $(this._backdrop).addClass(ClassName.ACTIVE)
 
         if (!callback) {
           return
@@ -359,7 +359,7 @@ const Modal = (($) => {
           .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
 
       } else if (!this._isShown && this._backdrop) {
-        $(this._backdrop).removeClass(ClassName.IN)
+        $(this._backdrop).removeClass(ClassName.ACTIVE)
 
         let callbackRemove = () => {
           this._removeBackdrop()

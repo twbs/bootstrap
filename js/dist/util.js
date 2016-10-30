@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.4): util.js
+ * Bootstrap (v4.0.0-alpha.5): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -119,7 +119,7 @@ var Util = function ($) {
       return selector;
     },
     reflow: function reflow(element) {
-      new Function('bs', 'return bs')(element.offsetHeight);
+      return element.offsetHeight;
     },
     triggerTransitionEnd: function triggerTransitionEnd(element) {
       $(element).trigger(transition.end);
