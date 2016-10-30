@@ -226,6 +226,10 @@
   .navbar-divider {
     background-color: rgba(0,0,0,.075);
   }
+  
+  .navbar-text {
+    color: $navbar-light-color;
+  }
 }
 
 // White links against a dark background
@@ -265,6 +269,10 @@
 
   .navbar-divider {
     background-color: rgba(255,255,255,.075);
+  }
+  
+  .navbar-text {
+    color: $navbar-dark-color;
   }
 }
 
