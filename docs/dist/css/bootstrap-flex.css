@@ -2189,14 +2189,14 @@ pre code {
 }
 
 .table-inverse {
-  color: #eceeef;
+  color: #fff;
   background-color: #373a3c;
 }
 
 .table-inverse th,
 .table-inverse td,
 .table-inverse thead th {
-  border-color: #55595c;
+  border-color: #fff;
 }
 
 .table-inverse.table-bordered {
@@ -6315,7 +6315,7 @@ button.close {
 }
 
 .bg-faded {
-  background-color: #f7f7f9;
+  background-color: #f7f7f7;
 }
 
 .bg-primary {
