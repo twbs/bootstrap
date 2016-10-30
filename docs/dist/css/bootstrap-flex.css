@@ -4388,6 +4388,10 @@ tbody.collapse.active {
   background-color: rgba(0, 0, 0, 0.075);
 }
 
+.navbar-light .navbar-text {
+  color: rgba(0, 0, 0, 0.5);
+}
+
 .navbar-dark .navbar-brand,
 .navbar-dark .navbar-toggler {
   color: white;
@@ -4427,6 +4431,10 @@ tbody.collapse.active {
 
 .navbar-dark .navbar-divider {
   background-color: rgba(255, 255, 255, 0.075);
+}
+
+.navbar-dark .navbar-text {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .navbar-toggleable-xs::after {
