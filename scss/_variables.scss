@@ -154,8 +154,10 @@ $border-width: 1px !default;
 //
 // Settings for the `<body>` element.
 
-$body-bg:    #fff !default;
-$body-color: $gray-dark !default;
+$body-bg:       #fff !default;
+$body-color:    $gray-dark !default;
+$inverse-bg:    $gray-dark !default;
+$inverse-color: $gray-lighter !default;
 
 
 // 5. Links
@@ -310,9 +312,14 @@ $table-cell-padding:            .75rem !default;
 $table-sm-cell-padding:         .3rem !default;
 
 $table-bg:                      transparent !default;
+$table-bg-inverse:              $gray-dark !default;
+
 $table-bg-accent:               rgba(0,0,0,.05) !default;
 $table-bg-hover:                rgba(0,0,0,.075) !default;
 $table-bg-active:               $table-bg-hover !default;
+
+$table-head-bg:                 $gray-lighter !default;
+$table-head-color:              $gray !default;
 
 $table-border-width:            $border-width !default;
 $table-border-color:            $gray-lighter !default;
@@ -842,6 +849,7 @@ $thumbnail-box-shadow:        0 1px 2px rgba(0,0,0,.075) !default;
 // 30. Figures
 
 $figure-caption-font-size: 90% !default;
+$figure-caption-color:     $gray-light !default;
 
 
 // 31. Breadcrumbs
