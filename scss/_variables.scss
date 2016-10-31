@@ -397,7 +397,7 @@ $input-border-radius-sm:         $border-radius-sm !default;
 
 $input-bg-focus:                 $input-bg !default;
 $input-border-focus:             #66afe9 !default;
-$input-box-shadow-focus:         $input-box-shadow, 0 0 8px rgba(102,175,233,.6) !default;
+$input-box-shadow-focus:         $input-box-shadow, 0 0 8px rgba($input-border-focus,.6) !default;
 $input-color-focus:              $input-color !default;
 
 $input-color-placeholder:        #999 !default;
@@ -468,7 +468,7 @@ $custom-select-border-color:  $input-border-color !default;
 $custom-select-border-radius: $border-radius !default;
 
 $custom-select-focus-border-color: #51a7e8 !default;
-$custom-select-focus-box-shadow:   inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba(81, 167, 232, .5) !default;
+$custom-select-focus-box-shadow:   inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
 
 $custom-select-sm-padding-y: .2rem !default;
 $custom-select-sm-font-size: 75% !default;
