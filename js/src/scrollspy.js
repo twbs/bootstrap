@@ -215,7 +215,7 @@ const ScrollSpy = (($) => {
         }
       }
 
-      if (this._activeTarget && scrollTop < this._offsets[0]) {
+      if (this._activeTarget && scrollTop < this._offsets[0] && this._offsets[0] > 0) {
         this._activeTarget = null
         this._clear()
         return
