@@ -133,7 +133,7 @@ const Modal = (($) => {
       $(this._element).on(
         Event.CLICK_DISMISS,
         Selector.DATA_DISMISS,
-        $.proxy(this.hide, this)
+        (event) => this.hide(event)
       )
 
       $(this._dialog).on(Event.MOUSEDOWN_DISMISS, () => {
@@ -144,9 +144,7 @@ const Modal = (($) => {
         })
       })
 
-      this._showBackdrop(
-        $.proxy(this._showElement, this, relatedTarget)
-      )
+      this._showBackdrop(() => this._showElement(relatedTarget))
     }
 
     hide(event) {
@@ -178,7 +176,7 @@ const Modal = (($) => {
          ($(this._element).hasClass(ClassName.FADE))) {
 
         $(this._element)
-          .one(Util.TRANSITION_END, $.proxy(this._hideModal, this))
+          .one(Util.TRANSITION_END, (event) => this._hideModal(event))
           .emulateTransitionEnd(TRANSITION_DURATION)
       } else {
         this._hideModal()
@@ -284,7 +282,7 @@ const Modal = (($) => {
 
     _setResizeEvent() {
       if (this._isShown) {
-        $(window).on(Event.RESIZE, $.proxy(this._handleUpdate, this))
+        $(window).on(Event.RESIZE, (event) => this._handleUpdate(event))
       } else {
         $(window).off(Event.RESIZE)
       }
