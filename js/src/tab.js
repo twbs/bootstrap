@@ -156,9 +156,7 @@ const Tab = (($) => {
         && ((active && $(active).hasClass(ClassName.FADE))
            || Boolean($(container).find(Selector.FADE_CHILD)[0]))
 
-      let complete = $.proxy(
-        this._transitionComplete,
-        this,
+      let complete = () => this._transitionComplete(
         element,
         active,
         isTransitioning,

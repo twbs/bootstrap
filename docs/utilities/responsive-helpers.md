@@ -49,9 +49,9 @@ These utility classes float an element to the left or right, or disable floating
 Two similar non-responsive Sass mixins (`float-left` and `float-right`) are also available.
 
 {% example html %}
-<div class="float-xs-left">Float left on all viewport sizes</div><br>
-<div class="float-xs-right">Float right on all viewport sizes</div><br>
-<div class="float-xs-none">Don't float on all viewport sizes</div><br>
+<div class="float-left">Float left on all viewport sizes</div><br>
+<div class="float-right">Float right on all viewport sizes</div><br>
+<div class="float-none">Don't float on all viewport sizes</div><br>
 
 <div class="float-sm-left">Float left on viewports sized SM (small) or wider</div><br>
 <div class="float-md-left">Float left on viewports sized MD (medium) or wider</div><br>

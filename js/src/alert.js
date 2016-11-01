@@ -117,7 +117,7 @@ const Alert = (($) => {
       }
 
       $(element)
-        .one(Util.TRANSITION_END, $.proxy(this._destroyElement, this, element))
+        .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
         .emulateTransitionEnd(TRANSITION_DURATION)
     }
 

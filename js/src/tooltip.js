@@ -239,6 +239,9 @@ const Tooltip = (($) => {
     }
 
     show() {
+      if ($(this.element).css('display') === 'none') {
+        throw new Error('Please use show on visible elements')
+      }
       let showEvent = $.Event(this.constructor.Event.SHOW)
 
       if (this.isWithContent() && this._isEnabled) {
@@ -426,7 +429,7 @@ const Tooltip = (($) => {
           $(this.element).on(
             this.constructor.Event.CLICK,
             this.config.selector,
-            $.proxy(this.toggle, this)
+            (event) => this.toggle(event)
           )
 
         } else if (trigger !== Trigger.MANUAL) {
@@ -441,12 +444,12 @@ const Tooltip = (($) => {
             .on(
               eventIn,
               this.config.selector,
-              $.proxy(this._enter, this)
+              (event) => this._enter(event)
             )
             .on(
               eventOut,
               this.config.selector,
-              $.proxy(this._leave, this)
+              (event) => this._leave(event)
             )
         }
       })

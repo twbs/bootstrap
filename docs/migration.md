@@ -185,7 +185,8 @@ Dropped entirely for the new card component.
 
 ### Utilities
 
-- Added `.float-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-xs-left` and `.float-xs-right`.
+- Made display utilities responsive (e.g., `.d-none` and `d-{sm,md,lg,xl}-none`).
+- Added `.float-{sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-left` and `.float-right`.
 - Added responsive variations to our text alignment classes `.text-{xs,sm,md,lg,xl}-{left,center,right}` and removed the redundant `.text-{left,center,right}` utilities as they are the same as the `xs` variation.
 - Dropped `.center-block` for the new `.mx-auto` class.
 

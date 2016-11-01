@@ -135,14 +135,22 @@ $spacers: (
     y: 0
   ),
   1: (
+    x: ($spacer-x * .25),
+    y: ($spacer-y * .25)
+  ),
+  2: (
+    x: ($spacer-x * .5),
+    y: ($spacer-y * .5)
+  ),
+  3: (
     x: $spacer-x,
     y: $spacer-y
   ),
-  2: (
+  4: (
     x: ($spacer-x * 1.5),
     y: ($spacer-y * 1.5)
   ),
-  3: (
+  5: (
     x: ($spacer-x * 3),
     y: ($spacer-y * 3)
   )

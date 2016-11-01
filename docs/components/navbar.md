@@ -55,7 +55,7 @@ Here's an example of all the sub-components included in a default, non-responsiv
       </div>
     </li>
   </ul>
-  <form class="form-inline float-xs-right">
+  <form class="form-inline float-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
@@ -171,7 +171,7 @@ Place various form controls and components within a navbar with `.form-inline`. 
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <form class="form-inline float-xs-left">
+  <form class="form-inline float-left">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
@@ -182,7 +182,7 @@ Input groups work, too:
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <form class="form-inline float-xs-left">
+  <form class="form-inline float-left">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">@</span>
       <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
@@ -195,7 +195,7 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <form class="form-inline float-xs-left">
+  <form class="form-inline float-left">
     <button class="btn btn-outline-success" type="button">Main button</button>
     <button class="btn btn-sm align-middle btn-outline-secondary" type="button">Smaller button</button>
   </form>
@@ -218,7 +218,7 @@ Using our utility classes, you can change the alignment and appearance of your n
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <span class="navbar-text float-xs-right text-muted">
+  <span class="navbar-text float-right text-muted">
     Muted navbar text that's floated right
   </span>
 </nav>
@@ -229,7 +229,7 @@ Similarly, you can use utility classes to align navbar text to other navbar elem
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">Navbar</a>
-  <span class="navbar-text float-xs-left">
+  <span class="navbar-text float-left">
     Navbar text that's floated left
   </span>
 </nav>
@@ -258,7 +258,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline float-xs-right">
+    <form class="form-inline float-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-info" type="submit">Search</button>
     </form>
@@ -279,7 +279,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline float-xs-right">
+    <form class="form-inline float-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-secondary" type="submit">Search</button>
     </form>
@@ -300,7 +300,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline float-xs-right">
+    <form class="form-inline float-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
