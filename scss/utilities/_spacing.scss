@@ -38,7 +38,7 @@
           }
         } @else {
           // xs
-          .#{$abbrev}-#{$size}  { #{$prop}:        $length-y $length-x !important; } // a = All sides
+          .#{$abbrev}-#{$size} { #{$prop}:        $length-y $length-x !important; } // a = All sides
           .#{$abbrev}t-#{$size} { #{$prop}-top:    $length-y !important; }
           .#{$abbrev}r-#{$size} { #{$prop}-right:  $length-x !important; }
           .#{$abbrev}b-#{$size} { #{$prop}-bottom: $length-y !important; }
