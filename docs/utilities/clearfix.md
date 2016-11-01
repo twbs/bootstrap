@@ -33,7 +33,7 @@ The following example shows how the clearfix can be used. Without the clearfix t
 
 {% example html %}
 <div class="bg-info clearfix">
-  <button class="btn btn-secondary float-xs-left">Example Button pulled left</button>
-  <button class="btn btn-secondary float-xs-right">Example Button pullred right</button>
+  <button class="btn btn-secondary float-left">Example Button pulled left</button>
+  <button class="btn btn-secondary float-right">Example Button pullred right</button>
 </div>
 {% endexample %}
