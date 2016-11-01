@@ -1,7 +1,6 @@
 @if $enable-flex {
   .media {
     display: flex;
-    margin-bottom: $spacer;
   }
   .media-body {
     flex: 1;
@@ -13,13 +12,6 @@
     align-self: flex-end;
   }
 } @else {
-  .media {
-    margin-top: 15px;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
   .media,
   .media-body {
     overflow: hidden;
@@ -61,11 +53,11 @@
 //
 
 .media-right {
-  padding-left: 10px;
+  padding-left: $media-alignment-padding-x;
 }
 
 .media-left {
-  padding-right: 10px;
+  padding-right: $media-alignment-padding-x;
 }
 
 
@@ -75,7 +67,7 @@
 
 .media-heading {
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: $media-heading-margin-bottom;
 }
 
 

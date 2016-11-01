@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Alerts
+description: Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 group: components
 ---
 
@@ -30,6 +31,9 @@ Alerts are available for any length of text, as well as an optional dismiss butt
 </div>
 {% endexample %}
 
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 ### Link color
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
@@ -49,6 +53,19 @@ Use the `.alert-link` utility class to quickly provide matching colored links wi
 </div>
 {% endexample %}
 
+### Additional content
+
+Alerts can also contain additional HTML elements like headings and paragraphs.
+
+{% example html %}
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">Well done!</h4>
+  <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+</div>
+{% endexample %}
+
+
 ### Dismissing
 
 Using the alert JavaScript plugin, it's possible to dismiss any alert inline. Here's how:
@@ -56,12 +73,12 @@ Using the alert JavaScript plugin, it's possible to dismiss any alert inline. He
 - Be sure you've loaded the alert plugin, or the compiled Bootstrap JavaScript.
 - Add a dismiss button and the `.alert-dismissible` class, which adds extra padding to the right of the alert and positions the `.close` button.
 - On the dismiss button, add the `data-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
-- To animate alerts when dismissing them, be sure to add the `.fade` and `.in` classes.
+- To animate alerts when dismissing them, be sure to add the `.fade` and `.active` classes.
 
 You can see this in action with a live demo:
 
 {% example html %}
-<div class="alert alert-warning alert-dismissible fade in" role="alert">
+<div class="alert alert-warning alert-dismissible fade active" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

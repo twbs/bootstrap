@@ -3,7 +3,8 @@
 //
 
 .bd-navbar {
-  font-size: 87.5%; // 14px
+  padding-right: 0;
+  padding-left: 0;
 
   .navbar-nav {
     .nav-link {
@@ -17,7 +18,8 @@
       }
 
       &.active {
-        color: darken($gray-dark, 25%);
+        font-weight: 500;
+        color: darken($gray-dark, 15%);
       }
     }
   }

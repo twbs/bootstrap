@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Jumbotron
+description: Lightweight, flexible component for showcasing hero unit style content.
 group: components
 ---
 
@@ -12,7 +13,7 @@ A lightweight, flexible component that can optionally extend the entire viewport
 <div class="jumbotron">
   <h1 class="display-3">Hello, world!</h1>
   <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="m-y-2">
+  <hr class="my-4">
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>

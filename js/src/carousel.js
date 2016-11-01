@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): carousel.js
+ * Bootstrap (v4.0.0-alpha.5): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,12 +18,14 @@ const Carousel = (($) => {
    */
 
   const NAME                = 'carousel'
-  const VERSION             = '4.0.0-alpha.2'
+  const VERSION             = '4.0.0-alpha.5'
   const DATA_KEY            = 'bs.carousel'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 600
+  const ARROW_LEFT_KEYCODE  = 37 // KeyboardEvent.which value for left arrow key
+  const ARROW_RIGHT_KEYCODE = 39 // KeyboardEvent.which value for right arrow key
 
   const Default = {
     interval : 5000,
@@ -159,7 +161,7 @@ const Carousel = (($) => {
 
       if (this._config.interval && !this._isPaused) {
         this._interval = setInterval(
-          $.proxy(document.visibilityState ? this.nextWhenVisible : this.next, this), this._config.interval
+          (document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval
         )
       }
     }
@@ -217,14 +219,14 @@ const Carousel = (($) => {
     _addEventListeners() {
       if (this._config.keyboard) {
         $(this._element)
-          .on(Event.KEYDOWN, $.proxy(this._keydown, this))
+          .on(Event.KEYDOWN, (event) => this._keydown(event))
       }
 
       if (this._config.pause === 'hover' &&
         !('ontouchstart' in document.documentElement)) {
         $(this._element)
-          .on(Event.MOUSEENTER, $.proxy(this.pause, this))
-          .on(Event.MOUSELEAVE, $.proxy(this.cycle, this))
+          .on(Event.MOUSEENTER, (event) => this.pause(event))
+          .on(Event.MOUSELEAVE, (event) => this.cycle(event))
       }
     }
 
@@ -236,9 +238,14 @@ const Carousel = (($) => {
       }
 
       switch (event.which) {
-        case 37: this.prev(); break
-        case 39: this.next(); break
-        default: return
+        case ARROW_LEFT_KEYCODE:
+          this.prev()
+          break
+        case ARROW_RIGHT_KEYCODE:
+          this.next()
+          break
+        default:
+          return
       }
     }
 

@@ -233,6 +233,23 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should remove aria-hidden attribute when shown, add it back when hidden', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    $('<div id="modal-test" aria-hidden="true"/>')
+      .on('shown.bs.modal', function () {
+        assert.notOk($('#modal-test').is('[aria-hidden]'), 'aria-hidden attribute removed')
+        $(this).bootstrapModal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        assert.ok($('#modal-test').is('[aria-hidden]'), 'aria-hidden attribute added')
+        assert.strictEqual($('#modal-test').attr('aria-hidden'), 'true', 'correct aria-hidden="true" added')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should close reopened modal with [data-dismiss="modal"] click', function (assert) {
     assert.expect(2)
     var done = assert.async()
@@ -342,6 +359,44 @@ $(function () {
       })
       .on('shown.bs.modal', function () {
         $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should have a paddingRight when the modal is taller than the viewport', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    $('<div class="navbar-fixed-top navbar-fixed-bottom is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
+    $('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed').css('padding-right', '10px')
+
+    $('<div id="modal-test"/>')
+      .on('shown.bs.modal', function () {
+        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
+        assert.strictEqual(isNaN(paddingRight), false)
+        assert.strictEqual(paddingRight !== 0, true)
+        $(document.body).css('padding-right', ''); // Because test case "should ignore other inline styles when trying to restore body padding after closing" fail if not
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should remove padding-right on modal after closing', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+    $('<div class="navbar-fixed-top navbar-fixed-bottom is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
+    $('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed').css('padding-right', '10px')
+
+    $('<div id="modal-test"/>')
+      .on('shown.bs.modal', function () {
+        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
+        assert.strictEqual(isNaN(paddingRight), false)
+        assert.strictEqual(paddingRight !== 0, true)
+        $(this).bootstrapModal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
+        assert.strictEqual(paddingRight, 0)
+        done()
       })
       .bootstrapModal('show')
   })

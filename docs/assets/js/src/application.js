@@ -3,7 +3,8 @@
 // ++++++++++++++++++++++++++++++++++++++++++
 
 /*!
- * JavaScript for Bootstrap's docs (http://getbootstrap.com)
+ * JavaScript for Bootstrap's docs (https://getbootstrap.com)
+ * Copyright 2011-2016 The Bootstrap Authors
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
@@ -32,8 +33,19 @@
     $('.bd-example-indeterminate [type="checkbox"]').prop('indeterminate', true)
 
     // Disable empty links in docs examples
-    $('.bd-example [href=#]').click(function (e) {
+    $('.bd-example [href="#"]').click(function (e) {
       e.preventDefault()
+    })
+
+    // Modal relatedTarget demo
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var $button = $(event.relatedTarget)      // Button that triggered the modal
+      var recipient = $button.data('whatever')  // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var $modal = $(this)
+      $modal.find('.modal-title').text('New message to ' + recipient)
+      $modal.find('.modal-body input').val(recipient)
     })
 
     // Insert copy to clipboard button before .highlight

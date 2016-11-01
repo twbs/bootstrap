@@ -26,10 +26,10 @@
 
   @include media-breakpoint-up(md) {
     .col-sm-6:first-child {
-      padding-right: ($grid-gutter-width * 1.5);
+      padding-right: ($grid-gutter-width-base * 1.5);
     };
     .col-sm-6:last-child {
-      padding-left: ($grid-gutter-width * 1.5);
+      padding-left: ($grid-gutter-width-base * 1.5);
     }
   }
 }

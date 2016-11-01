@@ -22,16 +22,26 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 ### Global changes
 
 - Switched from [Less](http://lesscss.org/) to [Sass](http://sass-lang.com/) for our source CSS files.
-- Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and more as viewports are not affected by type size.
+- Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and grid behavior as viewports are not affected by type size.
 - Global font-size increased from `14px` to `16px`.
 - Added a new grid tier for ~`480px` and below.
 - Replaced the separate optional theme with configurable options via SCSS variables (e.g., `$enable-gradients: true`).
+
+### Grid system
+
+- Added support for flexbox (set `$enable-flex: true` and recompile) in the grid mixins and predefined classes.
+- As part of flexbox, included support for vertical and horizontal alignment classes.
+- Overhauled grid mixins to merge `make-col-span` into `make-col` for a singular mixin.
+- Added a new `sm` grid tier below `768px` for more granular control. We now have `xs`, `sm`, `md`, `lg`, and `xl`. This also means every tier has been bumped up one level (so `.col-md-6` in v3 is now `.col-lg-6` in v4).
+- Changed grid system media query breakpoints and container widths to account for new grid tier and ensure columns are evenly divisible by `12` at their max width.
+- Grid breakpoints and container widths are now handled via Sass maps (`$grid-breakpoints` and `$container-max-widths`) instead of a handful of separate variables. These replace the `@screen-*` variables entirely and allow you to fully customize the grid tiers.
+- Media queries have also changed. Instead of repeating our media query declarations with the same value each time, we now have `@include media-breakpoint-up/down/only`. Now, instead of writing `@media (min-width: @screen-sm-min) { ... }`, you can write `@include media-breakpoint-up(sm) { ... }`.
 
 ### Components
 
 - Dropped panels, thumbnails, and wells for a new all-encompassing component, cards.
 - Dropped the Glyphicons icon font. If you need icons, some options are:
-  - the upstream version of [Glyphicons](http://glyphicons.com/)
+  - the upstream version of [Glyphicons](https://glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
   - [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
 - Dropped the Affix jQuery plugin. We recommend using a `position: sticky` polyfill instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations.
@@ -49,14 +59,15 @@ This list highlights key changes by component between v3.x.x and v4.0.0.
 
 ### Reboot
 
-New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border` change, moving from `rem` to `em` units on many elements, link styles, and many form element resets.
+New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border-box` change, moving from `em` to `rem` units on many elements, link styles, and many form element resets.
 
 ### Typography
 
 - Moved all `.text-` utilities to the `_utilities.scss` file.
-- Dropped the `.page-header` class entirely.
+- Dropped `.page-header` as, aside from the border, all it's styles can be applied via utilities.
 - `.dl-horizontal` has been dropped. Instead, use `.row` on `<dl>` and use grid column classes (or mixins) on its `<dt>` and `<dd>` children.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
+- `.list-inline` now requires that its children list items have the new `.list-inline-item` class applied to them.
 
 ### Images
 
@@ -69,7 +80,8 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
 - Added a new `.table-reflow` option.
-- Added table header modifiers: `.thead-default` and `.thead-inverse`
+- Added table header modifiers: `.thead-default` and `.thead-inverse`.
+- Renamed contextual classes to have a `.table-`-prefix. Hence `.active`, `.success`, `.warning`, `.danger` and `.table-info` to `.table-active`, `.table-success`, `.table-warning`, `.table-danger` and `.table-info`.
 
 ### Forms
 
@@ -77,26 +89,48 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Renamed `.control-label` to `.form-control-label`.
 - Renamed `.input-lg` and `.input-sm` to `.form-control-lg` and `.form-control-sm`, respectively.
 - Dropped `.form-group-*` classes for simplicity's sake. Use `.form-control-*` classes instead now.
-- Dropped `.help-block`. Use the `.text-muted` utility class instead.
+- Dropped `.help-block` and replaced it with `.form-text` for block-level help text. For inline help text and other flexible options, use utility classes like `.text-muted`.
 - Horizontal forms overhauled:
   - Dropped the `.form-horizontal` class requirement.
-  - `.form-group` no longer mixins the `.row` class, so it's now required for grid layouts.
+  - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
 
 ### Buttons
 
 - Renamed `.btn-default` to `.btn-secondary`.
-- Dropped the `.btn-xs` class entirely.
-- The [stateful button](http://getbootstrap.com/javascript/#buttons-methods) feature of the `button.js` jQuery plugin has been dropped. This includes the `$().button(string)` and `$().button('reset')` methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
+- Dropped the `.btn-xs` class entirely as `.btn-sm` is proportionally much smaller than v3's.
+- The [stateful button](https://getbootstrap.com/javascript/#buttons-methods) feature of the `button.js` jQuery plugin has been dropped. This includes the `$().button(string)` and `$().button('reset')` methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
   - Note that the other features of the plugin (button checkboxes, button radios, single-toggle buttons) have been retained in v4.
 
 ### Button group
 
-- Dropped the `.btn-group-xs` class entirely.
+- Dropped the `.btn-group-xs` class entirely given removal of `.btn-xs`.
+- Removed justified button groups as they were only available for `<a>` elements and not `<button>` elements.
+
+### Dropdowns
+
+- Switched from parent selectors to singular classes for all components, modifiers, etc.
+- Simplified dropdown styles to no longer ship with upward or downward facing arrows attached to the dropdown menu.
+- Dropdowns can be built with `<div>`s or `<ul>`s now.
+- Rebuilt dropdown styles and markup to provide easy, built-in support for `<a>` and `<button>` based dropdown items.
+- Renamed `.divider` to `.dropdown-divider`.
+- Dropdown items now require `.dropdown-item`.
+- Dropdown toggles no longer require an explicit `<span class="caret"></span>`; this is now provided automatically via CSS's `::after` on `.dropdown-toggle`.
 
 ### Grid system
 
 - Added a new `~480px` grid breakpoint, meaning there are now five total tiers.
+- Renamed the responsive grid modifier classes from `.col-{breakpoint}-{modifier}-{size}` to `.{modifier}-{breakpoint}-{size}` for simpler grid classes. For example, instead of `.col-md-3.col-md-push-9` it's `col-md-3.push-md-9`.
+- Overhauled the grid mixins to merge `make-col` and `make-col-span` into a single `make-col` mixin, thereby ensuring mixins and predefined classes utilize the same float/flex behaviors.
+- Added flexbox utility classes for grid system and components.
+
+### List groups
+
+- Replaced `a.list-group-item` with an explicit class, `.list-group-item-action`, for styling link and button versions of list group items.
+
+### Modal
+
+- The `remote` option (which could be used to automatically load and inject external content into a modal) and the corresponding `loaded.bs.modal` event were removed. We recommend instead using client-side templating or a data binding framework, or calling [jQuery.load](https://api.jquery.com/load/) yourself.
 
 ### Navs
 
@@ -107,10 +141,6 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Dropped the `.navbar-form` class entirely. It's no longer necessary.
 
-### Pager
-
-- Renamed `.previous` and `.next` to `.pager-prev` and `.pager-next`.
-
 ### Pagination
 
 - Explicit classes (`.page-item`, `.page-link`) are now required on the descendants of `.pagination`s
@@ -120,9 +150,11 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - An explicit class, `.breadcrumb-item`, is now required on the descendants of `.breadcrumb`s
 
-### Badges
+### Labels, badges, and tags
 
-- Dropped the badge component. Use the `.label-pill` modifier together with the label component instead.
+- Renamed `.label` to `.tag` to disambiguate from the `<label>` element.
+- Dropped the `.badge` component as it was nearly identical to labels/tags. Use the `.tag-pill` modifier together with the label component instead for that rounded look.
+- Tags are no longer floated automatically in list groups and other components. Utility classes are now required for that.
 
 ### Panels, thumbnails, and wells
 
@@ -132,8 +164,9 @@ Dropped entirely for the new card component.
 
 - `.panel` to `.card`
 - `.panel-default` removed and no replacement
+- `.panel-group` removed and no replacement. `.card-group` is not a replacement, it is different.
 - `.panel-heading` to `.card-header`
-- `.panel-title` to `.card-header`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/components/utilities/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
+- `.panel-title` to `.card-header`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/utilities/typography/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
 - `.panel-body` to `.card-block`
 - `.panel-footer` to `.card-footer`
 - `.panel-primary` to `.card-primary` and `.card-inverse` (or use `.bg-primary` on `.card-header`)
@@ -142,14 +175,25 @@ Dropped entirely for the new card component.
 - `.panel-warning` to `.card-warning` and `.card-inverse` (or use `.bg-warning` on `.card-header`)
 - `.panel-danger` to `.card-danger` and `.card-inverse` (or use `.bg-danger` on `.card-header`)
 
+### Tooltips
+
+- Removed support for `auto` placement options.
+
 ### Carousel
 
 - Renamed `.item` to `.carousel-item`.
 
 ### Utilities
 
-- Added `.pull-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats
-- Removed `.pull-left` and `.pull-right` since they're redundant to `.pull-xs-left` and `.pull-xs-right`
+- Made display utilities responsive (e.g., `.d-none` and `d-{sm,md,lg,xl}-none`).
+- Added `.float-{sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-left` and `.float-right`.
+- Added responsive variations to our text alignment classes `.text-{xs,sm,md,lg,xl}-{left,center,right}` and removed the redundant `.text-{left,center,right}` utilities as they are the same as the `xs` variation.
+- Dropped `.center-block` for the new `.mx-auto` class.
+
+### Vendor prefix mixins
+Bootstrap 3's [vendor prefix](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm) mixins, which were deprecated in v3.2.0, have been removed in Bootstrap 4. Since we use [Autoprefixer](https://github.com/postcss/autoprefixer), they're no longer necessary.
+
+Removed the following mixins: `animation`, `animation-delay`, `animation-direction`, `animation-duration`, `animation-fill-mode`, `animation-iteration-count`, `animation-name`, `animation-timing-function`, `backface-visibility`, `box-sizing`, `content-columns`, `hyphens`, `opacity`, `perspective`, `perspective-origin`, `rotate`, `rotateX`, `rotateY`, `scale`, `scaleX`, `scaleY`, `skew`, `transform-origin`, `transition-delay`, `transition-duration`, `transition-property`, `transition-timing-function`, `transition-transform`, `translate`, `translate3d`, `user-select`
 
 ## Documentation
 
@@ -190,14 +234,11 @@ TODO: audit classes in v3 that aren't present in v4
 
 ### Responsive utilities
 
-The following deprecated variables have been removed in v4.0.0:
-
-* `@screen-phone`, `@screen-tablet`, `@screen-desktop`, `@screen-lg-desktop`. Use the more abstract `$screen-{xs,sm,md,lg,xl}-*` variables instead.
-* `@screen-sm`, `@screen-md`, `@screen-lg`. Use the more clearly named `$screen-{xs,sm,md,lg,xl}-min` variables instead.
-* `@screen-xs`, `@screen-xs-min`. The extra small breakpoint has no lower bound, so these variables were logically absurd. Reformulate your expression in terms of `$screen-xs-max` instead.
+All `@screen-` variables have been removed in v4.0.0. Use the `media-breakpoint-up()`, `media-breakpoint-down()`, or `media-breakpoint-only()` Sass mixins or the `$grid-breakpoints` Sass map instead.
 
 The responsive utility classes have also been overhauled.
 
+- The `.hidden` and `.show` classes have been removed because they conflicted with jQuery's `$(...).hide()` and `$(...).show()` methods. Instead, try toggling the `[hidden]` attribute, use inline styles like `style="display: none;"` and `style="display: block;"`, or toggle the `.invisible` class.
 - The old classes (`.hidden-xs` `.hidden-sm` `.hidden-md` `.hidden-lg` `.visible-xs-block` `.visible-xs-inline` `.visible-xs-inline-block` `.visible-sm-block` `.visible-sm-inline` `.visible-sm-inline-block` `.visible-md-block` `.visible-md-inline` `.visible-md-inline-block` `.visible-lg-block` `.visible-lg-inline` `.visible-lg-inline-block`) are gone.
 - They have been replaced by `.hidden-xs-up` `.hidden-xs-down` `.hidden-sm-up` `.hidden-sm-down` `.hidden-md-up` `.hidden-md-down` `.hidden-lg-up` `.hidden-lg-down`.
 - The `.hidden-*-up` classes hide the element when the viewport is at the given breakpoint or larger (e.g. `.hidden-md-up` hides an element on medium, large, and extra-large devices).
@@ -210,7 +251,6 @@ Note that the changes to the grid breakpoints in v4 means that you'll need to go
 ## Misc notes to prioritize
 
 - Removed the `min--moz-device-pixel-ratio` typo hack for retina media queries
-- Dropped `.hidden` and `.show` because they conflict with jQuery's `$(...).hide()` and `$(...).show()` methods.
 - Change buttons' `[disabled]` to `:disabled` as IE9+ supports `:disabled`. However `fieldset[disabled]` is still necessary because [native disabled fieldsets are still buggy in IE11](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#Browser_compatibility).
 
 TODO: audit list of stuff in v3 that was marked as deprecated

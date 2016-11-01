@@ -2,19 +2,28 @@
   opacity: 0;
   transition: opacity .15s linear;
 
-  &.in {
+  &.active {
     opacity: 1;
   }
 }
 
 .collapse {
   display: none;
-
-  &.in {
+  &.active {
     display: block;
   }
-  // tr&.in    { display: table-row; }
-  // tbody&.in { display: table-row-group; }
+}
+
+tr {
+  &.collapse.active {
+    display: table-row;
+  }
+}
+
+tbody {
+  &.collapse.active {
+    display: table-row-group;
+  }
 }
 
 .collapsing {

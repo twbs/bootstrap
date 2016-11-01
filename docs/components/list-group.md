@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: List group
+description: Learn about Bootstrap's list group component for rendering series of related content.
 group: components
 ---
 
@@ -24,56 +25,46 @@ The most basic list group is simply an unordered list with list items, and the p
 </ul>
 {% endexample %}
 
-## Labels
+## Badge
 
-Add labels to any list group item to show unread counts, activity, etc.
+Add badges to any list group item to show unread counts, activity, etc.
 
 {% example html %}
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="label label-default label-pill pull-xs-right">14</span>
+    <span class="badge badge-default badge-pill float-right">14</span>
     Cras justo odio
   </li>
   <li class="list-group-item">
-    <span class="label label-default label-pill pull-xs-right">2</span>
+    <span class="badge badge-default badge-pill float-right">2</span>
     Dapibus ac facilisis in
   </li>
   <li class="list-group-item">
-    <span class="label label-default label-pill pull-xs-right">1</span>
+    <span class="badge badge-default badge-pill float-right">1</span>
     Morbi leo risus
   </li>
 </ul>
 {% endexample %}
 
-## Linked items
+When in flexbox mode, you'll need to rearrange the contents of your list group items. To replicate the right-aligned badges as shown above, use the following example's code. Note the [`flex-items-xs-between` utility class](/layout/flexbox-grid/#horizontal-alignment), the badge's placement, and the lack of a float utility on the badges.
 
-Linkify list group items by using anchor tags instead of list items (that also means a parent `<div>` instead of an `<ul>`). No need for individual parents around each element.
-
-{% example html %}
-<div class="list-group">
-  <a href="#" class="list-group-item active">
+{% highlight html %}
+<ul class="list-group">
+  <li class="list-group-item flex-items-xs-between">
     Cras justo odio
-  </a>
-  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item">Morbi leo risus</a>
-  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item">Vestibulum at eros</a>
-</div>
-{% endexample %}
+    <span class="badge badge-default badge-pill">14</span>
+  </li>
+  <li class="list-group-item flex-items-xs-between">
+    Dapibus ac facilisis in
+    <span class="badge badge-default badge-pill">2</span>
+  </li>
+  <li class="list-group-item flex-items-xs-between">
+    Morbi leo risus
+    <span class="badge badge-default badge-pill">1</span>
+  </li>
+</ul>
+{% endhighlight %}
 
-## Button items
-
-List group items may be buttons instead of list items (that also means a parent `<div>` instead of an `<ul>`). No need for individual parents around each element. **Don't use the standard `.btn` classes here.**
-
-{% example html %}
-<div class="list-group">
-  <button type="button" class="list-group-item">Cras justo odio</button>
-  <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
-  <button type="button" class="list-group-item">Morbi leo risus</button>
-  <button type="button" class="list-group-item">Porta ac consectetur ac</button>
-  <button type="button" class="list-group-item">Vestibulum at eros</button>
-</div>
-{% endexample %}
 
 ## Disabled items
 
@@ -91,25 +82,51 @@ Add `.disabled` to a `.list-group-item` to gray it out to appear disabled.
 </div>
 {% endexample %}
 
+## Anchors and buttons
+
+Use anchors or buttons to create actionable list group items with hover, disabled, and active states by adding `.list-group-item-action`. This separate class contains a few overrides to add compatibility for `<a>`s and `<button>`s, as well as the hover and focus states.
+
+Be sure to **not use the standard `.btn` classes here**.
+
+{% example html %}
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    Cras justo odio
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="list-group">
+  <button type="button" class="list-group-item list-group-item-action active">
+    Cras justo odio
+  </button>
+  <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+  <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+  <button type="button" class="list-group-item list-group-item-action disabled">Vestibulum at eros</button>
+</div>
+{% endexample %}
+
 ## Contextual classes
 
 Use contextual classes to style list items, default or linked. Also includes `.active` state.
 
 {% example html %}
-<ul class="list-group">
-  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
-  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
-</ul>
-
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
-  <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-success">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-info">Cras sit amet nibh libero</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Vestibulum at eros</a>
 </div>
 {% endexample %}
+
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 ## Custom content
 
@@ -117,16 +134,16 @@ Add nearly any HTML within, even for linked list groups like the one below.
 
 {% example html %}
 <div class="list-group">
-  <a href="#" class="list-group-item active">
-    <h4 class="list-group-item-heading">List group item heading</h4>
+  <a href="#" class="list-group-item list-group-item-action active">
+    <h5 class="list-group-item-heading">List group item heading</h5>
     <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
   </a>
-  <a href="#" class="list-group-item">
-    <h4 class="list-group-item-heading">List group item heading</h4>
+  <a href="#" class="list-group-item list-group-item-action">
+    <h5 class="list-group-item-heading">List group item heading</h5>
     <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
   </a>
-  <a href="#" class="list-group-item">
-    <h4 class="list-group-item-heading">List group item heading</h4>
+  <a href="#" class="list-group-item list-group-item-action">
+    <h5 class="list-group-item-heading">List group item heading</h5>
     <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
   </a>
 </div>

@@ -1,0 +1,30 @@
+//
+// Display utilities
+//
+
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $min: breakpoint-min($breakpoint, $grid-breakpoints);
+
+    @if $min {
+      @media (min-width: $min) {
+        .d-#{$breakpoint}-none { display: none !important; }
+        .d-#{$breakpoint}-inline { display: inline !important; }
+        .d-#{$breakpoint}-inline-block { display: inline-block !important; }
+        .d-#{$breakpoint}-block { display: block !important; }
+        .d-#{$breakpoint}-table { display: table !important; }
+        .d-#{$breakpoint}-table-cell { display: table-cell !important; }
+        .d-#{$breakpoint}-flex { display: flex !important; }
+      }
+    } @else {
+      .d-none { display: none !important; }
+      .d-inline { display: inline !important; }
+      .d-inline-block { display: inline-block !important; }
+      .d-block { display: block !important; }
+      .d-table { display: table !important; }
+      .d-table-cell { display: table-cell !important; }
+      .d-flex { display: flex !important; }
+    }
+  }
+}

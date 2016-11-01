@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Input group
+description: Extend form controls with the input group.
 group: components
 ---
 
@@ -13,7 +14,7 @@ Easily extend form controls by adding text, buttons, or button groups on either 
 
 ## Basic example
 
-Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple add-ons on a single side, nor multiple form-controls in a single input group.**
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple form-controls in a single input group.**
 
 {% example html %}
 <div class="input-group">
@@ -37,6 +38,12 @@ Place one add-on or button on either side of an input. You may also place one on
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
   <span class="input-group-addon">.00</span>
 </div>
+<br>
+<div class="input-group">
+  <span class="input-group-addon">$</span>
+  <span class="input-group-addon">0.00</span>
+  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+</div>
 {% endexample %}
 
 ## Sizing
@@ -52,11 +59,6 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
-</div>
-<br>
-<div class="input-group input-group-sm">
-  <span class="input-group-addon" id="sizing-addon3">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon3">
 </div>
 {% endexample %}
 
@@ -84,6 +86,32 @@ Place any checkbox or radio option within an input group's addon instead of text
   </div>
 </div>
 {% endexample %}
+
+## Multiple addons
+
+Multiple add-ons are supported and can be mixed with checkbox and radio input versions.
+
+{% example html %}
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <input type="checkbox" aria-label="Checkbox for following text input">
+      </span>
+      <span class="input-group-addon">$</span>
+      <input type="text" class="form-control" aria-label="Text input with checkbox">
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-addon">$</span>
+      <span class="input-group-addon">0.00</span>
+      <input type="text" class="form-control" aria-label="Text input with radio button">
+    </div>
+  </div>
+</div>
+{% endexample %}
+
 
 ## Button addons
 
@@ -173,7 +201,7 @@ Buttons in input groups are a bit different and require one extra level of nesti
     <div class="input-group">
       <div class="input-group-btn">
         <button type="button" class="btn btn-secondary">Action</button>
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <div class="dropdown-menu">
@@ -192,7 +220,7 @@ Buttons in input groups are a bit different and require one extra level of nesti
       <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
       <div class="input-group-btn">
         <button type="button" class="btn btn-secondary">Action</button>
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <div class="dropdown-menu dropdown-menu-right">

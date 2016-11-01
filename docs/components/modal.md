@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Modal
+description: Learn how to use Bootstrap's modals to add dialog prompts to your site.
 group: components
 ---
 
@@ -34,7 +35,7 @@ Always try to place a modal's HTML code in a top-level position in your document
 {% callout warning %}
 #### Mobile device caveats
 
-There are some caveats regarding using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/getting-started/browsers-devices/#modals-navbars-and-virtual-keyboards) for details.
+There are some caveats regarding using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/getting-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
 {% endcallout %}
 
 ### Static example
@@ -181,7 +182,7 @@ Embedding YouTube videos in modals requires additional JavaScript not in Bootstr
 
 ## Optional sizes
 
-Modals have two optional sizes, available via modifier classes to be placed on a `.modal-dialog`.
+Modals have two optional sizes, available via modifier classes to be placed on a `.modal-dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
 
 <div class="bd-example">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
@@ -297,7 +298,7 @@ To take advantage of the Bootstrap grid system within a modal, just nest `.conta
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -412,6 +413,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
        <td>Closes the modal when escape key is pressed</td>
      </tr>
      <tr>
+       <td>focus</td>
+       <td>boolean</td>
+       <td>true</td>
+       <td>Puts the focus on the modal when initialized.</td>
+     </tr>
+     <tr>
        <td>show</td>
        <td>boolean</td>
        <td>true</td>
@@ -479,10 +486,6 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
      <tr>
        <td>hidden.bs.modal</td>
        <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-     </tr>
-     <tr>
-       <td>loaded.bs.modal</td>
-       <td>This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
      </tr>
     </tbody>
   </table>
