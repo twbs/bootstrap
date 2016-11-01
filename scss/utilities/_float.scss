@@ -1,13 +1,19 @@
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    .float-#{$breakpoint}-left {
-      @include float-left();
-    }
-    .float-#{$breakpoint}-right {
-      @include float-right();
-    }
-    .float-#{$breakpoint}-none {
-      float: none !important;
+    $min: breakpoint-min($breakpoint, $grid-breakpoints);
+
+    @if $min {
+      // everything else
+      @media (min-width: $min) {
+        .float-#{$breakpoint}-left { float: left !important; }
+        .float-#{$breakpoint}-right { float: right !important; }
+        .float-#{$breakpoint}-none { float: none !important; }
+      }
+    } @else {
+      // xs
+      .float-left { float: left !important; }
+      .float-right { float: right !important; }
+      .float-none { float: none !important; }
     }
   }
 }
