@@ -105,7 +105,7 @@ fieldset[disabled] a.btn {
 
 // Make a button look and behave like a link
 .btn-link {
-  font-weight: normal;
+  font-weight: $font-weight-normal;
   color: $link-color;
   border-radius: 0;
 

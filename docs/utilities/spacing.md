@@ -4,9 +4,13 @@ title: Spacing
 group: utilities
 ---
 
-Assign `margin` or `padding` to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are built from a default Sass map ranging from `.25rem` to `3rem`.
+Assign responsive-friendly `margin` or `padding` values to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are built from a default Sass map ranging from `.25rem` to `3rem`.
 
-The classes are named using the format: `{property}{sides}-{size}`
+## Notation
+
+Spacing utilities that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+The classes are named using the format `{property}{sides}-{size}` for `xs` and `{property}{sides}-{breakpoint}-{size}` for `sm`, `md`, `lg`, and `xl`.
 
 Where *property* is one of:
 
@@ -21,7 +25,7 @@ Where *sides* is one of:
 * `r` - for classes that set `margin-right` or `padding-right`
 * `x` - for classes that set both `*-left` and `*-right`
 * `y` - for classes that set both `*-top` and `*-bottom`
-* `a` - for classes that set a `margin` or `padding` on all 4 sides of the element
+* blank - for classes that set a `margin` or `padding` on all 4 sides of the element
 
 Where *size* is one of:
 
@@ -34,6 +38,8 @@ Where *size* is one of:
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
+## Examples
+
 Here are some representative examples of these classes:
 
 {% highlight scss %}
@@ -42,16 +48,16 @@ Here are some representative examples of these classes:
 }
 
 .ml-1 {
-  margin-left: $spacer-x !important;
+  margin-left: ($spacer-x * .25) !important;
 }
 
 .px-2 {
-  padding-left: ($spacer-x * 1.5) !important;
-  padding-right: ($spacer-x * 1.5) !important;
+  padding-left: ($spacer-x * .5) !important;
+  padding-right: ($spacer-x * .5) !important;
 }
 
 .p-3 {
-  padding: ($spacer-y * 3) ($spacer-x * 3) !important;
+  padding: $spacer-y $spacer-x !important;
 }
 {% endhighlight %}
 

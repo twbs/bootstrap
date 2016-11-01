@@ -24,8 +24,12 @@
     @include hover-focus-active {
       z-index: 3;
     }
+
     @if $enable-flex {
-      flex: 1;
+      flex: 1 1 auto;
+      // Add width 1% and flex-basis auto to ensure that button will not wrap out
+      // the column. Applies to IE Edge+ and Firefox. Chrome do not require this.
+      width: 1%;
     } @else {
       // IE9 fubars the placeholder attribute in text inputs and the arrows on
       // select elements in input groups. To fix it, we float the input. Details:
@@ -40,7 +44,12 @@
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
-  @if not $enable-flex {
+  @if $enable-flex {
+    // Vertically centers the content of the addons within the input group
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  } @else {
     display: table-cell;
   }
 
@@ -84,7 +93,7 @@
   padding: $input-padding-y $input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base;
-  font-weight: normal;
+  font-weight: $font-weight-normal;
   line-height: $input-line-height;
   color: $input-color;
   text-align: center;
@@ -158,9 +167,16 @@
   // element above the siblings.
   > .btn {
     position: relative;
+
+    @if $enable-flex {
+      // Vertically stretch the button and center its content
+      flex: 1;
+    }
+
     + .btn {
       margin-left: (-$input-btn-border-width);
     }
+
     // Bring the "active" button to the front
     @include hover-focus-active {
       z-index: 3;

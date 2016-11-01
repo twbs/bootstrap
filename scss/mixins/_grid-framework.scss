@@ -40,6 +40,10 @@
           flex-grow: 1;
           max-width: 100%;
         }
+       .col-#{$breakpoint}-auto {
+          flex: 0 0 auto;
+          width: auto;
+        }
       }
 
       @for $i from 1 through $columns {

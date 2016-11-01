@@ -229,7 +229,7 @@ $(function () {
     $popover.bootstrapPopover('show')
     $popover.bootstrapPopover('dispose')
 
-    assert.ok(!$popover.hasClass('in'), 'popover is hidden')
+    assert.ok(!$popover.hasClass('active'), 'popover is hidden')
     assert.ok(!$popover.data('popover'), 'popover does not have data')
     assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo')
     assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events')
@@ -320,4 +320,16 @@ $(function () {
       .bootstrapPopover('show')
   })
 
+  QUnit.test('should throw an error when show is called on hidden elements', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    try {
+      $('<div data-toggle="popover" data-title="some title" data-content="@Johann-S" style="display: none"/>').bootstrapPopover('show')
+    }
+    catch (err) {
+      assert.strictEqual(err.message, 'Please use show on visible elements')
+      done()
+    }
+  })
 })

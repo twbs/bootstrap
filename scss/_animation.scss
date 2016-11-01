@@ -2,26 +2,26 @@
   opacity: 0;
   transition: opacity .15s linear;
 
-  &.in {
+  &.active {
     opacity: 1;
   }
 }
 
 .collapse {
   display: none;
-  &.in {
+  &.active {
     display: block;
   }
 }
 
 tr {
-  &.collapse.in {
+  &.collapse.active {
     display: table-row;
   }
 }
 
 tbody {
-  &.collapse.in {
+  &.collapse.active {
     display: table-row-group;
   }
 }
