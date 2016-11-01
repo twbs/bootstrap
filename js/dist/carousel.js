@@ -151,7 +151,7 @@ var Carousel = function ($) {
       }
 
       if (this._config.interval && !this._isPaused) {
-        this._interval = setInterval($.proxy(document.visibilityState ? this.nextWhenVisible : this.next, this), this._config.interval);
+        this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
       }
     };
 
@@ -207,12 +207,20 @@ var Carousel = function ($) {
     };
 
     Carousel.prototype._addEventListeners = function _addEventListeners() {
+      var _this2 = this;
+
       if (this._config.keyboard) {
-        $(this._element).on(Event.KEYDOWN, $.proxy(this._keydown, this));
+        $(this._element).on(Event.KEYDOWN, function (event) {
+          return _this2._keydown(event);
+        });
       }
 
       if (this._config.pause === 'hover' && !('ontouchstart' in document.documentElement)) {
-        $(this._element).on(Event.MOUSEENTER, $.proxy(this.pause, this)).on(Event.MOUSELEAVE, $.proxy(this.cycle, this));
+        $(this._element).on(Event.MOUSEENTER, function (event) {
+          return _this2.pause(event);
+        }).on(Event.MOUSELEAVE, function (event) {
+          return _this2.cycle(event);
+        });
       }
     };
 
@@ -281,7 +289,7 @@ var Carousel = function ($) {
     };
 
     Carousel.prototype._slide = function _slide(direction, element) {
-      var _this2 = this;
+      var _this3 = this;
 
       var activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
       var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
@@ -334,10 +342,10 @@ var Carousel = function ($) {
 
           $(activeElement).removeClass(ClassName.ACTIVE).removeClass(direction).removeClass(directionalClassName);
 
-          _this2._isSliding = false;
+          _this3._isSliding = false;
 
           setTimeout(function () {
-            return $(_this2._element).trigger(slidEvent);
+            return $(_this3._element).trigger(slidEvent);
           }, 0);
         }).emulateTransitionEnd(TRANSITION_DURATION);
       } else {

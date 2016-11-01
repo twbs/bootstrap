@@ -124,7 +124,9 @@ var Modal = function ($) {
       this._setEscapeEvent();
       this._setResizeEvent();
 
-      $(this._element).on(Event.CLICK_DISMISS, Selector.DATA_DISMISS, $.proxy(this.hide, this));
+      $(this._element).on(Event.CLICK_DISMISS, Selector.DATA_DISMISS, function (event) {
+        return _this.hide(event);
+      });
 
       $(this._dialog).on(Event.MOUSEDOWN_DISMISS, function () {
         $(_this._element).one(Event.MOUSEUP_DISMISS, function (event) {
@@ -134,10 +136,14 @@ var Modal = function ($) {
         });
       });
 
-      this._showBackdrop($.proxy(this._showElement, this, relatedTarget));
+      this._showBackdrop(function () {
+        return _this._showElement(relatedTarget);
+      });
     };
 
     Modal.prototype.hide = function hide(event) {
+      var _this2 = this;
+
       if (event) {
         event.preventDefault();
       }
@@ -164,7 +170,9 @@ var Modal = function ($) {
 
       if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
 
-        $(this._element).one(Util.TRANSITION_END, $.proxy(this._hideModal, this)).emulateTransitionEnd(TRANSITION_DURATION);
+        $(this._element).one(Util.TRANSITION_END, function (event) {
+          return _this2._hideModal(event);
+        }).emulateTransitionEnd(TRANSITION_DURATION);
       } else {
         this._hideModal();
       }
@@ -198,7 +206,7 @@ var Modal = function ($) {
     };
 
     Modal.prototype._showElement = function _showElement(relatedTarget) {
-      var _this2 = this;
+      var _this3 = this;
 
       var transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE);
 
@@ -226,10 +234,10 @@ var Modal = function ($) {
       });
 
       var transitionComplete = function transitionComplete() {
-        if (_this2._config.focus) {
-          _this2._element.focus();
+        if (_this3._config.focus) {
+          _this3._element.focus();
         }
-        $(_this2._element).trigger(shownEvent);
+        $(_this3._element).trigger(shownEvent);
       };
 
       if (transition) {
@@ -240,23 +248,23 @@ var Modal = function ($) {
     };
 
     Modal.prototype._enforceFocus = function _enforceFocus() {
-      var _this3 = this;
+      var _this4 = this;
 
       $(document).off(Event.FOCUSIN) // guard against infinite focus loop
       .on(Event.FOCUSIN, function (event) {
-        if (document !== event.target && _this3._element !== event.target && !$(_this3._element).has(event.target).length) {
-          _this3._element.focus();
+        if (document !== event.target && _this4._element !== event.target && !$(_this4._element).has(event.target).length) {
+          _this4._element.focus();
         }
       });
     };
 
     Modal.prototype._setEscapeEvent = function _setEscapeEvent() {
-      var _this4 = this;
+      var _this5 = this;
 
       if (this._isShown && this._config.keyboard) {
         $(this._element).on(Event.KEYDOWN_DISMISS, function (event) {
           if (event.which === ESCAPE_KEYCODE) {
-            _this4.hide();
+            _this5.hide();
           }
         });
       } else if (!this._isShown) {
@@ -265,23 +273,27 @@ var Modal = function ($) {
     };
 
     Modal.prototype._setResizeEvent = function _setResizeEvent() {
+      var _this6 = this;
+
       if (this._isShown) {
-        $(window).on(Event.RESIZE, $.proxy(this._handleUpdate, this));
+        $(window).on(Event.RESIZE, function (event) {
+          return _this6._handleUpdate(event);
+        });
       } else {
         $(window).off(Event.RESIZE);
       }
     };
 
     Modal.prototype._hideModal = function _hideModal() {
-      var _this5 = this;
+      var _this7 = this;
 
       this._element.style.display = 'none';
       this._element.setAttribute('aria-hidden', 'true');
       this._showBackdrop(function () {
         $(document.body).removeClass(ClassName.OPEN);
-        _this5._resetAdjustments();
-        _this5._resetScrollbar();
-        $(_this5._element).trigger(Event.HIDDEN);
+        _this7._resetAdjustments();
+        _this7._resetScrollbar();
+        $(_this7._element).trigger(Event.HIDDEN);
       });
     };
 
@@ -293,7 +305,7 @@ var Modal = function ($) {
     };
 
     Modal.prototype._showBackdrop = function _showBackdrop(callback) {
-      var _this6 = this;
+      var _this8 = this;
 
       var animate = $(this._element).hasClass(ClassName.FADE) ? ClassName.FADE : '';
 
@@ -310,17 +322,17 @@ var Modal = function ($) {
         $(this._backdrop).appendTo(document.body);
 
         $(this._element).on(Event.CLICK_DISMISS, function (event) {
-          if (_this6._ignoreBackdropClick) {
-            _this6._ignoreBackdropClick = false;
+          if (_this8._ignoreBackdropClick) {
+            _this8._ignoreBackdropClick = false;
             return;
           }
           if (event.target !== event.currentTarget) {
             return;
           }
-          if (_this6._config.backdrop === 'static') {
-            _this6._element.focus();
+          if (_this8._config.backdrop === 'static') {
+            _this8._element.focus();
           } else {
-            _this6.hide();
+            _this8.hide();
           }
         });
 
@@ -344,7 +356,7 @@ var Modal = function ($) {
         $(this._backdrop).removeClass(ClassName.ACTIVE);
 
         var callbackRemove = function callbackRemove() {
-          _this6._removeBackdrop();
+          _this8._removeBackdrop();
           if (callback) {
             callback();
           }
@@ -460,7 +472,7 @@ var Modal = function ($) {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    var _this7 = this;
+    var _this9 = this;
 
     var target = void 0;
     var selector = Util.getSelectorFromElement(this);
@@ -482,8 +494,8 @@ var Modal = function ($) {
       }
 
       $target.one(Event.HIDDEN, function () {
-        if ($(_this7).is(':visible')) {
-          _this7.focus();
+        if ($(_this9).is(':visible')) {
+          _this9.focus();
         }
       });
     });
