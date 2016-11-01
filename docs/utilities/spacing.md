@@ -42,16 +42,16 @@ Here are some representative examples of these classes:
 }
 
 .ml-1 {
-  margin-left: $spacer-x !important;
+  margin-left: ($spacer-x * .25) !important;
 }
 
 .px-2 {
-  padding-left: ($spacer-x * 1.5) !important;
-  padding-right: ($spacer-x * 1.5) !important;
+  padding-left: ($spacer-x * .5) !important;
+  padding-right: ($spacer-x * .5) !important;
 }
 
 .p-3 {
-  padding: ($spacer-y * 3) ($spacer-x * 3) !important;
+  padding: $spacer-y $spacer-x !important;
 }
 {% endhighlight %}
 
