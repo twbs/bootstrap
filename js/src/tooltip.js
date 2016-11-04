@@ -123,12 +123,13 @@ const Tooltip = (($) => {
     constructor(element, config) {
 
       // private
-      this._isEnabled        = true
-      this._timeout          = 0
-      this._hoverState       = ''
-      this._activeTrigger    = {}
-      this._isTransitioning  = false
-      this._tether           = null
+      this._isEnabled         = true
+      this._timeout           = 0
+      this._hoverState        = ''
+      this._activeTrigger     = {}
+      this._tether            = null
+      this._isTransitioning   = false
+      this._isShown           = false
 
       // protected
       this.element = element
@@ -181,6 +182,10 @@ const Tooltip = (($) => {
       this._isEnabled = false
     }
 
+    isShown() {
+      return this._isShown
+    }
+
     toggleEnabled() {
       this._isEnabled = !this._isEnabled
     }
@@ -231,11 +236,12 @@ const Tooltip = (($) => {
         $(this.tip).remove()
       }
 
-      this._isEnabled     = null
-      this._timeout       = null
-      this._hoverState    = null
-      this._activeTrigger = null
-      this._tether        = null
+      this._isEnabled      = null
+      this._timeout        = null
+      this._hoverState     = null
+      this._activeTrigger  = null
+      this._tether         = null
+      this._isShown        = false
 
       this.element = null
       this.config  = null
@@ -311,6 +317,7 @@ const Tooltip = (($) => {
           this._isTransitioning = false
 
           $(this.element).trigger(this.constructor.Event.SHOWN)
+          this._isShown = true
 
           if (prevHoverState === HoverState.OUT) {
             this._leave(null, this)
@@ -342,7 +349,9 @@ const Tooltip = (($) => {
 
         this.element.removeAttribute('aria-describedby')
         $(this.element).trigger(this.constructor.Event.HIDDEN)
+
         this._isTransitioning = false
+        this._isShown = false
         this.cleanupTether()
 
         if (callback) {
@@ -630,6 +639,24 @@ const Tooltip = (($) => {
     // static
 
     static _jQueryInterface(config) {
+      if (config === 'isShown') {
+        try {
+          this.each(function () {
+            let data   = $(this).data(DATA_KEY)
+            if (!data) {
+              const _config = typeof config === 'object' ? config : null
+              data = new Tooltip(this, _config)
+              $(this).data(DATA_KEY, data)
+            }
+            if (!data[config]()) {
+              throw new Error('Not shown')
+            }
+          })
+        } catch (e) {
+          return false
+        }
+        return true
+      }
       return this.each(function () {
         let data      = $(this).data(DATA_KEY)
         const _config = typeof config === 'object' && config

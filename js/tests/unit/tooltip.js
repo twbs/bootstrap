@@ -869,4 +869,28 @@ $(function () {
       })
       .modal('show')
   })
+
+  QUnit.test('call to "isShown" method should return false when a tooltip is not shown', function (assert) {
+    assert.expect(2)
+
+    var $tooltip = $('<span data-toggle="tooltip" title="some tip">some text</span>')
+      .appendTo('#qunit-fixture')
+
+    // on init
+    assert.strictEqual($tooltip.bootstrapTooltip('isShown'), false)
+
+    // on hide called
+    $tooltip.bootstrapTooltip('hide')
+    assert.strictEqual($tooltip.bootstrapTooltip('isShown'), false)
+  })
+
+  QUnit.test('call to "isShown" method should return true when show method is called', function (assert) {
+    assert.expect(1)
+
+    var $tooltip = $('<span data-toggle="tooltip" title="some tip">some text</span>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip('show')
+
+    assert.strictEqual($tooltip.bootstrapTooltip('isShown'), true)
+  })
 })
