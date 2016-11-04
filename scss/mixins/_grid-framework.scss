@@ -19,16 +19,27 @@
 
   $breakpoint-counter: 0;
   @each $breakpoint in map-keys($breakpoints) {
+
     $breakpoint-counter: ($breakpoint-counter + 1);
 
-    // Allow columns to stretch full width below their breakpoints
-    .col-#{$breakpoint} {
-      @extend %grid-column;
+    @if $breakpoint-counter == 1 {
+      @for $i from 1 through $columns {
+        .col-#{$i} {
+          @extend %grid-column;
+        }
+      }
     }
 
-    @for $i from 1 through $columns {
-      .col-#{$breakpoint}-#{$i} {
+    @if $breakpoint-counter != 1 {
+      // Allow columns to stretch full width below their breakpoints
+      .col-#{$breakpoint} {
         @extend %grid-column;
+      }
+
+      @for $i from 1 through $columns {
+        .col-#{$breakpoint}-#{$i} {
+          @extend %grid-column;
+        }
       }
     }
 
@@ -47,15 +58,29 @@
       }
 
       @for $i from 1 through $columns {
-        .col-#{$breakpoint}-#{$i} {
-          @include make-col($i, $columns);
+        @if $breakpoint-counter == 1 {
+          .col-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+        @if $breakpoint-counter != 1 {
+          .col-#{$breakpoint}-#{$i} {
+            @include make-col($i, $columns);
+          }
         }
       }
 
       @each $modifier in (pull, push) {
         @for $i from 0 through $columns {
-          .#{$modifier}-#{$breakpoint}-#{$i} {
-            @include make-col-modifier($modifier, $i, $columns)
+          @if $breakpoint-counter == 1 {
+            .#{$modifier}-#{$i} {
+              @include make-col-modifier($modifier, $i, $columns)
+            }
+          }
+          @if $breakpoint-counter != 1 {
+            .#{$modifier}-#{$breakpoint}-#{$i} {
+              @include make-col-modifier($modifier, $i, $columns)
+            }
           }
         }
       }
@@ -63,9 +88,16 @@
       // `$columns - 1` because offsetting by the width of an entire row isn't possible
       @for $i from 0 through ($columns - 1) {
         @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .offset-xs-0
-          .offset-#{$breakpoint}-#{$i} {
-            @include make-col-modifier(offset, $i, $columns)
-          }
+           @if $breakpoint-counter == 1 {
+              .offset-#{$i} {
+                @include make-col-modifier(offset, $i, $columns)
+              }
+           }
+           @if $breakpoint-counter != 1 {
+              .offset-#{$breakpoint}-#{$i} {
+                @include make-col-modifier(offset, $i, $columns)
+              }
+           }
         }
       }
     }
