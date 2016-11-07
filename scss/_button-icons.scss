@@ -1,0 +1,31 @@
+@each $side, $opposite-side in ( left: 'right', right: 'left' ) {
+  .icon-#{$side} {
+    padding-#{$side}: $btn-padding-x-sm;
+
+    i, span {
+      position: relative;
+      top: 2px; // vertical fix the float creates
+      float: #{$side} !important;
+      min-width: ($btn-padding-x * 1.5);
+      padding-#{$opposite-side}: $btn-padding-x-sm;
+      margin-#{$opposite-side}: $btn-padding-x;
+      border-#{$opposite-side}: 1px solid $link-color;
+    }
+
+    &.btn-sm {
+      padding-#{$side}: ($btn-padding-x-sm / 2);
+      i, span {
+        padding-#{$opposite-side}: ($btn-padding-x-sm / 2);
+        margin-#{$opposite-side}: $btn-padding-x-sm;
+      }
+    }
+
+    &.btn-lg {
+      padding-#{$side}: $btn-padding-x;
+      i, span {
+        padding-#{$opposite-side}: $btn-padding-x;
+        margin-#{$opposite-side}: ($btn-padding-x * 1.5);
+      }
+    }
+  }
+}
