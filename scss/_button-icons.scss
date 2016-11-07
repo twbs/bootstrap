@@ -1,4 +1,4 @@
-@each $side, $opposite-side in ( left: 'right', right: 'left' ) {
+@each $side, $opposite-side in (left: "right", right: "left") {
   .icon-#{$side} {
     padding-#{$side}: $btn-padding-x-sm;
 

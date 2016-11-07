@@ -3,7 +3,7 @@
   &.icon-right {
     i, span {
       border-color: lighten($color, 30%); }
-    
+
     @if($outline) {
       i, span {
         border-color: $color; }
