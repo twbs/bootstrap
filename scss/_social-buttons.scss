@@ -1,0 +1,12 @@
+//
+// Generates all of the social buttons
+//
+
+@each $media, $color in $social-colors {
+  .btn-#{$media} {
+    @include button-variant(#fff, $color, $color);
+  }
+  .btn-outline-#{$media} {
+    @include button-outline-variant($color);
+  }
+}
