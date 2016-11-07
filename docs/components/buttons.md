@@ -92,6 +92,31 @@ Create block level buttons—those that span the full width of a parent—by add
 <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
 {% endexample %}
 
+
+## Social Buttons
+
+Wanna link up a Google login button or a link to your Facebook page? No problem! Just use the built-in classes to get the right colors and optional icons to make it perfect! They work just like all other buttons with outlines, sizing, etc.
+
+{% example html %}
+<button class="btn btn-facebook">Facebook</button>
+<button class="btn btn-twitter">Twitter</button>
+
+<button class="btn btn-outline-instagram">Instagram</button>
+<button class="btn btn-outline-google-plus">Google Plus</button>
+{% endexample %}
+
+Use `.icon-left` or `.icon-right` for subtle styling if you want to add an icon. FontAwesome is used in the example.
+
+{% example html %}
+<button class="btn btn-github icon-left"><i class="fa fa-github"></i> Github</button>
+<button class="btn btn-outline-flickr icon-left"><i class="fa fa-flickr"></i> Flickr</button>
+
+<button class="btn btn-tumblr icon-right">Tumblr <i class="fa fa-tumblr"></i></button>
+<button class="btn btn-outline-twitter icon-right">Twitter <i class="fa fa-twitter"></i></button>
+{% endexample %}
+
+Note that the `.icon-*` classes work with all buttons.
+
 ## Active state
 
 Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. **There's no need to add a class to `<button>`s as they use a pseudo-class**. However, you can still force the same active appearance with `.active` (and include the <code>aria-pressed="true"</code> attribute) should you need to replicate the state programmatically.
