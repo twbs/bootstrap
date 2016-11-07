@@ -22,6 +22,7 @@ vendor/bundle
 
 # OS or Editor folders
 ._*
+.c9
 .cache
 .DS_Store
 .idea
