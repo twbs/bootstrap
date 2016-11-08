@@ -445,17 +445,18 @@ const Modal = (($) => {
 
     static _jQueryInterface(config, relatedTarget) {
       return this.each(function () {
-        let data    = $(this).data(DATA_KEY)
+        let $this = $(this)
+        let data    = $this.data(DATA_KEY)
         let _config = $.extend(
           {},
           Modal.Default,
-          $(this).data(),
+          $this.data(),
           typeof config === 'object' && config
         )
 
         if (!data) {
           data = new Modal(this, _config)
-          $(this).data(DATA_KEY, data)
+          $this.data(DATA_KEY, data)
         }
 
         if (typeof config === 'string') {
@@ -486,27 +487,29 @@ const Modal = (($) => {
       target = $(selector)[0]
     }
 
-    let config = $(target).data(DATA_KEY) ?
-      'toggle' : $.extend({}, $(target).data(), $(this).data())
+    let $target = $(target)
+
+    let config = $target.data(DATA_KEY) ?
+      'toggle' : $.extend({}, $target.data(), $(this).data())
 
     if (this.tagName === 'A') {
       event.preventDefault()
     }
 
-    let $target = $(target).one(Event.SHOW, (showEvent) => {
+    $target.one(Event.SHOW, (showEvent) => {
       if (showEvent.isDefaultPrevented()) {
         // only register focus restorer if modal will actually get shown
         return
       }
 
       $target.one(Event.HIDDEN, () => {
-        if ($(this).is(':visible')) {
+        if ($target.is(':visible')) {
           this.focus()
         }
       })
     })
 
-    Modal._jQueryInterface.call($(target), config, this)
+    Modal._jQueryInterface.call($target, config, this)
   })
 
 
