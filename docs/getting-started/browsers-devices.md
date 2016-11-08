@@ -168,7 +168,7 @@ Confirm the document mode by opening the debugging tools: press <kbd>F12</kbd> a
 
 This tag is included in all of Bootstrap's documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.
 
-See [this StackOverflow question](https://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge) for more information.
+See [this StackOverflow question](https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do) for more information.
 
 ## Internet Explorer 10 in Windows Phone 8
 

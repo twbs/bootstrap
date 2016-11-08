@@ -17,7 +17,7 @@
     {% if slug == "examples" %}
         <a class="bd-toc-link" href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/">
       {% else %}
-        <a class="bd-toc-link" href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ link.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-'  }}">
+        <a class="bd-toc-link" href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ link.title | downcase | replace: ' ', '-' || page.title | downcase | replace: ' ', '-'  }}{% if link.title || page.title %}/{% endif %}">
       {% endif %}
         {{ group.title }}
       </a>
