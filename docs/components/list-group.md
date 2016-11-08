@@ -46,7 +46,7 @@ Add badges to any list group item to show unread counts, activity, etc.
 </ul>
 {% endexample %}
 
-When in flexbox mode, you'll need to rearrange the contents of your list group items. To replicate the right-aligned badges as shown above, use the following example's code. Note the [`flex-items-xs-between` utility class](/layout/flexbox-grid/#horizontal-alignment), the badge's placement, and the lack of a float utility on the badges.
+When in flexbox mode, you'll need to rearrange the contents of your list group items. To replicate the right-aligned badges as shown above, use the following example's code. Note the [`flex-items-xs-between` utility class]({{ site.baseurl }}/layout/flexbox-grid/#horizontal-alignment), the badge's placement, and the lack of a float utility on the badges.
 
 {% highlight html %}
 <ul class="list-group">
