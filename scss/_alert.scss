@@ -31,8 +31,9 @@
   // Adjust close link position
   .close {
     position: relative;
-    top: -.125rem;
+    top: -1rem;
     right: -$alert-padding-x;
+    padding: 1rem;
     color: inherit;
   }
 }
