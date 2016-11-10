@@ -756,7 +756,6 @@ $modal-inner-padding:         15px !default;
 $modal-dialog-margin:         10px !default;
 $modal-dialog-sm-up-margin-y: 30px !default;
 
-$modal-title-padding:         15px !default;
 $modal-title-line-height:     $line-height-base !default;
 
 $modal-content-bg:               #fff !default;
@@ -771,6 +770,7 @@ $modal-header-border-color:   #e5e5e5 !default;
 $modal-footer-border-color:   $modal-header-border-color !default;
 $modal-header-border-width:   $modal-content-border-width !default;
 $modal-footer-border-width:   $modal-header-border-width !default;
+$modal-header-padding:        15px !default;
 
 $modal-lg:                    900px !default;
 $modal-md:                    600px !default;
