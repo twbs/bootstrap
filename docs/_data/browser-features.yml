@@ -4,17 +4,7 @@
   summary: >
     Focusable elements should fire focus event / receive :focus styling when they receive Narrator/accessibility focus
   upstream_bug: >
-    UserVoice#16717318
-  origin: >
-    Bootstrap#20732
-
--
-  browser: >
-    Firefox
-  summary: >
-    When virtual focus is on a button or link, fire actual focus on the element, too
-  upstream_bug: >
-    Mozilla#1000082
+    A11yUserVoice#16717318
   origin: >
     Bootstrap#20732
     
@@ -97,6 +87,16 @@
     Mozilla#840640
   origin: >
     Bootstrap#20175
+
+-
+  browser: >
+    Firefox
+  summary: >
+    When virtual focus is on a button or link, fire actual focus on the element, too
+  upstream_bug: >
+    Mozilla#1000082
+  origin: >
+    Bootstrap#20732
 
 -
   browser: >
