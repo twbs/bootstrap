@@ -343,6 +343,17 @@ var Tooltip = function ($) {
           $element.text($(content).text());
         }
       } else {
+        var textDir = html ? null : this.element.getAttribute('data-textdir') || this.config.textdir;
+        if (textDir) {
+          if (textDir !== "ltr" && textDir !== "rtl") {
+            var firstStrongChar = /[A-Za-z\u0591-\u06ff\ufb1d-\ufefc]/.exec(content);
+            textDir = firstStrongChar ? firstStrongChar[0] <= 'z' ? 'ltr' : 'rtl' : 'ltr';
+          }
+          $element.css({
+            'direction': textDir,
+            'text-align': textDir === 'rtl' ? 'right' : 'left'
+          });
+        }
         $element[html ? 'html' : 'text'](content);
       }
     };
