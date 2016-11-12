@@ -3,12 +3,12 @@ $(document).ready(() => {
     placement: 'right',
     textdir: 'rtl',
     viewport: {
-        selector: 'body', 
-        padding: 2 
+      selector: 'body',
+      padding: 2
     }
   })
 
   $('#popover').popover({
-    textdir: 'rtl' 
+    textdir: 'rtl'
   })
 })
