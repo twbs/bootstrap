@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="bidi" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../favicon.ico">
+
+    <title>Base text direction example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+<table>
+<tr><td style="text-align: center">
+	<h3>What is 'base text direction'</h3>
+	<p>Text direction - applicable for widgets which show text. 
+	Direction of text is critical for readability of that text especially in Bidi languages. 
+	For example: "hello world !!!" will be displayed as "!!! hello world" with RTL direction
+	Detailed explanation of what base text direction term means may be found on pages 5-9 of the following reference document:<br> 
+	<a class="ext-link" href="https://docs.google.com/document/d/1dDrSwimrQbpbXybhMYDEiJXLeeqvelnY4cc8HeCP1Nk/edit?usp=sharing" rel="nofollow"><span class="icon">&nbsp;</span>https://docs.google.com/document/d/1dDrSwimrQbpbXybhMYDEiJXLeeqvelnY4cc8HeCP1Nk/edit?usp=sharing
+	</a></p>
+</td></tr>
+<tr><td style="text-align: center">
+	<h3>'Base text direction' (BTD) for bootstrap widgets</h3>
+	<p>Only Toltip and Popover bootstrap widgets support BTD
+	since only these ones create their HTML markup dynamically.
+	Other widgets are based on existing HTML markup, therefore either 'direction' style
+	or 'dir' attribute may be used by createor of HTML page in order to achieve required BTD.
+	</p>
+</td></tr>
+<tr><td style="text-align: center">
+	<h3>How to specify 'base text direction' for bootstrap widgets</h3>	
+	<p>Bootstrap widgets provide BTD basing on 'textdir' option been passed to widget constructor.
+	Alternatively BTD ma be specified declaratively as 'data-textdir' attribute of corresponding html element.
+	
+	Allowed values are: "ltr" (left-to-right), "rtl" (right-to-left) and 
+	"contextual" (meaning that either 'ltr' or 'rtl' value is used depending on 
+	the first strong(Arabic/Hebrew or English) character of string been displayed.  
+	</p>
+</td></tr>
+</table>
+
+<div style="text-align: center">
+    <button class="tooltip-right" title="Tooltip having right-to-left base text direction !!!">Tooltip with right-to-left base text direction</button>
+    <br><br>
+    <button id="popover" type="button" class="btn btn-default" data-container="body" 
+    	data-toggle="popover" data-placement="right" data-content="Popover demonstrating base text direction !!!">
+    	Popover with right-to-left base text direction.
+    </button>
+</div>
+    <br>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="../../dist/js/bootstrap.js"></script>
+    <script src="../../assets/js/vendor/tether.min.js"></script>
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="bidi.js"></script>
+  </body>
+</html>

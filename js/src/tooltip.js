@@ -392,6 +392,17 @@ const Tooltip = (($) => {
           $element.text($(content).text())
         }
       } else {
+        let textDir = html ? null : (this.element.getAttribute('data-textdir') || this.config.textdir)
+        if (textDir) {
+          if (textDir !== 'ltr' && textDir !== 'rtl') {
+            let firstStrongChar = /[A-Za-z\u0591-\u06ff\ufb1d-\ufefc]/.exec(content)
+            textDir = firstStrongChar ? (firstStrongChar[0] <= 'z' ? 'ltr' : 'rtl') : 'ltr'
+          }
+          $element.css({
+            direction: textDir,
+            'text-align': textDir === 'rtl' ? 'right' : 'left'
+          })
+        }
         $element[html ? 'html' : 'text'](content)
       }
     }

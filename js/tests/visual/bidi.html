@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="bidi" content="width=device-width, initial-scale=1">
+  <title>Bidi (base text direction)</title>
+  <link rel="stylesheet" href="../../../dist/css/bootstrap.css">
+</head>
+<body>
+<br>
+<div class="container">
+  <h4>Base text direction <small>Bootstrap Visual Test</small></h4>
+  <br><br>
+  <button type="button" class="btn btn-default js-popover" data-container="body" data-toggle="popover" data-textdir="rtl" data-placement="right" data-content="Popover having right-to-left base text direction !!!!!" data-original-title="" title="">
+    Popover having right-to-left base text direction.
+  </button>
+  <br><br>
+  <button type="button" class="btn btn-default js-popover" data-container="body" data-toggle="popover" data-textdir="contextual" data-placement="right" data-content="Popover having right-to-left base text direction !!!!!" data-original-title="" title="">
+    Popover having contextual base text direction.
+  </button>
+  <br><br>
+  <button type="button" class="btn btn-default" data-toggle="tooltip" data-textdir="rtl" data-placement="right" title="right-to-left base text direction !!!!!!">Tooltip with 'rtl' base text direction</button>
+  <br><br>
+  <button type="button" class="btn btn-default" data-toggle="tooltip" data-textdir="contextual" data-placement="right" title="contextual base text direction !!!!!!">Tooltip with 'contextual' base text direction</button>
+
+</div>
+
+<!-- JavaScript Includes -->
+<script src="../vendor/jquery.min.js"></script>
+<script src="../vendor/tether.min.js"></script>
+<script src="../../dist/util.js"></script>
+<script src="../../dist/tooltip.js"></script>
+<script src="../../dist/popover.js"></script>
+<script src="../vendor/tether.min.js"></script>
+
+<!-- JavaScript Test -->
+<script>
+$(function () {
+  $('.js-popover').popover()
+})
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+</body>
+</html>
