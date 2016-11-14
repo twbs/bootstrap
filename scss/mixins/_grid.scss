@@ -2,6 +2,21 @@
 //
 // Generate semantic grid columns with these mixins.
 
+@mixin validate-gutter-for($breakpoint, $gutters: $grid-gutter-widths) {
+  $prev-breakpoint: breakpoint-prev($breakpoint, $gutters);
+
+  @if $prev-breakpoint {
+    $prev-gutter: map-get($gutters, $prev-breakpoint);
+    $current-gutter: map-get($gutters, $breakpoint);
+
+    @if $prev-gutter != $current-gutter {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
 @mixin make-container($gutters: $grid-gutter-widths) {
   margin-left: auto;
   margin-right: auto;
@@ -10,10 +25,12 @@
   }
 
   @each $breakpoint in map-keys($gutters) {
-    @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
-      padding-right: ($gutter / 2);
-      padding-left:  ($gutter / 2);
+    @include validate-gutter-for($breakpoint, $gutters) {
+      @include media-breakpoint-up($breakpoint) {
+        $gutter: map-get($gutters, $breakpoint);
+        padding-right: ($gutter / 2);
+        padding-left:  ($gutter / 2);
+      }
     }
   }
 }
@@ -48,10 +65,12 @@
   }
 
   @each $breakpoint in map-keys($gutters) {
-    @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
-      margin-right: ($gutter / -2);
-      margin-left:  ($gutter / -2);
+    @include validate-gutter-for($breakpoint, $gutters) {
+      @include media-breakpoint-up($breakpoint) {
+        $gutter: map-get($gutters, $breakpoint);
+        margin-right: ($gutter / -2);
+        margin-left:  ($gutter / -2);
+      }
     }
   }
 }
