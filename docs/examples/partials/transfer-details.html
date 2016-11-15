@@ -1,31 +1,42 @@
-<div>
-	<div class="row">
-		<dl class="col-sm-6">
-			<dt>Sent to</dt>
-			<dd>{{$ctrl.targetAccount.shortString}}</dd>
-		</dl>
-		<dl class="col-sm-6">
-			<dt>Reference</dt>
-			<dd>{{$ctrl.transfer.reference}}</dd>
-		</dl>
+<div class="row">
+	<div class="col-md-6">
+		<div class="row">
+			<dl class="col-sm-6">
+				<dt>Sent to</dt>
+				<dd>{{$ctrl.targetAccount.shortString}}</dd>
+			</dl>
+			<dl class="col-sm-6">
+				<dt>Reference</dt>
+				<dd>{{$ctrl.transfer.reference}}</dd>
+			</dl>
+		</div>
+		<div class="row">
+			<dl class="col-sm-6">
+				<dt>Exchange rate</dt>
+				<dd>{{$ctrl.transfer.rate | number:4}}</dd>
+			</dl>
+			<dl class="col-sm-6">
+				<dt>Fee</dt>
+				<dd>
+					{{$ctrl.currencies[$ctrl.transfer.source].symbol}}{{$ctrl.transfer.fee | number:2}}
+					{{$ctrl.transfer.source}}
+				</dd>
+			</dl>
+		</div>
+		<div class="row">
+			<dl class="col-sm-6">
+				<dt>Transfer number</dt>
+				<dd>123456789</dd>
+			</dl>
+		</div>
 	</div>
-	<div class="row">
-		<dl class="col-sm-6">
-			<dt>Exchange rate</dt>
-			<dd>{{$ctrl.transfer.rate | number:4}}</dd>
-		</dl>
-		<dl class="col-sm-6">
-			<dt>Fee</dt>
-			<dd>
-				{{$ctrl.currencies[$ctrl.transfer.source].symbol}}{{$ctrl.transfer.fee | number:2}}
-				{{$ctrl.transfer.source}}
-			</dd>
-		</dl>
-	</div>
-	<div class="row">
-		<dl class="col-sm-6">
-			<dt>Transfer number</dt>
-			<dd>123456789</dd>
-		</dl>
+	<div class="col-md-6">
+		<ul class="sequence sequence-info">
+			<li>Pay in</li>
+			<li>Conversion</li>
+			<li class="active">Pay out
+				<p class="small m-b-0 p-b-1">The money should take between 1 and 2 business days to reach the recipient</p></li>
+			<li>Complete</li>
+		</ul>
 	</div>
 </div>

@@ -14,13 +14,6 @@
 .bg-default {
     background-color: @gray-base;
 }
-.jumbotron,
-.bg-primary,
-.bg-info {
-    h1, h2, h3, h4, h5, h6, small {
-        color: @brand-white;
-    }
-}
 
 .bg-info .btn-default {
     border-color: @brand-white;
@@ -94,6 +87,7 @@ blockquote footer {
     font-size: @font-size-small;
     line-height: @line-height-computed;
 
+    /* TODO deprecate for a.secondary */
     a:not(.btn) {
 
         color: @brand-grey-plus-10;
@@ -232,4 +226,13 @@ li .circle {
 }
 .icon-xxl {
     font-size: 48px;
+}
+
+.tw-rate-lock-link {
+  color: @brand-smoke-minus-10;
+  &:hover,
+  &:focus,
+  &:active {
+    color: @brand-smoke-minus-20;
+  }
 }

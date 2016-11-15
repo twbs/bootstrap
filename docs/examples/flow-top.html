@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flow Example</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet"
+		href="http://transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
+
+	<link type="text/css" rel="stylesheet"
+		href="scratch.css" />
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular-sanitize.js"></script>
+	<script src="http://transferwise.github.io/styleguide-components/dist/js/styleguide-components.js"></script>
+
+	<script>
+	angular.module('ExampleApp', ['tw.styleguide-components'])
+		.controller('PageController', [
+			'SelectOptionsService',
+			PageController
+		]);
+
+	function PageController(SelectOptionsService) {
+		var $ctrl = this;
+	}
+	</script>
+
+	<script src="js/nav.directive.js"></script>
+	<script src="js/select-options.service.js"></script>
+	<script src="js/topup-form.directive.js"></script>
+	<script src="js/footer.directive.js"></script>
+	<script src="js/progress.directive.js"></script>
+
+	<script src="forms.js"></script>
+
+</head>
+<body ng-app="ExampleApp">
+	<div class="container" ng-controller="PageController as ctrl">
+		<!--
+		<div class="nav-justified-3-p-x m-t-3">
+			<div class="progress">
+				<div class="progress-bar" role="progressbar"
+					aria-valuenow="2" aria-valuemin="0" aria-valuemax="2" style="width: 100%;">
+					<span class="sr-only">66% Complete</span>
+				</div>
+			</div>
+		</div>
+		<ul class="nav nav-pills nav-justified small">
+			<li role="presentation"><a href="#">Step one</a></li>
+			<li role="presentation"><a href="#">Step two</a></li>
+			<li role="presentation" class="active"><a href="#">Step three</a></li>
+		</ul>
+
+		<div class="nav-justified-4-p-x m-t-3">
+			<div class="progress">
+				<div class="progress-bar" role="progressbar"
+					aria-valuenow="1" aria-valuemin="0" aria-valuemax="3" style="width: 33.3%;">
+					<span class="sr-only">66% Complete</span>
+				</div>
+			</div>
+		</div>
+		<ul class="nav nav-pills nav-justified small">
+			<li role="presentation"><a href="#">Step one</a></li>
+			<li role="presentation" class="active"><a href="#">Step two</a></li>
+			<li role="presentation" class="invisible">Step three</li>
+			<li role="presentation" class="disabled"><a href="">Step four</a></li>
+		</ul>
+
+		<div class="nav-justified-5-p-x m-t-3">
+			<div class="progress">
+				<div class="progress-bar" role="progressbar"
+					aria-valuenow="3" aria-valuemin="0" aria-valuemax="4" style="width: 75%;">
+					<span class="sr-only">66% Complete</span>
+				</div>
+			</div>
+		</div>
+		<ul class="nav nav-pills nav-justified small">
+			<li role="presentation"><a href="#">Step one</a></li>
+			<li role="presentation"><a href="#">Step two</a></li>
+			<li role="presentation"><a href="#">Step three</a></li>
+			<li role="presentation" class="active">Step four</li>
+			<li role="presentation" class="disabled"><a href="">Step five</a></li>
+		</ul>
+
+		<div class="nav-justified-6-p-x m-t-3">
+			<div class="progress">
+				<div class="progress-bar" role="progressbar"
+					aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%;">
+					<span class="sr-only">66% Complete</span>
+				</div>
+			</div>
+		</div>
+		<ul class="nav nav-pills nav-justified small">
+			<li role="presentation" class="disabled"><a href="">Step one</a></li>
+			<li role="presentation" class="disabled"><a href="">Step two</a></li>
+			<li role="presentation"><a href="#">Step three</a></li>
+			<li role="presentation"><a href="#">Step four</a></li>
+			<li role="presentation" class="active"><a href="">Step five</a></li>
+			<li role="presentation" class="disabled"><a href="">Step six</a></li>
+		</ul>
+		-->
+
+		<div
+			ng-init="step = '/three'; steps = [{value:'/one',label:'Step one',disabled: true},{value:'/two',label:'Step two'},{value:'/three',label:'Step three'},{value:'/four',label:'Step four', hidden: true},{value:'/five',label:'Step five', disabled: true}];">
+
+			<div class="row m-t-1">
+				<div class="col-xl-2 col-xs-8 col-lg-10 col-md-9 text-xs-left">
+					<div class="logo logo-primary logo-3 m-t-1"></div>
+				</div>
+				<div class="col-xl-2 col-xl-push-8 col-xs-4 col-lg-2 col-md-3">
+					<a href="account.html" class="btn btn-danger btn-sm btn-block m-t-1">Cancel</a>
+				</div>
+				<div class="col-xl-8 col-xl-pull-2 col-xs-12 p-t-2">
+					<tw-progress-steps
+						steps="steps"
+						step="step">
+					</tw-progress-steps>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-xs-center m-b-0"
+				style="padding-top: 60px; padding-bottom: 64px;">
+				<h2>How much would you like to top up?</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+				<topup-form></topup-form>
+				<div class="text-xs-center section">
+					&copy; TransferWise 2016
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

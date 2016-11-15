@@ -7,12 +7,18 @@
 	function NextCardsDirective() {
 		return {
 			bindToController: true,
-			controller: function() {},
+			controller: function() {
+				if (!this.show) {
+					this.show = 3;
+				}
+			},
 			controllerAs: '$ctrl',
 			replace: false,
 			restrict: 'E',
-			scope: {},
-			templateUrl: "partials/next-card.html"
+			scope: {
+				show: '='
+			},
+			templateUrl: 'partials/next-card.html'
 		}
 	}
 })(window.angular);

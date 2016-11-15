@@ -24,9 +24,9 @@
 
 // Outer container
 .progress {
-  overflow: hidden;
   height: @progress-height;
-  margin-bottom: (@line-height-computed + 4px);
+  margin-top: ((@line-height-computed - @progress-height) / 2);
+  margin-bottom: ((@line-height-computed - @progress-height) / 2);
   background-color: @progress-bg;
   border-radius: (@progress-height / 2);
 }
@@ -42,6 +42,17 @@
   text-align: right;
   background-color: @progress-bar-bg;
   .transition(width .6s ease);
+
+  &:after {
+    float: right;
+    margin-top: ((-@progress-pip-size / 2) + 1);
+    margin-right: (-@progress-pip-size / 2);
+    content: "";
+    width: @progress-pip-size;
+    height: @progress-pip-size;
+    background-color: inherit;
+    border-radius: (@progress-pip-size / 2);
+  }
 
   &:first-child {
       border-top-left-radius: (@progress-height / 2);
@@ -64,6 +75,10 @@
     min-width: @progress-height-lg;
     padding-right: 8px;
     padding-left: 5px;
+
+    &:after {
+      content: none;
+    }
   }
 
   .progress-bar:first-child {

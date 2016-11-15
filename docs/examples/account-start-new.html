@@ -7,6 +7,7 @@
 
 	<link type="text/css" rel="stylesheet"
 		href="../dist/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="scratch.css" />
 
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="../dist/js/bootstrap.min.js"></script>
@@ -37,6 +38,7 @@
 	<script src="js/repeat-transfer.directive.js"></script>
 	<script src="js/currency-input.directive.js"></script>
 	<script src="js/pagination.directive.js"></script>
+	<script src="js/profile-block.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
 
 
@@ -76,70 +78,13 @@
 		}
 	})(window.angular);
 	</script>
-
-	<style>
-
-	.list-group-item > * {
-		margin-left: -2px;
-	}
-
-	.pips {
-		margin-top: 14px;
-		width: 32px;
-		transition: margin ease 0.15s;
-	}
-	.pip {
-		height: 4px;
-		width: 4px;
-		border-radius: 2px;
-		background-color: #00a4df;
-		margin-bottom: 4px;
-		margin-left: 13px;
-		display: block;
-		transition: margin ease 0.15s;
-	}
-	.list-group-item:hover .pips {
-		margin-top: 10px;
-	}
-	.list-group-item:hover .pip {
-		margin-bottom: 8px;
-	}
-
-	.one-click .tw-select-selected .tw-select-secondary,
-	.one-click .tw-select-selected .tw-select-note,
-	.one-click .tw-select-selected .circle {
-		display: none;
-	}
-
-	.table > tbody > tr.active > td {
-		border-top-width: 16px;
-		border-bottom-width: 16px;
-	}
-	</style>
 </head>
 <body ng-app="ExampleApp" class="bg-default">
 	<nav-bar></nav-bar>
 	<div ng-controller="PageController as ctrl">
 		<div class="bg-primary p-t-4 p-b-5">
 			<div class="container">
-				<div class="row">
-					<div class="col-sm-6 col-md-8 col-xs-12">
-						<h2 class="m-b-0">Patrick Mullen</h2>
-						<p class="m-b-0 small">Membership number P1234567</p>
-					</div>
-					<div class="col-sm-3 col-md-2 col-xs-6 p-t-1">
-						<dl class="text-sm-right">
-							<dt>Free transfers</dt>
-							<dd class="text-inverse m-b-0">2</dd>
-						</dl>
-					</div>
-					<div class="col-sm-3 col-md-2 col-xs-6 p-t-1">
-						<dl class="text-sm-right">
-							<dt>Fee credit</dt>
-							<dd class="text-inverse m-b-0">£100 GBP</dd>
-						</dl>
-					</div>
-				</div>
+				<profile-block></profile-block>
 			</div>
 		</div>
 		<div class="container">

@@ -265,30 +265,23 @@ strong {
 .text-ellipsis,
 .text-ellipses {
   display: block;
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 // Contextual backgrounds
 // For now we'll leave these alongside the text classes until v4 when we can
 // safely shift things around (per SemVer rules).
 .bg-primary {
-  // Given the contrast here, this is the only class to have its color inverted
-  // automatically.
-  color: #fff;
-  .bg-variant(@brand-primary);
+  .bg-variant(@brand-navy);
 
-  dt {
-    color: #fff;
-  }
 }
 .bg-success {
   .bg-variant(@state-success-bg);
 }
 .bg-info {
   //.bg-variant(@state-info-bg);
-  color: #fff;
    #gradient > .vertical(@brand-light-blue, #36c9ff);
 }
 .bg-warning {
@@ -299,6 +292,27 @@ strong {
 }
 .bg-default {
   .bg-variant(@gray-base);
+}
+
+.jumbotron,
+.bg-primary {
+  color: @brand-smoke-plus-20;
+}
+.bg-info {
+  color: @brand-smoke-plus-20;
+}
+
+.jumbotron,
+.bg-primary,
+.bg-info {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: @brand-white;
+  }
+
+  dd, strong, .strong {
+    color: @brand-white;
+  }
 }
 
 

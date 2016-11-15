@@ -99,7 +99,7 @@
 @gray-light:            @brand-grey-plus-20;
 @gray-lighter:          @brand-smoke;
 
-@brand-primary:         @brand-navy-minus-10;
+@brand-primary:         @brand-navy;
 @brand-success:         @brand-green;
 @brand-info:            @brand-light-blue;
 @brand-warning:         @brand-orange;
@@ -176,8 +176,15 @@
 @link-hover-decoration: underline;
 //** Link active color
 @link-active-color:     @brand-light-blue-minus-20;
+//** Link disabled color
+@link-disabled-color:   @brand-smoke-minus-10;
 //** Link font weight
 @link-font-weight:      @font-weight-semi-bold;
+
+@link-secondary-color:        @brand-navy;
+@link-secondary-hover-color:  @link-color;
+@link-secondary-active-color: @link-hover-color;
+@link-secondary-font-weight:  @font-weight-normal;
 
 //== Iconography
 //
@@ -274,7 +281,7 @@
 
 
 @btn-disabled-bg:                @brand-smoke-plus-10;
-@btn-link-disabled-color:        @brand-smoke-minus-10;
+@btn-disabled-color:             @brand-smoke-minus-10;
 
 
 //=== Button Default
@@ -419,6 +426,7 @@
 
 //** Disabled cursor for form controls and buttons.
 @cursor-disabled:                not-allowed;
+@cursor-default:                 default;
 
 
 
@@ -561,6 +569,18 @@
 @container-xl:                 @container-xlarge-desktop;
 
 
+@nav-link-color:                            @link-secondary-color;
+@nav-link-hover-color:                      @link-secondary-hover-color;
+@nav-link-active-color:                     @link-secondary-active-color;
+
+@nav-active-link-color:                     @link-color;
+@nav-active-link-hover-color:               @link-hover-color;
+@nav-active-link-active-color:              @link-active-color;
+
+@nav-inverse-link-color:                    @brand-pale-blue;
+@nav-inverse-link-hover-color:              @brand-light-blue;
+@nav-inverse-link-active-color:             @brand-light-blue-minus-10;
+
 //== Navbar
 //
 //##
@@ -574,7 +594,7 @@
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height:       340px;
 @navbar-collapse-max-width:        (320px - 56px);
-@navbar-collapse-bg:               @brand-navy-minus-10;
+@navbar-collapse-bg:               @brand-navy;
 
 //=== Standard navbar
 // Navbar basics
@@ -583,10 +603,10 @@
 @navbar-default-border:                     @brand-grey-minus-10;
 
 //  Navbar links
-@navbar-default-link-color:                 @brand-navy-minus-10;
-@navbar-default-link-hover-color:           @brand-light-blue;
+@navbar-default-link-color:                 @nav-link-color;
+@navbar-default-link-hover-color:           @nav-link-hover-color;
 @navbar-default-link-hover-bg:              transparent;
-@navbar-default-link-active-color:          @brand-light-blue;
+@navbar-default-link-active-color:          @nav-active-link-color;
 @navbar-default-link-active-bg:             transparent;
 @navbar-default-link-disabled-color:        @brand-smoke;
 @navbar-default-link-disabled-bg:           transparent;
@@ -611,10 +631,10 @@
 @navbar-inverse-border:                     @brand-grey-minus-10;
 
 // Inverted navbar links
-@navbar-inverse-link-color:                 #FFF;
-@navbar-inverse-link-hover-color:           @brand-light-blue;
+@navbar-inverse-link-color:                 #FFF; // @nav-inverse-link-color;
+@navbar-inverse-link-hover-color:           @nav-inverse-link-hover-color;
 @navbar-inverse-link-hover-bg:              transparent;
-@navbar-inverse-link-active-color:          @brand-light-blue;
+@navbar-inverse-link-active-color:          @nav-active-link-color;
 @navbar-inverse-link-active-bg:             transparent;
 @navbar-inverse-link-disabled-color:        #444;
 @navbar-inverse-link-disabled-bg:           transparent;
@@ -637,32 +657,21 @@
 
 //=== Shared nav styles
 @nav-link-padding:                          8px 24px;
-@nav-link-hover-color:                      @brand-light-blue;
 @nav-link-hover-bg:                         @brand-smoke-plus-20;
 
 @nav-disabled-link-color:                   @gray-light;
 @nav-disabled-link-hover-color:             @gray-light;
 
 //== Tabs
-@nav-tabs-font-size:                        @font-size-base;
-@nav-tabs-color:                            @brand-grey-plus-10;
 @nav-tabs-border-color:                     @brand-smoke;
-
-@nav-tabs-link-hover:                       @brand-light-blue;
-@nav-tabs-link-hover-border-color:          @brand-smoke;
-
-@nav-tabs-active-link-hover-bg:             @brand-smoke-plus-20;
-@nav-tabs-active-link-hover-color:          @brand-light-blue;
-@nav-tabs-active-link-hover-border-color:   @brand-light-blue;
+@nav-tabs-font-size:                        @font-size-base;
+@nav-tabs-active-hover-border-color:        @brand-light-blue;
 
 @nav-tabs-justified-link-border-color:            @brand-smoke;
 @nav-tabs-justified-active-link-border-color:     @body-bg;
 
 //== Pills
-@nav-pills-color:                           @brand-navy-minus-10;
-@nav-pills-border-radius:                   @border-radius-base;
-@nav-pills-active-link-hover-bg:            @component-active-bg;
-@nav-pills-active-link-hover-color:         @component-active-color;
+@nav-pills-font-size:                       @font-size-small;
 
 
 //== Pagination
@@ -886,11 +895,11 @@
 //##
 
 //** Progress bar height
-@progress-height:             4px;
+@progress-height:             2px;
 //** Large progress bar height
 @progress-height-lg:          32px;
 //** Background color of the whole progress component
-@progress-bg:                 @brand-smoke-plus-20;
+@progress-bg:                 @brand-smoke-plus-10;
 //** Progress bar text color
 @progress-bar-color:          #fff;
 
@@ -905,7 +914,9 @@
 //** Danger progress bar color
 @progress-bar-danger-bg:      @brand-red;
 //** Info progress bar color
-@progress-bar-info-bg:        @brand-light-blue;;
+@progress-bar-info-bg:        @brand-light-blue;
+
+@progress-pip-size:           8px;
 
 
 //== List group
@@ -1127,3 +1138,22 @@
 @dl-horizontal-offset:        @component-offset-horizontal;
 //** Horizontal line color.
 @hr-border:                   @brand-smoke-plus-10;
+
+//== Sequence
+//
+//##
+@sequence-step-height: 32px;
+@sequence-margin: 16px;
+@sequence-pip-size: 8px;
+@sequence-line-width: 2px;
+
+@sequence-border: #e2e6e8;
+@sequence-bg: #FFF;
+
+@sequence-inverse-border: #253655;
+@sequence-inverse-bg: #37517e;
+
+@sequence-spacing-horizontal: 24px;
+
+@sequence-icon-size: 24px;
+@sequence-icon-border: @text-color;

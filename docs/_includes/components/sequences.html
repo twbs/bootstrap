@@ -1,0 +1,287 @@
+<div class="bs-docs-section">
+  <h1 id="sequences" class="page-header">Sequences</h1>
+  <p>Sequence is a flexible component for portraying a sequence of steps.
+    It can be used to portray a sequence that the user may be required to
+    complete, and the current progress through that sequence.</p>
+  <p class="m-b-0">It can also be used to connect other elements, and to portray a set of
+    transformations that relate them.</p>
+
+  <div class="bs-example" data-example-id="sequences">
+    <div class="row m-b-0">
+      <div class="col-sm-6 m-b-0">
+        <ul class="sequence">
+          <li>
+            Sequence
+            <p class="small">Summary of something</p>
+          </li>
+          <li>Step two</li>
+          <li class="active">Step three</li>
+        </ul>
+      </div>
+       <div class="col-sm-6 m-b-0">
+         <ul class="sequence">
+           <li>
+             <a href="">Sequence</a>
+             <p class="small">Summary of something</p>
+           </li>
+           <li><a href="">Step two</a></li>
+           <li class="active"><a href="">Step three</a></li>
+         </ul>
+       </div>
+    </div>
+  </div>
+{% highlight html %}
+<ul class="sequence">
+  <li>
+    Step one
+    <p class="small">Summary of something</p>
+  </li>
+  <li>Step two</li>
+  <li class="active">Step three</li>
+</ul>
+
+<ul class="sequence">
+  <li>
+    <a href="">Step one</a>
+    <p class="small">Summary of something</p>
+  </li>
+  <li><a href="">Step two</a></li>
+  <li class="active"><a href="">Step three</a></li>
+</ul>
+{% endhighlight %}
+
+  <h2 id="sequences-progress">Sequence progress</h2>
+  <p>We can use the sequence component to convey progress using
+    one of our contextual variants.</p>
+  <p class="m-b-0">All steps up to and including the active step will be coloured.  If no step
+    is active the whole bar will be coloured.</p>
+  <div class="bs-example" data-example-id="sequences-progress">
+    <div class="row m-b-0">
+      <div class="col-sm-6 m-b-0">
+        <ul class="sequence sequence-primary">
+          <li>
+            Sequence primary
+            <p class="small">Summary of something</p>
+          </li>
+          <li class="active">Step two</li>
+          <li>Step three</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<ul class="sequence sequence-primary">...</ul>
+{% endhighlight %}
+  <h3 id="sequences-contextual-alternatives">Contextual alternatives</h3>
+  <div class="bs-example" data-example-id="sequences-contextual-alternatives">
+    <div class="row m-b-0">
+      <div class="col-sm-6 m-b-0">
+        <ul class="sequence sequence-info">
+          <li>
+            Sequence info
+            <p class="small">Summary of something</p>
+          </li>
+          <li class="active">Step two</li>
+          <li>Step three</li>
+        </ul>
+      </div>
+      <div class="col-sm-6 m-b-0">
+        <ul class="sequence sequence-success">
+          <li>
+            Sequence success
+            <p class="small">Summary of something</p>
+          </li>
+          <li>Step two</li>
+          <li class="active">Step three</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 m-b-0">
+        <ul class="sequence sequence-warning">
+          <li class="active">
+            Sequence warning
+            <p class="small">Summary of something</p>
+          </li>
+          <li>Step two</li>
+          <li>Step three</li>
+        </ul>
+      </div>
+      <div class="col-sm-6 m-b-0">
+        <ul class="sequence sequence-danger">
+          <li>
+            Sequence danger
+            <p class="small">Summary of something</p>
+          </li>
+          <li class="active">Step two</li>
+          <li>Step three</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<ul class="sequence sequence-info">...</ul>
+<ul class="sequence sequence-success">...</ul>
+<ul class="sequence sequence-warning">...</ul>
+<ul class="sequence sequence-danger">...</ul>
+{% endhighlight %}
+
+  <h2 id="sequences-inverse">Sequence inverse</h2>
+  <p class="m-b-0">Inverse variant for use in combination with
+    <code>.bg-primary</code> utility class.</p>
+  <div class="bs-example" data-example-id="sequences-inverse">
+    <div class="bg-primary">
+      <div class="row m-b-0">
+        <div class="col-sm-6 m-b-0">
+          <ul class="sequence sequence-inverse">
+            <li>
+              Sequence info
+              <p class="small">Summary of something</p>
+            </li>
+            <li class="active">Step two</li>
+            <li>Step three</li>
+          </ul>
+        </div>
+        <div class="col-sm-6 m-b-0">
+          <ul class="sequence sequence-inverse sequence-top sequence-bottom sequence-info">
+            <li>
+              <a href="">Sequence success</a>
+              <p class="small">Summary of something</p>
+            </li>
+            <li class="active"><a href="">Step two</a></li>
+            <li>Step three</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="bg-primary">
+  <ul class="sequence sequence-inverse">...</ul>
+  <ul class="sequence sequence-inverse sequence-info sequence-top sequence-bottom">...</ul>
+</div>
+{% endhighlight %}
+    <h2 id="sequences-connections">Sequence connections</h2>
+    <p class="m-b-0">The connecting variants allow us to use sequence to convey a set of
+      transformations that relate to other elements.</p>
+    <div class="bs-example" data-example-id="sequences-connections">
+      <div class="checkbox m-b-0">
+        <label>
+            <button class="tw-checkbox-button checked">
+              <span class="tw-checkbox-check glyphicon glyphicon-ok"></span>
+            </button>
+            Lines up with checkbox
+        </label>
+      </div>
+      <div class="row">
+        <div class="col-md-4 m-b-0">
+          <ul class="sequence sequence-bottom">
+            <li>
+              Sequence bottom
+              <p class="small">Summary of something</p>
+            </li>
+            <li>Step two</li>
+            <li>Step three</li>
+          </ul>
+        </div>
+        <div class="col-md-4 m-b-0">
+          <ul class="sequence sequence-top sequence-bottom sequence-info">
+            <li>
+              Sequence top/bottom
+              <p class="small">Summary of something</p>
+            </li>
+            <li>Step two</li>
+            <li class="active">Step three</li>
+          </ul>
+        </div>
+        <div class="col-md-4 m-b-0">
+          <ul class="sequence sequence-top sequence-info">
+            <li>
+              Sequence top
+              <p class="small">Summary of something</p>
+            </li>
+            <li class="active">Step two</li>
+            <li>Step three</li>
+          </ul>
+        </div>
+      </div>
+      <input type="text" class="form-control" value="12,345.67" />
+    </div>
+{% highlight html %}
+<ul class="sequence sequence-top">...</ul>
+<ul class="sequence sequence-top sequence-bottom">...</ul>
+<ul class="sequence sequence-bottom">...</ul>
+{% endhighlight %}
+
+  <h2 id="sequences-icons">Sequence icons</h2>
+  <p class="m-b-0">Sequence icons allow us to introduce iconography to help convey the meaning
+    of a step in our sequence.</p>
+  <div class="bs-example" data-example-id="sequences-icons">
+    <div class="row">
+      <div class="col-md-6 m-b-0">
+        <ul class="sequence sequence-top">
+          <li>
+            <span class="sequence-icon"><i class="icon icon-lock"></i></span>
+            Sequence icon
+          </li>
+          <li>
+            <a href="">
+              <span class="sequence-icon"><i class="icon icon-fast-flag"></i></span>
+              Step two
+            </a>
+          </li>
+          <li>Step three</li>
+        </ul>
+      </div>
+      <div class="col-md-6 m-b-0 bg-primary">
+        <ul class="sequence sequence-top sequence-inverse">
+          <li>
+            <span class="sequence-icon"><i class="icon icon-lock"></i></span>
+            Sequence icon
+          </li>
+          <li>
+            <a href="">
+              <span class="sequence-icon"><i class="icon icon-fast-flag"></i></span>
+              Step two
+            </a>
+          </li>
+          <li>Step three</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+...
+<li><span class="sequence-icon"><i class="icon icon-lock"></i></span></li>
+<li>
+  <a href="">
+    <span class="sequence-icon"><i class="icon icon-fast-flag"></i></span>
+  </a>
+</li>
+...
+{% endhighlight %}
+
+  <h2 id="sequences-hollow">Sequence hollow</h2>
+  <p class="m-b-0">A variant with hollow pips on non-active steps.</p>
+  <div class="bs-example" data-example-id="sequences-hollow">
+    <div class="row">
+      <div class="col-md-6 m-b-0">
+        <ul class="sequence sequence-top sequence-hollow sequence-info">
+          <li>Step one</li>
+          <li class="active">Step two</li>
+          <li>Step three</li>
+        </ul>
+      </div>
+      <div class="col-md-6 m-b-0 bg-primary">
+        <ul class="sequence sequence-top sequence-inverse sequence-hollow sequence-info">
+          <li>Step one</li>
+          <li class="active">Step two</li>
+          <li>Step three</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<ul class="sequence sequence-hollow sequence-info">...</u>
+{% endhighlight %}
+</div>

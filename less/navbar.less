@@ -145,7 +145,6 @@
 
   .container,
   .container-fluid {
-      border-width: 0 0 1px;
       margin-bottom: -1px;
   }
 }
@@ -155,7 +154,6 @@
 
   .container,
   .container-fluid {
-      border-width: 1px 0 0;
       margin-top: -1px;
   }
 }
@@ -216,10 +214,10 @@
   }
   &:hover,
   &:focus {
-     color: @brand-light-blue-minus-20;
+     color: @brand-light-blue-minus-10;
 
     .icon-bar {
-      background-color: @brand-light-blue-minus-20;
+      background-color: @brand-light-blue-minus-10;
     }
   }
 
@@ -238,6 +236,7 @@
   > li > a {
     padding: (@line-height-computed / 2) @navbar-padding-horizontal;
     line-height: @line-height-computed;
+    outline-offset: -1px;
 
     @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
         padding-left: 12px;
@@ -282,8 +281,7 @@
     }
 
     > li > a {
-        color: @brand-primary;
-        border-radius: @border-radius-base;
+        color: @nav-link-color;
     }
 
     > li.divider {
@@ -291,15 +289,17 @@
       .nav-divider(@dropdown-divider-bg);
     }
 
-    li > a {
+    > li > a {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
 
       &:hover,
       &:focus {
-          background-color: @brand-smoke-plus-20;
-          color: @brand-primary;
+        color: @nav-link-hover-color;
+      }
+      &:active {
+        color: @nav-link-active-color;
       }
     }
   }
@@ -330,7 +330,7 @@
 
   .form-group {
     @media (max-width: @grid-float-breakpoint-max) {
-      margin-bottom: 5px;
+      margin-bottom: 4px;
 
       &:last-child {
         margin-bottom: 0;
@@ -357,7 +357,7 @@
   }
 
   @media (max-width: @grid-float-breakpoint) {
-      border-bottom: 1px solid @brand-smoke-plus-20;
+    border-bottom: 1px solid @brand-smoke-plus-20;
   }
 }
 
@@ -433,7 +433,7 @@
 }
 
 .navbar.affix {
-    background-color: @brand-primary;
+    background-color: @navbar-collapse-bg;
 
     .container,
     .container-fluid {
@@ -598,7 +598,7 @@
       color: @navbar-inverse-link-color;
 
       @media (min-width: @grid-float-breakpoint) {
-          border-bottom: 3px solid transparent;
+        border-bottom: 3px solid transparent;
       }
 
       &:hover,
@@ -625,19 +625,6 @@
       }
     }
 
-    @media (max-width: @grid-float-breakpoint-max) {
-      > li > a {
-        &:hover,
-        &:focus {
-          background-color: @brand-smoke-plus-20;
-          color: @brand-primary;
-        }
-      }
-    }
-  }
-
-  // Dropdowns
-  .navbar-nav {
     > .open > a {
       &,
       &:hover,
@@ -649,7 +636,7 @@
 
     @media (max-width: @grid-float-breakpoint-max) {
       > li > a {
-          color: @brand-primary;
+        color: @nav-link-color;
       }
     }
   }
@@ -769,7 +756,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            background-color: @brand-primary;
+            background-color: @brand-navy-minus-10;
             opacity: 0;
             transition: opacity .35s ease;
         }
@@ -865,7 +852,7 @@
 }
 
 @media (max-width: @screen-sm-max) {
-    .navbar {
+    .navbar-static-top {
         background-color: @navbar-collapse-bg;
         border-bottom-color: transparent;
     }

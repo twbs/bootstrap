@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flow Example</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet"
+		href="http://transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
+
+	<link type="text/css" rel="stylesheet"
+		href="scratch.css" />
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular-sanitize.js"></script>
+	<script src="http://transferwise.github.io/styleguide-components/dist/js/styleguide-components.js"></script>
+
+	<script>
+	angular.module('ExampleApp', ['tw.styleguide-components'])
+		.controller('PageController', [
+			'SelectOptionsService',
+			PageController
+		]);
+
+	function PageController(SelectOptionsService) {
+		var $ctrl = this;
+	}
+	</script>
+
+	<script src="js/nav.directive.js"></script>
+	<script src="js/simple-nav.directive.js"></script>
+	<script src="js/select-options.service.js"></script>
+	<script src="js/topup-form.directive.js"></script>
+	<script src="js/footer.directive.js"></script>
+	<script src="js/progress.directive.js"></script>
+
+	<script src="forms.js"></script>
+
+</head>
+<body ng-app="ExampleApp">
+<div class="column-layout">
+<div class="column-layout-left bg-primary" ng-class="{open: open}">
+
+	<div class="column-layout-left-top">
+		<!--
+		<div class="logo logo-inverse logo-4 m-l-2 m-t-3 m-b-3"></div>
+		<ul class="nav nav-stacked nav-inverse m-t-3 invisible">
+			<li class="active"><a href="">Create transfer</a></li>
+		</ul>
+		-->
+		<ul class="sequence sequence-info sequence-inverse sequence-hollow m-t-4">
+			<li>
+				<p class="m-b-0">Complete profile</p>
+				<!--<p class="m-b-0 p-b-1 small">Steve Pole, London</p>-->
+			</li>
+			<li>
+				<p class="m-b-0">Choose recipient</p>
+				<!--<p class="m-b-0 p-b-1 small">Bob Smith a/c ...7890</p>-->
+			</li>
+			<li class="active">
+				<p class="m-b-0">Pay in</p>
+				<p class="m-b-0 p-b-1 small">Choose how you would like to pay</p>
+			</li>
+			<li>Confirm</li>
+		</ul>
+	</div>
+	<div class="column-layout-left-bottom">
+		<a class="btn btn-inverse btn-block" href="account-left.html">Close</a>
+	</div>
+</div>
+<div class="column-layout-main">
+	<div class="m-t-2">
+		<simple-nav></simple-nav>
+	</div>
+	<div class="container-fluid" ng-controller="PageController as ctrl">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-xs-center m-b-0"
+				style="padding-top: 60px; padding-bottom: 64px;">
+				<h2>How much would you like to top up?</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-6 col-xl-offset-3 col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+				<topup-form></topup-form>
+				<div class="text-xs-center section">
+					&copy; TransferWise 2016
+				</div>
+			</div>
+		</div>
+
+		<h3 style="margin-top: 800px;">Sequence</h3>
+		<p>Sequence is a flexible component for portraying a sequence of steps.
+			It can be used to connect other elements, and to portray a set of
+			transformations that relate those elements.</p>
+		<p>It can also be used to portray a sequence of steps that the user may
+			be required to complete, and the current progress through that
+			sequence.</p>
+
+		<input class="form-control" value="1,234.56" />
+		<div class="row">
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence">
+					<li>
+						<p class="m-b-0">Connect neither</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>Step two</li>
+					<li class="active">Step three</li>
+					<li>Step five</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-top sequence-bottom">
+					<li>
+						<p class="m-b-0">Connect both</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>Step two</li>
+					<li>Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-bottom">
+					<li>
+						<p class="m-b-0">Connect bottom</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>Step two</li>
+					<li>Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-top">
+					<li>
+						<p class="m-b-0">Connect top</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>
+						<a href="">
+							<span class="sequence-icon"><i class="icon icon-lock"></i></span>
+							Step two
+						</a>
+					</li>
+					<li>
+						<span class="sequence-icon"><i class="icon icon-lock"></i></span>
+						Step three
+					</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+		</div>
+		<div class="checkbox m-b-0">
+			<label>
+				<tw-checkbox ng-model="checkbox"></tw-checkbox>
+				Lines up with checkbox
+			</label>
+		</div>
+		<div class="row">
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-info">
+					<li class="active">
+						<p class="m-b-0">Connect neither</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>Step two</li>
+					<li>Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-top sequence-bottom sequence-info">
+					<li>
+						<p class="m-b-0">Connect both</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>Step two</li>
+					<li>Step three</li>
+					<li class="active">Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-bottom sequence-info">
+					<li><a href="">Connect bottom</a>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>
+						<a href="">
+							<span class="sequence-icon"><i class="icon icon-lock"></i></span>
+							Step two
+						</a>
+					</li>
+					<li class="active"><a href="">Step three</a></li>
+					<li>Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-top sequence-info">
+					<li><a href="">Connect top</a>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li><a href="">Step two</a></li>
+					<li class="active">Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+		</div>
+		<div class="radio m-b-0">
+			<label>
+				<tw-radio ng-model="radio"></tw-radio>
+				Lines up with radio
+			</label>
+		</div>
+		<div class="row">
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-info">
+					<li>
+						<p class="m-b-0">Connect neither</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li class="active">Step two</li>
+					<li>Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-top sequence-bottom sequence-info">
+					<li>
+						<p class="m-b-0">Connect both</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>Step two</li>
+					<li>Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-bottom sequence-info">
+					<li>
+						<p class="m-b-0">Connect bottom</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>Step two</li>
+					<li>Step three</li>
+					<li class="active">Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-top sequence-info">
+					<li>
+						<p class="m-b-0">Connect top</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>Step two</li>
+					<li class="active">Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row bg-primary">
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-info sequence-inverse">
+					<li>
+						<p class="m-b-0">Connect neither</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li class="active">Step two</li>
+					<li>Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-top sequence-bottom sequence-inverse">
+					<li>
+						<p class="m-b-0">Connect both</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>
+						<span class="sequence-icon"><i class="icon icon-lock"></i></span>
+						Step two
+					</li>
+					<li>Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-bottom sequence-info sequence-inverse">
+					<li>
+						<a href="" class="m-b-1">Connect bottom</a>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>
+						<a href="">
+							<span class="sequence-icon"><i class="icon icon-lock"></i></span>
+							Step two
+						</a>
+					</li>
+					<li><a href="">Step three</a></li>
+					<li class="active">Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-top sequence-info sequence-inverse">
+					<li>
+						<a href="" class="m-b-1">Connect top</a>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li><a href="">Step two</a></li>
+					<li class="active"><a href="">Step three</a></li>
+					<li>Step four</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-danger sequence-hollow">
+					<li>
+						<p class="m-b-0">Connect neither</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li class="active">Step two</li>
+					<li>Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-top sequence-bottom sequence-hollow sequence-primary">
+					<li>
+						<p class="m-b-0">Connect both</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>
+						<span class="sequence-icon"><i class="icon icon-lock"></i></span>
+						Step two
+					</li>
+					<li>Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-bottom sequence-success sequence-hollow">
+					<li>
+						<p class="m-b-0">Connect bottom</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>
+						<a href="">
+							<span class="sequence-icon"><i class="icon icon-lock"></i></span>
+							Step two
+						</a>
+					</li>
+					<li>Step three</li>
+					<li class="active">Step four</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-top sequence-warning sequence-hollow">
+					<li>
+						<p class="m-b-0">Connect top</p>
+						<p class="m-b-0 p-b-1 small">Summary of something</p>
+					</li>
+					<li>Step two</li>
+					<li class="active">Step three</li>
+					<li>Step four</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="column-layout-cover"
+	ng-class="{in: open}"
+	ng-click="open = !open;">
+	<a class="close">&times;</a>
+</div>
+</div>
+<div class="navbar navbar-fixed-bottom bg-primary visible-xs visible-sm p-x-1">
+	<ul class="nav nav-justified nav-inverse">
+		<li><button class="navbar-btn btn btn-sm btn-block btn-success">Create</button></li>
+		<li class="active"><a href="">Activity</a></li>
+		<li><a href="" ng-click="open = !open">More...</a></li>
+	</ul>
+</div>
+</body>
+
+</html>

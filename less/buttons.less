@@ -242,24 +242,23 @@
   &[disabled],
   fieldset[disabled] & {
     background-color: transparent;
-    .box-shadow(none);
   }
 
   &:hover,
   &:focus {
-    border-color: @btn-default-border;
+    color: @link-hover-color;
     text-decoration: @link-decoration;
   }
   &:active {
-    color: @btn-default-border-active;
-    border-color: @btn-default-border-active;
+    color: @link-active-color;
   }
   &[disabled],
   fieldset[disabled] & {
+    color: @link-disabled-color;
+    text-decoration: none;
     &:hover,
     &:focus {
-      color: @btn-link-disabled-color;
-      text-decoration: none;
+      color: @link-disabled-color;
     }
   }
 }

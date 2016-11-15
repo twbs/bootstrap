@@ -71,6 +71,23 @@ a, .anchor {
   &:focus {
     .tab-focus();
   }
+  &:focus:hover,
+  &:focus:active {
+    outline: 0;
+  }
+
+  &.secondary {
+    color: @link-secondary-color;
+    font-weight: @link-secondary-font-weight;
+    &:hover,
+    &:focus {
+      color: @link-secondary-hover-color;
+    }
+
+    &:active {
+      color: @link-secondary-active-color;
+    }
+  }
 }
 
 
