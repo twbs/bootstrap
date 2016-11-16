@@ -50,6 +50,7 @@
 
     &:before {
       content: "";
+      display: block;
       position: absolute;
       width: @sequence-pip-size;
       height: @sequence-pip-size;
@@ -261,6 +262,7 @@
 
 .sequence-icon {
   position: absolute;
+  display: block;
   margin-left: (-@sequence-spacing-horizontal - (@sequence-icon-size / 2) + 1px);
 
   background-color: @sequence-bg;
@@ -294,6 +296,9 @@
   display: table;
   > li {
     display: table-row;
+    > a {
+      position: absolute;
+    }
     > .sequence-table-td,
     > .sequence-table-th {
       display: table-cell;
@@ -304,21 +309,21 @@
       color: @brand-navy-minus-10;
     }
     &:before {
-      top: 4px;
+      position: initial;
+    }
+    &:after {
+      // sequence-table is not compatible with progress variants, due to webkit
+      // ignoring position relative on elements with display: table-row
+      display: none;
     }
     .sequence-icon {
-      top: 8px;
+      position: initial;
+      margin-top: -17px;
     }
     &:first-child {
-      &:before {
-        top: 20px;
-      }
       .sequence-table-td,
       .sequence-table-th {
         padding-top: 20px;
-      }
-      .sequence-icon {
-        top: 23px;
       }
     }
     &:last-child {

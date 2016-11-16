@@ -11536,6 +11536,7 @@ a.circle.active:hover {
 .sequence > li:before {
   position: absolute;
   z-index: 2;
+  display: block;
   width: 8px;
   height: 8px;
   margin-top: 12px;
@@ -11721,6 +11722,7 @@ a.circle.active:hover {
   position: absolute;
   top: 4px;
   z-index: 2;
+  display: block;
   width: 24px;
   height: 24px;
   margin-left: -35px;
@@ -11750,6 +11752,9 @@ a.circle.active:hover {
 .sequence-table > li {
   display: table-row;
 }
+.sequence-table > li > a {
+  position: absolute;
+}
 .sequence-table > li > .sequence-table-td,
 .sequence-table > li > .sequence-table-th {
   display: table-cell;
@@ -11760,20 +11765,18 @@ a.circle.active:hover {
   color: #2e4369;
 }
 .sequence-table > li:before {
-  top: 4px;
+  position: initial;
+}
+.sequence-table > li:after {
+  display: none;
 }
 .sequence-table > li .sequence-icon {
-  top: 8px;
-}
-.sequence-table > li:first-child:before {
-  top: 20px;
+  position: initial;
+  margin-top: -17px;
 }
 .sequence-table > li:first-child .sequence-table-td,
 .sequence-table > li:first-child .sequence-table-th {
   padding-top: 20px;
-}
-.sequence-table > li:first-child .sequence-icon {
-  top: 23px;
 }
 .sequence-table > li:last-child .sequence-table-td,
 .sequence-table > li:last-child .sequence-table-th {

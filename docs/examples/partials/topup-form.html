@@ -161,6 +161,16 @@
 		-->
 		<ul ng-if="$ctrl.action === 'convert'"
 			class="sequence sequence-top sequence-bottom sequence-table">
+			<!-- this looks weird because we could just have one of these and
+			keep it visible, but there's a weird Safari bug on first-child that
+			causes padding to increase every time it's toggled -->
+			<li ng-if="!$ctrl.showFees">
+				<a href="" ng-click="$ctrl.showFees = !$ctrl.showFees">
+					<span class="sequence-icon"><i class="icon icon-close"></i></span>
+				</a>
+				<div class="sequence-table-th">6.99 GBP</div>
+				<div class="sequence-table-td">Total fees</div>
+			</li>
 			<li ng-if="$ctrl.showFees">
 				<div class="sequence-table-th">4.99 GBP</div>
 				<div class="sequence-table-td">TransferWise fee</div>
@@ -181,7 +191,7 @@
 					</span>
 				</div>
 			</li>
-			<li>
+			<li ng-if="$ctrl.showFees">
 				<a href=""  ng-click="$ctrl.showFees = !$ctrl.showFees">
 					<span class="sequence-icon"><i class="icon icon-close"></i></span>
 				</a>
