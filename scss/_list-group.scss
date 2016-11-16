@@ -1,0 +1,125 @@
+// Base class
+//
+// Easily usable on <ul>, <ol>, or <div>.
+
+.list-group {
+  // No need to set list-style: none; since .list-group-item is block level
+  padding-left: 0; // reset padding because ul and ol
+  margin-bottom: 0;
+}
+
+
+// Individual list items
+//
+// Use on `li`s or `div`s within the `.list-group` parent.
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: $list-group-item-padding-y $list-group-item-padding-x;
+  // Place the border on the list items and negative margin up for better styling
+  margin-bottom: -$list-group-border-width;
+  background-color: $list-group-bg;
+  border: $list-group-border-width solid $list-group-border-color;
+
+  &:first-child {
+    @include border-top-radius($list-group-border-radius);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+    @include border-bottom-radius($list-group-border-radius);
+  }
+
+  &.disabled {
+    @include plain-hover-focus {
+      color: $list-group-disabled-color;
+      cursor: $cursor-disabled;
+      background-color: $list-group-disabled-bg;
+
+      // Force color to inherit for custom content
+      .list-group-item-heading {
+        color: inherit;
+      }
+      .list-group-item-text {
+        color: $list-group-disabled-text-color;
+      }
+    }
+  }
+
+  &.active {
+    @include plain-hover-focus {
+      z-index: 2; // Place active items above their siblings for proper border styling
+      color: $list-group-active-color;
+      text-decoration: none; // Repeat here because it inherits global a:hover otherwise
+      background-color: $list-group-active-bg;
+      border-color: $list-group-active-border;
+
+      // Force color to inherit for custom content
+      .list-group-item-heading,
+      .list-group-item-heading > small,
+      .list-group-item-heading > .small {
+        color: inherit;
+      }
+      .list-group-item-text {
+        color: $list-group-active-text-color;
+      }
+    }
+  }
+}
+
+.list-group-flush {
+  .list-group-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+}
+
+
+// Interactive list items
+//
+// Use anchor or button elements instead of `li`s or `div`s to create interactive
+// list items. Includes an extra `.active` modifier class for selected items.
+
+.list-group-item-action {
+  width: 100%; // For `<button>`s (anchors become 100% by default though)
+  color: $list-group-link-color;
+  text-align: inherit; // For `<button>`s (anchors inherit)
+
+  .list-group-item-heading {
+    color: $list-group-link-heading-color;
+  }
+
+  // Hover state
+  @include hover-focus {
+    color: $list-group-link-hover-color;
+    text-decoration: none;
+    background-color: $list-group-hover-bg;
+  }
+}
+
+
+// Contextual variants
+//
+// Add modifier classes to change text and background color on individual items.
+// Organizationally, this must come after the `:hover` states.
+
+@include list-group-item-variant(success, $state-success-bg, $state-success-text);
+@include list-group-item-variant(info, $state-info-bg, $state-info-text);
+@include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
+@include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
+
+
+// Custom content options
+//
+// Extra classes for creating well-formatted content within `.list-group-item`s.
+
+.list-group-item-heading {
+  margin-top: 0;
+  margin-bottom: $list-group-item-heading-margin-bottom;
+}
+.list-group-item-text {
+  margin-bottom: 0;
+  line-height: 1.3;
+}

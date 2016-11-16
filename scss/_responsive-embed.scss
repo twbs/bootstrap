@@ -1,0 +1,39 @@
+// Credit: Nicolas Gallagher and SUIT CSS.
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+
+  .embed-responsive-item,
+  iframe,
+  embed,
+  object,
+  video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.embed-responsive-21by9 {
+  padding-bottom: percentage(9 / 21);
+}
+
+.embed-responsive-16by9 {
+  padding-bottom: percentage(9 / 16);
+}
+
+.embed-responsive-4by3 {
+  padding-bottom: percentage(3 / 4);
+}
+
+.embed-responsive-1by1 {
+  padding-bottom: percentage(1 / 1);
+}
