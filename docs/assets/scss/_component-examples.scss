@@ -308,7 +308,8 @@
   .bg-info,
   .bg-warning,
   .bg-danger,
-  .bg-inverse {
+  .bg-inverse,
+  .bg-faded {
     &:not(.navbar) {
       padding: .5rem;
       margin-top: .5rem;
