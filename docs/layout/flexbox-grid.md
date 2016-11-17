@@ -76,7 +76,7 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
     <div class="col-xs">
       1 of 3
     </div>
-    <div class="col-xs-6">
+    <div class="col-6">
       2 of 3 (wider)
     </div>
     <div class="col-xs">
@@ -87,7 +87,7 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
     <div class="col-xs">
       1 of 3
     </div>
-    <div class="col-xs-5">
+    <div class="col-5">
       2 of 3 (wider)
     </div>
     <div class="col-xs">
@@ -109,7 +109,7 @@ Using the `col-{breakpoint}-auto` classes, columns can size itself based on the 
     <div class="col-xs col-lg-2">
       1 of 3
     </div>
-    <div class="col-xs-12 col-md-auto">
+    <div class="col-12 col-md-auto">
       Variable width content
     </div>
     <div class="col-xs col-lg-2">
@@ -120,7 +120,7 @@ Using the `col-{breakpoint}-auto` classes, columns can size itself based on the 
     <div class="col-xs">
       1 of 3
     </div>
-    <div class="col-xs-12 col-md-auto">
+    <div class="col-12 col-md-auto">
       Variable width content
     </div>
     <div class="col-xs col-lg-2">
@@ -133,16 +133,16 @@ Using the `col-{breakpoint}-auto` classes, columns can size itself based on the 
 
 ## Responsive flexbox
 
-Unlike the default grid system, the flexbox grid requires a class for full-width columns. If you have a `.col-sm-6` and don't add `.col-xs-12`, your `xs` grid will not render correctly. Note that flexbox grid tiers still scale up across breakpoints, so if you want two 50% wide columns across `sm`, `md`, and `lg`, you only need to set `.col-sm-6`.
+Unlike the default grid system, the flexbox grid requires a class for full-width columns. If you have a `.col-sm-6` and don't add `.col-12`, your `xs` grid will not render correctly. Note that flexbox grid tiers still scale up across breakpoints, so if you want two 50% wide columns across `sm`, `md`, and `lg`, you only need to set `.col-sm-6`.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-12 col-sm-6">
       1 of 2 (stacked on mobile)
     </div>
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-12 col-sm-6">
       1 of 2 (stacked on mobile)
     </div>
   </div>
@@ -220,42 +220,42 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
 {% example html %}
 <div class="container">
   <div class="row flex-items-xs-left">
-    <div class="col-xs-4">
+    <div class="col-4">
       One of two columns
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
       One of two columns
     </div>
   </div>
   <div class="row flex-items-xs-center">
-    <div class="col-xs-4">
+    <div class="col-4">
       One of two columns
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
       One of two columns
     </div>
   </div>
   <div class="row flex-items-xs-right">
-    <div class="col-xs-4">
+    <div class="col-4">
       One of two columns
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
       One of two columns
     </div>
   </div>
   <div class="row flex-items-xs-around">
-    <div class="col-xs-4">
+    <div class="col-4">
       One of two columns
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
       One of two columns
     </div>
   </div>
   <div class="row flex-items-xs-between">
-    <div class="col-xs-4">
+    <div class="col-4">
       One of two columns
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
       One of two columns
     </div>
   </div>
