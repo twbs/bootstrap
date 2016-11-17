@@ -308,7 +308,8 @@
   .bg-info,
   .bg-warning,
   .bg-danger,
-  .bg-inverse {
+  .bg-inverse,
+  .bg-faded {
     &:not(.navbar) {
       padding: .5rem;
       margin-top: .5rem;
@@ -324,7 +325,7 @@
 
 .highlight {
   padding: 1rem;
-  margin: 1rem (-$grid-gutter-width / 2);
+  margin: 1rem (-$grid-gutter-width-base / 2);
   background-color: #f7f7f9;
 
   @include media-breakpoint-up(sm) {

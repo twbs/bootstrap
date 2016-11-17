@@ -1,6 +1,26 @@
 -
   browser: >
-    Microsoft Edge
+    Safari
+  summary: >
+    Link to container with id and tabindex results in container being ignored by VoiceOver (affects skip links)
+  upstream_bug: >
+    WebKit#163658
+  origin: >
+    Bootstrap#20732
+    
+-
+  browser: >
+    Edge
+  summary: >
+    Visual artifacts in scrollable modal dialogs
+  upstream_bug: >
+    Edge#9011176
+  origin: >
+    Bootstrap#20755
+
+-
+  browser: >
+    Edge
   summary: >
     Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
   upstream_bug: >
@@ -10,7 +30,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
@@ -20,7 +40,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
   upstream_bug: >
@@ -30,7 +50,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
   upstream_bug: >
@@ -40,7 +60,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     `background` of `<tr>` is only applied to first child cell instead of all cells in the row
   upstream_bug: >
@@ -50,7 +70,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
   upstream_bug: >
@@ -60,7 +80,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     Background color from lower layer bleeds through transparent border in some cases
   upstream_bug: >
@@ -70,23 +90,23 @@
 
 -
   browser: >
-    Microsoft Edge
-  summary: >
-    Implement the `:dir()` pseudo-class from Selectors Level 4
-  upstream_bug: >
-    [Edge UserVoice idea #12299532](https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/suggestions/12299532--dir)
-  origin: >
-    Bootstrap#19984
-
--
-  browser: >
-    Microsoft Edge
+    Edge
   summary: >
     Hovering over descendant SVG element fires `mouseleave` event at ancestor
   upstream_bug: >
     Edge#7787318
   origin: >
     Bootstrap#19670
+
+-
+  browser: >
+    Edge
+  summary: >
+    Active `position: fixed;` `<button>` flickers when scrolling
+  upstream_bug: >
+    Edge#8770398
+  origin: >
+    Bootstrap#20507
 
 -
   browser: >
@@ -122,16 +142,6 @@
   browser: >
     Firefox
   summary: >
-    Fire `transitioncancel` event when a transition is canceled
-  upstream_bug: >
-    Mozilla#1264125
-  origin: >
-    Mozilla#1182856
-
--
-  browser: >
-    Firefox
-  summary: >
     Wide floated table doesn't wrap onto new line
   upstream_bug: >
     Mozilla#1277782
@@ -147,6 +157,26 @@
     Mozilla#577785
   origin: >
     Bootstrap#19670
+
+-
+  browser: >
+    Firefox
+  summary: >
+    `position: absolute` element that's wider than its column renders differently than other browsers
+  upstream_bug: >
+    Mozilla#1282363
+  origin: >
+    Bootstrap#20161
+
+-
+  browser: >
+    Firefox
+  summary: >
+    `min-width: 0` has no effect on `<fieldset>`
+  upstream_bug: >
+    Mozilla#504622
+  origin: >
+    Bootstrap#12359
 
 -
   browser: >
@@ -232,16 +262,6 @@
   browser: >
     Chrome
   summary: >
-    Implement the `:dir()` pseudo-class from Selectors Level 4
-  upstream_bug: >
-    Chromium#576815
-  origin: >
-    Bootstrap#19984
-
--
-  browser: >
-    Chrome
-  summary: >
     Don't make `:hover` sticky on touch-friendly webpages
   upstream_bug: >
     Chromium#370155
@@ -267,26 +287,6 @@
     WebKit#156684
   origin: >
     Bootstrap#17403
-
--
-  browser: >
-    Safari
-  summary: >
-    `:hover` CSS pseudo-class sometimes keeps matching ever after mouse has left the element
-  upstream_bug: >
-    WebKit#158340
-  origin: >
-    Bootstrap#20012
-
--
-  browser: >
-    Safari
-  summary: >
-    Implement the `:dir()` pseudo-class from Selectors Level 4
-  upstream_bug: >
-    WebKit#64861
-  origin: >
-    Bootstrap#19984
 
 -
   browser: >

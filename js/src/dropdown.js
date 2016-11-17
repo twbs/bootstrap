@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): dropdown.js
+ * Bootstrap (v4.0.0-alpha.5): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Dropdown = (($) => {
    */
 
   const NAME                     = 'dropdown'
-  const VERSION                  = '4.0.0-alpha.2'
+  const VERSION                  = '4.0.0-alpha.5'
   const DATA_KEY                 = 'bs.dropdown'
   const EVENT_KEY                = `.${DATA_KEY}`
   const DATA_API_KEY             = '.data-api'
@@ -41,7 +41,7 @@ const Dropdown = (($) => {
   const ClassName = {
     BACKDROP : 'dropdown-backdrop',
     DISABLED : 'disabled',
-    OPEN     : 'open'
+    ACTIVE   : 'active'
   }
 
   const Selector = {
@@ -86,7 +86,7 @@ const Dropdown = (($) => {
       }
 
       let parent   = Dropdown._getParentFromElement(this)
-      let isActive = $(parent).hasClass(ClassName.OPEN)
+      let isActive = $(parent).hasClass(ClassName.ACTIVE)
 
       Dropdown._clearMenus()
 
@@ -116,7 +116,7 @@ const Dropdown = (($) => {
       this.focus()
       this.setAttribute('aria-expanded', 'true')
 
-      $(parent).toggleClass(ClassName.OPEN)
+      $(parent).toggleClass(ClassName.ACTIVE)
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
 
       return false
@@ -171,7 +171,7 @@ const Dropdown = (($) => {
         let parent        = Dropdown._getParentFromElement(toggles[i])
         let relatedTarget = { relatedTarget : toggles[i] }
 
-        if (!$(parent).hasClass(ClassName.OPEN)) {
+        if (!$(parent).hasClass(ClassName.ACTIVE)) {
           continue
         }
 
@@ -190,7 +190,7 @@ const Dropdown = (($) => {
         toggles[i].setAttribute('aria-expanded', 'false')
 
         $(parent)
-          .removeClass(ClassName.OPEN)
+          .removeClass(ClassName.ACTIVE)
           .trigger($.Event(Event.HIDDEN, relatedTarget))
       }
     }
@@ -220,7 +220,7 @@ const Dropdown = (($) => {
       }
 
       let parent   = Dropdown._getParentFromElement(this)
-      let isActive = $(parent).hasClass(ClassName.OPEN)
+      let isActive = $(parent).hasClass(ClassName.ACTIVE)
 
       if ((!isActive && event.which !== ESCAPE_KEYCODE) ||
            (isActive && event.which === ESCAPE_KEYCODE)) {

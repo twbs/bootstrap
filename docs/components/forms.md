@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Forms
+description: Examples and usage guidelines for from controls, form layouts, and custom forms.
 group: components
 ---
 
@@ -63,28 +64,29 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   </div>
   <fieldset class="form-group">
     <legend>Radio buttons</legend>
-    <div class="radio">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
         Option one is this and that&mdash;be sure to include why it's great
       </label>
     </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    <div class="form-check">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
         Option two can be something else and selecting it will deselect option one
       </label>
     </div>
-    <div class="radio disabled">
-      <label>
-        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+    <div class="form-check disabled">
+    <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
         Option three is disabled
       </label>
     </div>
   </fieldset>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      Check me out
     </label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
@@ -151,7 +153,7 @@ Below is a complete list of the specific form controls supported by Bootstrap an
         {% markdown %}`file`{% endmarkdown %}
       </td>
     </tr>
-    <tr>
+        <tr>
       <td class="text-nowrap">
         {% markdown %}`.form-control-color`{% endmarkdown %}
       </td>
@@ -165,10 +167,8 @@ Below is a complete list of the specific form controls supported by Bootstrap an
     <tr>
       <td class="text-nowrap">
 {% markdown %}
-`.radio`<br>
-`.radio-inline`<br>
-`.checkbox`<br>
-`.checkbox-inline`
+`.form-check`<br>
+`.form-check-inline`
 {% endmarkdown %}
       </td>
       <td class="text-nowrap">
@@ -187,74 +187,74 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
 
 {% example html %}
 <div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 col-form-label">Text</label>
-  <div class="col-xs-10">
+  <label for="example-text-input" class="col-2 col-form-label">Text</label>
+  <div class="col-10">
     <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-search-input" class="col-xs-2 col-form-label">Search</label>
-  <div class="col-xs-10">
+  <label for="example-search-input" class="col-2 col-form-label">Search</label>
+  <div class="col-10">
     <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
-  <div class="col-xs-10">
+  <label for="example-email-input" class="col-2 col-form-label">Email</label>
+  <div class="col-10">
     <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-url-input" class="col-xs-2 col-form-label">URL</label>
-  <div class="col-xs-10">
-    <input class="form-control" type="url" value="http://getbootstrap.com" id="example-url-input">
+  <label for="example-url-input" class="col-2 col-form-label">URL</label>
+  <div class="col-10">
+    <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-tel-input" class="col-xs-2 col-form-label">Telephone</label>
-  <div class="col-xs-10">
+  <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
+  <div class="col-10">
     <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
-  <div class="col-xs-10">
+  <label for="example-password-input" class="col-2 col-form-label">Password</label>
+  <div class="col-10">
     <input class="form-control" type="password" value="hunter2" id="example-password-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-number-input" class="col-xs-2 col-form-label">Number</label>
-  <div class="col-xs-10">
+  <label for="example-number-input" class="col-2 col-form-label">Number</label>
+  <div class="col-10">
     <input class="form-control" type="number" value="42" id="example-number-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Date and time</label>
-  <div class="col-xs-10">
+  <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
+  <div class="col-10">
     <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-date-input" class="col-xs-2 col-form-label">Date</label>
-  <div class="col-xs-10">
+  <label for="example-date-input" class="col-2 col-form-label">Date</label>
+  <div class="col-10">
     <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-month-input" class="col-xs-2 col-form-label">Month</label>
-  <div class="col-xs-10">
+  <label for="example-month-input" class="col-2 col-form-label">Month</label>
+  <div class="col-10">
     <input class="form-control" type="month" value="2011-08" id="example-month-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-week-input" class="col-xs-2 col-form-label">Week</label>
-  <div class="col-xs-10">
+  <label for="example-week-input" class="col-2 col-form-label">Week</label>
+  <div class="col-10">
     <input class="form-control" type="week" value="2011-W33" id="example-week-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-time-input" class="col-xs-2 col-form-label">Time</label>
-  <div class="col-xs-10">
+  <label for="example-time-input" class="col-2 col-form-label">Time</label>
+  <div class="col-10">
     <input class="form-control" type="time" value="13:45:00" id="example-time-input">
   </div>
 </div>
@@ -349,7 +349,7 @@ Assistive technologies such as screen readers will have trouble with your forms 
 
 ### Using the Grid
 
-For more structured form layouts that are also responsive, you can utilize Bootstrap's [predefined grid classes](/layout/grid/#predefined-classes) or [mixins](/layout/grid/#sass-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
+For more structured form layouts that are also responsive, you can utilize Bootstrap's [predefined grid classes]({{ site.baseurl }}/layout/grid/#predefined-classes) or [mixins]({{ site.baseurl }}/layout/grid/#sass-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
 
 Be sure to add `.col-form-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.col-form-legend` to make them appear similar to regular `<label>` elements.
 
@@ -525,14 +525,14 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 
 ## Static controls
 
-When you need to place plain text next to a form label within a form, use the `.form-control-static` class on a `<p>`.
+When you need to place plain text next to a form label within a form, use the `.form-control-static` class on an element of your choice. Using an element like `<p>` with a default margin? Be sure to use a margin override (as shown below).
 
 {% example html %}
 <form>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <p class="form-control-static">email@example.com</p>
+      <p class="form-control-static mb-0">email@example.com</p>
     </div>
   </div>
   <div class="form-group row">
@@ -548,7 +548,7 @@ When you need to place plain text next to a form label within a form, use the `.
 <form class="form-inline">
   <div class="form-group">
     <label class="sr-only">Email</label>
-    <p class="form-control-static">email@example.com</p>
+    <p class="form-control-static mb-0">email@example.com</p>
   </div>
   <div class="form-group">
     <label for="inputPassword2" class="sr-only">Password</label>
@@ -594,7 +594,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 {% callout warning %}
 #### Caveat about link functionality of `<a>`
 
-By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons](../buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
+By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons]({{ site.baseurl }}/components/buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
 {% endcallout %}
 
 {% callout danger %}
@@ -639,14 +639,14 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 {% example html %}
 <div class="row">
-  <div class="col-xs-2">
-    <input type="text" class="form-control" placeholder=".col-xs-2">
+  <div class="col-2">
+    <input type="text" class="form-control" placeholder=".col-2">
   </div>
-  <div class="col-xs-3">
-    <input type="text" class="form-control" placeholder=".col-xs-3">
+  <div class="col-3">
+    <input type="text" class="form-control" placeholder=".col-3">
   </div>
-  <div class="col-xs-4">
-    <input type="text" class="form-control" placeholder=".col-xs-4">
+  <div class="col-4">
+    <input type="text" class="form-control" placeholder=".col-4">
   </div>
 </div>
 {% endexample %}
@@ -691,7 +691,11 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 
 ## Validation
 
-Bootstrap includes validation styles for danger, warning, and success states on form controls. Here's a rundown of how they work:
+Bootstrap includes validation styles for danger, warning, and success states on most form controls.
+
+### How it works
+
+Here's a rundown of how they work:
 
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.col-form-label`, `.form-control`, or custom form element will receive the validation styles.
 - Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
@@ -699,13 +703,13 @@ Bootstrap includes validation styles for danger, warning, and success states on 
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
 - Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
 
+### Defining states
+
 Generally speaking, you'll want to use a particular state for specific types of feedback:
 
 - **Danger** is great for when there's a blocking or required field. A user *must* fill in this field properly to submit the form.
 - **Warning** works well for input values that are in progress, like password strength, or soft validation before a user attempts to submit a form.
 - And lastly, **success** is ideal for situations when you have per-field validation throughout a form and want to encourage a user through the rest of the fields.
-
-Here are some examples of the aforementioned classes in action.
 
 {% comment %}
 {% callout warning %}
@@ -713,47 +717,86 @@ Here are some examples of the aforementioned classes in action.
 
 Using these validation styles to denote the state of a form control only provides a visual, color-based indication, which will not be conveyed to users of assistive technologies - such as screen readers - or to colorblind users.
 
-Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's `<label>` text itself (as is the case in the following code example), include a [Glyphicon](../components/#glyphicons) (with appropriate alternative text using the `.sr-only` class - see the [Glyphicon examples](../components/#glyphicons-examples)), or by providing an additional [help text](#forms-help-text) block. Specifically for assistive technologies, invalid form controls can also be assigned an `aria-invalid="true"` attribute.
+Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's `<label>` text itself (as is the case in the following code example), include a [Glyphicon]({{ site.baseurl }}/components/#glyphicons) (with appropriate alternative text using the `.sr-only` class - see the [Glyphicon examples]({{ site.baseurl }}/components/#glyphicons-examples)), or by providing an additional [help text](#forms-help-text) block. Specifically for assistive technologies, invalid form controls can also be assigned an `aria-invalid="true"` attribute.
 {% endcallout %}
 {% endcomment %}
 
+### Examples
+
+Here are some examples of the aforementioned classes in action. First up is your standard left-aligned fields with labels, help text, and validation messaging.
+
 {% example html %}
 <div class="form-group has-success">
-  <label class="col-form-label" for="inputSuccess1">Input with success</label>
+  <label class="form-control-label" for="inputSuccess1">Input with success</label>
   <input type="text" class="form-control form-control-success" id="inputSuccess1">
   <div class="form-control-feedback">Success! You've done it.</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-warning">
-  <label class="col-form-label" for="inputWarning1">Input with warning</label>
+  <label class="form-control-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-warning" id="inputWarning1">
   <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-danger">
-  <label class="col-form-label" for="inputDanger1">Input with danger</label>
+  <label class="form-control-label" for="inputDanger1">Input with danger</label>
   <input type="text" class="form-control form-control-danger" id="inputDanger1">
-  <div class="form-control-feedback">Shit, that username's taken. Try another?</div>
+  <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 {% endexample %}
 
+Those same states can also be used with horizontal forms.
+
 {% example html %}
-<div class="checkbox has-success">
-  <label>
-    <input type="checkbox" id="checkboxSuccess" value="option1">
+<div class="container">
+  <form>
+    <div class="form-group row has-success">
+      <label for="inputHorizontalSuccess" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="name@example.com">
+        <div class="form-control-feedback">Success! You've done it.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+    <div class="form-group row has-warning">
+      <label for="inputHorizontalWarning" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-warning" id="inputHorizontalWarning" placeholder="name@example.com">
+        <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+    <div class="form-group row has-danger">
+      <label for="inputHorizontalDnger" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-danger" id="inputHorizontalDnger" placeholder="name@example.com">
+        <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+  </form>
+</div>
+{% endexample %}
+
+Checkboxes and radios are also supported.
+
+{% example html %}
+<div class="form-check has-success">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" id="checkboxSuccess" value="option1">
     Checkbox with success
   </label>
 </div>
-<div class="checkbox has-warning">
-  <label>
-    <input type="checkbox" id="checkboxWarning" value="option1">
+<div class="form-check has-warning">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" id="checkboxWarning" value="option1">
     Checkbox with warning
   </label>
 </div>
-<div class="checkbox has-danger">
-  <label>
-    <input type="checkbox" id="checkboxDanger" value="option1">
+<div class="form-check has-danger">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" id="checkboxDanger" value="option1">
     Checkbox with danger
   </label>
 </div>
@@ -855,7 +898,7 @@ Add other states to your custom forms with our validation classes.
     <span class="custom-control-description">Check this custom checkbox</span>
   </label>
 </div>
-<div class="form-group has-danger m-b-0">
+<div class="form-group has-danger mb-0">
   <label class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input">
     <span class="custom-control-indicator"></span>

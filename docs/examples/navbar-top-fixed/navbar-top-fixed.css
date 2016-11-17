@@ -1,5 +1,5 @@
+/* Show it is fixed to the top */
 body {
-  /* Show it's not fixed to the top */
   min-height: 75rem;
-  padding-top: 6rem;
+  padding-top: 4.5rem;
 }

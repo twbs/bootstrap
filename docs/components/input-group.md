@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Input group
+description: Extend form controls with the input group.
 group: components
 ---
 
@@ -200,7 +201,7 @@ Buttons in input groups are a bit different and require one extra level of nesti
     <div class="input-group">
       <div class="input-group-btn">
         <button type="button" class="btn btn-secondary">Action</button>
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <div class="dropdown-menu">
@@ -219,7 +220,7 @@ Buttons in input groups are a bit different and require one extra level of nesti
       <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
       <div class="input-group-btn">
         <button type="button" class="btn btn-secondary">Action</button>
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <div class="dropdown-menu dropdown-menu-right">

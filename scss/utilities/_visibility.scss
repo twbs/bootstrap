@@ -1,11 +1,9 @@
-// scss-lint:disable ImportantRule
-
 //
 // Visibility utilities
 //
 
 .invisible {
-  visibility: hidden !important;
+  @include invisible();
 }
 
 // Responsive visibility utilities

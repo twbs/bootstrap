@@ -1,6 +1,6 @@
 /*!
  * Bootstrap's Gruntfile
- * http://getbootstrap.com
+ * https://getbootstrap.com
  * Copyright 2013-2016 The Bootstrap Authors
  * Copyright 2013-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -19,15 +19,12 @@ module.exports = function (grunt) {
   var fs = require('fs');
   var path = require('path');
   var isTravis = require('is-travis');
-  var mq4HoverShim = require('mq4-hover-shim');
-  var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
-  var autoprefixer = require('autoprefixer')(autoprefixerSettings);
 
   var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' });
 
   Object.keys(configBridge.paths).forEach(function (key) {
     configBridge.paths[key].forEach(function (val, i, arr) {
-      arr[i] = path.join('./docs/assets', val);
+      arr[i] = path.join('./docs', val);
     });
   });
 
@@ -46,8 +43,8 @@ module.exports = function (grunt) {
                  '}\n',
     jqueryVersionCheck: '+function ($) {\n' +
                         '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')\n' +
-                        '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] >= 3)) {\n' +
-                        '    throw new Error(\'Bootstrap\\\'s JavaScript requires at least jQuery v1.9.1 but less than v3.0.0\')\n' +
+                        '  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] >= 4)) {\n' +
+                        '    throw new Error(\'Bootstrap\\\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0\')\n' +
                         '  }\n' +
                         '}(jQuery);\n\n',
 
@@ -61,8 +58,7 @@ module.exports = function (grunt) {
     babel: {
       dev: {
         options: {
-          sourceMap: true,
-          modules: 'ignore'
+          sourceMap: true
         },
         files: {
           'js/dist/util.js'      : 'js/src/util.js',
@@ -80,7 +76,7 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
-          modules: 'ignore'
+          extends: '../../js/.babelrc'
         },
         files: {
           '<%= concat.bootstrap.dest %>' : '<%= concat.bootstrap.dest %>'
@@ -90,8 +86,8 @@ module.exports = function (grunt) {
 
     stamp: {
       options: {
-        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>\n+function ($) {\n',
-        footer: '\n}(jQuery);'
+        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>\n+function () {\n',
+        footer: '\n}();'
       },
       bootstrap: {
         files: {
@@ -105,8 +101,7 @@ module.exports = function (grunt) {
         // Custom function to remove all export and import statements
         process: function (src) {
           return src.replace(/^(export|import).*/gm, '');
-        },
-        stripBanners: false
+        }
       },
       bootstrap: {
         src: [
@@ -166,46 +161,11 @@ module.exports = function (grunt) {
       }
     },
 
-    postcss: {
-      core: {
-        options: {
-          map: true,
-          processors: [
-            mq4HoverShim.postprocessorFor({ hoverSelectorPrefix: '.bs-true-hover ' }),
-            require('postcss-flexbugs-fixes')(),
-            autoprefixer
-          ]
-        },
-        src: 'dist/css/*.css'
-      },
-      docs: {
-        options: {
-          processors: [
-            autoprefixer
-          ]
-        },
-        src: 'docs/assets/css/docs.min.css'
-      },
-      examples: {
-        options: {
-          processors: [
-            autoprefixer
-          ]
-        },
-        expand: true,
-        cwd: 'docs/examples/',
-        src: ['**/*.css'],
-        dest: 'docs/examples/'
-      }
-    },
-
     cssmin: {
       options: {
-        // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
-        //    and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
-        compatibility: 'ie9',
-        keepSpecialComments: '*',
+        compatibility: 'ie9,-properties.zeroUnits',
         sourceMap: true,
+        // sourceMapInlineSources: true,
         advanced: false
       },
       core: {
@@ -220,8 +180,15 @@ module.exports = function (grunt) {
         ]
       },
       docs: {
-        src: 'docs/assets/css/docs.min.css',
-        dest: 'docs/assets/css/docs.min.css'
+        files: [
+          {
+            expand: true,
+            cwd: 'docs/assets/css',
+            src: ['*.css', '!*.min.css'],
+            dest: 'docs/assets/css',
+            ext: '.min.css'
+          }
+        ]
       }
     },
 
@@ -262,14 +229,14 @@ module.exports = function (grunt) {
     htmllint: {
       options: {
         ignore: [
-          'Element “img” is missing required attribute “src”.',
-          'Attribute “autocomplete” is only allowed when the input type is “color”, “date”, “datetime”, “datetime-local”, “email”, “month”, “number”, “password”, “range”, “search”, “tel”, “text”, “time”, “url”, or “week”.',
+          'Attribute “autocomplete” is only allowed when the input type is “color”, “date”, “datetime”, “datetime-local”, “email”, “hidden”, “month”, “number”, “password”, “range”, “search”, “tel”, “text”, “time”, “url”, or “week”.',
           'Attribute “autocomplete” not allowed on element “button” at this point.',
-          'Element “div” not allowed as child of element “progress” in this context. (Suppressing further errors from this subtree.)',
           'Consider using the “h1” element as a top-level heading only (all “h1” elements are treated as top-level headings by many screen readers and other tools).',
-          'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'Element “div” not allowed as child of element “progress” in this context. (Suppressing further errors from this subtree.)',
+          'Element “img” is missing required attribute “src”.',
           'The “color” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “date” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+          'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “datetime-local” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “month” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
           'The “time” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
@@ -308,6 +275,18 @@ module.exports = function (grunt) {
     },
 
     exec: {
+      postcss: {
+        command: 'npm run postcss'
+      },
+      'postcss-docs': {
+        command: 'npm run postcss-docs'
+      },
+      htmlhint: {
+        command: 'npm run htmlhint'
+      },
+      'upload-preview': {
+        command: './grunt/upload-preview.sh'
+      }
     },
 
     buildcontrol: {
@@ -354,7 +333,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint']);
+  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint', 'exec:htmlhint']);
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
@@ -381,12 +360,13 @@ module.exports = function (grunt) {
   // Only run Sauce Labs tests if there's a Sauce access key
   if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' &&
       // Skip Sauce if running a different subset of the test suite
-      runSubset('sauce-js-unit') &&
-      // Skip Sauce on Travis when [skip sauce] is in the commit message
-      isUndefOrNonZero(process.env.TWBS_DO_SAUCE)) {
-    testSubtasks.push('babel:dev');
-    testSubtasks.push('connect');
-    testSubtasks.push('saucelabs-qunit');
+      runSubset('sauce-js-unit')) {
+    testSubtasks = testSubtasks.concat(['dist', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs', 'exec:upload-preview']);
+    // Skip Sauce on Travis when [skip sauce] is in the commit message
+    if (isUndefOrNonZero(process.env.TWBS_DO_SAUCE)) {
+      testSubtasks.push('connect');
+      testSubtasks.push('saucelabs-qunit');
+    }
   }
   grunt.registerTask('test', testSubtasks);
 
@@ -401,9 +381,9 @@ module.exports = function (grunt) {
     require('./grunt/bs-sass-compile/' + sassCompilerName + '.js')(grunt);
   })(process.env.TWBS_SASS || 'libsass');
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
-  grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
+  grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
 
-  grunt.registerTask('dist-css', ['sass-compile', 'postcss:core', 'cssmin:core', 'cssmin:docs']);
+  grunt.registerTask('dist-css', ['sass-compile', 'exec:postcss', 'cssmin:core', 'cssmin:docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
@@ -412,7 +392,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['clean:dist', 'test']);
 
   // Docs task.
-  grunt.registerTask('docs-css', ['postcss:docs', 'postcss:examples', 'cssmin:docs']);
+  grunt.registerTask('docs-css', ['cssmin:docs', 'exec:postcss-docs']);
   grunt.registerTask('lint-docs-css', ['scsslint:docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs']);
