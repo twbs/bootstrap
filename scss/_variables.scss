@@ -225,6 +225,17 @@ $grid-gutter-widths: (
 //
 // Font, line-height, and color for body text, headings, and more.
 
+
+$font-sizes: (
+    xs: .75rem,
+    sm: .875rem,
+    base: 1rem,
+    lg: 1.25rem,
+    xl: 1.5rem
+);
+@include _assert-ascending($font-sizes, "$font-sizes");
+
+
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
@@ -233,10 +244,11 @@ $font-family-base:       $font-family-sans-serif !default;
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
 $font-size-root: 16px !default;
 
-$font-size-base: 1rem !default;
-$font-size-lg:   1.25rem !default;
-$font-size-sm:   .875rem !default;
-$font-size-xs:   .75rem !default;
+$font-size-base: map-get($font-sizes, base) !default;
+$font-size-lg:   map-get($font-sizes, lg) !default;
+$font-size-sm:   map-get($font-sizes, sm) !default;
+$font-size-xs:   map-get($font-sizes, xs) !default;
+$font-size-xl:   map-get($font-sizes, xl) !default;
 
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
