@@ -44,7 +44,7 @@ const Tab = (($) => {
     A                     : 'a',
     LI                    : 'li',
     DROPDOWN              : '.dropdown',
-    UL                    : 'ul:not(.dropdown-menu)',
+    LIST                  : 'ul:not(.dropdown-menu), ol:not(.dropdown-menu)',
     FADE_CHILD            : '> .nav-item .fade, > .fade',
     ACTIVE                : '.active',
     ACTIVE_CHILD          : '> .nav-item > .active, > .active',
@@ -85,11 +85,11 @@ const Tab = (($) => {
 
       let target
       let previous
-      let ulElement = $(this._element).closest(Selector.UL)[0]
+      let listElement = $(this._element).closest(Selector.LIST)[0]
       let selector  = Util.getSelectorFromElement(this._element)
 
-      if (ulElement) {
-        previous = $.makeArray($(ulElement).find(Selector.ACTIVE))
+      if (listElement) {
+        previous = $.makeArray($(listElement).find(Selector.ACTIVE))
         previous = previous[previous.length - 1]
       }
 
@@ -118,7 +118,7 @@ const Tab = (($) => {
 
       this._activate(
         this._element,
-        ulElement
+        listElement
       )
 
       let complete = () => {
@@ -156,9 +156,7 @@ const Tab = (($) => {
         && ((active && $(active).hasClass(ClassName.FADE))
            || Boolean($(container).find(Selector.FADE_CHILD)[0]))
 
-      let complete = $.proxy(
-        this._transitionComplete,
-        this,
+      let complete = () => this._transitionComplete(
         element,
         active,
         isTransitioning,

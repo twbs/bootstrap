@@ -149,7 +149,7 @@ var Util = function ($) {
       return selector;
     },
     reflow: function reflow(element) {
-      new Function('bs', 'return bs')(element.offsetHeight);
+      return element.offsetHeight;
     },
     triggerTransitionEnd: function triggerTransitionEnd(element) {
       $(element).trigger(transition.end);
@@ -219,7 +219,7 @@ var Alert = function ($) {
   var ClassName = {
     ALERT: 'alert',
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   /**
@@ -282,14 +282,18 @@ var Alert = function ($) {
     };
 
     Alert.prototype._removeElement = function _removeElement(element) {
-      $(element).removeClass(ClassName.IN);
+      var _this2 = this;
+
+      $(element).removeClass(ClassName.ACTIVE);
 
       if (!Util.supportsTransitionEnd() || !$(element).hasClass(ClassName.FADE)) {
         this._destroyElement(element);
         return;
       }
 
-      $(element).one(Util.TRANSITION_END, $.proxy(this._destroyElement, this, element)).emulateTransitionEnd(TRANSITION_DURATION);
+      $(element).one(Util.TRANSITION_END, function (event) {
+        return _this2._destroyElement(element, event);
+      }).emulateTransitionEnd(TRANSITION_DURATION);
     };
 
     Alert.prototype._destroyElement = function _destroyElement(element) {
@@ -668,12 +672,12 @@ var Carousel = function ($) {
       }
 
       if (this._config.interval && !this._isPaused) {
-        this._interval = setInterval($.proxy(document.visibilityState ? this.nextWhenVisible : this.next, this), this._config.interval);
+        this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
       }
     };
 
     Carousel.prototype.to = function to(index) {
-      var _this2 = this;
+      var _this3 = this;
 
       this._activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
 
@@ -685,7 +689,7 @@ var Carousel = function ($) {
 
       if (this._isSliding) {
         $(this._element).one(Event.SLID, function () {
-          return _this2.to(index);
+          return _this3.to(index);
         });
         return;
       }
@@ -724,12 +728,20 @@ var Carousel = function ($) {
     };
 
     Carousel.prototype._addEventListeners = function _addEventListeners() {
+      var _this4 = this;
+
       if (this._config.keyboard) {
-        $(this._element).on(Event.KEYDOWN, $.proxy(this._keydown, this));
+        $(this._element).on(Event.KEYDOWN, function (event) {
+          return _this4._keydown(event);
+        });
       }
 
       if (this._config.pause === 'hover' && !('ontouchstart' in document.documentElement)) {
-        $(this._element).on(Event.MOUSEENTER, $.proxy(this.pause, this)).on(Event.MOUSELEAVE, $.proxy(this.cycle, this));
+        $(this._element).on(Event.MOUSEENTER, function (event) {
+          return _this4.pause(event);
+        }).on(Event.MOUSELEAVE, function (event) {
+          return _this4.cycle(event);
+        });
       }
     };
 
@@ -798,7 +810,7 @@ var Carousel = function ($) {
     };
 
     Carousel.prototype._slide = function _slide(direction, element) {
-      var _this3 = this;
+      var _this5 = this;
 
       var activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
       var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
@@ -851,10 +863,10 @@ var Carousel = function ($) {
 
           $(activeElement).removeClass(ClassName.ACTIVE).removeClass(direction).removeClass(directionalClassName);
 
-          _this3._isSliding = false;
+          _this5._isSliding = false;
 
           setTimeout(function () {
-            return $(_this3._element).trigger(slidEvent);
+            return $(_this5._element).trigger(slidEvent);
           }, 0);
         }).emulateTransitionEnd(TRANSITION_DURATION);
       } else {
@@ -1019,7 +1031,7 @@ var Collapse = function ($) {
   };
 
   var ClassName = {
-    IN: 'in',
+    ACTIVE: 'active',
     COLLAPSE: 'collapse',
     COLLAPSING: 'collapsing',
     COLLAPSED: 'collapsed'
@@ -1031,7 +1043,7 @@ var Collapse = function ($) {
   };
 
   var Selector = {
-    ACTIVES: '.card > .in, .card > .collapsing',
+    ACTIVES: '.card > .active, .card > .collapsing',
     DATA_TOGGLE: '[data-toggle="collapse"]'
   };
 
@@ -1066,7 +1078,7 @@ var Collapse = function ($) {
     // public
 
     Collapse.prototype.toggle = function toggle() {
-      if ($(this._element).hasClass(ClassName.IN)) {
+      if ($(this._element).hasClass(ClassName.ACTIVE)) {
         this.hide();
       } else {
         this.show();
@@ -1074,9 +1086,9 @@ var Collapse = function ($) {
     };
 
     Collapse.prototype.show = function show() {
-      var _this4 = this;
+      var _this6 = this;
 
-      if (this._isTransitioning || $(this._element).hasClass(ClassName.IN)) {
+      if (this._isTransitioning || $(this._element).hasClass(ClassName.ACTIVE)) {
         return;
       }
 
@@ -1084,7 +1096,7 @@ var Collapse = function ($) {
       var activesData = void 0;
 
       if (this._parent) {
-        actives = $.makeArray($(Selector.ACTIVES));
+        actives = $.makeArray($(this._parent).find(Selector.ACTIVES));
         if (!actives.length) {
           actives = null;
         }
@@ -1124,13 +1136,13 @@ var Collapse = function ($) {
       this.setTransitioning(true);
 
       var complete = function complete() {
-        $(_this4._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.IN);
+        $(_this6._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.ACTIVE);
 
-        _this4._element.style[dimension] = '';
+        _this6._element.style[dimension] = '';
 
-        _this4.setTransitioning(false);
+        _this6.setTransitioning(false);
 
-        $(_this4._element).trigger(Event.SHOWN);
+        $(_this6._element).trigger(Event.SHOWN);
       };
 
       if (!Util.supportsTransitionEnd()) {
@@ -1147,9 +1159,9 @@ var Collapse = function ($) {
     };
 
     Collapse.prototype.hide = function hide() {
-      var _this5 = this;
+      var _this7 = this;
 
-      if (this._isTransitioning || !$(this._element).hasClass(ClassName.IN)) {
+      if (this._isTransitioning || !$(this._element).hasClass(ClassName.ACTIVE)) {
         return;
       }
 
@@ -1166,7 +1178,7 @@ var Collapse = function ($) {
 
       Util.reflow(this._element);
 
-      $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.IN);
+      $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.ACTIVE);
 
       this._element.setAttribute('aria-expanded', false);
 
@@ -1177,8 +1189,8 @@ var Collapse = function ($) {
       this.setTransitioning(true);
 
       var complete = function complete() {
-        _this5.setTransitioning(false);
-        $(_this5._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).trigger(Event.HIDDEN);
+        _this7.setTransitioning(false);
+        $(_this7._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).trigger(Event.HIDDEN);
       };
 
       this._element.style[dimension] = '';
@@ -1220,13 +1232,13 @@ var Collapse = function ($) {
     };
 
     Collapse.prototype._getParent = function _getParent() {
-      var _this6 = this;
+      var _this8 = this;
 
       var parent = $(this._config.parent)[0];
       var selector = '[data-toggle="collapse"][data-parent="' + this._config.parent + '"]';
 
       $(parent).find(selector).each(function (i, element) {
-        _this6._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [element]);
+        _this8._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [element]);
       });
 
       return parent;
@@ -1234,7 +1246,7 @@ var Collapse = function ($) {
 
     Collapse.prototype._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
-        var isOpen = $(element).hasClass(ClassName.IN);
+        var isOpen = $(element).hasClass(ClassName.ACTIVE);
         element.setAttribute('aria-expanded', isOpen);
 
         if (triggerArray.length) {
@@ -1360,7 +1372,7 @@ var Dropdown = function ($) {
   var ClassName = {
     BACKDROP: 'dropdown-backdrop',
     DISABLED: 'disabled',
-    OPEN: 'open'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -1398,7 +1410,7 @@ var Dropdown = function ($) {
       }
 
       var parent = Dropdown._getParentFromElement(this);
-      var isActive = $(parent).hasClass(ClassName.OPEN);
+      var isActive = $(parent).hasClass(ClassName.ACTIVE);
 
       Dropdown._clearMenus();
 
@@ -1427,7 +1439,7 @@ var Dropdown = function ($) {
       this.focus();
       this.setAttribute('aria-expanded', 'true');
 
-      $(parent).toggleClass(ClassName.OPEN);
+      $(parent).toggleClass(ClassName.ACTIVE);
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget));
 
       return false;
@@ -1480,7 +1492,7 @@ var Dropdown = function ($) {
         var parent = Dropdown._getParentFromElement(toggles[i]);
         var relatedTarget = { relatedTarget: toggles[i] };
 
-        if (!$(parent).hasClass(ClassName.OPEN)) {
+        if (!$(parent).hasClass(ClassName.ACTIVE)) {
           continue;
         }
 
@@ -1496,7 +1508,7 @@ var Dropdown = function ($) {
 
         toggles[i].setAttribute('aria-expanded', 'false');
 
-        $(parent).removeClass(ClassName.OPEN).trigger($.Event(Event.HIDDEN, relatedTarget));
+        $(parent).removeClass(ClassName.ACTIVE).trigger($.Event(Event.HIDDEN, relatedTarget));
       }
     };
 
@@ -1524,7 +1536,7 @@ var Dropdown = function ($) {
       }
 
       var parent = Dropdown._getParentFromElement(this);
-      var isActive = $(parent).hasClass(ClassName.OPEN);
+      var isActive = $(parent).hasClass(ClassName.ACTIVE);
 
       if (!isActive && event.which !== ESCAPE_KEYCODE || isActive && event.which === ESCAPE_KEYCODE) {
 
@@ -1660,7 +1672,7 @@ var Modal = function ($) {
     BACKDROP: 'modal-backdrop',
     OPEN: 'modal-open',
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -1700,7 +1712,7 @@ var Modal = function ($) {
     };
 
     Modal.prototype.show = function show(relatedTarget) {
-      var _this7 = this;
+      var _this9 = this;
 
       var showEvent = $.Event(Event.SHOW, {
         relatedTarget: relatedTarget
@@ -1722,20 +1734,26 @@ var Modal = function ($) {
       this._setEscapeEvent();
       this._setResizeEvent();
 
-      $(this._element).on(Event.CLICK_DISMISS, Selector.DATA_DISMISS, $.proxy(this.hide, this));
+      $(this._element).on(Event.CLICK_DISMISS, Selector.DATA_DISMISS, function (event) {
+        return _this9.hide(event);
+      });
 
       $(this._dialog).on(Event.MOUSEDOWN_DISMISS, function () {
-        $(_this7._element).one(Event.MOUSEUP_DISMISS, function (event) {
-          if ($(event.target).is(_this7._element)) {
-            _this7._ignoreBackdropClick = true;
+        $(_this9._element).one(Event.MOUSEUP_DISMISS, function (event) {
+          if ($(event.target).is(_this9._element)) {
+            _this9._ignoreBackdropClick = true;
           }
         });
       });
 
-      this._showBackdrop($.proxy(this._showElement, this, relatedTarget));
+      this._showBackdrop(function () {
+        return _this9._showElement(relatedTarget);
+      });
     };
 
     Modal.prototype.hide = function hide(event) {
+      var _this10 = this;
+
       if (event) {
         event.preventDefault();
       }
@@ -1755,14 +1773,16 @@ var Modal = function ($) {
 
       $(document).off(Event.FOCUSIN);
 
-      $(this._element).removeClass(ClassName.IN);
+      $(this._element).removeClass(ClassName.ACTIVE);
 
       $(this._element).off(Event.CLICK_DISMISS);
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS);
 
       if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
 
-        $(this._element).one(Util.TRANSITION_END, $.proxy(this._hideModal, this)).emulateTransitionEnd(TRANSITION_DURATION);
+        $(this._element).one(Util.TRANSITION_END, function (event) {
+          return _this10._hideModal(event);
+        }).emulateTransitionEnd(TRANSITION_DURATION);
       } else {
         this._hideModal();
       }
@@ -1796,7 +1816,7 @@ var Modal = function ($) {
     };
 
     Modal.prototype._showElement = function _showElement(relatedTarget) {
-      var _this8 = this;
+      var _this11 = this;
 
       var transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE);
 
@@ -1813,7 +1833,7 @@ var Modal = function ($) {
         Util.reflow(this._element);
       }
 
-      $(this._element).addClass(ClassName.IN);
+      $(this._element).addClass(ClassName.ACTIVE);
 
       if (this._config.focus) {
         this._enforceFocus();
@@ -1824,10 +1844,10 @@ var Modal = function ($) {
       });
 
       var transitionComplete = function transitionComplete() {
-        if (_this8._config.focus) {
-          _this8._element.focus();
+        if (_this11._config.focus) {
+          _this11._element.focus();
         }
-        $(_this8._element).trigger(shownEvent);
+        $(_this11._element).trigger(shownEvent);
       };
 
       if (transition) {
@@ -1838,23 +1858,23 @@ var Modal = function ($) {
     };
 
     Modal.prototype._enforceFocus = function _enforceFocus() {
-      var _this9 = this;
+      var _this12 = this;
 
       $(document).off(Event.FOCUSIN) // guard against infinite focus loop
       .on(Event.FOCUSIN, function (event) {
-        if (document !== event.target && _this9._element !== event.target && !$(_this9._element).has(event.target).length) {
-          _this9._element.focus();
+        if (document !== event.target && _this12._element !== event.target && !$(_this12._element).has(event.target).length) {
+          _this12._element.focus();
         }
       });
     };
 
     Modal.prototype._setEscapeEvent = function _setEscapeEvent() {
-      var _this10 = this;
+      var _this13 = this;
 
       if (this._isShown && this._config.keyboard) {
         $(this._element).on(Event.KEYDOWN_DISMISS, function (event) {
           if (event.which === ESCAPE_KEYCODE) {
-            _this10.hide();
+            _this13.hide();
           }
         });
       } else if (!this._isShown) {
@@ -1863,23 +1883,27 @@ var Modal = function ($) {
     };
 
     Modal.prototype._setResizeEvent = function _setResizeEvent() {
+      var _this14 = this;
+
       if (this._isShown) {
-        $(window).on(Event.RESIZE, $.proxy(this._handleUpdate, this));
+        $(window).on(Event.RESIZE, function (event) {
+          return _this14._handleUpdate(event);
+        });
       } else {
         $(window).off(Event.RESIZE);
       }
     };
 
     Modal.prototype._hideModal = function _hideModal() {
-      var _this11 = this;
+      var _this15 = this;
 
       this._element.style.display = 'none';
       this._element.setAttribute('aria-hidden', 'true');
       this._showBackdrop(function () {
         $(document.body).removeClass(ClassName.OPEN);
-        _this11._resetAdjustments();
-        _this11._resetScrollbar();
-        $(_this11._element).trigger(Event.HIDDEN);
+        _this15._resetAdjustments();
+        _this15._resetScrollbar();
+        $(_this15._element).trigger(Event.HIDDEN);
       });
     };
 
@@ -1891,7 +1915,7 @@ var Modal = function ($) {
     };
 
     Modal.prototype._showBackdrop = function _showBackdrop(callback) {
-      var _this12 = this;
+      var _this16 = this;
 
       var animate = $(this._element).hasClass(ClassName.FADE) ? ClassName.FADE : '';
 
@@ -1908,17 +1932,17 @@ var Modal = function ($) {
         $(this._backdrop).appendTo(document.body);
 
         $(this._element).on(Event.CLICK_DISMISS, function (event) {
-          if (_this12._ignoreBackdropClick) {
-            _this12._ignoreBackdropClick = false;
+          if (_this16._ignoreBackdropClick) {
+            _this16._ignoreBackdropClick = false;
             return;
           }
           if (event.target !== event.currentTarget) {
             return;
           }
-          if (_this12._config.backdrop === 'static') {
-            _this12._element.focus();
+          if (_this16._config.backdrop === 'static') {
+            _this16._element.focus();
           } else {
-            _this12.hide();
+            _this16.hide();
           }
         });
 
@@ -1926,7 +1950,7 @@ var Modal = function ($) {
           Util.reflow(this._backdrop);
         }
 
-        $(this._backdrop).addClass(ClassName.IN);
+        $(this._backdrop).addClass(ClassName.ACTIVE);
 
         if (!callback) {
           return;
@@ -1939,10 +1963,10 @@ var Modal = function ($) {
 
         $(this._backdrop).one(Util.TRANSITION_END, callback).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
       } else if (!this._isShown && this._backdrop) {
-        $(this._backdrop).removeClass(ClassName.IN);
+        $(this._backdrop).removeClass(ClassName.ACTIVE);
 
         var callbackRemove = function callbackRemove() {
-          _this12._removeBackdrop();
+          _this16._removeBackdrop();
           if (callback) {
             callback();
           }
@@ -2058,7 +2082,7 @@ var Modal = function ($) {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    var _this13 = this;
+    var _this17 = this;
 
     var target = void 0;
     var selector = Util.getSelectorFromElement(this);
@@ -2080,8 +2104,8 @@ var Modal = function ($) {
       }
 
       $target.one(Event.HIDDEN, function () {
-        if ($(_this13).is(':visible')) {
-          _this13.focus();
+        if ($(_this17).is(':visible')) {
+          _this17.focus();
         }
       });
     });
@@ -2178,6 +2202,8 @@ var ScrollSpy = function ($) {
 
   var ScrollSpy = function () {
     function ScrollSpy(element, config) {
+      var _this18 = this;
+
       _classCallCheck(this, ScrollSpy);
 
       this._element = element;
@@ -2189,7 +2215,9 @@ var ScrollSpy = function ($) {
       this._activeTarget = null;
       this._scrollHeight = 0;
 
-      $(this._scrollElement).on(Event.SCROLL, $.proxy(this._process, this));
+      $(this._scrollElement).on(Event.SCROLL, function (event) {
+        return _this18._process(event);
+      });
 
       this.refresh();
       this._process();
@@ -2200,7 +2228,7 @@ var ScrollSpy = function ($) {
     // public
 
     ScrollSpy.prototype.refresh = function refresh() {
-      var _this14 = this;
+      var _this19 = this;
 
       var autoMethod = this._scrollElement !== this._scrollElement.window ? OffsetMethod.POSITION : OffsetMethod.OFFSET;
 
@@ -2233,8 +2261,8 @@ var ScrollSpy = function ($) {
       }).sort(function (a, b) {
         return a[0] - b[0];
       }).forEach(function (item) {
-        _this14._offsets.push(item[0]);
-        _this14._targets.push(item[1]);
+        _this19._offsets.push(item[0]);
+        _this19._targets.push(item[1]);
       });
     };
 
@@ -2450,7 +2478,7 @@ var Tab = function ($) {
     A: 'a',
     LI: 'li',
     DROPDOWN: '.dropdown',
-    UL: 'ul:not(.dropdown-menu)',
+    LIST: 'ul:not(.dropdown-menu), ol:not(.dropdown-menu)',
     FADE_CHILD: '> .nav-item .fade, > .fade',
     ACTIVE: '.active',
     ACTIVE_CHILD: '> .nav-item > .active, > .active',
@@ -2477,7 +2505,7 @@ var Tab = function ($) {
     // public
 
     Tab.prototype.show = function show() {
-      var _this15 = this;
+      var _this20 = this;
 
       if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && $(this._element).hasClass(ClassName.ACTIVE)) {
         return;
@@ -2485,11 +2513,11 @@ var Tab = function ($) {
 
       var target = void 0;
       var previous = void 0;
-      var ulElement = $(this._element).closest(Selector.UL)[0];
+      var listElement = $(this._element).closest(Selector.LIST)[0];
       var selector = Util.getSelectorFromElement(this._element);
 
-      if (ulElement) {
-        previous = $.makeArray($(ulElement).find(Selector.ACTIVE));
+      if (listElement) {
+        previous = $.makeArray($(listElement).find(Selector.ACTIVE));
         previous = previous[previous.length - 1];
       }
 
@@ -2515,11 +2543,11 @@ var Tab = function ($) {
         target = $(selector)[0];
       }
 
-      this._activate(this._element, ulElement);
+      this._activate(this._element, listElement);
 
       var complete = function complete() {
         var hiddenEvent = $.Event(Event.HIDDEN, {
-          relatedTarget: _this15._element
+          relatedTarget: _this20._element
         });
 
         var shownEvent = $.Event(Event.SHOWN, {
@@ -2527,7 +2555,7 @@ var Tab = function ($) {
         });
 
         $(previous).trigger(hiddenEvent);
-        $(_this15._element).trigger(shownEvent);
+        $(_this20._element).trigger(shownEvent);
       };
 
       if (target) {
@@ -2545,10 +2573,14 @@ var Tab = function ($) {
     // private
 
     Tab.prototype._activate = function _activate(element, container, callback) {
+      var _this21 = this;
+
       var active = $(container).find(Selector.ACTIVE_CHILD)[0];
       var isTransitioning = callback && Util.supportsTransitionEnd() && (active && $(active).hasClass(ClassName.FADE) || Boolean($(container).find(Selector.FADE_CHILD)[0]));
 
-      var complete = $.proxy(this._transitionComplete, this, element, active, isTransitioning, callback);
+      var complete = function complete() {
+        return _this21._transitionComplete(element, active, isTransitioning, callback);
+      };
 
       if (active && isTransitioning) {
         $(active).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
@@ -2724,7 +2756,7 @@ var Tooltip = function ($) {
   };
 
   var HoverState = {
-    IN: 'in',
+    ACTIVE: 'active',
     OUT: 'out'
   };
 
@@ -2743,7 +2775,7 @@ var Tooltip = function ($) {
 
   var ClassName = {
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -2823,7 +2855,7 @@ var Tooltip = function ($) {
         }
       } else {
 
-        if ($(this.getTipElement()).hasClass(ClassName.IN)) {
+        if ($(this.getTipElement()).hasClass(ClassName.ACTIVE)) {
           this._leave(null, this);
           return;
         }
@@ -2857,8 +2889,11 @@ var Tooltip = function ($) {
     };
 
     Tooltip.prototype.show = function show() {
-      var _this16 = this;
+      var _this22 = this;
 
+      if ($(this.element).css('display') === 'none') {
+        throw new Error('Please use show on visible elements');
+      }
       var showEvent = $.Event(this.constructor.Event.SHOW);
 
       if (this.isWithContent() && this._isEnabled) {
@@ -2904,16 +2939,16 @@ var Tooltip = function ($) {
         Util.reflow(tip);
         this._tether.position();
 
-        $(tip).addClass(ClassName.IN);
+        $(tip).addClass(ClassName.ACTIVE);
 
         var complete = function complete() {
-          var prevHoverState = _this16._hoverState;
-          _this16._hoverState = null;
+          var prevHoverState = _this22._hoverState;
+          _this22._hoverState = null;
 
-          $(_this16.element).trigger(_this16.constructor.Event.SHOWN);
+          $(_this22.element).trigger(_this22.constructor.Event.SHOWN);
 
           if (prevHoverState === HoverState.OUT) {
-            _this16._leave(null, _this16);
+            _this22._leave(null, _this22);
           }
         };
 
@@ -2927,18 +2962,18 @@ var Tooltip = function ($) {
     };
 
     Tooltip.prototype.hide = function hide(callback) {
-      var _this17 = this;
+      var _this23 = this;
 
       var tip = this.getTipElement();
       var hideEvent = $.Event(this.constructor.Event.HIDE);
       var complete = function complete() {
-        if (_this17._hoverState !== HoverState.IN && tip.parentNode) {
+        if (_this23._hoverState !== HoverState.ACTIVE && tip.parentNode) {
           tip.parentNode.removeChild(tip);
         }
 
-        _this17.element.removeAttribute('aria-describedby');
-        $(_this17.element).trigger(_this17.constructor.Event.HIDDEN);
-        _this17.cleanupTether();
+        _this23.element.removeAttribute('aria-describedby');
+        $(_this23.element).trigger(_this23.constructor.Event.HIDDEN);
+        _this23.cleanupTether();
 
         if (callback) {
           callback();
@@ -2951,7 +2986,7 @@ var Tooltip = function ($) {
         return;
       }
 
-      $(tip).removeClass(ClassName.IN);
+      $(tip).removeClass(ClassName.ACTIVE);
 
       if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
 
@@ -2978,7 +3013,7 @@ var Tooltip = function ($) {
 
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle());
 
-      $tip.removeClass(ClassName.FADE).removeClass(ClassName.IN);
+      $tip.removeClass(ClassName.FADE).removeClass(ClassName.ACTIVE);
 
       this.cleanupTether();
     };
@@ -3022,18 +3057,24 @@ var Tooltip = function ($) {
     };
 
     Tooltip.prototype._setListeners = function _setListeners() {
-      var _this18 = this;
+      var _this24 = this;
 
       var triggers = this.config.trigger.split(' ');
 
       triggers.forEach(function (trigger) {
         if (trigger === 'click') {
-          $(_this18.element).on(_this18.constructor.Event.CLICK, _this18.config.selector, $.proxy(_this18.toggle, _this18));
+          $(_this24.element).on(_this24.constructor.Event.CLICK, _this24.config.selector, function (event) {
+            return _this24.toggle(event);
+          });
         } else if (trigger !== Trigger.MANUAL) {
-          var eventIn = trigger === Trigger.HOVER ? _this18.constructor.Event.MOUSEENTER : _this18.constructor.Event.FOCUSIN;
-          var eventOut = trigger === Trigger.HOVER ? _this18.constructor.Event.MOUSELEAVE : _this18.constructor.Event.FOCUSOUT;
+          var eventIn = trigger === Trigger.HOVER ? _this24.constructor.Event.MOUSEENTER : _this24.constructor.Event.FOCUSIN;
+          var eventOut = trigger === Trigger.HOVER ? _this24.constructor.Event.MOUSELEAVE : _this24.constructor.Event.FOCUSOUT;
 
-          $(_this18.element).on(eventIn, _this18.config.selector, $.proxy(_this18._enter, _this18)).on(eventOut, _this18.config.selector, $.proxy(_this18._leave, _this18));
+          $(_this24.element).on(eventIn, _this24.config.selector, function (event) {
+            return _this24._enter(event);
+          }).on(eventOut, _this24.config.selector, function (event) {
+            return _this24._leave(event);
+          });
         }
       });
 
@@ -3069,14 +3110,14 @@ var Tooltip = function ($) {
         context._activeTrigger[event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER] = true;
       }
 
-      if ($(context.getTipElement()).hasClass(ClassName.IN) || context._hoverState === HoverState.IN) {
-        context._hoverState = HoverState.IN;
+      if ($(context.getTipElement()).hasClass(ClassName.ACTIVE) || context._hoverState === HoverState.ACTIVE) {
+        context._hoverState = HoverState.ACTIVE;
         return;
       }
 
       clearTimeout(context._timeout);
 
-      context._hoverState = HoverState.IN;
+      context._hoverState = HoverState.ACTIVE;
 
       if (!context.config.delay || !context.config.delay.show) {
         context.show();
@@ -3084,7 +3125,7 @@ var Tooltip = function ($) {
       }
 
       context._timeout = setTimeout(function () {
-        if (context._hoverState === HoverState.IN) {
+        if (context._hoverState === HoverState.ACTIVE) {
           context.show();
         }
       }, context.config.delay.show);
@@ -3278,7 +3319,7 @@ var Popover = function ($) {
 
   var ClassName = {
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -3331,7 +3372,7 @@ var Popover = function ($) {
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
 
-      $tip.removeClass(ClassName.FADE).removeClass(ClassName.IN);
+      $tip.removeClass(ClassName.FADE).removeClass(ClassName.ACTIVE);
 
       this.cleanupTether();
     };

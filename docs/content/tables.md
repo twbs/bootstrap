@@ -445,8 +445,8 @@ Use contextual classes to color table rows or individual cells.
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
     <colgroup>
-      <col class="col-xs-1">
-      <col class="col-xs-7">
+      <col class="col-1">
+      <col class="col-7">
     </colgroup>
     <thead>
       <tr>

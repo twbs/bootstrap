@@ -41,7 +41,7 @@ var Dropdown = function ($) {
   var ClassName = {
     BACKDROP: 'dropdown-backdrop',
     DISABLED: 'disabled',
-    OPEN: 'open'
+    ACTIVE: 'active'
   };
 
   var Selector = {
@@ -79,7 +79,7 @@ var Dropdown = function ($) {
       }
 
       var parent = Dropdown._getParentFromElement(this);
-      var isActive = $(parent).hasClass(ClassName.OPEN);
+      var isActive = $(parent).hasClass(ClassName.ACTIVE);
 
       Dropdown._clearMenus();
 
@@ -108,7 +108,7 @@ var Dropdown = function ($) {
       this.focus();
       this.setAttribute('aria-expanded', 'true');
 
-      $(parent).toggleClass(ClassName.OPEN);
+      $(parent).toggleClass(ClassName.ACTIVE);
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget));
 
       return false;
@@ -161,7 +161,7 @@ var Dropdown = function ($) {
         var parent = Dropdown._getParentFromElement(toggles[i]);
         var relatedTarget = { relatedTarget: toggles[i] };
 
-        if (!$(parent).hasClass(ClassName.OPEN)) {
+        if (!$(parent).hasClass(ClassName.ACTIVE)) {
           continue;
         }
 
@@ -177,7 +177,7 @@ var Dropdown = function ($) {
 
         toggles[i].setAttribute('aria-expanded', 'false');
 
-        $(parent).removeClass(ClassName.OPEN).trigger($.Event(Event.HIDDEN, relatedTarget));
+        $(parent).removeClass(ClassName.ACTIVE).trigger($.Event(Event.HIDDEN, relatedTarget));
       }
     };
 
@@ -205,7 +205,7 @@ var Dropdown = function ($) {
       }
 
       var parent = Dropdown._getParentFromElement(this);
-      var isActive = $(parent).hasClass(ClassName.OPEN);
+      var isActive = $(parent).hasClass(ClassName.ACTIVE);
 
       if (!isActive && event.which !== ESCAPE_KEYCODE || isActive && event.which === ESCAPE_KEYCODE) {
 

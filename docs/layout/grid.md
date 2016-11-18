@@ -335,21 +335,21 @@ Don't want your columns to simply stack in smaller devices? Use the extra small 
 {% example html %}
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
-  <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 
 <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 <div class="row">
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 
 <!-- Columns are always 50% wide, on mobile and desktop -->
 <div class="row">
-  <div class="col-xs-6">.col-xs-6</div>
-  <div class="col-xs-6">.col-xs-6</div>
+  <div class="col-6">.col-6</div>
+  <div class="col-6">.col-6</div>
 </div>
 {% endexample %}
 </div>
@@ -361,15 +361,15 @@ Build on the previous example by creating even more dynamic and powerful layouts
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 <div class="row">
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
   <div class="clearfix hidden-sm-up"></div>
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
 </div>
 {% endexample %}
 </div>
@@ -381,9 +381,9 @@ If more than 12 columns are placed within a single row, each group of extra colu
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-xs-9">.col-xs-9</div>
-  <div class="col-xs-4">.col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
-  <div class="col-xs-6">.col-xs-6<br>Subsequent columns continue along the new line.</div>
+  <div class="col-9">.col-9</div>
+  <div class="col-4">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+  <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
 </div>
 {% endexample %}
 </div>
@@ -395,14 +395,14 @@ With the four tiers of grids available you're bound to run into issues where, at
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
 
   <!-- Add the extra clearfix for only the required viewport -->
   <div class="clearfix hidden-sm-up"></div>
 
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
 </div>
 {% endexample %}
 </div>
@@ -453,11 +453,11 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
   <div class="col-sm-9">
     Level 1: .col-sm-9
     <div class="row">
-      <div class="col-xs-8 col-sm-6">
-        Level 2: .col-xs-8 .col-sm-6
+      <div class="col-8 col-sm-6">
+        Level 2: .col-8 .col-sm-6
       </div>
-      <div class="col-xs-4 col-sm-6">
-        Level 2: .col-xs-4 .col-sm-6
+      <div class="col-4 col-sm-6">
+        Level 2: .col-4 .col-sm-6
       </div>
     </div>
   </div>

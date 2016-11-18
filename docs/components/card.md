@@ -226,12 +226,12 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
 
 ## Header nav
 
-Use Bootstrap's nav pills or tabs within a card header. Be sure to always include a `.pull-*-*` utility class for proper alignment.
+Use Bootstrap's nav pills or tabs within a card header. Be sure to always include a `.float-*-*` utility class for proper alignment.
 
 {% example html %}
 <div class="card text-xs-center">
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs float-xs-left">
+    <ul class="nav nav-tabs card-header-tabs float-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -254,7 +254,7 @@ Use Bootstrap's nav pills or tabs within a card header. Be sure to always includ
 {% example html %}
 <div class="card text-xs-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills float-xs-left">
+    <ul class="nav nav-pills card-header-pills float-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -513,7 +513,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
 
 Only applies to small devices and above.
 
-**Heads up!** This is **not available in IE9 and below** as they have no support for the [`column-*` CSS properties](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_multi-column_layouts).
+**Heads up!** This is **not available in IE9 and below** as they have no support for the [`column-*` CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts).
 
 {% example html %}
 <div class="card-columns">

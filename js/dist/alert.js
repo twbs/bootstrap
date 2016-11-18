@@ -38,7 +38,7 @@ var Alert = function ($) {
   var ClassName = {
     ALERT: 'alert',
     FADE: 'fade',
-    IN: 'in'
+    ACTIVE: 'active'
   };
 
   /**
@@ -101,14 +101,18 @@ var Alert = function ($) {
     };
 
     Alert.prototype._removeElement = function _removeElement(element) {
-      $(element).removeClass(ClassName.IN);
+      var _this = this;
+
+      $(element).removeClass(ClassName.ACTIVE);
 
       if (!Util.supportsTransitionEnd() || !$(element).hasClass(ClassName.FADE)) {
         this._destroyElement(element);
         return;
       }
 
-      $(element).one(Util.TRANSITION_END, $.proxy(this._destroyElement, this, element)).emulateTransitionEnd(TRANSITION_DURATION);
+      $(element).one(Util.TRANSITION_END, function (event) {
+        return _this._destroyElement(element, event);
+      }).emulateTransitionEnd(TRANSITION_DURATION);
     };
 
     Alert.prototype._destroyElement = function _destroyElement(element) {

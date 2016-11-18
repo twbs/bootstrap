@@ -161,7 +161,7 @@ const Carousel = (($) => {
 
       if (this._config.interval && !this._isPaused) {
         this._interval = setInterval(
-          $.proxy(document.visibilityState ? this.nextWhenVisible : this.next, this), this._config.interval
+          (document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval
         )
       }
     }
@@ -219,14 +219,14 @@ const Carousel = (($) => {
     _addEventListeners() {
       if (this._config.keyboard) {
         $(this._element)
-          .on(Event.KEYDOWN, $.proxy(this._keydown, this))
+          .on(Event.KEYDOWN, (event) => this._keydown(event))
       }
 
       if (this._config.pause === 'hover' &&
         !('ontouchstart' in document.documentElement)) {
         $(this._element)
-          .on(Event.MOUSEENTER, $.proxy(this.pause, this))
-          .on(Event.MOUSELEAVE, $.proxy(this.cycle, this))
+          .on(Event.MOUSEENTER, (event) => this.pause(event))
+          .on(Event.MOUSELEAVE, (event) => this.cycle(event))
       }
     }
 

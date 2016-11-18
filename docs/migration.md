@@ -64,7 +64,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Typography
 
 - Moved all `.text-` utilities to the `_utilities.scss` file.
-- Dropped `.page-header` as, aside from the border, all it's styles can be applied via utilities.
+- Dropped `.page-header` as, aside from the border, all its styles can be applied via utilities.
 - `.dl-horizontal` has been dropped. Instead, use `.row` on `<dl>` and use grid column classes (or mixins) on its `<dt>` and `<dd>` children.
 - Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
 - `.list-inline` now requires that its children list items have the new `.list-inline-item` class applied to them.
@@ -105,6 +105,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Button group
 
 - Dropped the `.btn-group-xs` class entirely given removal of `.btn-xs`.
+- Removed justified button groups as they were only available for `<a>` elements and not `<button>` elements.
 
 ### Dropdowns
 
@@ -184,7 +185,8 @@ Dropped entirely for the new card component.
 
 ### Utilities
 
-- Added `.float-{xs,sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-xs-left` and `.float-xs-right`.
+- Made display utilities responsive (e.g., `.d-none` and `d-{sm,md,lg,xl}-none`).
+- Added `.float-{sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-left` and `.float-right`.
 - Added responsive variations to our text alignment classes `.text-{xs,sm,md,lg,xl}-{left,center,right}` and removed the redundant `.text-{left,center,right}` utilities as they are the same as the `xs` variation.
 - Dropped `.center-block` for the new `.mx-auto` class.
 

@@ -44,7 +44,7 @@ var Tab = function ($) {
     A: 'a',
     LI: 'li',
     DROPDOWN: '.dropdown',
-    UL: 'ul:not(.dropdown-menu)',
+    LIST: 'ul:not(.dropdown-menu), ol:not(.dropdown-menu)',
     FADE_CHILD: '> .nav-item .fade, > .fade',
     ACTIVE: '.active',
     ACTIVE_CHILD: '> .nav-item > .active, > .active',
@@ -79,11 +79,11 @@ var Tab = function ($) {
 
       var target = void 0;
       var previous = void 0;
-      var ulElement = $(this._element).closest(Selector.UL)[0];
+      var listElement = $(this._element).closest(Selector.LIST)[0];
       var selector = Util.getSelectorFromElement(this._element);
 
-      if (ulElement) {
-        previous = $.makeArray($(ulElement).find(Selector.ACTIVE));
+      if (listElement) {
+        previous = $.makeArray($(listElement).find(Selector.ACTIVE));
         previous = previous[previous.length - 1];
       }
 
@@ -109,7 +109,7 @@ var Tab = function ($) {
         target = $(selector)[0];
       }
 
-      this._activate(this._element, ulElement);
+      this._activate(this._element, listElement);
 
       var complete = function complete() {
         var hiddenEvent = $.Event(Event.HIDDEN, {
@@ -139,10 +139,14 @@ var Tab = function ($) {
     // private
 
     Tab.prototype._activate = function _activate(element, container, callback) {
+      var _this2 = this;
+
       var active = $(container).find(Selector.ACTIVE_CHILD)[0];
       var isTransitioning = callback && Util.supportsTransitionEnd() && (active && $(active).hasClass(ClassName.FADE) || Boolean($(container).find(Selector.FADE_CHILD)[0]));
 
-      var complete = $.proxy(this._transitionComplete, this, element, active, isTransitioning, callback);
+      var complete = function complete() {
+        return _this2._transitionComplete(element, active, isTransitioning, callback);
+      };
 
       if (active && isTransitioning) {
         $(active).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);

@@ -903,7 +903,8 @@
 .bd-example > .bg-info:not(.navbar),
 .bd-example > .bg-warning:not(.navbar),
 .bd-example > .bg-danger:not(.navbar),
-.bd-example > .bg-inverse:not(.navbar) {
+.bd-example > .bg-inverse:not(.navbar),
+.bd-example > .bg-faded:not(.navbar) {
   padding: .5rem;
   margin-top: .5rem;
   margin-bottom: .5rem;

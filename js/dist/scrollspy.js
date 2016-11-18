@@ -77,6 +77,8 @@ var ScrollSpy = function ($) {
 
   var ScrollSpy = function () {
     function ScrollSpy(element, config) {
+      var _this = this;
+
       _classCallCheck(this, ScrollSpy);
 
       this._element = element;
@@ -88,7 +90,9 @@ var ScrollSpy = function ($) {
       this._activeTarget = null;
       this._scrollHeight = 0;
 
-      $(this._scrollElement).on(Event.SCROLL, $.proxy(this._process, this));
+      $(this._scrollElement).on(Event.SCROLL, function (event) {
+        return _this._process(event);
+      });
 
       this.refresh();
       this._process();
@@ -99,7 +103,7 @@ var ScrollSpy = function ($) {
     // public
 
     ScrollSpy.prototype.refresh = function refresh() {
-      var _this = this;
+      var _this2 = this;
 
       var autoMethod = this._scrollElement !== this._scrollElement.window ? OffsetMethod.POSITION : OffsetMethod.OFFSET;
 
@@ -132,8 +136,8 @@ var ScrollSpy = function ($) {
       }).sort(function (a, b) {
         return a[0] - b[0];
       }).forEach(function (item) {
-        _this._offsets.push(item[0]);
-        _this._targets.push(item[1]);
+        _this2._offsets.push(item[0]);
+        _this2._targets.push(item[1]);
       });
     };
 

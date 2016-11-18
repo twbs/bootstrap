@@ -47,7 +47,7 @@ Use `.container-fluid` for a full width container, spanning the entire width of 
 
 ## Responsive breakpoints
 
-Since Bootstrap is developed to be mobile first, we use a handful of [media queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries) to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.
+Since Bootstrap is developed to be mobile first, we use a handful of [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.
 
 Bootstrap primarily uses the following media query ranges—or breakpoints—in our source Sass files for our layout, grid system, and components.
 
@@ -155,3 +155,23 @@ The Sass mixin for the above example look like that shown beneath:
 {% highlight scss %}
 @include media-breakpoint-between(md, lg) { ... }
 {% endhighlight %}
+
+## Z-index
+
+Several Bootstrap components utilize `z-index`, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Bootstrap that's been designed to properly layer navigation, tooltips and popovers, modals, and more.
+
+We don't encourage customization of these values; should you change one, you likely need to change them all.
+
+```scss
+$zindex-dropdown-backdrop:  990 !default;
+$zindex-navbar:            1000 !default;
+$zindex-dropdown:          1000 !default;
+$zindex-navbar-fixed:      1030 !default;
+$zindex-navbar-sticky:     1030 !default;
+$zindex-modal-backdrop:    1040 !default;
+$zindex-modal:             1050 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;
+```
+
+Background elements—like the backdrops that allow click-dismissing—tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content.
