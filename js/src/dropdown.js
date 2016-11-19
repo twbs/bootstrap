@@ -35,7 +35,8 @@ const Dropdown = (($) => {
     SHOWN            : `shown${EVENT_KEY}`,
     CLICK            : `click${EVENT_KEY}`,
     CLICK_DATA_API   : `click${EVENT_KEY}${DATA_API_KEY}`,
-    KEYDOWN_DATA_API : `keydown${EVENT_KEY}${DATA_API_KEY}`
+    KEYDOWN_DATA_API : `keydown${EVENT_KEY}${DATA_API_KEY}`,
+    KEYUP_DATA_API   : `keyup${EVENT_KEY}${DATA_API_KEY}`
   }
 
   const ClassName = {
@@ -261,6 +262,16 @@ const Dropdown = (($) => {
       items[index].focus()
     }
 
+    static _dataApiKeyupHandler(event) {
+      if (!/(38|40|27|32)/.test(event.which) ||
+         /input|textarea/i.test(event.target.tagName)) {
+        return
+      }
+
+      event.preventDefault()
+      event.stopPropagation()
+    }
+
   }
 
 
@@ -274,6 +285,7 @@ const Dropdown = (($) => {
     .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
     .on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU,    Dropdown._dataApiKeydownHandler)
     .on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
+    .on(Event.KEYUP_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeyupHandler)
     .on(Event.CLICK_DATA_API, Dropdown._clearMenus)
     .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
     .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
