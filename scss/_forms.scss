@@ -67,7 +67,7 @@
 select.form-control {
   &:not([size]):not([multiple]) {
     $select-border-width: ($border-width * 2);
-    height: calc(#{$input-height} - #{$select-border-width});
+    height: calc(#{$input-height} + #{$select-border-width});
   }
 
   &:focus::-ms-value {
