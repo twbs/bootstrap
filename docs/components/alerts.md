@@ -111,7 +111,7 @@ Note that closing an alert will remove it from the DOM.
 | Method | Description |
 | --- | --- |
 | `$().alert()` | Makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.) |
-| `$().alert('close')` | Closes an alert by removing it from the DOM. If the `.fade` and `.in` classes are present on the element, the alert will fade out before it is removed. |
+| `$().alert('close')` | Closes an alert by removing it from the DOM. If the `.fade` and `.active` classes are present on the element, the alert will fade out before it is removed. |
 
 {% highlight js %}$(".alert").alert('close'){% endhighlight %}
 
