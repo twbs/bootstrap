@@ -108,13 +108,13 @@ const ScrollSpy = (($) => {
     // public
 
     refresh() {
-      let autoMethod = this._scrollElement !== this._scrollElement.window ?
+      const autoMethod = this._scrollElement !== this._scrollElement.window ?
         OffsetMethod.POSITION : OffsetMethod.OFFSET
 
-      let offsetMethod = this._config.method === 'auto' ?
+      const offsetMethod = this._config.method === 'auto' ?
         autoMethod : this._config.method
 
-      let offsetBase = offsetMethod === OffsetMethod.POSITION ?
+      const offsetBase = offsetMethod === OffsetMethod.POSITION ?
         this._getScrollTop() : 0
 
       this._offsets = []
@@ -122,12 +122,12 @@ const ScrollSpy = (($) => {
 
       this._scrollHeight = this._getScrollHeight()
 
-      let targets = $.makeArray($(this._selector))
+      const targets = $.makeArray($(this._selector))
 
       targets
         .map((element) => {
           let target
-          let targetSelector = Util.getSelectorFromElement(element)
+          const targetSelector = Util.getSelectorFromElement(element)
 
           if (targetSelector) {
             target = $(targetSelector)[0]
@@ -197,9 +197,9 @@ const ScrollSpy = (($) => {
     }
 
     _process() {
-      let scrollTop    = this._getScrollTop() + this._config.offset
-      let scrollHeight = this._getScrollHeight()
-      let maxScroll    = this._config.offset
+      const scrollTop    = this._getScrollTop() + this._config.offset
+      const scrollHeight = this._getScrollHeight()
+      const maxScroll    = this._config.offset
         + scrollHeight
         - this._scrollElement.offsetHeight
 
@@ -208,7 +208,7 @@ const ScrollSpy = (($) => {
       }
 
       if (scrollTop >= maxScroll) {
-        let target = this._targets[this._targets.length - 1]
+        const target = this._targets[this._targets.length - 1]
 
         if (this._activeTarget !== target) {
           this._activate(target)
@@ -222,7 +222,7 @@ const ScrollSpy = (($) => {
       }
 
       for (let i = this._offsets.length; i--;) {
-        let isActiveTarget = this._activeTarget !== this._targets[i]
+        const isActiveTarget = this._activeTarget !== this._targets[i]
             && scrollTop >= this._offsets[i]
             && (this._offsets[i + 1] === undefined ||
                 scrollTop < this._offsets[i + 1])
@@ -244,7 +244,7 @@ const ScrollSpy = (($) => {
                `${selector}[href="${target}"]`
       })
 
-      let $link = $(queries.join(','))
+      const $link = $(queries.join(','))
 
       if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
         $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
@@ -269,8 +269,8 @@ const ScrollSpy = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data    = $(this).data(DATA_KEY)
-        let _config = typeof config === 'object' && config || null
+        let data      = $(this).data(DATA_KEY)
+        const _config = typeof config === 'object' && config
 
         if (!data) {
           data = new ScrollSpy(this, _config)
@@ -297,10 +297,10 @@ const ScrollSpy = (($) => {
    */
 
   $(window).on(Event.LOAD_DATA_API, () => {
-    let scrollSpys = $.makeArray($(Selector.DATA_SPY))
+    const scrollSpys = $.makeArray($(Selector.DATA_SPY))
 
     for (let i = scrollSpys.length; i--;) {
-      let $spy = $(scrollSpys[i])
+      const $spy = $(scrollSpys[i])
       ScrollSpy._jQueryInterface.call($spy, $spy.data())
     }
   })

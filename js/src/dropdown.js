@@ -85,8 +85,8 @@ const Dropdown = (($) => {
         return false
       }
 
-      let parent   = Dropdown._getParentFromElement(this)
-      let isActive = $(parent).hasClass(ClassName.ACTIVE)
+      const parent   = Dropdown._getParentFromElement(this)
+      const isActive = $(parent).hasClass(ClassName.ACTIVE)
 
       Dropdown._clearMenus()
 
@@ -95,17 +95,19 @@ const Dropdown = (($) => {
       }
 
       if ('ontouchstart' in document.documentElement &&
-         (!$(parent).closest(Selector.NAVBAR_NAV).length)) {
+         !$(parent).closest(Selector.NAVBAR_NAV).length) {
 
         // if mobile we use a backdrop because click events don't delegate
-        let dropdown       = document.createElement('div')
+        const dropdown     = document.createElement('div')
         dropdown.className = ClassName.BACKDROP
         $(dropdown).insertBefore(this)
         $(dropdown).on('click', Dropdown._clearMenus)
       }
 
-      let relatedTarget = { relatedTarget : this }
-      let showEvent     = $.Event(Event.SHOW, relatedTarget)
+      const relatedTarget = {
+        relatedTarget : this
+      }
+      const showEvent     = $.Event(Event.SHOW, relatedTarget)
 
       $(parent).trigger(showEvent)
 
@@ -114,7 +116,7 @@ const Dropdown = (($) => {
       }
 
       this.focus()
-      this.setAttribute('aria-expanded', 'true')
+      this.setAttribute('aria-expanded', true)
 
       $(parent).toggleClass(ClassName.ACTIVE)
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
@@ -140,10 +142,11 @@ const Dropdown = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data  = $(this).data(DATA_KEY)
+        let data = $(this).data(DATA_KEY)
 
         if (!data) {
-          $(this).data(DATA_KEY, (data = new Dropdown(this)))
+          data = new Dropdown(this)
+          $(this).data(DATA_KEY, data)
         }
 
         if (typeof config === 'string') {
@@ -160,28 +163,30 @@ const Dropdown = (($) => {
         return
       }
 
-      let backdrop = $(Selector.BACKDROP)[0]
+      const backdrop = $(Selector.BACKDROP)[0]
       if (backdrop) {
         backdrop.parentNode.removeChild(backdrop)
       }
 
-      let toggles = $.makeArray($(Selector.DATA_TOGGLE))
+      const toggles = $.makeArray($(Selector.DATA_TOGGLE))
 
       for (let i = 0; i < toggles.length; i++) {
-        let parent        = Dropdown._getParentFromElement(toggles[i])
-        let relatedTarget = { relatedTarget : toggles[i] }
+        const parent        = Dropdown._getParentFromElement(toggles[i])
+        const relatedTarget = {
+          relatedTarget : toggles[i]
+        }
 
         if (!$(parent).hasClass(ClassName.ACTIVE)) {
           continue
         }
 
         if (event && event.type === 'click' &&
-           (/input|textarea/i.test(event.target.tagName)) &&
-           ($.contains(parent, event.target))) {
+           /input|textarea/i.test(event.target.tagName) &&
+           $.contains(parent, event.target)) {
           continue
         }
 
-        let hideEvent = $.Event(Event.HIDE, relatedTarget)
+        const hideEvent = $.Event(Event.HIDE, relatedTarget)
         $(parent).trigger(hideEvent)
         if (hideEvent.isDefaultPrevented()) {
           continue
@@ -197,7 +202,7 @@ const Dropdown = (($) => {
 
     static _getParentFromElement(element) {
       let parent
-      let selector = Util.getSelectorFromElement(element)
+      const selector = Util.getSelectorFromElement(element)
 
       if (selector) {
         parent = $(selector)[0]
@@ -219,14 +224,14 @@ const Dropdown = (($) => {
         return
       }
 
-      let parent   = Dropdown._getParentFromElement(this)
-      let isActive = $(parent).hasClass(ClassName.ACTIVE)
+      const parent   = Dropdown._getParentFromElement(this)
+      const isActive = $(parent).hasClass(ClassName.ACTIVE)
 
-      if ((!isActive && event.which !== ESCAPE_KEYCODE) ||
-           (isActive && event.which === ESCAPE_KEYCODE)) {
+      if (!isActive && event.which !== ESCAPE_KEYCODE ||
+           isActive && event.which === ESCAPE_KEYCODE) {
 
         if (event.which === ESCAPE_KEYCODE) {
-          let toggle = $(parent).find(Selector.DATA_TOGGLE)[0]
+          const toggle = $(parent).find(Selector.DATA_TOGGLE)[0]
           $(toggle).trigger('focus')
         }
 

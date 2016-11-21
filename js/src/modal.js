@@ -110,7 +110,7 @@ const Modal = (($) => {
     }
 
     show(relatedTarget) {
-      let showEvent = $.Event(Event.SHOW, {
+      const showEvent = $.Event(Event.SHOW, {
         relatedTarget
       })
 
@@ -152,7 +152,7 @@ const Modal = (($) => {
         event.preventDefault()
       }
 
-      let hideEvent = $.Event(Event.HIDE)
+      const hideEvent = $.Event(Event.HIDE)
 
       $(this._element).trigger(hideEvent)
 
@@ -173,7 +173,7 @@ const Modal = (($) => {
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
       if (Util.supportsTransitionEnd() &&
-         ($(this._element).hasClass(ClassName.FADE))) {
+         $(this._element).hasClass(ClassName.FADE)) {
 
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
@@ -212,11 +212,11 @@ const Modal = (($) => {
     }
 
     _showElement(relatedTarget) {
-      let transition = Util.supportsTransitionEnd() &&
+      const transition = Util.supportsTransitionEnd() &&
         $(this._element).hasClass(ClassName.FADE)
 
       if (!this._element.parentNode ||
-         (this._element.parentNode.nodeType !== Node.ELEMENT_NODE)) {
+         this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
         // don't move modals dom position
         document.body.appendChild(this._element)
       }
@@ -235,11 +235,11 @@ const Modal = (($) => {
         this._enforceFocus()
       }
 
-      let shownEvent = $.Event(Event.SHOWN, {
+      const shownEvent = $.Event(Event.SHOWN, {
         relatedTarget
       })
 
-      let transitionComplete = () => {
+      const transitionComplete = () => {
         if (this._config.focus) {
           this._element.focus()
         }
@@ -261,7 +261,7 @@ const Modal = (($) => {
         .on(Event.FOCUSIN, (event) => {
           if (document !== event.target &&
               this._element !== event.target &&
-              (!$(this._element).has(event.target).length)) {
+              !$(this._element).has(event.target).length) {
             this._element.focus()
           }
         })
@@ -290,7 +290,7 @@ const Modal = (($) => {
 
     _hideModal() {
       this._element.style.display = 'none'
-      this._element.setAttribute('aria-hidden', 'true')
+      this._element.setAttribute('aria-hidden', true)
       this._showBackdrop(() => {
         $(document.body).removeClass(ClassName.OPEN)
         this._resetAdjustments()
@@ -307,11 +307,11 @@ const Modal = (($) => {
     }
 
     _showBackdrop(callback) {
-      let animate = $(this._element).hasClass(ClassName.FADE) ?
+      const animate = $(this._element).hasClass(ClassName.FADE) ?
         ClassName.FADE : ''
 
       if (this._isShown && this._config.backdrop) {
-        let doAnimate = Util.supportsTransitionEnd() && animate
+        const doAnimate = Util.supportsTransitionEnd() && animate
 
         this._backdrop = document.createElement('div')
         this._backdrop.className = ClassName.BACKDROP
@@ -359,7 +359,7 @@ const Modal = (($) => {
       } else if (!this._isShown && this._backdrop) {
         $(this._backdrop).removeClass(ClassName.ACTIVE)
 
-        let callbackRemove = () => {
+        const callbackRemove = () => {
           this._removeBackdrop()
           if (callback) {
             callback()
@@ -367,7 +367,7 @@ const Modal = (($) => {
         }
 
         if (Util.supportsTransitionEnd() &&
-           ($(this._element).hasClass(ClassName.FADE))) {
+           $(this._element).hasClass(ClassName.FADE)) {
           $(this._backdrop)
             .one(Util.TRANSITION_END, callbackRemove)
             .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
@@ -391,7 +391,7 @@ const Modal = (($) => {
     }
 
     _adjustDialog() {
-      let isModalOverflowing =
+      const isModalOverflowing =
         this._element.scrollHeight > document.documentElement.clientHeight
 
       if (!this._isBodyOverflowing && isModalOverflowing) {
@@ -414,7 +414,7 @@ const Modal = (($) => {
     }
 
     _setScrollbar() {
-      let bodyPadding = parseInt(
+      const bodyPadding = parseInt(
         $(Selector.FIXED_CONTENT).css('padding-right') || 0,
         10
       )
@@ -432,10 +432,10 @@ const Modal = (($) => {
     }
 
     _getScrollbarWidth() { // thx d.walsh
-      let scrollDiv = document.createElement('div')
+      const scrollDiv = document.createElement('div')
       scrollDiv.className = ClassName.SCROLLBAR_MEASURER
       document.body.appendChild(scrollDiv)
-      let scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+      const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
       document.body.removeChild(scrollDiv)
       return scrollbarWidth
     }
@@ -445,8 +445,8 @@ const Modal = (($) => {
 
     static _jQueryInterface(config, relatedTarget) {
       return this.each(function () {
-        let data    = $(this).data(DATA_KEY)
-        let _config = $.extend(
+        let data      = $(this).data(DATA_KEY)
+        const _config = $.extend(
           {},
           Modal.Default,
           $(this).data(),
@@ -480,20 +480,20 @@ const Modal = (($) => {
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     let target
-    let selector = Util.getSelectorFromElement(this)
+    const selector = Util.getSelectorFromElement(this)
 
     if (selector) {
       target = $(selector)[0]
     }
 
-    let config = $(target).data(DATA_KEY) ?
+    const config = $(target).data(DATA_KEY) ?
       'toggle' : $.extend({}, $(target).data(), $(this).data())
 
     if (this.tagName === 'A') {
       event.preventDefault()
     }
 
-    let $target = $(target).one(Event.SHOW, (showEvent) => {
+    const $target = $(target).one(Event.SHOW, (showEvent) => {
       if (showEvent.isDefaultPrevented()) {
         // only register focus restorer if modal will actually get shown
         return
