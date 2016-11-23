@@ -48,12 +48,12 @@
   padding: $pagination-padding-y $pagination-padding-x;
   margin-left: -1px;
   color: $pagination-color;
-  text-decoration: none;
   background-color: $pagination-bg;
   border: $pagination-border-width solid $pagination-border-color;
 
   @include hover-focus {
     color: $pagination-hover-color;
+    text-decoration: none;
     background-color: $pagination-hover-bg;
     border-color: $pagination-hover-border;
   }
