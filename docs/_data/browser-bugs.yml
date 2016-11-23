@@ -280,6 +280,16 @@
 
 -
   browser: >
+    Chrome (Linux)
+  summary: >
+    `<select>`'s pop-up menu is blank on some systems.
+  upstream_bug: >
+    Chromium#510079
+  origin: >
+    Bootstrap#21120
+
+-
+  browser: >
     Safari
   summary: >
     `rem` units in media queries should be calculated using `font-size: initial`, not the root element's `font-size`
