@@ -113,8 +113,9 @@ const Dropdown = (($) => {
         return false
       }
 
-      this.focus()
-      this.setAttribute('aria-expanded', 'true')
+      $(this)
+        .trigger('focus')
+        .attr('aria-expanded', 'true')
 
       $(parent).toggleClass(ClassName.ACTIVE)
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
@@ -167,7 +168,7 @@ const Dropdown = (($) => {
 
       let toggles = $.makeArray($(Selector.DATA_TOGGLE))
 
-      for (let i = 0; i < toggles.length; i++) {
+      for (let i = 0, l = toggles.length; i < l; i++) {
         let parent        = Dropdown._getParentFromElement(toggles[i])
         let relatedTarget = { relatedTarget : toggles[i] }
 
