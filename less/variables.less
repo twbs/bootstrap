@@ -116,6 +116,8 @@
 //** Bold text color on `<body>`.
 @text-bold-color:       @brand-navy-minus-10;
 
+@text-secondary-color:  @brand-grey-plus-20;
+
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
@@ -416,7 +418,7 @@
 @control-label-font-size:        @font-size-small;
 
 //** Color for textual input addons
-@input-group-color:              @brand-smoke-minus-10; //@control-label-color;
+@input-group-color:              @brand-smoke-minus-10;
 @input-group-addon-font-size:    @input-font-size;
 
 //** Background color for textual input addons
@@ -456,10 +458,10 @@
 @dropdown-link-active-bg:        @component-active-bg;
 
 //** Disabled dropdown menu item background color.
-@dropdown-link-disabled-color:   @gray-light;
+@dropdown-link-disabled-color:   @link-disabled-color;
 
 //** Text color for headers within dropdown menus.
-@dropdown-header-color:          @gray-light;
+@dropdown-header-color:          @control-label-color;
 
 //** Deprecated `@dropdown-caret-color` as of v3.1.0
 @dropdown-caret-color:           #000;
@@ -659,8 +661,8 @@
 @nav-link-padding:                          8px 24px;
 @nav-link-hover-bg:                         @brand-smoke-plus-20;
 
-@nav-disabled-link-color:                   @gray-light;
-@nav-disabled-link-hover-color:             @gray-light;
+@nav-disabled-link-color:                   @link-disabled-color;
+@nav-disabled-link-hover-color:             @link-disabled-color;
 
 //== Tabs
 @nav-tabs-border-color:                     @brand-smoke;
@@ -688,7 +690,7 @@
 @pagination-active-color:              @brand-navy;
 @pagination-active-bg:                 @brand-smoke-plus-20;
 
-@pagination-disabled-color:            @gray-light;
+@pagination-disabled-color:            @link-disabled-color;
 @pagination-disabled-bg:               #fff;
 @pagination-disabled-border:           @brand-smoke;
 
@@ -942,7 +944,7 @@
 @list-group-active-text-color:  #FFF;  // lighten(@list-group-active-bg, 40%);
 
 //** Text color of disabled list items
-@list-group-disabled-color:      @brand-smoke-minus-10;
+@list-group-disabled-color:      @link-disabled-color;
 //** Background color of disabled list items
 @list-group-disabled-bg:         #FFF;
 //** Text color for content within disabled list items

@@ -29,12 +29,6 @@
   margin-bottom: 8px;
 }
 
-.one-click .tw-select-selected .tw-select-secondary,
-.one-click .tw-select-selected .tw-select-note,
-.one-click .tw-select-selected .circle {
-  display: none;
-}
-
 .table > tbody > .active > td {
   border-top-width: 16px;
   border-bottom-width: 16px;
@@ -63,7 +57,7 @@
 }
 @media (max-width: 430px) {
   .navbar-default .profile-name .text-ellipsis {
-    width: 100px;
+    width: 120px;
   }
 }
 @media (max-width: 767px) {
@@ -74,19 +68,4 @@
 }
 .container-fluid {
   max-width: 1440px;
-}
-.sequence dd,
-.sequence dt {
-  line-height: 32px;
-}
-.sequence dd {
-  margin-bottom: 8px;
-}
-.sequence > li:last-child dd {
-  margin-bottom: 0;
-}
-@media (min-width: 576px) {
-  .sequence dd {
-    margin-bottom: 0;
-  }
 }

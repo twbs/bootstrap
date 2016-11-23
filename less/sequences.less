@@ -287,6 +287,11 @@
     color: @link-color;
     border-color: @link-color;
   }
+  .sequence a:hover &,
+  .sequence a:focus & {
+    color: @link-hover-color;
+    border-color: @link-hover-color;
+  }
   .sequence li:first-child & {
     top: (((@sequence-step-height / 2) - (@sequence-icon-size / 2)) + @sequence-margin);
   }
@@ -302,11 +307,15 @@
     > .sequence-table-td,
     > .sequence-table-th {
       display: table-cell;
-      padding: 4px 6px;
+      padding: 4px 12px 4px 0;
+
+      &:last-child {
+        padding-right: 0;
+      }
     }
     > .sequence-table-th {
-      font-weight: @font-weight-semi-bold;
       color: @brand-navy-minus-10;
+      white-space: nowrap;
     }
     &:before {
       position: initial;

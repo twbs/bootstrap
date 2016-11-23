@@ -4,7 +4,7 @@
 
 // Base class
 .panel {
-  margin-bottom: (@padding-container-collapse-xs + 8px);
+  margin-bottom: @padding-container-collapse-xs;
   background-color: @panel-bg;
   border: 0;
   margin-left: (-@padding-container-collapse-xs);
@@ -46,7 +46,7 @@
 
 @media (min-width: @screen-sm-min) {
   .panel {
-    margin-bottom: (@panel-body-padding-collapse + 8px);;
+    margin-bottom: @panel-body-padding-collapse;
   }
   .panel-heading {
     padding: (@panel-body-padding / 2) 0;
@@ -61,7 +61,7 @@
 }
 @media (min-width: @screen-lg-min) {
   .panel {
-    margin-bottom: (@panel-body-padding + 8px);
+    margin-bottom: @panel-body-padding;
     border-radius: @panel-border-radius;
     margin-left: 0;
     margin-right: 0;

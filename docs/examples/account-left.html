@@ -87,7 +87,7 @@
 <body ng-app="ExampleApp" class="bg-default">
 <div class="column-layout" ng-controller="PageController as ctrl">
 <div class="column-layout-left bg-primary" ng-class="{open: ctrl.open}">
-	<div class="column-layout-left-top">
+	<div class="column-layout-top">
 		<!--<div class="p-a-3">
 			<a class="btn btn-success btn-block" href="topup.html">Create</a>
 		</div>-->
@@ -114,7 +114,7 @@
 		</ul>
 	</div>
 
-	<div class="column-layout-left-bottom">
+	<div class="column-layout-bottom">
 		<a class="btn btn-success btn-block" href="flow.html">Create</a>
 	</div>
 </div>
@@ -122,7 +122,7 @@
 	<div class="m-t-2">
 		<simple-nav on-burger-click="ctrl.burgerToggle()"></simple-nav>
 	</div>
-	<div class="p-t-3 p-b-2">
+	<div class="p-t-2 p-b-1 hidden-xs">
 		<div class="container-fluid">
 			<profile-block></profile-block>
 		</div>
@@ -143,7 +143,7 @@
 							<span class="input-group-addon"><i class="icon icon-search m-r-0"></i></span>
 							<input type="text" class="form-control" placeholder="Search..." />
 							 <span class="input-group-btn">
-								 <button class="btn btn-sm btn-primary">Go</button>
+								 <button class="btn btn-sm btn-addon">Go</button>
 							</span>
 						</div>
 					</div>

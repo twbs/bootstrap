@@ -13,6 +13,8 @@
 @circle-md-icon-size: 32px;
 @circle-lg-icon-size: 40px;
 
+@circle-inverse-bg: @brand-smoke-plus-20;
+
 
 .circle {
     color: @brand-navy-minus-10;
@@ -84,22 +86,34 @@
 a.circle,
 a.circle .icon,
 a.circle .glyphicon, {
-    text-decoration: none;
+  text-decoration: none;
 }
 a:hover .circle,
 a.circle:hover {
-    border-color: @brand-info;
-    color: @brand-info;
-    text-decoration: none;
+  border-color: @brand-info;
+  color: @brand-info;
+  text-decoration: none;
 }
 a:hover .circle.active,
 a.circle.active:hover {
-    text-decoration: none;
-    color: #FFF;
+  text-decoration: none;
+  color: #FFF;
+}
+
+/* TODO this could be tidier, ideally change the general link behaviour */
+.dropdown-menu li a:hover .circle {
+  background-color: #FFF;
+  border-color: #FFF;
+  color: @dropdown-link-color;
+}
+.dropdown-menu .disabled a:hover .circle {
+  background-color: @circle-inverse-bg;
+  border-color: transparent;
+  color: @link-disabled-color;
 }
 
 .circle-inverse {
-  background-color: @brand-smoke-plus-20;
+  background-color: @circle-inverse-bg;
 }
 
 .circle-responsive {

@@ -323,10 +323,11 @@
         max-height: 592px;	// (12 * 48) + 16 = 592
     }
 }
+
 .btn-group {
   .small {
-    font-size: @input-group-addon-font-size;
-    color: @input-group-color;
+    font-size: @font-size-base;
+    color: @text-secondary-color;
     line-height: (@line-height-computed - 1px);
 
     &.text-ellipsis {
@@ -334,8 +335,9 @@
     }
   }
 }
+
 .btn-group .secondary {
-  font-size: @control-label-font-size;
-  color: @control-label-color;
+  font-size: @font-size-small;
+  color: @text-secondary-color;
   line-height: 24px;
 }

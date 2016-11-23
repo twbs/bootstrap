@@ -1,18 +1,30 @@
+@column-width: 264px;
+
 .column-layout {
-  position: absolute;;
+  position: absolute;
   width: 100%;
   top: 0;
 }
-.column-layout-left {
+.column-layout-left,
+.column-layout-right {
   position: fixed;
-  width: 264px;
+  width: @column-width;
   vertical-align: top;
-  transform: translateX(-264px);
   height: 100%;
   z-index: 3;
   transition: transform ease 0.5s;
+  top: 0;
 }
-.column-layout-left.open {
+.column-layout-left {
+  transform: translateX(-@column-width);
+}
+.column-layout-right {
+  right: 0;
+  transform: translateX(@column-width);
+  z-index: 10000;
+}
+.column-layout-left.open,
+.column-layout-right.open {
   transform: translateX(0);
 }
 .column-layout-main {
@@ -31,22 +43,23 @@
     padding-left: 20px;
   }
 }
-.column-layout-left-top {
+.column-layout-top {
   position: fixed;
   top: 0;
-  width: 264px;
+  width: @column-width;
 }
-.column-layout-left-bottom {
+.column-layout-bottom {
   position: fixed;
   bottom: 0;
-  width: 264px;
+  width: @column-width;
   padding: 24px;
 }
 @media (min-width: @screen-lg-min) {
   .column-layout {
     display: table;
   }
-  .column-layout-left {
+  .column-layout-left,
+  .column-layout-right {
     position: relative;
     display: table-cell;
     transform: none;
@@ -77,7 +90,7 @@
 }
 .column-layout-cover .close {
   position: absolute;
-  left: 284px;
+  left: (@column-width + 20px);
   top: 31px;
   opacity: 0;
   transition: opacity 0.35s ease;

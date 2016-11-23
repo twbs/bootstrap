@@ -250,17 +250,6 @@
   @media (max-width: @grid-float-breakpoint-max) {
     border-bottom: 1px solid @brand-smoke-plus-20;
 
-    .open .dropdown-menu {
-        position: relative;
-        width: 100%;
-        box-shadow: none;
-        padding: 0;
-        float: none;
-
-        border-top: 1px solid @brand-smoke-plus-20;
-        border-bottom: 1px solid @brand-smoke-plus-20;
-    }
-
     // Dropdowns get custom display when collapsed
     .navbar-collapse-flatten {
         .dropdown-toggle {
@@ -711,6 +700,17 @@
         background-color: @brand-white;
         top: (@navbar-height - 2px);
         padding: 8px;
+
+        .open .dropdown-menu {
+          position: relative;
+          width: 100%;
+          box-shadow: none;
+          padding: 0;
+          float: none;
+
+          border-top: 1px solid @brand-smoke-plus-20;
+          border-bottom: 1px solid @brand-smoke-plus-20;
+        }
 
         &.navbar-collapse-with-panel {
             top: 0;

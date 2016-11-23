@@ -373,9 +373,15 @@ input[type="button"] {
       display: block;
       width: 100%;
   }
+  &.btn-lg.btn-addon,
+  &.btn-lg.btn-input-inverse {
+    font-weight: @font-weight-semi-bold;
+  }
 }
 
-.btn-input-inverse {
+/* TODO input-inverse is deprecated, remove after styleguide-components updated */
+.btn-input-inverse,
+.btn-addon  {
   .button-variant(
       #FFF;
       #FFF;
@@ -387,11 +393,6 @@ input[type="button"] {
       @brand-navy-minus-20;
       #FFF
   );
-
-  .input-group-lg &,
-  .btn-lg & {
-    font-weight: @font-weight-semi-bold;
-  }
 }
 
 /* TODO Remove bootstrap-select rules after checking tw-currency-select */
