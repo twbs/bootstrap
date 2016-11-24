@@ -422,6 +422,9 @@ const Tooltip = (($) => {
     }
 
     _setListeners() {
+      if (window.Tether === undefined) {
+        throw new Error('Bootstrap tooltips require Tether http://github.hubspot.com/tether/')
+      }
       let triggers = this.config.trigger.split(' ')
 
       triggers.forEach((trigger) => {
