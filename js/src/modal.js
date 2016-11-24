@@ -102,7 +102,8 @@ const Modal = (($) => {
       return Default
     }
 
-
+    static NumOpenModals = 0;
+	
     // public
 
     toggle(relatedTarget) {
@@ -110,6 +111,8 @@ const Modal = (($) => {
     }
 
     show(relatedTarget) {
+	    NumOpenModals++	
+	
       let showEvent = $.Event(Event.SHOW, {
         relatedTarget
       })
@@ -291,19 +294,26 @@ const Modal = (($) => {
     _hideModal() {
       this._element.style.display = 'none'
       this._element.setAttribute('aria-hidden', 'true')
-      this._showBackdrop(() => {
-        $(document.body).removeClass(ClassName.OPEN)
-        this._resetAdjustments()
-        this._resetScrollbar()
-        $(this._element).trigger(Event.HIDDEN)
-      })
+	    if(NumOpenModals === 1){
+        this._showBackdrop(() => {
+          $(document.body).removeClass(ClassName.OPEN)
+          this._resetAdjustments()
+          this._resetScrollbar()
+          $(this._element).trigger(Event.HIDDEN)
+        })
+	    } else {
+		    this._removeBackdrop()
+	    }
+	    NumOpenModals--
     }
 
     _removeBackdrop() {
-      if (this._backdrop) {
-        $(this._backdrop).remove()
-        this._backdrop = null
-      }
+	    if(NumOpenModals < 1){
+        if (this._backdrop) {
+          $(this._backdrop).remove()
+          this._backdrop = null
+        }
+	    }
     }
 
     _showBackdrop(callback) {
@@ -313,14 +323,18 @@ const Modal = (($) => {
       if (this._isShown && this._config.backdrop) {
         let doAnimate = Util.supportsTransitionEnd() && animate
 
-        this._backdrop = document.createElement('div')
-        this._backdrop.className = ClassName.BACKDROP
+        if(NumOpenModals === 1){
+		  this._backdrop = document.createElement('div')
+          this._backdrop.className = ClassName.BACKDROP
+		  
+		  if (animate) {
+            $(this._backdrop).addClass(animate)
+          }
 
-        if (animate) {
-          $(this._backdrop).addClass(animate)
-        }
-
-        $(this._backdrop).appendTo(document.body)
+          $(this._backdrop).appendTo(document.body)
+		} else {
+		  this._backdrop = $(document).find(ClassName.BACKDROP)
+		}
 
         $(this._element).on(Event.CLICK_DISMISS, (event) => {
           if (this._ignoreBackdropClick) {
