@@ -85,7 +85,9 @@ var Util = function ($) {
 
     for (var name in TransitionEndEvent) {
       if (el.style[name] !== undefined) {
-        return { end: TransitionEndEvent[name] };
+        return {
+          end: TransitionEndEvent[name]
+        };
       }
     }
 
@@ -132,9 +134,8 @@ var Util = function ($) {
 
     getUID: function getUID(prefix) {
       do {
-        /* eslint-disable no-bitwise */
+        // eslint-disable-next-line no-bitwise
         prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
-        /* eslint-enable no-bitwise */
       } while (document.getElementById(prefix));
       return prefix;
     },
@@ -162,13 +163,7 @@ var Util = function ($) {
         if (configTypes.hasOwnProperty(property)) {
           var expectedTypes = configTypes[property];
           var value = config[property];
-          var valueType = void 0;
-
-          if (value && isElement(value)) {
-            valueType = 'element';
-          } else {
-            valueType = toType(value);
-          }
+          var valueType = value && isElement(value) ? 'element' : toType(value);
 
           if (!new RegExp(expectedTypes).test(valueType)) {
             throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
@@ -1427,7 +1422,9 @@ var Dropdown = function ($) {
         $(dropdown).on('click', Dropdown._clearMenus);
       }
 
-      var relatedTarget = { relatedTarget: this };
+      var relatedTarget = {
+        relatedTarget: this
+      };
       var showEvent = $.Event(Event.SHOW, relatedTarget);
 
       $(parent).trigger(showEvent);
@@ -1437,7 +1434,7 @@ var Dropdown = function ($) {
       }
 
       this.focus();
-      this.setAttribute('aria-expanded', 'true');
+      this.setAttribute('aria-expanded', true);
 
       $(parent).toggleClass(ClassName.ACTIVE);
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget));
@@ -1464,7 +1461,8 @@ var Dropdown = function ($) {
         var data = $(this).data(DATA_KEY);
 
         if (!data) {
-          $(this).data(DATA_KEY, data = new Dropdown(this));
+          data = new Dropdown(this);
+          $(this).data(DATA_KEY, data);
         }
 
         if (typeof config === 'string') {
@@ -1490,7 +1488,9 @@ var Dropdown = function ($) {
 
       for (var i = 0; i < toggles.length; i++) {
         var parent = Dropdown._getParentFromElement(toggles[i]);
-        var relatedTarget = { relatedTarget: toggles[i] };
+        var relatedTarget = {
+          relatedTarget: toggles[i]
+        };
 
         if (!$(parent).hasClass(ClassName.ACTIVE)) {
           continue;
@@ -1898,7 +1898,7 @@ var Modal = function ($) {
       var _this15 = this;
 
       this._element.style.display = 'none';
-      this._element.setAttribute('aria-hidden', 'true');
+      this._element.setAttribute('aria-hidden', true);
       this._showBackdrop(function () {
         $(document.body).removeClass(ClassName.OPEN);
         _this15._resetAdjustments();
@@ -2374,7 +2374,7 @@ var ScrollSpy = function ($) {
     ScrollSpy._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
-        var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config || null;
+        var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config;
 
         if (!data) {
           data = new ScrollSpy(this, _config);
@@ -2597,7 +2597,7 @@ var Tab = function ($) {
       if (active) {
         $(active).removeClass(ClassName.ACTIVE);
 
-        var dropdownChild = $(active).find(Selector.DROPDOWN_ACTIVE_CHILD)[0];
+        var dropdownChild = $(active.parentNode).find(Selector.DROPDOWN_ACTIVE_CHILD)[0];
 
         if (dropdownChild) {
           $(dropdownChild).removeClass(ClassName.ACTIVE);
@@ -2639,7 +2639,7 @@ var Tab = function ($) {
         var data = $this.data(DATA_KEY);
 
         if (!data) {
-          data = data = new Tab(this);
+          data = new Tab(this);
           $this.data(DATA_KEY, data);
         }
 
@@ -3209,7 +3209,7 @@ var Tooltip = function ($) {
     Tooltip._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
-        var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' ? config : null;
+        var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config;
 
         if (!data && /dispose|hide/.test(config)) {
           return;

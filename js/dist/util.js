@@ -55,7 +55,9 @@ var Util = function ($) {
 
     for (var name in TransitionEndEvent) {
       if (el.style[name] !== undefined) {
-        return { end: TransitionEndEvent[name] };
+        return {
+          end: TransitionEndEvent[name]
+        };
       }
     }
 
@@ -102,9 +104,8 @@ var Util = function ($) {
 
     getUID: function getUID(prefix) {
       do {
-        /* eslint-disable no-bitwise */
+        // eslint-disable-next-line no-bitwise
         prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
-        /* eslint-enable no-bitwise */
       } while (document.getElementById(prefix));
       return prefix;
     },
@@ -132,13 +133,7 @@ var Util = function ($) {
         if (configTypes.hasOwnProperty(property)) {
           var expectedTypes = configTypes[property];
           var value = config[property];
-          var valueType = void 0;
-
-          if (value && isElement(value)) {
-            valueType = 'element';
-          } else {
-            valueType = toType(value);
-          }
+          var valueType = value && isElement(value) ? 'element' : toType(value);
 
           if (!new RegExp(expectedTypes).test(valueType)) {
             throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));

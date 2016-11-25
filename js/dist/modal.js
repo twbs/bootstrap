@@ -288,7 +288,7 @@ var Modal = function ($) {
       var _this7 = this;
 
       this._element.style.display = 'none';
-      this._element.setAttribute('aria-hidden', 'true');
+      this._element.setAttribute('aria-hidden', true);
       this._showBackdrop(function () {
         $(document.body).removeClass(ClassName.OPEN);
         _this7._resetAdjustments();

@@ -96,7 +96,9 @@ var Dropdown = function ($) {
         $(dropdown).on('click', Dropdown._clearMenus);
       }
 
-      var relatedTarget = { relatedTarget: this };
+      var relatedTarget = {
+        relatedTarget: this
+      };
       var showEvent = $.Event(Event.SHOW, relatedTarget);
 
       $(parent).trigger(showEvent);
@@ -106,7 +108,7 @@ var Dropdown = function ($) {
       }
 
       this.focus();
-      this.setAttribute('aria-expanded', 'true');
+      this.setAttribute('aria-expanded', true);
 
       $(parent).toggleClass(ClassName.ACTIVE);
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget));
@@ -133,7 +135,8 @@ var Dropdown = function ($) {
         var data = $(this).data(DATA_KEY);
 
         if (!data) {
-          $(this).data(DATA_KEY, data = new Dropdown(this));
+          data = new Dropdown(this);
+          $(this).data(DATA_KEY, data);
         }
 
         if (typeof config === 'string') {
@@ -159,7 +162,9 @@ var Dropdown = function ($) {
 
       for (var i = 0; i < toggles.length; i++) {
         var parent = Dropdown._getParentFromElement(toggles[i]);
-        var relatedTarget = { relatedTarget: toggles[i] };
+        var relatedTarget = {
+          relatedTarget: toggles[i]
+        };
 
         if (!$(parent).hasClass(ClassName.ACTIVE)) {
           continue;

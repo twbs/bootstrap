@@ -163,7 +163,7 @@ var Tab = function ($) {
       if (active) {
         $(active).removeClass(ClassName.ACTIVE);
 
-        var dropdownChild = $(active).find(Selector.DROPDOWN_ACTIVE_CHILD)[0];
+        var dropdownChild = $(active.parentNode).find(Selector.DROPDOWN_ACTIVE_CHILD)[0];
 
         if (dropdownChild) {
           $(dropdownChild).removeClass(ClassName.ACTIVE);
@@ -205,7 +205,7 @@ var Tab = function ($) {
         var data = $this.data(DATA_KEY);
 
         if (!data) {
-          data = data = new Tab(this);
+          data = new Tab(this);
           $this.data(DATA_KEY, data);
         }
 

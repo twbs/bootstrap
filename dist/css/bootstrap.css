@@ -5831,7 +5831,7 @@ button.close {
   .carousel-inner > .carousel-item {
     -webkit-transition: -webkit-transform .6s ease-in-out;
     transition: -webkit-transform .6s ease-in-out;
-    -o-transition: transform .6s ease-in-out, -o-transform .6s ease-in-out;
+    -o-transition: -o-transform .6s ease-in-out;
     transition: transform .6s ease-in-out;
     transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out, -o-transform .6s ease-in-out;
     -webkit-backface-visibility: hidden;
