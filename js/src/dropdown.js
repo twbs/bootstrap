@@ -140,10 +140,11 @@ const Dropdown = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data  = $(this).data(DATA_KEY)
+        let data = $(this).data(DATA_KEY)
 
         if (!data) {
-          $(this).data(DATA_KEY, (data = new Dropdown(this)))
+          data = new Dropdown(this)
+          $(this).data(DATA_KEY, data)
         }
 
         if (typeof config === 'string') {
