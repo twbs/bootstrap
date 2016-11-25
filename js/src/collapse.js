@@ -134,7 +134,7 @@ const Collapse = (($) => {
         }
       }
 
-      let startEvent = $.Event(Event.SHOW)
+      const startEvent = $.Event(Event.SHOW)
       $(this._element).trigger(startEvent)
       if (startEvent.isDefaultPrevented()) {
         return
@@ -147,7 +147,7 @@ const Collapse = (($) => {
         }
       }
 
-      let dimension = this._getDimension()
+      const dimension = this._getDimension()
 
       $(this._element)
         .removeClass(ClassName.COLLAPSE)
@@ -164,7 +164,7 @@ const Collapse = (($) => {
 
       this.setTransitioning(true)
 
-      let complete = () => {
+      const complete = () => {
         $(this._element)
           .removeClass(ClassName.COLLAPSING)
           .addClass(ClassName.COLLAPSE)
@@ -182,8 +182,8 @@ const Collapse = (($) => {
         return
       }
 
-      let capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
-      let scrollSize           = `scroll${capitalizedDimension}`
+      const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
+      const scrollSize           = `scroll${capitalizedDimension}`
 
       $(this._element)
         .one(Util.TRANSITION_END, complete)
@@ -198,14 +198,14 @@ const Collapse = (($) => {
         return
       }
 
-      let startEvent = $.Event(Event.HIDE)
+      const startEvent = $.Event(Event.HIDE)
       $(this._element).trigger(startEvent)
       if (startEvent.isDefaultPrevented()) {
         return
       }
 
-      let dimension       = this._getDimension()
-      let offsetDimension = dimension === Dimension.WIDTH ?
+      const dimension       = this._getDimension()
+      const offsetDimension = dimension === Dimension.WIDTH ?
         'offsetWidth' : 'offsetHeight'
 
       this._element.style[dimension] = `${this._element[offsetDimension]}px`
@@ -227,7 +227,7 @@ const Collapse = (($) => {
 
       this.setTransitioning(true)
 
-      let complete = () => {
+      const complete = () => {
         this.setTransitioning(false)
         $(this._element)
           .removeClass(ClassName.COLLAPSING)
@@ -272,13 +272,13 @@ const Collapse = (($) => {
     }
 
     _getDimension() {
-      let hasWidth = $(this._element).hasClass(Dimension.WIDTH)
+      const hasWidth = $(this._element).hasClass(Dimension.WIDTH)
       return hasWidth ? Dimension.WIDTH : Dimension.HEIGHT
     }
 
     _getParent() {
-      let parent   = $(this._config.parent)[0]
-      let selector =
+      const parent   = $(this._config.parent)[0]
+      const selector =
         `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
       $(parent).find(selector).each((i, element) => {
@@ -293,7 +293,7 @@ const Collapse = (($) => {
 
     _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
-        let isOpen = $(element).hasClass(ClassName.ACTIVE)
+        const isOpen = $(element).hasClass(ClassName.ACTIVE)
         element.setAttribute('aria-expanded', isOpen)
 
         if (triggerArray.length) {
@@ -308,15 +308,15 @@ const Collapse = (($) => {
     // static
 
     static _getTargetFromElement(element) {
-      let selector = Util.getSelectorFromElement(element)
+      const selector = Util.getSelectorFromElement(element)
       return selector ? $(selector)[0] : null
     }
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let $this   = $(this)
-        let data    = $this.data(DATA_KEY)
-        let _config = $.extend(
+        const $this   = $(this)
+        let data      = $this.data(DATA_KEY)
+        const _config = $.extend(
           {},
           Default,
           $this.data(),
@@ -353,9 +353,9 @@ const Collapse = (($) => {
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault()
 
-    let target = Collapse._getTargetFromElement(this)
-    let data   = $(target).data(DATA_KEY)
-    let config = data ? 'toggle' : $(this).data()
+    const target = Collapse._getTargetFromElement(this)
+    const data   = $(target).data(DATA_KEY)
+    const config = data ? 'toggle' : $(this).data()
 
     Collapse._jQueryInterface.call($(target), config)
   })

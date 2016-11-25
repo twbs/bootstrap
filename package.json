@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "change-version": "node grunt/change-version.js",
-    "eslint": "eslint --config js/.eslintrc.json js/src",
+    "eslint": "eslint --ignore-path .eslintignore js",
     "jscs": "jscs --config=js/.jscsrc js/src js/tests/unit docs/assets/js/src grunt Gruntfile.js docs/assets/js/ie-emulation-modes-warning.js docs/assets/js/ie10-viewport-bug-workaround.js",
     "htmlhint": "htmlhint --config docs/.htmlhintrc _gh_pages/",
     "postcss": "postcss --config grunt/postcss.js --replace dist/css/*.css",

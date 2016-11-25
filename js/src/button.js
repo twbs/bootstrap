@@ -66,12 +66,12 @@ const Button = (($) => {
 
     toggle() {
       let triggerChangeEvent = true
-      let rootElement        = $(this._element).closest(
+      const rootElement      = $(this._element).closest(
         Selector.DATA_TOGGLE
       )[0]
 
       if (rootElement) {
-        let input = $(this._element).find(Selector.INPUT)[0]
+        const input = $(this._element).find(Selector.INPUT)[0]
 
         if (input) {
           if (input.type === 'radio') {
@@ -80,7 +80,7 @@ const Button = (($) => {
               triggerChangeEvent = false
 
             } else {
-              let activeElement = $(rootElement).find(Selector.ACTIVE)[0]
+              const activeElement = $(rootElement).find(Selector.ACTIVE)[0]
 
               if (activeElement) {
                 $(activeElement).removeClass(ClassName.ACTIVE)
@@ -151,7 +151,7 @@ const Button = (($) => {
       Button._jQueryInterface.call($(button), 'toggle')
     })
     .on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
-      let button = $(event.target).closest(Selector.BUTTON)[0]
+      const button = $(event.target).closest(Selector.BUTTON)[0]
       $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type))
     })
 

@@ -1,5 +1,5 @@
 $(function () {
-  'use strict';
+  'use strict'
 
   QUnit.module('scrollspy plugin')
 
@@ -231,8 +231,8 @@ $(function () {
       .appendTo('#qunit-fixture')
       .bootstrapScrollspy({ offset: 0, target: '#navigation' })
 
-    !function testActiveElements() {
-      if (++times > 3) return done()
+    function testActiveElements() {
+      if (++times > 3) { return done() }
 
       $content.one('scroll', function () {
         assert.ok($('#a-1').hasClass('active'), 'nav item for outer element has "active" class')
@@ -241,7 +241,9 @@ $(function () {
       })
 
       $content.scrollTop($content.scrollTop() + 10)
-    }()
+    }
+
+    testActiveElements()
   })
 
   QUnit.test('should clear selection if above the first section', function (assert) {
@@ -399,8 +401,8 @@ $(function () {
       $navbar.appendTo('#qunit-fixture')
       $content.appendTo('#qunit-fixture')
 
-      if (type === 'js') $content.bootstrapScrollspy({ target: '.navbar', offset: 0, method: 'position' })
-      else if (type === 'data') $(window).trigger('load')
+      if (type === 'js') { $content.bootstrapScrollspy({ target: '.navbar', offset: 0, method: 'position' }) }
+      else if (type === 'data') { $(window).trigger('load') }
 
       var $target = $('#div-' + type + 'm-2')
       var scrollspy = $content.data('bs.scrollspy')

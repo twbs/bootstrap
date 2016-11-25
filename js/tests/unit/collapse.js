@@ -1,5 +1,5 @@
 $(function () {
-  'use strict';
+  'use strict'
 
   QUnit.module('collapse plugin')
 
@@ -56,14 +56,14 @@ $(function () {
     assert.expect(2)
     var html = [
       '<div class="panel-group" id="accordion1">',
-        '<div class="panel">',
-          '<div id="collapse1" class="collapse"/>',
-        '</div>',
+      '<div class="panel">',
+      '<div id="collapse1" class="collapse"/>',
+      '</div>',
       '</div>',
       '<div class="panel-group" id="accordion2">',
-        '<div class="panel">',
-          '<div id="collapse2" class="collapse active"/>',
-        '</div>',
+      '<div class="panel">',
+      '<div id="collapse2" class="collapse active"/>',
+      '</div>',
       '</div>'
     ].join('')
     $(html).appendTo('#qunit-fixture')

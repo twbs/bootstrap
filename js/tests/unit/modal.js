@@ -1,5 +1,5 @@
 $(function () {
-  'use strict';
+  'use strict'
 
   QUnit.module('modal plugin')
 
@@ -374,7 +374,7 @@ $(function () {
         var paddingRight = parseInt($(document.body).css('padding-right'), 10)
         assert.strictEqual(isNaN(paddingRight), false)
         assert.strictEqual(paddingRight !== 0, true)
-        $(document.body).css('padding-right', ''); // Because test case "should ignore other inline styles when trying to restore body padding after closing" fail if not
+        $(document.body).css('padding-right', '') // Because test case "should ignore other inline styles when trying to restore body padding after closing" fail if not
         done()
       })
       .bootstrapModal('show')
