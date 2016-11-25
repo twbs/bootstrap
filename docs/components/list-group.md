@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: List group
+description: Learn about Bootstrap's list group component for rendering series of related content.
 group: components
 ---
 
@@ -24,26 +25,46 @@ The most basic list group is simply an unordered list with list items, and the p
 </ul>
 {% endexample %}
 
-## Tags
+## Badge
 
-Add tags to any list group item to show unread counts, activity, etc.
+Add badges to any list group item to show unread counts, activity, etc.
 
 {% example html %}
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="tag tag-default tag-pill pull-xs-right">14</span>
+    <span class="badge badge-default badge-pill float-right">14</span>
     Cras justo odio
   </li>
   <li class="list-group-item">
-    <span class="tag tag-default tag-pill pull-xs-right">2</span>
+    <span class="badge badge-default badge-pill float-right">2</span>
     Dapibus ac facilisis in
   </li>
   <li class="list-group-item">
-    <span class="tag tag-default tag-pill pull-xs-right">1</span>
+    <span class="badge badge-default badge-pill float-right">1</span>
     Morbi leo risus
   </li>
 </ul>
 {% endexample %}
+
+When in flexbox mode, you'll need to rearrange the contents of your list group items. To replicate the right-aligned badges as shown above, use the following example's code. Note the [`flex-items-xs-between` utility class]({{ site.baseurl }}/layout/flexbox-grid/#horizontal-alignment), the badge's placement, and the lack of a float utility on the badges.
+
+{% highlight html %}
+<ul class="list-group">
+  <li class="list-group-item flex-items-xs-between">
+    Cras justo odio
+    <span class="badge badge-default badge-pill">14</span>
+  </li>
+  <li class="list-group-item flex-items-xs-between">
+    Dapibus ac facilisis in
+    <span class="badge badge-default badge-pill">2</span>
+  </li>
+  <li class="list-group-item flex-items-xs-between">
+    Morbi leo risus
+    <span class="badge badge-default badge-pill">1</span>
+  </li>
+</ul>
+{% endhighlight %}
+
 
 ## Disabled items
 

@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): collapse.js
+ * Bootstrap (v4.0.0-alpha.5): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Collapse = (($) => {
    */
 
   const NAME                = 'collapse'
-  const VERSION             = '4.0.0-alpha.2'
+  const VERSION             = '4.0.0-alpha.5'
   const DATA_KEY            = 'bs.collapse'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -44,7 +44,7 @@ const Collapse = (($) => {
   }
 
   const ClassName = {
-    IN         : 'in',
+    ACTIVE     : 'active',
     COLLAPSE   : 'collapse',
     COLLAPSING : 'collapsing',
     COLLAPSED  : 'collapsed'
@@ -56,7 +56,7 @@ const Collapse = (($) => {
   }
 
   const Selector = {
-    ACTIVES     : '.panel > .in, .panel > .collapsing',
+    ACTIVES     : '.card > .active, .card > .collapsing',
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
@@ -104,7 +104,7 @@ const Collapse = (($) => {
     // public
 
     toggle() {
-      if ($(this._element).hasClass(ClassName.IN)) {
+      if ($(this._element).hasClass(ClassName.ACTIVE)) {
         this.hide()
       } else {
         this.show()
@@ -113,7 +113,7 @@ const Collapse = (($) => {
 
     show() {
       if (this._isTransitioning ||
-        $(this._element).hasClass(ClassName.IN)) {
+        $(this._element).hasClass(ClassName.ACTIVE)) {
         return
       }
 
@@ -121,7 +121,7 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray($(Selector.ACTIVES))
+        actives = $.makeArray($(this._parent).find(Selector.ACTIVES))
         if (!actives.length) {
           actives = null
         }
@@ -168,7 +168,7 @@ const Collapse = (($) => {
         $(this._element)
           .removeClass(ClassName.COLLAPSING)
           .addClass(ClassName.COLLAPSE)
-          .addClass(ClassName.IN)
+          .addClass(ClassName.ACTIVE)
 
         this._element.style[dimension] = ''
 
@@ -194,7 +194,7 @@ const Collapse = (($) => {
 
     hide() {
       if (this._isTransitioning ||
-        !$(this._element).hasClass(ClassName.IN)) {
+        !$(this._element).hasClass(ClassName.ACTIVE)) {
         return
       }
 
@@ -215,7 +215,7 @@ const Collapse = (($) => {
       $(this._element)
         .addClass(ClassName.COLLAPSING)
         .removeClass(ClassName.COLLAPSE)
-        .removeClass(ClassName.IN)
+        .removeClass(ClassName.ACTIVE)
 
       this._element.setAttribute('aria-expanded', false)
 
@@ -235,7 +235,7 @@ const Collapse = (($) => {
           .trigger(Event.HIDDEN)
       }
 
-      this._element.style[dimension] = 0
+      this._element.style[dimension] = ''
 
       if (!Util.supportsTransitionEnd()) {
         complete()
@@ -293,7 +293,7 @@ const Collapse = (($) => {
 
     _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
-        let isOpen = $(element).hasClass(ClassName.IN)
+        let isOpen = $(element).hasClass(ClassName.ACTIVE)
         element.setAttribute('aria-expanded', isOpen)
 
         if (triggerArray.length) {

@@ -2,7 +2,7 @@
 
 // Embedded icons from Open Iconic.
 // Released under MIT and copyright 2014 Waybury.
-// http://useiconic.com/open
+// https://useiconic.com/open
 
 
 // Checkboxes and radios
@@ -11,7 +11,8 @@
 
 .custom-control {
   position: relative;
-  display: inline;
+  display: inline-block;
+  min-height: (1rem * $line-height-base);
   padding-left: $custom-control-gutter;
   cursor: pointer;
 
@@ -61,7 +62,7 @@
 
 .custom-control-indicator {
   position: absolute;
-  top: .0625rem;
+  top: (($line-height-base - $custom-control-indicator-size) / 2);
   left: 0;
   display: block;
   width: $custom-control-indicator-size;
@@ -117,13 +118,8 @@
 
 .custom-controls-stacked {
   .custom-control {
-    display: inline;
-
-    &::after {
-      display: block;
-      margin-bottom: $custom-control-spacer-y;
-      content: "";
-    }
+    float: left;
+    clear: left;
 
     + .custom-control {
       margin-left: 0;
@@ -142,6 +138,8 @@
 .custom-select {
   display: inline-block;
   max-width: 100%;
+  $select-border-width: ($border-width * 2);
+  height: calc(#{$input-height} - #{$select-border-width});
   padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
   padding-right: $custom-select-padding-x \9;
   color: $custom-select-color;
@@ -159,6 +157,22 @@
     border-color: $custom-select-focus-border-color;
     outline: none;
     @include box-shadow($custom-select-focus-box-shadow);
+
+    &::-ms-value {
+      // For visual consistency with other platforms/browsers,
+      // supress the default white text on blue background highlight given to
+      // the selected option text when the (still closed) <select> receives focus
+      // in IE and (under certain conditions) Edge.
+      // See https://github.com/twbs/bootstrap/issues/19398.
+      color: $input-color;
+      background-color: $input-bg;
+    }
+  }
+
+  &:disabled {
+    color: $custom-select-disabled-color;
+    cursor: $cursor-disabled;
+    background-color: $custom-select-disabled-bg;
   }
 
   // Hides the default caret in IE11
@@ -188,6 +202,7 @@
   display: inline-block;
   max-width: 100%;
   height: $custom-file-height;
+  margin-bottom: 0;
   cursor: pointer;
 }
 

@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Cards
+description: Bootstrap Cards provide a flexible and extensible content container with multiple variants and options.
 group: components
 ---
 
@@ -51,6 +52,8 @@ Cards support a wide variety of content, including images, text, list groups, li
 </div>
 {% endexample %}
 
+Lists can be added to a card by adding a list group.
+
 {% example html %}
 <div class="card">
   <ul class="list-group list-group-flush">
@@ -61,6 +64,8 @@ Cards support a wide variety of content, including images, text, list groups, li
 </div>
 {% endexample %}
 
+`.card-img-top` places an image to the top of the card. With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
+
 {% example html %}
 <div class="card">
   <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
@@ -70,6 +75,8 @@ Cards support a wide variety of content, including images, text, list groups, li
 </div>
 {% endexample %}
 
+Card titles are used by adding `.card-title` to a `<h*>` tag. In the same way, links are added and placed next to each other by adding `.card-link` to  a `<a>` tag.
+
 {% example html %}
 <div class="card card-block">
   <h4 class="card-title">Card title</h4>
@@ -78,6 +85,10 @@ Cards support a wide variety of content, including images, text, list groups, li
   <a href="#" class="card-link">Another link</a>
 </div>
 {% endexample %}
+
+Subtitles are used by adding a `.card-subtitle` to an `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
+
+The multiple content types can be easily combined to create the card you need. See below for an example.
 
 {% example html %}
 <div class="card">
@@ -131,7 +142,7 @@ Using custom widths:
 
 ## Text alignment
 
-You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.baseurl }}/components/utilities/#text-alignment).
+You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.baseurl }}/utilities/typography/#text-alignment).
 
 {% example html %}
 <div class="card card-block">
@@ -169,6 +180,8 @@ Add an optional header and/or footer within a card.
   </div>
 </div>
 {% endexample %}
+
+Card headers can be styled by adding `.card-header` to `<h*>` elements.
 
 {% example html %}
 <div class="card">
@@ -213,12 +226,12 @@ Add an optional header and/or footer within a card.
 
 ## Header nav
 
-Use Bootstrap's nav pills or tabs within a card header. Be sure to always include a `.pull-*-*` utility class for proper alignment.
+Use Bootstrap's nav pills or tabs within a card header. Be sure to always include a `.float-*-*` utility class for proper alignment.
 
 {% example html %}
 <div class="card text-xs-center">
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs pull-xs-left">
+    <ul class="nav nav-tabs card-header-tabs float-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -241,7 +254,7 @@ Use Bootstrap's nav pills or tabs within a card header. Be sure to always includ
 {% example html %}
 <div class="card text-xs-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills pull-xs-left">
+    <ul class="nav nav-pills card-header-pills float-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -422,7 +435,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
 
 ## Groups
 
-Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode]({{ site.baseurl }}/getting-started/flexbox) can switch that to use `display: flex;` and provide the same effect.
+Use card groups to render cards as a single, attached element with equal width and height columns. By default, card groups use `display: table;` and `table-layout: fixed;` to achieve their uniform sizing. However, enabling [flexbox mode]({{ site.baseurl }}/getting-started/flexbox/) can switch that to use `display: flex;` and provide the same effect.
 
 Only applies to small devices and above.
 
@@ -496,14 +509,16 @@ Only applies to small devices and above.
 
 ## Columns
 
-Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. Only applies to small devices and above.
+Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. Cards are ordered from top to bottom and left to right when wrapped in `.card-columns`.
 
-**Heads up!** This is **not available in IE9 and below** as they have no support for the [`column-*` CSS properties](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_multi-column_layouts).
+Only applies to small devices and above.
+
+**Heads up!** This is **not available in IE9 and below** as they have no support for the [`column-*` CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts).
 
 {% example html %}
 <div class="card-columns">
   <div class="card">
-    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
+    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title that wraps to a new line</h4>
       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -520,7 +535,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
     </blockquote>
   </div>
   <div class="card">
-    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
+    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -543,7 +558,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
   <div class="card">
-    <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
+    <img class="card-img img-fluid" data-src="holder.js/100px260/" alt="Card image">
   </div>
   <div class="card card-block text-xs-right">
     <blockquote class="card-blockquote">
@@ -562,3 +577,16 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
   </div>
 </div>
 {% endexample %}
+
+Card columns can also be extended and customized with some additional code. Shown below is an extension of the `.card-columns` class using the same CSS we use—CSS columns— to generate a set of responsive tiers for changing the number of columns.
+
+{% highlight scss %}
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
+{% endhighlight %}

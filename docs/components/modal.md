@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Modal
+description: Learn how to use Bootstrap's modals to add dialog prompts to your site.
 group: components
 ---
 
@@ -285,11 +286,11 @@ To take advantage of the Bootstrap grid system within a modal, just nest `.conta
             <div class="col-sm-9">
               Level 1: .col-sm-9
               <div class="row">
-                <div class="col-xs-8 col-sm-6">
-                  Level 2: .col-xs-8 .col-sm-6
+                <div class="col-8 col-sm-6">
+                  Level 2: .col-8 .col-sm-6
                 </div>
-                <div class="col-xs-4 col-sm-6">
-                  Level 2: .col-xs-4 .col-sm-6
+                <div class="col-4 col-sm-6">
+                  Level 2: .col-4 .col-sm-6
                 </div>
               </div>
             </div>
@@ -297,7 +298,7 @@ To take advantage of the Bootstrap grid system within a modal, just nest `.conta
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -412,6 +413,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
        <td>Closes the modal when escape key is pressed</td>
      </tr>
      <tr>
+       <td>focus</td>
+       <td>boolean</td>
+       <td>true</td>
+       <td>Puts the focus on the modal when initialized.</td>
+     </tr>
+     <tr>
        <td>show</td>
        <td>boolean</td>
        <td>true</td>
@@ -479,10 +486,6 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
      <tr>
        <td>hidden.bs.modal</td>
        <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-     </tr>
-     <tr>
-       <td>loaded.bs.modal</td>
-       <td>This event is fired when the modal has loaded content using the <code>remote</code> option.</td>
      </tr>
     </tbody>
   </table>

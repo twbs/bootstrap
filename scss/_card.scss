@@ -9,12 +9,13 @@
   background-color: $card-bg;
   // border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
-  // Doesn't use mixin so that cards always have a "border"
-  box-shadow: inset 0 0 0 $card-border-width $card-border-color;
+  border: $card-border-width solid $card-border-color;
 }
 
 .card-block {
-  @include clearfix;
+  @if (not $enable-flex) {
+    @include clearfix;
+  }
   padding: $card-spacer-x;
 }
 
@@ -49,20 +50,16 @@
   }
 }
 
-@if $enable-rounded {
-  .card {
-    > .list-group:first-child {
-      .list-group-item:first-child {
-        border-top-left-radius: $card-border-radius;
-        border-top-right-radius: $card-border-radius;
-      }
+.card {
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($card-border-radius);
     }
+  }
 
-    > .list-group:last-child {
-      .list-group-item:last-child {
-        border-bottom-right-radius: $card-border-radius;
-        border-bottom-left-radius: $card-border-radius;
-      }
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($card-border-radius);
     }
   }
 }
@@ -73,12 +70,13 @@
 //
 
 .card-header {
-  @include clearfix;
+  @if (not $enable-flex) {
+    @include clearfix;
+  }
   padding: $card-spacer-y $card-spacer-x;
+  margin-bottom: 0; // Removes the default margin-bottom of <hN>
   background-color: $card-cap-bg;
-  // border-bottom: $card-border-width solid $card-border-color;
-  // Doesn't use mixin so that cards always have a "border"
-  box-shadow: inset 0 0 0 $card-border-width $card-border-color;
+  border-bottom: $card-border-width solid $card-border-color;
 
   &:first-child {
     @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
@@ -86,12 +84,12 @@
 }
 
 .card-footer {
-  @include clearfix;
+  @if (not $enable-flex) {
+    @include clearfix;
+  }
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
-  // border-top: $card-border-width solid $card-border-color;
-  // Doesn't use mixin so that cards always have a "border"
-  box-shadow: inset 0 0 0 $card-border-width $card-border-color;
+  border-top: $card-border-width solid $card-border-color;
 
   &:last-child {
     @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
@@ -108,10 +106,6 @@
   margin-bottom: -$card-spacer-y;
   margin-left: -($card-spacer-x / 2);
   border-bottom: 0;
-
-  .nav-item {
-    margin-bottom: 0;
-  }
 }
 
 .card-header-pills {
@@ -181,7 +175,7 @@
 // Card image
 .card-img {
   // margin: -1.325rem;
-  @include border-radius(.25rem);
+  @include border-radius($card-border-radius-inner);
 }
 .card-img-overlay {
   position: absolute;
@@ -189,23 +183,28 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1.25rem;
+  padding: $card-img-overlay-padding;
 }
 
 
 
 // Card image caps
 .card-img-top {
-  @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+  @include border-top-radius($card-border-radius-inner);
 }
 .card-img-bottom {
-  @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+  @include border-bottom-radius($card-border-radius-inner);
 }
 
 
-//
 // Card set
 //
+// Heads up! We do some funky style resetting here for margins across our two
+// variations (one flex, one table). Individual cards have margin-bottom by
+// default, but they're ignored due to table styles. For a consistent design,
+// we've done the same to the flex variation.
+//
+// Those changes are noted by `// Margin balancing`.
 
 @if $enable-flex {
   @include media-breakpoint-up(sm) {
@@ -213,11 +212,13 @@
       display: flex;
       flex-flow: row wrap;
       margin-right: -$card-deck-margin;
+      margin-bottom: $card-spacer-y; // Margin balancing
       margin-left: -$card-deck-margin;
 
       .card {
         flex: 1 0 0;
         margin-right: $card-deck-margin;
+        margin-bottom: 0; // Margin balancing
         margin-left: $card-deck-margin;
       }
     }
@@ -227,12 +228,14 @@
     $space-between-cards: (2 * $card-deck-margin);
     .card-deck {
       display: table;
+      width: 100%;
+      margin-bottom: $card-spacer-y; // Margin balancing
       table-layout: fixed;
       border-spacing: $space-between-cards 0;
 
       .card {
         display: table-cell;
-        width: 1%;
+        margin-bottom: 0; // Margin balancing
         vertical-align: top;
       }
     }
@@ -318,7 +321,7 @@
     column-gap: $card-columns-sm-up-column-gap;
 
     .card {
-      display: inline-block;
+      display: inline-block; // Don't let them vertically span multiple columns
       width: 100%; // Don't let them exceed the column width
     }
   }

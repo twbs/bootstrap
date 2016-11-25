@@ -59,7 +59,7 @@ $(function () {
         + '</ul>'
     var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().trigger('click')
 
-    assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
+    assert.ok(!$dropdown.parent('.dropdown').hasClass('active'), '"active" class added on click')
   })
 
   QUnit.test('should set aria-expanded="true" on target when dropdown menu is shown', function (assert) {
@@ -128,10 +128,10 @@ $(function () {
         + '</ul>'
     var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().trigger('click')
 
-    assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
+    assert.ok(!$dropdown.parent('.dropdown').hasClass('active'), '"active" class added on click')
   })
 
-  QUnit.test('should add class open to menu if clicked', function (assert) {
+  QUnit.test('should add class active to menu if clicked', function (assert) {
     assert.expect(1)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
@@ -146,7 +146,7 @@ $(function () {
         + '</ul>'
     var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().trigger('click')
 
-    assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
+    assert.ok($dropdown.parent('.dropdown').hasClass('active'), '"active" class added on click')
   })
 
   QUnit.test('should test if element has a # before assuming it\'s a selector', function (assert) {
@@ -164,11 +164,11 @@ $(function () {
         + '</ul>'
     var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().trigger('click')
 
-    assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
+    assert.ok($dropdown.parent('.dropdown').hasClass('active'), '"active" class added on click')
   })
 
 
-  QUnit.test('should remove "open" class if body is clicked', function (assert) {
+  QUnit.test('should remove "active" class if body is clicked', function (assert) {
     assert.expect(2)
     var dropdownHTML = '<ul class="tabs">'
         + '<li class="dropdown">'
@@ -187,12 +187,12 @@ $(function () {
       .bootstrapDropdown()
       .trigger('click')
 
-    assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
+    assert.ok($dropdown.parent('.dropdown').hasClass('active'), '"active" class added on click')
     $(document.body).trigger('click')
-    assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed')
+    assert.ok(!$dropdown.parent('.dropdown').hasClass('active'), '"active" class removed')
   })
 
-  QUnit.test('should remove "open" class if body is clicked, with multiple dropdowns', function (assert) {
+  QUnit.test('should remove "active" class if body is clicked, with multiple dropdowns', function (assert) {
     assert.expect(7)
     var dropdownHTML = '<ul class="nav">'
         + '<li><a href="#menu1">Menu 1</a></li>'
@@ -217,16 +217,16 @@ $(function () {
     assert.strictEqual($dropdowns.length, 2, 'two dropdowns')
 
     $first.trigger('click')
-    assert.strictEqual($first.parents('.open').length, 1, '"open" class added on click')
-    assert.strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open')
+    assert.strictEqual($first.parents('.active').length, 1, '"active" class added on click')
+    assert.strictEqual($('#qunit-fixture .active').length, 1, 'only one dropdown is active')
     $(document.body).trigger('click')
-    assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed')
+    assert.strictEqual($('#qunit-fixture .active').length, 0, '"active" class removed')
 
     $last.trigger('click')
-    assert.strictEqual($last.parent('.open').length, 1, '"open" class added on click')
-    assert.strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open')
+    assert.strictEqual($last.parent('.active').length, 1, '"active" class added on click')
+    assert.strictEqual($('#qunit-fixture .active').length, 1, 'only one dropdown is active')
     $(document.body).trigger('click')
-    assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed')
+    assert.strictEqual($('#qunit-fixture .active').length, 0, '"active" class removed')
   })
 
   QUnit.test('should fire show and hide event', function (assert) {
@@ -411,7 +411,7 @@ $(function () {
 
     $('#textField').trigger('click')
 
-    assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
+    assert.ok($dropdown.parent('.btn-group').hasClass('active'), 'dropdown menu is active')
   })
 
   QUnit.test('should not close the dropdown if the user clicks on a textarea', function (assert) {
@@ -430,6 +430,6 @@ $(function () {
 
     $('#textArea').trigger('click')
 
-    assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
+    assert.ok($dropdown.parent('.btn-group').hasClass('active'), 'dropdown menu is active')
   })
 })

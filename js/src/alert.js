@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): alert.js
+ * Bootstrap (v4.0.0-alpha.5): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Alert = (($) => {
    */
 
   const NAME                = 'alert'
-  const VERSION             = '4.0.0-alpha.2'
+  const VERSION             = '4.0.0-alpha.5'
   const DATA_KEY            = 'bs.alert'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -36,9 +36,9 @@ const Alert = (($) => {
   }
 
   const ClassName = {
-    ALERT : 'alert',
-    FADE  : 'fade',
-    IN    : 'in'
+    ALERT  : 'alert',
+    FADE   : 'fade',
+    ACTIVE : 'active'
   }
 
 
@@ -108,7 +108,7 @@ const Alert = (($) => {
     }
 
     _removeElement(element) {
-      $(element).removeClass(ClassName.IN)
+      $(element).removeClass(ClassName.ACTIVE)
 
       if (!Util.supportsTransitionEnd() ||
           !$(element).hasClass(ClassName.FADE)) {
@@ -117,7 +117,7 @@ const Alert = (($) => {
       }
 
       $(element)
-        .one(Util.TRANSITION_END, $.proxy(this._destroyElement, this, element))
+        .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
         .emulateTransitionEnd(TRANSITION_DURATION)
     }
 

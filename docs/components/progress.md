@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Progress
+description: Documentation and examples for using Bootstrap progress bars.
 group: components
 ---
 
@@ -11,9 +12,9 @@ Stylize [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/doc
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-### Example
+## Example
 
-To caption a progress bar, simply add a `<div>` with your caption text, [align the text using a utility class]({{ site.baseurl }}/components/utilities/#text-alignment), and associate the caption with the `<progress>` element using the `aria-describedby` attribute.
+To caption a progress bar, simply add a `<div>` with your caption text, [align the text using a utility class]({{ site.baseurl }}/utilities/typography/#text-alignment), and associate the caption with the `<progress>` element using the `aria-describedby` attribute.
 
 {% example html %}
 
@@ -33,7 +34,7 @@ To caption a progress bar, simply add a `<div>` with your caption text, [align t
 <progress class="progress" value="100" max="100" aria-describedby="example-caption-5"></progress>
 {% endexample %}
 
-### IE9 support
+## IE9 support
 
 Internet Explorer 9 doesn't support the HTML5 `<progress>` element, but we can work around that.
 
@@ -46,7 +47,7 @@ Internet Explorer 9 doesn't support the HTML5 `<progress>` element, but we can w
 </progress>
 {% endexample %}
 
-### Contextual alternatives
+## Contextual alternatives
 
 Progress bars use some of the same button and alert classes for consistent styles.
 

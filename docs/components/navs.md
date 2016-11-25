@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Navs
+description: Documentation and examples for how to use Bootstrap's included navigation components.
 group: components
 ---
 

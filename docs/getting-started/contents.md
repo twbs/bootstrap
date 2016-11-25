@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Contents
+description: Learn about what's included in Bootstrap's precompiled and source code directories.
 group: getting-started
 ---
 
@@ -12,7 +13,7 @@ Once downloaded, unzip the compressed folder and you'll see something like this:
 
 <!-- NOTE: This info is intentionally duplicated in the README. Copy any changes made here over to the README too. -->
 
-{% highlight bash %}
+{% highlight plaintext %}
 bootstrap/
 ├── css/
 │   ├── bootstrap.css
@@ -24,13 +25,13 @@ bootstrap/
     └── bootstrap.min.js
 {% endhighlight %}
 
-This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developer.chrome.com/devtools/docs/css-preprocessors) (`bootstrap.*.map`) are available for use with certain browsers' developer tools.
+This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools.
 
 ## Bootstrap source code
 
 The Bootstrap source code download includes the precompiled CSS and JavaScript assets, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:
 
-{% highlight bash %}
+{% highlight plaintext %}
 bootstrap/
 ├── dist/
 │   ├── css/

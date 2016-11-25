@@ -1,17 +1,20 @@
 ---
 layout: docs
 title: Tables
+description: Documentation and examples for styling tables with Bootstrap.
 group: content
 ---
 
-Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`.
+Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`, then extend with custom styles or our various included modifier classes.
 
 ## Contents
 
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-## Basic example
+## Examples
+
+Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. **All table styles are inherited in Bootstrap 4**, meaning any nested tables will be styled in the same manner as the parent.
 
 {% example html %}
 <table class="table">
@@ -46,7 +49,7 @@ Due to the widespread use of tables across third-party widgets like calendars an
 </table>
 {% endexample %}
 
-## Inverse table
+You can also invert the colors—with light text on dark backgrounds—with `.table-inverse`.
 
 {% example html %}
 <table class="table table-inverse">
@@ -83,7 +86,7 @@ Due to the widespread use of tables across third-party widgets like calendars an
 
 ## Table head options
 
-Use one of two modifier classes to make `<thead>`s appear light or dark gray.
+Similar to default and inverse tables, use one of two modifier classes to make `<thead>`s appear light or dark gray.
 
 {% example html %}
 <table class="table">
@@ -186,12 +189,83 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
 </table>
 {% endexample %}
 
+{% example html %}
+<table class="table table-striped table-inverse">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{% endexample %}
+
 ## Bordered table
 
 Add `.table-bordered` for borders on all sides of the table and cells.
 
 {% example html %}
 <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@TwBootstrap</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{% endexample %}
+
+{% example html %}
+<table class="table table-bordered table-inverse">
   <thead>
     <tr>
       <th>#</th>
@@ -264,12 +338,76 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 </table>
 {% endexample %}
 
+{% example html %}
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{% endexample %}
+
 ## Small table
 
 Add `.table-sm` to make tables more compact by cutting cell padding in half.
 
 {% example html %}
 <table class="table table-sm">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{% endexample %}
+
+{% example html %}
+<table class="table table-sm table-inverse">
   <thead>
     <tr>
       <th>#</th>
@@ -307,8 +445,8 @@ Use contextual classes to color table rows or individual cells.
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
     <colgroup>
-      <col class="col-xs-1">
-      <col class="col-xs-7">
+      <col class="col-1">
+      <col class="col-7">
     </colgroup>
     <thead>
       <tr>
@@ -420,9 +558,6 @@ Use contextual classes to color table rows or individual cells.
   </table>
 </div>
 
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
-
 {% highlight html %}
 <!-- On rows -->
 <tr class="table-active">...</tr>
@@ -440,6 +575,98 @@ Use contextual classes to color table rows or individual cells.
   <td class="table-info">...</td>
 </tr>
 {% endhighlight %}
+
+Regular table background variants are not available with the inverse table, however, you may use [text or background utilities]({{ site.baseurl }}/utilities/colors/) to achieve similar styles.
+
+<div class="bd-example">
+  <table class="table table-inverse">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Column heading</th>
+        <th>Column heading</th>
+        <th>Column heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-primary">
+        <th scope="row">1</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="bg-success">
+        <th scope="row">3</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="bg-info">
+        <th scope="row">5</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr>
+        <th scope="row">6</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="bg-warning">
+        <th scope="row">7</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="bg-danger">
+        <th scope="row">9</th>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% highlight html %}
+<!-- On rows -->
+<tr class="bg-primary">...</tr>
+<tr class="bg-success">...</tr>
+<tr class="bg-warning">...</tr>
+<tr class="bg-danger">...</tr>
+<tr class="bg-info">...</tr>
+
+<!-- On cells (`td` or `th`) -->
+<tr>
+  <td class="bg-primary">...</td>
+  <td class="bg-success">...</td>
+  <td class="bg-warning">...</td>
+  <td class="bg-danger">...</td>
+  <td class="bg-info">...</td>
+</tr>
+{% endhighlight %}
+
+{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 ## Responsive tables
 

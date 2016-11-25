@@ -1,0 +1,19 @@
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $min: breakpoint-min($breakpoint, $grid-breakpoints);
+
+    @if $min {
+      // everything else
+      @media (min-width: $min) {
+        .float-#{$breakpoint}-left { @include float-left; }
+        .float-#{$breakpoint}-right { @include float-right; }
+        .float-#{$breakpoint}-none { @include float-none; }
+      }
+    } @else {
+      // xs
+      .float-left { @include float-left; }
+      .float-right { @include float-right; }
+      .float-none { @include float-none; }
+    }
+  }
+}

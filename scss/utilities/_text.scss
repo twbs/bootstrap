@@ -26,11 +26,15 @@
 
 // Weight and italics
 
-.font-weight-normal  { font-weight: normal; }
-.font-weight-bold    { font-weight: bold; }
+.font-weight-normal  { font-weight: $font-weight-normal; }
+.font-weight-bold    { font-weight: $font-weight-bold; }
 .font-italic         { font-style: italic; }
 
 // Contextual colors
+
+.text-white {
+  color: #fff !important;
+}
 
 @include text-emphasis-variant('.text-muted', $text-muted);
 
@@ -43,6 +47,10 @@
 @include text-emphasis-variant('.text-warning', $brand-warning);
 
 @include text-emphasis-variant('.text-danger', $brand-danger);
+
+// Font color
+
+@include text-emphasis-variant('.text-gray-dark', $gray-dark);
 
 // Misc
 

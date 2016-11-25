@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): modal.js
+ * Bootstrap (v4.0.0-alpha.5): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,13 +18,14 @@ const Modal = (($) => {
    */
 
   const NAME                         = 'modal'
-  const VERSION                      = '4.0.0-alpha.2'
+  const VERSION                      = '4.0.0-alpha.5'
   const DATA_KEY                     = 'bs.modal'
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
   const JQUERY_NO_CONFLICT           = $.fn[NAME]
   const TRANSITION_DURATION          = 300
   const BACKDROP_TRANSITION_DURATION = 150
+  const ESCAPE_KEYCODE               = 27 // KeyboardEvent.which value for Escape (Esc) key
 
   const Default = {
     backdrop : true,
@@ -59,7 +60,7 @@ const Modal = (($) => {
     BACKDROP           : 'modal-backdrop',
     OPEN               : 'modal-open',
     FADE               : 'fade',
-    IN                 : 'in'
+    ACTIVE             : 'active'
   }
 
   const Selector = {
@@ -132,7 +133,7 @@ const Modal = (($) => {
       $(this._element).on(
         Event.CLICK_DISMISS,
         Selector.DATA_DISMISS,
-        $.proxy(this.hide, this)
+        (event) => this.hide(event)
       )
 
       $(this._dialog).on(Event.MOUSEDOWN_DISMISS, () => {
@@ -143,9 +144,7 @@ const Modal = (($) => {
         })
       })
 
-      this._showBackdrop(
-        $.proxy(this._showElement, this, relatedTarget)
-      )
+      this._showBackdrop(() => this._showElement(relatedTarget))
     }
 
     hide(event) {
@@ -168,7 +167,7 @@ const Modal = (($) => {
 
       $(document).off(Event.FOCUSIN)
 
-      $(this._element).removeClass(ClassName.IN)
+      $(this._element).removeClass(ClassName.ACTIVE)
 
       $(this._element).off(Event.CLICK_DISMISS)
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
@@ -177,7 +176,7 @@ const Modal = (($) => {
          ($(this._element).hasClass(ClassName.FADE))) {
 
         $(this._element)
-          .one(Util.TRANSITION_END, $.proxy(this._hideModal, this))
+          .one(Util.TRANSITION_END, (event) => this._hideModal(event))
           .emulateTransitionEnd(TRANSITION_DURATION)
       } else {
         this._hideModal()
@@ -223,13 +222,14 @@ const Modal = (($) => {
       }
 
       this._element.style.display = 'block'
+      this._element.removeAttribute('aria-hidden')
       this._element.scrollTop = 0
 
       if (transition) {
         Util.reflow(this._element)
       }
 
-      $(this._element).addClass(ClassName.IN)
+      $(this._element).addClass(ClassName.ACTIVE)
 
       if (this._config.focus) {
         this._enforceFocus()
@@ -270,7 +270,7 @@ const Modal = (($) => {
     _setEscapeEvent() {
       if (this._isShown && this._config.keyboard) {
         $(this._element).on(Event.KEYDOWN_DISMISS, (event) => {
-          if (event.which === 27) {
+          if (event.which === ESCAPE_KEYCODE) {
             this.hide()
           }
         })
@@ -282,7 +282,7 @@ const Modal = (($) => {
 
     _setResizeEvent() {
       if (this._isShown) {
-        $(window).on(Event.RESIZE, $.proxy(this._handleUpdate, this))
+        $(window).on(Event.RESIZE, (event) => this._handleUpdate(event))
       } else {
         $(window).off(Event.RESIZE)
       }
@@ -290,6 +290,7 @@ const Modal = (($) => {
 
     _hideModal() {
       this._element.style.display = 'none'
+      this._element.setAttribute('aria-hidden', 'true')
       this._showBackdrop(() => {
         $(document.body).removeClass(ClassName.OPEN)
         this._resetAdjustments()
@@ -340,7 +341,7 @@ const Modal = (($) => {
           Util.reflow(this._backdrop)
         }
 
-        $(this._backdrop).addClass(ClassName.IN)
+        $(this._backdrop).addClass(ClassName.ACTIVE)
 
         if (!callback) {
           return
@@ -356,7 +357,7 @@ const Modal = (($) => {
           .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
 
       } else if (!this._isShown && this._backdrop) {
-        $(this._backdrop).removeClass(ClassName.IN)
+        $(this._backdrop).removeClass(ClassName.ACTIVE)
 
         let callbackRemove = () => {
           this._removeBackdrop()
@@ -398,7 +399,7 @@ const Modal = (($) => {
       }
 
       if (this._isBodyOverflowing && !isModalOverflowing) {
-        this._element.style.paddingRight = `${this._scrollbarWidth}px~`
+        this._element.style.paddingRight = `${this._scrollbarWidth}px`
       }
     }
 
@@ -408,13 +409,7 @@ const Modal = (($) => {
     }
 
     _checkScrollbar() {
-      let fullWindowWidth = window.innerWidth
-      if (!fullWindowWidth) { // workaround for missing window.innerWidth in IE8
-        let documentElementRect = document.documentElement.getBoundingClientRect()
-        fullWindowWidth =
-          documentElementRect.right - Math.abs(documentElementRect.left)
-      }
-      this._isBodyOverflowing = document.body.clientWidth < fullWindowWidth
+      this._isBodyOverflowing = document.body.clientWidth < window.innerWidth
       this._scrollbarWidth = this._getScrollbarWidth()
     }
 
