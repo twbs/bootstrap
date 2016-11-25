@@ -4878,13 +4878,13 @@ tbody.collapse.active {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   color: #0275d8;
-  text-decoration: none;
   background-color: #fff;
   border: 1px solid #ddd;
 }
 
 .page-link:focus, .page-link:hover {
   color: #014c8c;
+  text-decoration: none;
   background-color: #eceeef;
   border-color: #ddd;
 }
@@ -5405,7 +5405,7 @@ base::-moz-progress-bar,
   padding: 0.75rem 1.25rem;
   margin-bottom: -1px;
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .list-group-item:first-child {
