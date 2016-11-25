@@ -1,0 +1,22 @@
+@mixin carousel-css3-transforms {
+  transition: transform .6s ease-in-out;
+  backface-visibility: hidden;
+  perspective: 1000px;
+
+  &.next,
+  &.active.right {
+    left: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  &.prev,
+  &.active.left {
+    left: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  &.next.left,
+  &.prev.right,
+  &.active {
+    left: 0;
+    transform: translate3d(0, 0, 0);
+  }
+}
