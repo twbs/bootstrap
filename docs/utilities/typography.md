@@ -6,6 +6,11 @@ group: utilities
 
 The following utilities can be used to add additional styles to texts.
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Text alignment
 
 Easily realign text to components with text alignment classes.
