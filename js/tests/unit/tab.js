@@ -241,4 +241,36 @@ $(function () {
     assert.strictEqual($tabs.find('a:not(.active)').attr('aria-expanded'), 'false', 'after second show event, hidden tab has aria-expanded = false')
   })
 
+  QUnit.test('selected tab should deactivate previous selected tab', function (assert) {
+    assert.expect(2)
+    var tabsHTML = '<ul class="nav nav-tabs">'
+        + '<li class="nav-item"><a class="nav-link active" href="#home" data-toggle="tab">Home</a></li>'
+        + '<li class="nav-item"><a class="nav-link" href="#profile" data-toggle="tab">Profile</a></li>'
+        + '</ul>'
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+
+    $tabs.find('li:last a').trigger('click')
+    assert.notOk($tabs.find('li:first a').hasClass('active'))
+    assert.ok($tabs.find('li:last a').hasClass('active'))
+  })
+
+  QUnit.test('selected tab should deactivate previous selected link in dropdown', function (assert) {
+    assert.expect(3)
+    var tabsHTML = '<ul class="nav nav-tabs">'
+        + '<li class="nav-item"><a class="nav-link" href="#home" data-toggle="tab">Home</a></li>'
+        + '<li class="nav-item"><a class="nav-link" href="#profile" data-toggle="tab">Profile</a></li>'
+        + '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Dropdown</a>'
+        + '<div class="dropdown-menu">'
+        + '<a class="dropdown-item active" href="#dropdown1" id="dropdown1-tab" data-toggle="tab">@fat</a>'
+        + '<a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-toggle="tab">@mdo</a>'
+        + '</div>'
+        + '</li>'
+        + '</ul>'
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+
+    $tabs.find('li:first > a').trigger('click')
+    assert.ok($tabs.find('li:first a').hasClass('active'))
+    assert.notOk($tabs.find('li:last > a').hasClass('active'))
+    assert.notOk($tabs.find('li:last > .dropdown-menu > a:first').hasClass('active'))
+  })
 })

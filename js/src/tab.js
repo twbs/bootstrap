@@ -181,7 +181,7 @@ const Tab = (($) => {
       if (active) {
         $(active).removeClass(ClassName.ACTIVE)
 
-        let dropdownChild = $(active).find(
+        let dropdownChild = $(active.parentNode).find(
           Selector.DROPDOWN_ACTIVE_CHILD
         )[0]
 
