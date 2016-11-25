@@ -20,8 +20,8 @@
       line-height: 1;
     }
 
-    // WebKit CSS3 transforms for supported devices
-    @media all and (transform-3d), (-webkit-transform-3d) {
+    // CSS3 transforms when supported by the browser
+    @include if-supports-3d-transforms() {
       transition: transform .6s ease-in-out;
       backface-visibility: hidden;
       perspective: 1000px;
