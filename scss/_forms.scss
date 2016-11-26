@@ -347,9 +347,8 @@ select.form-control-lg {
 
     .input-group {
       width: auto;
-      @if $enable-flex {
-        //do nothing
-      } @else {
+
+      @if not $enable-flex {
         display: inline-table;
         vertical-align: middle;
 
