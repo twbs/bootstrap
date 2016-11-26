@@ -384,7 +384,7 @@ select.form-control-lg {
     .form-check {
       @if $enable-flex {
         display: flex;
-        flex-direction: column;
+        align-items: center;
         justify-content: center;
       } @else {
         display: inline-block;
