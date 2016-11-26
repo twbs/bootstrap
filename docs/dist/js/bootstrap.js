@@ -437,7 +437,7 @@ var Button = function ($) {
 
           if (triggerChangeEvent) {
             input.checked = !$(this._element).hasClass(ClassName.ACTIVE);
-            $(this._element).trigger('change');
+            $(input).trigger('change');
           }
 
           input.focus();
@@ -741,11 +741,10 @@ var Carousel = function ($) {
     };
 
     Carousel.prototype._keydown = function _keydown(event) {
-      event.preventDefault();
-
       if (/input|textarea/i.test(event.target.tagName)) {
         return;
       }
+      event.preventDefault();
 
       switch (event.which) {
         case ARROW_LEFT_KEYCODE:
