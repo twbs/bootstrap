@@ -38,13 +38,13 @@
 }
 
 .bd-navbar .navbar-nav .nav-link.active, .bd-navbar .navbar-nav .nav-link:hover, .bd-navbar .navbar-nav .nav-link:focus {
-  color: #373a3c;
+  color: #292b2c;
   background-color: transparent;
 }
 
 .bd-navbar .navbar-nav .nav-link.active {
   font-weight: 500;
-  color: #121314;
+  color: #040404;
 }
 
 .bd-navbar .dropdown-menu {
@@ -526,7 +526,7 @@
 .bd-toc-link {
   display: block;
   padding: .25rem .75rem;
-  color: #55595c;
+  color: #464a4c;
 }
 
 .bd-toc-link:hover,
@@ -537,7 +537,7 @@
 
 .active > .bd-toc-link {
   font-weight: 500;
-  color: #373a3c;
+  color: #292b2c;
 }
 
 .active > .bd-sidenav {
@@ -575,7 +575,7 @@
 .bd-sidebar .nav > .active:hover > a,
 .bd-sidebar .nav > .active:focus > a {
   font-weight: 500;
-  color: #373a3c;
+  color: #292b2c;
   background-color: transparent;
 }
 
@@ -589,7 +589,7 @@
 
 .bd-footer a {
   font-weight: 500;
-  color: #55595c;
+  color: #464a4c;
 }
 
 .bd-footer a:hover {
@@ -934,7 +934,7 @@
 
 .highlight pre code {
   font-size: inherit;
-  color: #373a3c;
+  color: #292b2c;
 }
 
 .table-responsive .highlight pre {
