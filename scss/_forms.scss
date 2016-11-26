@@ -382,11 +382,17 @@ select.form-control-lg {
     // Remove default margin on radios/checkboxes that were used for stacking, and
     // then undo the floating of radios and checkboxes to match.
     .form-check {
-      display: inline-block;
+      @if $enable-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      } @else {
+        display: inline-block;
+        vertical-align: middle;
+      }
       width: auto;
       margin-top: 0;
       margin-bottom: 0;
-      vertical-align: middle;
     }
     .form-check-label {
       padding-left: 0;
