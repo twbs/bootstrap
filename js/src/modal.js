@@ -489,7 +489,7 @@ const Modal = (($) => {
     const config = $(target).data(DATA_KEY) ?
       'toggle' : $.extend({}, $(target).data(), $(this).data())
 
-    if (this.tagName === 'A') {
+    if (this.tagName === 'A' || this.tagName === 'AREA') {
       event.preventDefault()
     }
 
