@@ -4088,6 +4088,21 @@ tbody.collapse.active {
   display: block;
 }
 
+.nav-justified {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav-justified .nav-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 0%;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+  text-align: center;
+}
+
 .navbar {
   position: relative;
   padding: 0.5rem 1rem;
