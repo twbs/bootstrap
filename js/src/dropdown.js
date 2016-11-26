@@ -239,7 +239,7 @@ const Dropdown = (($) => {
         return
       }
 
-      let items = $(parent).find(Selector.VISIBLE_ITEMS).get()
+      const items = $(parent).find(Selector.VISIBLE_ITEMS).get()
 
       if (!items.length) {
         return
