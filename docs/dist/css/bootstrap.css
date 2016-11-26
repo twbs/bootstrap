@@ -3083,7 +3083,7 @@ tbody.collapse.active {
 .dropdown-item:focus, .dropdown-item:hover {
   color: #1d1e1f;
   text-decoration: none;
-  background-color: #f5f5f5;
+  background-color: #f7f7f9;
 }
 
 .dropdown-item.active, .dropdown-item.active:focus, .dropdown-item.active:hover {
@@ -4290,7 +4290,7 @@ tbody.collapse.active {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: #f5f5f5;
+  background-color: #f7f7f9;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -4306,7 +4306,7 @@ tbody.collapse.active {
 
 .card-footer {
   padding: 0.75rem 1.25rem;
-  background-color: #f5f5f5;
+  background-color: #f7f7f9;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -5206,7 +5206,7 @@ base::-moz-progress-bar,
 .list-group-item-action:focus, .list-group-item-action:hover {
   color: #555;
   text-decoration: none;
-  background-color: #f5f5f5;
+  background-color: #f7f7f9;
 }
 
 .list-group-item-success {
