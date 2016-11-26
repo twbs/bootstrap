@@ -2307,10 +2307,14 @@ var ScrollSpy = function ($) {
       return this._scrollElement.scrollHeight || Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
     };
 
+    ScrollSpy.prototype._getOffsetHeight = function _getOffsetHeight() {
+      return this._scrollElement === window ? window.innerHeight : this._scrollElement.offsetHeight;
+    };
+
     ScrollSpy.prototype._process = function _process() {
       var scrollTop = this._getScrollTop() + this._config.offset;
       var scrollHeight = this._getScrollHeight();
-      var maxScroll = this._config.offset + scrollHeight - this._scrollElement.offsetHeight;
+      var maxScroll = this._config.offset + scrollHeight - this._getOffsetHeight();
 
       if (this._scrollHeight !== scrollHeight) {
         this.refresh();
@@ -2322,6 +2326,7 @@ var ScrollSpy = function ($) {
         if (this._activeTarget !== target) {
           this._activate(target);
         }
+        return;
       }
 
       if (this._activeTarget && scrollTop < this._offsets[0]) {
