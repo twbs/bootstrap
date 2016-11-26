@@ -276,7 +276,7 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 
 Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-- Controls are `display: inline-block` (or flexbox when enabled) to provide alignment control via `vertical-align` and `margin`. Those also means you'll have some HTML character spaces between elements by default.
+- Controls are `display: inline-block` (or `flex` when enabled) to provide alignment control via `vertical-align` and `margin`. Those also means you'll have some HTML character spaces between elements by default.
 - Controls and input groups receive `width: auto` to override the Bootstrap default `width: 100%`.
 - Controls **only appear inline in viewports that are at least 576px wide** to account for narrow viewports on mobile devices.
 
