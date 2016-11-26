@@ -319,6 +319,13 @@ select.form-control-lg {
         display: flex;
         flex: 0 0 auto;
         flex-flow: row wrap;
+
+        label {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-bottom: 0;
+        }
       } @else {
         display: inline-block;
         vertical-align: middle;
