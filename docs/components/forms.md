@@ -308,7 +308,7 @@ Custom form controls and selects are also supported.
 {% example html %}
 <form class="form-inline">
   <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
-  <select class="custom-select mb-2 mr-sm-2 mb-sm-0">
+  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
