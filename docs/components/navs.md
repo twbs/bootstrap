@@ -16,7 +16,9 @@ Navigation available in Bootstrap share general markup and styles, from the base
 
 If you are using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
 
-## Base nav
+## Examples
+
+### Base nav
 
 Roll your own navigation style by extending the base `.nav` component. All Bootstrap's nav components are built on top of this by specifying additional styles. Includes styles for the disabled state, but **not the active state**.
 
@@ -48,7 +50,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 </nav>
 {% endexample %}
 
-## Inline
+### Inline
 
 Space out nav links in a horizontal band with `.nav-inline`. Longer series of links will wrap to a new line.
 
@@ -80,7 +82,7 @@ The same works for a navigation built with lists.
 </ul>
 {% endexample %}
 
-## Tabs
+### Tabs
 
 Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [tab JavaScript plugin](#javascript-behavior).
 
@@ -101,7 +103,7 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
 </ul>
 {% endexample %}
 
-## Pills
+### Pills
 
 Take that same HTML, but use `.nav-pills` instead:
 
