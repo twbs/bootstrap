@@ -402,6 +402,27 @@ select.form-control-lg {
       margin-left: 0;
     }
 
+    // Custom form controls
+    .custom-control {
+      padding-left: 0;
+
+      @if $enable-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      } @else {
+        vertical-align: middle;
+      }
+    }
+    .custom-control-indicator {
+      position: static;
+      display: inline-block;
+      @if $enable-flex {
+        margin-right: .25rem; // Flexbox alignment means we lose our HTML space here, so we compensate.
+      }
+      vertical-align: text-bottom;
+    }
+
     // Re-override the feedback icon.
     .has-feedback .form-control-feedback {
       top: 0;
