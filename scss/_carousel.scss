@@ -46,40 +46,39 @@
   }
 }
 
-  .carousel-item.active,
-  .carousel-item-next,
-  .carousel-item-prev {
-    display: block;
-  }
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
 
-  .carousel-item.active {
-    left: 0;
-  }
+.carousel-item.active {
+  left: 0;
+}
 
-  > .carousel-item-next,
-  > .carousel-item-prev {
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
+> .carousel-item-next,
+> .carousel-item-prev {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
 
-  > .carousel-item-next {
-    left: 100%;
-  }
-  > .carousel-item-prev {
-    left: -100%;
-  }
-  > .carousel-item-next.carousel-item-left,
-  > .carousel-item-prev.carousel-item-right {
-    left: 0;
-  }
+> .carousel-item-next {
+  left: 100%;
+}
+> .carousel-item-prev {
+  left: -100%;
+}
+> .carousel-item-next.carousel-item-left,
+> .carousel-item-prev.carousel-item-right {
+  left: 0;
+}
 
-  > .active.carousel-item-left {
-    left: -100%;
-  }
-  > .active.carousel-item-right {
-    left: 100%;
-  }
+> .active.carousel-item-left {
+  left: -100%;
+}
+> .active.carousel-item-right {
+  left: 100%;
 }
 
 
