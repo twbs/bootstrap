@@ -320,19 +320,21 @@ select.form-control-lg {
 
   // Kick in the inline
   @include media-breakpoint-up(sm) {
+    label {
+      @if $enable-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      margin-bottom: 0;
+    }
+
     // Inline-block all the things for "inline"
     .form-group {
       @if $enable-flex {
         display: flex;
         flex: 0 0 auto;
         flex-flow: row wrap;
-
-        label {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          margin-bottom: 0;
-        }
       } @else {
         display: inline-block;
         vertical-align: middle;
