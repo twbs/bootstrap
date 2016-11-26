@@ -239,11 +239,7 @@ const Dropdown = (($) => {
         return
       }
 
-      let items = $.makeArray($(Selector.VISIBLE_ITEMS))
-
-      items = items.filter((item) => {
-        return item.offsetWidth || item.offsetHeight
-      })
+      let items = $(parent).find(Selector.VISIBLE_ITEMS).get()
 
       if (!items.length) {
         return
