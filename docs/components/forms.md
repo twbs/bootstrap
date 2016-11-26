@@ -285,15 +285,15 @@ You may need to manually address the width and alignment of individual form cont
 {% example html %}
 <form class="form-inline">
   <label class="sr-only" for="inlineFormInput">Name</label>
-  <input type="text" class="form-control mr-md-2" id="inlineFormInput" placeholder="Jane Doe">
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
 
   <label class="sr-only" for="inlineFormInputGroup">Username</label>
-  <div class="input-group mr-md-2">
+  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
     <div class="input-group-addon">@</div>
     <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
   </div>
 
-  <div class="form-check mr-md-2">
+  <div class="form-check mb-2 mr-sm-2 mb-sm-0">
     <label class="form-check-label">
       <input class="form-check-input" type="checkbox"> Remember me
     </label>
