@@ -210,6 +210,92 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 </ul>
 {% endexample %}
 
+## Flexbox variations
+
+When in [flexbox mode]({{ site.baseurl }}/getting-started/flexbox/), tabbed and pilled navigation components gain access to additional nav styles. **These aren't available in default Bootstrap** due to a bug in table styles and responsive behavior.
+
+### Justified nav
+
+Create equal-width links in a navigation component by adding `.nav-justified` to a `.nav` component. This works with the inline, tab, and pill variants.
+
+Using the inline nav:
+
+{% example html %}
+<ul class="nav nav-inline nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
+You can also use it on tabs:
+
+{% example html %}
+<ul class="nav nav-tabs nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
+And pills, too:
+
+{% example html %}
+<ul class="nav nav-pills nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
+### Centered nav
+
+Using our [flexbox utilities]({{ site.baseurl }}/layout/flexbox-grid/#horizontal-alignment), you can also customize your navigation components to change the alignment of nav items. For example, here are center aligned links on the inline nav component.
+
+{% example html %}
+<ul class="nav nav-inline d-flex flex-items-xs-center">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
 ## JavaScript behavior
 
 Use the tab JavaScript plugin—include it individually or through the compiled `bootstrap.js` file—to extend our navigational tabs and pills to create tabbable panes of local content, even via dropdown menus.
