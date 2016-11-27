@@ -39,7 +39,7 @@ module.exports = function (grunt) {
             ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
             ' */\n',
     jqueryCheck: 'if (typeof jQuery === \'undefined\') {\n' +
-                 '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\')\n' +
+                 '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\\\'s JavaScript.\')\n' +
                  '}\n',
     jqueryVersionCheck: '+function ($) {\n' +
                         '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')\n' +
