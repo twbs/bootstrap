@@ -6,7 +6,7 @@
   position: relative;
   display: block;
   margin-bottom: $card-spacer-y;
-  background-color: $card-bg;
+  background: $card-bg;
   // border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
   border: $card-border-width solid $card-border-color;
