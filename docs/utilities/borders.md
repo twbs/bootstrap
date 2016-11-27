@@ -27,5 +27,5 @@ Add classes to an element to easily round its corners.
 <img src="..." alt="..." class="rounded-bottom">
 <img src="..." alt="..." class="rounded-left">
 <img src="..." alt="..." class="rounded-circle">
-<img src="..." alt="..." class="rounded-none">
+<img src="..." alt="..." class="rounded-0">
 {% endhighlight %}
