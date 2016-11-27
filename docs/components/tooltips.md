@@ -165,7 +165,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       </tr>
       <tr>
         <td>container</td>
-        <td>string | false</td>
+        <td>string | element | false</td>
         <td>false</td>
         <td>
           <p>Appends the tooltip to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the tooltip in the flow of the document near the triggering element - which will prevent the tooltip from floating away from the triggering element during a window resize.</p>
