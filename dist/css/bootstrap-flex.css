@@ -6476,6 +6476,26 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   background-color: #101112 !important;
 }
 
+.border-0 {
+  border: 0 !important;
+}
+
+.border-top-0 {
+  border-top: 0 !important;
+}
+
+.border-right-0 {
+  border-right: 0 !important;
+}
+
+.border-bottom-0 {
+  border-bottom: 0 !important;
+}
+
+.border-left-0 {
+  border-left: 0 !important;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -6502,6 +6522,10 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 
 .rounded-circle {
   border-radius: 50%;
+}
+
+.rounded-0 {
+  border-radius: 0;
 }
 
 .clearfix::after {
