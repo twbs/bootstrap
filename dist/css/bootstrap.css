@@ -2313,6 +2313,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 @media (min-width: 576px) {
+  .form-inline label {
+    margin-bottom: 0;
+  }
   .form-inline .form-group {
     display: inline-block;
     vertical-align: middle;
@@ -2345,9 +2348,10 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   }
   .form-inline .form-check {
     display: inline-block;
+    vertical-align: middle;
+    width: auto;
     margin-top: 0;
     margin-bottom: 0;
-    vertical-align: middle;
   }
   .form-inline .form-check-label {
     padding-left: 0;
@@ -2355,6 +2359,15 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   .form-inline .form-check-input {
     position: relative;
     margin-left: 0;
+  }
+  .form-inline .custom-control {
+    padding-left: 0;
+    vertical-align: middle;
+  }
+  .form-inline .custom-control-indicator {
+    position: static;
+    display: inline-block;
+    vertical-align: text-bottom;
   }
   .form-inline .has-feedback .form-control-feedback {
     top: 0;

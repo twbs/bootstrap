@@ -2575,7 +2575,26 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
           flex-flow: row wrap;
 }
 
+.form-inline .form-check {
+  width: 100%;
+}
+
 @media (min-width: 576px) {
+  .form-inline label {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 0;
+  }
   .form-inline .form-group {
     display: -webkit-box;
     display: -webkit-flex;
@@ -2606,10 +2625,21 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     vertical-align: middle;
   }
   .form-inline .form-check {
-    display: inline-block;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: auto;
     margin-top: 0;
     margin-bottom: 0;
-    vertical-align: middle;
   }
   .form-inline .form-check-label {
     padding-left: 0;
@@ -2617,6 +2647,27 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   .form-inline .form-check-input {
     position: relative;
     margin-left: 0;
+  }
+  .form-inline .custom-control {
+    padding-left: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .form-inline .custom-control-indicator {
+    position: static;
+    display: inline-block;
+    margin-right: .25rem;
+    vertical-align: text-bottom;
   }
   .form-inline .has-feedback .form-control-feedback {
     top: 0;
