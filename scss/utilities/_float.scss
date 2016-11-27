@@ -4,11 +4,9 @@
 
     @if $min {
       // everything else
-      @media (min-width: $min) {
-        .float-#{$breakpoint}-left { @include float-left; }
-        .float-#{$breakpoint}-right { @include float-right; }
-        .float-#{$breakpoint}-none { @include float-none; }
-      }
+      .float-#{$breakpoint}-left { @include float-left; }
+      .float-#{$breakpoint}-right { @include float-right; }
+      .float-#{$breakpoint}-none { @include float-none; }
     } @else {
       // xs
       .float-left { @include float-left; }
