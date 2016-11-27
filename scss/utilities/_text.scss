@@ -12,9 +12,17 @@
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    .text-#{$breakpoint}-left   { text-align: left !important; }
-    .text-#{$breakpoint}-right  { text-align: right !important; }
-    .text-#{$breakpoint}-center { text-align: center !important; }
+    $min: breakpoint-min($breakpoint, $grid-breakpoints);
+
+    @if $min {
+      .text-#{$breakpoint}-left   { text-align: left !important; }
+      .text-#{$breakpoint}-right  { text-align: right !important; }
+      .text-#{$breakpoint}-center { text-align: center !important; }
+    } @else {
+      .text-left   { text-align: left !important; }
+      .text-right  { text-align: right !important; }
+      .text-center { text-align: center !important; }
+    }
   }
 }
 

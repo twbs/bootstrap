@@ -18,19 +18,19 @@ To caption a progress bar, simply add a `<div>` with your caption text, [align t
 
 {% example html %}
 
-<div class="text-xs-center" id="example-caption-1">Reticulating splines&hellip; 0%</div>
+<div class="text-center" id="example-caption-1">Reticulating splines&hellip; 0%</div>
 <progress class="progress" value="0" max="100" aria-describedby="example-caption-1"></progress>
 
-<div class="text-xs-center" id="example-caption-2">Reticulating splines&hellip; 25%</div>
+<div class="text-center" id="example-caption-2">Reticulating splines&hellip; 25%</div>
 <progress class="progress" value="25" max="100" aria-describedby="example-caption-2"></progress>
 
-<div class="text-xs-center" id="example-caption-3">Reticulating splines&hellip; 50%</div>
+<div class="text-center" id="example-caption-3">Reticulating splines&hellip; 50%</div>
 <progress class="progress" value="50" max="100" aria-describedby="example-caption-3"></progress>
 
-<div class="text-xs-center" id="example-caption-4">Reticulating splines&hellip; 75%</div>
+<div class="text-center" id="example-caption-4">Reticulating splines&hellip; 75%</div>
 <progress class="progress" value="75" max="100" aria-describedby="example-caption-4"></progress>
 
-<div class="text-xs-center" id="example-caption-5">Reticulating splines&hellip; 100%</div>
+<div class="text-center" id="example-caption-5">Reticulating splines&hellip; 100%</div>
 <progress class="progress" value="100" max="100" aria-describedby="example-caption-5"></progress>
 {% endexample %}
 
@@ -39,7 +39,7 @@ To caption a progress bar, simply add a `<div>` with your caption text, [align t
 Internet Explorer 9 doesn't support the HTML5 `<progress>` element, but we can work around that.
 
 {% example html %}
-<div class="text-xs-center" id="example-caption-6">Reticulating splines&hellip; 25%</div>
+<div class="text-center" id="example-caption-6">Reticulating splines&hellip; 25%</div>
 <progress class="progress" value="25" max="100" aria-describedby="example-caption-6">
   <div class="progress">
     <span class="progress-bar" style="width: 25%;"></span>

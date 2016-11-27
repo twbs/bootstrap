@@ -30,9 +30,9 @@ Easily realign text to components with text alignment classes.
 For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
 
 {% example html %}
-<p class="text-xs-left">Left aligned text on all viewport sizes.</p>
-<p class="text-xs-center">Center aligned text on all viewport sizes.</p>
-<p class="text-xs-right">Right aligned text on all viewport sizes.</p>
+<p class="text-left">Left aligned text on all viewport sizes.</p>
+<p class="text-center">Center aligned text on all viewport sizes.</p>
+<p class="text-right">Right aligned text on all viewport sizes.</p>
 
 <p class="text-sm-left">Left aligned text on viewports sized SM (small) or wider.</p>
 <p class="text-md-left">Left aligned text on viewports sized MD (medium) or wider.</p>

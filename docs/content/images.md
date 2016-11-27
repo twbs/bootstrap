@@ -65,13 +65,13 @@ Align images with the [helper float classes]({{ site.baseurl }}/utilities/respon
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
-  <div class="text-xs-center">
+  <div class="text-center">
     <img data-src="holder.js/200x200" class="rounded" alt="A generic square placeholder image with rounded corners">
   </div>
 </div>
 
 {% highlight html %}
-<div class="text-xs-center">
+<div class="text-center">
   <img src="..." class="rounded" alt="...">
 </div>
 {% endhighlight %}
