@@ -21,20 +21,25 @@
     // Logic is a little reversed here: `breakpoint-min` returns false when it's the smallest breakpoint.
     $min: not breakpoint-min($breakpoint, $breakpoints);
 
-    @if $min {
-      @for $i from 1 through $columns {
+    // Allow columns to stretch full width below their breakpoints
+    @for $i from 1 through $columns {
+      @if $min {
         .col-#{$i} {
           @extend %grid-column;
         }
-      }
-    } @else {
-      // Allow columns to stretch full width below their breakpoints
-      .col-#{$breakpoint} {
-        @extend %grid-column;
-      }
-
-      @for $i from 1 through $columns {
+      } @else {
         .col-#{$breakpoint}-#{$i} {
+          @extend %grid-column;
+        }
+      }
+    }
+    @if $enable-flex {
+      @if $min {
+        .col {
+          @extend %grid-column;
+        }
+      } @else {
+        .col-#{$breakpoint} {
           @extend %grid-column;
         }
       }
@@ -43,14 +48,26 @@
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       @if $enable-flex {
-        .col-#{$breakpoint} {
-          flex-basis: 0;
-          flex-grow: 1;
-          max-width: 100%;
-        }
-       .col-#{$breakpoint}-auto {
-          flex: 0 0 auto;
-          width: auto;
+        @if $min {
+          .col {
+            flex-basis: 0;
+            flex-grow: 1;
+            max-width: 100%;
+          }
+          .col-auto {
+            flex: 0 0 auto;
+            width: auto;
+          }
+        } @else {
+          .col-#{$breakpoint} {
+            flex-basis: 0;
+            flex-grow: 1;
+            max-width: 100%;
+          }
+          .col-#{$breakpoint}-auto {
+            flex: 0 0 auto;
+            width: auto;
+          }
         }
       }
 
