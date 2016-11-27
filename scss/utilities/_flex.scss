@@ -4,34 +4,54 @@
 
 @if $enable-flex {
   @each $breakpoint in map-keys($grid-breakpoints) {
-    // Flex column reordering
     @include media-breakpoint-up($breakpoint) {
-      .flex-#{$breakpoint}-first { order: -1; }
-      .flex-#{$breakpoint}-last { order: 1; }
-      .flex-#{$breakpoint}-unordered { order: 0; }
-    }
+      $min: breakpoint-min($breakpoint, $grid-breakpoints);
 
-    // Alignment for every item
-    @include media-breakpoint-up($breakpoint) {
-      .flex-items-#{$breakpoint}-top { align-items: flex-start; }
-      .flex-items-#{$breakpoint}-middle { align-items: center; }
-      .flex-items-#{$breakpoint}-bottom { align-items: flex-end; }
-    }
+      @if $min {
+        // Flex column reordering
+        .flex-#{$breakpoint}-first     { order: -1; }
+        .flex-#{$breakpoint}-last      { order: 1; }
+        .flex-#{$breakpoint}-unordered { order: 0; }
 
-    // Alignment per item
-    @include media-breakpoint-up($breakpoint) {
-      .flex-#{$breakpoint}-top   { align-self: flex-start; }
-      .flex-#{$breakpoint}-middle { align-self: center; }
-      .flex-#{$breakpoint}-bottom { align-self: flex-end; }
-    }
+        // Alignment for every item
+        .flex-items-#{$breakpoint}-top    { align-items: flex-start; }
+        .flex-items-#{$breakpoint}-middle { align-items: center; }
+        .flex-items-#{$breakpoint}-bottom { align-items: flex-end; }
 
-    // Horizontal alignment of item
-    @include media-breakpoint-up($breakpoint) {
-      .flex-items-#{$breakpoint}-left { justify-content: flex-start; }
-      .flex-items-#{$breakpoint}-center { justify-content: center; }
-      .flex-items-#{$breakpoint}-right { justify-content: flex-end; }
-      .flex-items-#{$breakpoint}-around { justify-content: space-around; }
-      .flex-items-#{$breakpoint}-between { justify-content: space-between; }
+        // Alignment per item
+        .flex-#{$breakpoint}-top    { align-self: flex-start; }
+        .flex-#{$breakpoint}-middle { align-self: center; }
+        .flex-#{$breakpoint}-bottom { align-self: flex-end; }
+
+        // Horizontal alignment of item
+        .flex-items-#{$breakpoint}-left    { justify-content: flex-start; }
+        .flex-items-#{$breakpoint}-center  { justify-content: center; }
+        .flex-items-#{$breakpoint}-right   { justify-content: flex-end; }
+        .flex-items-#{$breakpoint}-around  { justify-content: space-around; }
+        .flex-items-#{$breakpoint}-between { justify-content: space-between; }
+      } @else {
+        // Flex column reordering
+        .flex-first     { order: -1; }
+        .flex-last      { order: 1; }
+        .flex-unordered { order: 0; }
+
+        // Alignment for every item
+        .flex-items-top    { align-items: flex-start; }
+        .flex-items-middle { align-items: center; }
+        .flex-items-bottom { align-items: flex-end; }
+
+        // Alignment per item
+        .flex-top    { align-self: flex-start; }
+        .flex-middle { align-self: center; }
+        .flex-bottom { align-self: flex-end; }
+
+        // Horizontal alignment of item
+        .flex-items-left    { justify-content: flex-start; }
+        .flex-items-center  { justify-content: center; }
+        .flex-items-right   { justify-content: flex-end; }
+        .flex-items-around  { justify-content: space-around; }
+        .flex-items-between { justify-content: space-between; }
+      }
     }
   }
 }
