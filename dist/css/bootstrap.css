@@ -2315,8 +2315,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 @media (min-width: 576px) {
   .form-inline .form-group {
     display: inline-block;
-    margin-bottom: 0;
     vertical-align: middle;
+    margin-bottom: 0;
   }
   .form-inline .form-control {
     display: inline-block;
@@ -2327,8 +2327,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     display: inline-block;
   }
   .form-inline .input-group {
-    display: inline-table;
     width: auto;
+    display: inline-table;
     vertical-align: middle;
   }
   .form-inline .input-group .input-group-addon,
