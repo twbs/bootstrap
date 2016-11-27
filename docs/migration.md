@@ -72,6 +72,8 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Images
 
 - Renamed `.img-responsive` to `.img-fluid`.
+- Renamed `.img-rounded` to `.rounded`
+- Renamed `.img-circle` to `.rounded-circle`
 
 ### Tables
 
