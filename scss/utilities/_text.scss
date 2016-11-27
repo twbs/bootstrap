@@ -4,7 +4,6 @@
 
 // Alignment
 
-.text-justify        { text-align: justify !important; }
 .text-nowrap         { white-space: nowrap !important; }
 .text-truncate       { @include text-truncate; }
 
@@ -12,9 +11,19 @@
 
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    .text-#{$breakpoint}-left   { text-align: left !important; }
-    .text-#{$breakpoint}-right  { text-align: right !important; }
+    .text-#{$breakpoint}-left { text-align: left !important; }
+    .text-#{$breakpoint}-right { text-align: right !important; }
     .text-#{$breakpoint}-center { text-align: center !important; }
+    .text-#{$breakpoint}-justify { text-align: justify !important; }
+  }
+
+  // Overrule above alignment on a certain
+  // breakpoint only, or to state it explicitly
+  @include media-breakpoint-only($breakpoint) {
+    .text-#{$breakpoint}-only-left { text-align: left !important; }
+    .text-#{$breakpoint}-only-right { text-align: right !important; }
+    .text-#{$breakpoint}-only-center { text-align: center !important; }
+    .text-#{$breakpoint}-only-justify { text-align: justify !important; }
   }
 }
 
