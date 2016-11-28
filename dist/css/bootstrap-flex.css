@@ -685,9 +685,9 @@ mark,
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
-  -webkit-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   max-width: 100%;
   height: auto;
 }
@@ -2342,7 +2342,7 @@ pre code {
 }
 
 select.form-control:not([size]):not([multiple]) {
-  height: calc(2.5rem - 2px);
+  height: calc(2.25rem + 2px);
 }
 
 select.form-control:focus::-ms-value {
@@ -2492,9 +2492,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .form-control-danger {
   padding-right: 2.25rem;
   background-repeat: no-repeat;
-  background-position: center right 0.625rem;
-  -webkit-background-size: 1.25rem 1.25rem;
-          background-size: 1.25rem 1.25rem;
+  background-position: center right 0.5625rem;
+  -webkit-background-size: 1.125rem 1.125rem;
+          background-size: 1.125rem 1.125rem;
 }
 
 .has-success .form-control-feedback,
@@ -3310,9 +3310,9 @@ input[type="button"].btn-block {
 
 .fade {
   opacity: 0;
-  -webkit-transition: opacity .15s linear;
-  -o-transition: opacity .15s linear;
-  transition: opacity .15s linear;
+  -webkit-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
 }
 
 .fade.active {
@@ -3339,15 +3339,9 @@ tbody.collapse.active {
   position: relative;
   height: 0;
   overflow: hidden;
-  -webkit-transition-timing-function: ease;
-       -o-transition-timing-function: ease;
-          transition-timing-function: ease;
-  -webkit-transition-duration: .35s;
-       -o-transition-duration: .35s;
-          transition-duration: .35s;
-  -webkit-transition-property: height;
-  -o-transition-property: height;
-  transition-property: height;
+  -webkit-transition: height 0.35s ease;
+  -o-transition: height 0.35s ease;
+  transition: height 0.35s ease;
 }
 
 .dropup,
@@ -3939,7 +3933,7 @@ tbody.collapse.active {
 .custom-select {
   display: inline-block;
   max-width: 100%;
-  height: calc(2.5rem - 2px);
+  height: calc(2.25rem - 2px);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
   padding-right: 0.75rem \9;
   color: #464a4c;
@@ -4586,8 +4580,8 @@ tbody.collapse.active {
   display: block;
   margin-bottom: 0.75rem;
   background-color: #fff;
-  border-radius: 0.25rem;
   border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
 }
 
 .card-block {
@@ -4736,6 +4730,10 @@ tbody.collapse.active {
 .card-outline-danger {
   background-color: transparent;
   border-color: #d9534f;
+}
+
+.card-inverse {
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .card-inverse .card-header,
@@ -5760,11 +5758,11 @@ button.close {
 }
 
 .modal.fade .modal-dialog {
-  -webkit-transition: -webkit-transform .3s ease-out;
-  transition: -webkit-transform .3s ease-out;
-  -o-transition: -o-transform .3s ease-out;
-  transition: transform .3s ease-out;
-  transition: transform .3s ease-out, -webkit-transform .3s ease-out, -o-transform .3s ease-out;
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out, -o-transform 0.3s ease-out;
   -webkit-transform: translate(0, -25%);
       -ms-transform: translate(0, -25%);
        -o-transform: translate(0, -25%);
@@ -6154,9 +6152,9 @@ button.close {
 .carousel-inner > .carousel-item {
   position: relative;
   display: none;
-  -webkit-transition: .6s ease-in-out left;
-  -o-transition: .6s ease-in-out left;
-  transition: .6s ease-in-out left;
+  -webkit-transition: left 0.6s ease-in-out;
+  -o-transition: left 0.6s ease-in-out;
+  transition: left 0.6s ease-in-out;
 }
 
 .carousel-inner > .carousel-item > img,
@@ -6166,11 +6164,11 @@ button.close {
 
 @media (-webkit-transform-3d) {
   .carousel-inner > .carousel-item {
-    -webkit-transition: -webkit-transform .6s ease-in-out;
-    transition: -webkit-transform .6s ease-in-out;
-    -o-transition: -o-transform .6s ease-in-out;
-    transition: transform .6s ease-in-out;
-    transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out, -o-transform .6s ease-in-out;
+    -webkit-transition: -webkit-transform 0.6s ease-in-out;
+    transition: -webkit-transform 0.6s ease-in-out;
+    -o-transition: -o-transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out, -o-transform 0.6s ease-in-out;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
     -webkit-perspective: 1000px;
@@ -6195,11 +6193,11 @@ button.close {
 
 @supports ((-webkit-transform: translate3d(0, 0, 0)) or (transform: translate3d(0, 0, 0))) {
   .carousel-inner > .carousel-item {
-    -webkit-transition: -webkit-transform .6s ease-in-out;
-    transition: -webkit-transform .6s ease-in-out;
-    -o-transition: -o-transform .6s ease-in-out;
-    transition: transform .6s ease-in-out;
-    transition: transform .6s ease-in-out, -webkit-transform .6s ease-in-out, -o-transform .6s ease-in-out;
+    -webkit-transition: -webkit-transform 0.6s ease-in-out;
+    transition: -webkit-transform 0.6s ease-in-out;
+    -o-transition: -o-transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out, -o-transform 0.6s ease-in-out;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
     -webkit-perspective: 1000px;
