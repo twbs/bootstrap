@@ -73,7 +73,8 @@
     })
 
     clipboard.on('error', function (e) {
-      var fallbackMsg = /Mac/i.test(navigator.userAgent) ? 'Press \u2318 to copy' : 'Press Ctrl-C to copy'
+      const modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
+      let fallbackMsg = 'Press ' + modifierKey + 'C to copy'
 
       $(e.trigger)
         .attr('title', fallbackMsg)
