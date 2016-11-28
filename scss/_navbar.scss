@@ -128,42 +128,6 @@
   }
 }
 
-// scss-lint:disable ImportantRule
-.navbar-toggleable {
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-
-    &-#{$breakpoint} {
-      @include clearfix;
-
-      @include media-breakpoint-down($breakpoint) {
-        .navbar-brand {
-          display: block;
-          float: none;
-          margin-top: .5rem;
-          margin-right: 0;
-        }
-
-        .navbar-nav {
-          margin-top: .5rem;
-          margin-bottom: .5rem;
-
-          .dropdown-menu {
-            position: static;
-            float: none;
-          }
-        }
-      }
-
-      @include media-breakpoint-up($next) {
-        display: block;
-      }
-    }
-  }
-}
-// scss-lint:enable ImportantRule
-
-
 // Navigation
 //
 // Custom navbar navigation built on the base `.nav` styles.
@@ -284,48 +248,48 @@
   }
 }
 
-
 // Navbar toggleable
 //
 // Custom override for collapse plugin in navbar.
 
+// Placed at the end of the file so it can override some CSS properties
+// scss-lint:disable ImportantRule
 .navbar-toggleable {
-  &-xs {
-    @include clearfix;
-    @include media-breakpoint-down(xs) {
-      .navbar-nav .nav-item {
-        float: none;
-        margin-left: 0;
-      }
-    }
-    @include media-breakpoint-up(sm) {
-      display: block !important;
-    }
-  }
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
 
-  &-sm {
-    @include clearfix;
-    @include media-breakpoint-down(sm) {
-      .navbar-nav .nav-item {
-        float: none;
-        margin-left: 0;
-      }
-    }
-    @include media-breakpoint-up(md) {
-      display: block !important;
-    }
-  }
+    // Get rid of the 'xs' prefix while reducing duplication
+    #{if(breakpoint-min($breakpoint, $grid-breakpoints), "&-#{$breakpoint}", "&")} {
+      @include clearfix;
 
-  &-md {
-    @include clearfix;
-    @include media-breakpoint-down(md) {
-      .navbar-nav .nav-item {
-        float: none;
-        margin-left: 0;
+      @include media-breakpoint-down($breakpoint) {
+        .navbar-brand {
+          display: block;
+          float: none;
+          margin-top: .5rem;
+          margin-right: 0;
+        }
+
+        .navbar-nav {
+          margin-top: .5rem;
+          margin-bottom: .5rem;
+
+          .dropdown-menu {
+            position: static;
+            float: none;
+          }
+
+          .nav-item {
+            float: none;
+            margin-left: 0;
+          }
+        }
       }
-    }
-    @include media-breakpoint-up(lg) {
-      display: block !important;
+
+      @include media-breakpoint-up($next) {
+        display: block !important;
+      }
     }
   }
 }
+// scss-lint:enable ImportantRule

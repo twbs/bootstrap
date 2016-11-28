@@ -157,7 +157,7 @@ Use the flexbox alignment utilities to vertically align columns.
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
-  <div class="row flex-items-xs-top">
+  <div class="row flex-items-top">
     <div class="col-xs">
       One of three columns
     </div>
@@ -168,7 +168,7 @@ Use the flexbox alignment utilities to vertically align columns.
       One of three columns
     </div>
   </div>
-  <div class="row flex-items-xs-middle">
+  <div class="row flex-items-middle">
     <div class="col-xs">
       One of three columns
     </div>
@@ -179,7 +179,7 @@ Use the flexbox alignment utilities to vertically align columns.
       One of three columns
     </div>
   </div>
-  <div class="row flex-items-xs-bottom">
+  <div class="row flex-items-bottom">
     <div class="col-xs">
       One of three columns
     </div>
@@ -198,13 +198,13 @@ Use the flexbox alignment utilities to vertically align columns.
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col-xs flex-xs-top">
+    <div class="col-xs flex-top">
       One of three columns
     </div>
-    <div class="col-xs flex-xs-middle">
+    <div class="col-xs flex-middle">
       One of three columns
     </div>
-    <div class="col-xs flex-xs-bottom">
+    <div class="col-xs flex-bottom">
       One of three columns
     </div>
   </div>
@@ -219,7 +219,7 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
-  <div class="row flex-items-xs-left">
+  <div class="row flex-items-left">
     <div class="col-4">
       One of two columns
     </div>
@@ -227,7 +227,7 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-xs-center">
+  <div class="row flex-items-center">
     <div class="col-4">
       One of two columns
     </div>
@@ -235,7 +235,7 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-xs-right">
+  <div class="row flex-items-right">
     <div class="col-4">
       One of two columns
     </div>
@@ -243,7 +243,7 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-xs-around">
+  <div class="row flex-items-around">
     <div class="col-4">
       One of two columns
     </div>
@@ -251,7 +251,7 @@ Flexbox utilities for horizontal alignment also exist for a number of layout opt
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-xs-between">
+  <div class="row flex-items-between">
     <div class="col-4">
       One of two columns
     </div>
@@ -271,13 +271,13 @@ Flexbox utilities for controlling the **visual order** of your content.
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col-xs flex-xs-unordered">
+    <div class="col-xs flex-unordered">
       First, but unordered
     </div>
-    <div class="col-xs flex-xs-last">
+    <div class="col-xs flex-last">
       Second, but last
     </div>
-    <div class="col-xs flex-xs-first">
+    <div class="col-xs flex-first">
       Third, but first
     </div>
   </div>
