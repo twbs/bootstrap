@@ -5124,14 +5124,11 @@ a.badge:focus, a.badge:hover {
   font-weight: bold;
 }
 
-.alert-dismissible {
-  padding-right: 2.5rem;
-}
-
 .alert-dismissible .close {
   position: relative;
-  top: -.125rem;
+  top: -0.75rem;
   right: -1.25rem;
+  padding: 0.75rem 1.25rem;
   color: inherit;
 }
 
