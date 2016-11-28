@@ -29,7 +29,7 @@ Be sure not to open a modal while another is still visible. Showing more than on
 {% callout warning %}
 #### Modal markup placement
 
-Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.
+Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality. Placing it within a `position: fixed;` element may adversely affect placement.
 {% endcallout %}
 
 {% callout warning %}
