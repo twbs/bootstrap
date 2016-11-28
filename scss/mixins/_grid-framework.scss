@@ -17,27 +17,29 @@
     @include make-gutters($gutters);
   }
 
-  $breakpoint-counter: 0;
   @each $breakpoint in map-keys($breakpoints) {
+    // Logic is a little reversed here: `breakpoint-min` returns false when it's the smallest breakpoint.
+    $min: not breakpoint-min($breakpoint, $breakpoints);
 
-    $breakpoint-counter: ($breakpoint-counter + 1);
-
-    @if $breakpoint-counter == 1 {
-      @for $i from 1 through $columns {
+    // Allow columns to stretch full width below their breakpoints
+    @for $i from 1 through $columns {
+      @if $min {
         .col-#{$i} {
+          @extend %grid-column;
+        }
+      } @else {
+        .col-#{$breakpoint}-#{$i} {
           @extend %grid-column;
         }
       }
     }
-
-    @if $breakpoint-counter != 1 {
-      // Allow columns to stretch full width below their breakpoints
-      .col-#{$breakpoint} {
-        @extend %grid-column;
-      }
-
-      @for $i from 1 through $columns {
-        .col-#{$breakpoint}-#{$i} {
+    @if $enable-flex {
+      @if $min {
+        .col {
+          @extend %grid-column;
+        }
+      } @else {
+        .col-#{$breakpoint} {
           @extend %grid-column;
         }
       }
@@ -46,24 +48,35 @@
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       @if $enable-flex {
-        .col-#{$breakpoint} {
-          flex-basis: 0;
-          flex-grow: 1;
-          max-width: 100%;
-        }
-       .col-#{$breakpoint}-auto {
-          flex: 0 0 auto;
-          width: auto;
+        @if $min {
+          .col {
+            flex-basis: 0;
+            flex-grow: 1;
+            max-width: 100%;
+          }
+          .col-auto {
+            flex: 0 0 auto;
+            width: auto;
+          }
+        } @else {
+          .col-#{$breakpoint} {
+            flex-basis: 0;
+            flex-grow: 1;
+            max-width: 100%;
+          }
+          .col-#{$breakpoint}-auto {
+            flex: 0 0 auto;
+            width: auto;
+          }
         }
       }
 
       @for $i from 1 through $columns {
-        @if $breakpoint-counter == 1 {
+        @if $min {
           .col-#{$i} {
             @include make-col($i, $columns);
           }
-        }
-        @if $breakpoint-counter != 1 {
+        } @else {
           .col-#{$breakpoint}-#{$i} {
             @include make-col($i, $columns);
           }
@@ -72,12 +85,11 @@
 
       @each $modifier in (pull, push) {
         @for $i from 0 through $columns {
-          @if $breakpoint-counter == 1 {
+          @if $min {
             .#{$modifier}-#{$i} {
               @include make-col-modifier($modifier, $i, $columns)
             }
-          }
-          @if $breakpoint-counter != 1 {
+          } @else {
             .#{$modifier}-#{$breakpoint}-#{$i} {
               @include make-col-modifier($modifier, $i, $columns)
             }
@@ -87,17 +99,16 @@
 
       // `$columns - 1` because offsetting by the width of an entire row isn't possible
       @for $i from 0 through ($columns - 1) {
-        @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .offset-xs-0
-           @if $breakpoint-counter == 1 {
-              .offset-#{$i} {
-                @include make-col-modifier(offset, $i, $columns)
-              }
-           }
-           @if $breakpoint-counter != 1 {
-              .offset-#{$breakpoint}-#{$i} {
-                @include make-col-modifier(offset, $i, $columns)
-              }
-           }
+        @if not $min or $i != 0 { // Avoid emitting useless .offset-xs-0
+          @if $min {
+            .offset-#{$i} {
+              @include make-col-modifier(offset, $i, $columns)
+            }
+          } @else {
+            .offset-#{$breakpoint}-#{$i} {
+              @include make-col-modifier(offset, $i, $columns)
+            }
+          }
         }
       }
     }

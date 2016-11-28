@@ -35,7 +35,7 @@
 .responsive-utilities-test {
   margin-top: .25rem;
 }
-.responsive-utilities-test .col-xs-6 {
+.responsive-utilities-test .col-6 {
   margin-top: .5rem;
   margin-bottom: .5rem;
 }
@@ -50,7 +50,7 @@
 }
 .visible-on,
 .hidden-on {
-  .col-xs-6 {
+  .col-6 {
     > .not-visible {
       color: #999;
       border: 1px solid #ddd;
@@ -59,7 +59,7 @@
 }
 .visible-on,
 .hidden-on {
-  .col-xs-6 {
+  .col-6 {
     .visible {
       color: #468847;
       background-color: #dff0d8;

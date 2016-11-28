@@ -100,7 +100,7 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Class prefix</th>
-        <td><code>.col-xs-</code></td>
+        <td><code>.col-</code></td>
         <td><code>.col-sm-</code></td>
         <td><code>.col-md-</code></td>
         <td><code>.col-lg-</code></td>
@@ -329,7 +329,7 @@ Using a single set of `.col-md-*` grid classes, you can create a basic grid syst
 
 ### Example: Mobile and desktop
 
-Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding `.col-xs-*` and `.col-md-*` to your columns. See the example below for a better idea of how it all works.
+Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding `.col-*` and `.col-md-*` to your columns. See the example below for a better idea of how it all works.
 
 <div class="bd-example-row">
 {% example html %}
@@ -385,6 +385,7 @@ Here's the source code for creating these styles. Note that column overrides are
   margin-right: 0;
   margin-left: 0;
 
+  > .col,
   > [class*="col-"] {
     padding-right: 0;
     padding-left: 0;

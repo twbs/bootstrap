@@ -43,21 +43,21 @@ For example, here are two grid layouts that apply to every device and viewport, 
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col-xs">
+    <div class="col">
       1 of 2
     </div>
-    <div class="col-xs">
+    <div class="col">
       1 of 2
     </div>
   </div>
   <div class="row">
-    <div class="col-xs">
+    <div class="col">
       1 of 3
     </div>
-    <div class="col-xs">
+    <div class="col">
       1 of 3
     </div>
-    <div class="col-xs">
+    <div class="col">
       1 of 3
     </div>
   </div>
@@ -73,24 +73,24 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col-xs">
+    <div class="col">
       1 of 3
     </div>
     <div class="col-6">
       2 of 3 (wider)
     </div>
-    <div class="col-xs">
+    <div class="col">
       3 of 3
     </div>
   </div>
   <div class="row">
-    <div class="col-xs">
+    <div class="col">
       1 of 3
     </div>
     <div class="col-5">
       2 of 3 (wider)
     </div>
-    <div class="col-xs">
+    <div class="col">
       3 of 3
     </div>
   </div>
@@ -106,24 +106,24 @@ Using the `col-{breakpoint}-auto` classes, columns can size itself based on the 
 {% example html %}
 <div class="container">
   <div class="row flex-items-md-center">
-    <div class="col-xs col-lg-2">
+    <div class="col col-lg-2">
       1 of 3
     </div>
     <div class="col-12 col-md-auto">
       Variable width content
     </div>
-    <div class="col-xs col-lg-2">
+    <div class="col col-lg-2">
       3 of 3
     </div>
   </div>
   <div class="row">
-    <div class="col-xs">
+    <div class="col">
       1 of 3
     </div>
     <div class="col-12 col-md-auto">
       Variable width content
     </div>
-    <div class="col-xs col-lg-2">
+    <div class="col col-lg-2">
       3 of 3
     </div>
   </div>
@@ -158,35 +158,35 @@ Use the flexbox alignment utilities to vertically align columns.
 {% example html %}
 <div class="container">
   <div class="row flex-items-top">
-    <div class="col-xs">
+    <div class="col">
       One of three columns
     </div>
-    <div class="col-xs">
+    <div class="col">
       One of three columns
     </div>
-    <div class="col-xs">
+    <div class="col">
       One of three columns
     </div>
   </div>
   <div class="row flex-items-middle">
-    <div class="col-xs">
+    <div class="col">
       One of three columns
     </div>
-    <div class="col-xs">
+    <div class="col">
       One of three columns
     </div>
-    <div class="col-xs">
+    <div class="col">
       One of three columns
     </div>
   </div>
   <div class="row flex-items-bottom">
-    <div class="col-xs">
+    <div class="col">
       One of three columns
     </div>
-    <div class="col-xs">
+    <div class="col">
       One of three columns
     </div>
-    <div class="col-xs">
+    <div class="col">
       One of three columns
     </div>
   </div>
@@ -198,13 +198,13 @@ Use the flexbox alignment utilities to vertically align columns.
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col-xs flex-top">
+    <div class="col flex-top">
       One of three columns
     </div>
-    <div class="col-xs flex-middle">
+    <div class="col flex-middle">
       One of three columns
     </div>
-    <div class="col-xs flex-bottom">
+    <div class="col flex-bottom">
       One of three columns
     </div>
   </div>
@@ -271,13 +271,13 @@ Flexbox utilities for controlling the **visual order** of your content.
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col-xs flex-unordered">
+    <div class="col flex-unordered">
       First, but unordered
     </div>
-    <div class="col-xs flex-last">
+    <div class="col flex-last">
       Second, but last
     </div>
-    <div class="col-xs flex-first">
+    <div class="col flex-first">
       Third, but first
     </div>
   </div>
