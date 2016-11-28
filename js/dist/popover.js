@@ -95,7 +95,7 @@ var Popover = function ($) {
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
 
-      $tip.removeClass(ClassName.FADE).removeClass(ClassName.ACTIVE);
+      $tip.removeClass(ClassName.FADE + ' ' + ClassName.ACTIVE);
 
       this.cleanupTether();
     };

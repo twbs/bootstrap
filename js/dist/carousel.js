@@ -335,11 +335,9 @@ var Carousel = function ($) {
         $(nextElement).addClass(directionalClassName);
 
         $(activeElement).one(Util.TRANSITION_END, function () {
-          $(nextElement).removeClass(directionalClassName).removeClass(direction);
+          $(nextElement).removeClass(directionalClassName + ' ' + direction).addClass(ClassName.ACTIVE);
 
-          $(nextElement).addClass(ClassName.ACTIVE);
-
-          $(activeElement).removeClass(ClassName.ACTIVE).removeClass(direction).removeClass(directionalClassName);
+          $(activeElement).removeClass(ClassName.ACTIVE + ' ' + direction + ' ' + directionalClassName);
 
           _this3._isSliding = false;
 
