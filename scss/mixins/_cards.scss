@@ -22,6 +22,7 @@
 @mixin card-inverse {
   .card-header,
   .card-footer {
+    background-color: transparent;
     border-color: rgba(255,255,255,.2);
   }
   .card-header,
