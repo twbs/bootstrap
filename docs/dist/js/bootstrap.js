@@ -851,11 +851,9 @@ var Carousel = function ($) {
         $(nextElement).addClass(directionalClassName);
 
         $(activeElement).one(Util.TRANSITION_END, function () {
-          $(nextElement).removeClass(directionalClassName).removeClass(direction);
+          $(nextElement).removeClass(directionalClassName + ' ' + direction).addClass(ClassName.ACTIVE);
 
-          $(nextElement).addClass(ClassName.ACTIVE);
-
-          $(activeElement).removeClass(ClassName.ACTIVE).removeClass(direction).removeClass(directionalClassName);
+          $(activeElement).removeClass(ClassName.ACTIVE + ' ' + direction + ' ' + directionalClassName);
 
           _this5._isSliding = false;
 
@@ -3017,7 +3015,7 @@ var Tooltip = function ($) {
 
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle());
 
-      $tip.removeClass(ClassName.FADE).removeClass(ClassName.ACTIVE);
+      $tip.removeClass(ClassName.FADE + ' ' + ClassName.ACTIVE);
 
       this.cleanupTether();
     };
@@ -3376,7 +3374,7 @@ var Popover = function ($) {
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
 
-      $tip.removeClass(ClassName.FADE).removeClass(ClassName.ACTIVE);
+      $tip.removeClass(ClassName.FADE + ' ' + ClassName.ACTIVE);
 
       this.cleanupTether();
     };
