@@ -23,8 +23,8 @@ html {
 }
 
 .container::after {
+  display: block;
   content: "";
-  display: table;
   clear: both;
 }
 
@@ -92,8 +92,8 @@ html {
 }
 
 .container-fluid::after {
+  display: block;
   content: "";
-  display: table;
   clear: both;
 }
 
@@ -131,8 +131,8 @@ html {
 }
 
 .row::after {
+  display: block;
   content: "";
-  display: table;
   clear: both;
 }
 

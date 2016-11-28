@@ -65,8 +65,6 @@
   padding: 3rem 15px 2rem;
   color: #cdbfe3;
   text-align: center;
-  background-image: -webkit-linear-gradient(315deg, #271b38, #563d7c, #7952b3);
-  background-image: -o-linear-gradient(315deg, #271b38, #563d7c, #7952b3);
   background-image: linear-gradient(135deg, #271b38, #563d7c, #7952b3);
 }
 
@@ -631,9 +629,9 @@
   border: 1px solid rgba(86, 61, 124, 0.2);
 }
 
-.bd-example-row .flex-items-xs-top,
-.bd-example-row .flex-items-xs-middle,
-.bd-example-row .flex-items-xs-bottom {
+.bd-example-row .flex-items-top,
+.bd-example-row .flex-items-middle,
+.bd-example-row .flex-items-bottom {
   min-height: 6rem;
   background-color: rgba(255, 0, 0, 0.1);
 }
@@ -685,8 +683,8 @@
 }
 
 .bd-example::after {
+  display: block;
   content: "";
-  display: table;
   clear: both;
 }
 
@@ -1528,19 +1526,13 @@
 .language-bash::before {
   color: #009;
   content: "$ ";
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .language-powershell::before {
   color: #009;
   content: "PM> ";
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .anchorjs-link {
@@ -1555,8 +1547,6 @@
 
 *:hover > .anchorjs-link {
   opacity: .75;
-  -webkit-transition: color .16s linear;
-  -o-transition: color .16s linear;
   transition: color .16s linear;
 }
 
@@ -1565,3 +1555,5 @@
   text-decoration: none;
   opacity: 1;
 }
+
+/*# sourceMappingURL=docs.min.css.map */
