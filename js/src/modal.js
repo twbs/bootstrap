@@ -186,10 +186,7 @@ const Modal = (($) => {
     dispose() {
       $.removeData(this._element, DATA_KEY)
 
-      $(window).off(EVENT_KEY)
-      $(document).off(EVENT_KEY)
-      $(this._element).off(EVENT_KEY)
-      $(this._backdrop).off(EVENT_KEY)
+      $(window, document, this._element, this._backdrop).off(EVENT_KEY)
 
       this._config              = null
       this._element             = null
