@@ -1,9 +1,7 @@
 .fade {
   opacity: 0;
 
-  @if $enable-transitions {
-    transition: opacity .15s linear;
-  }
+  @include transition(opacity .15s linear);
 
   &.active {
     opacity: 1;
@@ -34,9 +32,5 @@ tbody {
   height: 0;
   overflow: hidden;
 
-  @if $enable-transitions {
-    transition-timing-function: ease;
-    transition-duration: .35s;
-    transition-property: height;
-  }
+  @include transition(height .35s ease);
 }

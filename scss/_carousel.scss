@@ -11,7 +11,7 @@
   > .carousel-item {
     position: relative;
     display: none;
-    transition: .6s ease-in-out left;
+    @include transition(left .6s ease-in-out);
 
     // Account for jankitude on images
     > img,
@@ -22,7 +22,7 @@
 
     // CSS3 transforms when supported by the browser
     @include if-supports-3d-transforms() {
-      transition: transform .6s ease-in-out;
+      @include transition(transform .6s ease-in-out);
       backface-visibility: hidden;
       perspective: 1000px;
 
