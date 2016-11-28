@@ -257,9 +257,8 @@
 .navbar-toggleable {
   @each $breakpoint in map-keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
-
-    // Get rid of the 'xs' prefix while reducing duplication
-    #{if(breakpoint-min($breakpoint, $grid-breakpoints), "&-#{$breakpoint}", "&")} {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    &#{$infix} {
       @include clearfix;
 
       @include media-breakpoint-down($breakpoint) {

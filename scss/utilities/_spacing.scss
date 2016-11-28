@@ -20,40 +20,21 @@
       $length-y:   map-get($lengths, y);
 
       @include media-breakpoint-up($breakpoint) {
-        $min: breakpoint-min($breakpoint, $grid-breakpoints);
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-        @if $min {
-          // everything else
-          .#{$abbrev}-#{$breakpoint}-#{$size}  { #{$prop}:        $length-y $length-x !important; }
-          .#{$abbrev}t-#{$breakpoint}-#{$size} { #{$prop}-top:    $length-y !important; }
-          .#{$abbrev}r-#{$breakpoint}-#{$size} { #{$prop}-right:  $length-x !important; }
-          .#{$abbrev}b-#{$breakpoint}-#{$size} { #{$prop}-bottom: $length-y !important; }
-          .#{$abbrev}l-#{$breakpoint}-#{$size} { #{$prop}-left:   $length-x !important; }
-          .#{$abbrev}x-#{$breakpoint}-#{$size} {
-            #{$prop}-right:  $length-x !important;
-            #{$prop}-left:   $length-x !important;
-          }
-          .#{$abbrev}y-#{$breakpoint}-#{$size} {
-            #{$prop}-top:    $length-y !important;
-            #{$prop}-bottom: $length-y !important;
-          }
-        } @else {
-          // xs
-          .#{$abbrev}-#{$size}  { #{$prop}:        $length-y $length-x !important; }
-          .#{$abbrev}t-#{$size} { #{$prop}-top:    $length-y !important; }
-          .#{$abbrev}r-#{$size} { #{$prop}-right:  $length-x !important; }
-          .#{$abbrev}b-#{$size} { #{$prop}-bottom: $length-y !important; }
-          .#{$abbrev}l-#{$size} { #{$prop}-left:   $length-x !important; }
-          .#{$abbrev}x-#{$size} {
-            #{$prop}-right:  $length-x !important;
-            #{$prop}-left:   $length-x !important;
-          }
-          .#{$abbrev}y-#{$size} {
-            #{$prop}-top:    $length-y !important;
-            #{$prop}-bottom: $length-y !important;
-          }
+        .#{$abbrev}#{$infix}-#{$size}  { #{$prop}:        $length-y $length-x !important; }
+        .#{$abbrev}t#{$infix}-#{$size} { #{$prop}-top:    $length-y !important; }
+        .#{$abbrev}r#{$infix}-#{$size} { #{$prop}-right:  $length-x !important; }
+        .#{$abbrev}b#{$infix}-#{$size} { #{$prop}-bottom: $length-y !important; }
+        .#{$abbrev}l#{$infix}-#{$size} { #{$prop}-left:   $length-x !important; }
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-right:  $length-x !important;
+          #{$prop}-left:   $length-x !important;
         }
-
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-top:    $length-y !important;
+          #{$prop}-bottom: $length-y !important;
+        }
       }
     }
   }
