@@ -470,10 +470,9 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 
 ### Inline
 
-Groups of checkboxes or radios that appear on the same horizontal row are similar to their stacked counterparts.  Just add `.form-check-inline` to the `.form-check` `<div>`
+Group checkboxes or radios on the same horizontal row by adding `.form-check-inline` to any `.form-check`.
 
 {% example html %}
-
 <div class="form-check form-check-inline">
   <label class="form-check-label">
     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
