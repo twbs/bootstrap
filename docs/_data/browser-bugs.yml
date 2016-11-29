@@ -462,6 +462,16 @@
 
 -
   browser: >
+    Safari (iOS)
+  summary: >
+    Element which is `position:fixed` disappears after opening a `<select>` menu
+  upstream_bug: >
+    WebKit#162362
+  origin: >
+    Bootstrap#20759
+
+-
+  browser: >
     Safari (iPad Pro)
   summary: >
     Rendering of descendants of `position: fixed` element gets clipped on iPad Pro in Landscape orientation
