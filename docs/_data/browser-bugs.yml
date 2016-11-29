@@ -170,6 +170,16 @@
 
 -
   browser: >
+    Firefox
+  summary: >
+    Layout with floated columns breaks when printing
+  upstream_bug: >
+    Mozilla#1315994
+  origin: >
+    Bootstrap#21092
+
+-
+  browser: >
     Firefox (Windows)
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
