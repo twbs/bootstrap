@@ -235,20 +235,14 @@ select.form-control-lg {
 
 // Radios and checkboxes on same line
 .form-check-inline {
-  position: relative;
   display: inline-block;
-  padding-left: 1.25rem;
-  margin-bottom: 0; // Override default `<label>` bottom margin
-  vertical-align: middle;
-  cursor: pointer;
+
+  .form-check-label {
+    vertical-align: middle;
+  }
 
   + .form-check-inline {
     margin-left: .75rem;
-  }
-
-  &.disabled {
-    color: $text-muted;
-    cursor: $cursor-disabled;
   }
 }
 
