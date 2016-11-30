@@ -226,12 +226,12 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
 
 ## Header nav
 
-Use Bootstrap's nav pills or tabs within a card header. Be sure to always include a `.float-*-*` utility class for proper alignment.
+Use Bootstrap's nav pills or tabs within a card header.
 
 {% example html %}
 <div class="card text-center">
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs float-left">
+    <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -254,7 +254,7 @@ Use Bootstrap's nav pills or tabs within a card header. Be sure to always includ
 {% example html %}
 <div class="card text-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills float-left">
+    <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
