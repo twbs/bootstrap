@@ -187,6 +187,7 @@ var Tooltip = function ($) {
       $.removeData(this.element, this.constructor.DATA_KEY);
 
       $(this.element).off(this.constructor.EVENT_KEY);
+      $(this.element).closest('.modal').off('hide.bs.modal');
 
       if (this.tip) {
         $(this.tip).remove();
@@ -393,6 +394,10 @@ var Tooltip = function ($) {
             return _this3._leave(event);
           });
         }
+
+        $(_this3.element).closest('.modal').on('hide.bs.modal', function () {
+          return _this3.hide();
+        });
       });
 
       if (this.config.selector) {
