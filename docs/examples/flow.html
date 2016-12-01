@@ -29,7 +29,95 @@
 
 	function PageController(SelectOptionsService) {
 		var $ctrl = this;
+
+		$ctrl.onStop = function() {
+			$ctrl.swap = true;
+			console.log('onStop');
+		};
 	}
+	/* TODO this is duplicate of work the WILL appear in styleguide components,
+	Remove at that point */
+	angular
+		.module('ExampleApp')
+		.directive('twProcessTodo', ['$interval', TwProcess]);
+
+
+		function TwProcess() {
+			return {
+				restrict: 'E',
+				controllerAs: '$ctrl',
+				bindToController: true,
+				scope: {
+					state: '=',
+					size: '@',
+					onStop: '&'
+				},
+				controller: ['$scope', '$interval', '$timeout', TwProcessController],
+				template:
+				"<span class='process' \
+					ng-class='{ \
+						\"process-success\": $ctrl.processing === 1, \
+						\"process-danger\": $ctrl.processing === -1, \
+						\"process-stopped\": $ctrl.processing === 0, \
+						\"process-xs\": $ctrl.size === \"xs\", \
+						\"process-sm\": $ctrl.size === \"sm\", \
+						\"process-md\": $ctrl.size === \"md\", \
+						\"process-lg\": $ctrl.size === \"lg\", \
+						\"process-xl\": $ctrl.size === \"xl\" \
+					}'> \
+					<span class='process-icon-container'> \
+						<span class='process-icon-horizontal'></span> \
+						<span class='process-icon-vertical'></span> \
+					</span> \
+					<svg version='1.1' \
+						xmlns='http://www.w3.org/2000/svg' \
+						xml:space='preserve'> \
+						<circle class='process-circle' cx='50%' cy='50%' r='46%' \
+							fill-opacity='0.0' /> \
+					</svg> \
+				</span>"
+			};
+		}
+
+		function TwProcessController($scope, $interval, $timeout) {
+			var $ctrl = this;
+			$ctrl.processing = $ctrl.state;
+
+			// This allows us to cancel the interval when not needed.
+			$scope.$watch('$ctrl.state', function(newVal) {
+				if (($ctrl.processing === -1 ||
+					$ctrl.processing === 0 ||
+					$ctrl.processing === 1) &&
+					($ctrl.state !== -1 &&
+					$ctrl.state !== 0 &&
+					$ctrl.state !== 1)) {
+					// We're stopped and restarting
+					$ctrl.processing = null;
+					$ctrl.createInterval();
+				}
+			});
+
+			$ctrl.createInterval = function() {
+				var promise = $interval(function() {
+					$ctrl.processing = $ctrl.state;
+					if ($ctrl.state === -1 ||
+						$ctrl.state === 0 ||
+						$ctrl.state === 1) {
+						$interval.cancel(promise);
+
+						if ($ctrl.onStop) {
+							if ($ctrl.state === 0) {
+								$ctrl.onStop();
+							} else {
+								$timeout($ctrl.onStop, 1800);
+							}
+						}
+					}
+				}, 1500);
+			};
+
+			$ctrl.createInterval();
+		}
 	</script>
 
 	<script src="js/nav.directive.js"></script>
@@ -345,6 +433,9 @@
 			</div>
 		</div>
 	</div>
+
+
+
 </div>
 <div class="column-layout-right bg-default" ng-class="{open: open}">
 	<div class="column-layout-top">

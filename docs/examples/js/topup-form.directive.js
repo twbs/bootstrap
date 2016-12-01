@@ -7,9 +7,10 @@
 	function TopupForm(SelectOptionsService) {
 		return {
 			bindToController: true,
-			controller: function() {
-				this.options = SelectOptionsService;
-				this.currencies = [
+			controller: ['$timeout', function($timeout) {
+				var $ctrl = this;
+				$ctrl.options = SelectOptionsService;
+				$ctrl.currencies = [
 					{header: 'Popular currencies'},
 					{value: 'eur', label: 'EUR', note: 'Euro', currency: 'EUR'},
 					{value: 'gbp', label: 'GBP', note: 'Great British Pound', currency: 'GBP'},
@@ -19,13 +20,20 @@
 					{value: 'jpy', label: 'JPY', note: 'Japanses Yen', currency: 'JPY'}
 				];
 
-				this.payInMethods = [
+				$ctrl.payInMethods = [
 					{header: 'Payment methods'},
 					{value: '2.00 GBP', label: 'Debit card', note: ' - £2.00 fee'},
 					{value: '3.00 GBP', label: 'Credit card', note: ' - £3.00 fee'},
 					{value: 'No additional fee', label: 'Bank transfer', note: ' - no additional fee'},
-				]
-			},
+				];
+
+				$ctrl.submit = function() {
+					$ctrl.processing = true;
+					$timeout(function () {
+						$ctrl.complete = true;
+					}, 1500);
+				}
+			}],
 			controllerAs: '$ctrl',
 			replace: false,
 			restrict: 'E',

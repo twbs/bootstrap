@@ -1,0 +1,275 @@
+<div class='bs-docs-section' id='process'>
+  <h1 id='process-basic' class='page-header'>Process</h1>
+
+  <p>Process is used for loading and processing states. It can be used as a simple
+    loading indicator, for asynchronous tasks with positive or negative results,
+    or simply for indicating a task has already completed with successful or
+    unsuccessful result.</p>
+
+  <div class='alert alert-warning'>
+      <h4>Please don't use the SVG markup directly</h4>
+      <p>There is a component in the styleguide-components repository which
+        implements the markup in a simple <code>tw-process</code> component.</p>
+  </div>
+
+  <div class='bs-example' id='process-basic-examples'>
+    <div class='row'>
+      <div class='col-sm-4'>
+        <span class='process process-xl process-stopped'>
+          <span class='process-icon-container'>
+            <span class='process-icon-horizontal'></span>
+            <span class='process-icon-vertical'></span>
+          </span>
+          <svg version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            xml:space='preserve'>
+            <circle class='process-circle' cx='50%' cy='50%' r='45%'
+              fill-opacity='0.0' />
+          </svg>
+        </span>
+      </div>
+      <div class='col-sm-4'>
+        <span id='process-success' class='process process-xl process-stopped'>
+          <span class='process-icon-container'>
+            <span class='process-icon-horizontal'></span>
+            <span class='process-icon-vertical'></span>
+          </span>
+          <svg version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            xml:space='preserve'>
+            <circle class='process-circle' cx='50%' cy='50%' r='45%'
+              fill-opacity='0.0' />
+          </svg>
+        </span>
+      </div>
+      <div class='col-sm-4'>
+        <span id='process-danger' class='process process-xl process-stopped'>
+          <span class='process-icon-container'>
+            <span class='process-icon-horizontal'></span>
+            <span class='process-icon-vertical'></span>
+          </span>
+          <svg version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            xml:space='preserve'>
+            <circle class='process-circle' cx='50%' cy='50%' r='45%'
+              fill-opacity='0.0' />
+          </svg>
+        </span>
+      </div>
+    </div>
+    <button class='btn btn-primary'
+      onclick="$('#process-basic-examples .process').removeClass('process-stopped'); $('#process-success').addClass('process-success'); $('#process-danger').addClass('process-danger');">
+      Start
+    </button>
+    <button class='btn btn-default'
+      onclick="$('#process-basic-examples .process').addClass('process-stopped'); $('#process-success').removeClass('process-success');$('#process-danger').removeClass('process-danger');">
+      Stop
+    </button>
+  </div>
+{% highlight html %}
+<span class='process process-sm'>
+  <span class='process-icon-container'>
+    <span class='process-icon-horizontal'></span>
+    <span class='process-icon-vertical'></span>
+  </span>
+  <svg version='1.1'
+    xmlns='http://www.w3.org/2000/svg'
+    xml:space='preserve'>
+    <circle class='process-circle' cx='50%' cy='50%' r='45%'
+      fill-opacity='0.0' />
+  </svg>
+</span>
+<span class='process process-sm process-success'>
+  ...
+</span>
+<span class='process process-sm process-danger'>
+  ...
+</span>
+{% endhighlight %}
+
+  <h2 id='process-sizes'>Process sizes</h2>
+  <p>Our sized variants are designed to work alongside our circle components.
+      Curenctly we have extras small (xs), small (sm), and extra large variants
+      for different use cases.</p>
+  <p>Simply add the relevant modifier class <code>.process-xs</code>,
+    <code>.process-sm</code>, or <code>.process-xl</code>.</p>
+
+  <div class='bs-example' id='process-size-examples'>
+    <div class='row'>
+      <div class='col-sm-4'>
+        <span class='process process-xs process-stopped'>
+          <span class='process-icon-container'>
+            <span class='process-icon-horizontal'></span>
+            <span class='process-icon-vertical'></span>
+          </span>
+          <svg version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            xml:space='preserve'>
+            <circle class='process-circle' cx='50%' cy='50%' r='45%'
+              fill-opacity='0.0' />
+          </svg>
+        </span>
+      </div>
+      <div class='col-sm-4'>
+        <span class='process process-sm process-stopped'>
+          <span class='process-icon-container'>
+            <span class='process-icon-horizontal'></span>
+            <span class='process-icon-vertical'></span>
+          </span>
+          <svg version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            xml:space='preserve'>
+            <circle class='process-circle' cx='50%' cy='50%' r='45%'
+              fill-opacity='0.0' />
+          </svg>
+        </span>
+      </div>
+      <div class='col-sm-4'>
+        <span class='process process-xl process-stopped'>
+          <span class='process-icon-container'>
+            <span class='process-icon-horizontal'></span>
+            <span class='process-icon-vertical'></span>
+          </span>
+          <svg version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            xml:space='preserve'>
+            <circle class='process-circle' cx='50%' cy='50%' r='45%'
+              fill-opacity='0.0' />
+          </svg>
+        </span>
+      </div>
+    </div>
+    <button class='btn btn-primary'
+      onclick="$('#process-size-examples .process').removeClass('process-stopped');">
+      Start
+    </button>
+    <button class='btn btn-default'
+      onclick="$('#process-size-examples .process').addClass('process-stopped');">
+      Stop
+    </button>
+  </div>
+{% highlight html %}
+<span class='process process-xs'>
+  ...
+</span>
+<span class='process process-sm'>
+  ...
+</span>
+<span class='process process-xl'>
+  ...
+</span>
+{% endhighlight %}
+
+<h3 id='process-buttons'>Button process</h3>
+<p>Process can be used in buttons to convey ongoing actions as a result of click.</p>
+
+<div class='bs-example' data-example-id='process-size-examples'>
+  <div class='row m-b-3'>
+    <div class='col-xs-12 col-sm-6'>
+      <button class='btn btn-primary btn-block' id='block-button-process-btn'
+        onclick="$('#block-button-process').removeClass('hidden'); setTimeout(function() { $('#block-button-process').addClass('hidden'); }, 2000); ">
+        <span class='process process-xs hidden' id='block-button-process'>
+          <span class='process-icon-container'>
+            <span class='process-icon-horizontal'></span>
+            <span class='process-icon-vertical'></span>
+          </span>
+          <svg version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            xml:space='preserve'>
+            <circle class='process-circle' cx='50%' cy='50%' r='45%'
+              fill-opacity='0.0' />
+          </svg>
+        </span>
+        Block button
+      </button>
+    </div>
+    <div class='col-xs-12 col-sm-6'>
+      <button class='btn btn-default btn-block' id='disabled-button-process-btn'
+        onclick="$('#disabled-button-process-btn').prop('disabled', true); $('#disabled-button-process').removeClass('hidden'); setTimeout(function() { $('#disabled-button-process-btn').removeProp('disabled'); $('#disabled-button-process').addClass('hidden'); }, 2000); ">
+        <span class='process process-xs hidden' id='disabled-button-process'>
+          <span class='process-icon-container'>
+          <span class='process-icon-horizontal'></span>
+          <span class='process-icon-vertical'></span>           </span>
+          <svg version='1.1'
+            xmlns='http://www.w3.org/2000/svg'
+            xml:space='preserve'>
+            <circle class='process-circle' cx='50%' cy='50%' r='45%'
+              fill-opacity='0.0' />
+          </svg>
+        </span>
+        Disabled button
+      </button>
+    </div>
+  </div>
+  <button class='btn btn-success' id='inline-button-process-btn'
+    onclick="$('#inline-button-process').removeClass('hidden'); setTimeout(function() { $('#inline-button-process').addClass('hidden'); }, 2000); ">
+    <span class='process process-xs hidden' id='inline-button-process'>
+      <span class='process-icon-container'>
+        <span class='process-icon-horizontal'></span>
+        <span class='process-icon-vertical'></span>
+      </span>
+      <svg version='1.1'
+        xmlns='http://www.w3.org/2000/svg'
+        xml:space='preserve'>
+        <circle class='process-circle' cx='50%' cy='50%' r='45%'
+          fill-opacity='0.0' />
+      </svg>
+    </span>
+    Inline button
+  </button>
+
+</div>
+{% highlight html %}
+<button class='btn btn-block btn-primary'>
+  <span class='process process-xs'>
+    ...
+  </span>
+</button>
+<button class='btn btn-block btn-default'>
+  <span class='process process-xs'>
+    ...
+  </span>
+</button>
+<button class='btn btn-success'>
+  <span class='process process-xs'>
+    ...
+  </span>
+</button>
+{% endhighlight %}
+
+
+  <h2 id='process-inverse'>Process inverse</h2>
+  <p>There is also an inverse variant for use on dark, or blue backgrounds,
+    using the modifier <code>.process-inverse</code>.</p>
+
+  <div class='bs-example' data-example-id='process-inverse-exampels'>
+    <div class='bg-info p-a-2'>
+      <span id='process-inverse-example' class='process process-sm process-inverse process-stopped'>
+        <span class='process-icon-container'>
+          <span class='process-icon-horizontal'></span>
+          <span class='process-icon-vertical'></span>
+        </span>
+        <svg version='1.1'
+          xmlns='http://www.w3.org/2000/svg'
+          xml:space='preserve'>
+          <circle class='process-circle' cx='50%' cy='50%' r='45%'
+            fill-opacity='0.0' />
+        </svg>
+      </span>
+    </div>
+    <button class='btn btn-primary'
+      onclick="$('#process-inverse-example').removeClass('process-stopped')">
+      Start
+    </button>
+    <button class='btn btn-default'
+      onclick="$('#process-inverse-example').addClass('process-stopped')">
+      Stop
+    </button>
+  </div>
+{% highlight html %}
+<span class='process process-inverse process-sm'>
+  ...
+</span>
+{% endhighlight %}
+
+</div>

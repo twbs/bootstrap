@@ -1,4 +1,4 @@
-<form>
+<form ng-if="!$ctrl.complete" ng-submit="$ctrl.submit()">
 	<div class="form-group form-group-lg">
 		<label class="control-label">Top up</label>
 		<div class="input-group input-group-lg" ng-init="$ctrl.currency1 = 'usd'">
@@ -33,132 +33,7 @@
 				Convert to USD balance
 			</label>
 		</div>
-		<!--
-		<ul ng-if="$ctrl.action === 'convert'"
-			class="sequence sequence-top sequence-bottom">
-			<li ng-if="$ctrl.showFees">
-				<div class="row">
-					<div class="col-xs-5 col-sm-4 col-md-3 text-xs-right">
-						<strong>- 4.99 GBP</strong>
-					</div>
-					<div class="col-xs-7 col-sm-8 col-md-9">
-						TransferWise fee
-					</div>
-				</div>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<div class="row">
-					<div class="col-xs-5 col-sm-4 col-md-3 text-xs-right">
-						<strong>- 2.00 GBP</strong>
-					</div>
-					<div class="col-xs-7 col-sm-8 col-md-9">
-						Fee to pay with
-						<span style="display: inline-block">
-							<tw-select class="m-b-0"
-								options="$ctrl.payInMethods"
-								ng-model="$ctrl.payInMethod"
-								ng-required="true"
-								hide-note="true"
-								dropdown-width="md"
-								size="sm">
-							</tw-select>
-						</span>
-					</div>
-				</div>
-			</li>
-			<li>
-				<a href="" ng-click="$ctrl.showFees = !$ctrl.showFees">
-					<span class="sequence-icon"><i class="icon icon-fast-flag"></i></span>
-					<div class="row">
-						<div class="col-xs-5 col-sm-4 col-md-3 text-xs-right">
-							<strong>6.99 GBP</strong>
-						</div>
-						<div class="col-xs-7 col-sm-8 col-md-9">
-							Total fees
-						</div>
-					</div>
-				</a>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<div class="row">
-					<div class="col-xs-5 col-sm-4 col-md-3 text-xs-right">
-						<strong>993.01 GBP</strong>
-					</div>
-					<div class="col-xs-7 col-sm-8 col-md-9">
-						Amount to convert
-					</div>
-				</div>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<div class="row">
-					<div class="col-xs-5 col-sm-4 col-md-3 text-xs-right">
-						<strong>x 1.23456</strong>
-					</div>
-					<div class="col-xs-7 col-sm-8 col-md-9">
-						Guaranteed rate
-					</div>
-				</div>
-			</li>
-		</ul>
-		-->
-		<!--
-		<ul ng-if="$ctrl.action === 'convert'"
-			class="sequence sequence-top sequence-bottom">
-			<li ng-if="$ctrl.showFees">
-				<dl class="dl-horizontal">
-					<dt>TransferWise fee</dt>
-					<dd>- 4.99 GBP</dd>
-				</dl>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<dl class="dl-horizontal">
-					<dt style="overflow: visible;">
-						<span style="display: inline-block">
-							<tw-select class="m-b-0"
-								options="$ctrl.payInMethods"
-								ng-model="$ctrl.payInMethod"
-								ng-required="true"
-								dropdown-width="md"
-								hide-note="true"
-								size="sm">
-							</tw-select>
-						</span>
-					</dt>
-					<dd>
-						{{$ctrl.payInMethod}}
-					</dd>
-				</dl>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<a href=""  ng-click="$ctrl.showFees = !$ctrl.showFees">
-					<span class="sequence-icon"><i class="icon icon-close"></i></span>
-					<dl class="dl-horizontal">
-						<dt>Total fees</dt>
-						<dd>- 6.99 GBP</dd>
-					</dl>
-				</a>
-			</li>
-			<li ng-if="!$ctrl.showFees">
-				<a href="" ng-click="$ctrl.showFees = !$ctrl.showFees">
-					<span class="sequence-icon"><i class="icon icon-fast-flag"></i></span>
-					Total fees <strong>6.99 GBP</strong>,
-					guaranteed rate <strong>1.23456</strong>
-				</a>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<dl class="dl-horizontal">
-					<dt>Amount to convert</dt>
-					<dd>993.01 GBP</dd>
-				</dl>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<dl class="dl-horizontal">
-					<dt>Guaranteed rate</dt>
-					<dd>x 1.23456</dd>
-				</dl>
-			</li>
-		</ul>
-		-->
+
 		<ul ng-if="$ctrl.action === 'convert'"
 			class="sequence sequence-top sequence-bottom sequence-table">
 			<!-- this looks weird because we could just have one of these and
@@ -217,7 +92,23 @@
 			</div>
 		</div>
 	</div>
-	<button class="btn btn-success btn-block" type="submit">
+	<button class="btn btn-success btn-block" type="submit"
+		ng-disabled="$ctrl.processing">
+		<tw-process-todo size="xs" ng-if="$ctrl.processing"></tw-process-todo>
 		Pay £1,000 {{$ctrl.currency1 | uppercase}}
 	</button>
 </form>
+<div ng-if="$ctrl.complete">
+	<tw-process-todo state="1" size="xl"></tw-process-todo>
+	<p class="text-xs-center" style="margin-top: 64px;">Your transfer of <strong>$1,000</strong> to Diana is on it's way and is
+		expected to reach her bank accounts today.  We have sent you a receipt
+		via email.</p>
+	<div class="row">
+		<div class="col-md-6">
+			<button class="btn btn-default btn-block">Share</button>
+		</div>
+		<div class="col-md-6">
+			<button class="btn btn-primary btn-block">Track transfer</button>
+		</div>
+	</div>
+</div>

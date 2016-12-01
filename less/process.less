@@ -1,0 +1,301 @@
+@process-xl-radius: 64px;
+@process-xl-stroke: 3px;
+@process-xl-circumference: (pi() * (2 * (@process-xl-radius - 1)));
+@process-xl-icon-size: 64px;
+@process-xl-icon-stroke: 8px;
+/*
+// Keep these sizes in case we want to add these back in.
+@process-lg-radius: 48px;
+@process-lg-stroke: 2.7px;
+@process-lg-circumference: (pi() * (2 * (@process-lg-radius - 1)));
+@process-lg-icon-size: 48px;
+@process-lg-icon-stroke: 6px;
+
+@process-md-radius: 36px;
+@process-md-circumference: (pi() * (2 * (@process-md-radius - 1)));
+@process-md-stroke: 2.5px;
+@process-md-icon-size: 36px;
+@process-md-icon-stroke: 4px;
+*/
+@process-sm-radius: 24px;
+@process-sm-circumference: (pi() * (2 * (@process-sm-radius - 1)));
+@process-sm-stroke: 2.4px;
+@process-sm-icon-size: 24px;
+@process-sm-icon-stroke: 3px;
+
+@process-xs-radius: 12px;
+@process-xs-circumference: (pi() * (2 * (@process-xs-radius - 1)));
+@process-xs-stroke: 2px;
+@process-xs-icon-size: 12px;
+@process-xs-icon-stroke: 2px;
+
+.process {
+  position: relative;
+  margin: auto;
+  display: block;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.process-circle {
+  transform-origin: center center;
+  transition: stroke 1s 0.2s linear;
+  stroke: @brand-light-blue;
+  stroke-opacity: 1;
+  stroke-linecap: round;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+.process-inverse .process-circle {
+  stroke: @brand-white;
+}
+
+.process-icon-container {
+  position: absolute;
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 50%;
+  width: 50%;
+  left: 25%;
+  top: 25%;
+}
+
+.process-icon-horizontal,
+.process-icon-vertical  {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.process-success {
+  .process-icon-horizontal {
+    background-color: @brand-green;
+    bottom: 0;
+    left: 0;
+  }
+  .process-icon-vertical {
+    background-color: @brand-green;
+    top: 100%;
+    right: 0;
+  }
+  .process-circle {
+    stroke: @brand-green;
+  }
+}
+
+.process-danger {
+  .process-icon-horizontal {
+    background-color: @brand-red;
+    left: 0;
+  }
+  .process-icon-vertical {
+    background-color: @brand-red;
+    top: 0;
+  }
+  .process-circle {
+    stroke: @brand-red;
+  }
+}
+
+.process-success,
+.process-danger {
+  .process-circle {
+    animation-duration: 1.5s;
+    animation-delay: 1ms; // 1 ms delay prevents small glitch on webkit
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  .process-icon-horizontal {
+    /* Animation over transition, to run once on load */
+    animation: process-width .3s 1.2s ease forwards;
+  }
+  .process-icon-vertical {
+    /* Animation over transition, to run once on load */
+    animation: process-height .3s 1.5s ease forwards;
+  }
+}
+
+.process-stopped {
+  .process-circle {
+    animation: none;
+  }
+  .process-icon-container {
+    display: none;
+  }
+}
+
+.process-size(@size, @circle-radius, @cirlce-circumference, @circle-stroke, @icon-size, @icon-stroke) {
+  .process-@{size} {
+    width: (@circle-radius * 2);
+    height: (@circle-radius * 2);
+
+    .process-circle {
+      /* Hide before animation to prevent glitching */
+      stroke-dashoffset: @cirlce-circumference;
+      stroke-dasharray: @cirlce-circumference;
+      stroke-width: @circle-stroke;
+    }
+
+    &.process-danger {
+      .process-icon-horizontal  {
+        top: ((@icon-size - @icon-stroke) / 2);
+        height: @icon-stroke;
+      }
+      .process-icon-vertical  {
+        left: ((@icon-size - @icon-stroke) / 2);
+        width: @icon-stroke;
+      }
+    }
+
+    .process-icon-horizontal,
+    .process-icon-vertical {
+      border-radius: (@icon-stroke / 2);
+    }
+
+    &.process-success {
+      .process-icon-container {
+        // TODO change to percentages so we don't need to redefine for different widths
+        width: ((@icon-size - @icon-stroke) / 2); // 20%
+        height: (@icon-size - @icon-stroke); // 42%
+        left: (3 * (@icon-size / 4)); // 40%
+      }
+      .process-icon-horizontal {
+        height: @icon-stroke;
+      }
+      .process-icon-vertical {
+        width: @icon-stroke;
+      }
+    }
+  }
+}
+.process-size(xs, @process-xs-radius, @process-xs-circumference, @process-xs-stroke, @process-xs-icon-size, @process-xs-icon-stroke);
+.process-size(sm, @process-sm-radius, @process-sm-circumference, @process-sm-stroke, @process-sm-icon-size, @process-sm-icon-stroke);
+.process-size(xl, @process-xl-radius, @process-xl-circumference, @process-xl-stroke, @process-xl-icon-size, @process-xl-icon-stroke);
+
+.process-xs {
+  .process-circle {
+    animation-name: process-chase-circle-xs;
+   }
+  &.process-success,
+  &.process-danger {
+    .process-circle {
+      animation-name: process-success-circle-xs;
+    }
+  }
+}
+.process-sm {
+  .process-circle {
+    animation-name: process-chase-circle-sm;
+   }
+  &.process-success,
+  &.process-danger {
+    .process-circle {
+      animation-name: process-success-circle-sm;
+    }
+  }
+}
+
+.process-xl {
+  .process-circle {
+    animation-name: process-chase-circle-xl;
+   }
+  &.process-success,
+  &.process-danger {
+    .process-circle {
+      animation-name: process-success-circle-xl;
+    }
+  }
+}
+
+.complete-circle(@process-circumference) {
+  0% {
+    transform: rotate(0deg);
+    stroke-dashoffset: (@process-circumference - 1);
+    stroke-dasharray: @process-circumference;
+  }
+  100% {
+    transform: rotate(360deg);
+    stroke-dashoffset: 0;
+    stroke-dasharray: @process-circumference;
+  }
+}
+
+.chase-circle(@process-circumference) {
+  0% {
+    transform: rotate(0deg);
+    stroke-dashoffset: ((3 * @process-circumference) - 1);
+    stroke-dasharray: @process-circumference;
+  }
+  25% {
+    stroke-dashoffset: (@process-circumference - 1);
+    stroke-dasharray: (@process-circumference * .5);
+  }
+  75% {
+    stroke-dashoffset: (@process-circumference - 1);
+    stroke-dasharray: (@process-circumference * .75);
+  }
+  100% {
+    transform: rotate(360deg);
+    stroke-dashoffset: (@process-circumference - 1);
+    stroke-dasharray: @process-circumference;
+  }
+}
+
+@keyframes process-chase-circle-xs {
+  .chase-circle(@process-xs-circumference);
+}
+@keyframes process-success-circle-xs {
+  .complete-circle(@process-xs-circumference);
+}
+
+@keyframes process-chase-circle-sm {
+  .chase-circle(@process-sm-circumference);
+}
+@keyframes process-success-circle-sm {
+  .complete-circle(@process-sm-circumference);
+}
+
+@keyframes process-chase-circle-xl {
+  .chase-circle(@process-xl-circumference);
+}
+@keyframes process-success-circle-xl {
+  .complete-circle(@process-xl-circumference);
+}
+
+
+@keyframes process-width {
+  to {
+    width: 100%;
+  }
+}
+@keyframes process-height {
+  to {
+    top: 0;
+    height: 100%;
+  }
+}
+
+.btn .process:first-child {
+  margin-left: -12px;
+  margin-right: 12px;
+  float: left;
+}
+.btn-block .process:first-child {
+  position: absolute;
+}
+
+.btn-primary .process-circle,
+.btn-success .process-circle,
+.btn:hover .process-circle,
+.btn:focus .process-circle {
+  stroke: @brand-white;
+}
+.btn[disabled] .process-circle {
+  stroke: @btn-disabled-color;
+}
