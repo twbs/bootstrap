@@ -63,6 +63,7 @@ html {
   // thus making it hard to click on stuff near the right edge of the page.
   // So we add this style to force IE11 & Edge to use a "normal", non-overlapping, non-auto-hiding scrollbar.
   // See https://github.com/twbs/bootstrap/issues/18543
+  // and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
   -ms-overflow-style: scrollbar;
   // Changes the default tap highlight to be completely transparent in iOS.
   -webkit-tap-highlight-color: rgba(0,0,0,0);
