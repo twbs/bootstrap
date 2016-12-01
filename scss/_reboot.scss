@@ -335,8 +335,8 @@ input[type="month"] {
   // Remove the default appearance of temporal inputs to avoid a Mobile Safari
   // bug where setting a custom line-height prevents text from being vertically
   // centered within the input.
-  //
-  // Bug report: https://github.com/twbs/bootstrap/issues/11266
+  // See https://bugs.webkit.org/show_bug.cgi?id=139848
+  // and https://github.com/twbs/bootstrap/issues/11266
   -webkit-appearance: listbox;
 }
 
