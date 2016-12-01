@@ -676,20 +676,6 @@ Create responsive tables by adding `.table-responsive` to any `.table` to make t
 Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
 {% endcallout %}
 
-{% callout warning %}
-#### Firefox and fieldsets
-
-Firefox has some awkward fieldset styling involving `width` that interferes with the responsive table. This cannot be overridden without a Firefox-specific hack that we **don't** provide in Bootstrap:
-
-{% highlight css %}
-@-moz-document url-prefix() {
-  fieldset { display: table-cell; }
-}
-{% endhighlight %}
-
-For more information, read [this Stack Overflow answer](https://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685).
-{% endcallout %}
-
 <div class="bd-example">
   <table class="table table-responsive">
     <thead>
