@@ -234,7 +234,7 @@
   summary: >
     `table-cell` borders not overlapping despite `margin-right: -1px`
   upstream_bug: >
-    Chromium#534750
+    Chromium#568691
   origin: >
     Bootstrap#17438, Bootstrap#14237
 
