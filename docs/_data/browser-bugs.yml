@@ -332,16 +332,6 @@
 
 -
   browser: >
-    Safari (iPad)
-  summary: >
-    `<select>` menu on iPad causes shifting of hit-testing areas
-  upstream_bug: >
-    WebKit#150079, Safari#23082521
-  origin: >
-    Bootstrap#14975
-
--
-  browser: >
     Safari (iOS)
   summary: >
     `transform: translate3d(0,0,0);` rendering bug.
