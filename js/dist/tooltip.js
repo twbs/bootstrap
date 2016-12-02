@@ -125,6 +125,7 @@ var Tooltip = function ($) {
       this._timeout = 0;
       this._hoverState = '';
       this._activeTrigger = {};
+      this._isTransitioning = false;
       this._tether = null;
 
       // protected
@@ -210,9 +211,12 @@ var Tooltip = function ($) {
       if ($(this.element).css('display') === 'none') {
         throw new Error('Please use show on visible elements');
       }
-      var showEvent = $.Event(this.constructor.Event.SHOW);
 
+      var showEvent = $.Event(this.constructor.Event.SHOW);
       if (this.isWithContent() && this._isEnabled) {
+        if (this._isTransitioning) {
+          throw new Error('Tooltip is transitioning');
+        }
         $(this.element).trigger(showEvent);
 
         var isInTheDom = $.contains(this.element.ownerDocument.documentElement, this.element);
@@ -262,6 +266,7 @@ var Tooltip = function ($) {
         var complete = function complete() {
           var prevHoverState = _this._hoverState;
           _this._hoverState = null;
+          _this._isTransitioning = false;
 
           $(_this.element).trigger(_this.constructor.Event.SHOWN);
 
@@ -271,6 +276,7 @@ var Tooltip = function ($) {
         };
 
         if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+          this._isTransitioning = true;
           $(this.tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
           return;
         }
@@ -284,6 +290,9 @@ var Tooltip = function ($) {
 
       var tip = this.getTipElement();
       var hideEvent = $.Event(this.constructor.Event.HIDE);
+      if (this._isTransitioning) {
+        throw new Error('Tooltip is transitioning');
+      }
       var complete = function complete() {
         if (_this2._hoverState !== HoverState.ACTIVE && tip.parentNode) {
           tip.parentNode.removeChild(tip);
@@ -291,6 +300,7 @@ var Tooltip = function ($) {
 
         _this2.element.removeAttribute('aria-describedby');
         $(_this2.element).trigger(_this2.constructor.Event.HIDDEN);
+        _this2._isTransitioning = false;
         _this2.cleanupTether();
 
         if (callback) {
@@ -307,7 +317,7 @@ var Tooltip = function ($) {
       $(tip).removeClass(ClassName.ACTIVE);
 
       if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
-
+        this._isTransitioning = true;
         $(tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
       } else {
         complete();
