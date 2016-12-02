@@ -17,7 +17,6 @@ module.exports = function (grunt) {
 
   var fs = require('fs');
   var path = require('path');
-  var npmShrinkwrap = require('npm-shrinkwrap');
   var generateGlyphiconsData = require('./grunt/bs-glyphicons-data-generator.js');
   var BsLessdocParser = require('./grunt/bs-lessdoc-parser.js');
   var getLessVarsData = function () {
@@ -232,6 +231,7 @@ module.exports = function (grunt) {
         compatibility: 'ie8',
         keepSpecialComments: '*',
         sourceMap: true,
+        sourceMapInlineSources: true,
         advanced: false
       },
       minifyCore: {
@@ -277,7 +277,7 @@ module.exports = function (grunt) {
     copy: {
       fonts: {
         expand: true,
-        src: 'fonts/*',
+        src: 'fonts/**',
         dest: 'dist/'
       },
       docs: {
@@ -301,7 +301,9 @@ module.exports = function (grunt) {
 
     jekyll: {
       options: {
-        config: '_config.yml'
+        bundleExec: true,
+        config: '_config.yml',
+        incremental: false
       },
       docs: {},
       github: {
@@ -314,12 +316,27 @@ module.exports = function (grunt) {
     htmlmin: {
       dist: {
         options: {
+          collapseBooleanAttributes: true,
           collapseWhitespace: true,
           conservativeCollapse: true,
-          minifyCSS: true,
+          decodeEntities: false,
+          minifyCSS: {
+            compatibility: 'ie8',
+            keepSpecialComments: 0
+          },
           minifyJS: true,
+          minifyURLs: false,
+          processConditionalComments: true,
           removeAttributeQuotes: true,
-          removeComments: true
+          removeComments: true,
+          removeOptionalAttributes: true,
+          removeOptionalTags: true,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          removeTagWhitespace: false,
+          sortAttributes: true,
+          sortClassName: true
         },
         expand: true,
         cwd: '_gh_pages',
@@ -331,17 +348,17 @@ module.exports = function (grunt) {
       }
     },
 
-    jade: {
+    pug: {
       options: {
         pretty: true,
         data: getLessVarsData
       },
       customizerVars: {
-        src: 'docs/_jade/customizer-variables.jade',
+        src: 'docs/_pug/customizer-variables.pug',
         dest: 'docs/_includes/customizer-variables.html'
       },
       customizerNav: {
-        src: 'docs/_jade/customizer-nav.jade',
+        src: 'docs/_pug/customizer-nav.pug',
         dest: 'docs/_includes/nav/customize.html'
       }
     },
@@ -350,7 +367,7 @@ module.exports = function (grunt) {
       options: {
         ignore: [
           'Attribute "autocomplete" not allowed on element "button" at this point.',
-          'Attribute "autocomplete" is only allowed when the input type is "color", "date", "datetime", "datetime-local", "email", "month", "number", "password", "range", "search", "tel", "text", "time", "url", or "week".',
+          'Attribute "autocomplete" is only allowed when the input type is "color", "date", "datetime", "datetime-local", "email", "hidden", "month", "number", "password", "range", "search", "tel", "text", "time", "url", or "week".',
           'Element "img" is missing required attribute "src".'
         ]
       },
@@ -470,7 +487,7 @@ module.exports = function (grunt) {
 
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
-  grunt.registerTask('build-customizer-html', 'jade');
+  grunt.registerTask('build-customizer-html', 'pug');
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
     var banner = grunt.template.process('<%= banner %>');
     generateRawFiles(grunt, banner);
@@ -491,20 +508,4 @@ module.exports = function (grunt) {
   grunt.registerTask('docs-github', ['jekyll:github', 'htmlmin']);
 
   grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress']);
-
-  // Task for updating the cached npm packages used by the Travis build (which are controlled by test-infra/npm-shrinkwrap.json).
-  // This task should be run and the updated file should be committed whenever Bootstrap's dependencies change.
-  grunt.registerTask('update-shrinkwrap', ['exec:npmUpdate', '_update-shrinkwrap']);
-  grunt.registerTask('_update-shrinkwrap', function () {
-    var done = this.async();
-    npmShrinkwrap({ dev: true, dirname: __dirname }, function (err) {
-      if (err) {
-        grunt.fail.warn(err);
-      }
-      var dest = 'test-infra/npm-shrinkwrap.json';
-      fs.renameSync('npm-shrinkwrap.json', dest);
-      grunt.log.writeln('File ' + dest.cyan + ' updated.');
-      done();
-    });
-  });
 };
