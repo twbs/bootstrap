@@ -148,6 +148,7 @@
     cursor: pointer;
     background-color: rgba($carousel-indicator-active-bg, .5);
 
+    // Use pseudo classes to increase the hit area by 10px on top and bottom.
     &::before {
       position: absolute;
       top: -10px;
@@ -157,7 +158,6 @@
       height: 10px;
       content: "";
     }
-
     &::after {
       position: absolute;
       bottom: -10px;
