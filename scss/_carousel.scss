@@ -87,38 +87,38 @@
     outline: 0;
     opacity: .9;
   }
+}
 
-  // Toggles
-  .icon-prev,
-  .icon-next {
-    position: absolute;
-    top: 50%;
-    z-index: 5;
-    display: inline-block;
-    width: $carousel-icon-width;
-    height: $carousel-icon-width;
-    margin-top: -($carousel-icon-width / 2);
-    font-family: serif;
-    line-height: 1;
-  }
-  .icon-prev {
-    left: 50%;
-    margin-left: -($carousel-icon-width / 2);
-  }
-  .icon-next {
-    right: 50%;
-    margin-right: -($carousel-icon-width / 2);
-  }
+// Toggles
+.carousel-control-icon-prev,
+.carousel-control-icon-next {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+  width: $carousel-icon-width;
+  height: $carousel-icon-width;
+  margin-top: -($carousel-icon-width / 2);
+  font-family: serif;
+  line-height: 1;
+}
+.carousel-control-icon-prev {
+  left: 50%;
+  margin-left: -($carousel-icon-width / 2);
+}
+.carousel-control-icon-next {
+  right: 50%;
+  margin-right: -($carousel-icon-width / 2);
+}
 
-  .icon-prev {
-    &::before {
-      content: "\2039";// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
-    }
+.carousel-control-icon-prev {
+  &::before {
+    content: "\2039";// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
   }
-  .icon-next {
-    &::before {
-      content: "\203a";// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
-    }
+}
+.carousel-control-icon-next {
+  &::before {
+    content: "\203a";// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
   }
 }
 
@@ -198,20 +198,18 @@
 
 @include media-breakpoint-up(sm) {
   // Scale up the controls a smidge
-  .carousel-control {
-    .icon-prev,
-    .icon-next {
-      width: $carousel-control-sm-up-size;
-      height: $carousel-control-sm-up-size;
-      margin-top: -($carousel-control-sm-up-size / 2);
-      font-size: $carousel-control-sm-up-size;
-    }
-    .icon-prev {
-      margin-left: -($carousel-control-sm-up-size / 2);
-    }
-    .icon-next {
-      margin-right: -($carousel-control-sm-up-size / 2);
-    }
+  .carousel-control-icon-prev,
+  .carousel-control-icon-next {
+    width: $carousel-control-sm-up-size;
+    height: $carousel-control-sm-up-size;
+    margin-top: -($carousel-control-sm-up-size / 2);
+    font-size: $carousel-control-sm-up-size;
+  }
+  .carousel-control-icon-prev {
+    margin-left: -($carousel-control-sm-up-size / 2);
+  }
+  .carousel-control-icon-next {
+    margin-right: -($carousel-control-sm-up-size / 2);
   }
 
   // Show and left align the captions
