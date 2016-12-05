@@ -14,11 +14,8 @@
   display: inline-block;
   min-height: (1rem * $line-height-base);
   padding-left: $custom-control-gutter;
+  margin-right: $custom-control-spacer-x;
   cursor: pointer;
-
-  + .custom-control {
-    margin-left: $custom-control-spacer-x;
-  }
 }
 
 .custom-control-input {
