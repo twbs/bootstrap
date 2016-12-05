@@ -12,37 +12,13 @@
 .carousel-item {
   position: relative;
   display: none;
-  transition: .6s ease-in-out left;
-
-  // Account for jankitude on images
-  > img,
-  > a > img {
-    @extend .img-fluid;
-    line-height: 1;
-  }
+  width: 100%;
 
   // CSS3 transforms when supported by the browser
   @include if-supports-3d-transforms() {
     transition: transform .6s ease-in-out;
     backface-visibility: hidden;
     perspective: 1000px;
-
-    &.carousel-item-next,
-    &.active.carousel-item-right {
-      left: 0;
-      transform: translate3d(100%, 0, 0);
-    }
-    &.carousel-item-prev,
-    &.active.carousel-item-left {
-      left: 0;
-      transform: translate3d(-100%, 0, 0);
-    }
-    &.carousel-item-next.carousel-item-left,
-    &.carousel-item-prev.carousel-item-right,
-    &.active {
-      left: 0;
-      transform: translate3d(0, 0, 0);
-    }
   }
 }
 
@@ -52,33 +28,28 @@
   display: block;
 }
 
-.carousel-item.active {
-  left: 0;
-}
-
-> .carousel-item-next,
-> .carousel-item-prev {
+.carousel-item-next,
+.carousel-item-prev {
   position: absolute;
   top: 0;
-  width: 100%;
 }
 
-> .carousel-item-next {
-  left: 100%;
-}
-> .carousel-item-prev {
-  left: -100%;
-}
-> .carousel-item-next.carousel-item-left,
-> .carousel-item-prev.carousel-item-right {
-  left: 0;
-}
+// CSS3 transforms when supported by the browser
+@include if-supports-3d-transforms() {
+  .carousel-item-next.carousel-item-left,
+  .carousel-item-prev.carousel-item-right {
+    transform: translate3d(0, 0, 0);
+  }
 
-> .active.carousel-item-left {
-  left: -100%;
-}
-> .active.carousel-item-right {
-  left: 100%;
+  .carousel-item-next,
+  .active.carousel-item-right {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  .carousel-item-prev,
+  .active.carousel-item-left {
+    transform: translate3d(-100%, 0, 0);
+  }
 }
 
 
@@ -101,11 +72,11 @@
   // animation if you trip this while in the middle of another animation.
 
   // Set gradients for backgrounds
-  &.carousel-item-left {
+  &.carousel-control-left {
     @include gradient-x($start-color: rgba(0,0,0,.5), $end-color: rgba(0,0,0,.0001));
   }
 
-  &.carousel-item-right {
+  &.carousel-control-right {
     right: 0;
     left: auto;
     @include gradient-x($start-color: rgba(0,0,0,.0001), $end-color: rgba(0,0,0,.5));
