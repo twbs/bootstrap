@@ -152,8 +152,7 @@ Below is a complete list of the specific form controls supported by Bootstrap an
     <tr>
       <td class="text-nowrap">
 {% markdown %}
-`.form-check`<br>
-`.form-check-inline`
+`.form-check`
 {% endmarkdown %}
       </td>
       <td class="text-nowrap">
@@ -274,62 +273,54 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 
 ### Inline forms
 
-Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms behave differently:
+Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-- Controls are `display: inline-block` to provide alignment control via `vertical-align` and `margin`.
-- Controls receive `width: auto` to override the Bootstrap default `width: 100%`.
-- Controls **only appear inline in viewports that are at least 768px wide** to account for narrow viewports on mobile devices.
+- Controls are `display: inline-block` (or `flex` when enabled) to provide alignment control via `vertical-align` and `margin`. Those also means you'll have some HTML character spaces between elements by default.
+- Controls and input groups receive `width: auto` to override the Bootstrap default `width: 100%`.
+- Controls **only appear inline in viewports that are at least 576px wide** to account for narrow viewports on mobile devices.
 
-Because of this, you may need to manually address the width and alignment of individual form controls. Lastly, as shown below, you should always include a `<label>` with each form control.
-
-#### Visible labels
+You may need to manually address the width and alignment of individual form controls with [spacing utilities]({{ site.baseurl }}/utilities/spacing/) (as shown below). Lastly, be sure to always include a `<label>` with each form control, even if you need to hide it from non-screenreader visitors with `.sr-only`.
 
 {% example html %}
 <form class="form-inline">
-  <div class="form-group">
-    <label for="exampleInputName2">Name</label>
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail2">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-  </div>
-  <button type="submit" class="btn btn-primary">Send invitation</button>
-</form>
-{% endexample %}
+  <label class="sr-only" for="inlineFormInput">Name</label>
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
 
-#### Hidden labels
+  <label class="sr-only" for="inlineFormInputGroup">Username</label>
+  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+    <div class="input-group-addon">@</div>
+    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+  </div>
 
-{% example html %}
-<form class="form-inline">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail3">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputPassword3">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-  </div>
-  <div class="form-check">
+  <div class="form-check mb-2 mr-sm-2 mb-sm-0">
     <label class="form-check-label">
       <input class="form-check-input" type="checkbox"> Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endexample %}
 
+Custom form controls and selects are also supported.
+
 {% example html %}
 <form class="form-inline">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-    <div class="input-group">
-      <div class="input-group-addon">$</div>
-      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-      <div class="input-group-addon">.00</div>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Transfer cash</button>
+  <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+  <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+    <input type="checkbox" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Remember my preference</span>
+  </label>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endexample %}
 
@@ -471,30 +462,42 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 
 ### Inline
 
-Groups of checkboxes or radios that appear on the same horizontal row are similar to their stacked counterparts, but require different HTML and a single class. To switch from stacked to inline, drop the surrounding `<div>`, add `.form-check-inline` to the `<label>`, and keep the `.form-check-input` on the `<input>`.
+Group checkboxes or radios on the same horizontal row by adding `.form-check-inline` to any `.form-check`.
 
 {% example html %}
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> 3
-</label>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+  </label>
+</div>
+<div class="form-check form-check-inline disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+  </label>
+</div>
 {% endexample %}
 
 {% example html %}
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-</label>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+  </label>
+</div>
+<div class="form-check form-check-inline disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> 3
+  </label>
+</div>
 {% endexample %}
 
 ### Without labels

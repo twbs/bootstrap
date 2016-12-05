@@ -44,7 +44,7 @@ Here's an example of all the sub-components included in a default, non-responsiv
       <a class="nav-link" href="#">Link</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link disabled" href="#">Disabled</a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="http://example.com" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -118,7 +118,7 @@ Active states—with `.active`—to indicate the current page can be applied dir
       <a class="nav-link" href="#">Pricing</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
+      <a class="nav-link disabled" href="#">Disabled</a>
     </li>
   </ul>
 </nav>
@@ -132,7 +132,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
     <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
     <a class="nav-item nav-link" href="#">Features</a>
     <a class="nav-item nav-link" href="#">Pricing</a>
-    <a class="nav-item nav-link" href="#">About</a>
+    <a class="nav-item nav-link disabled" href="#">Disabled</a>
   </div>
 </nav>
 {% endexample %}

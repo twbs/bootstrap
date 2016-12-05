@@ -108,9 +108,10 @@ var Carousel = function ($) {
     // public
 
     Carousel.prototype.next = function next() {
-      if (!this._isSliding) {
-        this._slide(Direction.NEXT);
+      if (this._isSliding) {
+        throw new Error('Carousel is sliding');
       }
+      this._slide(Direction.NEXT);
     };
 
     Carousel.prototype.nextWhenVisible = function nextWhenVisible() {
@@ -121,9 +122,10 @@ var Carousel = function ($) {
     };
 
     Carousel.prototype.prev = function prev() {
-      if (!this._isSliding) {
-        this._slide(Direction.PREVIOUS);
+      if (this._isSliding) {
+        throw new Error('Carousel is sliding');
       }
+      this._slide(Direction.PREVIOUS);
     };
 
     Carousel.prototype.pause = function pause(event) {
@@ -225,11 +227,10 @@ var Carousel = function ($) {
     };
 
     Carousel.prototype._keydown = function _keydown(event) {
-      event.preventDefault();
-
       if (/input|textarea/i.test(event.target.tagName)) {
         return;
       }
+      event.preventDefault();
 
       switch (event.which) {
         case ARROW_LEFT_KEYCODE:
@@ -336,11 +337,9 @@ var Carousel = function ($) {
         $(nextElement).addClass(directionalClassName);
 
         $(activeElement).one(Util.TRANSITION_END, function () {
-          $(nextElement).removeClass(directionalClassName).removeClass(direction);
+          $(nextElement).removeClass(directionalClassName + ' ' + direction).addClass(ClassName.ACTIVE);
 
-          $(nextElement).addClass(ClassName.ACTIVE);
-
-          $(activeElement).removeClass(ClassName.ACTIVE).removeClass(direction).removeClass(directionalClassName);
+          $(activeElement).removeClass(ClassName.ACTIVE + ' ' + direction + ' ' + directionalClassName);
 
           _this3._isSliding = false;
 

@@ -17,6 +17,7 @@
   width: 100%;
   height: $spacer-y; // todo: make a new var for this
   margin-bottom: $spacer-y;
+  overflow: hidden; // force rounded corners by cropping it
 }
 .progress[value] {
   // Set overall background
@@ -37,30 +38,19 @@
 }
 .progress[value]::-moz-progress-bar {
   background-color: $progress-bar-color;
-  @include border-left-radius($progress-border-radius);
 }
 .progress[value]::-webkit-progress-value {
   background-color: $progress-bar-color;
-  @include border-left-radius($progress-border-radius);
-}
-// Tweaks for full progress bar
-.progress[value="100"]::-moz-progress-bar {
-  @include border-right-radius($progress-border-radius);
-}
-.progress[value="100"]::-webkit-progress-value {
-  @include border-right-radius($progress-border-radius);
 }
 
 // Unfilled portion of the bar
 .progress[value]::-webkit-progress-bar {
   background-color: $progress-bg;
-  @include border-radius($progress-border-radius);
   @include box-shadow($progress-box-shadow);
 }
 base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make these styles Firefox-only
 .progress[value] {
   background-color: $progress-bg;
-  @include border-radius($progress-border-radius);
   @include box-shadow($progress-box-shadow);
 }
 
@@ -76,10 +66,6 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
     height: $spacer-y;
     text-indent: -999rem; // Simulate hiding of value as in native `<progress>`
     background-color: $progress-bar-color;
-    @include border-left-radius($progress-border-radius);
-  }
-  .progress[width="100%"] {
-    @include border-right-radius($progress-border-radius);
   }
 }
 

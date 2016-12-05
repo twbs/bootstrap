@@ -120,9 +120,10 @@ const Carousel = (($) => {
     // public
 
     next() {
-      if (!this._isSliding) {
-        this._slide(Direction.NEXT)
+      if (this._isSliding) {
+        throw new Error('Carousel is sliding')
       }
+      this._slide(Direction.NEXT)
     }
 
     nextWhenVisible() {
@@ -133,9 +134,10 @@ const Carousel = (($) => {
     }
 
     prev() {
-      if (!this._isSliding) {
-        this._slide(Direction.PREVIOUS)
+      if (this._isSliding) {
+        throw new Error('Carousel is sliding')
       }
+      this._slide(Direction.PREVIOUS)
     }
 
     pause(event) {
@@ -236,11 +238,10 @@ const Carousel = (($) => {
     }
 
     _keydown(event) {
-      event.preventDefault()
-
       if (/input|textarea/i.test(event.target.tagName)) {
         return
       }
+      event.preventDefault()
 
       switch (event.which) {
         case ARROW_LEFT_KEYCODE:
@@ -372,15 +373,10 @@ const Carousel = (($) => {
         $(activeElement)
           .one(Util.TRANSITION_END, () => {
             $(nextElement)
-              .removeClass(directionalClassName)
-              .removeClass(orderClassName)
+              .removeClass(`${directionalClassName} ${orderClassName}`)
+              .addClass(ClassName.ACTIVE)
 
-            $(nextElement).addClass(ClassName.ACTIVE)
-
-            $(activeElement)
-              .removeClass(ClassName.ACTIVE)
-              .removeClass(orderClassName)
-              .removeClass(directionalClassName)
+            $(activeElement).removeClass(`${ClassName.ACTIVE} ${orderClassName} ${directionalClassName}`)
 
             this._isSliding = false
 

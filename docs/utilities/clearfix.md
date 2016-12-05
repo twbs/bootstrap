@@ -12,13 +12,10 @@ Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes 
 
 {% highlight scss %}
 // Mixin itself
-.clearfix() {
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
-  &:after {
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
     clear: both;
   }
 }

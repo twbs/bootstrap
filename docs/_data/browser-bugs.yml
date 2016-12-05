@@ -1,15 +1,5 @@
 -
   browser: >
-    Safari
-  summary: >
-    Link to container with id and tabindex results in container being ignored by VoiceOver (affects skip links)
-  upstream_bug: >
-    WebKit#163658
-  origin: >
-    Bootstrap#20732
-    
--
-  browser: >
     Edge
   summary: >
     Visual artifacts in scrollable modal dialogs
@@ -172,11 +162,11 @@
   browser: >
     Firefox
   summary: >
-    `min-width: 0` has no effect on `<fieldset>`
+    Layout with floated columns breaks when printing
   upstream_bug: >
-    Mozilla#504622
+    Mozilla#1315994
   origin: >
-    Bootstrap#12359
+    Bootstrap#21092
 
 -
   browser: >
@@ -244,7 +234,7 @@
   summary: >
     `table-cell` borders not overlapping despite `margin-right: -1px`
   upstream_bug: >
-    Chromium#534750
+    Chromium#568691
   origin: >
     Bootstrap#17438, Bootstrap#14237
 
@@ -300,6 +290,16 @@
 
 -
   browser: >
+    Safari
+  summary: >
+    Link to container with id and tabindex results in container being ignored by VoiceOver (affects skip links)
+  upstream_bug: >
+    WebKit#163658
+  origin: >
+    Bootstrap#20732
+
+-
+  browser: >
     Safari (OS X)
   summary: >
     `px`, `em`, and `rem` should all behave the same in media queries when page zoom is applied
@@ -329,16 +329,6 @@
     WebKit#138192, Safari#19435018
   origin: >
     Bootstrap#14868
-
--
-  browser: >
-    Safari (iPad)
-  summary: >
-    `<select>` menu on iPad causes shifting of hit-testing areas
-  upstream_bug: >
-    WebKit#150079, Safari#23082521
-  origin: >
-    Bootstrap#14975
 
 -
   browser: >
@@ -459,6 +449,16 @@
     WebKit#158517
   origin: >
     Bootstrap#12832
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Element which is `position:fixed` disappears after opening a `<select>` menu
+  upstream_bug: >
+    WebKit#162362
+  origin: >
+    Bootstrap#20759
 
 -
   browser: >

@@ -1,7 +1,7 @@
 <header class="navbar navbar-light navbar-static-top bd-navbar">
   <div class="container">
     {% comment %}
-    <nav class="nav navbar-nav float-xs-right">
+    <nav class="nav navbar-nav float-right">
       <div class="nav-item dropdown">
         <a class="nav-item nav-link dropdown-toggle" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           v{{ site.current_version }}
@@ -27,12 +27,12 @@
 
     <nav>
       <div class="clearfix">
-        <button class="navbar-toggler float-xs-right hidden-sm-up" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation"></button>
+        <button class="navbar-toggler float-right hidden-sm-up" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation"></button>
         <a class="navbar-brand hidden-sm-up" href="{{ site.baseurl }}/">
           Bootstrap
         </a>
       </div>
-      <div class="collapse navbar-toggleable-xs" id="bd-main-nav">
+      <div class="collapse navbar-toggleable" id="bd-main-nav">
         <ul class="nav navbar-nav">
           <li class="nav-item active">
             <a class="nav-item nav-link {% if page.layout == "home" %}active{% endif %}" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Bootstrap</a>

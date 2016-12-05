@@ -46,7 +46,8 @@ const Tooltip = (($) => {
     selector    : false,
     placement   : 'top',
     offset      : '0 0',
-    constraints : []
+    constraints : [],
+    container   : false
   }
 
   const DefaultType = {
@@ -59,7 +60,8 @@ const Tooltip = (($) => {
     selector    : '(string|boolean)',
     placement   : '(string|function)',
     offset      : 'string',
-    constraints : 'array'
+    constraints : 'array',
+    container   : '(string|element|boolean)'
   }
 
   const AttachmentMap = {
@@ -121,11 +123,12 @@ const Tooltip = (($) => {
     constructor(element, config) {
 
       // private
-      this._isEnabled     = true
-      this._timeout       = 0
-      this._hoverState    = ''
-      this._activeTrigger = {}
-      this._tether        = null
+      this._isEnabled        = true
+      this._timeout          = 0
+      this._hoverState       = ''
+      this._activeTrigger    = {}
+      this._isTransitioning  = false
+      this._tether           = null
 
       // protected
       this.element = element
@@ -222,6 +225,7 @@ const Tooltip = (($) => {
       $.removeData(this.element, this.constructor.DATA_KEY)
 
       $(this.element).off(this.constructor.EVENT_KEY)
+      $(this.element).closest('.modal').off('hide.bs.modal')
 
       if (this.tip) {
         $(this.tip).remove()
@@ -242,9 +246,12 @@ const Tooltip = (($) => {
       if ($(this.element).css('display') === 'none') {
         throw new Error('Please use show on visible elements')
       }
-      const showEvent = $.Event(this.constructor.Event.SHOW)
 
+      const showEvent = $.Event(this.constructor.Event.SHOW)
       if (this.isWithContent() && this._isEnabled) {
+        if (this._isTransitioning) {
+          throw new Error('Tooltip is transitioning')
+        }
         $(this.element).trigger(showEvent)
 
         const isInTheDom = $.contains(
@@ -274,9 +281,11 @@ const Tooltip = (($) => {
 
         const attachment = this._getAttachment(placement)
 
+        const container = this.config.container === false ? document.body : $(this.config.container)
+
         $(tip)
           .data(this.constructor.DATA_KEY, this)
-          .appendTo(document.body)
+          .appendTo(container)
 
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
@@ -298,7 +307,8 @@ const Tooltip = (($) => {
 
         const complete = () => {
           const prevHoverState = this._hoverState
-          this._hoverState     = null
+          this._hoverState   = null
+          this._isTransitioning = false
 
           $(this.element).trigger(this.constructor.Event.SHOWN)
 
@@ -308,6 +318,7 @@ const Tooltip = (($) => {
         }
 
         if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+          this._isTransitioning = true
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
             .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
@@ -321,6 +332,9 @@ const Tooltip = (($) => {
     hide(callback) {
       const tip       = this.getTipElement()
       const hideEvent = $.Event(this.constructor.Event.HIDE)
+      if (this._isTransitioning) {
+        throw new Error('Tooltip is transitioning')
+      }
       const complete  = () => {
         if (this._hoverState !== HoverState.ACTIVE && tip.parentNode) {
           tip.parentNode.removeChild(tip)
@@ -328,6 +342,7 @@ const Tooltip = (($) => {
 
         this.element.removeAttribute('aria-describedby')
         $(this.element).trigger(this.constructor.Event.HIDDEN)
+        this._isTransitioning = false
         this.cleanupTether()
 
         if (callback) {
@@ -345,7 +360,7 @@ const Tooltip = (($) => {
 
       if (Util.supportsTransitionEnd() &&
           $(this.tip).hasClass(ClassName.FADE)) {
-
+        this._isTransitioning = true
         $(tip)
           .one(Util.TRANSITION_END, complete)
           .emulateTransitionEnd(TRANSITION_DURATION)
@@ -373,9 +388,7 @@ const Tooltip = (($) => {
 
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
 
-      $tip
-        .removeClass(ClassName.FADE)
-        .removeClass(ClassName.ACTIVE)
+      $tip.removeClass(`${ClassName.FADE} ${ClassName.ACTIVE}`)
 
       this.cleanupTether()
     }
@@ -452,6 +465,11 @@ const Tooltip = (($) => {
               (event) => this._leave(event)
             )
         }
+
+        $(this.element).closest('.modal').on(
+          'hide.bs.modal',
+          () => this.hide()
+        )
       })
 
       if (this.config.selector) {

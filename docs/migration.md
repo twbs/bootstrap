@@ -24,7 +24,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 - Switched from [Less](http://lesscss.org/) to [Sass](http://sass-lang.com/) for our source CSS files.
 - Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and grid behavior as viewports are not affected by type size.
 - Global font-size increased from `14px` to `16px`.
-- Added a new grid tier for ~`480px` and below.
+- Added a new grid tier for smaller devices at `576px` and below.
 - Replaced the separate optional theme with configurable options via SCSS variables (e.g., `$enable-gradients: true`).
 
 ### Grid system
@@ -72,6 +72,8 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Images
 
 - Renamed `.img-responsive` to `.img-fluid`.
+- Renamed `.img-rounded` to `.rounded`
+- Renamed `.img-circle` to `.rounded-circle`
 
 ### Tables
 
@@ -119,7 +121,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 ### Grid system
 
-- Added a new `~480px` grid breakpoint, meaning there are now five total tiers.
+- Added a new `576px` grid breakpoint as `sm`, meaning there are now five total tiers (`xs`, `sm`, `md`, `lg`, and `xl`).
 - Renamed the responsive grid modifier classes from `.col-{breakpoint}-{modifier}-{size}` to `.{modifier}-{breakpoint}-{size}` for simpler grid classes. For example, instead of `.col-md-3.col-md-push-9` it's `col-md-3.push-md-9`.
 - Overhauled the grid mixins to merge `make-col` and `make-col-span` into a single `make-col` mixin, thereby ensuring mixins and predefined classes utilize the same float/flex behaviors.
 - Added flexbox utility classes for grid system and components.

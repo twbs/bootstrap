@@ -63,6 +63,7 @@ html {
   // thus making it hard to click on stuff near the right edge of the page.
   // So we add this style to force IE11 & Edge to use a "normal", non-overlapping, non-auto-hiding scrollbar.
   // See https://github.com/twbs/bootstrap/issues/18543
+  // and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
   -ms-overflow-style: scrollbar;
   // Changes the default tap highlight to be completely transparent in iOS.
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -112,12 +113,11 @@ p {
   margin-bottom: 1rem;
 }
 
-// Abbreviations and acronyms
+// Abbreviations
 abbr[title],
 // Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted $abbr-border-color;
 }
 
 address {
@@ -336,8 +336,8 @@ input[type="month"] {
   // Remove the default appearance of temporal inputs to avoid a Mobile Safari
   // bug where setting a custom line-height prevents text from being vertically
   // centered within the input.
-  //
-  // Bug report: https://github.com/twbs/bootstrap/issues/11266
+  // See https://bugs.webkit.org/show_bug.cgi?id=139848
+  // and https://github.com/twbs/bootstrap/issues/11266
   -webkit-appearance: listbox;
 }
 
@@ -347,9 +347,11 @@ textarea {
 }
 
 fieldset {
-  // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
-  // so we reset that to ensure it behaves more like a standard block element.
-  // See https://github.com/twbs/bootstrap/issues/12359.
+  // Browsers set a default `min-width: min-content;` on fieldsets,
+  // unlike e.g. `<div>`s, which have `min-width: 0;` by default.
+  // So we reset that to ensure fieldsets behave more like a standard block element.
+  // See https://github.com/twbs/bootstrap/issues/12359
+  // and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
   min-width: 0;
   // Reset the default outline behavior of fieldsets so they don't affect page layout.
   padding: 0;

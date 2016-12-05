@@ -282,7 +282,7 @@ And pills, too:
 Using our [flexbox utilities]({{ site.baseurl }}/layout/flexbox-grid/#horizontal-alignment), you can also customize your navigation components to change the alignment of nav items. For example, here are center aligned links on the inline nav component.
 
 {% example html %}
-<ul class="nav nav-inline d-flex flex-items-xs-center">
+<ul class="nav nav-inline d-flex flex-items-center">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
   </li>

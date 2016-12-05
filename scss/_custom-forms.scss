@@ -133,7 +133,8 @@
 // Replaces the browser default select with a custom one, mostly pulled from
 // http://primercss.io.
 //
-// Includes IE9-specific hacks (noted by ` \9`).
+// Includes hacks for IE9 (noted by ` \9`), which may apply to other versions of
+// IE, but not with any adverse affects.
 
 .custom-select {
   display: inline-block;

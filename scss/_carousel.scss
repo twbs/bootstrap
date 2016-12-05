@@ -16,7 +16,7 @@
 
   // CSS3 transforms when supported by the browser
   @include if-supports-3d-transforms() {
-    transition: transform .6s ease-in-out;
+    @include transition(transform .6s ease-in-out);
     backface-visibility: hidden;
     perspective: 1000px;
   }

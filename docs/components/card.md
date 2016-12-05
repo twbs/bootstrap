@@ -151,13 +151,13 @@ You can quickly change the text alignment of any card—in its entirety or speci
   <a href="#" class="btn btn-primary">Go somewhere</a>
 </div>
 
-<div class="card card-block text-xs-center">
+<div class="card card-block text-center">
   <h4 class="card-title">Special title treatment</h4>
   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   <a href="#" class="btn btn-primary">Go somewhere</a>
 </div>
 
-<div class="card card-block text-xs-right">
+<div class="card card-block text-right">
   <h4 class="card-title">Special title treatment</h4>
   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -209,7 +209,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
 {% endexample %}
 
 {% example html %}
-<div class="card text-xs-center">
+<div class="card text-center">
   <div class="card-header">
     Featured
   </div>
@@ -229,7 +229,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
 Use Bootstrap's nav pills or tabs within a card header. Be sure to always include a `.float-*-*` utility class for proper alignment.
 
 {% example html %}
-<div class="card text-xs-center">
+<div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs float-left">
       <li class="nav-item">
@@ -252,7 +252,7 @@ Use Bootstrap's nav pills or tabs within a card header. Be sure to always includ
 {% endexample %}
 
 {% example html %}
-<div class="card text-xs-center">
+<div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills float-left">
       <li class="nav-item">
@@ -314,7 +314,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 ## Inverted text
 
-Cards include a class for quickly toggling **the text color**. By default, cards use dark text and assume a light background. **Add `.card-inverse` for white text** and specify the `background-color` and `border-color` to go with it.
+By default, cards use dark text and assume a light background. You can reverse that by toggling the `color` of text within, as well as that of the card's subcomponents, with `.card-inverse`. Then, specify a dark `background-color` and `border-color` to go with it.
 
 You can also use `.card-inverse` with the [contextual backgrounds variants](#background-variants).
 
@@ -333,7 +333,7 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
 Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-inverse`.**
 
 {% example html %}
-<div class="card card-inverse card-primary text-xs-center">
+<div class="card card-inverse card-primary text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -341,7 +341,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-success text-xs-center">
+<div class="card card-inverse card-success text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -349,7 +349,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-info text-xs-center">
+<div class="card card-inverse card-info text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -357,7 +357,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-warning text-xs-center">
+<div class="card card-inverse card-warning text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -365,7 +365,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-danger text-xs-center">
+<div class="card card-inverse card-danger text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -383,7 +383,7 @@ Cards include their own variant classes for quickly changing the `background-col
 In need of a colored card, but not the hefty background colors they bring? Replace the default modifier classes with the `.card-outline-*` ones to style just the `border-color` of a card.
 
 {% example html %}
-<div class="card card-outline-primary text-xs-center">
+<div class="card card-outline-primary text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -391,7 +391,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-secondary text-xs-center">
+<div class="card card-outline-secondary text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -399,7 +399,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-success text-xs-center">
+<div class="card card-outline-success text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -407,7 +407,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-info text-xs-center">
+<div class="card card-outline-info text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -415,7 +415,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-warning text-xs-center">
+<div class="card card-outline-warning text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -423,7 +423,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-danger text-xs-center">
+<div class="card card-outline-danger text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -542,7 +542,7 @@ Only applies to small devices and above.
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
-  <div class="card card-block card-inverse card-primary text-xs-center">
+  <div class="card card-block card-inverse card-primary text-center">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
       <footer>
@@ -552,7 +552,7 @@ Only applies to small devices and above.
       </footer>
     </blockquote>
   </div>
-  <div class="card card-block text-xs-center">
+  <div class="card card-block text-center">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -560,7 +560,7 @@ Only applies to small devices and above.
   <div class="card">
     <img class="card-img img-fluid" data-src="holder.js/100px260/" alt="Card image">
   </div>
-  <div class="card card-block text-xs-right">
+  <div class="card card-block text-right">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       <footer>

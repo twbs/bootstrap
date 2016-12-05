@@ -39,7 +39,7 @@ module.exports = function (grunt) {
             ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
             ' */\n',
     jqueryCheck: 'if (typeof jQuery === \'undefined\') {\n' +
-                 '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\')\n' +
+                 '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\\\'s JavaScript.\')\n' +
                  '}\n',
     jqueryVersionCheck: '+function ($) {\n' +
                         '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')\n' +
@@ -283,9 +283,6 @@ module.exports = function (grunt) {
       },
       htmlhint: {
         command: 'npm run htmlhint'
-      },
-      'upload-preview': {
-        command: './grunt/upload-preview.sh'
       }
     },
 
@@ -361,7 +358,7 @@ module.exports = function (grunt) {
   if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' &&
       // Skip Sauce if running a different subset of the test suite
       runSubset('sauce-js-unit')) {
-    testSubtasks = testSubtasks.concat(['dist', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs', 'exec:upload-preview']);
+    testSubtasks = testSubtasks.concat(['dist', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs']);
     // Skip Sauce on Travis when [skip sauce] is in the commit message
     if (isUndefOrNonZero(process.env.TWBS_DO_SAUCE)) {
       testSubtasks.push('connect');

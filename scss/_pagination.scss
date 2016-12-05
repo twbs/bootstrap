@@ -47,6 +47,7 @@
   float: left; // Collapse white-space
   padding: $pagination-padding-y $pagination-padding-x;
   margin-left: -1px;
+  line-height: $pagination-line-height;
   color: $pagination-color;
   background-color: $pagination-bg;
   border: $pagination-border-width solid $pagination-border-color;

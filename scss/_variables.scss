@@ -114,7 +114,7 @@ $enable-flex:               false !default;
 $enable-rounded:            true !default;
 $enable-shadows:            false !default;
 $enable-gradients:          false !default;
-$enable-transitions:        false !default;
+$enable-transitions:        true !default;
 $enable-hover-media-query:  false !default;
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
@@ -416,7 +416,7 @@ $input-padding-y-sm:             .25rem !default;
 $input-padding-x-lg:             1.5rem !default;
 $input-padding-y-lg:             .75rem !default;
 
-$input-height:                   (($font-size-base * $line-height-base) + ($input-padding-y * 2)) !default;
+$input-height:                   (($font-size-base * $input-line-height) + ($input-padding-y * 2)) !default;
 $input-height-lg:                (($font-size-lg * $line-height-lg) + ($input-padding-y-lg * 2)) !default;
 $input-height-sm:                (($font-size-sm * $line-height-sm) + ($input-padding-y-sm * 2)) !default;
 
@@ -532,7 +532,7 @@ $dropdown-box-shadow:            0 .5rem 1rem rgba(0,0,0,.175) !default;
 
 $dropdown-link-color:            $gray-dark !default;
 $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
-$dropdown-link-hover-bg:         #f5f5f5 !default;
+$dropdown-link-hover-bg:         $gray-lightest !default;
 
 $dropdown-link-active-color:     $component-active-color !default;
 $dropdown-link-active-bg:        $component-active-bg !default;
@@ -618,11 +618,11 @@ $nav-pills-active-link-bg:    $component-active-bg !default;
 
 $pagination-padding-x:                .75rem !default;
 $pagination-padding-y:                .5rem !default;
-$pagination-padding-x-sm:             .75rem !default;
-$pagination-padding-y-sm:             .275rem !default;
+$pagination-padding-x-sm:             .5rem !default;
+$pagination-padding-y-sm:             .25rem !default;
 $pagination-padding-x-lg:             1.5rem !default;
 $pagination-padding-y-lg:             .75rem !default;
-
+$pagination-line-height:              1.25 !default;
 
 $pagination-color:                     $link-color !default;
 $pagination-bg:                        #fff !default;
@@ -677,7 +677,7 @@ $card-border-width:        1px !default;
 $card-border-radius:       $border-radius !default;
 $card-border-color:        rgba(0,0,0,.125) !default;
 $card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
-$card-cap-bg:              #f5f5f5 !default;
+$card-cap-bg:              $gray-lightest !default;
 $card-bg:                  #fff !default;
 
 $card-link-hover-color:    #fff !default;
@@ -772,8 +772,8 @@ $modal-header-border-width:   $modal-content-border-width !default;
 $modal-footer-border-width:   $modal-header-border-width !default;
 $modal-header-padding:        15px !default;
 
-$modal-lg:                    900px !default;
-$modal-md:                    600px !default;
+$modal-lg:                    800px !default;
+$modal-md:                    500px !default;
 $modal-sm:                    300px !default;
 
 
@@ -783,6 +783,7 @@ $modal-sm:                    300px !default;
 
 $alert-padding-x:             1.25rem !default;
 $alert-padding-y:             .75rem !default;
+$alert-margin-bottom:         $spacer-y !default;
 $alert-border-radius:         $border-radius !default;
 $alert-link-font-weight:      $font-weight-bold !default;
 $alert-border-width:          $border-width !default;
@@ -825,7 +826,7 @@ $list-group-border-color:       rgba(0,0,0,.125) !default;
 $list-group-border-width:       $border-width !default;
 $list-group-border-radius:      $border-radius !default;
 
-$list-group-hover-bg:           #f5f5f5 !default;
+$list-group-hover-bg:           $gray-lightest !default;
 $list-group-active-color:       $component-active-color !default;
 $list-group-active-bg:          $component-active-bg !default;
 $list-group-active-border:      $list-group-active-bg !default;
@@ -913,12 +914,12 @@ $code-font-size:              90% !default;
 $code-padding-x:              .4rem !default;
 $code-padding-y:              .2rem !default;
 $code-color:                  #bd4147 !default;
-$code-bg:                     #f7f7f9 !default;
+$code-bg:                     $gray-lightest !default;
 
 $kbd-color:                   #fff !default;
 $kbd-bg:                      #333 !default;
 
-$pre-bg:                      #f7f7f9 !default;
+$pre-bg:                      $gray-lightest !default;
 $pre-color:                   $gray-dark !default;
 $pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;
