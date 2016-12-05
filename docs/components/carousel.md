@@ -59,12 +59,12 @@ Adding in the previous and next controls:
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control carousel-control-left" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-icon-prev" aria-hidden="true"></span>
+  <a class="carousel-control carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control carousel-control-right" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-icon-next" aria-hidden="true"></span>
+  <a class="carousel-control carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
@@ -92,12 +92,12 @@ You can also add the indicators to the carousel, alongside the controls, too.
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control carousel-control-left" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="icon-prev" aria-hidden="true"></span>
+  <a class="carousel-control carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control carousel-control-right" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="icon-next" aria-hidden="true"></span>
+  <a class="carousel-control carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
