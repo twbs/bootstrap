@@ -120,10 +120,10 @@
   bottom: 10px;
   left: 0;
   z-index: 15;
+  padding-left: 0; // override <ul> default
   // Use the .carousel-control's width as margin so we don't overlay those
   margin-right: $carousel-control-width;
   margin-left: $carousel-control-width;
-  padding-left: 0; // override <ul> default
   text-align: center;
   list-style: none;
 
