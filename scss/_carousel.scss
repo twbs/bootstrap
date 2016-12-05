@@ -116,12 +116,14 @@
 
 .carousel-indicators {
   position: absolute;
+  right: 0;
   bottom: 10px;
-  left: 50%;
+  left: 0;
   z-index: 15;
-  width: $carousel-indicators-width;
-  padding-left: 0;
-  margin-left: -($carousel-indicators-width / 2);
+  // Use the .carousel-control's width as margin so we don't overlay those
+  margin-right: $carousel-control-width;
+  margin-left: $carousel-control-width;
+  padding-left: 0; // override <ul> default
   text-align: center;
   list-style: none;
 
