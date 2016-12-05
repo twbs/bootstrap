@@ -45,7 +45,7 @@ const Carousel = (($) => {
 
   const Direction = {
     NEXT     : 'next',
-    PREVIOUS : 'prev',
+    PREV     : 'prev',
     LEFT     : 'left',
     RIGHT    : 'right'
   }
@@ -67,7 +67,7 @@ const Carousel = (($) => {
     RIGHT    : 'carousel-item-right',
     LEFT     : 'carousel-item-left',
     NEXT     : 'carousel-item-next',
-    PREVIOUS : 'carousel-item-prev',
+    PREV     : 'carousel-item-prev',
     ITEM     : 'carousel-item'
   }
 
