@@ -18,14 +18,68 @@ In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibilit
 
 ## Example
 
-When building carousels, be sure your slides are the same size as one another. The carousel doesn't automatically crop images to the same dimensions for you across slides.
+While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
+
+Please be aware the carousel doesn't automatically normalize carousel slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content.
+
+### Slides only
+
+Here's a carousel with slides only. Note the presence of the `.d-block` and `.img-fluid` on carousel images to prevent browser default image alignment.
 
 {% example html %}
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+    </div>
+  </div>
+</div>
+{% endexample %}
+
+### With controls
+
+Adding in the previous and next controls:
+
+{% example html %}
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control carousel-control-left" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="icon-prev" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control carousel-control-right" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="icon-next" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+{% endexample %}
+
+### With indicators
+
+You can also add the indicators to the carousel, alongside the controls, too.
+
+{% example html %}
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
@@ -38,16 +92,17 @@ When building carousels, be sure your slides are the same size as one another. T
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control carousel-control-left" href="#carousel-example-generic" role="button" data-slide="prev">
+  <a class="carousel-control carousel-control-left" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="icon-prev" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control carousel-control-right" href="#carousel-example-generic" role="button" data-slide="next">
+  <a class="carousel-control carousel-control-right" href="#carouselExampleIndicators" role="button" data-slide="next">
     <span class="icon-next" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
 {% endexample %}
+
 
 {% callout warning %}
 #### Transition animations not supported in Internet Explorer 9
