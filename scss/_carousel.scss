@@ -56,7 +56,8 @@
 // Left/right controls for nav
 //
 
-.carousel-control {
+.carousel-control-prev,
+.carousel-control-next {
   position: absolute;
   top: 0;
   bottom: 0;
