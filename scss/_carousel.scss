@@ -177,37 +177,3 @@
   color: $carousel-caption-color;
   text-align: center;
 }
-
-
-//
-// Responsive variations
-//
-
-@include media-breakpoint-up(sm) {
-  // Scale up the controls a smidge
-  .carousel-control-icon-prev,
-  .carousel-control-icon-next {
-    width: $carousel-control-sm-up-size;
-    height: $carousel-control-sm-up-size;
-    margin-top: -($carousel-control-sm-up-size / 2);
-    font-size: $carousel-control-sm-up-size;
-  }
-  .carousel-control-icon-prev {
-    margin-left: -($carousel-control-sm-up-size / 2);
-  }
-  .carousel-control-icon-next {
-    margin-right: -($carousel-control-sm-up-size / 2);
-  }
-
-  // Show and left align the captions
-  .carousel-caption {
-    right: ((100% - $carousel-caption-sm-up-width) / 2);
-    left: ((100% - $carousel-caption-sm-up-width) / 2);
-    padding-bottom: 30px;
-  }
-
-  // Move up the indicators
-  .carousel-indicators {
-    bottom: 20px;
-  }
-}
