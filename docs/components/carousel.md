@@ -60,11 +60,11 @@ Adding in the previous and next controls:
     </div>
   </div>
   <a class="carousel-control carousel-control-left" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="icon-prev" aria-hidden="true"></span>
+    <span class="carousel-control-icon-prev" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="carousel-control carousel-control-right" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="icon-next" aria-hidden="true"></span>
+    <span class="carousel-control-icon-next" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
