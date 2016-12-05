@@ -14,7 +14,6 @@
   display: none;
   width: 100%;
 
-  // CSS3 transforms when supported by the browser
   @include if-supports-3d-transforms() {
     @include transition(transform .6s ease-in-out);
     backface-visibility: hidden;
