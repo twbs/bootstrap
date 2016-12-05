@@ -83,9 +83,9 @@
   right: 0;
 }
 
-// Toggles
-.carousel-control-icon-prev,
-.carousel-control-icon-next {
+// Icons for within
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
   position: absolute;
   top: 50%;
   z-index: 5;
@@ -95,25 +95,18 @@
   margin-top: -($carousel-icon-width / 2);
   font-family: serif;
   line-height: 1;
+  background: transparent no-repeat center center;
+  background-size: 100% 100%;
 }
-.carousel-control-icon-prev {
+.carousel-control-prev-icon {
   left: 50%;
   margin-left: -($carousel-icon-width / 2);
+  background-image: $carousel-control-prev-icon-bg;
 }
-.carousel-control-icon-next {
+.carousel-control-next-icon {
   right: 50%;
   margin-right: -($carousel-icon-width / 2);
-}
-
-.carousel-control-icon-prev {
-  &::before {
-    content: "\2039";// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
-  }
-}
-.carousel-control-icon-next {
-  &::before {
-    content: "\203a";// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
-  }
+  background-image: $carousel-control-next-icon-bg;
 }
 
 
