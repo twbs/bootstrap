@@ -328,10 +328,6 @@ const Carousel = (($) => {
         eventDirectionName = Direction.RIGHT
       }
 
-      // const directionalClassName = direction === Direction.NEXT ?
-      //   ClassName.LEFT :
-      //   ClassName.RIGHT
-
       if (nextElement && $(nextElement).hasClass(ClassName.ACTIVE)) {
         this._isSliding = false
         return
