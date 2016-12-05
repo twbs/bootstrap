@@ -89,9 +89,9 @@
   top: 50%;
   z-index: 5;
   display: inline-block;
-  width: $carousel-icon-width;
-  height: $carousel-icon-width;
-  margin-top: -($carousel-icon-width / 2);
+  width: $carousel-control-icon-width;
+  height: $carousel-control-icon-width;
+  margin-top: -($carousel-control-icon-width / 2);
   font-family: serif;
   line-height: 1;
   background: transparent no-repeat center center;
@@ -99,12 +99,12 @@
 }
 .carousel-control-prev-icon {
   left: 50%;
-  margin-left: -($carousel-icon-width / 2);
+  margin-left: -($carousel-control-icon-width / 2);
   background-image: $carousel-control-prev-icon-bg;
 }
 .carousel-control-next-icon {
   right: 50%;
-  margin-right: -($carousel-icon-width / 2);
+  margin-right: -($carousel-control-icon-width / 2);
   background-image: $carousel-control-next-icon-bg;
 }
 
