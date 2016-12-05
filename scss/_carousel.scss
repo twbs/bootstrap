@@ -142,26 +142,36 @@
   list-style: none;
 
   li {
+    position: relative;
     display: inline-block;
-    width: $carousel-indicator-size;
-    height: $carousel-indicator-size;
-    margin: 1px;
+    width: $carousel-indicator-width;
+    height: $carousel-indicator-height;
     text-indent: -999px;
     cursor: pointer;
-    // IE9 hack for event handling
-    //
-    // Internet Explorer 9 does not properly handle clicks on elements with a `background-color` of `transparent`,
-    // so we use `rgba(0,0,0,0)` instead since it's a non-buggy equivalent.
-    // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Internet_Explorer
-    background-color: rgba(0,0,0,0); // IE9
-    border: 1px solid $carousel-indicator-border-color;
-    border-radius: $carousel-indicator-size;
+    background-color: rgba($carousel-indicator-active-bg, .5);
+
+    &::before {
+      position: absolute;
+      top: -10px;
+      left: 0;
+      display: inline-block;
+      content: "";
+      width: 100%;
+      height: 10px;
+    }
+
+    &::after {
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      display: inline-block;
+      content: "";
+      width: 100%;
+      height: 10px;
+    }
   }
 
   .active {
-    width: $carousel-indicator-active-size;
-    height: $carousel-indicator-active-size;
-    margin: 0;
     background-color: $carousel-indicator-active-bg;
   }
 }
