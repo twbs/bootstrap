@@ -66,7 +66,6 @@
   font-size: $carousel-control-font-size;
   color: $carousel-control-color;
   text-align: center;
-  text-shadow: $carousel-text-shadow;
   opacity: $carousel-control-opacity;
   // We can't have this transition here because WebKit cancels the carousel
   // animation if you trip this while in the middle of another animation.
@@ -191,11 +190,6 @@
   padding-bottom: 20px;
   color: $carousel-caption-color;
   text-align: center;
-  text-shadow: $carousel-text-shadow;
-
-  .btn {
-    text-shadow: none; // No shadow for button elements in carousel-caption
-  }
 }
 
 
