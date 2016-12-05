@@ -60,25 +60,13 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
   width: $carousel-control-width;
   font-size: $carousel-control-font-size;
   color: $carousel-control-color;
   text-align: center;
   opacity: $carousel-control-opacity;
-  // We can't have this transition here because WebKit cancels the carousel
+  // We can't have a transition here because WebKit cancels the carousel
   // animation if you trip this while in the middle of another animation.
-
-  // Set gradients for backgrounds
-  &.carousel-control-left {
-    @include gradient-x($start-color: rgba(0,0,0,.5), $end-color: rgba(0,0,0,.0001));
-  }
-
-  &.carousel-control-right {
-    right: 0;
-    left: auto;
-    @include gradient-x($start-color: rgba(0,0,0,.0001), $end-color: rgba(0,0,0,.5));
-  }
 
   // Hover/focus state
   @include hover-focus {
@@ -87,6 +75,12 @@
     outline: 0;
     opacity: .9;
   }
+}
+.carousel-control-prev {
+  left: 0;
+}
+.carousel-control-next {
+  right: 0;
 }
 
 // Toggles
