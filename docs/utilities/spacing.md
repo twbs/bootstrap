@@ -47,7 +47,7 @@ Where *size* is one of:
 
 Here are some representative examples of these classes:
 
-{% highlight scss %}
+```scss
 .mt-0 {
   margin-top: 0 !important;
 }
@@ -64,7 +64,7 @@ Here are some representative examples of these classes:
 .p-3 {
   padding: $spacer-y $spacer-x !important;
 }
-{% endhighlight %}
+```
 
 ### Horizontal centering
 Additionally, Bootstrap also includes an `.mx-auto` class for horizontally centering fixed-width block level content—that is, content that has `display: block` and a `width` set—by setting the horizontal margins to `auto`.
@@ -75,8 +75,8 @@ Additionally, Bootstrap also includes an `.mx-auto` class for horizontally cente
   </div>
 </div>
 
-{% highlight html %}
+```html
 <div class="mx-auto" style="width: 200px;">
   Centered element
 </div>
-{% endhighlight %}
+```
