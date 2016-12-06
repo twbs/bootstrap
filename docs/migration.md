@@ -183,7 +183,14 @@ Dropped entirely for the new card component.
 
 ### Carousel
 
-- Renamed `.item` to `.carousel-item`.
+- Overhauled the entire component to simplify design and styling. We have fewer styles for you to override, new indicators, and new icons.
+- All CSS has been un-nested and renamed, ensuring each class is prefixed with `.carousel-`.
+  - For carousel items, `.next`, `.prev`, `.left`, and `.right` are now `.carousel-item-next`, `.carousel-item-prev`, `.carousel-item-left`, and `.carousel-item-right`.
+  - `.item` is also now `.carousel-item`.
+  - For prev/next controls, `.carousel-control.right` and `.carousel-control.left` are now `.carousel-control-right` and `.carousel-control-left`, meaning they no longer require a specific base class.
+- Removed all responsive styling, deferring to utilities (e.g., showing captions on certain viewports) and custom styles as needed.
+- Removed image overrides for images in carousel items, deferring to utilities.
+- Tweaked the Carousel example to include the new markup and styles.
 
 ### Utilities
 

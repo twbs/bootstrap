@@ -45,7 +45,9 @@ const Carousel = (($) => {
 
   const Direction = {
     NEXT     : 'next',
-    PREVIOUS : 'prev'
+    PREV     : 'prev',
+    LEFT     : 'left',
+    RIGHT    : 'right'
   }
 
   const Event = {
@@ -62,8 +64,10 @@ const Carousel = (($) => {
     CAROUSEL : 'carousel',
     ACTIVE   : 'active',
     SLIDE    : 'slide',
-    RIGHT    : 'right',
-    LEFT     : 'left',
+    RIGHT    : 'carousel-item-right',
+    LEFT     : 'carousel-item-left',
+    NEXT     : 'carousel-item-next',
+    PREV     : 'carousel-item-prev',
     ITEM     : 'carousel-item'
   }
 
@@ -71,7 +75,7 @@ const Carousel = (($) => {
     ACTIVE      : '.active',
     ACTIVE_ITEM : '.active.carousel-item',
     ITEM        : '.carousel-item',
-    NEXT_PREV   : '.next, .prev',
+    NEXT_PREV   : '.carousel-item-next, .carousel-item-prev',
     INDICATORS  : '.carousel-indicators',
     DATA_SLIDE  : '[data-slide], [data-slide-to]',
     DATA_RIDE   : '[data-ride="carousel"]'
@@ -276,10 +280,10 @@ const Carousel = (($) => {
     }
 
 
-    _triggerSlideEvent(relatedTarget, directionalClassname) {
+    _triggerSlideEvent(relatedTarget, eventDirectionName) {
       const slideEvent = $.Event(Event.SLIDE, {
         relatedTarget,
-        direction: directionalClassname
+        direction: eventDirectionName
       })
 
       $(this._element).trigger(slideEvent)
@@ -310,16 +314,26 @@ const Carousel = (($) => {
 
       const isCycling = Boolean(this._interval)
 
-      const directionalClassName = direction === Direction.NEXT ?
-        ClassName.LEFT :
-        ClassName.RIGHT
+      let directionalClassName
+      let orderClassName
+      let eventDirectionName
+
+      if (direction === Direction.NEXT) {
+        directionalClassName = ClassName.LEFT
+        orderClassName = ClassName.NEXT
+        eventDirectionName = Direction.LEFT
+      } else {
+        directionalClassName = ClassName.RIGHT
+        orderClassName = ClassName.PREV
+        eventDirectionName = Direction.RIGHT
+      }
 
       if (nextElement && $(nextElement).hasClass(ClassName.ACTIVE)) {
         this._isSliding = false
         return
       }
 
-      const slideEvent = this._triggerSlideEvent(nextElement, directionalClassName)
+      const slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName)
       if (slideEvent.isDefaultPrevented()) {
         return
       }
@@ -339,13 +353,13 @@ const Carousel = (($) => {
 
       const slidEvent = $.Event(Event.SLID, {
         relatedTarget: nextElement,
-        direction: directionalClassName
+        direction: eventDirectionName
       })
 
       if (Util.supportsTransitionEnd() &&
         $(this._element).hasClass(ClassName.SLIDE)) {
 
-        $(nextElement).addClass(direction)
+        $(nextElement).addClass(orderClassName)
 
         Util.reflow(nextElement)
 
@@ -355,10 +369,10 @@ const Carousel = (($) => {
         $(activeElement)
           .one(Util.TRANSITION_END, () => {
             $(nextElement)
-              .removeClass(`${directionalClassName} ${direction}`)
+              .removeClass(`${directionalClassName} ${orderClassName}`)
               .addClass(ClassName.ACTIVE)
 
-            $(activeElement).removeClass(`${ClassName.ACTIVE} ${direction} ${directionalClassName}`)
+            $(activeElement).removeClass(`${ClassName.ACTIVE} ${orderClassName} ${directionalClassName}`)
 
             this._isSliding = false
 

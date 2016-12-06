@@ -882,26 +882,21 @@ $media-alignment-padding-x:   10px !default;
 
 // 33. Carousel
 
-$carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6) !default;
-
 $carousel-control-color:                      #fff !default;
 $carousel-control-width:                      15% !default;
-$carousel-control-sm-up-size:                 30px !default;
 $carousel-control-opacity:                    .5 !default;
-$carousel-control-font-size:                  20px !default;
 
-$carousel-indicators-width:                   60% !default;
-
-$carousel-indicator-size:                     10px !default;
-$carousel-indicator-active-size:              12px !default;
+$carousel-indicator-width:                    30px !default;
+$carousel-indicator-height:                   3px !default;
 $carousel-indicator-active-bg:                #fff !default;
-$carousel-indicator-border-color:             #fff !default;
 
 $carousel-caption-width:                      70% !default;
-$carousel-caption-sm-up-width:                60% !default;
 $carousel-caption-color:                      #fff !default;
 
-$carousel-icon-width:                         20px !default;
+$carousel-control-icon-width:                 20px !default;
+
+$carousel-control-prev-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M4 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$carousel-control-next-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 
 // 34. Close
