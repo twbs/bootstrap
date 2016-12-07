@@ -1,0 +1,238 @@
+<div class="bs-docs-section">
+  <h1 id="droppable" class="page-header">Droppable</h1>
+
+  <p>Droppable is a set of styles for a drag and drop form component.
+    An implementation can be found in our styleguide-components repository.</p>
+
+  <div class="bs-example" data-example-id="droppable-alerts">
+    <div class="droppable droppable-md">
+      <div class="m-b-2">
+        <i class="icon icon-upload icon-xxl"></i>
+      </div>
+      <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+      <button class="btn btn-primary">Or select file</button>
+    </div>
+  </div>
+{% highlight html %}
+<div class="droppable droppable-sm">
+  <div class="m-b-2">
+    <i class="icon icon-upload icon-xxl"></i>
+  </div>
+  <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+  <button class="btn btn-primary">Or select file</button>
+</div>
+{% endhighlight %}
+
+  <h2 id="droppable-active">Droppable active</h2>
+  <p>When the user has a file in position of the droppable component we want to
+    signify this to the user, we add a <code>.droppable-active</code> class to
+    the component.  Which displays the content of
+    <code>.droppable-active-cover</code>.
+  <p>During the hover phase we also add <code>.droppable-dropping</code> to gain
+    the relevant hover state.</p>
+  <p>Within the cover use an empty div to enable vertical centering.</p>
+
+
+<div class="bs-example" data-example-id="droppable-active-example">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="droppable droppable-md droppable-active droppable-dropping">
+        <div class="m-b-2">
+          <i class="icon icon-upload icon-xxl"></i>
+        </div>
+        <div class="droppable-desktop">
+          <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Or select file</button>
+        </div>
+        <div class="droppable-mobile">
+          <p class="m-b-2">Upload .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Select file</button>
+        </div>
+        <div class="droppable-active-cover">
+          <div>
+            <h4 class="m-b-2">Drop file to start upload</h4>
+            <div class="circle circle-sm">
+              <i class="icon icon-add"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="droppable droppable-md droppable-active">
+        <div class="m-b-2">
+          <i class="icon icon-upload icon-xxl"></i>
+        </div>
+        <div class="droppable-desktop">
+          <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Or select file</button>
+        </div>
+        <div class="droppable-mobile">
+          <p class="m-b-2">Upload .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Select file</button>
+        </div>
+        <div class="droppable-active-cover">
+          <div>
+            <h4 class="m-b-2">Uploading</h4>
+            <div>
+            <span class='process process-sm'>
+              <span class='process-icon-container'>
+                <span class='process-icon-horizontal'></span>
+                <span class='process-icon-vertical'></span>
+              </span>
+              <svg version='1.1'
+                xmlns='http://www.w3.org/2000/svg'
+                xml:space='preserve'>
+                <circle class='process-circle' cx='50%' cy='50%' r='45%'
+                  fill-opacity='0.0' />
+              </svg>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% highlight html %}
+<div class="droppable droppable-md droppable-active droppable-dropping">
+  ...
+  <div class="droppable-active-cover">
+    <div>
+      ...
+    </div>
+  </div>
+</div>
+<div class="droppable droppable-md droppable-active">
+  ...
+  <div class="droppable-active-cover">
+    <div>
+      ...
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+  <h2 id="droppable-mobile">Mobile behaviour</h2>
+  <p>Typically, mobile devices will not have drag and drop capabilities, so we
+    should customise messaging to those users and give an alternative option.</p>
+  <p>We have two classes to help show and hide content in the different scenarios,
+      anything inside <code>.droppable-mobile</code> will only be visible on
+      mobile screen widths.  Anything inside <code>.droppable-desktop</code> will
+      only appear on larger screens.</p>
+
+  <div class="bs-example" data-example-id="droppable-mobile-example">
+    <div class="droppable droppable-md">
+      <div class="m-b-2">
+        <i class="icon icon-upload icon-xxl"></i>
+      </div>
+      <div class="droppable-desktop">
+        <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+        <button class="btn btn-primary">Or select file</button>
+      </div>
+      <div class="droppable-mobile">
+        <p class="m-b-2">Upload .CSV file less than 5MB</p>
+        <button class="btn btn-primary">Select file</button>
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="droppable droppable-md">
+  <div class="m-b-2">
+    <i class="icon icon-upload icon-xxl"></i>
+  </div>
+  <div class="droppable-desktop">
+    <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+    <button class="btn btn-primary">Or select file</button>
+  </div>
+  <div class="droppable-mobile">
+    <p class="m-b-2">Upload .CSV file less than 5MB</p>
+    <button class="btn btn-primary">Select file</button>
+  </div>
+</div>
+{% endhighlight %}
+
+<h2 id="droppable-sizes">Size variants</h2>
+<p>Depending on the column you are using your droppable component within, you may
+    wish to use a different size variant.  Full width UIs will likely use the
+    large variant <code>.droppable-lg</code>, whereas a UI asking for multiple
+    uploads (e.g. the front and back of a document) may use the smaller variant
+    <code>.droppable-sm</code> in a column layout.</p>
+
+<div class="bs-example" data-example-id="droppable-size-examples">
+  <div class="row m-b-3">
+    <div class="col-sm-6 col-md-4">
+      <div class="droppable droppable-sm">
+        <div class="m-b-2">
+          <i class="icon icon-upload icon-xxl"></i>
+        </div>
+        <div class="droppable-desktop">
+          <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Or select file</button>
+        </div>
+        <div class="droppable-mobile">
+          <p class="m-b-2">Upload .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Select file</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row m-b-3">
+    <div class="col-sm-8 col-md-6">
+      <div class="droppable droppable-md">
+        <div class="m-b-2">
+          <i class="icon icon-upload icon-xxl"></i>
+        </div>
+        <div class="droppable-desktop">
+          <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Or select file</button>
+        </div>
+        <div class="droppable-mobile">
+          <p class="m-b-2">Upload .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Select file</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="droppable droppable-lg">
+        <div class="m-b-2">
+          <i class="icon icon-upload icon-xxl"></i>
+        </div>
+        <div class="droppable-desktop">
+          <p class="m-b-2">Drag and drop a .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Or select file</button>
+        </div>
+        <div class="droppable-mobile">
+          <p class="m-b-2">Upload .CSV file less than 5MB</p>
+          <button class="btn btn-primary">Select file</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% highlight html %}
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="droppable droppable-sm">
+      ...
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8 col-md-6">
+    <div class="droppable droppable-md">
+      ...
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="droppable droppable-lg">
+      ...
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+</div>

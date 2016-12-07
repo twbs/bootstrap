@@ -386,7 +386,7 @@ dt {
 dd {
   color: @headings-color;
   margin-left: 0; // Undo browser default
-  margin-bottom: @padding-container-collapse-xs;
+  margin-bottom: @spacing-1-mobile;
   font-size: @font-size-base;
 }
 
@@ -432,8 +432,8 @@ abbr[data-original-title] {
 
 // Blockquotes
 blockquote {
-  padding: 0 @padding-container-collapse-xs 0 (@padding-container-collapse-xs - 2px);
-  margin: @padding-container-collapse 0;
+  padding: 0 @spacing-1-mobile 0 (@spacing-1-mobile - 2px);
+  margin: @spacing-1-mobile 0;
   font-size: @font-size-base;
   border-left: 2px solid @blockquote-border-color;
 
@@ -464,9 +464,14 @@ blockquote {
     }
   }
 }
-@media (min-width: @screen-md-min) {
+@media (min-width: @screen-sm-min) {
     blockquote {
-        margin: @padding-container;
+        margin: @spacing-1-tablet;
+    }
+}
+@media (min-width: @screen-lg-min) {
+    blockquote {
+        margin: @spacing-1-desktop;
         font-size: @blockquote-font-size;
     }
 }

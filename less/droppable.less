@@ -1,0 +1,82 @@
+
+.droppable {
+  position: relative;
+  font-size: @font-size-base;
+  text-align: center;
+  border: 1px solid @input-border;
+  border-radius: @border-radius-base;
+}
+
+.droppable-active-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+  .droppable-active & {
+    display: flex;
+    background-color: @brand-white;
+  }
+  .droppable-dropping & {
+    color: @brand-light-blue !important;
+    background-color: @brand-light-blue-wash;
+  }
+}
+
+.droppable-mobile {
+  display: block;
+}
+.droppable-desktop {
+  display: none;
+}
+@media (min-width: @screen-md-min) {
+  .droppable {
+    border-style: dashed;
+  }
+  .droppable-mobile {
+    display: none;
+  }
+  .droppable-desktop {
+    display: block;
+  }
+}
+
+.droppable-active {
+  border-style: solid;
+}
+.droppable-dropping {
+  border-color: @input-border-focus;
+  h3, h4, h5, .icon {
+    color: @brand-light-blue;
+  }
+}
+.droppable-active.droppable-dropping {
+  border-style: dashed;
+}
+
+.droppable-size(@size, @padding-mobile, @padding-tablet, @padding-desktop) {
+	.droppable-@{size},
+	.droppable-@{size} .droppable-active-cover {
+	  padding: @padding-mobile @padding-mobile;
+	}
+	@media (min-width: @screen-sm-min) {
+	  .droppable-@{size},
+	  .droppable-@{size} .droppable-active-cover {
+	    padding: @padding-tablet @padding-mobile;
+	  }
+	}
+	@media (min-width: @screen-lg-min) {
+	  .droppable-@{size},
+	  .droppable-@{size} .droppable-active-cover {
+	    padding: @padding-desktop @padding-tablet;
+	  }
+	}
+}
+
+.droppable-size(sm, @spacing-1-mobile, @spacing-1-tablet, @spacing-1-desktop);
+.droppable-size(md, @spacing-2-mobile, @spacing-2-tablet, @spacing-2-desktop);
+.droppable-size(lg, @spacing-3-mobile, @spacing-3-tablet, @spacing-3-desktop);

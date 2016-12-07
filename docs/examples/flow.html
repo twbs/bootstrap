@@ -23,101 +23,27 @@
 	<script>
 	angular.module('ExampleApp', ['tw.styleguide-components'])
 		.controller('PageController', [
+			'$timeout',
 			'SelectOptionsService',
 			PageController
 		]);
 
-	function PageController(SelectOptionsService) {
+	function PageController($timeout, SelectOptionsService) {
 		var $ctrl = this;
 
 		$ctrl.onStop = function() {
 			$ctrl.swap = true;
 			console.log('onStop');
 		};
+
+		$ctrl.onSubmit = function() {
+
+		};
+		$ctrl.onComplete = function() {
+			console.log('complete');
+			$ctrl.completed = true;
+		};
 	}
-	/* TODO this is duplicate of work the WILL appear in styleguide components,
-	Remove at that point */
-	angular
-		.module('ExampleApp')
-		.directive('twProcessTodo', ['$interval', TwProcess]);
-
-
-		function TwProcess() {
-			return {
-				restrict: 'E',
-				controllerAs: '$ctrl',
-				bindToController: true,
-				scope: {
-					state: '=',
-					size: '@',
-					onStop: '&'
-				},
-				controller: ['$scope', '$interval', '$timeout', TwProcessController],
-				template:
-				"<span class='process' \
-					ng-class='{ \
-						\"process-success\": $ctrl.processing === 1, \
-						\"process-danger\": $ctrl.processing === -1, \
-						\"process-stopped\": $ctrl.processing === 0, \
-						\"process-xs\": $ctrl.size === \"xs\", \
-						\"process-sm\": $ctrl.size === \"sm\", \
-						\"process-md\": $ctrl.size === \"md\", \
-						\"process-lg\": $ctrl.size === \"lg\", \
-						\"process-xl\": $ctrl.size === \"xl\" \
-					}'> \
-					<span class='process-icon-container'> \
-						<span class='process-icon-horizontal'></span> \
-						<span class='process-icon-vertical'></span> \
-					</span> \
-					<svg version='1.1' \
-						xmlns='http://www.w3.org/2000/svg' \
-						xml:space='preserve'> \
-						<circle class='process-circle' cx='50%' cy='50%' r='46%' \
-							fill-opacity='0.0' /> \
-					</svg> \
-				</span>"
-			};
-		}
-
-		function TwProcessController($scope, $interval, $timeout) {
-			var $ctrl = this;
-			$ctrl.processing = $ctrl.state;
-
-			// This allows us to cancel the interval when not needed.
-			$scope.$watch('$ctrl.state', function(newVal) {
-				if (($ctrl.processing === -1 ||
-					$ctrl.processing === 0 ||
-					$ctrl.processing === 1) &&
-					($ctrl.state !== -1 &&
-					$ctrl.state !== 0 &&
-					$ctrl.state !== 1)) {
-					// We're stopped and restarting
-					$ctrl.processing = null;
-					$ctrl.createInterval();
-				}
-			});
-
-			$ctrl.createInterval = function() {
-				var promise = $interval(function() {
-					$ctrl.processing = $ctrl.state;
-					if ($ctrl.state === -1 ||
-						$ctrl.state === 0 ||
-						$ctrl.state === 1) {
-						$interval.cancel(promise);
-
-						if ($ctrl.onStop) {
-							if ($ctrl.state === 0) {
-								$ctrl.onStop();
-							} else {
-								$timeout($ctrl.onStop, 1800);
-							}
-						}
-					}
-				}, 1500);
-			};
-
-			$ctrl.createInterval();
-		}
 	</script>
 
 	<script src="js/nav.directive.js"></script>
@@ -140,15 +66,17 @@
 	</div>
 	<div class="container-fluid" ng-controller="PageController as ctrl">
 		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-xs-center m-b-0"
-				style="padding-top: 60px; padding-bottom: 64px;">
-				<h2>How much would you like to top up?</h2>
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-xs-center m-y-section-2">
+				<h2 ng-if="!ctrl.completed">How much would you like to top up?</h2>
+				<h2 ng-if="ctrl.completed">Great success! Much progress!</h2>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xl-6 col-xl-offset-3 col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-				<topup-form></topup-form>
-				<div class="text-xs-center section">
+				<topup-form
+					on-submit="ctrl.onSubmit()"
+					on-complete="ctrl.onComplete()"></topup-form>
+				<div class="text-xs-center m-y-section-3">
 					&copy; TransferWise 2016
 				</div>
 			</div>

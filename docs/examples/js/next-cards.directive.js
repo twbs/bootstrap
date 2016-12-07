@@ -8,9 +8,7 @@
 		return {
 			bindToController: true,
 			controller: function() {
-				if (!this.show) {
-					this.show = 3;
-				}
+				
 			},
 			controllerAs: '$ctrl',
 			replace: false,

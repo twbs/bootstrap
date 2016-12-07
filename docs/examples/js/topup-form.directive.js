@@ -31,13 +31,22 @@
 					$ctrl.processing = true;
 					$timeout(function () {
 						$ctrl.complete = true;
+						if ($ctrl.onComplete) {
+							$ctrl.onComplete();
+						}
 					}, 1500);
+					if ($ctrl.onSubmit) {
+						$ctrl.onSubmit();
+					}
 				}
 			}],
 			controllerAs: '$ctrl',
 			replace: false,
 			restrict: 'E',
-			scope: {},
+			scope: {
+				onSubmit: '&',
+				onComplete: '&'
+			},
 			templateUrl: "partials/topup-form.html"
 		}
 	}

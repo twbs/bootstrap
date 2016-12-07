@@ -2,7 +2,7 @@
 	<div class="col-xs-12 m-b-0" ng-class="{
 		'col-lg-4': $ctrl.show === 3,
 		'col-lg-6': $ctrl.show === 2,
-		'col-lg-12': $ctrl.show === 1
+		'col-lg-12': $ctrl.show === 1 || !$ctrl.show
 	}">
 		<div class="tile tile-inverse m-b-0" tabindex="0" role="button">
 			<div class="media">
@@ -16,10 +16,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-4 col-xs-12 hidden-xs hidden-sm hidden-md m-b-0" ng-if="$ctrl.show > 1" ng-class="{
-		'col-lg-4': $ctrl.show === 3,
-		'col-lg-6': $ctrl.show === 2
-	}">
+	<div class="col-lg-4 col-xs-12 hidden-xs hidden-sm hidden-md m-b-0"
+		ng-if="$ctrl.show > 1"
+		ng-class="{
+			'col-lg-4': $ctrl.show === 3,
+			'col-lg-6': $ctrl.show === 2
+		}">
 		<div class="tile tile-inverse m-b-0" tabindex="0" role="button">
 			<div class="media">
 				<div class="media-left text-info">
@@ -32,7 +34,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-4 col-xs-12 hidden-xs hidden-sm hidden-md m-b-0" ng-if="$ctrl.show > 2">
+	<div class="col-lg-4 col-xs-12 hidden-xs hidden-sm hidden-md m-b-0"
+		ng-if="$ctrl.show > 2">
 		<div class="tile tile-inverse m-b-0" tabindex="0" role="button">
 			<div class="media">
 				<div class="media-left text-info">

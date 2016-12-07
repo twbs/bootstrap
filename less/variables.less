@@ -219,10 +219,6 @@
 @line-height-large:         32px; // 18*1.555 = 28
 @line-height-small:         24px; // 12*1.5=18
 
-@padding-container:             32px;
-@padding-container-collapse:    24px;
-@padding-container-collapse-xs: 16px;
-
 @border-radius-base:        3px;
 @border-radius-large:       3px;
 @border-radius-small:       2px;
@@ -240,6 +236,19 @@
 @caret-width-base:          4px;
 //** Carets increase slightly in size for larger components.
 @caret-width-large:         5px;
+
+
+@spacing-1-mobile: 16px;
+@spacing-1-tablet: 24px;
+@spacing-1-desktop: 32px;
+
+@spacing-2-mobile: 32px;
+@spacing-2-tablet: 48px;
+@spacing-2-desktop: 64px;
+
+@spacing-3-mobile: 48px;
+@spacing-3-tablet: 72px;
+@spacing-3-desktop: 96px;
 
 
 //== Tables
@@ -832,14 +841,14 @@
 //##
 
 //** Padding applied to the modal body
-@modal-inner-padding:         @padding-container;
-@modal-inner-padding-collapse: @padding-container-collapse;
+@modal-inner-padding:          @spacing-1-desktop;
+@modal-inner-padding-collapse: @spacing-1-tablet;
 
 //** Padding applied to the modal title
-@modal-title-padding:         	@padding-container;
-@modal-title-vertical-padding:	28px;	// 2*28 + 24 = 80
+@modal-title-padding:          @spacing-1-desktop;
+@modal-title-vertical-padding: 28px;	// 2*28 + 24 = 80
 //** Modal title line-height
-@modal-title-line-height:     @line-height-computed;
+@modal-title-line-height:      @line-height-computed;
 
 //** Background color of modal content area
 @modal-content-bg:                             #fff;
@@ -960,12 +969,7 @@
 //##
 
 @panel-bg:                    transparent;
-@panel-body-padding:          @padding-container;
-@panel-body-padding-collapse: @padding-container-collapse;
-@panel-collapse-xs:           @padding-container-collapse-xs;
 @panel-heading-color:         @brand-navy-minus-10;
-@panel-heading-padding:       @padding-container;
-@panel-footer-padding:        @panel-heading-padding;
 @panel-border-radius:         @border-radius-base;
 @panel-focus-transtion:       @transition-duration;
 

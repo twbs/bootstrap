@@ -4,23 +4,23 @@
 
 // Base class
 .panel {
-  margin-bottom: @padding-container-collapse-xs;
+  margin-bottom: @spacing-1-mobile;
   background-color: @panel-bg;
   border: 0;
-  margin-left: (-@padding-container-collapse-xs);
-  margin-right: (-@padding-container-collapse-xs);
+  margin-left: (-@spacing-1-mobile);
+  margin-right: (-@spacing-1-mobile);
 }
 
 // Panel contents
 .panel-body {
-  padding: @panel-collapse-xs;
+  padding: @spacing-1-mobile;
   background-color: #fff;
   &:extend(.clearfix all);
 }
 
 // Optional heading
 .panel-heading {
-  padding: (@panel-body-padding / 2) @padding-container-collapse-xs;
+  padding: (@spacing-1-desktop / 2) @spacing-1-mobile;
 
   > .dropdown .dropdown-toggle {
     color: inherit;
@@ -41,36 +41,36 @@
 
 // Optional footer (stays gray in every modifier class)
 .panel-footer {
-  padding: @panel-collapse-xs;
+  padding: @spacing-1-mobile;
 }
 
 @media (min-width: @screen-sm-min) {
   .panel {
-    margin-bottom: @panel-body-padding-collapse;
+    margin-bottom: @spacing-1-tablet;
   }
   .panel-heading {
-    padding: (@panel-body-padding / 2) 0;
+    padding: (@spacing-1-desktop / 2) 0;
 
   }
   .panel-body {
-    padding: @panel-body-padding-collapse;
+    padding: @spacing-1-tablet;
   }
   .panel-footer {
-    padding: @panel-body-padding-collapse;
+    padding: @spacing-1-tablet;
   }
 }
 @media (min-width: @screen-lg-min) {
   .panel {
-    margin-bottom: @panel-body-padding;
+    margin-bottom: @spacing-1-desktop;
     border-radius: @panel-border-radius;
     margin-left: 0;
     margin-right: 0;
   }
   .panel-body {
-    padding: @panel-body-padding;
+    padding: @spacing-1-desktop;
   }
   .panel-footer {
-    padding: @panel-body-padding;
+    padding: @spacing-1-desktop;
   }
 }
 @media (min-width: @screen-md-min) {
@@ -130,8 +130,8 @@
     margin-bottom: 0;
 
     caption {
-      padding-left: @panel-body-padding;
-      padding-right: @panel-body-padding;
+      padding-left: @spacing-1-desktop;
+      padding-right: @spacing-1-desktop;
     }
   }
   // Add border top radius for first one
@@ -228,19 +228,35 @@
     border: 0;
     margin-bottom: 0;
   }
-  > .table tr > :first-child {
-    padding-left: @panel-body-padding-collapse;
+
+  > .table tr > :first-child,
+  > .table-responsive tr > :first-child {
+    padding-left: @spacing-1-mobile;
   }
-  > .table tr > :last-child {
-    padding-right: @panel-body-padding-collapse;
+  > .table tr > :last-child,
+  > .table-responsive tr > :last-child {
+    padding-right: @spacing-1-mobile;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    > .table tr > :first-child,
+    > .table-responsive tr > :first-child {
+      padding-left: @spacing-1-tablet;
+    }
+    > .table tr > :last-child,
+    > .table-responsive tr > :last-child {
+      padding-right: @spacing-1-tablet;
+    }
   }
 
   @media (min-width: @screen-lg-min) {
-    > .table tr > :first-child {
-      padding-left: @panel-body-padding;
+    > .table tr > :first-child,
+    > .table-responsive tr > :first-child {
+      padding-left: @spacing-1-desktop;
     }
-    > .table tr > :last-child {
-      padding-right: @panel-body-padding;
+    > .table tr > :last-child,
+    > .table-responsive tr > :last-child {
+      padding-right: @spacing-1-desktop;
     }
   }
 }
@@ -497,32 +513,25 @@
     }
     .panel-heading,
     .panel-footer {
-        padding: @panel-collapse-xs;
+        padding: @spacing-1-mobile;
     }
 }
-.spacing(@panel-collapse-xs, panel);
-.negative-spacing(@panel-collapse-xs, panel);
 
 @media (min-width: @screen-sm-min) {
     .panel-group .panel {
         .panel-heading,
         .panel-footer {
-            padding: @panel-body-padding-collapse !important;
+            padding: @spacing-1-tablet !important;
         }
     }
-    .spacing(@panel-body-padding-collapse, panel);
-    .negative-spacing(@panel-body-padding-collapse, panel);
 }
 @media (min-width: @screen-lg-min) {
     .panel-group .panel {
         .panel-heading,
         .panel-footer {
-            padding: @panel-body-padding-collapse @panel-body-padding;
+            padding: @spacing-1-tablet @spacing-1-desktop;
         }
     }
-
-    .spacing(@panel-body-padding, panel);
-    .negative-spacing(@panel-body-padding, panel);
 }
 @media (min-width: @screen-sm-min) {
     .panel {
@@ -532,6 +541,6 @@
 }
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
     .panel-heading {
-      padding: (@panel-body-padding / 2) 0;
+      padding: (@spacing-1-desktop / 2) 0;
     }
 }

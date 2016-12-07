@@ -542,19 +542,6 @@
     <input id="input-@line-height-small" type="text" value="24px" data-var="@line-height-small" class="form-control"/>
   </div>
   <div class="col-xs-4">
-    <label for="input-@padding-container">@padding-container</label>
-    <input id="input-@padding-container" type="text" value="32px" data-var="@padding-container" class="form-control"/>
-  </div>
-  <div class="col-xs-4">
-    <label for="input-@padding-container-collapse">@padding-container-collapse</label>
-    <input id="input-@padding-container-collapse" type="text" value="24px" data-var="@padding-container-collapse" class="form-control"/>
-  </div>
-  <div class="clearfix"></div>
-  <div class="col-xs-4">
-    <label for="input-@padding-container-collapse-xs">@padding-container-collapse-xs</label>
-    <input id="input-@padding-container-collapse-xs" type="text" value="16px" data-var="@padding-container-collapse-xs" class="form-control"/>
-  </div>
-  <div class="col-xs-4">
     <label for="input-@border-radius-base">@border-radius-base</label>
     <input id="input-@border-radius-base" type="text" value="3px" data-var="@border-radius-base" class="form-control"/>
   </div>
@@ -600,6 +587,45 @@
     <label for="input-@caret-width-large">@caret-width-large</label>
     <input id="input-@caret-width-large" type="text" aria-describedby="help-block-@caret-width-large" value="5px" data-var="@caret-width-large" class="form-control"/>
     <p id="help-block-@caret-width-large" class="help-block">Carets increase slightly in size for larger components.</p>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@spacing-1-mobile">@spacing-1-mobile</label>
+    <input id="input-@spacing-1-mobile" type="text" value="16px" data-var="@spacing-1-mobile" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@spacing-1-tablet">@spacing-1-tablet</label>
+    <input id="input-@spacing-1-tablet" type="text" value="24px" data-var="@spacing-1-tablet" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@spacing-1-desktop">@spacing-1-desktop</label>
+    <input id="input-@spacing-1-desktop" type="text" value="32px" data-var="@spacing-1-desktop" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@spacing-2-mobile">@spacing-2-mobile</label>
+    <input id="input-@spacing-2-mobile" type="text" value="32px" data-var="@spacing-2-mobile" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@spacing-2-tablet">@spacing-2-tablet</label>
+    <input id="input-@spacing-2-tablet" type="text" value="48px" data-var="@spacing-2-tablet" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@spacing-2-desktop">@spacing-2-desktop</label>
+    <input id="input-@spacing-2-desktop" type="text" value="64px" data-var="@spacing-2-desktop" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@spacing-3-mobile">@spacing-3-mobile</label>
+    <input id="input-@spacing-3-mobile" type="text" value="48px" data-var="@spacing-3-mobile" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@spacing-3-tablet">@spacing-3-tablet</label>
+    <input id="input-@spacing-3-tablet" type="text" value="72px" data-var="@spacing-3-tablet" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@spacing-3-desktop">@spacing-3-desktop</label>
+    <input id="input-@spacing-3-desktop" type="text" value="96px" data-var="@spacing-3-desktop" class="form-control"/>
   </div>
 </div>
 <h2 id="tables">Tables</h2>
@@ -1940,16 +1966,16 @@
 <div class="row">
   <div class="col-xs-4">
     <label for="input-@modal-inner-padding">@modal-inner-padding</label>
-    <input id="input-@modal-inner-padding" type="text" aria-describedby="help-block-@modal-inner-padding" value="@padding-container" data-var="@modal-inner-padding" class="form-control"/>
+    <input id="input-@modal-inner-padding" type="text" aria-describedby="help-block-@modal-inner-padding" value="@spacing-1-desktop" data-var="@modal-inner-padding" class="form-control"/>
     <p id="help-block-@modal-inner-padding" class="help-block">Padding applied to the modal body</p>
   </div>
   <div class="col-xs-4">
     <label for="input-@modal-inner-padding-collapse">@modal-inner-padding-collapse</label>
-    <input id="input-@modal-inner-padding-collapse" type="text" value="@padding-container-collapse" data-var="@modal-inner-padding-collapse" class="form-control"/>
+    <input id="input-@modal-inner-padding-collapse" type="text" value="@spacing-1-tablet" data-var="@modal-inner-padding-collapse" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@modal-title-padding">@modal-title-padding</label>
-    <input id="input-@modal-title-padding" type="text" aria-describedby="help-block-@modal-title-padding" value="	@padding-container" data-var="@modal-title-padding" class="form-control"/>
+    <input id="input-@modal-title-padding" type="text" aria-describedby="help-block-@modal-title-padding" value="@spacing-1-desktop" data-var="@modal-title-padding" class="form-control"/>
     <p id="help-block-@modal-title-padding" class="help-block">Padding applied to the modal title</p>
   </div>
   <div class="clearfix"></div>
@@ -2240,40 +2266,18 @@
     <input id="input-@panel-bg" type="text" value="transparent" data-var="@panel-bg" class="form-control"/>
   </div>
   <div class="col-xs-4">
-    <label for="input-@panel-body-padding">@panel-body-padding</label>
-    <input id="input-@panel-body-padding" type="text" value="@padding-container" data-var="@panel-body-padding" class="form-control"/>
-  </div>
-  <div class="col-xs-4">
-    <label for="input-@panel-body-padding-collapse">@panel-body-padding-collapse</label>
-    <input id="input-@panel-body-padding-collapse" type="text" value="@padding-container-collapse" data-var="@panel-body-padding-collapse" class="form-control"/>
-  </div>
-  <div class="clearfix"></div>
-  <div class="col-xs-4">
-    <label for="input-@panel-collapse-xs">@panel-collapse-xs</label>
-    <input id="input-@panel-collapse-xs" type="text" value="@padding-container-collapse-xs" data-var="@panel-collapse-xs" class="form-control"/>
-  </div>
-  <div class="col-xs-4">
     <label for="input-@panel-heading-color">@panel-heading-color</label>
     <input id="input-@panel-heading-color" type="text" value="@brand-navy-minus-10" data-var="@panel-heading-color" class="form-control"/>
-  </div>
-  <div class="col-xs-4">
-    <label for="input-@panel-heading-padding">@panel-heading-padding</label>
-    <input id="input-@panel-heading-padding" type="text" value="@padding-container" data-var="@panel-heading-padding" class="form-control"/>
-  </div>
-  <div class="clearfix"></div>
-  <div class="col-xs-4">
-    <label for="input-@panel-footer-padding">@panel-footer-padding</label>
-    <input id="input-@panel-footer-padding" type="text" value="@panel-heading-padding" data-var="@panel-footer-padding" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@panel-border-radius">@panel-border-radius</label>
     <input id="input-@panel-border-radius" type="text" value="@border-radius-base" data-var="@panel-border-radius" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-focus-transtion">@panel-focus-transtion</label>
     <input id="input-@panel-focus-transtion" type="text" value="@transition-duration" data-var="@panel-focus-transtion" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-inner-border">@panel-inner-border</label>
     <input id="input-@panel-inner-border" type="text" aria-describedby="help-block-@panel-inner-border" value="#FFF" data-var="@panel-inner-border" class="form-control"/>
@@ -2283,11 +2287,11 @@
     <label for="input-@panel-footer-bg">@panel-footer-bg</label>
     <input id="input-@panel-footer-bg" type="text" value="#fff" data-var="@panel-footer-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-default-text">@panel-default-text</label>
     <input id="input-@panel-default-text" type="text" value="@gray-dark" data-var="@panel-default-text" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-default-border">@panel-default-border</label>
     <input id="input-@panel-default-border" type="text" value="@brand-smoke-plus-10" data-var="@panel-default-border" class="form-control"/>
@@ -2296,11 +2300,11 @@
     <label for="input-@panel-default-heading-bg">@panel-default-heading-bg</label>
     <input id="input-@panel-default-heading-bg" type="text" value="#fff" data-var="@panel-default-heading-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-primary-text">@panel-primary-text</label>
     <input id="input-@panel-primary-text" type="text" value="#fff" data-var="@panel-primary-text" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-primary-border">@panel-primary-border</label>
     <input id="input-@panel-primary-border" type="text" value="@brand-navy" data-var="@panel-primary-border" class="form-control"/>
@@ -2309,11 +2313,11 @@
     <label for="input-@panel-primary-heading-bg">@panel-primary-heading-bg</label>
     <input id="input-@panel-primary-heading-bg" type="text" value="#fff" data-var="@panel-primary-heading-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-success-text">@panel-success-text</label>
     <input id="input-@panel-success-text" type="text" value="@state-success-text" data-var="@panel-success-text" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-success-border">@panel-success-border</label>
     <input id="input-@panel-success-border" type="text" value="@state-success-border" data-var="@panel-success-border" class="form-control"/>
@@ -2322,11 +2326,11 @@
     <label for="input-@panel-success-heading-bg">@panel-success-heading-bg</label>
     <input id="input-@panel-success-heading-bg" type="text" value="#FFF" data-var="@panel-success-heading-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-info-text">@panel-info-text</label>
     <input id="input-@panel-info-text" type="text" value="@state-info-text" data-var="@panel-info-text" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-info-border">@panel-info-border</label>
     <input id="input-@panel-info-border" type="text" value="@state-info-border" data-var="@panel-info-border" class="form-control"/>
@@ -2335,11 +2339,11 @@
     <label for="input-@panel-info-heading-bg">@panel-info-heading-bg</label>
     <input id="input-@panel-info-heading-bg" type="text" value="#FFF" data-var="@panel-info-heading-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-warning-text">@panel-warning-text</label>
     <input id="input-@panel-warning-text" type="text" value="@state-warning-text" data-var="@panel-warning-text" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-warning-border">@panel-warning-border</label>
     <input id="input-@panel-warning-border" type="text" value="@state-warning-border" data-var="@panel-warning-border" class="form-control"/>
@@ -2348,11 +2352,11 @@
     <label for="input-@panel-warning-heading-bg">@panel-warning-heading-bg</label>
     <input id="input-@panel-warning-heading-bg" type="text" value="#FFF" data-var="@panel-warning-heading-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-danger-text">@panel-danger-text</label>
     <input id="input-@panel-danger-text" type="text" value="@state-danger-text" data-var="@panel-danger-text" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@panel-danger-border">@panel-danger-border</label>
     <input id="input-@panel-danger-border" type="text" value="@state-danger-border" data-var="@panel-danger-border" class="form-control"/>

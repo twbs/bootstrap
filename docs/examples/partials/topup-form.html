@@ -94,12 +94,12 @@
 	</div>
 	<button class="btn btn-success btn-block" type="submit"
 		ng-disabled="$ctrl.processing">
-		<tw-process-todo size="xs" ng-if="$ctrl.processing"></tw-process-todo>
+		<tw-process size="xs" ng-if="$ctrl.processing"></tw-process>
 		Pay £1,000 {{$ctrl.currency1 | uppercase}}
 	</button>
 </form>
 <div ng-if="$ctrl.complete">
-	<tw-process-todo state="1" size="xl"></tw-process-todo>
+	<tw-process state="1" size="xl"></tw-process>
 	<p class="text-xs-center" style="margin-top: 64px;">Your transfer of <strong>$1,000</strong> to Diana is on it's way and is
 		expected to reach her bank accounts today.  We have sent you a receipt
 		via email.</p>

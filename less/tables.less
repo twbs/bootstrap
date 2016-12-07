@@ -264,33 +264,3 @@ table {
         background-color: @gray-base;
     }
 }
-
-.panel {
-    > .table,
-    > .table-responsive {
-        th:first-child,
-        td:first-child {
-            padding-left: @panel-body-padding-collapse;
-        }
-        th:last-child,
-        td:last-child {
-            padding-right: @panel-body-padding-collapse;
-        }
-    }
-}
-
-@media screen and (min-width: @screen-md-min) {
-    .panel {
-        > .table,
-        > .table-responsive {
-            th:first-child,
-            td:first-child {
-                padding-left: @panel-body-padding;
-            }
-            th:last-child,
-            td:last-child {
-                padding-right: @panel-body-padding;
-            }
-        }
-    }
-}
