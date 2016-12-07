@@ -119,6 +119,7 @@
     clear: left;
 
     + .custom-control {
+      margin-top: $custom-control-spacer-y;
       margin-left: 0;
     }
   }
