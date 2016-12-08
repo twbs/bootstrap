@@ -117,6 +117,7 @@
   .custom-control {
     float: left;
     clear: left;
+    margin-bottom: $custom-control-spacer-y;
 
     + .custom-control {
       margin-left: 0;
