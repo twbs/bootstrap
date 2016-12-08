@@ -116,8 +116,8 @@
 .custom-controls-stacked {
   .custom-control {
     float: left;
-    clear: left;
     margin-bottom: $custom-control-spacer-y;
+    clear: left;
 
     + .custom-control {
       margin-left: 0;
