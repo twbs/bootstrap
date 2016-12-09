@@ -210,8 +210,7 @@
 .custom-file-input {
   min-width: $custom-file-width;
   max-width: 100%;
-  padding-top: $custom-file-padding-y;
-  padding-bottom: $custom-file-padding-y;
+  height: $custom-file-height;
   margin: 0;
   filter: alpha(opacity = 0);
   opacity: 0;
