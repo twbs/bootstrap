@@ -3589,6 +3589,7 @@ tbody.collapse.active {
 
 .custom-controls-stacked .custom-control {
   float: left;
+  margin-bottom: 0.25rem;
   clear: left;
 }
 
