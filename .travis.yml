@@ -1,38 +1,34 @@
+sudo: required
+dist: trusty
 language: node_js
 git:
   depth: 10
 node_js:
   - "0.12"
 before_install:
-  - travis_retry sudo pip install -r test-infra/requirements.txt
-  - rvm use 1.9.3 --fuzzy
-  - export GEMDIR=$(rvm gemdir)
-  - if [ "$TWBS_TEST" = validate-html ]; then echo "ruby=$(basename $GEMDIR) jekyll=$JEKYLL_VERSION rouge=$ROUGE_VERSION" > pseudo_Gemfile.lock; fi
+  # Remove ./node_modules/.bin from PATH so node-which doesn't replace Unix which and cause RVM to barf. See https://github.com/travis-ci/travis-ci/issues/5092
+  - export PATH=$(python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH")
+  - rvm install 2.2
+  - rvm use 2.2 --fuzzy
   - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip sauce\]'; export TWBS_DO_SAUCE=$?; true
   - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then export TWBS_DO_VALIDATOR=0; fi
 install:
-  - npm install -g grunt-cli
-  - ./test-infra/s3_cache.py download npm-modules
-  - if [ "$TWBS_TEST" = validate-html ] && [ $TWBS_DO_VALIDATOR -ne 0 ]; then ./test-infra/s3_cache.py download rubygems; fi
-after_script:
-  - if [ "$TRAVIS_REPO_SLUG" != twbs-savage/bootstrap ] && [ "$TWBS_TEST" = core ]; then ./test-infra/s3_cache.py upload npm-modules; fi
-  - if [ "$TRAVIS_REPO_SLUG" != twbs-savage/bootstrap ] && [ "$TWBS_TEST" = validate-html ] && [ $TWBS_DO_VALIDATOR -ne 0 ]; then ./test-infra/s3_cache.py upload rubygems; fi
+  - bundle install --deployment --jobs=1
+  - cp grunt/npm-shrinkwrap.json ./
+  - npm install
+cache:
+  directories:
+    - node_modules
+    - vendor/bundle
 env:
   global:
-    - JEKYLL_VERSION="2.5.3"
-    - ROUGE_VERSION="1.8.0"
+    - NPM_CONFIG_PROGRESS="false"
     - SAUCE_USERNAME="bootstrap"
     - secure: "pJkBwnuae9dKU5tEcCqccfS1QQw7/meEcfz63fM7ba7QJNjoA6BaXj08L5Z3Vb5vBmVPwBawxo5Hp0jC0r/Z/O0hGnAmz/Cz09L+cy7dSAZ9x4hvZePSja/UAusaB5ogMoO8l2b773MzgQeSmrLbExr9BWLeqEfjC2hFgdgHLaQ="
-    - secure: "gqjqISbxBJK6byFbsmr1AyP1qoWH+rap06A2gI7v72+Tn2PU2nYkIMUkCvhZw6K889jv+LhQ/ybcBxDOXHpNCExCnSgB4dcnmYp+9oeNZb37jSP0rQ+Ib4OTLjzc3/FawE/fUq5kukZTC7porzc/k0qJNLAZRx3YLALmK1GIdUY="
-    - secure: "Gghh/e3Gsbj1+4RR9Lh2aR/xJl35HWiHqlPIeSUqE9D7uDCVTAwNce/dGL3Ew7uJPfJ6Pgr70wD3zgu3stw0Zmzayax0hiDtGwcQCxVIER08wqGANK9C2Q7PYJkNTNtiTo6ehKWbdV4Z+/U+TEYyQfpQTDbAFYk/vVpsdjp0Lmc="
-    - secure: "RTbRdx4G/2OTLfrZtP1VbRljxEmd6A1F3GqXboeQTldsnAlwpsES65es5CE3ub/rmixLApOY9ot7OPmNixFgC2Y8xOsV7lNCC62QVpmqQEDyGFFQKb3yO6/dmwQxdsCqGfzf9Np6Wh5V22QFvr50ZLKLd7Uhd9oXMDIk/z1MJ3o="
     - secure: "RKWpS+P20b4tG9tawzCMJSmQftoonmC7tJzyGYiHuEM1TcpHALLBcnzKlr/+DiPTfzDJWY4kS8pxfhK4uXOe8OHnhpMNub7LEWtFPePlZIervOJcsOydaQocTKqVVWD6OUubMeQmQ+tZmvmpjoJ1uPPEbFs9ciF7+dv3U5tLUZ0="
     - secure: "XswSKBY0HJ/aO9VOBeWlvGpqSFF/DsJmNKz7o5RkJMJX340qe44J929uUNwwOwlv9YrgptzC2W6l8bpmZQV+p6IYs99SoSA8CCaUfIJaqeU9x/UiT5vIHgqaNax+vFJwvzHLpF5v/ggFqFEKCd54gCDasePLTztHeC4oL104iaQ="
-    - secure: "Dv1HX5dzyTh8gA2YsLI+yWEgh9lnGKPpRDDEYYvm42fjBFziUYfcpvA9g8GXQuU9srY3mhfsZkCDHN0x5n1gliOai5TSjmd5Hh+9UyhvNWE+D8HoUpcFXWoQXvy/if2r25m+ZWi3cqgXkkBOcal3W1ePMtU4ln18NcWyIZ0tEFo="
-    - secure: "PabpUdG2dE40hHUkMCdxk1e9Ak3BOo0h7Y5/uekosLKOz5N60Xmn/ooyrSkvicLthXO4cfONFhO3/xSVRKQOxlUw4on5i0VuNK+QSqxJk0IDaRSZnTCcC8J7083K0YL+FvMdGQwcYwMY9LiwS8aS014IRkSQjsa+mjo3owP+dOU="
-    - secure: "G4/f4PVyVi9o6UbZMqw9YFmDu7cHqe9iymiXYd1RcnPXwhWAePX12m0PWMhUj5itJ180PTEddVip8PNOgBdqyrDxEPKkcgAW2EElVAPIKJXVfvDW64UjQ0H7NS7XvF7iLQUJp/XfmR7NJ7tT393AQdh8SGmuQpJhgYbwIWbES/k="
   matrix:
     - TWBS_TEST=core
     - TWBS_TEST=validate-html
@@ -42,4 +38,4 @@ matrix:
 notifications:
   slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
   webhooks:
-    - http://savage.twbsapps.com/savage/travis
+    - http://savage1.twbsapps.com/savage/travis

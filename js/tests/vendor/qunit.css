@@ -1,27 +1,27 @@
 /*!
- * QUnit 1.17.1
- * http://qunitjs.com/
+ * QUnit 1.22.0
+ * https://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
- * http://jquery.org/license
+ * https://jquery.org/license
  *
- * Date: 2015-01-20T19:39Z
+ * Date: 2016-02-23T15:57Z
  */
 
 /** Font Family and Sizes */
 
-#qunit-tests, #qunit-header, #qunit-banner, #qunit-testrunner-toolbar, #qunit-userAgent, #qunit-testresult {
+#qunit-tests, #qunit-header, #qunit-banner, #qunit-testrunner-toolbar, #qunit-filteredTest, #qunit-userAgent, #qunit-testresult {
 	font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
 }
 
-#qunit-testrunner-toolbar, #qunit-userAgent, #qunit-testresult, #qunit-tests li { font-size: small; }
+#qunit-testrunner-toolbar, #qunit-filteredTest, #qunit-userAgent, #qunit-testresult, #qunit-tests li { font-size: small; }
 #qunit-tests { font-size: smaller; }
 
 
 /** Resets */
 
-#qunit-tests, #qunit-header, #qunit-banner, #qunit-userAgent, #qunit-testresult, #qunit-modulefilter {
+#qunit-tests, #qunit-header, #qunit-banner, #qunit-filteredTest, #qunit-userAgent, #qunit-testresult, #qunit-modulefilter {
 	margin: 0;
 	padding: 0;
 }
@@ -66,6 +66,12 @@
 	color: #5E740B;
 	background-color: #EEE;
 	overflow: hidden;
+}
+
+#qunit-filteredTest {
+	padding: 0.5em 1em 0.5em 1em;
+	background-color: #F4FF77;
+	color: #366097;
 }
 
 #qunit-userAgent {
@@ -114,9 +120,19 @@
 	display: list-item;
 }
 
+#qunit-tests.hidepass {
+	position: relative;
+}
+
 #qunit-tests.hidepass li.running,
 #qunit-tests.hidepass li.pass {
-	display: none;
+	visibility: hidden;
+	position: absolute;
+	width:   0;
+	height:  0;
+	padding: 0;
+	border:  0;
+	margin:  0;
 }
 
 #qunit-tests li strong {
@@ -131,6 +147,11 @@
 	padding: 0.5em;
 	color: #C2CCD1;
 	text-decoration: none;
+}
+
+#qunit-tests li p a {
+	padding: 0.25em;
+	color: #6B6464;
 }
 #qunit-tests li a:hover,
 #qunit-tests li a:focus {
@@ -149,6 +170,10 @@
 	background-color: #FFF;
 
 	border-radius: 5px;
+}
+
+.qunit-source {
+	margin: 0.6em 0 0.3em;
 }
 
 .qunit-collapsed {

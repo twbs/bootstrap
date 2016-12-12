@@ -3,6 +3,11 @@
   description: Bootstrap 中文文档
   url: http://v3.bootcss.com/
 
+- name: Chinese (Traditional)
+  code: zh-TW
+  description: Bootstrap 3 中文手冊
+  url: https://kkbruce.tw/bs3/
+ 
 - name: Danish
   code: da
   description: Bootstrap på Dansk
