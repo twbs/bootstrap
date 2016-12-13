@@ -41,6 +41,7 @@
 // 33. Carousel
 // 34. Close
 // 35. Code
+// 36. Transitions
 
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
@@ -921,3 +922,20 @@ $pre-bg:                      $gray-lightest !default;
 $pre-color:                   $gray-dark !default;
 $pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;
+
+
+// 36. Transitions
+
+$transition-property-primary:      all !default;
+$transition-property-secondary:    transform !default;
+
+$transition-duration-short:        .15s !default;
+$transition-duration-base:         .3s !default;
+$transition-duration-long:         .6s !default;
+
+$transition-timing-primary:        ease-in-out !default;
+$transition-timing-secondary:      linear !default;
+
+$transition-delay-base:            .15s !default;
+
+$transition-base:                  $transition-property-primary $transition-duration-base $transition-timing-primary !default;
