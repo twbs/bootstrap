@@ -118,14 +118,14 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
 //
 
 .progress-success {
-  @include progress-variant($progress-bar-success-bg);
+  @include progress-variant($progress-bar-success-color);
 }
 .progress-info {
-  @include progress-variant($progress-bar-info-bg);
+  @include progress-variant($progress-bar-info-color);
 }
 .progress-warning {
-  @include progress-variant($progress-bar-warning-bg);
+  @include progress-variant($progress-bar-warning-color);
 }
 .progress-danger {
-  @include progress-variant($progress-bar-danger-bg);
+  @include progress-variant($progress-bar-danger-color);
 }
