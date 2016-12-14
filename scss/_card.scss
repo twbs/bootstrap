@@ -205,6 +205,24 @@
 //
 // Those changes are noted by `// Margin balancing`.
 
+@mixin make-responsive-cards($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+  $breakpoint-counter: 0;
+  @each $breakpoint in map-keys($breakpoints) {
+    $breakpoint-counter: ($breakpoint-counter + 1);
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      @for $i from 1 through $columns {
+        .card-deck-#{$breakpoint}-#{$i} {
+          .card {
+            $width: percentage($i / $columns);
+            flex-basis: calc(#{$width} - #{$card-spacer-x});
+            max-width: calc(#{$width} - #{$card-spacer-x});
+          }
+        }
+      }
+    }
+  }
+}
+
 @if $enable-flex {
   @include media-breakpoint-up(sm) {
     .card-deck {
@@ -222,6 +240,21 @@
       }
     }
   }
+
+  .card-deck-responsive {
+    flex-wrap: wrap;
+    .card {
+      display: flex;
+      flex-basis: 100%;
+      flex-direction: column;
+      max-width: 100%;
+      .card-block {
+        flex-grow: 1;
+      }
+    }
+  }
+  @include make-responsive-cards();
+
 } @else {
   @include media-breakpoint-up(sm) {
     $space-between-cards: (2 * $card-deck-margin);
