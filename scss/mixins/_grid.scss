@@ -39,8 +39,8 @@
   }
 }
 
-@mixin make-row($gutters: $grid-gutter-widths) {
-  @if $enable-flex {
+@mixin make-row($gutters: $grid-gutter-widths, $flex: $enable-flex) {
+  @if $flex {
     display: flex;
     flex-wrap: wrap;
   } @else {
