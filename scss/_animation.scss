@@ -1,7 +1,7 @@
 .fade {
   opacity: 0;
 
-  @include transition(opacity .15s linear);
+  @include transition($transition-fade);
 
   &.active {
     opacity: 1;
@@ -32,5 +32,5 @@ tbody {
   height: 0;
   overflow: hidden;
 
-  @include transition(height .35s ease);
+  @include transition($transition-collapse);
 }
