@@ -11,6 +11,9 @@
   .media-bottom {
     align-self: flex-end;
   }
+  .media-right {
+    order: 1;
+  }
 } @else {
   .media,
   .media-body {
