@@ -66,10 +66,7 @@
   height: $custom-control-indicator-size;
   pointer-events: none;
   user-select: none;
-  background-color: $custom-control-indicator-bg;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: $custom-control-indicator-bg-size;
+  background: $custom-control-indicator-bg no-repeat center / $custom-control-indicator-bg-size;
   @include box-shadow($custom-control-indicator-box-shadow);
 }
 
@@ -143,9 +140,8 @@
   padding-right: $custom-select-padding-x \9;
   color: $custom-select-color;
   vertical-align: middle;
-  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
+  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center / $custom-select-bg-size;
   background-image: none \9;
-  background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
   @include border-radius($custom-select-border-radius);
   // Use vendor prefixes as `appearance` isn't part of the CSS spec.
