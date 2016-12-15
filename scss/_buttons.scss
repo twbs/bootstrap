@@ -5,47 +5,7 @@
 //
 
 .btn {
-  display: inline-block;
-  font-weight: $btn-font-weight;
-  line-height: $btn-line-height;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-  border: $input-btn-border-width solid transparent;
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
-  @include transition(all .2s ease-in-out);
-
-  &,
-  &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      @include tab-focus();
-    }
-  }
-
-  @include hover-focus {
-    text-decoration: none;
-  }
-  &.focus {
-    text-decoration: none;
-  }
-
-  &:active,
-  &.active {
-    background-image: none;
-    outline: 0;
-    @include box-shadow($btn-active-box-shadow);
-  }
-
-  &.disabled,
-  &:disabled {
-    cursor: $cursor-disabled;
-    opacity: .65;
-    @include box-shadow(none);
-  }
+  @include button($btn-line-height, $btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
 }
 
 // Future-proof disabling of clicks on `<a>` elements
