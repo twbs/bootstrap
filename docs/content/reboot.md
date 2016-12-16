@@ -41,7 +41,9 @@ The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped i
 $font-family-sans-serif:
   // Safari for OS X and iOS (San Francisco)
   -apple-system,
-  // Chrome for OS X (San Francisco)
+  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
+  system-ui,
+  // Chrome < 56 for OS X (San Francisco)
   BlinkMacSystemFont,
   // Windows
   "Segoe UI",
