@@ -388,6 +388,8 @@ $btn-border-radius:              $border-radius !default;
 $btn-border-radius-lg:           $border-radius-lg !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
 
+$btn-transition:                 all .2s ease-in-out !default;
+
 
 // 13. Forms
 
@@ -861,6 +863,7 @@ $thumbnail-border-width:      $border-width !default;
 $thumbnail-border-color:      #ddd !default;
 $thumbnail-border-radius:     $border-radius !default;
 $thumbnail-box-shadow:        0 1px 2px rgba(0,0,0,.075) !default;
+$thumbnail-transition:        all .2s ease-in-out !default;
 
 
 // 30. Figures
