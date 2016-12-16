@@ -71,7 +71,7 @@
         $(document.createElement('div'))
           .addClass('dropdown-backdrop')
           .insertAfter($(this))
-          .on('click', clearMenus)
+          .on('touchend', clearMenus)
       }
 
       var relatedTarget = { relatedTarget: this }
