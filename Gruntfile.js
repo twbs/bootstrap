@@ -443,6 +443,7 @@ module.exports = function (grunt) {
           'Attribute “ng-attr-aria-expanded” not allowed on element “div” at this point.',
           'Attribute “tw-focusable” not allowed on element “input” at this point.',
           'Attribute “tw-focusable” not allowed on element “textarea” at this point.',
+          'Attribute “tw-pop-over” not allowed on element “a” at this point.',
           'Element “nav-bar” not allowed as child of element “body” in this context. (Suppressing further errors from this subtree.)',
           'Element “next-cards” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
           'Element “transfer-list” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',

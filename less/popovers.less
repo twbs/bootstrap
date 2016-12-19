@@ -9,7 +9,7 @@
   left: 0;
   z-index: @zindex-popover;
   display: none;
-  max-width: @popover-max-width;
+  width: @popover-max-width;
   padding: 19px 24px;
   // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
@@ -141,4 +141,18 @@
 }
 .popover-content :last-child {
     margin-bottom: 0;
+}
+
+[data-toggle=popover]:not(.btn) {
+  color: inherit !important;
+  font-weight: inherit !important;
+  text-decoration: none !important;
+  border-bottom: 1px dotted @abbr-border-color !important;
+  cursor: pointer;
+  &:hover,
+  &:focus,
+  &[aria-describedby] {
+    color: @link-hover-color !important;
+    outline: 0;
+  }
 }

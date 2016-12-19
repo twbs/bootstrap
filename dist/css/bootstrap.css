@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v5.3.0 (http://bootstrap.transferwise.com)
+ * Bootstrap v5.4.1 (http://bootstrap.transferwise.com)
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
@@ -50,9 +50,6 @@ a:active,
 a:hover,
 a:focus {
   outline: 0;
-}
-abbr[title] {
-  border-bottom: 1px dotted;
 }
 b,
 strong {
@@ -1779,8 +1776,9 @@ dd {
 }
 abbr[title],
 abbr[data-original-title] {
+  text-decoration: none;
   cursor: help;
-  border-bottom: 1px dotted #829ca9;
+  border-bottom: 1px dotted #00b9ff;
 }
 .initialism {
   font-size: 90%;
@@ -9539,13 +9537,24 @@ button.close {
   border-width: 0 5px 5px;
   border-bottom-color: #37517e;
 }
+[data-toggle=tooltip]:not(.btn) {
+  cursor: pointer;
+}
+[data-toggle=tooltip]:not(.btn):hover,
+[data-toggle=tooltip]:not(.btn):focus {
+  color: #00a4df !important;
+  outline: 0;
+}
+a[data-toggle=tooltip] {
+  white-space: nowrap;
+}
 .popover {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1060;
   display: none;
-  max-width: 276px;
+  width: 276px;
   padding: 19px 24px;
   font-family: "Averta", "Avenir W02", "Avenir", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -9678,6 +9687,19 @@ button.close {
 }
 .popover-content :last-child {
   margin-bottom: 0;
+}
+[data-toggle=popover]:not(.btn) {
+  font-weight: inherit !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  cursor: pointer;
+  border-bottom: 1px dotted #00b9ff !important;
+}
+[data-toggle=popover]:not(.btn):hover,
+[data-toggle=popover]:not(.btn):focus,
+[data-toggle=popover]:not(.btn)[aria-describedby] {
+  color: #00a4df !important;
+  outline: 0;
 }
 .carousel {
   position: relative;

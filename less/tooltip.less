@@ -99,3 +99,15 @@
     border-bottom-color: @tooltip-arrow-color;
   }
 }
+
+[data-toggle=tooltip]:not(.btn) {
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    color: @link-hover-color !important;
+    outline: 0;
+  }
+}
+a[data-toggle=tooltip] {
+  white-space: nowrap;
+}
