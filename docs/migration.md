@@ -181,6 +181,10 @@ Dropped entirely for the new card component.
 
 - Removed support for `auto` placement options.
 
+### Popovers
+
+- Removed support for `auto` placement options.
+
 ### Carousel
 
 - Overhauled the entire component to simplify design and styling. We have fewer styles for you to override, new indicators, and new icons.
