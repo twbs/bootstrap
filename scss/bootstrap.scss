@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v4.0.0-alpha.5 (https://getbootstrap.com)
+ * Bootstrap v4.0.0-alpha.2 (http://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -25,7 +25,7 @@
 @import "buttons";
 
 // Components
-@import "transitions";
+@import "animation";
 @import "dropdown";
 @import "button-group";
 @import "input-group";
@@ -35,7 +35,7 @@
 @import "card";
 @import "breadcrumb";
 @import "pagination";
-@import "badge";
+@import "tags";
 @import "jumbotron";
 @import "alert";
 @import "progress";

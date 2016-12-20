@@ -15,7 +15,7 @@
   user-select: none;
   border: $input-btn-border-width solid transparent;
   @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
-  @include transition($btn-transition);
+  @include transition(all .2s ease-in-out);
 
   &,
   &:active,
@@ -105,7 +105,7 @@ fieldset[disabled] a.btn {
 
 // Make a button look and behave like a link
 .btn-link {
-  font-weight: $font-weight-normal;
+  font-weight: normal;
   color: $link-color;
   border-radius: 0;
 

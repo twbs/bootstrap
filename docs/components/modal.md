@@ -1,7 +1,6 @@
 ---
 layout: docs
 title: Modal
-description: Learn how to use Bootstrap's modals to add dialog prompts to your site.
 group: components
 ---
 
@@ -29,7 +28,7 @@ Be sure not to open a modal while another is still visible. Showing more than on
 {% callout warning %}
 #### Modal markup placement
 
-Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality. Placing it within a `position: fixed;` element may adversely affect placement.
+Always try to place a modal's HTML code in a top-level position in your document to avoid other components affecting the modal's appearance and/or functionality.
 {% endcallout %}
 
 {% callout warning %}
@@ -286,11 +285,11 @@ To take advantage of the Bootstrap grid system within a modal, just nest `.conta
             <div class="col-sm-9">
               Level 1: .col-sm-9
               <div class="row">
-                <div class="col-8 col-sm-6">
-                  Level 2: .col-8 .col-sm-6
+                <div class="col-xs-8 col-sm-6">
+                  Level 2: .col-xs-8 .col-sm-6
                 </div>
-                <div class="col-4 col-sm-6">
-                  Level 2: .col-4 .col-sm-6
+                <div class="col-xs-4 col-sm-6">
+                  Level 2: .col-xs-4 .col-sm-6
                 </div>
               </div>
             </div>
@@ -298,7 +297,7 @@ To take advantage of the Bootstrap grid system within a modal, just nest `.conta
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -411,12 +410,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
        <td>boolean</td>
        <td>true</td>
        <td>Closes the modal when escape key is pressed</td>
-     </tr>
-     <tr>
-       <td>focus</td>
-       <td>boolean</td>
-       <td>true</td>
-       <td>Puts the focus on the modal when initialized.</td>
      </tr>
      <tr>
        <td>show</td>

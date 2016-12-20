@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.5): alert.js
+ * Bootstrap (v4.0.0-alpha.2): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Alert = (($) => {
    */
 
   const NAME                = 'alert'
-  const VERSION             = '4.0.0-alpha.5'
+  const VERSION             = '4.0.0-alpha.2'
   const DATA_KEY            = 'bs.alert'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -38,7 +38,7 @@ const Alert = (($) => {
   const ClassName = {
     ALERT : 'alert',
     FADE  : 'fade',
-    SHOW  : 'show'
+    IN    : 'in'
   }
 
 
@@ -67,8 +67,8 @@ const Alert = (($) => {
     close(element) {
       element = element || this._element
 
-      const rootElement = this._getRootElement(element)
-      const customEvent = this._triggerCloseEvent(rootElement)
+      let rootElement = this._getRootElement(element)
+      let customEvent = this._triggerCloseEvent(rootElement)
 
       if (customEvent.isDefaultPrevented()) {
         return
@@ -86,8 +86,8 @@ const Alert = (($) => {
     // private
 
     _getRootElement(element) {
-      const selector = Util.getSelectorFromElement(element)
-      let parent     = false
+      let selector = Util.getSelectorFromElement(element)
+      let parent   = false
 
       if (selector) {
         parent = $(selector)[0]
@@ -101,14 +101,14 @@ const Alert = (($) => {
     }
 
     _triggerCloseEvent(element) {
-      const closeEvent = $.Event(Event.CLOSE)
+      let closeEvent = $.Event(Event.CLOSE)
 
       $(element).trigger(closeEvent)
       return closeEvent
     }
 
     _removeElement(element) {
-      $(element).removeClass(ClassName.SHOW)
+      $(element).removeClass(ClassName.IN)
 
       if (!Util.supportsTransitionEnd() ||
           !$(element).hasClass(ClassName.FADE)) {
@@ -117,7 +117,7 @@ const Alert = (($) => {
       }
 
       $(element)
-        .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
+        .one(Util.TRANSITION_END, $.proxy(this._destroyElement, this, element))
         .emulateTransitionEnd(TRANSITION_DURATION)
     }
 
@@ -133,8 +133,8 @@ const Alert = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        const $element = $(this)
-        let data       = $element.data(DATA_KEY)
+        let $element = $(this)
+        let data     = $element.data(DATA_KEY)
 
         if (!data) {
           data = new Alert(this)

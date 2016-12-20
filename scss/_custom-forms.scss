@@ -2,7 +2,7 @@
 
 // Embedded icons from Open Iconic.
 // Released under MIT and copyright 2014 Waybury.
-// https://useiconic.com/open
+// http://useiconic.com/open
 
 
 // Checkboxes and radios
@@ -11,11 +11,13 @@
 
 .custom-control {
   position: relative;
-  display: inline-block;
-  min-height: (1rem * $line-height-base);
+  display: inline;
   padding-left: $custom-control-gutter;
-  margin-right: $custom-control-spacer-x;
   cursor: pointer;
+
+  + .custom-control {
+    margin-left: $custom-control-spacer-x;
+  }
 }
 
 .custom-control-input {
@@ -59,7 +61,7 @@
 
 .custom-control-indicator {
   position: absolute;
-  top: (($line-height-base - $custom-control-indicator-size) / 2);
+  top: .0625rem;
   left: 0;
   display: block;
   width: $custom-control-indicator-size;
@@ -115,9 +117,13 @@
 
 .custom-controls-stacked {
   .custom-control {
-    float: left;
-    margin-bottom: $custom-control-spacer-y;
-    clear: left;
+    display: inline;
+
+    &::after {
+      display: block;
+      margin-bottom: $custom-control-spacer-y;
+      content: "";
+    }
 
     + .custom-control {
       margin-left: 0;
@@ -131,14 +137,11 @@
 // Replaces the browser default select with a custom one, mostly pulled from
 // http://primercss.io.
 //
-// Includes hacks for IE9 (noted by ` \9`), which may apply to other versions of
-// IE, but not with any adverse affects.
+// Includes IE9-specific hacks (noted by ` \9`).
 
 .custom-select {
   display: inline-block;
   max-width: 100%;
-  $select-border-width: ($border-width * 2);
-  height: calc(#{$input-height} - #{$select-border-width});
   padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
   padding-right: $custom-select-padding-x \9;
   color: $custom-select-color;
@@ -201,7 +204,6 @@
   display: inline-block;
   max-width: 100%;
   height: $custom-file-height;
-  margin-bottom: 0;
   cursor: pointer;
 }
 

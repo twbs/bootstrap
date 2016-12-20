@@ -10,11 +10,7 @@
 
 @mixin transition($transition...) {
   @if $enable-transitions {
-    @if length($transition) == 0 {
-      transition: $transition-base;
-    } @else {
-      transition: $transition;
-    }
+    transition: $transition;
   }
 }
 
@@ -22,7 +18,7 @@
 @import "mixins/breakpoints";
 @import "mixins/hover";
 @import "mixins/image";
-@import "mixins/badge";
+@import "mixins/tag";
 @import "mixins/reset-filter";
 @import "mixins/resize";
 @import "mixins/screen-reader";
@@ -32,8 +28,6 @@
 @import "mixins/text-emphasis";
 @import "mixins/text-hide";
 @import "mixins/text-truncate";
-@import "mixins/transforms";
-@import "mixins/visibility";
 
 // // Components
 @import "mixins/alert";
@@ -57,4 +51,4 @@
 // @import "mixins/navbar-align";
 @import "mixins/grid-framework";
 @import "mixins/grid";
-@import "mixins/float";
+@import "mixins/pulls";

@@ -38,6 +38,10 @@ Thumbs.db
 .komodotools
 *.komodoproject
 
+# grunt-html-validation
+validation-report.json
+validation-status.json
+
 # SCSS-Lint
 scss-lint-report.xml
 

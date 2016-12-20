@@ -1,7 +1,6 @@
 ---
 layout: docs
 title: Pagination
-description: Documentation and examples for showing pagination links.
 group: components
 ---
 

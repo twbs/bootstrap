@@ -3,58 +3,32 @@
 // Used only by Bootstrap to generate the correct number of grid classes given
 // any value of `$grid-columns`.
 
-@mixin make-grid-columns($columns: $grid-columns, $gutters: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
-  // Common properties for all breakpoints
-  %grid-column {
-    position: relative;
-    // Prevent columns from collapsing when empty
-    min-height: 1px;
-
-    @if $enable-flex {
-      width: 100%;
-    }
-
-    @include make-gutters($gutters);
-  }
-
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+  $breakpoint-counter: 0;
   @each $breakpoint in map-keys($breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $breakpoints);
-
-    // Allow columns to stretch full width below their breakpoints
-    @for $i from 1 through $columns {
-      .col#{$infix}-#{$i} {
-        @extend %grid-column;
-      }
-    }
-    @if $enable-flex {
-      .col#{$infix} {
-        @extend %grid-column;
-      }
-    }
-
+    $breakpoint-counter: ($breakpoint-counter + 1);
     @include media-breakpoint-up($breakpoint, $breakpoints) {
-      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       @if $enable-flex {
-        .col#{$infix} {
+        .col-#{$breakpoint} {
+          position: relative;
           flex-basis: 0;
           flex-grow: 1;
           max-width: 100%;
-        }
-        .col#{$infix}-auto {
-          flex: 0 0 auto;
-          width: auto;
+          min-height: 1px;
+          padding-right: ($gutter / 2);
+          padding-left:  ($gutter / 2);
         }
       }
 
       @for $i from 1 through $columns {
-        .col#{$infix}-#{$i} {
-          @include make-col($i, $columns);
+        .col-#{$breakpoint}-#{$i} {
+          @include make-col($i, $columns, $gutter);
         }
       }
 
       @each $modifier in (pull, push) {
         @for $i from 0 through $columns {
-          .#{$modifier}#{$infix}-#{$i} {
+          .#{$modifier}-#{$breakpoint}-#{$i} {
             @include make-col-modifier($modifier, $i, $columns)
           }
         }
@@ -62,8 +36,8 @@
 
       // `$columns - 1` because offsetting by the width of an entire row isn't possible
       @for $i from 0 through ($columns - 1) {
-        @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-xs-0
-          .offset#{$infix}-#{$i} {
+        @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .offset-xs-0
+          .offset-#{$breakpoint}-#{$i} {
             @include make-col-modifier(offset, $i, $columns)
           }
         }

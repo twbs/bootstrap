@@ -6,7 +6,7 @@
  */
 
 // See the Getting Started docs for more information:
-// https://getbootstrap.com/getting-started/#support-ie10-width
+// http://getbootstrap.com/getting-started/#support-ie10-width
 
 (function () {
   'use strict';

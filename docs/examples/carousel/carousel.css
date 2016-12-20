@@ -3,7 +3,6 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  padding-top: 3rem;
   padding-bottom: 3rem;
   color: #5a5a5a;
 }
@@ -19,7 +18,6 @@ body {
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
-  bottom: 3rem;
 }
 
 /* Declare heights because of positioning of img element */
@@ -35,12 +33,17 @@ body {
   height: 32rem;
 }
 
-.carousel-indicators li {
-  width: .75rem;
-  height: .75rem;
-  margin-right: .25rem;
-  margin-left: .25rem;
-  border-radius: 50%;
+.carousel-indicators {
+  top: 1.5rem;
+  right: 1.5rem;
+  bottom: auto;
+  left: auto;
+  width: 1rem;
+  margin-left: 0;
+}
+
+.carousel-indicators > li {
+  margin-bottom: .25rem;
 }
 
 

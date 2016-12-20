@@ -5,7 +5,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.5): tooltip.js
+ * Bootstrap (v4.0.0-alpha.2): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -14,10 +14,10 @@ const Tooltip = (($) => {
 
   /**
    * Check for Tether dependency
-   * Tether - http://tether.io/
+   * Tether - http://github.hubspot.com/tether/
    */
   if (window.Tether === undefined) {
-    throw new Error('Bootstrap tooltips require Tether (http://tether.io/)')
+    throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
   }
 
 
@@ -28,7 +28,7 @@ const Tooltip = (($) => {
    */
 
   const NAME                = 'tooltip'
-  const VERSION             = '4.0.0-alpha.5'
+  const VERSION             = '4.0.0-alpha.2'
   const DATA_KEY            = 'bs.tooltip'
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
@@ -38,6 +38,7 @@ const Tooltip = (($) => {
   const Default = {
     animation   : true,
     template    : '<div class="tooltip" role="tooltip">'
+                + '<div class="tooltip-arrow"></div>'
                 + '<div class="tooltip-inner"></div></div>',
     trigger     : 'hover focus',
     title       : '',
@@ -46,8 +47,7 @@ const Tooltip = (($) => {
     selector    : false,
     placement   : 'top',
     offset      : '0 0',
-    constraints : [],
-    container   : false
+    constraints : []
   }
 
   const DefaultType = {
@@ -60,8 +60,7 @@ const Tooltip = (($) => {
     selector    : '(string|boolean)',
     placement   : '(string|function)',
     offset      : 'string',
-    constraints : 'array',
-    container   : '(string|element|boolean)'
+    constraints : 'array'
   }
 
   const AttachmentMap = {
@@ -72,8 +71,8 @@ const Tooltip = (($) => {
   }
 
   const HoverState = {
-    SHOW : 'show',
-    OUT  : 'out'
+    IN  : 'in',
+    OUT : 'out'
   }
 
   const Event = {
@@ -91,7 +90,7 @@ const Tooltip = (($) => {
 
   const ClassName = {
     FADE : 'fade',
-    SHOW : 'show'
+    IN   : 'in'
   }
 
   const Selector = {
@@ -123,12 +122,11 @@ const Tooltip = (($) => {
     constructor(element, config) {
 
       // private
-      this._isEnabled        = true
-      this._timeout          = 0
-      this._hoverState       = ''
-      this._activeTrigger    = {}
-      this._isTransitioning  = false
-      this._tether           = null
+      this._isEnabled      = true
+      this._timeout        = 0
+      this._hoverState     = ''
+      this._activeTrigger  = {}
+      this._tether         = null
 
       // protected
       this.element = element
@@ -187,7 +185,7 @@ const Tooltip = (($) => {
 
     toggle(event) {
       if (event) {
-        const dataKey = this.constructor.DATA_KEY
+        let dataKey = this.constructor.DATA_KEY
         let context = $(event.currentTarget).data(dataKey)
 
         if (!context) {
@@ -208,7 +206,7 @@ const Tooltip = (($) => {
 
       } else {
 
-        if ($(this.getTipElement()).hasClass(ClassName.SHOW)) {
+        if ($(this.getTipElement()).hasClass(ClassName.IN)) {
           this._leave(null, this)
           return
         }
@@ -225,17 +223,16 @@ const Tooltip = (($) => {
       $.removeData(this.element, this.constructor.DATA_KEY)
 
       $(this.element).off(this.constructor.EVENT_KEY)
-      $(this.element).closest('.modal').off('hide.bs.modal')
 
       if (this.tip) {
         $(this.tip).remove()
       }
 
-      this._isEnabled     = null
-      this._timeout       = null
-      this._hoverState    = null
-      this._activeTrigger = null
-      this._tether        = null
+      this._isEnabled      = null
+      this._timeout        = null
+      this._hoverState     = null
+      this._activeTrigger  = null
+      this._tether         = null
 
       this.element = null
       this.config  = null
@@ -243,18 +240,12 @@ const Tooltip = (($) => {
     }
 
     show() {
-      if ($(this.element).css('display') === 'none') {
-        throw new Error('Please use show on visible elements')
-      }
+      let showEvent = $.Event(this.constructor.Event.SHOW)
 
-      const showEvent = $.Event(this.constructor.Event.SHOW)
       if (this.isWithContent() && this._isEnabled) {
-        if (this._isTransitioning) {
-          throw new Error('Tooltip is transitioning')
-        }
         $(this.element).trigger(showEvent)
 
-        const isInTheDom = $.contains(
+        let isInTheDom = $.contains(
           this.element.ownerDocument.documentElement,
           this.element
         )
@@ -263,8 +254,8 @@ const Tooltip = (($) => {
           return
         }
 
-        const tip   = this.getTipElement()
-        const tipId = Util.getUID(this.constructor.NAME)
+        let tip   = this.getTipElement()
+        let tipId = Util.getUID(this.constructor.NAME)
 
         tip.setAttribute('id', tipId)
         this.element.setAttribute('aria-describedby', tipId)
@@ -275,17 +266,15 @@ const Tooltip = (($) => {
           $(tip).addClass(ClassName.FADE)
         }
 
-        const placement  = typeof this.config.placement === 'function' ?
+        let placement  = typeof this.config.placement === 'function' ?
           this.config.placement.call(this, tip, this.element) :
           this.config.placement
 
-        const attachment = this._getAttachment(placement)
-
-        const container = this.config.container === false ? document.body : $(this.config.container)
+        let attachment = this._getAttachment(placement)
 
         $(tip)
           .data(this.constructor.DATA_KEY, this)
-          .appendTo(container)
+          .appendTo(document.body)
 
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
@@ -303,12 +292,11 @@ const Tooltip = (($) => {
         Util.reflow(tip)
         this._tether.position()
 
-        $(tip).addClass(ClassName.SHOW)
+        $(tip).addClass(ClassName.IN)
 
-        const complete = () => {
-          const prevHoverState = this._hoverState
+        let complete = () => {
+          let prevHoverState = this._hoverState
           this._hoverState   = null
-          this._isTransitioning = false
 
           $(this.element).trigger(this.constructor.Event.SHOWN)
 
@@ -318,7 +306,6 @@ const Tooltip = (($) => {
         }
 
         if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
-          this._isTransitioning = true
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
             .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
@@ -330,19 +317,15 @@ const Tooltip = (($) => {
     }
 
     hide(callback) {
-      const tip       = this.getTipElement()
-      const hideEvent = $.Event(this.constructor.Event.HIDE)
-      if (this._isTransitioning) {
-        throw new Error('Tooltip is transitioning')
-      }
-      const complete  = () => {
-        if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
+      let tip       = this.getTipElement()
+      let hideEvent = $.Event(this.constructor.Event.HIDE)
+      let complete  = () => {
+        if (this._hoverState !== HoverState.IN && tip.parentNode) {
           tip.parentNode.removeChild(tip)
         }
 
         this.element.removeAttribute('aria-describedby')
         $(this.element).trigger(this.constructor.Event.HIDDEN)
-        this._isTransitioning = false
         this.cleanupTether()
 
         if (callback) {
@@ -356,11 +339,11 @@ const Tooltip = (($) => {
         return
       }
 
-      $(tip).removeClass(ClassName.SHOW)
+      $(tip).removeClass(ClassName.IN)
 
       if (Util.supportsTransitionEnd() &&
-          $(this.tip).hasClass(ClassName.FADE)) {
-        this._isTransitioning = true
+         ($(this.tip).hasClass(ClassName.FADE))) {
+
         $(tip)
           .one(Util.TRANSITION_END, complete)
           .emulateTransitionEnd(TRANSITION_DURATION)
@@ -380,21 +363,23 @@ const Tooltip = (($) => {
     }
 
     getTipElement() {
-      return this.tip = this.tip || $(this.config.template)[0]
+      return (this.tip = this.tip || $(this.config.template)[0])
     }
 
     setContent() {
-      const $tip = $(this.getTipElement())
+      let $tip = $(this.getTipElement())
 
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
 
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
+      $tip
+        .removeClass(ClassName.FADE)
+        .removeClass(ClassName.IN)
 
       this.cleanupTether()
     }
 
     setElementContent($element, content) {
-      const html = this.config.html
+      let html = this.config.html
       if (typeof content === 'object' && (content.nodeType || content.jquery)) {
         // content is a DOM node or a jQuery
         if (html) {
@@ -435,21 +420,21 @@ const Tooltip = (($) => {
     }
 
     _setListeners() {
-      const triggers = this.config.trigger.split(' ')
+      let triggers = this.config.trigger.split(' ')
 
       triggers.forEach((trigger) => {
         if (trigger === 'click') {
           $(this.element).on(
             this.constructor.Event.CLICK,
             this.config.selector,
-            (event) => this.toggle(event)
+            $.proxy(this.toggle, this)
           )
 
         } else if (trigger !== Trigger.MANUAL) {
-          const eventIn  = trigger === Trigger.HOVER ?
+          let eventIn  = trigger === Trigger.HOVER ?
             this.constructor.Event.MOUSEENTER :
             this.constructor.Event.FOCUSIN
-          const eventOut = trigger === Trigger.HOVER ?
+          let eventOut = trigger === Trigger.HOVER ?
             this.constructor.Event.MOUSELEAVE :
             this.constructor.Event.FOCUSOUT
 
@@ -457,19 +442,14 @@ const Tooltip = (($) => {
             .on(
               eventIn,
               this.config.selector,
-              (event) => this._enter(event)
+              $.proxy(this._enter, this)
             )
             .on(
               eventOut,
               this.config.selector,
-              (event) => this._leave(event)
+              $.proxy(this._leave, this)
             )
         }
-
-        $(this.element).closest('.modal').on(
-          'hide.bs.modal',
-          () => this.hide()
-        )
       })
 
       if (this.config.selector) {
@@ -483,9 +463,9 @@ const Tooltip = (($) => {
     }
 
     _fixTitle() {
-      const titleType = typeof this.element.getAttribute('data-original-title')
+      let titleType = typeof this.element.getAttribute('data-original-title')
       if (this.element.getAttribute('title') ||
-         titleType !== 'string') {
+         (titleType !== 'string')) {
         this.element.setAttribute(
           'data-original-title',
           this.element.getAttribute('title') || ''
@@ -495,7 +475,7 @@ const Tooltip = (($) => {
     }
 
     _enter(event, context) {
-      const dataKey = this.constructor.DATA_KEY
+      let dataKey = this.constructor.DATA_KEY
 
       context = context || $(event.currentTarget).data(dataKey)
 
@@ -513,15 +493,15 @@ const Tooltip = (($) => {
         ] = true
       }
 
-      if ($(context.getTipElement()).hasClass(ClassName.SHOW) ||
-         context._hoverState === HoverState.SHOW) {
-        context._hoverState = HoverState.SHOW
+      if ($(context.getTipElement()).hasClass(ClassName.IN) ||
+         (context._hoverState === HoverState.IN)) {
+        context._hoverState = HoverState.IN
         return
       }
 
       clearTimeout(context._timeout)
 
-      context._hoverState = HoverState.SHOW
+      context._hoverState = HoverState.IN
 
       if (!context.config.delay || !context.config.delay.show) {
         context.show()
@@ -529,14 +509,14 @@ const Tooltip = (($) => {
       }
 
       context._timeout = setTimeout(() => {
-        if (context._hoverState === HoverState.SHOW) {
+        if (context._hoverState === HoverState.IN) {
           context.show()
         }
       }, context.config.delay.show)
     }
 
     _leave(event, context) {
-      const dataKey = this.constructor.DATA_KEY
+      let dataKey = this.constructor.DATA_KEY
 
       context = context || $(event.currentTarget).data(dataKey)
 
@@ -575,7 +555,7 @@ const Tooltip = (($) => {
     }
 
     _isWithActiveTrigger() {
-      for (const trigger in this._activeTrigger) {
+      for (let trigger in this._activeTrigger) {
         if (this._activeTrigger[trigger]) {
           return true
         }
@@ -609,10 +589,10 @@ const Tooltip = (($) => {
     }
 
     _getDelegateConfig() {
-      const config = {}
+      let config = {}
 
       if (this.config) {
-        for (const key in this.config) {
+        for (let key in this.config) {
           if (this.constructor.Default[key] !== this.config[key]) {
             config[key] = this.config[key]
           }
@@ -627,10 +607,11 @@ const Tooltip = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data      = $(this).data(DATA_KEY)
-        const _config = typeof config === 'object' && config
+        let data   = $(this).data(DATA_KEY)
+        let _config = typeof config === 'object' ?
+          config : null
 
-        if (!data && /dispose|hide/.test(config)) {
+        if (!data && /destroy|hide/.test(config)) {
           return
         }
 

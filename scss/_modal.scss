@@ -1,7 +1,7 @@
 // .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
-// .modal-content   - actual modal w/ bg and corners and stuff
+// .modal-content   - actual modal w/ bg and corners and shit
 
 
 // Kill the scroll on the body
@@ -22,16 +22,14 @@
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
-  // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
-  // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
-  // See also https://github.com/twbs/bootstrap/issues/17695
+  -webkit-overflow-scrolling: touch;
 
   // When fading in the modal, animate it to slide down
   &.fade .modal-dialog {
-    @include transition($modal-transition);
+    transition: transform .3s ease-out;
     transform: translate(0, -25%);
   }
-  &.show .modal-dialog { transform: translate(0, 0); }
+  &.in .modal-dialog { transform: translate(0, 0); }
 }
 .modal-open .modal {
   overflow-x: hidden;
@@ -64,18 +62,18 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $zindex-modal-backdrop;
+  z-index: $zindex-modal-bg;
   background-color: $modal-backdrop-bg;
 
   // Fade for backdrop
   &.fade { opacity: 0; }
-  &.show { opacity: $modal-backdrop-opacity; }
+  &.in { opacity: $modal-backdrop-opacity; }
 }
 
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
-  padding: $modal-header-padding;
+  padding: $modal-title-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
   @include clearfix;
 }
@@ -102,7 +100,7 @@
   padding: $modal-inner-padding;
   text-align: right; // right align buttons
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
-  @include clearfix(); // clear it in case folks use .float-* classes on buttons
+  @include clearfix(); // clear it in case folks use .pull-* classes on buttons
 }
 
 // Measure scrollbar width for padding body during modal show/hide

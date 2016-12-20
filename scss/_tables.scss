@@ -101,30 +101,30 @@
 
 // Inverse styles
 //
-// Same table markup, but inverted color scheme: dark background and light text.
+// Same table markup, but inverted color scheme—dark background and light text.
 
 .thead-inverse {
   th {
-    color: $table-inverse-color;
-    background-color: $table-inverse-bg;
+    color: #fff;
+    background-color: $gray-dark;
   }
 }
 
 .thead-default {
   th {
-    color: $table-head-color;
-    background-color: $table-head-bg;
+    color: $gray;
+    background-color: $gray-lighter;
   }
 }
 
 .table-inverse {
-  color: $table-inverse-color;
-  background-color: $table-inverse-bg;
+  color: $gray-lighter;
+  background-color: $gray-dark;
 
   th,
   td,
   thead th {
-    border-color: $body-bg;
+    border-color: $gray;
   }
 
   &.table-bordered {
@@ -136,21 +136,20 @@
 
 // Responsive tables
 //
-// Add `.table-responsive` to `.table`s and we'll make them mobile friendly by
-// enabling horizontal scrolling. Only applies <768px. Everything above that
+// Wrap your tables in `.table-responsive` and we'll make them mobile friendly
+// by enabling horizontal scrolling. Only applies <768px. Everything above that
 // will display normally.
 
 .table-responsive {
   display: block;
   width: 100%;
-  min-height: 0%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
+  min-height: .01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
   overflow-x: auto;
-  -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
 
-  // Prevent double border on horizontal scroll due to use of `display: block;`
-  &.table-bordered {
-    border: 0;
-  }
+  // TODO: find out if we need this still.
+  //
+  // border: $table-border-width solid $table-border-color;
+  // -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
 }
 
 
@@ -185,6 +184,7 @@
     }
   }
 
+  // scss-lint:disable ImportantRule
   tr {
     float: left;
 
@@ -194,4 +194,5 @@
       border: $table-border-width solid $table-border-color;
     }
   }
+  // scss-lint:enable ImportantRule
 }
