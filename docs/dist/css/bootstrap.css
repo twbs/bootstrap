@@ -2318,6 +2318,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   }
   .form-inline .form-control-static {
     display: inline-block;
+    margin-bottom: 0;
   }
   .form-inline .input-group {
     width: auto;
