@@ -16,7 +16,7 @@ Flexbox support has finally come to Bootstrap. Opt-in to the new CSS layout styl
 
 Flexbox support is available for a number of Bootstrap's components:
 
-- The entire grid system (mixins and predefined classes), which switch from `float`s to `display: flex;`.
+- The entire grid system (mixins and predefined classes), which switch from `float` to `display: flex;`.
 - Input groups, which move from `display: table;` to `display: flex;`.
 - The media component moves from `display: table;` and a number of hacky styles to a simple `display: flex;`.
 
