@@ -27,26 +27,26 @@ The most basic list group is simply an unordered list with list items, and the p
 
 ## Badge
 
-Add badges to any list group item to show unread counts, activity, etc.
+Add badges to any list group item to show unread counts, activity, and more with the help of some utilities. Below we use `.float-right` and `.mt-1` to align the badge to this example's specific needs, but you may need different or additional utilities.
 
 {% example html %}
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="badge badge-default badge-pill float-right">14</span>
+    <span class="badge badge-default badge-pill float-right mt-1">14</span>
     Cras justo odio
   </li>
   <li class="list-group-item">
-    <span class="badge badge-default badge-pill float-right">2</span>
+    <span class="badge badge-default badge-pill float-right mt-1">2</span>
     Dapibus ac facilisis in
   </li>
   <li class="list-group-item">
-    <span class="badge badge-default badge-pill float-right">1</span>
+    <span class="badge badge-default badge-pill float-right mt-1">1</span>
     Morbi leo risus
   </li>
 </ul>
 {% endexample %}
 
-When in flexbox mode, you'll need to rearrange the contents of your list group items. To replicate the right-aligned badges as shown above, use the following example's code. Note the [`flex-items-between` utility class]({{ site.baseurl }}/layout/flexbox-grid/#horizontal-alignment), the badge's placement, and the lack of a float utility on the badges.
+When in flexbox mode, you'll need to rearrange the contents of your list group items. To replicate the right-aligned badges as shown above, use the following example's code. Note the [`flex-items-between` utility class]({{ site.baseurl }}/layout/flexbox-grid/#horizontal-alignment), the badge's placement, and the lack of a float and margin utilities on the badges.
 
 {% highlight html %}
 <ul class="list-group">
