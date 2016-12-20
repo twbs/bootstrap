@@ -311,6 +311,10 @@ $component-active-bg:    $brand-primary !default;
 $caret-width:            .3em !default;
 $caret-width-lg:         $caret-width !default;
 
+$transition-base:        all .2s ease-in-out !default;
+$transition-fade:        opacity .15s linear !default;
+$transition-collapse:    height .35s ease !default;
+
 
 // 11. Tables
 //
@@ -384,6 +388,8 @@ $btn-border-radius:              $border-radius !default;
 $btn-border-radius-lg:           $border-radius-lg !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
 
+$btn-transition:                 all .2s ease-in-out !default;
+
 
 // 13. Forms
 
@@ -419,6 +425,8 @@ $input-padding-y-lg:             .75rem !default;
 $input-height:                   (($font-size-base * $input-line-height) + ($input-padding-y * 2)) !default;
 $input-height-lg:                (($font-size-lg * $line-height-lg) + ($input-padding-y-lg * 2)) !default;
 $input-height-sm:                (($font-size-sm * $line-height-sm) + ($input-padding-y-sm * 2)) !default;
+
+$input-transition:               border-color ease-in-out .15s, box-shadow ease-in-out .15s !default;
 
 $form-group-margin-bottom:       $spacer-y !default;
 
@@ -776,6 +784,8 @@ $modal-lg:                    800px !default;
 $modal-md:                    500px !default;
 $modal-sm:                    300px !default;
 
+$modal-transition:            transform .3s ease-out !default;
+
 
 // 26. Alerts
 //
@@ -853,6 +863,7 @@ $thumbnail-border-width:      $border-width !default;
 $thumbnail-border-color:      #ddd !default;
 $thumbnail-border-radius:     $border-radius !default;
 $thumbnail-box-shadow:        0 1px 2px rgba(0,0,0,.075) !default;
+$thumbnail-transition:        all .2s ease-in-out !default;
 
 
 // 30. Figures
@@ -897,6 +908,8 @@ $carousel-control-icon-width:                 20px !default;
 
 $carousel-control-prev-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M4 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"), "#", "%23") !default;
 $carousel-control-next-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E"), "#", "%23") !default;
+
+$carousel-transition:           transform .6s ease-in-out !default;
 
 
 // 34. Close

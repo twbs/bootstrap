@@ -15,7 +15,7 @@
   width: 100%;
 
   @include if-supports-3d-transforms() {
-    @include transition(transform .6s ease-in-out);
+    @include transition($carousel-transition);
     backface-visibility: hidden;
     perspective: 1000px;
   }

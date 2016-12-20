@@ -29,7 +29,7 @@
   }
 
   @include box-shadow($input-box-shadow);
-  @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+  @include transition($input-transition);
 
   // Unstyle the caret on `<select>`s in IE10+.
   &::-ms-expand {
