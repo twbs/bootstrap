@@ -342,7 +342,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -727,7 +727,7 @@ kbd {
   padding: 0.2rem 0.4rem;
   font-size: 90%;
   color: #fff;
-  background-color: #333;
+  background-color: #292b2c;
   border-radius: 0.2rem;
 }
 
@@ -2053,27 +2053,27 @@ pre code {
 .form-control:focus {
   color: #464a4c;
   background-color: #fff;
-  border-color: #66afe9;
+  border-color: #5cb3fd;
   outline: none;
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #999;
+  color: #636c72;
   opacity: 1;
 }
 
 .form-control::-moz-placeholder {
-  color: #999;
+  color: #636c72;
   opacity: 1;
 }
 
 .form-control:-ms-input-placeholder {
-  color: #999;
+  color: #636c72;
   opacity: 1;
 }
 
 .form-control::placeholder {
-  color: #999;
+  color: #636c72;
   opacity: 1;
 }
 
@@ -3084,7 +3084,7 @@ tbody.collapse.active {
   height: 1px;
   margin: 0.5rem 0;
   overflow: hidden;
-  background-color: #e5e5e5;
+  background-color: #eceeef;
 }
 
 .dropdown-item {
@@ -3524,26 +3524,26 @@ tbody.collapse.active {
 
 .custom-control-input:checked ~ .custom-control-indicator {
   color: #fff;
-  background-color: #0074d9;
+  background-color: #0275d8;
 }
 
 .custom-control-input:focus ~ .custom-control-indicator {
-  -webkit-box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #0074d9;
-          box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #0074d9;
+  -webkit-box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #0275d8;
+          box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #0275d8;
 }
 
 .custom-control-input:active ~ .custom-control-indicator {
   color: #fff;
-  background-color: #84c6ff;
+  background-color: #8fcafe;
 }
 
 .custom-control-input:disabled ~ .custom-control-indicator {
   cursor: not-allowed;
-  background-color: #eee;
+  background-color: #eceeef;
 }
 
 .custom-control-input:disabled ~ .custom-control-description {
-  color: #767676;
+  color: #636c72;
   cursor: not-allowed;
 }
 
@@ -3575,7 +3575,7 @@ tbody.collapse.active {
 }
 
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-indicator {
-  background-color: #0074d9;
+  background-color: #0275d8;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23fff' d='M0 2h4'/%3E%3C/svg%3E");
 }
 
@@ -3616,7 +3616,7 @@ tbody.collapse.active {
 }
 
 .custom-select:focus {
-  border-color: #51a7e8;
+  border-color: #5cb3fd;
   outline: none;
 }
 
@@ -3667,13 +3667,13 @@ tbody.collapse.active {
   height: 2.5rem;
   padding: 0.5rem 1rem;
   line-height: 1.5;
-  color: #555;
+  color: #464a4c;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
 }
 
@@ -3691,9 +3691,9 @@ tbody.collapse.active {
   height: 2.5rem;
   padding: 0.5rem 1rem;
   line-height: 1.5;
-  color: #555;
-  background-color: #eee;
-  border: 1px solid #ddd;
+  color: #464a4c;
+  background-color: #eceeef;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
@@ -4881,7 +4881,7 @@ a.badge:focus, a.badge:hover {
 }
 
 .progress[value] {
-  background-color: #eee;
+  background-color: #eceeef;
   border: 0;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -4890,37 +4890,37 @@ a.badge:focus, a.badge:hover {
 }
 
 .progress[value]::-ms-fill {
-  background-color: #0074d9;
+  background-color: #0275d8;
   border: 0;
 }
 
 .progress[value]::-moz-progress-bar {
-  background-color: #0074d9;
+  background-color: #0275d8;
 }
 
 .progress[value]::-webkit-progress-value {
-  background-color: #0074d9;
+  background-color: #0275d8;
 }
 
 .progress[value]::-webkit-progress-bar {
-  background-color: #eee;
+  background-color: #eceeef;
 }
 
 base::-moz-progress-bar,
 .progress[value] {
-  background-color: #eee;
+  background-color: #eceeef;
 }
 
 @media screen and (min-width: 0\0) {
   .progress {
-    background-color: #eee;
+    background-color: #eceeef;
     border-radius: 0.25rem;
   }
   .progress-bar {
     display: inline-block;
     height: 1rem;
     text-indent: -999rem;
-    background-color: #0074d9;
+    background-color: #0275d8;
   }
 }
 
@@ -5167,16 +5167,16 @@ base::-moz-progress-bar,
 
 .list-group-item-action {
   width: 100%;
-  color: #555;
+  color: #464a4c;
   text-align: inherit;
 }
 
 .list-group-item-action .list-group-item-heading {
-  color: #333;
+  color: #292b2c;
 }
 
 .list-group-item-action:focus, .list-group-item-action:hover {
-  color: #555;
+  color: #464a4c;
   text-decoration: none;
   background-color: #f7f7f9;
 }
@@ -5454,7 +5454,7 @@ button.close {
 
 .modal-header {
   padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #f7f7f9;
 }
 
 .modal-header::after {
@@ -5480,7 +5480,7 @@ button.close {
 .modal-footer {
   padding: 15px;
   text-align: right;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #f7f7f9;
 }
 
 .modal-footer::after {
@@ -5517,7 +5517,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5621,7 +5621,7 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
