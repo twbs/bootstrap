@@ -181,14 +181,19 @@
 }
 
 .custom-select-sm {
-  padding-top: $custom-select-padding-y;
-  padding-bottom: $custom-select-padding-y;
+  padding-top: $custom-select-sm-padding-y;
+  padding-bottom: $custom-select-sm-padding-y;
   font-size: $custom-select-sm-font-size;
 
   // &:not([multiple]) {
   //   height: 26px;
   //   min-height: 26px;
   // }
+}
+.custom-select-lg {
+  padding-top: $custom-select-lg-padding-y;
+  padding-bottom: $custom-select-lg-padding-y;
+  font-size: $custom-select-lg-font-size;
 }
 
 
