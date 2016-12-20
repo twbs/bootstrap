@@ -105,8 +105,8 @@
 
 .thead-inverse {
   th {
-    color: #fff;
-    background-color: $table-bg-inverse;
+    color: $table-inverse-color;
+    background-color: $table-inverse-bg;
   }
 }
 
@@ -118,8 +118,8 @@
 }
 
 .table-inverse {
-  color: $body-bg;
-  background-color: $table-bg-inverse;
+  color: $table-inverse-color;
+  background-color: $table-inverse-bg;
 
   th,
   td,
