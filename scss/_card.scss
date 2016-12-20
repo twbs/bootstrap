@@ -224,7 +224,7 @@
   }
 } @else {
   @include media-breakpoint-up(sm) {
-    $space-between-cards: (2 * $card-deck-margin);
+    $space-between-cards: (1.5 * $card-deck-margin);
     .card-deck {
       display: table;
       width: 100%;
