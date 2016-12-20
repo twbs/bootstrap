@@ -346,6 +346,7 @@ select.form-control-lg {
     // Make static controls behave like regular ones
     .form-control-static {
       display: inline-block;
+      margin-bottom: 0;
     }
 
     .input-group {
