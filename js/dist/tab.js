@@ -37,7 +37,7 @@ var Tab = function ($) {
     DROPDOWN_MENU: 'dropdown-menu',
     ACTIVE: 'active',
     FADE: 'fade',
-    IN: 'in'
+    SHOW: 'show'
   };
 
   var Selector = {
@@ -155,7 +155,7 @@ var Tab = function ($) {
       }
 
       if (active) {
-        $(active).removeClass(ClassName.IN);
+        $(active).removeClass(ClassName.SHOW);
       }
     };
 
@@ -177,7 +177,7 @@ var Tab = function ($) {
 
       if (isTransitioning) {
         Util.reflow(element);
-        $(element).addClass(ClassName.IN);
+        $(element).addClass(ClassName.SHOW);
       } else {
         $(element).removeClass(ClassName.FADE);
       }

@@ -3304,7 +3304,7 @@ input[type="button"].btn-block {
   transition: opacity 0.15s linear;
 }
 
-.fade.active {
+.fade.show {
   opacity: 1;
 }
 
@@ -3312,15 +3312,15 @@ input[type="button"].btn-block {
   display: none;
 }
 
-.collapse.active {
+.collapse.show {
   display: block;
 }
 
-tr.collapse.active {
+tr.collapse.show {
   display: table-row;
 }
 
-tbody.collapse.active {
+tbody.collapse.show {
   display: table-row-group;
 }
 
@@ -3425,11 +3425,11 @@ tbody.collapse.active {
   filter: "progid:DXImageTransform.Microsoft.gradient(enabled = false)";
 }
 
-.active > .dropdown-menu {
+.show > .dropdown-menu {
   display: block;
 }
 
-.active > a {
+.show > a {
   outline: 0;
 }
 
@@ -5756,7 +5756,7 @@ button.close {
           transform: translate(0, -25%);
 }
 
-.modal.active .modal-dialog {
+.modal.show .modal-dialog {
   -webkit-transform: translate(0, 0);
       -ms-transform: translate(0, 0);
        -o-transform: translate(0, 0);
@@ -5798,7 +5798,7 @@ button.close {
   opacity: 0;
 }
 
-.modal-backdrop.active {
+.modal-backdrop.show {
   opacity: 0.5;
 }
 
@@ -5886,7 +5886,7 @@ button.close {
   opacity: 0;
 }
 
-.tooltip.active {
+.tooltip.show {
   opacity: 0.9;
 }
 

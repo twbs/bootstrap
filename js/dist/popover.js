@@ -42,7 +42,7 @@ var Popover = function ($) {
 
   var ClassName = {
     FADE: 'fade',
-    ACTIVE: 'active'
+    SHOW: 'show'
   };
 
   var Selector = {
@@ -95,7 +95,7 @@ var Popover = function ($) {
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
 
-      $tip.removeClass(ClassName.FADE + ' ' + ClassName.ACTIVE);
+      $tip.removeClass(ClassName.FADE + ' ' + ClassName.SHOW);
 
       this.cleanupTether();
     };

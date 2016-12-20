@@ -38,7 +38,7 @@ var Alert = function ($) {
   var ClassName = {
     ALERT: 'alert',
     FADE: 'fade',
-    ACTIVE: 'active'
+    SHOW: 'show'
   };
 
   /**
@@ -103,7 +103,7 @@ var Alert = function ($) {
     Alert.prototype._removeElement = function _removeElement(element) {
       var _this = this;
 
-      $(element).removeClass(ClassName.ACTIVE);
+      $(element).removeClass(ClassName.SHOW);
 
       if (!Util.supportsTransitionEnd() || !$(element).hasClass(ClassName.FADE)) {
         this._destroyElement(element);
