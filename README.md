@@ -36,7 +36,7 @@ Several quick start options are available:
 - Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-alpha.5`
 - Install with [yarn](https://github.com/yarnpkg/yarn): `yarn add bootstrap@4.0.0-alpha.5`
 - Install with [Meteor](https://www.meteor.com): `meteor add twbs:bootstrap@=4.0.0-alpha.5`
-- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap`
+- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap:4.0.0-alpha.5`
 - Install with [Bower](https://bower.io): `bower install bootstrap#v4.0.0-alpha.5`
 - Install with [NuGet](https://www.nuget.org): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
 
