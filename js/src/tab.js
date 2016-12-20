@@ -37,7 +37,7 @@ const Tab = (($) => {
     DROPDOWN_MENU : 'dropdown-menu',
     ACTIVE        : 'active',
     FADE          : 'fade',
-    IN            : 'in'
+    SHOW          : 'show'
   }
 
   const Selector = {
@@ -173,7 +173,7 @@ const Tab = (($) => {
       }
 
       if (active) {
-        $(active).removeClass(ClassName.IN)
+        $(active).removeClass(ClassName.SHOW)
       }
     }
 
@@ -197,7 +197,7 @@ const Tab = (($) => {
 
       if (isTransitioning) {
         Util.reflow(element)
-        $(element).addClass(ClassName.IN)
+        $(element).addClass(ClassName.SHOW)
       } else {
         $(element).removeClass(ClassName.FADE)
       }

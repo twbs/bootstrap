@@ -36,9 +36,9 @@ const Alert = (($) => {
   }
 
   const ClassName = {
-    ALERT  : 'alert',
-    FADE   : 'fade',
-    ACTIVE : 'active'
+    ALERT : 'alert',
+    FADE  : 'fade',
+    SHOW  : 'show'
   }
 
 
@@ -108,7 +108,7 @@ const Alert = (($) => {
     }
 
     _removeElement(element) {
-      $(element).removeClass(ClassName.ACTIVE)
+      $(element).removeClass(ClassName.SHOW)
 
       if (!Util.supportsTransitionEnd() ||
           !$(element).hasClass(ClassName.FADE)) {

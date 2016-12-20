@@ -37,8 +37,8 @@ const Popover = (($) => {
   })
 
   const ClassName = {
-    FADE   : 'fade',
-    ACTIVE : 'active'
+    FADE : 'fade',
+    SHOW : 'show'
   }
 
   const Selector = {
@@ -117,7 +117,7 @@ const Popover = (($) => {
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle())
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent())
 
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.ACTIVE}`)
+      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
 
       this.cleanupTether()
     }

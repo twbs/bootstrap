@@ -41,7 +41,7 @@ const Dropdown = (($) => {
   const ClassName = {
     BACKDROP : 'dropdown-backdrop',
     DISABLED : 'disabled',
-    ACTIVE   : 'active'
+    SHOW     : 'show'
   }
 
   const Selector = {
@@ -86,7 +86,7 @@ const Dropdown = (($) => {
       }
 
       const parent   = Dropdown._getParentFromElement(this)
-      const isActive = $(parent).hasClass(ClassName.ACTIVE)
+      const isActive = $(parent).hasClass(ClassName.SHOW)
 
       Dropdown._clearMenus()
 
@@ -118,7 +118,7 @@ const Dropdown = (($) => {
       this.focus()
       this.setAttribute('aria-expanded', true)
 
-      $(parent).toggleClass(ClassName.ACTIVE)
+      $(parent).toggleClass(ClassName.SHOW)
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
 
       return false
@@ -176,7 +176,7 @@ const Dropdown = (($) => {
           relatedTarget : toggles[i]
         }
 
-        if (!$(parent).hasClass(ClassName.ACTIVE)) {
+        if (!$(parent).hasClass(ClassName.SHOW)) {
           continue
         }
 
@@ -195,7 +195,7 @@ const Dropdown = (($) => {
         toggles[i].setAttribute('aria-expanded', 'false')
 
         $(parent)
-          .removeClass(ClassName.ACTIVE)
+          .removeClass(ClassName.SHOW)
           .trigger($.Event(Event.HIDDEN, relatedTarget))
       }
     }
@@ -225,7 +225,7 @@ const Dropdown = (($) => {
       }
 
       const parent   = Dropdown._getParentFromElement(this)
-      const isActive = $(parent).hasClass(ClassName.ACTIVE)
+      const isActive = $(parent).hasClass(ClassName.SHOW)
 
       if (!isActive && event.which !== ESCAPE_KEYCODE ||
            isActive && event.which === ESCAPE_KEYCODE) {
