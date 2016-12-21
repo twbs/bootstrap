@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v5.4.1 (http://bootstrap.transferwise.com)
+ * Bootstrap v5.4.2 (http://bootstrap.transferwise.com)
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
@@ -12726,11 +12726,167 @@ a.circle.active:hover {
 }
 .droppable {
   position: relative;
+  overflow: hidden;
   font-size: 16px;
   text-align: center;
   border: 1px solid #d3d5d8;
   border-radius: 3px;
+  -webkit-transition: border-color .15s linear;
+       -o-transition: border-color .15s linear;
+          transition: border-color .15s linear;
 }
+.droppable:hover {
+  border-color: #829ca9;
+}
+@media (min-width: 768px) {
+  .droppable {
+    border-style: dashed;
+  }
+}
+.droppable-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: inherit;
+  background-color: #fff;
+  -webkit-transition: -webkit-transform .3s ease;
+       -o-transition:      -o-transform .3s ease;
+          transition:         transform .3s ease;
+
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+          justify-content: center;
+}
+.droppable-card-content {
+  max-width: 100%;
+  opacity: 1;
+  -webkit-transition: opacity .5s linear;
+       -o-transition: opacity .5s linear;
+          transition: opacity .5s linear;
+}
+.droppable-dropping {
+  border-color: #00b9ff !important;
+}
+.droppable-dropping h3,
+.droppable-dropping h4,
+.droppable-dropping h5,
+.droppable-dropping .icon {
+  color: #00b9ff;
+}
+.droppable-processing,
+.droppable-complete {
+  border-style: solid;
+}
+.droppable .thumbnail {
+  width: auto;
+  max-width: 96px;
+  max-height: 96px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .droppable .thumbnail {
+    max-width: 128px;
+    max-height: 128px;
+  }
+}
+/***** Card variants *****/
+.droppable-dropping-card {
+  z-index: 1;
+  display: none;
+  color: #00b9ff !important;
+  background-color: #d8f1fa;
+  -webkit-animation: droppable-fade-in .15s 0s linear forwards;
+       -o-animation: droppable-fade-in .15s 0s linear forwards;
+          animation: droppable-fade-in .15s 0s linear forwards;
+}
+.droppable-dropping .droppable-dropping-card {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.droppable-processing-card {
+  display: none;
+}
+.droppable-processing-card .droppable-card-content {
+  opacity: 1;
+}
+.droppable-processing .droppable-processing-card {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+       -o-transform: translateX(0);
+          transform: translateX(0);
+}
+.droppable-processing .droppable-processing-card .droppable-card-content {
+  opacity: 1;
+}
+.droppable-complete .droppable-processing-card {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+       -o-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+.droppable-complete .droppable-processing-card .droppable-card-content {
+  opacity: 0;
+}
+.droppable-complete-card {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+       -o-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.droppable-complete-card .droppable-card-content {
+  opacity: 0;
+}
+.droppable-complete .droppable-complete-card {
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+       -o-transform: translateX(0);
+          transform: translateX(0);
+}
+.droppable-complete .droppable-complete-card .droppable-card-content {
+  opacity: 1;
+}
+.droppable-processing .droppable-default-card .droppable-card-content,
+.droppable-complete .droppable-default-card .droppable-card-content {
+  opacity: 0;
+}
+/***** End card variants *****/
+.droppable-mobile {
+  display: block;
+}
+.droppable-desktop {
+  display: none;
+}
+@media (min-width: 768px) {
+  .droppable-mobile {
+    display: none;
+  }
+  .droppable-desktop {
+    display: block;
+  }
+}
+/**** DEPRECATED ****/
 .droppable-active-cover {
   position: absolute;
   top: 0;
@@ -12759,38 +12915,13 @@ a.circle.active:hover {
   color: #00b9ff !important;
   background-color: #d8f1fa;
 }
-.droppable-mobile {
-  display: block;
-}
-.droppable-desktop {
-  display: none;
-}
-@media (min-width: 768px) {
-  .droppable {
-    border-style: dashed;
-  }
-  .droppable-mobile {
-    display: none;
-  }
-  .droppable-desktop {
-    display: block;
-  }
-}
 .droppable-active {
   border-style: solid;
-}
-.droppable-dropping {
-  border-color: #00b9ff;
-}
-.droppable-dropping h3,
-.droppable-dropping h4,
-.droppable-dropping h5,
-.droppable-dropping .icon {
-  color: #00b9ff;
 }
 .droppable-active.droppable-dropping {
   border-style: dashed;
 }
+/**** END DEPRECATED ****/
 .droppable-sm,
 .droppable-sm .droppable-active-cover {
   padding: 16px 16px;
@@ -12837,6 +12968,30 @@ a.circle.active:hover {
   .droppable-lg,
   .droppable-lg .droppable-active-cover {
     padding: 96px 72px;
+  }
+}
+@-webkit-keyframes droppable-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes droppable-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes droppable-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */

@@ -5,8 +5,142 @@
   text-align: center;
   border: 1px solid @input-border;
   border-radius: @border-radius-base;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.15s linear;
+  &:hover {
+    border-color: @input-border-hover;
+  }
+  @media (min-width: @screen-md-min) {
+    border-style: dashed;
+  }
+}
+.droppable-card {
+  background-color: @brand-white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: inherit;
+  transition: transform .3s ease;
+}
+.droppable-card-content {
+  max-width: 100%;
+  opacity: 1;
+  transition: opacity .5s linear;
+}
+.droppable-dropping {
+  border-color: @input-border-focus !important;
+  h3, h4, h5, .icon {
+    color: @brand-light-blue;
+  }
 }
 
+.droppable-processing,
+.droppable-complete {
+  border-style: solid;
+}
+
+.droppable .thumbnail {
+  width: auto;
+  max-height: 96px;
+  max-width: 96px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    max-height: 128px;
+    max-width: 128px;
+  }
+}
+
+
+/***** Card variants *****/
+
+.droppable-dropping-card {
+  display: none;
+  animation: droppable-fade-in .15s 0s linear forwards;
+  color: @brand-light-blue !important;
+  background-color: @brand-light-blue-wash;
+  z-index: 1;
+}
+.droppable-dropping .droppable-dropping-card {
+  display: flex;
+}
+
+// Processing hidden by default
+.droppable-processing-card {
+  display: none;
+  .droppable-card-content {
+    opacity: 1;
+  }
+}
+// Processing shown when correct state, any transform cancelled
+.droppable-processing .droppable-processing-card {
+  display: flex;
+  transform: translateX(0);
+  .droppable-card-content {
+    opacity: 1;
+  }
+}
+// As we go from processing to complete, animate out processing card
+.droppable-complete {
+  .droppable-processing-card {
+    display: flex;
+    transform: translateX(-100%);
+    .droppable-card-content {
+      opacity: 0;
+    }
+  }
+}
+
+// Completed card translated out and hidden by default
+.droppable-complete-card {
+  display: flex;
+  transform: translateX(100%);
+  .droppable-card-content {
+    opacity: 0;
+  }
+}
+// Completed card brought back in and shown in correct state
+.droppable-complete {
+  .droppable-complete-card {
+    transform: translateX(0);
+    .droppable-card-content {
+      opacity: 1;
+    }
+  }
+}
+
+// Hide default content in other states, so it fades back in
+.droppable-processing,
+.droppable-complete {
+  .droppable-default-card .droppable-card-content {
+    opacity: 0;
+  }
+}
+/***** End card variants *****/
+
+
+.droppable-mobile {
+  display: block;
+}
+.droppable-desktop {
+  display: none;
+}
+@media (min-width: @screen-md-min) {
+  .droppable-mobile {
+    display: none;
+  }
+  .droppable-desktop {
+    display: block;
+  }
+}
+
+/**** DEPRECATED ****/
 .droppable-active-cover {
   position: absolute;
   top: 0;
@@ -26,49 +160,30 @@
     background-color: @brand-light-blue-wash;
   }
 }
-
-.droppable-mobile {
-  display: block;
-}
-.droppable-desktop {
-  display: none;
-}
-@media (min-width: @screen-md-min) {
-  .droppable {
-    border-style: dashed;
-  }
-  .droppable-mobile {
-    display: none;
-  }
-  .droppable-desktop {
-    display: block;
-  }
-}
-
 .droppable-active {
   border-style: solid;
-}
-.droppable-dropping {
-  border-color: @input-border-focus;
-  h3, h4, h5, .icon {
-    color: @brand-light-blue;
-  }
 }
 .droppable-active.droppable-dropping {
   border-style: dashed;
 }
 
+/**** END DEPRECATED ****/
+
+
 .droppable-size(@size, @padding-mobile, @padding-tablet, @padding-desktop) {
+  // .droppable-active-cover is DEPRECATED
 	.droppable-@{size},
 	.droppable-@{size} .droppable-active-cover {
 	  padding: @padding-mobile @padding-mobile;
 	}
+  // .droppable-active-cover is DEPRECATED
 	@media (min-width: @screen-sm-min) {
 	  .droppable-@{size},
 	  .droppable-@{size} .droppable-active-cover {
 	    padding: @padding-tablet @padding-mobile;
 	  }
 	}
+  // .droppable-active-cover is DEPRECATED
 	@media (min-width: @screen-lg-min) {
 	  .droppable-@{size},
 	  .droppable-@{size} .droppable-active-cover {
@@ -80,3 +195,13 @@
 .droppable-size(sm, @spacing-1-mobile, @spacing-1-tablet, @spacing-1-desktop);
 .droppable-size(md, @spacing-2-mobile, @spacing-2-tablet, @spacing-2-desktop);
 .droppable-size(lg, @spacing-3-mobile, @spacing-3-tablet, @spacing-3-desktop);
+
+
+@keyframes droppable-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
