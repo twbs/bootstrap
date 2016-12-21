@@ -111,11 +111,6 @@
     margin-top: 2rem;
   }
 
-  // Undo width of container
-  .container {
-    width: auto;
-  }
-
   > .form-control {
     + .form-control {
       margin-top: .5rem;
