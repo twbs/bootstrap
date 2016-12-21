@@ -62,15 +62,20 @@
 
 .navbar-brand {
   display: inline-block;
-  padding: .25rem .5rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
   font-size: $font-size-lg;
   line-height: inherit;
 
   @include hover-focus {
     text-decoration: none;
   }
-}
 
+  @include media-breakpoint-up(sm) {
+    padding-right: .5rem;
+    padding-left: .5rem;
+  }
+}
 
 .navbar-divider {
   float: left;
@@ -128,12 +133,18 @@
 
   .nav-link {
     display: block;
-    padding: .425rem .5rem;
+    padding-top: .425rem;
+    padding-bottom: .425rem;
   }
 
   @include media-breakpoint-up(sm) {
     .nav-item {
       display: inline-block;
+    }
+
+    .nav-link {
+      padding-right: .5rem;
+      padding-left: .5rem;
     }
   }
 }
