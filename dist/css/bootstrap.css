@@ -5403,8 +5403,8 @@ input[type="button"].btn-block {
 .btn-input-inverse,
 .btn-addon {
   color: #fff;
-  background-color: #37517e;
-  border-color: #37517e;
+  background-color: #2e4369;
+  border-color: #2e4369;
   -webkit-transition: all .15s ease-in-out;
        -o-transition: all .15s ease-in-out;
           transition: all .15s ease-in-out;
@@ -5414,14 +5414,14 @@ input[type="button"].btn-block {
 .btn-input-inverse.focus,
 .btn-addon.focus {
   color: #fff;
-  background-color: #2e4369;
-  border-color: #2e4369;
+  background-color: #253655;
+  border-color: #253655;
 }
 .btn-input-inverse:hover,
 .btn-addon:hover {
   color: #fff;
-  background-color: #2e4369;
-  border-color: #2e4369;
+  background-color: #253655;
+  border-color: #253655;
 }
 .btn-input-inverse:active,
 .btn-addon:active,
@@ -5505,7 +5505,7 @@ fieldset[disabled] .btn-addon.active {
 }
 .btn-input-inverse .badge,
 .btn-addon .badge {
-  color: #37517e;
+  color: #2e4369;
   background-color: #fff;
 }
 /* TODO Remove bootstrap-select rules after checking tw-currency-select */
@@ -12034,8 +12034,9 @@ a.circle.active:hover {
 .sequence-table > li:last-child .sequence-table-th {
   padding-bottom: 15px;
 }
-.sequence-inverse > li > .sequence-table-th {
-  color: #fff;
+.sequence-inverse > li > .sequence-table-th,
+.sequence-inverse > li > .sequence-table-td {
+  color: #e2e6e8;
 }
 /*
 // Keep these sizes in case we want to add these back in.
