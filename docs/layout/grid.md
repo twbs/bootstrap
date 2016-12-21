@@ -21,12 +21,15 @@ At a high level, here's how the grid system works:
 - Containers are optional and provide a means to center your site's contents. Use `.container` for fixed width or `.container-fluid` for full width.
 - Rows are horizontal groups of columns that ensure your columns are lined up properly.
 - Content should be placed within columns, and only columns may be immediate children of rows.
+- Thanks to flexbox, grid columns without a set width will automatically layout with equal widths. For example, four instances of `.col-sm` will each automatically be 25% wide for small breakpoints.
 - Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So if you want three equal-width columns, you'd use `.col-sm-4`.
 - Column `width`s are set in percentages, so they're always fluid and sized relative to their parent element.
 - Columns have horizontal `padding` to create the gutters between individual columns, however, you can remove the `margin` from rows and `padding` from columns with `.no-gutters` on the `.row`.
 - There are five grid tiers, one for each [responsive breakpoint]({{ site.baseurl }}/layout/overview/#responsive-breakpoints): all breakpoints (extra small), small, medium, large, and extra large.
 - Grid tiers are based on minimum widths, meaning they apply to that one tier and all those above it (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices).
 - You can use predefined grid classes or Sass mixins for more semantic markup.
+
+Be aware of the limitations and [bugs around flexbox](https://github.com/philipwalton/flexbugs), like the [inability to use some HTML elements as flex containers](https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers).
 
 Sounds good? Great, let's move on to seeing all that in an example.
 
@@ -179,12 +182,8 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 {% highlight scss %}
 // Creates a wrapper for a series of columns
 @mixin make-row($gutters: $grid-gutter-widths) {
-  @if $enable-flex {
-    display: flex;
-    flex-wrap: wrap;
-  } @else {
-    @include clearfix();
-  }
+  display: flex;
+  flex-wrap: wrap;
 
   @each $breakpoint in map-keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
@@ -198,14 +197,11 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 // Make the element grid-ready (applying everything but the width)
 @mixin make-col-ready($gutters: $grid-gutter-widths) {
   position: relative;
-  min-height: 1px; // Prevent collapsing
-
   // Prevent columns from becoming too narrow when at smaller grid tiers by
   // always setting `width: 100%;`. This works because we use `flex` values
   // later on to override this initial width.
-  @if $enable-flex {
-    width: 100%;
-  }
+  width: 100%;
+  min-height: 1px; // Prevent collapsing
 
   @each $breakpoint in map-keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
@@ -217,16 +213,12 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
-  @if $enable-flex {
-    flex: 0 0 percentage($size / $columns);
-    // Add a `max-width` to ensure content within each column does not blow out
-    // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
-    // do not appear to require this.
-    max-width: percentage($size / $columns);
-  } @else {
-    float: left;
-    width: percentage($size / $columns);
-  }
+  flex: 0 0 percentage($size / $columns);
+  width: percentage($size / $columns);
+  // Add a `max-width` to ensure content within each column does not blow out
+  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+  // do not appear to require this.
+  max-width: percentage($size / $columns);
 }
 
 // Get fancy by offsetting, or changing the sort order
@@ -287,6 +279,241 @@ See it in action in <a href="https://jsbin.com/ruxona/edit?html,output">this ren
   </div>
 </div>
 {% endhighlight %}
+
+## Auto-layout columns
+
+When flexbox support is enabled, you can utilize breakpoint-specific column classes for equal-width columns. Add any number of `.col-{breakpoint}`s for each breakpoint you need and every column will be the same width.
+
+### Equal-width
+
+For example, here are two grid layouts that apply to every device and viewport, from `xs` to `xl`.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      1 of 2
+    </div>
+    <div class="col">
+      1 of 2
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      1 of 3
+    </div>
+    <div class="col">
+      1 of 3
+    </div>
+    <div class="col">
+      1 of 3
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+### Setting one column width
+
+Auto-layout for flexbox grid columns also means you can set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths. Note that the other columns will resize no matter the width of the center column.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      1 of 3
+    </div>
+    <div class="col-6">
+      2 of 3 (wider)
+    </div>
+    <div class="col">
+      3 of 3
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      1 of 3
+    </div>
+    <div class="col-5">
+      2 of 3 (wider)
+    </div>
+    <div class="col">
+      3 of 3
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+### Variable width content
+
+Using the `col-{breakpoint}-auto` classes, columns can size itself based on the natural width of its content. This is super handy with single line content like inputs, numbers, etc. This, in conjunction with [horizontal alignment](#horizontal-alignment) classes, is very useful for centering layouts with uneven column sizes as viewport width changes.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row flex-items-md-center">
+    <div class="col col-lg-2">
+      1 of 3
+    </div>
+    <div class="col-12 col-md-auto">
+      Variable width content
+    </div>
+    <div class="col col-lg-2">
+      3 of 3
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      1 of 3
+    </div>
+    <div class="col-12 col-md-auto">
+      Variable width content
+    </div>
+    <div class="col col-lg-2">
+      3 of 3
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+## Vertical alignment
+
+Use the flexbox alignment utilities to vertically align columns.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row flex-items-top">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+  <div class="row flex-items-middle">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+  <div class="row flex-items-bottom">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+<div class="bd-example-row bd-example-row-flex-cols">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col flex-top">
+      One of three columns
+    </div>
+    <div class="col flex-middle">
+      One of three columns
+    </div>
+    <div class="col flex-bottom">
+      One of three columns
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+## Horizontal alignment
+
+Flexbox utilities for horizontal alignment also exist for a number of layout options.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row flex-items-left">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-items-center">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-items-right">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-items-around">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-items-between">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+## Reordering
+
+Flexbox utilities for controlling the **visual order** of your content.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col flex-unordered">
+      First, but unordered
+    </div>
+    <div class="col flex-last">
+      Second, but last
+    </div>
+    <div class="col flex-first">
+      Third, but first
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
 
 ## Predefined classes
 
