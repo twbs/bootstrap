@@ -6,20 +6,12 @@
 .navbar {
   position: relative;
   padding: $navbar-padding-y $navbar-padding-x;
-}
 
-.navbar-container {
   @include media-breakpoint-up(sm) {
     display: flex;
     flex: 0 0 auto;
     flex-wrap: nowrap;
     align-items: center;
-    width: 100%;
-
-    // // .navbar-container-justified
-    &-justified {
-      justify-content: space-between; // todo: drop for util
-    }
   }
 }
 
