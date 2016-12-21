@@ -39,11 +39,6 @@
   right: 0;
   left: 0;
   z-index: $zindex-navbar-fixed;
-
-  // Undo the rounded corners
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
 }
 
 .navbar-fixed-top {
@@ -58,12 +53,6 @@
   position: sticky;
   top: 0;
   z-index: $zindex-navbar-sticky;
-  width: 100%;
-
-  // Undo the rounded corners
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
 }
 
 
