@@ -37,21 +37,23 @@ Sounds good? Great, let's move on to seeing all that in an example.
 
 If you're using Bootstrap's compiled CSS, this is the example you'll want to start with.
 
+<div class="bd-example-row">
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm">
       One of three columns
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm">
       One of three columns
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm">
       One of three columns
     </div>
   </div>
 </div>
 {% endexample %}
+</div>
 
 The above example creates three equal-width columns on small, medium, large, and extra large devices using our [predefined grid classes](#predefined-classes). Those columns are centered in the page with the parent `.container`.
 
