@@ -1,11 +1,11 @@
 ---
 layout: docs
 title: Grid system
-description: Documentation and examples for using Bootstrap's powerful, responsive, and mobile-first grid system.
+description: Documentation and examples for using Bootstrap's responsive flexbox grid system.
 group: layout
 ---
 
-Bootstrap includes a powerful mobile-first grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and has multiple tiers, one for each [media query range]({{ site.baseurl }}/layout/overview/#responsive-breakpoints). You can use it with Sass mixins or our predefined classes.
+Bootstrap includes a powerful mobile-first flexbox grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and has multiple tiers, one for each [media query range]({{ site.baseurl }}/layout/overview/#responsive-breakpoints). You can use it with Sass mixins or our predefined classes.
 
 ## Contents
 
@@ -16,14 +16,15 @@ Bootstrap includes a powerful mobile-first grid system for building layouts of a
 
 At a high level, here's how the grid system works:
 
+- Our v4 grid system is built with flexbox.
 - There are three major components—containers, rows, and columns.
-- Containers—`.container` for fixed width or `.container-fluid` for full width—center your site's contents and help align your grid content.
+- Containers are optional and provide a means to center your site's contents. Use `.container` for fixed width or `.container-fluid` for full width.
 - Rows are horizontal groups of columns that ensure your columns are lined up properly.
 - Content should be placed within columns, and only columns may be immediate children of rows.
 - Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So if you want three equal-width columns, you'd use `.col-sm-4`.
 - Column `width`s are set in percentages, so they're always fluid and sized relative to their parent element.
 - Columns have horizontal `padding` to create the gutters between individual columns, however, you can remove the `margin` from rows and `padding` from columns with `.no-gutters` on the `.row`.
-- There are five grid tiers, one for each [responsive breakpoint]({{ site.baseurl }}/layout/overview/#responsive-breakpoints): extra small, small, medium, large, and extra large.
+- There are five grid tiers, one for each [responsive breakpoint]({{ site.baseurl }}/layout/overview/#responsive-breakpoints): all breakpoints (extra small), small, medium, large, and extra large.
 - Grid tiers are based on minimum widths, meaning they apply to that one tier and all those above it (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices).
 - You can use predefined grid classes or Sass mixins for more semantic markup.
 
@@ -31,7 +32,7 @@ Sounds good? Great, let's move on to seeing all that in an example.
 
 ## Quick start example
 
-If you're using Bootstrap's compiled CSS, this the example you'll want to start with.
+If you're using Bootstrap's compiled CSS, this is the example you'll want to start with.
 
 {% example html %}
 <div class="container">
