@@ -5,7 +5,7 @@ description: Documentation and examples for Bootstrap's powerful, responsive nav
 group: components
 ---
 
-The navbar is a wrapper that positions branding, navigation, and other elements into a concise header. It's easily extensible and thanks to our Collapse plugin, it can easily integrate responsive behaviors.
+The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. It's easily extensible and, thanks to our Collapse plugin, can easily integrate responsive behaviors.
 
 ## Contents
 
@@ -16,22 +16,22 @@ The navbar is a wrapper that positions branding, navigation, and other elements 
 
 Here's what you need to know before getting started with the navbar:
 
-- Navbars require a wrapping `.navbar` and a [color scheme](#color-schemes).
+- Navbars require a wrapping `.navbar` and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
-- Use `.float-*-left` and `.float-*-right` to quickly align sub-components.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 
 ## Supported content
 
-Navbars come with built-in support for a handful of sub-components. Mix and match from the following as needed:
+Navbars come with built-in support for a handful of sub-components. Choose from the following as needed:
 
 - `.navbar-brand` for your company, product, or project name
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
 - `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
 - Inline forms with `.float-` utilities for form controls and components.
 - `.navbar-text` for adding vertically centered strings of text.
+- `.inline-form` for form controls and more.
 
-Here's an example of all the sub-components included in a default, non-responsive light themed navbar. [See the responsive examples](#collapsible-content) for collapsing nav support.
+Here's an example of all the sub-components included in a responsive light-themed navbar.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
@@ -55,7 +55,7 @@ Here's an example of all the sub-components included in a default, non-responsiv
       </div>
     </li>
   </ul>
-  <form class="form-inline float-right">
+  <form class="form-inline">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
@@ -101,7 +101,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 
 ### Nav
 
-Navbar navigation is similar to our regular nav options—use the `.nav` base class with a modifier to achieve a particular look. In this case you'll want `.nav.navbar-nav`.
+Navbar navigation is similar to our regular nav options—use the `.nav` base class with the `.navbar-nav` modifier correctly position your links. **Navbar navigation will grow to occupy as much horizontal space as possible** to keep your navbar contents aligned properly.
 
 Active states—with `.active`—to indicate the current page can be applied directly to `.nav-link`s or their immediate parent `.nav-item`s.
 
@@ -167,11 +167,22 @@ You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrap
 
 ### Forms
 
-Place various form controls and components within a navbar with `.form-inline`. Align them with `.float-` utilities as needed.
+Place various form controls and components within a navbar with `.form-inline`.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <form class="form-inline float-left">
+  <form class="form-inline">
+    <input class="form-control" type="text" placeholder="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</nav>
+{% endexample %}
+
+Align the contents of your inline forms with utilities as needed.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded flex-items-right">
+  <form class="form-inline">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
@@ -182,7 +193,7 @@ Input groups work, too:
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <form class="form-inline float-left">
+  <form class="form-inline">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">@</span>
       <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
@@ -191,11 +202,11 @@ Input groups work, too:
 </nav>
 {% endexample %}
 
-Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilites can be used to align different sized elements.
+Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilities can be used to align different sized elements.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <form class="form-inline float-left">
+  <form class="form-inline">
     <button class="btn btn-outline-success" type="button">Main button</button>
     <button class="btn btn-sm align-middle btn-outline-secondary" type="button">Smaller button</button>
   </form>
@@ -214,32 +225,9 @@ Navbars may contain bits of text with the help of `.navbar-text`. This class adj
 </nav>
 {% endexample %}
 
-Using our utility classes, you can change the alignment and appearance of your navbar text.
-
-{% example html %}
-<nav class="navbar navbar-light bg-faded">
-  <span class="navbar-text float-right text-muted">
-    Muted navbar text that's floated right
-  </span>
-</nav>
-{% endexample %}
-
-Similarly, you can use utility classes to align navbar text to other navbar elements like the brand and navigation (which are automatically floated already).
-
-{% example html %}
-<nav class="navbar navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <span class="navbar-text float-left">
-    Navbar text that's floated left
-  </span>
-</nav>
-{% endexample %}
-
 ## Color schemes
 
-Theming the navbar has never been easier thanks to the combination of a simple link color modifier class and `background-color` utilities. Put another way, you specify light or dark and apply a background color.
-
-Here are some examples to show what we mean.
+Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Chose from `.navbar-light` for use with light background colors, or `.navbar-dark` for dark background colors. Then, customize with `.bg-*` utilities.
 
 <div class="bd-example">
   <nav class="navbar navbar-dark bg-inverse">
@@ -258,7 +246,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline float-right">
+    <form class="form-inline">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-info" type="submit">Search</button>
     </form>
@@ -279,7 +267,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline float-right">
+    <form class="form-inline">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-secondary" type="submit">Search</button>
     </form>
@@ -300,7 +288,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline float-right">
+    <form class="form-inline">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
