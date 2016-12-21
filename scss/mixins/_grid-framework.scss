@@ -7,12 +7,8 @@
   // Common properties for all breakpoints
   %grid-column {
     position: relative;
-    // Prevent columns from collapsing when empty
-    min-height: 1px;
-
-    @if $enable-flex {
-      width: 100%;
-    }
+    width: 100%;
+    min-height: 1px; // Prevent columns from collapsing when empty
 
     @include make-gutters($gutters);
   }
@@ -26,24 +22,20 @@
         @extend %grid-column;
       }
     }
-    @if $enable-flex {
-      .col#{$infix} {
-        @extend %grid-column;
-      }
+    .col#{$infix} {
+      @extend %grid-column;
     }
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
-      @if $enable-flex {
-        .col#{$infix} {
-          flex-basis: 0;
-          flex-grow: 1;
-          max-width: 100%;
-        }
-        .col#{$infix}-auto {
-          flex: 0 0 auto;
-          width: auto;
-        }
+      .col#{$infix} {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+      }
+      .col#{$infix}-auto {
+        flex: 0 0 auto;
+        width: auto;
       }
 
       @for $i from 1 through $columns {

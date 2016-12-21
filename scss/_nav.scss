@@ -157,7 +157,7 @@
 }
 
 
-// Justified navigation (flexbox only)
+// Justified navigation
 //
 // Justified nav components are only built for flexbox mode in Bootstrap 4. In
 // previous versions, this component variation was limited to anchor-based nav
@@ -167,13 +167,11 @@
 // Using flexbox, we avoid that problem altogether at the cost of no default
 // justified navigation for default Bootstrap. Sorry, y'all <3.
 
-@if $enable-flex {
-  .nav-justified {
-    display: flex;
+.nav-justified {
+  display: flex;
 
-    .nav-item {
-      flex: 1;
-      text-align: center;
-    }
+  .nav-item {
+    flex: 1;
+    text-align: center;
   }
 }
