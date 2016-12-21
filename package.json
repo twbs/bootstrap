@@ -23,6 +23,8 @@
     "htmlhint": "htmlhint --config docs/.htmlhintrc _gh_pages/",
     "postcss": "postcss --config grunt/postcss.js --replace dist/css/*.css",
     "postcss-docs": "postcss --config grunt/postcss.js --no-map --replace docs/assets/css/docs.min.css && postcss --config grunt/postcss.js --no-map --replace docs/examples/**/*.css",
+    "scss-lint": "bundle exec scss-lint --config scss/.scss-lint.yml --exclude scss/_normalize.scss scss/*.scss",
+    "scss-lint-docs": "bundle exec scss-lint --config scss/.scss-lint.yml --exclude docs/assets/scss/docs.scss docs/assets/scss/*.scss",
     "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
     "test": "npm run eslint && npm run jscs && grunt test"
   },
@@ -65,7 +67,6 @@
     "grunt-jekyll": "^0.4.4",
     "grunt-sass": "^1.2.1",
     "grunt-saucelabs": "^9.0.0",
-    "grunt-scss-lint": "^0.5.0",
     "grunt-stamp": "^0.3.0",
     "htmlhint": "^0.9.13",
     "is-travis": "^1.0.0",

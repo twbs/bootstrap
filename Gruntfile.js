@@ -147,20 +147,6 @@ module.exports = function (grunt) {
     },
 
     // CSS build configuration
-    scsslint: {
-      options: {
-        bundleExec: true,
-        config: 'scss/.scss-lint.yml',
-        reporterOutput: null
-      },
-      core: {
-        src: ['scss/*.scss', '!scss/_normalize.scss']
-      },
-      docs: {
-        src: ['docs/assets/scss/*.scss', '!docs/assets/scss/docs.scss']
-      }
-    },
-
     cssmin: {
       options: {
         compatibility: 'ie9,-properties.zeroUnits',
@@ -283,6 +269,12 @@ module.exports = function (grunt) {
       },
       htmlhint: {
         command: 'npm run htmlhint'
+      },
+      'scss-lint': {
+        command: 'npm run scss-lint'
+      },
+      'scss-lint-docs': {
+        command: 'npm run scss-lint-docs'
       }
     },
 
@@ -370,7 +362,7 @@ module.exports = function (grunt) {
   // JS distribution task.
   grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'uglify:core']);
 
-  grunt.registerTask('test-scss', ['scsslint:core']);
+  grunt.registerTask('test-scss', ['exec:scss-lint']);
 
   // CSS distribution task.
   // Supported Compilers: sass (Ruby) and libsass.
@@ -390,7 +382,7 @@ module.exports = function (grunt) {
 
   // Docs task.
   grunt.registerTask('docs-css', ['cssmin:docs', 'exec:postcss-docs']);
-  grunt.registerTask('lint-docs-css', ['scsslint:docs']);
+  grunt.registerTask('lint-docs-css', ['exec:scss-lint-docs']);
   grunt.registerTask('docs-js', ['uglify:docsJs']);
   grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs']);
   grunt.registerTask('docs-github', ['jekyll:github']);
