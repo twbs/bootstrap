@@ -160,6 +160,8 @@ linters:
       - flex-grow
       - flex-order
       - flex-pack
+      - align-items
+      - justify-content
       - float
       - width
       - min-width
