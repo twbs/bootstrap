@@ -12,13 +12,17 @@ The navbar is a wrapper that positions branding, navigation, and other elements 
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-## Basics
+## How it works
 
 Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
+- Navbars and their contents are built with flexbox, providing easy alignment options via utility classes.
+- Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
+
+Read on for an example and list of supported sub-components.
 
 ## Supported content
 
