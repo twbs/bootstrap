@@ -6,7 +6,7 @@ scss_files:
 exclude:
   - "scss/_normalize.scss"
 
-plugin_directories: ['.scss-linters']
+plugin_directories: ['.scss-linters', 'linter']
 
 # List of gem names to load custom linters from (make sure they are already
 # installed)
@@ -543,3 +543,7 @@ linters:
 
   Compass::*:
     enabled: false
+
+  VariableDefault:
+    enabled: true
+
