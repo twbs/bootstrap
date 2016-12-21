@@ -58,6 +58,10 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
     <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
     <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </div>
+  <div class="form-group">
+    <label for="exampleInputColor">File color</label>
+    <input type="color" class="form-control-color" value="#563d7c" id="exampleInputColor">
+  </div>
   <fieldset class="form-group">
     <legend>Radio buttons</legend>
     <div class="form-check">
@@ -119,7 +123,7 @@ Below is a complete list of the specific form controls supported by Bootstrap an
         Textual inputs
       </td>
       <td>
-        {% markdown %}`text`, `password`, `datetime-local`, `date`, `month`, `time`, `week`, `number`, `email`, `url`, `search`, `tel`, `color`{% endmarkdown %}
+        {% markdown %}`text`, `password`, `datetime-local`, `date`, `month`, `time`, `week`, `number`, `email`, `url`, `search`, `tel`{% endmarkdown %}
       </td>
     </tr>
     <tr>
@@ -147,6 +151,17 @@ Below is a complete list of the specific form controls supported by Bootstrap an
       </td>
       <td>
         {% markdown %}`file`{% endmarkdown %}
+      </td>
+    </tr>
+        <tr>
+      <td class="text-nowrap">
+        {% markdown %}`.form-control-color`{% endmarkdown %}
+      </td>
+      <td>
+        Color inputs
+      </td>
+      <td>
+        {% markdown %}`color`{% endmarkdown %}
       </td>
     </tr>
     <tr>
@@ -240,12 +255,6 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
   <label for="example-time-input" class="col-2 col-form-label">Time</label>
   <div class="col-10">
     <input class="form-control" type="time" value="13:45:00" id="example-time-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-color-input" class="col-2 col-form-label">Color</label>
-  <div class="col-10">
-    <input class="form-control" type="color" value="#563d7c" id="example-color-input">
   </div>
 </div>
 {% endexample %}
@@ -934,6 +943,20 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 {% endexample %}
 
 Custom selects degrade nicely in IE9, receiving only a handful of overrides to remove the custom `background-image`. **Multiple selects (e.g., `<select multiple>`) are not currently supported.**
+
+### Color picker
+
+{% callout danger %}
+#### Browser compatibility
+
+For details, see [Can I Use](http://caniuse.com/#feat=input-color){:target="_blank"}
+{% endcallout %}
+
+`<input type="color">` element need only a custom class, `.custom-color` to trigger the custom styles.
+
+{% example html %}
+<input class="custom-color" type="color" value="#563d7c" id="color">
+{% endexample %}
 
 ### File browser
 

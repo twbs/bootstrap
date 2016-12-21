@@ -261,3 +261,25 @@
     }
   }
 }
+
+// Color
+//
+// Custom color input.
+
+.custom-color {
+  display: block;
+  width: auto;
+  min-width: $input-height;
+  height: $input-height;
+  font-size: $font-size-base;
+  line-height: $input-line-height;
+  color: $input-color;
+  cursor: pointer;
+  background-color: $input-bg;
+  background-image: none;
+  background-clip: padding-box;
+  border: $input-btn-border-width solid $input-border-color;
+  @include border-radius($input-border-radius);
+  @include box-shadow($input-box-shadow);
+  @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+}
