@@ -16,7 +16,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Browser support
 
-- Dropped IE8 and iOS 6 support. v4 is now only IE9+ and iOS 7+. For sites needing either of those, use v3.
+- Dropped IE8, IE9, and iOS 6 support. v4 is now only IE10+ and iOS 7+. For sites needing either of those, use v3.
 - Added official support for Android v5.0 Lollipop's Browser and WebView. Earlier versions of the Android Browser and WebView remain only unofficially supported.
 
 ### Global changes
@@ -29,7 +29,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Grid system
 
-- Added support for flexbox (set `$enable-flex: true` and recompile) in the grid mixins and predefined classes.
+- Added support for flexbox in the grid mixins and predefined classes.
 - As part of flexbox, included support for vertical and horizontal alignment classes.
 - Overhauled grid mixins to merge `make-col-span` into `make-col` for a singular mixin.
 - Added a new `sm` grid tier below `768px` for more granular control. We now have `xs`, `sm`, `md`, `lg`, and `xl`. This also means every tier has been bumped up one level (so `.col-md-6` in v3 is now `.col-lg-6` in v4).
