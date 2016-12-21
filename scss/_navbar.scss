@@ -257,8 +257,6 @@
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
     &#{$infix} {
-      @include clearfix;
-
       @include media-breakpoint-down($breakpoint) {
         .navbar-nav {
           .dropdown-menu {
