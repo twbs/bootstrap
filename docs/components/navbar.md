@@ -338,7 +338,7 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 Navbars can be statically placed (their default behavior), static without rounded corners, or fixed to the top or bottom of the viewport.
 
 {% example html %}
-<nav class="navbar navbar-full navbar-light bg-faded">
+<nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">Full width</a>
 </nav>
 {% endexample %}
