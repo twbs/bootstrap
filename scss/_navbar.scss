@@ -9,7 +9,13 @@
 
   @include media-breakpoint-up(sm) {
     display: flex;
-    flex: 0 0 auto;
+    // flex: 0 0 auto;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  // For nesting containers, have to redeclare for alignment purposes
+  > .container {
     flex-wrap: nowrap;
     align-items: center;
   }
@@ -24,7 +30,6 @@
   position: absolute;
   right: $navbar-padding-x;
 }
-
 
 
 // Navbar alignment options
@@ -62,18 +67,13 @@
 
 .navbar-brand {
   display: inline-block;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
+  margin-right: $navbar-padding-x;
   font-size: $font-size-lg;
   line-height: inherit;
+  white-space: nowrap;
 
   @include hover-focus {
     text-decoration: none;
-  }
-
-  @include media-breakpoint-up(sm) {
-    padding-right: .5rem;
-    padding-left: .5rem;
   }
 }
 
@@ -258,6 +258,8 @@
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
     &#{$infix} {
       @include media-breakpoint-down($breakpoint) {
+        flex-grow: 10;
+
         .navbar-nav {
           .dropdown-menu {
             position: static;
