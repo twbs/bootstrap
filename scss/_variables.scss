@@ -716,6 +716,8 @@ $card-columns-sm-up-column-gap: 1.25rem !default;
 $tooltip-max-width:           200px !default;
 $tooltip-color:               #fff !default;
 $tooltip-bg:                  #000 !default;
+$tooltip-border-width:        $border-width !default;
+$tooltip-border-color:        $tooltip-bg !default;
 $tooltip-opacity:             .9 !default;
 $tooltip-padding-y:           3px !default;
 $tooltip-padding-x:           8px !default;

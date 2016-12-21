@@ -78,6 +78,7 @@
   color: $tooltip-color;
   text-align: center;
   background-color: $tooltip-bg;
+  border: $tooltip-border-width solid $tooltip-border-color;
   @include border-radius($border-radius);
 
   &::before {
