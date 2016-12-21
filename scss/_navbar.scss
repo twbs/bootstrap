@@ -5,13 +5,79 @@
 
 .navbar {
   position: relative;
-  padding: $navbar-padding-y $navbar-padding-x;
-  @include clearfix;
+  // padding: $navbar-padding-y $navbar-padding-x;
+  // @include clearfix;
 
+  // @include media-breakpoint-up(sm) {
+  //   @include border-radius($navbar-border-radius);
+  // }
+}
+
+.navbar-container {
   @include media-breakpoint-up(sm) {
-    @include border-radius($navbar-border-radius);
+    display: table;
+    width: 100%;
+
+    // .navbar-container-justified
+    &-justified {
+      table-layout: fixed;
+    }
   }
 }
+
+.navbar-item {
+  display: block;
+  padding: $navbar-padding-y $navbar-padding-x;
+  // padding: .5rem .75rem;
+  vertical-align: middle;
+
+  @include media-breakpoint-up(sm) {
+    display: table-cell;
+    white-space: nowrap;
+
+    // .navbar-item-primary
+    &-primary {
+      width: 99%;
+
+      ~ .navbar-item {
+       width: 1%;
+     }
+    }
+  }
+}
+
+.navbar-nav {
+  // .nav-item {
+  //   display: block;
+  // }
+
+  .nav-link {
+    display: block;
+    padding: .425rem .5rem;
+  }
+
+  @include media-breakpoint-up(sm) {
+    .nav-item {
+      display: inline-block;
+    }
+  }
+}
+
+.navbar-toggler-left {
+  position: absolute;
+  // top: $navbar-padding-y;
+  left: $navbar-padding-x;
+}
+
+.navbar-toggler-right {
+  position: absolute;
+  // top: $navbar-padding-y;
+  right: $navbar-padding-x;
+}
+
+
+// .navbar-collapse-sm
+
 
 
 // Navbar alignment options
@@ -20,13 +86,13 @@
 // bottom of the page.
 
 // A static, full width modifier with no rounded corners.
-.navbar-full {
-  z-index: $zindex-navbar;
-
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
-}
+// .navbar-full {
+//   z-index: $zindex-navbar;
+//
+//   @include media-breakpoint-up(sm) {
+//     @include border-radius(0);
+//   }
+// }
 
 // Fix the top/bottom navbars when screen real estate supports it
 .navbar-fixed-top,
@@ -68,10 +134,12 @@
 //
 
 .navbar-brand {
-  float: left;
-  padding-top: $navbar-brand-padding-y;
-  padding-bottom: $navbar-brand-padding-y;
-  margin-right: 1rem;
+  // float: left;
+  // padding-top: $navbar-brand-padding-y;
+  // padding-bottom: $navbar-brand-padding-y;
+  // margin-right: 1rem;
+  display: inline-block;
+  padding: .25rem .5rem;
   font-size: $font-size-lg;
   line-height: inherit;
 
@@ -132,25 +200,25 @@
 //
 // Custom navbar navigation built on the base `.nav` styles.
 
-.navbar-nav {
-  .nav-item {
-    float: left;
-  }
-
-  .nav-link {
-    display: block;
-    padding-top:    .425rem;
-    padding-bottom: .425rem;
-
-    + .nav-link {
-      margin-left: 1rem;
-    }
-  }
-
-  .nav-item + .nav-item {
-    margin-left: 1rem;
-  }
-}
+// .navbar-nav {
+//   .nav-item {
+//     float: left;
+//   }
+//
+//   .nav-link {
+//     display: block;
+//     padding-top:    .425rem;
+//     padding-bottom: .425rem;
+//
+//     + .nav-link {
+//       margin-left: 1rem;
+//     }
+//   }
+//
+//   .nav-item + .nav-item {
+//     margin-left: 1rem;
+//   }
+// }
 
 // Dark links against a light background
 .navbar-light {
@@ -262,31 +330,32 @@
       @include clearfix;
 
       @include media-breakpoint-down($breakpoint) {
-        .navbar-brand {
-          display: block;
-          float: none;
-          margin-top: .5rem;
-          margin-right: 0;
-        }
+        // .navbar-brand {
+        //   display: block;
+        //   float: none;
+        //   margin-top: .5rem;
+        //   margin-right: 0;
+        // }
 
         .navbar-nav {
-          margin-top: .5rem;
-          margin-bottom: .5rem;
+          // margin-top: .5rem;
+          // margin-bottom: .5rem;
 
           .dropdown-menu {
             position: static;
             float: none;
           }
 
-          .nav-item {
-            float: none;
-            margin-left: 0;
-          }
+          // .nav-item {
+          //   float: none;
+          //   margin-left: 0;
+          // }
         }
       }
 
       @include media-breakpoint-up($next) {
-        display: block !important;
+        display: table-cell !important;
+        width: 100%;
       }
     }
   }
