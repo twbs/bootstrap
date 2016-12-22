@@ -638,6 +638,16 @@
   background-color: rgba(255, 0, 0, 0.1);
 }
 
+.bd-example-row-intro .container {
+  padding: 1px;
+  border: 1px solid rgba(217, 83, 79, 0.5);
+}
+
+.bd-example-row-intro .row {
+  padding: 1px;
+  border: 1px solid rgba(2, 117, 216, 0.5);
+}
+
 .bd-example-row-flex-cols .row {
   min-height: 10rem;
   background-color: rgba(255, 0, 0, 0.1);
