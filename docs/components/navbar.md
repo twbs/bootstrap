@@ -367,14 +367,16 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 
 {% example html %}
 <div class="container">
-  <nav class="navbar navbar-light bg-faded">
+  <nav class="navbar navbar-light bg-faded navbar-toggleable-md">
     <a class="navbar-brand" href="#">Navbar</a>
   </nav>
 </div>
 {% endexample %}
 
+When the container is within your navbar, it's horizontal padding is removed at breakpoints lower than your specified `.navbar-toggleable-*` class. This ensures we're not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed.
+
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-faded navbar-toggleable-md">
   <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
   </div>

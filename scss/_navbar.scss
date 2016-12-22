@@ -242,6 +242,11 @@
             float: none;
           }
         }
+
+        > .container {
+          padding-left: 0;
+          padding-right: 0;
+        }
       }
 
       @include media-breakpoint-up($next) {
