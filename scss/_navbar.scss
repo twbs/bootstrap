@@ -98,19 +98,28 @@
 // Bootstrap JavaScript plugin.
 
 .navbar-toggler {
-  width: 2.5em;
-  height: 2em;
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
   font-size: $navbar-toggler-font-size;
   line-height: 1;
-  background: transparent no-repeat center center;
-  background-size: 24px 24px;
-  border: $border-width solid transparent;
+  background: transparent; // remove default button style
+  border: $border-width solid transparent; // remove default button style
   @include border-radius($navbar-toggler-border-radius);
 
   @include hover-focus {
     text-decoration: none;
   }
+}
+
+// Keep as a separate element so folks can easily override it with another icon
+// or image file as needed.
+.navbar-toggler-icon {
+  display: inline-block;
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background: no-repeat center center;
+  background-size: 100% 100%;
 }
 
 // Navigation
@@ -163,8 +172,11 @@
   }
 
   .navbar-toggler {
-    background-image: $navbar-light-toggler-bg;
     border-color: $navbar-light-toggler-border;
+  }
+
+  .navbar-toggler-icon {
+    background-image: $navbar-light-toggler-bg;
   }
 
   .navbar-divider {
@@ -211,8 +223,11 @@
   }
 
   .navbar-toggler {
-    background-image: $navbar-inverse-toggler-bg;
     border-color: $navbar-inverse-toggler-border;
+  }
+
+  .navbar-toggler-icon {
+    background-image: $navbar-inverse-toggler-bg;
   }
 
   .navbar-divider {
