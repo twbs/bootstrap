@@ -28,7 +28,7 @@
     font-size: inherit;
   }
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(xs) {
     .nav-link {
       float: none;
 
