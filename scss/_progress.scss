@@ -54,21 +54,6 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
   @include box-shadow($progress-box-shadow);
 }
 
-// IE9 hacks to accompany custom markup. We don't need to scope this via media queries, but I feel better doing it anyway.
-@media screen and (min-width:0\0) {
-  .progress {
-    background-color: $progress-bg;
-    @include border-radius($progress-border-radius);
-    @include box-shadow($progress-box-shadow);
-  }
-  .progress-bar {
-    display: inline-block;
-    height: $spacer-y;
-    text-indent: -999rem; // Simulate hiding of value as in native `<progress>`
-    background-color: $progress-bar-color;
-  }
-}
-
 
 //
 // Striped
@@ -86,13 +71,6 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
   @include gradient-striped();
   background-size: $spacer-y $spacer-y;
 }
-// IE9
-@media screen and (min-width:0\0) {
-  .progress-bar-striped {
-    @include gradient-striped();
-    background-size: $spacer-y $spacer-y;
-  }
-}
 
 
 //
@@ -104,12 +82,6 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
 }
 .progress-animated[value]::-moz-progress-bar {
   animation: progress-bar-stripes 2s linear infinite;
-}
-// IE9
-@media screen and (min-width:0\0) {
-  .progress-animated .progress-bar-striped {
-    animation: progress-bar-stripes 2s linear infinite;
-  }
 }
 
 

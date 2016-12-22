@@ -163,7 +163,6 @@ module.exports = function (grunt) {
 
     cssmin: {
       options: {
-        compatibility: 'ie10,-properties.zeroUnits',
         sourceMap: true,
         // sourceMapInlineSources: true,
         advanced: false
