@@ -205,13 +205,20 @@
     margin-left: -$card-deck-margin;
 
     .card {
+      display: flex;
       flex: 1 0 0;
+      flex-direction: column;
       margin-right: $card-deck-margin;
       margin-bottom: 0; // Margin balancing
       margin-left: $card-deck-margin;
     }
+
+    .card-block {
+      flex-grow: 1;
+    }
   }
 }
+
 
 //
 // Card groups
