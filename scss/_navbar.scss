@@ -236,8 +236,6 @@
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
     &#{$infix} {
       @include media-breakpoint-down($breakpoint) {
-        flex-grow: 10;
-
         .navbar-nav {
           .dropdown-menu {
             position: static;
