@@ -44,6 +44,12 @@
     }
   }
 
+  &.dropdown-toggle {
+    @if $border == $background {
+      border-left-color: darken($border, 10%);
+    }
+  }
+
   &.disabled,
   &:disabled {
     &:focus,
