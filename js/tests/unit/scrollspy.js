@@ -211,9 +211,9 @@ $(function () {
     var done = assert.async()
     var navbarHtml = '<nav id="navigation" class="navbar">'
       + '<ul class="nav">'
-      + '<li><a id="a-1" class="nav-link" href="#div-1">div 1</a>'
+      + '<li class="nav-item"><a id="a-1" class="nav-link" href="#div-1">div 1</a>'
       + '<ul>'
-      + '<li><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>'
+      + '<li class="nav-item"><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>'
       + '</ul>'
       + '</li>'
       + '</ul>'
