@@ -16,9 +16,9 @@ code {
 
   // Streamline the style when inside anchors to avoid broken underline and more
   a > & {
+    padding: 0;
     color: inherit;
     background-color: inherit;
-    padding: 0;
   }
 }
 
