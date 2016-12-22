@@ -61,6 +61,10 @@
   position: absolute;
   top: 0;
   bottom: 0;
+  // Use flex for alignment (1-3)
+  display: flex; // 1. allow flex styles
+  justify-content: center; // 2. horizontally center contents
+  align-items: center; // 3. vertically center contents
   width: $carousel-control-width;
   color: $carousel-control-color;
   text-align: center;
@@ -86,26 +90,16 @@
 // Icons for within
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  position: absolute;
-  top: 50%;
-  z-index: 5;
   display: inline-block;
   width: $carousel-control-icon-width;
   height: $carousel-control-icon-width;
-  margin-top: -($carousel-control-icon-width / 2);
-  font-family: serif;
-  line-height: 1;
   background: transparent no-repeat center center;
   background-size: 100% 100%;
 }
 .carousel-control-prev-icon {
-  left: 50%;
-  margin-left: -($carousel-control-icon-width / 2);
   background-image: $carousel-control-prev-icon-bg;
 }
 .carousel-control-next-icon {
-  right: 50%;
-  margin-right: -($carousel-control-icon-width / 2);
   background-image: $carousel-control-next-icon-bg;
 }
 
