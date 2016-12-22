@@ -231,68 +231,82 @@ Navbars may contain bits of text with the help of `.navbar-text`. This class adj
 Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Chose from `.navbar-light` for use with light background colors, or `.navbar-dark` for dark background colors. Then, customize with `.bg-*` utilities.
 
 <div class="bd-example">
-  <nav class="navbar navbar-dark bg-inverse">
+  <nav class="navbar navbar-dark navbar-toggleable-md bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation"></button>
     <a class="navbar-brand" href="#">Navbar</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline">
-      <input class="form-control" type="text" placeholder="Search">
-      <button class="btn btn-outline-info" type="submit">Search</button>
-    </form>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline">
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-outline-info" type="submit">Search</button>
+      </form>
+    </div>
   </nav>
-  <nav class="navbar navbar-dark bg-primary">
+
+  <nav class="navbar navbar-dark navbar-toggleable-md bg-primary">
+    <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"></button>
     <a class="navbar-brand" href="#">Navbar</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline">
-      <input class="form-control" type="text" placeholder="Search">
-      <button class="btn btn-outline-secondary" type="submit">Search</button>
-    </form>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline">
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+    </div>
   </nav>
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+
+  <nav class="navbar navbar-light navbar-toggleable-md" style="background-color: #e3f2fd;">
+    <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation"></button>
     <a class="navbar-brand" href="#">Navbar</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline">
-      <input class="form-control" type="text" placeholder="Search">
-      <button class="btn btn-outline-primary" type="submit">Search</button>
-    </form>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+      <form class="form-inline">
+        <input class="form-control" type="text" placeholder="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
   </nav>
 </div>
 
