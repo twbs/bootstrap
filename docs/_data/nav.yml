@@ -6,7 +6,6 @@
     - title: Browsers & devices
     - title: JavaScript
     - title: Options
-    - title: Flexbox
     - title: Build tools
     - title: Best practices
     - title: Accessibility
@@ -15,7 +14,6 @@
   pages:
     - title: Overview
     - title: Grid
-    - title: Flexbox grid
     - title: Media object
     - title: Responsive utilities
 

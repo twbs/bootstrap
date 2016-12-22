@@ -12,9 +12,6 @@
 }
 
 .card-block {
-  @if (not $enable-flex) {
-    @include clearfix;
-  }
   padding: $card-spacer-x;
 }
 
@@ -69,9 +66,6 @@
 //
 
 .card-header {
-  @if (not $enable-flex) {
-    @include clearfix;
-  }
   padding: $card-spacer-y $card-spacer-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
   background-color: $card-cap-bg;
@@ -83,9 +77,6 @@
 }
 
 .card-footer {
-  @if (not $enable-flex) {
-    @include clearfix;
-  }
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;
@@ -205,45 +196,29 @@
 //
 // Those changes are noted by `// Margin balancing`.
 
-@if $enable-flex {
-  @include media-breakpoint-up(sm) {
-    .card-deck {
+@include media-breakpoint-up(sm) {
+  .card-deck {
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: -$card-deck-margin;
+    margin-bottom: $card-spacer-y; // Margin balancing
+    margin-left: -$card-deck-margin;
+
+    .card {
       display: flex;
-      flex-flow: row wrap;
-      margin-right: -$card-deck-margin;
-      margin-bottom: $card-spacer-y; // Margin balancing
-      margin-left: -$card-deck-margin;
-
-      .card {
-        flex: 1 0 0;
-        margin-right: $card-deck-margin;
-        margin-bottom: 0; // Margin balancing
-        margin-left: $card-deck-margin;
-      }
+      flex: 1 0 0;
+      flex-direction: column;
+      margin-right: $card-deck-margin;
+      margin-bottom: 0; // Margin balancing
+      margin-left: $card-deck-margin;
     }
-  }
-} @else {
-  @include media-breakpoint-up(sm) {
-    $space-between-cards: (2 * $card-deck-margin);
-    .card-deck {
-      display: table;
-      width: 100%;
-      margin-bottom: $card-spacer-y; // Margin balancing
-      table-layout: fixed;
-      border-spacing: $space-between-cards 0;
 
-      .card {
-        display: table-cell;
-        margin-bottom: 0; // Margin balancing
-        vertical-align: top;
-      }
-    }
-    .card-deck-wrapper {
-      margin-right: (-$space-between-cards);
-      margin-left: (-$space-between-cards);
+    .card-block {
+      flex-grow: 1;
     }
   }
 }
+
 
 //
 // Card groups
@@ -251,22 +226,11 @@
 
 @include media-breakpoint-up(sm) {
   .card-group {
-    @if $enable-flex {
-      display: flex;
-      flex-flow: row wrap;
-    } @else {
-      display: table;
-      width: 100%;
-      table-layout: fixed;
-    }
+    display: flex;
+    flex-flow: row wrap;
 
     .card {
-      @if $enable-flex {
-        flex: 1 0 0;
-      } @else {
-        display: table-cell;
-        vertical-align: top;
-      }
+      flex: 1 0 0;
 
       + .card {
         margin-left: 0;

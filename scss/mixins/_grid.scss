@@ -5,9 +5,6 @@
 @mixin make-container($gutters: $grid-gutter-widths) {
   margin-left: auto;
   margin-right: auto;
-  @if not $enable-flex {
-    @include clearfix();
-  }
 
   @each $breakpoint in map-keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
@@ -40,12 +37,8 @@
 }
 
 @mixin make-row($gutters: $grid-gutter-widths) {
-  @if $enable-flex {
-    display: flex;
-    flex-wrap: wrap;
-  } @else {
-    @include clearfix();
-  }
+  display: flex;
+  flex-wrap: wrap;
 
   @each $breakpoint in map-keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
@@ -58,14 +51,11 @@
 
 @mixin make-col-ready($gutters: $grid-gutter-widths) {
   position: relative;
-  min-height: 1px; // Prevent collapsing
-
   // Prevent columns from becoming too narrow when at smaller grid tiers by
   // always setting `width: 100%;`. This works because we use `flex` values
   // later on to override this initial width.
-  @if $enable-flex {
-    width: 100%;
-  }
+  width: 100%;
+  min-height: 1px; // Prevent collapsing
 
   @each $breakpoint in map-keys($gutters) {
     @include media-breakpoint-up($breakpoint) {
@@ -77,16 +67,12 @@
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
-  @if $enable-flex {
-    flex: 0 0 percentage($size / $columns);
-    // Add a `max-width` to ensure content within each column does not blow out
-    // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
-    // do not appear to require this.
-    max-width: percentage($size / $columns);
-  } @else {
-    float: left;
-    width: percentage($size / $columns);
-  }
+  flex: 0 0 percentage($size / $columns);
+  // width: percentage($size / $columns);
+  // Add a `max-width` to ensure content within each column does not blow out
+  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+  // do not appear to require this.
+  max-width: percentage($size / $columns);
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
