@@ -6,19 +6,6 @@
 .navbar {
   position: relative;
   padding: $navbar-padding-y $navbar-padding-x;
-
-  @include media-breakpoint-up(sm) {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
-
-  // For nesting containers, have to redeclare for alignment purposes
-  > .container {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
 }
 
 .navbar-toggler-left {
@@ -135,17 +122,6 @@
     display: block;
     padding-top: .425rem;
     padding-bottom: .425rem;
-  }
-
-  @include media-breakpoint-up(sm) {
-    .nav-item {
-      display: inline-block;
-    }
-
-    .nav-link {
-      padding-right: .5rem;
-      padding-left: .5rem;
-    }
   }
 }
 
@@ -269,8 +245,30 @@
       }
 
       @include media-breakpoint-up($next) {
-        display: flex !important;
-        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        // For nesting containers, have to redeclare for alignment purposes
+        > .container {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+        }
+
+        .navbar-collapse {
+          display: flex !important;
+          width: 100%;
+        }
+
+        .nav-item {
+          display: inline-block;
+        }
+
+        .nav-link {
+          padding-right: .5rem;
+          padding-left: .5rem;
+        }
       }
     }
   }
