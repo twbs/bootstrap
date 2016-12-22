@@ -450,7 +450,7 @@ With no `.navbar-brand` shown in lowest breakpoint:
       </li>
     </ul>
     <form class="form-inline mt-2 mt-lg-0">
-      <input class="form-control" type="text" placeholder="Search">
+      <input class="form-control mr-md-2" type="text" placeholder="Search">
       <button class="btn btn-outline-success my-2 my-lg-0" type="submit">Search</button>
     </form>
   </div>
@@ -479,7 +479,7 @@ With a brand name shown on the left and toggler on the right:
       </li>
     </ul>
     <form class="form-inline mt-2 mt-lg-0">
-      <input class="form-control" type="text" placeholder="Search">
+      <input class="form-control mr-md-2" type="text" placeholder="Search">
       <button class="btn btn-outline-success my-2 my-lg-0" type="submit">Search</button>
     </form>
   </div>
