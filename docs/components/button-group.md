@@ -26,17 +26,17 @@ Wrap a series of buttons with `.btn` in `.btn-group`.
 
 ## Button toolbar
 
-Combine sets of button groups into button toolbars for more complex components.
+Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.
 
 {% example html %}
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group" role="group" aria-label="First group">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
     <button type="button" class="btn btn-secondary">1</button>
     <button type="button" class="btn btn-secondary">2</button>
     <button type="button" class="btn btn-secondary">3</button>
     <button type="button" class="btn btn-secondary">4</button>
   </div>
-  <div class="btn-group" role="group" aria-label="Second group">
+  <div class="btn-group mr-2" role="group" aria-label="Second group">
     <button type="button" class="btn btn-secondary">5</button>
     <button type="button" class="btn btn-secondary">6</button>
     <button type="button" class="btn btn-secondary">7</button>
@@ -101,6 +101,18 @@ Place a `.btn-group` within another `.btn-group` when you want dropdown menus mi
 ## Vertical variation
 
 Make a set of buttons appear vertically stacked rather than horizontally. **Split button dropdowns are not supported here.**
+
+<div class="bd-example">
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+    <button type="button" class="btn btn-secondary">Button</button>
+    <button type="button" class="btn btn-secondary">Button</button>
+    <button type="button" class="btn btn-secondary">Button</button>
+    <button type="button" class="btn btn-secondary">Button</button>
+    <button type="button" class="btn btn-secondary">Button</button>
+    <button type="button" class="btn btn-secondary">Button</button>
+  </div>
+</div>
+
 
 <div class="bd-example">
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
