@@ -2236,7 +2236,6 @@ pre code {
 .table-responsive {
   display: block;
   width: 100%;
-  min-height: 0%;
   overflow-x: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
@@ -3429,7 +3428,6 @@ tbody.collapse.show {
   cursor: not-allowed;
   background-color: transparent;
   background-image: none;
-  filter: "progid:DXImageTransform.Microsoft.gradient(enabled = false)";
 }
 
 .show > .dropdown-menu {
@@ -3929,11 +3927,9 @@ tbody.collapse.show {
   max-width: 100%;
   height: calc(2.25rem - 2px);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
-  padding-right: 0.75rem \9;
   color: #464a4c;
   vertical-align: middle;
   background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
-  background-image: none \9;
   -webkit-background-size: 8px 10px;
           background-size: 8px 10px;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -5261,19 +5257,6 @@ base::-moz-progress-bar,
   background-color: #eceeef;
 }
 
-@media screen and (min-width: 0\0) {
-  .progress {
-    background-color: #eceeef;
-    border-radius: 0.25rem;
-  }
-  .progress-bar {
-    display: inline-block;
-    height: 1rem;
-    text-indent: -999rem;
-    background-color: #0275d8;
-  }
-}
-
 .progress-striped[value]::-webkit-progress-value {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -5291,16 +5274,6 @@ base::-moz-progress-bar,
   background-size: 1rem 1rem;
 }
 
-@media screen and (min-width: 0\0) {
-  .progress-bar-striped {
-    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-    -webkit-background-size: 1rem 1rem;
-            background-size: 1rem 1rem;
-  }
-}
-
 .progress-animated[value]::-webkit-progress-value {
   -webkit-animation: progress-bar-stripes 2s linear infinite;
           animation: progress-bar-stripes 2s linear infinite;
@@ -5308,14 +5281,6 @@ base::-moz-progress-bar,
 
 .progress-animated[value]::-moz-progress-bar {
   animation: progress-bar-stripes 2s linear infinite;
-}
-
-@media screen and (min-width: 0\0) {
-  .progress-animated .progress-bar-striped {
-    -webkit-animation: progress-bar-stripes 2s linear infinite;
-         -o-animation: progress-bar-stripes 2s linear infinite;
-            animation: progress-bar-stripes 2s linear infinite;
-  }
 }
 
 .progress-success[value]::-webkit-progress-value {
@@ -5330,12 +5295,6 @@ base::-moz-progress-bar,
   background-color: #5cb85c;
 }
 
-@media screen and (min-width: 0\0) {
-  .progress-success .progress-bar {
-    background-color: #5cb85c;
-  }
-}
-
 .progress-info[value]::-webkit-progress-value {
   background-color: #5bc0de;
 }
@@ -5346,12 +5305,6 @@ base::-moz-progress-bar,
 
 .progress-info[value]::-ms-fill {
   background-color: #5bc0de;
-}
-
-@media screen and (min-width: 0\0) {
-  .progress-info .progress-bar {
-    background-color: #5bc0de;
-  }
 }
 
 .progress-warning[value]::-webkit-progress-value {
@@ -5366,12 +5319,6 @@ base::-moz-progress-bar,
   background-color: #f0ad4e;
 }
 
-@media screen and (min-width: 0\0) {
-  .progress-warning .progress-bar {
-    background-color: #f0ad4e;
-  }
-}
-
 .progress-danger[value]::-webkit-progress-value {
   background-color: #d9534f;
 }
@@ -5382,12 +5329,6 @@ base::-moz-progress-bar,
 
 .progress-danger[value]::-ms-fill {
   background-color: #d9534f;
-}
-
-@media screen and (min-width: 0\0) {
-  .progress-danger .progress-bar {
-    background-color: #d9534f;
-  }
 }
 
 .media {
