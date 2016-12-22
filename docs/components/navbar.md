@@ -34,15 +34,16 @@ Navbars come with built-in support for a handful of sub-components. Choose from 
 - Inline forms with `.float-` utilities for form controls and components.
 - `.navbar-text` for adding vertically centered strings of text.
 - `.inline-form` for form controls and more.
+- `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
 
 Here's an example of all the sub-components included in a responsive light-themed navbar.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light navbar-toggleable-md bg-faded">
   <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
   <a class="navbar-brand" href="#">Navbar</a>
 
-  <div class="collapse navbar-toggleable-md" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="nav navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
