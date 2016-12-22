@@ -3,9 +3,6 @@
 //
 
 .bd-navbar {
-  padding-right: 0;
-  padding-left: 0;
-
   .navbar-nav {
     .nav-link {
       color: $bd-graphite-light;
@@ -26,15 +23,5 @@
 
   .dropdown-menu {
     font-size: inherit;
-  }
-
-  @include media-breakpoint-down(sm) {
-    .nav-link {
-      float: none;
-
-      + .nav-link {
-        margin-left: 0;
-      }
-    }
   }
 }
