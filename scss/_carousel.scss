@@ -121,6 +121,8 @@
   bottom: 10px;
   left: 0;
   z-index: 15;
+  display: flex;
+  justify-content: center;
   padding-left: 0; // override <ul> default
   // Use the .carousel-control's width as margin so we don't overlay those
   margin-right: $carousel-control-width;
@@ -130,9 +132,11 @@
 
   li {
     position: relative;
-    display: inline-block;
-    width: $carousel-indicator-width;
+    flex: 1 0 auto;
+    max-width: $carousel-indicator-width;
     height: $carousel-indicator-height;
+    margin-right: $carousel-indicator-spacer;
+    margin-left: $carousel-indicator-spacer;
     text-indent: -999px;
     cursor: pointer;
     background-color: rgba($carousel-indicator-active-bg, .5);
