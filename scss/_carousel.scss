@@ -63,8 +63,8 @@
   bottom: 0;
   // Use flex for alignment (1-3)
   display: flex; // 1. allow flex styles
-  justify-content: center; // 2. horizontally center contents
-  align-items: center; // 3. vertically center contents
+  align-items: center; // 2. vertically center contents
+  justify-content: center; // 3. horizontally center contents
   width: $carousel-control-width;
   color: $carousel-control-color;
   text-align: center;
