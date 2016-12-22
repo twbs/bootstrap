@@ -265,10 +265,10 @@ Mix and match with other components and utilities as needed.
 
 ## Color schemes
 
-Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Chose from `.navbar-light` for use with light background colors, or `.navbar-dark` for dark background colors. Then, customize with `.bg-*` utilities.
+Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Chose from `.navbar-light` for use with light background colors, or `.navbar-inverse` for dark background colors. Then, customize with `.bg-*` utilities.
 
 <div class="bd-example">
-  <nav class="navbar navbar-dark navbar-toggleable-md bg-inverse">
+  <nav class="navbar navbar-inverse navbar-toggleable-md bg-inverse">
     <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation"></button>
     <a class="navbar-brand" href="#">Navbar</a>
 
@@ -294,7 +294,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
     </div>
   </nav>
 
-  <nav class="navbar navbar-dark navbar-toggleable-md bg-primary">
+  <nav class="navbar navbar-inverse navbar-toggleable-md bg-primary">
     <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"></button>
     <a class="navbar-brand" href="#">Navbar</a>
 
@@ -348,11 +348,11 @@ Theming the navbar has never been easier thanks to the combination of theming cl
 </div>
 
 {% highlight html %}
-<nav class="navbar navbar-dark bg-inverse">
+<nav class="navbar navbar-inverse bg-inverse">
   <!-- Navbar content -->
 </nav>
 
-<nav class="navbar navbar-dark bg-primary">
+<nav class="navbar navbar-inverse bg-primary">
   <!-- Navbar content -->
 </nav>
 
@@ -478,7 +478,7 @@ Sometimes you want to use the collapse plugin to trigger hidden content elsewher
       <span class="text-muted">Toggleable via the navbar brand.</span>
     </div>
   </div>
-  <nav class="navbar navbar-dark bg-inverse">
+  <nav class="navbar navbar-inverse bg-inverse">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"></button>
   </nav>
 </div>
