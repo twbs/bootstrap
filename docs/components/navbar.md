@@ -185,8 +185,8 @@ Place various form controls and components within a navbar with `.form-inline`.
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <form class="form-inline">
-    <input class="form-control" type="text" placeholder="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <input class="form-control mr-md-2" type="text" placeholder="Search">
+    <button class="btn btn-outline-success my-2 my-lg-0" type="submit">Search</button>
   </form>
 </nav>
 {% endexample %}
@@ -196,8 +196,8 @@ Align the contents of your inline forms with utilities as needed.
 {% example html %}
 <nav class="navbar navbar-light bg-faded flex-items-right">
   <form class="form-inline">
-    <input class="form-control" type="text" placeholder="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <input class="form-control mr-md-2" type="text" placeholder="Search">
+    <button class="btn btn-outline-success my-2 my-lg-0" type="submit">Search</button>
   </form>
 </nav>
 {% endexample %}
