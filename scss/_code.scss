@@ -13,6 +13,13 @@ code {
   color: $code-color;
   background-color: $code-bg;
   @include border-radius($border-radius);
+
+  // Streamline the style when inside anchors to avoid broken underline and more
+  a > & {
+    padding: 0;
+    color: inherit;
+    background-color: inherit;
+  }
 }
 
 // User input typically entered via keyboard

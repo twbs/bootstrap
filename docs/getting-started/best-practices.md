@@ -15,4 +15,5 @@ We've designed and developed Bootstrap to work in a number of environments. Here
 - Working with CSS
 - Working with Sass files
 - Building new CSS components
+- Working with flexbox
 - Ask in [Slack](https://bootstrap-slack.herokuapp.com/)

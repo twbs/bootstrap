@@ -300,39 +300,30 @@ select.form-control-lg {
 // default HTML form controls and our custom form controls (e.g., input groups).
 
 .form-inline {
-  @if $enable-flex {
-    display: flex;
-    flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 
-    // Because we use flex, the initial sizing of checkboxes is collapsed and
-    // doesn't occupy the full-width (which is what we want for xs grid tier),
-    // so we force that here.
-    .form-check {
-      width: 100%;
-    }
+  // Because we use flex, the initial sizing of checkboxes is collapsed and
+  // doesn't occupy the full-width (which is what we want for xs grid tier),
+  // so we force that here.
+  .form-check {
+    width: 100%;
   }
 
   // Kick in the inline
   @include media-breakpoint-up(sm) {
     label {
-      @if $enable-flex {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 0;
     }
 
     // Inline-block all the things for "inline"
     .form-group {
-      @if $enable-flex {
-        display: flex;
-        flex: 0 0 auto;
-        flex-flow: row wrap;
-      } @else {
-        display: inline-block;
-        vertical-align: middle;
-      }
+      display: flex;
+      flex: 0 0 auto;
+      flex-flow: row wrap;
       margin-bottom: 0;
     }
 
@@ -351,24 +342,6 @@ select.form-control-lg {
 
     .input-group {
       width: auto;
-
-      @if not $enable-flex {
-        display: inline-table;
-        vertical-align: middle;
-
-        .input-group-addon,
-        .input-group-btn,
-        .form-control {
-          width: auto;
-        }
-      }
-    }
-
-    // Input groups need that 100% width though
-    .input-group > .form-control {
-      @if not $enable-flex {
-        width: 100%;
-      }
     }
 
     .form-control-label {
@@ -379,14 +352,9 @@ select.form-control-lg {
     // Remove default margin on radios/checkboxes that were used for stacking, and
     // then undo the floating of radios and checkboxes to match.
     .form-check {
-      @if $enable-flex {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      } @else {
-        display: inline-block;
-        vertical-align: middle;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: auto;
       margin-top: 0;
       margin-bottom: 0;
@@ -401,22 +369,15 @@ select.form-control-lg {
 
     // Custom form controls
     .custom-control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding-left: 0;
-
-      @if $enable-flex {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      } @else {
-        vertical-align: middle;
-      }
     }
     .custom-control-indicator {
       position: static;
       display: inline-block;
-      @if $enable-flex {
-        margin-right: .25rem; // Flexbox alignment means we lose our HTML space here, so we compensate.
-      }
+      margin-right: .25rem; // Flexbox alignment means we lose our HTML space here, so we compensate.
       vertical-align: text-bottom;
     }
 
