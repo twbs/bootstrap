@@ -111,6 +111,15 @@
     margin-top: 2rem;
   }
 
+  .pos-f-t {
+    position: relative;
+    margin: -1rem;
+
+    @include media-breakpoint-up(sm) {
+      margin: -1.5rem;
+    }
+  }
+
   > .form-control {
     + .form-control {
       margin-top: .5rem;
