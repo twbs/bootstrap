@@ -596,12 +596,12 @@ $navbar-toggler-padding-y:           .5rem !default;
 $navbar-toggler-font-size:           $font-size-lg !default;
 $navbar-toggler-border-radius:       $btn-border-radius !default;
 
-$navbar-dark-color:                 rgba(255,255,255,.5) !default;
-$navbar-dark-hover-color:           rgba(255,255,255,.75) !default;
-$navbar-dark-active-color:          rgba(255,255,255,1) !default;
-$navbar-dark-disabled-color:        rgba(255,255,255,.25) !default;
-$navbar-dark-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"), "#", "%23") !default;
-$navbar-dark-toggler-border:        rgba(255,255,255,.1) !default;
+$navbar-inverse-color:                 rgba(255,255,255,.5) !default;
+$navbar-inverse-hover-color:           rgba(255,255,255,.75) !default;
+$navbar-inverse-active-color:          rgba(255,255,255,1) !default;
+$navbar-inverse-disabled-color:        rgba(255,255,255,.25) !default;
+$navbar-inverse-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-inverse-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-inverse-toggler-border:        rgba(255,255,255,.1) !default;
 
 $navbar-light-color:                rgba(0,0,0,.5) !default;
 $navbar-light-hover-color:          rgba(0,0,0,.7) !default;
