@@ -102,38 +102,46 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 
 ### Nav
 
-Navbar navigation is similar to our regular nav options—use the `.nav` base class with the `.navbar-nav` modifier correctly position your links. **Navbar navigation will grow to occupy as much horizontal space as possible** to keep your navbar contents aligned properly.
+Navbar navigation links build on our `.nav` options with their own modifier class and require the use of [toggler classes](#toggler) for proper responsive styling. **Navigation in navbars will also grow to occupy as much horizontal space as possible** to keep your navbar contents securely aligned.
 
 Active states—with `.active`—to indicate the current page can be applied directly to `.nav-link`s or their immediate parent `.nav-item`s.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
-  <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
-  </ul>
+<nav class="navbar navbar-light navbar-toggleable-md bg-faded">
+  <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"></button>
+  <a class="navbar-brand" href="#">Navbar</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 {% endexample %}
 
 And because we use classes for our navs, you can avoid the list-based approach entirely if you like.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
-  <div class="nav navbar-nav">
-    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-    <a class="nav-item nav-link" href="#">Features</a>
-    <a class="nav-item nav-link" href="#">Pricing</a>
-    <a class="nav-item nav-link disabled" href="#">Disabled</a>
+<nav class="navbar navbar-light navbar-toggleable-md bg-faded">
+  <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"></button>
+  <a class="navbar-brand" href="#">Navbar</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="nav navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
   </div>
 </nav>
 {% endexample %}
@@ -141,28 +149,32 @@ And because we use classes for our navs, you can avoid the list-based approach e
 You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
-  <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown link
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </li>
-  </ul>
+<nav class="navbar navbar-light navbar-toggleable-md bg-faded">
+  <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"></button>
+  <a class="navbar-brand" href="#">Navbar</a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+  </div>
 </nav>
 {% endexample %}
 
@@ -226,6 +238,31 @@ Navbars may contain bits of text with the help of `.navbar-text`. This class adj
 </nav>
 {% endexample %}
 
+Mix and match with other components and utilities as needed.
+
+{% example html %}
+<nav class="navbar navbar-light navbar-toggleable-md bg-faded">
+  <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"></button>
+  <a class="navbar-brand" href="#">Navbar w/ text</a>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      Navbar text with an inline element
+    </span>
+  </div>
+</nav>
+{% endexample %}
+
 ## Color schemes
 
 Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Chose from `.navbar-light` for use with light background colors, or `.navbar-dark` for dark background colors. Then, customize with `.bg-*` utilities.
@@ -251,8 +288,8 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </li>
       </ul>
       <form class="form-inline">
-        <input class="form-control" type="text" placeholder="Search">
-        <button class="btn btn-outline-info" type="submit">Search</button>
+        <input class="form-control mr-md-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-info my-2 my-lg-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
@@ -277,8 +314,8 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </li>
       </ul>
       <form class="form-inline">
-        <input class="form-control" type="text" placeholder="Search">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
+        <input class="form-control mr-md-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-secondary my-2 my-lg-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
@@ -303,8 +340,8 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </li>
       </ul>
       <form class="form-inline">
-        <input class="form-control" type="text" placeholder="Search">
-        <button class="btn btn-outline-primary" type="submit">Search</button>
+        <input class="form-control mr-md-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-primary my-2 my-lg-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
