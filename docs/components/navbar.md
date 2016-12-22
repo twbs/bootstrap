@@ -420,8 +420,8 @@ Sometimes you want to use the collapse plugin to trigger hidden content elsewher
 {% example html %}
 <div class="pos-f-t">
   <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-inverse text-muted p-4">
-      <h4>Collapsed content</h4>
+    <div class="bg-inverse p-4">
+      <h4 class="text-white">Collapsed content</h4>
       <span class="text-muted">Toggleable via the navbar brand.</span>
     </div>
   </div>
