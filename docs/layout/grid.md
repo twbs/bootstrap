@@ -132,7 +132,7 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
 
 ## Auto-layout columns
 
-When flexbox support is enabled, you can utilize breakpoint-specific column classes for equal-width columns. Add any number of `.col-{breakpoint}`s for each breakpoint you need and every column will be the same width.
+Utilize breakpoint-specific column classes for equal-width columns. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.
 
 ### Equal-width
 
