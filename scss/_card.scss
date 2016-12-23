@@ -281,7 +281,7 @@
 @include media-breakpoint-up(sm) {
   .card-columns {
     column-count: 3;
-    column-gap: $card-columns-sm-up-column-gap;
+    column-gap: $card-columns-gap;
 
     .card {
       display: inline-block; // Don't let them vertically span multiple columns
