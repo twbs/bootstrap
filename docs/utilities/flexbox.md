@@ -13,12 +13,7 @@ Quickly manage the layout, alignment, and sizing of grid columns, navigation, co
 
 ## Enable flex behaviors
 
-Apply `display` utilities to create a flexbox container and transform **direct children elements** into flex items. Flex containers and items are able to be modified further with additional flex properties. Choose from the following options.
-
-| Class | property: value; | Description |
-| --- | --- | --- |
-| `.d-flex` | `display: flex;` | Creates a block-level element using the flexbox model. |
-| `.d-inline-flex` | `display: inline-flex;` | Creates an inline-level element using the flexbox model. |
+Apply `display` utilities to create a flexbox container and transform **direct children elements** into flex items. Flex containers and items are able to be modified further with additional flex properties.
 
 {% example html %}
 <div class="d-flex p-2 bd-highlight">I'm a flexbox container!</div>
@@ -30,7 +25,11 @@ Apply `display` utilities to create a flexbox container and transform **direct c
 
 Responsive variations also exist for `.d-flex` and `.d-inline-flex`.
 
-<table class="table-responsive">
+{% for bp in site.data.breakpoints %}
+- `.d{{ bp.abbr }}-flex`
+- `.d{{ bp.abbr }}-inline-flex`{% endfor %}
+
+<table class="table-responsive" hidden>
   <thead>
     <tr class="bg-faded">
       <th>Class</th>
@@ -87,7 +86,11 @@ Use `.flex-column` to set a vertical direction.
 
 Responsive variations also exist for `.flex-row` and `.flex-column`.
 
-<table class="table-responsive">
+{% for bp in site.data.breakpoints %}
+- `.flex{{ bp.abbr }}-row`
+- `.flex{{ bp.abbr }}-column`{% endfor %}
+
+<table class="table-responsive" hidden>
   <thead>
     <tr class="bg-faded">
       <th>Class</th>
@@ -164,7 +167,11 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
 
 Responsive variations also exist for `.flex-nowrap` and `.flex-wrap`.
 
-<table class="table-responsive">
+{% for bp in site.data.breakpoints %}
+- `.flex{{ bp.abbr }}-nowrap`
+- `.flex{{ bp.abbr }}-wrap`{% endfor %}
+
+<table class="table-responsive" hidden>
   <thead>
     <tr class="bg-faded">
       <th>Class</th>
