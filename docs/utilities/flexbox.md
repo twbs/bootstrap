@@ -149,10 +149,9 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
 <div class="d-flex justify-content-around">...</div>
 {% endhighlight %}
 
-
 ## Align items
 
-Use `align-items` utilities on flexbox containers to change the alignment of flex items on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from `start` (browser default), `end`, `center`, `baseline`, or `stretch`.
+Use `align-items` utilities on flexbox containers to change the alignment of flex items on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from `start`, `end`, `center`, `baseline`, or `stretch` (browser default).
 
 <div class="bd-example">
   <div class="d-flex align-items-start bd-highlight mb-3" style="height: 100px">
@@ -188,6 +187,46 @@ Use `align-items` utilities on flexbox containers to change the alignment of fle
 <div class="d-flex align-items-center">...</div>
 <div class="d-flex align-items-baseline">...</div>
 <div class="d-flex align-items-stretch">...</div>
+{% endhighlight %}
+
+## Align self
+
+Use `align-self` utilities on flexbox items to individually change their alignment on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from the same options as `align-items`: `start`, `end`, `center`, `baseline`, or `stretch` (browser default).
+
+<div class="bd-example">
+  <div class="d-flex bd-highlight mb-3" style="height: 100px">
+    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="align-self-start p-2 bd-highlight">Aligned flex item</div>
+    <div class="p-2 bd-highlight">Flex item</div>
+  </div>
+  <div class="d-flex bd-highlight mb-3" style="height: 100px">
+    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="align-self-end p-2 bd-highlight">Aligned flex item</div>
+    <div class="p-2 bd-highlight">Flex item</div>
+  </div>
+  <div class="d-flex bd-highlight mb-3" style="height: 100px">
+    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="align-self-center p-2 bd-highlight">Aligned flex item</div>
+    <div class="p-2 bd-highlight">Flex item</div>
+  </div>
+  <div class="d-flex bd-highlight mb-3" style="height: 100px">
+    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="align-self-baseline p-2 bd-highlight">Aligned flex item</div>
+    <div class="p-2 bd-highlight">Flex item</div>
+  </div>
+  <div class="d-flex bd-highlight" style="height: 100px">
+    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="align-self-stretch p-2 bd-highlight">Aligned flex item</div>
+    <div class="p-2 bd-highlight">Flex item</div>
+  </div>
+</div>
+
+{% highlight html %}
+<div class="align-self-start">Aligned flex item</div>
+<div class="align-self-end">Aligned flex item</div>
+<div class="align-self-center">Aligned flex item</div>
+<div class="align-self-baseline">Aligned flex item</div>
+<div class="align-self-stretch">Aligned flex item</div>
 {% endhighlight %}
 
 ## Align content
