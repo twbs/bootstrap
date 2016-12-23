@@ -21,7 +21,7 @@ The `.pos-f-t` class can be used to easily position elements at the top of the v
 
 ## Width and height
 
-Easily make an element as wide or as tall (relative to its parent) our width and height utilities. Includes support for `25%`, `50%`, `75%`, and `100%`.
+Easily make an element as wide or as tall (relative to its parent) wit our width and height utilities. Includes support for `25%`, `50%`, `75%`, and `100%`.
 
 {% example html %}
 <div class="w-25 p-3" style="background-color: #eee;">Width 25%</div>
