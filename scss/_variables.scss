@@ -29,7 +29,7 @@
 // 21. Cards
 // 22. Tooltips
 // 23. Popovers
-// 24. Tags
+// 24. Badges
 // 25. Modals
 // 26. Alerts
 // 27. Progress bars
@@ -694,6 +694,7 @@ $state-danger-border:            darken($state-danger-bg, 5%) !default;
 
 
 // 21. Cards
+
 $card-spacer-x:            1.25rem !default;
 $card-spacer-y:            .75rem !default;
 $card-border-width:        1px !default;
@@ -751,7 +752,7 @@ $popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
 $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !default;
 
 
-// 24. Tags
+// 24. Badges
 
 $badge-default-bg:            $gray-light !default;
 $badge-primary-bg:            $brand-primary !default;
