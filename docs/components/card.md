@@ -596,10 +596,8 @@ Need a set of equal width and height cards that aren't attached to one another? 
 </div>
 {% endexample %}
 
-## Columns
 Just like with card groups, card footers in decks will automatically line up.
 
-Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. Cards are ordered from top to bottom and left to right when wrapped in `.card-columns`.
 {% example html %}
 <div class="card-deck">
   <div class="card">
@@ -635,7 +633,11 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
 </div>
 {% endexample %}
 
-Only applies to small devices and above.
+### Card columns
+
+Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. Cards are built with CSS `column` properties instead of flexbox for easier alignment. Cards are ordered from top to bottom and left to right.
+
+**Heads up!** Your mileage with card columns may vary. To prevent cards breaking across columns, we must set them to `display: inline-block` as `column-break-inside: avoid` isn't a bulletproof solution yet.
 
 {% example html %}
 <div class="card-columns">
@@ -646,8 +648,8 @@ Only applies to small devices and above.
       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
     </div>
   </div>
-  <div class="card card-block">
-    <blockquote class="card-blockquote">
+  <div class="card p-3">
+    <blockquote class="card-block card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       <footer>
         <small class="text-muted">
@@ -664,7 +666,7 @@ Only applies to small devices and above.
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
-  <div class="card card-block card-inverse card-primary text-center">
+  <div class="card card-inverse card-primary p-3 text-center">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
       <footer>
@@ -674,15 +676,17 @@ Only applies to small devices and above.
       </footer>
     </blockquote>
   </div>
-  <div class="card card-block text-center">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="card text-center">
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
   </div>
   <div class="card">
     <img class="card-img img-fluid" data-src="holder.js/100px260/" alt="Card image">
   </div>
-  <div class="card card-block text-right">
+  <div class="card p-3 text-right">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       <footer>
@@ -692,10 +696,12 @@ Only applies to small devices and above.
       </footer>
     </blockquote>
   </div>
-  <div class="card card-block">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
   </div>
 </div>
 {% endexample %}
