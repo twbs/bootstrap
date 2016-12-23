@@ -121,24 +121,6 @@ module.exports = function (grunt) {
       }
     },
 
-    uglify: {
-      options: {
-        compress: {
-          warnings: false
-        },
-        mangle: true,
-        preserveComments: /^!|@preserve|@license|@cc_on/i
-      },
-      core: {
-        src: '<%= concat.bootstrap.dest %>',
-        dest: 'dist/js/<%= pkg.name %>.min.js'
-      },
-      docsJs: {
-        src: configBridge.paths.docsJs,
-        dest: 'docs/assets/js/docs.min.js'
-      }
-    },
-
     qunit: {
       options: {
         inject: 'js/tests/unit/phantom.js'
@@ -250,6 +232,12 @@ module.exports = function (grunt) {
       },
       'scss-lint-docs': {
         command: 'npm run scss-lint-docs'
+      },
+      uglify: {
+        command: 'npm run uglify'
+      },
+      'uglify-docs': {
+        command: 'npm run uglify-docs'
       }
     },
 
@@ -335,7 +323,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'uglify:core']);
+  grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'exec:uglify']);
 
   grunt.registerTask('test-scss', ['exec:scss-lint']);
 
@@ -358,7 +346,7 @@ module.exports = function (grunt) {
   // Docs task.
   grunt.registerTask('docs-css', ['exec:clean-css-docs', 'exec:postcss-docs']);
   grunt.registerTask('lint-docs-css', ['exec:scss-lint-docs']);
-  grunt.registerTask('docs-js', ['uglify:docsJs']);
+  grunt.registerTask('docs-js', ['exec:uglify-docs']);
   grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs']);
   grunt.registerTask('docs-github', ['jekyll:github']);
 

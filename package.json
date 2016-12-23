@@ -27,6 +27,8 @@
     "postcss-docs": "postcss --config grunt/postcss.js --no-map --replace docs/assets/css/docs.min.css && postcss --config grunt/postcss.js --no-map --replace docs/examples/**/*.css",
     "scss-lint": "bundle exec scss-lint --config scss/.scss-lint.yml --exclude scss/_normalize.scss scss/*.scss",
     "scss-lint-docs": "bundle exec scss-lint --config scss/.scss-lint.yml --exclude docs/assets/scss/docs.scss docs/assets/scss/*.scss",
+    "uglify": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
+    "uglify-docs": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output docs/assets/js/docs.min.js docs/assets/js/vendor/*.js docs/assets/js/src/application.js",
     "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
     "test": "npm run eslint && npm run jscs && grunt test"
   },
@@ -62,7 +64,6 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-qunit": "^1.2.0",
     "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-exec": "^1.0.1",
     "grunt-html": "^8.0.2",
@@ -78,7 +79,8 @@
     "postcss-flexbugs-fixes": "^2.0.0",
     "shelljs": "^0.7.4",
     "shx": "^0.1.4",
-    "time-grunt": "^1.4.0"
+    "time-grunt": "^1.4.0",
+    "uglify-js": "^2.7.5"
   },
   "engines": {
     "node": ">=4"

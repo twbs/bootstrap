@@ -644,12 +644,6 @@
       "dev": true,
       "optional": true
     },
-    "browserify-zlib": {
-      "version": "0.1.4",
-      "from": "browserify-zlib@>=0.1.4 <0.2.0",
-      "resolved": "https://registry.npmjs.org/browserify-zlib/-/browserify-zlib-0.1.4.tgz",
-      "dev": true
-    },
     "browserslist": {
       "version": "1.4.0",
       "from": "browserslist@>=1.4.0 <1.5.0",
@@ -1789,12 +1783,6 @@
         }
       }
     },
-    "grunt-contrib-uglify": {
-      "version": "2.0.0",
-      "from": "grunt-contrib-uglify@>=2.0.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/grunt-contrib-uglify/-/grunt-contrib-uglify-2.0.0.tgz",
-      "dev": true
-    },
     "grunt-contrib-watch": {
       "version": "1.0.0",
       "from": "grunt-contrib-watch@>=1.0.0 <2.0.0",
@@ -1913,12 +1901,6 @@
       "version": "0.3.0",
       "from": "grunt-stamp@>=0.3.0 <0.4.0",
       "resolved": "https://registry.npmjs.org/grunt-stamp/-/grunt-stamp-0.3.0.tgz",
-      "dev": true
-    },
-    "gzip-size": {
-      "version": "1.0.0",
-      "from": "gzip-size@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/gzip-size/-/gzip-size-1.0.0.tgz",
       "dev": true
     },
     "har-validator": {
@@ -2643,20 +2625,6 @@
       "resolved": "https://registry.npmjs.org/map-obj/-/map-obj-1.0.1.tgz",
       "dev": true
     },
-    "maxmin": {
-      "version": "1.1.0",
-      "from": "maxmin@>=1.1.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/maxmin/-/maxmin-1.1.0.tgz",
-      "dev": true,
-      "dependencies": {
-        "pretty-bytes": {
-          "version": "1.0.4",
-          "from": "pretty-bytes@>=1.0.0 <2.0.0",
-          "resolved": "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-1.0.4.tgz",
-          "dev": true
-        }
-      }
-    },
     "media-typer": {
       "version": "0.3.0",
       "from": "media-typer@0.3.0",
@@ -2987,12 +2955,6 @@
       "version": "1.0.1",
       "from": "package@>=1.0.0 <1.2.0",
       "resolved": "https://registry.npmjs.org/package/-/package-1.0.1.tgz",
-      "dev": true
-    },
-    "pako": {
-      "version": "0.2.9",
-      "from": "pako@>=0.2.0 <0.3.0",
-      "resolved": "https://registry.npmjs.org/pako/-/pako-0.2.9.tgz",
       "dev": true
     },
     "parse-glob": {
@@ -3957,7 +3919,7 @@
     },
     "uglify-js": {
       "version": "2.7.5",
-      "from": "uglify-js@>=2.7.0 <2.8.0",
+      "from": "uglify-js@latest",
       "resolved": "https://registry.npmjs.org/uglify-js/-/uglify-js-2.7.5.tgz",
       "dev": true,
       "dependencies": {
@@ -3991,12 +3953,6 @@
       "version": "1.0.0",
       "from": "unpipe@>=1.0.0 <1.1.0",
       "resolved": "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz",
-      "dev": true
-    },
-    "uri-path": {
-      "version": "1.0.0",
-      "from": "uri-path@>=1.0.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/uri-path/-/uri-path-1.0.0.tgz",
       "dev": true
     },
     "user-home": {
