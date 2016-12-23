@@ -489,11 +489,13 @@ In need of a colored card, but not the hefty background colors they bring? Repla
 </div>
 {% endexample %}
 
-## Groups
+## Card layout
+
+In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards. For the time being, **these layout options are not yet responsive**.
+
+### Card groups
 
 Use card groups to render cards as a single, attached element with equal width and height columns. Card groups use `display: flex;` to achieve their uniform sizing.
-
-Only applies to small devices and above.
 
 {% example html %}
 <div class="card-group">
@@ -524,9 +526,8 @@ Only applies to small devices and above.
 </div>
 {% endexample %}
 
-## Decks
+When using card groups with footers, their content will automatically line up.
 
-Need a set of equal width and height cards that aren't attached to one another? Use card decks. By default, card decks require two wrapping elements: `.card-deck-wrapper` and a `.card-deck`. We use table styles for the sizing and the gutters on `.card-deck`. The `.card-deck-wrapper` is used to negative margin out the `border-spacing` on the `.card-deck`.
 
 Only applies to small devices and above.
 
