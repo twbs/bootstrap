@@ -33,38 +33,39 @@ Below is an example of a basic card with mixed content and a fixed width. Cards 
 
 ## Content types
 
-Cards support a wide variety of content, including images, text, list groups, links, and more. Mix and match multiple content types to create the card you need.
+Cards support a wide variety of content, including images, text, list groups, links, and more. Below are examples of what's supported.
+
+### Blocks
+
+The building block of a card is the `.card-block`. Use it whenever you need a padded section within a card.
 
 {% example html %}
 <div class="card">
-  <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
+  <div class="card-block">
+    This is some text within a card block.
+  </div>
+</div>
+{% endexample %}
+
+### Titles, text, and links
+
+Card titles are used by adding `.card-title` to a `<h*>` tag. In the same way, links are added and placed next to each other by adding `.card-link` to  a `<a>` tag.
+
+Subtitles are used by adding a `.card-subtitle` to an `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
+
+{% example html %}
+<div class="card">
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-block">
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
   </div>
 </div>
 {% endexample %}
 
-Lists can be added to a card by adding a list group.
-
-{% example html %}
-<div class="card">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-</div>
-{% endexample %}
+### Images
 
 `.card-img-top` places an image to the top of the card. With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
 
@@ -77,96 +78,44 @@ Lists can be added to a card by adding a list group.
 </div>
 {% endexample %}
 
-Card titles are used by adding `.card-title` to a `<h*>` tag. In the same way, links are added and placed next to each other by adding `.card-link` to  a `<a>` tag.
+### List groups
 
-{% example html %}
-<div class="card card-block">
-  <h4 class="card-title">Card title</h4>
-  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  <a href="#" class="card-link">Card link</a>
-  <a href="#" class="card-link">Another link</a>
-</div>
-{% endexample %}
-
-Subtitles are used by adding a `.card-subtitle` to an `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
-
-The multiple content types can be easily combined to create the card you need. See below for an example.
+Create lists of content in a card with a flush list group.
 
 {% example html %}
 <div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
+{% endexample %}
+
+### Kitchen sink
+
+Mix and match multiple content types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
-    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-  </div>
-  <img data-src="holder.js/100px180/?text=Image" alt="Card image">
-  <div class="card-block">
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-block">
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
   </div>
 </div>
 {% endexample %}
 
-## Sizing
-
-Constrain the width of cards via custom CSS, our predefined grid classes, or with custom styles using our grid mixins.
-
-Using the grid:
-
-{% example html %}
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card card-block">
-      <h3 class="card-title">Special title treatment</h3>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card card-block">
-      <h3 class="card-title">Special title treatment</h3>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
-{% endexample %}
-
-Using custom widths:
-
-{% example html %}
-<div class="card card-block" style="width: 18rem;">
-  <h3 class="card-title">Special title treatment</h3>
-  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-  <a href="#" class="btn btn-primary">Go somewhere</a>
-</div>
-{% endexample %}
-
-## Text alignment
-
-You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.baseurl }}/utilities/typography/#text-alignment).
-
-{% example html %}
-<div class="card card-block">
-  <h4 class="card-title">Special title treatment</h4>
-  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-  <a href="#" class="btn btn-primary">Go somewhere</a>
-</div>
-
-<div class="card card-block text-center">
-  <h4 class="card-title">Special title treatment</h4>
-  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-  <a href="#" class="btn btn-primary">Go somewhere</a>
-</div>
-
-<div class="card card-block text-right">
-  <h4 class="card-title">Special title treatment</h4>
-  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-  <a href="#" class="btn btn-primary">Go somewhere</a>
-</div>
-{% endexample %}
-
-## Header and footer
+### Header and footer
 
 Add an optional header and/or footer within a card.
 
