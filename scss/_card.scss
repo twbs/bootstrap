@@ -280,7 +280,7 @@
 
 @include media-breakpoint-up(sm) {
   .card-columns {
-    column-count: 3;
+    column-count: $card-columns-count;
     column-gap: $card-columns-gap;
 
     .card {
