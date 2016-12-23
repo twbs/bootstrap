@@ -487,6 +487,7 @@ $custom-radio-checked-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3C
 $custom-select-padding-x:          .75rem  !default;
 $custom-select-padding-y:          .375rem !default;
 $custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
+$custom-select-line-height:         $input-line-height !default;
 $custom-select-color:               $input-color !default;
 $custom-select-disabled-color:      $gray-light !default;
 $custom-select-bg:            $white !default;
