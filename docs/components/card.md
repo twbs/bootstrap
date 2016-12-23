@@ -242,6 +242,35 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
 </div>
 {% endexample %}
 
+## Text alignment
+
+You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.baseurl }}/utilities/typography/#text-alignment).
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <div class="card-block">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<div class="card text-center" style="width: 20rem;">
+  <div class="card-block">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<div class="card text-right" style="width: 20rem;">
+  <div class="card-block">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endexample %}
 {% example html %}
 <div class="card text-center">
   <div class="card-header">
