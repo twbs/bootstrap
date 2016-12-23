@@ -285,7 +285,7 @@
 
     .card {
       display: inline-block; // Don't let them vertically span multiple columns
-      width: 100%; // Don't let them exceed the column width
+      width: 100%; // Don't let their width change
       margin-bottom: $card-columns-margin;
     }
   }
