@@ -21,15 +21,21 @@ The `.pos-f-t` class can be used to easily position elements at the top of the v
 
 ## Width and height
 
-Easily make an element as wide or as tall as its parent using the `.w-100` and `.h-100` utility classes.
+Easily make an element as wide or as tall (relative to its parent) our width and height utilities. Includes support for `25%`, `50%`, `75%`, and `100%`.
 
 {% example html %}
-<img class="w-100" data-src="holder.js/200px100?text=Width%20%3D%20100%25" alt="Width 100%">
+<div class="w-25 p-3" style="background-color: #eee;">Width 25%</div>
+<div class="w-50 p-3" style="background-color: #eee;">Width 50%</div>
+<div class="w-75 p-3" style="background-color: #eee;">Width 75%</div>
+<div class="w-100 p-3" style="background-color: #eee;">Width 100%</div>
 {% endexample %}
 
 {% example html %}
 <div style="height: 100px; background-color: rgba(255,0,0,0.1);">
-  <div class="h-100" style="width: 100px; background-color: rgba(0,0,255,0.1);">Full height</div>
+  <div class="h-25 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 25%</div>
+  <div class="h-50 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 50%</div>
+  <div class="h-75 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 75%</div>
+  <div class="h-100 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 100%</div>
 </div>
 {% endexample %}
 
