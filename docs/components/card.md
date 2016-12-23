@@ -364,7 +364,11 @@ Turn an image into a card background and overlay your card's text. Depending on 
 </div>
 {% endexample %}
 
-## Inverted text
+## Card styles
+
+Cards include various options for customizing their backgrounds, borders, and color.
+
+### Inverted text
 
 By default, cards use dark text and assume a light background. You can reverse that by toggling the `color` of text within, as well as that of the card's subcomponents, with `.card-inverse`. Then, specify a dark `background-color` and `border-color` to go with it.
 
@@ -380,7 +384,7 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
 </div>
 {% endexample %}
 
-## Background variants
+### Background variants
 
 Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-inverse`.**
 
@@ -430,7 +434,7 @@ Cards include their own variant classes for quickly changing the `background-col
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
-## Outline variants
+### Outline cards
 
 In need of a colored card, but not the hefty background colors they bring? Replace the default modifier classes with the `.card-outline-*` ones to style just the `border-color` of a card.
 
