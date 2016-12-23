@@ -3,13 +3,13 @@
 // Requires one of the contextual, color modifier classes for `color` and
 // `background-color`.
 
-.tag {
+.badge {
   display: inline-block;
-  padding: $tag-padding-y $tag-padding-x;
-  font-size: $tag-font-size;
-  font-weight: $tag-font-weight;
+  padding: $badge-padding-y $badge-padding-x;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
   line-height: 1;
-  color: $tag-color;
+  color: $badge-color;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -22,16 +22,16 @@
 }
 
 // Quick fix for tags in buttons
-.btn .tag {
+.btn .badge {
   position: relative;
   top: -1px;
 }
 
 // scss-lint:disable QualifyingElement
 // Add hover effects, but only for links
-a.tag {
+a.badge {
   @include hover-focus {
-    color: $tag-link-hover-color;
+    color: $badge-link-hover-color;
     text-decoration: none;
     cursor: pointer;
   }
@@ -42,36 +42,36 @@ a.tag {
 //
 // Make them extra rounded with a modifier to replace v3's badges.
 
-.tag-pill {
-  padding-right: $tag-pill-padding-x;
-  padding-left: $tag-pill-padding-x;
-  @include border-radius($tag-pill-border-radius);
+.badge-pill {
+  padding-right: $badge-pill-padding-x;
+  padding-left: $badge-pill-padding-x;
+  @include border-radius($badge-pill-border-radius);
 }
 
 // Colors
 //
 // Contextual variations (linked tags get darker on :hover).
 
-.tag-default {
-  @include tag-variant($tag-default-bg);
+.badge-default {
+  @include badge-variant($badge-default-bg);
 }
 
-.tag-primary {
-  @include tag-variant($tag-primary-bg);
+.badge-primary {
+  @include badge-variant($badge-primary-bg);
 }
 
-.tag-success {
-  @include tag-variant($tag-success-bg);
+.badge-success {
+  @include badge-variant($badge-success-bg);
 }
 
-.tag-info {
-  @include tag-variant($tag-info-bg);
+.badge-info {
+  @include badge-variant($badge-info-bg);
 }
 
-.tag-warning {
-  @include tag-variant($tag-warning-bg);
+.badge-warning {
+  @include badge-variant($badge-warning-bg);
 }
 
-.tag-danger {
-  @include tag-variant($tag-danger-bg);
+.badge-danger {
+  @include badge-variant($badge-danger-bg);
 }

@@ -1,5 +1,5 @@
 $(function () {
-  'use strict';
+  'use strict'
 
   QUnit.module('button plugin')
 
@@ -70,6 +70,26 @@ $(function () {
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
     $inner.trigger('click')
     assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
+  })
+
+  QUnit.test('should trigger input change event when toggled button has input field', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
+      + '<label class="btn btn-primary">'
+      + '<input type="radio" id="radio" autocomplete="off">Radio'
+      + '</label>'
+      + '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    $group.find('input').on('change', function (e) {
+      e.preventDefault()
+      assert.ok(true, 'change event fired')
+      done()
+    })
+
+    $group.find('label').trigger('click')
   })
 
   QUnit.test('should check for closest matching toggle', function (assert) {

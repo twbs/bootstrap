@@ -6,7 +6,7 @@ group: utilities
 
 Use `.d-block`, `.d-inline`, or `.d-inline-block` to simply set an element's [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) to `block`, `inline`, or `inline-block` (respectively).
 
-To make an element `display: none`, use our [responsive utilities](../../layout/responsive-utilities/) instead.
+To make an element `display: none`, use our [responsive utilities]({{ site.baseurl }}/layout/responsive-utilities/) instead.
 
 {% example html %}
 <div class="d-inline bg-success">Inline</div>

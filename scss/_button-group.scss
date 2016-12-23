@@ -10,6 +10,7 @@
   > .btn {
     position: relative;
     float: left;
+    margin-bottom: 0;
 
     // Bring the "active" button to the front
     &:focus,

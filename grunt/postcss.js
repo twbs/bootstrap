@@ -12,7 +12,7 @@ module.exports = {
     browsers: [
       //
       // Official browser support policy:
-      // http://v4-alpha.getbootstrap.com/getting-started/browsers-devices/#supported-browsers
+      // https://v4-alpha.getbootstrap.com/getting-started/browsers-devices/#supported-browsers
       //
       'Chrome >= 35', // Exact version number here is kinda arbitrary
       // Rather than using Autoprefixer's native "Firefox ESR" version specifier string,
@@ -29,7 +29,7 @@ module.exports = {
       // For example, at the time of writing, Edge 20 on an up-to-date system uses EdgeHTML 12.
       // See also https://github.com/Fyrd/caniuse/issues/1928
       'Edge >= 12',
-      'Explorer >= 9',
+      'Explorer >= 10',
       // Out of leniency, we prefix these 1 version further back than the official policy.
       'iOS >= 8',
       'Safari >= 8',

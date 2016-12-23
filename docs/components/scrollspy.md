@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Scrollspy
+description: Documentation and examples for the scrollspy plugin with Bootstrap's navigation components.
 group: components
 ---
 
@@ -14,8 +15,8 @@ group: components
 The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.
 
 <div class="bd-example">
-  <nav id="navbar-example2" class="navbar navbar-default">
-    <h3 class="navbar-brand">Project Name</h3>
+  <nav id="navbar-example2" class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav nav-pills">
       <li class="nav-item"><a class="nav-link" href="#fat">@fat</a></li>
       <li class="nav-item"><a class="nav-link" href="#mdo">@mdo</a></li>

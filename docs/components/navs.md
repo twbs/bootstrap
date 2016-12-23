@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Navs
+description: Documentation and examples for how to use Bootstrap's included navigation components.
 group: components
 ---
 
@@ -15,7 +16,9 @@ Navigation available in Bootstrap share general markup and styles, from the base
 
 If you are using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
 
-## Base nav
+## Examples
+
+### Base nav
 
 Roll your own navigation style by extending the base `.nav` component. All Bootstrap's nav components are built on top of this by specifying additional styles. Includes styles for the disabled state, but **not the active state**.
 
@@ -47,7 +50,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 </nav>
 {% endexample %}
 
-## Inline
+### Inline
 
 Space out nav links in a horizontal band with `.nav-inline`. Longer series of links will wrap to a new line.
 
@@ -79,7 +82,7 @@ The same works for a navigation built with lists.
 </ul>
 {% endexample %}
 
-## Tabs
+### Tabs
 
 Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [tab JavaScript plugin](#javascript-behavior).
 
@@ -100,7 +103,7 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
 </ul>
 {% endexample %}
 
-## Pills
+### Pills
 
 Take that same HTML, but use `.nav-pills` instead:
 
@@ -209,6 +212,88 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 </ul>
 {% endexample %}
 
+## Justified nav
+
+Create equal-width links in a navigation component by adding `.nav-justified` to a `.nav` component. This works with the inline, tab, and pill variants.
+
+Using the inline nav:
+
+{% example html %}
+<ul class="nav nav-inline nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
+You can also use it on tabs:
+
+{% example html %}
+<ul class="nav nav-tabs nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
+And pills, too:
+
+{% example html %}
+<ul class="nav nav-pills nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
+## Centered nav
+
+Using our [flexbox utilities]({{ site.baseurl }}/layout/grid/#horizontal-alignment), you can also customize your navigation components to change the alignment of nav items. For example, here are center aligned links on the inline nav component.
+
+{% example html %}
+<ul class="nav nav-inline d-flex flex-items-center">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
 ## JavaScript behavior
 
 Use the tab JavaScript plugin—include it individually or through the compiled `bootstrap.js` file—to extend our navigational tabs and pills to create tabbable panes of local content, even via dropdown menus.
@@ -232,7 +317,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledBy="home-tab">
+    <div role="tabpanel" class="tab-pane fade show active" id="home" aria-labelledBy="home-tab">
       <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledBy="profile-tab">
@@ -301,11 +386,11 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 
 ### Fade effect
 
-To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must also have `.in` to make the initial content visible.
+To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must also have `.show` to make the initial content visible.
 
 {% highlight html %}
 <div class="tab-content">
-  <div class="tab-pane fade in active" id="home" role="tabpanel">...</div>
+  <div class="tab-pane fade show active" id="home" role="tabpanel">...</div>
   <div class="tab-pane fade" id="profile" role="tabpanel">...</div>
   <div class="tab-pane fade" id="messages" role="tabpanel">...</div>
   <div class="tab-pane fade" id="settings" role="tabpanel">...</div>

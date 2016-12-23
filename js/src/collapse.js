@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.4): collapse.js
+ * Bootstrap (v4.0.0-alpha.5): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Collapse = (($) => {
    */
 
   const NAME                = 'collapse'
-  const VERSION             = '4.0.0-alpha.4'
+  const VERSION             = '4.0.0-alpha.5'
   const DATA_KEY            = 'bs.collapse'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -44,7 +44,7 @@ const Collapse = (($) => {
   }
 
   const ClassName = {
-    IN         : 'in',
+    SHOW       : 'show',
     COLLAPSE   : 'collapse',
     COLLAPSING : 'collapsing',
     COLLAPSED  : 'collapsed'
@@ -56,7 +56,7 @@ const Collapse = (($) => {
   }
 
   const Selector = {
-    ACTIVES     : '.panel > .in, .panel > .collapsing',
+    ACTIVES     : '.card > .show, .card > .collapsing',
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
@@ -104,7 +104,7 @@ const Collapse = (($) => {
     // public
 
     toggle() {
-      if ($(this._element).hasClass(ClassName.IN)) {
+      if ($(this._element).hasClass(ClassName.SHOW)) {
         this.hide()
       } else {
         this.show()
@@ -112,8 +112,11 @@ const Collapse = (($) => {
     }
 
     show() {
-      if (this._isTransitioning ||
-        $(this._element).hasClass(ClassName.IN)) {
+      if (this._isTransitioning) {
+        throw new Error('Collapse is transitioning')
+      }
+
+      if ($(this._element).hasClass(ClassName.SHOW)) {
         return
       }
 
@@ -121,7 +124,7 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray($(Selector.ACTIVES))
+        actives = $.makeArray($(this._parent).find(Selector.ACTIVES))
         if (!actives.length) {
           actives = null
         }
@@ -134,7 +137,7 @@ const Collapse = (($) => {
         }
       }
 
-      let startEvent = $.Event(Event.SHOW)
+      const startEvent = $.Event(Event.SHOW)
       $(this._element).trigger(startEvent)
       if (startEvent.isDefaultPrevented()) {
         return
@@ -147,7 +150,7 @@ const Collapse = (($) => {
         }
       }
 
-      let dimension = this._getDimension()
+      const dimension = this._getDimension()
 
       $(this._element)
         .removeClass(ClassName.COLLAPSE)
@@ -164,11 +167,11 @@ const Collapse = (($) => {
 
       this.setTransitioning(true)
 
-      let complete = () => {
+      const complete = () => {
         $(this._element)
           .removeClass(ClassName.COLLAPSING)
           .addClass(ClassName.COLLAPSE)
-          .addClass(ClassName.IN)
+          .addClass(ClassName.SHOW)
 
         this._element.style[dimension] = ''
 
@@ -182,8 +185,8 @@ const Collapse = (($) => {
         return
       }
 
-      let capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
-      let scrollSize           = `scroll${capitalizedDimension}`
+      const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
+      const scrollSize           = `scroll${capitalizedDimension}`
 
       $(this._element)
         .one(Util.TRANSITION_END, complete)
@@ -193,19 +196,22 @@ const Collapse = (($) => {
     }
 
     hide() {
-      if (this._isTransitioning ||
-        !$(this._element).hasClass(ClassName.IN)) {
+      if (this._isTransitioning) {
+        throw new Error('Collapse is transitioning')
+      }
+
+      if (!$(this._element).hasClass(ClassName.SHOW)) {
         return
       }
 
-      let startEvent = $.Event(Event.HIDE)
+      const startEvent = $.Event(Event.HIDE)
       $(this._element).trigger(startEvent)
       if (startEvent.isDefaultPrevented()) {
         return
       }
 
-      let dimension       = this._getDimension()
-      let offsetDimension = dimension === Dimension.WIDTH ?
+      const dimension       = this._getDimension()
+      const offsetDimension = dimension === Dimension.WIDTH ?
         'offsetWidth' : 'offsetHeight'
 
       this._element.style[dimension] = `${this._element[offsetDimension]}px`
@@ -215,7 +221,7 @@ const Collapse = (($) => {
       $(this._element)
         .addClass(ClassName.COLLAPSING)
         .removeClass(ClassName.COLLAPSE)
-        .removeClass(ClassName.IN)
+        .removeClass(ClassName.SHOW)
 
       this._element.setAttribute('aria-expanded', false)
 
@@ -227,7 +233,7 @@ const Collapse = (($) => {
 
       this.setTransitioning(true)
 
-      let complete = () => {
+      const complete = () => {
         this.setTransitioning(false)
         $(this._element)
           .removeClass(ClassName.COLLAPSING)
@@ -235,7 +241,7 @@ const Collapse = (($) => {
           .trigger(Event.HIDDEN)
       }
 
-      this._element.style[dimension] = 0
+      this._element.style[dimension] = ''
 
       if (!Util.supportsTransitionEnd()) {
         complete()
@@ -272,13 +278,13 @@ const Collapse = (($) => {
     }
 
     _getDimension() {
-      let hasWidth = $(this._element).hasClass(Dimension.WIDTH)
+      const hasWidth = $(this._element).hasClass(Dimension.WIDTH)
       return hasWidth ? Dimension.WIDTH : Dimension.HEIGHT
     }
 
     _getParent() {
-      let parent   = $(this._config.parent)[0]
-      let selector =
+      const parent   = $(this._config.parent)[0]
+      const selector =
         `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
       $(parent).find(selector).each((i, element) => {
@@ -293,7 +299,7 @@ const Collapse = (($) => {
 
     _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
-        let isOpen = $(element).hasClass(ClassName.IN)
+        const isOpen = $(element).hasClass(ClassName.SHOW)
         element.setAttribute('aria-expanded', isOpen)
 
         if (triggerArray.length) {
@@ -308,15 +314,15 @@ const Collapse = (($) => {
     // static
 
     static _getTargetFromElement(element) {
-      let selector = Util.getSelectorFromElement(element)
+      const selector = Util.getSelectorFromElement(element)
       return selector ? $(selector)[0] : null
     }
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let $this   = $(this)
-        let data    = $this.data(DATA_KEY)
-        let _config = $.extend(
+        const $this   = $(this)
+        let data      = $this.data(DATA_KEY)
+        const _config = $.extend(
           {},
           Default,
           $this.data(),
@@ -353,9 +359,9 @@ const Collapse = (($) => {
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault()
 
-    let target = Collapse._getTargetFromElement(this)
-    let data   = $(target).data(DATA_KEY)
-    let config = data ? 'toggle' : $(this).data()
+    const target = Collapse._getTargetFromElement(this)
+    const data   = $(target).data(DATA_KEY)
+    const config = data ? 'toggle' : $(this).data()
 
     Collapse._jQueryInterface.call($(target), config)
   })

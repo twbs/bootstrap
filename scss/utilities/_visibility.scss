@@ -3,7 +3,7 @@
 //
 
 .invisible {
-  visibility: hidden !important;
+  @include invisible();
 }
 
 // Responsive visibility utilities
