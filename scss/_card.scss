@@ -28,14 +28,6 @@
   margin-bottom: 0;
 }
 
-// .card-actions {
-//   padding: $card-spacer-y $card-spacer-x;
-
-//   .card-link + .card-link {
-//     margin-left: $card-spacer-x;
-//   }
-// }
-
 .card-link {
   @include hover {
     text-decoration: none;
