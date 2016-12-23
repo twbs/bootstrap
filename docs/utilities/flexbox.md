@@ -29,37 +29,6 @@ Responsive variations also exist for `.d-flex` and `.d-inline-flex`.
 - `.d{{ bp.abbr }}-flex`
 - `.d{{ bp.abbr }}-inline-flex`{% endfor %}
 
-<table class="table-responsive" hidden>
-  <thead>
-    <tr class="bg-faded">
-      <th>Class</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for bp in site.data.breakpoints %}
-    <tr>
-      <td>
-        <code>.d{{ bp.abbr }}-flex</code>
-      </td>
-      <td>
-        Sets <code>display: flex;</code> on viewports {{ bp.min-width }} wide and up
-      </td>
-    </tr>
-    {% endfor %}
-    {% for bp in site.data.breakpoints %}
-    <tr>
-      <td>
-        <code>.d{{ bp.abbr }}-inline-flex</code>
-      </td>
-      <td>
-        Sets <code>display: inline-flex;</code> on viewports {{ bp.min-width }} wide and up
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
 ## Direction
 
 Set the direction of flex items in a flex container with direction utilities. In most cases you can omit the horizontal class here as the browser default is `row`. However, you may encounter situations where you needed to explicitly set this value (like responsive layouts).
@@ -89,37 +58,6 @@ Responsive variations also exist for `.flex-row` and `.flex-column`.
 {% for bp in site.data.breakpoints %}
 - `.flex{{ bp.abbr }}-row`
 - `.flex{{ bp.abbr }}-column`{% endfor %}
-
-<table class="table-responsive" hidden>
-  <thead>
-    <tr class="bg-faded">
-      <th>Class</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for bp in site.data.breakpoints %}
-    <tr>
-      <td>
-        <code>.flex{{ bp.abbr }}-row</code>
-      </td>
-      <td>
-        Sets <code>flex-direction: row;</code> on viewports {{ bp.min-width }} wide and up
-      </td>
-    </tr>
-    {% endfor %}
-    {% for bp in site.data.breakpoints %}
-    <tr>
-      <td>
-        <code>.flex{{ bp.abbr }}-column</code>
-      </td>
-      <td>
-        Sets <code>flex-direction: column;</code> on viewports {{ bp.min-width }} wide and up
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
 
 ## Wrap
 
@@ -170,34 +108,3 @@ Responsive variations also exist for `.flex-nowrap` and `.flex-wrap`.
 {% for bp in site.data.breakpoints %}
 - `.flex{{ bp.abbr }}-nowrap`
 - `.flex{{ bp.abbr }}-wrap`{% endfor %}
-
-<table class="table-responsive" hidden>
-  <thead>
-    <tr class="bg-faded">
-      <th>Class</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for bp in site.data.breakpoints %}
-    <tr>
-      <td>
-        <code>.flex{{ bp.abbr }}-nowrap</code>
-      </td>
-      <td>
-        Sets <code>flex-wrap: nowrap;</code> on viewports {{ bp.min-width }} wide and up
-      </td>
-    </tr>
-    {% endfor %}
-    {% for bp in site.data.breakpoints %}
-    <tr>
-      <td>
-        <code>.flex{{ bp.abbr }}-wrap</code>
-      </td>
-      <td>
-        Sets <code>flex-wrap: wrap;</code> on viewports {{ bp.min-width }} wide and up
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
