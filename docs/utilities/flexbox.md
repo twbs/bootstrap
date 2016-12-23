@@ -65,21 +65,21 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
 
 {% example html %}
 <div class="d-flex flex-nowrap bd-highlight">
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
-<div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
 </div>
 {% endexample %}
 
