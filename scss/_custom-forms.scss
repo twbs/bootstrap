@@ -131,8 +131,6 @@
 // Replaces the browser default select with a custom one, mostly pulled from
 // http://primercss.io.
 //
-// Includes hacks for IE9 (noted by ` \9`), which may apply to other versions of
-// IE, but not with any adverse affects.
 
 .custom-select {
   display: inline-block;
@@ -140,11 +138,9 @@
   $select-border-width: ($border-width * 2);
   height: calc(#{$input-height} - #{$select-border-width});
   padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
-  padding-right: $custom-select-padding-x \9;
   color: $custom-select-color;
   vertical-align: middle;
   background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
-  background-image: none \9;
   background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
   @include border-radius($custom-select-border-radius);

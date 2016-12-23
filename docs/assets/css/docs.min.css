@@ -28,11 +28,6 @@
   border: 1px solid #cdbfe3;
 }
 
-.bd-navbar {
-  padding-right: 0;
-  padding-left: 0;
-}
-
 .bd-navbar .navbar-nav .nav-link {
   color: #8e869d;
 }
@@ -51,22 +46,11 @@
   font-size: inherit;
 }
 
-@media (max-width: 767px) {
-  .bd-navbar .nav-link {
-    float: none;
-  }
-  .bd-navbar .nav-link + .nav-link {
-    margin-left: 0;
-  }
-}
-
 .bd-masthead {
   position: relative;
   padding: 3rem 15px 2rem;
   color: #cdbfe3;
   text-align: center;
-  background-image: -webkit-linear-gradient(315deg, #271b38, #563d7c, #7952b3);
-  background-image: -o-linear-gradient(315deg, #271b38, #563d7c, #7952b3);
   background-image: linear-gradient(135deg, #271b38, #563d7c, #7952b3);
 }
 
@@ -719,8 +703,15 @@
   margin-top: 2rem;
 }
 
-.bd-example .container {
-  width: auto;
+.bd-example .pos-f-t {
+  position: relative;
+  margin: -1rem;
+}
+
+@media (min-width: 576px) {
+  .bd-example .pos-f-t {
+    margin: -1.5rem;
+  }
 }
 
 .bd-example > .form-control + .form-control {
@@ -1538,19 +1529,13 @@
 .language-bash::before {
   color: #009;
   content: "$ ";
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .language-powershell::before {
   color: #009;
   content: "PM> ";
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .anchorjs-link {
@@ -1565,8 +1550,6 @@
 
 *:hover > .anchorjs-link {
   opacity: .75;
-  -webkit-transition: color .16s linear;
-  -o-transition: color .16s linear;
   transition: color .16s linear;
 }
 
@@ -1575,3 +1558,5 @@
   text-decoration: none;
   opacity: 1;
 }
+
+/*# sourceMappingURL=docs.min.css.map */

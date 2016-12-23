@@ -34,19 +34,6 @@ To caption a progress bar, simply add a `<div>` with your caption text, [align t
 <progress class="progress" value="100" max="100" aria-describedby="example-caption-5"></progress>
 {% endexample %}
 
-## IE9 support
-
-Internet Explorer 9 doesn't support the HTML5 `<progress>` element, but we can work around that.
-
-{% example html %}
-<div class="text-center" id="example-caption-6">Reticulating splines&hellip; 25%</div>
-<progress class="progress" value="25" max="100" aria-describedby="example-caption-6">
-  <div class="progress">
-    <span class="progress-bar" style="width: 25%;"></span>
-  </div>
-</progress>
-{% endexample %}
-
 ## Contextual alternatives
 
 Progress bars use some of the same button and alert classes for consistent styles.
@@ -74,7 +61,7 @@ Uses a gradient to create a striped effect.
 
 The striped gradient can also be animated. Add `.progress-animated` to `.progress` to animate the stripes right to left via CSS3 animations.
 
-**Animated progress bars do not work in IE9 and Opera 12** – as they don't support CSS3 animations – **nor in IE10+ and Microsoft Edge** – as they currently don't support CSS3 animations on the [`::-ms-fill` pseudo-element](https://msdn.microsoft.com/en-us/library/windows/apps/hh465757.aspx).
+**Animated progress bars don't work in Opera 12**—as they don't support CSS3 animations. They also **don't work in IE10+ and Microsoft Edge** as those browsers currently don't support CSS3 animations on the [`::-ms-fill` pseudo-element](https://msdn.microsoft.com/en-us/library/windows/apps/hh465757.aspx).
 
 <div class="bd-example">
   <progress class="progress progress-striped" value="25" max="100"></progress>
