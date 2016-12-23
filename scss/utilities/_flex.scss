@@ -60,9 +60,6 @@
     .align-content#{$infix}-around   { align-content: space-around !important; }
     .align-content#{$infix}-stretch  { align-content: stretch !important; }
 
-    // Item
-    .flex#{$infix}-auto { flex: 1 1 auto !important; }
-
     .align-self#{$infix}-auto        { align-self: auto !important; }
     .align-self#{$infix}-start       { align-self: flex-start !important; }
     .align-self#{$infix}-end         { align-self: flex-end !important; }
