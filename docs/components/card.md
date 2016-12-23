@@ -16,10 +16,12 @@ If you're familiar with Bootstrap 3, cards replace our old panels, wells, and th
 
 ## Example
 
-Cards require a small amount of markup and classes to provide you with as much control as possible. These classes and markup are flexible though and can typically be remixed and extended with ease. For example, if your card has no flush content like images, feel free to put the `.card-block` class on the `.card` element to consolidate your markup.
+Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization. Built with flexbox, they offer easy alignment and mix well with other Bootstrap components.
+
+Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of it's parent element. This is easily customized with our various [sizing options](#sizing).
 
 {% example html %}
-<div class="card">
+<div class="card" style="width: 20rem;">
   <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
