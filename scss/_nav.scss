@@ -96,49 +96,35 @@
   }
 }
 
-.nav-stacked {
-  .nav-item {
-    display: block;
-    float: none;
 
-    + .nav-item {
-      margin-top: $nav-item-margin;
-      margin-left: 0;
-    }
+//
+// Justified variants
+//
+
+.nav-fill {
+  .nav-item {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
+
+.nav-justified {
+  .nav-item {
+    flex: 1 1 100%;
+    text-align: center;
   }
 }
 
 
-//
 // Tabbable tabs
 //
-
 // Hide tabbable panes to start, show them when `.active`
+
 .tab-content {
   > .tab-pane {
     display: none;
   }
   > .active {
     display: block;
-  }
-}
-
-
-// Justified navigation
-//
-// Justified nav components are only built for flexbox mode in Bootstrap 4. In
-// previous versions, this component variation was limited to anchor-based nav
-// implementations--meaning it couldn't be used on button elements. This is due
-// to a longstanding Safari bug in responsive table styles.
-//
-// Using flexbox, we avoid that problem altogether at the cost of no default
-// justified navigation for default Bootstrap. Sorry, y'all <3.
-
-.nav-justified {
-  display: flex;
-
-  .nav-item {
-    flex: 1;
-    text-align: center;
   }
 }
