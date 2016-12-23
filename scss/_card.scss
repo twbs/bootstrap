@@ -195,17 +195,17 @@
   .card-deck {
     display: flex;
     flex-flow: row wrap;
-    margin-right: -$card-deck-margin;
-    margin-bottom: $card-spacer-y; // Margin balancing
-    margin-left: -$card-deck-margin;
 
     .card {
       display: flex;
       flex: 1 0 0;
       flex-direction: column;
-      margin-right: $card-deck-margin;
-      margin-bottom: 0; // Margin balancing
-      margin-left: $card-deck-margin;
+
+      // Selectively apply horizontal margins to cards to avoid doing the
+      // negative margin dance like our grid. This differs from the grid
+      // due to the use of margins as gutters instead of padding.
+      &:not(:first-child) { margin-left: $card-deck-margin; }
+      &:not(:last-child) { margin-right: $card-deck-margin; }
     }
   }
 }
