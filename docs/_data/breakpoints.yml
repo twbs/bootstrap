@@ -1,0 +1,29 @@
+- breakpoint: xs
+  abbr: ""
+  name: Extra small
+  min-width: 0px
+  container: ""
+
+- breakpoint: sm
+  abbr: -sm
+  name: Small
+  min-width: 576px
+  container: 540px
+
+- breakpoint: md
+  abbr: -md
+  name: Medium
+  min-width: 768px
+  container: 720px
+
+- breakpoint: lg
+  abbr: -lg
+  name: Large
+  min-width: 992px
+  container: 960px
+
+- breakpoint: xl
+  abbr: -xl
+  name: Extra large
+  min-width: 1200px
+  container: 1140px
