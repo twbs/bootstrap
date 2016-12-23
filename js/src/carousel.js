@@ -241,7 +241,6 @@ const Carousel = (($) => {
       if (/input|textarea/i.test(event.target.tagName)) {
         return
       }
-      event.preventDefault()
 
       switch (event.which) {
         case ARROW_LEFT_KEYCODE:
