@@ -271,6 +271,11 @@ You can quickly change the text alignment of any card—in its entirety or speci
   </div>
 </div>
 {% endexample %}
+
+## Navigation
+
+Add some navigation to a card's header (or block) with Bootstrap's [nav components]({{ site.baseurl }}/components/navs/).
+
 {% example html %}
 <div class="card text-center">
   <div class="card-header">
