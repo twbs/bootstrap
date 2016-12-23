@@ -43,6 +43,11 @@
   background-color: rgba(255,0,0,.1);
 }
 
+.bd-highlight {
+  background-color: rgba($bd-purple, .15);
+  border: 1px solid rgba($bd-purple, .15);
+}
+
 
 //
 // Container illustrations
