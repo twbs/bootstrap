@@ -175,9 +175,72 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
 </div>
 {% endexample %}
 
-## Header nav
+## Sizing
 
-Use Bootstrap's nav pills or tabs within a card header.
+Cards assume no specific `width` to start, so they'll be 100% wide unless otherwise stated. You can change this as needed with custom CSS, grid classes, grid Sass mixins, or utilities.
+
+### Using grid markup
+
+Using the grid, wrap cards in columns and rows as needed.
+
+{% example html %}
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Special title treatment</h3>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Special title treatment</h3>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endexample %}
+
+### Using utilities
+
+Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/sizing-and-positioning/#width-and-height) to quickly set a card's width.
+
+{% example html %}
+<div class="card w-75">
+  <div class="card-block">
+    <h3 class="card-title">Card title</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Button</a>
+  </div>
+</div>
+
+<div class="card w-50">
+  <div class="card-block">
+    <h3 class="card-title">Card title</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Button</a>
+  </div>
+</div>
+{% endexample %}
+
+### Using custom CSS
+
+Use custom CSS in your stylesheets or as inline styles to set a width.
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <div class="card-block">
+    <h3 class="card-title">Special title treatment</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endexample %}
 
 {% example html %}
 <div class="card text-center">
