@@ -4,13 +4,15 @@
 // `<nav>`s or `<ul>`s.
 
 .nav {
+  display: flex;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
 }
 
 .nav-link {
-  display: inline-block;
+  display: block;
+  padding: $nav-link-padding;
 
   @include hover-focus {
     text-decoration: none;
@@ -29,41 +31,18 @@
 }
 
 
-// Nav inline
-
-.nav-inline {
-  .nav-item {
-    display: inline-block;
-  }
-
-  .nav-item + .nav-item,
-  .nav-link + .nav-link {
-    margin-left: $nav-item-inline-spacer;
-  }
-}
-
-
 //
 // Tabs
 //
 
 .nav-tabs {
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
-  @include clearfix();
 
   .nav-item {
-    float: left;
-    // Make the list-items overlay the bottom border
     margin-bottom: -$nav-tabs-border-width;
-
-    + .nav-item {
-      margin-left: $nav-item-margin;
-    }
   }
 
   .nav-link {
-    display: block;
-    padding: $nav-link-padding;
     border: $nav-tabs-border-width solid transparent;
     @include border-top-radius($nav-tabs-border-radius);
 
@@ -103,19 +82,7 @@
 //
 
 .nav-pills {
-  @include clearfix();
-
-  .nav-item {
-    float: left;
-
-    + .nav-item {
-      margin-left: $nav-item-margin;
-    }
-  }
-
   .nav-link {
-    display: block;
-    padding: $nav-link-padding;
     @include border-radius($nav-pills-border-radius);
   }
 
