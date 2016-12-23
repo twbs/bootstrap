@@ -322,9 +322,13 @@ Add some navigation to a card's header (or block) with Bootstrap's [nav componen
 </div>
 {% endexample %}
 
-## Image caps
+## Images
 
-Similar to headers and footers, cards include top and bottom image caps.
+Cards include a few options for working with images. Choose from appending "image caps" at either end of a card, overlaying images with card content, or simply embedding the image in a card.
+
+### Image caps
+
+Similar to headers and footers, cards can include top and bottom "image caps"—images at the top or bottom of a card.
 
 {% example html %}
 <div class="card">
@@ -345,7 +349,7 @@ Similar to headers and footers, cards include top and bottom image caps.
 </div>
 {% endexample %}
 
-## Image overlays
+### Image overlays
 
 Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need `.card-inverse` (see below).
 
