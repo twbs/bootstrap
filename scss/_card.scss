@@ -4,14 +4,17 @@
 
 .card {
   position: relative;
-  display: block;
-  margin-bottom: $card-spacer-y;
+  display: flex;
+  flex-direction: column;
   background-color: $card-bg;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
 }
 
 .card-block {
+  // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+  // as much space as possible, ensuring footers are aligned to the bottom.
+  flex: 1 1 auto;
   padding: $card-spacer-x;
 }
 
@@ -27,14 +30,6 @@
 .card-text:last-child {
   margin-bottom: 0;
 }
-
-// .card-actions {
-//   padding: $card-spacer-y $card-spacer-x;
-
-//   .card-link + .card-link {
-//     margin-left: $card-spacer-x;
-//   }
-// }
 
 .card-link {
   @include hover {
@@ -200,21 +195,17 @@
   .card-deck {
     display: flex;
     flex-flow: row wrap;
-    margin-right: -$card-deck-margin;
-    margin-bottom: $card-spacer-y; // Margin balancing
-    margin-left: -$card-deck-margin;
 
     .card {
       display: flex;
       flex: 1 0 0;
       flex-direction: column;
-      margin-right: $card-deck-margin;
-      margin-bottom: 0; // Margin balancing
-      margin-left: $card-deck-margin;
-    }
 
-    .card-block {
-      flex-grow: 1;
+      // Selectively apply horizontal margins to cards to avoid doing the
+      // negative margin dance like our grid. This differs from the grid
+      // due to the use of margins as gutters instead of padding.
+      &:not(:first-child) { margin-left: $card-deck-margin; }
+      &:not(:last-child) { margin-right: $card-deck-margin; }
     }
   }
 }
@@ -275,17 +266,18 @@
 
 
 //
-// Card
+// Columns
 //
 
 @include media-breakpoint-up(sm) {
   .card-columns {
-    column-count: 3;
-    column-gap: $card-columns-sm-up-column-gap;
+    column-count: $card-columns-count;
+    column-gap: $card-columns-gap;
 
     .card {
       display: inline-block; // Don't let them vertically span multiple columns
-      width: 100%; // Don't let them exceed the column width
+      width: 100%; // Don't let their width change
+      margin-bottom: $card-columns-margin;
     }
   }
 }

@@ -707,9 +707,11 @@ $card-link-hover-color:    $white !default;
 
 $card-img-overlay-padding: 1.25rem !default;
 
-$card-deck-margin:         .625rem !default;
+$card-deck-margin:          ($grid-gutter-width-base / 2) !default;
 
-$card-columns-sm-up-column-gap: 1.25rem !default;
+$card-columns-count:        3 !default;
+$card-columns-gap:          1.25rem !default;
+$card-columns-margin:       $card-spacer-y !default;
 
 
 // 22. Tooltips
