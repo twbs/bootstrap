@@ -11,27 +11,6 @@
     .flex#{$infix}-last      { order: 1; }
     .flex#{$infix}-unordered { order: 0; }
 
-    // Alignment for every item
-    .flex-items#{$infix}-top    { align-items: flex-start; }
-    .flex-items#{$infix}-middle { align-items: center; }
-    .flex-items#{$infix}-bottom { align-items: flex-end; }
-
-    // Alignment per item
-    .flex#{$infix}-top    { align-self: flex-start; }
-    .flex#{$infix}-middle { align-self: center; }
-    .flex#{$infix}-bottom { align-self: flex-end; }
-
-    // Horizontal alignment of item
-    .flex-items#{$infix}-left    { justify-content: flex-start; }
-    .flex-items#{$infix}-center  { justify-content: center; }
-    .flex-items#{$infix}-right   { justify-content: flex-end; }
-    .flex-items#{$infix}-around  { justify-content: space-around; }
-    .flex-items#{$infix}-between { justify-content: space-between; }
-
-    //
-    // New flex utils to replace and extend the ones above
-    //
-
     .flex#{$infix}-fill { flex: 1 1 auto; }
     .flex#{$infix}-justify { flex: 1 1 100%; }
 

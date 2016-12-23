@@ -204,7 +204,7 @@ Using the `col-{breakpoint}-auto` classes, columns can size itself based on the 
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
-  <div class="row flex-items-md-center">
+  <div class="row justify-content-md-center">
     <div class="col col-lg-2">
       1 of 3
     </div>
@@ -304,10 +304,10 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
 
 ### Vertical alignment
 
-<div class="bd-example-row">
+<div class="bd-example-row bd-example-row-flex-cols">
 {% example html %}
 <div class="container">
-  <div class="row flex-items-top">
+  <div class="row align-items-start">
     <div class="col">
       One of three columns
     </div>
@@ -318,7 +318,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of three columns
     </div>
   </div>
-  <div class="row flex-items-middle">
+  <div class="row align-items-center">
     <div class="col">
       One of three columns
     </div>
@@ -329,7 +329,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of three columns
     </div>
   </div>
-  <div class="row flex-items-bottom">
+  <div class="row align-items-end">
     <div class="col">
       One of three columns
     </div>
@@ -348,13 +348,13 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col flex-top">
+    <div class="col align-self-start">
       One of three columns
     </div>
-    <div class="col flex-middle">
+    <div class="col align-self-center">
       One of three columns
     </div>
-    <div class="col flex-bottom">
+    <div class="col align-self-end">
       One of three columns
     </div>
   </div>
@@ -367,7 +367,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
-  <div class="row flex-items-left">
+  <div class="row justify-content-start">
     <div class="col-4">
       One of two columns
     </div>
@@ -375,7 +375,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-center">
+  <div class="row justify-content-center">
     <div class="col-4">
       One of two columns
     </div>
@@ -383,7 +383,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-right">
+  <div class="row justify-content-end">
     <div class="col-4">
       One of two columns
     </div>
@@ -391,7 +391,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-around">
+  <div class="row justify-content-around">
     <div class="col-4">
       One of two columns
     </div>
@@ -399,7 +399,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-between">
+  <div class="row justify-content-between">
     <div class="col-4">
       One of two columns
     </div>
