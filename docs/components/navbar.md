@@ -58,8 +58,8 @@ Here's an example of all the sub-components included in a responsive light-theme
       </li>
     </ul>
     <form class="form-inline mt-2 mt-md-0">
-      <input class="form-control mr-md-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-lg-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
@@ -193,8 +193,8 @@ Place various form controls and components within a navbar with `.form-inline`.
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <form class="form-inline">
-    <input class="form-control mr-md-2" type="text" placeholder="Search">
-    <button class="btn btn-outline-success my-2 my-lg-0" type="submit">Search</button>
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav>
 {% endexample %}
@@ -204,8 +204,8 @@ Align the contents of your inline forms with utilities as needed.
 {% example html %}
 <nav class="navbar navbar-light bg-faded flex-items-right">
   <form class="form-inline">
-    <input class="form-control mr-md-2" type="text" placeholder="Search">
-    <button class="btn btn-outline-success my-2 my-lg-0" type="submit">Search</button>
+    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav>
 {% endexample %}
@@ -300,8 +300,8 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </li>
       </ul>
       <form class="form-inline">
-        <input class="form-control mr-md-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-info my-2 my-lg-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
@@ -328,8 +328,8 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </li>
       </ul>
       <form class="form-inline">
-        <input class="form-control mr-md-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-secondary my-2 my-lg-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
@@ -356,8 +356,8 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </li>
       </ul>
       <form class="form-inline">
-        <input class="form-control mr-md-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-primary my-2 my-lg-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
@@ -449,9 +449,9 @@ With no `.navbar-brand` shown in lowest breakpoint:
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline mt-2 mt-lg-0">
-      <input class="form-control mr-md-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-lg-0" type="submit">Search</button>
+    <form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
@@ -478,9 +478,9 @@ With a brand name shown on the left and toggler on the right:
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline mt-2 mt-lg-0">
-      <input class="form-control mr-md-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-lg-0" type="submit">Search</button>
+    <form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>
