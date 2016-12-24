@@ -229,6 +229,18 @@ Use `align-self` utilities on flexbox items to individually change their alignme
 <div class="align-self-stretch">Aligned flex item</div>
 {% endhighlight %}
 
+## Order
+
+Change the _visual_ order of specific flex items with a handful of `order` utilities. We only provide options for making an item first or last, as well as a reset to use the DOM order. As `order` takes any integer value (e.g., `5`), add custom CSS for any additional values needed.
+
+{% example html %}
+<div class="d-flex flex-nowrap bd-highlight">
+  <div class="flex-last p-2 bd-highlight">First flex item</div>
+  <div class="p-2 bd-highlight">Second flex item</div>
+  <div class="flex-first p-2 bd-highlight">Third flex item</div>
+</div>
+{% endexample %}
+
 ## Align content
 
 Use `align-content` utilities on flexbox containers to align flex items *together* on the cross axis. Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `stretch`. To demonstrate these utilities, we've enforced `flex-wrap: wrap` and increased the number of flex items.
