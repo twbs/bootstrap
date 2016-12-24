@@ -750,13 +750,14 @@ var Carousel = function ($) {
       if (/input|textarea/i.test(event.target.tagName)) {
         return;
       }
-      event.preventDefault();
 
       switch (event.which) {
         case ARROW_LEFT_KEYCODE:
+          event.preventDefault();
           this.prev();
           break;
         case ARROW_RIGHT_KEYCODE:
+          event.preventDefault();
           this.next();
           break;
         default:
@@ -2395,7 +2396,7 @@ var ScrollSpy = function ($) {
       } else {
         // todo (fat) this is kinda sus...
         // recursively add actives to tested nav-links
-        $link.parents(Selector.LI).find(Selector.NAV_LINKS).addClass(ClassName.ACTIVE);
+        $link.parents(Selector.LI).find('> ' + Selector.NAV_LINKS).addClass(ClassName.ACTIVE);
       }
 
       $(this._scrollElement).trigger(Event.ACTIVATE, {
