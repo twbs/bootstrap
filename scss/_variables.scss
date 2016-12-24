@@ -903,14 +903,7 @@ $breadcrumb-active-color:       $gray-light !default;
 $breadcrumb-divider:            "/" !default;
 
 
-// 32. Media objects
-
-$media-margin-top:            15px !default;
-$media-heading-margin-bottom:  5px !default;
-$media-alignment-padding-x:   10px !default;
-
-
-// 33. Carousel
+// 32. Carousel
 
 $carousel-control-color:                      $white !default;
 $carousel-control-width:                      15% !default;
@@ -932,14 +925,14 @@ $carousel-control-next-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8
 $carousel-transition:           transform .6s ease-in-out !default;
 
 
-// 34. Close
+// 33. Close
 
 $close-font-weight:           $font-weight-bold !default;
 $close-color:                 $black !default;
 $close-text-shadow:           0 1px 0 $white !default;
 
 
-// 35. Code
+// 34. Code
 
 $code-font-size:              90% !default;
 $code-padding-x:              .4rem !default;
