@@ -71,12 +71,6 @@ gem install bootstrap -v 4.0.0.alpha5
 
 [See the gem's README](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md) for further details.
 
-### Meteor
-
-{% highlight bash %}
-meteor add twbs:bootstrap@={{ site.current_version }}
-{% endhighlight %}
-
 ### Composer
 
 You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org):
