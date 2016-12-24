@@ -88,14 +88,14 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 
 Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.
 
-<div id="exampleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLiveLabel">Modal title</h5>
       </div>
       <div class="modal-body">
         <p>Woohoo, you're reading this text in a modal!</p>
@@ -109,7 +109,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 </div>
 
 <div class="bd-example">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLive">
     Launch demo modal
   </button>
 </div>
