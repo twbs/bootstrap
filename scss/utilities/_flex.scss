@@ -6,13 +6,9 @@
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-    // Flex column reordering
     .flex#{$infix}-first     { order: -1; }
     .flex#{$infix}-last      { order: 1; }
     .flex#{$infix}-unordered { order: 0; }
-
-    .flex#{$infix}-fill { flex: 1 1 auto; }
-    .flex#{$infix}-justify { flex: 1 1 100%; }
 
     .flex#{$infix}-row      { flex-direction: row !important; }
     .flex#{$infix}-column   { flex-direction: column !important; }
