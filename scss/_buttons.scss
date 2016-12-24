@@ -59,11 +59,11 @@ fieldset[disabled] a.btn {
 // Alternate buttons
 //
 
-.btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-}
 .btn-secondary {
   @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+}
+.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
 }
 .btn-info {
   @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
@@ -79,11 +79,11 @@ fieldset[disabled] a.btn {
 }
 
 // Remove all backgrounds
-.btn-outline-primary {
-  @include button-outline-variant($btn-primary-bg);
-}
 .btn-outline-secondary {
   @include button-outline-variant($btn-secondary-border);
+}
+.btn-outline-primary {
+  @include button-outline-variant($btn-primary-bg);
 }
 .btn-outline-info {
   @include button-outline-variant($btn-info-bg);
