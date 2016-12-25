@@ -77,13 +77,11 @@
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
+  display: flex;
+  justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
+  align-items: center; // vertically center it
   padding: $modal-header-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
-  @include clearfix;
-}
-// Close icon
-.modal-header .close {
-  margin-top: -2px;
 }
 
 // Title text within header

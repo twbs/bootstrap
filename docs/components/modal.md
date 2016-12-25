@@ -45,10 +45,10 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h5 class="modal-title">Modal title</h5>
         </div>
         <div class="modal-body">
           <p>Modal body text goes here.</p>
@@ -67,10 +67,10 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title">Modal title</h5>
       </div>
       <div class="modal-body">
         <p>Modal body text goes here.</p>
@@ -92,10 +92,10 @@ Toggle a working modal demo by clicking the button below. It will slide down and
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLiveLabel">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title" id="exampleModalLiveLabel">Modal title</h5>
       </div>
       <div class="modal-body">
         <p>Woohoo, you're reading this text in a modal!</p>
@@ -125,10 +125,10 @@ Toggle a working modal demo by clicking the button below. It will slide down and
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="exampleModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
         ...
@@ -150,10 +150,10 @@ When modals become too long for the user's viewport or device, they scroll indep
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
       </div>
       <div class="modal-body">
         <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
@@ -200,10 +200,10 @@ When modals become too long for the user's viewport or device, they scroll indep
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
       </div>
       <div class="modal-body">
         ...
@@ -225,10 +225,10 @@ When modals become too long for the user's viewport or device, they scroll indep
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalPopoversLabel">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title" id="exampleModalPopoversLabel">Modal title</h5>
       </div>
       <div class="modal-body">
         <h5>Popover in a modal</h5>
@@ -269,8 +269,8 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h5 class="modal-title" id="gridModalLabel">Grids in modals</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </div>
       <div class="modal-body">
         <div class="container-fluid bd-example-row">
@@ -360,10 +360,10 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
       </div>
       <div class="modal-body">
         <form>
@@ -458,10 +458,10 @@ Modals have two optional sizes, available via modifier classes to be placed on a
     <div class="modal-content">
 
       <div class="modal-header">
+        <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
       </div>
       <div class="modal-body">
         ...
@@ -473,12 +473,11 @@ Modals have two optional sizes, available via modifier classes to be placed on a
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
-
       <div class="modal-header">
+        <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
       </div>
       <div class="modal-body">
         ...
