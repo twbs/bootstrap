@@ -2359,20 +2359,20 @@ select.form-control:focus::-ms-value {
 }
 
 .col-form-label {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: calc(0.5rem - 1px * 2);
+  padding-bottom: calc(0.5rem - 1px * 2);
   margin-bottom: 0;
 }
 
 .col-form-label-lg {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  padding-top: calc(0.75rem - 1px * 2);
+  padding-bottom: calc(0.75rem - 1px * 2);
   font-size: 1.25rem;
 }
 
 .col-form-label-sm {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: calc(0.25rem - 1px * 2);
+  padding-bottom: calc(0.25rem - 1px * 2);
   font-size: 0.875rem;
 }
 
@@ -2386,6 +2386,7 @@ select.form-control:focus::-ms-value {
 .form-control-static {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  margin-bottom: 0;
   line-height: 1.25;
   border: solid transparent;
   border-width: 1px 0;
@@ -2602,6 +2603,10 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     -webkit-flex-flow: row wrap;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-bottom: 0;
   }
   .form-inline .form-control {
@@ -2611,7 +2616,6 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   }
   .form-inline .form-control-static {
     display: inline-block;
-    margin-bottom: 0;
   }
   .form-inline .input-group {
     width: auto;
@@ -3834,7 +3838,10 @@ tbody.collapse.show {
 
 .custom-control {
   position: relative;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   min-height: 1.5rem;
   padding-left: 1.5rem;
   margin-right: 1rem;
@@ -3853,8 +3860,8 @@ tbody.collapse.show {
 }
 
 .custom-control-input:focus ~ .custom-control-indicator {
-  -webkit-box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #0275d8;
-          box-shadow: 0 0 0 0.075rem #fff, 0 0 0 0.2rem #0275d8;
+  -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #0275d8;
+          box-shadow: 0 0 0 1px #fff, 0 0 0 3px #0275d8;
 }
 
 .custom-control-input:active ~ .custom-control-indicator {
@@ -3912,10 +3919,20 @@ tbody.collapse.show {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E");
 }
 
+.custom-controls-stacked {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .custom-controls-stacked .custom-control {
-  float: left;
   margin-bottom: 0.25rem;
-  clear: left;
 }
 
 .custom-controls-stacked .custom-control + .custom-control {
