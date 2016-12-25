@@ -135,6 +135,7 @@ select.form-control {
 .form-control-static {
   padding-top: $input-padding-y;
   padding-bottom: $input-padding-y;
+  margin-bottom: 0; // match inputs if this class comes on inputs with default margins
   line-height: $input-line-height;
   border: solid transparent;
   border-width: 1px 0;
@@ -338,7 +339,6 @@ select.form-control-lg {
     // Make static controls behave like regular ones
     .form-control-static {
       display: inline-block;
-      margin-bottom: 0;
     }
 
     .input-group {
