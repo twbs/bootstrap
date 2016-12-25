@@ -10,6 +10,7 @@ javascript:
 eslint:
   enabled: true
   config_file: js/.eslintrc.json
+  ignore_file: .houndignore
 
 jscs:
   enabled: true
