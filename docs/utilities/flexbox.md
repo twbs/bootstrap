@@ -59,6 +59,19 @@ Responsive variations also exist for `.flex-row` and `.flex-column`.
 - `.flex{{ bp.abbr }}-row`
 - `.flex{{ bp.abbr }}-column`{% endfor %}
 
+## Auto margins
+
+Flexbox can do some pretty awesome things when you mix `justify-content` with `margin-right: auto` or `margin-left: auto` on a particular flex item. For example, we can move all flex items to the right, but keep one on the left like so.
+
+{% example html %}
+<div class="d-flex justify-content-end bd-highlight">
+  <div class="mr-auto p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+</div>
+{% endexample %}
+
+
 ## Wrap
 
 Change how flex items wrap in a flex container. Choose from no wrapping at all (the browser default) with `.flex-nowrap`, or enable wrapping with `.flex-wrap`.
