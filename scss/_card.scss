@@ -182,14 +182,7 @@
 }
 
 
-// Card set
-//
-// Heads up! We do some funky style resetting here for margins across our two
-// variations (one flex, one table). Individual cards have margin-bottom by
-// default, but they're ignored due to table styles. For a consistent design,
-// we've done the same to the flex variation.
-//
-// Those changes are noted by `// Margin balancing`.
+// Card deck
 
 @include media-breakpoint-up(sm) {
   .card-deck {
