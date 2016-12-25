@@ -169,6 +169,13 @@ $spacers: (
 ) !default;
 $border-width: 1px !default;
 
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+) !default;
 
 // Body
 //
