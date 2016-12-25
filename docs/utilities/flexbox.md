@@ -59,69 +59,6 @@ Responsive variations also exist for `.flex-row` and `.flex-column`.
 - `.flex{{ bp.abbr }}-row`
 - `.flex{{ bp.abbr }}-column`{% endfor %}
 
-## Auto margins
-
-Flexbox can do some pretty awesome things when you mix `justify-content` with `margin-right: auto` or `margin-left: auto` on a particular flex item. For example, we can move all flex items to the right, but keep one on the left like so.
-
-{% example html %}
-<div class="d-flex justify-content-end bd-highlight">
-  <div class="mr-auto p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-</div>
-{% endexample %}
-
-
-## Wrap
-
-Change how flex items wrap in a flex container. Choose from no wrapping at all (the browser default) with `.flex-nowrap`, or enable wrapping with `.flex-wrap`.
-
-{% example html %}
-<div class="d-flex flex-nowrap bd-highlight">
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-</div>
-{% endexample %}
-
-{% example html %}
-<div class="d-flex flex-wrap bd-highlight">
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-</div>
-{% endexample %}
-
-Responsive variations also exist for `.flex-nowrap` and `.flex-wrap`.
-
-{% for bp in site.data.breakpoints %}
-- `.flex{{ bp.abbr }}-nowrap`
-- `.flex{{ bp.abbr }}-wrap`{% endfor %}
-
 ## Justify content
 
 Use `justify-content` utilities on flexbox containers to change the alignment of flex items on the main axis (the x-axis to start, y-axis if `flex-direction: column`). Choose from `start` (browser default), `end`, `center`, `between`, or `around`.
@@ -241,6 +178,68 @@ Use `align-self` utilities on flexbox items to individually change their alignme
 <div class="align-self-baseline">Aligned flex item</div>
 <div class="align-self-stretch">Aligned flex item</div>
 {% endhighlight %}
+
+## Auto margins
+
+Flexbox can do some pretty awesome things when you mix `justify-content` with `margin-right: auto` or `margin-left: auto` on a particular flex item. For example, we can move all flex items to the right, but keep one on the left like so.
+
+{% example html %}
+<div class="d-flex justify-content-end bd-highlight">
+  <div class="mr-auto p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+</div>
+{% endexample %}
+
+## Wrap
+
+Change how flex items wrap in a flex container. Choose from no wrapping at all (the browser default) with `.flex-nowrap`, or enable wrapping with `.flex-wrap`.
+
+{% example html %}
+<div class="d-flex flex-nowrap bd-highlight">
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="d-flex flex-wrap bd-highlight">
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+</div>
+{% endexample %}
+
+Responsive variations also exist for `.flex-nowrap` and `.flex-wrap`.
+
+{% for bp in site.data.breakpoints %}
+- `.flex{{ bp.abbr }}-nowrap`
+- `.flex{{ bp.abbr }}-wrap`{% endfor %}
 
 ## Order
 
