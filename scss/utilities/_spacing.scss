@@ -44,7 +44,7 @@
   // Some special margin utils
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    
+
     .m#{$infix}-auto { margin: auto !important; }
     .mx#{$infix}-auto {
       margin-right: auto !important;
