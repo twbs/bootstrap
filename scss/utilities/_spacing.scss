@@ -15,14 +15,6 @@
 
 // Margin and Padding
 
-.mx-auto {
-  margin-right: auto !important;
-  margin-left:  auto !important;
-}
-
-.mr-auto { margin-right: auto !important; }
-.ml-auto { margin-left: auto !important; }
-
 @each $breakpoint in map-keys($grid-breakpoints) {
   @each $prop, $abbrev in (margin: m, padding: p) {
     @each $size, $lengths in $spacers {
@@ -47,6 +39,19 @@
         }
       }
     }
+  }
+
+  // Some special margin utils
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    .mx#{$infix}-auto {
+      margin-right: auto !important;
+      margin-left:  auto !important;
+    }
+    .mt#{$infix}-auto { margin-top: auto !important; }
+    .mr#{$infix}-auto { margin-right: auto !important; }
+    .mb#{$infix}-auto { margin-bottom: auto !important; }
+    .ml#{$infix}-auto { margin-left: auto !important; }
   }
 }
 
