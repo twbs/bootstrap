@@ -108,6 +108,44 @@ $(function () {
       .bootstrapTab('show')
   })
 
+  QUnit.test('should not fire shown when tab is already active', function (assert) {
+    assert.expect(0)
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist">'
+      + '<li class="nav-item"><a href="#home" class="nav-link active" role="tab">Home</a></li>'
+      + '<li class="nav-item"><a href="#profile" class="nav-link" role="tab">Profile</a></li>'
+      + '</ul>'
+      + '<div class="tab-content">'
+      + '<div class="tab-pane active" id="home" role="tabpanel"></div>'
+      + '<div class="tab-pane" id="profile" role="tabpanel"></div>'
+      + '</div>'
+
+    $(tabsHTML)
+      .find('a.active')
+      .on('shown.bs.tab', function () {
+        assert.ok(true, 'shown event fired')
+      })
+      .bootstrapTab('show')
+  })
+
+  QUnit.test('should not fire shown when tab is disabled', function (assert) {
+    assert.expect(0)
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist">'
+      + '<li class="nav-item"><a href="#home" class="nav-link active" role="tab">Home</a></li>'
+      + '<li class="nav-item"><a href="#profile" class="nav-link disabled" role="tab">Profile</a></li>'
+      + '</ul>'
+      + '<div class="tab-content">'
+      + '<div class="tab-pane active" id="home" role="tabpanel"></div>'
+      + '<div class="tab-pane" id="profile" role="tabpanel"></div>'
+      + '</div>'
+
+    $(tabsHTML)
+      .find('a.disabled')
+      .on('shown.bs.tab', function () {
+        assert.ok(true, 'shown event fired')
+      })
+      .bootstrapTab('show')
+  })
+
   QUnit.test('show and shown events should reference correct relatedTarget', function (assert) {
     assert.expect(2)
     var done = assert.async()
