@@ -78,8 +78,8 @@
 // Top section of the modal w/ title and dismiss
 .modal-header {
   display: flex;
-  justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   align-items: center; // vertically center it
+  justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
 }
@@ -103,8 +103,8 @@
 // Footer (for actions)
 .modal-footer {
   display: flex;
-  justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
   align-items: center; // vertically center
+  justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
   padding: $modal-inner-padding;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
 
