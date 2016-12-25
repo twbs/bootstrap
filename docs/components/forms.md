@@ -275,7 +275,7 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 
 Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-- Controls are `display: inline-block` (or `flex` when enabled) to provide alignment control via `vertical-align` and `margin`. Those also means you'll have some HTML character spaces between elements by default.
+- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/utilities/flexbox/) utilities.
 - Controls and input groups receive `width: auto` to override the Bootstrap default `width: 100%`.
 - Controls **only appear inline in viewports that are at least 576px wide** to account for narrow viewports on mobile devices.
 
@@ -519,14 +519,14 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 
 ## Static controls
 
-When you need to place plain text next to a form label within a form, use the `.form-control-static` class on an element of your choice. Using an element like `<p>` with a default margin? Be sure to use a margin override (as shown below).
+When you need to place plain text next to a form label within a form, use the `.form-control-static` class on an element of your choice.
 
 {% example html %}
 <form>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <p class="form-control-static mb-0">email@example.com</p>
+      <p class="form-control-static">email@example.com</p>
     </div>
   </div>
   <div class="form-group row">
@@ -542,7 +542,7 @@ When you need to place plain text next to a form label within a form, use the `.
 <form class="form-inline">
   <div class="form-group">
     <label class="sr-only">Email</label>
-    <p class="form-control-static mb-0">email@example.com</p>
+    <p class="form-control-static">email@example.com</p>
   </div>
   <div class="form-group">
     <label for="inputPassword2" class="sr-only">Password</label>
@@ -932,8 +932,6 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
   <option value="3">Three</option>
 </select>
 {% endexample %}
-
-Custom selects degrade nicely in IE9, receiving only a handful of overrides to remove the custom `background-image`. **Multiple selects (e.g., `<select multiple>`) are not currently supported.**
 
 ### File browser
 

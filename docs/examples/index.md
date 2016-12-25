@@ -48,7 +48,7 @@ Taking the default navbar component and showing how it can be moved, placed, and
 
 <div class="row bd-examples">
   <div class="col-6 col-md-4">
-    <a href="{{ site.baseurl }}/examples/navbar/">
+    <a href="{{ site.baseurl }}/examples/navbars/">
       <img class="img-thumbnail" src="{{ site.baseurl }}/examples/screenshots/navbar.jpg" alt="">
     </a>
     <h4>Navbar</h4>

@@ -1,0 +1,4 @@
+**/*.min.js
+**/vendor/*
+**/dist/*
+js/tests/*

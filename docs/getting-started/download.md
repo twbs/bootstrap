@@ -14,7 +14,7 @@ group: getting-started
 
 ## Bootstrap CSS and JS
 
-**Download Bootstrap's ready-to-use code to easily drop into your project.** Includes compiled and minified versions of all our CSS bundles (default, flexbox-enabled, grid only, or Reboot only) and JavaScript plugins. Doesn't include documentation or source files.
+**Download Bootstrap's ready-to-use code to easily drop into your project.** Includes compiled and minified versions of all our CSS bundles (default, grid only, or Reboot only) and JavaScript plugins. Doesn't include documentation or source files.
 
 <a href="{{ site.download.dist }}" class="btn btn-lg btn-bs" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download Bootstrap</a>
 

@@ -16,7 +16,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Browser support
 
-- Dropped IE8 and iOS 6 support. v4 is now only IE9+ and iOS 7+. For sites needing either of those, use v3.
+- Dropped IE8, IE9, and iOS 6 support. v4 is now only IE10+ and iOS 7+. For sites needing either of those, use v3.
 - Added official support for Android v5.0 Lollipop's Browser and WebView. Earlier versions of the Android Browser and WebView remain only unofficially supported.
 
 ### Global changes
@@ -29,7 +29,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Grid system
 
-- Added support for flexbox (set `$enable-flex: true` and recompile) in the grid mixins and predefined classes.
+- Added support for flexbox in the grid mixins and predefined classes.
 - As part of flexbox, included support for vertical and horizontal alignment classes.
 - Overhauled grid mixins to merge `make-col-span` into `make-col` for a singular mixin.
 - Added a new `sm` grid tier below `768px` for more granular control. We now have `xs`, `sm`, `md`, `lg`, and `xl`. This also means every tier has been bumped up one level (so `.col-md-6` in v3 is now `.col-lg-6` in v4).
@@ -141,7 +141,16 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 ### Navbar
 
-- Dropped the `.navbar-form` class entirely. It's no longer necessary.
+The navbar has been entirely rewritten in flexbox with improved support for alignment, responsiveness, and customization.
+
+- Responsive navbar behaviors are now applied to the `.navbar` class via the **required** `.navbar-toggleable-{breakpoint}` where you choose where to collapse the navbar. Previously this was a Less variable modification and required recompiling.
+- `.navbar-default` is now `.navbar-light`, though `.navbar-inverse` remains the same. **One of these is required on each navbar.** However, these classes no longer set `background-color`s; instead they essentiatlly only affect `color`.
+- Navbars now require a background declaration of some kind. Choose from our background utilities (`.bg-*`) or set your own with the light/inverse classes above [for mad customization]({{ site.baseurl }}/components/navbar/#color-schemes).
+- Given flexbox styles, navbars can now use flexbox utilities for easy alignment options.
+- `.navbar-toggle` is now `.navbar-toggler` and has different styles and inner markup (no more three `<span>`s).
+- Dropped the `.navbar-form` class entirely. It's no longer necessary; instead, just use `.form-inline` and apply margin utilities as necessary.
+- Navbars no longer include `margin-bottom` or `border-radius` by default. Use utilities as necessary.
+- All examples featuring navbars have been updated to include new markup.
 
 ### Pagination
 
