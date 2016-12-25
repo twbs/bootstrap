@@ -181,13 +181,41 @@ Use `align-self` utilities on flexbox items to individually change their alignme
 
 ## Auto margins
 
-Flexbox can do some pretty awesome things when you mix `justify-content` with `margin-right: auto` or `margin-left: auto` on a particular flex item. For example, we can move all flex items to the right, but keep one on the left like so.
+Flexbox can do some pretty awesome things when you mix flex alignments with auto margins.
+
+### With justify-content
+
+Easily move all flex items to one side, but keep another on the opposite end by mixing `justify-content` with `margin-right: auto` or `margin-left: auto`.
 
 {% example html %}
-<div class="d-flex justify-content-end bd-highlight">
+<div class="d-flex justify-content-end bd-highlight mb-3">
   <div class="mr-auto p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
+</div>
+
+<div class="d-flex justify-content-start bd-highlight">
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="ml-auto p-2 bd-highlight">Flex item</div>
+</div>
+{% endexample %}
+
+### With align-items
+
+Similarly, move one flex item to the top or bottom of a container by mixing `align-items`, `flex-direction: column`, and `margin-top: auto` or `margin-bottom: auto`.
+
+{% example html %}
+<div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
+  <div class="mb-auto p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+</div>
+
+<div class="d-flex align-items-end flex-column bd-highlight mb-3" style="height: 200px;">
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="mt-auto p-2 bd-highlight">Flex item</div>
 </div>
 {% endexample %}
 
