@@ -102,10 +102,15 @@
 
 // Footer (for actions)
 .modal-footer {
+  display: flex;
+  justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
+  align-items: center; // vertically center
   padding: $modal-inner-padding;
-  text-align: right; // right align buttons
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
-  @include clearfix(); // clear it in case folks use .float-* classes on buttons
+
+  // Easily place margin between footer elements
+  > :not(:first-child) { margin-left: .25rem; }
+  > :not(:last-child) { margin-right: .25rem; }
 }
 
 // Measure scrollbar width for padding body during modal show/hide
