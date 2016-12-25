@@ -544,7 +544,7 @@ When you need to place plain text next to a form label within a form, use the `.
     <label class="sr-only">Email</label>
     <p class="form-control-static">email@example.com</p>
   </div>
-  <div class="form-group">
+  <div class="form-group mx-sm-3">
     <label for="inputPassword2" class="sr-only">Password</label>
     <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
   </div>
