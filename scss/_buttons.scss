@@ -17,15 +17,12 @@
   @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
   @include transition($btn-transition);
 
-  &,
-  &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      @include tab-focus();
-    }
+  &:focus,
+  &.focus {
+    @include tab-focus();
   }
 
+  // Share hover and focus styles
   @include hover-focus {
     text-decoration: none;
   }
@@ -33,18 +30,19 @@
     text-decoration: none;
   }
 
-  &:active,
-  &.active {
-    background-image: none;
-    outline: 0;
-    @include box-shadow($btn-active-box-shadow);
-  }
-
+  // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
     cursor: $cursor-disabled;
     opacity: .65;
     @include box-shadow(none);
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+    outline: 0;
+    @include box-shadow($btn-active-box-shadow);
   }
 }
 
