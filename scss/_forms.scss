@@ -192,7 +192,7 @@ select.form-control-lg {
 
 .form-text {
   display: block;
-  margin-top: ($spacer * .25);
+  margin-top: $form-text-margin-top;
 }
 
 
@@ -203,12 +203,7 @@ select.form-control-lg {
 .form-check {
   position: relative;
   display: block;
-  margin-bottom: ($spacer * .75);
-
-  // Move up sibling radios or checkboxes for tighter spacing
-  + .form-check {
-    margin-top: -.25rem;
-  }
+  margin-bottom: $form-check-margin-bottom;
 
   &.disabled {
     .form-check-label {
@@ -219,15 +214,15 @@ select.form-control-lg {
 }
 
 .form-check-label {
-  padding-left: 1.25rem;
+  padding-left: $form-check-input-gutter;
   margin-bottom: 0; // Override default `<label>` bottom margin
   cursor: pointer;
 }
 
 .form-check-input {
   position: absolute;
-  margin-top: .25rem;
-  margin-left: -1.25rem;
+  margin-top: $form-check-input-margin-y;
+  margin-left: -$form-check-input-gutter;
 
   &:only-child {
     position: static;
@@ -243,7 +238,7 @@ select.form-control-lg {
   }
 
   + .form-check-inline {
-    margin-left: .75rem;
+    margin-left: $form-check-inline-margin-x;
   }
 }
 
@@ -253,7 +248,7 @@ select.form-control-lg {
 // Apply contextual and semantic states to individual form controls.
 
 .form-control-feedback {
-  margin-top: ($spacer * .25);
+  margin-top: $form-feedback-margin-top;
 }
 
 .form-control-success,
