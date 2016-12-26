@@ -6733,6 +6733,22 @@ a.bg-inverse:focus, a.bg-inverse:hover {
           flex-direction: column !important;
 }
 
+.flex-row-reverse {
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: reverse !important;
+  -webkit-flex-direction: row-reverse !important;
+      -ms-flex-direction: row-reverse !important;
+          flex-direction: row-reverse !important;
+}
+
+.flex-column-reverse {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: reverse !important;
+  -webkit-flex-direction: column-reverse !important;
+      -ms-flex-direction: column-reverse !important;
+          flex-direction: column-reverse !important;
+}
+
 .flex-wrap {
   -webkit-flex-wrap: wrap !important;
       -ms-flex-wrap: wrap !important;
@@ -6743,6 +6759,12 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   -webkit-flex-wrap: nowrap !important;
       -ms-flex-wrap: nowrap !important;
           flex-wrap: nowrap !important;
+}
+
+.flex-wrap-reverse {
+  -webkit-flex-wrap: wrap-reverse !important;
+      -ms-flex-wrap: wrap-reverse !important;
+          flex-wrap: wrap-reverse !important;
 }
 
 .justify-content-start {
@@ -6922,6 +6944,20 @@ a.bg-inverse:focus, a.bg-inverse:hover {
         -ms-flex-direction: column !important;
             flex-direction: column !important;
   }
+  .flex-sm-row-reverse {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+    -webkit-flex-direction: row-reverse !important;
+        -ms-flex-direction: row-reverse !important;
+            flex-direction: row-reverse !important;
+  }
+  .flex-sm-column-reverse {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+    -webkit-flex-direction: column-reverse !important;
+        -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important;
+  }
   .flex-sm-wrap {
     -webkit-flex-wrap: wrap !important;
         -ms-flex-wrap: wrap !important;
@@ -6931,6 +6967,11 @@ a.bg-inverse:focus, a.bg-inverse:hover {
     -webkit-flex-wrap: nowrap !important;
         -ms-flex-wrap: nowrap !important;
             flex-wrap: nowrap !important;
+  }
+  .flex-sm-wrap-reverse {
+    -webkit-flex-wrap: wrap-reverse !important;
+        -ms-flex-wrap: wrap-reverse !important;
+            flex-wrap: wrap-reverse !important;
   }
   .justify-content-sm-start {
     -webkit-box-pack: start !important;
@@ -7089,6 +7130,20 @@ a.bg-inverse:focus, a.bg-inverse:hover {
         -ms-flex-direction: column !important;
             flex-direction: column !important;
   }
+  .flex-md-row-reverse {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+    -webkit-flex-direction: row-reverse !important;
+        -ms-flex-direction: row-reverse !important;
+            flex-direction: row-reverse !important;
+  }
+  .flex-md-column-reverse {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+    -webkit-flex-direction: column-reverse !important;
+        -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important;
+  }
   .flex-md-wrap {
     -webkit-flex-wrap: wrap !important;
         -ms-flex-wrap: wrap !important;
@@ -7098,6 +7153,11 @@ a.bg-inverse:focus, a.bg-inverse:hover {
     -webkit-flex-wrap: nowrap !important;
         -ms-flex-wrap: nowrap !important;
             flex-wrap: nowrap !important;
+  }
+  .flex-md-wrap-reverse {
+    -webkit-flex-wrap: wrap-reverse !important;
+        -ms-flex-wrap: wrap-reverse !important;
+            flex-wrap: wrap-reverse !important;
   }
   .justify-content-md-start {
     -webkit-box-pack: start !important;
@@ -7256,6 +7316,20 @@ a.bg-inverse:focus, a.bg-inverse:hover {
         -ms-flex-direction: column !important;
             flex-direction: column !important;
   }
+  .flex-lg-row-reverse {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+    -webkit-flex-direction: row-reverse !important;
+        -ms-flex-direction: row-reverse !important;
+            flex-direction: row-reverse !important;
+  }
+  .flex-lg-column-reverse {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+    -webkit-flex-direction: column-reverse !important;
+        -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important;
+  }
   .flex-lg-wrap {
     -webkit-flex-wrap: wrap !important;
         -ms-flex-wrap: wrap !important;
@@ -7265,6 +7339,11 @@ a.bg-inverse:focus, a.bg-inverse:hover {
     -webkit-flex-wrap: nowrap !important;
         -ms-flex-wrap: nowrap !important;
             flex-wrap: nowrap !important;
+  }
+  .flex-lg-wrap-reverse {
+    -webkit-flex-wrap: wrap-reverse !important;
+        -ms-flex-wrap: wrap-reverse !important;
+            flex-wrap: wrap-reverse !important;
   }
   .justify-content-lg-start {
     -webkit-box-pack: start !important;
@@ -7423,6 +7502,20 @@ a.bg-inverse:focus, a.bg-inverse:hover {
         -ms-flex-direction: column !important;
             flex-direction: column !important;
   }
+  .flex-xl-row-reverse {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+    -webkit-flex-direction: row-reverse !important;
+        -ms-flex-direction: row-reverse !important;
+            flex-direction: row-reverse !important;
+  }
+  .flex-xl-column-reverse {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+    -webkit-flex-direction: column-reverse !important;
+        -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important;
+  }
   .flex-xl-wrap {
     -webkit-flex-wrap: wrap !important;
         -ms-flex-wrap: wrap !important;
@@ -7432,6 +7525,11 @@ a.bg-inverse:focus, a.bg-inverse:hover {
     -webkit-flex-wrap: nowrap !important;
         -ms-flex-wrap: nowrap !important;
             flex-wrap: nowrap !important;
+  }
+  .flex-xl-wrap-reverse {
+    -webkit-flex-wrap: wrap-reverse !important;
+        -ms-flex-wrap: wrap-reverse !important;
+            flex-wrap: wrap-reverse !important;
   }
   .justify-content-xl-start {
     -webkit-box-pack: start !important;
