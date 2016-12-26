@@ -37,8 +37,8 @@
   .show > &.dropdown-toggle {
     color: $color;
     background-color: $active-background;
-    border-color: $active-border;
     background-image: none; // Remove the gradient for the pressed/active state
+    border-color: $active-border;
     @include box-shadow($btn-active-box-shadow);
   }
 }
