@@ -130,8 +130,9 @@ fieldset[disabled] a.btn {
     background-color: transparent;
   }
   &:disabled {
+    color: $btn-link-disabled-color;
+
     @include hover-focus {
-      color: $btn-link-disabled-color;
       text-decoration: none;
     }
   }
