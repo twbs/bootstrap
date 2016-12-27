@@ -44,7 +44,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "jquery": "1.9.1 - 3",
+    "jquery": ">=1.9.1",
     "tether": "^1.3.7"
   },
   "devDependencies": {
@@ -68,7 +68,7 @@
     "grunt-exec": "^1.0.1",
     "grunt-html": "^8.0.2",
     "grunt-jekyll": "^0.4.4",
-    "grunt-sass": "^1.2.1",
+    "grunt-sass": "2.0.0",
     "grunt-saucelabs": "^9.0.0",
     "grunt-stamp": "^0.3.0",
     "htmlhint": "^0.9.13",
@@ -78,7 +78,7 @@
     "postcss-cli": "^2.6.0",
     "postcss-flexbugs-fixes": "^2.0.0",
     "shelljs": "^0.7.4",
-    "shx": "^0.1.4",
+    "shx": "^0.2.1",
     "time-grunt": "^1.4.0",
     "uglify-js": "^2.7.5"
   },
