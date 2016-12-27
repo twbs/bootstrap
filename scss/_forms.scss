@@ -360,6 +360,8 @@ select.form-control-lg {
     }
     .form-check-input {
       position: relative;
+      margin-top: 0;
+      margin-right: $form-check-input-margin-x;
       margin-left: 0;
     }
 
@@ -373,7 +375,7 @@ select.form-control-lg {
     .custom-control-indicator {
       position: static;
       display: inline-block;
-      margin-right: .25rem; // Flexbox alignment means we lose our HTML space here, so we compensate.
+      margin-right: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
       vertical-align: text-bottom;
     }
 
