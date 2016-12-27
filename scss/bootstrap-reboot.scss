@@ -3,8 +3,7 @@
 // Includes only Normalize and our custom Reboot reset.
 
 @import "variables";
-@import "mixins/hover";
-@import "mixins/tab-focus";
+@import "mixins";
 @import "custom";
 
 @import "normalize";
