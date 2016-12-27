@@ -36,6 +36,10 @@
 .btn-toolbar {
   display: flex;
   justify-content: flex-start;
+
+  .input-group {
+    width: auto;
+  }
 }
 
 .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
