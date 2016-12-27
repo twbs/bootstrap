@@ -20,9 +20,6 @@
   }
   &:focus,
   &.focus {
-    color: $color;
-    background-color: $active-background;
-    border-color: $active-border;
     box-shadow: 0 0 0 2px rgba($border, .5);
   }
 
