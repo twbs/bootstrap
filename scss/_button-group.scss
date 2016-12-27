@@ -149,14 +149,14 @@
 //
 
 .btn-group-vertical {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 
   .btn,
   .btn-group {
-    flex: 0 1 auto;
+    width: 100%;
   }
 
   > .btn + .btn,
