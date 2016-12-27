@@ -23,6 +23,7 @@
     color: $color;
     background-color: $active-background;
     border-color: $active-border;
+    box-shadow: 0 0 0 2px rgba($border, .5);
   }
 
   // Disabled comes first so active can properly restyle
@@ -57,9 +58,7 @@
 
   &:focus,
   &.focus {
-    color: $color-hover;
-    background-color: $color;
-    border-color: $color;
+    box-shadow: 0 0 0 2px rgba($color, .5);
   }
 
   &.disabled,
