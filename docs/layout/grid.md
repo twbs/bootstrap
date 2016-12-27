@@ -230,6 +230,22 @@ Using the `col-{breakpoint}-auto` classes, columns can size itself based on the 
 {% endexample %}
 </div>
 
+### Equal-width multi-row
+
+Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{ site.baseurl }}/utilities/display-property/).
+
+<div class="bd-example-row">
+{% example html %}
+<div class="row">
+  <div class="col">col</div>
+  <div class="col">col</div>
+  <div class="w-100"></div>
+  <div class="col">col</div>
+  <div class="col">col</div>
+</div>
+{% endexample %}
+</div>
+
 ## Responsive classes
 
 Bootstrap's grid includes five tiers of predefined classes for building complex responsive layouts. Customize the size of your columns on extra small, small, medium, large, or extra large devices however you see fit.
