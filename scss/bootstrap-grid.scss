@@ -1,7 +1,7 @@
 // Bootstrap Grid only
 //
-// Includes relevant variables and mixins for the regular (non-flexbox) grid
-// system, as well as the generated predefined classes (e.g., `.col-4-sm`).
+// Includes relevant variables and mixins for the flexbox grid
+// system, as well as the generated predefined classes (e.g., `.col-sm-4`).
 
 //
 // Box sizing, responsive, and more
@@ -27,7 +27,6 @@ html {
 // Variables
 //
 
-@import "custom";
 @import "variables";
 
 //
@@ -38,5 +37,7 @@ html {
 @import "mixins/breakpoints";
 @import "mixins/grid-framework";
 @import "mixins/grid";
+
+@import "custom";
 
 @import "grid";

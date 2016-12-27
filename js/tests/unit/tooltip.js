@@ -818,4 +818,25 @@ $(function () {
     })
   })
 
+  QUnit.test('should show on first trigger after hide', function (assert) {
+    assert.expect(3)
+    var $el = $('<a href="#" rel="tooltip" title="Test tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({ trigger: 'click hover focus', animation: false })
+
+    var tooltip = $el.data('bs.tooltip')
+    var $tooltip = $(tooltip.getTipElement())
+
+    function showingTooltip() { return $tooltip.hasClass('show') || tooltip._hoverState === 'show' }
+
+    $el.trigger('click')
+    assert.ok(showingTooltip(), 'tooltip is faded in')
+
+    $el.bootstrapTooltip('hide')
+    assert.ok(!showingTooltip(), 'tooltip was faded out')
+
+    $el.trigger('click')
+    assert.ok(showingTooltip(), 'tooltip is faded in again')
+  })
+
 })

@@ -16,7 +16,7 @@ Bootstrap includes a powerful mobile-first flexbox grid system for building layo
 
 Bootstrap's grid system uses a series of containers, rows, and columns to layout and align content. It's built with flexbox and is fully responsive. Below is an example and an in-depth look at how the grid comes together.
 
-<div class="bd-example bd-example-row bd-example-row-intro">
+<div class="bd-example bd-example-row">
 <div class="container">
   <div class="row">
     <div class="col-sm">
@@ -36,8 +36,8 @@ The above example creates three equal-width columns on small, medium, large, and
 
 Breaking it down, here's how it works:
 
-- Containers (outlined in blue above) provide a means to center your site's contents. Use `.container` for fixed width or `.container-fluid` for full width.
-- Rows (outlined in red above) are horizontal groups of columns that ensure your columns are lined up properly. We use the negative margin method on `.row` to ensure all your content is aligned properly down the left side.
+- Containers provide a means to center your site's contents. Use `.container` for fixed width or `.container-fluid` for full width.
+- Rows are horizontal groups of columns that ensure your columns are lined up properly. We use the negative margin method on `.row` to ensure all your content is aligned properly down the left side.
 - Content should be placed within columns, and only columns may be immediate children of rows.
 - Thanks to flexbox, grid columns without a set width will automatically layout with equal widths. For example, four instances of `.col-sm` will each automatically be 25% wide for small breakpoints.
 - Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So, if you want three equal-width columns, you can use `.col-sm-4`.
@@ -204,7 +204,7 @@ Using the `col-{breakpoint}-auto` classes, columns can size itself based on the 
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
-  <div class="row flex-items-md-center">
+  <div class="row justify-content-md-center">
     <div class="col col-lg-2">
       1 of 3
     </div>
@@ -226,6 +226,22 @@ Using the `col-{breakpoint}-auto` classes, columns can size itself based on the 
       3 of 3
     </div>
   </div>
+</div>
+{% endexample %}
+</div>
+
+### Equal-width multi-row
+
+Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{ site.baseurl }}/utilities/display-property/).
+
+<div class="bd-example-row">
+{% example html %}
+<div class="row">
+  <div class="col">col</div>
+  <div class="col">col</div>
+  <div class="w-100"></div>
+  <div class="col">col</div>
+  <div class="col">col</div>
 </div>
 {% endexample %}
 </div>
@@ -304,10 +320,10 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
 
 ### Vertical alignment
 
-<div class="bd-example-row">
+<div class="bd-example-row bd-example-row-flex-cols">
 {% example html %}
 <div class="container">
-  <div class="row flex-items-top">
+  <div class="row align-items-start">
     <div class="col">
       One of three columns
     </div>
@@ -318,7 +334,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of three columns
     </div>
   </div>
-  <div class="row flex-items-middle">
+  <div class="row align-items-center">
     <div class="col">
       One of three columns
     </div>
@@ -329,7 +345,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of three columns
     </div>
   </div>
-  <div class="row flex-items-bottom">
+  <div class="row align-items-end">
     <div class="col">
       One of three columns
     </div>
@@ -348,13 +364,13 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col flex-top">
+    <div class="col align-self-start">
       One of three columns
     </div>
-    <div class="col flex-middle">
+    <div class="col align-self-center">
       One of three columns
     </div>
-    <div class="col flex-bottom">
+    <div class="col align-self-end">
       One of three columns
     </div>
   </div>
@@ -367,7 +383,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
-  <div class="row flex-items-left">
+  <div class="row justify-content-start">
     <div class="col-4">
       One of two columns
     </div>
@@ -375,7 +391,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-center">
+  <div class="row justify-content-center">
     <div class="col-4">
       One of two columns
     </div>
@@ -383,7 +399,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-right">
+  <div class="row justify-content-end">
     <div class="col-4">
       One of two columns
     </div>
@@ -391,7 +407,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-around">
+  <div class="row justify-content-around">
     <div class="col-4">
       One of two columns
     </div>
@@ -399,7 +415,7 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of two columns
     </div>
   </div>
-  <div class="row flex-items-between">
+  <div class="row justify-content-between">
     <div class="col-4">
       One of two columns
     </div>

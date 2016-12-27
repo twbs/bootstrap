@@ -36,6 +36,7 @@ const Tab = (($) => {
   const ClassName = {
     DROPDOWN_MENU : 'dropdown-menu',
     ACTIVE        : 'active',
+    DISABLED      : 'disabled',
     FADE          : 'fade',
     SHOW          : 'show'
   }
@@ -79,7 +80,8 @@ const Tab = (($) => {
     show() {
       if (this._element.parentNode &&
           this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-          $(this._element).hasClass(ClassName.ACTIVE)) {
+          $(this._element).hasClass(ClassName.ACTIVE) ||
+          $(this._element).hasClass(ClassName.DISABLED)) {
         return
       }
 

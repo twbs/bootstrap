@@ -275,7 +275,7 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 
 Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-- Controls are `display: inline-block` (or `flex` when enabled) to provide alignment control via `vertical-align` and `margin`. Those also means you'll have some HTML character spaces between elements by default.
+- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/utilities/flexbox/) utilities.
 - Controls and input groups receive `width: auto` to override the Bootstrap default `width: 100%`.
 - Controls **only appear inline in viewports that are at least 576px wide** to account for narrow viewports on mobile devices.
 
@@ -544,7 +544,7 @@ When you need to place plain text next to a form label within a form, use the `.
     <label class="sr-only">Email</label>
     <p class="form-control-static">email@example.com</p>
   </div>
-  <div class="form-group">
+  <div class="form-group mx-sm-3">
     <label for="inputPassword2" class="sr-only">Password</label>
     <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
   </div>
@@ -675,7 +675,7 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 <form class="form-inline">
   <div class="form-group">
     <label for="inputPassword4">Password</label>
-    <input type="password" id="inputPassword4" class="form-control" aria-describedby="passwordHelpInline">
+    <input type="password" id="inputPassword4" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
     <small id="passwordHelpInline" class="text-muted">
       Must be 8-20 characters long.
     </small>
@@ -932,8 +932,6 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
   <option value="3">Three</option>
 </select>
 {% endexample %}
-
-Custom selects degrade nicely in IE9, receiving only a handful of overrides to remove the custom `background-image`. **Multiple selects (e.g., `<select multiple>`) are not currently supported.**
 
 ### File browser
 

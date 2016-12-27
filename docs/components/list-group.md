@@ -27,19 +27,19 @@ The most basic list group is simply an unordered list with list items, and the p
 
 ## Badge
 
-Add badges to any list group item to show unread counts, activity, and more with the help of some utilities. Note the [`flex-items-between` utility class]({{ site.baseurl }}/layout/grid/#horizontal-alignment), the badge's placement, and the lack of a float and margin utilities on the badges.
+Add badges to any list group item to show unread counts, activity, and more with the help of some utilities. Note the [`justify-content-between` utility class]({{ site.baseurl }}/layout/grid/#horizontal-alignment), the badge's placement, and the lack of a float and margin utilities on the badges.
 
 {% highlight html %}
 <ul class="list-group">
-  <li class="list-group-item flex-items-between">
+  <li class="list-group-item justify-content-between">
     Cras justo odio
     <span class="badge badge-default badge-pill">14</span>
   </li>
-  <li class="list-group-item flex-items-between">
+  <li class="list-group-item justify-content-between">
     Dapibus ac facilisis in
     <span class="badge badge-default badge-pill">2</span>
   </li>
-  <li class="list-group-item flex-items-between">
+  <li class="list-group-item justify-content-between">
     Morbi leo risus
     <span class="badge badge-default badge-pill">1</span>
   </li>
