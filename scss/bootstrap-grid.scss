@@ -27,7 +27,6 @@ html {
 // Variables
 //
 
-@import "custom";
 @import "variables";
 
 //
@@ -38,5 +37,7 @@ html {
 @import "mixins/breakpoints";
 @import "mixins/grid-framework";
 @import "mixins/grid";
+
+@import "custom";
 
 @import "grid";
