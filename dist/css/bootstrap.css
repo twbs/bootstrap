@@ -2441,11 +2441,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .form-check {
   position: relative;
   display: block;
-  margin-bottom: 0.75rem;
-}
-
-.form-check + .form-check {
-  margin-top: -.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .form-check.disabled .form-check-label {
@@ -2461,7 +2457,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .form-check-input {
   position: absolute;
-  margin-top: .25rem;
+  margin-top: 0.25rem;
   margin-left: -1.25rem;
 }
 
@@ -2478,7 +2474,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .form-check-inline + .form-check-inline {
-  margin-left: .75rem;
+  margin-left: 0.75rem;
 }
 
 .form-control-feedback {
@@ -2646,6 +2642,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   }
   .form-inline .form-check-input {
     position: relative;
+    margin-top: 0;
+    margin-right: 0.25rem;
     margin-left: 0;
   }
   .form-inline .custom-control {
@@ -2666,7 +2664,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   .form-inline .custom-control-indicator {
     position: static;
     display: inline-block;
-    margin-right: .25rem;
+    margin-right: 0.25rem;
     vertical-align: text-bottom;
   }
   .form-inline .has-feedback .form-control-feedback {
