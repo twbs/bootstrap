@@ -138,7 +138,7 @@ select.form-control {
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
   line-height: $input-line-height;
   border: solid transparent;
-  border-width: 1px 0;
+  border-width: $input-btn-border-width 0;
 
   &.form-control-sm,
   &.form-control-lg {
