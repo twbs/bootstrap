@@ -33,10 +33,10 @@
     @include plain-hover-focus {
       color: $pagination-disabled-color;
       pointer-events: none;
-      cursor: $cursor-disabled;
       background-color: $pagination-disabled-bg;
       border-color: $pagination-disabled-border;
     }
+    cursor: $cursor-disabled; // While `pointer-events: none` removes the cursor in modern browsers, we provide a disabled cursor as a fallback.
   }
 }
 
