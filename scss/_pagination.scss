@@ -20,22 +20,18 @@
   }
 
   &.active .page-link {
-    @include plain-hover-focus {
-      z-index: 2;
-      color: $pagination-active-color;
-      background-color: $pagination-active-bg;
-      border-color: $pagination-active-border;
-    }
+    z-index: 2;
+    color: $pagination-active-color;
+    background-color: $pagination-active-bg;
+    border-color: $pagination-active-border;
   }
 
   &.disabled .page-link {
-    @include plain-hover-focus {
-      color: $pagination-disabled-color;
-      pointer-events: none;
-      background-color: $pagination-disabled-bg;
-      border-color: $pagination-disabled-border;
-    }
+    color: $pagination-disabled-color;
+    pointer-events: none;
     cursor: $cursor-disabled; // While `pointer-events: none` removes the cursor in modern browsers, we provide a disabled cursor as a fallback.
+    background-color: $pagination-disabled-bg;
+    border-color: $pagination-disabled-border;
   }
 }
 
