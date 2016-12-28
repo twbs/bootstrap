@@ -33,7 +33,7 @@ Navbars come with built-in support for a handful of sub-components. Choose from 
 - `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
 - Inline forms with `.float-` utilities for form controls and components.
 - `.navbar-text` for adding vertically centered strings of text.
-- `.inline-form` for form controls and more.
+- `.form-inline` for form controls and more.
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
 
 Here's an example of all the sub-components included in a responsive light-themed navbar.
@@ -275,7 +275,7 @@ Mix and match with other components and utilities as needed.
 
 ## Color schemes
 
-Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Chose from `.navbar-light` for use with light background colors, or `.navbar-inverse` for dark background colors. Then, customize with `.bg-*` utilities.
+Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Choose from `.navbar-light` for use with light background colors, or `.navbar-inverse` for dark background colors. Then, customize with `.bg-*` utilities.
 
 <div class="bd-example">
   <nav class="navbar navbar-inverse navbar-toggleable-md bg-inverse">
@@ -389,7 +389,7 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 </div>
 {% endexample %}
 
-When the container is within your navbar, it's horizontal padding is removed at breakpoints lower than your specified `.navbar-toggleable-*` class. This ensures we're not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed.
+When the container is within your navbar, its horizontal padding is removed at breakpoints lower than your specified `.navbar-toggleable-*` class. This ensures we're not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded navbar-toggleable-md">
