@@ -37,7 +37,7 @@
 
 .page-link {
   position: relative;
-  float: left; // Collapse white-space
+  display: block;
   padding: $pagination-padding-y $pagination-padding-x;
   margin-left: -1px;
   line-height: $pagination-line-height;
