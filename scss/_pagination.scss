@@ -1,8 +1,8 @@
 .pagination {
   display: flex;
   // 1-2: Disable browser default list styles
-  list-style: none; // 1
-  padding-left: 0; // 2
+  padding-left: 0; // 1
+  list-style: none; // 2
   @include border-radius();
 }
 
