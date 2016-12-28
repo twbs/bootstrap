@@ -5,7 +5,7 @@ description: Learn about Bootstrap's list group component for rendering series o
 group: components
 ---
 
-List groups are a flexible and powerful component for displaying not only simple lists of elements, but complex ones with custom content.
+List groups are a flexible and powerful component for displaying a series of content. List group items can be modified and extended to support just about any content within. They can also be used as navigation with the right modifier class.
 
 ## Contents
 
@@ -13,7 +13,7 @@ List groups are a flexible and powerful component for displaying not only simple
 {:toc}
 
 ## Basic example
-The most basic list group is simply an unordered list with list items, and the proper classes. Build upon it with the options that follow, or your own CSS as needed.
+The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed.
 
 {% example html %}
 <ul class="list-group">
@@ -25,47 +25,37 @@ The most basic list group is simply an unordered list with list items, and the p
 </ul>
 {% endexample %}
 
-## Badge
+## Active items
 
-Add badges to any list group item to show unread counts, activity, and more with the help of some utilities. Note the [`justify-content-between` utility class]({{ site.baseurl }}/layout/grid/#horizontal-alignment), the badge's placement, and the lack of a float and margin utilities on the badges.
+Add `.active` to a `.list-group-item` to indicate the current active selection.
 
-{% highlight html %}
+{% example html %}
 <ul class="list-group">
-  <li class="list-group-item justify-content-between">
-    Cras justo odio
-    <span class="badge badge-default badge-pill">14</span>
-  </li>
-  <li class="list-group-item justify-content-between">
-    Dapibus ac facilisis in
-    <span class="badge badge-default badge-pill">2</span>
-  </li>
-  <li class="list-group-item justify-content-between">
-    Morbi leo risus
-    <span class="badge badge-default badge-pill">1</span>
-  </li>
+  <li class="list-group-item active">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
 </ul>
-{% endhighlight %}
-
+{% endexample %}
 
 ## Disabled items
 
-Add `.disabled` to a `.list-group-item` to gray it out to appear disabled.
+Add `.disabled` to a `.list-group-item` to make it _appear_ disabled. Note that some elements with `.disabled` will also require custom JavaScript to fully disable their click events (e.g., links).
 
 {% example html %}
-<div class="list-group">
-  <a href="#" class="list-group-item disabled">
-    Cras justo odio
-  </a>
-  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item">Morbi leo risus</a>
-  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item">Vestibulum at eros</a>
-</div>
+<ul class="list-group">
+  <li class="list-group-item disabled">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
 {% endexample %}
 
-## Anchors and buttons
+## Links and buttons
 
-Use anchors or buttons to create actionable list group items with hover, disabled, and active states by adding `.list-group-item-action`. This separate class contains a few overrides to add compatibility for `<a>`s and `<button>`s, as well as the hover and focus states.
+Use `<a>`s or `<button>`s to create _actionable_ list group items with hover, disabled, and active states by adding `.list-group-item-action`. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like `<li>`s or `<div>`s) don't provide a click or tap affordance.
 
 Be sure to **not use the standard `.btn` classes here**.
 
@@ -81,6 +71,8 @@ Be sure to **not use the standard `.btn` classes here**.
 </div>
 {% endexample %}
 
+With `<button>`s, you can also make use of the `disabled` attribute instead of the `.disabled` class. Sadly, `<a>`s don't support the disabled attribute.
+
 {% example html %}
 <div class="list-group">
   <button type="button" class="list-group-item list-group-item-action active">
@@ -89,7 +81,7 @@ Be sure to **not use the standard `.btn` classes here**.
   <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
   <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
   <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-  <button type="button" class="list-group-item list-group-item-action disabled">Vestibulum at eros</button>
+  <button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at eros</button>
 </div>
 {% endexample %}
 
@@ -109,6 +101,27 @@ Use contextual classes to style list items, default or linked. Also includes `.a
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
+## With badges
+
+Add badges to any list group item to show unread counts, activity, and more with the help of some utilities. Note the [`justify-content-between` utility class]({{ site.baseurl }}/layout/grid/#horizontal-alignment) and the badge's placement.
+
+{% example html %}
+<ul class="list-group">
+  <li class="list-group-item justify-content-between">
+    Cras justo odio
+    <span class="badge badge-default badge-pill">14</span>
+  </li>
+  <li class="list-group-item justify-content-between">
+    Dapibus ac facilisis in
+    <span class="badge badge-default badge-pill">2</span>
+  </li>
+  <li class="list-group-item justify-content-between">
+    Morbi leo risus
+    <span class="badge badge-default badge-pill">1</span>
+  </li>
+</ul>
+{% endexample %}
+
 ## Custom content
 
 Add nearly any HTML within, even for linked list groups like the one below.
@@ -116,16 +129,16 @@ Add nearly any HTML within, even for linked list groups like the one below.
 {% example html %}
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action active">
-    <h5 class="list-group-item-heading">List group item heading</h5>
-    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <h5 class="mt-0 mb-1">List group item heading</h5>
+    <small>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</small>
   </a>
   <a href="#" class="list-group-item list-group-item-action">
-    <h5 class="list-group-item-heading">List group item heading</h5>
-    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <h5 class="mt-0 mb-1">List group item heading</h5>
+    <small>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</small>
   </a>
   <a href="#" class="list-group-item list-group-item-action">
-    <h5 class="list-group-item-heading">List group item heading</h5>
-    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <h5 class="mt-0 mb-1">List group item heading</h5>
+    <small>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</small>
   </a>
 </div>
 {% endexample %}
