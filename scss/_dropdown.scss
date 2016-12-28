@@ -81,30 +81,21 @@
     background-color: $dropdown-link-hover-bg;
   }
 
-  // Active state
-  &.active {
-    @include plain-hover-focus {
-      color: $dropdown-link-active-color;
-      text-decoration: none;
-      background-color: $dropdown-link-active-bg;
-      outline: 0;
-    }
+  &.active,
+  &:active {
+    color: $dropdown-link-active-color;
+    text-decoration: none;
+    background-color: $dropdown-link-active-bg;
   }
 
-  // Disabled state
-  //
-  // Gray out text and ensure the hover/focus state remains gray
-  &.disabled {
-    @include plain-hover-focus {
-      color: $dropdown-link-disabled-color;
-    }
-
-    // Nuke hover/focus effects
-    @include hover-focus {
-      text-decoration: none;
-      cursor: $cursor-disabled;
-      background-color: transparent;
-      background-image: none; // Remove CSS gradient
+  &.disabled,
+  &:disabled {
+    color: $dropdown-link-disabled-color;
+    cursor: $cursor-disabled;
+    background-color: transparent;
+    // Remove CSS gradients if they're enabled
+    @if $enable-gradients {
+      background-image: none;
     }
   }
 }
