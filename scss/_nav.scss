@@ -53,7 +53,7 @@
   }
 
   .nav-link.active,
-  .nav-item.open .nav-link {
+  .nav-item.show .nav-link {
     color: $nav-tabs-active-link-hover-color;
     background-color: $nav-tabs-active-link-hover-bg;
     border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-bg;
@@ -78,7 +78,7 @@
   }
 
   .nav-link.active,
-  .nav-item.open .nav-link {
+  .nav-item.show .nav-link {
     color: $nav-pills-active-link-color;
     cursor: default;
     background-color: $nav-pills-active-link-bg;
