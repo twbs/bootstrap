@@ -1,16 +1,16 @@
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
-    Dynamically generated `<label><input type="file"></label>` causes infinite loop of file dialogs.
+    Visual artifacts in scrollable modal dialogs
   upstream_bug: >
-    Edge#8282613
+    Edge#9011176
   origin: >
-    Bootstrap#20335
+    Bootstrap#20755
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
   upstream_bug: >
@@ -20,7 +20,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
@@ -30,7 +30,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
   upstream_bug: >
@@ -40,7 +40,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
   upstream_bug: >
@@ -50,7 +50,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     `background` of `<tr>` is only applied to first child cell instead of all cells in the row
   upstream_bug: >
@@ -60,7 +60,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
   upstream_bug: >
@@ -70,7 +70,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     Background color from lower layer bleeds through transparent border in some cases
   upstream_bug: >
@@ -80,13 +80,23 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     Hovering over descendant SVG element fires `mouseleave` event at ancestor
   upstream_bug: >
     Edge#7787318
   origin: >
     Bootstrap#19670
+
+-
+  browser: >
+    Edge
+  summary: >
+    Active `position: fixed;` `<button>` flickers when scrolling
+  upstream_bug: >
+    Edge#8770398
+  origin: >
+    Bootstrap#20507
 
 -
   browser: >
@@ -152,11 +162,11 @@
   browser: >
     Firefox
   summary: >
-    `min-width: 0` has no effect on `<fieldset>`
+    Layout with floated columns breaks when printing
   upstream_bug: >
-    Mozilla#504622
+    Mozilla#1315994
   origin: >
-    Bootstrap#12359
+    Bootstrap#21092
 
 -
   browser: >
@@ -224,7 +234,7 @@
   summary: >
     `table-cell` borders not overlapping despite `margin-right: -1px`
   upstream_bug: >
-    Chromium#534750
+    Chromium#568691
   origin: >
     Bootstrap#17438, Bootstrap#14237
 
@@ -260,6 +270,16 @@
 
 -
   browser: >
+    Chrome (Linux)
+  summary: >
+    `<select>`'s pop-up menu is blank on some systems.
+  upstream_bug: >
+    Chromium#510079
+  origin: >
+    Bootstrap#21120
+
+-
+  browser: >
     Safari
   summary: >
     `rem` units in media queries should be calculated using `font-size: initial`, not the root element's `font-size`
@@ -267,6 +287,16 @@
     WebKit#156684
   origin: >
     Bootstrap#17403
+
+-
+  browser: >
+    Safari
+  summary: >
+    Link to container with id and tabindex results in container being ignored by VoiceOver (affects skip links)
+  upstream_bug: >
+    WebKit#163658
+  origin: >
+    Bootstrap#20732
 
 -
   browser: >
@@ -299,16 +329,6 @@
     WebKit#138192, Safari#19435018
   origin: >
     Bootstrap#14868
-
--
-  browser: >
-    Safari (iPad)
-  summary: >
-    `<select>` menu on iPad causes shifting of hit-testing areas
-  upstream_bug: >
-    WebKit#150079, Safari#23082521
-  origin: >
-    Bootstrap#14975
 
 -
   browser: >
@@ -429,6 +449,16 @@
     WebKit#158517
   origin: >
     Bootstrap#12832
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Element which is `position:fixed` disappears after opening a `<select>` menu
+  upstream_bug: >
+    WebKit#162362
+  origin: >
+    Bootstrap#20759
 
 -
   browser: >

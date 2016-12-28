@@ -11,7 +11,7 @@
     "framework",
     "web"
   ],
-  "homepage": "http://getbootstrap.com",
+  "homepage": "https://getbootstrap.com",
   "license": "MIT",
   "moduleType": "globals",
   "main": [
@@ -30,6 +30,6 @@
   ],
   "dependencies": {
     "jquery": "1.9.1 - 3",
-    "tether": "^1.1.1"
+    "tether": "^1.3.7"
   }
 }

@@ -8,8 +8,6 @@ Bootstrap currently works around several outstanding browser bugs in major brows
 
 We publicly list browser bugs that are impacting us here, in the hopes of expediting the process of fixing them. For information on Bootstrap's browser compatibility, [see our browser compatibility docs]({{ site.baseurl }}/getting-started/browsers-devices/#supported-browsers).
 
-Also see [jQuery's browser bug workarounds](https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o).
-
 See also:
 
 * [Chromium issue 536263: [meta] Issues affecting Bootstrap](https://code.google.com/p/chromium/issues/detail?id=536263)
@@ -32,7 +30,7 @@ See also:
       <tr>
         <td>{{ bug.browser }}</td>
         <td>{{ bug.summary | markdownify | bugify }}</td>
-        <td>{{ bug.upstream_bug | bugify }}</td>
+        <td>{{ bug.upstream_bug | bugify }}</td>
         <td>{{ bug.origin | bugify }}</td>
       </tr>
       {% endfor %}

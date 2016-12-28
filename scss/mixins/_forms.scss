@@ -7,20 +7,18 @@
   // Color the label and help text
   .form-control-feedback,
   .form-control-label,
+  .col-form-label,
   .form-check-label,
-  .form-check-inline,
   .custom-control {
     color: $color;
   }
+
   // Set the border and box shadow on specific inputs to match
   .form-control {
     border-color: $color;
-    // @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075)); // Redeclare so transitions work
 
     &:focus {
-      // border-color: darken($border-color, 10%);
-      // $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px lighten($border-color, 20%);
-      // @include box-shadow($shadow);
+      @include box-shadow($input-box-shadow, 0 0 6px lighten($color, 20%));
     }
   }
 
@@ -29,10 +27,6 @@
     color: $color;
     border-color: $color;
     background-color: lighten($color, 40%);
-  }
-  // Optional feedback icon
-  .form-control-feedback {
-    color: $color;
   }
 }
 
@@ -54,8 +48,7 @@
     background-color: $input-bg-focus;
     border-color: $input-border-focus;
     outline: none;
-    $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $input-box-shadow-focus;
-    @include box-shadow($shadow);
+    @include box-shadow($input-box-shadow-focus);
   }
 }
 

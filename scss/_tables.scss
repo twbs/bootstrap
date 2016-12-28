@@ -105,26 +105,26 @@
 
 .thead-inverse {
   th {
-    color: #fff;
-    background-color: $gray-dark;
+    color: $table-inverse-color;
+    background-color: $table-inverse-bg;
   }
 }
 
 .thead-default {
   th {
-    color: $gray;
-    background-color: $gray-lighter;
+    color: $table-head-color;
+    background-color: $table-head-bg;
   }
 }
 
 .table-inverse {
-  color: $gray-lighter;
-  background-color: $gray-dark;
+  color: $table-inverse-color;
+  background-color: $table-inverse-bg;
 
   th,
   td,
   thead th {
-    border-color: $gray;
+    border-color: $body-bg;
   }
 
   &.table-bordered {
@@ -136,20 +136,20 @@
 
 // Responsive tables
 //
-// Wrap your tables in `.table-responsive` and we'll make them mobile friendly
-// by enabling horizontal scrolling. Only applies <768px. Everything above that
+// Add `.table-responsive` to `.table`s and we'll make them mobile friendly by
+// enabling horizontal scrolling. Only applies <768px. Everything above that
 // will display normally.
 
 .table-responsive {
   display: block;
   width: 100%;
-  min-height: .01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
   overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
 
-  // TODO: find out if we need this still.
-  //
-  // border: $table-border-width solid $table-border-color;
-  // -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+  // Prevent double border on horizontal scroll due to use of `display: block;`
+  &.table-bordered {
+    border: 0;
+  }
 }
 
 

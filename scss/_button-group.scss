@@ -4,27 +4,26 @@
 .btn-group,
 .btn-group-vertical {
   position: relative;
-  display: inline-block;
+  display: flex;
   vertical-align: middle; // match .btn alignment given font-size hack above
 
   > .btn {
     position: relative;
-    float: left;
+    flex: 0 1 auto;
 
-    // Bring the "active" button to the front
+    // Bring the hover, focused, and "active" buttons to the fron to overlay
+    // the borders properly
+    @include hover {
+      z-index: 2;
+    }
     &:focus,
     &:active,
     &.active {
       z-index: 2;
     }
-    @include hover {
-      z-index: 2;
-    }
   }
-}
 
-// Prevent double borders when buttons are next to each other
-.btn-group {
+  // Prevent double borders when buttons are next to each other
   .btn + .btn,
   .btn + .btn-group,
   .btn-group + .btn,
@@ -35,18 +34,11 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-  margin-left: -$btn-toolbar-margin; // Offset the first child's margin
-  @include clearfix();
+  display: flex;
+  justify-content: flex-start;
 
-  .btn-group,
   .input-group {
-    float: left;
-  }
-
-  > .btn,
-  > .btn-group,
-  > .input-group {
-    margin-left: $btn-toolbar-margin;
+    width: auto;
   }
 }
 
@@ -157,22 +149,14 @@
 //
 
 .btn-group-vertical {
-  > .btn,
-  > .btn-group,
-  > .btn-group > .btn {
-    display: block;
-    float: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  .btn,
+  .btn-group {
     width: 100%;
-    max-width: 100%;
-  }
-
-  // Clear floats so dropdown menus can be properly placed
-  > .btn-group {
-    @include clearfix();
-
-    > .btn {
-      float: none;
-    }
   }
 
   > .btn + .btn,

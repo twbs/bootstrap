@@ -3,7 +3,6 @@ fail_on_violations: true
 scss:
   config_file: scss/.scss-lint.yml
   enabled: true
-  ignore_file: scss/_normalize.scss
 
 javascript:
   enabled: false
@@ -11,6 +10,7 @@ javascript:
 eslint:
   enabled: true
   config_file: js/.eslintrc.json
+  ignore_file: .houndignore
 
 jscs:
   enabled: true

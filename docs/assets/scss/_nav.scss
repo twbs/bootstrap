@@ -3,8 +3,8 @@
 //
 
 .bd-navbar {
-  padding-right: 0;
-  padding-left: 0;
+  // padding-right: 0;
+  // padding-left: 0;
   margin-bottom: 2rem;
   border-bottom: 1px solid rgba(0,0,0,.1);
   box-shadow: 0 6px 12px rgba(0,0,0,.05);
@@ -29,15 +29,5 @@
 
   .dropdown-menu {
     font-size: inherit;
-  }
-
-  @include media-breakpoint-down(sm) {
-    .nav-link {
-      float: none;
-
-      + .nav-link {
-        margin-left: 0;
-      }
-    }
   }
 }

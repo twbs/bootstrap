@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Navs
+description: Documentation and examples for how to use Bootstrap's included navigation components.
 group: components
 ---
 
@@ -11,13 +12,9 @@ Navigation available in Bootstrap share general markup and styles, from the base
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-## Regarding accessibility
-
-If you are using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
-
 ## Base nav
 
-Roll your own navigation style by extending the base `.nav` component. All Bootstrap's nav components are built on top of this by specifying additional styles. Includes styles for the disabled state, but **not the active state**.
+The base `.nav` component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling. No active states are included in the base nav.
 
 {% example html %}
 <ul class="nav">
@@ -36,7 +33,7 @@ Roll your own navigation style by extending the base `.nav` component. All Boots
 </ul>
 {% endexample %}
 
-Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element. The change in nav item display below **is intentional** as `<li>`s have a different default `display` than regular `<a>` elements.
+Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element. Because the `.nav` uses `display: flex`, the nav links behave the same as nav items would, but without the extra markup.
 
 {% example html %}
 <nav class="nav">
@@ -47,23 +44,18 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 </nav>
 {% endexample %}
 
-## Inline
+## Available styles
 
-Space out nav links in a horizontal band with `.nav-inline`. Longer series of links will wrap to a new line.
+Change the style of `.nav`s component with modifiers and utilities. Mix and match as needed, or build your own.
 
-{% example html %}
-<nav class="nav nav-inline">
-  <a class="nav-link active" href="#">Active</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#">Disabled</a>
-</nav>
-{% endexample %}
+### Horizontal alignment
 
-The same works for a navigation built with lists.
+Change the horizontal alignment of your nav with [flexbox utilities]({{ site.baseurl }}/layout/grid/#horizontal-alignment). By default, navs are left-aligned, but you can easily change them to center or right aligned.
+
+Centered with `.justify-content-center`:
 
 {% example html %}
-<ul class="nav nav-inline">
+<ul class="nav justify-content-center">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
   </li>
@@ -79,7 +71,58 @@ The same works for a navigation built with lists.
 </ul>
 {% endexample %}
 
-## Tabs
+Right-aligned with `.justify-content-end`:
+
+{% example html %}
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
+### Vertical
+
+Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.flex-sm-column`).
+
+{% example html %}
+<ul class="nav flex-column">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
+As always, vertical navigation is possible without `<ul>`s, too.
+
+{% example html %}
+<nav class="nav flex-column">
+  <a class="nav-link active" href="#">Active</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled" href="#">Disabled</a>
+</nav>
+{% endexample %}
+
+### Tabs
 
 Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [tab JavaScript plugin](#javascript-behavior).
 
@@ -100,7 +143,7 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
 </ul>
 {% endexample %}
 
-## Pills
+### Pills
 
 Take that same HTML, but use `.nav-pills` instead:
 
@@ -121,17 +164,17 @@ Take that same HTML, but use `.nav-pills` instead:
 </ul>
 {% endexample %}
 
-### Stacked pills
+### Fill and justify
 
-Add `.nav-stacked` to the `.nav.nav-pills` to stack them vertically. Each `.nav-link` becomes block-level, allowing for larger hit areas via mouse or tap.
+Force your `.nav`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `.nav-fill`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
 {% example html %}
-<ul class="nav nav-pills nav-stacked">
+<ul class="nav nav-pills nav-fill">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Longer nav link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -142,16 +185,41 @@ Add `.nav-stacked` to the `.nav.nav-pills` to stack them vertically. Each `.nav-
 </ul>
 {% endexample %}
 
-As always, stacked pills are possible without `<ul>`s.
+For equal-width elements, use `.nav-justified`. All horizontal space will be occupied by nav links, but unlike the `.nav-fill` above, every nav item will be the same width.
 
 {% example html %}
-<nav class="nav nav-pills nav-stacked">
-  <a class="nav-link active" href="#">Active</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#">Disabled</a>
+<ul class="nav nav-pills nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Longer nav link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+{% endexample %}
+
+## Working with flex utilities
+
+If you need responsive nav variations, consider using a series of [flex utilities](). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
+
+{% example html %}
+<nav class="nav nav-pills flex-column flex-sm-row">
+  <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
+  <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+  <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+  <a class="flex-sm-fill text-sm-center nav-link disabled" href="#">Disabled</a>
 </nav>
 {% endexample %}
+
+## Regarding accessibility
+
+If you're using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
 
 ## Using dropdowns
 
@@ -232,7 +300,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledBy="home-tab">
+    <div role="tabpanel" class="tab-pane fade show active" id="home" aria-labelledBy="home-tab">
       <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledBy="profile-tab">
@@ -301,11 +369,11 @@ $('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
 
 ### Fade effect
 
-To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must also have `.in` to make the initial content visible.
+To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must also have `.show` to make the initial content visible.
 
 {% highlight html %}
 <div class="tab-content">
-  <div class="tab-pane fade in active" id="home" role="tabpanel">...</div>
+  <div class="tab-pane fade show active" id="home" role="tabpanel">...</div>
   <div class="tab-pane fade" id="profile" role="tabpanel">...</div>
   <div class="tab-pane fade" id="messages" role="tabpanel">...</div>
   <div class="tab-pane fade" id="settings" role="tabpanel">...</div>

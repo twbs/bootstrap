@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alert</title>
-  <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
+    <title>Alert</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Alert <small>Bootstrap Visual Test</small></h1>
 
-<div class="container">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      </div>
 
-  <h1>Alert <small>Bootstrap Visual Test</small></h1>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <p>
+          <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+        </p>
+        <p>
+          <button type="button" class="btn btn-danger">Danger</button>
+          <button type="button" class="btn btn-secondary">Secondary</button>
+        </p>
+      </div>
 
-  <div class="alert alert-warning fade in">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-  </div>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <p>
+          <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.
+        </p>
+        <p>
+          <button type="button" class="btn btn-danger">Take this action</button>
+          <button type="button" class="btn btn-primary">Or do this</button>
+        </p>
+      </div>
+    </div>
 
-  <div class="alert alert-danger fade in">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h4>Oh snap! You got an error!</h4>
-    <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
-    <p>
-      <button type="button" class="btn btn-danger">Take this action</button>
-      <button type="button" class="btn btn-default">Or do this</button>
-    </p>
-  </div>
-
-</div>
-
-<!-- JavaScript Includes -->
-<script src="../vendor/jquery.min.js"></script>
-<script src="../../dist/util.js"></script>
-<script src="../../dist/alert.js"></script>
-
-</body>
+    <script src="../vendor/jquery.min.js"></script>
+    <script src="../../dist/util.js"></script>
+    <script src="../../dist/alert.js"></script>
+  </body>
 </html>

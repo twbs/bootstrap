@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: JavaScript
+description: Learn about Bootstrap's JavaScript—how to include it, our data and programmatic API options, and more.
 group: getting-started
 ---
 

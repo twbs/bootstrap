@@ -5,12 +5,18 @@
 
 .navbar {
   position: relative;
+  display: flex;
   padding: $navbar-padding-y $navbar-padding-x;
-  @include clearfix;
+}
 
-  @include media-breakpoint-up(sm) {
-    @include border-radius($navbar-border-radius);
-  }
+.navbar-toggler-left {
+  position: absolute;
+  left: $navbar-padding-x;
+}
+
+.navbar-toggler-right {
+  position: absolute;
+  right: $navbar-padding-x;
 }
 
 
@@ -19,15 +25,6 @@
 // Display the navbar across the entirety of the page or fixed it to the top or
 // bottom of the page.
 
-// A static, full width modifier with no rounded corners.
-.navbar-full {
-  z-index: $zindex-navbar;
-
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
-}
-
 // Fix the top/bottom navbars when screen real estate supports it
 .navbar-fixed-top,
 .navbar-fixed-bottom {
@@ -35,11 +32,6 @@
   right: 0;
   left: 0;
   z-index: $zindex-navbar-fixed;
-
-  // Undo the rounded corners
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
 }
 
 .navbar-fixed-top {
@@ -54,12 +46,6 @@
   position: sticky;
   top: 0;
   z-index: $zindex-navbar-sticky;
-  width: 100%;
-
-  // Undo the rounded corners
-  @include media-breakpoint-up(sm) {
-    @include border-radius(0);
-  }
 }
 
 
@@ -68,27 +54,24 @@
 //
 
 .navbar-brand {
-  float: left;
-  padding-top:    $navbar-brand-padding-y;
-  padding-bottom: $navbar-brand-padding-y;
-  margin-right: 1rem;
+  display: inline-block;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  margin-right: $navbar-padding-x;
   font-size: $font-size-lg;
+  line-height: inherit;
+  white-space: nowrap;
 
   @include hover-focus {
     text-decoration: none;
   }
-
-  > img {
-    display: block;
-  }
 }
-
 
 .navbar-divider {
   float: left;
   width: $border-width;
-  padding-top: .425rem;
-  padding-bottom: .425rem;
+  padding-top: $navbar-divider-padding-y;
+  padding-bottom: $navbar-divider-padding-y;
   margin-right: $navbar-padding-x;
   margin-left:  $navbar-padding-x;
   overflow: hidden;
@@ -99,22 +82,45 @@
 }
 
 
+// Navbar text
+//
+//
+
+.navbar-text {
+  display: inline-block;
+  padding-top:    .425rem;
+  padding-bottom: .425rem;
+}
+
+
 // Navbar toggle
 //
 // Custom button for toggling the `.navbar-collapse`, powered by the collapse
 // Bootstrap JavaScript plugin.
 
 .navbar-toggler {
-  padding: .5rem .75rem;
-  font-size: $font-size-lg;
+  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+  font-size: $navbar-toggler-font-size;
   line-height: 1;
-  background: none;
-  border: $border-width solid transparent;
-  @include border-radius($btn-border-radius);
+  background: transparent; // remove default button style
+  border: $border-width solid transparent; // remove default button style
+  @include border-radius($navbar-toggler-border-radius);
 
   @include hover-focus {
     text-decoration: none;
   }
+}
+
+// Keep as a separate element so folks can easily override it with another icon
+// or image file as needed.
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
 }
 
 // Navigation
@@ -122,28 +128,20 @@
 // Custom navbar navigation built on the base `.nav` styles.
 
 .navbar-nav {
-  .nav-item {
-    float: left;
-  }
+  flex-grow: 10; // high number to force alignment
 
   .nav-link {
     display: block;
-    padding-top:    .425rem;
+    padding-top: .425rem;
     padding-bottom: .425rem;
-
-    + .nav-link {
-      margin-left: 1rem;
-    }
-  }
-
-  .nav-item + .nav-item {
-    margin-left: 1rem;
   }
 }
 
+
 // Dark links against a light background
 .navbar-light {
-  .navbar-brand {
+  .navbar-brand,
+  .navbar-toggler {
     color: $navbar-light-active-color;
 
     @include hover-focus {
@@ -158,39 +156,58 @@
       @include hover-focus {
         color: $navbar-light-hover-color;
       }
+
+      &.disabled {
+        color: $navbar-light-disabled-color;
+      }
     }
 
     .open > .nav-link,
     .active > .nav-link,
     .nav-link.open,
     .nav-link.active {
-      @include plain-hover-focus {
-        color: $navbar-light-active-color;
-      }
+      color: $navbar-light-active-color;
     }
+  }
+
+  .navbar-toggler {
+    border-color: $navbar-light-toggler-border;
+  }
+
+  .navbar-toggler-icon {
+    background-image: $navbar-light-toggler-bg;
   }
 
   .navbar-divider {
     background-color: rgba(0,0,0,.075);
   }
+
+  .navbar-text {
+    color: $navbar-light-color;
+  }
 }
 
 // White links against a dark background
-.navbar-dark {
-  .navbar-brand {
-    color: $navbar-dark-active-color;
+.navbar-inverse {
+  .navbar-brand,
+  .navbar-toggler {
+    color: $navbar-inverse-active-color;
 
     @include hover-focus {
-      color: $navbar-dark-active-color;
+      color: $navbar-inverse-active-color;
     }
   }
 
   .navbar-nav {
     .nav-link {
-      color: $navbar-dark-color;
+      color: $navbar-inverse-color;
 
       @include hover-focus {
-        color: $navbar-dark-hover-color;
+        color: $navbar-inverse-hover-color;
+      }
+
+      &.disabled {
+        color: $navbar-inverse-disabled-color;
       }
     }
 
@@ -198,59 +215,83 @@
     .active > .nav-link,
     .nav-link.open,
     .nav-link.active {
-      @include plain-hover-focus {
-        color: $navbar-dark-active-color;
-      }
+      color: $navbar-inverse-active-color;
     }
+  }
+
+  .navbar-toggler {
+    border-color: $navbar-inverse-toggler-border;
+  }
+
+  .navbar-toggler-icon {
+    background-image: $navbar-inverse-toggler-bg;
   }
 
   .navbar-divider {
     background-color: rgba(255,255,255,.075);
   }
-}
 
+  .navbar-text {
+    color: $navbar-inverse-color;
+  }
+}
 
 // Navbar toggleable
 //
 // Custom override for collapse plugin in navbar.
 
+// Placed at the end of the file so it can override some CSS properties
 .navbar-toggleable {
-  &-xs {
-    @include clearfix;
-    @include media-breakpoint-down(xs) {
-      .navbar-nav .nav-item {
-        float: none;
-        margin-left: 0;
-      }
-    }
-    @include media-breakpoint-up(sm) {
-      display: block !important;
-    }
-  }
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        .navbar-nav {
+          .dropdown-menu {
+            position: static;
+            float: none;
+          }
+        }
 
-  &-sm {
-    @include clearfix;
-    @include media-breakpoint-down(sm) {
-      .navbar-nav .nav-item {
-        float: none;
-        margin-left: 0;
+        > .container {
+          padding-right: 0;
+          padding-left: 0;
+        }
       }
-    }
-    @include media-breakpoint-up(md) {
-      display: block !important;
-    }
-  }
 
-  &-md {
-    @include clearfix;
-    @include media-breakpoint-down(md) {
-      .navbar-nav .nav-item {
-        float: none;
-        margin-left: 0;
+      @include media-breakpoint-up($next) {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        // For nesting containers, have to redeclare for alignment purposes
+        > .container {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+        }
+
+        // scss-lint:disable ImportantRule
+        .navbar-collapse {
+          display: flex !important;
+          width: 100%;
+        }
+        // scss-lint:enable ImportantRule
+
+        .nav-item {
+          display: inline-block;
+        }
+
+        .nav-link {
+          padding-right: .5rem;
+          padding-left: .5rem;
+        }
+
+        .navbar-toggler {
+          display: none;
+        }
       }
-    }
-    @include media-breakpoint-up(lg) {
-      display: block !important;
     }
   }
 }

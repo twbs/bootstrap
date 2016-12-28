@@ -1,5 +1,5 @@
 $(function () {
-  'use strict';
+  'use strict'
 
   QUnit.module('carousel plugin')
 
@@ -507,6 +507,37 @@ $(function () {
     assert.strictEqual($template.find('.carousel-item')[1], $template.find('.active')[0], 'second item active')
   })
 
+  QUnit.test('should not prevent keydown if key is not ARROW_LEFT or ARROW_RIGHT', function (assert) {
+    assert.expect(2)
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
+        + '<div class="carousel-inner">'
+        + '<div id="first" class="carousel-item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+    var $template = $(templateHTML)
+
+    $template.bootstrapCarousel()
+    var done = assert.async()
+
+    var eventArrowDown = $.Event('keydown', { which: 40 })
+    var eventArrowUp   = $.Event('keydown', { which: 38 })
+
+    $template.one('keydown', function (event) {
+      assert.strictEqual(event.isDefaultPrevented(), false)
+    })
+
+    $template.trigger(eventArrowDown)
+
+    $template.one('keydown', function (event) {
+      assert.strictEqual(event.isDefaultPrevented(), false)
+      done()
+    })
+
+    $template.trigger(eventArrowUp)
+  })
+
   QUnit.test('should support disabling the keyboard navigation', function (assert) {
     assert.expect(3)
     var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false" data-keyboard="false">'
@@ -758,5 +789,37 @@ $(function () {
       })
       .bootstrapCarousel('prev')
     assert.strictEqual($carousel.find('.carousel-item.active').attr('id'), 'one', 'carousel did not wrap around and stayed on 1st slide')
+  })
+
+  QUnit.test('should not prevent keydown for inputs and textareas', function (assert) {
+    assert.expect(2)
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
+        + '<div class="carousel-inner">'
+          + '<div id="first" class="carousel-item">'
+            + '<input type="text" id="inputText" />'
+          + '</div>'
+          + '<div id="second" class="carousel-item active">'
+            + '<textarea id="txtArea"></textarea>'
+          + '</div>'
+        + '</div>'
+        + '</div>'
+    var $template = $(templateHTML)
+    var done = assert.async()
+    $template.appendTo('#qunit-fixture')
+    var $inputText = $template.find('#inputText')
+    var $textArea = $template.find('#txtArea')
+    $template.bootstrapCarousel()
+
+    var eventKeyDown = $.Event('keydown', { which: 65 }) // 65 for "a"
+    $inputText.on('keydown', function (event) {
+      assert.strictEqual(event.isDefaultPrevented(), false)
+    })
+    $inputText.trigger(eventKeyDown)
+
+    $textArea.on('keydown', function (event) {
+      assert.strictEqual(event.isDefaultPrevented(), false)
+      done()
+    })
+    $textArea.trigger(eventKeyDown)
   })
 })

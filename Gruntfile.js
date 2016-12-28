@@ -1,6 +1,6 @@
 /*!
  * Bootstrap's Gruntfile
- * http://getbootstrap.com
+ * https://getbootstrap.com
  * Copyright 2013-2016 The Bootstrap Authors
  * Copyright 2013-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -39,7 +39,7 @@ module.exports = function (grunt) {
             ' * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n' +
             ' */\n',
     jqueryCheck: 'if (typeof jQuery === \'undefined\') {\n' +
-                 '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery\')\n' +
+                 '  throw new Error(\'Bootstrap\\\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\\\'s JavaScript.\')\n' +
                  '}\n',
     jqueryVersionCheck: '+function ($) {\n' +
                         '  var version = $.fn.jquery.split(\' \')[0].split(\'.\')\n' +
@@ -58,8 +58,7 @@ module.exports = function (grunt) {
     babel: {
       dev: {
         options: {
-          sourceMap: true,
-          modules: 'ignore'
+          sourceMap: true
         },
         files: {
           'js/dist/util.js'      : 'js/src/util.js',
@@ -77,7 +76,7 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
-          modules: 'ignore'
+          extends: '../../js/.babelrc'
         },
         files: {
           '<%= concat.bootstrap.dest %>' : '<%= concat.bootstrap.dest %>'
@@ -87,8 +86,8 @@ module.exports = function (grunt) {
 
     stamp: {
       options: {
-        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>\n+function ($) {\n',
-        footer: '\n}(jQuery);'
+        banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>\n+function () {\n',
+        footer: '\n}();'
       },
       bootstrap: {
         files: {
@@ -102,8 +101,7 @@ module.exports = function (grunt) {
         // Custom function to remove all export and import statements
         process: function (src) {
           return src.replace(/^(export|import).*/gm, '');
-        },
-        stripBanners: false
+        }
       },
       bootstrap: {
         src: [
@@ -123,24 +121,6 @@ module.exports = function (grunt) {
       }
     },
 
-    uglify: {
-      options: {
-        compress: {
-          warnings: false
-        },
-        mangle: true,
-        preserveComments: /^!|@preserve|@license|@cc_on/i
-      },
-      core: {
-        src: '<%= concat.bootstrap.dest %>',
-        dest: 'dist/js/<%= pkg.name %>.min.js'
-      },
-      docsJs: {
-        src: configBridge.paths.docsJs,
-        dest: 'docs/assets/js/docs.min.js'
-      }
-    },
-
     qunit: {
       options: {
         inject: 'js/tests/unit/phantom.js'
@@ -149,53 +129,6 @@ module.exports = function (grunt) {
     },
 
     // CSS build configuration
-    scsslint: {
-      options: {
-        bundleExec: true,
-        config: 'scss/.scss-lint.yml',
-        reporterOutput: null
-      },
-      core: {
-        src: ['scss/*.scss', '!scss/_normalize.scss']
-      },
-      docs: {
-        src: ['docs/assets/scss/*.scss', '!docs/assets/scss/docs.scss']
-      }
-    },
-
-    cssmin: {
-      options: {
-        // TODO: disable `zeroUnits` optimization once clean-css 3.2 is released
-        //    and then simplify the fix for https://github.com/twbs/bootstrap/issues/14837 accordingly
-        compatibility: 'ie9',
-        keepSpecialComments: '*',
-        sourceMap: true,
-        advanced: false
-      },
-      core: {
-        files: [
-          {
-            expand: true,
-            cwd: 'dist/css',
-            src: ['*.css', '!*.min.css'],
-            dest: 'dist/css',
-            ext: '.min.css'
-          }
-        ]
-      },
-      docs: {
-        files: [
-          {
-            expand: true,
-            cwd: 'docs/assets/css',
-            src: ['*.css', '!*.min.css'],
-            dest: 'docs/assets/css',
-            ext: '.min.css'
-          }
-        ]
-      }
-    },
-
     copy: {
       docs: {
         expand: true,
@@ -279,6 +212,12 @@ module.exports = function (grunt) {
     },
 
     exec: {
+      'clean-css': {
+        command: 'npm run clean-css'
+      },
+      'clean-css-docs': {
+        command: 'npm run clean-css-docs'
+      },
       postcss: {
         command: 'npm run postcss'
       },
@@ -288,8 +227,17 @@ module.exports = function (grunt) {
       htmlhint: {
         command: 'npm run htmlhint'
       },
-      'upload-preview': {
-        command: './grunt/upload-preview.sh'
+      'scss-lint': {
+        command: 'npm run scss-lint'
+      },
+      'scss-lint-docs': {
+        command: 'npm run scss-lint-docs'
+      },
+      uglify: {
+        command: 'npm run uglify'
+      },
+      'uglify-docs': {
+        command: 'npm run uglify-docs'
       }
     },
 
@@ -365,7 +313,7 @@ module.exports = function (grunt) {
   if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' &&
       // Skip Sauce if running a different subset of the test suite
       runSubset('sauce-js-unit')) {
-    testSubtasks = testSubtasks.concat(['dist', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs', 'exec:upload-preview']);
+    testSubtasks = testSubtasks.concat(['dist', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs']);
     // Skip Sauce on Travis when [skip sauce] is in the commit message
     if (isUndefOrNonZero(process.env.TWBS_DO_SAUCE)) {
       testSubtasks.push('connect');
@@ -375,9 +323,9 @@ module.exports = function (grunt) {
   grunt.registerTask('test', testSubtasks);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'uglify:core']);
+  grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'exec:uglify']);
 
-  grunt.registerTask('test-scss', ['scsslint:core']);
+  grunt.registerTask('test-scss', ['exec:scss-lint']);
 
   // CSS distribution task.
   // Supported Compilers: sass (Ruby) and libsass.
@@ -385,9 +333,9 @@ module.exports = function (grunt) {
     require('./grunt/bs-sass-compile/' + sassCompilerName + '.js')(grunt);
   })(process.env.TWBS_SASS || 'libsass');
   // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
-  grunt.registerTask('sass-compile', ['sass:core', 'sass:docs']);
+  grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
 
-  grunt.registerTask('dist-css', ['sass-compile', 'exec:postcss', 'cssmin:core', 'cssmin:docs']);
+  grunt.registerTask('dist-css', ['sass-compile', 'exec:postcss', 'exec:clean-css', 'exec:clean-css-docs']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
@@ -396,9 +344,9 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['clean:dist', 'test']);
 
   // Docs task.
-  grunt.registerTask('docs-css', ['cssmin:docs', 'exec:postcss-docs']);
-  grunt.registerTask('lint-docs-css', ['scsslint:docs']);
-  grunt.registerTask('docs-js', ['uglify:docsJs']);
+  grunt.registerTask('docs-css', ['exec:clean-css-docs', 'exec:postcss-docs']);
+  grunt.registerTask('lint-docs-css', ['exec:scss-lint-docs']);
+  grunt.registerTask('docs-js', ['exec:uglify-docs']);
   grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs']);
   grunt.registerTask('docs-github', ['jekyll:github']);
 

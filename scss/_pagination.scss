@@ -1,14 +1,12 @@
 .pagination {
-  display: inline-block;
-  padding-left: 0;
-  margin-top: $spacer-y;
-  margin-bottom: $spacer-y;
+  display: flex;
+  // 1-2: Disable browser default list styles
+  padding-left: 0; // 1
+  list-style: none; // 2
   @include border-radius();
 }
 
 .page-item {
-  display: inline; // Remove list-style and block-level defaults
-
   &:first-child {
     .page-link {
       margin-left: 0;
@@ -22,38 +20,34 @@
   }
 
   &.active .page-link {
-    @include plain-hover-focus {
-      z-index: 2;
-      color: $pagination-active-color;
-      cursor: default;
-      background-color: $pagination-active-bg;
-      border-color: $pagination-active-border;
-    }
+    z-index: 2;
+    color: $pagination-active-color;
+    background-color: $pagination-active-bg;
+    border-color: $pagination-active-border;
   }
 
   &.disabled .page-link {
-    @include plain-hover-focus {
-      color: $pagination-disabled-color;
-      pointer-events: none;
-      cursor: $cursor-disabled;
-      background-color: $pagination-disabled-bg;
-      border-color: $pagination-disabled-border;
-    }
+    color: $pagination-disabled-color;
+    pointer-events: none;
+    cursor: $cursor-disabled; // While `pointer-events: none` removes the cursor in modern browsers, we provide a disabled cursor as a fallback.
+    background-color: $pagination-disabled-bg;
+    border-color: $pagination-disabled-border;
   }
 }
 
 .page-link {
   position: relative;
-  float: left; // Collapse white-space
+  display: block;
   padding: $pagination-padding-y $pagination-padding-x;
   margin-left: -1px;
+  line-height: $pagination-line-height;
   color: $pagination-color;
-  text-decoration: none;
   background-color: $pagination-bg;
   border: $pagination-border-width solid $pagination-border-color;
 
   @include hover-focus {
     color: $pagination-hover-color;
+    text-decoration: none;
     background-color: $pagination-hover-bg;
     border-color: $pagination-hover-border;
   }
