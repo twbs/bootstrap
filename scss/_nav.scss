@@ -21,12 +21,7 @@
   // Disabled state lightens text and removes hover/tab effects
   &.disabled {
     color: $nav-disabled-link-color;
-
-    @include plain-hover-focus {
-      color: $nav-disabled-link-hover-color;
-      cursor: $cursor-disabled;
-      background-color: $nav-disabled-link-hover-bg;
-    }
+    cursor: $cursor-disabled;
   }
 }
 
@@ -51,21 +46,17 @@
     }
 
     &.disabled {
-      @include plain-hover-focus {
-        color: $nav-disabled-link-color;
-        background-color: transparent;
-        border-color: transparent;
-      }
+      color: $nav-disabled-link-color;
+      background-color: transparent;
+      border-color: transparent;
     }
   }
 
   .nav-link.active,
   .nav-item.open .nav-link {
-    @include plain-hover-focus {
-      color: $nav-tabs-active-link-hover-color;
-      background-color: $nav-tabs-active-link-hover-bg;
-      border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-bg;
-    }
+    color: $nav-tabs-active-link-hover-color;
+    background-color: $nav-tabs-active-link-hover-bg;
+    border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-bg;
   }
 
   .dropdown-menu {
@@ -88,11 +79,9 @@
 
   .nav-link.active,
   .nav-item.open .nav-link {
-    @include plain-hover-focus {
-      color: $nav-pills-active-link-color;
-      cursor: default;
-      background-color: $nav-pills-active-link-bg;
-    }
+    color: $nav-pills-active-link-color;
+    cursor: default;
+    background-color: $nav-pills-active-link-bg;
   }
 }
 
