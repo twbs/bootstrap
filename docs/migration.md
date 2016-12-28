@@ -21,10 +21,11 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Global changes
 
+- Flexbox is enabled by default. In general this means a move away from floats and more across our components.
 - Switched from [Less](http://lesscss.org/) to [Sass](http://sass-lang.com/) for our source CSS files.
 - Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and grid behavior as viewports are not affected by type size.
 - Global font-size increased from `14px` to `16px`.
-- Added a new grid tier for smaller devices at `576px` and below.
+- Added a new grid tier for smaller devices at `576px` and below (our new `xs` tier).
 - Replaced the separate optional theme with configurable options via SCSS variables (e.g., `$enable-gradients: true`).
 
 ### Grid system
@@ -96,6 +97,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
   - Dropped the `.form-horizontal` class requirement.
   - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
+- Added custom forms support (for checkboxes, radios, selects, and file inputs).
 
 ### Buttons
 
@@ -106,8 +108,10 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 ### Button group
 
+- Rewrote component with flexbox.
 - Dropped the `.btn-group-xs` class entirely given removal of `.btn-xs`.
-- Removed justified button groups as they were only available for `<a>` elements and not `<button>` elements.
+- Removed explicit spacing between button groups in button toolbars; use margin utilities now.
+- Improved documentation for use with other components.
 
 ### Dropdowns
 
@@ -128,14 +132,18 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 ### List groups
 
+- Rewrote component with flexbox.
 - Replaced `a.list-group-item` with an explicit class, `.list-group-item-action`, for styling link and button versions of list group items.
 
 ### Modal
 
+- Rewrote component with flexbox.
+- Given move to flexbox, alignment of dismiss icons in the header is likely broken as we're no longer using floats. Floated content comes first, but with flexbox that's no longer the case. Update your dismiss icons to come after modal titles to fix.
 - The `remote` option (which could be used to automatically load and inject external content into a modal) and the corresponding `loaded.bs.modal` event were removed. We recommend instead using client-side templating or a data binding framework, or calling [jQuery.load](https://api.jquery.com/load/) yourself.
 
 ### Navs
 
+- Rewrote component with flexbox.
 - Dropped nearly all `>` selectors for simpler styling via un-nested classes.
 - Instead of HTML-specific selectors like `.nav > li > a`, we use separate classes for `.nav`s, `.nav-item`s, and `.nav-link`s. This makes your HTML more flexible while bringing along increased extensibility.
 
@@ -154,6 +162,7 @@ The navbar has been entirely rewritten in flexbox with improved support for alig
 
 ### Pagination
 
+- Rewrote component with flexbox.
 - Explicit classes (`.page-item`, `.page-link`) are now required on the descendants of `.pagination`s
 - Dropped the `.pager` component entirely as it was little more than customized outline buttons.
 
@@ -173,8 +182,8 @@ Dropped entirely for the new card component.
 
 #### Panels
 
-- `.panel` to `.card`
-- `.panel-default` removed and no replacement
+- `.panel` to `.card`, now built with flexbox.
+- `.panel-default` removed and no replacement.
 - `.panel-group` removed and no replacement. `.card-group` is not a replacement, it is different.
 - `.panel-heading` to `.card-header`
 - `.panel-title` to `.card-title`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/utilities/typography/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
@@ -209,7 +218,9 @@ Dropped entirely for the new card component.
 
 - Made display utilities responsive (e.g., `.d-none` and `d-{sm,md,lg,xl}-none`).
 - Added `.float-{sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-left` and `.float-right`.
-- Added responsive variations to our text alignment classes `.text-{xs,sm,md,lg,xl}-{left,center,right}` and removed the redundant `.text-{left,center,right}` utilities as they are the same as the `xs` variation.
+- Added responsive variations to our text alignment classes `.text-{sm,md,lg,xl}-{left,center,right}`.
+- Added new margin auto utilities for all sides, plus vertical and horizontal shorthands.
+- Added boatload of flexbox utilities.
 - Dropped `.center-block` for the new `.mx-auto` class.
 
 ### Vendor prefix mixins
@@ -227,32 +238,6 @@ Our documentation received an upgrade across the board as well. Here's the low d
 - All docs content has been rewritten in Markdown (instead of HTML) for easier editing.
 - Pages have been reorganized for simpler content and a more approachable hierarchy.
 - We moved from regular CSS to SCSS to take full advantage of Bootstrap's variables, mixins, and more.
-
-## What's new
-
-We've added new components and changed some existing ones. Here are the new or updated styles.
-
-| Component | Description |
-| --- | --- |
-| Cards | New, more flexible component to replace v3's panels, thumbnails, and wells. |
-| New navbar | Replaces the previous navbar with a new, simpler component. |
-| New progress bars | Replaces the old `.progress` `<div>` with a real `<progress>` element. |
-| New table variants | Adds `.table-inverse`, table head options, replaces `.table-condensed` with `.table-sm`, and `.table-reflow`. |
-| New utility classes | |
-
-TODO: audit new classes that didn't exist in v3
-
-## What's removed
-The following components have been removed in v4.0.0.
-
-| Component | Removed from 3.x.x | 4.0.0 Equivalent |
-| --- | --- | --- |
-| Panels |  | Cards |
-| Thumbnails |  | Cards |
-| Wells |  | Cards |
-| Justified navs | | |
-
-TODO: audit classes in v3 that aren't present in v4
 
 ### Responsive utilities
 
