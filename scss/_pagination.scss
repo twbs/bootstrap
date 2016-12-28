@@ -7,8 +7,6 @@
 }
 
 .page-item {
-  display: inline; // Remove list-style and block-level defaults
-
   &:first-child {
     .page-link {
       margin-left: 0;
