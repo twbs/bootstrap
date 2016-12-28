@@ -87,10 +87,23 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 
 ## Contextual classes
 
-Use contextual classes to style list items, default or linked. Also includes `.active` state.
+Use contextual classes to style list items with a stateful background and color.
+
+{% example html %}
+<ul class="list-group">
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
+  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
+  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
+  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+</ul>
+{% endexample %}
+
+Contextual classes also work with `.list-group-item-action`. Note the addition of the hover styles here not present in the previous example. Also supported is the `.active` state; apply it to indicate an active selection on a contextual list group item.
 
 {% example html %}
 <div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
   <a href="#" class="list-group-item list-group-item-action list-group-item-success">Dapibus ac facilisis in</a>
   <a href="#" class="list-group-item list-group-item-action list-group-item-info">Cras sit amet nibh libero</a>
   <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Porta ac consectetur ac</a>
