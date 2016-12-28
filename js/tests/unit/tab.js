@@ -92,6 +92,22 @@ $(function () {
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
+  QUnit.test('should activate element by tab id in nav list', function (assert) {
+    assert.expect(2)
+    var tabsHTML =  '<nav class="nav">' +
+                      '<a href="#home">Home</a>' +
+                      '<a href="#profile">Profile</a>' +
+                    '</nav>'
+
+    $('<nav><div id="home"></div><div id="profile"></div></nav>').appendTo('#qunit-fixture')
+
+    $(tabsHTML).find('a:last').bootstrapTab('show')
+    assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
+
+    $(tabsHTML).find('a:first').bootstrapTab('show')
+    assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
+  })
+
   QUnit.test('should not fire shown when show is prevented', function (assert) {
     assert.expect(1)
     var done = assert.async()
