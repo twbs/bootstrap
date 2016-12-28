@@ -241,7 +241,6 @@
 // Custom override for collapse plugin in navbar.
 
 // Placed at the end of the file so it can override some CSS properties
-// scss-lint:disable ImportantRule
 .navbar-toggleable {
   @each $breakpoint in map-keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
@@ -273,10 +272,12 @@
           align-items: center;
         }
 
+        // scss-lint:disable ImportantRule
         .navbar-collapse {
           display: flex !important;
           width: 100%;
         }
+        // scss-lint:enable ImportantRule
 
         .nav-item {
           display: inline-block;
@@ -294,4 +295,3 @@
     }
   }
 }
-// scss-lint:enable ImportantRule
