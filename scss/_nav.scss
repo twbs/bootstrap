@@ -28,6 +28,10 @@
       background-color: $nav-disabled-link-hover-bg;
     }
   }
+  // hover link
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 
