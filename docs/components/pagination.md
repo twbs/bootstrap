@@ -103,7 +103,6 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
 </nav>
 {% endexample %}
 
-
 ## Sizing
 
 Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for additional sizes.
