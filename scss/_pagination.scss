@@ -1,8 +1,8 @@
 .pagination {
-  display: inline-block;
   padding-left: 0;
   margin-top: $spacer-y;
   margin-bottom: $spacer-y;
+  display: flex;
   @include border-radius();
 }
 
