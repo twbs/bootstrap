@@ -532,20 +532,20 @@ Use flexbox utilities for controlling the **visual order** of your content.
 
 ### Offsetting columns
 
-Move columns to the right using `.offset-md-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.offset-md-4` moves `.col-md-4` over four columns.
+Move columns to the right using `.col-md-offset-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.col-md-offset-4` moves `.col-md-4` over four columns.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
   <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+  <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
 </div>
 <div class="row">
-  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
-  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+  <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
 </div>
 <div class="row">
-  <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+  <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
 </div>
 {% endexample %}
 </div>
