@@ -46,7 +46,7 @@ Here's an example of all the sub-components included in a responsive light-theme
   <a class="navbar-brand" href="#">Navbar</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -115,7 +115,7 @@ Active states—with `.active`—to indicate the current page can be applied dir
   </button>
   <a class="navbar-brand" href="#">Navbar</a>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -142,7 +142,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
   </button>
   <a class="navbar-brand" href="#">Navbar</a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="nav navbar-nav">
+    <div class="navbar-nav">
       <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#">Features</a>
       <a class="nav-item nav-link" href="#">Pricing</a>
@@ -161,7 +161,7 @@ You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrap
   </button>
   <a class="navbar-brand" href="#">Navbar</a>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -256,7 +256,7 @@ Mix and match with other components and utilities as needed.
   </button>
   <a class="navbar-brand" href="#">Navbar w/ text</a>
   <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -286,7 +286,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
     <a class="navbar-brand" href="#">Navbar</a>
 
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="nav navbar-nav">
+      <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
@@ -314,7 +314,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
     <a class="navbar-brand" href="#">Navbar</a>
 
     <div class="collapse navbar-collapse" id="navbarColor02">
-      <ul class="nav navbar-nav">
+      <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
@@ -342,7 +342,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
     <a class="navbar-brand" href="#">Navbar</a>
 
     <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="nav navbar-nav">
+      <ul class="navbar-nav">
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
@@ -439,7 +439,7 @@ With no `.navbar-brand` shown in lowest breakpoint:
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <a class="navbar-brand" href="#">Hidden brand</a>
-    <ul class="nav navbar-nav mt-2 mt-lg-0">
+    <ul class="navbar-nav mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -468,7 +468,7 @@ With a brand name shown on the left and toggler on the right:
   <a class="navbar-brand" href="#">Navbar</a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="nav navbar-nav mt-2 mt-md-0">
+    <ul class="navbar-nav mt-2 mt-md-0">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
