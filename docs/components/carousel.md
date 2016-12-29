@@ -104,12 +104,6 @@ You can also add the indicators to the carousel, alongside the controls, too.
 {% endexample %}
 
 {% callout warning %}
-#### Transition animations not supported in Internet Explorer 9
-
-Bootstrap exclusively uses CSS3 for its animations, but Internet Explorer 9 doesn't support the necessary CSS properties. Thus, there are no slide transition animations when using that browser. We have intentionally decided not to include jQuery-based fallbacks for the transitions.
-{% endcallout %}
-
-{% callout warning %}
 #### Initial active element required
 
 The `.active` class needs to be added to one of the slides. Otherwise, the carousel will not be visible.
