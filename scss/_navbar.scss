@@ -128,11 +128,15 @@
 // Custom navbar navigation built on the base `.nav` styles.
 
 .navbar-nav {
+  display: flex;
+  flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
 
   .nav-link {
-    display: block;
-    padding-top: .425rem;
-    padding-bottom: .425rem;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
