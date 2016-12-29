@@ -308,7 +308,7 @@ select.form-control-lg {
   }
 
   // Kick in the inline
-  @include media-breakpoint-up(sm) {    
+  @include media-breakpoint-up(sm) {
     label {
       display: flex;
       align-items: center;
