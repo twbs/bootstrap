@@ -16,7 +16,7 @@ The navbar is a wrapper that positions branding, navigation, and other elements 
 
 Here's what you need to know before getting started with the navbar:
 
-- Navbars require a wrapping `.navbar` and [color scheme](#color-schemes) classes.
+- Navbars require a wrapping `.navbar` with `.navbar-toggleable-*` for responsive collapsing and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
 - Navbars and their contents are built with flexbox, providing easy alignment options via utility classes.
 - Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
