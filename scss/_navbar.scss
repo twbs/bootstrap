@@ -1,4 +1,16 @@
-// Wrapper and base class
+// Contents
+//
+// Navbar
+// Navbar brand
+// Navbar nav
+// Navbar text
+// Navbar divider
+// Responsive navbar
+// Navbar position
+// Navbar themes
+
+
+// Navbar
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
@@ -6,21 +18,181 @@
 .navbar {
   position: relative;
   display: flex;
+  flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
 }
 
+
+// Navbar brand
+//
+// Used for brand, project, or site names.
+
+.navbar-brand {
+  display: inline-block;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  margin-right: $navbar-padding-x;
+  font-size: $font-size-lg;
+  line-height: inherit;
+  white-space: nowrap;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+
+// Navbar nav
+//
+// Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+
+  .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+
+// Navbar text
+//
+//
+
+.navbar-text {
+  display: inline-block;
+  padding-top:    .425rem;
+  padding-bottom: .425rem;
+}
+
+
+// Navbar divider
+//
+//
+
+.navbar-divider {
+  float: left;
+  width: $border-width;
+  padding-top: $navbar-divider-padding-y;
+  padding-bottom: $navbar-divider-padding-y;
+  margin-right: $navbar-padding-x;
+  margin-left:  $navbar-padding-x;
+  overflow: hidden;
+
+  &::before {
+    content: "\00a0";
+  }
+}
+
+
+// Responsive navbar
+//
+// Custom styles for responsive collapsing and toggling of navbar contents.
+// Powered by the collapse Bootstrap JavaScript plugin.
+
+// Button for toggling the navbar when in it's collapsed state
+.navbar-toggler {
+  align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
+  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+  font-size: $navbar-toggler-font-size;
+  line-height: 1;
+  background: transparent; // remove default button style
+  border: $border-width solid transparent; // remove default button style
+  @include border-radius($navbar-toggler-border-radius);
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+// Keep as a separate element so folks can easily override it with another icon
+// or image file as needed.
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
+}
+
+// Use `position` on the toggler to prevent it from being auto placed as a flex
+// item and allow easy placement.
 .navbar-toggler-left {
   position: absolute;
   left: $navbar-padding-x;
 }
-
 .navbar-toggler-right {
   position: absolute;
   right: $navbar-padding-x;
 }
 
+// Generate series of `.navbar-toggleable-*` responsive classes for configuring
+// where your navbar collapses.
+.navbar-toggleable {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-// Navbar alignment options
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        .navbar-nav {
+          .dropdown-menu {
+            position: static;
+            float: none;
+          }
+        }
+
+        > .container {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+
+      @include media-breakpoint-up($next) {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        .navbar-nav {
+          flex-direction: row;
+
+          .nav-link {
+            padding-right: .5rem;
+            padding-left: .5rem;
+          }
+        }
+
+        // For nesting containers, have to redeclare for alignment purposes
+        > .container {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+        }
+
+        // scss-lint:disable ImportantRule
+        .navbar-collapse {
+          display: flex !important;
+          width: 100%;
+        }
+        // scss-lint:enable ImportantRule
+
+        .navbar-toggler {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+// Navbar position
 //
 // Display the navbar across the entirety of the page or fixed it to the top or
 // bottom of the page.
@@ -49,94 +221,9 @@
 }
 
 
+// Navbar themes
 //
-// Brand/project name
-//
-
-.navbar-brand {
-  display: inline-block;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
-  margin-right: $navbar-padding-x;
-  font-size: $font-size-lg;
-  line-height: inherit;
-  white-space: nowrap;
-
-  @include hover-focus {
-    text-decoration: none;
-  }
-}
-
-.navbar-divider {
-  float: left;
-  width: $border-width;
-  padding-top: $navbar-divider-padding-y;
-  padding-bottom: $navbar-divider-padding-y;
-  margin-right: $navbar-padding-x;
-  margin-left:  $navbar-padding-x;
-  overflow: hidden;
-
-  &::before {
-    content: "\00a0";
-  }
-}
-
-
-// Navbar text
-//
-//
-
-.navbar-text {
-  display: inline-block;
-  padding-top:    .425rem;
-  padding-bottom: .425rem;
-}
-
-
-// Navbar toggle
-//
-// Custom button for toggling the `.navbar-collapse`, powered by the collapse
-// Bootstrap JavaScript plugin.
-
-.navbar-toggler {
-  padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
-  font-size: $navbar-toggler-font-size;
-  line-height: 1;
-  background: transparent; // remove default button style
-  border: $border-width solid transparent; // remove default button style
-  @include border-radius($navbar-toggler-border-radius);
-
-  @include hover-focus {
-    text-decoration: none;
-  }
-}
-
-// Keep as a separate element so folks can easily override it with another icon
-// or image file as needed.
-.navbar-toggler-icon {
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  vertical-align: middle;
-  content: "";
-  background: no-repeat center center;
-  background-size: 100% 100%;
-}
-
-// Navigation
-//
-// Custom navbar navigation built on the base `.nav` styles.
-
-.navbar-nav {
-  flex-grow: 10; // high number to force alignment
-
-  .nav-link {
-    display: block;
-    padding-top: .425rem;
-    padding-bottom: .425rem;
-  }
-}
-
+// Styles for switching between navbars with light or dark background.
 
 // Dark links against a light background
 .navbar-light {
@@ -233,65 +320,5 @@
 
   .navbar-text {
     color: $navbar-inverse-color;
-  }
-}
-
-// Navbar toggleable
-//
-// Custom override for collapse plugin in navbar.
-
-// Placed at the end of the file so it can override some CSS properties
-.navbar-toggleable {
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    &#{$infix} {
-      @include media-breakpoint-down($breakpoint) {
-        .navbar-nav {
-          .dropdown-menu {
-            position: static;
-            float: none;
-          }
-        }
-
-        > .container {
-          padding-right: 0;
-          padding-left: 0;
-        }
-      }
-
-      @include media-breakpoint-up($next) {
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-
-        // For nesting containers, have to redeclare for alignment purposes
-        > .container {
-          display: flex;
-          flex-wrap: nowrap;
-          align-items: center;
-        }
-
-        // scss-lint:disable ImportantRule
-        .navbar-collapse {
-          display: flex !important;
-          width: 100%;
-        }
-        // scss-lint:enable ImportantRule
-
-        .nav-item {
-          display: inline-block;
-        }
-
-        .nav-link {
-          padding-right: .5rem;
-          padding-left: .5rem;
-        }
-
-        .navbar-toggler {
-          display: none;
-        }
-      }
-    }
   }
 }
