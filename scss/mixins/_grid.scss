@@ -3,6 +3,7 @@
 // Generate semantic grid columns with these mixins.
 
 @mixin make-container($gutters: $grid-gutter-widths) {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
 

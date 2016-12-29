@@ -11,7 +11,7 @@
 
 .custom-control {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   min-height: (1rem * $line-height-base);
   padding-left: $custom-control-gutter;
   margin-right: $custom-control-spacer-x;
@@ -114,10 +114,11 @@
 // set. Use these optional classes to tweak the layout.
 
 .custom-controls-stacked {
+  display: flex;
+  flex-direction: column;
+
   .custom-control {
-    float: left;
     margin-bottom: $custom-control-spacer-y;
-    clear: left;
 
     + .custom-control {
       margin-left: 0;

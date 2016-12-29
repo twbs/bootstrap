@@ -11,7 +11,6 @@
 // Vertical gradient, from top to bottom
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
-// Color stops are not available in IE9.
 @mixin gradient-y($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
   background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
   background-repeat: repeat-x;
