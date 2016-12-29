@@ -194,17 +194,17 @@ $(function () {
 
   QUnit.test('should remove "show" class if body is focused', function (assert) {
     assert.expect(2)
-    var dropdownHTML = '<ul class="tabs">'
-        + '<li class="dropdown">'
+    var dropdownHTML = '<div class="tabs">'
+        + '<div class="dropdown">'
         + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
-        + '<ul class="dropdown-menu">'
-        + '<li><a href="#">Secondary link</a></li>'
-        + '<li><a href="#">Something else here</a></li>'
-        + '<li class="divider"/>'
-        + '<li><a href="#">Another link</a></li>'
-        + '</ul>'
-        + '</li>'
-        + '</ul>'
+        + '<div class="dropdown-menu">'
+        + '<a class="dropdown-item" href="#">Secondary link</a>'
+        + '<a class="dropdown-item" href="#">Something else here</a>'
+        + '<div class="dropdown-divider"/>'
+        + '<a class="dropdown-item" href="#">Another link</a>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $dropdown = $(dropdownHTML)
        .appendTo('#qunit-fixture')
        .find('[data-toggle="dropdown"]')
@@ -255,21 +255,20 @@ $(function () {
 
   QUnit.test('should remove "show" class if body is focused, with multiple dropdowns', function (assert) {
     assert.expect(7)
-    var dropdownHTML = '<ul class="nav">'
-        + '<li><a href="#menu1">Menu 1</a></li>'
-        + '<li class="dropdown" id="testmenu">'
+    var dropdownHTML = '<div class="nav">'
+        + '<div class="dropdown" id="testmenu">'
         + '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <span class="caret"/></a>'
-        + '<ul class="dropdown-menu">'
-        + '<li><a href="#sub1">Submenu 1</a></li>'
-        + '</ul>'
-        + '</li>'
-        + '</ul>'
+        + '<div class="dropdown-menu">'
+        + '<a class="dropdown-item" href="#sub1">Submenu 1</a>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
         + '<div class="btn-group">'
         + '<button class="btn">Actions</button>'
         + '<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"/></button>'
-        + '<ul class="dropdown-menu">'
-        + '<li><a href="#">Action 1</a></li>'
-        + '</ul>'
+        + '<div class="dropdown-menu">'
+        + '<a class="dropdown-item" href="#">Action 1</a>'
+        + '</div>'
         + '</div>'
     var $dropdowns = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-toggle="dropdown"]')
     var $first = $dropdowns.first()
