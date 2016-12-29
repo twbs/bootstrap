@@ -48,6 +48,11 @@
       $modal.find('.modal-body input').val(recipient)
     })
 
+    // Activate animated progress bar
+    $('.bd-toggle-animated-progress').on('click', function () {
+      $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('progress-bar-animated')
+    })
+
     // Insert copy to clipboard button before .highlight
     $('.highlight').each(function () {
       var btnHtml = '<div class="bd-clipboard"><span class="btn-clipboard" title="Copy to clipboard">Copy</span></div>'
