@@ -265,9 +265,18 @@
       }
 
       @include media-breakpoint-up($next) {
-        display: flex;
+        flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
+
+        .navbar-nav {
+          flex-direction: row;
+
+          .nav-link {
+            padding-right: .5rem;
+            padding-left: .5rem;
+          }
+        }
 
         // For nesting containers, have to redeclare for alignment purposes
         > .container {
@@ -282,15 +291,6 @@
           width: 100%;
         }
         // scss-lint:enable ImportantRule
-
-        .nav-item {
-          display: inline-block;
-        }
-
-        .nav-link {
-          padding-right: .5rem;
-          padding-left: .5rem;
-        }
 
         .navbar-toggler {
           display: none;
