@@ -852,17 +852,14 @@ $alert-danger-border:         $state-danger-border !default;
 
 // Progress bars
 
-$progress-bg:                 $gray-lighter !default;
-$progress-bar-color:          $brand-primary !default;
-$progress-border-radius:      $border-radius !default;
-$progress-box-shadow:         inset 0 .1rem .1rem rgba($black,.1) !default;
-
-$progress-bar-bg:             $brand-primary !default;
-$progress-bar-success-bg:     $brand-success !default;
-$progress-bar-warning-bg:     $brand-warning !default;
-$progress-bar-danger-bg:      $brand-danger !default;
-$progress-bar-info-bg:        $brand-info !default;
-
+$progress-height:               1rem !default;
+$progress-font-size:            .75rem !default;
+$progress-bg:                   $gray-lighter !default;
+$progress-border-radius:        $border-radius !default;
+$progress-box-shadow:           inset 0 .1rem .1rem rgba($black,.1) !default;
+$progress-bar-color:            $white !default;
+$progress-bar-bg:               $brand-primary !default;
+$progress-bar-animation-timing: 1s linear infinite !default;
 
 // List group
 
