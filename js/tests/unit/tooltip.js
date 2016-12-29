@@ -839,4 +839,34 @@ $(function () {
     assert.ok(showingTooltip(), 'tooltip is faded in again')
   })
 
+  QUnit.test('should hide tooltip when their containing modal is closed', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var templateHTML = '<div id="modal-test" class="modal">' +
+                          '<div class="modal-dialog" role="document">' +
+                            '<div class="modal-content">' +
+                              '<div class="modal-body">' +
+                                '<a id="tooltipTest" href="#" data-toggle="tooltip" title="Some tooltip text!">Tooltip</a>' +
+                              '</div>' +
+                            '</div>' +
+                          '</div>' +
+                        '</div>'
+
+    $(templateHTML).appendTo('#qunit-fixture')
+    $('#tooltipTest')
+      .bootstrapTooltip({ trigger: 'manuel' })
+      .on('shown.bs.tooltip', function () {
+        $('#modal-test').modal('hide')
+      })
+      .on('hide.bs.tooltip', function () {
+        assert.ok(true, 'tooltip hide')
+        done()
+      })
+
+    $('#modal-test')
+      .on('shown.bs.modal', function () {
+        $('#tooltipTest').bootstrapTooltip('show')
+      })
+      .modal('show')
+  })
 })
