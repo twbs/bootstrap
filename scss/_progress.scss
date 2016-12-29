@@ -1,103 +1,32 @@
-//
 // Progress animations
-//
-
 @keyframes progress-bar-stripes {
-  from { background-position: $spacer-y 0; }
+  from { background-position: $progress-height 0; }
   to { background-position: 0 0; }
 }
 
-
-//
 // Basic progress bar
-//
-
 .progress {
-  display: block;
-  width: 100%;
-  height: $spacer-y; // todo: make a new var for this
-  margin-bottom: $spacer-y;
+  display: flex;
   overflow: hidden; // force rounded corners by cropping it
-}
-.progress[value] {
-  // Set overall background
+  font-size: $progress-font-size;
+  line-height: $progress-height;
+  text-align: center;
   background-color: $progress-bg;
-  // Remove Firefox and Opera border
-  border: 0;
-  // Reset the default appearance
-  appearance: none;
-  // Set overall border radius
   @include border-radius($progress-border-radius);
 }
-
-// Filled-in portion of the bar
-.progress[value]::-ms-fill {
-  background-color: $progress-bar-color;
-  // Remove right-hand border of value bar from IE10+/Edge
-  border: 0;
-}
-.progress[value]::-moz-progress-bar {
-  background-color: $progress-bar-color;
-}
-.progress[value]::-webkit-progress-value {
-  background-color: $progress-bar-color;
+.progress-bar {
+  height: $progress-height;
+  color: $progress-bar-color;
+  background-color: $progress-bar-bg;
 }
 
-// Unfilled portion of the bar
-.progress[value]::-webkit-progress-bar {
-  background-color: $progress-bg;
-  @include box-shadow($progress-box-shadow);
-}
-base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make these styles Firefox-only
-.progress[value] {
-  background-color: $progress-bg;
-  @include box-shadow($progress-box-shadow);
-}
-
-
-//
 // Striped
-//
-
-.progress-striped[value]::-webkit-progress-value {
+.progress-bar-striped {
   @include gradient-striped();
-  background-size: $spacer-y $spacer-y;
-}
-.progress-striped[value]::-moz-progress-bar {
-  @include gradient-striped();
-  background-size: $spacer-y $spacer-y;
-}
-.progress-striped[value]::-ms-fill {
-  @include gradient-striped();
-  background-size: $spacer-y $spacer-y;
+  background-size: $progress-height $progress-height;
 }
 
-
-//
 // Animated
-//
-
-.progress-animated[value]::-webkit-progress-value {
-  animation: progress-bar-stripes 2s linear infinite;
-}
-.progress-animated[value]::-moz-progress-bar {
-  animation: progress-bar-stripes 2s linear infinite;
-}
-
-
-//
-// Variations
-//
-
-.progress-success {
-  @include progress-variant($progress-bar-success-bg);
-}
-.progress-info {
-  @include progress-variant($progress-bar-info-bg);
-}
-.progress-warning {
-  @include progress-variant($progress-bar-warning-bg);
-}
-.progress-danger {
-  @include progress-variant($progress-bar-danger-bg);
+.progress-bar-animated {
+  animation: progress-bar-stripes $progress-bar-animation-timing;
 }
