@@ -161,6 +161,7 @@ linters:
       - flex-order
       - flex-pack
       - align-items
+      - align-self
       - justify-content
       - float
       - width
