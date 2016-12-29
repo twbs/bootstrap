@@ -36,7 +36,7 @@ Navbars come with built-in support for a handful of sub-components. Choose from 
 - `.form-inline` for form controls and more.
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
 
-Here's an example of all the sub-components included in a responsive light-themed navbar.
+Here's an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the `md` (medium) breakpoint.
 
 {% example html %}
 <nav class="navbar navbar-light navbar-toggleable-md bg-faded">
