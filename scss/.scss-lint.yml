@@ -160,6 +160,8 @@ linters:
       - flex-grow
       - flex-order
       - flex-pack
+      - align-items
+      - justify-content
       - float
       - width
       - min-width
@@ -492,7 +494,7 @@ linters:
   SpaceBeforeBrace:
     enabled: true
     style: space # or 'new_line'
-    allow_single_line_padding: false
+    allow_single_line_padding: true
 
   SpaceBetweenParens:
     enabled: true

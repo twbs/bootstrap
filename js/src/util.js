@@ -27,7 +27,7 @@ const Util = (($) => {
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
-    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+    return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
   }
 
   function isElement(obj) {
@@ -52,11 +52,13 @@ const Util = (($) => {
       return false
     }
 
-    let el = document.createElement('bootstrap')
+    const el = document.createElement('bootstrap')
 
-    for (let name in TransitionEndEvent) {
+    for (const name in TransitionEndEvent) {
       if (el.style[name] !== undefined) {
-        return { end: TransitionEndEvent[name] }
+        return {
+          end: TransitionEndEvent[name]
+        }
       }
     }
 
@@ -96,15 +98,14 @@ const Util = (($) => {
    * --------------------------------------------------------------------------
    */
 
-  let Util = {
+  const Util = {
 
     TRANSITION_END: 'bsTransitionEnd',
 
     getUID(prefix) {
       do {
-        /* eslint-disable no-bitwise */
+        // eslint-disable-next-line no-bitwise
         prefix += ~~(Math.random() * MAX_UID) // "~~" acts like a faster Math.floor() here
-        /* eslint-enable no-bitwise */
       } while (document.getElementById(prefix))
       return prefix
     },
@@ -133,17 +134,12 @@ const Util = (($) => {
     },
 
     typeCheckConfig(componentName, config, configTypes) {
-      for (let property in configTypes) {
+      for (const property in configTypes) {
         if (configTypes.hasOwnProperty(property)) {
-          let expectedTypes = configTypes[property]
-          let value         = config[property]
-          let valueType
-
-          if (value && isElement(value)) {
-            valueType = 'element'
-          } else {
-            valueType = toType(value)
-          }
+          const expectedTypes = configTypes[property]
+          const value         = config[property]
+          const valueType     = value && isElement(value) ?
+                                'element' : toType(value)
 
           if (!new RegExp(expectedTypes).test(valueType)) {
             throw new Error(

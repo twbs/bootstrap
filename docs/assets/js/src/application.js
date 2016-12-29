@@ -33,7 +33,7 @@
     $('.bd-example-indeterminate [type="checkbox"]').prop('indeterminate', true)
 
     // Disable empty links in docs examples
-    $('.bd-example [href="#"]').click(function (e) {
+    $('.bd-content [href="#"]').click(function (e) {
       e.preventDefault()
     })
 
@@ -73,7 +73,8 @@
     })
 
     clipboard.on('error', function (e) {
-      var fallbackMsg = /Mac/i.test(navigator.userAgent) ? 'Press \u2318 to copy' : 'Press Ctrl-C to copy'
+      var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
+      var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
 
       $(e.trigger)
         .attr('title', fallbackMsg)

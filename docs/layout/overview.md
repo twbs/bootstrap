@@ -6,11 +6,16 @@ group: layout
 redirect_from: "/layout/"
 ---
 
-Bootstrap includes several components and options for laying out your project, including wrapping containers, a powerful grid system, a flexible media object, and responsive utility classes.
+Bootstrap includes several components and options for laying out your project, including wrapping containers, a powerful flexbox grid system, a flexible media object, and responsive utility classes.
+
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
 
 ## Containers
 
-Containers are the most basic layout element in Bootstrap and are **required when using our grid system**. Choose from a responsive, fixed-width container (meaning its `max-width` changes at each breakpoint) or fluid-width (meaning it's `100%` wide all the time).
+Containers are the most basic layout element in Bootstrap and are **required when using our default grid system**. Choose from a responsive, fixed-width container (meaning its `max-width` changes at each breakpoint) or fluid-width (meaning it's `100%` wide all the time).
 
 While containers *can* be nested, most layouts do not require a nested container.
 
@@ -52,11 +57,11 @@ Since Bootstrap is developed to be mobile first, we use a handful of [media quer
 Bootstrap primarily uses the following media query ranges—or breakpoints—in our source Sass files for our layout, grid system, and components.
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 544px)
+// Extra small devices (portrait phones, less than 576px)
 // No media query since this is the default in Bootstrap
 
-// Small devices (landscape phones, 544px and up)
-@media (min-width: 544px) { ... }
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { ... }
@@ -88,8 +93,8 @@ Since we write our source CSS in Sass, all our media queries are available via S
 We occasionally use media queries that go in the other direction (the given screen size *or smaller*):
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 544px)
-@media (max-width: 543px) { ... }
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575px) { ... }
 
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767px) { ... }
@@ -116,11 +121,11 @@ Once again, these media queries are also available via Sass mixins:
 We also have media between the breakpoint's minimum and maximum widths for only the given screen size:
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 544px)
-@media (max-width: 543px) { ... }
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575px) { ... }
 
-// Small devices (landscape phones, 544px and up)
-@media (min-width: 544px) and (max-width: 767px) { ... }
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767px) { ... }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) and (max-width: 991px) { ... }

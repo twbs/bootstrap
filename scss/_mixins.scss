@@ -10,7 +10,11 @@
 
 @mixin transition($transition...) {
   @if $enable-transitions {
-    transition: $transition;
+    @if length($transition) == 0 {
+      transition: $transition-base;
+    } @else {
+      transition: $transition;
+    }
   }
 }
 
@@ -19,7 +23,6 @@
 @import "mixins/hover";
 @import "mixins/image";
 @import "mixins/badge";
-@import "mixins/reset-filter";
 @import "mixins/resize";
 @import "mixins/screen-reader";
 @import "mixins/size";
@@ -28,6 +31,7 @@
 @import "mixins/text-emphasis";
 @import "mixins/text-hide";
 @import "mixins/text-truncate";
+@import "mixins/transforms";
 @import "mixins/visibility";
 
 // // Components

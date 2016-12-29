@@ -36,9 +36,9 @@ const Alert = (($) => {
   }
 
   const ClassName = {
-    ALERT  : 'alert',
-    FADE   : 'fade',
-    ACTIVE : 'active'
+    ALERT : 'alert',
+    FADE  : 'fade',
+    SHOW  : 'show'
   }
 
 
@@ -67,8 +67,8 @@ const Alert = (($) => {
     close(element) {
       element = element || this._element
 
-      let rootElement = this._getRootElement(element)
-      let customEvent = this._triggerCloseEvent(rootElement)
+      const rootElement = this._getRootElement(element)
+      const customEvent = this._triggerCloseEvent(rootElement)
 
       if (customEvent.isDefaultPrevented()) {
         return
@@ -86,8 +86,8 @@ const Alert = (($) => {
     // private
 
     _getRootElement(element) {
-      let selector = Util.getSelectorFromElement(element)
-      let parent   = false
+      const selector = Util.getSelectorFromElement(element)
+      let parent     = false
 
       if (selector) {
         parent = $(selector)[0]
@@ -101,14 +101,14 @@ const Alert = (($) => {
     }
 
     _triggerCloseEvent(element) {
-      let closeEvent = $.Event(Event.CLOSE)
+      const closeEvent = $.Event(Event.CLOSE)
 
       $(element).trigger(closeEvent)
       return closeEvent
     }
 
     _removeElement(element) {
-      $(element).removeClass(ClassName.ACTIVE)
+      $(element).removeClass(ClassName.SHOW)
 
       if (!Util.supportsTransitionEnd() ||
           !$(element).hasClass(ClassName.FADE)) {
@@ -133,8 +133,8 @@ const Alert = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let $element = $(this)
-        let data     = $element.data(DATA_KEY)
+        const $element = $(this)
+        let data       = $element.data(DATA_KEY)
 
         if (!data) {
           data = new Alert(this)

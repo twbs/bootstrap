@@ -37,8 +37,8 @@ const Popover = (($) => {
   })
 
   const ClassName = {
-    FADE   : 'fade',
-    ACTIVE : 'active'
+    FADE : 'fade',
+    SHOW : 'show'
   }
 
   const Selector = {
@@ -107,19 +107,17 @@ const Popover = (($) => {
     }
 
     getTipElement() {
-      return (this.tip = this.tip || $(this.config.template)[0])
+      return this.tip = this.tip || $(this.config.template)[0]
     }
 
     setContent() {
-      let $tip = $(this.getTipElement())
+      const $tip = $(this.getTipElement())
 
       // we use append for html objects to maintain js events
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle())
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent())
 
-      $tip
-        .removeClass(ClassName.FADE)
-        .removeClass(ClassName.ACTIVE)
+      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
 
       this.cleanupTether()
     }
@@ -138,8 +136,8 @@ const Popover = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data   = $(this).data(DATA_KEY)
-        let _config = typeof config === 'object' ? config : null
+        let data      = $(this).data(DATA_KEY)
+        const _config = typeof config === 'object' ? config : null
 
         if (!data && /destroy|hide/.test(config)) {
           return
