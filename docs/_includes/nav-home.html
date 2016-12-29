@@ -1,5 +1,5 @@
-<header class="navbar navbar-light navbar-toggleable-md bd-navbar">
-  <nav class="container w-100">
+<header class="navbar navbar-toggleable-md navbar-light bd-navbar">
+  <nav class="container">
     {% comment %}
     <nav class="nav navbar-nav float-right">
       <div class="nav-item dropdown">
@@ -25,19 +25,17 @@
     </nav>
     {% endcomment %}
 
-    <div class="d-flex justify-content-between hidden-lg-up">
-      <a class="navbar-brand" href="{{ site.baseurl }}/">
-        Bootstrap
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
+    <a class="navbar-brand" href="{{ site.baseurl }}/">
+      Bootstrap
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" id="bd-main-nav">
-      <ul class="nav navbar-nav">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item  {% if page.layout == "home" %}active{% endif %}">
-          <a class="nav-link" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Bootstrap</a>
+          <a class="nav-link" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
         </li>
         <li class="nav-item {% if page.layout == "docs" %}active{% endif %}">
           <a class="nav-link" href="{{ site.baseurl }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
