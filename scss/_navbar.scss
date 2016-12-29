@@ -100,6 +100,7 @@
 // Bootstrap JavaScript plugin.
 
 .navbar-toggler {
+  align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
   font-size: $navbar-toggler-font-size;
   line-height: 1;
