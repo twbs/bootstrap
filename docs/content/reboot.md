@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Reboot
+description: Documentation and examples for Reboot, Bootstrap's collection of element-specific CSS that builds on Normalize.css.
 group: content
 redirect_from: "/content/"
 ---
@@ -40,20 +41,14 @@ The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped i
 $font-family-sans-serif:
   // Safari for OS X and iOS (San Francisco)
   -apple-system,
-  // Chrome for OS X (San Francisco)
+  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
+  system-ui,
+  // Chrome < 56 for OS X (San Francisco)
   BlinkMacSystemFont,
   // Windows
   "Segoe UI",
   // Android
   "Roboto",
-  // Linux
-  "Oxygen", // KDE
-  "Ubuntu",
-  "Cantarell", // GNOME
-  // Firefox OS [R.I.P.]
-  "Fira Sans",
-  // Older Android
-  "Droid Sans",
   // Basic web fallback
   "Helvetica Neue", Arial, sans-serif !default;
 {% endhighlight %}
@@ -316,7 +311,7 @@ The `<abbr>` element receives basic styling to make it stand out amongst paragra
 
 ## HTML5 `[hidden]` attribute
 
-HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](http://purecss.io), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE9-10, the explicit declaration in our CSS gets around that problem.
+HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](http://purecss.io), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.
 
 {% highlight html %}
 <input type="text" hidden>
@@ -328,7 +323,7 @@ HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.o
 `[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. This could potentially change in jQuery 3, but we're not holding our breath. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
 {% endcallout %}
 
-To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/components/utilities/#invisible-content) instead.
+To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/utilities/invisible-content/) instead.
 
 ## Click delay optimization for touch
 
@@ -342,4 +337,4 @@ To address this problem in IE11 and Microsoft Edge on desktop, as well as IE11 o
 
 In the case of old iOS versions (prior to 9.3), the suggested approach is to use additional scripts such as [FastClick](https://github.com/ftlabs/fastclick) to explicitly work around the delay.
 
-For further details, see the compatibility table for [suppressing 300ms delay for touchscreen interactions](http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay).
+For further details, see the compatibility table for [suppressing 300ms delay for touchscreen interactions](https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay).

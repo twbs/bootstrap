@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule, QualifyingElement, DuplicateProperty
+// scss-lint:disable QualifyingElement, DuplicateProperty
 
 // Reboot
 //
@@ -15,7 +15,7 @@
 //
 // Heads up! This reset may cause conflicts with some third-party widgets. For
 // recommendations on resolving such conflicts, see
-// http://getbootstrap.com/getting-started/#third-box-sizing.
+// https://getbootstrap.com/getting-started/#third-box-sizing.
 //
 // Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 
@@ -33,15 +33,15 @@ html {
 // Make viewport responsive
 //
 // @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in
-// some cases. See http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/.
+// some cases. See https://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/.
 // Eventually @viewport will replace <meta name="viewport">.
 //
 // However, `device-width` is broken on IE 10 on Windows (Phone) 8,
-// (see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
+// (see https://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
 // and the fix for that involves a snippet of JavaScript to sniff the user agent
 // and apply some conditional CSS.
 //
-// See http://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
+// See https://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
 //
 // Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
 // `.class-name { @import "bootstrap"; }`).
@@ -63,6 +63,7 @@ html {
   // thus making it hard to click on stuff near the right edge of the page.
   // So we add this style to force IE11 & Edge to use a "normal", non-overlapping, non-auto-hiding scrollbar.
   // See https://github.com/twbs/bootstrap/issues/18543
+  // and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
   -ms-overflow-style: scrollbar;
   // Changes the default tap highlight to be completely transparent in iOS.
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -72,6 +73,7 @@ body {
   // Make the `body` use the `font-size-root`
   font-family: $font-family-base;
   font-size: $font-size-base;
+  font-weight: $font-weight-base;
   line-height: $line-height-base;
   // Go easy on the eyes and use something other than `#000` for text
   color: $body-color;
@@ -111,12 +113,11 @@ p {
   margin-bottom: 1rem;
 }
 
-// Abbreviations and acronyms
+// Abbreviations
 abbr[title],
 // Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted $abbr-border-color;
 }
 
 address {
@@ -247,9 +248,9 @@ img {
 // DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
 // However, they DO support removing the click delay via `touch-action: manipulation`.
 // See:
-// * http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
+// * https://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
 // * http://caniuse.com/#feat=css-touch-action
-// * http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
+// * https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
 
 a,
 area,
@@ -312,14 +313,9 @@ input,
 button,
 select,
 textarea {
-  // Remove all `margin`s so our classes don't have to do it themselves.
-  margin: 0;
   // Normalize includes `font: inherit;`, so `font-family`. `font-size`, etc are
-  // properly inherited. However, `line-height` isn't addressed there. Using this
-  // ensures we don't need to unnecessarily redeclare the global font stack.
+  // properly inherited. However, `line-height` isn't inherited there.
   line-height: inherit;
-  // iOS adds rounded borders by default
-  border-radius: 0;
 }
 
 input[type="radio"],
@@ -340,8 +336,8 @@ input[type="month"] {
   // Remove the default appearance of temporal inputs to avoid a Mobile Safari
   // bug where setting a custom line-height prevents text from being vertically
   // centered within the input.
-  //
-  // Bug report: https://github.com/twbs/bootstrap/issues/11266
+  // See https://bugs.webkit.org/show_bug.cgi?id=139848
+  // and https://github.com/twbs/bootstrap/issues/11266
   -webkit-appearance: listbox;
 }
 
@@ -351,9 +347,11 @@ textarea {
 }
 
 fieldset {
-  // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
-  // so we reset that to ensure it behaves more like a standard block element.
-  // See https://github.com/twbs/bootstrap/issues/12359.
+  // Browsers set a default `min-width: min-content;` on fieldsets,
+  // unlike e.g. `<div>`s, which have `min-width: 0;` by default.
+  // So we reset that to ensure fieldsets behave more like a standard block element.
+  // See https://github.com/twbs/bootstrap/issues/12359
+  // and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
   min-width: 0;
   // Reset the default outline behavior of fieldsets so they don't affect page layout.
   padding: 0;

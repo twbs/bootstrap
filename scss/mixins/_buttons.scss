@@ -12,96 +12,69 @@
   border-color: $border;
   @include box-shadow($btn-box-shadow);
 
+  // Hover and focus styles are shared
   @include hover {
     color: $color;
     background-color: $active-background;
-        border-color: $active-border;
+    border-color: $active-border;
   }
-
   &:focus,
   &.focus {
-    color: $color;
-    background-color: $active-background;
-        border-color: $active-border;
+    // Avoid using mixin so we can pass custom focus shadow properly
+    @if $enable-shadows {
+      box-shadow: $btn-box-shadow, 0 0 0 2px rgba($border, .5);
+    } @else {
+      box-shadow: 0 0 0 2px rgba($border, .5);
+    }
+  }
+
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    background-color: $background;
+    border-color: $border;
   }
 
   &:active,
   &.active,
-  .open > &.dropdown-toggle {
+  .show > &.dropdown-toggle {
     color: $color;
     background-color: $active-background;
-        border-color: $active-border;
-    // Remove the gradient for the pressed/active state
-    background-image: none;
+    background-image: none; // Remove the gradient for the pressed/active state
+    border-color: $active-border;
     @include box-shadow($btn-active-box-shadow);
-
-    &:hover,
-    &:focus,
-    &.focus {
-      color: $color;
-      background-color: darken($background, 17%);
-          border-color: darken($border, 25%);
-    }
-  }
-
-  &.disabled,
-  &:disabled {
-    &:focus,
-    &.focus {
-      background-color: $background;
-          border-color: $border;
-    }
-    @include hover {
-      background-color: $background;
-          border-color: $border;
-    }
   }
 }
 
-@mixin button-outline-variant($color) {
+@mixin button-outline-variant($color, $color-hover: #fff) {
   color: $color;
   background-image: none;
   background-color: transparent;
   border-color: $color;
 
   @include hover {
-    color: #fff;
+    color: $color-hover;
     background-color: $color;
-        border-color: $color;
+    border-color: $color;
   }
 
   &:focus,
   &.focus {
-    color: #fff;
-    background-color: $color;
-        border-color: $color;
-  }
-
-  &:active,
-  &.active,
-  .open > &.dropdown-toggle {
-    color: #fff;
-    background-color: $color;
-        border-color: $color;
-
-    &:hover,
-    &:focus,
-    &.focus {
-      color: #fff;
-      background-color: darken($color, 17%);
-          border-color: darken($color, 25%);
-    }
+    box-shadow: 0 0 0 2px rgba($color, .5);
   }
 
   &.disabled,
   &:disabled {
-    &:focus,
-    &.focus {
-      border-color: lighten($color, 20%);
-    }
-    @include hover {
-      border-color: lighten($color, 20%);
-    }
+    color: $color;
+    background-color: transparent;
+  }
+
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: $color-hover;
+    background-color: $color;
+    border-color: $color;
   }
 }
 

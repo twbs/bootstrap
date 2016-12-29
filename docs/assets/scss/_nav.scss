@@ -24,14 +24,4 @@
   .dropdown-menu {
     font-size: inherit;
   }
-
-  @include media-breakpoint-down(sm) {
-    .nav-link {
-      float: none;
-
-      + .nav-link {
-        margin-left: 0;
-      }
-    }
-  }
 }

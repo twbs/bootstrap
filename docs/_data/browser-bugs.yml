@@ -1,6 +1,16 @@
 -
   browser: >
-    Microsoft Edge
+    Edge
+  summary: >
+    Visual artifacts in scrollable modal dialogs
+  upstream_bug: >
+    Edge#9011176
+  origin: >
+    Bootstrap#20755
+
+-
+  browser: >
+    Edge
   summary: >
     Native browser tooltip for `title` shows on first keyboard focus (in addition to custom tooltip component)
   upstream_bug: >
@@ -10,7 +20,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     Hovered element still remains in `:hover` state after scrolling away.
   upstream_bug: >
@@ -20,7 +30,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
   upstream_bug: >
@@ -30,7 +40,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
   upstream_bug: >
@@ -40,7 +50,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     `background` of `<tr>` is only applied to first child cell instead of all cells in the row
   upstream_bug: >
@@ -50,7 +60,7 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
   upstream_bug: >
@@ -60,13 +70,33 @@
 
 -
   browser: >
-    Microsoft Edge
+    Edge
   summary: >
     Background color from lower layer bleeds through transparent border in some cases
   upstream_bug: >
     Edge#6274505
   origin: >
     Bootstrap#18228
+
+-
+  browser: >
+    Edge
+  summary: >
+    Hovering over descendant SVG element fires `mouseleave` event at ancestor
+  upstream_bug: >
+    Edge#7787318
+  origin: >
+    Bootstrap#19670
+
+-
+  browser: >
+    Edge
+  summary: >
+    Active `position: fixed;` `<button>` flickers when scrolling
+  upstream_bug: >
+    Edge#8770398
+  origin: >
+    Bootstrap#20507
 
 -
   browser: >
@@ -102,11 +132,41 @@
   browser: >
     Firefox
   summary: >
-    Fire `transitioncancel` event when a transition is canceled
+    Wide floated table doesn't wrap onto new line
   upstream_bug: >
-    Mozilla#1264125
+    Mozilla#1277782
   origin: >
-    Mozilla#1182856
+    Bootstrap#19839
+
+-
+  browser: >
+    Firefox
+  summary: >
+    Mouse sometimes not within element for purposes of `mouseenter`/`mouseleave` when it's within SVG elements
+  upstream_bug: >
+    Mozilla#577785
+  origin: >
+    Bootstrap#19670
+
+-
+  browser: >
+    Firefox
+  summary: >
+    `position: absolute` element that's wider than its column renders differently than other browsers
+  upstream_bug: >
+    Mozilla#1282363
+  origin: >
+    Bootstrap#20161
+
+-
+  browser: >
+    Firefox
+  summary: >
+    Layout with floated columns breaks when printing
+  upstream_bug: >
+    Mozilla#1315994
+  origin: >
+    Bootstrap#21092
 
 -
   browser: >
@@ -150,16 +210,6 @@
 
 -
   browser: >
-    Chrome (OS X)
-  summary: >
-    Caps Lock indicator not shown in `<input type="password">` with `display: block`
-  upstream_bug: >
-    Chromium#460200
-  origin: >
-    Bootstrap#15832
-
--
-  browser: >
     Chrome
   summary: >
     CSS infinite linear animation with alpha transparency leaks memory.
@@ -182,21 +232,31 @@
   browser: >
     Chrome
   summary: >
-    `width: 1%` on nested table cell causes its table to hog horizontal space.
+    `table-cell` borders not overlapping despite `margin-right: -1px`
   upstream_bug: >
-    Chromium#427994
+    Chromium#568691
   origin: >
-    Bootstrap#16372
+    Bootstrap#17438, Bootstrap#14237
 
 -
   browser: >
     Chrome
   summary: >
-    `table-cell` borders not overlapping despite `margin-right: -1px`
+    Clicking scrollbar in `<select multiple>` with overflowed options will select nearby `<option>`
   upstream_bug: >
-    Chromium#534750
+    Chromium#597642
   origin: >
-    Bootstrap#17438, Bootstrap#14237
+    Bootstrap#19810
+
+-
+  browser: >
+    Chrome
+  summary: >
+    Don't make `:hover` sticky on touch-friendly webpages
+  upstream_bug: >
+    Chromium#370155
+  origin: >
+    Bootstrap#12832
 
 -
   browser: >
@@ -210,13 +270,13 @@
 
 -
   browser: >
-    Safari
+    Chrome (Linux)
   summary: >
-    `width: 1%` on nested table cell causes its table to hog horizontal space.
+    `<select>`'s pop-up menu is blank on some systems.
   upstream_bug: >
-    WebKit#144696, Safari#20839572
+    Chromium#510079
   origin: >
-    Bootstrap#16372
+    Bootstrap#21120
 
 -
   browser: >
@@ -227,6 +287,16 @@
     WebKit#156684
   origin: >
     Bootstrap#17403
+
+-
+  browser: >
+    Safari
+  summary: >
+    Link to container with id and tabindex results in container being ignored by VoiceOver (affects skip links)
+  upstream_bug: >
+    WebKit#163658
+  origin: >
+    Bootstrap#20732
 
 -
   browser: >
@@ -259,16 +329,6 @@
     WebKit#138192, Safari#19435018
   origin: >
     Bootstrap#14868
-
--
-  browser: >
-    Safari (iPad)
-  summary: >
-    `<select>` menu on iPad causes shifting of hit-testing areas
-  upstream_bug: >
-    WebKit#150079, Safari#23082521
-  origin: >
-    Bootstrap#14975
 
 -
   browser: >
@@ -359,6 +419,46 @@
     WebKit#153856
   origin: >
     Bootstrap#14839
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Tapping from one `<input>` to another in an overlay can cause shaking/jiggling effect
+  upstream_bug: >
+    WebKit#158276
+  origin: >
+    Bootstrap#19927
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Modal with `-webkit-overflow-scrolling: touch` doesn't become scrollable after added text makes it taller
+  upstream_bug: >
+    WebKit#158342
+  origin: >
+    Bootstrap#17695
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Don't make `:hover` sticky on touch-friendly webpages
+  upstream_bug: >
+    WebKit#158517
+  origin: >
+    Bootstrap#12832
+
+-
+  browser: >
+    Safari (iOS)
+  summary: >
+    Element which is `position:fixed` disappears after opening a `<select>` menu
+  upstream_bug: >
+    WebKit#162362
+  origin: >
+    Bootstrap#20759
 
 -
   browser: >

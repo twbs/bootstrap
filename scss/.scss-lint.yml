@@ -3,6 +3,9 @@ scss_files:
   - "**/*.scss"
   - "docs/assets/scss/**/*.scss"
 
+exclude:
+  - "scss/_normalize.scss"
+
 plugin_directories: ['.scss-linters']
 
 # List of gem names to load custom linters from (make sure they are already
@@ -89,7 +92,7 @@ linters:
     enabled: true
 
   ImportantRule:
-    enabled: true
+    enabled: false
 
   ImportPath:
     enabled: true
@@ -152,10 +155,13 @@ linters:
       - flex-align
       - flex-basis
       - flex-direction
+      - flex-wrap
       - flex-flow
       - flex-grow
       - flex-order
       - flex-pack
+      - align-items
+      - justify-content
       - float
       - width
       - min-width
@@ -228,6 +234,7 @@ linters:
       - word-spacing
       - -ms-word-wrap
       - word-wrap
+      - overflow-wrap
       - -moz-tab-size
       - -o-tab-size
       - tab-size
@@ -457,7 +464,7 @@ linters:
 
   Shorthand:
     enabled: true
-    allowed_shorthands: [1, 2, 3]
+    allowed_shorthands: [1, 2, 3, 4]
 
   SingleLinePerProperty:
     enabled: false
@@ -487,7 +494,7 @@ linters:
   SpaceBeforeBrace:
     enabled: true
     style: space # or 'new_line'
-    allow_single_line_padding: false
+    allow_single_line_padding: true
 
   SpaceBetweenParens:
     enabled: true

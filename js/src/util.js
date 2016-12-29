@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): util.js
+ * Bootstrap (v4.0.0-alpha.5): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,6 +16,8 @@ const Util = (($) => {
 
   let transition = false
 
+  const MAX_UID = 1000000
+
   const TransitionEndEvent = {
     WebkitTransition : 'webkitTransitionEnd',
     MozTransition    : 'transitionend',
@@ -25,7 +27,7 @@ const Util = (($) => {
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
-    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+    return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
   }
 
   function isElement(obj) {
@@ -38,8 +40,9 @@ const Util = (($) => {
       delegateType: transition.end,
       handle(event) {
         if ($(event.target).is(this)) {
-          return event.handleObj.handler.apply(this, arguments)
+          return event.handleObj.handler.apply(this, arguments) // eslint-disable-line prefer-rest-params
         }
+        return undefined
       }
     }
   }
@@ -49,11 +52,13 @@ const Util = (($) => {
       return false
     }
 
-    let el = document.createElement('bootstrap')
+    const el = document.createElement('bootstrap')
 
-    for (let name in TransitionEndEvent) {
+    for (const name in TransitionEndEvent) {
       if (el.style[name] !== undefined) {
-        return { end: TransitionEndEvent[name] }
+        return {
+          end: TransitionEndEvent[name]
+        }
       }
     }
 
@@ -93,15 +98,14 @@ const Util = (($) => {
    * --------------------------------------------------------------------------
    */
 
-  let Util = {
+  const Util = {
 
     TRANSITION_END: 'bsTransitionEnd',
 
     getUID(prefix) {
       do {
-        /* eslint-disable no-bitwise */
-        prefix += ~~(Math.random() * 1000000) // "~~" acts like a faster Math.floor() here
-        /* eslint-enable no-bitwise */
+        // eslint-disable-next-line no-bitwise
+        prefix += ~~(Math.random() * MAX_UID) // "~~" acts like a faster Math.floor() here
       } while (document.getElementById(prefix))
       return prefix
     },
@@ -118,7 +122,7 @@ const Util = (($) => {
     },
 
     reflow(element) {
-      new Function('bs', 'return bs')(element.offsetHeight)
+      return element.offsetHeight
     },
 
     triggerTransitionEnd(element) {
@@ -130,17 +134,12 @@ const Util = (($) => {
     },
 
     typeCheckConfig(componentName, config, configTypes) {
-      for (let property in configTypes) {
+      for (const property in configTypes) {
         if (configTypes.hasOwnProperty(property)) {
-          let expectedTypes = configTypes[property]
-          let value         = config[property]
-          let valueType
-
-          if (value && isElement(value)) {
-            valueType = 'element'
-          } else {
-            valueType = toType(value)
-          }
+          const expectedTypes = configTypes[property]
+          const value         = config[property]
+          const valueType     = value && isElement(value) ?
+                                'element' : toType(value)
 
           if (!new RegExp(expectedTypes).test(valueType)) {
             throw new Error(

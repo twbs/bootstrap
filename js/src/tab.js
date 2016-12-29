@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.2): tab.js
+ * Bootstrap (v4.0.0-alpha.5): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Tab = (($) => {
    */
 
   const NAME                = 'tab'
-  const VERSION             = '4.0.0-alpha.2'
+  const VERSION             = '4.0.0-alpha.5'
   const DATA_KEY            = 'bs.tab'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -36,15 +36,16 @@ const Tab = (($) => {
   const ClassName = {
     DROPDOWN_MENU : 'dropdown-menu',
     ACTIVE        : 'active',
+    DISABLED      : 'disabled',
     FADE          : 'fade',
-    IN            : 'in'
+    SHOW          : 'show'
   }
 
   const Selector = {
     A                     : 'a',
     LI                    : 'li',
     DROPDOWN              : '.dropdown',
-    UL                    : 'ul:not(.dropdown-menu)',
+    LIST                  : 'ul:not(.dropdown-menu), ol:not(.dropdown-menu)',
     FADE_CHILD            : '> .nav-item .fade, > .fade',
     ACTIVE                : '.active',
     ACTIVE_CHILD          : '> .nav-item > .active, > .active',
@@ -78,26 +79,27 @@ const Tab = (($) => {
 
     show() {
       if (this._element.parentNode &&
-         (this._element.parentNode.nodeType === Node.ELEMENT_NODE) &&
-         ($(this._element).hasClass(ClassName.ACTIVE))) {
+          this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
+          $(this._element).hasClass(ClassName.ACTIVE) ||
+          $(this._element).hasClass(ClassName.DISABLED)) {
         return
       }
 
       let target
       let previous
-      let ulElement = $(this._element).closest(Selector.UL)[0]
-      let selector  = Util.getSelectorFromElement(this._element)
+      const listElement = $(this._element).closest(Selector.LIST)[0]
+      const selector    = Util.getSelectorFromElement(this._element)
 
-      if (ulElement) {
-        previous = $.makeArray($(ulElement).find(Selector.ACTIVE))
+      if (listElement) {
+        previous = $.makeArray($(listElement).find(Selector.ACTIVE))
         previous = previous[previous.length - 1]
       }
 
-      let hideEvent = $.Event(Event.HIDE, {
+      const hideEvent = $.Event(Event.HIDE, {
         relatedTarget: this._element
       })
 
-      let showEvent = $.Event(Event.SHOW, {
+      const showEvent = $.Event(Event.SHOW, {
         relatedTarget: previous
       })
 
@@ -108,7 +110,7 @@ const Tab = (($) => {
       $(this._element).trigger(showEvent)
 
       if (showEvent.isDefaultPrevented() ||
-         (hideEvent.isDefaultPrevented())) {
+         hideEvent.isDefaultPrevented()) {
         return
       }
 
@@ -118,15 +120,15 @@ const Tab = (($) => {
 
       this._activate(
         this._element,
-        ulElement
+        listElement
       )
 
-      let complete = () => {
-        let hiddenEvent = $.Event(Event.HIDDEN, {
+      const complete = () => {
+        const hiddenEvent = $.Event(Event.HIDDEN, {
           relatedTarget: this._element
         })
 
-        let shownEvent  = $.Event(Event.SHOWN, {
+        const shownEvent = $.Event(Event.SHOWN, {
           relatedTarget: previous
         })
 
@@ -150,15 +152,13 @@ const Tab = (($) => {
     // private
 
     _activate(element, container, callback) {
-      let active          = $(container).find(Selector.ACTIVE_CHILD)[0]
-      let isTransitioning = callback
+      const active          = $(container).find(Selector.ACTIVE_CHILD)[0]
+      const isTransitioning = callback
         && Util.supportsTransitionEnd()
-        && ((active && $(active).hasClass(ClassName.FADE))
+        && (active && $(active).hasClass(ClassName.FADE)
            || Boolean($(container).find(Selector.FADE_CHILD)[0]))
 
-      let complete = $.proxy(
-        this._transitionComplete,
-        this,
+      const complete = () => this._transitionComplete(
         element,
         active,
         isTransitioning,
@@ -175,7 +175,7 @@ const Tab = (($) => {
       }
 
       if (active) {
-        $(active).removeClass(ClassName.IN)
+        $(active).removeClass(ClassName.SHOW)
       }
     }
 
@@ -183,7 +183,7 @@ const Tab = (($) => {
       if (active) {
         $(active).removeClass(ClassName.ACTIVE)
 
-        let dropdownChild = $(active).find(
+        const dropdownChild = $(active.parentNode).find(
           Selector.DROPDOWN_ACTIVE_CHILD
         )[0]
 
@@ -199,15 +199,15 @@ const Tab = (($) => {
 
       if (isTransitioning) {
         Util.reflow(element)
-        $(element).addClass(ClassName.IN)
+        $(element).addClass(ClassName.SHOW)
       } else {
         $(element).removeClass(ClassName.FADE)
       }
 
       if (element.parentNode &&
-         ($(element.parentNode).hasClass(ClassName.DROPDOWN_MENU))) {
+          $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
 
-        let dropdownElement = $(element).closest(Selector.DROPDOWN)[0]
+        const dropdownElement = $(element).closest(Selector.DROPDOWN)[0]
         if (dropdownElement) {
           $(dropdownElement).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
         }
@@ -225,11 +225,11 @@ const Tab = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let $this = $(this)
-        let data  = $this.data(DATA_KEY)
+        const $this = $(this)
+        let data    = $this.data(DATA_KEY)
 
         if (!data) {
-          data = data = new Tab(this)
+          data = new Tab(this)
           $this.data(DATA_KEY, data)
         }
 

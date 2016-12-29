@@ -2,7 +2,7 @@
 
 .bd-masthead {
   position: relative;
-  padding: 3rem ($grid-gutter-width / 2) 2rem;
+  padding: 3rem ($grid-gutter-width-base / 2) 2rem;
   color: $bd-purple-light;
   text-align: center;
   background-image: linear-gradient(135deg, darken($bd-purple, 20%), $bd-purple, lighten(saturate($bd-purple, 5%), 15%));

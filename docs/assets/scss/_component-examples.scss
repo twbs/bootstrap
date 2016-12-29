@@ -19,9 +19,9 @@
     }
   }
 
-  .flex-items-xs-top,
-  .flex-items-xs-middle,
-  .flex-items-xs-bottom {
+  .flex-items-top,
+  .flex-items-middle,
+  .flex-items-bottom {
     min-height: 6rem;
     background-color: rgba(255,0,0,.1);
   }
@@ -30,6 +30,11 @@
 .bd-example-row-flex-cols .row {
   min-height: 10rem;
   background-color: rgba(255,0,0,.1);
+}
+
+.bd-highlight {
+  background-color: rgba($bd-purple, .15);
+  border: 1px solid rgba($bd-purple, .15);
 }
 
 
@@ -100,20 +105,19 @@
     margin-top: 2rem;
   }
 
-  // Undo width of container
-  .container {
-    width: auto;
+  .pos-f-t {
+    position: relative;
+    margin: -1rem;
+
+    @include media-breakpoint-up(sm) {
+      margin: -1.5rem;
+    }
   }
 
   > .form-control {
     + .form-control {
       margin-top: .5rem;
     }
-  }
-
-  // Card examples should be horizontal
-  > .card {
-    max-width: 20rem;
   }
 
   > .nav + .nav,
@@ -226,21 +230,23 @@
 
 // Example modals
 .bd-example-modal {
-  background-color: #f5f5f5;
-}
-.bd-example-modal .modal {
-  position: relative;
-  top: auto;
-  right: auto;
-  bottom: auto;
-  left: auto;
-  z-index: 1;
-  display: block;
-}
-.bd-example-modal .modal-dialog {
-  left: auto;
-  margin-right: auto;
-  margin-left: auto;
+  background-color: #fafafa;
+
+  .modal {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    z-index: 1;
+    display: block;
+  }
+
+  .modal-dialog {
+    left: auto;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 // Example dropdowns
@@ -308,7 +314,8 @@
   .bg-info,
   .bg-warning,
   .bg-danger,
-  .bg-inverse {
+  .bg-inverse,
+  .bg-faded {
     &:not(.navbar) {
       padding: .5rem;
       margin-top: .5rem;
@@ -317,6 +324,16 @@
   }
 }
 
+.bd-example-border-utils {
+  [class^="border-"] {
+    display: inline-block;
+    width: 6rem;
+    height: 6rem;
+    margin: .25rem;
+    background-color: #f5f5f5;
+    border: 1px solid;
+  }
+}
 
 //
 // Code snippets
@@ -324,7 +341,7 @@
 
 .highlight {
   padding: 1rem;
-  margin: 1rem (-$grid-gutter-width / 2);
+  margin: 1rem (-$grid-gutter-width-base / 2);
   background-color: #f7f7f9;
 
   @include media-breakpoint-up(sm) {

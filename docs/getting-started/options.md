@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Customization options
+description: Customize Bootstrap with Sass variables, easily toggling global preferences with a quick recompile.
 group: getting-started
 ---
 
@@ -8,7 +9,7 @@ Customize Bootstrap 4 with our built-in custom variables file and easily toggle 
 
 ## Customizing variables
 
-Bootstrap 4 ships with a `_custom.scss` file for easy variable overrides. Copy and paste relevant lines from `_variables.scss` into the custom file and recompile your Sass to change our default values. **Be sure to remove the `!default` flag from override values.**
+Bootstrap 4 ships with a `_custom.scss` file for easy overriding of default variables in `/scss/_variables.scss`. Copy and paste relevant lines from there into the `_custom.scss` file, modify the values, and recompile your Sass to change our default values. **Be sure to remove the `!default` flag from override values.**
 
 For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
 
@@ -31,10 +32,9 @@ You can find and customize these variables for key global options in our `_varia
 | Variable                    | Values                             | Description                                                                            |
 | --------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------- |
 | `$spacer`                   | `1rem` (default), or any value > 0 | Specifies the default spacer value for our spacer utilities.                           |
-| `$enable-flex`              | `true` or `false` (default)        | Swaps `float` and `display: table` styles for `display: flex`.                         |
 | `$enable-rounded`           | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components.                       |
 | `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components.                          |
 | `$enable-gradients`         | `true` or `false` (default)        | Enables predefined gradients via `background-image` styles on various components.      |
 | `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components.                                |
 | `$enable-hover-media-query` | `true` or `false` (default)        | ...                                                                                    |
-| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.col-md-1` etc.).     |
+| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.).     |

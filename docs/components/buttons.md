@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Buttons
+description: Use Bootstrap's custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.
 group: components
 redirect_from: "/components/"
 ---
@@ -103,10 +104,6 @@ Buttons will appear pressed (with a darker background, darker border, and inset 
 ## Disabled state
 
 Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element.
-
-{% callout info %}
-**Heads up!** IE9 and below render disabled buttons with gray, shadowed text that we can't override.
-{% endcallout %}
 
 {% example html %}
 <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>

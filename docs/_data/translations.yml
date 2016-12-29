@@ -12,3 +12,8 @@
   code: ja
   description: Bootstrap 4 日本語リファレンス
   url: http://bootstrap4.jp/
+
+- name: Brazilian Portuguese
+  code: pt-BR
+  description: Bootstrap 4 Português do Brasil
+  url: https://bootstrapbrasil.github.io/v4/
