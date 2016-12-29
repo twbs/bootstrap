@@ -33,7 +33,6 @@ Navbars come with built-in support for a handful of sub-components. Choose from 
 - `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
 - `.form-inline` for any form controls and actions.
 - `.navbar-text` for adding vertically centered strings of text.
-- `.form-inline` for form controls and more.
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
 
 Here's an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the `md` (medium) breakpoint.
