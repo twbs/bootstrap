@@ -18,7 +18,7 @@ Progress components are built with two HTML elements, some CSS to set the width,
 
 - We use the `.progress` as a wrapper to indicate the max value of the progress bar.
 - We use the inner `.progress-bar` to indicate the progress so far.
-- The `.progress-bar` requires an inline style or custom CSS to set their width.
+- The `.progress-bar` requires an inline style, utility class, or custom CSS to set their width.
 - The `.progress-bar` also requires some `role` and `aria` attributes to make it accessible.
 
 Put that all together, and you have the following examples.
@@ -38,6 +38,14 @@ Put that all together, and you have the following examples.
 </div>
 <div class="progress">
   <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+{% endexample %}
+
+Bootstrap provides a handful of [utilities for setting width]({{ site.baseurl }}/utilities/sizing-and-positioning/#width-and-height). Depending on your needs, these may help with quickly configuring progress.
+
+{% example html %}
+<div class="progress">
+  <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 {% endexample %}
 
