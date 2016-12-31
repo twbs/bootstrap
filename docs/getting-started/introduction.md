@@ -37,22 +37,15 @@ And that's it—you're on your way to a fully Bootstrapped site. If you're at al
 
 ## Starter template
 
-Be sure to have your pages set up with the latest design and development standards. That means:
-
-* Using an HTML5 doctype
-* Forcing Internet Explorer to use its latest rendering mode ([read more](https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do))
-* And, utilizing the viewport meta tag.
-
-Put it all together and your pages should look like this:
+Be sure to have your pages set up with the latest design and development standards. That means using an HTML5 doctype and including a viewport meta tag for proper responsive behaviors. Put it all together and your pages should look like this:
 
 {% highlight html %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags always come first -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
