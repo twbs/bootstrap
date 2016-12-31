@@ -166,10 +166,6 @@ a {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }
-
-  &:focus {
-    @include tab-focus();
-  }
 }
 
 // And undo these styles for placeholder links/named anchors (without href)
@@ -188,7 +184,7 @@ a:not([href]):not([tabindex]) {
   }
 
   &:focus {
-    outline: none;
+    outline: 0;
   }
 }
 
