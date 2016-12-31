@@ -105,70 +105,15 @@ Similarly, the latest versions of most desktop browsers are supported.
 
 For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/organizations/faq/) version of Firefox.
 
-Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 9 and below, though they are not officially supported.
+Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 9, though they are not officially supported.
 
 For a list of some of the browser bugs that Bootstrap has to grapple with, see our [Wall of browser bugs]({{ site.baseurl }}/browser-bugs/).
 
 ## Internet Explorer
 
-Internet Explorer 10+ is supported, however, IE9 down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported.
+Internet Explorer 10+ is supported; IE9 down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use...](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Feature</th>
-        <th scope="col">Internet Explorer 9</th>
-        <th scope="col">Internet Explorer 10</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition"><code>transition</code></a></th>
-        <td class="text-danger">Not supported</td>
-        <td class="text-success">Supported</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-placeholder"><code>placeholder</code></a></th>
-        <td class="text-danger">Not supported</td>
-        <td class="text-success">Supported</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">Flexbox</a></th>
-        <td class="text-danger">Not supported</td>
-        <td class="text-warning">Partially supported, with <code>-ms</code> prefix<br><a href="http://caniuse.com/#feat=flexbox">See <em>Can I use</em> for details</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-Visit [Can I use...](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
-
-## Supporting Internet Explorer 8-9
-
-As of v4, Bootstrap no longer supports IE8 or IE9. **If you require IE8-9 support, we recommend you use Bootstrap 3.** It's still supported by our team for bugfixes and documentation changes, but no new features will be added to it.
-
-Alternatively, you may add some third party JavaScript to backfill support for IE8-9 to Bootstrap 4. You'll need the following:
-
-* [The HTML5 shiv](https://en.wikipedia.org/wiki/HTML5_Shiv)
-* [Respond.js](https://github.com/scottjehl/Respond)
-* [Rem unit polyfill](https://github.com/chuckcarpenter/REM-unit-polyfill)
-
-No support will be provided for this, though you may find some help from the community in [our Slack channel]({{ site.slack }}).
-
-## IE Compatibility modes
-
-Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate `<meta>` tag in your pages:
-
-{% highlight html %}
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-{% endhighlight %}
-
-Confirm the document mode by opening the debugging tools: press <kbd>F12</kbd> and check the "Document Mode".
-
-This tag is included in all of Bootstrap's documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.
-
-See [this StackOverflow question](https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do) for more information.
+**If you require IE8-9 support, use Bootstrap 3.** It's the most stable version of our code and is still supported by our team for critical bugfixes and documentation changes. However, no new features will be added to it.
 
 ## Internet Explorer 10 in Windows Phone 8
 
