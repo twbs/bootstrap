@@ -9,7 +9,7 @@ module.exports = function configureRubySass(grunt) {
     style: 'expanded',
     trace: true,
     bundleExec: true
-  };
+  }
   grunt.config.merge({
     sass: {
       core: {
@@ -32,6 +32,6 @@ module.exports = function configureRubySass(grunt) {
         }
       }
     }
-  });
-  grunt.loadNpmTasks('grunt-contrib-sass');
-};
+  })
+  grunt.loadNpmTasks('grunt-contrib-sass')
+}
