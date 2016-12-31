@@ -9,7 +9,7 @@
 // https://getbootstrap.com/getting-started/#support-ie10-width
 
 (function () {
-  'use strict';
+  'use strict'
 
   if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
     var msViewportStyle = document.createElement('style')
@@ -21,4 +21,4 @@
     document.head.appendChild(msViewportStyle)
   }
 
-})();
+}())

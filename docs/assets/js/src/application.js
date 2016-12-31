@@ -12,8 +12,8 @@
 
 /* global Clipboard, anchors */
 
-!function ($) {
-  'use strict';
+(function ($) {
+  'use strict'
 
   $(function () {
 
@@ -86,11 +86,11 @@
 
   })
 
-}(jQuery)
+}(jQuery))
 
 ;(function () {
-  'use strict';
+  'use strict'
 
-  anchors.options.placement = 'left';
+  anchors.options.placement = 'left'
   anchors.add('.bd-content > h1, .bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
-})();
+}())
