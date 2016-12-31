@@ -20,8 +20,7 @@
     "change-version": "node grunt/change-version.js",
     "clean-css": "cleancss --skip-advanced --source-map --output dist/css/bootstrap.min.css dist/css/bootstrap.css && cleancss --skip-advanced --source-map --output dist/css/bootstrap-grid.min.css dist/css/bootstrap-grid.css && cleancss --skip-advanced --source-map --output dist/css/bootstrap-reboot.min.css dist/css/bootstrap-reboot.css",
     "clean-css-docs": "cleancss --skip-advanced --source-map --output docs/assets/css/docs.min.css docs/assets/css/docs.min.css",
-    "eslint": "eslint --ignore-path .eslintignore js",
-    "jscs": "jscs --config=js/.jscsrc js/src js/tests/unit docs/assets/js/src grunt Gruntfile.js docs/assets/js/ie-emulation-modes-warning.js docs/assets/js/ie10-viewport-bug-workaround.js",
+    "eslint": "eslint --ignore-path .eslintignore js && eslint --config js/tests/.eslintrc.json --env node grunt Gruntfile.js && eslint --config js/tests/.eslintrc.json docs/assets/js/src docs/assets/js/ie-emulation-modes-warning.js docs/assets/js/ie10-viewport-bug-workaround.js",
     "htmlhint": "htmlhint --config docs/.htmlhintrc _gh_pages/",
     "postcss": "postcss --config grunt/postcss.js --replace dist/css/*.css",
     "postcss-docs": "postcss --config grunt/postcss.js --no-map --replace docs/assets/css/docs.min.css && postcss --config grunt/postcss.js --no-map --replace docs/examples/**/*.css",
@@ -30,7 +29,7 @@
     "uglify": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
     "uglify-docs": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output docs/assets/js/docs.min.js docs/assets/js/vendor/*.js docs/assets/js/src/application.js",
     "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
-    "test": "npm run eslint && npm run jscs && grunt test"
+    "test": "npm run eslint && grunt test"
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
@@ -73,7 +72,6 @@
     "grunt-stamp": "^0.3.0",
     "htmlhint": "^0.9.13",
     "is-travis": "^1.0.0",
-    "jscs": "^3.0.7",
     "load-grunt-tasks": "^3.5.2",
     "postcss-cli": "^2.6.0",
     "postcss-flexbugs-fixes": "^2.0.0",
