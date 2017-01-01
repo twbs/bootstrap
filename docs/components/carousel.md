@@ -143,12 +143,12 @@ Add captions to your slides easily with the `.carousel-caption` element within a
         </div>
       </div>
     </div>
-    <a class="carousel-control carousel-control-left" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="icon-prev" aria-hidden="true"></span>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control carousel-control-right" href="#carouselExampleCaptions" role="button" data-slide="next">
-      <span class="icon-next" aria-hidden="true"></span>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
