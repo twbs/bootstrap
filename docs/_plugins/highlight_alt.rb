@@ -58,25 +58,28 @@ eos
         "<div class=\"bd-example\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
       end
 
-      def remove_holderjs(code)
-        code = code.gsub(/data-src="holder.js.+?"/, 'src="..."')
-      end
+      def cleanup_highlighted_code(code)
+        # TODO: We should actually parse the HTML and remove things that way instead of using regex
 
-      def remove_example_classes(code)
-        # Find `bd-` classes and remove them from the highlighted code. Because of how this regex works, it will also
-        # remove classes that are after the `bd-` class. While this is a bug, I left it because it can be helpful too.
-        # To fix the bug, replace `(?=")` with `(?=("|\ ))`.
-        code = code.gsub(/(?!class=".)\ *?bd-.+?(?=")/, "")
+        # Find holder.js images and replace the `data-src` with `src="..."`
+        code = code.gsub(/data-src="holder.js.+?"/, 'src="..."')
+        # Find tags with the attribue `bd-hide` and remove all attributes after it
+        code = code.gsub(/\ *bd-hide.*?(?=\>)/, "")
+        # Find tags with the attribute `bd-remove` and replace the tag with `...`
+        code = code.gsub(/\<(.+?)\ +.*?bd-remove.*?\>.*?\<\/\1\>/, "...")
+        # We don't need multiple lines of `...`, so only use one `...`.
+        code = code.gsub(/(?!\<\w+.*?\>)\s*(?:\.{3,}\s*)+(?=\<\/\w+\>)/, "...")
+        # Find `bd-` classes and any class after it and remove them.
+        code = code.gsub(/(?!class=".*?)\ *bd-.+?(?=")/, "")
         # Find empty class attributes after the previous regex and remove those too.
-        code = code.gsub(/\ class=""/, "")
+        code = code.gsub(/\ *class=""/, "")
       end
 
       def render_rouge(code)
         require 'rouge'
         formatter = Rouge::Formatters::HTML.new(line_numbers: @options[:linenos], wrap: false)
         lexer = Rouge::Lexer.find_fancy(@lang, code) || Rouge::Lexers::PlainText
-        code = remove_holderjs(code)
-        code = remove_example_classes(code)
+        code = cleanup_highlighted_code(code)
         code = formatter.format(lexer.lex(code))
         "<div class=\"highlight\"><pre>#{code}</pre></div>"
       end
