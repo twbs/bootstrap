@@ -63,10 +63,10 @@ eos
 
         # Find holder.js images and replace the `data-src` with `src="..."`
         code = code.gsub(/data-src="holder.js.+?"/, 'src="..."')
-        # Find tags with the attribue `bd-hide` and remove all attributes after it
-        code = code.gsub(/\ *bd-hide.*?(?=\>)/, "")
-        # Find tags with the attribute `bd-remove` and replace the tag with `...`
-        code = code.gsub(/\<(.+?)\ +.*?bd-remove.*?\>.*?\<\/\1\>/, "...")
+        # Find tags with the attribue `data-bd-hide` and remove all attributes after it
+        code = code.gsub(/\ *data-bd-hide.*?(?=\>)/, "")
+        # Find tags with the attribute `data-bd-remove` and replace the tag with `...`
+        code = code.gsub(/\<(.+?)\ +.*?data-bd-remove.*?\>.*?\<\/\1\>/, "...")
         # We don't need multiple lines of `...`, so only use one `...`.
         code = code.gsub(/(?!\<\w+.*?\>)\s*(?:\.{3,}\s*)+(?=\<\/\w+\>)/, "...")
         # Find `bd-` classes and any class after it and remove them.
