@@ -184,50 +184,48 @@ $('.carousel').carousel()
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-interval=""`.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-     <tr>
-       <th style="width: 100px;">Name</th>
-       <th style="width: 50px;">Type</th>
-       <th style="width: 50px;">Default</th>
-       <th>Description</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-       <td>interval</td>
-       <td>number</td>
-       <td>5000</td>
-       <td>The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.</td>
-     </tr>
-     <tr>
-       <td>keyboard</td>
-       <td>boolean</td>
-       <td>true</td>
-       <td>Whether the carousel should react to keyboard events.</td>
-     </tr>
-     <tr>
-       <td>pause</td>
-       <td>string | null</td>
-       <td>"hover"</td>
-       <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>null</code>, hovering over the carousel won't pause it.</td>
-     </tr>
-     <tr>
-       <td>ride</td>
-       <td>string</td>
-       <td>false</td>
-       <td>Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.</td>
-     </tr>
-     <tr>
-       <td>wrap</td>
-       <td>boolean</td>
-       <td>true</td>
-       <td>Whether the carousel should cycle continuously or have hard stops.</td>
-     </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+   <tr>
+     <th style="width: 100px;">Name</th>
+     <th style="width: 50px;">Type</th>
+     <th style="width: 50px;">Default</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+     <td>interval</td>
+     <td>number</td>
+     <td>5000</td>
+     <td>The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.</td>
+   </tr>
+   <tr>
+     <td>keyboard</td>
+     <td>boolean</td>
+     <td>true</td>
+     <td>Whether the carousel should react to keyboard events.</td>
+   </tr>
+   <tr>
+     <td>pause</td>
+     <td>string | null</td>
+     <td>"hover"</td>
+     <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>null</code>, hovering over the carousel won't pause it.</td>
+   </tr>
+   <tr>
+     <td>ride</td>
+     <td>string</td>
+     <td>false</td>
+     <td>Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.</td>
+   </tr>
+   <tr>
+     <td>wrap</td>
+     <td>boolean</td>
+     <td>true</td>
+     <td>Whether the carousel should cycle continuously or have hard stops.</td>
+   </tr>
+  </tbody>
+</table>
 
 ### Methods
 
@@ -270,26 +268,24 @@ Bootstrap's carousel class exposes two events for hooking into carousel function
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-     <tr>
-       <th style="width: 150px;">Event Type</th>
-       <th>Description</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-       <td>slide.bs.carousel</td>
-       <td>This event fires immediately when the <code>slide</code> instance method is invoked.</td>
-     </tr>
-     <tr>
-       <td>slid.bs.carousel</td>
-       <td>This event is fired when the carousel has completed its slide transition.</td>
-     </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+   <tr>
+     <th style="width: 150px;">Event Type</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+     <td>slide.bs.carousel</td>
+     <td>This event fires immediately when the <code>slide</code> instance method is invoked.</td>
+   </tr>
+   <tr>
+     <td>slid.bs.carousel</td>
+     <td>This event is fired when the carousel has completed its slide transition.</td>
+   </tr>
+  </tbody>
+</table>
 
 {% highlight js %}
 $('#myCarousel').on('slide.bs.carousel', function () {
