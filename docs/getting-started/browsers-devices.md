@@ -116,8 +116,8 @@ Internet Explorer 10+ is supported; IE9 down is not. Please be aware that some C
 Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](https://blogs.windows.com/buildingapps/2013/10/14/introducing-windows-phone-preview-for-developers/) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you'll need to **include the following JavaScript to work around the bug**.
 
 {% highlight js %}
-// Copyright 2014-2015 The Bootstrap Authors
-// Copyright 2014-2015 Twitter, Inc.
+// Copyright 2014-2017 The Bootstrap Authors
+// Copyright 2014-2017 Twitter, Inc.
 // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   var msViewportStyle = document.createElement('style')
