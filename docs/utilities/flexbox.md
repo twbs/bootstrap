@@ -16,11 +16,11 @@ Quickly manage the layout, alignment, and sizing of grid columns, navigation, co
 Apply `display` utilities to create a flexbox container and transform **direct children elements** into flex items. Flex containers and items are able to be modified further with additional flex properties.
 
 {% example html %}
-<div class="d-flex p-2 bd-highlight">I'm a flexbox container!</div>
+<div class="d-flex bd-highlight p-2">I'm a flexbox container!</div>
 {% endexample %}
 
 {% example html %}
-<div class="d-inline-flex p-2 bd-highlight">I'm an inline flexbox container!</div>
+<div class="d-inline-flex bd-highlight p-2">I'm an inline flexbox container!</div>
 {% endexample %}
 
 Responsive variations also exist for `.d-flex` and `.d-inline-flex`.
@@ -147,29 +147,29 @@ Use `align-self` utilities on flexbox items to individually change their alignme
 
 <div class="bd-example">
   <div class="d-flex bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="align-self-start p-2 bd-highlight">Aligned flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
+    <div class="align-self-start bd-highlight p-2">Aligned flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
   </div>
   <div class="d-flex bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="align-self-end p-2 bd-highlight">Aligned flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
+    <div class="align-self-end bd-highlight p-2">Aligned flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
   </div>
   <div class="d-flex bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="align-self-center p-2 bd-highlight">Aligned flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
+    <div class="align-self-center bd-highlight p-2">Aligned flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
   </div>
   <div class="d-flex bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="align-self-baseline p-2 bd-highlight">Aligned flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
+    <div class="align-self-baseline bd-highlight p-2">Aligned flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
   </div>
   <div class="d-flex bd-highlight" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="align-self-stretch p-2 bd-highlight">Aligned flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
+    <div class="align-self-stretch bd-highlight p-2">Aligned flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
   </div>
 </div>
 
@@ -200,15 +200,15 @@ Easily move all flex items to one side, but keep another on the opposite end by 
 
 {% example html %}
 <div class="d-flex justify-content-end bd-highlight mb-3">
-  <div class="mr-auto p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="mr-auto bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
 </div>
 
 <div class="d-flex justify-content-start bd-highlight">
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="ml-auto p-2 bd-highlight">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="ml-auto bd-highlight p-2">Flex item</div>
 </div>
 {% endexample %}
 
@@ -218,15 +218,15 @@ Similarly, move one flex item to the top or bottom of a container by mixing `ali
 
 {% example html %}
 <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
-  <div class="mb-auto p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="mb-auto bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
 </div>
 
 <div class="d-flex align-items-end flex-column bd-highlight mb-3" style="height: 200px;">
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="mt-auto p-2 bd-highlight">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="mt-auto bd-highlight p-2">Flex item</div>
 </div>
 {% endexample %}
 
@@ -284,9 +284,9 @@ Change the _visual_ order of specific flex items with a handful of `order` utili
 
 {% example html %}
 <div class="d-flex flex-nowrap bd-highlight">
-  <div class="flex-last p-2 bd-highlight">First flex item</div>
-  <div class="p-2 bd-highlight">Second flex item</div>
-  <div class="flex-first p-2 bd-highlight">Third flex item</div>
+  <div class="flex-last bd-highlight p-2">First flex item</div>
+  <div class="bd-highlight p-2">Second flex item</div>
+  <div class="flex-first bd-highlight p-2">Third flex item</div>
 </div>
 {% endexample %}
 
