@@ -576,21 +576,25 @@ h6, .h6 {
 .display-1 {
   font-size: 6rem;
   font-weight: 300;
+  line-height: 1.1;
 }
 
 .display-2 {
   font-size: 5.5rem;
   font-weight: 300;
+  line-height: 1.1;
 }
 
 .display-3 {
   font-size: 4.5rem;
   font-weight: 300;
+  line-height: 1.1;
 }
 
 .display-4 {
   font-size: 3.5rem;
   font-weight: 300;
+  line-height: 1.1;
 }
 
 hr {
@@ -3293,15 +3297,13 @@ tbody.collapse.show {
   z-index: 990;
 }
 
-.dropup .caret,
-.navbar-fixed-bottom .dropdown .caret {
+.dropup .caret {
   content: "";
   border-top: 0;
   border-bottom: 0.3em solid;
 }
 
-.dropup .dropdown-menu,
-.navbar-fixed-bottom .dropdown .dropdown-menu {
+.dropup .dropdown-menu {
   top: auto;
   bottom: 100%;
   margin-bottom: 0.125rem;
@@ -4024,20 +4026,6 @@ tbody.collapse.show {
   padding-bottom: .425rem;
 }
 
-.navbar-divider {
-  float: left;
-  width: 1px;
-  padding-top: 0.425rem;
-  padding-bottom: 0.425rem;
-  margin-right: 1rem;
-  margin-left: 1rem;
-  overflow: hidden;
-}
-
-.navbar-divider::before {
-  content: "\00a0";
-}
-
 .navbar-toggler {
   -webkit-align-self: flex-start;
       -ms-flex-item-align: start;
@@ -4385,29 +4373,6 @@ tbody.collapse.show {
 
 .navbar-toggleable-xl .navbar-toggler {
   display: none;
-}
-
-.navbar-fixed-top,
-.navbar-fixed-bottom {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: 1030;
-}
-
-.navbar-fixed-top {
-  top: 0;
-}
-
-.navbar-fixed-bottom {
-  bottom: 0;
-}
-
-.navbar-sticky-top {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 1030;
 }
 
 .navbar-light .navbar-brand,
@@ -7478,6 +7443,29 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   }
 }
 
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.sticky-top {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -9134,14 +9122,6 @@ a.bg-inverse:focus, a.bg-inverse:hover {
     margin-top: auto !important;
     margin-bottom: auto !important;
   }
-}
-
-.pos-f-t {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1030;
 }
 
 .text-justify {
