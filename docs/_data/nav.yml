@@ -60,9 +60,10 @@
     - title: Display property
     - title: Image replacement
     - title: Invisible content
+    - title: Position
     - title: Responsive helpers
     - title: Screenreaders
-    - title: Sizing and positioning
+    - title: Sizing
     - title: Spacing
     - title: Typography
     - title: Vertical align
