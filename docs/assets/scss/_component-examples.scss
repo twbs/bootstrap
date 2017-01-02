@@ -203,20 +203,22 @@
 
 // Navbars
 .bd-example {
-  .navbar-fixed-top {
+  .fixed-top,
+  .sticky-top {
     position: static;
     margin: -1rem -1rem 1rem;
   }
-  .navbar-fixed-bottom {
+  .fixed-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
   }
 
   @include media-breakpoint-up(sm) {
-    .navbar-fixed-top {
+    .fixed-top,
+    .sticky-top {
       margin: -1.5rem -1.5rem 1rem;
     }
-    .navbar-fixed-bottom {
+    .fixed-bottom {
       margin: 1rem -1.5rem -1.5rem;
     }
   }
