@@ -62,3 +62,8 @@
   left: 0;
   z-index: $zindex-navbar-fixed;
 }
+
+.pos-s { position: static; }
+.pos-r { position: relative; }
+.pos-a { position: absolute; }
+.pos-f { position: fixed; }
