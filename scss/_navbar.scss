@@ -217,10 +217,6 @@
     background-image: $navbar-light-toggler-bg;
   }
 
-  .navbar-divider {
-    background-color: rgba(0,0,0,.075);
-  }
-
   .navbar-text {
     color: $navbar-light-color;
   }
@@ -264,10 +260,6 @@
 
   .navbar-toggler-icon {
     background-image: $navbar-inverse-toggler-bg;
-  }
-
-  .navbar-divider {
-    background-color: rgba(255,255,255,.075);
   }
 
   .navbar-text {
