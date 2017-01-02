@@ -565,7 +565,7 @@ When using card groups with footers, their content will automatically line up.
 
 ### Card decks
 
-Need a set of equal width and height cards that aren't attached to one another? Use card decks. By default, card decks require two wrapping elements: `.card-deck-wrapper` and a `.card-deck`. We use table styles for the sizing and the gutters on `.card-deck`. The `.card-deck-wrapper` is used to negative margin out the `border-spacing` on the `.card-deck`.
+Need a set of equal width and height cards that aren't attached to one another? Use card decks.
 
 {% example html %}
 <div class="card-deck">
