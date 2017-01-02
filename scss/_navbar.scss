@@ -71,25 +71,6 @@
 }
 
 
-// Navbar divider
-//
-//
-
-.navbar-divider {
-  float: left;
-  width: $border-width;
-  padding-top: $navbar-divider-padding-y;
-  padding-bottom: $navbar-divider-padding-y;
-  margin-right: $navbar-padding-x;
-  margin-left:  $navbar-padding-x;
-  overflow: hidden;
-
-  &::before {
-    content: "\00a0";
-  }
-}
-
-
 // Responsive navbar
 //
 // Custom styles for responsive collapsing and toggling of navbar contents.
