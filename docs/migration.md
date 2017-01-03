@@ -82,7 +82,6 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Responsive tables no longer require a wrapping element. Instead, just put the `.table-responsive` right on the `<table>`.
 - Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
-- Added a new `.table-reflow` option.
 - Added table header modifiers: `.thead-default` and `.thead-inverse`.
 - Renamed contextual classes to have a `.table-`-prefix. Hence `.active`, `.success`, `.warning`, `.danger` and `.table-info` to `.table-active`, `.table-success`, `.table-warning`, `.table-danger` and `.table-info`.
 
