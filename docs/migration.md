@@ -134,6 +134,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Rewrote component with flexbox.
 - Replaced `a.list-group-item` with an explicit class, `.list-group-item-action`, for styling link and button versions of list group items.
+- Added `.list-group-flush` class for use with cards.
 
 ### Modal
 
