@@ -208,7 +208,7 @@ Using the grid, wrap cards in columns and rows as needed.
 
 ### Using utilities
 
-Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/sizing-and-positioning/#width-and-height) to quickly set a card's width.
+Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/sizing/) to quickly set a card's width.
 
 {% example html %}
 <div class="card w-75">
