@@ -226,6 +226,12 @@ module.exports = function (grunt) {
       htmlhint: {
         command: 'npm run htmlhint'
       },
+      sass: {
+        command: 'npm run sass'
+      },
+      'sass-docs': {
+        command: 'npm run sass-docs'
+      },
       'scss-lint': {
         command: 'npm run scss-lint'
       },
@@ -278,9 +284,7 @@ module.exports = function (grunt) {
 
 
   // These plugins provide necessary tasks.
-  require('load-grunt-tasks')(grunt, { scope: 'devDependencies',
-    // Exclude Sass compilers. We choose the one to load later on.
-    pattern: ['grunt-*', '!grunt-sass', '!grunt-contrib-sass'] })
+  require('load-grunt-tasks')(grunt)
   require('time-grunt')(grunt)
 
   // Docs HTML validation task
@@ -324,15 +328,10 @@ module.exports = function (grunt) {
   // JS distribution task.
   grunt.registerTask('dist-js', ['babel:dev', 'concat', 'babel:dist', 'stamp', 'exec:uglify'])
 
-  grunt.registerTask('test-scss', ['exec:scss-lint']);
+  grunt.registerTask('test-scss', ['exec:scss-lint'])
 
   // CSS distribution task.
-  // Supported Compilers: sass (Ruby) and libsass.
-  (function (sassCompilerName) {
-    require('./grunt/bs-sass-compile/' + sassCompilerName + '.js')(grunt)
-  }(process.env.TWBS_SASS || 'libsass'))
-  // grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs']);
-  grunt.registerTask('sass-compile', ['sass:core', 'sass:extras', 'sass:docs'])
+  grunt.registerTask('sass-compile', ['exec:sass', 'exec:sass-docs'])
 
   grunt.registerTask('dist-css', ['sass-compile', 'exec:postcss', 'exec:clean-css', 'exec:clean-css-docs'])
 
