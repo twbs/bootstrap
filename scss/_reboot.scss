@@ -55,8 +55,10 @@ html {
 //
 
 html {
-  // Sets a specific default `font-size` for user with `rem` type scales.
-  font-size: $font-size-root;
+  // We assume no initial pixel `font-size` for accessibility reasons. This
+  // allows web visitors to customize their browser default font-size, making
+  // your project more inclusive and accessible to everyone.
+
   // As a side-effect of setting the @viewport above,
   // IE11 & Edge make the scrollbar overlap the content and automatically hide itself when not in use.
   // Unfortunately, the auto-showing of the scrollbar is sometimes too sensitive,
@@ -65,12 +67,12 @@ html {
   // See https://github.com/twbs/bootstrap/issues/18543
   // and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
   -ms-overflow-style: scrollbar;
+
   // Changes the default tap highlight to be completely transparent in iOS.
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 body {
-  // Make the `body` use the `font-size-root`
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-base;
