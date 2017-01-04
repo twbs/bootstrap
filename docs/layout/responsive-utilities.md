@@ -22,153 +22,149 @@ Try to use these on a limited basis and avoid creating entirely different versio
 * You can combine one `.hidden-*-up` class with one `.hidden-*-down` class to show an element only on a given interval of screen sizes. For example, `.hidden-sm-down.hidden-xl-up` shows the element only on medium and large viewports. Using multiple `.hidden-*-up` classes or multiple `.hidden-*-down` classes is redundant and pointless.
 * These classes don't attempt to accommodate less common cases where an element's visibility can't be expressed as a single contiguous range of viewport breakpoint sizes; you will instead need to use custom CSS in such cases.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped responsive-utilities">
-    <thead>
-      <tr>
-        <th></th>
-        <th>
-          Extra small devices
-          <small>Portrait phones (&lt;544px)</small>
-        </th>
-        <th>
-          Small devices
-          <small>Landscape phones (&ge;544px - &lt;768px)</small>
-        </th>
-        <th>
-          Medium devices
-          <small>Tablets (&ge;768px - &lt;992px)</small>
-        </th>
-        <th>
-          Large devices
-          <small>Desktops (&ge;992px - &lt;1200px)</small>
-        </th>
-        <th>
-          Extra large devices
-          <small>Desktops (&ge;1200px)</small>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"><code>.hidden-xs-down</code></th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-      </tr>
-      <tr>
-        <th scope="row"><code>.hidden-sm-down</code></th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-      </tr>
-      <tr>
-        <th scope="row"><code>.hidden-md-down</code></th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-      </tr>
-      <tr>
-        <th scope="row"><code>.hidden-lg-down</code></th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible</td>
-      </tr>
-      <tr>
-        <th scope="row"><code>.hidden-xl-down</code></th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      <tr>
-        <th scope="row"><code>.hidden-xs-up</code></th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      <tr>
-        <th scope="row"><code>.hidden-sm-up</code></th>
-        <td class="is-visible">Visible</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      <tr>
-        <th scope="row"><code>.hidden-md-up</code></th>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      <tr>
-        <th scope="row"><code>.hidden-lg-up</code></th>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-      <tr>
-        <th scope="row"><code>.hidden-xl-up</code></th>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-visible">Visible</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped responsive-utilities table-responsive">
+  <thead>
+    <tr>
+      <th></th>
+      <th>
+        Extra small devices
+        <small>Portrait phones (&lt;544px)</small>
+      </th>
+      <th>
+        Small devices
+        <small>Landscape phones (&ge;544px - &lt;768px)</small>
+      </th>
+      <th>
+        Medium devices
+        <small>Tablets (&ge;768px - &lt;992px)</small>
+      </th>
+      <th>
+        Large devices
+        <small>Desktops (&ge;992px - &lt;1200px)</small>
+      </th>
+      <th>
+        Extra large devices
+        <small>Desktops (&ge;1200px)</small>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><code>.hidden-xs-down</code></th>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+    </tr>
+    <tr>
+      <th scope="row"><code>.hidden-sm-down</code></th>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+    </tr>
+    <tr>
+      <th scope="row"><code>.hidden-md-down</code></th>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+    </tr>
+    <tr>
+      <th scope="row"><code>.hidden-lg-down</code></th>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-visible">Visible</td>
+    </tr>
+    <tr>
+      <th scope="row"><code>.hidden-xl-down</code></th>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+    </tr>
+    <tr>
+      <th scope="row"><code>.hidden-xs-up</code></th>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+    </tr>
+    <tr>
+      <th scope="row"><code>.hidden-sm-up</code></th>
+      <td class="is-visible">Visible</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+    </tr>
+    <tr>
+      <th scope="row"><code>.hidden-md-up</code></th>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+    </tr>
+    <tr>
+      <th scope="row"><code>.hidden-lg-up</code></th>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-hidden">Hidden</td>
+    </tr>
+    <tr>
+      <th scope="row"><code>.hidden-xl-up</code></th>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-visible">Visible</td>
+      <td class="is-hidden">Hidden</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="responsive-utilities-print">Print classes</h2>
 <p>Similar to the regular responsive classes, use these for toggling content for print.</p>
-<div class="table-responsive">
-  <table class="table table-bordered table-striped responsive-utilities">
-    <thead>
-      <tr>
-        <th>Class</th>
-        <th>Browser</th>
-        <th>Print</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th><code>.visible-print-block</code></th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible<br>(as <code>display: block</code>)</td>
-      </tr>
-      <tr>
-        <th><code>.visible-print-inline</code></th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible<br>(as <code>display: inline</code>)</td>
-      </tr>
-      <tr>
-        <th><code>.visible-print-inline-block</code></th>
-        <td class="is-hidden">Hidden</td>
-        <td class="is-visible">Visible<br>(as <code>display: inline-block</code>)</td>
-      </tr>
-      <tr>
-        <th><code>.hidden-print</code></th>
-        <td class="is-visible">Visible</td>
-        <td class="is-hidden">Hidden</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped responsive-utilities table-responsive">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Browser</th>
+      <th>Print</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><code>.visible-print-block</code></th>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-visible">Visible<br>(as <code>display: block</code>)</td>
+    </tr>
+    <tr>
+      <th><code>.visible-print-inline</code></th>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-visible">Visible<br>(as <code>display: inline</code>)</td>
+    </tr>
+    <tr>
+      <th><code>.visible-print-inline-block</code></th>
+      <td class="is-hidden">Hidden</td>
+      <td class="is-visible">Visible<br>(as <code>display: inline-block</code>)</td>
+    </tr>
+    <tr>
+      <th><code>.hidden-print</code></th>
+      <td class="is-visible">Visible</td>
+      <td class="is-hidden">Hidden</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Test cases
 

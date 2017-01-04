@@ -27,18 +27,22 @@ h6, .h6 { font-size: $font-size-h6; }
 .display-1 {
   font-size: $display1-size;
   font-weight: $display1-weight;
+  line-height: $display-line-height;
 }
 .display-2 {
   font-size: $display2-size;
   font-weight: $display2-weight;
+  line-height: $display-line-height;
 }
 .display-3 {
   font-size: $display3-size;
   font-weight: $display3-weight;
+  line-height: $display-line-height;
 }
 .display-4 {
   font-size: $display4-size;
   font-weight: $display4-weight;
+  line-height: $display-line-height;
 }
 
 

@@ -32,6 +32,8 @@ layout: home
         <p>When you just need to include Bootstrap's compiled CSS and JS, use the Bootstrap CDN, free from the Max CDN folks.</p>
 {% highlight html %}
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+<script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.tether }}" integrity="{{ site.cdn.tether_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
       </div>

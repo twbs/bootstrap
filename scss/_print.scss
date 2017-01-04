@@ -95,12 +95,6 @@
     .navbar {
       display: none;
     }
-    .btn,
-    .dropup > .btn {
-      > .caret {
-        border-top-color: #000 !important;
-      }
-    }
     .badge {
       border: $border-width solid #000;
     }

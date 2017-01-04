@@ -163,113 +163,111 @@ Enable popovers via JavaScript:
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 100px;">Type</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>animation</td>
-        <td>boolean</td>
-        <td>true</td>
-        <td>Apply a CSS fade transition to the popover</td>
-      </tr>
-      <tr>
-        <td>container</td>
-        <td>string | false</td>
-        <td>false</td>
-        <td>
-          <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
-        </td>
-      </tr>
-      <tr>
-        <td>content</td>
-        <td>string | element | function</td>
-        <td>''</td>
-        <td>
-          <p>Default content value if <code>data-content</code> attribute isn't present.</p>
-          <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
-        </td>
-      </tr>
-      <tr>
-        <td>delay</td>
-        <td>number | object</td>
-        <td>0</td>
-        <td>
-         <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
-         <p>If a number is supplied, delay is applied to both hide/show</p>
-         <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
-        </td>
-      </tr>
-      <tr>
-        <td>html</td>
-        <td>boolean</td>
-        <td>false</td>
-        <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
-      </tr>
-      <tr>
-        <td>placement</td>
-        <td>string | function</td>
-        <td>'right'</td>
-        <td>
-          <p>How to position the popover - top | bottom | left | right.</p>
-          <p>When a function is used to determine the placement, it is called with the popover DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the popover instance.</p>
-        </td>
-      </tr>
-      <tr>
-        <td>selector</td>
-        <td>string</td>
-        <td>false</td>
-        <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="https://jsbin.com/zopod/1/edit">an informative example</a>.</td>
-      </tr>
-      <tr>
-        <td>template</td>
-        <td>string</td>
-        <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="popover-arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
-        <td>
-          <p>Base HTML to use when creating the popover.</p>
-          <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
-          <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
-          <p><code>.popover-arrow</code> will become the popover's arrow.</p>
-          <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
-        </td>
-      </tr>
-      <tr>
-        <td>title</td>
-        <td>string | element | function</td>
-        <td>''</td>
-        <td>
-          <p>Default title value if <code>title</code> attribute isn't present.</p>
-          <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
-        </td>
-      </tr>
-      <tr>
-        <td>trigger</td>
-        <td>string</td>
-        <td>'click'</td>
-        <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.</td>
-      </tr>
-      <tr>
-        <td>constraints</td>
-        <td>Array</td>
-        <td>'hover focus'</td>
-        <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://tether.io/#constraints">constraint docs</a>.</td>
-      </tr>
-      <tr>
-        <td>offset</td>
-        <td>string</td>
-        <td>'0 0'</td>
-        <td>Offset of the popover relative to its target. For more information refer to Tether's <a href="http://tether.io/#offset">offset docs</a>.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 100px;">Type</th>
+      <th style="width: 50px;">Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>animation</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Apply a CSS fade transition to the popover</td>
+    </tr>
+    <tr>
+      <td>container</td>
+      <td>string | false</td>
+      <td>false</td>
+      <td>
+        <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>string | element | function</td>
+      <td>''</td>
+      <td>
+        <p>Default content value if <code>data-content</code> attribute isn't present.</p>
+        <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>delay</td>
+      <td>number | object</td>
+      <td>0</td>
+      <td>
+       <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
+       <p>If a number is supplied, delay is applied to both hide/show</p>
+       <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>html</td>
+      <td>boolean</td>
+      <td>false</td>
+      <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
+    </tr>
+    <tr>
+      <td>placement</td>
+      <td>string | function</td>
+      <td>'right'</td>
+      <td>
+        <p>How to position the popover - top | bottom | left | right.</p>
+        <p>When a function is used to determine the placement, it is called with the popover DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the popover instance.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>selector</td>
+      <td>string</td>
+      <td>false</td>
+      <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="https://jsbin.com/zopod/1/edit">an informative example</a>.</td>
+    </tr>
+    <tr>
+      <td>template</td>
+      <td>string</td>
+      <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="popover-arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
+      <td>
+        <p>Base HTML to use when creating the popover.</p>
+        <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
+        <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
+        <p><code>.popover-arrow</code> will become the popover's arrow.</p>
+        <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>string | element | function</td>
+      <td>''</td>
+      <td>
+        <p>Default title value if <code>title</code> attribute isn't present.</p>
+        <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>trigger</td>
+      <td>string</td>
+      <td>'click'</td>
+      <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.</td>
+    </tr>
+    <tr>
+      <td>constraints</td>
+      <td>Array</td>
+      <td>'hover focus'</td>
+      <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://tether.io/#constraints">constraint docs</a>.</td>
+    </tr>
+    <tr>
+      <td>offset</td>
+      <td>string</td>
+      <td>'0 0'</td>
+      <td>Offset of the popover relative to its target. For more information refer to Tether's <a href="http://tether.io/#offset">offset docs</a>.</td>
+    </tr>
+  </tbody>
+</table>
 
 {% callout info %}
 #### Data attributes for individual popovers
@@ -310,34 +308,32 @@ Hides and destroys an element's popover. Popovers that use delegation (which are
 
 ### Events
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-     <tr>
-        <th style="width: 150px;">Event Type</th>
-        <th>Description</th>
-     </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>show.bs.popover</td>
-        <td>This event fires immediately when the <code>show</code> instance method is called.</td>
-      </tr>
-      <tr>
-        <td>shown.bs.popover</td>
-        <td>This event is fired when the popover has been made visible to the user (will wait for CSS transitions to complete).</td>
-      </tr>
-      <tr>
-        <td>hide.bs.popover</td>
-        <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-      </tr>
-      <tr>
-        <td>hidden.bs.popover</td>
-        <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+   <tr>
+      <th style="width: 150px;">Event Type</th>
+      <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>show.bs.popover</td>
+      <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+    </tr>
+    <tr>
+      <td>shown.bs.popover</td>
+      <td>This event is fired when the popover has been made visible to the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+      <td>hide.bs.popover</td>
+      <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+    </tr>
+    <tr>
+      <td>hidden.bs.popover</td>
+      <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+  </tbody>
+</table>
 
 {% highlight js %}
 $('#myPopover').on('hidden.bs.popover', function () {
