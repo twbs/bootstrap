@@ -11,6 +11,10 @@
   .modal {
     overflow-x: hidden;
     overflow-y: auto;
+
+    &.drawer {
+      overflow-y: hidden;
+    }
   }
 }
 
@@ -30,6 +34,60 @@
   // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
   // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
   // See also https://github.com/twbs/bootstrap/issues/17695
+
+  &.drawer {
+    &.show {
+      .modal-dialog {
+        transform: translateX(0);
+      }
+    }
+
+    &.left {
+      .modal-dialog {
+        left: 0;
+        transform: translateX(-100%);
+      }
+
+      &.show {
+        .modal-dialog {
+          transform: translateX(0);
+        }
+      }
+    }
+
+    .modal-dialog {
+      position: absolute;
+      right: 0;
+      width: $modal-drawer-width;
+      height: 100%;
+      margin: 0;
+      transform: translateX(100%);
+
+      .modal-content {
+        height: 100%;
+        border: 0;
+
+        // Just in case the modal-body is longer than 100vh
+        .modal-body {
+          max-height: calc(100vh - #{$modal-drawer-header-height});
+          padding-bottom: $modal-drawer-header-height;
+          overflow-y: auto;
+        }
+      }
+    }
+
+    .modal-content {
+      border-radius: 0;
+    }
+
+    .modal-footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border: 0;
+      border-radius: 0;
+    }
+  }
 }
 
 // Shell div to position the modal with bottom padding
