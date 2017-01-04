@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Cards
-description: Bootstrap Cards provide a flexible and extensible content container with multiple variants and options.
+description: Bootstrap's cards provide a flexible and extensible content container with multiple variants and options.
 group: components
 ---
 
@@ -51,7 +51,7 @@ The building block of a card is the `.card-block`. Use it whenever you need a pa
 
 Card titles are used by adding `.card-title` to a `<h*>` tag. In the same way, links are added and placed next to each other by adding `.card-link` to  a `<a>` tag.
 
-Subtitles are used by adding a `.card-subtitle` to an `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
+Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
 
 {% example html %}
 <div class="card">
