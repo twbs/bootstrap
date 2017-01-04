@@ -63,6 +63,10 @@ button.list-group-item {
 button.list-group-item {
   width: 100%;
   text-align: left;
+  
+  &:focus {
+    z-index: 2; // Place focused buttons above their siblings to prevent outline overlap
+  }
 }
 
 .list-group-item {
