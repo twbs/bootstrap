@@ -4,7 +4,7 @@
 .btn-group,
 .btn-group-vertical {
   position: relative;
-  display: flex;
+  display: inline-flex;
   vertical-align: middle; // match .btn alignment given font-size hack above
 
   > .btn {
