@@ -152,13 +152,6 @@
 // Just add .dropup after the standard .dropdown class and you're set.
 
 .dropup {
-  // Reverse the caret
-  .caret {
-    content: "";
-    border-top: 0;
-    border-bottom: $caret-width solid;
-  }
-
   // Different positioning for bottom up menu
   .dropdown-menu {
     top: auto;
