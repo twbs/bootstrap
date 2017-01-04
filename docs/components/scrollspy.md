@@ -117,45 +117,42 @@ $('[data-spy="scroll"]').each(function () {
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-offset=""`.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-     <tr>
-       <th style="width: 100px;">Name</th>
-       <th style="width: 100px;">Type</th>
-       <th style="width: 50px;">Default</th>
-       <th>Description</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-       <td>offset</td>
-       <td>number</td>
-       <td>10</td>
-       <td>Pixels to offset from top when calculating position of scroll.</td>
-     </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+   <tr>
+     <th style="width: 100px;">Name</th>
+     <th style="width: 100px;">Type</th>
+     <th style="width: 50px;">Default</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+     <td>offset</td>
+     <td>number</td>
+     <td>10</td>
+     <td>Pixels to offset from top when calculating position of scroll.</td>
+   </tr>
+  </tbody>
+</table>
 
 ### Events
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-     <tr>
-       <th style="width: 150px;">Event Type</th>
-       <th>Description</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-       <td>activate.bs.scrollspy</td>
-       <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+   <tr>
+     <th style="width: 150px;">Event Type</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+     <td>activate.bs.scrollspy</td>
+     <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
+  </tr>
+  </tbody>
+</table>
+
 {% highlight js %}
 $('#myScrollspy').on('activate.bs.scrollspy', function () {
   // do something…

@@ -28,6 +28,6 @@ module.exports = function configureLibsass(grunt) {
         }
       }
     }
-  });
-  grunt.loadNpmTasks('grunt-sass');
-};
+  })
+  grunt.loadNpmTasks('grunt-sass')
+}

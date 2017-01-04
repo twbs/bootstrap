@@ -118,7 +118,7 @@ Once again, these media queries are also available via Sass mixins:
 @include media-breakpoint-down(lg) { ... }
 {% endhighlight %}
 
-We also have media between the breakpoint's minimum and maximum widths for only the given screen size:
+There are also media queries and mixins for targeting a single segment of screen sizes using the minimum and maximum breakpoint widths.
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 576px)
@@ -147,18 +147,18 @@ These media queries are also available via Sass mixins:
 @include media-breakpoint-only(xl) { ... }
 {% endhighlight %}
 
-And finally media that spans multiple breakpoint widths:
+Similarly, media queries may span multiple breakpoint widths:
 
 {% highlight scss %}
 // Example
-// Medium devices (tablets, 768px and up) and  Large devices (desktops, 992px and up)
+// Apply styles starting from medium devices and up to extra large devices
 @media (min-width: 768px) and (max-width: 1199px) { ... }
 {% endhighlight %}
 
-The Sass mixin for the above example look like that shown beneath:
+The Sass mixin for targeting the same screen size range would be:
 
 {% highlight scss %}
-@include media-breakpoint-between(md, lg) { ... }
+@include media-breakpoint-between(md, xl) { ... }
 {% endhighlight %}
 
 ## Z-index
@@ -171,8 +171,8 @@ We don't encourage customization of these values; should you change one, you lik
 $zindex-dropdown-backdrop:  990 !default;
 $zindex-navbar:            1000 !default;
 $zindex-dropdown:          1000 !default;
-$zindex-navbar-fixed:      1030 !default;
-$zindex-navbar-sticky:     1030 !default;
+$zindex-fixed:             1030 !default;
+$zindex-sticky:            1030 !default;
 $zindex-modal-backdrop:    1040 !default;
 $zindex-modal:             1050 !default;
 $zindex-popover:           1060 !default;

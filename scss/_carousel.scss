@@ -106,7 +106,7 @@
 
 // Optional indicator pips
 //
-// Add an unordered list with the following class and add a list item for each
+// Add an ordered list with the following class and add a list item for each
 // slide your carousel holds.
 
 .carousel-indicators {
@@ -117,7 +117,7 @@
   z-index: 15;
   display: flex;
   justify-content: center;
-  padding-left: 0; // override <ul> default
+  padding-left: 0; // override <ol> default
   // Use the .carousel-control's width as margin so we don't overlay those
   margin-right: $carousel-control-width;
   margin-left: $carousel-control-width;
@@ -163,7 +163,7 @@
 
 // Optional captions
 //
-// Hidden by default for smaller viewports.
+//
 
 .carousel-caption {
   position: absolute;

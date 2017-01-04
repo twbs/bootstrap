@@ -4,16 +4,16 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com)
- * Copyright 2011-2016 The Bootstrap Authors
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
 /* global Clipboard, anchors */
 
-!function ($) {
-  'use strict';
+(function ($) {
+  'use strict'
 
   $(function () {
 
@@ -46,6 +46,11 @@
       var $modal = $(this)
       $modal.find('.modal-title').text('New message to ' + recipient)
       $modal.find('.modal-body input').val(recipient)
+    })
+
+    // Activate animated progress bar
+    $('.bd-toggle-animated-progress').on('click', function () {
+      $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('progress-bar-animated')
     })
 
     // Insert copy to clipboard button before .highlight
@@ -86,11 +91,11 @@
 
   })
 
-}(jQuery)
+}(jQuery))
 
 ;(function () {
-  'use strict';
+  'use strict'
 
-  anchors.options.placement = 'left';
+  anchors.options.placement = 'left'
   anchors.add('.bd-content > h1, .bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
-})();
+}())

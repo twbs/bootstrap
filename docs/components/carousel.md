@@ -104,12 +104,6 @@ You can also add the indicators to the carousel, alongside the controls, too.
 {% endexample %}
 
 {% callout warning %}
-#### Transition animations not supported in Internet Explorer 9
-
-Bootstrap exclusively uses CSS3 for its animations, but Internet Explorer 9 doesn't support the necessary CSS properties. Thus, there are no slide transition animations when using that browser. We have intentionally decided not to include jQuery-based fallbacks for the transitions.
-{% endcallout %}
-
-{% callout warning %}
 #### Initial active element required
 
 The `.active` class needs to be added to one of the slides. Otherwise, the carousel will not be visible.
@@ -149,12 +143,12 @@ Add captions to your slides easily with the `.carousel-caption` element within a
         </div>
       </div>
     </div>
-    <a class="carousel-control carousel-control-left" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="icon-prev" aria-hidden="true"></span>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control carousel-control-right" href="#carouselExampleCaptions" role="button" data-slide="next">
-      <span class="icon-next" aria-hidden="true"></span>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
@@ -190,50 +184,48 @@ $('.carousel').carousel()
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-interval=""`.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-     <tr>
-       <th style="width: 100px;">Name</th>
-       <th style="width: 50px;">Type</th>
-       <th style="width: 50px;">Default</th>
-       <th>Description</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-       <td>interval</td>
-       <td>number</td>
-       <td>5000</td>
-       <td>The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.</td>
-     </tr>
-     <tr>
-       <td>keyboard</td>
-       <td>boolean</td>
-       <td>true</td>
-       <td>Whether the carousel should react to keyboard events.</td>
-     </tr>
-     <tr>
-       <td>pause</td>
-       <td>string | null</td>
-       <td>"hover"</td>
-       <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>null</code>, hovering over the carousel won't pause it.</td>
-     </tr>
-     <tr>
-       <td>ride</td>
-       <td>string</td>
-       <td>false</td>
-       <td>Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.</td>
-     </tr>
-     <tr>
-       <td>wrap</td>
-       <td>boolean</td>
-       <td>true</td>
-       <td>Whether the carousel should cycle continuously or have hard stops.</td>
-     </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+   <tr>
+     <th style="width: 100px;">Name</th>
+     <th style="width: 50px;">Type</th>
+     <th style="width: 50px;">Default</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+     <td>interval</td>
+     <td>number</td>
+     <td>5000</td>
+     <td>The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.</td>
+   </tr>
+   <tr>
+     <td>keyboard</td>
+     <td>boolean</td>
+     <td>true</td>
+     <td>Whether the carousel should react to keyboard events.</td>
+   </tr>
+   <tr>
+     <td>pause</td>
+     <td>string | null</td>
+     <td>"hover"</td>
+     <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>null</code>, hovering over the carousel won't pause it.</td>
+   </tr>
+   <tr>
+     <td>ride</td>
+     <td>string</td>
+     <td>false</td>
+     <td>Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.</td>
+   </tr>
+   <tr>
+     <td>wrap</td>
+     <td>boolean</td>
+     <td>true</td>
+     <td>Whether the carousel should cycle continuously or have hard stops.</td>
+   </tr>
+  </tbody>
+</table>
 
 ### Methods
 
@@ -276,26 +268,24 @@ Bootstrap's carousel class exposes two events for hooking into carousel function
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-     <tr>
-       <th style="width: 150px;">Event Type</th>
-       <th>Description</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-       <td>slide.bs.carousel</td>
-       <td>This event fires immediately when the <code>slide</code> instance method is invoked.</td>
-     </tr>
-     <tr>
-       <td>slid.bs.carousel</td>
-       <td>This event is fired when the carousel has completed its slide transition.</td>
-     </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+   <tr>
+     <th style="width: 150px;">Event Type</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+     <td>slide.bs.carousel</td>
+     <td>This event fires immediately when the <code>slide</code> instance method is invoked.</td>
+   </tr>
+   <tr>
+     <td>slid.bs.carousel</td>
+     <td>This event is fired when the carousel has completed its slide transition.</td>
+   </tr>
+  </tbody>
+</table>
 
 {% highlight js %}
 $('#myCarousel').on('slide.bs.carousel', function () {

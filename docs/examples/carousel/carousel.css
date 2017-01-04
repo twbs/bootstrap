@@ -35,14 +35,6 @@ body {
   height: 32rem;
 }
 
-.carousel-indicators li {
-  width: .75rem;
-  height: .75rem;
-  margin-right: .25rem;
-  margin-left: .25rem;
-  border-radius: 50%;
-}
-
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
