@@ -272,14 +272,8 @@ const Dropdown = (($) => {
 
   $(document)
     .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
-<<<<<<< HEAD
     .on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler)
-    .on(Event.CLICK_DATA_API, Dropdown._clearMenus)
-=======
-    .on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU,    Dropdown._dataApiKeydownHandler)
-    .on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
     .on(`${Event.CLICK_DATA_API} ${Event.FOCUSIN_DATA_API}`, Dropdown._clearMenus)
->>>>>>> twbs/v4-dev
     .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
     .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
       e.stopPropagation()
