@@ -51,5 +51,5 @@ cdn:
   js_hash:        "sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK"
   jquery:         https://code.jquery.com/jquery-3.1.1.slim.min.js
   jquery_hash:    "sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
-  tether:         https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js
-  tether_hash:    "sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8"
+  tether:         https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js
+  tether_hash:    "sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
