@@ -29,7 +29,7 @@
     "test-infra"
   ],
   "dependencies": {
-    "jquery": "1.9.1 - 3",
-    "tether": "^1.3.7"
+    "jquery": ">=1.9.1",
+    "tether": "^1.4.0"
   }
 }
