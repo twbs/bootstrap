@@ -36,10 +36,6 @@ Skip the download and use the Bootstrap CDN to deliver Bootstrap's compiled CSS 
 
 Pull in Bootstrap's **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), and [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes)** for a setup that matches our official compiled versions.
 
-{% callout warning %}
-**Heads up!** Not all package managers have the v4 alpha published yet, but we should have them up shortly!
-{% endcallout %}
-
 ### npm
 
 Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.org/package/bootstrap):

@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Cards
-description: Bootstrap Cards provide a flexible and extensible content container with multiple variants and options.
+description: Bootstrap's cards provide a flexible and extensible content container with multiple variants and options.
 group: components
 ---
 
@@ -18,7 +18,7 @@ If you're familiar with Bootstrap 3, cards replace our old panels, wells, and th
 
 Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization. Built with flexbox, they offer easy alignment and mix well with other Bootstrap components.
 
-Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of it's parent element. This is easily customized with our various [sizing options](#sizing).
+Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of its parent element. This is easily customized with our various [sizing options](#sizing).
 
 {% example html %}
 <div class="card" style="width: 20rem;">
@@ -51,7 +51,7 @@ The building block of a card is the `.card-block`. Use it whenever you need a pa
 
 Card titles are used by adding `.card-title` to a `<h*>` tag. In the same way, links are added and placed next to each other by adding `.card-link` to  a `<a>` tag.
 
-Subtitles are used by adding a `.card-subtitle` to an `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
+Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
 
 {% example html %}
 <div class="card">
@@ -208,7 +208,7 @@ Using the grid, wrap cards in columns and rows as needed.
 
 ### Using utilities
 
-Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/sizing-and-positioning/#width-and-height) to quickly set a card's width.
+Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/sizing/) to quickly set a card's width.
 
 {% example html %}
 <div class="card w-75">
@@ -565,7 +565,7 @@ When using card groups with footers, their content will automatically line up.
 
 ### Card decks
 
-Need a set of equal width and height cards that aren't attached to one another? Use card decks. By default, card decks require two wrapping elements: `.card-deck-wrapper` and a `.card-deck`. We use table styles for the sizing and the gutters on `.card-deck`. The `.card-deck-wrapper` is used to negative margin out the `border-spacing` on the `.card-deck`.
+Need a set of equal width and height cards that aren't attached to one another? Use card decks.
 
 {% example html %}
 <div class="card-deck">

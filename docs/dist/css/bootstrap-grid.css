@@ -16,6 +16,7 @@ html {
 }
 
 .container {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   padding-right: 15px;
@@ -79,6 +80,7 @@ html {
 }
 
 .container-fluid {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   padding-right: 15px;

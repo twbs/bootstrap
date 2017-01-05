@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Forms
-description: Examples and usage guidelines for from controls, form layouts, and custom forms.
+description: Examples and usage guidelines for form controls, form layouts, and custom forms.
 group: components
 ---
 
@@ -331,7 +331,7 @@ Assistive technologies such as screen readers will have trouble with your forms 
 
 ### Using the Grid
 
-For more structured form layouts that are also responsive, you can utilize Bootstrap's [predefined grid classes]({{ site.baseurl }}/layout/grid/#predefined-classes) or [mixins]({{ site.baseurl }}/layout/grid/#sass-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
+For more structured form layouts that are also responsive, you can utilize Bootstrap's [predefined grid classes]({{ site.baseurl }}/layout/grid/) or [mixins]({{ site.baseurl }}/layout/grid/#sass-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
 
 Be sure to add `.col-form-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.col-form-legend` to make them appear similar to regular `<label>` elements.
 

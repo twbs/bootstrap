@@ -22,161 +22,102 @@ Alternative browsers which use the latest version of WebKit, Blink, or Gecko, wh
 
 Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <td></td>
-        <th>Chrome</th>
-        <th>Firefox</th>
-        <th>Safari</th>
-        <th>Android Browser &amp; WebView</th>
-        <th>Microsoft Edge</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Android</th>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-success">Android v5.0+ supported</td>
-        <td class="text-muted">N/A</td>
-      </tr>
-      <tr>
-        <th scope="row">iOS</th>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-      </tr>
-      <tr>
-        <th scope="row">Windows 10 Mobile</th>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-success">Supported</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <td></td>
+      <th>Chrome</th>
+      <th>Firefox</th>
+      <th>Safari</th>
+      <th>Android Browser &amp; WebView</th>
+      <th>Microsoft Edge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Android</th>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-success">Android v5.0+ supported</td>
+      <td class="text-muted">N/A</td>
+    </tr>
+    <tr>
+      <th scope="row">iOS</th>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-muted">N/A</td>
+    </tr>
+    <tr>
+      <th scope="row">Windows 10 Mobile</th>
+      <td class="text-muted">N/A</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Desktop browsers
 
 Similarly, the latest versions of most desktop browsers are supported.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <td></td>
-        <th>Chrome</th>
-        <th>Firefox</th>
-        <th>Internet Explorer</th>
-        <th>Microsoft Edge</th>
-        <th>Opera</th>
-        <th>Safari</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Mac</th>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-      </tr>
-      <tr>
-        <th scope="row">Windows</th>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported, IE10+</td>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-danger">Not supported</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+    <tr>
+      <td></td>
+      <th>Chrome</th>
+      <th>Firefox</th>
+      <th>Internet Explorer</th>
+      <th>Microsoft Edge</th>
+      <th>Opera</th>
+      <th>Safari</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Mac</th>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+    </tr>
+    <tr>
+      <th scope="row">Windows</th>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported, IE10+</td>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-danger">Not supported</td>
+    </tr>
+  </tbody>
+</table>
 
 For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/organizations/faq/) version of Firefox.
 
-Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 9 and below, though they are not officially supported.
+Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 9, though they are not officially supported.
 
 For a list of some of the browser bugs that Bootstrap has to grapple with, see our [Wall of browser bugs]({{ site.baseurl }}/browser-bugs/).
 
 ## Internet Explorer
 
-Internet Explorer 10+ is supported, however, IE9 down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported.
+Internet Explorer 10+ is supported; IE9 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use...](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Feature</th>
-        <th scope="col">Internet Explorer 9</th>
-        <th scope="col">Internet Explorer 10</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition"><code>transition</code></a></th>
-        <td class="text-danger">Not supported</td>
-        <td class="text-success">Supported</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-placeholder"><code>placeholder</code></a></th>
-        <td class="text-danger">Not supported</td>
-        <td class="text-success">Supported</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">Flexbox</a></th>
-        <td class="text-danger">Not supported</td>
-        <td class="text-warning">Partially supported, with <code>-ms</code> prefix<br><a href="http://caniuse.com/#feat=flexbox">See <em>Can I use</em> for details</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-Visit [Can I use...](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
-
-## Supporting Internet Explorer 8-9
-
-As of v4, Bootstrap no longer supports IE8 or IE9. **If you require IE8-9 support, we recommend you use Bootstrap 3.** It's still supported by our team for bugfixes and documentation changes, but no new features will be added to it.
-
-Alternatively, you may add some third party JavaScript to backfill support for IE8-9 to Bootstrap 4. You'll need the following:
-
-* [The HTML5 shiv](https://en.wikipedia.org/wiki/HTML5_Shiv)
-* [Respond.js](https://github.com/scottjehl/Respond)
-* [Rem unit polyfill](https://github.com/chuckcarpenter/REM-unit-polyfill)
-
-No support will be provided for this, though you may find some help from the community in [our Slack channel]({{ site.slack }}).
-
-## IE Compatibility modes
-
-Bootstrap is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate `<meta>` tag in your pages:
-
-{% highlight html %}
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-{% endhighlight %}
-
-Confirm the document mode by opening the debugging tools: press <kbd>F12</kbd> and check the "Document Mode".
-
-This tag is included in all of Bootstrap's documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.
-
-See [this StackOverflow question](https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do) for more information.
+**If you require IE8-9 support, use Bootstrap 3.** It's the most stable version of our code and is still supported by our team for critical bugfixes and documentation changes. However, no new features will be added to it.
 
 ## Internet Explorer 10 in Windows Phone 8
 
 Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](https://blogs.windows.com/buildingapps/2013/10/14/introducing-windows-phone-preview-for-developers/) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you'll need to **include the following JavaScript to work around the bug**.
 
 {% highlight js %}
-// Copyright 2014-2015 The Bootstrap Authors
-// Copyright 2014-2015 Twitter, Inc.
+// Copyright 2014-2017 The Bootstrap Authors
+// Copyright 2014-2017 Twitter, Inc.
 // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   var msViewportStyle = document.createElement('style')

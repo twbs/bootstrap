@@ -19,7 +19,7 @@ Before getting started with Bootstrap's modal component, be sure to read the fol
 - Modals are built with HTML, CSS, and JavaScript. They're positioned over everything else in the document and remove scroll from the `<body>` so that modal content scrolls instead.
 - Clicking on the modal "backdrop" will automatically close the modal.
 - Bootstrap only supports one modal window at a time. Nested modals aren't supported as we believe them to be poor user experiences.
-- Modal's use `position: fixed`, which can sometimes be a bit particular about it's rendering. Whenever possible, place your modal HTML in a top-level position to avoid potential interference from other elements. You'll likely run into issues when nesting a `.modal` within another fixed element.
+- Modals use `position: fixed`, which can sometimes be a bit particular about its rendering. Whenever possible, place your modal HTML in a top-level position to avoid potential interference from other elements. You'll likely run into issues when nesting a `.modal` within another fixed element.
 - One again, due to `position: fixed`, there are some caveats with using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/getting-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
 - Lastly, the `autofocus` HTML attribute has no affect in modals. Here's how you can achieve the same effect with custom JavaScript.
 
@@ -508,44 +508,42 @@ Call a modal with id `myModal` with a single line of JavaScript:
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-backdrop=""`.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-     <tr>
-       <th style="width: 100px;">Name</th>
-       <th style="width: 50px;">Type</th>
-       <th style="width: 50px;">Default</th>
-       <th>Description</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-       <td>backdrop</td>
-       <td>boolean or the string <code>'static'</code></td>
-       <td>true</td>
-       <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
-     </tr>
-     <tr>
-       <td>keyboard</td>
-       <td>boolean</td>
-       <td>true</td>
-       <td>Closes the modal when escape key is pressed</td>
-     </tr>
-     <tr>
-       <td>focus</td>
-       <td>boolean</td>
-       <td>true</td>
-       <td>Puts the focus on the modal when initialized.</td>
-     </tr>
-     <tr>
-       <td>show</td>
-       <td>boolean</td>
-       <td>true</td>
-       <td>Shows the modal when initialized.</td>
-     </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+   <tr>
+     <th style="width: 100px;">Name</th>
+     <th style="width: 50px;">Type</th>
+     <th style="width: 50px;">Default</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+     <td>backdrop</td>
+     <td>boolean or the string <code>'static'</code></td>
+     <td>true</td>
+     <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
+   </tr>
+   <tr>
+     <td>keyboard</td>
+     <td>boolean</td>
+     <td>true</td>
+     <td>Closes the modal when escape key is pressed</td>
+   </tr>
+   <tr>
+     <td>focus</td>
+     <td>boolean</td>
+     <td>true</td>
+     <td>Puts the focus on the modal when initialized.</td>
+   </tr>
+   <tr>
+     <td>show</td>
+     <td>boolean</td>
+     <td>true</td>
+     <td>Shows the modal when initialized.</td>
+   </tr>
+  </tbody>
+</table>
 
 ### Methods
 
@@ -581,34 +579,32 @@ Manually hides a modal. **Returns to the caller before the modal has actually be
 
 Bootstrap's modal class exposes a few events for hooking into modal functionality. All modal events are fired at the modal itself (i.e. at the `<div class="modal">`).
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-     <tr>
-       <th style="width: 150px;">Event Type</th>
-       <th>Description</th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-       <td>show.bs.modal</td>
-       <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
-     </tr>
-     <tr>
-       <td>shown.bs.modal</td>
-       <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
-     </tr>
-     <tr>
-       <td>hide.bs.modal</td>
-       <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-     </tr>
-     <tr>
-       <td>hidden.bs.modal</td>
-       <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-     </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <thead>
+   <tr>
+     <th style="width: 150px;">Event Type</th>
+     <th>Description</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+     <td>show.bs.modal</td>
+     <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
+   </tr>
+   <tr>
+     <td>shown.bs.modal</td>
+     <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
+   </tr>
+   <tr>
+     <td>hide.bs.modal</td>
+     <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+   </tr>
+   <tr>
+     <td>hidden.bs.modal</td>
+     <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+   </tr>
+  </tbody>
+</table>
 
 {% highlight js %}
 $('#myModal').on('hidden.bs.modal', function (e) {

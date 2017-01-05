@@ -175,7 +175,7 @@ var ScrollSpy = function ($) {
     };
 
     ScrollSpy.prototype._getScrollTop = function _getScrollTop() {
-      return this._scrollElement === window ? this._scrollElement.scrollY : this._scrollElement.scrollTop;
+      return this._scrollElement === window ? this._scrollElement.pageYOffset : this._scrollElement.scrollTop;
     };
 
     ScrollSpy.prototype._getScrollHeight = function _getScrollHeight() {

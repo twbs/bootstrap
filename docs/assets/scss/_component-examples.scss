@@ -203,20 +203,22 @@
 
 // Navbars
 .bd-example {
-  .navbar-fixed-top {
+  .fixed-top,
+  .sticky-top {
     position: static;
     margin: -1rem -1rem 1rem;
   }
-  .navbar-fixed-bottom {
+  .fixed-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
   }
 
   @include media-breakpoint-up(sm) {
-    .navbar-fixed-top {
+    .fixed-top,
+    .sticky-top {
       margin: -1.5rem -1.5rem 1rem;
     }
-    .navbar-fixed-bottom {
+    .fixed-bottom {
       margin: 1rem -1.5rem -1.5rem;
     }
   }
@@ -247,17 +249,6 @@
     margin-right: auto;
     margin-left: auto;
   }
-}
-
-// Example dropdowns
-.bd-example > .dropdown > .dropdown-toggle {
-  float: left;
-}
-.bd-example > .dropdown > .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: .25rem;
-  clear: left;
 }
 
 // Example tabbable tabs
@@ -343,6 +334,7 @@
   padding: 1rem;
   margin: 1rem (-$grid-gutter-width-base / 2);
   background-color: #f7f7f9;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @include media-breakpoint-up(sm) {
     padding: 1.5rem;

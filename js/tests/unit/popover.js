@@ -332,4 +332,36 @@ $(function () {
       done()
     }
   })
+
+  QUnit.test('should hide popovers when their containing modal is closed', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var templateHTML = '<div id="modal-test" class="modal">' +
+                          '<div class="modal-dialog" role="document">' +
+                            '<div class="modal-content">' +
+                              '<div class="modal-body">' +
+                                '<button id="popover-test" type="button" class="btn btn-secondary" data-toggle="popover" data-placement="top" data-content="Popover">' +
+                                  'Popover on top' +
+                                '</button>' +
+                              '</div>' +
+                            '</div>' +
+                          '</div>' +
+                        '</div>'
+
+    $(templateHTML).appendTo('#qunit-fixture')
+    $('#popover-test')
+      .on('shown.bs.popover', function () {
+        $('#modal-test').modal('hide')
+      })
+      .on('hide.bs.popover', function () {
+        assert.ok(true, 'popover hide')
+        done()
+      })
+
+    $('#modal-test')
+      .on('shown.bs.modal', function () {
+        $('#popover-test').bootstrapPopover('show')
+      })
+      .modal('show')
+  })
 })

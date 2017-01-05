@@ -71,31 +71,12 @@
 }
 
 
-// Navbar divider
-//
-//
-
-.navbar-divider {
-  float: left;
-  width: $border-width;
-  padding-top: $navbar-divider-padding-y;
-  padding-bottom: $navbar-divider-padding-y;
-  margin-right: $navbar-padding-x;
-  margin-left:  $navbar-padding-x;
-  overflow: hidden;
-
-  &::before {
-    content: "\00a0";
-  }
-}
-
-
 // Responsive navbar
 //
 // Custom styles for responsive collapsing and toggling of navbar contents.
 // Powered by the collapse Bootstrap JavaScript plugin.
 
-// Button for toggling the navbar when in it's collapsed state
+// Button for toggling the navbar when in its collapsed state
 .navbar-toggler {
   align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
@@ -192,35 +173,6 @@
 }
 
 
-// Navbar position
-//
-// Display the navbar across the entirety of the page or fixed it to the top or
-// bottom of the page.
-
-// Fix the top/bottom navbars when screen real estate supports it
-.navbar-fixed-top,
-.navbar-fixed-bottom {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: $zindex-navbar-fixed;
-}
-
-.navbar-fixed-top {
-  top: 0;
-}
-
-.navbar-fixed-bottom {
-  bottom: 0;
-}
-
-.navbar-sticky-top {
-  position: sticky;
-  top: 0;
-  z-index: $zindex-navbar-sticky;
-}
-
-
 // Navbar themes
 //
 // Styles for switching between navbars with light or dark background.
@@ -263,10 +215,6 @@
 
   .navbar-toggler-icon {
     background-image: $navbar-light-toggler-bg;
-  }
-
-  .navbar-divider {
-    background-color: rgba(0,0,0,.075);
   }
 
   .navbar-text {
@@ -312,10 +260,6 @@
 
   .navbar-toggler-icon {
     background-image: $navbar-inverse-toggler-bg;
-  }
-
-  .navbar-divider {
-    background-color: rgba(255,255,255,.075);
   }
 
   .navbar-text {

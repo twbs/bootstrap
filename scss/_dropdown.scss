@@ -44,7 +44,7 @@
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
   margin: $dropdown-margin-top 0 0; // override default ul
-  font-size: $font-size-base;
+  font-size: $font-size-base; // Redeclare because nesting can cause inheritance issues
   color: $body-color;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
@@ -150,17 +150,8 @@
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 //
 // Just add .dropup after the standard .dropdown class and you're set.
-// TODO: abstract this so that the navbar fixed styles are not placed here?
 
-.dropup,
-.navbar-fixed-bottom .dropdown {
-  // Reverse the caret
-  .caret {
-    content: "";
-    border-top: 0;
-    border-bottom: $caret-width solid;
-  }
-
+.dropup {
   // Different positioning for bottom up menu
   .dropdown-menu {
     top: auto;

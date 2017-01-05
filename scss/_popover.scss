@@ -130,12 +130,12 @@
 // Offset the popover to account for the popover arrow
 .popover-title {
   padding: $popover-title-padding-y $popover-title-padding-x;
-  margin: 0; // reset heading margin
+  margin-bottom: 0; // Reset the default from Reboot
   font-size: $font-size-base;
   background-color: $popover-title-bg;
   border-bottom: $popover-border-width solid darken($popover-title-bg, 5%);
-  $offset-border-width: ($border-width / $font-size-root);
-  @include border-radius(($border-radius-lg - $offset-border-width) ($border-radius-lg - $offset-border-width) 0 0);
+  $offset-border-width: calc(#{$border-radius-lg} - #{$popover-border-width});
+  @include border-top-radius($offset-border-width);
 
   &:empty {
     display: none;

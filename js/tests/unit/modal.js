@@ -379,8 +379,8 @@ $(function () {
   QUnit.test('should have a paddingRight when the modal is taller than the viewport', function (assert) {
     assert.expect(2)
     var done = assert.async()
-    $('<div class="navbar-fixed-top navbar-fixed-bottom is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
-    $('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed').css('padding-right', '10px')
+    $('<div class="fixed-top fixed-bottom sticky-top is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
+    $('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top').css('padding-right', '10px')
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
@@ -396,8 +396,8 @@ $(function () {
   QUnit.test('should remove padding-right on modal after closing', function (assert) {
     assert.expect(3)
     var done = assert.async()
-    $('<div class="navbar-fixed-top navbar-fixed-bottom is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
-    $('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed').css('padding-right', '10px')
+    $('<div class="fixed-top fixed-bottom is-fixed sticky-top">@Johann-S</div>').appendTo('#qunit-fixture')
+    $('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top').css('padding-right', '10px')
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {

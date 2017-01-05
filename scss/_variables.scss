@@ -249,10 +249,7 @@ $font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:       $font-family-sans-serif !default;
 
-// Pixel value used to responsively scale all typography. Applied to the `<html>` element.
-$font-size-root: 16px !default;
-
-$font-size-base: 1rem !default;
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg:   1.25rem !default;
 $font-size-sm:   .875rem !default;
 $font-size-xs:   .75rem !default;
@@ -270,21 +267,22 @@ $font-size-h4: 1.5rem !default;
 $font-size-h5: 1.25rem !default;
 $font-size-h6: 1rem !default;
 
-$display1-size: 6rem !default;
-$display2-size: 5.5rem !default;
-$display3-size: 4.5rem !default;
-$display4-size: 3.5rem !default;
-
-$display1-weight: 300 !default;
-$display2-weight: 300 !default;
-$display3-weight: 300 !default;
-$display4-weight: 300 !default;
-
 $headings-margin-bottom: ($spacer / 2) !default;
 $headings-font-family:   inherit !default;
 $headings-font-weight:   500 !default;
 $headings-line-height:   1.1 !default;
 $headings-color:         inherit !default;
+
+$display1-size: 6rem !default;
+$display2-size: 5.5rem !default;
+$display3-size: 4.5rem !default;
+$display4-size: 3.5rem !default;
+
+$display1-weight:     300 !default;
+$display2-weight:     300 !default;
+$display3-weight:     300 !default;
+$display4-weight:     300 !default;
+$display-line-height: $headings-line-height !default;
 
 $lead-font-size:   1.25rem !default;
 $lead-font-weight: 300 !default;
@@ -328,7 +326,6 @@ $component-active-color: $white !default;
 $component-active-bg:    $brand-primary !default;
 
 $caret-width:            .3em !default;
-$caret-width-lg:         $caret-width !default;
 
 $transition-base:        all .2s ease-in-out !default;
 $transition-fade:        opacity .15s linear !default;
@@ -592,14 +589,14 @@ $dropdown-header-color:          $gray-light !default;
 // of components dependent on the z-axis and are designed to all work together.
 
 $zindex-dropdown-backdrop:  990 !default;
-$zindex-navbar:            1000 !default;
-$zindex-dropdown:          1000 !default;
-$zindex-navbar-fixed:      1030 !default;
-$zindex-navbar-sticky:     1030 !default;
-$zindex-modal-backdrop:    1040 !default;
-$zindex-modal:             1050 !default;
-$zindex-popover:           1060 !default;
-$zindex-tooltip:           1070 !default;
+$zindex-navbar:             1000 !default;
+$zindex-dropdown:           1000 !default;
+$zindex-fixed:              1030 !default;
+$zindex-sticky:             1030 !default;
+$zindex-modal-backdrop:     1040 !default;
+$zindex-modal:              1050 !default;
+$zindex-popover:            1060 !default;
+$zindex-tooltip:            1070 !default;
 
 
 // Navbar
@@ -609,8 +606,6 @@ $navbar-padding-x:                  $spacer !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
 
 $navbar-brand-padding-y:            .25rem !default;
-
-$navbar-divider-padding-y:          .425rem !default;
 
 $navbar-toggler-padding-x:           .75rem !default;
 $navbar-toggler-padding-y:           .25rem !default;
@@ -852,17 +847,14 @@ $alert-danger-border:         $state-danger-border !default;
 
 // Progress bars
 
-$progress-bg:                 $gray-lighter !default;
-$progress-bar-color:          $brand-primary !default;
-$progress-border-radius:      $border-radius !default;
-$progress-box-shadow:         inset 0 .1rem .1rem rgba($black,.1) !default;
-
-$progress-bar-bg:             $brand-primary !default;
-$progress-bar-success-bg:     $brand-success !default;
-$progress-bar-warning-bg:     $brand-warning !default;
-$progress-bar-danger-bg:      $brand-danger !default;
-$progress-bar-info-bg:        $brand-info !default;
-
+$progress-height:               1rem !default;
+$progress-font-size:            .75rem !default;
+$progress-bg:                   $gray-lighter !default;
+$progress-border-radius:        $border-radius !default;
+$progress-box-shadow:           inset 0 .1rem .1rem rgba($black,.1) !default;
+$progress-bar-color:            $white !default;
+$progress-bar-bg:               $brand-primary !default;
+$progress-bar-animation-timing: 1s linear infinite !default;
 
 // List group
 
@@ -946,6 +938,7 @@ $carousel-transition:           transform .6s ease-in-out !default;
 
 // Close
 
+$close-font-size:             $font-size-base * 1.5 !default;
 $close-font-weight:           $font-weight-bold !default;
 $close-color:                 $black !default;
 $close-text-shadow:           0 1px 0 $white !default;

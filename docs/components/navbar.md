@@ -30,7 +30,7 @@ Navbars come with built-in support for a handful of sub-components. Choose from 
 
 - `.navbar-brand` for your company, product, or project name.
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns).
-- `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#collapsible-content) behaviors.
+- `.navbar-toggler` for use with our collapse plugin and other [navigation toggling](#responsive-behaviors) behaviors.
 - `.form-inline` for any form controls and actions.
 - `.navbar-text` for adding vertically centered strings of text.
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
@@ -401,7 +401,7 @@ When the container is within your navbar, its horizontal padding is removed at b
 
 ## Placement
 
-Navbars can be statically placed (their default behavior), static without rounded corners, or fixed to the top or bottom of the viewport.
+Use our position utilities to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top. **Note that `position: sticky`, used for `.sticky-top`, isn't fully supported in every browser.**
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
@@ -410,14 +410,20 @@ Navbars can be statically placed (their default behavior), static without rounde
 {% endexample %}
 
 {% example html %}
-<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+<nav class="navbar fixed-top navbar-light bg-faded">
   <a class="navbar-brand" href="#">Fixed top</a>
 </nav>
 {% endexample %}
 
 {% example html %}
-<nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
+<nav class="navbar fixed-bottom navbar-light bg-faded">
   <a class="navbar-brand" href="#">Fixed bottom</a>
+</nav>
+{% endexample %}
+
+{% example html %}
+<nav class="navbar sticky-top navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Sticky top</a>
 </nav>
 {% endexample %}
 

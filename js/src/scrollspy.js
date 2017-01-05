@@ -186,7 +186,7 @@ const ScrollSpy = (($) => {
 
     _getScrollTop() {
       return this._scrollElement === window ?
-          this._scrollElement.scrollY : this._scrollElement.scrollTop
+          this._scrollElement.pageYOffset : this._scrollElement.scrollTop
     }
 
     _getScrollHeight() {

@@ -259,7 +259,6 @@ html {
 }
 
 html {
-  font-size: 16px;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: transparent;
 }
@@ -335,11 +334,6 @@ a:focus, a:hover {
   text-decoration: underline;
 }
 
-a:focus {
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-
 a:not([href]):not([tabindex]) {
   color: inherit;
   text-decoration: none;
@@ -351,7 +345,7 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 }
 
 a:not([href]):not([tabindex]):focus {
-  outline: none;
+  outline: 0;
 }
 
 pre {
