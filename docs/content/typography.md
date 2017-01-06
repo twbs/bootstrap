@@ -5,7 +5,7 @@ description: Documentation and examples for Bootstrap typography, including glob
 group: content
 ---
 
-Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/utilities/typography).
+Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/utilities/typography/).
 
 ## Contents
 

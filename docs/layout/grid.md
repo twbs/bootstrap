@@ -32,7 +32,7 @@ Bootstrap's grid system uses a series of containers, rows, and columns to layout
 </div>
 </div>
 
-The above example creates three equal-width columns on small, medium, large, and extra large devices using our [predefined grid classes](#predefined-classes). Those columns are centered in the page with the parent `.container`.
+The above example creates three equal-width columns on small, medium, large, and extra large devices using our predefined grid classes. Those columns are centered in the page with the parent `.container`.
 
 Breaking it down, here's how it works:
 

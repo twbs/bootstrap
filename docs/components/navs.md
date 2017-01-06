@@ -206,7 +206,7 @@ For equal-width elements, use `.nav-justified`. All horizontal space will be occ
 
 ## Working with flex utilities
 
-If you need responsive nav variations, consider using a series of [flex utilities](). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
+If you need responsive nav variations, consider using a series of [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
 {% example html %}
 <nav class="nav nav-pills flex-column flex-sm-row">

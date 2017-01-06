@@ -60,6 +60,17 @@ $(function () {
     assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
+  QUnit.test('should toggle aria-pressed on buttons with container', function (assert) {
+    assert.expect(1)
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+        '<button id="btn1" class="btn btn-secondary" type="button">One</button>' +
+        '<button class="btn btn-secondary" type="button">Two</button>' +
+      '</div>'
+    $('#qunit-fixture').append(groupHTML)
+    $('#btn1').bootstrapButton('toggle')
+    assert.strictEqual($('#btn1').attr('aria-pressed'), 'true')
+  })
+
   QUnit.test('should toggle aria-pressed when btn children are clicked', function (assert) {
     assert.expect(2)
     var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
