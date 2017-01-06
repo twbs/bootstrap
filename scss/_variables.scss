@@ -832,6 +832,7 @@ $progress-height:               1rem !default;
 $progress-font-size:            .75rem !default;
 $progress-bg:                   $gray-lighter !default;
 $progress-border-radius:        $border-radius !default;
+$progress-box-shadow:           inset 0 .1rem .1rem rgba($black,.1) !default;
 $progress-bar-color:            $white !default;
 $progress-bar-bg:               $brand-primary !default;
 $progress-bar-animation-timing: 1s linear infinite !default;
