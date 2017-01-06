@@ -18,6 +18,8 @@ const Util = (($) => {
 
   const MAX_UID = 1000000
 
+  const MILLIS = 1000
+
   const TransitionEndEvent = {
     WebkitTransition : 'webkitTransitionEnd',
     MozTransition    : 'transitionend',
@@ -65,19 +67,21 @@ const Util = (($) => {
     return false
   }
 
-  function transitionEndEmulator(duration) {
-    let called = false
+  function transitionEndEmulator(defaultDuration) {
+    if (!Util.supportsTransitionEnd()) {
+      let called = false
+      const cssTransition = this.css('transition-duration') || this.css('-webkit-transition-duration') || this.css('-moz-transition-duration') || this.css('-ms-transition-duration') || this.css('-o-transition-duration')
+      const duration = this.length ? parseFloat(cssTransition !== undefined ? cssTransition : defaultDuration) * MILLIS : defaultDuration
+      $(this).one(Util.TRANSITION_END, () => {
+        called = true
+      })
 
-    $(this).one(Util.TRANSITION_END, () => {
-      called = true
-    })
-
-    setTimeout(() => {
-      if (!called) {
-        Util.triggerTransitionEnd(this)
-      }
-    }, duration)
-
+      setTimeout(() => {
+        if (!called) {
+          Util.triggerTransitionEnd(this)
+        }
+      }, duration)
+    }
     return this
   }
 
