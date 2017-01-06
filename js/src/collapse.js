@@ -23,6 +23,7 @@ const Collapse = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
+  const TRANSITION_DURATION = 600
 
   const Default = {
     toggle : true,
@@ -189,7 +190,7 @@ const Collapse = (($) => {
 
       $(this._element)
         .one(Util.TRANSITION_END, complete)
-        .emulateTransitionEnd()
+        .emulateTransitionEnd(TRANSITION_DURATION)
 
       this._element.style[dimension] = `${this._element[scrollSize]}px`
     }
@@ -249,7 +250,7 @@ const Collapse = (($) => {
 
       $(this._element)
         .one(Util.TRANSITION_END, complete)
-        .emulateTransitionEnd()
+        .emulateTransitionEnd(TRANSITION_DURATION)
     }
 
     setTransitioning(isTransitioning) {

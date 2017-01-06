@@ -23,6 +23,7 @@ const Carousel = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
+  const TRANSITION_DURATION = 600
   const ARROW_LEFT_KEYCODE  = 37 // KeyboardEvent.which value for left arrow key
   const ARROW_RIGHT_KEYCODE = 39 // KeyboardEvent.which value for right arrow key
 
@@ -379,7 +380,7 @@ const Carousel = (($) => {
             setTimeout(() => $(this._element).trigger(slidEvent), 0)
 
           })
-          .emulateTransitionEnd()
+          .emulateTransitionEnd(TRANSITION_DURATION)
 
       } else {
         $(activeElement).removeClass(ClassName.ACTIVE)
