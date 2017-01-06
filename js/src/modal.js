@@ -23,8 +23,6 @@ const Modal = (($) => {
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
   const JQUERY_NO_CONFLICT           = $.fn[NAME]
-  const TRANSITION_DURATION          = 300
-  const BACKDROP_TRANSITION_DURATION = 150
   const ESCAPE_KEYCODE               = 27 // KeyboardEvent.which value for Escape (Esc) key
 
   const Default = {
@@ -193,7 +191,7 @@ const Modal = (($) => {
       if (transition) {
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd()
       } else {
         this._hideModal()
       }
@@ -263,7 +261,7 @@ const Modal = (($) => {
       if (transition) {
         $(this._dialog)
           .one(Util.TRANSITION_END, transitionComplete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd()
       } else {
         transitionComplete()
       }
@@ -369,7 +367,7 @@ const Modal = (($) => {
 
         $(this._backdrop)
           .one(Util.TRANSITION_END, callback)
-          .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
+          .emulateTransitionEnd()
 
       } else if (!this._isShown && this._backdrop) {
         $(this._backdrop).removeClass(ClassName.SHOW)
@@ -385,7 +383,7 @@ const Modal = (($) => {
            $(this._element).hasClass(ClassName.FADE)) {
           $(this._backdrop)
             .one(Util.TRANSITION_END, callbackRemove)
-            .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
+            .emulateTransitionEnd()
         } else {
           callbackRemove()
         }

@@ -18,6 +18,8 @@ const Util = (($) => {
 
   const MAX_UID = 1000000
 
+  const MILLIS = 1000
+
   const TransitionEndEvent = {
     WebkitTransition : 'webkitTransitionEnd',
     MozTransition    : 'transitionend',
@@ -65,9 +67,9 @@ const Util = (($) => {
     return false
   }
 
-  function transitionEndEmulator(duration) {
+  function transitionEndEmulator() {
     let called = false
-
+    const duration = this.length ? parseFloat(this.css('transition-duration') || this.css('-webkit-transition-duration') || this.css('-moz-transition-duration') || this.css('-ms-transition-duration') || this.css('-o-transition-duration') || 0) * MILLIS : 0
     $(this).one(Util.TRANSITION_END, () => {
       called = true
     })

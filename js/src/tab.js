@@ -23,7 +23,6 @@ const Tab = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
 
   const Event = {
     HIDE           : `hide${EVENT_KEY}`,
@@ -168,7 +167,7 @@ const Tab = (($) => {
       if (active && isTransitioning) {
         $(active)
           .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd()
 
       } else {
         complete()

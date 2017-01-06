@@ -32,7 +32,6 @@ const Tooltip = (($) => {
   const DATA_KEY            = 'bs.tooltip'
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
   const CLASS_PREFIX        = 'bs-tether'
 
   const Default = {
@@ -321,7 +320,7 @@ const Tooltip = (($) => {
           this._isTransitioning = true
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
-            .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
+            .emulateTransitionEnd()
           return
         }
 
@@ -367,7 +366,7 @@ const Tooltip = (($) => {
         this._isTransitioning = true
         $(tip)
           .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd()
 
       } else {
         complete()
