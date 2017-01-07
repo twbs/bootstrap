@@ -68,10 +68,16 @@ const Util = (($) => {
   }
 
   function transitionEndEmulator(defaultDuration) {
+    // determine the duration from the css
+    const cssTransition = parseFloat(this.css('transition-duration') || this.css('-webkit-transition-duration') || this.css('-moz-transition-duration') || this.css('-ms-transition-duration') || this.css('-o-transition-duration'))
+    // if there is no transition duration or a 0 duration, trigger TransitionEnd so the caller can execute the transition end callback
+    if (!cssTransition) {
+      Util.triggerTransitionEnd(this)
+      return this
+    }
+    // emulate only if transitionEnd is not supported by the browser
     if (!Util.supportsTransitionEnd()) {
       let called = false
-      const cssTransition = this.css('transition-duration') || this.css('-webkit-transition-duration') || this.css('-moz-transition-duration') || this.css('-ms-transition-duration') || this.css('-o-transition-duration')
-      const duration = this.length ? parseFloat(cssTransition !== undefined ? cssTransition : defaultDuration) * MILLIS : defaultDuration
       $(this).one(Util.TRANSITION_END, () => {
         called = true
       })
@@ -80,7 +86,7 @@ const Util = (($) => {
         if (!called) {
           Util.triggerTransitionEnd(this)
         }
-      }, duration)
+      }, cssTransition * MILLIS || defaultDuration)
     }
     return this
   }
