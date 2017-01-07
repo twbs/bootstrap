@@ -23,7 +23,7 @@ const Collapse = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 600
+  const TRANSITION_DURATION = 350
 
   const Default = {
     toggle : true,
