@@ -159,12 +159,14 @@ select.form-control {
 .form-control-sm {
   padding: $input-padding-y-sm $input-padding-x-sm;
   font-size: $font-size-sm;
+  line-height: $line-height-sm;
   @include border-radius($input-border-radius-sm);
 }
 
 select.form-control-sm {
   &:not([size]):not([multiple]) {
-    height: $input-height-sm;
+    $select-border-width: ($border-width * 2);
+    height: calc(#{$input-height-sm} + #{$select-border-width});
   }
 }
 
