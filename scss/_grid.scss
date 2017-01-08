@@ -50,3 +50,14 @@
 @if $enable-grid-classes {
   @include make-grid-columns();
 }
+
+//Add responsive order classes
+@each $size, $pixels in $grid-breakpoints {
+  @include media-breakpoint-up($size) {
+    @for $i from 1 to $grid-columns {
+      .order-#{$size}-#{$i} {
+        order: $i;
+      }
+    }
+  }
+}
