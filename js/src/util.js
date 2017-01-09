@@ -66,20 +66,22 @@ const Util = (($) => {
   }
 
   function getCssTransitionDuration(element) {
-    let duration
-    const durationValues = element.css('transition-duration') || element.css('-webkit-transition-duration') || element.css('-moz-transition-duration') || element.css('-ms-transition-duration') || element.css('-o-transition-duration')
-    if (durationValues) {
-      const durationArray = durationValues.split(',')
-      $.each(durationArray,
-        (index, value) => {
-          durationArray[index] = parseFloat(value)
-        }
-      )
-      duration = durationArray.sort((a, b) => {
-        return b - a
-      })[0]
-    }
-    return duration
+    // let duration
+    let durationArray = []
+    element.each(() => {
+      const durationValues = element.css('transition-duration') || element.css('-webkit-transition-duration') || element.css('-moz-transition-duration') || element.css('-ms-transition-duration') || element.css('-o-transition-duration')
+      if (durationValues) {
+        durationArray = durationArray.concat(durationValues.split(','))
+      }
+    })
+    $.each(durationArray,
+      (index, value) => {
+        durationArray[index] = parseFloat(value)
+      }
+    )
+    return durationArray.sort((a, b) => {
+      return b - a
+    })[0]
   }
 
   function transitionEmulator(start, complete) {
