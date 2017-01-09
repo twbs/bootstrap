@@ -49,11 +49,23 @@ $(function () {
     assert.ok($.fn.bootstrapModal.Constructor.Default, 'default object exposed')
   })
 
-  QUnit.test('should insert into dom when show method is called', function (assert) {
+  QUnit.test('should insert into dom when show method is called (long transition)', function (assert) {
     assert.expect(1)
     var done = assert.async()
 
-    $('<div id="modal-test"/>')
+    $('<div id="modal-test"/>').css('transition-duration', '1s')
+      .on('shown.bs.modal', function () {
+        assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should insert into dom when show method is called (no transition)', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    $('<div id="modal-test"/>').css('transition', 'none')
       .on('shown.bs.modal', function () {
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
         done()
@@ -89,11 +101,28 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('should hide modal when hide is called', function (assert) {
+  QUnit.test('should hide modal when hide is called (long transition)', function (assert) {
     assert.expect(3)
     var done = assert.async()
 
-    $('<div id="modal-test"/>')
+    $('<div id="modal-test"/>').css('transition-duration', '1s')
+      .on('shown.bs.modal', function () {
+        assert.ok($('#modal-test').is(':visible'), 'modal visible')
+        assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
+        $(this).bootstrapModal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should hide modal when hide is called (no transition)', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    $('<div id="modal-test"/>').css('transition', 'none')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
