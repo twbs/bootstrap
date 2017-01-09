@@ -25,6 +25,7 @@ var Collapse = function ($) {
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
+  var TRANSITION_DURATION = 600;
 
   var Default = {
     toggle: true,
@@ -151,20 +152,29 @@ var Collapse = function ($) {
         $(this._triggerArray).removeClass(ClassName.COLLAPSED).attr('aria-expanded', true);
       }
 
+      this.setTransitioning(true);
+
+      var complete = function complete() {
+        $(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.SHOW);
+
+        _this._element.style[dimension] = '';
+
+        _this.setTransitioning(false);
+
+        $(_this._element).trigger(Event.SHOWN);
+      };
+
+      if (!Util.supportsTransitionEnd()) {
+        complete();
+        return;
+      }
+
       var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
       var scrollSize = 'scroll' + capitalizedDimension;
 
-      var start = function start() {
-        _this.setTransitioning(true);
-        _this._element.style[dimension] = _this._element[scrollSize] + 'px';
-      };
+      $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
 
-      var complete = function complete() {
-        _this.setTransitioning(false);
-        $(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.SHOW).css(dimension, '').trigger(Event.SHOWN);
-      };
-
-      $(this._element).transition(start, complete);
+      this._element.style[dimension] = this._element[scrollSize] + 'px';
     };
 
     Collapse.prototype.hide = function hide() {
@@ -199,17 +209,21 @@ var Collapse = function ($) {
         $(this._triggerArray).addClass(ClassName.COLLAPSED).attr('aria-expanded', false);
       }
 
-      var start = function start() {
-        _this2.setTransitioning(true);
-        _this2._element.style[dimension] = '';
-      };
+      this.setTransitioning(true);
 
       var complete = function complete() {
         _this2.setTransitioning(false);
         $(_this2._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).trigger(Event.HIDDEN);
       };
 
-      $(this._element).transition(start, complete);
+      this._element.style[dimension] = '';
+
+      if (!Util.supportsTransitionEnd()) {
+        complete();
+        return;
+      }
+
+      $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
     };
 
     Collapse.prototype.setTransitioning = function setTransitioning(isTransitioning) {

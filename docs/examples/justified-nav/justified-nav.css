@@ -23,7 +23,6 @@ body {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7),to(#eee));
   background-image: -webkit-linear-gradient(top, #f7f7f7 0%,#eee 100%);
   background-image: -o-linear-gradient(top, #f7f7f7 0%,#eee 100%);
-  background-image: -moz-linear-gradient(top, #f7f7f7 0%,#eee 100%);
   background-image: linear-gradient(to bottom, #f7f7f7 0%,#eee 100%);
   border: 1px solid #e5e5e5;
 }
@@ -33,7 +32,6 @@ body {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: -moz-box;
     display: flex;
   }
 
@@ -41,8 +39,7 @@ body {
     -webkit-box-flex: 1;
     -webkit-flex: 1 0 auto;
         -ms-flex: 1 0 auto;
-         -moz-box-flex: 1;
-         flex: 1 0 auto;
+            flex: 1 0 auto;
   }
 }
 
