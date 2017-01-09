@@ -235,7 +235,7 @@ Initializes the carousel with an optional options `object` and starts cycling th
 
 {% highlight js %}
 $('.carousel').carousel({
-  interval: 2000
+  interval: false
 })
 {% endhighlight %}
 

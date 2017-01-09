@@ -1,0 +1,31 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/7.3.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'uglify' ]
+2 info using npm@4.0.5
+3 info using node@v7.3.0
+4 verbose run-script [ 'preuglify', 'uglify', 'postuglify' ]
+5 info lifecycle bootstrap@4.0.0-alpha.6~preuglify: bootstrap@4.0.0-alpha.6
+6 silly lifecycle bootstrap@4.0.0-alpha.6~preuglify: no script for preuglify, continuing
+7 info lifecycle bootstrap@4.0.0-alpha.6~uglify: bootstrap@4.0.0-alpha.6
+8 verbose lifecycle bootstrap@4.0.0-alpha.6~uglify: unsafe-perm in lifecycle true
+9 verbose lifecycle bootstrap@4.0.0-alpha.6~uglify: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/pierre-denis/git/bootstrap/node_modules/.bin:/Users/pierre-denis/.rvm/gems/ruby-2.2.1/bin:/Users/pierre-denis/.rvm/gems/ruby-2.2.1@global/bin:/Users/pierre-denis/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/pierre-denis/.rvm/bin
+10 verbose lifecycle bootstrap@4.0.0-alpha.6~uglify: CWD: /Users/pierre-denis/git/bootstrap
+11 silly lifecycle bootstrap@4.0.0-alpha.6~uglify: Args: [ '-c',
+11 silly lifecycle   'uglifyjs --compress warnings=false --mangle --comments \'/^!/\' --output dist/js/bootstrap.min.js dist/js/bootstrap.js' ]
+12 verbose stack Error: write EPIPE
+12 verbose stack     at exports._errnoException (util.js:1022:11)
+12 verbose stack     at WriteWrap.afterWrite [as oncomplete] (net.js:804:14)
+13 verbose cwd /Users/pierre-denis/git/bootstrap
+14 error Darwin 16.3.0
+15 error argv "/usr/local/Cellar/node/7.3.0/bin/node" "/usr/local/bin/npm" "run" "uglify"
+16 error node v7.3.0
+17 error npm  v4.0.5
+18 error code EPIPE
+19 error errno EPIPE
+20 error syscall write
+21 error write EPIPE
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]

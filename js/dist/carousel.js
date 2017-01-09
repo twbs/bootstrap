@@ -25,7 +25,6 @@ var Carousel = function ($) {
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var TRANSITION_DURATION = 600;
   var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
   var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
 
@@ -137,8 +136,7 @@ var Carousel = function ($) {
         this._isPaused = true;
       }
 
-      if ($(this._element).find(Selector.NEXT_PREV)[0] && Util.supportsTransitionEnd()) {
-        Util.triggerTransitionEnd(this._element);
+      if ($(this._element).find(Selector.NEXT_PREV)[0]) {
         this.cycle(true);
       }
 
@@ -344,16 +342,16 @@ var Carousel = function ($) {
         direction: eventDirectionName
       });
 
-      if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.SLIDE)) {
+      if ($(this._element).hasClass(ClassName.SLIDE)) {
 
         $(nextElement).addClass(orderClassName);
 
         Util.reflow(nextElement);
 
-        $(activeElement).addClass(directionalClassName);
-        $(nextElement).addClass(directionalClassName);
-
-        $(activeElement).one(Util.TRANSITION_END, function () {
+        $(activeElement).transition(function () {
+          $(activeElement).addClass(directionalClassName);
+          $(nextElement).addClass(directionalClassName);
+        }, function () {
           $(nextElement).removeClass(directionalClassName + ' ' + orderClassName).addClass(ClassName.ACTIVE);
 
           $(activeElement).removeClass(ClassName.ACTIVE + ' ' + orderClassName + ' ' + directionalClassName);
@@ -363,7 +361,7 @@ var Carousel = function ($) {
           setTimeout(function () {
             return $(_this3._element).trigger(slidEvent);
           }, 0);
-        }).emulateTransitionEnd(TRANSITION_DURATION);
+        });
       } else {
         $(activeElement).removeClass(ClassName.ACTIVE);
         $(nextElement).addClass(ClassName.ACTIVE);

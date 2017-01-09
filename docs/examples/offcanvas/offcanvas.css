@@ -22,6 +22,7 @@ footer {
     position: relative;
     -webkit-transition: all .25s ease-out;
          -o-transition: all .25s ease-out;
+            -moz-transition: all .25s ease-out;
             transition: all .25s ease-out;
   }
 

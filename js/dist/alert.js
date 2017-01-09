@@ -23,7 +23,6 @@ var Alert = function ($) {
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var TRANSITION_DURATION = 150;
 
   var Selector = {
     DISMISS: '[data-dismiss="alert"]'
@@ -59,6 +58,8 @@ var Alert = function ($) {
     // public
 
     Alert.prototype.close = function close(element) {
+      var _this = this;
+
       element = element || this._element;
 
       var rootElement = this._getRootElement(element);
@@ -68,7 +69,11 @@ var Alert = function ($) {
         return;
       }
 
-      this._removeElement(rootElement);
+      $(rootElement).transition(function () {
+        return $(rootElement).removeClass(ClassName.SHOW);
+      }, function () {
+        return _this._destroyElement(rootElement);
+      });
     };
 
     Alert.prototype.dispose = function dispose() {
@@ -98,21 +103,6 @@ var Alert = function ($) {
 
       $(element).trigger(closeEvent);
       return closeEvent;
-    };
-
-    Alert.prototype._removeElement = function _removeElement(element) {
-      var _this = this;
-
-      $(element).removeClass(ClassName.SHOW);
-
-      if (!Util.supportsTransitionEnd() || !$(element).hasClass(ClassName.FADE)) {
-        this._destroyElement(element);
-        return;
-      }
-
-      $(element).one(Util.TRANSITION_END, function (event) {
-        return _this._destroyElement(element, event);
-      }).emulateTransitionEnd(TRANSITION_DURATION);
     };
 
     Alert.prototype._destroyElement = function _destroyElement(element) {

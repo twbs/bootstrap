@@ -17,6 +17,8 @@ var Util = function ($) {
 
   var MAX_UID = 1000000;
 
+  var MILLIS = 1000;
+
   var TransitionEndEvent = {
     WebkitTransition: 'webkitTransitionEnd',
     MozTransition: 'transitionend',
@@ -47,10 +49,6 @@ var Util = function ($) {
   }
 
   function transitionEndTest() {
-    if (window.QUnit) {
-      return false;
-    }
-
     var el = document.createElement('bootstrap');
 
     for (var name in TransitionEndEvent) {
@@ -60,36 +58,71 @@ var Util = function ($) {
         };
       }
     }
-
-    return false;
+    // If the browser doesn't support transitionEnd then use the custom Util.TRANSITION_END event
+    return {
+      end: Util.TRANSITION_END
+    };
   }
 
-  function transitionEndEmulator(duration) {
+  function getCssTransitionDuration(element) {
+    var duration = void 0;
+    var durationValues = element.css('transition-duration') || element.css('-webkit-transition-duration') || element.css('-moz-transition-duration') || element.css('-ms-transition-duration') || element.css('-o-transition-duration');
+    if (durationValues) {
+      (function () {
+        var durationArray = durationValues.split(',');
+        $.each(durationArray, function (index, value) {
+          durationArray[index] = parseFloat(value);
+        });
+        duration = durationArray.sort(function (a, b) {
+          return b - a;
+        })[0];
+      })();
+    }
+    return duration;
+  }
+
+  function transitionEmulator(start, complete) {
     var _this = this;
 
-    var called = false;
-
-    $(this).one(Util.TRANSITION_END, function () {
-      called = true;
-    });
-
-    setTimeout(function () {
-      if (!called) {
-        Util.triggerTransitionEnd(_this);
-      }
-    }, duration);
-
+    // determine the longest transition duration (in case there is a transition on multiple attributes) from the css
+    var duration = getCssTransitionDuration(this);
+    // if there is a non 0 transition duration and transition are supported
+    if (duration) {
+      (function () {
+        var called = false;
+        _this.one(Util.TRANSITION_END, function () {
+          if (!called) {
+            called = true;
+            executeCallback(complete);
+          }
+        });
+        // set a timeout to call complete in case (instead of using transitionend that can sometimes not be triggered). This way we can guarantee complete is always called
+        setTimeout(function () {
+          if (!called) {
+            called = true;
+            executeCallback(complete);
+          }
+        }, duration * MILLIS);
+        // execute the start transition function, after setting the timeout
+        executeCallback(start);
+      })();
+    } else {
+      executeCallback(start);
+      executeCallback(complete);
+    }
     return this;
+  }
+
+  function executeCallback(callback) {
+    if (callback) {
+      callback();
+    }
   }
 
   function setTransitionEndSupport() {
     transition = transitionEndTest();
-
-    $.fn.emulateTransitionEnd = transitionEndEmulator;
-
-    if (Util.supportsTransitionEnd()) {
-      $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
-    }
+    $.fn.transition = transitionEmulator;
+    $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
   }
 
   /**
@@ -121,12 +154,6 @@ var Util = function ($) {
     },
     reflow: function reflow(element) {
       return element.offsetHeight;
-    },
-    triggerTransitionEnd: function triggerTransitionEnd(element) {
-      $(element).trigger(transition.end);
-    },
-    supportsTransitionEnd: function supportsTransitionEnd() {
-      return Boolean(transition);
     },
     typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
       for (var property in configTypes) {
