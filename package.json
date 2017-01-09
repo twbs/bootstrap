@@ -29,7 +29,7 @@
     "scss-lint": "bundle exec scss-lint --config scss/.scss-lint.yml --exclude scss/_normalize.scss scss/*.scss",
     "scss-lint-docs": "bundle exec scss-lint --config scss/.scss-lint.yml --exclude docs/assets/scss/docs.scss docs/assets/scss/*.scss",
     "uglify": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
-    "uglify-docs": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output docs/assets/js/docs.min.js docs/assets/js/vendor/*.js docs/assets/js/src/application.js",
+    "uglify-docs": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output docs/assets/js/docs.min.js docs/assets/js/vendor/anchor.min.js docs/assets/js/vendor/clipboard.min.js docs/assets/js/vendor/holder.min.js docs/assets/js/src/application.js",
     "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
     "test": "npm run eslint && grunt test"
   },
