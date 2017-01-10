@@ -104,13 +104,13 @@ $pink:   #ff5b77 !default;
 $purple: #613d7c !default;
 
 // Create grayscale
-$gray-darkest:              lighten(#000, 16%) !default;   /* #292929 */
-$gray-darker:               lighten(#000, 29%) !default;   /* #4a4a4a */
-$gray-dark:                 lighten(#000, 40%) !default;   /* #666666 */
-$gray:                      lighten(#000, 60%) !default;   /* #999999 */
-$gray-light:                lighten(#000, 86.5%) !default; /* #dddddd */
-$gray-lighter:              lighten(#000, 93.3%) !default; /* #eeeeee */
-$gray-lightest:             lighten(#000, 96.8%) !default; /* #f7f7f7 */
+$gray-darkest:              lighten(#000, 16%) !default;   // #292929
+$gray-darker:               lighten(#000, 29%) !default;   // #4a4a4a
+$gray-dark:                 lighten(#000, 40%) !default;   // #666666
+$gray:                      lighten(#000, 60%) !default;   // #999999
+$gray-light:                lighten(#000, 86.5%) !default; // #dddddd
+$gray-lighter:              lighten(#000, 93.3%) !default; // #eeeeee
+$gray-lightest:             lighten(#000, 96.8%) !default; // #f7f7f7
 
 // Reassign color vars to semantic color scheme
 $brand-primary:             $blue !default;
