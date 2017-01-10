@@ -494,12 +494,8 @@ const Modal = (($) => {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    let target
-    const selector = Util.getSelectorFromElement(this)
-
-    if (selector) {
-      target = $(selector)[0]
-    }
+    const targets = Util.getTargets(this)
+    const target = targets && targets.length > 0 ? targets[0] : null
 
     const config = $(target).data(DATA_KEY) ?
       'toggle' : $.extend({}, $(target).data(), $(this).data())

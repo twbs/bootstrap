@@ -110,15 +110,16 @@ const Util = (($) => {
       return prefix
     },
 
-    getSelectorFromElement(element) {
+    getTargets(element) {
       let selector = element.getAttribute('data-target')
-
       if (!selector) {
         selector = element.getAttribute('href') || ''
-        selector = /^#[a-z]/i.test(selector) ? selector : null
       }
-
-      return selector
+      try {
+        return $(selector)
+      } catch (err) {
+        return null
+      }
     },
 
     reflow(element) {

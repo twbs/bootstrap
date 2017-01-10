@@ -429,13 +429,8 @@ const Carousel = (($) => {
     }
 
     static _dataApiClickHandler(event) {
-      const selector = Util.getSelectorFromElement(this)
-
-      if (!selector) {
-        return
-      }
-
-      const target = $(selector)[0]
+      const targets = Util.getTargets(this)
+      const target = targets && targets.length > 0 ? targets[0] : null
 
       if (!target || !$(target).hasClass(ClassName.CAROUSEL)) {
         return
