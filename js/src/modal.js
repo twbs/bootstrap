@@ -327,15 +327,6 @@ const Modal = (($) => {
           Util.reflow(this._backdrop)
         }
 
-        if (!callback) {
-          return
-        }
-
-        if (!animate) {
-          callback()
-          return
-        }
-
         $(this._backdrop).transition(() => $(this._backdrop).addClass(ClassName.SHOW), callback)
 
       } else if (!this._isShown && this._backdrop) {
@@ -346,11 +337,7 @@ const Modal = (($) => {
           }
         }
 
-        if ($(this._element).hasClass(ClassName.FADE)) {
-          $(this._backdrop).transition(() => $(this._backdrop).removeClass(ClassName.SHOW), callbackRemove)
-        } else {
-          callbackRemove()
-        }
+        $(this._backdrop).transition(() => $(this._backdrop).removeClass(ClassName.SHOW), callbackRemove)
 
       } else if (callback) {
         callback()
