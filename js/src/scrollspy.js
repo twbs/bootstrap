@@ -127,7 +127,7 @@ const ScrollSpy = (($) => {
       targets
         .map((element) => {
           const targets = Util.getTargets(element)
-          const target = targets && targets.length > 0 ? targets[0] : null
+          const target = targets ? targets[0] : null
 
           if (target && (target.offsetWidth || target.offsetHeight)) {
             // todo (fat): remove sketch reliance on jQuery position/offset

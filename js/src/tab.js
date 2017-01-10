@@ -131,7 +131,7 @@ const Tab = (($) => {
       }
 
       const targets = Util.getTargets(this._element)
-      const target = targets && targets.length > 0 ? targets[0] : null
+      const target = targets ? targets[0] : null
 
       if (target) {
         this._activate(target, target.parentNode, complete)

@@ -315,7 +315,7 @@ const Collapse = (($) => {
 
     static _getTargetFromElement(element) {
       const targets = Util.getTargets(element)
-      return targets && targets.length > 0 ? targets[0] : null
+      return targets ? targets[0] : null
     }
 
     static _jQueryInterface(config) {
