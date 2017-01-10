@@ -381,8 +381,6 @@ const Tooltip = (($) => {
 
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
 
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
-
       this.cleanupTether()
     }
 

@@ -36,11 +36,6 @@ const Popover = (($) => {
     content : '(string|element|function)'
   })
 
-  const ClassName = {
-    FADE : 'fade',
-    SHOW : 'show'
-  }
-
   const Selector = {
     TITLE   : '.popover-title',
     CONTENT : '.popover-content'
@@ -116,8 +111,6 @@ const Popover = (($) => {
       // we use append for html objects to maintain js events
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle())
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent())
-
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
 
       this.cleanupTether()
     }
