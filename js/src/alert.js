@@ -36,7 +36,6 @@ const Alert = (($) => {
 
   const ClassName = {
     ALERT : 'alert',
-    FADE  : 'fade',
     SHOW  : 'show'
   }
 
