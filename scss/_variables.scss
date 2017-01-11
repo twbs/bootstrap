@@ -40,6 +40,7 @@
 // Carousel
 // Close
 // Code
+// Background
 
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
@@ -998,3 +999,26 @@ $pre-bg:                      $gray-lightest !default;
 $pre-color:                   $gray-dark !default;
 $pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;
+
+// Background
+
+$primary-bg:                    $brand-primary !default;
+$primary-link-hover-color:      darken($primary-bg, 10%) !default;
+
+$success-bg:                    $brand-success !default;
+$success-link-hover-color:      darken($success-bg, 10%) !default;
+
+$info-bg:                       $brand-info !default;
+$info-link-hover-color:         darken($info-bg, 10%) !default;
+
+$warning-bg:                    $brand-warning !default;
+$warning-link-hover-color:      darken($warning-bg, 10%) !default;
+
+$danger-bg:                     $brand-danger !default;
+$danger-link-hover-color:       darken($danger-bg, 10%) !default;
+
+$inverse-bg:                    $brand-inverse !default;
+$inverse-link-hover-color:      darken($inverse-bg, 10%) !default;
+
+$faded-bg:                      darken($body-bg, 3%) !default;
+

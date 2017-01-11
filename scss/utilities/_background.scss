@@ -3,17 +3,17 @@
 //
 
 .bg-faded {
-  background-color: darken($body-bg, 3%);
+  background-color: $faded-bg;
 }
 
-@include bg-variant('.bg-primary', $brand-primary);
+@include bg-variant('.bg-primary', $primary-bg, $primary-link-hover-color);
 
-@include bg-variant('.bg-success', $brand-success);
+@include bg-variant('.bg-success', $success-bg, $success-link-hover-color);
 
-@include bg-variant('.bg-info', $brand-info);
+@include bg-variant('.bg-info', $info-bg, $info-link-hover-color);
 
-@include bg-variant('.bg-warning', $brand-warning);
+@include bg-variant('.bg-warning', $warning-bg, $warning-link-hover-color);
 
-@include bg-variant('.bg-danger', $brand-danger);
+@include bg-variant('.bg-danger', $danger-bg, $danger-link-hover-color);
 
-@include bg-variant('.bg-inverse', $brand-inverse);
+@include bg-variant('.bg-inverse', $inverse-bg, $inverse-link-hover-color);
