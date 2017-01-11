@@ -1,6 +1,6 @@
 // List Groups
 
-@mixin list-group-item-variant($state, $background, $color) {
+@mixin list-group-item-variant($state, $background, $color, $hover-background) {
   .list-group-item-#{$state} {
     color: $color;
     background-color: $background;
@@ -16,7 +16,7 @@
 
     @include hover-focus {
       color: $color;
-      background-color: darken($background, 5%);
+      background-color: $hover-background;
     }
 
     &.active {

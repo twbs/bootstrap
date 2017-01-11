@@ -135,7 +135,7 @@
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 
-@include list-group-item-variant(success, $state-success-bg, $state-success-text);
-@include list-group-item-variant(info, $state-info-bg, $state-info-text);
-@include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
-@include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
+@include list-group-item-variant(success, $state-success-bg, $state-success-text, $state-success-hover-bg);
+@include list-group-item-variant(info, $state-info-bg, $state-info-text, $state-info-hover-bg);
+@include list-group-item-variant(warning, $state-warning-bg, $state-warning-text, $state-warning-hover-bg);
+@include list-group-item-variant(danger, $state-danger-bg, $state-danger-text, $state-danger-hover-bg);
