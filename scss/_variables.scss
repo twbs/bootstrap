@@ -41,6 +41,7 @@
 // Close
 // Code
 // Background
+// Text emphasis
 
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
@@ -1028,3 +1029,26 @@ $inverse-link-hover-color:      darken($inverse-bg, 10%) !default;
 
 $faded-bg:                      darken($body-bg, 3%) !default;
 
+// Text emphasis
+
+$text-primary:                    $brand-primary !default;
+$text-primary-link-hover-color:   darken($text-primary, 10%) !default;
+
+$text-success:                    $brand-success !default;
+$text-success-link-hover-color:   darken($text-success, 10%) !default;
+
+$text-info:                       $brand-info !default;
+$text-info-link-hover-color:      darken($text-info, 10%) !default;
+
+$text-warning:                    $brand-warning !default;
+$text-warning-link-hover-color:   darken($text-warning, 10%) !default;
+
+$text-danger:                     $brand-danger !default;
+$text-danger-link-hover-color:    darken($text-danger, 10%) !default;
+
+$text-gray-dark:                  $gray-dark !default;
+$text-gray-dark-link-hover-color: darken($text-gray-dark, 10%) !default;
+
+$text-muted-link-hover-color:     darken($text-muted, 10%) !default;
+
+$text-white:                      $white !default;

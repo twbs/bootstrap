@@ -35,24 +35,24 @@
 // Contextual colors
 
 .text-white {
-  color: #fff !important;
+  color: $text-white !important;
 }
 
-@include text-emphasis-variant('.text-muted', $text-muted);
+@include text-emphasis-variant('.text-muted', $text-muted, $text-muted-link-hover-color);
 
-@include text-emphasis-variant('.text-primary', $brand-primary);
+@include text-emphasis-variant('.text-primary', $text-primary, $text-primary-link-hover-color);
 
-@include text-emphasis-variant('.text-success', $brand-success);
+@include text-emphasis-variant('.text-success', $text-success, $text-success-link-hover-color);
 
-@include text-emphasis-variant('.text-info', $brand-info);
+@include text-emphasis-variant('.text-info', $text-info, $text-info-link-hover-color);
 
-@include text-emphasis-variant('.text-warning', $brand-warning);
+@include text-emphasis-variant('.text-warning', $text-warning, $text-warning-link-hover-color);
 
-@include text-emphasis-variant('.text-danger', $brand-danger);
+@include text-emphasis-variant('.text-danger', $text-danger, $text-danger-link-hover-color);
 
 // Font color
 
-@include text-emphasis-variant('.text-gray-dark', $gray-dark);
+@include text-emphasis-variant('.text-gray-dark', $text-gray-dark, $text-gray-dark-link-hover-color);
 
 // Misc
 
