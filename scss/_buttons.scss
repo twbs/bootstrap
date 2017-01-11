@@ -53,42 +53,42 @@ fieldset[disabled] a.btn {
 //
 
 .btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border, $btn-primary-active-bg, $btn-primary-active-border, $btn-primary-focus-shadow);
 }
 .btn-secondary {
-  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border, $btn-secondary-active-bg, $btn-secondary-active-border, $btn-secondary-focus-shadow);
 }
 .btn-info {
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border, $btn-info-active-bg, $btn-info-active-border, $btn-info-focus-shadow);
 }
 .btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border, $btn-success-active-bg, $btn-success-active-border, $btn-success-focus-shadow);
 }
 .btn-warning {
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border, $btn-warning-active-bg, $btn-warning-active-border, $btn-warning-focus-shadow);
 }
 .btn-danger {
-  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border, $btn-danger-active-bg, $btn-danger-active-border, $btn-danger-focus-shadow);
 }
 
 // Remove all backgrounds
 .btn-outline-primary {
-  @include button-outline-variant($btn-primary-bg);
+  @include button-outline-variant($btn-primary-bg, $btn-outline-primary-hover-color, $btn-outline-primary-focus-shadow);
 }
 .btn-outline-secondary {
-  @include button-outline-variant($btn-secondary-border);
+  @include button-outline-variant($btn-secondary-border, $btn-outline-secondary-hover-color, $btn-outline-secondary-focus-shadow);
 }
 .btn-outline-info {
-  @include button-outline-variant($btn-info-bg);
+  @include button-outline-variant($btn-info-bg, $btn-outline-info-hover-color, $btn-outline-info-focus-shadow);
 }
 .btn-outline-success {
-  @include button-outline-variant($btn-success-bg);
+  @include button-outline-variant($btn-success-bg, $btn-outline-success-hover-color, $btn-outline-success-focus-shadow);
 }
 .btn-outline-warning {
-  @include button-outline-variant($btn-warning-bg);
+  @include button-outline-variant($btn-warning-bg, $btn-outline-warning-hover-color, $btn-outline-warning-focus-shadow);
 }
 .btn-outline-danger {
-  @include button-outline-variant($btn-danger-bg);
+  @include button-outline-variant($btn-danger-bg, $btn-outline-danger-hover-color, $btn-outline-danger-focus-shadow);
 }
 
 

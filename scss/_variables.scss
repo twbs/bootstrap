@@ -359,55 +359,86 @@ $table-border-color:            $gray-lighter !default;
 //
 // For each of Bootstrap's buttons, define text, background and border color.
 
-$btn-padding-x:                  1rem !default;
-$btn-padding-y:                  .5rem !default;
-$btn-line-height:                1.25 !default;
-$btn-font-weight:                $font-weight-normal !default;
-$btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
-$btn-focus-box-shadow:           0 0 0 2px rgba($brand-primary, .25) !default;
-$btn-active-box-shadow:          inset 0 3px 5px rgba($black,.125) !default;
+$btn-padding-x:                      1rem !default;
+$btn-padding-y:                      .5rem !default;
+$btn-line-height:                    1.25 !default;
+$btn-font-weight:                    $font-weight-normal !default;
+$btn-box-shadow:                     inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
+$btn-focus-box-shadow:               0 0 0 2px rgba($brand-primary, .25) !default;
+$btn-active-box-shadow:              inset 0 3px 5px rgba($black,.125) !default;
 
-$btn-primary-color:              $white !default;
-$btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             $btn-primary-bg !default;
+$btn-primary-color:                  $white !default;
+$btn-primary-bg:                     $brand-primary !default;
+$btn-primary-border:                 $btn-primary-bg !default;
+$btn-primary-active-bg:              darken($btn-primary-bg, 10%) !default;
+$btn-primary-active-border:          darken($btn-primary-border, 12%) !default;
+$btn-primary-focus-shadow:           0 0 0 2px rgba($btn-primary-border, .5) !default;
+$btn-primary-focus-shadow:           0 0 0 2px rgba($btn-primary-border, .5) !default;
+$btn-outline-primary-hover-color:    $white !default;
+$btn-outline-primary-focus-shadow:   0 0 0 2px rgba($btn-primary-bg, .5) !default;
 
-$btn-secondary-color:            $gray-dark !default;
-$btn-secondary-bg:               $white !default;
-$btn-secondary-border:           #ccc !default;
+$btn-secondary-color:                $gray-dark !default;
+$btn-secondary-bg:                   $white !default;
+$btn-secondary-border:               #ccc !default;
+$btn-secondary-active-bg:            darken($btn-secondary-bg, 10%) !default;
+$btn-secondary-active-border:        darken($btn-secondary-border, 12%) !default;
+$btn-secondary-focus-shadow:         0 0 0 2px rgba($btn-secondary-border, .5) !default;
+$btn-outline-secondary-hover-color:  $white !default;
+$btn-outline-secondary-focus-shadow: 0 0 0 2px rgba($btn-secondary-border, .5) !default;
 
-$btn-info-color:                 $white !default;
-$btn-info-bg:                    $brand-info !default;
-$btn-info-border:                $btn-info-bg !default;
+$btn-info-color:                     $white !default;
+$btn-info-bg:                        $brand-info !default;
+$btn-info-border:                    $btn-info-bg !default;
+$btn-info-active-bg:                 darken($btn-info-bg, 10%) !default;
+$btn-info-active-border:             darken($btn-info-border, 12%) !default;
+$btn-info-focus-shadow:              0 0 0 2px rgba($btn-info-border, .5) !default;
+$btn-outline-info-hover-color:       $white !default;
+$btn-outline-info-focus-shadow:      0 0 0 2px rgba($btn-info-bg, .5) !default;
 
-$btn-success-color:              $white !default;
-$btn-success-bg:                 $brand-success !default;
-$btn-success-border:             $btn-success-bg !default;
+$btn-success-color:                  $white !default;
+$btn-success-bg:                     $brand-success !default;
+$btn-success-border:                 $btn-success-bg !default;
+$btn-success-active-bg:              darken($btn-success-bg, 10%) !default;
+$btn-success-active-border:          darken($btn-success-border, 12%) !default;
+$btn-success-focus-shadow:           0 0 0 2px rgba($btn-success-border, .5) !default;
+$btn-outline-success-hover-color:    $white !default;
+$btn-outline-success-focus-shadow:   0 0 0 2px rgba($btn-success-bg, .5) !default;
 
-$btn-warning-color:              $white !default;
-$btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             $btn-warning-bg !default;
+$btn-warning-color:                  $white !default;
+$btn-warning-bg:                     $brand-warning !default;
+$btn-warning-border:                 $btn-warning-bg !default;
+$btn-warning-active-bg:              darken($btn-warning-bg, 10%) !default;
+$btn-warning-active-border:          darken($btn-warning-border, 12%) !default;
+$btn-warning-focus-shadow:           0 0 0 2px rgba($btn-warning-border, .5) !default;
+$btn-outline-warning-hover-color:    $white !default;
+$btn-outline-warning-focus-shadow:   0 0 0 2px rgba($btn-warning-bg, .5) !default;
 
-$btn-danger-color:               $white !default;
-$btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              $btn-danger-bg !default;
+$btn-danger-color:                   $white !default;
+$btn-danger-bg:                      $brand-danger !default;
+$btn-danger-border:                  $btn-danger-bg !default;
+$btn-danger-active-bg:               darken($btn-danger-bg, 10%) !default;
+$btn-danger-active-border:           darken($btn-danger-border, 12%) !default;
+$btn-danger-focus-shadow:            0 0 0 2px rgba($btn-danger-border, .5) !default;
+$btn-outline-danger-hover-color:     $white !default;
+$btn-outline-danger-focus-shadow:    0 0 0 2px rgba($btn-danger-bg, .5) !default;
 
-$btn-link-disabled-color:        $gray-light !default;
+$btn-link-disabled-color:            $gray-light !default;
 
-$btn-padding-x-sm:               .5rem !default;
-$btn-padding-y-sm:               .25rem !default;
+$btn-padding-x-sm:                   .5rem !default;
+$btn-padding-y-sm:                   .25rem !default;
 
-$btn-padding-x-lg:               1.5rem !default;
-$btn-padding-y-lg:               .75rem !default;
+$btn-padding-x-lg:                   1.5rem !default;
+$btn-padding-y-lg:                   .75rem !default;
 
-$btn-block-spacing-y:            .5rem !default;
-$btn-toolbar-margin:             .5rem !default;
+$btn-block-spacing-y:                .5rem !default;
+$btn-toolbar-margin:                 .5rem !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:              $border-radius !default;
-$btn-border-radius-lg:           $border-radius-lg !default;
-$btn-border-radius-sm:           $border-radius-sm !default;
+$btn-border-radius:                   $border-radius !default;
+$btn-border-radius-lg:                $border-radius-lg !default;
+$btn-border-radius-sm:                $border-radius-sm !default;
 
-$btn-transition:                 all .2s ease-in-out !default;
+$btn-transition:                      all .2s ease-in-out !default;
 
 
 // Forms

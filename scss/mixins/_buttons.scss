@@ -3,9 +3,7 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-@mixin button-variant($color, $background, $border) {
-  $active-background: darken($background, 10%);
-  $active-border: darken($border, 12%);
+@mixin button-variant($color, $background, $border, $active-background, $active-border, $focus-shadow) {
 
   color: $color;
   background-color: $background;
@@ -22,9 +20,9 @@
   &.focus {
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
-      box-shadow: $btn-box-shadow, 0 0 0 2px rgba($border, .5);
+      box-shadow: $btn-box-shadow, $focus-shadow;
     } @else {
-      box-shadow: 0 0 0 2px rgba($border, .5);
+      box-shadow: $focus-shadow;
     }
   }
 
@@ -46,7 +44,7 @@
   }
 }
 
-@mixin button-outline-variant($color, $color-hover: #fff) {
+@mixin button-outline-variant($color, $color-hover, $focus-shadow) {
   color: $color;
   background-image: none;
   background-color: transparent;
@@ -60,7 +58,7 @@
 
   &:focus,
   &.focus {
-    box-shadow: 0 0 0 2px rgba($color, .5);
+    box-shadow: $focus-shadow;
   }
 
   &.disabled,
