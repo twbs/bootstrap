@@ -87,7 +87,7 @@ const Alert = (($) => {
 
     _getRootElement(element) {
       const targets = Util.getTargets(element)
-      return targets && targets.length > 0 ? targets[0] : $(element).closest(`.${ClassName.ALERT}`)[0]
+      return targets && targets.length ? targets[0] : $(element).closest(`.${ClassName.ALERT}`)[0]
     }
 
     _triggerCloseEvent(element) {

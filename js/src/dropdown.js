@@ -203,7 +203,7 @@ const Dropdown = (($) => {
 
     static _getParentFromElement(element) {
       const targets = Util.getTargets(element)
-      return targets && targets.length > 0 ? targets[0] : element.parentNode
+      return targets && targets.length ? targets[0] : element.parentNode
     }
 
     static _dataApiKeydownHandler(event) {
