@@ -589,6 +589,19 @@ $form-icon-warning: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmln
 $form-icon-danger-color: $brand-danger !default;
 $form-icon-danger: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$form-icon-danger-color}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"), "#", "%23") !default;
 
+$form-validation-focus-shadow: 0 0 6px;
+
+$form-validation-danger-color: $brand-danger !default;
+$form-validation-danger-focus-shadow: $form-validation-focus-shadow lighten($form-validation-danger-color, 20%) !default;
+$form-validation-danger-addon-bg: lighten($form-validation-danger-color, 40%) !default;
+
+$form-validation-warning-color: $brand-warning !default;
+$form-validation-warning-focus-shadow: $form-validation-focus-shadow lighten($form-validation-warning-color, 20%) !default;
+$form-validation-warning-addon-bg: lighten($form-validation-warning-color, 40%) !default;
+
+$form-validation-success-color: $brand-success !default;
+$form-validation-success-focus-shadow: $form-validation-focus-shadow lighten($form-validation-success-color, 20%) !default;
+$form-validation-success-addon-bg: lighten($form-validation-success-color, 40%) !default;
 
 // Dropdowns
 //

@@ -262,7 +262,7 @@ select.form-control-lg {
 
 // Form validation states
 .has-success {
-  @include form-control-validation($brand-success);
+  @include form-control-validation($form-validation-success-color, $form-validation-success-focus-shadow, $form-validation-success-addon-bg);
 
   .form-control-success {
     background-image: $form-icon-success;
@@ -270,7 +270,7 @@ select.form-control-lg {
 }
 
 .has-warning {
-  @include form-control-validation($brand-warning);
+  @include form-control-validation($form-validation-warning-color, $form-validation-warning-focus-shadow, $form-validation-warning-addon-bg);
 
   .form-control-warning {
     background-image: $form-icon-warning;
@@ -278,7 +278,7 @@ select.form-control-lg {
 }
 
 .has-danger {
-  @include form-control-validation($brand-danger);
+  @include form-control-validation($form-validation-danger-color, $form-validation-danger-focus-shadow, $form-validation-danger-addon-bg);
 
   .form-control-danger {
     background-image: $form-icon-danger;
