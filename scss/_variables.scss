@@ -349,6 +349,7 @@ $table-inverse-color:           $body-bg !default;
 $table-bg-accent:               rgba($black,.05) !default;
 $table-bg-hover:                rgba($black,.075) !default;
 $table-bg-active:               $table-bg-hover !default;
+$table-bg-active-hover:         darken($table-bg-hover, 5%) !default;
 
 $table-head-bg:                 $gray-lighter !default;
 $table-head-color:              $gray !default;
