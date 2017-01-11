@@ -804,6 +804,7 @@ $popover-box-shadow:                  0 5px 10px rgba($black,.2) !default;
 $popover-title-bg:                    darken($popover-bg, 3%) !default;
 $popover-title-padding-x:             14px !default;
 $popover-title-padding-y:             8px !default;
+$popover-title-separator:             darken($popover-title-bg, 5%) !default;
 
 $popover-content-padding-x:           14px !default;
 $popover-content-padding-y:           9px !default;
