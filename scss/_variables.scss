@@ -728,7 +728,7 @@ $pagination-disabled-border:           #ddd !default;
 
 $jumbotron-padding:              2rem !default;
 $jumbotron-bg:                   $gray-lighter !default;
-
+$jumbotron-separator:            darken($jumbotron-bg, 10%) !default;
 
 // Form states and alerts
 //
