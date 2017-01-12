@@ -67,14 +67,14 @@ const Alert = (($) => {
     close(element) {
       element = element || this._element
 
-      const rootElement = this._getRootElement(element)
-      const customEvent = this._triggerCloseEvent(rootElement)
+      const $rootElement = this._getRootElement(element)
+      const customEvent = this._triggerCloseEvent($rootElement)
 
       if (customEvent.isDefaultPrevented()) {
         return
       }
 
-      this._removeElement(rootElement)
+      this._removeElement($rootElement)
     }
 
     dispose() {
@@ -87,7 +87,7 @@ const Alert = (($) => {
 
     _getRootElement(element) {
       const targets = Util.getTargets(element)
-      return targets && targets.length ? targets[0] : $(element).closest(`.${ClassName.ALERT}`)[0]
+      return (targets.length ? targets : $(element).closest(`.${ClassName.ALERT}`)).first()
     }
 
     _triggerCloseEvent(element) {
@@ -97,22 +97,22 @@ const Alert = (($) => {
       return closeEvent
     }
 
-    _removeElement(element) {
-      $(element).removeClass(ClassName.SHOW)
+    _removeElement($element) {
+      $element.removeClass(ClassName.SHOW)
 
       if (!Util.supportsTransitionEnd() ||
-          !$(element).hasClass(ClassName.FADE)) {
-        this._destroyElement(element)
+          !$element.hasClass(ClassName.FADE)) {
+        this._destroyElement($element)
         return
       }
 
-      $(element)
-        .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
+      $element
+        .one(Util.TRANSITION_END, (event) => this._destroyElement($element, event))
         .emulateTransitionEnd(TRANSITION_DURATION)
     }
 
-    _destroyElement(element) {
-      $(element)
+    _destroyElement($element) {
+      $element
         .detach()
         .trigger(Event.CLOSED)
         .remove()
