@@ -72,10 +72,14 @@ const Collapse = (($) => {
       this._isTransitioning = false
       this._element         = element
       this._config          = this._getConfig(config)
-      this._triggerArray    = $.makeArray($(
-        `[data-toggle="collapse"][href="#${element.id}"],` +
-        `[data-toggle="collapse"][data-target="#${element.id}"]`
-      ))
+
+      const triggerArray = []
+      $(Selector.DATA_TOGGLE).each(function () {
+        if (Util.getTargets(this).filter(element).length) {
+          triggerArray.push(this)
+        }
+      })
+      this._triggerArray = triggerArray
 
       this._parent = this._config.parent ? this._getParent() : null
 
@@ -215,10 +219,14 @@ const Collapse = (($) => {
 
       this._element.setAttribute('aria-expanded', false)
 
+      // Remove COLLAPSED and set aria-expanded=false to each trigger for which all its targets are not showed
       if (this._triggerArray.length) {
-        $(this._triggerArray)
-          .addClass(ClassName.COLLAPSED)
-          .attr('aria-expanded', false)
+        $(this._triggerArray).each(function () {
+          if (!Util.getTargets(this).hasClass(ClassName.SHOW)) {
+            $(this).addClass(ClassName.COLLAPSED)
+            .attr('aria-expanded', false)
+          }
+        })
       }
 
       const start = () => {
@@ -337,12 +345,13 @@ const Collapse = (($) => {
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault()
-
-    const $target = Util.getTargets(this).first()
-    const data   = $target.data(DATA_KEY)
-    const config = data ? 'toggle' : $(this).data()
-
-    Collapse._jQueryInterface.call($target, config)
+    const $trigger = $(this)
+    Util.getTargets(this).each(function () {
+      const $target = $(this)
+      const data   = $target.data(DATA_KEY)
+      const config = data ? 'toggle' : $trigger.data()
+      Collapse._jQueryInterface.call($target, config)
+    })
   })
 
 
