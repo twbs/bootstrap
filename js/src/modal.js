@@ -443,17 +443,16 @@ const Modal = (($) => {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    const targets = Util.getTargets(this)
-    const target = targets ? targets[0] : null
+    const $target = Util.getTargets(this).first()
 
-    const config = $(target).data(DATA_KEY) ?
-      'toggle' : $.extend({}, $(target).data(), $(this).data())
+    const config = $target.data(DATA_KEY) ?
+      'toggle' : $.extend({}, $target.data(), $(this).data())
 
     if (this.tagName === 'A' || this.tagName === 'AREA') {
       event.preventDefault()
     }
 
-    const $target = $(target).one(Event.SHOW, (showEvent) => {
+    $target.one(Event.SHOW, (showEvent) => {
       if (showEvent.isDefaultPrevented()) {
         // only register focus restorer if modal will actually get shown
         return
@@ -466,7 +465,7 @@ const Modal = (($) => {
       })
     })
 
-    Modal._jQueryInterface.call($(target), config, this)
+    Modal._jQueryInterface.call($target, config, this)
   })
 
 

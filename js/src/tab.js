@@ -129,8 +129,7 @@ const Tab = (($) => {
         $(this._element).trigger(shownEvent)
       }
 
-      const targets = Util.getTargets(this._element)
-      const target = targets ? targets[0] : null
+      const target = Util.getTargets(this._element)[0]
 
       if (target) {
         this._activate(target, target.parentNode, complete)

@@ -65,8 +65,8 @@ const Alert = (($) => {
     close(element) {
       element = element || this._element
 
-      const rootElement = this._getRootElement(element)
-      const customEvent = this._triggerCloseEvent(rootElement)
+      const $rootElement = this._getRootElement(element)
+      const customEvent = this._triggerCloseEvent($rootElement)
 
       if (customEvent.isDefaultPrevented()) {
         return
@@ -85,7 +85,7 @@ const Alert = (($) => {
 
     _getRootElement(element) {
       const targets = Util.getTargets(element)
-      return targets && targets.length ? targets[0] : $(element).closest(`.${ClassName.ALERT}`)[0]
+      return (targets.length ? targets : $(element).closest(`.${ClassName.ALERT}`)).first()
     }
 
     _triggerCloseEvent(element) {
@@ -101,7 +101,6 @@ const Alert = (($) => {
         .trigger(Event.CLOSED)
         .remove()
     }
-
 
     // static
 

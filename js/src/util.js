@@ -151,7 +151,7 @@ const Util = (($) => {
       try {
         return $(selector)
       } catch (err) {
-        return null
+        return $()
       }
     },
 
