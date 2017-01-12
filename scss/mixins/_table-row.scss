@@ -6,8 +6,8 @@
   // inheritance to nested tables.
   #{$parent} .table-#{$state} {
     &,
-    > th,
-    > td {
+    th,
+    td {
       background-color: $background;
     }
   }
@@ -19,8 +19,8 @@
       @include hover {
         background-color: $hover-background;
 
-        > td,
-        > th {
+        td,
+        th {
           background-color: $hover-background;
         }
       }

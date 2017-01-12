@@ -82,8 +82,8 @@
     @include hover {
       background-color: $table-bg-hover;
 
-      > td,
-      > th {
+      td,
+      th {
         background-color: $table-bg-hover;
       }
     }
@@ -147,8 +147,8 @@
       @include hover {
         background-color: $table-bg-inverse-hover;
 
-        > td,
-        > th {
+        td,
+        th {
           background-color: $table-bg-inverse-hover;
         }
       }
