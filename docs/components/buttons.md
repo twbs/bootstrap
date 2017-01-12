@@ -72,7 +72,7 @@ In need of a button, but not the hefty background colors they bring? Replace the
 
 ## Pill buttons
 
-In in the fashion of .badge-pill, you may also want your buttons to look like pills. Add the class `.btn-pill` to the button.
+In in the fashion of `.badge-pill`, you may want your buttons to look like pills. Add the class `.btn-pill` to the button.
 
 {% example html %}
 <button type="button" class="btn btn-primary btn-pill">Primary Pill</button>
