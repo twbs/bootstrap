@@ -72,7 +72,7 @@ const Alert = (($) => {
         return
       }
 
-      $(rootElement).transition(() => $(rootElement).removeClass(ClassName.SHOW), () => this._destroyElement(rootElement))
+      $rootElement.transition(() => $rootElement.removeClass(ClassName.SHOW), () => this._destroyElement($rootElement))
     }
 
     dispose() {
@@ -95,8 +95,8 @@ const Alert = (($) => {
       return closeEvent
     }
 
-    _destroyElement(element) {
-      $(element)
+    _destroyElement($element) {
+      $element
         .detach()
         .trigger(Event.CLOSED)
         .remove()
