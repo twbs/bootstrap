@@ -16,10 +16,6 @@ Bootstrap follows common web standards and—with minimal extra effort—can be 
 
 Some common HTML elements are always in need for basic accessibility enhancements through `role`s and Aria attributes. Below is a list of some of the most frequently used ones.
 
-{% callout info %}
-**Heads up!** As we go through the alphas, we'll be moving more accessibility notes here with links to specific sections from other areas of the docs.
-{% endcallout %}
-
 ### Button groups
 
 In order for assistive technologies–such as screen readers–to convey that a series of buttons is grouped, an appropriate `role` attribute needs to be provided. For button groups, this would be `role="group"`, while toolbars should have a `role="toolbar"`.

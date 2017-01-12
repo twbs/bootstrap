@@ -206,6 +206,7 @@
 .custom-file-input {
   min-width: $custom-file-width;
   max-width: 100%;
+  height: $custom-file-height;
   margin: 0;
   filter: alpha(opacity = 0);
   opacity: 0;
@@ -225,6 +226,7 @@
   padding: $custom-file-padding-x $custom-file-padding-y;
   line-height: $custom-file-line-height;
   color: $custom-file-color;
+  pointer-events: none;
   user-select: none;
   background-color: $custom-file-bg;
   border: $custom-file-border-width solid $custom-file-border-color;

@@ -41,7 +41,7 @@ Put that all together, and you have the following examples.
 </div>
 {% endexample %}
 
-Bootstrap provides a handful of [utilities for setting width]({{ site.baseurl }}/utilities/sizing-and-positioning/#width-and-height). Depending on your needs, these may help with quickly configuring progress.
+Bootstrap provides a handful of [utilities for setting width]({{ site.baseurl }}/utilities/sizing/). Depending on your needs, these may help with quickly configuring progress.
 
 {% example html %}
 <div class="progress">
@@ -122,7 +122,7 @@ Add `.progress-bar-striped` to any `.progress-bar` to apply a stripe via CSS gra
   <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar"style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ></div>
+  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
   <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>

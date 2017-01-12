@@ -4,7 +4,7 @@
 .btn-group,
 .btn-group-vertical {
   position: relative;
-  display: flex;
+  display: inline-flex;
   vertical-align: middle; // match .btn alignment given font-size hack above
 
   > .btn {
@@ -126,22 +126,6 @@
     @include box-shadow(none);
   }
 }
-
-
-// Reposition the caret
-.btn .caret {
-  margin-left: 0;
-}
-// Carets in other button sizes
-.btn-lg .caret {
-  border-width: $caret-width-lg $caret-width-lg 0;
-  border-bottom-width: 0;
-}
-// Upside down carets for .dropup
-.dropup .btn-lg .caret {
-  border-width: 0 $caret-width-lg $caret-width-lg;
-}
-
 
 
 //
