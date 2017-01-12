@@ -151,7 +151,7 @@ fieldset[disabled] a.btn {
 
 
 .btn-pill {
-  @include border-radius($button-pill-border-radius);
+  @include border-radius($btn-pill-border-radius);
 }
 
 
