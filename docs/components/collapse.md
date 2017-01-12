@@ -43,7 +43,7 @@ You can use a link with the `href` attribute, or a button with the `data-target`
 Extend the default collapse behavior to create an accordion.
 
 {% example html %}
-<div id="accordion" role="tablist" aria-multiselectable="true">
+<div id="accordion" role="tablist">
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
