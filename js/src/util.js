@@ -27,8 +27,6 @@ const Util = (($) => {
     transition       : 'transitionend'
   }
 
-  const TRANSITION_END = 'bsTransitionEnd'
-
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
@@ -61,9 +59,9 @@ const Util = (($) => {
         }
       }
     }
-    // If the browser doesn't support transitionEnd then use the custom TRANSITION_END event
+    // If the browser doesn't support transitionEnd then use the custom Util.TRANSITION_END event
     return {
-      end: TRANSITION_END
+      end: Util.TRANSITION_END
     }
   }
 
@@ -92,7 +90,7 @@ const Util = (($) => {
     // if there is a non 0 transition duration and transition are supported
     if (duration) {
       let called = false
-      this.one(TRANSITION_END, () => {
+      this.one(Util.TRANSITION_END, () => {
         if (!called) {
           called = true
           executeCallback(complete)
@@ -123,7 +121,7 @@ const Util = (($) => {
   function setTransitionEndSupport() {
     transition = transitionEndTest()
     $.fn.transition = transitionEmulator
-    $.event.special[TRANSITION_END] = getSpecialTransitionEndEvent()
+    $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent()
   }
 
 
@@ -134,6 +132,8 @@ const Util = (($) => {
    */
 
   const Util = {
+
+    TRANSITION_END: 'bsTransitionEnd',
 
     getUID(prefix) {
       do {
