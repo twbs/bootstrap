@@ -26,7 +26,7 @@ const Dropdown = (($) => {
   const ESCAPE_KEYCODE           = 27 // KeyboardEvent.which value for Escape (Esc) key
   const ARROW_UP_KEYCODE         = 38 // KeyboardEvent.which value for up arrow key
   const ARROW_DOWN_KEYCODE       = 40 // KeyboardEvent.which value for down arrow key
-  const RIGHT_MOUSE_BUTTON_WHICH = 3 // MouseEvent.which value for the right button (assuming a right-handed mouse)
+  const RIGHT_MOUSE_BUTTON       = 2 // MouseEvent.button value for the right button (assuming a right-handed mouse)
 
   const Event = {
     HIDE             : `hide${EVENT_KEY}`,
@@ -160,7 +160,7 @@ const Dropdown = (($) => {
     }
 
     static _clearMenus(event) {
-      if (event && event.which === RIGHT_MOUSE_BUTTON_WHICH) {
+      if (event && event.button === RIGHT_MOUSE_BUTTON) {
         return
       }
 
