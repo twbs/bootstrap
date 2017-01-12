@@ -84,18 +84,8 @@ const Alert = (($) => {
     // private
 
     _getRootElement(element) {
-      const selector = Util.getSelectorFromElement(element)
-      let parent     = false
-
-      if (selector) {
-        parent = $(selector)[0]
-      }
-
-      if (!parent) {
-        parent = $(element).closest(`.${ClassName.ALERT}`)[0]
-      }
-
-      return parent
+      const targets = Util.getTargets(element)
+      return targets && targets.length ? targets[0] : $(element).closest(`.${ClassName.ALERT}`)[0]
     }
 
     _triggerCloseEvent(element) {

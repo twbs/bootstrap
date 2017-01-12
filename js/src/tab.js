@@ -84,10 +84,8 @@ const Tab = (($) => {
         return
       }
 
-      let target
       let previous
       const listElement = $(this._element).closest(Selector.LIST)[0]
-      const selector    = Util.getSelectorFromElement(this._element)
 
       if (listElement) {
         previous = $.makeArray($(listElement).find(Selector.ACTIVE))
@@ -113,10 +111,6 @@ const Tab = (($) => {
         return
       }
 
-      if (selector) {
-        target = $(selector)[0]
-      }
-
       this._activate(
         this._element,
         listElement
@@ -134,6 +128,9 @@ const Tab = (($) => {
         $(previous).trigger(hiddenEvent)
         $(this._element).trigger(shownEvent)
       }
+
+      const targets = Util.getTargets(this._element)
+      const target = targets ? targets[0] : null
 
       if (target) {
         this._activate(target, target.parentNode, complete)

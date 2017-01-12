@@ -298,8 +298,8 @@ const Collapse = (($) => {
     // static
 
     static _getTargetFromElement(element) {
-      const selector = Util.getSelectorFromElement(element)
-      return selector ? $(selector)[0] : null
+      const targets = Util.getTargets(element)
+      return targets ? targets[0] : null
     }
 
     static _jQueryInterface(config) {
