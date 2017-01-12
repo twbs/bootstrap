@@ -86,8 +86,8 @@ const Dropdown = (($) => {
         return false
       }
 
-      const parent   = Dropdown._getParentFromElement(this)
-      const isActive = $(parent).hasClass(ClassName.SHOW)
+      const $parent   = Dropdown._getParentFromElement(this)
+      const isActive = $parent.hasClass(ClassName.SHOW)
 
       Dropdown._clearMenus()
 
@@ -96,7 +96,7 @@ const Dropdown = (($) => {
       }
 
       if ('ontouchstart' in document.documentElement &&
-         !$(parent).closest(Selector.NAVBAR_NAV).length) {
+         !$parent.closest(Selector.NAVBAR_NAV).length) {
 
         // if mobile we use a backdrop because click events don't delegate
         const dropdown     = document.createElement('div')
@@ -110,7 +110,7 @@ const Dropdown = (($) => {
       }
       const showEvent     = $.Event(Event.SHOW, relatedTarget)
 
-      $(parent).trigger(showEvent)
+      $parent.trigger(showEvent)
 
       if (showEvent.isDefaultPrevented()) {
         return false
@@ -119,8 +119,8 @@ const Dropdown = (($) => {
       this.focus()
       this.setAttribute('aria-expanded', true)
 
-      $(parent).toggleClass(ClassName.SHOW)
-      $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
+      $parent.toggleClass(ClassName.SHOW)
+      $parent.trigger($.Event(Event.SHOWN, relatedTarget))
 
       return false
     }
@@ -172,44 +172,38 @@ const Dropdown = (($) => {
       const toggles = $.makeArray($(Selector.DATA_TOGGLE))
 
       for (let i = 0; i < toggles.length; i++) {
-        const parent        = Dropdown._getParentFromElement(toggles[i])
+        const $parent        = Dropdown._getParentFromElement(toggles[i])
         const relatedTarget = {
           relatedTarget : toggles[i]
         }
 
-        if (!$(parent).hasClass(ClassName.SHOW)) {
+        if (!$parent.hasClass(ClassName.SHOW)) {
           continue
         }
 
         if (event && (event.type === 'click' &&
             /input|textarea/i.test(event.target.tagName) || event.type === 'focusin')
-            && $.contains(parent, event.target)) {
+            && $.contains($parent[0], event.target)) {
           continue
         }
 
         const hideEvent = $.Event(Event.HIDE, relatedTarget)
-        $(parent).trigger(hideEvent)
+        $parent.trigger(hideEvent)
         if (hideEvent.isDefaultPrevented()) {
           continue
         }
 
         toggles[i].setAttribute('aria-expanded', 'false')
 
-        $(parent)
+        $parent
           .removeClass(ClassName.SHOW)
           .trigger($.Event(Event.HIDDEN, relatedTarget))
       }
     }
 
     static _getParentFromElement(element) {
-      let parent
-      const selector = Util.getSelectorFromElement(element)
-
-      if (selector) {
-        parent = $(selector)[0]
-      }
-
-      return parent || element.parentNode
+      const targets = Util.getTargets(element)
+      return targets.length ? targets.first() : $(element.parentNode)
     }
 
     static _dataApiKeydownHandler(event) {
@@ -225,14 +219,14 @@ const Dropdown = (($) => {
         return
       }
 
-      const parent   = Dropdown._getParentFromElement(this)
-      const isActive = $(parent).hasClass(ClassName.SHOW)
+      const $parent   = Dropdown._getParentFromElement(this)
+      const isActive = $parent.hasClass(ClassName.SHOW)
 
       if (!isActive && event.which !== ESCAPE_KEYCODE ||
            isActive && event.which === ESCAPE_KEYCODE) {
 
         if (event.which === ESCAPE_KEYCODE) {
-          const toggle = $(parent).find(Selector.DATA_TOGGLE)[0]
+          const toggle = $parent.find(Selector.DATA_TOGGLE)[0]
           $(toggle).trigger('focus')
         }
 
@@ -240,7 +234,7 @@ const Dropdown = (($) => {
         return
       }
 
-      const items = $(parent).find(Selector.VISIBLE_ITEMS).get()
+      const items = $parent.find(Selector.VISIBLE_ITEMS).get()
 
       if (!items.length) {
         return
