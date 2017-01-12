@@ -18,6 +18,8 @@ const Util = (($) => {
 
   const MAX_UID = 1000000
 
+  const MILLIS = 1000
+
   const TransitionEndEvent = {
     WebkitTransition : 'webkitTransitionEnd',
     MozTransition    : 'transitionend',
@@ -48,10 +50,6 @@ const Util = (($) => {
   }
 
   function transitionEndTest() {
-    if (window.QUnit) {
-      return false
-    }
-
     const el = document.createElement('bootstrap')
 
     for (const name in TransitionEndEvent) {
@@ -61,34 +59,69 @@ const Util = (($) => {
         }
       }
     }
-
-    return false
+    // If the browser doesn't support transitionEnd then use the custom Util.TRANSITION_END event
+    return {
+      end: Util.TRANSITION_END
+    }
   }
 
-  function transitionEndEmulator(duration) {
-    let called = false
-
-    $(this).one(Util.TRANSITION_END, () => {
-      called = true
-    })
-
-    setTimeout(() => {
-      if (!called) {
-        Util.triggerTransitionEnd(this)
+  function getCssTransitionDuration(element) {
+    // let duration
+    let durationArray = []
+    element.each(() => {
+      const durationValues = element.css('transition-duration') || element.css('-webkit-transition-duration') || element.css('-moz-transition-duration') || element.css('-ms-transition-duration') || element.css('-o-transition-duration')
+      if (durationValues) {
+        durationArray = durationArray.concat(durationValues.split(','))
       }
-    }, duration)
+    })
+    $.each(durationArray,
+      (index, value) => {
+        durationArray[index] = parseFloat(value)
+      }
+    )
+    return durationArray.sort((a, b) => {
+      return b - a
+    })[0]
+  }
 
+  function transitionEmulator(start, complete) {
+    // determine the longest transition duration (in case there is a transition on multiple attributes) from the css
+    const duration = getCssTransitionDuration(this)
+    // if there is a non 0 transition duration and transition are supported
+    if (duration) {
+      let called = false
+      this.one(Util.TRANSITION_END, () => {
+        if (!called) {
+          called = true
+          executeCallback(complete)
+        }
+      })
+      // set a timeout to call complete in case (instead of using transitionend that can sometimes not be triggered). This way we can guarantee complete is always called
+      setTimeout(() => {
+        if (!called) {
+          called = true
+          executeCallback(complete)
+        }
+      }, duration * MILLIS)
+      // execute the start transition function, after setting the timeout
+      executeCallback(start)
+    } else {
+      executeCallback(start)
+      executeCallback(complete)
+    }
     return this
+  }
+
+  function executeCallback(callback) {
+    if (callback) {
+      callback()
+    }
   }
 
   function setTransitionEndSupport() {
     transition = transitionEndTest()
-
-    $.fn.emulateTransitionEnd = transitionEndEmulator
-
-    if (Util.supportsTransitionEnd()) {
-      $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent()
-    }
+    $.fn.transition = transitionEmulator
+    $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent()
   }
 
 
@@ -123,14 +156,6 @@ const Util = (($) => {
 
     reflow(element) {
       return element.offsetHeight
-    },
-
-    triggerTransitionEnd(element) {
-      $(element).trigger(transition.end)
-    },
-
-    supportsTransitionEnd() {
-      return Boolean(transition)
     },
 
     typeCheckConfig(componentName, config, configTypes) {

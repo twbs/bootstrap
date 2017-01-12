@@ -23,7 +23,6 @@ const Alert = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
 
   const Selector = {
     DISMISS : '[data-dismiss="alert"]'
@@ -37,7 +36,6 @@ const Alert = (($) => {
 
   const ClassName = {
     ALERT : 'alert',
-    FADE  : 'fade',
     SHOW  : 'show'
   }
 
@@ -74,7 +72,7 @@ const Alert = (($) => {
         return
       }
 
-      this._removeElement(rootElement)
+      $(rootElement).transition(() => $(rootElement).removeClass(ClassName.SHOW), () => this._destroyElement(rootElement))
     }
 
     dispose() {
@@ -105,20 +103,6 @@ const Alert = (($) => {
 
       $(element).trigger(closeEvent)
       return closeEvent
-    }
-
-    _removeElement(element) {
-      $(element).removeClass(ClassName.SHOW)
-
-      if (!Util.supportsTransitionEnd() ||
-          !$(element).hasClass(ClassName.FADE)) {
-        this._destroyElement(element)
-        return
-      }
-
-      $(element)
-        .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
-        .emulateTransitionEnd(TRANSITION_DURATION)
     }
 
     _destroyElement(element) {
