@@ -42,19 +42,6 @@ const Popover = (($) => {
   const SELECTOR_TITLE = '.popover-title'
   const SELECTOR_CONTENT = '.popover-content'
 
-  const Event = {
-    HIDE       : `hide${EVENT_KEY}`,
-    HIDDEN     : `hidden${EVENT_KEY}`,
-    SHOW       : `show${EVENT_KEY}`,
-    SHOWN      : `shown${EVENT_KEY}`,
-    INSERTED   : `inserted${EVENT_KEY}`,
-    CLICK      : `click${EVENT_KEY}`,
-    FOCUSIN    : `focusin${EVENT_KEY}`,
-    FOCUSOUT   : `focusout${EVENT_KEY}`,
-    MOUSEENTER : `mouseenter${EVENT_KEY}`,
-    MOUSELEAVE : `mouseleave${EVENT_KEY}`
-  }
-
 
   /**
    * ------------------------------------------------------------------------
@@ -83,8 +70,8 @@ const Popover = (($) => {
       return DATA_KEY
     }
 
-    static get Event() {
-      return Event
+    static getEvent(eventName) {
+      return `${eventName}${EVENT_KEY}`
     }
 
     static get EVENT_KEY() {

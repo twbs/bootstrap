@@ -74,18 +74,16 @@ const Tooltip = (($) => {
   const HOVER_STATE_SHOW = 'show'
   const HOVER_STATE_OUT = 'out'
 
-  const Event = {
-    HIDE       : `hide${EVENT_KEY}`,
-    HIDDEN     : `hidden${EVENT_KEY}`,
-    SHOW       : `show${EVENT_KEY}`,
-    SHOWN      : `shown${EVENT_KEY}`,
-    INSERTED   : `inserted${EVENT_KEY}`,
-    CLICK      : `click${EVENT_KEY}`,
-    FOCUSIN    : `focusin${EVENT_KEY}`,
-    FOCUSOUT   : `focusout${EVENT_KEY}`,
-    MOUSEENTER : `mouseenter${EVENT_KEY}`,
-    MOUSELEAVE : `mouseleave${EVENT_KEY}`
-  }
+  const EVENT_HIDE = 'hide'
+  const EVENT_HIDDEN = 'hidden'
+  const EVENT_SHOW = 'show'
+  const EVENT_SHOWN = 'shown'
+  const EVENT_INSERTED = 'inserted'
+  const EVENT_CLICK = 'click'
+  const EVENT_FOCUSIN = 'focusin'
+  const EVENT_FOCUSOUT = 'focusout'
+  const EVENT_MOUSEENTER = 'mouseenter'
+  const EVENT_MOUSELEAVE = 'mouseleave'
 
   const CLASS_NAME_FADE = 'fade'
   const CLASS_NAME_SHOW = 'show'
@@ -149,8 +147,8 @@ const Tooltip = (($) => {
       return DATA_KEY
     }
 
-    static get Event() {
-      return Event
+    static getEvent(eventName) {
+      return `${eventName}${EVENT_KEY}`
     }
 
     static get EVENT_KEY() {
@@ -238,7 +236,7 @@ const Tooltip = (($) => {
         throw new Error('Please use show on visible elements')
       }
 
-      const showEvent = $.Event(this.constructor.Event.SHOW)
+      const showEvent = $.Event(this.constructor.getEvent(EVENT_SHOW))
       if (this.isWithContent() && this._isEnabled) {
         if (this._isTransitioning) {
           throw new Error('Tooltip is transitioning')
@@ -278,7 +276,7 @@ const Tooltip = (($) => {
           .data(this.constructor.DATA_KEY, this)
           .appendTo(container)
 
-        $(this.element).trigger(this.constructor.Event.INSERTED)
+        $(this.element).trigger(this.constructor.getEvent(EVENT_INSERTED))
 
         this._tether = new Tether({
           attachment,
@@ -301,7 +299,7 @@ const Tooltip = (($) => {
           this._hoverState   = null
           this._isTransitioning = false
 
-          $(this.element).trigger(this.constructor.Event.SHOWN)
+          $(this.element).trigger(this.constructor.getEvent(EVENT_SHOWN))
 
           if (prevHoverState === HOVER_STATE_OUT) {
             this._leave(null, this)
@@ -322,7 +320,7 @@ const Tooltip = (($) => {
 
     hide(callback) {
       const tip       = this.getTipElement()
-      const hideEvent = $.Event(this.constructor.Event.HIDE)
+      const hideEvent = $.Event(this.constructor.getEvent(EVENT_HIDE))
       if (this._isTransitioning) {
         throw new Error('Tooltip is transitioning')
       }
@@ -332,7 +330,7 @@ const Tooltip = (($) => {
         }
 
         this.element.removeAttribute('aria-describedby')
-        $(this.element).trigger(this.constructor.Event.HIDDEN)
+        $(this.element).trigger(this.constructor.getEvent(EVENT_HIDDEN))
         this._isTransitioning = false
         this.cleanupTether()
 
@@ -435,18 +433,18 @@ const Tooltip = (($) => {
       triggers.forEach((trigger) => {
         if (trigger === 'click') {
           $(this.element).on(
-            this.constructor.Event.CLICK,
+            this.constructor.getEvent(EVENT_CLICK),
             this.config.selector,
             (event) => this.toggle(event)
           )
 
         } else if (trigger !== TRIGGER_MANUAL) {
           const eventIn  = trigger === TRIGGER_HOVER ?
-            this.constructor.Event.MOUSEENTER :
-            this.constructor.Event.FOCUSIN
+            this.constructor.getEvent(EVENT_MOUSEENTER) :
+            this.constructor.getEvent(EVENT_FOCUSIN)
           const eventOut = trigger === TRIGGER_HOVER ?
-            this.constructor.Event.MOUSELEAVE :
-            this.constructor.Event.FOCUSOUT
+            this.constructor.getEvent(EVENT_MOUSELEAVE) :
+            this.constructor.getEvent(EVENT_FOCUSOUT)
 
           $(this.element)
             .on(
