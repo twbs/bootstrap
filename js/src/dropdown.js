@@ -28,34 +28,26 @@ const Dropdown = (($) => {
   const ARROW_DOWN_KEYCODE       = 40 // KeyboardEvent.which value for down arrow key
   const RIGHT_MOUSE_BUTTON_WHICH = 3 // MouseEvent.which value for the right button (assuming a right-handed mouse)
 
-  const Event = {
-    HIDE             : `hide${EVENT_KEY}`,
-    HIDDEN           : `hidden${EVENT_KEY}`,
-    SHOW             : `show${EVENT_KEY}`,
-    SHOWN            : `shown${EVENT_KEY}`,
-    CLICK            : `click${EVENT_KEY}`,
-    CLICK_DATA_API   : `click${EVENT_KEY}${DATA_API_KEY}`,
-    FOCUSIN_DATA_API : `focusin${EVENT_KEY}${DATA_API_KEY}`,
-    KEYDOWN_DATA_API : `keydown${EVENT_KEY}${DATA_API_KEY}`
-  }
+  const EVENT_HIDE = `hide${EVENT_KEY}`
+  const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+  const EVENT_SHOW = `show${EVENT_KEY}`
+  const EVENT_SHOWN = `shown${EVENT_KEY}`
+  const EVENT_CLICK = `click${EVENT_KEY}`
+  const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+  const EVENT_FOCUSIN_DATA_API = `focusin${EVENT_KEY}${DATA_API_KEY}`
+  const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY}${DATA_API_KEY}`
 
-  const ClassName = {
-    BACKDROP : 'dropdown-backdrop',
-    DISABLED : 'disabled',
-    SHOW     : 'show'
-  }
+  const CLASS_NAME_BACKDROP = 'dropdown-backdrop'
+  const CLASS_NAME_DISABLED = 'disabled'
+  const CLASS_NAME_SHOW = 'show'
 
-  const Selector = {
-    BACKDROP      : '.dropdown-backdrop',
-    DATA_TOGGLE   : '[data-toggle="dropdown"]',
-    FORM_CHILD    : '.dropdown form',
-    ROLE_MENU     : '[role="menu"]',
-    ROLE_LISTBOX  : '[role="listbox"]',
-    NAVBAR_NAV    : '.navbar-nav',
-    VISIBLE_ITEMS : '[role="menu"] li:not(.disabled) a, '
-                  + '[role="listbox"] li:not(.disabled) a'
-  }
-
+  const SELECTOR_BACKDROP = '.dropdown-backdrop'
+  const SELECTOR_DATA_TOGGLE = '[data-toggle="dropdown"]'
+  const SELECTOR_FORM_CHILD = '.dropdown form'
+  const SELECTOR_ROLE_MENU = '[role="menu"]'
+  const SELECTOR_ROLE_LISTBOX = '[role="listbox"]'
+  const SELECTOR_NAVBAR_NAV = '.navbar-nav'
+  const SELECTOR_VISIBLE_ITEMS = '[role="menu"] li:not(.disabled) a, [role="listbox"] li:not(.disabled) a'
 
   /**
    * ------------------------------------------------------------------------
@@ -82,12 +74,12 @@ const Dropdown = (($) => {
     // public
 
     toggle() {
-      if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
+      if (this.disabled || $(this).hasClass(CLASS_NAME_DISABLED)) {
         return false
       }
 
       const parent   = Dropdown._getParentFromElement(this)
-      const isActive = $(parent).hasClass(ClassName.SHOW)
+      const isActive = $(parent).hasClass(CLASS_NAME_SHOW)
 
       Dropdown._clearMenus()
 
@@ -96,11 +88,11 @@ const Dropdown = (($) => {
       }
 
       if ('ontouchstart' in document.documentElement &&
-         !$(parent).closest(Selector.NAVBAR_NAV).length) {
+         !$(parent).closest(SELECTOR_NAVBAR_NAV).length) {
 
         // if mobile we use a backdrop because click events don't delegate
         const dropdown     = document.createElement('div')
-        dropdown.className = ClassName.BACKDROP
+        dropdown.className = CLASS_NAME_BACKDROP
         $(dropdown).insertBefore(this)
         $(dropdown).on('click', Dropdown._clearMenus)
       }
@@ -108,7 +100,7 @@ const Dropdown = (($) => {
       const relatedTarget = {
         relatedTarget : this
       }
-      const showEvent     = $.Event(Event.SHOW, relatedTarget)
+      const showEvent     = $.Event(EVENT_SHOW, relatedTarget)
 
       $(parent).trigger(showEvent)
 
@@ -119,8 +111,8 @@ const Dropdown = (($) => {
       this.focus()
       this.setAttribute('aria-expanded', true)
 
-      $(parent).toggleClass(ClassName.SHOW)
-      $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
+      $(parent).toggleClass(CLASS_NAME_SHOW)
+      $(parent).trigger($.Event(EVENT_SHOWN, relatedTarget))
 
       return false
     }
@@ -135,7 +127,7 @@ const Dropdown = (($) => {
     // private
 
     _addEventListeners() {
-      $(this._element).on(Event.CLICK, this.toggle)
+      $(this._element).on(EVENT_CLICK, this.toggle)
     }
 
 
@@ -164,12 +156,12 @@ const Dropdown = (($) => {
         return
       }
 
-      const backdrop = $(Selector.BACKDROP)[0]
+      const backdrop = $(SELECTOR_BACKDROP)[0]
       if (backdrop) {
         backdrop.parentNode.removeChild(backdrop)
       }
 
-      const toggles = $.makeArray($(Selector.DATA_TOGGLE))
+      const toggles = $.makeArray($(SELECTOR_DATA_TOGGLE))
 
       for (let i = 0; i < toggles.length; i++) {
         const parent        = Dropdown._getParentFromElement(toggles[i])
@@ -177,7 +169,7 @@ const Dropdown = (($) => {
           relatedTarget : toggles[i]
         }
 
-        if (!$(parent).hasClass(ClassName.SHOW)) {
+        if (!$(parent).hasClass(CLASS_NAME_SHOW)) {
           continue
         }
 
@@ -187,7 +179,7 @@ const Dropdown = (($) => {
           continue
         }
 
-        const hideEvent = $.Event(Event.HIDE, relatedTarget)
+        const hideEvent = $.Event(EVENT_HIDE, relatedTarget)
         $(parent).trigger(hideEvent)
         if (hideEvent.isDefaultPrevented()) {
           continue
@@ -196,8 +188,8 @@ const Dropdown = (($) => {
         toggles[i].setAttribute('aria-expanded', 'false')
 
         $(parent)
-          .removeClass(ClassName.SHOW)
-          .trigger($.Event(Event.HIDDEN, relatedTarget))
+          .removeClass(CLASS_NAME_SHOW)
+          .trigger($.Event(EVENT_HIDDEN, relatedTarget))
       }
     }
 
@@ -221,18 +213,18 @@ const Dropdown = (($) => {
       event.preventDefault()
       event.stopPropagation()
 
-      if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
+      if (this.disabled || $(this).hasClass(CLASS_NAME_DISABLED)) {
         return
       }
 
       const parent   = Dropdown._getParentFromElement(this)
-      const isActive = $(parent).hasClass(ClassName.SHOW)
+      const isActive = $(parent).hasClass(CLASS_NAME_SHOW)
 
       if (!isActive && event.which !== ESCAPE_KEYCODE ||
            isActive && event.which === ESCAPE_KEYCODE) {
 
         if (event.which === ESCAPE_KEYCODE) {
-          const toggle = $(parent).find(Selector.DATA_TOGGLE)[0]
+          const toggle = $(parent).find(SELECTOR_DATA_TOGGLE)[0]
           $(toggle).trigger('focus')
         }
 
@@ -240,7 +232,7 @@ const Dropdown = (($) => {
         return
       }
 
-      const items = $(parent).find(Selector.VISIBLE_ITEMS).get()
+      const items = $(parent).find(SELECTOR_VISIBLE_ITEMS).get()
 
       if (!items.length) {
         return
@@ -273,12 +265,12 @@ const Dropdown = (($) => {
    */
 
   $(document)
-    .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
-    .on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU,    Dropdown._dataApiKeydownHandler)
-    .on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
-    .on(`${Event.CLICK_DATA_API} ${Event.FOCUSIN_DATA_API}`, Dropdown._clearMenus)
-    .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
-    .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
+    .on(EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
+    .on(EVENT_KEYDOWN_DATA_API, SELECTOR_ROLE_MENU,    Dropdown._dataApiKeydownHandler)
+    .on(EVENT_KEYDOWN_DATA_API, SELECTOR_ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
+    .on(`${EVENT_CLICK_DATA_API} ${EVENT_FOCUSIN_DATA_API}`, Dropdown._clearMenus)
+    .on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, Dropdown.prototype.toggle)
+    .on(EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, (e) => {
       e.stopPropagation()
     })
 

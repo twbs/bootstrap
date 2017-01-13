@@ -36,36 +36,23 @@ const ScrollSpy = (($) => {
     target : '(string|element)'
   }
 
-  const Event = {
-    ACTIVATE      : `activate${EVENT_KEY}`,
-    SCROLL        : `scroll${EVENT_KEY}`,
-    LOAD_DATA_API : `load${EVENT_KEY}${DATA_API_KEY}`
-  }
+  const EVENT_ACTIVATE = `activate${EVENT_KEY}`
+  const EVENT_SCROLL = `scroll${EVENT_KEY}`
+  const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 
-  const ClassName = {
-    DROPDOWN_ITEM : 'dropdown-item',
-    DROPDOWN_MENU : 'dropdown-menu',
-    NAV_LINK      : 'nav-link',
-    NAV           : 'nav',
-    ACTIVE        : 'active'
-  }
+  const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item'
+  const CLASS_NAME_ACTIVE = 'active'
 
-  const Selector = {
-    DATA_SPY        : '[data-spy="scroll"]',
-    ACTIVE          : '.active',
-    LIST_ITEM       : '.list-item',
-    LI              : 'li',
-    LI_DROPDOWN     : 'li.dropdown',
-    NAV_LINKS       : '.nav-link',
-    DROPDOWN        : '.dropdown',
-    DROPDOWN_ITEMS  : '.dropdown-item',
-    DROPDOWN_TOGGLE : '.dropdown-toggle'
-  }
+  const SELECTOR_DATA_SPY = '[data-spy="scroll"]'
+  const SELECTOR_ACTIVE = '.active'
+  const SELECTOR_LI = 'li'
+  const SELECTOR_NAV_LINKS = '.nav-link'
+  const SELECTOR_DROPDOWN = '.dropdown'
+  const SELECTOR_DROPDOWN_ITEMS = '.dropdown-item'
+  const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
-  const OffsetMethod = {
-    OFFSET   : 'offset',
-    POSITION : 'position'
-  }
+  const METHOD_OFFSET = 'offset'
+  const METHOD_POSITION = 'position'
 
 
   /**
@@ -80,14 +67,14 @@ const ScrollSpy = (($) => {
       this._element       = element
       this._scrollElement = element.tagName === 'BODY' ? window : element
       this._config        = this._getConfig(config)
-      this._selector      = `${this._config.target} ${Selector.NAV_LINKS},`
-                          + `${this._config.target} ${Selector.DROPDOWN_ITEMS}`
+      this._selector      = `${this._config.target} ${SELECTOR_NAV_LINKS},`
+                          + `${this._config.target} ${SELECTOR_DROPDOWN_ITEMS}`
       this._offsets       = []
       this._targets       = []
       this._activeTarget  = null
       this._scrollHeight  = 0
 
-      $(this._scrollElement).on(Event.SCROLL, (event) => this._process(event))
+      $(this._scrollElement).on(EVENT_SCROLL, (event) => this._process(event))
 
       this.refresh()
       this._process()
@@ -109,12 +96,12 @@ const ScrollSpy = (($) => {
 
     refresh() {
       const autoMethod = this._scrollElement !== this._scrollElement.window ?
-        OffsetMethod.POSITION : OffsetMethod.OFFSET
+        METHOD_POSITION : METHOD_OFFSET
 
       const offsetMethod = this._config.method === 'auto' ?
         autoMethod : this._config.method
 
-      const offsetBase = offsetMethod === OffsetMethod.POSITION ?
+      const offsetBase = offsetMethod === METHOD_POSITION ?
         this._getScrollTop() : 0
 
       this._offsets = []
@@ -252,22 +239,22 @@ const ScrollSpy = (($) => {
 
       const $link = $(queries.join(','))
 
-      if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
-        $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
-        $link.addClass(ClassName.ACTIVE)
+      if ($link.hasClass(CLASS_NAME_DROPDOWN_ITEM)) {
+        $link.closest(SELECTOR_DROPDOWN).find(SELECTOR_DROPDOWN_TOGGLE).addClass(CLASS_NAME_ACTIVE)
+        $link.addClass(CLASS_NAME_ACTIVE)
       } else {
         // todo (fat) this is kinda sus...
         // recursively add actives to tested nav-links
-        $link.parents(Selector.LI).find(`> ${Selector.NAV_LINKS}`).addClass(ClassName.ACTIVE)
+        $link.parents(SELECTOR_LI).find(`> ${SELECTOR_NAV_LINKS}`).addClass(CLASS_NAME_ACTIVE)
       }
 
-      $(this._scrollElement).trigger(Event.ACTIVATE, {
+      $(this._scrollElement).trigger(EVENT_ACTIVATE, {
         relatedTarget: target
       })
     }
 
     _clear() {
-      $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
+      $(this._selector).filter(SELECTOR_ACTIVE).removeClass(CLASS_NAME_ACTIVE)
     }
 
 
@@ -302,8 +289,8 @@ const ScrollSpy = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  $(window).on(Event.LOAD_DATA_API, () => {
-    const scrollSpys = $.makeArray($(Selector.DATA_SPY))
+  $(window).on(EVENT_LOAD_DATA_API, () => {
+    const scrollSpys = $.makeArray($(SELECTOR_DATA_SPY))
 
     for (let i = scrollSpys.length; i--;) {
       const $spy = $(scrollSpys[i])
