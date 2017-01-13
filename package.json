@@ -31,7 +31,8 @@
     "uglify": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
     "uglify-docs": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output docs/assets/js/docs.min.js docs/assets/js/vendor/anchor.min.js docs/assets/js/vendor/clipboard.min.js docs/assets/js/vendor/holder.min.js docs/assets/js/src/application.js",
     "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
-    "test": "npm run eslint && grunt test"
+    "test": "npm run eslint && grunt test",
+    "check-broken-links": "node grunt/check-broken-links.js _gh_pages 3001 -rog"
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
@@ -53,6 +54,7 @@
     "babel-eslint": "^7.1.1",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.0",
     "babel-preset-es2015": "^6.18.0",
+    "broken-link-checker": "^0.7.4",
     "clean-css": "^3.4.23",
     "eslint": "^3.12.2",
     "grunt": "^1.0.1",
@@ -76,6 +78,7 @@
     "node-sass": "^4.1.1",
     "postcss-cli": "^2.6.0",
     "postcss-flexbugs-fixes": "^2.1.0",
+    "serve-static": "^1.11.1",
     "shelljs": "^0.7.5",
     "shx": "^0.2.1",
     "time-grunt": "^1.4.0",
