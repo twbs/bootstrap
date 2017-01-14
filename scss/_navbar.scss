@@ -46,8 +46,8 @@
 .navbar-brand {
   display: inline-block;
   align-self: flex-start;
-  padding-top: .25rem;
-  padding-bottom: .25rem;
+  padding-top: $navbar-brand-padding-y;
+  padding-bottom: $navbar-brand-padding-y;
   margin-right: $navbar-padding-x;
   font-size: $font-size-lg;
   line-height: inherit;
@@ -83,8 +83,8 @@
 
 .navbar-text {
   display: inline-block;
-  padding-top:    .425rem;
-  padding-bottom: .425rem;
+  padding-top: $nav-link-padding-y;
+  padding-bottom: $nav-link-padding-y;
 }
 
 

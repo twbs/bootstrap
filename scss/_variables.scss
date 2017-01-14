@@ -21,8 +21,8 @@
 // Forms
 // Dropdowns
 // Z-index master list
-// Navbar
 // Navs
+// Navbar
 // Pagination
 // Jumbotron
 // Form states and alerts
@@ -573,10 +573,38 @@ $zindex-modal:              1050 !default;
 $zindex-popover:            1060 !default;
 $zindex-tooltip:            1070 !default;
 
+// Navs
+
+$nav-item-margin:               .2rem !default;
+$nav-item-inline-spacer:        1rem !default;
+$nav-link-padding-x:            1rem !default;
+$nav-link-padding-y:            .5rem !default;
+$nav-link-hover-bg:             $gray-lighter !default;
+$nav-disabled-link-color:       $gray-light !default;
+
+$nav-tabs-border-color:                       #ddd !default;
+$nav-tabs-border-width:                       $border-width !default;
+$nav-tabs-border-radius:                      $border-radius !default;
+$nav-tabs-link-hover-border-color:            $gray-lighter !default;
+$nav-tabs-active-link-color:                  $gray !default;
+$nav-tabs-active-link-bg:                     $body-bg !default;
+$nav-tabs-active-link-border-color:           #ddd !default;
+$nav-tabs-justified-link-border-color:        #ddd !default;
+$nav-tabs-justified-active-link-border-color: $body-bg !default;
+
+$nav-pills-border-radius:     $border-radius !default;
+$nav-pills-active-link-color: $component-active-color !default;
+$nav-pills-active-link-bg:    $component-active-bg !default;
+
 // Navbar
 
 $navbar-padding-x:                  $spacer !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
+
+// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
+$nav-link-height:                   $font-size-lg * $line-height-base !default;
+$navbar-brand-height:               ($font-size-base * $line-height-base + $nav-link-padding-y * 2) !default;
+$navbar-brand-padding-y:            ($navbar-brand-height - $nav-link-height) / 2 !default;
 
 $navbar-toggler-padding-x:           .75rem !default;
 $navbar-toggler-padding-y:           .25rem !default;
@@ -596,24 +624,6 @@ $navbar-light-active-color:         rgba($black,.9) !default;
 $navbar-light-disabled-color:       rgba($black,.3) !default;
 $navbar-light-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
 $navbar-light-toggler-border:       rgba($black,.1) !default;
-
-// Navs
-
-$nav-link-padding:              .5em 1em !default;
-$nav-disabled-link-color:       $gray-light !default;
-
-$nav-tabs-border-color:                       #ddd !default;
-$nav-tabs-border-width:                       $border-width !default;
-$nav-tabs-border-radius:                      $border-radius !default;
-$nav-tabs-link-hover-border-color:            $gray-lighter !default;
-$nav-tabs-active-link-color:                  $gray !default;
-$nav-tabs-active-link-bg:                     $body-bg !default;
-$nav-tabs-active-link-border-color:           #ddd !default;
-
-$nav-pills-border-radius:     $border-radius !default;
-$nav-pills-active-link-color: $component-active-color !default;
-$nav-pills-active-link-bg:    $component-active-bg !default;
-
 
 // Pagination
 
