@@ -20,6 +20,12 @@
   display: flex;
   flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
+
+  // Prevent container to center conter on smallest breakpoint (due to no with set for xs)
+  > .container {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 
 
