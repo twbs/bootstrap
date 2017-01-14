@@ -16,21 +16,8 @@
 //    md
 @function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
   $n: index($breakpoint-names, $name);
-  @return if($n, if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null), null);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
-
-// Name of the previous breakpoint, or null for the first breakpoint.
-//
-//    >> breakpoint-previous(sm)
-//    xs
-//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    xs
-//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
-//    xs
-@function breakpoint-previous($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
-  $n: index($breakpoint-names, $name);
-  @return if($n != 1, nth($breakpoint-names, $n - 1), null);
-};
 
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
 //
