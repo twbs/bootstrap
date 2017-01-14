@@ -85,11 +85,13 @@ Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes
 <button type="button" class="btn btn-secondary btn-sm">Small button</button>
 {% endexample %}
 
-Create block level buttons—those that span the full width of a parent—by adding `.btn-block`.
+Create responsive block level buttons that span the full width of a parent.
+The classes are named using the format `.btn-{breakpoint}-block` to apply on viewport width below breakpoints `sm`, `md`, `lg`, and `xl`. `.btn-block` applies to all breakpoints, from `xs` to `xl`. The spacing between the block level buttons can be defined with [the responsive spacing utility classes]({{ site.baseurl }}/utilities/spacing/#content).
 
 {% example html %}
-<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-primary btn-lg-block">Block level below lg</button>
+<button type="button" class="btn btn-secondary btn-xl-block mt-2 mt-xl-0">Block level below xl</button>
+<button type="button" class="btn btn-primary btn-block mt-2">Block level at all breakpoints</button>
 {% endexample %}
 
 ## Active state
