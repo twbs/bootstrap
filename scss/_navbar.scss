@@ -20,6 +20,10 @@
   display: flex;
   flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
+
+  > .container {
+    position: static;
+  }
 }
 
 
