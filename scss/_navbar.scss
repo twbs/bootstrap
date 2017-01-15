@@ -21,10 +21,12 @@
   flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
 
-  // Prevent container to center content on smallest breakpoint (due to no with set for xs)
-  > .container {
-    margin-right: 0;
-    margin-left: 0;
+  @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
+    // Prevent container to collease content on smallest breakpoint on Chrome
+    > .container {
+      margin-right: 0;
+      margin-left: 0;
+    }
   }
 }
 
