@@ -211,7 +211,7 @@ module.exports = function (grunt) {
     },
 
     exec: {
-      'cssnano': {
+      cssnano: {
         command: 'npm run cssnano'
       },
       'cssnano-docs': {
