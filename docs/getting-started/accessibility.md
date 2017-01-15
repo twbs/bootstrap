@@ -48,7 +48,7 @@ Note that this bug will also affect any other in-page links your site may be usi
 
 When nesting headings (`<h1>` - `<h6>`), your primary document header should be an `<h1>`. Subsequent headings should make logical use of `<h2>` - `<h6>` such that screen readers can construct a table of contents for your pages.
 
-Learn more at [HTML CodeSniffer](https://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/) and [Penn State's Accessability](http://accessibility.psu.edu/headings/).
+Learn more at [HTML CodeSniffer](https://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/) and [Penn State's Accessibility](http://accessibility.psu.edu/headings/).
 
 ## Additional resources
 
