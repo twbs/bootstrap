@@ -20,10 +20,6 @@
   display: flex;
   flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
-
-  > .container {
-    position: static;
-  }
 }
 
 
@@ -112,10 +108,18 @@
 .navbar-toggler-left {
   position: absolute;
   left: $navbar-padding-x;
+
+  .container & {
+    left: 0;
+  }
 }
 .navbar-toggler-right {
   position: absolute;
   right: $navbar-padding-x;
+
+  .container & {
+    right: 0;
+  }
 }
 
 // Generate series of `.navbar-toggleable-*` responsive classes for configuring
