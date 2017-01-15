@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "change-version": "node grunt/change-version.js",
-    "cssnano": "cssnano dist/css/bootstrap.css dist/css/bootstrap.min.css -s --no-mergeRules & cssnano dist/css/bootstrap-grid.css dist/css/bootstrap-grid.min.css -s --no-mergeRules & cssnano dist/css/bootstrap-reboot.css dist/css/bootstrap-reboot.min.css -s --no-mergeRules",
+    "cssnano": "cssnano dist/css/bootstrap.css dist/css/bootstrap.min.css -s --no-mergeRules && cssnano dist/css/bootstrap-grid.css dist/css/bootstrap-grid.min.css -s --no-mergeRules && cssnano dist/css/bootstrap-reboot.css dist/css/bootstrap-reboot.min.css -s --no-mergeRules",
     "cssnano-docs": "cssnano docs/assets/css/docs.min.css docs/assets/css/docs.min.css -s --no-mergeRules",
     "eslint": "eslint --ignore-path .eslintignore js && eslint --config js/tests/.eslintrc.json --env node grunt Gruntfile.js && eslint --config js/tests/.eslintrc.json docs/assets/js/src docs/assets/js/ie-emulation-modes-warning.js docs/assets/js/ie10-viewport-bug-workaround.js",
     "htmlhint": "htmlhint --config docs/.htmlhintrc _gh_pages/",
