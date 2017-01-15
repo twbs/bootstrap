@@ -375,6 +375,12 @@ input[type="search"] {
   -webkit-appearance: none;
 }
 
+// Right align number inputs to be more readable
+// https://github.com/twbs/bootstrap/issues/17925
+input[type="number"] {
+  text-align: right;
+}
+
 // todo: needed?
 output {
   display: inline-block;
