@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Reboot
-description: Documentation and examples for Reboot, Bootstrap's collection of element-specific CSS that builds on Normalize.css.
+description: Documentation and examples for Reboot, Bootstrap's collection of element-specific CSS that heavily builds on Normalize.css.
 group: content
 redirect_from: "/content/"
 ---
