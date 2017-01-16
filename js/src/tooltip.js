@@ -280,9 +280,11 @@ const Tooltip = (($) => {
 
         const container = this.config.container === false ? document.body : $(this.config.container)
 
-        $(tip)
-          .data(this.constructor.DATA_KEY, this)
-          .appendTo(container)
+        $(tip).data(this.constructor.DATA_KEY, this)
+
+        if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
+          $(tip).appendTo(container)
+        }
 
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
