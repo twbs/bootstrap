@@ -256,6 +256,7 @@ img {
   vertical-align: middle;
   // Note: `<img>`s are deliberately not made responsive by default.
   // For the rationale behind this, see the comments on the `.img-fluid` class.
+  border-style: none; // Remove the border on images inside links in IE 10-.
 }
 
 
