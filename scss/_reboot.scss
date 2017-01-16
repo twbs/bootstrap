@@ -418,7 +418,16 @@ output {
 //  color: $input-color;
 }
 
+summary {
+  display: list-item; // Add the correct display in all browsers
+}
+
+template {
+  display: none; // Add the correct display in IE
+}
+
 // Always hide an element with the `hidden` HTML attribute (from PureCSS).
+// Needed for proper display in IE 10-.
 [hidden] {
   display: none !important;
 }
