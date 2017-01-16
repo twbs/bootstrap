@@ -200,6 +200,8 @@ pre {
   margin-bottom: 1rem;
   // Normalize v4 removed this property, causing `<pre>` content to break out of wrapping code snippets
   overflow: auto;
+  font-family: monospace, monospace; // Correct the inheritance and scaling of font size in all browsers.
+  font-size: 1em; // Correct the odd `em` font sizing in all browsers.
 }
 
 
