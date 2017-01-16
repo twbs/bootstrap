@@ -377,6 +377,15 @@ html [type="button"], // 1
   -webkit-appearance: button; // 2
 }
 
+// Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
 input[type="radio"],
 input[type="checkbox"] {
   // Apply a disabled cursor for radios and checkboxes.
