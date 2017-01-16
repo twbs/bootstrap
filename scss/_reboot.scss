@@ -349,10 +349,22 @@ button:focus {
 input,
 button,
 select,
+optgroup,
 textarea {
-  // Normalize includes `font: inherit;`, so `font-family`. `font-size`, etc are
-  // properly inherited. However, `line-height` isn't inherited there.
+  margin: 0; // Remove the margin in Firefox and Safari
+  font-family: inherit;
+  font-size: inherit;
   line-height: inherit;
+}
+
+button,
+input {
+  overflow: visible; // Show the overflow in Edge
+}
+
+button,
+select {
+  text-transform: none; // Remove the inheritance of text transform in Firefox
 }
 
 input[type="radio"],

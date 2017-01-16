@@ -4,42 +4,6 @@
 // ==========================================================================
 
 //
-// 1. Change the font styles in all browsers (opinionated).
-// 2. Remove the margin in Firefox and Safari.
-//
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: sans-serif; // 1
-  font-size: 100%; // 1
-  line-height: 1.15; // 1
-  margin: 0; // 2
-}
-
-//
-// Show the overflow in IE.
-// 1. Show the overflow in Edge.
-//
-
-button,
-input { // 1
-  overflow: visible;
-}
-
-//
-// Remove the inheritance of text transform in Edge, Firefox, and IE.
-// 1. Remove the inheritance of text transform in Firefox.
-//
-
-button,
-select { // 1
-  text-transform: none;
-}
-
-//
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
 //    controls in Android 4.
 // 2. Correct the inability to style clickable types in iOS and Safari.
