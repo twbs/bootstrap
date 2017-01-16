@@ -5,27 +5,18 @@
 // Normalization and global resets to common HTML elements.
 
 
-// Reset the box-sizing
+// `<html>`
 //
-// Change from `box-sizing: content-box` to `border-box` so that when you add
-// `padding` or `border`s to an element, the overall declared `width` does not
-// change. For example, `width: 100px;` will always be `100px` despite the
-// `border: 10px solid red;` and `padding: 20px;`.
-//
-// Heads up! This reset may cause conflicts with some third-party widgets. For
-// recommendations on resolving such conflicts, see
-// https://getbootstrap.com/getting-started/#third-box-sizing.
-//
-// Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+// 1. Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
 
 html {
-  box-sizing: border-box;
+  box-sizing: border-box; // 1
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: inherit; // 1
 }
 
 
