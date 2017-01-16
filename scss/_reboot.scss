@@ -27,21 +27,7 @@ html {
 }
 
 
-// Make viewport responsive
-//
-// @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in
-// some cases. See https://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/.
-// Eventually @viewport will replace <meta name="viewport">.
-//
-// However, `device-width` is broken on IE 10 on Windows (Phone) 8,
-// (see https://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
-// and the fix for that involves a snippet of JavaScript to sniff the user agent
-// and apply some conditional CSS.
-//
-// See https://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
-//
-// Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
-// `.class-name { @import "bootstrap"; }`).
+// IE10+ doesn't honor `<meta name="viewport">` in some cases.
 @at-root {
   @-ms-viewport { width: device-width; }
 }
