@@ -178,6 +178,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 #### `.collapse(options)`
 
 Activates your content as a collapsible element. Accepts an optional options `object`.
@@ -190,15 +193,15 @@ $('#myCollapsible').collapse({
 
 #### `.collapse('toggle')`
 
-Toggles a collapsible element to shown or hidden.
+Toggles a collapsible element to shown or hidden. **Returns to the caller before the collapsible element has actually been shown or hidden (i.e. before the `shown.bs.collapse` or `hidden.bs.collapse` event occurs).
 
 #### `.collapse('show')`
 
-Shows a collapsible element.
+Shows a collapsible element. **Returns to the caller before the collapsible element has actually been shown** (i.e. before the `shown.bs.collapse` event occurs).
 
 #### `.collapse('hide')`
 
-Hides a collapsible element.
+Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (i.e. before the `hidden.bs.collapse` event occurs).
 
 ### Events
 

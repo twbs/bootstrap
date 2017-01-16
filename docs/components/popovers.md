@@ -277,6 +277,9 @@ Options for individual popovers can alternatively be specified through the use o
 
 ### Methods
 
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 #### `$().popover(options)`
 
 Initializes popovers for an element collection.
