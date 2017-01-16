@@ -8,9 +8,16 @@
 // `<html>`
 //
 // 1. Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+// 2. Change the default font family in all browsers.
+// 3. Correct the line height in all browsers.
+// 4. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
 
 html {
   box-sizing: border-box; // 1
+  font-family: sans-serif; // 2
+  line-height: 1.15; // 3
+  -ms-text-size-adjust: 100%; // 4
+  -webkit-text-size-adjust: 100%; // 4
 }
 
 *,
