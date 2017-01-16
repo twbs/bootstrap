@@ -110,6 +110,14 @@ const Modal = (($) => {
     }
 
     show(relatedTarget) {
+      if (this._isTransitioning) {
+        return
+      }
+
+      if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
+        this._isTransitioning = true
+      }
+
       const showEvent = $.Event(Event.SHOW, {
         relatedTarget
       })
@@ -152,6 +160,16 @@ const Modal = (($) => {
         event.preventDefault()
       }
 
+      if (this._isTransitioning) {
+        return
+      }
+
+      const transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)
+
+      if (transition) {
+        this._isTransitioning = true
+      }
+
       const hideEvent = $.Event(Event.HIDE)
 
       $(this._element).trigger(hideEvent)
@@ -172,8 +190,7 @@ const Modal = (($) => {
       $(this._element).off(Event.CLICK_DISMISS)
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
-      if (Util.supportsTransitionEnd() &&
-         $(this._element).hasClass(ClassName.FADE)) {
+      if (transition) {
 
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
@@ -243,6 +260,7 @@ const Modal = (($) => {
         if (this._config.focus) {
           this._element.focus()
         }
+        this._isTransitioning = false
         $(this._element).trigger(shownEvent)
       }
 
@@ -291,6 +309,7 @@ const Modal = (($) => {
     _hideModal() {
       this._element.style.display = 'none'
       this._element.setAttribute('aria-hidden', true)
+      this._isTransitioning = false
       this._showBackdrop(() => {
         $(document.body).removeClass(ClassName.OPEN)
         this._resetAdjustments()
