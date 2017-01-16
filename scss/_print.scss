@@ -59,7 +59,7 @@
     }
     pre,
     blockquote {
-      border: $border-width solid #999;   // Bootstrap custom code; using `$border-width` instead of 1px
+      border: $border-width solid $gray;   // Bootstrap custom code; using `$border-width` instead of 1px
       page-break-inside: avoid;
     }
 
@@ -110,7 +110,7 @@
     .table-bordered {
       th,
       td {
-        border: 1px solid #ddd !important;
+        border: 1px solid $gray-light !important;
       }
     }
 

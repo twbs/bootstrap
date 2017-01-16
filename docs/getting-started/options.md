@@ -19,8 +19,8 @@ For example, to change out the `background-color` and `color` for the `<body>`, 
 // Copy variables from `_variables.scss` to this file to override default values
 // without modifying source files.
 
-$body-bg:    $gray-dark;
-$body-color: $gray-light;
+$body-bg:    $gray-darkest;
+$body-color: $gray-dark;
 {% endhighlight %}
 
 Do the same for any variable you need to override, including the global options listed below.
