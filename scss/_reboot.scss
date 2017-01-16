@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement, DuplicateProperty
+// scss-lint:disable QualifyingElement, DuplicateProperty, VendorPrefix
 
 // Reboot
 //
@@ -106,10 +106,10 @@ p {
 
 abbr[title],
 abbr[data-original-title] { // 4
-  border-bottom: none; // 1
   text-decoration: underline; // 2
   text-decoration: underline dotted; // 2
   cursor: help; // 3
+  border-bottom: 0; // 1
 }
 
 address {
@@ -165,19 +165,14 @@ small {
 
 sub,
 sup {
+  position: relative;
   font-size: 75%;
   line-height: 0;
-  position: relative;
   vertical-align: baseline;
 }
 
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
+sub { bottom: -.25em; }
+sup { top: -.5em; }
 
 
 //
@@ -382,8 +377,8 @@ button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
-  border-style: none;
   padding: 0;
+  border-style: none;
 }
 
 input[type="radio"],
@@ -441,8 +436,8 @@ legend {
   margin-bottom: .5rem;
   font-size: 1.5rem;
   line-height: inherit;
-  white-space: normal; // 1
   color: inherit; // 2
+  white-space: normal; // 1
 }
 
 progress {
@@ -479,8 +474,8 @@ progress {
 //
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; // 1
   font: inherit; // 2
+  -webkit-appearance: button; // 1
 }
 
 
