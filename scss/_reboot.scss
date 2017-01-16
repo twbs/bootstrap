@@ -133,6 +133,18 @@ blockquote {
   margin: 0 0 1rem;
 }
 
+dfn {
+  font-style: italic; // Add the correct font style in Android 4.3-
+}
+
+b,
+strong {
+  font-weight: bolder; // Add the correct font weight in Chrome, Edge, and Safari
+}
+
+small {
+  font-size: 80%; // Add the correct font size in all browsers
+}
 
 //
 // Prevent `sub` and `sup` elements from affecting the line height in
