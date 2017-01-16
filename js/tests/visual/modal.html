@@ -187,26 +187,6 @@
         }
       }
 
-      // Should throw an error because modal is in transition
-      function testModalTransitionError() {
-        var err = false
-        // Close #myModal
-        $('#myModal').on('shown.bs.modal', function () {
-          $('#myModal').modal('hide').off('shown.bs.modal')
-          if (!err) {
-            alert('No error thrown for : testModalTransitionError')
-          }
-        })
-
-        try {
-          $('#myModal').modal('show').modal('hide')
-        }
-        catch (e) {
-          err = true
-          console.error(e.message)
-        }
-      }
-
       $(function () {
         $('[data-toggle="popover"]').popover()
         $('[data-toggle="tooltip"]').tooltip()
@@ -219,7 +199,6 @@
           $('#firefoxModal').on('focus', reportFirefoxTestResult.bind(false))
           $('#ff-bug-input').on('focus', reportFirefoxTestResult.bind(true))
         })
-        testModalTransitionError()
       })
     </script>
   </body>

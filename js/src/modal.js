@@ -87,7 +87,6 @@ const Modal = (($) => {
       this._isShown             = false
       this._isBodyOverflowing   = false
       this._ignoreBackdropClick = false
-      this._isTransitioning     = false
       this._originalBodyPadding = 0
       this._scrollbarWidth      = 0
     }
@@ -111,14 +110,6 @@ const Modal = (($) => {
     }
 
     show(relatedTarget) {
-      if (this._isTransitioning) {
-        throw new Error('Modal is transitioning')
-      }
-
-      if (Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)) {
-        this._isTransitioning = true
-      }
       const showEvent = $.Event(Event.SHOW, {
         relatedTarget
       })
@@ -161,17 +152,8 @@ const Modal = (($) => {
         event.preventDefault()
       }
 
-      if (this._isTransitioning) {
-        throw new Error('Modal is transitioning')
-      }
-
-      const transition = Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)
-      if (transition) {
-        this._isTransitioning = true
-      }
-
       const hideEvent = $.Event(Event.HIDE)
+
       $(this._element).trigger(hideEvent)
 
       if (!this._isShown || hideEvent.isDefaultPrevented()) {
@@ -190,7 +172,9 @@ const Modal = (($) => {
       $(this._element).off(Event.CLICK_DISMISS)
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
-      if (transition) {
+      if (Util.supportsTransitionEnd() &&
+         $(this._element).hasClass(ClassName.FADE)) {
+
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
           .emulateTransitionEnd(TRANSITION_DURATION)
@@ -259,7 +243,6 @@ const Modal = (($) => {
         if (this._config.focus) {
           this._element.focus()
         }
-        this._isTransitioning = false
         $(this._element).trigger(shownEvent)
       }
 
@@ -307,8 +290,7 @@ const Modal = (($) => {
 
     _hideModal() {
       this._element.style.display = 'none'
-      this._element.setAttribute('aria-hidden', 'true')
-      this._isTransitioning = false
+      this._element.setAttribute('aria-hidden', true)
       this._showBackdrop(() => {
         $(document.body).removeClass(ClassName.OPEN)
         this._resetAdjustments()
