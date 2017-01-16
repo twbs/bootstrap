@@ -70,6 +70,7 @@ html {
 }
 
 body {
+  margin: 0; // Remove the margin in all browsers.
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-base;
