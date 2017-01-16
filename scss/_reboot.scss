@@ -431,19 +431,26 @@ fieldset {
   border: 0;
 }
 
+// 1. Correct the text wrapping in Edge and IE.
+// 2. Correct the color inheritance from `fieldset` elements in IE.
 legend {
-  // Reset the entire legend element to match the `fieldset`
   display: block;
   width: 100%;
+  max-width: 100%; // 1
   padding: 0;
   margin-bottom: .5rem;
   font-size: 1.5rem;
   line-height: inherit;
+  white-space: normal; // 1
+  color: inherit; // 2
 }
 
-// Correct the cursor style of increment and decrement buttons in Chrome.
-//
+progress {
+  vertical-align: baseline; // Add the correct vertical alignment in Chrome, Firefox, and Opera.
+}
 
+
+// Correct the cursor style of increment and decrement buttons in Chrome.
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
