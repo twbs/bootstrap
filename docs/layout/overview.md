@@ -169,7 +169,6 @@ We don't encourage customization of these values; should you change one, you lik
 
 ```scss
 $zindex-dropdown-backdrop:  990 !default;
-$zindex-navbar:            1000 !default;
 $zindex-dropdown:          1000 !default;
 $zindex-fixed:             1030 !default;
 $zindex-sticky:            1030 !default;
