@@ -39,7 +39,8 @@
     color: $bd-yellow;
     border-color: $bd-yellow;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $bd-graphite;
       background-color: $bd-yellow;
       border-color: $bd-yellow;
