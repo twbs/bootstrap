@@ -247,7 +247,7 @@ figure {
 
 
 //
-// Images
+// Images and content
 //
 
 img {
@@ -257,6 +257,10 @@ img {
   // Note: `<img>`s are deliberately not made responsive by default.
   // For the rationale behind this, see the comments on the `.img-fluid` class.
   border-style: none; // Remove the border on images inside links in IE 10-.
+}
+
+svg:not(:root) {
+  overflow: hidden; // Hide the overflow in IE
 }
 
 
