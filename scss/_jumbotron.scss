@@ -7,10 +7,10 @@
   @include media-breakpoint-up(sm) {
     padding: ($jumbotron-padding * 2) $jumbotron-padding;
   }
-}
 
-.jumbotron-hr {
-  border-top-color: darken($jumbotron-bg, 10%);
+  hr {
+    border-top-color: darken($jumbotron-bg, 10%);
+  }
 }
 
 .jumbotron-fluid {
