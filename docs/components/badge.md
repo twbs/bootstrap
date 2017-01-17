@@ -53,3 +53,16 @@ Use the `.badge-pill` modifier class to make badges more rounded (with a larger 
 <span class="badge badge-pill badge-warning">Warning</span>
 <span class="badge badge-pill badge-danger">Danger</span>
 {% endexample %}
+
+## Links
+
+Using the `.badge` classes with the `<a>` element quickly provide _actionable_ badges with hover and focus states.
+
+{% example html %}
+<a href="#" class="badge badge-default">Default</a>
+<a href="#" class="badge badge-primary">Primary</a>
+<a href="#" class="badge badge-success">Success</a>
+<a href="#" class="badge badge-info">Info</a>
+<a href="#" class="badge badge-warning">Warning</a>
+<a href="#" class="badge badge-danger">Danger</a>
+{% endexample %}
