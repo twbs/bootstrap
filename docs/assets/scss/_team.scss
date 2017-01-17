@@ -6,8 +6,12 @@
     color: #555;
   }
 
-  .team-member:hover {
+  .team-member:hover,
+  .team-member:focus {
     color: #333;
+  }
+
+  .team-member:hover {
     text-decoration: none;
   }
 
