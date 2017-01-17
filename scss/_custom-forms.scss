@@ -208,7 +208,6 @@
   max-width: 100%;
   height: $custom-file-height;
   margin: 0;
-  filter: alpha(opacity = 0);
   opacity: 0;
 
   &:focus ~ .custom-file-control {
