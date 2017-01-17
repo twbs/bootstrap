@@ -116,7 +116,7 @@ const Util = (($) => {
         selector = element.getAttribute('href') || ''
       }
       try {
-        return $(selector)
+        return $(document).find(selector)
       } catch (err) {
         return $()
       }
