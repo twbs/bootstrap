@@ -170,11 +170,11 @@ The navbar has been entirely rewritten in flexbox with improved support for alig
 
 - An explicit class, `.breadcrumb-item`, is now required on the descendants of `.breadcrumb`s
 
-### Labels, badges, and tags
+### Labels and badges
 
-- Renamed `.label` to `.tag` to disambiguate from the `<label>` element.
-- Dropped the `.badge` component as it was nearly identical to labels/tags. Use the `.tag-pill` modifier together with the label component instead for that rounded look.
-- Tags are no longer floated automatically in list groups and other components. Utility classes are now required for that.
+- Renamed `.label` to `.badge` to disambiguate from the `<label>` element.
+- Dropped the `.badge` component as it was nearly identical to labels. Use the `.badge-pill` modifier together with the label component instead for that rounded look.
+- Badges are no longer floated automatically in list groups and other components. Utility classes are now required for that.
 
 ### Panels, thumbnails, and wells
 
