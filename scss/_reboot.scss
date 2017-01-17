@@ -456,8 +456,8 @@ progress {
   // `.form-control` class can properly style them. Note that this cannot simply
   // be added to `.form-control` as it's not specific enough. For details, see
   // https://github.com/twbs/bootstrap/issues/11586.
-  -webkit-appearance: none;
   outline-offset: -2px; // 2. Correct the outline style in Safari.
+  -webkit-appearance: none;
 }
 
 //
