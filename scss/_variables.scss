@@ -183,9 +183,6 @@ $sizes: (
 
 $body-bg:       $white !default;
 $body-color:    $gray-dark !default;
-$inverse-bg:    $gray-dark !default;
-$inverse-color: $gray-lighter !default;
-
 
 // Links
 //
@@ -245,7 +242,6 @@ $grid-gutter-widths: (
 // Font, line-height, and color for body text, headings, and more.
 
 $font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
-$font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:       $font-family-sans-serif !default;
 
@@ -290,8 +286,6 @@ $lead-font-weight: 300 !default;
 $small-font-size: 80% !default;
 
 $text-muted: $gray-light !default;
-
-$abbr-border-color: $gray-light !default;
 
 $blockquote-small-color:  $gray-light !default;
 $blockquote-font-size:    ($font-size-base * 1.25) !default;
@@ -400,7 +394,6 @@ $btn-padding-x-lg:               1.5rem !default;
 $btn-padding-y-lg:               .75rem !default;
 
 $btn-block-spacing-y:            .5rem !default;
-$btn-toolbar-margin:             .5rem !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:              $border-radius !default;
@@ -469,7 +462,6 @@ $custom-control-spacer-x: 1rem !default;
 $custom-control-spacer-y: .25rem !default;
 
 $custom-control-indicator-size:       1rem !default;
-$custom-control-indicator-margin-y:   (($line-height-base * 1rem) - $custom-control-indicator-size) / -2 !default;
 $custom-control-indicator-bg:         #ddd !default;
 $custom-control-indicator-bg-size:    50% 50% !default;
 $custom-control-indicator-box-shadow: inset 0 .25rem .25rem rgba($black,.1) !default;
@@ -517,7 +509,6 @@ $custom-select-border-radius: $border-radius !default;
 $custom-select-focus-border-color: lighten($brand-primary, 25%) !default;
 $custom-select-focus-box-shadow:   inset 0 1px 2px rgba($black, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
 
-$custom-select-sm-padding-y:  .2rem !default;
 $custom-select-sm-font-size:  75% !default;
 
 $custom-file-height:           2.5rem !default;
@@ -589,7 +580,6 @@ $dropdown-header-color:          $gray-light !default;
 // of components dependent on the z-axis and are designed to all work together.
 
 $zindex-dropdown-backdrop:  990 !default;
-$zindex-navbar:             1000 !default;
 $zindex-dropdown:           1000 !default;
 $zindex-fixed:              1030 !default;
 $zindex-sticky:             1030 !default;
@@ -598,14 +588,10 @@ $zindex-modal:              1050 !default;
 $zindex-popover:            1060 !default;
 $zindex-tooltip:            1070 !default;
 
-
 // Navbar
 
-$navbar-border-radius:              $border-radius !default;
 $navbar-padding-x:                  $spacer !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
-
-$navbar-brand-padding-y:            .25rem !default;
 
 $navbar-toggler-padding-x:           .75rem !default;
 $navbar-toggler-padding-y:           .25rem !default;
@@ -628,10 +614,7 @@ $navbar-light-toggler-border:       rgba($black,.1) !default;
 
 // Navs
 
-$nav-item-margin:               .2rem !default;
-$nav-item-inline-spacer:        1rem !default;
 $nav-link-padding:              .5em 1em !default;
-$nav-link-hover-bg:             $gray-lighter !default;
 $nav-disabled-link-color:       $gray-light !default;
 
 $nav-tabs-border-color:                       #ddd !default;
@@ -641,8 +624,6 @@ $nav-tabs-link-hover-border-color:            $gray-lighter !default;
 $nav-tabs-active-link-hover-color:            $gray !default;
 $nav-tabs-active-link-hover-bg:               $body-bg !default;
 $nav-tabs-active-link-hover-border-color:     #ddd !default;
-$nav-tabs-justified-link-border-color:        #ddd !default;
-$nav-tabs-justified-active-link-border-color: $body-bg !default;
 
 $nav-pills-border-radius:     $border-radius !default;
 $nav-pills-active-link-color: $component-active-color !default;
@@ -871,14 +852,11 @@ $list-group-hover-bg:            $gray-lightest !default;
 $list-group-active-color:        $component-active-color !default;
 $list-group-active-bg:           $component-active-bg !default;
 $list-group-active-border:       $list-group-active-bg !default;
-$list-group-active-text-color:   lighten($list-group-active-bg, 50%) !default;
 
 $list-group-disabled-color:      $gray-light !default;
 $list-group-disabled-bg:         $list-group-bg !default;
-$list-group-disabled-text-color: $list-group-disabled-color !default;
 
 $list-group-link-color:          $gray !default;
-$list-group-link-heading-color:  $gray-dark !default;
 $list-group-link-hover-color:    $list-group-link-color !default;
 
 $list-group-link-active-color:   $list-group-color !default;
@@ -943,7 +921,6 @@ $close-font-weight:           $font-weight-bold !default;
 $close-color:                 $black !default;
 $close-text-shadow:           0 1px 0 $white !default;
 
-
 // Code
 
 $code-font-size:              90% !default;
@@ -955,7 +932,5 @@ $code-bg:                     $gray-lightest !default;
 $kbd-color:                   $white !default;
 $kbd-bg:                      $gray-dark !default;
 
-$pre-bg:                      $gray-lightest !default;
 $pre-color:                   $gray-dark !default;
-$pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;

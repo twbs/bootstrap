@@ -137,7 +137,7 @@ const Carousel = (($) => {
       if (this._isSliding) {
         throw new Error('Carousel is sliding')
       }
-      this._slide(Direction.PREVIOUS)
+      this._slide(Direction.PREV)
     }
 
     pause(event) {
@@ -195,7 +195,7 @@ const Carousel = (($) => {
 
       const direction = index > activeIndex ?
         Direction.NEXT :
-        Direction.PREVIOUS
+        Direction.PREV
 
       this._slide(direction, this._items[index])
     }
@@ -263,7 +263,7 @@ const Carousel = (($) => {
 
     _getItemByDirection(direction, activeElement) {
       const isNextDirection = direction === Direction.NEXT
-      const isPrevDirection = direction === Direction.PREVIOUS
+      const isPrevDirection = direction === Direction.PREV
       const activeIndex     = this._getItemIndex(activeElement)
       const lastItemIndex   = this._items.length - 1
       const isGoingToWrap   = isPrevDirection && activeIndex === 0 ||
@@ -273,7 +273,7 @@ const Carousel = (($) => {
         return activeElement
       }
 
-      const delta     = direction === Direction.PREVIOUS ? -1 : 1
+      const delta     = direction === Direction.PREV ? -1 : 1
       const itemIndex = (activeIndex + delta) % this._items.length
 
       return itemIndex === -1 ?
