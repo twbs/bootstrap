@@ -1,0 +1,78 @@
+dist:
+  description: 'Produce the Bootstrap javascript and css and moves them to the documentation'
+  tasks:
+    - 'concurrent:dist-css-js'
+    - 'clean:docs'
+    - 'copy:docs-js'
+    - 'copy:docs-css'
+docs:
+  description: 'Produce the css and javascript for the Bootstrap documentation (specific to documentation)'
+  tasks:
+  - 'concurrent:dist-docs'
+  - 'jekyll:docs'
+lint:
+  description: 'Lint all Bootstrap sources and scripts (main scss, doc scss, main js, doc js, grunt tools, doc html)'
+  tasks:
+    - 'concurrent:lint'
+build:
+  description: 'Produce Bootstrap Javascript and CSS, the documentation and run the linters'
+  tasks:
+    - 'concurrent:dist-lint-test-doc'
+watch-serve:
+   - 'connect:docs'
+   - 'concurrent:watch'
+prep-release:
+  description: 'Build, create teh downloadable zip packages and create the production documentation'
+  tasks:
+    - 'build'
+    - 'compress'
+    - 'jekyll:github'
+publish:
+  description: 'Publish documentation on Github'
+  tasks:
+    - 'buildcontrol:pages'
+travis:
+  description: 'Run all the (conditionnal) Travis tests'
+  tasks:
+   - 'if:core'
+   - 'if:validate-html'
+   - 'if:sauce-js'
+#
+# Travis test tasks.
+# Are called by the main 'travis' task when the environment match
+#
+test:core:
+  description: 'Run the core Travis test (if conditions match)'
+  tasks:
+    - 'build'
+test:validate-html:
+  description: 'Run the validate-html Travis test (if conditions match)'
+  tasks:
+    - 'concurrent:lint-html'
+test:sauce-js:
+  description: 'Run the sauce-js Travis test (if conditions match)'
+  tasks:
+    - 'concurrent:dist-css-js-sauce'
+#
+# Watch-tasks.
+# Are called by the watch task when it detect a change
+#
+watch-task:js:
+  description: 'Run when Javascript on source change'
+  tasks:
+    - 'concurrent:watch-js'
+watch-task:css:
+  description: 'Run when CSS on source change'
+  tasks:
+    - 'sass:main'
+    - 'postcss:main'
+    - 'copy:docs-css'
+watch-task:docs:css:
+  description: 'Run when docs CSS on source change'
+  tasks:
+    - 'sass:docs'
+    - 'postcss:docs'
+watch-task:docs:js:
+  description: 'Run when docs Javascript on source change'
+  tasks:
+    - 'uglify:docs'

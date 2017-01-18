@@ -1,0 +1,22 @@
+{
+  "src": {
+    "scss": "scss",
+    "js": {
+      "src": "js/src",
+      "dist": "js/dist",
+      "tests": "js/tests"
+    },
+    "docs": {
+      "scss": "docs/assets/scss",
+      "js": "docs/assets/js/src"
+    }
+  },
+  "dist": {
+    "css": "dist/css",
+    "js": "dist/js",
+    "docs": {
+      "css": "docs/assets/css",
+      "js": "docs/assets/js"
+    }
+  }
+}
