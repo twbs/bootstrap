@@ -8,7 +8,7 @@ module.exports = {
   // Produce the induvidual modules and the bundled version of Bootstrap Javascript modules
   'dist-js': [
     ['clean:dev-js', 'babel:dev'],
-    ['clean:js', 'concat:js', 'babel:dist', 'stamp:js', 'uglify:dist']
+    ['clean:js', 'concat:js', 'babel:dist', 'concat:banner-footer', 'uglify:dist']
   ],
   // Produce documentation csss and JS
   'dist-docs': [

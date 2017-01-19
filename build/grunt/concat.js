@@ -3,7 +3,9 @@ module.exports = {
     // Custom function to remove all export and import statements
     process(src) {
       return src.replace(/^(export|import).*/gm, '')
-    }
+    },
+    sourceMap: true,
+    sourceMapStyle: 'inline'
   },
   js: {
     src: [
@@ -19,6 +21,16 @@ module.exports = {
       'js/src/tooltip.js',
       'js/src/popover.js'
     ],
+    dest: 'dist/js/<%= pkg.name %>.js'
+  },
+  'banner-footer': {
+    options: {
+      sourceMap: true,
+      sourceMapStyle: 'inline',
+      banner: '<%= stampConf.banner %>\n<%= stampConf.jqueryCheck %>\n<%= stampConf.jqueryVersionCheck %>\n+function () {\n',
+      footer: '\n}();'
+    },
+    src: 'dist/js/<%= pkg.name %>.js',
     dest: 'dist/js/<%= pkg.name %>.js'
   }
 }

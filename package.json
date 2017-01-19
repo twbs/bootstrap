@@ -68,7 +68,6 @@
     "grunt-postcss": "^0.8.0",
     "grunt-sass": "^2.0.0",
     "grunt-saucelabs": "^9.0.0",
-    "grunt-stamp": "^0.3.0",
     "grunt-stylelint": "^0.6.0",
     "jit-grunt": "^0.10.0",
     "load-grunt-config": "^0.19.2",
