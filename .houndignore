@@ -3,3 +3,5 @@
 **/dist/*
 js/tests/*
 build/grunt/*
+build/config/*
+build/utils/*
