@@ -2,3 +2,4 @@
 **/vendor/*
 **/dist/*
 js/tests/*
+build/grunt/*
