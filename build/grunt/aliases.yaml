@@ -14,10 +14,6 @@ lint:
   description: 'Lint all Bootstrap sources and scripts (main scss, doc scss, main js, doc js, grunt tools, doc html)'
   tasks:
     - 'concurrent:lint'
-build:
-  description: 'Produce Bootstrap Javascript and CSS, the documentation and run the linters'
-  tasks:
-    - 'concurrent:dist-lint-test-doc'
 watch-serve:
    - 'connect:docs'
    - 'concurrent:watch'

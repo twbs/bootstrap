@@ -21,7 +21,7 @@ module.exports = {
     options: {
       test() {
         return typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' && (!process.env.TWBS_TEST || process.env.TWBS_TEST ===
-          'sauce-js') && process.env.TWBS_DO_SAUCE === undefined || process.env.TWBS_DO_SAUCE !== '0'
+          'sauce-js') && (process.env.TWBS_DO_SAUCE === undefined || process.env.TWBS_DO_SAUCE !== '0')
       }
     },
     ifTrue: ['test:sauce-js']

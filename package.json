@@ -22,7 +22,6 @@
     "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./build/npm-shrinkwrap.json",
     "test": "grunt travis",
     "dist": "grunt dist",
-    "build": "grunt build",
     "watch": "grunt watch-serve",
     "prep-release": "grunt prep-release",
     "publish": "grunt publish"

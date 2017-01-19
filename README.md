@@ -73,9 +73,8 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 
 1. Run through the [tooling setup](https://github.com/twbs/bootstrap/blob/v4-dev/docs/getting-started/build-tools.md#tooling-setup) to install Node and Ruby (required for Jekyll, the site builder).
 2. From the root `/bootstrap` directory, run `npm run install` to install all dependencies.
-3. Run `npm run dist` to rebuild distributed CSS and JavaScript files, as well as our docs assets.
-4. Run `npm run watch` to start a local server.
-5. Open <http://localhost:9001> in your browser, and voilà.
+3. Run `npm run watch` to start a local server.
+4. Open <http://localhost:9001> in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
 

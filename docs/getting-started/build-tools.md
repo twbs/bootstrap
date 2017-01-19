@@ -35,8 +35,7 @@ Our build tool includes the following commands and tasks:
 | Task | Description |
 | --- | --- |
 | `npm run dist` | Run `grunt` to  compile the CSS and JavaScript into `/dist` and generate the documentation site. **Uses [Sass](http://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
-| `npm run build` | Run `npm run dist` plus the linting tools and run tests locally. **Uses [ESLint](http://eslint.org/) and [Stylelint](http://stylelint.io/) and [HTMLHint](http://htmlhint.com/).** |
-| `npm run test` | Runs `npm run build` plus the CI tests in [PhantomJS](http://phantomjs.org/). Used by our CI platform. |
+| `npm run test` | Compile the CSS and Javascript, generate the documentation site, runs [Stylelint](http://stylelint.io/), [ESLint](http://eslint.org/) and [QUnit](https://qunitjs.com/) tests headlessly in [PhantomJS](http://phantomjs.org/) (used for CI). |
 | `npm run watch` | This is a convenience method for watching Sass, Javascript and documentation sources and automatically building them. |
 
 ## Local development

@@ -21,7 +21,7 @@ module.exports = {
     ['clean:css', 'concurrent:dist-css']
   ],
   // Produce css, js, docs, docs css and js, and lint
-  'dist-lint-test-doc': [['dist', 'qunit'], 'docs', 'lint'],
+  'dist-lint-doc-test': [['dist', 'qunit'], 'docs', 'lint'],
   // Produce css and js and sauce test
   'dist-css-js-sauce': [
     ['concurrent:dist-js', 'connect', 'saucelabs-qunit'],
