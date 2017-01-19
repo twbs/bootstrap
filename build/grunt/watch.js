@@ -1,6 +1,6 @@
 module.exports = {
   js: {
-    files: 'js/src',
+    files: '<%= concat.js.src %>',
     tasks: ['watch-task:js']
   },
   sass: {

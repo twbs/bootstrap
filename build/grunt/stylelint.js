@@ -5,9 +5,9 @@ module.exports = {
     maxWarnings: -1
   },
   scss: {
-    src: ['<%= path.src.scss %>/**/*.scss']
+    src: ['scss/*.scss', '!scss/_normalize.scss']
   },
   docs: {
-    src: ['<%= path.src.docs.scss %>/**/*.scss']
+    src: ['docs/assets/scss/*.scss', '!docs/assets/scss/docs.scss']
   }
 }

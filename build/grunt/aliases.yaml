@@ -20,14 +20,14 @@ watch-serve:
 prep-release:
   description: 'Build, create teh downloadable zip packages and create the production documentation'
   tasks:
-    - 'build'
+    - 'concurrent:dist-lint-doc-test'
     - 'compress'
     - 'jekyll:github'
 publish:
   description: 'Publish documentation on Github'
   tasks:
     - 'buildcontrol:pages'
-travis:
+test:
   description: 'Run all the (conditionnal) Travis tests'
   tasks:
    - 'if:core'
@@ -37,15 +37,15 @@ travis:
 # Travis test tasks.
 # Are called by the main 'travis' task when the environment match
 #
-test:core:
+test-core:
   description: 'Run the core Travis test (if conditions match)'
   tasks:
-    - 'build'
-test:validate-html:
+    - 'concurrent:dist-lint-doc-test'
+test-validate-html:
   description: 'Run the validate-html Travis test (if conditions match)'
   tasks:
     - 'concurrent:lint-html'
-test:sauce-js:
+test-sauce-js:
   description: 'Run the sauce-js Travis test (if conditions match)'
   tasks:
     - 'concurrent:dist-css-js-sauce'

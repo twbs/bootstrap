@@ -5,9 +5,9 @@ module.exports = {
   dev: {
     files: [{
       expand: true,
-      cwd: '<%= path.src.js.src %>/',
+      cwd: 'js/src/',
       src: ['*.js'],
-      dest: '<%= path.src.js.dist %>/'
+      dest: 'js/dist/'
     }]
   },
   dist: {
@@ -15,7 +15,7 @@ module.exports = {
       extends: '../../js/.babelrc'
     },
     files: {
-      '<%= path.dist.js %>/<%= pkg.name %>.js': '<%= path.dist.js %>/<%= pkg.name %>.js'
+      '<%= concat.js.dest %>' : '<%= concat.js.dest %>'
     }
   }
 }

@@ -19,6 +19,6 @@ module.exports = {
       'js/src/tooltip.js',
       'js/src/popover.js'
     ],
-    dest: '<%= path.dist.js %>/<%= pkg.name %>.js'
+    dest: 'dist/js/<%= pkg.name %>.js'
   }
 }

@@ -19,7 +19,6 @@ module.exports = function (grunt) {
       }
     },
     data: {
-      path: grunt.file.readJSON('build/config/path.json'),
       pkg: grunt.file.readJSON('package.json'),
       stampConf: require('./build/config/stamp.js')
     }

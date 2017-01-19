@@ -6,22 +6,22 @@ module.exports = {
   },
   main: {
     files: {
-      '<%= path.dist.css %>/<%= pkg.name %>.css': '<%= path.src.scss %>/<%= pkg.name %>.scss'
+      'dist/css//<%= pkg.name %>.css': 'scss/<%= pkg.name %>.scss'
     }
   },
   grid: {
     files: {
-      '<%= path.dist.css %>/<%= pkg.name %>-grid.css': '<%= path.src.scss %>/<%= pkg.name %>-grid.scss'
+      'dist/css//<%= pkg.name %>-grid.css': 'scss/<%= pkg.name %>-grid.scss'
     }
   },
   reboot: {
     files: {
-      '<%= path.dist.css %>/<%= pkg.name %>-reboot.css': '<%= path.src.scss %>/<%= pkg.name %>-reboot.scss'
+      'dist/css//<%= pkg.name %>-reboot.css': 'scss/<%= pkg.name %>-reboot.scss'
     }
   },
   docs: {
     files: {
-      '<%= path.dist.docs.css %>/docs.css': '<%= path.src.docs.scss %>/docs.scss'
+      'docs/assets/css/docs.css': 'docs/assets/scss/docs.scss'
     }
   }
 }

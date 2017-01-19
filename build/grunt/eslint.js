@@ -3,7 +3,7 @@ module.exports = {
     options: {
       configFile: 'js/.eslintrc.json'
     },
-    src: ['<%= path.src.js.src %>/*.js']
+    src: ['js/src/*.js']
   },
   grunt: {
     options: {
@@ -13,8 +13,8 @@ module.exports = {
   },
   docs: {
     options: {
-      configFile: '<%= path.src.js.tests %>/.eslintrc.json'
+      configFile: 'js/tests/.eslintrc.json'
     },
-    src: ['<%= path.src.docs.js.src %>/*.js']
+    src: ['docs/js/src/*.js']
   }
 }

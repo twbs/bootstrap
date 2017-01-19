@@ -41,15 +41,15 @@ module.exports = {
     ]
   },
   main: {
-    src: '<%= path.dist.css %>/<%= pkg.name %>.css'
+    src: 'dist/css/<%= pkg.name %>.css'
   },
   grid: {
-    src: '<%= path.dist.css %>/<%= pkg.name %>-grid.css'
+    src: 'dist/css/<%= pkg.name %>-grid.css'
   },
   reboot: {
-    src: '<%= path.dist.css %>/<%= pkg.name %>-reboot.css'
+    src: 'dist/css/<%= pkg.name %>-reboot.css'
   },
   docs: {
-    src: '<%= path.dist.docs.css %>/docs.css'
+    src: 'dist/css/docs.css'
   }
 }

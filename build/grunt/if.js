@@ -6,7 +6,7 @@ module.exports = {
           'twbs-savage/bootstrap'
       }
     },
-    ifTrue: ['test:core']
+    ifTrue: ['test-core']
   },
   'validate-html': {
     options: {
@@ -15,7 +15,7 @@ module.exports = {
           undefined || process.env.TWBS_DO_VALIDATOR !== '0')
       }
     },
-    ifTrue: ['test:validate-html']
+    ifTrue: ['test-validate-html']
   },
   'sauce-js': {
     options: {
@@ -24,6 +24,6 @@ module.exports = {
           'sauce-js') && (process.env.TWBS_DO_SAUCE === undefined || process.env.TWBS_DO_SAUCE !== '0')
       }
     },
-    ifTrue: ['test:sauce-js']
+    ifTrue: ['test-sauce-js']
   }
 }

@@ -11,8 +11,8 @@ module.exports = {
     }
   },
   dist: {
-    src: '<%= path.dist.js %>/<%= pkg.name %>.js',
-    dest: '<%= path.dist.js %>/<%= pkg.name %>.min.js'
+    src: '<%= concat.js.dest %>',
+    dest: 'dist/js/<%= pkg.name %>.min.js'
   },
   docs: {
     src: [

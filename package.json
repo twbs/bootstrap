@@ -20,7 +20,7 @@
     "postinstall": "gem install bundler && bundler install",
     "change-version": "node grunt/change-version.js",
     "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./build/npm-shrinkwrap.json",
-    "test": "grunt travis",
+    "test": "grunt test",
     "dist": "grunt dist",
     "watch": "grunt watch-serve",
     "prep-release": "grunt prep-release",
