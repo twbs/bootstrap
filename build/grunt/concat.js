@@ -1,13 +1,13 @@
 module.exports = {
-  options: {
-    // Custom function to remove all export and import statements
-    process(src) {
-      return src.replace(/^(export|import).*/gm, '')
-    },
-    sourceMap: true,
-    sourceMapStyle: 'inline'
-  },
   js: {
+    options: {
+      // Custom function to remove all export and import statements
+      process(src) {
+        return src.replace(/^(export|import).*/gm, '')
+      },
+      sourceMap: true,
+      sourceMapStyle: 'inline'
+    },
     src: [
       'js/src/util.js',
       'js/src/alert.js',

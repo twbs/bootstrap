@@ -2,7 +2,8 @@ module.exports = {
   options: {
     advanced: false,
     sourceMap: true,
-    keepSpecialComments: '*'
+    keepSpecialComments: '*',
+    sourceMapInlineSources: true
   },
   main: {
     files: {

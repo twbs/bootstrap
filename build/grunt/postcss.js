@@ -2,7 +2,7 @@ module.exports = {
   options: {
     map: {
       inline: false,
-      annotation: true,
+      annotation: false,
       sourcesContent: true
     },
     processors: [
@@ -50,6 +50,6 @@ module.exports = {
     src: 'dist/css/<%= pkg.name %>-reboot.css'
   },
   docs: {
-    src: 'dist/css/docs.css'
+    src: 'docs/assets/css/docs.css'
   }
 }

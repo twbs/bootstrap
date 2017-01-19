@@ -2,7 +2,8 @@ module.exports = {
   options: {
     outputStyle: 'expanded',
     precision: 6,
-    sourceMap: true
+    sourceMap: true,
+    sourceMapContents: true
   },
   main: {
     files: {

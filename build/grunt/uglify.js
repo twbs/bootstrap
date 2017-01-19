@@ -4,6 +4,7 @@ module.exports = {
       warnings: false
     },
     sourceMap: true,
+    sourceMapIncludeSources: true,
     mangle: true,
     preserveComments: /^!|@preserve|@license|@cc_on/i,
     mangleProperties: {
@@ -11,6 +12,9 @@ module.exports = {
     }
   },
   dist: {
+    options: {
+      sourceMapIn: 'dist/js/<%= pkg.name %>.js.map'
+    },
     src: '<%= concat.js.dest %>',
     dest: 'dist/js/<%= pkg.name %>.min.js'
   },
