@@ -70,7 +70,6 @@
     "grunt-saucelabs": "^9.0.0",
     "grunt-stamp": "^0.3.0",
     "grunt-stylelint": "^0.6.0",
-    "is-travis": "^1.0.0",
     "jit-grunt": "^0.10.0",
     "load-grunt-config": "^0.19.2",
     "postcss-flexbugs-fixes": "^2.1.0",

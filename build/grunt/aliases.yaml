@@ -33,6 +33,7 @@ test:
    - 'if:core'
    - 'if:validate-html'
    - 'if:sauce-js'
+   - 'if:sauce-js-qunit'
 #
 # Travis test tasks.
 # Are called by the main 'travis' task when the environment match
@@ -44,11 +45,19 @@ test-core:
 test-validate-html:
   description: 'Run the validate-html Travis test (if conditions match)'
   tasks:
-    - 'concurrent:lint-html'
+    - 'docs'
+    - 'htmlhint:docs'
+    - 'htmlhint'
 test-sauce-js:
   description: 'Run the sauce-js Travis test (if conditions match)'
   tasks:
-    - 'concurrent:dist-css-js-sauce'
+    - 'dist'
+    - 'docs'
+test-sauce-js-qunit:
+  description: 'Run the sauce-js-qunit Travis test (if conditions match)'
+  tasks:
+    - 'connect'
+    - 'saucelabs-qunit'
 #
 # Watch-tasks.
 # Are called by the watch task when it detect a change

@@ -1,29 +1,37 @@
-module.exports = {
-  core: {
-    options: {
-      test() {
-        return (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'core') && process.env.TRAVIS_REPO_SLUG !==
-          'twbs-savage/bootstrap'
-      }
+module.exports = function () {
+  const travis = require('../utils/travisTestEnv.js')()
+  return {
+    core: {
+      options: {
+        test() {
+          return travis.isCore()
+        }
+      },
+      ifTrue: ['test-core']
     },
-    ifTrue: ['test-core']
-  },
-  'validate-html': {
-    options: {
-      test() {
-        return (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'validate-html') && (process.env.TWBS_DO_VALIDATOR ===
-          undefined || process.env.TWBS_DO_VALIDATOR !== '0')
-      }
+    'validate-html': {
+      options: {
+        test() {
+          return travis.isValidateHtml()
+        }
+      },
+      ifTrue: ['test-validate-html']
     },
-    ifTrue: ['test-validate-html']
-  },
-  'sauce-js': {
-    options: {
-      test() {
-        return typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' && (!process.env.TWBS_TEST || process.env.TWBS_TEST ===
-          'sauce-js') && (process.env.TWBS_DO_SAUCE === undefined || process.env.TWBS_DO_SAUCE !== '0')
-      }
+    'sauce-js': {
+      options: {
+        test() {
+          return travis.isSauceJs()
+        }
+      },
+      ifTrue: ['test-sauce-js']
     },
-    ifTrue: ['test-sauce-js']
+    'sauce-js-qunit': {
+      options: {
+        test() {
+          return travis.isDoSauceJs()
+        }
+      },
+      ifTrue: ['test-sauce-js-qunit']
+    }
   }
 }

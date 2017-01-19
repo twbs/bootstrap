@@ -22,15 +22,8 @@ module.exports = {
   ],
   // Produce css, js, docs, docs css and js, and lint
   'dist-lint-doc-test': [['dist', 'qunit'], 'docs', 'lint'],
-  // Produce css and js and sauce test
-  'dist-css-js-sauce': [
-    ['concurrent:dist-js', 'connect', 'saucelabs-qunit'],
-    ['clean:css', 'concurrent:dist-css']
-  ],
   // Run all linters
   lint: ['eslint:js', 'eslint:grunt', 'eslint:docs', 'stylelint:scss', 'stylelint:docs', 'htmlhint:docs', 'htmlhint'],
-  // Run html linters
-  'lint-html': ['htmlhint:docs', 'htmlhint'],
   // Build dev and dist JS in parallel
   'watch-js': [
     ['clean:dev-js', 'babel:dev'], ['concat:js', 'babel:dist', 'copy:docs-js']
