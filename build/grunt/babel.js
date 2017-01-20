@@ -2,7 +2,7 @@ module.exports = {
   options: {
     sourceMap: true
   },
-  dev: {
+  'js-dev': {
     files: [{
       expand: true,
       cwd: 'js/src/',
@@ -10,12 +10,12 @@ module.exports = {
       dest: 'js/dist/'
     }]
   },
-  dist: {
+  js: {
     options: {
       extends: '../../js/.babelrc'
     },
     files: {
-      '<%= concat.js.dest %>' : '<%= concat.js.dest %>'
+      '<%= concat.js.dest %>': '<%= concat.js.dest %>'
     }
   }
 }

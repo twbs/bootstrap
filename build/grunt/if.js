@@ -20,18 +20,10 @@ module.exports = function () {
     'sauce-js': {
       options: {
         test() {
-          return travis.isSauceJs()
+          return travis.isSauceJs() && travis.isDoSauceJs()
         }
       },
       ifTrue: ['test-sauce-js']
-    },
-    'sauce-js-qunit': {
-      options: {
-        test() {
-          return travis.isDoSauceJs()
-        }
-      },
-      ifTrue: ['test-sauce-js-qunit']
     }
   }
 }
