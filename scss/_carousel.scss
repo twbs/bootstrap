@@ -13,6 +13,7 @@
   position: relative;
   display: none;
   width: 100%;
+  align-items: center;
 
   @include if-supports-3d-transforms() {
     @include transition($carousel-transition);
