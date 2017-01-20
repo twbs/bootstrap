@@ -13,6 +13,7 @@
   position: relative;
   display: none;
   width: 100%;
+  align-items: center;
   @include transition($carousel-transition);
   backface-visibility: hidden;
   perspective: 1000px;
