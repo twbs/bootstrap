@@ -6,12 +6,22 @@ git:
 node_js:
   - "4"
   - "6"
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 before_install:
   - if [[ `npm -v` != 3* ]]; then npm install -g npm@3; fi
   - "export TRAVIS_COMMIT_MSG=\"`git log --format=%B --no-merges -n 1`\""
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip sauce\]'; export TWBS_DO_SAUCE=$?; true
   - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then export TWBS_DO_VALIDATOR=0; fi
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3
+  - stty cols 80
 install:
   - bundle install --deployment --jobs=3 --retry=3
   - cp grunt/npm-shrinkwrap.json ./
@@ -27,12 +37,15 @@ env:
   - TWBS_TEST=core
   - TWBS_TEST=validate-html
   - TWBS_TEST=sauce-js-unit
+  - TWBS_TEST=e2e
 matrix:
   exclude:
     - node_js: "4"
       env: TWBS_TEST=validate-html
     - node_js: "4"
       env: TWBS_TEST=sauce-js-unit
+    - node_js: "4"
+      env: TWBS_TEST=e2e
 notifications:
   slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
   webhooks:

@@ -127,6 +127,18 @@ module.exports = function (grunt) {
       files: 'js/tests/unit/index.html'
     },
 
+    testcafe: {
+      test: {
+        options: {
+          files: ['js/tests/functional/*-test.js'],
+          browsers: ['chrome'],
+          startApp: {
+            command: 'http-server ./ -p 3000'
+          }
+        }
+      }
+    },
+
     // CSS build configuration
     copy: {
       docs: {
@@ -287,6 +299,15 @@ module.exports = function (grunt) {
     // Skip core tests if this is a Savage build
     process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {
     testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'test-scss', 'qunit', 'docs'])
+  }
+  if (runSubset('e2e') &&
+    // Skip e2e tests if this is a Savage build
+    process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {
+    // Skip dist-css and dist-js if they were added by the core subset
+    if (testSubtasks.indexOf('dist-css') < 0) {
+      testSubtasks = testSubtasks.concat(['dist-css', 'dist-js'])
+    }
+    testSubtasks = testSubtasks.concat(['testcafe'])
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&

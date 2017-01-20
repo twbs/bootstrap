@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    "testcafe"
+  ],
+  "extends": [
+    "plugin:testcafe/recommended",
+    "../../.eslintrc.json"
+  ],
+  "rules": {
+    "newline-per-chained-call": "off"
+  }
+}
