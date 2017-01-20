@@ -133,12 +133,15 @@ const ScrollSpy = (($) => {
             target = $(targetSelector)[0]
           }
 
-          if (target && (target.getBoundingClientRect().width || target.getBoundingClientRect().height)) {
-            // todo (fat): remove sketch reliance on jQuery position/offset
-            return [
-              $(target)[offsetMethod]().top + offsetBase,
-              targetSelector
-            ]
+          if (target) {
+            const targetBCR = target.getBoundingClientRect()
+            if (target.targetBCR.width || targetBCR.height) {
+              // todo (fat): remove sketch reliance on jQuery position/offset
+              return [
+                $(target)[offsetMethod]().top + offsetBase,
+                targetSelector
+              ]
+            }
           }
           return null
         })
