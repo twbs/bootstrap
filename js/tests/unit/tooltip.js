@@ -757,7 +757,7 @@ $(function () {
         var offset = $('.tooltip').offset()
         $styles.remove()
         assert.ok(Math.abs(offset.left - 88) <= 1, 'tooltip has correct horizontal location')
-        assert.ok(Math.abs(offset.top - 126) <= 1, 'tooltip has correct vertical location')
+        assert.ok(Math.abs(offset.top - 116) <= 1, 'tooltip has correct vertical location')
         $element.bootstrapTooltip('hide')
         done()
       })
