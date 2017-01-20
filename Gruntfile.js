@@ -122,9 +122,9 @@ module.exports = function (grunt) {
 
     qunit: {
       options: {
-        inject: 'js/tests/unit/phantom.js'
+        inject: 'js/tests/unit/fixtures/phantom.js'
       },
-      files: 'js/tests/index.html'
+      files: 'js/tests/unit/index.html'
     },
 
     // CSS build configuration
