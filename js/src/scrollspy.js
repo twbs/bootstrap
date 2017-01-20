@@ -133,7 +133,7 @@ const ScrollSpy = (($) => {
             target = $(targetSelector)[0]
           }
 
-          if (target && (target.offsetWidth || target.offsetHeight)) {
+          if (target && (target.getBoundingClientRect().width || target.getBoundingClientRect().height)) {
             // todo (fat): remove sketch reliance on jQuery position/offset
             return [
               $(target)[offsetMethod]().top + offsetBase,
@@ -198,7 +198,7 @@ const ScrollSpy = (($) => {
 
     _getOffsetHeight() {
       return this._scrollElement === window ?
-          window.innerHeight : this._scrollElement.offsetHeight
+          window.innerHeight : this._scrollElement.getBoundingClientRect().height
     }
 
     _process() {
