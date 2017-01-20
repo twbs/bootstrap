@@ -8,6 +8,10 @@ module.exports = function () {
     return val === undefined || val !== '0'
   }
 
+  function isTravis() {
+    return 'TRAVIS' in process.env && 'CI' in process.env;
+  }
+
   return {
     // Skip core tests if running a different subset
     // of the test suite or if this is a Savage build
@@ -17,7 +21,7 @@ module.exports = function () {
     // Skip HTML validation if running a different subset of the test suite
     // or [skip validator] is in the commit message
     isValidateHtml() {
-      return runSubset('validate-html') && isUndefOrNonZero(process.env.TWBS_DO_VALIDATOR)
+      return isTravis() && runSubset('validate-html') && isUndefOrNonZero(process.env.TWBS_DO_VALIDATOR)
     },
     // Only run Sauce Labs tests if there's a Sauce access key
     // and skip Sauce if running a different subset of the test suite
