@@ -17,7 +17,7 @@ module.exports = {
     ['uglify:docs']
   ],
   // Run all linters in parallel
-  lint: ['eslint:js', 'eslint:grunt', 'eslint:docs', 'stylelint:scss', 'stylelint:docs'],
+  lint: ['eslint', 'stylelint'],
   watch: {
     options: {
       logConcurrentOutput: true
