@@ -32,10 +32,14 @@ module.exports = {
   // Watch
   // --------------------------------------------------------------------------
 
-  // Run when Javascript on source change, Compile, concat, deploy
+  // Run on Javascript source change: Compile, concat, deploy
   'watch-task-js': ['concat:js', 'babel:js', 'copy:docs-js'],
-  // Run when CSS on source change. Compile, prefix and deploy css.
+  // Runs on Javascript source change: build individual modules
+  'watch-task-js-dev': ['babel:js-dev'],
+  // Runs on Javascript test source change: run QUnit
+  'watch-task-js-test': ['babel:js-dev', 'qunit'],
+  // Runs on CSS source change: Compile, prefix and deploy css.
   'watch-task-css': ['sass:main', 'postcss:main', 'copy:docs-css'],
-  // Run when docs CSS on source change. Compile and prefix.
+  // Runs docs on CSS source change: Compile and prefix.
   'watch-task-docs-css': ['sass:docs', 'postcss:docs']
 }
