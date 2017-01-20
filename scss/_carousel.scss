@@ -12,8 +12,8 @@
 .carousel-item {
   position: relative;
   display: none;
-  width: 100%;
   align-items: center;
+  width: 100%;
 
   @include if-supports-3d-transforms() {
     @include transition($carousel-transition);
