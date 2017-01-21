@@ -126,18 +126,13 @@ const ScrollSpy = (($) => {
 
       targets
         .map((element) => {
-          let target
-          const targetSelector = Util.getSelectorFromElement(element)
-
-          if (targetSelector) {
-            target = $(targetSelector)[0]
-          }
+          const target = Util.getTargets(element)[0]
 
           if (target && (target.offsetWidth || target.offsetHeight)) {
             // todo (fat): remove sketch reliance on jQuery position/offset
             return [
               $(target)[offsetMethod]().top + offsetBase,
-              targetSelector
+              `#${$(target).attr('id')}`
             ]
           }
           return null

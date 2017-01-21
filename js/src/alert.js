@@ -23,7 +23,6 @@ const Alert = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
 
   const Selector = {
     DISMISS : '[data-dismiss="alert"]'
@@ -37,7 +36,6 @@ const Alert = (($) => {
 
   const ClassName = {
     ALERT : 'alert',
-    FADE  : 'fade',
     SHOW  : 'show'
   }
 
@@ -67,14 +65,14 @@ const Alert = (($) => {
     close(element) {
       element = element || this._element
 
-      const rootElement = this._getRootElement(element)
-      const customEvent = this._triggerCloseEvent(rootElement)
+      const $rootElement = this._getRootElement(element)
+      const customEvent = this._triggerCloseEvent($rootElement)
 
       if (customEvent.isDefaultPrevented()) {
         return
       }
 
-      this._removeElement(rootElement)
+      $rootElement.transition(() => $rootElement.removeClass(ClassName.SHOW), () => this._destroyElement($rootElement))
     }
 
     dispose() {
@@ -86,18 +84,8 @@ const Alert = (($) => {
     // private
 
     _getRootElement(element) {
-      const selector = Util.getSelectorFromElement(element)
-      let parent     = false
-
-      if (selector) {
-        parent = $(selector)[0]
-      }
-
-      if (!parent) {
-        parent = $(element).closest(`.${ClassName.ALERT}`)[0]
-      }
-
-      return parent
+      const targets = Util.getTargets(element)
+      return (targets.length ? targets : $(element).closest(`.${ClassName.ALERT}`)).first()
     }
 
     _triggerCloseEvent(element) {
@@ -107,27 +95,12 @@ const Alert = (($) => {
       return closeEvent
     }
 
-    _removeElement(element) {
-      $(element).removeClass(ClassName.SHOW)
-
-      if (!Util.supportsTransitionEnd() ||
-          !$(element).hasClass(ClassName.FADE)) {
-        this._destroyElement(element)
-        return
-      }
-
-      $(element)
-        .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
-        .emulateTransitionEnd(TRANSITION_DURATION)
-    }
-
-    _destroyElement(element) {
-      $(element)
+    _destroyElement($element) {
+      $element
         .detach()
         .trigger(Event.CLOSED)
         .remove()
     }
-
 
     // static
 
