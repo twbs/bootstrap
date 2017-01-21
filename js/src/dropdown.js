@@ -53,6 +53,7 @@ const Dropdown = (($) => {
     FORM_CHILD    : '.dropdown form',
     ROLE_MENU     : '[role="menu"]',
     ROLE_LISTBOX  : '[role="listbox"]',
+    MENU          : '.dropdown-menu',
     NAVBAR_NAV    : '.navbar-nav',
     VISIBLE_ITEMS : '[role="menu"] li:not(.disabled) a, '
                   + '[role="listbox"] li:not(.disabled) a'
@@ -215,8 +216,17 @@ const Dropdown = (($) => {
     }
 
     static _dataApiKeydownHandler(event) {
-      if (!REGEXP_KEYDOWN.test(event.which) ||
-         /input|textarea/i.test(event.target.tagName)) {
+      // If not input/textarea:
+      //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
+      // If input/textarea:
+      //  - If space key => not a dropdown command
+      //  - If key is other than excape
+      //    - If key is not up or down => not a dropdown command
+      //    - If trigger inside the menu => not a dropdown command
+      if (/input|textarea/i.test(event.target.tagName) ?
+        event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
+        (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE ||
+          $(event.target).closest(Selector.MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
         return
       }
 
@@ -278,6 +288,7 @@ const Dropdown = (($) => {
     .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
     .on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU,    Dropdown._dataApiKeydownHandler)
     .on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
+    .on(Event.KEYDOWN_DATA_API, Selector.MENU,    Dropdown._dataApiKeydownHandler)
     .on(`${Event.CLICK_DATA_API} ${Event.FOCUSIN_DATA_API}`, Dropdown._clearMenus)
     .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
     .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
