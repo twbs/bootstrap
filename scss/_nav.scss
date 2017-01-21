@@ -90,7 +90,8 @@
 //
 
 .nav-fill {
-  .nav-item {
+  .nav-item,
+  .nav-link {
     flex: 1 1 auto;
     text-align: center;
   }
