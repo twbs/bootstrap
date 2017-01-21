@@ -1,86 +1,58 @@
-// scss-lint:disable QualifyingElement, DuplicateProperty
+// scss-lint:disable QualifyingElement, DuplicateProperty, VendorPrefix
 
 // Reboot
 //
-// Global resets to common HTML elements and more for easier usage by Bootstrap.
-// Adds additional rules on top of Normalize.css, including several overrides.
+// Normalization of HTML elements, manually forked from Normalize.css to remove
+// styles targeting irrelevant browsers while applying new styles.
+//
+// Normalize is licensed MIT. https://github.com/necolas/normalize.css
 
 
-// Reset the box-sizing
+// Document
 //
-// Change from `box-sizing: content-box` to `border-box` so that when you add
-// `padding` or `border`s to an element, the overall declared `width` does not
-// change. For example, `width: 100px;` will always be `100px` despite the
-// `border: 10px solid red;` and `padding: 20px;`.
-//
-// Heads up! This reset may cause conflicts with some third-party widgets. For
-// recommendations on resolving such conflicts, see
-// https://getbootstrap.com/getting-started/#third-box-sizing.
-//
-// Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+// 1. Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+// 2. Change the default font family in all browsers.
+// 3. Correct the line height in all browsers.
+// 4. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
+// 5. Setting @viewport causes scrollbars to overlap content in IE11 and Edge, so
+//    we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+// 6. Change the default tap highlight to be completely transparent in iOS.
 
 html {
-  box-sizing: border-box;
+  box-sizing: border-box; // 1
+  font-family: sans-serif; // 2
+  line-height: 1.15; // 3
+  -ms-text-size-adjust: 100%; // 4
+  -webkit-text-size-adjust: 100%; // 4
+  -ms-overflow-style: scrollbar; // 5
+  -webkit-tap-highlight-color: rgba(0,0,0,0); // 6
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+  box-sizing: inherit; // 1
 }
 
-
-// Make viewport responsive
-//
-// @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in
-// some cases. See https://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/.
-// Eventually @viewport will replace <meta name="viewport">.
-//
-// However, `device-width` is broken on IE 10 on Windows (Phone) 8,
-// (see https://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
-// and the fix for that involves a snippet of JavaScript to sniff the user agent
-// and apply some conditional CSS.
-//
-// See https://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
-//
-// Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
-// `.class-name { @import "bootstrap"; }`).
+// IE10+ doesn't honor `<meta name="viewport">` in some cases.
 @at-root {
   @-ms-viewport { width: device-width; }
 }
 
 
+// Body
 //
-// Reset HTML, body, and more
-//
-
-html {
-  // We assume no initial pixel `font-size` for accessibility reasons. This
-  // allows web visitors to customize their browser default font-size, making
-  // your project more inclusive and accessible to everyone.
-
-  // As a side-effect of setting the @viewport above,
-  // IE11 & Edge make the scrollbar overlap the content and automatically hide itself when not in use.
-  // Unfortunately, the auto-showing of the scrollbar is sometimes too sensitive,
-  // thus making it hard to click on stuff near the right edge of the page.
-  // So we add this style to force IE11 & Edge to use a "normal", non-overlapping, non-auto-hiding scrollbar.
-  // See https://github.com/twbs/bootstrap/issues/18543
-  // and https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7165383/
-  -ms-overflow-style: scrollbar;
-
-  // Changes the default tap highlight to be completely transparent in iOS.
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
+// 1. Remove the margin in all browsers.
+// 2. As a best practice, apply a default `background-color`.
 
 body {
+  margin: 0; // 1
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-base;
   line-height: $line-height-base;
-  // Go easy on the eyes and use something other than `#000` for text
   color: $body-color;
-  // By default, `<body>` has no `background-color` so we set one as a best practice.
-  background-color: $body-bg;
+  background-color: $body-bg; // 2
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -90,6 +62,18 @@ body {
 // Credit: https://github.com/suitcss/base
 [tabindex="-1"]:focus {
   outline: none !important;
+}
+
+
+// Content grouping
+//
+// 1. Add the correct box sizing in Firefox.
+// 2. Show the overflow in Edge and IE.
+
+hr {
+  box-sizing: content-box; // 1
+  height: 0; // 1
+  overflow: visible; // 2
 }
 
 
@@ -116,10 +100,18 @@ p {
 }
 
 // Abbreviations
+//
+// 1. Remove the bottom border in Firefox 39-.
+// 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+// 3. Add explicit cursor to indicate changed behavior.
+// 4. Duplicate behavior to the data-* attribute for our tooltip plugin
+
 abbr[title],
-// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
-abbr[data-original-title] {
-  cursor: help;
+abbr[data-original-title] { // 4
+  text-decoration: underline; // 2
+  text-decoration: underline dotted; // 2
+  cursor: help; // 3
+  border-bottom: 0; // 1
 }
 
 address {
@@ -155,6 +147,35 @@ blockquote {
   margin: 0 0 1rem;
 }
 
+dfn {
+  font-style: italic; // Add the correct font style in Android 4.3-
+}
+
+b,
+strong {
+  font-weight: bolder; // Add the correct font weight in Chrome, Edge, and Safari
+}
+
+small {
+  font-size: 80%; // Add the correct font size in all browsers
+}
+
+//
+// Prevent `sub` and `sup` elements from affecting the line height in
+// all browsers.
+//
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub { bottom: -.25em; }
+sup { top: -.5em; }
+
 
 //
 // Links
@@ -163,6 +184,8 @@ blockquote {
 a {
   color: $link-color;
   text-decoration: $link-decoration;
+  background-color: transparent; // Remove the gray background on active links in IE 10.
+  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
 
   @include hover {
     color: $link-hover-color;
@@ -195,12 +218,20 @@ a:not([href]):not([tabindex]) {
 // Code
 //
 
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; // Correct the inheritance and scaling of font size in all browsers.
+  font-size: 1em; // Correct the odd `em` font sizing in all browsers.
+}
+
 pre {
   // Remove browser default top margin
   margin-top: 0;
   // Reset browser default of `1em` to use `rem`s
   margin-bottom: 1rem;
-  // Normalize v4 removed this property, causing `<pre>` content to break out of wrapping code snippets
+  // Don't allow content to break outside
   overflow: auto;
 }
 
@@ -210,22 +241,22 @@ pre {
 //
 
 figure {
-  // Normalize adds `margin` to `figure`s as browsers apply it inconsistently.
-  // We reset that to create a better flow in-page.
+  // Apply a consistent margin strategy (matches our type styles).
   margin: 0 0 1rem;
 }
 
 
 //
-// Images
+// Images and content
 //
 
 img {
-  // By default, `<img>`s are `inline-block`. This assumes that, and vertically
-  // centers them. This won't apply should you reset them to `block` level.
   vertical-align: middle;
-  // Note: `<img>`s are deliberately not made responsive by default.
-  // For the rationale behind this, see the comments on the `.img-fluid` class.
+  border-style: none; // Remove the border on images inside links in IE 10-.
+}
+
+svg:not(:root) {
+  overflow: hidden; // Hide the overflow in IE
 }
 
 
@@ -268,10 +299,7 @@ textarea {
 //
 
 table {
-  // No longer part of Normalize since v4
-  border-collapse: collapse;
-  // Reset for nesting within parents with `background-color`.
-  background-color: $table-bg;
+  border-collapse: collapse; // Prevent double borders
 }
 
 caption {
@@ -283,7 +311,7 @@ caption {
 }
 
 th {
-  // Centered by default, but left-align-ed to match the `td`s below.
+  // Matches default `<td>` alignment
   text-align: left;
 }
 
@@ -310,14 +338,48 @@ button:focus {
 input,
 button,
 select,
+optgroup,
 textarea {
-  // Normalize includes `font: inherit;`, so `font-family`. `font-size`, etc are
-  // properly inherited. However, `line-height` isn't inherited there.
+  margin: 0; // Remove the margin in Firefox and Safari
+  font-family: inherit;
+  font-size: inherit;
   line-height: inherit;
+}
+
+button,
+input {
+  overflow: visible; // Show the overflow in Edge
+}
+
+button,
+select {
+  text-transform: none; // Remove the inheritance of text transform in Firefox
+}
+
+// 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+//    controls in Android 4.
+// 2. Correct the inability to style clickable types in iOS and Safari.
+button,
+html [type="button"], // 1
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; // 2
+}
+
+// Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
 }
 
 input[type="radio"],
 input[type="checkbox"] {
+  box-sizing: border-box; // 1. Add the correct box sizing in IE 10-
+  padding: 0; // 2. Remove the padding in IE 10-
+
   // Apply a disabled cursor for radios and checkboxes.
   //
   // Note: Neither radios nor checkboxes can be readonly.
@@ -340,6 +402,7 @@ input[type="month"] {
 }
 
 textarea {
+  overflow: auto; // Remove the default vertical scrollbar in IE.
   // Textareas should really only resize vertically so they don't break their (horizontal) containers.
   resize: vertical;
 }
@@ -357,33 +420,76 @@ fieldset {
   border: 0;
 }
 
+// 1. Correct the text wrapping in Edge and IE.
+// 2. Correct the color inheritance from `fieldset` elements in IE.
 legend {
-  // Reset the entire legend element to match the `fieldset`
   display: block;
   width: 100%;
+  max-width: 100%; // 1
   padding: 0;
   margin-bottom: .5rem;
   font-size: 1.5rem;
   line-height: inherit;
+  color: inherit; // 2
+  white-space: normal; // 1
 }
 
-input[type="search"] {
+progress {
+  vertical-align: baseline; // Add the correct vertical alignment in Chrome, Firefox, and Opera.
+}
+
+// Correct the cursor style of increment and decrement buttons in Chrome.
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
   // This overrides the extra rounded corners on search inputs in iOS so that our
   // `.form-control` class can properly style them. Note that this cannot simply
   // be added to `.form-control` as it's not specific enough. For details, see
   // https://github.com/twbs/bootstrap/issues/11586.
+  outline-offset: -2px; // 2. Correct the outline style in Safari.
   -webkit-appearance: none;
 }
 
-// todo: needed?
+//
+// Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+//
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+//
+// 1. Correct the inability to style clickable types in iOS and Safari.
+// 2. Change font properties to `inherit` in Safari.
+//
+
+::-webkit-file-upload-button {
+  font: inherit; // 2
+  -webkit-appearance: button; // 1
+}
+
+//
+// Correct element displays
+//
+
 output {
   display: inline-block;
-//  font-size: $font-size-base;
-//  line-height: $line-height;
-//  color: $input-color;
+}
+
+summary {
+  display: list-item; // Add the correct display in all browsers
+}
+
+template {
+  display: none; // Add the correct display in IE
 }
 
 // Always hide an element with the `hidden` HTML attribute (from PureCSS).
+// Needed for proper display in IE 10-.
 [hidden] {
   display: none !important;
 }
