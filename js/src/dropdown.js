@@ -62,6 +62,11 @@ const Dropdown = (($) => {
   const Selector = {
     DATA_TOGGLE   : '[data-toggle="dropdown"]',
     FORM_CHILD    : '.dropdown form',
+<<<<<<< HEAD
+=======
+    ROLE_MENU     : '[role="menu"]',
+    ROLE_LISTBOX  : '[role="listbox"]',
+>>>>>>> Dropdown handle keydown on input and textarea
     MENU          : '.dropdown-menu',
     NAVBAR_NAV    : '.navbar-nav',
     VISIBLE_ITEMS : '.dropdown-menu .dropdown-item:not(.disabled)'
@@ -357,8 +362,17 @@ const Dropdown = (($) => {
     }
 
     static _dataApiKeydownHandler(event) {
-      if (!REGEXP_KEYDOWN.test(event.which) || /button/i.test(event.target.tagName) && event.which === SPACE_KEYCODE ||
-         /input|textarea/i.test(event.target.tagName)) {
+      // If not input/textarea:
+      //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
+      // If input/textarea:
+      //  - If space key => not a dropdown command
+      //  - If key is other than excape
+      //    - If key is not up or down => not a dropdown command
+      //    - If trigger inside the menu => not a dropdown command
+      if (/input|textarea/i.test(event.target.tagName) ?
+        event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
+        (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE ||
+          $(event.target).closest(Selector.MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
         return
       }
 
@@ -418,6 +432,7 @@ const Dropdown = (($) => {
 
   $(document)
     .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
+<<<<<<< HEAD
     .on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler)
     .on(`${Event.CLICK_DATA_API} ${Event.KEYUP_DATA_API}`, Dropdown._clearMenus)
     .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
@@ -425,6 +440,13 @@ const Dropdown = (($) => {
       event.stopPropagation()
       Dropdown._jQueryInterface.call($(this), 'toggle')
     })
+=======
+    .on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU,    Dropdown._dataApiKeydownHandler)
+    .on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
+    .on(Event.KEYDOWN_DATA_API, Selector.MENU,    Dropdown._dataApiKeydownHandler)
+    .on(`${Event.CLICK_DATA_API} ${Event.FOCUSIN_DATA_API}`, Dropdown._clearMenus)
+    .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
+>>>>>>> Dropdown handle keydown on input and textarea
     .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
       e.stopPropagation()
     })
