@@ -97,7 +97,8 @@
 }
 
 .nav-justified {
-  .nav-item {
+  .nav-item,
+  .nav-link {
     flex: 1 1 100%;
     text-align: center;
   }
