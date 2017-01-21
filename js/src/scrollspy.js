@@ -256,9 +256,11 @@ const ScrollSpy = (($) => {
         $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
         $link.addClass(ClassName.ACTIVE)
       } else {
-        // todo (fat) this is kinda sus...
-        // recursively add actives to tested nav-links
-        $link.parents(Selector.LI).find(`> ${Selector.NAV_LINKS}`).addClass(ClassName.ACTIVE)
+        // Set triggered link as active
+        $link.addClass(ClassName.ACTIVE)
+        // Set triggered links parents as active
+        // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
+        $link.parents().prev(Selector.NAV_LINKS).addClass(ClassName.ACTIVE)
       }
 
       $(this._scrollElement).trigger(Event.ACTIVATE, {
