@@ -15,6 +15,7 @@
 
 .progress-bar {
   height: $progress-height;
+  line-height: $progress-height;
   color: $progress-bar-color;
   background-color: $progress-bar-bg;
 }
