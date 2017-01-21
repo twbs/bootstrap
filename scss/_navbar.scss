@@ -22,7 +22,6 @@
   padding: $navbar-padding-y $navbar-padding-x;
 
   @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
-    // Prevent container to collease content on smallest breakpoint on Chrome
     > .container {
       margin-right: 0;
       margin-left: 0;
