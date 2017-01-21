@@ -451,7 +451,7 @@ $(function () {
     $dropdown.trigger($.Event('keydown', { which: 40 }))
     $dropdown.trigger($.Event('keydown', { which: 40 }))
 
-    assert.ok(!$(document.activeElement).parent().is('.disabled'), '.disabled is not focused')
+    assert.ok(!$(document.activeElement).is('.disabled'), '.disabled is not focused')
   })
 
   QUnit.test('should not close the dropdown if the user clicks on a text field', function (assert) {
