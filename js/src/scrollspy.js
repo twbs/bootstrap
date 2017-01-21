@@ -45,8 +45,6 @@ const ScrollSpy = (($) => {
   const ClassName = {
     DROPDOWN_ITEM : 'dropdown-item',
     DROPDOWN_MENU : 'dropdown-menu',
-    NAV_LINK      : 'nav-link',
-    NAV           : 'nav',
     ACTIVE        : 'active'
   }
 
@@ -54,8 +52,6 @@ const ScrollSpy = (($) => {
     DATA_SPY        : '[data-spy="scroll"]',
     ACTIVE          : '.active',
     LIST_ITEM       : '.list-item',
-    LI              : 'li',
-    LI_DROPDOWN     : 'li.dropdown',
     NAV_LINKS       : '.nav-link',
     DROPDOWN        : '.dropdown',
     DROPDOWN_ITEMS  : '.dropdown-item',
