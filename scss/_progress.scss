@@ -20,6 +20,10 @@
   background-color: $progress-bar-bg;
 }
 
+.progress-bar > span {
+  vertical-align: middle;
+}
+  
 // Striped
 .progress-bar-striped {
   @include gradient-striped();
