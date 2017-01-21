@@ -16,6 +16,7 @@
     @include hover {
       z-index: 2;
     }
+
     &:focus,
     &:active,
     &.active {
@@ -64,15 +65,18 @@
 .btn-group > .btn-group {
   float: left;
 }
+
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
+
 .btn-group > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     @include border-right-radius(0);
   }
 }
+
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
   @include border-left-radius(0);
 }
@@ -156,22 +160,27 @@
   &:not(:first-child):not(:last-child) {
     border-radius: 0;
   }
+
   &:first-child:not(:last-child) {
     @include border-bottom-radius(0);
   }
+
   &:last-child:not(:first-child) {
     @include border-top-radius(0);
   }
 }
+
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
+
 .btn-group-vertical > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     @include border-bottom-radius(0);
   }
 }
+
 .btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
   @include border-top-radius(0);
 }

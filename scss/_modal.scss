@@ -31,8 +31,10 @@
     @include transition($modal-transition);
     transform: translate(0, -25%);
   }
+
   &.show .modal-dialog { transform: translate(0, 0); }
 }
+
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;

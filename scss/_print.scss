@@ -57,6 +57,7 @@
     pre {
       white-space: pre-wrap !important;
     }
+
     pre,
     blockquote {
       border: $border-width solid #999;   // Bootstrap custom code; using `$border-width` instead of 1px
@@ -95,6 +96,7 @@
     .navbar {
       display: none;
     }
+
     .badge {
       border: $border-width solid #000;
     }
@@ -107,6 +109,7 @@
         background-color: #fff !important;
       }
     }
+
     .table-bordered {
       th,
       td {

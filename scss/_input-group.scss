@@ -55,6 +55,7 @@
 .input-group-lg > .input-group-btn > .btn {
   @extend .form-control-lg;
 }
+
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
@@ -84,6 +85,7 @@
     font-size: $font-size-sm;
     @include border-radius($input-border-radius-sm);
   }
+
   &.form-control-lg {
     padding: $input-padding-y-lg $input-padding-x-lg;
     font-size: $font-size-lg;
@@ -113,9 +115,11 @@
 .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
   @include border-right-radius(0);
 }
+
 .input-group-addon:not(:last-child) {
   border-right: 0;
 }
+
 .input-group .form-control:not(:first-child),
 .input-group-addon:not(:first-child),
 .input-group-btn:not(:first-child) > .btn,
@@ -125,6 +129,7 @@
 .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
   @include border-left-radius(0);
 }
+
 .form-control + .input-group-addon:not(:first-child) {
   border-left: 0;
 }
@@ -164,6 +169,7 @@
       margin-right: (-$input-btn-border-width);
     }
   }
+
   &:not(:first-child) {
     > .btn,
     > .btn-group {
