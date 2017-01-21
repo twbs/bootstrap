@@ -532,13 +532,13 @@ $(function () {
       .on('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
         $dropdown.trigger($.Event('keydown', { which: 40 }))
-        assert.ok($(document.activeElement)[0] === $('#item1')[0], 'item1 is focused')
+        assert.ok($(document.activeElement).is($('#item1')), 'item1 is focused')
 
         $(document.activeElement).trigger($.Event('keydown', { which: 40 }))
-        assert.ok($(document.activeElement)[0] === $('#item2')[0], 'item2 is focused')
+        assert.ok($(document.activeElement).is($('#item2')), 'item2 is focused')
 
         $(document.activeElement).trigger($.Event('keydown', { which: 38 }))
-        assert.ok($(document.activeElement)[0] === $('#item1')[0], 'item1 is focused')
+        assert.ok($(document.activeElement).is($('#item1')), 'item1 is focused')
         done()
       })
     $dropdown.trigger('click')
