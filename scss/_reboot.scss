@@ -8,7 +8,7 @@
 // Normalize is licensed MIT. https://github.com/necolas/normalize.css
 
 
-// `<html>`
+// Document
 //
 // 1. Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
 // 2. Change the default font family in all browsers.
@@ -33,7 +33,6 @@ html {
 *::after {
   box-sizing: inherit; // 1
 }
-
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
 @at-root {
@@ -232,7 +231,7 @@ pre {
   margin-top: 0;
   // Reset browser default of `1em` to use `rem`s
   margin-bottom: 1rem;
-  // Normalize v4 removed this property, causing `<pre>` content to break out of wrapping code snippets
+  // Don't allow content to break outside
   overflow: auto;
 }
 
@@ -242,8 +241,7 @@ pre {
 //
 
 figure {
-  // Normalize adds `margin` to `figure`s as browsers apply it inconsistently.
-  // We reset that to create a better flow in-page.
+  // Apply a consistent margin strategy (matches our type styles).
   margin: 0 0 1rem;
 }
 
@@ -253,11 +251,7 @@ figure {
 //
 
 img {
-  // By default, `<img>`s are `inline-block`. This assumes that, and vertically
-  // centers them. This won't apply should you reset them to `block` level.
   vertical-align: middle;
-  // Note: `<img>`s are deliberately not made responsive by default.
-  // For the rationale behind this, see the comments on the `.img-fluid` class.
   border-style: none; // Remove the border on images inside links in IE 10-.
 }
 
@@ -305,10 +299,7 @@ textarea {
 //
 
 table {
-  // No longer part of Normalize since v4
-  border-collapse: collapse;
-  // Reset for nesting within parents with `background-color`.
-  background-color: $table-bg;
+  border-collapse: collapse; // Prevent double borders
 }
 
 caption {
@@ -320,7 +311,7 @@ caption {
 }
 
 th {
-  // Centered by default, but left-align-ed to match the `td`s below.
+  // Matches default `<td>` alignment
   text-align: left;
 }
 
@@ -481,13 +472,12 @@ progress {
   -webkit-appearance: button; // 1
 }
 
+//
+// Correct element displays
+//
 
-// todo: needed?
 output {
   display: inline-block;
-//  font-size: $font-size-base;
-//  line-height: $line-height;
-//  color: $input-color;
 }
 
 summary {
