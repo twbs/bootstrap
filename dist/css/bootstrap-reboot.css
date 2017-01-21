@@ -329,7 +329,7 @@ a {
   text-decoration: none;
 }
 
-a:focus, a:hover {
+a:hover {
   color: #014c8c;
   text-decoration: underline;
 }
