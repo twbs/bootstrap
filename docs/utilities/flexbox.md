@@ -354,9 +354,9 @@ Change the _visual_ order of specific flex items with a handful of `order` utili
 
 {% example html %}
 <div class="d-flex flex-nowrap bd-highlight">
-  <div class="flex-last p-2 bd-highlight">First flex item</div>
+  <div class="order-last p-2 bd-highlight">First flex item</div>
   <div class="p-2 bd-highlight">Second flex item</div>
-  <div class="flex-first p-2 bd-highlight">Third flex item</div>
+  <div class="order-first p-2 bd-highlight">Third flex item</div>
 </div>
 {% endexample %}
 
@@ -365,7 +365,7 @@ Responsive variations also exist for `order`.
 {% for bp in site.data.breakpoints %}
 - `.order{{ bp.abbr }}-first`
 - `.order{{ bp.abbr }}-last`
-- `.order{{ bp.abbr }}-unordered`{% endfor %}
+- `.order{{ bp.abbr }}-0`{% endfor %}
 
 ## Align content
 

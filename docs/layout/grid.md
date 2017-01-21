@@ -514,13 +514,13 @@ Use flexbox utilities for controlling the **visual order** of your content.
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col flex-unordered">
+    <div class="col order-0">
       First, but unordered
     </div>
-    <div class="col flex-last">
+    <div class="col order-last">
       Second, but last
     </div>
-    <div class="col flex-first">
+    <div class="col order-first">
       Third, but first
     </div>
   </div>
