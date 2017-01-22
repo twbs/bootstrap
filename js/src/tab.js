@@ -155,8 +155,7 @@ const Tab = (($) => {
       const active          = $(container).find(Selector.ACTIVE)[0]
       const isTransitioning = callback
         && Util.supportsTransitionEnd()
-        && (active && $(active).hasClass(ClassName.FADE)
-           || Boolean($(container).find(Selector.FADE_CHILD)[0]))
+        && (active && $(active).hasClass(ClassName.FADE))
 
       const complete = () => this._transitionComplete(
         element,
