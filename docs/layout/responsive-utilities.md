@@ -132,7 +132,8 @@ Try to use these on a limited basis and avoid creating entirely different versio
   </tbody>
 </table>
 
-<h2 id="responsive-utilities-print">Print classes</h2>
+## Print classes
+
 <p>Similar to the regular responsive classes, use these for toggling content for print.</p>
 <table class="table table-bordered table-striped responsive-utilities table-responsive">
   <thead>
