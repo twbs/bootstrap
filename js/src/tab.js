@@ -152,7 +152,7 @@ const Tab = (($) => {
     // private
 
     _activate(element, container, callback) {
-      const active          = $(container).find(Selector.ACTIVE_CHILD)[0]
+      const active          = $(container).find(Selector.ACTIVE)[0]
       const isTransitioning = callback
         && Util.supportsTransitionEnd()
         && (active && $(active).hasClass(ClassName.FADE)
