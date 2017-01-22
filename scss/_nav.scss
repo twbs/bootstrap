@@ -18,7 +18,8 @@
     text-decoration: none;
   }
 
-  &.active {
+  &.active,
+  .show & {
     color: $nav-pills-active-link-color;
     cursor: default;
     background-color: $nav-pills-active-link-bg;
