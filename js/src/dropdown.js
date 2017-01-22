@@ -28,7 +28,7 @@ const Dropdown = (($) => {
   const ARROW_UP_KEYCODE         = 38 // KeyboardEvent.which value for up arrow key
   const ARROW_DOWN_KEYCODE       = 40 // KeyboardEvent.which value for down arrow key
   const RIGHT_MOUSE_BUTTON_WHICH = 3 // MouseEvent.which value for the right button (assuming a right-handed mouse)
-  const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEYCODE}|${ARROW_DOWN_KEYCODE}|${ESCAPE_KEYCODE}|${SPACE_KEYCODE}`)
+  const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEYCODE}|${ARROW_DOWN_KEYCODE}|${ESCAPE_KEYCODE}`)
 
   const Event = {
     HIDE             : `hide${EVENT_KEY}`,
@@ -213,7 +213,7 @@ const Dropdown = (($) => {
     }
 
     static _dataApiKeydownHandler(event) {
-      if (!REGEXP_KEYDOWN.test(event.which) ||
+      if (!REGEXP_KEYDOWN.test(event.which) && /button/i.test(event.target.tagName) && event.which === SPACE_KEYCODE ||
          /input|textarea/i.test(event.target.tagName)) {
         return
       }
@@ -228,8 +228,8 @@ const Dropdown = (($) => {
       const parent   = Dropdown._getParentFromElement(this)
       const isActive = $(parent).hasClass(ClassName.SHOW)
 
-      if (!isActive && event.which !== ESCAPE_KEYCODE ||
-           isActive && event.which === ESCAPE_KEYCODE) {
+      if (!isActive && (event.which !== ESCAPE_KEYCODE || event.which !== SPACE_KEYCODE) ||
+           isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
 
         if (event.which === ESCAPE_KEYCODE) {
           const toggle = $(parent).find(Selector.DATA_TOGGLE)[0]
