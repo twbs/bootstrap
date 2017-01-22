@@ -741,25 +741,46 @@ $mark-bg:                        $state-warning-bg !default;
 
 // Cards
 
-$card-spacer-x:            1.25rem !default;
-$card-spacer-y:            .75rem !default;
-$card-border-width:        1px !default;
-$card-border-radius:       $border-radius !default;
-$card-border-color:        rgba($black,.125) !default;
-$card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
-$card-cap-bg:              $gray-lightest !default;
-$card-bg:                  $white !default;
+$card-spacer-x:                 1.25rem !default;
+$card-spacer-y:                 .75rem !default;
+$card-border-width:             1px !default;
+$card-border-radius:            $border-radius !default;
+$card-border-color:             rgba($black,.125) !default;
+$card-border-radius-inner:      calc(#{$card-border-radius} - #{$card-border-width}) !default;
+$card-cap-bg:                   $gray-lightest !default;
+$card-bg:                       $white !default;
 
-$card-link-hover-color:    $white !default;
+$card-link-hover-color:         $white !default;
 
-$card-img-overlay-padding: 1.25rem !default;
+$card-img-overlay-padding:      1.25rem !default;
 
-$card-deck-margin:          ($grid-gutter-width-base / 2) !default;
+$card-deck-margin:              ($grid-gutter-width-base / 2) !default;
 
-$card-columns-count:        3 !default;
-$card-columns-gap:          1.25rem !default;
-$card-columns-margin:       $card-spacer-y !default;
+$card-columns-count:            3 !default;
+$card-columns-gap:              1.25rem !default;
+$card-columns-margin:           $card-spacer-y !default;
 
+$card-primary-bg:               $brand-primary !default;
+$card-primary-border:           $card-primary-bg !default;
+$card-outline-primary-border:   $card-primary-bg !default;
+
+$card-success-bg:               $brand-success !default;
+$card-success-border:           $card-success-bg !default;
+$card-outline-success-border:   $card-success-bg !default;
+
+$card-info-bg:                  $brand-info !default;
+$card-info-border:              $btn-info-bg !default;
+$card-outline-info-border:      $card-info-bg !default;
+
+$card-warning-bg:               $brand-warning !default;
+$card-warning-border:           $card-warning-bg !default;
+$card-outline-warning-border:   $card-warning-bg !default;
+
+$card-danger-bg:                $brand-danger !default;
+$card-danger-border:            $card-danger-bg !default;
+$card-outline-danger-border:    $card-danger-bg !default;
+
+$card-outline-secondary-border: #ccc !default;
 
 // Tooltips
 
