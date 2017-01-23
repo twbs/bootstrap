@@ -22,6 +22,16 @@ html {
   box-sizing: inherit;
 }
 
+//http://stackoverflow.com/questions/35451371/flex-css-property-in-table-doesnt-work-on-ie-and-firefox
+//Not sure what the best way to do this is since someone may want a table outside of the flex grid
+.container {
+  table,
+  tbody,
+  td,
+  th {
+    display: block;
+  }
+}
 
 //
 // Variables
