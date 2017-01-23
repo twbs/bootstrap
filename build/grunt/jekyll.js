@@ -10,11 +10,18 @@ module.exports = {
       raw: 'github: true'
     }
   },
-  watch: { // Another target
+  dev: {
+    options: {
+      dest: '_gh_pages',
+      raw: 'livereload: true\nlivereload_port: <%= watch.docs.options.livereload %>'
+    }
+  },
+  watch: {
     options: {
       watch: true,
       incremental: true,
-      dest: '_gh_pages'
+      dest: '_gh_pages',
+      raw: 'livereload: true\nlivereload_port: <%= watch.docs.options.livereload %>'
     }
   }
 }

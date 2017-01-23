@@ -15,7 +15,7 @@ module.exports = {
   // Publish production doc
   publish: ['buildcontrol:pages'],
   // Watch and serve the docs
-  'watch-serve': ['connect:docs', 'concurrent:watch'],
+  'watch-serve': ['jekyll:dev', 'connect:docs', 'concurrent:watch'],
 
   // --------------------------------------------------------------------------
   // Test suite

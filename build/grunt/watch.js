@@ -19,9 +19,9 @@ module.exports = {
     files: 'docs/assets/scss/**/*.scss',
     tasks: ['watch-task-docs-css']
   },
-  'docs-pages': {
+  docs: {
     options: {
-      livereload: true
+      livereload: 9002
     },
     files: '_gh_pages/**/*'
   }

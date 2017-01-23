@@ -57,6 +57,6 @@ Holder.addTheme('gray', {
   fontweight: 'normal'
 })
 </script>
-{% unless site.github %}
-  <script src="//localhost:35729/livereload.js"></script>
-{% endunless %}
+{% if site.livereload %}
+  <script src="//localhost:{{ site.livereload_port }}/livereload.js"></script>
+{% endif %}
