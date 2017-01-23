@@ -292,7 +292,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div role="tabpanel" class="tab-pane fade show active" id="home" aria-labelledBy="home-tab">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledBy="home-tab">
       <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledBy="profile-tab">
@@ -326,18 +326,10 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div role="tabpanel" class="tab-pane fade show active" id="home" aria-labelledBy="home-tab">
-    <p>...</p>
-  </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledBy="profile-tab">
-    <p>...</p>
-  </div>
-  <div class="tab-pane fade" id="dropdown1" role="tabpanel" aria-labelledBy="dropdown1-tab">
-    <p>...</p>
-  </div>
-  <div class="tab-pane fade" id="dropdown2" role="tabpanel" aria-labelledBy="dropdown2-tab">
-    <p>...</p>
-  </div>
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledBy="home-tab">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledBy="profile-tab">...</div>
+  <div class="tab-pane fade" id="dropdown1" role="tabpanel" aria-labelledBy="dropdown1-tab">...</div>
+  <div class="tab-pane fade" id="dropdown2" role="tabpanel" aria-labelledBy="dropdown2-tab">...</div>
 </div>
 {% endhighlight %}
 
@@ -358,7 +350,7 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, as 
     </div>
   </div>
   <div class="tab-content" id="nav-abContent">
-    <div role="tabpanel" class="tab-pane fade show active" id="nav-home" aria-labelledBy="nav-home-tab">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledBy="nav-home-tab">
       <p>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</p>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledBy="nav-profile-tab">
@@ -388,20 +380,113 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, as 
   </div>
 </nav>
 <div class="tab-content" id="nav-abContent">
-  <div role="tabpanel" class="tab-pane fade show active" id="nav-home" aria-labelledBy="nav-home-tab">
-    <p>...</p>
-  </div>
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledBy="nav-profile-tab">
-    <p>...</p>
-  </div>
-  <div class="tab-pane fade" id="nav-dropdown1" role="tabpanel" aria-labelledBy="nav-dropdown1-tab">
-    <p>...</p>
-  </div>
-  <div class="tab-pane fade" id="nav-dropdown2" role="tabpanel" aria-labelledBy="nav-dropdown2-tab">
-    <p>...</p>
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledBy="nav-home-tab">...</div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledBy="nav-profile-tab">...</div>
+  <div class="tab-pane fade" id="nav-dropdown1" role="tabpanel" aria-labelledBy="nav-dropdown1-tab">...</div>
+  <div class="tab-pane fade" id="nav-dropdown2" role="tabpanel" aria-labelledBy="nav-dropdown2-tab">...</div>
+</div>
+{% endhighlight %}
+
+The tabs plugin also works with pills.
+
+<div class="bd-example bd-example-tabs" role="tabpanel">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-expanded="true">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-expanded="true">Profile</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" id="pills-dropdown1-tab" href="#pills-dropdown1" role="tab" data-toggle="pill" aria-controls="pills-dropdown1">@fat</a>
+        <a class="dropdown-item" id="pills-dropdown2-tab" href="#pills-dropdown2" role="tab" data-toggle="pill" aria-controls="pills-dropdown2">@mdo</a>
+      </div>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-abContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledBy="pills-home-tab">
+      <p>Consequat occaecat ullamco amet non eiusmod nostrud dolore irure incididunt est duis anim sunt officia. Fugiat velit proident aliquip nisi incididunt nostrud exercitation proident est nisi. Irure magna elit commodo anim ex veniam culpa eiusmod id nostrud sit cupidatat in veniam ad. Eiusmod consequat eu adipisicing minim anim aliquip cupidatat culpa excepteur quis. Occaecat sit eu exercitation irure Lorem incididunt nostrud.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledBy="pills-profile-tab">
+      <p>Ad pariatur nostrud pariatur exercitation ipsum ipsum culpa mollit commodo mollit ex. Aute sunt incididunt amet commodo est sint nisi deserunt pariatur do. Aliquip ex eiusmod voluptate exercitation cillum id incididunt elit sunt. Qui minim sit magna Lorem id et dolore velit Lorem amet exercitation duis deserunt. Anim id labore elit adipisicing ut in id occaecat pariatur ut ullamco ea tempor duis.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-dropdown1" role="tabpanel" aria-labelledBy="pills-dropdown1-tab">
+      <p>Est quis nulla laborum officia ad nisi ex nostrud culpa Lorem excepteur aliquip dolor aliqua irure ex. Nulla ut duis ipsum nisi elit fugiat commodo sunt reprehenderit laborum veniam eu veniam. Eiusmod minim exercitation fugiat irure ex labore incididunt do fugiat commodo aliquip sit id deserunt reprehenderit aliquip nostrud. Amet ex cupidatat excepteur aute veniam incididunt mollit cupidatat esse irure officia elit do ipsum ullamco Lorem. Ullamco ut ad minim do mollit labore ipsum laboris ipsum commodo sunt tempor enim incididunt. Commodo quis sunt dolore aliquip aute tempor irure magna enim minim reprehenderit. Ullamco consectetur culpa veniam sint cillum aliqua incididunt velit ullamco sunt ullamco quis quis commodo voluptate. Mollit nulla nostrud adipisicing aliqua cupidatat aliqua pariatur mollit voluptate voluptate consequat non.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-dropdown2" role="tabpanel" aria-labelledBy="nav-dropdown2-tab">
+      <p>Tempor anim aliquip qui nisi sit minim ex in cupidatat ipsum adipisicing. Ad non magna anim id ullamco do dolor sit adipisicing nulla exercitation. Qui Lorem eiusmod sint in laboris pariatur est adipisicing non sunt occaecat in mollit culpa sit. Aliquip id duis do do quis mollit ut duis. Non dolor reprehenderit do esse nostrud deserunt non eiusmod minim anim sit voluptate ipsum. Nulla elit aliqua do sunt labore velit anim nisi dolor nostrud consectetur fugiat ex qui velit ex tempor. Do cillum qui anim aliquip id cillum duis ex laboris tempor incididunt sint dolor ullamco tempor. Fugiat laboris enim anim veniam aliquip cillum irure.</p>
+    </div>
   </div>
 </div>
 
+{% highlight html %}
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-expanded="true">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-expanded="true">Profile</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" id="pills-dropdown1-tab" href="#pills-dropdown1" role="tab" data-toggle="pill" aria-controls="pills-dropdown1">@fat</a>
+      <a class="dropdown-item" id="pills-dropdown2-tab" href="#pills-dropdown2" role="tab" data-toggle="pill" aria-controls="pills-dropdown2">@mdo</a>
+    </div>
+  </li>
+</ul>
+<div class="tab-content" id="pills-abContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledBy="pills-home-tab">...</div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledBy="pills-profile-tab">...</div>
+  <div class="tab-pane fade" id="pills-dropdown1" role="tabpanel" aria-labelledBy="pills-dropdown1-tab">...</div>
+  <div class="tab-pane fade" id="pills-dropdown2" role="tabpanel" aria-labelledBy="pills-dropdown2-tab">...</div>
+</div>
+{% endhighlight %}
+
+And with vertical pills.
+
+<div class="bd-example bd-example-tabs" role="tabpanel">
+  <div class="row">
+    <nav class="nav flex-column nav-pills col-3" id="v-pills-tab" role="tablist">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-expanded="true">Home</a>
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Profile</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-expanded="true">Messages</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-expanded="true">Settings</a>
+    </nav>
+    <div class="tab-content col-9" id="v-pills-abContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledBy="v-pills-home-tab">
+        <p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur. Deserunt non laborum enim et cillum eu deserunt excepteur ea incididunt minim occaecat. Lorem aliquip non veniam fugiat minim eiusmod sit tempor magna velit.</p>
+      </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledBy="v-pills-profile-tab">
+        <p>Culpa dolor voluptate do laboris laboris irure reprehenderit id incididunt duis pariatur mollit aute magna pariatur consectetur. Eu veniam duis non ut dolor deserunt commodo et minim in quis laboris ipsum velit id veniam. Quis ut consectetur adipisicing officia excepteur non sit. Ut et elit aliquip labore Lorem enim eu. Ullamco mollit occaecat dolore ipsum id officia mollit qui esse anim eiusmod do sint minim consectetur qui. Proident esse fugiat cillum Lorem pariatur nostrud ut adipisicing in quis tempor ex labore labore.</p>
+      </div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledBy="v-pills-messages-tab">
+        <p>Fugiat id quis dolor culpa eiusmod anim velit excepteur proident dolor aute qui magna. Ad proident laboris ullamco esse anim Lorem Lorem veniam quis Lorem irure occaecat velit nostrud magna nulla. Velit et et proident Lorem do ea tempor officia dolor. Reprehenderit Lorem aliquip labore est magna commodo est ea veniam consectetur. Qui aute dolor consequat amet ad enim culpa culpa eu tempor velit reprehenderit exercitation commodo ad incididunt cupidatat.</p>
+      </div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledBy="v-pills-settings-tab">
+        <p>Eu dolore ea ullamco dolore Lorem id cupidatat excepteur reprehenderit consectetur elit id dolor proident in cupidatat officia. Voluptate excepteur commodo labore nisi cillum duis aliqua do. Aliqua amet qui mollit consectetur nulla mollit velit aliqua veniam nisi id do Lorem deserunt amet. Culpa ullamco sit adipisicing labore officia magna elit nisi in aute tempor commodo eiusmod. Qui laborum laborum culpa commodo eu eu eu sunt elit irure duis amet nulla est amet dolore.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% highlight html %}
+<div class="row">
+  <nav class="nav flex-column nav-pills col-3" id="v-pills-tab" role="tablist">
+    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-expanded="true">Home</a>
+    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Profile</a>
+    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-expanded="true">Messages</a>
+    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-expanded="true">Settings</a>
+  </nav>
+  <div class="tab-content col-9" id="v-pills-abContent">
+    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledBy="v-pills-home-tab">...</div>
+    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledBy="v-pills-profile-tab">...</div>
+    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledBy="v-pills-messages-tab">...</div>
+    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledBy="v-pills-settings-tab">...</div>
+  </div>
+</div>
 {% endhighlight %}
 
 ### Using data attributes
