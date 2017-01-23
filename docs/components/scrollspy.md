@@ -120,86 +120,83 @@ The ScrollSpy plugin also works with nested `.nav`s. If a sub-`.nav` is `.active
 
 <div class="bd-example">
   <div class="row">
-    <nav id="navbar-example3" class="navbar navbar-light bg-faded col-4">
+    <div class="col-4">
+      <nav id="navbar-example3" class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link" href="#item-1">Item 1</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ml-3 my-1 font-size-sm" href="#item-1-1">Item 1-1</a>
+            <a class="nav-link ml-3 my-1 font-size-sm" href="#item-1-2">Item 1-2</a>
+          </nav>
+          <a class="nav-link" href="#item-2">Item2</a>
+          <a class="nav-link" href="#item-3">Item3</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ml-3 my-1 font-size-sm" href="#item-3-1">Item 3-1</a>
+            <a class="nav-link ml-3 my-1 font-size-sm" href="#item-3-2">Item 3-2</a>
+          </nav>
+        </nav>
+      </nav>
+    </div>
+    <div class="col-8">
+      <div data-spy="scroll" data-target="#navbar-example3" data-offset="0" class="scrollspy-example-2">
+        <h4 id="item-1">Item 1</h4>
+        <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
+        <h5 id="item-1-1">Item 1-1</h5>
+        <p>Amet tempor mollit aliquip pariatur excepteur commodo do ea cillum commodo Lorem et occaecat elit qui et. Aliquip labore ex ex esse voluptate occaecat Lorem ullamco deserunt. Aliqua cillum excepteur irure consequat id quis ea. Sit proident ullamco aute magna pariatur nostrud labore. Reprehenderit aliqua commodo eiusmod aliquip est do duis amet proident magna consectetur consequat eu commodo fugiat non quis. Enim aliquip exercitation ullamco adipisicing voluptate excepteur minim exercitation minim minim commodo adipisicing exercitation officia nisi adipisicing. Anim id duis qui consequat labore adipisicing sint dolor elit cillum anim et fugiat.</p>
+        <h5 id="item-1-2">Item 2-2</h5>
+        <p>Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod. Anim occaecat nulla in non consequat eiusmod velit incididunt.</p>
+        <h4 id="item-2">Item 2</h4>
+        <p>Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur mollit voluptate est in duis laboris ad sit ipsum anim Lorem. Incididunt veniam velit elit elit veniam Lorem aliqua quis ullamco deserunt sit enim elit aliqua esse irure. Laborum nisi sit est tempor laborum mollit labore officia laborum excepteur commodo non commodo dolor excepteur commodo. Ipsum fugiat ex est consectetur ipsum commodo tempor sunt in proident.</p>
+        <h4 id="item-3">Item 3</h4>
+        <p>Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco est ex ullamco excepteur.</p>
+        <h5 id="item-3-1">Item 3-1</h5>
+        <p>Deserunt quis elit Lorem eiusmod amet enim enim amet minim Lorem proident nostrud. Ea id dolore anim exercitation aute fugiat labore voluptate cillum do laboris labore. Ex velit exercitation nisi enim labore reprehenderit labore nostrud ut ut. Esse officia sunt duis aliquip ullamco tempor eiusmod deserunt irure nostrud irure. Ullamco proident veniam laboris ea consectetur magna sunt ex exercitation aliquip minim enim culpa occaecat exercitation. Est tempor excepteur aliquip laborum consequat do deserunt laborum esse eiusmod irure proident ipsum esse qui.</p>
+        <h5 id="item-3-2">Item 3-2</h5>
+        <p>Labore sit culpa commodo elit adipisicing sit aliquip elit proident voluptate minim mollit nostrud aute reprehenderit do. Mollit excepteur eu Lorem ipsum anim commodo sint labore Lorem in exercitation velit incididunt. Occaecat consectetur nisi in occaecat proident minim enim sunt reprehenderit exercitation cupidatat et do officia. Aliquip consequat ad labore labore mollit ut amet. Sit pariatur tempor proident in veniam culpa aliqua excepteur elit magna fugiat eiusmod amet officia.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% highlight html %}
+<div class="row">
+  <div class="col-4">
+    <nav id="navbar-example3" class="navbar navbar-light bg-faded">
       <a class="navbar-brand" href="#">Navbar</a>
       <nav class="nav nav-pills flex-column">
         <a class="nav-link" href="#item-1">Item 1</a>
         <nav class="nav nav-pills flex-column">
           <a class="nav-link ml-3 my-1 font-size-sm" href="#item-1-1">Item 1-1</a>
           <a class="nav-link ml-3 my-1 font-size-sm" href="#item-1-2">Item 1-2</a>
-          <a class="nav-link ml-3 my-1 font-size-sm" href="#item-1-3">Item 1-3</a>
         </nav>
         <a class="nav-link" href="#item-2">Item2</a>
         <a class="nav-link" href="#item-3">Item3</a>
         <nav class="nav nav-pills flex-column">
           <a class="nav-link ml-3 my-1 font-size-sm" href="#item-3-1">Item 3-1</a>
           <a class="nav-link ml-3 my-1 font-size-sm" href="#item-3-2">Item 3-2</a>
-          <a class="nav-link ml-3 my-1 font-size-sm" href="#item-3-3">Item 3-3</a>
         </nav>
       </nav>
     </nav>
-    <div data-spy="scroll" data-target="#navbar-example3" data-offset="0" class="scrollspy-example-2 col-8">
+  </div>
+  <div class="col-8">
+    <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
       <h4 id="item-1">Item 1</h4>
-      <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
+      <p>...</p>
       <h5 id="item-1-1">Item 1-1</h5>
-      <p>Amet tempor mollit aliquip pariatur excepteur commodo do ea cillum commodo Lorem et occaecat elit qui et. Aliquip labore ex ex esse voluptate occaecat Lorem ullamco deserunt. Aliqua cillum excepteur irure consequat id quis ea. Sit proident ullamco aute magna pariatur nostrud labore. Reprehenderit aliqua commodo eiusmod aliquip est do duis amet proident magna consectetur consequat eu commodo fugiat non quis. Enim aliquip exercitation ullamco adipisicing voluptate excepteur minim exercitation minim minim commodo adipisicing exercitation officia nisi adipisicing. Anim id duis qui consequat labore adipisicing sint dolor elit cillum anim et fugiat.</p>
+      <p>...</p>
       <h5 id="item-1-2">Item 2-2</h5>
-      <p>Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod. Anim occaecat nulla in non consequat eiusmod velit incididunt.</p>
-      <h5 id="item-1-3">Item 2-3</h5>
-      <p>Ex fugiat dolore commodo et non proident incididunt elit reprehenderit. Eu excepteur aliquip id consectetur irure ut adipisicing veniam consequat non qui esse sint cupidatat do incididunt. Velit eu dolor excepteur qui exercitation aliqua nisi quis dolore exercitation proident officia culpa nostrud. Ullamco et pariatur in eu ad ut incididunt esse in ipsum excepteur ullamco duis.</p>
+      <p>...</p>
       <h4 id="item-2">Item 2</h4>
-      <p>Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur mollit voluptate est in duis laboris ad sit ipsum anim Lorem. Incididunt veniam velit elit elit veniam Lorem aliqua quis ullamco deserunt sit enim elit aliqua esse irure. Laborum nisi sit est tempor laborum mollit labore officia laborum excepteur commodo non commodo dolor excepteur commodo. Ipsum fugiat ex est consectetur ipsum commodo tempor sunt in proident.</p>
-      <h4 id="item-3">Item 2</h4>
-      <p>Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco est ex ullamco excepteur.</p>
-      <h4 id="item-3-1">Item 3-1</h4>
-      <p>Irure veniam ut tempor cupidatat voluptate cupidatat do labore consequat ex sunt Lorem labore quis fugiat adipisicing. Aliqua voluptate amet ad sunt culpa cupidatat dolor. Sunt sunt aute labore nisi ex ex laboris ea duis non occaecat. Sunt proident irure veniam nostrud adipisicing est est veniam mollit non aliqua nisi deserunt nostrud culpa ullamco.</p>
-      <h4 id="item-3-2">Item 3-2</h4>
-      <p>Non eu officia consequat commodo incididunt ullamco fugiat anim ad dolor. Amet sint irure elit cillum cillum ex ad aute tempor ut aliquip reprehenderit ut. Consectetur minim est labore Lorem occaecat minim fugiat ex excepteur consequat nisi pariatur.</p>
-      <h4 id="item-3-3">Item 3-3</h4>
-      <p>Labore sit culpa commodo elit adipisicing sit aliquip elit proident voluptate minim mollit nostrud aute reprehenderit do. Mollit excepteur eu Lorem ipsum anim commodo sint labore Lorem in exercitation velit incididunt. Occaecat consectetur nisi in occaecat proident minim enim sunt reprehenderit exercitation cupidatat et do officia. Aliquip consequat ad labore labore mollit ut amet. Sit pariatur tempor proident in veniam culpa aliqua excepteur elit magna fugiat eiusmod amet officia.</p>
-      <p>Deserunt quis elit Lorem eiusmod amet enim enim amet minim Lorem proident nostrud. Ea id dolore anim exercitation aute fugiat labore voluptate cillum do laboris labore. Ex velit exercitation nisi enim labore reprehenderit labore nostrud ut ut. Esse officia sunt duis aliquip ullamco tempor eiusmod deserunt irure nostrud irure. Ullamco proident veniam laboris ea consectetur magna sunt ex exercitation aliquip minim enim culpa occaecat exercitation. Est tempor excepteur aliquip laborum consequat do deserunt laborum esse eiusmod irure proident ipsum esse qui.</p>
+      <p>...</p>
+      <h4 id="item-3">Item 3</h4>
+      <p>...</p>
+      <h5 id="item-3-1">Item 3-1</h5>
+      <p>...</p>
+      <h5 id="item-3-2">Item 3-2</h5>
+      <p>...</p>
     </div>
   </div>
-</div>
-
-{% highlight html %}
-<nav id="navbar-example3" class="navbar navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <nav class="nav nav-pills flex-column">
-    <a class="nav-link" href="#item-1">Item 1</a>
-    <nav class="nav nav-pills flex-column">
-      <a class="nav-link ml-3 my-1 font-size-sm" href="#item-1-1">Item 1-1</a>
-      <a class="nav-link ml-3 my-1 font-size-sm" href="#item-1-2">Item 1-2</a>
-      <a class="nav-link ml-3 my-1 font-size-sm" href="#item-1-3">Item 1-3</a>
-    </nav>
-    <a class="nav-link" href="#item-2">Item2</a>
-    <a class="nav-link" href="#item-3">Item3</a>
-    <nav class="nav nav-pills flex-column">
-    <a class="nav-link ml-3 my-1 font-size-sm" href="#item-3-1">Item 3-1</a>
-    <a class="nav-link ml-3 my-1 font-size-sm" href="#item-3-2">Item 3-2</a>
-    <a class="nav-link ml-3 my-1 font-size-sm" href="#item-3-3">Item 3-3</a>
-    </nav>
-  </nav>
-</nav>
-<div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
-  <h4 id="item-1">Item 1</h4>
-  <p>...</p>
-  <h5 id="item-1-1">Item 1-1</h5>
-  <p>...</p>
-  <h5 id="item-1-2">Item 2-2</h5>
-  <p>...</p>
-  <h5 id="item-1-3">Item 2-3</h5>
-  <p>...</p>
-  <h4 id="item-2">Item 2</h4>
-  <p>...</p>
-  <h4 id="item-3">Item 2</h4>
-  <p>...</p>
-  <h4 id="item-3-1">Item 3-1</h4>
-  <p>...</p>
-  <h4 id="item-3-2">Item 3-2</h4>
-  <p>...</p>
-  <h4 id="item-3-3">Item 3-3</h4>
-  <p>...</p>
 </div>
 {% endhighlight %}
 
