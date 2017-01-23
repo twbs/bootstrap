@@ -366,7 +366,7 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, as 
 </div>
 
 {% highlight html %}
-<nav class="nav nav-tabs" id="myTab" role="tablist">
+<div class="nav nav-tabs" id="myTab" role="tablist">
   <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-expanded="true">Home</a>
   <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">Profile</a>
   <div class="dropdown">
@@ -378,7 +378,7 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, as 
       <a class="dropdown-item" id="nav-dropdown2-tab" href="#nav-dropdown2" role="tab" data-toggle="tab" aria-controls="nav-dropdown2">@mdo</a>
     </div>
   </div>
-</nav>
+</div>
 <div class="tab-content" id="nav-abContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledBy="nav-home-tab">...</div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledBy="nav-profile-tab">...</div>
@@ -449,12 +449,12 @@ And with vertical pills.
 
 <div class="bd-example bd-example-tabs" role="tabpanel">
   <div class="row">
-    <nav class="nav flex-column nav-pills col-3" id="v-pills-tab" role="tablist">
+    <div class="nav flex-column nav-pills col-3" id="v-pills-tab" role="tablist">
       <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-expanded="true">Home</a>
       <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Profile</a>
       <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-expanded="true">Messages</a>
       <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-expanded="true">Settings</a>
-    </nav>
+    </div>
     <div class="tab-content col-9" id="v-pills-abContent">
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledBy="v-pills-home-tab">
         <p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur. Deserunt non laborum enim et cillum eu deserunt excepteur ea incididunt minim occaecat. Lorem aliquip non veniam fugiat minim eiusmod sit tempor magna velit.</p>
@@ -474,12 +474,12 @@ And with vertical pills.
 
 {% highlight html %}
 <div class="row">
-  <nav class="nav flex-column nav-pills col-3" id="v-pills-tab" role="tablist">
+  <div class="nav flex-column nav-pills col-3" id="v-pills-tab" role="tablist">
     <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-expanded="true">Home</a>
     <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Profile</a>
     <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-expanded="true">Messages</a>
     <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-expanded="true">Settings</a>
-  </nav>
+  </div>
   <div class="tab-content col-9" id="v-pills-abContent">
     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledBy="v-pills-home-tab">...</div>
     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledBy="v-pills-profile-tab">...</div>
