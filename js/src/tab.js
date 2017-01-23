@@ -43,7 +43,7 @@ const Tab = (($) => {
 
   const Selector = {
     DROPDOWN              : '.dropdown',
-    LIST                  : '.nav',
+    NAV                   : '.nav',
     ACTIVE                : '.active',
     DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"]',
     DROPDOWN_TOGGLE       : '.dropdown-toggle',
@@ -83,7 +83,7 @@ const Tab = (($) => {
 
       let target
       let previous
-      const listElement = $(this._element).closest(Selector.LIST)[0]
+      const listElement = $(this._element).closest(Selector.NAV)[0]
       const selector    = Util.getSelectorFromElement(this._element)
 
       if (listElement) {
