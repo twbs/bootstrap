@@ -16,11 +16,11 @@ Quickly manage the layout, alignment, and sizing of grid columns, navigation, co
 Apply `display` utilities to create a flexbox container and transform **direct children elements** into flex items. Flex containers and items are able to be modified further with additional flex properties.
 
 {% example html %}
-<div class="d-flex p-2 bd-highlight">I'm a flexbox container!</div>
+<div class="d-flex bd-highlight p-2">I'm a flexbox container!</div>
 {% endexample %}
 
 {% example html %}
-<div class="d-inline-flex p-2 bd-highlight">I'm an inline flexbox container!</div>
+<div class="d-inline-flex bd-highlight p-2">I'm an inline flexbox container!</div>
 {% endexample %}
 
 Responsive variations also exist for `.d-flex` and `.d-inline-flex`.
@@ -36,30 +36,22 @@ Set the direction of flex items in a flex container with direction utilities. In
 Use `.flex-row` to set a horizontal direction (the browser default), or `.flex-row-reverse` to start the horizontal direction from the opposite side.
 
 {% example html %}
-<div class="d-flex flex-row bd-highlight mb-3">
-  <div class="p-2 bd-highlight">Flex item 1</div>
-  <div class="p-2 bd-highlight">Flex item 2</div>
-  <div class="p-2 bd-highlight">Flex item 3</div>
+<div class="d-flex flex-row bd-highlight mb-3">{% for i in (1..3) %}
+  <div class="bd-highlight p-2">Flex item {{ i }}</div>{% endfor %}
 </div>
-<div class="d-flex flex-row-reverse bd-highlight">
-  <div class="p-2 bd-highlight">Flex item 1</div>
-  <div class="p-2 bd-highlight">Flex item 2</div>
-  <div class="p-2 bd-highlight">Flex item 3</div>
+<div class="d-flex flex-row-reverse bd-highlight">{% for i in (1..3) %}
+  <div class="bd-highlight p-2">Flex item {{ i }}</div>{% endfor %}
 </div>
 {% endexample %}
 
 Use `.flex-column` to set a vertical direction, or `.flex-column-reverse`  to start the vertical direction from the opposite side.
 
 {% example html %}
-<div class="d-flex flex-column bd-highlight mb-3">
-  <div class="p-2 bd-highlight">Flex item 1</div>
-  <div class="p-2 bd-highlight">Flex item 2</div>
-  <div class="p-2 bd-highlight">Flex item 3</div>
+<div class="d-flex flex-column bd-highlight mb-3">{% for i in (1..3) %}
+  <div class="bd-highlight p-2">Flex item {{ i }}</div>{% endfor %}
 </div>
-<div class="d-flex flex-column-reverse bd-highlight">
-  <div class="p-2 bd-highlight">Flex item 1</div>
-  <div class="p-2 bd-highlight">Flex item 2</div>
-  <div class="p-2 bd-highlight">Flex item 3</div>
+<div class="d-flex flex-column-reverse bd-highlight">{% for i in (1..3) %}
+  <div class="bd-highlight p-2">Flex item {{ i }}</div>{% endfor %}
 </div>
 {% endexample %}
 
@@ -75,41 +67,23 @@ Responsive variations also exist for `flex-direction`.
 
 Use `justify-content` utilities on flexbox containers to change the alignment of flex items on the main axis (the x-axis to start, y-axis if `flex-direction: column`). Choose from `start` (browser default), `end`, `center`, `between`, or `around`.
 
-<div class="bd-example">
-  <div class="d-flex justify-content-start bd-highlight mb-3">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
-  <div class="d-flex justify-content-end bd-highlight mb-3">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
-  <div class="d-flex justify-content-center bd-highlight mb-3">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
-  <div class="d-flex justify-content-between bd-highlight mb-3">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
-  <div class="d-flex justify-content-around bd-highlight">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
+{% example html %}
+<div class="d-flex justify-content-start bd-highlight mb-3">{% for i in (1..3) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
 </div>
-
-{% highlight html %}
-<div class="d-flex justify-content-start">...</div>
-<div class="d-flex justify-content-end">...</div>
-<div class="d-flex justify-content-center">...</div>
-<div class="d-flex justify-content-between">...</div>
-<div class="d-flex justify-content-around">...</div>
-{% endhighlight %}
+<div class="d-flex justify-content-end bd-highlight mb-3">{% for i in (1..3) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
+</div>
+<div class="d-flex justify-content-center bd-highlight mb-3">{% for i in (1..3) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
+</div>
+<div class="d-flex justify-content-between bd-highlight mb-3">{% for i in (1..3) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
+</div>
+<div class="d-flex justify-content-around bd-highlight">{% for i in (1..3) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
+</div>
+{% endexample %}
 
 Responsive variations also exist for `justify-content`.
 
@@ -124,41 +98,23 @@ Responsive variations also exist for `justify-content`.
 
 Use `align-items` utilities on flexbox containers to change the alignment of flex items on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from `start`, `end`, `center`, `baseline`, or `stretch` (browser default).
 
-<div class="bd-example">
-  <div class="d-flex align-items-start bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
-  <div class="d-flex align-items-end bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
-  <div class="d-flex align-items-center bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
-  <div class="d-flex align-items-baseline bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
-  <div class="d-flex align-items-stretch bd-highlight" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
+{% example html %}
+<div class="d-flex align-items-start bd-highlight mb-3" data-bd-hide style="height: 100px">{% for i in (1..3) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
 </div>
-
-{% highlight html %}
-<div class="d-flex align-items-start">...</div>
-<div class="d-flex align-items-end">...</div>
-<div class="d-flex align-items-center">...</div>
-<div class="d-flex align-items-baseline">...</div>
-<div class="d-flex align-items-stretch">...</div>
-{% endhighlight %}
+<div class="d-flex align-items-end bd-highlight mb-3" data-bd-hide style="height: 100px">{% for i in (1..3) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
+</div>
+<div class="d-flex align-items-center bd-highlight mb-3" data-bd-hide style="height: 100px">{% for i in (1..3) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
+</div>
+<div class="d-flex align-items-baseline bd-highlight mb-3" data-bd-hide style="height: 100px">{% for i in (1..3) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
+</div>
+<div class="d-flex align-items-stretch bd-highlight" data-bd-hide style="height: 100px">{% for i in (1..3) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
+</div>
+{% endexample %}
 
 Responsive variations also exist for `align-items`.
 
@@ -175,29 +131,29 @@ Use `align-self` utilities on flexbox items to individually change their alignme
 
 <div class="bd-example">
   <div class="d-flex bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="align-self-start p-2 bd-highlight">Aligned flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
+    <div class="align-self-start bd-highlight p-2">Aligned flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
   </div>
   <div class="d-flex bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="align-self-end p-2 bd-highlight">Aligned flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
+    <div class="align-self-end bd-highlight p-2">Aligned flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
   </div>
   <div class="d-flex bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="align-self-center p-2 bd-highlight">Aligned flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
+    <div class="align-self-center bd-highlight p-2">Aligned flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
   </div>
   <div class="d-flex bd-highlight mb-3" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="align-self-baseline p-2 bd-highlight">Aligned flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
+    <div class="align-self-baseline bd-highlight p-2">Aligned flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
   </div>
   <div class="d-flex bd-highlight" style="height: 100px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="align-self-stretch p-2 bd-highlight">Aligned flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
+    <div class="align-self-stretch bd-highlight p-2">Aligned flex item</div>
+    <div class="bd-highlight p-2">Flex item</div>
   </div>
 </div>
 
@@ -228,15 +184,15 @@ Easily move all flex items to one side, but keep another on the opposite end by 
 
 {% example html %}
 <div class="d-flex justify-content-end bd-highlight mb-3">
-  <div class="mr-auto p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="mr-auto bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
 </div>
 
 <div class="d-flex justify-content-start bd-highlight">
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="ml-auto p-2 bd-highlight">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="ml-auto bd-highlight p-2">Flex item</div>
 </div>
 {% endexample %}
 
@@ -245,16 +201,16 @@ Easily move all flex items to one side, but keep another on the opposite end by 
 Similarly, move one flex item to the top or bottom of a container by mixing `align-items`, `flex-direction: column`, and `margin-top: auto` or `margin-bottom: auto`.
 
 {% example html %}
-<div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
-  <div class="mb-auto p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
+<div class="d-flex align-items-start flex-column bd-highlight mb-3" data-bd-hide style="height: 200px;">
+  <div class="mb-auto bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
 </div>
 
-<div class="d-flex align-items-end flex-column bd-highlight mb-3" style="height: 200px;">
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="p-2 bd-highlight">Flex item</div>
-  <div class="mt-auto p-2 bd-highlight">Flex item</div>
+<div class="d-flex align-items-end flex-column bd-highlight mb-3" data-bd-hide style="height: 200px;">
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="bd-highlight p-2">Flex item</div>
+  <div class="mt-auto bd-highlight p-2">Flex item</div>
 </div>
 {% endexample %}
 
@@ -262,83 +218,22 @@ Similarly, move one flex item to the top or bottom of a container by mixing `ali
 
 Change how flex items wrap in a flex container. Choose from no wrapping at all (the browser default) with `.flex-nowrap`, wrapping with `.flex-wrap`, or reverse wrapping with `.flex-wrap-reverse`.
 
-<div class="bd-example">
-  <div class="d-flex flex-nowrap bd-highlight">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
+{% example html %}
+<div class="d-flex flex-nowrap bd-highlight">{% for i in (1..15) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item {{ i }}</div>{% endfor %}
 </div>
-{% highlight html %}
-<div class="d-flex flex-nowrap">
-  ...
-</div>
-{% endhighlight %}
-
-<div class="bd-example">
-  <div class="d-flex flex-wrap bd-highlight">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
-</div>
-{% highlight html %}
-<div class="d-flex flex-wrap">
-  ...
-</div>
-{% endhighlight %}
-
-<div class="bd-example">
-  <div class="d-flex flex-wrap-reverse bd-highlight">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
-</div>
-{% highlight html %}
-<div class="d-flex flex-wrap-reverse">
-  ...
-</div>
-{% endhighlight %}
-
+{% endexample %}
 
 {% example html %}
+<div class="d-flex flex-wrap bd-highlight">{% for i in (1..15) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item {{ i }}</div>{% endfor %}
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="d-flex flex-wrap-reverse bd-highlight">{% for i in (1..15) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item {{ i }}</div>{% endfor %}
+</div>
 {% endexample %}
 
 Responsive variations also exist for `flex-wrap`.
@@ -354,9 +249,9 @@ Change the _visual_ order of specific flex items with a handful of `order` utili
 
 {% example html %}
 <div class="d-flex flex-nowrap bd-highlight">
-  <div class="flex-last p-2 bd-highlight">First flex item</div>
-  <div class="p-2 bd-highlight">Second flex item</div>
-  <div class="flex-first p-2 bd-highlight">Third flex item</div>
+  <div class="flex-last bd-highlight p-2">First flex item</div>
+  <div class="bd-highlight p-2">Second flex item</div>
+  <div class="flex-first bd-highlight p-2">Third flex item</div>
 </div>
 {% endexample %}
 
@@ -373,145 +268,41 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 
 **Heads up!** This property has no affect on single rows of flex items.
 
-<div class="bd-example">
-  <div class="d-flex align-content-start flex-wrap bd-highlight mb-3" style="height: 200px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
+{% example html %}
+<div class="d-flex align-content-start flex-wrap bd-highlight mb-3" data-bd-hide style="height: 200px">{% for i in (1..15) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
 </div>
-{% highlight html %}
-<div class="d-flex align-content-start flex-wrap">
-  ...
-</div>
-{% endhighlight %}
+{% endexample %}
 
-<div class="bd-example">
-  <div class="d-flex align-content-end flex-wrap bd-highlight mb-3" style="height: 200px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
+{% example html %}
+<div class="d-flex align-content-end flex-wrap bd-highlight mb-3" data-bd-hide style="height: 200px">{% for i in (1..15) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
 </div>
-{% highlight html %}
-<div class="d-flex align-content-end flex-wrap">...</div>
-{% endhighlight %}
+{% endexample %}
 
-<div class="bd-example">
-  <div class="d-flex align-content-center flex-wrap bd-highlight mb-3" style="height: 200px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
+{% example html %}
+<div class="d-flex align-content-center flex-wrap bd-highlight mb-3" data-bd-hide style="height: 200px">{% for i in (1..15) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
 </div>
-{% highlight html %}
-<div class="d-flex align-content-center flex-wrap">...</div>
-{% endhighlight %}
+{% endexample %}
 
-<div class="bd-example">
-  <div class="d-flex align-content-between flex-wrap bd-highlight mb-3" style="height: 200px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
+{% example html %}
+<div class="d-flex align-content-between flex-wrap bd-highlight mb-3" data-bd-hide style="height: 200px">{% for i in (1..15) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
 </div>
-{% highlight html %}
-<div class="d-flex align-content-between flex-wrap">...</div>
-{% endhighlight %}
+{% endexample %}
 
-<div class="bd-example">
-  <div class="d-flex align-content-around flex-wrap bd-highlight mb-3" style="height: 200px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
+{% example html %}
+<div class="d-flex align-content-around flex-wrap bd-highlight mb-3" data-bd-hide style="height: 200px">{% for i in (1..15) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
 </div>
-{% highlight html %}
-<div class="d-flex align-content-around flex-wrap">...</div>
-{% endhighlight %}
+{% endexample %}
 
-<div class="bd-example">
-  <div class="d-flex align-content-stretch flex-wrap bd-highlight mb-3" style="height: 200px">
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-    <div class="p-2 bd-highlight">Flex item</div>
-  </div>
+{% example html %}
+<div class="d-flex align-content-stretch flex-wrap bd-highlight mb-3" data-bd-hide style="height: 200px">{% for i in (1..15) %}
+  <div data-bd-remove class="bd-highlight p-2">Flex item</div>{% endfor %}
 </div>
-{% highlight html %}
-<div class="d-flex align-content-stretch flex-wrap">...</div>
-{% endhighlight %}
+{% endexample %}
 
 Responsive variations also exist for `align-content`.
 
