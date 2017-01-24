@@ -43,9 +43,9 @@ const Tab = (($) => {
 
   const Selector = {
     DROPDOWN              : '.dropdown',
-    NAV                   : '.nav',
+    NAV_LIST_GROUP        : '.nav, .list-group',
     ACTIVE                : '.active',
-    DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"]',
+    DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
     DROPDOWN_TOGGLE       : '.dropdown-toggle',
     DROPDOWN_ACTIVE_CHILD : '> .dropdown-menu .active'
   }
@@ -83,7 +83,7 @@ const Tab = (($) => {
 
       let target
       let previous
-      const listElement = $(this._element).closest(Selector.NAV)[0]
+      const listElement = $(this._element).closest(Selector.NAV_LIST_GROUP)[0]
       const selector    = Util.getSelectorFromElement(this._element)
 
       if (listElement) {

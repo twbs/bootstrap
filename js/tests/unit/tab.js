@@ -108,6 +108,22 @@ $(function () {
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
+  QUnit.test('should activate element by tab id in list group', function (assert) {
+    assert.expect(2)
+    var tabsHTML =  '<div class="list-group">' +
+                      '<a href="#home">Home</a>' +
+                      '<a href="#profile">Profile</a>' +
+                    '</div>'
+
+    $('<nav><div id="home"></div><div id="profile"></div></nav>').appendTo('#qunit-fixture')
+
+    $(tabsHTML).find('a:last').bootstrapTab('show')
+    assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
+
+    $(tabsHTML).find('a:first').bootstrapTab('show')
+    assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
+  })
+
   QUnit.test('should not fire shown when show is prevented', function (assert) {
     assert.expect(1)
     var done = assert.async()
@@ -181,7 +197,6 @@ $(function () {
       .end()
       .find('ul > li:last a')
         .on('show.bs.tab', function (e) {
-          console.log(e.relatedTarget.hash)
           assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
         })
         .on('shown.bs.tab', function (e) {
