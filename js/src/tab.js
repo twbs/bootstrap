@@ -45,7 +45,7 @@ const Tab = (($) => {
     A                     : 'a',
     LI                    : 'li',
     DROPDOWN              : '.dropdown',
-    LIST                  : 'ul:not(.dropdown-menu), ol:not(.dropdown-menu), nav:not(.dropdown-menu)',
+    LIST                  : 'ul:not(.dropdown-menu), ol:not(.dropdown-menu), nav:not(.dropdown-menu), .list-group:not(.dropdown-menu)',
     FADE_CHILD            : '> .nav-item .fade, > .list-group-item .fade, > .fade',
     ACTIVE                : '.active',
     ACTIVE_CHILD          : '> .nav-item > .active, > .list-group-item > .active, > .active',
