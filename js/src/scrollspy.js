@@ -51,8 +51,9 @@ const ScrollSpy = (($) => {
   const Selector = {
     DATA_SPY        : '[data-spy="scroll"]',
     ACTIVE          : '.active',
-    LIST_ITEM       : '.list-item',
+    NAV_LIST_GROUP  : '.nav, .list-group',
     NAV_LINKS       : '.nav-link',
+    LIST_ITEMS      : '.list-group-item',
     DROPDOWN        : '.dropdown',
     DROPDOWN_ITEMS  : '.dropdown-item',
     DROPDOWN_TOGGLE : '.dropdown-toggle'
@@ -77,6 +78,7 @@ const ScrollSpy = (($) => {
       this._scrollElement = element.tagName === 'BODY' ? window : element
       this._config        = this._getConfig(config)
       this._selector      = `${this._config.target} ${Selector.NAV_LINKS},`
+                          + `${this._config.target} ${Selector.LIST_ITEMS},`
                           + `${this._config.target} ${Selector.DROPDOWN_ITEMS}`
       this._offsets       = []
       this._targets       = []
@@ -256,7 +258,7 @@ const ScrollSpy = (($) => {
         $link.addClass(ClassName.ACTIVE)
         // Set triggered links parents as active
         // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-        $link.parents().prev(Selector.NAV_LINKS).addClass(ClassName.ACTIVE)
+        $link.parents(Selector.NAV_LIST_GROUP).prev(`${Selector.NAV_LINKS}, ${Selector.LIST_ITEMS}`).addClass(ClassName.ACTIVE)
       }
 
       $(this._scrollElement).trigger(Event.ACTIVATE, {
