@@ -20,6 +20,13 @@
   display: flex;
   flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
+
+  @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
+    > .container {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
 }
 
 
