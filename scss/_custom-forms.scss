@@ -15,7 +15,6 @@
   min-height: (1rem * $line-height-base);
   padding-left: $custom-control-gutter;
   margin-right: $custom-control-spacer-x;
-  cursor: pointer;
 }
 
 .custom-control-input {
@@ -200,7 +199,6 @@
   max-width: 100%;
   height: $custom-file-height;
   margin-bottom: 0;
-  cursor: pointer;
 }
 
 .custom-file-input {

@@ -36,6 +36,7 @@
 
 .navbar-brand {
   display: inline-block;
+  align-self: flex-start;
   padding-top: $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
   margin-right: $navbar-padding-x;
