@@ -349,7 +349,7 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, as 
       </div>
     </div>
   </div>
-  <div class="tab-content" id="nav-abContent">
+  <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledBy="nav-home-tab">
       <p>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</p>
     </div>
@@ -379,7 +379,7 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, as 
     </div>
   </div>
 </div>
-<div class="tab-content" id="nav-abContent">
+<div class="tab-content" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledBy="nav-home-tab">...</div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledBy="nav-profile-tab">...</div>
   <div class="tab-pane fade" id="nav-dropdown1" role="tabpanel" aria-labelledBy="nav-dropdown1-tab">...</div>
@@ -405,7 +405,7 @@ The tabs plugin also works with pills.
       </div>
     </li>
   </ul>
-  <div class="tab-content" id="pills-abContent">
+  <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledBy="pills-home-tab">
       <p>Consequat occaecat ullamco amet non eiusmod nostrud dolore irure incididunt est duis anim sunt officia. Fugiat velit proident aliquip nisi incididunt nostrud exercitation proident est nisi. Irure magna elit commodo anim ex veniam culpa eiusmod id nostrud sit cupidatat in veniam ad. Eiusmod consequat eu adipisicing minim anim aliquip cupidatat culpa excepteur quis. Occaecat sit eu exercitation irure Lorem incididunt nostrud.</p>
     </div>
@@ -437,7 +437,7 @@ The tabs plugin also works with pills.
     </div>
   </li>
 </ul>
-<div class="tab-content" id="pills-abContent">
+<div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledBy="pills-home-tab">...</div>
   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledBy="pills-profile-tab">...</div>
   <div class="tab-pane fade" id="pills-dropdown1" role="tabpanel" aria-labelledBy="pills-dropdown1-tab">...</div>
@@ -458,7 +458,7 @@ And with vertical pills.
       </div>
     </div>
     <div class="col-9">
-      <div class="tab-content" id="v-pills-abContent">
+      <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledBy="v-pills-home-tab">
           <p>Cillum ad ut irure tempor velit nostrud occaecat ullamco aliqua anim Lorem sint. Veniam sint duis incididunt do esse magna mollit excepteur laborum qui. Id id reprehenderit sit est eu aliqua occaecat quis et velit excepteur laborum mollit dolore eiusmod. Ipsum dolor in occaecat commodo et voluptate minim reprehenderit mollit pariatur. Deserunt non laborum enim et cillum eu deserunt excepteur ea incididunt minim occaecat. Lorem aliquip non veniam fugiat minim eiusmod sit tempor magna velit.</p>
         </div>
@@ -487,7 +487,7 @@ And with vertical pills.
     </div>
   </div>
   <div class="col-9">
-    <div class="tab-content" id="v-pills-abContent">
+    <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledBy="v-pills-home-tab">...</div>
       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledBy="v-pills-profile-tab">...</div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledBy="v-pills-messages-tab">...</div>
@@ -504,7 +504,7 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
 <div role="tabpanel">
 {% highlight html %}
 <!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
   </li>
