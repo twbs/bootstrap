@@ -293,7 +293,7 @@ Don't want your columns to simply stack in some grid tiers? Use a combination of
 {% example html %}
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
-  <div class="col col-md-8">.col .col-md-8</div>
+  <div class="col-12 col-md-8">.col-12 .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 
