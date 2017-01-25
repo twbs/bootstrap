@@ -174,10 +174,6 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-[role="button"] {
-  cursor: pointer;
-}
-
 a,
 area,
 button,
