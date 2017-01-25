@@ -36,6 +36,7 @@
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
 
   .input-group {
