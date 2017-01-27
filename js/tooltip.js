@@ -359,7 +359,8 @@
     var el     = $element[0]
     var isBody = el.tagName == 'BODY'
 
-    var elRect    = el.getBoundingClientRect()
+    var elRect    = el.getBoundingClientRect();
+    elRect = $.extend({}, elRect, {top: elRect.top + window.pageYOffset, left: elRect.left + window.pageXOffset});
     if (elRect.width == null) {
       // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
       elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
