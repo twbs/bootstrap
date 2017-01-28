@@ -47,7 +47,7 @@ $(function () {
   QUnit.test('should show a collapsed element (long transition)', function (assert) {
     assert.expect(2)
     var done = assert.async()
-    var $el = $('<div class="collapse"/>').css('transition-duration', '1s')
+    var $el = $('<div class="collapse"/>').css('transition-duration', '.3s')
     $el.one('shown.bs.collapse', function () {
       assert.ok($el.hasClass('show'), 'has class "show"')
       assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
@@ -90,7 +90,7 @@ $(function () {
   QUnit.test('should hide a collapsed element (long transition)', function (assert) {
     assert.expect(1)
     var done = assert.async()
-    var $el = $('<div class="collapse"/>').css('transition-duration', '1s')
+    var $el = $('<div class="collapse"/>').css('transition-duration', '.3s')
     $el.one('shown.bs.collapse', function () {
       $el.bootstrapCollapse('hide')
     })
