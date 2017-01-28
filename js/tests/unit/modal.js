@@ -410,6 +410,8 @@ $(function () {
     var done = assert.async()
     $('<div class="fixed-top fixed-bottom sticky-top is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
     $('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top').css('padding-right', '10px')
+    // QUnit doesn't create a sidebar, so fake it
+    $('html').css('padding-right', '10px')
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
@@ -417,6 +419,7 @@ $(function () {
         assert.strictEqual(isNaN(paddingRight), false)
         assert.strictEqual(paddingRight !== 0, true)
         $(document.body).css('padding-right', '') // Because test case "should ignore other inline styles when trying to restore body padding after closing" fail if not
+        $('html').css('padding-right', '')
         done()
       })
       .bootstrapModal('show')
@@ -427,6 +430,8 @@ $(function () {
     var done = assert.async()
     $('<div class="fixed-top fixed-bottom is-fixed sticky-top">@Johann-S</div>').appendTo('#qunit-fixture')
     $('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top').css('padding-right', '10px')
+    // QUnit doesn't create a sidebar, so fake it
+    $('html').css('padding-right', '10px')
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
@@ -438,6 +443,7 @@ $(function () {
       .on('hidden.bs.modal', function () {
         var paddingRight = parseInt($(document.body).css('padding-right'), 10)
         assert.strictEqual(paddingRight, 0)
+        $('html').css('padding-right', '')
         done()
       })
       .bootstrapModal('show')
