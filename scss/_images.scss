@@ -6,13 +6,9 @@
 // which weren't expecting the images within themselves to be involuntarily resized.
 // See also https://github.com/twbs/bootstrap/issues/18178
 .img-fluid {
-  @include img-fluid();
+  @include img-fluid;
 }
 
-// Rounded corners
-.img-rounded {
-  @include border-radius($border-radius-lg);
-}
 
 // Image thumbnails
 .img-thumbnail {
@@ -20,16 +16,11 @@
   background-color: $thumbnail-bg;
   border: $thumbnail-border-width solid $thumbnail-border-color;
   @include border-radius($thumbnail-border-radius);
-  transition: all .2s ease-in-out;
+  @include transition($thumbnail-transition);
   @include box-shadow($thumbnail-box-shadow);
 
   // Keep them at most 100% wide
-  @include img-fluid(inline-block);
-}
-
-// Perfect circle
-.img-circle {
-  border-radius: 50%;
+  @include img-fluid;
 }
 
 //
@@ -48,5 +39,5 @@
 
 .figure-caption {
   font-size: $figure-caption-font-size;
-  color: $gray-light;
+  color: $figure-caption-color;
 }

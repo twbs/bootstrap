@@ -1,43 +1,43 @@
-// Width
-
-.w-100 { width: 100% !important; }
-
 // Margin and Padding
 
-.m-x-auto {
-  margin-right: auto !important;
-  margin-left:  auto !important;
-}
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-@each $prop, $abbrev in (margin: m, padding: p) {
-  @each $size, $lengths in $spacers {
-    $length-x:   map-get($lengths, x);
-    $length-y:   map-get($lengths, y);
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $lengths in $spacers {
+        $length-x: map-get($lengths, x);
+        $length-y: map-get($lengths, y);
 
-    .#{$abbrev}-a-#{$size} { #{$prop}:        $length-y $length-x !important; } // a = All sides
-    .#{$abbrev}-t-#{$size} { #{$prop}-top:    $length-y !important; }
-    .#{$abbrev}-r-#{$size} { #{$prop}-right:  $length-x !important; }
-    .#{$abbrev}-b-#{$size} { #{$prop}-bottom: $length-y !important; }
-    .#{$abbrev}-l-#{$size} { #{$prop}-left:   $length-x !important; }
-
-    // Axes
-    .#{$abbrev}-x-#{$size} {
-      #{$prop}-right:  $length-x !important;
-      #{$prop}-left:   $length-x !important;
+        .#{$abbrev}#{$infix}-#{$size}  { #{$prop}:        $length-y $length-x !important; }
+        .#{$abbrev}t#{$infix}-#{$size} { #{$prop}-top:    $length-y !important; }
+        .#{$abbrev}r#{$infix}-#{$size} { #{$prop}-right:  $length-x !important; }
+        .#{$abbrev}b#{$infix}-#{$size} { #{$prop}-bottom: $length-y !important; }
+        .#{$abbrev}l#{$infix}-#{$size} { #{$prop}-left:   $length-x !important; }
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-right: $length-x !important;
+          #{$prop}-left:  $length-x !important;
+        }
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-top:    $length-y !important;
+          #{$prop}-bottom: $length-y !important;
+        }
+      }
     }
-    .#{$abbrev}-y-#{$size} {
-      #{$prop}-top:    $length-y !important;
-      #{$prop}-bottom: $length-y !important;
+
+    // Some special margin utils
+    .m#{$infix}-auto  { margin:        auto !important; }
+    .mt#{$infix}-auto { margin-top:    auto !important; }
+    .mr#{$infix}-auto { margin-right:  auto !important; }
+    .mb#{$infix}-auto { margin-bottom: auto !important; }
+    .ml#{$infix}-auto { margin-left:   auto !important; }
+    .mx#{$infix}-auto {
+      margin-right: auto !important;
+      margin-left:  auto !important;
+    }
+    .my#{$infix}-auto {
+      margin-top:    auto !important;
+      margin-bottom: auto !important;
     }
   }
-}
-
-// Positioning
-
-.pos-f-t {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: $zindex-navbar-fixed;
 }

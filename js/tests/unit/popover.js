@@ -1,5 +1,5 @@
 $(function () {
-  'use strict';
+  'use strict'
 
   QUnit.module('popover plugin')
 
@@ -229,7 +229,7 @@ $(function () {
     $popover.bootstrapPopover('show')
     $popover.bootstrapPopover('dispose')
 
-    assert.ok(!$popover.hasClass('in'), 'popover is hidden')
+    assert.ok(!$popover.hasClass('show'), 'popover is hidden')
     assert.ok(!$popover.data('popover'), 'popover does not have data')
     assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo')
     assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events')
@@ -320,4 +320,48 @@ $(function () {
       .bootstrapPopover('show')
   })
 
+  QUnit.test('should throw an error when show is called on hidden elements', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    try {
+      $('<div data-toggle="popover" data-title="some title" data-content="@Johann-S" style="display: none"/>').bootstrapPopover('show')
+    }
+    catch (err) {
+      assert.strictEqual(err.message, 'Please use show on visible elements')
+      done()
+    }
+  })
+
+  QUnit.test('should hide popovers when their containing modal is closed', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var templateHTML = '<div id="modal-test" class="modal">' +
+                          '<div class="modal-dialog" role="document">' +
+                            '<div class="modal-content">' +
+                              '<div class="modal-body">' +
+                                '<button id="popover-test" type="button" class="btn btn-secondary" data-toggle="popover" data-placement="top" data-content="Popover">' +
+                                  'Popover on top' +
+                                '</button>' +
+                              '</div>' +
+                            '</div>' +
+                          '</div>' +
+                        '</div>'
+
+    $(templateHTML).appendTo('#qunit-fixture')
+    $('#popover-test')
+      .on('shown.bs.popover', function () {
+        $('#modal-test').modal('hide')
+      })
+      .on('hide.bs.popover', function () {
+        assert.ok(true, 'popover hide')
+        done()
+      })
+
+    $('#modal-test')
+      .on('shown.bs.modal', function () {
+        $('#popover-test').bootstrapPopover('show')
+      })
+      .modal('show')
+  })
 })

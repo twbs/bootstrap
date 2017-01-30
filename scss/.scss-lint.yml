@@ -25,8 +25,6 @@ linters:
   BorderZero:
     enabled: true
     convention: zero # or `none`
-    exclude:
-      - _normalize.scss
 
   ChainedClasses:
     enabled: false
@@ -40,7 +38,6 @@ linters:
   Comment:
     enabled: true
     exclude:
-      - _normalize.scss
       - bootstrap.scss
     style: silent
 
@@ -89,7 +86,7 @@ linters:
     enabled: true
 
   ImportantRule:
-    enabled: true
+    enabled: false
 
   ImportPath:
     enabled: true
@@ -105,8 +102,6 @@ linters:
   LeadingZero:
     enabled: true
     style: exclude_zero # or 'include_zero'
-    exclude:
-      - _normalize.scss
 
   MergeableSelector:
     enabled: false
@@ -135,8 +130,6 @@ linters:
     ignore_unspecified: false
     min_properties: 2
     separate_groups: false
-    exclude:
-      - _normalize.scss
     order:
       - position
       - top
@@ -152,10 +145,14 @@ linters:
       - flex-align
       - flex-basis
       - flex-direction
+      - flex-wrap
       - flex-flow
       - flex-grow
       - flex-order
       - flex-pack
+      - align-items
+      - align-self
+      - justify-content
       - float
       - width
       - min-width
@@ -228,6 +225,7 @@ linters:
       - word-spacing
       - -ms-word-wrap
       - word-wrap
+      - overflow-wrap
       - -moz-tab-size
       - -o-tab-size
       - tab-size
@@ -457,7 +455,7 @@ linters:
 
   Shorthand:
     enabled: true
-    allowed_shorthands: [1, 2, 3]
+    allowed_shorthands: [1, 2, 3, 4]
 
   SingleLinePerProperty:
     enabled: false
@@ -487,7 +485,7 @@ linters:
   SpaceBeforeBrace:
     enabled: true
     style: space # or 'new_line'
-    allow_single_line_padding: false
+    allow_single_line_padding: true
 
   SpaceBetweenParens:
     enabled: true
@@ -530,8 +528,6 @@ linters:
     identifier_list: base
     additional_identifiers: []
     excluded_identifiers: []
-    exclude:
-      - _normalize.scss
 
   ZeroUnit:
     enabled: true

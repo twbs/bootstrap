@@ -44,7 +44,7 @@
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
   margin: $dropdown-margin-top 0 0; // override default ul
-  font-size: $font-size-base;
+  font-size: $font-size-base; // Redeclare because nesting can cause inheritance issues
   color: $body-color;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
@@ -68,7 +68,7 @@
   width: 100%; // For `<button>`s
   padding: 3px $dropdown-item-padding-x;
   clear: both;
-  font-weight: normal;
+  font-weight: $font-weight-normal;
   color: $dropdown-link-color;
   text-align: inherit; // For `<button>`s
   white-space: nowrap; // prevent links from randomly breaking onto new lines
@@ -81,37 +81,27 @@
     background-color: $dropdown-link-hover-bg;
   }
 
-  // Active state
-  &.active {
-    @include plain-hover-focus {
-      color: $dropdown-link-active-color;
-      text-decoration: none;
-      background-color: $dropdown-link-active-bg;
-      outline: 0;
-    }
+  &.active,
+  &:active {
+    color: $dropdown-link-active-color;
+    text-decoration: none;
+    background-color: $dropdown-link-active-bg;
   }
 
-  // Disabled state
-  //
-  // Gray out text and ensure the hover/focus state remains gray
-  &.disabled {
-    @include plain-hover-focus {
-      color: $dropdown-link-disabled-color;
-    }
-
-    // Nuke hover/focus effects
-    @include hover-focus {
-      text-decoration: none;
-      cursor: $cursor-disabled;
-      background-color: transparent;
-      background-image: none; // Remove CSS gradient
-      @include reset-filter();
+  &.disabled,
+  &:disabled {
+    color: $dropdown-link-disabled-color;
+    cursor: $cursor-disabled;
+    background-color: transparent;
+    // Remove CSS gradients if they're enabled
+    @if $enable-gradients {
+      background-image: none;
     }
   }
 }
 
 // Open state for the dropdown
-.open {
+.show {
   // Show the menu
   > .dropdown-menu {
     display: block;
@@ -141,6 +131,7 @@
 .dropdown-header {
   display: block;
   padding: $dropdown-padding-y $dropdown-item-padding-x;
+  margin-bottom: 0; // for use with heading elements
   font-size: $font-size-sm;
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a
@@ -159,17 +150,8 @@
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 //
 // Just add .dropup after the standard .dropdown class and you're set.
-// TODO: abstract this so that the navbar fixed styles are not placed here?
 
-.dropup,
-.navbar-fixed-bottom .dropdown {
-  // Reverse the caret
-  .caret {
-    content: "";
-    border-top: 0;
-    border-bottom: $caret-width solid;
-  }
-
+.dropup {
   // Different positioning for bottom up menu
   .dropdown-menu {
     top: auto;

@@ -3,21 +3,17 @@
 // Horizontal gradient, from left to right
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
-// Color stops are not available in IE9.
 @mixin gradient-x($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
   background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9
 }
 
 // Vertical gradient, from top to bottom
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
-// Color stops are not available in IE9.
 @mixin gradient-y($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
   background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9
 }
 
 @mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
@@ -27,12 +23,10 @@
 @mixin gradient-x-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
   background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 gets no color-stop at all for proper fallback
 }
 @mixin gradient-y-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
   background-image: linear-gradient($start-color, $mid-color $color-stop, $end-color);
   background-repeat: no-repeat;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=0); // IE9 gets no color-stop at all for proper fallback
 }
 @mixin gradient-radial($inner-color: #555, $outer-color: #333) {
   background-image: radial-gradient(circle, $inner-color, $outer-color);

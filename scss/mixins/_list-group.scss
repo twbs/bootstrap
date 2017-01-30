@@ -10,21 +10,15 @@
   button.list-group-item-#{$state} {
     color: $color;
 
-    .list-group-item-heading {
-      color: inherit;
-    }
-
     @include hover-focus {
       color: $color;
       background-color: darken($background, 5%);
     }
 
     &.active {
-      @include plain-hover-focus {
-        color: #fff;
-        background-color: $color;
-        border-color: $color;
-      }
+      color: #fff;
+      background-color: $color;
+      border-color: $color;
     }
   }
 }
