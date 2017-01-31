@@ -354,7 +354,7 @@ The tab JavaScript plugin also support multiple targets by using a JQuery select
       </div>
     </div>
     <div class="col">
-      <div class="tab-content" id="multi-tabContent">
+      <div class="tab-content" id="multi-tabContent-aux">
         <div role="tabpanel" class="tab-pane fade show active" id="home-multi-aux" aria-labelledBy="home-multi-tab">
           <p>Fugiat enim excepteur et commodo cillum voluptate laborum excepteur irure amet ut Lorem ex irure pariatur pariatur. Occaecat ex id irure dolore incididunt exercitation veniam occaecat aliqua laborum anim ullamco. Non eu qui velit consequat quis qui ut proident nostrud.</p>
         </div>
