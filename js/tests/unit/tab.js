@@ -76,6 +76,26 @@ $(function () {
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
+  QUnit.test('should activate multiple element by tab selector', function (assert) {
+    assert.expect(4)
+    var pillsHTML = '<ul class="pills">'
+        + '<li><a href="#home, #home2">Home</a></li>'
+        + '<li><a href="#profile, #profile2">Profile</a></li>'
+        + '</ul>'
+
+    $('<ul><li id="home"/><li id="profile"/></ul>'
+    + '<ul><li id="home2"/><li id="profile2"/></ul>').appendTo('#qunit-fixture')
+
+    $(pillsHTML).find('li:last a').one('shown.bs.tab', function () {
+      assert.ok($('#profile').hasClass('active'), 'profile is active')
+      assert.ok($('#profile2').hasClass('active'), 'profile2 is active')
+      $(pillsHTML).find('li:first a').one('shown.bs.tab', function () {
+        assert.ok($('#home').hasClass('active'), 'home is active')
+        assert.ok($('#home2').hasClass('active'), 'home2 is active')
+      }).bootstrapTab('show')
+    }).bootstrapTab('show')
+  })
+
   QUnit.test('should activate element by tab id in ordered list', function (assert) {
     assert.expect(2)
     var pillsHTML = '<ol class="pills">'

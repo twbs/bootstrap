@@ -130,10 +130,16 @@ const Tab = (($) => {
         $(this._element).trigger(shownEvent)
       }
 
-      const target = Util.getTargets(this._element)[0]
+      const $target = Util.getTargets(this._element)
 
-      if (target) {
-        this._activate(target, target.parentNode, complete)
+      if ($target.length) {
+        const deferreds = []
+        $target.each((i, element) => {
+          const deferred = $.Deferred()
+          deferreds.push(deferred)
+          this._activate(element, element.parentNode, () => deferred.resolve())
+        })
+        $.when(...deferreds).done(complete)
       } else {
         complete()
       }
