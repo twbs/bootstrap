@@ -429,29 +429,23 @@ const Carousel = (($) => {
     }
 
     static _dataApiClickHandler(event) {
-      const selector = Util.getSelectorFromElement(this)
+      const $target = Util.getTargets(this).first()
 
-      if (!selector) {
+      if (!$target.hasClass(ClassName.CAROUSEL)) {
         return
       }
 
-      const target = $(selector)[0]
-
-      if (!target || !$(target).hasClass(ClassName.CAROUSEL)) {
-        return
-      }
-
-      const config     = $.extend({}, $(target).data(), $(this).data())
+      const config     = $.extend({}, $target.data(), $(this).data())
       const slideIndex = this.getAttribute('data-slide-to')
 
       if (slideIndex) {
         config.interval = false
       }
 
-      Carousel._jQueryInterface.call($(target), config)
+      Carousel._jQueryInterface.call($target, config)
 
       if (slideIndex) {
-        $(target).data(DATA_KEY).to(slideIndex)
+        $target.data(DATA_KEY).to(slideIndex)
       }
 
       event.preventDefault()
