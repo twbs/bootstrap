@@ -24,8 +24,6 @@
 .btn-warning,
 .btn-danger {
   text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
-  .box-shadow(@shadow);
 
   // Reset the shadow
   &:active,
@@ -112,14 +110,12 @@
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
-  background-color: darken(@dropdown-link-hover-bg, 5%);
+  background-color: @dropdown-link-hover-bg;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  #gradient > .vertical(@start-color: @dropdown-link-active-bg; @end-color: darken(@dropdown-link-active-bg, 5%));
-  background-color: darken(@dropdown-link-active-bg, 5%);
+  background-color: @dropdown-link-active-bg;
 }
 
 
@@ -129,55 +125,56 @@
 
 // Default navbar
 .navbar-default {
-  #gradient > .vertical(@start-color: lighten(@navbar-default-bg, 10%); @end-color: @navbar-default-bg);
-  .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
-  border-radius: @navbar-border-radius;
-  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
-  .box-shadow(@shadow);
+  .opacity(0.95);
 
-  .navbar-nav > .open > a,
-  .navbar-nav > .active > a {
-    #gradient > .vertical(@start-color: darken(@navbar-default-link-active-bg, 5%); @end-color: darken(@navbar-default-link-active-bg, 2%));
-    .box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
+  border-radius: @navbar-border-radius;
+  .box-shadow(inset 0 -@navbar-default-shadow-height 0px 0px @navbar-default-shadow-color);
+
+  .navbar-nav {
+    @media (min-width: @grid-float-breakpoint) {
+      > .open > a,
+      > .active > a {
+        .box-shadow(inset 0 -@navbar-default-shadow-height 0px 0px @navbar-default-shadow-color-active);
+      }
+      > li > a {
+        &:hover {
+          .box-shadow(inset 0 -@navbar-default-shadow-height 0px 0px @navbar-default-shadow-color-hover);
+        }
+      }
+    }
   }
 }
 .navbar-brand,
 .navbar-nav > li > a {
   text-shadow: 0 1px 0 rgba(255,255,255,.25);
-}
-
-// Inverted navbar
-.navbar-inverse {
-  #gradient > .vertical(@start-color: lighten(@navbar-inverse-bg, 10%); @end-color: @navbar-inverse-bg);
-  .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered; see https://github.com/twbs/bootstrap/issues/10257
-  border-radius: @navbar-border-radius;
-  .navbar-nav > .open > a,
-  .navbar-nav > .active > a {
-    #gradient > .vertical(@start-color: @navbar-inverse-link-active-bg; @end-color: lighten(@navbar-inverse-link-active-bg, 2.5%));
-    .box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
-  }
-
-  .navbar-brand,
-  .navbar-nav > li > a {
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  }
-}
+} 
 
 // Undo rounded corners in static and fixed navbars
 .navbar-static-top,
 .navbar-fixed-top,
 .navbar-fixed-bottom {
   border-radius: 0;
+  border-bottom: 0;
 }
 
+.navbar-brand {
+  padding-left: @padding-base-horizontal;
+  padding-right: @navbar-padding-horizontal;
+  padding-top: @padding-base-vertical;
+  padding-bottom: @padding-base-vertical + @navbar-default-shadow-height;
+
+  > img {
+    max-height: (@navbar-height - @navbar-default-shadow-height - 2 * @padding-base-vertical);
+  }
+}
 // Fix active state of dropdown items in collapsed mode
 @media (max-width: @grid-float-breakpoint-max) {
   .navbar .navbar-nav .open .dropdown-menu > .active > a {
     &,
     &:hover,
     &:focus {
-      color: #fff;
-      #gradient > .vertical(@start-color: @dropdown-link-active-bg; @end-color: darken(@dropdown-link-active-bg, 5%));
+      color: @dropdown-link-color;
+      background: @dropdown-link-active-bg;
     }
   }
 }
@@ -288,4 +285,62 @@
   border-color: darken(@well-bg, 10%);
   @shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
   .box-shadow(@shadow);
+}
+
+//
+// Sidebar
+// --------------------------------------------------
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+
+  @media (min-width: @grid-float-breakpoint) {
+    position: fixed;
+    display: block;
+    top: (@navbar-height - @navbar-default-shadow-height);
+    bottom: 0;
+    left: 0;
+    z-index: (@zindex-navbar-fixed + 1);
+    padding: @padding-large-vertical @padding-large-horizontal;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: @sidebar-default-bg;
+    border: 0;
+    .box-shadow(0px (2* @navbar-default-shadow-height) @navbar-default-shadow-height @navbar-default-shadow-height @navbar-default-bg);
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: (-@padding-large-horizontal - 1); /* 20px padding + 1px border */
+  margin-bottom: @padding-large-vertical;
+  margin-left: -@padding-large-horizontal;
+}
+.nav-sidebar > li > a {
+  padding-right: @padding-large-horizontal;
+  padding-left: @padding-large-horizontal;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: @sidebar-default-color-focus;
+  background-color: @sidebar-default-bg-focus;
+}
+
+.main {
+  padding: @padding-large-vertical @padding-large-horizontal;
+
+  @media (min-width: @grid-float-breakpoint) {
+    padding-right: @padding-base-horizontal;
+    padding-left: @padding-base-horizontal;
+  }
+}
+
+.main .page-header {
+  margin-top: 0;
+}
+
+body {
+  padding-top: @navbar-height;
 }
