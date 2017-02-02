@@ -159,7 +159,8 @@
         }
 
         // For nesting containers, have to redeclare for alignment purposes
-        > .container {
+        > .container,
+        > .container-fluid {
           display: flex;
           flex-wrap: nowrap;
           align-items: center;
