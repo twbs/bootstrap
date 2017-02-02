@@ -51,7 +51,8 @@ module.exports = function (grunt) {
     // Task configuration.
     clean: {
       dist: 'dist',
-      docs: 'docs/dist'
+      docs: 'docs/dist',
+      apimcss:  '../APImetrics-GAE-Server/static/css/bootstrap/',
     },
 
     jshint: {
@@ -287,6 +288,12 @@ module.exports = function (grunt) {
           '**/*'
         ],
         dest: 'docs/dist/'
+      },
+      apimcss: {
+        expand: true,
+        flatten: true,
+        src: 'dist/css/*',
+        dest: '../APImetrics-GAE-Server/static/css/bootstrap/'
       }
     },
 
@@ -385,7 +392,7 @@ module.exports = function (grunt) {
       },
       less: {
         files: 'less/**/*.less',
-        tasks: 'less'
+        tasks: ['less', 'dist-css', 'copy:apimcss']
       }
     },
 
@@ -478,7 +485,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js', 'clean:apimcss', 'copy:apimcss']);
 
   // Default task.
   grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
