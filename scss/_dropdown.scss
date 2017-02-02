@@ -105,6 +105,7 @@
   // Show the menu
   > .dropdown-menu {
     display: block;
+    overflow: hidden;
   }
 
   // Remove the outline when :focus is triggered
