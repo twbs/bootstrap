@@ -54,7 +54,7 @@
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
   $min: $name;
 
-  @if type_of($name) != "number" {
+  @if type-of($name) != "number" {
     $min: breakpoint-min($name, $breakpoints);
   }
 
@@ -72,7 +72,7 @@
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
   $max: $name;
 
-  @if type_of($name) != "number" {
+  @if type-of($name) != "number" {
     $max: breakpoint-max($name, $breakpoints);
   }
 
@@ -91,10 +91,10 @@
   $min: $lower;
   $max: $upper;
 
-  @if type_of($lower) != "number" {
+  @if type-of($lower) != "number" {
     $min: breakpoint-min($lower, $breakpoints);
   }
-  @if type_of($upper) != "number" {
+  @if type-of($upper) != "number" {
     $max: breakpoint-max($upper, $breakpoints);
   }
 
