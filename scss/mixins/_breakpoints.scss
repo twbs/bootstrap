@@ -52,7 +52,12 @@
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 // Makes the @content apply to the given breakpoint and wider.
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
-  $min: breakpoint-min($name, $breakpoints);
+  $min: $name;
+
+  @if type_of($name) != "number" {
+    $min: breakpoint-min($name, $breakpoints);
+  }
+
   @if $min {
     @media (min-width: $min) {
       @content;
@@ -65,7 +70,12 @@
 // Media of at most the maximum breakpoint width. No query for the largest breakpoint.
 // Makes the @content apply to the given breakpoint and narrower.
 @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
-  $max: breakpoint-max($name, $breakpoints);
+  $max: $name;
+
+  @if type_of($name) != "number" {
+    $max: breakpoint-max($name, $breakpoints);
+  }
+
   @if $max {
     @media (max-width: $max) {
       @content;
@@ -78,6 +88,16 @@
 // Media that spans multiple breakpoint widths.
 // Makes the @content apply between the min and max breakpoints
 @mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+  $min: $lower;
+  $max: $upper;
+
+  @if type_of($lower) != "number" {
+    $min: breakpoint-min($lower, $breakpoints);
+  }
+  @if type_of($upper) != "number" {
+    $max: breakpoint-max($upper, $breakpoints);
+  }
+
   @include media-breakpoint-up($lower, $breakpoints) {
     @include media-breakpoint-down($upper, $breakpoints) {
       @content;
