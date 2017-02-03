@@ -84,10 +84,10 @@
 @line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
 
 //** By default, this inherits from the `<body>`.
-@headings-font-family:    "Open Sans", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;;
+@headings-font-family:    "Open Sans", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @headings-font-weight:    bold;
 @headings-line-height:    1.1;
-@headings-color:          inherit;
+@headings-color:          @apim-blue;
 
 
 //== Iconography
@@ -163,29 +163,33 @@
 
 @btn-font-weight:                normal;
 
-@btn-default-color:              #333;
-@btn-default-bg:                 #fff;
-@btn-default-border:             #ccc;
+@btn-default-color:              @apim-white;
+@btn-default-bg:                 @apim-grey-dark;
+@btn-default-border:             darken(@btn-primary-bg, 5%);
 
-@btn-primary-color:              #fff;
+@btn-primary-color:              @apim-white;
 @btn-primary-bg:                 @brand-primary;
 @btn-primary-border:             darken(@btn-primary-bg, 5%);
 
-@btn-success-color:              #fff;
+@btn-success-color:              @apim-white;
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             darken(@btn-success-bg, 5%);
 
-@btn-info-color:                 #fff;
+@btn-info-color:                 @apim-white;
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
-@btn-warning-color:              #fff;
+@btn-warning-color:              @apim-white;
 @btn-warning-bg:                 @brand-warning;
 @btn-warning-border:             darken(@btn-warning-bg, 5%);
 
-@btn-danger-color:               #fff;
+@btn-danger-color:               @apim-white;
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              darken(@btn-danger-bg, 5%);
+
+@btn-inverse-color:              @apim-white;
+@btn-inverse-bg:                 @apim-grey-text;
+@btn-inverse-border:             darken(@btn-inverse-bg, 5%);
 
 @btn-link-disabled-color:        @gray-light;
 
@@ -200,14 +204,14 @@
 //##
 
 //** `<input>` background color
-@input-bg:                       #fff;
+@input-bg:                       @apim-white;
 //** `<input disabled>` background color
 @input-bg-disabled:              @gray-lighter;
 
 //** Text color for `<input>`s
-@input-color:                    @gray;
+@input-color:                    @apim-grey-text;
 //** `<input>` border color
-@input-border:                   #ccc;
+@input-border:                   @apim-grey-dark;
 
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
 //** Default `.form-control` border radius
@@ -219,10 +223,10 @@
 @input-border-radius-small:      @border-radius-small;
 
 //** Border color for inputs on focus
-@input-border-focus:             #66afe9;
+@input-border-focus:             @apim-pear-green;
 
 //** Placeholder text color
-@input-color-placeholder:        #999;
+@input-color-placeholder:        @apim-grey-medium;
 
 //** Default `.form-control` height
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
@@ -251,7 +255,7 @@
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-@dropdown-bg:                    @apim-white;
+@dropdown-bg:                    @navbar-default-bg;
 //** Dropdown menu `border-color`.
 @dropdown-border:                @apim-grey-light;
 //** Dropdown menu `border-color` **for IE8**.
@@ -260,11 +264,11 @@
 @dropdown-divider-bg:            @apim-grey-medium;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @gray-dark;
+@dropdown-link-color:            @navbar-default-link-color;
 //** Hover color for dropdown links.
-@dropdown-link-hover-color:      @apim-pear-green;
+@dropdown-link-hover-color:      @navbar-default-link-hover-color;
 //** Hover background for dropdown links.
-@dropdown-link-hover-bg:         @apim-grey-light;
+@dropdown-link-hover-bg:         @navbar-default-bg;
 
 //** Active dropdown menu item text color.
 @dropdown-link-active-color:     @component-active-color;
@@ -272,13 +276,13 @@
 @dropdown-link-active-bg:        @component-active-bg;
 
 //** Disabled dropdown menu item background color.
-@dropdown-link-disabled-color:   @gray-light;
+@dropdown-link-disabled-color:   @apim-grey-medium;
 
 //** Text color for headers within dropdown menus.
-@dropdown-header-color:          @gray-light;
+@dropdown-header-color:          @apim-grey-medium;
 
 //** Deprecated `@dropdown-caret-color` as of v3.1.0
-@dropdown-caret-color:           #000;
+@dropdown-caret-color:           @apim-blue;
 
 
 //-- Z-index master list
@@ -397,7 +401,7 @@
 @navbar-default-link-hover-color:          @apim-pear-green;
 @navbar-default-link-hover-bg:             transparent;
 @navbar-default-link-active-color:         @apim-blue;
-@navbar-default-link-active-bg:            @apim-blue-light;
+@navbar-default-link-active-bg:            transparent;
 @navbar-default-link-disabled-color:       @apim-grey-dark;
 @navbar-default-link-disabled-bg:          transparent;
 
@@ -824,11 +828,11 @@
 @breadcrumb-padding-vertical:   8px;
 @breadcrumb-padding-horizontal: 15px;
 //** Breadcrumb background color
-@breadcrumb-bg:                 #f5f5f5;
+@breadcrumb-bg:                 transparent; // @apim-blue-light;
 //** Breadcrumb text color
-@breadcrumb-color:              #ccc;
+@breadcrumb-color:              @apim-blue-medium;
 //** Text color of current page in the breadcrumb
-@breadcrumb-active-color:       @gray-light;
+@breadcrumb-active-color:       @apim-blue;
 //** Textual separator for between breadcrumb elements
 @breadcrumb-separator:          "/";
 

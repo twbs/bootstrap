@@ -44,8 +44,6 @@
 
 // Mixin for generating new styles
 .btn-styles(@btn-color: #555) {
-  #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 12%));
-  .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners; see https://github.com/twbs/bootstrap/issues/10620
   background-repeat: repeat-x;
   border-color: darken(@btn-color, 14%);
 
@@ -85,13 +83,19 @@
   }
 }
 
+.btn-inverse {
+  .button-variant(@btn-inverse-color; @btn-inverse-bg; @btn-inverse-border);
+}
+
 // Apply the mixin to the buttons
-.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
+.btn-default { .btn-styles(@btn-default-bg); } // text-shadow: 0 1px 0 #fff; border-color: #ccc; }
 .btn-primary { .btn-styles(@btn-primary-bg); }
 .btn-success { .btn-styles(@btn-success-bg); }
 .btn-info    { .btn-styles(@btn-info-bg); }
 .btn-warning { .btn-styles(@btn-warning-bg); }
 .btn-danger  { .btn-styles(@btn-danger-bg); }
+.btn-inverse { .btn-styles(@btn-inverse-bg); }
+
 
 
 //
@@ -118,7 +122,6 @@
   background-color: @dropdown-link-active-bg;
 }
 
-
 //
 // Navbar
 // --------------------------------------------------
@@ -142,6 +145,14 @@
         }
       }
     }
+  }
+
+  // Dropdowns get custom display when in navbar
+  .open .dropdown-menu {
+    // background-color: @navbar-default-bg;
+    border: 0;
+    margin-top: -@navbar-default-shadow-height;
+    .box-shadow(0 @navbar-default-shadow-height 0px 0px @navbar-default-shadow-color);
   }
 }
 .navbar-brand,
@@ -193,7 +204,6 @@
 
 // Mixin for generating new styles
 .alert-styles(@color) {
-  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 7.5%));
   border-color: darken(@color, 15%);
 }
 
@@ -343,4 +353,32 @@
 
 body {
   padding-top: @navbar-height;
+}
+
+.dropdown-menu {
+  padding: 0 0;
+}
+
+.breadcrumb {
+  font-size: @font-size-small;
+  margin-top: -@padding-large-vertical;
+  margin-left: -@padding-large-horizontal;
+  margin-right: -@padding-large-horizontal;
+  margin-bottom: 0;
+
+  @media (min-width: @grid-float-breakpoint) {
+    margin-right: -@padding-base-horizontal;
+    margin-left: -@padding-base-horizontal;
+  }
+}
+
+.text-bold {
+  font-weight: @headings-font-weight;
+}
+
+.dynamicTable {
+    width:100%;
+}
+.selectpicker {
+    width: 100%;
 }
