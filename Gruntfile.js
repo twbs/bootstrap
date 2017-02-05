@@ -191,11 +191,11 @@ module.exports = function (grunt) {
     },
 
     exec: {
-      'clean-css': {
-        command: 'npm run clean-css'
+      cssnano: {
+        command: 'npm run cssnano'
       },
-      'clean-css-docs': {
-        command: 'npm run clean-css-docs'
+      'cssnano-docs': {
+        command: 'npm run cssnano-docs'
       },
       postcss: {
         command: 'npm run postcss'
@@ -316,7 +316,7 @@ module.exports = function (grunt) {
   // CSS distribution task.
   grunt.registerTask('sass-compile', ['exec:sass', 'exec:sass-docs'])
 
-  grunt.registerTask('dist-css', ['sass-compile', 'exec:postcss', 'exec:clean-css', 'exec:clean-css-docs'])
+  grunt.registerTask('dist-css', ['sass-compile', 'exec:postcss', 'exec:cssnano', 'exec:cssnano-docs'])
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js'])
@@ -325,7 +325,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['clean:dist', 'test'])
 
   // Docs task.
-  grunt.registerTask('docs-css', ['exec:clean-css-docs', 'exec:postcss-docs'])
+  grunt.registerTask('docs-css', ['exec:cssnano-docs', 'exec:postcss-docs'])
   grunt.registerTask('lint-docs-css', ['exec:scss-lint-docs'])
   grunt.registerTask('docs-js', ['exec:uglify-docs'])
   grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs'])
