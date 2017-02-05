@@ -68,10 +68,10 @@
     - title: Typography
     - title: Vertical align
 
-# - title: Extend
-#   pages:
-#     - title: Approach
-#     - title: Icons
+- title: Extend
+  pages:
+    # - title: Approach
+    - title: Icons
 
 - title: About
   pages:
