@@ -14,7 +14,9 @@
   }
 
   // Set the border and box shadow on specific inputs to match
-  .form-control {
+  .form-control,
+  .custom-select,
+  .custom-file-control {
     border-color: $color;
 
     &:focus {
