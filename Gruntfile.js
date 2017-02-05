@@ -226,6 +226,9 @@ module.exports = function (grunt) {
       },
       'uglify-docs': {
         command: 'npm run uglify-docs'
+      },
+      'check-broken-links': {
+        command: 'npm run check-broken-links'
       }
     },
 
@@ -330,6 +333,8 @@ module.exports = function (grunt) {
   grunt.registerTask('docs-js', ['exec:uglify-docs'])
   grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs'])
   grunt.registerTask('docs-github', ['jekyll:github'])
+  grunt.registerTask('check-broken-links', ['exec:check-broken-links'])
+  grunt.registerTask('lint-docs', ['docs', 'check-broken-links'])
 
   grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress'])
 
