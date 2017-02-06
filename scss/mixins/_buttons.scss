@@ -18,8 +18,11 @@
     background-color: $active-background;
     border-color: $active-border;
   }
+
   &:focus,
   &.focus {
+    color: $color;
+
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
       box-shadow: $btn-box-shadow, 0 0 0 2px rgba($border, .5);
@@ -52,15 +55,16 @@
   background-color: transparent;
   border-color: $color;
 
+  &:focus,
+  &.focus {
+    color: $color;
+    box-shadow: 0 0 0 2px rgba($color, .5);
+  }
+
   @include hover {
     color: $color-hover;
     background-color: $color;
     border-color: $color;
-  }
-
-  &:focus,
-  &.focus {
-    box-shadow: 0 0 0 2px rgba($color, .5);
   }
 
   &.disabled,
