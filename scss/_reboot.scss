@@ -260,17 +260,6 @@ svg:not(:root) {
 }
 
 
-// iOS "clickable elements" fix for role="button"
-//
-// Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
-// for traditionally non-focusable elements with role="button"
-// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
-
-[role="button"] {
-  cursor: pointer;
-}
-
-
 // Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
 //
 // In particular, unlike most other browsers, IE11+Edge on Windows 10 on touch devices and IE Mobile 10-11
