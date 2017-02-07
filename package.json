@@ -63,12 +63,7 @@
     "grunt-eslint": "^19.0.0",
     "grunt-html": "^8.3.2",
     "grunt-htmlhint": "^0.9.13",
-    "grunt-if": {
-      "version": "^0.1.5",
-      "dependencies": {
-        "grunt": "^1.0.0"
-      }
-    },
+    "grunt-if": "^0.1.5",
     "grunt-jekyll": "^0.4.4",
     "grunt-postcss": "^0.8.0",
     "grunt-sass": "^2.0.0",
