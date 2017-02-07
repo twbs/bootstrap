@@ -2253,7 +2253,7 @@ select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.for
 .input-group-lg > .input-group-btn > .btn {
   padding: 0.75rem 1.5rem;
   font-size: 1.25rem;
-  border-radius: 0.3rem;
+  border-radius: 25px;
 }
 
 select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]),
@@ -2951,7 +2951,7 @@ fieldset[disabled] a.btn {
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.75rem 1.5rem;
   font-size: 1.25rem;
-  border-radius: 0.3rem;
+  border-radius: 25px;
 }
 
 .btn-sm, .btn-group-sm > .btn {
@@ -3407,7 +3407,7 @@ tbody.collapse.show {
 .input-group-lg > .input-group-btn > .input-group-addon.btn {
   padding: 0.75rem 1.5rem;
   font-size: 1.25rem;
-  border-radius: 0.3rem;
+  border-radius: 25px;
 }
 
 .input-group-addon input[type="radio"],
@@ -4706,13 +4706,13 @@ tbody.collapse.show {
 }
 
 .pagination-lg .page-item:first-child .page-link {
-  border-bottom-left-radius: 0.3rem;
-  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
 }
 
 .pagination-lg .page-item:last-child .page-link {
-  border-bottom-right-radius: 0.3rem;
-  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
 }
 
 .pagination-sm .page-link {
@@ -4815,7 +4815,7 @@ a.badge:focus, a.badge:hover {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
   background-color: #eceeef;
-  border-radius: 0.3rem;
+  border-radius: 25px;
 }
 
 @media (min-width: 576px) {
@@ -5307,7 +5307,7 @@ button.close {
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  border-radius: 25px;
   outline: 0;
 }
 
@@ -5537,7 +5537,7 @@ button.close {
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  border-radius: 25px;
 }
 
 .popover.popover-top, .popover.bs-tether-element-attached-bottom {
@@ -5641,8 +5641,8 @@ button.close {
   font-size: 1rem;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
-  border-top-right-radius: calc(0.3rem - 1px);
-  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(25px - 1px);
+  border-top-left-radius: calc(25px - 1px);
 }
 
 .popover-title:empty {
