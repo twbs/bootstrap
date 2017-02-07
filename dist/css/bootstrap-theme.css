@@ -3,6 +3,13 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+body {
+  font-weight: 300;
+}
+b,
+strong {
+  font-weight: 600;
+}
 .btn-default,
 .btn-primary,
 .btn-success,
@@ -564,12 +571,6 @@ td > .btn-group > .dropdown-toggle .icon-bar:hover {
 .list-group-item.active:hover,
 .list-group-item.active:focus {
   text-shadow: 0 -1px 0 #22246b;
-  background-image: -webkit-linear-gradient(top, #2e3192 0%, #252775 100%);
-  background-image:      -o-linear-gradient(top, #2e3192 0%, #252775 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#2e3192), to(#252775));
-  background-image:         linear-gradient(to bottom, #2e3192 0%, #252775 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2e3192', endColorstr='#ff252775', GradientType=0);
-  background-repeat: repeat-x;
   border-color: #252775;
 }
 .list-group-item.active .badge,
@@ -662,6 +663,28 @@ td > .btn-group > .dropdown-toggle .icon-bar:hover {
             box-shadow: 0 14px 7px 7px #ededed;
   }
 }
+.sidebar > h1,
+.sidebar h2,
+.sidebar h3,
+.sidebar h4,
+.sidebar h5,
+.sidebar h6,
+.sidebar .h1,
+.sidebar .h2,
+.sidebar .h3,
+.sidebar .h4,
+.sidebar .h5,
+.sidebar .h6 {
+  color: #262626;
+}
+.sidebar > h4,
+.sidebar h5,
+.sidebar h6,
+.sidebar .h4,
+.sidebar .h5,
+.sidebar .h6 {
+  text-transform: uppercase;
+}
 /* Sidebar navigation */
 .nav-sidebar {
   margin-right: -17px;
@@ -708,7 +731,7 @@ body {
   }
 }
 .text-bold {
-  font-weight: bold;
+  font-weight: 600;
 }
 .dynamicTable {
   width: 100% !important;

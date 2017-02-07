@@ -11,6 +11,12 @@
 @import "variables.less";
 @import "mixins.less";
 
+body {
+  font-weight: @font-family-weight;
+}
+b, strong {
+  font-weight: @font-family-bold-weight;
+}
 
 //
 // Buttons
@@ -315,7 +321,7 @@ td > .btn-group > .dropdown-toggle {
 .list-group-item.active:hover,
 .list-group-item.active:focus {
   text-shadow: 0 -1px 0 darken(@list-group-active-bg, 10%);
-  #gradient > .vertical(@start-color: @list-group-active-bg; @end-color: darken(@list-group-active-bg, 7.5%));
+  //#gradient > .vertical(@start-color: @list-group-active-bg; @end-color: darken(@list-group-active-bg, 7.5%));
   border-color: darken(@list-group-active-border, 7.5%);
 
   .badge {
@@ -380,6 +386,16 @@ td > .btn-group > .dropdown-toggle {
     border: 0;
     .box-shadow(0px (2* @navbar-default-shadow-height) @navbar-default-shadow-height @navbar-default-shadow-height @navbar-default-bg);
   }
+
+  > h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: @text-color;
+  }
+
+  > h4, h5, h6,
+  .h4, .h5, .h6 {
+    text-transform: uppercase;
+  }
 }
 
 /* Sidebar navigation */
@@ -430,7 +446,7 @@ body {
 }
 
 .text-bold {
-  font-weight: @headings-font-weight;
+  font-weight: @font-family-bold-weight;
 }
 
 .dynamicTable {
