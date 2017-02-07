@@ -5,4 +5,5 @@ js/tests/*
 build/grunt/*
 build/config/*
 build/utils/*
+build/*
 Gruntfile.js
