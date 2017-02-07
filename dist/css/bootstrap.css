@@ -2589,23 +2589,23 @@ fieldset[disabled] a.btn {
 .btn-secondary {
   color: #292b2c;
   background-color: #fff;
-  border-color: #ccc;
+  border-color: transparent;
 }
 
 .btn-secondary:hover {
   color: #292b2c;
   background-color: #e6e6e6;
-  border-color: #adadad;
+  border-color: transparent;
 }
 
 .btn-secondary:focus, .btn-secondary.focus {
-  -webkit-box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);
-          box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);
+  -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 .btn-secondary.disabled, .btn-secondary:disabled {
   background-color: #fff;
-  border-color: #ccc;
+  border-color: transparent;
 }
 
 .btn-secondary:active, .btn-secondary.active,
@@ -2613,7 +2613,7 @@ fieldset[disabled] a.btn {
   color: #292b2c;
   background-color: #e6e6e6;
   background-image: none;
-  border-color: #adadad;
+  border-color: transparent;
 }
 
 .btn-info {
@@ -2767,33 +2767,33 @@ fieldset[disabled] a.btn {
 }
 
 .btn-outline-secondary {
-  color: #ccc;
+  color: transparent;
   background-image: none;
   background-color: transparent;
-  border-color: #ccc;
+  border-color: transparent;
 }
 
 .btn-outline-secondary:hover {
   color: #fff;
-  background-color: #ccc;
-  border-color: #ccc;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .btn-outline-secondary:focus, .btn-outline-secondary.focus {
-  -webkit-box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);
-          box-shadow: 0 0 0 2px rgba(204, 204, 204, 0.5);
+  -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 .btn-outline-secondary.disabled, .btn-outline-secondary:disabled {
-  color: #ccc;
+  color: transparent;
   background-color: transparent;
 }
 
 .btn-outline-secondary:active, .btn-outline-secondary.active,
 .show > .btn-outline-secondary.dropdown-toggle {
   color: #fff;
-  background-color: #ccc;
-  border-color: #ccc;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .btn-outline-info {
@@ -4426,7 +4426,7 @@ tbody.collapse.show {
 
 .card-outline-secondary {
   background-color: transparent;
-  border-color: #ccc;
+  border-color: transparent;
 }
 
 .card-outline-info {
