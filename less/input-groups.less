@@ -103,6 +103,15 @@
     margin-top: 0;
   }
 }
+//vertical alignment for select tag
+select.form-control,select.input-group-addon,select{
+    //let browser control vertical alignment
+    padding: auto 0;
+   
+    //vertical align should ideally work as display is table
+    vertical-align: middle;
+  } 
+
 
 // Reset rounded corners
 .input-group .form-control:first-child,
