@@ -216,7 +216,7 @@ $(function () {
     $dropdown.trigger('click')
   })
 
-  QUnit.test('should remove "show" class if body is focused', function (assert) {
+  QUnit.test('should remove "show" class if tabbing outside of menu', function (assert) {
     assert.expect(2)
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">'
@@ -238,7 +238,9 @@ $(function () {
      .parent('.dropdown')
      .on('shown.bs.dropdown', function () {
        assert.ok($dropdown.parent('.dropdown').hasClass('show'), '"show" class added on click')
-       $(document.body).trigger('focusin')
+       var e = $.Event('keyup')
+       e.which = 9 // Tab
+       $(document.body).trigger(e)
      }).on('hidden.bs.dropdown', function () {
        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), '"show" class removed')
        done()
@@ -292,7 +294,7 @@ $(function () {
     $first.trigger('click')
   })
 
-  QUnit.test('should remove "show" class if body is focused, with multiple dropdowns', function (assert) {
+  QUnit.test('should remove "show" class if body if tabbing outside of menu, with multiple dropdowns', function (assert) {
     assert.expect(7)
     var done = assert.async()
     var dropdownHTML = '<div class="nav">'
@@ -320,7 +322,9 @@ $(function () {
     .on('shown.bs.dropdown', function () {
       assert.strictEqual($first.parents('.show').length, 1, '"show" class added on click')
       assert.strictEqual($('#qunit-fixture .show').length, 1, 'only one dropdown is shown')
-      $(document.body).trigger('focusin')
+      var e = $.Event('keyup')
+      e.which = 9 // Tab
+      $(document.body).trigger(e)
     }).on('hidden.bs.dropdown', function () {
       assert.strictEqual($('#qunit-fixture .show').length, 0, '"show" class removed')
       $last.trigger('click')
@@ -330,7 +334,9 @@ $(function () {
     .on('shown.bs.dropdown', function () {
       assert.strictEqual($last.parent('.show').length, 1, '"show" class added on click')
       assert.strictEqual($('#qunit-fixture .show').length, 1, 'only one dropdown is shown')
-      $(document.body).trigger('focusin')
+      var e = $.Event('keyup')
+      e.which = 9 // Tab
+      $(document.body).trigger(e)
     }).on('hidden.bs.dropdown', function () {
       assert.strictEqual($('#qunit-fixture .show').length, 0, '"show" class removed')
       done()
