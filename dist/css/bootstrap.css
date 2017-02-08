@@ -2331,7 +2331,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   color: #5cb85c;
 }
 
-.has-success .form-control {
+.has-success .form-control,
+.has-success .custom-select,
+.has-success .custom-file-control {
   border-color: #5cb85c;
 }
 
@@ -2353,7 +2355,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   color: #f0ad4e;
 }
 
-.has-warning .form-control {
+.has-warning .form-control,
+.has-warning .custom-select,
+.has-warning .custom-file-control {
   border-color: #f0ad4e;
 }
 
@@ -2375,7 +2379,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   color: #d9534f;
 }
 
-.has-danger .form-control {
+.has-danger .form-control,
+.has-danger .custom-select,
+.has-danger .custom-file-control {
   border-color: #d9534f;
 }
 
