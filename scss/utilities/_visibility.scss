@@ -8,14 +8,16 @@
 
 // Responsive visibility utilities
 
-@each $bp in map-keys($grid-breakpoints) {
-  .hidden-#{$bp}-up {
-    @include media-breakpoint-up($bp) {
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+  .hidden#{$infix}-up {
+    @include media-breakpoint-up($breakpoint) {
       display: none !important;
     }
   }
-  .hidden-#{$bp}-down {
-    @include media-breakpoint-down($bp) {
+  .hidden#{$infix}-down {
+    @include media-breakpoint-down($breakpoint) {
       display: none !important;
     }
   }
