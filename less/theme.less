@@ -10,6 +10,7 @@
 
 @import "variables.less";
 @import "mixins.less";
+@import "select2-bootstrap.less";
 
 body {
   font-weight: @font-family-weight;
@@ -150,22 +151,22 @@ b, strong {
   }
 }
 
-td > .btn-group > .dropdown-toggle {
-  color: @navbar-default-toggle-border-color;
-  background-color: @navbar-default-toggle-icon-bar-bg;
-  border-color: @navbar-default-toggle-border-color;
-  &:focus,
-  &:hover {
-    color: @apim-white;
-    background-color: @navbar-default-toggle-hover-bg;
-  }
-  .icon-bar {
-    background-color: @navbar-default-toggle-border-color;
-    &:hover {
-      background-color: @apim-white;
-    }
-  }
-}
+// td > .btn-group > .dropdown-toggle {
+//   color: @navbar-default-toggle-border-color;
+//   background-color: @navbar-default-toggle-icon-bar-bg;
+//   border-color: @navbar-default-toggle-border-color;
+//   &:focus,
+//   &:hover {
+//     color: @apim-white;
+//     background-color: @navbar-default-toggle-hover-bg;
+//   }
+//   .icon-bar {
+//     background-color: @navbar-default-toggle-border-color;
+//     &:hover {
+//       background-color: @apim-white;
+//     }
+//   }
+// }
 
 //
 // Navbar
@@ -396,6 +397,16 @@ td > .btn-group > .dropdown-toggle {
   .h4, .h5, .h6 {
     text-transform: uppercase;
   }
+
+  .nav {
+    > li > a {
+      padding-top: @padding-base-vertical;
+      padding-bottom: @padding-base-vertical;
+    }
+    i {
+      min-width: @padding-large-horizontal;
+    }
+  }
 }
 
 /* Sidebar navigation */
@@ -403,6 +414,7 @@ td > .btn-group > .dropdown-toggle {
   margin-right: (-@padding-large-horizontal - 1); /* 20px padding + 1px border */
   margin-bottom: @padding-large-vertical;
   margin-left: -@padding-large-horizontal;
+  border-bottom: 1px solid @hr-border;
 }
 .nav-sidebar > li > a {
   padding-right: @padding-large-horizontal;
@@ -454,4 +466,23 @@ body {
 }
 .selectpicker {
     width: 100% !important;
+}
+.select2-container--bootstrap .select2-selection {
+  border-radius: @border-radius-base;
+}
+.select2-dropdown {
+  border-radius: @border-radius-base;
+}
+
+td {
+  .btn-group {
+    margin-top: (-@table-cell-padding + 1);
+    margin-bottom: -@table-cell-padding;
+    display: flex;
+  }
+  .datatable-inline-edit {
+    width:100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }

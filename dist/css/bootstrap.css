@@ -1184,7 +1184,7 @@ h6,
 .h5,
 .h6 {
   font-family: "Open Sans", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.1;
   color: #2e3192;
 }
@@ -3058,25 +3058,25 @@ fieldset[disabled] a.btn {
 }
 .btn-default {
   color: #fff;
-  background-color: #6d6e71;
+  background-color: #96a4d3;
   border-color: #282a7f;
 }
 .btn-default:focus,
 .btn-default.focus {
   color: #fff;
-  background-color: #545557;
+  background-color: #7285c4;
   border-color: #090a1e;
 }
 .btn-default:hover {
   color: #fff;
-  background-color: #545557;
+  background-color: #7285c4;
   border-color: #191b50;
 }
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
   color: #fff;
-  background-color: #545557;
+  background-color: #7285c4;
   border-color: #191b50;
 }
 .btn-default:active:hover,
@@ -3089,7 +3089,7 @@ fieldset[disabled] a.btn {
 .btn-default.active.focus,
 .open > .dropdown-toggle.btn-default.focus {
   color: #fff;
-  background-color: #424345;
+  background-color: #596fb9;
   border-color: #090a1e;
 }
 .btn-default:active,
@@ -3106,11 +3106,11 @@ fieldset[disabled] .btn-default:focus,
 .btn-default.disabled.focus,
 .btn-default[disabled].focus,
 fieldset[disabled] .btn-default.focus {
-  background-color: #6d6e71;
+  background-color: #96a4d3;
   border-color: #282a7f;
 }
 .btn-default .badge {
-  color: #6d6e71;
+  color: #96a4d3;
   background-color: #fff;
 }
 .btn-primary {
@@ -3562,7 +3562,7 @@ tbody.collapse.in {
 .dropdown-menu > li > a:focus {
   color: #2e3192;
   text-decoration: none;
-  background-color: #939598;
+  background-color: #d5d9ee;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -3902,8 +3902,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   line-height: 1;
   color: #262626;
   text-align: center;
-  background-color: #ededed;
-  border: 1px solid #6d6e71;
+  background-color: #d5d9ee;
+  border: 1px solid #2e3192;
   border-radius: 0;
 }
 .input-group-addon.input-sm {
