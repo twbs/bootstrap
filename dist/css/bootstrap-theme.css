@@ -1354,6 +1354,15 @@ body {
 .dynamicTable {
   width: 100% !important;
 }
+.dataTables_filter {
+  float: right;
+}
+.dataTables_info {
+  float: left;
+}
+.dataTable_paginate {
+  float: right;
+}
 .selectpicker {
   width: 100% !important;
 }
