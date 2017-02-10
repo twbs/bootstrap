@@ -1354,6 +1354,19 @@ body {
 .dynamicTable {
   width: 100% !important;
 }
+.dynamicTable td .btn-group {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  margin-top: -7px;
+  margin-bottom: -8px;
+}
+.dynamicTable td .datatable-inline-edit {
+  width: 100%;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
 .dataTables_filter {
   float: right;
 }
@@ -1366,23 +1379,20 @@ body {
 .selectpicker {
   width: 100% !important;
 }
+.options-form .row:not(:last-child) {
+  padding-bottom: 6px;
+}
+.select2-container--bootstrap {
+  width: 100% !important;
+}
 .select2-container--bootstrap .select2-selection {
   border-radius: 0;
 }
 .select2-dropdown {
   border-radius: 0;
 }
-td .btn-group {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-  margin-top: -7px;
-  margin-bottom: -8px;
-}
-td .datatable-inline-edit {
-  width: 100%;
-  padding-right: 0 !important;
-  padding-left: 0 !important;
+.select2-label {
+  padding: 6px 12px;
+  line-height: 34px;
 }
 /*# sourceMappingURL=bootstrap-theme.css.map */
