@@ -3,7 +3,7 @@
 // Used in _forms.scss to generate the form validation CSS for warnings, errors,
 // and successes.
 
-@mixin form-control-validation($color) {
+@mixin form-control-validation($color, $form-icon) {
   // Color the label and help text
   .form-control-feedback,
   .form-control-label,
@@ -11,6 +11,14 @@
   .form-check-label,
   .custom-control {
     color: $color;
+  }
+
+  .form-control {
+    padding-right: ($input-padding-x * 3);
+    background-image: $form-icon;
+    background-repeat: no-repeat;
+    background-position: center right ($input-height / 4);
+    background-size: ($input-height / 2) ($input-height / 2);
   }
 
   // Set the border and box shadow on specific inputs to match
