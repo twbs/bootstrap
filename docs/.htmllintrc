@@ -1,5 +1,26 @@
 {
   "attr-bans": ["align", "background", "bgcolor", "border", "frameborder", "longdesc", "marginwidth", "marginheight", "scrolling"],
+<<<<<<< HEAD
+  "attr-name-style": false,
+  "attr-no-unsafe-char": false,
+  "class-style": false,
+  "doctype-first": true,
+  "doctype-html5": true,
+  "fig-req-figcaption": false,
+  "html-valid-content-model": false,
+  "id-class-ignore-regex": "(onclick|content|[a-z]+([A-Z][a-z])+)",
+  "id-class-style": false,
+  "indent-style": "spaces",
+  "indent-width": false,
+  "img-req-alt": false,
+  "spec-char-escape": false,
+  "tag-bans": ["b", "i"],
+  "title-max-len": false,
+  "img-req-alt": false,
+  "img-req-src": false,
+  "label-req-for": false,
+  "tag-bans": ["b", "i"]
+=======
   "attr-name-style": "dash",
   "attr-no-unsafe-char": false,
   "class-style": "dash",
@@ -15,4 +36,5 @@
   "spec-char-escape": false,
   "tag-bans": ["b", "i"],
   "title-max-len": false
+>>>>>>> twbs/v4-dev
 }
