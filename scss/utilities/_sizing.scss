@@ -1,12 +1,15 @@
 // responsive Width and Height properties
 
 @each $prop, $abbrev in (width: w, height: h) {
-  @each $bp in map-keys($grid-breakpoints) {
-    @each $size, $length in $sizes {
-      .#{$abbrev}-#{$size}-#{$bp} { #{$prop}: $length !important; }
+	@each $bpname,$bpsize in $grid-breakpoints{
+    @media (min-width: $bpsize) {
+		  @each $size, $length in $sizes {
+  			.#{$abbrev}-#{$size}-#{$bpname} { #{$prop}: $length !important; }
+	  	}
     }
-  }
+	}
 }
+
 
 .mw-100 { max-width: 100% !important; }
 .mh-100 { max-height: 100% !important; }
