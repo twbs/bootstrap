@@ -1,8 +1,10 @@
-// Width and height
+// responsive Width and Height properties
 
 @each $prop, $abbrev in (width: w, height: h) {
-  @each $size, $length in $sizes {
-    .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+  @each $bp in map-keys($grid-breakpoints){
+    @each $size, $length in $sizes {
+      .#{$abbrev}-#{$size}-#{$bp} { #{$prop}: $length !important; }
+    }
   }
 }
 
