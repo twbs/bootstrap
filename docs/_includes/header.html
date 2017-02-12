@@ -19,7 +19,12 @@
 {% endif %}
 
 <!-- Documentation extras -->
-<link href="{{ site.baseurl }}/assets/css/docs.min.css" rel="stylesheet">
+{% if site.github %}
+  <link href="{{ site.baseurl }}/assets/css/docs.min.css" rel="stylesheet">
+{% else %}
+  <link href="{{ site.baseurl }}/assets/css/docs.css" rel="stylesheet">
+{% endif %}
+
 
 <!-- Favicons -->
 <link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png">
