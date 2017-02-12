@@ -1,15 +1,15 @@
 // responsive Width and Height properties
 
 @each $prop, $abbrev in (width: w, height: h) {
-	@each $bpname,$bpsize in $grid-breakpoints {
+  @each $bpname,$bpsize in $grid-breakpoints {
     @media (min-width: $bpsize) {
-		  @each $size, $length in $sizes {
-  			.#{$abbrev}-#{$bpname}-#{$size} { 
+      @each $size, $length in $sizes {
+        .#{$abbrev}-#{$bpname}-#{$size} { 
           #{$prop}: $length !important; 
         }
-	  	}
+      }
     }
-	}
+  }
 }
 
 
