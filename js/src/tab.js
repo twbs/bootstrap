@@ -46,12 +46,12 @@ const Tab = (($) => {
     LI                    : 'li',
     DROPDOWN              : '.dropdown',
     LIST                  : `ul:not(.${ClassName.DROPDOWN_MENU}), ol:not(.${ClassName.DROPDOWN_MENU}), nav:not(.${ClassName.DROPDOWN_MENU})`,
-    FADE_CHILD            : '> .nav-item .${ClassName.FADE}, > .${ClassName.FADE}',
-    ACTIVE                : '.${ClassName.ACTIVE}',
+    FADE_CHILD            : `> .nav-item .${ClassName.FADE}, > .${ClassName.FADE}`,
+    ACTIVE                : `.${ClassName.ACTIVE}`,
     ACTIVE_CHILD          : `> .nav-item > .${ClassName.ACTIVE}, > .${ClassName.ACTIVE}`,
     DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"]',
     DROPDOWN_TOGGLE       : '.dropdown-toggle',
-    DROPDOWN_ACTIVE_CHILD : '> .${ClassName.DROPDOWN_MENU} .${ClassName.ACTIVE}'
+    DROPDOWN_ACTIVE_CHILD : `> .${ClassName.DROPDOWN_MENU} .${ClassName.ACTIVE}`
   }
 
 
