@@ -116,7 +116,7 @@
 .navbar-toggler-left {
   position: absolute;
   left: $navbar-padding-x;
-  
+
   .container > &,
   .container-fluid > & {
     left: 0;
@@ -125,7 +125,7 @@
 .navbar-toggler-right {
   position: absolute;
   right: $navbar-padding-x;
-  
+
   .container > &,
   .container-fluid > & {
     right: 0;
