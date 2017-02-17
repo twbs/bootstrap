@@ -320,7 +320,7 @@ module.exports = function (grunt) {
     'string-replace': {
       dist: {
         files: {
-          'less/iconfont/style.less': 'less/iconfont/style.less'
+          'less/iconfont/variables.less': 'less/iconfont/variables.less'
         },
         options: {
           replacements: [

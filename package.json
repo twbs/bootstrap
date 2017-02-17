@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.4.2",
+  "version": "5.4.3",
   "keywords": [
     "css",
     "less",
@@ -62,7 +62,7 @@
     "markdown-it": "^4.2.1",
     "npm-shrinkwrap": "^200.4.0",
     "time-grunt": "^1.2.0",
-    "transferwise-iconfont": "git://github.com/transferwise/iconfont.git#v1.1.1"
+    "transferwise-iconfont": "git://github.com/transferwise/iconfont.git"
   },
   "engines": {
     "node": ">=0.10.1"
