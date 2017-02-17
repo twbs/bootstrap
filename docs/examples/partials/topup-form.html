@@ -41,7 +41,10 @@
 			causes padding to increase every time it's toggled -->
 			<li ng-if="!$ctrl.showFees">
 				<a href="" ng-click="$ctrl.showFees = !$ctrl.showFees">
-					<span class="sequence-icon"><i class="icon icon-close"></i></span>
+					<span class="sequence-icon"><i class="icon" ng-class="{
+						'icon-expand': !$ctrl.showFees,
+						'icon-collapse': $ctrl.showFees
+					}"></i></span>
 				</a>
 				<div class="sequence-table-th"><strong>6.99 GBP</strong></div>
 				<div class="sequence-table-th"><strong>Total fees</strong></div>

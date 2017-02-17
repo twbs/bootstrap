@@ -269,7 +269,7 @@
   border-radius: 50%;
   width: @sequence-icon-size;
   height: @sequence-icon-size;
-  line-height: (@sequence-icon-size + 4px);
+  line-height: (@sequence-icon-size + 1px);
   top: ((@sequence-step-height / 2) - (@sequence-icon-size / 2));
   z-index: 2;
   text-align: center;
@@ -327,18 +327,18 @@
     }
     .sequence-icon {
       position: initial;
-      margin-top: -17px;
+      margin-top: (-@sequence-margin - 1);
     }
     &:first-child {
       .sequence-table-td,
       .sequence-table-th {
-        padding-top: 17px; // Adding/removing one evens out spaces
+        padding-top: (@sequence-margin + 1); // Adding/removing one evens out spaces
       }
     }
     &:last-child {
       .sequence-table-td,
       .sequence-table-th {
-        padding-bottom: 15px;
+        padding-bottom: (@sequence-margin - 1);
       }
     }
   }
