@@ -138,24 +138,24 @@
   padding-left: 0;
 }
 .select2-container--bootstrap .select2-results__option .select2-results__option .select2-results__option {
-  padding-left: 12px*2;
+  padding-left: 24px;
   margin-left: -12px;
 }
 .select2-container--bootstrap .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
-  padding-left: 12px*3;
-  margin-left: -12px*2;
+  padding-left: 36px;
+  margin-left: -(12px*2);
 }
 .select2-container--bootstrap .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
-  padding-left: 12px*4;
-  margin-left: -12px*3;
+  padding-left: 48px;
+  margin-left: -(12px*3);
 }
 .select2-container--bootstrap .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
-  padding-left: 12px*5;
-  margin-left: -12px*4;
+  padding-left: 60px;
+  margin-left: -(12px*4);
 }
 .select2-container--bootstrap .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
-  padding-left: 12px*6;
-  margin-left: -12px*5;
+  padding-left: 72px;
+  margin-left: -(12px*5);
 }
 .select2-container--bootstrap .select2-results__group {
   display: block;
@@ -260,7 +260,7 @@
   left: 0;
   width: 0;
   height: 0;
-  margin-top: -4px/2;
+  margin-top: -(4px/2);
   margin-left: -4px;
   border-color: #939598 transparent transparent transparent;
   border-style: solid;
@@ -309,7 +309,7 @@
 .select2-container--bootstrap .select2-selection--multiple .select2-selection__choice {
   float: left;
   padding: 0 6px;
-  margin: 5px 0 0 12px/2;
+  margin: 5px 0 0 6px;
   color: #262626;
   cursor: default;
   background: #96a4d3;
@@ -318,7 +318,7 @@
 }
 .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field {
   min-width: 5em;
-  height: 34px - 2;
+  height: 32px;
   padding: 0 12px;
   margin-top: 0;
   line-height: 1.42857143;
@@ -326,7 +326,7 @@
 }
 .select2-container--bootstrap .select2-selection--multiple .select2-selection__choice__remove {
   display: inline-block;
-  margin-right: 6px / 2;
+  margin-right: 3px;
   font-weight: bold;
   color: #939598;
   cursor: pointer;
@@ -341,7 +341,7 @@
 .input-group-sm .select2-container--bootstrap .select2-selection--single,
 .form-group-sm .select2-container--bootstrap .select2-selection--single {
   height: 30px;
-  padding: 5px 10px + 4px*3 5px 10px;
+  padding: 5px 22px 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 0;
@@ -362,14 +362,14 @@
 .input-group-sm .select2-container--bootstrap .select2-selection--multiple .select2-selection__choice,
 .form-group-sm .select2-container--bootstrap .select2-selection--multiple .select2-selection__choice {
   padding: 0 5px;
-  margin: 4px 0 0 10px/2;
+  margin: 4px 0 0 5px;
   font-size: 12px;
   line-height: 1.5;
 }
 .select2-container--bootstrap .select2-selection--multiple.input-sm .select2-search--inline .select2-search__field,
 .input-group-sm .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field,
 .form-group-sm .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field {
-  height: 30px - 2;
+  height: 28px;
   padding: 0 10px;
   font-size: 12px;
   line-height: 1.5;
@@ -383,7 +383,7 @@
 .input-group-lg .select2-container--bootstrap .select2-selection--single,
 .form-group-lg .select2-container--bootstrap .select2-selection--single {
   height: 46px;
-  padding: 10px 16px + 5px*3 10px 16px;
+  padding: 10px 31px 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 0;
@@ -397,7 +397,7 @@
 .select2-container--bootstrap .select2-selection--single.input-lg .select2-selection__arrow b,
 .input-group-lg .select2-container--bootstrap .select2-selection--single .select2-selection__arrow b,
 .form-group-lg .select2-container--bootstrap .select2-selection--single .select2-selection__arrow b {
-  margin-top: -5px/2;
+  margin-top: -(5px/2);
   margin-left: -5px;
   margin-left: -10px;
   border-width: 5px 5px 0 5px;
@@ -412,7 +412,7 @@
 .input-group-lg .select2-container--bootstrap .select2-selection--multiple .select2-selection__choice,
 .form-group-lg .select2-container--bootstrap .select2-selection--multiple .select2-selection__choice {
   padding: 0 10px;
-  margin: 9px 0 0 16px/2;
+  margin: 9px 0 0 8px;
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 0;
@@ -420,7 +420,7 @@
 .select2-container--bootstrap .select2-selection--multiple.input-lg .select2-search--inline .select2-search__field,
 .input-group-lg .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field,
 .form-group-lg .select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field {
-  height: 46px - 2;
+  height: 44px;
   padding: 0 16px;
   font-size: 18px;
   line-height: 1.3333333;
@@ -461,7 +461,7 @@
 }
 .select2-container--bootstrap[dir="rtl"] .select2-selection--single {
   padding-right: 12px;
-  padding-left: 12px + 4px*3;
+  padding-left: 24px;
 }
 .select2-container--bootstrap[dir="rtl"] .select2-selection--single .select2-selection__rendered {
   padding-right: 0;
@@ -484,7 +484,7 @@
   float: right;
 }
 .select2-container--bootstrap[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
-  margin-right: 12px/2;
+  margin-right: 6px;
   margin-left: 0;
 }
 .select2-container--bootstrap[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove {
@@ -1380,14 +1380,14 @@ body {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }
+.dataTables_length {
+  padding-top: 4px;
+}
 .dataTables_filter {
   float: right;
 }
 .dataTables_info {
   float: left;
-}
-.dataTable_paginate {
-  float: right;
 }
 .selectpicker {
   width: 100% !important;
