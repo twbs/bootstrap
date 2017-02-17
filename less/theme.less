@@ -468,6 +468,22 @@ body {
       margin-top: (-@table-cell-padding + 1);
       margin-bottom: -@table-cell-padding;
       display: flex;
+
+      .dropdown-menu {
+          background-color: @btn-default-bg;
+          > li {
+            > a {
+              padding-top: (1 + @padding-base-vertical);
+              padding-bottom: (1 + @padding-base-vertical);  // btns have a border, so match that height
+              color: @btn-default-color;
+              background-color: @btn-default-bg;
+              &:hover,
+              &:focus {
+                background-color: darken(@btn-default-bg, 10%);
+              }
+            }
+          }
+        }
     }
     .datatable-inline-edit {
       width:100%;
@@ -476,6 +492,7 @@ body {
     }
   }
 }
+
 .dataTables_filter {
     float:right;
 }

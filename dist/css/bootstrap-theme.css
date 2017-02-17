@@ -1362,6 +1362,19 @@ body {
   margin-top: -7px;
   margin-bottom: -8px;
 }
+.dynamicTable td .btn-group .dropdown-menu {
+  background-color: #96a4d3;
+}
+.dynamicTable td .btn-group .dropdown-menu > li > a {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: #fff;
+  background-color: #96a4d3;
+}
+.dynamicTable td .btn-group .dropdown-menu > li > a:hover,
+.dynamicTable td .btn-group .dropdown-menu > li > a:focus {
+  background-color: #7285c4;
+}
 .dynamicTable td .datatable-inline-edit {
   width: 100%;
   padding-right: 0 !important;
