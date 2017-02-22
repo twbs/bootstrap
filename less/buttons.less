@@ -336,6 +336,7 @@ input[type="button"] {
   padding-left: @padding-base-horizontal;
   padding-right: @padding-base-horizontal;
 
+
   &:hover {
     border-color: @input-border-hover;
   }
@@ -373,9 +374,16 @@ input[type="button"] {
       display: block;
       width: 100%;
   }
-  &.btn-lg.btn-addon,
-  &.btn-lg.btn-input-inverse {
-    font-weight: @font-weight-semi-bold;
+  &.btn-sm {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  &.btn-lg {
+    font-size: @input-font-size-large;
+    &.btn-addon,
+    &.btn-input-inverse {
+      font-weight: @font-weight-semi-bold;
+    }
   }
 }
 

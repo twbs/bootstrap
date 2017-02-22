@@ -39,6 +39,7 @@
   > .active > a {
     font-weight: @font-weight-semi-bold;
     color: @nav-active-link-color;
+
     &:hover,
     &:focus {
       color: @nav-active-link-hover-color;
@@ -68,7 +69,6 @@
     &:hover,
     &:focus {
       background-color: @nav-link-hover-bg;
-      border-color: @link-color;
     }
   }
 
@@ -99,6 +99,9 @@
     &:active {
       color: @nav-inverse-link-active-color;
     }
+  }
+  > li.active > a {
+    background-color: @nav-inverse-link-active-bg;
   }
 }
 
@@ -155,7 +158,8 @@
     float: none;
 
     > a {
-      padding-left: 24px;
+      border-left: 3px solid transparent;
+      padding-left: 21px;
       padding-right: 24px;
       transition: color .2s ease-in-out;
       .glyphicon {
@@ -164,6 +168,11 @@
       }
       &:active {
         transition: none;
+      }
+
+      @media (min-width: @screen-lg-min) {
+        padding-right: 32px;
+        padding-left: 29px !important;
       }
     }
 
@@ -175,7 +184,6 @@
       &,
       &:hover,
       &:focus {
-        background-color: inherit;
         border-left: 3px solid @brand-light-blue;
         padding-left: (24px - 3px);
       }

@@ -12,12 +12,43 @@
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="../dist/js/bootstrap.min.js"></script>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
 
 	<script src="forms.js"></script>
 
 	<script>
 	angular.module('ExampleApp', ['tw.styleguide-components']);
+
+	function triggerPopover(id, options) {
+		$('.popover').remove();
+		$('#featureCover').remove();
+
+		$('#' + id).popover(options);
+		$('body').append('<div id="featureCover" class="column-layout-cover feature-tour-cover in" style="display: block;" onclick="hideCover(\''+id+'\')"></div>');
+	}
+	function triggerInvitePopover() {
+		triggerPopover('inviteFriends', {
+			trigger: 'click',
+			title: 'Did you know?',
+			content: 'By inviting your friends you can earn free transfers. Invite 3 friends to earn £50 off your fees.',
+			html: false,
+			placement: 'right',
+			container: 'body'
+		});
+	}
+	function triggerTwoFactorPopover() {
+		triggerPopover('twoFactor', {
+			trigger: 'click',
+			title: 'Secure your account',
+			content: 'You can now make your account more secure using 2 factor authentication <a href="">Learn more</a>.',
+			html: true,
+			placement: 'right'
+		});
+	}
+	function hideCover(id) {
+		$('#featureCover').remove();
+		$('#' + id).popover('destroy');
+	}
 	</script>
 
 	<script src="js/transfers.service.js"></script>
@@ -29,6 +60,8 @@
 	<script src="js/side-nav.directive.js"></script>
 	<script src="js/start-new.directive.js"></script>
 	<script src="js/next-cards.directive.js"></script>
+	<script src="js/calculator-inline.directive.js"></script>
+	<script src="js/activity-filters.directive.js"></script>
 	<script src="js/transfer-list.directive.js"></script>
 	<script src="js/transfer-history-table.directive.js"></script>
 	<script src="js/transfer-description.directive.js"></script>
@@ -45,6 +78,7 @@
 
 
 	<script src="//transferwise.github.io/styleguide-components/dist/js/styleguide-components.js"></script>
+	<link type="text/css" rel="stylesheet" href="//transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
 
 	<script>
 	(function(angular) {
@@ -57,10 +91,10 @@
 		]);
 
 		function PageController(TransferService, CurrencyService) {
-			var vm = this;
+			var $ctrl = this;
 
 			CurrencyService.map().then(function(currencies) {
-				vm.currencies = currencies;
+				$ctrl.currencies = currencies;
 			});
 
 			TransferService.list({status: [
@@ -68,105 +102,133 @@
 				"AWAITING_FUNDS",
 				"PROCESSING"
 			]}).then(function(transfers) {
-				vm.activeTransfers = transfers;
+				$ctrl.activeTransfers = transfers;
 			});
 
 			TransferService.list({status: [
 				"COMPLETED",
 				"CANCELLED",
 			]}).then(function(transfers) {
-				vm.historicTransfers = transfers;
+				$ctrl.historicTransfers = transfers;
 			});
 
-			vm.burgerToggle = function() {
-				vm.open = !vm.open;
-			}
+			$ctrl.burgerToggle = function() {
+				$ctrl.open = !$ctrl.open;
+			};
+			$ctrl.showSearch = false;
+
+			$ctrl.sideNavToggle = function() {
+				$ctrl.sideNav = !$ctrl.sideNav;
+			};
+			$ctrl.sideNav = true;
 		}
 	})(window.angular);
 	</script>
 </head>
-<body ng-app="ExampleApp" class="bg-default">
-<div class="column-layout" ng-controller="PageController as ctrl">
-<div class="column-layout-left bg-primary" ng-class="{open: ctrl.open}">
-	<div class="column-layout-top">
-		<side-nav></side-nav>
-	</div>
-
-	<div class="column-layout-bottom">
-		<a class="btn btn-success btn-block" href="flow.html">Create</a>
-	</div>
-</div>
-<div class="column-layout-main">
-	<div class="m-t-2">
-		<simple-nav on-burger-click="ctrl.burgerToggle()"></simple-nav>
-	</div>
-	<div class="p-t-2 p-b-1 hidden-xs">
-		<div class="container-fluid">
-			<profile-block></profile-block>
+<body ng-app="ExampleApp" class="bg-default" ng-controller="PageController as ctrl">
+<nav-bar ng-if="!ctrl.sideNav" fluid="ctrl.sideNav"></nav-bar>
+<div class="column-layout">
+	<div class="column-layout-left bg-primary" ng-class="{open: ctrl.open}" ng-if="ctrl.sideNav">
+		<div class="column-layout-top">
+			<side-nav></side-nav>
 		</div>
+		<!--
+		<div class="column-layout-bottom">
+			<dl>
+				<dt>Free transfers</dt>
+				<dd class="m-b-1">2</dd>
+				<dt>Fee credit</dt>
+				<dd class="m-b-0">$100 USD</dd>
+			</dl>
+		</div>
+		-->
 	</div>
-	<div class="container-fluid">
-		<next-cards show="1"></next-cards>
+	<div class="column-layout-main">
+		<simple-nav
+			ng-if="ctrl.sideNav"
+			title="Activity"
+			on-burger-click="ctrl.burgerToggle()"
+			show-search="ctrl.showSearch"></simple-nav>
 
-		<div class="panel">
-			<div class="panel-heading">
-				<div class="row">
-					<div class="col-md-6 col-lg-8">
-						<h3 class="panel-title">
-							In progress ({{ctrl.activeTransfers.length}})
-						</h3>
-					</div>
-					<div class="col-md-6 col-lg-4 m-b-1">
-						<div class="input-group input-group-sm m-t-1">
-							<span class="input-group-addon"><i class="icon icon-search m-r-0"></i></span>
-							<input type="text" class="form-control" placeholder="Search..." />
-							 <span class="input-group-btn">
-								 <button class="btn btn-sm btn-addon">Go</button>
-							</span>
-						</div>
+		<div class="nav-toolbar" data-spy="affix" data-offset-top="66" ng-class="{
+				'affix-cancel-xs': ctrl.showSearch,
+				'affix-cancel-sm': ctrl.showSearch
+			}">
+			<div class="container m-l-0">
+				<activity-filters show-search="ctrl.showSearch"></activity-filters>
+				<!-- <calculator-inline></calculator-inline> -->
+			</div>
+		</div>
+
+		<div class="container p-t-2 m-l-0">
+			<!--
+			<div class="row">
+				<div class="col-sm-6 col-md-7 col-xl-9">
+					<h1 class="hidden-lg hidden-xl m-t-3 h3">Activity</h1>
+				</div>
+				<div class="col-sm-6 col-md-5 col-xl-3 hidden-lg hidden-xl">
+					<div class="input-group input-group-sm m-t-3">
+						<span class="input-group-addon"><i class="icon icon-search m-r-0"></i></span>
+						<input type="text" class="form-control" placeholder="Search..." />
+						<span class="input-group-btn">
+							 <button class="btn btn-sm btn-primary" ng-click="ctrl.sideNavToggle()">Go</button>
+						</span>
 					</div>
 				</div>
 			</div>
-			<transfer-list
-				transfers="ctrl.activeTransfers"
-				currencies="ctrl.currencies"
-				inactive="false">
-			</transfer-list>
-		</div>
-
-		<div class="panel">
-			<div class="panel-heading">
-				<h3 class="panel-title">
-					Recent ({{ctrl.historicTransfers.length}})
-				</h3>
+			-->
+			<!--
+			<div class="m-t-1 m-b-3">
+				<next-cards show="2"></next-cards>
 			</div>
-			<transfer-list
-				transfers="ctrl.historicTransfers"
-				currencies="ctrl.currencies"
-				inactive="true">
-			</transfer-list>
-			<div class="panel-footer">
-				<pagination page="1" total="200"></pagination>
-			</div>
-		</div>
+			-->
 
-		<div class="text-xs-center section">
-			&copy; TransferWise 2016
+			<div class="panel m-b-2">
+				<div class="panel-heading p-t-0  p-b-0">
+					<div class="row">
+						<div class="col-sm-6 col-md-7 col-xl-9">
+							<h6 class="panel-title">
+								In progress ({{ctrl.activeTransfers.length}})
+							</h6>
+						</div>
+						<div class="col-sm-6 col-md-5 col-xl-3 hidden-xs hidden-sm hidden-md text-xs-right">
+
+						</div>
+					</div>
+				</div>
+				<transfer-list
+					transfers="ctrl.activeTransfers"
+					currencies="ctrl.currencies"
+					inactive="false">
+				</transfer-list>
+			</div>
+
+			<div class="panel">
+				<div class="panel-heading p-b-0">
+					<h6 class="panel-title">
+						Recent ({{ctrl.historicTransfers.length}})
+					</h6>
+				</div>
+				<transfer-list
+					transfers="ctrl.historicTransfers"
+					currencies="ctrl.currencies"
+					inactive="true">
+				</transfer-list>
+				<div class="panel-footer">
+					<pagination page="1" total="200"></pagination>
+				</div>
+			</div>
+
+			<div class="text-xs-center section">
+				&copy; TransferWise 2016
+			</div>
 		</div>
 	</div>
-</div>
-<div class="column-layout-cover"
-	ng-class="{in: ctrl.open}"
-	ng-click="ctrl.open = !ctrl.open;">
-	<a class="close">&times;</a>
-</div>
-<div class="navbar navbar-fixed-bottom bg-primary visible-xs visible-sm p-x-1">
-	<ul class="nav nav-justified nav-inverse">
-		<li><button class="navbar-btn btn btn-sm btn-block btn-success">Create</button></li>
-		<li class="active"><a href="">Activity</a></li>
-		<li><a href="" ng-click="ctrl.open = !ctrl.open">More...</a></li>
-	</ul>
-</div>
+	<div class="column-layout-cover"
+		ng-class="{in: ctrl.open}"
+		ng-click="ctrl.open = !ctrl.open;">
+		<a class="close">&times;</a>
+	</div>
 </div>
 </body>
 </html>

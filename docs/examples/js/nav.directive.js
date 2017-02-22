@@ -11,6 +11,7 @@
 			controller: function() {
 				var vm = this;
 
+				// TODO duplicated in simplenav, make it a service
 				vm.translations = {
 					"en": {
 						"transfers": "Transfers",
@@ -37,7 +38,8 @@
 			replace: true,
 			restrict: 'E',
 			scope: {
-				transparent: "="
+				transparent: "=",
+				fluid: "="
 			},
 			templateUrl: "partials/nav-bar.html"
 		}

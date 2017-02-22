@@ -35,7 +35,7 @@
   <h2 id="btn-groups-toolbar">Button toolbar</h2>
   <p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
   <div class="bs-example" data-example-id="simple-button-toolbar">
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-toolbar btn-toolbar-sm" role="toolbar" aria-label="Toolbar with button groups">
       <div class="btn-group" role="group" aria-label="First group">
         <button type="button" class="btn btn-default">1</button>
         <button type="button" class="btn btn-default">2</button>
@@ -47,17 +47,25 @@
         <button type="button" class="btn btn-default">6</button>
         <button type="button" class="btn btn-default">7</button>
       </div>
-      <div class="btn-group" role="group" aria-label="Third group">
-        <button type="button" class="btn btn-default">8</button>
-      </div>
+      <button type="button" class="btn btn-default">8</button>
     </div>
   </div>
 {% highlight html %}
-<div class="btn-toolbar" role="toolbar" aria-label="...">
+<div class="btn-toolbar btn-toolbar-sm" role="toolbar" aria-label="...">
   <div class="btn-group" role="group" aria-label="...">...</div>
   <div class="btn-group" role="group" aria-label="...">...</div>
-  <div class="btn-group" role="group" aria-label="...">...</div>
+  <button type="button" class="btn btn-default">...</button>
 </div>
+{% endhighlight %}
+
+  <h3>Button toolbar collapse</h3>
+  <p><code>.btn-toolbar</code> collapses to use full-width buttons on smaller screens.
+    Use modifier classes to adjust the breakpoint beneath which the tollbar collapses.<p>
+{% highlight html %}
+<div class="btn-toolbar btn-toolbar-sm" role="toolbar" aria-label="...">...</div>
+<div class="btn-toolbar btn-toolbar-md" role="toolbar" aria-label="...">...</div>
+<div class="btn-toolbar btn-toolbar-lg" role="toolbar" aria-label="...">...</div>
+<div class="btn-toolbar btn-toolbar-xl" role="toolbar" aria-label="...">...</div>
 {% endhighlight %}
 
   <h2 id="btn-groups-sizing">Sizing</h2>

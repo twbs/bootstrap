@@ -131,7 +131,7 @@
 }
 
 .popover-title {
-    color: @headings-color;
+    color: @headings-color !important;
     line-height: 24px;
 }
 .popover-content {
@@ -143,16 +143,21 @@
     margin-bottom: 0;
 }
 
-[data-toggle=popover]:not(.btn) {
-  color: inherit !important;
-  font-weight: inherit !important;
-  text-decoration: none !important;
-  border-bottom: 1px dotted @abbr-border-color !important;
-  cursor: pointer;
-  &:hover,
-  &:focus,
-  &[aria-describedby] {
-    color: @link-hover-color !important;
-    outline: 0;
+[data-toggle=popover] {
+  &:not(.btn) {
+    color: inherit !important;
+    font-weight: inherit !important;
+    text-decoration: none !important;
+    border-bottom: 1px dotted @abbr-border-color !important;
+    cursor: pointer;
+    &:hover,
+    &:focus,
+    &[aria-describedby] {
+      color: @link-hover-color !important;
+      outline: 0;
+    }
+  }
+  .nav > li > a & {
+    border-bottom: 0;
   }
 }

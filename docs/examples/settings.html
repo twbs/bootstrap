@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Settings Page Example</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="scratch.css" />
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+
+	<script src="forms.js"></script>
+
+	<script>
+	angular.module('ExampleApp', ['tw.styleguide-components']);
+	</script>
+
+	<script src="js/nav.directive.js"></script>
+	<script src="js/simple-nav.directive.js"></script>
+	<script src="js/side-nav.directive.js"></script>
+	<script src="js/start-new.directive.js"></script>
+	<script src="js/activity-filters.directive.js"></script>
+	<script src="js/footer.directive.js"></script>
+
+
+	<script src="//transferwise.github.io/styleguide-components/dist/js/styleguide-components.js"></script>
+	<link type="text/css" rel="stylesheet" href="//transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
+
+	<script>
+	(function(angular) {
+
+		angular.module('ExampleApp')
+		.controller('PageController', [
+			PageController
+		]);
+
+		function PageController() {
+			var $ctrl = this;
+
+			$ctrl.burgerToggle = function() {
+				$ctrl.open = !$ctrl.open;
+			};
+			$ctrl.showSearch = false;
+
+			$ctrl.sideNavToggle = function() {
+				$ctrl.sideNav = !$ctrl.sideNav;
+			};
+			$ctrl.sideNav = true;
+		}
+	})(window.angular);
+	</script>
+	<style>
+	.nav-tabs {
+		border-bottom: 0;
+		white-space: nowrap;
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	.nav-tabs > .active > a {
+		border-bottom: 0;
+	}
+	.nav-tabs .active {
+		border: 0;
+		background-color: #FFF;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+	}
+	.nav-tabs > li {
+		float: none;
+		display: inline-block;
+	}
+	.nav-tabs > li > a {
+		padding: 12px 32px;
+	}
+	.tab-pane {
+		background-color: #FFF;
+		padding: 32px;
+	}
+	.tab-content {
+		margin-top: -2px;
+	}
+	</style>
+</head>
+<body ng-app="ExampleApp" class="bg-default" ng-controller="PageController as ctrl">
+<nav-bar ng-if="!ctrl.sideNav" fluid="ctrl.sideNav"></nav-bar>
+<div class="column-layout">
+	<div class="column-layout-left bg-primary" ng-class="{open: ctrl.open}" ng-if="ctrl.sideNav">
+		<div class="column-layout-top">
+			<side-nav></side-nav>
+		</div>
+	</div>
+	<div class="column-layout-main">
+		<simple-nav
+			ng-if="ctrl.sideNav"
+			title="Settings"
+			on-burger-click="ctrl.burgerToggle()"
+			show-search="ctrl.showSearch"></simple-nav>
+
+		<div class="container p-t-panel m-l-0">
+			<h1 class="h3 hidden-lg hidden-xl m-b-panel">Settings</h1>
+			<div>
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs m-b-0 p-b-0" role="tablist">
+					<li role="presentation" class="active">
+						<a href="#email" aria-controls="email" role="tab" data-toggle="tab">Email</a>
+					</li>
+					<li role="presentation">
+						<a href="#language" aria-controls="language" role="tab" data-toggle="tab">Language</a>
+					</li>
+					<li role="presentation">
+						<a href="#password" aria-controls="password" role="tab" data-toggle="tab">Password</a>
+					</li>
+					<li role="presentation">
+						<a href="#twoFactor" aria-controls="twoFactor" role="tab" data-toggle="tab">2 Factor</a>
+					</li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active p-a-panel" id="email">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="control-label">Email address</label>
+									<input type="text" class="form-control" />
+								</div>
+								<button class="btn btn-primary">Save changes</button>
+							</div>
+						</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="language">...</div>
+					<div role="tabpanel" class="tab-pane" id="password">...</div>
+					<div role="tabpanel" class="tab-pane" id="twoFactor">...</div>
+				</div>
+
+			</div>
+			<div class="text-xs-center section">
+				&copy; TransferWise 2016
+			</div>
+		</div>
+	</div>
+	<div class="column-layout-cover"
+		ng-class="{in: ctrl.open}"
+		ng-click="ctrl.open = !ctrl.open;">
+		<a class="close">&times;</a>
+	</div>
+</div>
+</body>
+</html>

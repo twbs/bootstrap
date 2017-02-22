@@ -35,70 +35,7 @@
 }
 /* End account page */
 
-.navbar-fixed-bottom .nav {
-  min-height: 40px;
-}
-.navbar-fixed-bottom .nav-justified > li {
-  padding-top: 6px;
-  vertical-align: top;
-}
-.navbar-fixed-bottom .navbar-btn {
-  margin-top: 4px;
-  margin-bottom: 8px;
-}
-.column-layout-left {
-  z-index: 10000;
-}
-@media (max-width: 575px) {
-  .container-fluid .panel {
-    margin-right: -12px;
-    margin-left: -12px;
-  }
-}
-@media (max-width: 430px) {
-  .navbar-default .profile-name .text-ellipsis {
-    width: 120px;
-  }
-}
-@media (max-width: 767px) {
-  .container-fluid .navbar-nav {
-    margin-top: 4px;
-    border-bottom: 0;
-  }
-}
-.container-fluid {
-  max-width: 1440px;
-}
-/*
-.list-group-item {
-    transition: none;
-}
 
-.list-group:hover .list-group-item {
-    opacity: 0.7;
-    background-color: #f5f7f9;
-    border-top: 1px solid #e2e6e8;
-    margin-top: 0;
-}
-.list-group:hover .list-group-item:hover {
-    opacity: 1;
-    background-color: #fff;
-}
-.list-group:hover .list-group-item .circle {
-    background-color: #fff;
-}
-
-.list-group:hover .list-group-item:hover .circle {
-    background-color: #f5f7f9;
-}
-.list-group .list-group-item:last-child {
-    border-bottom: 1px solid #e2e6e8;
-}
-*/
-
-.list-group:hover .list-group-item:not(.active) .media {
-  opacity: .6;
-}
-.list-group:hover .list-group-item:hover .media {
-  opacity: 1;
+.feature-tour-cover {
+  z-index: 100;
 }

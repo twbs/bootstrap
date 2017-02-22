@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Details Page Example</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="scratch.css" />
+
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+
+	<script src="forms.js"></script>
+
+	<script>
+	angular.module('ExampleApp', ['tw.styleguide-components']);
+	</script>
+
+	<script src="js/nav.directive.js"></script>
+	<script src="js/simple-nav.directive.js"></script>
+	<script src="js/side-nav.directive.js"></script>
+	<script src="js/start-new.directive.js"></script>
+	<script src="js/activity-filters.directive.js"></script>
+	<script src="js/footer.directive.js"></script>
+
+
+	<script src="//transferwise.github.io/styleguide-components/dist/js/styleguide-components.js"></script>
+	<link type="text/css" rel="stylesheet" href="//transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
+
+	<script>
+	(function(angular) {
+
+		angular.module('ExampleApp')
+		.controller('PageController', [
+			PageController
+		]);
+
+		function PageController() {
+			var $ctrl = this;
+
+			$ctrl.burgerToggle = function() {
+				$ctrl.open = !$ctrl.open;
+			};
+			$ctrl.showSearch = false;
+
+			$ctrl.sideNavToggle = function() {
+				$ctrl.sideNav = !$ctrl.sideNav;
+			};
+			$ctrl.sideNav = true;
+		}
+	})(window.angular);
+	</script>
+	<style>
+	.nav-tabs {
+		border-bottom: 0;
+		white-space: nowrap;
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	.nav-tabs > .active > a {
+		border-bottom: 0;
+	}
+	.nav-tabs .active {
+		border: 0;
+		background-color: #FFF;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+	}
+	.nav-tabs > li {
+		float: none;
+		display: inline-block;
+	}
+	.nav-tabs > li > a {
+		padding: 12px 32px;
+	}
+	.tab-pane {
+		background-color: #FFF;
+		padding: 32px;
+	}
+	.tab-content {
+		margin-top: -2px;
+	}
+	</style>
+</head>
+<body ng-app="ExampleApp" class="bg-default" ng-controller="PageController as ctrl">
+<nav-bar ng-if="!ctrl.sideNav" fluid="ctrl.sideNav"></nav-bar>
+<div class="column-layout">
+	<div class="column-layout-left bg-primary" ng-class="{open: ctrl.open}" ng-if="ctrl.sideNav">
+		<div class="column-layout-top">
+			<side-nav></side-nav>
+		</div>
+	</div>
+	<div class="column-layout-main">
+		<simple-nav
+			ng-if="ctrl.sideNav"
+			title="£10 to Stephen Pole"
+			on-burger-click="ctrl.burgerToggle()"
+			show-search="ctrl.showSearch"></simple-nav>
+
+		<div class="container m-l-0 p-t-panel">
+			<ul class="sequence sequence-bottom sequence-info">
+				<li>
+					<span class="sequence-icon" style="top: 4px;">1</span>
+					<p class="text-max-width">Your £10 is converted to Euros</p>
+					<p class="small text-max-width">The mid-market rate is <strong>£1 -> €1.18057</strong>, so
+						<strong>Stephen Pole would get €11.75</strong>.</p>
+				</li>
+				<li class="active"><span class="sequence-icon">3</span>Euros are transferred to Stephen Pole.</li>
+			</ul>
+		</div>
+		<div class="bg-focus ">
+			<div class="container m-l-0">
+				<ul class="sequence sequence-top sequence-bottom sequence-info">
+					<li class="active">
+						<header>
+							<div class="sequence-icon" >1</div>
+							<h2 class="m-b-2">Waiting for your £10 payment</h2>
+						</header>
+						<h4>Haven't sent anything yet?</h4>
+						<p class="small text-max-width">No problem. Hit the button below to pay for your transfer.</p>
+						<div class="btn-toolbar btn-toolbar-sm m-b-3">
+							<button class="btn btn-success">Pay for my transfer</button>
+							<button class="btn btn-default">I've sent the money</button>
+						</div>
+						<p class="small text-max-width">We'll let you know by email the moment your money reaches us.
+							This can take somewhere between a few hours to a couple of days.
+							Your bank should be able to tell you how long this bank transfer
+							will take.</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container m-l-0">
+			<ul class="sequence sequence-top">
+				<li>
+					<span class="sequence-icon">2</span>
+					<p class="text-max-width">Your £10 is converted to Euros</p>
+					<p class="small text-max-width">The mid-market rate is <strong>£1 -> €1.18057</strong>, so
+						<strong>Stephen Pole would get €11.75</strong>.</p>
+				</li>
+				<li><span class="sequence-icon">3</span>Euros are transferred to Stephen Pole.</li>
+			</ul>
+			<div class="p-l-3">
+				<div class="p-l-3">
+					<button class="btn btn-danger">Cancel transfer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="column-layout-cover"
+		ng-class="{in: ctrl.open}"
+		ng-click="ctrl.open = !ctrl.open;">
+		<a class="close">&times;</a>
+	</div>
+</div>
+</body>
+</html>

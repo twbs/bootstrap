@@ -36,7 +36,7 @@
   z-index: @zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   float: left;
-  min-width: 160px;
+
   padding: @padding-base-vertical;
   margin: 0; // override default ul
   list-style: none;
@@ -48,6 +48,12 @@
   border-radius: @border-radius-base;
   .box-shadow(0px 20px 66px 0px rgba(34,48,73,.2));
   background-clip: padding-box;
+
+  // Bit of a hack for our calculators to make the two controls the same width.
+  min-width: 104px;
+  @media (min-width: @screen-sm-min) {
+    min-width: 160px;
+  }
 
   // Dividers (basically an hr) within the dropdown
   .divider {

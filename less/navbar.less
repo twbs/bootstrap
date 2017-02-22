@@ -165,8 +165,13 @@
   float: left;
   padding: @navbar-padding-vertical @navbar-padding-horizontal (@navbar-padding-vertical - 3px);
   font-size: @font-size-large;
-  line-height: @line-height-computed;
+  line-height: @navbar-line-height;
   height: @navbar-height;
+
+  margin-top: 12px;
+  margin-right: 10px;
+  height: 24px;
+  width: 118px;
 
   &:hover,
   &:focus {
@@ -187,7 +192,7 @@
 .navbar-toggle {
   position: relative;
   float: left;
-  padding: 9px 0px;
+  padding: 9px 0;
   .navbar-vertical-align(34px);
   background-color: transparent;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
@@ -199,6 +204,16 @@
   // styles to `:focus`.
   &:focus {
     outline: 0;
+  }
+
+  font-size: @font-size-base;
+  font-weight: @font-weight-semi-bold;
+  line-height: 18px;
+  margin-bottom: 8px;
+  color: #fff;
+
+  .icon-bar:first-child {
+    margin-top: 1px;
   }
 
   // Bars
@@ -234,13 +249,17 @@
 
 .navbar-nav {
   > li > a {
-    padding: (@line-height-computed / 2) @navbar-padding-horizontal;
-    line-height: @line-height-computed;
+    padding: @navbar-padding-vertical @navbar-padding-horizontal;
+    line-height: @navbar-line-height;
     outline-offset: -1px;
 
     @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-        padding-left: 12px;
-        padding-right: 12px;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    &.dropdown-toggle {
+      height: (@navbar-line-height + (2 * @navbar-padding-vertical));
     }
   }
   > li.divider {
@@ -248,7 +267,9 @@
   }
 
   @media (max-width: @grid-float-breakpoint-max) {
-    border-bottom: 1px solid @brand-smoke-plus-20;
+    .navbar-collapse & {
+      border-bottom: 1px solid @brand-smoke-plus-20;
+    }
 
     // Dropdowns get custom display when collapsed
     .navbar-collapse-flatten {
@@ -269,16 +290,13 @@
         }
     }
 
-    > li > a {
-        color: @nav-link-color;
-    }
-
     > li.divider {
       display: block;
       .nav-divider(@dropdown-divider-bg);
     }
 
     > li > a {
+      color: @nav-link-color;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -411,9 +429,9 @@
 // Declared after the navbar components to ensure more specificity on the margins.
 
 @media (min-width: @grid-float-breakpoint) {
-  .navbar-left  { .pull-left(); }
+  .navbar-left  { .pull-xs-left(); }
   .navbar-right {
-    .pull-right();
+    .pull-xs-right();
 
     ~ .navbar-right {
       margin-right: 0;
@@ -460,7 +478,7 @@
       color: @navbar-default-link-color;
 
       @media (min-width: @grid-float-breakpoint) {
-          border-bottom: 3px solid transparent;
+        border-bottom: 3px solid transparent;
       }
 
       &:hover,
@@ -657,10 +675,6 @@
 .navbar-inverse .navbar-brand {
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    margin-top: 10px;
-    margin-right: 10px;
-    height: 16px;
-    width: 118px;
 
     color: transparent;
 
@@ -792,7 +806,8 @@
     padding-bottom: 3px;
 
     .caret {
-        margin-top: -16px;
+      vertical-align: top;
+      line-height: @navbar-line-height;
     }
 
     .text-ellipses,
@@ -856,4 +871,122 @@
         background-color: @navbar-collapse-bg;
         border-bottom-color: transparent;
     }
+}
+
+
+.navbar-title {
+  float: left;
+  line-height: 30px;
+  margin-top: 13px;
+  margin-bottom: 13px;
+
+  @media (min-width: @screen-lg-min) {
+    font-weight: @font-weight-bold;
+  }
+}
+.navbar-logo {
+  width: 127px;
+  height: 22px;
+  margin-top: 13px;
+  margin-bottom: 21px;
+}
+
+@nav-toolbar-height: 64px;
+
+.nav-toolbar {
+  padding-top: 16px;
+  padding-bottom: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #e2e6e8;
+
+  h1 {
+    line-height: 32px;
+  }
+  .close {
+    text-decoration: none;
+    height: 32px;
+  }
+
+  &.affix {
+    top: 0;
+    z-index: @zindex-navbar;
+    width: 100%;
+    margin-top: 0;
+    border-top: 0;
+    position: fixed;
+  }
+}
+
+.nav-toolbar.affix + .container,
+.nav-toolbar.affix + .container-fluid {
+  margin-top: @nav-toolbar-height !important;
+}
+
+@media (min-width: @screen-lg-min) {
+  .column-layout .nav-toolbar.affix {
+    // Use comment to allow older LESS compilers to work.
+    width: ~"calc(100% - @{column-width})";
+  }
+}
+
+@media (max-width: @screen-xs-max) {
+  .affix-cancel-xs {
+    position: relative !important;
+  }
+  .nav-toolbar.affix-cancel-xs + .container,
+  .nav-toolbar.affix-cancel-xs + .container-fluid {
+    margin-top: 0 !important;
+  }
+}
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  .affix-cancel-sm {
+    position: relative !important;
+  }
+  .nav-toolbar.affix-cancel-sm + .container,
+  .nav-toolbar.affix-cancel-sm + .container-fluid {
+    margin-top: 0 !important;
+  }
+}
+
+// TODO this is a hack with no docs
+.simple-nav {
+  background-color: @brand-navy;
+  .navbar-nav > li > a {
+    padding-top: (@navbar-padding-vertical + 4px);
+    padding-bottom: (@navbar-padding-vertical + 1px);
+  }
+  .navbar-header {
+    padding-top: 4px;
+  }
+  .navbar-nav > li > a.dropdown-toggle {
+    height: @nav-toolbar-height;
+  }
+  .navbar-right li > a {
+    // HACK - better to make things only collapse if inside collapse
+    float: right;
+  }
+}
+@media (min-width: @screen-sm-min) {
+  .simple-nav .navbar-nav > li > a {
+    font-size: @font-size-base !important;
+  }
+}
+@media (min-width: @screen-lg-min) {
+  .simple-nav {
+    background-color: #fff;
+    border-bottom: 1px solid @brand-smoke-plus-10;
+  }
+}
+@media (max-width: @screen-md-max) {
+  .simple-nav .navbar-nav > li > a {
+    color: #fff;
+    &:focus,
+    &:hover,
+    &:active {
+      color: @link-color;
+    }
+  }
+}
+.simple-nav .profile-name .text-ellipsis {
+  max-width: 280px;
 }

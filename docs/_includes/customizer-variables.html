@@ -703,7 +703,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-lg-font-size">@btn-lg-font-size</label>
-    <input id="input-@btn-lg-font-size" type="text" value="22px" data-var="@btn-lg-font-size" class="form-control"/>
+    <input id="input-@btn-lg-font-size" type="text" value="20px" data-var="@btn-lg-font-size" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-lg-line-height">@btn-lg-line-height</label>
@@ -835,20 +835,20 @@
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@btn-info-bg-hover">@btn-info-bg-hover</label>
-    <input id="input-@btn-info-bg-hover" type="text" value="@brand-grey-plus-10" data-var="@btn-info-bg-hover" class="form-control"/>
+    <input id="input-@btn-info-bg-hover" type="text" value="@brand-light-blue" data-var="@btn-info-bg-hover" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-info-border-hover">@btn-info-border-hover</label>
-    <input id="input-@btn-info-border-hover" type="text" value="@brand-grey-plus-10" data-var="@btn-info-border-hover" class="form-control"/>
+    <input id="input-@btn-info-border-hover" type="text" value="@brand-light-blue" data-var="@btn-info-border-hover" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@btn-info-bg-active">@btn-info-bg-active</label>
-    <input id="input-@btn-info-bg-active" type="text" value="@brand-grey" data-var="@btn-info-bg-active" class="form-control"/>
+    <input id="input-@btn-info-bg-active" type="text" value="@brand-light-blue-minus-20" data-var="@btn-info-bg-active" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@btn-info-border-active">@btn-info-border-active</label>
-    <input id="input-@btn-info-border-active" type="text" value="@brand-grey" data-var="@btn-info-border-active" class="form-control"/>
+    <input id="input-@btn-info-border-active" type="text" value="@brand-light-blue-minus-20" data-var="@btn-info-border-active" class="form-control"/>
   </div>
 </div>
 <h3 id="button-warning">Button Warning</h3>
@@ -1363,6 +1363,10 @@
     <label for="input-@nav-inverse-link-active-color">@nav-inverse-link-active-color</label>
     <input id="input-@nav-inverse-link-active-color" type="text" value="@brand-light-blue-minus-10" data-var="@nav-inverse-link-active-color" class="form-control"/>
   </div>
+  <div class="col-xs-4">
+    <label for="input-@nav-inverse-link-active-bg">@nav-inverse-link-active-bg</label>
+    <input id="input-@nav-inverse-link-active-bg" type="text" value="@brand-navy-minus-10" data-var="@nav-inverse-link-active-bg" class="form-control"/>
+  </div>
 </div>
 <h2 id="navbar">Navbar</h2>
 <div class="row">
@@ -1371,31 +1375,40 @@
     <input id="input-@navbar-font-size" type="text" value="14px" data-var="@navbar-font-size" class="form-control"/>
   </div>
   <div class="col-xs-4">
+    <label for="input-@navbar-line-height">@navbar-line-height</label>
+    <input id="input-@navbar-line-height" type="text" value="40px" data-var="@navbar-line-height" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@navbar-height">@navbar-height</label>
     <input id="input-@navbar-height" type="text" value="56px" data-var="@navbar-height" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@navbar-margin-bottom">@navbar-margin-bottom</label>
     <input id="input-@navbar-margin-bottom" type="text" value="40px" data-var="@navbar-margin-bottom" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@navbar-border-radius">@navbar-border-radius</label>
-    <input id="input-@navbar-border-radius" type="text" value="@border-radius-base" data-var="@navbar-border-radius" class="form-control"/>
+    <input id="input-@navbar-border-radius" type="text" value="0" data-var="@navbar-border-radius" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@navbar-padding-horizontal">@navbar-padding-horizontal</label>
     <input id="input-@navbar-padding-horizontal" type="text" value="16px" data-var="@navbar-padding-horizontal" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@navbar-padding-vertical">@navbar-padding-vertical</label>
     <input id="input-@navbar-padding-vertical" type="text" value="((@navbar-height - @line-height-computed) / 2)" data-var="@navbar-padding-vertical" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
+  <div class="col-xs-4">
+    <label for="input-@navbar-padding-vertical">@navbar-padding-vertical</label>
+    <input id="input-@navbar-padding-vertical" type="text" value="8px" data-var="@navbar-padding-vertical" class="form-control"/>
+  </div>
   <div class="col-xs-4">
     <label for="input-@navbar-collapse-max-height">@navbar-collapse-max-height</label>
     <input id="input-@navbar-collapse-max-height" type="text" value="340px" data-var="@navbar-collapse-max-height" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@navbar-collapse-max-width">@navbar-collapse-max-width</label>
     <input id="input-@navbar-collapse-max-width" type="text" value="(320px - 56px)" data-var="@navbar-collapse-max-width" class="form-control"/>
@@ -1811,12 +1824,12 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@tooltip-color">@tooltip-color</label>
-    <input id="input-@tooltip-color" type="text" aria-describedby="help-block-@tooltip-color" value="#fff" data-var="@tooltip-color" class="form-control"/>
+    <input id="input-@tooltip-color" type="text" aria-describedby="help-block-@tooltip-color" value="@brand-navy" data-var="@tooltip-color" class="form-control"/>
     <p id="help-block-@tooltip-color" class="help-block">Tooltip text color</p>
   </div>
   <div class="col-xs-4">
     <label for="input-@tooltip-bg">@tooltip-bg</label>
-    <input id="input-@tooltip-bg" type="text" aria-describedby="help-block-@tooltip-bg" value="@brand-navy" data-var="@tooltip-bg" class="form-control"/>
+    <input id="input-@tooltip-bg" type="text" aria-describedby="help-block-@tooltip-bg" value="@brand-white" data-var="@tooltip-bg" class="form-control"/>
     <p id="help-block-@tooltip-bg" class="help-block">Tooltip background color</p>
   </div>
   <div class="clearfix"></div>
@@ -2659,14 +2672,18 @@
     <input id="input-@sequence-step-height" type="text" value="32px" data-var="@sequence-step-height" class="form-control"/>
   </div>
   <div class="col-xs-4">
+    <label for="input-@sequence-step-height-small">@sequence-step-height-small</label>
+    <input id="input-@sequence-step-height-small" type="text" value="24px" data-var="@sequence-step-height-small" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@sequence-margin">@sequence-margin</label>
     <input id="input-@sequence-margin" type="text" value="16px" data-var="@sequence-margin" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@sequence-pip-size">@sequence-pip-size</label>
     <input id="input-@sequence-pip-size" type="text" value="8px" data-var="@sequence-pip-size" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@sequence-line-width">@sequence-line-width</label>
     <input id="input-@sequence-line-width" type="text" value="2px" data-var="@sequence-line-width" class="form-control"/>
@@ -2675,24 +2692,24 @@
     <label for="input-@sequence-border">@sequence-border</label>
     <input id="input-@sequence-border" type="text" value="#e2e6e8" data-var="@sequence-border" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@sequence-bg">@sequence-bg</label>
     <input id="input-@sequence-bg" type="text" value="#FFF" data-var="@sequence-bg" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@sequence-inverse-border">@sequence-inverse-border</label>
-    <input id="input-@sequence-inverse-border" type="text" value="#253655" data-var="@sequence-inverse-border" class="form-control"/>
+    <input id="input-@sequence-inverse-border" type="text" value="@brand-navy-minus-20" data-var="@sequence-inverse-border" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@sequence-inverse-bg">@sequence-inverse-bg</label>
-    <input id="input-@sequence-inverse-bg" type="text" value="#37517e" data-var="@sequence-inverse-bg" class="form-control"/>
+    <input id="input-@sequence-inverse-bg" type="text" value="@brand-navy" data-var="@sequence-inverse-bg" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@sequence-spacing-horizontal">@sequence-spacing-horizontal</label>
     <input id="input-@sequence-spacing-horizontal" type="text" value="24px" data-var="@sequence-spacing-horizontal" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@sequence-icon-size">@sequence-icon-size</label>
     <input id="input-@sequence-icon-size" type="text" value="24px" data-var="@sequence-icon-size" class="form-control"/>
@@ -2700,6 +2717,13 @@
   <div class="col-xs-4">
     <label for="input-@sequence-icon-border">@sequence-icon-border</label>
     <input id="input-@sequence-icon-border" type="text" value="@text-color" data-var="@sequence-icon-border" class="form-control"/>
+  </div>
+</div>
+<h2 id="column-layout">Column layout</h2>
+<div class="row">
+  <div class="col-xs-4">
+    <label for="input-@column-width">@column-width</label>
+    <input id="input-@column-width" type="text" value="264px" data-var="@column-width" class="form-control"/>
   </div>
 </div>
 <!-- NOTE: DO NOT EDIT THE PRECEDING SECTION DIRECTLY! It is autogenerated via the `build-customizer-html` Grunt task using the customizer-variables.jade template.-->

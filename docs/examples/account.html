@@ -39,6 +39,7 @@
 	<script src="js/currency-input.directive.js"></script>
 	<script src="js/pagination.directive.js"></script>
 	<script src="js/profile-block.directive.js"></script>
+	<script src="js/activity-filters.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
 
 
@@ -82,24 +83,30 @@
 <body ng-app="ExampleApp" class="bg-default">
 	<nav-bar></nav-bar>
 	<div ng-controller="PageController as ctrl">
-		<div class="bg-primary p-t-4 p-b-5">
-			<div class="container">
+
+		<div class="container">
+			<div class="m-t-3 m-b-5">
+				<next-cards show="3"></next-cards>
+			</div>
+
+			<div class="">
 				<profile-block></profile-block>
 			</div>
-		</div>
-		<div class="container">
-			<next-cards show="3"></next-cards>
+
+			<div class="m-t-3 hidden-xl">
+				<activity-filters></activity-filters>
+			</div>
 
 			<div class="panel">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-md-6 col-lg-8">
-							<h3 class="panel-title">
+							<h6 class="panel-title">
 								In progress
-							</h3>
+							</h6>
 						</div>
-						<div class="col-md-6 col-lg-4 m-b-1">
-							<div class="input-group input-group-sm m-t-1">
+						<div class="col-md-6 col-lg-4 m-b-1 visible-xl-block">
+							<div class="input-group input-group-sm m-t-1 ">
 								<span class="input-group-addon"><i class="icon icon-search m-r-0"></i></span>
 								<input type="text" class="form-control" placeholder="Search..." />
 								 <span class="input-group-btn">
@@ -118,9 +125,9 @@
 
 			<div class="panel">
 				<div class="panel-heading">
-					<h3 class="panel-title">
+					<h6 class="panel-title">
 						Recent
-					</h3>
+					</h6>
 				</div>
 				<transfer-list
 					transfers="ctrl.historicTransfers"

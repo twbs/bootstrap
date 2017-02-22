@@ -82,6 +82,7 @@
   > .input-group-addon,
   > .input-group-btn .btn {
     .input-lg();
+    font-size: @btn-lg-font-size;
     margin-bottom: 0;
   }
 }
@@ -149,6 +150,11 @@
   }
   a {
     text-decoration: none;
+  }
+  &:empty {
+    padding: 0 !important;
+    // We still need the empty addon to provide border radius
+    width: @border-radius-base;
   }
 }
 

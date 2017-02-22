@@ -31,39 +31,64 @@
   }
 }
 
+
+
+.expand-toolbar() {
+  margin-left: -4px; // Offset the first child's margin
+  margin-right: -4px; // Offset the first child's margin
+
+  .btn,
+  .btn-group,
+  .input-group {
+    width: auto;
+    margin-bottom: 0;
+    float: left;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}
+
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
+  .clearfix();
+
   .btn,
   .btn-group,
   .input-group {
     width: 100%;
     margin-bottom: 16px;
   }
-}
-.btn-toolbar {
+
   .btn-group .btn,
   .input-group .btn {
     width: auto;
-    margin-bottom: 0;
+    margin: 0 0 0 -1px;
   }
-}
 
-@media (min-width: @screen-lg-min) {
-  .btn-toolbar {
-    margin-left: -8px; // Offset the first child's margin
-    .clearfix();
+  // TODO make btn-groups full width when collapsed
 
-    .btn,
-    .btn-group,
-    .input-group {
-      width: auto;
-      margin-bottom: 0;
-      float: left;
+  @media (min-width: @screen-lg-min) {
+    // Default behaviour collapses on lg, over-ruled by modifiers
+    .expand-toolbar();
+  }
+  @media (min-width: @screen-sm-min) {
+    &.btn-toolbar-sm {
+      .expand-toolbar();
     }
-    > .btn,
-    > .btn-group,
-    > .input-group {
-      margin-left: 8px;
+  }
+  @media (min-width: @screen-md-min) {
+    &.btn-toolbar-md {
+      .expand-toolbar();
+    }
+  }
+  @media (min-width: @screen-lg-min) {
+    &.btn-toolbar-lg {
+      .expand-toolbar();
+    }
+  }
+  @media (min-width: @screen-xl-min) {
+    &.btn-toolbar-xl {
+      .expand-toolbar();
     }
   }
 }
@@ -287,6 +312,9 @@
             right: 16px;
             top: 16px;
         }
+        &.btn-sm .caret {
+            right: 8px;
+        }
     }
     .btn + .dropdown-toggle {
         flex: 0;
@@ -296,10 +324,19 @@
             right: 0;
         }
     }
-    .btn.dropdown-toggle {
-        padding-right: 48px;
+    .btn {
+      &.dropdown-toggle {
+        padding-right: 40px;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        @media (min-width: @screen-sm-min) {
+          padding-right: 48px;
+        }
+      }
+      &.btn-sm.dropdown-toggle {
+        padding-right: 33px;
+      }
     }
 }
 .btn-block {

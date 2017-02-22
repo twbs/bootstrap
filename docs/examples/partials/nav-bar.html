@@ -3,7 +3,7 @@
 	role="banner"
 	data-spy="affix"
 	data-offset-top="60">
-	<div class="container">
+	<div ng-class="{'container': !$ctrl.fluid, 'container-fluid': $ctrl.fluid}">
 		<div class="navbar-header pull-xs-left">
 			<button class="navbar-toggle collapsed" type="button"
 				data-toggle="collapse"
@@ -74,7 +74,7 @@
 						<i class="icon icon-help-circle visible-xs-inline-block visible-sm-inline-block"></i><span ng-bind="$ctrl.translations[$ctrl.language].help"></span></a>
 					</li>
 					<li class="visible-xs-block visible-sm-block"><a href=""><i class="icon icon-mobile"></i>Get the app</a></li>
-					<li class="visible-xs-block visible-sm-block"><a href=""><i class="icon icon-setting"></i>Settings</a></li>
+					<li class="visible-xs-block visible-sm-block"><a href="settings.html"><i class="icon icon-setting"></i>Settings</a></li>
 					<li class="divider visible-xs-block visible-sm-block"></li>
 					<li class="visible-xs-block visible-sm-block"><a href=""><i class="icon icon-logout"></i>Logout</a></li>
 				</ul>

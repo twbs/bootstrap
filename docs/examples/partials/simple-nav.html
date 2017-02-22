@@ -1,31 +1,32 @@
-<nav class="navbar navbar-default m-b-0">
-	<!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
-	<div class="container-fluid">
+<nav class="navbar navbar-default m-b-0 simple-nav">
+	<div class="container m-l-0">
 		<div class="navbar-header pull-xs-left">
-			<button type="button" class="navbar-toggle visible-md-block collapsed"
-				ng-click="$ctrl.onBurgerClick && $ctrl.onBurgerClick()"
-				aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
+			<button type="button"
+				class="navbar-toggle visible-xs-block visible-sm-block visible-md-block"
+				ng-click="$ctrl.toggleNav()"
+				aria-expanded="{{$ctrl.showNav}}">
+				<span class="pull-xs-left">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</span>
+				<span class="pull-xs-left m-l-1">Menu</span>
 			</button>
-			<a href="../" class="logo-text visible-md-block" title="TransferWise"></a>
-			<a href="../" class="navbar-brand hidden-md">TransferWise</a>
-			<!--
-			<a href="../" class="navbar-brand">TransferWise</a>
-			-->
+			<h1 class="navbar-title hidden-xs hidden-sm hidden-md h3">{{$ctrl.title}}</h1>
 		</div>
 
-		<ul class="nav navbar-nav navbar-right pull-xs-right">
+		<ul class="nav navbar-nav pull-xs-right">
 			<li class="dropdown pull-xs-right">
 				<a href="" class="dropdown-toggle profile-name p-l-1 p-r-0"
 					data-toggle="dropdown" role="button"
 					aria-expanded="false">
 					<span class="text-ellipsis"
-						title="Jonathan Smith-Henry"
-						style="max-width: 220px; font-size: 14px !important;">
-						<i class="icon icon-profile m-r-1"></i>Jonathan Smith-Henry Smith-Henry
+						title="Jonathan Smith-Henry">
+						<!--<i class="icon icon-profile m-r-1"></i>-->
+						<img src="../assets/img/mike.jpg" class="circle circle-sm" alt="Mike"
+						/><span class="hidden-xs m-l-1">
+							Jonathan Smith-Henry Smith-Henry
+						</span>
 					</span>
 					<span class="caret"></span>
 				</a>
@@ -36,7 +37,9 @@
 								<div class="circle circle-sm circle-inverse">MM</div>
 							</div>
 							<div class="media-body">
-								<h5 class="text-primary text-ellipsis m-b-0">Jonathan.Smith-Henry@longdomain.com</h5>
+								<h5 class="text-primary text-ellipsis m-b-0">
+									Jonathan.Smith-Henry@longdomain.com
+								</h5>
 								<div class="small text-muted">Customer no. 1234567</div>
 								<a href="" class="small">View personal profile</a>
 							</div>
@@ -51,15 +54,25 @@
 						</a>
 					</li>
 					<li class="divider"></li>
-					<li><a href=""><i class="icon icon-setting"></i>Settings</a></li>
+					<li><a href="settings.html"><i class="icon icon-setting"></i>Settings</a></li>
 					<li><a href=""><i class="icon icon-logout"></i>Logout</a></li>
 				</ul>
 			</li>
 			<li class="dropdown pull-xs-right">
-				<a href="" class="dropdown-toggle p-x-0"
+				<a href="" class="dropdown-toggle p-x-1"
 					data-toggle="dropdown" role="button"
-					aria-expanded="false">
-					<i class="icon icon-notification"></i>
+					aria-expanded="false"
+					title="Show notifications">
+					<i class="icon icon-notification m-r-0"></i>
+				</a>
+			</li>
+			<li class="hidden-lg hidden-xl pull-xs-right"
+				ng-class="{active: $ctrl.showSearch}">
+				<a href="" class="p-x-1" role="button"
+					aria-expanded="{{$ctrl.showSearch}}"
+					title="Show search options"
+					ng-click="$ctrl.showSearch = !$ctrl.showSearch">
+					<i class="icon icon-search m-r-0"></i>
 				</a>
 			</li>
 		</ul>

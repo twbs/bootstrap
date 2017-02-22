@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col-md-10 col-xl-10 m-b-0">
+		<div class="row">
+			<div class="col-sm-6 m-b-2">
+				<div class="input-group" ng-if="$ctrl.size !== 'sm'">
+					<span class="input-group-addon">
+						<label class="control-label">Send</label>
+					</span>
+					<input class="form-control" ng-model="$ctrl.send" />
+					<span class="input-group-btn">
+						<tw-select options="$ctrl.currencies" ng-model="$ctrl.sendCurrency"
+							hide-note="true"
+							hide-currency="true"
+							dropdown-right="xs"
+							dropdown-width="md"></tw-select>
+					</span>
+				</div>
+
+				<div class="form-group form-group-sm m-b-0" ng-if="$ctrl.size === 'sm'">
+					<label class="control-label">Send</label>
+					<tw-amount-currency-select
+						size="sm"
+						ng-model="$ctrl.send"
+						currencies="$ctrl.currencies"
+						currency="$ctrl.sendCurrency"></tw-amount-currency-select>
+				</div>
+			</div>
+			<div class="col-sm-6 m-b-2">
+				<div class="input-group" ng-if="$ctrl.size !== 'sm'">
+					<span class="input-group-addon">
+						<label class="control-label">Receive</label>
+					</span>
+					<input class="form-control" ng-model="$ctrl.recieve" />
+					<span class="input-group-btn">
+						<tw-select options="$ctrl.currencies" ng-model="$ctrl.recieveCurrency"
+							hide-note="true"
+							hide-currency="true"
+							dropdown-right="xs"
+							dropdown-width="md"></tw-select>
+					</span>
+				</div>
+
+				<div class="form-group form-group-sm m-b-0" ng-if="$ctrl.size === 'sm'">
+					<label class="control-label">Receive</label>
+					<tw-amount-currency-select
+						size="sm"
+						ng-model="$ctrl.recieve"
+						currencies="$ctrl.currencies"
+						currency="$ctrl.recieveCurrency"></tw-amount-currency-select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 col-md-2 col-xl-2 m-b-2">
+		<label class="control-label invisible hidden-xs" ng-if="$ctrl.size === 'sm'"></label>
+		<button class="btn btn-success btn-block" ng-class="{'btn-sm': $ctrl.size === 'sm'}">Send</button>
+	</div>
+</div>

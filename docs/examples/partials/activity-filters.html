@@ -1,0 +1,98 @@
+<div class="row">
+	<div class="col-xs-6 col-sm-3 hidden-lg hidden-xl" ng-if="!$ctrl.showSearch">
+		<h1 class="h3">Activity</h1>
+	</div>
+	<div class="col-xs-6 col-sm-9 m-b-2" ng-if="!$ctrl.showSearch">
+		<div class="btn-toolbar btn-toolbar-sm hidden-xs pull-xs-right pull-lg-none">
+			<button class="btn btn-success btn-sm">Send money</button>
+			<button id="myModalLabel" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add money</button>
+			<button class="btn btn-info btn-sm m-b-0">Receive</button>
+		</div>
+
+		<div class="btn-group visible-xs-inline-block pull-xs-right">
+			<button type="button" class="btn btn-success btn-sm dropdown-toggle"
+				data-toggle="dropdown" aria-expanded="false">
+				Get started <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu dropdown-menu-xs-right" role="menu">
+				<li><a href="#"><i class="icon icon-send"></i>Send money</a></li>
+				<li><a href="#" data-toggle="modal" data-target="#myModal"><i class="icon icon-add"></i>Add money</a></li>
+				<li><a href="#"><i class="icon icon-request"></i>Receive</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="col-sm-6 col-md-3 m-b-2" ng-if="$ctrl.showSearch">
+		<tw-select options="$ctrl.activityTypes"
+			ng-model="$ctrl.type"
+			ng-required="true"
+			size="sm"
+			hide-icon="true"
+			ng-if="$ctrl.size !== 'sm'"></tw-select>
+	</div>
+	<div class="col-sm-6 col-md-3 m-b-2" ng-if="$ctrl.showSearch">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon">
+				<label class="control-label">From</label>
+			</span>
+			<input class="form-control" value="01 May 2016" />
+		</div>
+	</div>
+	<div class="col-sm-6 col-md-3 m-b-2" ng-if="$ctrl.showSearch">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon">
+				<label class="control-label">To</label>
+			</span>
+			<input class="form-control" value="22 May 2016" />
+		</div>
+	</div>
+
+	<div class="col-md-3 m-b-2"
+		ng-class="{
+			'col-sm-6': $ctrl.showSearch,
+			'col-sm-4': !$ctrl.showSearch,
+			'hidden-xs': !$ctrl.showSearch,
+			'hidden-sm': !$ctrl.showSearch,
+			'hidden-md': !$ctrl.showSearch
+		}">
+		<div class="media">
+			<div class="media-body">
+				<div class="input-group input-group-sm">
+					<input id="search-input" class="form-control" placeholder="Search..."
+						ng-focus="$ctrl.showSearch = true" />
+					<span class="input-group-addon" ng-if="!$ctrl.showSearch">
+						<i class="icon icon-search"></i>
+					</span>
+					<span class="input-group-btn hidde-lg hidde-xl" ng-if="$ctrl.showSearch">
+						<button class="btn btn-sm btn-primary">Go</button>
+					</span>
+				</div>
+			</div>
+
+			<div class="media-right fade-in p-l-1" ng-if="$ctrl.showSearch">
+				<a href="" class="h3 close m-b-0"
+					ng-click="$ctrl.showSearch = false;" title="Close search options">
+					<i class="icon icon-close icon-3"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Modal title</h4>
+				</div>
+				<div class="modal-body">
+					<p>Example&hellip;</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div>

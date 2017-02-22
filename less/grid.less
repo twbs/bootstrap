@@ -10,14 +10,8 @@
 .container {
   .container-fixed();
 
-  @media (min-width: @screen-md-min) {
-    width: @container-md;
-  }
-  @media (min-width: @screen-lg-min) {
-    width: @container-lg;
-  }
   @media (min-width: @screen-xl-min) {
-    width: @container-xl;
+    max-width: @container-xl;
   }
 }
 
@@ -31,6 +25,19 @@
   .container-fixed();
 }
 
+.container {
+  padding-right: @spacing-1-mobile;
+  padding-left: @spacing-1-mobile;
+
+  @media (min-width: @screen-sm-min) {
+    padding-right: @spacing-1-tablet;
+    padding-left: @spacing-1-tablet;
+  }
+  @media (min-width: @screen-lg-min) {
+    padding-right: @spacing-1-desktop;
+    padding-left: @spacing-1-desktop;
+  }
+}
 
 // Row
 //

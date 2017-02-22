@@ -177,3 +177,29 @@ a.list-group-item {
 .list-group-item-variant(info; @state-info-bg; @state-info-text);
 .list-group-item-variant(warning; @state-warning-bg; @state-warning-text);
 .list-group-item-variant(danger; @state-danger-bg; @state-danger-text);
+
+// Hover states
+.list-group:hover {
+  .list-group-item:not(.active) {
+    background-color: #fbfcfd;
+
+    .media {
+      opacity: .94;
+    }
+  }
+  .list-group-item:hover {
+    background-color: @brand-white;
+
+    .media {
+      opacity: 1;
+    }
+  }
+}
+.list-group-inactive:hover {
+  .list-group-item:not(.active) {
+    background-color: @brand-smoke-plus-20;
+  }
+  .list-group-item:hover {
+    background-color: @brand-white;
+  }
+}

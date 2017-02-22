@@ -287,7 +287,7 @@
 @btn-sm-font-size:               14px;
 @btn-sm-line-height:             24px;
 
-@btn-lg-font-size:               22px;
+@btn-lg-font-size:               20px;
 @btn-lg-line-height:             32px;
 
 
@@ -334,10 +334,10 @@
 @btn-info-color:                 @brand-grey-plus-10;
 @btn-info-bg:                    transparent;
 @btn-info-border:                @brand-grey-plus-10;
-@btn-info-bg-hover:              @brand-grey-plus-10;
-@btn-info-border-hover:          @brand-grey-plus-10;
-@btn-info-bg-active:             @brand-grey;
-@btn-info-border-active:         @brand-grey;
+@btn-info-bg-hover:              @brand-light-blue;
+@btn-info-border-hover:          @brand-light-blue;
+@btn-info-bg-active:             @brand-light-blue-minus-20;
+@btn-info-border-active:         @brand-light-blue-minus-20;
 
 //=== Button Warning
 //
@@ -494,6 +494,10 @@
 @zindex-modal:             1050;
 
 
+@zindex-mobile-nav-background: 1055;
+@zindex-mobile-nav: 1060;
+
+
 //== Media queries breakpoints
 //
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
@@ -591,6 +595,7 @@
 @nav-inverse-link-color:                    @brand-pale-blue;
 @nav-inverse-link-hover-color:              @brand-light-blue;
 @nav-inverse-link-active-color:             @brand-light-blue-minus-10;
+@nav-inverse-link-active-bg:                @brand-navy-minus-10;
 
 //== Navbar
 //
@@ -598,11 +603,13 @@
 
 // Basics of a navbar
 @navbar-font-size:                 14px;
+@navbar-line-height:               40px;
 @navbar-height:                    56px;                    //50px;
 @navbar-margin-bottom:             40px;
-@navbar-border-radius:             @border-radius-base;
+@navbar-border-radius:             0;
 @navbar-padding-horizontal:        16px;
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-padding-vertical:          8px;
 @navbar-collapse-max-height:       340px;
 @navbar-collapse-max-width:        (320px - 56px);
 @navbar-collapse-bg:               @brand-navy;
@@ -767,9 +774,9 @@
 //** Tooltip max width
 @tooltip-max-width:           200px;
 //** Tooltip text color
-@tooltip-color:               #fff;
+@tooltip-color:               @brand-navy;
 //** Tooltip background color
-@tooltip-bg:                  @brand-navy;
+@tooltip-bg:                  @brand-white;
 @tooltip-opacity:             1;
 
 //** Tooltip arrow width
@@ -1149,6 +1156,7 @@
 //
 //##
 @sequence-step-height: 32px;
+@sequence-step-height-small: 24px;
 @sequence-margin: 16px;
 @sequence-pip-size: 8px;
 @sequence-line-width: 2px;
@@ -1156,10 +1164,13 @@
 @sequence-border: #e2e6e8;
 @sequence-bg: #FFF;
 
-@sequence-inverse-border: #253655;
-@sequence-inverse-bg: #37517e;
+@sequence-inverse-border: @brand-navy-minus-20;
+@sequence-inverse-bg: @brand-navy;
 
 @sequence-spacing-horizontal: 24px;
 
 @sequence-icon-size: 24px;
 @sequence-icon-border: @text-color;
+
+//== Column layout
+@column-width: 264px;
