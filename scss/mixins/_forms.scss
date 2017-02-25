@@ -14,7 +14,9 @@
   }
 
   // Set the border and box shadow on specific inputs to match
-  .form-control {
+  .form-control,
+  .custom-select,
+  .custom-file-control {
     border-color: $color;
 
     &:focus {
@@ -49,31 +51,5 @@
     border-color: $input-border-focus;
     outline: none;
     @include box-shadow($input-box-shadow-focus);
-  }
-}
-
-// Form control sizing
-//
-// Relative text size, padding, and border-radii changes for form controls. For
-// horizontal sizing, wrap controls in the predefined grid classes. `<select>`
-// element gets special love because it's special, and that's a fact!
-
-@mixin input-size($parent, $input-height, $padding-y, $padding-x, $font-size, $line-height, $border-radius) {
-  #{$parent} {
-    height: $input-height;
-    padding: $padding-y $padding-x;
-    font-size: $font-size;
-    line-height: $line-height;
-    @include border-radius($border-radius);
-  }
-
-  select#{$parent} {
-    height: $input-height;
-    line-height: $input-height;
-  }
-
-  textarea#{$parent},
-  select[multiple]#{$parent} {
-    height: auto;
   }
 }
