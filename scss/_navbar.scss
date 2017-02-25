@@ -20,6 +20,13 @@
   display: flex;
   flex-direction: column;
   padding: $navbar-padding-y $navbar-padding-x;
+
+  @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
+    > .container {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
 }
 
 
@@ -29,6 +36,7 @@
 
 .navbar-brand {
   display: inline-block;
+  align-self: flex-start;
   padding-top: .25rem;
   padding-bottom: .25rem;
   margin-right: $navbar-padding-x;
