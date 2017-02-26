@@ -145,9 +145,7 @@
   background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
   @include border-radius($custom-select-border-radius);
-  // Use vendor prefixes as `appearance` isn't part of the CSS spec.
-  -moz-appearance: none;
-  -webkit-appearance: none;
+  appearance: none;
 
   &:focus {
     border-color: $custom-select-focus-border-color;

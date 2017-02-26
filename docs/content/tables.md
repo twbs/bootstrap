@@ -560,17 +560,17 @@ Use contextual classes to color table rows or individual cells.
 <!-- On rows -->
 <tr class="table-active">...</tr>
 <tr class="table-success">...</tr>
+<tr class="table-info">...</tr>
 <tr class="table-warning">...</tr>
 <tr class="table-danger">...</tr>
-<tr class="table-info">...</tr>
 
 <!-- On cells (`td` or `th`) -->
 <tr>
   <td class="table-active">...</td>
   <td class="table-success">...</td>
+  <td class="table-info">...</td>
   <td class="table-warning">...</td>
   <td class="table-danger">...</td>
-  <td class="table-info">...</td>
 </tr>
 {% endhighlight %}
 
