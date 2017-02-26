@@ -88,9 +88,9 @@
 .navbar-toggler {
   align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
-  cursor: pointer;
   font-size: $navbar-toggler-font-size;
   line-height: 1;
+  cursor: pointer;
   background: transparent; // remove default button style
   border: $border-width solid transparent; // remove default button style
   @include border-radius($navbar-toggler-border-radius);
