@@ -1,0 +1,142 @@
+
+.sequence-vertical-spacing(
+  @sequence-margin,
+  @sequence-item-spacing,
+  @sequence-step-height,
+  @sequence-icon-size
+) {
+  @sequence-outside-spacing: (@sequence-margin + @sequence-item-spacing);
+
+  @pip-offset-small: (@sequence-step-height / 2);
+  @pip-offset: ((@sequence-step-height / 2) + @sequence-item-spacing);
+
+  // We don't need to account for ul margin as it's not part of height
+  @space-outside-pips-small: @sequence-step-height;
+  @space-outside-pips: (@sequence-step-height + (@sequence-item-spacing * 2));
+
+  &:before {
+    height: calc(100% - @space-outside-pips-small);
+    margin-top: @pip-offset-small;
+
+    @media (min-width: @screen-md-min) {
+      height: calc(100% - @space-outside-pips);
+      margin-top: @pip-offset;
+    }
+  }
+  > li {
+    &:first-child {
+      margin-top: @sequence-margin;
+    }
+    &:last-child {
+      margin-bottom: @sequence-margin;
+    }
+    @media (min-width: @screen-md-min) {
+      padding-top: @sequence-item-spacing;
+      padding-bottom: @sequence-item-spacing;
+    }
+    &:before {
+      margin-top: ((@sequence-step-height / 2) - (@sequence-pip-size / 2));
+    }
+    &:first-child:after {
+      margin-top: @pip-offset;
+      height: calc(100% - @pip-offset);
+    }
+    &:last-child:after {
+      height: calc(100% - @pip-offset);
+    }
+  }
+  > .active:after {
+    height: (@sequence-step-height / 2);
+    @media (min-width: @screen-md-min) {
+      height: ((@sequence-step-height / 2) + @sequence-item-spacing);
+    }
+  }
+
+  &.sequence-top {
+    &:before {
+      height: calc(100% - @pip-offset-small);
+      margin-top: 0;
+      @media (min-width: @screen-md-min) {
+        height: calc(100% - @pip-offset);
+      }
+    }
+    > li:first-child {
+      padding-top: @sequence-outside-spacing;
+      margin-top: 0;
+
+      &:after {
+        height: 100%;
+        margin-top: 0;
+      }
+      .sequence-icon {
+        top: (((@sequence-step-height / 2) - (@sequence-icon-size / 2)) + @sequence-outside-spacing);
+      }
+    }
+    > .active:first-child:after {
+      height: (@sequence-margin + @sequence-item-spacing + (@sequence-step-height / 2));
+    }
+  }
+  &.sequence-bottom {
+    &:before {
+      height: calc(100% - @pip-offset-small);
+      @media (min-width: @screen-md-min) {
+        height: calc(100% - @pip-offset);
+      }
+    }
+    > li:last-child {
+      padding-bottom: @sequence-outside-spacing;
+      margin-bottom: 0;
+      &:after {
+        height: 100%;
+      }
+    }
+    > .active {
+      &:last-child:after {
+        height: (@sequence-item-spacing + (@sequence-step-height / 2));
+      }
+      &:first-child:last-child:after {
+        height: (@sequence-margin + @sequence-item-spacing + (@sequence-step-height / 2));
+      }
+    }
+  }
+  &.sequence-top.sequence-bottom {
+    &:before {
+      height: 100%;
+    }
+  }
+
+  .sequence-icon {
+    top: ((@sequence-step-height / 2) - (@sequence-icon-size / 2));
+
+    @media (min-width: @screen-md-min) {
+      top: ((@sequence-step-height / 2) - (@sequence-icon-size / 2) + @sequence-item-spacing);
+    }
+  }
+}
+
+.sequence-horizontal-spacing(
+  @sequence-item-padding,
+  @sequence-pip-size,
+  @sequence-icon-sm,
+  @sequence-icon-md,
+  @sequence-icon-lg
+) {
+  padding-left: @sequence-item-padding;
+  > li {
+    &:before {
+      margin-left: (-@sequence-item-padding - (@sequence-pip-size / 2) + 1px);
+    }
+    &:after {
+      left: -@sequence-item-padding;
+    }
+  }
+  .sequence-icon {
+    margin-left: (-@sequence-item-padding - (@sequence-icon-sm / 2) + 1px);
+  }
+  .sequence-icon-md {
+    margin-left: (-@sequence-item-padding - (@sequence-icon-md / 2) + 1px);
+  }
+  .sequence-icon-lg {
+    margin-left: (-@sequence-item-padding - (@sequence-icon-lg / 2) + 1px);
+  }
+}
