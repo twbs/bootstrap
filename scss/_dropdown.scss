@@ -17,7 +17,9 @@
     border-right: $caret-width solid transparent;
     border-left: $caret-width solid transparent;
   }
-
+  &:empty::after{
+    margin-left: 0;
+  }
   // Prevent the focus on the dropdown toggle when closing dropdowns
   &:focus {
     outline: 0;
