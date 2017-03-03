@@ -1,12 +1,12 @@
 /*!
- * QUnit 2.0.1
+ * QUnit 2.1.1
  * https://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2016-07-23T19:39Z
+ * Date: 2017-01-06T01:52Z
  */
 
 /** Font Family and Sizes */
@@ -226,7 +226,8 @@
 #qunit-tests li.running,
 #qunit-tests li.pass,
 #qunit-tests li.fail,
-#qunit-tests li.skipped {
+#qunit-tests li.skipped,
+#qunit-tests li.aborted {
 	display: list-item;
 }
 
@@ -374,6 +375,9 @@
 
 #qunit-banner.qunit-fail                    { background-color: #EE5757; }
 
+
+/*** Aborted tests */
+#qunit-tests .aborted { color: #000; background-color: orange; }
 /*** Skipped tests */
 
 #qunit-tests .skipped {
@@ -393,15 +397,27 @@
 /** Result */
 
 #qunit-testresult {
-	padding: 0.5em 1em 0.5em 1em;
-
 	color: #2B81AF;
 	background-color: #D2E0E6;
 
 	border-bottom: 1px solid #FFF;
 }
+#qunit-testresult .clearfix {
+	height: 0;
+	clear: both;
+}
 #qunit-testresult .module-name {
 	font-weight: 700;
+}
+#qunit-testresult-display {
+	padding: 0.5em 1em 0.5em 1em;
+	width: 85%;
+	float:left;
+}
+#qunit-testresult-controls {
+	padding: 0.5em 1em 0.5em 1em;
+  width: 10%;
+	float:left;
 }
 
 /** Fixture */

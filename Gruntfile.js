@@ -148,20 +148,6 @@ module.exports = function (grunt) {
       }
     },
 
-    jekyll: {
-      options: {
-        bundleExec: true,
-        config: '_config.yml',
-        incremental: false
-      },
-      docs: {},
-      github: {
-        options: {
-          raw: 'github: true'
-        }
-      }
-    },
-
     watch: {
       src: {
         files: '<%= concat.bootstrap.src %>',
@@ -208,6 +194,12 @@ module.exports = function (grunt) {
       },
       htmllint: {
         command: 'npm run htmllint'
+      },
+      jekyll: {
+        command: 'npm run jekyll'
+      },
+      'jekyll-github': {
+        command: 'npm run jekyll-github'
       },
       sass: {
         command: 'npm run sass'
@@ -271,7 +263,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt)
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'exec:htmllint', 'exec:htmlhint'])
+  grunt.registerTask('validate-html', ['exec:jekyll', 'exec:htmllint', 'exec:htmlhint'])
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset
@@ -329,7 +321,7 @@ module.exports = function (grunt) {
   grunt.registerTask('lint-docs-css', ['exec:scss-lint-docs'])
   grunt.registerTask('docs-js', ['exec:uglify-docs'])
   grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs'])
-  grunt.registerTask('docs-github', ['jekyll:github'])
+  grunt.registerTask('docs-github', ['exec:jekyll-github'])
 
   grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress'])
 

@@ -2341,6 +2341,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   color: #97c133;
 }
 
+<<<<<<< HEAD
 .has-success .form-control {
   border-color: #97c133;
 }
@@ -2348,6 +2349,12 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .has-success .form-control:focus {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0dd7d;
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0dd7d;
+=======
+.has-success .form-control,
+.has-success .custom-select,
+.has-success .custom-file-control {
+  border-color: #5cb85c;
+>>>>>>> twitter/v4-dev
 }
 
 .has-success .input-group-addon {
@@ -2368,6 +2375,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   color: #f2a900;
 }
 
+<<<<<<< HEAD
 .has-warning .form-control {
   border-color: #f2a900;
 }
@@ -2375,6 +2383,12 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .has-warning .form-control:focus {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffcd59;
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffcd59;
+=======
+.has-warning .form-control,
+.has-warning .custom-select,
+.has-warning .custom-file-control {
+  border-color: #f0ad4e;
+>>>>>>> twitter/v4-dev
 }
 
 .has-warning .input-group-addon {
@@ -2395,6 +2409,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   color: #e55c00;
 }
 
+<<<<<<< HEAD
 .has-danger .form-control {
   border-color: #e55c00;
 }
@@ -2402,6 +2417,12 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .has-danger .form-control:focus {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ff944c;
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ff944c;
+=======
+.has-danger .form-control,
+.has-danger .custom-select,
+.has-danger .custom-file-control {
+  border-color: #d9534f;
+>>>>>>> twitter/v4-dev
 }
 
 .has-danger .input-group-addon {
@@ -3841,7 +3862,11 @@ tbody.collapse.show {
 .nav-pills .nav-link.active,
 .nav-pills .nav-item.show .nav-link {
   color: #fff;
+<<<<<<< HEAD
   background-color: #099;
+=======
+  background-color: #0275d8;
+>>>>>>> twitter/v4-dev
 }
 
 .nav-fill .nav-item {

@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Badges
-description: Documentation and examples for badges, our small count and labelling component.
+description: Documentation and examples for badges, our small count and labeling component.
 group: components
 ---
 
