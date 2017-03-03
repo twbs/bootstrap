@@ -26,8 +26,8 @@ body {
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
-  color: #323a45;
-  background-color: #fff;
+  color: #444547;
+  background-color: #f6f6f6;
 }
 
 [tabindex="-1"]:focus {
@@ -122,14 +122,14 @@ sup {
 }
 
 a {
-  color: #099;
+  color: #2185d0;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 
 a:hover {
-  color: #004d4d;
+  color: #175b8e;
   text-decoration: underline;
 }
 
@@ -194,7 +194,7 @@ table {
 caption {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  color: #636c72;
+  color: #cccccc;
   text-align: left;
   caption-side: bottom;
 }
