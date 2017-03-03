@@ -7,15 +7,18 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
-$gray-dark:                 #323a45;
+$gray-dark:     #444547;
+$gray:          #969696;
+$gray-light:    #cccccc;
+$gray-lighter:  #d7d7d7;
+$gray-lightest: #f6f6f6;
 
-// @see http://www.colourlovers.com/palette/1416354/GiorgosPalette1
-$brand-primary:             #099;
-$brand-success:             #97c133;
-$brand-info:                #57d9c7;
-$brand-warning:             #f2a900;
-$brand-danger:              #e55c00;
-
+$brand-primary: #f8ae00;
+$brand-success: #21ba45;
+$brand-info:    #2185d0;
+$brand-warning: #f8ae00;
+$brand-danger:  #db2828;
+$brand-inverse: #444547;
 
 // Options
 //
@@ -24,3 +27,19 @@ $brand-danger:              #e55c00;
 $enable-flex:               true;
 $enable-shadows:            true;
 $enable-transitions:        true;
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg:       $gray-lightest;
+$body-color:    $gray-dark;
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:            $brand-info;
+$link-decoration:       none !default;
+$link-hover-color:      darken($link-color, 15%) !default;
+$link-hover-decoration: underline !default;
