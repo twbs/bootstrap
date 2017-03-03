@@ -471,7 +471,7 @@ If more than 12 columns are placed within a single row, each group of extra colu
 
 ### Column resets
 
-With the handful of grid tiers available, you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a `.clearfix` and our [responsive utility classes]({{ site.baseurl }}/layout/responsive-utilities/).
+With the handful of grid tiers available, you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a `.clearfix` and our [responsive display utilities]({{ site.baseurl }}/utilities/display/).
 
 <div class="bd-example-row">
 {% example html %}
@@ -480,7 +480,7 @@ With the handful of grid tiers available, you're bound to run into issues where,
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
 
   <!-- Add the extra clearfix for only the required viewport -->
-  <div class="clearfix hidden-sm-up"></div>
+  <div class="clearfix d-none d-sm-block"></div>
 
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
