@@ -9,6 +9,11 @@
 // Responsive visibility utilities
 
 @each $bp in map-keys($grid-breakpoints) {
+  .hidden-#{$bp} {
+    @include media-breakpoint-only($bp) {
+      display: none !important;
+    }
+  }
   .hidden-#{$bp}-up {
     @include media-breakpoint-up($bp) {
       display: none !important;
