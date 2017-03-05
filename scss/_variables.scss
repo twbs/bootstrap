@@ -138,36 +138,33 @@ $enable-print-styles:       true !default;
 // variables. Mostly focused on spacing.
 // You can add more entries to the $spacers map, should you need more variation.
 
-$spacer:   1rem !default;
-$spacer-x: $spacer !default;
-$spacer-y: $spacer !default;
+$spacer: 1rem !default;
 $spacers: (
   0: (
     x: 0,
     y: 0
   ),
   1: (
-    x: ($spacer-x * .25),
-    y: ($spacer-y * .25)
+    x: ($spacer * .25),
+    y: ($spacer * .25)
   ),
   2: (
-    x: ($spacer-x * .5),
-    y: ($spacer-y * .5)
+    x: ($spacer * .5),
+    y: ($spacer * .5)
   ),
   3: (
-    x: $spacer-x,
-    y: $spacer-y
+    x: $spacer,
+    y: $spacer
   ),
   4: (
-    x: ($spacer-x * 1.5),
-    y: ($spacer-y * 1.5)
+    x: ($spacer * 1.5),
+    y: ($spacer * 1.5)
   ),
   5: (
-    x: ($spacer-x * 3),
-    y: ($spacer-y * 3)
+    x: ($spacer * 3),
+    y: ($spacer * 3)
   )
 ) !default;
-$border-width: 1px !default;
 
 // This variable affects the `.h-*` and `.w-*` classes.
 $sizes: (
@@ -237,6 +234,30 @@ $grid-gutter-widths: (
   xl: $grid-gutter-width-base
 ) !default;
 
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$line-height-lg:         (4 / 3) !default;
+$line-height-sm:         1.5 !default;
+
+$border-width: 1px !default;
+
+$border-radius:          .25rem !default;
+$border-radius-lg:       .3rem !default;
+$border-radius-sm:       .2rem !default;
+
+$component-active-color: $white !default;
+$component-active-bg:    $brand-primary !default;
+
+$caret-width:            .3em !default;
+
+$transition-base:        all .2s ease-in-out !default;
+$transition-fade:        opacity .15s linear !default;
+$transition-collapse:    height .35s ease !default;
+
+
 // Fonts
 //
 // Font, line-height, and color for body text, headings, and more.
@@ -303,27 +324,6 @@ $kbd-box-shadow:         inset 0 -.1rem 0 rgba($black,.25) !default;
 $nested-kbd-font-weight: $font-weight-bold !default;
 
 $list-inline-padding: 5px !default;
-
-
-// Components
-//
-// Define common padding and border radius sizes and more.
-
-$line-height-lg:         (4 / 3) !default;
-$line-height-sm:         1.5 !default;
-
-$border-radius:          .25rem !default;
-$border-radius-lg:       .3rem !default;
-$border-radius-sm:       .2rem !default;
-
-$component-active-color: $white !default;
-$component-active-bg:    $brand-primary !default;
-
-$caret-width:            .3em !default;
-
-$transition-base:        all .2s ease-in-out !default;
-$transition-fade:        opacity .15s linear !default;
-$transition-collapse:    height .35s ease !default;
 
 
 // Tables
@@ -450,7 +450,7 @@ $form-check-input-margin-x: .25rem !default;
 
 $form-check-inline-margin-x: .75rem !default;
 
-$form-group-margin-bottom:       $spacer-y !default;
+$form-group-margin-bottom:       1rem !default;
 
 $input-group-addon-bg:           $gray-lighter !default;
 $input-group-addon-border-color: $input-border-color !default;
@@ -804,7 +804,7 @@ $modal-transition:            transform .3s ease-out !default;
 
 $alert-padding-x:             1.25rem !default;
 $alert-padding-y:             .75rem !default;
-$alert-margin-bottom:         $spacer-y !default;
+$alert-margin-bottom:         1rem !default;
 $alert-border-radius:         $border-radius !default;
 $alert-link-font-weight:      $font-weight-bold !default;
 $alert-border-width:          $border-width !default;
