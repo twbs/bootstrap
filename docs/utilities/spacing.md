@@ -35,11 +35,11 @@ Where *sides* is one of:
 Where *size* is one of:
 
 * `0` - for classes that eliminate the `margin` or `padding` by setting it to `0`
-* `1` - (by default) for classes that set the `margin` or `padding` to `$spacer * .25` or `$spacer * .25`
-* `2` - (by default) for classes that set the `margin` or `padding` to `$spacer * .5` or `$spacer * .5`
-* `3` - (by default) for classes that set the `margin` or `padding` to `$spacer` or `$spacer`
-* `4` - (by default) for classes that set the `margin` or `padding` to `$spacer * 1.5` or `$spacer * 1.5`
-* `5` - (by default) for classes that set the `margin` or `padding` to `$spacer * 3` or `$spacer * 3`
+* `1` - (by default) for classes that set the `margin` or `padding` to `$spacer * .25`
+* `2` - (by default) for classes that set the `margin` or `padding` to `$spacer * .5`
+* `3` - (by default) for classes that set the `margin` or `padding` to `$spacer`
+* `4` - (by default) for classes that set the `margin` or `padding` to `$spacer * 1.5`
+* `5` - (by default) for classes that set the `margin` or `padding` to `$spacer * 3`
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
@@ -62,7 +62,7 @@ Here are some representative examples of these classes:
 }
 
 .p-3 {
-  padding: $spacer $spacer !important;
+  padding: $spacer !important;
 }
 {% endhighlight %}
 

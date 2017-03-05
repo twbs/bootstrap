@@ -140,30 +140,12 @@ $enable-print-styles:       true !default;
 
 $spacer: 1rem !default;
 $spacers: (
-  0: (
-    x: 0,
-    y: 0
-  ),
-  1: (
-    x: ($spacer * .25),
-    y: ($spacer * .25)
-  ),
-  2: (
-    x: ($spacer * .5),
-    y: ($spacer * .5)
-  ),
-  3: (
-    x: $spacer,
-    y: $spacer
-  ),
-  4: (
-    x: ($spacer * 1.5),
-    y: ($spacer * 1.5)
-  ),
-  5: (
-    x: ($spacer * 3),
-    y: ($spacer * 3)
-  )
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3)
 ) !default;
 
 // This variable affects the `.h-*` and `.w-*` classes.
