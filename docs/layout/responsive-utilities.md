@@ -50,7 +50,7 @@ Try to use these on a limited basis and avoid creating entirely different versio
   </thead>
   <tbody>
     <tr>
-      <th scope="row"><code>.hidden-xs-down</code></th>
+      <th scope="row"><code>.hidden</code></th>
       <td class="is-hidden">Hidden</td>
       <td class="is-visible">Visible</td>
       <td class="is-visible">Visible</td>
@@ -90,7 +90,7 @@ Try to use these on a limited basis and avoid creating entirely different versio
       <td class="is-hidden">Hidden</td>
     </tr>
     <tr>
-      <th scope="row"><code>.hidden-xs-up</code></th>
+      <th scope="row"><code>.hidden-up</code></th>
       <td class="is-hidden">Hidden</td>
       <td class="is-hidden">Hidden</td>
       <td class="is-hidden">Hidden</td>
@@ -177,7 +177,7 @@ Green checkmarks indicate the element **is visible** in your current viewport.
 <div class="row responsive-utilities-test visible-on">
   <div class="col-6 col-sm-3">
     <span class="hidden-sm-up visible">&#10004; Visible on extra small</span>
-    <span class="hidden-xs-down not-visible">Extra small</span>
+    <span class="hidden not-visible">Extra small</span>
   </div>
   <div class="col-6 col-sm-3">
     <span class="hidden-md-up visible">&#10004; Visible on small or narrower</span>
@@ -197,7 +197,7 @@ Green checkmarks indicate the element **is visible** in your current viewport.
 
 <div class="row responsive-utilities-test visible-on">
   <div class="col-6 col-sm-3">
-    <span class="hidden-xs-down visible">&#10004; Visible on small or wider</span>
+    <span class="hidden visible">&#10004; Visible on small or wider</span>
     <span class="hidden-sm-up not-visible">Small or wider</span>
   </div>
   <div class="col-6 col-sm-3">
@@ -219,10 +219,10 @@ Green checkmarks indicate the element **is visible** in your current viewport.
 <div class="row responsive-utilities-test visible-on">
   <div class="col-6 col-sm-4">
     <span class="hidden-sm-up visible">&#10004; Your viewport is exactly extra small</span>
-    <span class="hidden-xs-down not-visible">Your viewport is NOT exactly extra small</span>
+    <span class="hidden not-visible">Your viewport is NOT exactly extra small</span>
   </div>
   <div class="col-6 col-sm-4">
-    <span class="hidden-xs-down hidden-md-up visible">&#10004; Your viewport is exactly small</span>
+    <span class="hidden hidden-md-up visible">&#10004; Your viewport is exactly small</span>
     <span class="hidden-sm-only not-visible">Your viewport is NOT exactly small</span>
   </div>
   <div class="col-6 col-sm-4">
