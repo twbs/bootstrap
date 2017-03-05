@@ -28,4 +28,4 @@ Use the `margin` and `padding` [spacing utilities](/utilities/spacing/) to contr
 
 ## Toggle `visibility`
 
-When toggling `display` isn't needed, you can toggle the `visibility` of an element with our [visibility utilities](/utilities/visibility/).
+When toggling `display` isn't needed, you can toggle the `visibility` of an element with our [visibility utilities](/utilities/visibility/). Invisible elements will still affect the layout of the page, but are visually hidden from visitors.
