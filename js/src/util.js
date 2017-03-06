@@ -115,7 +115,7 @@ const Util = (($) => {
 
       if (!selector) {
         selector = element.getAttribute('href') || ''
-        selector = /^#[a-z]/i.test(selector) ? selector : null
+        selector = /^#[_a-z0-9-]/i.test(selector) ? selector : null
       }
 
       return selector
