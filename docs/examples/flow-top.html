@@ -35,6 +35,7 @@
 	<script src="js/nav.directive.js"></script>
 	<script src="js/select-options.service.js"></script>
 	<script src="js/topup-form.directive.js"></script>
+	<script src="js/fees-sequence.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
 	<script src="js/progress.directive.js"></script>
 
@@ -115,7 +116,53 @@
 					<div class="logo logo-primary logo-3 m-t-1"></div>
 				</div>
 				<div class="col-xl-2 col-xl-push-8 col-xs-4 col-lg-2 col-md-3">
+					<ul class="nav navbar-nav pull-xs-right">
+						<li class="dropdown pull-xs-right">
+							<a href="" class="dropdown-toggle profile-name p-l-1 p-r-0"
+								data-toggle="dropdown" role="button"
+								aria-expanded="false">
+								<span class="text-ellipsis"
+									title="Jonathan Smith-Henry">
+									<!--<i class="icon icon-profile m-r-1"></i>-->
+									<img src="../assets/img/mike.jpg" class="circle circle-sm" alt="Mike"
+									/><span class="hidden-xs m-l-1">
+										Jonathan Smith-Henry Smith-Henry
+									</span>
+								</span>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-md dropdown-menu-xs-right" role="menu">
+								<li class="p-a-2">
+									<div class="media">
+										<div class="media-left">
+											<div class="circle circle-sm circle-inverse">MM</div>
+										</div>
+										<div class="media-body">
+											<h5 class="text-primary text-ellipsis m-b-0">
+												Jonathan.Smith-Henry@longdomain.com
+											</h5>
+											<div class="small text-muted">Customer no. 1234567</div>
+											<a href="" class="small">View personal profile</a>
+										</div>
+									</div>
+								</li>
+								<li class="divider"></li>
+								<li class="p-t-1 p-b-1">
+									<a href="" class="text-ellipses">
+										<div class="circle circle-xs circle-inverse pull-left">
+											T
+										</div>Use as TransferWise
+									</a>
+								</li>
+								<li class="divider"></li>
+								<li><a href="settings.html"><i class="icon icon-setting"></i>Settings</a></li>
+								<li><a href=""><i class="icon icon-logout"></i>Logout</a></li>
+							</ul>
+						</li>
+					</ul>
+					<!--
 					<a href="account.html" class="btn btn-danger btn-sm btn-block m-t-1">Cancel</a>
+				-->
 				</div>
 				<div class="col-xl-8 col-xl-pull-2 col-xs-12 p-t-2">
 					<tw-progress-steps

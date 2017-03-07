@@ -1,0 +1,56 @@
+<ul class="sequence sequence-top sequence-bottom sequence-table">
+	<!-- this looks weird because we could just have one of these and
+	keep it visible, but there's a weird Safari bug on first-child that
+	causes padding to increase every time it's toggled -->
+	<li ng-if="!$ctrl.expand">
+		<a href="" ng-click="$ctrl.expand = !$ctrl.expand">
+			<span class="sequence-icon"><i class="icon" ng-class="{
+				'icon-expand': !$ctrl.expand,
+				'icon-collapse': $ctrl.expand
+			}"></i></span>
+		</a>
+		<div class="sequence-table-th"><strong>6.99 GBP</strong></div>
+		<div class="sequence-table-th"><strong>Total fees</strong></div>
+	</li>
+	<li ng-if="$ctrl.expand">
+		<div class="sequence-table-th">4.99 GBP</div>
+		<div class="sequence-table-td">TransferWise fee</div>
+	</li>
+	<li ng-if="$ctrl.expand">
+		<div class="sequence-table-th">{{$ctrl.payInMethod}}</div>
+		<div class="sequence-table-td">
+			Pay with
+			<span style="display: inline-block">
+				<tw-select class="m-b-0"
+					options="$ctrl.payInMethods"
+					ng-model="$ctrl.payInMethod"
+					ng-required="true"
+					dropdown-width="md"
+					hide-note="true"
+					size="sm">
+				</tw-select>
+			</span>
+		</div>
+	</li>
+	<li ng-if="$ctrl.expand">
+		<a href=""  ng-click="$ctrl.expand = !$ctrl.expand">
+			<span class="sequence-icon"><i class="icon icon-close"></i></span>
+		</a>
+		<div class="sequence-table-th"><strong>6.99 GBP</strong></div>
+		<div class="sequence-table-th"><strong>Total fees</strong></div>
+	</li>
+	<li ng-if="$ctrl.expand">
+		<div class="sequence-table-th">993.01 GBP</div>
+		<div class="sequence-table-td">Amount to convert</div>
+	</li>
+	<li>
+		<div class="sequence-table-th">1.23456</div>
+		<div class="sequence-table-td">
+			<a href="" tw-pop-over
+				title="Popover title title title"
+				data-content="Something about the rate, and some other thing">
+				Guaranteed
+			</a> rate
+		</div>
+	</li>
+</ul>

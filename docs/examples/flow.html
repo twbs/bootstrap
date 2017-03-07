@@ -51,11 +51,17 @@
 	<script src="js/one-click.directive.js"></script>
 	<script src="js/select-options.service.js"></script>
 	<script src="js/topup-form.directive.js"></script>
+	<script src="js/fees-sequence.directive.js"></script>
+	<script src="js/calculator-full.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
 	<script src="js/progress.directive.js"></script>
 
 	<script src="forms.js"></script>
-
+	<style>
+	.col-xl-3.col-sm-6 {
+		margin-bottom: 0;
+	}
+	</style>
 </head>
 <body ng-app="ExampleApp">
 <div class="column-layout">
@@ -76,6 +82,9 @@
 				<topup-form
 					on-submit="ctrl.onSubmit()"
 					on-complete="ctrl.onComplete()"></topup-form>
+				<div class="m-t-panel">
+					<calculator-full ></calculator-full>
+				</div>
 				<div class="text-xs-center m-y-section-3">
 					&copy; TransferWise 2016
 				</div>
@@ -101,7 +110,8 @@
 					</li>
 					<li>Step two</li>
 					<li class="active">Step three</li>
-					<li>Step five</li>
+					<li>Step five
+						<p class="small">Extra!</p></li>
 				</ul>
 			</div>
 			<div class="col-xl-3 col-sm-6">
@@ -112,7 +122,8 @@
 					</li>
 					<li>Step two</li>
 					<li>Step three</li>
-					<li>Step four</li>
+					<li>Step four
+						<p class="small">Extra!</p></li>
 				</ul>
 			</div>
 			<div class="col-xl-3 col-sm-6">
@@ -123,7 +134,8 @@
 					</li>
 					<li>Step two</li>
 					<li>Step three</li>
-					<li>Step four</li>
+					<li>Step four
+						<p class="small">Extra!</p></li>
 				</ul>
 			</div>
 			<div class="col-xl-3 col-sm-6">
@@ -142,7 +154,8 @@
 						<span class="sequence-icon"><i class="icon icon-lock"></i></span>
 						Step three
 					</li>
-					<li>Step four</li>
+					<li>Step four
+						<p class="small">Extra!</p></li>
 				</ul>
 			</div>
 		</div>
@@ -364,7 +377,65 @@
 				</ul>
 			</div>
 		</div>
-
+		<div class="well m-b-0">Table variants</div>
+		<div class="row">
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-table sequence-hollow">
+					<li>
+						<span class="sequence-table-th">Connect neither</span>
+					</li>
+					<li class="active"><span class="sequence-table-th">Step two</span></li>
+					<li><span class="sequence-table-th">Step three</span></li>
+					<li><span class="sequence-table-th">Step four</span></li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-table sequence-top sequence-bottom sequence-hollow">
+					<li>
+						<span class="sequence-table-th">Connect both</span>
+					</li>
+					<li>
+						<span class="sequence-icon"><i class="icon icon-lock"></i></span>
+						<span class="sequence-table-th">Step two</span>
+					</li>
+					<li><span class="sequence-table-th">Step three</span></li>
+					<li><span class="sequence-table-th">Step four</span></li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-table sequence-bottom sequence-hollow">
+					<li>
+						<span class="sequence-table-th">Bottom</span>
+						<span class="sequence-table-td">td</span>
+					</li>
+					<li>
+						<span class="sequence-icon"><i class="icon icon-lock"></i></span>
+						<span class="sequence-table-th">Step two</span>
+						<span class="sequence-table-td">Step two</span>
+					</li>
+					<li>
+						<span class="sequence-table-th">Step three</span>
+						<span class="sequence-table-td">Step three</span>
+					</li>
+					<li class="active">
+						<span class="sequence-table-th">Step four</span>
+						<span class="sequence-table-td">Step four</span>
+					</li>
+				</ul>
+			</div>
+			<div class="col-xl-3 col-sm-6">
+				<ul class="sequence sequence-table sequence-top sequence-hollow">
+					<li>
+						<span class="sequence-table-th">Connect top</span>
+						<span class="sequence-table-td">td</span>
+					</li>
+					<li><span class="sequence-table-th">Step two</span></li>
+					<li class="active"><span class="sequence-table-td">Step three</span></li>
+					<li><span class="sequence-table-td">Step four</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="well m-b-0">Large variants</div>
 		<div class="row">
 			<div class="col-xl-3 col-sm-6">
 				<ul class="sequence sequence-info sequence-top sequence-bottom sequence-lg">
@@ -389,45 +460,36 @@
 				</ul>
 			</div>
 		</div>
-
-
 	</div>
 
 
 
 </div>
-<div class="column-layout-right bg-default" ng-class="{open: open}">
-	<div class="column-layout-top">
-		<ul class="sequence sequence-primary sequence-hollow m-t-4">
-			<li>
-				<p class="m-b-0">Complete profile</p>
-			</li>
-			<li>
-				<p class="m-b-0">Choose recipient</p>
-			</li>
-			<li class="active">
-				<h5 class="m-b-0">Pay in</h5>
-				<p class="m-b-0 p-b-1 small">Choose how you would like to pay</p>
-			</li>
-			<li>Confirm</li>
-		</ul>
+	<div class="column-layout-right bg-default" ng-class="{open: open}">
+		<div class="column-layout-top">
+			<ul class="sequence sequence-primary sequence-hollow m-t-4">
+				<li>
+					<p class="m-b-0">Complete profile</p>
+				</li>
+				<li>
+					<p class="m-b-0">Choose recipient</p>
+				</li>
+				<li class="active">
+					<h5 class="m-b-0">Pay in</h5>
+					<p class="m-b-0 p-b-1 small">Choose how you would like to pay</p>
+				</li>
+				<li>Confirm</li>
+			</ul>
+		</div>
+		<div class="column-layout-bottom">
+			<a class="btn btn-danger btn-block" href="account-left.html">Close</a>
+		</div>
 	</div>
-	<div class="column-layout-bottom">
-		<a class="btn btn-danger btn-block" href="account-left.html">Close</a>
+	<div class="column-layout-cover"
+		ng-class="{in: open}"
+		ng-click="open = !open;">
+		<a class="close">&times;</a>
 	</div>
-</div>
-<div class="column-layout-cover"
-	ng-class="{in: open}"
-	ng-click="open = !open;">
-	<a class="close">&times;</a>
-</div>
-</div>
-<div class="navbar navbar-fixed-bottom bg-primary visible-xs visible-sm p-x-1">
-	<ul class="nav nav-justified nav-inverse">
-		<li><button class="navbar-btn btn btn-sm btn-block btn-success">Create</button></li>
-		<li class="active"><a href="">Activity</a></li>
-		<li><a href="" ng-click="open = !open">More...</a></li>
-	</ul>
 </div>
 </body>
 

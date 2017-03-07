@@ -33,64 +33,10 @@
 				Convert to USD balance
 			</label>
 		</div>
-
-		<ul ng-if="$ctrl.action === 'convert'"
-			class="sequence sequence-top sequence-bottom sequence-table">
-			<!-- this looks weird because we could just have one of these and
-			keep it visible, but there's a weird Safari bug on first-child that
-			causes padding to increase every time it's toggled -->
-			<li ng-if="!$ctrl.showFees">
-				<a href="" ng-click="$ctrl.showFees = !$ctrl.showFees">
-					<span class="sequence-icon"><i class="icon" ng-class="{
-						'icon-expand': !$ctrl.showFees,
-						'icon-collapse': $ctrl.showFees
-					}"></i></span>
-				</a>
-				<div class="sequence-table-th"><strong>6.99 GBP</strong></div>
-				<div class="sequence-table-th"><strong>Total fees</strong></div>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<div class="sequence-table-th">4.99 GBP</div>
-				<div class="sequence-table-td">TransferWise fee</div>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<div class="sequence-table-th">{{$ctrl.payInMethod}}</div>
-				<div class="sequence-table-td">
-					Pay with
-					<span style="display: inline-block">
-						<tw-select class="m-b-0"
-							options="$ctrl.payInMethods"
-							ng-model="$ctrl.payInMethod"
-							ng-required="true"
-							dropdown-width="md"
-							hide-note="true"
-							size="sm">
-						</tw-select>
-					</span>
-				</div>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<a href=""  ng-click="$ctrl.showFees = !$ctrl.showFees">
-					<span class="sequence-icon"><i class="icon icon-close"></i></span>
-				</a>
-				<div class="sequence-table-th"><strong>6.99 GBP</strong></div>
-				<div class="sequence-table-th"><strong>Total fees</strong></div>
-			</li>
-			<li ng-if="$ctrl.showFees">
-				<div class="sequence-table-th">993.01 GBP</div>
-				<div class="sequence-table-td">Amount to convert</div>
-			</li>
-			<li>
-				<div class="sequence-table-th">1.23456</div>
-				<div class="sequence-table-td">
-					<a href="" tw-pop-over
-						title="Popover title title title"
-						data-content="Something about the rate, and some other thing">
-						Guaranteed
-					</a> rate
-				</div>
-			</li>
-		</ul>
+		<fees-sequence
+			ng-if="$ctrl.action === 'convert'"
+			expand="$ctrl.showFees">
+		</fees-sequence>
 		<div class="form-group form-group-lg" ng-if="$ctrl.action === 'convert'">
 			<label class="control-label">You get</label>
 			<div class="input-group input-group-lg">

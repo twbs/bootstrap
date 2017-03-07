@@ -6,23 +6,8 @@
   @sequence-icon-size
 ) {
   @sequence-outside-spacing: (@sequence-margin + @sequence-item-spacing);
-
-  @pip-offset-small: (@sequence-step-height / 2);
   @pip-offset: ((@sequence-step-height / 2) + @sequence-item-spacing);
 
-  // We don't need to account for ul margin as it's not part of height
-  @space-outside-pips-small: @sequence-step-height;
-  @space-outside-pips: (@sequence-step-height + (@sequence-item-spacing * 2));
-
-  &:before {
-    height: calc(100% - @space-outside-pips-small);
-    margin-top: @pip-offset-small;
-
-    @media (min-width: @screen-md-min) {
-      height: calc(100% - @space-outside-pips);
-      margin-top: @pip-offset;
-    }
-  }
   > li {
     &:first-child {
       margin-top: @sequence-margin;
@@ -39,27 +24,14 @@
     }
     &:first-child:after {
       margin-top: @pip-offset;
-      height: calc(100% - @pip-offset);
+      height: ~"calc(100% - @{pip-offset})";
     }
     &:last-child:after {
-      height: calc(100% - @pip-offset);
-    }
-  }
-  > .active:after {
-    height: (@sequence-step-height / 2);
-    @media (min-width: @screen-md-min) {
-      height: ((@sequence-step-height / 2) + @sequence-item-spacing);
+      height: @pip-offset;
     }
   }
 
   &.sequence-top {
-    &:before {
-      height: calc(100% - @pip-offset-small);
-      margin-top: 0;
-      @media (min-width: @screen-md-min) {
-        height: calc(100% - @pip-offset);
-      }
-    }
     > li:first-child {
       padding-top: @sequence-outside-spacing;
       margin-top: 0;
@@ -68,40 +40,16 @@
         height: 100%;
         margin-top: 0;
       }
-      .sequence-icon {
-        top: (((@sequence-step-height / 2) - (@sequence-icon-size / 2)) + @sequence-outside-spacing);
-      }
-    }
-    > .active:first-child:after {
-      height: (@sequence-margin + @sequence-item-spacing + (@sequence-step-height / 2));
     }
   }
   &.sequence-bottom {
-    &:before {
-      height: calc(100% - @pip-offset-small);
-      @media (min-width: @screen-md-min) {
-        height: calc(100% - @pip-offset);
-      }
-    }
     > li:last-child {
       padding-bottom: @sequence-outside-spacing;
       margin-bottom: 0;
+
       &:after {
         height: 100%;
       }
-    }
-    > .active {
-      &:last-child:after {
-        height: (@sequence-item-spacing + (@sequence-step-height / 2));
-      }
-      &:first-child:last-child:after {
-        height: (@sequence-margin + @sequence-item-spacing + (@sequence-step-height / 2));
-      }
-    }
-  }
-  &.sequence-top.sequence-bottom {
-    &:before {
-      height: 100%;
     }
   }
 
@@ -111,6 +59,9 @@
     @media (min-width: @screen-md-min) {
       top: ((@sequence-step-height / 2) - (@sequence-icon-size / 2) + @sequence-item-spacing);
     }
+  }
+  &.sequence-top > li:first-child .sequence-icon {
+    top: (((@sequence-step-height / 2) - (@sequence-icon-size / 2)) + @sequence-outside-spacing);
   }
 }
 
@@ -138,5 +89,60 @@
   }
   .sequence-icon-lg {
     margin-left: (-@sequence-item-padding - (@sequence-icon-lg / 2) + 1px);
+  }
+}
+
+
+// The line for the active item needs to be the active colour before the 'pip' and
+// the inactive colour afterwards.  This is tricky because we don't know the height.
+// However, we can achieve this with one element by using a gradient with a hard
+// transition between colours at the right point.  We need several variants to cover
+// our large and inverse options.
+.sequence-variant(
+  @color,
+  @pip-offset,
+  @pip-offset-lg,
+  @sequence-border,
+  @sequence-inverse-border,
+  @sequence-margin
+) {
+  > li {
+    border-color: @color;
+  }
+  > .active {
+    &:before {
+      border-color: @color;
+      background-color: @color;
+    }
+    &:after {
+      background: linear-gradient(@color 0, @color @pip-offset, @sequence-border @pip-offset, @sequence-border 100%);
+    }
+    &:first-child:after {
+      background: @sequence-border;
+    }
+  }
+  &.sequence-inverse > .active {
+    &:after {
+      background: linear-gradient(@color 0, @color @pip-offset, @sequence-inverse-border @pip-offset, @sequence-inverse-border 100%);
+    }
+  }
+
+  @media (min-width: @screen-md-min) {
+    &.sequence-lg > .active {
+      &:after {
+        background: linear-gradient(@color 0, @color @pip-offset-lg, @sequence-border @pip-offset-lg, @sequence-border 100%);
+      }
+      &:first-child:after {
+        background: linear-gradient(@color 0, @color (@pip-offset-lg + @sequence-margin), @sequence-border @pip-offset-lg, @sequence-border 100%);
+      }
+    }
+    &.sequence-lg.sequence-inverse > .active {
+      &:after {
+        background: linear-gradient(@color 0, @color @pip-offset-lg, @sequence-inverse-border @pip-offset-lg, @sequence-inverse-border 100%);
+      }
+      &:first-child:after {
+        background: linear-gradient(@color 0, @color (@pip-offset-lg + @sequence-margin), @sequence-inverse-border @pip-offset-lg, @sequence-inverse-border 100%);
+      }
+    }
   }
 }
