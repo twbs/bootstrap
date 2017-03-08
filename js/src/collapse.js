@@ -78,7 +78,6 @@ const Collapse = (($) => {
         `[data-toggle="collapse"][href="#${element.id}"],` +
         `[data-toggle="collapse"][data-target="#${element.id}"]`
       ))
-
       this._parent = this._config.parent ? this._getParent() : null
 
       if (!this._config.parent) {
@@ -89,7 +88,7 @@ const Collapse = (($) => {
       if (this._parent) {
         const childrenSelector = this._parent.hasAttribute(Selector.DATA_CHILDREN) ? this._parent.getAttribute(Selector.DATA_CHILDREN) : null
         if (childrenSelector !== null) {
-          this._selectorActives = childrenSelector + ' > .show, ' + childrenSelector + ' > .collapsing'
+          this._selectorActives = `${childrenSelector} > .show, ${childrenSelector} > .collapsing`
         }
       }
 
