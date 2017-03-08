@@ -3602,8 +3602,9 @@ tbody.collapse.show {
           background-size: 8px 10px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
-  -moz-appearance: none;
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .custom-select:focus {

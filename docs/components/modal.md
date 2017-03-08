@@ -20,7 +20,7 @@ Before getting started with Bootstrap's modal component, be sure to read the fol
 - Clicking on the modal "backdrop" will automatically close the modal.
 - Bootstrap only supports one modal window at a time. Nested modals aren't supported as we believe them to be poor user experiences.
 - Modals use `position: fixed`, which can sometimes be a bit particular about its rendering. Whenever possible, place your modal HTML in a top-level position to avoid potential interference from other elements. You'll likely run into issues when nesting a `.modal` within another fixed element.
-- One again, due to `position: fixed`, there are some caveats with using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/getting-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
+- Once again, due to `position: fixed`, there are some caveats with using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/getting-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
 - Lastly, the `autofocus` HTML attribute has no effect in modals. Here's how you can achieve the same effect with custom JavaScript.
 
 Keep reading for demos and usage guidelines.
@@ -347,7 +347,7 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
 
 ### Varying modal content
 
-Have a bunch of buttons that all trigger the same modal with slightly different contents? Use `event.relatedTarget` and [HTML `data-*` attributes](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes) (possibly [via jQuery](https://api.jquery.com/data/)) to vary the contents of the modal depending on which button was clicked.
+Have a bunch of buttons that all trigger the same modal with slightly different contents? Use `event.relatedTarget` and [HTML `data-*` attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) (possibly [via jQuery](https://api.jquery.com/data/)) to vary the contents of the modal depending on which button was clicked.
 
 Below is a live demo followed by example HTML and JavaScript. For more information, [read the modal events docs](#events) for details on `relatedTarget`.
 
