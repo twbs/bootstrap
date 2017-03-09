@@ -138,4 +138,40 @@ $(function () {
     assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
   })
 
+  QUnit.test('shouldn\'t check disabled radio inputs', function (assert) {
+    assert.expect(12)
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
+      + '<label class="btn btn-primary active">'
+      + '<input type="radio" name="options" id="option1" checked="true"> Option 1'
+      + '</label>'
+      + '<label class="btn btn-primary">'
+      + '<input type="radio" name="options" disabled id="option2"> Option 2'
+      + '</label>'
+      + '<label class="btn btn-primary disabled">'
+      + '<input type="radio" name="options" id="option3"> Option 3'
+      + '</label>'
+      + '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn1 = $group.children().eq(0)
+    var $btn2 = $group.children().eq(1)
+    var $btn3 = $group.children().eq(3)
+
+    assert.ok($btn1.hasClass('active'), 'btn1 has active class')
+    assert.ok($btn1.find('input').prop('checked'), 'btn1 is checked')
+    assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
+    assert.ok(!$btn2.find('input').prop('checked'), 'btn2 is not checked')
+    $btn2.find('input').trigger('click')
+    assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
+    assert.ok(!$btn2.find('input').prop('checked'), 'btn2 is not checked')
+    assert.ok($btn1.hasClass('active'), 'btn1 has active class')
+    assert.ok($btn1.find('input').prop('checked'), 'btn1 is checked')
+    $btn3.find('input').trigger('click')
+    assert.ok(!$btn3.hasClass('active'), 'btn3 does not have active class')
+    assert.ok(!$btn3.find('input').prop('checked'), 'btn3 is not checked')
+    assert.ok($btn1.hasClass('active'), 'btn1 has active class')
+    assert.ok($btn1.find('input').prop('checked'), 'btn1 is checked')
+
+  })
+
 })
