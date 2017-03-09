@@ -56,10 +56,10 @@
 		]);
 
 		function PageController(TransferService, CurrencyService) {
-			var vm = this;
+			var $ctrl = this;
 
 			CurrencyService.map().then(function(currencies) {
-				vm.currencies = currencies;
+				$ctrl.currencies = currencies;
 			});
 
 			TransferService.list({status: [
@@ -67,15 +67,21 @@
 				"AWAITING_FUNDS",
 				"PROCESSING"
 			]}).then(function(transfers) {
-				vm.activeTransfers = transfers;
+				$ctrl.activeTransfers = transfers;
 			});
 
 			TransferService.list({status: [
 				"COMPLETED",
 				"CANCELLED",
 			]}).then(function(transfers) {
-				vm.historicTransfers = transfers;
+				$ctrl.historicTransfers = transfers;
 			});
+
+			$ctrl.actionButtons = [
+				{label: 'Send money', icon: 'icon-send', primary: true},
+				{label: 'Add money', icon: 'icon-add'},
+				{label: 'Receive', icon: 'icon-request'}
+			];
 		}
 	})(window.angular);
 	</script>
@@ -94,7 +100,12 @@
 			</div>
 
 			<div class="m-t-3 hidden-xl">
-				<activity-filters></activity-filters>
+				<activity-filters
+					title="Activity"
+					buttons="ctrl.actionButtons"
+					button-summary="Get started"
+					searchable="true">
+				</activity-filters>
 			</div>
 
 			<div class="panel">

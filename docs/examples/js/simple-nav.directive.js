@@ -45,6 +45,7 @@
 			restrict: 'E',
 			scope: {
 				title: '@',
+				subtitle: '@',
 				onBurgerClick: '&',
 				showSearch: '='
 			},

@@ -8,7 +8,9 @@
 		return {
 			bindToController: true,
 			controller: function() {
-				this.activityTypes = [
+				var $ctrl = this;
+
+				$ctrl.activityTypes = [
 					{value:'all',label:'All activities',icon:'icon-fast-flag'},
 					{value:'sent',label:'Sent transfers',icon:'icon-send'},
 					{value:'received',label:'Recieved transfers',icon:'icon-request'},
@@ -18,12 +20,23 @@
 					{value:'conversions',label:'Balance conversions',icon:'icon-transfer'},
 					{value:'bonus',label:'Bonus payments',icon:'icon-gift'}
 				];
+
+				$ctrl.buttonsContainPrimary = false;
+				if ($ctrl.buttons.forEach) {
+					$ctrl.buttons.forEach(function(button) {
+						$ctrl.buttonsContainPrimary = $ctrl.buttonsContainPrimary || button.primary;
+					});
+				}
 			},
 			controllerAs: '$ctrl',
 			replace: true,
 			restrict: 'E',
 			scope: {
-				showSearch: '=',
+				title: "@",
+				buttons: '=',
+				buttonSummary: '@',
+				searchable: '=',
+				filtersActive: '=',
 				size: '@'
 			},
 			templateUrl: 'partials/activity-filters.html'

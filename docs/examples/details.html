@@ -23,6 +23,7 @@
 	<script src="js/nav.directive.js"></script>
 	<script src="js/simple-nav.directive.js"></script>
 	<script src="js/side-nav.directive.js"></script>
+	<script src="js/activity-filters.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
 
 
@@ -49,6 +50,12 @@
 				$ctrl.sideNav = !$ctrl.sideNav;
 			};
 			$ctrl.sideNav = true;
+
+			$ctrl.actionButtons = [
+				{label: 'Download PDF', icon: 'icon-pdf'},
+				{label: 'Cancel transfer', icon: 'icon-close'},
+				{label: 'More details', icon: 'icon-setting'}
+			];
 		}
 	})(window.angular);
 	</script>
@@ -72,8 +79,21 @@
 		<simple-nav
 			ng-if="ctrl.sideNav"
 			title="£10 to Stephen Pole"
+			subtitle="Transfer #1234567"
 			on-burger-click="ctrl.burgerToggle()"
 			show-search="ctrl.showSearch"></simple-nav>
+		<div class="nav-toolbar" data-spy="affix" data-offset-top="{{88}}" ng-class="{
+				'affix-cancel-xs': ctrl.showSearch,
+				'affix-cancel-sm': ctrl.showSearch
+			}">
+			<div class="container m-l-0">
+				<activity-filters
+					title="Transfer Details"
+					buttons="ctrl.actionButtons"
+					button-summary="Options">
+				</activity-filters>
+			</div>
+		</div>
 		<!--
 		<div class="bg-primary">
 			<div class="container p-t-4 p-b-5 clearfix">
@@ -101,12 +121,6 @@
 		-->
 		<div class="container m-l-0">
 
-			<p class="m-t-2 m-b-0">
-				<strong class="text-warning">
-					Verification problem
-				</strong>
-				You need to verify
-			</p>
 			<ul class="sequence sequence-bottom sequence-hollow sequence-lg m-l-2">
 				<li>
 					<span class="sequence-icon"><i class="icon icon-check"></i></span>
@@ -126,7 +140,7 @@
 			<div class="container m-l-0">
 				<ul class="sequence sequence-top sequence-bottom sequence-lg m-l-2">
 					<li>
-						<div class="sequence-icon sequence-icon-lg"><i class="icon icon-alert text-warning"></i></div>
+						<div class="sequence-icon sequence-icon-lg">3</div>
 						<h2 class="m-b-2">Waiting for your £10 payment</h2>
 						<div>
 							<h5>Haven't sent anything yet?</h5>
@@ -169,7 +183,6 @@
 					<p class="small">This shouldn't break sequence...</p>
 				</li>
 			</ul>
-			<button class="btn btn-danger">Cancel transfer</button>
 		</div>
 
 		<div class="modal" id="rateLimitModal">

@@ -20,7 +20,7 @@
 
 // Optional heading
 .panel-heading {
-  padding: (@spacing-1-desktop / 2) @spacing-1-mobile;
+  padding: (@spacing-1-desktop / 2) @spacing-1-mobile 8px @spacing-1-mobile;
 
   > .dropdown .dropdown-toggle {
     color: inherit;
@@ -49,7 +49,7 @@
     margin-bottom: @spacing-1-tablet;
   }
   .panel-heading {
-    padding: (@spacing-1-desktop / 2) 0;
+    padding: (@spacing-1-desktop / 2) 0 8px 0;
 
   }
   .panel-body {
@@ -537,10 +537,5 @@
     .panel {
       margin-left: 0;
       margin-right: 0;
-    }
-}
-@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-    .panel-heading {
-      padding: (@spacing-1-desktop / 2) 0;
     }
 }

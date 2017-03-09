@@ -121,6 +121,12 @@
 				$ctrl.sideNav = !$ctrl.sideNav;
 			};
 			$ctrl.sideNav = true;
+
+			$ctrl.actionButtons = [
+				{label: 'Send money', icon: 'icon-send', primary: true},
+				{label: 'Add money', icon: 'icon-add'},
+				{label: 'Receive', icon: 'icon-request'}
+			];
 		}
 	})(window.angular);
 	</script>
@@ -155,12 +161,19 @@
 				'affix-cancel-sm': ctrl.showSearch
 			}">
 			<div class="container m-l-0">
-				<activity-filters show-search="ctrl.showSearch"></activity-filters>
+
+				<activity-filters
+					title="Activity"
+					buttons="ctrl.actionButtons"
+					button-summary="Get started"
+					searchable="true"
+					filters-active="ctrl.showSearch">
+				</activity-filters>
 				<!-- <calculator-inline></calculator-inline> -->
 			</div>
 		</div>
 
-		<div class="container p-t-2 m-l-0">
+		<div class="container m-l-0">
 			<!--
 			<div class="row">
 				<div class="col-sm-6 col-md-7 col-xl-9">
@@ -184,14 +197,14 @@
 			-->
 
 			<div class="panel m-b-2">
-				<div class="panel-heading p-t-0  p-b-0">
+				<div class="panel-heading">
 					<div class="row">
-						<div class="col-sm-6 col-md-7 col-xl-9">
+						<div class="col-sm-6 col-md-7 col-xl-9 m-b-0">
 							<h6 class="panel-title">
 								In progress ({{ctrl.activeTransfers.length}})
 							</h6>
 						</div>
-						<div class="col-sm-6 col-md-5 col-xl-3 hidden-xs hidden-sm hidden-md text-xs-right">
+						<div class="col-sm-6 col-md-5 col-xl-3 m-b-0 hidden-xs hidden-sm hidden-md text-xs-right">
 
 						</div>
 					</div>
@@ -204,7 +217,7 @@
 			</div>
 
 			<div class="panel">
-				<div class="panel-heading p-b-0">
+				<div class="panel-heading">
 					<h6 class="panel-title">
 						Recent ({{ctrl.historicTransfers.length}})
 					</h6>

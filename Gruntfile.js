@@ -439,6 +439,7 @@ module.exports = function (grunt) {
           'Attribute “ng-class” not allowed on element “button” at this point.',
           'Attribute “ng-repeat” not allowed on element “li” at this point.',
           'Attribute “ng-repeat” not allowed on element “tr” at this point.',
+          'Attribute “ng-repeat” not allowed on element “button” at this point.',
           'Attribute “ng-init” not allowed on element “label” at this point.',
           'Attribute “ng-init” not allowed on element “div” at this point.',
           'Attribute “ng-init” not allowed on element “span” at this point.',
