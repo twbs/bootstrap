@@ -9,9 +9,9 @@
   height: 1px;
   padding: 0;
   margin: -1px;
-  overflow: hidden;
-  white-space: nowrap;
+  overflow: hidden;  
   clip: rect(0,0,0,0);
+  white-space: nowrap;
   clip-path: inset(50%);
   border: 0;
 }
@@ -29,9 +29,9 @@
     width: auto;
     height: auto;
     margin: 0;
-    overflow: visible;
-    white-space: normal;
+    overflow: visible;    
     clip: auto;
+    white-space: normal;
     clip-path: none;
   }
 }
