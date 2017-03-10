@@ -7,6 +7,18 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
+// Start with assigning color names to specific hex values.
+$white:  #fff !default;
+$black:  #000 !default;
+$red:    #d9534f !default;
+$orange: #f0ad4e !default;
+$yellow: #ffd500 !default;
+$green:  #5cb85c !default;
+$blue:   #0275d8 !default;
+$teal:   #5bc0de !default;
+$pink:   #ff5b77 !default;
+$purple: #613d7c !default;
+
 $gray-dark:     #444547;
 $gray:          #969696;
 $gray-light:    #cccccc;
@@ -20,6 +32,14 @@ $brand-warning: #f8ae00;
 $brand-danger:  #db2828;
 $brand-inverse: #444547;
 
+// Colors
+//
+// Grayscale and brand colors for use across Bootstrap.
+
+$box-shadow-default: 0 0.3rem 0.5rem rgba(0,0,0,0.12);
+$box-shadow-soft: 0 0.05rem 0.1rem rgba(0,0,0,0.20);
+$box-shadow-large: 0 0.5rem 1.25rem rgba(0,0,0,0.20);
+
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -27,6 +47,43 @@ $brand-inverse: #444547;
 $enable-flex:               true;
 $enable-shadows:            true;
 $enable-transitions:        true;
+
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer:   1rem !default;
+$spacer-x: $spacer !default;
+$spacer-y: $spacer !default;
+$spacers: (
+  0: (
+    x: 0,
+    y: 0
+  ),
+  1: (
+    x: ($spacer-x * .25),
+    y: ($spacer-y * .25)
+  ),
+  2: (
+    x: ($spacer-x * .5),
+    y: ($spacer-y * .5)
+  ),
+  3: (
+    x: $spacer-x,
+    y: $spacer-y
+  ),
+  4: (
+    x: ($spacer-x * 1.5),
+    y: ($spacer-y * 1.5)
+  ),
+  5: (
+    x: ($spacer-x * 3),
+    y: ($spacer-y * 3)
+  )
+) !default;
+$border-width: 1px !default;
 
 // Body
 //
@@ -43,3 +100,93 @@ $link-color:            $brand-info;
 $link-decoration:       none !default;
 $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
+
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:       $font-family-sans-serif !default;
+
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:   1.25rem !default;
+$font-size-sm:   .875rem !default;
+$font-size-xs:   .75rem !default;
+
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
+$font-weight-base: $font-weight-normal !default;
+$line-height-base: 1.5 !default;
+
+$font-size-h1: 2.5rem !default;
+$font-size-h2: 2rem !default;
+$font-size-h3: 1.75rem !default;
+$font-size-h4: 1.5rem !default;
+$font-size-h5: 1.25rem !default;
+$font-size-h6: 1rem !default;
+
+$headings-margin-bottom: ($spacer / 2) !default;
+$headings-font-family:   inherit !default;
+$headings-font-weight:   500 !default;
+$headings-line-height:   1.1 !default;
+$headings-color:         inherit !default;
+
+$display1-size: 6rem !default;
+$display2-size: 5.5rem !default;
+$display3-size: 4.5rem !default;
+$display4-size: 3.5rem !default;
+
+$display1-weight:     300 !default;
+$display2-weight:     300 !default;
+$display3-weight:     300 !default;
+$display4-weight:     300 !default;
+$display-line-height: $headings-line-height !default;
+
+$lead-font-size:   1.25rem !default;
+$lead-font-weight: 300 !default;
+
+$small-font-size: 80% !default;
+
+$text-muted: $gray-light !default;
+
+$blockquote-small-color:  $gray-light !default;
+$blockquote-font-size:    ($font-size-base * 1.25) !default;
+$blockquote-border-color: $gray-lighter !default;
+$blockquote-border-width: .25rem !default;
+
+$hr-border-color: rgba($black,.1) !default;
+$hr-border-width: $border-width !default;
+
+$mark-padding: .2em !default;
+
+$dt-font-weight: $font-weight-bold !default;
+
+$kbd-box-shadow:         inset 0 -.1rem 0 rgba($black,.25) !default;
+$nested-kbd-font-weight: $font-weight-bold !default;
+
+$list-inline-padding: 5px !default;
+
+// Tags
+//
+// Style tags.
+
+$tag-padding-x: 1em; //em because we want to use the font-size element, not the root font size as base
+$tag-padding-y: 0.5em; //em because we want to use the font-size element, not the root font size as base
+$tag-font-size: $font-size-base;
+$tag-line-height: $line-height-base;
+$tag-box-shadow: $box-shadow-default;
+$tag-color: $body-color;
+$tag-bg: white;
+
+$tag-group-spacing-x: $spacer-x;
+$tag-group-spacing-y: $tag-group-spacing-x;
+
+$tag-hover-shadow: 0 0.35rem 0.5rem rgba(0,0,0,0.16);
+$tag-hover-color: $brand-primary;
+$tag-hover-bg: $tag-bg;
+
+$tag-active-shadow: inset 0 0.2rem 0.2rem rgba(0,0,0,0.24);
+$tag-active-color: $brand-primary;
+$tag-active-bg: $tag-bg;
