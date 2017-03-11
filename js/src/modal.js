@@ -67,7 +67,8 @@ const Modal = (($) => {
     DIALOG             : '.modal-dialog',
     DATA_TOGGLE        : '[data-toggle="modal"]',
     DATA_DISMISS       : '[data-dismiss="modal"]',
-    FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
+    FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
+    NAVBAR_TOGGLER     : '.navbar-toggler'
   }
 
 
@@ -212,7 +213,6 @@ const Modal = (($) => {
       this._isShown             = null
       this._isBodyOverflowing   = null
       this._ignoreBackdropClick = null
-      this._originalBodyPadding = null
       this._scrollbarWidth      = null
     }
 
@@ -429,21 +429,53 @@ const Modal = (($) => {
     }
 
     _setScrollbar() {
-      const bodyPadding = parseInt(
-        $(Selector.FIXED_CONTENT).css('padding-right') || 0,
-        10
-      )
-
-      this._originalBodyPadding = document.body.style.paddingRight || ''
-
       if (this._isBodyOverflowing) {
-        document.body.style.paddingRight =
-          `${bodyPadding + this._scrollbarWidth}px`
+        // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
+        //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
+
+        // Adjust fixed content padding
+        $(Selector.FIXED_CONTENT).each((index, element) => {
+          const actualPadding = $(element)[0].style.paddingRight
+          const calculatedPadding = $(element).css('padding-right')
+          $(element).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
+        })
+
+        // Adjust navbar-toggler margin
+        $(Selector.NAVBAR_TOGGLER).each((index, element) => {
+          const actualMargin = $(element)[0].style.marginRight
+          const calculatedMargin = $(element).css('margin-right')
+          $(element).data('margin-right', actualMargin).css('margin-right', `${parseFloat(calculatedMargin) + this._scrollbarWidth}px`)
+        })
+
+        // Adjust body padding
+        const actualPadding = document.body.style.paddingRight
+        const calculatedPadding = $('body').css('padding-right')
+        $('body').data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
       }
     }
 
     _resetScrollbar() {
-      document.body.style.paddingRight = this._originalBodyPadding
+      // Restore fixed content padding
+      $(Selector.FIXED_CONTENT).each((index, element) => {
+        const padding = $(element).data('padding-right')
+        if (typeof padding !== 'undefined') {
+          $(element).css('padding-right', padding).removeData('padding-right')
+        }
+      })
+
+      // Restore navbar-toggler margin
+      $(Selector.NAVBAR_TOGGLER).each((index, element) => {
+        const margin = $(element).data('margin-right')
+        if (typeof margin !== 'undefined') {
+          $(element).css('margin-right', margin).removeData('margin-right')
+        }
+      })
+
+      // Restore body padding
+      const padding = $('body').data('padding-right')
+      if (typeof padding !== 'undefined') {
+        $('body').css('padding-right', padding).removeData('padding-right')
+      }
     }
 
     _getScrollbarWidth() { // thx d.walsh
