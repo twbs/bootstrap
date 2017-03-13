@@ -229,7 +229,7 @@
   @include box-shadow($custom-file-box-shadow);
 
   @each $lang, $text in map-get($custom-file-text, placeholder) {
-    &:lang(#{$lang})::after {
+    &:lang(#{$lang}):empty::after {
       content: $text;
     }
   }
