@@ -1,6 +1,7 @@
 # [Bootstrap](https://getbootstrap.com)
 
 [![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
+[![Gitter](https://badges.gitter.im/twbs/bootstrap.svg)](https://gitter.im/twbs/bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 ![Bower version](https://img.shields.io/bower/v/bootstrap.svg)
 [![npm version](https://img.shields.io/npm/v/bootstrap.svg)](https://www.npmjs.com/package/bootstrap)
 [![Gem version](https://img.shields.io/gem/v/bootstrap.svg)](https://rubygems.org/gems/bootstrap)
