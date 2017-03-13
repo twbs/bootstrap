@@ -7,7 +7,9 @@
   line-break: auto;
   line-height: $line-height-base;
   text-align: left; // Fallback for where `start` is not supported
+  // scss-lint:disable DuplicateProperty
   text-align: start;
+  // scss-lint:enable DuplicateProperty
   text-decoration: none;
   text-shadow: none;
   text-transform: none;
