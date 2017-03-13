@@ -8,21 +8,12 @@
 //    }
 //  }
 //  @else {
-  &:hover { @content }
+// scss-lint:disable Indentation
+    &:hover { @content }
+// scss-lint:enable Indentation
 //  }
 }
 
-@mixin hover-focus {
-  @if $enable-hover-media-query {
-    &:focus { @content }
-    @include hover { @content }
-  } @else {
-    &:focus,
-    &:hover {
-      @content
-    }
-  }
-}
 
 @mixin plain-hover-focus {
   @if $enable-hover-media-query {
