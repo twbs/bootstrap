@@ -6,3 +6,7 @@ group :development, :test do
   gem 'jekyll-sitemap', '~> 1.0.0'
   gem 'scss_lint', '~> 0.52.0'
 end
+
+group :jekyll_plugins do
+  gem 'hawkins'
+end
