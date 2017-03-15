@@ -36,7 +36,8 @@
     "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
     "test": "npm run eslint && grunt test",
     "dist-n-push": "grunt dist && git add dist docs && git commit -m 'Version bump' && git push --follow-tags",
-    "release": "npm version prerelease && npm run dist-n-push"
+    "release": "npm version prerelease && npm run dist-n-push",
+    "dev": "concurrently -k 'bundle exec jekyll serve --livereload' 'grunt watch'"
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
@@ -59,6 +60,7 @@
     "babel-plugin-transform-es2015-modules-strip": "^0.1.0",
     "babel-preset-es2015": "^6.22.0",
     "clean-css-cli": "^4.0.0",
+    "concurrently": "^3.4.0",
     "eslint": "^3.15.0",
     "grunt": "^1.0.1",
     "grunt-babel": "^6.0.0",

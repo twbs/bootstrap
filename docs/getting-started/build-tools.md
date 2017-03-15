@@ -57,12 +57,11 @@ Learn more about using Jekyll by reading its [documentation](https://jekyllrb.co
 
 ### Live reloading during development
 
-Running the documentation locally with development convenience is using the [Hawkins Plugin](https://github.com/awood/hawkins) for Jekyll as well as a grunt watch task. To get started:
+Running the documentation locally with development convenience is using the [jekyll-livereload](https://github.com/RobertDeRose/jekyll-livereload) plugin for Jekyll as well as a grunt watch task. To get started:
 
 1.  Run through the [tooling setup](#tooling-setup) above to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
-2.  From the root `/bootstrap` directory, run `bundle exec jekyll liveserve` in the command line.
-3.  From the root `/bootstrap` directory, run `grunt watch` in the command line.
-4.  Open <http://localhost:9001> in your browser, and voilà.
+2.  From the root `/bootstrap` directory, run `npm run dev` in the command line.
+3.  Open <http://localhost:9001> in your browser, and voilà.
 
 ## Troubleshooting
 

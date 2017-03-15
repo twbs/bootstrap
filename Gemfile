@@ -8,5 +8,5 @@ group :development, :test do
 end
 
 group :jekyll_plugins do
-  gem 'hawkins'
+  gem 'jekyll-livereload'
 end

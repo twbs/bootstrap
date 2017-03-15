@@ -10,9 +10,6 @@ GEM
     eventmachine (1.2.3)
     ffi (1.9.17)
     forwardable-extended (2.6.0)
-    hawkins (2.0.5)
-      em-websocket (~> 0.5)
-      jekyll (~> 3.1)
     http_parser.rb (0.6.0)
     jekyll (3.4.0)
       addressable (~> 2.4)
@@ -25,6 +22,9 @@ GEM
       pathutil (~> 0.9)
       rouge (~> 1.7)
       safe_yaml (~> 1.0)
+    jekyll-livereload (0.2.2)
+      em-websocket (~> 0.5)
+      jekyll (~> 3.0)
     jekyll-redirect-from (0.12.1)
       jekyll (~> 3.3)
     jekyll-sass-converter (1.5.0)
@@ -57,8 +57,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  hawkins
   jekyll (~> 3.4.0)
+  jekyll-livereload
   jekyll-redirect-from (~> 0.12.1)
   jekyll-sitemap (~> 1.0.0)
   scss_lint (~> 0.52.0)
