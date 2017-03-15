@@ -20,6 +20,7 @@ $brand-warning: #f8ae00;
 $brand-danger:  #db2828;
 $brand-inverse: #444547;
 
+
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -28,12 +29,14 @@ $enable-flex:               true;
 $enable-shadows:            true;
 $enable-transitions:        true;
 
+
 // Body
 //
 // Settings for the `<body>` element.
 
 $body-bg:       $gray-lightest;
 $body-color:    $gray-dark;
+
 
 // Links
 //
@@ -43,3 +46,26 @@ $link-color:            $brand-info;
 $link-decoration:       none !default;
 $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
+
+
+// Sections
+//
+// Style layout sections.
+
+// $section-inner-max-width: map-get($container-max-width, xl); // TODO: link this to a main variable
+$section-inner-max-width: 100%;
+$section-padding-y: 1.5rem;
+$section-padding-x: 0;
+$section-border: rgba(0,0,0,0.2);
+
+$section-default-color: $brand-inverse;
+$section-default-bg: $gray-lightest;
+$section-inverse-color: white; // TODO: map to var
+$section-inverse-bg: $brand-inverse;
+$section-contrast-color: $brand-inverse;
+$section-contrast-bg: $gray-lighter;
+$section-primary-color: white; // TODO: map to var
+$section-primary-bg: $brand-primary;
+
+
+@import "custom/_sections";

@@ -1,0 +1,51 @@
+.section {
+  width: 100%;
+  height: auto;
+  padding: $section-padding-y $section-padding-x;
+
+  border-bottom: 1px solid $section-border;
+  background-color: $section-default-bg;
+}
+
+.section-unpadded {
+  padding: 0;
+}
+
+.section-background {
+  background-size: cover;
+  background-position: center;
+}
+
+.section-inner {
+  width: 100%;
+  max-width: $section-inner-max-width;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Section Parts
+.section-header {
+  margin-top: $section-padding-y;
+  margin-bottom: $section-padding-y;
+}
+
+.section-header:first-child {
+  margin-top: 0;
+}
+
+// Color Variants
+.section-inverse {
+  color: $section-inverse-color;
+  background-color: $section-inverse-bg;
+}
+
+.section-contrast {
+  color: $section-contrast-color;
+  background-color: $section-contrast-bg;
+}
+
+.section-primary {
+  color: $section-primary-color;
+  background-color: $section-primary-bg;
+}
