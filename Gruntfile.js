@@ -149,17 +149,13 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      src: {
-        files: '<%= concat.bootstrap.src %>',
-        tasks: ['babel:dev']
-      },
       sass: {
         files: 'scss/**/*.scss',
-        tasks: ['dist-css', 'docs']
+        tasks: ['sass-compile', 'docs-css', 'copy:docs']
       },
       docs: {
         files: 'docs/assets/scss/**/*.scss',
-        tasks: ['dist-css', 'docs']
+        tasks: ['sass-compile', 'docs-css', 'copy:docs']
       }
     },
 

@@ -55,6 +55,14 @@ Running our documentation locally requires the use of Jekyll, a decently flexibl
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
 
+### Live reloading during development
+
+Running the documentation locally with development convenience is using the [jekyll-livereload](https://github.com/RobertDeRose/jekyll-livereload) plugin for Jekyll as well as a grunt watch task. To get started:
+
+1.  Run through the [tooling setup](#tooling-setup) above to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
+2.  From the root `/bootstrap` directory, run `npm run dev` in the command line.
+3.  Open <http://localhost:9001> in your browser, and voilà.
+
 ## Troubleshooting
 
 Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
