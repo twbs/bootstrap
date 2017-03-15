@@ -190,3 +190,6 @@ $tag-hover-bg: $tag-bg;
 $tag-active-shadow: inset 0 0.2rem 0.2rem rgba(0,0,0,0.24);
 $tag-active-color: $brand-primary;
 $tag-active-bg: $tag-bg;
+
+
+@import "custom/_tags";
