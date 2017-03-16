@@ -200,6 +200,9 @@ module.exports = function (grunt) {
       sass: {
         command: 'npm run sass'
       },
+      'sass-theme': {
+        command: 'npm run sass-theme'
+      },
       'sass-docs': {
         command: 'npm run sass-docs'
       },
@@ -302,7 +305,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test-scss', ['exec:scss-lint'])
 
   // CSS distribution task.
-  grunt.registerTask('sass-compile', ['exec:sass', 'exec:sass-docs'])
+  grunt.registerTask('sass-compile', ['exec:sass-theme', 'exec:sass-docs'])
 
   grunt.registerTask('dist-css', ['sass-compile', 'exec:postcss', 'exec:clean-css', 'exec:clean-css-docs'])
 

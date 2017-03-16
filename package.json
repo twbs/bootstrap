@@ -28,6 +28,7 @@
     "postcss": "postcss --config grunt/postcss.js --replace dist/css/*.css",
     "postcss-docs": "postcss --config grunt/postcss.js --no-map --replace docs/assets/css/docs.min.css && postcss --config grunt/postcss.js --no-map --replace docs/examples/**/*.css",
     "sass": "node-sass --output-style expanded --source-map true --precision 6 scss/bootstrap.scss dist/css/bootstrap.css && node-sass --output-style expanded --source-map true --precision 6 scss/bootstrap-grid.scss dist/css/bootstrap-grid.css && node-sass --output-style expanded --source-map true --precision 6 scss/bootstrap-reboot.scss dist/css/bootstrap-reboot.css",
+    "sass-theme": "node-sass --output-style expanded --source-map true --precision 6 scss/joblocal.scss dist/css/joblocal.css",
     "sass-docs": "node-sass --output-style expanded --source-map true --precision 6 docs/assets/scss/docs.scss docs/assets/css/docs.min.css",
     "scss-lint": "bundle exec scss-lint --config scss/.scss-lint.yml scss/*.scss",
     "scss-lint-docs": "bundle exec scss-lint --config scss/.scss-lint.yml --exclude docs/assets/scss/docs.scss docs/assets/scss/*.scss",
