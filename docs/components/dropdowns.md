@@ -476,6 +476,96 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 </div>
 {% endexample %}
 
+## Menu items with media
+
+{% example html %}
+<div class="dropdown-menu">
+  <a class="dropdown-item dropdown-item-media" href="#">
+    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+    <div class="dropdown-item-title">Heading</div>
+  </a>
+  <a class="dropdown-item dropdown-item-media" href="#">
+    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+    <div class="dropdown-item-title">Heading</div>
+  </a>
+  <a class="dropdown-item dropdown-item-media" href="#">
+    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+    <div class="dropdown-item-title">Heading</div>
+  </a>
+</div>
+{% endexample %}
+
+## Menu items with subtitles
+
+{% example html %}
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="#">
+    <div class="dropdown-item-title">Heading</div>
+    <div class="dropdown-item-subtitle">Subheading</div>
+  </a>
+  <a class="dropdown-item" href="#">
+    <div class="dropdown-item-title">Heading</div>
+    <div class="dropdown-item-subtitle">Subheading</div>
+  </a>
+  <a class="dropdown-item" href="#">
+    <div class="dropdown-item-title">Heading</div>
+    <div class="dropdown-item-subtitle">Subheading</div>
+  </a>
+</div>
+{% endexample %}
+
+## Menu items with media and subtitles
+
+{% example html %}
+<div class="dropdown-menu">
+  <a class="dropdown-item dropdown-item-media" href="#">
+    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+    <div>
+      <div class="dropdown-item-title">Heading</div>
+      <div class="dropdown-item-subtitle">Subheading</div>
+    </div>
+  </a>
+  <a class="dropdown-item dropdown-item-media" href="#">
+    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+    <div>
+      <div class="dropdown-item-title">Heading</div>
+      <div class="dropdown-item-subtitle">Subheading</div>
+    </div>
+  </a>
+  <a class="dropdown-item dropdown-item-media" href="#">
+    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+    <div>
+      <div class="dropdown-item-title">Heading</div>
+      <div class="dropdown-item-subtitle">Subheading</div>
+    </div>
+  </a>
+</div>
+{% endexample %}
+
+## Inverse menu
+
+{% example html %}
+<div class="dropdown-menu dropdown-menu-inverse">
+  <a class="dropdown-item" href="#">
+    Regular link
+  </a>
+  <a class="dropdown-item" href="#">
+    Another link
+  </a>
+  <a class="dropdown-item" href="#">
+    One more link
+  </a>
+  <div class="dropdown-divider"></div>
+  <h6 class="dropdown-header">Item states</h6>
+  <a class="dropdown-item disabled" href="#">
+    Disabled link
+  </a>
+  <a class="dropdown-item active" href="#">
+    Active link
+  </a>
+</div>
+{% endexample %}
+
 ## Usage
 
 Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent list item.
