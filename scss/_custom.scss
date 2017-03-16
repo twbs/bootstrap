@@ -43,3 +43,28 @@ $link-color:            $brand-info;
 $link-decoration:       none !default;
 $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
+
+
+// Dropdowns
+//
+// Dropdown menu container and contents.
+
+$dropdown-min-width:          15rem;
+$dropdown-padding-y:          0;
+
+$dropdown-inverse-bg:         $brand-inverse;
+$dropdown-inverse-divider-bg: lighten($dropdown-inverse-bg, 10%);
+
+$dropdown-inverse-header-color: $gray;
+
+$dropdown-inverse-link-color:       $gray-lightest;
+$dropdown-inverse-link-hover-color: lighten($gray-lightest, 10%);
+$dropdown-inverse-link-hover-bg:    $brand-primary;
+
+$dropdown-inverse-link-active-color:  $gray-lightest;
+$dropdown-inverse-link-active-bg:     $brand-primary;
+
+$dropdown-inverse-link-disabled-color: lighten($dropdown-inverse-bg, 15%);
+
+$dropdown-item-padding-x:     .75rem;
+$dropdown-item-padding-y:     .5rem;
