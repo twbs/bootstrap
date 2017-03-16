@@ -47,12 +47,15 @@ html {
 
 body {
   margin: 0; // 1
-  font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-base;
-  line-height: $line-height-base;
   color: $body-color;
   background-color: $body-bg; // 2
+}
+
+body, input, button, select, textarea {
+  font-family: $font-family-base;
+  line-height: $line-height-base;
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
