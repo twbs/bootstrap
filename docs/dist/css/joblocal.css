@@ -8119,8 +8119,8 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 
 .media-body,
 .media-image {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 /*# sourceMappingURL=joblocal.css.map */
