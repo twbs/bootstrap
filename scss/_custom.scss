@@ -7,12 +7,26 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
+// Start with assigning color names to specific hex values.
+$white:  #fff !default;
+$black:  #000 !default;
+$red:    #d9534f !default;
+$orange: #f0ad4e !default;
+$yellow: #ffd500 !default;
+$green:  #5cb85c !default;
+$blue:   #0275d8 !default;
+$teal:   #5bc0de !default;
+$pink:   #ff5b77 !default;
+$purple: #613d7c !default;
+
+// Create grayscale
 $gray-dark:     #444547;
 $gray:          #969696;
 $gray-light:    #cccccc;
 $gray-lighter:  #d7d7d7;
 $gray-lightest: #f6f6f6;
 
+// Reassign color vars to semantic color scheme
 $brand-primary: #f8ae00;
 $brand-success: #21ba45;
 $brand-info:    #2185d0;
@@ -20,13 +34,19 @@ $brand-warning: #f8ae00;
 $brand-danger:  #db2828;
 $brand-inverse: #444547;
 
+
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
-$enable-flex:               true;
+$enable-rounded:            true !default;
 $enable-shadows:            true;
-$enable-transitions:        true;
+$enable-gradients:          false !default;
+$enable-transitions:        true !default;
+$enable-hover-media-query:  false !default;
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
+
 
 // Body
 //
@@ -34,6 +54,7 @@ $enable-transitions:        true;
 
 $body-bg:       $gray-lightest;
 $body-color:    $gray-dark;
+
 
 // Links
 //
@@ -45,26 +66,100 @@ $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
 
 
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer:   1rem !default;
+$spacer-x: $spacer !default;
+$spacer-y: $spacer !default;
+$spacers: (
+  0: (
+    x: 0,
+    y: 0
+  ),
+  1: (
+    x: ($spacer-x * .25),
+    y: ($spacer-y * .25)
+  ),
+  2: (
+    x: ($spacer-x * .5),
+    y: ($spacer-y * .5)
+  ),
+  3: (
+    x: $spacer-x,
+    y: $spacer-y
+  ),
+  4: (
+    x: ($spacer-x * 1.5),
+    y: ($spacer-y * 1.5)
+  ),
+  5: (
+    x: ($spacer-x * 3),
+    y: ($spacer-y * 3)
+  )
+) !default;
+$border-width: 1px !default;
+
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$line-height-lg:         (4 / 3) !default;
+$line-height-sm:         1.5 !default;
+
+$border-radius:          .25rem !default;
+$border-radius-lg:       .3rem !default;
+$border-radius-sm:       .2rem !default;
+
+$component-active-color: $white !default;
+$component-active-bg:    $brand-primary !default;
+$component-inverse-bg:   $brand-inverse;
+
+$caret-width:            .3em !default;
+
+$transition-base:        all .2s ease-in-out !default;
+$transition-fade:        opacity .15s linear !default;
+$transition-collapse:    height .35s ease !default;
+
+
 // Dropdowns
 //
 // Dropdown menu container and contents.
 
-$dropdown-min-width:          15rem;
-$dropdown-padding-y:          0;
+$dropdown-min-width:              15rem;
+$dropdown-padding-y:              0;
+$dropdown-margin-top:             .125rem !default;
+$dropdown-bg:                     $white !default;
+$dropdown-border-color:           rgba($black,.15) !default;
+$dropdown-border-width:           $border-width !default;
+$dropdown-divider-bg:             $gray-lighter !default;
+$dropdown-box-shadow:             0 .5rem 1rem rgba($black,.175) !default;
 
-$dropdown-inverse-bg:         $brand-inverse;
-$dropdown-inverse-divider-bg: lighten($dropdown-inverse-bg, 10%);
+$dropdown-link-color:             $gray-dark !default;
+$dropdown-link-hover-color:       darken($gray-dark, 5%) !default;
+$dropdown-link-hover-bg:          $gray-lightest !default;
 
-$dropdown-inverse-header-color: $gray;
+$dropdown-link-active-color:      $component-active-color !default;
+$dropdown-link-active-bg:         $component-active-bg !default;
 
-$dropdown-inverse-link-color:       $gray-lightest;
-$dropdown-inverse-link-hover-color: lighten($gray-lightest, 10%);
-$dropdown-inverse-link-hover-bg:    $brand-primary;
+$dropdown-link-disabled-color:    $gray-light !default;
 
-$dropdown-inverse-link-active-color:  $gray-lightest;
-$dropdown-inverse-link-active-bg:     $brand-primary;
+$dropdown-item-padding-x:         .75rem;
+$dropdown-item-padding-y:         .5rem;
 
-$dropdown-inverse-link-disabled-color: lighten($dropdown-inverse-bg, 15%);
+$dropdown-header-color:           $gray-light !default;
 
-$dropdown-item-padding-x:     .75rem;
-$dropdown-item-padding-y:     .5rem;
+$dropdown-inverse-divider-bg:           lighten($component-inverse-bg, 10%);
+$dropdown-inverse-header-color:         $gray;
+
+$dropdown-inverse-link-color:           $gray-lightest;
+$dropdown-inverse-link-hover-color:     lighten($gray-lightest, 10%);
+$dropdown-inverse-link-hover-bg:        $component-active-bg;
+
+$dropdown-inverse-link-active-color:    $gray-lightest;
+$dropdown-inverse-link-active-bg:       $component-active-bg;
+$dropdown-inverse-link-disabled-color:  lighten($component-inverse-bg, 15%);
