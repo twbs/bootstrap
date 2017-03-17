@@ -14,19 +14,11 @@
   text-transform: uppercase;
 }
 
-.dropdown-item-media {
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-}
-
 .dropdown-item-image {
   margin-right: .5rem;
 }
 
 .dropdown-menu-inverse {
-  background-color: $dropdown-inverse-bg;
-
   .dropdown-header {
     color: $dropdown-inverse-header-color;
   }
