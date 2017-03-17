@@ -21,7 +21,7 @@ $purple: #613d7c !default;
 
 $gray-dark:     #444547;
 $gray:          #969696;
-$gray-light:    #cccccc;
+$gray-light:    #ccc;
 $gray-lighter:  #d7d7d7;
 $gray-lightest: #f6f6f6;
 
@@ -36,9 +36,9 @@ $brand-inverse: #444547;
 //
 // Standardized box-shadows to be used in cards/tiles, etc.
 
-$box-shadow-default: 0 0.3rem 0.5rem rgba(0,0,0,0.12);
-$box-shadow-soft: 0 0.05rem 0.1rem rgba(0,0,0,0.20);
-$box-shadow-large: 0 0.5rem 1.25rem rgba(0,0,0,0.20);
+$box-shadow-default: 0 .3rem .5rem rgba(0,0,0,.12);
+$box-shadow-soft: 0 .05rem .1rem rgba(0,0,0,.20);
+$box-shadow-large: 0 .5rem 1.25rem rgba(0,0,0,.20);
 
 // Options
 //
@@ -173,23 +173,23 @@ $list-inline-padding: 5px !default;
 // Style tags.
 
 $tag-padding-x: 1em; //em because we want to use the font-size element, not the root font size as base
-$tag-padding-y: 0.5em; //em because we want to use the font-size element, not the root font size as base
+$tag-padding-y: .5em; //em because we want to use the font-size element, not the root font size as base
 $tag-font-size: $font-size-base;
 $tag-line-height: $line-height-base;
 $tag-box-shadow: $box-shadow-default;
 $tag-color: $body-color;
-$tag-bg: white;
+$tag-bg: #fff;
 
 $tag-group-spacing-x: $spacer-x;
 $tag-group-spacing-y: $tag-group-spacing-x;
 
-$tag-hover-shadow: 0 0.35rem 0.5rem rgba(0,0,0,0.16);
+$tag-hover-shadow: 0 .35rem .5rem rgba(0,0,0,.16);
 $tag-hover-color: $brand-primary;
 $tag-hover-bg: $tag-bg;
 
-$tag-active-shadow: inset 0 0.2rem 0.2rem rgba(0,0,0,0.24);
+$tag-active-shadow: inset 0 .2rem .2rem rgba(0,0,0,.24);
 $tag-active-color: $brand-primary;
 $tag-active-bg: $tag-bg;
 
 
-@import "custom/_tags";
+@import "custom/tags";
