@@ -480,17 +480,29 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 
 {% example html %}
 <div class="dropdown-menu">
-  <a class="dropdown-item dropdown-item-media" href="#">
-    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
-    <div class="dropdown-item-title">Heading</div>
+  <a class="dropdown-item" href="#">
+    <div class="media">
+      <img data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+      </div>
+    </div>
   </a>
-  <a class="dropdown-item dropdown-item-media" href="#">
-    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
-    <div class="dropdown-item-title">Heading</div>
+  <a class="dropdown-item" href="#">
+    <div class="media">
+      <img data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+      </div>
+    </div>
   </a>
-  <a class="dropdown-item dropdown-item-media" href="#">
-    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
-    <div class="dropdown-item-title">Heading</div>
+  <a class="dropdown-item" href="#">
+    <div class="media">
+      <img data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+      </div>
+    </div>
   </a>
 </div>
 {% endexample %}
@@ -518,25 +530,31 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 
 {% example html %}
 <div class="dropdown-menu">
-  <a class="dropdown-item dropdown-item-media" href="#">
-    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
-    <div>
-      <div class="dropdown-item-title">Heading</div>
-      <div class="dropdown-item-subtitle">Subheading</div>
+  <a class="dropdown-item" href="#">
+    <div class="media">
+      <img data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+        <div class="dropdown-item-subtitle">Subheading</div>
+      </div>
     </div>
   </a>
-  <a class="dropdown-item dropdown-item-media" href="#">
-    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
-    <div>
-      <div class="dropdown-item-title">Heading</div>
-      <div class="dropdown-item-subtitle">Subheading</div>
+  <a class="dropdown-item" href="#">
+    <div class="media">
+      <img data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+        <div class="dropdown-item-subtitle">Subheading</div>
+      </div>
     </div>
   </a>
-  <a class="dropdown-item dropdown-item-media" href="#">
-    <img class="dropdown-item-image" data-src="holder.js/40x40" alt="Generic placeholder image">
-    <div>
-      <div class="dropdown-item-title">Heading</div>
-      <div class="dropdown-item-subtitle">Subheading</div>
+  <a class="dropdown-item" href="#">
+    <div class="media">
+      <img data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+        <div class="dropdown-item-subtitle">Subheading</div>
+      </div>
     </div>
   </a>
 </div>
@@ -545,7 +563,7 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 ## Inverse menu
 
 {% example html %}
-<div class="dropdown-menu dropdown-menu-inverse">
+<div class="dropdown-menu dropdown-menu-inverse bg-inverse">
   <a class="dropdown-item" href="#">
     Regular link
   </a>
