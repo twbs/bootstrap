@@ -56,6 +56,11 @@ a.tag:after {
   top: $tag-padding-y;
   right: $tag-padding-x;
 
-  font-size: $tag-font-size;
+  font-size: inherit;
   line-height: $tag-line-height;
+}
+
+// Sizes
+.tag-sm {
+  font-size: $tag-sm-font-size;
 }

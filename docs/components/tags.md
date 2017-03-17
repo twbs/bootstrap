@@ -44,3 +44,15 @@ A `tag-group` should consist of related `tags`.
   <a href="#" class="tag">Berlin</a>
 </div>
 {% endexample %}
+
+## Sizes
+
+Fancy smaller tags? Add `.tag-sm` for a smaller version.
+
+{% example html %}
+<div class="tag-group">
+  <a href="#" class="tag tag-sm">Kleinhüpfigen</a>
+  <a href="#" class="tag tag-sm">Hinterdupfing</a>
+  <a href="#" class="tag tag-sm">Ecking</a>
+</div>
+{% endexample %}

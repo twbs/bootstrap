@@ -50,8 +50,12 @@ a.tag:after {
   position: absolute;
   top: 0.5em;
   right: 1em;
-  font-size: 1rem;
+  font-size: inherit;
   line-height: 1.5;
+}
+
+.tag-sm {
+  font-size: 0.875rem;
 }
 
 @media print {
