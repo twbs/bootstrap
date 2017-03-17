@@ -163,3 +163,10 @@ $dropdown-inverse-link-hover-bg:        $component-active-bg;
 $dropdown-inverse-link-active-color:    $gray-lightest;
 $dropdown-inverse-link-active-bg:       $component-active-bg;
 $dropdown-inverse-link-disabled-color:  lighten($component-inverse-bg, 15%);
+
+
+// Media
+//
+// Handles Media Object
+
+$media-spacing-x: $spacer * .5;
