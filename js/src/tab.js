@@ -25,34 +25,26 @@ const Tab = (($) => {
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
 
-  const Event = {
-    HIDE           : `hide${EVENT_KEY}`,
-    HIDDEN         : `hidden${EVENT_KEY}`,
-    SHOW           : `show${EVENT_KEY}`,
-    SHOWN          : `shown${EVENT_KEY}`,
-    CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
-  }
+  const EVENT_HIDE = `hide${EVENT_KEY}`
+  const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+  const EVENT_SHOW = `show${EVENT_KEY}`
+  const EVENT_SHOWN = `shown${EVENT_KEY}`
+  const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-  const ClassName = {
-    DROPDOWN_MENU : 'dropdown-menu',
-    ACTIVE        : 'active',
-    DISABLED      : 'disabled',
-    FADE          : 'fade',
-    SHOW          : 'show'
-  }
+  const CLASS_NAME_DROPDOWN_MENU = 'dropdown-menu'
+  const CLASS_NAME_ACTIVE = 'active'
+  const CLASS_NAME_DISABLED = 'disabled'
+  const CLASS_NAME_FADE = 'fade'
+  const CLASS_NAME_SHOW = 'show'
 
-  const Selector = {
-    A                     : 'a',
-    LI                    : 'li',
-    DROPDOWN              : '.dropdown',
-    LIST                  : 'ul:not(.dropdown-menu), ol:not(.dropdown-menu), nav:not(.dropdown-menu)',
-    FADE_CHILD            : '> .nav-item .fade, > .fade',
-    ACTIVE                : '.active',
-    ACTIVE_CHILD          : '> .nav-item > .active, > .active',
-    DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"]',
-    DROPDOWN_TOGGLE       : '.dropdown-toggle',
-    DROPDOWN_ACTIVE_CHILD : '> .dropdown-menu .active'
-  }
+  const SELECTOR_DROPDOWN = '.dropdown'
+  const SELECTOR_LIST = 'ul:not(.dropdown-menu), ol:not(.dropdown-menu), nav:not(.dropdown-menu)'
+  const SELECTOR_FADE_CHILD = '> .nav-item .fade, > .fade'
+  const SELECTOR_ACTIVE = '.active'
+  const SELECTOR_ACTIVE_CHILD = '> .nav-item > .active, > .active'
+  const SELECTOR_DATA_TOGGLE = '[data-toggle="tab"], [data-toggle="pill"]'
+  const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
+  const SELECTOR_DROPDOWN_ACTIVE_CHILD = '> .dropdown-menu .active'
 
 
   /**
@@ -80,26 +72,26 @@ const Tab = (($) => {
     show() {
       if (this._element.parentNode &&
           this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-          $(this._element).hasClass(ClassName.ACTIVE) ||
-          $(this._element).hasClass(ClassName.DISABLED)) {
+          $(this._element).hasClass(CLASS_NAME_ACTIVE) ||
+          $(this._element).hasClass(CLASS_NAME_DISABLED)) {
         return
       }
 
       let target
       let previous
-      const listElement = $(this._element).closest(Selector.LIST)[0]
+      const listElement = $(this._element).closest(SELECTOR_LIST)[0]
       const selector    = Util.getSelectorFromElement(this._element)
 
       if (listElement) {
-        previous = $.makeArray($(listElement).find(Selector.ACTIVE))
+        previous = $.makeArray($(listElement).find(SELECTOR_ACTIVE))
         previous = previous[previous.length - 1]
       }
 
-      const hideEvent = $.Event(Event.HIDE, {
+      const hideEvent = $.Event(EVENT_HIDE, {
         relatedTarget: this._element
       })
 
-      const showEvent = $.Event(Event.SHOW, {
+      const showEvent = $.Event(EVENT_SHOW, {
         relatedTarget: previous
       })
 
@@ -124,11 +116,11 @@ const Tab = (($) => {
       )
 
       const complete = () => {
-        const hiddenEvent = $.Event(Event.HIDDEN, {
+        const hiddenEvent = $.Event(EVENT_HIDDEN, {
           relatedTarget: this._element
         })
 
-        const shownEvent = $.Event(Event.SHOWN, {
+        const shownEvent = $.Event(EVENT_SHOWN, {
           relatedTarget: previous
         })
 
@@ -152,11 +144,11 @@ const Tab = (($) => {
     // private
 
     _activate(element, container, callback) {
-      const active          = $(container).find(Selector.ACTIVE_CHILD)[0]
+      const active          = $(container).find(SELECTOR_ACTIVE_CHILD)[0]
       const isTransitioning = callback
         && Util.supportsTransitionEnd()
-        && (active && $(active).hasClass(ClassName.FADE)
-           || Boolean($(container).find(Selector.FADE_CHILD)[0]))
+        && (active && $(active).hasClass(CLASS_NAME_FADE)
+           || Boolean($(container).find(SELECTOR_FADE_CHILD)[0]))
 
       const complete = () => this._transitionComplete(
         element,
@@ -175,41 +167,41 @@ const Tab = (($) => {
       }
 
       if (active) {
-        $(active).removeClass(ClassName.SHOW)
+        $(active).removeClass(CLASS_NAME_SHOW)
       }
     }
 
     _transitionComplete(element, active, isTransitioning, callback) {
       if (active) {
-        $(active).removeClass(ClassName.ACTIVE)
+        $(active).removeClass(CLASS_NAME_ACTIVE)
 
         const dropdownChild = $(active.parentNode).find(
-          Selector.DROPDOWN_ACTIVE_CHILD
+          SELECTOR_DROPDOWN_ACTIVE_CHILD
         )[0]
 
         if (dropdownChild) {
-          $(dropdownChild).removeClass(ClassName.ACTIVE)
+          $(dropdownChild).removeClass(CLASS_NAME_ACTIVE)
         }
 
         active.setAttribute('aria-expanded', false)
       }
 
-      $(element).addClass(ClassName.ACTIVE)
+      $(element).addClass(CLASS_NAME_ACTIVE)
       element.setAttribute('aria-expanded', true)
 
       if (isTransitioning) {
         Util.reflow(element)
-        $(element).addClass(ClassName.SHOW)
+        $(element).addClass(CLASS_NAME_SHOW)
       } else {
-        $(element).removeClass(ClassName.FADE)
+        $(element).removeClass(CLASS_NAME_FADE)
       }
 
       if (element.parentNode &&
-          $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
+          $(element.parentNode).hasClass(CLASS_NAME_DROPDOWN_MENU)) {
 
-        const dropdownElement = $(element).closest(Selector.DROPDOWN)[0]
+        const dropdownElement = $(element).closest(SELECTOR_DROPDOWN)[0]
         if (dropdownElement) {
-          $(dropdownElement).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
+          $(dropdownElement).find(SELECTOR_DROPDOWN_TOGGLE).addClass(CLASS_NAME_ACTIVE)
         }
 
         element.setAttribute('aria-expanded', true)
@@ -252,7 +244,7 @@ const Tab = (($) => {
    */
 
   $(document)
-    .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+    .on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
       event.preventDefault()
       Tab._jQueryInterface.call($(this), 'show')
     })

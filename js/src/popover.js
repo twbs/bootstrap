@@ -36,28 +36,11 @@ const Popover = (($) => {
     content : '(string|element|function)'
   })
 
-  const ClassName = {
-    FADE : 'fade',
-    SHOW : 'show'
-  }
+  const CLASS_NAME_FADE = 'fade'
+  const CLASS_NAME_SHOW = 'show'
 
-  const Selector = {
-    TITLE   : '.popover-title',
-    CONTENT : '.popover-content'
-  }
-
-  const Event = {
-    HIDE       : `hide${EVENT_KEY}`,
-    HIDDEN     : `hidden${EVENT_KEY}`,
-    SHOW       : `show${EVENT_KEY}`,
-    SHOWN      : `shown${EVENT_KEY}`,
-    INSERTED   : `inserted${EVENT_KEY}`,
-    CLICK      : `click${EVENT_KEY}`,
-    FOCUSIN    : `focusin${EVENT_KEY}`,
-    FOCUSOUT   : `focusout${EVENT_KEY}`,
-    MOUSEENTER : `mouseenter${EVENT_KEY}`,
-    MOUSELEAVE : `mouseleave${EVENT_KEY}`
-  }
+  const SELECTOR_TITLE = '.popover-title'
+  const SELECTOR_CONTENT = '.popover-content'
 
 
   /**
@@ -87,8 +70,8 @@ const Popover = (($) => {
       return DATA_KEY
     }
 
-    static get Event() {
-      return Event
+    static getEvent(eventName) {
+      return `${eventName}${EVENT_KEY}`
     }
 
     static get EVENT_KEY() {
@@ -114,10 +97,10 @@ const Popover = (($) => {
       const $tip = $(this.getTipElement())
 
       // we use append for html objects to maintain js events
-      this.setElementContent($tip.find(Selector.TITLE), this.getTitle())
-      this.setElementContent($tip.find(Selector.CONTENT), this._getContent())
+      this.setElementContent($tip.find(SELECTOR_TITLE), this.getTitle())
+      this.setElementContent($tip.find(SELECTOR_CONTENT), this._getContent())
 
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
+      $tip.removeClass(`${CLASS_NAME_FADE} ${CLASS_NAME_SHOW}`)
 
       this.cleanupTether()
     }

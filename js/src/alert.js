@@ -25,22 +25,15 @@ const Alert = (($) => {
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
 
-  const Selector = {
-    DISMISS : '[data-dismiss="alert"]'
-  }
+  const SELECTOR_DISMISS = '[data-dismiss="alert"]'
 
-  const Event = {
-    CLOSE          : `close${EVENT_KEY}`,
-    CLOSED         : `closed${EVENT_KEY}`,
-    CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
-  }
+  const EVENT_CLOSE = `close${EVENT_KEY}`
+  const EVENT_CLOSED = `closed${EVENT_KEY}`
+  const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-  const ClassName = {
-    ALERT : 'alert',
-    FADE  : 'fade',
-    SHOW  : 'show'
-  }
-
+  const CLASS_NAME_ALERT = 'alert'
+  const CLASS_NAME_FADE = 'fade'
+  const CLASS_NAME_SHOW = 'show'
 
   /**
    * ------------------------------------------------------------------------
@@ -94,24 +87,24 @@ const Alert = (($) => {
       }
 
       if (!parent) {
-        parent = $(element).closest(`.${ClassName.ALERT}`)[0]
+        parent = $(element).closest(`.${CLASS_NAME_ALERT}`)[0]
       }
 
       return parent
     }
 
     _triggerCloseEvent(element) {
-      const closeEvent = $.Event(Event.CLOSE)
+      const closeEvent = $.Event(EVENT_CLOSE)
 
       $(element).trigger(closeEvent)
       return closeEvent
     }
 
     _removeElement(element) {
-      $(element).removeClass(ClassName.SHOW)
+      $(element).removeClass(CLASS_NAME_SHOW)
 
       if (!Util.supportsTransitionEnd() ||
-          !$(element).hasClass(ClassName.FADE)) {
+          !$(element).hasClass(CLASS_NAME_FADE)) {
         this._destroyElement(element)
         return
       }
@@ -124,7 +117,7 @@ const Alert = (($) => {
     _destroyElement(element) {
       $(element)
         .detach()
-        .trigger(Event.CLOSED)
+        .trigger(EVENT_CLOSED)
         .remove()
     }
 
@@ -167,8 +160,8 @@ const Alert = (($) => {
    */
 
   $(document).on(
-    Event.CLICK_DATA_API,
-    Selector.DISMISS,
+    EVENT_CLICK_DATA_API,
+    SELECTOR_DISMISS,
     Alert._handleDismiss(new Alert())
   )
 
