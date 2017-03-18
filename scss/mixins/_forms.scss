@@ -27,8 +27,8 @@
   // Set validation states also for addons
   .input-group-addon {
     color: $color;
-    border-color: $color;
     background-color: lighten($color, 40%);
+    border-color: $color;
   }
 }
 
