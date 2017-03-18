@@ -45,10 +45,10 @@ var Tab = function ($) {
     A: 'a',
     LI: 'li',
     DROPDOWN: '.dropdown',
-    LIST: 'ul:not(.dropdown-menu), ol:not(.dropdown-menu), nav:not(.dropdown-menu)',
-    FADE_CHILD: '> .nav-item .fade, > .fade',
+    LIST: 'ul:not(.dropdown-menu), ol:not(.dropdown-menu), nav:not(.dropdown-menu), .list-group:not(.dropdown-menu)',
+    FADE_CHILD: '> .nav-item .fade, > .list-group-item .fade, > .fade',
     ACTIVE: '.active',
-    ACTIVE_CHILD: '> .nav-item > .active, > .active',
+    ACTIVE_CHILD: '> .nav-item > .active, > .list-group-item > .active, > .active',
     DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"]',
     DROPDOWN_TOGGLE: '.dropdown-toggle',
     DROPDOWN_ACTIVE_CHILD: '> .dropdown-menu .active'
@@ -163,6 +163,9 @@ var Tab = function ($) {
     Tab.prototype._transitionComplete = function _transitionComplete(element, active, isTransitioning, callback) {
       if (active) {
         $(active).removeClass(ClassName.ACTIVE);
+        if ($(active).hasClass('list-group-item')) {
+          $(active).find('a.nav-link').removeClass(ClassName.ACTIVE);
+        }
 
         var dropdownChild = $(active.parentNode).find(Selector.DROPDOWN_ACTIVE_CHILD)[0];
 
@@ -174,6 +177,9 @@ var Tab = function ($) {
       }
 
       $(element).addClass(ClassName.ACTIVE);
+      if ($(element.parentNode).hasClass('list-group-item')) {
+        $(element.parentNode).addClass(ClassName.ACTIVE);
+      }
       element.setAttribute('aria-expanded', true);
 
       if (isTransitioning) {
