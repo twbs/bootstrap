@@ -318,6 +318,7 @@ $table-sm-cell-padding:         .3rem !default;
 $table-bg:                      transparent !default;
 
 $table-inverse-bg:              $gray-dark !default;
+$table-inverse-border:          lighten($gray-dark, 7.5%) !default;
 $table-inverse-color:           $body-bg !default;
 
 $table-bg-accent:               rgba($black,.05) !default;
