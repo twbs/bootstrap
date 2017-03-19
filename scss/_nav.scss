@@ -19,19 +19,12 @@
     text-decoration: none;
   }
 
-  &.active,
-  .show & {
-    color: $nav-pills-active-link-color;
-    background-color: $nav-pills-active-link-bg;
-  }
-
   // Disabled state lightens text and removes hover/tab effects
   &.disabled {
     color: $nav-disabled-link-color;
     cursor: $cursor-disabled;
   }
 }
-
 
 //
 // Tabs
@@ -87,6 +80,12 @@
 .nav-pills {
   .nav-link {
     @include border-radius($nav-pills-border-radius);
+
+    &.active,
+    .show & {
+      color: $nav-pills-active-link-color;
+      background-color: $nav-pills-active-link-bg;
+    }
   }
 }
 
