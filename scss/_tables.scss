@@ -125,7 +125,7 @@
   th,
   td,
   thead th {
-    border-color: $body-bg;
+    border-color: $table-inverse-border;
   }
 
   &.table-bordered {
