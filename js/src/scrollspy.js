@@ -133,12 +133,15 @@ const ScrollSpy = (($) => {
             target = $(targetSelector)[0]
           }
 
-          if (target && (target.offsetWidth || target.offsetHeight)) {
-            // todo (fat): remove sketch reliance on jQuery position/offset
-            return [
-              $(target)[offsetMethod]().top + offsetBase,
-              targetSelector
-            ]
+          if (target) {
+            const targetBCR = target.getBoundingClientRect()
+            if (targetBCR.width || targetBCR.height) {
+              // todo (fat): remove sketch reliance on jQuery position/offset
+              return [
+                $(target)[offsetMethod]().top + offsetBase,
+                targetSelector
+              ]
+            }
           }
           return null
         })
@@ -198,7 +201,7 @@ const ScrollSpy = (($) => {
 
     _getOffsetHeight() {
       return this._scrollElement === window ?
-          window.innerHeight : this._scrollElement.offsetHeight
+          window.innerHeight : this._scrollElement.getBoundingClientRect().height
     }
 
     _process() {

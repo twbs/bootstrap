@@ -2,67 +2,58 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bootstrap Plugin Test Suite</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- jQuery -->
     <script src="../../docs/assets/js/vendor/jquery-slim.min.js"></script>
     <script src="../../docs/assets/js/vendor/tether.min.js"></script>
-    <script>
-      // Disable jQuery event aliases to ensure we don't accidentally use any of them
-      (function () {
-        var eventAliases = [
-          'blur',
-          'focus',
-          'focusin',
-          'focusout',
-          'load',
-          'resize',
-          'scroll',
-          'unload',
-          'click',
-          'dblclick',
-          'mousedown',
-          'mouseup',
-          'mousemove',
-          'mouseover',
-          'mouseout',
-          'mouseenter',
-          'mouseleave',
-          'change',
-          'select',
-          'submit',
-          'keydown',
-          'keypress',
-          'keyup',
-          'error',
-          'contextmenu',
-          'hover',
-          'bind',
-          'unbind',
-          'delegate',
-          'undelegate'
-        ]
-        for (var i = 0; i < eventAliases.length; i++) {
-          var eventAlias = eventAliases[i]
-          $.fn[eventAlias] = function () {
-            throw new Error('Using the ".' + eventAlias + '()" method is not allowed, so that Bootstrap can be compatible with custom jQuery builds which exclude the "event aliases" module that defines said method. See https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js')
-          }
-        }
-      })()
-    </script>
 
     <!-- QUnit -->
     <link rel="stylesheet" href="vendor/qunit.css" media="screen">
     <script src="vendor/qunit.js"></script>
+
     <script>
-      // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
-      var log = []
+      // Disable jQuery event aliases to ensure we don't accidentally use any of them
+      [
+        'blur',
+        'focus',
+        'focusin',
+        'focusout',
+        'resize',
+        'scroll',
+        'click',
+        'dblclick',
+        'mousedown',
+        'mouseup',
+        'mousemove',
+        'mouseover',
+        'mouseout',
+        'mouseenter',
+        'mouseleave',
+        'change',
+        'select',
+        'submit',
+        'keydown',
+        'keypress',
+        'keyup',
+        'contextmenu'
+      ].forEach(function(eventAlias) {
+        $.fn[eventAlias] = function() {
+          throw new Error('Using the ".' + eventAlias + '()" method is not allowed, so that Bootstrap can be compatible with custom jQuery builds which exclude the "event aliases" module that defines said method. See https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js')
+        }
+      })
+
       // Require assert.expect in each test
       QUnit.config.requireExpects = true
-      QUnit.done(function (testResults) {
+
+      // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
+      var log = []
+      var testName
+
+      QUnit.done(function(testResults) {
         var tests = []
-        for (var i = 0, len = log.length; i < len; i++) {
+        for (var i = 0; i < log.length; i++) {
           var details = log[i]
           tests.push({
             name: details.name,
@@ -77,9 +68,8 @@
         window.global_test_results = testResults
       })
 
-      QUnit.testStart(function (testDetails) {
-        $(window).scrollTop(0)
-        QUnit.log(function (details) {
+      QUnit.testStart(function(testDetails) {
+        QUnit.log(function(details) {
           if (!details.result) {
             details.name = testDetails.name
             log.push(details)
@@ -89,51 +79,23 @@
 
       // Cleanup
       QUnit.testDone(function () {
-        $('#qunit-fixture').empty()
         $('#modal-test, .modal-backdrop').remove()
       })
 
       // Display fixture on-screen on iOS to avoid false positives
+      // See https://github.com/twbs/bootstrap/pull/15955
       if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
         QUnit.begin(function() {
           $('#qunit-fixture').css({ top: 0, left: 0 })
         })
 
-        QUnit.done(function () {
+        QUnit.done(function() {
           $('#qunit-fixture').css({ top: '', left: '' })
         })
       }
-
-      // Disable deprecated global QUnit method aliases in preparation for QUnit v2
-      (function () {
-        var methodNames = [
-          'async',
-          'asyncTest',
-          'deepEqual',
-          'equal',
-          'expect',
-          'module',
-          'notDeepEqual',
-          'notEqual',
-          'notPropEqual',
-          'notStrictEqual',
-          'ok',
-          'propEqual',
-          'push',
-          'start',
-          'stop',
-          'strictEqual',
-          'test',
-          'throws'
-        ];
-        for (var i = 0; i < methodNames.length; i++) {
-          var methodName = methodNames[i];
-          window[methodName] = undefined;
-        }
-      })();
     </script>
 
-    <!-- es6 Plugin sources -->
+    <!-- Transpiled Plugins -->
     <script src="../../js/dist/util.js"></script>
     <script src="../../js/dist/alert.js"></script>
     <script src="../../js/dist/button.js"></script>
@@ -146,7 +108,7 @@
     <script src="../../js/dist/tooltip.js"></script>
     <script src="../../js/dist/popover.js"></script>
 
-    <!-- Unit tests -->
+    <!-- Unit Tests -->
     <script src="unit/alert.js"></script>
     <script src="unit/button.js"></script>
     <script src="unit/carousel.js"></script>
@@ -157,7 +119,6 @@
     <script src="unit/tab.js"></script>
     <script src="unit/tooltip.js"></script>
     <script src="unit/popover.js"></script>
-
   </head>
   <body>
     <div id="qunit-container">

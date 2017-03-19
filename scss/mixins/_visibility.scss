@@ -1,5 +1,5 @@
 // Visibility
 
-@mixin invisible {
-  visibility: hidden !important;
+@mixin invisible($visibility) {
+  visibility: $visibility !important;
 }
