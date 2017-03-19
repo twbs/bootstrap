@@ -33,7 +33,6 @@ a.badge {
   @include hover-focus {
     color: $badge-link-hover-color;
     text-decoration: none;
-    cursor: pointer;
   }
 }
 // scss-lint:enable QualifyingElement
