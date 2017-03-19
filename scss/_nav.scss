@@ -5,6 +5,7 @@
 
 .nav {
   display: flex;
+  flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -54,9 +55,9 @@
 
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: $nav-tabs-active-link-hover-color;
-    background-color: $nav-tabs-active-link-hover-bg;
-    border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-bg;
+    color: $nav-tabs-active-link-color;
+    background-color: $nav-tabs-active-link-bg;
+    border-color: $nav-tabs-active-link-border-color $nav-tabs-active-link-border-color $nav-tabs-active-link-bg;
   }
 
   .dropdown-menu {
@@ -80,7 +81,6 @@
   .nav-link.active,
   .nav-item.show .nav-link {
     color: $nav-pills-active-link-color;
-    cursor: default;
     background-color: $nav-pills-active-link-bg;
   }
 }

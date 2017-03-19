@@ -46,8 +46,8 @@
 
 @mixin button-outline-variant($color, $color-hover, $focus-shadow) {
   color: $color;
-  background-image: none;
   background-color: transparent;
+  background-image: none;
   border-color: $color;
 
   @include hover {

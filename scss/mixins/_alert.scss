@@ -1,9 +1,9 @@
 // Alerts
 
 @mixin alert-variant($background, $border, $text-color, $alert-separator, $alert-link) {
+  color: $text-color;
   background-color: $background;
   border-color: $border;
-  color: $text-color;
 
   hr {
     border-top-color: $alert-separator;
