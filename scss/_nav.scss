@@ -99,7 +99,8 @@
 
 .nav-justified {
   .nav-item {
-    flex: 1 1 100%;
+    flex-grow: 1;
+    flex-basis: 0;
     text-align: center;
   }
 }
