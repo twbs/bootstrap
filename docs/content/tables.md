@@ -488,7 +488,7 @@ Use contextual classes to color table rows or individual cells.
 </table>
 
 <div class="bd-example">
-  <table class="table">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>#</th>
@@ -577,7 +577,7 @@ Use contextual classes to color table rows or individual cells.
 Regular table background variants are not available with the inverse table, however, you may use [text or background utilities]({{ site.baseurl }}/utilities/colors/) to achieve similar styles.
 
 <div class="bd-example">
-  <table class="table table-inverse">
+  <table class="table table-inverse table-hover">
     <thead>
       <tr>
         <th>#</th>

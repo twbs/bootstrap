@@ -323,6 +323,12 @@ $table-inverse-color:           $body-bg !default;
 $table-bg-accent:               rgba($black,.05) !default;
 $table-bg-hover:                rgba($black,.075) !default;
 $table-bg-active:               $table-bg-hover !default;
+$table-bg-active-hover:         darken($table-bg-hover, 5%) !default;
+
+$table-bg-inverse-accent:       rgba($white, .10) !default;
+$table-bg-inverse-hover:        rgba($white, .15) !default;
+$table-bg-inverse-active:       $table-bg-inverse-hover !default;
+$table-bg-inverse-active-hover: lighten($table-bg-inverse-hover, 5%) !default;
 
 $table-head-bg:                 $gray-lighter !default;
 $table-head-color:              $gray !default;
@@ -653,19 +659,27 @@ $jumbotron-bg:                   $gray-lighter !default;
 $state-success-text:             #3c763d !default;
 $state-success-bg:               #dff0d8 !default;
 $state-success-border:           darken($state-success-bg, 5%) !default;
+$state-success-hover-bg:         darken($state-success-bg, 5%) !default;
+$state-success-inverse-hover-bg: lighten($state-success-text, 5%) !default;
 
 $state-info-text:                #31708f !default;
 $state-info-bg:                  #d9edf7 !default;
 $state-info-border:              darken($state-info-bg, 7%) !default;
+$state-info-hover-bg:            darken($state-info-bg, 5%) !default;
+$state-info-inverse-hover-bg:    lighten($state-info-text, 5%) !default;
 
 $state-warning-text:             #8a6d3b !default;
 $state-warning-bg:               #fcf8e3 !default;
 $mark-bg:                        $state-warning-bg !default;
 $state-warning-border:           darken($state-warning-bg, 5%) !default;
+$state-warning-hover-bg:         darken($state-warning-bg, 5%) !default;
+$state-warning-inverse-hover-bg: lighten($state-warning-text, 5%) !default;
 
 $state-danger-text:              #a94442 !default;
 $state-danger-bg:                #f2dede !default;
 $state-danger-border:            darken($state-danger-bg, 5%) !default;
+$state-danger-hover-bg:          darken($state-danger-bg, 5%) !default;
+$state-danger-inverse-hover-bg:  lighten($state-danger-text, 5%) !default;
 
 
 // Cards

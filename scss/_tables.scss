@@ -82,6 +82,11 @@
   tbody tr {
     @include hover {
       background-color: $table-bg-hover;
+
+      td,
+      th {
+        background-color: $table-bg-hover;
+      }
     }
   }
 }
@@ -93,11 +98,11 @@
 // inheritance to nested tables.
 
 // Generate the contextual variants
-@include table-row-variant(active, $table-bg-active);
-@include table-row-variant(success, $state-success-bg);
-@include table-row-variant(info, $state-info-bg);
-@include table-row-variant(warning, $state-warning-bg);
-@include table-row-variant(danger, $state-danger-bg);
+@include table-row-variant(active, $table-bg-active, $table-bg-active-hover);
+@include table-row-variant(success, $state-success-bg, $state-success-hover-bg);
+@include table-row-variant(info, $state-info-bg, $state-info-hover-bg);
+@include table-row-variant(warning, $state-warning-bg, $state-warning-hover-bg);
+@include table-row-variant(danger, $state-danger-bg, $state-danger-hover-bg);
 
 
 // Inverse styles
@@ -131,9 +136,32 @@
   &.table-bordered {
     border: 0;
   }
+
+  &.table-striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: $table-bg-inverse-accent;
+    }
+  }
+
+  &.table-hover {
+    tbody tr {
+      @include hover {
+        background-color: $table-bg-inverse-hover;
+
+        td,
+        th {
+          background-color: $table-bg-inverse-hover;
+        }
+      }
+    }
+  }
 }
 
-
+@include table-inverse-row-variant(active, $table-bg-inverse-active, $table-bg-inverse-active-hover);
+@include table-inverse-row-variant(success, $state-success-text, $state-success-inverse-hover-bg);
+@include table-inverse-row-variant(info, $state-info-text, $state-info-inverse-hover-bg);
+@include table-inverse-row-variant(warning, $state-warning-text, $state-warning-inverse-hover-bg);
+@include table-inverse-row-variant(danger, $state-danger-text, $state-danger-inverse-hover-bg);
 
 // Responsive tables
 //
