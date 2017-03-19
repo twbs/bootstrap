@@ -211,10 +211,8 @@ const Collapse = (($) => {
       }
 
       const dimension       = this._getDimension()
-      const offsetDimension = dimension === Dimension.WIDTH ?
-        'offsetWidth' : 'offsetHeight'
 
-      this._element.style[dimension] = `${this._element[offsetDimension]}px`
+      this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`
 
       Util.reflow(this._element)
 
