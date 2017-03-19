@@ -376,11 +376,13 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
 
 {% example html %}
 <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+  <div class="card-header">Header</div>
   <div class="card-block">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
+  <div class="card-footer">Footer</div>
 </div>
 {% endexample %}
 

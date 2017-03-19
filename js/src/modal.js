@@ -450,7 +450,7 @@ const Modal = (($) => {
       const scrollDiv = document.createElement('div')
       scrollDiv.className = ClassName.SCROLLBAR_MEASURER
       document.body.appendChild(scrollDiv)
-      const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+      const scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth
       document.body.removeChild(scrollDiv)
       return scrollbarWidth
     }
