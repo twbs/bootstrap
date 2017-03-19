@@ -514,13 +514,13 @@ Use flexbox utilities for controlling the **visual order** of your content.
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col flex-unordered">
+    <div class="col order-0">
       First, but unordered
     </div>
-    <div class="col flex-last">
+    <div class="col order-last">
       Second, but last
     </div>
-    <div class="col flex-first">
+    <div class="col order-first">
       Third, but first
     </div>
   </div>
@@ -585,7 +585,7 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
 
 ## Sass mixins
 
-When using Bootstrap's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our [predefined grid classes](#predefined-classes) use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
+When using Bootstrap's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our predefined grid classes use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
 
 ### Variables
 

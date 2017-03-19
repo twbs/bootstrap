@@ -134,7 +134,8 @@ Try to use these on a limited basis and avoid creating entirely different versio
 
 ## Print classes
 
-<p>Similar to the regular responsive classes, use these for toggling content for print.</p>
+Similar to the regular responsive classes, use these for toggling content for print.
+
 <table class="table table-bordered table-striped responsive-utilities table-responsive">
   <thead>
     <tr>
