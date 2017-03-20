@@ -131,6 +131,20 @@
   &.table-bordered {
     border: 0;
   }
+
+  &.table-striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: $table-inverse-bg-accent;
+    }
+  }
+
+  &.table-hover {
+    tbody tr {
+      @include hover {
+        background-color: $table-inverse-bg-hover;
+      }
+    }
+  }
 }
 
 
