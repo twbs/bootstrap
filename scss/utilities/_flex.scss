@@ -18,7 +18,6 @@
     .flex#{$infix}-wrap         { flex-wrap: wrap !important; }
     .flex#{$infix}-nowrap       { flex-wrap: nowrap !important; }
     .flex#{$infix}-wrap-reverse { flex-wrap: wrap-reverse !important; }
-    .flex#{$infix}-fill         { flex: 1 1 auto; }
 
     .justify-content#{$infix}-start   { justify-content: flex-start !important; }
     .justify-content#{$infix}-end     { justify-content: flex-end !important; }
