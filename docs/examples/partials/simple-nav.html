@@ -2,18 +2,21 @@
 	<div class="container m-l-0">
 		<div class="navbar-header pull-xs-left">
 			<button type="button"
-				class="navbar-toggle visible-xs-block visible-sm-block visible-md-block"
+				class="navbar-toggle visible-xs-inline-block visible-sm-inline-block visible-md-inline-block"
 				ng-click="$ctrl.toggleNav()"
 				aria-expanded="{{$ctrl.showNav}}">
-				<span class="pull-xs-left">
+				<span class="pull-xs-left m-r-1">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</span>
-				<span class="pull-xs-left m-l-1">Menu</span>
 			</button>
-			<h1 class="navbar-title hidden-xs hidden-sm hidden-md h3 m-b-0">{{$ctrl.title}}</h1>
-			<p class="navbar-subtitle hidden-xs hidden-sm hidden-md" ng-if="$ctrl.subtitle">{{$ctrl.subtitle}}</p>
+			<h1 class="navbar-title"
+				ng-class="{'m-b-0': $ctrl.subtitle}"
+				title="{{$ctrl.title}}" data-placement="bottom" tw-tool-tip>
+				{{$ctrl.title}}
+			</h1>
+			<p class="navbar-subtitle" ng-if="$ctrl.subtitle">{{$ctrl.subtitle}}</p>
 		</div>
 
 		<ul class="nav navbar-nav pull-xs-right">
@@ -25,7 +28,7 @@
 						title="Jonathan Smith-Henry">
 						<!--<i class="icon icon-profile m-r-1"></i>-->
 						<img src="../assets/img/mike.jpg" class="circle circle-sm" alt="Mike"
-						/><span class="hidden-xs m-l-1">
+						/><span class="hidden-xs hidden-sm m-l-1">
 							Jonathan Smith-Henry Smith-Henry
 						</span>
 					</span>
@@ -65,15 +68,6 @@
 					aria-expanded="false"
 					title="Show notifications">
 					<i class="icon icon-notification m-r-0"></i>
-				</a>
-			</li>
-			<li class="hidden-lg hidden-xl pull-xs-right"
-				ng-class="{active: $ctrl.showSearch}">
-				<a href="" class="p-x-1" role="button"
-					aria-expanded="{{$ctrl.showSearch}}"
-					title="Show search options"
-					ng-click="$ctrl.showSearch = !$ctrl.showSearch">
-					<i class="icon icon-search m-r-0"></i>
 				</a>
 			</li>
 		</ul>

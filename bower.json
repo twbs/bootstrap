@@ -29,6 +29,8 @@
     "test-infra"
   ],
   "dependencies": {
-    "jquery": ">= 1.9.1"
+    "jquery": ">= 1.9.1",
+    "angular": "< 2.0.0",
+    "styleguide-components": "https://github.com/transferwise/styleguide-components.git"
   }
 }

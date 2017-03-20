@@ -8,10 +8,10 @@
 	<link type="text/css" rel="stylesheet"
 		href="../dist/css/bootstrap.min.css" />
 
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../assets/js/jquery.js"></script>
+	<script src="../assets/js/angular.js"></script>
+	<script src="../assets/js/styleguide-components.js"></script>
 	<script src="../dist/js/bootstrap.min.js"></script>
-
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.17/angular.js"></script>
 
 	<script src="forms.js"></script>
 
@@ -23,7 +23,10 @@
 	<script src="js/currencies.service.js"></script>
 
 	<script src="js/nav.directive.js"></script>
-	<script src="js/next-cards.directive.js"></script>
+	<script src="js/simple-nav.directive.js"></script>
+	<script src="js/top-nav.directive.js"></script>
+	<script src="js/side-nav.directive.js"></script>
+	<script src="js/activity-filters.directive.js"></script>
 	<script src="js/accounts-list.directive.js"></script>
 	<script src="js/repeat-transfer.directive.js"></script>
 	<script src="js/currency-input.directive.js"></script>
@@ -41,19 +44,29 @@
 		]);
 
 		function PageController(AccountService, CurrencyService) {
-			var vm = this;
+			var $ctrl = this;
 
 			CurrencyService.map().then(function(currencies) {
-				vm.currencies = currencies;
+				$ctrl.currencies = currencies;
 			});
 
 			AccountService.list({isOwned: true}).then(function(accounts) {
-				vm.ownedAccounts = accounts;
+				$ctrl.ownedAccounts = accounts;
 			});
 
 			AccountService.list({isOwned: false}).then(function(accounts) {
-				vm.otherAccounts = accounts;
+				$ctrl.otherAccounts = accounts;
 			});
+
+			$ctrl.actionButtons = [
+				{label: 'Add recipient', icon: 'icon-profile', type: 'primary'}
+			];
+
+			$ctrl.sideNav = true;
+
+			$ctrl.burgerToggle = function() {
+				$ctrl.open = !$ctrl.open;
+			};
 		}
 	})(window.angular);
 	</script>
@@ -66,68 +79,64 @@
 	.list-group-item > * {
 		margin-left: -2px;
 	}
-
-	.pips {
-		margin-top: 14px;
-		width: 32px;
-	}
-	.pip {
-		height: 4px;
-		width: 4px;
-		border-radius: 2px;
-		background-color: #00a4df;
-		margin-bottom: 4px;
-		margin-left: 13px;
-		display: block;
-	}
 	</style>
 </head>
 <body ng-app="ExampleApp">
-	<nav-bar></nav-bar>
-	<div ng-controller="PageController as ctrl">
-		<div class="container">
-			<next-cards></next-cards>
-
-			<div class="panel">
-				<div class="panel-heading">
-					<div class="pull-xs-right form-inline text-right m-t-1">
-						<button class="btn btn-sm btn-default">Add recipient</button>
-						<div class="input-group input-group-sm m-l-1">
-							<span class="input-group-addon"><i class="icon icon-search"></i></span>
-							<input class="form-control" type="text" placeholder="Search">
-							<span class="input-group-btn">
-								<button class="btn  btn-sm btn-primary">Go</button>
-							</span>
-						</div>
-					</div>
-					<h3 class="panel-title">My accounts</h3>
-				</div>
-				<accounts-list
-					accounts="ctrl.ownedAccounts"
-					currencies="ctrl.currencies">
-				</accounts-list>
-			</div>
-
-			<div class="panel">
-				<div class="panel-heading">
-					<button class="btn btn-sm btn-default pull-xs-right">Add recipient</button>
-					<h3 class="panel-title">Other recipients</h3>
-				</div>
-				<accounts-list
-					accounts="ctrl.otherAccounts"
-					currencies="ctrl.currencies"
-					inactive="true">
-				</accounts-list>
-			</div>
-
-			<div class="panel">
-				<div class="panel-p-l panel-p-r">
-					<pagination page="1" total="200"></pagination>
-				</div>
+	<div class="column-layout" ng-controller="PageController as ctrl">
+		<div class="column-layout-left bg-primary"
+			ng-class="{open: ctrl.open}"
+			ng-if="ctrl.sideNav">
+			<div class="column-layout-top">
+				<side-nav active="recipients"></side-nav>
 			</div>
 		</div>
+		<div class="column-layout-main">
+			<top-nav
+				ng-if="ctrl.sideNav"
+				title="Recipients"
+				on-burger-click="ctrl.burgerToggle()"
+				buttons="ctrl.actionButtons"
+				button-summary="Options"
+				searchable="true">
+			</top-nav>
+
+			<div class="container m-l-0">
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title h6">My accounts</h3>
+					</div>
+					<accounts-list
+						accounts="ctrl.ownedAccounts"
+						currencies="ctrl.currencies">
+					</accounts-list>
+				</div>
+
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="panel-title h6">Other recipients</h3>
+					</div>
+					<accounts-list
+						accounts="ctrl.otherAccounts"
+						currencies="ctrl.currencies"
+						inactive="true">
+					</accounts-list>
+				</div>
+
+				<div class="panel">
+					<div class="panel-p-l panel-p-r">
+						<pagination page="1" total="200"></pagination>
+					</div>
+				</div>
+			</div>
+			<footer-example></footer-example>
+		</div>
+
+		<div class="column-layout-cover"
+			ng-class="{in: ctrl.open}"
+			ng-click="ctrl.open = !ctrl.open;">
+			<a class="close">&times;</a>
+		</div>
 	</div>
-	<footer-example></footer-example>
 </body>
 
 </html>

@@ -7,10 +7,18 @@
 </div>
 
 <ul class="nav nav-stacked nav-inverse m-b-1">
-	<li class="active"><a href="account-left.html">Activity</a></li>
-	<li><a href="">Balances</a></li>
-	<li><a href="">History</a></li>
-	<li><a href="">Recipients</a></li>
+	<li ng-class="{'active': $ctrl.active === 'activity' || !$ctrl.active}">
+		<a href="account-left.html">Activity</a>
+	</li>
+	<li ng-class="{'active': $ctrl.active === 'balances'}">
+		<a href="">Balances</a>
+	</li>
+	<li ng-class="{'active': $ctrl.active === 'history'}">
+		<a href="">History</a>
+	</li>
+	<li ng-class="{'active': $ctrl.active === 'recipients'}">
+		<a href="recipients.html">Recipients</a>
+	</li>
 	<li><a href="" id="inviteFriends" onclick="triggerInvitePopover()">Invite Friends</a></li>
 	<li><a href="" id="twoFactor" onclick="triggerTwoFactorPopover()">Secure your account</a></li>
 </ul>

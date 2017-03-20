@@ -20,13 +20,6 @@
 					{value:'conversions',label:'Balance conversions',icon:'icon-transfer'},
 					{value:'bonus',label:'Bonus payments',icon:'icon-gift'}
 				];
-
-				$ctrl.buttonsContainPrimary = false;
-				if ($ctrl.buttons.forEach) {
-					$ctrl.buttons.forEach(function(button) {
-						$ctrl.buttonsContainPrimary = $ctrl.buttonsContainPrimary || button.primary;
-					});
-				}
 			},
 			controllerAs: '$ctrl',
 			replace: true,

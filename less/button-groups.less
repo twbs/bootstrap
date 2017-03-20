@@ -71,6 +71,9 @@
     // Default behaviour collapses on lg, over-ruled by modifiers
     .expand-toolbar();
   }
+  &.btn-toolbar-xs {
+    .expand-toolbar();
+  }
   @media (min-width: @screen-sm-min) {
     &.btn-toolbar-sm {
       .expand-toolbar();
@@ -306,6 +309,8 @@
     .btn {
         display: block;
         width: 100%;
+    }
+    .btn-input.btn {
         text-align: left;
         .caret {
             position: absolute;
@@ -324,7 +329,7 @@
             right: 0;
         }
     }
-    .btn {
+    .btn-input.btn {
       &.dropdown-toggle {
         padding-right: 40px;
         overflow: hidden;

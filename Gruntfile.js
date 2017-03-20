@@ -75,7 +75,14 @@ module.exports = function (grunt) {
         src: 'js/tests/unit/*.js'
       },
       assets: {
-        src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
+        src: [
+          'docs/assets/js/src/*.js',
+          'docs/assets/js/*.js',
+          '!docs/assets/js/*.min.js',
+          '!docs/assets/js/angular.js',
+          '!docs/assets/js/jquery.js',
+          '!docs/assets/js/styleguide-components.js'
+        ]
       }
     },
 
@@ -303,6 +310,15 @@ module.exports = function (grunt) {
         ],
         dest: 'docs/dist/'
       },
+      assets: {
+        expand: true,
+        flatten: true,
+        src: [
+          'bower_components/angular/angular.js',
+          'bower_components/styleguide-components/dist/js/styleguide-components.js'
+        ],
+        dest: 'docs/assets/js/'
+      },
       iconfonts: {
         expand: true,
         flatten: true,
@@ -410,6 +426,7 @@ module.exports = function (grunt) {
           'Attribute “ng-click” not allowed on element “div” at this point.',
           'Attribute “ng-click” not allowed on element “tr” at this point.',
           'Attribute “ng-click” not allowed on element “button” at this point.',
+          'Attribute “ng-href” not allowed on element “a” at this point.',
           'Attribute “ng-disabled” not allowed on element “button” at this point.',
           'Attribute “ng-if” not allowed on element “div” at this point.',
           'Attribute “ng-if” not allowed on element “span” at this point.',
@@ -450,6 +467,7 @@ module.exports = function (grunt) {
           'Attribute “tw-focusable” not allowed on element “input” at this point.',
           'Attribute “tw-focusable” not allowed on element “textarea” at this point.',
           'Attribute “tw-pop-over” not allowed on element “a” at this point.',
+          'Attribute “tw-tool-tip” not allowed on element “h1” at this point.',
           'Element “nav-bar” not allowed as child of element “body” in this context. (Suppressing further errors from this subtree.)',
           'Element “next-cards” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
           'Element “calculator-full” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
@@ -501,7 +519,10 @@ module.exports = function (grunt) {
         'indent-style': false,
         'indent-width': false
       },
-      src: '_gh_pages/**/*.html'
+      src: [
+        '_gh_pages/**/*.html',
+        '!_gh_pages/examples/**/*.html'
+      ]
     },
 
     watch: {

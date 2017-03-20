@@ -1,0 +1,22 @@
+<simple-nav
+	title="{{$ctrl.title}}"
+	subtitle="{{$ctrl.subtitle}}"
+	on-burger-click="$ctrl.onMenuClick()">
+</simple-nav>
+
+<div ng-if="($ctrl.buttons && $ctrl.buttons.length) || $ctrl.searchable"
+	class="nav-toolbar" data-spy="affix" data-offset-top="{{ $ctrl.subtitle ? '88' : '66' }}"
+	ng-class="{
+		'affix-cancel-xs': $ctrl.showSearch,
+		'affix-cancel-sm': $ctrl.showSearch
+	}">
+	<div class="container m-l-0">
+		<activity-filters
+			buttons="$ctrl.buttons"
+			button-summary="{{$ctrl.buttonSummary}}"
+			searchable="$ctrl.searchable"
+			filters-active="$ctrl.showSearch">
+		</activity-filters>
+	</div>
+</div>
+<div class="container"></div>

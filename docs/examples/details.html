@@ -9,10 +9,10 @@
 		href="../dist/css/bootstrap.min.css" />
 	<link type="text/css" rel="stylesheet" href="scratch.css" />
 
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../assets/js/jquery.js"></script>
+	<script src="../assets/js/angular.js"></script>
+	<script src="../assets/js/styleguide-components.js"></script>
 	<script src="../dist/js/bootstrap.min.js"></script>
-
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
 
 	<script src="forms.js"></script>
 
@@ -22,12 +22,12 @@
 
 	<script src="js/nav.directive.js"></script>
 	<script src="js/simple-nav.directive.js"></script>
+	<script src="js/top-nav.directive.js"></script>
 	<script src="js/side-nav.directive.js"></script>
 	<script src="js/activity-filters.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
 
 
-	<script src="//transferwise.github.io/styleguide-components/dist/js/styleguide-components.js"></script>
 	<link type="text/css" rel="stylesheet" href="//transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
 
 	<script>
@@ -52,75 +52,36 @@
 			$ctrl.sideNav = true;
 
 			$ctrl.actionButtons = [
-				{label: 'Download PDF', icon: 'icon-pdf'},
-				{label: 'Cancel transfer', icon: 'icon-close'},
-				{label: 'More details', icon: 'icon-setting'}
+				{label: 'Download PDF', icon: 'icon-pdf'}
+				,{label: 'Cancel transfer', icon: 'icon-close', type: 'danger'}
+				,{label: 'More details', icon: 'icon-setting'}
 			];
 		}
 	})(window.angular);
 	</script>
-	<style>
-	/*
-	.sequence-icon {
-		display: none;
-	}
-	*/
-	</style>
 </head>
-<body ng-app="ExampleApp" class="bg-default" ng-controller="PageController as ctrl">
+<body ng-app="ExampleApp" ng-controller="PageController as ctrl"
+	class="bg-default">
 <nav-bar ng-if="!ctrl.sideNav" fluid="ctrl.sideNav"></nav-bar>
 <div class="column-layout">
-	<div class="column-layout-left bg-primary" ng-class="{open: ctrl.open}" ng-if="ctrl.sideNav">
+	<div class="column-layout-left bg-primary"
+		ng-class="{open: ctrl.open}"
+		ng-if="ctrl.sideNav">
 		<div class="column-layout-top">
 			<side-nav></side-nav>
 		</div>
 	</div>
 	<div class="column-layout-main">
-		<simple-nav
-			ng-if="ctrl.sideNav"
-			title="£10 to Stephen Pole"
+		<top-nav
+		 	ng-if="ctrl.sideNav"
+			title="10 to Stephen Pole Lorem Ipsum blah blah blah etc"
 			subtitle="Transfer #1234567"
 			on-burger-click="ctrl.burgerToggle()"
-			show-search="ctrl.showSearch"></simple-nav>
-		<div class="nav-toolbar" data-spy="affix" data-offset-top="{{88}}" ng-class="{
-				'affix-cancel-xs': ctrl.showSearch,
-				'affix-cancel-sm': ctrl.showSearch
-			}">
-			<div class="container m-l-0">
-				<activity-filters
-					title="Transfer Details"
-					buttons="ctrl.actionButtons"
-					button-summary="Options">
-				</activity-filters>
-			</div>
-		</div>
-		<!--
-		<div class="bg-primary">
-			<div class="container p-t-4 p-b-5 clearfix">
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-8">
-						<h2>Example title</h2>
-						<p class="m-b-0 small">Some more stuff here</p>
-						<p class="m-b-0 small">Occasionally a third line</p>
+			buttons="ctrl.actionButtons"
+			button-summary="Options">
+		</top-nav>
 
-						<p class="m-t-2 m-b-0">
-							<strong class="text-warning">
-								Verification problem
-							</strong>
-							You need to verify
-						</p>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-4 p-t-1">
-						<a href="" class="btn btn-primary pull-sm-right">
-							Button!
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		-->
 		<div class="container m-l-0">
-
 			<ul class="sequence sequence-bottom sequence-hollow sequence-lg m-l-2">
 				<li>
 					<span class="sequence-icon"><i class="icon icon-check"></i></span>

@@ -1,14 +1,19 @@
 
 .sequence-vertical-spacing(
   @sequence-margin,
-  @sequence-item-spacing,
+  @sequence-item-spacing-mobile,
+  @sequence-item-spacing-desktop,
+  @pip-offset-mobile,
+  @pip-offset-desktop,
   @sequence-step-height,
   @sequence-icon-size
 ) {
-  @sequence-outside-spacing: (@sequence-margin + @sequence-item-spacing);
-  @pip-offset: ((@sequence-step-height / 2) + @sequence-item-spacing);
+  @sequence-outside-spacing: (@sequence-margin + @sequence-item-spacing-desktop);
 
   > li {
+    padding-top: @sequence-item-spacing-mobile;
+    padding-bottom: @sequence-item-spacing-mobile;;
+
     &:first-child {
       margin-top: @sequence-margin;
     }
@@ -16,18 +21,27 @@
       margin-bottom: @sequence-margin;
     }
     @media (min-width: @screen-md-min) {
-      padding-top: @sequence-item-spacing;
-      padding-bottom: @sequence-item-spacing;
+      padding-top: @sequence-item-spacing-desktop;
+      padding-bottom: @sequence-item-spacing-desktop;
     }
     &:before {
       margin-top: ((@sequence-step-height / 2) - (@sequence-pip-size / 2));
     }
     &:first-child:after {
-      margin-top: @pip-offset;
-      height: ~"calc(100% - @{pip-offset})";
+      margin-top: @pip-offset-mobile;
+      height: ~"calc(100% - @{pip-offset-mobile})";
     }
     &:last-child:after {
-      height: @pip-offset;
+      height: @pip-offset-mobile;
+    }
+    @media (min-width: @screen-md-min) {
+      &:first-child:after {
+        margin-top: @pip-offset-desktop;
+        height: ~"calc(100% - @{pip-offset-desktop})";
+      }
+      &:last-child:after {
+        height: @pip-offset-desktop;
+      }
     }
   }
 
@@ -54,10 +68,10 @@
   }
 
   .sequence-icon {
-    top: ((@sequence-step-height / 2) - (@sequence-icon-size / 2));
+    top: ((@sequence-step-height / 2) - (@sequence-icon-size / 2) + @sequence-item-spacing-mobile);
 
     @media (min-width: @screen-md-min) {
-      top: ((@sequence-step-height / 2) - (@sequence-icon-size / 2) + @sequence-item-spacing);
+      top: ((@sequence-step-height / 2) - (@sequence-icon-size / 2) + @sequence-item-spacing-desktop);
     }
   }
   &.sequence-top > li:first-child .sequence-icon {
@@ -100,7 +114,8 @@
 // our large and inverse options.
 .sequence-variant(
   @color,
-  @pip-offset,
+  @pip-offset-sm,
+  @pip-offset-md,
   @pip-offset-lg,
   @sequence-border,
   @sequence-inverse-border,
@@ -115,7 +130,10 @@
       background-color: @color;
     }
     &:after {
-      background: linear-gradient(@color 0, @color @pip-offset, @sequence-border @pip-offset, @sequence-border 100%);
+      background: linear-gradient(@color 0, @color @pip-offset-sm, @sequence-border @pip-offset-sm, @sequence-border 100%);
+      @media (min-width: @screen-md-min) {
+        background: linear-gradient(@color 0, @color @pip-offset-md, @sequence-border @pip-offset-md, @sequence-border 100%);
+      }
     }
     &:first-child:after {
       background: @sequence-border;
@@ -123,7 +141,10 @@
   }
   &.sequence-inverse > .active {
     &:after {
-      background: linear-gradient(@color 0, @color @pip-offset, @sequence-inverse-border @pip-offset, @sequence-inverse-border 100%);
+      background: linear-gradient(@color 0, @color @pip-offset-sm, @sequence-inverse-border @pip-offset-sm, @sequence-inverse-border 100%);
+      @media (min-width: @screen-md-min) {
+        background: linear-gradient(@color 0, @color @pip-offset-md, @sequence-border @pip-offset-md, @sequence-border 100%);
+      }
     }
   }
 

@@ -1,9 +1,16 @@
 
 
+@pip-offset-sm: ((@sequence-step-height / 2) + @sequence-item-spacing-sm);
+@pip-offset-md: ((@sequence-step-height / 2) + @sequence-item-spacing-md);
+@pip-offset-lg: ((@sequence-step-height / 2) + @sequence-item-spacing-lg);
+
 .sequence {
   .sequence-vertical-spacing(
     @sequence-margin,
-    @sequence-item-spacing,
+    @sequence-item-spacing-sm,
+    @sequence-item-spacing-md,
+    @pip-offset-sm,
+    @pip-offset-md,
     @sequence-step-height,
     @sequence-icon-size
   );
@@ -179,31 +186,36 @@
 
 .sequence-info {
   .sequence-variant(
-    @state-info-border, 16px, 24px,
+    @state-info-border,
+    @pip-offset-sm, @pip-offset-md, @pip-offset-lg,
     @sequence-border, @sequence-inverse-border, @sequence-margin-lg
   );
 }
 .sequence-primary {
   .sequence-variant(
-    @brand-navy, 16px, 24px,
+    @brand-navy,
+    @pip-offset-sm, @pip-offset-md, @pip-offset-lg,
     @sequence-border, @sequence-inverse-border, @sequence-margin-lg
   );
 }
 .sequence-success {
   .sequence-variant(
-    @state-success-border, 16px, 24px,
+    @state-success-border,
+    @pip-offset-sm, @pip-offset-md, @pip-offset-lg,
     @sequence-border, @sequence-inverse-border, @sequence-margin-lg
   );
 }
 .sequence-warning {
   .sequence-variant(
-    @state-warning-border, 16px, 24px,
+    @state-warning-border,
+    @pip-offset-sm, @pip-offset-md, @pip-offset-lg,
     @sequence-border, @sequence-inverse-border, @sequence-margin-lg
   );
 }
 .sequence-danger {
   .sequence-variant(
-    @state-danger-border, 16px, 24px,
+    @state-danger-border,
+    @pip-offset-sm, @pip-offset-md, @pip-offset-lg,
     @sequence-border, @sequence-inverse-border, @sequence-margin-lg
   );
 }
@@ -242,7 +254,7 @@
   border-width: 1px;
   border-style: solid;
   border-color: @text-color;
-  top: @sequence-item-spacing;
+  top: @sequence-item-spacing-md;
   font-size: 12px;
 
   .icon {
@@ -366,6 +378,15 @@
 }
 
 .sequence-lg {
+  .sequence-vertical-spacing(
+    @sequence-margin-lg,
+    8px, //@sequence-item-spacing-md,
+    @sequence-item-spacing-lg,
+    @pip-offset-md,
+    @pip-offset-lg,
+    @sequence-step-height,
+    @sequence-icon-size
+  );
   .sequence-horizontal-spacing(
     40px,
     @sequence-pip-size,
@@ -380,12 +401,6 @@
       @sequence-icon-size,
       @sequence-icon-size-md,
       @sequence-icon-size-lg
-    );
-    .sequence-vertical-spacing(
-      @sequence-margin-lg,
-      @sequence-item-spacing-lg,
-      @sequence-step-height,
-      @sequence-icon-size
     );
   }
 }

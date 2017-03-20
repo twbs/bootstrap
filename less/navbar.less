@@ -372,9 +372,12 @@
 // Dropdown menus
 
 // Menu position and menu carets
-@media (min-width: @grid-float-breakpoint) {
-  .navbar-nav > li > .dropdown-menu {
-    margin-top: 12px;
+.navbar-nav > li > .dropdown-menu {
+  margin-top: 12px;
+}
+@media (max-width: @screen-md-max) {
+  .navbar-collpse .navbar-nav > li > .dropdown-menu {
+    margin-top: 0;
   }
 }
 // Menu position and menu caret support for dropups via extra dropup class
@@ -770,7 +773,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            background-color: @brand-navy-minus-10;
+            background-color: @brand-navy-minus-20;
             opacity: 0;
             transition: opacity .35s ease;
         }
@@ -876,18 +879,31 @@
 
 .navbar-title {
   float: left;
+  font-size: @font-size-h3;
   line-height: 32px;
   margin-top: 12px;
   margin-bottom: 12px;
-
-  @media (min-width: @screen-lg-min) {
-    font-weight: @font-weight-bold;
-  }
+  font-weight: @font-weight-bold;
 }
 .navbar-subtitle {
   font-size: @font-size-small;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
+.navbar-title,
+.navbar-subtitle {
+    color: #FFF;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    width: 75%;
+
+    @media (min-width: @screen-lg-min) {
+      color: @headings-color;
+      width: 100%;
+    }
+}
+
 .navbar-logo {
   width: 127px;
   height: 22px;
@@ -961,6 +977,11 @@
   }
   .navbar-header {
     padding-top: 4px;
+    width: ~"calc(100% - 120px)";
+
+    @media (min-width: @screen-md-min) {
+      width: ~"calc(100% - 340px)";
+    }
   }
   .navbar-nav > li > a.dropdown-toggle {
     height: @nav-toolbar-height;
@@ -992,5 +1013,5 @@
   }
 }
 .simple-nav .profile-name .text-ellipsis {
-  max-width: 280px;
+  max-width: 240px;
 }

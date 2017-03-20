@@ -9,10 +9,10 @@
 		href="../dist/css/bootstrap.min.css" />
 	<link type="text/css" rel="stylesheet" href="scratch.css" />
 
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="../assets/js/jquery.js"></script>
+	<script src="../assets/js/angular.js"></script>
+	<script src="../assets/js/styleguide-components.js"></script>
 	<script src="../dist/js/bootstrap.min.js"></script>
-
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
 
 	<script src="forms.js"></script>
 
@@ -22,13 +22,12 @@
 
 	<script src="js/nav.directive.js"></script>
 	<script src="js/simple-nav.directive.js"></script>
+	<script src="js/top-nav.directive.js"></script>
 	<script src="js/side-nav.directive.js"></script>
 	<script src="js/start-new.directive.js"></script>
 	<script src="js/activity-filters.directive.js"></script>
 	<script src="js/footer.directive.js"></script>
 
-
-	<script src="//transferwise.github.io/styleguide-components/dist/js/styleguide-components.js"></script>
 	<link type="text/css" rel="stylesheet" href="//transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
 
 	<script>
@@ -87,24 +86,25 @@
 	}
 	</style>
 </head>
-<body ng-app="ExampleApp" class="bg-default" ng-controller="PageController as ctrl">
+<body ng-app="ExampleApp" class="bg-default"
+	ng-controller="PageController as ctrl">
 <nav-bar ng-if="!ctrl.sideNav" fluid="ctrl.sideNav"></nav-bar>
 <div class="column-layout">
-	<div class="column-layout-left bg-primary" ng-class="{open: ctrl.open}" ng-if="ctrl.sideNav">
+	<div class="column-layout-left bg-primary"
+		ng-class="{open: ctrl.open}"
+		ng-if="ctrl.sideNav">
 		<div class="column-layout-top">
 			<side-nav></side-nav>
 		</div>
 	</div>
 	<div class="column-layout-main">
-		<simple-nav
-			ng-if="ctrl.sideNav"
+		<top-nav
 			title="Settings"
-			on-burger-click="ctrl.burgerToggle()"
-			show-search="ctrl.showSearch"></simple-nav>
+			on-burger-click="ctrl.burgerToggle()">
+		</top-nav>
 
 		<div class="container p-t-panel m-l-0">
-			<h1 class="h3 hidden-lg hidden-xl m-b-panel">Settings</h1>
-			<div>
+
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs m-b-0 p-b-0" role="tablist">
 					<li role="presentation" class="active">
@@ -139,7 +139,6 @@
 					<div role="tabpanel" class="tab-pane" id="twoFactor">...</div>
 				</div>
 
-			</div>
 			<div class="text-xs-center section">
 				&copy; TransferWise 2016
 			</div>

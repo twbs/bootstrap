@@ -9,10 +9,11 @@
 		href="../dist/css/bootstrap.min.css" />
 	<link type="text/css" rel="stylesheet" href="scratch.css" />
 
-	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="../dist/js/bootstrap.min.js"></script>
+	<script src="../assets/js/jquery.js"></script>
+	<script src="../assets/js/angular.js"></script>
+	<script src="../assets/js/styleguide-components.js"></script>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+	<script src="../dist/js/bootstrap.min.js"></script>
 
 	<script src="forms.js"></script>
 
@@ -56,6 +57,7 @@
 
 	<script src="js/one-click.directive.js"></script>
 	<script src="js/nav.directive.js"></script>
+	<script src="js/top-nav.directive.js"></script>
 	<script src="js/simple-nav.directive.js"></script>
 	<script src="js/side-nav.directive.js"></script>
 	<script src="js/start-new.directive.js"></script>
@@ -123,9 +125,10 @@
 			$ctrl.sideNav = true;
 
 			$ctrl.actionButtons = [
-				{label: 'Send money', icon: 'icon-send', primary: true},
-				{label: 'Add money', icon: 'icon-add'},
-				{label: 'Receive', icon: 'icon-request'}
+				{label: 'Send money', icon: 'icon-send', type: 'success', primary: true}
+				,{label: 'Add money', icon: 'icon-add'}
+				,{label: 'Receive', icon: 'icon-request'}
+				,{label: 'Something', icon: 'icon-request'}
 			];
 		}
 	})(window.angular);
@@ -150,28 +153,13 @@
 		-->
 	</div>
 	<div class="column-layout-main">
-		<simple-nav
-			ng-if="ctrl.sideNav"
+		<top-nav
 			title="Activity"
 			on-burger-click="ctrl.burgerToggle()"
-			show-search="ctrl.showSearch"></simple-nav>
-
-		<div class="nav-toolbar" data-spy="affix" data-offset-top="66" ng-class="{
-				'affix-cancel-xs': ctrl.showSearch,
-				'affix-cancel-sm': ctrl.showSearch
-			}">
-			<div class="container m-l-0">
-
-				<activity-filters
-					title="Activity"
-					buttons="ctrl.actionButtons"
-					button-summary="Get started"
-					searchable="true"
-					filters-active="ctrl.showSearch">
-				</activity-filters>
-				<!-- <calculator-inline></calculator-inline> -->
-			</div>
-		</div>
+			buttons="ctrl.actionButtons"
+			button-summary="Actions"
+			searchable="true">
+		</top-nav>
 
 		<div class="container m-l-0">
 			<!--

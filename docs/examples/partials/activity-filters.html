@@ -1,76 +1,102 @@
 <div class="row">
-	<div class="col-xs-6 col-sm-3 hidden-lg hidden-xl" ng-if="!$ctrl.filtersActive">
-		<h1 class="h3">{{$ctrl.title}}</h1>
-	</div>
-	<div class="col-xs-6 col-sm-9 m-b-2" ng-if="!$ctrl.filtersActive">
-		<div class="btn-toolbar btn-toolbar-sm hidden-xs pull-xs-right pull-lg-none">
-			<button ng-repeat="button in $ctrl.buttons"
-				class="btn btn-sm"
+	<div class="m-b-2"
+		ng-class="{
+			'col-xs-6': $ctrl.searchable,
+			'col-xs-12': !$ctrl.searchable,
+			'col-sm-8': $ctrl.searchable,
+			'col-md-9': $ctrl.searchable
+		}"
+		ng-if="!$ctrl.filtersActive">
+
+		<div class="btn-toolbar btn-toolbar-sm">
+			<!-- Single full width button for mobile -->
+			<div ng-if="$ctrl.buttons.length > 1"
+				class="btn-group btn-block visible-xs-block m-b-0">
+				<button type="button"
+					class="btn btn-sm btn-block dropdown-toggle"
+					ng-class="{
+						'btn-success': $ctrl.buttons[0].primary || $ctrl.buttons[0].type === 'success',
+						'btn-primary': !$ctrl.buttons[0].primary && $ctrl.buttons[0].type !== 'success',
+					}"
+					data-toggle="dropdown" aria-expanded="false">
+					{{$ctrl.buttonSummary}} <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu dropdown-menu-lg" role="menu">
+					<li ng-repeat="button in $ctrl.buttons track by $index">
+						<a ng-href="{{button.url ? button.url : ''}}">
+							<i class="icon {{button.icon}}"></i>{{button.label}}
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Expanded buttons when wide enough -->
+			<button class="btn btn-sm"
+				ng-repeat="button in $ctrl.buttons track by $index"
 				ng-class="{
-					'btn-success': button.primary,
-					'btn-info': !button.primary
+					'btn-info': !button.type || button.type === 'info',
+					'btn-success': button.type === 'success',
+					'btn-default': button.type === 'default',
+					'btn-warning': button.type === 'warning',
+					'btn-danger': button.type === 'danger',
+					'btn-primary': button.type === 'primary',
+					'hidden-xs': $ctrl.buttons.length !== 1,
+					'hidden-sm': $index > 0 && $ctrl.buttons.length !== 2,
+					'hidden-md': $index > 1 && $ctrl.buttons.length !== 3,
+					'hidden-lg': $index > 1 && $ctrl.buttons.length !== 3,
+					'hidden-xl': $index > 2 && $ctrl.buttons.length !== 4,
 				}">
 				{{button.label}}
 			</button>
-		</div>
 
-		<div class="btn-group visible-xs-inline-block pull-xs-right">
-			<button type="button" class="btn btn-sm dropdown-toggle"
-				data-toggle="dropdown" aria-expanded="false"
+			<!-- Collapsed dropdown button when we have too many -->
+			<div ng-if="$ctrl.buttons.length > 1" class="btn-group m-b-0"
 				ng-class="{
-					'btn-success': $ctrl.buttonsContainPrimary,
-					'btn-info': !$ctrl.buttonsContainPrimary,
+					'btn-block': $ctrl.buttons.length > 1,
+					'visible-sm-inline-block': $ctrl.buttons.length > 2,
+					'visible-md-inline-block': $ctrl.buttons.length > 3,
+					'visible-lg-inline-block': $ctrl.buttons.length > 3,
+					'visible-xl-inline-block': $ctrl.buttons.length > 4
 				}">
-				{{$ctrl.buttonSummary}} <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu dropdown-menu-xs-right" role="menu">
-				<li ng-repeat="button in $ctrl.buttons">
-					<a href="#">
-						<i class="icon {{button.icon}}"></i>{{button.label}}
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
+				<button type="button"
+					class="btn btn-sm btn-info btn-block dropdown-toggle"
+					data-toggle="dropdown" aria-expanded="false">
+					{{$ctrl.buttonSummary}} <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu dropdown-menu-lg" role="menu">
+					<li ng-repeat="button in $ctrl.buttons track by $index"
+						ng-class="{
+							'hidden-sm': $index < 1,
+							'hidden-md': $index < 2,
+							'hidden-lg': $index < 2,
+							'hidden-xl': $index < 3
+						}">
+						<a ng-href="{{button.url ? button.url : ''}}">
+							<i class="icon {{button.icon}}"></i>{{button.label}}
+						</a>
+					</li>
+				</ul>
+			</div>
 
-	<div class="col-sm-6 col-md-3 m-b-2" ng-if="$ctrl.filtersActive">
-		<tw-select options="$ctrl.activityTypes"
-			ng-model="$ctrl.type"
-			ng-required="true"
-			size="sm"
-			hide-icon="true"
-			ng-if="$ctrl.size !== 'sm'"></tw-select>
-	</div>
-	<div class="col-sm-6 col-md-3 m-b-2" ng-if="$ctrl.filtersActive">
-		<div class="input-group input-group-sm">
-			<span class="input-group-addon">
-				<label class="control-label">From</label>
-			</span>
-			<input class="form-control" value="01 May 2016" />
-		</div>
-	</div>
-	<div class="col-sm-6 col-md-3 m-b-2" ng-if="$ctrl.filtersActive">
-		<div class="input-group input-group-sm">
-			<span class="input-group-addon">
-				<label class="control-label">To</label>
-			</span>
-			<input class="form-control" value="22 May 2016" />
 		</div>
 	</div>
 
 	<div class="col-md-3 m-b-2"
 		ng-if="$ctrl.searchable"
 		ng-class="{
-			'col-sm-6': $ctrl.filtersActive,
+			'col-xs-6': !$ctrl.filtersActive,
 			'col-sm-4': !$ctrl.filtersActive,
-			'hidden-xs': !$ctrl.filtersActive,
-			'hidden-sm': !$ctrl.filtersActive,
-			'hidden-md': !$ctrl.filtersActive
+			'col-xs-12': $ctrl.filtersActive,
+			'col-sm-6': $ctrl.filtersActive,
+			'col-sm-push-6': $ctrl.filtersActive,
+			'col-md-push-9': $ctrl.filtersActive
 		}">
 		<div class="media">
 			<div class="media-body">
 				<div class="input-group input-group-sm">
-					<input id="search-input" class="form-control" placeholder="Search..."
+					<input id="search-input" class="form-control"
+						placeholder="Search..."
+						ng-model="$ctrl.search"
 						ng-focus="$ctrl.filtersActive = true" />
 					<span class="input-group-addon" ng-if="!$ctrl.filtersActive">
 						<i class="icon icon-search"></i>
@@ -89,22 +115,28 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Modal title</h4>
-				</div>
-				<div class="modal-body">
-					<p>Example&hellip;</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+	<div class="col-xs-12 col-sm-6 col-md-3 col-sm-pull-6 col-md-pull-3 m-b-2" ng-if="$ctrl.filtersActive">
+		<tw-select options="$ctrl.activityTypes"
+			ng-model="$ctrl.type"
+			ng-required="true"
+			size="sm"
+			hide-icon="true"
+			ng-if="$ctrl.size !== 'sm'"></tw-select>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-3 col-md-pull-3 m-b-2" ng-if="$ctrl.filtersActive">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon">
+				<label class="control-label">From</label>
+			</span>
+			<input class="form-control" value="01 May 2016" />
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-3 col-md-pull-3 m-b-2" ng-if="$ctrl.filtersActive">
+		<div class="input-group input-group-sm">
+			<span class="input-group-addon">
+				<label class="control-label">To</label>
+			</span>
+			<input class="form-control" value="22 May 2016" />
+		</div>
+	</div>
 </div>

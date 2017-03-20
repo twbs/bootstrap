@@ -14,6 +14,7 @@
 			replace: false,
 			restrict: 'E',
 			scope: {
+				active: '@',
 				onBurgerClick: '&'
 			},
 			templateUrl: 'partials/side-nav.html'
