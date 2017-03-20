@@ -307,7 +307,7 @@
   .bg-danger,
   .bg-inverse,
   .bg-faded {
-    &:not(.navbar):not(.dropdown-menu) {
+    &:not(.navbar):not(.dropdown-menu):not(.nav-inverse) {
       padding: .5rem;
       margin-top: .5rem;
       margin-bottom: .5rem;
