@@ -90,6 +90,33 @@ Using the [card]({{ site.baseurl }}/components/card/) component, you can extend 
 </div>
 {% endexample %}
 
+You can also create accordions with custom markup. Add the `data-children` attribute and specify a set of sibling elements to toggle (e.g., `.item`). Then, use the same attributes and classes as shown above for connectinh toggles to their associated content.
+
+{% example html %}
+<div id="exampleAccordion" data-children=".item">
+  <div class="item">
+    <a data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion1" aria-expanded="true" aria-controls="exampleAccordion1">
+      Toggle item
+    </a>
+    <div id="exampleAccordion1" class="collapse show" role="tabpanel">
+      <p class="mb-3">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium lorem non vestibulum scelerisque. Proin a vestibulum sem, eget tristique massa. Aliquam lacinia rhoncus nibh quis ornare.
+      </p>
+    </div>
+  </div>
+  <div class="item">
+    <a data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion2" aria-expanded="false" aria-controls="exampleAccordion2">
+      Toggle item 2
+    </a>
+    <div id="exampleAccordion2" class="collapse" role="tabpanel">
+      <p class="mb-3">
+        Donec at ipsum dignissim, rutrum turpis scelerisque, tristique lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus nec dui turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      </p>
+    </div>
+  </div>
+</div>
+{% endexample %}
+
 ## Accessibility
 
 Be sure to add `aria-expanded` to the control element. This attribute explicitly defines the current state of the collapsible element to screen readers and similar assistive technologies. If the collapsible element is closed by default, it should have a value of `aria-expanded="false"`. If you've set the collapsible element to be open by default using the `show` class, set `aria-expanded="true"` on the control instead. The plugin will automatically toggle this attribute based on whether or not the collapsible element has been opened or closed.
