@@ -279,10 +279,10 @@ $nav-inverse-link-color:       $gray-lightest;
 $nav-inverse-link-hover-color: lighten($gray-lightest, 10%);
 $nav-inverse-link-hover-bg:    $brand-primary;
 
-$nav-inverse-link-active-color:  $gray-lightest;
-$nav-inverse-link-active-bg:     $component-active-bg;
+$nav-inverse-link-active-color: $gray-lightest;
+$nav-inverse-link-active-bg:    $component-active-bg;
 
-$nav-link-disabled-color:    lighten($component-inverse-bg, 15%);
+$nav-link-disabled-color: lighten($component-inverse-bg, 15%);
 
 $nav-link-padding-x: 1em;
 $nav-link-padding-y: .5em;
