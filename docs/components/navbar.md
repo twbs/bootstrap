@@ -16,7 +16,7 @@ The navbar is a wrapper that positions branding, navigation, and other elements 
 
 Here's what you need to know before getting started with the navbar:
 
-- Navbars require a wrapping `.navbar` with `.navbar-toggleable-*` for responsive collapsing and [color scheme](#color-schemes) classes.
+- Navbars require a wrapping `.navbar` with `.navbar-toggleable{-sm|-md|-lg|-xl}` for responsive collapsing and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
 - Navbars and their contents are built with flexbox, providing easy alignment options via utility classes.
 - Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
@@ -389,7 +389,7 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 </div>
 {% endexample %}
 
-When the container is within your navbar, its horizontal padding is removed at breakpoints lower than your specified `.navbar-toggleable-*` class. This ensures we're not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed.
+When the container is within your navbar, its horizontal padding is removed at breakpoints lower than your specified `.navbar-toggleable{-sm|-md|-lg|-xl}` class. This ensures we're not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed.
 
 {% example html %}
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -429,7 +429,7 @@ Use our position utilities to place navbars in non-static positions. Choose from
 
 ## Responsive behaviors
 
-Navbars can utilize `.navbar-toggler`, `.navbar-collapse`, and `.navbar-toggleable-*` classes to change when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
+Navbars can utilize `.navbar-toggler`, `.navbar-collapse`, and `.navbar-toggleable{-sm|-md|-lg|-xl}` classes to change when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
 
 ### Toggler
 
