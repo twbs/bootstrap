@@ -1,12 +1,12 @@
 /*!
- * QUnit 2.1.1
+ * QUnit 2.2.0
  * https://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2017-01-06T01:52Z
+ * Date: 2017-03-11T16:19Z
  */
 
 /** Font Family and Sizes */
@@ -384,6 +384,7 @@
 	background-color: #EBECE9;
 }
 
+#qunit-tests .qunit-todo-label,
 #qunit-tests .qunit-skipped-label {
 	background-color: #F4FF77;
 	display: inline-block;
@@ -392,6 +393,10 @@
 	line-height: 1.8em;
 	padding: 0 0.5em;
 	margin: -0.4em 0.4em -0.4em 0;
+}
+
+#qunit-tests .qunit-todo-label {
+	background-color: #EEE;
 }
 
 /** Result */
