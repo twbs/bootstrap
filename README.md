@@ -16,6 +16,7 @@
 
 - [Quick start](#quick-start)
 - [Status](#status)
+- [What's included](#whats-included)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
@@ -52,7 +53,7 @@ Read the [Getting started page](https://getbootstrap.com/getting-started/) for i
 
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
 
-### What's included
+## What's included
 
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
