@@ -160,7 +160,7 @@ const Modal = (($) => {
         event.preventDefault()
       }
 
-      if (this._isTransitioning) {
+      if (this._isTransitioning || !this._isShown) {
         return
       }
 
