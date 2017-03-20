@@ -10,6 +10,8 @@
   </p>
 </p>
 
+<br>
+
 ## Table of contents
 
 - [Quick start](#quick-start)
@@ -36,7 +38,7 @@ Several quick start options are available:
 
 Read the [Getting started page](https://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
-### Status
+## Status
 
 [![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
 ![Bower version](https://img.shields.io/bower/v/bootstrap.svg)
