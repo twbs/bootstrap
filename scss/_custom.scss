@@ -635,6 +635,19 @@ $navbar-light-disabled-color:       rgba($black,.3) !default;
 $navbar-light-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
 $navbar-light-toggler-border:       rgba($black,.1) !default;
 
+// Navbar inverse modifications.
+
+$navbar-inverse-link-color:       $gray-lightest;
+$navbar-inverse-link-hover-color: lighten($gray-lightest, 10%);
+$navbar-inverse-link-hover-bg:    $brand-primary;
+
+$navbar-inverse-link-active-color: $gray-lightest;
+$navbar-inverse-link-active-bg:    $component-active-bg;
+
+$navbar-link-disabled-color: lighten($component-inverse-bg, 15%);
+
+@import "custom/navbar";
+
 
 // Navs
 
@@ -1010,3 +1023,5 @@ $tag-active-color: $brand-primary;
 $tag-active-bg: $tag-bg;
 
 $tag-sm-font-size: $font-size-sm;
+
+@import "custom/tags";
