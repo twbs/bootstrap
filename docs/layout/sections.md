@@ -45,7 +45,7 @@ Add any of the below mentioned modifier classes to change the appearance of a se
   </div>
 </div>
 
-<div class="section section-inverse">
+<div class="section section-inverse bg-inverse">
   <div class="section-inner">
     <div class="section-header">
       <h1>Section Inverse</h1>
@@ -56,7 +56,7 @@ Add any of the below mentioned modifier classes to change the appearance of a se
   </div>
 </div>
 
-<div class="section section-contrast">
+<div class="section section-contrast bg-contrast">
   <div class="section-inner">
     <div class="section-header">
       <h1>Section Contrast</h1>
@@ -67,7 +67,7 @@ Add any of the below mentioned modifier classes to change the appearance of a se
   </div>
 </div>
 
-<div class="section section-primary">
+<div class="section section-primary bg-primary">
   <div class="section-inner">
     <div class="section-header">
       <h1>Section Primary</h1>
