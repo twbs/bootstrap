@@ -2324,7 +2324,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .btn {
   display: inline-block;
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.5;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -2333,7 +2333,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
   border-radius: 0.125rem;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 .btn:focus, .btn:hover {
@@ -2757,13 +2757,13 @@ fieldset[disabled] a.btn {
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  border-radius: 0.25rem;
+  border-radius: 0.125rem;
 }
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
-  border-radius: 0.0625rem;
+  border-radius: 0.125rem;
 }
 
 .btn-block {
