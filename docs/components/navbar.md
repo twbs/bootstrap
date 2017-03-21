@@ -431,13 +431,11 @@ Use our position utilities to place navbars in non-static positions. Choose from
 
 Navbars can utilize `.navbar-toggler`, `.navbar-collapse`, and `.navbar-toggleable{-sm|-md|-lg|-xl}` classes to change when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
 
-In order to never collapse the content, add the `.navbar-toggleable` class on the navbar.
-
-In order to always collapse the content, do not add any of the `.navbar-toggleable-*` class on the navbar.
+For navbars that never collapse, add the `.navbar-toggleable` class on the navbar. For navbars that always collapse, don't add any `.navbar-toggleable` class.
 
 ### Toggler
 
-Navbar togglers can be left or right aligned with `.navbar-toggler-left` or `.navbar-toggler-right` modifiers. These are absolutely positioned within the navbar to avoid interference with the collapsed state. You can also use your own styles to position togglers. Below are examples of different toggle styles.
+Navbar togglers are left-aligned by default, but should they follow a sibling element like a `.navbar-brand`, they'll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler. Below are examples of different toggle styles.
 
 With no `.navbar-brand` shown in lowest breakpoint:
 
@@ -471,12 +469,41 @@ With a brand name shown on the left and toggler on the right:
 
 {% example html %}
 <nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+{% endexample %}
+
+With a toggler on the left and brand name on the right:
+
+{% example html %}
+<nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" href="#">Navbar</a>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
