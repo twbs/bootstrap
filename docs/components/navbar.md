@@ -35,10 +35,10 @@ Navbars come with built-in support for a handful of sub-components. Choose from 
 - `.navbar-text` for adding vertically centered strings of text.
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
 
-Here's an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the `md` (medium) breakpoint.
+Here's an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the `lg` (large) breakpoint.
 
 {% example html %}
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -108,7 +108,7 @@ Navbar navigation links build on our `.nav` options with their own modifier clas
 Active states—with `.active`—to indicate the current page can be applied directly to `.nav-link`s or their immediate parent `.nav-item`s.
 
 {% example html %}
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -135,7 +135,7 @@ Active states—with `.active`—to indicate the current page can be applied dir
 And because we use classes for our navs, you can avoid the list-based approach entirely if you like.
 
 {% example html %}
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -154,7 +154,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
 
 {% example html %}
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -249,7 +249,7 @@ Navbars may contain bits of text with the help of `.navbar-text`. This class adj
 Mix and match with other components and utilities as needed.
 
 {% example html %}
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -278,7 +278,7 @@ Mix and match with other components and utilities as needed.
 Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Choose from `.navbar-light` for use with light background colors, or `.navbar-inverse` for dark background colors. Then, customize with `.bg-*` utilities.
 
 <div class="bd-example">
-  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <nav class="navbar navbar-toggleable-lg navbar-inverse bg-inverse">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -306,7 +306,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
     </div>
   </nav>
 
-  <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+  <nav class="navbar navbar-toggleable-lg navbar-inverse bg-primary">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -334,7 +334,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
     </div>
   </nav>
 
-  <nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #e3f2fd;">
+  <nav class="navbar navbar-toggleable-lg navbar-light" style="background-color: #e3f2fd;">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -383,7 +383,7 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 
 {% example html %}
 <div class="container">
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
     <a class="navbar-brand" href="#">Navbar</a>
   </nav>
 </div>
@@ -392,7 +392,7 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 When the container is within your navbar, its horizontal padding is removed at breakpoints lower than your specified `.navbar-toggleable{-sm|-md|-lg|-xl}` class. This ensures we're not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed.
 
 {% example html %}
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
   <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
   </div>
@@ -431,6 +431,10 @@ Use our position utilities to place navbars in non-static positions. Choose from
 
 Navbars can utilize `.navbar-toggler`, `.navbar-collapse`, and `.navbar-toggleable{-sm|-md|-lg|-xl}` classes to change when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
 
+In order to never collapse the content, add the `.navbar-toggleable` class on the navbar.
+
+In order to always collapse the content, do not add any of the `.navbar-toggleable-*` class on the navbar.
+
 ### Toggler
 
 Navbar togglers can be left or right aligned with `.navbar-toggler-left` or `.navbar-toggler-right` modifiers. These are absolutely positioned within the navbar to avoid interference with the collapsed state. You can also use your own styles to position togglers. Below are examples of different toggle styles.
@@ -438,7 +442,7 @@ Navbar togglers can be left or right aligned with `.navbar-toggler-left` or `.na
 With no `.navbar-brand` shown in lowest breakpoint:
 
 {% example html %}
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -466,14 +470,14 @@ With no `.navbar-brand` shown in lowest breakpoint:
 With a brand name shown on the left and toggler on the right:
 
 {% example html %}
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-lg navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" href="#">Navbar</a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
