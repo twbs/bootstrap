@@ -1,7 +1,11 @@
 // import bootstrap components
 @import "bootstrap";
 
+// import custom utilities
+@import "custom/utilities/shadows";
+
 // import custom components
 @import "custom/_dropdown";
 @import "custom/_media";
 @import "custom/_card";
+@import "custom/_tables";

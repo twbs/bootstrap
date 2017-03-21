@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   background-color: $card-bg;
-  box-shadow: $card-shadow;
+  border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
 }
 
@@ -51,12 +51,6 @@
   > .list-group:last-child {
     .list-group-item:last-child {
       @include border-bottom-radius($card-border-radius);
-    }
-  }
-
-  > .list-group {
-    .list-group-item:last-child {
-      border-bottom: 0;
     }
   }
 }
@@ -218,11 +212,9 @@
   .card-group {
     display: flex;
     flex-flow: row wrap;
-    box-shadow: $card-shadow;
 
     .card {
       flex: 1 0 0;
-      box-shadow: none;
 
       + .card {
         margin-left: 0;
