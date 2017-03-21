@@ -26,6 +26,8 @@
 
 // Section Parts
 .section-header {
+  display: flex;
+  align-items: center;
   margin-top: $section-padding-y;
   margin-bottom: $section-padding-y;
 }

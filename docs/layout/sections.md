@@ -89,3 +89,25 @@ Add any of the below mentioned modifier classes to change the appearance of a se
   </div>
 </div>
 {% endexample %}
+
+## Header
+
+Section Header with button.
+
+{% example html %}
+<div class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h1 class="h2 m-0">Example Section</h1>
+      <a href="#" class="btn btn-primary ml-auto">Link</a>
+    </div>
+    <div class="section-body">
+      <div class="card">
+        <div class="card-block">
+          <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endexample %}
