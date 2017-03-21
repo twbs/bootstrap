@@ -269,22 +269,17 @@ $tag-sm-font-size: $font-size-sm;
 
 @import "custom/tags";
 
-// Nav
+// Navbar
 //
-// Inverse Navigation
+// Navbar inverse modifications.
 
-$nav-inverse-color: $gray;
+$navbar-inverse-link-color:       $gray-lightest;
+$navbar-inverse-link-hover-color: lighten($gray-lightest, 10%);
+$navbar-inverse-link-hover-bg:    $brand-primary;
 
-$nav-inverse-link-color:       $gray-lightest;
-$nav-inverse-link-hover-color: lighten($gray-lightest, 10%);
-$nav-inverse-link-hover-bg:    $brand-primary;
+$navbar-inverse-link-active-color: $gray-lightest;
+$navbar-inverse-link-active-bg:    $component-active-bg;
 
-$nav-inverse-link-active-color: $gray-lightest;
-$nav-inverse-link-active-bg:    $component-active-bg;
+$navbar-link-disabled-color: lighten($component-inverse-bg, 15%);
 
-$nav-link-disabled-color: lighten($component-inverse-bg, 15%);
-
-$nav-link-padding-x: 1em;
-$nav-link-padding-y: .5em;
-
-@import "custom/nav";
+@import "custom/navbar";

@@ -1,0 +1,27 @@
+@import "../mixins/hover";
+
+.navbar-inverse {
+  .navbar-nav {
+    .nav-link {
+      font-size: $small-font-size;
+      color: $navbar-inverse-link-color;
+
+      @include hover-focus {
+        color: $navbar-inverse-link-hover-color;
+        background-color: $navbar-inverse-link-hover-bg;
+      }
+
+      &.active,
+      &:active {
+        color: $navbar-inverse-link-active-color;
+        background-color: $navbar-inverse-link-active-bg;
+      }
+
+      &.disabled,
+      &:disabled {
+       color: $navbar-link-disabled-color;
+       background-color: transparent;
+      }
+    }
+  }
+}
