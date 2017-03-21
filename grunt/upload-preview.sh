@@ -6,8 +6,7 @@ if [ "$TRAVIS_REPO_SLUG" != twbs-savage/bootstrap ]; then exit 0; fi
 # Add build metadata to version
 sed -i "/^current_version:/ s/\$/+pr.${TRAVIS_COMMIT}/" _config.yml
 # Fix URLs since the site's root is now a subdirectory
-echo "baseurl: /c/${TRAVIS_COMMIT}" >> _config.yml
-bundle exec jekyll build --destination "$TRAVIS_COMMIT"
+bundle exec jekyll build --destination "$TRAVIS_COMMIT" --baseurl "/c/${TRAVIS_COMMIT}"
 
 # Install gcloud & gsutil
 GSUTIL_VERSION=$(gsutil version | cut -d ' ' -f 3)

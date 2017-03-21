@@ -3,8 +3,8 @@
     [
       "es2015",
       {
-        "modules": false,
-        "loose": true
+        "loose": true,
+        "modules": false
       }
     ]
   ],
