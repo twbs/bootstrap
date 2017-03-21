@@ -175,6 +175,20 @@ $dropdown-inverse-link-disabled-color:  lighten($component-inverse-bg, 15%);
 
 $media-spacing-x: $spacer * .5;
 
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns:               12 !default;
+$grid-gutter-width-base:     30px !default;
+$grid-gutter-widths: (
+  xs: $grid-gutter-width-base,
+  sm: $grid-gutter-width-base,
+  md: $grid-gutter-width-base,
+  lg: $grid-gutter-width-base,
+  xl: $grid-gutter-width-base
+) !default;
+
 // Fonts
 //
 // Font, line-height, and color for body text, headings, and more.
@@ -242,6 +256,26 @@ $nested-kbd-font-weight: $font-weight-bold !default;
 
 $list-inline-padding: 5px !default;
 
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$line-height-lg:         (4 / 3) !default;
+$line-height-sm:         1.5 !default;
+
+$border-radius:          .25rem !default;
+$border-radius-lg:       .3rem !default;
+$border-radius-sm:       .2rem !default;
+
+$component-active-color: $white !default;
+$component-active-bg:    $brand-primary !default;
+
+$caret-width:            .3em !default;
+
+$transition-base:        all .2s ease-in-out !default;
+$transition-fade:        opacity .15s linear !default;
+$transition-collapse:    height .35s ease !default;
+
 // Tags
 //
 // Style tags.
@@ -268,3 +302,27 @@ $tag-active-bg: $tag-bg;
 $tag-sm-font-size: $font-size-sm;
 
 @import "custom/tags";
+
+// Cards
+//
+// Card Styles.
+
+$card-spacer-x:            $spacer-x;
+$card-spacer-y:            $spacer-y;
+$card-border-width:        $border-width;
+$card-border-radius:       $border-radius !default;
+$card-border-color:        rgba($black,.125) !default;
+$card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
+$card-cap-bg:              $gray-lightest !default;
+$card-bg:                  $white !default;
+$card-shadow:              $box-shadow-default;
+
+$card-link-hover-color:    $white !default;
+
+$card-img-overlay-padding: 1.25rem !default;
+
+$card-deck-margin:          ($grid-gutter-width-base / 2) !default;
+
+$card-columns-count:        3 !default;
+$card-columns-gap:          1.25rem !default;
+$card-columns-margin:       $card-spacer-y !default;
