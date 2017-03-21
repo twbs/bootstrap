@@ -18,11 +18,20 @@
 .navbar {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap; // allow us to do the line break for collapsing content
+  justify-content: space-between; // space out brand from logo
   padding: $navbar-padding-y $navbar-padding-x;
 
-  @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
-    > .container {
+  // Because flex properties aren't inherited, we need to redeclare these first
+  // few properities so that content nested within behave properly.
+  > .container,
+  > .container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
+      width: 100%; // prevent flex parent container(-fluid) from collapsing
       margin-right: 0;
       margin-left: 0;
     }
@@ -84,6 +93,13 @@
 // Custom styles for responsive collapsing and toggling of navbar contents.
 // Powered by the collapse Bootstrap JavaScript plugin.
 
+// When collapsed, prevent the toggleable navbar contents from appearing in
+// the default flexbox row orienation. Requires the use of `flex-wrap: wrap`
+// on the `.navbar` parent.
+.navbar-collapse {
+  flex-basis: 100%;
+}
+
 // Button for toggling the navbar when in its collapsed state
 .navbar-toggler {
   align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
@@ -138,6 +154,7 @@
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
+        justify-content: flex-start;
 
         .navbar-nav {
           flex-direction: row;
@@ -149,7 +166,6 @@
         }
 
         // For nesting containers, have to redeclare for alignment purposes
-          display: flex;
         > .container,
         > .container-fluid {
           flex-wrap: nowrap;
@@ -159,7 +175,6 @@
         // scss-lint:disable ImportantRule
         .navbar-collapse {
           display: flex !important;
-          width: 100%;
         }
         // scss-lint:enable ImportantRule
 
