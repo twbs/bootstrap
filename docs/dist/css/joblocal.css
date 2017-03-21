@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:200,400,400i,600,600i");
 /*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
@@ -49,7 +50,7 @@
   position: relative;
   display: inline-block;
   padding: 0.5em 1em;
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: #444547;
   background: #fff;
@@ -84,7 +85,7 @@ a.tag:after {
 }
 
 .tag-sm {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 @media print {
@@ -175,9 +176,9 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: normal;
+  font-family: "Fira Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
   line-height: 1.5;
   color: #444547;
   background-color: #f6f6f6;
@@ -232,7 +233,7 @@ ul ol {
 }
 
 dt {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 dd {
@@ -484,31 +485,31 @@ template {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.1;
   color: inherit;
 }
 
 h1, .h1 {
-  font-size: 2.5rem;
-}
-
-h2, .h2 {
-  font-size: 2rem;
-}
-
-h3, .h3 {
-  font-size: 1.75rem;
-}
-
-h4, .h4 {
   font-size: 1.5rem;
 }
 
+h2, .h2 {
+  font-size: 1.125rem;
+}
+
+h3, .h3 {
+  font-size: 1rem;
+}
+
+h4, .h4 {
+  font-size: 0.875rem;
+}
+
 h5, .h5 {
-  font-size: 1.25rem;
+  font-size: 0.75rem;
 }
 
 h6, .h6 {
@@ -517,30 +518,30 @@ h6, .h6 {
 
 .lead {
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 200;
 }
 
 .display-1 {
-  font-size: 6rem;
-  font-weight: 300;
+  font-size: 2.5rem;
+  font-weight: 200;
   line-height: 1.1;
 }
 
 .display-2 {
   font-size: 5.5rem;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 1.1;
 }
 
 .display-3 {
   font-size: 4.5rem;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 1.1;
 }
 
 .display-4 {
   font-size: 3.5rem;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 1.1;
 }
 
@@ -554,7 +555,7 @@ hr {
 small,
 .small {
   font-size: 80%;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 mark,
@@ -589,7 +590,7 @@ mark,
 .blockquote {
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.09375rem;
   border-left: 0.25rem solid #d7d7d7;
 }
 
@@ -682,7 +683,7 @@ kbd {
 kbd kbd {
   padding: 0;
   font-size: 100%;
-  font-weight: bold;
+  font-weight: 600;
   box-shadow: none;
 }
 
@@ -1973,7 +1974,7 @@ pre code {
   display: block;
   width: 100%;
   padding: 0.5rem 0.75rem;
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.25;
   color: #969696;
   background-color: #fff;
@@ -2013,7 +2014,7 @@ pre code {
 }
 
 select.form-control:not([size]):not([multiple]) {
-  height: calc(2.25rem + 2px);
+  height: calc(2.09375rem + 2px);
 }
 
 select.form-control:focus::-ms-value {
@@ -2035,20 +2036,20 @@ select.form-control:focus::-ms-value {
 .col-form-label-lg {
   padding-top: calc(0.75rem - 1px * 2);
   padding-bottom: calc(0.75rem - 1px * 2);
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .col-form-label-sm {
   padding-top: calc(0.25rem - 1px * 2);
   padding-bottom: calc(0.25rem - 1px * 2);
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 .col-form-legend {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin-bottom: 0;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 
 .form-control-static {
@@ -2073,28 +2074,28 @@ select.form-control:focus::-ms-value {
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   border-radius: 0.2rem;
 }
 
 select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]),
 .input-group-sm > select.input-group-addon:not([size]):not([multiple]),
 .input-group-sm > .input-group-btn > select.btn:not([size]):not([multiple]) {
-  height: 1.8125rem;
+  height: 1.625rem;
 }
 
 .form-control-lg, .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
   padding: 0.75rem 1.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   border-radius: 0.3rem;
 }
 
 select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]),
 .input-group-lg > select.input-group-addon:not([size]):not([multiple]),
 .input-group-lg > .input-group-btn > select.btn:not([size]):not([multiple]) {
-  height: 3.166667rem;
+  height: 2.833333rem;
 }
 
 .form-group {
@@ -2153,8 +2154,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .form-control-danger {
   padding-right: 2.25rem;
   background-repeat: no-repeat;
-  background-position: center right 0.5625rem;
-  background-size: 1.125rem 1.125rem;
+  background-position: center right 0.523438rem;
+  background-size: 1.046875rem 1.046875rem;
 }
 
 .has-success .form-control-feedback,
@@ -2322,7 +2323,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .btn {
   display: inline-block;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.25;
   text-align: center;
   white-space: nowrap;
@@ -2330,7 +2331,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   user-select: none;
   border: 1px solid transparent;
   padding: 0.5rem 1rem;
-  font-size: 1rem;
+  font-size: 0.875rem;
   border-radius: 0.25rem;
   transition: all 0.2s ease-in-out;
 }
@@ -2721,7 +2722,7 @@ fieldset[disabled] a.btn {
 }
 
 .btn-link {
-  font-weight: normal;
+  font-weight: 400;
   color: #0070ce;
   border-radius: 0;
 }
@@ -2755,13 +2756,13 @@ fieldset[disabled] a.btn {
 
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.75rem 1.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   border-radius: 0.3rem;
 }
 
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   border-radius: 0.2rem;
 }
 
@@ -2848,7 +2849,7 @@ tbody.collapse.show {
   min-width: 15rem;
   padding: 0 0;
   margin: 0.125rem 0 0;
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: #444547;
   text-align: left;
   list-style: none;
@@ -2871,7 +2872,7 @@ tbody.collapse.show {
   width: 100%;
   padding: 3px 0.75rem;
   clear: both;
-  font-weight: normal;
+  font-weight: 400;
   color: #444547;
   text-align: inherit;
   white-space: nowrap;
@@ -2919,7 +2920,7 @@ tbody.collapse.show {
   display: block;
   padding: 0 0.75rem;
   margin-bottom: 0;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: #ccc;
   white-space: nowrap;
 }
@@ -3154,8 +3155,8 @@ tbody.collapse.show {
 .input-group-addon {
   padding: 0.5rem 0.75rem;
   margin-bottom: 0;
-  font-size: 1rem;
-  font-weight: normal;
+  font-size: 0.875rem;
+  font-weight: 400;
   line-height: 1.25;
   color: #969696;
   text-align: center;
@@ -3168,7 +3169,7 @@ tbody.collapse.show {
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .input-group-addon.btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   border-radius: 0.2rem;
 }
 
@@ -3176,7 +3177,7 @@ tbody.collapse.show {
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.btn {
   padding: 0.75rem 1.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   border-radius: 0.3rem;
 }
 
@@ -3345,7 +3346,7 @@ tbody.collapse.show {
 .custom-select {
   display: inline-block;
   max-width: 100%;
-  height: calc(2.25rem + 2px);
+  height: calc(2.09375rem + 2px);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
   line-height: 1.25;
   color: #969696;
@@ -3553,7 +3554,7 @@ tbody.collapse.show {
   padding-top: .25rem;
   padding-bottom: .25rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: inherit;
   white-space: nowrap;
 }
@@ -3584,7 +3585,7 @@ tbody.collapse.show {
 .navbar-toggler {
   align-self: flex-start;
   padding: 0.25rem 0.75rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 1;
   background: transparent;
   border: 1px solid transparent;
@@ -4268,7 +4269,7 @@ tbody.collapse.show {
 
 .pagination-lg .page-link {
   padding: 0.75rem 1.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .pagination-lg .page-item:first-child .page-link {
@@ -4283,7 +4284,7 @@ tbody.collapse.show {
 
 .pagination-sm .page-link {
   padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 .pagination-sm .page-item:first-child .page-link {
@@ -4300,7 +4301,7 @@ tbody.collapse.show {
   display: inline-block;
   padding: 0.25em 0.4em;
   font-size: 75%;
-  font-weight: bold;
+  font-weight: 600;
   line-height: 1;
   color: #fff;
   text-align: center;
@@ -4412,7 +4413,7 @@ a.badge:focus, a.badge:hover {
 }
 
 .alert-link {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .alert-dismissible .close {
@@ -4741,8 +4742,8 @@ button.list-group-item-danger.active {
 
 .close {
   float: right;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.3125rem;
+  font-weight: 600;
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
@@ -4894,9 +4895,9 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Fira Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   letter-spacing: normal;
   line-break: auto;
   line-height: 1.5;
@@ -4908,7 +4909,7 @@ button.close {
   white-space: normal;
   word-break: normal;
   word-spacing: normal;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   word-wrap: break-word;
   opacity: 0;
 }
@@ -4998,9 +4999,9 @@ button.close {
   display: block;
   max-width: 276px;
   padding: 1px;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Fira Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   letter-spacing: normal;
   line-break: auto;
   line-height: 1.5;
@@ -5012,7 +5013,7 @@ button.close {
   white-space: normal;
   word-break: normal;
   word-spacing: normal;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: padding-box;
@@ -5119,7 +5120,7 @@ button.close {
 .popover-title {
   padding: 8px 14px;
   margin-bottom: 0;
-  font-size: 1rem;
+  font-size: 0.875rem;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
   border-top-right-radius: calc(0.3rem - 1px);
@@ -7962,11 +7963,11 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 }
 
 .font-weight-normal {
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .font-weight-bold {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .font-italic {
@@ -8192,7 +8193,7 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
 }
 
 .dropdown-item .dropdown-item-title {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .dropdown-item .dropdown-item-subtitle {
@@ -8268,7 +8269,7 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   position: relative;
   display: inline-block;
   padding: 0.5em 1em;
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: #444547;
   background: #fff;
@@ -8303,7 +8304,7 @@ a.tag:after {
 }
 
 .tag-sm {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 .navbar-inverse .navbar-nav .nav-link {
