@@ -490,4 +490,27 @@ $(function () {
       .bootstrapCollapse('show')
   })
 
+  QUnit.test('should allow accordion to use children other than card', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var accordionHTML = '<div id="accordion" data-children=".item">'
+        + '<div class="item">'
+        + '<a id="linkTrigger" data-parent="#accordion" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>'
+        + '<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingThree"></div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>'
+        + '<div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo"></div>'
+        + '</div>'
+        + '</div>'
+
+    $(accordionHTML).appendTo('#qunit-fixture')
+    var $target = $('#linkTrigger')
+    $('#collapseOne').on('shown.bs.collapse', function () {
+      assert.ok($(this).hasClass('show'))
+      assert.ok(!$('#collapseTwo').hasClass('show'))
+      done()
+    })
+    $target.trigger($.Event('click'))
+  })
 })

@@ -90,15 +90,6 @@ var Dropdown = function ($) {
         return false;
       }
 
-      if ('ontouchstart' in document.documentElement && !$(parent).closest(Selector.NAVBAR_NAV).length) {
-
-        // if mobile we use a backdrop because click events don't delegate
-        var dropdown = document.createElement('div');
-        dropdown.className = ClassName.BACKDROP;
-        $(dropdown).insertBefore(this);
-        $(dropdown).on('click', Dropdown._clearMenus);
-      }
-
       var relatedTarget = {
         relatedTarget: this
       };
@@ -108,6 +99,16 @@ var Dropdown = function ($) {
 
       if (showEvent.isDefaultPrevented()) {
         return false;
+      }
+
+      // set the backdrop only if the dropdown menu will be opened
+      if ('ontouchstart' in document.documentElement && !$(parent).closest(Selector.NAVBAR_NAV).length) {
+
+        // if mobile we use a backdrop because click events don't delegate
+        var dropdown = document.createElement('div');
+        dropdown.className = ClassName.BACKDROP;
+        $(dropdown).insertBefore(this);
+        $(dropdown).on('click', Dropdown._clearMenus);
       }
 
       this.focus();
@@ -156,11 +157,6 @@ var Dropdown = function ($) {
         return;
       }
 
-      var backdrop = $(Selector.BACKDROP)[0];
-      if (backdrop) {
-        backdrop.parentNode.removeChild(backdrop);
-      }
-
       var toggles = $.makeArray($(Selector.DATA_TOGGLE));
 
       for (var i = 0; i < toggles.length; i++) {
@@ -181,6 +177,12 @@ var Dropdown = function ($) {
         $(parent).trigger(hideEvent);
         if (hideEvent.isDefaultPrevented()) {
           continue;
+        }
+
+        // remove backdrop only if the dropdown menu will be hidden
+        var backdrop = $(parent).find(Selector.BACKDROP)[0];
+        if (backdrop) {
+          backdrop.parentNode.removeChild(backdrop);
         }
 
         toggles[i].setAttribute('aria-expanded', 'false');

@@ -1,9 +1,9 @@
 // Alerts
 
 @mixin alert-variant($background, $border, $body-color) {
+  color: $body-color;
   background-color: $background;
   border-color: $border;
-  color: $body-color;
 
   hr {
     border-top-color: darken($border, 5%);
