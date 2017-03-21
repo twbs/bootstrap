@@ -268,3 +268,18 @@ $tag-active-bg: $tag-bg;
 $tag-sm-font-size: $font-size-sm;
 
 @import "custom/tags";
+
+// Navbar
+//
+// Navbar inverse modifications.
+
+$navbar-inverse-link-color:       $gray-lightest;
+$navbar-inverse-link-hover-color: lighten($gray-lightest, 10%);
+$navbar-inverse-link-hover-bg:    $brand-primary;
+
+$navbar-inverse-link-active-color: $gray-lightest;
+$navbar-inverse-link-active-bg:    $component-active-bg;
+
+$navbar-link-disabled-color: lighten($component-inverse-bg, 15%);
+
+@import "custom/navbar";
