@@ -1,0 +1,36 @@
+// Anatomy:
+// <media>
+//   <media-image>
+//   <media-body>
+// </media>
+
+// .media {
+//   display: flex;
+//   align-items: flex-start;
+// }
+
+// .media-body {
+//   flex: 1;
+// }
+
+.media-center {
+  align-items: center;
+}
+
+.media-bottom {
+  align-items: flex-end;
+}
+
+// Handle Spacing
+
+.media {
+  // Clear spacing of contained elements
+  margin-left: $media-spacing-x * -.5;
+  margin-right: $media-spacing-x * -.5;
+}
+
+.media-body,
+.media-image {
+  margin-left: $media-spacing-x * .5;
+  margin-right: $media-spacing-x * .5;
+}

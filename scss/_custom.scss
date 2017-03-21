@@ -7,12 +7,26 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
+// Start with assigning color names to specific hex values.
+$white:  #fff !default;
+$black:  #000 !default;
+$red:    #d9534f !default;
+$orange: #f0ad4e !default;
+$yellow: #ffd500 !default;
+$green:  #5cb85c !default;
+$blue:   #0275d8 !default;
+$teal:   #5bc0de !default;
+$pink:   #ff5b77 !default;
+$purple: #613d7c !default;
+
+// Create grayscale
 $gray-dark:     #444547;
 $gray:          #969696;
-$gray-light:    #cccccc;
+$gray-light:    #ccc;
 $gray-lighter:  #d7d7d7;
 $gray-lightest: #f6f6f6;
 
+// Reassign color vars to semantic color scheme
 $brand-primary: #f8ae00;
 $brand-success: #21ba45;
 $brand-info:    #2185d0;
@@ -20,14 +34,25 @@ $brand-warning: #f8ae00;
 $brand-danger:  #db2828;
 $brand-inverse: #444547;
 
+// Shadows
+//
+// Standardized box-shadows to be used in cards/tiles, etc.
+
+$box-shadow-default: 0 .3rem .5rem rgba(0,0,0,.12);
+$box-shadow-soft: 0 .05rem .1rem rgba(0,0,0,.20);
+$box-shadow-large: 0 .5rem 1.25rem rgba(0,0,0,.20);
 
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
-$enable-flex:               true;
+$enable-rounded:            true !default;
 $enable-shadows:            true;
-$enable-transitions:        true;
+$enable-gradients:          false !default;
+$enable-transitions:        true !default;
+$enable-hover-media-query:  false !default;
+$enable-grid-classes:       true !default;
+$enable-print-styles:       true !default;
 
 
 // Body
@@ -68,4 +93,201 @@ $section-primary-color: white; // TODO: map to var
 $section-primary-bg: $brand-primary;
 
 
-@import "custom/_sections";
+// Spacing
+//
+// Control the default styling of most Bootstrap elements by modifying these
+// variables. Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+
+$spacer:   1rem !default;
+$spacer-x: $spacer !default;
+$spacer-y: $spacer !default;
+$spacers: (
+  0: (
+    x: 0,
+    y: 0
+  ),
+  1: (
+    x: ($spacer-x * .25),
+    y: ($spacer-y * .25)
+  ),
+  2: (
+    x: ($spacer-x * .5),
+    y: ($spacer-y * .5)
+  ),
+  3: (
+    x: $spacer-x,
+    y: $spacer-y
+  ),
+  4: (
+    x: ($spacer-x * 1.5),
+    y: ($spacer-y * 1.5)
+  ),
+  5: (
+    x: ($spacer-x * 3),
+    y: ($spacer-y * 3)
+  )
+) !default;
+$border-width: 1px !default;
+
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$line-height-lg:         (4 / 3) !default;
+$line-height-sm:         1.5 !default;
+
+$border-radius:          .25rem !default;
+$border-radius-lg:       .3rem !default;
+$border-radius-sm:       .2rem !default;
+
+$component-active-color: $white !default;
+$component-active-bg:    $brand-primary !default;
+$component-inverse-bg:   $brand-inverse;
+
+$caret-width:            .3em !default;
+
+$transition-base:        all .2s ease-in-out !default;
+$transition-fade:        opacity .15s linear !default;
+$transition-collapse:    height .35s ease !default;
+
+
+// Dropdowns
+//
+// Dropdown menu container and contents.
+
+$dropdown-min-width:              15rem;
+$dropdown-padding-y:              0;
+$dropdown-margin-top:             .125rem !default;
+$dropdown-bg:                     $white !default;
+$dropdown-border-color:           rgba($black,.15) !default;
+$dropdown-border-width:           $border-width !default;
+$dropdown-divider-bg:             $gray-lighter !default;
+$dropdown-box-shadow:             0 .5rem 1rem rgba($black,.175) !default;
+
+$dropdown-link-color:             $gray-dark !default;
+$dropdown-link-hover-color:       darken($gray-dark, 5%) !default;
+$dropdown-link-hover-bg:          $gray-lightest !default;
+
+$dropdown-link-active-color:      $component-active-color !default;
+$dropdown-link-active-bg:         $component-active-bg !default;
+
+$dropdown-link-disabled-color:    $gray-light !default;
+
+$dropdown-item-padding-x:         .75rem;
+$dropdown-item-padding-y:         .5rem;
+
+$dropdown-header-color:           $gray-light !default;
+
+$dropdown-inverse-divider-bg:           lighten($component-inverse-bg, 10%);
+$dropdown-inverse-header-color:         $gray;
+
+$dropdown-inverse-link-color:           $gray-lightest;
+$dropdown-inverse-link-hover-color:     lighten($gray-lightest, 10%);
+$dropdown-inverse-link-hover-bg:        $component-active-bg;
+
+$dropdown-inverse-link-active-color:    $gray-lightest;
+$dropdown-inverse-link-active-bg:       $component-active-bg;
+$dropdown-inverse-link-disabled-color:  lighten($component-inverse-bg, 15%);
+
+
+// Media
+//
+// Handles Media Object
+
+$media-spacing-x: $spacer * .5;
+
+
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:       $font-family-sans-serif !default;
+
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:   1.25rem !default;
+$font-size-sm:   .875rem !default;
+$font-size-xs:   .75rem !default;
+
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
+$font-weight-base: $font-weight-normal !default;
+$line-height-base: 1.5 !default;
+
+$font-size-h1: 2.5rem !default;
+$font-size-h2: 2rem !default;
+$font-size-h3: 1.75rem !default;
+$font-size-h4: 1.5rem !default;
+$font-size-h5: 1.25rem !default;
+$font-size-h6: 1rem !default;
+
+$headings-margin-bottom: ($spacer / 2) !default;
+$headings-font-family:   inherit !default;
+$headings-font-weight:   500 !default;
+$headings-line-height:   1.1 !default;
+$headings-color:         inherit !default;
+
+$display1-size: 6rem !default;
+$display2-size: 5.5rem !default;
+$display3-size: 4.5rem !default;
+$display4-size: 3.5rem !default;
+
+$display1-weight:     300 !default;
+$display2-weight:     300 !default;
+$display3-weight:     300 !default;
+$display4-weight:     300 !default;
+$display-line-height: $headings-line-height !default;
+
+$lead-font-size:   1.25rem !default;
+$lead-font-weight: 300 !default;
+
+$small-font-size: 80% !default;
+
+$text-muted: $gray-light !default;
+
+$blockquote-small-color:  $gray-light !default;
+$blockquote-font-size:    ($font-size-base * 1.25) !default;
+$blockquote-border-color: $gray-lighter !default;
+$blockquote-border-width: .25rem !default;
+
+$hr-border-color: rgba($black,.1) !default;
+$hr-border-width: $border-width !default;
+
+$mark-padding: .2em !default;
+
+$dt-font-weight: $font-weight-bold !default;
+
+$kbd-box-shadow:         inset 0 -.1rem 0 rgba($black,.25) !default;
+$nested-kbd-font-weight: $font-weight-bold !default;
+
+$list-inline-padding: 5px !default;
+
+
+// Tags
+//
+// Style tags.
+
+$tag-padding-x: 1em; //em because we want to use the font-size element, not the root font size as base
+$tag-padding-y: .5em; //em because we want to use the font-size element, not the root font size as base
+$tag-font-size: $font-size-base;
+$tag-line-height: $line-height-base;
+$tag-box-shadow: $box-shadow-default;
+$tag-color: $body-color;
+$tag-bg: #fff;
+
+$tag-group-spacing-x: $spacer-x;
+$tag-group-spacing-y: $tag-group-spacing-x;
+
+$tag-hover-shadow: 0 .35rem .5rem rgba(0,0,0,.16);
+$tag-hover-color: $brand-primary;
+$tag-hover-bg: $tag-bg;
+
+$tag-active-shadow: inset 0 .2rem .2rem rgba(0,0,0,.24);
+$tag-active-color: $brand-primary;
+$tag-active-bg: $tag-bg;
+
+$tag-sm-font-size: $font-size-sm;
