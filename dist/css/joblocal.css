@@ -1834,7 +1834,7 @@ pre code {
 
 .table-sm th,
 .table-sm td {
-  padding: 0.3rem;
+  padding: 0.25rem;
 }
 
 .table-bordered {
@@ -1935,7 +1935,7 @@ pre code {
 }
 
 .thead-inverse th {
-  color: #f6f6f6;
+  color: #fff;
   background-color: #444547;
 }
 
@@ -1945,7 +1945,7 @@ pre code {
 }
 
 .table-inverse {
-  color: #f6f6f6;
+  color: #fff;
   background-color: #444547;
 }
 

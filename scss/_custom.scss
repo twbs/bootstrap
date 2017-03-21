@@ -353,13 +353,13 @@ $transition-collapse:    height .35s ease !default;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-cell-padding:            .5rem !default;
-$table-sm-cell-padding:         .3rem !default;
+$table-cell-padding:            .5rem;
+$table-sm-cell-padding:         .25rem;
 
 $table-bg:                      transparent !default;
 
-$table-inverse-bg:              $gray-dark !default;
-$table-inverse-color:           $body-bg !default;
+$table-inverse-bg:              $brand-inverse;
+$table-inverse-color:           $white;
 
 $table-bg-accent:               rgba($black,.05) !default;
 $table-bg-hover:                rgba($black,.075) !default;
