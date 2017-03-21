@@ -16,12 +16,6 @@
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
   padding: $card-spacer-x;
-  border-top: $card-border-width solid $card-border-color;
-
-  // clear top border if block is first child in the card
-  &:first-child {
-    border-top: 0;
-  }
 }
 
 .card-title {
@@ -76,6 +70,7 @@
   padding: $card-spacer-y $card-spacer-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
   background-color: $card-cap-bg;
+  border-bottom: $card-border-width solid $card-border-color;
 
   &:first-child {
     @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
@@ -286,47 +281,4 @@
       margin-bottom: $card-columns-margin;
     }
   }
-}
-
-//
-// CUSTOM: Buttons
-//
-
-.card {
-  .card-btn {
-    padding: $card-spacer-y $card-spacer-x;
-    border-top: $card-border-width solid $card-border-color;
-    border-radius: 0;
-  }
-
-  > .card-btn:first-child {
-    @include border-top-radius($card-border-radius);
-  }
-
-  > .card-btn:last-child {
-    @include border-bottom-radius($card-border-radius);
-  }
-}
-
-//
-// CUSTOM: Card Image General
-//
-
-.card-img {
-  border-radius: 0; // overwrite vanilla bootstrap as we want to handle this differently with wrapper
-  border-top: $card-border-width solid $card-border-color;
-}
-
-.card-img:first-child {
-  border-top: 0;
-}
-
-// .card-img-top,
-.card-img:first-child img {
-  @include border-top-radius($card-border-radius-inner);
-}
-
-// .card-img-bottom,
-.card-img:last-child img {
-  @include border-bottom-radius($card-border-radius-inner);
 }
