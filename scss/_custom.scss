@@ -94,14 +94,19 @@
 // Start with assigning color names to specific hex values.
 $white:  #fff !default;
 $black:  #000 !default;
-$red:    #d9534f !default;
-$orange: #f0ad4e !default;
+$red:    #db2828;
+$orange: #ff6a44;
 $yellow: #ffd500 !default;
-$green:  #5cb85c !default;
-$blue:   #0275d8 !default;
+$green:  #21ba45;
+$green-light:  #6cc254;
 $teal:   #5bc0de !default;
+$blue:   #0275d8 !default;
+$blue-light: #3d9afc;
+$cyan:   #0070ce;
 $pink:   #ff5b77 !default;
 $purple: #613d7c !default;
+$joblocal-orange: #f8ae00; // used own namespace to distinguish general stuff like error colors which might not change with market
+$joblocal-gray: #444547;
 
 // Create grayscale
 $gray-dark:     #444547;
@@ -111,12 +116,17 @@ $gray-lighter:  #d7d7d7;
 $gray-lightest: #f6f6f6;
 
 // Reassign color vars to semantic color scheme
-$brand-primary: #f8ae00;
-$brand-success: #21ba45;
-$brand-info:    #2185d0;
-$brand-warning: #f8ae00;
-$brand-danger:  #db2828;
-$brand-inverse: #444547;
+$brand-primary:             $joblocal-orange;
+$brand-secondary:           $joblocal-gray;
+$brand-success:             $green !default;
+$brand-info:                $cyan;
+$brand-warning:             $orange !default;
+$brand-danger:              $red !default;
+$brand-inverse:             $gray-dark;
+
+$ausbildung-color: $blue-light;
+$minijob-color: $green-light;
+$new-color: $orange;
 
 // Shadows
 //
