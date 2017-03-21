@@ -54,6 +54,7 @@ $enable-hover-media-query:  false !default;
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
 
+
 // Body
 //
 // Settings for the `<body>` element.
@@ -70,6 +71,23 @@ $link-color:            $brand-info;
 $link-decoration:       none !default;
 $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
+
+
+// Sections
+//
+// Style layout sections.
+
+// $section-inner-max-width: map-get($container-max-width, xl); // TODO: link this to a main variable
+$section-inner-max-width: 100%;
+$section-padding-y: 1.5rem;
+$section-padding-x: 0;
+$section-border: rgba(0,0,0,0.2);
+
+$section-default-color: $brand-inverse;
+$section-inverse-color: white; // TODO: map to var
+$section-contrast-color: $brand-inverse;
+$section-primary-color: white; // TODO: map to var
+
 
 // Spacing
 //
@@ -169,11 +187,13 @@ $dropdown-inverse-link-active-color:    $gray-lightest;
 $dropdown-inverse-link-active-bg:       $component-active-bg;
 $dropdown-inverse-link-disabled-color:  lighten($component-inverse-bg, 15%);
 
+
 // Media
 //
 // Handles Media Object
 
 $media-spacing-x: $spacer * .5;
+
 
 // Fonts
 //
@@ -242,6 +262,7 @@ $nested-kbd-font-weight: $font-weight-bold !default;
 
 $list-inline-padding: 5px !default;
 
+
 // Tags
 //
 // Style tags.
@@ -267,7 +288,6 @@ $tag-active-bg: $tag-bg;
 
 $tag-sm-font-size: $font-size-sm;
 
-@import "custom/tags";
 
 // Navbar
 //
@@ -281,5 +301,3 @@ $navbar-inverse-link-active-color: $gray-lightest;
 $navbar-inverse-link-active-bg:    $component-active-bg;
 
 $navbar-link-disabled-color: lighten($component-inverse-bg, 15%);
-
-@import "custom/navbar";
