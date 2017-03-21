@@ -334,9 +334,9 @@ $list-inline-padding: 5px !default;
 $line-height-lg:         (4 / 3) !default;
 $line-height-sm:         1.5 !default;
 
-$border-radius:          .25rem !default;
-$border-radius-lg:       .3rem !default;
-$border-radius-sm:       .2rem !default;
+$border-radius:          .125rem; // ~ 2px
+$border-radius-lg:       .25rem; // ~ 4px
+$border-radius-sm:       .0625rem; // ~ 1px
 
 $component-active-color: $white !default;
 $component-active-bg:    $brand-primary !default;
@@ -353,7 +353,7 @@ $transition-collapse:    height .35s ease !default;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-cell-padding:            .75rem !default;
+$table-cell-padding:            .5rem !default;
 $table-sm-cell-padding:         .3rem !default;
 
 $table-bg:                      transparent !default;
