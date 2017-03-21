@@ -111,17 +111,6 @@
   background-size: 100% 100%;
 }
 
-// Use `position` on the toggler to prevent it from being auto placed as a flex
-// item and allow easy placement.
-.navbar-toggler-left {
-  position: absolute;
-  left: $navbar-padding-x;
-}
-.navbar-toggler-right {
-  position: absolute;
-  right: $navbar-padding-x;
-}
-
 // Generate series of `.navbar-toggleable-*` responsive classes for configuring
 // where your navbar collapses.
 .navbar-toggleable {
