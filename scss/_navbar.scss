@@ -127,7 +127,8 @@
           }
         }
 
-        > .container {
+        > .container,
+        > .container-fluid {
           padding-right: 0;
           padding-left: 0;
         }
@@ -148,8 +149,9 @@
         }
 
         // For nesting containers, have to redeclare for alignment purposes
-        > .container {
           display: flex;
+        > .container,
+        > .container-fluid {
           flex-wrap: nowrap;
           align-items: center;
         }
