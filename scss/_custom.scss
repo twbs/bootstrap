@@ -149,6 +149,24 @@ $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
 
 
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg:       $gray-lightest;
+$body-color:    $gray-dark;
+
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:            $brand-info;
+$link-decoration:       none !default;
+$link-hover-color:      darken($link-color, 15%) !default;
+$link-hover-decoration: underline !default;
+
+
 // Spacing
 //
 // Control the default styling of most Bootstrap elements by modifying these
@@ -986,6 +1004,7 @@ $kbd-bg:                      $gray-dark !default;
 $pre-color:                   $gray-dark !default;
 $pre-scrollable-max-height:   340px !default;
 
+
 // Sections
 //
 // Style layout sections.
@@ -997,13 +1016,9 @@ $section-padding-x: 0;
 $section-border: rgba(0,0,0,0.2);
 
 $section-default-color: $brand-inverse;
-$section-default-bg: $gray-lightest;
 $section-inverse-color: white; // TODO: map to var
-$section-inverse-bg: $brand-inverse;
 $section-contrast-color: $brand-inverse;
-$section-contrast-bg: $gray-lighter;
 $section-primary-color: white; // TODO: map to var
-$section-primary-bg: $brand-primary;
 
 
 // Media

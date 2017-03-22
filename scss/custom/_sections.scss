@@ -4,7 +4,6 @@
   padding: $section-padding-y $section-padding-x;
 
   border-bottom: 1px solid $section-border;
-  background-color: $section-default-bg;
 }
 
 .section-unpadded {
@@ -39,15 +38,12 @@
 // Color Variants
 .section-inverse {
   color: $section-inverse-color;
-  background-color: $section-inverse-bg;
 }
 
 .section-contrast {
   color: $section-contrast-color;
-  background-color: $section-contrast-bg;
 }
 
 .section-primary {
   color: $section-primary-color;
-  background-color: $section-primary-bg;
 }
