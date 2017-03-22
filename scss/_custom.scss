@@ -662,8 +662,6 @@ $navbar-inverse-link-active-bg:    $component-active-bg;
 
 $navbar-link-disabled-color: lighten($component-inverse-bg, 15%);
 
-@import "custom/navbar";
-
 
 // Navs
 
@@ -1039,5 +1037,3 @@ $tag-active-color: $brand-primary;
 $tag-active-bg: $tag-bg;
 
 $tag-sm-font-size: $font-size-sm;
-
-@import "custom/tags";
