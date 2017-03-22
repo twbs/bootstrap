@@ -25,12 +25,14 @@
   //
   // To trick IE into suppressing the underline, we give the pseudo-element an
   // underline and then immediately remove it.
+  // scss-lint:disable EmptyLineBetweenBlocks
   + .breadcrumb-item:hover::before {
     text-decoration: underline;
   }
   + .breadcrumb-item:hover::before {
     text-decoration: none;
   }
+  // scss-lint:enable EmptyLineBetweenBlocks
 
   &.active {
     color: $breadcrumb-active-color;

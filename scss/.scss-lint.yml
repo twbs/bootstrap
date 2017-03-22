@@ -58,7 +58,7 @@ linters:
     style: same_line # or 'new_line'
 
   EmptyLineBetweenBlocks:
-    enabled: false
+    enabled: true
     ignore_single_line_blocks: true
 
   EmptyRule:

@@ -27,6 +27,7 @@
       border-top-color: $tooltip-arrow-color;
     }
   }
+
   &.tooltip-right,
   &.bs-tether-element-attached-left {
     padding: 0 $tooltip-arrow-width;
@@ -41,6 +42,7 @@
       border-right-color: $tooltip-arrow-color;
     }
   }
+
   &.tooltip-bottom,
   &.bs-tether-element-attached-top {
     padding: $tooltip-arrow-width 0;
@@ -55,6 +57,7 @@
       border-bottom-color: $tooltip-arrow-color;
     }
   }
+
   &.tooltip-left,
   &.bs-tether-element-attached-right {
     padding: 0 $tooltip-arrow-width;
