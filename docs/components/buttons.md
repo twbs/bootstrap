@@ -73,7 +73,12 @@ In need of a button, but not the hefty background colors they bring? Replace the
 
 ## Sizes
 
-Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
+Fancy larger or smaller buttons? Add `.btn-xl`, `.btn-lg` or `.btn-sm` for additional sizes.
+
+{% example html %}
+<button type="button" class="btn btn-primary btn-xl">Extra Large button</button>
+<button type="button" class="btn btn-secondary btn-xl">Extra Large button</button>
+{% endexample %}
 
 {% example html %}
 <button type="button" class="btn btn-primary btn-lg">Large button</button>
