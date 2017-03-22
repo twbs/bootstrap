@@ -265,6 +265,8 @@ Bootstrap's carousel class exposes two events for hooking into carousel function
 
 - `direction`: The direction in which the carousel is sliding (either `"left"` or `"right"`).
 - `relatedTarget`: The DOM element that is being slid into place as the active item.
+- `from`: The index of the current item
+- `to`: The index of the next item
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 
