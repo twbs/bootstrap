@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "change-version": "node grunt/change-version.js",
-    "clean-css": "cleancss --level 1 --source-map --output dist/css/joblocal.min.css dist/css/joblocal.css && cleancss --level 1 --source-map --output dist/css/joblocal-grid.min.css dist/css/joblocal-grid.css && cleancss --level 1 --source-map --output dist/css/joblocal-reboot.min.css dist/css/joblocal-reboot.css",
+    "clean-css": "cleancss --level 1 --source-map --output dist/css/joblocal.min.css dist/css/joblocal.css && cleancss --level 1 --source-map --output dist/css/bootstrap-grid.min.css dist/css/bootstrap-grid.css && cleancss --level 1 --source-map --output dist/css/bootstrap-reboot.min.css dist/css/bootstrap-reboot.css",
     "clean-css-docs": "cleancss --level 1 --source-map --output docs/assets/css/docs.min.css docs/assets/css/docs.min.css",
     "eslint": "eslint --ignore-path .eslintignore js && eslint --config js/tests/.eslintrc.json --env node grunt Gruntfile.js && eslint --config js/tests/.eslintrc.json docs/assets/js/src docs/assets/js/ie-emulation-modes-warning.js docs/assets/js/ie10-viewport-bug-workaround.js",
     "htmlhint": "htmlhint --config docs/.htmlhintrc _gh_pages/",
