@@ -57,6 +57,19 @@ When using button classes on `<a>` elements that are used to trigger in-page fun
 <input class="btn btn-primary" type="reset" value="Reset">
 {% endexample %}
 
+## CTA Buttons
+
+The `.btn-cta` class additionally highlights the button and inherits the color of the button element. Please note that at this point of time, no IE user will ever see these.
+
+{% example html %}
+<button type="button" class="btn btn-cta btn-primary">Primary</button>
+<button type="button" class="btn btn-cta btn-secondary">Secondary</button>
+<button type="button" class="btn btn-cta btn-success">Success</button>
+<button type="button" class="btn btn-cta btn-info">Info</button>
+<button type="button" class="btn btn-cta btn-warning">Warning</button>
+<button type="button" class="btn btn-cta btn-danger">Danger</button>
+{% endexample %}
+
 ## Outline buttons
 
 In need of a button, but not the hefty background colors they bring? Replace the default modifier classes with the `.btn-outline-*` ones to remove all background images and colors on any button.
@@ -73,7 +86,12 @@ In need of a button, but not the hefty background colors they bring? Replace the
 
 ## Sizes
 
-Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
+Fancy larger or smaller buttons? Add `.btn-xl`, `.btn-lg` or `.btn-sm` for additional sizes.
+
+{% example html %}
+<button type="button" class="btn btn-primary btn-xl">Extra Large button</button>
+<button type="button" class="btn btn-secondary btn-xl">Extra Large button</button>
+{% endexample %}
 
 {% example html %}
 <button type="button" class="btn btn-primary btn-lg">Large button</button>
