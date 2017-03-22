@@ -1,0 +1,19 @@
+// Flush Table
+//
+// Remove borders on the top to display table in company with other components
+
+.table-flush {
+  margin: 0;
+  border-top: $card-border-width solid $card-border-color;
+
+  // generally clear top border for tr. Border handling will be done by parent table in card context
+  tr:first-child td,
+  tr:first-child th {
+    border-top: 0;
+  }
+
+  // clear top border if table is first child in the card
+  &:first-child {
+    border-top: 0;
+  }
+}

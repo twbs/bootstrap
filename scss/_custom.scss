@@ -149,24 +149,6 @@ $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
 
 
-// Body
-//
-// Settings for the `<body>` element.
-
-$body-bg:       $gray-lightest;
-$body-color:    $gray-dark;
-
-
-// Links
-//
-// Style anchor elements.
-
-$link-color:            $brand-info;
-$link-decoration:       none !default;
-$link-hover-color:      darken($link-color, 15%) !default;
-$link-hover-decoration: underline !default;
-
-
 // Spacing
 //
 // Control the default styling of most Bootstrap elements by modifying these
@@ -619,6 +601,7 @@ $dropdown-item-padding-y:         .5rem;
 
 $dropdown-header-color:           $gray-light !default;
 
+// CUSTOM: Dropdown
 $dropdown-inverse-divider-bg:           lighten($component-inverse-bg, 10%);
 $dropdown-inverse-header-color:         $gray;
 
@@ -645,6 +628,7 @@ $zindex-modal:              1050 !default;
 $zindex-popover:            1060 !default;
 $zindex-tooltip:            1070 !default;
 
+
 // Navbar
 
 $navbar-padding-x:                  $spacer !default;
@@ -669,7 +653,7 @@ $navbar-light-disabled-color:       rgba($black,.3) !default;
 $navbar-light-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
 $navbar-light-toggler-border:       rgba($black,.1) !default;
 
-// Navbar inverse modifications.
+// CUSTOM: Navbar inverse modifications.
 
 $navbar-inverse-link-color:       $gray-lightest;
 $navbar-inverse-link-hover-color: lighten($gray-lightest, 10%);
@@ -756,11 +740,13 @@ $state-danger-border:            darken($state-danger-bg, 5%) !default;
 
 
 // Cards
+//
+// Card Styles.
 
-$card-spacer-x:            1.25rem !default;
-$card-spacer-y:            .75rem !default;
-$card-border-width:        1px !default;
-$card-border-radius:       $border-radius !default;
+$card-spacer-x:            $spacer-x;
+$card-spacer-y:            $spacer-y;
+$card-border-width:        $border-width;
+$card-border-radius:       $border-radius-lg;
 $card-border-color:        rgba($black,.125) !default;
 $card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-cap-bg:              $gray-lightest !default;
@@ -775,6 +761,9 @@ $card-deck-margin:          ($grid-gutter-width-base / 2) !default;
 $card-columns-count:        3 !default;
 $card-columns-gap:          1.25rem !default;
 $card-columns-margin:       $card-spacer-y !default;
+
+// CUSTOM: Cards
+$card-shadow:               $box-shadow-default;
 
 
 // Tooltips
@@ -1026,6 +1015,27 @@ $section-primary-color: white; // TODO: map to var
 // Handles Media Object
 
 $media-spacing-x: $spacer * .5;
+
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$line-height-lg:         (4 / 3) !default;
+$line-height-sm:         1.5 !default;
+
+$border-radius:          .25rem !default;
+$border-radius-lg:       .3rem !default;
+$border-radius-sm:       .2rem !default;
+
+$component-active-color: $white !default;
+$component-active-bg:    $brand-primary !default;
+
+$caret-width:            .3em !default;
+
+$transition-base:        all .2s ease-in-out !default;
+$transition-fade:        opacity .15s linear !default;
+$transition-collapse:    height .35s ease !default;
 
 
 // Tags

@@ -1,0 +1,84 @@
+.card {
+  border: 0;
+  box-shadow: $card-shadow;
+}
+
+.card-block {
+  border-top: $card-border-width solid $card-border-color;
+
+  // clear top border if block is first child in the card
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+
+// clear bottom border as each block only has top border
+.card {
+  > .list-group {
+    .list-group-item:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+.card-header {
+  border-bottom: 0;
+}
+
+//
+// Card groups
+//
+
+@include media-breakpoint-up(sm) {
+  .card-group {
+    box-shadow: $card-shadow;
+
+    .card {
+      box-shadow: none;
+    }
+  }
+}
+
+//
+// CUSTOM: Buttons
+//
+
+.card {
+  .card-btn {
+    padding: $card-spacer-y $card-spacer-x;
+    border-top: $card-border-width solid $card-border-color;
+    border-radius: 0;
+  }
+
+  > .card-btn:first-child {
+    @include border-top-radius($card-border-radius);
+  }
+
+  > .card-btn:last-child {
+    @include border-bottom-radius($card-border-radius);
+  }
+}
+
+//
+// CUSTOM: Card Image General
+//
+
+.card-img {
+  border-radius: 0; // overwrite vanilla bootstrap as we want to handle this differently with wrapper
+  border-top: $card-border-width solid $card-border-color;
+}
+
+.card-img:first-child {
+  border-top: 0;
+}
+
+// .card-img-top,
+.card-img:first-child img {
+  @include border-top-radius($card-border-radius-inner);
+}
+
+// .card-img-bottom,
+.card-img:last-child img {
+  @include border-bottom-radius($card-border-radius-inner);
+}

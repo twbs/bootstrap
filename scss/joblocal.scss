@@ -4,6 +4,9 @@
 // import bootstrap components
 @import "bootstrap";
 
+// import custom utilities
+@import "custom/utilities/shadows";
+
 // import custom components
 @import "custom/sections";
 @import "custom/dropdown";
@@ -11,3 +14,5 @@
 @import "custom/tags";
 @import "custom/navbar";
 @import "custom/type";
+@import "custom/card";
+@import "custom/tables";
