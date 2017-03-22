@@ -429,6 +429,13 @@ $btn-border-radius-sm:           $border-radius;
 
 $btn-transition:                 all .1s ease-in-out !default;
 
+// CUSTOM: CTA variant
+$btn-cta-gradient-start: rgba(0,0,0,0);
+$btn-cta-gradient-end: rgba(0,0,0,0.3);
+$btn-cta-gradient-blend: overlay;
+$btn-cta-text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+$btn-cta-font-weight: $font-weight-bold;
+
 
 // Forms
 

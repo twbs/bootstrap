@@ -14,6 +14,9 @@
 // CTA Variant, can be paired with a color
 .btn-cta {
   // This solution only works in all browsers except ALL IE's - I chose this solution as I book this as progressive enhancement. It's a standard spec, no user dies if the gradient is not present. TBD
-  @include gradient-y(rgba(0,0,0,0), rgba(0,0,0,0.3));
-  background-blend-mode: overlay;
+  @include gradient-y($btn-cta-gradient-start, $btn-cta-gradient-end);
+  background-blend-mode: $btn-cta-gradient-blend;
+
+  text-shadow: $btn-cta-text-shadow;
+  font-weight: $btn-cta-font-weight;
 }
