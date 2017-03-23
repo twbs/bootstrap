@@ -722,8 +722,8 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 {% example html %}
 <form class="form-inline">
   <div class="form-group">
-    <label for="inputPassword4">Password</label>
-    <input type="password" id="inputPassword4" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+    <label for="inputPassword6">Password</label>
+    <input type="password" id="inputPassword6" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
     <small id="passwordHelpInline" class="text-muted">
       Must be 8-20 characters long.
     </small>
