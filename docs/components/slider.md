@@ -12,11 +12,11 @@ group: components
 
 ## Examples
 
-This is the base slider component as used for Top-Arbeitgeber. `slider-item` holds the html of the repective slides. Due to `vertical-align: middle` are center aligned. You can use `.card`, `.row` and other classes inside.
+This is the base slider component as used for Top-Arbeitgeber. `slider-item` holds the html of the repective slides. Due to `vertical-align: middle` are center aligned. You can use `.card`, `.row` and other classes inside. `.slider-item-grid-spacing` adds the grid spacings with their respective adjustments for all breakpoints.
 
 <div class="section-slider slider">
   <div class="slider-inner">
-    <div class="slider-item">
+    <div class="slider-item slider-item-grid-spacing">
       <div class="row row-spaced">
         <div class="col-12">
           <div class="card slider-card">
@@ -43,7 +43,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
         </div>
       </div>
     </div>
-    <div class="slider-item">
+    <div class="slider-item slider-item-grid-spacing">
       <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
@@ -93,7 +93,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
         </div>
       </div>
     </div>
-    <div class="slider-item">
+    <div class="slider-item slider-item-grid-spacing">
       <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
@@ -143,7 +143,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
         </div>
       </div>
     </div>
-    <div class="slider-item">
+    <div class="slider-item slider-item-grid-spacing">
       <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
@@ -193,7 +193,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
         </div>
       </div>
     </div>
-    <div class="slider-item">
+    <div class="slider-item slider-item-grid-spacing">
       <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
@@ -243,7 +243,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
         </div>
       </div>
     </div>
-    <div class="slider-item">
+    <div class="slider-item slider-item-grid-spacing">
       <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
@@ -293,7 +293,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
         </div>
       </div>
     </div>
-    <div class="slider-item">
+    <div class="slider-item slider-item-grid-spacing">
       <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
@@ -343,7 +343,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
         </div>
       </div>
     </div>
-    <div class="slider-item">
+    <div class="slider-item slider-item-grid-spacing">
       <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
@@ -465,10 +465,10 @@ I refer to the [Slick Slider Doc](http://kenwheeler.github.io/slick/#settings) f
 {% highlight html %}
 <div class="section-slider slider">
   <div class="slider-inner">
-    <div class="slider-item">
+    <div class="slider-item slider-item-grid-spacing">
       ...
     </div>
-    <div class="slider-item">
+    <div class="slider-item slider-item-grid-spacing">
       ...
     </div>
     ...
@@ -490,7 +490,7 @@ For the slider-items we used the bootstrap grid and `.row-spaced` inside a slide
 For a slide with a big feature
 
 {% highlight html %}
-<div class="slider-item">
+<div class="slider-item slider-item-grid-spacing">
   <div class="row row-spaced">
     <div class="col-12">
       <div class="card slider-card">
@@ -524,7 +524,7 @@ For a slide with a big feature
 For regular slides with 6 images.
 
 {% highlight html %}
-<div class="slider-item">
+<div class="slider-item slider-item-grid-spacing">
   <div class="row row-spaced">
     <div class="col-6">
       <div class="card slider-card">
