@@ -320,7 +320,7 @@ Removes the ability for an element's popover to be shown. The popover will only 
 
 #### `.popover('toggleEnabled')`
 
-Toggles the ability for an element's popover to be shown.
+Toggles the ability for an element's popover to be shown or hidden.
 
 {% highlight js %}$('#element').popover('toggleEnabled'){% endhighlight %}
 

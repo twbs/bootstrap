@@ -296,7 +296,7 @@ Removes the ability for an element's tooltip to be shown. The tooltip will only 
 
 #### `.tooltip('toggleEnabled')`
 
-Toggles the ability for an element's tooltip to be shown.
+Toggles the ability for an element's tooltip to be shown or hidden.
 
 {% highlight js %}$('#element').tooltip('toggleEnabled'){% endhighlight %}
 
