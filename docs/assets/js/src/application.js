@@ -104,9 +104,7 @@
 ;(function () {
   'use strict'
 
-  var $slider = $(".slider .slider-inner");
-
-  $slider.slick({
+  $(".slider .slider-inner").slick({
 
     // general
     infinite: true,

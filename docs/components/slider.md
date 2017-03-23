@@ -12,7 +12,7 @@ group: components
 
 ## Examples
 
-This is the base slider component as used for Top-Arbeitgeber. `slider-item` holds the html of the repective slides. Due to `vertical-align: middle` are center aligned. You can use `.card`, `.row` and other classes inside. `.slider-item-grid-spacing` adds the grid spacings with their respective adjustments for all breakpoints.
+This is the base slider component as used for Top-Arbeitgeber. `slider-item` holds the html of the repective slides. Due to `vertical-align: middle`, slides are vertically center aligned. You can use `.card`, `.row` and other classes inside. `.slider-item-grid-spacing` adds the grid spacings with their respective adjustments for all breakpoints.
 
 <div class="section-slider slider">
   <div class="slider-inner">
@@ -474,11 +474,11 @@ I refer to the [Slick Slider Doc](http://kenwheeler.github.io/slick/#settings) f
     ...
   </div>
   <div class="slider-controls">
-    <button class="slider-control-prev btn btn-primary btn-rounded btn-prev"><span class="sr-only">Zurück</span> ←</button>
+    <button class="slider-control-prev btn btn-primary btn-rounded btn-prev"><span class="sr-only">Zurück</span></button>
     <div class="slider-control-indicators">
       <!-- Added by Slick -->
     </div>
-    <button class="slider-control-next btn btn-primary btn-rounded btn-next"><span class="sr-only">Weiter</span> →</button>
+    <button class="slider-control-next btn btn-primary btn-rounded btn-next"><span class="sr-only">Weiter</span></button>
   </div>
 </div>
 {% endhighlight %}
