@@ -491,7 +491,7 @@ $(function () {
   })
 
   QUnit.test('should allow accordion to use children other than card', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
     var done = assert.async()
     var accordionHTML = '<div id="accordion">'
         + '<div class="item">'
@@ -499,17 +499,28 @@ $(function () {
         + '<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingThree"></div>'
         + '</div>'
         + '<div class="item">'
-        + '<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>'
+        + '<a id="linkTriggerTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>'
         + '<div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo"></div>'
         + '</div>'
         + '</div>'
 
     $(accordionHTML).appendTo('#qunit-fixture')
-    var $target = $('#linkTrigger')
-    $('#collapseOne').on('shown.bs.collapse', function () {
-      assert.ok($(this).hasClass('show'))
-      assert.ok(!$('#collapseTwo').hasClass('show'))
-      done()
+    var $trigger = $('#linkTrigger')
+    var $triggerTwo = $('#linkTriggerTwo')
+    var $collapseOne = $('#collapseOne')
+    var $collapseTwo = $('#collapseTwo')
+    $collapseOne.on('shown.bs.collapse', function () {
+      assert.ok($collapseOne.hasClass('show'), '#collapseOne is shown')
+      assert.ok(!$collapseTwo.hasClass('show'), '#collapseTwo is not shown')
+      $collapseTwo.on('shown.bs.collapse', function () {
+        assert.ok(!$collapseOne.hasClass('show'), '#collapseOne is not shown')
+        assert.ok($collapseTwo.hasClass('show'), '#collapseTwo is shown')
+        done()
+      })
+      $triggerTwo.trigger($.Event('click'))
+    })
+    $trigger.trigger($.Event('click'))
+  })
     })
     $target.trigger($.Event('click'))
   })
