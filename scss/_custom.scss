@@ -1069,3 +1069,18 @@ $tag-active-color: $brand-primary;
 $tag-active-bg: $tag-bg;
 
 $tag-sm-font-size: $font-size-sm;
+
+// Slider
+//
+// Variables for our Slick Slider
+
+$slider-inner-padding-x: $spacer-x * 3;
+$slider-inner-padding-y: 0;
+
+$slider-control-spacing-x: $spacer-x;
+$slider-control-spacing-y: $spacer-y;
+$slider-control-indicator-size: 0.5rem;
+$slider-control-indicator-spacing: $spacer-x * .25;
+$slider-control-indicator-bg: $gray-lighter;
+$slider-control-indicator-hover-bg: $gray-light;
+$slider-control-indicator-active-bg: $gray-dark;
