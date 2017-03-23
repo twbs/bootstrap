@@ -215,6 +215,9 @@ const Modal = (($) => {
       this._scrollbarWidth      = null
     }
 
+    handleUpdate() {
+      this._adjustDialog()
+    }
 
     // private
 
@@ -296,7 +299,7 @@ const Modal = (($) => {
 
     _setResizeEvent() {
       if (this._isShown) {
-        $(window).on(Event.RESIZE, (event) => this._handleUpdate(event))
+        $(window).on(Event.RESIZE, (event) => this.handleUpdate(event))
       } else {
         $(window).off(Event.RESIZE)
       }
@@ -400,10 +403,6 @@ const Modal = (($) => {
     // the following methods are used to handle overflowing modals
     // todo (fat): these should probably be refactored out of modal.js
     // ----------------------------------------------------------------------
-
-    _handleUpdate() {
-      this._adjustDialog()
-    }
 
     _adjustDialog() {
       const isModalOverflowing =
