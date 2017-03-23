@@ -57,8 +57,7 @@ const Collapse = (($) => {
 
   const Selector = {
     ACTIVES     : '.card > .show, .card > .collapsing',
-    DATA_TOGGLE : '[data-toggle="collapse"]',
-    DATA_CHILDREN : 'data-children'
+    DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
 
@@ -82,14 +81,6 @@ const Collapse = (($) => {
 
       if (!this._config.parent) {
         this._addAriaAndCollapsedClass(this._element, this._triggerArray)
-      }
-
-      this._selectorActives = Selector.ACTIVES
-      if (this._parent) {
-        const childrenSelector = this._parent.hasAttribute(Selector.DATA_CHILDREN) ? this._parent.getAttribute(Selector.DATA_CHILDREN) : null
-        if (childrenSelector !== null) {
-          this._selectorActives = `${childrenSelector} > .show, ${childrenSelector} > .collapsing`
-        }
       }
 
       if (this._config.toggle) {
@@ -132,7 +123,7 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray($(this._parent).find(this._selectorActives))
+        actives = $.makeArray($(this._parent).find(Selector.ACTIVES))
         if (!actives.length) {
           actives = null
         }
