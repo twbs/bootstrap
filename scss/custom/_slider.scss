@@ -1,0 +1,141 @@
+$slider-inner-padding-x: $spacer-x * 3;
+$slider-inner-padding-y: 0;
+
+$slider-control-spacing-x: $spacer-x;
+$slider-control-spacing-y: $spacer-y;
+$slider-control-indicator-size: 0.5rem;
+$slider-control-indicator-spacing: $spacer-x * .25;
+$slider-control-indicator-bg: $gray-lighter;
+$slider-control-indicator-hover-bg: $gray-light;
+$slider-control-indicator-active-bg: $gray-dark;
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  padding: $slider-inner-padding-y $slider-inner-padding-x;
+}
+
+.slider-inner {
+  position: relative;
+  @include make-container-max-widths();
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slider-item {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+// Controls
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  padding: $slider-control-spacing-y $slider-control-spacing-x;
+}
+
+.slider-control-prev,
+.slider-control-indicators,
+.slider-control-next {
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+.slider-control-next {
+  // TODO: check ugly fix!
+  order: 3;
+}
+
+.slider-control-indicators {
+
+  // clear list styling
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  line-height: 0;
+
+  margin-left: $slider-control-spacing-x;
+  margin-right: $slider-control-spacing-x;
+}
+
+.slider-control-indicators li {
+  display: inline-block;
+  width: $slider-control-indicator-size;
+  height: $slider-control-indicator-size;
+  margin-right: $slider-control-indicator-spacing;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.slider-control-indicators button {
+  width: $slider-control-indicator-size;
+  height: $slider-control-indicator-size;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  text-indent: $slider-control-indicator-size * -2;
+  background: $slider-control-indicator-bg;
+  border-radius: $slider-control-indicator-size * .5;
+  
+  outline: none;
+  border: none;
+
+  &:hover {
+    background: $slider-control-indicator-hover-bg;
+  }
+
+  &.active {
+    background: $slider-control-indicator-active-bg;
+  }
+}
+
+.slick-active button {
+  background: $slider-control-indicator-active-bg;
+}
+
+// Slider rows
+.slider-item {
+  .row {
+    margin: 0;
+  }
+
+  .row + .row {
+    // Adjust spacing to grid
+    @each $breakpoint in map-keys($grid-gutter-widths) {
+      @include media-breakpoint-up($breakpoint) {
+        $gutter: map-get($grid-gutter-widths, $breakpoint);
+        margin-top: $gutter;
+      }
+    }
+  }
+}
+
+// Slider Cards
+.slider-card {
+  .card-img {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+    img {
+      flex: 0 1 auto;
+      align-self: center;
+    }
+  }
+}
+
+// Fort button
+.btn-rounded {
+  padding: 1em;
+  line-height: 1;
+  border-radius: 3em;
+}

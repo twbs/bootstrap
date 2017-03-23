@@ -99,3 +99,69 @@
   anchors.options.placement = 'left'
   anchors.add('.bd-content > h1, .bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
 }())
+
+// Slick Init
+;(function () {
+  'use strict'
+
+  var $slider = $(".slider .slider-inner");
+
+  // Assign Controls
+  $slider.on('init reInit', function(event, slick, currentSlide, nextSlide) {
+    console.log('init');
+
+    $(this).closest('.slider').find('.slider-control-next').on('click, tap', function(e) {
+      slick.slickNext();
+    });
+
+    $(this).closest('.slider').find('.slider-control-prev').on('click, tap', function(e) {
+      slick.slickPrev();
+    });
+
+  });
+
+  $slider.slick({
+
+    // general
+    infinite: true,
+    speed: 200,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    touchThreshold: 20,
+    swipeToSlide: true,
+    slide: '.slider-item',
+
+    // controls
+    dots: true,
+    appendDots: $('.slider-controls'),
+    dotsClass: 'slider-control-indicators',
+    arrows: true,
+    appendArrows: $('.slider-controls'),
+    prevArrow: '<button class="slider-control-prev btn btn-primary btn-rounded btn-prev"><span class="sr-only">Zurück</span> ←</button>',
+    nextArrow: '<button class="slider-control-next btn btn-primary btn-rounded btn-next"><span class="sr-only">Zurück</span> →</button>',
+
+    // responsive
+    mobileFirst: true,
+    responsive: [{
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3,
+      }
+    }, {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 3,
+      }
+    },{
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+      }
+    },,{
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 2,
+      }
+    },],
+  });
+}())

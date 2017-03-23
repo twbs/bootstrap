@@ -1,0 +1,412 @@
+---
+layout: docs
+title: Slider
+description: A slick slider component.
+group: components
+---
+
+The slider is a slideshow for cycling through a series of content, built with CSS 3D transforms and a bit of JavaScript. It is our Bootstrap implementation of [Slick Slider](https://github.com/kenwheeler/slick/blob/master/slick/slick.js).
+
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Example
+
+Lorem
+
+### Slides only
+
+Here's a carousel as implemented for Top Arbeitgeber.
+
+<div class="bd-example">
+  <div class="section-slider slider" id="carouselExampleSlidesOnly">
+    <div class="slider-inner">
+      <div class="slider-item">
+        <div class="row">
+          <div class="col-12">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/372x220?auto=yes&bg=ccc&fg=000&text=1" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=1" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=1" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-item">
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=2" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=2" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=2" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=2" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=2" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=2" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-item">
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=3" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=3" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=3" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=3" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=3" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=3" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-item">
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=4" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=4" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=4" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=4" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=4" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=4" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-item">
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=5" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=5" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=5" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=5" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=5" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=5" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-item">
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=6" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=6" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=6" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=6" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=6" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=6" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-item">
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=7" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=7" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=7" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=7" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=7" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=7" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-item">
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=8" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=8" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=8" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=8" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=8" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card slider-card">
+              <div class="card-img p-2">
+                <img class="img-fluid" data-src="holder.js/160x85?auto=yes&bg=ccc&fg=000&text=8" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <!-- Added by Slick -->
+    </div>
+  </div>
+</div>
+
+<script>
+  
+</script>
