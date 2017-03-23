@@ -106,20 +106,6 @@
 
   var $slider = $(".slider .slider-inner");
 
-  // Assign Controls
-  $slider.on('init reInit', function(event, slick, currentSlide, nextSlide) {
-    console.log('init');
-
-    $(this).closest('.slider').find('.slider-control-next').on('click, tap', function(e) {
-      slick.slickNext();
-    });
-
-    $(this).closest('.slider').find('.slider-control-prev').on('click, tap', function(e) {
-      slick.slickPrev();
-    });
-
-  });
-
   $slider.slick({
 
     // general
