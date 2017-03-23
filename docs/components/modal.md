@@ -575,6 +575,12 @@ Manually hides a modal. **Returns to the caller before the modal has actually be
 
 {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
 
+#### `.modal('handleUpdate')`
+
+Manually readjust the modal's position if the height of a modal changes while it is open (i.e. in case a scrollbar appears).
+
+{% highlight js %}$('#myModal').modal('handleUpdate'){% endhighlight %}
+
 ### Events
 
 Bootstrap's modal class exposes a few events for hooking into modal functionality. All modal events are fired at the modal itself (i.e. at the `<div class="modal">`).
