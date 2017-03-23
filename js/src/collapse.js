@@ -56,7 +56,7 @@ const Collapse = (($) => {
   }
 
   const Selector = {
-    ACTIVES     : '.card > .show, .card > .collapsing',
+    ACTIVES     : '.show, .collapsing',
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
@@ -124,7 +124,7 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray($(this._parent).find(Selector.ACTIVES))
+        actives = $.makeArray($(this._parent).children().children(Selector.ACTIVES))
         if (!actives.length) {
           actives = null
         }
