@@ -265,17 +265,17 @@ $(function () {
         + '</div>'
     var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.card')
 
-    var $target1 = $('<a role="button" data-toggle="collapse" href="#body1" data-parent="#accordion"/>').appendTo($groups.eq(0))
+    var $target1 = $('<a role="button" data-toggle="collapse" href="#body1" />').appendTo($groups.eq(0))
 
-    $('<div id="body1" class="show"/>').appendTo($groups.eq(0))
+    $('<div id="body1" class="show" data-parent="#accordion"/>').appendTo($groups.eq(0))
 
-    var $target2 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body2" data-parent="#accordion"/>').appendTo($groups.eq(1))
+    var $target2 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body2" />').appendTo($groups.eq(1))
 
-    $('<div id="body2"/>').appendTo($groups.eq(1))
+    $('<div id="body2" data-parent="#accordion"/>').appendTo($groups.eq(1))
 
-    var $target3 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body3" data-parent="#accordion"/>').appendTo($groups.eq(2))
+    var $target3 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body3" />').appendTo($groups.eq(2))
 
-    $('<div id="body3"/>')
+    $('<div id="body3" data-parent="#accordion"/>')
       .appendTo($groups.eq(2))
       .on('shown.bs.collapse', function () {
         assert.ok($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
@@ -299,17 +299,17 @@ $(function () {
         + '</div>'
     var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.card')
 
-    var $target1 = $('<a role="button" data-toggle="collapse" href="#body1" data-parent=".accordion"/>').appendTo($groups.eq(0))
+    var $target1 = $('<a role="button" data-toggle="collapse" href="#body1"/>').appendTo($groups.eq(0))
 
-    $('<div id="body1" class="show"/>').appendTo($groups.eq(0))
+    $('<div id="body1" class="show" data-parent=".accordion"/>').appendTo($groups.eq(0))
 
-    var $target2 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body2" data-parent=".accordion"/>').appendTo($groups.eq(1))
+    var $target2 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body2"/>').appendTo($groups.eq(1))
 
-    $('<div id="body2"/>').appendTo($groups.eq(1))
+    $('<div id="body2" data-parent=".accordion"/>').appendTo($groups.eq(1))
 
-    var $target3 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body3" data-parent=".accordion"/>').appendTo($groups.eq(2))
+    var $target3 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body3"/>').appendTo($groups.eq(2))
 
-    $('<div id="body3"/>')
+    $('<div id="body3" data-parent=".accordion"/>')
       .appendTo($groups.eq(2))
       .on('shown.bs.collapse', function () {
         assert.ok($target1.hasClass('collapsed'), 'inactive target 1 does have class "collapsed"')
@@ -401,17 +401,17 @@ $(function () {
         + '</div>'
     var $groups = $(accordionHTML).appendTo('#qunit-fixture').find('.card')
 
-    var $target1 = $('<a role="button" data-toggle="collapse" href="#body1" data-parent="#accordion"/>').appendTo($groups.eq(0))
+    var $target1 = $('<a role="button" data-toggle="collapse" href="#body1"/>').appendTo($groups.eq(0))
 
-    $('<div id="body1" aria-expanded="true" class="show"/>').appendTo($groups.eq(0))
+    $('<div id="body1" aria-expanded="true" class="show" data-parent="#accordion"/>').appendTo($groups.eq(0))
 
-    var $target2 = $('<a role="button" data-toggle="collapse" href="#body2" data-parent="#accordion" class="collapsed" />').appendTo($groups.eq(1))
+    var $target2 = $('<a role="button" data-toggle="collapse" href="#body2" class="collapsed" aria-expanded="false" />').appendTo($groups.eq(1))
 
-    $('<div id="body2" aria-expanded="false"/>').appendTo($groups.eq(1))
+    $('<div id="body2" aria-expanded="false" data-parent="#accordion"/>').appendTo($groups.eq(1))
 
-    var $target3 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body3" data-parent="#accordion"/>').appendTo($groups.eq(2))
+    var $target3 = $('<a class="collapsed" data-toggle="collapse" role="button" href="#body3"/>').appendTo($groups.eq(2))
 
-    $('<div id="body3" aria-expanded="false"/>')
+    $('<div id="body3" aria-expanded="false" data-parent="#accordion"/>')
       .appendTo($groups.eq(2))
       .on('shown.bs.collapse', function () {
         assert.strictEqual($target1.attr('aria-expanded'), 'false', 'inactive target 1 has aria-expanded="false"')
@@ -435,16 +435,16 @@ $(function () {
     var showFired = false
     var $groups   = $(accordionHTML).appendTo('#qunit-fixture').find('.card')
 
-    var $target1 = $('<a role="button" data-toggle="collapse" href="#body1" data-parent="#accordion"/>').appendTo($groups.eq(0))
+    var $target1 = $('<a role="button" data-toggle="collapse" href="#body1"/>').appendTo($groups.eq(0))
 
-    $('<div id="body1" class="collapse"/>')
+    $('<div id="body1" class="collapse" data-parent="#accordion"/>')
       .appendTo($groups.eq(0))
       .on('show.bs.collapse', function () {
         showFired = true
       })
 
-    var $target2 = $('<a role="button" data-toggle="collapse" href="#body2" data-parent="#accordion"/>').appendTo($groups.eq(1))
-    var $body2   = $('<div id="body2" class="collapse"/>').appendTo($groups.eq(1))
+    var $target2 = $('<a role="button" data-toggle="collapse" href="#body2"/>').appendTo($groups.eq(1))
+    var $body2   = $('<div id="body2" class="collapse" data-parent="#accordion"/>').appendTo($groups.eq(1))
 
     $target2.trigger('click')
 
