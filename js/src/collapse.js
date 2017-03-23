@@ -77,6 +77,7 @@ const Collapse = (($) => {
         `[data-toggle="collapse"][href="#${element.id}"],` +
         `[data-toggle="collapse"][data-target="#${element.id}"]`
       ))
+
       this._parent = this._config.parent ? this._getParent() : null
 
       if (!this._config.parent) {
