@@ -17,7 +17,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
 <div class="section-slider slider">
   <div class="slider-inner">
     <div class="slider-item">
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-12">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -26,7 +26,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -44,7 +44,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
       </div>
     </div>
     <div class="slider-item">
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -60,7 +60,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -76,7 +76,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -94,7 +94,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
       </div>
     </div>
     <div class="slider-item">
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -110,7 +110,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -126,7 +126,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -144,7 +144,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
       </div>
     </div>
     <div class="slider-item">
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -160,7 +160,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -176,7 +176,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -194,7 +194,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
       </div>
     </div>
     <div class="slider-item">
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -210,7 +210,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -226,7 +226,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -244,7 +244,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
       </div>
     </div>
     <div class="slider-item">
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -260,7 +260,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -276,7 +276,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -294,7 +294,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
       </div>
     </div>
     <div class="slider-item">
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -310,7 +310,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -326,7 +326,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -344,7 +344,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
       </div>
     </div>
     <div class="slider-item">
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -360,7 +360,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -376,7 +376,7 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row row-spaced">
         <div class="col-6">
           <div class="card slider-card">
             <div class="card-img p-2">
@@ -483,7 +483,7 @@ I refer to the [Slick Slider Doc](http://kenwheeler.github.io/slick/#settings) f
 </div>
 {% endhighlight %}
 
-For the slider-items we used the bootstrap grid and some modifications to `.row` inside a slide to space them according to the `$grid-gutter-width`.
+For the slider-items we used the bootstrap grid and `.row-spaced` inside a slide to space them according to the `$grid-gutter-width`.
 
 #### Big Container
 
@@ -491,7 +491,7 @@ For a slide with a big feature
 
 {% highlight html %}
 <div class="slider-item">
-  <div class="row">
+  <div class="row row-spaced">
     <div class="col-12">
       <div class="card slider-card">
         <div class="card-img p-2">
@@ -500,7 +500,7 @@ For a slide with a big feature
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row row-spaced">
     <div class="col-6">
       <div class="card slider-card">
         <div class="card-img p-2">
@@ -525,7 +525,7 @@ For regular slides with 6 images.
 
 {% highlight html %}
 <div class="slider-item">
-  <div class="row">
+  <div class="row row-spaced">
     <div class="col-6">
       <div class="card slider-card">
         <div class="card-img p-2">
@@ -541,7 +541,7 @@ For regular slides with 6 images.
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row row-spaced">
     <div class="col-6">
       <div class="card slider-card">
         <div class="card-img p-2">
@@ -557,7 +557,7 @@ For regular slides with 6 images.
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row row-spaced">
     <div class="col-6">
       <div class="card slider-card">
         <div class="card-img p-2">
