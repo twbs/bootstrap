@@ -119,12 +119,10 @@
 
     // controls
     dots: true,
-    appendDots: $('.slider-controls'),
-    dotsClass: 'slider-control-indicators',
+    appendDots: $('.slider-control-indicators'),
     arrows: true,
-    appendArrows: $('.slider-controls'),
-    prevArrow: '<button class="slider-control-prev btn btn-primary btn-rounded btn-prev"><span class="sr-only">Zurück</span> ←</button>',
-    nextArrow: '<button class="slider-control-next btn btn-primary btn-rounded btn-next"><span class="sr-only">Zurück</span> →</button>',
+    prevArrow: $('.slider-control-prev'),
+    nextArrow: $('.slider-control-next'),
 
     // responsive
     mobileFirst: true,

@@ -395,6 +395,10 @@ group: components
     </div>
   </div>
   <div class="slider-controls">
-    <!-- Added by Slick -->
+    <button class="slider-control-prev btn btn-primary btn-rounded btn-prev"><span class="sr-only">Zurück</span> ←</button>
+    <div class="slider-control-indicators">
+      <!-- Added by Slick -->
+    </div>
+    <button class="slider-control-next btn btn-primary btn-rounded btn-next"><span class="sr-only">Weiter</span> →</button>
   </div>
 </div>

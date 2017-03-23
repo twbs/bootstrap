@@ -43,13 +43,7 @@ $slider-control-indicator-active-bg: $gray-dark;
   align-self: center;
 }
 
-.slider-control-next {
-  // TODO: check ugly fix!
-  order: 3;
-}
-
-.slider-control-indicators {
-
+.slider-control-indicators ul {
   // clear list styling
   list-style: none;
   padding: 0;
@@ -82,7 +76,7 @@ $slider-control-indicator-active-bg: $gray-dark;
   text-indent: $slider-control-indicator-size * -2;
   background: $slider-control-indicator-bg;
   border-radius: $slider-control-indicator-size * .5;
-  
+
   outline: none;
   border: none;
 
