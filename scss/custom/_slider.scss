@@ -42,6 +42,23 @@
   align-self: center;
 }
 
+.slider-control-prev,
+.slider-control-next {
+  box-sizing: content-box;
+  width: 1em;
+  height: 1em;
+  padding: 1em;
+  background-size: 100%;
+}
+
+.slider-control-prev {
+  background-image: $slider-control-prev-icon-bg;
+}
+
+.slider-control-next {
+  background-image: $slider-control-next-icon-bg;
+}
+
 .slider-control-indicators ul {
   // clear list styling
   list-style: none;

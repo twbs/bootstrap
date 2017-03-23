@@ -127,7 +127,7 @@
     // responsive
     mobileFirst: true,
     responsive: [{
-      breakpoint: 1200,
+      breakpoint: 1280,
       settings: {
         slidesToShow: 3,
       }
@@ -141,7 +141,7 @@
       settings: {
         slidesToShow: 2,
       }
-    },,{
+    },{
       breakpoint: 576,
       settings: {
         slidesToShow: 2,
