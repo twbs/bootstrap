@@ -973,8 +973,8 @@ $carousel-caption-color:                      $white !default;
 
 $carousel-control-icon-width:                 20px !default;
 
-$carousel-control-prev-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 44 44'%3E%3Cpath d='M21.07,17.07l1.07.91L20,20.35a6,6,0,0,1-1.12,1h8.47v1.28H18.86a4.58,4.58,0,0,1,1.12,1L22.14,26l-1.07.91L16.67,22Z'/%3E%3C/svg%3E"), "#", "%23") !default;
-$carousel-control-next-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 44 44'%3E%3Cpath d='M22.93,26.93,21.86,26,24,23.65a6,6,0,0,1,1.12-1H16.67V21.36h8.47a4.58,4.58,0,0,1-1.12-1L21.86,18l1.07-.91L27.33,22Z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$carousel-control-prev-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 14 14'%3E%3Cpath d='M6.4,2l1.07.91L5.31,5.28a6,6,0,0,1-1.12,1h8.47V7.57H4.19a4.58,4.58,0,0,1,1.12,1l2.16,2.37-1.07.91L2,6.93Z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$carousel-control-next-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 14 14'%3E%3Cpath d='M8.26,11.86l-1.07-.91L9.35,8.58a6,6,0,0,1,1.12-1H2V6.29h8.47a4.58,4.58,0,0,1-1.12-1L7.19,2.91,8.26,2l4.4,4.93Z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 $carousel-transition:           transform .6s ease-in-out !default;
 
@@ -1079,6 +1079,8 @@ $slider-inner-padding-y: 0;
 
 $slider-control-spacing-x: $spacer-x;
 $slider-control-spacing-y: $spacer-y;
+$slider-control-button-size: 2.5rem;
+$slider-control-button-icon-size: 1rem;
 $slider-control-indicator-size: 0.5rem;
 $slider-control-indicator-spacing: $spacer-x * .25;
 $slider-control-indicator-bg: $gray-lighter;
