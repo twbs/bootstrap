@@ -281,13 +281,9 @@ const Tooltip = (($) => {
 
         const attachment = this._getAttachment(placement)
 
-        const container = this.config.container === false ? document.body : $(this.config.container)
+        const container = this.config.container === false ? document.body : $(this.config.container)[0]
 
-        $(tip)
-          .data(this.constructor.DATA_KEY, this)
-          .appendTo(container)
-
-        $(this.element).trigger(this.constructor.Event.INSERTED)
+        $(tip).data(this.constructor.DATA_KEY, this)
 
         this._tether = new Tether({
           attachment,
@@ -297,8 +293,11 @@ const Tooltip = (($) => {
           classPrefix     : CLASS_PREFIX,
           offset          : this.config.offset,
           constraints     : this.config.constraints,
-          addTargetClasses: false
+          addTargetClasses: false,
+          bodyElement     : container
         })
+
+        $(this.element).trigger(this.constructor.Event.INSERTED)
 
         Util.reflow(tip)
         this._tether.position()
