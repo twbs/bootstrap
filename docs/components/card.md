@@ -276,6 +276,39 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
 </div>
 {% endexample %}
 
+#### Footer Table
+
+{% example html %}
+<div class="card text-center">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer p-0">
+    <table class="table table-flush table-sm">
+      <tbody>
+        <tr>
+          <th>Label</th>
+          <td>Value</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td>Value</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td>Value</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endexample %}
+
 ## Sizing
 
 Cards assume no specific `width` to start, so they'll be 100% wide unless otherwise stated. You can change this as needed with custom CSS, grid classes, grid Sass mixins, or utilities.

@@ -354,7 +354,7 @@ $transition-collapse:    height .35s ease !default;
 // Customizes the `.table` component with basic values, each used across all table variations.
 
 $table-cell-padding:            .75rem 1.25rem;
-$table-sm-cell-padding:         .25rem;
+$table-sm-cell-padding:         .25rem 0.5rem;
 
 $table-bg:                      transparent !default;
 
