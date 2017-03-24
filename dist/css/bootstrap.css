@@ -8061,9 +8061,6 @@ a.badge:focus {
 .container-fluid .jumbotron {
   border-radius: 3px;
 }
-.jumbotron .container {
-  max-width: 100%;
-}
 @media screen and (min-width: 768px) {
   .jumbotron {
     padding: 48px 0;
