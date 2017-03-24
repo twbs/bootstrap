@@ -282,6 +282,24 @@ Hides and destroys an element's tooltip. Tooltips that use delegation (which are
 
 {% highlight js %}$('#element').tooltip('dispose'){% endhighlight %}
 
+#### `.tooltip('enable')`
+
+Gives an element's tooltip the ability to be shown. **Tooltips are enabled by default.**
+
+{% highlight js %}$('#element').tooltip('enable'){% endhighlight %}
+
+#### `.tooltip('disable')`
+
+Removes the ability for an element's tooltip to be shown. The tooltip will only be able to be shown if it is re-enabled.
+
+{% highlight js %}$('#element').tooltip('disable'){% endhighlight %}
+
+#### `.tooltip('toggleEnabled')`
+
+Toggles the ability for an element's tooltip to be shown or hidden.
+
+{% highlight js %}$('#element').tooltip('toggleEnabled'){% endhighlight %}
+
 ### Events
 
 <table class="table table-bordered table-striped table-responsive">
