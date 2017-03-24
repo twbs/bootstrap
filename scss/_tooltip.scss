@@ -14,7 +14,7 @@
   &.show { opacity: $tooltip-opacity; }
 
   &.tooltip-top,
-  &.bs-tether-element-attached-bottom {
+  &.bs-tether-element-attached-bottom.bs-tether-target-attached-top {
     padding: $tooltip-arrow-width 0;
     margin-top: -$tooltip-margin;
 
@@ -26,9 +26,20 @@
       border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
       border-top-color: $tooltip-arrow-color;
     }
+
+    &.bs-tether-element-attached {
+      &-left .tooltip-inner::before {
+        left: $tooltip-arrow-width * 3;
+      }
+
+      &-right .tooltip-inner::before {
+        right: $tooltip-arrow-width * 2;
+        left: inherit;
+      }
+    }
   }
   &.tooltip-right,
-  &.bs-tether-element-attached-left {
+  &.bs-tether-element-attached-left.bs-tether-target-attached-right {
     padding: 0 $tooltip-arrow-width;
     margin-left: $tooltip-margin;
 
@@ -40,9 +51,20 @@
       border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
       border-right-color: $tooltip-arrow-color;
     }
+
+    &.bs-tether-element-attached {
+      &-top .tooltip-inner::before {
+        top: $tooltip-arrow-width * 3;
+      }
+
+      &-bottom .tooltip-inner::before {
+        top: inherit;
+        bottom: $tooltip-arrow-width * 2;
+      }
+    }
   }
   &.tooltip-bottom,
-  &.bs-tether-element-attached-top {
+  &.bs-tether-element-attached-top.bs-tether-target-attached-bottom {
     padding: $tooltip-arrow-width 0;
     margin-top: $tooltip-margin;
 
@@ -54,9 +76,21 @@
       border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
       border-bottom-color: $tooltip-arrow-color;
     }
+
+    &.bs-tether-element-attached {
+      &-left .tooltip-inner::before {
+        left: $tooltip-arrow-width * 3;
+      }
+
+      &-right .tooltip-inner::before {
+        right: $tooltip-arrow-width * 2;
+        left: inherit;
+      }
+    }
   }
+
   &.tooltip-left,
-  &.bs-tether-element-attached-right {
+  &.bs-tether-element-attached-right.bs-tether-target-attached-left {
     padding: 0 $tooltip-arrow-width;
     margin-left: -$tooltip-margin;
 
@@ -67,6 +101,17 @@
       content: "";
       border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
       border-left-color: $tooltip-arrow-color;
+    }
+
+    &.bs-tether-element-attached {
+      &-top .tooltip-inner::before {
+        top: $tooltip-arrow-width * 3;
+      }
+
+      &-bottom .tooltip-inner::before {
+        top: inherit;
+        bottom: $tooltip-arrow-width * 2;
+      }
     }
   }
 }
