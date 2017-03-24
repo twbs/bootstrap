@@ -5730,8 +5730,7 @@ fieldset[disabled] .btn-addon.active {
   max-height: 100vh;
   overflow-y: auto;
 }
-.column-layout-main .container,
-.column-layout-main .container-fluid {
+.column-layout-main .container {
   max-width: 1176px;
 }
 .column-layout-brand {
