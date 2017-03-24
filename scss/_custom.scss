@@ -223,7 +223,7 @@ $grid-breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1280px
 ) !default;
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints);
@@ -237,7 +237,7 @@ $container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1140px
+  xl: 1224px
 ) !default;
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
@@ -247,12 +247,12 @@ $container-max-widths: (
 // Set the number of columns and specify the width of the gutters.
 
 $grid-columns:               12 !default;
-$grid-gutter-width-base:     30px !default;
+$grid-gutter-width-base:     24px !default;
 $grid-gutter-widths: (
-  xs: $grid-gutter-width-base,
-  sm: $grid-gutter-width-base,
-  md: $grid-gutter-width-base,
-  lg: $grid-gutter-width-base,
+  xs: 8px,
+  sm: 12px,
+  md: 16px,
+  lg: 20px,
   xl: $grid-gutter-width-base
 ) !default;
 
@@ -973,8 +973,8 @@ $carousel-caption-color:                      $white !default;
 
 $carousel-control-icon-width:                 20px !default;
 
-$carousel-control-prev-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M4 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"), "#", "%23") !default;
-$carousel-control-next-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$carousel-control-prev-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 14 14'%3E%3Cpath d='M6.4,2l1.07.91L5.31,5.28a6,6,0,0,1-1.12,1h8.47V7.57H4.19a4.58,4.58,0,0,1,1.12,1l2.16,2.37-1.07.91L2,6.93Z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$carousel-control-next-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 14 14'%3E%3Cpath d='M8.26,11.86l-1.07-.91L9.35,8.58a6,6,0,0,1,1.12-1H2V6.29h8.47a4.58,4.58,0,0,1-1.12-1L7.19,2.91,8.26,2l4.4,4.93Z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 $carousel-transition:           transform .6s ease-in-out !default;
 
@@ -1069,3 +1069,23 @@ $tag-active-color: $brand-primary;
 $tag-active-bg: $tag-bg;
 
 $tag-sm-font-size: $font-size-sm;
+
+// Slider
+//
+// Variables for our Slick Slider
+
+$slider-inner-padding-x: $spacer-x * 3;
+$slider-inner-padding-y: 0;
+
+$slider-control-spacing-x: $spacer-x;
+$slider-control-spacing-y: $spacer-y;
+$slider-control-button-size: 2.5rem;
+$slider-control-button-icon-size: 1rem;
+$slider-control-indicator-size: 0.5rem;
+$slider-control-indicator-spacing: $spacer-x * .25;
+$slider-control-indicator-bg: $gray-lighter;
+$slider-control-indicator-hover-bg: $gray-light;
+$slider-control-indicator-active-bg: $gray-dark;
+
+$slider-control-prev-icon-bg: $carousel-control-prev-icon-bg;
+$slider-control-next-icon-bg: $carousel-control-next-icon-bg;
