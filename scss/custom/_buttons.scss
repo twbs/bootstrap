@@ -20,3 +20,10 @@
   text-shadow: $btn-cta-text-shadow;
   font-weight: $btn-cta-font-weight;
 }
+
+// Rounded Variant for Slider Controls
+.btn-rounded {
+  padding: 1em;
+  line-height: 1;
+  border-radius: 1.5em;
+}
