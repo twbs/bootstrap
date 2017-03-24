@@ -99,3 +99,51 @@
   anchors.options.placement = 'left'
   anchors.add('.bd-content > h1, .bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
 }())
+
+// Slick Init
+;(function () {
+  'use strict'
+
+  $(".slider .slider-inner").slick({
+
+    // general
+    infinite: true,
+    speed: 200,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    touchThreshold: 20,
+    swipeToSlide: true,
+    slide: '.slider-item',
+
+    // controls
+    dots: true,
+    appendDots: $('.slider-control-indicators'),
+    arrows: true,
+    prevArrow: $('.slider-control-prev'),
+    nextArrow: $('.slider-control-next'),
+
+    // responsive
+    mobileFirst: true,
+    responsive: [{
+      breakpoint: 1280,
+      settings: {
+        slidesToShow: 3,
+      }
+    }, {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 3,
+      }
+    },{
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+      }
+    },{
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 2,
+      }
+    },],
+  });
+}())
