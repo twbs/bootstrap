@@ -63,7 +63,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 </div>
 
 {% highlight html %}
-<div class="modal fade">
+<div class="modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
