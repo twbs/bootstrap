@@ -164,6 +164,47 @@ Take that same HTML, but use `.nav-pills` instead:
 </ul>
 {% endexample %}
 
+### Buttons
+
+Take that same HTML, but use `.nav-buttons` instead:
+
+{% example html %}
+<nav class="nav nav-buttons">
+  <a href="#" class="nav-btn btn btn-secondary">Button</a>
+  <a href="#" class="nav-btn btn btn-secondary">Button</a>
+  <a href="#" class="nav-btn btn btn-secondary">Button</a>
+  <a href="#" class="nav-btn btn btn-primary btn-cta ml-auto">Button</a>
+</nav>
+{% endexample %}
+
+{% example html %}
+<ul class="nav nav-buttons">
+  <li class="nav-item">
+    <a class="btn btn-secondary" href="#">Button</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-secondary" href="#">Button</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-secondary" href="#">Button</a>
+  </li>
+  <li class="nav-item ml-auto">
+    <a class="btn btn-primary btn-cta" href="#">Button</a>
+  </li>
+</ul>
+{% endexample %}
+
+{% example html %}
+<div class="card">
+  <nav class="p-2 nav nav-buttons">
+    <a href="#" class="nav-btn btn btn-secondary">Button</a>
+    <a href="#" class="nav-btn btn btn-secondary">Button</a>
+    <a href="#" class="nav-btn btn btn-secondary">Button</a>
+    <a href="#" class="nav-btn btn btn-primary btn-cta btn-lg ml-auto">Button</a>
+  </nav>
+</div>
+{% endexample %}
+
 ### Fill and justify
 
 Force your `.nav`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `.nav-fill`. Notice that all horizontal space is occupied, but not every nav item has the same width.
