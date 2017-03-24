@@ -2098,22 +2098,31 @@ pre code {
 .table-inverse th,
 .table-inverse td,
 .table-inverse thead th {
-  border-color: #fff;
+  border-color: #3b3e40;
 }
 
 .table-inverse.table-bordered {
   border: 0;
 }
 
-.table-responsive {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+.table-inverse.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.table-responsive.table-bordered {
-  border: 0;
+.table-inverse.table-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.075);
+}
+
+@media (max-width: 991px) {
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .table-responsive.table-bordered {
+    border: 0;
+  }
 }
 
 .form-control {
@@ -3772,10 +3781,13 @@ tbody.collapse.show {
 }
 
 .nav-justified .nav-item {
+  -webkit-flex-basis: 0;
+      -ms-flex-preferred-size: 0;
+          flex-basis: 0;
   -webkit-box-flex: 1;
-  -webkit-flex: 1 1 100%;
-      -ms-flex: 1 1 100%;
-          flex: 1 1 100%;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   text-align: center;
 }
 
@@ -7274,9 +7286,11 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   width: 1px;
   height: 1px;
   padding: 0;
-  margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
   border: 0;
 }
 
@@ -7284,9 +7298,11 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   position: static;
   width: auto;
   height: auto;
-  margin: 0;
   overflow: visible;
   clip: auto;
+  white-space: normal;
+  -webkit-clip-path: none;
+          clip-path: none;
 }
 
 .w-25 {
