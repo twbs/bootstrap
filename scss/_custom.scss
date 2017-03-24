@@ -771,6 +771,9 @@ $card-columns-margin:       $card-spacer-y !default;
 
 // CUSTOM: Cards
 $card-shadow:               $box-shadow-default;
+$card-arrow-color:          $gray;
+$card-arrow-size:           1rem;
+$card-arrow:                str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$card-arrow-color}' viewBox='0 0 16 16'%3E%3Cpath d='M7.09,3l5,5-5,5L5.91,11.83,9.74,8,5.91,4.17Z'/%3E%3C/svg%3E"), "#", "%23");
 
 
 // Tooltips
@@ -921,8 +924,8 @@ $list-group-active-border:       $list-group-active-bg !default;
 $list-group-disabled-color:      $gray-light !default;
 $list-group-disabled-bg:         $list-group-bg !default;
 
-$list-group-link-color:          $gray !default;
-$list-group-link-hover-color:    $list-group-link-color !default;
+$list-group-link-color:          $link-color;
+$list-group-link-hover-color:    $link-hover-color;
 
 $list-group-link-active-color:   $list-group-color !default;
 $list-group-link-active-bg:      $gray-lighter !default;

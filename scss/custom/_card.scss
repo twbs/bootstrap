@@ -82,3 +82,28 @@
 .card-img:last-child img {
   @include border-bottom-radius($card-border-radius-inner);
 }
+
+//
+// CUSTOM: Card has-arrow
+//
+// I kept it general, so we can use it at other places. We might need to adjust when this creates problems
+
+.has-arrow {
+  position: relative;
+  padding-right: $card-arrow-size + $card-spacer-x;
+
+  &:after {
+    content: '';
+
+    position: absolute;
+    right: $card-spacer-x * .5;
+    top: 50%;
+    width: $card-arrow-size;
+    height: $card-arrow-size;
+    margin-top: $card-arrow-size * -.5;
+
+    background-image: $card-arrow;
+    background-size: $card-arrow-size;
+    background-repeat: no-repeat;
+  }
+}

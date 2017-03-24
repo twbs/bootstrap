@@ -532,6 +532,27 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 Cards include various options for customizing their backgrounds, borders, and color.
 
+### Interactive / Arrow
+
+{% example html %}
+<div class="card">
+  <a href="#" class="card-block has-arrow">
+    <h3 class="card-title">Special title treatment</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </a>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="card">
+  <div class="list-group list-group-flush">
+    <a href="#" class="list-group-item list-group-item-action has-arrow">Cras justo odio</a>
+    <a href="#" class="list-group-item list-group-item-action has-arrow">Dapibus ac facilisis in</a>
+    <a href="#" class="list-group-item list-group-item-action has-arrow">Vestibulum at eros</a>
+  </div>
+</div>
+{% endexample %}
+
 ### Inverted text
 
 By default, cards use dark text and assume a light background. You can reverse that by toggling the `color` of text within, as well as that of the card's subcomponents, with `.card-inverse`. Then, specify a dark `background-color` and `border-color` to go with it.
