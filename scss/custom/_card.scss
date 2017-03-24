@@ -107,3 +107,33 @@
     background-repeat: no-repeat;
   }
 }
+
+//
+// CUSTOM: Card block action
+//
+// Generally removing link formatting on linked card-blocks, introducing hover & active for dedicated blocks, for example publications
+
+a.card-block {
+  color: inherit;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+.card-block-action {
+  width: 100%; // For `<button>`s (anchors become 100% by default though)
+  text-align: inherit; // For `<button>`s (anchors inherit)
+
+  // Hover state
+  @include hover-focus {
+    color: $card-action-hover-color;
+    background-color: $card-action-hover-bg;
+  }
+
+  &:active {
+    color: $card-action-active-color;
+    background-color: $card-action-active-bg;
+    box-shadow: $card-action-active-box-shadow;
+  }
+}

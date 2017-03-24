@@ -775,6 +775,12 @@ $card-arrow-color:          $gray;
 $card-arrow-size:           1rem;
 $card-arrow:                str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$card-arrow-color}' viewBox='0 0 16 16'%3E%3Cpath d='M7.09,3l5,5-5,5L5.91,11.83,9.74,8,5.91,4.17Z'/%3E%3C/svg%3E"), "#", "%23");
 
+$card-action-hover-color:           inherit;
+$card-action-hover-bg:              $gray-lightest;
+$card-action-active-color:          $gray-dark;
+$card-action-active-bg:             mix(black, $card-action-hover-bg, 10%);
+$card-action-active-box-shadow:     $btn-active-box-shadow;
+
 
 // Tooltips
 

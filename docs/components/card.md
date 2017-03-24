@@ -553,6 +553,26 @@ Cards include various options for customizing their backgrounds, borders, and co
 </div>
 {% endexample %}
 
+### Card Block Action
+Introduces the same concept as list-group action and its variables. We don't use list-groups here, because we want to inherit colors etc. from card block elements as we know it.
+
+{% example html %}
+<div class="card">
+  <a href="#" class="card-block card-block-action has-arrow">
+    <h3 class="card-title">Job</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </a>
+  <a href="#" class="card-block card-block-action has-arrow">
+    <h3 class="card-title">Special title treatment</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </a>
+  <a href="#" class="card-block card-block-action has-arrow">
+    <h3 class="card-title">Special title treatment</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </a>
+</div>
+{% endexample %}
+
 ### Inverted text
 
 By default, cards use dark text and assume a light background. You can reverse that by toggling the `color` of text within, as well as that of the card's subcomponents, with `.card-inverse`. Then, specify a dark `background-color` and `border-color` to go with it.
