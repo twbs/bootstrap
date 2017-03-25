@@ -630,58 +630,16 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 {% highlight scss %}
 // Creates a wrapper for a series of columns
-@mixin make-row($gutters: $grid-gutter-widths) {
-  display: flex;
-  flex-wrap: wrap;
-
-  @each $breakpoint in map-keys($gutters) {
-    @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
-      margin-right: ($gutter / -2);
-      margin-left:  ($gutter / -2);
-    }
-  }
-}
+@include make-row($gutters: $grid-gutter-widths);
 
 // Make the element grid-ready (applying everything but the width)
-@mixin make-col-ready($gutters: $grid-gutter-widths) {
-  position: relative;
-  // Prevent columns from becoming too narrow when at smaller grid tiers by
-  // always setting `width: 100%;`. This works because we use `flex` values
-  // later on to override this initial width.
-  width: 100%;
-  min-height: 1px; // Prevent collapsing
-
-  @each $breakpoint in map-keys($gutters) {
-    @include media-breakpoint-up($breakpoint) {
-      $gutter: map-get($gutters, $breakpoint);
-      padding-right: ($gutter / 2);
-      padding-left:  ($gutter / 2);
-    }
-  }
-}
-
-@mixin make-col($size, $columns: $grid-columns) {
-  flex: 0 0 percentage($size / $columns);
-  width: percentage($size / $columns);
-  // Add a `max-width` to ensure content within each column does not blow out
-  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
-  // do not appear to require this.
-  max-width: percentage($size / $columns);
-}
+@include make-col-ready($gutters: $grid-gutter-widths);
+@include make-col($size, $columns: $grid-columns);
 
 // Get fancy by offsetting, or changing the sort order
-@mixin make-col-offset($size, $columns: $grid-columns) {
-  margin-left: percentage($size / $columns);
-}
-
-@mixin make-col-push($size, $columns: $grid-columns) {
-  left: if($size > 0, percentage($size / $columns), auto);
-}
-
-@mixin make-col-pull($size, $columns: $grid-columns) {
-  right: if($size > 0, percentage($size / $columns), auto);
-}
+@include make-col-offset($size, $columns: $grid-columns);
+@include make-col-push($size, $columns: $grid-columns);
+@include make-col-pull($size, $columns: $grid-columns);
 {% endhighlight %}
 
 ### Example usage
