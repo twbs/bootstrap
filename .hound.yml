@@ -3,10 +3,13 @@ fail_on_violations: true
 scss:
   enabled: false
 
-javascript:
-  enabled: true
+javascript:`
+  enabled: false 
   config_file: js/.jshintrc
 
 jscs:
+  enabled: true
+  config_file: js/.jscsrc
+ jscs:
   enabled: true
   config_file: js/.jscsrc
