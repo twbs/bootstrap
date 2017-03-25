@@ -646,46 +646,47 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.
 
-See it in action in <a href="https://jsbin.com/ruxona/edit?html,output">this rendered example</a>.
-
 {% highlight scss %}
-.container {
-  max-width: 60em;
+.example-container {
+  width: 800px;
   @include make-container();
 }
-.row {
+
+.example-row {
   @include make-row();
 }
-.content-main {
+
+.example-content-main {
   @include make-col-ready();
 
-  @media (max-width: 32em) {
+  @include media-breakpoint-up(sm) {
     @include make-col(6);
   }
-  @media (min-width: 32.1em) {
+  @include media-breakpoint-up(lg) {
     @include make-col(8);
   }
 }
-.content-secondary {
+
+.example-content-secondary {
   @include make-col-ready();
 
-  @media (max-width: 32em) {
+  @include media-breakpoint-up(sm) {
     @include make-col(6);
   }
-  @media (min-width: 32.1em) {
+  @include media-breakpoint-up(lg) {
     @include make-col(4);
   }
 }
 {% endhighlight %}
 
-{% highlight html %}
-<div class="container">
-  <div class="row">
-    <div class="content-main">...</div>
-    <div class="content-secondary">...</div>
+{% example html %}
+<div class="example-container">
+  <div class="example-row">
+    <div class="example-content-main">Main content</div>
+    <div class="example-content-secondary">Secondary content</div>
   </div>
 </div>
-{% endhighlight %}
+{% endexample %}
 
 ## Customizing the grid
 
