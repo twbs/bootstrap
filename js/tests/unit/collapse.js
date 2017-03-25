@@ -513,4 +513,20 @@ $(function () {
     })
     $target.trigger($.Event('click'))
   })
+
+  QUnit.test('should not prevent event for input', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $target = $('<input type="checkbox" data-toggle="collapse" data-target="#collapsediv1" />').appendTo('#qunit-fixture')
+
+    $('<div id="collapsediv1"/>')
+      .appendTo('#qunit-fixture')
+      .on('shown.bs.collapse', function () {
+        assert.ok($target.attr('aria-expanded') === 'true')
+        assert.ok($target.prop('checked'))
+        done()
+      })
+
+    $target.trigger($.Event('click'))
+  })
 })
