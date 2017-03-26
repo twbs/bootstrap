@@ -6,14 +6,14 @@
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-    .d#{$infix}-none         { display: none !important; }
-    .d#{$infix}-inline       { display: inline !important; }
-    .d#{$infix}-inline-block { display: inline-block !important; }
-    .d#{$infix}-block        { display: block !important; }
-    .d#{$infix}-table        { display: table !important; }
-    .d#{$infix}-table-cell   { display: table-cell !important; }
-    .d#{$infix}-flex         { display: flex !important; }
-    .d#{$infix}-inline-flex  { display: inline-flex !important; }
+    .display#{$infix}-none         { display: none !important; }
+    .display#{$infix}-inline       { display: inline !important; }
+    .display#{$infix}-inline-block { display: inline-block !important; }
+    .display#{$infix}-block        { display: block !important; }
+    .display#{$infix}-table        { display: table !important; }
+    .display#{$infix}-table-cell   { display: table-cell !important; }
+    .display#{$infix}-flex         { display: flex !important; }
+    .display#{$infix}-inline-flex  { display: inline-flex !important; }
   }
 }
 
@@ -22,7 +22,7 @@
 // Utilities for toggling `display` in print
 //
 
-.d-print-block {
+.display-print-block {
   display: none !important;
 
   @media print {
@@ -30,7 +30,7 @@
   }
 }
 
-.d-print-inline {
+.display-print-inline {
   display: none !important;
 
   @media print {
@@ -38,7 +38,7 @@
   }
 }
 
-.d-print-inline-block {
+.display-print-inline-block {
   display: none !important;
 
   @media print {
@@ -46,7 +46,7 @@
   }
 }
 
-.d-print-none {
+.display-print-none {
   @media print {
     display: none !important;
   }
