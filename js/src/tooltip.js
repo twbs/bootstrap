@@ -340,6 +340,7 @@ const Tooltip = (($) => {
           tip.parentNode.removeChild(tip)
         }
 
+        this._cleanTipClass()
         this.element.removeAttribute('aria-describedby')
         $(this.element).trigger(this.constructor.Event.HIDDEN)
         this._isTransitioning = false
@@ -436,6 +437,15 @@ const Tooltip = (($) => {
 
     _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()]
+    }
+
+    _cleanTipClass() {
+      const $tip = $(this.getTipElement())
+      if (this.config.toggle === 'tooltip') {
+        $tip.attr('class', 'tooltip fade')
+      } else {
+        $tip.attr('class', 'popover fade')
+      }
     }
 
     _setListeners() {
