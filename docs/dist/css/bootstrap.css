@@ -3093,10 +3093,10 @@ tbody.collapse.show {
 }
 
 .dropdown-divider {
-  height: 1px;
+  height: 0;
   margin: 0.5rem 0;
   overflow: hidden;
-  background-color: #eceeef;
+  border-top: 1px solid #eceeef;
 }
 
 .dropdown-item {
