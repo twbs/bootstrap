@@ -871,7 +871,7 @@ $(function () {
   })
 
   QUnit.test('should reset tip classes when hidden event triggered', function (assert) {
-    assert.expect(1)
+    assert.expect(2)
     var done = assert.async()
     var $el = $('<a href="#" rel="tooltip" title="Test tooltip"/>')
       .appendTo('#qunit-fixture')
@@ -879,7 +879,8 @@ $(function () {
       .on('hidden.bs.tooltip', function () {
         var tooltip = $el.data('bs.tooltip')
         var $tooltip = $(tooltip.getTipElement())
-        assert.ok($tooltip[0].classList.length === 2)
+        assert.ok($tooltip.hasClass('tooltip'))
+        assert.ok($tooltip.hasClass('fade'))
         done()
       })
 
