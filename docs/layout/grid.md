@@ -224,7 +224,7 @@ Use `col-{breakpoint}-auto` classes to size columns based on the natural width o
     <div class="col col-lg-2">
       1 of 3
     </div>
-    <div class="col-12 col-md-auto">
+    <div class="col-md-auto">
       Variable width content
     </div>
     <div class="col col-lg-2">
@@ -235,7 +235,7 @@ Use `col-{breakpoint}-auto` classes to size columns based on the natural width o
     <div class="col">
       1 of 3
     </div>
-    <div class="col-12 col-md-auto">
+    <div class="col-md-auto">
       Variable width content
     </div>
     <div class="col col-lg-2">
