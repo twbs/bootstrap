@@ -164,6 +164,8 @@ For example, here are two grid layouts that apply to every device and viewport, 
 
 Equal-width columns can be broken into multiple lines, but there is a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items) that prevents this from working without an explicit `flex-basis` or `border`. Our example works thanks to the `border` being set; you can do the same with `.col { border: 1px solid transparent; }`. Alternatively, you can set the flex-basis to the width of the column (e.g., `.col { flex: 1 0 50%; }`).
 
+Both these fixes have been documented in a [reduced test case outside Bootstrap](https://output.jsbin.com/micohor).
+
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
