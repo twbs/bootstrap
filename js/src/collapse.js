@@ -363,7 +363,9 @@ const Collapse = (($) => {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    event.preventDefault()
+    if (/input|textarea/i.test(event.target.tagName)) {
+      event.preventDefault()
+    }
 
     const target = Collapse._getTargetFromElement(this)
     const data   = $(target).data(DATA_KEY)
