@@ -108,6 +108,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 ### Button group
 
 - Rewrote component with flexbox.
+- Removed `.btn-group-justified`.
 - Dropped the `.btn-group-xs` class entirely given removal of `.btn-xs`.
 - Removed explicit spacing between button groups in button toolbars; use margin utilities now.
 - Improved documentation for use with other components.
