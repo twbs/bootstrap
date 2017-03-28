@@ -34,6 +34,7 @@ const Tooltip = (($) => {
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
   const CLASS_PREFIX        = 'bs-tether'
+  const TETHER_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
   const Default = {
     animation   : true,
@@ -441,18 +442,9 @@ const Tooltip = (($) => {
 
     _cleanTipClass() {
       const $tip = $(this.getTipElement())
-      let tabClassStr = $tip.attr('class')
-      let tabClass = tabClassStr.split(' ')
-      let i = 0
-      while (tabClassStr.indexOf(CLASS_PREFIX) !== -1) {
-        if (tabClass[i].indexOf(CLASS_PREFIX) !== -1) {
-          $tip.removeClass(tabClass[i])
-          tabClassStr = $tip.attr('class')
-          tabClass = tabClassStr.split(' ')
-          i = 0
-        } else {
-          i++
-        }
+      const tabClass = $tip.attr('class').match(TETHER_PREFIX_REGEX)
+      if (tabClass !== null && tabClass.length > 0) {
+        $tip.removeClass(tabClass.join(''))
       }
     }
 
