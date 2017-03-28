@@ -40,6 +40,8 @@
 // Carousel
 // Close
 // Code
+// Background
+// Text emphasis
 
 @mixin _assert-ascending($map, $map-name) {
   $prev-key: null;
@@ -162,6 +164,7 @@ $sizes: (
 
 $body-bg:       $white !default;
 $body-color:    $gray-dark !default;
+
 
 // Links
 //
@@ -319,6 +322,7 @@ $table-bg:                      transparent !default;
 $table-bg-accent:               rgba($black,.05) !default;
 $table-bg-hover:                rgba($black,.075) !default;
 $table-bg-active:               $table-bg-hover !default;
+$table-bg-active-hover:         darken($table-bg-hover, 5%) !default;
 
 $table-border-width:            $border-width !default;
 $table-border-color:            $gray-lighter !default;
@@ -338,54 +342,85 @@ $table-inverse-color:           $body-bg !default;
 //
 // For each of Bootstrap's buttons, define text, background and border color.
 
-$btn-padding-x:                  1rem !default;
-$btn-padding-y:                  .5rem !default;
-$btn-line-height:                1.25 !default;
-$btn-font-weight:                $font-weight-normal !default;
-$btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
-$btn-focus-box-shadow:           0 0 0 2px rgba($brand-primary, .25) !default;
-$btn-active-box-shadow:          inset 0 3px 5px rgba($black,.125) !default;
+$btn-padding-x:                      1rem !default;
+$btn-padding-y:                      .5rem !default;
+$btn-line-height:                    1.25 !default;
+$btn-font-weight:                    $font-weight-normal !default;
+$btn-box-shadow:                     inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
+$btn-focus-box-shadow:               0 0 0 2px rgba($brand-primary, .25) !default;
+$btn-active-box-shadow:              inset 0 3px 5px rgba($black,.125) !default;
 
-$btn-primary-color:              $white !default;
-$btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             $btn-primary-bg !default;
+$btn-primary-color:                  $white !default;
+$btn-primary-bg:                     $brand-primary !default;
+$btn-primary-border:                 $btn-primary-bg !default;
+$btn-primary-active-bg:              darken($btn-primary-bg, 10%) !default;
+$btn-primary-active-border:          darken($btn-primary-border, 12%) !default;
+$btn-primary-focus-shadow:           0 0 0 2px rgba($btn-primary-border, .5) !default;
+$btn-primary-focus-shadow:           0 0 0 2px rgba($btn-primary-border, .5) !default;
+$btn-outline-primary-hover-color:    $white !default;
+$btn-outline-primary-focus-shadow:   0 0 0 2px rgba($btn-primary-bg, .5) !default;
 
-$btn-secondary-color:            $gray-dark !default;
-$btn-secondary-bg:               $white !default;
-$btn-secondary-border:           #ccc !default;
+$btn-secondary-color:                $gray-dark !default;
+$btn-secondary-bg:                   $white !default;
+$btn-secondary-border:               #ccc !default;
+$btn-secondary-active-bg:            darken($btn-secondary-bg, 10%) !default;
+$btn-secondary-active-border:        darken($btn-secondary-border, 12%) !default;
+$btn-secondary-focus-shadow:         0 0 0 2px rgba($btn-secondary-border, .5) !default;
+$btn-outline-secondary-hover-color:  $white !default;
+$btn-outline-secondary-focus-shadow: 0 0 0 2px rgba($btn-secondary-border, .5) !default;
 
-$btn-info-color:                 $white !default;
-$btn-info-bg:                    $brand-info !default;
-$btn-info-border:                $btn-info-bg !default;
+$btn-info-color:                     $white !default;
+$btn-info-bg:                        $brand-info !default;
+$btn-info-border:                    $btn-info-bg !default;
+$btn-info-active-bg:                 darken($btn-info-bg, 10%) !default;
+$btn-info-active-border:             darken($btn-info-border, 12%) !default;
+$btn-info-focus-shadow:              0 0 0 2px rgba($btn-info-border, .5) !default;
+$btn-outline-info-hover-color:       $white !default;
+$btn-outline-info-focus-shadow:      0 0 0 2px rgba($btn-info-bg, .5) !default;
 
-$btn-success-color:              $white !default;
-$btn-success-bg:                 $brand-success !default;
-$btn-success-border:             $btn-success-bg !default;
+$btn-success-color:                  $white !default;
+$btn-success-bg:                     $brand-success !default;
+$btn-success-border:                 $btn-success-bg !default;
+$btn-success-active-bg:              darken($btn-success-bg, 10%) !default;
+$btn-success-active-border:          darken($btn-success-border, 12%) !default;
+$btn-success-focus-shadow:           0 0 0 2px rgba($btn-success-border, .5) !default;
+$btn-outline-success-hover-color:    $white !default;
+$btn-outline-success-focus-shadow:   0 0 0 2px rgba($btn-success-bg, .5) !default;
 
-$btn-warning-color:              $white !default;
-$btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             $btn-warning-bg !default;
+$btn-warning-color:                  $white !default;
+$btn-warning-bg:                     $brand-warning !default;
+$btn-warning-border:                 $btn-warning-bg !default;
+$btn-warning-active-bg:              darken($btn-warning-bg, 10%) !default;
+$btn-warning-active-border:          darken($btn-warning-border, 12%) !default;
+$btn-warning-focus-shadow:           0 0 0 2px rgba($btn-warning-border, .5) !default;
+$btn-outline-warning-hover-color:    $white !default;
+$btn-outline-warning-focus-shadow:   0 0 0 2px rgba($btn-warning-bg, .5) !default;
 
-$btn-danger-color:               $white !default;
-$btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              $btn-danger-bg !default;
+$btn-danger-color:                   $white !default;
+$btn-danger-bg:                      $brand-danger !default;
+$btn-danger-border:                  $btn-danger-bg !default;
+$btn-danger-active-bg:               darken($btn-danger-bg, 10%) !default;
+$btn-danger-active-border:           darken($btn-danger-border, 12%) !default;
+$btn-danger-focus-shadow:            0 0 0 2px rgba($btn-danger-border, .5) !default;
+$btn-outline-danger-hover-color:     $white !default;
+$btn-outline-danger-focus-shadow:    0 0 0 2px rgba($btn-danger-bg, .5) !default;
 
-$btn-link-disabled-color:        $gray-light !default;
+$btn-link-disabled-color:            $gray-light !default;
 
-$btn-padding-x-sm:               .5rem !default;
-$btn-padding-y-sm:               .25rem !default;
+$btn-padding-x-sm:                   .5rem !default;
+$btn-padding-y-sm:                   .25rem !default;
 
-$btn-padding-x-lg:               1.5rem !default;
-$btn-padding-y-lg:               .75rem !default;
+$btn-padding-x-lg:                   1.5rem !default;
+$btn-padding-y-lg:                   .75rem !default;
 
-$btn-block-spacing-y:            .5rem !default;
+$btn-block-spacing-y:                .5rem !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:              $border-radius !default;
-$btn-border-radius-lg:           $border-radius-lg !default;
-$btn-border-radius-sm:           $border-radius-sm !default;
+$btn-border-radius:                   $border-radius !default;
+$btn-border-radius-lg:                $border-radius-lg !default;
+$btn-border-radius-sm:                $border-radius-sm !default;
 
-$btn-transition:                 all .2s ease-in-out !default;
+$btn-transition:                      all .2s ease-in-out !default;
 
 
 // Forms
@@ -531,6 +566,19 @@ $form-icon-warning: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmln
 $form-icon-danger-color: $brand-danger !default;
 $form-icon-danger: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$form-icon-danger-color}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='#{$form-icon-danger-color}' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"), "#", "%23") !default;
 
+$form-validation-focus-shadow: 0 0 6px;
+
+$form-validation-danger-color: $brand-danger !default;
+$form-validation-danger-focus-shadow: $form-validation-focus-shadow lighten($form-validation-danger-color, 20%) !default;
+$form-validation-danger-addon-bg: lighten($form-validation-danger-color, 40%) !default;
+
+$form-validation-warning-color: $brand-warning !default;
+$form-validation-warning-focus-shadow: $form-validation-focus-shadow lighten($form-validation-warning-color, 20%) !default;
+$form-validation-warning-addon-bg: lighten($form-validation-warning-color, 40%) !default;
+
+$form-validation-success-color: $brand-success !default;
+$form-validation-success-focus-shadow: $form-validation-focus-shadow lighten($form-validation-success-color, 20%) !default;
+$form-validation-success-addon-bg: lighten($form-validation-success-color, 40%) !default;
 
 // Dropdowns
 //
@@ -658,7 +706,7 @@ $pagination-disabled-border:           #ddd !default;
 
 $jumbotron-padding:              2rem !default;
 $jumbotron-bg:                   $gray-lighter !default;
-
+$jumbotron-separator:            darken($jumbotron-bg, 10%) !default;
 
 // Form states and alerts
 //
@@ -667,42 +715,67 @@ $jumbotron-bg:                   $gray-lighter !default;
 $state-success-text:             #3c763d !default;
 $state-success-bg:               #dff0d8 !default;
 $state-success-border:           darken($state-success-bg, 5%) !default;
+$state-success-hover-bg:         darken($state-success-bg, 5%) !default;
 
 $state-info-text:                #31708f !default;
 $state-info-bg:                  #d9edf7 !default;
 $state-info-border:              darken($state-info-bg, 7%) !default;
+$state-info-hover-bg:            darken($state-info-bg, 5%) !default;
 
 $state-warning-text:             #8a6d3b !default;
 $state-warning-bg:               #fcf8e3 !default;
-$mark-bg:                        $state-warning-bg !default;
 $state-warning-border:           darken($state-warning-bg, 5%) !default;
+$state-warning-hover-bg:         darken($state-warning-bg, 5%) !default;
 
 $state-danger-text:              #a94442 !default;
 $state-danger-bg:                #f2dede !default;
 $state-danger-border:            darken($state-danger-bg, 5%) !default;
+$state-danger-hover-bg:          darken($state-danger-bg, 5%) !default;
 
+$mark-bg:                        $state-warning-bg !default;
 
 // Cards
 
-$card-spacer-x:            1.25rem !default;
-$card-spacer-y:            .75rem !default;
-$card-border-width:        1px !default;
-$card-border-radius:       $border-radius !default;
-$card-border-color:        rgba($black,.125) !default;
-$card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
-$card-cap-bg:              $gray-lightest !default;
-$card-bg:                  $white !default;
+$card-spacer-x:                 1.25rem !default;
+$card-spacer-y:                 .75rem !default;
+$card-border-width:             1px !default;
+$card-border-radius:            $border-radius !default;
+$card-border-color:             rgba($black,.125) !default;
+$card-border-radius-inner:      calc(#{$card-border-radius} - #{$card-border-width}) !default;
+$card-cap-bg:                   $gray-lightest !default;
+$card-bg:                       $white !default;
 
-$card-link-hover-color:    $white !default;
+$card-link-hover-color:         $white !default;
 
-$card-img-overlay-padding: 1.25rem !default;
+$card-img-overlay-padding:      1.25rem !default;
 
-$card-deck-margin:          ($grid-gutter-width-base / 2) !default;
+$card-deck-margin:              ($grid-gutter-width-base / 2) !default;
 
-$card-columns-count:        3 !default;
-$card-columns-gap:          1.25rem !default;
-$card-columns-margin:       $card-spacer-y !default;
+$card-columns-count:            3 !default;
+$card-columns-gap:              1.25rem !default;
+$card-columns-margin:           $card-spacer-y !default;
 
+$card-primary-bg:               $brand-primary !default;
+$card-primary-border:           $card-primary-bg !default;
+$card-outline-primary-border:   $card-primary-bg !default;
+
+$card-success-bg:               $brand-success !default;
+$card-success-border:           $card-success-bg !default;
+$card-outline-success-border:   $card-success-bg !default;
+
+$card-info-bg:                  $brand-info !default;
+$card-info-border:              $btn-info-bg !default;
+$card-outline-info-border:      $card-info-bg !default;
+
+$card-warning-bg:               $brand-warning !default;
+$card-warning-border:           $card-warning-bg !default;
+$card-outline-warning-border:   $card-warning-bg !default;
+
+$card-danger-bg:                $brand-danger !default;
+$card-danger-border:            $card-danger-bg !default;
+$card-outline-danger-border:    $card-danger-bg !default;
+
+$card-outline-secondary-border: #ccc !default;
 
 // Tooltips
 
@@ -730,6 +803,7 @@ $popover-box-shadow:                  0 5px 10px rgba($black,.2) !default;
 $popover-title-bg:                    darken($popover-bg, 3%) !default;
 $popover-title-padding-x:             14px !default;
 $popover-title-padding-y:             8px !default;
+$popover-title-separator:             darken($popover-title-bg, 5%) !default;
 
 $popover-content-padding-x:           14px !default;
 $popover-content-padding-y:           9px !default;
@@ -743,24 +817,30 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !defau
 
 // Badges
 
-$badge-default-bg:            $gray-light !default;
-$badge-primary-bg:            $brand-primary !default;
-$badge-success-bg:            $brand-success !default;
-$badge-info-bg:               $brand-info !default;
-$badge-warning-bg:            $brand-warning !default;
-$badge-danger-bg:             $brand-danger !default;
+$badge-default-bg:             $gray-light !default;
+$badge-default-hover-focus-bg: darken($badge-default-bg, 10%) !default;
+$badge-primary-bg:             $brand-primary !default;
+$badge-primary-hover-focus-bg: darken($badge-primary-bg, 10%) !default;
+$badge-success-bg:             $brand-success !default;
+$badge-success-hover-focus-bg: darken($badge-success-bg, 10%) !default;
+$badge-info-bg:                $brand-info !default;
+$badge-info-hover-focus-bg:    darken($badge-info-bg, 10%) !default;
+$badge-warning-bg:             $brand-warning !default;
+$badge-warning-hover-focus-bg: darken($badge-warning-bg, 10%) !default;
+$badge-danger-bg:              $brand-danger !default;
+$badge-danger-hover-focus-bg:  darken($badge-danger-bg, 10%) !default;
 
-$badge-color:                 $white !default;
-$badge-link-hover-color:      $white !default;
-$badge-font-size:             75% !default;
-$badge-font-weight:           $font-weight-bold !default;
-$badge-padding-x:             .4em !default;
-$badge-padding-y:             .25em !default;
+$badge-color:                  $white !default;
+$badge-link-hover-color:       $white !default;
+$badge-font-size:              75% !default;
+$badge-font-weight:            $font-weight-bold !default;
+$badge-padding-x:              .4em !default;
+$badge-padding-y:              .25em !default;
 
-$badge-pill-padding-x:        .6em !default;
+$badge-pill-padding-x:         .6em !default;
 // Use a higher than normal value to ensure completely rounded edges when
 // customizing padding or font-size on labels.
-$badge-pill-border-radius:    10rem !default;
+$badge-pill-border-radius:     10rem !default;
 
 
 // Modals
@@ -808,18 +888,26 @@ $alert-border-width:          $border-width !default;
 $alert-success-bg:            $state-success-bg !default;
 $alert-success-text:          $state-success-text !default;
 $alert-success-border:        $state-success-border !default;
+$alert-success-separator:     darken($alert-success-border, 5%) !default;
+$alert-success-link:          darken($state-success-text, 10%) !default;
 
 $alert-info-bg:               $state-info-bg !default;
 $alert-info-text:             $state-info-text !default;
 $alert-info-border:           $state-info-border !default;
+$alert-info-separator:        darken($alert-info-border, 5%) !default;
+$alert-info-link:             darken($state-info-text, 10%) !default;
 
 $alert-warning-bg:            $state-warning-bg !default;
 $alert-warning-text:          $state-warning-text !default;
 $alert-warning-border:        $state-warning-border !default;
+$alert-warning-separator:     darken($alert-warning-border, 5%) !default;
+$alert-warning-link:          darken($state-warning-text, 10%) !default;
 
 $alert-danger-bg:             $state-danger-bg !default;
 $alert-danger-text:           $state-danger-text !default;
 $alert-danger-border:         $state-danger-border !default;
+$alert-danger-separator:      darken($alert-danger-border, 5%) !default;
+$alert-danger-link:           darken($state-danger-text, 10%) !default;
 
 
 // Progress bars
@@ -930,3 +1018,49 @@ $kbd-bg:                      $gray-dark !default;
 
 $pre-color:                   $gray-dark !default;
 $pre-scrollable-max-height:   340px !default;
+
+// Background
+
+$primary-bg:                    $brand-primary !default;
+$primary-link-hover-color:      darken($primary-bg, 10%) !default;
+
+$success-bg:                    $brand-success !default;
+$success-link-hover-color:      darken($success-bg, 10%) !default;
+
+$info-bg:                       $brand-info !default;
+$info-link-hover-color:         darken($info-bg, 10%) !default;
+
+$warning-bg:                    $brand-warning !default;
+$warning-link-hover-color:      darken($warning-bg, 10%) !default;
+
+$danger-bg:                     $brand-danger !default;
+$danger-link-hover-color:       darken($danger-bg, 10%) !default;
+
+$inverse-bg:                    $brand-inverse !default;
+$inverse-link-hover-color:      darken($inverse-bg, 10%) !default;
+
+$faded-bg:                      darken($body-bg, 3%) !default;
+
+// Text emphasis
+
+$text-primary:                    $brand-primary !default;
+$text-primary-link-hover-color:   darken($text-primary, 10%) !default;
+
+$text-success:                    $brand-success !default;
+$text-success-link-hover-color:   darken($text-success, 10%) !default;
+
+$text-info:                       $brand-info !default;
+$text-info-link-hover-color:      darken($text-info, 10%) !default;
+
+$text-warning:                    $brand-warning !default;
+$text-warning-link-hover-color:   darken($text-warning, 10%) !default;
+
+$text-danger:                     $brand-danger !default;
+$text-danger-link-hover-color:    darken($text-danger, 10%) !default;
+
+$text-gray-dark:                  $gray-dark !default;
+$text-gray-dark-link-hover-color: darken($text-gray-dark, 10%) !default;
+
+$text-muted-link-hover-color:     darken($text-muted, 10%) !default;
+
+$text-white:                      $white !default;

@@ -42,14 +42,14 @@
 // Generate contextual modifier classes for colorizing the alert.
 
 .alert-success {
-  @include alert-variant($alert-success-bg, $alert-success-border, $alert-success-text);
+  @include alert-variant($alert-success-bg, $alert-success-border, $alert-success-text, $alert-success-separator, $alert-success-link);
 }
 .alert-info {
-  @include alert-variant($alert-info-bg, $alert-info-border, $alert-info-text);
+  @include alert-variant($alert-info-bg, $alert-info-border, $alert-info-text, $alert-info-separator, $alert-info-link);
 }
 .alert-warning {
-  @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-text);
+  @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-text, $alert-warning-separator, $alert-warning-link);
 }
 .alert-danger {
-  @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+  @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text, $alert-danger-separator, $alert-danger-link);
 }

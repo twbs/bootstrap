@@ -104,39 +104,39 @@
 //
 
 .card-primary {
-  @include card-variant($brand-primary, $brand-primary);
+  @include card-variant($card-primary-bg, $card-primary-border);
 }
 .card-success {
-  @include card-variant($brand-success, $brand-success);
+  @include card-variant($card-success-bg, $card-success-border);
 }
 .card-info {
-  @include card-variant($brand-info, $brand-info);
+  @include card-variant($card-info-bg, $card-info-border);
 }
 .card-warning {
-  @include card-variant($brand-warning, $brand-warning);
+  @include card-variant($card-warning-bg, $card-warning-border);
 }
 .card-danger {
-  @include card-variant($brand-danger, $brand-danger);
+  @include card-variant($card-danger-bg, $card-danger-border);
 }
 
 // Remove all backgrounds
 .card-outline-primary {
-  @include card-outline-variant($btn-primary-bg);
+  @include card-outline-variant($card-outline-primary-border);
 }
 .card-outline-secondary {
-  @include card-outline-variant($btn-secondary-border);
+  @include card-outline-variant($card-outline-secondary-border);
 }
 .card-outline-info {
-  @include card-outline-variant($btn-info-bg);
+  @include card-outline-variant($card-outline-info-border);
 }
 .card-outline-success {
-  @include card-outline-variant($btn-success-bg);
+  @include card-outline-variant($card-outline-success-border);
 }
 .card-outline-warning {
-  @include card-outline-variant($btn-warning-bg);
+  @include card-outline-variant($card-outline-warning-border);
 }
 .card-outline-danger {
-  @include card-outline-variant($btn-danger-bg);
+  @include card-outline-variant($card-outline-danger-border);
 }
 
 //
