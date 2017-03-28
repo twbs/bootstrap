@@ -158,10 +158,6 @@
 }
 
 // Card image
-.card-img {
-  // margin: -1.325rem;
-  @include border-radius($card-border-radius-inner);
-}
 .card-img-overlay {
   position: absolute;
   top: 0;
@@ -171,13 +167,19 @@
   padding: $card-img-overlay-padding;
 }
 
-
+.card-img {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-radius($card-border-radius-inner);
+}
 
 // Card image caps
 .card-img-top {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-top-radius($card-border-radius-inner);
 }
+
 .card-img-bottom {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-bottom-radius($card-border-radius-inner);
 }
 
