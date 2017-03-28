@@ -147,24 +147,25 @@ fieldset[disabled] a.btn {
 
 
 //
-// Block button
+// Responsive block button
 //
 
-.btn-block {
-  display: block;
-  width: 100%;
-}
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $next: breakpoint-next($breakpoint, $grid-breakpoints);
+  @include media-breakpoint-down($breakpoint) {
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+    .btn#{$infix}-block {
+      display: block;
+      width: 100%;
+    }
 
-// Vertically space out multiple block buttons
-.btn-block + .btn-block {
-  margin-top: $btn-block-spacing-y;
-}
-
-// Specificity overrides
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-  &.btn-block {
-    width: 100%;
+    // Specificity overrides
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"] {
+      &.btn#{$infix}-block {
+        width: 100%;
+      }
+    }
   }
 }
