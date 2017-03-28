@@ -83,7 +83,7 @@
     font-size: $font-size-sm;
     @include border-radius($input-border-radius-sm);
   }
-  
+
   &.form-control-lg {
     padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
     font-size: $font-size-lg;
