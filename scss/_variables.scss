@@ -221,7 +221,7 @@ $grid-gutter-widths: (
 //
 // Define common padding and border radius sizes and more.
 
-$line-height-lg:         (4 / 3) !default;
+$line-height-lg:         1.5 !default;
 $line-height-sm:         1.5 !default;
 
 $border-width: 1px !default;
@@ -338,9 +338,18 @@ $table-inverse-color:           $body-bg !default;
 //
 // For each of Bootstrap's buttons, define text, background and border color.
 
-$btn-padding-x:                  1rem !default;
-$btn-padding-y:                  .5rem !default;
-$btn-line-height:                1.25 !default;
+$input-btn-padding-x:       1rem !default;
+$input-btn-padding-y:       .5rem !default;
+$input-btn-line-height:     1.25 !default;
+
+$input-btn-padding-x-sm:    .5rem !default;
+$input-btn-padding-y-sm:    .25rem !default;
+$input-btn-line-height-sm:  1.5 !default;
+
+$input-btn-padding-x-lg:    1rem !default;
+$input-btn-padding-y-lg:    .5rem !default;
+$input-btn-line-height-lg:  1.5 !default;
+
 $btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
 $btn-focus-box-shadow:           0 0 0 2px rgba($brand-primary, .25) !default;
@@ -372,12 +381,6 @@ $btn-danger-border:              $btn-danger-bg !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
-$btn-padding-x-sm:               .5rem !default;
-$btn-padding-y-sm:               .25rem !default;
-
-$btn-padding-x-lg:               1.5rem !default;
-$btn-padding-y-lg:               .75rem !default;
-
 $btn-block-spacing-y:            .5rem !default;
 
 // Allows for customizing button radius independently from global border radius
@@ -389,10 +392,6 @@ $btn-transition:                 all .2s ease-in-out !default;
 
 
 // Forms
-
-$input-padding-x:                .75rem !default;
-$input-padding-y:                .5rem !default;
-$input-line-height:              1.25 !default;
 
 $input-bg:                       $white !default;
 $input-bg-disabled:              $gray-lighter !default;
@@ -413,15 +412,9 @@ $input-color-focus:              $input-color !default;
 
 $input-color-placeholder:        $gray-light !default;
 
-$input-padding-x-sm:             .5rem !default;
-$input-padding-y-sm:             .25rem !default;
-
-$input-padding-x-lg:             1.5rem !default;
-$input-padding-y-lg:             .75rem !default;
-
-$input-height:                   (($font-size-base * $input-line-height) + ($input-padding-y * 2)) !default;
-$input-height-lg:                (($font-size-lg * $line-height-lg) + ($input-padding-y-lg * 2)) !default;
-$input-height-sm:                (($font-size-sm * $line-height-sm) + ($input-padding-y-sm * 2)) !default;
+$input-height:                   (($font-size-base * $input-btn-line-height) + ($input-btn-padding-y * 2)) !default;
+$input-height-lg:                (($font-size-lg * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2)) !default;
+$input-height-sm:                (($font-size-sm * $input-btn-line-height-sm) + ($input-btn-padding-y-sm * 2)) !default;
 
 $input-transition:               border-color ease-in-out .15s, box-shadow ease-in-out .15s !default;
 
@@ -479,7 +472,7 @@ $custom-radio-checked-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3C
 $custom-select-padding-x:          .75rem  !default;
 $custom-select-padding-y:          .375rem !default;
 $custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
-$custom-select-line-height:         $input-line-height !default;
+$custom-select-line-height:         $input-btn-line-height !default;
 $custom-select-color:               $input-color !default;
 $custom-select-disabled-color:      $gray-light !default;
 $custom-select-bg:            $white !default;
