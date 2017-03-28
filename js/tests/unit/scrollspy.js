@@ -26,7 +26,7 @@ $(function () {
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
     assert.expect(1)
-    var $el = $('<div/>')
+    var $el = $('<div/>').appendTo('#qunit-fixture')
     $el.bootstrapScrollspy()
     try {
       $el.bootstrapScrollspy('noMethod')
@@ -38,7 +38,7 @@ $(function () {
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
     assert.expect(2)
-    var $el = $('<div/>')
+    var $el = $('<div/>').appendTo('#qunit-fixture')
     var $scrollspy = $el.bootstrapScrollspy()
     assert.ok($scrollspy instanceof $, 'returns jquery collection')
     assert.strictEqual($scrollspy[0], $el[0], 'collection contains element')

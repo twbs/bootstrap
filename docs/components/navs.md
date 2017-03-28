@@ -185,6 +185,17 @@ Force your `.nav`'s contents to extend the full available width one of two modif
 </ul>
 {% endexample %}
 
+When using a `<nav>`-based navigation, be sure to include `.nav-item` on the anchors.
+
+{% example html %}
+<nav class="nav nav-pills nav-fill">
+  <a class="nav-item nav-link active" href="#">Active</a>
+  <a class="nav-item nav-link" href="#">Link</a>
+  <a class="nav-item nav-link" href="#">Link</a>
+  <a class="nav-item nav-link disabled" href="#">Disabled</a>
+</nav>
+{% endexample %}
+
 For equal-width elements, use `.nav-justified`. All horizontal space will be occupied by nav links, but unlike the `.nav-fill` above, every nav item will be the same width.
 
 {% example html %}
@@ -196,6 +207,17 @@ For equal-width elements, use `.nav-justified`. All horizontal space will be occ
 </nav>
 {% endexample %}
 
+Similar to the `.nav-fill` example using a `<nav>`-based navigation, be sure to include `.nav-item` on the anchors.
+
+{% example html %}
+<nav class="nav nav-pills nav-justified">
+  <a class="nav-item nav-link active" href="#">Active</a>
+  <a class="nav-item nav-link" href="#">Link</a>
+  <a class="nav-item nav-link" href="#">Link</a>
+  <a class="nav-item nav-link disabled" href="#">Disabled</a>
+</nav>
+
+{% endexample %}
 ## Working with flex utilities
 
 If you need responsive nav variations, consider using a series of [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
@@ -563,6 +585,9 @@ To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must a
 {% endhighlight %}
 
 ### Methods
+
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 #### $().tab
 
