@@ -188,15 +188,15 @@
   .card-deck {
     display: flex;
     flex-flow: row wrap;
-    margin-left: -$card-deck-margin;
     margin-right: -$card-deck-margin;
+    margin-left: -$card-deck-margin;
 
     .card {
       display: flex;
       flex: 1 0 0;
       flex-direction: column;
-      margin-left: $card-deck-margin;
       margin-right: $card-deck-margin;
+      margin-left: $card-deck-margin;
     }
   }
 }
