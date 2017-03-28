@@ -1,0 +1,5 @@
+// Convert a value in `rem` to `px`
+
+@function rem-to-px($value) {
+  @return strip-unit($value) * 16px;
+}
