@@ -13,6 +13,7 @@ Convey meaning through color with a handful of emphasis utility classes. These m
 <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
 <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
 <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+<p class="text-gray-dark">Eget risus varius blandit sit ultricies vehicula amet non magna.</p>
 <p class="text-white">Etiam porta sem malesuada ultricies vehicula.</p>
 {% endexample %}
 

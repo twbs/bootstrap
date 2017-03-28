@@ -208,9 +208,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
    </tr>
    <tr>
      <td>pause</td>
-     <td>string | null</td>
+     <td>string | boolean</td>
      <td>"hover"</td>
-     <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>null</code>, hovering over the carousel won't pause it.</td>
+     <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>false</code>, hovering over the carousel won't pause it.</td>
    </tr>
    <tr>
      <td>ride</td>
@@ -265,6 +265,8 @@ Bootstrap's carousel class exposes two events for hooking into carousel function
 
 - `direction`: The direction in which the carousel is sliding (either `"left"` or `"right"`).
 - `relatedTarget`: The DOM element that is being slid into place as the active item.
+- `from`: The index of the current item
+- `to`: The index of the next item
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 

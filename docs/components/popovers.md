@@ -306,6 +306,24 @@ Hides and destroys an element's popover. Popovers that use delegation (which are
 
 {% highlight js %}$('#element').popover('dispose'){% endhighlight %}
 
+#### `.popover('enable')`
+
+Gives an element's popover the ability to be shown. **Popovers are enabled by default.**
+
+{% highlight js %}$('#element').popover('enable'){% endhighlight %}
+
+#### `.popover('disable')`
+
+Removes the ability for an element's popover to be shown. The popover will only be able to be shown if it is re-enabled.
+
+{% highlight js %}$('#element').popover('disable'){% endhighlight %}
+
+#### `.popover('toggleEnabled')`
+
+Toggles the ability for an element's popover to be shown or hidden.
+
+{% highlight js %}$('#element').popover('toggleEnabled'){% endhighlight %}
+
 ### Events
 
 <table class="table table-bordered table-striped table-responsive">
