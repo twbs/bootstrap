@@ -2794,6 +2794,7 @@ var Tooltip = function ($) {
   var JQUERY_NO_CONFLICT = $.fn[NAME];
   var TRANSITION_DURATION = 150;
   var CLASS_PREFIX = 'bs-tether';
+  var TETHER_PREFIX_REGEX = new RegExp('(^|\\s)' + CLASS_PREFIX + '\\S+', 'g');
 
   var Default = {
     animation: true,
@@ -3058,6 +3059,7 @@ var Tooltip = function ($) {
           tip.parentNode.removeChild(tip);
         }
 
+        _this23._cleanTipClass();
         _this23.element.removeAttribute('aria-describedby');
         $(_this23.element).trigger(_this23.constructor.Event.HIDDEN);
         _this23._isTransitioning = false;
@@ -3146,6 +3148,14 @@ var Tooltip = function ($) {
 
     Tooltip.prototype._getAttachment = function _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()];
+    };
+
+    Tooltip.prototype._cleanTipClass = function _cleanTipClass() {
+      var $tip = $(this.getTipElement());
+      var tabClass = $tip.attr('class').match(TETHER_PREFIX_REGEX);
+      if (tabClass !== null && tabClass.length > 0) {
+        $tip.removeClass(tabClass.join(''));
+      }
     };
 
     Tooltip.prototype._setListeners = function _setListeners() {
