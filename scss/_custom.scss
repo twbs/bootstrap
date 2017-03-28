@@ -180,8 +180,12 @@ $spacers: (
     y: ($spacer-y * 1.5)
   ),
   5: (
-    x: ($spacer-x * 3),
-    y: ($spacer-y * 3)
+    x: ($spacer-x * 2),
+    y: ($spacer-y * 2)
+  ),
+  6: (
+    x: ($spacer-x * 4),
+    y: ($spacer-y * 4)
   )
 ) !default;
 $border-width: 1px !default;
@@ -688,6 +692,9 @@ $nav-tabs-active-link-hover-border-color:     #ddd !default;
 $nav-pills-border-radius:     $border-radius !default;
 $nav-pills-active-link-color: $component-active-color !default;
 $nav-pills-active-link-bg:    $component-active-bg !default;
+
+// CUSTOM: Nav Buttons
+$nav-buttons-spacing-x: $spacer-x * .5;
 
 
 // Pagination

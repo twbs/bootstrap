@@ -1,0 +1,15 @@
+//
+// Buttons
+//
+
+.nav-buttons {
+  .nav-btn,
+  .nav-item {
+    align-self: center;
+    margin-right: $nav-buttons-spacing-x;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

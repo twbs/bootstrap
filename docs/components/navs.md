@@ -204,6 +204,47 @@ For equal-width elements, use `.nav-justified`. All horizontal space will be occ
 </ul>
 {% endexample %}
 
+### Buttons
+
+Take that same HTML, but use `.nav-buttons` instead:
+
+{% example html %}
+<nav class="nav nav-buttons">
+  <a href="#" class="nav-btn btn btn-secondary">Button</a>
+  <a href="#" class="nav-btn btn btn-secondary">Button</a>
+  <a href="#" class="nav-btn btn btn-secondary">Button</a>
+  <a href="#" class="nav-btn btn btn-primary btn-cta ml-auto">Button</a>
+</nav>
+{% endexample %}
+
+{% example html %}
+<ul class="nav nav-buttons">
+  <li class="nav-item">
+    <a class="btn btn-secondary" href="#">Button</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-secondary" href="#">Button</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-secondary" href="#">Button</a>
+  </li>
+  <li class="nav-item ml-auto">
+    <a class="btn btn-primary btn-cta" href="#">Button</a>
+  </li>
+</ul>
+{% endexample %}
+
+{% example html %}
+<div class="card">
+  <nav class="p-2 nav nav-buttons">
+    <a href="#" class="nav-btn btn btn-secondary">Button</a>
+    <a href="#" class="nav-btn btn btn-secondary">Button</a>
+    <a href="#" class="nav-btn btn btn-secondary">Button</a>
+    <a href="#" class="nav-btn btn btn-primary btn-cta btn-lg ml-auto">Button</a>
+  </nav>
+</div>
+{% endexample %}
+
 ## Working with flex utilities
 
 If you need responsive nav variations, consider using a series of [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
