@@ -276,6 +276,39 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
 </div>
 {% endexample %}
 
+#### Footer Table
+
+{% example html %}
+<div class="card text-center">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">Special title treatment</h4>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer p-0">
+    <table class="table table-flush table-sm">
+      <tbody>
+        <tr>
+          <th>Label</th>
+          <td>Value</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td>Value</td>
+        </tr>
+        <tr>
+          <th>Label</th>
+          <td>Value</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endexample %}
+
 ## Sizing
 
 Cards assume no specific `width` to start, so they'll be 100% wide unless otherwise stated. You can change this as needed with custom CSS, grid classes, grid Sass mixins, or utilities.
@@ -498,6 +531,47 @@ Turn an image into a card background and overlay your card's text. Depending on 
 ## Card styles
 
 Cards include various options for customizing their backgrounds, borders, and color.
+
+### Interactive / Arrow
+
+{% example html %}
+<div class="card">
+  <a href="#" class="card-block has-arrow">
+    <h3 class="card-title">Special title treatment</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </a>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="card">
+  <div class="list-group list-group-flush">
+    <a href="#" class="list-group-item list-group-item-action has-arrow">Cras justo odio</a>
+    <a href="#" class="list-group-item list-group-item-action has-arrow">Dapibus ac facilisis in</a>
+    <a href="#" class="list-group-item list-group-item-action has-arrow">Vestibulum at eros</a>
+  </div>
+</div>
+{% endexample %}
+
+### Card Block Action
+Introduces the same concept as list-group action and its variables. We don't use list-groups here, because we want to inherit colors etc. from card block elements as we know it.
+
+{% example html %}
+<div class="card">
+  <a href="#" class="card-block card-block-action has-arrow">
+    <h3 class="card-title">Job</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </a>
+  <a href="#" class="card-block card-block-action has-arrow">
+    <h3 class="card-title">Special title treatment</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </a>
+  <a href="#" class="card-block card-block-action has-arrow">
+    <h3 class="card-title">Special title treatment</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </a>
+</div>
+{% endexample %}
 
 ### Inverted text
 

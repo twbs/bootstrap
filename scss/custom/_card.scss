@@ -82,3 +82,58 @@
 .card-img:last-child img {
   @include border-bottom-radius($card-border-radius-inner);
 }
+
+//
+// CUSTOM: Card has-arrow
+//
+// I kept it general, so we can use it at other places. We might need to adjust when this creates problems
+
+.has-arrow {
+  position: relative;
+  padding-right: $card-arrow-size + $card-spacer-x;
+
+  &:after {
+    content: '';
+
+    position: absolute;
+    right: $card-spacer-x * .5;
+    top: 50%;
+    width: $card-arrow-size;
+    height: $card-arrow-size;
+    margin-top: $card-arrow-size * -.5;
+
+    background-image: $card-arrow;
+    background-size: $card-arrow-size;
+    background-repeat: no-repeat;
+  }
+}
+
+//
+// CUSTOM: Card block action
+//
+// Generally removing link formatting on linked card-blocks, introducing hover & active for dedicated blocks, for example publications
+
+a.card-block {
+  color: inherit;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+.card-block-action {
+  width: 100%; // For `<button>`s (anchors become 100% by default though)
+  text-align: inherit; // For `<button>`s (anchors inherit)
+
+  // Hover state
+  @include hover-focus {
+    color: $card-action-hover-color;
+    background-color: $card-action-hover-bg;
+  }
+
+  &:active {
+    color: $card-action-active-color;
+    background-color: $card-action-active-bg;
+    box-shadow: $card-action-active-box-shadow;
+  }
+}

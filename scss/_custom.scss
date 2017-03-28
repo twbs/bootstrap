@@ -357,8 +357,8 @@ $transition-collapse:    height .35s ease !default;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-cell-padding:            .5rem;
-$table-sm-cell-padding:         .25rem;
+$table-cell-padding:            .75rem 1.25rem;
+$table-sm-cell-padding:         .25rem 0.5rem;
 
 $table-bg:                      transparent !default;
 
@@ -778,6 +778,15 @@ $card-columns-margin:       $card-spacer-y !default;
 
 // CUSTOM: Cards
 $card-shadow:               $box-shadow-default;
+$card-arrow-color:          $gray;
+$card-arrow-size:           1rem;
+$card-arrow:                str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$card-arrow-color}' viewBox='0 0 16 16'%3E%3Cpath d='M7.09,3l5,5-5,5L5.91,11.83,9.74,8,5.91,4.17Z'/%3E%3C/svg%3E"), "#", "%23");
+
+$card-action-hover-color:           inherit;
+$card-action-hover-bg:              $gray-lightest;
+$card-action-active-color:          $gray-dark;
+$card-action-active-bg:             mix(black, $card-action-hover-bg, 10%);
+$card-action-active-box-shadow:     $btn-active-box-shadow;
 
 
 // Tooltips
@@ -928,8 +937,8 @@ $list-group-active-border:       $list-group-active-bg !default;
 $list-group-disabled-color:      $gray-light !default;
 $list-group-disabled-bg:         $list-group-bg !default;
 
-$list-group-link-color:          $gray !default;
-$list-group-link-hover-color:    $list-group-link-color !default;
+$list-group-link-color:          $link-color;
+$list-group-link-hover-color:    $link-hover-color;
 
 $list-group-link-active-color:   $list-group-color !default;
 $list-group-link-active-bg:      $gray-lighter !default;
