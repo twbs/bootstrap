@@ -174,10 +174,10 @@
 
 
 // Card image caps
-.card-img-top {
+.card-img-top:first-child {
   @include border-top-radius($card-border-radius-inner);
 }
-.card-img-bottom {
+.card-img-bottom:last-child {
   @include border-bottom-radius($card-border-radius-inner);
 }
 
