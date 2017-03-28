@@ -158,7 +158,7 @@
 }
 
 // Card image
-.card-overlay {
+.card-img-overlay {
   position: absolute;
   top: 0;
   right: 0;
@@ -167,7 +167,7 @@
   padding: $card-img-overlay-padding;
 }
 
-.card-overlay-img {
+.card-img {
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-radius($card-border-radius-inner);
 }
