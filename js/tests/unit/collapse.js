@@ -44,16 +44,27 @@ $(function () {
     assert.strictEqual($collapse[0], $el[0], 'collection contains element')
   })
 
-  QUnit.test('should show a collapsed element', function (assert) {
+  QUnit.test('should show a collapsed element (long transition)', function (assert) {
     assert.expect(2)
-    var $el = $('<div class="collapse"/>').bootstrapCollapse('show')
+    var done = assert.async()
+    var $el = $('<div class="collapse"/>').css('transition-duration', '.3s')
+    $el.one('shown.bs.collapse', function () {
+      assert.ok($el.hasClass('show'), 'has class "show"')
+      assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
+      done()
+    }).bootstrapCollapse('show')
+  })
 
+  QUnit.test('should show a collapsed element (no transition)', function (assert) {
+    assert.expect(2)
+    var $el = $('<div class="collapse"/>').css('transition', 'none').bootstrapCollapse('show')
     assert.ok($el.hasClass('show'), 'has class "show"')
     assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
   })
 
   QUnit.test('should collapse only the first collapse', function (assert) {
     assert.expect(2)
+    var done = assert.async()
     var html = [
       '<div class="panel-group" id="accordion1">',
       '<div class="panel">',
@@ -69,17 +80,37 @@ $(function () {
     $(html).appendTo('#qunit-fixture')
     var $el1 = $('#collapse1')
     var $el2 = $('#collapse2')
-    $el1.bootstrapCollapse('show')
-
-    assert.ok($el1.hasClass('show'))
-    assert.ok($el2.hasClass('show'))
+    $el1.one('shown.bs.collapse', function () {
+      assert.ok($el1.hasClass('show'))
+      assert.ok($el2.hasClass('show'))
+      done()
+    }).bootstrapCollapse('show')
   })
 
-  QUnit.test('should hide a collapsed element', function (assert) {
+  QUnit.test('should hide a collapsed element (long transition)', function (assert) {
     assert.expect(1)
-    var $el = $('<div class="collapse"/>').bootstrapCollapse('hide')
+    var done = assert.async()
+    var $el = $('<div class="collapse"/>').css('transition-duration', '.3s')
+    $el.one('shown.bs.collapse', function () {
+      $el.bootstrapCollapse('hide')
+    })
+    .one('hidden.bs.collapse', function () {
+      assert.ok(!$el.hasClass('show'), 'does not have class "show"')
+      done()
+    }).bootstrapCollapse('show')
+  })
 
-    assert.ok(!$el.hasClass('show'), 'does not have class "show"')
+  QUnit.test('should hide a collapsed element (no transition)', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $el = $('<div class="collapse"/>').css('transition', 'none')
+    $el.one('shown.bs.collapse', function () {
+      $el.bootstrapCollapse('hide')
+    })
+    .one('hidden.bs.collapse', function () {
+      assert.ok(!$el.hasClass('show'), 'does not have class "show"')
+      done()
+    }).bootstrapCollapse('show')
   })
 
   QUnit.test('should not fire shown when show is prevented', function (assert) {

@@ -49,11 +49,23 @@ $(function () {
     assert.ok($.fn.bootstrapModal.Constructor.Default, 'default object exposed')
   })
 
-  QUnit.test('should insert into dom when show method is called', function (assert) {
+  QUnit.test('should insert into dom when show method is called (long transition)', function (assert) {
     assert.expect(1)
     var done = assert.async()
 
-    $('<div id="modal-test"/>')
+    $('<div id="modal-test"/>').css('transition-duration', '1s')
+      .on('shown.bs.modal', function () {
+        assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should insert into dom when show method is called (no transition)', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    $('<div id="modal-test"/>').css('transition', 'none')
       .on('shown.bs.modal', function () {
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
         done()
@@ -89,11 +101,28 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('should hide modal when hide is called', function (assert) {
+  QUnit.test('should hide modal when hide is called (long transition)', function (assert) {
     assert.expect(3)
     var done = assert.async()
 
-    $('<div id="modal-test"/>')
+    $('<div id="modal-test"/>').css('transition-duration', '1s')
+      .on('shown.bs.modal', function () {
+        assert.ok($('#modal-test').is(':visible'), 'modal visible')
+        assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
+        $(this).bootstrapModal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should hide modal when hide is called (no transition)', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    $('<div id="modal-test"/>').css('transition', 'none')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
@@ -381,6 +410,8 @@ $(function () {
     var done = assert.async()
     $('<div class="fixed-top fixed-bottom sticky-top is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
     $('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top').css('padding-right', '10px')
+    // QUnit doesn't create a sidebar, so fake it
+    $('html').css('padding-right', '10px')
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
@@ -388,6 +419,7 @@ $(function () {
         assert.strictEqual(isNaN(paddingRight), false)
         assert.strictEqual(paddingRight !== 0, true)
         $(document.body).css('padding-right', '') // Because test case "should ignore other inline styles when trying to restore body padding after closing" fail if not
+        $('html').css('padding-right', '')
         done()
       })
       .bootstrapModal('show')
@@ -398,6 +430,8 @@ $(function () {
     var done = assert.async()
     $('<div class="fixed-top fixed-bottom is-fixed sticky-top">@Johann-S</div>').appendTo('#qunit-fixture')
     $('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top').css('padding-right', '10px')
+    // QUnit doesn't create a sidebar, so fake it
+    $('html').css('padding-right', '10px')
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
@@ -409,6 +443,7 @@ $(function () {
       .on('hidden.bs.modal', function () {
         var paddingRight = parseInt($(document.body).css('padding-right'), 10)
         assert.strictEqual(paddingRight, 0)
+        $('html').css('padding-right', '')
         done()
       })
       .bootstrapModal('show')

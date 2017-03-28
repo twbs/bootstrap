@@ -421,6 +421,7 @@ $(function () {
         + '</div>'
     var $carousel = $(templateHTML)
     $carousel.attr('data-interval', 1814)
+    $carousel.find('.carousel-item').css('transition-duration', '0s')
 
     $carousel.appendTo('body')
     $('[data-slide]').first().trigger('click')

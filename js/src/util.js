@@ -7,23 +7,15 @@
 
 const Util = (($) => {
 
-
   /**
    * ------------------------------------------------------------------------
-   * Private TransitionEnd Helpers
+   * Private Transition Helpers
    * ------------------------------------------------------------------------
    */
 
-  let transition = false
-
   const MAX_UID = 1000000
 
-  const TransitionEndEvent = {
-    WebkitTransition : 'webkitTransitionEnd',
-    MozTransition    : 'transitionend',
-    OTransition      : 'oTransitionEnd otransitionend',
-    transition       : 'transitionend'
-  }
+  const MILLIS = 1000
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
@@ -34,61 +26,51 @@ const Util = (($) => {
     return (obj[0] || obj).nodeType
   }
 
-  function getSpecialTransitionEndEvent() {
-    return {
-      bindType: transition.end,
-      delegateType: transition.end,
-      handle(event) {
-        if ($(event.target).is(this)) {
-          return event.handleObj.handler.apply(this, arguments) // eslint-disable-line prefer-rest-params
-        }
-        return undefined
+  function getCssTransitionDuration(element) {
+    // let duration
+    let durationArray = []
+    element.each(() => {
+      const durationValues = element.css('transition-duration') || element.css('-webkit-transition-duration') || element.css('-moz-transition-duration') || element.css('-ms-transition-duration') || element.css('-o-transition-duration')
+      if (durationValues) {
+        durationArray = durationArray.concat(durationValues.split(','))
       }
-    }
-  }
-
-  function transitionEndTest() {
-    if (window.QUnit) {
-      return false
-    }
-
-    const el = document.createElement('bootstrap')
-
-    for (const name in TransitionEndEvent) {
-      if (el.style[name] !== undefined) {
-        return {
-          end: TransitionEndEvent[name]
-        }
-      }
-    }
-
-    return false
-  }
-
-  function transitionEndEmulator(duration) {
-    let called = false
-
-    $(this).one(Util.TRANSITION_END, () => {
-      called = true
     })
-
-    setTimeout(() => {
-      if (!called) {
-        Util.triggerTransitionEnd(this)
+    $.each(durationArray,
+      (index, value) => {
+        durationArray[index] = parseFloat(value)
       }
-    }, duration)
+    )
+    return durationArray.sort((a, b) => {
+      return b - a
+    })[0]
+  }
 
+  function transitionEmulator(start, complete) {
+    // determine the longest transition duration (in case there is a transition on multiple attributes) from the css
+    const duration = getCssTransitionDuration(this)
+    // if there is a non 0 transition duration
+    if (duration) {
+      // set a timeout to call complete (instead of using transitionend that is sometimes not triggered). This way we can guarantee complete is always called
+      setTimeout(() => {
+        executeCallback(complete)
+      }, duration * MILLIS)
+      // execute the start transition function, after setting the timeout
+      executeCallback(start)
+    } else {
+      executeCallback(start)
+      executeCallback(complete)
+    }
     return this
   }
 
-  function setTransitionEndSupport() {
-    transition = transitionEndTest()
-
-    $.fn.emulateTransitionEnd = transitionEndEmulator
-
-    if (Util.supportsTransitionEnd()) {
-      $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent()
+  function executeCallback(callback) {
+    if (callback) {
+      callback()
     }
+  }
+
+  function setTransitionEmulator() {
+    $.fn.transition = transitionEmulator
   }
 
 
@@ -99,8 +81,6 @@ const Util = (($) => {
    */
 
   const Util = {
-
-    TRANSITION_END: 'bsTransitionEnd',
 
     getUID(prefix) {
       do {
@@ -128,14 +108,6 @@ const Util = (($) => {
       return element.offsetHeight
     },
 
-    triggerTransitionEnd(element) {
-      $(element).trigger(transition.end)
-    },
-
-    supportsTransitionEnd() {
-      return Boolean(transition)
-    },
-
     typeCheckConfig(componentName, config, configTypes) {
       for (const property in configTypes) {
         if (configTypes.hasOwnProperty(property)) {
@@ -155,7 +127,7 @@ const Util = (($) => {
     }
   }
 
-  setTransitionEndSupport()
+  setTransitionEmulator()
 
   return Util
 

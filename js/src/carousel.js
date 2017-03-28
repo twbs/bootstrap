@@ -23,7 +23,6 @@ const Carousel = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 600
   const ARROW_LEFT_KEYCODE  = 37 // KeyboardEvent.which value for left arrow key
   const ARROW_RIGHT_KEYCODE = 39 // KeyboardEvent.which value for right arrow key
 
@@ -145,9 +144,7 @@ const Carousel = (($) => {
         this._isPaused = true
       }
 
-      if ($(this._element).find(Selector.NEXT_PREV)[0] &&
-        Util.supportsTransitionEnd()) {
-        Util.triggerTransitionEnd(this._element)
+      if ($(this._element).find(Selector.NEXT_PREV)[0]) {
         this.cycle(true)
       }
 
@@ -364,31 +361,26 @@ const Carousel = (($) => {
         to: nextElementIndex
       })
 
-      if (Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.SLIDE)) {
+      if ($(this._element).hasClass(ClassName.SLIDE)) {
 
         $(nextElement).addClass(orderClassName)
 
         Util.reflow(nextElement)
 
-        $(activeElement).addClass(directionalClassName)
-        $(nextElement).addClass(directionalClassName)
+        $(activeElement).transition(() => {
+          $(activeElement).addClass(directionalClassName)
+          $(nextElement).addClass(directionalClassName)
+        }, () => {
+          $(nextElement)
+            .removeClass(`${directionalClassName} ${orderClassName}`)
+            .addClass(ClassName.ACTIVE)
 
-        $(activeElement)
-          .one(Util.TRANSITION_END, () => {
-            $(nextElement)
-              .removeClass(`${directionalClassName} ${orderClassName}`)
-              .addClass(ClassName.ACTIVE)
+          $(activeElement).removeClass(`${ClassName.ACTIVE} ${orderClassName} ${directionalClassName}`)
 
-            $(activeElement).removeClass(`${ClassName.ACTIVE} ${orderClassName} ${directionalClassName}`)
+          this._isSliding = false
 
-            this._isSliding = false
-
-            setTimeout(() => $(this._element).trigger(slidEvent), 0)
-
-          })
-          .emulateTransitionEnd(TRANSITION_DURATION)
-
+          setTimeout(() => $(this._element).trigger(slidEvent), 0)
+        })
       } else {
         $(activeElement).removeClass(ClassName.ACTIVE)
         $(nextElement).addClass(ClassName.ACTIVE)

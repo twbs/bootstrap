@@ -23,7 +23,6 @@ const Tab = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
 
   const Event = {
     HIDE           : `hide${EVENT_KEY}`,
@@ -154,7 +153,6 @@ const Tab = (($) => {
     _activate(element, container, callback) {
       const active          = $(container).find(Selector.ACTIVE_CHILD)[0]
       const isTransitioning = callback
-        && Util.supportsTransitionEnd()
         && (active && $(active).hasClass(ClassName.FADE)
            || Boolean($(container).find(Selector.FADE_CHILD)[0]))
 
@@ -166,10 +164,7 @@ const Tab = (($) => {
       )
 
       if (active && isTransitioning) {
-        $(active)
-          .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
-
+        $(active).transition(null, complete)
       } else {
         complete()
       }

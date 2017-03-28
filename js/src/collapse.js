@@ -23,7 +23,6 @@ const Collapse = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 600
 
   const Default = {
     toggle : true,
@@ -173,34 +172,25 @@ const Collapse = (($) => {
           .attr('aria-expanded', true)
       }
 
-      this.setTransitioning(true)
+      const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
+      const scrollSize           = `scroll${capitalizedDimension}`
+
+      const start = () => {
+        this.setTransitioning(true)
+        this._element.style[dimension] = `${this._element[scrollSize]}px`
+      }
 
       const complete = () => {
+        this.setTransitioning(false)
         $(this._element)
           .removeClass(ClassName.COLLAPSING)
           .addClass(ClassName.COLLAPSE)
           .addClass(ClassName.SHOW)
-
-        this._element.style[dimension] = ''
-
-        this.setTransitioning(false)
-
-        $(this._element).trigger(Event.SHOWN)
+          .css(dimension, '')
+          .trigger(Event.SHOWN)
       }
 
-      if (!Util.supportsTransitionEnd()) {
-        complete()
-        return
-      }
-
-      const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
-      const scrollSize           = `scroll${capitalizedDimension}`
-
-      $(this._element)
-        .one(Util.TRANSITION_END, complete)
-        .emulateTransitionEnd(TRANSITION_DURATION)
-
-      this._element.style[dimension] = `${this._element[scrollSize]}px`
+      $(this._element).transition(start, complete)
     }
 
     hide() {
@@ -237,7 +227,10 @@ const Collapse = (($) => {
           .attr('aria-expanded', false)
       }
 
-      this.setTransitioning(true)
+      const start = () => {
+        this.setTransitioning(true)
+        this._element.style[dimension] = ''
+      }
 
       const complete = () => {
         this.setTransitioning(false)
@@ -247,16 +240,7 @@ const Collapse = (($) => {
           .trigger(Event.HIDDEN)
       }
 
-      this._element.style[dimension] = ''
-
-      if (!Util.supportsTransitionEnd()) {
-        complete()
-        return
-      }
-
-      $(this._element)
-        .one(Util.TRANSITION_END, complete)
-        .emulateTransitionEnd(TRANSITION_DURATION)
+      $(this._element).transition(start, complete)
     }
 
     setTransitioning(isTransitioning) {

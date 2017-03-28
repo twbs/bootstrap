@@ -23,8 +23,6 @@ const Modal = (($) => {
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
   const JQUERY_NO_CONFLICT           = $.fn[NAME]
-  const TRANSITION_DURATION          = 300
-  const BACKDROP_TRANSITION_DURATION = 150
   const ESCAPE_KEYCODE               = 27 // KeyboardEvent.which value for Escape (Esc) key
 
   const Default = {
@@ -115,10 +113,6 @@ const Modal = (($) => {
         throw new Error('Modal is transitioning')
       }
 
-      if (Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)) {
-        this._isTransitioning = true
-      }
       const showEvent = $.Event(Event.SHOW, {
         relatedTarget
       })
@@ -129,6 +123,7 @@ const Modal = (($) => {
         return
       }
 
+      this._isTransitioning = true
       this._isShown = true
 
       this._checkScrollbar()
@@ -165,12 +160,6 @@ const Modal = (($) => {
         throw new Error('Modal is transitioning')
       }
 
-      const transition = Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)
-      if (transition) {
-        this._isTransitioning = true
-      }
-
       const hideEvent = $.Event(Event.HIDE)
       $(this._element).trigger(hideEvent)
 
@@ -178,6 +167,7 @@ const Modal = (($) => {
         return
       }
 
+      this._isTransitioning = true
       this._isShown = false
 
       this._setEscapeEvent()
@@ -185,18 +175,12 @@ const Modal = (($) => {
 
       $(document).off(Event.FOCUSIN)
 
-      $(this._element).removeClass(ClassName.SHOW)
+      $(this._element).transition(() => {
+        $(this._element).removeClass(ClassName.SHOW)
 
-      $(this._element).off(Event.CLICK_DISMISS)
-      $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
-
-      if (transition) {
-        $(this._element)
-          .one(Util.TRANSITION_END, (event) => this._hideModal(event))
-          .emulateTransitionEnd(TRANSITION_DURATION)
-      } else {
-        this._hideModal()
-      }
+        $(this._element).off(Event.CLICK_DISMISS)
+        $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
+      }, (event) => this._hideModal(event))
     }
 
     dispose() {
@@ -228,9 +212,6 @@ const Modal = (($) => {
     }
 
     _showElement(relatedTarget) {
-      const transition = Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)
-
       if (!this._element.parentNode ||
          this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
         // don't move modals dom position
@@ -241,35 +222,27 @@ const Modal = (($) => {
       this._element.removeAttribute('aria-hidden')
       this._element.scrollTop = 0
 
-      if (transition) {
-        Util.reflow(this._element)
+      Util.reflow(this._element)
+
+      const start = () => {
+        $(this._element).addClass(ClassName.SHOW)
+
+        if (this._config.focus) {
+          this._enforceFocus()
+        }
       }
 
-      $(this._element).addClass(ClassName.SHOW)
-
-      if (this._config.focus) {
-        this._enforceFocus()
-      }
-
-      const shownEvent = $.Event(Event.SHOWN, {
-        relatedTarget
-      })
-
-      const transitionComplete = () => {
+      const complete = () => {
         if (this._config.focus) {
           this._element.focus()
         }
         this._isTransitioning = false
-        $(this._element).trigger(shownEvent)
+        $(this._element).trigger($.Event(Event.SHOWN, {
+          relatedTarget
+        }))
       }
 
-      if (transition) {
-        $(this._dialog)
-          .one(Util.TRANSITION_END, transitionComplete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
-      } else {
-        transitionComplete()
-      }
+      $(this._dialog).transition(start, complete)
     }
 
     _enforceFocus() {
@@ -329,8 +302,6 @@ const Modal = (($) => {
         ClassName.FADE : ''
 
       if (this._isShown && this._config.backdrop) {
-        const doAnimate = Util.supportsTransitionEnd() && animate
-
         this._backdrop = document.createElement('div')
         this._backdrop.className = ClassName.BACKDROP
 
@@ -355,28 +326,13 @@ const Modal = (($) => {
           }
         })
 
-        if (doAnimate) {
+        if (animate) {
           Util.reflow(this._backdrop)
         }
 
-        $(this._backdrop).addClass(ClassName.SHOW)
-
-        if (!callback) {
-          return
-        }
-
-        if (!doAnimate) {
-          callback()
-          return
-        }
-
-        $(this._backdrop)
-          .one(Util.TRANSITION_END, callback)
-          .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
+        $(this._backdrop).transition(() => $(this._backdrop).addClass(ClassName.SHOW), callback)
 
       } else if (!this._isShown && this._backdrop) {
-        $(this._backdrop).removeClass(ClassName.SHOW)
-
         const callbackRemove = () => {
           this._removeBackdrop()
           if (callback) {
@@ -384,14 +340,7 @@ const Modal = (($) => {
           }
         }
 
-        if (Util.supportsTransitionEnd() &&
-           $(this._element).hasClass(ClassName.FADE)) {
-          $(this._backdrop)
-            .one(Util.TRANSITION_END, callbackRemove)
-            .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
-        } else {
-          callbackRemove()
-        }
+        $(this._backdrop).transition(() => $(this._backdrop).removeClass(ClassName.SHOW), callbackRemove)
 
       } else if (callback) {
         callback()

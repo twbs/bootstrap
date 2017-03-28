@@ -32,7 +32,6 @@ const Tooltip = (($) => {
   const DATA_KEY            = 'bs.tooltip'
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
   const CLASS_PREFIX        = 'bs-tether'
   const TETHER_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
@@ -304,7 +303,10 @@ const Tooltip = (($) => {
         Util.reflow(tip)
         this._tether.position()
 
-        $(tip).addClass(ClassName.SHOW)
+        const start = () => {
+          $(tip).addClass(ClassName.SHOW)
+          this._isTransitioning = true
+        }
 
         const complete = () => {
           const prevHoverState = this._hoverState
@@ -318,15 +320,7 @@ const Tooltip = (($) => {
           }
         }
 
-        if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
-          this._isTransitioning = true
-          $(this.tip)
-            .one(Util.TRANSITION_END, complete)
-            .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
-          return
-        }
-
-        complete()
+        $(this.tip).transition(start, complete)
       }
     }
 
@@ -336,21 +330,6 @@ const Tooltip = (($) => {
       if (this._isTransitioning) {
         throw new Error('Tooltip is transitioning')
       }
-      const complete  = () => {
-        if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
-          tip.parentNode.removeChild(tip)
-        }
-
-        this._cleanTipClass()
-        this.element.removeAttribute('aria-describedby')
-        $(this.element).trigger(this.constructor.Event.HIDDEN)
-        this._isTransitioning = false
-        this.cleanupTether()
-
-        if (callback) {
-          callback()
-        }
-      }
 
       $(this.element).trigger(hideEvent)
 
@@ -358,22 +337,32 @@ const Tooltip = (($) => {
         return
       }
 
-      $(tip).removeClass(ClassName.SHOW)
+      const start  = () => {
+        $(tip).removeClass(ClassName.SHOW)
 
-      this._activeTrigger[Trigger.CLICK] = false
-      this._activeTrigger[Trigger.FOCUS] = false
-      this._activeTrigger[Trigger.HOVER] = false
-
-      if (Util.supportsTransitionEnd() &&
-          $(this.tip).hasClass(ClassName.FADE)) {
+        this._activeTrigger[Trigger.CLICK] = false
+        this._activeTrigger[Trigger.FOCUS] = false
+        this._activeTrigger[Trigger.HOVER] = false
         this._isTransitioning = true
-        $(tip)
-          .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
-
-      } else {
-        complete()
       }
+
+      const complete  = () => {
+        if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
+          tip.parentNode.removeChild(tip)
+        }
+
+        this._cleanTipClass()
+        this.element.removeAttribute('aria-describedby')
+        this._isTransitioning = false
+        $(this.element).trigger(this.constructor.Event.HIDDEN)
+        this.cleanupTether()
+
+        if (callback) {
+          callback()
+        }
+      }
+
+      $(tip).transition(start, complete)
 
       this._hoverState = ''
     }
@@ -393,8 +382,6 @@ const Tooltip = (($) => {
       const $tip = $(this.getTipElement())
 
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
-
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
 
       this.cleanupTether()
     }
