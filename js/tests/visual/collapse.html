@@ -60,30 +60,5 @@
     <script src="../../../docs/assets/js/vendor/jquery-slim.min.js"></script>
     <script src="../../dist/util.js"></script>
     <script src="../../dist/collapse.js"></script>
-    <script>
-      // JavaScript Test
-      $(function () {
-        testCollapseTransitionError()
-      });
-
-      // Should throw an error because carousel is in transition
-      function testCollapseTransitionError() {
-        var err = false
-        $('#collapseOne').on('hidden.bs.collapse', function (e) {
-          $(this).off('hidden.bs.collapse')
-          if (!err) {
-            alert('No error thrown for : testCollapseTransitionError')
-          }
-        })
-
-        try {
-          $('#collapseOne').collapse('hide').collapse('show')
-        }
-        catch (e) {
-          err = true
-          console.error(e.message)
-        }
-      }
-    </script>
   </body>
 </html>

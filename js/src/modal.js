@@ -87,7 +87,6 @@ const Modal = (($) => {
       this._isShown             = false
       this._isBodyOverflowing   = false
       this._ignoreBackdropClick = false
-      this._isTransitioning     = false
       this._originalBodyPadding = 0
       this._scrollbarWidth      = 0
     }
@@ -112,13 +111,13 @@ const Modal = (($) => {
 
     show(relatedTarget) {
       if (this._isTransitioning) {
-        throw new Error('Modal is transitioning')
+        return
       }
 
-      if (Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)) {
+      if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
         this._isTransitioning = true
       }
+
       const showEvent = $.Event(Event.SHOW, {
         relatedTarget
       })
@@ -161,17 +160,18 @@ const Modal = (($) => {
         event.preventDefault()
       }
 
-      if (this._isTransitioning) {
-        throw new Error('Modal is transitioning')
+      if (this._isTransitioning || !this._isShown) {
+        return
       }
 
-      const transition = Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)
+      const transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)
+
       if (transition) {
         this._isTransitioning = true
       }
 
       const hideEvent = $.Event(Event.HIDE)
+
       $(this._element).trigger(hideEvent)
 
       if (!this._isShown || hideEvent.isDefaultPrevented()) {
@@ -191,6 +191,7 @@ const Modal = (($) => {
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
       if (transition) {
+
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
           .emulateTransitionEnd(TRANSITION_DURATION)
@@ -307,7 +308,7 @@ const Modal = (($) => {
 
     _hideModal() {
       this._element.style.display = 'none'
-      this._element.setAttribute('aria-hidden', 'true')
+      this._element.setAttribute('aria-hidden', true)
       this._isTransitioning = false
       this._showBackdrop(() => {
         $(document.body).removeClass(ClassName.OPEN)
