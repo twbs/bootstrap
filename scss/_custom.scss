@@ -357,7 +357,7 @@ $transition-collapse:    height .35s ease !default;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-cell-padding:            .75rem 1.25rem;
+$table-cell-padding:            ($spacer-x * .75) $spacer-x;
 $table-sm-cell-padding:         .25rem 0.5rem;
 
 $table-bg:                      transparent !default;
@@ -929,8 +929,8 @@ $list-group-border-color:        rgba($black,.125) !default;
 $list-group-border-width:        $border-width !default;
 $list-group-border-radius:       $border-radius !default;
 
-$list-group-item-padding-x:      1.25rem !default;
-$list-group-item-padding-y:      .75rem !default;
+$list-group-item-padding-x:      $spacer-x;
+$list-group-item-padding-y:      $list-group-item-padding-x * 0.5;
 
 $list-group-hover-bg:            $gray-lightest !default;
 $list-group-active-color:        $component-active-color !default;
