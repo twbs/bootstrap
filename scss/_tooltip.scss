@@ -15,11 +15,10 @@
 
   &.tooltip-top,
   &.bs-tether-element-attached-bottom {
-    padding: $tooltip-arrow-width 0;
-    margin-top: -$tooltip-margin;
+    padding: $tooltip-arrow-width + $tooltip-margin 0;
 
     .tooltip-inner::before {
-      bottom: 0;
+      bottom: $tooltip-margin;
       left: 50%;
       margin-left: -$tooltip-arrow-width;
       content: "";
@@ -29,12 +28,11 @@
   }
   &.tooltip-right,
   &.bs-tether-element-attached-left {
-    padding: 0 $tooltip-arrow-width;
-    margin-left: $tooltip-margin;
+    padding: 0 $tooltip-arrow-width + $tooltip-margin;
 
     .tooltip-inner::before {
       top: 50%;
-      left: 0;
+      left: $tooltip-margin;
       margin-top: -$tooltip-arrow-width;
       content: "";
       border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
@@ -43,11 +41,10 @@
   }
   &.tooltip-bottom,
   &.bs-tether-element-attached-top {
-    padding: $tooltip-arrow-width 0;
-    margin-top: $tooltip-margin;
+    padding: $tooltip-arrow-width + $tooltip-margin 0;
 
     .tooltip-inner::before {
-      top: 0;
+      top: $tooltip-margin;
       left: 50%;
       margin-left: -$tooltip-arrow-width;
       content: "";
@@ -57,12 +54,11 @@
   }
   &.tooltip-left,
   &.bs-tether-element-attached-right {
-    padding: 0 $tooltip-arrow-width;
-    margin-left: -$tooltip-margin;
+    padding: 0 $tooltip-arrow-width + $tooltip-margin;
 
     .tooltip-inner::before {
       top: 50%;
-      right: 0;
+      right: $tooltip-margin;
       margin-top: -$tooltip-arrow-width;
       content: "";
       border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
