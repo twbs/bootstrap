@@ -147,3 +147,12 @@ a.card-block {
   padding: $card-nav-spacer-y $card-nav-spacer-x;
   border-top: $card-border-width solid $card-border-color;
 }
+
+//
+// CUSTOM: Card-header
+//
+// Overwrites card-header to resemble screendesign
+
+.card-header {
+  background-color: transparent;
+}
