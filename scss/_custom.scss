@@ -788,6 +788,9 @@ $card-action-active-color:          $gray-dark;
 $card-action-active-bg:             mix(black, $card-action-hover-bg, 10%);
 $card-action-active-box-shadow:     $btn-active-box-shadow;
 
+$card-nav-spacer-x: $card-spacer-x * 0.75;
+$card-nav-spacer-y: $card-spacer-y * 0.5;
+
 
 // Tooltips
 

@@ -137,3 +137,13 @@ a.card-block {
     box-shadow: $card-action-active-box-shadow;
   }
 }
+
+//
+// CUSTOM: Card-nav
+//
+// Special Component, that adds the correct padding and top border without using the `card-header` class.
+
+.card-nav {
+  padding: $card-nav-spacer-y $card-nav-spacer-x;
+  border-top: $card-border-width solid $card-border-color;
+}
