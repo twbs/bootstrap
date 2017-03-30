@@ -364,4 +364,24 @@ $(function () {
       })
       .modal('show')
   })
+
+  QUnit.test('should convert number content to string without error', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $popover = $('<a href="#">@mdo</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: function () {
+          return '@Johann-S'
+        },
+        content: 7
+      })
+      .on('shown.bs.popover', function () {
+        assert.strictEqual($('.popover .popover-title').text(), '@Johann-S')
+        assert.strictEqual($('.popover .popover-content').text(), '7', 'content correctly converted')
+        done()
+      })
+
+    $popover.bootstrapPopover('show')
+  })
 })
