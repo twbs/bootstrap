@@ -63,7 +63,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 </div>
 
 {% highlight html %}
-<div class="modal fade">
+<div class="modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -410,7 +410,7 @@ For modals that simply appear rather than fade in to view, remove the `.fade` cl
 
 ### Dynamic heights
 
-If the height of a modal changes while it is open, you should call `$('#myModal').data('bs.modal').handleUpdate()` to readjust the modal's position in case a scrollbar appears.
+If the height of a modal changes while it is open, you should call `$('#myModal').data('bs.modal').handleUpdate()` or `$('#myModal').modal('handleUpdate')` to readjust the modal's position in case a scrollbar appears.
 
 ### Accessibility
 
@@ -547,6 +547,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 #### `.modal(options)`
 
 Activates your content as a modal. Accepts an optional options `object`.
@@ -574,6 +577,12 @@ Manually opens a modal. **Returns to the caller before the modal has actually be
 Manually hides a modal. **Returns to the caller before the modal has actually been hidden** (i.e. before the `hidden.bs.modal` event occurs).
 
 {% highlight js %}$('#myModal').modal('hide'){% endhighlight %}
+
+#### `.modal('handleUpdate')`
+
+Manually readjust the modal's position if the height of a modal changes while it is open (i.e. in case a scrollbar appears).
+
+{% highlight js %}$('#myModal').modal('handleUpdate'){% endhighlight %}
 
 ### Events
 

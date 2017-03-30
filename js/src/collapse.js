@@ -120,11 +120,8 @@ const Collapse = (($) => {
     }
 
     show() {
-      if (this._isTransitioning) {
-        throw new Error('Collapse is transitioning')
-      }
-
-      if ($(this._element).hasClass(ClassName.SHOW)) {
+      if (this._isTransitioning ||
+        $(this._element).hasClass(ClassName.SHOW)) {
         return
       }
 
@@ -204,11 +201,8 @@ const Collapse = (($) => {
     }
 
     hide() {
-      if (this._isTransitioning) {
-        throw new Error('Collapse is transitioning')
-      }
-
-      if (!$(this._element).hasClass(ClassName.SHOW)) {
+      if (this._isTransitioning ||
+        !$(this._element).hasClass(ClassName.SHOW)) {
         return
       }
 
@@ -363,7 +357,9 @@ const Collapse = (($) => {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    event.preventDefault()
+    if (!/input|textarea/i.test(event.target.tagName)) {
+      event.preventDefault()
+    }
 
     const target = Collapse._getTargetFromElement(this)
     const data   = $(target).data(DATA_KEY)

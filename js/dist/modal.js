@@ -209,6 +209,10 @@ var Modal = function ($) {
       this._scrollbarWidth = null;
     };
 
+    Modal.prototype.handleUpdate = function handleUpdate() {
+      this._adjustDialog();
+    };
+
     // private
 
     Modal.prototype._getConfig = function _getConfig(config) {
@@ -290,7 +294,7 @@ var Modal = function ($) {
 
       if (this._isShown) {
         $(window).on(Event.RESIZE, function (event) {
-          return _this6._handleUpdate(event);
+          return _this6.handleUpdate(event);
         });
       } else {
         $(window).off(Event.RESIZE);
@@ -390,10 +394,6 @@ var Modal = function ($) {
     // the following methods are used to handle overflowing modals
     // todo (fat): these should probably be refactored out of modal.js
     // ----------------------------------------------------------------------
-
-    Modal.prototype._handleUpdate = function _handleUpdate() {
-      this._adjustDialog();
-    };
 
     Modal.prototype._adjustDialog = function _adjustDialog() {
       var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
