@@ -254,6 +254,9 @@ Options for individual tooltips can alternatively be specified through the use o
 
 ### Methods
 
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 #### `$().tooltip(options)`
 
 Attaches a tooltip handler to an element collection.
@@ -281,6 +284,24 @@ Toggles an element's tooltip. **Returns to the caller before the tooltip has act
 Hides and destroys an element's tooltip. Tooltips that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
 {% highlight js %}$('#element').tooltip('dispose'){% endhighlight %}
+
+#### `.tooltip('enable')`
+
+Gives an element's tooltip the ability to be shown. **Tooltips are enabled by default.**
+
+{% highlight js %}$('#element').tooltip('enable'){% endhighlight %}
+
+#### `.tooltip('disable')`
+
+Removes the ability for an element's tooltip to be shown. The tooltip will only be able to be shown if it is re-enabled.
+
+{% highlight js %}$('#element').tooltip('disable'){% endhighlight %}
+
+#### `.tooltip('toggleEnabled')`
+
+Toggles the ability for an element's tooltip to be shown or hidden.
+
+{% highlight js %}$('#element').tooltip('toggleEnabled'){% endhighlight %}
 
 ### Events
 

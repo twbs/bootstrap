@@ -229,6 +229,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 #### `.carousel(options)`
 
 Initializes the carousel with an optional options `object` and starts cycling through items.
@@ -249,15 +252,15 @@ Stops the carousel from cycling through items.
 
 #### `.carousel(number)`
 
-Cycles the carousel to a particular frame (0 based, similar to an array).
+Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
 #### `.carousel('prev')`
 
-Cycles to the previous item.
+Cycles to the previous item. **Returns to the caller before the previous item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
 #### `.carousel('next')`
 
-Cycles to the next item.
+Cycles to the next item. **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
 ### Events
 

@@ -45,31 +45,11 @@
     <script src="../../dist/carousel.js"></script>
 
     <script>
-      // Should throw an error because carousel is in transition
-      function testCarouselTransitionError() {
-        var err = false
-        var $carousel = $('#carousel-example-generic')
-        $carousel.on('slid.bs.carousel', function () {
-          $carousel.off('slid.bs.carousel')
-          if (!err) {
-            alert('No error thrown for : testCarouselTransitionError')
-          }
-        })
-        try {
-          $carousel.carousel('next').carousel('prev')
-        }
-        catch (e) {
-          err = true
-          console.error(e.message)
-        }
-      }
-
-      $(function () {
+      $(function() {
         // Test to show that the carousel doesn't slide when the current tab isn't visible
-        $('#carousel-example-generic').on('slid.bs.carousel', function (event) {
+        $('#carousel-example-generic').on('slid.bs.carousel', function(event) {
           console.log('slid at ', event.timeStamp)
         })
-        testCarouselTransitionError()
       })
     </script>
   </body>

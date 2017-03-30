@@ -404,6 +404,9 @@ To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must a
 
 ### Methods
 
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 #### $().tab
 
 Activates a tab element and content container. Tab should have either a `data-target` or an `href` targeting a container node in the DOM.
