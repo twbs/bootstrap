@@ -109,9 +109,9 @@ $joblocal-orange: #f8ae00; // used own namespace to distinguish general stuff li
 $joblocal-gray: #444547;
 
 // Create grayscale
-$gray-dark:     #444547;
-$gray:          #969696;
-$gray-light:    #ccc;
+$gray-dark:     mix(black, $joblocal-gray, 50%);
+$gray:          $joblocal-gray;
+$gray-light:    mix(white, $joblocal-gray, 25%);
 $gray-lighter:  #d7d7d7;
 $gray-lightest: #f6f6f6;
 
@@ -204,7 +204,7 @@ $sizes: (
 // Settings for the `<body>` element.
 
 $body-bg:       $gray-lightest;
-$body-color:    $gray-dark;
+$body-color:    $gray;
 
 
 // Links
@@ -292,8 +292,8 @@ $font-size-h6: 1rem !default;
 $headings-margin-bottom: 1rem;
 $headings-font-family:   inherit !default;
 $headings-font-weight:   $font-weight-bold;
-$headings-line-height:   1.1 !default;
-$headings-color:         inherit !default;
+$headings-line-height:   1.25;
+$headings-color:         $gray-dark;
 
 $display1-size: 2.5rem;
 $display2-size: 5.5rem !default;
@@ -392,7 +392,7 @@ $btn-primary-color:              $white !default;
 $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border:             $btn-primary-bg !default;
 
-$btn-secondary-color:            $gray-dark !default;
+$btn-secondary-color:            $gray;
 $btn-secondary-bg:               $white !default;
 $btn-secondary-border:           #ccc !default;
 
@@ -469,7 +469,7 @@ $input-color-placeholder:        $gray-light !default;
 $input-padding-x-sm:             .5rem !default;
 $input-padding-y-sm:             .25rem !default;
 
-$input-padding-x-lg:             1.5rem !default;
+$input-padding-x-lg:             1rem;
 $input-padding-y-lg:             .75rem !default;
 
 $input-height:                   (($font-size-base * $input-line-height) + ($input-padding-y * 2)) !default;
