@@ -371,14 +371,12 @@ $(function () {
     var $popover = $('<a href="#">@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
-        title: function () {
-          return '@Johann-S'
-        },
+        title: 5,
         content: 7
       })
       .on('shown.bs.popover', function () {
-        assert.strictEqual($('.popover .popover-title').text(), '@Johann-S')
-        assert.strictEqual($('.popover .popover-content').text(), '7', 'content correctly converted')
+        assert.strictEqual($('.popover .popover-title').text(), '5')
+        assert.strictEqual($('.popover .popover-content').text(), '7')
         done()
       })
 
