@@ -116,7 +116,7 @@ The tooltip plugin generates content and markup on demand, and by default places
 Trigger the tooltip via JavaScript:
 
 {% highlight js %}
-$('#example').tooltip(options)
+$('#example').tooltip('options')
 {% endhighlight %}
 
 ### Markup
