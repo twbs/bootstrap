@@ -480,6 +480,48 @@ Add some navigation to a card's header (or block) with Bootstrap's [nav componen
 </div>
 {% endexample %}
 
+### Card Nav
+Special Component, that adds the correct padding and top border without using the `card-header` class.
+
+<div class="card">
+  <div class="card-block px-3 py-3 px-sm-4 py-sm-3 px-md-5 py-md-4 px-lg-6 py-lg-5">
+    <h1 class="card-title">Ausbildung zum Drogist (w/m) mit der Möglichkeit der Zusatzqualifikation zum Handelsfachwirt 2017 <small>in München</small></h1>
+    <p class="card-text small"><span class="badge badge-primary">Top Job</span> <a href="#">dm-drogerie markt GmbH + Co. KG</a></p>
+  </div>
+  <div class="card-nav bg-faded">
+    <ul class="nav nav-buttons card-buttons card-buttons">
+      <li class="nav-item">
+        <button type="button" class="btn btn-secondary">Job merken</button>
+      </li>
+      <li class="nav-item">
+        <div class="btn-group">
+          <button type="button" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle">Teilen</button>
+          <div class="dropdown-menu">
+            <a href="mailto:" class="dropdown-item">Per E-Mail</a>
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header">Soziale Netzwerke</h6>
+            <a href="#" class="dropdown-item">Facebook</a>
+            <a href="#" class="dropdown-item">Twitter</a>
+            <a href="#" class="dropdown-item">Google Plus</a>
+            <a href="#" class="dropdown-item">LinkedIn</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <button type="button" class="btn btn-secondary">Drucken</button>
+      </li>
+      <li class="ml-auto">
+        <a href="#" class="btn btn-cta btn-primary">Jetzt bewerben</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-block px-3 py-3 px-sm-4 py-sm-3 px-md-5 py-md-4 px-lg-6 py-lg-5">
+    <h2 class="card-title">Stellenbeschreibung</h2>
+    <p>AmRest Holdings SE is the largest independent restaurant operator in Central and Eastern Europe with a growing international presence. Since 1993 we have been building a portfolio of well recognized, power brands such as KFC, Pizza Hut, Burger King and Starbucks based on solid franchise and joint venture partnerships. AmRest owns the La Tagliatella brand which is being developed internationally as both Company operated restaurants and franchised stores. In 2012 AmRest acquired two unique brands operating in China- Blue Frog and Kabb.</p>
+    <p>AmRest Coffee Deutschland Sp. z o.o. &amp; Co. KG is a sub company of AmRest Holdings SE, which operates almost 150 Starbucks Stores in Germany as licensee.</p>
+  </div>
+</div>
+
 ## Images
 
 Cards include a few options for working with images. Choose from appending "image caps" at either end of a card, overlaying images with card content, or simply embedding the image in a card.
