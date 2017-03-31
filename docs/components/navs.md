@@ -301,7 +301,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 
 ## JavaScript behavior
 
-Use the tab JavaScript plugin—include it individually or through the compiled `bootstrap.js` file—to extend our navigational tabs and pills to create tabbable panes of local content, even via dropdown menus.
+Use the tab JavaScript plugin—include it individually or through the compiled `bootstrap.js` file—to extend our navigation components to create tabbable panes of local content, even via dropdown menus.
 
 <div class="bd-example bd-example-tabs" role="tabpanel">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -334,6 +334,24 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
     <div class="tab-pane fade" id="dropdown2" role="tabpanel" aria-labelledBy="dropdown2-tab">
       <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
     </div>
+  </div>
+</div>
+
+To help fit your needs, this works with with `<ul>`-based markup, as shown above, as well as `<nav>`-based markup shown below.
+
+<div class="bd-example bd-example-tabs" role="tabpanel">
+  <nav class="nav nav-tabs" role="tablist">
+    <a class="nav-link nav-item active" data-toggle="tab" href="#navHome" role="tab">Home</a>
+    <a class="nav-link nav-item" data-toggle="tab" href="#navProfile" role="tab">Profile</a>
+    <a class="nav-link nav-item" data-toggle="tab" href="#navMessages" role="tab">Messages</a>
+    <a class="nav-link nav-item" data-toggle="tab" href="#navSettings" role="tab">Settings</a>
+  </nav>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="navHome" role="tabpanel">Home</div>
+    <div class="tab-pane" id="navProfile" role="tabpanel">Profile</div>
+    <div class="tab-pane" id="navMessages" role="tabpanel">Messages</div>
+    <div class="tab-pane" id="navSettings" role="tabpanel">Settings</div>
   </div>
 </div>
 
