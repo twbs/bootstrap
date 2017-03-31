@@ -886,4 +886,20 @@ $(function () {
 
     $el.bootstrapTooltip('hide')
   })
+
+  QUnit.test('should convert number in title to string', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $el = $('<a href="#" rel="tooltip" title="7"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip('show')
+      .on('shown.bs.tooltip', function () {
+        var tooltip = $el.data('bs.tooltip')
+        var $tooltip = $(tooltip.getTipElement())
+        assert.strictEqual($tooltip.children().text(), '7')
+        done()
+      })
+
+    $el.bootstrapTooltip('show')
+  })
 })
