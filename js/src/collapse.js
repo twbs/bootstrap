@@ -289,7 +289,7 @@ const Collapse = (($) => {
 
       $(parent).find(selector).each((i, element) => {
         this._addAriaAndCollapsedClass(
-          Collapse._getTargetFromElement(element),
+          Util.getTargets(element)[0],
           [element]
         )
       })
@@ -312,11 +312,6 @@ const Collapse = (($) => {
 
 
     // static
-
-    static _getTargetFromElement(element) {
-      const selector = Util.getSelectorFromElement(element)
-      return selector ? $(selector)[0] : null
-    }
 
     static _jQueryInterface(config) {
       return this.each(function () {
@@ -361,11 +356,11 @@ const Collapse = (($) => {
       event.preventDefault()
     }
 
-    const target = Collapse._getTargetFromElement(this)
-    const data   = $(target).data(DATA_KEY)
+    const $target = Util.getTargets(this).first()
+    const data   = $target.data(DATA_KEY)
     const config = data ? 'toggle' : $(this).data()
 
-    Collapse._jQueryInterface.call($(target), config)
+    Collapse._jQueryInterface.call($target, config)
   })
 
 

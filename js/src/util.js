@@ -110,17 +110,15 @@ const Util = (($) => {
       return prefix
     },
 
-    getSelectorFromElement(element) {
+    getTargets(element) {
       let selector = element.getAttribute('data-target')
-      if (!selector || selector === '#') {
+      if (!selector) {
         selector = element.getAttribute('href') || ''
       }
-
       try {
-        const $selector = $(selector)
-        return $selector.length > 0 ? selector : null
-      } catch (error) {
-        return null
+        return $(document).find(selector)
+      } catch (err) {
+        return $()
       }
     },
 

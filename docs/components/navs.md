@@ -337,6 +337,63 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
   </div>
 </div>
 
+The tab JavaScript plugin also support multiple targets by using a JQuery selector in its `data-target` or `href` attributes, for example `data-target="#home, #home-aux"`.
+
+<div class="bd-example bd-example-tabs" role="tabpanel">
+  <ul class="nav nav-tabs" id="multiTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-multi-tab" data-toggle="tab" href="#home-multi,#home-multi-aux" role="tab" aria-controls="home" aria-expanded="true">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-multi-tab" data-toggle="tab" href="#profile-multi,#profile-multi-aux" role="tab" aria-controls="profile">Profile</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        Dropdown
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" id="dropdown1-multi-tab" href="#dropdown1-multi,#dropdown1-multi-aux" role="tab" data-toggle="tab" aria-controls="dropdown1">@fat</a>
+        <a class="dropdown-item" id="dropdown2-multi-tab" href="#dropdown2-multi,#dropdown2-multi-aux" role="tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a>
+      </div>
+    </li>
+  </ul>
+
+  <div class="row">
+    <div class="col">
+      <div class="tab-content" id="multi-tabContent">
+        <div role="tabpanel" class="tab-pane fade show active" id="home-multi" aria-labelledBy="home-multi-tab">
+          <p>Nisi eiusmod laboris adipisicing sint laborum veniam voluptate dolor id reprehenderit sint nulla qui. Eu fugiat ad anim aliqua non elit incididunt et. Culpa in tempor do amet eiusmod esse pariatur officia reprehenderit ipsum dolore magna non nostrud.</p>
+        </div>
+        <div class="tab-pane fade" id="profile-multi" role="tabpanel" aria-labelledBy="profile-multi-tab">
+          <p>Non Lorem nostrud dolore anim laboris dolore deserunt proident in. Pariatur ipsum ipsum cillum pariatur est pariatur cillum excepteur esse irure enim occaecat incididunt adipisicing proident. Enim adipisicing ipsum laborum reprehenderit sit dolor quis id velit do duis culpa et.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown1-multi" role="tabpanel" aria-labelledBy="dropdown1-multi-tab">
+          <p>Cillum excepteur veniam labore fugiat et minim incididunt enim adipisicing officia sit. Culpa laborum occaecat incididunt officia magna cillum culpa ullamco commodo quis sint aute quis est consectetur consectetur aliquip. Minim veniam in ut aliquip ad nisi culpa labore eiusmod commodo deserunt eu.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown2-multi" role="tabpanel" aria-labelledBy="dropdown2-multi-tab">
+          <p>Sit in deserunt duis labore do ex duis laborum consectetur nostrud. Excepteur aute consequat Lorem deserunt quis et consectetur ex consectetur tempor reprehenderit ut nostrud enim. Elit consequat Lorem dolor incididunt quis adipisicing anim consequat consectetur ullamco tempor ad aute.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="tab-content" id="multi-tabContent-aux">
+        <div role="tabpanel" class="tab-pane fade show active" id="home-multi-aux" aria-labelledBy="home-multi-tab">
+          <p>Fugiat enim excepteur et commodo cillum voluptate laborum excepteur irure amet ut Lorem ex irure pariatur pariatur. Occaecat ex id irure dolore incididunt exercitation veniam occaecat aliqua laborum anim ullamco. Non eu qui velit consequat quis qui ut proident nostrud.</p>
+        </div>
+        <div class="tab-pane fade" id="profile-multi-aux" role="tabpanel" aria-labelledBy="profile-multi-tab">
+          <p>Eiusmod eu velit ea dolor ipsum esse veniam laboris non. Eu elit qui sit dolor sit in enim. Ea Lorem officia aliqua ut eiusmod ad nostrud nisi occaecat ex culpa ad enim amet labore. Fugiat sit enim ullamco nisi reprehenderit proident amet.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown1-multi-aux" role="tabpanel" aria-labelledBy="dropdown1-multi-tab">
+          <p>Adipisicing dolore est non sunt enim duis eu sint do aliqua ullamco et minim. Veniam proident consequat proident ullamco mollit et sunt eiusmod. Qui pariatur dolor excepteur sit fugiat irure elit dolor sint. Dolore sint reprehenderit voluptate incididunt anim ad et eu dolore irure fugiat dolore nulla.</p>
+        </div>
+        <div class="tab-pane fade" id="dropdown2-multi-aux" role="tabpanel" aria-labelledBy="dropdown2-multi-tab">
+          <p>Esse voluptate velit sint pariatur amet nisi in ut. Quis ea laborum commodo incididunt reprehenderit aliqua consectetur excepteur proident duis mollit culpa eu aute et irure. Aute aliquip dolore esse veniam cupidatat mollit quis sit irure commodo do adipisicing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 ### Using data attributes
 
 You can activate a tab or pill navigation without writing any JavaScript by simply specifying `data-toggle="tab"` or `data-toggle="pill"` on an element. Use these data attributes on `.nav-tabs` or `.nav-pills`.
@@ -409,7 +466,7 @@ To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must a
 
 #### $().tab
 
-Activates a tab element and content container. Tab should have either a `data-target` or an `href` targeting a container node in the DOM.
+Activates a tab element and content container. Tab should have either a `data-target` or an `href` with a JQuery selector that target a single or multiple container nodes in the DOM.
 
 {% highlight html %}
 <ul class="nav nav-tabs" id="myTab" role="tablist">
