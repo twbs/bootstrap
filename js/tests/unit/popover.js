@@ -365,7 +365,7 @@ $(function () {
       .modal('show')
   })
 
-  QUnit.test('should convert number content to string without error', function (assert) {
+  QUnit.test('should convert number to string without error for content and title', function (assert) {
     assert.expect(2)
     var done = assert.async()
     var $popover = $('<a href="#">@mdo</a>')
