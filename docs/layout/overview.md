@@ -178,7 +178,7 @@ $zindex-master-list: (
 ) !default;
 ```
 
-The `zindex` mixin will get the proper index for a given control. If the control isn't defined, an error will be display when compiling the scss files.
+The `zindex` mixin will get the proper index for a given control. If the control isn't defined, an error will be displayed when compiling the scss files.
 
 ```scss
 @include zindex("dropdown");
