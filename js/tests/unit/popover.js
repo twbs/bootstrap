@@ -364,4 +364,22 @@ $(function () {
       })
       .modal('show')
   })
+
+  QUnit.test('should convert number to string without error for content and title', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $popover = $('<a href="#">@mdo</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: 5,
+        content: 7
+      })
+      .on('shown.bs.popover', function () {
+        assert.strictEqual($('.popover .popover-title').text(), '5')
+        assert.strictEqual($('.popover .popover-content').text(), '7')
+        done()
+      })
+
+    $popover.bootstrapPopover('show')
+  })
 })
