@@ -168,14 +168,24 @@ Several Bootstrap components utilize `z-index`, the CSS property that helps cont
 We don't encourage customization of these values; should you change one, you likely need to change them all.
 
 ```scss
-$zindex-dropdown-backdrop:  990 !default;
-$zindex-dropdown:          1000 !default;
-$zindex-fixed:             1030 !default;
-$zindex-sticky:            1030 !default;
-$zindex-modal-backdrop:    1040 !default;
-$zindex-modal:             1050 !default;
-$zindex-popover:           1060 !default;
-$zindex-tooltip:           1070 !default;
+$zindex-master-list: (
+  "dropdown":  1000,
+  "sticky":    1020,
+  "fixed":     1030,
+  "modal":     1040,
+  "popover":   1060,
+  "tooltip":   1070
+) !default;
 ```
 
-Background elements—like the backdrops that allow click-dismissing—tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content.
+The `zindex` mixin will get the proper index for a given control. If the control isn't defined, an error will be display when compiling the scss files.
+
+```scss
+@include zindex("dropdown");
+```
+
+Background elements—like the backdrops that allow click-dismissing—tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content. Pass in a second argument in the `zindex` mixin to lower the index.
+
+```scss
+@include zindex("dropdown", 10);
+```

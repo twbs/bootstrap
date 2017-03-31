@@ -2,7 +2,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: $zindex-popover;
   display: block;
   max-width: $popover-max-width;
   padding: $popover-inner-padding;
@@ -17,6 +16,7 @@
   border: $popover-border-width solid $popover-border-color;
   @include border-radius($border-radius-lg);
   @include box-shadow($popover-box-shadow);
+  @include zindex("popover")
 
 
   // Popover directions
