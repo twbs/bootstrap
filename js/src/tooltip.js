@@ -605,6 +605,14 @@ const Tooltip = (($) => {
         }
       }
 
+      if (config.title && typeof config.title === 'number') {
+        config.title = config.title.toString()
+      }
+
+      if (config.content && typeof config.content === 'number') {
+        config.content = config.content.toString()
+      }
+
       Util.typeCheckConfig(
         NAME,
         config,
