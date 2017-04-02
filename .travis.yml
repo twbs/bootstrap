@@ -5,9 +5,9 @@ git:
   depth: 3
 node_js:
   - "4"
-  - "6"
+  - "7"
 before_install:
-  - if [[ `npm -v` != 3* ]]; then npm install -g npm@3; fi
+  - if [[ `npm -v` != 4* ]]; then npm install -g npm@4; fi
   - "export TRAVIS_COMMIT_MSG=\"`git log --format=%B --no-merges -n 1`\""
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip sauce\]'; export TWBS_DO_SAUCE=$?; true

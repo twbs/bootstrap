@@ -15,7 +15,7 @@
     - title: Overview
     - title: Grid
     - title: Media object
-    - title: Responsive utilities
+    - title: Utilities for layout
 
 - title: Content
   pages:
@@ -56,10 +56,9 @@
     - title: Clearfix
     - title: Close icon
     - title: Colors
+    - title: Display
     - title: Flexbox
-    - title: Display property
     - title: Image replacement
-    - title: Invisible content
     - title: Position
     - title: Responsive helpers
     - title: Screenreaders
@@ -67,6 +66,7 @@
     - title: Spacing
     - title: Typography
     - title: Vertical align
+    - title: Visibility
 
 - title: Extend
   pages:

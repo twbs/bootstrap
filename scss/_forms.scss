@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement
+// scss-lint:disable QualifyingElement, VendorPrefix
 
 //
 // Textual form controls
@@ -9,9 +9,9 @@
   width: 100%;
   // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
   // height: $input-height;
-  padding: $input-padding-y $input-padding-x;
+  padding: $input-btn-padding-y $input-btn-padding-x;
   font-size: $font-size-base;
-  line-height: $input-line-height;
+  line-height: $input-btn-line-height;
   color: $input-color;
   background-color: $input-bg;
   // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
@@ -95,20 +95,20 @@ select.form-control {
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
 .col-form-label {
-  padding-top: calc(#{$input-padding-y} - #{$input-btn-border-width} * 2);
-  padding-bottom: calc(#{$input-padding-y} - #{$input-btn-border-width} * 2);
+  padding-top: calc(#{$input-btn-padding-y} - #{$input-btn-border-width} * 2);
+  padding-bottom: calc(#{$input-btn-padding-y} - #{$input-btn-border-width} * 2);
   margin-bottom: 0; // Override the `<label>` default
 }
 
 .col-form-label-lg {
-  padding-top: calc(#{$input-padding-y-lg} - #{$input-btn-border-width} * 2);
-  padding-bottom: calc(#{$input-padding-y-lg} - #{$input-btn-border-width} * 2);
+  padding-top: calc(#{$input-btn-padding-y-lg} - #{$input-btn-border-width} * 2);
+  padding-bottom: calc(#{$input-btn-padding-y-lg} - #{$input-btn-border-width} * 2);
   font-size: $font-size-lg;
 }
 
 .col-form-label-sm {
-  padding-top: calc(#{$input-padding-y-sm} - #{$input-btn-border-width} * 2);
-  padding-bottom: calc(#{$input-padding-y-sm} - #{$input-btn-border-width} * 2);
+  padding-top: calc(#{$input-btn-padding-y-sm} - #{$input-btn-border-width} * 2);
+  padding-bottom: calc(#{$input-btn-padding-y-sm} - #{$input-btn-border-width} * 2);
   font-size: $font-size-sm;
 }
 
@@ -120,8 +120,8 @@ select.form-control {
 // For use with horizontal and inline forms, when you need the legend text to
 // be the same size as regular labels, and to align with the form controls.
 .col-form-legend {
-  padding-top: $input-padding-y;
-  padding-bottom: $input-padding-y;
+  padding-top: $input-btn-padding-y;
+  padding-bottom: $input-btn-padding-y;
   margin-bottom: 0;
   font-size: $font-size-base;
 }
@@ -133,10 +133,10 @@ select.form-control {
 // horizontal form layout.
 
 .form-control-static {
-  padding-top: $input-padding-y;
-  padding-bottom: $input-padding-y;
+  padding-top: $input-btn-padding-y;
+  padding-bottom: $input-btn-padding-y;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
-  line-height: $input-line-height;
+  line-height: $input-btn-line-height;
   border: solid transparent;
   border-width: $input-btn-border-width 0;
 
@@ -157,26 +157,30 @@ select.form-control {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .form-control-sm {
-  padding: $input-padding-y-sm $input-padding-x-sm;
+  padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
   font-size: $font-size-sm;
+  line-height: $input-btn-line-height-sm;
   @include border-radius($input-border-radius-sm);
 }
 
 select.form-control-sm {
   &:not([size]):not([multiple]) {
-    height: $input-height-sm;
+    $select-border-width: ($border-width * 2);
+    height: calc(#{$input-height-sm} + #{$select-border-width});
   }
 }
 
 .form-control-lg {
-  padding: $input-padding-y-lg $input-padding-x-lg;
+  padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
   font-size: $font-size-lg;
+  line-height: $input-btn-line-height-lg;
   @include border-radius($input-border-radius-lg);
 }
 
 select.form-control-lg {
   &:not([size]):not([multiple]) {
-    height: $input-height-lg;
+    $select-border-width: ($border-width * 2);
+    height: calc(#{$input-height-lg} + #{$select-border-width});
   }
 }
 
@@ -253,7 +257,7 @@ select.form-control-lg {
 .form-control-success,
 .form-control-warning,
 .form-control-danger {
-  padding-right: ($input-padding-x * 3);
+  padding-right: ($input-btn-padding-x * 3);
   background-repeat: no-repeat;
   background-position: center right ($input-height / 4);
   background-size: ($input-height / 2) ($input-height / 2);

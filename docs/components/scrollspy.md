@@ -5,21 +5,57 @@ description: Documentation and examples for the scrollspy plugin with Bootstrap'
 group: components
 ---
 
+Automatically update nav targets based on scroll position.
+
 ## Contents
 
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
+{% callout warning %}
+#### Requires Bootstrap nav or list-group
+
+Scrollspy requires the use of a [Bootstrap nav component]({{ site.baseurl }}/components/navs#base-nav) or [Bootstrap list group component]({{ site.baseurl }}/components/list-group/#contents) for proper highlighting of active links / items.
+
+When used with the nav component, it supports both the `<nav>` and `<ul>` markup and in both cases the element that receives the `.active` class is the `.list-group-item`.
+
+When used with the list group component, the element that receives the `.active` class is the `.nav-link`.
+{% highlight html %}
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href="#target-id">Item</a>
+  </li>
+</ul>
+{% endhighlight %}
+
+{% highlight html %}
+<nav class="nav">
+  <a class="nav-link active" href="#target-id">Item</a>
+</nav>
+{% endhighlight %}
+
+{% endcallout %}
+
+{% callout warning %}
+#### Requires relative positioning
+
+No matter the implementation method, scrollspy requires the use of `position: relative;` on the element you're spying on. In most cases this is the `<body>`. When scrollspying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
+{% endcallout %}
+
 ## Example in navbar
 
-The ScrollSpy plugin is for automatically updating nav targets based on scroll position. Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.
+Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.
 
 <div class="bd-example">
   <nav id="navbar-example2" class="navbar navbar-light bg-faded">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav nav-pills">
-      <li class="nav-item"><a class="nav-link" href="#fat">@fat</a></li>
-      <li class="nav-item"><a class="nav-link" href="#mdo">@mdo</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="#fat">@fat</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#mdo">@mdo</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
         <div class="dropdown-menu">
@@ -47,16 +83,172 @@ The ScrollSpy plugin is for automatically updating nav targets based on scroll p
   </div>
 </div>
 
+{% highlight html %}
+<nav id="navbar-example2" class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="#fat">@fat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#mdo">@mdo</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#one">one</a>
+        <a class="dropdown-item" href="#two">two</a>
+        <div role="separator" class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#three">three</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+  <h4 id="fat">@fat</h4>
+  <p>...</p>
+  <h4 id="mdo">@mdo</h4>
+  <p>...</p>
+  <h4 id="one">one</h4>
+  <p>...</p>
+  <h4 id="two">two</h4>
+  <p>...</p>
+  <h4 id="three">three</h4>
+  <p>...</p>
+</div>
+{% endhighlight %}
+
+## Example with sub-nav
+
+The ScrollSpy plugin also works with nested `.nav`s. If a sub-`.nav` is `.active`, it's parents will also be `.active`. Scroll the area next to the navbar and watch the active class change.
+
+<div class="bd-example">
+  <div class="row">
+    <div class="col-4">
+      <nav id="navbar-example3" class="navbar navbar-light bg-faded flex-column">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link" href="#item-1">Item 1</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a>
+            <a class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
+          </nav>
+          <a class="nav-link" href="#item-2">Item 2</a>
+          <a class="nav-link" href="#item-3">Item 3</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
+            <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+          </nav>
+        </nav>
+      </nav>
+    </div>
+    <div class="col-8">
+      <div data-spy="scroll" data-target="#navbar-example3" data-offset="0" class="scrollspy-example-2">
+        <h4 id="item-1">Item 1</h4>
+        <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
+        <h5 id="item-1-1">Item 1-1</h5>
+        <p>Amet tempor mollit aliquip pariatur excepteur commodo do ea cillum commodo Lorem et occaecat elit qui et. Aliquip labore ex ex esse voluptate occaecat Lorem ullamco deserunt. Aliqua cillum excepteur irure consequat id quis ea. Sit proident ullamco aute magna pariatur nostrud labore. Reprehenderit aliqua commodo eiusmod aliquip est do duis amet proident magna consectetur consequat eu commodo fugiat non quis. Enim aliquip exercitation ullamco adipisicing voluptate excepteur minim exercitation minim minim commodo adipisicing exercitation officia nisi adipisicing. Anim id duis qui consequat labore adipisicing sint dolor elit cillum anim et fugiat.</p>
+        <h5 id="item-1-2">Item 2-2</h5>
+        <p>Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod. Anim occaecat nulla in non consequat eiusmod velit incididunt.</p>
+        <h4 id="item-2">Item 2</h4>
+        <p>Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur mollit voluptate est in duis laboris ad sit ipsum anim Lorem. Incididunt veniam velit elit elit veniam Lorem aliqua quis ullamco deserunt sit enim elit aliqua esse irure. Laborum nisi sit est tempor laborum mollit labore officia laborum excepteur commodo non commodo dolor excepteur commodo. Ipsum fugiat ex est consectetur ipsum commodo tempor sunt in proident.</p>
+        <h4 id="item-3">Item 3</h4>
+        <p>Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco est ex ullamco excepteur.</p>
+        <h5 id="item-3-1">Item 3-1</h5>
+        <p>Deserunt quis elit Lorem eiusmod amet enim enim amet minim Lorem proident nostrud. Ea id dolore anim exercitation aute fugiat labore voluptate cillum do laboris labore. Ex velit exercitation nisi enim labore reprehenderit labore nostrud ut ut. Esse officia sunt duis aliquip ullamco tempor eiusmod deserunt irure nostrud irure. Ullamco proident veniam laboris ea consectetur magna sunt ex exercitation aliquip minim enim culpa occaecat exercitation. Est tempor excepteur aliquip laborum consequat do deserunt laborum esse eiusmod irure proident ipsum esse qui.</p>
+        <h5 id="item-3-2">Item 3-2</h5>
+        <p>Labore sit culpa commodo elit adipisicing sit aliquip elit proident voluptate minim mollit nostrud aute reprehenderit do. Mollit excepteur eu Lorem ipsum anim commodo sint labore Lorem in exercitation velit incididunt. Occaecat consectetur nisi in occaecat proident minim enim sunt reprehenderit exercitation cupidatat et do officia. Aliquip consequat ad labore labore mollit ut amet. Sit pariatur tempor proident in veniam culpa aliqua excepteur elit magna fugiat eiusmod amet officia.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% highlight html %}
+<nav id="navbar-example3" class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <nav class="nav nav-pills flex-column">
+    <a class="nav-link" href="#item-1">Item 1</a>
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a>
+      <a class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
+    </nav>
+    <a class="nav-link" href="#item-2">Item2</a>
+    <a class="nav-link" href="#item-3">Item3</a>
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
+      <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+    </nav>
+  </nav>
+</nav>
+
+<div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+  <h4 id="item-1">Item 1</h4>
+  <p>...</p>
+  <h5 id="item-1-1">Item 1-1</h5>
+  <p>...</p>
+  <h5 id="item-1-2">Item 2-2</h5>
+  <p>...</p>
+  <h4 id="item-2">Item 2</h4>
+  <p>...</p>
+  <h4 id="item-3">Item 3</h4>
+  <p>...</p>
+  <h5 id="item-3-1">Item 3-1</h5>
+  <p>...</p>
+  <h5 id="item-3-2">Item 3-2</h5>
+  <p>...</p>
+</div>
+{% endhighlight %}
+
+## Example with list-group
+
+The ScrollSpy plugin also works with a `.list-group`. Scroll the area next to the list group and watch the active class change.
+
+<div class="bd-example">
+  <div class="row">
+    <div class="col-4">
+      <div id="list-example" class="list-group">
+        <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-2">Item2</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+      </div>
+    </div>
+    <div class="col-8">
+      <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+        <h4 id="list-item-1">Item 1</h4>
+        <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.</p>
+        <h4 id="list-item-2">Item 2</h4>
+        <p>Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur mollit voluptate est in duis laboris ad sit ipsum anim Lorem. Incididunt veniam velit elit elit veniam Lorem aliqua quis ullamco deserunt sit enim elit aliqua esse irure. Laborum nisi sit est tempor laborum mollit labore officia laborum excepteur commodo non commodo dolor excepteur commodo. Ipsum fugiat ex est consectetur ipsum commodo tempor sunt in proident.</p>
+        <h4 id="list-item-3">Item 3</h4>
+        <p>Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco est ex ullamco excepteur.</p>
+        <h4 id="list-item-4">Item 4</h4>
+        <p>Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco est ex ullamco excepteur.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% highlight html %}
+<div id="list-example" class="list-group">
+  <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+  <a class="list-group-item list-group-item-action" href="#list-item-2">Item2</a>
+  <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+  <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+</div>
+<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">
+  <h4 id="list-item-1">Item 1</h4>
+  <p>...</p>
+  <h4 id="list-item-2">Item 2</h4>
+  <p>...</p>
+  <h4 id="list-item-3">Item 3</h4>
+  <p>...</p>
+  <h4 id="list-item-4">Item 4</h4>
+  <p>...</p>
+</div>
+{% endhighlight %}
+
 
 ## Usage
-
-### Requires Bootstrap nav
-
-Scrollspy currently requires the use of a [Bootstrap nav component]({{ site.baseurl }}/components/navs/) for proper highlighting of active links.
-
-### Requires relative positioning
-
-No matter the implementation method, scrollspy requires the use of `position: relative;` on the element you're spying on. In most cases this is the `<body>`. When scrollspying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
 
 ### Via data attributes
 
