@@ -5,46 +5,27 @@ description: Documentation and examples for the scrollspy plugin with Bootstrap'
 group: components
 ---
 
-Automatically update nav targets based on scroll position.
+Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
 
 ## Contents
 
 * Will be replaced with the ToC, excluding the "Contents" header
 {:toc}
 
-{% callout warning %}
-#### Requires Bootstrap nav or list-group
+## How it works
 
-Scrollspy requires the use of a [Bootstrap nav component]({{ site.baseurl }}/components/navs#base-nav) or [Bootstrap list group component]({{ site.baseurl }}/components/list-group/#contents) for proper highlighting of active links / items.
+Scrollspy has a few requirements to function properly:
 
-When used with the nav component, it supports both the `<nav>` and `<ul>` markup and in both cases the element that receives the `.active` class is the `.list-group-item`.
+- It must to be used on a Bootstrap [nav component]({{ site.baseurl }}/components/navs/) or [list group]({{ site.baseurl }}/components/list-group/).
+- Scrollspy requires `position: relative;` on the element you're spying on, usually the `<body>`.
+- When spying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
+- Anchors (`<a>`) are required and must point to an element with that `id`.
 
-When used with the list group component, the element that receives the `.active` class is the `.nav-link`.
-{% highlight html %}
-<ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="#target-id">Item</a>
-  </li>
-</ul>
-{% endhighlight %}
-
-{% highlight html %}
-<nav class="nav">
-  <a class="nav-link active" href="#target-id">Item</a>
-</nav>
-{% endhighlight %}
-
-{% endcallout %}
-
-{% callout warning %}
-#### Requires relative positioning
-
-No matter the implementation method, scrollspy requires the use of `position: relative;` on the element you're spying on. In most cases this is the `<body>`. When scrollspying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
-{% endcallout %}
+When successfully implemented, your nav or list group will update accordingly, moving the `.active` class from one item to the next based on their associated targets.
 
 ## Example in navbar
 
-Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.
+Scroll the area below the navbar and watch the active class change. The dropdown items will be highlighted as well.
 
 <div class="bd-example">
   <nav id="navbar-example2" class="navbar navbar-light bg-faded">
@@ -118,9 +99,9 @@ Scroll the area below the navbar and watch the active class change. The dropdown
 </div>
 {% endhighlight %}
 
-## Example with sub-nav
+## Example with nested nav
 
-The ScrollSpy plugin also works with nested `.nav`s. If a sub-`.nav` is `.active`, it's parents will also be `.active`. Scroll the area next to the navbar and watch the active class change.
+Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its parents will also be `.active`. Scroll the area next to the navbar and watch the active class change.
 
 <div class="bd-example">
   <div class="row">
@@ -201,7 +182,7 @@ The ScrollSpy plugin also works with nested `.nav`s. If a sub-`.nav` is `.active
 
 ## Example with list-group
 
-The ScrollSpy plugin also works with a `.list-group`. Scroll the area next to the list group and watch the active class change.
+Scrollspy also works with `.list-group`s. Scroll the area next to the list group and watch the active class change.
 
 <div class="bd-example">
   <div class="row">
