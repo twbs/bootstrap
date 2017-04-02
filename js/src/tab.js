@@ -42,14 +42,10 @@ const Tab = (($) => {
   }
 
   const Selector = {
-    A                     : 'a',
-    LI                    : 'li',
     DROPDOWN              : '.dropdown',
-    LIST                  : 'ul:not(.dropdown-menu), ol:not(.dropdown-menu), nav:not(.dropdown-menu), .list-group:not(.dropdown-menu)',
-    FADE_CHILD            : '> .nav-item .fade, > .list-group-item .fade, > .fade',
+    NAV_LIST_GROUP        : '.nav, .list-group',
     ACTIVE                : '.active',
-    ACTIVE_CHILD          : '> .nav-item > .active, > .list-group-item > .active, > .active',
-    DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"]',
+    DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
     DROPDOWN_TOGGLE       : '.dropdown-toggle',
     DROPDOWN_ACTIVE_CHILD : '> .dropdown-menu .active'
   }
@@ -87,7 +83,7 @@ const Tab = (($) => {
 
       let target
       let previous
-      const listElement = $(this._element).closest(Selector.LIST)[0]
+      const listElement = $(this._element).closest(Selector.NAV_LIST_GROUP)[0]
       const selector    = Util.getSelectorFromElement(this._element)
 
       if (listElement) {
@@ -152,11 +148,10 @@ const Tab = (($) => {
     // private
 
     _activate(element, container, callback) {
-      const active          = $(container).find(Selector.ACTIVE_CHILD)[0]
+      const active          = $(container).find(Selector.ACTIVE)[0]
       const isTransitioning = callback
         && Util.supportsTransitionEnd()
-        && (active && $(active).hasClass(ClassName.FADE)
-           || Boolean($(container).find(Selector.FADE_CHILD)[0]))
+        && (active && $(active).hasClass(ClassName.FADE))
 
       const complete = () => this._transitionComplete(
         element,
@@ -182,9 +177,6 @@ const Tab = (($) => {
     _transitionComplete(element, active, isTransitioning, callback) {
       if (active) {
         $(active).removeClass(ClassName.ACTIVE)
-        if ($(active).hasClass('list-group-item')) {
-          $(active).find('a.nav-link').removeClass(ClassName.ACTIVE)
-        }
 
         const dropdownChild = $(active.parentNode).find(
           Selector.DROPDOWN_ACTIVE_CHILD
@@ -198,9 +190,6 @@ const Tab = (($) => {
       }
 
       $(element).addClass(ClassName.ACTIVE)
-      if ($(element.parentNode).hasClass('list-group-item')) {
-        $(element.parentNode).addClass(ClassName.ACTIVE)
-      }
       element.setAttribute('aria-expanded', true)
 
       if (isTransitioning) {
