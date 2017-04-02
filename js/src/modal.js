@@ -429,21 +429,22 @@ const Modal = (($) => {
     }
 
     _setScrollbar() {
-      const bodyPadding = parseInt(
-        $(Selector.FIXED_CONTENT).css('padding-right') || 0,
-        10
-      )
-
       this._originalBodyPadding = document.body.style.paddingRight || ''
-
       if (this._isBodyOverflowing) {
-        document.body.style.paddingRight =
-          `${bodyPadding + this._scrollbarWidth}px`
+        document.body.style.paddingRight = `${parseInt(document.body.style.paddingRight || 0, 10) + this._scrollbarWidth}px`
+        $(Selector.FIXED_CONTENT).each((index, element) => {
+          $(element).data('padding-right', element.style.paddingRight || '')
+          element.style.paddingRight = `${parseInt($(element).css('padding-right') || 0, 10) + this._scrollbarWidth}px`
+        })
       }
     }
 
     _resetScrollbar() {
       document.body.style.paddingRight = this._originalBodyPadding
+      $(Selector.FIXED_CONTENT).each((index, element) => {
+        element.style.paddingRight = $(element).data('padding-right')
+        $(element).removeData('padding-right')
+      })
     }
 
     _getScrollbarWidth() { // thx d.walsh

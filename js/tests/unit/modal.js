@@ -377,38 +377,49 @@ $(function () {
   })
 
   QUnit.test('should have a paddingRight when the modal is taller than the viewport', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
     var done = assert.async()
     $('<div class="fixed-top fixed-bottom sticky-top is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
-    $('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top').css('padding-right', '10px')
+    var $fixedTop = $('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top')
+    // QUnit doesn't create a sidebar, so emulate one (by setting a padding-right on the html element)
+    $('html').css('padding-right', '10px')
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
-        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
-        assert.strictEqual(isNaN(paddingRight), false)
-        assert.strictEqual(paddingRight !== 0, true)
+        // Test the presence of the padding-right set by the modal plugin on the body element
+        var bodyPaddingRight = parseInt($(document.body).css('padding-right'), 10)
+        assert.strictEqual(isNaN(bodyPaddingRight), false)
+        assert.strictEqual(bodyPaddingRight !== 0, true)
+        var fixedTopPaddingRight = parseInt($fixedTop.css('padding-right'), 10)
+        assert.strictEqual(isNaN(fixedTopPaddingRight), false)
+        assert.strictEqual(fixedTopPaddingRight !== 0, true)
         $(document.body).css('padding-right', '') // Because test case "should ignore other inline styles when trying to restore body padding after closing" fail if not
+        $('html').css('padding-right', '')
         done()
       })
       .bootstrapModal('show')
   })
 
   QUnit.test('should remove padding-right on modal after closing', function (assert) {
-    assert.expect(3)
+    assert.expect(2)
     var done = assert.async()
     $('<div class="fixed-top fixed-bottom is-fixed sticky-top">@Johann-S</div>').appendTo('#qunit-fixture')
-    $('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top').css('padding-right', '10px')
+    var $fixedTop = $('.fixed-top, .fixed-bottom, .is-fixed, .sticky-top')
+    // QUnit doesn't create a sidebar, so emulate one (by setting a padding-right on the html element)
+    $('html').css('padding-right', '10px')
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
-        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
-        assert.strictEqual(isNaN(paddingRight), false)
-        assert.strictEqual(paddingRight !== 0, true)
         $(this).bootstrapModal('hide')
       })
       .on('hidden.bs.modal', function () {
-        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
-        assert.strictEqual(paddingRight, 0)
+        // Test the presence of the padding-right set by the modal plugin on the body element
+        var bodyPaddingRight = parseInt($(document.body).css('padding-right'), 10)
+        assert.strictEqual(bodyPaddingRight, 0)
+        var fixedTopPaddingRight = parseInt($fixedTop.css('padding-right'), 10)
+        assert.strictEqual(fixedTopPaddingRight, 0)
+        // Remove the sidebar emulation
+        $('html').css('padding-right', '')
         done()
       })
       .bootstrapModal('show')
