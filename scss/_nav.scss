@@ -26,7 +26,6 @@
   }
 }
 
-
 //
 // Tabs
 //
@@ -34,8 +33,13 @@
 .nav-tabs {
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
 
-  .nav-item {
+  .nav-item,
+  .nav-link {
     margin-bottom: -$nav-tabs-border-width;
+  }
+
+  .nav-item .nav-link {
+    margin-bottom: 0;
   }
 
   .nav-link {
@@ -76,12 +80,12 @@
 .nav-pills {
   .nav-link {
     @include border-radius($nav-pills-border-radius);
-  }
 
-  .nav-link.active,
-  .nav-item.show .nav-link {
-    color: $nav-pills-active-link-color;
-    background-color: $nav-pills-active-link-bg;
+    &.active,
+    .show & {
+      color: $nav-pills-active-link-color;
+      background-color: $nav-pills-active-link-bg;
+    }
   }
 }
 
