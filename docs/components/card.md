@@ -995,3 +995,46 @@ Card columns can also be extended and customized with some additional code. Show
   }
 }
 {% endhighlight %}
+
+## Publication
+Shows implementations of the publication element.
+
+{% example html %}
+<div class="card">
+  <article class="card-block card-block-action publication-block has-arrow">
+    <header class="publication-header">
+      <a class="publication-title" href="#" title="Personalsachbearbeiter/in in Grünwald" itemprop="title">Personalsachbearbeiter/in in Grünwald</a>
+    </header>
+    <section class="publication-meta">
+      <div class="meta-item meta-type">
+        <span class="badge badge-primary">Top Job</span>
+      </div>
+      <div class="meta-item meta-company" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/LocalBusiness">
+        <span itemprop="name">FWU Institut für Film und Bild in Wissenschaft</span>
+      </div>
+      <div class="meta-item meta-published">
+        <time datetime="2017-03-15 00:00:00" class="text-muted">veröffentlicht vor 2 Tagen</time>
+      </div>
+    </section>
+    <section class="publication-body">
+      <p itemprop="description">Das FWU Institut für Film und Bild in Wissenschaft und Unterricht gemeinnützige GmbH ist ein Unternehmen der Bundesländer. Wir produzieren lehrplanzentrale Medien für den Schulunterricht bzw. die außerschulische Bildu...</p>
+    </section>
+  </article>
+  <article class="card-block  card-block-action publication-block has-arrow">
+    <header class="publication-header">
+      <a class="publication-title" href="#" title="Personalsachbearbeiter/in in Grünwald" itemprop="title">Personalsachbearbeiter without description</a>
+    </header>
+    <section class="publication-meta">
+      <div class="meta-item meta-type">
+        <span class="badge badge-primary">Top Job</span>
+      </div>
+      <div class="meta-item meta-company" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/LocalBusiness">
+        <span itemprop="name">FWU Institut für Film und Bild in Wissenschaft</span>
+      </div>
+      <div class="meta-item meta-published">
+        <time datetime="2017-03-15 00:00:00" class="text-muted">veröffentlicht vor 2 Tagen</time>
+      </div>
+    </section>
+  </article>
+</div>
+{% endexample %}
