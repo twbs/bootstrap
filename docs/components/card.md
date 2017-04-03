@@ -1010,7 +1010,7 @@ Shows implementations of the publication element.
         <span class="badge badge-primary">Top Job</span>
       </div>
       <div class="meta-item meta-company" itemprop="hiringOrganization" itemtype="http://schema.org/LocalBusiness">
-        <span itemprop="name">FLorem ipsum dolor sit amet</span>
+        <span itemprop="name">Lorem ipsum dolor sit amet</span>
       </div>
       <div class="meta-item meta-published">
         <time datetime="">veröffentlicht vor 2 Tagen</time>
