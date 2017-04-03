@@ -1,5 +1,6 @@
 .breadcrumb {
   margin-bottom: $breadcrumb-spacing-bottom; // makes default breadcrumb bottom spacing editable
+  font-size: $breadcrumb-font-size;
 
   .breadcrumb-item {
     color: $breadcrumb-item-color;
