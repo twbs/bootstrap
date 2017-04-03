@@ -1001,38 +1001,38 @@ Shows implementations of the publication element.
 
 {% example html %}
 <div class="card">
-  <article class="card-block card-block-action publication-block has-arrow">
+  <article class="card-block card-block-action publication-block has-arrow" itemtype="http://schema.org/JobPosting">
     <header class="publication-header">
-      <a class="publication-title" href="#" title="Personalsachbearbeiter/in in Grünwald" itemprop="title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</a>
+      <a class="publication-title" href="#" title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr" itemprop="title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</a>
     </header>
     <section class="publication-meta">
       <div class="meta-item meta-type">
         <span class="badge badge-primary">Top Job</span>
       </div>
-      <div class="meta-item meta-company" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/LocalBusiness">
+      <div class="meta-item meta-company" itemprop="hiringOrganization" itemtype="http://schema.org/LocalBusiness">
         <span itemprop="name">FLorem ipsum dolor sit amet</span>
       </div>
       <div class="meta-item meta-published">
-        <time datetime="2017-03-15 00:00:00" class="text-muted">veröffentlicht vor 2 Tagen</time>
+        <time datetime="">veröffentlicht vor 2 Tagen</time>
       </div>
     </section>
     <section class="publication-body">
       <p itemprop="description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum...</p>
     </section>
   </article>
-  <article class="card-block card-block-action publication-block has-arrow">
+  <article class="card-block card-block-action publication-block has-arrow" itemtype="http://schema.org/JobPosting">
     <header class="publication-header">
-      <a class="publication-title" href="#" title="Personalsachbearbeiter/in in Grünwald" itemprop="title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</a>
+      <a class="publication-title" href="#" title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr" itemprop="title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</a>
     </header>
     <section class="publication-meta">
       <div class="meta-item meta-type">
         <span class="badge badge-primary">Top Job</span>
       </div>
-      <div class="meta-item meta-company" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/LocalBusiness">
+      <div class="meta-item meta-company" itemprop="hiringOrganization" itemtype="http://schema.org/LocalBusiness">
         <span itemprop="name">Lorem ipsum dolor sit amet</span>
       </div>
       <div class="meta-item meta-published">
-        <time datetime="2017-03-15 00:00:00" class="text-muted">veröffentlicht vor 2 Tagen</time>
+        <time datetime="">veröffentlicht vor 2 Tagen</time>
       </div>
     </section>
   </article>
