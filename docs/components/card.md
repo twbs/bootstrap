@@ -1003,33 +1003,33 @@ Shows implementations of the publication element.
 <div class="card">
   <article class="card-block card-block-action publication-block has-arrow">
     <header class="publication-header">
-      <a class="publication-title" href="#" title="Personalsachbearbeiter/in in Grünwald" itemprop="title">Personalsachbearbeiter/in in Grünwald</a>
+      <a class="publication-title" href="#" title="Personalsachbearbeiter/in in Grünwald" itemprop="title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</a>
     </header>
     <section class="publication-meta">
       <div class="meta-item meta-type">
         <span class="badge badge-primary">Top Job</span>
       </div>
       <div class="meta-item meta-company" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/LocalBusiness">
-        <span itemprop="name">FWU Institut für Film und Bild in Wissenschaft</span>
+        <span itemprop="name">FLorem ipsum dolor sit amet</span>
       </div>
       <div class="meta-item meta-published">
         <time datetime="2017-03-15 00:00:00" class="text-muted">veröffentlicht vor 2 Tagen</time>
       </div>
     </section>
     <section class="publication-body">
-      <p itemprop="description">Das FWU Institut für Film und Bild in Wissenschaft und Unterricht gemeinnützige GmbH ist ein Unternehmen der Bundesländer. Wir produzieren lehrplanzentrale Medien für den Schulunterricht bzw. die außerschulische Bildu...</p>
+      <p itemprop="description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum...</p>
     </section>
   </article>
   <article class="card-block  card-block-action publication-block has-arrow">
     <header class="publication-header">
-      <a class="publication-title" href="#" title="Personalsachbearbeiter/in in Grünwald" itemprop="title">Personalsachbearbeiter without description</a>
+      <a class="publication-title" href="#" title="Personalsachbearbeiter/in in Grünwald" itemprop="title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</a>
     </header>
     <section class="publication-meta">
       <div class="meta-item meta-type">
         <span class="badge badge-primary">Top Job</span>
       </div>
       <div class="meta-item meta-company" itemprop="hiringOrganization" itemscope="" itemtype="http://schema.org/LocalBusiness">
-        <span itemprop="name">FWU Institut für Film und Bild in Wissenschaft</span>
+        <span itemprop="name">Lorem ipsum dolor sit amet</span>
       </div>
       <div class="meta-item meta-published">
         <time datetime="2017-03-15 00:00:00" class="text-muted">veröffentlicht vor 2 Tagen</time>
