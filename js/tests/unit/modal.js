@@ -12,6 +12,15 @@ $(function () {
     before: function () {
       // Enable the scrollbar measurer
       $('<style type="text/css"> .modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll; } </style>').appendTo('head')
+      // Function to calculate the scrollbar width which is then compared to the padding or margin changes
+      $.fn.getScrollbarWidth = function () {
+        var scrollDiv = document.createElement('div')
+        scrollDiv.className = 'modal-scrollbar-measure'
+        document.body.appendChild(scrollDiv)
+        var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+        document.body.removeChild(scrollDiv)
+        return scrollbarWidth
+      }
     },
     beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
@@ -354,8 +363,9 @@ $(function () {
         done()
       })
       .on('shown.bs.modal', function () {
+        var expectedPadding = parseFloat(originalPadding) + $(this).getScrollbarWidth() + 'px'
         var currentPadding = $body.css('padding-right')
-        assert.notStrictEqual(currentPadding, originalPadding, 'body padding should be adjusted while opening')
+        assert.strictEqual(currentPadding, expectedPadding, 'body padding should be adjusted while opening')
         $(this).bootstrapModal('hide')
       })
       .bootstrapModal('show')
@@ -395,8 +405,9 @@ $(function () {
         done()
       })
       .on('shown.bs.modal', function () {
+        var expectedPadding = parseFloat(originalPadding) + $(this).getScrollbarWidth() + 'px'
         var currentPadding = $element.css('padding-right')
-        assert.notStrictEqual(currentPadding, originalPadding, 'fixed element padding should be adjusted while opening')
+        assert.strictEqual(currentPadding, expectedPadding, 'fixed element padding should be adjusted while opening')
         $(this).bootstrapModal('hide')
       })
       .bootstrapModal('show')
@@ -436,8 +447,9 @@ $(function () {
         done()
       })
       .on('shown.bs.modal', function () {
+        var expectedMargin = parseFloat(originalMargin) + $(this).getScrollbarWidth() + 'px'
         var currentMargin = $element.css('margin-right')
-        assert.notStrictEqual(currentMargin, originalMargin, 'navbar-toggler margin should be adjusted while opening')
+        assert.strictEqual(currentMargin, expectedMargin, 'navbar-toggler margin should be adjusted while opening')
         $(this).bootstrapModal('hide')
       })
       .bootstrapModal('show')
