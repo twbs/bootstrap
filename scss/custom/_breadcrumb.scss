@@ -1,0 +1,14 @@
+.breadcrumb {
+  .breadcrumb-item {
+    color: $breadcrumb-item-color;
+    text-decoration: underline;
+
+    &.active {
+      text-decoration: none;
+    }
+  }
+
+  li.breadcrumb-item a {
+    color: $breadcrumb-item-color;
+  }
+}
