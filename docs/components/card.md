@@ -1020,7 +1020,7 @@ Shows implementations of the publication element.
       <p itemprop="description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum...</p>
     </section>
   </article>
-  <article class="card-block  card-block-action publication-block has-arrow">
+  <article class="card-block card-block-action publication-block has-arrow">
     <header class="publication-header">
       <a class="publication-title" href="#" title="Personalsachbearbeiter/in in Grünwald" itemprop="title">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</a>
     </header>
