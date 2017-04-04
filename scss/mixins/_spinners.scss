@@ -33,7 +33,7 @@
     border-radius: 50%;
   }
 
-  &:not(:required):before {
+  &::not(::required)::before {
     animation: spinner $spinner-animation-duration linear infinite;
   }
 }
