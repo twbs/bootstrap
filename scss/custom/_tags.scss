@@ -10,7 +10,7 @@
   $tag-group-space-half-y: $tag-group-spacing-y * 0.5;
 
   // TODO: ivestigate if this can be done with flexbox
-  margin: -$tag-group-space-half-y -$tag-group-space-half-x;
+  margin: (-$tag-group-space-half-y) (-$tag-group-space-half-x);
 
   .tag {
     margin: $tag-group-space-half-y $tag-group-space-half-x;
