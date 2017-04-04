@@ -1,13 +1,11 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): util.js
+ * Bootstrap (v4.0.0-alpha.6): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-'use strict';
-
-var Util = (function ($) {
+var Util = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -16,6 +14,8 @@ var Util = (function ($) {
    */
 
   var transition = false;
+
+  var MAX_UID = 1000000;
 
   var TransitionEndEvent = {
     WebkitTransition: 'webkitTransitionEnd',
@@ -26,7 +26,7 @@ var Util = (function ($) {
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
-    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+    return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
   }
 
   function isElement(obj) {
@@ -39,8 +39,9 @@ var Util = (function ($) {
       delegateType: transition.end,
       handle: function handle(event) {
         if ($(event.target).is(this)) {
-          return event.handleObj.handler.apply(this, arguments);
+          return event.handleObj.handler.apply(this, arguments); // eslint-disable-line prefer-rest-params
         }
+        return undefined;
       }
     };
   }
@@ -52,9 +53,11 @@ var Util = (function ($) {
 
     var el = document.createElement('bootstrap');
 
-    for (var _name in TransitionEndEvent) {
-      if (el.style[_name] !== undefined) {
-        return { end: TransitionEndEvent[_name] };
+    for (var name in TransitionEndEvent) {
+      if (el.style[name] !== undefined) {
+        return {
+          end: TransitionEndEvent[name]
+        };
       }
     }
 
@@ -101,46 +104,39 @@ var Util = (function ($) {
 
     getUID: function getUID(prefix) {
       do {
-        prefix += ~ ~(Math.random() * 1000000);
+        // eslint-disable-next-line no-bitwise
+        prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
       } while (document.getElementById(prefix));
       return prefix;
     },
-
     getSelectorFromElement: function getSelectorFromElement(element) {
       var selector = element.getAttribute('data-target');
-
-      if (!selector) {
+      if (!selector || selector === '#') {
         selector = element.getAttribute('href') || '';
-        selector = /^#[a-z]/i.test(selector) ? selector : null;
       }
 
-      return selector;
+      try {
+        var $selector = $(selector);
+        return $selector.length > 0 ? selector : null;
+      } catch (error) {
+        return null;
+      }
     },
-
     reflow: function reflow(element) {
-      new Function('bs', 'return bs')(element.offsetHeight);
+      return element.offsetHeight;
     },
-
     triggerTransitionEnd: function triggerTransitionEnd(element) {
       $(element).trigger(transition.end);
     },
-
     supportsTransitionEnd: function supportsTransitionEnd() {
       return Boolean(transition);
     },
-
     typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
       for (var property in configTypes) {
         if (configTypes.hasOwnProperty(property)) {
           var expectedTypes = configTypes[property];
           var value = config[property];
-          var valueType = undefined;
-
-          if (value && isElement(value)) {
-            valueType = 'element';
-          } else {
-            valueType = toType(value);
-          }
+          var valueType = value && isElement(value) ? 'element' : toType(value);
 
           if (!new RegExp(expectedTypes).test(valueType)) {
             throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
@@ -153,5 +149,5 @@ var Util = (function ($) {
   setTransitionEndSupport();
 
   return Util;
-})(jQuery);
+}(jQuery);
 //# sourceMappingURL=util.js.map

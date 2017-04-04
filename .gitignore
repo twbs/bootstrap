@@ -38,15 +38,14 @@ Thumbs.db
 .komodotools
 *.komodoproject
 
-# grunt-html-validation
-validation-report.json
-validation-status.json
-
 # SCSS-Lint
 scss-lint-report.xml
 
 # grunt-contrib-sass cache
 .sass-cache
+
+# Jekyll metadata
+docs/.jekyll-metadata
 
 # Folders to ignore
 bower_components

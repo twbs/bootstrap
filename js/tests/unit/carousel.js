@@ -1,5 +1,5 @@
 $(function () {
-  'use strict';
+  'use strict'
 
   QUnit.module('carousel plugin')
 
@@ -341,6 +341,49 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
+  QUnit.test('should fire slid and slide events with from and to', function (assert) {
+    assert.expect(4)
+    var template = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
+
+    var done = assert.async()
+    $(template)
+      .on('slid.bs.carousel', function (e) {
+        assert.ok(e.from !== undefined, 'from present')
+        assert.ok(e.to !== undefined, 'to present')
+        $(this).off()
+        done()
+      })
+      .on('slide.bs.carousel', function (e) {
+        assert.ok(e.from !== undefined, 'from present')
+        assert.ok(e.to !== undefined, 'to present')
+        $(this).off('slide.bs.carousel')
+      })
+      .bootstrapCarousel('next')
+  })
+
   QUnit.test('should set interval from data attribute', function (assert) {
     assert.expect(4)
     var templateHTML = '<div id="myCarousel" class="carousel slide">'
@@ -505,6 +548,37 @@ $(function () {
     $template.trigger($.Event('keydown', { which: 39 }))
 
     assert.strictEqual($template.find('.carousel-item')[1], $template.find('.active')[0], 'second item active')
+  })
+
+  QUnit.test('should not prevent keydown if key is not ARROW_LEFT or ARROW_RIGHT', function (assert) {
+    assert.expect(2)
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
+        + '<div class="carousel-inner">'
+        + '<div id="first" class="carousel-item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+    var $template = $(templateHTML)
+
+    $template.bootstrapCarousel()
+    var done = assert.async()
+
+    var eventArrowDown = $.Event('keydown', { which: 40 })
+    var eventArrowUp   = $.Event('keydown', { which: 38 })
+
+    $template.one('keydown', function (event) {
+      assert.strictEqual(event.isDefaultPrevented(), false)
+    })
+
+    $template.trigger(eventArrowDown)
+
+    $template.one('keydown', function (event) {
+      assert.strictEqual(event.isDefaultPrevented(), false)
+      done()
+    })
+
+    $template.trigger(eventArrowUp)
   })
 
   QUnit.test('should support disabling the keyboard navigation', function (assert) {
@@ -758,5 +832,37 @@ $(function () {
       })
       .bootstrapCarousel('prev')
     assert.strictEqual($carousel.find('.carousel-item.active').attr('id'), 'one', 'carousel did not wrap around and stayed on 1st slide')
+  })
+
+  QUnit.test('should not prevent keydown for inputs and textareas', function (assert) {
+    assert.expect(2)
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
+        + '<div class="carousel-inner">'
+          + '<div id="first" class="carousel-item">'
+            + '<input type="text" id="inputText" />'
+          + '</div>'
+          + '<div id="second" class="carousel-item active">'
+            + '<textarea id="txtArea"></textarea>'
+          + '</div>'
+        + '</div>'
+        + '</div>'
+    var $template = $(templateHTML)
+    var done = assert.async()
+    $template.appendTo('#qunit-fixture')
+    var $inputText = $template.find('#inputText')
+    var $textArea = $template.find('#txtArea')
+    $template.bootstrapCarousel()
+
+    var eventKeyDown = $.Event('keydown', { which: 65 }) // 65 for "a"
+    $inputText.on('keydown', function (event) {
+      assert.strictEqual(event.isDefaultPrevented(), false)
+    })
+    $inputText.trigger(eventKeyDown)
+
+    $textArea.on('keydown', function (event) {
+      assert.strictEqual(event.isDefaultPrevented(), false)
+      done()
+    })
+    $textArea.trigger(eventKeyDown)
   })
 })

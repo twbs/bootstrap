@@ -6,17 +6,21 @@
     color: #555;
   }
 
-  .team-member:hover {
+  .team-member:hover,
+  .team-member:focus {
     color: #333;
+  }
+
+  .team-member:hover {
     text-decoration: none;
   }
 
   .github-btn {
-    border: none;
     float: right;
     width: 180px;
     height: 1.25rem;
     margin-top: .25rem;
+    border: 0;
   }
 
   img {

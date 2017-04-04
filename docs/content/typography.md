@@ -1,10 +1,11 @@
 ---
 layout: docs
 title: Typography
+description: Documentation and examples for Bootstrap typography, including global settings, body text, lists, and more.
 group: content
 ---
 
-Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/components/utilities/).
+Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/utilities/typography/).
 
 ## Contents
 
@@ -15,43 +16,44 @@ Bootstrap includes simple and easily customized typography for headings, body te
 
 Bootstrap sets basic global display, typography, and link styles. Specifically, we:
 
-- Set `background-color: #fff;` on the `<body>`
-- Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base
-- Set the global link color via `$link-color` and apply link underlines only on `:hover`
+- Use a [native font stack]({{ site.baseurl }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
+- For a more inclusive and accessible type scale, we assume the browser default root `font-size` (typically 16px) so visitors can customize their browser defaults as needed.
+- Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
+- Set the global link color via `$link-color` and apply link underlines only on `:hover`.
+- Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
-These styles can be found within `_reboot.scss`.
-
+These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`.
 
 ## Headings
 
-All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but still want your text to be displayed inline.
+All HTML headings, `<h1>` through `<h6>`, are available.
 
 <div class="bd-example bd-example-type">
   <table class="table">
     <tbody>
       <tr>
         <td><h1>h1. Bootstrap heading</h1></td>
-        <td class="type-info">Semibold 36px</td>
+        <td class="type-info">Semibold 2.5rem (40px)</td>
       </tr>
       <tr>
         <td><h2>h2. Bootstrap heading</h2></td>
-        <td class="type-info">Semibold 30px</td>
+        <td class="type-info">Semibold 2rem (32px)</td>
       </tr>
       <tr>
         <td><h3>h3. Bootstrap heading</h3></td>
-        <td class="type-info">Semibold 24px</td>
+        <td class="type-info">Semibold 1.75rem (28px)</td>
       </tr>
       <tr>
         <td><h4>h4. Bootstrap heading</h4></td>
-        <td class="type-info">Semibold 18px</td>
+        <td class="type-info">Semibold 1.5rem (24px)</td>
       </tr>
       <tr>
         <td><h5>h5. Bootstrap heading</h5></td>
-        <td class="type-info">Semibold 14px</td>
+        <td class="type-info">Semibold 1.25rem (20px)</td>
       </tr>
       <tr>
         <td><h6>h6. Bootstrap heading</h6></td>
-        <td class="type-info">Semibold 12px</td>
+        <td class="type-info">Semibold 1rem (16px)</td>
       </tr>
     </tbody>
   </table>
@@ -65,6 +67,17 @@ All HTML headings, `<h1>` through `<h6>`, are available. `.h1` through `.h6` cla
 <h5>h5. Bootstrap heading</h5>
 <h6>h6. Bootstrap heading</h6>
 {% endhighlight %}
+
+`.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.
+
+{% example html %}
+<p class="h1">h1. Bootstrap heading</p>
+<p class="h2">h2. Bootstrap heading</p>
+<p class="h3">h3. Bootstrap heading</p>
+<p class="h4">h4. Bootstrap heading</p>
+<p class="h5">h5. Bootstrap heading</p>
+<p class="h6">h6. Bootstrap heading</p>
+{% endexample %}
 
 ### Customizing headings
 
@@ -132,11 +145,17 @@ Styling for common inline HTML5 elements.
 <p><em>This line rendered as italicized text.</em></p>
 {% endexample %}
 
+`.mark` and `.small` classes are also available to apply the same styles as `<mark>` and `<small>` while avoiding any unwanted semantic implications that the tags would bring.
+
 While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
+
+## Text utilities
+
+Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/utilities/typography/#text-alignment).
 
 ## Abbreviations
 
-Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a `title` attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover and to users of assistive technologies.
+Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover. Abbreviations have a default underline and gain a help cursor to provide additional context on hover and to users of assistive technologies.
 
 Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
@@ -147,22 +166,22 @@ Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
 ## Blockquotes
 
-For quoting blocks of content from another source within your document. Wrap `<blockquote>` around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote. For straight quotes, we recommend a `<p>`.
+For quoting blocks of content from another source within your document. Wrap `<blockquote class="blockquote">` around any <abbr title="HyperText Markup Language">HTML</abbr> as the quote.
 
 {% example html %}
-<blockquote>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+<blockquote class="blockquote">
+  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 </blockquote>
 {% endexample %}
 
 ### Naming a source
 
-Add a `<footer>` for identifying the source. Wrap the name of the source work in `<cite>`.
+Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the name of the source work in `<cite>`.
 
 {% example html %}
 <blockquote class="blockquote">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 {% endexample %}
 
@@ -172,8 +191,8 @@ Add `.blockquote-reverse` for a blockquote with right-aligned content.
 
 {% example html %}
 <blockquote class="blockquote blockquote-reverse">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 {% endexample %}
 
@@ -205,34 +224,42 @@ Remove the default `list-style` and left margin on list items (immediate childre
 
 ### Inline
 
-Place all list items on a single line with `display: inline-block;` and some light padding.
+Remove a list's bullets and apply some light `margin` with a combination of two classes, `.list-inline` and `.list-inline-item`.
 
 {% example html %}
 <ul class="list-inline">
-  <li>Lorem ipsum</li>
-  <li>Phasellus iaculis</li>
-  <li>Nulla volutpat</li>
+  <li class="list-inline-item">Lorem ipsum</li>
+  <li class="list-inline-item">Phasellus iaculis</li>
+  <li class="list-inline-item">Nulla volutpat</li>
 </ul>
 {% endexample %}
 
-### Horizontal description
+### Description list alignment
 
 Align terms and descriptions horizontally by using our grid system's predefined classes (or semantic mixins). For longer terms, you can optionally add a `.text-truncate` class to truncate the text with an ellipsis.
 
 {% example html %}
-<dl class="dl-horizontal">
+<dl class="row">
   <dt class="col-sm-3">Description lists</dt>
   <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
 
   <dt class="col-sm-3">Euismod</dt>
   <dd class="col-sm-9">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-  <dd class="col-sm-9 col-sm-offset-3">Donec id elit non mi porta gravida at eget metus.</dd>
+  <dd class="col-sm-9 offset-sm-3">Donec id elit non mi porta gravida at eget metus.</dd>
 
   <dt class="col-sm-3">Malesuada porta</dt>
   <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
 
   <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
   <dd class="col-sm-9">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+
+  <dt class="col-sm-3">Nesting</dt>
+  <dd class="col-sm-9">
+    <dl class="row">
+      <dt class="col-sm-4">Nested definition list</dt>
+      <dd class="col-sm-8">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc.</dd>
+    </dl>
+  </dd>
 </dl>
 {% endexample %}
 

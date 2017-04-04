@@ -7,10 +7,12 @@
 //
 // Keep images from scaling beyond the width of their parents.
 
-@mixin img-fluid($display: block) {
-  display: $display;
-  max-width: 100%; // Part 1: Set a maximum relative to the parent
-  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+@mixin img-fluid {
+  // Part 1: Set a maximum relative to the parent
+  max-width: 100%;
+  // Part 2: Override the height to auto, otherwise images will be stretched
+  // when setting a width and height attribute on the img element.
+  height: auto;
 }
 
 
@@ -21,12 +23,13 @@
 @mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x) {
   background-image: url($file-1x);
 
+  // Autoprefixer takes care of adding -webkit-min-device-pixel-ratio and -o-min-device-pixel-ratio,
+  // but doesn't convert dppx=>dpi.
+  // There's no such thing as unprefixed min-device-pixel-ratio since it's nonstandard.
+  // Compatibility info: http://caniuse.com/#feat=css-media-resolution
   @media
-  only screen and (-webkit-min-device-pixel-ratio: 2),
-  only screen and (     -o-min-device-pixel-ratio: 2/1),
-  only screen and (        min-device-pixel-ratio: 2),
-  only screen and (                min-resolution: 192dpi),
-  only screen and (                min-resolution: 2dppx) {
+  only screen and (min-resolution: 192dpi), // IE9-11 don't support dppx
+  only screen and (min-resolution: 2dppx) { // Standardized
     background-image: url($file-2x);
     background-size: $width-1x $height-1x;
   }

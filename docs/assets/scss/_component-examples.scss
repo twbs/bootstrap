@@ -1,17 +1,73 @@
+// scss-lint:disable QualifyingElement
+
 //
 // Grid examples
 //
 
 .bd-example-row {
-  .row {
-    margin-bottom: 1rem;
+  .row + .row {
+    margin-top: 1rem;
+  }
 
+  .row {
+    > .col,
     > [class^="col-"] {
       padding-top: .75rem;
       padding-bottom: .75rem;
       background-color: rgba(86,61,124,.15);
       border: 1px solid rgba(86,61,124,.2);
     }
+  }
+
+  .flex-items-top,
+  .flex-items-middle,
+  .flex-items-bottom {
+    min-height: 6rem;
+    background-color: rgba(255,0,0,.1);
+  }
+}
+
+.bd-example-row-flex-cols .row {
+  min-height: 10rem;
+  background-color: rgba(255,0,0,.1);
+}
+
+.bd-highlight {
+  background-color: rgba($bd-purple, .15);
+  border: 1px solid rgba($bd-purple, .15);
+}
+
+// Grid mixins
+.example-container {
+  width: 800px;
+  @include make-container();
+}
+
+.example-row {
+  @include make-row();
+}
+
+.example-content-main {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(8);
+  }
+}
+
+.example-content-secondary {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(4);
   }
 }
 
@@ -23,8 +79,8 @@
 .bd-example-container {
   min-width: 16rem;
   max-width: 25rem;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .bd-example-container-header {
@@ -61,21 +117,21 @@
 .bd-example {
   position: relative;
   padding: 1rem;
-  margin: 1rem -1rem;
+  margin: 1rem (-$grid-gutter-width-base / 2);
   border: solid #f7f7f9;
   border-width: .2rem 0 0;
   @include clearfix();
 
   @include media-breakpoint-up(sm) {
-    margin-left: 0;
+    padding: 1.5rem;
     margin-right: 0;
     margin-bottom: 0;
-    padding: 1.5rem;
+    margin-left: 0;
     border-width: .2rem;
   }
 
   + .highlight,
-  + .zero-clipboard + .highlight {
+  + .clipboard + .highlight {
     margin-top: 0;
   }
 
@@ -83,20 +139,19 @@
     margin-top: 2rem;
   }
 
-  // Undo width of container
-  .container {
-    width: auto;
+  .pos-f-t {
+    position: relative;
+    margin: -1rem;
+
+    @include media-breakpoint-up(sm) {
+      margin: -1.5rem;
+    }
   }
 
   > .form-control {
     + .form-control {
       margin-top: .5rem;
     }
-  }
-
-  // Card examples should be horizontal
-  > .card {
-    max-width: 20rem;
   }
 
   > .nav + .nav,
@@ -110,6 +165,10 @@
   > .dropdown-menu:first-child {
     position: static;
     display: block;
+  }
+
+  > .form-group:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -177,21 +236,23 @@
 }
 
 // Navbars
-.bd-example  {
-  .navbar-fixed-top {
+.bd-example {
+  .fixed-top,
+  .sticky-top {
     position: static;
     margin: -1rem -1rem 1rem;
   }
-  .navbar-fixed-bottom {
+  .fixed-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
   }
 
   @include media-breakpoint-up(sm) {
-    .navbar-fixed-top {
+    .fixed-top,
+    .sticky-top {
       margin: -1.5rem -1.5rem 1rem;
     }
-    .navbar-fixed-bottom {
+    .fixed-bottom {
       margin: 1rem -1.5rem -1.5rem;
     }
   }
@@ -203,39 +264,25 @@
   margin-bottom: .5rem;
 }
 
-// Pager
-.bd-example > .pager {
-  margin-top: 0;
-}
-
 // Example modals
 .bd-example-modal {
-  background-color: #f5f5f5;
-}
-.bd-example-modal .modal {
-  position: relative;
-  top: auto;
-  right: auto;
-  bottom: auto;
-  left: auto;
-  z-index: 1;
-  display: block;
-}
-.bd-example-modal .modal-dialog {
-  left: auto;
-  margin-right: auto;
-  margin-left: auto;
-}
+  background-color: #fafafa;
 
-// Example dropdowns
-.bd-example > .dropdown > .dropdown-toggle {
-  float: left;
-}
-.bd-example > .dropdown > .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: .25rem;
-  clear: left;
+  .modal {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    z-index: 1;
+    display: block;
+  }
+
+  .modal-dialog {
+    left: auto;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 // Example tabbable tabs
@@ -253,11 +300,11 @@
 }
 
 // Popovers
-.bd-example-popover {
+.bd-example-popover-static {
   padding-bottom: 1.5rem;
   background-color: #f9f9f9;
 }
-.bd-example-popover .popover {
+.bd-example-popover-static .popover {
   position: relative;
   display: block;
   float: left;
@@ -266,7 +313,11 @@
 }
 
 // Tooltips
-.bd-example-tooltip .tooltip {
+.tooltip-demo a {
+  white-space: nowrap;
+}
+
+.bd-example-tooltip-static .tooltip {
   position: relative;
   display: inline-block;
   margin: 10px 20px;
@@ -281,20 +332,21 @@
   overflow: auto;
 }
 
+.scrollspy-example-2 {
+  position: relative;
+  height: 350px;
+  overflow: auto;
+}
+
 // Helpers
 .bd-example > {
-  .center-block:not(img) {
-    max-width: 200px;
-    padding: .5rem;
-    background-color: #eee;
-  }
-
   .bg-primary,
   .bg-success,
   .bg-info,
   .bg-warning,
   .bg-danger,
-  .bg-inverse {
+  .bg-inverse,
+  .bg-faded {
     &:not(.navbar) {
       padding: .5rem;
       margin-top: .5rem;
@@ -303,6 +355,16 @@
   }
 }
 
+.bd-example-border-utils {
+  [class^="border-"] {
+    display: inline-block;
+    width: 6rem;
+    height: 6rem;
+    margin: .25rem;
+    background-color: #f5f5f5;
+    border: 1px solid;
+  }
+}
 
 //
 // Code snippets
@@ -310,8 +372,9 @@
 
 .highlight {
   padding: 1rem;
-  margin: 1rem -1rem;
+  margin: 1rem (-$grid-gutter-width-base / 2);
   background-color: #f7f7f9;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @include media-breakpoint-up(sm) {
     padding: 1.5rem;
@@ -329,16 +392,4 @@
 .highlight pre code {
   font-size: inherit;
   color: $gray-dark; // Effectively the base text color
-}
-
-
-// Pseudo focus
-//
-// Custom `:focus` state for showing how it looks in the docs.
-
-#focusedInput {
-  border-color: $input-border-focus;
-  outline: 0;
-  outline: thin dotted \9; // IE9
-  box-shadow: 0 0 .5rem $input-box-shadow-focus;
 }

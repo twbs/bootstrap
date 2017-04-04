@@ -3,8 +3,6 @@
 //
 
 .bd-navbar {
-  font-size: 87.5%; // 14px
-
   .navbar-nav {
     .nav-link {
       color: $bd-graphite-light;
@@ -18,21 +16,12 @@
 
       &.active {
         font-weight: 500;
+        color: darken($gray-dark, 15%);
       }
     }
   }
 
   .dropdown-menu {
     font-size: inherit;
-  }
-
-  @include media-breakpoint-down(sm) {
-    .nav-link {
-      float: none;
-
-      + .nav-link {
-        margin-left: 0;
-      }
-    }
   }
 }

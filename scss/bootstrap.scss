@@ -1,15 +1,15 @@
 /*!
- * Bootstrap v4.0.0-alpha (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
- // Core variables and mixins
+// Core variables and mixins
+@import "custom";
 @import "variables";
 @import "mixins";
 
-// // Reset and dependencies
-@import "normalize";
 @import "print";
 
 // Core CSS
@@ -22,8 +22,8 @@
 @import "forms";
 @import "buttons";
 
-// // Components
-@import "animation";
+// Components
+@import "transitions";
 @import "dropdown";
 @import "button-group";
 @import "input-group";
@@ -33,8 +33,7 @@
 @import "card";
 @import "breadcrumb";
 @import "pagination";
-@import "pager";
-@import "labels";
+@import "badge";
 @import "jumbotron";
 @import "alert";
 @import "progress";
@@ -42,15 +41,13 @@
 @import "list-group";
 @import "responsive-embed";
 @import "close";
+@import "spinners";
 
 // Components w/ JavaScript
 @import "modal";
 @import "tooltip";
 @import "popover";
 @import "carousel";
-@import "spinners";
 
 // Utility classes
 @import "utilities";
-@import "utilities-spacing";
-@import "utilities-responsive";

@@ -1,3 +1,5 @@
+// scss-lint:disable QualifyingElement
+
 //
 // Base styles
 //
@@ -8,41 +10,33 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
   user-select: none;
-  border: $border-width solid transparent;
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $line-height, $btn-border-radius);
-  @include transition(all .2s ease-in-out);
+  border: $input-btn-border-width solid transparent;
+  @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
+  @include transition($btn-transition);
 
-  &,
-  &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      @include tab-focus();
-    }
-  }
-
+  // Share hover and focus styles
   @include hover-focus {
     text-decoration: none;
   }
+  &:focus,
   &.focus {
-    text-decoration: none;
-  }
-
-  &:active,
-  &.active {
-    background-image: none;
     outline: 0;
-    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    box-shadow: $btn-focus-box-shadow;
   }
 
+  // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
     cursor: $cursor-disabled;
     opacity: .65;
     @include box-shadow(none);
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+    @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
   }
 }
 
@@ -77,23 +71,23 @@ fieldset[disabled] a.btn {
 }
 
 // Remove all backgrounds
-.btn-primary-outline {
-  @include button-outline-variant($btn-primary-bg);
+.btn-outline-primary {
+  @include button-outline-variant($btn-primary-bg, $btn-primary-color);
 }
-.btn-secondary-outline {
-  @include button-outline-variant($btn-secondary-border);
+.btn-outline-secondary {
+  @include button-outline-variant($btn-secondary-border, $btn-secondary-color);
 }
-.btn-info-outline {
-  @include button-outline-variant($btn-info-bg);
+.btn-outline-info {
+  @include button-outline-variant($btn-info-bg, $btn-info-color);
 }
-.btn-success-outline {
-  @include button-outline-variant($btn-success-bg);
+.btn-outline-success {
+  @include button-outline-variant($btn-success-bg, $btn-success-color);
 }
-.btn-warning-outline {
-  @include button-outline-variant($btn-warning-bg);
+.btn-outline-warning {
+  @include button-outline-variant($btn-warning-bg, $btn-warning-color);
 }
-.btn-danger-outline {
-  @include button-outline-variant($btn-danger-bg);
+.btn-outline-danger {
+  @include button-outline-variant($btn-danger-bg, $btn-danger-color);
 }
 
 
@@ -103,7 +97,7 @@ fieldset[disabled] a.btn {
 
 // Make a button look and behave like a link
 .btn-link {
-  font-weight: normal;
+  font-weight: $font-weight-normal;
   color: $link-color;
   border-radius: 0;
 
@@ -128,8 +122,9 @@ fieldset[disabled] a.btn {
     background-color: transparent;
   }
   &:disabled {
+    color: $btn-link-disabled-color;
+
     @include hover-focus {
-      color: $btn-link-disabled-color;
       text-decoration: none;
     }
   }
@@ -141,12 +136,11 @@ fieldset[disabled] a.btn {
 //
 
 .btn-lg {
-  // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $line-height-lg, $btn-border-radius-lg);
+  @include button-size($input-btn-padding-y-lg, $input-btn-padding-x-lg, $font-size-lg, $line-height-lg, $btn-border-radius-lg);
 }
+
 .btn-sm {
-  // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
+  @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
 }
 
 
@@ -161,7 +155,7 @@ fieldset[disabled] a.btn {
 
 // Vertically space out multiple block buttons
 .btn-block + .btn-block {
-  margin-top: 5px;
+  margin-top: $btn-block-spacing-y;
 }
 
 // Specificity overrides

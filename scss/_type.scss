@@ -4,21 +4,11 @@
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: $headings-margin-bottom;
   font-family: $headings-font-family;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
   color: $headings-color;
-}
-
-h1, .h1,
-h2, .h2,
-h3, .h3 {
-  margin-bottom: $headings-margin-bottom;
-}
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-  margin-bottom: $headings-margin-bottom;
 }
 
 h1, .h1 { font-size: $font-size-h1; }
@@ -37,18 +27,22 @@ h6, .h6 { font-size: $font-size-h6; }
 .display-1 {
   font-size: $display1-size;
   font-weight: $display1-weight;
+  line-height: $display-line-height;
 }
 .display-2 {
   font-size: $display2-size;
   font-weight: $display2-weight;
+  line-height: $display-line-height;
 }
 .display-3 {
   font-size: $display3-size;
   font-weight: $display3-weight;
+  line-height: $display-line-height;
 }
 .display-4 {
   font-size: $display4-size;
   font-weight: $display4-weight;
+  line-height: $display-line-height;
 }
 
 
@@ -57,8 +51,8 @@ h6, .h6 { font-size: $font-size-h6; }
 //
 
 hr {
-  margin-top: $spacer-y;
-  margin-bottom: $spacer-y;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   border: 0;
   border-top: $hr-border-width solid $hr-border-color;
 }
@@ -70,14 +64,14 @@ hr {
 
 small,
 .small {
-  font-size: 80%;
-  font-weight: normal;
+  font-size: $small-font-size;
+  font-weight: $font-weight-normal;
 }
 
 mark,
 .mark {
-  padding: .2em;
-  background-color: $state-warning-bg;
+  padding: $mark-padding;
+  background-color: $mark-bg;
 }
 
 
@@ -85,30 +79,20 @@ mark,
 // Lists
 //
 
-// Unstyled keeps list items block level, just removes default browser padding and list-style
 .list-unstyled {
-  padding-left: 0;
-  list-style: none;
+  @include list-unstyled;
 }
 
 // Inline turns list items into inline-block
 .list-inline {
-  padding-left: 0;
-  margin-left: -5px;
-  list-style: none;
-
-  > li {
-    display: inline-block;
-    padding-right: 5px;
-    padding-left: 5px;
-  }
+  @include list-unstyled;
 }
+.list-inline-item {
+  display: inline-block;
 
-// Horizontal description lists w/ grid classes
-.dl-horizontal {
-  margin-right: -$grid-gutter-width;
-  margin-left: -$grid-gutter-width;
-  @include clearfix;
+  &:not(:last-child) {
+    margin-right: $list-inline-padding;
+  }
 }
 
 
@@ -127,25 +111,16 @@ mark,
   padding: ($spacer / 2) $spacer;
   margin-bottom: $spacer;
   font-size: $blockquote-font-size;
-  border-left: .25rem solid $blockquote-border-color;
+  border-left: $blockquote-border-width solid $blockquote-border-color;
+}
 
-  p,
-  ul,
-  ol {
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+.blockquote-footer {
+  display: block;
+  font-size: 80%; // back to default font-size
+  color: $blockquote-small-color;
 
-  footer {
-    display: block;
-    font-size: 80%; // back to default font-size
-    line-height: $line-height;
-    color: $blockquote-small-color;
-
-    &::before {
-      content: "\2014 \00A0"; // em dash, nbsp
-    }
+  &::before {
+    content: "\2014 \00A0"; // em dash, nbsp
   }
 }
 
@@ -154,34 +129,15 @@ mark,
   padding-right: $spacer;
   padding-left: 0;
   text-align: right;
-  border-right: .25rem solid $blockquote-border-color;
+  border-right: $blockquote-border-width solid $blockquote-border-color;
   border-left: 0;
-
-  // Account for citation
-  footer {
-    &::before { content: ""; }
-    &::after {
-      content: "\00A0 \2014"; // nbsp, em dash
-    }
-  }
 }
 
-//
-// Figures
-//
-
-.figure {
-  // Ensures the caption's text aligns with the image.
-  display: inline-block;
-
-  > img {
-    @extend .img-fluid;
-    margin-bottom: ($spacer-y / 2);
-    line-height: 1;
+.blockquote-reverse .blockquote-footer {
+  &::before {
+    content: "";
   }
-}
-
-.figure-caption {
-  font-size: 90%;
-  color: $gray-light;
+  &::after {
+    content: "\00A0 \2014"; // nbsp, em dash
+  }
 }

@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): dropdown.js
+ * Bootstrap (v4.0.0-alpha.6): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -17,27 +17,34 @@ const Dropdown = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  const NAME                = 'dropdown'
-  const VERSION             = '4.0.0'
-  const DATA_KEY            = 'bs.dropdown'
-  const EVENT_KEY           = `.${DATA_KEY}`
-  const DATA_API_KEY        = '.data-api'
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
+  const NAME                     = 'dropdown'
+  const VERSION                  = '4.0.0-alpha.6'
+  const DATA_KEY                 = 'bs.dropdown'
+  const EVENT_KEY                = `.${DATA_KEY}`
+  const DATA_API_KEY             = '.data-api'
+  const JQUERY_NO_CONFLICT       = $.fn[NAME]
+  const ESCAPE_KEYCODE           = 27 // KeyboardEvent.which value for Escape (Esc) key
+  const SPACE_KEYCODE            = 32 // KeyboardEvent.which value for space key
+  const ARROW_UP_KEYCODE         = 38 // KeyboardEvent.which value for up arrow key
+  const ARROW_DOWN_KEYCODE       = 40 // KeyboardEvent.which value for down arrow key
+  const RIGHT_MOUSE_BUTTON_WHICH = 3 // MouseEvent.which value for the right button (assuming a right-handed mouse)
+  const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEYCODE}|${ARROW_DOWN_KEYCODE}|${ESCAPE_KEYCODE}|${SPACE_KEYCODE}`)
 
   const Event = {
-    HIDE             : `hide${EVENT_KEY}`,
-    HIDDEN           : `hidden${EVENT_KEY}`,
-    SHOW             : `show${EVENT_KEY}`,
-    SHOWN            : `shown${EVENT_KEY}`,
-    CLICK            : `click${EVENT_KEY}`,
+    HIDE             : `hide${EVENT_KEY}`,
+    HIDDEN           : `hidden${EVENT_KEY}`,
+    SHOW             : `show${EVENT_KEY}`,
+    SHOWN            : `shown${EVENT_KEY}`,
+    CLICK            : `click${EVENT_KEY}`,
     CLICK_DATA_API   : `click${EVENT_KEY}${DATA_API_KEY}`,
+    FOCUSIN_DATA_API : `focusin${EVENT_KEY}${DATA_API_KEY}`,
     KEYDOWN_DATA_API : `keydown${EVENT_KEY}${DATA_API_KEY}`
   }
 
   const ClassName = {
     BACKDROP : 'dropdown-backdrop',
     DISABLED : 'disabled',
-    OPEN     : 'open'
+    SHOW     : 'show'
   }
 
   const Selector = {
@@ -81,8 +88,8 @@ const Dropdown = (($) => {
         return false
       }
 
-      let parent   = Dropdown._getParentFromElement(this)
-      let isActive = $(parent).hasClass(ClassName.OPEN)
+      const parent   = Dropdown._getParentFromElement(this)
+      const isActive = $(parent).hasClass(ClassName.SHOW)
 
       Dropdown._clearMenus()
 
@@ -90,18 +97,10 @@ const Dropdown = (($) => {
         return false
       }
 
-      if ('ontouchstart' in document.documentElement &&
-         (!$(parent).closest(Selector.NAVBAR_NAV).length)) {
-
-        // if mobile we use a backdrop because click events don't delegate
-        let dropdown       = document.createElement('div')
-        dropdown.className = ClassName.BACKDROP
-        $(dropdown).insertBefore(this)
-        $(dropdown).on('click', Dropdown._clearMenus)
+      const relatedTarget = {
+        relatedTarget : this
       }
-
-      let relatedTarget = { relatedTarget : this }
-      let showEvent     = $.Event(Event.SHOW, relatedTarget)
+      const showEvent     = $.Event(Event.SHOW, relatedTarget)
 
       $(parent).trigger(showEvent)
 
@@ -109,10 +108,21 @@ const Dropdown = (($) => {
         return false
       }
 
-      this.focus()
-      this.setAttribute('aria-expanded', 'true')
+      // set the backdrop only if the dropdown menu will be opened
+      if ('ontouchstart' in document.documentElement &&
+         !$(parent).closest(Selector.NAVBAR_NAV).length) {
 
-      $(parent).toggleClass(ClassName.OPEN)
+        // if mobile we use a backdrop because click events don't delegate
+        const dropdown     = document.createElement('div')
+        dropdown.className = ClassName.BACKDROP
+        $(dropdown).insertBefore(this)
+        $(dropdown).on('click', Dropdown._clearMenus)
+      }
+
+      this.focus()
+      this.setAttribute('aria-expanded', true)
+
+      $(parent).toggleClass(ClassName.SHOW)
       $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
 
       return false
@@ -136,10 +146,11 @@ const Dropdown = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data  = $(this).data(DATA_KEY)
+        let data = $(this).data(DATA_KEY)
 
         if (!data) {
-          $(this).data(DATA_KEY, (data = new Dropdown(this)))
+          data = new Dropdown(this)
+          $(this).data(DATA_KEY, data)
         }
 
         if (typeof config === 'string') {
@@ -152,48 +163,51 @@ const Dropdown = (($) => {
     }
 
     static _clearMenus(event) {
-      if (event && event.which === 3) {
+      if (event && event.which === RIGHT_MOUSE_BUTTON_WHICH) {
         return
       }
 
-      let backdrop = $(Selector.BACKDROP)[0]
-      if (backdrop) {
-        backdrop.parentNode.removeChild(backdrop)
-      }
-
-      let toggles = $.makeArray($(Selector.DATA_TOGGLE))
+      const toggles = $.makeArray($(Selector.DATA_TOGGLE))
 
       for (let i = 0; i < toggles.length; i++) {
-        let parent        = Dropdown._getParentFromElement(toggles[i])
-        let relatedTarget = { relatedTarget : toggles[i] }
+        const parent        = Dropdown._getParentFromElement(toggles[i])
+        const relatedTarget = {
+          relatedTarget : toggles[i]
+        }
 
-        if (!$(parent).hasClass(ClassName.OPEN)) {
+        if (!$(parent).hasClass(ClassName.SHOW)) {
           continue
         }
 
-        if (event && event.type === 'click' &&
-           (/input|textarea/i.test(event.target.tagName)) &&
-           ($.contains(parent, event.target))) {
+        if (event && (event.type === 'click' &&
+            /input|textarea/i.test(event.target.tagName) || event.type === 'focusin')
+            && $.contains(parent, event.target)) {
           continue
         }
 
-        let hideEvent = $.Event(Event.HIDE, relatedTarget)
+        const hideEvent = $.Event(Event.HIDE, relatedTarget)
         $(parent).trigger(hideEvent)
         if (hideEvent.isDefaultPrevented()) {
           continue
         }
 
+        // remove backdrop only if the dropdown menu will be hidden
+        const backdrop = $(parent).find(Selector.BACKDROP)[0]
+        if (backdrop) {
+          backdrop.parentNode.removeChild(backdrop)
+        }
+
         toggles[i].setAttribute('aria-expanded', 'false')
 
         $(parent)
-          .removeClass(ClassName.OPEN)
+          .removeClass(ClassName.SHOW)
           .trigger($.Event(Event.HIDDEN, relatedTarget))
       }
     }
 
     static _getParentFromElement(element) {
       let parent
-      let selector = Util.getSelectorFromElement(element)
+      const selector = Util.getSelectorFromElement(element)
 
       if (selector) {
         parent = $(selector)[0]
@@ -203,7 +217,7 @@ const Dropdown = (($) => {
     }
 
     static _dataApiKeydownHandler(event) {
-      if (!/(38|40|27|32)/.test(event.which) ||
+      if (!REGEXP_KEYDOWN.test(event.which) ||
          /input|textarea/i.test(event.target.tagName)) {
         return
       }
@@ -215,14 +229,14 @@ const Dropdown = (($) => {
         return
       }
 
-      let parent   = Dropdown._getParentFromElement(this)
-      let isActive = $(parent).hasClass(ClassName.OPEN)
+      const parent   = Dropdown._getParentFromElement(this)
+      const isActive = $(parent).hasClass(ClassName.SHOW)
 
-      if ((!isActive && event.which !== 27) ||
-           (isActive && event.which === 27)) {
+      if (!isActive && event.which !== ESCAPE_KEYCODE ||
+           isActive && event.which === ESCAPE_KEYCODE) {
 
-        if (event.which === 27) {
-          let toggle = $(parent).find(Selector.DATA_TOGGLE)[0]
+        if (event.which === ESCAPE_KEYCODE) {
+          const toggle = $(parent).find(Selector.DATA_TOGGLE)[0]
           $(toggle).trigger('focus')
         }
 
@@ -230,11 +244,7 @@ const Dropdown = (($) => {
         return
       }
 
-      let items = $.makeArray($(Selector.VISIBLE_ITEMS))
-
-      items = items.filter((item) => {
-        return item.offsetWidth || item.offsetHeight
-      })
+      const items = $(parent).find(Selector.VISIBLE_ITEMS).get()
 
       if (!items.length) {
         return
@@ -242,15 +252,15 @@ const Dropdown = (($) => {
 
       let index = items.indexOf(event.target)
 
-      if (event.which === 38 && index > 0) { // up
+      if (event.which === ARROW_UP_KEYCODE && index > 0) { // up
         index--
       }
 
-      if (event.which === 40 && index < items.length - 1) { // down
+      if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) { // down
         index++
       }
 
-      if (!~index) {
+      if (index < 0) {
         index = 0
       }
 
@@ -270,7 +280,7 @@ const Dropdown = (($) => {
     .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
     .on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU,    Dropdown._dataApiKeydownHandler)
     .on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler)
-    .on(Event.CLICK_DATA_API, Dropdown._clearMenus)
+    .on(`${Event.CLICK_DATA_API} ${Event.FOCUSIN_DATA_API}`, Dropdown._clearMenus)
     .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
     .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
       e.stopPropagation()
