@@ -869,10 +869,10 @@ $modal-content-sm-up-box-shadow: 0 5px 15px rgba($black,.5) !default;
 
 $modal-backdrop-bg:           $black !default;
 $modal-backdrop-opacity:      .5 !default;
-$modal-header-border-color:   $gray-lighter !default;
+$modal-header-border-color:   transparent;
 $modal-footer-border-color:   $modal-header-border-color !default;
-$modal-header-border-width:   $modal-content-border-width !default;
-$modal-footer-border-width:   $modal-header-border-width !default;
+$modal-header-border-width:   0;
+$modal-footer-border-width:   0;
 $modal-header-padding:        15px !default;
 
 $modal-lg:                    800px !default;
@@ -880,6 +880,14 @@ $modal-md:                    500px !default;
 $modal-sm:                    300px !default;
 
 $modal-transition:            transform .3s ease-out !default;
+
+// Color Variants
+$modal-default-color: $brand-inverse;
+$modal-inverse-color: white; // TODO: map to var
+$modal-contrast-color: $brand-inverse;
+$modal-primary-color: white; // TODO: map to var
+
+$modal-full-shadow: 0 0 0.5rem rgba(0,0,0,0.24);
 
 
 // Alerts
@@ -1112,3 +1120,12 @@ $slider-control-indicator-active-bg: $gray-dark;
 
 $slider-control-prev-icon-bg: $carousel-control-prev-icon-bg;
 $slider-control-next-icon-bg: $carousel-control-next-icon-bg;
+
+// Publication
+//
+//
+
+$publication-title-size: $font-size-h2;
+$publication-title-font-weight: $headings-font-weight;
+$publication-title-color: $headings-color;
+$publication-meta-font-size: $font-size-sm;
