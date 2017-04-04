@@ -61,8 +61,7 @@ module.exports = function (grunt) {
           'js/dist/scrollspy.js' : 'js/src/scrollspy.js',
           'js/dist/tab.js'       : 'js/src/tab.js',
           'js/dist/tooltip.js'   : 'js/src/tooltip.js',
-          'js/dist/popover.js'   : 'js/src/popover.js',
-          'js/dist/spinner.js'   : 'js/src/spinner.js'
+          'js/dist/popover.js'   : 'js/src/popover.js'
         }
       },
       dist: {
@@ -106,8 +105,7 @@ module.exports = function (grunt) {
           'js/src/scrollspy.js',
           'js/src/tab.js',
           'js/src/tooltip.js',
-          'js/src/popover.js',
-          'js/src/spinner.js'
+          'js/src/popover.js'
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
