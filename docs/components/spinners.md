@@ -124,7 +124,7 @@ Spinner is primary styled for containers with light background.
 
 {% example html %}
 <div class="spinner spinner-primary spinner-inline" role="progressbar">Loading</div>
-<div class="spinner spinner-primary spinner-inline spinner-comet spinner-inline" role="progressbar">Loading</div>
+<div class="spinner spinner-primary spinner-inline spinner-comet" role="progressbar">Loading</div>
 <div class="spinner spinner-primary spinner-inline spinner-hourglass" role="progressbar">Loading</div>
 <div class="spinner spinner-primary spinner-inline spinner-dots" role="progressbar">Loading</div>
 {% endexample %}

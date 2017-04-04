@@ -5329,7 +5329,7 @@ button.close {
   text-indent: -99999px;
 }
 
-.spinner:before,
+.spinner::before,
 .spinner.spinner-fallback .spinner-fallback-spin {
   width: 30px;
   height: 30px;
@@ -5338,7 +5338,7 @@ button.close {
   border-width: 3px;
 }
 
-.spinner:before,
+.spinner::before,
 .spinner.spinner-fallback .spinner-fallback-spin {
   position: absolute;
   top: 50%;
@@ -5351,7 +5351,7 @@ button.close {
   min-height: 46px;
 }
 
-.spinner-lg:before,
+.spinner-lg::before,
 .spinner-lg.spinner-fallback .spinner-fallback-spin {
   width: 36px;
   height: 36px;
@@ -5365,7 +5365,7 @@ button.close {
   min-height: 30px;
 }
 
-.spinner-sm:before,
+.spinner-sm::before,
 .spinner-sm.spinner-fallback .spinner-fallback-spin {
   width: 24px;
   height: 24px;
@@ -5379,7 +5379,7 @@ button.close {
   min-height: 22px;
 }
 
-.spinner-xs:before,
+.spinner-xs::before,
 .spinner-xs.spinner-fallback .spinner-fallback-spin {
   width: 18px;
   height: 18px;
@@ -5396,105 +5396,105 @@ button.close {
   display: inline-block;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots):not(.spinner-fallback):before,
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-fallback .spinner-fallback-spin {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots)::not(.spinner-fallback)::before,
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-fallback .spinner-fallback-spin {
   border-color: #c6c9cb;
   border-style: solid;
   border-top-color: #464a4c;
   border-radius: 50%;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots):not(:required):before {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots)::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-primary:not(.spinner-fallback):before,
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-primary.spinner-fallback .spinner-fallback-spin {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-primary::not(.spinner-fallback)::before,
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-primary.spinner-fallback .spinner-fallback-spin {
   border-color: #75bffe;
   border-style: solid;
   border-top-color: #013e73;
   border-radius: 50%;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-primary:not(:required):before {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-primary::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-success:not(.spinner-fallback):before,
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-success.spinner-fallback .spinner-fallback-spin {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-success::not(.spinner-fallback)::before,
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-success.spinner-fallback .spinner-fallback-spin {
   border-color: #c7e6c7;
   border-style: solid;
   border-top-color: #357935;
   border-radius: 50%;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-success:not(:required):before {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-success::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-info:not(.spinner-fallback):before,
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-info.spinner-fallback .spinner-fallback-spin {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-info::not(.spinner-fallback)::before,
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-info.spinner-fallback .spinner-fallback-spin {
   border-color: #daf1f8;
   border-style: solid;
   border-top-color: #2390b0;
   border-radius: 50%;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-info:not(:required):before {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-info::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-warning:not(.spinner-fallback):before,
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-warning.spinner-fallback .spinner-fallback-spin {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-warning::not(.spinner-fallback)::before,
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-warning.spinner-fallback .spinner-fallback-spin {
   border-color: #fceedb;
   border-style: solid;
   border-top-color: #c77c11;
   border-radius: 50%;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-warning:not(:required):before {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-warning::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-danger:not(.spinner-fallback):before,
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-danger.spinner-fallback .spinner-fallback-spin {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-danger::not(.spinner-fallback)::before,
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-danger.spinner-fallback .spinner-fallback-spin {
   border-color: #f4cecd;
   border-style: solid;
   border-top-color: #a02622;
   border-radius: 50%;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-danger:not(:required):before {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-danger::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-white:not(.spinner-fallback):before,
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-white.spinner-fallback .spinner-fallback-spin {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-white::not(.spinner-fallback)::before,
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-white.spinner-fallback .spinner-fallback-spin {
   border-color: gray;
   border-style: solid;
   border-top-color: #fff;
   border-radius: 50%;
 }
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots).spinner-white:not(:required):before {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots).spinner-white::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner-comet:not(.spinner-fallback):before,
+.spinner-comet::not(.spinner-fallback)::before,
 .spinner-comet.spinner-fallback .spinner-fallback-spin {
   border-top-color: #464a4c;
   border-top-style: solid;
@@ -5503,13 +5503,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-comet:not(:required):before {
+.spinner-comet::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner-comet.spinner-primary:not(.spinner-fallback):before,
+.spinner-comet.spinner-primary::not(.spinner-fallback)::before,
 .spinner-comet.spinner-primary.spinner-fallback .spinner-fallback-spin {
   border-top-color: #013e73;
   border-top-style: solid;
@@ -5518,13 +5518,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-comet.spinner-primary:not(:required):before {
+.spinner-comet.spinner-primary::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner-comet.spinner-success:not(.spinner-fallback):before,
+.spinner-comet.spinner-success::not(.spinner-fallback)::before,
 .spinner-comet.spinner-success.spinner-fallback .spinner-fallback-spin {
   border-top-color: #357935;
   border-top-style: solid;
@@ -5533,13 +5533,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-comet.spinner-success:not(:required):before {
+.spinner-comet.spinner-success::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner-comet.spinner-info:not(.spinner-fallback):before,
+.spinner-comet.spinner-info::not(.spinner-fallback)::before,
 .spinner-comet.spinner-info.spinner-fallback .spinner-fallback-spin {
   border-top-color: #2390b0;
   border-top-style: solid;
@@ -5548,13 +5548,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-comet.spinner-info:not(:required):before {
+.spinner-comet.spinner-info::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner-comet.spinner-warning:not(.spinner-fallback):before,
+.spinner-comet.spinner-warning::not(.spinner-fallback)::before,
 .spinner-comet.spinner-warning.spinner-fallback .spinner-fallback-spin {
   border-top-color: #c77c11;
   border-top-style: solid;
@@ -5563,13 +5563,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-comet.spinner-warning:not(:required):before {
+.spinner-comet.spinner-warning::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner-comet.spinner-danger:not(.spinner-fallback):before,
+.spinner-comet.spinner-danger::not(.spinner-fallback)::before,
 .spinner-comet.spinner-danger.spinner-fallback .spinner-fallback-spin {
   border-top-color: #a02622;
   border-top-style: solid;
@@ -5578,13 +5578,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-comet.spinner-danger:not(:required):before {
+.spinner-comet.spinner-danger::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner-comet.spinner-white:not(.spinner-fallback):before,
+.spinner-comet.spinner-white::not(.spinner-fallback)::before,
 .spinner-comet.spinner-white.spinner-fallback .spinner-fallback-spin {
   border-top-color: #fff;
   border-top-style: solid;
@@ -5593,13 +5593,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-comet.spinner-white:not(:required):before {
+.spinner-comet.spinner-white::not(::required)::before {
   -webkit-animation: spinner 0.6s linear infinite;
        -o-animation: spinner 0.6s linear infinite;
           animation: spinner 0.6s linear infinite;
 }
 
-.spinner-hourglass:not(.spinner-fallback):before,
+.spinner-hourglass::not(.spinner-fallback)::before,
 .spinner-hourglass.spinner-fallback .spinner-fallback-spin {
   border-color: transparent;
   border-style: solid;
@@ -5608,13 +5608,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-hourglass:not(:required):before {
+.spinner-hourglass::not(::required)::before {
   -webkit-animation: spinner 0.6s ease infinite;
        -o-animation: spinner 0.6s ease infinite;
           animation: spinner 0.6s ease infinite;
 }
 
-.spinner-hourglass.spinner-primary:not(.spinner-fallback):before,
+.spinner-hourglass.spinner-primary::not(.spinner-fallback)::before,
 .spinner-hourglass.spinner-primary.spinner-fallback .spinner-fallback-spin {
   border-color: transparent;
   border-style: solid;
@@ -5623,13 +5623,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-hourglass.spinner-primary:not(:required):before {
+.spinner-hourglass.spinner-primary::not(::required)::before {
   -webkit-animation: spinner 0.6s ease infinite;
        -o-animation: spinner 0.6s ease infinite;
           animation: spinner 0.6s ease infinite;
 }
 
-.spinner-hourglass.spinner-success:not(.spinner-fallback):before,
+.spinner-hourglass.spinner-success::not(.spinner-fallback)::before,
 .spinner-hourglass.spinner-success.spinner-fallback .spinner-fallback-spin {
   border-color: transparent;
   border-style: solid;
@@ -5638,13 +5638,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-hourglass.spinner-success:not(:required):before {
+.spinner-hourglass.spinner-success::not(::required)::before {
   -webkit-animation: spinner 0.6s ease infinite;
        -o-animation: spinner 0.6s ease infinite;
           animation: spinner 0.6s ease infinite;
 }
 
-.spinner-hourglass.spinner-info:not(.spinner-fallback):before,
+.spinner-hourglass.spinner-info::not(.spinner-fallback)::before,
 .spinner-hourglass.spinner-info.spinner-fallback .spinner-fallback-spin {
   border-color: transparent;
   border-style: solid;
@@ -5653,13 +5653,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-hourglass.spinner-info:not(:required):before {
+.spinner-hourglass.spinner-info::not(::required)::before {
   -webkit-animation: spinner 0.6s ease infinite;
        -o-animation: spinner 0.6s ease infinite;
           animation: spinner 0.6s ease infinite;
 }
 
-.spinner-hourglass.spinner-warning:not(.spinner-fallback):before,
+.spinner-hourglass.spinner-warning::not(.spinner-fallback)::before,
 .spinner-hourglass.spinner-warning.spinner-fallback .spinner-fallback-spin {
   border-color: transparent;
   border-style: solid;
@@ -5668,13 +5668,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-hourglass.spinner-warning:not(:required):before {
+.spinner-hourglass.spinner-warning::not(::required)::before {
   -webkit-animation: spinner 0.6s ease infinite;
        -o-animation: spinner 0.6s ease infinite;
           animation: spinner 0.6s ease infinite;
 }
 
-.spinner-hourglass.spinner-danger:not(.spinner-fallback):before,
+.spinner-hourglass.spinner-danger::not(.spinner-fallback)::before,
 .spinner-hourglass.spinner-danger.spinner-fallback .spinner-fallback-spin {
   border-color: transparent;
   border-style: solid;
@@ -5683,13 +5683,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-hourglass.spinner-danger:not(:required):before {
+.spinner-hourglass.spinner-danger::not(::required)::before {
   -webkit-animation: spinner 0.6s ease infinite;
        -o-animation: spinner 0.6s ease infinite;
           animation: spinner 0.6s ease infinite;
 }
 
-.spinner-hourglass.spinner-white:not(.spinner-fallback):before,
+.spinner-hourglass.spinner-white::not(.spinner-fallback)::before,
 .spinner-hourglass.spinner-white.spinner-fallback .spinner-fallback-spin {
   border-color: transparent;
   border-style: solid;
@@ -5698,7 +5698,7 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-hourglass.spinner-white:not(:required):before {
+.spinner-hourglass.spinner-white::not(::required)::before {
   -webkit-animation: spinner 0.6s ease infinite;
        -o-animation: spinner 0.6s ease infinite;
           animation: spinner 0.6s ease infinite;
@@ -5801,7 +5801,7 @@ button.close {
   }
 }
 
-.spinner-dots:not(.spinner-fallback):before,
+.spinner-dots::not(.spinner-fallback)::before,
 .spinner-dots.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #464a4c, 2.6em -2.6em 0 0 #c6c9cb, 3.5em 0 0 0 #c6c9cb, 2.6em 2.6em 0 0 #c6c9cb, 0 3.5em 0 0 #c6c9cb, -2.6em 2.6em 0 0 #c6c9cb, -3.5em 0 0 0 #c6c9cb, -2.6em -2.6em 0 0 #c6c9cb;
           box-shadow: 0 -3.5em 0 0 #464a4c, 2.6em -2.6em 0 0 #c6c9cb, 3.5em 0 0 0 #c6c9cb, 2.6em 2.6em 0 0 #c6c9cb, 0 3.5em 0 0 #c6c9cb, -2.6em 2.6em 0 0 #c6c9cb, -3.5em 0 0 0 #c6c9cb, -2.6em -2.6em 0 0 #c6c9cb;
@@ -5814,13 +5814,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots:not(:required):before {
+.spinner-dots::not(::required)::before {
   -webkit-animation: spinner-dots-base 0.6s linear infinite;
        -o-animation: spinner-dots-base 0.6s linear infinite;
           animation: spinner-dots-base 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-lg:not(.spinner-fallback):before,
+.spinner-dots.spinner-lg::not(.spinner-fallback)::before,
 .spinner-dots.spinner-lg.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #464a4c, 2.6em -2.6em 0 0 #c6c9cb, 3.5em 0 0 0 #c6c9cb, 2.6em 2.6em 0 0 #c6c9cb, 0 3.5em 0 0 #c6c9cb, -2.6em 2.6em 0 0 #c6c9cb, -3.5em 0 0 0 #c6c9cb, -2.6em -2.6em 0 0 #c6c9cb;
           box-shadow: 0 -3.5em 0 0 #464a4c, 2.6em -2.6em 0 0 #c6c9cb, 3.5em 0 0 0 #c6c9cb, 2.6em 2.6em 0 0 #c6c9cb, 0 3.5em 0 0 #c6c9cb, -2.6em 2.6em 0 0 #c6c9cb, -3.5em 0 0 0 #c6c9cb, -2.6em -2.6em 0 0 #c6c9cb;
@@ -5833,13 +5833,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-lg:not(:required):before {
+.spinner-dots.spinner-lg::not(::required)::before {
   -webkit-animation: spinner-dots-base 0.6s linear infinite;
        -o-animation: spinner-dots-base 0.6s linear infinite;
           animation: spinner-dots-base 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-sm:not(.spinner-fallback):before,
+.spinner-dots.spinner-sm::not(.spinner-fallback)::before,
 .spinner-dots.spinner-sm.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #464a4c, 2.6em -2.6em 0 0 #c6c9cb, 3.5em 0 0 0 #c6c9cb, 2.6em 2.6em 0 0 #c6c9cb, 0 3.5em 0 0 #c6c9cb, -2.6em 2.6em 0 0 #c6c9cb, -3.5em 0 0 0 #c6c9cb, -2.6em -2.6em 0 0 #c6c9cb;
           box-shadow: 0 -3.5em 0 0 #464a4c, 2.6em -2.6em 0 0 #c6c9cb, 3.5em 0 0 0 #c6c9cb, 2.6em 2.6em 0 0 #c6c9cb, 0 3.5em 0 0 #c6c9cb, -2.6em 2.6em 0 0 #c6c9cb, -3.5em 0 0 0 #c6c9cb, -2.6em -2.6em 0 0 #c6c9cb;
@@ -5852,13 +5852,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-sm:not(:required):before {
+.spinner-dots.spinner-sm::not(::required)::before {
   -webkit-animation: spinner-dots-base 0.6s linear infinite;
        -o-animation: spinner-dots-base 0.6s linear infinite;
           animation: spinner-dots-base 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-xs:not(.spinner-fallback):before,
+.spinner-dots.spinner-xs::not(.spinner-fallback)::before,
 .spinner-dots.spinner-xs.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #464a4c, 2.6em -2.6em 0 0 #c6c9cb, 3.5em 0 0 0 #c6c9cb, 2.6em 2.6em 0 0 #c6c9cb, 0 3.5em 0 0 #c6c9cb, -2.6em 2.6em 0 0 #c6c9cb, -3.5em 0 0 0 #c6c9cb, -2.6em -2.6em 0 0 #c6c9cb;
           box-shadow: 0 -3.5em 0 0 #464a4c, 2.6em -2.6em 0 0 #c6c9cb, 3.5em 0 0 0 #c6c9cb, 2.6em 2.6em 0 0 #c6c9cb, 0 3.5em 0 0 #c6c9cb, -2.6em 2.6em 0 0 #c6c9cb, -3.5em 0 0 0 #c6c9cb, -2.6em -2.6em 0 0 #c6c9cb;
@@ -5871,7 +5871,7 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-xs:not(:required):before {
+.spinner-dots.spinner-xs::not(::required)::before {
   -webkit-animation: spinner-dots-base 0.6s linear infinite;
        -o-animation: spinner-dots-base 0.6s linear infinite;
           animation: spinner-dots-base 0.6s linear infinite;
@@ -5974,7 +5974,7 @@ button.close {
   }
 }
 
-.spinner-dots.spinner-primary:not(.spinner-fallback):before,
+.spinner-dots.spinner-primary::not(.spinner-fallback)::before,
 .spinner-dots.spinner-primary.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #013e73, 2.6em -2.6em 0 0 #75bffe, 3.5em 0 0 0 #75bffe, 2.6em 2.6em 0 0 #75bffe, 0 3.5em 0 0 #75bffe, -2.6em 2.6em 0 0 #75bffe, -3.5em 0 0 0 #75bffe, -2.6em -2.6em 0 0 #75bffe;
           box-shadow: 0 -3.5em 0 0 #013e73, 2.6em -2.6em 0 0 #75bffe, 3.5em 0 0 0 #75bffe, 2.6em 2.6em 0 0 #75bffe, 0 3.5em 0 0 #75bffe, -2.6em 2.6em 0 0 #75bffe, -3.5em 0 0 0 #75bffe, -2.6em -2.6em 0 0 #75bffe;
@@ -5987,13 +5987,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-primary:not(:required):before {
+.spinner-dots.spinner-primary::not(::required)::before {
   -webkit-animation: spinner-dots-primary 0.6s linear infinite;
        -o-animation: spinner-dots-primary 0.6s linear infinite;
           animation: spinner-dots-primary 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-primary.spinner-lg:not(.spinner-fallback):before,
+.spinner-dots.spinner-primary.spinner-lg::not(.spinner-fallback)::before,
 .spinner-dots.spinner-primary.spinner-lg.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #013e73, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
           box-shadow: 0 -3.5em 0 0 #013e73, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
@@ -6006,13 +6006,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-primary.spinner-lg:not(:required):before {
+.spinner-dots.spinner-primary.spinner-lg::not(::required)::before {
   -webkit-animation: spinner-dots-primary 0.6s linear infinite;
        -o-animation: spinner-dots-primary 0.6s linear infinite;
           animation: spinner-dots-primary 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-primary.spinner-sm:not(.spinner-fallback):before,
+.spinner-dots.spinner-primary.spinner-sm::not(.spinner-fallback)::before,
 .spinner-dots.spinner-primary.spinner-sm.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #013e73, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
           box-shadow: 0 -3.5em 0 0 #013e73, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
@@ -6025,13 +6025,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-primary.spinner-sm:not(:required):before {
+.spinner-dots.spinner-primary.spinner-sm::not(::required)::before {
   -webkit-animation: spinner-dots-primary 0.6s linear infinite;
        -o-animation: spinner-dots-primary 0.6s linear infinite;
           animation: spinner-dots-primary 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-primary.spinner-xs:not(.spinner-fallback):before,
+.spinner-dots.spinner-primary.spinner-xs::not(.spinner-fallback)::before,
 .spinner-dots.spinner-primary.spinner-xs.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #013e73, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
           box-shadow: 0 -3.5em 0 0 #013e73, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
@@ -6044,7 +6044,7 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-primary.spinner-xs:not(:required):before {
+.spinner-dots.spinner-primary.spinner-xs::not(::required)::before {
   -webkit-animation: spinner-dots-primary 0.6s linear infinite;
        -o-animation: spinner-dots-primary 0.6s linear infinite;
           animation: spinner-dots-primary 0.6s linear infinite;
@@ -6147,7 +6147,7 @@ button.close {
   }
 }
 
-.spinner-dots.spinner-success:not(.spinner-fallback):before,
+.spinner-dots.spinner-success::not(.spinner-fallback)::before,
 .spinner-dots.spinner-success.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #357935, 2.6em -2.6em 0 0 #c7e6c7, 3.5em 0 0 0 #c7e6c7, 2.6em 2.6em 0 0 #c7e6c7, 0 3.5em 0 0 #c7e6c7, -2.6em 2.6em 0 0 #c7e6c7, -3.5em 0 0 0 #c7e6c7, -2.6em -2.6em 0 0 #c7e6c7;
           box-shadow: 0 -3.5em 0 0 #357935, 2.6em -2.6em 0 0 #c7e6c7, 3.5em 0 0 0 #c7e6c7, 2.6em 2.6em 0 0 #c7e6c7, 0 3.5em 0 0 #c7e6c7, -2.6em 2.6em 0 0 #c7e6c7, -3.5em 0 0 0 #c7e6c7, -2.6em -2.6em 0 0 #c7e6c7;
@@ -6160,13 +6160,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-success:not(:required):before {
+.spinner-dots.spinner-success::not(::required)::before {
   -webkit-animation: spinner-dots-success 0.6s linear infinite;
        -o-animation: spinner-dots-success 0.6s linear infinite;
           animation: spinner-dots-success 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-success.spinner-lg:not(.spinner-fallback):before,
+.spinner-dots.spinner-success.spinner-lg::not(.spinner-fallback)::before,
 .spinner-dots.spinner-success.spinner-lg.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #357935, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
           box-shadow: 0 -3.5em 0 0 #357935, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
@@ -6179,13 +6179,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-success.spinner-lg:not(:required):before {
+.spinner-dots.spinner-success.spinner-lg::not(::required)::before {
   -webkit-animation: spinner-dots-success 0.6s linear infinite;
        -o-animation: spinner-dots-success 0.6s linear infinite;
           animation: spinner-dots-success 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-success.spinner-sm:not(.spinner-fallback):before,
+.spinner-dots.spinner-success.spinner-sm::not(.spinner-fallback)::before,
 .spinner-dots.spinner-success.spinner-sm.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #357935, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
           box-shadow: 0 -3.5em 0 0 #357935, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
@@ -6198,13 +6198,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-success.spinner-sm:not(:required):before {
+.spinner-dots.spinner-success.spinner-sm::not(::required)::before {
   -webkit-animation: spinner-dots-success 0.6s linear infinite;
        -o-animation: spinner-dots-success 0.6s linear infinite;
           animation: spinner-dots-success 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-success.spinner-xs:not(.spinner-fallback):before,
+.spinner-dots.spinner-success.spinner-xs::not(.spinner-fallback)::before,
 .spinner-dots.spinner-success.spinner-xs.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #357935, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
           box-shadow: 0 -3.5em 0 0 #357935, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
@@ -6217,7 +6217,7 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-success.spinner-xs:not(:required):before {
+.spinner-dots.spinner-success.spinner-xs::not(::required)::before {
   -webkit-animation: spinner-dots-success 0.6s linear infinite;
        -o-animation: spinner-dots-success 0.6s linear infinite;
           animation: spinner-dots-success 0.6s linear infinite;
@@ -6320,7 +6320,7 @@ button.close {
   }
 }
 
-.spinner-dots.spinner-info:not(.spinner-fallback):before,
+.spinner-dots.spinner-info::not(.spinner-fallback)::before,
 .spinner-dots.spinner-info.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #2390b0, 2.6em -2.6em 0 0 #daf1f8, 3.5em 0 0 0 #daf1f8, 2.6em 2.6em 0 0 #daf1f8, 0 3.5em 0 0 #daf1f8, -2.6em 2.6em 0 0 #daf1f8, -3.5em 0 0 0 #daf1f8, -2.6em -2.6em 0 0 #daf1f8;
           box-shadow: 0 -3.5em 0 0 #2390b0, 2.6em -2.6em 0 0 #daf1f8, 3.5em 0 0 0 #daf1f8, 2.6em 2.6em 0 0 #daf1f8, 0 3.5em 0 0 #daf1f8, -2.6em 2.6em 0 0 #daf1f8, -3.5em 0 0 0 #daf1f8, -2.6em -2.6em 0 0 #daf1f8;
@@ -6333,13 +6333,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-info:not(:required):before {
+.spinner-dots.spinner-info::not(::required)::before {
   -webkit-animation: spinner-dots-info 0.6s linear infinite;
        -o-animation: spinner-dots-info 0.6s linear infinite;
           animation: spinner-dots-info 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-info.spinner-lg:not(.spinner-fallback):before,
+.spinner-dots.spinner-info.spinner-lg::not(.spinner-fallback)::before,
 .spinner-dots.spinner-info.spinner-lg.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #2390b0, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
           box-shadow: 0 -3.5em 0 0 #2390b0, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
@@ -6352,13 +6352,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-info.spinner-lg:not(:required):before {
+.spinner-dots.spinner-info.spinner-lg::not(::required)::before {
   -webkit-animation: spinner-dots-info 0.6s linear infinite;
        -o-animation: spinner-dots-info 0.6s linear infinite;
           animation: spinner-dots-info 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-info.spinner-sm:not(.spinner-fallback):before,
+.spinner-dots.spinner-info.spinner-sm::not(.spinner-fallback)::before,
 .spinner-dots.spinner-info.spinner-sm.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #2390b0, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
           box-shadow: 0 -3.5em 0 0 #2390b0, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
@@ -6371,13 +6371,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-info.spinner-sm:not(:required):before {
+.spinner-dots.spinner-info.spinner-sm::not(::required)::before {
   -webkit-animation: spinner-dots-info 0.6s linear infinite;
        -o-animation: spinner-dots-info 0.6s linear infinite;
           animation: spinner-dots-info 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-info.spinner-xs:not(.spinner-fallback):before,
+.spinner-dots.spinner-info.spinner-xs::not(.spinner-fallback)::before,
 .spinner-dots.spinner-info.spinner-xs.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #2390b0, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
           box-shadow: 0 -3.5em 0 0 #2390b0, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
@@ -6390,7 +6390,7 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-info.spinner-xs:not(:required):before {
+.spinner-dots.spinner-info.spinner-xs::not(::required)::before {
   -webkit-animation: spinner-dots-info 0.6s linear infinite;
        -o-animation: spinner-dots-info 0.6s linear infinite;
           animation: spinner-dots-info 0.6s linear infinite;
@@ -6493,7 +6493,7 @@ button.close {
   }
 }
 
-.spinner-dots.spinner-warning:not(.spinner-fallback):before,
+.spinner-dots.spinner-warning::not(.spinner-fallback)::before,
 .spinner-dots.spinner-warning.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #c77c11, 2.6em -2.6em 0 0 #fceedb, 3.5em 0 0 0 #fceedb, 2.6em 2.6em 0 0 #fceedb, 0 3.5em 0 0 #fceedb, -2.6em 2.6em 0 0 #fceedb, -3.5em 0 0 0 #fceedb, -2.6em -2.6em 0 0 #fceedb;
           box-shadow: 0 -3.5em 0 0 #c77c11, 2.6em -2.6em 0 0 #fceedb, 3.5em 0 0 0 #fceedb, 2.6em 2.6em 0 0 #fceedb, 0 3.5em 0 0 #fceedb, -2.6em 2.6em 0 0 #fceedb, -3.5em 0 0 0 #fceedb, -2.6em -2.6em 0 0 #fceedb;
@@ -6506,13 +6506,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-warning:not(:required):before {
+.spinner-dots.spinner-warning::not(::required)::before {
   -webkit-animation: spinner-dots-warning 0.6s linear infinite;
        -o-animation: spinner-dots-warning 0.6s linear infinite;
           animation: spinner-dots-warning 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-warning.spinner-lg:not(.spinner-fallback):before,
+.spinner-dots.spinner-warning.spinner-lg::not(.spinner-fallback)::before,
 .spinner-dots.spinner-warning.spinner-lg.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #c77c11, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
           box-shadow: 0 -3.5em 0 0 #c77c11, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
@@ -6525,13 +6525,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-warning.spinner-lg:not(:required):before {
+.spinner-dots.spinner-warning.spinner-lg::not(::required)::before {
   -webkit-animation: spinner-dots-warning 0.6s linear infinite;
        -o-animation: spinner-dots-warning 0.6s linear infinite;
           animation: spinner-dots-warning 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-warning.spinner-sm:not(.spinner-fallback):before,
+.spinner-dots.spinner-warning.spinner-sm::not(.spinner-fallback)::before,
 .spinner-dots.spinner-warning.spinner-sm.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #c77c11, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
           box-shadow: 0 -3.5em 0 0 #c77c11, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
@@ -6544,13 +6544,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-warning.spinner-sm:not(:required):before {
+.spinner-dots.spinner-warning.spinner-sm::not(::required)::before {
   -webkit-animation: spinner-dots-warning 0.6s linear infinite;
        -o-animation: spinner-dots-warning 0.6s linear infinite;
           animation: spinner-dots-warning 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-warning.spinner-xs:not(.spinner-fallback):before,
+.spinner-dots.spinner-warning.spinner-xs::not(.spinner-fallback)::before,
 .spinner-dots.spinner-warning.spinner-xs.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #c77c11, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
           box-shadow: 0 -3.5em 0 0 #c77c11, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
@@ -6563,7 +6563,7 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-warning.spinner-xs:not(:required):before {
+.spinner-dots.spinner-warning.spinner-xs::not(::required)::before {
   -webkit-animation: spinner-dots-warning 0.6s linear infinite;
        -o-animation: spinner-dots-warning 0.6s linear infinite;
           animation: spinner-dots-warning 0.6s linear infinite;
@@ -6666,7 +6666,7 @@ button.close {
   }
 }
 
-.spinner-dots.spinner-danger:not(.spinner-fallback):before,
+.spinner-dots.spinner-danger::not(.spinner-fallback)::before,
 .spinner-dots.spinner-danger.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #a02622, 2.6em -2.6em 0 0 #f4cecd, 3.5em 0 0 0 #f4cecd, 2.6em 2.6em 0 0 #f4cecd, 0 3.5em 0 0 #f4cecd, -2.6em 2.6em 0 0 #f4cecd, -3.5em 0 0 0 #f4cecd, -2.6em -2.6em 0 0 #f4cecd;
           box-shadow: 0 -3.5em 0 0 #a02622, 2.6em -2.6em 0 0 #f4cecd, 3.5em 0 0 0 #f4cecd, 2.6em 2.6em 0 0 #f4cecd, 0 3.5em 0 0 #f4cecd, -2.6em 2.6em 0 0 #f4cecd, -3.5em 0 0 0 #f4cecd, -2.6em -2.6em 0 0 #f4cecd;
@@ -6679,13 +6679,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-danger:not(:required):before {
+.spinner-dots.spinner-danger::not(::required)::before {
   -webkit-animation: spinner-dots-danger 0.6s linear infinite;
        -o-animation: spinner-dots-danger 0.6s linear infinite;
           animation: spinner-dots-danger 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-danger.spinner-lg:not(.spinner-fallback):before,
+.spinner-dots.spinner-danger.spinner-lg::not(.spinner-fallback)::before,
 .spinner-dots.spinner-danger.spinner-lg.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #a02622, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
           box-shadow: 0 -3.5em 0 0 #a02622, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
@@ -6698,13 +6698,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-danger.spinner-lg:not(:required):before {
+.spinner-dots.spinner-danger.spinner-lg::not(::required)::before {
   -webkit-animation: spinner-dots-danger 0.6s linear infinite;
        -o-animation: spinner-dots-danger 0.6s linear infinite;
           animation: spinner-dots-danger 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-danger.spinner-sm:not(.spinner-fallback):before,
+.spinner-dots.spinner-danger.spinner-sm::not(.spinner-fallback)::before,
 .spinner-dots.spinner-danger.spinner-sm.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #a02622, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
           box-shadow: 0 -3.5em 0 0 #a02622, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
@@ -6717,13 +6717,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-danger.spinner-sm:not(:required):before {
+.spinner-dots.spinner-danger.spinner-sm::not(::required)::before {
   -webkit-animation: spinner-dots-danger 0.6s linear infinite;
        -o-animation: spinner-dots-danger 0.6s linear infinite;
           animation: spinner-dots-danger 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-danger.spinner-xs:not(.spinner-fallback):before,
+.spinner-dots.spinner-danger.spinner-xs::not(.spinner-fallback)::before,
 .spinner-dots.spinner-danger.spinner-xs.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #a02622, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
           box-shadow: 0 -3.5em 0 0 #a02622, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
@@ -6736,7 +6736,7 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-danger.spinner-xs:not(:required):before {
+.spinner-dots.spinner-danger.spinner-xs::not(::required)::before {
   -webkit-animation: spinner-dots-danger 0.6s linear infinite;
        -o-animation: spinner-dots-danger 0.6s linear infinite;
           animation: spinner-dots-danger 0.6s linear infinite;
@@ -6839,7 +6839,7 @@ button.close {
   }
 }
 
-.spinner-dots.spinner-white:not(.spinner-fallback):before,
+.spinner-dots.spinner-white::not(.spinner-fallback)::before,
 .spinner-dots.spinner-white.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #fff, 2.6em -2.6em 0 0 gray, 3.5em 0 0 0 gray, 2.6em 2.6em 0 0 gray, 0 3.5em 0 0 gray, -2.6em 2.6em 0 0 gray, -3.5em 0 0 0 gray, -2.6em -2.6em 0 0 gray;
           box-shadow: 0 -3.5em 0 0 #fff, 2.6em -2.6em 0 0 gray, 3.5em 0 0 0 gray, 2.6em 2.6em 0 0 gray, 0 3.5em 0 0 gray, -2.6em 2.6em 0 0 gray, -3.5em 0 0 0 gray, -2.6em -2.6em 0 0 gray;
@@ -6852,13 +6852,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-white:not(:required):before {
+.spinner-dots.spinner-white::not(::required)::before {
   -webkit-animation: spinner-dots-white 0.6s linear infinite;
        -o-animation: spinner-dots-white 0.6s linear infinite;
           animation: spinner-dots-white 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-white.spinner-lg:not(.spinner-fallback):before,
+.spinner-dots.spinner-white.spinner-lg::not(.spinner-fallback)::before,
 .spinner-dots.spinner-white.spinner-lg.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #fff, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
           box-shadow: 0 -3.5em 0 0 #fff, 2.6em -2.6em 0 0 "lg", 3.5em 0 0 0 "lg", 2.6em 2.6em 0 0 "lg", 0 3.5em 0 0 "lg", -2.6em 2.6em 0 0 "lg", -3.5em 0 0 0 "lg", -2.6em -2.6em 0 0 "lg";
@@ -6871,13 +6871,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-white.spinner-lg:not(:required):before {
+.spinner-dots.spinner-white.spinner-lg::not(::required)::before {
   -webkit-animation: spinner-dots-white 0.6s linear infinite;
        -o-animation: spinner-dots-white 0.6s linear infinite;
           animation: spinner-dots-white 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-white.spinner-sm:not(.spinner-fallback):before,
+.spinner-dots.spinner-white.spinner-sm::not(.spinner-fallback)::before,
 .spinner-dots.spinner-white.spinner-sm.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #fff, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
           box-shadow: 0 -3.5em 0 0 #fff, 2.6em -2.6em 0 0 "sm", 3.5em 0 0 0 "sm", 2.6em 2.6em 0 0 "sm", 0 3.5em 0 0 "sm", -2.6em 2.6em 0 0 "sm", -3.5em 0 0 0 "sm", -2.6em -2.6em 0 0 "sm";
@@ -6890,13 +6890,13 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-white.spinner-sm:not(:required):before {
+.spinner-dots.spinner-white.spinner-sm::not(::required)::before {
   -webkit-animation: spinner-dots-white 0.6s linear infinite;
        -o-animation: spinner-dots-white 0.6s linear infinite;
           animation: spinner-dots-white 0.6s linear infinite;
 }
 
-.spinner-dots.spinner-white.spinner-xs:not(.spinner-fallback):before,
+.spinner-dots.spinner-white.spinner-xs::not(.spinner-fallback)::before,
 .spinner-dots.spinner-white.spinner-xs.spinner-fallback .spinner-fallback-spin {
   -webkit-box-shadow: 0 -3.5em 0 0 #fff, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
           box-shadow: 0 -3.5em 0 0 #fff, 2.6em -2.6em 0 0 "xs", 3.5em 0 0 0 "xs", 2.6em 2.6em 0 0 "xs", 0 3.5em 0 0 "xs", -2.6em 2.6em 0 0 "xs", -3.5em 0 0 0 "xs", -2.6em -2.6em 0 0 "xs";
@@ -6909,7 +6909,7 @@ button.close {
   border-radius: 50%;
 }
 
-.spinner-dots.spinner-white.spinner-xs:not(:required):before {
+.spinner-dots.spinner-white.spinner-xs::not(::required)::before {
   -webkit-animation: spinner-dots-white 0.6s linear infinite;
        -o-animation: spinner-dots-white 0.6s linear infinite;
           animation: spinner-dots-white 0.6s linear infinite;
