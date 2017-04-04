@@ -6,12 +6,17 @@
     color: $breadcrumb-item-color;
     text-decoration: underline;
 
+    a {
+      color: inherit;
+    }
+
+    &:hover,
+    a:hover {
+      color: inherit;
+    }
+
     &.active {
       text-decoration: none;
     }
-  }
-
-  li.breadcrumb-item a {
-    color: $breadcrumb-item-color;
   }
 }
