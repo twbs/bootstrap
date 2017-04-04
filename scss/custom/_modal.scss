@@ -34,7 +34,7 @@
     display: -ms-flexbox;
 
     width: 100%;
-    box-shadow: $box-shadow-default;
+    box-shadow: $modal-full-shadow;
   }
 
   .modal-body {
@@ -50,5 +50,30 @@
 
     overflow-y: auto;
     overflow-x: hidden;
+  }
+}
+
+// Color Variants
+.modal-inverse {
+  color: $modal-inverse-color;
+
+  .modal-title {
+    color: inherit;
+  }
+}
+
+.modal-contrast {
+  color: $modal-contrast-color;
+
+  .modal-title {
+    color: inherit;
+  }
+}
+
+.modal-primary {
+  color: $modal-primary-color;
+
+  .modal-title {
+    color: inherit;
   }
 }
