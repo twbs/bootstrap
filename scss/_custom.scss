@@ -970,11 +970,11 @@ $breadcrumb-padding-y:          .75rem !default;
 $breadcrumb-padding-x:          1rem !default;
 $breadcrumb-item-padding:       .5rem !default;
 
-$breadcrumb-bg:                 transparent !default;
+$breadcrumb-bg:                 transparent;
 $breadcrumb-item-color:         $gray-light;
 $breadcrumb-divider-color:      $gray-light !default;
 $breadcrumb-active-color:       $gray-light !default;
-$breadcrumb-divider:            "›" !default;
+$breadcrumb-divider:            "›";
 
 $breadcrumb-spacing-bottom:     0; // removes default breadcrumb bottom spacing
 $breadcrumb-font-size:          $font-size-sm;
