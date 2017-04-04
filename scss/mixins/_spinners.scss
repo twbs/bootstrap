@@ -14,7 +14,7 @@
   min-width: $size;
   min-height: $size;
 
-  &:before,
+  &::before,
   &.spinner-fallback .spinner-fallback-spin {
     width: $inside-size;
     height: $inside-size;
@@ -25,7 +25,7 @@
 }
 
 @mixin spinner-circle-variant($color-first, $color-second) {
-  &:not(.spinner-fallback):before,
+  &::not(.spinner-fallback)::before,
   &.spinner-fallback .spinner-fallback-spin {
     border-color: $color-second;
     border-style: solid;
@@ -39,7 +39,7 @@
 }
 
 @mixin spinner-comet-variant($color) {
-  &:not(.spinner-fallback):before,
+  &::not(.spinner-fallback)::before,
   &.spinner-fallback .spinner-fallback-spin {
     border-top-color: $color;
     border-top-style: solid;
@@ -48,13 +48,13 @@
     border-radius: 50%;
   }
 
-  &:not(:required):before {
+  &::not(::required)::before {
     animation: spinner $spinner-animation-duration linear infinite;
   }
 }
 
 @mixin spinner-hourglass-variant($color) {
-  &:not(.spinner-fallback):before,
+  &::not(.spinner-fallback)::before,
   &.spinner-fallback .spinner-fallback-spin {
     border-color: transparent;
     border-style: solid;
@@ -64,7 +64,7 @@
 
   }
 
-  &:not(:required):before {
+  &::not(::required)::before {
     animation: spinner $spinner-animation-duration ease infinite;
   }
 }
@@ -101,7 +101,7 @@
 }
 
 @mixin spinner-dots-variant($color-first, $color-second, $width, $variant: "base") {
-  &:not(.spinner-fallback):before,
+  &::not(.spinner-fallback)::before,
   &.spinner-fallback .spinner-fallback-spin {
     @include dots-shadow($color-first, $color-second);
 
@@ -114,7 +114,7 @@
     border-radius: 50%;
   }
 
-  &:not(:required):before {
+  &::not(::required)::before {
     animation: spinner-dots-#{$variant} $spinner-animation-duration linear infinite;
   }
 }

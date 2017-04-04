@@ -22,7 +22,7 @@ $colors-s: ($spinner-primary-color-second,
   z-index: $zindex-spinner;
   text-indent: -99999px;
 
-  &:before,
+  &::before,
   &.spinner-fallback .spinner-fallback-spin {
     position: absolute;
     top: 50%;
@@ -59,7 +59,7 @@ $colors-s: ($spinner-primary-color-second,
 
 // Variants
 
-.spinner:not(.spinner-comet):not(.spinner-hourglass):not(.spinner-dots) {
+.spinner::not(.spinner-comet)::not(.spinner-hourglass)::not(.spinner-dots) {
   @include spinner-circle-variant($spinner-base-color-first, $spinner-base-color-second);
 
   @for $i from 1 through length($colors) {
