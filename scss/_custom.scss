@@ -276,7 +276,7 @@ $font-size-sm:   .75rem; // ~ 12px - our small font size
 $font-size-xs:   .625rem; // ~ 10px - not used atm, use to hide something
 
 $font-weight-normal: 400;  // ~ Fira Regular
-$font-weight-bold: 600; // ~ Fira Semibold 
+$font-weight-bold: 600; // ~ Fira Semibold
 $font-weight-light: 200; // ~ Fira Light, used in Small Headline and Hero, maybe we can live without it
 
 $font-weight-base: $font-weight-normal !default;
@@ -978,10 +978,14 @@ $breadcrumb-padding-y:          .75rem !default;
 $breadcrumb-padding-x:          1rem !default;
 $breadcrumb-item-padding:       .5rem !default;
 
-$breadcrumb-bg:                 $gray-lighter !default;
+$breadcrumb-bg:                 transparent;
+$breadcrumb-item-color:         $gray-light;
 $breadcrumb-divider-color:      $gray-light !default;
 $breadcrumb-active-color:       $gray-light !default;
-$breadcrumb-divider:            "/" !default;
+$breadcrumb-divider:            "›";
+
+$breadcrumb-spacing-bottom:     0; // removes default breadcrumb bottom spacing
+$breadcrumb-font-size:          $font-size-sm;
 
 
 // Carousel
@@ -1116,7 +1120,6 @@ $slider-control-indicator-active-bg: $gray-dark;
 
 $slider-control-prev-icon-bg: $carousel-control-prev-icon-bg;
 $slider-control-next-icon-bg: $carousel-control-next-icon-bg;
-
 
 // Publication
 //
