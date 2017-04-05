@@ -122,11 +122,13 @@ $brand-success:             $green !default;
 $brand-info:                $cyan;
 $brand-warning:             $orange !default;
 $brand-danger:              $red !default;
-$brand-inverse:             $gray-dark;
+$brand-inverse:             $joblocal-gray;
 
 $ausbildung-color: $blue-light;
 $minijob-color: $green-light;
 $new-color: $orange;
+
+$border-color: $gray-lighter;
 
 // Shadows
 //
@@ -394,7 +396,7 @@ $btn-primary-border:             $btn-primary-bg !default;
 
 $btn-secondary-color:            $gray;
 $btn-secondary-bg:               $white !default;
-$btn-secondary-border:           #ccc !default;
+$btn-secondary-border:           $border-color;
 
 $btn-info-color:                 $white !default;
 $btn-info-bg:                    $brand-info !default;
@@ -957,12 +959,12 @@ $list-group-link-active-bg:      $gray-lighter !default;
 
 // Image thumbnails
 
-$thumbnail-padding:           .25rem !default;
-$thumbnail-bg:                $body-bg !default;
+$thumbnail-padding:           $spacer * .25;
+$thumbnail-bg:                transparent;
 $thumbnail-border-width:      $border-width !default;
-$thumbnail-border-color:      #ddd !default;
+$thumbnail-border-color:      $border-color;
 $thumbnail-border-radius:     $border-radius !default;
-$thumbnail-box-shadow:        0 1px 2px rgba($black,.075) !default;
+$thumbnail-box-shadow:        none;
 $thumbnail-transition:        all .2s ease-in-out !default;
 
 
