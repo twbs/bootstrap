@@ -84,7 +84,7 @@ Thumbnail for use in a navbar
 {% highlight html %}
 <ul class="nav nav-buttons card-buttons">
   <li class="nav-item">
-    <img data-src="holder.js/120x49?auto=yes" class="img-thumbnail nav-thumbnail" alt="A generic square placeholder image with rounded corners">
+    <img data-src="holder.js/120x49?auto=yes" class="img-thumbnail nav-thumbnail" alt="placeholder">
   </li>
   <li class="nav-item">
     ...
