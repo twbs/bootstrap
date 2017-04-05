@@ -81,6 +81,17 @@ Thumbnail for use in a navbar
   </div>
 </div>
 
+{% highlight html %}
+<ul class="nav nav-buttons card-buttons">
+  <li class="nav-item">
+    <img data-src="holder.js/120x49?auto=yes" class="img-thumbnail nav-thumbnail" alt="A generic square placeholder image with rounded corners">
+  </li>
+  <li class="nav-item">
+    ...
+  </li>
+</ul>
+{% endhighlight %}
+
 ## Aligning images
 
 Align images with the [helper float classes]({{ site.baseurl }}/utilities/responsive-helpers/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
