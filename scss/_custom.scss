@@ -128,6 +128,8 @@ $ausbildung-color: $blue-light;
 $minijob-color: $green-light;
 $new-color: $orange;
 
+$border-color: $gray-lighter;
+
 // Shadows
 //
 // Standardized box-shadows to be used in cards/tiles, etc.
@@ -394,7 +396,7 @@ $btn-primary-border:             $btn-primary-bg !default;
 
 $btn-secondary-color:            $gray;
 $btn-secondary-bg:               $white !default;
-$btn-secondary-border:           #ccc !default;
+$btn-secondary-border:           $border-color;
 
 $btn-info-color:                 $white !default;
 $btn-info-bg:                    $brand-info !default;
@@ -960,7 +962,7 @@ $list-group-link-active-bg:      $gray-lighter !default;
 $thumbnail-padding:           $spacer * .25;
 $thumbnail-bg:                transparent;
 $thumbnail-border-width:      $border-width !default;
-$thumbnail-border-color:      $gray-lightest;
+$thumbnail-border-color:      $border-color;
 $thumbnail-border-radius:     $border-radius !default;
 $thumbnail-box-shadow:        none;
 $thumbnail-transition:        all .2s ease-in-out !default;
