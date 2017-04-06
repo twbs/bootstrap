@@ -118,8 +118,6 @@ const Popover = (($) => {
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent())
 
       $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
-
-      this.cleanupTether()
     }
 
     // private
