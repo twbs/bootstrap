@@ -52,25 +52,25 @@ a.badge {
 // Contextual variations (linked badges get darker on :hover).
 
 .badge-default {
-  @include badge-variant($badge-default-bg,$badge-default-color);
+  @include badge-variant($badge-default-bg);
 }
 
 .badge-primary {
-  @include badge-variant($badge-primary-bg,$badge-primary-color);
+  @include badge-variant($badge-primary-bg);
 }
 
 .badge-success {
-  @include badge-variant($badge-success-bg,$badge-success-color);
+  @include badge-variant($badge-success-bg);
 }
 
 .badge-info {
-  @include badge-variant($badge-info-bg,$badge-info-color);
+  @include badge-variant($badge-info-bg);
 }
 
 .badge-warning {
-  @include badge-variant($badge-warning-bg,$badge-warning-color);
+  @include badge-variant($badge-warning-bg);
 }
 
 .badge-danger {
-  @include badge-variant($badge-danger-bg,$badge-danger-color);
+  @include badge-variant($badge-danger-bg);
 }
