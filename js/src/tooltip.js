@@ -1,4 +1,4 @@
-/* global Tether */
+/* global Popper */
 
 import Util from './util'
 
@@ -13,11 +13,11 @@ import Util from './util'
 const Tooltip = (($) => {
 
   /**
-   * Check for Tether dependency
-   * Tether - http://tether.io/
+   * Check for Popper dependency
+   * Tether - https://popper.js.org
    */
-  if (typeof Tether === 'undefined') {
-    throw new Error('Bootstrap tooltips require Tether (http://tether.io/)')
+  if (typeof Popper === 'undefined') {
+    throw new Error('Bootstrap tooltips require Popper (https://popper.js.org)')
   }
 
 
@@ -33,8 +33,6 @@ const Tooltip = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
-  const CLASS_PREFIX        = 'bs-tether'
-  const TETHER_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
   const Default = {
     animation   : true,
@@ -66,10 +64,10 @@ const Tooltip = (($) => {
   }
 
   const AttachmentMap = {
-    TOP    : 'bottom center',
-    RIGHT  : 'middle left',
-    BOTTOM : 'top center',
-    LEFT   : 'middle right'
+    TOP    : 'top',
+    RIGHT  : 'right',
+    BOTTOM : 'bottom',
+    LEFT   : 'left'
   }
 
   const HoverState = {
@@ -100,11 +98,6 @@ const Tooltip = (($) => {
     TOOLTIP_INNER : '.tooltip-inner'
   }
 
-  const TetherClass = {
-    element : false,
-    enabled : false
-  }
-
   const Trigger = {
     HOVER  : 'hover',
     FOCUS  : 'focus',
@@ -128,7 +121,7 @@ const Tooltip = (($) => {
       this._timeout       = 0
       this._hoverState    = ''
       this._activeTrigger = {}
-      this._tether        = null
+      this._popper        = null
 
       // protected
       this.element = element
@@ -220,8 +213,6 @@ const Tooltip = (($) => {
     dispose() {
       clearTimeout(this._timeout)
 
-      this.cleanupTether()
-
       $.removeData(this.element, this.constructor.DATA_KEY)
 
       $(this.element).off(this.constructor.EVENT_KEY)
@@ -235,7 +226,7 @@ const Tooltip = (($) => {
       this._timeout       = null
       this._hoverState    = null
       this._activeTrigger = null
-      this._tether        = null
+      this._popper        = null
 
       this.element = null
       this.config  = null
@@ -288,19 +279,19 @@ const Tooltip = (($) => {
 
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
-        this._tether = new Tether({
-          attachment,
-          element         : tip,
-          target          : this.element,
-          classes         : TetherClass,
-          classPrefix     : CLASS_PREFIX,
-          offset          : this.config.offset,
-          constraints     : this.config.constraints,
-          addTargetClasses: false
+        this._popper = new Popper(this.element, tip, {
+          placement : attachment,
+          modifiers : {
+            arrow : {
+              element : Selector.TOOLTIP
+            },
+            offset : {
+              offset : this.config.offset
+            }
+          }
         })
 
         Util.reflow(tip)
-        this._tether.position()
 
         $(tip).addClass(ClassName.SHOW)
 
@@ -342,11 +333,9 @@ const Tooltip = (($) => {
           tip.parentNode.removeChild(tip)
         }
 
-        this._cleanTipClass()
         this.element.removeAttribute('aria-describedby')
         $(this.element).trigger(this.constructor.Event.HIDDEN)
-        this.cleanupTether()
-
+        this._popper.destroy()
         if (callback) {
           callback()
         }
@@ -398,12 +387,8 @@ const Tooltip = (($) => {
 
     setContent() {
       const $tip = $(this.getTipElement())
-
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
-
       $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
-
-      this.cleanupTether()
     }
 
     setElementContent($element, content) {
@@ -434,25 +419,11 @@ const Tooltip = (($) => {
       return title
     }
 
-    cleanupTether() {
-      if (this._tether) {
-        this._tether.destroy()
-      }
-    }
-
 
     // private
 
     _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()]
-    }
-
-    _cleanTipClass() {
-      const $tip = $(this.getTipElement())
-      const tabClass = $tip.attr('class').match(TETHER_PREFIX_REGEX)
-      if (tabClass !== null && tabClass.length > 0) {
-        $tip.removeClass(tabClass.join(''))
-      }
     }
 
     _setListeners() {
