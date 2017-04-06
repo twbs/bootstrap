@@ -208,9 +208,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
    </tr>
    <tr>
      <td>pause</td>
-     <td>string | null</td>
+     <td>string | boolean</td>
      <td>"hover"</td>
-     <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>null</code>, hovering over the carousel won't pause it.</td>
+     <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>false</code>, hovering over the carousel won't pause it.</td>
    </tr>
    <tr>
      <td>ride</td>
@@ -228,6 +228,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </table>
 
 ### Methods
+
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 #### `.carousel(options)`
 
@@ -249,15 +252,15 @@ Stops the carousel from cycling through items.
 
 #### `.carousel(number)`
 
-Cycles the carousel to a particular frame (0 based, similar to an array).
+Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
 #### `.carousel('prev')`
 
-Cycles to the previous item.
+Cycles to the previous item. **Returns to the caller before the previous item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
 #### `.carousel('next')`
 
-Cycles to the next item.
+Cycles to the next item. **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
 ### Events
 
@@ -265,6 +268,8 @@ Bootstrap's carousel class exposes two events for hooking into carousel function
 
 - `direction`: The direction in which the carousel is sliding (either `"left"` or `"right"`).
 - `relatedTarget`: The DOM element that is being slid into place as the active item.
+- `from`: The index of the current item
+- `to`: The index of the next item
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 

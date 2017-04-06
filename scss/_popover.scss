@@ -132,6 +132,7 @@
   padding: $popover-title-padding-y $popover-title-padding-x;
   margin-bottom: 0; // Reset the default from Reboot
   font-size: $font-size-base;
+  color: $popover-title-color;
   background-color: $popover-title-bg;
   border-bottom: $popover-border-width solid darken($popover-title-bg, 5%);
   $offset-border-width: calc(#{$border-radius-lg} - #{$popover-border-width});
@@ -144,6 +145,7 @@
 
 .popover-content {
   padding: $popover-content-padding-y $popover-content-padding-x;
+  color: $popover-content-color;
 }
 
 

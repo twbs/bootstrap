@@ -67,7 +67,8 @@ const Modal = (($) => {
     DIALOG             : '.modal-dialog',
     DATA_TOGGLE        : '[data-toggle="modal"]',
     DATA_DISMISS       : '[data-dismiss="modal"]',
-    FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
+    FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
+    NAVBAR_TOGGLER     : '.navbar-toggler'
   }
 
 
@@ -87,7 +88,6 @@ const Modal = (($) => {
       this._isShown             = false
       this._isBodyOverflowing   = false
       this._ignoreBackdropClick = false
-      this._isTransitioning     = false
       this._originalBodyPadding = 0
       this._scrollbarWidth      = 0
     }
@@ -112,13 +112,13 @@ const Modal = (($) => {
 
     show(relatedTarget) {
       if (this._isTransitioning) {
-        throw new Error('Modal is transitioning')
+        return
       }
 
-      if (Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)) {
+      if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
         this._isTransitioning = true
       }
+
       const showEvent = $.Event(Event.SHOW, {
         relatedTarget
       })
@@ -161,17 +161,18 @@ const Modal = (($) => {
         event.preventDefault()
       }
 
-      if (this._isTransitioning) {
-        throw new Error('Modal is transitioning')
+      if (this._isTransitioning || !this._isShown) {
+        return
       }
 
-      const transition = Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)
+      const transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)
+
       if (transition) {
         this._isTransitioning = true
       }
 
       const hideEvent = $.Event(Event.HIDE)
+
       $(this._element).trigger(hideEvent)
 
       if (!this._isShown || hideEvent.isDefaultPrevented()) {
@@ -191,6 +192,7 @@ const Modal = (($) => {
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
       if (transition) {
+
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
           .emulateTransitionEnd(TRANSITION_DURATION)
@@ -211,10 +213,12 @@ const Modal = (($) => {
       this._isShown             = null
       this._isBodyOverflowing   = null
       this._ignoreBackdropClick = null
-      this._originalBodyPadding = null
       this._scrollbarWidth      = null
     }
 
+    handleUpdate() {
+      this._adjustDialog()
+    }
 
     // private
 
@@ -296,7 +300,7 @@ const Modal = (($) => {
 
     _setResizeEvent() {
       if (this._isShown) {
-        $(window).on(Event.RESIZE, (event) => this._handleUpdate(event))
+        $(window).on(Event.RESIZE, (event) => this.handleUpdate(event))
       } else {
         $(window).off(Event.RESIZE)
       }
@@ -304,7 +308,7 @@ const Modal = (($) => {
 
     _hideModal() {
       this._element.style.display = 'none'
-      this._element.setAttribute('aria-hidden', 'true')
+      this._element.setAttribute('aria-hidden', true)
       this._isTransitioning = false
       this._showBackdrop(() => {
         $(document.body).removeClass(ClassName.OPEN)
@@ -401,10 +405,6 @@ const Modal = (($) => {
     // todo (fat): these should probably be refactored out of modal.js
     // ----------------------------------------------------------------------
 
-    _handleUpdate() {
-      this._adjustDialog()
-    }
-
     _adjustDialog() {
       const isModalOverflowing =
         this._element.scrollHeight > document.documentElement.clientHeight
@@ -429,28 +429,60 @@ const Modal = (($) => {
     }
 
     _setScrollbar() {
-      const bodyPadding = parseInt(
-        $(Selector.FIXED_CONTENT).css('padding-right') || 0,
-        10
-      )
-
-      this._originalBodyPadding = document.body.style.paddingRight || ''
-
       if (this._isBodyOverflowing) {
-        document.body.style.paddingRight =
-          `${bodyPadding + this._scrollbarWidth}px`
+        // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
+        //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
+
+        // Adjust fixed content padding
+        $(Selector.FIXED_CONTENT).each((index, element) => {
+          const actualPadding = $(element)[0].style.paddingRight
+          const calculatedPadding = $(element).css('padding-right')
+          $(element).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
+        })
+
+        // Adjust navbar-toggler margin
+        $(Selector.NAVBAR_TOGGLER).each((index, element) => {
+          const actualMargin = $(element)[0].style.marginRight
+          const calculatedMargin = $(element).css('margin-right')
+          $(element).data('margin-right', actualMargin).css('margin-right', `${parseFloat(calculatedMargin) + this._scrollbarWidth}px`)
+        })
+
+        // Adjust body padding
+        const actualPadding = document.body.style.paddingRight
+        const calculatedPadding = $('body').css('padding-right')
+        $('body').data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
       }
     }
 
     _resetScrollbar() {
-      document.body.style.paddingRight = this._originalBodyPadding
+      // Restore fixed content padding
+      $(Selector.FIXED_CONTENT).each((index, element) => {
+        const padding = $(element).data('padding-right')
+        if (typeof padding !== 'undefined') {
+          $(element).css('padding-right', padding).removeData('padding-right')
+        }
+      })
+
+      // Restore navbar-toggler margin
+      $(Selector.NAVBAR_TOGGLER).each((index, element) => {
+        const margin = $(element).data('margin-right')
+        if (typeof margin !== 'undefined') {
+          $(element).css('margin-right', margin).removeData('margin-right')
+        }
+      })
+
+      // Restore body padding
+      const padding = $('body').data('padding-right')
+      if (typeof padding !== 'undefined') {
+        $('body').css('padding-right', padding).removeData('padding-right')
+      }
     }
 
     _getScrollbarWidth() { // thx d.walsh
       const scrollDiv = document.createElement('div')
       scrollDiv.className = ClassName.SCROLLBAR_MEASURER
       document.body.appendChild(scrollDiv)
-      const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+      const scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth
       document.body.removeChild(scrollDiv)
       return scrollbarWidth
     }

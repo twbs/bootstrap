@@ -2,22 +2,6 @@
 //
 // Used in conjunction with global variables to enable certain theme features.
 
-@mixin box-shadow($shadow...) {
-  @if $enable-shadows {
-    box-shadow: $shadow;
-  }
-}
-
-@mixin transition($transition...) {
-  @if $enable-transitions {
-    @if length($transition) == 0 {
-      transition: $transition-base;
-    } @else {
-      transition: $transition;
-    }
-  }
-}
-
 // Utilities
 @import "mixins/breakpoints";
 @import "mixins/hover";
@@ -47,7 +31,9 @@
 // // Skins
 @import "mixins/background-variant";
 @import "mixins/border-radius";
+@import "mixins/box-shadow";
 @import "mixins/gradients";
+@import "mixins/transition";
 
 // // Layout
 @import "mixins/clearfix";
