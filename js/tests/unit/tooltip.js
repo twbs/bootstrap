@@ -111,7 +111,7 @@ $(function () {
 
     assert
       .ok($('.tooltip')
-      .is('.fade.bs-tether-element-attached-top.bs-tether-element-attached-center.show'), 'has correct classes applied')
+      .is('.fade.bs-tooltip-bottom.show'), 'has correct classes applied')
 
     $tooltip.bootstrapTooltip('hide')
 

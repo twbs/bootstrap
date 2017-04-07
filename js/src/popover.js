@@ -22,6 +22,8 @@ const Popover = (($) => {
   const DATA_KEY            = 'bs.popover'
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
+  const CLASS_PREFIX        = 'bs-popover'
+  const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
   const Default = $.extend({}, Tooltip.Default, {
     placement : 'right',
@@ -107,6 +109,10 @@ const Popover = (($) => {
       return this.getTitle() || this._getContent()
     }
 
+    addAttachmentClass(attachment) {
+      $(this.getTipElement()).addClass(`${CLASS_PREFIX}-${attachment}`)
+    }
+
     getTipElement() {
       return this.tip = this.tip || $(this.config.template)[0]
     }
@@ -128,6 +134,14 @@ const Popover = (($) => {
         || (typeof this.config.content === 'function' ?
               this.config.content.call(this.element) :
               this.config.content)
+    }
+
+    _cleanTipClass() {
+      const $tip = $(this.getTipElement())
+      const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
+      if (tabClass !== null && tabClass.length > 0) {
+        $tip.removeClass(tabClass.join(''))
+      }
     }
 
 
