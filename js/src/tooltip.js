@@ -33,6 +33,8 @@ const Tooltip = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
+  const CLASS_PREFIX        = 'bs-tooltip'
+  const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
   const Default = {
     animation   : true,
@@ -269,6 +271,7 @@ const Tooltip = (($) => {
           this.config.placement
 
         const attachment = this._getAttachment(placement)
+        this.addAttachmentClass(attachment)
 
         const container = this.config.container === false ? document.body : $(this.config.container)
 
@@ -332,6 +335,7 @@ const Tooltip = (($) => {
           tip.parentNode.removeChild(tip)
         }
 
+        this._cleanTipClass()
         this.element.removeAttribute('aria-describedby')
         $(this.element).trigger(this.constructor.Event.HIDDEN)
         if (this._popper !== null) {
@@ -381,6 +385,10 @@ const Tooltip = (($) => {
 
     isWithContent() {
       return Boolean(this.getTitle())
+    }
+
+    addAttachmentClass(attachment) {
+      $(this.getTipElement()).addClass(`${CLASS_PREFIX}-${attachment}`)
     }
 
     getTipElement() {
@@ -623,6 +631,14 @@ const Tooltip = (($) => {
 
       return config
     }
+
+  _cleanTipClass() {
+    const $tip = $(this.getTipElement())
+    const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
+    if (tabClass !== null && tabClass.length > 0) {
+      $tip.removeClass(tabClass.join(''))
+    }
+  }
 
 
     // static
