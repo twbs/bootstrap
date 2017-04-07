@@ -37,6 +37,7 @@ const Tooltip = (($) => {
   const Default = {
     animation   : true,
     template    : '<div class="tooltip" role="tooltip">'
+                + '<div class="arrow"></div>'
                 + '<div class="tooltip-inner"></div></div>',
     trigger     : 'hover focus',
     title       : '',
@@ -281,10 +282,8 @@ const Tooltip = (($) => {
 
         this._popper = new Popper(this.element, tip, {
           placement : attachment,
+          arrowElement : '.arrow',
           modifiers : {
-            arrow : {
-              element : Selector.TOOLTIP
-            },
             offset : {
               offset : this.config.offset
             }
@@ -335,7 +334,10 @@ const Tooltip = (($) => {
 
         this.element.removeAttribute('aria-describedby')
         $(this.element).trigger(this.constructor.Event.HIDDEN)
-        this._popper.destroy()
+        if (this._popper !== null) {
+          this._popper.destroy()
+        }
+
         if (callback) {
           callback()
         }
