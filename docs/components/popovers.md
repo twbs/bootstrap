@@ -353,6 +353,10 @@ Toggles the ability for an element's popover to be shown or hidden.
       <td>hidden.bs.popover</td>
       <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
     </tr>
+    <tr>
+      <td>inserted.bs.popover</td>
+      <td>This event is fired after the <code>show.bs.popover</code> event when the tooltip template has been added to the DOM.</td>
+    </tr>
   </tbody>
 </table>
 
