@@ -269,12 +269,13 @@
 
     .card {
       -webkit-column-break-inside: avoid;
-      break-inside: avoid;
-      page-break-inside: avoid; // Cards shouldn't span multiple columns.
       break-after: always; // Gets rid of the floating margin.
+      break-inside: avoid;
       -webkit-column-break-after: always;
-      page-break-after:always; // Gets rid of the floating margin in firefox.
       margin-bottom: $card-columns-margin;
+      page-break-after: always; // Gets rid of the floating margin in firefox.
+      page-break-inside: avoid; // Cards shouldn't span multiple columns.
+      width: 100%;
 
       &:first-of-type:last-of-type {
         display: inline-block; // When there is only one card in the column wrapper lets convert to inline-block.
