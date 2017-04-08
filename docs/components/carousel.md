@@ -29,13 +29,13 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.im
 {% example html %}
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner" role="listbox">
-    <div class="carousel-item active">
+    <div class="carousel-item active" role="option">
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" role="option">
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" role="option">
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
     </div>
   </div>
@@ -49,13 +49,13 @@ Adding in the previous and next controls:
 {% example html %}
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner" role="listbox">
-    <div class="carousel-item active">
+    <div class="carousel-item active" role="option">
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" role="option">
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" role="option">
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
     </div>
   </div>
@@ -82,13 +82,13 @@ You can also add the indicators to the carousel, alongside the controls, too.
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner" role="listbox">
-    <div class="carousel-item active">
+    <div class="carousel-item active" role="option">
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" role="option">
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" role="option">
       <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
     </div>
   </div>
@@ -121,21 +121,21 @@ Add captions to your slides easily with the `.carousel-caption` element within a
       <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner" role="listbox">
-      <div class="carousel-item active">
+      <div class="carousel-item active" role="option">
         <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
         <div class="carousel-caption d-none d-md-block">
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </div>
-      <div class="carousel-item">
+      <div class="carousel-item" role="option">
         <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
         <div class="carousel-caption d-none d-md-block">
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
-      <div class="carousel-item">
+      <div class="carousel-item" role="option">
         <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
         <div class="carousel-caption d-none d-md-block">
           <h3>Third slide label</h3>
