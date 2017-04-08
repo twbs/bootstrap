@@ -60,9 +60,9 @@
 }
 .select2-container--bootstrap .select2-selection {
   font-size: 14px;
-  color: #262626;
-  background-color: #fff;
-  border: 1px solid #6d6e71;
+  color: #fff;
+  background-color: #96a4d3;
+  border: 1px solid #282a7f;
   border-radius: 0;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
@@ -73,9 +73,9 @@
 }
 .select2-container--bootstrap .select2-search--dropdown .select2-search__field {
   font-size: 14px;
-  color: #262626;
-  background-color: #fff;
-  border: 1px solid #6d6e71;
+  color: #fff;
+  background-color: #96a4d3;
+  border: 1px solid #282a7f;
   border-radius: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
@@ -124,8 +124,8 @@
   cursor: not-allowed;
 }
 .select2-container--bootstrap .select2-results__option[aria-selected=true] {
-  color: #2e3192;
-  background-color: #d5d9ee;
+  color: #fff;
+  background-color: #96a4d3;
 }
 .select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
   color: #fff;
@@ -162,7 +162,7 @@
   padding: 6px 12px;
   font-size: 12px;
   line-height: 1.42857143;
-  color: #939598;
+  color: #fff;
   white-space: nowrap;
 }
 .select2-container--bootstrap.select2-container--focus .select2-selection,
@@ -183,7 +183,7 @@
      */
 }
 .select2-container--bootstrap.select2-container--open .select2-selection .select2-selection__arrow b {
-  border-color: transparent transparent #939598 transparent;
+  border-color: transparent transparent #282a7f transparent;
   border-width: 0 4px 4px 4px;
 }
 .select2-container--bootstrap.select2-container--open.select2-container--below .select2-selection {
@@ -200,14 +200,14 @@
   float: right;
   margin-right: 10px;
   font-weight: bold;
-  color: #939598;
+  color: #282a7f;
   cursor: pointer;
 }
 .select2-container--bootstrap .select2-selection__clear:hover {
   color: #fff;
 }
 .select2-container--bootstrap.select2-container--disabled .select2-selection {
-  border-color: #6d6e71;
+  border-color: #282a7f;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -262,13 +262,13 @@
   height: 0;
   margin-top: -(4px/2);
   margin-left: -4px;
-  border-color: #939598 transparent transparent transparent;
+  border-color: #282a7f transparent transparent transparent;
   border-style: solid;
   border-width: 4px 4px 0 4px;
 }
 .select2-container--bootstrap .select2-selection--single .select2-selection__rendered {
   padding: 0;
-  color: #262626;
+  color: #fff;
 }
 .select2-container--bootstrap .select2-selection--single .select2-selection__placeholder {
   color: #939598;
@@ -310,7 +310,7 @@
   float: left;
   padding: 0 6px;
   margin: 5px 0 0 6px;
-  color: #262626;
+  color: #fff;
   cursor: default;
   background: #96a4d3;
   border: 1px solid #282a7f;
@@ -436,7 +436,7 @@
      */
 }
 .select2-container--bootstrap .select2-selection.input-lg.select2-container--open .select2-selection--single .select2-selection__arrow b {
-  border-color: transparent transparent #939598 transparent;
+  border-color: transparent transparent #282a7f transparent;
   border-width: 0 5px 5px 5px;
 }
 .input-group-lg .select2-container--bootstrap .select2-selection.select2-container--open .select2-selection--single {
@@ -445,7 +445,7 @@
      */
 }
 .input-group-lg .select2-container--bootstrap .select2-selection.select2-container--open .select2-selection--single .select2-selection__arrow b {
-  border-color: transparent transparent #939598 transparent;
+  border-color: transparent transparent #282a7f transparent;
   border-width: 0 5px 5px 5px;
 }
 .select2-container--bootstrap[dir="rtl"] {
@@ -1398,10 +1398,53 @@ body {
 .select2-container--bootstrap {
   width: 100% !important;
 }
-.select2-container--bootstrap .select2-selection {
+.select2-container--bootstrap .select2-search--dropdown .select2-dropdown {
   border-radius: 0;
 }
-.select2-dropdown {
+.select2-container--bootstrap .select2-search--dropdown .select2-search__field {
+  font-size: 14px;
+  color: #262626;
+  background-color: #fff;
+  border: 1px solid #6d6e71;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.select2-container--bootstrap .select2-results__option {
+  color: #fff;
+  background-color: #96a4d3;
+}
+.select2-container--bootstrap .select2-search__field {
+  /* Firefox 18- */
+  /**
+     * Firefox 19+
+     *
+     * @see http://stackoverflow.com/questions/24236240/color-for-styled-placeholder-text-is-muted-in-firefox
+     */
+}
+.select2-container--bootstrap .select2-search__field::-webkit-input-placeholder {
+  color: #939598;
+}
+.select2-container--bootstrap .select2-search__field:-moz-placeholder {
+  color: #939598;
+}
+.select2-container--bootstrap .select2-search__field::-moz-placeholder {
+  color: #939598;
+  opacity: 1;
+}
+.select2-container--bootstrap .select2-search__field:-ms-input-placeholder {
+  color: #939598;
+}
+.select2-container--bootstrap .select2-selection--multiple {
+  font-size: 14px;
+  color: #262626;
+  background-color: #fff;
+  border: 1px solid #6d6e71;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.select2-container--bootstrap .select2-selection {
   border-radius: 0;
 }
 .select2-label {
