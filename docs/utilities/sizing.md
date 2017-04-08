@@ -8,11 +8,27 @@ Easily make an element as wide or as tall (relative to its parent) with our widt
 
 Width and height utilities are generated from the `$sizes` Sass map in `_variables.scss`. Modify those values as you need to generate different utilities here.
 
+Sizing that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+The classes are named using the format `{property}-{size}` for `xs` and `{property}-{breakpoint}-{size}` for `sm`, `md`, `lg`, and `xl`.
+
+Where *property* is one of:
+
+* `w` - for classes that set `width`
+* `h` - for classes that set `height`
+
 {% example html %}
 <div class="w-25 p-3" style="background-color: #eee;">Width 25%</div>
 <div class="w-50 p-3" style="background-color: #eee;">Width 50%</div>
 <div class="w-75 p-3" style="background-color: #eee;">Width 75%</div>
 <div class="w-100 p-3" style="background-color: #eee;">Width 100%</div>
+{% endexample %}
+
+{% example html %}
+<div class="w-sm-25 p-3" style="background-color: #eee;">Width 25% for <code>sm</code> and up</div>
+<div class="w-md-25 p-3" style="background-color: #eee;">Width 25% for <code>md</code> and up</div>
+<div class="w-lg-25 p-3" style="background-color: #eee;">Width 25% for <code>lg</code> and up</div>
+<div class="w-xl-25 p-3" style="background-color: #eee;">Width 25% for <code>xl</code> and up</div>
 {% endexample %}
 
 {% example html %}
