@@ -38,4 +38,4 @@ module.exports = (ctx) => ({
     },
     'postcss-flexbugs-fixes': {}
   }
-})
+});
