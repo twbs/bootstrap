@@ -341,6 +341,49 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
+  QUnit.test('should fire slid and slide events with from and to', function (assert) {
+    assert.expect(4)
+    var template = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
+
+    var done = assert.async()
+    $(template)
+      .on('slid.bs.carousel', function (e) {
+        assert.ok(e.from !== undefined, 'from present')
+        assert.ok(e.to !== undefined, 'to present')
+        $(this).off()
+        done()
+      })
+      .on('slide.bs.carousel', function (e) {
+        assert.ok(e.from !== undefined, 'from present')
+        assert.ok(e.to !== undefined, 'to present')
+        $(this).off('slide.bs.carousel')
+      })
+      .bootstrapCarousel('next')
+  })
+
   QUnit.test('should set interval from data attribute', function (assert) {
     assert.expect(4)
     var templateHTML = '<div id="myCarousel" class="carousel slide">'

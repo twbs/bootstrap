@@ -34,6 +34,7 @@ var Tooltip = function ($) {
   var JQUERY_NO_CONFLICT = $.fn[NAME];
   var TRANSITION_DURATION = 150;
   var CLASS_PREFIX = 'bs-tether';
+  var TETHER_PREFIX_REGEX = new RegExp('(^|\\s)' + CLASS_PREFIX + '\\S+', 'g');
 
   var Default = {
     animation: true,
@@ -125,7 +126,6 @@ var Tooltip = function ($) {
       this._timeout = 0;
       this._hoverState = '';
       this._activeTrigger = {};
-      this._isTransitioning = false;
       this._tether = null;
 
       // protected
@@ -214,9 +214,6 @@ var Tooltip = function ($) {
 
       var showEvent = $.Event(this.constructor.Event.SHOW);
       if (this.isWithContent() && this._isEnabled) {
-        if (this._isTransitioning) {
-          throw new Error('Tooltip is transitioning');
-        }
         $(this.element).trigger(showEvent);
 
         var isInTheDom = $.contains(this.element.ownerDocument.documentElement, this.element);
@@ -243,7 +240,11 @@ var Tooltip = function ($) {
 
         var container = this.config.container === false ? document.body : $(this.config.container);
 
-        $(tip).data(this.constructor.DATA_KEY, this).appendTo(container);
+        $(tip).data(this.constructor.DATA_KEY, this);
+
+        if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
+          $(tip).appendTo(container);
+        }
 
         $(this.element).trigger(this.constructor.Event.INSERTED);
 
@@ -266,7 +267,6 @@ var Tooltip = function ($) {
         var complete = function complete() {
           var prevHoverState = _this._hoverState;
           _this._hoverState = null;
-          _this._isTransitioning = false;
 
           $(_this.element).trigger(_this.constructor.Event.SHOWN);
 
@@ -276,7 +276,6 @@ var Tooltip = function ($) {
         };
 
         if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
-          this._isTransitioning = true;
           $(this.tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
           return;
         }
@@ -290,17 +289,14 @@ var Tooltip = function ($) {
 
       var tip = this.getTipElement();
       var hideEvent = $.Event(this.constructor.Event.HIDE);
-      if (this._isTransitioning) {
-        throw new Error('Tooltip is transitioning');
-      }
       var complete = function complete() {
         if (_this2._hoverState !== HoverState.SHOW && tip.parentNode) {
           tip.parentNode.removeChild(tip);
         }
 
+        _this2._cleanTipClass();
         _this2.element.removeAttribute('aria-describedby');
         $(_this2.element).trigger(_this2.constructor.Event.HIDDEN);
-        _this2._isTransitioning = false;
         _this2.cleanupTether();
 
         if (callback) {
@@ -321,7 +317,7 @@ var Tooltip = function ($) {
       this._activeTrigger[Trigger.HOVER] = false;
 
       if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
-        this._isTransitioning = true;
+
         $(tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
       } else {
         complete();
@@ -386,6 +382,14 @@ var Tooltip = function ($) {
 
     Tooltip.prototype._getAttachment = function _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()];
+    };
+
+    Tooltip.prototype._cleanTipClass = function _cleanTipClass() {
+      var $tip = $(this.getTipElement());
+      var tabClass = $tip.attr('class').match(TETHER_PREFIX_REGEX);
+      if (tabClass !== null && tabClass.length > 0) {
+        $tip.removeClass(tabClass.join(''));
+      }
     };
 
     Tooltip.prototype._setListeners = function _setListeners() {
@@ -519,6 +523,14 @@ var Tooltip = function ($) {
           show: config.delay,
           hide: config.delay
         };
+      }
+
+      if (config.title && typeof config.title === 'number') {
+        config.title = config.title.toString();
+      }
+
+      if (config.content && typeof config.content === 'number') {
+        config.content = config.content.toString();
       }
 
       Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);

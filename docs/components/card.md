@@ -359,7 +359,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
   <div class="card-img-overlay">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <p class="card-text">Last updated 3 mins ago</p>
   </div>
 </div>
 {% endexample %}
@@ -644,7 +644,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
 {% example html %}
 <div class="card-columns">
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
+    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title that wraps to a new line</h4>
       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -661,7 +661,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
     </blockquote>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
+    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -686,7 +686,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
     </div>
   </div>
   <div class="card">
-    <img class="card-img img-fluid" data-src="holder.js/100px260/" alt="Card image">
+    <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
   </div>
   <div class="card p-3 text-right">
     <blockquote class="card-blockquote">

@@ -112,10 +112,9 @@ var Carousel = function ($) {
     // public
 
     Carousel.prototype.next = function next() {
-      if (this._isSliding) {
-        throw new Error('Carousel is sliding');
+      if (!this._isSliding) {
+        this._slide(Direction.NEXT);
       }
-      this._slide(Direction.NEXT);
     };
 
     Carousel.prototype.nextWhenVisible = function nextWhenVisible() {
@@ -126,10 +125,9 @@ var Carousel = function ($) {
     };
 
     Carousel.prototype.prev = function prev() {
-      if (this._isSliding) {
-        throw new Error('Carousel is sliding');
+      if (!this._isSliding) {
+        this._slide(Direction.PREV);
       }
-      this._slide(Direction.PREV);
     };
 
     Carousel.prototype.pause = function pause(event) {
@@ -272,9 +270,13 @@ var Carousel = function ($) {
     };
 
     Carousel.prototype._triggerSlideEvent = function _triggerSlideEvent(relatedTarget, eventDirectionName) {
+      var targetIndex = this._getItemIndex(relatedTarget);
+      var fromIndex = this._getItemIndex($(this._element).find(Selector.ACTIVE_ITEM)[0]);
       var slideEvent = $.Event(Event.SLIDE, {
         relatedTarget: relatedTarget,
-        direction: eventDirectionName
+        direction: eventDirectionName,
+        from: fromIndex,
+        to: targetIndex
       });
 
       $(this._element).trigger(slideEvent);
@@ -298,8 +300,9 @@ var Carousel = function ($) {
       var _this3 = this;
 
       var activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
+      var activeElementIndex = this._getItemIndex(activeElement);
       var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
-
+      var nextElementIndex = this._getItemIndex(nextElement);
       var isCycling = Boolean(this._interval);
 
       var directionalClassName = void 0;
@@ -341,7 +344,9 @@ var Carousel = function ($) {
 
       var slidEvent = $.Event(Event.SLID, {
         relatedTarget: nextElement,
-        direction: eventDirectionName
+        direction: eventDirectionName,
+        from: activeElementIndex,
+        to: nextElementIndex
       });
 
       if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.SLIDE)) {

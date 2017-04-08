@@ -41,26 +41,7 @@
     <script>
       $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-        testTooltipTransitionError()
       })
-
-      // Should throw an error because tooltip is in transition
-      function testTooltipTransitionError() {
-        var err = false
-        $('#btnOne').on('shown.bs.tooltip', function () {
-          $('#btnOne').tooltip('hide').off('shown.bs.tooltip')
-          if (!err) {
-            alert('No error thrown for : testTooltipTransitionError')
-          }
-        })
-        try {
-          $('#btnOne').tooltip('show').tooltip('hide')
-        }
-        catch (e) {
-          err = true
-          console.error(e.message)
-        }
-      }
     </script>
   </body>
 </html>
