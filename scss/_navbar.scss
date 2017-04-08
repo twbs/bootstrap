@@ -216,9 +216,9 @@
       }
     }
 
-    .open > .nav-link,
+    .show > .nav-link,
     .active > .nav-link,
-    .nav-link.open,
+    .nav-link.show,
     .nav-link.active {
       color: $navbar-light-active-color;
     }
@@ -261,9 +261,9 @@
       }
     }
 
-    .open > .nav-link,
+    .show > .nav-link,
     .active > .nav-link,
-    .nav-link.open,
+    .nav-link.show,
     .nav-link.active {
       color: $navbar-inverse-active-color;
     }
