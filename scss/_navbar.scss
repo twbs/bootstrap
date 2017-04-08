@@ -19,6 +19,7 @@
   position: relative;
   display: flex;
   flex-wrap: wrap; // allow us to do the line break for collapsing content
+  align-items: center;
   justify-content: space-between; // space out brand from logo
   padding: $navbar-padding-y $navbar-padding-x;
 
@@ -28,6 +29,7 @@
   > .container-fluid {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
 
     @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
@@ -45,7 +47,6 @@
 
 .navbar-brand {
   display: inline-block;
-  align-self: flex-start;
   padding-top: $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
   margin-right: $navbar-padding-x;
@@ -102,7 +103,6 @@
 
 // Button for toggling the navbar when in its collapsed state
 .navbar-toggler {
-  align-self: flex-start; // Prevent toggler from growing to full width when it's the only visible navbar child
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
   font-size: $navbar-toggler-font-size;
   line-height: 1;
@@ -153,7 +153,6 @@
       @include media-breakpoint-up($next) {
         flex-direction: row;
         flex-wrap: nowrap;
-        align-items: center;
         justify-content: flex-start;
 
         .navbar-nav {
@@ -173,7 +172,6 @@
         > .container,
         > .container-fluid {
           flex-wrap: nowrap;
-          align-items: center;
         }
 
         // scss-lint:disable ImportantRule
