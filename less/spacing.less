@@ -23,8 +23,7 @@
 .p-t-5 { padding-top: (@spacer-y * 5) !important; }
 .p-b-5 { padding-bottom: (@spacer-y * 5) !important; }
 
-.section,
-.footer {
+.section {
   padding-top: @spacing-3-mobile;
   padding-bottom: @spacing-3-mobile;
 
@@ -35,5 +34,16 @@
   @media (min-width: @screen-lg-min) {
     padding-top: @spacing-3-desktop;
     padding-bottom: @spacing-3-desktop;
+  }
+}
+
+.footer {
+  padding-top: @spacing-1-mobile;
+
+  @media (min-width: @screen-sm-min) {
+    padding-top: @spacing-1-tablet;
+  }
+  @media (min-width: @screen-lg-min) {
+    padding-top: @spacing-1-desktop;
   }
 }
