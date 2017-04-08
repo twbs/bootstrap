@@ -13,7 +13,7 @@
 
 .nav-link {
   display: block;
-  padding: $nav-link-padding;
+  padding: $nav-link-padding-y $nav-link-padding-x;
 
   @include hover-focus {
     text-decoration: none;
@@ -25,7 +25,6 @@
     cursor: $cursor-disabled;
   }
 }
-
 
 //
 // Tabs
@@ -76,12 +75,12 @@
 .nav-pills {
   .nav-link {
     @include border-radius($nav-pills-border-radius);
-  }
 
-  .nav-link.active,
-  .nav-item.show .nav-link {
-    color: $nav-pills-active-link-color;
-    background-color: $nav-pills-active-link-bg;
+    &.active,
+    .show & {
+      color: $nav-pills-active-link-color;
+      background-color: $nav-pills-active-link-bg;
+    }
   }
 }
 
@@ -99,7 +98,8 @@
 
 .nav-justified {
   .nav-item {
-    flex: 1 1 100%;
+    flex-basis: 0;
+    flex-grow: 1;
     text-align: center;
   }
 }

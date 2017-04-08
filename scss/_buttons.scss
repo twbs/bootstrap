@@ -7,13 +7,12 @@
 .btn {
   display: inline-block;
   font-weight: $btn-font-weight;
-  line-height: $btn-line-height;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
   border: $input-btn-border-width solid transparent;
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+  @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
   // Share hover and focus styles
@@ -73,22 +72,22 @@ fieldset[disabled] a.btn {
 
 // Remove all backgrounds
 .btn-outline-primary {
-  @include button-outline-variant($btn-primary-bg);
+  @include button-outline-variant($btn-primary-bg, $btn-primary-color);
 }
 .btn-outline-secondary {
-  @include button-outline-variant($btn-secondary-border);
+  @include button-outline-variant($btn-secondary-border, $btn-secondary-color);
 }
 .btn-outline-info {
-  @include button-outline-variant($btn-info-bg);
+  @include button-outline-variant($btn-info-bg, $btn-info-color);
 }
 .btn-outline-success {
-  @include button-outline-variant($btn-success-bg);
+  @include button-outline-variant($btn-success-bg, $btn-success-color);
 }
 .btn-outline-warning {
-  @include button-outline-variant($btn-warning-bg);
+  @include button-outline-variant($btn-warning-bg, $btn-warning-color);
 }
 .btn-outline-danger {
-  @include button-outline-variant($btn-danger-bg);
+  @include button-outline-variant($btn-danger-bg, $btn-danger-color);
 }
 
 
@@ -137,12 +136,11 @@ fieldset[disabled] a.btn {
 //
 
 .btn-lg {
-  // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-border-radius-lg);
+  @include button-size($input-btn-padding-y-lg, $input-btn-padding-x-lg, $font-size-lg, $line-height-lg, $btn-border-radius-lg);
 }
+
 .btn-sm {
-  // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius-sm);
+  @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
 }
 
 
