@@ -828,6 +828,7 @@ $progress-box-shadow:           inset 0 .1rem .1rem rgba($black,.1) !default;
 $progress-bar-color:            $white !default;
 $progress-bar-bg:               $brand-primary !default;
 $progress-bar-animation-timing: 1s linear infinite !default;
+$progress-bar-transition:       width .6s ease !default;
 
 // List group
 
