@@ -285,11 +285,8 @@ const Tooltip = (($) => {
 
         this._popper = new Popper(this.element, tip, {
           placement : attachment,
-          arrowElement : '.arrow',
-          modifiers : {
-            offset : {
-              offset : this.config.offset
-            }
+          offsets : {
+            popper : this.config.offset
           }
         })
 
@@ -632,13 +629,13 @@ const Tooltip = (($) => {
       return config
     }
 
-  _cleanTipClass() {
-    const $tip = $(this.getTipElement())
-    const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
-    if (tabClass !== null && tabClass.length > 0) {
-      $tip.removeClass(tabClass.join(''))
+    _cleanTipClass() {
+      const $tip = $(this.getTipElement())
+      const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
+      if (tabClass !== null && tabClass.length > 0) {
+        $tip.removeClass(tabClass.join(''))
+      }
     }
-  }
 
 
     // static
