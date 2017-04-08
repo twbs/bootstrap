@@ -364,32 +364,31 @@ $(function () {
   })
 
   QUnit.test('should add position class before positioning so that position-specific styles are taken into account', function (assert) {
-    assert.expect(1)
+    assert.expect(2)
+    var done = assert.async()
     var styles = '<style>'
-      + '.tooltip.right { white-space: nowrap; }'
-      + '.tooltip.right .tooltip-inner { max-width: none; }'
+      + '.bs-tooltip-right { white-space: nowrap; }'
+      + '.bs-tooltip-right .tooltip-inner { max-width: none; }'
       + '</style>'
     var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo('#qunit-fixture')
-    var $target = $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"/>')
+    $('<a href="#" rel="tooltip" title="very very very very very very very very long tooltip in one line"/>')
       .appendTo($container)
       .bootstrapTooltip({
-        placement: 'right'
+        placement: 'right',
+        trigger: 'manual'
+      })
+      .on('inserted.bs.tooltip', function () {
+        var $tooltip = $($(this).data('bs.tooltip').tip)
+        assert.ok($tooltip.hasClass('bs-tooltip-right'))
+        assert.ok($tooltip.attr('style') === undefined)
+        $(this).bootstrapTooltip('hide')
+        $container.remove()
+        $styles.remove()
+        done()
       })
       .bootstrapTooltip('show')
-
-    var $tooltip = $($target.data('bs.tooltip').tip)
-
-    // this is some dumb hack stuff because sub pixels in firefox
-    var top = Math.round($target.offset().top + $target[0].offsetHeight / 2 - $tooltip[0].offsetHeight / 2)
-    var top2 = Math.round($tooltip.offset().top)
-    var topDiff = top - top2
-    assert.ok(topDiff <= 1 && topDiff >= -1)
-    $target.bootstrapTooltip('hide')
-
-    $container.remove()
-    $styles.remove()
   })
 
   QUnit.test('should use title attribute for tooltip text', function (assert) {
@@ -476,6 +475,12 @@ $(function () {
       })
       .appendTo('#qunit-fixture')
 
+    $('#qunit-fixture').css({
+      position : 'relative',
+      top : '0px',
+      left : '0px'
+    })
+
     var $trigger = $container
       .find('a')
       .css('margin-top', 200)
@@ -489,6 +494,11 @@ $(function () {
 
     setTimeout(function () {
       assert.ok(Math.round($tooltip.offset().top + $tooltip.outerHeight()) <= Math.round($trigger.offset().top))
+      $('#qunit-fixture').css({
+        position : 'absolute',
+        top : '-10000px',
+        left : '-10000px'
+      })
       done()
     }, 0)
   })
@@ -627,45 +637,6 @@ $(function () {
     }, 0)
 
     $tooltip.trigger('mouseenter')
-  })
-
-  QUnit.test('should correctly position tooltips on SVG elements', function (assert) {
-    if (!window.SVGElement) {
-      // Skip IE8 since it doesn't support SVG
-      assert.expect(0)
-      return
-    }
-    assert.expect(2)
-
-    var done = assert.async()
-
-    var styles = '<style>'
-        + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
-        + '.tooltip { position: absolute; }'
-        + '.tooltip .tooltip-inner { width: 24px; height: 24px; font-family: Helvetica; }'
-        + '</style>'
-    var $styles = $(styles).appendTo('head')
-
-    $('#qunit-fixture').append(
-        '<div style="position: fixed; top: 0; left: 0;">'
-      + '  <svg width="200" height="200">'
-      + '    <circle cx="100" cy="100" r="10" title="m" id="theCircle" />'
-      + '  </svg>'
-      + '</div>')
-    var $circle = $('#theCircle')
-
-    $circle
-      .on('shown.bs.tooltip', function () {
-        var offset = $('.tooltip').offset()
-        $styles.remove()
-        assert.ok(Math.abs(offset.left - 88) <= 1, 'tooltip has correct horizontal location')
-        $circle.bootstrapTooltip('hide')
-        assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom')
-        done()
-      })
-      .bootstrapTooltip({ placement: 'top', trigger: 'manual' })
-
-    $circle.bootstrapTooltip('show')
   })
 
   QUnit.test('should not reload the tooltip on subsequent mouseenter events', function (assert) {
