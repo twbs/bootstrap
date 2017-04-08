@@ -79,12 +79,6 @@
   @include border-left-radius(0);
 }
 
-// On active and open, don't show outline
-.btn-group .dropdown-toggle:active,
-.btn-group.open .dropdown-toggle {
-  outline: 0;
-}
-
 
 // Sizing
 //
