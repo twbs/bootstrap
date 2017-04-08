@@ -4,9 +4,9 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     colorator (1.1.0)
-    ffi (1.9.17)
+    ffi (1.9.18)
     forwardable-extended (2.6.0)
-    jekyll (3.4.0)
+    jekyll (3.4.2)
       addressable (~> 2.4)
       colorator (~> 1.0)
       jekyll-sass-converter (~> 1.0)
@@ -49,10 +49,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  jekyll (~> 3.4.0)
+  jekyll (~> 3.4.2)
   jekyll-redirect-from (~> 0.12.1)
   jekyll-sitemap (~> 1.0.0)
   scss_lint (~> 0.52.0)
 
 BUNDLED WITH
-   1.13.6
+   1.14.6
