@@ -17,6 +17,10 @@
     border-right: $caret-width solid transparent;
     border-left: $caret-width solid transparent;
   }
+
+  &:empty::after {
+    margin-left: 0;
+  }
 }
 
 .dropup {
