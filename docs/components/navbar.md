@@ -57,7 +57,7 @@ Here's an example of all the sub-components included in a responsive light-theme
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
@@ -192,7 +192,7 @@ Place various form controls and components within a navbar with `.form-inline`.
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav>
@@ -204,7 +204,7 @@ Align the contents of your inline forms with utilities as needed.
 <nav class="navbar navbar-light bg-faded justify-content-between">
   <a class="navbar-brand">Navbar</a>
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav>
@@ -217,7 +217,7 @@ Input groups work, too:
   <form class="form-inline">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">@</span>
-      <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
     </div>
   </form>
 </nav>
@@ -300,7 +300,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </li>
       </ul>
       <form class="form-inline">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
@@ -328,7 +328,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </li>
       </ul>
       <form class="form-inline">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
@@ -356,7 +356,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </li>
       </ul>
       <form class="form-inline">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
@@ -458,7 +458,7 @@ With no `.navbar-brand` shown in lowest breakpoint:
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
@@ -516,7 +516,7 @@ With a toggler on the left and brand name on the right:
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
