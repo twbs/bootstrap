@@ -24,7 +24,8 @@ const Button = (($) => {
   const ClassName = {
     ACTIVE : 'active',
     BUTTON : 'btn',
-    FOCUS  : 'focus'
+    FOCUS  : 'focus',
+    DISABLED: 'disabled'
   }
 
   const Selector = {
@@ -74,7 +75,9 @@ const Button = (($) => {
         const input = $(this._element).find(Selector.INPUT)[0]
 
         if (input) {
-          if (input.type === 'radio') {
+          if (input.disabled || $(this._element).hasClass(ClassName.DISABLED)) {
+            triggerChangeEvent = false
+          } else if (input.type === 'radio') {
             if (input.checked &&
               $(this._element).hasClass(ClassName.ACTIVE)) {
               triggerChangeEvent = false
