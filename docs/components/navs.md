@@ -295,7 +295,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 
 Use the tab JavaScript plugin—include it individually or through the compiled `bootstrap.js` file—to extend our navigational tabs and pills to create tabbable panes of local content, even via dropdown menus.
 
-<div class="bd-example bd-example-tabs" role="tabpanel">
+<div class="bd-example bd-example-tabs">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-expanded="true">Home</a>
@@ -357,12 +357,12 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
 
 To help fit your needs, this works with `<ul>`-based markup, as shown above, as well as `<nav>`-based markup shown below.
 
-<div class="bd-example bd-example-tabs" role="tabpanel">
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="home" aria-expanded="true">Home</a>
-    <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="profile">Profile</a>
+<div class="bd-example bd-example-tabs">
+  <nav class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="home" aria-expanded="true">Home</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="profile">Profile</a>
     <div class="dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
         Dropdown
       </a>
       <div class="dropdown-menu">
@@ -370,7 +370,7 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, as 
         <a class="dropdown-item" id="nav-dropdown2-tab" href="#nav-dropdown2" role="tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a>
       </div>
     </div>
-  </div>
+  </nav>
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
       <p>Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</p>
@@ -388,11 +388,11 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, as 
 </div>
 
 {% highlight html %}
-<div class="nav nav-tabs" id="myTab" role="tablist">
-  <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-expanded="true">Home</a>
-  <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">Profile</a>
+<nav class="nav nav-tabs" id="myTab" role="tablist">
+  <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-expanded="true">Home</a>
+  <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile">Profile</a>
   <div class="dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
       Dropdown
     </a>
     <div class="dropdown-menu">
@@ -400,7 +400,7 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, as 
       <a class="dropdown-item" id="nav-dropdown2-tab" href="#nav-dropdown2" role="tab" data-toggle="tab" aria-controls="nav-dropdown2">@mdo</a>
     </div>
   </div>
-</div>
+</nav>
 <div class="tab-content" id="nav-tabContent">
   <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
@@ -411,7 +411,7 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, as 
 
 The tabs plugin also works with pills.
 
-<div class="bd-example bd-example-tabs" role="tabpanel">
+<div class="bd-example bd-example-tabs">
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-expanded="true">Home</a>
@@ -469,7 +469,7 @@ The tabs plugin also works with pills.
 
 And with vertical pills.
 
-<div class="bd-example bd-example-tabs" role="tabpanel">
+<div class="bd-example bd-example-tabs">
   <div class="row">
     <div class="col-3">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
@@ -517,7 +517,6 @@ And with vertical pills.
 
 You can activate a tab or pill navigation without writing any JavaScript by simply specifying `data-toggle="tab"` or `data-toggle="pill"` on an element. Use these data attributes on `.nav-tabs` or `.nav-pills`.
 
-<div role="tabpanel">
 {% highlight html %}
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -543,7 +542,6 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
   <div class="tab-pane" id="settings" role="tabpanel">...</div>
 </div>
 {% endhighlight %}
-</div>
 
 ### Via JavaScript
 

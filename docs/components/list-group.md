@@ -309,7 +309,7 @@ Activates a list item element and content container. Tab should have either a `d
 
 #### .tab('show')
 
-Selects the given list item and shows its associated pane. Any other list item that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (i.e. before the `shown.bs.tab` event occurs).
+Selects the given list item and shows its associated pane. Any other list item that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (for example, before the `shown.bs.tab` event occurs).
 
 {% highlight js %}
 $('#someListItem').tab('show')
@@ -324,12 +324,12 @@ When showing a new tab, the events fire in the following order:
 3. `hidden.bs.tab` (on the previous active tab, the same one as for the `hide.bs.tab` event)
 4. `shown.bs.tab` (on the newly-active just-shown tab, the same one as for the `show.bs.tab` event)
 
-If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events will not be fired.
+If no tab was already active, the `hide.bs.tab` and `hidden.bs.tab` events will not be fired.
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
    <tr>
-     <th style="width: 150px;">Event Type</th>
+     <th style="width: 150px;">Event type</th>
      <th>Description</th>
    </tr>
   </thead>
