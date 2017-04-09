@@ -268,9 +268,18 @@
     column-gap: $card-columns-gap;
 
     .card {
-      display: inline-block; // Don't let them vertically span multiple columns
-      width: 100%; // Don't let their width change
+      width: 100%;
       margin-bottom: $card-columns-margin;
+      -webkit-column-break-inside: avoid;
+      break-after: always; // Gets rid of the floating margin.
+      break-inside: avoid;
+      -webkit-column-break-after: always;
+      page-break-after: always; // Gets rid of the floating margin in firefox.
+      page-break-inside: avoid; // Cards shouldn't span multiple columns.
+
+      &:first-of-type:last-of-type {
+        display: inline-block; // When there is only one card in the column wrapper lets convert to inline-block.
+      }
     }
   }
 }
