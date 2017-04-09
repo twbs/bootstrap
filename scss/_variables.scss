@@ -352,7 +352,7 @@ $input-btn-line-height-lg:  1.5 !default;
 
 $btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
-$btn-focus-box-shadow:           0 0 0 2px rgba($brand-primary, .25) !default;
+$btn-focus-box-shadow:           0 0 0 3px rgba($brand-primary, .25) !default;
 $btn-active-box-shadow:          inset 0 3px 5px rgba($black,.125) !default;
 
 $btn-primary-color:              $white !default;
@@ -407,7 +407,7 @@ $input-border-radius-sm:         $border-radius-sm !default;
 
 $input-bg-focus:                 $input-bg !default;
 $input-border-focus:             lighten($brand-primary, 25%) !default;
-$input-box-shadow-focus:         $input-box-shadow, rgba($input-border-focus, .6) !default;
+$input-box-shadow-focus:         $input-box-shadow, $btn-focus-box-shadow !default;
 $input-color-focus:              $input-color !default;
 
 $input-color-placeholder:        $gray-light !default;
