@@ -26,7 +26,7 @@ $(function () {
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
     assert.expect(1)
-    var $el = $('<div/>')
+    var $el = $('<div/>').appendTo('#qunit-fixture')
     $el.bootstrapScrollspy()
     try {
       $el.bootstrapScrollspy('noMethod')
@@ -38,7 +38,7 @@ $(function () {
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
     assert.expect(2)
-    var $el = $('<div/>')
+    var $el = $('<div/>').appendTo('#qunit-fixture')
     var $scrollspy = $el.bootstrapScrollspy()
     assert.ok($scrollspy instanceof $, 'returns jquery collection')
     assert.strictEqual($scrollspy[0], $el[0], 'collection contains element')
@@ -205,6 +205,80 @@ $(function () {
       .then(function () { done() })
   })
 
+  QUnit.test('should add the active class to the correct element (nav markup)', function (assert) {
+    assert.expect(2)
+    var navbarHtml =
+        '<nav class="navbar">'
+      + '<nav class="nav">'
+      + '<a class="nav-link" id="a-1" href="#div-1">div 1</a>'
+      + '<a class="nav-link" id="a-2" href="#div-2">div 2</a>'
+      + '</nav>'
+      + '</nav>'
+    var contentHtml =
+        '<div class="content" style="overflow: auto; height: 50px">'
+      + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+
+    $(navbarHtml).appendTo('#qunit-fixture')
+    var $content = $(contentHtml)
+      .appendTo('#qunit-fixture')
+      .bootstrapScrollspy({ offset: 0, target: '.navbar' })
+
+    var done = assert.async()
+    var testElementIsActiveAfterScroll = function (element, target) {
+      var deferred = $.Deferred()
+      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
+      $content.one('scroll', function () {
+        assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
+        deferred.resolve()
+      })
+      $content.scrollTop(scrollHeight)
+      return deferred.promise()
+    }
+
+    $.when(testElementIsActiveAfterScroll('#a-1', '#div-1'))
+      .then(function () { return testElementIsActiveAfterScroll('#a-2', '#div-2') })
+      .then(function () { done() })
+  })
+
+  QUnit.test('should add the active class to the correct element (list-group markup)', function (assert) {
+    assert.expect(2)
+    var navbarHtml =
+        '<nav class="navbar">'
+      + '<div class="list-group">'
+      + '<a class="list-group-item" id="a-1" href="#div-1">div 1</a>'
+      + '<a class="list-group-item" id="a-2" href="#div-2">div 2</a>'
+      + '</div>'
+      + '</nav>'
+    var contentHtml =
+        '<div class="content" style="overflow: auto; height: 50px">'
+      + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+
+    $(navbarHtml).appendTo('#qunit-fixture')
+    var $content = $(contentHtml)
+      .appendTo('#qunit-fixture')
+      .bootstrapScrollspy({ offset: 0, target: '.navbar' })
+
+    var done = assert.async()
+    var testElementIsActiveAfterScroll = function (element, target) {
+      var deferred = $.Deferred()
+      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
+      $content.one('scroll', function () {
+        assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
+        deferred.resolve()
+      })
+      $content.scrollTop(scrollHeight)
+      return deferred.promise()
+    }
+
+    $.when(testElementIsActiveAfterScroll('#a-1', '#div-1'))
+      .then(function () { return testElementIsActiveAfterScroll('#a-2', '#div-2') })
+      .then(function () { done() })
+  })
+
   QUnit.test('should add the active class correctly when there are nested elements at 0 scroll offset', function (assert) {
     assert.expect(6)
     var times = 0
@@ -212,11 +286,91 @@ $(function () {
     var navbarHtml = '<nav id="navigation" class="navbar">'
       + '<ul class="nav">'
       + '<li><a id="a-1" class="nav-link" href="#div-1">div 1</a>'
-      + '<ul>'
+      + '<ul class="nav">'
       + '<li><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>'
       + '</ul>'
       + '</li>'
       + '</ul>'
+      + '</nav>'
+
+    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
+      + '<div id="div-1" style="padding: 0; margin: 0">'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+      + '</div>'
+
+    $(navbarHtml).appendTo('#qunit-fixture')
+
+    var $content = $(contentHtml)
+      .appendTo('#qunit-fixture')
+      .bootstrapScrollspy({ offset: 0, target: '#navigation' })
+
+    function testActiveElements() {
+      if (++times > 3) { return done() }
+
+      $content.one('scroll', function () {
+        assert.ok($('#a-1').hasClass('active'), 'nav item for outer element has "active" class')
+        assert.ok($('#a-2').hasClass('active'), 'nav item for inner element has "active" class')
+        testActiveElements()
+      })
+
+      $content.scrollTop($content.scrollTop() + 10)
+    }
+
+    testActiveElements()
+  })
+
+  QUnit.test('should add the active class correctly when there are nested elements (nav markup)', function (assert) {
+    assert.expect(6)
+    var times = 0
+    var done = assert.async()
+    var navbarHtml = '<nav id="navigation" class="navbar">'
+      + '<nav class="nav">'
+      + '<a id="a-1" class="nav-link" href="#div-1">div 1</a>'
+      + '<nav class="nav">'
+      + '<a id="a-2" class="nav-link" href="#div-2">div 2</a>'
+      + '</nav>'
+      + '</nav>'
+      + '</nav>'
+
+    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
+      + '<div id="div-1" style="padding: 0; margin: 0">'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+      + '</div>'
+
+    $(navbarHtml).appendTo('#qunit-fixture')
+
+    var $content = $(contentHtml)
+      .appendTo('#qunit-fixture')
+      .bootstrapScrollspy({ offset: 0, target: '#navigation' })
+
+    function testActiveElements() {
+      if (++times > 3) { return done() }
+
+      $content.one('scroll', function () {
+        assert.ok($('#a-1').hasClass('active'), 'nav item for outer element has "active" class')
+        assert.ok($('#a-2').hasClass('active'), 'nav item for inner element has "active" class')
+        testActiveElements()
+      })
+
+      $content.scrollTop($content.scrollTop() + 10)
+    }
+
+    testActiveElements()
+  })
+
+  QUnit.test('should add the active class correctly when there are nested elements (list-group markup)', function (assert) {
+    assert.expect(6)
+    var times = 0
+    var done = assert.async()
+    var navbarHtml = '<nav id="navigation" class="navbar">'
+      + '<div class="list-group">'
+      + '<a id="a-1" class="list-group-item" href="#div-1">div 1</a>'
+      + '<div class="list-group">'
+      + '<a id="a-2" class="list-group-item" href="#div-2">div 2</a>'
+      + '</div>'
+      + '</div>'
       + '</nav>'
 
     var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'

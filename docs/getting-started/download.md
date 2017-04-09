@@ -38,7 +38,7 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 
 ### npm
 
-Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.org/package/bootstrap):
+Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.com/package/bootstrap):
 
 {% highlight bash %}
 npm install bootstrap@{{ site.current_version }}

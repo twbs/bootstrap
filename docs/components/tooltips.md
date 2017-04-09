@@ -254,6 +254,9 @@ Options for individual tooltips can alternatively be specified through the use o
 
 ### Methods
 
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 #### `$().tooltip(options)`
 
 Attaches a tooltip handler to an element collection.
@@ -282,6 +285,24 @@ Hides and destroys an element's tooltip. Tooltips that use delegation (which are
 
 {% highlight js %}$('#element').tooltip('dispose'){% endhighlight %}
 
+#### `.tooltip('enable')`
+
+Gives an element's tooltip the ability to be shown. **Tooltips are enabled by default.**
+
+{% highlight js %}$('#element').tooltip('enable'){% endhighlight %}
+
+#### `.tooltip('disable')`
+
+Removes the ability for an element's tooltip to be shown. The tooltip will only be able to be shown if it is re-enabled.
+
+{% highlight js %}$('#element').tooltip('disable'){% endhighlight %}
+
+#### `.tooltip('toggleEnabled')`
+
+Toggles the ability for an element's tooltip to be shown or hidden.
+
+{% highlight js %}$('#element').tooltip('toggleEnabled'){% endhighlight %}
+
 ### Events
 
 <table class="table table-bordered table-striped table-responsive">
@@ -307,6 +328,10 @@ Hides and destroys an element's tooltip. Tooltips that use delegation (which are
     <tr>
       <td>hidden.bs.tooltip</td>
       <td>This event is fired when the tooltip has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+      <td>inserted.bs.tooltip</td>
+      <td>This event is fired after the <code>show.bs.tooltip</code> event when the tooltip template has been added to the DOM.</td>
     </tr>
   </tbody>
 </table>

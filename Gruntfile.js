@@ -16,16 +16,7 @@ module.exports = function (grunt) {
     return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
   }
 
-  var path = require('path')
   var isTravis = require('is-travis')
-
-  var configBridge = grunt.file.readJSON('./grunt/configBridge.json', { encoding: 'utf8' })
-
-  Object.keys(configBridge.paths).forEach(function (key) {
-    configBridge.paths[key].forEach(function (val, i, arr) {
-      arr[i] = path.join('./docs', val)
-    })
-  })
 
   // Project configuration.
   grunt.initConfig({
@@ -75,7 +66,7 @@ module.exports = function (grunt) {
       },
       dist: {
         options: {
-          extends: '../../js/.babelrc'
+          extends: '../../.babelrc'
         },
         files: {
           '<%= concat.bootstrap.dest %>' : '<%= concat.bootstrap.dest %>'
@@ -148,40 +139,6 @@ module.exports = function (grunt) {
       }
     },
 
-    jekyll: {
-      options: {
-        bundleExec: true,
-        config: '_config.yml',
-        incremental: false
-      },
-      docs: {},
-      github: {
-        options: {
-          raw: 'github: true'
-        }
-      }
-    },
-
-    htmllint: {
-      options: {
-        ignore: [
-          'Attribute “autocomplete” is only allowed when the input type is “color”, “date”, “datetime”, “datetime-local”, “email”, “hidden”, “month”, “number”, “password”, “range”, “search”, “tel”, “text”, “time”, “url”, or “week”.',
-          'Attribute “autocomplete” not allowed on element “button” at this point.',
-          'Consider using the “h1” element as a top-level heading only (all “h1” elements are treated as top-level headings by many screen readers and other tools).',
-          'Element “div” not allowed as child of element “progress” in this context. (Suppressing further errors from this subtree.)',
-          'Element “img” is missing required attribute “src”.',
-          'The “color” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-          'The “date” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-          'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-          'The “datetime-local” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-          'The “month” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-          'The “time” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-          'The “week” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
-        ]
-      },
-      src: ['_gh_pages/**/*.html', 'js/tests/visual/*.html']
-    },
-
     watch: {
       src: {
         files: '<%= concat.bootstrap.src %>',
@@ -225,6 +182,15 @@ module.exports = function (grunt) {
       },
       htmlhint: {
         command: 'npm run htmlhint'
+      },
+      htmllint: {
+        command: 'npm run htmllint'
+      },
+      jekyll: {
+        command: 'npm run jekyll'
+      },
+      'jekyll-github': {
+        command: 'npm run jekyll-github'
       },
       sass: {
         command: 'npm run sass'
@@ -288,7 +254,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt)
 
   // Docs HTML validation task
-  grunt.registerTask('validate-html', ['jekyll:docs', 'htmllint', 'exec:htmlhint'])
+  grunt.registerTask('validate-html', ['exec:jekyll', 'exec:htmllint', 'exec:htmlhint'])
 
   var runSubset = function (subset) {
     return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset
@@ -346,7 +312,7 @@ module.exports = function (grunt) {
   grunt.registerTask('lint-docs-css', ['exec:scss-lint-docs'])
   grunt.registerTask('docs-js', ['exec:uglify-docs'])
   grunt.registerTask('docs', ['lint-docs-css', 'docs-css', 'docs-js', 'clean:docs', 'copy:docs'])
-  grunt.registerTask('docs-github', ['jekyll:github'])
+  grunt.registerTask('docs-github', ['exec:jekyll-github'])
 
   grunt.registerTask('prep-release', ['dist', 'docs', 'docs-github', 'compress'])
 

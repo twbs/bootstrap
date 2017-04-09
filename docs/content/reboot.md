@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Reboot
-description: Documentation and examples for Reboot, Bootstrap's collection of element-specific CSS that builds on Normalize.css.
+description: Documentation and examples for Reboot, Bootstrap's collection of element-specific CSS that heavily builds on Normalize.css.
 group: content
 redirect_from: "/content/"
 ---
@@ -29,7 +29,7 @@ Here are our guidelines and reasons for choosing what to override in Reboot:
 The `<html>` and `<body>` elements are updated to provide better page-wide defaults. More specifically:
 
 - The `box-sizing` is globally set on every element—including `*:before` and `*:after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
-- A base `font-size: 16px` is declared on the `<html>` and `font-size: 1rem` on the `<body>` for easy responsive type-scaling via media queries.
+  - No base `font-size` is declared on the `<html>`, but `16px` is assumed (the browser default). `font-size: 1rem` is applied on the `<body>` for easy responsive type-scaling via media queries while respecting user preferences and ensuring a more accessible approach.
 - The `<body>` also sets a global `font-family` and `line-height`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
 
@@ -311,7 +311,7 @@ The `<abbr>` element receives basic styling to make it stand out amongst paragra
 
 ## HTML5 `[hidden]` attribute
 
-HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](http://purecss.io), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.
+HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](https://purecss.io), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.
 
 {% highlight html %}
 <input type="text" hidden>

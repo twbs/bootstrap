@@ -36,6 +36,18 @@ Alternatively, to target a specific plugin, just include the plugin's name as a 
 $(document).off('.alert.data-api')
 {% endhighlight %}
 
+## Events
+
+Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. `show`) is triggered at the start of an event, and its past participle form (ex. `shown`) is triggered on the completion of an action.
+
+All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts.
+
+{% highlight js %}
+$('#myModal').on('show.bs.modal', function (e) {
+  if (!data) return e.preventDefault() // stops modal from being shown
+})
+{% endhighlight %}
+
 ## Programmatic API
 
 We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.
@@ -54,11 +66,32 @@ $('#myModal').modal('show')                // initializes and invokes show immed
 
 Each plugin also exposes its raw constructor on a `Constructor` property: `$.fn.popover.Constructor`. If you'd like to get a particular plugin instance, retrieve it directly from an element: `$('[rel="popover"]').data('popover')`.
 
+### Asynchronous functions and transitions
+
+All programmatic API methods are **asynchronous** and returns to the caller once the transition is started but **before it ends**.
+
+In order to execute an action once the transition is complete, you can listen to the corresponding event.
+{% highlight js %}
+$('#myCollapse').on('shown.bs.collapse', function (e) {
+  // Action to execute once the collapsible area is expanded
+})
+{% endhighlight %}
+
+In addition a method call on a **transitioning component will be ignored**.
+{% highlight js %}
+$('#myCarousel').on('slid.bs.carousel', function (e) {
+  $('#myCarousel').carousel('2') // Will slide to the slide 2 as soon as the transition to slide 1 is finished
+})
+
+$('#myCarousel').carousel('1') // Will start sliding to the slide 1 and returns to the caller
+$('#myCarousel').carousel('2') // !! Will be ignored, as the transition to the slide 1 is not finished !!
+{% endhighlight %}
+
 ### Default settings
-You can change the default settings for a plugin by modifying the plugin's `Constructor.DEFAULTS` object:
+You can change the default settings for a plugin by modifying the plugin's `Constructor.Default` object:
 
 {% highlight js %}
-$.fn.modal.Constructor.DEFAULTS.keyboard = false // changes default for the modal plugin's `keyboard` option to false
+$.fn.modal.Constructor.Default.keyboard = false // changes default for the modal plugin's `keyboard` option to false
 {% endhighlight %}
 
 ## No conflict
@@ -68,18 +101,6 @@ Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In 
 {% highlight js %}
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
 $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Bootstrap functionality
-{% endhighlight %}
-
-## Events
-
-Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. `show`) is triggered at the start of an event, and its past participle form (ex. `shown`) is triggered on the completion of an action.
-
-All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts.
-
-{% highlight js %}
-$('#myModal').on('show.bs.modal', function (e) {
-  if (!data) return e.preventDefault() // stops modal from being shown
-})
 {% endhighlight %}
 
 ## Version numbers
@@ -100,8 +121,8 @@ Bootstrap's plugins don't fall back particularly gracefully when JavaScript is d
 **Bootstrap does not officially support third-party JavaScript libraries** like Prototype or jQuery UI. Despite `.noConflict` and namespaced events, there may be compatibility problems that you need to fix on your own.
 {% endcallout %}
 
-## Transitions
+## Util
 
-For simple transition effects, include `transition.js` once alongside the other JS files. If you're using the compiled (or minified) `bootstrap.js`, there is no need to include this—it's already there.
+All Bootstrap Javascript depend on `util.js` and it has to be included alongside the other JS files. If you're using the compiled (or minified) `bootstrap.js`, there is no need to include this—it's already there.
 
-Transition.js is a basic helper for `transitionEnd` events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.
+`util.js` includes utility functions and a basic helper for `transitionEnd` events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.

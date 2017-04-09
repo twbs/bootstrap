@@ -31,7 +31,7 @@ You can find and customize these variables for key global options in our `_varia
 
 | Variable                    | Values                             | Description                                                                            |
 | --------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------- |
-| `$spacer`                   | `1rem` (default), or any value > 0 | Specifies the default spacer value for our spacer utilities.                           |
+| `$spacer`                   | `1rem` (default), or any value > 0 | Specifies the default spacer value to programmatically generate our [spacer utilities](/utilities/spacing/). |
 | `$enable-rounded`           | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components.                       |
 | `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components.                          |
 | `$enable-gradients`         | `true` or `false` (default)        | Enables predefined gradients via `background-image` styles on various components.      |
