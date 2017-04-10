@@ -29,7 +29,6 @@
   &.disabled .page-link {
     color: $pagination-disabled-color;
     pointer-events: none;
-    cursor: $cursor-disabled; // While `pointer-events: none` removes the cursor in modern browsers, we provide a disabled cursor as a fallback.
     background-color: $pagination-disabled-bg;
     border-color: $pagination-disabled-border;
   }
