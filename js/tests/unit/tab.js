@@ -46,7 +46,7 @@ $(function () {
 
   QUnit.test('should activate element by tab id', function (assert) {
     assert.expect(2)
-    var tabsHTML = '<ul class="tabs">'
+    var tabsHTML = '<ul class="nav">'
         + '<li><a href="#home">Home</a></li>'
         + '<li><a href="#profile">Profile</a></li>'
         + '</ul>'
@@ -62,7 +62,7 @@ $(function () {
 
   QUnit.test('should activate element by tab id', function (assert) {
     assert.expect(2)
-    var pillsHTML = '<ul class="pills">'
+    var pillsHTML = '<ul class="nav nav-pills">'
         + '<li><a href="#home">Home</a></li>'
         + '<li><a href="#profile">Profile</a></li>'
         + '</ul>'
@@ -78,7 +78,7 @@ $(function () {
 
   QUnit.test('should activate element by tab id in ordered list', function (assert) {
     assert.expect(2)
-    var pillsHTML = '<ol class="pills">'
+    var pillsHTML = '<ol class="nav nav-pills">'
         + '<li><a href="#home">Home</a></li>'
         + '<li><a href="#profile">Profile</a></li>'
         + '</ol>'
@@ -108,19 +108,19 @@ $(function () {
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
-  QUnit.test('should activate element by tab id in list-group', function (assert) {
+  QUnit.test('should activate element by tab id in list group', function (assert) {
     assert.expect(2)
-    var ulHTML =  '<ul class="list-group">' +
-                      '<li class="list-group-item"><a href="#home">Home</a></li>' +
-                      '<li class="list-group-item"><a href="#profile">Profile</a></li>' +
-                    '</ul>'
+    var tabsHTML =  '<div class="list-group">' +
+                      '<a href="#home">Home</a>' +
+                      '<a href="#profile">Profile</a>' +
+                    '</div>'
 
-    $('<ul><li id="home"></li><li id="profile"></div></li>').appendTo('#qunit-fixture')
+    $('<nav><div id="home"></div><div id="profile"></div></nav>').appendTo('#qunit-fixture')
 
-    $(ulHTML).find('li:last a').bootstrapTab('show')
+    $(tabsHTML).find('a:last').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
 
-    $(ulHTML).find('li:first a').bootstrapTab('show')
+    $(tabsHTML).find('a:first').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
@@ -128,7 +128,7 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    $('<div class="tab"/>')
+    $('<div class="nav"/>')
       .on('show.bs.tab', function (e) {
         e.preventDefault()
         assert.ok(true, 'show event fired')
@@ -182,7 +182,7 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
 
-    var dropHTML = '<ul class="drop">'
+    var dropHTML = '<ul class="drop nav">'
         + '<li class="dropdown"><a data-toggle="dropdown" href="#">1</a>'
         + '<ul class="dropdown-menu">'
         + '<li><a href="#1-1" data-toggle="tab">1-1</a></li>'
@@ -210,7 +210,7 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
 
-    var tabsHTML = '<ul class="tabs">'
+    var tabsHTML = '<ul class="nav">'
         + '<li><a href="#home">Home</a></li>'
         + '<li><a href="#profile">Profile</a></li>'
         + '</ul>'
@@ -241,7 +241,7 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    var tabsHTML = '<ul class="tabs">'
+    var tabsHTML = '<ul class="nav">'
         + '<li><a href="#home">Home</a></li>'
         + '<li><a href="#profile">Profile</a></li>'
         + '</ul>'
@@ -266,7 +266,7 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
 
-    var tabsHTML = '<ul class="tabs">'
+    var tabsHTML = '<ul class="nav">'
         + '<li><a href="#home">Home</a></li>'
         + '<li><a href="#profile">Profile</a></li>'
         + '</ul>'
