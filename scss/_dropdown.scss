@@ -90,7 +90,6 @@
   &.disabled,
   &:disabled {
     color: $dropdown-link-disabled-color;
-    cursor: $cursor-disabled;
     background-color: transparent;
     // Remove CSS gradients if they're enabled
     @if $enable-gradients {
