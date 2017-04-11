@@ -13,3 +13,33 @@
     }
   }
 }
+
+//
+// Tabs
+//
+
+.nav-tabs {
+  border-bottom: $nav-tabs-border-width solid transparent;
+
+  .nav-item {
+    margin-bottom: -$nav-tabs-border-width;
+  }
+
+  .nav-link {
+    padding: $nav-tabs-default-padding;
+    color: $nav-tabs-link-color;
+    border: none;
+    border-bottom: $nav-tabs-border-width solid transparent;
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    border-color: $nav-tabs-active-link-hover-border-color;
+  }
+}
+
+.nav-tabs-sm {
+  .nav-link {
+    padding: $nav-tabs-sm-padding;
+  }
+}

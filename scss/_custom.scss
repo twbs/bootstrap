@@ -681,15 +681,19 @@ $navbar-link-disabled-color: lighten($component-inverse-bg, 15%);
 // Navs
 
 $nav-link-padding:              .5em 1em !default;
-$nav-disabled-link-color:       $gray-light !default;
+$nav-disabled-link-color:       $gray-lighter;
 
-$nav-tabs-border-color:                       #ddd !default;
-$nav-tabs-border-width:                       $border-width !default;
-$nav-tabs-border-radius:                      $border-radius !default;
-$nav-tabs-link-hover-border-color:            $gray-lighter !default;
-$nav-tabs-active-link-hover-color:            $gray !default;
-$nav-tabs-active-link-hover-bg:               $body-bg !default;
-$nav-tabs-active-link-hover-border-color:     #ddd !default;
+$nav-tabs-border-color:                       $brand-primary;
+$nav-tabs-border-width:                       .25rem;
+$nav-tabs-border-radius:                      0;
+$nav-tabs-link-hover-border-color:            $brand-primary;
+$nav-tabs-active-link-hover-color:            $brand-primary;
+$nav-tabs-active-link-hover-bg:               transparent;
+$nav-tabs-active-link-hover-border-color:     $brand-primary;
+
+$nav-tabs-link-color:                         $body-color;
+$nav-tabs-default-padding:                    $spacer-y $spacer-x;
+$nav-tabs-sm-padding:                         ($spacer-y * .5) $spacer-x;
 
 $nav-pills-border-radius:     $border-radius !default;
 $nav-pills-active-link-color: $component-active-color !default;

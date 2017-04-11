@@ -143,6 +143,31 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
 </ul>
 {% endexample %}
 
+#### Tabs Condensed / SM
+
+Offers a condensed class to decrease height in affix menus or areas where space is precious.
+
+{% example html %}
+<div class="card">
+  <div class="card-nav p-0">
+    <ul class="nav nav-tabs nav-tabs-sm">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</div>
+{% endexample %}
+
 ### Pills
 
 Take that same HTML, but use `.nav-pills` instead:
