@@ -54,7 +54,7 @@ const Dropdown = (($) => {
     ROLE_MENU     : '[role="menu"]',
     ROLE_LISTBOX  : '[role="listbox"]',
     NAVBAR_NAV    : '.navbar-nav',
-    VISIBLE_ITEMS : '[role="menu"] li:not(.disabled) a, '
+    VISIBLE_ITEMS : '.dropdown-menu .dropdown-item:not(.disabled), '
                   + '[role="listbox"] li:not(.disabled) a'
   }
 
