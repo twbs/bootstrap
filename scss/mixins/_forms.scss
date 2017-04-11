@@ -14,20 +14,20 @@
   }
 
   .form-control {
-    padding-right: ($input-padding-x * 3);
+    padding-right: ($input-btn-padding-x * 3);
     background-image: $form-icon;
     background-repeat: no-repeat;
     background-position: center right ($input-height / 4);
     background-size: ($input-height / 2) ($input-height / 2);
 
     &.form-control-sm {
-      padding-right: ($input-padding-x-sm * 3);
+      padding-right: ($input-btn-padding-x-sm * 3);
       background-position: center right ($input-height-sm / 4);
       background-size: ($input-height-sm / 2) ($input-height-sm / 2);
     }
 
     &.form-control-lg {
-      padding-right: ($input-padding-x-lg * 3);
+      padding-right: ($input-btn-padding-x-lg * 3);
       background-position: center right ($input-height-lg / 4);
       background-size: ($input-height-lg / 2) ($input-height-lg / 2);
     }
