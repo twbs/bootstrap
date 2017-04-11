@@ -692,7 +692,7 @@ $nav-tabs-active-link-hover-bg:               transparent;
 $nav-tabs-active-link-hover-border-color:     $brand-primary;
 
 $nav-tabs-link-color:                         $body-color;
-$nav-tabs-default-padding:                    ($spacer-y * 1.5) $spacer-x;
+$nav-tabs-default-padding:                    $spacer-y $spacer-x;
 $nav-tabs-sm-padding:                         ($spacer-y * .5) $spacer-x;
 
 $nav-pills-border-radius:     $border-radius !default;
