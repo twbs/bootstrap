@@ -138,4 +138,22 @@ $(function () {
     assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
   })
 
+  QUnit.test('should not add aria-pressed on labels for radio/checkbox inputs in a data-toggle="buttons" group', function (assert) {
+    assert.expect(2)
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
+      + '<label class="btn btn-primary"><input type="checkbox" autocomplete="off"> Checkbox</label>'
+      + '<label class="btn btn-primary"><input type="radio" name="options" autocomplete="off"> Radio</label>'
+      + '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn1 = $group.children().eq(0)
+    var $btn2 = $group.children().eq(1)
+
+    $btn1.find('input').trigger('click')
+    assert.ok($btn1.is(':not([aria-pressed])'), 'label for nested checkbox input has not been given an aria-pressed attribute')
+
+    $btn2.find('input').trigger('click')
+    assert.ok($btn2.is(':not([aria-pressed])'), 'label for nested radio input has not been given an aria-pressed attribute')
+  })
+
 })
