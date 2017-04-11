@@ -146,6 +146,10 @@ a.card-block {
 .card-nav {
   padding: $card-nav-spacer-y $card-nav-spacer-x;
   border-top: $card-border-width solid $card-border-color;
+
+  &:first-child {
+    border-top: 0;
+  }
 }
 
 //
