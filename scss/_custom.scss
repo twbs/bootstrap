@@ -1138,7 +1138,8 @@ $publication-meta-font-size: $font-size-sm;
 
 $search-agent-color: $white;
 $search-agent-bg: $brand-inverse;
-$search-agent-padding: $spacer * 2;
+$search-agent-padding-x: $spacer * 2;
+$search-agent-padding-y: $spacer * 2;
 
 $search-title-size: $display1-size;
 $search-title-weight: $display1-weight;

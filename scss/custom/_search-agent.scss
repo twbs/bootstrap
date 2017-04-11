@@ -1,12 +1,11 @@
 .search-agent {
   color: $search-agent-color;
   background: $search-agent-bg;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0 $search-agent-padding-x;
 
   .search-agent-body {
-    padding-top: $search-agent-padding;
-    padding-bottom: $search-agent-padding;
+    padding-top: $search-agent-padding-y;
+    padding-bottom: $search-agent-padding-y;
   }
 
   .search-agent-title {
