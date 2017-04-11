@@ -18,7 +18,7 @@
           <li data-target="#carousel-example-generic" data-slide-to="1"></li>
           <li data-target="#carousel-example-generic" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="https://37.media.tumblr.com/tumblr_m8tay0JcfG1qa42jro1_1280.jpg" alt="First slide">
           </div>
@@ -45,31 +45,11 @@
     <script src="../../dist/carousel.js"></script>
 
     <script>
-      // Should throw an error because carousel is in transition
-      function testCarouselTransitionError() {
-        var err = false
-        var $carousel = $('#carousel-example-generic')
-        $carousel.on('slid.bs.carousel', function () {
-          $carousel.off('slid.bs.carousel')
-          if (!err) {
-            alert('No error thrown for : testCarouselTransitionError')
-          }
-        })
-        try {
-          $carousel.carousel('next').carousel('prev')
-        }
-        catch (e) {
-          err = true
-          console.error(e.message)
-        }
-      }
-
-      $(function () {
+      $(function() {
         // Test to show that the carousel doesn't slide when the current tab isn't visible
-        $('#carousel-example-generic').on('slid.bs.carousel', function (event) {
+        $('#carousel-example-generic').on('slid.bs.carousel', function(event) {
           console.log('slid at ', event.timeStamp)
         })
-        testCarouselTransitionError()
       })
     </script>
   </body>

@@ -28,15 +28,15 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.im
 
 {% example html %}
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
     </div>
   </div>
 </div>
@@ -48,15 +48,15 @@ Adding in the previous and next controls:
 
 {% example html %}
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -81,15 +81,15 @@ You can also add the indicators to the carousel, alongside the controls, too.
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
-  <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -120,23 +120,23 @@ Add captions to your slides easily with the `.carousel-caption` element within a
       <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
       <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner" role="listbox">
+    <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+        <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
         <div class="carousel-caption d-none d-md-block">
           <h3>First slide label</h3>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+        <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
         <div class="carousel-caption d-none d-md-block">
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block img-fluid" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+        <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
         <div class="carousel-caption d-none d-md-block">
           <h3>Third slide label</h3>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -208,9 +208,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
    </tr>
    <tr>
      <td>pause</td>
-     <td>string | null</td>
+     <td>string | boolean</td>
      <td>"hover"</td>
-     <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>null</code>, hovering over the carousel won't pause it.</td>
+     <td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code> and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>false</code>, hovering over the carousel won't pause it.</td>
    </tr>
    <tr>
      <td>ride</td>
@@ -228,6 +228,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </table>
 
 ### Methods
+
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 #### `.carousel(options)`
 
@@ -249,15 +252,15 @@ Stops the carousel from cycling through items.
 
 #### `.carousel(number)`
 
-Cycles the carousel to a particular frame (0 based, similar to an array).
+Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
 #### `.carousel('prev')`
 
-Cycles to the previous item.
+Cycles to the previous item. **Returns to the caller before the previous item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
 #### `.carousel('next')`
 
-Cycles to the next item.
+Cycles to the next item. **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
 ### Events
 
@@ -265,6 +268,8 @@ Bootstrap's carousel class exposes two events for hooking into carousel function
 
 - `direction`: The direction in which the carousel is sliding (either `"left"` or `"right"`).
 - `relatedTarget`: The DOM element that is being slid into place as the active item.
+- `from`: The index of the current item
+- `to`: The index of the next item
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 

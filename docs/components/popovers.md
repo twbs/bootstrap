@@ -277,6 +277,9 @@ Options for individual popovers can alternatively be specified through the use o
 
 ### Methods
 
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
+{{ callout-include | markdownify }}
+
 #### `$().popover(options)`
 
 Initializes popovers for an element collection.
@@ -306,6 +309,24 @@ Hides and destroys an element's popover. Popovers that use delegation (which are
 
 {% highlight js %}$('#element').popover('dispose'){% endhighlight %}
 
+#### `.popover('enable')`
+
+Gives an element's popover the ability to be shown. **Popovers are enabled by default.**
+
+{% highlight js %}$('#element').popover('enable'){% endhighlight %}
+
+#### `.popover('disable')`
+
+Removes the ability for an element's popover to be shown. The popover will only be able to be shown if it is re-enabled.
+
+{% highlight js %}$('#element').popover('disable'){% endhighlight %}
+
+#### `.popover('toggleEnabled')`
+
+Toggles the ability for an element's popover to be shown or hidden.
+
+{% highlight js %}$('#element').popover('toggleEnabled'){% endhighlight %}
+
 ### Events
 
 <table class="table table-bordered table-striped table-responsive">
@@ -331,6 +352,10 @@ Hides and destroys an element's popover. Popovers that use delegation (which are
     <tr>
       <td>hidden.bs.popover</td>
       <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+      <td>inserted.bs.popover</td>
+      <td>This event is fired after the <code>show.bs.popover</code> event when the tooltip template has been added to the DOM.</td>
     </tr>
   </tbody>
 </table>

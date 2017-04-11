@@ -5,7 +5,7 @@
   "class-style": "dash",
   "doctype-first": true,
   "doctype-html5": true,
-  "fig-req-figcaption": true,
+  "fig-req-figcaption": false,
   "html-valid-content-model": false,
   "id-class-ignore-regex": "(onclick|content|[a-z]+([A-Z][a-z])+)",
   "id-class-style": "dash",
