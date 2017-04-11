@@ -1,0 +1,43 @@
+.search-agent {
+  color: $search-agent-color;
+  background: $search-agent-bg;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  .search-agent-body {
+    padding-top: $search-agent-padding;
+    padding-bottom: $search-agent-padding;
+  }
+
+  .search-agent-title {
+    font-size: $search-title-size;
+    font-weight: $search-title-weight;
+    color: $search-title-color;
+  }
+
+  .search-agent-subtitle {
+    font-size: $search-subtitle-size;
+    font-weight: $search-subtitle-weight;
+    color: $search-subtitle-color;
+    text-transform: uppercase;
+    margin-bottom: .5em;
+  }
+
+  .search-agent-visual {
+    display: flex;
+    height: 100%;
+  }
+
+  .search-agent-image {
+    flex: 1 1 100%;
+    align-self: flex-end;
+
+    width: 100%;
+    height: auto;
+    padding-top: $spacer-y;
+  }
+
+  @include media-breakpoint-down(xs) {
+    text-align: center;
+  }
+}
