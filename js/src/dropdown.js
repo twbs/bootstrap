@@ -96,7 +96,7 @@ const Dropdown = (($) => {
       if (isActive) {
         return false
       }
-      
+
       const relatedTarget = {
         relatedTarget : this
       }
