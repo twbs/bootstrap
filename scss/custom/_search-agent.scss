@@ -11,13 +11,14 @@
   .search-agent-title {
     font-size: $search-title-size;
     font-weight: $search-title-weight;
+    line-height: $headings-line-height;
     color: $search-title-color;
   }
 
-  .search-agent-subtitle {
-    font-size: $search-subtitle-size;
-    font-weight: $search-subtitle-weight;
-    color: $search-subtitle-color;
+  .search-agent-byline {
+    font-size: $search-byline-size;
+    font-weight: $search-byline-weight;
+    color: $search-byline-color;
     text-transform: uppercase;
     margin-bottom: .5em;
   }

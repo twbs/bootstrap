@@ -22,7 +22,7 @@ Default Search Agent in horizontal alignment
     <div class="row">
       <div class="col-12 col-sm-6 push-sm-6">
         <div class="search-agent-body">
-          <p class="search-agent-subtitle">Suchagent</p>
+          <p class="search-agent-byline">Suchagent</p>
           <p class="search-agent-title">Direkt in Deinen Posteingang</p>
           <p class="search-agent-text">Sobald ein neuer Job eingestellt wird, schicken wir Dir eine Mail.</p>
           <a href="#" class="btn btn-primary">Benachrichtigung anlegen</a>
@@ -48,7 +48,7 @@ For a vertical Variant, simply remove the `push` and `pull` class and leave colu
     <div class="row">
       <div class="col-12">
         <div class="search-agent-body">
-          <p class="search-agent-subtitle">Suchagent</p>
+          <p class="search-agent-byline">Suchagent</p>
           <p class="search-agent-title">Direkt in Deinen Posteingang</p>
           <p class="search-agent-text">Sobald ein neuer Job eingestellt wird, schicken wir Dir eine Mail.</p>
           <a href="#" class="btn btn-primary">Benachrichtigung anlegen</a>
