@@ -480,7 +480,9 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 
 Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent list item.
 
-On touch-enabled devices, opening a dropdown adds a `.dropdown-backdrop` as a tap area for closing dropdown menus when tapping outside the menu, to work around a quirk in iOS' event delegation. **This means that once a dropdown menu is open, any tap or click (including with a mouse, on a multi-input device such as a laptop with a touchscreen) outside of the menu will be intercepted to close the menu. Opening another dropdown menu, or activating any other control or link, will therefore require an extra tap or click.**
+{% callout info %}
+On touch-enabled devices, opening a dropdown adds empty (`$.noop`) `mouseover` handlers to the immediate children of the `<body>` element. This admittedly ugly hack is necessary to work around a [quirk in iOS' event delegation](https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html), which would otherwise prevent a tap anywhere outside of the dropdown from triggering the code that closes the dropdown. Once the dropdown is closed, these additional empty `mouseover` handlers are removed.
+{% endcallout %}
 
 Note: The `data-toggle="dropdown"` attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.
 
