@@ -634,15 +634,15 @@ $pagination-border-color:              #ddd !default;
 
 $pagination-hover-color:               $link-hover-color !default;
 $pagination-hover-bg:                  $gray-lighter !default;
-$pagination-hover-border:              #ddd !default;
+$pagination-hover-border-color:        #ddd !default;
 
 $pagination-active-color:              $white !default;
 $pagination-active-bg:                 $brand-primary !default;
-$pagination-active-border:             $brand-primary !default;
+$pagination-active-border-color:       $brand-primary !default;
 
 $pagination-disabled-color:            $gray-light !default;
 $pagination-disabled-bg:               $white !default;
-$pagination-disabled-border:           #ddd !default;
+$pagination-disabled-border-color:     #ddd !default;
 
 
 // Jumbotron
