@@ -18,6 +18,7 @@
   line-height: $progress-height;
   color: $progress-bar-color;
   background-color: $progress-bar-bg;
+  @include transition($progress-bar-transition);
 }
 
 .progress-bar-striped {
