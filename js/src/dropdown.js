@@ -112,11 +112,12 @@ const Dropdown = (($) => {
       if ('ontouchstart' in document.documentElement &&
          !$(parent).closest(Selector.NAVBAR_NAV).length) {
 
-        // if mobile we use a backdrop because click events don't delegate
-        const dropdown     = document.createElement('div')
-        dropdown.className = ClassName.BACKDROP
-        $(dropdown).insertBefore(this)
-        $(dropdown).on('click', Dropdown._clearMenus)
+        // if touch-enabled device we use a backdrop because click events
+        // don't delegate on iOS - see https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+        const backdrop     = document.createElement('div')
+        backdrop.className = ClassName.BACKDROP
+        $(backdrop).insertBefore(this)
+        $(backdrop).on('click', Dropdown._clearMenus)
       }
 
       this.focus()
