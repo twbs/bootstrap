@@ -241,3 +241,26 @@ a.card-block {
     }
   }
 }
+
+//
+// Alerts
+//
+
+.card {
+  .alert {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    margin: 0;
+  }
+
+  .alert-bottom {
+    border-bottom: 0;
+    @include border-bottom-radius($card-border-radius-inner);
+  }
+
+  .alert-top {
+    border-top: 0;
+    @include border-top-radius($card-border-radius-inner);
+  }
+}
