@@ -22,7 +22,7 @@
   // Popover directions
 
   &.popover-top,
-  &.bs-tether-element-attached-bottom {
+  &.bs-tether-element-attached-bottom.bs-tether-target-attached-top {
     margin-top: -$popover-arrow-width;
 
     &::before,
@@ -42,10 +42,28 @@
       margin-left: -$popover-arrow-width;
       border-top-color: $popover-arrow-color;
     }
+
+    &.bs-tether-element-attached-left {
+      &::before,
+      &::after {
+        left: $popover-arrow-outer-width * 2;
+      }
+    }
+
+    &.bs-tether-element-attached-right {
+      &::before {
+        right: $popover-arrow-outer-width - 1;
+        left: initial;
+      }
+      &::after {
+        right: $popover-arrow-outer-width;
+        left: initial;
+      }
+    }
   }
 
   &.popover-right,
-  &.bs-tether-element-attached-left {
+  &.bs-tether-element-attached-left.bs-tether-target-attached-right {
     margin-left: $popover-arrow-width;
 
     &::before,
@@ -65,10 +83,29 @@
       margin-top: -($popover-arrow-outer-width - 1);
       border-right-color: $popover-arrow-color;
     }
+
+    &.bs-tether-element-attached-top {
+      &::before,
+      &::after {
+        top: $popover-arrow-outer-width * 2;
+      }
+    }
+
+    &.bs-tether-element-attached-bottom {
+      &::before {
+        top: initial;
+        bottom: $popover-arrow-outer-width - 1;
+      }
+      &::after {
+        top: initial;
+        bottom: $popover-arrow-outer-width;
+      }
+    }
+
   }
 
   &.popover-bottom,
-  &.bs-tether-element-attached-top {
+  &.bs-tether-element-attached-top.bs-tether-target-attached-bottom {
     margin-top: $popover-arrow-width;
 
     &::before,
@@ -89,6 +126,24 @@
       border-bottom-color: $popover-arrow-color;
     }
 
+    &.bs-tether-element-attached-left {
+      &::before,
+      &::after {
+        left: $popover-arrow-outer-width * 2;
+      }
+    }
+
+    &.bs-tether-element-attached-right {
+      &::before {
+        right: $popover-arrow-outer-width - 1;
+        left: initial;
+      }
+      &::after {
+        right: $popover-arrow-outer-width;
+        left: initial;
+      }
+    }
+
     // This will remove the popover-title's border just below the arrow
     .popover-title::before {
       position: absolute;
@@ -103,7 +158,7 @@
   }
 
   &.popover-left,
-  &.bs-tether-element-attached-right {
+  &.bs-tether-element-attached-right.bs-tether-target-attached-left {
     margin-left: -$popover-arrow-width;
 
     &::before,
@@ -122,6 +177,24 @@
       right: -($popover-arrow-outer-width - 1);
       margin-top: -($popover-arrow-outer-width - 1);
       border-left-color: $popover-arrow-color;
+    }
+
+    &.bs-tether-element-attached-top {
+      &::before,
+      &::after {
+        top: $popover-arrow-outer-width * 2;
+      }
+    }
+
+    &.bs-tether-element-attached-bottom {
+      &::before {
+        top: initial;
+        bottom: $popover-arrow-outer-width - 1;
+      }
+      &::after {
+        top: initial;
+        bottom: $popover-arrow-outer-width;
+      }
     }
   }
 }
