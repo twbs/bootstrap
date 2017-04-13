@@ -89,16 +89,19 @@
       border-bottom-color: $popover-arrow-color;
     }
 
-    // This will remove the popover-title's border just below the arrow
+    // This will cover the popover's arrow with the title's background color
     .popover-title::before {
       position: absolute;
-      top: 0;
+      top: -($popover-arrow-width - 1);
       left: 50%;
+      z-index: $zindex-popover + 1;
       display: block;
-      width: 20px;
-      margin-left: -10px;
+      width: 0;
+      margin-left: -$popover-arrow-width;
       content: "";
-      border-bottom: 1px solid $popover-title-bg;
+      border: $popover-arrow-width solid transparent;
+      border-top-width: 0;
+      border-bottom-color: $popover-title-bg;
     }
   }
 
