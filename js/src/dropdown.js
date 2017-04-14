@@ -43,13 +43,11 @@ const Dropdown = (($) => {
   }
 
   const ClassName = {
-    BACKDROP : 'dropdown-backdrop',
     DISABLED : 'disabled',
     SHOW     : 'show'
   }
 
   const Selector = {
-    BACKDROP      : '.dropdown-backdrop',
     DATA_TOGGLE   : '[data-toggle="dropdown"]',
     FORM_CHILD    : '.dropdown form',
     MENU          : '.dropdown-menu',
@@ -107,16 +105,13 @@ const Dropdown = (($) => {
         return false
       }
 
-      // set the backdrop only if the dropdown menu will be opened
+      // if this is a touch-enabled device we add extra
+      // empty mouseover listeners to the body's immediate children;
+      // only needed because of broken event delegation on iOS
+      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement &&
          !$(parent).closest(Selector.NAVBAR_NAV).length) {
-
-        // if touch-enabled device we use a backdrop because click events
-        // don't delegate on iOS - see https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-        const backdrop     = document.createElement('div')
-        backdrop.className = ClassName.BACKDROP
-        $(backdrop).insertBefore(this)
-        $(backdrop).on('click', Dropdown._clearMenus)
+        $('body').children().on('mouseover', '*', $.noop)
       }
 
       this.focus()
@@ -192,10 +187,10 @@ const Dropdown = (($) => {
           continue
         }
 
-        // remove backdrop only if the dropdown menu will be hidden
-        const backdrop = $(parent).find(Selector.BACKDROP)[0]
-        if (backdrop) {
-          backdrop.parentNode.removeChild(backdrop)
+        // if this is a touch-enabled device we remove the extra
+        // empty mouseover listeners we added for iOS support
+        if ('ontouchstart' in document.documentElement) {
+          $('body').children().off('mouseover', '*', $.noop)
         }
 
         toggles[i].setAttribute('aria-expanded', 'false')
