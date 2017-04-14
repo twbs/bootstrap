@@ -1,3 +1,5 @@
+/* global Popper */
+
 import Util from './util'
 
 
@@ -64,7 +66,7 @@ const Dropdown = (($) => {
 
   const Default = {
     placement   : 'bottom',
-    offset      : {}
+    offset      : 0
   }
 
   const DefaultType = {
@@ -143,7 +145,7 @@ const Dropdown = (($) => {
         placement : context._config.placement,
         modifiers : {
           offset : {
-            offset : this.config.offset
+            offset : context._config.offset
           }
         }
       })
@@ -204,7 +206,7 @@ const Dropdown = (($) => {
 
     _getMenuElement() {
       if (!this._menu) {
-        let parent = Dropdown._getParentFromElement(this._element)
+        const parent = Dropdown._getParentFromElement(this._element)
         this._menu = $(parent).find(Selector.MENU)[0]
       }
       return this._menu
@@ -215,7 +217,7 @@ const Dropdown = (($) => {
     static _jQueryInterface(config) {
       return this.each(function () {
         let data = $(this).data(DATA_KEY)
-        let _config = typeof config === 'object' ? config : null
+        const _config = typeof config === 'object' ? config : null
 
         if (!data) {
           data = new Dropdown(this, _config)
@@ -240,7 +242,7 @@ const Dropdown = (($) => {
       const toggles = $.makeArray($(Selector.DATA_TOGGLE))
       for (let i = 0; i < toggles.length; i++) {
         const parent        = Dropdown._getParentFromElement(toggles[i])
-        let context         = $(toggles[i]).data(DATA_KEY)
+        const context         = $(toggles[i]).data(DATA_KEY)
         const relatedTarget = {
           relatedTarget : toggles[i]
         }
@@ -249,7 +251,7 @@ const Dropdown = (($) => {
           continue
         }
 
-        let dropdownMenu = context._menu
+        const dropdownMenu = context._menu
         if (!$(parent).hasClass(ClassName.SHOW)) {
           continue
         }
