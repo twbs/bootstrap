@@ -100,11 +100,6 @@
 
 // Open state for the dropdown
 .show {
-  // Show the menu
-  > .dropdown-menu {
-    display: block;
-  }
-
   // Remove the outline when :focus is triggered
   > a {
     outline: 0;
@@ -125,6 +120,10 @@
   left: 0;
 }
 
+.dropdown-menu.show {
+  display: block;
+}
+
 // Dropdown section headers
 .dropdown-header {
   display: block;
@@ -139,11 +138,4 @@
 //
 // Just add .dropup after the standard .dropdown class and you're set.
 
-.dropup {
-  // Different positioning for bottom up menu
-  .dropdown-menu {
-    top: auto;
-    bottom: 100%;
-    margin-bottom: $dropdown-margin-top;
-  }
-}
+.dropup {}
