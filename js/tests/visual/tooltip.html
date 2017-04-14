@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
     <title>Tooltip</title>
+    <style>
+      #target {
+        border: 1px solid;
+        width: 100px;
+        height: 50px;
+        border: 1px solid;
+        margin-left: 50px;
+        -webkit-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        transform: rotate(270deg);
+        margin-top: 100px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -34,6 +47,7 @@
           <circle cx="15" cy="10" r="10" fill="#62448F" data-toggle="tooltip" data-placement="top" title="Tooltip on SVG" />
         </svg>
       </p>
+      <div id="target" title="Test tooltip on transformed element"></div>
     </div>
 
     <script src="../../../docs/assets/js/vendor/jquery-slim.min.js"></script>
@@ -44,6 +58,10 @@
     <script>
       $(function () {
         $('[data-toggle="tooltip"]').tooltip()
+        $('#target').tooltip({
+          placement : 'top',
+          trigger : 'manual'
+        }).tooltip('show')
       })
     </script>
   </body>

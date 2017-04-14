@@ -47,7 +47,7 @@ const Tooltip = (($) => {
     html        : false,
     selector    : false,
     placement   : 'top',
-    offset      : {},
+    offset      : 0,
     container   : false
   }
 
