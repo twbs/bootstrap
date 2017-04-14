@@ -47,8 +47,7 @@ const Tooltip = (($) => {
     html        : false,
     selector    : false,
     placement   : 'top',
-    offset      : '0 0',
-    constraints : [],
+    offset      : {},
     container   : false
   }
 
@@ -61,8 +60,7 @@ const Tooltip = (($) => {
     html        : 'boolean',
     selector    : '(string|boolean)',
     placement   : '(string|function)',
-    offset      : 'string',
-    constraints : 'array',
+    offset      : 'number',
     container   : '(string|element|boolean)'
   }
 
@@ -285,8 +283,10 @@ const Tooltip = (($) => {
 
         this._popper = new Popper(this.element, tip, {
           placement : attachment,
-          offsets : {
-            popper : this.config.offset
+          modifiers : {
+            offset : {
+              offset : this.config.offset
+            }
           }
         })
 

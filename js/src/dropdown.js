@@ -63,17 +63,13 @@ const Dropdown = (($) => {
   }
 
   const Default = {
-    animation   : true,
-    trigger     : 'click',
     placement   : 'bottom',
-    offset      : '0 0'
+    offset      : {}
   }
 
   const DefaultType = {
-    animation       : 'boolean',
-    trigger         : 'string',
     placement       : 'string',
-    offset          : 'string'
+    offset          : 'number'
   }
 
 
@@ -145,8 +141,10 @@ const Dropdown = (($) => {
 
       this._popper = new Popper(this, context._menu, {
         placement : context._config.placement,
-        offsets : {
-          popper : context._config.offset
+        modifiers : {
+          offset : {
+            offset : this.config.offset
+          }
         }
       })
 
