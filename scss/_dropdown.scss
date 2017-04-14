@@ -37,7 +37,6 @@
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   float: left;
   min-width: $dropdown-min-width;
@@ -52,6 +51,7 @@
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($border-radius);
   @include box-shadow($dropdown-box-shadow);
+  @include zindex("dropdown");
 }
 
 // Dividers (basically an `<hr>`) within the dropdown
@@ -142,7 +142,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $zindex-dropdown-backdrop;
+  @include zindex("dropdown", 10);
 }
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)

@@ -1,0 +1,13 @@
+// Z-index
+
+@function z($layer) {
+  @if not map-has-key($zindex-master-list, $layer) {
+    @warn "No layer found for `#{$layer}` in $zindex-master-list map. Property omitted.";
+  }
+
+  @return map-get($zindex-master-list, $layer);
+}
+
+@mixin zindex($layer, $below: 0) {
+  z-index: (z($layer) - $below) !important;
+}
