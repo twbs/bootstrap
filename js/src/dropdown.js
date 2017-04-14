@@ -10,6 +10,13 @@ import Util from './util'
 
 const Dropdown = (($) => {
 
+  /**
+   * Check for Popper dependency
+   * Popper - https://popper.js.org
+   */
+  if (typeof Popper === 'undefined') {
+    throw new Error('Bootstrap dropdown require Popper (https://popper.js.org)')
+  }
 
   /**
    * ------------------------------------------------------------------------
@@ -55,6 +62,20 @@ const Dropdown = (($) => {
     VISIBLE_ITEMS : '.dropdown-menu .dropdown-item:not(.disabled)'
   }
 
+  const Default = {
+    animation   : true,
+    trigger     : 'click',
+    placement   : 'bottom',
+    offset      : '0 0'
+  }
+
+  const DefaultType = {
+    animation       : 'boolean',
+    trigger         : 'string',
+    placement       : 'string',
+    offset          : 'string'
+  }
+
 
   /**
    * ------------------------------------------------------------------------
@@ -64,8 +85,11 @@ const Dropdown = (($) => {
 
   class Dropdown {
 
-    constructor(element) {
+    constructor(element, config) {
       this._element = element
+      this._popper  = null
+      this._config = this._getConfig(config)
+      this._menu = this._getMenuElement()
 
       this._addEventListeners()
     }
@@ -77,16 +101,30 @@ const Dropdown = (($) => {
       return VERSION
     }
 
+    static get Default() {
+      return Default
+    }
+
+    static get DefaultType() {
+      return DefaultType
+    }
+
 
     // public
 
     toggle() {
-      if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
+      let context = $(this).data(DATA_KEY)
+      if (!context) {
+        context = new Dropdown(this)
+        $(this).data(DATA_KEY, context)
+      }
+
+      if (context.disabled || $(this).hasClass(ClassName.DISABLED)) {
         return false
       }
 
       const parent   = Dropdown._getParentFromElement(this)
-      const isActive = $(parent).hasClass(ClassName.SHOW)
+      const isActive = $(context._menu).hasClass(ClassName.SHOW)
 
       Dropdown._clearMenus()
 
@@ -97,13 +135,20 @@ const Dropdown = (($) => {
       const relatedTarget = {
         relatedTarget : this
       }
-      const showEvent     = $.Event(Event.SHOW, relatedTarget)
+      const showEvent = $.Event(Event.SHOW, relatedTarget)
 
       $(parent).trigger(showEvent)
 
       if (showEvent.isDefaultPrevented()) {
         return false
       }
+
+      this._popper = new Popper(this, context._menu, {
+        placement : context._config.placement,
+        offsets : {
+          popper : context._config.offset
+        }
+      })
 
       // if this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
@@ -117,8 +162,10 @@ const Dropdown = (($) => {
       this.focus()
       this.setAttribute('aria-expanded', true)
 
-      $(parent).toggleClass(ClassName.SHOW)
-      $(parent).trigger($.Event(Event.SHOWN, relatedTarget))
+      $(context._menu).toggleClass(ClassName.SHOW)
+      $(parent)
+        .toggleClass(ClassName.SHOW)
+        .trigger($.Event(Event.SHOWN, relatedTarget))
 
       return false
     }
@@ -127,6 +174,10 @@ const Dropdown = (($) => {
       $.removeData(this._element, DATA_KEY)
       $(this._element).off(EVENT_KEY)
       this._element = null
+      this._menu = null
+      if (this._popper !== null) {
+        this._popper.destroy()
+      }
     }
 
 
@@ -136,15 +187,40 @@ const Dropdown = (($) => {
       $(this._element).on(Event.CLICK, this.toggle)
     }
 
+    _getConfig(config) {
+      config = $.extend(
+        {},
+        this.constructor.Default,
+        $(this._element).data(),
+        config
+      )
+
+      Util.typeCheckConfig(
+        NAME,
+        config,
+        this.constructor.DefaultType
+      )
+
+      return config
+    }
+
+    _getMenuElement() {
+      if (!this._menu) {
+        let parent = Dropdown._getParentFromElement(this._element)
+        this._menu = $(parent).find(Selector.MENU)[0]
+      }
+      return this._menu
+    }
 
     // static
 
     static _jQueryInterface(config) {
       return this.each(function () {
         let data = $(this).data(DATA_KEY)
+        let _config = typeof config === 'object' ? config : null
 
         if (!data) {
-          data = new Dropdown(this)
+          data = new Dropdown(this, _config)
           $(this).data(DATA_KEY, data)
         }
 
@@ -164,13 +240,18 @@ const Dropdown = (($) => {
       }
 
       const toggles = $.makeArray($(Selector.DATA_TOGGLE))
-
       for (let i = 0; i < toggles.length; i++) {
         const parent        = Dropdown._getParentFromElement(toggles[i])
+        let context         = $(toggles[i]).data(DATA_KEY)
         const relatedTarget = {
           relatedTarget : toggles[i]
         }
 
+        if (!context) {
+          continue
+        }
+
+        let dropdownMenu = context._menu
         if (!$(parent).hasClass(ClassName.SHOW)) {
           continue
         }
@@ -195,6 +276,7 @@ const Dropdown = (($) => {
 
         toggles[i].setAttribute('aria-expanded', 'false')
 
+        $(dropdownMenu).removeClass(ClassName.SHOW)
         $(parent)
           .removeClass(ClassName.SHOW)
           .trigger($.Event(Event.HIDDEN, relatedTarget))

@@ -14,7 +14,7 @@ const Tooltip = (($) => {
 
   /**
    * Check for Popper dependency
-   * Tether - https://popper.js.org
+   * Popper - https://popper.js.org
    */
   if (typeof Popper === 'undefined') {
     throw new Error('Bootstrap tooltips require Popper (https://popper.js.org)')
