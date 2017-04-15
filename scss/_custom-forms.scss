@@ -286,6 +286,10 @@
     background: transparent;
     border: 0;
   }
+  &::-moz-range-progress {
+    height: $input-height;
+    background: $brand-primary;
+  }
   &::-moz-range-thumb {
     width: ($input-height + .125rem);
     height: $input-height;
@@ -308,7 +312,10 @@
     border-color: transparent;
     border-width: 6px 0;
   }
-  &::-ms-fill-lower,
+  &::-ms-fill-lower {
+    background: $brand-primary;
+    @include border-radius($input-border-radius);
+  }
   &::-ms-fill-upper {
     background: transparent;
     @include border-radius($input-border-radius);
