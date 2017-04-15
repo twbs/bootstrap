@@ -3,9 +3,14 @@
 .embed-responsive {
   position: relative;
   display: block;
-  height: 0;
+  width: 100%;
   padding: 0;
   overflow: hidden;
+
+  &::before {
+    display: block;
+    content: "";
+  }
 
   .embed-responsive-item,
   iframe,
@@ -23,17 +28,25 @@
 }
 
 .embed-responsive-21by9 {
-  padding-bottom: percentage(9 / 21);
+  &::before {
+    padding-top: percentage(9 / 21);
+  }
 }
 
 .embed-responsive-16by9 {
-  padding-bottom: percentage(9 / 16);
+  &::before {
+    padding-top: percentage(9 / 16);
+  }
 }
 
 .embed-responsive-4by3 {
-  padding-bottom: percentage(3 / 4);
+  &::before {
+    padding-top: percentage(3 / 4);
+  }
 }
 
 .embed-responsive-1by1 {
-  padding-bottom: percentage(1 / 1);
+  &::before {
+    padding-top: percentage(1 / 1);
+  }
 }

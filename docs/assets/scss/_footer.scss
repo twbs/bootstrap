@@ -13,7 +13,8 @@
     font-weight: 500;
     color: $gray;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $link-color;
     }
   }

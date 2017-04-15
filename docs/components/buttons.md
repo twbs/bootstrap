@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Buttons
+description: Use Bootstrap's custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.
 group: components
 redirect_from: "/components/"
 ---
@@ -104,10 +105,6 @@ Buttons will appear pressed (with a darker background, darker border, and inset 
 
 Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element.
 
-{% callout info %}
-**Heads up!** IE9 and below render disabled buttons with gray, shadowed text that we can't override.
-{% endcallout %}
-
 {% example html %}
 <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
 <button type="button" class="btn btn-secondary btn-lg" disabled>Button</button>
@@ -154,13 +151,13 @@ Note that pre-checked buttons require you to manually add the `.active` class to
 
 {% example html %}
 <div class="btn-group" data-toggle="buttons">
-  <label class="btn btn-primary active">
+  <label class="btn btn-secondary active">
     <input type="checkbox" checked autocomplete="off"> Checkbox 1 (pre-checked)
   </label>
-  <label class="btn btn-primary">
+  <label class="btn btn-secondary">
     <input type="checkbox" autocomplete="off"> Checkbox 2
   </label>
-  <label class="btn btn-primary">
+  <label class="btn btn-secondary">
     <input type="checkbox" autocomplete="off"> Checkbox 3
   </label>
 </div>
@@ -168,13 +165,13 @@ Note that pre-checked buttons require you to manually add the `.active` class to
 
 {% example html %}
 <div class="btn-group" data-toggle="buttons">
-  <label class="btn btn-primary active">
+  <label class="btn btn-secondary active">
     <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
   </label>
-  <label class="btn btn-primary">
+  <label class="btn btn-secondary">
     <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
   </label>
-  <label class="btn btn-primary">
+  <label class="btn btn-secondary">
     <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
   </label>
 </div>

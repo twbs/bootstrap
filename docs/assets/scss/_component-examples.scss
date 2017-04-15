@@ -19,9 +19,9 @@
     }
   }
 
-  .flex-items-xs-top,
-  .flex-items-xs-middle,
-  .flex-items-xs-bottom {
+  .flex-items-top,
+  .flex-items-middle,
+  .flex-items-bottom {
     min-height: 6rem;
     background-color: rgba(255,0,0,.1);
   }
@@ -30,6 +30,45 @@
 .bd-example-row-flex-cols .row {
   min-height: 10rem;
   background-color: rgba(255,0,0,.1);
+}
+
+.bd-highlight {
+  background-color: rgba($bd-purple, .15);
+  border: 1px solid rgba($bd-purple, .15);
+}
+
+// Grid mixins
+.example-container {
+  width: 800px;
+  @include make-container();
+}
+
+.example-row {
+  @include make-row();
+}
+
+.example-content-main {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(8);
+  }
+}
+
+.example-content-secondary {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(4);
+  }
 }
 
 
@@ -78,7 +117,7 @@
 .bd-example {
   position: relative;
   padding: 1rem;
-  margin: 1rem -1rem;
+  margin: 1rem (-$grid-gutter-width-base / 2);
   border: solid #f7f7f9;
   border-width: .2rem 0 0;
   @include clearfix();
@@ -100,20 +139,19 @@
     margin-top: 2rem;
   }
 
-  // Undo width of container
-  .container {
-    width: auto;
+  .pos-f-t {
+    position: relative;
+    margin: -1rem;
+
+    @include media-breakpoint-up(sm) {
+      margin: -1.5rem;
+    }
   }
 
   > .form-control {
     + .form-control {
       margin-top: .5rem;
     }
-  }
-
-  // Card examples should be horizontal
-  > .card {
-    max-width: 20rem;
   }
 
   > .nav + .nav,
@@ -199,20 +237,22 @@
 
 // Navbars
 .bd-example {
-  .navbar-fixed-top {
+  .fixed-top,
+  .sticky-top {
     position: static;
     margin: -1rem -1rem 1rem;
   }
-  .navbar-fixed-bottom {
+  .fixed-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
   }
 
   @include media-breakpoint-up(sm) {
-    .navbar-fixed-top {
+    .fixed-top,
+    .sticky-top {
       margin: -1.5rem -1.5rem 1rem;
     }
-    .navbar-fixed-bottom {
+    .fixed-bottom {
       margin: 1rem -1.5rem -1.5rem;
     }
   }
@@ -226,32 +266,23 @@
 
 // Example modals
 .bd-example-modal {
-  background-color: #f5f5f5;
-}
-.bd-example-modal .modal {
-  position: relative;
-  top: auto;
-  right: auto;
-  bottom: auto;
-  left: auto;
-  z-index: 1;
-  display: block;
-}
-.bd-example-modal .modal-dialog {
-  left: auto;
-  margin-right: auto;
-  margin-left: auto;
-}
+  background-color: #fafafa;
 
-// Example dropdowns
-.bd-example > .dropdown > .dropdown-toggle {
-  float: left;
-}
-.bd-example > .dropdown > .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: .25rem;
-  clear: left;
+  .modal {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    z-index: 1;
+    display: block;
+  }
+
+  .modal-dialog {
+    left: auto;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 
 // Example tabbable tabs
@@ -301,6 +332,12 @@
   overflow: auto;
 }
 
+.scrollspy-example-2 {
+  position: relative;
+  height: 350px;
+  overflow: auto;
+}
+
 // Helpers
 .bd-example > {
   .bg-primary,
@@ -308,7 +345,8 @@
   .bg-info,
   .bg-warning,
   .bg-danger,
-  .bg-inverse {
+  .bg-inverse,
+  .bg-faded {
     &:not(.navbar) {
       padding: .5rem;
       margin-top: .5rem;
@@ -317,6 +355,16 @@
   }
 }
 
+.bd-example-border-utils {
+  [class^="border-"] {
+    display: inline-block;
+    width: 6rem;
+    height: 6rem;
+    margin: .25rem;
+    background-color: #f5f5f5;
+    border: 1px solid;
+  }
+}
 
 //
 // Code snippets
@@ -324,8 +372,9 @@
 
 .highlight {
   padding: 1rem;
-  margin: 1rem (-$grid-gutter-width / 2);
+  margin: 1rem (-$grid-gutter-width-base / 2);
   background-color: #f7f7f9;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @include media-breakpoint-up(sm) {
     padding: 1.5rem;
