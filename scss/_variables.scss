@@ -433,8 +433,6 @@ $form-group-margin-bottom:       1rem !default;
 $input-group-addon-bg:           $gray-lighter !default;
 $input-group-addon-border-color: $input-border-color !default;
 
-$cursor-disabled:                not-allowed !default;
-
 $custom-control-gutter:   1.5rem !default;
 $custom-control-spacer-y: .25rem !default;
 $custom-control-spacer-x: 1rem !default;
@@ -444,7 +442,6 @@ $custom-control-indicator-bg:         #ddd !default;
 $custom-control-indicator-bg-size:    50% 50% !default;
 $custom-control-indicator-box-shadow: inset 0 .25rem .25rem rgba($black,.1) !default;
 
-$custom-control-disabled-cursor:             $cursor-disabled !default;
 $custom-control-disabled-indicator-bg:       $gray-lighter !default;
 $custom-control-disabled-description-color:  $gray-light !default;
 
@@ -558,7 +555,6 @@ $dropdown-header-color:          $gray-light !default;
 // Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
 
-$zindex-dropdown-backdrop:  990 !default;
 $zindex-dropdown:           1000 !default;
 $zindex-sticky:             1020 !default;
 $zindex-fixed:              1030 !default;

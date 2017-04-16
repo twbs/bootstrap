@@ -55,9 +55,16 @@
 
     // Insert copy to clipboard button before .highlight
     $('.highlight').each(function () {
-      var btnHtml = '<div class="bd-clipboard"><span class="btn-clipboard" title="Copy to clipboard">Copy</span></div>'
+      var btnHtml = '<div class="bd-clipboard"><button class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
       $(this).before(btnHtml)
-      $('.btn-clipboard').tooltip()
+      $('.btn-clipboard')
+        .tooltip()
+        .on('mouseleave', function () {
+          // explicitly hide tooltip, since after clicking it remains
+          // focused (as it's a button), so tooltip would otherwise
+          // remain visible until focus is moved away
+          $(this).tooltip('hide')
+        })
     })
 
     var clipboard = new Clipboard('.btn-clipboard', {

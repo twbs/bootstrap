@@ -88,10 +88,8 @@
   },
   "files": [
     "dist",
-    "grunt",
     "js/**/*.js",
     "scss/**/*.scss",
-    "Gruntfile.js",
     "LICENSE"
   ],
   "jspm": {
