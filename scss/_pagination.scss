@@ -23,14 +23,14 @@
     z-index: 2;
     color: $pagination-active-color;
     background-color: $pagination-active-bg;
-    border-color: $pagination-active-border;
+    border-color: $pagination-active-border-color;
   }
 
   &.disabled .page-link {
     color: $pagination-disabled-color;
     pointer-events: none;
     background-color: $pagination-disabled-bg;
-    border-color: $pagination-disabled-border;
+    border-color: $pagination-disabled-border-color;
   }
 }
 
@@ -48,7 +48,7 @@
     color: $pagination-hover-color;
     text-decoration: none;
     background-color: $pagination-hover-bg;
-    border-color: $pagination-hover-border;
+    border-color: $pagination-hover-border-color;
   }
 }
 

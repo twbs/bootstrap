@@ -330,7 +330,7 @@ $table-inverse-bg:              $gray-dark !default;
 $table-inverse-bg-accent:       rgba($white, .05) !default;
 $table-inverse-bg-hover:        rgba($white, .075) !default;
 $table-inverse-bg-active:       $table-inverse-bg-hover !default;
-$table-inverse-border:          lighten($gray-dark, 7.5%) !default;
+$table-inverse-border-color:    lighten($gray-dark, 7.5%) !default;
 $table-inverse-color:           $body-bg !default;
 
 
@@ -357,27 +357,27 @@ $btn-active-box-shadow:          inset 0 3px 5px rgba($black,.125) !default;
 
 $btn-primary-color:              $white !default;
 $btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             $btn-primary-bg !default;
+$btn-primary-border-color:       $btn-primary-bg !default;
 
 $btn-secondary-color:            $gray-dark !default;
 $btn-secondary-bg:               $white !default;
-$btn-secondary-border:           #ccc !default;
+$btn-secondary-border-color:     #ccc !default;
 
 $btn-info-color:                 $white !default;
 $btn-info-bg:                    $brand-info !default;
-$btn-info-border:                $btn-info-bg !default;
+$btn-info-border-color:          $btn-info-bg !default;
 
 $btn-success-color:              $white !default;
 $btn-success-bg:                 $brand-success !default;
-$btn-success-border:             $btn-success-bg !default;
+$btn-success-border-color:       $btn-success-bg !default;
 
 $btn-warning-color:              $white !default;
 $btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             $btn-warning-bg !default;
+$btn-warning-border-color:       $btn-warning-bg !default;
 
 $btn-danger-color:               $white !default;
 $btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              $btn-danger-bg !default;
+$btn-danger-border-color:        $btn-danger-bg !default;
 
 $btn-link-disabled-color:        $gray-light !default;
 
@@ -406,7 +406,7 @@ $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
 $input-bg-focus:                 $input-bg !default;
-$input-border-focus:             lighten($brand-primary, 25%) !default;
+$input-border-color-focus:       lighten($brand-primary, 25%) !default;
 $input-box-shadow-focus:         $input-box-shadow, $btn-focus-box-shadow !default;
 $input-color-focus:              $input-color !default;
 
@@ -607,14 +607,14 @@ $navbar-inverse-hover-color:           rgba($white,.75) !default;
 $navbar-inverse-active-color:          rgba($white,1) !default;
 $navbar-inverse-disabled-color:        rgba($white,.25) !default;
 $navbar-inverse-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-inverse-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
-$navbar-inverse-toggler-border:        rgba($white,.1) !default;
+$navbar-inverse-toggler-border-color:  rgba($white,.1) !default;
 
 $navbar-light-color:                rgba($black,.5) !default;
 $navbar-light-hover-color:          rgba($black,.7) !default;
 $navbar-light-active-color:         rgba($black,.9) !default;
 $navbar-light-disabled-color:       rgba($black,.3) !default;
 $navbar-light-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
-$navbar-light-toggler-border:       rgba($black,.1) !default;
+$navbar-light-toggler-border-color: rgba($black,.1) !default;
 
 // Pagination
 
@@ -633,15 +633,15 @@ $pagination-border-color:              #ddd !default;
 
 $pagination-hover-color:               $link-hover-color !default;
 $pagination-hover-bg:                  $gray-lighter !default;
-$pagination-hover-border:              #ddd !default;
+$pagination-hover-border-color:        #ddd !default;
 
 $pagination-active-color:              $white !default;
 $pagination-active-bg:                 $brand-primary !default;
-$pagination-active-border:             $brand-primary !default;
+$pagination-active-border-color:       $brand-primary !default;
 
 $pagination-disabled-color:            $gray-light !default;
 $pagination-disabled-bg:               $white !default;
-$pagination-disabled-border:           #ddd !default;
+$pagination-disabled-border-color:     #ddd !default;
 
 
 // Jumbotron
@@ -656,20 +656,20 @@ $jumbotron-bg:                   $gray-lighter !default;
 
 $state-success-text:             #3c763d !default;
 $state-success-bg:               #dff0d8 !default;
-$state-success-border:           darken($state-success-bg, 5%) !default;
+$state-success-border-color:     darken($state-success-bg, 5%) !default;
 
 $state-info-text:                #31708f !default;
 $state-info-bg:                  #d9edf7 !default;
-$state-info-border:              darken($state-info-bg, 7%) !default;
+$state-info-border-color:        darken($state-info-bg, 7%) !default;
 
 $state-warning-text:             #8a6d3b !default;
 $state-warning-bg:               #fcf8e3 !default;
 $mark-bg:                        $state-warning-bg !default;
-$state-warning-border:           darken($state-warning-bg, 5%) !default;
+$state-warning-border-color:     darken($state-warning-bg, 5%) !default;
 
 $state-danger-text:              #a94442 !default;
 $state-danger-bg:                #f2dede !default;
-$state-danger-border:            darken($state-danger-bg, 5%) !default;
+$state-danger-border-color:      darken($state-danger-bg, 5%) !default;
 
 
 // Cards
@@ -799,19 +799,19 @@ $alert-border-width:          $border-width !default;
 
 $alert-success-bg:            $state-success-bg !default;
 $alert-success-text:          $state-success-text !default;
-$alert-success-border:        $state-success-border !default;
+$alert-success-border-color:  $state-success-border-color !default;
 
 $alert-info-bg:               $state-info-bg !default;
 $alert-info-text:             $state-info-text !default;
-$alert-info-border:           $state-info-border !default;
+$alert-info-border-color:     $state-info-border-color !default;
 
 $alert-warning-bg:            $state-warning-bg !default;
 $alert-warning-text:          $state-warning-text !default;
-$alert-warning-border:        $state-warning-border !default;
+$alert-warning-border-color:  $state-warning-border-color !default;
 
 $alert-danger-bg:             $state-danger-bg !default;
 $alert-danger-text:           $state-danger-text !default;
-$alert-danger-border:         $state-danger-border !default;
+$alert-danger-border-color:   $state-danger-border-color !default;
 
 
 // Progress bars
@@ -837,10 +837,10 @@ $list-group-border-radius:       $border-radius !default;
 $list-group-item-padding-y:      .75rem !default;
 $list-group-item-padding-x:      1.25rem !default;
 
-$list-group-hover-bg:            $gray-lightest !default;
-$list-group-active-color:        $component-active-color !default;
-$list-group-active-bg:           $component-active-bg !default;
-$list-group-active-border:       $list-group-active-bg !default;
+$list-group-hover-bg:                 $gray-lightest !default;
+$list-group-active-color:             $component-active-color !default;
+$list-group-active-bg:                $component-active-bg !default;
+$list-group-active-border-color:      $list-group-active-bg !default;
 
 $list-group-disabled-color:      $gray-light !default;
 $list-group-disabled-bg:         $list-group-bg !default;
