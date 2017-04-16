@@ -150,7 +150,6 @@ var Collapse = function ($) {
       $(this._element).removeClass(ClassName.COLLAPSE).addClass(ClassName.COLLAPSING);
 
       this._element.style[dimension] = 0;
-      this._element.setAttribute('aria-expanded', true);
 
       if (this._triggerArray.length) {
         $(this._triggerArray).removeClass(ClassName.COLLAPSED).attr('aria-expanded', true);
@@ -201,8 +200,6 @@ var Collapse = function ($) {
       Util.reflow(this._element);
 
       $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.SHOW);
-
-      this._element.setAttribute('aria-expanded', false);
 
       if (this._triggerArray.length) {
         $(this._triggerArray).addClass(ClassName.COLLAPSED).attr('aria-expanded', false);
@@ -269,7 +266,6 @@ var Collapse = function ($) {
     Collapse.prototype._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
         var isOpen = $(element).hasClass(ClassName.SHOW);
-        element.setAttribute('aria-expanded', isOpen);
 
         if (triggerArray.length) {
           $(triggerArray).toggleClass(ClassName.COLLAPSED, !isOpen).attr('aria-expanded', isOpen);

@@ -25,10 +25,11 @@ var Dropdown = function ($) {
   var JQUERY_NO_CONFLICT = $.fn[NAME];
   var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
   var SPACE_KEYCODE = 32; // KeyboardEvent.which value for space key
+  var TAB_KEYCODE = 9; // KeyboardEvent.which value for tab key
   var ARROW_UP_KEYCODE = 38; // KeyboardEvent.which value for up arrow key
   var ARROW_DOWN_KEYCODE = 40; // KeyboardEvent.which value for down arrow key
   var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
-  var REGEXP_KEYDOWN = new RegExp(ARROW_UP_KEYCODE + '|' + ARROW_DOWN_KEYCODE + '|' + ESCAPE_KEYCODE + '|' + SPACE_KEYCODE);
+  var REGEXP_KEYDOWN = new RegExp(ARROW_UP_KEYCODE + '|' + ARROW_DOWN_KEYCODE + '|' + ESCAPE_KEYCODE);
 
   var Event = {
     HIDE: 'hide' + EVENT_KEY,
@@ -37,24 +38,21 @@ var Dropdown = function ($) {
     SHOWN: 'shown' + EVENT_KEY,
     CLICK: 'click' + EVENT_KEY,
     CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY,
-    FOCUSIN_DATA_API: 'focusin' + EVENT_KEY + DATA_API_KEY,
-    KEYDOWN_DATA_API: 'keydown' + EVENT_KEY + DATA_API_KEY
+    KEYDOWN_DATA_API: 'keydown' + EVENT_KEY + DATA_API_KEY,
+    KEYUP_DATA_API: 'keyup' + EVENT_KEY + DATA_API_KEY
   };
 
   var ClassName = {
-    BACKDROP: 'dropdown-backdrop',
     DISABLED: 'disabled',
     SHOW: 'show'
   };
 
   var Selector = {
-    BACKDROP: '.dropdown-backdrop',
     DATA_TOGGLE: '[data-toggle="dropdown"]',
     FORM_CHILD: '.dropdown form',
-    ROLE_MENU: '[role="menu"]',
-    ROLE_LISTBOX: '[role="listbox"]',
+    MENU: '.dropdown-menu',
     NAVBAR_NAV: '.navbar-nav',
-    VISIBLE_ITEMS: '[role="menu"] li:not(.disabled) a, ' + '[role="listbox"] li:not(.disabled) a'
+    VISIBLE_ITEMS: '.dropdown-menu .dropdown-item:not(.disabled)'
   };
 
   /**
@@ -101,14 +99,12 @@ var Dropdown = function ($) {
         return false;
       }
 
-      // set the backdrop only if the dropdown menu will be opened
+      // if this is a touch-enabled device we add extra
+      // empty mouseover listeners to the body's immediate children;
+      // only needed because of broken event delegation on iOS
+      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement && !$(parent).closest(Selector.NAVBAR_NAV).length) {
-
-        // if mobile we use a backdrop because click events don't delegate
-        var dropdown = document.createElement('div');
-        dropdown.className = ClassName.BACKDROP;
-        $(dropdown).insertBefore(this);
-        $(dropdown).on('click', Dropdown._clearMenus);
+        $('body').children().on('mouseover', '*', $.noop);
       }
 
       this.focus();
@@ -153,7 +149,7 @@ var Dropdown = function ($) {
     };
 
     Dropdown._clearMenus = function _clearMenus(event) {
-      if (event && event.which === RIGHT_MOUSE_BUTTON_WHICH) {
+      if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH || event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
         return;
       }
 
@@ -169,7 +165,7 @@ var Dropdown = function ($) {
           continue;
         }
 
-        if (event && (event.type === 'click' && /input|textarea/i.test(event.target.tagName) || event.type === 'focusin') && $.contains(parent, event.target)) {
+        if (event && (event.type === 'click' && /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) && $.contains(parent, event.target)) {
           continue;
         }
 
@@ -179,10 +175,10 @@ var Dropdown = function ($) {
           continue;
         }
 
-        // remove backdrop only if the dropdown menu will be hidden
-        var backdrop = $(parent).find(Selector.BACKDROP)[0];
-        if (backdrop) {
-          backdrop.parentNode.removeChild(backdrop);
+        // if this is a touch-enabled device we remove the extra
+        // empty mouseover listeners we added for iOS support
+        if ('ontouchstart' in document.documentElement) {
+          $('body').children().off('mouseover', '*', $.noop);
         }
 
         toggles[i].setAttribute('aria-expanded', 'false');
@@ -203,7 +199,7 @@ var Dropdown = function ($) {
     };
 
     Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(event) {
-      if (!REGEXP_KEYDOWN.test(event.which) || /input|textarea/i.test(event.target.tagName)) {
+      if (!REGEXP_KEYDOWN.test(event.which) || /button/i.test(event.target.tagName) && event.which === SPACE_KEYCODE || /input|textarea/i.test(event.target.tagName)) {
         return;
       }
 
@@ -217,7 +213,7 @@ var Dropdown = function ($) {
       var parent = Dropdown._getParentFromElement(this);
       var isActive = $(parent).hasClass(ClassName.SHOW);
 
-      if (!isActive && event.which !== ESCAPE_KEYCODE || isActive && event.which === ESCAPE_KEYCODE) {
+      if (!isActive && (event.which !== ESCAPE_KEYCODE || event.which !== SPACE_KEYCODE) || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
 
         if (event.which === ESCAPE_KEYCODE) {
           var toggle = $(parent).find(Selector.DATA_TOGGLE)[0];
@@ -269,7 +265,7 @@ var Dropdown = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  $(document).on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler).on(Event.CLICK_DATA_API + ' ' + Event.FOCUSIN_DATA_API, Dropdown._clearMenus).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
+  $(document).on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler).on(Event.CLICK_DATA_API + ' ' + Event.KEYUP_DATA_API, Dropdown._clearMenus).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
     e.stopPropagation();
   });
 

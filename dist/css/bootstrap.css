@@ -329,11 +329,6 @@ input[type="checkbox"] {
   padding: 0;
 }
 
-input[type="radio"]:disabled,
-input[type="checkbox"]:disabled {
-  cursor: not-allowed;
-}
-
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
@@ -1966,10 +1961,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control:disabled {
-  cursor: not-allowed;
-}
-
 select.form-control:not([size]):not([multiple]) {
   height: calc(2.25rem + 2px);
 }
@@ -2074,7 +2065,6 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .form-check.disabled .form-check-label {
   color: #636c72;
-  cursor: not-allowed;
 }
 
 .form-check-label {
@@ -2344,7 +2334,6 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .btn.disabled, .btn:disabled {
-  cursor: not-allowed;
   opacity: .65;
 }
 
@@ -2895,7 +2884,6 @@ tbody.collapse.show {
 
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #636c72;
-  cursor: not-allowed;
   background-color: transparent;
 }
 
@@ -2924,15 +2912,6 @@ tbody.collapse.show {
   font-size: 0.875rem;
   color: #636c72;
   white-space: nowrap;
-}
-
-.dropdown-backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 990;
 }
 
 .dropup .dropdown-menu {
@@ -3312,13 +3291,11 @@ tbody.collapse.show {
 }
 
 .custom-control-input:disabled ~ .custom-control-indicator {
-  cursor: not-allowed;
   background-color: #eceeef;
 }
 
 .custom-control-input:disabled ~ .custom-control-description {
   color: #636c72;
-  cursor: not-allowed;
 }
 
 .custom-control-indicator {
@@ -3411,7 +3388,6 @@ tbody.collapse.show {
 
 .custom-select:disabled {
   color: #636c72;
-  cursor: not-allowed;
   background-color: #eceeef;
 }
 
@@ -3509,7 +3485,6 @@ tbody.collapse.show {
 
 .nav-link.disabled {
   color: #636c72;
-  cursor: not-allowed;
 }
 
 .nav-tabs {
@@ -4513,7 +4488,6 @@ tbody.collapse.show {
 .page-item.disabled .page-link {
   color: #636c72;
   pointer-events: none;
-  cursor: not-allowed;
   background-color: #fff;
   border-color: #ddd;
 }
@@ -4884,7 +4858,6 @@ a.badge:focus, a.badge:hover {
 
 .list-group-item.disabled, .list-group-item:disabled {
   color: #636c72;
-  cursor: not-allowed;
   background-color: #fff;
 }
 
@@ -5423,7 +5396,7 @@ button.close {
 .popover.popover-bottom::after, .popover.bs-tether-element-attached-top::after {
   top: -10px;
   margin-left: -10px;
-  border-bottom-color: #f7f7f7;
+  border-bottom-color: #fff;
 }
 
 .popover.popover-bottom .popover-title::before, .popover.bs-tether-element-attached-top .popover-title::before {
