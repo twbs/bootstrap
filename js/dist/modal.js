@@ -284,6 +284,7 @@ var Modal = function ($) {
       if (this._isShown && this._config.keyboard) {
         $(this._element).on(Event.KEYDOWN_DISMISS, function (event) {
           if (event.which === ESCAPE_KEYCODE) {
+            event.preventDefault();
             _this5.hide();
           }
         });

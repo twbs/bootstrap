@@ -135,16 +135,6 @@
   white-space: nowrap; // as with > li > a
 }
 
-// Backdrop to catch body clicks on mobile, etc.
-.dropdown-backdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: $zindex-dropdown-backdrop;
-}
-
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 //
 // Just add .dropup after the standard .dropdown class and you're set.
