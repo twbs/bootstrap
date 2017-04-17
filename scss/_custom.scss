@@ -1174,3 +1174,9 @@ $facet-expand-char:               '+';
 $facet-collapse-char:             '-';
 $facet-more-char:                 '↓';
 $facet-less-char:                 '↑';
+
+// Interactions
+$facet-group-item-hover-color: $list-group-link-hover-color;
+$facet-group-item-hover-bg: $list-group-hover-bg;
+$facet-group-item-active-color: $list-group-link-active-color;
+$facet-group-item-active-bg: $list-group-link-active-bg;

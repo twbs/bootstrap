@@ -118,3 +118,73 @@ Shows implementations of the facet element with doubled collapse.
   </div>
 </section>
 {% endexample %}
+
+### Checkboxes
+Shows implementations of the facet element with doubled collapse.
+
+{% example html %}
+<section class="facet">
+  <div class="facet-header">
+    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetDeppLists" aria-expanded="true" aria-controls="collapseExample">
+      <strong class="facet-title">Facet Heading</strong>
+    </button>
+  </div>
+  <div class="facet-body collapse show" id="facetDeppLists">
+    <ul class="facet-group">
+      <li class="facet-group-item">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="">
+          Option one
+        </label>
+      </li>
+      <li class="facet-group-item">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="">
+          Option two
+        </label>
+      </li>
+      <li class="facet-group-item">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="">
+          Option three
+        </label>
+      </li>
+      <li class="facet-group-item">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="">
+          Option four
+        </label>
+      </li>
+    </ul>
+    <div class="collapse" id="facetChecksCollapseItem">
+      <ul class="facet-group">
+        <li class="facet-group-item">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" value="">
+            Option five
+          </label>
+        </li>
+        <li class="facet-group-item">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" value="">
+            Option six
+          </label>
+        </li>
+        <li class="facet-group-item">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" value="">
+            Option seven
+          </label>
+        </li>
+        <li class="facet-group-item">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" value="">
+            Option eight
+          </label>
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-link facet-toggle facet-toggle-more" data-toggle="collapse" href="#facetChecksCollapseItem" aria-expanded="false" aria-controls="collapseExample">Show all</button>
+  </div>
+</section>
+{% endexample %}

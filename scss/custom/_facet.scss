@@ -73,13 +73,35 @@
     border-top: 0;
     border-left: $facet-group-nested-inset solid $facet-group-border-color;
   }
+
+  .form-check-label {
+    display: block;
+    padding: $facet-group-link-padding-y $facet-group-link-padding-x;
+    padding-left: $form-check-input-gutter + $facet-group-link-padding-x;
+  }
+
+  .facet-group-link {
+    display: block;
+    padding: $facet-group-link-padding-y $facet-group-link-padding-x;
+  }
+}
+
+.facet-group-item {
+  cursor: pointer;
+  
+  // Hover state
+  @include hover-focus {
+    color: $facet-group-item-hover-color;
+    text-decoration: none;
+    background-color: $facet-group-item-hover-bg;
+  }
+
+  &:active {
+    color: $facet-group-item-active-color;
+    background-color: $facet-group-item-active-bg;
+  }
 }
 
 .facet-group-item + .facet-group-item {
   border-top: 1px solid $facet-group-border-color;
-}
-
-.facet-group-link {
-  display: block;
-  padding: $facet-group-link-padding-y $facet-group-link-padding-x;
 }
