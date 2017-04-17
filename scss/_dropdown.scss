@@ -23,6 +23,8 @@
   }
 }
 
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+// Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
   .dropdown-toggle {
     &::after {
@@ -133,9 +135,3 @@
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a
 }
-
-// Allow for dropdowns to go bottom up (aka, dropup-menu)
-//
-// Just add .dropup after the standard .dropdown class and you're set.
-
-//.dropup {}
