@@ -1152,3 +1152,25 @@ $search-title-color: inherit;
 $search-byline-size: $font-size-sm;
 $search-byline-weight: $font-weight-bold;
 $search-byline-color: $brand-primary;
+
+// Facet
+//
+//
+
+$facet-spacer-x:                  $card-spacer-x;
+$facet-spacer-y:                  $card-spacer-x;
+$facet-bg:                        $card-bg;
+$facet-shadow:                    $card-shadow;
+$facet-border-radius:             $card-border-radius;
+$facet-border-color:              $card-border-color;
+
+$facet-group-link-padding-x:      $list-group-item-padding-x;
+$facet-group-link-padding-y:      $list-group-item-padding-y;
+$facet-group-border-color:        $list-group-border-color;
+$facet-group-nested-inset:        .5rem;
+
+// TBD - how to solve icons to launch
+$facet-expand-char:               '+';
+$facet-collapse-char:             '-';
+$facet-more-char:                 '↓';
+$facet-less-char:                 '↑';

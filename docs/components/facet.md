@@ -1,0 +1,120 @@
+---
+layout: docs
+title: Facet
+description: Facet Component is an extension to cards.
+group: components
+---
+
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
+## Facet
+Shows implementations of the facet element.
+
+{% example html %}
+<section class="facet">
+  <div class="facet-header">
+    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetDefaultExample" aria-expanded="false" aria-controls="collapseExample">
+      <strong class="facet-title">Facet Heading</strong>
+    </button>
+  </div>
+  <div class="facet-body collapse" id="facetDefaultExample">
+    <ul class="facet-group">
+      <li class="facet-group-item">
+        <a href="#" class="facet-group-link">Cras justo odio</a>
+      </li>
+      <li class="facet-group-item">
+        <a href="#" class="facet-group-link">Dapibus ac facilisis in</a>
+      </li>
+      <li class="facet-group-item">
+        <a href="#" class="facet-group-link">Vestibulum at eros</a>
+      </li>
+    </ul>
+  </div>
+</section>
+{% endexample %}
+
+### Show more
+Shows implementations of the facet element with doubled collapse.
+
+{% example html %}
+<section class="facet">
+  <div class="facet-header">
+    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetSubCollapseExample" aria-expanded="true" aria-controls="collapseExample">
+      <strong class="facet-title">Facet Heading</strong>
+    </button>
+  </div>
+  <div class="facet-body collapse show" id="facetSubCollapseExample">
+    <ul class="facet-group">
+      <li class="facet-group-item">
+        <a href="#" class="facet-group-link">Cras justo odio</a>
+      </li>
+      <li class="facet-group-item">
+        <a href="#" class="facet-group-link">Dapibus ac facilisis in</a>
+      </li>
+      <li class="facet-group-item">
+        <a href="#" class="facet-group-link">Vestibulum at eros</a>
+      </li>
+    </ul>
+    <div class="collapse" id="facetSubCollapseItem">
+      <ul class="facet-group">
+        <li class="facet-group-item">
+          <a href="#" class="facet-group-link">Cras justo odio</a>
+        </li>
+        <li class="facet-group-item">
+          <a href="#" class="facet-group-link">Dapibus ac facilisis in</a>
+        </li>
+        <li class="facet-group-item">
+          <a href="#" class="facet-group-link">Vestibulum at eros</a>
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-link facet-toggle facet-toggle-more" data-toggle="collapse" href="#facetSubCollapseItem" aria-expanded="false" aria-controls="collapseExample">Show more</button>
+  </div>
+</section>
+{% endexample %}
+
+### Nested Lists
+Shows implementations of the facet element with doubled collapse.
+
+{% example html %}
+<section class="facet">
+  <div class="facet-header">
+    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetDeppLists" aria-expanded="true" aria-controls="collapseExample">
+      <strong class="facet-title">Facet Heading</strong>
+    </button>
+  </div>
+  <div class="facet-body collapse show" id="facetDeppLists">
+    <ul class="facet-group">
+      <li class="facet-group-item">
+        <a href="#" class="facet-group-link">Cras justo odio</a>
+      </li>
+      <li class="facet-group-item">
+        <ul class="facet-group">
+          <li class="facet-group-item">
+            <a href="#" class="facet-group-link">Sub</a>
+          </li>
+          <li class="facet-group-item">
+            <a href="#" class="facet-group-link">Sub</a>
+          </li>
+          <li class="facet-group-item">
+            <a href="#" class="facet-group-link">Sub</a>
+          </li>
+        </ul>
+      </li>
+      <li class="facet-group-item">
+        <a href="#" class="facet-group-link">Cras justo odio</a>
+      </li>
+      <li class="facet-group-item">
+        <a href="#" class="facet-group-link">Cras justo odio</a>
+      </li>
+      <li class="facet-group-item">
+        <a href="#" class="facet-group-link">Cras justo odio</a>
+      </li>
+    </ul>
+    <button class="btn btn-link facet-toggle facet-toggle-more">← Alle Berufskategorien</button>
+  </div>
+</section>
+{% endexample %}
