@@ -654,29 +654,6 @@ $(function () {
     assert.strictEqual($template.find('.carousel-item')[0], $template.find('.active')[0], 'first item still active after left arrow press in <textarea>')
   })
 
-  QUnit.test('should only add mouseenter and mouseleave listeners when not on mobile', function (assert) {
-    assert.expect(2)
-    var isMobile     = 'ontouchstart' in document.documentElement
-    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false" data-pause="hover">'
-        + '<div class="carousel-inner">'
-        + '<div id="first" class="carousel-item active">'
-        + '<img alt="">'
-        + '</div>'
-        + '<div id="second" class="carousel-item">'
-        + '<img alt="">'
-        + '</div>'
-        + '<div id="third" class="carousel-item">'
-        + '<img alt="">'
-        + '</div>'
-        + '</div>'
-        + '</div>'
-    var $template = $(templateHTML).bootstrapCarousel()
-
-    $.each(['mouseover', 'mouseout'], function (i, type) {
-      assert.strictEqual(type in $._data($template[0], 'events'), !isMobile, 'does' + (isMobile ? ' not' : '') + ' listen for ' + type + ' events')
-    })
-  })
-
   QUnit.test('should wrap around from end to start when wrap option is true', function (assert) {
     assert.expect(3)
     var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="true">'
