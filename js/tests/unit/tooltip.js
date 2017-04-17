@@ -456,7 +456,7 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    var containerHTML = '<div>'
+    var containerHTML = '<div id="test">'
         + '<p style="margin-top: 200px">'
         + '<a href="#" title="very very very very very very very long tooltip">Hover me</a>'
         + '</p>'
@@ -482,7 +482,12 @@ $(function () {
       })
       .on('shown.bs.tooltip', function () {
         var $tooltip = $($(this).data('bs.tooltip').tip)
-        assert.ok(Math.round($tooltip.offset().top + $tooltip.outerHeight()) >= Math.round($(this).offset().top))
+        if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+          assert.ok(Math.round($tooltip.offset().top + $tooltip.outerHeight()) <= Math.round($(this).offset().top))
+        }
+        else {
+          assert.ok(Math.round($tooltip.offset().top + $tooltip.outerHeight()) >= Math.round($(this).offset().top))
+        }
         done()
       })
       .bootstrapTooltip('show')

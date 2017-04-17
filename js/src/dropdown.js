@@ -64,8 +64,13 @@ const Dropdown = (($) => {
     VISIBLE_ITEMS : '.dropdown-menu .dropdown-item:not(.disabled)'
   }
 
+  const AttachmentMap = {
+    TOP    : 'top',
+    BOTTOM : 'bottom'
+  }
+
   const Default = {
-    placement   : 'bottom',
+    placement   : AttachmentMap.BOTTOM,
     offset      : 0
   }
 
@@ -141,8 +146,10 @@ const Dropdown = (($) => {
         return false
       }
 
+      // Handle dropup
+      const dropdownPlacement = $(this).parent().hasClass('dropup') ? AttachmentMap.TOP : context._config.placement
       this._popper = new Popper(this, context._menu, {
-        placement : context._config.placement,
+        placement : dropdownPlacement,
         modifiers : {
           offset : {
             offset : context._config.offset
