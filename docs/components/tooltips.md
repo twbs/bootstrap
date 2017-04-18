@@ -16,7 +16,7 @@ Inspired by the excellent Tipsy jQuery plugin written by Jason Frame. Tooltips a
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on the 3rd party library [Tether](http://tether.io/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for tooltips to work!
+- Tooltips rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.1/popper.es5.min.js) before bootstrap.js in order for tooltips to work!
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -233,16 +233,10 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.</td>
     </tr>
     <tr>
-      <td>constraints</td>
-      <td>Array</td>
-      <td>[]</td>
-      <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://tether.io/#constraints">constraint docs</a>.</td>
-    </tr>
-    <tr>
       <td>offset</td>
-      <td>string</td>
-      <td>'0 0'</td>
-      <td>Offset of the tooltip relative to its target. For more information refer to Tether's <a href="http://tether.io/#offset">offset docs</a>.</td>
+      <td>number | string</td>
+      <td>0</td>
+      <td>Offset of the tooltip relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</td>
     </tr>
   </tbody>
 </table>

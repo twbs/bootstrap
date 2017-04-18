@@ -17,7 +17,7 @@ const Tooltip = (($) => {
    * Popper - https://popper.js.org
    */
   if (typeof Popper === 'undefined') {
-    throw new Error('Bootstrap tooltips require Popper (https://popper.js.org)')
+    throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)')
   }
 
 
@@ -60,7 +60,7 @@ const Tooltip = (($) => {
     html        : 'boolean',
     selector    : '(string|boolean)',
     placement   : '(string|function)',
-    offset      : 'number',
+    offset      : '(number|string)',
     container   : '(string|element|boolean)'
   }
 

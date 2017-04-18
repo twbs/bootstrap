@@ -3809,10 +3809,22 @@
       "resolved": "https://registry.npmjs.org/tar/-/tar-2.2.1.tgz",
       "dev": true
     },
-    "tether": {
-      "version": "1.4.0",
-      "from": "tether@>=1.4.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/tether/-/tether-1.4.0.tgz"
+    "tar-stream": {
+      "version": "1.5.2",
+      "from": "tar-stream@>=1.5.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/tar-stream/-/tar-stream-1.5.2.tgz",
+      "dev": true
+    },
+    "temporary": {
+      "version": "0.0.8",
+      "from": "temporary@>=0.0.8 <0.0.9",
+      "resolved": "https://registry.npmjs.org/temporary/-/temporary-0.0.8.tgz",
+      "dev": true
+    },
+    "popper.js": {
+      "version": "1.8.2",
+      "from": "popper.js@>=1.8.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.8.2.tgz"
     },
     "text-table": {
       "version": "0.2.0",
