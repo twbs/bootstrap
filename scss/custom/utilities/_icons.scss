@@ -107,3 +107,23 @@ $icon-search: "\e922";
 .icon-caret-left:before { content: $icon-caret-left; }
 .icon-search:before { content: $icon-search; }
 
+
+// Modifiers
+// 
+// 
+
+.icon-xs:before {
+  font-size: $font-size-xs;
+}
+
+.icon-sm:before {
+  font-size: $font-size-sm;
+}
+
+.icon-lg:before {
+  font-size: $font-size-lg;
+}
+
+.icon-xl:before {
+  font-size: $font-size-xl;
+}

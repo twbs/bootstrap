@@ -303,3 +303,74 @@ All icons that are currently available for use
     </tr>
   </body>
 </table>
+
+## Modifiers
+
+### Sizes
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Icon</th>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <body>
+    <tr>
+      <td>
+        <p><span class="icon-arrow-top icon-xs"></span></p>
+      </td>
+      <td>
+        <code>.icon-xs</code>
+      </td>
+      <td>
+        <p>Assigns xtra small font size to icon. Might be used in Smallprint where font-size can't be inherited</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><span class="icon-arrow-top icon-sm"></span></p>
+      </td>
+      <td>
+        <code>.icon-sm</code>
+      </td>
+      <td>
+        <p>Assigns small font size to icon</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><span class="icon-arrow-top"></span></p>
+      </td>
+      <td>
+        no class assigned
+      </td>
+      <td>
+        <p>If no class is assigned, icon simply inherits the size of its containing element, in this case <code>p</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><span class="icon-arrow-top icon-lg"></span></p>
+      </td>
+      <td>
+        <code>.icon-lg</code>
+      </td>
+      <td>
+        <p>Larger Variant</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><span class="icon-arrow-top icon-xl"></span></p>
+      </td>
+      <td>
+        <code>.icon-xl</code>
+      </td>
+      <td>
+        <p>XL Variant, as used in CTA Button on home</p>
+      </td>
+    </tr>
+  </body>
+</table>
