@@ -31,6 +31,6 @@
   ],
   "dependencies": {
     "jquery": ">=1.9.1",
-    "tether": "^1.4.0"
+    "popper.js": "^1.8.1"
   }
 }
