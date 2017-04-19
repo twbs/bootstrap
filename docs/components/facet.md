@@ -82,11 +82,11 @@ Shows implementations of the facet element with doubled collapse.
 {% example html %}
 <section class="facet">
   <div class="facet-header">
-    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetDeppLists" aria-expanded="true" aria-controls="collapseExample">
+    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetNestedLists" aria-expanded="true" aria-controls="collapseExample">
       <strong class="facet-title">Facet Heading</strong>
     </button>
   </div>
-  <div class="facet-body collapse show" id="facetDeppLists">
+  <div class="facet-body collapse show" id="facetNestedLists">
     <ul class="facet-group">
       <li class="facet-group-item">
         <a href="#" class="facet-group-link">Cras justo odio</a>
@@ -125,11 +125,11 @@ Shows implementations of the facet element with doubled collapse.
 {% example html %}
 <section class="facet">
   <div class="facet-header">
-    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetDeppLists" aria-expanded="true" aria-controls="collapseExample">
+    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetCheckboxes" aria-expanded="true" aria-controls="collapseExample">
       <strong class="facet-title">Facet Heading</strong>
     </button>
   </div>
-  <div class="facet-body collapse show" id="facetDeppLists">
+  <div class="facet-body collapse show" id="facetCheckboxes">
     <ul class="facet-group">
       <li class="facet-group-item">
         <label class="form-check-label">
