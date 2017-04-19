@@ -972,3 +972,36 @@ $custom-file-text: (
 {% endhighlight %}
 
 You'll need to set the language of your document (or subtree thereof) correctly in order for the correct text to be shown. This can be done using [the `lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) or the [`Content-Language` HTTP header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.12), among other methods.
+
+## Form Group
+
+{% example html %}
+<div class="row">
+  <div class="col-12 col-md-9 col-lg-10">
+    <div class="SearchBar__input-group shadow-soft" style="display: flex;">
+      <div class="SearchBar__input-item" style="flex: 1 auto;">
+        <div class="SearchBarTermSuggester SearchBar__suggester">
+          <div class="dropdown">
+            <input name="query" type="search" placeholder="Suchbegriff" autocomplete="off" class="SearchBar__input form-control form-control" style="border-radius: 0; border: transparent; height: 100%;"> <!---->
+          </div>
+        </div>
+      </div>
+      <div class="SearchBar__input-item" style="flex: 1 auto;">
+        <div class="SearchBarLocationSuggester SearchBar__suggester">
+          <div class="dropdown">
+            <input name="location" type="search" placeholder="Wohnort" autocomplete="off" class="SearchBar__input form-control form-control" style="border-radius: 0; border: transparent; height: 100%; border-left: 1px solid #ccc"> <!---->
+          </div>
+        </div>
+      </div> 
+      <div class="SearchBar__input-item" style="flex: 1 auto;">
+        <select class="SearchBar__select form-control form-control">
+          <option value="all">überall</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-3 col-lg-2">
+    <input type="submit" value="Suchen" class="btn btn-cta btn-primary btn-block">
+  </div>
+</div>
+{% endexample %}
