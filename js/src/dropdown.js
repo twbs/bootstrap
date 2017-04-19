@@ -65,8 +65,8 @@ const Dropdown = (($) => {
   }
 
   const AttachmentMap = {
-    TOP    : 'top',
-    BOTTOM : 'bottom'
+    TOP    : 'top-start',
+    BOTTOM : 'bottom-start'
   }
 
   const Default = {
