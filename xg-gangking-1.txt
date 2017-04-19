@@ -6,3 +6,4 @@ githubÔ½À´Ô½Îª´ó¼ÒËùÊìÏ¤¡£Èç¹û·¢ÏÖÁËÄ³¸öÏîÄ¿µÄBUG£¬Ò²·¢ÑïÒ»ÏÂ¿ªÔ´¾«Éñ£¬½«ÐÞÕýºóµ
 3.·¢Æð pull request ¸øÔ­×÷Õß£¬ÈÃËû¿´µ½£¬²¢¾ö¶¨ÊÇ·ñ½ÓÊÜÄãµÄÐÞ¸Ä
 4.Ô­×÷ÕßÍ¬Òâ½ÓÊÜÕâ¸öbug£¬¾Í»á merge µ½Ëû×Ô¼ºµÄÏîÄ¿ÖÐ
 5.Ìá½»Á÷³Ì½áÊøÁË
+²âÊÔÒ»ÏÂ£¡
