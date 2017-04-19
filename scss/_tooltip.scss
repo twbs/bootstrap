@@ -65,6 +65,14 @@
       border-left-color: $tooltip-arrow-color;
     }
   }
+
+  .arrow::before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
 }
 
 // Wrapper for the tooltip content
@@ -75,12 +83,4 @@
   text-align: center;
   background-color: $tooltip-bg;
   @include border-radius($border-radius);
-
-  .arrow::before {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-  }
 }
