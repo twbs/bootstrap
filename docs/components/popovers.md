@@ -322,6 +322,12 @@ Toggles the ability for an element's popover to be shown or hidden.
 
 {% highlight js %}$('#element').popover('toggleEnabled'){% endhighlight %}
 
+#### `.popover('update')`
+
+Updates the position of an element's popover.
+
+{% highlight js %}$('#element').popover('update'){% endhighlight %}
+
 ### Events
 
 <table class="table table-bordered table-striped table-responsive">
