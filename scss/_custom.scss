@@ -333,6 +333,49 @@ $nested-kbd-font-weight: $font-weight-bold !default;
 $list-inline-padding: 5px !default;
 
 
+// Icons
+// 
+// 
+
+$icons-font-path: "/assets/fonts/icons" !default;
+
+$icon-arrow-top: "\e900";
+$icon-arrow-right: "\e901";
+$icon-arrow-bottom: "\e902";
+$icon-arrow-left: "\e903";
+$icon-star: "\e904";
+$icon-more: "\e905";
+$icon-less: "\e906";
+$icon-benefit-barrier-free: "\e907";
+$icon-benefit-canteen: "\e908";
+$icon-benefit-childcare: "\e909";
+$icon-benefit-coaching: "\e90a";
+$icon-benefit-company-car: "\e90b";
+$icon-benefit-company-doctor: "\e90c";
+$icon-benefit-dogs-allowed: "\e90d";
+$icon-benefit-employee-discount: "\e90e";
+$icon-benefit-employee-events: "\e90f";
+$icon-benefit-employee-mobile-phone: "\e910";
+$icon-benefit-employee-shareholding: "\e911";
+$icon-benefit-flexible-working-hours: "\e912";
+$icon-benefit-food-allowance: "\e913";
+$icon-benefit-further-education: "\e914";
+$icon-benefit-health-measures: "\e915";
+$icon-benefit-homeoffice: "\e916";
+$icon-benefit-internet-use: "\e917";
+$icon-benefit-paid-training: "\e918";
+$icon-benefit-parking: "\e919";
+$icon-benefit-pension: "\e91a";
+$icon-benefit-ride-cost-refunds: "\e91b";
+$icon-benefit-traffic-connections: "\e91c";
+$icon-benefit-work-clothes: "\e91d";
+$icon-caret-top: "\e91e";
+$icon-caret-right: "\e91f";
+$icon-caret-bottom: "\e920";
+$icon-caret-left: "\e921";
+$icon-search: "\e922";
+
+
 // Components
 //
 // Define common padding and border radius sizes and more.
@@ -1152,3 +1195,31 @@ $search-title-color: inherit;
 $search-byline-size: $font-size-sm;
 $search-byline-weight: $font-weight-bold;
 $search-byline-color: $brand-primary;
+
+// Facet
+//
+//
+
+$facet-spacer-x:                  $card-spacer-x;
+$facet-spacer-y:                  $card-spacer-x;
+$facet-bg:                        $card-bg;
+$facet-shadow:                    $card-shadow;
+$facet-border-radius:             $card-border-radius;
+$facet-border-color:              $card-border-color;
+
+$facet-group-link-padding-x:      $list-group-item-padding-x;
+$facet-group-link-padding-y:      $list-group-item-padding-y;
+$facet-group-border-color:        $list-group-border-color;
+$facet-group-nested-inset:        .5rem;
+
+// TBD - how to solve icons to launch
+$facet-expand-char:               $icon-more;
+$facet-collapse-char:             $icon-less;
+$facet-more-char:                 $icon-arrow-bottom;
+$facet-less-char:                 $icon-arrow-top;
+
+// Interactions
+$facet-group-item-hover-color: $list-group-link-hover-color;
+$facet-group-item-hover-bg: $list-group-hover-bg;
+$facet-group-item-active-color: $list-group-link-active-color;
+$facet-group-item-active-bg: $list-group-link-active-bg;
