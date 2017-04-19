@@ -33,10 +33,12 @@
   }
 
   &[aria-expanded="false"]:after {
+    @include icon;
     content: $facet-expand-char;
   }
 
   &[aria-expanded="true"]:after {
+    @include icon;
     content: $facet-collapse-char;
   }
 }
@@ -51,10 +53,12 @@
   }
 
   &[aria-expanded="false"]:after {
+    @include icon;
     content: $facet-more-char;
   }
 
   &[aria-expanded="true"]:after {
+    @include icon;
     content: $facet-less-char;
   }
 }

@@ -114,7 +114,7 @@ Shows implementations of the facet element with doubled collapse.
         <a href="#" class="facet-group-link">Cras justo odio</a>
       </li>
     </ul>
-    <button class="btn btn-link facet-toggle facet-toggle-more">← Alle Berufskategorien</button>
+    <button class="btn btn-link facet-toggle facet-toggle-more"><span class="icon-arrow-left"></span> Alle Berufskategorien</button>
   </div>
 </section>
 {% endexample %}
