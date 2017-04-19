@@ -72,7 +72,6 @@
     "no-new": "error",
     "no-new-func": "off",
     "no-new-wrappers": "error",
-    "no-new": "error",
     "no-octal-escape": "error",
     "no-param-reassign": "off",
     "no-proto": "error",
