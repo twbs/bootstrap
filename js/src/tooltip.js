@@ -289,7 +289,9 @@ const Tooltip = (($) => {
             }
           },
           onCreate : (data) => {
-            this._handlePopperPlacementChange(data)
+            if (data.originalPlacement !== data.placement) {
+              this._handlePopperPlacementChange(data)
+            }
           },
           onUpdate : (data) => {
             this._handlePopperPlacementChange(data)
@@ -644,10 +646,8 @@ const Tooltip = (($) => {
     }
 
     _handlePopperPlacementChange(data) {
-      if (data.originalPlacement !== data.placement) {
         this._cleanTipClass()
         this.addAttachmentClass(this._getAttachment(data.placement))
-      }
     }
 
     // static
