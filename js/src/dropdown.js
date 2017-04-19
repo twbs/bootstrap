@@ -185,8 +185,14 @@ const Dropdown = (($) => {
       if (this._popper !== null) {
         this._popper.destroy()
       }
+      this._popper = null
     }
 
+    update() {
+      if (this._popper !== null) {
+        this._popper.scheduleUpdate()
+      }
+    }
 
     // private
 

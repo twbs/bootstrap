@@ -298,6 +298,12 @@ Toggles the ability for an element's tooltip to be shown or hidden.
 
 {% highlight js %}$('#element').tooltip('toggleEnabled'){% endhighlight %}
 
+#### `.tooltip('update')`
+
+Updates the position of an element's tooltip.
+
+{% highlight js %}$('#element').tooltip('update'){% endhighlight %}
+
 ### Events
 
 <table class="table table-bordered table-striped table-responsive">
