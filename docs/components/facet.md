@@ -16,7 +16,7 @@ Shows implementations of the facet element.
 {% example html %}
 <section class="facet">
   <div class="facet-header">
-    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetDefaultExample" aria-expanded="false" aria-controls="collapseExample">
+    <button type="button" class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetDefaultExample" aria-expanded="false" aria-controls="collapseExample">
       <strong class="facet-title">Facet Heading</strong>
     </button>
   </div>
@@ -42,7 +42,7 @@ Shows implementations of the facet element with doubled collapse.
 {% example html %}
 <section class="facet">
   <div class="facet-header">
-    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetSubCollapseExample" aria-expanded="true" aria-controls="collapseExample">
+    <button type="button" class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetSubCollapseExample" aria-expanded="true" aria-controls="collapseExample">
       <strong class="facet-title">Facet Heading</strong>
     </button>
   </div>
@@ -71,7 +71,7 @@ Shows implementations of the facet element with doubled collapse.
         </li>
       </ul>
     </div>
-    <button class="btn btn-link facet-toggle facet-toggle-more" data-toggle="collapse" href="#facetSubCollapseItem" aria-expanded="false" aria-controls="collapseExample">Show more</button>
+    <button type="button" class="btn btn-link facet-toggle facet-toggle-more" data-toggle="collapse" href="#facetSubCollapseItem" aria-expanded="false" aria-controls="collapseExample">Show more</button>
   </div>
 </section>
 {% endexample %}
@@ -82,7 +82,7 @@ Shows implementations of the facet element with doubled collapse.
 {% example html %}
 <section class="facet">
   <div class="facet-header">
-    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetNestedLists" aria-expanded="true" aria-controls="collapseExample">
+    <button type="button" class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetNestedLists" aria-expanded="true" aria-controls="collapseExample">
       <strong class="facet-title">Facet Heading</strong>
     </button>
   </div>
@@ -114,7 +114,7 @@ Shows implementations of the facet element with doubled collapse.
         <a href="#" class="facet-group-link">Cras justo odio</a>
       </li>
     </ul>
-    <button class="btn btn-link facet-toggle facet-toggle-more"><span class="icon-arrow-left"></span> Alle Berufskategorien</button>
+    <button type="button" class="btn btn-link facet-toggle facet-toggle-more"><span class="icon-arrow-left"></span> Alle Berufskategorien</button>
   </div>
 </section>
 {% endexample %}
@@ -125,7 +125,7 @@ Shows implementations of the facet element with doubled collapse.
 {% example html %}
 <section class="facet">
   <div class="facet-header">
-    <button class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetCheckboxes" aria-expanded="true" aria-controls="collapseExample">
+    <button type="button" class="btn btn-link facet-toggle" data-toggle="collapse" href="#facetCheckboxes" aria-expanded="true" aria-controls="collapseExample">
       <strong class="facet-title">Facet Heading</strong>
     </button>
   </div>
@@ -184,7 +184,7 @@ Shows implementations of the facet element with doubled collapse.
         </li>
       </ul>
     </div>
-    <button class="btn btn-link facet-toggle facet-toggle-more" data-toggle="collapse" href="#facetChecksCollapseItem" aria-expanded="false" aria-controls="collapseExample">Show all</button>
+    <button type="button" class="btn btn-link facet-toggle facet-toggle-more" data-toggle="collapse" href="#facetChecksCollapseItem" aria-expanded="false" aria-controls="collapseExample">Show all</button>
   </div>
 </section>
 {% endexample %}
@@ -196,34 +196,34 @@ Shows implementations of the facet element with doubled collapse.
 <section class="facet facet-highlighted">
   <div class="facet-header">
     <p class="facet-title"><strong>Deine Auswahl</strong></p>
-    <button class="btn btn-link btn-sm btn-right">Alle löschen <span class="icon-remove"></span></button>
+    <button type="button" class="btn btn-link btn-sm btn-right">Alle löschen <span class="icon-remove"></span></button>
   </div>
   <div class="facet-body">
     <ul class="facet-group">
       <li class="facet-group-item">
         <div class="facet-selected">
-          <button class="btn btn-primary btn-facet">
+          <button type="button" class="btn btn-primary btn-facet">
             Lorem Ipsum
           </button>
         </div>
       </li>
       <li class="facet-group-item">
         <div class="facet-selected">
-          <button class="btn btn-primary btn-facet">
+          <button type="button" class="btn btn-primary btn-facet">
             Very Ipsum
           </button>
         </div>
       </li>
       <li class="facet-group-item">
         <div class="facet-selected">
-          <button class="btn btn-primary btn-facet">
+          <button type="button" class="btn btn-primary btn-facet">
             Ipsum Noomum
           </button>
         </div>
       </li>
       <li class="facet-group-item">
         <div class="facet-selected">
-          <button class="btn btn-primary btn-facet">
+          <button type="button" class="btn btn-primary btn-facet">
             Gipsum
           </button>
         </div>
