@@ -1,7 +1,7 @@
 {
   "env": {
-    "qunit": true,
-    "es6": false
+    "es6": false,
+    "qunit": true
   },
   "globals": {
     "Util": false
