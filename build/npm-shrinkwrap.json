@@ -3823,7 +3823,7 @@
     },
     "popper.js": {
       "version": "1.8.2",
-      "from": "popper.js@>=1.8.0 <2.0.0",
+      "from": "popper.js@>=1.8.2 <2.0.0",
       "resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.8.2.tgz"
     },
     "text-table": {
