@@ -111,7 +111,7 @@ const Dropdown = (($) => {
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement &&
          !$(parent).closest(Selector.NAVBAR_NAV).length) {
-        $('body').children().on('mouseover', '*', $.noop)
+        $('body').children().on('mouseover', null, $.noop)
       }
 
       this.focus()
@@ -190,7 +190,7 @@ const Dropdown = (($) => {
         // if this is a touch-enabled device we remove the extra
         // empty mouseover listeners we added for iOS support
         if ('ontouchstart' in document.documentElement) {
-          $('body').children().off('mouseover', '*', $.noop)
+          $('body').children().off('mouseover', null, $.noop)
         }
 
         toggles[i].setAttribute('aria-expanded', 'false')
