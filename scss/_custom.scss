@@ -374,6 +374,8 @@ $icon-caret-right: "\e91f";
 $icon-caret-bottom: "\e920";
 $icon-caret-left: "\e921";
 $icon-search: "\e922";
+$icon-close: "\e923";
+$icon-remove: "\e924";
 
 
 // Components
@@ -425,8 +427,8 @@ $table-border-color:            $gray-lighter !default;
 //
 // For each of Bootstrap's buttons, define text, background and border color.
 
-$btn-padding-x:                  1rem;
-$btn-padding-y:                  .75rem;
+$btn-padding-x:                  .75rem;
+$btn-padding-y:                  .5rem;
 $btn-line-height:                1.25;
 $btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 none;
@@ -1223,3 +1225,7 @@ $facet-group-item-hover-color: $list-group-link-hover-color;
 $facet-group-item-hover-bg: $list-group-hover-bg;
 $facet-group-item-active-color: $list-group-link-active-color;
 $facet-group-item-active-bg: $list-group-link-active-bg;
+
+// Selected Facets
+$facet-highlighted-bg: $brand-secondary;
+$facet-highlighted-color: $white;
