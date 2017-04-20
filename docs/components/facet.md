@@ -207,6 +207,27 @@ Shows implementations of the facet element with doubled collapse.
           </button>
         </div>
       </li>
+      <li class="facet-group-item">
+        <div class="facet-selected">
+          <button class="btn btn-primary btn-facet">
+            Very Ipsum
+          </button>
+        </div>
+      </li>
+      <li class="facet-group-item">
+        <div class="facet-selected">
+          <button class="btn btn-primary btn-facet">
+            Ipsum Noomum
+          </button>
+        </div>
+      </li>
+      <li class="facet-group-item">
+        <div class="facet-selected">
+          <button class="btn btn-primary btn-facet">
+            Gipsum
+          </button>
+        </div>
+      </li>
     </ul>
   </div>
 </section>

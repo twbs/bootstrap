@@ -134,6 +134,20 @@
 // 
 // 
 
+.facet-highlighted {
+  border: 2px solid $facet-highlighted-bg;
+
+  .facet-header {
+    color: $facet-highlighted-color;
+    background: $facet-highlighted-bg;
+  }
+
+  .facet-title,
+  .btn {
+    color: $facet-highlighted-color;
+  }
+}
+
 .facet-selected {
   margin: .25rem;
 
