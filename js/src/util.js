@@ -126,7 +126,7 @@ const Util = (($) => {
 
     reflow(element) {
       return element.offsetHeight
-    },
+       },
 
     triggerTransitionEnd(element) {
       $(element).trigger(transition.end)
