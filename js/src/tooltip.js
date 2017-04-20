@@ -304,6 +304,15 @@ const Tooltip = (($) => {
 
         $(tip).addClass(ClassName.SHOW)
 
+        // if this is a touch-enabled device we add extra
+        // empty mouseover listeners to the body's immediate children;
+        // only needed because of broken event delegation on iOS
+        // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+        if ('ontouchstart' in document.documentElement &&
+           !$(parent).closest(Selector.NAVBAR_NAV).length) {
+          $('body').children().on('mouseover', null, $.noop)
+        }
+
         const complete = () => {
           const prevHoverState = this._hoverState
           this._hoverState     = null
@@ -352,6 +361,12 @@ const Tooltip = (($) => {
 
       $(tip).removeClass(ClassName.SHOW)
 
+      // if this is a touch-enabled device we remove the extra
+      // empty mouseover listeners we added for iOS support
+      if ('ontouchstart' in document.documentElement) {
+        $('body').children().off('mouseover', null, $.noop)
+      }
+
       this._activeTrigger[Trigger.CLICK] = false
       this._activeTrigger[Trigger.FOCUS] = false
       this._activeTrigger[Trigger.HOVER] = false
@@ -368,6 +383,7 @@ const Tooltip = (($) => {
       }
 
       this._hoverState = ''
+
     }
 
 
