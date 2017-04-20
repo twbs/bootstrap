@@ -16,7 +16,7 @@ Dropdowns are toggleable, contextual overlays for displaying lists of links and 
 
 Things to know when using the popover plugin:
 
-- Dropdown rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.1/popper.es5.min.js) before bootstrap.js in order for dropdowns to work!
+- Dropdown rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.2/umd/popper.min.js) before bootstrap.js in order for dropdowns to work!
 
 ## Examples
 
