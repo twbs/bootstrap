@@ -188,3 +188,26 @@ Shows implementations of the facet element with doubled collapse.
   </div>
 </section>
 {% endexample %}
+
+### Selected Facet
+Shows implementations of the facet element with doubled collapse.
+
+{% example html %}
+<section class="facet facet-highlighted">
+  <div class="facet-header">
+    <p class="facet-title"><strong>Deine Auswahl</strong></p>
+    <button class="btn btn-link btn-sm btn-right">Alle löschen <span class="icon-remove"></span></button>
+  </div>
+  <div class="facet-body">
+    <ul class="facet-group">
+      <li class="facet-group-item">
+        <div class="facet-selected">
+          <button class="btn btn-primary">
+            Lorem Ipsum <span class="icon-remove icon-right"></span>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+{% endexample %}

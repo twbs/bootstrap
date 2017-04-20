@@ -5,12 +5,25 @@
 }
 
 .facet-header {
+  display: flex;
+
+  .facet-title {
+    margin: 0;
+    padding: $facet-group-link-padding-y $facet-group-link-padding-x;
+    color: $headings-color;
+    font-weight: $headings-font-weight;
+  }
+
   .facet-toggle {
     width: 100%;
     text-align: left;
     padding-right: $facet-spacer-x * 2;
     color: $headings-color;
     font-weight: $headings-font-weight;
+
+    .facet-title {
+      padding-left: 0;
+    }
 
     &:hover,
     &:focus,
@@ -68,6 +81,8 @@
 // 
 
 .facet-group {
+  display: flex;
+  flex-direction: column;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -87,6 +102,10 @@
   .facet-group-link {
     display: block;
     padding: $facet-group-link-padding-y $facet-group-link-padding-x;
+  }
+
+  .facet-group-item {
+    flex: 0;
   }
 }
 
@@ -108,4 +127,19 @@
 
 .facet-group-item + .facet-group-item {
   border-top: 1px solid $facet-group-border-color;
+}
+
+
+// Selected Facets
+// 
+// 
+
+.facet-selected {
+  margin: .25rem;
+
+  .btn {
+    width: 100%;
+    display: block;
+    text-align: left;
+  }
 }
