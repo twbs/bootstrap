@@ -190,7 +190,7 @@ Shows implementations of the facet element with doubled collapse.
 {% endexample %}
 
 ### Selected Facet
-Shows implementations of the facet element with doubled collapse.
+Shows implementations of the selected facet element
 
 {% example html %}
 <section class="facet facet-highlighted">
