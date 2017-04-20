@@ -202,8 +202,8 @@ Shows implementations of the facet element with doubled collapse.
     <ul class="facet-group">
       <li class="facet-group-item">
         <div class="facet-selected">
-          <button class="btn btn-primary">
-            Lorem Ipsum <span class="icon-remove icon-right"></span>
+          <button class="btn btn-primary btn-facet">
+            Lorem Ipsum
           </button>
         </div>
       </li>

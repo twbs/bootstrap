@@ -23,7 +23,6 @@
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
@@ -37,7 +36,6 @@
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
 }
 
 .icon-arrow-top:before { content: $icon-arrow-top; }
@@ -75,6 +73,8 @@
 .icon-caret-bottom:before { content: $icon-caret-bottom; }
 .icon-caret-left:before { content: $icon-caret-left; }
 .icon-search:before { content: $icon-search; }
+.icon-close:before { content: $icon-close; }
+.icon-remove:before { content: $icon-remove; }
 
 
 // Modifiers
@@ -95,4 +95,8 @@
 
 .icon-xl:before {
   font-size: $font-size-xl;
+}
+
+.icon-right {
+  float: right;
 }
