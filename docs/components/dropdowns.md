@@ -17,6 +17,7 @@ Dropdowns are toggleable, contextual overlays for displaying lists of links and 
 Things to know when using the popover plugin:
 
 - Dropdown rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.2/umd/popper.min.js) before bootstrap.js in order for dropdowns to work!
+- Popper.js handle natively the flip of Dropdown when it's outside the viewport, if you want to disable that's behavior use `flip` attribute
 
 ## Examples
 
@@ -551,7 +552,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>'bottom'</td>
       <td>
         <p>How to position the popover - top | bottom.</p>
-        <p>When a function is used to determine the placement, it is called with the popover DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the dropdown instance.</p>
       </td>
     </tr>
     <tr>
@@ -559,6 +559,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>number | string</td>
       <td>0</td>
       <td>Offset of the dropdown relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</td>
+    </tr>
+    <tr>
+      <td>flip</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.enabled">flip docs</a>.</td>
     </tr>
   </tbody>
 </table>
