@@ -86,7 +86,7 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 ### Running documentation locally
 
 1. Run through the [tooling setup](https://github.com/twbs/bootstrap/blob/v4-dev/docs/getting-started/build-tools.md#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
-2. Run `grunt` (or a specific set of Grunt tasks) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
+2. Run `npm run test` (or a specific NPM script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
 3. From the root `/bootstrap` directory, run `bundle exec jekyll serve` in the command line.
 4. Open <http://localhost:9001> in your browser, and voilà.
 
