@@ -224,7 +224,7 @@ $grid-gutter-widths: (
 $line-height-lg:         1.5 !default;
 $line-height-sm:         1.5 !default;
 
-$border-width: 1px !default;
+$border-width: .0625rem !default;
 
 $border-radius:          .25rem !default;
 $border-radius-lg:       .3rem !default;
@@ -412,9 +412,9 @@ $input-color-focus:              $input-color !default;
 
 $input-color-placeholder:        $gray-light !default;
 
-$input-height:                   (($font-size-base * $input-btn-line-height) + ($input-btn-padding-y * 2)) !default;
-$input-height-lg:                (($font-size-lg * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2)) !default;
-$input-height-sm:                (($font-size-sm * $input-btn-line-height-sm) + ($input-btn-padding-y-sm * 2)) !default;
+$input-height:                   (($font-size-base * $input-btn-line-height) + ($input-btn-padding-y * 2) + ($input-btn-border-width * 2)) !default;
+$input-height-lg:                (($font-size-lg * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2) + ($input-btn-border-width * 2)) !default;
+$input-height-sm:                (($font-size-sm * $input-btn-line-height-sm) + ($input-btn-padding-y-sm * 2) + ($input-btn-border-width * 2)) !default;
 
 $input-transition:               border-color ease-in-out .15s, box-shadow ease-in-out .15s !default;
 
