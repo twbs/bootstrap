@@ -20,7 +20,7 @@
     border-color: $color;
 
     &:focus {
-      @include box-shadow($input-box-shadow, 0 0 6px lighten($color, 20%));
+      @include box-shadow($input-box-shadow, 0 0 0 3px rgba($color, .5));
     }
   }
 
