@@ -25,7 +25,7 @@
     "css-compile": "node-sass --output-style expanded --source-map true --precision 6 scss/bootstrap.scss dist/css/bootstrap.css && node-sass --output-style expanded --source-map true --precision 6 scss/bootstrap-grid.scss dist/css/bootstrap-grid.css && node-sass --output-style expanded --source-map true --precision 6 scss/bootstrap-reboot.scss dist/css/bootstrap-reboot.css",
     "css-compile-docs": "node-sass --output-style expanded --source-map true --precision 6 docs/assets/scss/docs.scss docs/assets/css/docs.min.css",
     "css-prefix": "postcss --config build/ --replace dist/css/*.css",
-    "css-prefix-docs": "postcss --config build/ --no-map --replace docs/assets/css/docs.min.css docs/examples/**/*.css",
+    "css-prefix-docs": "postcss --config build/ --no-map --replace docs/assets/css/docs.min.css",
     "css-minify": "cleancss --level 1 --source-map --output dist/css/bootstrap.min.css dist/css/bootstrap.css && cleancss --level 1 --source-map --output dist/css/bootstrap-grid.min.css dist/css/bootstrap-grid.css && cleancss --level 1 --source-map --output dist/css/bootstrap-reboot.min.css dist/css/bootstrap-reboot.css",
     "css-minify-docs": "cleancss --level 1 --source-map --output docs/assets/css/docs.min.css docs/assets/css/docs.min.css",
     "js": "npm-run-all js-compile js-minify",
