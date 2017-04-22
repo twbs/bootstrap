@@ -368,13 +368,6 @@ input[type="radio"],
 input[type="checkbox"] {
   box-sizing: border-box; // 1. Add the correct box sizing in IE 10-
   padding: 0; // 2. Remove the padding in IE 10-
-
-  // Apply a disabled cursor for radios and checkboxes.
-  //
-  // Note: Neither radios nor checkboxes can be readonly.
-  &:disabled {
-    cursor: $cursor-disabled;
-  }
 }
 
 

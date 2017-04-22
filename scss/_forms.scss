@@ -58,10 +58,6 @@
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
   }
-
-  &:disabled {
-    cursor: $cursor-disabled;
-  }
 }
 
 select.form-control {
@@ -212,7 +208,6 @@ select.form-control-lg {
   &.disabled {
     .form-check-label {
       color: $text-muted;
-      cursor: $cursor-disabled;
     }
   }
 }

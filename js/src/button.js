@@ -66,6 +66,7 @@ const Button = (($) => {
 
     toggle() {
       let triggerChangeEvent = true
+      let addAriaPressed = true
       const rootElement      = $(this._element).closest(
         Selector.DATA_TOGGLE
       )[0]
@@ -94,12 +95,15 @@ const Button = (($) => {
           }
 
           input.focus()
+          addAriaPressed = false
         }
 
       }
 
-      this._element.setAttribute('aria-pressed',
-        !$(this._element).hasClass(ClassName.ACTIVE))
+      if (addAriaPressed) {
+        this._element.setAttribute('aria-pressed',
+          !$(this._element).hasClass(ClassName.ACTIVE))
+      }
 
       if (triggerChangeEvent) {
         $(this._element).toggleClass(ClassName.ACTIVE)

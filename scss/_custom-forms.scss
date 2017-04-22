@@ -41,13 +41,11 @@
 
   &:disabled {
     ~ .custom-control-indicator {
-      cursor: $custom-control-disabled-cursor;
       background-color: $custom-control-disabled-indicator-bg;
     }
 
     ~ .custom-control-description {
       color: $custom-control-disabled-description-color;
-      cursor: $custom-control-disabled-cursor;
     }
   }
 }
@@ -169,7 +167,6 @@
 
   &:disabled {
     color: $custom-select-disabled-color;
-    cursor: $cursor-disabled;
     background-color: $custom-select-disabled-bg;
   }
 

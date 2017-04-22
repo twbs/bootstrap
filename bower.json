@@ -25,6 +25,7 @@
     "composer.json",
     "CONTRIBUTING.md",
     "docs",
+    "Gruntfile.js",
     "js/tests",
     "test-infra"
   ],
