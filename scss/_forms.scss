@@ -62,8 +62,7 @@
 
 select.form-control {
   &:not([size]):not([multiple]) {
-    $select-border-width: ($border-width * 2);
-    height: calc(#{$input-height} + #{$select-border-width});
+    height: $input-height;
   }
 
   &:focus::-ms-value {
@@ -161,8 +160,7 @@ select.form-control {
 
 select.form-control-sm {
   &:not([size]):not([multiple]) {
-    $select-border-width: ($border-width * 2);
-    height: calc(#{$input-height-sm} + #{$select-border-width});
+    height: $input-height-sm;
   }
 }
 
@@ -175,8 +173,7 @@ select.form-control-sm {
 
 select.form-control-lg {
   &:not([size]):not([multiple]) {
-    $select-border-width: ($border-width * 2);
-    height: calc(#{$input-height-lg} + #{$select-border-width});
+    height: $input-height-lg;
   }
 }
 
@@ -254,8 +251,8 @@ select.form-control-lg {
 .form-control-danger {
   padding-right: ($input-btn-padding-x * 3);
   background-repeat: no-repeat;
-  background-position: center right ($input-height / 4);
-  background-size: ($input-height / 2) ($input-height / 2);
+  background-position: center right ($input-height-inner / 4);
+  background-size: ($input-height-inner / 2) ($input-height-inner / 2);
 }
 
 // Form validation states

@@ -412,9 +412,16 @@ $input-color-focus:              $input-color !default;
 
 $input-color-placeholder:        $gray-light !default;
 
-$input-height:                   (($font-size-base * $input-btn-line-height) + ($input-btn-padding-y * 2)) !default;
-$input-height-lg:                (($font-size-lg * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2)) !default;
-$input-height-sm:                (($font-size-sm * $input-btn-line-height-sm) + ($input-btn-padding-y-sm * 2)) !default;
+$input-height-border:           $input-btn-border-width * 2 !default;
+
+$input-height-inner:            ($font-size-base * $input-btn-line-height) + ($input-btn-padding-y * 2) !default;
+$input-height:                  calc(#{$input-height-inner} + #{$input-height-border}) !default;
+
+$input-height-inner-sm:         ($font-size-sm * $input-btn-line-height-sm) + ($input-btn-padding-y-sm * 2) !default;
+$input-height-sm:               calc(#{$input-height-inner-sm} + #{$input-height-border}) !default;
+
+$input-height-inner-lg:         ($font-size-sm * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2) !default;
+$input-height-lg:               calc(#{$input-height-inner-lg} + #{$input-height-border}) !default;
 
 $input-transition:               border-color ease-in-out .15s, box-shadow ease-in-out .15s !default;
 
@@ -468,6 +475,7 @@ $custom-radio-checked-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3C
 
 $custom-select-padding-y:          .375rem !default;
 $custom-select-padding-x:          .75rem  !default;
+$custom-select-height:              $input-height  !default;
 $custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
 $custom-select-line-height:         $input-btn-line-height !default;
 $custom-select-color:               $input-color !default;
