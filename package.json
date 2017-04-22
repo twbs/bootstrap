@@ -53,7 +53,8 @@
     "release-version": "node build/change-version.js",
     "release-zip": "cd dist/ && zip -r9 bootstrap-$npm_package_version-dist.zip * && shx mv bootstrap-$npm_package_version-dist.zip ..",
     "dist": "npm-run-all --parallel css js",
-    "test": "npm-run-all dist js-test docs"
+    "test": "npm-run-all dist js-test docs",
+    "watch": "nodemon -e scss -x \"npm run css && npm run css-docs\""
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
@@ -81,6 +82,7 @@
     "htmlhint": "^0.9.13",
     "htmllint-cli": "^0.0.6",
     "node-sass": "^4.5.2",
+    "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "phantomjs-prebuilt": "^2.1.14",
     "postcss-cli": "^3.1.1",
