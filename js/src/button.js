@@ -90,6 +90,11 @@ const Button = (($) => {
           }
 
           if (triggerChangeEvent) {
+            if (input.disabled || rootElement.disabled ||
+              input.classList.contains('disabled') ||
+              rootElement.classList.contains('disabled')) {
+              return
+            }
             input.checked = !$(this._element).hasClass(ClassName.ACTIVE)
             $(input).trigger('change')
           }
