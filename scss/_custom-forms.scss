@@ -176,14 +176,10 @@
 }
 
 .custom-select-sm {
+  height: $custom-select-height-sm;
   padding-top: $custom-select-padding-y;
   padding-bottom: $custom-select-padding-y;
-  font-size: $custom-select-sm-font-size;
-
-  // &:not([multiple]) {
-  //   height: 26px;
-  //   min-height: 26px;
-  // }
+  font-size: $custom-select-font-size-sm;
 }
 
 

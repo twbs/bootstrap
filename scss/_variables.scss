@@ -492,7 +492,8 @@ $custom-select-border-radius: $border-radius !default;
 $custom-select-focus-border-color: lighten($brand-primary, 25%) !default;
 $custom-select-focus-box-shadow:   inset 0 1px 2px rgba($black, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
 
-$custom-select-sm-font-size:  75% !default;
+$custom-select-font-size-sm:  75% !default;
+$custom-select-height-sm: $input-height-sm !default;
 
 $custom-file-height:           2.5rem !default;
 $custom-file-width:            14rem !default;
