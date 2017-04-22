@@ -4078,6 +4078,7 @@ tbody.collapse.show {
 
 .card-title {
   margin-bottom: 0.75rem;
+  word-break: break-all;
 }
 
 .card-subtitle {
