@@ -26,7 +26,7 @@ Below is an example of a basic card with mixed content and a fixed width. Cards 
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -127,7 +127,7 @@ Add an optional header and/or footer within a card.
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -140,7 +140,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -167,7 +167,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
   <div class="card-footer text-muted">
     2 days ago
@@ -190,7 +190,7 @@ Using the grid, wrap cards in columns and rows as needed.
       <div class="card-block">
         <h3 class="card-title">Special title treatment</h3>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="#" class="btn btn-blue">Go somewhere</a>
       </div>
     </div>
   </div>
@@ -199,7 +199,7 @@ Using the grid, wrap cards in columns and rows as needed.
       <div class="card-block">
         <h3 class="card-title">Special title treatment</h3>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="#" class="btn btn-blue">Go somewhere</a>
       </div>
     </div>
   </div>
@@ -215,7 +215,7 @@ Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/siz
   <div class="card-block">
     <h3 class="card-title">Card title</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Button</a>
+    <a href="#" class="btn btn-blue">Button</a>
   </div>
 </div>
 
@@ -223,7 +223,7 @@ Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/siz
   <div class="card-block">
     <h3 class="card-title">Card title</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Button</a>
+    <a href="#" class="btn btn-blue">Button</a>
   </div>
 </div>
 {% endexample %}
@@ -237,7 +237,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
   <div class="card-block">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -251,7 +251,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 
@@ -259,7 +259,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 
@@ -267,7 +267,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -294,7 +294,7 @@ Add some navigation to a card's header (or block) with Bootstrap's [nav componen
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -317,7 +317,7 @@ Add some navigation to a card's header (or block) with Bootstrap's [nav componen
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -380,7 +380,7 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
   <div class="card-block">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
   <div class="card-footer">Footer</div>
 </div>
