@@ -13,11 +13,21 @@ Add classes to an element to remove all borders or some borders.
 
 <div class="bd-example-border-utils">
 {% example html %}
-<span class="border-0"></span>
-<span class="border-top-0"></span>
-<span class="border-right-0"></span>
-<span class="border-bottom-0"></span>
-<span class="border-left-0"></span>
+<span class="d-inline-block p-4 border border-gray"></span>
+<span class="d-inline-block p-4 border border-gray border-0"></span>
+<span class="d-inline-block p-4 border border-gray border-top-0"></span>
+<span class="d-inline-block p-4 border border-gray border-right-0"></span>
+<span class="d-inline-block p-4 border border-gray border-bottom-0"></span>
+<span class="d-inline-block p-4 border border-gray border-left-0"></span>
+{% endexample %}
+</div>
+
+Change the color of a border with `border-color` utilities.
+
+<div class="bd-example-border-utils">
+{% example html %}
+{% for color in site.data.colors %}
+<span class="d-inline-block p-4 border border-{{ color.name }}"></span>{% endfor %}
 {% endexample %}
 </div>
 
