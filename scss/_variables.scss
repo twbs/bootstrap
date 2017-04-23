@@ -137,6 +137,19 @@ $gray-lightest: #f7f7f9 !default;
 // Color map
 // Used within Bootstrap to generate a list of class modifiers (e.g., `.btn-blue`).
 
+$colors: (
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "blue": $blue,
+  "pink": $pink,
+  "purple": $purple,
+  "white": $white,
+  "gray": $gray-light,
+  "gray-dark": $gray-dark
+) !default;
 
 // Reassign color vars to semantic color scheme
 $brand-primary:             $blue !default;
