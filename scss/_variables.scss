@@ -113,8 +113,8 @@ $red-light: #f2dede !default;
 $red-dark:  #a94442 !default;
 
 $orange:        #f0ad4e !default;
-$orange-light:  #f0ad4e !default; // todo
-$orange-dark:   #f0ad4e !default; // todo
+$orange-light:  mix($orange, #fff, 60%) !default; // todo
+$orange-dark:   mix($orange, #000, 50%) !default; // todo
 
 $yellow:        #ffd500 !default;
 $yellow-light:  #fcf8e3 !default;
@@ -125,20 +125,20 @@ $green-light: #dff0d8 !default;
 $green-dark:  #3c763d !default;
 
 $blue:        #0275d8 !default;
-$blue-light:  #0275d8 !default; // todo
-$blue-dark:   #0275d8 !default; // todo
+$blue-light:  mix($blue, #fff, 60%) !default; // todo
+$blue-dark:   mix($blue, #000, 50%) !default; // todo
 
 $teal:        #5bc0de !default;
 $teal-light:  #d9edf7 !default;
 $teal-dark:   #31708f !default;
 
 $pink:        #ff5b77 !default;
-$pink-light:  #ff5b77 !default; // todo
-$pink-dark:   #ff5b77 !default; // todo
+$pink-light:  mix($pink, #fff, 60%) !default; // todo
+$pink-dark:   mix($pink, #000, 50%) !default; // todo
 
 $purple:        #613d7c !default;
-$purple-light:  #613d7c !default; // todo
-$purple-dark:   #613d7c !default; // todo
+$purple-light:  mix($purple, #fff, 60%) !default; // todo
+$purple-dark:   mix($purple, #000, 50%) !default; // todo
 
 // Create grayscale
 $gray-dark:     #292b2c !default;
