@@ -51,22 +51,26 @@ Hover over the links below to see tooltips:
 Four options are available: top, right, bottom, and left aligned.
 
 <div class="bd-example bd-example-tooltip-static">
-  <div class="tooltip tooltip-top" role="tooltip">
+  <div class="tooltip bs-tooltip-top" role="tooltip">
+    <div class="arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the top
     </div>
   </div>
-  <div class="tooltip tooltip-right" role="tooltip">
+  <div class="tooltip bs-tooltip-right" role="tooltip">
+    <div class="arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the right
     </div>
   </div>
-  <div class="tooltip tooltip-bottom" role="tooltip">
+  <div class="tooltip bs-tooltip-bottom" role="tooltip">
+    <div class="arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the bottom
     </div>
   </div>
-  <div class="tooltip tooltip-left" role="tooltip">
+  <div class="tooltip bs-tooltip-left" role="tooltip">
+    <div class="arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the left
     </div>

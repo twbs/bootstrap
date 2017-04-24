@@ -56,29 +56,32 @@ $(function () {
 Four options are available: top, right, bottom, and left aligned.
 
 <div class="bd-example bd-example-popover-static">
-  <div class="popover popover-top">
+  <div class="popover bs-popover-top">
+    <div class="arrow"></div>
     <h3 class="popover-title">Popover top</h3>
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
 
-  <div class="popover popover-right">
+  <div class="popover bs-popover-right">
+    <div class="arrow"></div>
     <h3 class="popover-title">Popover right</h3>
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
 
-  <div class="popover popover-bottom">
+  <div class="popover bs-popover-bottom">
+    <div class="arrow"></div>
     <h3 class="popover-title">Popover bottom</h3>
-
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
 
-  <div class="popover popover-left">
+  <div class="popover bs-popover-left">
+    <div class="arrow"></div>
     <h3 class="popover-title">Popover left</h3>
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
