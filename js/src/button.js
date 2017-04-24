@@ -90,7 +90,8 @@ const Button = (($) => {
           }
 
           if (triggerChangeEvent) {
-            if (input.disabled || rootElement.disabled ||
+            if (input.hasAttribute('disabled') ||
+              rootElement.hasAttribute('disabled') ||
               input.classList.contains('disabled') ||
               rootElement.classList.contains('disabled')) {
               return
