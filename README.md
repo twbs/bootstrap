@@ -1,3 +1,20 @@
+## RealCrowd Fork of Bootstrap
+
+To pull updates from twbs/bootstrap:
+
+### Use UI [Stack Overflow](http://stackoverflow.com/questions/20984802/how-can-i-keep-my-fork-in-sync-without-adding-a-separate-remote/21131381#21131381)
+- You might be able to update this from the github UI by clicking "Compare"
+- Then click "Create pull request"
+- Merge the generate pull request 
+- Fork this repo lo
+
+### With console [Stack Overflow](http://stackoverflow.com/questions/7244321/how-do-i-update-a-github-forked-repository)
+- Fork this repo locally.
+- Fetch all branches of twbs/bootstrap: 'git fetch twbs'
+- Make sure you are on v4-dev: 'git checkout v4-dev'
+- Merge changes into v4-dev: 'git merge twbs/v4-dev'
+- Push changes: 'git push origin v4-dev'
+
 <p align="center">
   <a href="https://v4-alpha.getbootstrap.com">
     <img src="http://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width=72 height=72>
