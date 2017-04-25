@@ -5,8 +5,7 @@ To pull updates from twbs/bootstrap:
 ### Use UI [Stack Overflow](http://stackoverflow.com/questions/20984802/how-can-i-keep-my-fork-in-sync-without-adding-a-separate-remote/21131381#21131381)
 - You might be able to update this from the github UI by clicking "Compare"
 - Then click "Create pull request"
-- Merge the generate pull request 
-- Fork this repo lo
+- Merge the generate pull request
 
 ### With console [Stack Overflow](http://stackoverflow.com/questions/7244321/how-do-i-update-a-github-forked-repository)
 - Fork this repo locally.
