@@ -5,7 +5,7 @@ description: Customize Bootstrap with Sass variables, easily toggling global pre
 group: getting-started
 ---
 
-Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable's value and recompile with the included Gruntfile as needed.
+Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable's value and recompile with `npm run test` as needed.
 
 ## Customizing variables
 
