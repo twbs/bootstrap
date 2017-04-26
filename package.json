@@ -38,7 +38,7 @@
     "js-minify": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
     "js-minify-docs": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output docs/assets/js/docs.min.js docs/assets/js/vendor/anchor.min.js docs/assets/js/vendor/clipboard.min.js docs/assets/js/vendor/holder.min.js docs/assets/js/src/application.js",
     "js-test": "phantomjs ./node_modules/qunit-phantomjs-runner/runner.js js/tests/index.html 60",
-    "js-test-cloud": "ruby -run -ehttpd . -p3000 > /dev/null & grunt saucelabs-qunit",
+    "js-test-cloud": "grunt saucelabs-qunit & ruby -run -ehttpd . -p3000 > /dev/null",
     "docs": "npm-run-all docs-compile docs-lint",
     "docs-lint": "htmlhint --config docs/.htmlhintrc _gh_pages/ js/tests/visual/ && htmllint --rc docs/.htmllintrc _gh_pages/*.html _gh_pages/**/*.html js/tests/visual/*.html",
     "docs-clean": "shx rm -r docs/dist/* && shx cp -r dist/* docs/dist/",
