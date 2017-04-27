@@ -567,16 +567,16 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 </div>
 {% endexample %}
 
-## Static controls
+## Readonly inputs styled as plain text
 
-If you want to have read-only fields in your form styled as plain text, use the `.form-control-static` class to remove the default form field styling and preserve the correct margin and padding.
+If you want to have read-only `<input>` elements in your form styled as plain text, use the `.form-control-readonly-plain` class to remove the default form field styling and preserve the correct margin and padding.
 
 {% example html %}
 <form>
   <div class="form-group row">
     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <input type="text" readonly class="form-control-static" id="staticEmail" value="email@example.com">
+      <input type="text" readonly class="form-control-readonly-plain" id="staticEmail" value="email@example.com">
     </div>
   </div>
   <div class="form-group row">
@@ -592,7 +592,7 @@ If you want to have read-only fields in your form styled as plain text, use the 
 <form class="form-inline">
   <div class="form-group">
     <label for="staticEmail2" class="sr-only">Email</label>
-    <input type="text" readonly class="form-control-static" id="staticEmail2" value="email@example.com">
+    <input type="text" readonly class="form-control-readonly-plain" id="staticEmail2" value="email@example.com">
   </div>
   <div class="form-group mx-sm-3">
     <label for="inputPassword2" class="sr-only">Password</label>
