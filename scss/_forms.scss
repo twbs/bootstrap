@@ -122,12 +122,12 @@ select.form-control {
 }
 
 
-// Static form control text
+// Readonly controls as plain text
 //
-// Apply class to an element to make any string of text align with labels in a
-// horizontal form layout.
+// Apply class to a readonly input to make it appear like regular plain
+// text (without any border, background color, focus indicator)
 
-.form-control-static {
+.form-control-plaintext {
   padding-top: $input-btn-padding-y;
   padding-bottom: $input-btn-padding-y;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
