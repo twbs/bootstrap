@@ -19,13 +19,13 @@ We use a large block of connected links for our pagination, making links hard to
 In addition, as pages likely have more than one such navigation section, it's advisable to provide a descriptive `aria-label` for the `<nav>` to reflect its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be `aria-label="Search results pages"`.
 
 {% example html %}
-<nav aria-label="Page navigation example">
+<nav class="card" aria-label="Page navigation example">
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item page-prev"><a class="page-link" href="#">Previous</a></li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    <li class="page-item page-next"><a class="page-link" href="#">Next</a></li>
   </ul>
 </nav>
 {% endexample %}
@@ -35,10 +35,10 @@ In addition, as pages likely have more than one such navigation section, it's ad
 Looking to use an icon or symbol in place of text for some pagination links? Be sure to provide proper screen reader support with `aria` attributes and the `.sr-only` utility.
 
 {% example html %}
-<nav aria-label="Page navigation example">
+<nav class="card" aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
+      <a class="page-link page-prev" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
@@ -47,7 +47,7 @@ Looking to use an icon or symbol in place of text for some pagination links? Be 
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
+      <a class="page-link page-next" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>
@@ -63,9 +63,9 @@ Pagination links are customizable for different circumstances. Use `.disabled` f
 While the `.disabled` class uses `pointer-events: none` to _try_ to disable the link functionality of `<a>`s, that CSS property is not yet standardized and doesn't account for keyboard navigation. As such, you should always add `tabindex="-1"` on disabled links and use custom JavaScript to fully disable their functionality.
 
 {% example html %}
-<nav aria-label="...">
+<nav class="card" aria-label="...">
   <ul class="pagination">
-    <li class="page-item disabled">
+    <li class="page-item page-prev disabled">
       <a class="page-link" href="#" tabindex="-1">Previous</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -73,7 +73,7 @@ While the `.disabled` class uses `pointer-events: none` to _try_ to disable the 
       <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
     </li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
+    <li class="page-item page-next">
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
@@ -83,9 +83,9 @@ While the `.disabled` class uses `pointer-events: none` to _try_ to disable the 
 You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality and prevent keyboard focus while retaining intended styles.
 
 {% example html %}
-<nav aria-label="...">
+<nav class="card" aria-label="...">
   <ul class="pagination">
-    <li class="page-item disabled">
+    <li class="page-item page-prev disabled">
       <span class="page-link">Previous</span>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -96,7 +96,7 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
       </span>
     </li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
+    <li class="page-item page-next">
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
@@ -108,15 +108,15 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
 Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for additional sizes.
 
 {% example html %}
-<nav aria-label="...">
+<nav class="card" aria-label="...">
   <ul class="pagination pagination-lg">
-    <li class="page-item disabled">
+    <li class="page-item page-prev disabled">
       <a class="page-link" href="#" tabindex="-1">Previous</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
+    <li class="page-item page-next">
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
@@ -124,15 +124,15 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {% endexample %}
 
 {% example html %}
-<nav aria-label="...">
+<nav class="card" aria-label="...">
   <ul class="pagination pagination-sm">
-    <li class="page-item disabled">
+    <li class="page-item page-prev disabled">
       <a class="page-link" href="#" tabindex="-1">Previous</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
+    <li class="page-item page-next">
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
@@ -144,31 +144,31 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 Change the alignment of pagination components with [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/).
 
 {% example html %}
-<nav aria-label="Page navigation example">
+<nav class="card" aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
+    <li class="page-item page-prev disabled">
       <a class="page-link" href="#" tabindex="-1">Previous</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item">
-      <a class="page-link" href="#">Next</a>
+      <a class="page-link page-next" href="#">Next</a>
     </li>
   </ul>
 </nav>
 {% endexample %}
 
 {% example html %}
-<nav aria-label="Page navigation example">
+<nav class="card" aria-label="Page navigation example">
   <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
+    <li class="page-item page-prev disabled">
       <a class="page-link" href="#" tabindex="-1">Previous</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
+    <li class="page-item page-next">
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
