@@ -1,0 +1,17 @@
+.pagination {
+
+  .page-link {
+    border-color: $pagination-bg;
+    border-top: $pagination-active-border-width solid $pagination-bg;
+    border-bottom: $pagination-active-border-width solid $pagination-bg;
+  }
+
+  .page-item.disabled .page-link {
+    border-color: $pagination-bg;
+  }
+  
+  .active .page-link {
+    border-color: $pagination-bg;
+    border-bottom-color: $pagination-active-border;
+  }
+}
