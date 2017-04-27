@@ -4,6 +4,8 @@
   // Hide Placeholder on default
   .form-control::placeholder {
     opacity: 0;
+
+    transition: opacity .2s;
   }
 
   .form-label {

@@ -975,7 +975,7 @@ You'll need to set the language of your document (or subtree thereof) correctly 
 
 ## Floating Input
 
-This is an implementation when we're lacking space for a label but at the same time want to keep context. This implementation is a version which uses placeholder AND label, as it is the most flexible form of it.
+This is an implementation when we're lacking space for a label but at the same time want to keep context. This implementation is a version which uses placeholder AND label, as it is the most flexible form of it. Idea is based on [Matt D. Smith's](http://mds.is/float-label-pattern) approach.
 
 The label can differ from placeholder and help to show a pattern how text should be input.
 
