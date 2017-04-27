@@ -972,3 +972,58 @@ $custom-file-text: (
 {% endhighlight %}
 
 You'll need to set the language of your document (or subtree thereof) correctly in order for the correct text to be shown. This can be done using [the `lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) or the [`Content-Language` HTTP header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.12), among other methods.
+
+## Floating Input
+
+This is an implementation when we're lacking space for a label but at the same time want to keep context. This implementation is a version which uses placeholder AND label, as it is the most flexible form of it.
+
+The label can differ from placeholder and help to show a pattern how text should be input.
+
+{% example html %}
+<div class="form-group floating-input js-float-input">
+  <label for="floating-example-text-input" class="form-label">Text</label>
+  <input class="form-control" type="text" placeholder="Text" id="floating-example-text-input">
+</div>
+<div class="form-group floating-input js-float-input">
+  <label for="floating-example-search-input" class="form-label">Search</label>
+  <input class="form-control" type="search" placeholder="Search" id="floating-example-search-input">
+</div>
+<div class="form-group floating-input js-float-input">
+  <label for="floating-example-email-input" class="form-label">Email</label>
+  <input class="form-control" type="email" placeholder="Your E-Mail" id="floating-example-email-input">
+</div>
+<div class="form-group floating-input js-float-input">
+  <label for="floating-example-url-input" class="form-label">URL</label>
+  <input class="form-control" type="url" placeholder="www.url.de" id="floating-example-url-input">
+</div>
+<div class="form-group floating-input js-float-input">
+  <label for="floating-example-tel-input" class="form-label">Telephone</label>
+  <input class="form-control" type="tel" placeholder="1-(XXX)-XXX-XXX" id="floating-example-tel-input">
+</div>
+<div class="form-group floating-input js-float-input">
+  <label for="floating-example-password-input" class="form-label">Password</label>
+  <input class="form-control" type="password" placeholder="password" id="floating-example-password-input">
+</div>
+<div class="form-group floating-input js-float-input">
+  <label for="floating-example-number-input" class="form-label">Number</label>
+  <input class="form-control" type="number" placeholder="Just a number here" id="floating-example-number-input">
+</div>
+{% endexample %}
+
+### Focused State
+
+{% example html %}
+<div class="form-group floating-input is-focused js-float-input">
+  <label for="floating-example-text-input" class="form-label">Text</label>
+  <input class="form-control" type="text" placeholder="Text" id="floating-example-text-input">
+</div>
+{% endexample %}
+
+### Filled State
+
+{% example html %}
+<div class="form-group floating-input is-filled js-float-input">
+  <label for="floating-example-text-input" class="form-label">Text</label>
+  <input class="form-control" type="text" value="I'm such a text" placeholder="Text" id="floating-example-text-input">
+</div>
+{% endexample %}
