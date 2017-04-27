@@ -105,6 +105,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
 - Added custom forms support (for checkboxes, radios, selects, and file inputs).
 - Renamed `.has-error` to `.has-danger`.
+- Renamed `.form-control-static` to `.form-control-plaintext`.
 
 ### Buttons
 
