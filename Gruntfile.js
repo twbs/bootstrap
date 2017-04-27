@@ -11,6 +11,14 @@ module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
+	connect: {
+      server: {
+        options: {
+          port: 3000,
+          base: '.'
+        }
+      }
+    },
     'saucelabs-qunit': {
       all: {
         options: {
@@ -25,5 +33,7 @@ module.exports = function (grunt) {
     }
   })
 
+  grunt.loadNpmTasks('grunt-contrib-connect')
   grunt.loadNpmTasks('grunt-saucelabs')
+  grunt.registerTask('saucelabs', ['connect', 'saucelabs-qunit'])
 }
