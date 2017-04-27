@@ -37,19 +37,39 @@ Looking to use an icon or symbol in place of text for some pagination links? Be 
 {% example html %}
 <nav class="card" aria-label="Page navigation example">
   <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link page-prev" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
+    <li class="page-item page-prev">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true" class="icon-arrow-left"></span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link page-next" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
+    <li class="page-item page-next">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true" class="icon-arrow-right"></span>
         <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+{% endexample %}
+
+{% example html %}
+<nav class="card" aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item page-prev">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true" class="icon-arrow-left"></span> Previous
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item page-next">
+      <a class="page-link" href="#" aria-label="Next">
+        Next <span aria-hidden="true" class="icon-arrow-right"></span>
       </a>
     </li>
   </ul>
