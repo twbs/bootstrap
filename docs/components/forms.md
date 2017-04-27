@@ -567,41 +567,6 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 </div>
 {% endexample %}
 
-## Readonly inputs styled as plain text
-
-If you want to have read-only `<input>` elements in your form styled as plain text, use the `.form-control-readonly-plain` class to remove the default form field styling and preserve the correct margin and padding.
-
-{% example html %}
-<form>
-  <div class="form-group row">
-    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="text" readonly class="form-control-readonly-plain" id="staticEmail" value="email@example.com">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-    </div>
-  </div>
-</form>
-{% endexample %}
-
-{% example html %}
-<form class="form-inline">
-  <div class="form-group">
-    <label for="staticEmail2" class="sr-only">Email</label>
-    <input type="text" readonly class="form-control-readonly-plain" id="staticEmail2" value="email@example.com">
-  </div>
-  <div class="form-group mx-sm-3">
-    <label for="inputPassword2" class="sr-only">Password</label>
-    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-primary">Confirm identity</button>
-</form>
-{% endexample %}
-
 ## Disabled states
 
 Add the `disabled` boolean attribute on an input to prevent user interactions and make it appear lighter.
@@ -653,6 +618,41 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 
 {% example html %}
 <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+{% endexample %}
+
+## Readonly inputs styled as plain text
+
+If you want to have read-only `<input>` elements in your form styled as plain text, use the `.form-control-readonly-plain` class to remove the default form field styling and preserve the correct margin and padding.
+
+{% example html %}
+<form>
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-readonly-plain" id="staticEmail" value="email@example.com">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    </div>
+  </div>
+</form>
+{% endexample %}
+
+{% example html %}
+<form class="form-inline">
+  <div class="form-group">
+    <label for="staticEmail2" class="sr-only">Email</label>
+    <input type="text" readonly class="form-control-readonly-plain" id="staticEmail2" value="email@example.com">
+  </div>
+  <div class="form-group mx-sm-3">
+    <label for="inputPassword2" class="sr-only">Password</label>
+    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Confirm identity</button>
+</form>
 {% endexample %}
 
 ## Control sizing
