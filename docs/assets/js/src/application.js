@@ -147,3 +147,32 @@
     },],
   });
 }())
+
+// Floating-Label Demo Code
+$('.js-float-input').each(function() {
+  var $input = $(this).find('input'),
+      val = $input.val();
+
+  if (val) {
+    $(this).addClass('is-filled');
+  }
+});
+
+$('.js-float-input input').on('focus', function() {
+  $(this).closest('.js-float-input').addClass('is-focused');
+});
+
+$('.js-float-input input').on('blur', function() {
+  $(this).closest('.js-float-input').removeClass('is-focused');
+});
+
+$('.js-float-input input').on('input', function() {
+  var $input = $(this),
+      val = $input.val();
+
+  if (val) {
+    $(this).closest('.js-float-input').addClass('is-filled');
+  } else {
+    $(this).closest('.js-float-input').removeClass('is-filled');
+  }
+});
