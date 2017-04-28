@@ -48,4 +48,13 @@
       color: $floating-input-label-active-color;
     }
   }
+
+  // Size Variations
+  .form-label-sm {
+    left: $input-padding-x-sm;
+  }
+
+  .form-label-lg {
+    left: $input-padding-x-lg;
+  }
 }

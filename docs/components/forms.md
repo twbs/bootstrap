@@ -1027,3 +1027,19 @@ The label can differ from placeholder and help to show a pattern how text should
   <input class="form-control" type="text" value="I'm such a text" placeholder="Text" id="floating-example-text-input">
 </div>
 {% endexample %}
+
+### Size Variations
+
+{% example html %}
+<div class="form-group floating-input is-filled js-float-input">
+  <label for="floating-example-text-input" class="form-label form-label-sm">Text</label>
+  <input class="form-control form-control-sm" type="text" value="I'm such a text" placeholder="Text" id="floating-example-text-input">
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="form-group floating-input is-filled js-float-input">
+  <label for="floating-example-text-input" class="form-label form-label-lg">Text</label>
+  <input class="form-control form-control-lg" type="text" value="I'm such a text" placeholder="Text" id="floating-example-text-input">
+</div>
+{% endexample %}
