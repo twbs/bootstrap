@@ -46,6 +46,14 @@
     "docs-serve": "npm run docs-clean && bundle exec jekyll serve",
     "docs-github": "shx echo 'github: true' > $npm_config_tmp/twbsconfig.yml && npm run docs-compile -- --config _config.yml,$npm_config_tmp/twbsconfig.yml && shx rm $npm_config_tmp/twbsconfig.yml",
     "docs-upload-preview": "build/upload-preview.sh",
+
+    "realcrowd-docs": "npm-run-all realcrowd-docs-compile realcrowd-docs-lint",
+    "realcrowd-docs-lint": "htmlhint --config _tmp_rc_docs/.htmlhintrc _gh_pages/ js/tests/visual/ && htmllint --rc _tmp_rc_docs/.htmllintrc _gh_pages/*.html _gh_pages/**/*.html js/tests/visual/*.html",
+    "realcrowd-docs-clean": "npm run docs-clean",
+    "realcrowd-docs-compile": "npm run realcrowd-docs-clean && shx cp -R docs _tmp_rc_docs && shx cp -Rf docs-realcrowd/** _tmp_rc_docs && npm run docs-compile -- --config _config.yml,_rc-config.yml",
+    "realcrowd-docs-serve": "npm run realcrowd-docs-clean && bundle exec jekyll serve --config _config.yml,_rc-config.yml",
+    "realcrowd-docs-github": "shx echo 'github: true' > $npm_config_tmp/twbsconfig.yml && npm run docs-compile -- --config _config.yml,_rc-config.yml,_rc-gh-config.yml,$npm_config_tmp/twbsconfig.yml && shx rm $npm_config_tmp/twbsconfig.yml",
+
     "maintenance-dependencies": "ncu -a -x jquery && bundle update && shx echo 'Manually update docs/assets/js/vendor/*, js/tests/vendor/*, bower.json and .travis.yml'",
     "maintenance-shrinkwrap": "npm shrinkwrap --dev && shx mv npm-shrinkwrap.json build/npm-shrinkwrap.json",
     "release-version": "node build/change-version.js",
