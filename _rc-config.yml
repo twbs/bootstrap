@@ -1,5 +1,6 @@
 # Server
 source:           _tmp_rc_docs
+baseurl:          "bootstrap"
 url:              https://realcrowd.github.io/bootstrap
 
 # Social
