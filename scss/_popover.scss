@@ -86,7 +86,7 @@
     &::after {
       top: -($popover-arrow-outer-width - 1);
       margin-left: -$popover-arrow-width;
-      border-bottom-color: $popover-title-bg;
+      border-bottom-color: $popover-arrow-color;
     }
 
     // This will remove the popover-title's border just below the arrow

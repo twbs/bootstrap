@@ -8,16 +8,14 @@ if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.')
 }
 
-+function ($) {
+(function ($) {
   var version = $.fn.jquery.split(' ')[0].split('.')
   if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] >= 4)) {
     throw new Error('Bootstrap\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0')
   }
-}(jQuery);
+})(jQuery);
 
-
-+function () {
-
+(function () {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -420,6 +418,7 @@ var Button = function ($) {
 
     Button.prototype.toggle = function toggle() {
       var triggerChangeEvent = true;
+      var addAriaPressed = true;
       var rootElement = $(this._element).closest(Selector.DATA_TOGGLE)[0];
 
       if (rootElement) {
@@ -444,10 +443,13 @@ var Button = function ($) {
           }
 
           input.focus();
+          addAriaPressed = false;
         }
       }
 
-      this._element.setAttribute('aria-pressed', !$(this._element).hasClass(ClassName.ACTIVE));
+      if (addAriaPressed) {
+        this._element.setAttribute('aria-pressed', !$(this._element).hasClass(ClassName.ACTIVE));
+      }
 
       if (triggerChangeEvent) {
         $(this._element).toggleClass(ClassName.ACTIVE);
@@ -547,6 +549,7 @@ var Carousel = function ($) {
   var TRANSITION_DURATION = 600;
   var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
   var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
+  var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
 
   var Default = {
     interval: 5000,
@@ -577,6 +580,7 @@ var Carousel = function ($) {
     KEYDOWN: 'keydown' + EVENT_KEY,
     MOUSEENTER: 'mouseenter' + EVENT_KEY,
     MOUSELEAVE: 'mouseleave' + EVENT_KEY,
+    TOUCHEND: 'touchend' + EVENT_KEY,
     LOAD_DATA_API: 'load' + EVENT_KEY + DATA_API_KEY,
     CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
   };
@@ -618,6 +622,8 @@ var Carousel = function ($) {
 
       this._isPaused = false;
       this._isSliding = false;
+
+      this.touchTimeout = null;
 
       this._config = this._getConfig(config);
       this._element = $(element)[0];
@@ -738,12 +744,30 @@ var Carousel = function ($) {
         });
       }
 
-      if (this._config.pause === 'hover' && !('ontouchstart' in document.documentElement)) {
+      if (this._config.pause === 'hover') {
         $(this._element).on(Event.MOUSEENTER, function (event) {
           return _this4.pause(event);
         }).on(Event.MOUSELEAVE, function (event) {
           return _this4.cycle(event);
         });
+        if ('ontouchstart' in document.documentElement) {
+          // if it's a touch-enabled device, mouseenter/leave are fired as
+          // part of the mouse compatibility events on first tap - the carousel
+          // would stop cycling until user tapped out of it;
+          // here, we listen for touchend, explicitly pause the carousel
+          // (as if it's the second time we tap on it, mouseenter compat event
+          // is NOT fired) and after a timeout (to allow for mouse compatibility
+          // events to fire) we explicitly restart cycling
+          $(this._element).on(Event.TOUCHEND, function () {
+            _this4.pause();
+            if (_this4.touchTimeout) {
+              clearTimeout(_this4.touchTimeout);
+            }
+            _this4.touchTimeout = setTimeout(function (event) {
+              return _this4.cycle(event);
+            }, TOUCHEVENT_COMPAT_WAIT + _this4._config.interval);
+          });
+        }
       }
     };
 
@@ -1154,7 +1178,6 @@ var Collapse = function ($) {
       $(this._element).removeClass(ClassName.COLLAPSE).addClass(ClassName.COLLAPSING);
 
       this._element.style[dimension] = 0;
-      this._element.setAttribute('aria-expanded', true);
 
       if (this._triggerArray.length) {
         $(this._triggerArray).removeClass(ClassName.COLLAPSED).attr('aria-expanded', true);
@@ -1205,8 +1228,6 @@ var Collapse = function ($) {
       Util.reflow(this._element);
 
       $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.SHOW);
-
-      this._element.setAttribute('aria-expanded', false);
 
       if (this._triggerArray.length) {
         $(this._triggerArray).addClass(ClassName.COLLAPSED).attr('aria-expanded', false);
@@ -1273,7 +1294,6 @@ var Collapse = function ($) {
     Collapse.prototype._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
         var isOpen = $(element).hasClass(ClassName.SHOW);
-        element.setAttribute('aria-expanded', isOpen);
 
         if (triggerArray.length) {
           $(triggerArray).toggleClass(ClassName.COLLAPSED, !isOpen).attr('aria-expanded', isOpen);
@@ -1384,10 +1404,11 @@ var Dropdown = function ($) {
   var JQUERY_NO_CONFLICT = $.fn[NAME];
   var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
   var SPACE_KEYCODE = 32; // KeyboardEvent.which value for space key
+  var TAB_KEYCODE = 9; // KeyboardEvent.which value for tab key
   var ARROW_UP_KEYCODE = 38; // KeyboardEvent.which value for up arrow key
   var ARROW_DOWN_KEYCODE = 40; // KeyboardEvent.which value for down arrow key
   var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
-  var REGEXP_KEYDOWN = new RegExp(ARROW_UP_KEYCODE + '|' + ARROW_DOWN_KEYCODE + '|' + ESCAPE_KEYCODE + '|' + SPACE_KEYCODE);
+  var REGEXP_KEYDOWN = new RegExp(ARROW_UP_KEYCODE + '|' + ARROW_DOWN_KEYCODE + '|' + ESCAPE_KEYCODE);
 
   var Event = {
     HIDE: 'hide' + EVENT_KEY,
@@ -1396,24 +1417,21 @@ var Dropdown = function ($) {
     SHOWN: 'shown' + EVENT_KEY,
     CLICK: 'click' + EVENT_KEY,
     CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY,
-    FOCUSIN_DATA_API: 'focusin' + EVENT_KEY + DATA_API_KEY,
-    KEYDOWN_DATA_API: 'keydown' + EVENT_KEY + DATA_API_KEY
+    KEYDOWN_DATA_API: 'keydown' + EVENT_KEY + DATA_API_KEY,
+    KEYUP_DATA_API: 'keyup' + EVENT_KEY + DATA_API_KEY
   };
 
   var ClassName = {
-    BACKDROP: 'dropdown-backdrop',
     DISABLED: 'disabled',
     SHOW: 'show'
   };
 
   var Selector = {
-    BACKDROP: '.dropdown-backdrop',
     DATA_TOGGLE: '[data-toggle="dropdown"]',
     FORM_CHILD: '.dropdown form',
-    ROLE_MENU: '[role="menu"]',
-    ROLE_LISTBOX: '[role="listbox"]',
+    MENU: '.dropdown-menu',
     NAVBAR_NAV: '.navbar-nav',
-    VISIBLE_ITEMS: '[role="menu"] li:not(.disabled) a, ' + '[role="listbox"] li:not(.disabled) a'
+    VISIBLE_ITEMS: '.dropdown-menu .dropdown-item:not(.disabled)'
   };
 
   /**
@@ -1460,14 +1478,12 @@ var Dropdown = function ($) {
         return false;
       }
 
-      // set the backdrop only if the dropdown menu will be opened
+      // if this is a touch-enabled device we add extra
+      // empty mouseover listeners to the body's immediate children;
+      // only needed because of broken event delegation on iOS
+      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement && !$(parent).closest(Selector.NAVBAR_NAV).length) {
-
-        // if mobile we use a backdrop because click events don't delegate
-        var dropdown = document.createElement('div');
-        dropdown.className = ClassName.BACKDROP;
-        $(dropdown).insertBefore(this);
-        $(dropdown).on('click', Dropdown._clearMenus);
+        $('body').children().on('mouseover', null, $.noop);
       }
 
       this.focus();
@@ -1512,7 +1528,7 @@ var Dropdown = function ($) {
     };
 
     Dropdown._clearMenus = function _clearMenus(event) {
-      if (event && event.which === RIGHT_MOUSE_BUTTON_WHICH) {
+      if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH || event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
         return;
       }
 
@@ -1528,7 +1544,7 @@ var Dropdown = function ($) {
           continue;
         }
 
-        if (event && (event.type === 'click' && /input|textarea/i.test(event.target.tagName) || event.type === 'focusin') && $.contains(parent, event.target)) {
+        if (event && (event.type === 'click' && /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) && $.contains(parent, event.target)) {
           continue;
         }
 
@@ -1538,10 +1554,10 @@ var Dropdown = function ($) {
           continue;
         }
 
-        // remove backdrop only if the dropdown menu will be hidden
-        var backdrop = $(parent).find(Selector.BACKDROP)[0];
-        if (backdrop) {
-          backdrop.parentNode.removeChild(backdrop);
+        // if this is a touch-enabled device we remove the extra
+        // empty mouseover listeners we added for iOS support
+        if ('ontouchstart' in document.documentElement) {
+          $('body').children().off('mouseover', null, $.noop);
         }
 
         toggles[i].setAttribute('aria-expanded', 'false');
@@ -1562,7 +1578,7 @@ var Dropdown = function ($) {
     };
 
     Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(event) {
-      if (!REGEXP_KEYDOWN.test(event.which) || /input|textarea/i.test(event.target.tagName)) {
+      if (!REGEXP_KEYDOWN.test(event.which) || /button/i.test(event.target.tagName) && event.which === SPACE_KEYCODE || /input|textarea/i.test(event.target.tagName)) {
         return;
       }
 
@@ -1576,7 +1592,7 @@ var Dropdown = function ($) {
       var parent = Dropdown._getParentFromElement(this);
       var isActive = $(parent).hasClass(ClassName.SHOW);
 
-      if (!isActive && event.which !== ESCAPE_KEYCODE || isActive && event.which === ESCAPE_KEYCODE) {
+      if (!isActive && (event.which !== ESCAPE_KEYCODE || event.which !== SPACE_KEYCODE) || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
 
         if (event.which === ESCAPE_KEYCODE) {
           var toggle = $(parent).find(Selector.DATA_TOGGLE)[0];
@@ -1628,7 +1644,7 @@ var Dropdown = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  $(document).on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_MENU, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.ROLE_LISTBOX, Dropdown._dataApiKeydownHandler).on(Event.CLICK_DATA_API + ' ' + Event.FOCUSIN_DATA_API, Dropdown._clearMenus).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
+  $(document).on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler).on(Event.CLICK_DATA_API + ' ' + Event.KEYUP_DATA_API, Dropdown._clearMenus).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
     e.stopPropagation();
   });
 
@@ -1928,6 +1944,7 @@ var Modal = function ($) {
       if (this._isShown && this._config.keyboard) {
         $(this._element).on(Event.KEYDOWN_DISMISS, function (event) {
           if (event.which === ESCAPE_KEYCODE) {
+            event.preventDefault();
             _this13.hide();
           }
         });
@@ -3044,6 +3061,14 @@ var Tooltip = function ($) {
 
         $(tip).addClass(ClassName.SHOW);
 
+        // if this is a touch-enabled device we add extra
+        // empty mouseover listeners to the body's immediate children;
+        // only needed because of broken event delegation on iOS
+        // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+        if ('ontouchstart' in document.documentElement) {
+          $('body').children().on('mouseover', null, $.noop);
+        }
+
         var complete = function complete() {
           var prevHoverState = _this23._hoverState;
           _this23._hoverState = null;
@@ -3091,6 +3116,12 @@ var Tooltip = function ($) {
       }
 
       $(tip).removeClass(ClassName.SHOW);
+
+      // if this is a touch-enabled device we remove the extra
+      // empty mouseover listeners we added for iOS support
+      if ('ontouchstart' in document.documentElement) {
+        $('body').children().off('mouseover', null, $.noop);
+      }
 
       this._activeTrigger[Trigger.CLICK] = false;
       this._activeTrigger[Trigger.FOCUS] = false;
@@ -3596,4 +3627,5 @@ var Popover = function ($) {
   return Popover;
 }(jQuery);
 
-}();
+
+})()
