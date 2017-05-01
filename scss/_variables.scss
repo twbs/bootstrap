@@ -104,74 +104,46 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
-// Start with assigning color names to specific hex values.
-$white:  #fff !default;
-$black:  #000 !default;
-
-$red:       #d9534f !default;
-$red-light: #f2dede !default;
-$red-dark:  #a94442 !default;
-
-$orange:        #f0ad4e !default;
-$orange-light:  mix($orange, #fff, 60%) !default; // todo
-$orange-dark:   mix($orange, #000, 50%) !default; // todo
-
-$yellow:        #ffd500 !default;
-$yellow-light:  #fcf8e3 !default;
-$yellow-dark:   #8a6d3b !default;
-
-$green:       #5cb85c !default;
-$green-light: #dff0d8 !default;
-$green-dark:  #3c763d !default;
-
-$blue:        #0275d8 !default;
-$blue-light:  mix($blue, #fff, 60%) !default; // todo
-$blue-dark:   mix($blue, #000, 50%) !default; // todo
-
-$teal:        #5bc0de !default;
-$teal-light:  #d9edf7 !default;
-$teal-dark:   #31708f !default;
-
-$pink:        #ff5b77 !default;
-$pink-light:  mix($pink, #fff, 60%) !default; // todo
-$pink-dark:   mix($pink, #000, 50%) !default; // todo
-
-$purple:        #613d7c !default;
-$purple-light:  mix($purple, #fff, 60%) !default; // todo
-$purple-dark:   mix($purple, #000, 50%) !default; // todo
-
-// Create grayscale
+// Grays
+$black:         #000 !default;
 $gray-dark:     #292b2c !default;
 $gray:          #464a4c !default;
 $gray-light:    #636c72 !default;
 $gray-lighter:  #eceeef !default;
 $gray-lightest: #f7f7f9 !default;
+$white:         #fff !default;
+
+// Colors
+$red:     #d9534f !default;
+$orange:  #f0ad4e !default;
+$yellow:  #ffd500 !default;
+$green:   #5cb85c !default;
+$teal:    #5bc0de !default;
+$blue:    #0275d8 !default;
+$pink:    #ff5b77 !default;
+$purple:  #613d7c !default;
 
 // Color map
 // Used within Bootstrap to generate a list of class modifiers (e.g., `.btn-blue`).
-
 $colors: (
-  "red": $red,
-  "orange": $orange,
-  "yellow": $yellow,
-  "green": $green,
-  "teal": $teal,
-  "blue": $blue,
-  "pink": $pink,
-  "purple": $purple,
-  "white": $white,
-  "gray": $gray-light,
-  "gray-dark": $gray-dark
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  blue: $blue,
+  pink: $pink,
+  purple: $purple,
+  white: $white,
+  gray: $gray-light,
+  gray-dark: $gray-dark
 ) !default;
 
-// Reassign color vars to semantic color scheme
-$brand-primary:             $blue !default;
-$brand-success:             $green !default;
-$brand-info:                $teal !default;
-$brand-warning:             $orange !default;
-$brand-danger:              $red !default;
-$brand-inverse:             $gray-dark !default;
-
+// Color function
+// Allow us to reference the `$colors` map color names (e.g., "blue").
+@function color($key: "blue") {
+  @return map-get($colors, $key);
+}
 
 // Options
 //
@@ -389,6 +361,26 @@ $table-inverse-bg-active:       $table-inverse-bg-hover !default;
 $table-inverse-border-color:    lighten($gray-dark, 7.5%) !default;
 $table-inverse-color:           $body-bg !default;
 
+$table-blue-bg:             lighten($blue, 50%) !default;
+$table-blue-text:           lighten($blue, 45%) !default;
+$table-blue-border-color:   darken($table-blue-bg, 5%) !default;
+
+$table-green-bg:            #dff0d8 !default;
+$table-green-text:          #3c763d !default;
+$table-green-border-color:  darken($table-green-bg, 5%) !default;
+
+$table-teal-bg:             #d9edf7 !default;
+$table-teal-text:           #31708f !default;
+$table-teal-border-color:   darken($table-teal-bg, 5%) !default;
+
+$table-orange-bg:           #fcf8e3 !default;
+$table-orange-text:         #8a6d3b !default;
+$table-orange-border-color: darken($table-orange-bg, 5%) !default;
+
+$table-red-bg:              #f2dede !default;
+$table-red-text:            #a94442 !default;
+$table-red-border-color:    darken($table-red-bg, 5%) !default;
+
 
 // Buttons
 //
@@ -438,7 +430,7 @@ $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
 $input-bg-focus:                 $input-bg !default;
-$input-border-color-focus:       lighten($brand-primary, 25%) !default;
+$input-border-color-focus:       lighten($blue, 25%) !default;
 $input-box-shadow-focus:         $input-box-shadow, rgba($input-border-color-focus, .6) !default;
 $input-color-focus:              $input-color !default;
 
@@ -478,19 +470,19 @@ $custom-control-disabled-indicator-bg:       $gray-lighter !default;
 $custom-control-disabled-description-color:  $gray-light !default;
 
 $custom-control-checked-indicator-color:      $white !default;
-$custom-control-checked-indicator-bg:         $brand-primary !default;
+$custom-control-checked-indicator-bg:         $blue !default;
 $custom-control-checked-indicator-box-shadow: none !default;
 
-$custom-control-focus-indicator-box-shadow: 0 0 0 1px $body-bg, 0 0 0 3px $brand-primary !default;
+$custom-control-focus-indicator-box-shadow: 0 0 0 1px $body-bg, 0 0 0 3px $blue !default;
 
 $custom-control-active-indicator-color:      $white !default;
-$custom-control-active-indicator-bg:         lighten($brand-primary, 35%) !default;
+$custom-control-active-indicator-bg:         lighten($blue, 35%) !default;
 $custom-control-active-indicator-box-shadow: none !default;
 
 $custom-checkbox-radius: $border-radius !default;
 $custom-checkbox-checked-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$custom-control-checked-indicator-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
-$custom-checkbox-indeterminate-bg: $brand-primary !default;
+$custom-checkbox-indeterminate-bg: $blue !default;
 $custom-checkbox-indeterminate-indicator-color: $custom-control-checked-indicator-color !default;
 $custom-checkbox-indeterminate-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='#{$custom-checkbox-indeterminate-indicator-color}' d='M0 2h4'/%3E%3C/svg%3E"), "#", "%23") !default;
 $custom-checkbox-indeterminate-box-shadow: none !default;
@@ -513,14 +505,14 @@ $custom-select-border-width:  $input-btn-border-width !default;
 $custom-select-border-color:  $input-border-color !default;
 $custom-select-border-radius: $border-radius !default;
 
-$custom-select-focus-border-color: lighten($brand-primary, 25%) !default;
+$custom-select-focus-border-color: lighten($blue, 25%) !default;
 $custom-select-focus-box-shadow:   inset 0 1px 2px rgba($black, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
 
 $custom-select-sm-font-size:  75% !default;
 
 $custom-file-height:           2.5rem !default;
 $custom-file-width:            14rem !default;
-$custom-file-focus-box-shadow: 0 0 0 .075rem $white, 0 0 0 .2rem $brand-primary !default;
+$custom-file-focus-box-shadow: 0 0 0 .075rem $white, 0 0 0 .2rem $blue !default;
 
 $custom-file-padding-y:     1rem !default;
 $custom-file-padding-x:     .5rem !default;
@@ -544,13 +536,13 @@ $custom-file-text: (
 
 
 // Form validation icons
-$form-icon-success-color: $brand-success !default;
+$form-icon-success-color: $green !default;
 $form-icon-success: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$form-icon-success-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
-$form-icon-warning-color: $brand-warning !default;
+$form-icon-warning-color: $orange !default;
 $form-icon-warning: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$form-icon-warning-color}' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
-$form-icon-danger-color: $brand-danger !default;
+$form-icon-danger-color: $red !default;
 $form-icon-danger: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$form-icon-danger-color}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='#{$form-icon-danger-color}' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 
@@ -668,8 +660,8 @@ $pagination-hover-bg:                  $gray-lighter !default;
 $pagination-hover-border-color:        #ddd !default;
 
 $pagination-active-color:              $white !default;
-$pagination-active-bg:                 $brand-primary !default;
-$pagination-active-border-color:       $brand-primary !default;
+$pagination-active-bg:                 $blue !default;
+$pagination-active-border-color:       $blue !default;
 
 $pagination-disabled-color:            $gray-light !default;
 $pagination-disabled-bg:               $white !default;
@@ -798,21 +790,21 @@ $alert-border-radius:         $border-radius !default;
 $alert-link-font-weight:      $font-weight-bold !default;
 $alert-border-width:          $border-width !default;
 
-$alert-success-bg:            #dff0d8 !default;
-$alert-success-text:          #3c763d !default;
-$alert-success-border-color:  darken($alert-success-bg, 5%) !default;
+$alert-green-bg:            #dff0d8 !default;
+$alert-green-text:          #3c763d !default;
+$alert-green-border-color:  darken($alert-green-bg, 5%) !default;
 
-$alert-info-bg:               #d9edf7 !default;
-$alert-info-text:             #31708f !default;
-$alert-info-border-color:     darken($alert-info-bg, 5%) !default;
+$alert-teal-bg:             #d9edf7 !default;
+$alert-teal-text:           #31708f !default;
+$alert-teal-border-color:   darken($alert-teal-bg, 5%) !default;
 
-$alert-warning-bg:            #fcf8e3 !default;
-$alert-warning-text:          #8a6d3b !default;
-$alert-warning-border-color:  darken($alert-warning-bg, 5%) !default;
+$alert-orange-bg:           #fcf8e3 !default;
+$alert-orange-text:         #8a6d3b !default;
+$alert-orange-border-color: darken($alert-orange-bg, 5%) !default;
 
-$alert-danger-bg:             #f2dede !default;
-$alert-danger-text:           #a94442 !default;
-$alert-danger-border-color:   darken($alert-danger-bg, 5%) !default;
+$alert-red-bg:              #f2dede !default;
+$alert-red-text:            #a94442 !default;
+$alert-red-border-color:    darken($alert-red-bg, 5%) !default;
 
 
 // Progress bars
@@ -823,7 +815,7 @@ $progress-bg:                   $gray-lighter !default;
 $progress-border-radius:        $border-radius !default;
 $progress-box-shadow:           inset 0 .1rem .1rem rgba($black,.1) !default;
 $progress-bar-color:            $white !default;
-$progress-bar-bg:               $brand-primary !default;
+$progress-bar-bg:               $blue !default;
 $progress-bar-animation-timing: 1s linear infinite !default;
 $progress-bar-transition:       width .6s ease !default;
 
@@ -852,6 +844,21 @@ $list-group-link-hover-color:    $list-group-link-color !default;
 $list-group-link-active-color:   $list-group-color !default;
 $list-group-link-active-bg:      $gray-lighter !default;
 
+$list-green-bg:             #dff0d8 !default;
+$list-green-text:           #3c763d !default;
+$list-green-border-color:   darken($list-green-bg, 5%) !default;
+
+$list-teal-bg:              #d9edf7 !default;
+$list-teal-text:            #31708f !default;
+$list-teal-border-color:    darken($list-teal-bg, 5%) !default;
+
+$list-orange-bg:            #fcf8e3 !default;
+$list-orange-text:          #8a6d3b !default;
+$list-orange-border-color:  darken($list-orange-bg, 5%) !default;
+
+$list-red-bg:               #f2dede !default;
+$list-red-text:             #a94442 !default;
+$list-red-border-color:     darken($list-red-bg, 5%) !default;
 
 // Image thumbnails
 

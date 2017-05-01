@@ -45,52 +45,11 @@ You can find and customize these variables for key global options in our `_varia
 Many of Bootstrap's various components and utilities are built through a series of colors defined in a Sass map. This map can be looped over in Sass to quickly generate a series of rulesets.
 
 <div class="row">
-  <div class="col-md-4 mb-3">
-    <div class="p-3 bg-red-light">Light</div>
-    <div class="p-3 bg-red">Red</div>
-    <div class="p-3 bg-red-dark">Dark</div>
-  </div>
-  <div class="col-md-4 mb-3">
-    <div class="p-3 bg-orange-light">Light</div>
-    <div class="p-3 bg-orange">Orange</div>
-    <div class="p-3 bg-orange-dark">Dark</div>
-  </div>
-  <div class="col-md-4 mb-3">
-    <div class="p-3 bg-yellow-light">Light</div>
-    <div class="p-3 bg-yellow">Yellow</div>
-    <div class="p-3 bg-yellow-dark">Dark</div>
-  </div>
-
-  <div class="col-md-4 mb-3">
-    <div class="p-3 bg-green-light">Light</div>
-    <div class="p-3 bg-green">Green</div>
-    <div class="p-3 bg-green-dark">Dark</div>
-  </div>
-  <div class="col-md-4 mb-3">
-    <div class="p-3 bg-teal-light">Light</div>
-    <div class="p-3 bg-teal">Teal</div>
-    <div class="p-3 bg-teal-dark">Dark</div>
-  </div>
-  <div class="col-md-4 mb-3">
-    <div class="p-3 bg-blue-light">Light</div>
-    <div class="p-3 bg-blue">Blue</div>
-    <div class="p-3 bg-blue-dark">Dark</div>
-  </div>
-
-  <div class="col-md-4 mb-3">
-    <div class="p-3 bg-pink-light">Light</div>
-    <div class="p-3 bg-pink">Pink</div>
-    <div class="p-3 bg-pink-dark">Dark</div>
-  </div>
-  <div class="col-md-4 mb-3">
-    <div class="p-3 bg-purple-light">Light</div>
-    <div class="p-3 bg-purple">Purple</div>
-    <div class="p-3 bg-purple-dark">Dark</div>
-  </div>
-  <div class="col-md-4 mb-3">
-    <div class="p-3 bg-gray-light">Light</div>
-    <div class="p-3 bg-gray">Gray</div>
-    <div class="p-3 bg-gray-dark">Dark</div>
-  </div>
-
+  {% for color in site.data.colors %}
+    <div class="col-md-4 mb-3">
+      {% unless color.name == "white" or color.name == "gray-dark" %}
+        <div class="p-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
+      {% endunless %}
+    </div>
+  {% endfor %}
 </div>
