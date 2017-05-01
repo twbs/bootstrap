@@ -292,20 +292,20 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
-   <tr>
-     <th style="width: 100px;">Name</th>
-     <th style="width: 100px;">Type</th>
-     <th style="width: 50px;">Default</th>
-     <th>Description</th>
-   </tr>
+    <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 100px;">Type</th>
+      <th style="width: 50px;">Default</th>
+      <th>Description</th>
+    </tr>
   </thead>
   <tbody>
-   <tr>
-     <td>offset</td>
-     <td>number</td>
-     <td>10</td>
-     <td>Pixels to offset from top when calculating position of scroll.</td>
-   </tr>
+    <tr>
+      <td>offset</td>
+      <td>number</td>
+      <td>10</td>
+      <td>Pixels to offset from top when calculating position of scroll.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -313,16 +313,16 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
-   <tr>
-     <th style="width: 150px;">Event Type</th>
-     <th>Description</th>
-   </tr>
+    <tr>
+      <th style="width: 150px;">Event Type</th>
+      <th>Description</th>
+    </tr>
   </thead>
   <tbody>
-   <tr>
-     <td>activate.bs.scrollspy</td>
-     <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
-  </tr>
+    <tr>
+      <td>activate.bs.scrollspy</td>
+      <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
+    </tr>
   </tbody>
 </table>
 
