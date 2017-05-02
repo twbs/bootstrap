@@ -376,7 +376,7 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
       </div>
     </fieldset>
     <div class="form-group row">
-      <label class="col-sm-2">Checkbox</label>
+      <div class="col-sm-2">Checkbox</div>
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
@@ -569,14 +569,14 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 
 ## Static controls
 
-When you need to place plain text next to a form label within a form, use the `.form-control-static` class on an element of your choice.
+If you want to have read-only fields in your form styled as plain text, use the `.form-control-static` class to remove the default form field styling and preserve the correct margin and padding.
 
 {% example html %}
 <form>
   <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Email</label>
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <p class="form-control-static">email@example.com</p>
+      <input type="text" readonly class="form-control-static" id="staticEmail" value="email@example.com">
     </div>
   </div>
   <div class="form-group row">
@@ -591,8 +591,8 @@ When you need to place plain text next to a form label within a form, use the `.
 {% example html %}
 <form class="form-inline">
   <div class="form-group">
-    <label class="sr-only">Email</label>
-    <p class="form-control-static">email@example.com</p>
+    <label for="staticEmail2" class="sr-only">Email</label>
+    <input type="text" readonly class="form-control-static" id="staticEmail2" value="email@example.com">
   </div>
   <div class="form-group mx-sm-3">
     <label for="inputPassword2" class="sr-only">Password</label>
@@ -604,7 +604,7 @@ When you need to place plain text next to a form label within a form, use the `.
 
 ## Disabled states
 
-Add the `disabled` boolean attribute on an input to prevent user interactions. Disabled inputs appear lighter and add a `not-allowed` cursor.
+Add the `disabled` boolean attribute on an input to prevent user interactions and make it appear lighter.
 
 {% highlight html %}
 <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>

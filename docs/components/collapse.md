@@ -153,26 +153,26 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
-   <tr>
-     <th style="width: 100px;">Name</th>
-     <th style="width: 50px;">Type</th>
-     <th style="width: 50px;">Default</th>
-     <th>Description</th>
-   </tr>
+    <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 50px;">Type</th>
+      <th style="width: 50px;">Default</th>
+      <th>Description</th>
+    </tr>
   </thead>
   <tbody>
-   <tr>
-     <td>parent</td>
-     <td>selector</td>
-     <td>false</td>
-     <td>If a selector is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the <code>card</code> class). The attribute has to be set on the target collapsible area.</td>
-   </tr>
-   <tr>
-     <td>toggle</td>
-     <td>boolean</td>
-     <td>true</td>
-     <td>Toggles the collapsible element on invocation</td>
-   </tr>
+    <tr>
+      <td>parent</td>
+      <td>selector</td>
+      <td>false</td>
+      <td>If a selector is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the <code>card</code> class). The attribute has to be set on the target collapsible area.</td>
+    </tr>
+    <tr>
+      <td>toggle</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Toggles the collapsible element on invocation</td>
+    </tr>
   </tbody>
 </table>
 
@@ -209,30 +209,28 @@ Bootstrap's collapse class exposes a few events for hooking into collapse functi
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
-   <tr>
-     <th style="width: 150px;">Event Type</th>
-     <th>Description</th>
-   </tr>
+    <tr>
+      <th style="width: 150px;">Event Type</th>
+      <th>Description</th>
+    </tr>
   </thead>
   <tbody>
-   <tr>
-     <td>show.bs.collapse</td>
-     <td>This event fires immediately when the <code>show</code> instance method is called.</td>
-   </tr>
-   <tr>
-     <td>shown.bs.collapse</td>
-     <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
-   </tr>
-   <tr>
-     <td>hide.bs.collapse</td>
-     <td>
-      This event is fired immediately when the <code>hide</code> method has been called.
-     </td>
-   </tr>
-   <tr>
-     <td>hidden.bs.collapse</td>
-     <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
-   </tr>
+    <tr>
+      <td>show.bs.collapse</td>
+      <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+    </tr>
+    <tr>
+      <td>shown.bs.collapse</td>
+      <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+      <td>hide.bs.collapse</td>
+      <td>This event is fired immediately when the <code>hide</code> method has been called.</td>
+    </tr>
+    <tr>
+      <td>hidden.bs.collapse</td>
+      <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
   </tbody>
 </table>
 
