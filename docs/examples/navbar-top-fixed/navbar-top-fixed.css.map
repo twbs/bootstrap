@@ -1,0 +1,1 @@
+{"version":3,"sources":["navbar-top-fixed.css"],"names":[],"mappings":"AAAA,iCAAiC;AACjC;EACE,kBAAkB;EAClB,oBAAoB;CACrB","file":"navbar-top-fixed.css","sourcesContent":["/* Show it is fixed to the top */\nbody {\n  min-height: 75rem;\n  padding-top: 4.5rem;\n}\n"]}
