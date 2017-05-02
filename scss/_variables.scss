@@ -113,27 +113,53 @@ $gray-lighter:  #eceeef !default;
 $gray-lightest: #f7f7f9 !default;
 $white:         #fff !default;
 
+$gray-100: #f8f9fa !default;
+$gray-200: #ebedef !default;
+$gray-300: #ced3d8 !default;
+$gray-400: #abb3bd !default;
+$gray-500: #7c8a99 !default;
+$gray-600: #55626f !default;
+$gray-700: #4a5560 !default;
+$gray-800: #384048 !default;
+$gray-900: #131619 !default;
+
+$grays: (
+  100: $gray-100,
+  200: $gray-200,
+  300: $gray-300,
+  400: $gray-400,
+  500: $gray-500,
+  600: $gray-600,
+  700: $gray-700,
+  800: $gray-800,
+  900: $gray-900
+) !default;
+
 // Colors
-$red:     #d9534f !default;
-$orange:  #f0ad4e !default;
-$yellow:  #ffd500 !default;
-$green:   #5cb85c !default;
-$teal:    #5bc0de !default;
-$blue:    #0275d8 !default;
-$pink:    #ff5b77 !default;
-$purple:  #613d7c !default;
+$blue:    #007bff !default;
+$indigo:  #2b29bb !default;
+$purple:  #882ae0 !default;
+$pink:    #f14095 !default;
+$red:     #ea0242 !default;
+$orange:  #ff8d00 !default;
+$yellow:  #ffec00 !default;
+$green:   #34da36 !default;
+$teal:    #1dde8e !default;
+$cyan:    #08eff3 !default;
 
 // Color map
 // Used within Bootstrap to generate a list of class modifiers (e.g., `.btn-blue`).
 $colors: (
+  blue: $blue,
+  indigo: $indigo,
+  purple: $purple,
+  pink: $pink,
   red: $red,
   orange: $orange,
   yellow: $yellow,
   green: $green,
   teal: $teal,
-  blue: $blue,
-  pink: $pink,
-  purple: $purple,
+  cyan: $cyan,
   white: $white,
   gray: $gray-light,
   gray-dark: $gray-dark

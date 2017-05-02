@@ -47,9 +47,17 @@ Many of Bootstrap's various components and utilities are built through a series 
 <div class="row">
   {% for color in site.data.colors %}
     <div class="col-md-4 mb-3">
-      {% unless color.name == "white" or color.name == "gray-dark" %}
+      {% unless color.name == "white" or color.name == "gray" or color.name == "gray-dark" %}
         <div class="p-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
       {% endunless %}
+    </div>
+  {% endfor %}
+</div>
+
+<div class="row">
+  {% for color in site.data.grays %}
+    <div class="col-md-4 mb-3">
+      <div class="p-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
     </div>
   {% endfor %}
 </div>
