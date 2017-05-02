@@ -53,3 +53,23 @@ Many of Bootstrap's various components and utilities are built through a series 
     </div>
   {% endfor %}
 </div>
+
+Within `_variables.scss`, you'll find our color variables and Sass map. Here's an example of the `$colors` Sass map:
+
+{% highlight scss %}
+$colors: (
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  blue: $blue,
+  pink: $pink,
+  purple: $purple,
+  white: $white,
+  gray: $gray-light,
+  gray-dark: $gray-dark
+) !default;
+{% endhighlight %}
+
+Add, remove, or modify values within the map to update how they're used in many other components. Unfortunately at this time, not _every_ component utilizes this Sass map. Future updates will strive to improve upon this. Until then, plan on making use of the `${color}` variables and this Sass map.
