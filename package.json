@@ -39,7 +39,7 @@
     "js-minify-docs": "uglifyjs --compress warnings=false --mangle --comments '/^!/' --output docs/assets/js/docs.min.js docs/assets/js/vendor/anchor.min.js docs/assets/js/vendor/clipboard.min.js docs/assets/js/vendor/holder.min.js docs/assets/js/src/application.js",
     "js-test": "phantomjs ./node_modules/qunit-phantomjs-runner/runner.js js/tests/index.html 60",
     "js-test-dep": "npm install grunt && npm install grunt-saucelabs",
-    "js-launch-cloud": "ruby -run -ehttpd . -p3000 > /dev/null & grunt saucelabs-qunit",
+    "js-launch-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & grunt saucelabs-qunit",
     "js-test-cloud": "npm-run-all js-test-dep js-launch-cloud",
     "docs": "npm-run-all docs-compile docs-lint",
     "docs-lint": "htmlhint --config docs/.htmlhintrc _gh_pages/ js/tests/visual/ && htmllint --rc docs/.htmllintrc _gh_pages/*.html _gh_pages/**/*.html js/tests/visual/*.html",
