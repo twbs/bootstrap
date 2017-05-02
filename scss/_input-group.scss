@@ -154,6 +154,10 @@
     }
   }
 
+  &:first-child > .btn + .btn {
+    margin-left: 0;
+  }
+
   // Negative margin to only have a single, shared border between the two
   &:not(:last-child) {
     > .btn,
