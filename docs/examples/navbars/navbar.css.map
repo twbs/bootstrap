@@ -1,0 +1,1 @@
+{"version":3,"sources":["navbar.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,qBAAqB;CACtB;;AAED;EACE,oBAAoB;CACrB","file":"navbar.css","sourcesContent":["body {\n  /*padding-top: 20px;*/\n  padding-bottom: 20px;\n}\n\n.navbar {\n  margin-bottom: 20px;\n}\n"]}

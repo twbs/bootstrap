@@ -1,0 +1,1 @@
+{"version":3,"sources":["starter-template.css"],"names":[],"mappings":"AAAA;EACE,kBAAkB;CACnB;AACD;EACE,qBAAqB;EACrB,mBAAmB;CACpB","file":"starter-template.css","sourcesContent":["body {\n  padding-top: 5rem;\n}\n.starter-template {\n  padding: 3rem 1.5rem;\n  text-align: center;\n}\n"]}
