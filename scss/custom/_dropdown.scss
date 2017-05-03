@@ -12,6 +12,8 @@
 }
 
 .dropdown-header {
+  padding-top: $dropdown-item-padding-y * 1.5;
+  padding-bottom: $dropdown-item-padding-y;
   text-transform: uppercase;
 }
 

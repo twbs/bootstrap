@@ -254,12 +254,12 @@ Though BS writes **We do not support multiple form-controls in a single input gr
         <div class="dropdown">
           <input name="query" type="search" placeholder="Berufstitel oder Stichwort" autocomplete="off" class="input form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
           <div class="dropdown-menu">
-            <div class="dropdown-header">Stellen</div>
+            <h6 class="dropdown-header">Stellen</h6>
             <div class="dropdown-item disabled">
               Keine Ergebnisse gefunden
             </div>
             <div class="dropdown-divider"></div>
-            <div class="dropdown-header">Unternehmen</div>
+            <h6 class="dropdown-header">Unternehmen</h6>
             <a href="#" class="dropdown-item">
               <div class="media media-center">
                 <img class="media-image" data-src="holder.js/48x48/" alt="Thumbnail">
