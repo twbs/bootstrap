@@ -217,7 +217,7 @@ Shows implementations of the selected facet element
       <li class="facet-group-item">
         <div class="facet-selected">
           <button type="button" class="btn btn-primary btn-facet">
-            Ipsum Noomum
+            Ipsum Noomum ac facilisis in justo odio at veris calendaris
           </button>
         </div>
       </li>
