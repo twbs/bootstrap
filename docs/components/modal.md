@@ -510,38 +510,38 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
-   <tr>
-     <th style="width: 100px;">Name</th>
-     <th style="width: 50px;">Type</th>
-     <th style="width: 50px;">Default</th>
-     <th>Description</th>
-   </tr>
+    <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 50px;">Type</th>
+      <th style="width: 50px;">Default</th>
+      <th>Description</th>
+    </tr>
   </thead>
   <tbody>
-   <tr>
-     <td>backdrop</td>
-     <td>boolean or the string <code>'static'</code></td>
-     <td>true</td>
-     <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
-   </tr>
-   <tr>
-     <td>keyboard</td>
-     <td>boolean</td>
-     <td>true</td>
-     <td>Closes the modal when escape key is pressed</td>
-   </tr>
-   <tr>
-     <td>focus</td>
-     <td>boolean</td>
-     <td>true</td>
-     <td>Puts the focus on the modal when initialized.</td>
-   </tr>
-   <tr>
-     <td>show</td>
-     <td>boolean</td>
-     <td>true</td>
-     <td>Shows the modal when initialized.</td>
-   </tr>
+    <tr>
+      <td>backdrop</td>
+      <td>boolean or the string <code>'static'</code></td>
+      <td>true</td>
+      <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
+    </tr>
+    <tr>
+      <td>keyboard</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Closes the modal when escape key is pressed</td>
+    </tr>
+    <tr>
+      <td>focus</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Puts the focus on the modal when initialized.</td>
+    </tr>
+    <tr>
+      <td>show</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Shows the modal when initialized.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -590,28 +590,28 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
-   <tr>
-     <th style="width: 150px;">Event Type</th>
-     <th>Description</th>
-   </tr>
+    <tr>
+      <th style="width: 150px;">Event Type</th>
+      <th>Description</th>
+    </tr>
   </thead>
   <tbody>
-   <tr>
-     <td>show.bs.modal</td>
-     <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
-   </tr>
-   <tr>
-     <td>shown.bs.modal</td>
-     <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
-   </tr>
-   <tr>
-     <td>hide.bs.modal</td>
-     <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
-   </tr>
-   <tr>
-     <td>hidden.bs.modal</td>
-     <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
-   </tr>
+    <tr>
+      <td>show.bs.modal</td>
+      <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
+    </tr>
+    <tr>
+      <td>shown.bs.modal</td>
+      <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
+    </tr>
+    <tr>
+      <td>hide.bs.modal</td>
+      <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+    </tr>
+    <tr>
+      <td>hidden.bs.modal</td>
+      <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
   </tbody>
 </table>
 

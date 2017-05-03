@@ -256,11 +256,6 @@ input[type="checkbox"] {
   padding: 0;
 }
 
-input[type="radio"]:disabled,
-input[type="checkbox"]:disabled {
-  cursor: not-allowed;
-}
-
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
