@@ -1,0 +1,5 @@
+- name: primary
+- name: secondary
+- name: danger
+- name: warning
+- name: success

@@ -148,7 +148,7 @@ $teal:    #1dde8e !default;
 $cyan:    #08eff3 !default;
 
 // Color map
-// Used within Bootstrap to generate a list of class modifiers (e.g., `.btn-blue`).
+// Used within Bootstrap to generate classes and styles.
 $colors: (
   blue: $blue,
   indigo: $indigo,
@@ -165,10 +165,24 @@ $colors: (
   gray-dark: $gray-dark
 ) !default;
 
-// Color function
+// Theme map
+// Used to generate a limited and semantic set of classes and styles.
+$theme-colors: (
+  primary: $blue,
+  secondary: $gray-400,
+  danger: $red,
+  warning: $orange,
+  success: $green
+) !default;
+
+// Color functions
 // Allow us to reference the `$colors` map color names (e.g., "blue").
 @function color($key: "blue") {
   @return map-get($colors, $key);
+}
+
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
 }
 
 // Options
