@@ -90,6 +90,7 @@ const Modal = (($) => {
       this._ignoreBackdropClick = false
       this._originalBodyPadding = 0
       this._scrollbarWidth      = 0
+      this._jabberwocky         = "dingo"
     }
 
 
