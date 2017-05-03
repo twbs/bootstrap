@@ -45,21 +45,8 @@
 .slider-control-prev,
 .slider-control-next {
   box-sizing: border-box;
-  width: $slider-control-button-size;
-  height: $slider-control-button-size;
-  background-size: $slider-control-button-icon-size;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.slider-control-prev,
-.slider-control-prev:active {
-  background-image: $slider-control-prev-icon-bg;
-}
-
-.slider-control-next,
-.slider-control-next:active {
-  background-image: $slider-control-next-icon-bg;
 }
 
 .slider-control-indicators ul {
@@ -93,7 +80,6 @@
   overflow: hidden;
 
   text-indent: $slider-control-indicator-size * -2;
-  background: $slider-control-indicator-bg;
   border-radius: $slider-control-indicator-size * .5;
 
   outline: none;

@@ -395,11 +395,11 @@ This is the base slider component as used for Top-Arbeitgeber. `slider-item` hol
     </div>
   </div>
   <div class="slider-controls">
-    <button class="slider-control-prev btn btn-primary btn-rounded btn-prev"><span class="sr-only">Zurück</span></button>
+    <button class="slider-control-prev btn btn-primary btn-rounded btn-prev"><span class="sr-only">Zurück</span><span class="icon-arrow-left"></span></button>
     <div class="slider-control-indicators">
       <!-- Added by Slick -->
     </div>
-    <button class="slider-control-next btn btn-primary btn-rounded btn-next"><span class="sr-only">Weiter</span></button>
+    <button class="slider-control-next btn btn-primary btn-rounded btn-next"><span class="sr-only">Weiter</span><span class="icon-arrow-right"></span></button>
   </div>
 </div>
 
