@@ -241,3 +241,76 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
 Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.
 
 The exact technique to be used (`<label>` elements hidden using the `.sr-only` class, or use of the `aria-label`, `aria-labelledby`, `aria-describedby`, `title` or `placeholder` attribute) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.
+
+## Multiple Forms
+
+Though BS writes **We do not support multiple form-controls in a single input group.**, we actually want to do that. Use `.input-group-field` to wrap a `.form-control` inside. This manages the fields. If there's a field that should not increase or decrease in size, use the modifier `.input-group-field-auto`.
+
+{% example html %}
+<div class="row">
+  <div class="col-12 col-md-9 col-lg-10">
+    <div class="input-group shadow-soft">
+      <div class="input-group-field">
+        <div class="dropdown">
+          <input name="query" type="search" placeholder="Berufstitel oder Stichwort" autocomplete="off" class="input form-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+          <div class="dropdown-menu">
+            <div class="dropdown-header">Stellen</div>
+            <div class="dropdown-item disabled">
+              Keine Ergebnisse gefunden
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-header">Unternehmen</div>
+            <a href="#" class="dropdown-item">
+              <div class="media media-center">
+                <img class="media-image" data-src="holder.js/48x48/" alt="Thumbnail">
+                <div class="media-body">
+                  <div class="dropdown-item-title">Company Name</div>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="dropdown-item">
+              <div class="media media-center">
+                <img class="media-image" data-src="holder.js/48x48/" alt="Thumbnail">
+                <div class="media-body">
+                  <div class="dropdown-item-title">Company Name</div>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="dropdown-item">
+              <div class="media media-center">
+                <img class="media-image" data-src="holder.js/48x48/" alt="Thumbnail">
+                <div class="media-body">
+                  <div class="dropdown-item-title">Company Name</div>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="dropdown-item">
+              <div class="media media-center">
+                <img class="media-image" data-src="holder.js/48x48/" alt="Thumbnail">
+                <div class="media-body">
+                  <div class="dropdown-item-title">Company Name</div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div> 
+      <div class="input-group-field">
+        <div class="dropdown">
+          <input name="location" type="search" placeholder="Ort und PLZ" autocomplete="off" class="input form-control">
+        </div>
+      </div> 
+      <div class="input-group-field input-group-field-auto">
+        <select class="form-control">
+          <option value="all">Umkreis</option>
+        </select>
+      </div>
+    </div>
+  </div> 
+  <div class="col-12 col-md-3 col-lg-2">
+    <button type="submit" class="input-submit btn btn-cta btn-primary btn-block shadow-soft">
+      <span class="icon-search"></span> Suchen
+    </button>
+  </div>
+</div>
+{% endexample %}

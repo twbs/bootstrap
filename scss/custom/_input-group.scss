@@ -1,0 +1,34 @@
+.input-group {
+  .input-group-field {
+    flex: 1 auto;
+    border: $input-btn-border-width solid $input-border-color;
+    border-right-color: transparent;
+    background-color: $input-bg;
+  }
+
+  .input-group-field-auto {
+    flex: 0 0 auto;
+  }
+
+  // Fixes Form Control
+  .input-group-field .form-control {
+    width: 100%;
+    height: 100%;
+    border: transparent;
+    box-shadow: none;
+
+    &[placeholder] {
+      text-overflow: ellipsis;
+    }
+  }
+
+  input-group-field:first-child {
+    @include border-left-radius($input-border-radius);
+    border-right-color: $input-border-color;
+  }
+
+  .input-group-field:last-child {
+    @include border-right-radius($input-border-radius);
+    border-right-color: $input-border-color;
+  }
+}
