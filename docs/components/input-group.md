@@ -280,7 +280,7 @@ Though BS writes **We do not support multiple form-controls in a single input gr
               <div class="media media-center">
                 <img class="media-image" data-src="holder.js/48x48/" alt="Thumbnail">
                 <div class="media-body">
-                  <div class="dropdown-item-title">Company Name</div>
+                  <div class="dropdown-item-title">Very long company name, just to see if this works without breaking the layout</div>
                 </div>
               </div>
             </a>
