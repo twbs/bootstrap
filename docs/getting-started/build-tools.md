@@ -5,7 +5,7 @@ description: Details on how to use Bootstrap's included build tools to compile s
 group: getting-started
 ---
 
-Bootstrap uses [NPM scripts](https://docs.npmjs.com/misc/scripts) for its build system. Our [package.json](https://github.com/twbs/bootstrap/blob/master/package.json) includes convenient methods for working with the framework, including compiling code, running tests, and more.
+Bootstrap uses [NPM scripts](https://docs.npmjs.com/misc/scripts) for its build system. Our [package.json](https://github.com/twbs/bootstrap/blob/v4-dev/package.json) includes convenient methods for working with the framework, including compiling code, running tests, and more.
 
 ## Contents
 
