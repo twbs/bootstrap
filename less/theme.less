@@ -26,6 +26,7 @@ b, strong {
 // Common styles
 .btn-default,
 .btn-primary,
+.btn-secondary,
 .btn-success,
 .btn-info,
 .btn-warning,
@@ -35,7 +36,7 @@ b, strong {
   // Reset the shadow
   &:active,
   &.active {
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    .box-shadow(none);//inset 0 3px 5px rgba(0,0,0,.125));
   }
 
   &.disabled,
@@ -49,21 +50,40 @@ b, strong {
   }
 }
 
+
+// TODO:
+// "preview etc buttons" as links with round icons
+// foooter
+
+
 // Mixin for generating new styles
-.btn-styles(@btn-color: #555) {
-  background-repeat: repeat-x;
-  border-color: darken(@btn-color, 14%);
+.btn-styles(@btn-color: #555, @btn-border: darken(@btn-color, 14%), @btn-hover: darken(@btn-color, 12%), @btn-deactive-bg: @apim-dis-bg, @btn-deactive: @apim-dis-color) {
+  //background-repeat: repeat-x;
+  // background-color: @btn-color;
+  border-color: transparent;
+  border-width: 1px 3px;
+  .box-shadow(0 2px 3px 0 #BCBCBC);
 
   &:hover,
   &:focus  {
-    background-color: darken(@btn-color, 12%);
-    background-position: 0 -15px;
+    background-color: @btn-hover;
+    //border-color: transparent;
+    //background-position: 0 -15px;
+    .box-shadow(none);
   }
 
   &:active,
-  &.active {
-    background-color: darken(@btn-color, 12%);
-    border-color: darken(@btn-color, 14%);
+  &.active,
+  &:active:hover,
+  &.active:hover,
+  &:active:focus,
+  &.active:focus,
+   {
+    background-color: @btn-hover;
+    border-color: @btn-border;
+    border-width: 3px;
+    outline-offset: 0;
+    .box-shadow(none);
   }
 
   &.disabled,
@@ -75,34 +95,54 @@ b, strong {
     &.focus,
     &:active,
     &.active {
-      background-color: darken(@btn-color, 12%);
-      background-image: none;
+      background-color: @btn-deactive-bg;
+      color: @btn-deactive;
+      border-color: transparent;
+    .box-shadow(none);
     }
   }
 }
 
-// Common styles
-.btn {
-  // Remove the gradient for the pressed/active state
+
+// Handle the fact the border changes size on active
+.button-resize(@padding-vertical; @padding-horizontal) {
   &:active,
   &.active {
-    background-image: none;
+    padding: (@padding-vertical - 2) (@padding-horizontal);
   }
 }
+
+.btn {
+  .button-resize(@padding-base-vertical; @padding-base-horizontal);
+}
+.btn-lg {
+  .button-resize(@padding-large-vertical; @padding-large-horizontal);
+}
+.btn-sm {
+  .button-resize(@padding-small-vertical; @padding-small-horizontal);
+}
+.btn-xs {
+  .button-resize(@padding-xs-vertical; @padding-xs-horizontal);
+}
+
 
 .btn-inverse {
   .button-variant(@btn-inverse-color; @btn-inverse-bg; @btn-inverse-border);
 }
 
-// Apply the mixin to the buttons
-.btn-default { .btn-styles(@btn-default-bg); } // text-shadow: 0 1px 0 #fff; border-color: #ccc; }
-.btn-primary { .btn-styles(@btn-primary-bg); }
-.btn-success { .btn-styles(@btn-success-bg); }
-.btn-info    { .btn-styles(@btn-info-bg); }
-.btn-warning { .btn-styles(@btn-warning-bg); }
-.btn-danger  { .btn-styles(@btn-danger-bg); }
-.btn-inverse { .btn-styles(@btn-inverse-bg); }
+.btn-secondary {
+  .button-variant(@btn-secondary-color; @btn-secondary-bg; @btn-secondary-border);
+}
 
+// Apply the mixin to the buttons
+.btn-default { .btn-styles(@btn-default-bg, @btn-default-sel-border); } // text-shadow: 0 1px 0 #fff; border-color: #ccc; }
+.btn-primary { .btn-styles(@btn-primary-bg, @btn-primary-sel-border, @apim-pri-hover); }
+.btn-secondary { .btn-styles(@btn-secondary-bg, @btn-secondary-sel-border, @apim-sec-hover); }
+.btn-success { .btn-styles(@btn-success-bg, @btn-success-sel-border); }
+.btn-info    { .btn-styles(@btn-info-bg, @btn-info-sel-border); }
+.btn-warning { .btn-styles(@btn-warning-bg, @btn-warning-sel-border); }
+.btn-danger  { .btn-styles(@btn-danger-bg, @btn-danger-sel-border); }
+.btn-inverse { .btn-styles(@btn-inverse-bg, @btn-inverse-sel-border); }
 
 
 //
@@ -125,6 +165,7 @@ b, strong {
   @media (max-width: @grid-float-breakpoint) {
     min-width: 32px;
   }
+  border: 0;
 }
 
 // Specific dropdowns
@@ -381,9 +422,9 @@ b, strong {
     // Actual tabs (as links)
     > a {
       text-align: center;
-      font-size: @font-size-large;
+      font-size: @font-size-base;
       // text-height:20 + 2*padding-height:10 + 2*border-width:1
-      height: (ceil(@font-size-large * @line-height-large)  + (@padding-large-vertical*2) + 2px);
+      height: (ceil(@font-size-base * @line-height-base)  + (@padding-base-vertical*2) + 2px);
       margin-right: 0;
       line-height: @line-height-base;
       border-radius: @border-radius-base;
@@ -396,8 +437,8 @@ b, strong {
 
       &:hover {
         border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color transparent @nav-tabs-link-hover-border-color;
-        color: @nav-tabs-link-bg;
-        background-color: @nav-tabs-link-color;
+        color: @nav-tabs-link-hover-color;
+        background-color: @nav-tabs-link-hover-bg;
       }
     }
 
@@ -521,13 +562,17 @@ b, strong {
       color: white;
       background-color: #C9D4E2;
       border-radius: 50%;
-      padding: 4px;
+      padding: 3px;
+      // 19 - 2*3
+      font-size: 13px;
     }
     .glyphicon {
       color: white;
       background-color: #C9D4E2;
       border-radius: 50%;
-      padding: 4px;
+      padding: 3px;
+      // 19 - 2*3
+      font-size: 13px;
     }
   }
 
@@ -649,8 +694,13 @@ body {
   font-size: @font-size-base;
 }
 
+
 .select2-container--bootstrap {
   width: 100% !important;
+
+  .select2-dropdown {
+    background-color: @dropdown-bg;
+  }
 
   .select2-search--dropdown {
     .select2-dropdown {
@@ -663,10 +713,10 @@ body {
     }
   }
 
-  .select2-results__option {
-    color: @btn-default-color;
-    background-color: @btn-default-bg;
-  }
+  // .select2-results__option {
+  //   color: @btn-default-color;
+  //   background-color: @btn-default-bg;
+  // }
 
   .select2-search__field {
 
@@ -700,6 +750,16 @@ body {
 
   .select2-selection {
     border-radius: @border-radius-base;
+  }
+}
+
+.select2-container--bootstrap {
+  &.select2-container--disabled {
+    .select2-selection--single {
+      .select2-selection__rendered {
+        color: @s2bs-input-color-placeholder;
+      }
+    }
   }
 }
 
@@ -741,14 +801,25 @@ body {
     color: white;
     background-color: #C9D4E2;
     border-radius: 50%;
-    padding: 4px;
+    padding: 3px;
+    // 19 - 2*3
+    font-size: 13px;
   }
   .glyphicon {
     color: white;
     background-color: #C9D4E2;
     border-radius: 50%;
-    padding: 4px;
+    padding: 3px;
+    // 19 - 2*3
+    font-size: 13px;
   }
 }
 
-
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: @footer-height;
+  height: @footer-height;
+  background-color: white;
+}

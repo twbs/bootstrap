@@ -32,8 +32,8 @@
 @apim-sec-color:         white;
 @apim-pri-hover:         rgba(27, 32, 194, 1);
 @apim-sec-hover:         rgba(85, 220, 255, 1);
-@apim-pri-click-border:  rgba(213, 217, 238, 1);
-@apim-sec-click-border:  rgba(213, 217, 238, 1);
+@apim-pri-border:        rgba(213, 217, 238, 1);
+@apim-sec-border:        rgba(213, 217, 238, 1);
 @apim-dis-bg:            rgba(218, 218, 218, 1);
 @apim-dis-color:         rgba(188, 188, 188, 1);
 
@@ -81,6 +81,8 @@
 //** Link hover decoration.
 @link-hover-decoration: underline;
 
+
+@footer-height:          60px;
 
 //== Typography
 //
@@ -153,9 +155,9 @@
 @border-radius-small:       0;
 
 //** Global color for active items (e.g., navs or dropdowns).
-@component-active-color:    #fff;
+@component-active-color:    white;
 //** Global background color for active items (e.g., navs or dropdowns).
-@component-active-bg:       @brand-primary;
+@component-active-bg:       @apim-sec-bg;
 
 //** Width of the `border` for generating carets that indicate dropdowns.
 @caret-width-base:          4px;
@@ -192,31 +194,43 @@
 
 @btn-default-color:              @apim-tab-unsel-color;
 @btn-default-bg:                 @apim-tab-unsel-bg;
-@btn-default-border:             @apim-tab-unsel-border;
+@btn-default-border:             @apim-tab-unsel-bg;
+@btn-default-sel-border:         @apim-sec-border;
 
 @btn-primary-color:              @apim-pri-color;
 @btn-primary-bg:                 @apim-pri-bg;
-@btn-primary-border:             @btn-primary-bg;
+@btn-primary-border:             @apim-pri-bg;
+@btn-primary-sel-border:         @apim-pri-border;
+
+@btn-secondary-color:            @apim-sec-color;
+@btn-secondary-bg:               @apim-sec-bg;
+@btn-secondary-border:           @apim-sec-bg;
+@btn-secondary-sel-border:       @apim-sec-border;
 
 @btn-success-color:              @apim-white;
 @btn-success-bg:                 @brand-success;
-@btn-success-border:             darken(@btn-success-bg, 5%);
+@btn-success-border:             @btn-success-bg;
+@btn-success-sel-border:         darken(@btn-success-bg, 5%);
 
 @btn-info-color:                 @apim-sec-color;
 @btn-info-bg:                    @apim-sec-bg;
-@btn-info-border:                @btn-default-bg;
+@btn-info-border:                @apim-sec-bg;
+@btn-info-sel-border:            @apim-sec-border;
 
 @btn-warning-color:              @apim-white;
 @btn-warning-bg:                 @brand-warning;
-@btn-warning-border:             darken(@btn-warning-bg, 5%);
+@btn-warning-border:             @brand-warning;
+@btn-warning-sel-border:         @apim-sec-border;
 
 @btn-danger-color:               @apim-white;
 @btn-danger-bg:                  @brand-danger;
-@btn-danger-border:              darken(@btn-danger-bg, 5%);
+@btn-danger-border:              @brand-danger;
+@btn-danger-sel-border:          @apim-sec-border;
 
 @btn-inverse-color:              @apim-white;
 @btn-inverse-bg:                 @apim-grey-text;
-@btn-inverse-border:             darken(@btn-inverse-bg, 5%);
+@btn-inverse-border:             @apim-grey-text;
+@btn-inverse-sel-border:         @apim-sec-border;
 
 @btn-link-disabled-color:        @apim-dis-color;
 
@@ -417,7 +431,7 @@
 
 @navbar-default-color:             @apim-pri-color;
 @navbar-default-bg:                @apim-pri-bg;
-@navbar-default-border:            @apim-pri-click-border; //darken(@navbar-default-bg, 6.5%);
+@navbar-default-border:            @apim-pri-border; //darken(@navbar-default-bg, 6.5%);
 
 @navbar-default-shadow-color:           @apim-pri-color;
 @navbar-default-shadow-color-active:    @apim-pri-color;
@@ -449,7 +463,7 @@
 @sidebar-default-color:             @apim-pri-bg;
 @sidebar-default-color-focus:       @apim-sec-color;
 @sidebar-default-bg:                @apim-widget-bg;
-@sidebar-default-bg-focus:          @apim-sec-bg;
+@sidebar-default-bg-focus:          @component-active-bg;
 @sidebar-default-border:            @apim-tab-unsel-border;
 
 
@@ -492,16 +506,18 @@
 
 //== Tabs
 @nav-tabs-border-color:                     @apim-tab-sel-border;
-@nav-tabs-link-hover-border-color:          @apim-tab-sel-border;
 
 @nav-tabs-link-bg:                          @apim-tab-unsel-bg;
 @nav-tabs-link-color:                       @apim-tab-unsel-color;
 @nav-tabs-link-border-color:                @apim-tab-unsel-border;
 
+@nav-tabs-link-hover-bg:                    darken(@nav-tabs-link-bg, 14%);
+@nav-tabs-link-hover-color:                 darken(@nav-tabs-link-color, 12%);
+@nav-tabs-link-hover-border-color:          @apim-tab-sel-border;
+
 @nav-tabs-active-link-hover-bg:             @apim-tab-sel-bg;
 @nav-tabs-active-link-hover-color:          @apim-tab-sel-color;
 @nav-tabs-active-link-hover-border-color:   @apim-tab-sel-border;
-
 
 @nav-tabs-justified-link-border-color:            @apim-tab-unsel-border;
 @nav-tabs-justified-active-link-border-color:     @nav-tabs-active-link-hover-border-color;
