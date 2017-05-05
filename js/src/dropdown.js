@@ -157,7 +157,8 @@ const Dropdown = (($) => {
             offset : context._config.offset
           },
           flip : {
-            enabled : context._config.flip
+            enabled : context._config.flip,
+            behavior : [AttachmentMap.TOP, AttachmentMap.BOTTOM]
           }
         }
       })

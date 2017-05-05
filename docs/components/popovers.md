@@ -264,6 +264,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>0</td>
       <td>Offset of the popover relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</td>
     </tr>
+    <tr>
+      <td>fallbackPlacement</td>
+      <td>string | array</td>
+      <td>['top', 'right', 'bottom', 'left']</td>
+      <td>Allow to specify which position Popper will use on fallback. For more information refer to
+      Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.behavior">behavior docs</a></td>
+    </tr>
   </tbody>
 </table>
 
