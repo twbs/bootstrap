@@ -6,14 +6,16 @@
 // </div>
 
 .tag-group {
-  $tag-group-space-half-x: $tag-group-spacing-x * 0.5;
-  $tag-group-space-half-y: $tag-group-spacing-y * 0.5;
-
-  // TODO: ivestigate if this can be done with flexbox
-  margin: (-$tag-group-space-half-y) (-$tag-group-space-half-x);
+  // Clears introduced margin-bottom
+  margin-bottom: ($tag-group-spacing-y * -1);
 
   .tag {
-    margin: $tag-group-space-half-y $tag-group-space-half-x;
+    margin-right: $tag-group-spacing-x;
+    margin-bottom: $tag-group-spacing-y;
+  }
+
+  .tag:last-child {
+    margin-right: 0;
   }
 }
 

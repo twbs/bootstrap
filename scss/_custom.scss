@@ -428,7 +428,7 @@ $table-border-color:            $gray-lighter !default;
 // For each of Bootstrap's buttons, define text, background and border color.
 
 $btn-padding-x:                  .75rem;
-$btn-padding-y:                  .5rem;
+$btn-padding-y:                  .75rem;
 $btn-line-height:                1.25;
 $btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 none;
@@ -661,7 +661,7 @@ $dropdown-header-color:           $gray-light !default;
 
 // CUSTOM: Dropdown
 $dropdown-inverse-divider-bg:           lighten($component-inverse-bg, 10%);
-$dropdown-inverse-header-color:         $gray;
+$dropdown-inverse-header-color:         $gray-lighter;
 
 $dropdown-inverse-link-color:           $gray-lightest;
 $dropdown-inverse-link-hover-color:     lighten($gray-lightest, 10%);
@@ -1169,9 +1169,6 @@ $slider-control-indicator-spacing: $spacer-x * .25;
 $slider-control-indicator-bg: $gray-lighter;
 $slider-control-indicator-hover-bg: $gray-light;
 $slider-control-indicator-active-bg: $gray-dark;
-
-$slider-control-prev-icon-bg: $carousel-control-prev-icon-bg;
-$slider-control-next-icon-bg: $carousel-control-next-icon-bg;
 
 // Publication
 //

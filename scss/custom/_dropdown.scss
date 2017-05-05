@@ -1,5 +1,6 @@
 .dropdown-item {
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  white-space: normal;
 
   .dropdown-item-title {
     font-weight: $font-weight-bold;
@@ -11,6 +12,8 @@
 }
 
 .dropdown-header {
+  padding-top: $dropdown-item-padding-y * 1.5;
+  padding-bottom: $dropdown-item-padding-y;
   text-transform: uppercase;
 }
 

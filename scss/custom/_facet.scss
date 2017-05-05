@@ -145,6 +145,9 @@
   .facet-title,
   .btn {
     color: $facet-highlighted-color;
+    text-overflow: ellipsis;
+    padding-right: ($btn-padding-x * 2) + $btn-font-size;
+    overflow: hidden;
   }
 }
 
