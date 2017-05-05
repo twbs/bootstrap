@@ -119,54 +119,27 @@ b, strong {
 // Dropdowns
 // --------------------------------------------------
 .dropdown-menu {
-  padding: 0 0;
+  // make dropdown border overlap tab border
+  margin-top: -1px;
   min-width: 100px;
   @media (max-width: @grid-float-breakpoint) {
     min-width: 32px;
   }
-
-  > li > a:hover,
-  > li > a:focus {
-    background-color: @dropdown-link-hover-bg;
-  }
-  > .active > a,
-  > .active > a:hover,
-  > .active > a:focus {
-    background-color: @dropdown-link-active-bg;
-  }
 }
 
-.btn-group > .dropdown-menu {
-  > li > a.btn {
-    color: @btn-default-color;
-    &:hover,
-    &:focus {
-      background-color: @navbar-default-toggle-hover-bg;
-    }
-  }
-  > .active > a.btn,
-  > .active > a.btn:hover,
-  > .active > a.btn:focus {
-    background-color: @navbar-default-toggle-hover-bg;
-  }
+// Specific dropdowns
+.nav-apim-tabs .dropdown-menu {
+  // Remove the top rounded corners here since there is a hard edge above the menu
+  .border-top-radius(0);
 }
 
-// td > .btn-group > .dropdown-toggle {
-//   color: @navbar-default-toggle-border-color;
-//   background-color: @navbar-default-toggle-icon-bar-bg;
-//   border-color: @navbar-default-toggle-border-color;
-//   &:focus,
-//   &:hover {
-//     color: @apim-white;
-//     background-color: @navbar-default-toggle-hover-bg;
-//   }
-//   .icon-bar {
-//     background-color: @navbar-default-toggle-border-color;
-//     &:hover {
-//       background-color: @apim-white;
-//     }
-//   }
-// }
+.dropdown-alert {
+  color: #f2dede;
+  background-color: #a94442;
+  > a {
+    color: #f2dede;
+  }
+}
 
 //
 // Navbar
@@ -179,30 +152,22 @@ b, strong {
   border-radius: @navbar-border-radius;
   .box-shadow(inset 0 -@navbar-default-shadow-height 0px 0px @navbar-default-shadow-color);
 
-  .navbar-nav {
-    @media (min-width: @grid-float-breakpoint) {
-      > .open > a,
-      > .active > a {
-        .box-shadow(inset 0 -@navbar-default-shadow-height 0px 0px @navbar-default-shadow-color-active);
-      }
-      > li > a {
-        &:hover {
-          .box-shadow(inset 0 -@navbar-default-shadow-height 0px 0px @navbar-default-shadow-color-hover);
-        }
-        &:focus {
-          background-color: @navbar-default-link-active-bg;
-          .box-shadow(inset 0 -@navbar-default-shadow-height 0px 0px darken(@navbar-default-shadow-color, 5%));
-        }
-      }
-    }
-  }
-
   // Dropdowns get custom display when in navbar
   .open .dropdown-menu {
     // background-color: @navbar-default-bg;
     border: 0;
-    margin-top: -@navbar-default-shadow-height;
+    margin-top: @navbar-default-shadow-height;
     .box-shadow(0 @navbar-default-shadow-height 0px 0px @navbar-default-shadow-color);
+
+    background-color: @navbar-default-bg;
+    > li > a {
+      color: @navbar-default-color;
+
+      &:active,
+      &:hover {
+        color: @navbar-default-link-hover-color;
+      }
+    }
   }
 
   .navbar-toggle {
@@ -247,17 +212,47 @@ b, strong {
   }
 }
 // Fix active state of dropdown items in collapsed mode
-@media (max-width: @grid-float-breakpoint-max) {
-  .navbar .navbar-nav .open .dropdown-menu > .active > a {
-    &,
-    &:hover,
-    &:focus {
-      color: @navbar-default-link-active-color;
-      background: @navbar-default-link-active-bg;
+// @media (max-width: @grid-float-breakpoint-max) {
+.navbar .navbar-nav .open .dropdown-menu > .active > a {
+  &,
+  &:hover,
+  &:focus {
+    color: @navbar-default-link-active-color;
+    background: @navbar-default-link-active-bg;
+  }
+}
+// }
+
+.navbar-nav {
+  margin-top: (@navbar-padding-vertical - @padding-small-vertical);
+  margin-left: -@navbar-padding-horizontal;
+  margin-bottom: @padding-small-vertical;
+  margin-right: -@navbar-padding-horizontal;
+
+  > li {
+    > a {
+      padding-top: ceil((@navbar-padding-vertical / 2));
+      padding-bottom: floor((@navbar-padding-vertical / 2));
+      line-height: @line-height-computed;
+    }
+    &.active {
+      .box-shadow(inset (@padding-small-vertical - 1) 0 0 0 @navbar-default-link-hover-color)
+    }
+  }
+
+  // Uncollapse the nav
+  @media (min-width: @grid-float-breakpoint) {
+    > li {
+      > a {
+        padding-top: (@navbar-height - @line-height-computed - @navbar-padding-vertical);
+        padding-bottom: 0; //@navbar-padding-vertical;
+      }
+      &.active {
+        .box-shadow(0 (@padding-small-vertical - 1) 0px 0px @navbar-default-link-hover-color);
+      }
     }
   }
 }
-
 
 //
 // Alerts
@@ -365,6 +360,141 @@ b, strong {
   .box-shadow(@shadow);
 }
 
+
+/// TABS
+
+
+// Tabs
+// -------------------------
+
+// Combine bootstraps nav-tabs and justified for our use
+.apim-nav-tabs {  
+  // border-bottom: 1px solid @nav-tabs-border-color;
+  border-bottom: 0;
+  width: 100%;
+
+  > li {
+    float: none;
+    // Make the list-items overlay the bottom border
+    // margin-bottom: -1px;
+
+    // Actual tabs (as links)
+    > a {
+      text-align: center;
+      font-size: @font-size-large;
+      // text-height:20 + 2*padding-height:10 + 2*border-width:1
+      height: (ceil(@font-size-large * @line-height-large)  + (@padding-large-vertical*2) + 2px);
+      margin-right: 0;
+      line-height: @line-height-base;
+      border-radius: @border-radius-base;
+
+      color: @nav-tabs-link-color;
+      background-color: @nav-tabs-link-bg;
+      border: 1px solid @nav-tabs-border-color;
+      border-bottom-color: transparent;
+      overflow-y: hidden;
+
+      &:hover {
+        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color transparent @nav-tabs-link-hover-border-color;
+        color: @nav-tabs-link-bg;
+        background-color: @nav-tabs-link-color;
+      }
+    }
+
+    // Active state, and its :hover to override normal :hover
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        cursor: default;
+        color: @nav-tabs-active-link-hover-color;
+        background-color: @nav-tabs-active-link-hover-bg;
+        border: 1px solid @nav-tabs-active-link-hover-border-color;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+  > li:last-child {
+    > a {
+      border-right-color: @nav-tabs-border-color;
+    }
+  }
+  > .active > a,
+  > .active > a:hover,
+  > .active > a:focus {
+    border: 1px solid @nav-tabs-link-border-color;
+    border-bottom-color: transparent;
+  }
+
+  @media (min-width: @screen-sm-min) {
+    > li {
+      display: table-cell;
+      width: 1%;
+      > a {
+        border-radius: @border-radius-base @border-radius-base 0 0;
+        border-right-color: @nav-tabs-link-border-color;
+      }
+    }
+    > .active > a,
+    > .active > a:hover,
+    > .active > a:focus {
+      border-bottom-color: @nav-tabs-active-link-hover-border-color;
+    }
+  }
+
+  > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto;
+  }
+}
+
+// Tabbable tabs
+// -------------------------
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  border: 1px solid @nav-tabs-active-link-hover-border-color;
+  padding: @padding-base-vertical @padding-base-horizontal;
+
+  > .tab-pane {
+    display: none;
+  }
+  > .active {
+    display: block;
+  }
+}
+
+
+
+.nav-tabs {
+  > li {
+    // Actual tabs (as links)
+    > a {
+      margin-right: 1px;
+      min-width: 120px;
+      text-align: center;
+      color: @nav-tabs-link-color;
+      background-color: @nav-tabs-link-bg;
+      border: 1px solid @nav-tabs-link-border-color;
+      border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+      &:hover {
+        color: @nav-tabs-link-bg;
+        background-color: @nav-tabs-link-color;
+      }
+    }
+  }
+  > li.active {
+    // Actual tabs (as links)
+    > a {
+      &,
+      &:hover,
+      &:focus {
+        border-bottom-color: @nav-tabs-link-border-color
+      }
+    }
+  }
+}
+
 //
 // Sidebar
 // --------------------------------------------------
@@ -438,6 +568,9 @@ b, strong {
 
 .main .page-header {
   margin-top: 0;
+  > h1 {
+    margin-top: 0;
+  }
 }
 
 body {
@@ -468,22 +601,6 @@ body {
       margin-top: (-@table-cell-padding + 1);
       margin-bottom: -@table-cell-padding;
       display: flex;
-
-      .dropdown-menu {
-          background-color: @btn-default-bg;
-          > li {
-            > a {
-              padding-top: (1 + @padding-base-vertical);
-              padding-bottom: (1 + @padding-base-vertical);  // btns have a border, so match that height
-              color: @btn-default-color;
-              background-color: @btn-default-bg;
-              &:hover,
-              &:focus {
-                background-color: darken(@btn-default-bg, 10%);
-              }
-            }
-          }
-        }
     }
     .datatable-inline-edit {
       width:100%;
@@ -576,4 +693,31 @@ body {
 .select2-label {
   line-height: @s2bs-input-height-base;
   padding: @s2bs-padding-base-vertical @s2bs-padding-base-horizontal;
+}
+
+
+.widget-content{
+  min-height: 180px;
+  background-color: white;
+  border: 1px solid @apim-pri-bg;    
+  padding: @padding-base-vertical @padding-base-horizontal;
+  margin-bottom: @padding-large-vertical;
+}
+
+.widget-header {
+  color: @apim-widget-color;
+  background-color: @apim-widget-bg;
+  margin-top: 0;
+  margin-left: -@padding-base-horizontal;
+  margin-right: -@padding-base-horizontal;
+  padding-left: @padding-base-horizontal;
+  padding-right: @padding-base-horizontal;
+
+  // > .input-group {
+  //   width: 100%;
+  // }
+  // > .input-group p, a {
+  //   word-break: break-all;
+  //   white-space: normal;
+  // }
 }
