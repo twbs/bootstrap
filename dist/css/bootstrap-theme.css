@@ -1367,6 +1367,18 @@ fieldset[disabled] .btn-inverse.active {
     -webkit-box-shadow: 0 2px 1px 1px #2e3192;
             box-shadow: 0 2px 1px 1px #2e3192;
   }
+  .sidebar .fa {
+    padding: 4px;
+    color: white;
+    background-color: #c9d4e2;
+    border-radius: 50%;
+  }
+  .sidebar .glyphicon {
+    padding: 4px;
+    color: white;
+    background-color: #c9d4e2;
+    border-radius: 50%;
+  }
 }
 .sidebar > h1,
 .sidebar h2,
@@ -1544,12 +1556,34 @@ body {
   border: 1px solid #2e3192;
 }
 .widget-header {
+  padding-top: 6px;
   padding-right: 12px;
+  padding-bottom: 6px;
   padding-left: 12px;
-  margin-top: 0;
+  margin-top: -6px;
   margin-right: -12px;
   margin-left: -12px;
+  font-weight: bold;
   color: #2e3192;
   background-color: #ebf1f7;
+}
+.widget-header > a.pull-right {
+  margin-left: 12px;
+}
+.widget-header > a.pull-left {
+  margin-right: 12px;
+  margin-left: 0;
+}
+.widget-header .fa {
+  padding: 4px;
+  color: white;
+  background-color: #c9d4e2;
+  border-radius: 50%;
+}
+.widget-header .glyphicon {
+  padding: 4px;
+  color: white;
+  background-color: #c9d4e2;
+  border-radius: 50%;
 }
 /*# sourceMappingURL=bootstrap-theme.css.map */

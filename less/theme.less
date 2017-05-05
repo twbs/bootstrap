@@ -516,6 +516,19 @@ b, strong {
     background-color: @sidebar-default-bg;
     border: 0;
     .box-shadow(0px (2* @navbar-default-shadow-height) @navbar-default-shadow-height @navbar-default-shadow-height @navbar-default-bg);
+
+    .fa {
+      color: white;
+      background-color: #C9D4E2;
+      border-radius: 50%;
+      padding: 4px;
+    }
+    .glyphicon {
+      color: white;
+      background-color: #C9D4E2;
+      border-radius: 50%;
+      padding: 4px;
+    }
   }
 
   > h1, h2, h3, h4, h5, h6,
@@ -696,7 +709,7 @@ body {
 }
 
 
-.widget-content{
+.widget-content {
   min-height: 180px;
   background-color: white;
   border: 1px solid @apim-pri-bg;    
@@ -705,19 +718,37 @@ body {
 }
 
 .widget-header {
+  font-weight: bold;
   color: @apim-widget-color;
   background-color: @apim-widget-bg;
-  margin-top: 0;
+  margin-top: -@padding-base-vertical;
   margin-left: -@padding-base-horizontal;
   margin-right: -@padding-base-horizontal;
   padding-left: @padding-base-horizontal;
   padding-right: @padding-base-horizontal;
+  padding-top: @padding-base-vertical;
+  padding-bottom: @padding-base-vertical;
 
-  // > .input-group {
-  //   width: 100%;
-  // }
-  // > .input-group p, a {
-  //   word-break: break-all;
-  //   white-space: normal;
-  // }
+  > a.pull-right {
+    margin-left: @padding-base-horizontal;
+  }
+  > a.pull-left {
+    margin-left: 0;
+    margin-right: @padding-base-horizontal;
+  }
+
+  .fa {
+    color: white;
+    background-color: #C9D4E2;
+    border-radius: 50%;
+    padding: 4px;
+  }
+  .glyphicon {
+    color: white;
+    background-color: #C9D4E2;
+    border-radius: 50%;
+    padding: 4px;
+  }
 }
+
+
