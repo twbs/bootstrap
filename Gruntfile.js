@@ -509,7 +509,9 @@ module.exports = function (grunt) {
           'Element “side-nav” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
           'Element “activity-filters” not allowed as child of element “div” in this context. (Suppressing further errors from this subtree.)',
           'Bad value “{{$ctrl.showNav}}” for attribute “aria-expanded” on element “button”.',
-          'Bad value “{{$ctrl.showSearch}}” for attribute “aria-expanded” on element “a”.'
+          'Bad value “{{$ctrl.showSearch}}” for attribute “aria-expanded” on element “a”.',
+          'Bad value “row” for attribute “role” on element “ol”.',
+          'Bad value “columnheader” for attribute “role” on element “li”.'
         ],
         'attr-name-style': false,
         'label-req-for': false,

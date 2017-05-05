@@ -1,0 +1,14 @@
+<span ng-if="$ctrl.transfer.status !== 'COMPLETED' && $ctrl.transfer.status !== 'CANCELLED'"
+	class="list-group-item-text" >
+	{{$ctrl.transfer.reason}}
+</span>
+<span ng-if="$ctrl.transfer.status === 'COMPLETED'"
+	class="list-group-item-text"
+	title="{{$ctrl.transfer.completed | date:'dd MMMM yyyy h:mm a'}}">
+	Completed {{$ctrl.transfer.completed | date:"dd MMMM yyyy"}}
+</span>
+<span ng-if="$ctrl.transfer.status === 'CANCELLED'"
+	class="list-group-item-text"
+	title="{{$ctrl.transfer.updated | date:'dd MMMM yyyy h:mm a'}}">
+	Cancelled {{$ctrl.transfer.updated | date:"dd MMMM yyyy"}}
+</span>

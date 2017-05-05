@@ -21,7 +21,6 @@
 // Use on `li`s or `div`s within the `.list-group` parent.
 
 .list-group-item {
-  position: relative;
   display: block;
   padding: @spacing-1-mobile @spacing-1-mobile @spacing-1-mobile (@spacing-1-mobile - 2px);
   // Place the border on the list items and negative margin up for better styling
@@ -92,7 +91,7 @@ a.list-group-item {
     cursor: pointer;
 
     &:hover {
-      /* tell the browser there is a likelihood this will animate when clicked */
+      // tell the browser there is a likelihood this will animate when clicked
       will-change: margin, contents;
     }
   }
@@ -131,15 +130,15 @@ a.list-group-item {
     }
   }
 
-  @media (min-width: @screen-sm-min) {
+  @media (min-width: @screen-md-min) {
     &.active {
       margin-left: -12px;
       margin-right: -12px;
     }
 
     .media-body {
-      /* In combination with applying extra padding to the media-body,
-      this prevents text reflow on panel expansion */
+      // In combination with applying extra padding to the media-body,
+      // this prevents text reflow on panel expansion
       transition: padding ease @panel-focus-transtion;
     }
   }
@@ -201,5 +200,59 @@ a.list-group-item {
   }
   .list-group-item:hover {
     background-color: @brand-white;
+  }
+}
+
+@keyframes listSlideOver {
+  0% {transform: translateX(100vw);}
+  100% {transform: translateX(0vw);}
+}
+
+@media (max-width: @screen-sm-max) {
+  .list-group-slide-out {
+    .list-group-item {
+      .collapse {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        overflow-y: auto;
+        background-color: #fff;
+        animation: listSlideOver 0.15s ease-out forwards;
+        z-index: 3;
+
+        .media-left {
+          display: none;
+        }
+        .well {
+          border-radius: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .list-group-item.active,
+    .list-group-inactive .list-group-item.active {
+      margin-top: 1px;
+      margin-bottom: 0;
+      box-shadow: none !important;
+    }
+    .list-group-inactive .list-group-item.active {
+      border-top: 1px solid @brand-smoke-plus-10;
+      border-bottom: 1px solid @brand-smoke-plus-10;
+    }
+
+    .list-group-item.active .collapse {
+      height: 100vh;
+      overflow-y: auto;
+      // Annoying but makes sure the last content is visible in iOS safari
+      padding-bottom: 72px;
+    }
+    .list-group-item.active .collapse .well {
+      // Annoying but makes sure the last content is visible in iOS safari
+      padding-bottom: 72px;
+      margin-bottom: -72px;
+    }
   }
 }

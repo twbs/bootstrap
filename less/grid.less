@@ -157,3 +157,15 @@
     margin-bottom: 16px;
   }
 }
+
+// Make grid gutters smaller on mobile
+@media (max-width: @screen-xs-max) {
+  .row {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+  [class*="col-"] {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+}

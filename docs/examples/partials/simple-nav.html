@@ -15,6 +15,7 @@
 				ng-class="{'m-b-0': $ctrl.subtitle}"
 				title="{{$ctrl.title}}" data-placement="bottom" tw-tool-tip>
 				{{$ctrl.title}}
+				<!--<i class="icon icon-left-arrow text-info icon-xxl"></i> April'17 invoices-->
 			</h1>
 			<p class="navbar-subtitle" ng-if="$ctrl.subtitle">{{$ctrl.subtitle}}</p>
 		</div>
@@ -22,7 +23,7 @@
 		<ul class="nav navbar-nav pull-xs-right">
 			<li class="dropdown pull-xs-right">
 				<a href="" class="dropdown-toggle profile-name p-l-1 p-r-0"
-					data-toggle="dropdown" role="button"
+					data-toggle="dropdown" role="button" id="profileSelect"
 					aria-expanded="false">
 					<span class="text-ellipsis"
 						title="Jonathan Smith-Henry">
@@ -69,6 +70,18 @@
 					title="Show notifications">
 					<i class="icon icon-notification m-r-0"></i>
 				</a>
+				<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-xs-right" role="menu">
+					<li class="">
+						<a href="">
+							We sent you an email to verify your address...
+						</a>
+					</li>
+					<li class="">
+						<a href="">
+							100 GBP was sent out at 2:48pm
+						</a>
+					</li>
+				</ul>
 			</li>
 		</ul>
 	</div>

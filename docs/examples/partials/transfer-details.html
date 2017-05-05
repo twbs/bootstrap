@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="col-md-6">
+<div>
+	<div ng-if="$ctrl.transfer.status === 'COMPLETED' || $ctrl.transfer.status === 'CANCELLED'">
 		<div class="row">
 			<dl class="col-sm-6">
 				<dt>Sent to</dt>
@@ -30,13 +30,28 @@
 			</dl>
 		</div>
 	</div>
-	<div class="col-md-6">
-		<ul class="sequence sequence-info">
-			<li>Pay in</li>
-			<li>Conversion</li>
-			<li class="active">Pay out
-				<p class="small m-b-0 p-b-1">The money should take between 1 and 2 business days to reach the recipient</p></li>
-			<li>Complete</li>
+	<div class="" ng-if="$ctrl.transfer.status !== 'COMPLETED' && $ctrl.transfer.status !== 'CANCELLED'">
+		<ul class="sequence sequence-hollow sequence-pulse m-l-1"
+			ng-class="{
+				'sequence-info': $ctrl.transfer.status !== 'PAUSED' && $ctrl.transfer.status !== 'AWAITING_FUNDS',
+				'sequence-warning': $ctrl.transfer.status === 'AWAITING_FUNDS',
+				'sequence-danger': $ctrl.transfer.status === 'PAUSED',
+				'sequence-pulse': $ctrl.transfer.status !== 'PAUSED' && $ctrl.transfer.status !== 'AWAITING_FUNDS'
+			}">
+			<li><p class="small p-b-1">You set up a transfer to TransferWise</p></li>
+			<li class="active">
+				<p class=" m-b-1" ng-class="{
+						'text-info': $ctrl.transfer.status !== 'PAUSED' && $ctrl.transfer.status !== 'AWAITING_FUNDS',
+						'text-warning': $ctrIl.transfer.status === 'AWAITING_FUNDS',
+						'text-danger': $ctrl.transfer.status === 'PAUSED'
+					}">The money is on it's way to TransferWise</p>
+				<p class="small p-b-1">Although you have instructed your bank to us the money, it will take
+					several hours for them to process the transfer and pay out.  We cannot
+					process the transfer until it arrives in our account.</p>
+			</li>
+			<li><p class="small p-b-1">We receive the money and transfer it to {{$ctrl.targetAccount.name}}</p></li>
+			<li><p class="small p-b-1">{{$ctrl.targetAccount.name}}'s bank process the transfer</p></li>
+			<li><p class="small p-b-1">The money appears in {{$ctrl.targetAccount.name}}'s account.</p></li>
 		</ul>
 	</div>
 </div>

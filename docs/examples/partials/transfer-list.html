@@ -1,4 +1,4 @@
-<ul class="list-group panel-list-group"
+<ul class="list-group panel-list-group list-group-slide-out"
 	ng-class="{'list-group-inactive': $ctrl.inactive}">
 	<li class="list-group-item p-a-0"
 		ng-repeat="transfer in $ctrl.transfers"
@@ -59,7 +59,13 @@
 						</div>
 					</div>
 					<div class="media-body">
-						<hr class="m-t-0" />
+						<hr class="m-t-0 hidden-xs hidden-sm" />
+
+						<a href="" ng-click="$ctrl.close(transfer.id)"
+							class="visible-xs-inline-block visible-sm-inline-block text-no-decoration m-t-1"
+							style="margin-left: -8px;">
+							<i class="icon icon-left-arrow icon-xxl"></i>
+						</a>
 
 						<transfer-activity-expanded
 							activity="transfer"

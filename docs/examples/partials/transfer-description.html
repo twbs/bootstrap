@@ -4,7 +4,7 @@
 		<span ng-if="$ctrl.transfer.type === 'CARD'">Card payment to</span>
 		<span ng-if="$ctrl.transfer.type === 'REWARD'">Reward payment to your</span>
 		<span ng-if="$ctrl.transfer.type === 'TRANSFER'">Transfer to</span>
-		<span ng-if="$ctrl.transfer.type === 'REQUEST'">Transfer from</span>
+		<span ng-if="$ctrl.transfer.type === 'REQUEST'">Transfer <span class="visible-xl-inline h5">{{$ctrl.currencies[$ctrl.transfer.source].symbol}}{{$ctrl.transfer.sourceAmount | number:2}}</span> from</span>
 		<span ng-if="$ctrl.transfer.type === 'CONVERSION'">Conversion from</span>
 	</span>
 	<strong ng-if="$ctrl.transfer.type === 'CARD' || $ctrl.transfer.type === 'TRANSFER'">

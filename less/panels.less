@@ -47,9 +47,11 @@
 @media (min-width: @screen-sm-min) {
   .panel {
     margin-bottom: @spacing-1-tablet;
+    margin-left: (-@spacing-1-tablet);
+    margin-right: (-@spacing-1-tablet);
   }
   .panel-heading {
-    padding: (@spacing-1-desktop / 2) 0 8px 0;
+    padding: (@spacing-1-desktop / 2) @spacing-1-tablet 8px @spacing-1-tablet;
 
   }
   .panel-body {
@@ -59,12 +61,19 @@
     padding: @spacing-1-tablet;
   }
 }
+@media (min-width: @screen-md-min) {
+  .panel {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .panel-heading {
+    padding: (@spacing-1-desktop / 2) 0 8px 0;
+  }
+}
 @media (min-width: @screen-lg-min) {
   .panel {
     margin-bottom: @spacing-1-desktop;
     border-radius: @panel-border-radius;
-    margin-left: 0;
-    margin-right: 0;
   }
   .panel-body {
     padding: @spacing-1-desktop;
@@ -238,7 +247,7 @@
     padding-right: @spacing-1-mobile;
   }
 
-  @media (min-width: @screen-sm-min) {
+  @media (min-width: @screen-md-min) {
     > .table tr > :first-child,
     > .table-responsive tr > :first-child {
       padding-left: @spacing-1-tablet;
@@ -346,7 +355,12 @@
 }
 
 .panel {
-  position: relative;
+  &.top,
+  &.right,
+  &.bottom,
+  &.left {
+    position: relative;
+  }
 
   &.top > .arrow {
     right: 11px;
@@ -533,7 +547,7 @@
         }
     }
 }
-@media (min-width: @screen-sm-min) {
+@media (min-width: @screen-md-min) {
     .panel {
       margin-left: 0;
       margin-right: 0;

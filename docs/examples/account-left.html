@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>Account Page Example</title>
-	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<!--<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
 
 	<link type="text/css" rel="stylesheet"
@@ -11,6 +12,7 @@
 
 	<script src="../assets/js/jquery.js"></script>
 	<script src="../assets/js/angular.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-cookies.min.js"></script>
 	<script src="../assets/js/styleguide-components.js"></script>
 
 	<script src="../dist/js/bootstrap.min.js"></script>
@@ -18,43 +20,18 @@
 	<script src="forms.js"></script>
 
 	<script>
-	angular.module('ExampleApp', ['tw.styleguide-components']);
-
-	function triggerPopover(id, options) {
-		$('.popover').remove();
-		$('#featureCover').remove();
-
-		$('#' + id).popover(options);
-		$('body').append('<div id="featureCover" class="column-layout-cover feature-tour-cover in" style="display: block;" onclick="hideCover(\''+id+'\')"></div>');
-	}
-	function triggerInvitePopover() {
-		triggerPopover('inviteFriends', {
-			trigger: 'click',
-			title: 'Did you know?',
-			content: 'By inviting your friends you can earn free transfers. Invite 3 friends to earn £50 off your fees.',
-			html: false,
-			placement: 'right',
-			container: 'body'
+	angular
+		.module('ExampleApp', ['tw.styleguide-components', 'ngCookies'])
+		.config(function ($locationProvider) {
+			// undo the default ('!')
+			//$locationProvider.hashPrefix('');
 		});
-	}
-	function triggerTwoFactorPopover() {
-		triggerPopover('twoFactor', {
-			trigger: 'click',
-			title: 'Secure your account',
-			content: 'You can now make your account more secure using 2 factor authentication <a href="">Learn more</a>.',
-			html: true,
-			placement: 'right'
-		});
-	}
-	function hideCover(id) {
-		$('#featureCover').remove();
-		$('#' + id).popover('destroy');
-	}
+
 	</script>
 
 	<script src="js/transfers.service.js"></script>
 	<script src="js/currencies.service.js"></script>
-
+	<script src="js/nav-tour.service.js"></script>
 	<script src="js/one-click.directive.js"></script>
 	<script src="js/nav.directive.js"></script>
 	<script src="js/top-nav.directive.js"></script>
@@ -72,6 +49,7 @@
 	<script src="js/transfer-actions.directive.js"></script>
 	<script src="js/transfer-activity.directive.js"></script>
 	<script src="js/transfer-activity-expanded.directive.js"></script>
+	<script src="js/transfer-status-message.directive.js"></script>
 	<script src="js/repeat-transfer.directive.js"></script>
 	<script src="js/currency-input.directive.js"></script>
 	<script src="js/pagination.directive.js"></script>
@@ -89,10 +67,11 @@
 		.controller('PageController', [
 			'TransferService',
 			'CurrencyService',
+			'NavTourService',
 			PageController
 		]);
 
-		function PageController(TransferService, CurrencyService) {
+		function PageController(TransferService, CurrencyService, NavTourService) {
 			var $ctrl = this;
 
 			CurrencyService.map().then(function(currencies) {
@@ -130,6 +109,31 @@
 				,{label: 'Receive', icon: 'icon-request'}
 				,{label: 'Something', icon: 'icon-request'}
 			];
+
+			var now = new Date();
+			var after = new Date(now.getTime() + (10 * 1000));
+			NavTourService.addSimpleTour(
+				'inviteFriends',
+				'right',
+				'Did you know?',
+				'By inviting your friends you can earn free transfers. Invite 3 friends to earn £50 off your fees.',
+				'/assets/img/css2-bg.jpg',
+				'/invite',
+				'Invite now'
+				//,after
+			);
+
+			/*
+			NavTourService.addSimpleTour(
+				'profileSelect',
+				'bottom',
+				'You now have two profiles',
+				'Make sure to choose the correct profile when sending money.',
+				'/assets/img/css2-bg.jpg'
+			);
+			*/
+
+			NavTourService.checkAndShowTour();
 		}
 	})(window.angular);
 	</script>
@@ -141,16 +145,6 @@
 		<div class="column-layout-top">
 			<side-nav></side-nav>
 		</div>
-		<!--
-		<div class="column-layout-bottom">
-			<dl>
-				<dt>Free transfers</dt>
-				<dd class="m-b-1">2</dd>
-				<dt>Fee credit</dt>
-				<dd class="m-b-0">$100 USD</dd>
-			</dl>
-		</div>
-		-->
 	</div>
 	<div class="column-layout-main">
 		<top-nav
@@ -163,22 +157,6 @@
 
 		<div class="container m-l-0">
 			<!--
-			<div class="row">
-				<div class="col-sm-6 col-md-7 col-xl-9">
-					<h1 class="hidden-lg hidden-xl m-t-3 h3">Activity</h1>
-				</div>
-				<div class="col-sm-6 col-md-5 col-xl-3 hidden-lg hidden-xl">
-					<div class="input-group input-group-sm m-t-3">
-						<span class="input-group-addon"><i class="icon icon-search m-r-0"></i></span>
-						<input type="text" class="form-control" placeholder="Search..." />
-						<span class="input-group-btn">
-							 <button class="btn btn-sm btn-primary" ng-click="ctrl.sideNavToggle()">Go</button>
-						</span>
-					</div>
-				</div>
-			</div>
-			-->
-			<!--
 			<div class="m-t-1 m-b-3">
 				<next-cards show="2"></next-cards>
 			</div>
@@ -186,16 +164,9 @@
 
 			<div class="panel m-b-2">
 				<div class="panel-heading">
-					<div class="row">
-						<div class="col-sm-6 col-md-7 col-xl-9 m-b-0">
-							<h6 class="panel-title">
-								In progress ({{ctrl.activeTransfers.length}})
-							</h6>
-						</div>
-						<div class="col-sm-6 col-md-5 col-xl-3 m-b-0 hidden-xs hidden-sm hidden-md text-xs-right">
-
-						</div>
-					</div>
+					<h6 class="panel-title">
+						In progress ({{ctrl.activeTransfers.length}})
+					</h6>
 				</div>
 				<transfer-list
 					transfers="ctrl.activeTransfers"
@@ -222,6 +193,14 @@
 
 			<div class="text-xs-center section">
 				&copy; TransferWise 2016
+			</div>
+			<div style="position: fixed; left: 264px; bottom: 24px;">
+				<div class="container" style="width: 1176px;">
+					<button class="btn btn-primary pull-right"
+						style="border-radius: 24px; width: 48px; padding: 11px; text-align: center;">
+						?
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>

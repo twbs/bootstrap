@@ -3,7 +3,7 @@
 	<input class="form-control text-xs-right p-r-0"
 		ng-model="$ctrl.amount"
 		ng-change="$ctrl.change()" type="text">
-	<span class="input-group-addon">
-		<span class="currency-flag currency-flag-{{$ctrl.currency.code | lowercase}} m-r-1"></span>{{$ctrl.currency.code}}
+	<span class="input-group-addon p-l-1">
+		{{$ctrl.currency.code}}
 	</span>
 </div>

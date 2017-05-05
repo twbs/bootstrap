@@ -28,20 +28,30 @@ th {
   > thead,
   > tbody,
   > tfoot {
-    > tr {
-      > th,
-      > td {
-        padding: @line-height-computed @table-cell-padding;
-        line-height: @line-height-base;
-        vertical-align: top;
-        border-top: 1px solid @table-border-color;
-        border-bottom: 0px solid @table-border-color;
-        transition: border ease @panel-focus-transtion;
-      }
+    > tr > th,
+    > tr > td {
+      padding: @line-height-computed @table-cell-padding;
+      line-height: @line-height-base;
+      vertical-align: top;
+      border-top: 1px solid @table-border-color;
+      border-bottom: 0;
+      transition: border ease @panel-focus-transtion;
     }
   }
+  > .thead > ol > li,
+  > .tbody > dl > dd,
+  > .tfoot > ol > li {
+    padding: @line-height-computed @table-cell-padding;
+    line-height: @line-height-base;
+    vertical-align: top;
+    border-top: 1px solid @table-border-color;
+    border-bottom: 0;
+    transition: border ease @panel-focus-transtion;
+  }
+
   // Bottom align for column headings
-  > thead > tr > th {
+  > thead > tr > th,
+  > .thead > ol > li {
     vertical-align: bottom;
 
     a {
@@ -57,7 +67,14 @@ th {
   > thead:first-child {
     > tr:first-child {
       > th,
-      > td {
+      > td{
+        border-top: 0;
+      }
+    }
+  }
+  > .thead:first-child {
+    > ol:first-child {
+      > li {
         border-top: 0;
       }
     }
@@ -73,16 +90,19 @@ th {
   }
 
   > thead,
-  > tfoot {
-      font-size: @font-size-small;
-      color: @headings-color;
+  > tfoot,
+  > .thead,
+  > .tfoot {
+    font-size: @font-size-small;
+    color: @headings-color;
   }
-  > tbody {
-      font-size: @font-size-small;
-
-      > tr > th {
-          color: @headings-color;
-      }
+  > tbody,
+  > .tbody {
+    font-size: @font-size-small;
+  }
+  > tbody > tr > th,
+  > .tbody > dl > .th {
+    color: @headings-color;
   }
 }
 
@@ -100,6 +120,10 @@ th {
       }
     }
   }
+  > .thead > ol > li,
+  > .tbody > dl > dd {
+    padding: @table-condensed-cell-padding;
+  }
 }
 
 
@@ -109,17 +133,19 @@ th {
 
 .table-bordered {
   border: 1px solid @table-border-color;
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        // border: 1px solid @table-border-color;
-      }
-    }
+  border-radius: @border-radius-base;
+
+  thead,
+  .thead {
+    background-color: @gray-base;
   }
 }
+@media (max-width: @screen-sm-max) {
+  div.table-bordered:not(.table-responsive) {
+    border: 0;
+  }
+}
+
 
 
 // Zebra-striping
@@ -129,6 +155,12 @@ th {
 .table-striped {
   > tbody > tr:nth-of-type(odd) {
     background-color: @table-bg-accent;
+  }
+
+  @media (min-width: @screen-md-min) {
+    > .tbody > dl:nth-of-type(odd) {
+      background-color: @table-bg-accent;
+    }
   }
 }
 
@@ -140,6 +172,11 @@ th {
 .table-hover {
   > tbody > tr:hover {
     background-color: @table-bg-hover;
+  }
+  @media (min-width: @screen-md-min) {
+    > .tbody > dl:hover {
+      background-color: @table-bg-hover;
+    }
   }
 }
 
@@ -176,6 +213,7 @@ table {
 .table-row-variant(info; @state-info-bg; @state-info-text);
 .table-row-variant(warning; @state-warning-bg; @state-warning-text);
 .table-row-variant(danger; @state-danger-bg; @state-danger-text);
+.table-row-variant(default; @brand-smoke-plus-20; @table-border-color);
 
 
 // Responsive tables
@@ -197,7 +235,6 @@ table {
     margin-bottom: @line-height-computed;
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    /*border: 1px solid @table-border-color;*/
 
     // Tighten up spacing
     > .table {
@@ -220,22 +257,6 @@ table {
     > .table-bordered {
       border: 0;
 
-      // Nuke the appropriate borders so that the parent can handle them
-      > thead,
-      > tbody,
-      > tfoot {
-        > tr {
-          > th:first-child,
-          > td:first-child {
-            border-left: 0;
-          }
-          > th:last-child,
-          > td:last-child {
-            border-right: 0;
-          }
-        }
-      }
-
       // Only nuke the last row's bottom-border in `tbody` and `tfoot` since
       // chances are there will be only one `tr` in a `thead` and that would
       // remove the border altogether.
@@ -257,10 +278,96 @@ table {
   }
 }
 
-.table-bordered {
-    border-radius: @border-radius-base;
-
-    > thead {
-        background-color: @gray-base;
+// Definition list tables
+//
+// Act as definition list on mobile and as a table on desktop
+@media (min-width: @screen-md-min) {
+  .table {
+    display: table;
+    > .thead {
+      display: table-header-group;
+      > ol {
+        display: table-row;
+        > li {
+          display: table-cell;
+          font-weight: @font-weight-bold;
+          color: @headings-color;
+        }
+      }
     }
+    > .tbody {
+      display: table-row-group;
+      > dl {
+        display: table-row;
+        > dt {
+          display: none;
+        }
+        > dd {
+          display: table-cell;
+          font-size: @font-size-small;
+          color: @text-color;
+        }
+      }
+    }
+    > .tfoot {
+      display: table-footer-group;
+    }
+  }
+}
+@media (max-width: @screen-sm-max) {
+  .table {
+    > .thead {
+      display: none;
+    }
+    > .tbody {
+      > dl {
+        border: 1px @input-border solid;
+        border-radius: @border-radius-base;
+        margin-bottom: @line-height-computed;
+        padding: @line-height-computed @line-height-computed 0;
+        > dd {
+          padding: 0;
+          border: 0;
+
+          &:empty {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: @screen-xs-max) {
+  .table > .tbody > dl {
+    padding-bottom: 8px;
+  }
+}
+
+// Calendar table
+//
+// Specific case for rendering a calendar
+.table-calendar {
+  > tbody > tr > td {
+    padding: 0;
+    > a {
+      display: block;
+      padding: 4px 0;
+      margin: 4px 2px;
+      border-radius: @border-radius-base;
+      text-align: center;
+      text-decoration: none;
+
+      &.active {
+        background-color: @brand-navy;
+        color: #FFF;
+      }
+      &:not([disabled]):hover {
+        background-color: @brand-light-blue;
+        color: #FFF;
+      }
+    }
+  }
+  > thead > tr > th {
+    text-align: center;
+  }
 }

@@ -323,6 +323,18 @@
           <td>Column content</td>
           <td>Column content</td>
         </tr>
+        <tr>
+          <th scope="row">10</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
+        <tr class="default">
+          <th scope="row">11</th>
+          <td>Column content</td>
+          <td>Column content</td>
+          <td>Column content</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -334,6 +346,7 @@
 <tr class="warning">...</tr>
 <tr class="danger">...</tr>
 <tr class="info">...</tr>
+<tr class="default">...</tr>
 
 <!-- On cells (`td` or `th`) -->
 <tr>
@@ -342,6 +355,7 @@
   <td class="warning">...</td>
   <td class="danger">...</td>
   <td class="info">...</td>
+  <td class="default">...</td>
 </tr>
 {% endhighlight %}
 
@@ -477,6 +491,154 @@
   <table class="table table-bordered">
     ...
   </table>
+</div>
+{% endhighlight %}
+
+  <h2 id="tables-calendar">Calendar tables</h2>
+  <p>Used for rendering the days in a month, or months in a year.</p>
+
+  <div class="bs-example" data-example-id="calendar-table">
+    <table class="table table-bordered table-condensed table-calendar">
+      <thead>
+        <tr>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+          <th>Sun</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="" disabled="true">1</a></td>
+          <td><a href="" class="active">2</a></td>
+          <td><a href="">3</a></td>
+          <td><a href="">4</a></td>
+          <td><a href="">5</a></td>
+          <td><a href="">6</a></td>
+          <td><a href="">7</a></td>
+        </tr>
+        <tr>
+          <td><a href="">8</a></td>
+          <td><a href="">9</a></td>
+          <td><a href="">10</a></td>
+          <td><a href="">11</a></td>
+          <td><a href="">12</a></td>
+          <td><a href="">13</a></td>
+          <td><a href="">14</a></td>
+        </tr>
+        <tr>
+          <td><a href="">15</a></td>
+          <td><a href="">16</a></td>
+          <td><a href="">17</a></td>
+          <td><a href="">18</a></td>
+          <td><a href="">19</a></td>
+          <td><a href="">20</a></td>
+          <td><a href="">21</a></td>
+        </tr>
+        <tr>
+          <td><a href="">22</a></td>
+          <td><a href="">23</a></td>
+          <td><a href="">24</a></td>
+          <td><a href="">25</a></td>
+          <td><a href="">26</a></td>
+          <td><a href="">27</a></td>
+          <td><a href="">28</a></td>
+        </tr>
+        <tr>
+          <td><a href="">29</a></td>
+          <td><a href="">30</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+{% highlight html %}
+<table class="table table-calendar table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th>Mon</th>
+      <th>Tue</th>
+      <th>Wed</th>
+      ...
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="" disabled>1</a></td>
+      <td><a href="" class="active">1</a></td>
+      <td><a href="">2</a></td>
+      ...
+    </tr>
+  </tbody>
+</table>
+{% endhighlight %}
+
+
+  <h2 id="tables-description-list">Description list tables</h2>
+  <p>A mobile first table variant that uses description lists within cards on
+    mobile widths (xs and sm grid widths), and regular table styles when wider.</p>
+  <p>The description list tables can be used with the other table modifier
+    classes: <code>.table-bordered</code>, <code>.table-striped</code>,
+    <code>.table-hover</code>, <code>.table-condensed</code>.  You may also wrap
+    the table in a <code>.table-responsive</code> in case your table may not fit
+    on tablet widths.</p>
+
+  <div class="bs-example" data-example-id="description-list-table">
+    <div class="table table-bordered" role="grid">
+      <div class="thead" role="rowgroup">
+        <ol role="row">
+          <li role="columnheader">Heading 1</li>
+          <li role="columnheader">Heading 2</li>
+          <li role="columnheader">Heading 3</li>
+        </ol>
+      </div>
+      <div class="tbody" role="rowgroup">
+        <dl role="row">
+          <dt>Heading 1</dt>
+          <dd role="gridcell">Text 1</dd>
+          <dt>Heading 2</dt>
+          <dd role="gridcell">Text 2</dd>
+          <dt>Heading 3</dt>
+          <dd role="gridcell">Text 3</dd>
+        </dl>
+        <dl role="row">
+          <dt>Heading 1</dt>
+          <dd role="gridcell">Text 1</dd>
+          <dt>Heading 2</dt>
+          <dd role="gridcell">Text 2</dd>
+          <dt>Heading 3</dt>
+          <dd role="gridcell">Text 3</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+{% highlight html %}
+<div class="table table-bordered" role="grid">
+  <div class="thead" role="rowgroup">
+    <ol role="row">
+      <li role="columnheader">Heading 1</li>
+      <li role="columnheader">Heading 2</li>
+      <li role="columnheader">Heading 3</li>
+    </ol>
+  </div>
+  <div class="tbody" role="rowgroup">
+    <dl role="row">
+      <dt>Heading 1</dt>
+      <dd role="gridcell">Text 1</dd>
+      <dt>Heading 2</dt>
+      <dd role="gridcell">Text 2</dd>
+      <dt>Heading 3</dt>
+      <dd role="gridcell">Text 3</dd>
+    </dl>
+    <dl role="row">...</dl>
+  </div>
 </div>
 {% endhighlight %}
 </div>

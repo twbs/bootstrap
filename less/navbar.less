@@ -128,6 +128,7 @@
   right: 0;
   left: 0;
   z-index: @zindex-navbar-fixed;
+  backface-visibility: hidden;
 
   // Undo the rounded corners
   @media (min-width: @grid-float-breakpoint) {
@@ -252,6 +253,7 @@
     padding: @navbar-padding-vertical @navbar-padding-horizontal;
     line-height: @navbar-line-height;
     outline-offset: -1px;
+    transition: color ease @transition-duration;
 
     @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
       padding-left: 12px;
@@ -915,9 +917,58 @@
 
 .nav-toolbar {
   padding-top: 16px;
+  margin-top: -16px;
   padding-bottom: 0;
-  background-color: #fff;
+  background-color: @brand-navy;
   border-bottom: 1px solid #e2e6e8;
+
+  @media (min-width: @screen-lg-min) {
+    margin-top: 0;
+    background-color: #FFF;
+
+    &.affix {
+      top: 0;
+      z-index: @zindex-navbar;
+      margin-top: 0;
+      border-top: 0;
+      position: fixed;
+      backface-visibility: hidden;
+
+      + .container,
+      + .container-fluid {
+        margin-top: @nav-toolbar-height !important;
+      }
+    }
+  }
+  @media (max-width: @screen-md-max) {
+    &.affix {
+      // we have a global affix rule which would be breaking to remove
+      position: relative !important;
+
+      + .container,
+      + .container-fluid {
+        margin-top: 0 !important;
+      }
+    }
+
+    .btn-info,
+    .btn-warning,
+    .btn-danger {
+      color: #00b9ff;
+      border-color: #00b9ff;
+    }
+    .btn-info:hover,
+    .btn-warning:hover,
+    .btn-danger:hover {
+      color: #fff;
+    }
+    .form-control,
+    .input-group,
+    .btn-input,
+    .input-group-addon {
+      border-color: #fff;
+    }
+  }
 
   h1 {
     line-height: 32px;
@@ -926,45 +977,12 @@
     text-decoration: none;
     height: 32px;
   }
-
-  &.affix {
-    top: 0;
-    z-index: @zindex-navbar;
-    width: 100%;
-    margin-top: 0;
-    border-top: 0;
-    position: fixed;
-  }
-}
-
-.nav-toolbar.affix + .container,
-.nav-toolbar.affix + .container-fluid {
-  margin-top: @nav-toolbar-height !important;
 }
 
 @media (min-width: @screen-lg-min) {
   .column-layout .nav-toolbar.affix {
     // Use comment to allow older LESS compilers to work.
     width: ~"calc(100% - @{column-width})";
-  }
-}
-
-@media (max-width: @screen-xs-max) {
-  .affix-cancel-xs {
-    position: relative !important;
-  }
-  .nav-toolbar.affix-cancel-xs + .container,
-  .nav-toolbar.affix-cancel-xs + .container-fluid {
-    margin-top: 0 !important;
-  }
-}
-@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-  .affix-cancel-sm {
-    position: relative !important;
-  }
-  .nav-toolbar.affix-cancel-sm + .container,
-  .nav-toolbar.affix-cancel-sm + .container-fluid {
-    margin-top: 0 !important;
   }
 }
 
