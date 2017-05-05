@@ -1447,6 +1447,56 @@ h6,
 .h6 {
   color: #829ca9;
 }
+.display-1 {
+  margin-bottom: 24px;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 72px;
+}
+.display-2 {
+  margin-bottom: 24px;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 72px;
+}
+.display-3 {
+  margin-bottom: 8px;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 48px;
+}
+.display-4 {
+  margin-bottom: 4px;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 32px;
+}
+@media (min-width: 768px) {
+  .display-1 {
+    margin-bottom: 8px;
+    font-size: 104px;
+    font-weight: 800;
+    line-height: 128px;
+  }
+  .display-2 {
+    margin-bottom: 16px;
+    font-size: 88px;
+    font-weight: 800;
+    line-height: 112px;
+  }
+  .display-3 {
+    margin-bottom: 24px;
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 88px;
+  }
+  .display-4 {
+    margin-bottom: 24px;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 72px;
+  }
+}
 p {
   margin: 0 0 24px;
 }
