@@ -36,32 +36,18 @@ const Tooltip = (($) => {
   const CLASS_PREFIX        = 'bs-tooltip'
   const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
-  const Default = {
-    animation   : true,
-    template    : '<div class="tooltip" role="tooltip">'
-                + '<div class="arrow"></div>'
-                + '<div class="tooltip-inner"></div></div>',
-    trigger     : 'hover focus',
-    title       : '',
-    delay       : 0,
-    html        : false,
-    selector    : false,
-    placement   : 'top',
-    offset      : 0,
-    container   : false
-  }
-
   const DefaultType = {
-    animation   : 'boolean',
-    template    : 'string',
-    title       : '(string|element|function)',
-    trigger     : 'string',
-    delay       : '(number|object)',
-    html        : 'boolean',
-    selector    : '(string|boolean)',
-    placement   : '(string|function)',
-    offset      : '(number|string)',
-    container   : '(string|element|boolean)'
+    animation           : 'boolean',
+    template            : 'string',
+    title               : '(string|element|function)',
+    trigger             : 'string',
+    delay               : '(number|object)',
+    html                : 'boolean',
+    selector            : '(string|boolean)',
+    placement           : '(string|function)',
+    offset              : '(number|string)',
+    container           : '(string|element|boolean)',
+    fallbackPlacement   : '(string|array)'
   }
 
   const AttachmentMap = {
@@ -69,6 +55,22 @@ const Tooltip = (($) => {
     RIGHT  : 'right',
     BOTTOM : 'bottom',
     LEFT   : 'left'
+  }
+
+  const Default = {
+    animation           : true,
+    template            : '<div class="tooltip" role="tooltip">'
+                        + '<div class="arrow"></div>'
+                        + '<div class="tooltip-inner"></div></div>',
+    trigger             : 'hover focus',
+    title               : '',
+    delay               : 0,
+    html                : false,
+    selector            : false,
+    placement           : 'top',
+    offset              : 0,
+    container           : false,
+    fallbackPlacement   : [AttachmentMap.TOP, AttachmentMap.RIGHT, AttachmentMap.BOTTOM, AttachmentMap.LEFT]
   }
 
   const HoverState = {
@@ -289,6 +291,9 @@ const Tooltip = (($) => {
           modifiers : {
             offset : {
               offset : this.config.offset
+            },
+            flip : {
+              behavior : this.config.fallbackPlacement
             }
           },
           onCreate : (data) => {
