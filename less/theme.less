@@ -31,7 +31,7 @@ b, strong {
 .btn-info,
 .btn-warning,
 .btn-danger {
-  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  // text-shadow: 0 -1px 0 rgba(0,0,0,.2);
 
   // Reset the shadow
   &:active,
@@ -50,10 +50,19 @@ b, strong {
   }
 }
 
-
-// TODO:
-// "preview etc buttons" as links with round icons
-// foooter
+.add-cicle-to-icon(@btn-color: #C9D4E2; @diameter: @line-height-computed; @padding: 4px) {
+  .fa,
+  .glyphicon {
+    color: white;
+    background-color: @btn-color;
+    border-radius: 50%;
+    padding: @padding;
+    width: @diameter;
+    height: @diameter;
+    // 19 - 2*4
+    font-size: (@diameter - (2 * @padding));
+  }
+}
 
 
 // Mixin for generating new styles
@@ -67,7 +76,7 @@ b, strong {
   &:hover,
   &:focus  {
     background-color: @btn-hover;
-    //border-color: transparent;
+    border-color: transparent;
     //background-position: 0 -15px;
     .box-shadow(none);
   }
@@ -77,8 +86,7 @@ b, strong {
   &:active:hover,
   &.active:hover,
   &:active:focus,
-  &.active:focus,
-   {
+  &.active:focus:hover {
     background-color: @btn-hover;
     border-color: @btn-border;
     border-width: 3px;
@@ -558,22 +566,7 @@ b, strong {
     border: 0;
     .box-shadow(0px (2* @navbar-default-shadow-height) @navbar-default-shadow-height @navbar-default-shadow-height @navbar-default-bg);
 
-    .fa {
-      color: white;
-      background-color: #C9D4E2;
-      border-radius: 50%;
-      padding: 3px;
-      // 19 - 2*3
-      font-size: 13px;
-    }
-    .glyphicon {
-      color: white;
-      background-color: #C9D4E2;
-      border-radius: 50%;
-      padding: 3px;
-      // 19 - 2*3
-      font-size: 13px;
-    }
+    .add-cicle-to-icon();
   }
 
   > h1, h2, h3, h4, h5, h6,
@@ -683,6 +676,7 @@ body {
   .row:not(:last-child) {
     padding-bottom: @padding-base-vertical;
   }
+  margin-bottom: @padding-large-vertical;
 }
 
 .select2-input-defaults() {
@@ -778,7 +772,7 @@ body {
 }
 
 .widget-header {
-  font-weight: bold;
+  font-weight: @font-family-bold-weight;
   color: @apim-widget-color;
   background-color: @apim-widget-bg;
   margin-top: -@padding-base-vertical;
@@ -797,22 +791,7 @@ body {
     margin-right: @padding-base-horizontal;
   }
 
-  .fa {
-    color: white;
-    background-color: #C9D4E2;
-    border-radius: 50%;
-    padding: 3px;
-    // 19 - 2*3
-    font-size: 13px;
-  }
-  .glyphicon {
-    color: white;
-    background-color: #C9D4E2;
-    border-radius: 50%;
-    padding: 3px;
-    // 19 - 2*3
-    font-size: 13px;
-  }
+  .add-cicle-to-icon();
 }
 
 .footer {
@@ -822,4 +801,16 @@ body {
   margin-top: @footer-height;
   height: @footer-height;
   background-color: white;
+}
+
+.btn-link {
+  .add-cicle-to-icon(@btn-primary-bg);
+  font-weight: @btn-font-weight;
+
+  &:hover,
+  &:focus {
+    color: @apim-pri-hover;
+    text-decoration: none;
+    .add-cicle-to-icon(@apim-pri-hover);
+  }
 }

@@ -636,15 +636,6 @@ b,
 strong {
   font-weight: 600;
 }
-.btn-default,
-.btn-primary,
-.btn-secondary,
-.btn-success,
-.btn-info,
-.btn-warning,
-.btn-danger {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
-}
 .btn-default:active,
 .btn-primary:active,
 .btn-secondary:active,
@@ -834,6 +825,7 @@ fieldset[disabled] .btn-secondary.focus {
 .btn-default:hover,
 .btn-default:focus {
   background-color: #6b7fc1;
+  border-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -842,7 +834,7 @@ fieldset[disabled] .btn-secondary.focus {
 .btn-default:active:hover,
 .btn-default.active:hover,
 .btn-default:active:focus,
-.btn-default.active:focus {
+.btn-default.active:focus:hover {
   background-color: #6b7fc1;
   border-color: #d5d9ee;
   border-width: 3px;
@@ -883,6 +875,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:hover,
 .btn-primary:focus {
   background-color: #1b20c2;
+  border-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -891,7 +884,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:active:hover,
 .btn-primary.active:hover,
 .btn-primary:active:focus,
-.btn-primary.active:focus {
+.btn-primary.active:focus:hover {
   background-color: #1b20c2;
   border-color: #d5d9ee;
   border-width: 3px;
@@ -932,6 +925,7 @@ fieldset[disabled] .btn-primary.active {
 .btn-secondary:hover,
 .btn-secondary:focus {
   background-color: #55dcff;
+  border-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -940,7 +934,7 @@ fieldset[disabled] .btn-primary.active {
 .btn-secondary:active:hover,
 .btn-secondary.active:hover,
 .btn-secondary:active:focus,
-.btn-secondary.active:focus {
+.btn-secondary.active:focus:hover {
   background-color: #55dcff;
   border-color: #d5d9ee;
   border-width: 3px;
@@ -981,6 +975,7 @@ fieldset[disabled] .btn-secondary.active {
 .btn-success:hover,
 .btn-success:focus {
   background-color: #789f2a;
+  border-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -989,7 +984,7 @@ fieldset[disabled] .btn-secondary.active {
 .btn-success:active:hover,
 .btn-success.active:hover,
 .btn-success:active:focus,
-.btn-success.active:focus {
+.btn-success.active:focus:hover {
   background-color: #789f2a;
   border-color: #8dbb32;
   border-width: 3px;
@@ -1030,6 +1025,7 @@ fieldset[disabled] .btn-success.active {
 .btn-info:hover,
 .btn-info:focus {
   background-color: #0db5ff;
+  border-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1038,7 +1034,7 @@ fieldset[disabled] .btn-success.active {
 .btn-info:active:hover,
 .btn-info.active:hover,
 .btn-info:active:focus,
-.btn-info.active:focus {
+.btn-info.active:focus:hover {
   background-color: #0db5ff;
   border-color: #d5d9ee;
   border-width: 3px;
@@ -1079,6 +1075,7 @@ fieldset[disabled] .btn-info.active {
 .btn-warning:hover,
 .btn-warning:focus {
   background-color: #f48222;
+  border-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1087,7 +1084,7 @@ fieldset[disabled] .btn-info.active {
 .btn-warning:active:hover,
 .btn-warning.active:hover,
 .btn-warning:active:focus,
-.btn-warning.active:focus {
+.btn-warning.active:focus:hover {
   background-color: #f48222;
   border-color: #d5d9ee;
   border-width: 3px;
@@ -1128,6 +1125,7 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger:hover,
 .btn-danger:focus {
   background-color: #c12e2a;
+  border-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1136,7 +1134,7 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger:active:hover,
 .btn-danger.active:hover,
 .btn-danger:active:focus,
-.btn-danger.active:focus {
+.btn-danger.active:focus:hover {
   background-color: #c12e2a;
   border-color: #d5d9ee;
   border-width: 3px;
@@ -1177,6 +1175,7 @@ fieldset[disabled] .btn-danger.active {
 .btn-inverse:hover,
 .btn-inverse:focus {
   background-color: #070707;
+  border-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1185,7 +1184,7 @@ fieldset[disabled] .btn-danger.active {
 .btn-inverse:active:hover,
 .btn-inverse.active:hover,
 .btn-inverse:active:focus,
-.btn-inverse.active:focus {
+.btn-inverse.active:focus:hover {
   background-color: #070707;
   border-color: #d5d9ee;
   border-width: 3px;
@@ -1591,16 +1590,12 @@ fieldset[disabled] .btn-inverse.active {
     -webkit-box-shadow: 0 2px 1px 1px #2e3192;
             box-shadow: 0 2px 1px 1px #2e3192;
   }
-  .sidebar .fa {
-    padding: 3px;
-    font-size: 13px;
-    color: white;
-    background-color: #c9d4e2;
-    border-radius: 50%;
-  }
+  .sidebar .fa,
   .sidebar .glyphicon {
-    padding: 3px;
-    font-size: 13px;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    font-size: 12px;
     color: white;
     background-color: #c9d4e2;
     border-radius: 50%;
@@ -1715,6 +1710,9 @@ body {
 .selectpicker {
   width: 100% !important;
 }
+.options-form {
+  margin-bottom: 8px;
+}
 .options-form .row:not(:last-child) {
   padding-bottom: 6px;
 }
@@ -1791,7 +1789,7 @@ body {
   margin-top: -6px;
   margin-right: -12px;
   margin-left: -12px;
-  font-weight: bold;
+  font-weight: 600;
   color: #2e3192;
   background-color: #ebf1f7;
 }
@@ -1802,16 +1800,12 @@ body {
   margin-right: 12px;
   margin-left: 0;
 }
-.widget-header .fa {
-  padding: 3px;
-  font-size: 13px;
-  color: white;
-  background-color: #c9d4e2;
-  border-radius: 50%;
-}
+.widget-header .fa,
 .widget-header .glyphicon {
-  padding: 3px;
-  font-size: 13px;
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  font-size: 12px;
   color: white;
   background-color: #c9d4e2;
   border-radius: 50%;
@@ -1823,5 +1817,35 @@ body {
   height: 60px;
   margin-top: 60px;
   background-color: white;
+}
+.btn-link {
+  font-weight: 600;
+}
+.btn-link .fa,
+.btn-link .glyphicon {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  font-size: 12px;
+  color: white;
+  background-color: #2e3192;
+  border-radius: 50%;
+}
+.btn-link:hover,
+.btn-link:focus {
+  color: #1b20c2;
+  text-decoration: none;
+}
+.btn-link:hover .fa,
+.btn-link:focus .fa,
+.btn-link:hover .glyphicon,
+.btn-link:focus .glyphicon {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  font-size: 12px;
+  color: white;
+  background-color: #1b20c2;
+  border-radius: 50%;
 }
 /*# sourceMappingURL=bootstrap-theme.css.map */
