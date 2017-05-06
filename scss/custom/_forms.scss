@@ -1,0 +1,32 @@
+// Form control feedback states
+//
+// Apply contextual and semantic states to individual form controls.
+
+.form-control-feedback {
+  margin-top: -$input-btn-border-width;
+  padding: $input-padding-y $input-padding-x;
+  @include border-bottom-radius($input-border-radius);
+  line-height: $input-line-height;
+}
+
+// Form Feedback Styled
+.has-success {
+  .form-control-feedback {
+    color: $white;
+    background-color: $brand-success;
+  }
+}
+
+.has-warning {
+  .form-control-feedback {
+    color: $white;
+    background-color: $brand-warning;
+  }
+}
+
+.has-danger {
+  .form-control-feedback {
+    color: $white;
+    background-color: $brand-danger;
+  }
+}
