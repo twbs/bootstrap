@@ -51,7 +51,7 @@
 $pixels in $grid-breakpoints {
   @include media-breakpoint-up($size) {
     @for $i from 1 to $grid-columns {
-      @if $size == 'xs' {
+      @if $size == "xs" {
         .order-#{$i} {
           order: $i;
         }
