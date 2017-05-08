@@ -1571,7 +1571,11 @@ fieldset[disabled] .btn-inverse.active {
 }
 /* Hide for mobile, show later */
 .sidebar {
-  display: none;
+  padding: 8px 14px;
+  font-weight: 600;
+  background-color: #ebf1f7;
+  -webkit-box-shadow: 0 2px 1px 1px #2e3192;
+          box-shadow: 0 2px 1px 1px #2e3192;
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -1581,25 +1585,21 @@ fieldset[disabled] .btn-inverse.active {
     left: 0;
     z-index: 1031;
     display: block;
-    padding: 8px 14px;
     overflow-x: hidden;
     overflow-y: auto;
     /* Scrollable contents if viewport is shorter than content. */
-    background-color: #ebf1f7;
     border: 0;
-    -webkit-box-shadow: 0 2px 1px 1px #2e3192;
-            box-shadow: 0 2px 1px 1px #2e3192;
   }
-  .sidebar .fa,
-  .sidebar .glyphicon {
-    width: 20px;
-    height: 20px;
-    padding: 4px;
-    font-size: 12px;
-    color: white;
-    background-color: #c9d4e2;
-    border-radius: 50%;
-  }
+}
+.sidebar .fa,
+.sidebar .glyphicon {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  font-size: 12px;
+  color: white;
+  background-color: #c9d4e2;
+  border-radius: 50%;
 }
 .sidebar > h1,
 .sidebar h2,
@@ -1672,6 +1672,7 @@ body {
   margin-bottom: 0;
   margin-left: -14px;
   font-size: 12px;
+  font-weight: 600;
 }
 @media (min-width: 768px) {
   .breadcrumb {

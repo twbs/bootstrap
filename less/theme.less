@@ -550,7 +550,6 @@ b, strong {
 
 /* Hide for mobile, show later */
 .sidebar {
-  display: none;
 
   @media (min-width: @grid-float-breakpoint) {
     position: fixed;
@@ -559,15 +558,16 @@ b, strong {
     bottom: 0;
     left: 0;
     z-index: (@zindex-navbar-fixed + 1);
-    padding: @padding-large-vertical @padding-large-horizontal;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: @sidebar-default-bg;
     border: 0;
-    .box-shadow(0px (2* @navbar-default-shadow-height) @navbar-default-shadow-height @navbar-default-shadow-height @navbar-default-bg);
-
-    .add-cicle-to-icon();
   }
+
+  padding: @padding-large-vertical @padding-large-horizontal;
+  font-weight: @font-family-bold-weight;
+  background-color: @sidebar-default-bg;
+  .box-shadow(0px (2* @navbar-default-shadow-height) @navbar-default-shadow-height @navbar-default-shadow-height @navbar-default-bg);
+  .add-cicle-to-icon();
 
   > h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -630,6 +630,7 @@ body {
 
 .breadcrumb {
   font-size: @font-size-small;
+  font-weight: @font-family-bold-weight;
   margin-top: -@padding-large-vertical;
   margin-left: -@padding-large-horizontal;
   margin-right: -@padding-large-horizontal;
