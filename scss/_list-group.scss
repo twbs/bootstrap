@@ -22,10 +22,6 @@
   color: $list-group-link-color;
   text-align: inherit; // For `<button>`s (anchors inherit)
 
-  .list-group-item-heading {
-    color: $list-group-link-heading-color;
-  }
-
   // Hover state
   @include hover-focus {
     color: $list-group-link-hover-color;
@@ -46,9 +42,7 @@
 
 .list-group-item {
   position: relative;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
+  display: block;
   padding: $list-group-item-padding-y $list-group-item-padding-x;
   // Place the border on the list items and negative margin up for better styling
   margin-bottom: -$list-group-border-width;
@@ -71,16 +65,7 @@
   &.disabled,
   &:disabled {
     color: $list-group-disabled-color;
-    cursor: $cursor-disabled;
     background-color: $list-group-disabled-bg;
-
-    // Force color to inherit for custom content
-    .list-group-item-heading {
-      color: inherit;
-    }
-    .list-group-item-text {
-      color: $list-group-disabled-text-color;
-    }
   }
 
   // Include both here for `<a>`s and `<button>`s
@@ -88,18 +73,7 @@
     z-index: 2; // Place active items above their siblings for proper border styling
     color: $list-group-active-color;
     background-color: $list-group-active-bg;
-    border-color: $list-group-active-border;
-
-    // Force color to inherit for custom content
-    .list-group-item-heading,
-    .list-group-item-heading > small,
-    .list-group-item-heading > .small {
-      color: inherit;
-    }
-
-    .list-group-item-text {
-      color: $list-group-active-text-color;
-    }
+    border-color: $list-group-active-border-color;
   }
 }
 

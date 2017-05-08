@@ -34,6 +34,7 @@ const Tooltip = (($) => {
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
   const CLASS_PREFIX        = 'bs-tether'
+  const TETHER_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
   const Default = {
     animation   : true,
@@ -123,12 +124,11 @@ const Tooltip = (($) => {
     constructor(element, config) {
 
       // private
-      this._isEnabled        = true
-      this._timeout          = 0
-      this._hoverState       = ''
-      this._activeTrigger    = {}
-      this._isTransitioning  = false
-      this._tether           = null
+      this._isEnabled     = true
+      this._timeout       = 0
+      this._hoverState    = ''
+      this._activeTrigger = {}
+      this._tether        = null
 
       // protected
       this.element = element
@@ -249,9 +249,6 @@ const Tooltip = (($) => {
 
       const showEvent = $.Event(this.constructor.Event.SHOW)
       if (this.isWithContent() && this._isEnabled) {
-        if (this._isTransitioning) {
-          throw new Error('Tooltip is transitioning')
-        }
         $(this.element).trigger(showEvent)
 
         const isInTheDom = $.contains(
@@ -283,9 +280,11 @@ const Tooltip = (($) => {
 
         const container = this.config.container === false ? document.body : $(this.config.container)
 
-        $(tip)
-          .data(this.constructor.DATA_KEY, this)
-          .appendTo(container)
+        $(tip).data(this.constructor.DATA_KEY, this)
+
+        if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
+          $(tip).appendTo(container)
+        }
 
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
@@ -305,10 +304,17 @@ const Tooltip = (($) => {
 
         $(tip).addClass(ClassName.SHOW)
 
+        // if this is a touch-enabled device we add extra
+        // empty mouseover listeners to the body's immediate children;
+        // only needed because of broken event delegation on iOS
+        // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+        if ('ontouchstart' in document.documentElement) {
+          $('body').children().on('mouseover', null, $.noop)
+        }
+
         const complete = () => {
           const prevHoverState = this._hoverState
-          this._hoverState   = null
-          this._isTransitioning = false
+          this._hoverState     = null
 
           $(this.element).trigger(this.constructor.Event.SHOWN)
 
@@ -318,7 +324,6 @@ const Tooltip = (($) => {
         }
 
         if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
-          this._isTransitioning = true
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
             .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
@@ -332,17 +337,14 @@ const Tooltip = (($) => {
     hide(callback) {
       const tip       = this.getTipElement()
       const hideEvent = $.Event(this.constructor.Event.HIDE)
-      if (this._isTransitioning) {
-        throw new Error('Tooltip is transitioning')
-      }
       const complete  = () => {
         if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
           tip.parentNode.removeChild(tip)
         }
 
+        this._cleanTipClass()
         this.element.removeAttribute('aria-describedby')
         $(this.element).trigger(this.constructor.Event.HIDDEN)
-        this._isTransitioning = false
         this.cleanupTether()
 
         if (callback) {
@@ -358,13 +360,19 @@ const Tooltip = (($) => {
 
       $(tip).removeClass(ClassName.SHOW)
 
+      // if this is a touch-enabled device we remove the extra
+      // empty mouseover listeners we added for iOS support
+      if ('ontouchstart' in document.documentElement) {
+        $('body').children().off('mouseover', null, $.noop)
+      }
+
       this._activeTrigger[Trigger.CLICK] = false
       this._activeTrigger[Trigger.FOCUS] = false
       this._activeTrigger[Trigger.HOVER] = false
 
       if (Util.supportsTransitionEnd() &&
           $(this.tip).hasClass(ClassName.FADE)) {
-        this._isTransitioning = true
+
         $(tip)
           .one(Util.TRANSITION_END, complete)
           .emulateTransitionEnd(TRANSITION_DURATION)
@@ -374,6 +382,7 @@ const Tooltip = (($) => {
       }
 
       this._hoverState = ''
+
     }
 
 
@@ -436,6 +445,14 @@ const Tooltip = (($) => {
 
     _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()]
+    }
+
+    _cleanTipClass() {
+      const $tip = $(this.getTipElement())
+      const tabClass = $tip.attr('class').match(TETHER_PREFIX_REGEX)
+      if (tabClass !== null && tabClass.length > 0) {
+        $tip.removeClass(tabClass.join(''))
+      }
     }
 
     _setListeners() {
@@ -601,6 +618,14 @@ const Tooltip = (($) => {
           show : config.delay,
           hide : config.delay
         }
+      }
+
+      if (config.title && typeof config.title === 'number') {
+        config.title = config.title.toString()
+      }
+
+      if (config.content && typeof config.content === 'number') {
+        config.content = config.content.toString()
       }
 
       Util.typeCheckConfig(

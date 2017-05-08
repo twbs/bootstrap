@@ -30,8 +30,7 @@
 .input-group .form-control {
   // Vertically centers the content of the addons within the input group
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
 
   &:not(:first-child):not(:last-child) {
     @include border-radius(0);
@@ -67,11 +66,11 @@
 //
 
 .input-group-addon {
-  padding: $input-padding-y $input-padding-x;
+  padding: $input-btn-padding-y $input-btn-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base; // Match inputs
   font-weight: $font-weight-normal;
-  line-height: $input-line-height;
+  line-height: $input-btn-line-height;
   color: $input-color;
   text-align: center;
   background-color: $input-group-addon-bg;
@@ -80,12 +79,13 @@
 
   // Sizing
   &.form-control-sm {
-    padding: $input-padding-y-sm $input-padding-x-sm;
+    padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
     font-size: $font-size-sm;
     @include border-radius($input-border-radius-sm);
   }
+
   &.form-control-lg {
-    padding: $input-padding-y-lg $input-padding-x-lg;
+    padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
     font-size: $font-size-lg;
     @include border-radius($input-border-radius-lg);
   }
@@ -144,8 +144,6 @@
   // element above the siblings.
   > .btn {
     position: relative;
-    // Vertically stretch the button and center its content
-    flex: 1;
 
     + .btn {
       margin-left: (-$input-btn-border-width);

@@ -6,13 +6,10 @@
     background-color: $background;
   }
 
+  //scss-lint:disable QualifyingElement
   a.list-group-item-#{$state},
   button.list-group-item-#{$state} {
     color: $color;
-
-    .list-group-item-heading {
-      color: inherit;
-    }
 
     @include hover-focus {
       color: $color;
@@ -25,4 +22,5 @@
       border-color: $color;
     }
   }
+  // scss-lint:enable QualifyingElement
 }

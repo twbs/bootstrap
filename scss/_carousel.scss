@@ -12,13 +12,11 @@
 .carousel-item {
   position: relative;
   display: none;
+  align-items: center;
   width: 100%;
-
-  @include if-supports-3d-transforms() {
-    @include transition($carousel-transition);
-    backface-visibility: hidden;
-    perspective: 1000px;
-  }
+  @include transition($carousel-transition);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .carousel-item.active,
@@ -34,21 +32,19 @@
 }
 
 // CSS3 transforms when supported by the browser
-@include if-supports-3d-transforms() {
-  .carousel-item-next.carousel-item-left,
-  .carousel-item-prev.carousel-item-right {
-    transform: translate3d(0, 0, 0);
-  }
+.carousel-item-next.carousel-item-left,
+.carousel-item-prev.carousel-item-right {
+  transform: translate3d(0, 0, 0);
+}
 
-  .carousel-item-next,
-  .active.carousel-item-right {
-    transform: translate3d(100%, 0, 0);
-  }
+.carousel-item-next,
+.active.carousel-item-right {
+  transform: translate3d(100%, 0, 0);
+}
 
-  .carousel-item-prev,
-  .active.carousel-item-left {
-    transform: translate3d(-100%, 0, 0);
-  }
+.carousel-item-prev,
+.active.carousel-item-left {
+  transform: translate3d(-100%, 0, 0);
 }
 
 
@@ -131,7 +127,6 @@
     margin-right: $carousel-indicator-spacer;
     margin-left: $carousel-indicator-spacer;
     text-indent: -999px;
-    cursor: pointer;
     background-color: rgba($carousel-indicator-active-bg, .5);
 
     // Use pseudo classes to increase the hit area by 10px on top and bottom.
