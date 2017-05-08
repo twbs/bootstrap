@@ -329,7 +329,6 @@ $table-head-color:              $gray !default;
 $table-inverse-bg:              $gray-dark !default;
 $table-inverse-bg-accent:       rgba($white, .05) !default;
 $table-inverse-bg-hover:        rgba($white, .075) !default;
-$table-inverse-bg-active:       $table-inverse-bg-hover !default;
 $table-inverse-border-color:    lighten($gray-dark, 7.5%) !default;
 $table-inverse-color:           $body-bg !default;
 
@@ -565,11 +564,8 @@ $zindex-tooltip:            1070 !default;
 
 // Navs
 
-$nav-item-margin:               .2rem !default;
-$nav-item-inline-spacer:        1rem !default;
 $nav-link-padding-y:            .5rem !default;
 $nav-link-padding-x:            1rem !default;
-$nav-link-hover-bg:             $gray-lighter !default;
 $nav-disabled-link-color:       $gray-light !default;
 
 $nav-tabs-border-color:                       #ddd !default;
@@ -579,8 +575,6 @@ $nav-tabs-link-hover-border-color:            $gray-lighter !default;
 $nav-tabs-active-link-color:                  $gray !default;
 $nav-tabs-active-link-bg:                     $body-bg !default;
 $nav-tabs-active-link-border-color:           #ddd !default;
-$nav-tabs-justified-link-border-color:        #ddd !default;
-$nav-tabs-justified-active-link-border-color: $body-bg !default;
 
 $nav-pills-border-radius:     $border-radius !default;
 $nav-pills-active-link-color: $component-active-color !default;
