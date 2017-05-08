@@ -231,6 +231,9 @@
       this.applyPlacement(calculatedOffset, placement)
 
       var complete = function () {
+        if (that.$element === null) {
+          return
+        }
         var prevHoverState = that.hoverState
         that.$element.trigger('shown.bs.' + that.type)
         that.hoverState = null
