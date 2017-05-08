@@ -53,6 +53,7 @@ const Carousel = (($) => {
 
   const Event = {
     SLIDE          : `slide${EVENT_KEY}`,
+    BUSYSLIDING    : `busysliding${EVENT_KEY}`,
     SLID           : `slid${EVENT_KEY}`,
     KEYDOWN        : `keydown${EVENT_KEY}`,
     MOUSEENTER     : `mouseenter${EVENT_KEY}`,
@@ -125,6 +126,10 @@ const Carousel = (($) => {
 
     next() {
       if (this._isSliding) {
+        const activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0]
+        const nextElement   =  activeElement &&
+          this._getItemByDirection(Direction.NEXT, activeElement)
+        this._triggerBusySlidingEvent(nextElement, Direction.RIGHT)
         return
       }
 
@@ -140,6 +145,10 @@ const Carousel = (($) => {
 
     prev() {
       if (this._isSliding) {
+        const activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0]
+        const nextElement   =  activeElement &&
+          this._getItemByDirection(Direction.PREV, activeElement)
+        this._triggerBusySlidingEvent(nextElement, Direction.LEFT)
         return
       }
 
@@ -183,6 +192,15 @@ const Carousel = (($) => {
       this._activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0]
 
       const activeIndex = this._getItemIndex(this._activeElement)
+      let direction
+      let eventDirectionName
+      if (index > activeIndex) {
+        direction = Direction.NEXT
+        eventDirectionName = Direction.RIGHT
+      } else {
+        direction = Direction.PREV
+        eventDirectionName = Direction.LEFT
+      }
 
       if (index > this._items.length - 1 || index < 0) {
         return
@@ -190,6 +208,8 @@ const Carousel = (($) => {
 
       if (this._isSliding) {
         $(this._element).one(Event.SLID, () => this.to(index))
+
+        this._triggerBusySlidingEvent(this._items[index], eventDirectionName)
         return
       }
 
@@ -198,10 +218,6 @@ const Carousel = (($) => {
         this.cycle()
         return
       }
-
-      const direction = index > activeIndex ?
-        Direction.NEXT :
-        Direction.PREV
 
       this._slide(direction, this._items[index])
     }
@@ -301,6 +317,23 @@ const Carousel = (($) => {
         this._items[this._items.length - 1] : this._items[itemIndex]
     }
 
+    /* TODO: maybe merge the triggerSliding and the triggerSlideEevent methods
+     * Also factor out calls to slid event and route through
+     * the merged method*/
+    _triggerBusySlidingEvent(relatedTarget, eventDirectionName) {
+      const targetIndex = this._getItemIndex(relatedTarget)
+      const fromIndex = this._getItemIndex($(this._element).find(Selector.ACTIVE_ITEM)[0])
+      const slideEvent = $.Event(Event.BUSYSLIDING, {
+        relatedTarget,
+        direction: eventDirectionName,
+        from: fromIndex,
+        to: targetIndex
+      })
+
+      $(this._element).trigger(slideEvent)
+
+      return slideEvent
+    }
 
     _triggerSlideEvent(relatedTarget, eventDirectionName) {
       const targetIndex = this._getItemIndex(relatedTarget)
