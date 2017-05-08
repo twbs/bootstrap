@@ -39,6 +39,10 @@ html {
   @-ms-viewport { width: device-width; }
 }
 
+// Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
 
 // Body
 //
