@@ -50,6 +50,10 @@
         $('#carousel-example-generic').on('slid.bs.carousel', function(event) {
           console.log('slid at ', event.timeStamp)
         })
+        $('#carousel-example-generic').on('busysliding.bs.carousel', function(event) {
+          //console.log('slid at ', event.timeStamp)
+          console.log('busy sliding at', event.timeStamp);
+        })
       })
     </script>
   </body>
