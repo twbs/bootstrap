@@ -124,9 +124,11 @@ const Carousel = (($) => {
     // public
 
     next() {
-      if (!this._isSliding) {
-        this._slide(Direction.NEXT)
+      if (this._isSliding) {
+        return
       }
+
+      this._slide(Direction.NEXT)
     }
 
     nextWhenVisible() {
@@ -137,9 +139,11 @@ const Carousel = (($) => {
     }
 
     prev() {
-      if (!this._isSliding) {
-        this._slide(Direction.PREV)
+      if (this._isSliding) {
+        return
       }
+
+      this._slide(Direction.PREV)
     }
 
     pause(event) {
