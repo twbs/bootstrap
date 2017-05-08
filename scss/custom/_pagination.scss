@@ -1,6 +1,7 @@
 .pagination {
   margin: 0;
   justify-content: center;
+  flex-wrap: wrap;
 
   .page-link {
     border-color: $pagination-bg;
