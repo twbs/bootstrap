@@ -219,6 +219,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>'right'</td>
       <td>
         <p>How to position the popover - top | bottom | left | right.</p>
+        <p>You may pass a secondary alignment, separated with a space. Example: <code>'top left'</code> or <code>'right bottom'</code>. if secondary alignment is not supplied, popover will be aligned to the target's center.</p>
         <p>When a function is used to determine the placement, it is called with the popover DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the popover instance.</p>
       </td>
     </tr>

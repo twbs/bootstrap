@@ -65,11 +65,23 @@ const Tooltip = (($) => {
     container   : '(string|element|boolean)'
   }
 
+  // Mapping attachment-point of tooltip element and target element, respectively
   const AttachmentMap = {
-    TOP    : 'bottom center',
-    RIGHT  : 'middle left',
-    BOTTOM : 'top center',
-    LEFT   : 'middle right'
+    TOP             : ['bottom center', 'top center'],
+    'TOP LEFT'      : ['bottom left', 'top left'],
+    'TOP RIGHT'     : ['bottom right', 'top right'],
+
+    RIGHT           : ['middle left', 'middle right'],
+    'RIGHT TOP'     : ['top left', 'top right'],
+    'RIGHT BOTTOM'  : ['bottom left', 'bottom right'],
+
+    BOTTOM          : ['top center', 'bottom center'],
+    'BOTTOM LEFT'   : ['top left', 'bottom left'],
+    'BOTTOM RIGHT'  : ['top right', 'bottom right'],
+
+    LEFT            : ['middle right', 'middle left'],
+    'LEFT TOP'      : ['top right', 'top left'],
+    'LEFT BOTTOM'   : ['bottom right', 'bottom left']
   }
 
   const HoverState = {
@@ -289,7 +301,8 @@ const Tooltip = (($) => {
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
         this._tether = new Tether({
-          attachment,
+          attachment      : attachment.tooltipElement,
+          targetAttachment: attachment.targetElement,
           element         : tip,
           target          : this.element,
           classes         : TetherClass,
@@ -444,7 +457,12 @@ const Tooltip = (($) => {
     // private
 
     _getAttachment(placement) {
-      return AttachmentMap[placement.toUpperCase()]
+      const mapping = AttachmentMap[placement.toUpperCase()]
+
+      return {
+        tooltipElement: mapping[0],
+        targetElement: mapping[1]
+      }
     }
 
     _cleanTipClass() {
