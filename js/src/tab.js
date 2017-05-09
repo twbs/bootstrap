@@ -136,7 +136,7 @@ const Tab = (($) => {
     }
 
     dispose() {
-      $.removeClass(this._element, DATA_KEY)
+      $.removeData(this._element, DATA_KEY)
       this._element = null
     }
 
