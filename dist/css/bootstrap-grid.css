@@ -1300,7 +1300,6 @@ html {
 .align-self-auto {
   -webkit-align-self: auto !important;
       -ms-flex-item-align: auto !important;
-              -ms-grid-row-align: auto !important;
           align-self: auto !important;
 }
 
@@ -1319,7 +1318,6 @@ html {
 .align-self-center {
   -webkit-align-self: center !important;
       -ms-flex-item-align: center !important;
-              -ms-grid-row-align: center !important;
           align-self: center !important;
 }
 
@@ -1332,7 +1330,6 @@ html {
 .align-self-stretch {
   -webkit-align-self: stretch !important;
       -ms-flex-item-align: stretch !important;
-              -ms-grid-row-align: stretch !important;
           align-self: stretch !important;
 }
 
@@ -1490,7 +1487,6 @@ html {
   .align-self-sm-auto {
     -webkit-align-self: auto !important;
         -ms-flex-item-align: auto !important;
-                -ms-grid-row-align: auto !important;
             align-self: auto !important;
   }
   .align-self-sm-start {
@@ -1506,7 +1502,6 @@ html {
   .align-self-sm-center {
     -webkit-align-self: center !important;
         -ms-flex-item-align: center !important;
-                -ms-grid-row-align: center !important;
             align-self: center !important;
   }
   .align-self-sm-baseline {
@@ -1517,7 +1512,6 @@ html {
   .align-self-sm-stretch {
     -webkit-align-self: stretch !important;
         -ms-flex-item-align: stretch !important;
-                -ms-grid-row-align: stretch !important;
             align-self: stretch !important;
   }
 }
@@ -1676,7 +1670,6 @@ html {
   .align-self-md-auto {
     -webkit-align-self: auto !important;
         -ms-flex-item-align: auto !important;
-                -ms-grid-row-align: auto !important;
             align-self: auto !important;
   }
   .align-self-md-start {
@@ -1692,7 +1685,6 @@ html {
   .align-self-md-center {
     -webkit-align-self: center !important;
         -ms-flex-item-align: center !important;
-                -ms-grid-row-align: center !important;
             align-self: center !important;
   }
   .align-self-md-baseline {
@@ -1703,7 +1695,6 @@ html {
   .align-self-md-stretch {
     -webkit-align-self: stretch !important;
         -ms-flex-item-align: stretch !important;
-                -ms-grid-row-align: stretch !important;
             align-self: stretch !important;
   }
 }
@@ -1862,7 +1853,6 @@ html {
   .align-self-lg-auto {
     -webkit-align-self: auto !important;
         -ms-flex-item-align: auto !important;
-                -ms-grid-row-align: auto !important;
             align-self: auto !important;
   }
   .align-self-lg-start {
@@ -1878,7 +1868,6 @@ html {
   .align-self-lg-center {
     -webkit-align-self: center !important;
         -ms-flex-item-align: center !important;
-                -ms-grid-row-align: center !important;
             align-self: center !important;
   }
   .align-self-lg-baseline {
@@ -1889,7 +1878,6 @@ html {
   .align-self-lg-stretch {
     -webkit-align-self: stretch !important;
         -ms-flex-item-align: stretch !important;
-                -ms-grid-row-align: stretch !important;
             align-self: stretch !important;
   }
 }
@@ -2048,7 +2036,6 @@ html {
   .align-self-xl-auto {
     -webkit-align-self: auto !important;
         -ms-flex-item-align: auto !important;
-                -ms-grid-row-align: auto !important;
             align-self: auto !important;
   }
   .align-self-xl-start {
@@ -2064,7 +2051,6 @@ html {
   .align-self-xl-center {
     -webkit-align-self: center !important;
         -ms-flex-item-align: center !important;
-                -ms-grid-row-align: center !important;
             align-self: center !important;
   }
   .align-self-xl-baseline {
@@ -2075,7 +2061,6 @@ html {
   .align-self-xl-stretch {
     -webkit-align-self: stretch !important;
         -ms-flex-item-align: stretch !important;
-                -ms-grid-row-align: stretch !important;
             align-self: stretch !important;
   }
 }
