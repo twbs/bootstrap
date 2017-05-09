@@ -54,7 +54,7 @@ const Tooltip = (($) => {
   const DefaultType = {
     animation   : 'boolean',
     template    : 'string',
-    title       : '(string|element|function)',
+    title       : '(number|string|element|function)',
     trigger     : 'string',
     delay       : '(number|object)',
     html        : 'boolean',
