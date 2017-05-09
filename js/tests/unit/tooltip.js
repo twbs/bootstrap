@@ -105,7 +105,7 @@ $(function () {
     assert.expect(2)
     var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ placement: 'bottom' })
+      .bootstrapTooltip({ placement: 'bottom', constraints: [{ to: 'window', pin: false }] })
 
     $tooltip.bootstrapTooltip('show')
 

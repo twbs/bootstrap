@@ -288,6 +288,15 @@ const Tooltip = (($) => {
 
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
+        if (this.config.constraints.length === 0 && $.inArray(this.config.placement, ['top', 'bottom']) !== -1) {
+          this.config.constraints = [
+            {
+              to: 'scrollParent',
+              pin: ['left', 'right']
+            }
+          ]
+        }
+
         this._tether = new Tether({
           attachment,
           element         : tip,
@@ -320,6 +329,15 @@ const Tooltip = (($) => {
 
           if (prevHoverState === HoverState.OUT) {
             this._leave(null, this)
+          }
+        }
+
+        if ($.inArray(this.config.placement, ['top', 'bottom']) !== -1) {
+          let tipOffsetLeft  = $(this.tip).offset().left
+          let elemOffsetLeft = $(this.element).offset().left
+          if (elemOffsetLeft > tipOffsetLeft) {
+            let arrowLeft = ((elemOffsetLeft - tipOffsetLeft + $(this.element).outerWidth() / 2) / $(this.tip).outerWidth()) * 100
+            $(this.tip).find('.popover-arrow').css('left', `${arrowLeft}%`)
           }
         }
 
