@@ -19,13 +19,11 @@
     text-decoration: none;
   }
 
-  // Disabled state lightens text and removes hover/tab effects
+  // Disabled state lightens text
   &.disabled {
     color: $nav-disabled-link-color;
-    cursor: $cursor-disabled;
   }
 }
-
 
 //
 // Tabs
@@ -76,12 +74,12 @@
 .nav-pills {
   .nav-link {
     @include border-radius($nav-pills-border-radius);
-  }
 
-  .nav-link.active,
-  .nav-item.show .nav-link {
-    color: $nav-pills-active-link-color;
-    background-color: $nav-pills-active-link-bg;
+    &.active,
+    .show & {
+      color: $nav-pills-active-link-color;
+      background-color: $nav-pills-active-link-bg;
+    }
   }
 }
 

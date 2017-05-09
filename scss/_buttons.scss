@@ -28,7 +28,6 @@
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
-    cursor: $cursor-disabled;
     opacity: .65;
     @include box-shadow(none);
   }
@@ -52,22 +51,22 @@ fieldset[disabled] a.btn {
 //
 
 .btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border-color);
 }
 .btn-secondary {
-  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border-color);
 }
 .btn-info {
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border-color);
 }
 .btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border-color);
 }
 .btn-warning {
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border-color);
 }
 .btn-danger {
-  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border-color);
 }
 
 // Remove all backgrounds
@@ -75,7 +74,7 @@ fieldset[disabled] a.btn {
   @include button-outline-variant($btn-primary-bg, $btn-primary-color);
 }
 .btn-outline-secondary {
-  @include button-outline-variant($btn-secondary-border, $btn-secondary-color);
+  @include button-outline-variant($btn-secondary-border-color, $btn-secondary-color);
 }
 .btn-outline-info {
   @include button-outline-variant($btn-info-bg, $btn-info-color);

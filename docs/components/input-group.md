@@ -19,11 +19,11 @@ Place one add-on or button on either side of an input. You may also place one on
 {% example html %}
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 <br>
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
   <span class="input-group-addon" id="basic-addon2">@example.com</span>
 </div>
 <br>
@@ -53,12 +53,12 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
 {% example html %}
 <div class="input-group input-group-lg">
   <span class="input-group-addon" id="sizing-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
 </div>
 <br>
 <div class="input-group">
   <span class="input-group-addon" id="sizing-addon2">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
 </div>
 {% endexample %}
 
@@ -124,12 +124,12 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Go!</button>
       </span>
-      <input type="text" class="form-control" placeholder="Search for...">
+      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
     </div>
   </div>
   <div class="col-lg-6">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for...">
+      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...>
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Go!</button>
       </span>
@@ -143,7 +143,7 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Hate it</button>
       </span>
-      <input type="text" class="form-control" placeholder="Product name">
+      <input type="text" class="form-control" placeholder="Product name" aria-label="Product name">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Love it</button>
       </span>
@@ -240,4 +240,4 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
 
 Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.
 
-The exact technique to be used (`<label>` elements hidden using the `.sr-only` class, or use of the `aria-label`, `aria-labelledby`, `aria-describedby`, `title` or `placeholder` attribute) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.
+The exact technique to be used (`<label>` elements hidden using the `.sr-only` class, or use of the `aria-label` and `aria-labelledby` attributes, possibly in combination with `aria-describedby`) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.

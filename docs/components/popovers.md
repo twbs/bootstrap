@@ -25,6 +25,7 @@ Things to know when using the popover plugin:
 - Triggering popovers on hidden elements will not work.
 - Popovers for `.disabled` or `disabled` elements must be triggered on a wrapper element.
 - When triggered from hyperlinks that span multiple lines, popovers will be centered. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
+- Popovers must be hidden before their corresponding elements have been removed from the DOM.
 
 Got all that? Great, let's see how they work with some examples.
 
@@ -201,9 +202,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>number | object</td>
       <td>0</td>
       <td>
-       <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
-       <p>If a number is supplied, delay is applied to both hide/show</p>
-       <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
+        <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
+        <p>If a number is supplied, delay is applied to both hide/show</p>
+        <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
       </td>
     </tr>
     <tr>
@@ -331,10 +332,10 @@ Toggles the ability for an element's popover to be shown or hidden.
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
-   <tr>
+    <tr>
       <th style="width: 150px;">Event Type</th>
       <th>Description</th>
-   </tr>
+    </tr>
   </thead>
   <tbody>
     <tr>
@@ -352,6 +353,10 @@ Toggles the ability for an element's popover to be shown or hidden.
     <tr>
       <td>hidden.bs.popover</td>
       <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+      <td>inserted.bs.popover</td>
+      <td>This event is fired after the <code>show.bs.popover</code> event when the tooltip template has been added to the DOM.</td>
     </tr>
   </tbody>
 </table>

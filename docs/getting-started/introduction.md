@@ -96,9 +96,7 @@ On the rare occasion you need to override it, use something like the following:
 
 {% highlight scss %}
 .selector-for-some-widget {
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
 }
 {% endhighlight %}
 
