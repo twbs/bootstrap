@@ -25,6 +25,7 @@ Things to know when using the popover plugin:
 - Triggering popovers on hidden elements will not work.
 - Popovers for `.disabled` or `disabled` elements must be triggered on a wrapper element.
 - When triggered from hyperlinks that span multiple lines, popovers will be centered. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
+- Popovers must be hidden before their corresponding elements have been removed from the DOM.
 
 Got all that? Great, let's see how they work with some examples.
 
