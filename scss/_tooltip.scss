@@ -19,7 +19,7 @@
     margin-top: -$tooltip-margin;
 
     .tooltip-inner::before {
-      bottom: 0;
+      bottom: 1px;
       left: 50%;
       margin-left: -$tooltip-arrow-width;
       content: "";
@@ -34,7 +34,7 @@
 
     .tooltip-inner::before {
       top: 50%;
-      left: 0;
+      left: 1px;
       margin-top: -$tooltip-arrow-width;
       content: "";
       border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
@@ -47,7 +47,7 @@
     margin-top: $tooltip-margin;
 
     .tooltip-inner::before {
-      top: 0;
+      top: 1px;
       left: 50%;
       margin-left: -$tooltip-arrow-width;
       content: "";
@@ -62,7 +62,7 @@
 
     .tooltip-inner::before {
       top: 50%;
-      right: 0;
+      right: 1px;
       margin-top: -$tooltip-arrow-width;
       content: "";
       border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
