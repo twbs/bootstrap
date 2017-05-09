@@ -328,17 +328,17 @@ If no tab was already active, the `hide.bs.tab` and `hidden.bs.tab` events will 
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
-   <tr>
-     <th style="width: 150px;">Event type</th>
-     <th>Description</th>
-   </tr>
+    <tr>
+      <th style="width: 150px;">Event type</th>
+      <th>Description</th>
+    </tr>
   </thead>
   <tbody>
     <tr>
       <td>show.bs.tab</td>
       <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
-   </tr>
-   <tr>
+    </tr>
+    <tr>
       <td>shown.bs.tab</td>
       <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
     </tr>
