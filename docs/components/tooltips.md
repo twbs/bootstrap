@@ -169,16 +169,16 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>false</td>
       <td>
         <p>Appends the tooltip to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the tooltip in the flow of the document near the triggering element - which will prevent the tooltip from floating away from the triggering element during a window resize.</p>
-     </td>
+      </td>
     </tr>
     <tr>
       <td>delay</td>
       <td>number | object</td>
       <td>0</td>
       <td>
-       <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
-       <p>If a number is supplied, delay is applied to both hide/show</p>
-       <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
+        <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type</p>
+        <p>If a number is supplied, delay is applied to both hide/show</p>
+        <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
       </td>
     </tr>
     <tr>
@@ -329,6 +329,10 @@ Toggles the ability for an element's tooltip to be shown or hidden.
     <tr>
       <td>hidden.bs.tooltip</td>
       <td>This event is fired when the tooltip has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+      <td>inserted.bs.tooltip</td>
+      <td>This event is fired after the <code>show.bs.tooltip</code> event when the tooltip template has been added to the DOM.</td>
     </tr>
   </tbody>
 </table>

@@ -20,6 +20,7 @@
 
 .card-title {
   margin-bottom: $card-spacer-y;
+  word-break: break-all;
 }
 
 .card-subtitle {
@@ -124,7 +125,7 @@
   @include card-outline-variant($btn-primary-bg);
 }
 .card-outline-secondary {
-  @include card-outline-variant($btn-secondary-border);
+  @include card-outline-variant($btn-secondary-border-color);
 }
 .card-outline-info {
   @include card-outline-variant($btn-info-bg);
@@ -262,15 +263,18 @@
 // Columns
 //
 
-@include media-breakpoint-up(sm) {
-  .card-columns {
+.card-columns {
+  .card {
+    margin-bottom: $card-columns-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
     column-count: $card-columns-count;
     column-gap: $card-columns-gap;
 
     .card {
       display: inline-block; // Don't let them vertically span multiple columns
       width: 100%; // Don't let their width change
-      margin-bottom: $card-columns-margin;
     }
   }
 }
