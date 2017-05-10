@@ -278,3 +278,10 @@
     }
   }
 }
+
+// Prevent double border on list-group in cards with no .card-block
+
+.card > .card-header + .list-group > .list-group-item:first-child,
+.card > .list-group + .card-footer {
+  border-top: 0;
+}
