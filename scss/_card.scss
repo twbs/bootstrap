@@ -67,6 +67,10 @@
   background-color: $card-cap-bg;
   border-bottom: $card-border-width solid $card-border-color;
 
+  &:not(:first-child) {
+    border-top: $card-border-width solid $card-border-color;
+  }
+
   &:first-child {
     @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
   }
