@@ -47,7 +47,7 @@ const Tab = (($) => {
     ACTIVE                : '.active',
     DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
     DROPDOWN_TOGGLE       : '.dropdown-toggle',
-    DROPDOWN_ACTIVE_CHILD : '> .dropdown-menu .active'
+    DROPDOWN_ACTIVE_CHILD : '~ .dropdown-menu .active'
   }
 
 
