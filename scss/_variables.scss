@@ -201,6 +201,14 @@ $container-max-widths: (
 ) !default;
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
+// Check validity of $container-max-widths
+@each $breakpoint, $container-width in $container-max-widths {
+  $min-width: map-get($grid-breakpoints, $breakpoint);
+  @if $container-width > $min-width {
+    @warn "Bad $container-max-widths value for breakpoint '#{$breakpoint}': #{$container-width} is greater than #{$min-width} (the minimum viewport width for '#{$breakpoint}' in $grid-breakpoints)";
+  }
+}
+
 
 // Grid columns
 //
