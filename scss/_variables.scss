@@ -188,6 +188,16 @@ $grid-breakpoints: (
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints);
 
+$screen-sm-min: breakpoint-min(sm, $grid-breakpoints) !default;
+$screen-md-min: breakpoint-min(md, $grid-breakpoints) !default;
+$screen-lg-min: breakpoint-min(lg, $grid-breakpoints) !default;
+$screen-xl-min: breakpoint-min(xl, $grid-breakpoints) !default;
+
+$screen-xs-max: breakpoint-max(xs, $grid-breakpoints) !default;
+$screen-sm-max: breakpoint-max(sm, $grid-breakpoints) !default;
+$screen-md-max: breakpoint-max(md, $grid-breakpoints) !default;
+$screen-lg-max: breakpoint-max(lg, $grid-breakpoints) !default;
+
 
 // Grid containers
 //
