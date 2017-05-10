@@ -51,3 +51,7 @@
 @if $enable-grid-classes {
   @include make-grid-columns();
 }
+
+@if $enable-grid-classes-half-size {
+  @include make-grid-columns-half-size();
+}

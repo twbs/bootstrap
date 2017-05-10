@@ -64,3 +64,34 @@
     }
   }
 }
+
+@mixin make-grid-columns-half-size($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+  $breakpoint-counter: 0;
+  @each $breakpoint in map-keys($breakpoints) {
+    $breakpoint-counter: ($breakpoint-counter + 1);
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+
+      @for $i from 0 through ($columns - 1) {
+        .col-#{$breakpoint}-#{$i}-5 {
+          @include make-col($i*2+1, $columns*2, $gutter);
+        }
+      }
+
+      @each $modifier in (pull, push) {
+        @for $i from 0 through ($columns - 1) {
+          .#{$modifier}-#{$breakpoint}-#{$i}-5 {
+            @include make-col-modifier($modifier, $i*2+1, $columns*2)
+          }
+        }
+      }
+
+      @for $i from 0 through ($columns - 1) {
+        @if $breakpoint-counter != 1 {
+          .offset-#{$breakpoint}-#{$i}-5 {
+            @include make-col-modifier(offset, $i, $columns)
+          }
+        }
+      }
+    }
+  }
+}
