@@ -104,6 +104,10 @@
 // Background variations
 //
 
+.card-default {
+  background-color: #fff;
+  border-color: #fff;
+}
 .card-primary {
   @include card-variant($brand-primary, $brand-primary);
 }
