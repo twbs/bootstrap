@@ -28,7 +28,7 @@
     content: " (" attr(title) ")";
   }
   pre {
-    white-space: pre-wrap !important;
+    black-space: pre-wrap !important;
   }
   pre,
   blockquote {
