@@ -118,6 +118,7 @@
 .dropdown-menu-right {
   right: 0;
   left: auto; // Reset the default from `.dropdown-menu`
+  display: inline-block; //Make sure width doesnt stretch to fill container.
 }
 
 .dropdown-menu-left {
