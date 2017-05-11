@@ -73,11 +73,14 @@ const Collapse = (($) => {
       this._isTransitioning = false
       this._element         = element
       this._config          = this._getConfig(config)
-      this._triggerArray    = $.makeArray($(
-        `[data-toggle="collapse"][href="#${element.id}"],` +
-        `[data-toggle="collapse"][data-target="#${element.id}"]`
-      ))
 
+      const triggerArray = []
+      $(Selector.DATA_TOGGLE).each(function () {
+        if (Util.getTargets(this).filter(element).length) {
+          triggerArray.push(this)
+        }
+      })
+      this._triggerArray = triggerArray
       this._parent = this._config.parent ? this._getParent() : null
 
       if (!this._config.parent) {
@@ -214,10 +217,14 @@ const Collapse = (($) => {
         .removeClass(ClassName.COLLAPSE)
         .removeClass(ClassName.SHOW)
 
+      // Remove COLLAPSED and set aria-expanded=false to each trigger for which all its targets are not showed
       if (this._triggerArray.length) {
-        $(this._triggerArray)
-          .addClass(ClassName.COLLAPSED)
-          .attr('aria-expanded', false)
+        $(this._triggerArray).each(function () {
+          if (!Util.getTargets(this).hasClass(ClassName.SHOW)) {
+            $(this).addClass(ClassName.COLLAPSED)
+            .attr('aria-expanded', false)
+          }
+        })
       }
 
       this.setTransitioning(true)
@@ -278,7 +285,7 @@ const Collapse = (($) => {
 
       $(parent).find(selector).each((i, element) => {
         this._addAriaAndCollapsedClass(
-          Collapse._getTargetFromElement(element),
+          Util.getTargets(element)[0],
           [element]
         )
       })
@@ -300,11 +307,6 @@ const Collapse = (($) => {
 
 
     // static
-
-    static _getTargetFromElement(element) {
-      const selector = Util.getSelectorFromElement(element)
-      return selector ? $(selector)[0] : null
-    }
 
     static _jQueryInterface(config) {
       return this.each(function () {
@@ -348,12 +350,13 @@ const Collapse = (($) => {
     if (!/input|textarea/i.test(event.target.tagName)) {
       event.preventDefault()
     }
-
-    const target = Collapse._getTargetFromElement(this)
-    const data   = $(target).data(DATA_KEY)
-    const config = data ? 'toggle' : $(this).data()
-
-    Collapse._jQueryInterface.call($(target), config)
+    const $trigger = $(this)
+    Util.getTargets(this).each(function () {
+      const $target = $(this)
+      const data   = $target.data(DATA_KEY)
+      const config = data ? 'toggle' : $trigger.data()
+      Collapse._jQueryInterface.call($target, config)
+    })
   })
 
 

@@ -63,6 +63,24 @@ $(function () {
     }, 300)
   })
 
+  QUnit.test('should open dropdown if trigger is a link with an href and data-target="#"', function (assert) {
+    assert.expect(1)
+    var dropdownHTML = '<ul class="tabs">'
+        + '<li class="dropdown">'
+        + '<a href="https://getbootstrap.com" data-target="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
+        + '<ul class="dropdown-menu">'
+        + '<li><a href="#">Secondary link</a></li>'
+        + '<li><a href="#">Something else here</a></li>'
+        + '<li class="divider"/>'
+        + '<li><a href="#">Another link</a></li>'
+        + '</ul>'
+        + '</li>'
+        + '</ul>'
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown().trigger('click')
+
+    assert.ok($dropdown.parent('.dropdown').hasClass('show'), '"show" class not added on click')
+  })
+
   QUnit.test('should set aria-expanded="true" on target when dropdown menu is shown', function (assert) {
     assert.expect(1)
     var done = assert.async()
