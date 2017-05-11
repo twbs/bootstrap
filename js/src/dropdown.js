@@ -114,51 +114,43 @@ const Dropdown = (($) => {
       return DefaultType
     }
 
-
     // public
 
     toggle() {
-      let context = $(this).data(DATA_KEY)
-      if (!context) {
-        context = new Dropdown(this)
-        $(this).data(DATA_KEY, context)
+      if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED)) {
+        return
       }
 
-      if (context.disabled || $(this).hasClass(ClassName.DISABLED)) {
-        return false
-      }
-
-      const parent   = Dropdown._getParentFromElement(this)
-      const isActive = $(context._menu).hasClass(ClassName.SHOW)
+      const parent   = Dropdown._getParentFromElement(this._element)
+      const isActive = $(this._menu).hasClass(ClassName.SHOW)
 
       Dropdown._clearMenus()
 
       if (isActive) {
-        return false
+        return
       }
 
       const relatedTarget = {
-        relatedTarget : this
+        relatedTarget : this._element
       }
       const showEvent = $.Event(Event.SHOW, relatedTarget)
 
       $(parent).trigger(showEvent)
 
       if (showEvent.isDefaultPrevented()) {
-        return false
+        return
       }
 
       // Handle dropup
-      const dropdownPlacement = $(this).parent().hasClass('dropup') ? AttachmentMap.TOP : context._config.placement
-      this._popper = new Popper(this, context._menu, {
+      const dropdownPlacement = $(this._element).parent().hasClass('dropup') ? AttachmentMap.TOP : this._config.placement
+      this._popper = new Popper(this._element, this._menu, {
         placement : dropdownPlacement,
         modifiers : {
           offset : {
-            offset : context._config.offset
+            offset : this._config.offset
           },
           flip : {
-            enabled : context._config.flip,
-            behavior : [AttachmentMap.TOP, AttachmentMap.BOTTOM]
+            enabled : this._config.flip
           }
         }
       })
@@ -172,15 +164,13 @@ const Dropdown = (($) => {
         $('body').children().on('mouseover', null, $.noop)
       }
 
-      this.focus()
-      this.setAttribute('aria-expanded', true)
+      this._element.focus()
+      this._element.setAttribute('aria-expanded', true)
 
-      $(context._menu).toggleClass(ClassName.SHOW)
+      $(this._menu).toggleClass(ClassName.SHOW)
       $(parent)
         .toggleClass(ClassName.SHOW)
         .trigger($.Event(Event.SHOWN, relatedTarget))
-
-      return false
     }
 
     dispose() {
@@ -203,7 +193,11 @@ const Dropdown = (($) => {
     // private
 
     _addEventListeners() {
-      $(this._element).on(Event.CLICK, this.toggle)
+      $(this._element).on(Event.CLICK, (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+        this.toggle()
+      })
     }
 
     _getConfig(config) {
@@ -252,7 +246,7 @@ const Dropdown = (($) => {
           if (data[config] === undefined) {
             throw new Error(`No method named "${config}"`)
           }
-          data[config].call(this)
+          data[config]()
         }
       })
     }
@@ -266,7 +260,7 @@ const Dropdown = (($) => {
       const toggles = $.makeArray($(Selector.DATA_TOGGLE))
       for (let i = 0; i < toggles.length; i++) {
         const parent        = Dropdown._getParentFromElement(toggles[i])
-        const context         = $(toggles[i]).data(DATA_KEY)
+        const context       = $(toggles[i]).data(DATA_KEY)
         const relatedTarget = {
           relatedTarget : toggles[i]
         }
@@ -382,7 +376,11 @@ const Dropdown = (($) => {
     .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
     .on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler)
     .on(`${Event.CLICK_DATA_API} ${Event.KEYUP_DATA_API}`, Dropdown._clearMenus)
-    .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, Dropdown.prototype.toggle)
+    .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+      event.preventDefault()
+      event.stopPropagation()
+      Dropdown._jQueryInterface.call($(this), 'toggle')
+    })
     .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
       e.stopPropagation()
     })
