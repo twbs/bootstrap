@@ -1,6 +1,6 @@
 // Tables
 
-.table-row-variant(@state; @background; @border) {
+.table-row-variant(@state; @background; @border; @color:none) {
   // Exact selectors below required to override `.table-striped` and prevent
   // inheritance to nested tables.
   .table {
@@ -12,6 +12,7 @@
       &.@{state} > td,
       &.@{state} > th {
         background-color: @background;
+        .set-color(@color);
       }
     }
   }
@@ -37,3 +38,9 @@
     }
   }
 }
+
+.set-color(@color:none) when (iscolor(@color)) {
+    color: @color;
+}
+
+.set-color(@color:none) when not (iscolor(@color)) {}

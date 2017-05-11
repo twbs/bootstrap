@@ -3233,6 +3233,7 @@ table th[class*="col-"] {
 .table > thead > tr.primary > th,
 .table > tbody > tr.primary > th,
 .table > tfoot > tr.primary > th {
+  color: #fff;
   background-color: #2e4369;
 }
 .table-hover > tbody > tr > td.primary:hover,
