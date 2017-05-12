@@ -76,6 +76,7 @@
   background-color: $input-group-addon-bg;
   border: $input-btn-border-width solid $input-group-addon-border-color;
   @include border-radius($input-border-radius);
+  @include transition($input-group-addon-transition);
 
   // Sizing
   &.form-control-sm {

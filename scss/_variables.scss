@@ -419,6 +419,7 @@ $input-transition:               border-color ease-in-out .15s, box-shadow ease-
 
 $form-text-margin-top:     .25rem !default;
 $form-feedback-margin-top: $form-text-margin-top !default;
+$form-feedback-transition: opacity ease-out .15s, color ease-out .15s !default;
 
 $form-check-margin-bottom:  .5rem !default;
 $form-check-input-gutter:   1.25rem !default;
@@ -431,6 +432,7 @@ $form-group-margin-bottom:       1rem !default;
 
 $input-group-addon-bg:           $gray-lighter !default;
 $input-group-addon-border-color: $input-border-color !default;
+$input-group-addon-transition:   background-color ease-out .15s, border-color ease-out .15s !default;
 
 $custom-control-gutter:   1.5rem !default;
 $custom-control-spacer-y: .25rem !default;
