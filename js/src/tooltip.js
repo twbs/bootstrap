@@ -70,7 +70,7 @@ const Tooltip = (($) => {
     placement           : 'top',
     offset              : 0,
     container           : false,
-    fallbackPlacement   : [AttachmentMap.TOP, AttachmentMap.RIGHT, AttachmentMap.BOTTOM, AttachmentMap.LEFT]
+    fallbackPlacement   : 'flip'
   }
 
   const HoverState = {
@@ -334,8 +334,7 @@ const Tooltip = (($) => {
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
             .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
-        }
-        else {
+        } else {
           complete()
         }
       }
@@ -668,7 +667,7 @@ const Tooltip = (($) => {
       const tip                 = this.getTipElement()
       const initConfigAnimation = this.config.animation
       if (tip.getAttribute('x-placement') !== null) {
-        return;
+        return
       }
       $(tip).removeClass(ClassName.FADE)
       this.config.animation = false
