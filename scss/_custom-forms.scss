@@ -139,6 +139,7 @@
   color: $custom-select-color;
   vertical-align: middle;
   background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
+  background-clip: padding-box;
   background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
   @if $enable-rounded {
@@ -215,11 +216,13 @@
   z-index: 5;
   height: $custom-file-height;
   padding: $custom-file-padding-x $custom-file-padding-y;
+  overflow: hidden;
   line-height: $custom-file-line-height;
   color: $custom-file-color;
   pointer-events: none;
   user-select: none;
   background-color: $custom-file-bg;
+  background-clip: padding-box;
   border: $custom-file-border-width solid $custom-file-border-color;
   @include border-radius($custom-file-border-radius);
   @include box-shadow($custom-file-box-shadow);
@@ -232,9 +235,8 @@
 
   &::before {
     position: absolute;
-    top: -$custom-file-border-width;
-    right: -$custom-file-border-width;
-    bottom: -$custom-file-border-width;
+    top: 0;
+    right: 0;
     z-index: 6;
     display: block;
     height: $custom-file-height;
@@ -242,8 +244,7 @@
     line-height: $custom-file-line-height;
     color: $custom-file-button-color;
     background-color: $custom-file-button-bg;
-    border: $custom-file-border-width solid $custom-file-border-color;
-    @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+    border-left: $custom-file-border-width solid $custom-file-border-color;
   }
 
   @each $lang, $text in map-get($custom-file-text, button-label) {
