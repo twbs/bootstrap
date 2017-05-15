@@ -14,11 +14,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var Tooltip = function ($) {
 
   /**
-   * Check for Popper dependency
-   * Popper - https://popper.js.org
+   * Check for Tether dependency
+   * Tether - http://tether.io/
    */
-  if (typeof Popper === 'undefined') {
-    throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)');
+  if (typeof Tether === 'undefined') {
+    throw new Error('Bootstrap tooltips require Tether (http://tether.io/)');
   }
 
   /**
@@ -33,8 +33,22 @@ var Tooltip = function ($) {
   var EVENT_KEY = '.' + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
   var TRANSITION_DURATION = 150;
-  var CLASS_PREFIX = 'bs-tooltip';
-  var BSCLS_PREFIX_REGEX = new RegExp('(^|\\s)' + CLASS_PREFIX + '\\S+', 'g');
+  var CLASS_PREFIX = 'bs-tether';
+  var TETHER_PREFIX_REGEX = new RegExp('(^|\\s)' + CLASS_PREFIX + '\\S+', 'g');
+
+  var Default = {
+    animation: true,
+    template: '<div class="tooltip" role="tooltip">' + '<div class="tooltip-inner"></div></div>',
+    trigger: 'hover focus',
+    title: '',
+    delay: 0,
+    html: false,
+    selector: false,
+    placement: 'top',
+    offset: '0 0',
+    constraints: [],
+    container: false
+  };
 
   var DefaultType = {
     animation: 'boolean',
@@ -45,30 +59,16 @@ var Tooltip = function ($) {
     html: 'boolean',
     selector: '(string|boolean)',
     placement: '(string|function)',
-    offset: '(number|string)',
-    container: '(string|element|boolean)',
-    fallbackPlacement: '(string|array)'
+    offset: 'string',
+    constraints: 'array',
+    container: '(string|element|boolean)'
   };
 
   var AttachmentMap = {
-    TOP: 'top',
-    RIGHT: 'right',
-    BOTTOM: 'bottom',
-    LEFT: 'left'
-  };
-
-  var Default = {
-    animation: true,
-    template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',
-    trigger: 'hover focus',
-    title: '',
-    delay: 0,
-    html: false,
-    selector: false,
-    placement: 'top',
-    offset: 0,
-    container: false,
-    fallbackPlacement: 'flip'
+    TOP: 'bottom center',
+    RIGHT: 'middle left',
+    BOTTOM: 'top center',
+    LEFT: 'middle right'
   };
 
   var HoverState = {
@@ -99,6 +99,11 @@ var Tooltip = function ($) {
     TOOLTIP_INNER: '.tooltip-inner'
   };
 
+  var TetherClass = {
+    element: false,
+    enabled: false
+  };
+
   var Trigger = {
     HOVER: 'hover',
     FOCUS: 'focus',
@@ -121,7 +126,7 @@ var Tooltip = function ($) {
       this._timeout = 0;
       this._hoverState = '';
       this._activeTrigger = {};
-      this._popper = null;
+      this._tether = null;
 
       // protected
       this.element = element;
@@ -178,6 +183,8 @@ var Tooltip = function ($) {
     Tooltip.prototype.dispose = function dispose() {
       clearTimeout(this._timeout);
 
+      this.cleanupTether();
+
       $.removeData(this.element, this.constructor.DATA_KEY);
 
       $(this.element).off(this.constructor.EVENT_KEY);
@@ -191,10 +198,7 @@ var Tooltip = function ($) {
       this._timeout = null;
       this._hoverState = null;
       this._activeTrigger = null;
-      if (this._popper !== null) {
-        this._popper.destroy();
-      }
-      this._popper = null;
+      this._tether = null;
 
       this.element = null;
       this.config = null;
@@ -233,7 +237,6 @@ var Tooltip = function ($) {
         var placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this.element) : this.config.placement;
 
         var attachment = this._getAttachment(placement);
-        this.addAttachmentClass(attachment);
 
         var container = this.config.container === false ? document.body : $(this.config.container);
 
@@ -245,25 +248,19 @@ var Tooltip = function ($) {
 
         $(this.element).trigger(this.constructor.Event.INSERTED);
 
-        this._popper = new Popper(this.element, tip, {
-          placement: attachment,
-          modifiers: {
-            offset: {
-              offset: this.config.offset
-            },
-            flip: {
-              behavior: this.config.fallbackPlacement
-            }
-          },
-          onCreate: function onCreate(data) {
-            if (data.originalPlacement !== data.placement) {
-              _this._handlePopperPlacementChange(data);
-            }
-          },
-          onUpdate: function onUpdate(data) {
-            _this._handlePopperPlacementChange(data);
-          }
+        this._tether = new Tether({
+          attachment: attachment,
+          element: tip,
+          target: this.element,
+          classes: TetherClass,
+          classPrefix: CLASS_PREFIX,
+          offset: this.config.offset,
+          constraints: this.config.constraints,
+          addTargetClasses: false
         });
+
+        Util.reflow(tip);
+        this._tether.position();
 
         $(tip).addClass(ClassName.SHOW);
 
@@ -276,9 +273,6 @@ var Tooltip = function ($) {
         }
 
         var complete = function complete() {
-          if (_this.config.animation) {
-            _this._fixTransition();
-          }
           var prevHoverState = _this._hoverState;
           _this._hoverState = null;
 
@@ -291,9 +285,10 @@ var Tooltip = function ($) {
 
         if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
           $(this.tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(Tooltip._TRANSITION_DURATION);
-        } else {
-          complete();
+          return;
         }
+
+        complete();
       }
     };
 
@@ -310,9 +305,7 @@ var Tooltip = function ($) {
         _this2._cleanTipClass();
         _this2.element.removeAttribute('aria-describedby');
         $(_this2.element).trigger(_this2.constructor.Event.HIDDEN);
-        if (_this2._popper !== null) {
-          _this2._popper.destroy();
-        }
+        _this2.cleanupTether();
 
         if (callback) {
           callback();
@@ -347,20 +340,10 @@ var Tooltip = function ($) {
       this._hoverState = '';
     };
 
-    Tooltip.prototype.update = function update() {
-      if (this._popper !== null) {
-        this._popper.scheduleUpdate();
-      }
-    };
-
     // protected
 
     Tooltip.prototype.isWithContent = function isWithContent() {
       return Boolean(this.getTitle());
-    };
-
-    Tooltip.prototype.addAttachmentClass = function addAttachmentClass(attachment) {
-      $(this.getTipElement()).addClass(CLASS_PREFIX + '-' + attachment);
     };
 
     Tooltip.prototype.getTipElement = function getTipElement() {
@@ -369,8 +352,12 @@ var Tooltip = function ($) {
 
     Tooltip.prototype.setContent = function setContent() {
       var $tip = $(this.getTipElement());
+
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle());
+
       $tip.removeClass(ClassName.FADE + ' ' + ClassName.SHOW);
+
+      this.cleanupTether();
     };
 
     Tooltip.prototype.setElementContent = function setElementContent($element, content) {
@@ -399,10 +386,24 @@ var Tooltip = function ($) {
       return title;
     };
 
+    Tooltip.prototype.cleanupTether = function cleanupTether() {
+      if (this._tether) {
+        this._tether.destroy();
+      }
+    };
+
     // private
 
     Tooltip.prototype._getAttachment = function _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()];
+    };
+
+    Tooltip.prototype._cleanTipClass = function _cleanTipClass() {
+      var $tip = $(this.getTipElement());
+      var tabClass = $tip.attr('class').match(TETHER_PREFIX_REGEX);
+      if (tabClass !== null && tabClass.length > 0) {
+        $tip.removeClass(tabClass.join(''));
+      }
     };
 
     Tooltip.prototype._setListeners = function _setListeners() {
@@ -565,32 +566,6 @@ var Tooltip = function ($) {
       return config;
     };
 
-    Tooltip.prototype._cleanTipClass = function _cleanTipClass() {
-      var $tip = $(this.getTipElement());
-      var tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX);
-      if (tabClass !== null && tabClass.length > 0) {
-        $tip.removeClass(tabClass.join(''));
-      }
-    };
-
-    Tooltip.prototype._handlePopperPlacementChange = function _handlePopperPlacementChange(data) {
-      this._cleanTipClass();
-      this.addAttachmentClass(this._getAttachment(data.placement));
-    };
-
-    Tooltip.prototype._fixTransition = function _fixTransition() {
-      var tip = this.getTipElement();
-      var initConfigAnimation = this.config.animation;
-      if (tip.getAttribute('x-placement') !== null) {
-        return;
-      }
-      $(tip).removeClass(ClassName.FADE);
-      this.config.animation = false;
-      this.hide();
-      this.show();
-      this.config.animation = initConfigAnimation;
-    };
-
     // static
 
     Tooltip._jQueryInterface = function _jQueryInterface(config) {
@@ -670,5 +645,5 @@ var Tooltip = function ($) {
   };
 
   return Tooltip;
-}(jQuery); /* global Popper */
+}(jQuery); /* global Tether */
 //# sourceMappingURL=tooltip.js.map
