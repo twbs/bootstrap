@@ -142,6 +142,16 @@ fieldset[disabled] a.btn {
   @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
 }
 
+//
+// Button Pill
+//
+
+
+.btn-pill {
+  @include border-radius($btn-pill-border-radius);
+}
+
+
 
 //
 // Block button
