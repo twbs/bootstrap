@@ -17,7 +17,7 @@ Add small overlay content, like those found in iOS, to any element for housing s
 Things to know when using the popover plugin:
 
 
-- Popovers rely on the 3rd party library [Tether](http://tether.io/) for positioning. You must include [tether.min.js](https://github.com/HubSpot/tether/blob/master/dist/js/tether.min.js) before bootstrap.js in order for popovers to work!
+- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.9.3/umd/popper.min.js) before bootstrap.js in order for popovers to work!
 - Popovers require the [tooltip plugin]({{ site.baseurl }}/components/tooltips/) as a dependency.
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
@@ -25,6 +25,7 @@ Things to know when using the popover plugin:
 - Triggering popovers on hidden elements will not work.
 - Popovers for `.disabled` or `disabled` elements must be triggered on a wrapper element.
 - When triggered from hyperlinks that span multiple lines, popovers will be centered. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
+- Popovers must be hidden before their corresponding elements have been removed from the DOM.
 
 Got all that? Great, let's see how they work with some examples.
 
@@ -55,29 +56,32 @@ $(function () {
 Four options are available: top, right, bottom, and left aligned.
 
 <div class="bd-example bd-example-popover-static">
-  <div class="popover popover-top">
+  <div class="popover bs-popover-top">
+    <div class="arrow"></div>
     <h3 class="popover-title">Popover top</h3>
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
 
-  <div class="popover popover-right">
+  <div class="popover bs-popover-right">
+    <div class="arrow"></div>
     <h3 class="popover-title">Popover right</h3>
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
 
-  <div class="popover popover-bottom">
+  <div class="popover bs-popover-bottom">
+    <div class="arrow"></div>
     <h3 class="popover-title">Popover bottom</h3>
-
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
 
-  <div class="popover popover-left">
+  <div class="popover bs-popover-left">
+    <div class="arrow"></div>
     <h3 class="popover-title">Popover left</h3>
     <div class="popover-content">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
@@ -201,9 +205,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>number | object</td>
       <td>0</td>
       <td>
-       <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
-       <p>If a number is supplied, delay is applied to both hide/show</p>
-       <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
+        <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
+        <p>If a number is supplied, delay is applied to both hide/show</p>
+        <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
       </td>
     </tr>
     <tr>
@@ -230,12 +234,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <tr>
       <td>template</td>
       <td>string</td>
-      <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="popover-arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
+      <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
       <td>
         <p>Base HTML to use when creating the popover.</p>
         <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
         <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
-        <p><code>.popover-arrow</code> will become the popover's arrow.</p>
+        <p><code>.arrow</code> will become the popover's arrow.</p>
         <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
       </td>
     </tr>
@@ -255,16 +259,17 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.</td>
     </tr>
     <tr>
-      <td>constraints</td>
-      <td>Array</td>
-      <td>'hover focus'</td>
-      <td>An array of constraints - passed through to Tether. For more information refer to Tether's <a href="http://tether.io/#constraints">constraint docs</a>.</td>
+      <td>offset</td>
+      <td>number | string</td>
+      <td>0</td>
+      <td>Offset of the popover relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</td>
     </tr>
     <tr>
-      <td>offset</td>
-      <td>string</td>
-      <td>'0 0'</td>
-      <td>Offset of the popover relative to its target. For more information refer to Tether's <a href="http://tether.io/#offset">offset docs</a>.</td>
+      <td>fallbackPlacement</td>
+      <td>string | array</td>
+      <td>['top', 'right', 'bottom', 'left']</td>
+      <td>Allow to specify which position Popper will use on fallback. For more information refer to
+      Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.behavior">behavior docs</a></td>
     </tr>
   </tbody>
 </table>
@@ -327,14 +332,20 @@ Toggles the ability for an element's popover to be shown or hidden.
 
 {% highlight js %}$('#element').popover('toggleEnabled'){% endhighlight %}
 
+#### `.popover('update')`
+
+Updates the position of an element's popover.
+
+{% highlight js %}$('#element').popover('update'){% endhighlight %}
+
 ### Events
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
-   <tr>
+    <tr>
       <th style="width: 150px;">Event Type</th>
       <th>Description</th>
-   </tr>
+    </tr>
   </thead>
   <tbody>
     <tr>

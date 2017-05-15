@@ -47,13 +47,18 @@ $(function () {
 
   QUnit.test('should render popover element', function (assert) {
     assert.expect(2)
-    var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
+    var done = assert.async()
+    $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
       .appendTo('#qunit-fixture')
+      .on('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        $(this).bootstrapPopover('hide')
+      })
+      .on('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover removed')
+        done()
+      })
       .bootstrapPopover('show')
-
-    assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    $popover.bootstrapPopover('hide')
-    assert.strictEqual($('.popover').length, 0, 'popover removed')
   })
 
   QUnit.test('should store popover instance in popover data object', function (assert) {
