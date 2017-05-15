@@ -33,7 +33,7 @@ import 'bootstrap/js/dist/dropdown';
 ...
 {% endhighlight %}
 
-Bootstrap is dependent on jQuery and Tether, so npm will install them for you if needed. But they must be explicitly provided by webpack. Add the following code to the `plugins` section in your webpack config file:
+Bootstrap is dependent on [jQuery](https://jquery.com/) and [Popper](https://popper.js.org/), so npm will install them for you if needed. But they must be explicitly provided by webpack. Add the following code to the `plugins` section in your webpack config file:
 
 {% highlight js %}
   plugins: [
@@ -42,7 +42,7 @@ Bootstrap is dependent on jQuery and Tether, so npm will install them for you if
         $: 'jquery',
         jQuery: 'jquery',
         'window.jQuery': 'jquery',
-        Tether: 'tether',
+        Popper: ['popper.js', 'default'],
         // In case you imported plugins individually, you must also require them here:
         Util: "exports-loader?Util!bootstrap/js/dist/util",
         Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
