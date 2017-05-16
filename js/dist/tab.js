@@ -129,7 +129,7 @@ var Tab = function ($) {
     };
 
     Tab.prototype.dispose = function dispose() {
-      $.removeClass(this._element, DATA_KEY);
+      $.removeData(this._element, DATA_KEY);
       this._element = null;
     };
 
