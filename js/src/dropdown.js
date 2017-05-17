@@ -52,8 +52,11 @@ const Dropdown = (($) => {
   }
 
   const ClassName = {
-    DISABLED : 'disabled',
-    SHOW     : 'show'
+    DISABLED  : 'disabled',
+    SHOW      : 'show',
+    DROPUP    : 'dropup',
+    MENURIGHT : 'dropdown-menu-right',
+    MENULEFT  : 'dropdown-menu-left'
   }
 
   const Selector = {
@@ -142,7 +145,7 @@ const Dropdown = (($) => {
       }
 
       // Handle dropup
-      const dropdownPlacement = $(this._element).parent().hasClass('dropup') ? AttachmentMap.TOP : this._config.placement
+      const dropdownPlacement = $(this._element).parent().hasClass(ClassName.DROPUP) ? AttachmentMap.TOP : this._config.placement
       this._popper = new Popper(this._element, this._menu, {
         placement : dropdownPlacement,
         modifiers : {
@@ -151,6 +154,11 @@ const Dropdown = (($) => {
           },
           flip : {
             enabled : this._config.flip
+          },
+          beforeApplyStyle: {
+            order: 899, // 900 is the order of applyStyle
+            enabled: true,
+            fn: this._beforePopperApplyStyle
           }
         }
       })
@@ -228,6 +236,23 @@ const Dropdown = (($) => {
         this._menu = $(parent).find(Selector.MENU)[0]
       }
       return this._menu
+    }
+
+    _beforePopperApplyStyle(data) {
+      if ($(data.instance.popper).hasClass(ClassName.MENURIGHT)) {
+        data.styles = {
+          right: 0,
+          left: 'auto'
+        }
+      }
+
+      if ($(data.instance.popper).hasClass(ClassName.MENULEFT)) {
+        data.styles = {
+          right: 'auto',
+          left: 0
+        }
+      }
+      return data
     }
 
     // static
