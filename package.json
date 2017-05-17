@@ -71,7 +71,7 @@
   "license": "MIT",
   "dependencies": {
     "jquery": ">=1.9.1",
-    "popper.js": "^1.9.3"
+    "popper.js": "^1.9.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
