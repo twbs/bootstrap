@@ -139,7 +139,7 @@
       this.$indicators.find('.active').removeClass('active')
       var nextItemIndex = this.getItemIndex($next)
       $(this.$indicators).each(function(index,indicator){
-        var $nextIndicator = $( $(indicator).children()[nextItemIndex])
+        var $nextIndicator = $($(indicator).children()[nextItemIndex])
         $nextIndicator && $nextIndicator.addClass('active')
       })
     }
