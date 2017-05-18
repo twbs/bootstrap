@@ -23,6 +23,8 @@
   }
 }
 
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+// Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
   .dropdown-toggle {
     &::after {
@@ -100,29 +102,14 @@
 
 // Open state for the dropdown
 .show {
-  // Show the menu
-  > .dropdown-menu {
-    display: block;
-  }
-
   // Remove the outline when :focus is triggered
   > a {
     outline: 0;
   }
 }
 
-// Menu positioning
-//
-// Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
-// menu with the parent.
-.dropdown-menu-right {
-  right: 0;
-  left: auto; // Reset the default from `.dropdown-menu`
-}
-
-.dropdown-menu-left {
-  right: auto;
-  left: 0;
+.dropdown-menu.show {
+  display: block;
 }
 
 // Dropdown section headers
@@ -133,17 +120,4 @@
   font-size: $font-size-sm;
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a
-}
-
-// Allow for dropdowns to go bottom up (aka, dropup-menu)
-//
-// Just add .dropup after the standard .dropdown class and you're set.
-
-.dropup {
-  // Different positioning for bottom up menu
-  .dropdown-menu {
-    top: auto;
-    bottom: 100%;
-    margin-bottom: $dropdown-margin-top;
-  }
 }
