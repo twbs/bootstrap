@@ -15,42 +15,42 @@ Quickly and responsively toggle the `display` value of components and more with 
 
 The [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) accepts a handful of values and we support many of them with utility classes. We purposefully don't provide every value as a utility, so here's what we support:
 
-- `.d-none`
-- `.d-inline`
-- `.d-inline-block`
-- `.d-block`
-- `.d-table`
-- `.d-table-cell`
-- `.d-flex`
-- `.d-inline-flex`
+- `.display-none`
+- `.display-inline`
+- `.display-inline-block`
+- `.display-block`
+- `.display-table`
+- `.display-table-cell`
+- `.display-flex`
+- `.display-inline-flex`
 
 Put them to use by applying any of the classes to an element of your choice. For example, here's how you could use the inline, block, or inline-block utilities (the same applies to the other classes).
 
 {% example html %}
-<div class="d-inline bg-success">d-inline</div>
-<div class="d-inline bg-success">d-inline</div>
+<div class="display-inline bg-success">display-inline</div>
+<div class="display-inline bg-success">display-inline</div>
 {% endexample %}
 
 {% example html %}
-<span class="d-block bg-primary">d-block</span>
+<span class="display-block bg-primary">display-block</span>
 {% endexample %}
 
 {% example html %}
-<div class="d-inline-block bg-warning">d-inline-block</div>
-<div class="d-inline-block bg-warning">d-inline-block</div>
+<div class="display-inline-block bg-warning">display-inline-block</div>
+<div class="display-inline-block bg-warning">display-inline-block</div>
 {% endexample %}
 
 Responsive variations also exist for every single utility mentioned above.
 
 {% for bp in site.data.breakpoints %}
-- `.d{{ bp.abbr }}-none`
-- `.d{{ bp.abbr }}-inline`
-- `.d{{ bp.abbr }}-inline-block`
-- `.d{{ bp.abbr }}-block`
-- `.d{{ bp.abbr }}-table`
-- `.d{{ bp.abbr }}-table-cell`
-- `.d{{ bp.abbr }}-flex`
-- `.d{{ bp.abbr }}-inline-flex`{% endfor %}
+- `.display{{ bp.abbr }}-none`
+- `.display{{ bp.abbr }}-inline`
+- `.display{{ bp.abbr }}-inline-block`
+- `.display{{ bp.abbr }}-block`
+- `.display{{ bp.abbr }}-table`
+- `.display{{ bp.abbr }}-table-cell`
+- `.display{{ bp.abbr }}-flex`
+- `.display{{ bp.abbr }}-inline-flex`{% endfor %}
 
 ## Display in print
 
@@ -58,7 +58,7 @@ Change the `display` value of elements when printing with our print display util
 
 | Class | Print style |
 | --- | --- |
-| `.d-print-block` | Applies `display: block` to the element when printing |
-| `.d-print-inline` | Applies `display: inline` to the element when printing |
-| `.d-print-inline-block` | Applies `display: inline-block` to the element when printing |
-| `.d-print-none` | Applies `display: none` to the element when printing |
+| `.display-print-block` | Applies `display: block` to the element when printing |
+| `.display-print-inline` | Applies `display: inline` to the element when printing |
+| `.display-print-inline-block` | Applies `display: inline-block` to the element when printing |
+| `.display-print-none` | Applies `display: none` to the element when printing |
