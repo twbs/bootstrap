@@ -137,8 +137,11 @@
 
     if (this.$indicators.length) {
       this.$indicators.find('.active').removeClass('active')
-      var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)])
-      $nextIndicator && $nextIndicator.addClass('active')
+      var nextItemIndex = this.getItemIndex($next)
+      $(this.$indicators).each(function(index, indicator){
+        var $nextIndicator = $($(indicator).children()[nextItemIndex])
+        $nextIndicator && $nextIndicator.addClass('active')
+      })
     }
 
     var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
