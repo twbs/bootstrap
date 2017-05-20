@@ -138,8 +138,9 @@
       @include media-breakpoint-down($breakpoint) {
         .navbar-nav {
           .dropdown-menu {
-            position: static;
+            position: static !important;
             float: none;
+            transform: unset !important;
           }
         }
 
