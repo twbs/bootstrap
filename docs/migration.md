@@ -97,6 +97,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
   - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
 - Added custom forms support (for checkboxes, radios, selects, and file inputs).
+- Renamed `.has-error` to `.has-danger`.
 
 ### Buttons
 
