@@ -264,3 +264,23 @@ a.card-block {
     @include border-top-radius($card-border-radius-inner);
   }
 }
+
+//
+// Card deck rework
+//
+
+@include media-breakpoint-up(sm) {
+  .card-grid {
+    display: flex;
+    flex-flow: row wrap;
+    margin: $card-deck-margin * -1;
+
+    .card {
+      display: flex;
+      flex: 1 0 240px;
+      flex-direction: column;
+
+      margin: $card-deck-margin;
+    }
+  }
+}
