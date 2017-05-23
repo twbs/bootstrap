@@ -107,8 +107,8 @@ $purple: #745064;
 $gray-dark:                 #232321;
 $gray:                      #44423d;
 $gray-light:                #656461;
-$gray-lighter:              #eae9e5;
-$gray-lightest:             #f5f5f5;
+$gray-lighter:              #d0d0d0;
+$gray-lightest:             #e4e4e4;
 
 // Reassign color vars to semantic color scheme
 $brand-primary:             $yellow;
@@ -356,13 +356,13 @@ $btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba(
 $btn-focus-box-shadow:           0 0 0 2px rgba($brand-primary, .25) !default;
 $btn-active-box-shadow:          inset 0 3px 5px rgba($black,.125) !default;
 
-$btn-primary-color:              $white !default;
+$btn-primary-color:              $brand-black;
 $btn-primary-bg:                 $brand-primary !default;
 $btn-primary-border-color:       $btn-primary-bg !default;
 
 $btn-secondary-color:            $gray-dark !default;
-$btn-secondary-bg:               $white !default;
-$btn-secondary-border-color:     #ccc !default;
+$btn-secondary-bg:               $gray-lightest;
+$btn-secondary-border-color:     $gray-lighter;
 
 $btn-info-color:                 $white !default;
 $btn-info-bg:                    $brand-info !default;
@@ -385,9 +385,9 @@ $btn-link-disabled-color:        $gray-light !default;
 $btn-block-spacing-y:            .5rem !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:              $border-radius !default;
-$btn-border-radius-lg:           $border-radius-lg !default;
-$btn-border-radius-sm:           $border-radius-sm !default;
+$btn-border-radius:              1px;
+$btn-border-radius-lg:           1px;
+$btn-border-radius-sm:           1px;
 
 $btn-transition:                 all .2s ease-in-out !default;
 
