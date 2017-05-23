@@ -17,7 +17,9 @@ footer {
  * Off Canvas
  * --------------------------------------------------
  */
-@media screen and (max-width: 767px) {
+
+/* Extra small devices (portrait phones, less than 34em) */
+@media screen and (max-width: 33.9em) {
   .row-offcanvas {
     position: relative;
     -webkit-transition: all .25s ease-out;
