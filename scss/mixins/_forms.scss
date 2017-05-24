@@ -44,7 +44,7 @@
 //
 // Example usage: change the default blue border and shadow to white for better
 // contrast against a dark gray background.
-@mixin form-control-focus() {
+@mixin form-control-states() {
   &:focus {
     color: $input-color-focus;
     background-color: $input-bg-focus;
@@ -52,9 +52,7 @@
     outline: none;
     @include box-shadow($input-box-shadow-focus);
   }
-}
 
-@mixin form-control-states() {
   // Placeholder
   &::placeholder {
     color: $input-color-placeholder;
