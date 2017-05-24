@@ -93,11 +93,11 @@
 // inheritance to nested tables.
 
 // Generate the contextual variants
-@include table-row-variant(active, $table-bg-active);
-@include table-row-variant(success, $state-success-bg);
-@include table-row-variant(info, $state-info-bg);
-@include table-row-variant(warning, $state-warning-bg);
-@include table-row-variant(danger, $state-danger-bg);
+@include table-row-variant(active, $table-bg-active, $gray-dark);
+@include table-row-variant(success, $state-success-bg, $state-success-text);
+@include table-row-variant(info, $state-info-bg, $state-info-text);
+@include table-row-variant(warning, $state-warning-bg, $state-warning-text);
+@include table-row-variant(danger, $state-danger-bg, $state-danger-text);
 
 
 // Inverse styles
