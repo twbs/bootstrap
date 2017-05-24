@@ -74,6 +74,20 @@
       border-left-color: $tooltip-arrow-color;
     }
   }
+  &.bs-tooltip-auto {
+    &[x-placement^="top"] {
+      @extend .bs-tooltip-top;
+    }
+    &[x-placement^="right"] {
+      @extend .bs-tooltip-right;
+    }
+    &[x-placement^="bottom"] {
+      @extend .bs-tooltip-bottom;
+    }
+    &[x-placement^="left"] {
+      @extend .bs-tooltip-left;
+    }
+  }
 
   .arrow::before {
     position: absolute;
