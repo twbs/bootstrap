@@ -221,7 +221,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>string | function</td>
       <td>'right'</td>
       <td>
-        <p>How to position the popover - top | bottom | left | right.</p>
+        <p>How to position the popover - auto | top | bottom | left | right.<br>When <code>auto</code> is specified, it will dynamically reorient the popover.</p>
         <p>When a function is used to determine the placement, it is called with the popover DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the popover instance.</p>
       </td>
     </tr>
