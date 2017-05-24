@@ -267,7 +267,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <tr>
       <td>fallbackPlacement</td>
       <td>string | array</td>
-      <td>['top', 'right', 'bottom', 'left']</td>
+      <td>'flip'</td>
       <td>Allow to specify which position Popper will use on fallback. For more information refer to
       Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.behavior">behavior docs</a></td>
     </tr>
