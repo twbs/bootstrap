@@ -1,6 +1,7 @@
 .slider {
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible; 
   padding: $slider-inner-padding-y $slider-inner-padding-x;
 }
 

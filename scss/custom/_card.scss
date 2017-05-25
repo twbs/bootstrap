@@ -284,3 +284,43 @@ a.card-block {
     }
   }
 }
+
+//
+// Action Cards
+//
+
+.card-action {
+  position: relative;
+  top: 0;
+
+  text-decoration: none;
+  color: inherit;
+
+  transition: border 0.2s, box-shadow 0.2s, top 0.2s ease-in-out;
+
+  &:before {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    content: '';
+    border-radius: $card-border-radius;
+    background-color: transparent;
+  }
+
+  &:hover {
+    top: -.25rem;
+    box-shadow: $box-shadow-large;
+    text-decoration: none;
+    color: inherit;
+
+    &:before {
+      border: 2px solid $brand-primary;
+    }
+  }
+
+  &:active {
+    transition: top 0.1s;
+    top: .05rem;
+    box-shadow: inset $box-shadow-large;
+  }
+}
