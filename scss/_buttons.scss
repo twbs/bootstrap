@@ -10,6 +10,7 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
+  cursor: default;
   user-select: none;
   border: $input-btn-border-width solid transparent;
   @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
@@ -75,6 +76,7 @@ fieldset[disabled] a.btn {
 .btn-link {
   font-weight: $font-weight-normal;
   color: $link-color;
+  cursor: pointer;
   background-color: transparent;
   border-radius: 0;
 
