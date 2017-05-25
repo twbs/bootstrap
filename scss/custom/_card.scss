@@ -269,18 +269,27 @@ a.card-block {
 // Card deck rework
 //
 
-@include media-breakpoint-up(sm) {
-  .card-grid {
+.card-grid {
+  display: flex;
+  flex-flow: row wrap;
+
+  .card {
     display: flex;
-    flex-flow: row wrap;
-    margin: $card-deck-margin * -1;
+    flex: 1 0 256px;
+    flex-direction: column;
+  }
+}
 
-    .card {
-      display: flex;
-      flex: 1 0 240px;
-      flex-direction: column;
+@each $breakpoint in map-keys($grid-gutter-widths) {
+  @include media-breakpoint-up($breakpoint) {
+    $gutter: map-get($grid-gutter-widths, $breakpoint);
 
-      margin: $card-deck-margin;
+    .card-grid {
+      margin: $gutter * -.5;
+
+      .card {
+        margin: $gutter * .5;
+      }
     }
   }
 }
