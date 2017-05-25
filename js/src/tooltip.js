@@ -51,6 +51,7 @@ const Tooltip = (($) => {
   }
 
   const AttachmentMap = {
+    AUTO   : 'auto',
     TOP    : 'top',
     RIGHT  : 'right',
     BOTTOM : 'bottom',

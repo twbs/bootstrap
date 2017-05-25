@@ -17,7 +17,7 @@ Add small overlay content, like those found in iOS, to any element for housing s
 Things to know when using the popover plugin:
 
 
-- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.9.4/umd/popper.min.js) before bootstrap.js in order for popovers to work!
+- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.9.9/umd/popper.min.js) before bootstrap.js in order for popovers to work!
 - Popovers require the [tooltip plugin]({{ site.baseurl }}/components/tooltips/) as a dependency.
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
@@ -221,7 +221,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>string | function</td>
       <td>'right'</td>
       <td>
-        <p>How to position the popover - top | bottom | left | right.</p>
+        <p>How to position the popover - auto | top | bottom | left | right.<br>When <code>auto</code> is specified, it will dynamically reorient the popover.</p>
         <p>When a function is used to determine the placement, it is called with the popover DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the popover instance.</p>
       </td>
     </tr>
@@ -267,7 +267,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <tr>
       <td>fallbackPlacement</td>
       <td>string | array</td>
-      <td>['top', 'right', 'bottom', 'left']</td>
+      <td>'flip'</td>
       <td>Allow to specify which position Popper will use on fallback. For more information refer to
       Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.behavior">behavior docs</a></td>
     </tr>
