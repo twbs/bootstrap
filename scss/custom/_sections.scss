@@ -27,6 +27,7 @@
 .section-header {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   margin-top: $section-padding-y;
   margin-bottom: $section-padding-y;
 }
