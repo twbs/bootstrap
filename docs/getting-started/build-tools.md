@@ -40,7 +40,7 @@ Our [package.json](https://github.com/twbs/bootstrap/blob/master/package.json) i
 
 Bootstrap uses [Autoprefixer][autoprefixer] (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
 
-We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [`/build/postcss.js`](https://github.com/twbs/bootstrap/blob/v4-dev/build/postcss.js) for details.
+We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [`/build/postcss.config.js`](https://github.com/twbs/bootstrap/blob/v4-dev/build/postcss.config.js) for details.
 
 ## Local documentation
 
