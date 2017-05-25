@@ -16,7 +16,7 @@ Inspired by the excellent Tipsy jQuery plugin written by Jason Frame. Tooltips a
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.9.3/umd/popper.min.js) before bootstrap.js in order for tooltips to work!
+- Tooltips rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.9.9/umd/popper.min.js) before bootstrap.js in order for tooltips to work!
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -51,26 +51,26 @@ Hover over the links below to see tooltips:
 Four options are available: top, right, bottom, and left aligned.
 
 <div class="bd-example bd-example-tooltip-static">
-  <div class="tooltip bs-tooltip-top" role="tooltip">
-    <div class="arrow"></div>
+  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
+    <div class="arrow" x-arrow></div>
     <div class="tooltip-inner">
       Tooltip on the top
     </div>
   </div>
-  <div class="tooltip bs-tooltip-right" role="tooltip">
-    <div class="arrow"></div>
+  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
+    <div class="arrow" x-arrow></div>
     <div class="tooltip-inner">
       Tooltip on the right
     </div>
   </div>
-  <div class="tooltip bs-tooltip-bottom" role="tooltip">
-    <div class="arrow"></div>
+  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
+    <div class="arrow" x-arrow></div>
     <div class="tooltip-inner">
       Tooltip on the bottom
     </div>
   </div>
-  <div class="tooltip bs-tooltip-left" role="tooltip">
-    <div class="arrow"></div>
+  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
+    <div class="arrow" x-arrow></div>
     <div class="tooltip-inner">
       Tooltip on the left
     </div>
@@ -139,8 +139,8 @@ You should only add tooltips to HTML elements that are traditionally keyboard-fo
 <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
 
 <!-- Generated markup by the plugin -->
-<div class="tooltip tooltip-top" role="tooltip">
-  <div class="arrow"></div>
+<div class="tooltip bs-tooltip-top" role="tooltip">
+  <div class="arrow" x-arrow></div>
   <div class="tooltip-inner">
     Some tooltip text!
   </div>
@@ -200,7 +200,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>string | function</td>
       <td>'top'</td>
       <td>
-        <p>How to position the tooltip - top | bottom | left | right.</p>
+        <p>How to position the tooltip - auto | top | bottom | left | right.<br>When <code>auto</code> is specified, it will dynamically reorient the tooltip.</p>
         <p>When a function is used to determine the placement, it is called with the tooltip DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the tooltip instance.</p>
       </td>
     </tr>
@@ -213,7 +213,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <tr>
       <td>template</td>
       <td>string</td>
-      <td><code>'&lt;div class="tooltip" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;div class="tooltip-inner"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
+      <td><code>'&lt;div class="tooltip" role="tooltip"&gt;&lt;div class="arrow" x-arrow&gt;&lt;/div&gt;&lt;div class="tooltip-inner"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
       <td>
         <p>Base HTML to use when creating the tooltip.</p>
         <p>The tooltip's <code>title</code> will be injected into the <code>.tooltip-inner</code>.</p>
