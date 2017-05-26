@@ -162,6 +162,11 @@
             top: 100% !important;
           }
 
+          .dropdown-menu-right {
+            right: 0;
+            left: auto !important;
+          }
+
           .nav-link {
             padding-right: .5rem;
             padding-left: .5rem;
