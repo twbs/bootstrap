@@ -8,9 +8,9 @@
 .progress {
   display: flex;
   align-items: center;
+  height: $progress-height;
   overflow: hidden; // force rounded corners by cropping it
   font-size: $progress-font-size;
-  height: $progress-height;
   line-height: $progress-height;
   background-color: $progress-bg;
   @include border-radius($progress-border-radius);
