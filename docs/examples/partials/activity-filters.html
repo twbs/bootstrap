@@ -124,19 +124,19 @@
 			ng-if="$ctrl.size !== 'sm'"></tw-select>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-3 col-md-pull-3 m-b-2" ng-if="$ctrl.filtersActive">
-		<div class="input-group input-group-sm">
-			<span class="input-group-addon">
-				<label class="control-label">From</label>
-			</span>
-			<input class="form-control" value="01 May 2016" />
-		</div>
+		<tw-date-lookup
+			placeholder="Start date..."
+			ng-model="$ctrl.startDate"
+			ng-max="$ctrl.endDate"
+			size="sm">
+		</tw-date-lookup>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-3 col-md-pull-3 m-b-2" ng-if="$ctrl.filtersActive">
-		<div class="input-group input-group-sm">
-			<span class="input-group-addon">
-				<label class="control-label">To</label>
-			</span>
-			<input class="form-control" value="22 May 2016" />
-		</div>
+		<tw-date-lookup
+			placeholder="End date..."
+			ng-model="$ctrl.endDate"
+			ng-min="$ctrl.startDate"
+			size="sm">
+		</tw-date-lookup>
 	</div>
 </div>

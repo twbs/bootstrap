@@ -151,38 +151,40 @@
 									<tw-date ng-model="ctrl.date" tw-focusable></tw-date>
 								</div>
 							</fieldset>
-							<h4 class="page-header">New section</h4>
-							<fieldset class="row">
-								<div class="col-md-6">
-									<div class="form-group has-error">
-										<label class="control-label">Currency input</label>
-										<div class="input-group">
-											<span class="input-group-addon">
-												$
-											</span>
-											<input type="number" class="form-control text-xs-right" tw-focusable />
-											<span class="input-group-addon">
-												USD
-											</span>
+							<fieldset>
+								<legend>Fieldset legend</legend>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group has-error">
+											<label class="control-label">Currency input</label>
+											<div class="input-group">
+												<span class="input-group-addon">
+													$
+												</span>
+												<input type="number" class="form-control text-xs-right" tw-focusable />
+												<span class="input-group-addon">
+													USD
+												</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label">Label separate fieldset</label>
+											<div class="input-group">
+												<span class="input-group-addon">
+													<i class="icon icon-search"></i>
+												</span>
+												<input type="number" class="form-control" placeholder="Search..." tw-focusable />
+												<span class="input-group-btn">
+													<button class="btn btn-addon">Go</button>
+												</span>
+											</div>
+											<div class="help-block">Help text here!</div>
 										</div>
 									</div>
-									<div class="form-group">
-										<label class="control-label">Label separate fieldset</label>
-										<div class="input-group">
-											<span class="input-group-addon">
-												<i class="icon icon-search"></i>
-											</span>
-											<input type="number" class="form-control" placeholder="Search..." tw-focusable />
-											<span class="input-group-btn">
-												<button class="btn btn-addon">Go</button>
-											</span>
-										</div>
-										<div class="help-block">Help text here!</div>
+									<div class="form-group col-md-6">
+										<label>Textareas match two inputs</label>
+										<textarea class="form-control" placeholder="Always use placeholders" tw-focusable></textarea>
 									</div>
-								</div>
-								<div class="form-group col-md-6">
-									<label>Textareas match two inputs</label>
-									<textarea class="form-control" placeholder="Always use placeholders" tw-focusable></textarea>
 								</div>
 							</fieldset>
 							<fieldset class="row">

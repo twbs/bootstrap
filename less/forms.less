@@ -23,10 +23,11 @@ fieldset {
 legend {
   display: block;
   width: 100%;
-  padding: 0;
-  margin-bottom: @line-height-computed;
-  font-size: @font-size-base;
-  line-height: inherit;
+  padding: 32px 0 16px 0;
+  margin-bottom: 32px;
+  font-size: @font-size-h4;
+  font-weight: @headings-font-weight;
+  line-height: @line-height-h4;
   color: @legend-color;
   border: 0;
   border-bottom: 1px solid @legend-border-color;
@@ -233,6 +234,9 @@ input[type="search"] {
   label {
     margin-bottom: 2px;
   }
+}
+.row-equal-height > [class*="col-"] > .form-group {
+  width: 100%;
 }
 
 
