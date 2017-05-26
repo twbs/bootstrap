@@ -43,6 +43,8 @@
   position: relative;
   width: auto;
   margin: $modal-dialog-margin;
+  // allow clicks to pass through for custom click handling to close modal
+  pointer-events: none;
 }
 
 // Actual modal
@@ -50,6 +52,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  // counteract the pointer-events: none; in the .modal-dialog
+  pointer-events: auto;
   background-color: $modal-content-bg;
   background-clip: padding-box;
   border: $modal-content-border-width solid $modal-content-border-color;
