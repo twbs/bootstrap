@@ -77,6 +77,13 @@ const Collapse = (($) => {
         `[data-toggle="collapse"][href="#${element.id}"],` +
         `[data-toggle="collapse"][data-target="#${element.id}"]`
       ))
+      const tabToggles = $(Selector.DATA_TOGGLE)
+      for (const elem of tabToggles) {
+        const selector = Util.getSelectorFromElement(elem)
+        if (selector !== null && $(selector).filter(element).length > 0) {
+          this._triggerArray.push(elem)
+        }
+      }
 
       this._parent = this._config.parent ? this._getParent() : null
 
@@ -215,9 +222,16 @@ const Collapse = (($) => {
         .removeClass(ClassName.SHOW)
 
       if (this._triggerArray.length) {
-        $(this._triggerArray)
-          .addClass(ClassName.COLLAPSED)
-          .attr('aria-expanded', false)
+        for (const elem of this._triggerArray) {
+          const selector = Util.getSelectorFromElement(elem)
+          if (selector !== null) {
+            const $elem = $(selector)
+            if (!$elem.hasClass(ClassName.SHOW)) {
+              $elem.addClass(ClassName.COLLAPSED)
+                   .attr('aria-expanded', false)
+            }
+          }
+        }
       }
 
       this.setTransitioning(true)
@@ -349,11 +363,14 @@ const Collapse = (($) => {
       event.preventDefault()
     }
 
-    const target = Collapse._getTargetFromElement(this)
-    const data   = $(target).data(DATA_KEY)
-    const config = data ? 'toggle' : $(this).data()
-
-    Collapse._jQueryInterface.call($(target), config)
+    const $trigger = $(this)
+    const selector = Util.getSelectorFromElement(this)
+    $(selector).each(function () {
+      const $target = $(this)
+      const data    = $target.data(DATA_KEY)
+      const config = data ? 'toggle' : $trigger.data()
+      Collapse._jQueryInterface.call($target, config)
+    })
   })
 
 
