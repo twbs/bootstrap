@@ -904,6 +904,301 @@ Just like with card groups, card footers in decks will automatically line up.
 </div>
 {% endexample %}
 
+### Card Grids
+
+Need a set of equal width and height cards that aren't attached to one another but also should wrap in another column? Use card grids.
+
+{% example html %}
+<div class="card-grid">
+  <div class="card">
+    <div class="card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" data-src="holder.js/160x160/" alt="Card image cap">
+    </div>
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" data-src="holder.js/160x160/" alt="Card image cap">
+    </div>
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" data-src="holder.js/160x160/" alt="Card image cap">
+    </div>
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+{% endexample %}
+
+Just like with card groups, card footers in decks will automatically line up.
+
+{% example html %}
+<div class="card-grid">
+  <div class="card">
+    <div class="card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" data-src="holder.js/160x160/" alt="Card image cap">
+    </div>
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" data-src="holder.js/160x160/" alt="Card image cap">
+    </div>
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" data-src="holder.js/160x160/" alt="Card image cap">
+    </div>
+    <div class="card-block">
+      <h4 class="card-title">Card title</h4>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+</div>
+{% endexample %}
+
+#### Interactive Cards in a deck or grid
+
+To make cards hover, use `.card-action` class.
+
+{% example html %}
+<div class="card-grid">
+  <a href="#" class="card card-action">
+    <div class="CompanyCard__logo card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" src="http://placehold.it/160x160/f1f1f1/ccc" alt="ALT">
+    </div>
+    <div class="CompanyCard__title card-block">
+      <p class="h2 m-0"><strong>Name</strong></p>
+      <p class="m-0">Description</p>
+    </div>
+    <div class="card-footer p-0">
+      <table class="table table-flush table-sm">
+        <tbody>
+          <tr>
+            <th scope="row">Some value field</th>
+            <td>440</td>
+          </tr>
+          <tr>
+            <th scope="row">Some address</th>
+            <td>
+              <address itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">Musterstr. 99</span><br>
+                <span itemprop="postalCode">83024</span> <span itemprop="addressLocality">Rosenheim</span>
+              </address>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </a>
+  <a href="#" class="card card-action">
+    <div class="CompanyCard__logo card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" src="http://placehold.it/160x160/f1f1f1/ccc" alt="ALT">
+    </div>
+    <div class="CompanyCard__title card-block">
+      <p class="h2 m-0"><strong>Name</strong></p>
+      <p class="m-0">Description</p>
+    </div>
+    <div class="card-footer p-0">
+      <table class="table table-flush table-sm">
+        <tbody>
+          <tr>
+            <th scope="row">Some address</th>
+            <td>
+              <address itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">Musterstr. 99</span><br>
+                <span itemprop="postalCode">83024</span> <span itemprop="addressLocality">Rosenheim</span>
+              </address>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </a>
+  <a href="#" class="card card-action">
+    <div class="CompanyCard__logo card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" src="http://placehold.it/160x160/f1f1f1/ccc" alt="ALT">
+    </div>
+    <div class="CompanyCard__title card-block">
+      <p class="h2 m-0"><strong itemprop="legalName">The big brown fox jumps over the garden fence GmbH The big brown fox jumps over the garden fence GmbH</strong></p>
+      <p class="m-0">Description</p>
+    </div>
+    <div class="card-footer p-0">
+      <table class="table table-flush table-sm">
+        <tbody>
+          <tr>
+            <th scope="row">Some address</th>
+            <td>
+              <address itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">Musterstr. 99</span><br>
+                <span itemprop="postalCode">83024</span> <span itemprop="addressLocality">Rosenheim</span>
+              </address>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </a>
+  <a href="#" class="card card-action">
+    <div class="CompanyCard__logo card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" src="http://placehold.it/160x160/f1f1f1/ccc" alt="ALT">
+    </div>
+    <div class="CompanyCard__title card-block">
+      <p class="h2 m-0"><strong>Name</strong></p>
+      <p class="m-0">Description</p>
+    </div>
+    <div class="card-footer p-0">
+      <table class="table table-flush table-sm">
+        <tbody>
+          <tr>
+            <th scope="row">Some value field</th>
+            <td>440</td>
+          </tr>
+          <tr>
+            <th scope="row">Some address</th>
+            <td>
+              <address itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">Musterstr. 99</span><br>
+                <span itemprop="postalCode">83024</span> <span itemprop="addressLocality">Rosenheim</span>
+              </address>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </a>
+  <a href="#" class="card card-action">
+    <div class="CompanyCard__logo card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" src="http://placehold.it/160x160/f1f1f1/ccc" alt="ALT">
+    </div>
+    <div class="CompanyCard__title card-block">
+      <p class="h2 m-0"><strong>Name</strong></p>
+      <p class="m-0">Description</p>
+    </div>
+    <div class="card-footer p-0">
+      <table class="table table-flush table-sm">
+        <tbody>
+          <tr>
+            <th scope="row">Some address</th>
+            <td>
+              <address itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">Musterstr. 99</span><br>
+                <span itemprop="postalCode">83024</span> <span itemprop="addressLocality">Rosenheim</span>
+              </address>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </a>
+  <a href="#" class="card card-action">
+    <div class="CompanyCard__logo card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" src="http://placehold.it/160x160/f1f1f1/ccc" alt="ALT">
+    </div>
+    <div class="CompanyCard__title card-block">
+      <p class="h2 m-0"><strong>Name</strong></p>
+      <p class="m-0">Description</p>
+    </div>
+    <div class="card-footer p-0">
+      <table class="table table-flush table-sm">
+        <tbody>
+          <tr>
+            <th scope="row">Some address</th>
+            <td>
+              <address itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">Musterstr. 99</span><br>
+                <span itemprop="postalCode">83024</span> <span itemprop="addressLocality">Rosenheim</span>
+              </address>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </a>
+  <a href="#" class="card card-action">
+    <div class="CompanyCard__logo card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" src="http://placehold.it/160x160/f1f1f1/ccc" alt="ALT">
+    </div>
+    <div class="CompanyCard__title card-block">
+      <p class="h2 m-0"><strong>Name</strong></p>
+      <p class="m-0">Description</p>
+    </div>
+    <div class="card-footer p-0">
+      <table class="table table-flush table-sm">
+        <tbody>
+          <tr>
+            <th scope="row">Some value field</th>
+            <td>440</td>
+          </tr>
+          <tr>
+            <th scope="row">Some address</th>
+            <td>
+              <address itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">Musterstr. 99</span><br>
+                <span itemprop="postalCode">83024</span> <span itemprop="addressLocality">Rosenheim</span>
+              </address>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </a>
+  <a href="#" class="card card-action">
+    <div class="CompanyCard__logo card-block p-4 p-md-5">
+      <img class="card-img mx-auto d-block" src="http://placehold.it/160x160/f1f1f1/ccc" alt="ALT">
+    </div>
+    <div class="CompanyCard__title card-block">
+      <p class="h2 m-0"><strong>Name</strong></p>
+      <p class="m-0">Description</p>
+    </div>
+    <div class="card-footer p-0">
+      <table class="table table-flush table-sm">
+        <tbody>
+          <tr>
+            <th scope="row">Some address</th>
+            <td>
+              <address itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress">Musterstr. 99</span><br>
+                <span itemprop="postalCode">83024</span> <span itemprop="addressLocality">Rosenheim</span>
+              </address>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </a>
+</div>
+{% endexample %}
+
 ### Card columns
 
 Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. Cards are built with CSS `column` properties instead of flexbox for easier alignment. Cards are ordered from top to bottom and left to right.
