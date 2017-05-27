@@ -36,16 +36,24 @@
 <script src="{{ site.baseurl }}/assets/js/ie-emulation-modes-warning.js"></script>
 
 {% if page.layout == "docs" %}
-<script src="{{ site.baseurl }}/assets/js/vendor/jekyll-search.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
 <script>
-SimpleJekyllSearch.init({
-  searchInput: document.getElementById('search-input'),
-  resultsContainer: document.getElementById('search-results'),
-  searchResultTemplate: '<a class="dropdown-item" href="{url}">{title}</a>',
-  noResultsText: '<div class="dropdown-item no-results">Sorry, there are no results for that search.</div>',
-  json: '{{ site.baseurl }}/search.json'
-})
+  var client = algoliasearch("YHC4ZXLJL7", "250a854084e2ce05558580cf48695b56")
+  var index = client.initIndex('bootstrap_docs')
+
+  autocomplete('#bd-docs-search', { hint: false, debug: true }, {
+    source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+    // value to be displayed in input control after user's suggestion selection
+    displayKey: 'title',
+    //hash of templates used when rendering dataset
+    templates: {
+      //'suggestion' templating function used to render a single suggestion
+      suggestion: function(suggestion) {
+        return '<span>' + suggestion._highlightResult.title.value + '</span>';
+      }
+    }
+  })
 </script>
 {% endif %}
 
