@@ -23,14 +23,14 @@ const Popover = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const CLASS_PREFIX        = 'bs-popover'
-  const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
+  const BSCLS_PREFIX_REGEX  = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
   const Default = $.extend({}, Tooltip.Default, {
     placement : 'right',
     trigger   : 'click',
     content   : '',
     template  : '<div class="popover" role="tooltip">'
-              + '<div class="arrow"></div>'
+              + '<div class="arrow" x-arrow></div>'
               + '<h3 class="popover-title"></h3>'
               + '<div class="popover-content"></div></div>'
   })

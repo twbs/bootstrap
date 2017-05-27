@@ -698,7 +698,9 @@ $tooltip-padding-y:           3px !default;
 $tooltip-padding-x:           8px !default;
 $tooltip-margin:              0 !default;
 
+
 $tooltip-arrow-width:         5px !default;
+$tooltip-arrow-height:        5px !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
 
@@ -721,6 +723,7 @@ $popover-content-padding-y:           9px !default;
 $popover-content-padding-x:           14px !default;
 
 $popover-arrow-width:                 10px !default;
+$popover-arrow-height:                5px !default;
 $popover-arrow-color:                 $popover-bg !default;
 
 $popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;

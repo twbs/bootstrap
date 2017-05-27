@@ -196,14 +196,6 @@ Dropped entirely for the new card component.
 - `.panel-warning` to `.card-warning` and `.card-inverse` (or use `.bg-warning` on `.card-header`)
 - `.panel-danger` to `.card-danger` and `.card-inverse` (or use `.bg-danger` on `.card-header`)
 
-### Tooltips
-
-- Removed support for `auto` placement options.
-
-### Popovers
-
-- Removed support for `auto` placement options.
-
 ### Carousel
 
 - Overhauled the entire component to simplify design and styling. We have fewer styles for you to override, new indicators, and new icons.
