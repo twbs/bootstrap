@@ -6,11 +6,15 @@
 
 .bd-content {
   > table {
-    display: block;
     width: 100%;
     max-width: 100%;
-    margin-bottom: $spacer;
-    overflow-y: auto;
+    margin-bottom: 1rem;
+
+    @include media-breakpoint-down(md) {
+      display: block;
+      overflow-x: auto;
+      -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+    }
 
     // Cells
     > thead,

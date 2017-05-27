@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Cards
-description: Bootstrap Cards provide a flexible and extensible content container with multiple variants and options.
+description: Bootstrap's cards provide a flexible and extensible content container with multiple variants and options.
 group: components
 ---
 
@@ -18,7 +18,7 @@ If you're familiar with Bootstrap 3, cards replace our old panels, wells, and th
 
 Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization. Built with flexbox, they offer easy alignment and mix well with other Bootstrap components.
 
-Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of it's parent element. This is easily customized with our various [sizing options](#sizing).
+Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of its parent element. This is easily customized with our various [sizing options](#sizing).
 
 {% example html %}
 <div class="card" style="width: 20rem;">
@@ -51,7 +51,7 @@ The building block of a card is the `.card-block`. Use it whenever you need a pa
 
 Card titles are used by adding `.card-title` to a `<h*>` tag. In the same way, links are added and placed next to each other by adding `.card-link` to  a `<a>` tag.
 
-Subtitles are used by adding a `.card-subtitle` to an `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
+Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
 
 {% example html %}
 <div class="card">
@@ -208,7 +208,7 @@ Using the grid, wrap cards in columns and rows as needed.
 
 ### Using utilities
 
-Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/sizing-and-positioning/#width-and-height) to quickly set a card's width.
+Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/sizing/) to quickly set a card's width.
 
 {% example html %}
 <div class="card w-75">
@@ -359,7 +359,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
   <div class="card-img-overlay">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <p class="card-text">Last updated 3 mins ago</p>
   </div>
 </div>
 {% endexample %}
@@ -376,11 +376,13 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
 
 {% example html %}
 <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+  <div class="card-header">Header</div>
   <div class="card-block">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
+  <div class="card-footer">Footer</div>
 </div>
 {% endexample %}
 
@@ -565,7 +567,7 @@ When using card groups with footers, their content will automatically line up.
 
 ### Card decks
 
-Need a set of equal width and height cards that aren't attached to one another? Use card decks. By default, card decks require two wrapping elements: `.card-deck-wrapper` and a `.card-deck`. We use table styles for the sizing and the gutters on `.card-deck`. The `.card-deck-wrapper` is used to negative margin out the `border-spacing` on the `.card-deck`.
+Need a set of equal width and height cards that aren't attached to one another? Use card decks.
 
 {% example html %}
 <div class="card-deck">
@@ -642,7 +644,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
 {% example html %}
 <div class="card-columns">
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
+    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title that wraps to a new line</h4>
       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -659,7 +661,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
     </blockquote>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
+    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -684,7 +686,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
     </div>
   </div>
   <div class="card">
-    <img class="card-img img-fluid" data-src="holder.js/100px260/" alt="Card image">
+    <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
   </div>
   <div class="card p-3 text-right">
     <blockquote class="card-blockquote">

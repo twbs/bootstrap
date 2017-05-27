@@ -38,13 +38,9 @@ Skip the download and use the Bootstrap CDN to deliver Bootstrap's compiled CSS 
 
 Pull in Bootstrap's **source files** into nearly any project with some of the most popular package managers. No matter the package manager, Bootstrap will **require a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), and [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes)** for a setup that matches our official compiled versions.
 
-{% callout warning %}
-**Heads up!** Not all package managers have the v4 alpha published yet, but we should have them up shortly!
-{% endcallout %}
-
 ### npm
 
-Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.org/package/bootstrap):
+Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.com/package/bootstrap):
 
 {% highlight bash %}
 npm install bootstrap@{{ site.current_version }}
@@ -62,13 +58,13 @@ Bootstrap's `package.json` contains some additional metadata under the following
 Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/gemfile.html):
 
 {% highlight ruby %}
-gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'bootstrap', '~> 4.0.0.alpha6'
 {% endhighlight %}
 
 Alternatively, if you're not using Bundler, you can install the gem by running this command:
 
 {% highlight bash %}
-gem install bootstrap -v 4.0.0.alpha5
+gem install bootstrap -v 4.0.0.alpha6
 {% endhighlight %}
 
 [See the gem's README](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md) for further details.

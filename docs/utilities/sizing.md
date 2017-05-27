@@ -1,27 +1,12 @@
 ---
 layout: docs
-title: Sizing and positioning
+title: Sizing
 group: utilities
 ---
 
-## Fixed positioning
+Easily make an element as wide or as tall (relative to its parent) with our width and height utilities. Includes support for `25%`, `50%`, `75%`, and `100%` by default.
 
-The `.pos-f-t` class can be used to easily position elements at the top of the viewport and make them as wide as the viewport. **Be sure you understand the ramifications of fixed-position elements within your project.** Here's how the class is defined:
-
-{% highlight scss %}
-.pos-f-t {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: $zindex-navbar-fixed;
-}
-{% endhighlight %}
-
-
-## Width and height
-
-Easily make an element as wide or as tall (relative to its parent) with our width and height utilities. Includes support for `25%`, `50%`, `75%`, and `100%`.
+Width and height utilities are generated from the `$sizes` Sass map in `_variables.scss`. Modify those values as you need to generate different utilities here.
 
 {% example html %}
 <div class="w-25 p-3" style="background-color: #eee;">Width 25%</div>

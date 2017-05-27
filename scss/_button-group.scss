@@ -4,12 +4,13 @@
 .btn-group,
 .btn-group-vertical {
   position: relative;
-  display: flex;
+  display: inline-flex;
   vertical-align: middle; // match .btn alignment given font-size hack above
 
   > .btn {
     position: relative;
     flex: 0 1 auto;
+    margin-bottom: 0;
 
     // Bring the hover, focused, and "active" buttons to the fron to overlay
     // the borders properly
@@ -35,6 +36,7 @@
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
 
   .input-group {
@@ -77,12 +79,6 @@
   @include border-left-radius(0);
 }
 
-// On active and open, don't show outline
-.btn-group .dropdown-toggle:active,
-.btn-group.open .dropdown-toggle {
-  outline: 0;
-}
-
 
 // Sizing
 //
@@ -97,8 +93,8 @@
 //
 
 .btn + .dropdown-toggle-split {
-  padding-right: $btn-padding-x * .75;
-  padding-left: $btn-padding-x * .75;
+  padding-right: $input-btn-padding-x * .75;
+  padding-left: $input-btn-padding-x * .75;
 
   &::after {
     margin-left: 0;
@@ -106,19 +102,19 @@
 }
 
 .btn-sm + .dropdown-toggle-split {
-  padding-right: $btn-padding-x-sm * .75;
-  padding-left: $btn-padding-x-sm * .75;
+  padding-right: $input-btn-padding-x-sm * .75;
+  padding-left: $input-btn-padding-x-sm * .75;
 }
 
 .btn-lg + .dropdown-toggle-split {
-  padding-right: $btn-padding-x-lg * .75;
-  padding-left: $btn-padding-x-lg * .75;
+  padding-right: $input-btn-padding-x-lg * .75;
+  padding-left: $input-btn-padding-x-lg * .75;
 }
 
 
 // The clickable button for toggling the menu
-// Remove the gradient and set the same inset shadow as the :active state
-.btn-group.open .dropdown-toggle {
+// Set the same inset shadow as the :active state
+.btn-group.show .dropdown-toggle {
   @include box-shadow($btn-active-box-shadow);
 
   // Show no shadow for `.btn-link` since it has no other button styles.
@@ -126,22 +122,6 @@
     @include box-shadow(none);
   }
 }
-
-
-// Reposition the caret
-.btn .caret {
-  margin-left: 0;
-}
-// Carets in other button sizes
-.btn-lg .caret {
-  border-width: $caret-width-lg $caret-width-lg 0;
-  border-bottom-width: 0;
-}
-// Upside down carets for .dropup
-.dropup .btn-lg .caret {
-  border-width: 0 $caret-width-lg $caret-width-lg;
-}
-
 
 
 //

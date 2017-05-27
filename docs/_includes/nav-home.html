@@ -1,4 +1,4 @@
-<header class="navbar navbar-toggleable-md navbar-light bd-navbar">
+<header class="navbar navbar-light navbar-expand-md bd-navbar">
   <nav class="container">
     {% comment %}
     <nav class="nav navbar-nav float-right">
@@ -25,23 +25,25 @@
     </nav>
     {% endcomment %}
 
-    <a class="navbar-brand" href="{{ site.baseurl }}/">
-      Bootstrap
-    </a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="d-flex justify-content-between d-lg-none">
+      <a class="navbar-brand" href="{{ site.baseurl }}/">
+        Bootstrap
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
 
     <div class="collapse navbar-collapse" id="bd-main-nav">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item  {% if page.layout == "home" %}active{% endif %}">
-          <a class="nav-link" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link {% if page.layout == "home" %}active{% endif %}" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Bootstrap</a>
         </li>
-        <li class="nav-item {% if page.layout == "docs" %}active{% endif %}">
-          <a class="nav-link" href="{{ site.baseurl }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
+        <li class="nav-item">
+          <a class="nav-link {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
         </li>
-        <li class="nav-item {% if page.title == "Examples" %}active{% endif %}">
-          <a class="nav-link" href="{{ site.baseurl }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+        <li class="nav-item">
+          <a class="nav-link {% if page.title == "Examples" %}active{% endif %}" href="{{ site.baseurl }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ site.themes }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');">Themes</a>

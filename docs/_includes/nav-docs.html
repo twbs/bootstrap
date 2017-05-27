@@ -1,3 +1,8 @@
+<form class="bd-search d-none d-sm-block">
+  <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+  <div class="dropdown-menu bd-search-results" id="search-results"></div>
+</form>
+
 <nav class="bd-links" id="docsNavbarContent">
   {% assign page_slug = page.url | split: '/' | last %}
   {% for group in site.data.nav %}

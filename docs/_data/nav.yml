@@ -8,6 +8,7 @@
     - title: Options
     - title: Build tools
     - title: Best practices
+    - title: Webpack
     - title: Accessibility
 
 - title: Layout
@@ -15,7 +16,7 @@
     - title: Overview
     - title: Grid
     - title: Media object
-    - title: Responsive utilities
+    - title: Utilities for layout
 
 - title: Content
   pages:
@@ -56,21 +57,22 @@
     - title: Clearfix
     - title: Close icon
     - title: Colors
+    - title: Display
     - title: Flexbox
-    - title: Display property
     - title: Image replacement
-    - title: Invisible content
+    - title: Position
     - title: Responsive helpers
     - title: Screenreaders
-    - title: Sizing and positioning
+    - title: Sizing
     - title: Spacing
     - title: Typography
     - title: Vertical align
+    - title: Visibility
 
-# - title: Extend
-#   pages:
-#     - title: Approach
-#     - title: Icon fonts
+- title: Extend
+  pages:
+    # - title: Approach
+    - title: Icons
 
 - title: About
   pages:

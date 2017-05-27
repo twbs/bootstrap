@@ -5,6 +5,7 @@
 
 .nav {
   display: flex;
+  flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -12,19 +13,17 @@
 
 .nav-link {
   display: block;
-  padding: $nav-link-padding;
+  padding: $nav-link-padding-y $nav-link-padding-x;
 
   @include hover-focus {
     text-decoration: none;
   }
 
-  // Disabled state lightens text and removes hover/tab effects
+  // Disabled state lightens text
   &.disabled {
     color: $nav-disabled-link-color;
-    cursor: $cursor-disabled;
   }
 }
-
 
 //
 // Tabs
@@ -54,9 +53,9 @@
 
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: $nav-tabs-active-link-hover-color;
-    background-color: $nav-tabs-active-link-hover-bg;
-    border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-bg;
+    color: $nav-tabs-active-link-color;
+    background-color: $nav-tabs-active-link-bg;
+    border-color: $nav-tabs-active-link-border-color $nav-tabs-active-link-border-color $nav-tabs-active-link-bg;
   }
 
   .dropdown-menu {
@@ -75,13 +74,12 @@
 .nav-pills {
   .nav-link {
     @include border-radius($nav-pills-border-radius);
-  }
 
-  .nav-link.active,
-  .nav-item.show .nav-link {
-    color: $nav-pills-active-link-color;
-    cursor: default;
-    background-color: $nav-pills-active-link-bg;
+    &.active,
+    .show & {
+      color: $nav-pills-active-link-color;
+      background-color: $nav-pills-active-link-bg;
+    }
   }
 }
 
@@ -99,7 +97,8 @@
 
 .nav-justified {
   .nav-item {
-    flex: 1 1 100%;
+    flex-basis: 0;
+    flex-grow: 1;
     text-align: center;
   }
 }

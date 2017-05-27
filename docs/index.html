@@ -2,9 +2,9 @@
 layout: home
 ---
 
-<main class="bd-masthead" id="content">
+<main class="bd-masthead" id="content" role="main">
   <div class="container">
-    <span class="bd-booticon outline">B</span>
+    {% include bootstrap-icon.html %}
     <p class="lead">Bootstrap is the most popular HTML, CSS, and JS framework in the world for building responsive, mobile-first projects on the web.</p>
     <p class="lead">
       <a href="{{ site.baseurl }}/getting-started/download/" class="btn btn-lg" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download Bootstrap</a>
@@ -22,16 +22,18 @@ layout: home
     <div class="row">
       <div class="col-sm-6 mb-3">
         <h4>Managed dependencies</h4>
-        <p>Include Bootstrap's source Sass and JavaScript files via Bower, Composer, Meteor, or npm. Package managed installs don't include documentation, but do include our Gruntfile and readme.</p>
+        <p>Include Bootstrap's source Sass and JavaScript files via Bower, Composer, Meteor, or npm. Package managed installs don't include documentation, but do include our build system and readme.</p>
         <p>
           <a class="btn btn-bs" href="{{ site.baseurl }}/getting-started/download/#package-managers">View install methods</a>
         </p>
       </div>
       <div class="col-sm-6 mb-3">
         <h4>Bootstrap CDN</h4>
-        <p>When you just need to include Bootstrap's compiled CSS and JS, use the Bootstrap CDN, free from the Max CDN folks.</p>
+        <p>When you just need to include Bootstrap's compiled CSS and JS, use the Bootstrap CDN, free from the MaxCDN folks.</p>
 {% highlight html %}
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+<script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
       </div>

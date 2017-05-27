@@ -11,15 +11,14 @@
 // Vertical gradient, from top to bottom
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
-// Color stops are not available in IE9.
 @mixin gradient-y($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
   background-image: linear-gradient(to bottom, $start-color $start-percent, $end-color $end-percent);
   background-repeat: repeat-x;
 }
 
 @mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
-  background-repeat: repeat-x;
   background-image: linear-gradient($deg, $start-color, $end-color);
+  background-repeat: repeat-x;
 }
 @mixin gradient-x-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
   background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color);
