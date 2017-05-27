@@ -54,7 +54,10 @@ var Dropdown = function ($) {
 
   var ClassName = {
     DISABLED: 'disabled',
-    SHOW: 'show'
+    SHOW: 'show',
+    DROPUP: 'dropup',
+    MENURIGHT: 'dropdown-menu-right',
+    MENULEFT: 'dropdown-menu-left'
   };
 
   var Selector = {
@@ -67,7 +70,9 @@ var Dropdown = function ($) {
 
   var AttachmentMap = {
     TOP: 'top-start',
-    BOTTOM: 'bottom-start'
+    TOPEND: 'top-end',
+    BOTTOM: 'bottom-start',
+    BOTTOMEND: 'bottom-end'
   };
 
   var Default = {
@@ -129,10 +134,15 @@ var Dropdown = function ($) {
         return;
       }
 
-      // Handle dropup
-      var dropdownPlacement = $(this._element).parent().hasClass('dropup') ? AttachmentMap.TOP : this._config.placement;
-      this._popper = new Popper(this._element, this._menu, {
-        placement: dropdownPlacement,
+      var element = this._element;
+      // for dropup with alignment we use the parent as popper container
+      if ($(parent).hasClass(ClassName.DROPUP)) {
+        if ($(this._menu).hasClass(ClassName.MENULEFT) || $(this._menu).hasClass(ClassName.MENURIGHT)) {
+          element = parent;
+        }
+      }
+      this._popper = new Popper(element, this._menu, {
+        placement: this._getPlacement(),
         modifiers: {
           offset: {
             offset: this._config.offset
@@ -206,6 +216,24 @@ var Dropdown = function ($) {
         this._menu = $(parent).find(Selector.MENU)[0];
       }
       return this._menu;
+    };
+
+    Dropdown.prototype._getPlacement = function _getPlacement() {
+      var $parentDropdown = $(this._element).parent();
+      var placement = this._config.placement;
+
+      // Handle dropup
+      if ($parentDropdown.hasClass(ClassName.DROPUP) || this._config.placement === AttachmentMap.TOP) {
+        placement = AttachmentMap.TOP;
+        if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
+          placement = AttachmentMap.TOPEND;
+        }
+      } else {
+        if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
+          placement = AttachmentMap.BOTTOMEND;
+        }
+      }
+      return placement;
     };
 
     // static
