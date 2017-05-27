@@ -325,6 +325,32 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 </form>
 {% endexample %}
 
+{% example html %}
+<form>
+  <div class="row gutters-sm align-items-center">
+    <div class="col-auto">
+      <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Remember my preference</span>
+      </label>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+{% endexample %}
+
 ### Inline forms
 
 Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
