@@ -41,7 +41,7 @@ GEM
       ffi (>= 0.5.0)
     rouge (1.11.1)
     safe_yaml (1.0.4)
-    sass (3.4.23)
+    sass (3.4.24)
     scss_lint (0.53.0)
       rake (>= 0.9, < 13)
       sass (~> 3.4.20)
