@@ -271,6 +271,121 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 </form>
 {% endexample %}
 
+### Grid
+
+{% example html %}
+<form>
+  <div class="row gutters-sm">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="First name">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Last name">
+    </div>
+  </div>
+</form>
+{% endexample html %}
+
+{% example html %}
+<form>
+  <div class="row gutters-sm">
+    <div class="col-7">
+      <input type="text" class="form-control" placeholder="City">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="State">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Zip">
+    </div>
+  </div>
+</form>
+{% endexample html %}
+
+{% example html %}
+<form>
+  <div class="row gutters-sm align-items-center">
+    <div class="col">
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+    </div>
+    <div class="col">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2 mb-sm-0">
+        <div class="input-group-addon">@</div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-check mb-2 mb-sm-0">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+    <div class="col">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+{% endexample %}
+
+{% example html %}
+<form>
+  <div class="row gutters-sm align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+    </div>
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2 mb-sm-0">
+        <div class="input-group-addon">@</div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check mb-2 mb-sm-0">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+{% endexample %}
+
+{% example html %}
+<form>
+  <div class="row gutters-sm align-items-center">
+    <div class="col-sm-3">
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+    </div>
+    <div class="col-sm-3">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2 mb-sm-0">
+        <div class="input-group-addon">@</div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check mb-2 mb-sm-0">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+{% endexample %}
+
 ### Inline forms
 
 Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
