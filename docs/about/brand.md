@@ -21,7 +21,7 @@ Use either the Bootstrap mark (a capital **B**) or the standard logo (just **Boo
     <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144">
   </div>
   <div class="bd-brand-item inverse">
-  <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
+    <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
   </div>
 </div>
 <div class="bd-brand-logos">
