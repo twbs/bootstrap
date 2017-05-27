@@ -41,7 +41,9 @@ The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped i
 $font-family-sans-serif:
   // Safari for OS X and iOS (San Francisco)
   -apple-system,
-  // Chrome for OS X (San Francisco)
+  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
+  system-ui,
+  // Chrome < 56 for OS X (San Francisco)
   BlinkMacSystemFont,
   // Windows
   "Segoe UI",
@@ -309,7 +311,7 @@ The `<abbr>` element receives basic styling to make it stand out amongst paragra
 
 ## HTML5 `[hidden]` attribute
 
-HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](http://purecss.io), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE9-10, the explicit declaration in our CSS gets around that problem.
+HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](http://purecss.io), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.
 
 {% highlight html %}
 <input type="text" hidden>

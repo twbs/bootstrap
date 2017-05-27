@@ -11,13 +11,11 @@
 
 .custom-control {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  min-height: (1rem * $line-height-base);
   padding-left: $custom-control-gutter;
+  margin-right: $custom-control-spacer-x;
   cursor: pointer;
-
-  + .custom-control {
-    margin-left: $custom-control-spacer-x;
-  }
 }
 
 .custom-control-input {
@@ -61,7 +59,7 @@
 
 .custom-control-indicator {
   position: absolute;
-  top: .25rem;
+  top: (($line-height-base - $custom-control-indicator-size) / 2);
   left: 0;
   display: block;
   width: $custom-control-indicator-size;
@@ -116,9 +114,11 @@
 // set. Use these optional classes to tweak the layout.
 
 .custom-controls-stacked {
+  display: flex;
+  flex-direction: column;
+
   .custom-control {
-    float: left;
-    clear: left;
+    margin-bottom: $custom-control-spacer-y;
 
     + .custom-control {
       margin-left: 0;
@@ -132,19 +132,17 @@
 // Replaces the browser default select with a custom one, mostly pulled from
 // http://primercss.io.
 //
-// Includes IE9-specific hacks (noted by ` \9`).
 
 .custom-select {
   display: inline-block;
   max-width: 100%;
   $select-border-width: ($border-width * 2);
-  height: calc(#{$input-height} - #{$select-border-width});
+  height: calc(#{$input-height} + #{$select-border-width});
   padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
-  padding-right: $custom-select-padding-x \9;
+  line-height: $custom-select-line-height;
   color: $custom-select-color;
   vertical-align: middle;
   background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
-  background-image: none \9;
   background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
   @include border-radius($custom-select-border-radius);
@@ -201,6 +199,7 @@
   display: inline-block;
   max-width: 100%;
   height: $custom-file-height;
+  margin-bottom: 0;
   cursor: pointer;
 }
 

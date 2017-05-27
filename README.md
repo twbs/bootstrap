@@ -8,7 +8,7 @@
 [![devDependency Status](https://img.shields.io/david/dev/twbs/bootstrap.svg)](https://david-dm.org/twbs/bootstrap?type=dev)
 [![Meteor Atmosphere](https://img.shields.io/badge/meteor-twbs%3Abootstrap-blue.svg)](https://atmospherejs.com/twbs/bootstrap)
 [![Packagist Prerelease](https://img.shields.io/packagist/vpre/twbs/bootstrap.svg)](https://packagist.org/packages/twbs/bootstrap)
-[![NuGet](https://img.shields.io/nuget/vpre/bootstrap.svg)](https://www.nuget.org/packages/bootstrap/4.0.0-alpha4)
+[![NuGet](https://img.shields.io/nuget/vpre/bootstrap.svg)](https://www.nuget.org/packages/bootstrap/4.0.0-alpha5)
 
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
 
@@ -31,12 +31,12 @@ To get started, check out <https://getbootstrap.com>!
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.4.zip)
+- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.5.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-alpha.4`
-- Install with [Meteor](https://www.meteor.com): `meteor add twbs:bootstrap@=4.0.0-alpha.4`
-- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap`
-- Install with [Bower](https://bower.io): `bower install bootstrap#v4.0.0-alpha.4`
+- Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-alpha.5`
+- Install with [yarn](https://github.com/yarnpkg/yarn): `yarn add bootstrap@4.0.0-alpha.5`
+- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap:4.0.0-alpha.5`
+- Install with [Bower](https://bower.io): `bower install bootstrap#v4.0.0-alpha.5`
 - Install with [NuGet](https://www.nuget.org): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
 
 Read the [Getting started page](https://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.

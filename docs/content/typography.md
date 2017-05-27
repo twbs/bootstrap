@@ -5,7 +5,7 @@ description: Documentation and examples for Bootstrap typography, including glob
 group: content
 ---
 
-Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/utilities/).
+Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/utilities/typography).
 
 ## Contents
 
@@ -154,7 +154,7 @@ Change text alignment, transform, style, weight, and color with our [text utilit
 
 ## Abbreviations
 
-Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a `title` attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover and to users of assistive technologies.
+Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover. Abbreviations have a default underline from Normalize.css and gain a help cursor to provide additional context on hover and to users of assistive technologies.
 
 Add `.initialism` to an abbreviation for a slightly smaller font-size.
 

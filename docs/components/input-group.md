@@ -115,7 +115,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 
 ## Button addons
 
-Buttons in input groups are a bit different and require one extra level of nesting. Instead of `.input-group-addon`, you'll need to use `.input-group-btn` to wrap the buttons. This is required due to default browser styles that cannot be overridden.
+Buttons in input groups must wrapped in a `.input-group-btn` for proper alignment and sizing. This is required due to default browser styles that cannot be overridden.
 
 {% example html %}
 <div class="row">

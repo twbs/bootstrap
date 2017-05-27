@@ -442,52 +442,50 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
 
 Use contextual classes to color table rows or individual cells.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <colgroup>
-      <col class="col-xs-1">
-      <col class="col-xs-7">
-    </colgroup>
-    <thead>
-      <tr>
-        <th>Class</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          <code>.table-active</code>
-        </th>
-        <td>Applies the hover color to a particular row or cell</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-success</code>
-        </th>
-        <td>Indicates a successful or positive action</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-info</code>
-        </th>
-        <td>Indicates a neutral informative change or action</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-warning</code>
-        </th>
-        <td>Indicates a warning that might need attention</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-danger</code>
-        </th>
-        <td>Indicates a dangerous or potentially negative action</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-striped table-responsive">
+  <colgroup>
+    <col class="col-1">
+    <col class="col-7">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+        <code>.table-active</code>
+      </th>
+      <td>Applies the hover color to a particular row or cell</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-success</code>
+      </th>
+      <td>Indicates a successful or positive action</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-info</code>
+      </th>
+      <td>Indicates a neutral informative change or action</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-warning</code>
+      </th>
+      <td>Indicates a warning that might need attention</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-danger</code>
+      </th>
+      <td>Indicates a dangerous or potentially negative action</td>
+    </tr>
+  </tbody>
+</table>
 
 <div class="bd-example">
   <table class="table">
@@ -670,7 +668,7 @@ Regular table background variants are not available with the inverse table, howe
 
 ## Responsive tables
 
-Create responsive tables by wrapping any `.table` in `.table-responsive` to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.
+Create responsive tables by adding `.table-responsive` to any `.table` to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.
 
 {% callout warning %}
 #### Vertical clipping/truncation
@@ -678,118 +676,98 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
 Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
 {% endcallout %}
 
-{% callout warning %}
-#### Firefox and fieldsets
-
-Firefox has some awkward fieldset styling involving `width` that interferes with the responsive table. This cannot be overridden without a Firefox-specific hack that we **don't** provide in Bootstrap:
-
-{% highlight css %}
-@-moz-document url-prefix() {
-  fieldset { display: table-cell; }
-}
-{% endhighlight %}
-
-For more information, read [this Stack Overflow answer](https://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685).
-{% endcallout %}
-
 <div class="bd-example">
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-bordered table-responsive">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 {% highlight html %}
-<div class="table-responsive">
-  <table class="table">
-    ...
-  </table>
-</div>
+<table class="table table-responsive"">
+  ...
+</table>
 {% endhighlight %}
 
 

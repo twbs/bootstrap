@@ -1,11 +1,14 @@
+// scss-lint:disable VendorPrefix
+
 //
 // Side navigation
 //
 
 .bd-sidebar {
   @include media-breakpoint-up(md) {
+    position: -webkit-sticky;
     position: sticky;
-    top: 2rem;
+    top: 5rem;
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
   }

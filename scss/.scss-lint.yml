@@ -155,10 +155,14 @@ linters:
       - flex-align
       - flex-basis
       - flex-direction
+      - flex-wrap
       - flex-flow
       - flex-grow
       - flex-order
       - flex-pack
+      - align-items
+      - align-self
+      - justify-content
       - float
       - width
       - min-width
@@ -231,6 +235,7 @@ linters:
       - word-spacing
       - -ms-word-wrap
       - word-wrap
+      - overflow-wrap
       - -moz-tab-size
       - -o-tab-size
       - tab-size
@@ -490,7 +495,7 @@ linters:
   SpaceBeforeBrace:
     enabled: true
     style: space # or 'new_line'
-    allow_single_line_padding: false
+    allow_single_line_padding: true
 
   SpaceBetweenParens:
     enabled: true

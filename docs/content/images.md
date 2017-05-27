@@ -47,13 +47,13 @@ In addition to our [border-radius utilities]({{ site.baseurl }}/utilities/border
 Align images with the [helper float classes]({{ site.baseurl }}/utilities/responsive-helpers/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/200x200" class="rounded float-xs-left" alt="A generic square placeholder image with rounded corners">
-  <img data-src="holder.js/200x200" class="rounded float-xs-right" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="rounded float-left" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="rounded float-right" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="rounded float-xs-left" alt="...">
-<img src="..." class="rounded float-xs-right" alt="...">
+<img src="..." class="rounded float-left" alt="...">
+<img src="..." class="rounded float-right" alt="...">
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
@@ -65,13 +65,13 @@ Align images with the [helper float classes]({{ site.baseurl }}/utilities/respon
 {% endhighlight %}
 
 <div class="bd-example bd-example-images">
-  <div class="text-xs-center">
+  <div class="text-center">
     <img data-src="holder.js/200x200" class="rounded" alt="A generic square placeholder image with rounded corners">
   </div>
 </div>
 
 {% highlight html %}
-<div class="text-xs-center">
+<div class="text-center">
   <img src="..." class="rounded" alt="...">
 </div>
 {% endhighlight %}

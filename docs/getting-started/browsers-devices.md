@@ -14,7 +14,7 @@ Bootstrap supports a wide variety of modern browsers and devices, and some older
 
 ## Supported browsers
 
-Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11 / Microsoft Edge**.
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 10-11 / Microsoft Edge**.
 
 Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
@@ -94,7 +94,7 @@ Similarly, the latest versions of most desktop browsers are supported.
         <th scope="row">Windows</th>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
+        <td class="text-success">Supported, IE10+</td>
         <td class="text-success">Supported</td>
         <td class="text-success">Supported</td>
         <td class="text-danger">Not supported</td>
@@ -105,13 +105,13 @@ Similarly, the latest versions of most desktop browsers are supported.
 
 For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/organizations/faq/) version of Firefox.
 
-Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 8 and below, though they are not officially supported.
+Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 9 and below, though they are not officially supported.
 
 For a list of some of the browser bugs that Bootstrap has to grapple with, see our [Wall of browser bugs]({{ site.baseurl }}/browser-bugs/).
 
-## Internet Explorer 9 & 10
+## Internet Explorer
 
-Internet Explorer 9 & 10 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported.
+Internet Explorer 10+ is supported, however, IE9 down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported.
 
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
@@ -144,11 +144,11 @@ Internet Explorer 9 & 10 are also supported, however, please be aware that some 
 
 Visit [Can I use...](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
-## Supporting Internet Explorer 8
+## Supporting Internet Explorer 8-9
 
-As of v4, Bootstrap no longer supports IE8. **If you require IE8 support, we recommend you use Bootstrap 3.** It's still supported by our team for bugfixes and documentation changes, but no new features will be added to it.
+As of v4, Bootstrap no longer supports IE8 or IE9. **If you require IE8-9 support, we recommend you use Bootstrap 3.** It's still supported by our team for bugfixes and documentation changes, but no new features will be added to it.
 
-Alternatively, you may add some third party JavaScript to backfill support for IE8 to Bootstrap 4. You'll need the following:
+Alternatively, you may add some third party JavaScript to backfill support for IE8-9 to Bootstrap 4. You'll need the following:
 
 * [The HTML5 shiv](https://en.wikipedia.org/wiki/HTML5_Shiv)
 * [Respond.js](https://github.com/scottjehl/Respond)
@@ -168,7 +168,7 @@ Confirm the document mode by opening the debugging tools: press <kbd>F12</kbd> a
 
 This tag is included in all of Bootstrap's documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.
 
-See [this StackOverflow question](https://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge) for more information.
+See [this StackOverflow question](https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do) for more information.
 
 ## Internet Explorer 10 in Windows Phone 8
 

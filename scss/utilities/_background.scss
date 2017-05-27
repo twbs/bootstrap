@@ -3,7 +3,7 @@
 //
 
 .bg-faded {
-  background-color: $gray-lightest;
+  background-color: darken($body-bg, 3%);
 }
 
 @include bg-variant('.bg-primary', $brand-primary);

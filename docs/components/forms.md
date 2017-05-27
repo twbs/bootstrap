@@ -152,8 +152,7 @@ Below is a complete list of the specific form controls supported by Bootstrap an
     <tr>
       <td class="text-nowrap">
 {% markdown %}
-`.form-check`<br>
-`.form-check-inline`
+`.form-check`
 {% endmarkdown %}
       </td>
       <td class="text-nowrap">
@@ -172,80 +171,80 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
 
 {% example html %}
 <div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 col-form-label">Text</label>
-  <div class="col-xs-10">
+  <label for="example-text-input" class="col-2 col-form-label">Text</label>
+  <div class="col-10">
     <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-search-input" class="col-xs-2 col-form-label">Search</label>
-  <div class="col-xs-10">
+  <label for="example-search-input" class="col-2 col-form-label">Search</label>
+  <div class="col-10">
     <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
-  <div class="col-xs-10">
+  <label for="example-email-input" class="col-2 col-form-label">Email</label>
+  <div class="col-10">
     <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-url-input" class="col-xs-2 col-form-label">URL</label>
-  <div class="col-xs-10">
+  <label for="example-url-input" class="col-2 col-form-label">URL</label>
+  <div class="col-10">
     <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-tel-input" class="col-xs-2 col-form-label">Telephone</label>
-  <div class="col-xs-10">
+  <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
+  <div class="col-10">
     <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
-  <div class="col-xs-10">
+  <label for="example-password-input" class="col-2 col-form-label">Password</label>
+  <div class="col-10">
     <input class="form-control" type="password" value="hunter2" id="example-password-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-number-input" class="col-xs-2 col-form-label">Number</label>
-  <div class="col-xs-10">
+  <label for="example-number-input" class="col-2 col-form-label">Number</label>
+  <div class="col-10">
     <input class="form-control" type="number" value="42" id="example-number-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-datetime-local-input" class="col-xs-2 col-form-label">Date and time</label>
-  <div class="col-xs-10">
+  <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
+  <div class="col-10">
     <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-date-input" class="col-xs-2 col-form-label">Date</label>
-  <div class="col-xs-10">
+  <label for="example-date-input" class="col-2 col-form-label">Date</label>
+  <div class="col-10">
     <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-month-input" class="col-xs-2 col-form-label">Month</label>
-  <div class="col-xs-10">
+  <label for="example-month-input" class="col-2 col-form-label">Month</label>
+  <div class="col-10">
     <input class="form-control" type="month" value="2011-08" id="example-month-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-week-input" class="col-xs-2 col-form-label">Week</label>
-  <div class="col-xs-10">
+  <label for="example-week-input" class="col-2 col-form-label">Week</label>
+  <div class="col-10">
     <input class="form-control" type="week" value="2011-W33" id="example-week-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-time-input" class="col-xs-2 col-form-label">Time</label>
-  <div class="col-xs-10">
+  <label for="example-time-input" class="col-2 col-form-label">Time</label>
+  <div class="col-10">
     <input class="form-control" type="time" value="13:45:00" id="example-time-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-color-input" class="col-xs-2 col-form-label">Color</label>
-  <div class="col-xs-10">
+  <label for="example-color-input" class="col-2 col-form-label">Color</label>
+  <div class="col-10">
     <input class="form-control" type="color" value="#563d7c" id="example-color-input">
   </div>
 </div>
@@ -274,62 +273,54 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 
 ### Inline forms
 
-Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms behave differently:
+Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-- Controls are `display: inline-block` to provide alignment control via `vertical-align` and `margin`.
-- Controls receive `width: auto` to override the Bootstrap default `width: 100%`.
-- Controls **only appear inline in viewports that are at least 768px wide** to account for narrow viewports on mobile devices.
+- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/utilities/flexbox/) utilities.
+- Controls and input groups receive `width: auto` to override the Bootstrap default `width: 100%`.
+- Controls **only appear inline in viewports that are at least 576px wide** to account for narrow viewports on mobile devices.
 
-Because of this, you may need to manually address the width and alignment of individual form controls. Lastly, as shown below, you should always include a `<label>` with each form control.
-
-#### Visible labels
+You may need to manually address the width and alignment of individual form controls with [spacing utilities]({{ site.baseurl }}/utilities/spacing/) (as shown below). Lastly, be sure to always include a `<label>` with each form control, even if you need to hide it from non-screenreader visitors with `.sr-only`.
 
 {% example html %}
 <form class="form-inline">
-  <div class="form-group">
-    <label for="exampleInputName2">Name</label>
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail2">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-  </div>
-  <button type="submit" class="btn btn-primary">Send invitation</button>
-</form>
-{% endexample %}
+  <label class="sr-only" for="inlineFormInput">Name</label>
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
 
-#### Hidden labels
+  <label class="sr-only" for="inlineFormInputGroup">Username</label>
+  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+    <div class="input-group-addon">@</div>
+    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+  </div>
 
-{% example html %}
-<form class="form-inline">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail3">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputPassword3">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-  </div>
-  <div class="form-check">
+  <div class="form-check mb-2 mr-sm-2 mb-sm-0">
     <label class="form-check-label">
       <input class="form-check-input" type="checkbox"> Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endexample %}
 
+Custom form controls and selects are also supported.
+
 {% example html %}
 <form class="form-inline">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-    <div class="input-group">
-      <div class="input-group-addon">$</div>
-      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-      <div class="input-group-addon">.00</div>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Transfer cash</button>
+  <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+  <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+    <input type="checkbox" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Remember my preference</span>
+  </label>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endexample %}
 
@@ -471,30 +462,42 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 
 ### Inline
 
-Groups of checkboxes or radios that appear on the same horizontal row are similar to their stacked counterparts, but require different HTML and a single class. To switch from stacked to inline, drop the surrounding `<div>`, add `.form-check-inline` to the `<label>`, and keep the `.form-check-input` on the `<input>`.
+Group checkboxes or radios on the same horizontal row by adding `.form-check-inline` to any `.form-check`.
 
 {% example html %}
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> 3
-</label>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+  </label>
+</div>
+<div class="form-check form-check-inline disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+  </label>
+</div>
 {% endexample %}
 
 {% example html %}
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-</label>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+  </label>
+</div>
+<div class="form-check form-check-inline disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> 3
+  </label>
+</div>
 {% endexample %}
 
 ### Without labels
@@ -516,14 +519,14 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 
 ## Static controls
 
-When you need to place plain text next to a form label within a form, use the `.form-control-static` class on an element of your choice. Using an element like `<p>` with a default margin? Be sure to use a margin override (as shown below).
+When you need to place plain text next to a form label within a form, use the `.form-control-static` class on an element of your choice.
 
 {% example html %}
 <form>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <p class="form-control-static mb-0">email@example.com</p>
+      <p class="form-control-static">email@example.com</p>
     </div>
   </div>
   <div class="form-group row">
@@ -541,7 +544,7 @@ When you need to place plain text next to a form label within a form, use the `.
     <label class="sr-only">Email</label>
     <p class="form-control-static">email@example.com</p>
   </div>
-  <div class="form-group">
+  <div class="form-group mx-sm-3">
     <label for="inputPassword2" class="sr-only">Password</label>
     <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
   </div>
@@ -585,7 +588,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 {% callout warning %}
 #### Caveat about link functionality of `<a>`
 
-By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons]({{ site.baseurl }}/buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
+By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons]({{ site.baseurl }}/components/buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
 {% endcallout %}
 
 {% callout danger %}
@@ -630,14 +633,14 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 {% example html %}
 <div class="row">
-  <div class="col-xs-2">
-    <input type="text" class="form-control" placeholder=".col-xs-2">
+  <div class="col-2">
+    <input type="text" class="form-control" placeholder=".col-2">
   </div>
-  <div class="col-xs-3">
-    <input type="text" class="form-control" placeholder=".col-xs-3">
+  <div class="col-3">
+    <input type="text" class="form-control" placeholder=".col-3">
   </div>
-  <div class="col-xs-4">
-    <input type="text" class="form-control" placeholder=".col-xs-4">
+  <div class="col-4">
+    <input type="text" class="form-control" placeholder=".col-4">
   </div>
 </div>
 {% endexample %}
@@ -672,7 +675,7 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 <form class="form-inline">
   <div class="form-group">
     <label for="inputPassword4">Password</label>
-    <input type="password" id="inputPassword4" class="form-control" aria-describedby="passwordHelpInline">
+    <input type="password" id="inputPassword4" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
     <small id="passwordHelpInline" class="text-muted">
       Must be 8-20 characters long.
     </small>
@@ -682,7 +685,11 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 
 ## Validation
 
-Bootstrap includes validation styles for danger, warning, and success states on form controls. Here's a rundown of how they work:
+Bootstrap includes validation styles for danger, warning, and success states on most form controls.
+
+### How it works
+
+Here's a rundown of how they work:
 
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.col-form-label`, `.form-control`, or custom form element will receive the validation styles.
 - Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
@@ -690,13 +697,13 @@ Bootstrap includes validation styles for danger, warning, and success states on 
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
 - Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
 
+### Defining states
+
 Generally speaking, you'll want to use a particular state for specific types of feedback:
 
 - **Danger** is great for when there's a blocking or required field. A user *must* fill in this field properly to submit the form.
 - **Warning** works well for input values that are in progress, like password strength, or soft validation before a user attempts to submit a form.
 - And lastly, **success** is ideal for situations when you have per-field validation throughout a form and want to encourage a user through the rest of the fields.
-
-Here are some examples of the aforementioned classes in action.
 
 {% comment %}
 {% callout warning %}
@@ -707,6 +714,10 @@ Using these validation styles to denote the state of a form control only provide
 Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's `<label>` text itself (as is the case in the following code example), include a [Glyphicon]({{ site.baseurl }}/components/#glyphicons) (with appropriate alternative text using the `.sr-only` class - see the [Glyphicon examples]({{ site.baseurl }}/components/#glyphicons-examples)), or by providing an additional [help text](#forms-help-text) block. Specifically for assistive technologies, invalid form controls can also be assigned an `aria-invalid="true"` attribute.
 {% endcallout %}
 {% endcomment %}
+
+### Examples
+
+Here are some examples of the aforementioned classes in action. First up is your standard left-aligned fields with labels, help text, and validation messaging.
 
 {% example html %}
 <div class="form-group has-success">
@@ -728,6 +739,41 @@ Ensure that an alternative indication of state is also provided. For instance, y
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 {% endexample %}
+
+Those same states can also be used with horizontal forms.
+
+{% example html %}
+<div class="container">
+  <form>
+    <div class="form-group row has-success">
+      <label for="inputHorizontalSuccess" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="name@example.com">
+        <div class="form-control-feedback">Success! You've done it.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+    <div class="form-group row has-warning">
+      <label for="inputHorizontalWarning" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-warning" id="inputHorizontalWarning" placeholder="name@example.com">
+        <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+    <div class="form-group row has-danger">
+      <label for="inputHorizontalDnger" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control form-control-danger" id="inputHorizontalDnger" placeholder="name@example.com">
+        <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>
+    </div>
+  </form>
+</div>
+{% endexample %}
+
+Checkboxes and radios are also supported.
 
 {% example html %}
 <div class="form-check has-success">
@@ -886,8 +932,6 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
   <option value="3">Three</option>
 </select>
 {% endexample %}
-
-Custom selects degrade nicely in IE9, receiving only a handful of overrides to remove the custom `background-image`. **Multiple selects (e.g., `<select multiple>`) are not currently supported.**
 
 ### File browser
 

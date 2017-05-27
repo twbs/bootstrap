@@ -11,7 +11,7 @@
   word-wrap: break-word;
   opacity: 0;
 
-  &.in { opacity: $tooltip-opacity; }
+  &.show { opacity: $tooltip-opacity; }
 
   &.tooltip-top,
   &.bs-tether-element-attached-bottom {

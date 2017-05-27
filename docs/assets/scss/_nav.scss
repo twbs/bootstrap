@@ -1,11 +1,22 @@
+// scss-lint:disable VendorPrefix
+
 //
 // Main navbar
 //
 
 .bd-navbar {
-  padding-right: 0;
-  padding-left: 0;
-  margin-bottom: 2rem;
+  // @include media-breakpoint-up(md) {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1030; // over everything in bootstrap
+    // max-height: calc(100vh - 4rem);
+    // overflow-y: auto;
+  // }
+  // padding-right: 0;
+  // padding-left: 0;
+  // margin-bottom: 2rem;
+  background-color: #fff;
   border-bottom: 1px solid rgba(0,0,0,.1);
   box-shadow: 0 6px 12px rgba(0,0,0,.05);
 
@@ -28,16 +39,10 @@
   }
 
   .dropdown-menu {
-    font-size: inherit;
+    font-size: .875rem;
   }
 
-  @include media-breakpoint-down(sm) {
-    .nav-link {
-      float: none;
-
-      + .nav-link {
-        margin-left: 0;
-      }
-    }
+  .navbar-brand {
+    color: $bd-purple;
   }
 }

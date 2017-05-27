@@ -16,7 +16,7 @@
   background-color: $thumbnail-bg;
   border: $thumbnail-border-width solid $thumbnail-border-color;
   @include border-radius($thumbnail-border-radius);
-  transition: all .2s ease-in-out;
+  @include transition($thumbnail-transition);
   @include box-shadow($thumbnail-box-shadow);
 
   // Keep them at most 100% wide
@@ -39,5 +39,5 @@
 
 .figure-caption {
   font-size: $figure-caption-font-size;
-  color: $gray-light;
+  color: $figure-caption-color;
 }

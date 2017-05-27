@@ -7,8 +7,8 @@
   // Color the label and help text
   .form-control-feedback,
   .form-control-label,
+  .col-form-label,
   .form-check-label,
-  .form-check-inline,
   .custom-control {
     color: $color;
   }
@@ -17,10 +17,8 @@
   .form-control {
     border-color: $color;
 
-    @if $enable-rounded {
-      &:focus {
-        box-shadow: $input-box-shadow, 0 0 6px lighten($color, 20%);
-      }
+    &:focus {
+      @include box-shadow($input-box-shadow, 0 0 6px lighten($color, 20%));
     }
   }
 

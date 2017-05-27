@@ -1,34 +1,54 @@
 // Width and height
 
-.w-100 { width: 100% !important; }
-.h-100 { height: 100% !important; }
+@each $prop, $abbrev in (width: w, height: h) {
+  @each $size, $length in $sizes {
+    .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+  }
+}
+
+.mw-100 { max-width: 100% !important; }
+.mh-100 { max-height: 100% !important; }
 
 // Margin and Padding
 
-.mx-auto {
-  margin-right: auto !important;
-  margin-left:  auto !important;
-}
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-@each $prop, $abbrev in (margin: m, padding: p) {
-  @each $size, $lengths in $spacers {
-    $length-x:   map-get($lengths, x);
-    $length-y:   map-get($lengths, y);
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $lengths in $spacers {
+        $length-x: map-get($lengths, x);
+        $length-y: map-get($lengths, y);
 
-    .#{$abbrev}-#{$size} { #{$prop}:        $length-y $length-x !important; } // a = All sides
-    .#{$abbrev}t-#{$size} { #{$prop}-top:    $length-y !important; }
-    .#{$abbrev}r-#{$size} { #{$prop}-right:  $length-x !important; }
-    .#{$abbrev}b-#{$size} { #{$prop}-bottom: $length-y !important; }
-    .#{$abbrev}l-#{$size} { #{$prop}-left:   $length-x !important; }
-
-    // Axes
-    .#{$abbrev}x-#{$size} {
-      #{$prop}-right:  $length-x !important;
-      #{$prop}-left:   $length-x !important;
+        .#{$abbrev}#{$infix}-#{$size}  { #{$prop}:        $length-y $length-x !important; }
+        .#{$abbrev}t#{$infix}-#{$size} { #{$prop}-top:    $length-y !important; }
+        .#{$abbrev}r#{$infix}-#{$size} { #{$prop}-right:  $length-x !important; }
+        .#{$abbrev}b#{$infix}-#{$size} { #{$prop}-bottom: $length-y !important; }
+        .#{$abbrev}l#{$infix}-#{$size} { #{$prop}-left:   $length-x !important; }
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-right: $length-x !important;
+          #{$prop}-left:  $length-x !important;
+        }
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-top:    $length-y !important;
+          #{$prop}-bottom: $length-y !important;
+        }
+      }
     }
-    .#{$abbrev}y-#{$size} {
-      #{$prop}-top:    $length-y !important;
-      #{$prop}-bottom: $length-y !important;
+
+    // Some special margin utils
+    .m#{$infix}-auto  { margin:        auto !important; }
+    .mt#{$infix}-auto { margin-top:    auto !important; }
+    .mr#{$infix}-auto { margin-right:  auto !important; }
+    .mb#{$infix}-auto { margin-bottom: auto !important; }
+    .ml#{$infix}-auto { margin-left:   auto !important; }
+    .mx#{$infix}-auto {
+      margin-right: auto !important;
+      margin-left:  auto !important;
+    }
+    .my#{$infix}-auto {
+      margin-top:    auto !important;
+      margin-bottom: auto !important;
     }
   }
 }

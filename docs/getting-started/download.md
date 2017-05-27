@@ -16,14 +16,14 @@ group: getting-started
 
 ## Bootstrap CSS and JS
 
-**Download Bootstrap's ready-to-use code to easily drop into your project.** Includes compiled and minified versions of all our CSS bundles (default, flexbox-enabled, grid only, or Reboot only) and JavaScript plugins. Doesn't include documentation or source files.
+**Download Bootstrap's ready-to-use code to easily drop into your project.** Includes compiled and minified versions of all our CSS bundles (default, grid only, or Reboot only) and JavaScript plugins. Doesn't include documentation or source files.
 
-<a href="{{ site.download.dist }}" class="btn btn-lg btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download Bootstrap</a>
+<a href="{{ site.download.dist }}" class="btn btn-lg btn-bs" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download Bootstrap</a>
 
 ## Source files
 **Want to compile Bootstrap with your project's asset pipeline?** Choose this option to download our source Sass, JavaScript, and documentation files. Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/getting-started/build-tools/#tooling-setup).
 
-<a href="{{ site.download.source }}" class="btn btn-bs btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
+<a href="{{ site.download.source }}" class="btn btn-bs" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
 
 ## Bootstrap CDN
 
@@ -62,22 +62,16 @@ Bootstrap's `package.json` contains some additional metadata under the following
 Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/gemfile.html):
 
 {% highlight ruby %}
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap', '~> 4.0.0.alpha5'
 {% endhighlight %}
 
 Alternatively, if you're not using Bundler, you can install the gem by running this command:
 
 {% highlight bash %}
-gem install bootstrap -v 4.0.0.alpha3
+gem install bootstrap -v 4.0.0.alpha5
 {% endhighlight %}
 
 [See the gem's README](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md) for further details.
-
-### Meteor
-
-{% highlight bash %}
-meteor add twbs:bootstrap@={{ site.current_version }}
-{% endhighlight %}
 
 ### Composer
 

@@ -1,4 +1,4 @@
-/*! normalize.css v4.2.0 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -12,38 +12,38 @@ body {
 
 article,
 aside,
-details,
-figcaption,
-figure,
 footer,
 header,
-main,
-menu,
 nav,
-section,
-summary {
+section {
   display: block;
 }
 
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
 }
 
-audio:not([controls]) {
-  display: none;
+figcaption,
+figure,
+main {
+  display: block;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   height: 0;
+  overflow: visible;
 }
 
-progress {
-  vertical-align: baseline;
-}
-
-template,
-[hidden] {
-  display: none;
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
 }
 
 a {
@@ -72,13 +72,15 @@ strong {
   font-weight: bolder;
 }
 
-dfn {
-  font-style: italic;
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
 }
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+dfn {
+  font-style: italic;
 }
 
 mark {
@@ -106,6 +108,16 @@ sup {
   top: -0.5em;
 }
 
+audio,
+video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
 img {
   border-style: none;
 }
@@ -114,36 +126,15 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-figure {
-  margin: 1em 40px;
-}
-
-hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-}
-
 button,
 input,
 optgroup,
 select,
 textarea {
-  font: inherit;
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
   margin: 0;
-}
-
-optgroup {
-  font-weight: bold;
 }
 
 button,
@@ -194,6 +185,11 @@ legend {
   white-space: normal;
 }
 
+progress {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
 textarea {
   overflow: auto;
 }
@@ -220,14 +216,30 @@ textarea {
   -webkit-appearance: none;
 }
 
-::-webkit-input-placeholder {
-  color: inherit;
-  opacity: 0.54;
-}
-
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   font: inherit;
+}
+
+details,
+menu {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+canvas {
+  display: inline-block;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none;
 }
 
 html {
@@ -253,10 +265,11 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
+  font-weight: normal;
   line-height: 1.5;
-  color: #373a3c;
+  color: #292b2c;
   background-color: #fff;
 }
 
@@ -277,7 +290,6 @@ p {
 abbr[title],
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted #818a91;
 }
 
 address {
@@ -381,7 +393,7 @@ table {
 caption {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  color: #818a91;
+  color: #636c72;
   text-align: left;
   caption-side: bottom;
 }

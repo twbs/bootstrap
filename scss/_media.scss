@@ -1,81 +1,8 @@
-@if $enable-flex {
-  .media {
-    display: flex;
-  }
-  .media-body {
-    flex: 1;
-  }
-  .media-middle {
-    align-self: center;
-  }
-  .media-bottom {
-    align-self: flex-end;
-  }
-} @else {
-  .media,
-  .media-body {
-    overflow: hidden;
-  }
-  .media-body {
-    width: 10000px;
-  }
-  .media-left,
-  .media-right,
-  .media-body {
-    display: table-cell;
-    vertical-align: top;
-  }
-  .media-middle {
-    vertical-align: middle;
-  }
-  .media-bottom {
-    vertical-align: bottom;
-  }
+.media {
+  display: flex;
+  align-items: flex-start;
 }
 
-
-//
-// Images/elements as the media anchor
-//
-
-.media-object {
-  display: block;
-
-  // Fix collapse in webkit from max-width: 100% and display: table-cell.
-  &.img-thumbnail {
-    max-width: none;
-  }
-}
-
-
-//
-// Alignment
-//
-
-.media-right {
-  padding-left: $media-alignment-padding-x;
-}
-
-.media-left {
-  padding-right: $media-alignment-padding-x;
-}
-
-
-//
-// Headings
-//
-
-.media-heading {
-  margin-top: 0;
-  margin-bottom: $media-heading-margin-bottom;
-}
-
-
-//
-// Media list variation
-//
-
-.media-list {
-  padding-left: 0;
-  list-style: none;
+.media-body {
+  flex: 1;
 }

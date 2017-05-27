@@ -7,7 +7,7 @@ layout: home
     <span class="bd-booticon outline">B</span>
     <p class="lead">Bootstrap is the most popular HTML, CSS, and JS framework in the world for building responsive, mobile-first projects on the web.</p>
     <p class="lead">
-      <a href="{{ site.baseurl }}/getting-started/download/" class="btn btn-outline-inverse btn-lg" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download Bootstrap</a>
+      <a href="{{ site.baseurl }}/getting-started/download/" class="btn btn-lg" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download Bootstrap</a>
     </p>
     <p class="version">Currently v{{ site.current_version }}</p>
     {% include ads.html %}
@@ -24,7 +24,7 @@ layout: home
         <h4>Managed dependencies</h4>
         <p>Include Bootstrap's source Sass and JavaScript files via Bower, Composer, Meteor, or npm. Package managed installs don't include documentation, but do include our Gruntfile and readme.</p>
         <p>
-          <a class="btn btn-bs btn-outline" href="{{ site.baseurl }}/getting-started/download/#package-managers">View install methods</a>
+          <a class="btn btn-bs" href="{{ site.baseurl }}/getting-started/download/#package-managers">View install methods</a>
         </p>
       </div>
       <div class="col-sm-6 mb-3">
@@ -40,7 +40,7 @@ layout: home
     <hr class="half-rule mt-0">
 
     <p><strong>Looking for something else?</strong> Compiled builds of Bootstrap's CSS and JS are also available.</p>
-    <a href="{{ site.baseurl }}/getting-started/download/" class="btn btn-bs btn-outline">More download options</a>
+    <a href="{{ site.baseurl }}/getting-started/download/" class="btn btn-bs">More download options</a>
   </div>
 </div>
 
@@ -70,7 +70,7 @@ layout: home
     <hr class="half-rule mt-0">
 
     <p><strong>Bootstrap is open source!</strong> It's hosted, developed, and maintained on GitHub by folks like you.</p>
-    <a href="{{ site.repo }}" class="btn btn-bs btn-outline">View the GitHub project</a>
+    <a href="{{ site.repo }}" class="btn btn-bs">View the GitHub project</a>
   </div>
 </div>
 
@@ -82,7 +82,7 @@ layout: home
     </p>
 
     <p class="lead">
-      <a href="{{ site.themes }}" class="btn btn-bs btn-outline">Browse themes</a>
+      <a href="{{ site.themes }}" class="btn btn-bs">Browse themes</a>
     </p>
 
     <img class="img-fluid mx-auto" src="{{ site.baseurl }}/assets/img/bs-themes.png" alt="Bootstrap Themes" width="1024" height="388">
@@ -96,7 +96,7 @@ layout: home
 
     <div class="row bd-featured-sites">
     {% for showcase in site.data.showcase %}
-      <div class="col-xs-6 col-sm-3">
+      <div class="col-6 col-sm-3">
         <a href="{{ showcase.expo_url }}" target="_blank" title="{{ showcase.name }}">
           <img src="{{ site.baseurl }}/assets/img/expo-{{ showcase.img }}.jpg" alt="{{ showcase.name }}" class="img-fluid">
         </a>
@@ -107,6 +107,6 @@ layout: home
     <hr class="half-rule">
 
     <p>We showcase dozens of inspiring projects built with Bootstrap on the Bootstrap Expo.</p>
-    <a href="{{ site.expo }}" class="btn btn-bs btn-outline">Explore the Expo</a>
+    <a href="{{ site.expo }}" class="btn btn-bs">Explore the Expo</a>
   </div>
 </div>

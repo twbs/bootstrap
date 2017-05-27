@@ -1,5 +1,5 @@
 $(function () {
-  'use strict';
+  'use strict'
 
   QUnit.module('modal plugin')
 
@@ -169,6 +169,19 @@ $(function () {
       })
       .on('hidden.bs.modal', function () {
         assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should not close modal when clicking outside of modal-content if data-backdrop="true"', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    $('<div id="modal-test" data-backdrop="false"><div class="contents"/></div>')
+      .on('shown.bs.modal', function () {
+        $('#modal-test').trigger('click')
+        assert.ok($('#modal-test').is(':visible'), 'modal not hidden')
         done()
       })
       .bootstrapModal('show')
@@ -363,6 +376,44 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should have a paddingRight when the modal is taller than the viewport', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    $('<div class="navbar-fixed-top navbar-fixed-bottom is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
+    $('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed').css('padding-right', '10px')
+
+    $('<div id="modal-test"/>')
+      .on('shown.bs.modal', function () {
+        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
+        assert.strictEqual(isNaN(paddingRight), false)
+        assert.strictEqual(paddingRight !== 0, true)
+        $(document.body).css('padding-right', '') // Because test case "should ignore other inline styles when trying to restore body padding after closing" fail if not
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should remove padding-right on modal after closing', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+    $('<div class="navbar-fixed-top navbar-fixed-bottom is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
+    $('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed').css('padding-right', '10px')
+
+    $('<div id="modal-test"/>')
+      .on('shown.bs.modal', function () {
+        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
+        assert.strictEqual(isNaN(paddingRight), false)
+        assert.strictEqual(paddingRight !== 0, true)
+        $(this).bootstrapModal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
+        assert.strictEqual(paddingRight, 0)
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should ignore other inline styles when trying to restore body padding after closing', function (assert) {
     assert.expect(2)
     var done = assert.async()
@@ -402,5 +453,27 @@ $(function () {
         $(this).bootstrapModal('hide')
       })
       .bootstrapModal('show')
+  })
+
+  QUnit.test('should not follow link in area tag', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    $('<map><area id="test" shape="default" data-toggle="modal" data-target="#modal-test" href="demo.html"/></map>')
+      .appendTo('#qunit-fixture')
+
+    $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
+      .appendTo('#qunit-fixture')
+
+    $('#test')
+      .on('click.bs.modal.data-api', function (event) {
+        assert.notOk(event.isDefaultPrevented(), 'navigating to href will happen')
+
+        setTimeout(function () {
+          assert.ok(event.isDefaultPrevented(), 'model shown instead of navigating to href')
+          done()
+        }, 1)
+      })
+      .trigger('click')
   })
 })

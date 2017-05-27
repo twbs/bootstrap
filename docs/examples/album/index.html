@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
@@ -19,30 +20,34 @@
 
   <body>
 
-    <div class="navbar-collapse collapse inverse" id="navbar-header">
-      <div class="container-fluid">
-        <div class="about">
-          <h4>About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-        </div>
-        <div class="social">
-          <h4>Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="#">Follow on Twitter</a></li>
-            <li><a href="#">Like on Facebook</a></li>
-            <li><a href="#">Email me</a></li>
-          </ul>
+    <div class="collapse bg-inverse" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          </div>
+          <div class="col-sm-4 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="#" class="text-white">Like on Facebook</a></li>
+              <li><a href="#" class="text-white">Email me</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-    <div class="navbar navbar-static-top navbar-dark bg-inverse">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation"></button>
+    <div class="navbar navbar-inverse bg-inverse">
+      <div class="container d-flex justify-content-between">
         <a href="#" class="navbar-brand">Album</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </div>
     </div>
 
-    <section class="jumbotron text-xs-center">
+    <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Album example</h1>
         <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
@@ -102,7 +107,7 @@
 
     <footer class="text-muted">
       <div class="container">
-        <p class="float-xs-right">
+        <p class="float-right">
           <a href="#">Back to top</a>
         </p>
         <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>

@@ -7,6 +7,11 @@ group: about
 
 Have a need for Bootstrap's brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well. These guidelines were inspired by MailChimp's [Brand Assets](https://mailchimp.com/about/brand-assets/).
 
+## Contents
+
+* Will be replaced with the ToC, excluding the "Contents" header
+{:toc}
+
 ## Mark and logo
 
 Use either the Bootstrap mark (a capital **B**) or the standard logo (just **Bootstrap**). It should always appear in Helvetica Neue Bold. **Do not use the Twitter bird** in association with Bootstrap.
