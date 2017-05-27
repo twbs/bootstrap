@@ -27,6 +27,59 @@ algolia:
   application_id: "YHC4ZXLJL7"
   index_name: "bootstrap_docs"
   read_only_api_key: "250a854084e2ce05558580cf48695b56"
+  record_css_selector: p,h1,h2,h3,h4,h5,h6
+  excluded_files:
+    - index.html
+  settings:
+    advancedSyntax: true
+    highlightPostTag: </mark>
+    highlightPreTag: <mark>
+    ignorePlurals: true
+    minWordSizefor1Typo: 3
+    minWordSizefor2Typos: 7
+    separatorsToIndex: '-.'
+    attributesToIndex:
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6
+      - unordered(codes)
+      - unordered(text)
+    attributesToRetrieve:
+      - anchor
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6
+      - tag_name
+      - text
+      - title
+      - url
+    ranking:
+      - typo
+      - geo
+      - words
+      - proximity
+      - attribute
+      - custom
+    customRanking:
+      - desc(weight.tag_name)
+      - desc(weight.page)
+      - desc(weight.number_of_words)
+    attributesToSnippet:
+      - text:20
+    attributesToHighlight:
+      - text
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6
 
 # Social
 title: Bootstrap
