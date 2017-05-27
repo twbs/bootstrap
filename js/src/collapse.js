@@ -78,7 +78,8 @@ const Collapse = (($) => {
         `[data-toggle="collapse"][data-target="#${element.id}"]`
       ))
       const tabToggles = $(Selector.DATA_TOGGLE)
-      for (const elem of tabToggles) {
+      for (let i = 0; i < tabToggles.length; i++) {
+        const elem = tabToggles[i]
         const selector = Util.getSelectorFromElement(elem)
         if (selector !== null && $(selector).filter(element).length > 0) {
           this._triggerArray.push(elem)
@@ -222,12 +223,13 @@ const Collapse = (($) => {
         .removeClass(ClassName.SHOW)
 
       if (this._triggerArray.length) {
-        for (const elem of this._triggerArray) {
-          const selector = Util.getSelectorFromElement(elem)
+        for (let i = 0; i < this._triggerArray.length; i++) {
+          const trigger = this._triggerArray[i]
+          const selector = Util.getSelectorFromElement(trigger)
           if (selector !== null) {
             const $elem = $(selector)
             if (!$elem.hasClass(ClassName.SHOW)) {
-              $elem.addClass(ClassName.COLLAPSED)
+              $(trigger).addClass(ClassName.COLLAPSED)
                    .attr('aria-expanded', false)
             }
           }
