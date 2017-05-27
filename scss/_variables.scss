@@ -329,7 +329,6 @@ $table-head-color:              $gray !default;
 $table-inverse-bg:              $gray-dark !default;
 $table-inverse-bg-accent:       rgba($white, .05) !default;
 $table-inverse-bg-hover:        rgba($white, .075) !default;
-$table-inverse-bg-active:       $table-inverse-bg-hover !default;
 $table-inverse-border-color:    lighten($gray-dark, 7.5%) !default;
 $table-inverse-color:           $body-bg !default;
 
@@ -574,11 +573,8 @@ $zindex-tooltip:            1070 !default;
 
 // Navs
 
-$nav-item-margin:               .2rem !default;
-$nav-item-inline-spacer:        1rem !default;
 $nav-link-padding-y:            .5rem !default;
 $nav-link-padding-x:            1rem !default;
-$nav-link-hover-bg:             $gray-lighter !default;
 $nav-disabled-link-color:       $gray-light !default;
 
 $nav-tabs-border-color:                       #ddd !default;
@@ -588,8 +584,6 @@ $nav-tabs-link-hover-border-color:            $gray-lighter !default;
 $nav-tabs-active-link-color:                  $gray !default;
 $nav-tabs-active-link-bg:                     $body-bg !default;
 $nav-tabs-active-link-border-color:           #ddd !default;
-$nav-tabs-justified-link-border-color:        #ddd !default;
-$nav-tabs-justified-active-link-border-color: $body-bg !default;
 
 $nav-pills-border-radius:     $border-radius !default;
 $nav-pills-active-link-color: $component-active-color !default;
@@ -615,14 +609,14 @@ $navbar-inverse-color:                 rgba($white,.5) !default;
 $navbar-inverse-hover-color:           rgba($white,.75) !default;
 $navbar-inverse-active-color:          rgba($white,1) !default;
 $navbar-inverse-disabled-color:        rgba($white,.25) !default;
-$navbar-inverse-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-inverse-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-inverse-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-inverse-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
 $navbar-inverse-toggler-border-color:  rgba($white,.1) !default;
 
 $navbar-light-color:                rgba($black,.5) !default;
 $navbar-light-hover-color:          rgba($black,.7) !default;
 $navbar-light-active-color:         rgba($black,.9) !default;
 $navbar-light-disabled-color:       rgba($black,.3) !default;
-$navbar-light-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-light-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
 $navbar-light-toggler-border-color: rgba($black,.1) !default;
 
 // Pagination
@@ -711,9 +705,11 @@ $tooltip-bg:                  $black !default;
 $tooltip-opacity:             .9 !default;
 $tooltip-padding-y:           3px !default;
 $tooltip-padding-x:           8px !default;
-$tooltip-margin:              3px !default;
+$tooltip-margin:              0 !default;
+
 
 $tooltip-arrow-width:         5px !default;
+$tooltip-arrow-height:        5px !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
 
@@ -736,6 +732,7 @@ $popover-content-padding-y:           9px !default;
 $popover-content-padding-x:           14px !default;
 
 $popover-arrow-width:                 10px !default;
+$popover-arrow-height:                5px !default;
 $popover-arrow-color:                 $popover-bg !default;
 
 $popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;

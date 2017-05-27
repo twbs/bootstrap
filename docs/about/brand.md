@@ -14,14 +14,14 @@ Have a need for Bootstrap's brand resources? Great! We have only a few guideline
 
 ## Mark and logo
 
-Use either the Bootstrap mark (a capital **B**) or the standard logo (just **Bootstrap**). It should always appear in Helvetica Neue Bold. **Do not use the Twitter bird** in association with Bootstrap.
+Use either the Bootstrap mark (a capital **B**) or the standard logo (just **Bootstrap**). It should always appear in San Francisco Display Semibold. **Do not use the Twitter bird** in association with Bootstrap.
 
 <div class="bd-brand-logos">
   <div class="bd-brand-item">
-    <div class="bd-booticon bd-booticon-lg">B</div>
+    <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144">
   </div>
   <div class="bd-brand-item inverse">
-    <div class="bd-booticon bd-booticon-lg bd-booticon-inverse">B</div>
+    <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
   </div>
 </div>
 <div class="bd-brand-logos">
