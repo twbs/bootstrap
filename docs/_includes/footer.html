@@ -22,6 +22,11 @@
   <script src="{{ site.baseurl }}/dist/js/bootstrap.js"></script>
 {% endif %}
 
+{% if page.layout == "docs" %}
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+{% endif %}
+
 {% if site.github %}
   <script src="{{ site.baseurl }}/assets/js/docs.min.js"></script>
 {% else %}
@@ -34,28 +39,6 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="{{ site.baseurl }}/assets/js/ie-emulation-modes-warning.js"></script>
-
-{% if page.layout == "docs" %}
-<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-<script>
-  var client = algoliasearch("YHC4ZXLJL7", "250a854084e2ce05558580cf48695b56")
-  var index = client.initIndex('bootstrap_docs')
-
-  autocomplete('#bd-docs-search', { hint: false, debug: true }, {
-    source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
-    // value to be displayed in input control after user's suggestion selection
-    displayKey: 'title',
-    //hash of templates used when rendering dataset
-    templates: {
-      //'suggestion' templating function used to render a single suggestion
-      suggestion: function(suggestion) {
-        return '<span>' + suggestion._highlightResult.title.value + '</span>';
-      }
-    }
-  })
-</script>
-{% endif %}
 
 <script>
 Holder.addTheme('gray', {
