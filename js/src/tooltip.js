@@ -1,4 +1,4 @@
-/* global Tether */
+/* global Popper */
 
 import Util from './util'
 
@@ -13,11 +13,11 @@ import Util from './util'
 const Tooltip = (($) => {
 
   /**
-   * Check for Tether dependency
-   * Tether - http://tether.io/
+   * Check for Popper dependency
+   * Popper - https://popper.js.org
    */
-  if (typeof Tether === 'undefined') {
-    throw new Error('Bootstrap tooltips require Tether (http://tether.io/)')
+  if (typeof Popper === 'undefined') {
+    throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)')
   }
 
 
@@ -33,43 +33,45 @@ const Tooltip = (($) => {
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
-  const CLASS_PREFIX        = 'bs-tether'
-  const TETHER_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
-
-  const Default = {
-    animation   : true,
-    template    : '<div class="tooltip" role="tooltip">'
-                + '<div class="tooltip-inner"></div></div>',
-    trigger     : 'hover focus',
-    title       : '',
-    delay       : 0,
-    html        : false,
-    selector    : false,
-    placement   : 'top',
-    offset      : '0 0',
-    constraints : [],
-    container   : false
-  }
+  const CLASS_PREFIX        = 'bs-tooltip'
+  const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
   const DefaultType = {
-    animation   : 'boolean',
-    template    : 'string',
-    title       : '(string|element|function)',
-    trigger     : 'string',
-    delay       : '(number|object)',
-    html        : 'boolean',
-    selector    : '(string|boolean)',
-    placement   : '(string|function)',
-    offset      : 'string',
-    constraints : 'array',
-    container   : '(string|element|boolean)'
+    animation           : 'boolean',
+    template            : 'string',
+    title               : '(string|element|function)',
+    trigger             : 'string',
+    delay               : '(number|object)',
+    html                : 'boolean',
+    selector            : '(string|boolean)',
+    placement           : '(string|function)',
+    offset              : '(number|string)',
+    container           : '(string|element|boolean)',
+    fallbackPlacement   : '(string|array)'
   }
 
   const AttachmentMap = {
-    TOP    : 'bottom center',
-    RIGHT  : 'middle left',
-    BOTTOM : 'top center',
-    LEFT   : 'middle right'
+    AUTO   : 'auto',
+    TOP    : 'top',
+    RIGHT  : 'right',
+    BOTTOM : 'bottom',
+    LEFT   : 'left'
+  }
+
+  const Default = {
+    animation           : true,
+    template            : '<div class="tooltip" role="tooltip">'
+                        + '<div class="arrow" x-arrow></div>'
+                        + '<div class="tooltip-inner"></div></div>',
+    trigger             : 'hover focus',
+    title               : '',
+    delay               : 0,
+    html                : false,
+    selector            : false,
+    placement           : 'top',
+    offset              : 0,
+    container           : false,
+    fallbackPlacement   : 'flip'
   }
 
   const HoverState = {
@@ -100,11 +102,6 @@ const Tooltip = (($) => {
     TOOLTIP_INNER : '.tooltip-inner'
   }
 
-  const TetherClass = {
-    element : false,
-    enabled : false
-  }
-
   const Trigger = {
     HOVER  : 'hover',
     FOCUS  : 'focus',
@@ -128,7 +125,7 @@ const Tooltip = (($) => {
       this._timeout       = 0
       this._hoverState    = ''
       this._activeTrigger = {}
-      this._tether        = null
+      this._popper        = null
 
       // protected
       this.element = element
@@ -220,8 +217,6 @@ const Tooltip = (($) => {
     dispose() {
       clearTimeout(this._timeout)
 
-      this.cleanupTether()
-
       $.removeData(this.element, this.constructor.DATA_KEY)
 
       $(this.element).off(this.constructor.EVENT_KEY)
@@ -235,7 +230,10 @@ const Tooltip = (($) => {
       this._timeout       = null
       this._hoverState    = null
       this._activeTrigger = null
-      this._tether        = null
+      if (this._popper !== null) {
+        this._popper.destroy()
+      }
+      this._popper        = null
 
       this.element = null
       this.config  = null
@@ -277,6 +275,7 @@ const Tooltip = (($) => {
           this.config.placement
 
         const attachment = this._getAttachment(placement)
+        this.addAttachmentClass(attachment)
 
         const container = this.config.container === false ? document.body : $(this.config.container)
 
@@ -288,19 +287,25 @@ const Tooltip = (($) => {
 
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
-        this._tether = new Tether({
-          attachment,
-          element         : tip,
-          target          : this.element,
-          classes         : TetherClass,
-          classPrefix     : CLASS_PREFIX,
-          offset          : this.config.offset,
-          constraints     : this.config.constraints,
-          addTargetClasses: false
+        this._popper = new Popper(this.element, tip, {
+          placement : attachment,
+          modifiers : {
+            offset : {
+              offset : this.config.offset
+            },
+            flip : {
+              behavior : this.config.fallbackPlacement
+            }
+          },
+          onCreate : (data) => {
+            if (data.originalPlacement !== data.placement) {
+              this._handlePopperPlacementChange(data)
+            }
+          },
+          onUpdate : (data) => {
+            this._handlePopperPlacementChange(data)
+          }
         })
-
-        Util.reflow(tip)
-        this._tether.position()
 
         $(tip).addClass(ClassName.SHOW)
 
@@ -313,6 +318,9 @@ const Tooltip = (($) => {
         }
 
         const complete = () => {
+          if (this.config.animation) {
+            this._fixTransition()
+          }
           const prevHoverState = this._hoverState
           this._hoverState     = null
 
@@ -327,10 +335,9 @@ const Tooltip = (($) => {
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
             .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
-          return
+        } else {
+          complete()
         }
-
-        complete()
       }
     }
 
@@ -345,7 +352,9 @@ const Tooltip = (($) => {
         this._cleanTipClass()
         this.element.removeAttribute('aria-describedby')
         $(this.element).trigger(this.constructor.Event.HIDDEN)
-        this.cleanupTether()
+        if (this._popper !== null) {
+          this._popper.destroy()
+        }
 
         if (callback) {
           callback()
@@ -385,11 +394,20 @@ const Tooltip = (($) => {
 
     }
 
+    update() {
+      if (this._popper !== null) {
+        this._popper.scheduleUpdate()
+      }
+    }
 
     // protected
 
     isWithContent() {
       return Boolean(this.getTitle())
+    }
+
+    addAttachmentClass(attachment) {
+      $(this.getTipElement()).addClass(`${CLASS_PREFIX}-${attachment}`)
     }
 
     getTipElement() {
@@ -398,12 +416,8 @@ const Tooltip = (($) => {
 
     setContent() {
       const $tip = $(this.getTipElement())
-
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
-
       $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
-
-      this.cleanupTether()
     }
 
     setElementContent($element, content) {
@@ -434,25 +448,11 @@ const Tooltip = (($) => {
       return title
     }
 
-    cleanupTether() {
-      if (this._tether) {
-        this._tether.destroy()
-      }
-    }
-
 
     // private
 
     _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()]
-    }
-
-    _cleanTipClass() {
-      const $tip = $(this.getTipElement())
-      const tabClass = $tip.attr('class').match(TETHER_PREFIX_REGEX)
-      if (tabClass !== null && tabClass.length > 0) {
-        $tip.removeClass(tabClass.join(''))
-      }
     }
 
     _setListeners() {
@@ -651,6 +651,31 @@ const Tooltip = (($) => {
       return config
     }
 
+    _cleanTipClass() {
+      const $tip = $(this.getTipElement())
+      const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
+      if (tabClass !== null && tabClass.length > 0) {
+        $tip.removeClass(tabClass.join(''))
+      }
+    }
+
+    _handlePopperPlacementChange(data) {
+      this._cleanTipClass()
+      this.addAttachmentClass(this._getAttachment(data.placement))
+    }
+
+    _fixTransition() {
+      const tip                 = this.getTipElement()
+      const initConfigAnimation = this.config.animation
+      if (tip.getAttribute('x-placement') !== null) {
+        return
+      }
+      $(tip).removeClass(ClassName.FADE)
+      this.config.animation = false
+      this.hide()
+      this.show()
+      this.config.animation = initConfigAnimation
+    }
 
     // static
 
