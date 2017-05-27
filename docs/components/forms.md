@@ -189,7 +189,7 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
 | `time` | <input class="form-control" type="time" value="13:45:00" id="example-time-input"> |
 | `color` | <input class="form-control" type="color" value="#563d7c" id="example-color-input"> |
 
-## Form layouts
+## Layout
 
 Since Bootstrap applies `display: block` and `width: 100%` to almost all our form controls, forms will by default stack vertically. Additional classes can be used to vary this layout on a per-form basis.
 
