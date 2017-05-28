@@ -1,6 +1,6 @@
 # Default application configuration that all configurations inherit from.
 scss_files:
-  - "**/*.scss"
+  - "scss/**/*.scss"
   - "docs/assets/scss/**/*.scss"
 
 plugin_directories: ['.scss-linters']
@@ -38,7 +38,7 @@ linters:
   Comment:
     enabled: true
     exclude:
-      - bootstrap.scss
+      - scss/bootstrap.scss
     style: silent
 
   DebugStatement:
