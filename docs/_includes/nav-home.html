@@ -55,9 +55,24 @@
         </li>
       </ul>
 
-      <form class="bd-search">
-        <input type="text" class="form-control" id="search-input" placeholder="Search..." autocomplete="off">
-        <div class="dropdown-menu bd-search-results" id="search-results"></div>
-      </form>
+      <ul class="navbar-nav ml-md-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.repo }}">
+            {% include icons/github.svg %}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/{{ site.twitter }}">
+            {% include icons/twitter.svg %}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.slack }}">
+            {% include icons/slack.svg %}
+          </a>
+        </li>
+      </ul>
+
+      <a class="btn btn-primary ml-md-3" href="{{ site.download.source }}">Download</a>
     </div>
 </header>
