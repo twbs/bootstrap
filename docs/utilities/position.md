@@ -1,12 +1,12 @@
 ---
 layout: docs
 title: Position
+description: Use these shorthand utilities for quickly configuring the position of an element.
 group: utilities
+toc: true
 ---
 
-Position utilities are helpful for quickly placing a component outside the normal document flow. Choose from a handful of fixed or sticky position classes as needed.
-
-### Fixed top
+## Fixed top
 
 Position an element at the top of the viewport, from edge to edge. Be sure you understand the ramifications of fixed position in your project; you may need to add aditional CSS.
 
@@ -14,7 +14,7 @@ Position an element at the top of the viewport, from edge to edge. Be sure you u
 <div class="fixed-top">...</div>
 {% endhighlight %}
 
-### Fixed bottom
+## Fixed bottom
 
 Position an element at the bottom of the viewport, from edge to edge. Be sure you understand the ramifications of fixed position in your project; you may need to add aditional CSS.
 
@@ -22,7 +22,7 @@ Position an element at the bottom of the viewport, from edge to edge. Be sure yo
 <div class="fixed-bottom">...</div>
 {% endhighlight %}
 
-### Sticky top
+## Sticky top
 
 Position an element at the top of the viewport, from edge to edge, but only after you scroll past it. The `.sticky-top` utility uses CSS's `position: sticky`, which isn't fully supported in all browsers.
 

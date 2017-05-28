@@ -1,10 +1,10 @@
 ---
 layout: docs
 title: Colors
+description: Convey meaning through color with a handful of color utility classes. Includes support for styling links with hover states, too.
 group: utilities
+toc: true
 ---
-
-Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.
 
 {% example html %}
 <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>

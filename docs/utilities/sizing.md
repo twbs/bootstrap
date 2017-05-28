@@ -1,12 +1,12 @@
 ---
 layout: docs
 title: Sizing
+description: Easily make an element as wide or as tall (relative to its parent) with our width and height utilities.
 group: utilities
+toc: true
 ---
 
-Easily make an element as wide or as tall (relative to its parent) with our width and height utilities. Includes support for `25%`, `50%`, `75%`, and `100%` by default.
-
-Width and height utilities are generated from the `$sizes` Sass map in `_variables.scss`. Modify those values as you need to generate different utilities here.
+Width and height utilities are generated from the `$sizes` Sass map in `_variables.scss`. Includes support for `25%`, `50%`, `75%`, and `100%` by default. Modify those values as you need to generate different utilities here.
 
 {% example html %}
 <div class="w-25 p-3" style="background-color: #eee;">Width 25%</div>

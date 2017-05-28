@@ -1,15 +1,10 @@
 ---
 layout: docs
 title: Typography
+description: Documentation and examples for common text utilities to control alignment, wrapping, weight, and more.
 group: utilities
+toc: true
 ---
-
-The following utilities can be used to add additional styles to texts.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Text alignment
 

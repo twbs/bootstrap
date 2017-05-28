@@ -3,6 +3,7 @@ layout: docs
 title: Brand guidelines
 description: Documentation and examples for Bootstrap's logo and brand usage guidelines.
 group: about
+toc: true
 ---
 
 Have a need for Bootstrap's brand resources? Great! We have only a few guidelines we follow, and in turn ask you to follow as well. These guidelines were inspired by MailChimp's [Brand Assets](https://mailchimp.com/about/brand-assets/).
