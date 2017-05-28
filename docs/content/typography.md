@@ -22,36 +22,52 @@ These styles can be found within `_reboot.scss`, and the global variables are de
 
 All HTML headings, `<h1>` through `<h6>`, are available.
 
-<div class="bd-example bd-example-type">
-  <table class="table">
-    <tbody>
-      <tr>
-        <td><h1>h1. Bootstrap heading</h1></td>
-        <td class="type-info">Semibold 2.5rem (40px)</td>
-      </tr>
-      <tr>
-        <td><h2>h2. Bootstrap heading</h2></td>
-        <td class="type-info">Semibold 2rem (32px)</td>
-      </tr>
-      <tr>
-        <td><h3>h3. Bootstrap heading</h3></td>
-        <td class="type-info">Semibold 1.75rem (28px)</td>
-      </tr>
-      <tr>
-        <td><h4>h4. Bootstrap heading</h4></td>
-        <td class="type-info">Semibold 1.5rem (24px)</td>
-      </tr>
-      <tr>
-        <td><h5>h5. Bootstrap heading</h5></td>
-        <td class="type-info">Semibold 1.25rem (20px)</td>
-      </tr>
-      <tr>
-        <td><h6>h6. Bootstrap heading</h6></td>
-        <td class="type-info">Semibold 1rem (16px)</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Heading</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        {% markdown %}`<h1></h1>`{% endmarkdown %}
+      </td>
+      <td><span class="h1">h1. Bootstrap heading</span></td>
+    </tr>
+    <tr>
+      <td>
+        {% markdown %}`<h2></h2>`{% endmarkdown %}
+      </td>
+      <td><span class="h2">h2. Bootstrap heading</span></td>
+    </tr>
+    <tr>
+      <td>
+        {% markdown %}`<h3></h3>`{% endmarkdown %}
+      </td>
+      <td><span class="h3">h3. Bootstrap heading</span></td>
+    </tr>
+    <tr>
+      <td>
+        {% markdown %}`<h4></h4>`{% endmarkdown %}
+      </td>
+      <td><span class="h4">h4. Bootstrap heading</span></td>
+    </tr>
+    <tr>
+      <td>
+        {% markdown %}`<h5></h5>`{% endmarkdown %}
+      </td>
+      <td><span class="h5">h5. Bootstrap heading</span></td>
+    </tr>
+    <tr>
+      <td>
+        {% markdown %}`<h6></h6>`{% endmarkdown %}
+      </td>
+      <td><span class="h6">h6. Bootstrap heading</span></td>
+    </tr>
+  </tbody>
+</table>
 
 {% highlight html %}
 <h1>h1. Bootstrap heading</h1>
@@ -77,12 +93,19 @@ All HTML headings, `<h1>` through `<h6>`, are available.
 
 Use the included utility classes to recreate the small secondary heading text from Bootstrap 3.
 
-{% example html %}
+<div class="bd-example">
+  <span class="h3">
+    Fancy display heading
+    <small class="text-muted">With faded secondary text</small>
+  </span>
+</div>
+
+{% highlight html %}
 <h3>
   Fancy display heading
   <small class="text-muted">With faded secondary text</small>
 </h3>
-{% endexample %}
+{% endhighlight %}
 
 ## Display headings
 
@@ -92,16 +115,16 @@ Traditional heading elements are designed to work best in the meat of your page 
   <table class="table">
     <tbody>
       <tr>
-        <td><h1 class="display-1">Display 1</h1></td>
+        <td><span class="display-1">Display 1</span></td>
       </tr>
       <tr>
-      <td><h1 class="display-2">Display 2</h1></td>
+      <td><span class="display-2">Display 2</span></td>
       </tr>
       <tr>
-      <td><h1 class="display-3">Display 3</h1></td>
+      <td><span class="display-3">Display 3</span></td>
       </tr>
       <tr>
-      <td><h1 class="display-4">Display 4</h1></td>
+      <td><span class="display-4">Display 4</span></td>
       </tr>
     </tbody>
   </table>

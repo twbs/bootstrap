@@ -53,27 +53,52 @@ This `font-family` is applied to the `<body>` and automatically inherited global
 
 All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-top` removed. Headings have `margin-bottom: .5rem` added and paragraphs `margin-bottom: 1rem` for easy spacing.
 
-<div class="bd-example">
-{% markdown %}
-# h1 heading
-Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-
-## h2 heading
-Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-
-### h3 heading
-Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-
-#### h4 heading
-Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-
-##### h5 heading
-Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-
-###### h6 heading
-Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-{% endmarkdown %}
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Heading</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        {% markdown %}`<h1></h1>`{% endmarkdown %}
+      </td>
+      <td><span class="h1">h1. Bootstrap heading</span></td>
+    </tr>
+    <tr>
+      <td>
+        {% markdown %}`<h2></h2>`{% endmarkdown %}
+      </td>
+      <td><span class="h2">h2. Bootstrap heading</span></td>
+    </tr>
+    <tr>
+      <td>
+        {% markdown %}`<h3></h3>`{% endmarkdown %}
+      </td>
+      <td><span class="h3">h3. Bootstrap heading</span></td>
+    </tr>
+    <tr>
+      <td>
+        {% markdown %}`<h4></h4>`{% endmarkdown %}
+      </td>
+      <td><span class="h4">h4. Bootstrap heading</span></td>
+    </tr>
+    <tr>
+      <td>
+        {% markdown %}`<h5></h5>`{% endmarkdown %}
+      </td>
+      <td><span class="h5">h5. Bootstrap heading</span></td>
+    </tr>
+    <tr>
+      <td>
+        {% markdown %}`<h6></h6>`{% endmarkdown %}
+      </td>
+      <td><span class="h6">h6. Bootstrap heading</span></td>
+    </tr>
+  </tbody>
+</table>
 
 ## Lists
 
