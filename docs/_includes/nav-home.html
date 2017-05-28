@@ -1,17 +1,15 @@
-<header class="navbar navbar-dark navbar-sticky-top navbar-expand-md bd-navbar">
-  <div class="d-flex w-100 align-items-center justify-content-between d-md-none bd-navbar-brand-wrap">
-    <a class="navbar-brand" href="{{ site.baseurl }}/">
-      Bootstrap
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
+<header class="navbar navbar-inverse navbar-sticky-top navbar-expand-md bd-navbar">
+  <a class="navbar-brand" href="{{ site.baseurl }}/">
+    <svg class="d-block" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewbox="0 0 612 612"><path fill="#fff" d="M510 5a97.3 97.3 0 0 1 97 97v408a97.3 97.3 0 0 1-97 97H102a97.3 97.3 0 0 1-97-97V102a97.3 97.3 0 0 1 97-97h408m0-5H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="#fff" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89H196.77zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57V291.1zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4h78.22z"/></svg>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   <div class="collapse navbar-collapse" id="bd-main-nav">
     <ul class="navbar-nav">
       <li class="nav-item d-none d-md-block">
-        <a class="nav-link {% if page.layout == "home" %}active{% endif %}" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Bootstrap</a>
+        <a class="nav-link {% if page.layout == "home" %}active{% endif %}" href="{{ site.baseurl }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link {% if page.layout == "docs" %}active{% endif %}" href="{{ site.baseurl }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
