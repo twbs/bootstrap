@@ -1,4 +1,4 @@
-// scss-lint:disable IdSelector, NestingDepth, SelectorDepth
+// scss-lint:disable IdSelector, NestingDepth, SelectorDepth, QualifyingElement
 
 //
 // Automatically style Markdown-based tables like a Bootstrap `.table`.
@@ -21,6 +21,20 @@
       padding-left: 3rem;
       overflow-y: auto;
       font-size: .85rem;
+    }
+  }
+
+  // Hack the sticky header
+  h2[id],
+  h3[id] {
+    &::before {
+      position: relative;
+      z-index: -1;
+      display: block;
+      height: 6rem;
+      margin-top: -6rem;
+      visibility: hidden;
+      content: "";
     }
   }
 
