@@ -1,11 +1,10 @@
 ---
 layout: docs
 title: Customization options
-description: Customize Bootstrap with Sass variables, easily toggling global preferences with a quick recompile.
+description: Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new Sass variables.
 group: getting-started
+toc: true
 ---
-
-Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable's value and recompile with `npm run test` as needed.
 
 ## Customizing variables
 
@@ -26,6 +25,8 @@ $body-color: $gray-light;
 Do the same for any variable you need to override, including the global options listed below.
 
 ## Global options
+
+Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable's value and recompile with `npm run test` as needed.
 
 You can find and customize these variables for key global options in our `_variables.scss` file.
 

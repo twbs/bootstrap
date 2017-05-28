@@ -3,14 +3,10 @@ layout: docs
 title: Accessibility
 description: A brief overview of Bootstrap's features and limitations for the creation of accessible content.
 group: getting-started
+toc: true
 ---
 
 Bootstrap provides an easy-to-use framework of ready-made styles, layout tools, and interactive components, allowing developers to create web sites and applications that are visually appealing, functionally rich, and accessible out of the box.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Overview and limitations
 

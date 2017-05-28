@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: Browsers and devices
-description: Learn which browsers and devices are supported by Bootstrap.
+description: Learn about the browsers and devices, from modern to told, that are supported by Bootstrap, including known quirks and bugs for each.
 group: getting-started
+toc: true
 ---
-
-Bootstrap supports a wide variety of modern browsers and devices, and some older ones. See which exact ones below, as well as detailed information on known quirks and bugs.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Supported browsers
 

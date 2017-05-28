@@ -1,18 +1,14 @@
 ---
 layout: docs
 title: Build tools
-description: Details on how to use Bootstrap's included build tools to compile source code, run tests, and more.
+description: Learn how to use Bootstrap's included npm scripts to build our documentation, compile source code, run tests, and more.
 group: getting-started
+toc: true
 ---
 
-Bootstrap uses [NPM scripts](https://docs.npmjs.com/misc/scripts) for its build system. Our [package.json](https://github.com/twbs/bootstrap/blob/v4-dev/package.json) includes convenient methods for working with the framework, including compiling code, running tests, and more.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
-
 ## Tooling setup
+
+Bootstrap uses [NPM scripts](https://docs.npmjs.com/misc/scripts) for its build system. Our [package.json](https://github.com/twbs/bootstrap/blob/v4-dev/package.json) includes convenient methods for working with the framework, including compiling code, running tests, and more.
 
 To use our build system and run our documentation locally, you'll need a copy of Bootstrap's source files and Node. Follow these steps and you should be ready to rock:
 

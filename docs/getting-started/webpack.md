@@ -1,17 +1,10 @@
 ---
 layout: docs
 title: Webpack
-description: Learn how to install Bootstrap using webpack 2
+description: Learn how to include Bootstrap in your project using Webpack 2.
 group: getting-started
+toc: true
 ---
-
-Use [webpack v2.x](https://webpack.js.org/) to bundle Bootstrap into your project.
-
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Installing Bootstrap
 
@@ -60,16 +53,16 @@ Notice that if you chose to **import plugins individually**, you must also insta
 
 ### Importing Precompiled SASS
 
-To enjoy the full potential of Bootstrap and customize it to your needs, use the source files as a part of your project's bundling process. 
+To enjoy the full potential of Bootstrap and customize it to your needs, use the source files as a part of your project's bundling process.
 
-First, create your own `_custom.scss` and use it to override the [built-in custom variables](/getting-started/options/). Then, use your main sass file to import your custom variables, followed by Bootstrap: 
+First, create your own `_custom.scss` and use it to override the [built-in custom variables](/getting-started/options/). Then, use your main sass file to import your custom variables, followed by Bootstrap:
 {% highlight scss %}
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
 {% endhighlight %}
 
 For Bootstrap to compile, make sure you install and use the required loaders: [sass-loader](https://github.com/webpack-contrib/sass-loader), [postcss-loader](https://github.com/postcss/postcss-loader) with [Autoprefixer](https://github.com/postcss/autoprefixer#webpack) and [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes). With minimal setup, your webpack config should include this rule or similar:
- 
+
 {% highlight js %}
   ...
   {

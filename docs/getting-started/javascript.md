@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: JavaScript
-description: Learn about Bootstrap's JavaScript—how to include it, our data and programmatic API options, and more.
+description: Bring Bootstrap to life with our JavaScript plugins built on jQuery. Learn about each plugin, our data and programmatic API options, and more.
 group: getting-started
+toc: true
 ---
-
-Bootstrap includes a handful of JavaScript to help bring some of our components to life. Learn more about how to include it, our data and programmatic API options, and more.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Individual or compiled
 
