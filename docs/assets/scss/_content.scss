@@ -5,6 +5,25 @@
 //
 
 .bd-content {
+  @include media-breakpoint-up(xl) {
+    padding-right: 20%;
+
+    #contents {
+      display: none;
+    }
+    #markdown-toc {
+      position: fixed;
+      top: 5rem;
+      right: 0;
+      width: 20%;
+      max-height: calc(100vh - 8rem);
+      padding-right: 1.5rem;
+      padding-left: 3rem;
+      overflow-y: auto;
+      font-size: .85rem;
+    }
+  }
+
   > table {
     width: 100%;
     max-width: 100%;
