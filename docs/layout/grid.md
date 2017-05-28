@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: Grid system
-description: Documentation and examples for using Bootstrap's responsive flexbox grid system.
+description: Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, five default responsive tiers, Sass variables and mixins, and dozens of predefined classes.
 group: layout
+toc: true
 ---
-
-Bootstrap includes a powerful mobile-first flexbox grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and has multiple tiers, one for each [media query range]({{ site.baseurl }}/layout/overview/#responsive-breakpoints). You can use it with Sass mixins or our predefined classes.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## How it works
 

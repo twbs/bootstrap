@@ -4,14 +4,8 @@ title: Overview
 description: Components and options for laying out your Bootstrap project, including wrapping containers, a powerful grid system, a flexible media object, and responsive utility classes.
 group: layout
 redirect_from: "/layout/"
+toc: true
 ---
-
-Bootstrap includes several components and options for laying out your project, including wrapping containers, a powerful flexbox grid system, a flexible media object, and responsive utility classes.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Containers
 
