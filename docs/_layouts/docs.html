@@ -12,20 +12,15 @@
 
     {% include nav-home.html %}
 
-    <div class="bd-pageheader">
-      <div class="container">
-        {% include page-headers.html %}
-        {% include ads.html %}
-      </div>
-    </div>
-
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-12 col-md-3 push-md-9 bd-sidebar">
+        <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
           {% include nav-docs.html %}
         </div>
-        <main class="col-12 col-md-9 pull-md-3 bd-content" role="main">
+        <main class="col-12 col-md-9 col-xl-10 py-md-3 pl-md-5 bd-content" role="main">
           <h1 class="bd-title" id="content">{{ page.title }}</h1>
+          <p class="bd-lead">{{ page.description }}</p>
+          {% include ads.html %}
           {{ content }}
         </main>
       </div>
