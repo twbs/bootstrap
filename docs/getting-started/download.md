@@ -7,8 +7,6 @@ group: getting-started
 
 **Bootstrap v{{ site.current_version}}** is available for download in several ways, including some of your favorite package managers. Choose from the options below to snag just what you need.
 
-{% include ads.html %}
-
 ## Contents
 
 * Will be replaced with the ToC, excluding the "Contents" header
