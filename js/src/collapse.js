@@ -370,7 +370,7 @@ const Collapse = (($) => {
     $(selector).each(function () {
       const $target = $(this)
       const data    = $target.data(DATA_KEY)
-      const config = data ? 'toggle' : $trigger.data()
+      const config  = data ? 'toggle' : $trigger.data()
       Collapse._jQueryInterface.call($target, config)
     })
   })
