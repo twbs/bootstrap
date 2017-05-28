@@ -6,7 +6,7 @@
 
 .bd-content {
   @include media-breakpoint-up(xl) {
-    max-width: calc(100% - 320px);
+    flex: 1;
     padding-right: 20%;
 
     #contents {
@@ -99,7 +99,7 @@
     margin-bottom: .25rem;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(lg) {
     > ul,
     > ol,
     > p {
