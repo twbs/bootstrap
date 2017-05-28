@@ -728,7 +728,9 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
 </div>
 
 {% highlight html %}
-<table class="table table-responsive">
-  ...
-</table>
+<div class="table-responsive">
+  <table class="table">
+    ...
+  </table>
+</div>
 {% endhighlight %}
