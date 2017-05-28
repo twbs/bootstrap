@@ -109,7 +109,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 </div>
 
 <div class="bd-example">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLive">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Launch demo modal
   </button>
 </div>
