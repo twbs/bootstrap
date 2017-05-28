@@ -3,16 +3,12 @@ layout: docs
 title: Navs
 description: Documentation and examples for how to use Bootstrap's included navigation components.
 group: components
+toc: true
 ---
 
-Navigation available in Bootstrap share general markup and styles, from the base `.nav` class to the active and disabled states. Swap modifier classes to switch between each style.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
-
 ## Base nav
+
+Navigation available in Bootstrap share general markup and styles, from the base `.nav` class to the active and disabled states. Swap modifier classes to switch between each style.
 
 The base `.nav` component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
 
@@ -297,7 +293,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 </ul>
 {% endexample %}
 
-## JavaScript behavior for dynamic tabbed interfaces
+## JavaScript behavior
 
 Use the tab JavaScript plugin—include it individually or through the compiled `bootstrap.js` file—to extend our navigational tabs and pills to create tabbable panes of local content, even via dropdown menus.
 

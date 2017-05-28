@@ -7,8 +7,6 @@ group: components
 
 A lightweight, flexible component that can optionally extend the entire viewport to showcase key marketing messages on your site.
 
-## Example
-
 {% example html %}
 <div class="jumbotron">
   <h1 class="display-3">Hello, world!</h1>

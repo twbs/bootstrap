@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: Popovers
-description: Documentation and examples for adding Bootstrap popovers to your site.
+description: Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.
 group: components
+toc: true
 ---
-
-Add small overlay content, like those found in iOS, to any element for housing secondary information.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Overview
 

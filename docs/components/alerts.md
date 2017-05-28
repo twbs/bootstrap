@@ -3,14 +3,8 @@ layout: docs
 title: Alerts
 description: Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 group: components
+toc: true
 ---
-
-Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Examples
 

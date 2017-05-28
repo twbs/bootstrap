@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: Navbar
-description: Documentation and examples for Bootstrap's powerful, responsive navigation header.
+description: Documentation and examples for Bootstrap's powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.
 group: components
+toc: true
 ---
-
-The navbar is a wrapper that positions branding, navigation, and other elements in a concise header. It's easily extensible and, thanks to our Collapse plugin, can easily integrate responsive behaviors.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## How it works
 
@@ -76,7 +70,7 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 
 <!-- As a heading -->
 <nav class="navbar navbar-light bg-faded">
-  <h1 class="navbar-brand mb-0">Navbar</h1>
+  <span class="h1" class="navbar-brand mb-0">Navbar</span>
 </nav>
 {% endexample %}
 

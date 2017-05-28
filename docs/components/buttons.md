@@ -4,14 +4,8 @@ title: Buttons
 description: Use Bootstrap's custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.
 group: components
 redirect_from: "/components/"
+toc: true
 ---
-
-Use Bootstrap's custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Examples
 

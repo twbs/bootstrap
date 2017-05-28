@@ -3,14 +3,8 @@ layout: docs
 title: Collapse
 description: Toggle the visibility of content across your project with a few classes and our JavaScript plugins.
 group: components
+toc: true
 ---
-
-The Bootstrap collapse plugin allows you to toggle content on your pages with a few classes thanks to some helpful JavaScript.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Example
 

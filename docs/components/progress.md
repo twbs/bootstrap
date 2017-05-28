@@ -1,20 +1,14 @@
 ---
 layout: docs
 title: Progress
-description: Documentation and examples for using Bootstrap progress bars.
+description: Documentation and examples for using Bootstrap custom progress bars featuring support for stacked bars, animated backgrounds, and text labels.
 group: components
+toc: true
 ---
-
-Use our custom progress component for displaying simple or complex progress bars. We don't use [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress), ensuring you can stack progress bars, animate them, and place text labels over them.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## How it works
 
-Progress components are built with two HTML elements, some CSS to set the width, and a few attributes.
+Progress components are built with two HTML elements, some CSS to set the width, and a few attributes. We don't use [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress), ensuring you can stack progress bars, animate them, and place text labels over them.
 
 - We use the `.progress` as a wrapper to indicate the max value of the progress bar.
 - We use the inner `.progress-bar` to indicate the progress so far.
@@ -49,11 +43,7 @@ Bootstrap provides a handful of [utilities for setting width]({{ site.baseurl }}
 </div>
 {% endexample %}
 
-## Customizing
-
-Customize the appearance of your progress bars with custom CSS, background utilities, stripes, and more.
-
-### Labels
+## Labels
 
 Add labels to your progress bars by placing text within the `.progress-bar`.
 
@@ -63,7 +53,7 @@ Add labels to your progress bars by placing text within the `.progress-bar`.
 </div>
 {% endexample %}
 
-### Height
+## Height
 
 We only set a `height` value on the `.progress-bar`, so if you change that value the outer `.progress` will automatically resize accordingly.
 
@@ -76,7 +66,7 @@ We only set a `height` value on the `.progress-bar`, so if you change that value
 </div>
 {% endexample %}
 
-### Backgrounds
+## Backgrounds
 
 Use background utility classes to change the appearance of individual progress bars.
 
@@ -95,7 +85,7 @@ Use background utility classes to change the appearance of individual progress b
 </div>
 {% endexample %}
 
-### Multiple bars
+## Multiple bars
 
 Include multiple progress bars in a progress component if you need.
 
@@ -107,7 +97,7 @@ Include multiple progress bars in a progress component if you need.
 </div>
 {% endexample %}
 
-### Striped
+## Striped
 
 Add `.progress-bar-striped` to any `.progress-bar` to apply a stripe via CSS gradient over the progress bar's background color.
 
@@ -129,7 +119,7 @@ Add `.progress-bar-striped` to any `.progress-bar` to apply a stripe via CSS gra
 </div>
 {% endexample %}
 
-### Animated stripes
+## Animated stripes
 
 The striped gradient can also be animated. Add `.progress-bar-animated` to `.progress-bar` to animate the stripes right to left via CSS3 animations.
 

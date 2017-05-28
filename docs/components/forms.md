@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: Forms
-description: Examples and usage guidelines for form controls, form layouts, and custom forms.
+description: Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.
 group: components
+toc: true
 ---
-
-Bootstrap provides several form control styles, layout options, and custom components for creating a wide variety of forms.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Form controls
 

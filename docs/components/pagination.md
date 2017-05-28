@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: Pagination
-description: Documentation and examples for showing pagination links.
+description: Documentation and examples for showing pagination to indicate a series of related content exists across multiple pages.
 group: components
+toc: true
 ---
-
-Pagination links indicate a series of related content exists across multiple pages. Typically these are used where a multi-page approach to long lists of content improves general performance, such as in search results or inboxes.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Overview
 

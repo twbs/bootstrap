@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: Tooltips
-description: Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript.
+description: Documentation and examples for adding custom Bootstrap tooltips with CSS and JavaScript using CSS3 for animations and data-attributes for local title storage.
 group: components
+toc: true
 ---
-
-Inspired by the excellent Tipsy jQuery plugin written by Jason Frame. Tooltips are an updated version, which don't rely on images, use CSS3 for animations, and data-attributes for local title storage.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Overview
 

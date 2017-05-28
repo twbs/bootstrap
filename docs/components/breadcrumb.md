@@ -1,11 +1,11 @@
 ---
 layout: docs
 title: Breadcrumb
-description: Indicate the current page's location within a navigational hierarchy.
+description: Indicate the current page's location within a navigational hierarchy that automatically adds separators via CSS.
 group: components
 ---
 
-Indicate the current page's location within a navigational hierarchy. Separators are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content).
+Separators are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content).
 
 {% example html %}
 <ol class="breadcrumb">

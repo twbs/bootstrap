@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: Scrollspy
-description: Documentation and examples for the scrollspy plugin with Bootstrap's navigation components.
+description: Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
 group: components
+toc: true
 ---
-
-Automatically update Bootstrap navigation or list group components based on scroll position to indicate which link is currently active in the viewport.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## How it works
 

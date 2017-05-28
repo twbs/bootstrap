@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: Input group
-description: Extend form controls with the input group.
+description: Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs.
 group: components
+toc: true
 ---
-
-Easily extend form controls by adding text, buttons, or button groups on either side of textual `<input>`s.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Basic example
 

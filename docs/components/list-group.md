@@ -1,18 +1,13 @@
 ---
 layout: docs
 title: List group
-description: Learn about Bootstrap's list group component for rendering series of related content.
+description: List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.
 group: components
+toc: true
 ---
 
-List groups are a flexible and powerful component for displaying a series of content. List group items can be modified and extended to support just about any content within. They can also be used as navigation with the right modifier class.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
-
 ## Basic example
+
 The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed.
 
 {% example html %}

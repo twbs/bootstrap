@@ -3,18 +3,14 @@ layout: docs
 title: Dropdowns
 description: Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin.
 group: components
+toc: true
 ---
-
-Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision.](http://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/)
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Overview
 
-Things to know when using the popover plugin:
+Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision.](http://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/)
+
+Things to know when using the dropdown plugin:
 
 - Dropdown rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.9.9/umd/popper.min.js) before bootstrap.js in order for dropdowns to work!
 - Popper.js handle natively the flip of Dropdown when it's outside the viewport, if you want to disable that's behavior use `flip` attribute
