@@ -1,21 +1,15 @@
 ---
 layout: docs
 title: Reboot
-description: Documentation and examples for Reboot, Bootstrap's collection of element-specific CSS that heavily builds on Normalize.css.
+description: Reboot, a collection of element-specific CSS changes in a single file, kickstart Bootstrap to provide an elegant, consistent, and simple baseline to build upon.
 group: content
 redirect_from: "/content/"
+toc: true
 ---
 
-Part of Bootstrap's job is to provide an elegant, consistent, and simple baseline to build upon. We use Reboot, a collection of element-specific CSS changes in a single file, to kickstart that.
+## Approach
 
 Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
-
-## Approach
 
 Here are our guidelines and reasons for choosing what to override in Reboot:
 

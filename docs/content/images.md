@@ -1,16 +1,10 @@
 ---
 layout: docs
 title: Images
-description: Documentation and examples for styling images with Bootstrap.
+description: Documentation and examples for opting images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them—all via classes.
 group: content
+toc: true
 ---
-
-Opt your images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them—all via classes.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Responsive images
 

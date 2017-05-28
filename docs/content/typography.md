@@ -1,20 +1,14 @@
 ---
 layout: docs
 title: Typography
-description: Documentation and examples for Bootstrap typography, including global settings, body text, lists, and more.
+description: Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.
 group: content
+toc: true
 ---
-
-Bootstrap includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/utilities/typography/).
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Global settings
 
-Bootstrap sets basic global display, typography, and link styles. Specifically, we:
+Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the [textual utility classes]({{ site.baseurl }}/utilities/typography/).
 
 - Use a [native font stack]({{ site.baseurl }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
 - For a more inclusive and accessible type scale, we assume the browser default root `font-size` (typically 16px) so visitors can customize their browser defaults as needed.

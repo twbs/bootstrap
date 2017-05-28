@@ -3,14 +3,8 @@ layout: docs
 title: Code
 description: Documentation and examples for displaying inline and multiline blocks of code with Bootstrap.
 group: content
+toc: true
 ---
-
-Styles for inline code snippets and longer, multiline blocks of code.
-
-## Contents
-
-* Will be replaced with the ToC, excluding the "Contents" header
-{:toc}
 
 ## Inline code
 
