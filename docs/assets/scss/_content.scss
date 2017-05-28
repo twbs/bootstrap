@@ -6,6 +6,7 @@
 
 .bd-content {
   @include media-breakpoint-up(xl) {
+    max-width: calc(100% - 320px);
     padding-right: 20%;
 
     #contents {
@@ -21,6 +22,12 @@
       padding-left: 3rem;
       overflow-y: auto;
       font-size: .85rem;
+    }
+  }
+
+  @media (min-width: 2000px) {
+    #markdown-toc {
+      padding-left: 6rem;
     }
   }
 

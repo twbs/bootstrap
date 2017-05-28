@@ -12,6 +12,7 @@
   @include media-breakpoint-up(md) {
     position: sticky;
     top: 4rem;
+    max-width: 320px;
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
   }
