@@ -5,32 +5,6 @@
 //
 
 .bd-content {
-  @include media-breakpoint-up(xl) {
-    flex: 1;
-    padding-right: 20%;
-
-    #contents {
-      display: none;
-    }
-    #markdown-toc {
-      position: fixed;
-      top: 5rem;
-      right: 0;
-      width: 20%;
-      max-height: calc(100vh - 8rem);
-      padding-right: 1.5rem;
-      padding-left: 3rem;
-      overflow-y: auto;
-      font-size: .85rem;
-    }
-  }
-
-  @media (min-width: 2000px) {
-    #markdown-toc {
-      padding-left: 6rem;
-    }
-  }
-
   // Hack the sticky header
   h2[id],
   h3[id] {
@@ -124,23 +98,5 @@
     margin-bottom: 1rem;
     font-size: 1.5rem;
     font-weight: 300;
-  }
-}
-
-
-//
-// Markdown generated ToC
-//
-
-#markdown-toc {
-  // Hide the first child li because it's always going to be "Contents".
-  > li:first-child {
-    display: none;
-  }
-
-  ul {
-    padding-left: 2rem;
-    margin-top: .25rem;
-    margin-bottom: .25rem;
   }
 }

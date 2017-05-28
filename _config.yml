@@ -21,6 +21,7 @@ exclude:          [assets/scss/]
 gems:
   - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-toc
 
 # Social
 title: Bootstrap

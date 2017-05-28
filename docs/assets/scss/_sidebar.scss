@@ -4,6 +4,40 @@
 // Side navigation
 //
 
+.bd-toc {
+  position: sticky;
+  top: 4rem;
+  max-height: calc(100vh - 4rem);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  overflow-y: auto;
+  font-size: .85rem;
+}
+
+.section-nav {
+  padding-left: 0;
+  border-left: 1px solid #eee;
+
+  ul {
+    padding-left: 1rem;
+  }
+}
+
+.toc-entry {
+  display: block;
+
+  a {
+    display: block;
+    padding: .25rem 1.5rem;
+    color: #99979c;
+
+    &:hover {
+      color: $brand-primary;
+      text-decoration: none;
+    }
+  }
+}
+
 .bd-sidebar {
   background-color: #f5f5f5;
   border-right: 1px solid rgba(0,0,0,.1);
@@ -93,6 +127,7 @@
 
     > .bd-sidenav {
       display: block;
+      padding-bottom: .75rem;
     }
   }
 }
