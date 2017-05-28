@@ -64,38 +64,10 @@
 }
 
 .bd-search {
-  position: relative;
+  position: relative; // To contain the Algolia search
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-
-.bd-search-results {
-  right: 0;
-  display: block;
-  padding: 0;
-  overflow: hidden;
-  font-size: .85rem;
-
-  &:empty {
-    display: none;
-  }
-
-  .dropdown-item {
-    padding-right: .75rem;
-    padding-left: .75rem;
-
-    &:first-child { margin-top: .25rem; }
-    &:last-child { margin-bottom: .25rem; }
-  }
-
-  .no-results {
-    padding: .75rem 1rem;
-    color: #7a7a7a;
-    text-align: center;
-    white-space: normal; // Undo .dropdown-item defaults
-  }
-}
-
 
 .bd-sidenav {
   display: none;
