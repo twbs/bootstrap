@@ -10,7 +10,7 @@
   position: sticky;
   top: 0;
   z-index: 1030; // over everything in bootstrap
-  height: 4rem;
+  min-height: 4rem;
     // max-height: calc(100vh - 4rem);
     // overflow-y: auto;
   // }
@@ -53,5 +53,10 @@
 
   .navbar-brand {
     color: $bd-purple;
+  }
+
+  .bd-navbar-brand-wrap {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
   }
 }
