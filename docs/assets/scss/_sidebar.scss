@@ -5,7 +5,6 @@
 //
 
 .bd-sidebar {
-  padding-top: 1rem;
   background-color: #f5f5f5;
   border-right: 1px solid rgba(0,0,0,.1);
 
@@ -21,33 +20,12 @@
 .bd-links {
   margin-right: -15px;
   margin-left: -15px;
-  // padding-top: .25rem;
-  // padding-bottom: .25rem;
-  // border: 1px solid $gray-lighter;
-  // border-radius: .25rem;
-
-  @include media-breakpoint-up(md) {
-    // margin-right: 1.5rem;
-  }
 }
 
 .bd-search {
   position: relative;
-
-  .form-control {
-    // height: 2.45rem;
-    // padding-top: .4rem;
-    // padding-bottom: .4rem;
-    background-color: #fafafa;
-
-    &:focus {
-      background-color: #fff;
-    }
-  }
-
-  @include media-breakpoint-up(md) {
-    // padding-right: 1rem;
-  }
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .bd-search-results {
@@ -84,27 +62,35 @@
 
 .bd-toc-link {
   display: block;
-  // padding-top: .25rem;
-  // padding-bottom: .25rem;
   padding: .75rem 1.5rem;
+  font-weight: 500;
   color: $gray;
 }
-.bd-toc-link:hover,
-.bd-toc-link:focus {
+
+.bd-toc-link:hover {
   color: $brand-primary;
   text-decoration: none;
-}
-.active > .bd-toc-link {
-  font-weight: 500;
-  color: $gray-dark;
-}
-.active > .bd-sidenav {
-  display: block;
+  background-color: #fafafa;
 }
 
 .bd-toc-item {
+  &:first-child {
+    border-top: 1px solid $gray-lighter;
+  }
   &:not(:last-child) {
     border-bottom: 1px solid $gray-lighter;
+  }
+
+  &.active {
+    background-color: #fafafa;
+
+    > .bd-toc-link {
+      color: $gray-dark;
+    }
+
+    > .bd-sidenav {
+      display: block;
+    }
   }
 }
 
@@ -112,31 +98,23 @@
   padding-top: .25rem;
   padding-bottom: 1rem;
 }
-.bd-toc-item:first-child {
-  // margin-top: 0;
-}
-.bd-toc-item:last-child {
-  // margin-bottom: 2rem;
-}
 
 // All levels of nav
 .bd-sidebar .nav > li > a {
   display: block;
-  // padding-top: .25rem;
-  // padding-bottom: .25rem;
   padding: .25rem 1.5rem;
   font-size: 90%;
   color: #99979c;
 }
-.bd-sidebar .nav > li > a:hover,
-.bd-sidebar .nav > li > a:focus {
+
+.bd-sidebar .nav > li > a:hover {
   color: $brand-primary;
   text-decoration: none;
   background-color: transparent;
 }
+
 .bd-sidebar .nav > .active > a,
-.bd-sidebar .nav > .active:hover > a,
-.bd-sidebar .nav > .active:focus > a {
+.bd-sidebar .nav > .active:hover > a {
   font-weight: 500;
   color: $gray-dark;
   background-color: transparent;
