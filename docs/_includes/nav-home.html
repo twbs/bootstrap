@@ -29,6 +29,20 @@
     </ul>
 
     <ul class="navbar-nav flex-row ml-md-auto my-3 my-md-0">
+      {% comment %}
+      <li class="nav-item dropdown">
+        <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          v{{ site.current_version }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+          <a class="dropdown-item" href="{{ site.baseurl }}/v4">Bootstrap 4</a>
+          <a class="dropdown-item" href="{{ site.baseurl }}/3.3.7/">Bootstrap v3.3.7</a>
+          <a class="dropdown-item" href="{{ site.baseurl }}/2.3.2/">Bootstrap v2.3.2</a>
+          <a class="dropdown-item" href="{{ site.baseurl }}/releases/">All versions...</a>
+        </div>
+      </li>
+      {% endcomment %}
+
       <li class="nav-item">
         <a class="nav-link p-2" href="{{ site.repo }}">
           {% include icons/github.svg %}
