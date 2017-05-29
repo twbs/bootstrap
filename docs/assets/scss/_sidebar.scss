@@ -43,7 +43,7 @@
 }
 
 .bd-sidebar {
-  background-color: #f5f5f5;
+  background-color: #f5f2f9;
   border-bottom: 1px solid rgba(0,0,0,.1);
 
   @include media-breakpoint-up(md) {
@@ -89,27 +89,28 @@
   padding: .75rem 1.5rem;
   font-weight: 500;
   color: $gray;
-}
 
-.bd-toc-link:hover {
-  color: $brand-primary;
-  text-decoration: none;
-  background-color: #fafafa;
+  &:hover {
+    color: $brand-primary;
+    text-decoration: none;
+    background-color: rgba(0,0,0,.01);
+  }
 }
 
 .bd-toc-item {
+  border-bottom: 1px solid rgba(0,0,0,.05);
+
   &:first-child {
-    border-top: 1px solid $gray-lighter;
-  }
-  &:not(:last-child) {
-    border-bottom: 1px solid $gray-lighter;
+    border-top: 1px solid rgba(0,0,0,.05);
   }
 
   &.active {
-    background-color: #fafafa;
-
     > .bd-toc-link {
       color: $gray-dark;
+
+      &:hover {
+        background-color: transparent;
+      }
     }
 
     > .bd-sidenav {
@@ -124,7 +125,7 @@
   display: block;
   padding: .25rem 1.5rem;
   font-size: 90%;
-  color: #99979c;
+  color: rgba(0,0,0,.65);
 }
 
 .bd-sidebar .nav > li > a:hover {
