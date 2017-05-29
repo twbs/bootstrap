@@ -111,7 +111,7 @@ Contextual classes also work with `.list-group-item-action`. Note the addition o
 
 ## With badges
 
-Add badges to any list group item to show unread counts, activity, and more with the help of some [utilities]({{ site.baseurl }}/utilities/flexbox/).
+Add badges to any list group item to show unread counts, activity, and more with the help of some [utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flexbox/).
 
 {% example html %}
 <ul class="list-group">
@@ -132,7 +132,7 @@ Add badges to any list group item to show unread counts, activity, and more with
 
 ## Custom content
 
-Add nearly any HTML within, even for linked list groups like the one below, with the help of [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/).
+Add nearly any HTML within, even for linked list groups like the one below, with the help of [flexbox utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flexbox/).
 
 {% example html %}
 <div class="list-group">

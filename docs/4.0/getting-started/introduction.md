@@ -16,7 +16,7 @@ toc: true
 
 ## Quick start
 
-Looking to quickly add Bootstrap to your project? Use the Bootstrap CDN, provided for free by the folks at MaxCDN. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/getting-started/download/)
+Looking to quickly add Bootstrap to your project? Use the Bootstrap CDN, provided for free by the folks at MaxCDN. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/)
 
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
 
@@ -60,7 +60,7 @@ Be sure to have your pages set up with the latest design and development standar
 </html>
 {% endhighlight %}
 
-That's all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/overview/) or [our official examples]({{ site.baseurl }}/examples/) to start laying out your site's content and components.
+That's all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/docs/{{ site.docs_version }}/layout/overview/) or [our official examples]({{ site.baseurl }}/docs/{{ site.docs_version }}/examples/) to start laying out your site's content and components.
 
 ## Important globals
 
@@ -105,7 +105,7 @@ Learn more about [box model and sizing at CSS Tricks](https://css-tricks.com/box
 
 ### Reboot
 
-For improved cross-browser rendering, we use [Reboot]({{ site.baseurl }}/content/reboot/) to correct inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
+For improved cross-browser rendering, we use [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/) to correct inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
 
 ## Community
 
