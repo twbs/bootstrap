@@ -15,7 +15,7 @@ port:             9001
 baseurl:          ""
 url:              https://getbootstrap.com
 encoding:         UTF-8
-exclude:          [.git, .github, assets/scss/, build, js, node_modules, nuget, scss]
+exclude:          [.git, .github, assets/scss/, build, js, node_modules, nuget, scss, vendor]
 
 gems:
   - jekyll-redirect-from
