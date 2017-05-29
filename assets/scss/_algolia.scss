@@ -10,6 +10,7 @@
     width: 100%;
     min-width: 0 !important;
     max-width: none !important;
+    padding: 8px 0 !important;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.1);
@@ -21,13 +22,24 @@
     }
 
     [class^=ds-dataset-] {
+      padding: 0 !important;
+      overflow: visible !important;
       background-color: transparent !important;
       border: 0 !important;
     }
+
+    .ds-suggestions {
+      margin-top: 0 !important;
+    }
+  }
+
+  .algolia-docsearch-suggestion {
+    padding: 0 !important;
+    overflow: visible !important;
   }
 
   .algolia-docsearch-suggestion--category-header {
-    padding: .125rem 0 !important;
+    padding: .125rem 15px !important;
     margin-top: 0 !important;
     font-size: .75rem !important;
     font-weight: 500 !important;
@@ -71,6 +83,8 @@
   }
 
   .algolia-docsearch-suggestion--title {
+    display: block;
+    padding: 0 15px !important;
     font-size: .875rem !important;
     font-weight: 400 !important;
   }
