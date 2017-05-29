@@ -61,7 +61,7 @@ const Tooltip = (($) => {
   const Default = {
     animation           : true,
     template            : '<div class="tooltip" role="tooltip">'
-                        + '<div class="arrow" x-arrow></div>'
+                        + '<div class="arrow"></div>'
                         + '<div class="tooltip-inner"></div></div>',
     trigger             : 'hover focus',
     title               : '',
@@ -99,7 +99,8 @@ const Tooltip = (($) => {
 
   const Selector = {
     TOOLTIP       : '.tooltip',
-    TOOLTIP_INNER : '.tooltip-inner'
+    TOOLTIP_INNER : '.tooltip-inner',
+    ARROW         : '.arrow'
   }
 
   const Trigger = {
@@ -288,16 +289,19 @@ const Tooltip = (($) => {
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
         this._popper = new Popper(this.element, tip, {
-          placement : attachment,
-          modifiers : {
-            offset : {
-              offset : this.config.offset
+          placement: attachment,
+          modifiers: {
+            offset: {
+              offset: this.config.offset
             },
-            flip : {
-              behavior : this.config.fallbackPlacement
+            flip: {
+              behavior: this.config.fallbackPlacement
+            },
+            arrow: {
+              element: Selector.ARROW
             }
           },
-          onCreate : (data) => {
+          onCreate: (data) => {
             if (data.originalPlacement !== data.placement) {
               this._handlePopperPlacementChange(data)
             }
