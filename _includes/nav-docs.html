@@ -18,7 +18,7 @@
   {% endif %}
 
   <div class="bd-toc-item {{ active }}">
-      <a class="bd-toc-link" href="{{ site.baseurl }}/{{ group_slug }}/{{ link_slug }}{% if link_slug %}/{% endif %}">
+      <a class="bd-toc-link" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/{{ group_slug }}/{{ link_slug }}{% if link_slug %}/{% endif %}">
         {{ group.title }}
       </a>
 
@@ -32,7 +32,7 @@
           {% endif %}
 
           <li class="{{ active }}">
-            <a href="{{ site.baseurl }}/{{ group_slug }}/{{ doc_slug }}/">
+            <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/{{ group_slug }}/{{ doc_slug }}/">
               {{ doc.title }}
             </a>
 
