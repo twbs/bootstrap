@@ -42,15 +42,13 @@
     apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
     indexName: 'bootstrap-v4',
     inputSelector: '#search-input',
-    debug: true // Set debug to true if you want to inspect the dropdown
-  });
-
-  docsearch.autocomplete.on('autocomplete:selected', function(event, suggestion) {
-      location.href = suggestion.url.replace("https://v4-alpha.getbootstrap.com", "");
-  }).on('keypress', function(event) {
-      if (event.keyCode === 13) {
-          location.href = suggestion.url.replace("https://v4-alpha.getbootstrap.com", "")
-      }
+    transformData: function (hits) {
+      return hits.map(function (hit) {
+        hit.url = hit.url.replace('https://v4-alpha.getbootstrap.com', '');
+        return hit;
+      });
+    },
+    debug: false // Set debug to true if you want to inspect the dropdown
   });
 </script>
 {% endif %}
