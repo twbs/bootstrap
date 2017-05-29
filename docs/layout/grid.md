@@ -144,7 +144,7 @@ For example, here are two grid layouts that apply to every device and viewport, 
       1 of 2
     </div>
     <div class="col">
-      1 of 2
+      2 of 2
     </div>
   </div>
   <div class="row">
@@ -152,10 +152,10 @@ For example, here are two grid layouts that apply to every device and viewport, 
       1 of 3
     </div>
     <div class="col">
-      1 of 3
+      2 of 3
     </div>
     <div class="col">
-      1 of 3
+      3 of 3
     </div>
   </div>
 </div>

@@ -97,6 +97,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
   - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
 - Added custom forms support (for checkboxes, radios, selects, and file inputs).
+- Renamed `.has-error` to `.has-danger`.
 
 ### Buttons
 
@@ -195,14 +196,6 @@ Dropped entirely for the new card component.
 - `.panel-info` to `.card-info` and `.card-inverse` (or use `.bg-info` on `.card-header`)
 - `.panel-warning` to `.card-warning` and `.card-inverse` (or use `.bg-warning` on `.card-header`)
 - `.panel-danger` to `.card-danger` and `.card-inverse` (or use `.bg-danger` on `.card-header`)
-
-### Tooltips
-
-- Removed support for `auto` placement options.
-
-### Popovers
-
-- Removed support for `auto` placement options.
 
 ### Carousel
 
