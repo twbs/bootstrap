@@ -9,7 +9,8 @@ kramdown:
 permalink:        pretty
 
 # Server
-destination:      _gh_pages
+source:           .
+destination:      ./_gh_pages
 port:             9001
 baseurl:          ""
 url:              https://getbootstrap.com
