@@ -92,12 +92,33 @@
     width: 100%;
     min-width: 0 !important;
     max-width: none !important;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.1);
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
 
     // Caret
     &::before {
-      left: 1rem !important;
+      display: none !important;
     }
+
+    [class^=ds-dataset-] {
+      background-color: transparent !important;
+      border: 0 !important;
+    }
+  }
+
+  .algolia-docsearch-suggestion--category-header {
+    padding: .125rem 0 !important;
+    margin-top: 0 !important;
+    font-size: .75rem !important;
+    font-weight: 500 !important;
+    color: #767676 !important;
+    border-bottom: 0 !important;
+  }
+
+  .algolia-docsearch-suggestion--wrapper {
+    padding-top: 0 !important;
   }
 
   // Section header
@@ -120,9 +141,20 @@
   }
 
   .ds-suggestion {
+    &:not(:first-child) {
+      .algolia-docsearch-suggestion--category-header {
+        margin-top: .5rem !important;
+      }
+    }
+
     .algolia-docsearch-suggestion--subcategory-column {
       display: none !important;
     }
+  }
+
+  .algolia-docsearch-suggestion--title {
+    font-size: .875rem !important;
+    font-weight: 400 !important;
   }
 
   .algolia-docsearch-footer {
