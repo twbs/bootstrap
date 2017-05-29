@@ -1,10 +1,10 @@
 ---
 layout: docs
 title: Migrating to v4
+description: Bootstrap 4 is a major rewrite of the entire project. The most notable changes are summarized below, followed by more specific changes to relevant components.
 group: migration
+toc: true
 ---
-
-Bootstrap 4 is a major rewrite of the entire project. The most notable changes are summarized below, followed by more specific changes to relevant components.
 
 {% callout info %}
 **Heads up!** This will be in flux as work on the v4 alphas progresses. Until then consider it incomplete, and we'd love pull requests to help keep it up to date.
