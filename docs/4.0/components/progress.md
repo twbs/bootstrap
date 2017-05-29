@@ -35,7 +35,7 @@ Put that all together, and you have the following examples.
 </div>
 {% endexample %}
 
-Bootstrap provides a handful of [utilities for setting width]({{ site.baseurl }}/utilities/sizing/). Depending on your needs, these may help with quickly configuring progress.
+Bootstrap provides a handful of [utilities for setting width]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/sizing/). Depending on your needs, these may help with quickly configuring progress.
 
 {% example html %}
 <div class="progress">
