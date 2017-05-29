@@ -73,6 +73,11 @@
   position: relative; // To contain the Algolia search
   padding-top: 1rem;
   padding-bottom: 1rem;
+
+  .form-control:focus {
+    border-color: $bd-purple-bright;
+    box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+  }
 }
 
 .bd-search-docs-toggle {
