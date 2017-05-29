@@ -43,6 +43,7 @@ download:
 blog:             https://blog.getbootstrap.com
 expo:             https://expo.getbootstrap.com
 themes:           https://themes.getbootstrap.com
+jobs:             https://jobs.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
