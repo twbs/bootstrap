@@ -9,14 +9,13 @@ kramdown:
 permalink:        pretty
 
 # Server
-source:           docs
 destination:      _gh_pages
 host:             0.0.0.0
 port:             9001
 baseurl:          ""
-url:              https://v4-alpha.getbootstrap.com
+url:              https://getbootstrap.com
 encoding:         UTF-8
-exclude:          [assets/scss/]
+exclude:          [.git, .github, assets/scss/, build, js, node_modules, nuget, scss]
 
 gems:
   - jekyll-redirect-from
@@ -33,6 +32,7 @@ social_image_path: /assets/brand/bootstrap-social.png
 
 # Custom vars
 current_version:  4.0.0-alpha.6
+docs_version:     4.0
 repo:             https://github.com/twbs/bootstrap
 slack:            https://bootstrap-slack.herokuapp.com
 
