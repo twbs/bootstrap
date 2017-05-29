@@ -5,17 +5,39 @@
 //
 
 .bd-navbar {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 1030; // over everything in bootstrap
   min-height: 4rem;
   background-color: $bd-purple;
   border-bottom: 1px solid rgba(0,0,0,.1);
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.05);
 
+  @include media-breakpoint-down(md) {
+    .navbar-nav-scroll {
+      max-width: 100%;
+      height: 2.5rem;
+      margin-top: .25rem;
+      overflow-x: hidden;
+      font-size: .85rem;
+
+      .navbar-nav {
+        padding-bottom: 2rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1030; // over everything in bootstrap
+  }
+
   .navbar-nav {
     .nav-link {
+      padding-right: .5rem;
+      padding-left: .5rem;
       color: $bd-purple-light;
 
       &.active,

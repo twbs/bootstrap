@@ -61,6 +61,11 @@
 .bd-links {
   margin-right: -15px;
   margin-left: -15px;
+
+  // Override collapse behaviors
+  @include media-breakpoint-up(md) {
+    display: block !important;
+  }
 }
 
 .bd-search {
@@ -69,10 +74,18 @@
   padding-bottom: 1rem;
 }
 
+.bd-search-docs-toggle {
+  line-height: 1;
+  color: $gray-dark;
+}
+
 // Docsearch overrides
 //
 // `!important` indicates overridden properties.
 .algolia-autocomplete {
+  display: block !important;
+  flex: 1;
+
   // Menu container
   .ds-dropdown-menu {
     width: 100%;
@@ -113,6 +126,12 @@
 
   .algolia-docsearch-footer {
     display: none !important;
+  }
+
+  .algolia-docsearch-suggestion--text {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    font-weight: normal;
   }
 
   .algolia-docsearch-suggestion--highlight {
