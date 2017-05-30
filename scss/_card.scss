@@ -20,6 +20,7 @@
 
 .card-title {
   margin-bottom: $card-spacer-y;
+  word-break: break-all;
 }
 
 .card-subtitle {
@@ -124,7 +125,7 @@
   @include card-outline-variant($btn-primary-bg);
 }
 .card-outline-secondary {
-  @include card-outline-variant($btn-secondary-border);
+  @include card-outline-variant($btn-secondary-border-color);
 }
 .card-outline-info {
   @include card-outline-variant($btn-info-bg);
@@ -158,10 +159,6 @@
 }
 
 // Card image
-.card-img {
-  // margin: -1.325rem;
-  @include border-radius($card-border-radius-inner);
-}
 .card-img-overlay {
   position: absolute;
   top: 0;
@@ -171,13 +168,19 @@
   padding: $card-img-overlay-padding;
 }
 
-
+.card-img {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-radius($card-border-radius-inner);
+}
 
 // Card image caps
 .card-img-top {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-top-radius($card-border-radius-inner);
 }
+
 .card-img-bottom {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-bottom-radius($card-border-radius-inner);
 }
 
@@ -188,17 +191,15 @@
   .card-deck {
     display: flex;
     flex-flow: row wrap;
+    margin-right: -$card-deck-margin;
+    margin-left: -$card-deck-margin;
 
     .card {
       display: flex;
       flex: 1 0 0;
       flex-direction: column;
-
-      // Selectively apply horizontal margins to cards to avoid doing the
-      // negative margin dance like our grid. This differs from the grid
-      // due to the use of margins as gutters instead of padding.
-      &:not(:first-child) { margin-left: $card-deck-margin; }
-      &:not(:last-child) { margin-right: $card-deck-margin; }
+      margin-right: $card-deck-margin;
+      margin-left: $card-deck-margin;
     }
   }
 }
@@ -262,15 +263,18 @@
 // Columns
 //
 
-@include media-breakpoint-up(sm) {
-  .card-columns {
+.card-columns {
+  .card {
+    margin-bottom: $card-columns-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
     column-count: $card-columns-count;
     column-gap: $card-columns-gap;
 
     .card {
       display: inline-block; // Don't let them vertically span multiple columns
       width: 100%; // Don't let their width change
-      margin-bottom: $card-columns-margin;
     }
   }
 }

@@ -1,0 +1,151 @@
+// scss-lint:disable VendorPrefix
+
+//
+// Side navigation
+//
+
+.bd-toc {
+  @supports (position: sticky) {
+    position: sticky;
+    top: 4rem;
+    max-height: calc(100vh - 4rem);
+  }
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  overflow-y: auto;
+  font-size: .875rem;
+}
+
+.section-nav {
+  padding-left: 0;
+  border-left: 1px solid #eee;
+
+  ul {
+    padding-left: 1rem;
+
+    ul {
+      display: none;
+    }
+  }
+}
+
+.toc-entry {
+  display: block;
+
+  a {
+    display: block;
+    padding: .25rem 1.5rem;
+    color: #99979c;
+
+    &:hover {
+      color: $brand-primary;
+      text-decoration: none;
+    }
+  }
+}
+
+.bd-sidebar {
+  background-color: #f5f2f9;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+
+  @include media-breakpoint-up(md) {
+    @supports (position: sticky) {
+      position: sticky;
+      top: 4rem;
+      max-height: calc(100vh - 4rem);
+    }
+    overflow-y: auto;
+    border-right: 1px solid rgba(0,0,0,.1);
+  }
+
+  @include media-breakpoint-up(xl) {
+    max-width: 320px;
+  }
+}
+
+.bd-links {
+  margin-right: -15px;
+  margin-left: -15px;
+
+  // Override collapse behaviors
+  @include media-breakpoint-up(md) {
+    display: block !important;
+  }
+}
+
+.bd-search {
+  position: relative; // To contain the Algolia search
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  .form-control:focus {
+    border-color: $bd-purple-bright;
+    box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+  }
+}
+
+.bd-search-docs-toggle {
+  line-height: 1;
+  color: $gray-dark;
+}
+
+.bd-sidenav {
+  display: none;
+}
+
+.bd-toc-link {
+  display: block;
+  padding: .75rem 1.5rem;
+  font-weight: 500;
+  color: $gray;
+
+  &:hover {
+    color: $brand-primary;
+    text-decoration: none;
+    background-color: rgba(0,0,0,.01);
+  }
+}
+
+.bd-toc-item {
+  border-bottom: 1px solid rgba(0,0,0,.05);
+
+  &:first-child {
+    border-top: 1px solid rgba(0,0,0,.05);
+  }
+
+  &.active {
+    > .bd-toc-link {
+      color: $gray-dark;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    > .bd-sidenav {
+      display: block;
+      padding-bottom: .75rem;
+    }
+  }
+}
+
+// All levels of nav
+.bd-sidebar .nav > li > a {
+  display: block;
+  padding: .25rem 1.5rem;
+  font-size: 90%;
+  color: rgba(0,0,0,.65);
+}
+
+.bd-sidebar .nav > li > a:hover {
+  color: $brand-primary;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.bd-sidebar .nav > .active > a,
+.bd-sidebar .nav > .active:hover > a {
+  font-weight: 500;
+  color: $gray-dark;
+  background-color: transparent;
+}

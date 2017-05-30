@@ -6,6 +6,7 @@
   width: 100%;
   max-width: 100%;
   margin-bottom: $spacer;
+  background-color: $table-bg; // Reset for nesting within parents with `background-color`.
 
   th,
   td {
@@ -124,14 +125,27 @@
   th,
   td,
   thead th {
-    border-color: $body-bg;
+    border-color: $table-inverse-border-color;
   }
 
   &.table-bordered {
     border: 0;
   }
-}
 
+  &.table-striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: $table-inverse-bg-accent;
+    }
+  }
+
+  &.table-hover {
+    tbody tr {
+      @include hover {
+        background-color: $table-inverse-bg-hover;
+      }
+    }
+  }
+}
 
 
 // Responsive tables
@@ -141,13 +155,15 @@
 // will display normally.
 
 .table-responsive {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+  @include media-breakpoint-down(md) {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
 
-  // Prevent double border on horizontal scroll due to use of `display: block;`
-  &.table-bordered {
-    border: 0;
+    // Prevent double border on horizontal scroll due to use of `display: block;`
+    &.table-bordered {
+      border: 0;
+    }
   }
 }

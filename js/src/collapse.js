@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.5): collapse.js
+ * Bootstrap (v4.0.0-alpha.6): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +18,7 @@ const Collapse = (($) => {
    */
 
   const NAME                = 'collapse'
-  const VERSION             = '4.0.0-alpha.5'
+  const VERSION             = '4.0.0-alpha.6'
   const DATA_KEY            = 'bs.collapse'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -56,7 +56,7 @@ const Collapse = (($) => {
   }
 
   const Selector = {
-    ACTIVES     : '.card > .show, .card > .collapsing',
+    ACTIVES     : '.show, .collapsing',
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
@@ -112,11 +112,8 @@ const Collapse = (($) => {
     }
 
     show() {
-      if (this._isTransitioning) {
-        throw new Error('Collapse is transitioning')
-      }
-
-      if ($(this._element).hasClass(ClassName.SHOW)) {
+      if (this._isTransitioning ||
+        $(this._element).hasClass(ClassName.SHOW)) {
         return
       }
 
@@ -124,7 +121,7 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray($(this._parent).find(Selector.ACTIVES))
+        actives = $.makeArray($(this._parent).children().children(Selector.ACTIVES))
         if (!actives.length) {
           actives = null
         }
@@ -157,7 +154,6 @@ const Collapse = (($) => {
         .addClass(ClassName.COLLAPSING)
 
       this._element.style[dimension] = 0
-      this._element.setAttribute('aria-expanded', true)
 
       if (this._triggerArray.length) {
         $(this._triggerArray)
@@ -196,11 +192,8 @@ const Collapse = (($) => {
     }
 
     hide() {
-      if (this._isTransitioning) {
-        throw new Error('Collapse is transitioning')
-      }
-
-      if (!$(this._element).hasClass(ClassName.SHOW)) {
+      if (this._isTransitioning ||
+        !$(this._element).hasClass(ClassName.SHOW)) {
         return
       }
 
@@ -211,10 +204,8 @@ const Collapse = (($) => {
       }
 
       const dimension       = this._getDimension()
-      const offsetDimension = dimension === Dimension.WIDTH ?
-        'offsetWidth' : 'offsetHeight'
 
-      this._element.style[dimension] = `${this._element[offsetDimension]}px`
+      this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`
 
       Util.reflow(this._element)
 
@@ -222,8 +213,6 @@ const Collapse = (($) => {
         .addClass(ClassName.COLLAPSING)
         .removeClass(ClassName.COLLAPSE)
         .removeClass(ClassName.SHOW)
-
-      this._element.setAttribute('aria-expanded', false)
 
       if (this._triggerArray.length) {
         $(this._triggerArray)
@@ -300,7 +289,6 @@ const Collapse = (($) => {
     _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
         const isOpen = $(element).hasClass(ClassName.SHOW)
-        element.setAttribute('aria-expanded', isOpen)
 
         if (triggerArray.length) {
           $(triggerArray)
@@ -357,7 +345,9 @@ const Collapse = (($) => {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    event.preventDefault()
+    if (!/input|textarea/i.test(event.target.tagName)) {
+      event.preventDefault()
+    }
 
     const target = Collapse._getTargetFromElement(this)
     const data   = $(target).data(DATA_KEY)

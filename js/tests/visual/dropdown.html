@@ -10,13 +10,13 @@
     <div class="container">
       <h1>Dropdown <small>Bootstrap Visual Test</small></h1>
 
-      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <nav class="navbar navbar-expand-md navbar-light bg-faded">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <a class="navbar-brand" href="#">Navbar</a>
           <ul class="navbar-nav">
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -58,9 +58,67 @@
           </div>
         </li>
       </ul>
-    </div>
+
+      <div class="row">
+        <div class="col-sm-12 mt-4">
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-secondary">Dropup split</button>
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Dropup split</span>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropup</button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              This dropdown's menu is right-aligned
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 mt-4">
+          <div class="btn-group dropup" role="group">
+            <a href="#" class="btn btn-secondary">Dropup split align right</a>
+            <button type="button" id="dropdown-page-subheader-button-3" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Product actions</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here with a long text</button>
+            </div>
+          </div>
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropup align right</button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here with a long text</button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
 
     <script src="../../../docs/assets/js/vendor/jquery-slim.min.js"></script>
+    <script src="../../../docs/assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/util.js"></script>
     <script src="../../dist/dropdown.js"></script>
     <script src="../../dist/collapse.js"></script>

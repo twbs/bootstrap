@@ -47,13 +47,18 @@ $(function () {
 
   QUnit.test('should render popover element', function (assert) {
     assert.expect(2)
-    var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
+    var done = assert.async()
+    $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
       .appendTo('#qunit-fixture')
+      .on('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        $(this).bootstrapPopover('hide')
+      })
+      .on('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover removed')
+        done()
+      })
       .bootstrapPopover('show')
-
-    assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    $popover.bootstrapPopover('hide')
-    assert.strictEqual($('.popover').length, 0, 'popover removed')
   })
 
   QUnit.test('should store popover instance in popover data object', function (assert) {
@@ -363,5 +368,23 @@ $(function () {
         $('#popover-test').bootstrapPopover('show')
       })
       .modal('show')
+  })
+
+  QUnit.test('should convert number to string without error for content and title', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $popover = $('<a href="#">@mdo</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: 5,
+        content: 7
+      })
+      .on('shown.bs.popover', function () {
+        assert.strictEqual($('.popover .popover-title').text(), '5')
+        assert.strictEqual($('.popover .popover-content').text(), '7')
+        done()
+      })
+
+    $popover.bootstrapPopover('show')
   })
 })

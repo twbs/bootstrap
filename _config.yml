@@ -9,18 +9,18 @@ kramdown:
 permalink:        pretty
 
 # Server
-source:           docs
-destination:      _gh_pages
-host:             0.0.0.0
+source:           .
+destination:      ./_gh_pages
 port:             9001
 baseurl:          ""
-url:              https://v4-alpha.getbootstrap.com
+url:              https://getbootstrap.com
 encoding:         UTF-8
-exclude:          [assets/scss/]
+exclude:          [.git, .github, assets/scss/, build, js, node_modules, nuget, scss, vendor, bower.json, composer.json, Gemfile, Gemfile.lock, Gruntfile.js, package.js, package.json, sache.json]
 
 gems:
   - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-toc
 
 # Social
 title: Bootstrap
@@ -31,25 +31,27 @@ social_logo_path: /assets/brand/bootstrap-social-logo.png
 social_image_path: /assets/brand/bootstrap-social.png
 
 # Custom vars
-current_version:  4.0.0-alpha.5
+current_version:  4.0.0-alpha.6
+docs_version:     4.0
 repo:             https://github.com/twbs/bootstrap
 slack:            https://bootstrap-slack.herokuapp.com
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.5.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha.5/bootstrap-4.0.0-alpha.5-dist.zip
+  source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.6.zip
+  dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha.6/bootstrap-4.0.0-alpha.6-dist.zip
 
 blog:             https://blog.getbootstrap.com
 expo:             https://expo.getbootstrap.com
 themes:           https://themes.getbootstrap.com
+jobs:             https://jobs.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:            https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css
-  css_hash:       "sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi"
-  js:             https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js
-  js_hash:        "sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK"
-  jquery:         https://code.jquery.com/jquery-3.1.1.slim.min.js
-  jquery_hash:    "sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
-  tether:         https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js
-  tether_hash:    "sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+  css:            https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css
+  css_hash:       "sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+  js:             https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js
+  js_hash:        "sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+  jquery:         https://code.jquery.com/jquery-3.2.1.slim.min.js
+  jquery_hash:    "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  popper:         https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.9.9/umd/popper.min.js
+  popper_hash:    "sha256-c477vRLKQv1jt9o7w6TTBzFyFznTaZjoMLTDFi7Hlxc="
