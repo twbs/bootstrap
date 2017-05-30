@@ -48,6 +48,7 @@
   }
 
   .algolia-docsearch-suggestion--wrapper {
+    float: none !important;
     padding-top: 0 !important;
   }
 
@@ -90,7 +91,21 @@
   }
 
   .algolia-docsearch-footer {
-    display: none !important;
+    float: none !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 10px 15px;
+    font-size: .875rem !important;
+    line-height: 1 !important;
+    color: #767676 !important;
+  }
+
+  .algolia-docsearch-footer--logo {
+    display: inline !important;
+    overflow: visible !important;
+    color: inherit !important;
+    text-indent: 0 !important;
+    background: none !important;
   }
 
   .algolia-docsearch-suggestion--text {
