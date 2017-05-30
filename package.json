@@ -93,7 +93,7 @@
     "qunitjs": "^2.3.2",
     "shelljs": "^0.7.7",
     "shx": "^0.2.2",
-    "uglify-js": "^3.0.11"
+    "uglify-js": "^3.0.13"
   },
   "engines": {
     "node": ">=4"
