@@ -19,19 +19,6 @@
     font-size: 1rem;
     text-align: center;
   }
-
-  @include media-breakpoint-up(sm) {
-    text-align: left;
-  }
-
-  @include media-breakpoint-up(md) {
-    .col-sm-6:first-child {
-      padding-right: ($grid-gutter-width-base * 1.5);
-    };
-    .col-sm-6:last-child {
-      padding-left: ($grid-gutter-width-base * 1.5);
-    }
-  }
 }
 
 .bd-featurette-title {
