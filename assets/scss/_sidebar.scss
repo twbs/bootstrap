@@ -5,9 +5,11 @@
 //
 
 .bd-toc {
-  position: sticky;
-  top: 4rem;
-  max-height: calc(100vh - 4rem);
+  @supports (position: sticky) {
+    position: sticky;
+    top: 4rem;
+    max-height: calc(100vh - 4rem);
+  }
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   overflow-y: auto;
@@ -47,9 +49,11 @@
   border-bottom: 1px solid rgba(0,0,0,.1);
 
   @include media-breakpoint-up(md) {
-    position: sticky;
-    top: 4rem;
-    max-height: calc(100vh - 4rem);
+    @supports (position: sticky) {
+      position: sticky;
+      top: 4rem;
+      max-height: calc(100vh - 4rem);
+    }
     overflow-y: auto;
     border-right: 1px solid rgba(0,0,0,.1);
   }
