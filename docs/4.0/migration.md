@@ -244,6 +244,7 @@ Removed the following mixins: `animation`, `animation-delay`, `animation-directi
 Our documentation received an upgrade across the board as well. Here's the low down:
 
 - We're still using Jekyll, but we have plugins in the mix:
+  - `bugify.rb` is used to efficiently list out the entries on our [browser bugs]({{ site.baseurl }}/docs/{{ site.docs_version }}/browser-bugs/) page.
   - `example.rb` is a custom fork of the default `highlight.rb` plugin, allowing for easier example-code handling.
   - `callout.rb` is a similar custom fork of that, but designed for our special docs callouts.
   - `markdown-block.rb` is used to to render Markdown snippets within HTML elements like tables.
