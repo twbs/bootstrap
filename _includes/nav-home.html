@@ -15,16 +15,16 @@
         <a class="nav-link {% if page.title == "Examples" %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ site.themes }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');">Themes</a>
+        <a class="nav-link" href="{{ site.themes }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank">Themes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ site.jobs }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Jobs');">Jobs</a>
+        <a class="nav-link" href="{{ site.jobs }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Jobs');" target="_blank">Jobs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a>
+        <a class="nav-link" href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');" target="_blank">Expo</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a>
+        <a class="nav-link" href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank">Blog</a>
       </li>
     </ul>
   </div>
@@ -45,17 +45,17 @@
     {% endcomment %}
 
     <li class="nav-item">
-      <a class="nav-link p-2" href="{{ site.repo }}">
+      <a class="nav-link p-2" href="{{ site.repo }}" target="_blank">
         {% include icons/github.svg class="navbar-nav-svg" %}
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link p-2" href="https://twitter.com/{{ site.twitter }}">
+      <a class="nav-link p-2" href="https://twitter.com/{{ site.twitter }}" target="_blank">
         {% include icons/twitter.svg class="navbar-nav-svg" %}
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link p-2" href="{{ site.slack }}">
+      <a class="nav-link p-2" href="{{ site.slack }}" target="_blank">
         {% include icons/slack.svg class="navbar-nav-svg" %}
       </a>
     </li>
