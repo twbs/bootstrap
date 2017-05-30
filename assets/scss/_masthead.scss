@@ -36,15 +36,6 @@
     padding: 1rem 2rem;
     font-size: 1.25rem;
     font-weight: 500;
-    color: $bd-yellow;
-    border-color: $bd-yellow;
-
-    &:hover,
-    &:focus {
-      color: $bd-graphite;
-      background-color: $bd-yellow;
-      border-color: $bd-yellow;
-    }
   }
 
   .carbonad {
