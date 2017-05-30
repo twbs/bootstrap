@@ -46,31 +46,3 @@ a.badge {
   padding-left: $badge-pill-padding-x;
   @include border-radius($badge-pill-border-radius);
 }
-
-// Colors
-//
-// Contextual variations (linked badges get darker on :hover).
-
-.badge-default {
-  @include badge-variant($badge-default-bg);
-}
-
-.badge-primary {
-  @include badge-variant($badge-primary-bg);
-}
-
-.badge-success {
-  @include badge-variant($badge-success-bg);
-}
-
-.badge-info {
-  @include badge-variant($badge-info-bg);
-}
-
-.badge-warning {
-  @include badge-variant($badge-warning-bg);
-}
-
-.badge-danger {
-  @include badge-variant($badge-danger-bg);
-}

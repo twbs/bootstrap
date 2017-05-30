@@ -34,25 +34,21 @@
 
 // Contextual colors
 
-.text-white {
-  color: #fff !important;
+.text-white { color: $white !important; }
+
+.text-gray { color: $gray !important; }
+.text-gray-dark { color: $gray-dark !important; }
+
+@each $color, $value in $colors {
+  .text-#{$color} {
+    color: $value !important;
+  }
+  a.text-#{$color} {
+    &:hover {
+      color: darken($value, 10%) !important;
+    }
+  }
 }
-
-@include text-emphasis-variant('.text-muted', $text-muted);
-
-@include text-emphasis-variant('.text-primary', $brand-primary);
-
-@include text-emphasis-variant('.text-success', $brand-success);
-
-@include text-emphasis-variant('.text-info', $brand-info);
-
-@include text-emphasis-variant('.text-warning', $brand-warning);
-
-@include text-emphasis-variant('.text-danger', $brand-danger);
-
-// Font color
-
-@include text-emphasis-variant('.text-gray-dark', $gray-dark);
 
 // Misc
 

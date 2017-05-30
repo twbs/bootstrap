@@ -1,0 +1,32 @@
+- name: red
+  hex: "#d9534f"
+
+- name: orange
+  hex: "#f0ad4e"
+
+- name: yellow
+  hex: "#ffd500"
+
+- name: green
+  hex: "#5cb85c"
+
+- name: teal
+  hex: "#5bc0de"
+
+- name: blue
+  hex: "#5cb85c"
+
+- name: pink
+  hex: "#ff5b77"
+
+- name: purple
+  hex: "#613d7c"
+
+- name: white
+  hex: "#fff"
+
+- name: gray
+  hex: "#464a4c"
+
+- name: gray-dark
+  hex: "#292b2c"

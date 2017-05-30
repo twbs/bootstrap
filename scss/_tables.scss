@@ -94,10 +94,10 @@
 
 // Generate the contextual variants
 @include table-row-variant(active, $table-bg-active);
-@include table-row-variant(success, $state-success-bg);
-@include table-row-variant(info, $state-info-bg);
-@include table-row-variant(warning, $state-warning-bg);
-@include table-row-variant(danger, $state-danger-bg);
+@include table-row-variant(success, $brand-success);
+@include table-row-variant(info, $brand-info);
+@include table-row-variant(warning, $brand-warning);
+@include table-row-variant(danger, $brand-danger);
 
 
 // Inverse styles
