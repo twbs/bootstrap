@@ -21,38 +21,45 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Global changes
 
-- Flexbox is enabled by default. In general this means a move away from floats and more across our components.
+- **Flexbox is enabled by default.** In general this means a move away from floats and more across our components.
 - Switched from [Less](http://lesscss.org/) to [Sass](http://sass-lang.com/) for our source CSS files.
-- Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and grid behavior as viewports are not affected by type size.
+- Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and grid behavior as device viewports are not affected by type size.
 - Global font-size increased from `14px` to `16px`.
-- Added a new grid tier for smaller devices at `576px` and below (our new `xs` tier).
+- Revamped grid tiers to add a fifth option (addressing smaller devices at `576px` and below) and removed the `-xs` infix from those classes. Example: `.col-6.col-sm-4.col-md-3`.
 - Replaced the separate optional theme with configurable options via SCSS variables (e.g., `$enable-gradients: true`).
+- Build system overhauled to use a series of npm scripts instead of Grunt. See `package.json` for all scripts, or our project readme for local development needs.
+- Non-responsive usage of Bootstrap is no longer supported.
+- Dropped the online Customizer in favor of more extensive setup documentation and customized builds.
+- Added dozens of new [utility classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/) for common CSS property-value pairs and margin/padding spacing shortcuts.
 
 ### Grid system
 
-- Added support for flexbox in the grid mixins and predefined classes.
-- As part of flexbox, included support for vertical and horizontal alignment classes.
-- Overhauled grid mixins to merge `make-col-span` into `make-col` for a singular mixin.
-- Added a new `sm` grid tier below `768px` for more granular control. We now have `xs`, `sm`, `md`, `lg`, and `xl`. This also means every tier has been bumped up one level (so `.col-md-6` in v3 is now `.col-lg-6` in v4).
-- Changed grid system media query breakpoints and container widths to account for new grid tier and ensure columns are evenly divisible by `12` at their max width.
-- Grid breakpoints and container widths are now handled via Sass maps (`$grid-breakpoints` and `$container-max-widths`) instead of a handful of separate variables. These replace the `@screen-*` variables entirely and allow you to fully customize the grid tiers.
-- Media queries have also changed. Instead of repeating our media query declarations with the same value each time, we now have `@include media-breakpoint-up/down/only`. Now, instead of writing `@media (min-width: @screen-sm-min) { ... }`, you can write `@include media-breakpoint-up(sm) { ... }`.
+- **Moved to flexbox.**
+  - Added support for flexbox in the grid mixins and predefined classes.
+  - As part of flexbox, included support for vertical and horizontal alignment classes.
+- **Updated grid class names and a new grid tier.**
+  - Added a new `sm` grid tier below `768px` for more granular control. We now have `xs`, `sm`, `md`, `lg`, and `xl`. This also means every tier has been bumped up one level (so `.col-md-6` in v3 is now `.col-lg-6` in v4).
+  - `xs` grid classes have been modified to not require the infix to more accurately represent that they start applying styles at `min-width: 0` and not a set pixel value. Instead of `.col-xs-6`, it's now `.col-6`. All other grid tiers require the infix (e.g., `sm`).
+- **Updated grid sizes, mixins, and variables.**
+  - Grid gutters now have a Sass map so you can specify specific gutter widths at each breakpoint.
+  - Updated grid mixins to utilize a `make-col-ready` prep mixin and a `make-col` to set the `flex` and `max-width` for individual column sizing.
+  - Changed grid system media query breakpoints and container widths to account for new grid tier and ensure columns are evenly divisible by `12` at their max width.
+  - Grid breakpoints and container widths are now handled via Sass maps (`$grid-breakpoints` and `$container-max-widths`) instead of a handful of separate variables. These replace the `@screen-*` variables entirely and allow you to fully customize the grid tiers.
+  - Media queries have also changed. Instead of repeating our media query declarations with the same value each time, we now have `@include media-breakpoint-up/down/only`. Now, instead of writing `@media (min-width: @screen-sm-min) { ... }`, you can write `@include media-breakpoint-up(sm) { ... }`.
 
 ### Components
 
-- Dropped panels, thumbnails, and wells for a new all-encompassing component, cards.
-- Dropped the Glyphicons icon font. If you need icons, some options are:
+- **Dropped panels, thumbnails, and wells** for a new all-encompassing component, [cards]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/cards/).
+- **Dropped the Glyphicons icon font.** If you need icons, some options are:
   - the upstream version of [Glyphicons](https://glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
   - [Font Awesome](http://fontawesome.io/)
-- Dropped the Affix jQuery plugin. We recommend using a `position: sticky` polyfill instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations.
+  - See the [Extend page]({{ site.baseurl }}/docs/{{ site.docs_version }}/extend) for a list of alternatives. Have additional suggestions? Please open an issue or PR.
+- Dropped the Affix jQuery plugin.
+  - We recommend using `position: sticky` instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations. One suggestion is to use an `@supports` rule for implementing it (e.g., `@supports (position: sticky) { ... }`)/
   - If you were using Affix to apply additional, non-`position` styles, the polyfills might not support your use case. One option for such uses is the third-party [ScrollPos-Styler](https://github.com/acch/scrollpos-styler) library.
-- Dropped the pager component as it was essentially slightly customized buttons.
-- Refactored nearly all components to use more un-nested classes instead of children selectors.
-
-### Misc
-- Non-responsive usage of Bootstrap is no longer supported.
-- Dropped the online Customizer in favor of more extensive setup documentation and customized builds.
+- **Dropped the pager component** as it was essentially slightly customized buttons.
+- **Refactored nearly all components** to use more un-nested class selectors instead of over-specific children selectors.
 
 ## By component
 
@@ -60,7 +67,7 @@ This list highlights key changes by component between v3.x.x and v4.0.0.
 
 ### Reboot
 
-New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border-box` change, moving from `em` to `rem` units on many elements, link styles, and many form element resets.
+New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/), a new stylesheet that builds on Normalize with our own somewhat opinionated reset styles. Selectors appearing in this file only use elements—there are no classes here. This isolates our reset styles from our component styles for a more modular approach. Some of the most important resets this includes are the `box-sizing: border-box` change, moving from `em` to `rem` units on many elements, link styles, and many form element resets.
 
 ### Typography
 
@@ -105,6 +112,7 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 - Dropped the `.btn-xs` class entirely as `.btn-sm` is proportionally much smaller than v3's.
 - The [stateful button](https://getbootstrap.com/javascript/#buttons-methods) feature of the `button.js` jQuery plugin has been dropped. This includes the `$().button(string)` and `$().button('reset')` methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
   - Note that the other features of the plugin (button checkboxes, button radios, single-toggle buttons) have been retained in v4.
+- Change buttons' `[disabled]` to `:disabled` as IE9+ supports `:disabled`. However `fieldset[disabled]` is still necessary because [native disabled fieldsets are still buggy in IE11](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#Browser_compatibility).
 
 ### Button group
 
@@ -128,7 +136,6 @@ New to Bootstrap 4 is the Reboot, a new stylesheet that builds on Normalize with
 
 - Added a new `576px` grid breakpoint as `sm`, meaning there are now five total tiers (`xs`, `sm`, `md`, `lg`, and `xl`).
 - Renamed the responsive grid modifier classes from `.col-{breakpoint}-{modifier}-{size}` to `.{modifier}-{breakpoint}-{size}` for simpler grid classes. For example, instead of `.col-md-3.col-md-push-9` it's `.col-md-3.push-md-9`.
-- Overhauled the grid mixins to merge `make-col` and `make-col-span` into a single `make-col` mixin, thereby ensuring mixins and predefined classes utilize the same float/flex behaviors.
 - Added flexbox utility classes for grid system and components.
 
 ### List groups
@@ -182,7 +189,7 @@ The navbar has been entirely rewritten in flexbox with improved support for alig
 
 Dropped entirely for the new card component.
 
-#### Panels
+### Panels
 
 - `.panel` to `.card`, now built with flexbox.
 - `.panel-default` removed and no replacement.
@@ -208,16 +215,26 @@ Dropped entirely for the new card component.
 - Removed image overrides for images in carousel items, deferring to utilities.
 - Tweaked the Carousel example to include the new markup and styles.
 
+### Tables
+
+- Removed support for styled nested tables. All table styles are now inherited in v4 for simpler selectors.
+- Added inverse table variant.
+
 ### Utilities
 
-- Made display utilities responsive (e.g., `.d-none` and `d-{sm,md,lg,xl}-none`).
-- Added `.float-{sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-left` and `.float-right`.
-- Added responsive variations to our text alignment classes `.text-{sm,md,lg,xl}-{left,center,right}`.
-- Added new margin auto utilities for all sides, plus vertical and horizontal shorthands.
-- Added boatload of flexbox utilities.
-- Dropped `.center-block` for the new `.mx-auto` class.
+- **Display, hidden, and more:**
+  - Made display utilities responsive (e.g., `.d-none` and `d-{sm,md,lg,xl}-none`).
+  - Dropped the bulk of `.hidden-*` utilities for new [display utilities](({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/). For example, instead of `.hidden-sm-up`, use `.d-sm-none`. Renamed the `.hidden-print` utilities to use the display utility naming scheme. [More info under the Responsive utilities section of this page.](#responsive-utilities)
+  - Added `.float-{sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-left` and `.float-right`.
+- **Type:**
+  - Added responsive variations to our text alignment classes `.text-{sm,md,lg,xl}-{left,center,right}`.
+- **Alignment and spacing:**
+  - Added new [responsive margin and padding utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) for all sides, plus vertical and horizontal shorthands.
+  - Added boatload of [flexbox utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flexbox/).
+  - Dropped `.center-block` for the new `.mx-auto` class.
 
 ### Vendor prefix mixins
+
 Bootstrap 3's [vendor prefix](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm) mixins, which were deprecated in v3.2.0, have been removed in Bootstrap 4. Since we use [Autoprefixer](https://github.com/postcss/autoprefixer), they're no longer necessary.
 
 Removed the following mixins: `animation`, `animation-delay`, `animation-direction`, `animation-duration`, `animation-fill-mode`, `animation-iteration-count`, `animation-name`, `animation-timing-function`, `backface-visibility`, `box-sizing`, `content-columns`, `hyphens`, `opacity`, `perspective`, `perspective-origin`, `rotate`, `rotateX`, `rotateY`, `scale`, `scaleX`, `scaleY`, `skew`, `transform-origin`, `transition-delay`, `transition-duration`, `transition-property`, `transition-timing-function`, `transition-transform`, `translate`, `translate3d`, `user-select`
@@ -226,9 +243,11 @@ Removed the following mixins: `animation`, `animation-delay`, `animation-directi
 
 Our documentation received an upgrade across the board as well. Here's the low down:
 
-- We're still using Jekyll, but we have custom plugins in the mix:
-  - `example.rb` is a fork of the default `highlight.rb` plugin, allowing for easier example-code handling.
-  - `callout.rb` is a similar fork of that, but designed for our special docs callouts.
+- We're still using Jekyll, but we have plugins in the mix:
+  - `example.rb` is a custom fork of the default `highlight.rb` plugin, allowing for easier example-code handling.
+  - `callout.rb` is a similar custom fork of that, but designed for our special docs callouts.
+  - `markdown-block.rb` is used to to render Markdown snippets within HTML elements like tables.
+  - [jekyll-toc](https://github.com/toshimaru/jekyll-toc) is used to generate our table of contents.
 - All docs content has been rewritten in Markdown (instead of HTML) for easier editing.
 - Pages have been reorganized for simpler content and a more approachable hierarchy.
 - We moved from regular CSS to SCSS to take full advantage of Bootstrap's variables, mixins, and more.
@@ -250,13 +269,3 @@ Our responsive utility classes have largely been removed in favor of explicit `d
 Rather than using explicit `.visible-*` classes, you make an element visible by simply not hiding it at that screen size. You can combine one `.d-*-none` class with one `.d-*-block` class to show an element only on a given interval of screen sizes (e.g. `.d-none.d-md-block.d-lg-none` shows the element only on medium and large devices).
 
 Note that the changes to the grid breakpoints in v4 means that you'll need to go one breakpoint larger to achieve the same results. The new responsive utility classes don't attempt to accommodate less common cases where an element's visibility can't be expressed as a single contiguous range of viewport sizes; you will instead need to use custom CSS in such cases.
-
-## Misc notes to prioritize
-
-- Removed the `min--moz-device-pixel-ratio` typo hack for retina media queries
-- Change buttons' `[disabled]` to `:disabled` as IE9+ supports `:disabled`. However `fieldset[disabled]` is still necessary because [native disabled fieldsets are still buggy in IE11](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#Browser_compatibility).
-
-TODO: audit list of stuff in v3 that was marked as deprecated
-
-## Additional notes
-- Removed support for styled nested tables (for now)
