@@ -7,8 +7,7 @@
 .bd-navbar {
   min-height: 4rem;
   background-color: $bd-purple;
-  border-bottom: 1px solid rgba(0,0,0,.1);
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.05);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
 
   @include media-breakpoint-down(md) {
     .navbar-nav-scroll {
@@ -61,14 +60,5 @@
 
   .dropdown-menu {
     font-size: .875rem;
-  }
-
-  // .navbar-brand {
-  //   color: #fff;
-  // }
-
-  .bd-navbar-brand-wrap {
-    padding-top: .25rem;
-    padding-bottom: .25rem;
   }
 }
