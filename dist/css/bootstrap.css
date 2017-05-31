@@ -856,6 +856,7 @@ pre code {
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
   width: auto;
+  max-width: none;
 }
 
 .col-1 {
@@ -1119,6 +1120,7 @@ pre code {
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
     width: auto;
+    max-width: none;
   }
   .col-sm-1 {
     -webkit-box-flex: 0;
@@ -1337,6 +1339,7 @@ pre code {
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
     width: auto;
+    max-width: none;
   }
   .col-md-1 {
     -webkit-box-flex: 0;
@@ -1555,6 +1558,7 @@ pre code {
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
     width: auto;
+    max-width: none;
   }
   .col-lg-1 {
     -webkit-box-flex: 0;
@@ -1773,6 +1777,7 @@ pre code {
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
     width: auto;
+    max-width: none;
   }
   .col-xl-1 {
     -webkit-box-flex: 0;
