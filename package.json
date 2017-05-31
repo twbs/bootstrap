@@ -73,25 +73,25 @@
     "popper.js": "^1.9.9"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.7",
+    "autoprefixer": "^7.1.1",
     "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.2.2",
+    "babel-eslint": "^7.2.3",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
     "babel-preset-es2015": "^7.0.0-alpha.7",
-    "clean-css-cli": "^4.0.12",
+    "clean-css-cli": "^4.1.3",
     "eslint": "^3.19.0",
     "htmllint-cli": "^0.0.6",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "phantomjs-prebuilt": "^2.1.14",
-    "postcss-cli": "^3.1.1",
-    "postcss-flexbugs-fixes": "^2.1.1",
+    "postcss-cli": "^4.0.0",
+    "postcss-flexbugs-fixes": "^3.0.0",
     "qunit-phantomjs-runner": "^2.3.0",
-    "qunitjs": "^2.3.1",
+    "qunitjs": "^2.3.2",
     "shelljs": "^0.7.7",
     "shx": "^0.2.2",
-    "uglify-js": "^2.8.22"
+    "uglify-js": "^3.0.13"
   },
   "engines": {
     "node": ">=4"
