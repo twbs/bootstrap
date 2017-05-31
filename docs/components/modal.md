@@ -121,7 +121,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div id="exampleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -131,7 +131,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <p>Woohoo, you're reading this text in a modal!</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
