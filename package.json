@@ -80,7 +80,7 @@
     "htmllint-cli": "^0.0.6",
     "is-travis": "^1.0.0",
     "load-grunt-tasks": "^3.5.2",
-    "node-sass": "^4.5.0",
+    "node-sass": "^4.5.3",
     "postcss-cli": "^2.6.0",
     "postcss-flexbugs-fixes": "^2.1.0",
     "shelljs": "^0.7.6",
