@@ -12,7 +12,7 @@
   }
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  overflow-y: auto;
+  overflow-x: visible;
   font-size: .875rem;
 }
 
@@ -52,9 +52,9 @@
     @supports (position: sticky) {
       position: sticky;
       top: 4rem;
+      z-index: 1000;
       max-height: calc(100vh - 4rem);
     }
-    overflow-y: auto;
     border-right: 1px solid rgba(0,0,0,.1);
   }
 
@@ -64,7 +64,15 @@
 }
 
 .bd-links {
-  margin: 1rem -15px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-right: -15px;
+  margin-left: -15px;
+
+  @include media-breakpoint-up(md) {
+    max-height: calc(100vh - 9rem);
+    overflow-y: auto;
+  }
 
   // Override collapse behaviors
   @include media-breakpoint-up(md) {
