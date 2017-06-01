@@ -6,6 +6,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
   background-color: $card-bg;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
@@ -20,7 +22,6 @@
 
 .card-title {
   margin-bottom: $card-spacer-y;
-  word-break: break-all;
 }
 
 .card-subtitle {
