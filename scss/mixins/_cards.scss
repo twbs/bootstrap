@@ -47,7 +47,7 @@
   }
   .card-link {
     @include hover-focus {
-      color: $card-link-hover-color;
+      color: $card-inverse-link-hover-color;
     }
   }
 }
