@@ -1,12 +1,12 @@
 /*!
- * QUnit 2.2.0
+ * QUnit 2.3.2
  * https://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2017-03-11T16:19Z
+ * Date: 2017-04-18T02:19Z
  */
 (function (global$1) {
   'use strict';
@@ -21,12 +21,12 @@
   var document = window && window.document;
   var navigator = window && window.navigator;
 
-  var sessionStorage = function () {
+  var localSessionStorage = function () {
   	var x = "qunit-test-string";
   	try {
-  		sessionStorage.setItem(x, x);
-  		sessionStorage.removeItem(x);
-  		return sessionStorage;
+  		global$1.sessionStorage.setItem(x, x);
+  		global$1.sessionStorage.removeItem(x);
+  		return global$1.sessionStorage;
   	} catch (e) {
   		return undefined;
   	}
