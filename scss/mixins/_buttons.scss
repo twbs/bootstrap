@@ -12,7 +12,6 @@
   border-color: $border;
   @include box-shadow($btn-box-shadow);
 
-  // Hover and focus styles are shared
   @include hover {
     color: $color;
     background-color: $active-background;
@@ -20,6 +19,8 @@
   }
   &:focus,
   &.focus {
+    // In case of link button (a element) overwrite focus color set in reboot
+    color: $color;
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
       box-shadow: $btn-box-shadow, 0 0 0 2px rgba($border, .5);
