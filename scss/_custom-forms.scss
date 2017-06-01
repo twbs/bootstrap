@@ -253,3 +253,77 @@
     }
   }
 }
+
+
+// Range
+//
+// Replace the browser default range with a custom one
+.custom-range {
+  height: $input-height;
+  margin-bottom: $input-height;
+  border: $input-btn-border-width solid $input-border-color;
+  @include border-radius($input-border-radius);
+  -webkit-appearance: none;
+  @include box-shadow($input-box-shadow);
+  @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+  @include form-control-focus();
+
+  &::-webkit-slider-runnable-track {
+    height: $input-height;
+    background: transparent;
+    border: 0;
+  }
+  &::-webkit-slider-thumb {
+    width: ($input-height + .125rem);
+    height: $input-height;
+    border: $input-btn-border-width solid $input-color;
+    @include border-radius($input-border-radius);
+    -webkit-appearance: none;
+  }
+
+  &::-moz-range-track {
+    height: $input-height;
+    background: transparent;
+    border: 0;
+  }
+  &::-moz-range-progress {
+    height: $input-height;
+    background: $brand-primary;
+  }
+  &::-moz-range-thumb {
+    width: ($input-height + .125rem);
+    height: $input-height;
+    border: $input-btn-border-width solid $input-color;
+    @include border-radius($input-border-radius);
+    -moz-appearance: none;
+  }
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &::-ms-track {
+    height: $input-height;
+    // remove default tick marks
+    color: transparent;
+    // remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead
+    background: transparent;
+
+    // leave room for the larger thumb to overflow with a transparent border
+    border-color: transparent;
+    border-width: 6px 0;
+  }
+  &::-ms-fill-lower {
+    background: $brand-primary;
+    @include border-radius($input-border-radius);
+  }
+  &::-ms-fill-upper {
+    background: transparent;
+    @include border-radius($input-border-radius);
+  }
+  &::-ms-thumb {
+    width: ($input-height + .125rem);
+    height: $input-height;
+    border: $input-btn-border-width solid $input-color;
+    @include border-radius($input-border-radius);
+  }
+}
