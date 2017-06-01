@@ -659,6 +659,12 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 
 Set heights using classes like `.form-control-lg`, and set widths using grid column classes like `.col-lg-*`.
 
+{% callout warning %}
+#### Caveat about `.form-control-sm`
+
+When a form control is focused, most mobile browsers will zoom on the control if its font size is less than 16px. By default, these browsers will render a `.form-control-sm` element with a font size of 14px, which will cause the page to zoom when the control is focused.  If this behavior is undesirable, avoid using the small control size.
+{% endcallout %}
+
 {% example html %}
 <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
 <input class="form-control" type="text" placeholder="Default input">
