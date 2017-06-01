@@ -2,6 +2,7 @@
 // Requires inline-block or block for proper styling
 
 @mixin text-truncate() {
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
