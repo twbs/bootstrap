@@ -897,6 +897,34 @@ Those same states can also be used with horizontal forms.
 </div>
 {% endexample %}
 
+### Validate with grid
+
+And in more complex grids.
+
+{% example html %}
+<div class="container">
+  <form>
+    <div class="form-group has-danger">
+      <label for="inputHorizontalDnger" class="form-control-label">Mailing address</label>
+      <input type="text" class="form-control mb-2" placeholder="Street address">
+      <div class="row gutters-sm">
+        <div class="col-7">
+          <input type="text" class="form-control is-validated" placeholder="City">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control is-validated" placeholder="State">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Zip">
+        </div>
+      </div>
+      <div class="form-control-feedback">Something's not right with that field. Try again?</div>
+      <small class="form-text text-muted">Example help text that remains unchanged.</small>
+    </div>
+  </form>
+</div>
+{% endexample %}
+
 Checkboxes and radios are also supported.
 
 {% example html %}

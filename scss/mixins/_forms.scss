@@ -14,22 +14,44 @@
   }
 
   // Set the border and box shadow on specific inputs to match
-  .form-control,
-  .custom-select,
-  .custom-file-control {
-    border-color: $color;
+  // .form-control-validated,
+  // .is-validated,
+  // .custom-select,
+  // .custom-file-control {
+  //   border-color: $color;
+  //
+  //   &:focus {
+  //     @include box-shadow($input-box-shadow, 0 0 0 3px rgba($color, .5));
+  //   }
+  // }
 
-    &:focus {
-      @include box-shadow($input-box-shadow, 0 0 0 3px rgba($color, .5));
+  .is-validated {
+    // Textual inputs
+    &.form-control,
+    &.custom-select,
+    &.custom-file-control {
+      border-color: $color;
+
+      &:focus {
+        @include box-shadow($input-box-shadow, 0 0 0 3px rgba($color, .5));
+      }
+    }
+
+    &.input-group {
+      .input-group-addon {
+        color: $color;
+        background-color: lighten($color, 40%);
+        border-color: $color;
+      }
     }
   }
 
-  // Set validation states also for addons
-  .input-group-addon {
-    color: $color;
-    background-color: lighten($color, 40%);
-    border-color: $color;
-  }
+  // // Set validation states also for addons
+  // .input-group-addon {
+  //   color: $color;
+  //   background-color: lighten($color, 40%);
+  //   border-color: $color;
+  // }
 }
 
 // Form control focus state
