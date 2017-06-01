@@ -772,19 +772,19 @@ Here are some examples of the aforementioned classes in action. First up is your
 {% example html %}
 <div class="form-group has-success">
   <label class="form-control-label" for="inputSuccess1">Input with success</label>
-  <input type="text" class="form-control form-control-success" id="inputSuccess1">
+  <input type="text" class="form-control" id="inputSuccess1">
   <div class="form-control-feedback">Success! You've done it.</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-warning">
   <label class="form-control-label" for="inputWarning1">Input with warning</label>
-  <input type="text" class="form-control form-control-warning" id="inputWarning1">
+  <input type="text" class="form-control" id="inputWarning1">
   <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-danger">
   <label class="form-control-label" for="inputDanger1">Input with danger</label>
-  <input type="text" class="form-control form-control-danger" id="inputDanger1">
+  <input type="text" class="form-control" id="inputDanger1">
   <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
@@ -798,7 +798,7 @@ Those same states can also be used with horizontal forms.
     <div class="form-group row has-success">
       <label for="inputHorizontalSuccess" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="name@example.com">
+        <input type="email" class="form-control" id="inputHorizontalSuccess" placeholder="name@example.com">
         <div class="form-control-feedback">Success! You've done it.</div>
         <small class="form-text text-muted">Example help text that remains unchanged.</small>
       </div>
@@ -806,7 +806,7 @@ Those same states can also be used with horizontal forms.
     <div class="form-group row has-warning">
       <label for="inputHorizontalWarning" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control form-control-warning" id="inputHorizontalWarning" placeholder="name@example.com">
+        <input type="email" class="form-control" id="inputHorizontalWarning" placeholder="name@example.com">
         <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
         <small class="form-text text-muted">Example help text that remains unchanged.</small>
       </div>
@@ -814,7 +814,7 @@ Those same states can also be used with horizontal forms.
     <div class="form-group row has-danger">
       <label for="inputHorizontalDnger" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-10">
-        <input type="email" class="form-control form-control-danger" id="inputHorizontalDnger" placeholder="name@example.com">
+        <input type="email" class="form-control" id="inputHorizontalDnger" placeholder="name@example.com">
         <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
         <small class="form-text text-muted">Example help text that remains unchanged.</small>
       </div>
