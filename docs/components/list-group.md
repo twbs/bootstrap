@@ -92,10 +92,10 @@ Use contextual classes to style list items with a stateful background and color.
 {% example html %}
 <ul class="list-group">
   <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
-  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
+  <li class="list-group-item list-group-item-green">Dapibus ac facilisis in</li>
+  <li class="list-group-item list-group-item-teal">Cras sit amet nibh libero</li>
+  <li class="list-group-item list-group-item-orange">Porta ac consectetur ac</li>
+  <li class="list-group-item list-group-item-red">Vestibulum at eros</li>
 </ul>
 {% endexample %}
 
@@ -104,10 +104,10 @@ Contextual classes also work with `.list-group-item-action`. Note the addition o
 {% example html %}
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-success">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-info">Cras sit amet nibh libero</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Vestibulum at eros</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-green">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-teal">Cras sit amet nibh libero</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-orange">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item list-group-item-action list-group-item-red">Vestibulum at eros</a>
 </div>
 {% endexample %}
 
@@ -122,15 +122,15 @@ Add badges to any list group item to show unread counts, activity, and more with
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Cras justo odio
-    <span class="badge badge-default badge-pill">14</span>
+    <span class="badge bg-gray badge-pill">14</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Dapibus ac facilisis in
-    <span class="badge badge-default badge-pill">2</span>
+    <span class="badge bg-gray badge-pill">2</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Morbi leo risus
-    <span class="badge badge-default badge-pill">1</span>
+    <span class="badge bg-gray badge-pill">1</span>
   </li>
 </ul>
 {% endexample %}

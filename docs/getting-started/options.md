@@ -39,3 +39,45 @@ You can find and customize these variables for key global options in our `_varia
 | `$enable-hover-media-query` | `true` or `false` (default)        | ...                                                                                    |
 | `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.).     |
 | `$enable-print-styles`      | `true` (default) or `false`        | Enables styles for optimizing printing.                                |
+
+## Colors
+
+Many of Bootstrap's various components and utilities are built through a series of colors defined in a Sass map. This map can be looped over in Sass to quickly generate a series of rulesets.
+
+<div class="row">
+  {% for color in site.data.colors %}
+    <div class="col-md-4 mb-3">
+      {% unless color.name == "white" or color.name == "gray" or color.name == "gray-dark" %}
+        <div class="p-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
+      {% endunless %}
+    </div>
+  {% endfor %}
+</div>
+
+<div class="row">
+  {% for color in site.data.grays %}
+    <div class="col-md-4 mb-3">
+      <div class="p-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+Within `_variables.scss`, you'll find our color variables and Sass map. Here's an example of the `$colors` Sass map:
+
+{% highlight scss %}
+$colors: (
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  blue: $blue,
+  pink: $pink,
+  purple: $purple,
+  white: $white,
+  gray: $gray-light,
+  gray-dark: $gray-dark
+) !default;
+{% endhighlight %}
+
+Add, remove, or modify values within the map to update how they're used in many other components. Unfortunately at this time, not _every_ component utilizes this Sass map. Future updates will strive to improve upon this. Until then, plan on making use of the `${color}` variables and this Sass map.

@@ -14,19 +14,19 @@ Provide contextual feedback messages for typical user actions with the handful o
 
 ## Examples
 
-Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the four **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts jQuery plugin](#dismissing).
+Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the four **required** contextual classes (e.g., `.alert-green`). For inline dismissal, use the [alerts jQuery plugin](#dismissing).
 
 {% example html %}
-<div class="alert alert-success" role="alert">
+<div class="alert alert-green" role="alert">
   <strong>Well done!</strong> You successfully read this important alert message.
 </div>
-<div class="alert alert-info" role="alert">
+<div class="alert alert-teal" role="alert">
   <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
 </div>
-<div class="alert alert-warning" role="alert">
+<div class="alert alert-orange" role="alert">
   <strong>Warning!</strong> Better check yourself, you're not looking too good.
 </div>
-<div class="alert alert-danger" role="alert">
+<div class="alert alert-red" role="alert">
   <strong>Oh snap!</strong> Change a few things up and try submitting again.
 </div>
 {% endexample %}
@@ -39,16 +39,16 @@ Alerts are available for any length of text, as well as an optional dismiss butt
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
 
 {% example html %}
-<div class="alert alert-success" role="alert">
+<div class="alert alert-green" role="alert">
   <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
 </div>
-<div class="alert alert-info" role="alert">
+<div class="alert alert-teal" role="alert">
   <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
 </div>
-<div class="alert alert-warning" role="alert">
+<div class="alert alert-orange" role="alert">
   <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
 </div>
-<div class="alert alert-danger" role="alert">
+<div class="alert alert-red" role="alert">
   <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
 </div>
 {% endexample %}
@@ -58,7 +58,7 @@ Use the `.alert-link` utility class to quickly provide matching colored links wi
 Alerts can also contain additional HTML elements like headings, paragraphs and dividers.
 
 {% example html %}
-<div class="alert alert-success" role="alert">
+<div class="alert alert-green" role="alert">
   <h4 class="alert-heading">Well done!</h4>
   <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
   <hr>
@@ -79,7 +79,7 @@ Using the alert JavaScript plugin, it's possible to dismiss any alert inline. He
 You can see this in action with a live demo:
 
 {% example html %}
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div class="alert alert-orange alert-dismissible fade show" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

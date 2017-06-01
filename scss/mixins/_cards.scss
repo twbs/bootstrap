@@ -1,26 +1,5 @@
 // Card variants
 
-@mixin card-variant($background, $border) {
-  background-color: $background;
-  border-color: $border;
-
-  .card-header,
-  .card-footer {
-    background-color: transparent;
-  }
-}
-
-@mixin card-outline-variant($color) {
-  background-color: transparent;
-  border-color: $color;
-
-  .card-header,
-  .card-footer {
-    background-color: transparent;
-    border-color: $color;
-  }
-}
-
 //
 // Inverse text within a card for use with dark backgrounds
 //

@@ -18,23 +18,8 @@ Use Bootstrap's custom button styles for actions in forms, dialogs, and more. In
 Bootstrap includes six predefined button styles, each serving its own semantic purpose.
 
 {% example html %}
-<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-<button type="button" class="btn btn-primary">Primary</button>
-
-<!-- Secondary, outline button -->
-<button type="button" class="btn btn-secondary">Secondary</button>
-
-<!-- Indicates a successful or positive action -->
-<button type="button" class="btn btn-success">Success</button>
-
-<!-- Contextual button for informational alert messages -->
-<button type="button" class="btn btn-info">Info</button>
-
-<!-- Indicates caution should be taken with this action -->
-<button type="button" class="btn btn-warning">Warning</button>
-
-<!-- Indicates a dangerous or potentially negative action -->
-<button type="button" class="btn btn-danger">Danger</button>
+{% for color in site.data.colors %}
+<button type="button" class="btn btn-{{ color.name }}">{{ color.name | capitalize }}</button>{% endfor %}
 
 <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
 <button type="button" class="btn btn-link">Link</button>
@@ -50,11 +35,11 @@ The `.btn` classes are designed to be used with the `<button>` element. However,
 When using button classes on `<a>` elements that are used to trigger in-page functionality (like collapsing content), rather than linking to new pages or sections within the current page, these links should be given a `role="button"` to appropriately convey their purpose to assistive technologies such as screen readers.
 
 {% example html %}
-<a class="btn btn-primary" href="#" role="button">Link</a>
-<button class="btn btn-primary" type="submit">Button</button>
-<input class="btn btn-primary" type="button" value="Input">
-<input class="btn btn-primary" type="submit" value="Submit">
-<input class="btn btn-primary" type="reset" value="Reset">
+<a class="btn btn-blue" href="#" role="button">Link</a>
+<button class="btn btn-blue" type="submit">Button</button>
+<input class="btn btn-blue" type="button" value="Input">
+<input class="btn btn-blue" type="submit" value="Submit">
+<input class="btn btn-blue" type="reset" value="Reset">
 {% endexample %}
 
 ## Outline buttons
@@ -62,12 +47,8 @@ When using button classes on `<a>` elements that are used to trigger in-page fun
 In need of a button, but not the hefty background colors they bring? Replace the default modifier classes with the `.btn-outline-*` ones to remove all background images and colors on any button.
 
 {% example html %}
-<button type="button" class="btn btn-outline-primary">Primary</button>
-<button type="button" class="btn btn-outline-secondary">Secondary</button>
-<button type="button" class="btn btn-outline-success">Success</button>
-<button type="button" class="btn btn-outline-info">Info</button>
-<button type="button" class="btn btn-outline-warning">Warning</button>
-<button type="button" class="btn btn-outline-danger">Danger</button>
+{% for color in site.data.colors %}
+<button type="button" class="btn btn-outline-{{ color.name }}">{{ color.name }}</button>{% endfor %}
 {% endexample %}
 
 
@@ -76,20 +57,20 @@ In need of a button, but not the hefty background colors they bring? Replace the
 Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes.
 
 {% example html %}
-<button type="button" class="btn btn-primary btn-lg">Large button</button>
-<button type="button" class="btn btn-secondary btn-lg">Large button</button>
+<button type="button" class="btn btn-blue btn-lg">Large button</button>
+<button type="button" class="btn btn-outline-gray btn-lg">Large button</button>
 {% endexample %}
 
 {% example html %}
-<button type="button" class="btn btn-primary btn-sm">Small button</button>
-<button type="button" class="btn btn-secondary btn-sm">Small button</button>
+<button type="button" class="btn btn-blue btn-sm">Small button</button>
+<button type="button" class="btn btn-outline-gray btn-sm">Small button</button>
 {% endexample %}
 
 Create block level buttons—those that span the full width of a parent—by adding `.btn-block`.
 
 {% example html %}
-<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-blue btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-outline-gray btn-lg btn-block">Block level button</button>
 {% endexample %}
 
 ## Active state
@@ -97,8 +78,8 @@ Create block level buttons—those that span the full width of a parent—by add
 Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. **There's no need to add a class to `<button>`s as they use a pseudo-class**. However, you can still force the same active appearance with `.active` (and include the <code>aria-pressed="true"</code> attribute) should you need to replicate the state programmatically.
 
 {% example html %}
-<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>
-<a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Link</a>
+<a href="#" class="btn btn-blue btn-lg active" role="button" aria-pressed="true">Primary link</a>
+<a href="#" class="btn btn-outline-gray btn-lg active" role="button" aria-pressed="true">Link</a>
 {% endexample %}
 
 ## Disabled state

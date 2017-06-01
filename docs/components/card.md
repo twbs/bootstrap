@@ -26,7 +26,7 @@ Below is an example of a basic card with mixed content and a fixed width. Cards 
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -127,7 +127,7 @@ Add an optional header and/or footer within a card.
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -140,7 +140,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -167,7 +167,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
   <div class="card-footer text-muted">
     2 days ago
@@ -190,7 +190,7 @@ Using the grid, wrap cards in columns and rows as needed.
       <div class="card-block">
         <h3 class="card-title">Special title treatment</h3>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="#" class="btn btn-blue">Go somewhere</a>
       </div>
     </div>
   </div>
@@ -199,7 +199,7 @@ Using the grid, wrap cards in columns and rows as needed.
       <div class="card-block">
         <h3 class="card-title">Special title treatment</h3>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="#" class="btn btn-blue">Go somewhere</a>
       </div>
     </div>
   </div>
@@ -215,7 +215,7 @@ Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/siz
   <div class="card-block">
     <h3 class="card-title">Card title</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Button</a>
+    <a href="#" class="btn btn-blue">Button</a>
   </div>
 </div>
 
@@ -223,7 +223,7 @@ Use our handful of [available sizing utilities]({{ site.baseurl }}/utilities/siz
   <div class="card-block">
     <h3 class="card-title">Card title</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Button</a>
+    <a href="#" class="btn btn-blue">Button</a>
   </div>
 </div>
 {% endexample %}
@@ -237,7 +237,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
   <div class="card-block">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -251,7 +251,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 
@@ -259,7 +259,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 
@@ -267,7 +267,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -294,7 +294,7 @@ Add some navigation to a card's header (or block) with Bootstrap's [nav componen
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -317,7 +317,7 @@ Add some navigation to a card's header (or block) with Bootstrap's [nav componen
   <div class="card-block">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
 </div>
 {% endexample %}
@@ -380,7 +380,7 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
   <div class="card-block">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-blue">Go somewhere</a>
   </div>
   <div class="card-footer">Footer</div>
 </div>
@@ -391,7 +391,8 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
 Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-inverse`.**
 
 {% example html %}
-<div class="card card-inverse card-primary mb-3 text-center">
+{% for color in site.data.colors %}
+<div class="card{% if color.name != "white" %} card-inverse{% endif %} bg-{{ color.name }} mb-3 text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -399,38 +400,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-success mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-inverse card-info mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-inverse card-warning mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-inverse card-danger text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
+{% endfor %}
 {% endexample %}
 
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
@@ -441,7 +411,8 @@ Cards include their own variant classes for quickly changing the `background-col
 In need of a colored card, but not the hefty background colors they bring? Replace the default modifier classes with the `.card-outline-*` ones to style just the `border-color` of a card.
 
 {% example html %}
-<div class="card card-outline-primary mb-3 text-center">
+{% for color in site.data.colors %}
+<div class="card border-{{ color.name }} mb-3 text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -449,46 +420,7 @@ In need of a colored card, but not the hefty background colors they bring? Repla
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-secondary mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-outline-success mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-outline-info mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-outline-warning mb-3 text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-outline-danger text-center">
-  <div class="card-block">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
+{% endfor %}
 {% endexample %}
 
 ## Card layout
@@ -668,7 +600,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
-  <div class="card card-inverse card-primary p-3 text-center">
+  <div class="card card-inverse bg-blue p-3 text-center">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
       <footer>
