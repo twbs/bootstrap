@@ -22,6 +22,11 @@
   <script src="{{ site.baseurl }}/dist/js/bootstrap.js"></script>
 {% endif %}
 
+{% if page.layout == "docs" %}
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+{% endif %}
+
 {% if site.github %}
   <script src="{{ site.baseurl }}/assets/js/docs.min.js"></script>
 {% else %}
@@ -34,20 +39,6 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="{{ site.baseurl }}/assets/js/ie-emulation-modes-warning.js"></script>
-
-{% if page.layout == "docs" %}
-<script src="{{ site.baseurl }}/assets/js/vendor/jekyll-search.min.js"></script>
-
-<script>
-SimpleJekyllSearch.init({
-  searchInput: document.getElementById('search-input'),
-  resultsContainer: document.getElementById('search-results'),
-  searchResultTemplate: '<a class="dropdown-item" href="{url}">{title}</a>',
-  noResultsText: '<div class="dropdown-item no-results">Sorry, there are no results for that search.</div>',
-  json: '{{ site.baseurl }}/search.json'
-})
-</script>
-{% endif %}
 
 <script>
 Holder.addTheme('gray', {

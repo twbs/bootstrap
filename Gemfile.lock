@@ -3,10 +3,26 @@ GEM
   specs:
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    algoliasearch (1.13.0)
+      httpclient (~> 2.8.3)
+      json (>= 1.5.1)
+    algoliasearch-jekyll (0.8.0)
+      algoliasearch (~> 1.4)
+      appraisal (~> 2.1.0)
+      awesome_print (~> 1.6)
+      json (~> 1.8)
+      nokogiri (~> 1.6)
+      verbal_expressions (~> 0.1.5)
+    appraisal (2.1.0)
+      bundler
+      rake
+      thor (>= 0.14.0)
+    awesome_print (1.7.0)
     colorator (1.1.0)
     ffi (1.9.18)
     ffi (1.9.18-x64-mingw32)
     forwardable-extended (2.6.0)
+    httpclient (2.8.3)
     jekyll (3.4.3)
       addressable (~> 2.4)
       colorator (~> 1.0)
@@ -26,12 +42,16 @@ GEM
       jekyll (~> 3.3)
     jekyll-watch (1.5.0)
       listen (~> 3.0, < 3.1)
+    json (1.8.6)
     kramdown (1.13.2)
     liquid (3.0.6)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
     mercenary (0.3.6)
+    mini_portile2 (2.1.0)
+    nokogiri (1.7.2)
+      mini_portile2 (~> 2.1.0)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
     public_suffix (2.0.5)
@@ -45,12 +65,15 @@ GEM
     scss_lint (0.53.0)
       rake (>= 0.9, < 13)
       sass (~> 3.4.20)
+    thor (0.19.4)
+    verbal_expressions (0.1.5)
 
 PLATFORMS
   ruby
   x64-mingw32
 
 DEPENDENCIES
+  algoliasearch-jekyll (~> 0.8)
   jekyll (~> 3.4.3)
   jekyll-redirect-from (~> 0.12.1)
   jekyll-sitemap (~> 1.1.1)

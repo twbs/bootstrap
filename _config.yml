@@ -19,8 +19,18 @@ encoding:         UTF-8
 exclude:          [assets/scss/]
 
 gems:
+  - algoliasearch-jekyll
   - jekyll-redirect-from
   - jekyll-sitemap
+
+algolia:
+  application_id: "YHC4ZXLJL7"
+  index_name: "bootstrap_docs"
+  read_only_api_key: "250a854084e2ce05558580cf48695b56"
+  record_css_selector: p,h1,h2,h3,h4,h5,h6
+  excluded_files:
+    - index.html
+
 
 # Social
 title: Bootstrap
