@@ -68,15 +68,15 @@ All HTML headings, `<h1>` through `<h6>`, are available.
 <h6>h6. Bootstrap heading</h6>
 {% endhighlight %}
 
-`.h1` through `.h6` classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.
+`.heading-1` through `.heading-xl-6` classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element or if you want responsive heading styling.
 
 {% example html %}
-<p class="h1">h1. Bootstrap heading</p>
-<p class="h2">h2. Bootstrap heading</p>
-<p class="h3">h3. Bootstrap heading</p>
-<p class="h4">h4. Bootstrap heading</p>
-<p class="h5">h5. Bootstrap heading</p>
-<p class="h6">h6. Bootstrap heading</p>
+<p class="heading-1">heading-1. Bootstrap heading</p>
+<p class="heading-sm-2">heading-sm-2. Bootstrap heading</p>
+<p class="heading-md-3">heading-md-3. Bootstrap heading</p>
+<p class="heading-lg-4">heading-lg-4. Bootstrap heading</p>
+<p class="heading-xl-5">heading-xl-5. Bootstrap heading</p>
+<p class="heading-6">heading-6. Bootstrap heading</p>
 {% endexample %}
 
 ### Customizing headings
@@ -115,8 +115,8 @@ Traditional heading elements are designed to work best in the meat of your page 
 
 {% highlight html %}
 <h1 class="display-1">Display 1</h1>
-<h1 class="display-2">Display 2</h1>
-<h1 class="display-3">Display 3</h1>
+<h1 class="display-md-2">Display 2 (Medium devices)</h1>
+<h1 class="display-lg-3">Display 3 (Large devices)</h1>
 <h1 class="display-4">Display 4</h1>
 {% endhighlight %}
 

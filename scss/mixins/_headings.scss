@@ -1,0 +1,81 @@
+@mixin heading-defaults {
+  margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
+
+@mixin display-defaults {
+  line-height: $display-line-height;
+}
+
+@mixin make-responsive-headings {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      %heading#{$infix} {
+        @include heading-defaults();
+      }
+
+      .heading#{$infix}-1 {
+        @extend %heading#{$infix};
+        font-size: $font-size-h1;
+      }
+      .heading#{$infix}-2 {
+        @extend %heading#{$infix};
+        font-size: $font-size-h2;
+      }
+      .heading#{$infix}-3 {
+        @extend %heading#{$infix};
+        font-size: $font-size-h3;
+      }
+      .heading#{$infix}-4 {
+        @extend %heading#{$infix};
+        font-size: $font-size-h4;
+      }
+      .heading#{$infix}-5 {
+        @extend %heading#{$infix};
+        font-size: $font-size-h5;
+      }
+      .heading#{$infix}-6 {
+        @extend %heading#{$infix};
+        font-size: $font-size-h6;
+      }
+    }
+  }
+}
+
+@mixin make-display-headings {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      %display#{$infix} {
+        @include display-defaults();
+      }
+
+      .display#{$infix}-1 {
+        @extend %display#{$infix};
+        font-size: $display1-size;
+        font-weight: $display1-weight;
+      }
+      .display#{$infix}-2 {
+        @extend %display#{$infix};
+        font-size: $display2-size;
+        font-weight: $display2-weight;
+      }
+      .display#{$infix}-3 {
+        @extend %display#{$infix};
+        font-size: $display3-size;
+        font-weight: $display3-weight;
+      }
+      .display#{$infix}-4 {
+        @extend %display#{$infix};
+        font-size: $display4-size;
+        font-weight: $display4-weight;
+      }
+    }
+  }
+}
