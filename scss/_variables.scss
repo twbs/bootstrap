@@ -602,14 +602,14 @@ $navbar-inverse-color:                 rgba($white,.5) !default;
 $navbar-inverse-hover-color:           rgba($white,.75) !default;
 $navbar-inverse-active-color:          rgba($white,1) !default;
 $navbar-inverse-disabled-color:        rgba($white,.25) !default;
-$navbar-inverse-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-inverse-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-inverse-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-inverse-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
 $navbar-inverse-toggler-border-color:  rgba($white,.1) !default;
 
 $navbar-light-color:                rgba($black,.5) !default;
 $navbar-light-hover-color:          rgba($black,.7) !default;
 $navbar-light-active-color:         rgba($black,.9) !default;
 $navbar-light-disabled-color:       rgba($black,.3) !default;
-$navbar-light-toggler-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
+$navbar-light-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
 $navbar-light-toggler-border-color: rgba($black,.1) !default;
 
 // Pagination
@@ -679,7 +679,7 @@ $card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) 
 $card-cap-bg:              $gray-lightest !default;
 $card-bg:                  $white !default;
 
-$card-link-hover-color:    $white !default;
+$card-inverse-link-hover-color:    $white !default;
 
 $card-img-overlay-padding: 1.25rem !default;
 
@@ -700,7 +700,9 @@ $tooltip-padding-y:           3px !default;
 $tooltip-padding-x:           8px !default;
 $tooltip-margin:              0 !default;
 
+
 $tooltip-arrow-width:         5px !default;
+$tooltip-arrow-height:        5px !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
 
@@ -723,6 +725,7 @@ $popover-content-padding-y:           9px !default;
 $popover-content-padding-x:           14px !default;
 
 $popover-arrow-width:                 10px !default;
+$popover-arrow-height:                5px !default;
 $popover-arrow-color:                 $popover-bg !default;
 
 $popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;

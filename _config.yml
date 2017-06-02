@@ -9,18 +9,18 @@ kramdown:
 permalink:        pretty
 
 # Server
-source:           docs
-destination:      _gh_pages
-host:             0.0.0.0
+source:           .
+destination:      ./_gh_pages
 port:             9001
 baseurl:          ""
-url:              https://v4-alpha.getbootstrap.com
+url:              https://getbootstrap.com
 encoding:         UTF-8
-exclude:          [assets/scss/]
+exclude:          [.git, .github, assets/scss/, build, js, node_modules, nuget, scss, vendor, bower.json, composer.json, Gemfile, Gemfile.lock, Gruntfile.js, package.js, package.json, sache.json]
 
 gems:
   - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-toc
 
 # Social
 title: Bootstrap
@@ -32,6 +32,7 @@ social_image_path: /assets/brand/bootstrap-social.png
 
 # Custom vars
 current_version:  4.0.0-alpha.6
+docs_version:     4.0
 repo:             https://github.com/twbs/bootstrap
 slack:            https://bootstrap-slack.herokuapp.com
 
@@ -42,6 +43,7 @@ download:
 blog:             https://blog.getbootstrap.com
 expo:             https://expo.getbootstrap.com
 themes:           https://themes.getbootstrap.com
+jobs:             https://jobs.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
@@ -51,5 +53,5 @@ cdn:
   js_hash:        "sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
   jquery:         https://code.jquery.com/jquery-3.2.1.slim.min.js
   jquery_hash:    "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  popper:         https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.9.4/umd/popper.min.js
-  popper_hash:    "sha256-KTKnuJPRS70XKLm+ka+irprJFaz/MLZQKHIID7ECCmw="
+  popper:         https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.9.9/umd/popper.min.js
+  popper_hash:    "sha256-c477vRLKQv1jt9o7w6TTBzFyFznTaZjoMLTDFi7Hlxc="

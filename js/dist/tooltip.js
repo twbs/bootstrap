@@ -51,6 +51,7 @@ var Tooltip = function ($) {
   };
 
   var AttachmentMap = {
+    AUTO: 'auto',
     TOP: 'top',
     RIGHT: 'right',
     BOTTOM: 'bottom',
@@ -96,7 +97,8 @@ var Tooltip = function ($) {
 
   var Selector = {
     TOOLTIP: '.tooltip',
-    TOOLTIP_INNER: '.tooltip-inner'
+    TOOLTIP_INNER: '.tooltip-inner',
+    ARROW: '.arrow'
   };
 
   var Trigger = {
@@ -253,6 +255,9 @@ var Tooltip = function ($) {
             },
             flip: {
               behavior: this.config.fallbackPlacement
+            },
+            arrow: {
+              element: Selector.ARROW
             }
           },
           onCreate: function onCreate(data) {

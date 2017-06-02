@@ -68,8 +68,10 @@ const Dropdown = (($) => {
   }
 
   const AttachmentMap = {
-    TOP    : 'top-start',
-    BOTTOM : 'bottom-start'
+    TOP       : 'top-start',
+    TOPEND    : 'top-end',
+    BOTTOM    : 'bottom-start',
+    BOTTOMEND : 'bottom-end'
   }
 
   const Default = {
@@ -144,21 +146,21 @@ const Dropdown = (($) => {
         return
       }
 
-      // Handle dropup
-      const dropdownPlacement = $(this._element).parent().hasClass(ClassName.DROPUP) ? AttachmentMap.TOP : this._config.placement
-      this._popper = new Popper(this._element, this._menu, {
-        placement : dropdownPlacement,
+      let element = this._element
+      // for dropup with alignment we use the parent as popper container
+      if ($(parent).hasClass(ClassName.DROPUP)) {
+        if ($(this._menu).hasClass(ClassName.MENULEFT) || $(this._menu).hasClass(ClassName.MENURIGHT)) {
+          element = parent
+        }
+      }
+      this._popper = new Popper(element, this._menu, {
+        placement : this._getPlacement(),
         modifiers : {
           offset : {
             offset : this._config.offset
           },
           flip : {
             enabled : this._config.flip
-          },
-          beforeApplyStyle: {
-            order: 899, // 900 is the order of applyStyle
-            enabled: true,
-            fn: this._beforePopperApplyStyle
           }
         }
       })
@@ -238,21 +240,23 @@ const Dropdown = (($) => {
       return this._menu
     }
 
-    _beforePopperApplyStyle(data) {
-      if ($(data.instance.popper).hasClass(ClassName.MENURIGHT)) {
-        data.styles = {
-          right: 0,
-          left: 'auto'
-        }
-      }
+    _getPlacement() {
+      const $parentDropdown = $(this._element).parent()
+      let placement = this._config.placement
 
-      if ($(data.instance.popper).hasClass(ClassName.MENULEFT)) {
-        data.styles = {
-          right: 'auto',
-          left: 0
+      // Handle dropup
+      if ($parentDropdown.hasClass(ClassName.DROPUP) || this._config.placement === AttachmentMap.TOP) {
+        placement = AttachmentMap.TOP
+        if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
+          placement = AttachmentMap.TOPEND
         }
       }
-      return data
+      else {
+        if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
+          placement = AttachmentMap.BOTTOMEND
+        }
+      }
+      return placement
     }
 
     // static

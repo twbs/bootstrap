@@ -51,6 +51,7 @@ const Tooltip = (($) => {
   }
 
   const AttachmentMap = {
+    AUTO   : 'auto',
     TOP    : 'top',
     RIGHT  : 'right',
     BOTTOM : 'bottom',
@@ -98,7 +99,8 @@ const Tooltip = (($) => {
 
   const Selector = {
     TOOLTIP       : '.tooltip',
-    TOOLTIP_INNER : '.tooltip-inner'
+    TOOLTIP_INNER : '.tooltip-inner',
+    ARROW         : '.arrow'
   }
 
   const Trigger = {
@@ -287,16 +289,19 @@ const Tooltip = (($) => {
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
         this._popper = new Popper(this.element, tip, {
-          placement : attachment,
-          modifiers : {
-            offset : {
-              offset : this.config.offset
+          placement: attachment,
+          modifiers: {
+            offset: {
+              offset: this.config.offset
             },
-            flip : {
-              behavior : this.config.fallbackPlacement
+            flip: {
+              behavior: this.config.fallbackPlacement
+            },
+            arrow: {
+              element: Selector.ARROW
             }
           },
-          onCreate : (data) => {
+          onCreate: (data) => {
             if (data.originalPlacement !== data.placement) {
               this._handlePopperPlacementChange(data)
             }
