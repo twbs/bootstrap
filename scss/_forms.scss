@@ -94,6 +94,7 @@ select.form-control {
   padding-top: calc(#{$input-btn-padding-y} - #{$input-btn-border-width} * 2);
   padding-bottom: calc(#{$input-btn-padding-y} - #{$input-btn-border-width} * 2);
   margin-bottom: 0; // Override the `<label>` default
+  text-align: right;
 }
 
 .col-form-label-lg {
