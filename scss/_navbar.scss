@@ -77,9 +77,8 @@
   }
 
   .dropdown-menu {
-    position: static !important;
+    position: static;
     float: none;
-    transform: unset !important;
   }
 }
 
@@ -142,6 +141,13 @@
 
     &#{$infix} {
       @include media-breakpoint-down($breakpoint) {
+        .navbar-nav {
+          .dropdown-menu {
+            position: static;
+            float: none;
+          }
+        }
+
         > .container,
         > .container-fluid {
           padding-right: 0;
@@ -158,8 +164,17 @@
           flex-direction: row;
 
           .dropdown-menu {
-            position: absolute !important;
-            top: 100% !important;
+            position: absolute;
+          }
+
+          .dropdown-menu-right {
+            right: 0;
+            left: auto; // Reset the default from `.dropdown-menu`
+          }
+
+          .dropdown-menu-left {
+            right: auto;
+            left: 0;
           }
 
           .nav-link {
