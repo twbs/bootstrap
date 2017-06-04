@@ -2125,7 +2125,7 @@ var Modal = function ($) {
           $(this._backdrop).addClass(animate);
         }
 
-        $(this._backdrop).appendTo(document.body);
+        $(this._backdrop).appendTo(this._config.backDropPositions);
 
         $(this._element).on(Event.CLICK_DISMISS, function (event) {
           if (_this17._ignoreBackdropClick) {
