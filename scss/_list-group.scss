@@ -21,6 +21,7 @@
   width: 100%; // For `<button>`s (anchors become 100% by default though)
   color: $list-group-link-color;
   text-align: inherit; // For `<button>`s (anchors inherit)
+  cursor: pointer;
 
   // Hover state
   @include hover-focus {
