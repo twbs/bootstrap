@@ -88,10 +88,10 @@
     "postcss-cli": "^4.0.0",
     "postcss-flexbugs-fixes": "^3.0.0",
     "qunit-phantomjs-runner": "^2.3.0",
-    "qunitjs": "^2.3.2",
+    "qunitjs": "^2.3.3",
     "shelljs": "^0.7.7",
     "shx": "^0.2.2",
-    "uglify-js": "^3.0.13"
+    "uglify-js": "^3.0.15"
   },
   "engines": {
     "node": ">=4"
