@@ -493,7 +493,11 @@ const Tooltip = (($) => {
 
         $(this.element).closest('.modal').on(
           'hide.bs.modal',
-          () => this.hide()
+          () => {
+            if (!this._isTransitioning) {
+              this.hide()
+            }
+          }
         )
       })
 
