@@ -36,7 +36,7 @@ const Popover = (($) => {
   })
 
   const DefaultType = $.extend({}, Tooltip.DefaultType, {
-    content : '(string|element|function)'
+    content : '(string|element|function|number)'
   })
 
   const ClassName = {
