@@ -830,7 +830,7 @@ With that in mind, consider the following two demos for our custom form validati
 
 ### Custom styles
 
-For custom Bootstrap form validation messages, you'll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript.
+For custom Bootstrap form validation messages, you'll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you.
 
 {% example html %}
 <form class="container" id="needs-validation" novalidate>
@@ -871,7 +871,7 @@ For custom Bootstrap form validation messages, you'll need to add the `novalidat
 </form>
 
 <script>
-// Example JavaScript for disabling form submission if there are invalid fields
+// Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   "use strict";
   window.addEventListener("load", function() {
