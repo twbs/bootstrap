@@ -20,13 +20,15 @@
 }
 
 tr {
-  &.collapse.show {
+  &.collapse.show,
+  &.collapse.flexshow {
     display: table-row;
   }
 }
 
 tbody {
-  &.collapse.show {
+  &.collapse.show,
+  &.collapse.flexshow {
     display: table-row-group;
   }
 }

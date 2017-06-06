@@ -88,7 +88,8 @@ const Collapse = (() => {
         }
       }
 
-      this._parent = this._config.parent ? this._getParent() : null
+      this._parent    = this._config.parent ? this._getParent() : null
+      this._showClass = this._getShowClass()
 
       if (!this._config.parent) {
         this._addAriaAndCollapsedClass(this._element, this._triggerArray)
@@ -114,7 +115,7 @@ const Collapse = (() => {
     // public
 
     toggle() {
-      if ($(this._element).hasClass(ClassName.SHOW) || $(this._element).hasClass(ClassName.FLEXSHOW)) {
+      if ($(this._element).hasClass(this._showClass)) {
         this.hide()
       } else {
         this.show()
@@ -122,9 +123,8 @@ const Collapse = (() => {
     }
 
     show() {
-      const showClass = this._getShowClass()
       if (this._isTransitioning ||
-        $(this._element).hasClass(showClass)) {
+        $(this._element).hasClass(this._showClass)) {
         return
       }
 
@@ -178,7 +178,7 @@ const Collapse = (() => {
         $(this._element)
           .removeClass(ClassName.COLLAPSING)
           .addClass(ClassName.COLLAPSE)
-          .addClass(showClass)
+          .addClass(this._showClass)
 
         this._element.style[dimension] = ''
 
@@ -203,9 +203,8 @@ const Collapse = (() => {
     }
 
     hide() {
-      const showClass = this._getShowClass()
       if (this._isTransitioning ||
-        !$(this._element).hasClass(showClass)) {
+        !$(this._element).hasClass(this._showClass)) {
         return
       }
 
@@ -215,8 +214,7 @@ const Collapse = (() => {
         return
       }
 
-      const dimension       = this._getDimension()
-
+      const dimension                = this._getDimension()
       this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`
 
       Util.reflow(this._element)
@@ -224,7 +222,7 @@ const Collapse = (() => {
       $(this._element)
         .addClass(ClassName.COLLAPSING)
         .removeClass(ClassName.COLLAPSE)
-        .removeClass(showClass)
+        .removeClass(this._showClass)
 
       if (this._triggerArray.length) {
         for (let i = 0; i < this._triggerArray.length; i++) {
@@ -264,6 +262,16 @@ const Collapse = (() => {
 
     setTransitioning(isTransitioning) {
       this._isTransitioning = isTransitioning
+    }
+
+    update() {
+      if ($(this._element).hasClass(this._showClass)) {
+        $(this._element).removeClass(this._showClass)
+        this._showClass = this._getShowClass()
+        $(this._element).addClass(this._showClass)
+      } else {
+        this._showClass = this._getShowClass()
+      }
     }
 
     dispose() {
@@ -331,15 +339,28 @@ const Collapse = (() => {
 
     _getShowClass() {
       const tabClass = this._element.classList
-      let useFlex = $(this._element).css('display') === 'flex'
+
+      // Detect flex for inline style
+      let useFlex = $(this._element).css('display').indexOf('flex') !== -1
+
+      // Create a wrapper to hide our flex detection
+      const $tmpWrapper = $('<div class="d-none"></div>')
+      $tmpWrapper.insertAfter($(this._element))
+
+      const $tmpElem = $('<div></div>')
+      $tmpWrapper.append($tmpElem)
+
       // Detect flex in used classes
       for (let i = 0; i < tabClass.length; i++) {
-        const tmpDisplay = $('<div></div>').addClass(tabClass[i]).css('display')
-        if (tmpDisplay === 'flex') {
+        $tmpElem.addClass(tabClass[i])
+        const tmpDisplay = $tmpElem.css('display')
+        $tmpElem.removeClass(tabClass[i])
+        if (tmpDisplay.indexOf('flex') !== -1) {
           useFlex = true
           break
         }
       }
+      $tmpWrapper.remove()
       return !useFlex ? ClassName.SHOW : ClassName.FLEXSHOW
     }
 
