@@ -811,7 +811,9 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 
 Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](http://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
 
-**We highly recommend using custom validation messages as native browser validation is not announced to most assistive technologies like screenreaders.**
+{% callout warning %}
+We **highly recommend** custom validation styles as native browser defaults are not announced to screenreaders.
+{% endcallout %}
 
 ### How it works
 
