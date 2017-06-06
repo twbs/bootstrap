@@ -809,11 +809,19 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 
 ## Validation
 
-Bootstrap includes validation styles for danger, warning, and success states on most form controls.
+Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](http://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
+
+**We highly recommend using custom validation messages as native browser validation is not announced to most assistive technologies like screenreaders.**
 
 ### How it works
 
-Here's a rundown of how they work:
+Here's a rundown of how form validation works:
+
+- HTML form validation includes support for two CSS pseudo-classes, `:invalid` and `:valid`, for use on `<input>`s.
+- All modern browsers support the [constraint validation API](https://www.w3.org/TR/html5/forms.html#the-constraint-validation-api), a series of JavaScript methods for validating form controls.
+- You may choose to rely on the browser default validation feedback, or implement custom feedback styles with HTML and CSS.
+- You may provide custom validity messages with `setCustomValidity` in JavaScript.
+
 
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.col-form-label`, `.form-control`, or custom form element will receive the validation styles.
 - Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
