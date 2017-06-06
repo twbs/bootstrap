@@ -817,11 +817,142 @@ Provide valuable, actionable feedback to your users with HTML5 form validationâ€
 
 Here's a rundown of how form validation works:
 
-- HTML form validation includes support for two CSS pseudo-classes, `:invalid` and `:valid`, for use on `<input>`s.
+- HTML form validation includes support for two CSS pseudo-classes, `:invalid` and `:valid`, on `<input>`, `<select>`, and `<textarea>` elements.
+- Due to constaints in how CSS works, we cannot (at present) apply styles to a `<label>` that comes before a form control in the DOM without the help of custom JavaScript.
+- Bootstrap scopes the `:invalid` and `:valid` styles to parent `.was-validated` class, usually applied to the `<form>`. Otherwise, any required field without a value shows up as invalid on page load. This way, you may choose when to activate them (typically after form submission is attempted).
 - All modern browsers support the [constraint validation API](https://www.w3.org/TR/html5/forms.html#the-constraint-validation-api), a series of JavaScript methods for validating form controls.
-- You may choose to rely on the browser default validation feedback, or implement custom feedback styles with HTML and CSS.
+- Feedback messages may utilize the browser defaults (different for each browser, and unstylable via CSS) or our custom feedback styles with additional HTML and CSS.
 - You may provide custom validity messages with `setCustomValidity` in JavaScript.
 
+With that in mind, consider the following two demos for our custom form validation styles and browser defaults.
+
+### Custom styles
+
+For custom Bootstrap form validation messages, you'll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript.
+
+{% example html %}
+<form class="container" id="needs-validation" novalidate>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">First name</label>
+      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom02">Last name</label>
+      <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom03">City</label>
+      <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+      <div class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom04">State</label>
+      <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
+      <div class="invalid-feedback">
+        Please provide a valid state.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom05">Zip</label>
+      <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+      <div class="invalid-feedback">
+        Please provide a valid zip.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+
+<script>
+// Example JavaScript for disabling form submission if there are invalid fields
+(function() {
+  "use strict";
+  window.addEventListener("load", function() {
+    var form = document.getElementById("needs-validation");
+    form.addEventListener("submit", function(event) {
+      if (form.checkValidity() == false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add("was-validated");
+    }, false);
+  }, false);
+}());
+</script>
+{% endexample %}
+
+### Browser defaults
+
+{% example html %}
+<form>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <input type="text" class="form-control" placeholder="First name" value="Mark" required>
+    </div>
+    <div class="col-md-6 mb-3">
+      <input type="text" class="form-control" placeholder="Last name" value="Otto" required>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-7 mb-3">
+      <input type="text" class="form-control" placeholder="City" required>
+    </div>
+    <div class="col-md-3 mb-3">
+      <input type="text" class="form-control" placeholder="State" required>
+    </div>
+    <div class="col-md-2 mb-3">
+      <input type="text" class="form-control" placeholder="Zip" required>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+{% endexample %}
+
+### Supported elements
+
+Our example forms show native textual `<input>`s above, but form validation styles are available for our custom form controls, too.
+
+{% example html %}
+<form class="was-validated">
+  <label class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" required>
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Check this custom checkbox</span>
+  </label>
+
+  <div class="custom-controls-stacked d-block my-3">
+    <label class="custom-control custom-radio">
+      <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input" required>
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">Toggle this custom radio</span>
+    </label>
+    <label class="custom-control custom-radio">
+      <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input" required>
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">Or toggle this other custom radio</span>
+    </label>
+  </div>
+
+  <select class="custom-select d-block my-3" required>
+    <option value="">Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+
+  <label class="custom-file">
+    <input type="file" id="file" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+</form>
+{% endexample %}
 
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.col-form-label`, `.form-control`, or custom form element will receive the validation styles.
 - Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.

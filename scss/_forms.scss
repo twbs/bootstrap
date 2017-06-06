@@ -242,6 +242,88 @@ select.form-control-lg {
 //
 // Apply contextual and semantic states to individual form controls.
 
+$form-feedback-valid-color: $green !default;
+$form-feedback-invalid-color: $red !default;
+
+.invalid-feedback {
+  display: none;
+  margin-top: .25rem;
+  font-size: .875rem;
+  color: $form-feedback-invalid-color;
+}
+
+.invalid-tooltip {
+  position: absolute;
+  top: 100%;
+  z-index: 5;
+  display: none;
+  width: 250px;
+  padding: .5rem;
+  margin-top: .1rem;
+  font-size: .875rem;
+  line-height: 1;
+  color: #fff;
+  background-color: rgba($form-feedback-invalid-color,.8);
+  border-radius: .2rem;
+}
+
+.was-validated {
+  // input, textarea, select, and custom select
+  .form-control:invalid,
+  .custom-select:invalid {
+    border-color: $form-feedback-invalid-color;
+
+    &:focus {
+      box-shadow: 0 0 0 .2rem rgba($form-feedback-invalid-color,.25);
+    }
+
+    ~ .invalid-feedback,
+    ~ .invalid-tooltip {
+      display: block;
+    }
+  }
+
+  // TODO: redo check markup lol crap
+  .form-check-input:invalid {
+    + .form-check-label {
+      color: $form-feedback-invalid-color;
+    }
+  }
+
+  // custom radios and checks
+  .custom-control-input:invalid {
+    ~ .custom-control-indicator {
+      background-color: rgba($form-feedback-invalid-color, .25);
+    }
+    ~ .custom-control-description {
+      color: $form-feedback-invalid-color;
+    }
+  }
+
+  // custom file
+  .custom-file-input:invalid {
+    ~ .custom-file-control {
+      border-color: $form-feedback-invalid-color;
+
+      &::before { border-color: inherit; }
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 .2rem rgba($form-feedback-invalid-color,.25);
+    }
+  }
+}
+
+// .is-validated .form-control:invalid {
+//   border-color: rgba(255,0,0,1);
+// }
+// .is-validated .form-control:invalid:focus {
+//   box-shadow: 0 0 0 .2rem rgba(255,0,0,.2);
+// }
+// .is-validated .form-control:invalid + .form-control-invalid-text {
+//   display: block;
+// }
+
 .form-control-feedback {
   margin-top: $form-feedback-margin-top;
 }
