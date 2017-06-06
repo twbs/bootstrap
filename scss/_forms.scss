@@ -314,68 +314,6 @@ $form-feedback-invalid-color: $red !default;
   }
 }
 
-// .is-validated .form-control:invalid {
-//   border-color: rgba(255,0,0,1);
-// }
-// .is-validated .form-control:invalid:focus {
-//   box-shadow: 0 0 0 .2rem rgba(255,0,0,.2);
-// }
-// .is-validated .form-control:invalid + .form-control-invalid-text {
-//   display: block;
-// }
-
-.form-control-feedback {
-  margin-top: $form-feedback-margin-top;
-}
-
-.form-control-success,
-.form-control-warning,
-.form-control-danger {
-  padding-right: ($input-btn-padding-x * 3);
-  background-repeat: no-repeat;
-  background-position: center right ($input-height-inner / 4);
-  background-size: ($input-height-inner / 2) ($input-height-inner / 2);
-}
-
-.form-control-validated,
-.is-validated {
-  padding-right: ($input-btn-padding-x * 3);
-  background-repeat: no-repeat;
-  background-position: center right ($input-height-inner / 4);
-  background-size: ($input-height-inner / 2) ($input-height-inner / 2);
-}
-
-// Form validation states
-.has-success {
-  @include form-control-validation($brand-success);
-
-  .form-control-success,
-  .form-control-validated,
-  .is-validated {
-    background-image: $form-icon-success;
-  }
-}
-
-.has-warning {
-  @include form-control-validation($brand-warning);
-
-  .form-control-warning,
-  .form-control-validated,
-  .is-validated {
-    background-image: $form-icon-warning;
-  }
-}
-
-.has-danger {
-  @include form-control-validation($brand-danger);
-
-  .form-control-danger,
-  .form-control-validated,
-  .is-validated {
-    background-image: $form-icon-danger;
-  }
-}
-
 
 // Inline forms
 //
