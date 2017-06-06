@@ -890,6 +890,10 @@ For custom Bootstrap form validation messages, you'll need to add the `novalidat
 
 ### Browser defaults
 
+Not interested in custom validation feedback messages or writing JavaScript to change form behaviors? All good, you can use the browser defaults. Try submitting the form below. Depending on your browser and OS, you'll see a slightly different style of feedback.
+
+While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
+
 {% example html %}
 <form>
   <div class="row">
