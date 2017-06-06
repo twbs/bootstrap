@@ -188,6 +188,10 @@ select.form-control-lg {
 
 .form-group {
   margin-bottom: $form-group-margin-bottom;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .form-text {
