@@ -188,6 +188,12 @@ select.form-control-lg {
 
 .form-group {
   margin-bottom: $form-group-margin-bottom;
+
+  // Add clearfix to form-group so they work properly as grid rows. Do nothing if flex is enabled.
+  @if $enable-flex {
+  } @else {
+    @include clearfix();
+  }
 }
 
 .form-text {
