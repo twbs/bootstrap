@@ -49,11 +49,11 @@
   background-color: $list-group-bg;
   border: $list-group-border-width solid $list-group-border-color;
 
-  &:first-child {
+  &:first-of-type {
     @include border-top-radius($list-group-border-radius);
   }
 
-  &:last-child {
+  &:last-of-type {
     margin-bottom: 0;
     @include border-bottom-radius($list-group-border-radius);
   }
