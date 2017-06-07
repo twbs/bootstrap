@@ -242,9 +242,6 @@ select.form-control-lg {
 //
 // Apply contextual and semantic states to individual form controls.
 
-$form-feedback-valid-color: $green !default;
-$form-feedback-invalid-color: $red !default;
-
 .invalid-feedback {
   display: none;
   margin-top: .25rem;
