@@ -268,6 +268,57 @@ $form-feedback-invalid-color: $red !default;
 }
 
 .was-validated {
+  //
+  // Valid state
+  //
+  .form-control:valid,
+  .custom-select:valid {
+    border-color: $form-feedback-valid-color;
+
+    &:focus {
+      box-shadow: 0 0 0 .2rem rgba($form-feedback-valid-color,.25);
+    }
+
+    ~ .invalid-feedback,
+    ~ .invalid-tooltip {
+      display: block;
+    }
+  }
+
+  // TODO: redo check markup lol crap
+  .form-check-input:valid {
+    + .form-check-label {
+      color: $form-feedback-valid-color;
+    }
+  }
+
+  // custom radios and checks
+  .custom-control-input:valid {
+    ~ .custom-control-indicator {
+      background-color: rgba($form-feedback-valid-color, .25);
+    }
+    ~ .custom-control-description {
+      color: $form-feedback-valid-color;
+    }
+  }
+
+  // custom file
+  .custom-file-input:valid {
+    ~ .custom-file-control {
+      border-color: $form-feedback-valid-color;
+
+      &::before { border-color: inherit; }
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 .2rem rgba($form-feedback-valid-color,.25);
+    }
+  }
+
+  //
+  // Invalid state
+  //
+
   // input, textarea, select, and custom select
   .form-control:invalid,
   .custom-select:invalid {
