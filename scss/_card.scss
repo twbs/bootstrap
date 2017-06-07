@@ -197,7 +197,7 @@
 
     .card {
       display: flex;
-      flex: 1 0 0;
+      flex: 1 0 0%;
       flex-direction: column;
       margin-right: $card-deck-margin;
       margin-left: $card-deck-margin;
@@ -216,7 +216,7 @@
     flex-flow: row wrap;
 
     .card {
-      flex: 1 0 0;
+      flex: 1 0 0%;
 
       + .card {
         margin-left: 0;
