@@ -1,7 +1,8 @@
 // Badges
 
-@mixin badge-variant($color) {
-  background-color: $color;
+@mixin badge-variant($bgcolor,$color) {
+  background-color: $bgcolor;
+  color: $color;
 
   &[href] {
     @include hover-focus {
