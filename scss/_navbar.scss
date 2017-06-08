@@ -281,4 +281,9 @@
   .navbar-text {
     color: $navbar-inverse-color;
   }
+  
+  .input-group .form-control {
+    border-color: $btn-secondary-border;
+  }
+  
 }
