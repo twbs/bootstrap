@@ -186,6 +186,7 @@ const Dropdown = (($) => {
     }
 
     update() {
+      this._inNavbar = this._detectNavbar()
       if (this._popper !== null) {
         this._popper.scheduleUpdate()
       }
