@@ -62,8 +62,7 @@
 
 select.form-control {
   &:not([size]):not([multiple]) {
-    $select-border-width: ($border-width * 2);
-    height: calc(#{$input-height} + #{$select-border-width});
+    height: $input-height;
   }
 
   &:focus::-ms-value {
@@ -161,8 +160,7 @@ select.form-control {
 
 select.form-control-sm {
   &:not([size]):not([multiple]) {
-    $select-border-width: ($border-width * 2);
-    height: calc(#{$input-height-sm} + #{$select-border-width});
+    height: $input-height-sm;
   }
 }
 
@@ -175,8 +173,7 @@ select.form-control-sm {
 
 select.form-control-lg {
   &:not([size]):not([multiple]) {
-    $select-border-width: ($border-width * 2);
-    height: calc(#{$input-height-lg} + #{$select-border-width});
+    height: $input-height-lg;
   }
 }
 
