@@ -18,6 +18,10 @@
     "scss/bootstrap.scss",
     "dist/js/bootstrap.js"
   ],
+  "browser": [
+    "dist/css/bootstrap.min.css",
+    "dist/js/bootstrap.min.js",
+  ],
   "ignore": [
     "/.*",
     "/_*",
