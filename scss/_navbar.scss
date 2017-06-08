@@ -141,13 +141,6 @@
 
     &#{$infix} {
       @include media-breakpoint-down($breakpoint) {
-        .navbar-nav {
-          .dropdown-menu {
-            position: static;
-            float: none;
-          }
-        }
-
         > .container,
         > .container-fluid {
           padding-right: 0;
@@ -170,11 +163,6 @@
           .dropdown-menu-right {
             right: 0;
             left: auto; // Reset the default from `.dropdown-menu`
-          }
-
-          .dropdown-menu-left {
-            right: auto;
-            left: 0;
           }
 
           .nav-link {

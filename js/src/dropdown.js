@@ -251,21 +251,6 @@ const Dropdown = (($) => {
       return $(this._element).closest('.navbar').length > 0
     }
 
-    _navbarPositioning() {
-      const $parentNavbar = $(this._element).closest('.navbar')
-      if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
-        if (!$parentNavbar.hasClass('navbar-expand')) {
-          return {
-            position: 'static',
-            transform: '',
-            float: 'none'
-          }
-        }
-      }
-
-      return {}
-    }
-
     _getPopperConfig() {
       const popperConfig = {
         placement : this._getPlacement(),
