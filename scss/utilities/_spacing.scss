@@ -37,5 +37,23 @@
       margin-top:    auto !important;
       margin-bottom: auto !important;
     }
+
+    // add negative margin
+        @if ($prop == margin ) { 
+          .#{$abbrev}n#{$infix}-#{$size}  { #{$prop}:        ($length-y * -1 ) ($length-x * -1 ) !important; }
+          .#{$abbrev}nt#{$infix}-#{$size} { #{$prop}-top:    ($length-y * -1 ) !important; }
+          .#{$abbrev}nr#{$infix}-#{$size} { #{$prop}-right:  ($length-x * -1 ) !important; }
+          .#{$abbrev}nb#{$infix}-#{$size} { #{$prop}-bottom: ($length-y * -1 ) !important; }
+          .#{$abbrev}nl#{$infix}-#{$size} { #{$prop}-left:   ($length-x * -1 ) !important; }
+          .#{$abbrev}nx#{$infix}-#{$size} {
+            #{$prop}-right: ($length-x * -1 ) !important;
+            #{$prop}-left:  ($length-x * -1 ) !important;
+          }
+          .#{$abbrev}ny#{$infix}-#{$size} {
+            #{$prop}-top:    ($length-y * -1 ) !important;
+            #{$prop}-bottom: ($length-y * -1 ) !important;
+          }
+        }
+
   }
 }
