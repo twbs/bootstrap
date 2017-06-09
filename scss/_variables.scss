@@ -316,12 +316,12 @@ $list-inline-padding: 5px !default;
 // Customizes the `.table` component with basic values, each used across all table variations.
 
 $table-cell-padding:            .75rem !default;
-$table-sm-cell-padding:         .3rem !default;
+$table-cell-padding-sm:         .3rem !default;
 
 $table-bg:                      transparent !default;
-$table-bg-accent:               rgba($black,.05) !default;
-$table-bg-hover:                rgba($black,.075) !default;
-$table-bg-active:               $table-bg-hover !default;
+$table-accent-bg:               rgba($black,.05) !default;
+$table-hover-bg:                rgba($black,.075) !default;
+$table-active-bg:               $table-hover-bg !default;
 
 $table-border-width:            $border-width !default;
 $table-border-color:            $gray-lighter !default;
@@ -330,8 +330,8 @@ $table-head-bg:                 $gray-lighter !default;
 $table-head-color:              $gray !default;
 
 $table-inverse-bg:              $gray-dark !default;
-$table-inverse-bg-accent:       rgba($white, .05) !default;
-$table-inverse-bg-hover:        rgba($white, .075) !default;
+$table-inverse-accent-bg:       rgba($white, .05) !default;
+$table-inverse-hover-bg:        rgba($white, .075) !default;
 $table-inverse-border-color:    lighten($gray-dark, 7.5%) !default;
 $table-inverse-color:           $body-bg !default;
 
