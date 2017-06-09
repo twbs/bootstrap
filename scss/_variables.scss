@@ -761,15 +761,15 @@ $badge-pill-border-radius:    10rem !default;
 $modal-inner-padding:         15px !default;
 
 $modal-dialog-margin:         10px !default;
-$modal-dialog-sm-up-margin-y: 30px !default;
+$modal-dialog-margin-y-sm-up: 30px !default;
 
 $modal-title-line-height:     $line-height-base !default;
 
 $modal-content-bg:               $white !default;
 $modal-content-border-color:     rgba($black,.2) !default;
 $modal-content-border-width:     $border-width !default;
-$modal-content-xs-box-shadow:    0 3px 9px rgba($black,.5) !default;
-$modal-content-sm-up-box-shadow: 0 5px 15px rgba($black,.5) !default;
+$modal-content-box-shadow-xs:    0 3px 9px rgba($black,.5) !default;
+$modal-content-box-shadow-sm-up: 0 5px 15px rgba($black,.5) !default;
 
 $modal-backdrop-bg:           $black !default;
 $modal-backdrop-opacity:      .5 !default;
