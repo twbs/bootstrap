@@ -9,18 +9,18 @@ kramdown:
 permalink:        pretty
 
 # Server
-source:           docs
-destination:      _gh_pages
-host:             0.0.0.0
+source:           .
+destination:      ./_gh_pages
 port:             9001
 baseurl:          ""
-url:              https://v4-alpha.getbootstrap.com
+url:              https://getbootstrap.com
 encoding:         UTF-8
-exclude:          [assets/scss/]
+exclude:          [.git, .github, assets/scss/, build, js, node_modules, nuget, scss, vendor, bower.json, composer.json, Gemfile, Gemfile.lock, Gruntfile.js, package.js, package.json, sache.json]
 
 gems:
   - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-toc
 
 # Social
 title: Bootstrap
@@ -32,6 +32,7 @@ social_image_path: /assets/brand/bootstrap-social.png
 
 # Custom vars
 current_version:  4.0.0-alpha.6
+docs_version:     4.0
 repo:             https://github.com/twbs/bootstrap
 slack:            https://bootstrap-slack.herokuapp.com
 
@@ -42,6 +43,7 @@ download:
 blog:             https://blog.getbootstrap.com
 expo:             https://expo.getbootstrap.com
 themes:           https://themes.getbootstrap.com
+jobs:             https://jobs.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes

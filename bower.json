@@ -20,14 +20,15 @@
   ],
   "ignore": [
     "/.*",
-    "_config.yml",
+    "/_*",
+    "about",
+    "assets",
+    "docs",
+    "js/tests",
+    "nuget",
     "CNAME",
     "composer.json",
-    "CONTRIBUTING.md",
-    "docs",
-    "Gruntfile.js",
-    "js/tests",
-    "test-infra"
+    "Gruntfile.js"
   ],
   "dependencies": {
     "jquery": ">=1.9.1",
