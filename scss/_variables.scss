@@ -396,7 +396,7 @@ $btn-transition:                 all .2s ease-in-out !default;
 // Forms
 
 $input-bg:                       $white !default;
-$input-bg-disabled:              $gray-lighter !default;
+$input-disabled-bg:              $gray-lighter !default;
 
 $input-color:                    $gray !default;
 $input-border-color:             rgba($black,.15) !default;
@@ -407,12 +407,12 @@ $input-border-radius:            $border-radius !default;
 $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
-$input-bg-focus:                 $input-bg !default;
-$input-border-color-focus:       lighten($brand-primary, 25%) !default;
-$input-box-shadow-focus:         $input-box-shadow, rgba($input-border-color-focus, .6) !default;
-$input-color-focus:              $input-color !default;
+$input-focus-bg:                 $input-bg !default;
+$input-focus-border-color:       lighten($brand-primary, 25%) !default;
+$input-focus-box-shadow:         $input-box-shadow, rgba($input-focus-border-color, .6) !default;
+$input-focus-color:              $input-color !default;
 
-$input-color-placeholder:        $gray-light !default;
+$input-placeholder-color:        $gray-light !default;
 
 $input-height:                   (($font-size-base * $input-btn-line-height) + ($input-btn-padding-y * 2)) !default;
 $input-height-lg:                (($font-size-lg * $input-btn-line-height-lg) + ($input-btn-padding-y-lg * 2)) !default;
