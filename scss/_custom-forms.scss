@@ -76,16 +76,16 @@
 
 .custom-checkbox {
   .custom-control-indicator {
-    @include border-radius($custom-checkbox-radius);
+    @include border-radius($custom-checkbox-border-radius);
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-checkbox-checked-icon;
+    background-image: $custom-checkbox-icon-checked;
   }
 
   .custom-control-input:indeterminate ~ .custom-control-indicator {
     background-color: $custom-checkbox-indeterminate-bg;
-    background-image: $custom-checkbox-indeterminate-icon;
+    background-image: $custom-checkbox-icon-indeterminate;
     @include box-shadow($custom-checkbox-indeterminate-box-shadow);
   }
 }
@@ -96,11 +96,11 @@
 
 .custom-radio {
   .custom-control-indicator {
-    border-radius: $custom-radio-radius;
+    border-radius: $custom-radio-border-radius;
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-radio-checked-icon;
+    background-image: $custom-radio-icon-checked;
   }
 }
 
@@ -175,7 +175,7 @@
 .custom-select-sm {
   padding-top: $custom-select-padding-y;
   padding-bottom: $custom-select-padding-y;
-  font-size: $custom-select-sm-font-size;
+  font-size: $custom-select-font-size-sm;
 
   // &:not([multiple]) {
   //   height: 26px;

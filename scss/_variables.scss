@@ -457,16 +457,16 @@ $custom-control-indicator-active-color:      $white !default;
 $custom-control-indicator-active-bg:         lighten($brand-primary, 35%) !default;
 $custom-control-indicator-active-box-shadow: none !default;
 
-$custom-checkbox-radius: $border-radius !default;
-$custom-checkbox-checked-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$custom-control-indicator-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$custom-checkbox-border-radius: $border-radius !default;
+$custom-checkbox-icon-checked: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$custom-control-indicator-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 $custom-checkbox-indeterminate-bg: $brand-primary !default;
-$custom-checkbox-indeterminate-indicator-color: $custom-control-indicator-checked-color !default;
-$custom-checkbox-indeterminate-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='#{$custom-checkbox-indeterminate-indicator-color}' d='M0 2h4'/%3E%3C/svg%3E"), "#", "%23") !default;
+$custom-checkbox-indicator-indeterminate-color: $custom-control-indicator-checked-color !default;
+$custom-checkbox-icon-indeterminate: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M0 2h4'/%3E%3C/svg%3E"), "#", "%23") !default;
 $custom-checkbox-indeterminate-box-shadow: none !default;
 
-$custom-radio-radius: 50% !default;
-$custom-radio-checked-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='#{$custom-control-indicator-checked-color}'/%3E%3C/svg%3E"), "#", "%23") !default;
+$custom-radio-border-radius: 50% !default;
+$custom-radio-icon-checked: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='#{$custom-control-indicator-checked-color}'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 $custom-select-padding-y:          .375rem !default;
 $custom-select-padding-x:          .75rem  !default;
@@ -486,7 +486,7 @@ $custom-select-border-radius: $border-radius !default;
 $custom-select-focus-border-color: lighten($brand-primary, 25%) !default;
 $custom-select-focus-box-shadow:   inset 0 1px 2px rgba($black, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
 
-$custom-select-sm-font-size:  75% !default;
+$custom-select-font-size-sm:  75% !default;
 
 $custom-file-height:           2.5rem !default;
 $custom-file-width:            14rem !default;
