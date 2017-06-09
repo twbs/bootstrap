@@ -569,19 +569,19 @@ $zindex-tooltip:            1070 !default;
 
 $nav-link-padding-y:            .5rem !default;
 $nav-link-padding-x:            1rem !default;
-$nav-disabled-link-color:       $gray-light !default;
+$nav-link-disabled-color:       $gray-light !default;
 
 $nav-tabs-border-color:                       #ddd !default;
 $nav-tabs-border-width:                       $border-width !default;
 $nav-tabs-border-radius:                      $border-radius !default;
 $nav-tabs-link-hover-border-color:            $gray-lighter !default;
-$nav-tabs-active-link-color:                  $gray !default;
-$nav-tabs-active-link-bg:                     $body-bg !default;
-$nav-tabs-active-link-border-color:           #ddd !default;
+$nav-tabs-link-active-color:                  $gray !default;
+$nav-tabs-link-active-bg:                     $body-bg !default;
+$nav-tabs-link-active-border-color:           #ddd !default;
 
 $nav-pills-border-radius:     $border-radius !default;
-$nav-pills-active-link-color: $component-active-color !default;
-$nav-pills-active-link-bg:    $component-active-bg !default;
+$nav-pills-link-active-color: $component-active-color !default;
+$nav-pills-link-active-bg:    $component-active-bg !default;
 
 // Navbar
 
