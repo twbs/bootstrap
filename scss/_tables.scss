@@ -153,20 +153,26 @@
 
 // Responsive tables
 //
-// Add `.table-responsive` to `.table`s and we'll make them mobile friendly by
-// enabling horizontal scrolling. Only applies <768px. Everything above that
-// will display normally.
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
 
 .table-responsive {
-  @include media-breakpoint-down(md) {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
 
-    // Prevent double border on horizontal scroll due to use of `display: block;`
-    &.table-bordered {
-      border: 0;
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+
+        // Prevent double border on horizontal scroll due to use of `display: block;`
+        &.table-bordered {
+          border: 0;
+        }
+      }
     }
   }
 }
