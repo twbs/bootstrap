@@ -238,9 +238,12 @@ select.form-control-lg {
 }
 
 
-// Form control feedback states
+// Form validation
 //
-// Apply contextual and semantic states to individual form controls.
+// Provide feedback to users when form field values are valid or invalid. Works
+// primarily for client-side validation via scoped `:invalid` and `:valid`
+// pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
+// server side validation.
 
 .invalid-feedback {
   display: none;
@@ -264,104 +267,8 @@ select.form-control-lg {
   border-radius: .2rem;
 }
 
-.was-validated {
-  //
-  // Valid state
-  //
-  .form-control:valid,
-  .custom-select:valid {
-    border-color: $form-feedback-valid-color;
-
-    &:focus {
-      box-shadow: 0 0 0 .2rem rgba($form-feedback-valid-color,.25);
-    }
-
-    ~ .invalid-feedback,
-    ~ .invalid-tooltip {
-      display: block;
-    }
-  }
-
-  // TODO: redo check markup lol crap
-  .form-check-input:valid {
-    + .form-check-label {
-      color: $form-feedback-valid-color;
-    }
-  }
-
-  // custom radios and checks
-  .custom-control-input:valid {
-    ~ .custom-control-indicator {
-      background-color: rgba($form-feedback-valid-color, .25);
-    }
-    ~ .custom-control-description {
-      color: $form-feedback-valid-color;
-    }
-  }
-
-  // custom file
-  .custom-file-input:valid {
-    ~ .custom-file-control {
-      border-color: $form-feedback-valid-color;
-
-      &::before { border-color: inherit; }
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 .2rem rgba($form-feedback-valid-color,.25);
-    }
-  }
-
-  //
-  // Invalid state
-  //
-
-  // input, textarea, select, and custom select
-  .form-control:invalid,
-  .custom-select:invalid {
-    border-color: $form-feedback-invalid-color;
-
-    &:focus {
-      box-shadow: 0 0 0 .2rem rgba($form-feedback-invalid-color,.25);
-    }
-
-    ~ .invalid-feedback,
-    ~ .invalid-tooltip {
-      display: block;
-    }
-  }
-
-  // TODO: redo check markup lol crap
-  .form-check-input:invalid {
-    + .form-check-label {
-      color: $form-feedback-invalid-color;
-    }
-  }
-
-  // custom radios and checks
-  .custom-control-input:invalid {
-    ~ .custom-control-indicator {
-      background-color: rgba($form-feedback-invalid-color, .25);
-    }
-    ~ .custom-control-description {
-      color: $form-feedback-invalid-color;
-    }
-  }
-
-  // custom file
-  .custom-file-input:invalid {
-    ~ .custom-file-control {
-      border-color: $form-feedback-invalid-color;
-
-      &::before { border-color: inherit; }
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 .2rem rgba($form-feedback-invalid-color,.25);
-    }
-  }
-}
-
+@include form-validation-state("valid", $form-feedback-valid-color);
+@include form-validation-state("invalid", $form-feedback-invalid-color);
 
 // Inline forms
 //

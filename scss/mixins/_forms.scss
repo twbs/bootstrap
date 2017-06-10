@@ -19,3 +19,63 @@
     @include box-shadow($input-box-shadow-focus);
   }
 }
+
+
+@mixin form-validation-state($state, $color) {
+
+  .form-control,
+  .custom-select {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      border-color: $color;
+
+      &:focus {
+        box-shadow: 0 0 0 .2rem rgba($color,.25);
+      }
+
+      ~ .invalid-feedback,
+      ~ .invalid-tooltip {
+        display: block;
+      }
+    }
+  }
+
+
+  // TODO: redo check markup lol crap
+  .form-check-input {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      + .form-check-label {
+        color: $color;
+      }
+    }
+  }
+
+  // custom radios and checks
+  .custom-control-input {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      ~ .custom-control-indicator {
+        background-color: rgba($color, .25);
+      }
+      ~ .custom-control-description {
+        color: $color;
+      }
+    }
+  }
+
+  // custom file
+  .custom-file-input {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      ~ .custom-file-control {
+        border-color: $color;
+
+        &::before { border-color: inherit; }
+      }
+      &:focus {
+        box-shadow: 0 0 0 .2rem rgba($color,.25);
+      }
+    }
+  }
+}
