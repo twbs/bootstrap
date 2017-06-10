@@ -822,6 +822,7 @@ Here's a rundown of how form validation works:
 - HTML form validation includes support for two CSS pseudo-classes, `:invalid` and `:valid`, on `<input>`, `<select>`, and `<textarea>` elements.
 - Due to constaints in how CSS works, we cannot (at present) apply styles to a `<label>` that comes before a form control in the DOM without the help of custom JavaScript.
 - Bootstrap scopes the `:invalid` and `:valid` styles to parent `.was-validated` class, usually applied to the `<form>`. Otherwise, any required field without a value shows up as invalid on page load. This way, you may choose when to activate them (typically after form submission is attempted).
+- As a fallback, `.is-invalid` and `.is-valid` classes are available for [server side validation](#server-side) (without the need for a `.was-validated` parent class).
 - All modern browsers support the [constraint validation API](https://www.w3.org/TR/html5/forms.html#the-constraint-validation-api), a series of JavaScript methods for validating form controls.
 - Feedback messages may utilize the browser defaults (different for each browser, and unstylable via CSS) or our custom feedback styles with additional HTML and CSS.
 - You may provide custom validity messages with `setCustomValidity` in JavaScript.
@@ -831,6 +832,8 @@ With that in mind, consider the following two demos for our custom form validati
 ### Custom styles
 
 For custom Bootstrap form validation messages, you'll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you.
+
+When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
 
 {% example html %}
 <form class="container" id="needs-validation" novalidate>
