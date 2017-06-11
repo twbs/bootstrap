@@ -163,8 +163,6 @@ Below is a complete list of the specific form controls supported by Bootstrap an
   </tbody>
 </table>
 
-### Textual inputs
-
 Here are examples of `.form-control` applied to each textual HTML5 `<input>` `type` (meaning, almost everything except the file, checkbox, and radio inputs).
 
 | Type | Example |
