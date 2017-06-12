@@ -53,3 +53,6 @@ node_modules
 
 # RealCrowd Custom
 _tmp_rc_docs
+
+dist
+docs
