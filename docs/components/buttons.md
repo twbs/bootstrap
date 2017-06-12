@@ -202,7 +202,7 @@ Note that pre-checked buttons require you to manually add the `.active` class to
 | `$().button('toggle')` |Toggles push state. Gives the button the appearance that it has been activated.  |
 
 ## Button Clip
-Shows implementation of a clipped button to different Positions.
+Shows implementation of a <div class="icon-heart-outline"></div>c lipped button to different Positions.
 
 ### Top
 
@@ -216,7 +216,7 @@ Shows implementation of a clipped button to different Positions.
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-  <button class="btn btn-secondary btn-sm clip clip-top">Clipped Button</button>
+  <button class="btn btn-secondary btn-sm clip clip-top"><span class="icon-heart-outline"></span> Clipped Button</button>
 </div>
 {% endexample %}
 
@@ -230,7 +230,7 @@ Shows implementation of a clipped button to different Positions.
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-  <button class="btn btn-secondary btn-sm clip clip-top-right">Clipped Button</button>
+  <button class="btn btn-primary btn-sm clip clip-top-right"><span class="icon-heart"></span> Clipped Button</button>
 </div>
 {% endexample %}
 
@@ -246,7 +246,7 @@ Shows implementation of a clipped button to different Positions.
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-  <button class="btn btn-secondary btn-sm clip clip-bottom">Clipped Button</button>
+  <button class="btn btn-secondary btn-sm clip clip-bottom"><span class="icon-heart-outline"></span> Clipped Button</button>
 </div>
 {% endexample %}
 
@@ -260,7 +260,7 @@ Shows implementation of a clipped button to different Positions.
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-  <button class="btn btn-secondary btn-sm clip clip-bottom-right">Clipped Button</button>
+  <button class="btn btn-secondary btn-sm clip clip-bottom-right"><span class="icon-heart-outline"></span> Clipped Button</button>
 </div>
 {% endexample %}
 
@@ -278,7 +278,7 @@ Shows implementation of a clipped button to different Positions.
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
-      <button class="btn btn-secondary btn-sm clip clip-top clip-edge">Clipped Button</button>
+      <button class="btn btn-secondary btn-sm clip clip-top clip-edge"><span class="icon-heart-outline"></span> Clipped Button</button>
     </div>
   </div>
   <div class="col-6">
@@ -291,7 +291,7 @@ Shows implementation of a clipped button to different Positions.
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
-      <button class="btn btn-secondary btn-sm clip clip-top-right clip-edge">Clipped Button</button>
+      <button class="btn btn-secondary btn-sm clip clip-top-right clip-edge"><span class="icon-heart-outline"></span> Clipped Button</button>
     </div>
   </div>
 </div>
@@ -309,7 +309,7 @@ Shows implementation of a clipped button to different Positions.
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
-      <button class="btn btn-secondary btn-sm clip clip-bottom clip-edge">Clipped Button</button>
+      <button class="btn btn-secondary btn-sm clip clip-bottom clip-edge"><span class="icon-heart-outline"></span> Clipped Button</button>
     </div>
   </div>
   <div class="col-6">
@@ -322,7 +322,7 @@ Shows implementation of a clipped button to different Positions.
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
-      <button class="btn btn-secondary btn-sm clip clip-bottom-right clip-edge">Clipped Button</button>
+      <button class="btn btn-secondary btn-sm clip clip-bottom-right clip-edge"><span class="icon-heart-outline"></span> Clipped Button</button>
     </div>
   </div>
 </div>
