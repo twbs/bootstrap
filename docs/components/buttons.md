@@ -200,3 +200,130 @@ Note that pre-checked buttons require you to manually add the `.active` class to
 | Method | Description |
 | --- | --- |
 | `$().button('toggle')` |Toggles push state. Gives the button the appearance that it has been activated.  |
+
+## Button Clip
+Shows implementation of a clipped button to different Positions.
+
+### Top
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <div class="card-img">
+    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <button class="btn btn-secondary btn-sm clip clip-top">Clipped Button</button>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <div class="card-img">
+    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <button class="btn btn-secondary btn-sm clip clip-top-right">Clipped Button</button>
+</div>
+{% endexample %}
+
+### Bottom
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <div class="card-img">
+    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <button class="btn btn-secondary btn-sm clip clip-bottom">Clipped Button</button>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <div class="card-img">
+    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <button class="btn btn-secondary btn-sm clip clip-bottom-right">Clipped Button</button>
+</div>
+{% endexample %}
+
+### Clip to edge
+
+{% example html %}
+<div class="row">
+  <div class="col-6">
+    <div class="card" style="width: 20rem;">
+      <div class="card-img">
+        <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <button class="btn btn-secondary btn-sm clip clip-top clip-edge">Clipped Button</button>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card" style="width: 20rem;">
+      <div class="card-img">
+        <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <button class="btn btn-secondary btn-sm clip clip-top-right clip-edge">Clipped Button</button>
+    </div>
+  </div>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="row">
+  <div class="col-6">
+    <div class="card" style="width: 20rem;">
+      <div class="card-img">
+        <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <button class="btn btn-secondary btn-sm clip clip-bottom clip-edge">Clipped Button</button>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card" style="width: 20rem;">
+      <div class="card-img">
+        <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      <button class="btn btn-secondary btn-sm clip clip-bottom-right clip-edge">Clipped Button</button>
+    </div>
+  </div>
+</div>
+{% endexample %}
