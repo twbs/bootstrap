@@ -1,0 +1,17 @@
+# Server
+#source:           _tmp_rc_docs
+docs_version:     realcrowd
+url:              https://realcrowd.github.io/bootstrap
+
+# Social
+# title: RealCrowd UX Documentation (Fork Of Bootstrap)
+# description: Lets do this!
+twitter: therealcrowd
+authors: RealCrowd (And All of Bootstrap Of Course)
+social_logo_path: /assets/brand/bootstrap-social-logo.png
+social_image_path: /assets/brand/bootstrap-social.png
+
+# Custom vars
+repo:             https://github.com/realcrowd/bootstrap
+slack:            https://therealcrowd.slack.com
+

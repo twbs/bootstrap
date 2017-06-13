@@ -47,6 +47,11 @@
     "docs-serve": "bundle exec jekyll serve",
     "docs-github": "shx echo 'github: true' > $npm_config_tmp/twbsconfig.yml && npm run docs-compile -- --config _config.yml,$npm_config_tmp/twbsconfig.yml && shx rm $npm_config_tmp/twbsconfig.yml",
     "docs-upload-preview": "build/upload-preview.sh",
+    "realcrowd-docs": "npm-run-all realcrowd-docs-compile realcrowd-docs-lint",
+    "realcrowd-docs-lint": "htmlhint --config docs/realcrowd/.htmlhintrc _gh_pages/ js/tests/visual/ && htmllint --rc docs/realcrowd/.htmllintrc _gh_pages/*.html _gh_pages/**/*.html js/tests/visual/*.html",
+    "realcrowd-docs-compile": "shx cp -R docs/4.0/** docs/realcrowd && shx cp -Rf docs-realcrowd/** docs/realcrowd && npm run docs-compile -- --config _config.yml,_rc-config.yml",
+    "realcrowd-docs-serve": "npm run realcrowd-docs-clean && bundle exec jekyll serve --config _config.yml,_rc-config.yml --watch",
+    "realcrowd-docs-github": "shx echo 'github: true' > $npm_config_tmp/twbsconfig.yml && npm run docs-compile -- --config _config.yml,_rc-config.yml,_rc-gh-config.yml,$npm_config_tmp/twbsconfig.yml && shx rm $npm_config_tmp/twbsconfig.yml",
     "maintenance-dependencies": "ncu -a -x jquery && bundle update && shx echo 'Manually update assets/js/vendor/*, js/tests/vendor/*, bower.json and .travis.yml'",
     "maintenance-shrinkwrap": "npm shrinkwrap --dev && shx mv npm-shrinkwrap.json build/npm-shrinkwrap.json",
     "release-version": "node build/change-version.js",
@@ -55,7 +60,26 @@
     "test": "npm-run-all dist js-test docs",
     "watch-css": "nodemon --ignore js/ --ignore dist/ -e scss -x \"npm run css && npm run css-docs\"",
     "watch-js": "nodemon --ignore scss/ --ignore js/dist/ --ignore dist/ -e js -x \"npm run js-compile\"",
-    "watch": "npm-run-all --parallel watch-css watch-js"
+    "watch": "npm-run-all --parallel watch-css watch-js",
+    "realcrowd-docs-copy": "shx cp -R docs/** docs/realcrowd && shx cp -Rf docs-realcrowd/** docs/realcrowd",
+    "realcrowd-docs-watch": "npm run realcrowd-docs-copy",
+    "realcrowd-scss-watch": "npm-run-all css css-docs && npm run realcrowd-docs-clean",
+    "realcrowd-js-watch": "npm-run-all js && js-docs && npm run realcrowd-docs-clean"
+  },
+  "watch": {
+    "realcrowd-docs-watch": {
+      "patterns": [
+        "docs",
+        "docs-realcrowd"
+      ],
+      "extensions": "html,md,png,txt,ico,css,js"
+    },
+    "realcrowd-scss-watch": {
+      "patterns": [
+        "scss"
+      ],
+      "extensions": "scss"
+    }
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
@@ -84,9 +108,11 @@
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
+    "npm-watch": "^0.1.8",
     "phantomjs-prebuilt": "^2.1.14",
     "postcss-cli": "^4.0.0",
     "postcss-flexbugs-fixes": "^3.0.0",
+    "postcss-loader": "^2.0.5",
     "qunit-phantomjs-runner": "^2.3.0",
     "qunitjs": "^2.3.2",
     "shelljs": "^0.7.7",
