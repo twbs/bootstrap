@@ -2,6 +2,9 @@
 //
 // Copy settings from this file into the provided `_custom.scss` to override
 // the Bootstrap defaults without modifying key, versioned files.
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
 
 // Table of Contents
@@ -259,12 +262,12 @@ $font-weight-bold: bold !default;
 $font-weight-base: $font-weight-normal !default;
 $line-height-base: 1.5 !default;
 
-$font-size-h1: 2.5rem !default;
-$font-size-h2: 2rem !default;
-$font-size-h3: 1.75rem !default;
-$font-size-h4: 1.5rem !default;
-$font-size-h5: 1.25rem !default;
-$font-size-h6: 1rem !default;
+$h1-font-size: 2.5rem !default;
+$h2-font-size: 2rem !default;
+$h3-font-size: 1.75rem !default;
+$h4-font-size: 1.5rem !default;
+$h5-font-size: 1.25rem !default;
+$h6-font-size: 1rem !default;
 
 $headings-margin-bottom: ($spacer / 2) !default;
 $headings-font-family:   inherit !default;
@@ -313,12 +316,12 @@ $list-inline-padding: 5px !default;
 // Customizes the `.table` component with basic values, each used across all table variations.
 
 $table-cell-padding:            .75rem !default;
-$table-sm-cell-padding:         .3rem !default;
+$table-cell-padding-sm:         .3rem !default;
 
 $table-bg:                      transparent !default;
-$table-bg-accent:               rgba($black,.05) !default;
-$table-bg-hover:                rgba($black,.075) !default;
-$table-bg-active:               $table-bg-hover !default;
+$table-accent-bg:               rgba($black,.05) !default;
+$table-hover-bg:                rgba($black,.075) !default;
+$table-active-bg:               $table-hover-bg !default;
 
 $table-border-width:            $border-width !default;
 $table-border-color:            $gray-lighter !default;
@@ -327,8 +330,8 @@ $table-head-bg:                 $gray-lighter !default;
 $table-head-color:              $gray !default;
 
 $table-inverse-bg:              $gray-dark !default;
-$table-inverse-bg-accent:       rgba($white, .05) !default;
-$table-inverse-bg-hover:        rgba($white, .075) !default;
+$table-inverse-accent-bg:       rgba($white, .05) !default;
+$table-inverse-hover-bg:        rgba($white, .075) !default;
 $table-inverse-border-color:    lighten($gray-dark, 7.5%) !default;
 $table-inverse-color:           $body-bg !default;
 
@@ -393,7 +396,7 @@ $btn-transition:                 all .2s ease-in-out !default;
 // Forms
 
 $input-bg:                       $white !default;
-$input-bg-disabled:              $gray-lighter !default;
+$input-disabled-bg:              $gray-lighter !default;
 
 $input-color:                    $gray !default;
 $input-border-color:             rgba($black,.15) !default;
@@ -404,12 +407,12 @@ $input-border-radius:            $border-radius !default;
 $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
-$input-bg-focus:                 $input-bg !default;
-$input-border-color-focus:       lighten($brand-primary, 25%) !default;
-$input-box-shadow-focus:         $input-box-shadow, $btn-focus-box-shadow !default;
-$input-color-focus:              $input-color !default;
+$input-focus-bg:                 $input-bg !default;
+$input-focus-border-color:       lighten($brand-primary, 25%) !default;
+$input-focus-box-shadow:         $input-box-shadow, $btn-focus-box-shadow !default;
+$input-focus-color:              $input-color !default;
 
-$input-color-placeholder:        $gray-light !default;
+$input-placeholder-color:        $gray-light !default;
 
 $input-height-border:           $input-btn-border-width * 2 !default;
 
@@ -448,29 +451,29 @@ $custom-control-indicator-bg:         #ddd !default;
 $custom-control-indicator-bg-size:    50% 50% !default;
 $custom-control-indicator-box-shadow: inset 0 .25rem .25rem rgba($black,.1) !default;
 
-$custom-control-disabled-indicator-bg:       $gray-lighter !default;
-$custom-control-disabled-description-color:  $gray-light !default;
+$custom-control-indicator-disabled-bg:       $gray-lighter !default;
+$custom-control-description-disabled-color:  $gray-light !default;
 
-$custom-control-checked-indicator-color:      $white !default;
-$custom-control-checked-indicator-bg:         $brand-primary !default;
-$custom-control-checked-indicator-box-shadow: none !default;
+$custom-control-indicator-checked-color:      $white !default;
+$custom-control-indicator-checked-bg:         $brand-primary !default;
+$custom-control-indicator-checked-box-shadow: none !default;
 
-$custom-control-focus-indicator-box-shadow: 0 0 0 1px $body-bg, 0 0 0 3px $brand-primary !default;
+$custom-control-indicator-focus-box-shadow: 0 0 0 1px $body-bg, 0 0 0 3px $brand-primary !default;
 
-$custom-control-active-indicator-color:      $white !default;
-$custom-control-active-indicator-bg:         lighten($brand-primary, 35%) !default;
-$custom-control-active-indicator-box-shadow: none !default;
+$custom-control-indicator-active-color:      $white !default;
+$custom-control-indicator-active-bg:         lighten($brand-primary, 35%) !default;
+$custom-control-indicator-active-box-shadow: none !default;
 
-$custom-checkbox-radius: $border-radius !default;
-$custom-checkbox-checked-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$custom-control-checked-indicator-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$custom-checkbox-border-radius: $border-radius !default;
+$custom-checkbox-icon-checked: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$custom-control-indicator-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 $custom-checkbox-indeterminate-bg: $brand-primary !default;
-$custom-checkbox-indeterminate-indicator-color: $custom-control-checked-indicator-color !default;
-$custom-checkbox-indeterminate-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='#{$custom-checkbox-indeterminate-indicator-color}' d='M0 2h4'/%3E%3C/svg%3E"), "#", "%23") !default;
+$custom-checkbox-indicator-indeterminate-color: $custom-control-indicator-checked-color !default;
+$custom-checkbox-icon-indeterminate: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M0 2h4'/%3E%3C/svg%3E"), "#", "%23") !default;
 $custom-checkbox-indeterminate-box-shadow: none !default;
 
-$custom-radio-radius: 50% !default;
-$custom-radio-checked-icon: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='#{$custom-control-checked-indicator-color}'/%3E%3C/svg%3E"), "#", "%23") !default;
+$custom-radio-border-radius: 50% !default;
+$custom-radio-icon-checked: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='#{$custom-control-indicator-checked-color}'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 $custom-select-padding-y:          .375rem !default;
 $custom-select-padding-x:          .75rem  !default;
@@ -569,19 +572,19 @@ $zindex-tooltip:            1070 !default;
 
 $nav-link-padding-y:            .5rem !default;
 $nav-link-padding-x:            1rem !default;
-$nav-disabled-link-color:       $gray-light !default;
+$nav-link-disabled-color:       $gray-light !default;
 
 $nav-tabs-border-color:                       #ddd !default;
 $nav-tabs-border-width:                       $border-width !default;
 $nav-tabs-border-radius:                      $border-radius !default;
 $nav-tabs-link-hover-border-color:            $gray-lighter !default;
-$nav-tabs-active-link-color:                  $gray !default;
-$nav-tabs-active-link-bg:                     $body-bg !default;
-$nav-tabs-active-link-border-color:           #ddd !default;
+$nav-tabs-link-active-color:                  $gray !default;
+$nav-tabs-link-active-bg:                     $body-bg !default;
+$nav-tabs-link-active-border-color:           #ddd !default;
 
 $nav-pills-border-radius:     $border-radius !default;
-$nav-pills-active-link-color: $component-active-color !default;
-$nav-pills-active-link-bg:    $component-active-bg !default;
+$nav-pills-link-active-color: $component-active-color !default;
+$nav-pills-link-active-bg:    $component-active-bg !default;
 
 // Navbar
 
@@ -676,7 +679,7 @@ $card-spacer-x:            1.25rem !default;
 $card-border-width:        1px !default;
 $card-border-radius:       $border-radius !default;
 $card-border-color:        rgba($black,.125) !default;
-$card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
+$card-inner-border-radius: calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-cap-bg:              $gray-lightest !default;
 $card-bg:                  $white !default;
 
@@ -761,15 +764,15 @@ $badge-pill-border-radius:    10rem !default;
 $modal-inner-padding:         15px !default;
 
 $modal-dialog-margin:         10px !default;
-$modal-dialog-sm-up-margin-y: 30px !default;
+$modal-dialog-margin-y-sm-up: 30px !default;
 
 $modal-title-line-height:     $line-height-base !default;
 
 $modal-content-bg:               $white !default;
 $modal-content-border-color:     rgba($black,.2) !default;
 $modal-content-border-width:     $border-width !default;
-$modal-content-xs-box-shadow:    0 3px 9px rgba($black,.5) !default;
-$modal-content-sm-up-box-shadow: 0 5px 15px rgba($black,.5) !default;
+$modal-content-box-shadow-xs:    0 3px 9px rgba($black,.5) !default;
+$modal-content-box-shadow-sm-up: 0 5px 15px rgba($black,.5) !default;
 
 $modal-backdrop-bg:           $black !default;
 $modal-backdrop-opacity:      .5 !default;

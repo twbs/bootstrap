@@ -23,29 +23,29 @@
   opacity: 0;
 
   &:checked ~ .custom-control-indicator {
-    color: $custom-control-checked-indicator-color;
-    background-color: $custom-control-checked-indicator-bg;
-    @include box-shadow($custom-control-checked-indicator-box-shadow);
+    color: $custom-control-indicator-checked-color;
+    background-color: $custom-control-indicator-checked-bg;
+    @include box-shadow($custom-control-indicator-checked-box-shadow);
   }
 
   &:focus ~ .custom-control-indicator {
     // the mixin is not used here to make sure there is feedback
-    box-shadow: $custom-control-focus-indicator-box-shadow;
+    box-shadow: $custom-control-indicator-focus-box-shadow;
   }
 
   &:active ~ .custom-control-indicator {
-    color: $custom-control-active-indicator-color;
-    background-color: $custom-control-active-indicator-bg;
-    @include box-shadow($custom-control-active-indicator-box-shadow);
+    color: $custom-control-indicator-active-color;
+    background-color: $custom-control-indicator-active-bg;
+    @include box-shadow($custom-control-indicator-active-box-shadow);
   }
 
   &:disabled {
     ~ .custom-control-indicator {
-      background-color: $custom-control-disabled-indicator-bg;
+      background-color: $custom-control-indicator-disabled-bg;
     }
 
     ~ .custom-control-description {
-      color: $custom-control-disabled-description-color;
+      color: $custom-control-description-disabled-color;
     }
   }
 }
@@ -76,16 +76,16 @@
 
 .custom-checkbox {
   .custom-control-indicator {
-    @include border-radius($custom-checkbox-radius);
+    @include border-radius($custom-checkbox-border-radius);
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-checkbox-checked-icon;
+    background-image: $custom-checkbox-icon-checked;
   }
 
   .custom-control-input:indeterminate ~ .custom-control-indicator {
     background-color: $custom-checkbox-indeterminate-bg;
-    background-image: $custom-checkbox-indeterminate-icon;
+    background-image: $custom-checkbox-icon-indeterminate;
     @include box-shadow($custom-checkbox-indeterminate-box-shadow);
   }
 }
@@ -96,11 +96,11 @@
 
 .custom-radio {
   .custom-control-indicator {
-    border-radius: $custom-radio-radius;
+    border-radius: $custom-radio-border-radius;
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-radio-checked-icon;
+    background-image: $custom-radio-icon-checked;
   }
 }
 

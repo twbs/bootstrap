@@ -12,11 +12,11 @@
 // contrast against a dark gray background.
 @mixin form-control-focus() {
   &:focus {
-    color: $input-color-focus;
-    background-color: $input-bg-focus;
-    border-color: $input-border-color-focus;
+    color: $input-focus-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
     outline: none;
-    @include box-shadow($input-box-shadow-focus);
+    @include box-shadow($input-focus-box-shadow);
   }
 }
 
