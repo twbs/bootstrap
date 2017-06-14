@@ -27,9 +27,17 @@
 // Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
   .dropdown-toggle {
-    &::after {
-      border-top: 0;
-      border-bottom: $caret-width solid;
+    @media (max-width: 768px){
+      &::after {
+        border-top: 0;
+        border-bottom: $caret-width solid;
+      }
+    }
+    @media (min-width: 768px){
+      &::after {
+        border-top: 0;
+        border-bottom: $caret-width solid;
+      }
     }
   }
 }
