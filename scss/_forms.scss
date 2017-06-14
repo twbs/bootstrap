@@ -193,6 +193,24 @@ select.form-control-lg {
 }
 
 
+// Form grid
+//
+// Special replacement for our grid system's `.row` for tighter form layouts.
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+
 // Checkboxes and radios
 //
 // Indent the labels to position radios/checkboxes as hanging controls.
