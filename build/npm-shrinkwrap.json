@@ -3390,9 +3390,9 @@
       "dev": true
     },
     "popper.js": {
-      "version": "1.9.9",
-      "from": "popper.js@>=1.9.9 <3.0.0",
-      "resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.9.9.tgz"
+      "version": "1.10.1",
+      "from": "popper.js@>=1.10.1 <2.0.0",
+      "resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.10.1.tgz"
     },
     "postcss": {
       "version": "5.2.17",
