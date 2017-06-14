@@ -5,14 +5,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-// Core variables and mixins
 @import "custom";
+@import "functions";
 @import "variables";
 @import "mixins";
-
 @import "print";
-
-// Core CSS
 @import "reboot";
 @import "type";
 @import "images";
@@ -21,8 +18,6 @@
 @import "tables";
 @import "forms";
 @import "buttons";
-
-// Components
 @import "transitions";
 @import "dropdown";
 @import "button-group";
@@ -41,12 +36,8 @@
 @import "list-group";
 @import "responsive-embed";
 @import "close";
-
-// Components w/ JavaScript
 @import "modal";
 @import "tooltip";
 @import "popover";
 @import "carousel";
-
-// Utility classes
 @import "utilities";
