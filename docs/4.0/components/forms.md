@@ -478,14 +478,14 @@ You can then remix that once again with size-specific column classes.
 <form>
   <div class="form-row align-items-center">
     <div class="col-sm-3">
-      <label class="sr-only" for="inlineFormInput">Name</label>
-      <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+      <label class="sr-only" for="inlineFormInputName">Name</label>
+      <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInputName" placeholder="Jane Doe">
     </div>
     <div class="col-sm-3">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
       <div class="input-group mb-2 mb-sm-0">
         <div class="input-group-addon">@</div>
-        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+        <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
       </div>
     </div>
     <div class="col-auto">
@@ -542,13 +542,13 @@ You may need to manually address the width and alignment of individual form cont
 
 {% example html %}
 <form class="form-inline">
-  <label class="sr-only" for="inlineFormInput">Name</label>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+  <label class="sr-only" for="inlineFormInputName2">Name</label>
+  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInputName2" placeholder="Jane Doe">
 
-  <label class="sr-only" for="inlineFormInputGroup">Username</label>
+  <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
   <div class="input-group mb-2 mr-sm-2 mb-sm-0">
     <div class="input-group-addon">@</div>
-    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
   </div>
 
   <div class="form-check mb-2 mr-sm-2 mb-sm-0">
@@ -565,8 +565,8 @@ Custom form controls and selects are also supported.
 
 {% example html %}
 <form class="form-inline">
-  <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
-  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+  <label class="mr-sm-2" for="inlineFormCustomSelectPref">Preference</label>
+  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelectPref">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -992,12 +992,12 @@ Custom checkboxes and radios are inline to start. Add a parent with class `.cust
 {% example html %}
 <div class="custom-controls-stacked">
   <label class="custom-control custom-radio">
-    <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
+    <input id="radioStacked3" name="radio-stacked" type="radio" class="custom-control-input">
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Toggle this custom radio</span>
   </label>
   <label class="custom-control custom-radio">
-    <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
+    <input id="radioStacked4" name="radio-stacked" type="radio" class="custom-control-input">
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Or toggle this other custom radio</span>
   </label>
@@ -1023,7 +1023,7 @@ The file input is the most gnarly of the bunch and require additional JavaScript
 
 {% example html %}
 <label class="custom-file">
-  <input type="file" id="file" class="custom-file-input">
+  <input type="file" id="file2" class="custom-file-input">
   <span class="custom-file-control"></span>
 </label>
 {% endexample %}
