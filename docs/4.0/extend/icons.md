@@ -10,6 +10,7 @@ Bootstrap doesn't include an icon library by default, but we have a handful of r
 ## Preferred
 We've tested and used these icon sets ourselves.
 
+- [Feather](https://feathericons.com)
 - [Iconic](https://useiconic.com/open/)
 - [Octicons](https://octicons.github.com/)
 - [Entypo](http://www.entypo.com/)
