@@ -4348,7 +4348,7 @@ tbody.collapse.show {
   border-radius: 0.25rem;
 }
 
-.card-block {
+.card-body {
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 auto;
       -ms-flex: 1 1 auto;
@@ -5725,7 +5725,7 @@ button.close {
   border-bottom-color: #fff;
 }
 
-.popover.bs-popover-bottom .popover-title::before, .popover.bs-popover-auto[x-placement^="bottom"] .popover-title::before {
+.popover.bs-popover-bottom .popover-header::before, .popover.bs-popover-auto[x-placement^="bottom"] .popover-header::before {
   position: absolute;
   top: 0;
   left: 50%;
@@ -5760,7 +5760,7 @@ button.close {
   border-left-color: #fff;
 }
 
-.popover-title {
+.popover-header {
   padding: 8px 14px;
   margin-bottom: 0;
   font-size: 1rem;
@@ -5771,11 +5771,11 @@ button.close {
   border-top-right-radius: calc(0.3rem - 1px);
 }
 
-.popover-title:empty {
+.popover-header:empty {
   display: none;
 }
 
-.popover-content {
+.popover-body {
   padding: 9px 14px;
   color: #292b2c;
 }
