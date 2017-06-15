@@ -1,37 +1,3 @@
-// Form validation states
-//
-// Used in _forms.scss to generate the form validation CSS for warnings, errors,
-// and successes.
-
-@mixin form-control-validation($color) {
-  // Color the label and help text
-  .form-control-feedback,
-  .form-control-label,
-  .col-form-label,
-  .form-check-label,
-  .custom-control {
-    color: $color;
-  }
-
-  // Set the border and box shadow on specific inputs to match
-  .form-control,
-  .custom-select,
-  .custom-file-control {
-    border-color: $color;
-
-    &:focus {
-      @include box-shadow($input-box-shadow, 0 0 6px lighten($color, 20%));
-    }
-  }
-
-  // Set validation states also for addons
-  .input-group-addon {
-    color: $color;
-    background-color: lighten($color, 40%);
-    border-color: $color;
-  }
-}
-
 // Form control focus state
 //
 // Generate a customized focus state and for any input with the specified color,
@@ -51,5 +17,65 @@
     border-color: $input-focus-border-color;
     outline: none;
     @include box-shadow($input-focus-box-shadow);
+  }
+}
+
+
+@mixin form-validation-state($state, $color) {
+
+  .form-control,
+  .custom-select {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      border-color: $color;
+
+      &:focus {
+        box-shadow: 0 0 0 .2rem rgba($color,.25);
+      }
+
+      ~ .invalid-feedback,
+      ~ .invalid-tooltip {
+        display: block;
+      }
+    }
+  }
+
+
+  // TODO: redo check markup lol crap
+  .form-check-input {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      + .form-check-label {
+        color: $color;
+      }
+    }
+  }
+
+  // custom radios and checks
+  .custom-control-input {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      ~ .custom-control-indicator {
+        background-color: rgba($color, .25);
+      }
+      ~ .custom-control-description {
+        color: $color;
+      }
+    }
+  }
+
+  // custom file
+  .custom-file-input {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      ~ .custom-file-control {
+        border-color: $color;
+
+        &::before { border-color: inherit; }
+      }
+      &:focus {
+        box-shadow: 0 0 0 .2rem rgba($color,.25);
+      }
+    }
   }
 }
