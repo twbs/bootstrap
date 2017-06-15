@@ -40,3 +40,83 @@ You can find and customize these variables for key global options in our `_varia
 | `$enable-hover-media-query` | `true` or `false` (default)        | ...                                                                                    |
 | `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.).     |
 | `$enable-print-styles`      | `true` (default) or `false`        | Enables styles for optimizing printing.                                |
+
+## Color
+
+Many of Bootstrap's various components and utilities are built through a series of colors defined in a Sass map. This map can be looped over in Sass to quickly generate a series of rulesets.
+
+### All colors
+
+All colors available in Bootstrap 4, available as Sass variables and a Sass map in our `scss/_variables.scss` file. This will be expanded upon in subsequent minor releases to add additional shades, much like the [grayscale palette](#grays) we already include.
+
+<div class="row">
+  {% for color in site.data.colors %}
+    <div class="col-md-4">
+      {% unless color.name == "white" or color.name == "gray" or color.name == "gray-dark" %}
+        <div class="p-3 mb-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
+      {% endunless %}
+    </div>
+  {% endfor %}
+</div>
+
+Here's how you can use these in your Sass:
+
+{% highlight scss %}
+// With variable
+.alpha { color: $purple; }
+
+// From the Sass map with our `color()` function
+.beta { color: color("purple"); }
+{% endhighlight %}
+
+[Color utility classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) are also available for setting `color` and `background-color`.
+
+### Theme colors
+
+We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in our `scss/_variables.scss` file.
+
+<div class="row">
+  {% for color in site.data.theme-colors %}
+    <div class="col-md-4">
+      {% if color.name == "background" %}
+        <div class="p-3 mb-3 swatch-{{ color.name }}" style="box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);">
+          {{ color.name | capitalize }}
+        </div>
+      {% else %}
+        <div class="p-3 mb-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+### Grays
+
+An expansive set of gray variables and a Sass map in `scss/_variables.scss` for consistent shades of gray across your project.
+
+<div class="row mb-3">
+  <div class="col-md-4">
+    {% for color in site.data.grays %}
+      <div class="p-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
+    {% endfor %}
+  </div>
+</div>
+
+Within `_variables.scss`, you'll find our color variables and Sass map. Here's an example of the `$colors` Sass map:
+
+{% highlight scss %}
+$colors: (
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  blue: $blue,
+  pink: $pink,
+  purple: $purple,
+  white: $white,
+  gray: $gray-light,
+  gray-dark: $gray-dark
+) !default;
+{% endhighlight %}
+
+Add, remove, or modify values within the map to update how they're used in many other components. Unfortunately at this time, not _every_ component utilizes this Sass map. Future updates will strive to improve upon this. Until then, plan on making use of the `${color}` variables and this Sass map.
