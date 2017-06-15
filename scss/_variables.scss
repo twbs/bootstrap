@@ -673,14 +673,14 @@ $popover-border-width:                $border-width !default;
 $popover-border-color:                rgba($black,.2) !default;
 $popover-box-shadow:                  0 5px 10px rgba($black,.2) !default;
 
-$popover-title-bg:                    darken($popover-bg, 3%) !default;
-$popover-title-color:                 $headings-color !default;
-$popover-title-padding-y:             8px !default;
-$popover-title-padding-x:             14px !default;
+$popover-header-bg:                    darken($popover-bg, 3%) !default;
+$popover-header-color:                 $headings-color !default;
+$popover-header-padding-y:             8px !default;
+$popover-header-padding-x:             14px !default;
 
-$popover-content-color:               $body-color !default;
-$popover-content-padding-y:           9px !default;
-$popover-content-padding-x:           14px !default;
+$popover-body-color:               $body-color !default;
+$popover-body-padding-y:           9px !default;
+$popover-body-padding-x:           14px !default;
 
 $popover-arrow-width:                 10px !default;
 $popover-arrow-height:                5px !default;
