@@ -6,8 +6,9 @@
 
 .bd-content {
   // Hack the sticky header
-  h2[id],
-  h3[id] {
+  > h2[id],
+  > h3[id],
+  > h4[id] {
     &::before {
       position: relative;
       z-index: -1;
