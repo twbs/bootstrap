@@ -47,3 +47,26 @@
 
   @return $string;
 }
+
+// Color contrast
+@mixin color-yiq($color) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= 128) {
+    color: #111;
+  } @else {
+    color: #fff;
+  }
+}
+
+// Retreive color Sass maps
+@function color($key: "blue") {
+  @return map-get($colors, $key);
+}
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
