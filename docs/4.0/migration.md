@@ -103,8 +103,10 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
   - Dropped the `.form-horizontal` class requirement.
   - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
+  - Added new `.form-row` for compact form layouts with the grid classes (swap your `.row` for a `.form-row` and go).
 - Added custom forms support (for checkboxes, radios, selects, and file inputs).
 - Renamed `.has-error` to `.has-danger`.
+- Added HTML5 form validation support via CSS's `:invalid` and `:valid` pseudo-classes.
 
 ### Buttons
 
