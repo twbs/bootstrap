@@ -43,22 +43,74 @@
 // Close
 // Code
 
+// New colors
+
+$white:  #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:  #000 !default;
+
+$grays: (
+  100: $gray-100,
+  200: $gray-200,
+  300: $gray-300,
+  400: $gray-400,
+  500: $gray-500,
+  600: $gray-600,
+  700: $gray-700,
+  800: $gray-800,
+  900: $gray-900
+) !default;
+
+$blue:    #007bff !default;
+$indigo:  #4263eb !default;
+$purple:  #882ae0 !default;
+$pink:    #e64980 !default;
+$red:     #f03e3e !default;
+$orange:  #ff922b !default;
+$yellow:  #ffd43b !default;
+$green:   #51cf66 !default;
+$teal:    #38d9a9 !default;
+$cyan:    #3bc9db !default;
+
+$colors: (
+  blue: $blue,
+  indigo: $indigo,
+  purple: $purple,
+  pink: $pink,
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  teal: $teal,
+  cyan: $cyan,
+  white: $white,
+  gray: $gray-600,
+  gray-dark: $gray-800
+) !default;
+
+$theme-colors: (
+  primary: $blue,
+  secondary: $gray-400,
+  success: $green,
+  info: $cyan,
+  warning: $orange,
+  danger: $red,
+  foreground: $gray-800,
+  background: $white
+) !default;
+
 
 // Colors
 //
 // Grayscale and brand colors for use across Bootstrap.
-
-// Start with assigning color names to specific hex values.
-$white:  #fff !default;
-$black:  #000 !default;
-$red:    #d9534f !default;
-$orange: #f0ad4e !default;
-$yellow: #ffd500 !default;
-$green:  #5cb85c !default;
-$blue:   #0275d8 !default;
-$teal:   #5bc0de !default;
-$pink:   #ff5b77 !default;
-$purple: #613d7c !default;
 
 // Create grayscale
 $gray-dark:                 #292b2c !default;
