@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Customization options
-description: Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new Sass variables.
+description: Customize Bootstrap 4 with our new built-in Sass variables for global style preferences for easy theming and component changes.
 group: getting-started
 toc: true
 ---
