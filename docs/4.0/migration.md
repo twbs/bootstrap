@@ -103,8 +103,11 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
   - Dropped the `.form-horizontal` class requirement.
   - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
   - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
+  - Added new `.form-row` for compact form layouts with the grid classes (swap your `.row` for a `.form-row` and go).
 - Added custom forms support (for checkboxes, radios, selects, and file inputs).
+- Added HTML5 form validation support via CSS's `:invalid` and `:valid` pseudo-classes.
 - Renamed `.has-error` to `.has-danger`.
+- Renamed `.form-control-static` to `.form-control-plaintext`.
 
 ### Buttons
 
@@ -196,7 +199,7 @@ Dropped entirely for the new card component.
 - `.panel-group` removed and no replacement. `.card-group` is not a replacement, it is different.
 - `.panel-heading` to `.card-header`
 - `.panel-title` to `.card-title`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/typography/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
-- `.panel-body` to `.card-block`
+- `.panel-body` to `.card-body`
 - `.panel-footer` to `.card-footer`
 - `.panel-primary` to `.card-primary` and `.card-inverse` (or use `.bg-primary` on `.card-header`)
 - `.panel-success` to `.card-success` and `.card-inverse` (or use `.bg-success` on `.card-header`)

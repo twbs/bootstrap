@@ -1,7 +1,7 @@
 // scss-lint:disable VendorPrefix
 
 //
-// Side navigation
+// Right side table of contents
 //
 
 .bd-toc {
@@ -34,7 +34,7 @@
 
   a {
     display: block;
-    padding: .25rem 1.5rem;
+    padding: .125rem 1.5rem;
     color: #99979c;
 
     &:hover {
@@ -43,6 +43,10 @@
     }
   }
 }
+
+//
+// Left side navigation
+//
 
 .bd-sidebar {
   background-color: #f5f2f9;
