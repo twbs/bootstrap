@@ -584,6 +584,62 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 </div>
 {% endexample %}
 
+## Dropdown Item Group
+
+Can be used if dropdown-items need to contain different actions:
+
+{% example html %}
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="DropdownItemGroupButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="DropdownItemGroupButton">
+    <div class="dropdown-item-group">
+      <button href="#" class="dropdown-item">
+        <div class="media media-center">
+          <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+          <div class="media-body">
+            <div class="dropdown-item-title">Heading</div>
+            <div class="dropdown-item-subtitle">Subheading</div>
+          </div>
+        </div>
+      </button>
+      <button href="#" class="dropdown-item dropdown-item-noscale">
+        <span class="icon-heart"></span>
+      </button>
+    </div>
+    <div class="dropdown-item-group">
+      <button href="#" class="dropdown-item">
+        <div class="media media-center">
+          <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+          <div class="media-body">
+            <div class="dropdown-item-title">Heading</div>
+            <div class="dropdown-item-subtitle">Subheading</div>
+          </div>
+        </div>
+      </button>
+      <button href="#" class="dropdown-item dropdown-item-noscale">
+        <span class="icon-heart"></span>
+      </button>
+    </div>
+    <div class="dropdown-item-group">
+      <button href="#" class="dropdown-item">
+        <div class="media media-center">
+          <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+          <div class="media-body">
+            <div class="dropdown-item-title">Heading</div>
+            <div class="dropdown-item-subtitle">Subheading</div>
+          </div>
+        </div>
+      </button>
+      <button href="#" class="dropdown-item dropdown-item-noscale">
+        <span class="icon-heart"></span>
+      </button>
+    </div>
+  </div>
+</div>
+{% endexample %}
+
 ## Usage
 
 Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent list item.
