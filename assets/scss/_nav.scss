@@ -1,5 +1,3 @@
-// scss-lint:disable VendorPrefix
-
 //
 // Main navbar
 //
@@ -30,10 +28,11 @@
   }
 
   @include media-breakpoint-up(md) {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 1071; // over everything in bootstrap
+    @supports (position: sticky) {
+      position: sticky;
+      top: 0;
+      z-index: 1071; // over everything in bootstrap
+    }
   }
 
   .navbar-nav {
