@@ -28,7 +28,7 @@
     "css-prefix-docs": "postcss --config build/ --no-map --replace assets/css/docs.min.css",
     "css-minify": "cleancss --level 1 --source-map --output dist/css/bootstrap.min.css dist/css/bootstrap.css && cleancss --level 1 --source-map --output dist/css/bootstrap-grid.min.css dist/css/bootstrap-grid.css && cleancss --level 1 --source-map --output dist/css/bootstrap-reboot.min.css dist/css/bootstrap-reboot.css",
     "css-minify-docs": "cleancss --level 1 --source-map --output assets/css/docs.min.css assets/css/docs.min.css",
-    "js": "npm-run-all js-compile js-minify",
+    "js": "npm-run-all js-lint js-compile js-minify",
     "js-docs": "npm-run-all js-lint-docs js-minify-docs",
     "js-lint": "eslint js/ && eslint --config js/tests/.eslintrc.json --env node build/ Gruntfile.js",
     "js-lint-docs": "eslint --config js/tests/.eslintrc.json assets/js/",
@@ -54,7 +54,7 @@
     "dist": "npm-run-all --parallel css js",
     "test": "npm-run-all dist js-test docs",
     "watch-css": "nodemon --ignore js/ --ignore dist/ -e scss -x \"npm run css && npm run css-docs\"",
-    "watch-js": "nodemon --ignore scss/ --ignore js/dist/ --ignore dist/ -e js -x \"npm run js-compile\"",
+    "watch-js": "nodemon --ignore scss/ --ignore js/dist/ --ignore dist/ -e js -x \"npm run js-compile-plugins\"",
     "watch": "npm-run-all --parallel watch-css watch-js"
   },
   "style": "dist/css/bootstrap.css",
