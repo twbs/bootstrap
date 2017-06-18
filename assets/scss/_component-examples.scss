@@ -285,6 +285,10 @@
   }
 }
 
+.modal.show {
+  z-index: 1072;
+}
+
 // Example tabbable tabs
 .bd-example-tabs .nav-tabs {
   margin-bottom: 1rem;
