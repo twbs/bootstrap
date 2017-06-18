@@ -13,19 +13,23 @@
 //
 
 .rounded {
-  @include border-radius($border-radius);
+  border-radius: $border-radius !important;
 }
 .rounded-top {
-  @include border-top-radius($border-radius);
+  border-top-left-radius: $border-radius !important;
+  border-top-right-radius: $border-radius !important;
 }
 .rounded-right {
-  @include border-right-radius($border-radius);
+  border-top-right-radius: $border-radius !important;
+  border-bottom-right-radius: $border-radius !important;
 }
 .rounded-bottom {
-  @include border-bottom-radius($border-radius);
+  border-bottom-left-radius: $border-radius !important;
+  border-bottom-right-radius: $border-radius !important;
 }
 .rounded-left {
-  @include border-left-radius($border-radius);
+  border-top-left-radius: $border-radius !important;
+  border-bottom-left-radius: $border-radius !important;
 }
 
 .rounded-circle {
