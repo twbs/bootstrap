@@ -109,6 +109,10 @@
     color: $table-inverse-color;
     background-color: $table-inverse-bg;
   }
+
+  th a {
+    color: $table-inverse-color;
+  }
 }
 
 .thead-default {
