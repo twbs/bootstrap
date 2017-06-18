@@ -10,6 +10,7 @@
     top: 4rem;
     max-height: calc(100vh - 4rem);
   }
+  order: 2;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   overflow-x: visible;
@@ -49,6 +50,7 @@
 //
 
 .bd-sidebar {
+  order: 0;
   background-color: #f5f2f9;
   border-bottom: 1px solid rgba(0,0,0,.1);
 

@@ -7,7 +7,7 @@
     - title: JavaScript
     - title: Options
     - title: Build tools
-    - title: Best practices
+    # - title: Best practices # TODO: Write this content
     - title: Webpack
     - title: Accessibility
 

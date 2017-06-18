@@ -3815,7 +3815,7 @@ tbody.collapse.show {
 }
 
 .nav-pills .nav-link.active,
-.show .nav-pills .nav-link {
+.show > .nav-pills .nav-link {
   color: #fff;
   background-color: #0275d8;
 }
@@ -3930,11 +3930,8 @@ tbody.collapse.show {
 }
 
 .navbar-nav .dropdown-menu {
-  position: static !important;
+  position: static;
   float: none;
-  -webkit-transform: unset !important;
-       -o-transform: unset !important;
-          transform: unset !important;
 }
 
 .navbar-text {
@@ -4004,8 +4001,11 @@ tbody.collapse.show {
             flex-direction: row;
   }
   .navbar-expand-sm .navbar-nav .dropdown-menu {
-    position: absolute !important;
-    top: 100% !important;
+    position: absolute;
+  }
+  .navbar-expand-sm .navbar-nav .dropdown-menu-right {
+    right: 0;
+    left: auto;
   }
   .navbar-expand-sm .navbar-nav .nav-link {
     padding-right: .5rem;
@@ -4059,8 +4059,11 @@ tbody.collapse.show {
             flex-direction: row;
   }
   .navbar-expand-md .navbar-nav .dropdown-menu {
-    position: absolute !important;
-    top: 100% !important;
+    position: absolute;
+  }
+  .navbar-expand-md .navbar-nav .dropdown-menu-right {
+    right: 0;
+    left: auto;
   }
   .navbar-expand-md .navbar-nav .nav-link {
     padding-right: .5rem;
@@ -4114,8 +4117,11 @@ tbody.collapse.show {
             flex-direction: row;
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
-    position: absolute !important;
-    top: 100% !important;
+    position: absolute;
+  }
+  .navbar-expand-lg .navbar-nav .dropdown-menu-right {
+    right: 0;
+    left: auto;
   }
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: .5rem;
@@ -4169,8 +4175,11 @@ tbody.collapse.show {
             flex-direction: row;
   }
   .navbar-expand-xl .navbar-nav .dropdown-menu {
-    position: absolute !important;
-    top: 100% !important;
+    position: absolute;
+  }
+  .navbar-expand-xl .navbar-nav .dropdown-menu-right {
+    right: 0;
+    left: auto;
   }
   .navbar-expand-xl .navbar-nav .nav-link {
     padding-right: .5rem;
@@ -4223,8 +4232,12 @@ tbody.collapse.show {
 }
 
 .navbar-expand .navbar-nav .dropdown-menu {
-  position: absolute !important;
-  top: 100% !important;
+  position: absolute;
+}
+
+.navbar-expand .navbar-nav .dropdown-menu-right {
+  right: 0;
+  left: auto;
 }
 
 .navbar-expand .navbar-nav .nav-link {
@@ -6067,27 +6080,27 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 }
 
 .rounded {
-  border-radius: 0.25rem;
+  border-radius: 0.25rem !important;
 }
 
 .rounded-top {
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem !important;
+  border-top-right-radius: 0.25rem !important;
 }
 
 .rounded-right {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem !important;
+  border-bottom-right-radius: 0.25rem !important;
 }
 
 .rounded-bottom {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
 }
 
 .rounded-left {
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
 }
 
 .rounded-circle {
@@ -7330,11 +7343,13 @@ a.bg-inverse:focus, a.bg-inverse:hover {
   z-index: 1030;
 }
 
-.sticky-top {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 1020;
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+  }
 }
 
 .sr-only {
