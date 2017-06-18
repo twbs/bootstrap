@@ -854,11 +854,11 @@ $list-group-active-border-color:      $list-group-active-bg !default;
 $list-group-disabled-color:      $gray-light !default;
 $list-group-disabled-bg:         $list-group-bg !default;
 
-$list-group-link-color:          $gray !default;
-$list-group-link-hover-color:    $list-group-link-color !default;
+$list-group-action-color:             $gray !default;
+$list-group-action-hover-color:       $list-group-action-color !default;
 
-$list-group-link-active-color:   $list-group-color !default;
-$list-group-link-active-bg:      $gray-lighter !default;
+$list-group-action-active-color:      $list-group-color !default;
+$list-group-action-active-bg:         $gray-lighter !default;
 
 
 // Image thumbnails

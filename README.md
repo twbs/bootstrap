@@ -8,7 +8,14 @@
   <p align="center">
     Sleek, intuitive, and powerful front-end framework for faster and easier web development.
     <br>
-    <a href="https://v4-alpha.getbootstrap.com"><strong>Visit Bootstrap &raquo;</strong></a>
+    <a href="https://v4-alpha.getbootstrap.com"><strong>Explore Bootstrap docs &raquo;</strong></a>
+    <br>
+    <br>
+    <a href="https://themes.getbootstrap.com">Bootstrap Themes</a>
+    &middot;
+    <a href="https://jobs.getbootstrap.com">Job Board</a>
+    &middot;
+    <a href="https://blog.getbootstrap.com">Blog</a>
   </p>
 </p>
 
