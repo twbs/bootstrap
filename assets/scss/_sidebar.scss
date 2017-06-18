@@ -76,8 +76,10 @@
   margin-left: -15px;
 
   @include media-breakpoint-up(md) {
-    max-height: calc(100vh - 9rem);
-    overflow-y: auto;
+    @supports (position: sticky) {
+      max-height: calc(100vh - 9rem);
+      overflow-y: auto;
+    }
   }
 
   // Override collapse behaviors
