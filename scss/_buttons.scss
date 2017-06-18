@@ -10,9 +10,9 @@
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
+  cursor: pointer;
   user-select: none;
   border: $input-btn-border-width solid transparent;
-  cursor: pointer;
   @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
