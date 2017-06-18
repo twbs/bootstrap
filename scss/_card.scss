@@ -105,41 +105,18 @@
 // Background variations
 //
 
-.card-primary {
-  @include card-variant($brand-primary, $brand-primary);
-}
-.card-success {
-  @include card-variant($brand-success, $brand-success);
-}
-.card-info {
-  @include card-variant($brand-info, $brand-info);
-}
-.card-warning {
-  @include card-variant($brand-warning, $brand-warning);
-}
-.card-danger {
-  @include card-variant($brand-danger, $brand-danger);
+@each $color, $value in $theme-colors {
+  .card-#{$color} {
+    @include card-variant($value, $value);
+  }
 }
 
-// Remove all backgrounds
-.card-outline-primary {
-  @include card-outline-variant($btn-primary-bg);
+@each $color, $value in $theme-colors {
+  .card-outline-#{$color} {
+    @include card-variant($value, $value);
+  }
 }
-.card-outline-secondary {
-  @include card-outline-variant($btn-secondary-border-color);
-}
-.card-outline-info {
-  @include card-outline-variant($btn-info-bg);
-}
-.card-outline-success {
-  @include card-outline-variant($btn-success-bg);
-}
-.card-outline-warning {
-  @include card-outline-variant($btn-warning-bg);
-}
-.card-outline-danger {
-  @include card-outline-variant($btn-danger-bg);
-}
+
 
 //
 // Inverse text within a card for use with dark backgrounds

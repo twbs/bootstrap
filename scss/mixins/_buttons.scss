@@ -3,21 +3,22 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-@mixin button-variant($color, $background, $border) {
-  $active-background: darken($background, 10%);
-  $active-border: darken($border, 12%);
+@mixin button-variant($background, $border) {
+  $active-background: darken($background, 7.5%);
+  $active-border: darken($border, 10%);
 
-  color: $color;
+  @include color-yiq($background);
   background-color: $background;
   border-color: $border;
   @include box-shadow($btn-box-shadow);
 
   // Hover and focus styles are shared
-  @include hover {
-    color: $color;
+  &:hover {
+    @include color-yiq($background);
     background-color: $active-background;
     border-color: $active-border;
   }
+  
   &:focus,
   &.focus {
     // Avoid using mixin so we can pass custom focus shadow properly
@@ -38,7 +39,6 @@
   &:active,
   &.active,
   .show > &.dropdown-toggle {
-    color: $color;
     background-color: $active-background;
     background-image: none; // Remove the gradient for the pressed/active state
     border-color: $active-border;

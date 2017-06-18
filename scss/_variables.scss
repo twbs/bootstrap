@@ -119,14 +119,6 @@ $gray-light:                #636c72 !default;
 $gray-lighter:              #eceeef !default;
 $gray-lightest:             #f7f7f9 !default;
 
-// Reassign color vars to semantic color scheme
-$brand-primary:             $blue !default;
-$brand-success:             $green !default;
-$brand-info:                $teal !default;
-$brand-warning:             $orange !default;
-$brand-danger:              $red !default;
-$brand-inverse:             $gray-dark !default;
-
 
 // Options
 //
@@ -176,7 +168,7 @@ $body-color:    $gray-dark !default;
 //
 // Style anchor elements.
 
-$link-color:            $brand-primary !default;
+$link-color:            theme-color("primary") !default;
 $link-decoration:       none !default;
 $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
@@ -240,7 +232,7 @@ $border-radius-lg:       .3rem !default;
 $border-radius-sm:       .2rem !default;
 
 $component-active-color: $white !default;
-$component-active-bg:    $brand-primary !default;
+$component-active-bg:    theme-color("primary") !default;
 
 $caret-width:            .3em !default;
 
@@ -360,11 +352,11 @@ $input-btn-line-height-lg:  1.5 !default;
 
 $btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
-$btn-focus-box-shadow:           0 0 0 3px rgba($brand-primary, .25) !default;
+$btn-focus-box-shadow:           0 0 0 3px rgba(theme-color("primary"), .25) !default;
 $btn-active-box-shadow:          inset 0 3px 5px rgba($black,.125) !default;
 
 $btn-primary-color:              $white !default;
-$btn-primary-bg:                 $brand-primary !default;
+$btn-primary-bg:                 theme-color("primary") !default;
 $btn-primary-border-color:       $btn-primary-bg !default;
 
 $btn-secondary-color:            $gray-dark !default;
@@ -372,19 +364,19 @@ $btn-secondary-bg:               $white !default;
 $btn-secondary-border-color:     #ccc !default;
 
 $btn-info-color:                 $white !default;
-$btn-info-bg:                    $brand-info !default;
+$btn-info-bg:                    theme-color("info") !default;
 $btn-info-border-color:          $btn-info-bg !default;
 
 $btn-success-color:              $white !default;
-$btn-success-bg:                 $brand-success !default;
+$btn-success-bg:                 theme-color("success") !default;
 $btn-success-border-color:       $btn-success-bg !default;
 
 $btn-warning-color:              $white !default;
-$btn-warning-bg:                 $brand-warning !default;
+$btn-warning-bg:                 theme-color("warning") !default;
 $btn-warning-border-color:       $btn-warning-bg !default;
 
 $btn-danger-color:               $white !default;
-$btn-danger-bg:                  $brand-danger !default;
+$btn-danger-bg:                  theme-color("danger") !default;
 $btn-danger-border-color:        $btn-danger-bg !default;
 
 $btn-link-disabled-color:        $gray-light !default;
@@ -414,7 +406,7 @@ $input-border-radius-lg:         $border-radius-lg !default;
 $input-border-radius-sm:         $border-radius-sm !default;
 
 $input-focus-bg:                 $input-bg !default;
-$input-focus-border-color:       lighten($brand-primary, 25%) !default;
+$input-focus-border-color:       lighten(theme-color("primary"), 25%) !default;
 $input-focus-box-shadow:         $input-box-shadow, $btn-focus-box-shadow !default;
 $input-focus-color:              $input-color !default;
 
@@ -461,19 +453,19 @@ $custom-control-indicator-disabled-bg:       $gray-lighter !default;
 $custom-control-description-disabled-color:  $gray-light !default;
 
 $custom-control-indicator-checked-color:      $white !default;
-$custom-control-indicator-checked-bg:         $brand-primary !default;
+$custom-control-indicator-checked-bg:         theme-color("primary") !default;
 $custom-control-indicator-checked-box-shadow: none !default;
 
-$custom-control-indicator-focus-box-shadow: 0 0 0 1px $body-bg, 0 0 0 3px $brand-primary !default;
+$custom-control-indicator-focus-box-shadow: 0 0 0 1px $body-bg, 0 0 0 3px theme-color("primary") !default;
 
 $custom-control-indicator-active-color:      $white !default;
-$custom-control-indicator-active-bg:         lighten($brand-primary, 35%) !default;
+$custom-control-indicator-active-bg:         lighten(theme-color("primary"), 35%) !default;
 $custom-control-indicator-active-box-shadow: none !default;
 
 $custom-checkbox-border-radius: $border-radius !default;
 $custom-checkbox-icon-checked: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$custom-control-indicator-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
-$custom-checkbox-indeterminate-bg: $brand-primary !default;
+$custom-checkbox-indeterminate-bg: theme-color("primary") !default;
 $custom-checkbox-indicator-indeterminate-color: $custom-control-indicator-checked-color !default;
 $custom-checkbox-icon-indeterminate: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M0 2h4'/%3E%3C/svg%3E"), "#", "%23") !default;
 $custom-checkbox-indeterminate-box-shadow: none !default;
@@ -497,7 +489,7 @@ $custom-select-border-width:  $input-btn-border-width !default;
 $custom-select-border-color:  $input-border-color !default;
 $custom-select-border-radius: $border-radius !default;
 
-$custom-select-focus-border-color: lighten($brand-primary, 25%) !default;
+$custom-select-focus-border-color: lighten(theme-color("primary"), 25%) !default;
 $custom-select-focus-box-shadow:   inset 0 1px 2px rgba($black, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
 
 $custom-select-font-size-sm:  75% !default;
@@ -505,7 +497,7 @@ $custom-select-height-sm: $input-height-sm !default;
 
 $custom-file-height:           2.5rem !default;
 $custom-file-width:            14rem !default;
-$custom-file-focus-box-shadow: 0 0 0 .075rem $white, 0 0 0 .2rem $brand-primary !default;
+$custom-file-focus-box-shadow: 0 0 0 .075rem $white, 0 0 0 .2rem theme-color("primary") !default;
 
 $custom-file-padding-y:     1rem !default;
 $custom-file-padding-x:     .5rem !default;
@@ -529,8 +521,8 @@ $custom-file-text: (
 
 
 // Form validation
-$form-feedback-valid-color:   $brand-success !default;
-$form-feedback-invalid-color: $brand-danger !default;
+$form-feedback-valid-color:   theme-color("success") !default;
+$form-feedback-invalid-color: theme-color("danger") !default;
 
 
 // Dropdowns
@@ -642,8 +634,8 @@ $pagination-hover-bg:                  $gray-lighter !default;
 $pagination-hover-border-color:        #ddd !default;
 
 $pagination-active-color:              $white !default;
-$pagination-active-bg:                 $brand-primary !default;
-$pagination-active-border-color:       $brand-primary !default;
+$pagination-active-bg:                 theme-color("primary") !default;
+$pagination-active-border-color:       theme-color("primary") !default;
 
 $pagination-disabled-color:            $gray-light !default;
 $pagination-disabled-bg:               $white !default;
@@ -745,11 +737,11 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !defau
 // Badges
 
 $badge-default-bg:            $gray-light !default;
-$badge-primary-bg:            $brand-primary !default;
-$badge-success-bg:            $brand-success !default;
-$badge-info-bg:               $brand-info !default;
-$badge-warning-bg:            $brand-warning !default;
-$badge-danger-bg:             $brand-danger !default;
+$badge-primary-bg:            theme-color("primary") !default;
+$badge-success-bg:            theme-color("success") !default;
+$badge-info-bg:               theme-color("info") !default;
+$badge-warning-bg:            theme-color("warning") !default;
+$badge-danger-bg:             theme-color("danger") !default;
 
 $badge-color:                 $white !default;
 $badge-link-hover-color:      $white !default;
@@ -831,7 +823,7 @@ $progress-bg:                   $gray-lighter !default;
 $progress-border-radius:        $border-radius !default;
 $progress-box-shadow:           inset 0 .1rem .1rem rgba($black,.1) !default;
 $progress-bar-color:            $white !default;
-$progress-bar-bg:               $brand-primary !default;
+$progress-bar-bg:               theme-color("primary") !default;
 $progress-bar-animation-timing: 1s linear infinite !default;
 $progress-bar-transition:       width .6s ease !default;
 

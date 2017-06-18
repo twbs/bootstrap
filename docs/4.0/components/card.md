@@ -134,7 +134,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
 
 {% example html %}
 <div class="card">
-  <h3 class="card-header">Featured</h3>
+  <h4 class="card-header">Featured</h4>
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -186,7 +186,7 @@ Using the grid, wrap cards in columns and rows as needed.
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Special title treatment</h3>
+        <h4 class="card-title">Special title treatment</h4>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
@@ -195,7 +195,7 @@ Using the grid, wrap cards in columns and rows as needed.
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Special title treatment</h3>
+        <h4 class="card-title">Special title treatment</h4>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
@@ -211,7 +211,7 @@ Use our handful of [available sizing utilities]({{ site.baseurl }}/docs/{{ site.
 {% example html %}
 <div class="card w-75">
   <div class="card-body">
-    <h3 class="card-title">Card title</h3>
+    <h4 class="card-title">Card title</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Button</a>
   </div>
@@ -219,7 +219,7 @@ Use our handful of [available sizing utilities]({{ site.baseurl }}/docs/{{ site.
 
 <div class="card w-50">
   <div class="card-body">
-    <h3 class="card-title">Card title</h3>
+    <h4 class="card-title">Card title</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Button</a>
   </div>
@@ -233,7 +233,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
 {% example html %}
 <div class="card" style="width: 20rem;">
   <div class="card-body">
-    <h3 class="card-title">Special title treatment</h3>
+    <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
@@ -376,7 +376,7 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
 <div class="card card-inverse" style="background-color: #333; border-color: #333;">
   <div class="card-header">Header</div>
   <div class="card-body">
-    <h3 class="card-title">Special title treatment</h3>
+    <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>

@@ -86,7 +86,7 @@
 .bd-example-container-header {
   height: 3rem;
   margin-bottom: .5rem;
-  background-color: lighten($brand-primary, 50%);
+  background-color: lighten($blue, 50%);
   border-radius: .25rem;
 }
 
@@ -94,7 +94,7 @@
   float: right;
   width: 4rem;
   height: 8rem;
-  background-color: lighten($brand-warning, 25%);
+  background-color: lighten($blue, 25%);
   border-radius: .25rem;
 }
 
