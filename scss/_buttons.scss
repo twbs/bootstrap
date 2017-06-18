@@ -12,6 +12,7 @@
   vertical-align: middle;
   user-select: none;
   border: $input-btn-border-width solid transparent;
+  cursor: pointer;
   @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
@@ -28,6 +29,7 @@
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
+    cursor: not-allowed;
     opacity: .65;
     @include box-shadow(none);
   }
