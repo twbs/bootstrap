@@ -18,7 +18,7 @@
     background-color: $active-background;
     border-color: $active-border;
   }
-  
+
   &:focus,
   &.focus {
     // Avoid using mixin so we can pass custom focus shadow properly
