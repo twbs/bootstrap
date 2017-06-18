@@ -77,9 +77,8 @@
   }
 
   .dropdown-menu {
-    position: static !important;
+    position: static;
     float: none;
-    transform: unset !important;
   }
 }
 
@@ -158,8 +157,12 @@
           flex-direction: row;
 
           .dropdown-menu {
-            position: absolute !important;
-            top: 100% !important;
+            position: absolute;
+          }
+
+          .dropdown-menu-right {
+            right: 0;
+            left: auto; // Reset the default from `.dropdown-menu`
           }
 
           .nav-link {

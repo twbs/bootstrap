@@ -96,10 +96,11 @@ const Dropdown = (($) => {
   class Dropdown {
 
     constructor(element, config) {
-      this._element = element
-      this._popper  = null
-      this._config = this._getConfig(config)
-      this._menu = this._getMenuElement()
+      this._element  = element
+      this._popper   = null
+      this._config   = this._getConfig(config)
+      this._menu     = this._getMenuElement()
+      this._inNavbar = this._detectNavbar()
 
       this._addEventListeners()
     }
@@ -153,17 +154,7 @@ const Dropdown = (($) => {
           element = parent
         }
       }
-      this._popper = new Popper(element, this._menu, {
-        placement : this._getPlacement(),
-        modifiers : {
-          offset : {
-            offset : this._config.offset
-          },
-          flip : {
-            enabled : this._config.flip
-          }
-        }
-      })
+      this._popper = new Popper(element, this._menu, this._getPopperConfig())
 
       // if this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
@@ -195,6 +186,7 @@ const Dropdown = (($) => {
     }
 
     update() {
+      this._inNavbar = this._detectNavbar()
       if (this._popper !== null) {
         this._popper.scheduleUpdate()
       }
@@ -250,13 +242,40 @@ const Dropdown = (($) => {
         if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
           placement = AttachmentMap.TOPEND
         }
-      }
-      else {
-        if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
-          placement = AttachmentMap.BOTTOMEND
-        }
+      } else if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
+        placement = AttachmentMap.BOTTOMEND
       }
       return placement
+    }
+
+    _detectNavbar() {
+      return $(this._element).closest('.navbar').length > 0
+    }
+
+    _getPopperConfig() {
+      const popperConfig = {
+        placement : this._getPlacement(),
+        modifiers : {
+          offset : {
+            offset : this._config.offset
+          },
+          flip : {
+            enabled : this._config.flip
+          }
+        }
+      }
+
+      if (this._inNavbar) {
+        popperConfig.modifiers.AfterApplyStyle = {
+          enabled: true,
+          order: 901, // ApplyStyle order + 1
+          fn: () => {
+            // reset Popper styles
+            $(this._menu).attr('style', '')
+          }
+        }
+      }
+      return popperConfig
     }
 
     // static

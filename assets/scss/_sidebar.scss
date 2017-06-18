@@ -1,7 +1,7 @@
 // scss-lint:disable VendorPrefix
 
 //
-// Side navigation
+// Right side table of contents
 //
 
 .bd-toc {
@@ -10,6 +10,7 @@
     top: 4rem;
     max-height: calc(100vh - 4rem);
   }
+  order: 2;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   overflow-x: visible;
@@ -34,7 +35,7 @@
 
   a {
     display: block;
-    padding: .25rem 1.5rem;
+    padding: .125rem 1.5rem;
     color: #99979c;
 
     &:hover {
@@ -44,7 +45,12 @@
   }
 }
 
+//
+// Left side navigation
+//
+
 .bd-sidebar {
+  order: 0;
   background-color: #f5f2f9;
   border-bottom: 1px solid rgba(0,0,0,.1);
 
