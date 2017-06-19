@@ -4629,8 +4629,8 @@ tbody.collapse.show {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-flex: 1;
-    -webkit-flex: 1 0 0;
-        -ms-flex: 1 0 0px;
+    -webkit-flex: 1 0 0%;
+        -ms-flex: 1 0 0%;
             flex: 1 0 0%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -4656,8 +4656,8 @@ tbody.collapse.show {
   }
   .card-group .card {
     -webkit-box-flex: 1;
-    -webkit-flex: 1 0 0;
-        -ms-flex: 1 0 0px;
+    -webkit-flex: 1 0 0%;
+        -ms-flex: 1 0 0%;
             flex: 1 0 0%;
   }
   .card-group .card + .card {
@@ -4806,6 +4806,7 @@ tbody.collapse.show {
 .pagination-lg .page-link {
   padding: 0.75rem 1.5rem;
   font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .pagination-lg .page-item:first-child .page-link {
@@ -4821,6 +4822,7 @@ tbody.collapse.show {
 .pagination-sm .page-link {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 .pagination-sm .page-item:first-child .page-link {
@@ -5091,7 +5093,7 @@ a.badge:focus, a.badge:hover {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
-          flex: 1 1 0%;
+          flex: 1;
 }
 
 .list-group {
