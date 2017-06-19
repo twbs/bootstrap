@@ -2138,7 +2138,8 @@ var Modal = function ($) {
       this._element.setAttribute('aria-hidden', true);
       this._isTransitioning = false;
       this._showBackdrop(function () {
-        $(document.body).removeClass(ClassName.OPEN);
+        if ($('.modal:visible').length == 0)
+          $(document.body).removeClass(ClassName.OPEN);
         _this17._resetAdjustments();
         _this17._resetScrollbar();
         $(_this17._element).trigger(Event.HIDDEN);
