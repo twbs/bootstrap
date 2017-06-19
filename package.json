@@ -86,7 +86,6 @@
     "npm-run-all": "^4.0.2",
     "phantomjs-prebuilt": "^2.1.14",
     "postcss-cli": "^4.0.0",
-    "postcss-flexbugs-fixes": "^3.0.0",
     "qunit-phantomjs-runner": "^2.3.0",
     "qunitjs": "^2.3.2",
     "shelljs": "^0.7.7",

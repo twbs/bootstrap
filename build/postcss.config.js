@@ -35,7 +35,6 @@ module.exports = (ctx) => ({
         'Android >= 4',
         'Opera >= 12'
       ]
-    },
-    'postcss-flexbugs-fixes': {}
+    }
   }
 })

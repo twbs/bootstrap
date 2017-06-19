@@ -76,7 +76,7 @@
     @include border-radius($nav-pills-border-radius);
 
     &.active,
-    .show & {
+    .show > & {
       color: $nav-pills-link-active-color;
       background-color: $nav-pills-link-active-bg;
     }
