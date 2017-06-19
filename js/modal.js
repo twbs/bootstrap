@@ -170,8 +170,9 @@
     var that = this
     this.$element.hide()
     this.backdrop(function () {
-      if ($('.modal:visible').length == 0)
+      if ($('.modal:visible').length === 0) {
         that.$body.removeClass('modal-open')
+      }
       that.resetAdjustments()
       that.resetScrollbar()
       that.$element.trigger('hidden.bs.modal')
