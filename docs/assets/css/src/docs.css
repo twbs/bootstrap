@@ -317,83 +317,95 @@ h4 code {
 
 
 /*
- * Carbon ads
+ * Carbon Ads
  *
  * Single display ad that shows on all pages (except homepage) in page headers.
  * The hella `!important` is required for any pre-set property.
  */
 
-.carbonad {
-  width: auto !important;
-  height: auto !important;
-  padding: 20px !important;
-  margin: 30px -15px -31px !important;
-  overflow: hidden; /* clearfix */
-  font-size: 13px !important;
-  line-height: 16px !important;
-  text-align: left;
-  background: transparent !important;
-  border: solid #866ab3 !important;
-  border-width: 1px 0 !important;
-}
-.carbonad-img {
-  margin: 0 !important;
-}
-.carbonad-text,
-.carbonad-tag {
-  display: block !important;
-  float: none !important;
-  width: auto !important;
-  height: auto !important;
-  margin-left: 145px !important;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-}
-.carbonad-text {
-  padding-top: 0 !important;
-}
-.carbonad-tag {
-  color: inherit !important;
-  text-align: left !important;
-}
-.carbonad-text a,
-.carbonad-tag a {
-  color: #fff !important;
-}
-.carbonad #azcarbon > img {
-  display: none; /* hide what I assume are tracking images */
+#carbonads {
+ display: block;
+ overflow: hidden;
+ margin: 0 auto;
+ padding: 1em;
+ max-width: 330px;
+ border: solid 1px #866bb3;
+ border-radius: 3px;
+ font-size: 13px;
+ line-height: 1.5;
 }
 
-@media (min-width: 480px) {
-  .carbonad {
-    width: 330px !important;
-    margin: 20px auto !important;
-    border-width: 1px !important;
-    border-radius: 4px;
-  }
-  .bs-docs-masthead .carbonad {
-    margin: 50px auto 0 !important;
-  }
+#carbonads a:hover {
+ color: #ddd;
+ text-decoration: none;
 }
 
-@media (min-width: 768px) {
-  .carbonad {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-  }
+#carbonads span {
+ position: relative;
+ display: block;
+ overflow: hidden;
 }
 
-@media (min-width: 992px) {
-  .carbonad {
-    position: absolute;
-    top: 0;
-    right: 15px; /* 15px instead of 0 since box-sizing */
-    width: 330px !important;
-    padding: 15px !important;
-    margin: 0 !important;
-  }
-  .bs-docs-masthead .carbonad {
-    position: static;
-  }
+.carbon-img {
+ float: left;
+ margin-right: 1em;
+}
+
+.carbon-img img {
+ display: block;
+}
+
+.carbon-text {
+ display: block;
+ float: left;
+ max-width: calc(100% - 130px - 1em);
+ text-align: left;
+ color: #fff;
+}
+
+.carbon-poweredby {
+ position: absolute;
+ bottom: 0;
+ left: 143px;
+ display: block;
+ color: hsl(263, 39%, 82%) !important;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ font-size: 9px;
+ line-height: 1;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+ #carbonads {
+   max-width: 100%;
+   border: 0;
+   border-top: solid 1px hsl(263, 32%, 56%);
+   border-radius: 0;
+   padding-top: 2em;
+ }
+}
+/* Rules to overwrite the position of Carbon Ads on docs pages */
+
+.bs-docs-header #carbonads {
+ position: absolute;
+ top: 0;
+ right: 15px;
+}
+
+@media only screen and (min-width: 480px) and (max-width: 979px) {
+ .bs-docs-header #carbonads {
+   position: relative;
+   right: 0;
+   margin: 4em auto 0;
+ }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+ .bs-docs-header #carbonads {
+   position: relative;
+   right: 0;
+   margin: 2em 0 0;
+ }
 }
 
 
