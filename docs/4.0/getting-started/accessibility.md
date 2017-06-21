@@ -28,7 +28,7 @@ Most colors that currently make up Bootstrap's default palette—used throughout
 
 ### Visually hidden content
 
-Content which should be visually hidden, but remains accessible to assistive technologies such as screen readers, can be styled using the `.sr-only` class. This can be useful in situations where additional visual information or cues (such as meaning denoted through the use of color) need to also be conveyed to non-visual users.
+Content which should be visually hidden, but remain accessible to assistive technologies such as screen readers, can be styled using the `.sr-only` class. This can be useful in situations where additional visual information or cues (such as meaning denoted through the use of color) need to also be conveyed to non-visual users.
 
 {% highlight html %}
 <p class="text-danger">
