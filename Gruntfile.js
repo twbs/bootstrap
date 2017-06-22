@@ -215,6 +215,18 @@ module.exports = function (grunt) {
         },
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
+      grid: {
+        options: {
+          map: true
+        },
+        src: 'dist/css/<%= pkg.name %>-grid.css'
+      },
+      systemBuilder: {
+        options: {
+          map: true
+        },
+        src: 'dist/css/<%= pkg.name %>-system-builder.css'
+      },
       docs: {
         src: ['docs/assets/css/src/docs.css']
       },
@@ -263,6 +275,14 @@ module.exports = function (grunt) {
       minifyTheme: {
         src: 'dist/css/<%= pkg.name %>-theme.css',
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+      },
+      minifyGrid: {
+        src: 'dist/css/<%= pkg.name %>-grid.css',
+        dest: 'dist/css/<%= pkg.name %>-grid.min.css'
+      },
+      minifySystemBuilder: {
+        src: 'dist/css/<%= pkg.name %>-system-builder.css',
+        dest: 'dist/css/<%= pkg.name %>-system-builder.min.css'
       },
       docs: {
         src: [
@@ -496,7 +516,7 @@ module.exports = function (grunt) {
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'less:compileGrid', 'less:compileSystemBuilder']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'autoprefixer:grid', 'autoprefixer:systemBuilder', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'cssmin:minifyGrid', 'cssmin:minifySystemBuilder']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);

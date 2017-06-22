@@ -94,7 +94,9 @@ figure {
 }
 hr {
   height: 0;
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
 }
 pre {
   overflow: auto;
@@ -143,7 +145,9 @@ input {
 }
 input[type="checkbox"],
 input[type="radio"] {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
 }
 input[type="number"]::-webkit-inner-spin-button,
@@ -151,7 +155,9 @@ input[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 input[type="search"] {
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
   -webkit-appearance: textfield;
 }
 input[type="search"]::-webkit-search-cancel-button,
@@ -189,7 +195,8 @@ th {
     color: #000 !important;
     text-shadow: none !important;
     background: transparent !important;
-    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
   }
   a,
   a:visited {
@@ -1539,13 +1546,15 @@ kbd {
   color: #fff;
   background-color: #333;
   border-radius: 3px;
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
+          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);
 }
 kbd kbd {
   padding: 0;
   font-size: 100%;
   font-weight: bold;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 pre {
   display: block;
@@ -1884,7 +1893,7 @@ output {
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
@@ -2334,7 +2343,8 @@ select[multiple].input-lg {
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  touch-action: manipulation;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -2813,10 +2823,13 @@ tbody.collapse.in {
   height: 0;
   overflow: hidden;
   -webkit-transition-timing-function: ease;
+       -o-transition-timing-function: ease;
           transition-timing-function: ease;
   -webkit-transition-duration: .35s;
+       -o-transition-duration: .35s;
           transition-duration: .35s;
   -webkit-transition-property: height, visibility;
+       -o-transition-property: height, visibility;
           transition-property: height, visibility;
 }
 .caret {
@@ -2851,7 +2864,8 @@ tbody.collapse.in {
   text-align: left;
   list-style: none;
   background-color: #fff;
-  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .15);
   border-radius: 4px;
@@ -3504,7 +3518,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   overflow-x: visible;
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid transparent;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
 }
 .navbar-collapse.in {
   overflow-y: auto;
@@ -3513,7 +3528,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-collapse {
     width: auto;
     border-top: 0;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
   .navbar-collapse.collapse {
     display: block !important;
@@ -3653,7 +3669,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-top: 0;
     background-color: transparent;
     border: 0;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
   .navbar-nav .open .dropdown-menu > li > a,
   .navbar-nav .open .dropdown-menu .dropdown-header {
@@ -4423,6 +4440,14 @@ a.thumbnail.active {
     background-position: 0 0;
   }
 }
+@-o-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
 @keyframes progress-bar-stripes {
   from {
     background-position: 40px 0;
@@ -4460,7 +4485,8 @@ a.thumbnail.active {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
-  background-size: 40px 40px;
+  -webkit-background-size: 40px 40px;
+          background-size: 40px 40px;
 }
 .progress.active .progress-bar,
 .progress-bar.active {
@@ -5187,7 +5213,6 @@ button.close {
 }
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform .3s ease-out;
-     -moz-transition:    -moz-transform .3s ease-out;
        -o-transition:      -o-transform .3s ease-out;
           transition:         transform .3s ease-out;
   -webkit-transform: translate(0, -25%);
@@ -5213,7 +5238,8 @@ button.close {
 .modal-content {
   position: relative;
   background-color: #fff;
-  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: 6px;
@@ -5432,7 +5458,8 @@ button.close {
   word-wrap: normal;
   white-space: normal;
   background-color: #fff;
-  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: 6px;
@@ -5562,15 +5589,12 @@ button.close {
 @media all and (transform-3d), (-webkit-transform-3d) {
   .carousel-inner > .item {
     -webkit-transition: -webkit-transform .6s ease-in-out;
-       -moz-transition:    -moz-transform .6s ease-in-out;
          -o-transition:      -o-transform .6s ease-in-out;
             transition:         transform .6s ease-in-out;
 
     -webkit-backface-visibility: hidden;
-       -moz-backface-visibility: hidden;
             backface-visibility: hidden;
     -webkit-perspective: 1000px;
-       -moz-perspective: 1000px;
             perspective: 1000px;
   }
   .carousel-inner > .item.next,
@@ -5640,6 +5664,7 @@ button.close {
 .carousel-control.left {
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
   background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .0001)));
   background-image:         linear-gradient(to right, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
   background-repeat: repeat-x;
@@ -5649,6 +5674,7 @@ button.close {
   left: auto;
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
   background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .0001)), to(rgba(0, 0, 0, .5)));
   background-image:         linear-gradient(to right, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
   background-repeat: repeat-x;
