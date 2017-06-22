@@ -8,11 +8,6 @@
   description: Bootstrap 4 中文文档教程
   url: http://wiki.jikexueyuan.com/project/bootstrap4/
 
-- name: Japanese
-  code: ja
-  description: Bootstrap 4 日本語リファレンス
-  url: http://bootstrap4.jp/
-
 - name: Brazilian Portuguese
   code: pt-BR
   description: Bootstrap 4 Português do Brasil
