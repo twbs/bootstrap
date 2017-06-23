@@ -174,6 +174,28 @@ module.exports = function (grunt) {
         },
         src: 'less/theme.less',
         dest: 'dist/css/<%= pkg.name %>-theme.css'
+      },
+      compileGrid: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: '<%= pkg.name %>-grid.css.map',
+          sourceMapFilename: 'dist/css/<%= pkg.name %>-grid.css.map'
+        },
+        src: 'less/bootstrap-grid.less',
+        dest: 'dist/css/<%= pkg.name %>-grid.css'
+      },
+      compileSystemBuilder: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: '<%= pkg.name %>-system-builder.css.map',
+          sourceMapFilename: 'dist/css/<%= pkg.name %>-system-builder.css.map'
+        },
+        src: 'less/bootstrap-system-builder.less',
+        dest: 'dist/css/<%= pkg.name %>-system-builder.css'
       }
     },
 
@@ -192,6 +214,18 @@ module.exports = function (grunt) {
           map: true
         },
         src: 'dist/css/<%= pkg.name %>-theme.css'
+      },
+      grid: {
+        options: {
+          map: true
+        },
+        src: 'dist/css/<%= pkg.name %>-grid.css'
+      },
+      systemBuilder: {
+        options: {
+          map: true
+        },
+        src: 'dist/css/<%= pkg.name %>-system-builder.css'
       },
       docs: {
         src: ['docs/assets/css/src/docs.css']
@@ -241,6 +275,14 @@ module.exports = function (grunt) {
       minifyTheme: {
         src: 'dist/css/<%= pkg.name %>-theme.css',
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+      },
+      minifyGrid: {
+        src: 'dist/css/<%= pkg.name %>-grid.css',
+        dest: 'dist/css/<%= pkg.name %>-grid.min.css'
+      },
+      minifySystemBuilder: {
+        src: 'dist/css/<%= pkg.name %>-system-builder.css',
+        dest: 'dist/css/<%= pkg.name %>-system-builder.min.css'
       },
       docs: {
         src: [
@@ -429,7 +471,6 @@ module.exports = function (grunt) {
 
   });
 
-
   // These plugins provide necessary tasks.
   require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
   require('time-grunt')(grunt);
@@ -474,8 +515,8 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'less:compileGrid', 'less:compileSystemBuilder']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'autoprefixer:grid', 'autoprefixer:systemBuilder', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme', 'cssmin:minifyGrid', 'cssmin:minifySystemBuilder']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
