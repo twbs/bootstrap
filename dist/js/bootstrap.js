@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v4.0.0-alpha.6-joblocal.24 (https://getbootstrap.com)
+ * Bootstrap v4.0.0-alpha.6-joblocal.26 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
@@ -52,10 +52,9 @@ var Util = function ($) {
     MozTransition: 'transitionend',
     OTransition: 'oTransitionEnd otransitionend',
     transition: 'transitionend'
-  };
 
-  // shoutout AngusCroll (https://goo.gl/pxwQGp)
-  function toType(obj) {
+    // shoutout AngusCroll (https://goo.gl/pxwQGp)
+  };function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
   }
 
@@ -215,14 +214,14 @@ var Alert = function ($) {
     ALERT: 'alert',
     FADE: 'fade',
     SHOW: 'show'
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var Alert = function () {
     function Alert(element) {
       _classCallCheck(this, Alert);
@@ -396,14 +395,14 @@ var Button = function ($) {
   var Event = {
     CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY,
     FOCUS_BLUR_DATA_API: 'focus' + EVENT_KEY + DATA_API_KEY + ' ' + ('blur' + EVENT_KEY + DATA_API_KEY)
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var Button = function () {
     function Button(element) {
       _classCallCheck(this, Button);
@@ -597,14 +596,14 @@ var Carousel = function ($) {
     INDICATORS: '.carousel-indicators',
     DATA_SLIDE: '[data-slide], [data-slide-to]',
     DATA_RIDE: '[data-ride="carousel"]'
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var Carousel = function () {
     function Carousel(element, config) {
       _classCallCheck(this, Carousel);
@@ -1056,14 +1055,14 @@ var Collapse = function ($) {
   var Selector = {
     ACTIVES: '.card > .show, .card > .collapsing',
     DATA_TOGGLE: '[data-toggle="collapse"]'
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var Collapse = function () {
     function Collapse(element, config) {
       _classCallCheck(this, Collapse);
@@ -1405,14 +1404,14 @@ var Dropdown = function ($) {
     ROLE_LISTBOX: '[role="listbox"]',
     NAVBAR_NAV: '.navbar-nav',
     VISIBLE_ITEMS: '[role="menu"] li:not(.disabled) a, ' + '[role="listbox"] li:not(.disabled) a'
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var Dropdown = function () {
     function Dropdown(element) {
       _classCallCheck(this, Dropdown);
@@ -1703,14 +1702,14 @@ var Modal = function ($) {
     DATA_TOGGLE: '[data-toggle="modal"]',
     DATA_DISMISS: '[data-dismiss="modal"]',
     FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var Modal = function () {
     function Modal(element, config) {
       _classCallCheck(this, Modal);
@@ -2229,14 +2228,14 @@ var ScrollSpy = function ($) {
   var OffsetMethod = {
     OFFSET: 'offset',
     POSITION: 'position'
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var ScrollSpy = function () {
     function ScrollSpy(element, config) {
       var _this18 = this;
@@ -2528,14 +2527,14 @@ var Tab = function ($) {
     DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"]',
     DROPDOWN_TOGGLE: '.dropdown-toggle',
     DROPDOWN_ACTIVE_CHILD: '> .dropdown-menu .active'
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var Tab = function () {
     function Tab(element) {
       _classCallCheck(this, Tab);
@@ -2838,14 +2837,14 @@ var Tooltip = function ($) {
     FOCUS: 'focus',
     CLICK: 'click',
     MANUAL: 'manual'
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var Tooltip = function () {
     function Tooltip(element, config) {
       _classCallCheck(this, Tooltip);
@@ -3404,14 +3403,14 @@ var Popover = function ($) {
     FOCUSOUT: 'focusout' + EVENT_KEY,
     MOUSEENTER: 'mouseenter' + EVENT_KEY,
     MOUSELEAVE: 'mouseleave' + EVENT_KEY
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var Popover = function (_Tooltip) {
     _inherits(Popover, _Tooltip);
 
