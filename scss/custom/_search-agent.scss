@@ -2,6 +2,7 @@
   color: $search-agent-color;
   background: $search-agent-bg;
   padding: 0 $search-agent-padding-x;
+  flex: 0 0 auto;
 
   .search-agent-body {
     padding-top: $search-agent-padding-y;
