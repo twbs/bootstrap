@@ -242,7 +242,7 @@ module.exports = function (grunt) {
         options: {
           map: true
         },
-        src: 'dist/css/<%= pkg.name %>-system-ilis.css'
+        src: 'dist/css/<%= pkg.name %>-ilis.css'
       },
       docs: {
         src: ['docs/assets/css/src/docs.css']
