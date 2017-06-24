@@ -3,12 +3,9 @@
     [
       "es2015",
       {
-        "loose": true,
         "modules": false
       }
     ]
   ],
-  "plugins": [
-    "transform-es2015-modules-strip"
-  ]
+  "plugins": ["external-helpers"]
 }

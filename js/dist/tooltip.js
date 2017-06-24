@@ -1,8 +1,6 @@
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+import $ from 'jquery';
+import Popper from 'popper.js';
+import Util from './util';
 
 /**
  * --------------------------------------------------------------------------
@@ -11,145 +9,143 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * --------------------------------------------------------------------------
  */
 
-var Tooltip = function ($) {
+/**
+ * ------------------------------------------------------------------------
+ * Constants
+ * ------------------------------------------------------------------------
+ */
+
+var NAME = 'tooltip';
+var VERSION = '4.0.0-beta';
+var DATA_KEY = 'bs.tooltip';
+var EVENT_KEY = '.' + DATA_KEY;
+var JQUERY_NO_CONFLICT = $.fn[NAME];
+var TRANSITION_DURATION = 150;
+var CLASS_PREFIX = 'bs-tooltip';
+var BSCLS_PREFIX_REGEX = new RegExp('(^|\\s)' + CLASS_PREFIX + '\\S+', 'g');
+
+var DefaultType = {
+  animation: 'boolean',
+  template: 'string',
+  title: '(string|element|function)',
+  trigger: 'string',
+  delay: '(number|object)',
+  html: 'boolean',
+  selector: '(string|boolean)',
+  placement: '(string|function)',
+  offset: '(number|string)',
+  container: '(string|element|boolean)',
+  fallbackPlacement: '(string|array)'
+};
+
+var AttachmentMap = {
+  AUTO: 'auto',
+  TOP: 'top',
+  RIGHT: 'right',
+  BOTTOM: 'bottom',
+  LEFT: 'left'
+};
+
+var Default = {
+  animation: true,
+  template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',
+  trigger: 'hover focus',
+  title: '',
+  delay: 0,
+  html: false,
+  selector: false,
+  placement: 'top',
+  offset: 0,
+  container: false,
+  fallbackPlacement: 'flip'
+};
+
+var HoverState = {
+  SHOW: 'show',
+  OUT: 'out'
+};
+
+var Event = {
+  HIDE: 'hide' + EVENT_KEY,
+  HIDDEN: 'hidden' + EVENT_KEY,
+  SHOW: 'show' + EVENT_KEY,
+  SHOWN: 'shown' + EVENT_KEY,
+  INSERTED: 'inserted' + EVENT_KEY,
+  CLICK: 'click' + EVENT_KEY,
+  FOCUSIN: 'focusin' + EVENT_KEY,
+  FOCUSOUT: 'focusout' + EVENT_KEY,
+  MOUSEENTER: 'mouseenter' + EVENT_KEY,
+  MOUSELEAVE: 'mouseleave' + EVENT_KEY
+};
+
+var ClassName = {
+  FADE: 'fade',
+  SHOW: 'show'
+};
+
+var Selector = {
+  TOOLTIP: '.tooltip',
+  TOOLTIP_INNER: '.tooltip-inner',
+  ARROW: '.arrow'
+};
+
+var Trigger = {
+  HOVER: 'hover',
+  FOCUS: 'focus',
+  CLICK: 'click',
+  MANUAL: 'manual'
 
   /**
-   * Check for Popper dependency
-   * Popper - https://popper.js.org
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
    */
-  if (typeof Popper === 'undefined') {
-    throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)');
+
+};
+var Tooltip = function () {
+  function Tooltip(element, config) {
+    babelHelpers.classCallCheck(this, Tooltip);
+
+
+    // private
+    this._isEnabled = true;
+    this._timeout = 0;
+    this._hoverState = '';
+    this._activeTrigger = {};
+    this._popper = null;
+
+    // protected
+    this.element = element;
+    this.config = this._getConfig(config);
+    this.tip = null;
+
+    this._setListeners();
   }
 
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
+  // getters
 
-  var NAME = 'tooltip';
-  var VERSION = '4.0.0-beta';
-  var DATA_KEY = 'bs.tooltip';
-  var EVENT_KEY = '.' + DATA_KEY;
-  var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var TRANSITION_DURATION = 150;
-  var CLASS_PREFIX = 'bs-tooltip';
-  var BSCLS_PREFIX_REGEX = new RegExp('(^|\\s)' + CLASS_PREFIX + '\\S+', 'g');
+  babelHelpers.createClass(Tooltip, [{
+    key: 'enable',
 
-  var DefaultType = {
-    animation: 'boolean',
-    template: 'string',
-    title: '(string|element|function)',
-    trigger: 'string',
-    delay: '(number|object)',
-    html: 'boolean',
-    selector: '(string|boolean)',
-    placement: '(string|function)',
-    offset: '(number|string)',
-    container: '(string|element|boolean)',
-    fallbackPlacement: '(string|array)'
-  };
-
-  var AttachmentMap = {
-    AUTO: 'auto',
-    TOP: 'top',
-    RIGHT: 'right',
-    BOTTOM: 'bottom',
-    LEFT: 'left'
-  };
-
-  var Default = {
-    animation: true,
-    template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',
-    trigger: 'hover focus',
-    title: '',
-    delay: 0,
-    html: false,
-    selector: false,
-    placement: 'top',
-    offset: 0,
-    container: false,
-    fallbackPlacement: 'flip'
-  };
-
-  var HoverState = {
-    SHOW: 'show',
-    OUT: 'out'
-  };
-
-  var Event = {
-    HIDE: 'hide' + EVENT_KEY,
-    HIDDEN: 'hidden' + EVENT_KEY,
-    SHOW: 'show' + EVENT_KEY,
-    SHOWN: 'shown' + EVENT_KEY,
-    INSERTED: 'inserted' + EVENT_KEY,
-    CLICK: 'click' + EVENT_KEY,
-    FOCUSIN: 'focusin' + EVENT_KEY,
-    FOCUSOUT: 'focusout' + EVENT_KEY,
-    MOUSEENTER: 'mouseenter' + EVENT_KEY,
-    MOUSELEAVE: 'mouseleave' + EVENT_KEY
-  };
-
-  var ClassName = {
-    FADE: 'fade',
-    SHOW: 'show'
-  };
-
-  var Selector = {
-    TOOLTIP: '.tooltip',
-    TOOLTIP_INNER: '.tooltip-inner',
-    ARROW: '.arrow'
-  };
-
-  var Trigger = {
-    HOVER: 'hover',
-    FOCUS: 'focus',
-    CLICK: 'click',
-    MANUAL: 'manual'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-  var Tooltip = function () {
-    function Tooltip(element, config) {
-      _classCallCheck(this, Tooltip);
-
-      // private
-      this._isEnabled = true;
-      this._timeout = 0;
-      this._hoverState = '';
-      this._activeTrigger = {};
-      this._popper = null;
-
-      // protected
-      this.element = element;
-      this.config = this._getConfig(config);
-      this.tip = null;
-
-      this._setListeners();
-    }
-
-    // getters
 
     // public
 
-    Tooltip.prototype.enable = function enable() {
+    value: function enable() {
       this._isEnabled = true;
-    };
-
-    Tooltip.prototype.disable = function disable() {
+    }
+  }, {
+    key: 'disable',
+    value: function disable() {
       this._isEnabled = false;
-    };
-
-    Tooltip.prototype.toggleEnabled = function toggleEnabled() {
+    }
+  }, {
+    key: 'toggleEnabled',
+    value: function toggleEnabled() {
       this._isEnabled = !this._isEnabled;
-    };
-
-    Tooltip.prototype.toggle = function toggle(event) {
+    }
+  }, {
+    key: 'toggle',
+    value: function toggle(event) {
       if (event) {
         var dataKey = this.constructor.DATA_KEY;
         var context = $(event.currentTarget).data(dataKey);
@@ -175,9 +171,10 @@ var Tooltip = function ($) {
 
         this._enter(null, this);
       }
-    };
-
-    Tooltip.prototype.dispose = function dispose() {
+    }
+  }, {
+    key: 'dispose',
+    value: function dispose() {
       clearTimeout(this._timeout);
 
       $.removeData(this.element, this.constructor.DATA_KEY);
@@ -201,9 +198,10 @@ var Tooltip = function ($) {
       this.element = null;
       this.config = null;
       this.tip = null;
-    };
-
-    Tooltip.prototype.show = function show() {
+    }
+  }, {
+    key: 'show',
+    value: function show() {
       var _this = this;
 
       if ($(this.element).css('display') === 'none') {
@@ -300,9 +298,10 @@ var Tooltip = function ($) {
           complete();
         }
       }
-    };
-
-    Tooltip.prototype.hide = function hide(callback) {
+    }
+  }, {
+    key: 'hide',
+    value: function hide(callback) {
       var _this2 = this;
 
       var tip = this.getTipElement();
@@ -350,37 +349,44 @@ var Tooltip = function ($) {
       }
 
       this._hoverState = '';
-    };
-
-    Tooltip.prototype.update = function update() {
+    }
+  }, {
+    key: 'update',
+    value: function update() {
       if (this._popper !== null) {
         this._popper.scheduleUpdate();
       }
-    };
+    }
 
     // protected
 
-    Tooltip.prototype.isWithContent = function isWithContent() {
+  }, {
+    key: 'isWithContent',
+    value: function isWithContent() {
       return Boolean(this.getTitle());
-    };
-
-    Tooltip.prototype.addAttachmentClass = function addAttachmentClass(attachment) {
+    }
+  }, {
+    key: 'addAttachmentClass',
+    value: function addAttachmentClass(attachment) {
       $(this.getTipElement()).addClass(CLASS_PREFIX + '-' + attachment);
-    };
-
-    Tooltip.prototype.getTipElement = function getTipElement() {
+    }
+  }, {
+    key: 'getTipElement',
+    value: function getTipElement() {
       return this.tip = this.tip || $(this.config.template)[0];
-    };
-
-    Tooltip.prototype.setContent = function setContent() {
+    }
+  }, {
+    key: 'setContent',
+    value: function setContent() {
       var $tip = $(this.getTipElement());
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle());
       $tip.removeClass(ClassName.FADE + ' ' + ClassName.SHOW);
-    };
-
-    Tooltip.prototype.setElementContent = function setElementContent($element, content) {
+    }
+  }, {
+    key: 'setElementContent',
+    value: function setElementContent($element, content) {
       var html = this.config.html;
-      if ((typeof content === 'undefined' ? 'undefined' : _typeof(content)) === 'object' && (content.nodeType || content.jquery)) {
+      if ((typeof content === 'undefined' ? 'undefined' : babelHelpers.typeof(content)) === 'object' && (content.nodeType || content.jquery)) {
         // content is a DOM node or a jQuery
         if (html) {
           if (!$(content).parent().is($element)) {
@@ -392,9 +398,10 @@ var Tooltip = function ($) {
       } else {
         $element[html ? 'html' : 'text'](content);
       }
-    };
-
-    Tooltip.prototype.getTitle = function getTitle() {
+    }
+  }, {
+    key: 'getTitle',
+    value: function getTitle() {
       var title = this.element.getAttribute('data-original-title');
 
       if (!title) {
@@ -402,15 +409,18 @@ var Tooltip = function ($) {
       }
 
       return title;
-    };
+    }
 
     // private
 
-    Tooltip.prototype._getAttachment = function _getAttachment(placement) {
+  }, {
+    key: '_getAttachment',
+    value: function _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()];
-    };
-
-    Tooltip.prototype._setListeners = function _setListeners() {
+    }
+  }, {
+    key: '_setListeners',
+    value: function _setListeners() {
       var _this3 = this;
 
       var triggers = this.config.trigger.split(' ');
@@ -444,17 +454,19 @@ var Tooltip = function ($) {
       } else {
         this._fixTitle();
       }
-    };
-
-    Tooltip.prototype._fixTitle = function _fixTitle() {
-      var titleType = _typeof(this.element.getAttribute('data-original-title'));
+    }
+  }, {
+    key: '_fixTitle',
+    value: function _fixTitle() {
+      var titleType = babelHelpers.typeof(this.element.getAttribute('data-original-title'));
       if (this.element.getAttribute('title') || titleType !== 'string') {
         this.element.setAttribute('data-original-title', this.element.getAttribute('title') || '');
         this.element.setAttribute('title', '');
       }
-    };
-
-    Tooltip.prototype._enter = function _enter(event, context) {
+    }
+  }, {
+    key: '_enter',
+    value: function _enter(event, context) {
       var dataKey = this.constructor.DATA_KEY;
 
       context = context || $(event.currentTarget).data(dataKey);
@@ -487,9 +499,10 @@ var Tooltip = function ($) {
           context.show();
         }
       }, context.config.delay.show);
-    };
-
-    Tooltip.prototype._leave = function _leave(event, context) {
+    }
+  }, {
+    key: '_leave',
+    value: function _leave(event, context) {
       var dataKey = this.constructor.DATA_KEY;
 
       context = context || $(event.currentTarget).data(dataKey);
@@ -521,9 +534,10 @@ var Tooltip = function ($) {
           context.hide();
         }
       }, context.config.delay.hide);
-    };
-
-    Tooltip.prototype._isWithActiveTrigger = function _isWithActiveTrigger() {
+    }
+  }, {
+    key: '_isWithActiveTrigger',
+    value: function _isWithActiveTrigger() {
       for (var trigger in this._activeTrigger) {
         if (this._activeTrigger[trigger]) {
           return true;
@@ -531,9 +545,10 @@ var Tooltip = function ($) {
       }
 
       return false;
-    };
-
-    Tooltip.prototype._getConfig = function _getConfig(config) {
+    }
+  }, {
+    key: '_getConfig',
+    value: function _getConfig(config) {
       config = $.extend({}, this.constructor.Default, $(this.element).data(), config);
 
       if (config.delay && typeof config.delay === 'number') {
@@ -554,9 +569,10 @@ var Tooltip = function ($) {
       Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
 
       return config;
-    };
-
-    Tooltip.prototype._getDelegateConfig = function _getDelegateConfig() {
+    }
+  }, {
+    key: '_getDelegateConfig',
+    value: function _getDelegateConfig() {
       var config = {};
 
       if (this.config) {
@@ -568,22 +584,25 @@ var Tooltip = function ($) {
       }
 
       return config;
-    };
-
-    Tooltip.prototype._cleanTipClass = function _cleanTipClass() {
+    }
+  }, {
+    key: '_cleanTipClass',
+    value: function _cleanTipClass() {
       var $tip = $(this.getTipElement());
       var tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX);
       if (tabClass !== null && tabClass.length > 0) {
         $tip.removeClass(tabClass.join(''));
       }
-    };
-
-    Tooltip.prototype._handlePopperPlacementChange = function _handlePopperPlacementChange(data) {
+    }
+  }, {
+    key: '_handlePopperPlacementChange',
+    value: function _handlePopperPlacementChange(data) {
       this._cleanTipClass();
       this.addAttachmentClass(this._getAttachment(data.placement));
-    };
-
-    Tooltip.prototype._fixTransition = function _fixTransition() {
+    }
+  }, {
+    key: '_fixTransition',
+    value: function _fixTransition() {
       var tip = this.getTipElement();
       var initConfigAnimation = this.config.animation;
       if (tip.getAttribute('x-placement') !== null) {
@@ -594,14 +613,16 @@ var Tooltip = function ($) {
       this.hide();
       this.show();
       this.config.animation = initConfigAnimation;
-    };
+    }
 
     // static
 
-    Tooltip._jQueryInterface = function _jQueryInterface(config) {
+  }], [{
+    key: '_jQueryInterface',
+    value: function _jQueryInterface(config) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
-        var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config;
+        var _config = (typeof config === 'undefined' ? 'undefined' : babelHelpers.typeof(config)) === 'object' && config;
 
         if (!data && /dispose|hide/.test(config)) {
           return;
@@ -619,61 +640,57 @@ var Tooltip = function ($) {
           data[config]();
         }
       });
-    };
-
-    _createClass(Tooltip, null, [{
-      key: 'VERSION',
-      get: function get() {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function get() {
-        return Default;
-      }
-    }, {
-      key: 'NAME',
-      get: function get() {
-        return NAME;
-      }
-    }, {
-      key: 'DATA_KEY',
-      get: function get() {
-        return DATA_KEY;
-      }
-    }, {
-      key: 'Event',
-      get: function get() {
-        return Event;
-      }
-    }, {
-      key: 'EVENT_KEY',
-      get: function get() {
-        return EVENT_KEY;
-      }
-    }, {
-      key: 'DefaultType',
-      get: function get() {
-        return DefaultType;
-      }
-    }]);
-
-    return Tooltip;
-  }();
-
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME] = Tooltip._jQueryInterface;
-  $.fn[NAME].Constructor = Tooltip;
-  $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT;
-    return Tooltip._jQueryInterface;
-  };
-
+    }
+  }, {
+    key: 'VERSION',
+    get: function get() {
+      return VERSION;
+    }
+  }, {
+    key: 'Default',
+    get: function get() {
+      return Default;
+    }
+  }, {
+    key: 'NAME',
+    get: function get() {
+      return NAME;
+    }
+  }, {
+    key: 'DATA_KEY',
+    get: function get() {
+      return DATA_KEY;
+    }
+  }, {
+    key: 'Event',
+    get: function get() {
+      return Event;
+    }
+  }, {
+    key: 'EVENT_KEY',
+    get: function get() {
+      return EVENT_KEY;
+    }
+  }, {
+    key: 'DefaultType',
+    get: function get() {
+      return DefaultType;
+    }
+  }]);
   return Tooltip;
-}(jQuery); /* global Popper */
+}();
+
+/**
+ * ------------------------------------------------------------------------
+ * jQuery
+ * ------------------------------------------------------------------------
+ */
+
+export default Tooltip;
+$.fn[NAME] = Tooltip._jQueryInterface;
+$.fn[NAME].Constructor = Tooltip;
+$.fn[NAME].noConflict = function () {
+  $.fn[NAME] = JQUERY_NO_CONFLICT;
+  return Tooltip._jQueryInterface;
+};
 //# sourceMappingURL=tooltip.js.map

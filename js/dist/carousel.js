@@ -1,8 +1,5 @@
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+import $ from 'jquery';
+import Util from './util';
 
 /**
  * --------------------------------------------------------------------------
@@ -11,130 +8,136 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * --------------------------------------------------------------------------
  */
 
-var Carousel = function ($) {
+/**
+ * ------------------------------------------------------------------------
+ * Constants
+ * ------------------------------------------------------------------------
+ */
+
+var NAME = 'carousel';
+var VERSION = '4.0.0-beta';
+var DATA_KEY = 'bs.carousel';
+var EVENT_KEY = '.' + DATA_KEY;
+var DATA_API_KEY = '.data-api';
+var JQUERY_NO_CONFLICT = $.fn[NAME];
+var TRANSITION_DURATION = 600;
+var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
+var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
+var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
+
+var Default = {
+  interval: 5000,
+  keyboard: true,
+  slide: false,
+  pause: 'hover',
+  wrap: true
+};
+
+var DefaultType = {
+  interval: '(number|boolean)',
+  keyboard: 'boolean',
+  slide: '(boolean|string)',
+  pause: '(string|boolean)',
+  wrap: 'boolean'
+};
+
+var Direction = {
+  NEXT: 'next',
+  PREV: 'prev',
+  LEFT: 'left',
+  RIGHT: 'right'
+};
+
+var Event = {
+  SLIDE: 'slide' + EVENT_KEY,
+  SLID: 'slid' + EVENT_KEY,
+  KEYDOWN: 'keydown' + EVENT_KEY,
+  MOUSEENTER: 'mouseenter' + EVENT_KEY,
+  MOUSELEAVE: 'mouseleave' + EVENT_KEY,
+  TOUCHEND: 'touchend' + EVENT_KEY,
+  LOAD_DATA_API: 'load' + EVENT_KEY + DATA_API_KEY,
+  CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
+};
+
+var ClassName = {
+  CAROUSEL: 'carousel',
+  ACTIVE: 'active',
+  SLIDE: 'slide',
+  RIGHT: 'carousel-item-right',
+  LEFT: 'carousel-item-left',
+  NEXT: 'carousel-item-next',
+  PREV: 'carousel-item-prev',
+  ITEM: 'carousel-item'
+};
+
+var Selector = {
+  ACTIVE: '.active',
+  ACTIVE_ITEM: '.active.carousel-item',
+  ITEM: '.carousel-item',
+  NEXT_PREV: '.carousel-item-next, .carousel-item-prev',
+  INDICATORS: '.carousel-indicators',
+  DATA_SLIDE: '[data-slide], [data-slide-to]',
+  DATA_RIDE: '[data-ride="carousel"]'
 
   /**
    * ------------------------------------------------------------------------
-   * Constants
+   * Class Definition
    * ------------------------------------------------------------------------
    */
 
-  var NAME = 'carousel';
-  var VERSION = '4.0.0-beta';
-  var DATA_KEY = 'bs.carousel';
-  var EVENT_KEY = '.' + DATA_KEY;
-  var DATA_API_KEY = '.data-api';
-  var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var TRANSITION_DURATION = 600;
-  var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
-  var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
-  var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
+};
+var Carousel = function () {
+  function Carousel(element, config) {
+    babelHelpers.classCallCheck(this, Carousel);
 
-  var Default = {
-    interval: 5000,
-    keyboard: true,
-    slide: false,
-    pause: 'hover',
-    wrap: true
-  };
+    this._items = null;
+    this._interval = null;
+    this._activeElement = null;
 
-  var DefaultType = {
-    interval: '(number|boolean)',
-    keyboard: 'boolean',
-    slide: '(boolean|string)',
-    pause: '(string|boolean)',
-    wrap: 'boolean'
-  };
+    this._isPaused = false;
+    this._isSliding = false;
 
-  var Direction = {
-    NEXT: 'next',
-    PREV: 'prev',
-    LEFT: 'left',
-    RIGHT: 'right'
-  };
+    this.touchTimeout = null;
 
-  var Event = {
-    SLIDE: 'slide' + EVENT_KEY,
-    SLID: 'slid' + EVENT_KEY,
-    KEYDOWN: 'keydown' + EVENT_KEY,
-    MOUSEENTER: 'mouseenter' + EVENT_KEY,
-    MOUSELEAVE: 'mouseleave' + EVENT_KEY,
-    TOUCHEND: 'touchend' + EVENT_KEY,
-    LOAD_DATA_API: 'load' + EVENT_KEY + DATA_API_KEY,
-    CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
-  };
+    this._config = this._getConfig(config);
+    this._element = $(element)[0];
+    this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0];
 
-  var ClassName = {
-    CAROUSEL: 'carousel',
-    ACTIVE: 'active',
-    SLIDE: 'slide',
-    RIGHT: 'carousel-item-right',
-    LEFT: 'carousel-item-left',
-    NEXT: 'carousel-item-next',
-    PREV: 'carousel-item-prev',
-    ITEM: 'carousel-item'
-  };
+    this._addEventListeners();
+  }
 
-  var Selector = {
-    ACTIVE: '.active',
-    ACTIVE_ITEM: '.active.carousel-item',
-    ITEM: '.carousel-item',
-    NEXT_PREV: '.carousel-item-next, .carousel-item-prev',
-    INDICATORS: '.carousel-indicators',
-    DATA_SLIDE: '[data-slide], [data-slide-to]',
-    DATA_RIDE: '[data-ride="carousel"]'
+  // getters
 
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
+  babelHelpers.createClass(Carousel, [{
+    key: 'next',
 
-  };
-  var Carousel = function () {
-    function Carousel(element, config) {
-      _classCallCheck(this, Carousel);
-
-      this._items = null;
-      this._interval = null;
-      this._activeElement = null;
-
-      this._isPaused = false;
-      this._isSliding = false;
-
-      this.touchTimeout = null;
-
-      this._config = this._getConfig(config);
-      this._element = $(element)[0];
-      this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0];
-
-      this._addEventListeners();
-    }
-
-    // getters
 
     // public
 
-    Carousel.prototype.next = function next() {
+    value: function next() {
       if (!this._isSliding) {
         this._slide(Direction.NEXT);
       }
-    };
-
-    Carousel.prototype.nextWhenVisible = function nextWhenVisible() {
+    }
+  }, {
+    key: 'nextWhenVisible',
+    value: function nextWhenVisible() {
       // Don't call next when the page isn't visible
-      if (!document.hidden) {
+      // or the carousel or its parent isn't visible
+      if (!document.hidden && $(this._element).is(':visible') && $(this._element).css('visibility') !== 'hidden') {
         this.next();
       }
-    };
-
-    Carousel.prototype.prev = function prev() {
+    }
+  }, {
+    key: 'prev',
+    value: function prev() {
       if (!this._isSliding) {
         this._slide(Direction.PREV);
       }
-    };
-
-    Carousel.prototype.pause = function pause(event) {
+    }
+  }, {
+    key: 'pause',
+    value: function pause(event) {
       if (!event) {
         this._isPaused = true;
       }
@@ -146,9 +149,10 @@ var Carousel = function ($) {
 
       clearInterval(this._interval);
       this._interval = null;
-    };
-
-    Carousel.prototype.cycle = function cycle(event) {
+    }
+  }, {
+    key: 'cycle',
+    value: function cycle(event) {
       if (!event) {
         this._isPaused = false;
       }
@@ -161,9 +165,10 @@ var Carousel = function ($) {
       if (this._config.interval && !this._isPaused) {
         this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
       }
-    };
-
-    Carousel.prototype.to = function to(index) {
+    }
+  }, {
+    key: 'to',
+    value: function to(index) {
       var _this = this;
 
       this._activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
@@ -190,9 +195,10 @@ var Carousel = function ($) {
       var direction = index > activeIndex ? Direction.NEXT : Direction.PREV;
 
       this._slide(direction, this._items[index]);
-    };
-
-    Carousel.prototype.dispose = function dispose() {
+    }
+  }, {
+    key: 'dispose',
+    value: function dispose() {
       $(this._element).off(EVENT_KEY);
       $.removeData(this._element, DATA_KEY);
 
@@ -204,17 +210,20 @@ var Carousel = function ($) {
       this._isSliding = null;
       this._activeElement = null;
       this._indicatorsElement = null;
-    };
+    }
 
     // private
 
-    Carousel.prototype._getConfig = function _getConfig(config) {
+  }, {
+    key: '_getConfig',
+    value: function _getConfig(config) {
       config = $.extend({}, Default, config);
       Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
-    };
-
-    Carousel.prototype._addEventListeners = function _addEventListeners() {
+    }
+  }, {
+    key: '_addEventListeners',
+    value: function _addEventListeners() {
       var _this2 = this;
 
       if (this._config.keyboard) {
@@ -248,9 +257,10 @@ var Carousel = function ($) {
           });
         }
       }
-    };
-
-    Carousel.prototype._keydown = function _keydown(event) {
+    }
+  }, {
+    key: '_keydown',
+    value: function _keydown(event) {
       if (/input|textarea/i.test(event.target.tagName)) {
         return;
       }
@@ -267,14 +277,16 @@ var Carousel = function ($) {
         default:
           return;
       }
-    };
-
-    Carousel.prototype._getItemIndex = function _getItemIndex(element) {
+    }
+  }, {
+    key: '_getItemIndex',
+    value: function _getItemIndex(element) {
       this._items = $.makeArray($(element).parent().find(Selector.ITEM));
       return this._items.indexOf(element);
-    };
-
-    Carousel.prototype._getItemByDirection = function _getItemByDirection(direction, activeElement) {
+    }
+  }, {
+    key: '_getItemByDirection',
+    value: function _getItemByDirection(direction, activeElement) {
       var isNextDirection = direction === Direction.NEXT;
       var isPrevDirection = direction === Direction.PREV;
       var activeIndex = this._getItemIndex(activeElement);
@@ -289,9 +301,10 @@ var Carousel = function ($) {
       var itemIndex = (activeIndex + delta) % this._items.length;
 
       return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
-    };
-
-    Carousel.prototype._triggerSlideEvent = function _triggerSlideEvent(relatedTarget, eventDirectionName) {
+    }
+  }, {
+    key: '_triggerSlideEvent',
+    value: function _triggerSlideEvent(relatedTarget, eventDirectionName) {
       var targetIndex = this._getItemIndex(relatedTarget);
       var fromIndex = this._getItemIndex($(this._element).find(Selector.ACTIVE_ITEM)[0]);
       var slideEvent = $.Event(Event.SLIDE, {
@@ -304,9 +317,10 @@ var Carousel = function ($) {
       $(this._element).trigger(slideEvent);
 
       return slideEvent;
-    };
-
-    Carousel.prototype._setActiveIndicatorElement = function _setActiveIndicatorElement(element) {
+    }
+  }, {
+    key: '_setActiveIndicatorElement',
+    value: function _setActiveIndicatorElement(element) {
       if (this._indicatorsElement) {
         $(this._indicatorsElement).find(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
 
@@ -316,9 +330,10 @@ var Carousel = function ($) {
           $(nextIndicator).addClass(ClassName.ACTIVE);
         }
       }
-    };
-
-    Carousel.prototype._slide = function _slide(direction, element) {
+    }
+  }, {
+    key: '_slide',
+    value: function _slide(direction, element) {
       var _this3 = this;
 
       var activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
@@ -402,16 +417,18 @@ var Carousel = function ($) {
       if (isCycling) {
         this.cycle();
       }
-    };
+    }
 
     // static
 
-    Carousel._jQueryInterface = function _jQueryInterface(config) {
+  }], [{
+    key: '_jQueryInterface',
+    value: function _jQueryInterface(config) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
         var _config = $.extend({}, Default, $(this).data());
 
-        if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object') {
+        if ((typeof config === 'undefined' ? 'undefined' : babelHelpers.typeof(config)) === 'object') {
           $.extend(_config, config);
         }
 
@@ -434,9 +451,10 @@ var Carousel = function ($) {
           data.cycle();
         }
       });
-    };
-
-    Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
+    }
+  }, {
+    key: '_dataApiClickHandler',
+    value: function _dataApiClickHandler(event) {
       var selector = Util.getSelectorFromElement(this);
 
       if (!selector) {
@@ -463,51 +481,47 @@ var Carousel = function ($) {
       }
 
       event.preventDefault();
-    };
-
-    _createClass(Carousel, null, [{
-      key: 'VERSION',
-      get: function get() {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function get() {
-        return Default;
-      }
-    }]);
-
-    return Carousel;
-  }();
-
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
-  $(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
-
-  $(window).on(Event.LOAD_DATA_API, function () {
-    $(Selector.DATA_RIDE).each(function () {
-      var $carousel = $(this);
-      Carousel._jQueryInterface.call($carousel, $carousel.data());
-    });
-  });
-
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME] = Carousel._jQueryInterface;
-  $.fn[NAME].Constructor = Carousel;
-  $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT;
-    return Carousel._jQueryInterface;
-  };
-
+    }
+  }, {
+    key: 'VERSION',
+    get: function get() {
+      return VERSION;
+    }
+  }, {
+    key: 'Default',
+    get: function get() {
+      return Default;
+    }
+  }]);
   return Carousel;
-}(jQuery);
+}();
+
+/**
+ * ------------------------------------------------------------------------
+ * Data Api implementation
+ * ------------------------------------------------------------------------
+ */
+
+export default Carousel;
+$(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
+
+$(window).on(Event.LOAD_DATA_API, function () {
+  $(Selector.DATA_RIDE).each(function () {
+    var $carousel = $(this);
+    Carousel._jQueryInterface.call($carousel, $carousel.data());
+  });
+});
+
+/**
+ * ------------------------------------------------------------------------
+ * jQuery
+ * ------------------------------------------------------------------------
+ */
+
+$.fn[NAME] = Carousel._jQueryInterface;
+$.fn[NAME].Constructor = Carousel;
+$.fn[NAME].noConflict = function () {
+  $.fn[NAME] = JQUERY_NO_CONFLICT;
+  return Carousel._jQueryInterface;
+};
 //# sourceMappingURL=carousel.js.map
