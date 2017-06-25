@@ -9,7 +9,7 @@ const dataPkg = fs.readFileSync(path.resolve(__dirname, '../package.json'))
 const pkg = JSON.parse(dataPkg)
 
 var fileDest = 'bootstrap.js'
-var external = ['popper.js', 'jquery']
+var external = ['jquery', 'popper.js']
 const plugins = [
   babel({
     exclude: 'node_modules/**' // only transpile our source code
@@ -18,7 +18,7 @@ const plugins = [
 
 if (BUNDLE) {
   fileDest = 'bootstrap.bundle.js'
-  // remove last entry in external array, because we don't want to bundle jquery
+  // remove last entry in external array ton bundle Popper
   external.pop()
   plugins.push(resolve())
 }
