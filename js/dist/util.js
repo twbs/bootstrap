@@ -1,4 +1,11 @@
-import $ from 'jquery';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery')) :
+	typeof define === 'function' && define.amd ? define(['jquery'], factory) :
+	(global.Util = factory(global.$));
+}(this, (function ($) { 'use strict';
+
+$ = $ && 'default' in $ ? $['default'] : $;
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta): util.js
@@ -144,9 +151,11 @@ var Util = {
   }
 };
 
-export default Util;
-
 $(document).ready(function () {
   setTransitionEndSupport();
 });
+
+return Util;
+
+})));
 //# sourceMappingURL=util.js.map

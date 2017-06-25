@@ -1,5 +1,93 @@
-import $ from 'jquery';
-import Tooltip from './tooltip';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./tooltip.js')) :
+	typeof define === 'function' && define.amd ? define(['jquery', './tooltip.js'], factory) :
+	(global.Popover = factory(global.$,global.Tooltip));
+}(this, (function ($,Tooltip) { 'use strict';
+
+$ = $ && 'default' in $ ? $['default'] : $;
+Tooltip = Tooltip && 'default' in Tooltip ? Tooltip['default'] : Tooltip;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
+
+
+
+
+
+var inherits = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+
+
+
+
+
+
+
+
+
+
+var possibleConstructorReturn = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
 
 /**
  * --------------------------------------------------------------------------
@@ -63,14 +151,14 @@ var Event = {
 
 };
 var Popover = function (_Tooltip) {
-  babelHelpers.inherits(Popover, _Tooltip);
+  inherits(Popover, _Tooltip);
 
   function Popover() {
-    babelHelpers.classCallCheck(this, Popover);
-    return babelHelpers.possibleConstructorReturn(this, (Popover.__proto__ || Object.getPrototypeOf(Popover)).apply(this, arguments));
+    classCallCheck(this, Popover);
+    return possibleConstructorReturn(this, (Popover.__proto__ || Object.getPrototypeOf(Popover)).apply(this, arguments));
   }
 
-  babelHelpers.createClass(Popover, [{
+  createClass(Popover, [{
     key: 'isWithContent',
 
 
@@ -125,7 +213,7 @@ var Popover = function (_Tooltip) {
     value: function _jQueryInterface(config) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
-        var _config = (typeof config === 'undefined' ? 'undefined' : babelHelpers.typeof(config)) === 'object' ? config : null;
+        var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' ? config : null;
 
         if (!data && /destroy|hide/.test(config)) {
           return;
@@ -150,54 +238,51 @@ var Popover = function (_Tooltip) {
 
     // getters
 
-    get: function get() {
+    get: function get$$1() {
       return VERSION;
     }
   }, {
     key: 'Default',
-    get: function get() {
+    get: function get$$1() {
       return Default;
     }
   }, {
     key: 'NAME',
-    get: function get() {
+    get: function get$$1() {
       return NAME;
     }
   }, {
     key: 'DATA_KEY',
-    get: function get() {
+    get: function get$$1() {
       return DATA_KEY;
     }
   }, {
     key: 'Event',
-    get: function get() {
+    get: function get$$1() {
       return Event;
     }
   }, {
     key: 'EVENT_KEY',
-    get: function get() {
+    get: function get$$1() {
       return EVENT_KEY;
     }
   }, {
     key: 'DefaultType',
-    get: function get() {
+    get: function get$$1() {
       return DefaultType;
     }
   }]);
   return Popover;
 }(Tooltip);
 
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-export default Popover;
 $.fn[NAME] = Popover._jQueryInterface;
 $.fn[NAME].Constructor = Popover;
 $.fn[NAME].noConflict = function () {
   $.fn[NAME] = JQUERY_NO_CONFLICT;
   return Popover._jQueryInterface;
 };
+
+return Popover;
+
+})));
 //# sourceMappingURL=popover.js.map

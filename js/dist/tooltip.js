@@ -1,6 +1,52 @@
-import $ from 'jquery';
-import Popper from 'popper.js';
-import Util from './util';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('popper.js'), require('./util.js')) :
+	typeof define === 'function' && define.amd ? define(['jquery', 'popper.js', './util.js'], factory) :
+	(global.Tooltip = factory(global.$,global.Popper,global.Util));
+}(this, (function ($,Popper,Util) { 'use strict';
+
+$ = $ && 'default' in $ ? $['default'] : $;
+Popper = Popper && 'default' in Popper ? Popper['default'] : Popper;
+Util = Util && 'default' in Util ? Util['default'] : Util;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
  * --------------------------------------------------------------------------
@@ -104,7 +150,7 @@ var Trigger = {
 };
 var Tooltip = function () {
   function Tooltip(element, config) {
-    babelHelpers.classCallCheck(this, Tooltip);
+    classCallCheck(this, Tooltip);
 
 
     // private
@@ -124,7 +170,7 @@ var Tooltip = function () {
 
   // getters
 
-  babelHelpers.createClass(Tooltip, [{
+  createClass(Tooltip, [{
     key: 'enable',
 
 
@@ -386,7 +432,7 @@ var Tooltip = function () {
     key: 'setElementContent',
     value: function setElementContent($element, content) {
       var html = this.config.html;
-      if ((typeof content === 'undefined' ? 'undefined' : babelHelpers.typeof(content)) === 'object' && (content.nodeType || content.jquery)) {
+      if ((typeof content === 'undefined' ? 'undefined' : _typeof(content)) === 'object' && (content.nodeType || content.jquery)) {
         // content is a DOM node or a jQuery
         if (html) {
           if (!$(content).parent().is($element)) {
@@ -458,7 +504,7 @@ var Tooltip = function () {
   }, {
     key: '_fixTitle',
     value: function _fixTitle() {
-      var titleType = babelHelpers.typeof(this.element.getAttribute('data-original-title'));
+      var titleType = _typeof(this.element.getAttribute('data-original-title'));
       if (this.element.getAttribute('title') || titleType !== 'string') {
         this.element.setAttribute('data-original-title', this.element.getAttribute('title') || '');
         this.element.setAttribute('title', '');
@@ -622,7 +668,7 @@ var Tooltip = function () {
     value: function _jQueryInterface(config) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
-        var _config = (typeof config === 'undefined' ? 'undefined' : babelHelpers.typeof(config)) === 'object' && config;
+        var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config;
 
         if (!data && /dispose|hide/.test(config)) {
           return;
@@ -643,54 +689,51 @@ var Tooltip = function () {
     }
   }, {
     key: 'VERSION',
-    get: function get() {
+    get: function get$$1() {
       return VERSION;
     }
   }, {
     key: 'Default',
-    get: function get() {
+    get: function get$$1() {
       return Default;
     }
   }, {
     key: 'NAME',
-    get: function get() {
+    get: function get$$1() {
       return NAME;
     }
   }, {
     key: 'DATA_KEY',
-    get: function get() {
+    get: function get$$1() {
       return DATA_KEY;
     }
   }, {
     key: 'Event',
-    get: function get() {
+    get: function get$$1() {
       return Event;
     }
   }, {
     key: 'EVENT_KEY',
-    get: function get() {
+    get: function get$$1() {
       return EVENT_KEY;
     }
   }, {
     key: 'DefaultType',
-    get: function get() {
+    get: function get$$1() {
       return DefaultType;
     }
   }]);
   return Tooltip;
 }();
 
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-export default Tooltip;
 $.fn[NAME] = Tooltip._jQueryInterface;
 $.fn[NAME].Constructor = Tooltip;
 $.fn[NAME].noConflict = function () {
   $.fn[NAME] = JQUERY_NO_CONFLICT;
   return Tooltip._jQueryInterface;
 };
+
+return Tooltip;
+
+})));
 //# sourceMappingURL=tooltip.js.map

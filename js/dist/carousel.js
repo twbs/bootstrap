@@ -1,5 +1,51 @@
-import $ from 'jquery';
-import Util from './util';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./util.js')) :
+	typeof define === 'function' && define.amd ? define(['jquery', './util.js'], factory) :
+	(global.Carousel = factory(global.$,global.Util));
+}(this, (function ($,Util) { 'use strict';
+
+$ = $ && 'default' in $ ? $['default'] : $;
+Util = Util && 'default' in Util ? Util['default'] : Util;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
  * --------------------------------------------------------------------------
@@ -88,7 +134,7 @@ var Selector = {
 };
 var Carousel = function () {
   function Carousel(element, config) {
-    babelHelpers.classCallCheck(this, Carousel);
+    classCallCheck(this, Carousel);
 
     this._items = null;
     this._interval = null;
@@ -108,7 +154,7 @@ var Carousel = function () {
 
   // getters
 
-  babelHelpers.createClass(Carousel, [{
+  createClass(Carousel, [{
     key: 'next',
 
 
@@ -428,7 +474,7 @@ var Carousel = function () {
         var data = $(this).data(DATA_KEY);
         var _config = $.extend({}, Default, $(this).data());
 
-        if ((typeof config === 'undefined' ? 'undefined' : babelHelpers.typeof(config)) === 'object') {
+        if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object') {
           $.extend(_config, config);
         }
 
@@ -484,25 +530,18 @@ var Carousel = function () {
     }
   }, {
     key: 'VERSION',
-    get: function get() {
+    get: function get$$1() {
       return VERSION;
     }
   }, {
     key: 'Default',
-    get: function get() {
+    get: function get$$1() {
       return Default;
     }
   }]);
   return Carousel;
 }();
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-export default Carousel;
 $(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
 
 $(window).on(Event.LOAD_DATA_API, function () {
@@ -524,4 +563,8 @@ $.fn[NAME].noConflict = function () {
   $.fn[NAME] = JQUERY_NO_CONFLICT;
   return Carousel._jQueryInterface;
 };
+
+return Carousel;
+
+})));
 //# sourceMappingURL=carousel.js.map

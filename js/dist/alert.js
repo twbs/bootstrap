@@ -1,5 +1,35 @@
-import $ from 'jquery';
-import Util from './util';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./util.js')) :
+	typeof define === 'function' && define.amd ? define(['jquery', './util.js'], factory) :
+	(global.Alert = factory(global.$,global.Util));
+}(this, (function ($,Util) { 'use strict';
+
+$ = $ && 'default' in $ ? $['default'] : $;
+Util = Util && 'default' in Util ? Util['default'] : Util;
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
  * --------------------------------------------------------------------------
@@ -46,14 +76,14 @@ var ClassName = {
 };
 var Alert = function () {
   function Alert(element) {
-    babelHelpers.classCallCheck(this, Alert);
+    classCallCheck(this, Alert);
 
     this._element = element;
   }
 
   // getters
 
-  babelHelpers.createClass(Alert, [{
+  createClass(Alert, [{
     key: 'close',
 
 
@@ -158,20 +188,13 @@ var Alert = function () {
     }
   }, {
     key: 'VERSION',
-    get: function get() {
+    get: function get$$1() {
       return VERSION;
     }
   }]);
   return Alert;
 }();
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-export default Alert;
 $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
 
 /**
@@ -186,4 +209,8 @@ $.fn[NAME].noConflict = function () {
   $.fn[NAME] = JQUERY_NO_CONFLICT;
   return Alert._jQueryInterface;
 };
+
+return Alert;
+
+})));
 //# sourceMappingURL=alert.js.map

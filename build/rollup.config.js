@@ -1,7 +1,12 @@
 const path = require('path')
+const fs = require('fs')
 const babel = require('rollup-plugin-babel')
 const resolve = require('rollup-plugin-node-resolve')
 const BUNDLE = process.env.BUNDLE === 'true'
+const year = new Date().getFullYear()
+
+const dataPkg = fs.readFileSync(path.resolve(__dirname, '../package.json'))
+const pkg = JSON.parse(dataPkg)
 
 var fileDest = 'bootstrap.js'
 var external = ['popper.js', 'jquery']
@@ -25,8 +30,14 @@ module.exports = {
   dest: path.resolve(__dirname, `../dist/js/${fileDest}`),
   external: external,
   globals: {
-	  jquery: '$',
+    jquery: '$',
     'popper.js': 'Popper'
   },
-  plugins: plugins
+  plugins: plugins,
+  banner: `/*!
+ * Bootstrap v${pkg.version} (${pkg.homepage})
+ * Copyright 2011-${year} ${pkg.author}
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+`
 }

@@ -1,5 +1,35 @@
-import $ from 'jquery';
-import Util from './util';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./util.js')) :
+	typeof define === 'function' && define.amd ? define(['jquery', './util.js'], factory) :
+	(global.Tab = factory(global.$,global.Util));
+}(this, (function ($,Util) { 'use strict';
+
+$ = $ && 'default' in $ ? $['default'] : $;
+Util = Util && 'default' in Util ? Util['default'] : Util;
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
  * --------------------------------------------------------------------------
@@ -56,14 +86,14 @@ var Selector = {
 };
 var Tab = function () {
   function Tab(element) {
-    babelHelpers.classCallCheck(this, Tab);
+    classCallCheck(this, Tab);
 
     this._element = element;
   }
 
   // getters
 
-  babelHelpers.createClass(Tab, [{
+  createClass(Tab, [{
     key: 'show',
 
 
@@ -232,20 +262,13 @@ var Tab = function () {
     }
   }, {
     key: 'VERSION',
-    get: function get() {
+    get: function get$$1() {
       return VERSION;
     }
   }]);
   return Tab;
 }();
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-export default Tab;
 $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
   event.preventDefault();
   Tab._jQueryInterface.call($(this), 'show');
@@ -263,4 +286,8 @@ $.fn[NAME].noConflict = function () {
   $.fn[NAME] = JQUERY_NO_CONFLICT;
   return Tab._jQueryInterface;
 };
+
+return Tab;
+
+})));
 //# sourceMappingURL=tab.js.map

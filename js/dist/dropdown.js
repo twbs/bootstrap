@@ -1,6 +1,52 @@
-import $ from 'jquery';
-import Popper from 'popper.js';
-import Util from './util';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('popper.js'), require('./util.js')) :
+	typeof define === 'function' && define.amd ? define(['jquery', 'popper.js', './util.js'], factory) :
+	(global.Dropdown = factory(global.$,global.Popper,global.Util));
+}(this, (function ($,Popper,Util) { 'use strict';
+
+$ = $ && 'default' in $ ? $['default'] : $;
+Popper = Popper && 'default' in Popper ? Popper['default'] : Popper;
+Util = Util && 'default' in Util ? Util['default'] : Util;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
  * --------------------------------------------------------------------------
@@ -83,7 +129,7 @@ var DefaultType = {
 };
 var Dropdown = function () {
   function Dropdown(element, config) {
-    babelHelpers.classCallCheck(this, Dropdown);
+    classCallCheck(this, Dropdown);
 
     this._element = element;
     this._popper = null;
@@ -96,7 +142,7 @@ var Dropdown = function () {
 
   // getters
 
-  babelHelpers.createClass(Dropdown, [{
+  createClass(Dropdown, [{
     key: 'toggle',
 
 
@@ -260,7 +306,7 @@ var Dropdown = function () {
     value: function _jQueryInterface(config) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
-        var _config = (typeof config === 'undefined' ? 'undefined' : babelHelpers.typeof(config)) === 'object' ? config : null;
+        var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' ? config : null;
 
         if (!data) {
           data = new Dropdown(this, _config);
@@ -387,30 +433,23 @@ var Dropdown = function () {
     }
   }, {
     key: 'VERSION',
-    get: function get() {
+    get: function get$$1() {
       return VERSION;
     }
   }, {
     key: 'Default',
-    get: function get() {
+    get: function get$$1() {
       return Default;
     }
   }, {
     key: 'DefaultType',
-    get: function get() {
+    get: function get$$1() {
       return DefaultType;
     }
   }]);
   return Dropdown;
 }();
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-export default Dropdown;
 $(document).on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler).on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler).on(Event.CLICK_DATA_API + ' ' + Event.KEYUP_DATA_API, Dropdown._clearMenus).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
   event.preventDefault();
   event.stopPropagation();
@@ -431,4 +470,8 @@ $.fn[NAME].noConflict = function () {
   $.fn[NAME] = JQUERY_NO_CONFLICT;
   return Dropdown._jQueryInterface;
 };
+
+return Dropdown;
+
+})));
 //# sourceMappingURL=dropdown.js.map

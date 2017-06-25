@@ -1,4 +1,34 @@
-import $ from 'jquery';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery')) :
+	typeof define === 'function' && define.amd ? define(['jquery'], factory) :
+	(global.Button = factory(global.$));
+}(this, (function ($) { 'use strict';
+
+$ = $ && 'default' in $ ? $['default'] : $;
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
  * --------------------------------------------------------------------------
@@ -47,14 +77,14 @@ var Event = {
 };
 var Button = function () {
   function Button(element) {
-    babelHelpers.classCallCheck(this, Button);
+    classCallCheck(this, Button);
 
     this._element = element;
   }
 
   // getters
 
-  babelHelpers.createClass(Button, [{
+  createClass(Button, [{
     key: 'toggle',
 
 
@@ -129,20 +159,13 @@ var Button = function () {
     }
   }, {
     key: 'VERSION',
-    get: function get() {
+    get: function get$$1() {
       return VERSION;
     }
   }]);
   return Button;
 }();
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-export default Button;
 $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
   event.preventDefault();
 
@@ -170,4 +193,8 @@ $.fn[NAME].noConflict = function () {
   $.fn[NAME] = JQUERY_NO_CONFLICT;
   return Button._jQueryInterface;
 };
+
+return Button;
+
+})));
 //# sourceMappingURL=button.js.map

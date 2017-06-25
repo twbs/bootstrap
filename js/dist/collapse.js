@@ -1,5 +1,51 @@
-import $ from 'jquery';
-import Util from './util';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./util.js')) :
+	typeof define === 'function' && define.amd ? define(['jquery', './util.js'], factory) :
+	(global.Collapse = factory(global.$,global.Util));
+}(this, (function ($,Util) { 'use strict';
+
+$ = $ && 'default' in $ ? $['default'] : $;
+Util = Util && 'default' in Util ? Util['default'] : Util;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
  * --------------------------------------------------------------------------
@@ -65,7 +111,7 @@ var Selector = {
 };
 var Collapse = function () {
   function Collapse(element, config) {
-    babelHelpers.classCallCheck(this, Collapse);
+    classCallCheck(this, Collapse);
 
     this._isTransitioning = false;
     this._element = element;
@@ -93,7 +139,7 @@ var Collapse = function () {
 
   // getters
 
-  babelHelpers.createClass(Collapse, [{
+  createClass(Collapse, [{
     key: 'toggle',
 
 
@@ -304,7 +350,7 @@ var Collapse = function () {
       return this.each(function () {
         var $this = $(this);
         var data = $this.data(DATA_KEY);
-        var _config = $.extend({}, Default, $this.data(), (typeof config === 'undefined' ? 'undefined' : babelHelpers.typeof(config)) === 'object' && config);
+        var _config = $.extend({}, Default, $this.data(), (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config);
 
         if (!data && _config.toggle && /show|hide/.test(config)) {
           _config.toggle = false;
@@ -325,25 +371,18 @@ var Collapse = function () {
     }
   }, {
     key: 'VERSION',
-    get: function get() {
+    get: function get$$1() {
       return VERSION;
     }
   }, {
     key: 'Default',
-    get: function get() {
+    get: function get$$1() {
       return Default;
     }
   }]);
   return Collapse;
 }();
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-export default Collapse;
 $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
   if (!/input|textarea/i.test(event.target.tagName)) {
     event.preventDefault();
@@ -371,4 +410,8 @@ $.fn[NAME].noConflict = function () {
   $.fn[NAME] = JQUERY_NO_CONFLICT;
   return Collapse._jQueryInterface;
 };
+
+return Collapse;
+
+})));
 //# sourceMappingURL=collapse.js.map
