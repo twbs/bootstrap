@@ -70,15 +70,15 @@ $grays: (
 ) !default;
 
 $blue:    #007bff !default;
-$indigo:  #4263eb !default;
-$purple:  #882ae0 !default;
-$pink:    #e64980 !default;
-$red:     #f03e3e !default;
-$orange:  #ff922b !default;
-$yellow:  #ffd43b !default;
-$green:   #51cf66 !default;
-$teal:    #38d9a9 !default;
-$cyan:    #3bc9db !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
 
 $colors: (
   blue: $blue,
@@ -98,13 +98,13 @@ $colors: (
 
 $theme-colors: (
   primary: $blue,
-  secondary: $gray-400,
+  secondary: $gray-600,
   success: $green,
   info: $cyan,
-  warning: $orange,
+  warning: $yellow,
   danger: $red,
-  foreground: $gray-800,
-  background: $white
+  light: $gray-100,
+  dark: $gray-800
 ) !default;
 
 
