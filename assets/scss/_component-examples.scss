@@ -363,10 +363,10 @@
 }
 
 .bd-example-border-utils {
-  [class^="border-"] {
+  [class^="border"] {
     display: inline-block;
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
     margin: .25rem;
     background-color: #f5f5f5;
     border: 1px solid;
