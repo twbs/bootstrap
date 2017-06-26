@@ -52,7 +52,7 @@ Card titles are used by adding `.card-title` to a `<h*>` tag. In the same way, l
 Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-body` item, the card title and subtitle are aligned nicely.
 
 {% example html %}
-<div class="card">
+<div class="card" style="width: 20rem;">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -68,7 +68,7 @@ Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-t
 `.card-img-top` places an image to the top of the card. With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
 
 {% example html %}
-<div class="card">
+<div class="card" style="width: 20rem;">
   <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
   <div class="card-body">
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -81,7 +81,7 @@ Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-t
 Create lists of content in a card with a flush list group.
 
 {% example html %}
-<div class="card">
+<div class="card" style="width: 20rem;">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Cras justo odio</li>
     <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -349,10 +349,10 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 
 ### Image overlays
 
-Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need `.card-inverse` (see below).
+Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need `.card-dark` (see below).
 
 {% example html %}
-<div class="card card-inverse">
+<div class="card card-dark">
   <img class="card-img" data-src="holder.js/100px270/#55595c:#373a3c/text:Card image" alt="Card image">
   <div class="card-img-overlay">
     <h4 class="card-title">Card title</h4>
@@ -366,14 +366,14 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 Cards include various options for customizing their backgrounds, borders, and color.
 
-### Inverted text
+### Dark cards
 
-By default, cards use dark text and assume a light background. You can reverse that by toggling the `color` of text within, as well as that of the card's subcomponents, with `.card-inverse`. Then, specify a dark `background-color` and `border-color` to go with it.
+By default, cards use dark text and assume a light background. You can reverse that by toggling the `color` of text within, as well as that of the card's subcomponents, with `.card-dark`. Then, specify a dark `background-color` and `border-color` to go with it.
 
-You can also use `.card-inverse` with the [contextual backgrounds variants](#background-variants).
+You can also use `.card-dark` with the [contextual backgrounds variants](#background-variants).
 
 {% example html %}
-<div class="card card-inverse" style="background-color: #333; border-color: #333;">
+<div class="card card-dark" style="background-color: #333; border-color: #333;">
   <div class="card-header">Header</div>
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
@@ -386,10 +386,10 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
 
 ### Background variants
 
-Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-inverse`.**
+Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-dark`.**
 
 {% example html %}
-<div class="card card-inverse card-primary mb-3 text-center">
+<div class="card card-dark card-primary mb-3 text-center">
   <div class="card-body">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -397,7 +397,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-success mb-3 text-center">
+<div class="card card-dark card-success mb-3 text-center">
   <div class="card-body">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -405,7 +405,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-info mb-3 text-center">
+<div class="card card-dark card-info mb-3 text-center">
   <div class="card-body">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -413,7 +413,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-warning mb-3 text-center">
+<div class="card card-dark card-warning mb-3 text-center">
   <div class="card-body">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -421,7 +421,7 @@ Cards include their own variant classes for quickly changing the `background-col
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-danger text-center">
+<div class="card card-dark card-danger text-center">
   <div class="card-body">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -666,7 +666,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
-  <div class="card card-inverse card-primary p-3 text-center">
+  <div class="card card-dark card-primary p-3 text-center">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
       <footer>
