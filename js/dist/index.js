@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./alert.js'), require('./button.js'), require('./carousel.js'), require('./collapse.js'), require('./dropdown.js'), require('./modal.js'), require('./popover.js'), require('./scrollspy.js'), require('./tab.js'), require('./tooltip.js'), require('./util.js')) :
 	typeof define === 'function' && define.amd ? define(['./alert.js', './button.js', './carousel.js', './collapse.js', './dropdown.js', './modal.js', './popover.js', './scrollspy.js', './tab.js', './tooltip.js', './util.js'], factory) :
-	(global.Index = factory(global.Alert,global.Button,global.Carousel,global.Collapse,global.Dropdown,global.Modal,global.Popover,global.Scrollspy,global.Tab,global.Tooltip,global.Util));
+	(global.bootstrap = factory(global.Alert,global.Button,global.Carousel,global.Collapse,global.Dropdown,global.Modal,global.Popover,global.Scrollspy,global.Tab,global.Tooltip,global.Util));
 }(this, (function (Alert,Button,Carousel,Collapse,Dropdown,Modal,Popover,Scrollspy,Tab,Tooltip,Util) { 'use strict';
 
 Alert = Alert && 'default' in Alert ? Alert['default'] : Alert;
