@@ -27,7 +27,6 @@ for (const plugin in files) {
     continue
   }
   const file = `${plugin.toLowerCase()}.js`
-  let moduleName = plugin
   var externalArray = ['jquery', 'popper.js']
   if (files[plugin] !== files.Util) {
     externalArray.push(files.Util)
@@ -40,7 +39,6 @@ for (const plugin in files) {
   }
   else {
     externalArray = externalIndex
-    moduleName = 'bootstrap'
   }
   rollup.rollup({
     entry: files[plugin],
@@ -61,7 +59,7 @@ for (const plugin in files) {
     bundle.write({
       dest: `${pathDest}/${file}`,
       format: 'umd',
-      moduleName: moduleName,
+      moduleName: plugin === 'Index' ? 'bootstrap' : plugin,
       sourceMap: true,
       globals: {
         jquery: '$',

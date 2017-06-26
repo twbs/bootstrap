@@ -17,7 +17,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-export default {
+export {
   Util,
   Alert,
   Button,
