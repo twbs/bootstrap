@@ -107,6 +107,8 @@ $theme-colors: (
   dark: $gray-800
 ) !default;
 
+// Set a specific jump point for requesting color jumps
+$theme-color-interval: 8% !default;
 
 // Colors
 //
