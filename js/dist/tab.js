@@ -261,6 +261,33 @@ var Tab = function () {
       });
     }
   }, {
+    key: '_init',
+    value: function _init() {
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+
+      $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+        event.preventDefault();
+        Tab._jQueryInterface.call($(this), 'show');
+      });
+
+      /**
+       * ------------------------------------------------------------------------
+       * jQuery
+       * ------------------------------------------------------------------------
+       */
+
+      $.fn[NAME] = Tab._jQueryInterface;
+      $.fn[NAME].Constructor = Tab;
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return Tab._jQueryInterface;
+      };
+    }
+  }, {
     key: 'VERSION',
     get: function get$$1() {
       return VERSION;
@@ -269,23 +296,11 @@ var Tab = function () {
   return Tab;
 }();
 
-$(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-  event.preventDefault();
-  Tab._jQueryInterface.call($(this), 'show');
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME] = Tab._jQueryInterface;
-$.fn[NAME].Constructor = Tab;
-$.fn[NAME].noConflict = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT;
-  return Tab._jQueryInterface;
-};
+if (!Util.nodeEnv()) {
+  $(document).ready(function () {
+    Tab._init();
+  });
+}
 
 return Tab;
 

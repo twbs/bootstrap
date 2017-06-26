@@ -149,11 +149,23 @@ const Util = {
         }
       }
     }
+  },
+
+  nodeEnv() {
+    try {
+      // Thanks to iliakan https://goo.gl/Hi4DcC
+      // eslint-disable-next-line no-undef
+      return Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]'
+    } catch (e) {
+      return false
+    }
   }
 }
 
 export default Util
 
-$(document).ready(() => {
-  setTransitionEndSupport()
-})
+if (!Util.nodeEnv()) {
+  $(document).ready(() => {
+    setTransitionEndSupport()
+  })
+}

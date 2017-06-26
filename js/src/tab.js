@@ -238,29 +238,37 @@ export default class Tab {
       }
     })
   }
+
+  static _init() {
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    $(document)
+      .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+        event.preventDefault()
+        Tab._jQueryInterface.call($(this), 'show')
+      })
+
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    $.fn[NAME]             = Tab._jQueryInterface
+    $.fn[NAME].Constructor = Tab
+    $.fn[NAME].noConflict  = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Tab._jQueryInterface
+    }
+  }
 }
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-$(document)
-  .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    event.preventDefault()
-    Tab._jQueryInterface.call($(this), 'show')
+if (!Util.nodeEnv()) {
+  $(document).ready(() => {
+    Tab._init()
   })
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME]             = Tab._jQueryInterface
-$.fn[NAME].Constructor = Tab
-$.fn[NAME].noConflict  = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Tab._jQueryInterface
 }

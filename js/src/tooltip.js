@@ -692,17 +692,25 @@ export default class Tooltip {
       }
     })
   }
+
+  static _init() {
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    $.fn[NAME]             = Tooltip._jQueryInterface
+    $.fn[NAME].Constructor = Tooltip
+    $.fn[NAME].noConflict  = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Tooltip._jQueryInterface
+    }
+  }
 }
 
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME]             = Tooltip._jQueryInterface
-$.fn[NAME].Constructor = Tooltip
-$.fn[NAME].noConflict  = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Tooltip._jQueryInterface
+if (!Util.nodeEnv()) {
+  $(document).ready(() => {
+    Tooltip._init()
+  })
 }

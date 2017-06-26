@@ -328,6 +328,22 @@ var ScrollSpy = function () {
       });
     }
   }, {
+    key: '_init',
+    value: function _init() {
+      /**
+       * ------------------------------------------------------------------------
+       * jQuery
+       * ------------------------------------------------------------------------
+       */
+
+      $.fn[NAME] = ScrollSpy._jQueryInterface;
+      $.fn[NAME].Constructor = ScrollSpy;
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return ScrollSpy._jQueryInterface;
+      };
+    }
+  }, {
     key: 'VERSION',
     get: function get$$1() {
       return VERSION;
@@ -341,27 +357,26 @@ var ScrollSpy = function () {
   return ScrollSpy;
 }();
 
-$(window).on(Event.LOAD_DATA_API, function () {
-  var scrollSpys = $.makeArray($(Selector.DATA_SPY));
+if (!Util.nodeEnv()) {
+  $(document).ready(function () {
+    ScrollSpy._init();
+  });
 
-  for (var i = scrollSpys.length; i--;) {
-    var $spy = $(scrollSpys[i]);
-    ScrollSpy._jQueryInterface.call($spy, $spy.data());
-  }
-});
+  /**
+   * ------------------------------------------------------------------------
+   * Data Api implementation
+   * ------------------------------------------------------------------------
+   */
 
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
+  $(window).on(Event.LOAD_DATA_API, function () {
+    var scrollSpys = $.makeArray($(Selector.DATA_SPY));
 
-$.fn[NAME] = ScrollSpy._jQueryInterface;
-$.fn[NAME].Constructor = ScrollSpy;
-$.fn[NAME].noConflict = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT;
-  return ScrollSpy._jQueryInterface;
-};
+    for (var i = scrollSpys.length; i--;) {
+      var $spy = $(scrollSpys[i]);
+      ScrollSpy._jQueryInterface.call($spy, $spy.data());
+    }
+  });
+}
 
 return ScrollSpy;
 

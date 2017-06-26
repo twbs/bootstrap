@@ -514,54 +514,62 @@ export default class Modal {
       }
     })
   }
+
+  static _init() {
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+      let target
+      const selector = Util.getSelectorFromElement(this)
+
+      if (selector) {
+        target = $(selector)[0]
+      }
+
+      const config = $(target).data(DATA_KEY) ?
+        'toggle' : $.extend({}, $(target).data(), $(this).data())
+
+      if (this.tagName === 'A' || this.tagName === 'AREA') {
+        event.preventDefault()
+      }
+
+      const $target = $(target).one(Event.SHOW, (showEvent) => {
+        if (showEvent.isDefaultPrevented()) {
+          // only register focus restorer if modal will actually get shown
+          return
+        }
+
+        $target.one(Event.HIDDEN, () => {
+          if ($(this).is(':visible')) {
+            this.focus()
+          }
+        })
+      })
+
+      Modal._jQueryInterface.call($(target), config, this)
+    })
+
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    $.fn[NAME]             = Modal._jQueryInterface
+    $.fn[NAME].Constructor = Modal
+    $.fn[NAME].noConflict  = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Modal._jQueryInterface
+    }
+  }
 }
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-$(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-  let target
-  const selector = Util.getSelectorFromElement(this)
-
-  if (selector) {
-    target = $(selector)[0]
-  }
-
-  const config = $(target).data(DATA_KEY) ?
-    'toggle' : $.extend({}, $(target).data(), $(this).data())
-
-  if (this.tagName === 'A' || this.tagName === 'AREA') {
-    event.preventDefault()
-  }
-
-  const $target = $(target).one(Event.SHOW, (showEvent) => {
-    if (showEvent.isDefaultPrevented()) {
-      // only register focus restorer if modal will actually get shown
-      return
-    }
-
-    $target.one(Event.HIDDEN, () => {
-      if ($(this).is(':visible')) {
-        this.focus()
-      }
-    })
+if (!Util.nodeEnv()) {
+  $(document).ready(() => {
+    Modal._init()
   })
-
-  Modal._jQueryInterface.call($(target), config, this)
-})
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME]             = Modal._jQueryInterface
-$.fn[NAME].Constructor = Modal
-$.fn[NAME].noConflict  = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Modal._jQueryInterface
 }

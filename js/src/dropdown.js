@@ -396,37 +396,44 @@ export default class Dropdown {
 
     items[index].focus()
   }
+
+  static _init() {
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    $(document)
+      .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
+      .on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler)
+      .on(`${Event.CLICK_DATA_API} ${Event.KEYUP_DATA_API}`, Dropdown._clearMenus)
+      .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+        event.preventDefault()
+        event.stopPropagation()
+        Dropdown._jQueryInterface.call($(this), 'toggle')
+      })
+      .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
+        e.stopPropagation()
+      })
+
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    $.fn[NAME]             = Dropdown._jQueryInterface
+    $.fn[NAME].Constructor = Dropdown
+    $.fn[NAME].noConflict  = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Dropdown._jQueryInterface
+    }
+  }
 }
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-$(document)
-  .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE,  Dropdown._dataApiKeydownHandler)
-  .on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler)
-  .on(`${Event.CLICK_DATA_API} ${Event.KEYUP_DATA_API}`, Dropdown._clearMenus)
-  .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    event.preventDefault()
-    event.stopPropagation()
-    Dropdown._jQueryInterface.call($(this), 'toggle')
+if (!Util.nodeEnv()) {
+  $(document).ready(() => {
+    Dropdown._init()
   })
-  .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
-    e.stopPropagation()
-  })
-
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME]             = Dropdown._jQueryInterface
-$.fn[NAME].Constructor = Dropdown
-$.fn[NAME].noConflict  = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Dropdown._jQueryInterface
 }

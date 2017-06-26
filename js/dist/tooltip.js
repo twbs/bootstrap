@@ -688,6 +688,22 @@ var Tooltip = function () {
       });
     }
   }, {
+    key: '_init',
+    value: function _init() {
+      /**
+       * ------------------------------------------------------------------------
+       * jQuery
+       * ------------------------------------------------------------------------
+       */
+
+      $.fn[NAME] = Tooltip._jQueryInterface;
+      $.fn[NAME].Constructor = Tooltip;
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return Tooltip._jQueryInterface;
+      };
+    }
+  }, {
     key: 'VERSION',
     get: function get$$1() {
       return VERSION;
@@ -726,12 +742,11 @@ var Tooltip = function () {
   return Tooltip;
 }();
 
-$.fn[NAME] = Tooltip._jQueryInterface;
-$.fn[NAME].Constructor = Tooltip;
-$.fn[NAME].noConflict = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT;
-  return Tooltip._jQueryInterface;
-};
+if (!Util.nodeEnv()) {
+  $(document).ready(function () {
+    Tooltip._init();
+  });
+}
 
 return Tooltip;
 

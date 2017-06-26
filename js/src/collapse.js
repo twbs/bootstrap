@@ -349,38 +349,46 @@ export default class Collapse {
       }
     })
   }
+
+  static _init() {
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+      if (!/input|textarea/i.test(event.target.tagName)) {
+        event.preventDefault()
+      }
+
+      const $trigger = $(this)
+      const selector = Util.getSelectorFromElement(this)
+      $(selector).each(function () {
+        const $target = $(this)
+        const data    = $target.data(DATA_KEY)
+        const config  = data ? 'toggle' : $trigger.data()
+        Collapse._jQueryInterface.call($target, config)
+      })
+    })
+
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    $.fn[NAME]             = Collapse._jQueryInterface
+    $.fn[NAME].Constructor = Collapse
+    $.fn[NAME].noConflict  = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Collapse._jQueryInterface
+    }
+  }
 }
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-$(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-  if (!/input|textarea/i.test(event.target.tagName)) {
-    event.preventDefault()
-  }
-
-  const $trigger = $(this)
-  const selector = Util.getSelectorFromElement(this)
-  $(selector).each(function () {
-    const $target = $(this)
-    const data    = $target.data(DATA_KEY)
-    const config  = data ? 'toggle' : $trigger.data()
-    Collapse._jQueryInterface.call($target, config)
+if (!Util.nodeEnv()) {
+  $(document).ready(() => {
+    Collapse._init()
   })
-})
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME]             = Collapse._jQueryInterface
-$.fn[NAME].Constructor = Collapse
-$.fn[NAME].noConflict  = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Collapse._jQueryInterface
 }

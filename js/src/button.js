@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
@@ -136,40 +137,48 @@ export default class Button {
       }
     })
   }
+
+  static _init() {
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    $(document)
+      .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
+        event.preventDefault()
+
+        let button = event.target
+
+        if (!$(button).hasClass(ClassName.BUTTON)) {
+          button = $(button).closest(Selector.BUTTON)
+        }
+
+        Button._jQueryInterface.call($(button), 'toggle')
+      })
+      .on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
+        const button = $(event.target).closest(Selector.BUTTON)[0]
+        $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type))
+      })
+
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    $.fn[NAME]             = Button._jQueryInterface
+    $.fn[NAME].Constructor = Button
+    $.fn[NAME].noConflict  = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Button._jQueryInterface
+    }
+  }
 }
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-$(document)
-  .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
-    event.preventDefault()
-
-    let button = event.target
-
-    if (!$(button).hasClass(ClassName.BUTTON)) {
-      button = $(button).closest(Selector.BUTTON)
-    }
-
-    Button._jQueryInterface.call($(button), 'toggle')
+if (!Util.nodeEnv()) {
+  $(document).ready(() => {
+    Button._init()
   })
-  .on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
-    const button = $(event.target).closest(Selector.BUTTON)[0]
-    $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type))
-  })
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME]             = Button._jQueryInterface
-$.fn[NAME].Constructor = Button
-$.fn[NAME].noConflict  = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Button._jQueryInterface
 }

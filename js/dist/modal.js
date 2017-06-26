@@ -573,6 +573,60 @@ var Modal = function () {
       });
     }
   }, {
+    key: '_init',
+    value: function _init() {
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+
+      $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+        var _this10 = this;
+
+        var target = void 0;
+        var selector = Util.getSelectorFromElement(this);
+
+        if (selector) {
+          target = $(selector)[0];
+        }
+
+        var config = $(target).data(DATA_KEY) ? 'toggle' : $.extend({}, $(target).data(), $(this).data());
+
+        if (this.tagName === 'A' || this.tagName === 'AREA') {
+          event.preventDefault();
+        }
+
+        var $target = $(target).one(Event.SHOW, function (showEvent) {
+          if (showEvent.isDefaultPrevented()) {
+            // only register focus restorer if modal will actually get shown
+            return;
+          }
+
+          $target.one(Event.HIDDEN, function () {
+            if ($(_this10).is(':visible')) {
+              _this10.focus();
+            }
+          });
+        });
+
+        Modal._jQueryInterface.call($(target), config, this);
+      });
+
+      /**
+       * ------------------------------------------------------------------------
+       * jQuery
+       * ------------------------------------------------------------------------
+       */
+
+      $.fn[NAME] = Modal._jQueryInterface;
+      $.fn[NAME].Constructor = Modal;
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return Modal._jQueryInterface;
+      };
+    }
+  }, {
     key: 'VERSION',
     get: function get$$1() {
       return VERSION;
@@ -586,50 +640,11 @@ var Modal = function () {
   return Modal;
 }();
 
-$(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-  var _this10 = this;
-
-  var target = void 0;
-  var selector = Util.getSelectorFromElement(this);
-
-  if (selector) {
-    target = $(selector)[0];
-  }
-
-  var config = $(target).data(DATA_KEY) ? 'toggle' : $.extend({}, $(target).data(), $(this).data());
-
-  if (this.tagName === 'A' || this.tagName === 'AREA') {
-    event.preventDefault();
-  }
-
-  var $target = $(target).one(Event.SHOW, function (showEvent) {
-    if (showEvent.isDefaultPrevented()) {
-      // only register focus restorer if modal will actually get shown
-      return;
-    }
-
-    $target.one(Event.HIDDEN, function () {
-      if ($(_this10).is(':visible')) {
-        _this10.focus();
-      }
-    });
+if (!Util.nodeEnv()) {
+  $(document).ready(function () {
+    Modal._init();
   });
-
-  Modal._jQueryInterface.call($(target), config, this);
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME] = Modal._jQueryInterface;
-$.fn[NAME].Constructor = Modal;
-$.fn[NAME].noConflict = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT;
-  return Modal._jQueryInterface;
-};
+}
 
 return Modal;
 

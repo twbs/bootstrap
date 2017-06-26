@@ -290,32 +290,40 @@ export default class ScrollSpy {
       }
     })
   }
+
+  static _init() {
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    $.fn[NAME]             = ScrollSpy._jQueryInterface
+    $.fn[NAME].Constructor = ScrollSpy
+    $.fn[NAME].noConflict  = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return ScrollSpy._jQueryInterface
+    }
+  }
 }
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
+if (!Util.nodeEnv()) {
+  $(document).ready(() => {
+    ScrollSpy._init()
+  })
 
-$(window).on(Event.LOAD_DATA_API, () => {
-  const scrollSpys = $.makeArray($(Selector.DATA_SPY))
+  /**
+   * ------------------------------------------------------------------------
+   * Data Api implementation
+   * ------------------------------------------------------------------------
+   */
 
-  for (let i = scrollSpys.length; i--;) {
-    const $spy = $(scrollSpys[i])
-    ScrollSpy._jQueryInterface.call($spy, $spy.data())
-  }
-})
+  $(window).on(Event.LOAD_DATA_API, () => {
+    const scrollSpys = $.makeArray($(Selector.DATA_SPY))
 
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME]             = ScrollSpy._jQueryInterface
-$.fn[NAME].Constructor = ScrollSpy
-$.fn[NAME].noConflict  = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return ScrollSpy._jQueryInterface
+    for (let i = scrollSpys.length; i--;) {
+      const $spy = $(scrollSpys[i])
+      ScrollSpy._jQueryInterface.call($spy, $spy.data())
+    }
+  })
 }

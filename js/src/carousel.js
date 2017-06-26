@@ -480,33 +480,41 @@ export default class Carousel {
 
     event.preventDefault()
   }
+
+  static _init() {
+    /**
+     * ------------------------------------------------------------------------
+     * Data Api implementation
+     * ------------------------------------------------------------------------
+     */
+
+    $(document)
+      .on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler)
+
+    $(window).on(Event.LOAD_DATA_API, () => {
+      $(Selector.DATA_RIDE).each(function () {
+        const $carousel = $(this)
+        Carousel._jQueryInterface.call($carousel, $carousel.data())
+      })
+    })
+
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    $.fn[NAME]             = Carousel._jQueryInterface
+    $.fn[NAME].Constructor = Carousel
+    $.fn[NAME].noConflict  = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Carousel._jQueryInterface
+    }
+  }
 }
 
-/**
- * ------------------------------------------------------------------------
- * Data Api implementation
- * ------------------------------------------------------------------------
- */
-
-$(document)
-  .on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler)
-
-$(window).on(Event.LOAD_DATA_API, () => {
-  $(Selector.DATA_RIDE).each(function () {
-    const $carousel = $(this)
-    Carousel._jQueryInterface.call($carousel, $carousel.data())
+if (!Util.nodeEnv()) {
+  $(document).ready(() => {
+    Carousel._init()
   })
-})
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME]             = Carousel._jQueryInterface
-$.fn[NAME].Constructor = Carousel
-$.fn[NAME].noConflict  = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Carousel._jQueryInterface
 }

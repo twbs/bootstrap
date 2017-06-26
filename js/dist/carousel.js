@@ -529,6 +529,37 @@ var Carousel = function () {
       event.preventDefault();
     }
   }, {
+    key: '_init',
+    value: function _init() {
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+
+      $(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
+
+      $(window).on(Event.LOAD_DATA_API, function () {
+        $(Selector.DATA_RIDE).each(function () {
+          var $carousel = $(this);
+          Carousel._jQueryInterface.call($carousel, $carousel.data());
+        });
+      });
+
+      /**
+       * ------------------------------------------------------------------------
+       * jQuery
+       * ------------------------------------------------------------------------
+       */
+
+      $.fn[NAME] = Carousel._jQueryInterface;
+      $.fn[NAME].Constructor = Carousel;
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return Carousel._jQueryInterface;
+      };
+    }
+  }, {
     key: 'VERSION',
     get: function get$$1() {
       return VERSION;
@@ -542,27 +573,11 @@ var Carousel = function () {
   return Carousel;
 }();
 
-$(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
-
-$(window).on(Event.LOAD_DATA_API, function () {
-  $(Selector.DATA_RIDE).each(function () {
-    var $carousel = $(this);
-    Carousel._jQueryInterface.call($carousel, $carousel.data());
+if (!Util.nodeEnv()) {
+  $(document).ready(function () {
+    Carousel._init();
   });
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME] = Carousel._jQueryInterface;
-$.fn[NAME].Constructor = Carousel;
-$.fn[NAME].noConflict = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT;
-  return Carousel._jQueryInterface;
-};
+}
 
 return Carousel;
 

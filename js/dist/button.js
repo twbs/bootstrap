@@ -1,10 +1,11 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery')) :
-	typeof define === 'function' && define.amd ? define(['jquery'], factory) :
-	(global.Button = factory(global.$));
-}(this, (function ($) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./util.js')) :
+	typeof define === 'function' && define.amd ? define(['jquery', './util.js'], factory) :
+	(global.Button = factory(global.$,global.Util));
+}(this, (function ($,Util) { 'use strict';
 
 $ = $ && 'default' in $ ? $['default'] : $;
+Util = Util && 'default' in Util ? Util['default'] : Util;
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -158,6 +159,43 @@ var Button = function () {
       });
     }
   }, {
+    key: '_init',
+    value: function _init() {
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+
+      $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
+        event.preventDefault();
+
+        var button = event.target;
+
+        if (!$(button).hasClass(ClassName.BUTTON)) {
+          button = $(button).closest(Selector.BUTTON);
+        }
+
+        Button._jQueryInterface.call($(button), 'toggle');
+      }).on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
+        var button = $(event.target).closest(Selector.BUTTON)[0];
+        $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type));
+      });
+
+      /**
+       * ------------------------------------------------------------------------
+       * jQuery
+       * ------------------------------------------------------------------------
+       */
+
+      $.fn[NAME] = Button._jQueryInterface;
+      $.fn[NAME].Constructor = Button;
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return Button._jQueryInterface;
+      };
+    }
+  }, {
     key: 'VERSION',
     get: function get$$1() {
       return VERSION;
@@ -166,33 +204,11 @@ var Button = function () {
   return Button;
 }();
 
-$(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
-  event.preventDefault();
-
-  var button = event.target;
-
-  if (!$(button).hasClass(ClassName.BUTTON)) {
-    button = $(button).closest(Selector.BUTTON);
-  }
-
-  Button._jQueryInterface.call($(button), 'toggle');
-}).on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
-  var button = $(event.target).closest(Selector.BUTTON)[0];
-  $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type));
-});
-
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME] = Button._jQueryInterface;
-$.fn[NAME].Constructor = Button;
-$.fn[NAME].noConflict = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT;
-  return Button._jQueryInterface;
-};
+if (!Util.nodeEnv()) {
+  $(document).ready(function () {
+    Button._init();
+  });
+}
 
 return Button;
 

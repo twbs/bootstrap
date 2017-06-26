@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import Tooltip from './tooltip'
+import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
@@ -165,17 +166,25 @@ export default class Popover extends Tooltip {
       }
     })
   }
+
+  static _init() {
+    /**
+     * ------------------------------------------------------------------------
+     * jQuery
+     * ------------------------------------------------------------------------
+     */
+
+    $.fn[NAME]             = Popover._jQueryInterface
+    $.fn[NAME].Constructor = Popover
+    $.fn[NAME].noConflict  = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Popover._jQueryInterface
+    }
+  }
 }
 
-/**
- * ------------------------------------------------------------------------
- * jQuery
- * ------------------------------------------------------------------------
- */
-
-$.fn[NAME]             = Popover._jQueryInterface
-$.fn[NAME].Constructor = Popover
-$.fn[NAME].noConflict  = function () {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Popover._jQueryInterface
+if (!Util.nodeEnv()) {
+  $(document).ready(() => {
+    Popover._init()
+  })
 }
