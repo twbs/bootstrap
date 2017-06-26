@@ -1,14 +1,20 @@
-import Alert from './alert';
-import Button from './button';
-import Carousel from './carousel';
-import Collapse from './collapse';
-import Dropdown from './dropdown';
-import Modal from './modal';
-import Popover from './popover';
-import Scrollspy from './scrollspy';
-import Tab from './tab';
-import Tooltip from './tooltip';
-import Util from './util';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./alert.js'), require('./button.js'), require('./carousel.js'), require('./collapse.js'), require('./dropdown.js'), require('./modal.js'), require('./popover.js'), require('./scrollspy.js'), require('./tab.js'), require('./tooltip.js'), require('./util.js')) :
+	typeof define === 'function' && define.amd ? define(['./alert.js', './button.js', './carousel.js', './collapse.js', './dropdown.js', './modal.js', './popover.js', './scrollspy.js', './tab.js', './tooltip.js', './util.js'], factory) :
+	(global.Index = factory(global.Alert,global.Button,global.Carousel,global.Collapse,global.Dropdown,global.Modal,global.Popover,global.Scrollspy,global.Tab,global.Tooltip,global.Util));
+}(this, (function (Alert,Button,Carousel,Collapse,Dropdown,Modal,Popover,Scrollspy,Tab,Tooltip,Util) { 'use strict';
+
+Alert = Alert && 'default' in Alert ? Alert['default'] : Alert;
+Button = Button && 'default' in Button ? Button['default'] : Button;
+Carousel = Carousel && 'default' in Carousel ? Carousel['default'] : Carousel;
+Collapse = Collapse && 'default' in Collapse ? Collapse['default'] : Collapse;
+Dropdown = Dropdown && 'default' in Dropdown ? Dropdown['default'] : Dropdown;
+Modal = Modal && 'default' in Modal ? Modal['default'] : Modal;
+Popover = Popover && 'default' in Popover ? Popover['default'] : Popover;
+Scrollspy = Scrollspy && 'default' in Scrollspy ? Scrollspy['default'] : Scrollspy;
+Tab = Tab && 'default' in Tab ? Tab['default'] : Tab;
+Tooltip = Tooltip && 'default' in Tooltip ? Tooltip['default'] : Tooltip;
+Util = Util && 'default' in Util ? Util['default'] : Util;
 
 /**
  * --------------------------------------------------------------------------
@@ -17,7 +23,7 @@ import Util from './util';
  * --------------------------------------------------------------------------
  */
 
-export default {
+var index = {
   Util: Util,
   Alert: Alert,
   Button: Button,
@@ -30,4 +36,8 @@ export default {
   Tab: Tab,
   Tooltip: Tooltip
 };
+
+return index;
+
+})));
 //# sourceMappingURL=index.js.map

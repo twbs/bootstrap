@@ -13,24 +13,32 @@ const files = {
   Popover: path.resolve(__dirname, '../js/src/popover.js'),
   Scrollspy: path.resolve(__dirname, '../js/src/scrollspy.js'),
   Tab: path.resolve(__dirname, '../js/src/tab.js'),
-  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
+  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js'),
+  Index: path.resolve(__dirname, '../js/src/index.js')
 }
 
 const pathDest = path.resolve(__dirname, '../js/dist/')
 const relativePathSrc = 'js/src/'
 const relativePathDist = 'js/dist/'
+const externalIndex = []
 
 for (const plugin in files) {
   if (!Object.prototype.hasOwnProperty.call(files, plugin)) {
     continue
   }
   const file = `${plugin.toLowerCase()}.js`
-  const externalArray = ['jquery', 'popper.js']
+  var externalArray = ['jquery', 'popper.js']
   if (files[plugin] !== files.Util) {
     externalArray.push(files.Util)
   }
   if (files[plugin] !== files.Tooltip) {
     externalArray.push(files.Tooltip)
+  }
+  if (files[plugin] !== files.Index) {
+    externalIndex.push(files[plugin])
+  }
+  else {
+    externalArray = externalIndex
   }
   rollup.rollup({
     entry: files[plugin],
