@@ -1,11 +1,3 @@
-//
-// Contextual backgrounds
-//
-
-.bg-faded {
-  background-color: darken($body-bg, 3%);
-}
-
 @each $color, $value in $theme-colors {
   @include bg-variant('.bg-#{$color}', $value);
 }
