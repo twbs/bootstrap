@@ -362,23 +362,6 @@
   overflow: auto;
 }
 
-// Helpers
-.bd-example > {
-  .bg-primary,
-  .bg-success,
-  .bg-info,
-  .bg-warning,
-  .bg-danger,
-  .bg-inverse,
-  .bg-faded {
-    &:not(.navbar) {
-      padding: .5rem;
-      margin-top: .5rem;
-      margin-bottom: .5rem;
-    }
-  }
-}
-
 .bd-example-border-utils {
   [class^="border-"] {
     display: inline-block;
