@@ -73,13 +73,7 @@ We use a subset of all colors to create a smaller color palette for generating c
 <div class="row">
   {% for color in site.data.theme-colors %}
     <div class="col-md-4">
-      {% if color.name == "background" %}
-        <div class="p-3 mb-3 swatch-{{ color.name }}" style="box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);">
-          {{ color.name | capitalize }}
-        </div>
-      {% else %}
-        <div class="p-3 mb-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
-      {% endif %}
+      <div class="p-3 mb-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
     </div>
   {% endfor %}
 </div>
