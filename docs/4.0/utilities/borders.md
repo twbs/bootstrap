@@ -25,7 +25,7 @@ Add classes to an element to remove all borders or some borders.
 
 Add classes to an element to easily round its corners.
 
-<div class="bd-example bd-example-images">
+<div class="bd-example">
   <img data-src="holder.js/75x75" class="rounded" alt="Example rounded image">
   <img data-src="holder.js/75x75" class="rounded-top" alt="Example top rounded image">
   <img data-src="holder.js/75x75" class="rounded-right" alt="Example right rounded image">

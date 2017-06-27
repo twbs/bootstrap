@@ -28,7 +28,7 @@ In Internet Explorer 10, SVG images with `.img-fluid` are disproportionately siz
 
 In addition to our [border-radius utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/borders/), you can use `.img-thumbnail` to give an image a rounded 1px border appearance.
 
-<div class="bd-example bd-example-images">
+<div class="bd-example">
   <img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
 </div>
 
@@ -40,7 +40,7 @@ In addition to our [border-radius utilities]({{ site.baseurl }}/docs/{{ site.doc
 
 Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/responsive-helpers/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/#horizontal-centering).
 
-<div class="bd-example bd-example-images">
+<div class="bd-example">
   <img data-src="holder.js/200x200" class="rounded float-left" alt="A generic square placeholder image with rounded corners">
   <img data-src="holder.js/200x200" class="rounded float-right" alt="A generic square placeholder image with rounded corners">
 </div>
@@ -50,7 +50,7 @@ Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.doc
 <img src="..." class="rounded float-right" alt="...">
 {% endhighlight %}
 
-<div class="bd-example bd-example-images">
+<div class="bd-example">
   <img data-src="holder.js/200x200" class="rounded mx-auto d-block" alt="A generic square placeholder image with rounded corners">
 </div>
 
@@ -58,7 +58,7 @@ Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.doc
 <img src="..." class="rounded mx-auto d-block" alt="...">
 {% endhighlight %}
 
-<div class="bd-example bd-example-images">
+<div class="bd-example">
   <div class="text-center">
     <img data-src="holder.js/200x200" class="rounded" alt="A generic square placeholder image with rounded corners">
   </div>
