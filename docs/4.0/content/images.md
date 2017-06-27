@@ -40,30 +40,40 @@ In addition to our [border-radius utilities]({{ site.baseurl }}/docs/{{ site.doc
 
 Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/responsive-helpers/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/#horizontal-centering).
 
+Left-aligned with `.float-left`:
+
 <div class="bd-example">
   <img data-src="holder.js/200x200" class="rounded float-left" alt="A generic square placeholder image with rounded corners">
-  <img data-src="holder.js/200x200" class="rounded float-right" alt="A generic square placeholder image with rounded corners">
 </div>
-
 {% highlight html %}
 <img src="..." class="rounded float-left" alt="...">
+{% endhighlight %}
+
+Right-aligned with `.float-right`:
+
+<div class="bd-example">
+  <img data-src="holder.js/200x200" class="rounded float-right" alt="A generic square placeholder image with rounded corners">
+</div>
+{% highlight html %}
 <img src="..." class="rounded float-right" alt="...">
 {% endhighlight %}
+
+Center-aligned with `.mx-auto` on `display: block`:
 
 <div class="bd-example">
   <img data-src="holder.js/200x200" class="rounded mx-auto d-block" alt="A generic square placeholder image with rounded corners">
 </div>
-
 {% highlight html %}
 <img src="..." class="rounded mx-auto d-block" alt="...">
 {% endhighlight %}
+
+Center-aligned with `.text-center` on parent element:
 
 <div class="bd-example">
   <div class="text-center">
     <img data-src="holder.js/200x200" class="rounded" alt="A generic square placeholder image with rounded corners">
   </div>
 </div>
-
 {% highlight html %}
 <div class="text-center">
   <img src="..." class="rounded" alt="...">
