@@ -6,6 +6,7 @@
 .progress {
   display: flex;
   overflow: hidden; // force rounded corners by cropping it
+  margin-bottom: $progress-margin-bottom;
   font-size: $progress-font-size;
   line-height: $progress-height;
   text-align: center;
