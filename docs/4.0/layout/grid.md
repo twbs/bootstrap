@@ -613,7 +613,7 @@ $grid-gutter-widths: (
   md: $grid-gutter-width-base, // 30px
   lg: $grid-gutter-width-base, // 30px
   xl: $grid-gutter-width-base  // 30px
-)
+);
 
 $grid-breakpoints: (
   // Extra small screen / phone
