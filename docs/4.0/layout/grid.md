@@ -611,11 +611,6 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 // Make the element grid-ready (applying everything but the width)
 @include make-col-ready();
 @include make-col($size, $columns: $grid-columns);
-
-// Get fancy by offsetting, or changing the sort order
-@include make-col-offset($size, $columns: $grid-columns);
-@include make-col-push($size, $columns: $grid-columns);
-@include make-col-pull($size, $columns: $grid-columns);
 {% endhighlight %}
 
 ### Example usage
