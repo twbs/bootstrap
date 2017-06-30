@@ -100,42 +100,6 @@
   margin-left: -($card-spacer-x / 2);
 }
 
-
-//
-// Background variations
-//
-
-@each $color, $value in $theme-colors {
-  .card-#{$color} {
-    @include card-variant($value, $value);
-  }
-}
-
-@each $color, $value in $theme-colors {
-  .card-outline-#{$color} {
-    @include card-variant($value, $value);
-  }
-}
-
-
-//
-// Inverse text within a card for use with dark backgrounds
-//
-
-.card-dark {
-  @include card-dark;
-}
-
-//
-// Blockquote
-//
-
-.card-blockquote {
-  padding: 0;
-  margin-bottom: 0;
-  border-left: 0;
-}
-
 // Card image
 .card-img-overlay {
   position: absolute;
