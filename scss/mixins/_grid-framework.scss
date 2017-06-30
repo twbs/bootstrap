@@ -48,7 +48,7 @@
 
       @for $i from 1 through $columns {
         .order#{$infix}-#{$i} {
-          order: $i
+          order: $i;
         }
       }
     }
