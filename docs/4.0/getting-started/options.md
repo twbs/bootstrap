@@ -66,6 +66,10 @@ Here's how you can use these in your Sass:
 
 [Color utility classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) are also available for setting `color` and `background-color`.
 
+{% callout info %}
+In the future, we'll aim to provide Sass maps and variables for shades of each color as we've done with the grayscale colors below.
+{% endcallout %}
+
 ### Theme colors
 
 We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in our `scss/_variables.scss` file.
