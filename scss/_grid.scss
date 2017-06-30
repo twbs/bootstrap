@@ -1,7 +1,6 @@
 // Container widths
 //
 // Set the container width, and override it for fixed navbars in media queries.
-
 @if $enable-grid-classes {
   .container {
     @include make-container();
@@ -13,7 +12,6 @@
 //
 // Utilizes the mixin meant for fixed width containers, but with 100% width for
 // fluid, full width layouts.
-
 @if $enable-grid-classes {
   .container-fluid {
     width: 100%;
@@ -24,20 +22,17 @@
 // Row
 //
 // Rows contain and clear the floats of your columns.
-
 @if $enable-grid-classes {
   .row {
     @include make-row();
   }
-
   // Remove the negative margin from default .row, then the horizontal padding
   // from all immediate children columns (to prevent runaway style inheritance).
   .no-gutters {
     margin-right: 0;
     margin-left: 0;
-
-    > .col,
-    > [class*="col-"] {
+    >.col,
+    >[class*="col-"] {
       padding-right: 0;
       padding-left: 0;
     }
@@ -47,7 +42,25 @@
 // Columns
 //
 // Common styles for small and large grid columns
-
 @if $enable-grid-classes {
   @include make-grid-columns();
 }
+
+//Add responsive order classes
+@each $size,
+$pixels in $grid-breakpoints {
+  @include media-breakpoint-up($size) {
+    @for $i from 1 to $grid-columns {
+      @if $size == "xs" {
+        .order-#{$i} {
+          order: $i;
+        }
+      } @else {
+        .order-#{$size}-#{$i} {
+          order: $i;
+        }
+      }
+    }
+  }
+}
+//Testing
