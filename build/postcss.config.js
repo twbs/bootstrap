@@ -20,11 +20,11 @@ module.exports = (ctx) => ({
         'Edge >= 12',
         'Explorer >= 10',
         // Out of leniency, we prefix these 1 version further back than the official policy.
-        'iOS >= 8',
+        'iOS >= 9',
         'Safari >= 9',
         // The following remain NOT officially supported, but we're lenient and include their prefixes to avoid severely breaking in them.
         'Android >= 4.4',
-        'Opera >= 12'
+        'Opera >= 30'
       ]
     }
   }
