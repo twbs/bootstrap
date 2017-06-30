@@ -301,6 +301,46 @@ All icons that are currently available for use
         <code>.icon-search</code>
       </td>
     </tr>
+    <tr>
+      <td>
+        <p class="icon-close"></p>
+      </td>
+      <td>
+        <code>.icon-close</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p class="icon-remove"></p>
+      </td>
+      <td>
+        <code>.icon-remove</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p class="icon-heart"></p>
+      </td>
+      <td>
+        <code>.icon-heart</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p class="icon-heart-outline"></p>
+      </td>
+      <td>
+        <code>.icon-heart-outline</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p class="icon-location"></p>
+      </td>
+      <td>
+        <code>.icon-location</code>
+      </td>
+    </tr>
   </body>
 </table>
 
@@ -374,3 +414,24 @@ All icons that are currently available for use
     </tr>
   </body>
 </table>
+
+## Extend Icons
+
+To update/extend Icons, use the following doc. In this example we use icomoon, any other service should do, too.
+
+### Icomoon Generation
+
+1. Export Icon as SVG and add it to the icon folder. Important to note is to use an incremented number, so our chars don't get screwed up.
+2. Go to https://icomoon.io/app/#/select
+3. Go to in the menu (hamburger menu) and select manage projects. Import the joblocal-icons.json from the icons folder.
+4. Add the new icon and make sure it is the last icon (right, bottom). It will be added as first icon after importing, use the move tool to make it last.
+5. Make sure all icons are selected (orange border)
+6. Generate font (bottom menu)
+7. Export new joblocal-icons.json (from manage projects) and replace in icons folder (these are the settings needed for other persons extending the icons)
+
+### Adding it to the CSS
+
+1. Unzip the folder you downloaded when you generated the font
+2. Replace joblocal-icons.eot, *.ttf, *.svg and *.woff in the icons folder
+3. Open up variables.scss (from zip) and copy the new variables into the icons part of custom.scss
+4. Open up scss/custom/utilities/icons.scss (from our styleguide) and extend the classes with the new icons (each var a class)
