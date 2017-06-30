@@ -30,7 +30,7 @@ body {
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
-  color: #292b2c;
+  color: #212529;
   background-color: #fff;
 }
 
@@ -126,14 +126,14 @@ sup {
 }
 
 a {
-  color: #0275d8;
+  color: #007bff;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 
 a:hover {
-  color: #014c8c;
+  color: #0056b3;
   text-decoration: underline;
 }
 
@@ -198,7 +198,7 @@ table {
 caption {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  color: #636c72;
+  color: #868e96;
   text-align: left;
   caption-side: bottom;
 }
