@@ -13,7 +13,7 @@
   @include box-shadow($btn-box-shadow);
 
   // Hover and focus styles are shared
-  &:hover {
+  @include hover {
     @include color-yiq($background);
     background-color: $active-background;
     border-color: $active-border;
