@@ -285,7 +285,7 @@ All carousel events are fired at the carousel itself (i.e. at the `<div class="c
       <td>This event fires immediately when the <code>slide</code> instance method is invoked.</td>
     </tr>
     <tr>
-      <td>slid.bs.carousel</td>
+      <td>slide.bs.carousel</td>
       <td>This event is fired when the carousel has completed its slide transition.</td>
     </tr>
   </tbody>
