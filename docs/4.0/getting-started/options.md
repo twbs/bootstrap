@@ -13,8 +13,8 @@ Every Sass variable in Bootstrap 4 includes the `!default` flag, meaning you can
 For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
 
 {% highlight scss %}
-$body-bg:    $gray-dark;
-$body-color: $gray-light;
+$body-bg:    $gray-900;
+$body-color: $gray-600;
 {% endhighlight %}
 
 Do the same for any variable you need to override, including the global options listed below.
@@ -103,8 +103,8 @@ $colors: (
   pink: $pink,
   purple: $purple,
   white: $white,
-  gray: $gray-light,
-  gray-dark: $gray-dark
+  gray: $gray-600,
+  gray-dark: $gray-900
 ) !default;
 {% endhighlight %}
 
