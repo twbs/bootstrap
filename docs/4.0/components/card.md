@@ -366,126 +366,51 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 Cards include various options for customizing their backgrounds, borders, and color.
 
-### Dark cards
+### Background and color
 
-By default, cards use dark text and assume a light background. You can reverse that by toggling the `color` of text within, as well as that of the card's subcomponents, with `.card-dark`. Then, specify a dark `background-color` and `border-color` to go with it.
-
-You can also use `.card-dark` with the [contextual backgrounds variants](#background-variants).
+Use [text and background utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) to change the appearance of a card.
 
 {% example html %}
-<div class="card card-dark" style="background-color: #333; border-color: #333;">
+{% for color in site.data.theme-colors %}
+<div class="card{% unless color.name == "light" %} text-white{% endunless %} bg-{{ color.name }} mb-3" style="max-width: 20rem;">
   <div class="card-header">Header</div>
   <div class="card-body">
-    <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h4 class="card-title">{{ color.name | capitalize }} card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
-  <div class="card-footer">Footer</div>
-</div>
-{% endexample %}
-
-### Background variants
-
-Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-dark`.**
-
-{% example html %}
-<div class="card card-dark card-primary mb-3 text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-dark card-success mb-3 text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-dark card-info mb-3 text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-dark card-warning mb-3 text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-dark card-danger text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
+</div>{% endfor %}
 {% endexample %}
 
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
-### Outline cards
+### Border
 
-In need of a colored card, but not the hefty background colors they bring? Replace the default modifier classes with the `.card-outline-*` ones to style just the `border-color` of a card.
+Use [border utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/borders/) to change just the `border-color` of a card. Note that you can put `.text-{color}` classes on the parent `.card` or a subset of the card's contents as shown below.
 
 {% example html %}
-<div class="card card-outline-primary mb-3 text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+{% for color in site.data.theme-colors %}
+<div class="card border-{{ color.name }} mb-3" style="max-width: 20rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body{% unless color.name == "light" %} text-{{ color.name }}{% endunless %}">
+    <h4 class="card-title">{{ color.name | capitalize }} card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
-</div>
-<div class="card card-outline-secondary mb-3 text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+</div>{% endfor %}
+{% endexample %}
+
+### Mixins utilities
+
+You can also change the borders on the card header and footer as needed, and even remove their `background-color` with `.bg-transparent`.
+
+{% example html %}
+<div class="card border-success mb-3" style="max-width: 20rem;">
+  <div class="card-header bg-transparent border-success">Header</div>
+  <div class="card-body text-success">
+    <h4 class="card-title">Success card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
-</div>
-<div class="card card-outline-success mb-3 text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-outline-info mb-3 text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-outline-warning mb-3 text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<div class="card card-outline-danger text-center">
-  <div class="card-body">
-    <blockquote class="card-blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
-  </div>
+  <div class="card-footer bg-transparent border-success">Footer</div>
 </div>
 {% endexample %}
 
