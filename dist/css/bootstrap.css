@@ -504,10 +504,8 @@ mark,
 }
 
 .blockquote {
-  padding: 0.5rem 1rem;
   margin-bottom: 1rem;
   font-size: 1.25rem;
-  border-left: 0.25rem solid #e9ecef;
 }
 
 .blockquote-footer {
@@ -518,22 +516,6 @@ mark,
 
 .blockquote-footer::before {
   content: "\2014 \00A0";
-}
-
-.blockquote-reverse {
-  padding-right: 1rem;
-  padding-left: 0;
-  text-align: right;
-  border-right: 0.25rem solid #e9ecef;
-  border-left: 0;
-}
-
-.blockquote-reverse .blockquote-footer::before {
-  content: "";
-}
-
-.blockquote-reverse .blockquote-footer::after {
-  content: "\00A0 \2014";
 }
 
 .img-fluid {
@@ -3670,6 +3652,7 @@ tbody.collapse.show {
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
+  background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
@@ -3714,7 +3697,7 @@ tbody.collapse.show {
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: #f8f9fa;
+  background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -3724,7 +3707,7 @@ tbody.collapse.show {
 
 .card-footer {
   padding: 0.75rem 1.25rem;
-  background-color: #f8f9fa;
+  background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -3742,200 +3725,6 @@ tbody.collapse.show {
 .card-header-pills {
   margin-right: -0.625rem;
   margin-left: -0.625rem;
-}
-
-.card-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.card-primary .card-header,
-.card-primary .card-footer {
-  background-color: transparent;
-}
-
-.card-secondary {
-  background-color: #868e96;
-  border-color: #868e96;
-}
-
-.card-secondary .card-header,
-.card-secondary .card-footer {
-  background-color: transparent;
-}
-
-.card-success {
-  background-color: #28a745;
-  border-color: #28a745;
-}
-
-.card-success .card-header,
-.card-success .card-footer {
-  background-color: transparent;
-}
-
-.card-info {
-  background-color: #17a2b8;
-  border-color: #17a2b8;
-}
-
-.card-info .card-header,
-.card-info .card-footer {
-  background-color: transparent;
-}
-
-.card-warning {
-  background-color: #ffc107;
-  border-color: #ffc107;
-}
-
-.card-warning .card-header,
-.card-warning .card-footer {
-  background-color: transparent;
-}
-
-.card-danger {
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
-
-.card-danger .card-header,
-.card-danger .card-footer {
-  background-color: transparent;
-}
-
-.card-light {
-  background-color: #f8f9fa;
-  border-color: #f8f9fa;
-}
-
-.card-light .card-header,
-.card-light .card-footer {
-  background-color: transparent;
-}
-
-.card-dark {
-  background-color: #343a40;
-  border-color: #343a40;
-}
-
-.card-dark .card-header,
-.card-dark .card-footer {
-  background-color: transparent;
-}
-
-.card-outline-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.card-outline-primary .card-header,
-.card-outline-primary .card-footer {
-  background-color: transparent;
-}
-
-.card-outline-secondary {
-  background-color: #868e96;
-  border-color: #868e96;
-}
-
-.card-outline-secondary .card-header,
-.card-outline-secondary .card-footer {
-  background-color: transparent;
-}
-
-.card-outline-success {
-  background-color: #28a745;
-  border-color: #28a745;
-}
-
-.card-outline-success .card-header,
-.card-outline-success .card-footer {
-  background-color: transparent;
-}
-
-.card-outline-info {
-  background-color: #17a2b8;
-  border-color: #17a2b8;
-}
-
-.card-outline-info .card-header,
-.card-outline-info .card-footer {
-  background-color: transparent;
-}
-
-.card-outline-warning {
-  background-color: #ffc107;
-  border-color: #ffc107;
-}
-
-.card-outline-warning .card-header,
-.card-outline-warning .card-footer {
-  background-color: transparent;
-}
-
-.card-outline-danger {
-  background-color: #dc3545;
-  border-color: #dc3545;
-}
-
-.card-outline-danger .card-header,
-.card-outline-danger .card-footer {
-  background-color: transparent;
-}
-
-.card-outline-light {
-  background-color: #f8f9fa;
-  border-color: #f8f9fa;
-}
-
-.card-outline-light .card-header,
-.card-outline-light .card-footer {
-  background-color: transparent;
-}
-
-.card-outline-dark {
-  background-color: #343a40;
-  border-color: #343a40;
-}
-
-.card-outline-dark .card-header,
-.card-outline-dark .card-footer {
-  background-color: transparent;
-}
-
-.card-dark {
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.card-dark .card-header,
-.card-dark .card-footer {
-  background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.card-dark .card-header,
-.card-dark .card-footer,
-.card-dark .card-title,
-.card-dark .card-blockquote {
-  color: #fff;
-}
-
-.card-dark .card-link,
-.card-dark .card-text,
-.card-dark .card-subtitle,
-.card-dark .card-blockquote .blockquote-footer {
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.card-dark .card-link:focus, .card-dark .card-link:hover {
-  color: #fff;
-}
-
-.card-blockquote {
-  padding: 0;
-  margin-bottom: 0;
-  border-left: 0;
 }
 
 .card-img-overlay {
@@ -5518,6 +5307,10 @@ a.bg-light:focus, a.bg-light:hover {
 
 a.bg-dark:focus, a.bg-dark:hover {
   background-color: #1d2124 !important;
+}
+
+.bg-transparent {
+  background-color: transparent !important;
 }
 
 .border {
