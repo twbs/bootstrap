@@ -201,16 +201,8 @@ $container-max-widths: (
 //
 // Set the number of columns and specify the width of the gutters.
 
-$grid-columns:               12 !default;
-$grid-gutter-width-base:     30px !default;
-$grid-gutter-widths: (
-  xs: $grid-gutter-width-base,
-  sm: $grid-gutter-width-base,
-  md: $grid-gutter-width-base,
-  lg: $grid-gutter-width-base,
-  xl: $grid-gutter-width-base
-) !default;
-
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
 
 // Components
 //
@@ -659,7 +651,7 @@ $card-dark-link-hover-color:    $white !default;
 
 $card-img-overlay-padding: 1.25rem !default;
 
-$card-deck-margin:          ($grid-gutter-width-base / 2) !default;
+$card-deck-margin:          ($grid-gutter-width / 2) !default;
 
 $card-columns-count:        3 !default;
 $card-columns-gap:          1.25rem !default;
