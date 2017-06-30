@@ -164,7 +164,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 The navbar has been entirely rewritten in flexbox with improved support for alignment, responsiveness, and customization.
 
 - Responsive navbar behaviors are now applied to the `.navbar` class via the **required** `.navbar-expand-{breakpoint}` where you choose where to collapse the navbar. Previously this was a Less variable modification and required recompiling.
-- `.navbar-default` is now `.navbar-light`, though `.navbar-inverse` remains the same. **One of these is required on each navbar.** However, these classes no longer set `background-color`s; instead they essentially only affect `color`.
+- `.navbar-default` is now `.navbar-light`, though `.navbar-dark` remains the same. **One of these is required on each navbar.** However, these classes no longer set `background-color`s; instead they essentially only affect `color`.
 - Navbars now require a background declaration of some kind. Choose from our background utilities (`.bg-*`) or set your own with the light/inverse classes above [for mad customization]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/navbar/#color-schemes).
 - Given flexbox styles, navbars can now use flexbox utilities for easy alignment options.
 - `.navbar-toggle` is now `.navbar-toggler` and has different styles and inner markup (no more three `<span>`s).
@@ -201,11 +201,11 @@ Dropped entirely for the new card component.
 - `.panel-title` to `.card-title`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/typography/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
 - `.panel-body` to `.card-body`
 - `.panel-footer` to `.card-footer`
-- `.panel-primary` to `.card-primary` and `.card-inverse` (or use `.bg-primary` on `.card-header`)
-- `.panel-success` to `.card-success` and `.card-inverse` (or use `.bg-success` on `.card-header`)
-- `.panel-info` to `.card-info` and `.card-inverse` (or use `.bg-info` on `.card-header`)
-- `.panel-warning` to `.card-warning` and `.card-inverse` (or use `.bg-warning` on `.card-header`)
-- `.panel-danger` to `.card-danger` and `.card-inverse` (or use `.bg-danger` on `.card-header`)
+- `.panel-primary` to `.card-primary` and `.card-dark` (or use `.bg-primary` on `.card-header`)
+- `.panel-success` to `.card-success` and `.card-dark` (or use `.bg-success` on `.card-header`)
+- `.panel-info` to `.card-info` and `.card-dark` (or use `.bg-info` on `.card-header`)
+- `.panel-warning` to `.card-warning` and `.card-dark` (or use `.bg-warning` on `.card-header`)
+- `.panel-danger` to `.card-danger` and `.card-dark` (or use `.bg-danger` on `.card-header`)
 
 ### Carousel
 

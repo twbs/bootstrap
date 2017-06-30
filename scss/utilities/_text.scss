@@ -38,21 +38,9 @@
   color: #fff !important;
 }
 
-@include text-emphasis-variant('.text-muted', $text-muted);
-
-@include text-emphasis-variant('.text-primary', $brand-primary);
-
-@include text-emphasis-variant('.text-success', $brand-success);
-
-@include text-emphasis-variant('.text-info', $brand-info);
-
-@include text-emphasis-variant('.text-warning', $brand-warning);
-
-@include text-emphasis-variant('.text-danger', $brand-danger);
-
-// Font color
-
-@include text-emphasis-variant('.text-gray-dark', $gray-dark);
+@each $color, $value in $theme-colors {
+  @include text-emphasis-variant('.text-#{$color}', $value);
+}
 
 // Misc
 
