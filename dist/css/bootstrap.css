@@ -2542,7 +2542,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     width: auto;
     vertical-align: middle;
   }
-  .form-inline .form-control-static {
+  .form-inline .form-control-plaintext {
     display: inline-block;
   }
   .form-inline .input-group {
