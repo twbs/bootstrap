@@ -117,7 +117,7 @@
 .bd-example {
   position: relative;
   padding: 1rem;
-  margin: 1rem (-$grid-gutter-width-base / 2);
+  margin: 1rem (-$grid-gutter-width / 2);
   border: solid #f7f7f9;
   border-width: .2rem 0 0;
   @include clearfix();
@@ -392,7 +392,7 @@
 
 .highlight {
   padding: 1rem;
-  margin: 1rem (-$grid-gutter-width-base / 2);
+  margin: 1rem (-$grid-gutter-width / 2);
   background-color: #f7f7f9;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 
