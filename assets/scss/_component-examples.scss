@@ -285,6 +285,19 @@
   }
 }
 
+.modal.show {
+  z-index: 1072;
+
+  .tooltip, .popover {
+    z-index: 1073;
+  }
+}
+
+.modal-backdrop {
+  z-index: 1071;
+}
+
+
 // Example tabbable tabs
 .bd-example-tabs .nav-tabs {
   margin-bottom: 1rem;

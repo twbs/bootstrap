@@ -12,7 +12,7 @@ toc: true
 
 ## Importing JavaScript
 
-Import [Bootstrap's JavaScript](/getting-started/javascript/) by adding this line to your app's entry point (usally `index.js` or `app.js`):
+Import [Bootstrap's JavaScript](/getting-started/javascript/) by adding this line to your app's entry point (usually `index.js` or `app.js`):
 
 {% highlight js %}
 import 'bootstrap';
@@ -61,7 +61,7 @@ First, create your own `_custom.scss` and use it to override the [built-in custo
 @import "~bootstrap/scss/bootstrap";
 {% endhighlight %}
 
-For Bootstrap to compile, make sure you install and use the required loaders: [sass-loader](https://github.com/webpack-contrib/sass-loader), [postcss-loader](https://github.com/postcss/postcss-loader) with [Autoprefixer](https://github.com/postcss/autoprefixer#webpack) and [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes). With minimal setup, your webpack config should include this rule or similar:
+For Bootstrap to compile, make sure you install and use the required loaders: [sass-loader](https://github.com/webpack-contrib/sass-loader), [postcss-loader](https://github.com/postcss/postcss-loader) with [Autoprefixer](https://github.com/postcss/autoprefixer#webpack). With minimal setup, your webpack config should include this rule or similar:
 
 {% highlight js %}
   ...

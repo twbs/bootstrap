@@ -164,7 +164,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 The navbar has been entirely rewritten in flexbox with improved support for alignment, responsiveness, and customization.
 
 - Responsive navbar behaviors are now applied to the `.navbar` class via the **required** `.navbar-expand-{breakpoint}` where you choose where to collapse the navbar. Previously this was a Less variable modification and required recompiling.
-- `.navbar-default` is now `.navbar-light`, though `.navbar-inverse` remains the same. **One of these is required on each navbar.** However, these classes no longer set `background-color`s; instead they essentiatlly only affect `color`.
+- `.navbar-default` is now `.navbar-light`, though `.navbar-inverse` remains the same. **One of these is required on each navbar.** However, these classes no longer set `background-color`s; instead they essentially only affect `color`.
 - Navbars now require a background declaration of some kind. Choose from our background utilities (`.bg-*`) or set your own with the light/inverse classes above [for mad customization]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/navbar/#color-schemes).
 - Given flexbox styles, navbars can now use flexbox utilities for easy alignment options.
 - `.navbar-toggle` is now `.navbar-toggler` and has different styles and inner markup (no more three `<span>`s).
