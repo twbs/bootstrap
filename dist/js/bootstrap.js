@@ -50,9 +50,10 @@ var Util = function ($) {
     MozTransition: 'transitionend',
     OTransition: 'oTransitionEnd otransitionend',
     transition: 'transitionend'
+  };
 
-    // shoutout AngusCroll (https://goo.gl/pxwQGp)
-  };function toType(obj) {
+  // shoutout AngusCroll (https://goo.gl/pxwQGp)
+  function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
   }
 
@@ -66,8 +67,7 @@ var Util = function ($) {
       delegateType: transition.end,
       handle: function handle(event) {
         if ($(event.target).is(this)) {
-          return event.handleObj.handler.apply(this, arguments // eslint-disable-line prefer-rest-params
-          );
+          return event.handleObj.handler.apply(this, arguments); // eslint-disable-line prefer-rest-params
         }
         return undefined;
       }
@@ -177,7 +177,7 @@ var Util = function ($) {
   setTransitionEndSupport();
 
   return Util;
-}(jQuery
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -186,7 +186,7 @@ var Util = function ($) {
  * --------------------------------------------------------------------------
  */
 
-);var Alert = function ($) {
+var Alert = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -216,14 +216,14 @@ var Util = function ($) {
     ALERT: 'alert',
     FADE: 'fade',
     SHOW: 'show'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Alert = function () {
     function Alert(element) {
       _classCallCheck(this, Alert);
@@ -340,7 +340,7 @@ var Util = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert())
+  $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
 
   /**
    * ------------------------------------------------------------------------
@@ -348,7 +348,7 @@ var Util = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  );$.fn[NAME] = Alert._jQueryInterface;
+  $.fn[NAME] = Alert._jQueryInterface;
   $.fn[NAME].Constructor = Alert;
   $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT;
@@ -356,7 +356,7 @@ var Util = function ($) {
   };
 
   return Alert;
-}(jQuery
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -365,7 +365,7 @@ var Util = function ($) {
  * --------------------------------------------------------------------------
  */
 
-);var Button = function ($) {
+var Button = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -397,14 +397,14 @@ var Util = function ($) {
   var Event = {
     CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY,
     FOCUS_BLUR_DATA_API: 'focus' + EVENT_KEY + DATA_API_KEY + ' ' + ('blur' + EVENT_KEY + DATA_API_KEY)
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Button = function () {
     function Button(element) {
       _classCallCheck(this, Button);
@@ -510,7 +510,7 @@ var Util = function ($) {
   }).on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
     var button = $(event.target).closest(Selector.BUTTON)[0];
     $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type));
-  }
+  });
 
   /**
    * ------------------------------------------------------------------------
@@ -518,7 +518,7 @@ var Util = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  );$.fn[NAME] = Button._jQueryInterface;
+  $.fn[NAME] = Button._jQueryInterface;
   $.fn[NAME].Constructor = Button;
   $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT;
@@ -526,7 +526,7 @@ var Util = function ($) {
   };
 
   return Button;
-}(jQuery
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -535,7 +535,7 @@ var Util = function ($) {
  * --------------------------------------------------------------------------
  */
 
-);var Carousel = function ($) {
+var Carousel = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -607,14 +607,14 @@ var Util = function ($) {
     INDICATORS: '.carousel-indicators',
     DATA_SLIDE: '[data-slide], [data-slide-to]',
     DATA_RIDE: '[data-ride="carousel"]'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Carousel = function () {
     function Carousel(element, config) {
       _classCallCheck(this, Carousel);
@@ -1017,7 +1017,7 @@ var Util = function ($) {
       var $carousel = $(this);
       Carousel._jQueryInterface.call($carousel, $carousel.data());
     });
-  }
+  });
 
   /**
    * ------------------------------------------------------------------------
@@ -1025,7 +1025,7 @@ var Util = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  );$.fn[NAME] = Carousel._jQueryInterface;
+  $.fn[NAME] = Carousel._jQueryInterface;
   $.fn[NAME].Constructor = Carousel;
   $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT;
@@ -1033,7 +1033,7 @@ var Util = function ($) {
   };
 
   return Carousel;
-}(jQuery
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -1042,7 +1042,7 @@ var Util = function ($) {
  * --------------------------------------------------------------------------
  */
 
-);var Collapse = function ($) {
+var Collapse = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -1091,14 +1091,14 @@ var Util = function ($) {
   var Selector = {
     ACTIVES: '.show, .collapsing',
     DATA_TOGGLE: '[data-toggle="collapse"]'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Collapse = function () {
     function Collapse(element, config) {
       _classCallCheck(this, Collapse);
@@ -1280,8 +1280,8 @@ var Util = function ($) {
 
     Collapse.prototype._getConfig = function _getConfig(config) {
       config = $.extend({}, Default, config);
-      config.toggle = Boolean(config.toggle // coerce string values
-      );Util.typeCheckConfig(NAME, config, DefaultType);
+      config.toggle = Boolean(config.toggle); // coerce string values
+      Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
     };
 
@@ -1378,7 +1378,7 @@ var Util = function ($) {
       var config = data ? 'toggle' : $trigger.data();
       Collapse._jQueryInterface.call($target, config);
     });
-  }
+  });
 
   /**
    * ------------------------------------------------------------------------
@@ -1386,7 +1386,7 @@ var Util = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  );$.fn[NAME] = Collapse._jQueryInterface;
+  $.fn[NAME] = Collapse._jQueryInterface;
   $.fn[NAME].Constructor = Collapse;
   $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT;
@@ -1394,7 +1394,7 @@ var Util = function ($) {
   };
 
   return Collapse;
-}(jQuery
+}(jQuery);
 
 /* global Popper */
 
@@ -1405,7 +1405,7 @@ var Util = function ($) {
  * --------------------------------------------------------------------------
  */
 
-);var Dropdown = function ($) {
+var Dropdown = function ($) {
 
   /**
    * Check for Popper dependency
@@ -1479,14 +1479,14 @@ var Util = function ($) {
     placement: 'string',
     offset: '(number|string)',
     flip: 'boolean'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Dropdown = function () {
     function Dropdown(element, config) {
       _classCallCheck(this, Dropdown);
@@ -1812,7 +1812,7 @@ var Util = function ($) {
     Dropdown._jQueryInterface.call($(this), 'toggle');
   }).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
     e.stopPropagation();
-  }
+  });
 
   /**
    * ------------------------------------------------------------------------
@@ -1820,7 +1820,7 @@ var Util = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  );$.fn[NAME] = Dropdown._jQueryInterface;
+  $.fn[NAME] = Dropdown._jQueryInterface;
   $.fn[NAME].Constructor = Dropdown;
   $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT;
@@ -1828,7 +1828,7 @@ var Util = function ($) {
   };
 
   return Dropdown;
-}(jQuery
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -1837,7 +1837,7 @@ var Util = function ($) {
  * --------------------------------------------------------------------------
  */
 
-);var Modal = function ($) {
+var Modal = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -1897,14 +1897,14 @@ var Util = function ($) {
     DATA_DISMISS: '[data-dismiss="modal"]',
     FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
     NAVBAR_TOGGLER: '.navbar-toggler'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Modal = function () {
     function Modal(element, config) {
       _classCallCheck(this, Modal);
@@ -2096,8 +2096,8 @@ var Util = function ($) {
     Modal.prototype._enforceFocus = function _enforceFocus() {
       var _this14 = this;
 
-      $(document).off(Event.FOCUSIN // guard against infinite focus loop
-      ).on(Event.FOCUSIN, function (event) {
+      $(document).off(Event.FOCUSIN) // guard against infinite focus loop
+      .on(Event.FOCUSIN, function (event) {
         if (document !== event.target && _this14._element !== event.target && !$(_this14._element).has(event.target).length) {
           _this14._element.focus();
         }
@@ -2259,17 +2259,17 @@ var Util = function ($) {
           var actualPadding = $(element)[0].style.paddingRight;
           var calculatedPadding = $(element).css('padding-right');
           $(element).data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + _this19._scrollbarWidth + 'px');
-        }
+        });
 
         // Adjust navbar-toggler margin
-        );$(Selector.NAVBAR_TOGGLER).each(function (index, element) {
+        $(Selector.NAVBAR_TOGGLER).each(function (index, element) {
           var actualMargin = $(element)[0].style.marginRight;
           var calculatedMargin = $(element).css('margin-right');
           $(element).data('margin-right', actualMargin).css('margin-right', parseFloat(calculatedMargin) + _this19._scrollbarWidth + 'px');
-        }
+        });
 
         // Adjust body padding
-        );var actualPadding = document.body.style.paddingRight;
+        var actualPadding = document.body.style.paddingRight;
         var calculatedPadding = $('body').css('padding-right');
         $('body').data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + this._scrollbarWidth + 'px');
       }
@@ -2282,18 +2282,18 @@ var Util = function ($) {
         if (typeof padding !== 'undefined') {
           $(element).css('padding-right', padding).removeData('padding-right');
         }
-      }
+      });
 
       // Restore navbar-toggler margin
-      );$(Selector.NAVBAR_TOGGLER).each(function (index, element) {
+      $(Selector.NAVBAR_TOGGLER).each(function (index, element) {
         var margin = $(element).data('margin-right');
         if (typeof margin !== 'undefined') {
           $(element).css('margin-right', margin).removeData('margin-right');
         }
-      }
+      });
 
       // Restore body padding
-      );var padding = $('body').data('padding-right');
+      var padding = $('body').data('padding-right');
       if (typeof padding !== 'undefined') {
         $('body').css('padding-right', padding).removeData('padding-right');
       }
@@ -2383,7 +2383,7 @@ var Util = function ($) {
     });
 
     Modal._jQueryInterface.call($(target), config, this);
-  }
+  });
 
   /**
    * ------------------------------------------------------------------------
@@ -2391,7 +2391,7 @@ var Util = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  );$.fn[NAME] = Modal._jQueryInterface;
+  $.fn[NAME] = Modal._jQueryInterface;
   $.fn[NAME].Constructor = Modal;
   $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT;
@@ -2399,7 +2399,7 @@ var Util = function ($) {
   };
 
   return Modal;
-}(jQuery
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -2408,7 +2408,7 @@ var Util = function ($) {
  * --------------------------------------------------------------------------
  */
 
-);var ScrollSpy = function ($) {
+var ScrollSpy = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -2461,14 +2461,14 @@ var Util = function ($) {
   var OffsetMethod = {
     OFFSET: 'offset',
     POSITION: 'position'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var ScrollSpy = function () {
     function ScrollSpy(element, config) {
       var _this21 = this;
@@ -2633,10 +2633,10 @@ var Util = function ($) {
         $link.addClass(ClassName.ACTIVE);
       } else {
         // Set triggered link as active
-        $link.addClass(ClassName.ACTIVE
+        $link.addClass(ClassName.ACTIVE);
         // Set triggered links parents as active
         // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-        );$link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_LINKS + ', ' + Selector.LIST_ITEMS).addClass(ClassName.ACTIVE);
+        $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_LINKS + ', ' + Selector.LIST_ITEMS).addClass(ClassName.ACTIVE);
       }
 
       $(this._scrollElement).trigger(Event.ACTIVATE, {
@@ -2697,7 +2697,7 @@ var Util = function ($) {
       var $spy = $(scrollSpys[i]);
       ScrollSpy._jQueryInterface.call($spy, $spy.data());
     }
-  }
+  });
 
   /**
    * ------------------------------------------------------------------------
@@ -2705,7 +2705,7 @@ var Util = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  );$.fn[NAME] = ScrollSpy._jQueryInterface;
+  $.fn[NAME] = ScrollSpy._jQueryInterface;
   $.fn[NAME].Constructor = ScrollSpy;
   $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT;
@@ -2713,7 +2713,7 @@ var Util = function ($) {
   };
 
   return ScrollSpy;
-}(jQuery
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -2722,7 +2722,7 @@ var Util = function ($) {
  * --------------------------------------------------------------------------
  */
 
-);var Tab = function ($) {
+var Tab = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -2761,14 +2761,14 @@ var Util = function ($) {
     DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
     DROPDOWN_TOGGLE: '.dropdown-toggle',
     DROPDOWN_ACTIVE_CHILD: '> .dropdown-menu .active'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Tab = function () {
     function Tab(element) {
       _classCallCheck(this, Tab);
@@ -2947,7 +2947,7 @@ var Util = function ($) {
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault();
     Tab._jQueryInterface.call($(this), 'show');
-  }
+  });
 
   /**
    * ------------------------------------------------------------------------
@@ -2955,7 +2955,7 @@ var Util = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  );$.fn[NAME] = Tab._jQueryInterface;
+  $.fn[NAME] = Tab._jQueryInterface;
   $.fn[NAME].Constructor = Tab;
   $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT;
@@ -2963,7 +2963,7 @@ var Util = function ($) {
   };
 
   return Tab;
-}(jQuery
+}(jQuery);
 
 /* global Popper */
 
@@ -2974,7 +2974,7 @@ var Util = function ($) {
  * --------------------------------------------------------------------------
  */
 
-);var Tooltip = function ($) {
+var Tooltip = function ($) {
 
   /**
    * Check for Popper dependency
@@ -3069,14 +3069,14 @@ var Util = function ($) {
     FOCUS: 'focus',
     CLICK: 'click',
     MANUAL: 'manual'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Tooltip = function () {
     function Tooltip(element, config) {
       _classCallCheck(this, Tooltip);
@@ -3233,13 +3233,13 @@ var Util = function ($) {
           }
         });
 
-        $(tip).addClass(ClassName.SHOW
+        $(tip).addClass(ClassName.SHOW);
 
         // if this is a touch-enabled device we add extra
         // empty mouseover listeners to the body's immediate children;
         // only needed because of broken event delegation on iOS
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-        );if ('ontouchstart' in document.documentElement) {
+        if ('ontouchstart' in document.documentElement) {
           $('body').children().on('mouseover', null, $.noop);
         }
 
@@ -3293,11 +3293,11 @@ var Util = function ($) {
         return;
       }
 
-      $(tip).removeClass(ClassName.SHOW
+      $(tip).removeClass(ClassName.SHOW);
 
       // if this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
-      );if ('ontouchstart' in document.documentElement) {
+      if ('ontouchstart' in document.documentElement) {
         $('body').children().off('mouseover', null, $.noop);
       }
 
@@ -3638,7 +3638,7 @@ var Util = function ($) {
   };
 
   return Tooltip;
-}(jQuery
+}(jQuery);
 
 /**
  * --------------------------------------------------------------------------
@@ -3647,7 +3647,7 @@ var Util = function ($) {
  * --------------------------------------------------------------------------
  */
 
-);var Popover = function ($) {
+var Popover = function ($) {
 
   /**
    * ------------------------------------------------------------------------
@@ -3695,14 +3695,14 @@ var Util = function ($) {
     FOCUSOUT: 'focusout' + EVENT_KEY,
     MOUSEENTER: 'mouseenter' + EVENT_KEY,
     MOUSELEAVE: 'mouseleave' + EVENT_KEY
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Popover = function (_Tooltip) {
     _inherits(Popover, _Tooltip);
 
@@ -3727,10 +3727,10 @@ var Util = function ($) {
     };
 
     Popover.prototype.setContent = function setContent() {
-      var $tip = $(this.getTipElement()
+      var $tip = $(this.getTipElement());
 
       // we use append for html objects to maintain js events
-      );this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
+      this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
 
       $tip.removeClass(ClassName.FADE + ' ' + ClassName.SHOW);
