@@ -349,10 +349,10 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 
 ### Image overlays
 
-Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need `.card-dark` (see below).
+Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need additional styles or utilities.
 
 {% example html %}
-<div class="card card-dark">
+<div class="card text-white">
   <img class="card-img" data-src="holder.js/100px270/#55595c:#373a3c/text:Card image" alt="Card image">
   <div class="card-img-overlay">
     <h4 class="card-title">Card title</h4>
@@ -591,7 +591,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
-  <div class="card card-dark card-primary p-3 text-center">
+  <div class="card bg-primary p-3 text-center">
     <blockquote class="blockquote mb-0">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
       <footer class="blockquote-footer">
