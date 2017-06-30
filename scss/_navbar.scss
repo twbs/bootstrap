@@ -242,25 +242,25 @@
 }
 
 // White links against a dark background
-.navbar-inverse {
+.navbar-dark {
   .navbar-brand {
-    color: $navbar-inverse-active-color;
+    color: $navbar-dark-active-color;
 
     @include hover-focus {
-      color: $navbar-inverse-active-color;
+      color: $navbar-dark-active-color;
     }
   }
 
   .navbar-nav {
     .nav-link {
-      color: $navbar-inverse-color;
+      color: $navbar-dark-color;
 
       @include hover-focus {
-        color: $navbar-inverse-hover-color;
+        color: $navbar-dark-hover-color;
       }
 
       &.disabled {
-        color: $navbar-inverse-disabled-color;
+        color: $navbar-dark-disabled-color;
       }
     }
 
@@ -268,20 +268,20 @@
     .active > .nav-link,
     .nav-link.show,
     .nav-link.active {
-      color: $navbar-inverse-active-color;
+      color: $navbar-dark-active-color;
     }
   }
 
   .navbar-toggler {
-    color: $navbar-inverse-color;
-    border-color: $navbar-inverse-toggler-border-color;
+    color: $navbar-dark-color;
+    border-color: $navbar-dark-toggler-border-color;
   }
 
   .navbar-toggler-icon {
-    background-image: $navbar-inverse-toggler-icon-bg;
+    background-image: $navbar-dark-toggler-icon-bg;
   }
 
   .navbar-text {
-    color: $navbar-inverse-color;
+    color: $navbar-dark-color;
   }
 }

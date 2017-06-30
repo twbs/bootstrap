@@ -92,12 +92,9 @@
 // Exact selectors below required to override `.table-striped` and prevent
 // inheritance to nested tables.
 
-// Generate the contextual variants
-@include table-row-variant(active, $table-active-bg);
-@include table-row-variant(success, $state-success-bg);
-@include table-row-variant(info, $state-info-bg);
-@include table-row-variant(warning, $state-warning-bg);
-@include table-row-variant(danger, $state-danger-bg);
+@each $color, $value in $theme-colors {
+  @include table-row-variant($color, theme-color-level($color, -9));
+}
 
 
 // Inverse styles

@@ -25,7 +25,7 @@
 // Inverse text within a card for use with dark backgrounds
 //
 
-@mixin card-inverse {
+@mixin card-dark {
   color: rgba(255,255,255,.65);
 
   .card-header,
@@ -47,7 +47,7 @@
   }
   .card-link {
     @include hover-focus {
-      color: $card-inverse-link-hover-color;
+      color: $card-dark-link-hover-color;
     }
   }
 }
