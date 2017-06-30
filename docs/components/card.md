@@ -1330,7 +1330,7 @@ Shows implementations of the publication element.
         <span itemprop="name">Lorem ipsum dolor sit amet</span>
       </div>
       <div class="meta-item meta-distance">
-        <span>5 km entfernt | </span>
+        <span>5 km entfernt, </span>
       </div>
       <div class="meta-item meta-published">
         <time datetime="">veröffentlicht vor 2 Tagen</time>
