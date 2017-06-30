@@ -10,7 +10,6 @@
   > .btn {
     position: relative;
     flex: 0 1 auto;
-    margin-bottom: 0;
 
     // Bring the hover, focused, and "active" buttons to the front to overlay
     // the borders properly
@@ -129,7 +128,6 @@
 //
 
 .btn-group-vertical {
-  display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
