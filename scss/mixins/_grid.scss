@@ -20,16 +20,6 @@
   }
 }
 
-// @mixin make-gutters($gutters: $grid-gutter-widths) {
-//   @each $breakpoint in map-keys($gutters) {
-//     @include media-breakpoint-up($breakpoint) {
-//       $gutter: map-get($gutters, $breakpoint);
-//       padding-right: ($gutter / 2);
-//       padding-left:  ($gutter / 2);
-//     }
-//   }
-// }
-
 @mixin make-row() {
   display: flex;
   flex-wrap: wrap;
