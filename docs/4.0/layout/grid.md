@@ -520,19 +520,19 @@ In addition to column clearing at responsive breakpoints, you may need to **rese
 
 ### Flex order
 
-Use flexbox utilities for controlling the **visual order** of your content.
+Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `12` across all five grid tiers.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col order-0">
+    <div class="col">
       First, but unordered
     </div>
-    <div class="col order-last">
+    <div class="col order-12">
       Second, but last
     </div>
-    <div class="col order-first">
+    <div class="col order-1">
       Third, but first
     </div>
   </div>
@@ -542,33 +542,21 @@ Use flexbox utilities for controlling the **visual order** of your content.
 
 ### Offsetting columns
 
-Move columns to the right using `.offset-md-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.offset-md-4` moves `.col-md-4` over four columns.
+With the move to flexbox in v4, we no longer have v3's style of offset classes. Instead, use margin utilities like `.mr-auto` to force sibling columns away from one another.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
   <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+  <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
 </div>
 <div class="row">
-  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
-  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+  <div class="col-md-3 ml-md-auto">.col-md-3 .ml-md-auto</div>
+  <div class="col-md-3 ml-md-auto">.col-md-3 .ml-md-auto</div>
 </div>
 <div class="row">
-  <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
-</div>
-{% endexample %}
-</div>
-
-### Push and pull
-
-Easily change the order of our built-in grid columns with `.push-md-*` and `.pull-md-*` modifier classes.
-
-<div class="bd-example-row">
-{% example html %}
-<div class="row">
-  <div class="col-md-9 push-md-3">.col-md-9 .push-md-3</div>
-  <div class="col-md-3 pull-md-9">.col-md-3 .pull-md-9</div>
+  <div class="col-auto mr-auto">.col-auto .mr-auto</div>
+  <div class="col-auto">.col-auto</div>
 </div>
 {% endexample %}
 </div>

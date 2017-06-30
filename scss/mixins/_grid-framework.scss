@@ -46,20 +46,9 @@
         }
       }
 
-      @each $modifier in (pull, push) {
-        @for $i from 0 through $columns {
-          .#{$modifier}#{$infix}-#{$i} {
-            @include make-col-modifier($modifier, $i, $columns)
-          }
-        }
-      }
-
-      // `$columns - 1` because offsetting by the width of an entire row isn't possible
-      @for $i from 0 through ($columns - 1) {
-        @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
-          .offset#{$infix}-#{$i} {
-            @include make-col-modifier(offset, $i, $columns)
-          }
+      @for $i from 1 through $columns {
+        .order#{$infix}-#{$i} {
+          order: $i
         }
       }
     }
