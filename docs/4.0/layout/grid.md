@@ -112,10 +112,6 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
       <td colspan="5">Yes</td>
     </tr>
     <tr>
-      <th class="text-nowrap" scope="row">Offsets</th>
-      <td colspan="5">Yes</td>
-    </tr>
-    <tr>
       <th class="text-nowrap" scope="row">Column ordering</th>
       <td colspan="5">Yes</td>
     </tr>

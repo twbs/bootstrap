@@ -412,7 +412,7 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
       </div>
     </div>
     <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10">
+      <div class="col-sm-10">
         <button type="submit" class="btn btn-primary">Sign in</button>
       </div>
     </div>
