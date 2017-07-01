@@ -340,30 +340,6 @@ $btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba(
 $btn-focus-box-shadow:           0 0 0 3px rgba(theme-color("primary"), .25) !default;
 $btn-active-box-shadow:          inset 0 3px 5px rgba($black,.125) !default;
 
-$btn-primary-color:              $white !default;
-$btn-primary-bg:                 theme-color("primary") !default;
-$btn-primary-border-color:       $btn-primary-bg !default;
-
-$btn-secondary-color:            $gray-900 !default;
-$btn-secondary-bg:               $white !default;
-$btn-secondary-border-color:     #ccc !default;
-
-$btn-info-color:                 $white !default;
-$btn-info-bg:                    theme-color("info") !default;
-$btn-info-border-color:          $btn-info-bg !default;
-
-$btn-success-color:              $white !default;
-$btn-success-bg:                 theme-color("success") !default;
-$btn-success-border-color:       $btn-success-bg !default;
-
-$btn-warning-color:              $white !default;
-$btn-warning-bg:                 theme-color("warning") !default;
-$btn-warning-border-color:       $btn-warning-bg !default;
-
-$btn-danger-color:               $white !default;
-$btn-danger-bg:                  theme-color("danger") !default;
-$btn-danger-border-color:        $btn-danger-bg !default;
-
 $btn-link-disabled-color:        $gray-600 !default;
 
 $btn-block-spacing-y:            .5rem !default;
