@@ -10,10 +10,6 @@ redirect_from:
 toc: true
 ---
 
-<!-- Bootstrap is the world's most popular framework for building responsive, mobile-first sites and applications. Inside you'll find high quality HTML, CSS, and JavaScript to make starting any project easier than ever. -->
-
-<!-- Here's how to quickly get started with the Bootstrap CDN and a template starter page. -->
-
 ## Quick start
 
 Looking to quickly add Bootstrap to your project? Use the Bootstrap CDN, provided for free by the folks at MaxCDN. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/)
