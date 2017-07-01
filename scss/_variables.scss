@@ -676,12 +676,6 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !defau
 // Badges
 
 $badge-default-bg:            $gray-600 !default;
-$badge-primary-bg:            theme-color("primary") !default;
-$badge-success-bg:            theme-color("success") !default;
-$badge-info-bg:               theme-color("info") !default;
-$badge-warning-bg:            theme-color("warning") !default;
-$badge-danger-bg:             theme-color("danger") !default;
-
 $badge-color:                 $white !default;
 $badge-link-hover-color:      $white !default;
 $badge-font-size:             75% !default;
