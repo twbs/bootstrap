@@ -387,7 +387,6 @@ $input-height-lg:               calc(#{$input-height-inner-lg} + #{$input-height
 $input-transition:               border-color ease-in-out .15s, box-shadow ease-in-out .15s !default;
 
 $form-text-margin-top:     .25rem !default;
-$form-feedback-margin-top: $form-text-margin-top !default;
 
 $form-check-margin-bottom:  .5rem !default;
 $form-check-input-gutter:   1.25rem !default;
@@ -620,8 +619,6 @@ $card-inner-border-radius: calc(#{$card-border-radius} - #{$card-border-width}) 
 $card-cap-bg:              rgba($black, .03) !default;
 $card-bg:                  $white !default;
 
-$card-dark-link-hover-color:    $white !default;
-
 $card-img-overlay-padding: 1.25rem !default;
 
 $card-deck-margin:          ($grid-gutter-width / 2) !default;
@@ -675,9 +672,7 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !defau
 
 // Badges
 
-$badge-default-bg:            $gray-600 !default;
 $badge-color:                 $white !default;
-$badge-link-hover-color:      $white !default;
 $badge-font-size:             75% !default;
 $badge-font-weight:           $font-weight-bold !default;
 $badge-padding-y:             .25em !default;
