@@ -18,7 +18,7 @@ Please be aware that nested carousels are not supported, and carousels are gener
 
 Carousels don't automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
 
-Be sure to set a unique id on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page.
+**The `.active` class needs to be added to one of the slides** otherwise the carousel will not be visible. Also be sure to set a unique id on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page.
 
 ### Slides only
 
@@ -100,12 +100,6 @@ You can also add the indicators to the carousel, alongside the controls, too.
   </a>
 </div>
 {% endexample %}
-
-{% callout warning %}
-#### Initial active element required
-
-The `.active` class needs to be added to one of the slides. Otherwise, the carousel will not be visible.
-{% endcallout %}
 
 ### With captions
 
