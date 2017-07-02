@@ -38,7 +38,7 @@ In addition to our [border-radius utilities]({{ site.baseurl }}/docs/{{ site.doc
 
 ## Aligning images
 
-Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/embed/#responsive-floats) or [text alignment classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/#horizontal-centering).
+Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/utilities/float) or [text alignment classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/#horizontal-centering).
 
 <div class="bd-example bd-example-images">
   <img data-src="holder.js/200x200" class="rounded float-left" alt="A generic square placeholder image with rounded corners">
