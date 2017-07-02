@@ -1,9 +1,7 @@
-/*
- * Grid examples
- *
- * Highlight the grid columns within the docs so folks can see their padding,
- * alignment, sizing, etc.
- */
+// Grid examples
+//
+// Highlight the grid columns within the docs so folks can see their padding,
+// alignment, sizing, etc.
 
 .show-grid {
   margin-bottom: 15px;
@@ -17,12 +15,10 @@
   border: 1px solid rgba(86,61,124,.2);
 }
 
-/*
- * Examples
- *
- * Isolated sections of example content for each component or feature. Usually
- * followed by a code snippet.
- */
+// Examples
+//
+// Isolated sections of example content for each component or feature. Usually
+// followed by a code snippet.
 
 .bs-example {
   position: relative;
@@ -34,7 +30,7 @@
   -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
           box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
 }
-/* Echo out a label for the example */
+// Echo out a label for the example
 .bs-example:after {
   position: absolute;
   top: 15px;
@@ -51,7 +47,7 @@
   padding-bottom: 24px;
 }
 
-/* Tweak display of the code snippets when following an example */
+// Tweak display of the code snippets when following an example
 .bs-example + .highlight,
 .bs-example + .zero-clipboard + .highlight {
   margin: -15px -15px 15px;
@@ -59,8 +55,8 @@
   border-radius: 0;
 }
 
-/* Make the examples and snippets not full-width */
-@media (min-width: 768px) {
+// Make the examples and snippets not full-width
+@media (min-width: @screen-sm-min) {
   .bs-example {
     margin-right: 0;
     margin-left: 0;
@@ -85,12 +81,12 @@
   }
 }
 
-/* Undo width of container */
+// Undo width of container
 .bs-example .container {
   width: auto;
 }
 
-/* Tweak content of examples for optimum awesome */
+// Tweak content of examples for optimum awesome
 .bs-example > p:last-child,
 .bs-example > ul:last-child,
 .bs-example > ol:last-child,
@@ -111,7 +107,7 @@
   float: none;
 }
 
-/* Typography */
+// Typography
 .bs-example-type .table .type-info {
   color: #767676;
   vertical-align: middle;
@@ -132,24 +128,24 @@
   margin: 0;
 }
 
-/* Contextual background colors */
+// Contextual background colors
 .bs-example-bg-classes p {
   padding: 15px;
 }
 
-/* Images */
+// Images
 .bs-example > .img-circle,
 .bs-example > .img-rounded,
 .bs-example > .img-thumbnail {
   margin: 5px;
 }
 
-/* Tables */
+// Tables
 .bs-example > .table-responsive > .table {
   background-color: #fff;
 }
 
-/* Buttons */
+// Buttons
 .bs-example > .btn,
 .bs-example > .btn-group {
   margin-top: 5px;
@@ -159,7 +155,7 @@
   margin-top: 10px;
 }
 
-/* Forms */
+// Forms
 .bs-example-control-sizing select,
 .bs-example-control-sizing input[type="text"] + input[type="text"] {
   margin-top: 10px;
@@ -171,12 +167,12 @@
   resize: vertical;
 }
 
-/* List groups */
+// List groups
 .bs-example > .list-group {
   max-width: 400px;
 }
 
-/* Navbars */
+// Navbars
 .bs-example .navbar:last-child {
   margin-bottom: 0;
 }
@@ -184,7 +180,7 @@
 .bs-navbar-bottom-example {
   z-index: 1;
   padding: 0;
-  overflow: hidden; /* cut the drop shadows off */
+  overflow: hidden; // cut the drop shadows off
 }
 .bs-navbar-top-example .navbar-header,
 .bs-navbar-bottom-example .navbar-header {
@@ -222,18 +218,18 @@
   }
 }
 
-/* Pagination */
+// Pagination
 .bs-example .pagination {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-/* Pager */
+// Pager
 .bs-example > .pager {
   margin-top: 0;
 }
 
-/* Example modals */
+// Example modals
 .bs-example-modal {
   background-color: #f5f5f5;
 }
@@ -252,7 +248,7 @@
   margin-left: auto;
 }
 
-/* Example dropdowns */
+// Example dropdowns
 .bs-example > .dropdown > .dropdown-toggle {
   float: left;
 }
@@ -263,12 +259,12 @@
   clear: left;
 }
 
-/* Example tabbable tabs */
+// Example tabbable tabs
 .bs-example-tabs .nav-tabs {
   margin-bottom: 15px;
 }
 
-/* Tooltips */
+// Tooltips
 .bs-example-tooltips {
   text-align: center;
 }
@@ -283,7 +279,7 @@
   opacity: 1;
 }
 
-/* Popovers */
+// Popovers
 .bs-example-popover {
   padding-bottom: 24px;
   background-color: #f9f9f9;
@@ -296,7 +292,7 @@
   margin: 20px;
 }
 
-/* Scrollspy demo on fixed height div */
+// Scrollspy demo on fixed height div
 .scrollspy-example {
   position: relative;
   height: 200px;
@@ -308,17 +304,17 @@
   max-width: 300px;
 }
 
-/* Simple collapse example */
+// Simple collapse example
 #collapseExample .well {
   margin-bottom: 0;
 }
 
-/* Pseudo :focus state for showing how it looks in the docs */
+// Pseudo :focus state for showing how it looks in the docs
 #focusedInput {
-  border-color: rgb(204,204,204); /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
+  border-color: rgb(204,204,204); // Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback
   border-color: rgba(82,168,236,.8);
   outline: 0;
-  outline: thin dotted \9; /* IE6-9 */
+  outline: thin dotted \9; // IE6-9
   -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
           box-shadow: 0 0 8px rgba(82,168,236,.6);
 }
