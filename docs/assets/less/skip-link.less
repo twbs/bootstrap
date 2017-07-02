@@ -1,0 +1,23 @@
+/*
+ * Fancy skip link
+ *
+ * Make it look a bit less "bare bones"
+ * Also includes focus suppression for the Chrome tabindex="-1" workaround
+ */
+
+#skippy {
+  display: block;
+  padding: 1em;
+  color: #fff;
+  background-color: #6f5499;
+  outline: 0;
+}
+
+#skippy .skiplink-text {
+  padding: .5em;
+  outline: 1px dotted;
+}
+
+#content:focus {
+  outline: none;
+}
