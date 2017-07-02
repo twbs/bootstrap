@@ -108,10 +108,8 @@ mark,
 
 // Blockquotes
 .blockquote {
-  padding: ($spacer / 2) $spacer;
   margin-bottom: $spacer;
   font-size: $blockquote-font-size;
-  border-left: $blockquote-border-width solid $blockquote-border-color;
 }
 
 .blockquote-footer {
@@ -121,23 +119,5 @@ mark,
 
   &::before {
     content: "\2014 \00A0"; // em dash, nbsp
-  }
-}
-
-// Opposite alignment of blockquote
-.blockquote-reverse {
-  padding-right: $spacer;
-  padding-left: 0;
-  text-align: right;
-  border-right: $blockquote-border-width solid $blockquote-border-color;
-  border-left: 0;
-}
-
-.blockquote-reverse .blockquote-footer {
-  &::before {
-    content: "";
-  }
-  &::after {
-    content: "\00A0 \2014"; // nbsp, em dash
   }
 }
