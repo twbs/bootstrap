@@ -483,6 +483,21 @@ Separate groups of related menu items with a divider.
 </div>
 {% endexample %}
 
+## Menu text
+
+Place any freeform text within a dropdown menu with text and use [spacing utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/). Note that you'll likely need additional sizing styles to constrain the menu width.
+
+{% example html %}
+<div class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
+  <p>
+    Some example text that's free-flowing within the dropdown menu.
+  </p>
+  <p class="mb-0">
+    And this is more example text.
+  </p>
+</div>
+{% endexample %}
+
 ## Disabled menu items
 
 Add `.disabled` to items in the dropdown to **style them as disabled**.
