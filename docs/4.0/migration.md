@@ -198,7 +198,7 @@ Dropped entirely for the new card component.
 - `.panel-default` removed and no replacement.
 - `.panel-group` removed and no replacement. `.card-group` is not a replacement, it is different.
 - `.panel-heading` to `.card-header`
-- `.panel-title` to `.card-title`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/typography/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
+- `.panel-title` to `.card-title`. Depending on the desired look, you may also want to use [heading elements or classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/typography/#headings) (e.g. `<h3>`, `.h3`) or bold elements or classes (e.g. `<strong>`, `<b>`, [`.font-weight-bold`]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/#font-weight-and-italics)). Note that `.card-title`, while similarly named, produces a different look than `.panel-title`.
 - `.panel-body` to `.card-body`
 - `.panel-footer` to `.card-footer`
 - `.panel-primary`, `.panel-success`, `.panel-info`, `.panel-warning`, and `.panel-danger` have been dropped for `.bg-`, `.text-`, and `.border` utilities generated from our `$theme-colors` Sass map.
