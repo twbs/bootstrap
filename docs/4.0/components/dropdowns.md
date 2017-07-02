@@ -425,6 +425,17 @@ Historically dropdown menu contents *had* to be links, but that's no longer the 
 </div>
 {% endexample %}
 
+You can also create non-interactive dropdown items with `.dropdown-item-text`. Feel free to style further with custom CSS or text utilities.
+
+{% example html %}
+<div class="dropdown-menu">
+  <span class="dropdown-item-text">Dropdown item text</span>
+  <a class="dropdown-item" href="#">Action</a>
+  <a class="dropdown-item" href="#">Another action</a>
+  <a class="dropdown-item" href="#">Something else here</a>
+</div>
+{% endexample %}
+
 ## Menu alignment
 
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-right` to a `.dropdown-menu` to right align the dropdown menu.
