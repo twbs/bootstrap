@@ -58,10 +58,11 @@
     - title: Close icon
     - title: Colors
     - title: Display
+    - title: Embed
     - title: Flex
+    - title: Float
     - title: Image replacement
     - title: Position
-    - title: Responsive helpers
     - title: Screenreaders
     - title: Sizing
     - title: Spacing
