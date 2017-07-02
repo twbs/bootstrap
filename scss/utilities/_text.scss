@@ -34,13 +34,13 @@
 
 // Contextual colors
 
-.text-white {
-  color: #fff !important;
-}
+.text-white { color: #fff !important; }
 
 @each $color, $value in $theme-colors {
   @include text-emphasis-variant('.text-#{$color}', $value);
 }
+
+.text-muted { color: $gray-400 !important; }
 
 // Misc
 
