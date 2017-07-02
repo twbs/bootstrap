@@ -1,13 +1,7 @@
-// scss-lint:disable ImportantRule, IdSelector
-
-//
-// Carbon ads
-//
-
 #carbonads {
   display: block;
   padding: 15px 15px 15px 160px;
-  margin: 50px -15px 0;
+  margin: 50px -15px -30px;
   overflow: hidden;
   font-size: 13px;
   line-height: 1.5;
@@ -33,7 +27,7 @@
     right: 15px;
     margin-top: 0;
 
-    .bd-masthead & {
+    .bs-docs-masthead & {
       position: static;
     }
   }
@@ -48,105 +42,3 @@
   display: block;
   color: #cdbfe3 !important;
 }
-
-.bd-content {
-  #carbonads {
-    position: static;
-    max-width: 400px;
-    margin: 2rem 0;
-    line-height: 1.4;
-    background-color: #f5f5f5;
-    border: 0;
-
-    a {
-      color: #333;
-    }
-
-    .carbon-poweredby {
-      color: #777 !important;
-    }
-  }
-}
-
-
-
-
-/*
- * Carbon ads
- *
- * Single display ad that shows on all pages (except homepage) in page headers.
- * The hella `!important` is required for any pre-set property.
- */
-
-// .carbonad {
-//   width: auto !important;
-//   height: auto !important;
-//   padding: 20px !important;
-//   margin: 30px -15px -31px !important;
-//   overflow: hidden; /* clearfix */
-//   font-size: 13px !important;
-//   line-height: 16px !important;
-//   text-align: left;
-//   background: transparent !important;
-//   border: solid #866ab3 !important;
-//   border-width: 1px 0 !important;
-// }
-// .carbonad-img {
-//   margin: 0 !important;
-// }
-// .carbonad-text,
-// .carbonad-tag {
-//   display: block !important;
-//   float: none !important;
-//   width: auto !important;
-//   height: auto !important;
-//   margin-left: 145px !important;
-//   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-// }
-// .carbonad-text {
-//   padding-top: 0 !important;
-// }
-// .carbonad-tag {
-//   color: inherit !important;
-//   text-align: left !important;
-// }
-// .carbonad-text a,
-// .carbonad-tag a {
-//   color: #fff !important;
-// }
-// .carbonad #azcarbon > img {
-//   display: none; /* hide what I assume are tracking images */
-// }
-//
-// @media (min-width: 480px) {
-//   .carbonad {
-//     width: 330px !important;
-//     margin: 20px auto !important;
-//     border-width: 1px !important;
-//     border-radius: 4px;
-//   }
-//   .bs-docs-masthead .carbonad {
-//     margin: 50px auto 0 !important;
-//   }
-// }
-//
-// @media (min-width: 768px) {
-//   .carbonad {
-//     margin-right: 0 !important;
-//     margin-left: 0 !important;
-//   }
-// }
-//
-// @media (min-width: 992px) {
-//   .carbonad {
-//     position: absolute;
-//     top: 0;
-//     right: 15px; /* 15px instead of 0 since box-sizing */
-//     width: 330px !important;
-//     padding: 15px !important;
-//     margin: 0 !important;
-//   }
-//   .bs-docs-masthead .carbonad {
-//     position: static;
-//   }
-// }
