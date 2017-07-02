@@ -229,7 +229,7 @@ Dropped entirely for the new card component.
   - Added responsive variations to our text alignment classes `.text-{sm,md,lg,xl}-{left,center,right}`.
 - **Alignment and spacing:**
   - Added new [responsive margin and padding utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) for all sides, plus vertical and horizontal shorthands.
-  - Added boatload of [flexbox utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flexbox/).
+  - Added boatload of [flexbox utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/).
   - Dropped `.center-block` for the new `.mx-auto` class.
 
 ### Vendor prefix mixins
