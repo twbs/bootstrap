@@ -1,10 +1,3 @@
-/*
- * Homepage
- *
- * Tweaks to the custom homepage and the masthead (main jumbotron).
- */
-
-/* Share masthead with page headers */
 .bs-docs-masthead,
 .bs-docs-header {
   position: relative;
@@ -21,7 +14,7 @@
   background-repeat: repeat-x;
 }
 
-/* Masthead (headings and download button) */
+// Masthead (headings and download button)
 .bs-docs-masthead .bs-docs-booticon {
   margin: 0 auto 30px;
 }
@@ -46,13 +39,13 @@
   font-size: 20px;
 }
 
-@media (min-width: 480px) {
+@media (min-width: @screen-xs-min) {
   .bs-docs-masthead .btn {
     width: auto;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: @screen-sm-min) {
   .bs-docs-masthead {
     padding: 80px 0;
   }
@@ -64,7 +57,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: @screen-md-min) {
   .bs-docs-masthead .lead {
     width: 80%;
     font-size: 30px;

@@ -1,20 +1,20 @@
-/* By default it's not affixed in mobile views, so undo that */
+// By default it's not affixed in mobile views, so undo that
 .bs-docs-sidebar.affix {
   position: static;
 }
-@media (min-width: 768px) {
+@media (min-width: @screen-sm-min) {
   .bs-docs-sidebar {
     padding-left: 20px;
   }
 }
 
-/* First level of nav */
+// First level of nav
 .bs-docs-sidenav {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-/* All levels of nav */
+// All levels of nav
 .bs-docs-sidebar .nav > li > a {
   display: block;
   padding: 4px 20px;
@@ -40,9 +40,9 @@
   border-left: 2px solid #563d7c;
 }
 
-/* Nav: second level (shown on .active) */
+// Nav: second level (shown on .active)
 .bs-docs-sidebar .nav .nav {
-  display: none; /* Hide by default, but at >768px, show it */
+  display: none; // Hide by default, but at >768px, show it
   padding-bottom: 10px;
 }
 .bs-docs-sidebar .nav .nav > li > a {
@@ -63,7 +63,7 @@
   font-weight: 500;
 }
 
-/* Back to top (hidden on mobile) */
+// Back to top (hidden on mobile)
 .back-to-top,
 .bs-docs-theme-toggle {
   display: none;
@@ -83,29 +83,29 @@
   margin-top: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: @screen-sm-min) {
   .back-to-top,
   .bs-docs-theme-toggle {
     display: block;
   }
 }
 
-/* Show and affix the side nav when space allows it */
-@media (min-width: 992px) {
+// Show and affix the side nav when space allows it
+@media (min-width: @screen-md-min) {
   .bs-docs-sidebar .nav > .active > ul {
     display: block;
   }
-  /* Widen the fixed sidebar */
+  // Widen the fixed sidebar
   .bs-docs-sidebar.affix,
   .bs-docs-sidebar.affix-bottom {
     width: 213px;
   }
   .bs-docs-sidebar.affix {
-    position: fixed; /* Undo the static from mobile first approach */
+    position: fixed; // Undo the static from mobile first approach
     top: 20px;
   }
   .bs-docs-sidebar.affix-bottom {
-    position: absolute; /* Undo the static from mobile first approach */
+    position: absolute; // Undo the static from mobile first approach
   }
   .bs-docs-sidebar.affix-bottom .bs-docs-sidenav,
   .bs-docs-sidebar.affix .bs-docs-sidenav {
@@ -113,8 +113,8 @@
     margin-bottom: 0;
   }
 }
-@media (min-width: 1200px) {
-  /* Widen the fixed sidebar again */
+@media (min-width: @screen-lg-min) {
+  // Widen the fixed sidebar again
   .bs-docs-sidebar.affix-bottom,
   .bs-docs-sidebar.affix {
     width: 263px;
