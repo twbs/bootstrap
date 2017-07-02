@@ -1,3 +1,17 @@
-.clearfix {
-  @include clearfix();
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-only($breakpoint) {
+    .clearfix-#{$breakpoint} {
+      @include clearfix();
+    }
+  }
+  @include media-breakpoint-down($breakpoint) {
+    .clearfix-#{$breakpoint}-down {
+      @include clearfix();
+    }
+  }
+  @include media-breakpoint-up($breakpoint) {
+    .clearfix-#{$breakpoint}-up {
+      @include clearfix();
+    }
+  }
 }
