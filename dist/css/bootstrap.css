@@ -1496,6 +1496,21 @@ pre code {
   background-color: #b9bbbe;
 }
 
+.table-active,
+.table-active > th,
+.table-active > td {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-hover .table-active:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-hover .table-active:hover > td,
+.table-hover .table-active:hover > th {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
 .thead-inverse th {
   color: #fff;
   background-color: #212529;
@@ -1569,6 +1584,11 @@ pre code {
 }
 
 .form-control::-webkit-input-placeholder {
+  color: #868e96;
+  opacity: 1;
+}
+
+.form-control::-moz-placeholder {
   color: #868e96;
   opacity: 1;
 }
@@ -1956,7 +1976,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   font-size: 1rem;
   line-height: 1.25;
   border-radius: 0.25rem;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 
 .btn:focus, .btn:hover {
@@ -3825,8 +3845,10 @@ tbody.collapse.show {
 @media (min-width: 576px) {
   .card-columns {
     -webkit-column-count: 3;
+       -moz-column-count: 3;
             column-count: 3;
     -webkit-column-gap: 1.25rem;
+       -moz-column-gap: 1.25rem;
             column-gap: 1.25rem;
   }
   .card-columns .card {
@@ -4551,49 +4573,6 @@ button.list-group-item-dark.active {
   color: #fff;
   background-color: #1b1e21;
   border-color: #1b1e21;
-}
-
-.embed-responsive {
-  position: relative;
-  display: block;
-  width: 100%;
-  padding: 0;
-  overflow: hidden;
-}
-
-.embed-responsive::before {
-  display: block;
-  content: "";
-}
-
-.embed-responsive .embed-responsive-item,
-.embed-responsive iframe,
-.embed-responsive embed,
-.embed-responsive object,
-.embed-responsive video {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.embed-responsive-21by9::before {
-  padding-top: 42.857143%;
-}
-
-.embed-responsive-16by9::before {
-  padding-top: 56.25%;
-}
-
-.embed-responsive-4by3::before {
-  padding-top: 75%;
-}
-
-.embed-responsive-1by1::before {
-  padding-top: 100%;
 }
 
 .close {
@@ -5614,6 +5593,49 @@ a.bg-dark:focus, a.bg-dark:hover {
   .d-print-none {
     display: none !important;
   }
+}
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.embed-responsive::before {
+  display: block;
+  content: "";
+}
+
+.embed-responsive .embed-responsive-item,
+.embed-responsive iframe,
+.embed-responsive embed,
+.embed-responsive object,
+.embed-responsive video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.embed-responsive-21by9::before {
+  padding-top: 42.857143%;
+}
+
+.embed-responsive-16by9::before {
+  padding-top: 56.25%;
+}
+
+.embed-responsive-4by3::before {
+  padding-top: 75%;
+}
+
+.embed-responsive-1by1::before {
+  padding-top: 100%;
 }
 
 .flex-row {
